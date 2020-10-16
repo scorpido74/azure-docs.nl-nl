@@ -9,53 +9,53 @@ ms.topic: how-to
 ms.date: 04/07/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: bb2fff699b31d8b3b311180c4b85e2bfd1da892c
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91530150"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Gebruik de Spark-& Hive-Hulpprogram Ma's voor Visual Studio code
 
-Meer informatie over het gebruik van Apache Spark & Hive-Hulpprogram Ma's voor Visual Studio code. Gebruik de hulpprogram ma's om Apache Hive batch taken, interactieve Hive-query's en PySpark-scripts te maken en in te dienen voor Apache Spark. Eerst wordt beschreven hoe u Spark-& Hive-Hulpprogram Ma's installeert in Visual Studio code. Vervolgens wordt uitgelegd hoe u taken kunt verzenden naar Spark-& Hive-Hulpprogram Ma's.  
+Meer informatie over het gebruik van Apache Spark & Hive Tools voor Visual Studio Code. Gebruik de hulpprogramma's om Apache Hive-batchtaken, interactieve Hive-query's en PySpark-scripts te maken en te verzenden voor Apache Spark. Eerst wordt beschreven hoe u Spark & Hive Tools installeert in Visual Studio Code. Vervolgens wordt uitgelegd hoe u taken kunt verzenden naar Spark & Hive Tools.  
 
-Spark-& Hive-Hulpprogram Ma's kunnen worden geïnstalleerd op platforms die worden ondersteund door Visual Studio code. Houd rekening met de volgende vereisten voor verschillende platforms.
+Spark & Hive Tools kan worden geïnstalleerd op platforms die worden ondersteund door Visual Studio Code. Houd rekening met de volgende vereisten voor verschillende platforms.
 
 ## <a name="prerequisites"></a>Vereisten
 
-De volgende items zijn vereist voor het volt ooien van de stappen in dit artikel:
+De volgende items zijn vereist voor het voltooien van de stappen in dit artikel:
 
 - Een Azure HDInsight-cluster. Zie aan de [slag met HDInsight](hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md)om een cluster te maken. Of gebruik een Spark-en Hive-cluster dat ondersteuning biedt voor een Apache livy-eind punt.
 - [Visual Studio Code](https://code.visualstudio.com/).
 - [Mono](https://www.mono-project.com/docs/getting-started/install/). Mono is alleen vereist voor Linux en macOS.
-- [Een PySpark Interactive Environment voor Visual Studio code](set-up-pyspark-interactive-environment.md).
+- [Een interactieve PySpark-omgeving voor Visual Studio Code](set-up-pyspark-interactive-environment.md).
 - Een lokale map. In dit artikel wordt gebruikgemaakt van  **C:\HD\HDexample**.
 
-## <a name="install-spark--hive-tools"></a>& Hive-Hulpprogram Ma's voor Spark installeren
+## <a name="install-spark--hive-tools"></a>Spark & Hive Tools installeren
 
-Nadat u aan de vereisten hebt voldaan, kunt u Spark-& Hive-Hulpprogram Ma's voor Visual Studio code installeren door de volgende stappen uit te voeren:
+Wanneer u aan de vereisten voldoet, kunt u Spark & Hive Tools voor Visual Studio Code installeren door de volgende stappen uit te voeren:
 
 1. Open Visual Studio Code.
 
-2. Ga in de menu balk naar extensies **weer geven**  >  **Extensions**.
+2. Navigeer op de menu balk naar **Beeld** > **Uitbreidingen**.
 
-3. Voer in het zoekvak **Spark &-Hive**in.
+3. Voer in het zoekvak **Spark & Hive** in.
 
-4. Selecteer **Spark & Hive-Hulpprogram ma's** uit de zoek resultaten en selecteer vervolgens **installeren**:
+4. Selecteer **Spark & Hive Tools** in de zoekresultaten en selecteer vervolgens **Installeren**:
 
-   ![De Spark-& Hive voor Visual Studio code python installeren](./media/hdinsight-for-vscode/install-hdInsight-plugin.png)
+   ![Spark & Hive voor Visual Studio Code Python installeren](./media/hdinsight-for-vscode/install-hdInsight-plugin.png)
 
-5. Selecteer **opnieuw laden** wanneer dit nodig is.
+5. Selecteer zo nodig **Opnieuw laden**.
 
 ## <a name="open-a-work-folder"></a>Een werkmap openen
 
-Voer de volgende stappen uit om een werkmap te openen en een bestand te maken in Visual Studio code:
+Voer de volgende stappen uit om een werkmap te openen en een bestand te maken in Visual Studio Code:
 
-1. Ga in de menu balk naar **bestand**  >  **openen map...**  >  **C:\HD\HDexample**en selecteer vervolgens de knop **map selecteren** . De map wordt aan de linkerkant weer gegeven in de weer gave van de **Verkenner** .
+1. Ga in de menu balk naar **bestand**  >  **openen map...**  >  **C:\HD\HDexample**en selecteer vervolgens de knop **map selecteren** . De map wordt weergegeven in de weergave **Explorer** aan de linkerkant.
 
 2. Selecteer in de **Verkenner** -weer gave de map **HDexample** en selecteer vervolgens het pictogram **nieuw bestand** naast de werkmap:
 
-   ![pictogram Visual Studio code nieuw bestand](./media/hdinsight-for-vscode/visual-studio-code-new-file.png)
+   ![pictogram Nieuw bestand in Visual Studio Code](./media/hdinsight-for-vscode/visual-studio-code-new-file.png)
 
 3. Geef het nieuwe bestand een naam met behulp van de `.hql` (Hive-query's) of de `.py` bestands extensie (Spark-script). In dit voor beeld wordt **HelloWorld. HQL**gebruikt.
 
@@ -73,11 +73,11 @@ Voor een nationale Cloud gebruiker voert u de volgende stappen uit om eerst de A
 
 Voordat u scripts kunt verzenden naar uw clusters vanuit Visual Studio code, kan de gebruiker zich aanmelden bij het Azure-abonnement of [een HDInsight-cluster koppelen](#link-a-cluster). Gebruik het Ambari gebruikers naam/wacht woord of de referenties die aan het domein zijn gekoppeld voor het ESP-cluster om verbinding te maken met uw HDInsight-cluster. Volg deze stappen om verbinding te maken met Azure:
 
-1. Navigeer in de menu balk naar het **weer geven**van het  >  **opdracht palet...** en voer **Azure: aanmelden in**:
+1. Ga op de menubalk naar **Beeld** > **Opdrachtpalet...** en voer **Azure: Aanmelden** in:
 
-    ![Component Hulpprogramma's van Spark & voor Visual Studio code login](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-login.png)
+    ![aanmelding bij Spark & Hive Tools voor Visual Studio Code](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-login.png)
 
-2. Volg de aanmeldings instructies om u aan te melden bij Azure. Nadat u verbinding hebt gemaakt, ziet u de naam van uw Azure-account op de status balk onder aan het venster Visual Studio code.  
+2. Volg de instructies om u aan te melden bij Azure. Nadat u verbinding hebt gemaakt, ziet u de naam van uw Azure-account op de statusbalk onder in het Visual Studio Code-venster.  
 
 ## <a name="link-a-cluster"></a>Een cluster koppelen
 
@@ -134,15 +134,15 @@ U kunt een normaal cluster koppelen met behulp van een door [Apache Ambari](http
 
 1. Open de **HDexample** -map die [eerder](#open-a-work-folder)werd beschreven, indien deze is gesloten.  
 
-2. Selecteer het bestand **HelloWorld. HQL** dat u [eerder](#open-a-work-folder)hebt gemaakt. Deze wordt geopend in de Script Editor.
+2. Selecteer het bestand **HelloWorld. HQL** dat u [eerder](#open-a-work-folder)hebt gemaakt. Dit wordt geopend in de scripteditor.
 
 3. Klik met de rechter muisknop op de script editor en selecteer **Spark/Hive: standaard cluster instellen**.  
 
 4. [Maak verbinding](#connect-to-an-azure-account) met uw Azure-account of koppel een cluster als u dit nog niet hebt gedaan.
 
-5. Selecteer een cluster als het standaard cluster voor het huidige script bestand. De **.VSCode\settings.jsin** het configuratie bestand worden automatisch door de hulpprogram ma's bijgewerkt:
+5. Selecteer een cluster als het standaard cluster voor het huidige script bestand. Het configuratiebestand **.VSCode\settings.json** wordt automatisch bijgewerkt:
 
-   ![Standaard cluster configuratie instellen](./media/hdinsight-for-vscode/set-default-cluster-configuration.png)
+   ![Standaardclusterconfiguratie instellen](./media/hdinsight-for-vscode/set-default-cluster-configuration.png)
 
 ## <a name="submit-interactive-hive-queries-and-hive-batch-scripts"></a>Interactieve Hive-query's en Hive batch scripts verzenden
 
@@ -150,7 +150,7 @@ Met Spark & Hive-Hulpprogram Ma's voor Visual Studio code kunt u interactieve Hi
 
 1. Open de **HDexample** -map die [eerder](#open-a-work-folder)werd beschreven, indien deze is gesloten.  
 
-2. Selecteer het bestand **HelloWorld. HQL** dat u [eerder](#open-a-work-folder)hebt gemaakt. Deze wordt geopend in de Script Editor.
+2. Selecteer het bestand **HelloWorld. HQL** dat u [eerder](#open-a-work-folder)hebt gemaakt. Dit wordt geopend in de scripteditor.
 
 3. Kopieer en plak de volgende code in het Hive-bestand en sla het op:
 
@@ -175,13 +175,13 @@ Met Spark & Hive-Hulpprogram Ma's voor Visual Studio code kunt u interactieve Hi
 Gebruikers kunnen PySpark interactief uitvoeren op de volgende manieren:
 
 ### <a name="using-the-pyspark-interactive-command-in-py-file"></a>De PySpark Interactive opdracht in PY File gebruiken
-Voer de volgende stappen uit met de interactieve opdracht PySpark om de query's te verzenden:
+Voer de volgende stappen uit om de query's te verzenden met de interactieve opdracht van PySpark:
 
 1. Open de **HDexample** -map die [eerder](#open-a-work-folder)werd beschreven, indien deze is gesloten.  
 
-2. Maak een nieuw **HelloWorld.py** -bestand door de [eerdere](#open-a-work-folder) stappen te volgen.
+2. Maak een nieuw **HelloWorld.py**-bestand en volg de [eerdere](#open-a-work-folder) stappen.
 
-3. Kopieer en plak de volgende code in het script bestand:
+3. Kopieer en plak de volgende code in het scriptbestand:
 
    ```python
    from operator import add
@@ -201,20 +201,20 @@ Voer de volgende stappen uit met de interactieve opdracht PySpark om de query's 
 
    ![Scherm afbeelding toont een optie om de installatie van PySpark over te slaan.](./media/hdinsight-for-vscode/install-the-pyspark-kernel.png)
 
-5. Als u het later opnieuw moet installeren, kunt u naar de instellingen van de **Bestands**  >  **voorkeur**navigeren  >  **Settings**en vervolgens **Hdinsight uitschakelen: Schakel overs Laan Pyspark-installatie** in de instellingen in. 
+5. Als u deze later wilt installeren, gaat u naar **Bestand** > **Voorkeur** > **Instellingen** en schakelt u **Hdinsight: Pyspark-installatie overslaan inschakelen** uit in de instellingen. 
     
     ![Scherm afbeelding toont de optie om de installatie overs Laan Pyspark in te scha kelen.](./media/hdinsight-for-vscode/enable-skip-pyspark-installation.png)
 
-6. Als de installatie is geslaagd in stap 4, wordt het bericht venster ' PySpark geïnstalleerd ' weer gegeven in de rechter benedenhoek van het venster. Klik op de knop **opnieuw laden** om het venster opnieuw te laden.
-    ![pyspark is geïnstalleerd](./media/hdinsight-for-vscode/pyspark-kernel-installed-successfully.png)
+6. Als de installatie is geslaagd in stap 4, wordt het bericht venster ' PySpark geïnstalleerd ' weer gegeven in de rechter benedenhoek van het venster. Klik op de knop **Opnieuw laden** om het venster opnieuw te laden.
+    ![pyspark correct geïnstalleerd](./media/hdinsight-for-vscode/pyspark-kernel-installed-successfully.png)
 
 7. [Maak verbinding](#connect-to-an-azure-account) met uw Azure-account of koppel een cluster als u dit nog niet hebt gedaan.
 
 8. Selecteer alle code, klik met de rechter muisknop op de script editor en selecteer **Spark: PySpark Interactive** om de query te verzenden. Of gebruik de sneltoets CTRL + ALT + I.
 
-    ![context menu van pyspark Interactive](./media/hdinsight-for-vscode/pyspark-interactive-right-click.png)
+    ![contextmenu van pyspark interactive](./media/hdinsight-for-vscode/pyspark-interactive-right-click.png)
 
-9. Selecteer het cluster als u geen standaard cluster hebt opgegeven. Na enkele ogen blikken worden de **python-interactieve** resultaten weer gegeven op een nieuw tabblad. Klik op PySpark om de kernel over te scha kelen naar **PySpark**en de code wordt uitgevoerd. Met de hulpprogram ma's kunt u ook een blok code verzenden in plaats van het hele script bestand met behulp van het snelmenu:
+9. Selecteer het cluster als u geen standaard cluster hebt opgegeven. Na enkele ogen blikken worden de **python-interactieve** resultaten weer gegeven op een nieuw tabblad. Klik op PySpark om de kernel over te scha kelen naar **PySpark**en de code wordt uitgevoerd. Met de hulpprogramma’s kunt u ook een codeblok verzenden in plaats van het hele scriptbestand, met behulp van het contextmenu:
 
    ![interactief pyspark Interactive python-venster](./media/hdinsight-for-vscode/pyspark-interactive-python-interactive-window.png)
 
@@ -227,22 +227,22 @@ Het hulp programma biedt ook ondersteuning voor de **Spark SQL** -query:
    ![resultaat van interactieve weer gave pyspark](./media/hdinsight-for-vscode/pyspark-ineteractive-select-result.png)
 
 
-### <a name="perform-interactive-query-in-py-file-using-a--comment"></a>Interactieve query's uitvoeren in een PY-bestand met behulp van een opmerking #%%
+### <a name="perform-interactive-query-in-py-file-using-a--comment"></a>Interactieve query's uitvoeren in een PY-bestand met behulp van een #%%-opmerking
 
 1. Voeg **#%%** vóór de py-code toe om de notitieblok ervaring op te halen.
 
     ![#%% toevoegen](./media/hdinsight-for-vscode/run-cell.png)
 
-2. Klik op de **cel run**. Na enkele ogen blikken worden de python-interactieve resultaten weer gegeven op een nieuw tabblad.
+2. Klik op **Cel uitvoeren**. Na enkele ogen blikken worden de python-interactieve resultaten weer gegeven op een nieuw tabblad.
 
-   ![resultaten van de rij uitvoeren](./media/hdinsight-for-vscode/run-cell-get-results.png)
+   ![celresultaten uitvoeren](./media/hdinsight-for-vscode/run-cell-get-results.png)
 
    > [!NOTE]  
    > Wanneer de kernel of de instellingen up-to-out zijn, gebruikt u het bestand **python: Select interpreter om de opdracht Jupyter server te starten** en start u de **IPython-kernel opnieuw**, waarna u de VSCode opnieuw kunt gebruiken.
 
-## <a name="leverage-ipynb-support-from-python-extension"></a>Gebruik IPYNB-ondersteuning van python-extensie
+## <a name="leverage-ipynb-support-from-python-extension"></a>IPYNB-ondersteuning van Python-extensie gebruiken
 
-1. U kunt een Jupyter Notebook maken met behulp van het opdracht palet of door een nieuw. ipynb-bestand te maken in uw werk ruimte. Zie [werken met Jupyter-notebooks in Visual Studio code](https://code.visualstudio.com/docs/python/jupyter-support) voor meer informatie.
+1. U kunt een Jupyter Notebook maken met het opdrachtpalet of door een nieuw IPYNB-bestand te maken in uw werkruimte. Zie [Werken met Jupyter Notebooks in Visual Studio Code](https://code.visualstudio.com/docs/python/jupyter-support) voor meer informatie
 
 2. Klik op PySpark om de kernel over te scha kelen naar **PySpark**, en klik vervolgens op **cel uitvoeren**, na enige tijd, het resultaat wordt weer gegeven.
 
@@ -251,15 +251,15 @@ Het hulp programma biedt ook ondersteuning voor de **Spark SQL** -query:
 
 > [!NOTE]
 >
->MS-python >= 2020.5.78807-versie wordt niet ondersteund voor deze uitbrei ding is een [bekend probleem](#known-issues).
+>De versie Ms-python >=2020.5.78807 wordt niet ondersteund voor deze uitbreiding. Dit is een [bekend probleem](#known-issues).
 
 ## <a name="submit-pyspark-batch-job"></a>Batch taak PySpark verzenden
 
 1. Open de **HDexample** -map die u [eerder](#open-a-work-folder)hebt besproken als deze is gesloten.  
 
-2. Maak een nieuw **BatchFile.py** -bestand door de [eerdere](#open-a-work-folder) stappen te volgen.
+2. Maak een nieuw **BatchFile.py**-bestand en volg de [eerdere](#open-a-work-folder) stappen.
 
-3. Kopieer en plak de volgende code in het script bestand:
+3. Kopieer en plak de volgende code in het scriptbestand:
 
     ```python
     from __future__ import print_function
@@ -288,9 +288,9 @@ Het hulp programma biedt ook ondersteuning voor de **Spark SQL** -query:
 
 6. Selecteer een cluster waar u uw PySpark-taak naar wilt verzenden:
 
-   ![Python-taak resultaat uitvoer verzenden](./media/hdinsight-for-vscode/submit-pythonjob-result.png)
+   ![Uitvoer van de Python-taakresultaten verzenden](./media/hdinsight-for-vscode/submit-pythonjob-result.png)
 
-Nadat u een python-taak hebt verzonden, worden de inzendings logboeken weer gegeven in het **uitvoer** venster van Visual Studio code. De url's van de Spark-gebruikers interface en de URL van de garen-interface worden ook weer gegeven. U kunt de URL in een webbrowser openen om de taak status bij te houden.
+Nadat u een python-taak hebt verzonden, worden de inzendings logboeken weer gegeven in het **uitvoer** venster van Visual Studio code. De url's van de Spark-gebruikers interface en de URL van de garen-interface worden ook weer gegeven. U kunt de URL openen in een webbrowser om de taakstatus bij te houden.
 
 ## <a name="integrate-with-hdinsight-identity-broker-hib"></a>Integreren met HDInsight Identity Broker (HIB)
 
@@ -331,7 +331,7 @@ Methode 2 een bestand verzenden en u ziet dat de `.vscode` map automatisch wordt
 
     **/Batches plaatsen** Aanvraag tekst
 
-    | name | description | type |
+    | naam | description | type |
     | --- | --- | --- |
     | file | Bestand met de toepassing die moet worden uitgevoerd | Pad (vereist) |
     | proxyUser | Gebruiker die moet worden geïmiteerd bij het uitvoeren van de taak | Tekenreeks |
@@ -347,12 +347,12 @@ Methode 2 een bestand verzenden en u ziet dat de `.vscode` map automatisch wordt
     | numExecutors | Aantal actieve uitvoerendeers dat voor deze sessie wordt gestart | Int |
     | archieven | Archief archieven die moeten worden gebruikt in deze sessie | Lijst met teken reeksen |
     | wachtrij | De naam van de wachtrij met GARENs die moet worden ingediend| Tekenreeks |
-    | name | De naam van deze sessie | Tekenreeks |
+    | naam | De naam van deze sessie | Tekenreeks |
     | belangen | Eigenschappen van Spark-configuratie | Toewijzing van sleutel = val |
 
     Antwoord tekst het gemaakte batch-object.
 
-    | name | description | type |
+    | naam | description | type |
     | --- | ---| --- |
     | Id | Sessie-id | Int |
     | appId | Toepassings-ID van deze sessie | Tekenreeks |
@@ -467,9 +467,9 @@ Een taak verzenden naar een HDInsight-cluster met behulp van Data Lake Storage G
 Ga in de menu balk naar het **View**  >  **opdracht palet**weer geven en voer **Azure in: Meld**u aan.
 
 ## <a name="known-issues"></a>Bekende problemen
-### <a name="ms-python-2020578807-version-is-not-supported-on-this-extention"></a>MS-python >= 2020.5.78807-versie wordt niet ondersteund voor deze uitbrei ding 
+### <a name="ms-python-2020578807-version-is-not-supported-on-this-extention"></a>De versie ms-python >=2020.5.78807 wordt niet ondersteund voor deze uitbreiding 
 
-Kan geen verbinding maken met Jupyter notebook. is een bekend probleem voor python-versie >= 2020.5.78807. Gebruikers wordt aangeraden de **[2020.4.76186](https://github.com/microsoft/vscode-python/releases/download/2020.4.76186/ms-python-release.vsix)** -versie van MS-python te gebruiken om dit probleem te voor komen.
+'Kan geen verbinding maken met Jupyter notebook.' is een bekend probleem voor Python-versie >=2020.5.78807. Gebruikers wordt aangeraden de versie **[2020.4.76186](https://github.com/microsoft/vscode-python/releases/download/2020.4.76186/ms-python-release.vsix)** van MS-python te gebruiken om dit probleem te voorkomen.
 
 ![bekende problemen](./media/hdinsight-for-vscode/known-issue.png)
 

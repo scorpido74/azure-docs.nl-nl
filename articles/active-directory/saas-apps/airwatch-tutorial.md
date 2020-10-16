@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 049066ffc5ce0aea2af956343dfa7ba97b6b5bb4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2baff2ac2af10caf857fd08b0d7e7df5030220e4
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542816"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758129"
 ---
 # <a name="tutorial-integrate-airwatch-with-azure-active-directory"></a>Zelfstudie: AirWatch integreren met Azure Active Directory
 
@@ -125,7 +125,7 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 1. Klik op het tabblad **Gebruiker**. Typ uw domeinnaam in het vak **Basis-DN** en klik op **Opslaan**.
 
-   ![Gebruiker](./media/airwatch-tutorial/ic791922.png "Gebruiker")
+   ![Schermopname waarin het tekstvak Base DN is gemarkeerd.](./media/airwatch-tutorial/ic791922.png "Gebruiker")
 
 1. Klik op het tabblad **Server**.
 
@@ -133,7 +133,7 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 1. Voer in de sectie **LDAP** de volgende stappen uit:
 
-    ![Uploaden](./media/airwatch-tutorial/ic791924.png "LDAP")   
+    ![Schermopname van de wijzigingen die u moet aanbrengen in de sectie LDAP.](./media/airwatch-tutorial/ic791924.png "LDAP")   
 
     a. Selecteer **Geen** als **Type adressenlijst**.
 
@@ -223,7 +223,7 @@ Om Azure AD-gebruikers zich te laten aanmelden bij AirWatch, moeten ze worden in
 
 3. Klik in het menu **Gebruikers** op **Lijstweergave**, en klik vervolgens op **Toevoegen > Gebruiker toevoegen**.
   
-   ![Gebruiker toevoegen](./media/airwatch-tutorial/ic791930.png "Gebruiker toevoegen")
+   ![Schermopname met de knoppen Toevoegen en Gebruiker toevoegen gemarkeerd.](./media/airwatch-tutorial/ic791930.png "Gebruiker toevoegen")
 
 4. Voer in het dialoogvenster **Gebruiker toevoegen/bewerken** de volgende stappen uit:
 

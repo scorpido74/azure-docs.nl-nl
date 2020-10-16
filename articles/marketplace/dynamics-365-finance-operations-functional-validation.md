@@ -8,10 +8,10 @@ author: emuench
 ms.author: navits
 ms.date: 07/17/2020
 ms.openlocfilehash: 10137e59e0ea06fa785fccc215c867b6d8c0cb76
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91651153"
 ---
 # <a name="appsource-dynamics-365-finance-and-operations-functional-validation"></a>AppSource Dynamics 365 Finance and Operations functionele validatie
@@ -60,7 +60,7 @@ Als u een laatste beoordelings oproep wilt plannen, neemt u contact op [appsourc
     | --- | --- |
     | Overzicht van pakket | [![Scherm opname van het venster pakket overzicht.](media/dynamics-365-finance-operations/package-overview-45.png)](media/dynamics-365-finance-operations/package-overview.png#lightbox) |
     | <ul><li>Oplossings fiatteurs</li></ul> | [![Scherm overzicht van package](media/dynamics-365-finance-operations/solution-approvers-45.png)](media/dynamics-365-finance-operations/solution-approvers.png#lightbox) |
-    | Pakket inhoud<ul><li>Model</li><li>Software-implementeerbaar pakket</li></ul> | [![Scherm inhoud van pakket 1](media/dynamics-365-finance-operations/package-contents-1-45.png)](media/dynamics-365-finance-operations/package-contents-1.png#lightbox) |
+    | Pakket inhoud<ul><li>Modelleren</li><li>Software-implementeerbaar pakket</li></ul> | [![Scherm inhoud van pakket 1](media/dynamics-365-finance-operations/package-contents-1-45.png)](media/dynamics-365-finance-operations/package-contents-1.png#lightbox) |
     | <ul><li>GER-configuratie</li><li>Back-up van data base</li></ul><br>Artefacten zijn niet vereist in de sectie **Ger-configuratie** . | [![Scherm inhoud van pakket twee](media/dynamics-365-finance-operations/package-contents-2-45.png)](media/dynamics-365-finance-operations/package-contents-2.png#lightbox) |
     | <ul><li>Power BI rapport model</li><li>BPM-artefact</li></ul><br>Artefacten zijn niet vereist in de sectie **Power bi** . | [![Scherm pakket inhoud drie](media/dynamics-365-finance-operations/package-contents-3-45.png)](media/dynamics-365-finance-operations/package-contents-3.png#lightbox) |
     | <ul><li>Gegevens pakket verwerken</li><li>Licentie overeenkomst en privacybeleid voor oplossingen</li></ul><br>De secties **Ger configuratie** en **Power bi rapport model** zijn optioneel voor financiering en operationele aanbiedingen. | [![Scherm inhoud van pakket vier](media/dynamics-365-finance-operations/package-contents-4-45.png)](media/dynamics-365-finance-operations/package-contents-4.png#lightbox) |

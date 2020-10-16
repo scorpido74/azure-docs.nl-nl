@@ -12,10 +12,10 @@ ms.date: 9/10/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4d64f7423d537958b6d3c388cb12f23bd2e30e36
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90087075"
 ---
 # <a name="secure-hybrid-access-secure-legacy-apps-with-azure-active-directory"></a>Beveiligde hybride toegang: beveiligde verouderde apps met Azure Active Directory
@@ -26,7 +26,7 @@ U kunt nu uw lokale en Cloud toepassingen voor verouderde verificatie beveiligen
 
 - [Uw bestaande controllers en netwerken voor de levering van toepassingen](#sha-through-networking-and-delivery-controllers)
 
-- [Virtueel particulier netwerk (VPN) en SDP-toepassingen (software-defined Perimeter)](#sha-through-vpn-and-sdp-applications)
+- [VPN-toepassingen (virtueel particulier netwerk) en SDP (Software-Defined-verbindingen)](#sha-through-vpn-and-sdp-applications)
 
 U kunt de ruimte overbruggen en uw beveiligings postuur versterken voor alle toepassingen met Azure AD-mogelijkheden, zoals [voorwaardelijke toegang tot](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) Azure AD en Azure AD [Identity Protection](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection).
 

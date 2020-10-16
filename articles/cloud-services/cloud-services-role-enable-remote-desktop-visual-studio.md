@@ -13,10 +13,10 @@ ms.workload: azure-vs
 ms.date: 03/06/2018
 ms.author: ghogen
 ms.openlocfilehash: f4622e44c795182ee68c617f335c9e1651d3adcc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80294391"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-visual-studio"></a>Verbinding met extern bureaublad inschakelen voor een rol in azure Cloud Services met behulp van Visual Studio
@@ -146,6 +146,6 @@ Nadat u uw Cloud service op Azure hebt gepubliceerd en Extern bureaublad hebt in
 
 3. Voer de gebruikers naam en het wacht woord in die u eerder hebt gemaakt. U bent nu aangemeld bij uw externe sessie.
 
-## <a name="additional-resources"></a>Extra resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 [Cloud Services configureren](cloud-services-how-to-configure-portal.md)

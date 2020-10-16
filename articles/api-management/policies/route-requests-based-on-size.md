@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 8cee2c13386a076f0321619754468cfc1e9fb31c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e59aece0be39bf671e3d1e62f1a0e4c2a42a1ec8
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75442435"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076467"
 ---
 # <a name="route-the-request-based-on-the-size-of-its-body"></a>De aanvraag op basis van de grootte van de hoofdtekst routeren
 
-In dit artikel wordt een voor beeld van een Azure API management-beleid weer gegeven waarin wordt getoond hoe u aanvragen routeert op basis van de grootte van hun eigen organisaties. Volg de stappen die worden beschreven in [een beleid instellen of bewerken](../set-edit-policies.md)om een beleids code in te stellen of te bewerken. Zie voor andere voor beelden [beleids voorbeelden](../policy-samples.md).
+In dit artikel wordt een voor beeld van een Azure API management-beleid weer gegeven waarin wordt getoond hoe u aanvragen routeert op basis van de grootte van hun eigen organisaties. Volg de stappen die worden beschreven in [een beleid instellen of bewerken](../set-edit-policies.md)om een beleids code in te stellen of te bewerken. Zie voor andere voor beelden [beleids voorbeelden](../policy-reference.md).
 
 ## <a name="policy"></a>Beleid
 
@@ -35,5 +35,4 @@ Plak de code in het **binnenkomende** blok.
 Meer informatie over APIM-beleid:
 
 + [Transformatiebeleid](../api-management-transformation-policies.md)
-+ [Voor beelden van beleid](../policy-samples.md)
-
++ [Voor beelden van beleid](../policy-reference.md)

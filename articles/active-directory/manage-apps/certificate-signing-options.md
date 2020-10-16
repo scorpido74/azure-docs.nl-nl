@@ -17,10 +17,10 @@ ms.reviewer: jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f2625698ae1d76dbae3ed8a8855b88dd6ac7bb17
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84763683"
 ---
 # <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Geavanceerde opties voor certificaat ondertekening in het SAML-token voor galerij-apps in Azure Active Directory
@@ -62,10 +62,10 @@ Als u de opties voor het ondertekenen van SAML-certificaten en het algoritme voo
 Wijzig vervolgens de opties voor certificaat ondertekening in het SAML-token voor die toepassing:
 
 1. Selecteer **eenmalige aanmelding**in het linkerdeel venster van de overzichts pagina van de toepassing.
-1. Als de pagina **eenmalige aanmelding met SAML-preview instellen** wordt weer gegeven, gaat u naar stap 5.
+1. Als de pagina **eén Sign-On met SAML-preview instellen** wordt weer gegeven, gaat u naar stap 5.
 1. Als de pagina **Eén aanmeldings methode selecteren** niet wordt weer gegeven, selecteert u **modus voor eenmalige aanmelding wijzigen** om die pagina weer te geven.
 1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML** indien beschikbaar. (Als **SAML** niet beschikbaar is, ondersteunt de toepassing geen SAML en kunt u de rest van deze procedure en dit artikel negeren.)
-1. Ga in de pagina **eenmalige aanmelding met SAML-preview instellen** naar de kop **SAML-handtekening certificaat** en selecteer het **bewerkings** pictogram (een potlood). De pagina **SAML-handtekening certificaat** wordt weer gegeven.
+1. Zoek in de pagina **eén Sign-On met SAML-preview instellen** op de kop **SAML-handtekening certificaat** en selecteer het **bewerkings** pictogram (een potlood). De pagina **SAML-handtekening certificaat** wordt weer gegeven.
 
    ![Voor beeld: pagina SAML-handtekening certificaat](./media/certificate-signing-options/saml-signing-page.png)
 

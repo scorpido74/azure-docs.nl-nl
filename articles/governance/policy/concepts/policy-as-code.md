@@ -4,10 +4,10 @@ description: Meer informatie over het ontwerpen van werk stromen om uw Azure Pol
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.openlocfilehash: 7fa8eb36283821527e16c1d97e326aa9dcde9dba
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91598211"
 ---
 # <a name="design-policy-as-code-workflows"></a>Beleid ontwerpen als codewerkstromen
@@ -142,7 +142,7 @@ De algemene werk stroom voor beleid als code is voor het ontwikkelen en implemen
 
 In deze gevallen moet er na de implementatie van de toepassing of infra structuur een test abonnement of resource groep worden uitgevoerd om de validatie van alle bestaande beleids regels en initiatieven te controleren. Hoewel ze kunnen worden geconfigureerd als **enforcementMode** die in een dergelijke omgeving worden _uitgeschakeld_ , is het nuttig om te weten te komen als een toepassing of infrastructuur implementatie in een vroeg stadium wordt geschonden door beleids definities. Deze beleids evaluatie moet daarom een stap zijn in deze werk stromen en er kunnen geen implementaties worden uitgevoerd die niet-compatibele resources maken.
 
-## <a name="review"></a>Controleren
+## <a name="review"></a>Beoordelen
 
 In dit artikel wordt de algemene werk stroom voor het beleid behandeld als code en ook de beleids evaluatie moet deel uitmaken van andere implementatie werk stromen. Deze werk stroom kan worden gebruikt in elke omgeving die script stappen en automatisering ondersteunt op basis van triggers.
 

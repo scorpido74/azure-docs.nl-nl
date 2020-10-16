@@ -2,24 +2,24 @@
 title: Ondersteuning voor containers
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/10/2020
-ms.author: aahi
-ms.openlocfilehash: 8f93e0ffe74ade79059fc845788faf36ab5b4f13
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.author: mbullwin
+ms.openlocfilehash: e896ac5f4625d36060d713d66fa885f8b24756f1
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "91025112"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014733"
 ---
 ## <a name="create-an-anomaly-detector-resource"></a>Een afwijkende detector-resource maken
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com)
 1. Klik [op **anomalie detectie** resource maken](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector)
-1. Voer alle vereiste instellingen in:
+1. Geef alle vereiste instellingen op:
 
     |Instelling|Waarde|
     |--|--|

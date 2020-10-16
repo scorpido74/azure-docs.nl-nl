@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 33f42b1d01bd0a39a268d9425a8406f976534634
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 24ee31b941d836d296c30927cfb9636f3023fa89
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007686"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019427"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Uitschalen van Azure Analysis Services
 
@@ -46,9 +46,9 @@ Wanneer u een volgende uitschaal bewerking uitvoert, bijvoorbeeld het aantal rep
 
 * Synchronisatie is ook toegestaan wanneer er geen replica's in de query groep zijn. Als u opschalen van nul naar een of meer replica's met nieuwe gegevens van een verwerkings bewerking op de primaire server, voert u de synchronisatie eerst uit zonder replica's in de query groep en vervolgens scale-out. Bij het synchroniseren van wordt geen redundante Hydration van de zojuist toegevoegde replica's voor komen.
 
-* Wanneer u een model database van de primaire server verwijdert, wordt deze niet automatisch verwijderd uit replica's in de query groep. U moet een synchronisatie bewerking uitvoeren met behulp van de Power shell [-opdracht Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) die het bestand/de s voor die data base verwijdert uit de gedeelde Blob-opslag locatie van de replica en de model database vervolgens op de replica's in de query groep verwijdert. Als u wilt bepalen of een model database bestaat voor replica's in de query pool, maar niet op de primaire server, moet u ervoor zorgen dat de **afzonderlijke verwerkings server van de query groep** is ingesteld op **Ja**. Gebruik vervolgens SSMS om verbinding te maken met de primaire server met behulp van de `:rw` kwalificatie om te controleren of de data base bestaat. Maak vervolgens verbinding met replica's in de query groep door verbinding te maken zonder de `:rw` kwalificatie om te zien of dezelfde data base ook bestaat. Als de data base bestaat in replica's in de query groep, maar niet op de primaire server, voert u een synchronisatie bewerking uit.   
+* Wanneer u een model database van de primaire server verwijdert, wordt deze niet automatisch verwijderd uit replica's in de query groep. U moet een synchronisatie bewerking uitvoeren met behulp van de Power shell [-opdracht Sync-AzAnalysisServicesInstance](/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) die het bestand/de s voor die data base verwijdert uit de gedeelde Blob-opslag locatie van de replica en de model database vervolgens op de replica's in de query groep verwijdert. Als u wilt bepalen of een model database bestaat voor replica's in de query pool, maar niet op de primaire server, moet u ervoor zorgen dat de **afzonderlijke verwerkings server van de query groep** is ingesteld op **Ja**. Gebruik vervolgens SSMS om verbinding te maken met de primaire server met behulp van de `:rw` kwalificatie om te controleren of de data base bestaat. Maak vervolgens verbinding met replica's in de query groep door verbinding te maken zonder de `:rw` kwalificatie om te zien of dezelfde data base ook bestaat. Als de data base bestaat in replica's in de query groep, maar niet op de primaire server, voert u een synchronisatie bewerking uit.   
 
-* Bij het wijzigen van de naam van een Data Base op de primaire server is er een extra stap die nodig is om ervoor te zorgen dat de data base correct is gesynchroniseerd met replica's. Nadat u de naam hebt gewijzigd, moet u een synchronisatie uitvoeren met behulp van de opdracht [Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) en de `-Database` para meter met de oude database naam opgeven. Deze synchronisatie verwijdert de data base en bestanden met de oude naam uit een of meer replica's. Voer vervolgens een andere synchronisatie uit `-Database` met de para meter met de naam van de nieuwe data base. Bij de tweede synchronisatie wordt de data base met de nieuwe naam gekopieerd naar de tweede set bestanden en worden eventuele replica's gehydrateerd. Deze synchronisaties kunnen niet worden uitgevoerd met behulp van de opdracht model synchroniseren in de portal.
+* Bij het wijzigen van de naam van een Data Base op de primaire server is er een extra stap die nodig is om ervoor te zorgen dat de data base correct is gesynchroniseerd met replica's. Nadat u de naam hebt gewijzigd, moet u een synchronisatie uitvoeren met behulp van de opdracht [Sync-AzAnalysisServicesInstance](/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) en de `-Database` para meter met de oude database naam opgeven. Deze synchronisatie verwijdert de data base en bestanden met de oude naam uit een of meer replica's. Voer vervolgens een andere synchronisatie uit `-Database` met de para meter met de naam van de nieuwe data base. Bij de tweede synchronisatie wordt de data base met de nieuwe naam gekopieerd naar de tweede set bestanden en worden eventuele replica's gehydrateerd. Deze synchronisaties kunnen niet worden uitgevoerd met behulp van de opdracht model synchroniseren in de portal.
 
 ### <a name="synchronization-mode"></a>Synchronisatie modus
 
@@ -150,11 +150,11 @@ Retour status codes:
 
 Voordat u Power shell gebruikt, [moet u de nieuwste Azure PowerShell-module installeren of bijwerken](/powershell/azure/install-az-ps). 
 
-Als u synchronisatie wilt uitvoeren, gebruikt u [Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance).
+Als u synchronisatie wilt uitvoeren, gebruikt u [Sync-AzAnalysisServicesInstance](/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance).
 
-Als u het aantal query replica's wilt instellen, gebruikt u [set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver). Geef de optionele `-ReadonlyReplicaCount` para meter op.
+Als u het aantal query replica's wilt instellen, gebruikt u [set-AzAnalysisServicesServer](/powershell/module/az.analysisservices/set-azanalysisservicesserver). Geef de optionele `-ReadonlyReplicaCount` para meter op.
 
-Als u de verwerkings server van de query groep wilt scheiden, gebruikt u [set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver). Geef de optionele `-DefaultConnectionMode` para meter op die moet worden gebruikt `Readonly` .
+Als u de verwerkings server van de query groep wilt scheiden, gebruikt u [set-AzAnalysisServicesServer](/powershell/module/az.analysisservices/set-azanalysisservicesserver). Geef de optionele `-DefaultConnectionMode` para meter op die moet worden gebruikt `Readonly` .
 
 Zie [een Service-Principal gebruiken met de module AZ. AnalysisServices](analysis-services-service-principal.md#azmodule)voor meer informatie.
 
@@ -183,4 +183,4 @@ U kunt de prijs categorie wijzigen op een server met meerdere replica's. Dezelfd
 ## <a name="related-information"></a>Gerelateerde informatie
 
 [Metrische Server gegevens bewaken](analysis-services-monitor.md)   
-[Azure Analysis Services beheren](analysis-services-manage.md) 
+[Azure Analysis Services beheren](analysis-services-manage.md)

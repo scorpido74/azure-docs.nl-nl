@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: c78132ca85b87486e2fa8f41da6ae430c6eabba0
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 6a5df4f6a20a9f7061f56dac507a474f7bda6100
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767655"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91992885"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Toepassings wijzigings analyse (preview) gebruiken in Azure Monitor
 
@@ -124,12 +124,12 @@ Ga naar het hulp programma problemen vaststellen en oplossen voor een virtuele m
 ![Analyse wijzigen in hulpprogram ma's voor probleem oplossing](./media/change-analysis/analyze-recent-changes.png)
 
 ### <a name="activity-log-change-history"></a>Wijzigings geschiedenis van activiteiten logboek
-De functie [wijzigings geschiedenis weer geven](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log#view-change-history) in het activiteiten logboek roept de back-end van de analyse service van de toepassings wijziging aan om wijzigingen aan te brengen die aan een bewerking **Wijzigings geschiedenis** die wordt gebruikt om de [Azure-resource grafiek](https://docs.microsoft.com/azure/governance/resource-graph/overview) rechtstreeks aan te roepen, maar de back-end heeft gewisseld om de analyse van toepassings wijzigingen aan te roepen, zodat wijzigingen die zijn geretourneerd, wijzigingen aanbrengen in het resource niveau van [Azure resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview), resource-eigenschappen van [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)en in-Guest wijzigingen van PaaS Services, zoals app Services Web-app. Om ervoor te zorgen dat de service voor het wijzigen van de toepassings wijziging kan scannen op wijzigingen in de abonnementen van gebruikers, moet een resource provider worden geregistreerd. De eerste keer dat u het tabblad **wijzigings overzicht** opgeeft, start het hulp programma automatisch om de resource provider **micro soft. ChangeAnalysis** te registreren. Na de registratie zijn wijzigingen van de **Azure-resource grafiek** onmiddellijk beschikbaar en de afgelopen veer tien dagen. Wijzigingen van andere bronnen zijn na ongeveer 4 uur beschikbaar nadat het abonnement op de onboarding is uitgevoerd.
+De functie [wijzigings geschiedenis weer geven](../platform/activity-log.md#view-change-history) in het activiteiten logboek roept de back-end van de analyse service van de toepassings wijziging aan om wijzigingen aan te brengen die aan een bewerking **Wijzigings geschiedenis** die wordt gebruikt om de [Azure-resource grafiek](../../governance/resource-graph/overview.md) rechtstreeks aan te roepen, maar de back-end heeft gewisseld om de analyse van toepassings wijzigingen aan te roepen, zodat wijzigingen die zijn geretourneerd, wijzigingen aanbrengen in het resource niveau van [Azure resource Graph](../../governance/resource-graph/overview.md), resource-eigenschappen van [Azure Resource Manager](../../azure-resource-manager/management/overview.md)en in-Guest wijzigingen van PaaS Services, zoals app Services Web-app. Om ervoor te zorgen dat de service voor het wijzigen van de toepassings wijziging kan scannen op wijzigingen in de abonnementen van gebruikers, moet een resource provider worden geregistreerd. De eerste keer dat u het tabblad **wijzigings overzicht** opgeeft, start het hulp programma automatisch om de resource provider **micro soft. ChangeAnalysis** te registreren. Na de registratie zijn wijzigingen van de **Azure-resource grafiek** onmiddellijk beschikbaar en de afgelopen veer tien dagen. Wijzigingen van andere bronnen zijn na ongeveer 4 uur beschikbaar nadat het abonnement op de onboarding is uitgevoerd.
 
 ![Integratie van wijzigings geschiedenis van activiteiten logboek](./media/change-analysis/activity-log-change-history.png)
 
 ### <a name="vm-insights-integration"></a>Integratie van VM Insights
-Gebruikers die [VM Insights](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-overview) hebben ingeschakeld, kunnen weer geven wat er is gewijzigd in hun virtuele machines, waardoor er pieken kunnen ontstaan in een metrieke grafiek, zoals CPU of geheugen en zich afvraagt wat de oorzaak van het probleem is. Wijzigings gegevens worden geïntegreerd in de navigatie balk van de VM Insights-zijde. De gebruiker kan zien of er wijzigingen zijn aangebracht in de virtuele machine en op **wijzigingen onderzoeken** klikken om wijzigings details weer te geven in de zelfstandige gebruikers interface voor het wijzigen van de toepassing.
+Gebruikers die [VM Insights](../insights/vminsights-overview.md) hebben ingeschakeld, kunnen weer geven wat er is gewijzigd in hun virtuele machines, waardoor er pieken kunnen ontstaan in een metrieke grafiek, zoals CPU of geheugen en zich afvraagt wat de oorzaak van het probleem is. Wijzigings gegevens worden geïntegreerd in de navigatie balk van de VM Insights-zijde. De gebruiker kan zien of er wijzigingen zijn aangebracht in de virtuele machine en op **wijzigingen onderzoeken** klikken om wijzigings details weer te geven in de zelfstandige gebruikers interface voor het wijzigen van de toepassing.
 
 [![Integratie van VM Insights](./media/change-analysis/vm-insights.png)](./media/change-analysis/vm-insights.png#lightbox)
 

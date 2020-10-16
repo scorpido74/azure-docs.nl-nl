@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: cc09912bb0c9ab553d180ff5cc06fc52c4c5cc0c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91261041"
 ---
 # <a name="service-bus-topics-output-from-azure-stream-analytics"></a>Service Bus onderwerpen worden uitgevoerd vanuit Azure Stream Analytics
@@ -61,7 +61,7 @@ In het volgende voor beeld worden de velden `DeviceId` en `DeviceStatus` worden 
 
 De volgende afbeelding heeft de verwachte uitvoer bericht eigenschappen die in EventHub zijn geïnspecteerd met behulp van [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer).
 
-:::image type="content" source="media/service-bus-topics-output/custom-properties.png" alt-text="Aangepaste eigenschappen van gebeurtenis":::
+:::image type="content" source="media/service-bus-topics-output/custom-properties.png" alt-text="Eigenschappen kolommen":::
 
 ## <a name="system-properties"></a>Systeemeigenschappen
 

@@ -4,10 +4,10 @@ description: Dit artikel bevat informatie over het verifiëren van een toepassin
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: b12f2f294a66159a7035240c361ab93f9f84718e
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88064822"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>Een toepassing met Azure Active Directory voor toegang tot Azure Service Bus entiteiten verifiëren en autoriseren
@@ -152,7 +152,7 @@ Wanneer u de console toepassing uitvoert, wordt u gevraagd een scenario te selec
 ## <a name="next-steps"></a>Volgende stappen
 - Zie [Wat is Azure-op rollen gebaseerd toegangs beheer (Azure RBAC)](../role-based-access-control/overview.md)? voor meer informatie over Azure RBAC.
 - Zie de volgende artikelen voor meer informatie over het toewijzen en beheren van Azure-roltoewijzingen met Azure PowerShell, Azure CLI of de REST API:
-    - [Azure-roltoewijzingen toevoegen of verwijderen met Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)  
+    - [Azure-roltoewijzingen toevoegen of verwijderen met behulp van Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)  
     - [Azure-roltoewijzingen toevoegen of verwijderen met behulp van Azure CLI](../role-based-access-control/role-assignments-cli.md)
     - [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de REST API](../role-based-access-control/role-assignments-rest.md)
     - [Azure-roltoewijzingen toevoegen of verwijderen met Azure Resource Manager sjablonen](../role-based-access-control/role-assignments-template.md)

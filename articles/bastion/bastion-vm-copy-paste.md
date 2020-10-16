@@ -2,21 +2,21 @@
 title: 'Kopiëren en plakken van en naar een virtuele machine: Azure Bastion'
 description: In dit artikel leest u hoe kopiëren en plakken naar en van een Azure-VM met behulp van Bastion.
 services: bastion
-author: charwen
+author: cherylmc
 ms.service: bastion
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.author: charwen
-ms.openlocfilehash: 6835c5e1ecbf0fc99a14754d17bb6e6380eda6c8
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.author: cherylmc
+ms.openlocfilehash: 50f7906992aa19daa205a30f71ce21456bafe558
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91445355"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079153"
 ---
 # <a name="copy-and-paste-to-a-virtual-machine-azure-bastion"></a>Kopiëren en plakken naar een virtuele machine: Azure Bastion
 
-Dit artikel helpt u bij het kopiëren en plakken van tekst naar en van virtuele machines wanneer u Azure Bastion gebruikt. Voordat u met een virtuele machine gaat werken, moet u ervoor zorgen dat u de stappen hebt gevolgd om [een bastion-host te maken](bastion-create-host-portal.md). Maak vervolgens verbinding met de virtuele machine die u wilt gebruiken met [RDP](bastion-connect-vm-rdp.md) of [SSH](bastion-connect-vm-ssh.md).
+Dit artikel helpt u bij het kopiëren en plakken van tekst naar en van virtuele machines wanneer u Azure Bastion gebruikt. Voordat u met een virtuele machine gaat werken, moet u ervoor zorgen dat u de stappen hebt gevolgd om [een bastion-host te maken](./tutorial-create-host-portal.md). Maak vervolgens verbinding met de virtuele machine die u wilt gebruiken met [RDP](bastion-connect-vm-rdp.md) of [SSH](bastion-connect-vm-ssh.md).
 
 Voor browsers die ondersteuning bieden voor de geavanceerde klembord-API-toegang, kunt u tekst kopiëren en plakken tussen uw lokale apparaat en de externe sessie op dezelfde manier als u kopieert en plakt tussen toepassingen op het lokale apparaat. Voor andere browsers kunt u het palet toegang tot het Bastion klem bord gebruiken.
 

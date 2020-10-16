@@ -7,10 +7,10 @@ author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
 ms.openlocfilehash: 45a10ddce165626bfbadb0ba0b3d68b81709c3bb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87326134"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Veelgestelde vragen over Netwerkprestatiemeter oplossingen
@@ -238,7 +238,7 @@ Dit kan gebeuren als de host-firewall of de tussenliggende firewall (netwerk fir
 * Voer nu de opdracht uit vanaf het doel knooppunt naar het IP-adres van het bron knooppunt.
 
 
-### <a name="there-is-loss-from-node-a-to-b-but-not-from-node-b-to-a-why"></a>Er is geen verlies van knoop punt A naar B, maar niet van knoop punt B naar A. Waarom?
+### <a name="there-is-loss-from-node-a-to-b-but-not-from-node-b-to-a-why"></a>Er is geen verlies van knoop punt A naar B, maar niet van knoop punt B naar A. waarom?
 Aangezien de netwerk paden tussen A en B kunnen verschillen van de netwerk paden tussen B en A, kunnen verschillende waarden voor verlies en latentie worden waargenomen.
 
 ### <a name="why-are-all-my-expressroute-circuits-and-peering-connections-not-being-discovered"></a>Waarom worden al mijn ExpressRoute-circuits en peering-verbindingen niet gedetecteerd?

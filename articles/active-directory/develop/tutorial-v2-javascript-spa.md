@@ -1,7 +1,7 @@
 ---
-title: Zelfstudie voor JavaScript-apps met één pagina | Azure
+title: 'Zelfstudie: Een Javascript-app met één pagina maken die gebruikmaakt van het Microsoft-identiteitsplatform voor verificatie | Azure'
 titleSuffix: Microsoft identity platform
-description: In deze zelfstudie leert u hoe in JavaScript-apps met één pagina (SPA's) een API kan worden aangeroepen waarvoor toegangstokens zijn vereist die zijn uitgegeven door het Microsoft Identity Platform.
+description: In deze zelfstudie bouwt u een JavaScript-app met één pagina (SPA) die gebruikmaakt van het Microsoft-identiteitsplatform voor het aanmelden van gebruikers. U krijgt een toegangstoken waarmee u de Microsoft Graph API namens hen kunt aanroepen.
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -12,52 +12,48 @@ ms.workload: identity
 ms.date: 08/06/2020
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: 728c0b4dadfa23b2d52e773928a3f78df27068b6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 027305d953a24de17e62aa74b33b72494b03e652
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91256821"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825909"
 ---
-# <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Gebruikers aanmelden en de Microsoft Graph API aanroepen vanuit een JavaScript-toepassing met één pagina (SPA)
+# <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Zelfstudie: Gebruikers aanmelden en de Microsoft Graph API aanroepen vanuit een JavaScript-toepassing met één pagina (SPA)
 
-In deze gids leert u hoe u het volgende kunt doen met een JavaScript-toepassing met één pagina (SPA):
-- Werk- en schoolaccounts en persoonlijke accounts aanmelden
-- Een toegangstoken verkrijgen
-- De Microsoft Graph API of andere API's aanroepen die toegangstokens nodig hebben van het *Microsoft identity platform-eindpunt*
+In deze zelfstudie bouwt u een app met één pagina (SPA) in JavaScript waarmee gebruikers kunnen worden aangemeld met persoonlijke Microsoft-accounts of werk- en schoolaccounts. Vervolgens krijgt u een toegangstoken voor het aanroepen van de Microsoft Graph API.
+
+In deze zelfstudie:
+
+> [!div class="checklist"]
+> * Een JavaScript-project maken met `npm`
+> * De app registreren in Azure Portal
+> * Code toevoegen voor de ondersteuning van het aan- en afmelden van gebruikers
+> * Code toevoegen om de Microsoft Graph API aan te roepen
+> * De app testen
 
 >[!TIP]
 > In deze zelfstudie wordt gebruikgemaakt van MSAL.js v1.x. Dit is beperkt tot het gebruik van de impliciete toekenningsstroom voor toepassingen met één pagina. Het is raadzaam in plaats daarvan voor alle nieuwe toepassingen [MSAL.js 2.x en de autorisatiecodestroom met PKCE- en CORS-ondersteuning](tutorial-v2-javascript-auth-code.md) te gebruiken.
+
+## <a name="prerequisites"></a>Vereisten
+
+* [Node.js-](https://nodejs.org/en/download/) voor het uitvoeren van een lokale webserver.
+* [Visual Studio Code](https://code.visualstudio.com/download) of een andere editor voor het wijzigen van projectbestanden.
+* Een moderne webbrowser. **Internet Explorer** wordt **niet ondersteund** door de app die u in deze zelfstudie hebt gemaakt. Dit komt door het gebruik van [ES6](http://www.ecma-international.org/ecma-262/6.0/)-conventies van de app.
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Hoe de voorbeeld-app werkt die wordt gegenereerd in deze gids
 
 ![Er wordt getoond hoe de voorbeeld-app werkt die wordt gegenereerd in deze zelfstudie](media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro.svg)
 
-### <a name="more-information"></a>Meer informatie
+Met de voorbeeldtoepassing die in deze gids wordt gemaakt, kan een JavaScript-toepassing met één pagina een query uitvoeren bij de Microsoft Graph API of een web-API die tokens accepteert van het Microsoft-identity platform-eindpunt. Wanneer in dit scenario een gebruiker zich aanmeldt, wordt er een toegangstoken gevraagd en toegevoegd aan HTTP-aanvragen via de autorisatie-header. Dit token wordt gebruikt om het profiel en de e-mailberichten van de gebruiker op te halen via **MS Graph API**.
 
-Met de voorbeeldtoepassing die in deze gids wordt gemaakt, kan een JavaScript-toepassing met één pagina een query uitvoeren bij de Microsoft Graph API of een web-API die tokens accepteert van het Microsoft-identity platform-eindpunt. Wanneer in dit scenario een gebruiker zich aanmeldt, wordt er een toegangstoken gevraagd en toegevoegd aan HTTP-aanvragen via de autorisatie-header. Dit token wordt gebruikt om het profiel en de e-mailberichten van de gebruiker op te halen via **MS Graph API**. Het ophalen en vernieuwen van tokens worden verwerkt door de **Microsoft Authentication Library voor JavaScript (MSAL.js)** .
-
-### <a name="libraries"></a>Bibliotheken
-
-Deze gids maakt gebruik van de volgende bibliotheek:
-
-|Bibliotheek|Beschrijving|
-|---|---|
-|[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Microsoft Authentication Library voor JavaScript|
+Het ophalen en vernieuwen van tokens worden verwerkt door de [Microsoft Authentication Library voor JavaScript (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js) .
 
 ## <a name="set-up-your-web-server-or-project"></a>Uw webserver of project instellen
 
 > Wilt u in plaats daarvan het project van dit voorbeeld downloaden? [Download de projectbestanden](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip).
 >
 > Ga verder met de [configuratiestap](#register-your-application) om het codevoorbeeld te configureren voordat u het uitvoert.
-
-## <a name="prerequisites"></a>Vereisten
-
-* Als u deze zelfstudie wilt uitvoeren, hebt u een lokale webserver nodig, zoals [Node.js](https://nodejs.org/en/download/), [.NET Core](https://www.microsoft.com/net/core) of IIS Express-integratie met [Visual Studio 2017](https://www.visualstudio.com/downloads/).
-
-* De instructies in deze gids zijn gebaseerd op een webserver die is gebouwd in Node.js. U kunt het beste [Visual Studio Code](https://code.visualstudio.com/download) gebruiken als uw Integrated Development Environment (IDE).
-
-* Een moderne webbrowser. In dit JavaScript-voorbeeld worden [ES6](http://www.ecma-international.org/ecma-262/6.0/)-conventies gebruikt en daarom wordt **Internet Explorer** **niet** ondersteund.
 
 ## <a name="create-your-project"></a>Uw project maken
 
@@ -76,7 +72,7 @@ Zorg ervoor dat u [Node.js](https://nodejs.org/en/download/) hebt geïnstalleerd
    npm install morgan --save
    ```
 
-1. Maak nu een JS-bestand met de naam `index.js` en voeg de volgende code toe:
+1. Maak nu een JS-bestand met de naam `server.js` en voeg de volgende code toe:
 
    ```JavaScript
    const express = require('express');
@@ -283,7 +279,7 @@ Voordat u verdergaat met de verificatie, registreert u uw toepassing op **Azure 
 
 > ### <a name="set-a-redirect-url-for-nodejs"></a>Een omleidings-URL instellen voor Node.js
 >
-> Voor Node.js kunt u de webserverpoort instellen in het bestand *index.js*. In deze zelfstudie wordt poort 3000 gebruikt, maar u kunt elke andere beschikbare poort gebruiken.
+> Voor Node.js kunt u de webserverpoort instellen in het bestand *server.js*. In deze zelfstudie wordt poort 3000 gebruikt, maar u kunt elke andere beschikbare poort gebruiken.
 >
 > Als u een omleidings-URL wilt instellen in de registratiegegevens van de toepassing, gaat u terug naar het deelvenster **Toepassingsregistratie** en voert u een van de volgende handelingen uit:
 >
@@ -486,8 +482,6 @@ In de voorbeeldtoepassing die aan de hand van deze gids wordt gemaakt, wordt de 
    ```
 1. Voer in uw browser **http://localhost:3000** of **http://localhost:{port}** in, waarbij *poort* de poort is waarnaar uw webserver luistert. U moet de inhoud van uw bestand *index.html* en de knop **Aanmelden** zien.
 
-## <a name="test-your-application"></a>Uw toepassing testen
-
 Nadat de browser het bestand *index.html* heeft geladen, selecteert u **Aanmelden**. U wordt gevraagd om u aan te melden met het Microsoft-identiteitsplatform-eindpunt:
 
 ![Het aanmeldvenster voor het account voor de JavaScript-toepassing met één pagina](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspascreenshot1.png)
@@ -512,3 +506,11 @@ De Microsoft Graph API vereist het bereik *user.read* om het profiel van een geb
 > De gebruiker wordt mogelijk gevraagd om aanvullende machtigingen te geven naarmate u het aantal bereiken verhoogt.
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
+## <a name="next-steps"></a>Volgende stappen
+
+Lees meer over het ontwikkelen van toepassingen met enkele pagina (SPA) op het Microsoft-identiteitsplatform in onze reeks met meerdere scenario's.
+
+> [!div class="nextstepaction"]
+> [Scenario: Toepassing met één pagina](scenario-spa-overview.md)
+

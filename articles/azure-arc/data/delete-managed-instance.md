@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: e531349e8f404380d9f0601caa3b66557c297062
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936830"
 ---
 # <a name="delete-azure-arc-enabled-sql-managed-instance"></a>Door Azure Arc ingeschakeld SQL Managed instance verwijderen
@@ -52,7 +52,7 @@ Deleted demo-mi from namespace arc
 
 ## <a name="reclaim-the-kubernetes-persistent-volume-claims-pvcs"></a>De Kubernetes permanente volume claims (Pvc's) opnieuw claimen
 
-Als u een SQL Managed instance verwijdert, worden de bijbehorende [pvc's](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)niet verwijderd. Dit is standaard. De bedoeling is de gebruiker te helpen bij het openen van de database bestanden voor het geval het verwijderen van de instantie onbedoeld is. Het verwijderen van Pvc's is niet verplicht. Het wordt echter wel aanbevolen. Als u deze Pvc's niet vrijmaakt, wordt er uiteindelijk een fout opgetreden terwijl uw Kubernetes-cluster geen schijf ruimte meer heeft. Voer de volgende stappen uit om de Pvc's vrij te maken:
+Als u een SQL Managed instance verwijdert, worden de bijbehorende [pvc's](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)niet verwijderd. Dit is standaard. De bedoeling is de gebruiker te helpen bij het openen van de databasebestanden voor het geval het verwijderen van het exemplaar onbedoeld is. Het verwijderen van PVC's is niet verplicht. Het wordt echter wel aanbevolen. Als u deze Pvc's niet vrijmaakt, wordt er uiteindelijk een fout opgetreden terwijl uw Kubernetes-cluster geen schijf ruimte meer heeft. Voer de volgende stappen uit om de PVC's vrij te maken:
 
 ### <a name="1-list-the-pvcs-for-the-server-group-you-deleted"></a>1. de Pvc's weer geven voor de Server groep die u hebt verwijderd
 Voer de volgende opdracht uit om de Pvc's weer te geven:
@@ -102,6 +102,6 @@ persistentvolumeclaim "logs-demo-mi-0" deleted
 
 Meer informatie over [functies en mogelijkheden van SQL Managed instance met Azure Arc](managed-instance-features.md)
 
-[Begin met het maken van een gegevens controller](create-data-controller.md)
+[Begin door een gegevenscontroller aan te maken](create-data-controller.md)
 
-Hebt u al een gegevens controller gemaakt? [Een SQL Managed Instance met Azure Arc maken](create-sql-managed-instance.md)
+Hebt u al een gegevenscontroller aangemaakt? [Een SQL Managed Instance met Azure Arc maken](create-sql-managed-instance.md)

@@ -9,20 +9,20 @@ ms.date: 12/27/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: cd7b889560acbe484581f065b641375c222f7ca8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81536477"
 ---
-Standaard-bestands shares kunnen Maxi maal 5 TiB omvatten, hoewel de limiet voor delen kan worden verhoogd tot 100 TiB. Hiervoor moet de functie voor *grote bestands shares* worden ingeschakeld op het niveau van het opslag account. Premium Storage-accounts (*FileStorage* -opslag accounts) beschikken niet over de functie voor het delen van grote bestanden omdat alle Premium-bestands shares al zijn ingeschakeld voor het inrichten van maxi maal 100 TIB capaciteit.
+Standaard kunnen standaardbestandsshares maximaal 5 TiB omvatten, hoewel het gegevenslimiet kan worden uitgebreid tot 100 TiB. Als u dit wilt doen, moet de functie *grote bestandsshare* worden ingeschakeld op het niveau van het opslagaccount. Premium opslagaccounts (*FileStorage*-opslagaccounts) hebben de waarschuwing voor de grote bestandsshare niet, omdat premium bestandsshares al kunnen worden ingericht tot de volledige capaciteit van 100 TiB.
 
-U kunt grote bestands shares alleen inschakelen op lokaal redundante of zone redundante standaard opslag accounts. Wanneer u de functie vlag voor grote bestands shares hebt ingeschakeld, kunt u het redundantie niveau niet wijzigen in geografisch redundante opslag of geo-zone-redundantie.
+U kunt alleen grote bestandsshares inschakelen op lokaal redundante of zoneredundante standaardopslagaccounts. Wanneer u de waarschuwing voor een grote bestandsshare hebt ingeschakeld, kunt u het redundantieniveau niet veranderen in georedundante of geozoneredundante opslag.
 
-Als u grote bestands shares wilt inschakelen voor een bestaand opslag account, gaat u naar de **configuratie** weergave van de inhouds opgave van het opslag account en schakelt u de schakel optie voor grote bestands shares op ingeschakeld:
+Als u grote bestandsshares wilt inschakelen in een bestaand opslagaccount, gaat u naar de weergave **Configuratie** in de inhoudsopgave van het opslagaccount en schakelt u de schakelaar voor grote bestandsshares in op ingeschakeld:
 
-![Een scherm opname van de schakel optie grote bestands shares beschikbaar maken in de Azure Portal](media/storage-files-tiers-enable-large-shares/enable-lfs-0.png)
+![Schermopname van het inschakelen van de schakelaar voor grote bestandsshares in de Azure Portal](media/storage-files-tiers-enable-large-shares/enable-lfs-0.png)
 
-U kunt ook 100 TiB-bestands shares inschakelen via de [`Set-AzStorageAccount`](https://docs.microsoft.com/powershell/module/az.storage/set-azstorageaccount) Power shell-cmdlet en de [`az storage account update`](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-update) Azure cli-opdracht. Zie [grote bestands shares inschakelen en maken](../articles/storage/files/storage-files-how-to-create-large-file-share.md)voor gedetailleerde instructies voor het inschakelen van grote bestanden shares.
+U kunt ook bestandsshares van 100 TiB inschakelen via de PowerShell-cmdlet [`Set-AzStorageAccount`](https://docs.microsoft.com/powershell/module/az.storage/set-azstorageaccount) en de Azure CLI-opdracht [`az storage account update`](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-update). Raadpleeg [grote bestandsshares inschakelen en maken](../articles/storage/files/storage-files-how-to-create-large-file-share.md) voor gedetailleerde instructies over het inschakelen van grote bestandsshares.
 
-Zie [een Azure-bestands share maken](../articles/storage/files/storage-how-to-create-file-share.md)voor meer informatie over het maken van bestands shares voor nieuwe opslag accounts.
+Raadpleeg [een Azure-bestandsshare maken](../articles/storage/files/storage-how-to-create-file-share.md) voor meer informatie over hoe u bestandsshares in nieuwe opslagaccounts maakt.

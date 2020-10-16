@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 47ffaef940b3fe2ffe033405a712195c5c74d774
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 85b355981a50804f1c43441efa38c5db59967c1d
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520377"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760628"
 ---
 # <a name="tutorial-integrate-civic-platform-with-azure-active-directory"></a>Zelfstudie: Civic Platform integreren met Azure Active Directory
 
@@ -91,7 +91,7 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 1. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op de kopieerknop om de **URL voor federatieve metagegevens van de app** te kopiëren en slaat u deze op uw computer op.
 
-    ![De link om het certificaat te downloaden](common/copy-metadataurl.png)
+    ![Schermopname die de pagina SAML-handtekeningcertificaat toont waar u URL voor federatieve metagegevens van de app kunt kopiëren.](common/copy-metadataurl.png)
 
 1. Navigeer naar **Azure Active Directory** > **App-registraties** in Azure AD en selecteer uw toepassing.
 
@@ -120,21 +120,21 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 1. Klik op **Standaard keuzes**.
 
-    ![De link om het certificaat te downloaden](media/civic-platform-tutorial/standard-choices.png)
+    ![Schermopname die de Atlassian Cloud-site toont met standaardopties die worden vermeld onder Administrator Tools.](media/civic-platform-tutorial/standard-choices.png)
 
 1. Maak een standaard keuze **ssoconfig**.
 
 1. Zoek naar **ssoconfig** en verzend deze.
 
-    ![De link om het certificaat te downloaden](media/civic-platform-tutorial/sso-config.png)
+    ![Schermopname die Standard Choices Search toont met de naam van de configuratie voor eenmalige aanmelding ingevoerd.](media/civic-platform-tutorial/sso-config.png)
 
 1. Vouw SSOCONFIG uit door op de rode stip te klikken.
 
-    ![De link om het certificaat te downloaden](media/civic-platform-tutorial/sso-config01.png)
+    ![Schermopname die Standard Choices Browse toont met de configuratie voor eenmalige aanmelding beschikbaar.](media/civic-platform-tutorial/sso-config01.png)
 
 1. Geef in de volgende stap configuratiegegevens gerelateerd aan eenmalige aanmelding op:
 
-    ![De link om het certificaat te downloaden](media/civic-platform-tutorial/sso-config02.png)
+    ![Schermopname die Standard Choices Item Edit toont voor de configuratie van eenmalige aanmelding.](media/civic-platform-tutorial/sso-config02.png)
 
     1. Voer in het veld **applicationid** de waarde van **Toepassings-id** in die u uit de Azure-portal hebt gekopieerd.
 

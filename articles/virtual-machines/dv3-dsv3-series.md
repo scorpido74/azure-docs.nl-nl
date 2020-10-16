@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: jushiman
 ms.openlocfilehash: eff3ff3d8fa2ab3025ca8b8d4f974d6944c88433
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91649640"
 ---
 # <a name="dv3-and-dsv3-series"></a>Dv3- en DSv3-serie
@@ -26,7 +26,7 @@ Dv3-serie-grootten worden uitgevoerd op Intel® Xeon® Platinum 8272CL (Cascade 
 
 Gegevensschijfopslag wordt apart van virtuele machines in rekening gebracht. Als u Premium Storage-schijven wilt gebruiken, gebruik dan de Dsv3-grootten. De prijs- en factureringsmeters voor de Dsv3-grootten zijn gelijk aan die van de Dv3-serie.
 
-Virtuele machines uit de Dv3-serie bieden een Intel® Hyper-Threading-technologie.
+Virtuele machines uit de Dv3-serie bieden een Intel® Hyper-Threading technologie.
 
 [ACU](acu.md): 160-190<br>
 [Premium Storage](premium-storage-performance.md): niet ondersteund<br>
@@ -50,7 +50,7 @@ Virtuele machines uit de Dv3-serie bieden een Intel® Hyper-Threading-technologi
 
 Dsv3-serie-grootten worden uitgevoerd op Intel® Xeon® Platinum 8272CL (Cascade Lake), Intel® Xeon® 8171M 2.1 GHz (Skylake), Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) of de Intel® Xeon-® E5-2673 v3 2,4 GHz (Haswell)-processors met Intel Turbo Boost Technology 2,0 en Premium Storage gebruiken. De Dsv3-serie biedt een combinatie van vCPU, geheugen en tijdelijke opslag voor de meeste productieworkloads.
 
-Virtuele machines uit de Dsv3-serie bieden een Intel® Hyper-Threading-technologie.
+Virtuele machines uit de Dsv3-serie bieden een Intel® Hyper-Threading technologie.
 
 [ACU](acu.md): 160-190<br>
 [Premium Storage](premium-storage-performance.md): ondersteund<br>
@@ -76,7 +76,7 @@ Virtuele machines uit de Dsv3-serie bieden een Intel® Hyper-Threading-technolog
 
 ## <a name="other-sizes-and-information"></a>Andere grootten en informatie
 
-- [Algemeen gebruik](sizes-general.md)
+- [Algemeen doel](sizes-general.md)
 - [Geoptimaliseerd geheugen](sizes-memory.md)
 - [Geoptimaliseerde opslag](sizes-storage.md)
 - [Geoptimaliseerde GPU](sizes-gpu.md)

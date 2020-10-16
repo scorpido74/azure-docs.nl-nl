@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: thvankra
 ms.openlocfilehash: 860b78df8df0d3c6946785a94e40141689278cd0
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86023139"
 ---
 # <a name="migrate-one-to-few-relational-data-into-azure-cosmos-db-sql-api-account"></a>Een-op-weinig relationele gegevens migreren naar Azure Cosmos DB SQL-API-account
@@ -90,31 +90,27 @@ SELECT [value] FROM OPENJSON(
 )
 ```
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf1.png" alt-text="ADF-kopie":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf1.png" alt-text="Bestellingsgegevens" is en we niet wilt dat het wordt geparseerd in afzonderlijke kolommen met komma's en u de dubbele aanhalings tekens (") wilt behouden, stellen we ' kolom scheidings teken ' in op een tab (' \t '), of een ander teken dat niet in het gegevens-en aanhalings tekens wordt gebruikt voor geen aanhalings teken.
 
-
-Voor de Sink van de Kopieer activiteit SqlJsonToBlobText kiest u "tekst met scheidings tekens" en wijst u deze naar een specifieke map in Azure Blob Storage met een dynamisch gegenereerde unieke bestands naam (bijvoorbeeld ' @concat (pipeline (). RunId, '. json ').
-Omdat het tekst bestand niet echt "gescheiden" is en we niet wilt dat het wordt geparseerd in afzonderlijke kolommen met komma's en u de dubbele aanhalings tekens (") wilt behouden, stellen we ' kolom scheidings teken ' in op een tab (' \t '), of een ander teken dat niet in het gegevens-en aanhalings tekens wordt gebruikt voor geen aanhalings teken.
-
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf2.png" alt-text="ADF-kopie":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf2.png" alt-text="Bestellingsgegevens":::
 
 ### <a name="copy-activity-2-blobjsontocosmos"></a>#2 van de Kopieer activiteit: BlobJsonToCosmos
 
 Vervolgens wijzigen we onze ADF-pijp lijn door de tweede Kopieer activiteit toe te voegen die in Azure Blob Storage zoekt naar het tekst bestand dat door de eerste activiteit is gemaakt. Het wordt als ' JSON '-bron verwerkt om Cosmos DB Sink als één document per JSON-rij gevonden in het tekst bestand.
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf3.png" alt-text="ADF-kopie":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf3.png" alt-text="Bestellingsgegevens":::
 
 U kunt eventueel ook een ' delete '-activiteit toevoegen aan de pijp lijn, zodat alle vorige bestanden in de map/orders/vóór elke uitvoering worden verwijderd. Onze ADF-pijp lijn ziet er nu ongeveer als volgt uit:
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf4.png" alt-text="ADF-kopie":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf4.png" alt-text="Bestellingsgegevens":::
 
 Nadat we de pijp lijn hierboven hebben geactiveerd, zien we een bestand dat is gemaakt op onze intermediaire Azure-Blob Storage locatie met één JSON-object per rij:
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf5.png" alt-text="ADF-kopie":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf5.png" alt-text="Bestellingsgegevens":::
 
 We zien ook bestellingen van documenten met correct Inge sloten OrderDetails die zijn ingevoegd in onze Cosmos DB verzameling:
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf6.png" alt-text="ADF-kopie":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf6.png" alt-text="Bestellingsgegevens":::
 
 
 ## <a name="azure-databricks"></a>Azure Databricks
@@ -127,7 +123,7 @@ We kunnen ook Spark in [Azure Databricks](https://azure.microsoft.com/services/d
 
 Eerst maken en koppelen we de vereiste [SQL-connector](https://docs.databricks.com/data/data-sources/sql-databases-azure.html) en [Azure Cosmos DB connector](https://docs.databricks.com/data/data-sources/azure/cosmosdb-connector.html) bibliotheken aan ons Azure Databricks-cluster. Start het cluster opnieuw op om ervoor te zorgen dat de tape wisselaars worden geladen.
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks1.png" alt-text="Databricks":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks1.png" alt-text="Bestellingsgegevens":::
 
 We presen teren nu twee voor beelden, voor scala en python. 
 
@@ -150,7 +146,7 @@ val orders = sqlContext.read.sqlDB(configSql)
 display(orders)
 ```
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks2.png" alt-text="Databricks":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks2.png" alt-text="Bestellingsgegevens":::
 
 We gaan nu verbinding maken met onze Cosmos DB-Data Base en-verzameling:
 
@@ -207,7 +203,7 @@ display(ordersWithSchema)
 CosmosDBSpark.save(ordersWithSchema, configCosmos)
 ```
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks3.png" alt-text="Databricks":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks3.png" alt-text="Bestellingsgegevens":::
 
 
 ### <a name="python"></a>Python
@@ -337,7 +333,7 @@ pool.map(writeOrder, orderids)
 ```
 In beide gevallen moeten we aan het eind het op de juiste manier opgeslagen Inge sloten OrderDetails binnen elk Bestel document in Cosmos DB verzameling ophalen:
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks4.png" alt-text="Databricks":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks4.png" alt-text="Bestellingsgegevens":::
 
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over [gegevens modellering in azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/modeling-data)

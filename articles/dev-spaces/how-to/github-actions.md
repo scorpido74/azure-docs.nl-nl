@@ -7,14 +7,16 @@ description: Wijzigingen van een pull-aanvraag rechtstreeks controleren en teste
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, GitHub acties, helm, Service-Mesh, Service-Mesh-route ring, kubectl, K8S
 manager: gwallace
 ms.custom: devx-track-js
-ms.openlocfilehash: 25cb0de10e83069514c7918a5a2cdac019fe1ebb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8c11150105db7a7bb48d20992dcc259cb5d87752
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91316100"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973101"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub acties & Azure Kubernetes service (preview)
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 Azure dev Spaces biedt een werk stroom met behulp van GitHub-acties waarmee u wijzigingen van een pull-aanvraag rechtstreeks in AKS kunt testen voordat de pull-aanvraag wordt samengevoegd in de hoofd vertakking van de opslag plaats. Als een toepassing wordt uitgevoerd om de wijzigingen van een pull-aanvraag te bekijken, kan het vertrouwen van zowel de ontwikkelaar als de team leden toenemen. Deze actieve toepassing kan ook team leden, zoals product managers en ontwerpers, deel nemen aan het beoordelings proces tijdens de eerste fase van de ontwikkeling.
 

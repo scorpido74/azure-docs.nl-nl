@@ -4,10 +4,10 @@ description: Meer informatie over hoe de Azure Backup-service virtuele Azure-mac
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.openlocfilehash: f9e81c4fa40e5a1d984c163ffa5f37d8092f9032
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90985333"
 ---
 # <a name="about-azure-vm-restore"></a>Over Azure-VM herstellen
@@ -32,7 +32,7 @@ In dit artikel wordt beschreven hoe de [Azure backup-service](./backup-overview.
 - **Beschik baarheid (replicatie typen)**: Azure Backup biedt twee typen replicatie om uw opslag/gegevens Maxi maal beschikbaar te stellen:
   - Met [lokaal redundante opslag LRS](../storage/common/storage-redundancy.md#locally-redundant-storage) worden uw gegevens drie keer gerepliceerd (er worden drie kopieën gemaakt van uw gegevens) in een opslagschaaleenheid in een datacenter. Alle kopieën van de gegevens komen binnen dezelfde regio voor. LRS is een goedkope optie voor het beschermen van uw gegevens tegen lokale hardwarefouten.
   - [Geografisch redundante opslag (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) is de standaardinstelling en is de replicatieoptie die wordt aanbevolen. Met GRS worden uw gegevens gerepliceerd naar een secundaire regio (honderden kilometers verwijderd van de primaire locatie van de brongegevens). GRS is duurder dan LRS, maar biedt een hoger duurzaamheidsniveau voor uw gegevens, zelfs in geval van een regionale onderbreking.
-  - [Zone-redundante opslag (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) repliceert uw gegevens in [beschikbaarheids zones](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones), waarbij de gegevens locatie en tolerantie in dezelfde regio worden gegarandeerd. ZRS heeft geen downtime. Uw kritieke werk belastingen waarvoor [gegevens locatie](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/)nodig zijn en die geen downtime hebben, kunnen dus back-ups maken in ZRS.
+  - [Zone-redundante opslag (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) repliceert uw gegevens in [beschikbaarheidszones](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones), waarbij gegevenslocatie en gegevenstolerantie in dezelfde regio worden gegarandeerd. ZRS heeft geen downtime. Zodat er in ZRS een back-up gemaakt kan worden van uw kritieke werkbelastingen, waarvoor [gegevenslocatie](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/) vereist is en waarbij geen sprake van downtime mag zijn.
 
 - **Cross-Region Restore (CRR)**: als u een van de [Opties](./backup-azure-arm-restore-vms.md#restore-options)voor het terugzetten van meerdere regio's (CRR) hebt, kunt u virtuele Azure-machines herstellen in een secundaire regio, een [Azure-gekoppelde regio](../best-practices-availability-paired-regions.md#what-are-paired-regions).
 
@@ -40,7 +40,7 @@ In dit artikel wordt beschreven hoe de [Azure backup-service](./backup-overview.
 
 ![Scenario's herstellen ](./media/about-azure-vm-restore/recovery-scenarios.png)
 
-| **Scenario**                                                 | **Wat is er gebeurd**                                             | **Wanneer gebruikt u dit?**                                              |
+| **Scenario**                                                 | **Wat is er gebeurd**                                             | **Wanneer gebruiken**                                              |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [Herstellen om een nieuwe virtuele machine te maken](./backup-azure-arm-restore-vms.md) | Hiermee wordt de volledige VM teruggezet naar herstellen (als de bron-VM nog bestaat) of ALR | <li> Als de bron-VM verloren is gegaan of is beschadigd, kunt u de volledige VM herstellen  <li> U kunt een kopie van de virtuele machine maken  <li> U kunt een herstel analyse uitvoeren voor controle of naleving  <li> Deze optie werkt niet voor Azure-Vm's die zijn gemaakt op basis van Marketplace-installatie kopieën (dat wil zeggen, als deze niet beschikbaar zijn omdat de licentie is verlopen). |
 | [Schijven van de virtuele machine terugzetten](./backup-azure-arm-restore-vms.md#restore-disks) | Schijven die zijn gekoppeld aan de VM herstellen                             |  Alle schijven: met deze optie wordt de sjabloon gemaakt en wordt de schijf hersteld. U kunt deze sjabloon bewerken met speciale configuraties (bijvoorbeeld beschikbaarheids sets) om te voldoen aan uw vereisten en vervolgens de sjabloon gebruiken en de schijf herstellen om de virtuele machine opnieuw te maken. |

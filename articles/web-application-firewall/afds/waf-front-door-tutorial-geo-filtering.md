@@ -1,6 +1,6 @@
 ---
 title: Web Application Firewall beleid voor geo-filtering configureren voor de Azure front-deur service
-description: In deze zelf studie leert u hoe u een beleid voor geofiltering kunt maken en het beleid kunt koppelen aan de bestaande front leider-frontend-host.
+description: In deze zelfstudie leert u hoe u een beleid voor geofilters maakt en het beleid koppelt aan uw bestaande front-endhost van uw Front Door.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -9,10 +9,10 @@ ms.date: 03/10/2020
 ms.author: victorh
 ms.reviewer: tyao
 ms.openlocfilehash: a7ab7debffc8e88f385fbba6ae52af74ef98b25f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91266937"
 ---
 # <a name="set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>Een WAF-beleid voor geo-filtering instellen voor uw voor deur

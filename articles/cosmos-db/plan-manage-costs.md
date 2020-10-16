@@ -8,10 +8,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.openlocfilehash: 7f0a8fcb841399eb910f5f043cc75ddad037ee30
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88606876"
 ---
 # <a name="plan-and-manage-costs-for-azure-cosmos-db"></a>Kosten plannen en beheren voor Azure Cosmos DB
@@ -45,7 +45,7 @@ In de volgende scherm afbeelding ziet u de schatting van de door Voer en de kost
 
 Als u van plan bent Azure Cosmos DB te gebruiken in de serverloze modus, moet u een schatting maken van het aantal [aanvraag eenheden](request-units.md) en GB aan opslag dat u per maand kunt gebruiken. U kunt de vereiste hoeveelheid aanvraag eenheden schatten door het aantal database bewerkingen te evalueren dat in een maand zou worden uitgegeven en de hoeveelheid te vermenigvuldigen met de bijbehorende RU-kosten. De volgende tabel geeft een overzicht van de geschatte RU-kosten voor veelvoorkomende database bewerkingen:
 
-| Bewerking | Geschatte kosten | Opmerkingen |
+| Bewerking | Geschatte kosten | Notities |
 | --- | --- | --- |
 | Een item maken | 5 RUs | Gemiddelde kosten voor een 1 KB-item met minder dan 5 eigenschappen om te indexeren |
 | Een item bijwerken | Tien aanvraageenheden | Gemiddelde kosten voor een 1 KB-item met minder dan 5 eigenschappen om te indexeren |
@@ -71,7 +71,7 @@ Wanneer u begint met het gebruik van Azure Cosmos DB resources van Azure Portal,
 1. Maak een nieuwe container, zoals een grafiek container.
 1. Voer de door Voer die vereist is voor uw werk belasting, zoals 400 RU/s. Nadat u de doorvoer waarde hebt ingevoerd, ziet u de prijs schatting zoals weer gegeven op de volgende scherm afbeelding:
 
-   :::image type="content" source="./media/plan-manage-costs/cost-estimate-portal.png" alt-text="Kosten raming in Azure Portal":::
+   :::image type="content" source="./media/plan-manage-costs/cost-estimate-portal.png" alt-text="Kosten raming in Azure Cosmos DB capaciteits Calculator":::
 
 ## <a name="use-budgets-and-cost-alerts"></a>Budgetten en kostenwaarschuwingen gebruiken
 
@@ -85,7 +85,7 @@ Als u resources met Azure Cosmos DB gebruikt, worden er kosten in rekening gebra
 
 Wanneer u kosten analyse gebruikt, kunt u de kosten voor de Azure Cosmos DB in grafieken en tabellen weer geven voor verschillende tijds intervallen. Enkele voor beelden zijn dag, actueel, voor gaande maand en jaar. U kunt ook kosten weer geven op basis van budgetten en geraamde kosten. Door over te scha kelen naar langere weer gaven kunt u uitgaven trends helpen identificeren en zien waar overuitgave mogelijk is gebeurd. Als u budgetten hebt gemaakt, kunt u ook eenvoudig zien waar ze zijn overschreden. Azure Cosmos DB kosten voor de kosten analyse weer geven:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 1. Open het venster **Cost Management en facturering** , selecteer **kosten beheer** in het menu en selecteer vervolgens **kosten analyse**. U kunt vervolgens het bereik voor een specifiek abonnement wijzigen in de vervolg keuzelijst **bereik** .
 
@@ -93,7 +93,7 @@ Wanneer u kosten analyse gebruikt, kunt u de kosten voor de Azure Cosmos DB in g
 
 1. Als u de kosten voor één service, zoals Azure Cosmos DB, wilt beperken, selecteert u **filter toevoegen** en selecteert u vervolgens **service naam**. Kies vervolgens **Azure Cosmos DB** in de lijst. Hier volgt een voor beeld van de kosten voor alleen Azure Cosmos DB:
  
-   :::image type="content" source="./media/plan-manage-costs/cost-analysis-pane.png" alt-text="Het deel venster kosten bewaken met kosten analyse":::
+   :::image type="content" source="./media/plan-manage-costs/cost-analysis-pane.png" alt-text="Kosten raming in Azure Cosmos DB capaciteits Calculator":::
 
 In het vorige voor beeld ziet u de huidige kosten voor Azure Cosmos DB voor de maand feb. De grafieken bevatten ook Azure Cosmos DB kosten per locatie en per resource groep.
 

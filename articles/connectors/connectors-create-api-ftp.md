@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/15/2019
 tags: connectors
 ms.openlocfilehash: f4cad2b658547d56d00efdd5e1496110f8e4a5e6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87284010"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>FTP-bestanden bewaken, maken en beheren met behulp van Azure Logic Apps
@@ -73,7 +73,7 @@ Wanneer een trigger een nieuw bestand vindt, controleert de trigger of het nieuw
 
    -of-
 
-   Voor bestaande Logic apps, onder de laatste stap waar u een actie wilt toevoegen, selecteert u **nieuwe stap**en vervolgens **een actie toevoegen**. Voer in het zoekvak in `ftp` als uw filter. Selecteer in de lijst **acties** de gewenste actie.
+   Voor bestaande Logic apps, onder de laatste stap waar u een actie wilt toevoegen, selecteert u **nieuwe stap**en vervolgens **een actie toevoegen**. Voer in het zoekvak `ftp` als uw filter in. Selecteer in de lijst **acties** de gewenste actie.
 
    Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen de stappen. Selecteer het plus teken ( **+** ) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
 
@@ -125,7 +125,7 @@ Met de actie **meta gegevens van bestand ophalen** worden de eigenschappen opgeh
 
 1. Selecteer **nieuwe stap**onder de trigger of een andere actie.
 
-1. Voer in het zoekvak in `ftp` als uw filter. Selecteer in de lijst acties deze actie: **meta gegevens van bestand ophalen**
+1. Voer in het zoekvak `ftp` als uw filter in. Selecteer in de lijst acties deze actie: **meta gegevens van bestand ophalen**
 
    ![Selecteer de actie ' meta gegevens van bestand ophalen '](./media/connectors-create-api-ftp/select-get-file-metadata-ftp-action.png)
 

@@ -7,46 +7,54 @@ author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 08/20/2020
+ms.date: 10/05/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 13e3f5a7d86d2e9b705fbeb104ba4f8eb690cb3a
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 340cdd97e7097a9fe6f0653d9f50f5a5cc41f890
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91534094"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740924"
 ---
 # <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>Zelfstudie: Door AI gegenereerde doorzoekbare inhoud van Azure-blobs met behulp van de .NET SDK
 
-Als u ongestructureerde tekst of afbeeldingen in Azure Blob-opslag hebt, kunt u met een [AI-verrijkingspijplijn](cognitive-search-concept-intro.md) informatie extraheren en nieuwe inhoud maken die nuttig is voor zoekopdrachten in volledige tekst of kennisanalyse. In deze C#-zelfstudie past u OCR (Optical Character Recognition) toe op afbeeldingen en voert u natuurlijke-taalverwerking uit om nieuwe velden te maken die u kunt gebruiken in query's, facetten en filters.
+Als u ongestructureerde tekst of afbeeldingen in Azure Blob-opslag hebt, kunt u met een [AI-verrijkingspijplijn](cognitive-search-concept-intro.md) informatie extraheren en nieuwe inhoud maken voor zoekopdrachten in volledige tekst of kennisanalyse. 
 
-In deze zelfstudie wordt gebruikgemaakt van C# en de [.NET SDK](/dotnet/api/overview/azure/search) om de volgende taken uit te voeren:
+In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Begin met toepassingsbestanden en installatiekopieën in Azure Blob Storage.
-> * Definieer een pijplijn om OCR, tekstextractie, taaldetectie, entiteits- en sleutelwoordherkenning toe te voegen.
-> * Definieer een index voor het opslaan van de uitvoer (onbewerkte inhoud, plus pijplijn gegenereerde naam/waardeparen).
-> * Voer de pijplijn uit om transformaties en analyses te starten en om de index te maken en te laden.
+> * Stel een ontwikkelomgeving in.
+> * Definieer een pijplijn die via blobs verloopt met behulp van OCR, taaldetectie, entiteits- en sleutelwoordherkenning.
+> * Voer de pijplijn uit om transformaties en analyses aan te roepen, en om een zoekindex te maken en te laden.
 > * Bekijk de resultaten met zoeken in volledige tekst en een uitgebreide query-syntaxis.
 
 Als u geen abonnement op Azure hebt, opent u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
+## <a name="overview"></a>Overzicht
+
+Deze zelfstudie maakt gebruik van C# en de clientbibliotheek **Azure.Search.Documents** om een gegevensbron, index, indexeerfunctie en vaardighedenset te maken.
+
+De vaardighedenset maakt gebruik van ingebouwde vaardigheden op basis van Cognitive Services-API's. Stappen in de pijplijn omvatten OCR (Optical Character Recognition) voor afbeeldingen, taaldetectie voor tekst, sleuteltermextractie, en entiteitsherkenning (organisatie). Nieuwe informatie wordt opgeslagen in nieuwe velden die u kunt gebruiken voor query's, facetten en filters.
+
 ## <a name="prerequisites"></a>Vereisten
 
-+ [Azure Storage](https://azure.microsoft.com/services/storage/)
-+ [Visual Studio](https://visualstudio.microsoft.com/downloads/)
-+ [Maak](search-create-service-portal.md) of [vind een bestaande zoekservice](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) 
+* [Visual Studio](https://visualstudio.microsoft.com/downloads/)
+* [Azure.Search.Documents 11.x NuGet-pakket](https://www.nuget.org/packages/Azure.Search.Documents) 
+* [Azure Storage](https://azure.microsoft.com/services/storage/)
+* [Azure Cognitive Search](https://azure.microsoft.com/services/search/)
 
 > [!Note]
-> U kunt de gratis service voor deze zelfstudie gebruiken. Een gratis zoekservice beperkt u tot drie indexen, drie indexeerfuncties en drie gegevensbronnen. In deze zelfstudie wordt één exemplaar van elk onderdeel gemaakt. Voordat u aan de slag gaat, zorg ervoor dat uw service voldoende ruimte heeft voor de nieuwe resources.
+> U kunt de gratis zoekservice voor deze zelfstudie gebruiken. Een gratis zoekservice beperkt u tot drie indexen, drie indexeerfuncties en drie gegevensbronnen. In deze zelfstudie wordt één exemplaar van elk onderdeel gemaakt. Voordat u aan de slag gaat, zorg ervoor dat uw service voldoende ruimte heeft voor de nieuwe resources.
 
-## <a name="download-files"></a>Bestanden downloaden
+## <a name="download-sample-data"></a>Voorbeeldgegevens downloaden
+
+De voorbeeldgegevens bestaan uit 14 bestanden van het gemengde inhoudstype dat u in een latere stap gaat uploaden naar Azure Blob-opslag.
 
 1. Open deze [OneDrive-map](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) en klik in de linkerbovenhoek op **Downloaden** om de bestanden naar uw computer te kopiëren. 
 
 1. Klik met de rechtermuisknop op het zip-bestand en selecteer **Alles extraheren**. Er zijn 14 bestanden van verschillende typen. U gebruikt 7 voor deze oefening.
 
-U kunt ook de broncode voor deze zelfstudie downloaden. De broncode bevindt zich in de map tutorial-ai-enrichment, in de opslagplaats [azure-search-dotnet-samples](https://github.com/Azure-Samples/azure-search-dotnet-samples).
+U kunt ook de broncode voor deze zelfstudie downloaden. De broncode bevindt zich in de map **tutorial-ai-enrichment/v11**, in de opslagplaats [azure-search-dotnet-samples](https://github.com/Azure-Samples/azure-search-dotnet-samples).
 
 ## <a name="1---create-services"></a>1 - Services maken
 
@@ -64,13 +72,13 @@ Maak, indien mogelijk, beide in dezelfde regio en resourcegroep voor nabijheid e
 
 1. Op het tabblad Basisinstellingen zijn de volgende items vereist. Accepteer de standaardwaarden voor alle andere.
 
-   + **Resourcegroep**. Selecteer een bestaande naam of maak een nieuwe, maar gebruik dezelfde groep voor alle services, zodat u ze gezamenlijk kunt beheren.
+   * **Resourcegroep**. Selecteer een bestaande naam of maak een nieuwe, maar gebruik dezelfde groep voor alle services, zodat u ze gezamenlijk kunt beheren.
 
-   + **Naam van opslagaccount**. Als u denkt dat u mogelijk meerdere resources van hetzelfde type hebt, gebruikt u de naam om op type en regio te onderscheiden, bijvoorbeeld *blobstoragewestus*. 
+   * **Naam van opslagaccount**. Als u denkt dat u mogelijk meerdere resources van hetzelfde type hebt, gebruikt u de naam om op type en regio te onderscheiden, bijvoorbeeld *blobstoragewestus*. 
 
-   + **Locatie**. Kies indien mogelijk dezelfde locatie die wordt gebruikt voor Azure Cognitive Search en Cognitive Services. Een enkele locatie vermindert bandbreedtekosten aanzienlijk.
+   * **Locatie**. Kies indien mogelijk dezelfde locatie die wordt gebruikt voor Azure Cognitive Search en Cognitive Services. Een enkele locatie vermindert bandbreedtekosten aanzienlijk.
 
-   + **Soort account**. Kies de standaardinstelling *StorageV2 (algemeen gebruik v2)* .
+   * **Soort account**. Kies de standaardinstelling *StorageV2 (algemeen gebruik v2)* .
 
 1. Klik vervolgens op **Beoordelen en maken** om de service te maken.
 
@@ -87,7 +95,7 @@ Maak, indien mogelijk, beide in dezelfde regio en resourcegroep voor nabijheid e
 1. Voordat u Azure Storage verlaat, moet u een verbindingsreeks ophalen zodat u een verbinding in Azure Cognitive Search kunt formuleren. 
 
    1. Ga terug naar de pagina Overzicht van uw opslagaccount (we hebben *blobstoragewestus* als voorbeeld gebruikt). 
-   
+
    1. Selecteer in het navigatiedeelvenster links de optie **Toegangstoetsen** en kopieer een van de verbindingsreeksen. 
 
    De verbindingsreeks is een URL die er ongeveer als volgt uitziet:
@@ -106,15 +114,17 @@ Voor deze oefening kunt u echter het inrichten van resources overslaan omdat Azu
 
 ### <a name="azure-cognitive-search"></a>Azure Cognitive Search
 
-Het derde onderdeel is Azure Cognitive Search, dat u kunt [maken in de portal](search-create-service-portal.md). U kunt de gratis laag gebruiken om dit voorbeeld te voltooien. 
+Het derde onderdeel is Azure Cognitive Search, dat u kunt [maken in de portal](search-create-service-portal.md) of u kunt [een bestaande zoekservice vinden](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) in uw abonnement.
 
-### <a name="get-an-admin-api-key-and-url-for-azure-cognitive-search"></a>Een beheer-API-sleutel en URL voor Azure Cognitive Search ophalen
+U kunt de gratis laag gebruiken om dit voorbeeld te voltooien. 
+
+### <a name="copy-an-admin-api-key-and-url-for-azure-cognitive-search"></a>Een beheer-API-sleutel en URL voor Azure Cognitive Search kopiëren
 
 Als u wilt communiceren met uw Azure Cognitive Search-service, hebt u de service-URL en een toegangssleutel nodig. Een zoekservice wordt gemaakt met beide, dus als u Azure Cognitive Search aan uw abonnement hebt toegevoegd, volgt u deze stappen om de benodigde informatie op te halen:
 
 1. [Meld u aan bij Azure Portal](https://portal.azure.com/) en haal op de pagina **Overzicht** van uw zoekservice de URL op. Een eindpunt ziet er bijvoorbeeld uit als `https://mydemo.search.windows.net`.
 
-1. Haal onder **Instellingen** > **Sleutels** een beheersleutel op voor volledige rechten op de service. Er zijn twee uitwisselbare beheersleutels die voor bedrijfscontinuïteit worden verstrekt voor het geval u een moet overschakelen. U kunt de primaire of secundaire sleutel gebruiken op aanvragen voor het toevoegen, wijzigen en verwijderen van objecten.
+1. Kopieer onder **Instellingen** > **Sleutels** een beheersleutel voor volledige rechten op de service. Er zijn twee uitwisselbare beheersleutels die voor bedrijfscontinuïteit worden verstrekt voor het geval u een moet overschakelen. U kunt de primaire of secundaire sleutel gebruiken op aanvragen voor het toevoegen, wijzigen en verwijderen van objecten.
 
    Haal ook de querysleutel op. Het is een aanbevolen procedure voor het uitgeven van queryaanvragen met alleen-lezen-toegang.
 
@@ -126,29 +136,19 @@ Met een geldige sleutel stelt u per aanvraag een vertrouwensrelatie in tussen de
 
 Open eerst Visual Studio en maak een nieuw Console App-project dat kan worden uitgevoerd op .NET Core.
 
-### <a name="install-nuget-packages"></a>NuGet-pakketten installeren
+### <a name="install-azuresearchdocuments"></a>Azure.Search.Documents installeren
 
-De [.NET SDK van Azure Cognitive Search](/dotnet/api/overview/azure/search) bestaat uit een aantal clientbibliotheken waarmee u uw indexen, gegevensbronnen, indexeerfuncties en vaardighedensets kunt beheren U kunt ook documenten uploaden en beheren en query's uitvoeren, zonder dat u zich hoeft bezig te houden met de details van HTTP en JSON. Deze clientbibliotheken worden allemaal gedistribueerd als NuGet-pakketten.
+De [.NET SDK van Azure Cognitive Search](/dotnet/api/overview/azure/search) bestaat uit een clientbibliotheek waarmee u indexen, gegevensbronnen, indexeerfuncties en vaardighedensets kunt beheren. U kunt ook documenten uploaden en beheren en query's uitvoeren, zonder dat u zich hoeft bezig te houden met de details van HTTP en JSON. Deze clientbibliotheek wordt gedistribueerd als een NuGet-pakket.
 
-Voor dit project installeert u versie 9 of hoger van NuGet-pakket `Microsoft.Azure.Search`.
+Voor dit project installeert u versie 11 of hoger van het `Azure.Search.Documents` en de meest recente versie van `Microsoft.Extensions.Configuration`.
 
-1. Ga in een browser naar de [pagina met NuGet-pakket Microsoft.Azure.Search](https://www.nuget.org/packages/Microsoft.Azure.Search).
+1. Selecteer in Visual Studio achtereenvolgens **Hulpprogramma's** > **NuGet-pakketbeheer** > **NuGet-pakketten voor Solution...** .
 
-1. Selecteer de nieuwste versie (9 of nieuwer).
+1. Blader naar [Azure.Search.Document](https://www.nuget.org/packages/Azure.Search.Documents).
 
-1. Kopieer de opdracht Package Manager.
+1. Selecteer de nieuwste versie en klik vervolgens op **Installeren**.
 
-1. Open de Package Manager-console. Selecteer **Hulpprogramma's** > **NuGet Package Manager** > **Package Manager-console**. 
-
-1. Plak en voer de opdracht uit die u in de vorige stap hebt gekopieerd.
-
-Installeer vervolgens het nieuwste NuGet-pakket `Microsoft.Extensions.Configuration.Json`.
-
-1. Selecteer **Hulpprogramma's** > **NuGet Package Manager** > **NuGet-pakketten voor oplossing...** . 
-
-1. Klik op **Bladeren** en zoek NuGet-pakket `Microsoft.Extensions.Configuration.Json`. 
-
-1. Selecteer het pakket, selecteer uw project, bevestig dat de versie de nieuwste stabiele versie. Klik vervolgens op **Installeren**.
+1. Herhaal de vorige stappen voor het installeren van [Microsoft.Extensions.Configuration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration) en [Microsoft.Extensions.Configuration.Json](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Json).
 
 ### <a name="add-service-connection-information"></a>Verbindingsgegevens van de service toevoegen
 
@@ -164,7 +164,7 @@ Installeer vervolgens het nieuwste NuGet-pakket `Microsoft.Extensions.Configurat
 
     ```json
     {
-      "SearchServiceName": "Put your search service name here",
+      "SearchServiceUri": "Put your search service URI here",
       "SearchServiceAdminApiKey": "Put your primary or secondary API key here",
       "SearchServiceQueryApiKey": "Put your query API key here",
       "AzureBlobConnectionString": "Put your Azure Blob connection string here",
@@ -173,25 +173,27 @@ Installeer vervolgens het nieuwste NuGet-pakket `Microsoft.Extensions.Configurat
 
 Voeg de gegevens van uw zoekservice en blob-opslagaccount toe. U kunt deze informatie ophalen via de stappen voor het inrichten van de service, zoals aangegeven in de vorige sectie.
 
-Voor **SearchServiceName** voert u de korte servicenaam in (niet de volledige URL).
+Voer voor **SearchServiceUri** de volledige URL in.
 
 ### <a name="add-namespaces"></a>Naamruimten toevoegen
 
 Voeg in `Program.cs` de volgende naamruimten toe.
 
 ```csharp
+using Azure;
+using Azure.Search.Documents.Indexes;
+using Azure.Search.Documents.Indexes.Models;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
-using Microsoft.Azure.Search;
-using Microsoft.Azure.Search.Models;
-using Microsoft.Extensions.Configuration;
+using System.Linq;
 
 namespace EnrichwithAI
 ```
 
 ### <a name="create-a-client"></a>Client maken
 
-Maak onder `Main` een exemplaar van de klasse `SearchServiceClient`.
+Maak een exemplaar van een `SearchIndexClient` en een `SearchIndexerClient` onder `Main`.
 
 ```csharp
 public static void Main(string[] args)
@@ -199,24 +201,18 @@ public static void Main(string[] args)
     // Create service client
     IConfigurationBuilder builder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
     IConfigurationRoot configuration = builder.Build();
-    SearchServiceClient serviceClient = CreateSearchServiceClient(configuration);
-```
 
-`CreateSearchServiceClient` maakt een nieuwe `SearchServiceClient` met behulp van waarden die zijn opgeslagen in het configuratiebestand van de toepassing (appsettings.json).
+    string searchServiceUri = configuration["SearchServiceUri"];
+    string adminApiKey = configuration["SearchServiceAdminApiKey"];
+    string cognitiveServicesKey = configuration["CognitiveServicesKey"];
 
-```csharp
-private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot configuration)
-{
-   string searchServiceName = configuration["SearchServiceName"];
-   string adminApiKey = configuration["SearchServiceAdminApiKey"];
-
-   SearchServiceClient serviceClient = new SearchServiceClient(searchServiceName, new SearchCredentials(adminApiKey));
-   return serviceClient;
+    SearchIndexClient indexClient = new SearchIndexClient(new Uri(searchServiceUri), new AzureKeyCredential(adminApiKey));
+    SearchIndexerClient indexerClient = new SearchIndexerClient(new Uri(searchServiceUri), new AzureKeyCredential(adminApiKey));
 }
 ```
 
 > [!NOTE]
-> De klasse `SearchServiceClient` beheert verbindingen met uw zoekservice. Als u wilt voorkomen dat er te veel verbindingen worden geopend, kunt u proberen één instantie van `SearchServiceClient` in uw toepassing te delen, indien mogelijk. De bijbehorende methoden zijn thread-safe om delen in te schakelen.
+> De clients maken verbinding met uw zoekservice. Als u wilt voorkomen dat er te veel verbindingen worden geopend, kunt u proberen één exemplaar in uw toepassing te delen, indien mogelijk. De methoden zijn thread-safe om delen in te schakelen.
 > 
 
 ### <a name="add-function-to-exit-the-program-during-failure"></a>Functie toevoegen om het programma te sluiten tijdens een fout
@@ -241,28 +237,31 @@ In Azure Cognitive Search treedt AI-verwerking op tijdens het indexeren (of gege
 
 ### <a name="step-1-create-a-data-source"></a>Stap 1: Een gegevensbron maken
 
-`SearchServiceClient` heeft een `DataSources`-eigenschap. Deze beschikt biedt alle methoden die u nodig hebt om een gegevensbronnen voor Azure Cognitive Search te maken, weer te geven, bij te werken of te verwijderen.
+`SearchIndexerClient` heeft een eigenschap [`DataSourceName`](/dotnet/api/azure.search.documents.indexes.models.searchindexer.datasourcename) die u kunt instellen als een object `SearchIndexerDataSourceConnection`. Dit object biedt alle methoden die u nodig hebt om een gegevensbronnen voor Azure Cognitive Search te maken, weer te geven, bij te werken of te verwijderen.
 
-Maak een nieuw `DataSource`-exemplaar door `serviceClient.DataSources.CreateOrUpdate(dataSource)` aan te roepen. Voor `DataSource.AzureBlobStorage` is vereist dat u de naam van de gegevensbron, de verbindingsreeks en de naam van de blob-container opgeeft.
+Maak een nieuw `SearchIndexerDataSourceConnection`-exemplaar door `indexerClient.CreateOrUpdateDataSourceConnection(dataSource)` aan te roepen. Met de volgende code wordt een gegevensbron gemaakt van het type `AzureBlob`.
 
 ```csharp
-private static DataSource CreateOrUpdateDataSource(SearchServiceClient serviceClient, IConfigurationRoot configuration)
+private static SearchIndexerDataSourceConnection CreateOrUpdateDataSource(SearchIndexerClient indexerClient, IConfigurationRoot configuration)
 {
-    DataSource dataSource = DataSource.AzureBlobStorage(
+    SearchIndexerDataSourceConnection dataSource = new SearchIndexerDataSourceConnection(
         name: "demodata",
-        storageConnectionString: configuration["AzureBlobConnectionString"],
-        containerName: "cog-search-demo",
-        description: "Demo files to demonstrate cognitive search capabilities.");
+        type: SearchIndexerDataSourceType.AzureBlob,
+        connectionString: configuration["AzureBlobConnectionString"],
+        container: new SearchIndexerDataContainer("cog-search-demo"))
+    {
+        Description = "Demo files to demonstrate cognitive search capabilities."
+    };
 
     // The data source does not need to be deleted if it was already created
     // since we are using the CreateOrUpdate method
     try
     {
-        serviceClient.DataSources.CreateOrUpdate(dataSource);
+        indexerClient.CreateOrUpdateDataSourceConnection(dataSource);
     }
-    catch (Exception e)
+    catch (Exception ex)
     {
-        Console.WriteLine("Failed to create or update the data source\n Exception message: {0}\n", e.Message);
+        Console.WriteLine("Failed to create or update the data source\n Exception message: {0}\n", ex.Message);
         ExitProgram("Cannot continue without a data source");
     }
 
@@ -275,39 +274,32 @@ Als de aanvraag is geslaagd, wordt de gemaakte gegevensbron geretourneerd. Als e
 Voeg nu een regel toe aan `Main` om de `CreateOrUpdateDataSource`-functie aan te roepen die u zojuist hebt toegevoegd.
 
 ```csharp
-public static void Main(string[] args)
-{
-    // Create service client
-    IConfigurationBuilder builder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
-    IConfigurationRoot configuration = builder.Build();
-    SearchServiceClient serviceClient = CreateSearchServiceClient(configuration);
-
-    // Create or Update the data source
-    Console.WriteLine("Creating or updating the data source...");
-    DataSource dataSource = CreateOrUpdateDataSource(serviceClient, configuration);
+// Create or Update the data source
+Console.WriteLine("Creating or updating the data source...");
+SearchIndexerDataSourceConnection dataSource = CreateOrUpdateDataSource(indexerClient, configuration);
 ```
 
-Bouw de oplossing en voer deze uit. Aangezien dit uw eerste aanvraag is, controleert u de Azure-portal om te bevestigen dat de gegevensbron in Azure Cognitive Search is gemaakt. Controleer op de dashboardpagina van de zoekservice of de tegel Gegevensbronnen een nieuw item heeft. U moet mogelijk een paar minuten wachten tot de portalpagina is vernieuwd.
+Bouw de oplossing en voer deze uit. Aangezien dit uw eerste aanvraag is, controleert u de Azure-portal om te bevestigen dat de gegevensbron in Azure Cognitive Search is gemaakt. Controleer op de overzichtspagina van de zoekservice of de lijst Gegevensbronnen een nieuw item heeft. U moet mogelijk een paar minuten wachten tot de portalpagina is vernieuwd.
 
   ![De tegel gegevensbronnen in de portal](./media/cognitive-search-tutorial-blob/data-source-tile.png "De tegel gegevensbronnen in de portal")
 
 ### <a name="step-2-create-a-skillset"></a>Stap 2: Een set vaardigheden maken
 
-In deze stap definieert u een reeks verrijkingsstappen die u op uw gegevens wilt toepassen. Elke verrijkingsstap wordt een *vaardigheid* genoemd en de reeks verrijkingsstappen een *vaardighedenset*. In deze zelfstudie wordt gebruikgemaakt van [ingebouwde cognitieve tekstvaardigheden](cognitive-search-predefined-skills.md) voor de set vaardigheden:
+In deze stap definieert u een reeks verrijkingsstappen die u op uw gegevens wilt toepassen. Elke verrijkingsstap wordt een *vaardigheid* genoemd en de reeks verrijkingsstappen heet een *vaardighedenset*. In deze zelfstudie wordt gebruikgemaakt van [ingebouwde cognitieve tekstvaardigheden](cognitive-search-predefined-skills.md) voor de set vaardigheden:
 
-+ [Optical Character Recognition](cognitive-search-skill-ocr.md), voor het herkennen van gedrukte en handgeschreven tekst in afbeeldingsbestanden.
+* [Optical Character Recognition](cognitive-search-skill-ocr.md), voor het herkennen van gedrukte en handgeschreven tekst in afbeeldingsbestanden.
 
-+ [Tekst samenvoegen](cognitive-search-skill-textmerger.md), om tekst uit een verzameling velden in één veld samen te voegen.
+* [Tekst samenvoegen](cognitive-search-skill-textmerger.md), om tekst uit een verzameling velden in één veld samen te voegen.
 
-+ [Taaldetectie](cognitive-search-skill-language-detection.md) om de taal van de inhoud vast te stellen.
+* [Taaldetectie](cognitive-search-skill-language-detection.md) om de taal van de inhoud vast te stellen.
 
-+ [Tekst splitsen](cognitive-search-skill-textsplit.md) om grote inhoud in kleinere stukken op te delen voordat u de vaardigheid voor sleuteltermextractie en die voor entiteitsherkenning aanroept. Sleuteltermextractie en entiteitsherkenning accepteren een invoer van 50.000 tekens of minder. Enkele voorbeeldbestanden moeten worden opgesplitst om aan deze limiet te voldoen.
+* [Tekst splitsen](cognitive-search-skill-textsplit.md) om grote inhoud in kleinere stukken op te delen voordat u de vaardigheid voor sleuteltermextractie en die voor entiteitsherkenning aanroept. Sleuteltermextractie en entiteitsherkenning accepteren een invoer van 50.000 tekens of minder. Enkele voorbeeldbestanden moeten worden opgesplitst om aan deze limiet te voldoen.
 
-+ [Herkenning van entiteiten](cognitive-search-skill-entity-recognition.md) voor het extraheren van de namen van organisaties uit inhoud van de blobcontainer.
+* [Herkenning van entiteiten](cognitive-search-skill-entity-recognition.md) voor het extraheren van de namen van organisaties uit inhoud van de blobcontainer.
 
-+ [Sleuteltermextractie](cognitive-search-skill-keyphrases.md) voor het ophalen van de belangrijkste sleuteltermen.
+* [Sleuteltermextractie](cognitive-search-skill-keyphrases.md) voor het ophalen van de belangrijkste sleuteltermen.
 
-Tijdens de initiële verwerking opent Azure Cognitive Search elk document om inhoud van verschillende bestandsindelingen te lezen. Gevonden tekst uit het bronbestand wordt in een gegenereerd ```content```-veld geplaatst, één voor elk document. Stel de invoer als ```"/document/content"``` in om deze tekst te gebruiken. 
+Tijdens de initiële verwerking opent Azure Cognitive Search elk document om inhoud van verschillende bestandsindelingen uit te pakken. Tekst uit het bronbestand wordt in een gegenereerd veld `content` geplaatst, één voor elk document. Stel de invoer als `"/document/content"` in om deze tekst te gebruiken. Afbeeldingsinhoud is in een gegenereerd veld `normalized_images` geplaatst, opgegeven in een vaardighedenset als `/document/normalized_images/*`.
 
 Uitvoeren kunnen aan een index worden toegewezen, als invoer worden gebruikt voor een downstream-vaardigheid, of beide zoals bij taalcode. Een taalcode is in de index handig om te filteren. Taalcode wordt als invoer door vaardigheden voor tekstanalyse gebruikt om de taalregels voor woordafbreking in te stellen.
 
@@ -320,27 +312,25 @@ De vaardigheid **OCR** haalt tekst op uit afbeeldingen. Bij deze vaardigheid wor
 ```csharp
 private static OcrSkill CreateOcrSkill()
 {
-    List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>
+    List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
+    inputMappings.Add(new InputFieldMappingEntry("image")
     {
-        new InputFieldMappingEntry(
-        name: "image",
-        source: "/document/normalized_images/*")
-    };
+        Source = "/document/normalized_images/*"
+    });
 
-    List<OutputFieldMappingEntry> outputMappings = new List<OutputFieldMappingEntry>
+    List<OutputFieldMappingEntry> outputMappings = new List<OutputFieldMappingEntry>();
+    outputMappings.Add(new OutputFieldMappingEntry("text")
     {
-        new OutputFieldMappingEntry(
-        name: "text",
-        targetName: "text")
-    };
+        TargetName = "text"
+    });
 
-    OcrSkill ocrSkill = new OcrSkill(
-        description: "Extract text (plain and structured) from image",
-        context: "/document/normalized_images/*",
-        inputs: inputMappings,
-        outputs: outputMappings,
-        defaultLanguageCode: OcrSkillLanguage.En,
-        shouldDetectOrientation: true);
+    OcrSkill ocrSkill = new OcrSkill(inputMappings, outputMappings)
+    {
+        Description = "Extract text (plain and structured) from image",
+        Context = "/document/normalized_images/*",
+        DefaultLanguageCode = OcrSkillLanguage.En,
+        ShouldDetectOrientation = true
+    };
 
     return ocrSkill;
 }
@@ -348,38 +338,38 @@ private static OcrSkill CreateOcrSkill()
 
 ### <a name="merge-skill"></a>Vaardigheid Samenvoegen
 
-In deze sectie maakt u een vaardigheid **Samenvoeg** die het veld documentinhoud samenvoegt met de tekst die door de vaardigheid OCR is geproduceerd.
+In deze sectie maakt u een vaardigheid **Samenvoegen** waarmee het veld documentinhoud wordt samengevoegd met de tekst die is geproduceerd op de OCR-vaardigheid.
 
 ```csharp
 private static MergeSkill CreateMergeSkill()
 {
-    List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>
+    List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
+    inputMappings.Add(new InputFieldMappingEntry("text")
     {
-        new InputFieldMappingEntry(
-        name: "text",
-        source: "/document/content"),
-        new InputFieldMappingEntry(
-        name: "itemsToInsert",
-        source: "/document/normalized_images/*/text"),
-        new InputFieldMappingEntry(
-        name: "offsets",
-        source: "/document/normalized_images/*/contentOffset")
-    };
-
-    List<OutputFieldMappingEntry> outputMappings = new List<OutputFieldMappingEntry>
+        Source = "/document/content"
+    });
+    inputMappings.Add(new InputFieldMappingEntry("itemsToInsert")
     {
-        new OutputFieldMappingEntry(
-        name: "mergedText",
-        targetName: "merged_text")
-    };
+        Source = "/document/normalized_images/*/text"
+    });
+    inputMappings.Add(new InputFieldMappingEntry("offsets")
+    {
+        Source = "/document/normalized_images/*/contentOffset"
+    });
 
-    MergeSkill mergeSkill = new MergeSkill(
-        description: "Create merged_text which includes all the textual representation of each image inserted at the right location in the content field.",
-        context: "/document",
-        inputs: inputMappings,
-        outputs: outputMappings,
-        insertPreTag: " ",
-        insertPostTag: " ");
+    List<OutputFieldMappingEntry> outputMappings = new List<OutputFieldMappingEntry>();
+    outputMappings.Add(new OutputFieldMappingEntry("mergedText")
+    {
+        TargetName = "merged_text"
+    });
+
+    MergeSkill mergeSkill = new MergeSkill(inputMappings, outputMappings)
+    {
+        Description = "Create merged_text which includes all the textual representation of each image inserted at the right location in the content field.",
+        Context = "/document",
+        InsertPreTag = " ",
+        InsertPostTag = " "
+    };
 
     return mergeSkill;
 }
@@ -392,25 +382,23 @@ De vaardigheid **Taaldetectie** detecteert in welke taal de ingevoerde tekst is 
 ```csharp
 private static LanguageDetectionSkill CreateLanguageDetectionSkill()
 {
-    List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>
+    List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
+    inputMappings.Add(new InputFieldMappingEntry("text")
     {
-        new InputFieldMappingEntry(
-        name: "text",
-        source: "/document/merged_text")
-    };
+        Source = "/document/merged_text"
+    });
 
-    List<OutputFieldMappingEntry> outputMappings = new List<OutputFieldMappingEntry>
+    List<OutputFieldMappingEntry> outputMappings = new List<OutputFieldMappingEntry>();
+    outputMappings.Add(new OutputFieldMappingEntry("languageCode")
     {
-        new OutputFieldMappingEntry(
-        name: "languageCode",
-        targetName: "languageCode")
-    };
+        TargetName = "languageCode"
+    });
 
-    LanguageDetectionSkill languageDetectionSkill = new LanguageDetectionSkill(
-        description: "Detect the language used in the document",
-        context: "/document",
-        inputs: inputMappings,
-        outputs: outputMappings);
+    LanguageDetectionSkill languageDetectionSkill = new LanguageDetectionSkill(inputMappings, outputMappings)
+    {
+        Description = "Detect the language used in the document",
+        Context = "/document"
+    };
 
     return languageDetectionSkill;
 }
@@ -423,30 +411,30 @@ Met de onderstaande Vaardigheid **Splitsen** wordt de tekst op pagina's gesplits
 ```csharp
 private static SplitSkill CreateSplitSkill()
 {
-    List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>
+    List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
+    inputMappings.Add(new InputFieldMappingEntry("text")
     {
-        new InputFieldMappingEntry(
-        name: "text",
-        source: "/document/merged_text"),
-        new InputFieldMappingEntry(
-        name: "languageCode",
-        source: "/document/languageCode")
-    };
-
-    List<OutputFieldMappingEntry> outputMappings = new List<OutputFieldMappingEntry>
+        Source = "/document/merged_text"
+    });
+    inputMappings.Add(new InputFieldMappingEntry("languageCode")
     {
-        new OutputFieldMappingEntry(
-        name: "textItems",
-        targetName: "pages")
-    };
+        Source = "/document/languageCode"
+    });
 
-    SplitSkill splitSkill = new SplitSkill(
-        description: "Split content into pages",
-        context: "/document",
-        inputs: inputMappings,
-        outputs: outputMappings,
-        textSplitMode: TextSplitMode.Pages,
-        maximumPageLength: 4000);
+    List<OutputFieldMappingEntry> outputMappings = new List<OutputFieldMappingEntry>();
+    outputMappings.Add(new OutputFieldMappingEntry("textItems")
+    {
+        TargetName = "pages",
+    });
+
+    SplitSkill splitSkill = new SplitSkill(inputMappings, outputMappings)
+    {
+        Description = "Split content into pages",
+        Context = "/document",
+        TextSplitMode = TextSplitMode.Pages,
+        MaximumPageLength = 4000,
+        DefaultLanguageCode = SplitSkillLanguage.En
+    };
 
     return splitSkill;
 }
@@ -461,32 +449,25 @@ U ziet dat het 'contextveld' is ingesteld op ```"/document/pages/*"``` met een a
 ```csharp
 private static EntityRecognitionSkill CreateEntityRecognitionSkill()
 {
-    List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>
+    List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
+    inputMappings.Add(new InputFieldMappingEntry("text")
     {
-        new InputFieldMappingEntry(
-        name: "text",
-        source: "/document/pages/*")
-    };
+        Source = "/document/pages/*"
+    });
 
-    List<OutputFieldMappingEntry> outputMappings = new List<OutputFieldMappingEntry>
+    List<OutputFieldMappingEntry> outputMappings = new List<OutputFieldMappingEntry>();
+    outputMappings.Add(new OutputFieldMappingEntry("organizations")
     {
-        new OutputFieldMappingEntry(
-        name: "organizations",
-        targetName: "organizations")
-    };
+        TargetName = "organizations"
+    });
 
-    List<EntityCategory> entityCategory = new List<EntityCategory>
+    EntityRecognitionSkill entityRecognitionSkill = new EntityRecognitionSkill(inputMappings, outputMappings)
     {
-        EntityCategory.Organization
+        Description = "Recognize organizations",
+        Context = "/document/pages/*",
+        DefaultLanguageCode = EntityRecognitionSkillLanguage.En
     };
-
-    EntityRecognitionSkill entityRecognitionSkill = new EntityRecognitionSkill(
-        description: "Recognize organizations",
-        context: "/document/pages/*",
-        inputs: inputMappings,
-        outputs: outputMappings,
-        categories: entityCategory,
-        defaultLanguageCode: EntityRecognitionSkillLanguage.En);
+    entityRecognitionSkill.Categories.Add(EntityCategory.Organization);
 
     return entityRecognitionSkill;
 }
@@ -500,23 +481,27 @@ Net als voor het `EntityRecognitionSkill`-exemplaar dat zojuist is gemaakt, word
 private static KeyPhraseExtractionSkill CreateKeyPhraseExtractionSkill()
 {
     List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
-    inputMappings.Add(new InputFieldMappingEntry(
-        name: "text",
-        source: "/document/pages/*"));
-    inputMappings.Add(new InputFieldMappingEntry(
-        name: "languageCode",
-        source: "/document/languageCode"));
+    inputMappings.Add(new InputFieldMappingEntry("text")
+    {
+        Source = "/document/pages/*"
+    });
+    inputMappings.Add(new InputFieldMappingEntry("languageCode")
+    {
+        Source = "/document/languageCode"
+    });
 
     List<OutputFieldMappingEntry> outputMappings = new List<OutputFieldMappingEntry>();
-    outputMappings.Add(new OutputFieldMappingEntry(
-        name: "keyPhrases",
-        targetName: "keyPhrases"));
+    outputMappings.Add(new OutputFieldMappingEntry("keyPhrases")
+    {
+        TargetName = "keyPhrases"
+    });
 
-    KeyPhraseExtractionSkill keyPhraseExtractionSkill = new KeyPhraseExtractionSkill(
-        description: "Extract the key phrases",
-        context: "/document/pages/*",
-        inputs: inputMappings,
-        outputs: outputMappings);
+    KeyPhraseExtractionSkill keyPhraseExtractionSkill = new KeyPhraseExtractionSkill(inputMappings, outputMappings)
+    {
+        Description = "Extract the key phrases",
+        Context = "/document/pages/*",
+        DefaultLanguageCode = KeyPhraseExtractionSkillLanguage.En
+    };
 
     return keyPhraseExtractionSkill;
 }
@@ -527,23 +512,24 @@ private static KeyPhraseExtractionSkill CreateKeyPhraseExtractionSkill()
 Compileer de `Skillset` met behulp van de vaardigheden die u hebt gemaakt.
 
 ```csharp
-private static Skillset CreateOrUpdateDemoSkillSet(SearchServiceClient serviceClient, IList<Skill> skills)
+private static SearchIndexerSkillset CreateOrUpdateDemoSkillSet(SearchIndexerClient indexerClient, IList<SearchIndexerSkill> skills,string cognitiveServicesKey)
 {
-    Skillset skillset = new Skillset(
-        name: "demoskillset",
-        description: "Demo skillset",
-        skills: skills);
+    SearchIndexerSkillset skillset = new SearchIndexerSkillset("demoskillset", skills)
+    {
+        Description = "Demo skillset",
+        CognitiveServicesAccount = new CognitiveServicesAccountKey(cognitiveServicesKey)
+    };
 
     // Create the skillset in your search service.
     // The skillset does not need to be deleted if it was already created
     // since we are using the CreateOrUpdate method
     try
     {
-        serviceClient.Skillsets.CreateOrUpdate(skillset);
+        indexerClient.CreateOrUpdateSkillset(skillset);
     }
-    catch (Exception e)
+    catch (RequestFailedException ex)
     {
-        Console.WriteLine("Failed to create the skillset\n Exception message: {0}\n", e.Message);
+        Console.WriteLine("Failed to create the skillset\n Exception message: {0}\n", ex.Message);
         ExitProgram("Cannot continue without a skillset");
     }
 
@@ -554,28 +540,26 @@ private static Skillset CreateOrUpdateDemoSkillSet(SearchServiceClient serviceCl
 Voeg de volgende regels toe aan `Main`.
 
 ```csharp
-    // Create the skills
-    Console.WriteLine("Creating the skills...");
-    OcrSkill ocrSkill = CreateOcrSkill();
-    MergeSkill mergeSkill = CreateMergeSkill();
-    EntityRecognitionSkill entityRecognitionSkill = CreateEntityRecognitionSkill();
-    LanguageDetectionSkill languageDetectionSkill = CreateLanguageDetectionSkill();
-    SplitSkill splitSkill = CreateSplitSkill();
-    KeyPhraseExtractionSkill keyPhraseExtractionSkill = CreateKeyPhraseExtractionSkill();
+// Create the skills
+Console.WriteLine("Creating the skills...");
+OcrSkill ocrSkill = CreateOcrSkill();
+MergeSkill mergeSkill = CreateMergeSkill();
+EntityRecognitionSkill entityRecognitionSkill = CreateEntityRecognitionSkill();
+LanguageDetectionSkill languageDetectionSkill = CreateLanguageDetectionSkill();
+SplitSkill splitSkill = CreateSplitSkill();
+KeyPhraseExtractionSkill keyPhraseExtractionSkill = CreateKeyPhraseExtractionSkill();
 
-    // Create the skillset
-    Console.WriteLine("Creating or updating the skillset...");
-    List<Skill> skills = new List<Skill>
-    {
-        ocrSkill,
-        mergeSkill,
-        languageDetectionSkill,
-        splitSkill,
-        entityRecognitionSkill,
-        keyPhraseExtractionSkill
-    };
+// Create the skillset
+Console.WriteLine("Creating or updating the skillset...");
+List<SearchIndexerSkill> skills = new List<SearchIndexerSkill>();
+skills.Add(ocrSkill);
+skills.Add(mergeSkill);
+skills.Add(languageDetectionSkill);
+skills.Add(splitSkill);
+skills.Add(entityRecognitionSkill);
+skills.Add(keyPhraseExtractionSkill);
 
-    Skillset skillset = CreateOrUpdateDemoSkillSet(serviceClient, skills);
+SearchIndexerSkillset skillset = CreateOrUpdateDemoSkillSet(indexerClient, skills, cognitiveServicesKey);
 ```
 
 ### <a name="step-3-create-an-index"></a>Stap 3: Een index maken
@@ -598,36 +582,38 @@ De velden voor deze index worden gedefinieerd met behulp van een modelklasse. El
 
 De modelklasse wordt toegevoegd aan een nieuw C#-bestand. Klik met de rechtermuisknop op het project en selecteer **Toevoegen** > **Nieuw item...** , selecteer Klasse en geef het bestand de naam `DemoIndex.cs`. Selecteer vervolgens **Toevoegen**.
 
-Geef aan dat u typen wilt gebruiken van de naamruimten `Microsoft.Azure.Search` en `Microsoft.Azure.Search.Models`.
+Geef aan dat u typen wilt gebruiken van de naamruimten `Azure.Search.Documents.Indexes` en `System.Text.Json.Serialization`.
 
 Voeg de onderstaande definitie van de modelklasse toe aan `DemoIndex.cs` en neem deze op in dezelfde naamruimte waarin u de index gaat maken.
 
 ```csharp
-using Microsoft.Azure.Search;
-using Microsoft.Azure.Search.Models;
+using Azure.Search.Documents.Indexes;
+using System.Text.Json.Serialization;
 
 namespace EnrichwithAI
 {
-    // The SerializePropertyNamesAsCamelCase attribute is defined in the Azure Search .NET SDK.
-    // It ensures that Pascal-case property names in the model class are mapped to camel-case
-    // field names in the index.
-    [SerializePropertyNamesAsCamelCase]
+    // The SerializePropertyNamesAsCamelCase is currently unsupported as of this writing. 
+    // Replace it with JsonPropertyName
     public class DemoIndex
     {
-        [System.ComponentModel.DataAnnotations.Key]
-        [IsSearchable, IsSortable]
+        [SearchableField(IsSortable = true, IsKey = true)]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
-        [IsSearchable]
+        [SearchableField]
+        [JsonPropertyName("content")]
         public string Content { get; set; }
 
-        [IsSearchable]
+        [SearchableField]
+        [JsonPropertyName("languageCode")]
         public string LanguageCode { get; set; }
 
-        [IsSearchable]
+        [SearchableField]
+        [JsonPropertyName("keyPhrases")]
         public string[] KeyPhrases { get; set; }
 
-        [IsSearchable]
+        [SearchableField]
+        [JsonPropertyName("organizations")]
         public string[] Organizations { get; set; }
     }
 }
@@ -636,28 +622,31 @@ namespace EnrichwithAI
 Nu u een modelklasse hebt gedefinieerd, kunt u in `Program.cs` vrij eenvoudig een indexdefinitie maken. De naam voor deze index wordt `demoindex`. Als er al een index met deze naam bestaat, wordt deze verwijderd.
 
 ```csharp
-private static Index CreateDemoIndex(SearchServiceClient serviceClient)
+private static SearchIndex CreateDemoIndex(SearchIndexClient indexClient)
 {
-    var index = new Index()
+    FieldBuilder builder = new FieldBuilder();
+    var index = new SearchIndex("demoindex")
     {
-        Name = "demoindex",
-        Fields = FieldBuilder.BuildForType<DemoIndex>()
+        Fields = builder.Build(typeof(DemoIndex))
     };
 
     try
     {
-        bool exists = serviceClient.Indexes.Exists(index.Name);
-
-        if (exists)
-        {
-            serviceClient.Indexes.Delete(index.Name);
-        }
-
-        serviceClient.Indexes.Create(index);
+        indexClient.GetIndex(index.Name);
+        indexClient.DeleteIndex(index.Name);
     }
-    catch (Exception e)
+    catch (RequestFailedException ex) when (ex.Status == 404)
     {
-        Console.WriteLine("Failed to create the index\n Exception message: {0}\n", e.Message);
+        //if the specified index not exist, 404 will be thrown.
+    }
+
+    try
+    {
+        indexClient.CreateIndex(index);
+    }
+    catch (RequestFailedException ex)
+    {
+        Console.WriteLine("Failed to create the index\n Exception message: {0}\n", ex.Message);
         ExitProgram("Cannot continue without an index");
     }
 
@@ -670,118 +659,118 @@ Tijdens het testen is het mogelijk dat u de index meer dan één keer maakt. Con
 Voeg de volgende regels toe aan `Main`.
 
 ```csharp
-    // Create the index
-    Console.WriteLine("Creating the index...");
-    Microsoft.Azure.Search.Models.Index demoIndex = CreateDemoIndex(serviceClient);
+// Create the index
+Console.WriteLine("Creating the index...");
+SearchIndex demoIndex = CreateDemoIndex(indexClient);
 ```
 
 Voeg de volgende using-instructie toe om de dubbelzinnige verwijzing te corrigeren.
 
 ```csharp
-using Index = Microsoft.Azure.Search.Models.Index;
+using Index = Azure.Search.Documents.Indexes.Models;
 ```
 
-Zie [Create Index (Azure Cognitive Search REST API)](/rest/api/searchservice/create-index) (Index maken (Azure Cognitive Search REST API)) voor meer informatie over het definiëren van een index.
+Zie [Index maken (REST API)](/rest/api/searchservice/create-index) voor meer informatie over indexconcepten.
 
 ### <a name="step-4-create-and-run-an-indexer"></a>Stap 4: Indexeerfunctie maken en uitvoeren
 
 Tot nu toe hebt u een gegevensbron, een set vaardigheden en een index gemaakt. Deze drie onderdelen gaan deel uitmaken van een [indexeerfunctie](search-indexer-overview.md) die de onderdelen combineert in één meervoudige bewerking. Als u deze in een indexeerfunctie wilt combineren, moet u veldtoewijzingen definiëren.
 
-+ De fieldMappings worden vóór de vaardighedenset verwerkt, waarbij bronvelden van de gegevensbron worden toegewezen aan de doelvelden in een index. Als veldnamen en -typen gelijk zijn aan beide uiteinden, is toewijzing niet vereist.
+* De fieldMappings worden vóór de vaardighedenset verwerkt, waarbij bronvelden van de gegevensbron worden toegewezen aan de doelvelden in een index. Als veldnamen en -typen gelijk zijn aan beide uiteinden, is toewijzing niet vereist.
 
-+ De outputFieldMappings worden verwerkt na de vaardighedenset en verwijzen naar sourceFieldNames die niet bestaan totdat het document wordt gekraakt of verrijkt. De targetFieldName is een veld in een index.
+* De outputFieldMappings worden verwerkt na de vaardighedenset en verwijzen naar sourceFieldNames die niet bestaan totdat het document wordt gekraakt of verrijkt. De targetFieldName is een veld in een index.
 
 Naast het koppelen van invoer naar uitvoer, kunt u ook veldtoewijzingen gebruiken om gegevensstructuren samen te voegen. Zie [Verrijkte velden toewijzen aan een doorzoekbare index](cognitive-search-output-field-mapping.md) voor meer informatie.
 
 ```csharp
-private static Indexer CreateDemoIndexer(SearchServiceClient serviceClient, DataSource dataSource, Skillset skillSet, Index index)
+private static SearchIndexer CreateDemoIndexer(SearchIndexerClient indexerClient, SearchIndexerDataSourceConnection dataSource, SearchIndexerSkillset skillSet, SearchIndex index)
 {
-    IDictionary<string, object> config = new Dictionary<string, object>();
-    config.Add(
-        key: "dataToExtract",
-        value: "contentAndMetadata");
-    config.Add(
-        key: "imageAction",
-        value: "generateNormalizedImages");
-
-    List<FieldMapping> fieldMappings = new List<FieldMapping>
+    IndexingParameters indexingParameters = new IndexingParameters()
     {
-        new FieldMapping(
-        sourceFieldName: "metadata_storage_path",
-        targetFieldName: "id",
-        mappingFunction: new FieldMappingFunction(
-            name: "base64Encode")),
-        new FieldMapping(
-        sourceFieldName: "content",
-        targetFieldName: "content")
+        MaxFailedItems = -1,
+        MaxFailedItemsPerBatch = -1,
+    };
+    indexingParameters.Configuration.Add("dataToExtract", "contentAndMetadata");
+    indexingParameters.Configuration.Add("imageAction", "generateNormalizedImages");
+
+    SearchIndexer indexer = new SearchIndexer("demoindexer", dataSource.Name, index.Name)
+    {
+        Description = "Demo Indexer",
+        SkillsetName = skillSet.Name,
+        Parameters = indexingParameters
     };
 
-    List<FieldMapping> outputMappings = new List<FieldMapping>
-    {
-        new FieldMapping(
-        sourceFieldName: "/document/pages/*/organizations/*",
-        targetFieldName: "organizations"),
-        new FieldMapping(
-        sourceFieldName: "/document/pages/*/keyPhrases/*",
-        targetFieldName: "keyPhrases"),
-        new FieldMapping(
-        sourceFieldName: "/document/languageCode",
-        targetFieldName: "languageCode")
-    };
+    FieldMappingFunction mappingFunction = new FieldMappingFunction("base64Encode");
+    mappingFunction.Parameters.Add("useHttpServerUtilityUrlTokenEncode", true);
 
-    Indexer indexer = new Indexer(
-        name: "demoindexer",
-        dataSourceName: dataSource.Name,
-        targetIndexName: index.Name,
-        description: "Demo Indexer",
-        skillsetName: skillSet.Name,
-        parameters: new IndexingParameters(
-            maxFailedItems: -1,
-            maxFailedItemsPerBatch: -1,
-            configuration: config),
-        fieldMappings: fieldMappings,
-        outputFieldMappings: outputMappings);
+    indexer.FieldMappings.Add(new FieldMapping("metadata_storage_path")
+    {
+        TargetFieldName = "id",
+        MappingFunction = mappingFunction
+
+    });
+    indexer.FieldMappings.Add(new FieldMapping("content")
+    {
+        TargetFieldName = "content"
+    });
+
+    indexer.OutputFieldMappings.Add(new FieldMapping("/document/pages/*/organizations/*")
+    {
+        TargetFieldName = "organizations"
+    });
+    indexer.OutputFieldMappings.Add(new FieldMapping("/document/pages/*/keyPhrases/*")
+    {
+        TargetFieldName = "keyPhrases"
+    });
+    indexer.OutputFieldMappings.Add(new FieldMapping("/document/languageCode")
+    {
+        TargetFieldName = "languageCode"
+    });
 
     try
     {
-        bool exists = serviceClient.Indexers.Exists(indexer.Name);
-
-        if (exists)
-        {
-            serviceClient.Indexers.Delete(indexer.Name);
-        }
-
-        serviceClient.Indexers.Create(indexer);
+        indexerClient.GetIndexer(indexer.Name);
+        indexerClient.DeleteIndexer(indexer.Name);
     }
-    catch (Exception e)
+    catch (RequestFailedException ex) when (ex.Status == 404)
     {
-        Console.WriteLine("Failed to create the indexer\n Exception message: {0}\n", e.Message);
+        //if the specified indexer not exist, 404 will be thrown.
+    }
+
+    try
+    {
+        indexerClient.CreateIndexer(indexer);
+    }
+    catch (RequestFailedException ex)
+    {
+        Console.WriteLine("Failed to create the indexer\n Exception message: {0}\n", ex.Message);
         ExitProgram("Cannot continue without creating an indexer");
     }
 
     return indexer;
 }
 ```
+
 Voeg de volgende regels toe aan `Main`.
 
 ```csharp
-    // Create the indexer, map fields, and execute transformations
-    Console.WriteLine("Creating the indexer and executing the pipeline...");
-    Indexer demoIndexer = CreateDemoIndexer(serviceClient, dataSource, skillset, demoIndex);
+// Create the indexer, map fields, and execute transformations
+Console.WriteLine("Creating the indexer and executing the pipeline...");
+SearchIndexer demoIndexer = CreateDemoIndexer(indexerClient, dataSource, skillset, demoIndex);
 ```
 
-Het kan even duren voordat de indexeerfunctie is voltooid. De gegevensset is klein, maar analytische vaardigheden zijn berekeningsintensief. Sommige vaardigheden, zoals afbeeldingsanalyse, zijn langlopend.
+Het verwerken via de indexeerfunctie kost enige tijd om te voltooien. De gegevensset is klein, maar analytische vaardigheden zijn berekeningsintensief. Sommige vaardigheden, zoals afbeeldingsanalyse, zijn langlopend.
 
 > [!TIP]
 > Het maken van een indexeerfunctie roept de pijplijn aan. Als er problemen zijn met het bereiken van de gegevens, het toewijzen van invoeren en uitvoeren of de volgorde van bewerkingen, worden ze in deze fase weergegeven.
 
 ### <a name="explore-creating-the-indexer"></a>Indexeerfunctie maken
 
-De code stelt ```"maxFailedItems"``` op -1 in, wat de indexeerengine de opdracht geeft om fouten tijdens het importeren van gegevens te negeren. Dit is nuttig omdat de demo-gegevensbron maar een paar documenten bevat. Voor een grotere gegevensbron zou u de waarde op groter dan 0 instellen.
+De code stelt `"maxFailedItems"` op -1 in, wat de indexeerengine de opdracht geeft om fouten tijdens het importeren van gegevens te negeren. Dit is nuttig omdat de demo-gegevensbron maar een paar documenten bevat. Voor een grotere gegevensbron zou u de waarde op groter dan 0 instellen.
 
-U ziet ook dat de ```"dataToExtract"``` is ingesteld op ```"contentAndMetadata"```. Deze instructie geeft de indexeerfunctie de opdracht om automatisch de inhoud van verschillende bestandsindelingen te extraheren, evenals metagegevens voor elk bestand.
+U ziet ook dat de `"dataToExtract"` is ingesteld op `"contentAndMetadata"`. Deze instructie geeft de indexeerfunctie de opdracht om automatisch de inhoud van verschillende bestandsindelingen te extraheren, evenals metagegevens voor elk bestand.
 
-Wanneer inhoud wordt uitgepakt, kunt u instellen dat `imageAction` tekst ophaalt uit afbeeldingen die in de gegevensbron worden gevonden. Met de configuratie waarbij ```"imageAction"``` is ingesteld op ```"generateNormalizedImages"```, in combinatie met de vaardigheid OCR en de vaardigheid Tekst samenvoegen, krijgt de indexeerfunctie de opdracht om tekst uit de afbeeldingen te extraheren (bijvoorbeeld het woord 'stop' van een Stop-verkeersbord) en deze in te sluiten als onderdeel van het inhoudsveld. Dit gedrag is van toepassing op zowel de afbeeldingen die zijn ingesloten in de documenten (zoals een afbeelding in een pdf-bestand) als afbeeldingen die zijn gevonden in de gegevensbron, zoals een JPG-bestand.
+Wanneer inhoud wordt uitgepakt, kunt u instellen dat `imageAction` tekst ophaalt uit afbeeldingen die in de gegevensbron worden gevonden. Met de configuratie waarbij `"imageAction"` is ingesteld op `"generateNormalizedImages"`, in combinatie met de vaardigheid OCR en de vaardigheid Tekst samenvoegen, krijgt de indexeerfunctie de opdracht om tekst uit de afbeeldingen te extraheren (bijvoorbeeld het woord 'stop' van een Stop-verkeersbord) en deze in te sluiten als onderdeel van het inhoudsveld. Dit gedrag is van toepassing op zowel de afbeeldingen die zijn ingesloten in de documenten (zoals een afbeelding in een pdf-bestand) als afbeeldingen die zijn gevonden in de gegevensbron, zoals een JPG-bestand.
 
 <a name="check-indexer-status"></a>
 
@@ -790,13 +779,13 @@ Wanneer inhoud wordt uitgepakt, kunt u instellen dat `imageAction` tekst ophaalt
 Nadat de indexeerfunctie is gedefinieerd, wordt deze automatisch uitgevoerd wanneer u de aanvraag verzendt. Afhankelijk van welke cognitieve vaardigheden u hebt gedefinieerd, kan het indexeren langer duren dan verwacht. Als u wilt weten of de indexeerfunctie nog steeds wordt uitgevoerd, gebruikt u de methode `GetStatus`.
 
 ```csharp
-private static void CheckIndexerOverallStatus(SearchServiceClient serviceClient, Indexer indexer)
+private static void CheckIndexerOverallStatus(SearchIndexerClient indexerClient, SearchIndexer indexer)
 {
     try
     {
-        IndexerExecutionInfo demoIndexerExecutionInfo = serviceClient.Indexers.GetStatus(indexer.Name);
+        var demoIndexerExecutionInfo = indexerClient.GetIndexerStatus(indexer.Name);
 
-        switch (demoIndexerExecutionInfo.Status)
+        switch (demoIndexerExecutionInfo.Value.Status)
         {
             case IndexerStatus.Error:
                 ExitProgram("Indexer has error status. Check the Azure Portal to further understand the error.");
@@ -812,101 +801,40 @@ private static void CheckIndexerOverallStatus(SearchServiceClient serviceClient,
                 break;
         }
     }
-    catch (Exception e)
+    catch (RequestFailedException ex)
     {
-        Console.WriteLine("Failed to get indexer overall status\n Exception message: {0}\n", e.Message);
+        Console.WriteLine("Failed to get indexer overall status\n Exception message: {0}\n", ex.Message);
     }
 }
 ```
 
-Met `IndexerExecutionInfo` wordt de huidige status en de uitvoeringsgeschiedenis van een indexeerfunctie aangegeven.
+Met `demoIndexerExecutionInfo` wordt de huidige status en de uitvoeringsgeschiedenis van een indexeerfunctie aangegeven.
 
 Waarschuwingen komen veel voor bij sommige combinaties van bronbestand en vaardigheid en wijzen niet altijd op een probleem. In deze zelfstudie zijn de waarschuwingen onschadelijk (bijvoorbeeld geen tekstinvoeren van de JPEG-bestanden).
 
 Voeg de volgende regels toe aan `Main`.
 
 ```csharp
-    // Check indexer overall status
-    Console.WriteLine("Check the indexer overall status...");
-    CheckIndexerOverallStatus(serviceClient, demoIndexer);
+// Check indexer overall status
+Console.WriteLine("Check the indexer overall status...");
+CheckIndexerOverallStatus(indexerClient, demoIndexer);
 ```
- 
+
 ## <a name="5---search"></a>5 - Zoeken
 
-U kunt, nadat het indexeren is voltooid, query's uitvoeren waardoor de inhoud van afzonderlijke velden wordt geretourneerd. Standaard retourneert Azure Cognitive Search de 50 hoogste resultaten. De voorbeeldgegevens zijn beperkt, dus de standaardinstelling werkt prima. Als u echter werkt met grotere gegevenssets, moet u mogelijk parameters opnemen in de queryreeks om meer resultaten te retourneren. Zie [How to page results in Azure Cogntive Search](search-pagination-page-layout.md) (Resultaten genereren in Azure Cognitive Search) voor instructies.
+In de console-apps van de Azure Cognitive Search-zelfstudie voegen we meestal een vertraging van 2 seconden toe vóór de uitvoering van query's die resultaten retourneren, maar omdat het enkele minuten duurt voordat de verrijking is voltooid, wordt de console-app gesloten en gebruiken we in plaats hiervan een andere methode.
 
-Voer als verificatiestap query's uit op de index voor alle velden.
+De meest eenvoudige optie is [Search Explorer](search-explorer.md) in de portal. U kunt eerst een lege query uitvoeren waarmee alle documenten worden geretourneerd, of een gerichte zoekopdracht uitvoeren waarmee nieuwe veldinhoud wordt geretourneerd die is gemaakt via de pijplijn. 
 
-Voeg de volgende regels toe aan `Main`.
+1. Selecteer in de Azure-portal, op de pagina Overzicht, de optie **Indexen**.
 
-```csharp
-DocumentSearchResult<DemoIndex> results;
+1. Zoek **`demoindex`** in de lijst. Het resultaat moet 14 documenten bevatten. Als het aantal documenten nul is, is de Indexeerfunctie nog actief of is de pagina nog niet vernieuwd. 
 
-ISearchIndexClient indexClientForQueries = CreateSearchIndexClient(configuration);
+1. Selecteer **`demoindex`**. Search Explorer is het eerste tabblad.
 
-SearchParameters parameters =
-    new SearchParameters
-    {
-        Select = new[] { "organizations" }
-    };
+1. Inhoud is doorzoekbaar zodra het eerste document is geladen. Als u wilt controleren of inhoud bestaat, voert u een niet-opgegeven query uit door te klikken op **Zoeken**. Met deze query worden alle momenteel geïndexeerde documenten geretourneerd, waardoor u een idee krijgt van wat de index bevat.
 
-try
-{
-    results = indexClientForQueries.Documents.Search<DemoIndex>("*", parameters);
-}
-catch (Exception e)
-{
-    // Handle exception
-}
-```
-
-`CreateSearchIndexClient` maakt een nieuwe `SearchIndexClient` met behulp van waarden die zijn opgeslagen in het configuratiebestand van de toepassing (appsettings.json). U ziet dat de query-API-sleutel van de zoekservice wordt gebruikt en niet de Admin-sleutel.
-
-```csharp
-private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot configuration)
-{
-   string searchServiceName = configuration["SearchServiceName"];
-   string queryApiKey = configuration["SearchServiceQueryApiKey"];
-
-   SearchIndexClient indexClient = new SearchIndexClient(searchServiceName, "demoindex", new SearchCredentials(queryApiKey));
-   return indexClient;
-}
-```
-
-Voeg de volgende code toe aan `Main`. De eerste try-catch-instructie retourneert de indexdefinitie, met de naam, het type en de kenmerken van elk veld. De tweede is een geparameteriseerde query, waarbij `Select` opgeeft welke velden moeten worden meegenomen in de resultaten, bijvoorbeeld `organizations`. Een zoekreeks van `"*"` retourneert de hele inhoud van één veld.
-
-```csharp
-//Verify content is returned after indexing is finished
-ISearchIndexClient indexClientForQueries = CreateSearchIndexClient(configuration);
-
-try
-{
-    results = indexClientForQueries.Documents.Search<DemoIndex>("*");
-    Console.WriteLine("First query succeeded with a result count of {0}", results.Results.Count);
-}
-catch (Exception e)
-{
-    Console.WriteLine("First query failed\n Exception message: {0}\n", e.Message);
-}
-
-SearchParameters parameters =
-    new SearchParameters
-    {
-        Select = new[] { "organizations" }
-    };
-
-try
-{
-    results = indexClientForQueries.Documents.Search<DemoIndex>("*", parameters);
-    Console.WriteLine("Second query succeeded with a result count of {0}", results.Results.Count);
-}
-catch (Exception e)
-{
-    Console.WriteLine("Second query failed\n Exception message: {0}\n", e.Message);
-}
-```
-
-Herhaal dit voor andere velden: inhoud, taalcode, sleuteltermen en organisaties in deze oefening. Met behulp van een door komma's gescheiden lijst kunt meerdere velden retourneren via de eigenschap [Select](/dotnet/api/microsoft.azure.search.models.searchparameters.select).
+1. Plak vervolgens de volgende tekenreeks voor meer beheerbare resultaten: `search=*&$select=id, languageCode, organizations`
 
 <a name="reset"></a>
 
@@ -914,9 +842,7 @@ Herhaal dit voor andere velden: inhoud, taalcode, sleuteltermen en organisaties 
 
 In de eerste experimentele fasen van ontwikkeling, is de meest praktische aanpak voor ontwerpiteraties om de objecten uit Azure Cognitive Search te verwijderen en uw code ze te laten herbouwen. Resourcenamen zijn uniek. Na het verwijderen van een object kunt u het opnieuw maken met dezelfde naam.
 
-In de voorbeeldcode voor deze zelfstudie wordt gecontroleerd op bestaande objecten. Deze worden verwijderd, zodat u de code opnieuw kunt uitvoeren.
-
-U kunt de portal ook gebruiken om indexen, indexeerfuncties, gegevensbronnen en vaardighedensets te verwijderen.
+In de voorbeeldcode voor deze zelfstudie wordt gecontroleerd op bestaande objecten. Deze worden verwijderd, zodat u de code opnieuw kunt uitvoeren. U kunt de portal ook gebruiken om indexen, indexeerfuncties, gegevensbronnen en vaardighedensets te verwijderen.
 
 ## <a name="takeaways"></a>Opgedane kennis
 

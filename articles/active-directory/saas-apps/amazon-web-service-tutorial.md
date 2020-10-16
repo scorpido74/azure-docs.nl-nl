@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/14/2020
 ms.author: jeedes
-ms.openlocfilehash: 7377c6ea92ea53ca14525938e7522448afac541c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d2a3eda97fec03e767425b7f7a126073b2f13ca5
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548349"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713633"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>Zelfstudie: Integratie van eenmalige aanmelding in Azure Active Directory met Amazon Web Services (AWS)
 
@@ -304,7 +304,7 @@ In dit gedeelte gaat u B. Simon toestemming geven voor gebruik van eenmalige aan
 
 18. Maak een nieuw beleid voor deze gebruiker.
 
-    ![Schermopname van Add user](./media/amazon-web-service-tutorial/adduser2.png)
+    ![Schermopname met de pagina Gebruiker toevoegen, waar u een beleid voor de gebruiker kunt maken.](./media/amazon-web-service-tutorial/adduser2.png)
 
     a. Selecteer **Attach existing policies directly**.
 
@@ -322,7 +322,7 @@ In dit gedeelte gaat u B. Simon toestemming geven voor gebruik van eenmalige aan
 
 20. Download de referenties van een gebruiker.
 
-    ![Schermopname van Add user](./media/amazon-web-service-tutorial/adduser4.png)
+    ![Schermopname met de pagina Gebruiker toevoegen met de knop C S V downloaden om gebruikersreferenties op te halen.](./media/amazon-web-service-tutorial/adduser4.png)
 
     a. Kopieer de **Access key ID** en **Secret access key** van de gebruiker.
 

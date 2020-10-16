@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.author: rajosh
 ms.openlocfilehash: 89dc962c73a6446afc79eec2a0fcfd5c0e32e84e
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91576707"
 ---
 # <a name="create-an-azure-vmware-solution-avs-assessment"></a>Een evaluatie van een Azure VMware-oplossing (AVS) maken
@@ -111,7 +111,7 @@ Een evaluatie van de Azure VMware-oplossing (AVS) beschrijft:
 
 3. Bekijk het voorgestelde hulp programma:
     - **VMware HCX of ENTER prise**: voor VMware-machines is de VMware Hybrid Cloud extension (HCX)-oplossing het aanbevolen migratie programma voor het migreren van uw on-premises werk belasting naar uw Azure VMware-oplossing (AVS) Private Cloud. [Meer informatie](../azure-vmware/tutorial-deploy-vmware-hcx.md).
-    - **Onbekend**: Voor machines die zijn geïmporteerd via een CSV-bestand, is het standaardhulpprogramma voor migratie onbekend. Voor VMware-machines wordt u aangeraden de VMware Hybrid Cloud extension (HCX)-oplossing te gebruiken. 
+    - **Onbekend**: Voor machines die zijn geïmporteerd via een CSV-bestand, is het standaardhulpprogramma voor migratie onbekend. Voor VMware-machines wordt echter aanbevolen om de VMWare HCX-oplossing (Hybrid Cloud Extension) te gebruiken. 
 
 4. Klik op een **AVS-gereedheids** status. U kunt details van de VM-gereedheid weergeven en inzoomen op de details van de VM, inclusief berekenings-, opslag- en netwerkinstellingen.
 
@@ -121,11 +121,11 @@ Een evaluatie van de Azure VMware-oplossing (AVS) beschrijft:
 
 In deze weer gave worden de geschatte kosten van het uitvoeren van Vm's in de Azure VMware-oplossing (AVS) weer gegeven.
 
-1. Bekijk de maandelijkse totale kosten. De kosten worden geaggregeerd voor alle VM's in de geëvalueerde groep. 
+1. Controleer de maandelijkse totale kosten. De kosten worden geaggregeerd voor alle VM's in de geëvalueerde groep. 
 
     - Kosten ramingen zijn gebaseerd op het aantal AVS-knoop punten dat is vereist bij het overwegen van de resource vereisten van alle virtuele machines in totaal.
     - Naarmate de prijzen voor de Azure VMware-oplossing (AVS) per knoop punt zijn, heeft de totale kosten geen reken kosten en de distributie van de opslag kosten.
-    - De kosten raming is voor het uitvoeren van de on-premises Vm's in AVS. Azure Migrate Serverevaluatie houdt geen rekening met PaaS-of SaaS-kosten.
+    - De schatting van de kosten is voor het uitvoeren van de on-premises virtuele machines in AVS. Azure Migrate Serverevaluatie houdt geen rekening met PaaS-of SaaS-kosten.
     
 2. U kunt de schatting van de maandelijkse opslagkosten controleren. In deze weergave worden geaggregeerde opslagkosten voor de geëvalueerde groep weergegeven, gesplitst over verschillende typen opslagschijven.
 

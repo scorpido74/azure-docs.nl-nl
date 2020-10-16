@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: victorh
 ms.openlocfilehash: df92e08e91761d77c606ccb5389eee7dc219c101
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91323367"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>App Service configureren met Application Gateway
@@ -56,7 +56,7 @@ In dit artikel leert u het volgende:
 3. Onder **hostnaam negeren**selecteert u **hostnaam kiezen uit back-end doel**.
 4. Selecteer **Opslaan**.
 
-   :::image type="content" source="./media/configure-web-app-portal/http-settings.png" alt-text="Kies een hostnaam uit de back-end-http-instellingen":::
+   :::image type="content" source="./media/configure-web-app-portal/http-settings.png" alt-text="App service-back-end":::
 
 ## <a name="additional-configuration-in-case-of-redirection-to-app-services-relative-path"></a>Aanvullende configuratie in het geval van omleiding naar het relatieve pad van de app service
 

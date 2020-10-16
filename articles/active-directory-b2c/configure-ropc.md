@@ -12,10 +12,10 @@ ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 3dbafac99ebc1b7472bf884647ad5e8657f0de0b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87482852"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>De gegevens stroom van het wacht woord voor de resource-eigenaar configureren in Azure AD B2C
@@ -36,7 +36,7 @@ De ROPC-stroom (resource owner password credentials) is een OAuth-standaard veri
 7. Geef een naam op voor de gebruikers stroom, bijvoorbeeld *ROPC_Auth*.
 8. Klik onder **toepassings claims**op **weer geven**.
 9. Selecteer de toepassings claims die u nodig hebt voor uw toepassing, zoals weergave naam, e-mail adres en ID-provider.
-10. Selecteer **OK**, en selecteer vervolgens **Maken**.
+10. Selecteer **OK**en selecteer vervolgens **maken**.
 11. Klik op **gebruikers stroom uitvoeren**.
 
    Vervolgens ziet u een eind punt zoals dit voor beeld:
@@ -127,7 +127,7 @@ Een geslaagde reactie ziet eruit als in het volgende voor beeld:
 > [!NOTE]
 > Bij het maken van gebruikers via Graph API moet de toepassing de machtigingen ' OpenID Connect ', ' offline_access ' en ' profile ' van Microsoft Graph hebben.
 
-## <a name="implement-with-your-preferred-native-sdk-or-use-app-auth"></a>Implementeer met uw voorkeurs systeem eigen SDK of gebruik app-auth
+## <a name="implement-with-your-preferred-native-sdk-or-use-app-auth"></a>Implementeer met uw voorkeurs systeem eigen SDK of gebruik App-Auth
 
 De implementatie van de Azure AD B2C voldoet aan de OAuth 2,0-standaarden voor de referenties van het eigenaars wachtwoord voor open bare client bronnen en moet compatibel zijn met de meeste client-Sdk's. We hebben deze stroom uitgebreid getest in productie, met AppAuth voor iOS en AppAuth voor Android. Zie voor de meest recente informatie [systeem eigen app SDK voor OAuth 2,0 en OpenID Connect Connect implementeren moderne Best practices](https://appauth.io/).
 

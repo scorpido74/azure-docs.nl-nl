@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 4414dc86ff318cfff5d224ce7aa064c31f3df460
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 61233173452bb45162c7b254203e0ff2922a9784
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91294525"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013743"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>Log Analytics-agent installeren op Linux-computers
 In dit artikel vindt u informatie over het installeren van de Log Analytics-agent op Linux-computers met behulp van de volgende methoden:
@@ -215,7 +215,7 @@ Een upgrade uitvoeren van een eerdere versie, te beginnen met versie 1.0.0-47, w
 ## <a name="cache-information"></a>Cache gegevens
 Gegevens van de Log Analytics-agent voor Linux bevinden zich in de cache op de lokale computer op *% STATE_DIR_WS%/out_oms_common*. buffer * voordat deze wordt verzonden naar Azure monitor. Aangepaste logboek gegevens worden gebufferd in *% STATE_DIR_WS%/out_oms_blob*. buffer *. Het pad kan verschillen voor sommige [oplossingen en gegevens typen](https://github.com/microsoft/OMS-Agent-for-Linux/search?utf8=%E2%9C%93&q=+buffer_path&type=).
 
-De agent probeert om de 20 seconden te uploaden. Als dit mislukt, wordt een exponentieel toenemende duur gewacht totdat deze slaagt. Het wacht 30 seconden vóór de tweede poging, 60 seconden vóór de volgende 120 seconden, enzovoort tot Maxi maal 9 minuten tussen nieuwe pogingen tot de verbinding weer tot stand is gebracht. De agent zal alleen tien keer opnieuw proberen voor een gegeven gegevens segment voordat deze wordt verwijderd en verplaatst naar de volgende. Dit wordt vervolgd totdat de agent opnieuw kan worden geüpload. Het betekent dat gegevens kunnen worden gebufferd tot 8,5 uur voordat ze worden verwijderd.
+De agent probeert om de 20 seconden te uploaden. Als dit mislukt, wordt een exponentieel toenemende tijds duur gewacht totdat deze slaagt: 30 seconden vóór de tweede poging, 60 seconden vóór de derde, 120 seconden... en tot Maxi maal 16 minuten tussen nieuwe pogingen tot de verbinding opnieuw tot stand is gebracht. De agent zal Maxi maal zes keer opnieuw proberen voor een gegeven segment van gegevens voordat u het volgende kunt verwijderen en verplaatsen. Dit wordt vervolgd totdat de agent opnieuw kan worden geüpload. Dit betekent dat gegevens kunnen worden gebufferd tot ongeveer 30 minuten voordat ze worden verwijderd.
 
 De standaard cache grootte is 10 MB, maar kan worden gewijzigd in het [bestand omsagent. conf](https://github.com/microsoft/OMS-Agent-for-Linux/blob/e2239a0714ae5ab5feddcc48aa7a4c4f971417d4/installer/conf/omsagent.conf).
 

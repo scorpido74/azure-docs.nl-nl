@@ -10,10 +10,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.openlocfilehash: edddd100bddab1d642a8169353298a2d20620274
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79281338"
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Gegevens verplaatsen van MongoDB met behulp van Azure Data Factory
@@ -63,15 +63,15 @@ In de volgende tabel vindt u een beschrijving van de JSON-elementen die specifie
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| type |De eigenschap type moet worden ingesteld op: **OnPremisesMongoDb** |Yes |
-| server |Het IP-adres of de hostnaam van de MongoDB-server. |Yes |
+| type |De eigenschap type moet worden ingesteld op: **OnPremisesMongoDb** |Ja |
+| server |Het IP-adres of de hostnaam van de MongoDB-server. |Ja |
 | poort |TCP-poort die de MongoDB-server gebruikt om te Luis teren naar client verbindingen. |Optioneel, standaard waarde: 27017 |
-| authenticationType |Basic of anoniem. |Yes |
+| authenticationType |Basic of anoniem. |Ja |
 | gebruikersnaam |Gebruikers account voor toegang tot MongoDB. |Ja (als basis verificatie wordt gebruikt). |
 | wachtwoord |Het wachtwoord voor de gebruiker. |Ja (als basis verificatie wordt gebruikt). |
 | authSource |De naam van de MongoDB-data base die u wilt gebruiken om uw referenties voor verificatie te controleren. |Optioneel (als basis verificatie wordt gebruikt). standaard: gebruikt het beheerders account en de data base die is opgegeven met de eigenschap databasename. |
-| databaseName |De naam van de MongoDB-data base waartoe u toegang wilt krijgen. |Yes |
-| gatewayName |De naam van de gateway die toegang heeft tot het gegevens archief. |Yes |
+| databaseName |De naam van de MongoDB-data base waartoe u toegang wilt krijgen. |Ja |
+| gatewayName |De naam van de gateway die toegang heeft tot het gegevens archief. |Ja |
 | encryptedCredential |Referentie versleuteld door gateway. |Optioneel |
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
@@ -81,7 +81,7 @@ De sectie **typeProperties** verschilt voor elk type gegevensset en bevat inform
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| collectionName |De naam van de verzameling in de MongoDB-data base. |Yes |
+| collectionName |De naam van de verzameling in de MongoDB-data base. |Ja |
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 Zie het artikel [pijp lijnen maken](data-factory-create-pipelines.md) voor een volledige lijst met secties & eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. Eigenschappen zoals naam, beschrijving, invoer-en uitvoer tabellen en beleid zijn beschikbaar voor alle typen activiteiten.
@@ -300,7 +300,7 @@ Bij het verplaatsen van gegevens naar MongoDB worden de volgende toewijzingen ge
 | NumberLong |Int64 |
 | ObjectID |Tekenreeks |
 | Tekenreeks |Tekenreeks |
-| MEE |GUID |
+| MEE |Guid |
 | Object |Opnieuw genormaliseerd in kolommen met ' _ ' als genest scheidings teken |
 
 > [!NOTE]
@@ -321,14 +321,14 @@ U kunt de [wizard kopiëren](data-factory-data-movement-activities.md#create-a-p
 ### <a name="example"></a>Voorbeeld
 Bijvoorbeeld: ' ExampleTable ' hieronder is een MongoDB-tabel met één kolom met een matrix van objecten in elke cel, facturen en één kolom met een matrix van scalaire typen – classificaties.
 
-| _id | Naam van klant | Facturen | Service niveau | Waarderingen |
+| _id | Naam van klant | Facturen | Serviceniveau | Waarderingen |
 | --- | --- | --- | --- | --- |
 | 1111 |ABC |[{invoice_id: "123", item: "pop-uptaak", prijs: "456", korting: "0,2"}, {invoice_id: "124", item: "oven", prijs: "1235", korting: "0,2"}] |Zilver |[5, 6] |
 | 2222 |XYZ |[{invoice_id: "135", item: "koel kast", prijs: "12543", korting: "0,0"}] |Goud |[1, 2] |
 
 Het stuur programma genereert meerdere virtuele tabellen om deze afzonderlijke tabel weer te geven. De eerste virtuele tabel is de basis tabel met de naam ' ExampleTable ', zoals hieronder wordt weer gegeven. De basis tabel bevat alle gegevens van de oorspronkelijke tabel, maar de gegevens uit de matrices zijn wegge laten en worden uitgevouwen in de virtuele tabellen.
 
-| _id | Naam van klant | Service niveau |
+| _id | Naam van klant | Serviceniveau |
 | --- | --- | --- |
 | 1111 |ABC |Zilver |
 | 2222 |XYZ |Goud |

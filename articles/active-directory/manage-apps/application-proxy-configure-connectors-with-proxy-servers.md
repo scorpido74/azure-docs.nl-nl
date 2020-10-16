@@ -13,10 +13,10 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d177dce250d65b4f9d825c9d70916f70c4076d4b
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88077506"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Werken met bestaande on-premises proxyservers
@@ -144,7 +144,7 @@ Het gebruik van een doorstuur proxy voor de communicatie naar de back-end-toepas
 Voer de volgende stappen uit om dit in te scha kelen:
 
 ### <a name="step-1-add-the-required-registry-value-to-the-server"></a>Stap 1: de vereiste register waarde toevoegen aan de server
-1. Als u het gebruik van de standaard proxy wilt inschakelen, voegt u de volgende register waarde (DWORD) toe `UseDefaultProxyForBackendRequests = 1` aan de register sleutel connector configuratie in ' HKEY_LOCAL_MACHINE \SOFTWARE\MICROSOFT\MICROSOFT Aad-app-connector.
+1. Als u het gebruik van de standaard proxy wilt inschakelen, voegt u de volgende register waarde (DWORD) toe `UseDefaultProxyForBackendRequests = 1` aan de register sleutel connector configuratie in HKEY_LOCAL_MACHINE\Software\Microsoft\Microsoft AAD App Proxy Connector.
 
 ### <a name="step-2-configure-the-proxy-server-manually-using-netsh-command"></a>Stap 2: Configureer de proxy server hand matig met de opdracht netsh
 1.  Schakel het groeps beleid proxy-instellingen per computer in. Dit vindt u in: Computerconfiguratie\beleid\beheersjablonen\windows-onderdelen\Extern Explorer. Deze moet worden ingesteld in plaats van dat dit beleid moet worden ingesteld op per gebruiker.

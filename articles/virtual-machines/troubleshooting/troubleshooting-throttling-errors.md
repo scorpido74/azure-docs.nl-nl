@@ -14,10 +14,10 @@ ms.date: 09/18/2018
 ms.author: changov
 ms.reviewer: vashan, rajraj
 ms.openlocfilehash: b1cc8a43423ecd33218948aaa001fc34877eac60
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87074291"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>Problemen met API-beperkingsfouten oplossen 
@@ -32,7 +32,7 @@ Wanneer een Azure API-client een beperkings fout krijgt, is de HTTP-status 429 t
 
 ## <a name="call-rate-informational-response-headers"></a>Informatie over oproep frequentie gegevens 
 
-| Header                            | Waarde-indeling                           | Voorbeeld                               | Beschrijving                                                                                                                                                                                               |
+| Koptekst                            | Waarde-indeling                           | Voorbeeld                               | Beschrijving                                                                                                                                                                                               |
 |-----------------------------------|----------------------------------------|---------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | x-MS-ratelimit-rest-resource |```<source RP>/<policy or bucket>;<count>```| Micro soft. Compute/HighCostGet3Min; 159 | Resterend aantal API-aanroepen voor het beperkings beleid met betrekking tot de resource Bucket of bewerkings groep, inclusief het doel van deze aanvraag                                                                   |
 | x-ms-request-charge               | ```<count>```                             | 1                                     | Het aantal aanroepen voor deze HTTP-aanvraag wordt in rekening gebracht voor de limiet van het betreffende beleid. Dit is meestal 1. Batch-aanvragen, zoals voor het schalen van een schaalset voor virtuele machines, kunnen meerdere tellingen in rekening brengen. |
@@ -93,7 +93,7 @@ De Power shell-cmdlets maken gebruik van een REST Service-API, die gemakkelijk r
 
 - Voer de API-fouten van Azure service niet onvoorwaardelijk en/of onmiddellijk opnieuw uit. Een veelvoorkomend exemplaar is voor client code om een herhaalde lus te krijgen wanneer er een fout optreedt die niet opnieuw kan worden uitgevoerd. De toegestane oproep limiet voor de groep van de doel bewerking wordt uiteindelijk uitgeput en de andere clients van het abonnement zijn van invloed op de nieuwe pogingen. 
 - In het geval van API-automatiserings toepassingen met veel volumes kunt u de proactieve zelf beperking aan de client zijde implementeren wanneer het aantal beschik bare aanroepen voor een doel bewerkings groep onder een lage drempel waarde daalt. 
-- Houd bij het volgen van asynchrone bewerkingen rekening met de hints voor opnieuw proberen na. 
+- Houd bij het volgen van asynchrone bewerkingen rekening met de hints voor de Retry-After-header. 
 - Als de client code informatie nodig heeft over een bepaalde virtuele machine, voert u een query uit op de VM in plaats van alle virtuele machines in de betreffende resource groep of het hele abonnement te vermelden en vervolgens de benodigde VM aan de client zijde te selecteren. 
 - Als voor de client code Vm's, schijven en moment opnamen van een specifieke Azure-locatie nodig zijn, gebruikt u op locatie gebaseerde formulier van de query in plaats van alle Vm's van het abonnement te doorzoeken en vervolgens te filteren op locatie aan de client zijde: `GET /subscriptions/<subId>/providers/Microsoft.Compute/locations/<location>/virtualMachines?api-version=2017-03-30` query om regionale eind punten van de resource provider te berekenen. 
 -   Bij het maken of bijwerken van API-resources met name Vm's en virtuele-machine schaal sets is het veel efficiënter om de geretourneerde async-bewerking bij te houden dan polling op de bron-URL zelf (op basis van de `provisioningState` ).

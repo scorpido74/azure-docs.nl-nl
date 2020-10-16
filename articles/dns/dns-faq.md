@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 6/15/2019
 ms.author: rohink
 ms.openlocfilehash: 76b19cfb3c00a26d81eab81f67d8e156a520f377
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77121716"
 ---
 # <a name="azure-dns-faq"></a>Veelgestelde vragen over Azure DNS
@@ -68,7 +68,7 @@ Azure DNS biedt alleen ondersteuning voor het hosten van statische DNS-domeinen 
 
 ### <a name="does-azure-dns-support-domain-name-registration"></a>Ondersteunt Azure DNS de registratie van de domein naam?
 
-Nee. Azure DNS biedt momenteel geen ondersteuning voor de optie om domein namen te kopen. Als u domeinen wilt kopen, moet u een domein naam registratie van een derde partij gebruiken. De registratie service berekent doorgaans een klein jaarlijks bedrag. De domeinen kunnen vervolgens worden gehost in Azure DNS voor het beheer van DNS-records. Zie [een domein delegeren voor Azure DNS](dns-domain-delegation.md)voor meer informatie.
+Nee. Azure DNS biedt momenteel geen ondersteuning voor de optie om domein namen te kopen. Als u domeinen wilt kopen, moet u een domein naam registratie van een derde partij gebruiken. De registratie service berekent doorgaans een klein jaarlijks bedrag. De domeinen kunnen vervolgens worden gehost in Azure DNS voor het beheer van DNS-records. Zie [Delegate a domain to Azure DNS](dns-domain-delegation.md) (Een domein aan Azure DNS overdragen) voor meer informatie.
 
 De functie voor het kopen van domein namen wordt bijgehouden in de Azure-achterstand. Gebruik de feedback site om [uw ondersteuning voor deze functie te registreren](https://feedback.azure.com/forums/217313-networking/suggestions/4996615-azure-should-be-its-own-domain-registrar).
 

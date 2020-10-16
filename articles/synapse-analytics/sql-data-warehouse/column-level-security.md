@@ -1,6 +1,6 @@
 ---
 title: Wat is beveiliging op kolom niveau voor Azure Synapse?
-description: Met beveiliging op kolom niveau kunnen klanten de toegang tot database tabel kolommen beheren op basis van de uitvoerings context of het groepslid maatschap van de gebruiker, het ontwerp en de code ring van de beveiliging in uw toepassing vereenvoudigen, en kunt u beperkingen voor kolom toegang implementeren.
+description: Met Column-Level Security kunnen klanten de toegang tot database tabel kolommen beheren op basis van de uitvoerings context of het groepslid maatschap van de gebruiker, het ontwerp en de code ring van de beveiliging in uw toepassing vereenvoudigen, en kunt u beperkingen voor kolom toegang implementeren.
 services: synapse-analytics
 author: julieMSFT
 manager: craigg
@@ -13,15 +13,15 @@ ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
 ms.openlocfilehash: f8bb40f9c80a0785c81c7aeacf783553bf73aa90
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91259880"
 ---
 # <a name="column-level-security"></a>Beveiliging op kolom niveau
 
-Met beveiliging op kolom niveau kunnen klanten de toegang tot tabel kolommen beheren op basis van de uitvoerings context of het groepslid maatschap van de gebruiker.
+Met Column-Level beveiliging kunnen klanten de toegang tot tabel kolommen beheren op basis van de uitvoerings context of het groepslid maatschap van de gebruiker.
 
 > [!VIDEO https://www.youtube.com/embed/OU_ESg0g8r8]
 Omdat deze video is gepost, is [beveiliging op rijniveau](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) beschikbaar geworden voor Azure Synapse.

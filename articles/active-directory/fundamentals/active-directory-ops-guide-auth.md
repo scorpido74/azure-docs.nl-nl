@@ -12,10 +12,10 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: 178c54b9726f21775603d67cb0911237aa4caf01
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90601361"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Naslag Gids voor verificatie beheer van Azure Active Directory
@@ -105,7 +105,7 @@ Zie [de juiste verificatie methode kiezen voor uw Azure Active Directory hybride
 
 ### <a name="programmatic-usage-of-credentials"></a>Programmatisch gebruik van referenties
 
-Azure AD-scripts met Power shell of toepassingen die gebruikmaken van de Microsoft Graph-API, vereisen beveiligde verificatie. Slecht referentie beheer dat deze scripts en hulpprogram ma's uitvoert, verhogen het risico op referentie diefstal. Als u scripts of toepassingen gebruikt die afhankelijk zijn van wacht woorden of wachtwoord prompts, moet u eerst wacht woorden in configuratie bestanden of bron code controleren en vervolgens deze afhankelijkheden vervangen en Azure Managed-identiteiten, geïntegreerde Windows-verificatie of [certificaten](../reports-monitoring/tutorial-access-api-with-certificates.md) waar mogelijk gebruiken. Voor toepassingen waarbij de vorige oplossingen niet mogelijk zijn, kunt u het beste [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)gebruiken.
+Azure AD-scripts met Power shell of toepassingen die gebruikmaken van de Microsoft Graph-API, vereisen beveiligde verificatie. Slecht referentie beheer dat deze scripts en hulpprogram ma's uitvoert, verhogen het risico op referentie diefstal. Als u scripts of toepassingen gebruikt die afhankelijk zijn van wacht woorden of wachtwoord prompts, moet u eerst wacht woorden in configuratie bestanden of bron code controleren en vervolgens deze afhankelijkheden vervangen en Azure Managed-identiteiten, Integrated-Windows verificatie of [certificaten](../reports-monitoring/tutorial-access-api-with-certificates.md) waar mogelijk gebruiken. Voor toepassingen waarbij de vorige oplossingen niet mogelijk zijn, kunt u het beste [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)gebruiken.
 
 Als u vaststelt dat er service-principals zijn met wachtwoord referenties en u niet zeker weet hoe deze wachtwoord referenties worden beveiligd door scripts of toepassingen, neemt u contact op met de eigenaar van de toepassing voor meer informatie over gebruiks patronen.
 
@@ -115,7 +115,7 @@ Micro soft raadt u ook aan om contact op te nemen met eigen aren van toepassinge
 
 ### <a name="on-premises-authentication"></a>On-premises verificatie
 
-Federatieve verificatie met geïntegreerde Windows-verificatie (IWA) of naadloze eenmalige aanmelding (SSO) met wachtwoord hash-synchronisatie of Pass Through-verificatie is de beste gebruikers ervaring in het bedrijfs netwerk met een line-of-Insight-domein controllers. Het minimaliseert de referentie prompt vermoeidheid en vermindert het risico van gebruikers die Prey zijn tegen phishing-aanvallen. Als u al gebruikmaakt van door de Cloud beheerde verificatie met PHS of PTA, maar gebruikers nog steeds hun wacht woord hoeven in te voeren wanneer ze on-premises verifiëren, moet u onmiddellijk [naadloze SSO implementeren](../hybrid/how-to-connect-sso.md). Als u echter op dit moment federatieve bent met plannen die uiteindelijk moeten worden gemigreerd naar door de Cloud beheerde authenticatie, moet u naadloze SSO implementeren als onderdeel van het migratie project.
+Federatieve authenticatie met geïntegreerde Windows-verificatie (IWA) of naadloze single Sign-On (SSO) beheerde verificatie met wachtwoord-hash-synchronisatie of Pass Through-verificatie is de beste gebruikers ervaring in het bedrijfs netwerk met line-of-Insight naar on-premises domein controllers. Het minimaliseert de referentie prompt vermoeidheid en vermindert het risico van gebruikers die Prey zijn tegen phishing-aanvallen. Als u al gebruikmaakt van door de Cloud beheerde verificatie met PHS of PTA, maar gebruikers nog steeds hun wacht woord hoeven in te voeren wanneer ze on-premises verifiëren, moet u onmiddellijk [naadloze SSO implementeren](../hybrid/how-to-connect-sso.md). Als u echter op dit moment federatieve bent met plannen die uiteindelijk moeten worden gemigreerd naar door de Cloud beheerde authenticatie, moet u naadloze SSO implementeren als onderdeel van het migratie project.
 
 ### <a name="device-trust-access-policies"></a>Toegangs beleid voor vertrouwens relaties van apparaten
 

@@ -7,10 +7,10 @@ ms.date: 12/03/2018
 ms.reviewer: dariac
 ms.custom: seodec18
 ms.openlocfilehash: 693e552c8743b435fac6fda9d5ab023be5d9adeb
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86221133"
 ---
 # <a name="sync-content-from-a-cloud-folder-to-azure-app-service"></a>Inhoud vanuit een Cloud-map synchroniseren met Azure App Service
@@ -32,8 +32,8 @@ U hoeft slechts één keer per OneDrive of Dropbox te autoriseren. Als u al bent
 
 Selecteer op de pagina **configureren** de map die u wilt synchroniseren. Deze map wordt gemaakt onder het volgende toegewezen inhoudsdistributiepad in OneDrive of Dropbox. 
    
-* **OneDrive**:`Apps\Azure Web Apps`
-* **Dropbox**:`Apps\Azure`
+* **OneDrive**: `Apps\Azure Web Apps`
+* **Dropbox**: `Apps\Azure`
 
 Wanneer u klaar bent, klikt u op **door gaan**.
 

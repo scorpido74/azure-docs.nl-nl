@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: alkohli
 ms.openlocfilehash: 55cc3049e437cc18eac6dc537de3ee1c0d894c23
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87070336"
 ---
 # <a name="storsimple-solution-support"></a>Ondersteuning voor StorSimple-oplossingen
@@ -85,7 +85,7 @@ Ondersteuning voor problemen met facturering en abonnements beheer is beschikbaa
 | B        | Gemiddelde impact op het bedrijf: <ul><br> <li> Het bedrijf van de klant heeft gemiddeld verlies of vermindering van services, maar werk kan redelijkerwijs op een gebrekkige manier door gaan. | Eerste reactie: <sup>1</sup><ul><br> <li> 2 uur of minder voor Premium. <br> <li> 4 uur of minder voor Standard.                                      | <ul><li> Toewijzing van de juiste resources voor een voortdurende inspanningen tijdens kantoor uren, tenzij klanten aanvragen om van 24x7 te worden afgemeld. <br> <li> Nauw keurige contact gegevens voor de aanvraag eigenaar. |
 | C        | Minimale bedrijfs impact: <ul><br> <li> Het bedrijf van de klant werkt aanzienlijk met kleine of geen belemmeringen voor services.                                 | Eerste reactie: <sup>1</sup><ul> <br> <li> 4 uur of minder voor Premium. <br> <li> 8 uur of minder voor Standard.                                      | <ul><li>Nauw keurige contact gegevens voor case-eigenaar                                                                                                                                    |
  
-<sup>1</sup> micro soft kan de ernst van een ernst een stap verlagen als de klant niet voldoende bronnen of antwoorden kan bieden om micro soft te laten door gaan met het oplossen van problemen met de oplossing.
+<sup>1 </sup> micro soft kan de ernst van een ernst een stap verlagen als de klant niet voldoende bronnen of antwoorden kan bieden om micro soft te laten door gaan met het oplossen van problemen met de oplossing.
 
 <sup>2</sup> de verwachte reactie tijden zijn gebaseerd op 24x7 ondersteuning in het Engels voor Ernst A en lokale kantoor uren voor Ernst B en C, en ondersteuning voor lokale kantoor uren in de resterende lokale talen: Japans, Taiwan, traditioneel Chinees en Koreaans.
 
@@ -111,7 +111,7 @@ Ondersteuning voor opslag matrices van de StorSimple 8000-serie is gebaseerd op 
 
 
 
-*<text>* Premium-dekking is niet beschikbaar op alle locaties. Neem contact op met micro soft op SSSupOps \@ Microsoft.com voor geografische dekking voordat u StorSimple Premium-ondersteuning aanschaft.*
+*<text> * Premium-dekking is niet beschikbaar op alle locaties. Neem contact op met micro soft op SSSupOps \@ Microsoft.com voor geografische dekking voordat u StorSimple Premium-ondersteuning aanschaft.*
 
 ***Het StorSimple-apparaat moet worden geïmplementeerd in een regio waarin de klant wordt gedekt door Premier Support om in aanmerking te komen voor een gratis upgrade naar Premium StorSimple-ondersteuning.*
 

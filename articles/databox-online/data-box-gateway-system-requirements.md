@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/08/2019
 ms.author: alkohli
 ms.openlocfilehash: aadaedfd2c9ecf544d142e42a0fbeb410324b7d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82562437"
 ---
 # <a name="azure-data-box-gateway-system-requirements"></a>Systeem vereisten voor Azure Data Box Gateway
@@ -48,7 +48,7 @@ Het onderliggende hostsysteem voor het Data Box Gateway kan de volgende resource
 
 ## <a name="supported-virtualization-platforms-for-device"></a>Ondersteunde virtualisatieplatform voor het apparaat
 
-| **Besturings systeem/platform**  |**Lager**   |**Opmerkingen**  |
+| **Besturings systeem/platform**  |**Versies**   |**Opmerkingen**  |
 |---------|---------|---------|
 |Hyper-V  |  2012 R2 <br> 2016 <br> 2019 |         |
 |VMware ESXi     | 6.0 <br> 6.5 <br> 6.7       |VMware-hulpprogram ma's worden niet ondersteund.         |

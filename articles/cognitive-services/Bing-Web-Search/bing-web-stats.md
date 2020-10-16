@@ -12,10 +12,10 @@ ms.date: 07/17/2019
 ms.author: scottwhi
 ms.custom: seodec2018
 ms.openlocfilehash: ad2ac118908f1c1f77ea204ae2400913ac0807cb
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86147410"
 ---
 # <a name="add-analytics-to-the-bing-search-apis"></a>Analyses toevoegen aan de Bing Zoeken-API's
@@ -90,7 +90,7 @@ Hieronder vindt u mogelijke metrische gegevens en eindpunt beperkingen.
 
 - De **code verdeling**van de reactie: de HTTP-status codes van alle aanroepen tijdens de rapportage periode.
 
-- **Distributie van oorsprong aanroepen**: de typen browsers die door de gebruikers worden gebruikt. Bijvoorbeeld micro soft Edge, Chrome, Safari en FireFox. Aanroepen van buiten een browser (zoals bots, Postman of krul via een console-app) worden gegroepeerd onder Bibliotheken. De oorsprong wordt bepaald aan de hand van de waarde van de User-Agent-header van de aanvraag. Als de aanvraag de header van de User-agent niet bevat, probeert Bing de oorsprong af te leiden van andere signalen.  
+- **Distributie van oorsprong aanroepen**: de typen browsers die door de gebruikers worden gebruikt. Bijvoorbeeld micro soft Edge, Chrome, Safari en FireFox. Aanroepen van buiten een browser (zoals bots, Postman of krul via een console-app) worden gegroepeerd onder Bibliotheken. De oorsprong wordt bepaald aan de hand van de waarde van de User-Agent-header van de aanvraag. Als de aanvraag de User-Agent header niet bevat, probeert Bing de oorsprong van andere signalen af te leiden.  
 
 - **Distributie van veilige Zoek opdrachten**: de distributie van veilige Zoek waarden. Bijvoorbeeld uit, gemiddeld of strikt. De `safeSearch` query parameter bevat de waarde, indien opgegeven. Anders wordt de waarde standaard ingesteld op gemiddeld.  
 
@@ -98,7 +98,7 @@ Hieronder vindt u mogelijke metrische gegevens en eindpunt beperkingen.
 
 - **Antwoorden geretourneerde distributie**: de antwoorden die webzoekopdrachten API geretourneerd in het antwoord.
 
-- **Distributie van de antwoord server**: de toepassings server die uw API-aanvragen heeft verzonden. De mogelijke waarden zijn Bing.com (voor verkeer dat wordt bediend door Desktop-en laptop apparaten) en Bing.com-Mobile (voor verkeer dat wordt bediend door mobiele apparaten). De server wordt bepaald aan de hand van de waarde van de User-Agent header van de aanvraag. Als de aanvraag de header van de User-agent niet bevat, probeert Bing de server af te leiden van andere signalen.
+- **Distributie van de antwoord server**: de toepassings server die uw API-aanvragen heeft verzonden. De mogelijke waarden zijn Bing.com (voor verkeer dat wordt bediend door Desktop-en laptop apparaten) en Bing.com-Mobile (voor verkeer dat wordt bediend door mobiele apparaten). De server wordt bepaald aan de hand van de waarde van de User-Agent-header van de aanvraag. Als de aanvraag de User-Agent header niet bevat, probeert Bing de server af te leiden van andere signalen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

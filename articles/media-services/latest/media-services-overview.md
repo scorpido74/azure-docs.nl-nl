@@ -17,12 +17,12 @@ ms.workload: media
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: mvc
-ms.openlocfilehash: b11cd602850d23ac6ec37a9be51912adceb9afbc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 58a142f0be87bb56f9ded9ace5a5143931740e93
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89267582"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019855"
 ---
 # <a name="azure-media-services-v3-overview"></a>Overzicht van Azure Media Services v3
 
@@ -33,7 +33,7 @@ Azure Media Services is een cloudgebaseerd platform waarmee u oplossingen bouwt 
 De Media Services v3-SDK's zijn gebaseerd op [Media Services v3 OpenAPI-specificatie (Swagger)](https://aka.ms/ams-v3-rest-sdk).
 
 > [!NOTE]
-> U kunt de [Azure-portal](https://portal.azure.com/) gebruiken voor het beheren van Media Services v3-[livegebeurtenissen](live-events-outputs-concept.md), het bekijken (niet beheren) van v3-[assets](assets-concept.md) en het [opvragen van informatie over toegang tot API's](./access-api-howto.md). Gebruik voor alle andere beheertaken (bijvoorbeeld [transformaties en taken](transforms-jobs-concept.md) en [inhoudsbeveiliging](content-protection-overview.md)), de [REST API](/rest/api/media/), [CLI](https://aka.ms/ams-v3-cli-ref) of een van de ondersteunde [SDK's](media-services-apis-overview.md#sdks).
+> U kunt de [Azure-portal](https://portal.azure.com/) gebruiken voor het beheren van Media Services v3-[livegebeurtenissen](live-events-outputs-concept.md), het bekijken (niet beheren) van v3-[assets](assets-concept.md) en het [opvragen van informatie over toegang tot API's](./access-api-howto.md). Gebruik voor alle andere beheertaken (bijvoorbeeld [transformaties en taken](transforms-jobs-concept.md) en [inhoudsbeveiliging](content-protection-overview.md)), de [REST API](/rest/api/media/), [CLI](/cli/azure/ams) of een van de ondersteunde [SDK's](media-services-apis-overview.md#sdks).
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

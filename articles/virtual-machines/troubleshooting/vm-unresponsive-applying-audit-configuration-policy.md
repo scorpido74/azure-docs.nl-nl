@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: bc41783bf977806b5f9bba5b953f1f581ad07f18
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: ff21975c34c28d7476635467e0c1abb8e6575e35
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299521"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977949"
 ---
 # <a name="virtual-machine-is-unresponsive-while-applying-audit-policy-configuration-policy"></a>De virtuele machine reageert niet tijdens het Toep assen van het configuratie beleid voor het controle beleid
 
@@ -27,7 +27,7 @@ Dit artikel bevat stappen voor het oplossen van problemen waarbij de virtuele ma
 
 ## <a name="symptom"></a>Symptoom
 
-Wanneer u [Diagnostische gegevens over opstarten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) gebruikt om de scherm opname van de virtuele machine weer te geven, ziet u dat de scherm opname wordt weer gegeven dat het besturings systeem (OS) niet meer reageert tijdens het opstarten met het bericht **beleids configuratie beleid Toep assen**.
+Wanneer u [Diagnostische gegevens over opstarten](./boot-diagnostics.md) gebruikt om de scherm opname van de virtuele machine weer te geven, ziet u dat de scherm opname wordt weer gegeven dat het besturings systeem (OS) niet meer reageert tijdens het opstarten met het bericht **beleids configuratie beleid Toep assen**.
 
   ![Het besturings systeem wordt opgestart met het volgende bericht: ' configuratie beleid voor controle beleid Toep assen '](./media/vm-unresponsive-applying-audit-configuration-policy/1.png)
 
@@ -54,7 +54,7 @@ Hier volgt het problematische beleid: *Computerconfiguratie\beleid\beheersjablon
 
 ### <a name="create-and-access-a-repair-vm"></a>Een herstel-VM maken en openen
 
-1. Gebruik stap 1-3 van de [VM-reparatie opdrachten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) om een herstel-VM voor te bereiden.
+1. Gebruik stap 1-3 van de [VM-reparatie opdrachten](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) om een herstel-VM voor te bereiden.
 1. Maak met behulp van Verbinding met extern bureaublad verbinding met de herstel-VM.
 
 ### <a name="disable-the-policy"></a>Het beleid uitschakelen
@@ -153,7 +153,7 @@ Hier volgt het problematische beleid: *Computerconfiguratie\beleid\beheersjablon
    
 ### <a name="rebuild-the-virtual-machine"></a>De virtuele machine opnieuw bouwen
 
-1. Gebruik [stap 5 van de opdrachten voor het herstellen van de virtuele machine](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) om de virtuele machine opnieuw samen te stellen.
+1. Gebruik [stap 5 van de opdrachten voor het herstellen van de virtuele machine](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) om de virtuele machine opnieuw samen te stellen.
 
 1. Test of uw VM normaal wordt opgestart om te zien of het probleem is opgelost.
 
@@ -175,11 +175,11 @@ Als u dit probleem wilt oplossen, moet u eerst het geheugen dump bestand voor de
 
 #### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>De besturingssysteem schijf koppelen aan een nieuwe herstel-VM
 
-1. Gebruik stap 1-3 van de [VM-reparatie opdrachten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) om een nieuwe herstel-VM voor te bereiden.
+1. Gebruik stap 1-3 van de [VM-reparatie opdrachten](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) om een nieuwe herstel-VM voor te bereiden.
 1. Gebruik Verbinding met extern bureaublad verbinding maken met de herstel-VM.
 
 #### <a name="locate-the-dump-file-and-submit-a-support-ticket"></a>Het dump bestand zoeken en een ondersteunings ticket verzenden
 
 1. Ga op de virtuele machine herstellen naar de map Windows in de gekoppelde besturingssysteem schijf. Als de stuur programma-letter die is toegewezen aan de gekoppelde besturingssysteem schijf, wordt aangeduid als *F*, moet u naar gaan `F:\Windows` .
 1. Zoek het `memory.dmp` bestand en [Verzend een ondersteunings ticket](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) met het geheugen dump bestand.
-1. Als u problemen ondervindt met het vinden `memory.dmp` van het bestand, gebruikt u in plaats daarvan [niet-maskeer bare INTERRUPT (NMI)-aanroepen in de seriële console](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows#use-the-serial-console-for-nmi-calls) . Volg de hand leiding voor het [genereren van een crash dump bestand met behulp van NMI-aanroepen](https://docs.microsoft.com/windows/client-management/generate-kernel-or-complete-crash-dump).
+1. Als u problemen ondervindt met het vinden `memory.dmp` van het bestand, gebruikt u in plaats daarvan [niet-maskeer bare INTERRUPT (NMI)-aanroepen in de seriële console](./serial-console-windows.md#use-the-serial-console-for-nmi-calls) . Volg de hand leiding voor het [genereren van een crash dump bestand met behulp van NMI-aanroepen](/windows/client-management/generate-kernel-or-complete-crash-dump).

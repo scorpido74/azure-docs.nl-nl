@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: 2d0ee0e4c5cf3f7c2f4b623f0270ecf5eb01fc36
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 124034fc6c999c37c6e79547b062508c957d1bac
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91710512"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939831"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Replica's lezen in Azure Database for PostgreSQL-één server
 
@@ -126,7 +126,7 @@ Meer informatie over het [stoppen van replicatie naar een replica](howto-read-re
 ## <a name="failover"></a>Failover
 Er is geen automatische failover tussen de primaire servers en de replica server. 
 
-Omdat de replicatie asynchroon is, is er sprake van een vertraging tussen de primaire en de replica. De hoeveelheid vertraging kan worden beïnvloed door een aantal factoren, zoals hoe zwaar de werk belasting die wordt uitgevoerd op de primaire server en de latentie tussen data centers. In de meeste gevallen varieert replicavertraging tussen enkele seconden en een paar minuten. U kunt uw werkelijke replicatie vertraging bijhouden met behulp van de metrische *replica vertraging*, die beschikbaar is voor elke replica. Met deze metriek wordt de tijd weer gegeven sinds de laatste geplayte trans actie. U wordt aangeraden om te bepalen wat uw gemiddelde vertraging is door uw replica vertraging te bestuderen gedurende een bepaalde periode. U kunt een waarschuwing instellen voor replica vertraging, zodat u actie kunt ondernemen als deze buiten het verwachte bereik komt.
+Omdat de replicatie asynchroon is, is er sprake van een vertraging tussen de primaire en de replica. De hoeveelheid vertraging kan worden beïnvloed door een aantal factoren, zoals hoe zwaar de werk belasting die wordt uitgevoerd op de primaire server en de latentie tussen data centers. In de meeste gevallen variëren de replica vertraging tussen enkele seconden en een paar minuten. In gevallen waarin de primaire uitvoering zeer zware werk belastingen uitvoert en de replica niet snel genoeg kan opvangen, kan de vertraging hoger zijn. U kunt uw werkelijke replicatie vertraging bijhouden met behulp van de metrische *replica vertraging*, die beschikbaar is voor elke replica. Met deze metriek wordt de tijd weer gegeven sinds de laatste geplayte trans actie. U wordt aangeraden om te bepalen wat uw gemiddelde vertraging is door uw replica vertraging te bestuderen gedurende een bepaalde periode. U kunt een waarschuwing instellen voor replica vertraging, zodat u actie kunt ondernemen als deze buiten het verwachte bereik komt.
 
 > [!Tip]
 > Als u een failover naar de replica doorzoekt, geeft de vertraging op het moment dat u de replica loskoppelt, aan hoeveel gegevens er verloren zijn gegaan.

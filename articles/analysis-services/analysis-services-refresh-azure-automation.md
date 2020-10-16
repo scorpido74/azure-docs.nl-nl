@@ -6,18 +6,18 @@ ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: chlound
-ms.openlocfilehash: 61679e1ee3843ed866ef12138a0edeff8877b1e6
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: fe811c81d0774393f40dc5c8403d1af8b22da109
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448602"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019134"
 ---
 # <a name="refresh-with-azure-automation"></a>Vernieuwen met Azure Automation
 
 Met Azure Automation-en Power shell-Runbooks kunt u geautomatiseerde gegevens vernieuwings bewerkingen uitvoeren op de tabellaire modellen van Azure Analysis.  
 
-In het voor beeld in dit artikel wordt gebruikgemaakt van de [sqlserver Power shell-module](https://docs.microsoft.com/powershell/module/sqlserver/?view=sqlserver-ps). Verderop in dit artikel vindt u een voor beeld van een Power shell-Runbook, dat laat zien hoe u een model vernieuwt.  
+In het voor beeld in dit artikel wordt gebruikgemaakt van de [sqlserver Power shell-module](/powershell/module/sqlserver/?view=sqlserver-ps). Verderop in dit artikel vindt u een voor beeld van een Power shell-Runbook, dat laat zien hoe u een model vernieuwt.  
 
 ## <a name="authentication"></a>Verificatie
 
@@ -104,7 +104,7 @@ Dit kan als volgt worden geconfigureerd:
 
     ![Planning configureren](./media/analysis-services-refresh-azure-automation/15.png)
 
-3. Klik op **Create**.
+3. Klik op **Maken**.
 
 4. Vul de para meters voor de planning in. Deze worden gebruikt telkens wanneer het Runbook wordt geactiveerd. De para meter **WEBHOOKDATA** moet leeg blijven als deze wordt uitgevoerd via een schema.
 
@@ -161,7 +161,7 @@ Voor beeld van JSON-hoofd tekst:
 
 Deze para meters worden gedefinieerd in het Power shell-script voor runbook.  Wanneer de webactiviteit wordt uitgevoerd, is de door gegeven JSON-nettolading WEBHOOKDATA.
 
-Dit wordt gedeserialiseerd en opgeslagen als Power shell-para meters, die vervolgens worden gebruikt door de opdracht invoke-ProcesASDatabase Power shell.
+Dit wordt gedeserialiseerd en opgeslagen als Power shell-para meters, die vervolgens worden gebruikt door de Invoke-ProcesASDatabase Power shell-opdracht.
 
 ![Ongeserialiseerde webhook](./media/analysis-services-refresh-azure-automation/20.png)
 
@@ -226,4 +226,4 @@ else
 ## <a name="next-steps"></a>Volgende stappen
 
 [Voorbeelden](analysis-services-samples.md)  
-[REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)
+[REST API](/rest/api/analysisservices/servers)

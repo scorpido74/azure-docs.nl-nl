@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1ec5757b41da630c4cb09ad0c096aee87572615d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319891"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-microsoft-365-resources"></a>Azure Active Directory Connect synchronisatie: de voorkeurs locatie van gegevens voor Microsoft 365 resources configureren
@@ -184,7 +184,7 @@ De regel voor uitgaande synchronisatie maakt het mogelijk dat de waarde van het 
     | Kenmerk | Operator | Waarde |
     | --- | --- | --- |
     | sourceObjectType | WAARD | Gebruiker |
-    | cloudMastered | NOTEQUAL | Waar |
+    | cloudMastered | NOTEQUAL | True |
 
     Het bereik filter bepaalt op welke Azure AD-objecten deze regel voor uitgaande synchronisatie wordt toegepast. In dit voor beeld gebruiken we hetzelfde bereik filter van ' out to Azure AD: User Identity ' OOB (out-of-box)-synchronisatie regel. Hiermee wordt voor komen dat de synchronisatie regel wordt toegepast op **gebruikers** objecten die niet zijn gesynchroniseerd vanuit een on-premises Active Directory. Mogelijk moet u het bereik filter aanpassen op basis van uw Azure AD Connect-implementatie.
 

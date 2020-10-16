@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 02/01/2019
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9118a99f285dedfe0b76e890db001627e4f85969
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 92b9d3c51a9240b7dfc0f8e815735f0e1ecd4dd3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89657129"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968307"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Reporting options for Azure AD password management (Rapportageopties voor Azure AD-wachtwoordbeheer)
 
@@ -72,7 +72,7 @@ In de volgende tabel worden de verschillende waarden beschreven die u kunt inste
 | --- | --- |
 | Geregistreerde gegevens |**Alternatief e-mail adres**: de gebruiker heeft een alternatieve e-mail of verificatie-e-mail gebruikt om te verifiëren.<p><p>**Office Phone**: de gebruiker heeft een zakelijke telefoon gebruikt om te verifiëren.<p>**Mobiele telefoon**: de gebruiker heeft een mobiele telefoon of authenticatie-telefoon gebruikt om te verifiëren.<p>**Beveiligings vragen**: de gebruiker gebruikte beveiligings vragen om te verifiëren.<p>**Een combi natie van de vorige methoden, bijvoorbeeld alternatieve e-mail en mobiele telefoon**: treedt op wanneer een twee-poort beleid is opgegeven en laat zien welke twee methoden de gebruiker heeft gebruikt voor het verifiëren van de aanvraag voor het opnieuw instellen van een wacht woord. |
 
-## <a name="self-service-password-management-activity-types"></a>Activiteiten typen selfservice voor wachtwoord beheer
+## <a name="self-service-password-management-activity-types"></a>Self-Service activiteiten typen voor wachtwoord beheer
 
 De volgende typen activiteiten worden weer gegeven in de categorie controle gebeurtenis **selfservice wachtwoord beheer** :
 

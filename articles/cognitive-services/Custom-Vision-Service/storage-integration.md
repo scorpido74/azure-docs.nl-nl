@@ -10,15 +10,15 @@ ms.topic: how-to
 ms.date: 09/11/2020
 ms.author: pafarley
 ms.openlocfilehash: f4d9cc4c02ab062c73e9dbd977d9ea9e6ccdb60d
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90532683"
 ---
 # <a name="integrate-azure-storage-for-notifications-and-backup"></a>Azure Storage integreren voor meldingen en back-ups
 
-U kunt uw Custom Vision-project integreren met een Azure Blob-opslag wachtrij om Push meldingen te ontvangen van project training/export activiteiten en back-ups van gepubliceerde modellen. Deze functie is handig om te voor komen dat de service voortdurend wordt gecontroleerd op resultaten wanneer lange bewerkingen worden uitgevoerd. In plaats daarvan kunt u de meldingen van de opslag wachtrij integreren in uw werk stroom.
+U kunt uw Custom Vision-project integreren met een Azure Blob-opslagwachtrij om pushmeldingen te ontvangen over projecttrainings-/exportactiviteiten en back-ups van gepubliceerde modellen. Deze functie is handig om te voorkomen dat de service voortdurend wordt gecontroleerd op resultaten wanneer lange bewerkingen worden uitgevoerd. In plaats daarvan kunt u de meldingen van de opslagwachtrij in uw werkstroom integreren.
 
 Deze hand leiding laat zien hoe u deze REST-Api's met krul kunt gebruiken. U kunt ook een HTTP-aanvraag service zoals postman gebruiken om de aanvragen uit te geven.
 

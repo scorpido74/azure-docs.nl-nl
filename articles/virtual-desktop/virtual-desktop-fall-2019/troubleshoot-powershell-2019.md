@@ -7,16 +7,16 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 23d1e4b06c9c0278742da0cec8ac565b5f80a362
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88004904"
 ---
 # <a name="windows-virtual-desktop-classic-powershell"></a>Windows virtueel bureau blad (klassiek) Power shell
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op Windows Virtual Desktop (classic), dat geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../troubleshoot-powershell.md) als u probeert Azure Resource Manager Windows Virtual Desktop-objecten te beheren.
+>Deze inhoud is van toepassing op Windows Virtual Desktop (klassiek), dat geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../troubleshoot-powershell.md) als u Azure Resource Manager Windows Virtual Desktop-objecten probeert te beheren.
 
 Gebruik dit artikel om fouten en problemen op te lossen bij het gebruik van Power shell met Windows virtueel bureau blad. Zie [Windows Virtual Desktop Power shell](/powershell/module/windowsvirtualdesktop/)(Engelstalig) voor meer informatie over Extern bureaublad-services Power shell.
 
@@ -28,7 +28,7 @@ Ga naar de [technische community van Windows virtueel bureau blad](https://techc
 
 In deze sectie vindt u Power shell-opdrachten die doorgaans worden gebruikt tijdens het instellen van Windows virtueel bureau blad en biedt manieren om problemen op te lossen die zich kunnen voordoen tijdens het gebruik van deze.
 
-### <a name="error-add-rdsappgroupuser-command----the-specified-userprincipalname-is-already-assigned-to-a-remoteapp-app-group-in-the-specified-host-pool"></a>Fout: add-RdsAppGroupUser-opdracht--de opgegeven UserPrincipalName is al toegewezen aan een RemoteApp-app-groep in de opgegeven hostgroep
+### <a name="error-add-rdsappgroupuser-command----the-specified-userprincipalname-is-already-assigned-to-a-remoteapp-app-group-in-the-specified-host-pool"></a>Fout: Add-RdsAppGroupUser opdracht: de opgegeven UserPrincipalName is al toegewezen aan een RemoteApp-app-groep in de opgegeven hostgroep
 
 ```Powershell
 Add-RdsAppGroupUser -TenantName <TenantName> -HostPoolName <HostPoolName> -AppGroupName 'Desktop Application Group' -UserPrincipalName <UserName>
@@ -38,7 +38,7 @@ Add-RdsAppGroupUser -TenantName <TenantName> -HostPoolName <HostPoolName> -AppGr
 
 **Oplossen:** Als de gebruiker zowel externe apps als extern bureau blad nodig heeft, maakt u verschillende hostgroepen of verleent u gebruikers toegang tot het externe bureau blad, waardoor het gebruik van elke toepassing op de host-VM van de sessie wordt toegestaan.
 
-### <a name="error-add-rdsappgroupuser-command----the-specified-userprincipalname-doesnt-exist-in-the-azure-active-directory-associated-with-the-remote-desktop-tenant"></a>Fout: add-RdsAppGroupUser-opdracht--de opgegeven UserPrincipalName bestaat niet in de Azure Active Directory gekoppeld aan de Extern bureaublad Tenant
+### <a name="error-add-rdsappgroupuser-command----the-specified-userprincipalname-doesnt-exist-in-the-azure-active-directory-associated-with-the-remote-desktop-tenant"></a>Fout: Add-RdsAppGroupUser opdracht: de opgegeven UserPrincipalName komt niet voor in de Azure Active Directory die is gekoppeld aan de Extern bureaublad Tenant
 
 ```PowerShell
 Add-RdsAppGroupUser -TenantName <TenantName> -HostPoolName <HostPoolName> -AppGroupName "Desktop Application Group" -UserPrincipalName <UserPrincipalName>
@@ -52,7 +52,7 @@ Add-RdsAppGroupUser -TenantName <TenantName> -HostPoolName <HostPoolName> -AppGr
 - De gebruiker is niet gekoppeld aan Business to consumer (B2C) of Business-to-Business (B2B) commerce.
 - De Windows Virtual Desktop-Tenant is gekoppeld aan de juiste Azure Active Directory.
 
-### <a name="error-get-rdsdiagnosticactivities----user-isnt-authorized-to-query-the-management-service"></a>Fout: Get-RdsDiagnosticActivities--gebruiker is niet gemachtigd om een query uit te geven op de beheer service
+### <a name="error-get-rdsdiagnosticactivities----user-isnt-authorized-to-query-the-management-service"></a>Fout: Get-RdsDiagnosticActivities--de gebruiker is niet gemachtigd om een query uit te zoeken op de beheer service
 
 ```PowerShell
 Get-RdsDiagnosticActivities -ActivityId <ActivityId>
@@ -60,9 +60,9 @@ Get-RdsDiagnosticActivities -ActivityId <ActivityId>
 
 **Oorzaak:** -Tenant-para meter
 
-**Oplossen:** Uitgifte Get-RdsDiagnosticActivities with-Tenantnaam \<TenantName> .
+**Oplossen:** Geef een probleem Get-RdsDiagnosticActivities met-Tenantnaam \<TenantName> .
 
-### <a name="error-get-rdsdiagnosticactivities----the-user-isnt-authorized-to-query-the-management-service"></a>Fout: Get-RdsDiagnosticActivities: de gebruiker is niet gemachtigd om een query uit te geven op de beheer service
+### <a name="error-get-rdsdiagnosticactivities----the-user-isnt-authorized-to-query-the-management-service"></a>Fout: Get-RdsDiagnosticActivities--de gebruiker is niet gemachtigd om een query uit te zoeken op de beheer service
 
 ```PowerShell
 Get-RdsDiagnosticActivities -Deployment -username <username>
@@ -72,7 +72,7 @@ Get-RdsDiagnosticActivities -Deployment -username <username>
 
 **Fix:** -implementatie switch kan alleen worden gebruikt door implementatie beheerders. Deze beheerders zijn meestal leden van het virtueel-bureaublad team van Extern bureaublad-services/Windows. Vervang de switch-implementatie door-Tenantnaam \<TenantName> .
 
-### <a name="error-new-rdsroleassignment----the-user-isnt-authorized-to-query-the-management-service"></a>Fout: New-RdsRoleAssignment: de gebruiker is niet gemachtigd om een query uit te zoeken op de beheer service
+### <a name="error-new-rdsroleassignment----the-user-isnt-authorized-to-query-the-management-service"></a>Fout: New-RdsRoleAssignment--de gebruiker is niet gemachtigd om een query uit te zoeken op de beheer service
 
 **Oorzaak 1:** Het account dat wordt gebruikt, heeft geen Extern bureaublad-services eigenaars machtigingen voor de Tenant.
 
@@ -83,7 +83,7 @@ Get-RdsDiagnosticActivities -Deployment -username <username>
 **Oplossing 2:** Een gebruiker met Active Directory machtigingen moet de roltoewijzing uitvoeren.
 
 >[!Note]
->New-RdsRoleAssignment kan geen machtigingen verlenen aan een gebruiker die zich niet in de Azure Active Directory (AD) bevinden.
+>New-RdsRoleAssignment kan geen machtigingen verlenen aan een gebruiker die niet bestaat in de Azure Active Directory (AD).
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 07/10/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 611d676f5f588ff32f981692456160e269642a43
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: f75fbf286741fcc122332574332a30ad7fa23644
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87428117"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096195"
 ---
 # <a name="localization-string-ids"></a>Id's van lokalisatiereeksen
 
@@ -25,7 +25,7 @@ Het **lokalisatie** -element biedt ondersteuning voor meerdere land instellingen
 
 ## <a name="sign-up-or-sign-in-page-elements"></a>Registratie-of aanmeldings pagina-elementen
 
-De volgende Id's worden gebruikt voor een inhouds definitie met de ID `api.signuporsignin` .
+De volgende Id's worden gebruikt voor een inhouds definitie met een ID van `api.signuporsignin` en een [zelf-bevestigd technisch profiel](self-asserted-technical-profile.md).
 
 | Id | Standaardwaarde |
 | -- | ------------- |
@@ -37,7 +37,7 @@ De volgende Id's worden gebruikt voor een inhouds definitie met de ID `api.signu
 | **local_intro_username** | Meld u aan met uw gebruikers naam |
 | **logonIdentifier_username** | Gebruikersnaam |
 | **requiredField_username** | Voer uw gebruikers naam in |
-| **wachtwoord** | Wachtwoord |
+| **password** | Wachtwoord |
 | **requiredField_password** | Voer uw wacht woord in |
 | **invalid_password** | Het wacht woord dat u hebt opgegeven, heeft niet de verwachte indeling. |
 | **forgotpassword_link** | Bent u uw wachtwoord vergeten? |
@@ -47,14 +47,17 @@ De volgende Id's worden gebruikt voor een inhouds definitie met de ID `api.signu
 | **cancel_message** | De gebruiker is het wacht woord verg eten |
 | **button_signin** | Aanmelden |
 | **social_intro** | Meld u aan met uw sociale account |
-  **remember_me** |Aangemeld blijven|
+  **remember_me** |Blijf aangemeld. |
 | **unknown_error** | U ondervindt problemen bij het aanmelden. Probeert u het later nog eens. |
 
 In het volgende voor beeld ziet u het gebruik van een aantal van de elementen van de gebruikers interface op de registratie-of aanmeldings pagina:
 
 ![UX-elementen voor registratie of aanmeldings pagina](./media/localization-string-ids/localization-susi.png)
 
-De id's van de ID-providers worden geconfigureerd in het **ClaimsExchange** -element van de gebruikers reis. Als u de naam van de ID-provider wilt lokaliseren, wordt het **element type** ingesteld op `ClaimsProvider` , terwijl de **StringId** is ingesteld op de id van de `ClaimsExchange` .
+
+### <a name="sign-up-or-sign-in-identity-providers"></a>Registratie-en registratie-id-providers
+
+De id's van de ID-providers worden geconfigureerd in het  **ClaimsExchange** -element van de gebruikers reis. Als u de naam van de ID-provider wilt lokaliseren, wordt het **element type** ingesteld op `ClaimsProvider` , terwijl de **StringId** is ingesteld op de id van de `ClaimsExchange` .
 
 ```xml
 <OrchestrationStep Order="2" Type="ClaimsExchange">
@@ -91,9 +94,47 @@ In het volgende voor beeld wordt de Facebook-ID-provider naar Arabisch gelokalis
 | **UserMessageIfUserAccountLocked** | Uw account is tijdelijk vergrendeld om onbevoegd gebruik te voor komen. Probeer het later opnieuw. |
 | **AADRequestsThrottled** | Er zijn op dit moment te veel aanvragen. Wacht enige tijd en probeer het opnieuw. |
 
+### <a name="sign-up-or-sign-in-example"></a>Registreren of aanmelden voor beeld
+
+```xml
+<LocalizedResources Id="api.signuporsignin.en">
+  <LocalizedStrings>
+    <LocalizedString ElementType="UxElement" StringId="logonIdentifier_email">Email Address</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="requiredField_email">Please enter your email</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="logonIdentifier_username">Username</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="password">Password</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="createaccount_link">Sign up now</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="requiredField_username">Please enter your user name</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="createaccount_intro">Don't have an account?</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="forgotpassword_link">Forgot your password?</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="divider_title">OR</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="cancel_message">The user has forgotten their password</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="button_signin">Sign in</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="social_intro">Sign in with your social account</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="requiredField_password">Please enter your password</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="invalid_password">The password you entered is not in the expected format.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="local_intro_username">Sign in with your user name</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="local_intro_email">Sign in with your existing account</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="invalid_email">Please enter a valid email address</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="unknown_error">We are having trouble signing you in. Please try again later.</LocalizedString>
+    <!-- Uncomment the remember_me only if the keep me signed in is activated. 
+    <LocalizedString ElementType="UxElement" StringId="remember_me">Keep me signed in</LocalizedString> -->
+    <LocalizedString ElementType="UxElement" StringId="email_pattern">^[a-zA-Z0-9.!#$%&amp;’'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)$</LocalizedString>
+    <LocalizedString ElementType="ClaimsProvider" StringId="FacebookExchange">Facebook</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidPassword">Your password is incorrect.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsPrincipalDoesNotExist">We can't seem to find your account.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfOldPasswordUsed">Looks like you used an old password.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="DefaultMessage">Invalid username or password.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfUserAccountDisabled">Your account has been locked. Contact your support person to unlock it, then try again.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfUserAccountLocked">Your account is temporarily locked to prevent unauthorized use. Try again later.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="AADRequestsThrottled">There are too many requests at this moment. Please wait for some time and try again.</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+```
+
 ## <a name="sign-up-and-self-asserted-pages-user-interface-elements"></a>Gebruikers interface-elementen voor het registreren en zelf bevestigingen van pagina's
 
-Hier volgen de Id's voor een inhouds definitie met een ID van `api.localaccountsignup` of een inhouds definitie die begint met `api.selfasserted` , zoals `api.selfasserted.profileupdate` en `api.localaccountpasswordreset` .
+Hieronder ziet u de Id's voor een inhouds definitie met een ID van `api.localaccountsignup` of een inhouds definitie die begint met `api.selfasserted` , zoals `api.selfasserted.profileupdate` en `api.localaccountpasswordreset` , en een [zelfondertekend technisch profiel](self-asserted-technical-profile.md).
 
 | Id | Standaardwaarde |
 | -- | ------------- |
@@ -102,15 +143,15 @@ Hier volgen de Id's voor een inhouds definitie met een ID van `api.localaccounts
 | **cancel_message** | De gebruiker heeft het invoeren van zelfbevestigende informatie geannuleerd |
 | **preloader_alt** | Een ogenblik geduld |
 | **ver_but_send** | Verificatie code verzenden |
-| **alert_yes** | Ja |
+| **alert_yes** | Yes |
 | **error_fieldIncorrect** | Een of meer velden zijn onjuist ingevuld. Controleer uw vermeldingen en probeer het opnieuw. |
-| **jaareinde** | Jaar |
+| **jaareinde** | Year |
 | **verifying_blurb** | De gegevens worden verwerkt. een ogen blik geduld... |
 | **button_cancel** | Annuleren |
 | **ver_fail_no_retry** | U hebt te veel onjuiste pogingen gedaan. Probeert u het later nog eens. |
 | **blijft** | Maand |
 | **ver_success_msg** | E-mail adres geverifieerd. U kunt nu door gaan. |
-| **months** | Januari, februari, maart, april, mei, juni, juli, augustus, september, oktober, november, december |
+| **maanden** | Januari, februari, maart, april, mei, juni, juli, augustus, september, oktober, november, december |
 | **ver_fail_server** | Er zijn problemen met het controleren van uw e-mail adres. Geef een geldig e-mail adres op en probeer het opnieuw. |
 | **error_requiredFieldMissing** | Een vereist veld ontbreekt. Vul alle vereiste velden in en probeer het opnieuw. |
 | **initial_intro** | Geef de volgende details op. |
@@ -120,7 +161,7 @@ Hier volgen de Id's voor een inhouds definitie met een ID van `api.localaccounts
 | **ver_incorrect_format** | Onjuiste indeling. |
 | **ver_but_edit** | E-mail wijzigen |
 | **ver_but_verify** | Code verifiëren |
-| **alert_no** | Nee |
+| **alert_no** | No |
 | **ver_info_msg** | De verificatie code is verzonden naar het postvak in. Kopieer het naar het invoervak hieronder. |
 | **profieldag** | Dag |
 | **ver_fail_throttled** | Er zijn te veel aanvragen om dit e-mail adres te controleren. Wacht even en probeer het opnieuw. |
@@ -137,11 +178,11 @@ Hier volgen de Id's voor een inhouds definitie met een ID van `api.localaccounts
 | Id | Standaardwaarde |
 | -- | ------------- |
 | **UserMessageIfClaimsPrincipalAlreadyExists** | Er bestaat al een gebruiker met de opgegeven ID. Kies een andere naam. |
-| **UserMessageIfClaimNotVerified** | Claim niet geverifieerd:{0} |
-| **UserMessageIfIncorrectPattern** | Onjuist patroon voor:{0} |
-| **UserMessageIfMissingRequiredElement** | Vereist element ontbreekt:{0} |
-| **UserMessageIfValidationError** | Fout in validatie door:{0} |
-| **UserMessageIfInvalidInput** | {0}heeft ongeldige invoer. |
+| **UserMessageIfClaimNotVerified** | Claim niet geverifieerd: {0} |
+| **UserMessageIfIncorrectPattern** | Onjuist patroon voor: {0} |
+| **UserMessageIfMissingRequiredElement** | Vereist element ontbreekt: {0} |
+| **UserMessageIfValidationError** | Fout in validatie door: {0} |
+| **UserMessageIfInvalidInput** | {0} heeft ongeldige invoer. |
 | **ServiceThrottled** | Er zijn op dit moment te veel aanvragen. Wacht enige tijd en probeer het opnieuw. |
 
 In het volgende voor beeld ziet u het gebruik van enkele van de elementen van de gebruikers interface op de registratie pagina:
@@ -152,10 +193,61 @@ In het volgende voor beeld ziet u het gebruik van enkele van de elementen van de
 
 ![Aanmeldings pagina e-mail verificatie UX-elementen](./media/localization-string-ids/localization-email-verification.png)
 
+## <a name="sign-up-and-self-asserted-pages-example"></a>Voor beeld van registratie en zelf bevestiging van pagina's
+
+```xml
+<LocalizedResources Id="api.localaccountsignup.en">
+  <LocalizedStrings>
+    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Email Address</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="UserHelpText">Email address that can be used to contact you.</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="PatternHelpText">Please enter a valid email address.</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="newPassword" StringId="DisplayName">New Password</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="newPassword" StringId="UserHelpText">Enter new password</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="newPassword" StringId="PatternHelpText">8-16 characters, containing 3 out of 4 of the following: Lowercase characters, uppercase characters, digits (0-9), and one or more of the following symbols: @ # $ % ^ &amp; * - _ + = [ ] { } | \ : ' , ? / ` ~ " ( ) ; .</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="reenterPassword" StringId="DisplayName">Confirm New Password</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="reenterPassword" StringId="UserHelpText">Confirm new password</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="reenterPassword" StringId="PatternHelpText">#8-16 characters, containing 3 out of 4 of the following: Lowercase characters, uppercase characters, digits (0-9), and one or more of the following symbols: @ # $ % ^ &amp; * - _ + = [ ] { } | \ : ' , ? / ` ~ " ( ) ; .</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="displayName" StringId="DisplayName">Display Name</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="displayName" StringId="UserHelpText">Your display name.</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="surname" StringId="DisplayName">Surname</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="surname" StringId="UserHelpText">Your surname (also known as family name or last name).</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="givenName" StringId="DisplayName">Given Name</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="givenName" StringId="UserHelpText">Your given name (also known as first name).</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="button_continue">Create</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="error_fieldIncorrect">One or more fields are filled out incorrectly. Please check your entries and try again.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="error_passwordEntryMismatch">The password entry fields do not match. Please enter the same password in both fields and try again.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="error_requiredFieldMissing">A required field is missing. Please fill out all required fields and try again.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="helplink_text">What is this?</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="initial_intro">Please provide the following details.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="preloader_alt">Please wait</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="required_field">This information is required.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="ver_but_edit">Change e-mail</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="ver_but_resend">Send new code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="ver_but_send">Send verification code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="ver_but_verify">Verify code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="ver_fail_code_expired">That code is expired. Please request a new code.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="ver_fail_no_retry">You've made too many incorrect attempts. Please try again later.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="ver_fail_retry">That code is incorrect. Please try again.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="ver_fail_server">We are having trouble verifying your email address. Please enter a valid email address and try again.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="ver_fail_throttled">There have been too many requests to verify this email address. Please wait a while, then try again.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="ver_info_msg">Verification code has been sent to your inbox. Please copy it to the input box below.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="ver_input">Verification code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="ver_intro_msg">Verification is necessary. Please click Send button.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="ver_success_msg">E-mail address verified. You can now continue.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="ServiceThrottled">There are too many requests at this moment. Please wait for some time and try again.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimNotVerified">Claim not verified: {0}</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsPrincipalAlreadyExists">A user with the specified ID already exists. Please choose a different one.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfIncorrectPattern">Incorrect pattern for: {0}</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidInput">{0} has invalid input.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMissingRequiredElement">Missing required element: {0}</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfValidationError">Error in validation by: {0}</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+```
 
 ## <a name="phone-factor-authentication-page-user-interface-elements"></a>Gebruikers interface-elementen van de pagina telefoon Factor Authentication
 
-Hier volgen de Id's voor een inhouds definitie met de ID van `api.phonefactor` .
+Hier volgen de Id's voor een inhouds definitie met de ID en het `api.phonefactor` [technische profiel van de telefoon factor](phone-factor-technical-profile.md).
 
 | Id | Standaardwaarde |
 | -- | ------------- |
@@ -190,22 +282,103 @@ Hier volgen de Id's voor een inhouds definitie met de ID van `api.phonefactor` .
 | **number_label** | Telefoonnummer |
 | **error_tryagain** | Het telefoon nummer dat u hebt ingevoerd, is bezet of niet beschikbaar. Controleer het nummer en probeer het opnieuw. |
 | **error_incorrect_code** | De ingevoerde verificatie code komt niet overeen met onze records. Probeer het opnieuw of vraag een nieuwe code aan. |
-| **countryList** | Zie [de lijst met landen](#countries-list). |
+| **countryList** | Zie [de lijst met landen](#phone-factor-authentication-page-example). |
 | **error_448** | Het telefoon nummer dat u hebt ingevoerd, is onbereikbaar. |
 | **error_449** | De gebruiker heeft het aantal nieuwe pogingen overschreden. |
 | **verification_code_input_placeholder_text** | Verificatiecode |
 
 In het volgende voor beeld ziet u het gebruik van een aantal van de elementen van de gebruikers interface op de pagina MFA-inschrijving:
 
-![Aanmeldings pagina e-mail verificatie UX-elementen](./media/localization-string-ids/localization-mfa1.png)
+![UX-elementen voor inschrijving van telefoon factor authenticatie](./media/localization-string-ids/localization-mfa1.png)
 
 In het volgende voor beeld ziet u het gebruik van enkele van de elementen van de gebruikers interface op de pagina MFA-validatie:
 
-![Aanmeldings pagina e-mail verificatie UX-elementen](./media/localization-string-ids/localization-mfa2.png)
+![UX-elementen voor validatie van telefoon factor authenticatie](./media/localization-string-ids/localization-mfa2.png)
+
+## <a name="phone-factor-authentication-page-example"></a>Pagina voor beeld van de verificatie van de telefoon factor
+
+```xml
+<LocalizedResources Id="api.phonefactor.en">
+  <LocalizedStrings>
+    <LocalizedString ElementType="UxElement" StringId="button_verify">Call Me</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="country_code_label">Country Code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="cancel_message">The user has canceled multi-factor authentication</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="text_button_send_second_code">Send a new code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="code_pattern">\d{6}</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="intro_mixed">We have the following number on record for you. We can send a code via SMS or phone to authenticate you.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="intro_mixed_p">We have the following numbers on record for you. Choose a number that we can phone or send a code via SMS to authenticate you.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="button_verify_code">Verify Code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="requiredField_code">Please enter the verification code you received</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="invalid_code">Please enter the 6-digit code you received</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="button_cancel">Cancel</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="local_number_input_placeholder_text">Phone number</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="button_retry">Retry</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="alternative_text">I don't have my phone</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="intro_phone_p">We have the following numbers on record for you. Choose a number that we can phone to authenticate you.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="intro_phone">We have the following number on record for you. We will phone to authenticate you.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="enter_code_text_intro">Enter your verification code below, or</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="intro_entry_phone">Enter a number below that we can phone to authenticate you.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="intro_entry_sms">Enter a number below that we can send a code via SMS to authenticate you.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="button_send_code">Send Code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="invalid_number">Please enter a valid phone number</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="intro_sms">We have the following number on record for you. We will send a code via SMS to authenticate you.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="intro_entry_mixed">Enter a number below that we can send a code via SMS or phone to authenticate you.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="number_pattern">^\+(?:[0-9][\x20-]?){6,14}[0-9]$</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="intro_sms_p">We have the following numbers on record for you. Choose a number that we can send a code via SMS to authenticate you.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="requiredField_countryCode">Please select your country code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="requiredField_number">Please enter your phone number</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="country_code_input_placeholder_text">Country or region</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="number_label">Phone Number</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="error_tryagain">The phone number you provided is busy or unavailable. Please check the number and try again.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="error_incorrect_code">The verification code you have entered does not match our records. Please try again, or request a new code.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="countryList">{"DEFAULT":"Country/Region","AF":"Afghanistan","AX":"Åland Islands","AL":"Albania","DZ":"Algeria","AS":"American Samoa","AD":"Andorra","AO":"Angola","AI":"Anguilla","AQ":"Antarctica","AG":"Antigua and Barbuda","AR":"Argentina","AM":"Armenia","AW":"Aruba","AU":"Australia","AT":"Austria","AZ":"Azerbaijan","BS":"Bahamas","BH":"Bahrain","BD":"Bangladesh","BB":"Barbados","BY":"Belarus","BE":"Belgium","BZ":"Belize","BJ":"Benin","BM":"Bermuda","BT":"Bhutan","BO":"Bolivia","BQ":"Bonaire","BA":"Bosnia and Herzegovina","BW":"Botswana","BV":"Bouvet Island","BR":"Brazil","IO":"British Indian Ocean Territory","VG":"British Virgin Islands","BN":"Brunei","BG":"Bulgaria","BF":"Burkina Faso","BI":"Burundi","CV":"Cabo Verde","KH":"Cambodia","CM":"Cameroon","CA":"Canada","KY":"Cayman Islands","CF":"Central African Republic","TD":"Chad","CL":"Chile","CN":"China","CX":"Christmas Island","CC":"Cocos (Keeling) Islands","CO":"Colombia","KM":"Comoros","CG":"Congo","CD":"Congo (DRC)","CK":"Cook Islands","CR":"Costa Rica","CI":"Côte d'Ivoire","HR":"Croatia","CU":"Cuba","CW":"Curaçao","CY":"Cyprus","CZ":"Czech Republic","DK":"Denmark","DJ":"Djibouti","DM":"Dominica","DO":"Dominican Republic","EC":"Ecuador","EG":"Egypt","SV":"El Salvador","GQ":"Equatorial Guinea","ER":"Eritrea","EE":"Estonia","ET":"Ethiopia","FK":"Falkland Islands","FO":"Faroe Islands","FJ":"Fiji","FI":"Finland","FR":"France","GF":"French Guiana","PF":"French Polynesia","TF":"French Southern Territories","GA":"Gabon","GM":"Gambia","GE":"Georgia","DE":"Germany","GH":"Ghana","GI":"Gibraltar","GR":"Greece","GL":"Greenland","GD":"Grenada","GP":"Guadeloupe","GU":"Guam","GT":"Guatemala","GG":"Guernsey","GN":"Guinea","GW":"Guinea-Bissau","GY":"Guyana","HT":"Haiti","HM":"Heard Island and McDonald Islands","HN":"Honduras","HK":"Hong Kong SAR","HU":"Hungary","IS":"Iceland","IN":"India","ID":"Indonesia","IR":"Iran","IQ":"Iraq","IE":"Ireland","IM":"Isle of Man","IL":"Israel","IT":"Italy","JM":"Jamaica","JP":"Japan","JE":"Jersey","JO":"Jordan","KZ":"Kazakhstan","KE":"Kenya","KI":"Kiribati","KR":"Korea","KW":"Kuwait","KG":"Kyrgyzstan","LA":"Laos","LV":"Latvia","LB":"Lebanon","LS":"Lesotho","LR":"Liberia","LY":"Libya","LI":"Liechtenstein","LT":"Lithuania","LU":"Luxembourg","MO":"Macao SAR","MK":"North Macedonia","MG":"Madagascar","MW":"Malawi","MY":"Malaysia","MV":"Maldives","ML":"Mali","MT":"Malta","MH":"Marshall Islands","MQ":"Martinique","MR":"Mauritania","MU":"Mauritius","YT":"Mayotte","MX":"Mexico","FM":"Micronesia","MD":"Moldova","MC":"Monaco","MN":"Mongolia","ME":"Montenegro","MS":"Montserrat","MA":"Morocco","MZ":"Mozambique","MM":"Myanmar","NA":"Namibia","NR":"Nauru","NP":"Nepal","NL":"Netherlands","NC":"New Caledonia","NZ":"New Zealand","NI":"Nicaragua","NE":"Niger","NG":"Nigeria","NU":"Niue","NF":"Norfolk Island","KP":"North Korea","MP":"Northern Mariana Islands","NO":"Norway","OM":"Oman","PK":"Pakistan","PW":"Palau","PS":"Palestinian Authority","PA":"Panama","PG":"Papua New Guinea","PY":"Paraguay","PE":"Peru","PH":"Philippines","PN":"Pitcairn Islands","PL":"Poland","PT":"Portugal","PR":"Puerto Rico","QA":"Qatar","RE":"Réunion","RO":"Romania","RU":"Russia","RW":"Rwanda","BL":"Saint Barthélemy","KN":"Saint Kitts and Nevis","LC":"Saint Lucia","MF":"Saint Martin","PM":"Saint Pierre and Miquelon","VC":"Saint Vincent and the Grenadines","WS":"Samoa","SM":"San Marino","ST":"São Tomé and Príncipe","SA":"Saudi Arabia","SN":"Senegal","RS":"Serbia","SC":"Seychelles","SL":"Sierra Leone","SG":"Singapore","SX":"Sint Maarten","SK":"Slovakia","SI":"Slovenia","SB":"Solomon Islands","SO":"Somalia","ZA":"South Africa","GS":"South Georgia and South Sandwich Islands","SS":"South Sudan","ES":"Spain","LK":"Sri Lanka","SH":"St Helena, Ascension, Tristan da Cunha","SD":"Sudan","SR":"Suriname","SJ":"Svalbard","SZ":"Swaziland","SE":"Sweden","CH":"Switzerland","SY":"Syria","TW":"Taiwan","TJ":"Tajikistan","TZ":"Tanzania","TH":"Thailand","TL":"Timor-Leste","TG":"Togo","TK":"Tokelau","TO":"Tonga","TT":"Trinidad and Tobago","TN":"Tunisia","TR":"Turkey","TM":"Turkmenistan","TC":"Turks and Caicos Islands","TV":"Tuvalu","UM":"U.S. Outlying Islands","VI":"U.S. Virgin Islands","UG":"Uganda","UA":"Ukraine","AE":"United Arab Emirates","GB":"United Kingdom","US":"United States","UY":"Uruguay","UZ":"Uzbekistan","VU":"Vanuatu","VA":"Vatican City","VE":"Venezuela","VN":"Vietnam","WF":"Wallis and Futuna","YE":"Yemen","ZM":"Zambia","ZW":"Zimbabwe"}</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="error_448">The phone number you provided is unreachable.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="error_449">User has exceeded the number of retry attempts.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="verification_code_input_placeholder_text">Verification code</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="strongAuthenticationPhoneNumber" StringId="DisplayName">Phone Number</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+
+```
 
 ## <a name="verification-display-control-user-interface-elements"></a>Gebruikers interface-elementen voor controle weergave
 
-Hier volgen de Id's voor een [besturings element voor controle weergave](display-control-verification.md)
+Hier volgen de Id's voor een [besturings element](display-control-verification.md) voor het controleren van de controle met de [pagina-indeling versie](page-layout.md) 2.1.0 of hoger.
+
+| Id | Standaardwaarde |
+| -- | ------------- |
+|intro_msg| Verificatie is nood zakelijk. Klik op de knop verzenden.|
+|success_send_code_msg | De verificatie code is verzonden naar het postvak in. Kopieer het naar het invoervak hieronder.|
+|failure_send_code_msg | Er zijn problemen met het controleren van uw e-mail adres. Geef een geldig e-mail adres op en probeer het opnieuw.|
+|success_verify_code_msg | E-mail adres geverifieerd. U kunt nu door gaan.|
+|failure_verify_code_msg | Er zijn problemen met het controleren van uw e-mail adres. Probeer het opnieuw.|
+|but_send_code | Verificatie code verzenden|
+|but_verify_code | Code verifiëren|
+|but_send_new_code | Nieuwe code verzenden|
+|but_change_claims | E-mail wijzigen|
+
+### <a name="verification-display-control-example"></a>Controle voorbeeld voor verificatie weergave
+
+```xml
+<LocalizedResources Id="api.localaccountsignup.en">
+  <LocalizedStrings>
+   <!-- Display control UI elements-->
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="intro_msg">Verification is necessary. Please click Send button.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="success_send_code_msg">Verification code has been sent to your inbox. Please copy it to the input box below.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="failure_send_code_msg">We are having trouble verifying your email address. Please enter a valid email address and try again.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="success_verify_code_msg">E-mail address verified. You can now continue.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="failure_verify_code_msg">We are having trouble verifying your email address. Please try again.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_send_code">Send verification code</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_verify_code">Verify code</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_send_new_code">Send new code</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_change_claims">Change e-mail</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+```
+
+## <a name="verification-display-control-user-interface-elements-deprecated"></a>Controle van gebruikers interface-elementen voor verificatie weergave (afgeschaft)
+
+Hier volgen de Id's voor een [besturings element](display-control-verification.md) voor het controleren van de controle met de [pagina-indeling versie](page-layout.md) 2.0.0.
 
 | Id | Standaardwaarde |
 | -- | ------------- |
@@ -217,7 +390,7 @@ Hier volgen de Id's voor een [besturings element voor controle weergave](display
 |verification_control_but_verify_code |Code verifiëren |
 |verification_control_code_sent| De verificatie code is verzonden. Kopieer het naar het invoervak hieronder. |
 
-### <a name="example"></a>Voorbeeld
+### <a name="verification-display-control-example-deprecated"></a>Voor beeld van controle voor beeld weergave (afgeschaft)
 
 ```xml
 <LocalizedResources Id="api.localaccountsignup.en">
@@ -239,13 +412,13 @@ Hier volgen de Id's voor het [ondersteunings fout bericht van het onderhouds ser
 
 | Id | Standaardwaarde |
 | -- | ------------- |
-|DefaultUserMessageIfRequestFailed | Kan geen verbinding maken met een onderliggend service-eind punt. URL van de rest-service:{0} |
-|UserMessageIfCircuitOpen | {0}URL van de rest-service:{1} |
-|UserMessageIfDnsResolutionFailed | Het omzetten van de hostnaam van het rest-service-eind punt is mislukt. URL van de rest-service:{0} |
-|UserMessageIfRequestTimeout | Kan geen verbinding tot stand brengen met een onderliggend service-eind punt binnen een time-outlimiet van {0} seconden. URL van de rest-service:{1} |
+|DefaultUserMessageIfRequestFailed | Kan geen verbinding maken met een onderliggend service-eind punt. URL van de rest-service: {0} |
+|UserMessageIfCircuitOpen | {0} URL van de rest-service: {1} |
+|UserMessageIfDnsResolutionFailed | Het omzetten van de hostnaam van het rest-service-eind punt is mislukt. URL van de rest-service: {0} |
+|UserMessageIfRequestTimeout | Kan geen verbinding tot stand brengen met een onderliggend service-eind punt binnen een time-outlimiet van {0} seconden. URL van de rest-service: {1} |
 
 
-### <a name="example"></a>Voorbeeld
+### <a name="restful-service-example"></a>Voor beeld van een rest-service
 
 ```xml
 <LocalizedResources Id="api.localaccountsignup.en">
@@ -271,7 +444,7 @@ Hier volgen de Id's voor een fout bericht over het [technische profiel van Azure
 |UserMessageIfThrottled | Uw aanvraag is beperkt. Probeer het later opnieuw.|
 |UserMessageIfWrongCodeEntered|Er is een onjuiste code ingevoerd. Probeer het opnieuw.|
 
-### <a name="example"></a>Voorbeeld
+### <a name="azure-mfa-example"></a>Voor beeld van Azure MFA
 
 ```xml
 <LocalizedResources Id="api.localaccountsignup.en">
@@ -299,7 +472,7 @@ Hier volgen de Id's voor [Azure AD SSPR-technische profiel](aad-sspr-technical-p
 |UserMessageIfVerificationFailedRetryAllowed | De verificatie is mislukt, probeer het opnieuw.|
 
 
-### <a name="example"></a>Voorbeeld
+### <a name="azure-ad-sspr-example"></a>Azure AD SSPR-voor beeld
 
 ```XML
 <LocalizedResources Id="api.localaccountsignup.en">
@@ -325,13 +498,13 @@ Hier volgen de Id's voor een [eenmalig wacht woord technische profiel](one-time-
 |UserMessageIfInvalidCode |Er is een onjuist wacht woord opgegeven voor de verificatie |
 |UserMessageIfVerificationFailedRetryAllowed |Deze code is onjuist. Probeer het opnieuw. | 
 
-### <a name="example"></a>Voorbeeld
+### <a name="one-time-password-example"></a>Voor beeld van eenmalig wacht woord
 
 ```xml
 <LocalizedResources Id="api.localaccountsignup.en">
   <LocalizedStrings>
-    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionDoesNotExist">You have exceed the maximum time allowed.</LocalizedString>
-    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxRetryAttempted">You have exceed the number of retries allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionDoesNotExist">You have exceeded the maximum time allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxRetryAttempted">You have exceeded the number of retries allowed.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidCode">You have entered the wrong code.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</LocalizedString>
    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfVerificationFailedRetryAllowed">That code is incorrect. Please try again.</LocalizedString>
@@ -349,7 +522,7 @@ Hier volgen de Id's voor claim transformaties fout berichten:
 |DateTimeGreaterThan |[AssertDateTimeIsGreaterThan](date-transformations.md#assertdatetimeisgreaterthan) | Vergelijking van claim waarde is mislukt: de gegeven linkeroperand is groter dan de rechter operand.|
 |UserMessageIfClaimsTransformationStringsAreNotEqual |[AssertStringClaimsAreEqual](string-transformations.md#assertstringclaimsareequal) | Het vergelijken van de claim waarde is mislukt met StringComparison ' OrdinalIgnoreCase '.|
 
-### <a name="example"></a>Voorbeeld
+### <a name="claims-transformations-example"></a>Voor beeld van claim transformaties
 
 ```xml
 <LocalizedResources Id="api.localaccountsignup.en">
@@ -359,14 +532,6 @@ Hier volgen de Id's voor claim transformaties fout berichten:
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsTransformationStringsAreNotEqual">The email entry fields do not match. Please enter the same email address in both fields and try again.</LocalizedString>
   </LocalizedStrings>
 </LocalizedResources>
-```
-
-## <a name="countries-list"></a>Lijst met landen
-
-Hieronder ziet u de countryList-waarden die worden gebruikt door multi-factor Authentication.
-
-```JSON
-{"DEFAULT":"Country/Region","AF":"Afghanistan","AX":"Åland Islands","AL":"Albania","DZ":"Algeria","AS":"American Samoa","AD":"Andorra","AO":"Angola","AI":"Anguilla","AQ":"Antarctica","AG":"Antigua and Barbuda","AR":"Argentina","AM":"Armenia","AW":"Aruba","AU":"Australia","AT":"Austria","AZ":"Azerbaijan","BS":"Bahamas","BH":"Bahrain","BD":"Bangladesh","BB":"Barbados","BY":"Belarus","BE":"Belgium","BZ":"Belize","BJ":"Benin","BM":"Bermuda","BT":"Bhutan","BO":"Bolivia","BQ":"Bonaire","BA":"Bosnia and Herzegovina","BW":"Botswana","BV":"Bouvet Island","BR":"Brazil","IO":"British Indian Ocean Territory","VG":"British Virgin Islands","BN":"Brunei","BG":"Bulgaria","BF":"Burkina Faso","BI":"Burundi","CV":"Cabo Verde","KH":"Cambodia","CM":"Cameroon","CA":"Canada","KY":"Cayman Islands","CF":"Central African Republic","TD":"Chad","CL":"Chile","CN":"China","CX":"Christmas Island","CC":"Cocos (Keeling) Islands","CO":"Colombia","KM":"Comoros","CG":"Congo","CD":"Congo (DRC)","CK":"Cook Islands","CR":"Costa Rica","CI":"Côte d'Ivoire","HR":"Croatia","CU":"Cuba","CW":"Curaçao","CY":"Cyprus","CZ":"Czech Republic","DK":"Denmark","DJ":"Djibouti","DM":"Dominica","DO":"Dominican Republic","EC":"Ecuador","EG":"Egypt","SV":"El Salvador","GQ":"Equatorial Guinea","ER":"Eritrea","EE":"Estonia","ET":"Ethiopia","FK":"Falkland Islands","FO":"Faroe Islands","FJ":"Fiji","FI":"Finland","FR":"France","GF":"French Guiana","PF":"French Polynesia","TF":"French Southern Territories","GA":"Gabon","GM":"Gambia","GE":"Georgia","DE":"Germany","GH":"Ghana","GI":"Gibraltar","GR":"Greece","GL":"Greenland","GD":"Grenada","GP":"Guadeloupe","GU":"Guam","GT":"Guatemala","GG":"Guernsey","GN":"Guinea","GW":"Guinea-Bissau","GY":"Guyana","HT":"Haiti","HM":"Heard Island and McDonald Islands","HN":"Honduras","HK":"Hong Kong SAR","HU":"Hungary","IS":"Iceland","IN":"India","ID":"Indonesia","IR":"Iran","IQ":"Iraq","IE":"Ireland","IM":"Isle of Man","IL":"Israel","IT":"Italy","JM":"Jamaica","JP":"Japan","JE":"Jersey","JO":"Jordan","KZ":"Kazakhstan","KE":"Kenya","KI":"Kiribati","KR":"Korea","KW":"Kuwait","KG":"Kyrgyzstan","LA":"Laos","LV":"Latvia","LB":"Lebanon","LS":"Lesotho","LR":"Liberia","LY":"Libya","LI":"Liechtenstein","LT":"Lithuania","LU":"Luxembourg","MO":"Macao SAR","MK":"North Macedonia","MG":"Madagascar","MW":"Malawi","MY":"Malaysia","MV":"Maldives","ML":"Mali","MT":"Malta","MH":"Marshall Islands","MQ":"Martinique","MR":"Mauritania","MU":"Mauritius","YT":"Mayotte","MX":"Mexico","FM":"Micronesia","MD":"Moldova","MC":"Monaco","MN":"Mongolia","ME":"Montenegro","MS":"Montserrat","MA":"Morocco","MZ":"Mozambique","MM":"Myanmar","NA":"Namibia","NR":"Nauru","NP":"Nepal","NL":"Netherlands","NC":"New Caledonia","NZ":"New Zealand","NI":"Nicaragua","NE":"Niger","NG":"Nigeria","NU":"Niue","NF":"Norfolk Island","KP":"North Korea","MP":"Northern Mariana Islands","NO":"Norway","OM":"Oman","PK":"Pakistan","PW":"Palau","PS":"Palestinian Authority","PA":"Panama","PG":"Papua New Guinea","PY":"Paraguay","PE":"Peru","PH":"Philippines","PN":"Pitcairn Islands","PL":"Poland","PT":"Portugal","PR":"Puerto Rico","QA":"Qatar","RE":"Réunion","RO":"Romania","RU":"Russia","RW":"Rwanda","BL":"Saint Barthélemy","KN":"Saint Kitts and Nevis","LC":"Saint Lucia","MF":"Saint Martin","PM":"Saint Pierre and Miquelon","VC":"Saint Vincent and the Grenadines","WS":"Samoa","SM":"San Marino","ST":"São Tomé and Príncipe","SA":"Saudi Arabia","SN":"Senegal","RS":"Serbia","SC":"Seychelles","SL":"Sierra Leone","SG":"Singapore","SX":"Sint Maarten","SK":"Slovakia","SI":"Slovenia","SB":"Solomon Islands","SO":"Somalia","ZA":"South Africa","GS":"South Georgia and South Sandwich Islands","SS":"South Sudan","ES":"Spain","LK":"Sri Lanka","SH":"St Helena, Ascension, Tristan da Cunha","SD":"Sudan","SR":"Suriname","SJ":"Svalbard","SZ":"Swaziland","SE":"Sweden","CH":"Switzerland","SY":"Syria","TW":"Taiwan","TJ":"Tajikistan","TZ":"Tanzania","TH":"Thailand","TL":"Timor-Leste","TG":"Togo","TK":"Tokelau","TO":"Tonga","TT":"Trinidad and Tobago","TN":"Tunisia","TR":"Turkey","TM":"Turkmenistan","TC":"Turks and Caicos Islands","TV":"Tuvalu","UM":"U.S. Outlying Islands","VI":"U.S. Virgin Islands","UG":"Uganda","UA":"Ukraine","AE":"United Arab Emirates","GB":"United Kingdom","US":"United States","UY":"Uruguay","UZ":"Uzbekistan","VU":"Vanuatu","VA":"Vatican City","VE":"Venezuela","VN":"Vietnam","WF":"Wallis and Futuna","YE":"Yemen","ZM":"Zambia","ZW":"Zimbabwe"}
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -1,25 +1,18 @@
 ---
 title: Een Oracle-data base ontwerpen en implementeren in azure | Microsoft Docs
 description: Ontwerp en implementeer een Oracle-data base in uw Azure-omgeving.
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: dbakevlar
-manager: ''
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: kegorman
-ms.openlocfilehash: 70de7363634cee2790a40ecf056134cf002c762d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.reviewer: cynthn
+ms.openlocfilehash: 9ccf7ddb44a25ec123f13b5d7b6cdb5354b63778
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91274704"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996639"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Een Oracle-data base ontwerpen en implementeren in azure
 
@@ -49,7 +42,7 @@ De volgende tabel bevat enkele van de verschillen tussen een on-premises impleme
 | **Netwerken** |LAN/WAN  |SDN (door software gedefinieerde netwerken)|
 | **Beveiligings groep** |Hulpprogram ma's voor IP-en poort beperking |[Netwerk beveiligings groep (NSG)](https://azure.microsoft.com/blog/network-security-groups) |
 | **Tolerantie** |MBTF (gemiddelde tijd tussen storingen) |MTTR (gemiddelde tijd voor herstel)|
-| **Gepland onderhoud** |Patches/upgrades|[Beschikbaarheids sets](../../windows/infrastructure-example.md) (patches/upgrades die worden beheerd door Azure) |
+| **Gepland onderhoud** |Patches/upgrades|[Beschikbaarheids sets](/previous-versions/azure/virtual-machines/windows/infrastructure-example) (patches/upgrades die worden beheerd door Azure) |
 | **Resource** |Toegewezen  |Gedeeld met andere clients|
 | **Regio's** |Datacenters |[Regioparen](../../regions.md#region-pairs)|
 | **Storage** |SAN/fysieke schijven |[Door Azure beheerde opslag](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
@@ -230,7 +223,7 @@ Nadat u uw Azure-omgeving hebt ingesteld en geconfigureerd, is de volgende stap 
 - [Oracle ASM configureren](configure-oracle-asm.md)
 - [Oracle Data Guard configureren](configure-oracle-dataguard.md)
 - [Een Oracle Golden-Gate configureren](configure-oracle-golden-gate.md)
-- [Oracle-back-up en-herstel](oracle-backup-recovery.md)
+- [Oracle-back-up en-herstel](./oracle-overview.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -3,12 +3,12 @@ title: Overzicht van de voorbeeldblauwdruk voor ISO 27001 conforme gedeelde serv
 description: Overzicht en architectuur van de voorbeeldblauwdruk voor ISO 27001 conforme gedeelde services. Met dit blauwdrukvoorbeeld kunnen klanten specifieke beheeropties van ISO 27001 bekijken.
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 09309fe05200cf8c7a958324f3412967296a8dc9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e02f34c424e3f68e67f2d0dc2f4541c57ce3882f
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87927348"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950547"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>Overzicht van de voorbeeldblauwdruk voor ISO 27001 conforme gedeelde services
 
@@ -27,12 +27,12 @@ Deze omgeving bestaat uit diverse Azure-services die samen een veilige, volledig
 
 - [Azure-rollen](../../../../role-based-access-control/overview.md) voor scheiding van taken met het oog op optimaal beheer. Vóór de implementatie van de infrastructuur worden er drie rollen gedefinieerd:
   - De rol NetOps beschikt over de rechten die nodig zijn om de netwerkomgeving te beheren, waaronder firewallinstellingen, instellingen voor netwerkbeveiligingsgroepen, routering en andere netwerkfuncties
-  - De rol SecOps beschikt over de rechten die nodig zijn om het [Azure Security Center](../../../../security-center/security-center-intro.md) te implementeren en te beheren, en het [Azure-beleid](../../../policy/overview.md) te definiëren, evenals over andere beveiligingsgerelateerde rechten
-  - De rol SysOps beschikt over de rechten die nodig zijn om het [Azure-beleid](../../../policy/overview.md) binnen het abonnement te definiëren en [Log Analytics](../../../../azure-monitor/overview.md) te beheren voor de volledige omgeving, evenals over andere operationele rechten
+  - De rol SecOps beschikt over de rechten die nodig zijn om het [Azure Security Center](../../../../security-center/security-center-introduction.md) te implementeren en te beheren, en het [Azure Policy](../../../policy/overview.md)-definities te definiëren, evenals over andere beveiligingsgerelateerde rechten
+  - De rol SysOps beschikt over de rechten die nodig zijn om het [Azure Policy](../../../policy/overview.md)-definities binnen het abonnement te definiëren en [Log Analytics](../../../../azure-monitor/overview.md) te beheren voor de volledige omgeving, evenals over andere operationele rechten
 - Als eerste Azure-service wordt [Log Analytics](../../../../azure-monitor/overview.md) geïmplementeerd om te garanderen dat er op een centrale locatie logboeken worden bijgehouden voor alle acties en services zodra u begint met de beveiligde implementatie
 - Een virtueel netwerk dat ondersteuning biedt voor subnetten voor connectiviteit met een on-premises datacenter, een stack voor inkomend en uitgaand verkeer voor internetconnectiviteit, en een subnet voor gedeelde services waarin gebruik wordt gemaakt van netwerkbeveiligingsgroepen (NSG's) en toepassingsbeveiligingsgroepen (ASG's) voor volledige micro-segmentatie. Het netwerk bevat de volgende elementen:
   - Een jumpbox- of bastionhost die wordt gebruikt voor beheertaken en alleen kan worden benaderd via een [Azure-firewall](../../../../firewall/overview.md) die is geïmplementeerd in het subnet voor de stack voor inkomend verkeer
-  - Twee virtuele machines met Active Directory Domain Services (ADDS) en DNS die uitsluitend toegankelijk zijn via de jumpbox en alleen kunnen worden geconfigureerd voor replicatie van AD via een VPN- of [ExpressRoute](../../../../expressroute/expressroute-introduction.md)-verbinding (niet geïmplementeerd door de blauwdruk)
+  - Twee virtuele machines met Azure Active Directory Domain Services (Azure AD DS) en DNS die uitsluitend toegankelijk zijn via de jumpbox en alleen kunnen worden geconfigureerd voor replicatie van AD via een VPN- of [ExpressRoute](../../../../expressroute/expressroute-introduction.md)-verbinding (niet geïmplementeerd door de blauwdruk)
   - [Azure Net Watcher](../../../../network-watcher/network-watcher-monitoring-overview.md) en standaard-DDoS-bescherming
 - Een [Azure Key Vault](../../../../key-vault/general/overview.md)-exemplaar om de geheimen te bewaren voor de virtuele machines die in de omgeving met gedeelde services worden geïmplementeerd
 

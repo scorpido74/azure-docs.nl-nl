@@ -6,10 +6,10 @@ ms.author: spelluru
 ms.date: 10/07/2020
 ms.topic: article
 ms.openlocfilehash: 54649c47a896937a512a6041e485abfb03ca88dd
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91824968"
 ---
 # <a name="allow-access-to-azure-service-bus-namespaces-via-private-endpoints"></a>Toegang tot Azure Service Bus naam ruimten toestaan via persoonlijke eind punten
@@ -55,7 +55,7 @@ Uw privé-eindpunt en het virtueel netwerk moeten zich in dezelfde regio bevinde
 
 Als u al een bestaande naam ruimte hebt, kunt u een persoonlijk eind punt maken door de volgende stappen uit te voeren:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
 2. Typ **Service Bus**in de zoek balk.
 3. Selecteer de **naam ruimte** in de lijst waaraan u een persoonlijk eind punt wilt toevoegen.
 2. Selecteer in het menu links de optie **netwerk** opties onder **instellingen**. 

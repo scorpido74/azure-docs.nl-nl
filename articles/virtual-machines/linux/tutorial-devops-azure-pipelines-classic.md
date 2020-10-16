@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: 6cc4fdb82e98c30ca33eec58675f2175dfcc2607
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: f77cc85bd62deb2cb2cb74c42cf245a409904b3a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612789"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978302"
 ---
 # <a name="tutorial---configure-the-rolling-deployment-strategy-for-azure-linux-virtual-machines"></a>Zelfstudie: De implementatiestrategie Rolling configureren voor virtuele Linux-machines van Azure
 
@@ -29,7 +29,7 @@ Azure DevOps is een ingebouwde Azure-service waarmee elk deel van het DevOps-pro
 
 Azure Pipelines biedt een set hulpprogramma's voor het automatiseren van CI/CD voor implementaties op virtuele machines. U kunt vanuit de Azure-portal een pijplijn voor continue levering configureren voor een Azure-VM.
 
-In dit artikel wordt beschreven hoe u een CI/CD-pijplijn instelt die gebruikmaakt van de Rolling-strategie voor implementatie op meerdere machines vanuit de Azure-portal. De Azure-portal biedt ook ondersteuning voor andere strategieën, zoals [Canary](https://aka.ms/AA7jdrz) en [Blue-Green](https://aka.ms/AA83fwu).
+In dit artikel wordt beschreven hoe u een CI/CD-pijplijn instelt die gebruikmaakt van de Rolling-strategie voor implementatie op meerdere machines vanuit de Azure-portal. De Azure-portal biedt ook ondersteuning voor andere strategieën, zoals [Canary](./tutorial-azure-devops-canary-strategy.md) en [Blue-Green](./tutorial-azure-devops-blue-green-strategy.md).
 
 ### <a name="configure-cicd-on-virtual-machines"></a>CI/CD configureren op virtuele machines
 
@@ -78,8 +78,8 @@ Met behulp van de optie voor continue levering kunt u vanuit de Azure-portal rol
 
 ## <a name="other-deployment-strategies"></a>Andere implementatiestrategieën
 
-- [Strategie voor Canary-implementatie configureren](https://aka.ms/AA7jdrz)
-- [Strategie voor Blue-Green-implementatie configureren](https://aka.ms/AA83fwu)
+- [Strategie voor Canary-implementatie configureren](./tutorial-azure-devops-canary-strategy.md)
+- [Strategie voor Blue-Green-implementatie configureren](./tutorial-azure-devops-blue-green-strategy.md)
 
 ## <a name="azure-devops-projects"></a>Azure DevOps Projects
 

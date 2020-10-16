@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: 8a387adde6c74b8eb1ff950c5e6b5183e43d1f4f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 38c5df6a05d327e0b057501846e70d1f3c6c4896
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448660"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091148"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>Kubernetes-workloads beveiligen
 
@@ -35,11 +35,11 @@ Security Center biedt meer container beveiligings functies als u Azure Defender 
 
 |Aspect|Details|
 |----|:----|
-|Release status:|Preview|
-|Koers|Gratis|
+|Releasestatus:|Preview|
+|Prijzen:|Gratis|
 |Vereiste rollen en machtigingen:|**Eigenaar** of **beveiligings beheerder** voor het bewerken van een toewijzing<br>**Lezer** voor het weer geven van de aanbevelingen|
-|Ondersteunde clusters|Kubernetes v 1.14 (of hoger) is vereist<br>Geen PodSecurityPolicy-resource (oud PSP-model) op de clusters<br>Windows-knoop punten worden niet ondersteund|
-|Clouds|![Ja](./media/icons/yes-icon.png) Commerciële Clouds<br>![Nee](./media/icons/no-icon.png) National/soeverein (US Gov, China gov, andere gov)|
+|Ondersteunde clusters:|Kubernetes v 1.14 (of hoger) is vereist<br>Geen PodSecurityPolicy-resource (oud PSP-model) op de clusters<br>Windows-knoop punten worden niet ondersteund|
+|Clouds:|![Ja](./media/icons/yes-icon.png) Commerciële clouds<br>![Nee](./media/icons/no-icon.png) Nationaal/onafhankelijk (overheid van de VS, China, andere overheden)|
 |||
 
 
@@ -67,21 +67,21 @@ Azure Security Center bevat een bundel van aanbevelingen die beschikbaar zijn wa
     > 
     > Als u de vereiste para meters niet opgeeft voor de aanbevelingen die moeten worden geconfigureerd, worden uw werk belastingen weer gegeven als beschadigd.
 
-    | Naam aanbeveling                                                                   | Beveiligings beheer                         | Configuratie vereist |
-    |---------------------------------------------------------------------------------------|------------------------------------------|------------------------|
-    | De CPU-en geheugen limieten van de container moeten worden afgedwongen (preview-versie)                          | Toepassingen beveiligen tegen DDoS-aanval | Nee                     |
-    | Geprivilegieerde containers moeten worden vermeden (preview-versie)                                     | Toegang en machtigingen beheren            | Nee                     |
-    | Onveranderbaar (alleen-lezen) hoofd bestands systeem moet worden afgedwongen voor containers (preview-versie)     | Toegang en machtigingen beheren            | Nee                     |
-    | Container met bevoegdheids escalatie moet worden vermeden (preview-versie)                       | Toegang en machtigingen beheren            | Nee                     |
-    | Containers uitvoeren als hoofd gebruiker moet worden vermeden (preview-versie)                           | Toegang en machtigingen beheren            | Nee                     |
-    | Containers die gevoelige host-naam ruimten delen, moeten worden vermeden (preview-versie)              | Toegang en machtigingen beheren            | Nee                     |
-    | Er moeten mini maal bevoegde Linux-mogelijkheden worden afgedwongen voor containers (preview-versie)       | Toegang en machtigingen beheren            | **Ja**                |
-    | Het gebruik van pod HostPath-volume koppelingen moet worden beperkt tot een bekende lijst (preview-versie)    | Toegang en machtigingen beheren            | **Ja**                |
-    | Containers moeten worden geluisterd op toegestane poorten (preview-versie)                              | Onbevoegde netwerk toegang beperken     | **Ja**                |
-    | Services mogen alleen op toegestane poorten Luis teren (preview)                                | Onbevoegde netwerk toegang beperken     | **Ja**                |
-    | Het gebruik van hostnetwerkadapters en poorten moet worden beperkt (preview-versie)                     | Onbevoegde netwerk toegang beperken     | **Ja**                |
-    | Het negeren of uitschakelen van containers AppArmor profiel moet worden beperkt (preview-versie) | Beveiligingsconfiguraties herstellen        | **Ja**                |
-    | Container installatie kopieën moeten alleen worden geïmplementeerd vanuit vertrouwde registers (preview)            | Beveiligings problemen oplossen                | **Ja**                |
+    | Naam aanbeveling                                                         | Beveiligings beheer                         | Configuratie vereist |
+    |-----------------------------------------------------------------------------|------------------------------------------|------------------------|
+    | De CPU-en geheugen limieten van de container moeten worden afgedwongen                          | Toepassingen beveiligen tegen DDoS-aanval | Nee                     |
+    | Geprivilegieerde containers moeten worden vermeden                                     | Toegang en machtigingen beheren            | Nee                     |
+    | Een onveranderbaar hoofd bestands systeem (alleen-lezen) moet worden afgedwongen voor containers     | Toegang en machtigingen beheren            | Nee                     |
+    | Container met bevoegdheids escalatie moet worden vermeden                       | Toegang en machtigingen beheren            | Nee                     |
+    | Containers uitvoeren als hoofd gebruiker moet worden vermeden                           | Toegang en machtigingen beheren            | Nee                     |
+    | Containers die gevoelige host-naam ruimten delen, moeten worden vermeden              | Toegang en machtigingen beheren            | Nee                     |
+    | Er moeten mini maal bevoegde Linux-mogelijkheden worden afgedwongen voor containers       | Toegang en machtigingen beheren            | **Ja**                |
+    | Het gebruik van pod HostPath-volume koppelingen moet worden beperkt tot een bekende lijst    | Toegang en machtigingen beheren            | **Ja**                |
+    | Containers moeten alleen op toegestane poorten Luis teren                              | Onbevoegde netwerk toegang beperken     | **Ja**                |
+    | Services worden alleen op toegestane poorten geluisterd                                | Onbevoegde netwerk toegang beperken     | **Ja**                |
+    | Het gebruik van hostnetwerkadapters en poorten moet worden beperkt                     | Onbevoegde netwerk toegang beperken     | **Ja**                |
+    | Het negeren of uitschakelen van containers AppArmor profiel moet worden beperkt | Beveiligingsconfiguraties herstellen        | **Ja**                |
+    | Container installatie kopieën moeten alleen worden geïmplementeerd vanuit vertrouwde registers            | Beveiligings problemen oplossen                | **Ja**                |
 
 
 1. Voor de aanbevelingen waarvoor para meters moeten worden aangepast, stelt u de para meters in:

@@ -8,10 +8,10 @@ ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: sandeo
 ms.openlocfilehash: fef1870c396055cb9121aa5d8c7859440d107f98
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88002329"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Voor beeld: Meld u aan bij een virtuele Linux-machine in azure met Azure Active Directory-verificatie
@@ -158,7 +158,7 @@ U wordt gevraagd om u aan te melden bij Azure AD met een code voor eenmalig gebr
 
 Wanneer u hierom wordt gevraagd, voert u uw Azure AD-aanmeldings referenties in op de aanmeldings pagina. 
 
-Het volgende bericht wordt weer gegeven in de webbrowser wanneer u de verificatie hebt uitgevoerd:`You have signed in to the Microsoft Azure Linux Virtual Machine Sign-In application on your device.`
+Het volgende bericht wordt weer gegeven in de webbrowser wanneer u de verificatie hebt uitgevoerd: `You have signed in to the Microsoft Azure Linux Virtual Machine Sign-In application on your device.`
 
 Sluit het browser venster, ga terug naar de SSH-prompt en druk op **Enter** . 
 

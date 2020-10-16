@@ -9,10 +9,10 @@ ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: fb908fe94f940073753ea8e1cde3da2b2a0c4b6b
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88034767"
 ---
 # <a name="tune-performance-hive-hdinsight--azure-data-lake-storage-gen2"></a>Prestaties afstemmen: Hive, HDInsight & Azure Data Lake Storage Gen2
@@ -58,7 +58,7 @@ I/O-intensieve workloads kunnen profiteren van meer parallellisatie door de TEZ-
 Het aantal gelijktijdige taken of parallelle uitvoeringen wordt begrensd door het totale garen geheugen.  Het aantal garen-containers bepaalt hoeveel gelijktijdige taken kunnen worden uitgevoerd.  Als u het garen geheugen per knoop punt wilt vinden, gaat u naar Ambari.  Navigeer naar GARENs en Bekijk het tabblad Configuratie.  Het garen geheugen wordt in dit venster weer gegeven.  
 
 - Totaal aantal GARENs = knoop punten * garen geheugen per knoop punt
-- \#van garen-containers = totale garen geheugen/TEZ container grootte
+- \# van garen-containers = totale garen geheugen/TEZ container grootte
 
 De sleutel voor het verbeteren van de prestaties met behulp van Data Lake Storage Gen2 is om de gelijktijdigheid zo veel mogelijk te verhogen.  TEZ berekent automatisch het aantal taken dat moet worden gemaakt, zodat u dit niet hoeft in te stellen.   
 
@@ -68,7 +68,7 @@ Stel dat u een D14-cluster van 8 knoop punten hebt.
 
 - Totaal aantal GARENs = knoop punten * garen geheugen per knoop punt
 - Totaal aantal GARENs = 8 knoop punten * 96GB = 768GB
-- \#van garen-containers = 768GB/3072MB = 256
+- \# van garen-containers = 768GB/3072MB = 256
 
 ## <a name="further-information-on-hive-tuning"></a>Meer informatie over Hive-afstemming
 

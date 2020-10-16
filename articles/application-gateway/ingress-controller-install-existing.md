@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 0652c49acf58a52244cc27ae3e59120ac7f03858
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84807107"
 ---
 # <a name="install-an-application-gateway-ingress-controller-agic-using-an-existing-application-gateway"></a>Een Application Gateway ingangs controller (AGIC) installeren met behulp van een bestaande Application Gateway
@@ -36,7 +36,7 @@ In dit document wordt ervan uitgegaan dat u de volgende hulpprogram ma's en infr
 
 Maak __een back-up van de configuratie van uw Application Gateway voordat u__ AGIC installeert:
   1. [Azure Portal](https://portal.azure.com/) naar uw exemplaar navigeren `Application Gateway`
-  2. van `Export template` klikken`Download`
+  2. van `Export template` klikken `Download`
 
 Het zip-bestand dat u hebt gedownload, heeft JSON-sjablonen, bash-en Power shell-scripts die u kunt gebruiken om app-gateway te herstellen, die nodig is
 
@@ -79,7 +79,7 @@ Volg de [installatie-instructies voor de Aad pod-identiteit](https://github.com/
 Daarna moet u een Azure-identiteit maken en de IT-machtigingen ARM bieden.
 Gebruik [Cloud shell](https://shell.azure.com/) om alle van de volgende opdrachten uit te voeren en een identiteit te maken:
 
-1. Maak een Azure-identiteit **in dezelfde resource groep als de AKS-knoop punten**. Het is belang rijk dat u de juiste resource groep kiest. De resource groep die is vereist in de onderstaande opdracht, is *niet* het account dat wordt verwezen in het deel venster AKS-Portal. Dit is de resource groep van de `aks-agentpool` virtuele machines. Normaal gesp roken begint de resource groep met `MC_` en bevat de naam van uw AKS. Bijvoorbeeld:`MC_resourceGroup_aksABCD_westus`
+1. Maak een Azure-identiteit **in dezelfde resource groep als de AKS-knoop punten**. Het is belang rijk dat u de juiste resource groep kiest. De resource groep die is vereist in de onderstaande opdracht, is *niet* het account dat wordt verwezen in het deel venster AKS-Portal. Dit is de resource groep van de `aks-agentpool` virtuele machines. Normaal gesp roken begint de resource groep met `MC_` en bevat de naam van uw AKS. Bijvoorbeeld: `MC_resourceGroup_aksABCD_westus`
 
     ```azurecli
     az identity create -g <agent-pool-resource-group> -n <identity-name>
@@ -91,9 +91,9 @@ Gebruik [Cloud shell](https://shell.azure.com/) om alle van de volgende opdracht
     az identity show -g <resourcegroup> -n <identity-name>
     ```
 
-1. Geef de identiteit `Contributor` toegang tot uw Application Gateway. Hiervoor hebt u de ID van de Application Gateway nodig. deze ziet er ongeveer als volgt uit:`/subscriptions/A/resourceGroups/B/providers/Microsoft.Network/applicationGateways/C`
+1. Geef de identiteit `Contributor` toegang tot uw Application Gateway. Hiervoor hebt u de ID van de Application Gateway nodig. deze ziet er ongeveer als volgt uit: `/subscriptions/A/resourceGroups/B/providers/Microsoft.Network/applicationGateways/C`
 
-    De lijst met Application Gateway-Id's in uw abonnement ophalen met:`az network application-gateway list --query '[].id'`
+    De lijst met Application Gateway-Id's in uw abonnement ophalen met: `az network application-gateway list --query '[].id'`
 
     ```azurecli
     az role assignment create \
@@ -102,7 +102,7 @@ Gebruik [Cloud shell](https://shell.azure.com/) om alle van de volgende opdracht
         --scope <App-Gateway-ID>
     ```
 
-1. Geef de identiteit `Reader` toegang tot de Application Gateway resource groep. De resource groep-ID ziet er als volgt uit: `/subscriptions/A/resourceGroups/B` . U kunt alle resource groepen ophalen met:`az group list --query '[].id'`
+1. Geef de identiteit `Reader` toegang tot de Application Gateway resource groep. De resource groep-ID ziet er als volgt uit: `/subscriptions/A/resourceGroups/B` . U kunt alle resource groepen ophalen met: `az group list --query '[].id'`
 
     ```azurecli
     az role assignment create \
@@ -239,14 +239,14 @@ Standaard AGIC neemt de volledige eigendom van het Application Gateway waaraan d
 
 Maak __een back-up van de configuratie van uw Application Gateway voordat u__ deze instelling inschakelt:
   1. [Azure Portal](https://portal.azure.com/) naar uw exemplaar navigeren `Application Gateway`
-  2. van `Export template` klikken`Download`
+  2. van `Export template` klikken `Download`
 
 Het zip-bestand dat u hebt gedownload, heeft JSON-sjablonen, bash-en Power shell-scripts die u kunt gebruiken om Application Gateway te herstellen
 
 ### <a name="example-scenario"></a>Voorbeeldscenario
 Laten we eens kijken naar een imaginaire Application Gateway, waarmee het verkeer voor twee websites wordt beheerd:
-  - `dev.contoso.com`-gehost op een nieuwe AKS met behulp van Application Gateway en AGIC
-  - `prod.contoso.com`-gehost op een [virtuele-machine-schaalset van Azure](https://azure.microsoft.com/services/virtual-machine-scale-sets/)
+  - `dev.contoso.com` -gehost op een nieuwe AKS met behulp van Application Gateway en AGIC
+  - `prod.contoso.com` -gehost op een [virtuele-machine-schaalset van Azure](https://azure.microsoft.com/services/virtual-machine-scale-sets/)
 
 Met de standaard instellingen van AGIC wordt ervan uitgegaan dat 100% eigenaar is van de Application Gateway deze wordt verwijzen. AGIC overschrijft alle configuratie van de app-gateway. Als u hand matig een listener moet maken voor `prod.contoso.com` (op Application Gateway) zonder deze te definiëren in de Kubernetes-inkomen, wordt de `prod.contoso.com` configuratie binnen enkele seconden door AGIC verwijderd.
 

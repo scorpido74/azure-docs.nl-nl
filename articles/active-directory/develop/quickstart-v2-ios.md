@@ -1,6 +1,7 @@
 ---
-title: Quickstart voor Microsoft identity platform iOS en macOS | Azure
-description: Meer informatie over het aanmelden van gebruikers en het uitvoeren van query's op Microsoft Graph in een iOS- of macOS-toepassing.
+title: 'Snelstart: Aanmelden met Microsoft toevoegen aan een iOS- of macOS-app | Azure'
+titleSuffix: Microsoft identity platform
+description: In deze snelstart leert u hoe een iOS- of macOS-app gebruikers kan aanmelden, een toegangstoken kan ophalen uit het Microsoft-identiteitsplatform en de Microsoft Graph-API aanroept.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -12,12 +13,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 39062396e0076af5901f2fc7d76f5c989e2ccc3a
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 6ab826b6816c8f1b71a28c6bf501b651baa2cfff
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115251"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91613455"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Quickstart: Gebruikers aanmelden en de Microsoft Graph API aanroepen vanuit een iOS- of macOS-app
 
@@ -25,13 +26,16 @@ Deze quickstart bevat een codevoorbeeld die u laat zien hoe een systeemeigen iOS
 
 Deze quickstart is van toepassing op iOS- en macOS-apps. Sommige stappen zijn alleen vereist voor iOS-apps. Bij deze stappen wordt vermeld dat ze alleen voor iOS zijn bedoeld.
 
-![Toont hoe de voorbeeld-app werkt die is gegenereerd door deze quickstart](media/quickstart-v2-ios/ios-intro.svg)
+## <a name="prerequisites"></a>Vereisten
 
-> [!NOTE]
-> **Vereisten**
-> * XCode 10+
-> * iOS 10+
-> * macOS 10.12+
+* Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* XCode 10+
+* iOS 10+
+* macOS 10.12+
+
+## <a name="how-the-sample-works"></a>Hoe het voorbeeld werkt
+
+![Toont hoe de voorbeeld-app werkt die is gegenereerd door deze quickstart](media/quickstart-v2-ios/ios-intro.svg)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>De quickstart-app registreren en downloaden
@@ -70,16 +74,16 @@ Deze quickstart is van toepassing op iOS- en macOS-apps. Sommige stappen zijn al
 >
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Al geconfigureerd](media/quickstart-v2-ios/green-check.png) Uw toepassing is al geconfigureerd met deze kenmerken
-> 
+>
 > #### <a name="step-2-download-the-sample-project"></a>Stap 2: Het voorbeeldproject downloaden
 > > [!div id="autoupdate_ios" class="nextstepaction"]
 > > [Het codevoorbeeld voor iOS downloaden]()
-> 
+>
 > > [!div id="autoupdate_macos" class="nextstepaction"]
 > > [Het codevoorbeeld voor macOS downloaden]()
 > [!div renderon="docs"]
 > #### <a name="step-2-download-the-sample-project"></a>Stap 2: Het voorbeeldproject downloaden
-> 
+>
 > - [Het codevoorbeeld voor iOS downloaden](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
 > - [Het codevoorbeeld voor macOS downloaden](https://github.com/Azure-Samples/active-directory-macOS-swift-native-v2/archive/master.zip)
 
@@ -262,13 +266,11 @@ self.applicationContext!.getCurrentAccount(with: nil) { (currentAccount, previou
 > | `scopes` | Bevat de bereiken die worden aangevraagd (dat wil zeggen `[ "user.read" ]` voor Microsoft Graph of `[ "<Application ID URL>/scope" ]` voor aangepaste web-API's (`api://<Application ID>/access_as_user`) |
 > | `account` | Het account waarvoor een token wordt aangevraagd. Deze quickstart betreft een toepassing met één account. Als u een app met meerdere accounts wilt maken, moet u logica definiëren om te bepalen welk account moet worden gebruikt voor tokenaanvragen met behulp van `accountsFromDeviceForParameters:completionBlock:` en doorgifte van de juiste `accountIdentifier` |
 
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
 ## <a name="next-steps"></a>Volgende stappen
 
-Volg de zelfstudie voor iOS en macOS voor een volledige stapsgewijze handleiding voor het bouwen van toepassingen, met inbegrip van een volledige uitleg van deze quickstart.
-
-### <a name="learn-how-to-create-the-application-used-in-this-quickstart"></a>Meer informatie over het maken van de toepassing die wordt gebruikt in deze quickstart
+Ga naar de stapsgewijze zelfstudie waarin u een iOS- of macOS-app bouwt die een toegangstoken van het Microsoft-identiteitsplatform ontvangt en dit gebruikt om de Microsoft Graph-API aan te roepen.
 
 > [!div class="nextstepaction"]
-> [Graph API aanroepen - zelfstudie voor iOS en macOS](./tutorial-v2-ios.md)
-
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+> [Zelfstudie: Gebruikers aanmelden en Microsoft Graph aanroepen vanuit een iOS- of macOS-app](tutorial-v2-ios.md)

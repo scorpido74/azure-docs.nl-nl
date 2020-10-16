@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.openlocfilehash: 2679d24a9e8c821dae73114f32adbeb3d22a1458
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91708897"
 ---
 # <a name="how-to-create-a-saas-offer-in-the-commercial-marketplace"></a>Een SaaS-aanbieding maken in de commerciële Marketplace
@@ -64,7 +64,7 @@ Een test drive is een fantastische manier om uw aanbieding aan potentiële klant
 1.  Schakel onder **test station**het selectie vakje **een test drive inschakelen** in.
 1.  Selecteer in de lijst die wordt weer gegeven het test drive type.
 
-### <a name="configure-lead-management"></a>Beheer van leads configureren
+### <a name="configure-lead-management"></a>Leadbeheer configureren
 
 Verbind uw Customer Relationship Management-systeem (CRM) met uw commerciële Marketplace-aanbieding zodat u contact gegevens van klanten kunt ontvangen wanneer een klant rente uitbrengt of uw product implementeert. U kunt deze verbinding wijzigen op elk gewenst moment tijdens of na het maken van de aanbieding.
 

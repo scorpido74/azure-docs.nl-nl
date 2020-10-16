@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: b1a23c01fdf8a0145c26b709f36709a7b710103f
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87374300"
 ---
 # <a name="configuring-jvm-args-java-standalone-agent-for-azure-monitor-application-insights"></a>De Java zelfstandige JVM args-agent configureren voor Azure Monitor Application Insights
@@ -43,7 +43,7 @@ ENTRYPOINT java -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar -
 
 ## <a name="tomcat-8-linux"></a>Tomcat 8 (Linux)
 
-### <a name="tomcat-installed-via-apt-get-or-yum"></a>Tomcat geïnstalleerd via `apt-get` of`yum`
+### <a name="tomcat-installed-via-apt-get-or-yum"></a>Tomcat geïnstalleerd via `apt-get` of `yum`
 
 Als u Tomcat hebt geïnstalleerd via `apt-get` of `yum` , moet u een bestand hebben `/etc/tomcat8/tomcat8.conf` .  Voeg deze regel toe aan het einde van het bestand:
 
@@ -139,12 +139,12 @@ Als u meerdere beheerde servers op één host uitvoert, moet u `applicationinsig
 ...
 ```
 
-De opgegeven `applicationinsights.agent.id` waarde moet uniek zijn. Het wordt gebruikt voor het maken van een submap in de applicationinsights-map, aangezien elk JVM-proces een eigen lokale applicationinsights config en lokaal applicationinsights-logboek bestand nodig heeft. Als er een rapportage aan de centrale collector wordt uitgevoerd, `applicationinsights.properties` wordt het bestand gedeeld door de meerdere beheerde servers en is het opgegeven, zodat de `applicationinsights.agent.id` `agent.id` instelling in dat gedeelde bestand moet worden overschreven. `applicationinsights.agent.rollup.id`kan op dezelfde manier worden opgegeven in de server `system-properties` Als u de `agent.rollup.id` instelling per beheerde server wilt overschrijven.
+De opgegeven `applicationinsights.agent.id` waarde moet uniek zijn. Het wordt gebruikt voor het maken van een submap in de applicationinsights-map, aangezien elk JVM-proces een eigen lokale applicationinsights config en lokaal applicationinsights-logboek bestand nodig heeft. Als er een rapportage aan de centrale collector wordt uitgevoerd, `applicationinsights.properties` wordt het bestand gedeeld door de meerdere beheerde servers en is het opgegeven, zodat de `applicationinsights.agent.id` `agent.id` instelling in dat gedeelde bestand moet worden overschreven. `applicationinsights.agent.rollup.id` kan op dezelfde manier worden opgegeven in de server `system-properties` Als u de `agent.rollup.id` instelling per beheerde server wilt overschrijven.
 
 
 ## <a name="jetty-9"></a>Jetty 9
 
-Deze regels toevoegen aan`start.ini`
+Deze regels toevoegen aan `start.ini`
 
 ```
 --exec

@@ -8,18 +8,20 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: 6671b8aa60690bc1915e297bc31b19299be2b1da
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: f39fb5766965e3881068bd6d2fd3a8142f9eb2ac
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91629077"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975906"
 ---
 # <a name="register-a-public-client-application-in-azure-active-directory"></a>Een open bare client toepassing registreren in Azure Active Directory
 
 In dit artikel leert u hoe u een open bare toepassing in Azure Active Directory kunt registreren.  
 
 Registraties van client toepassingen zijn Azure Active Directory representaties van toepassingen die de API-machtigingen namens een gebruiker kunnen verifiëren en om deze te vragen. Open bare clients zijn toepassingen zoals mobiele toepassingen en Java script-toepassingen met één pagina waarmee geheimen vertrouwelijk niet kunnen worden bewaard. De procedure is vergelijkbaar met het [registreren van een vertrouwelijke client](register-confidential-azure-ad-client-app.md), maar omdat open bare clients niet kunnen worden vertrouwd voor het opslaan van een toepassings geheim, hoeft er geen te worden toegevoegd.
+
+De Snelstartgids bevat algemene informatie over het [registreren van een toepassing met het micro soft Identity-platform](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app).
 
 ## <a name="app-registrations-in-azure-portal"></a>App-registraties in Azure Portal
 
@@ -38,6 +40,18 @@ Registraties van client toepassingen zijn Azure Active Directory representaties 
 2. Geef een antwoord-URL op. De antwoord-URL is de locatie van de authenticatie codes worden geretourneerd naar de client toepassing. U kunt later meer antwoord-Url's toevoegen en bestaande bewerken.
 
     ![Azure Portal. Nieuwe open bare app registreren.](media/how-to-aad/portal-aad-register-new-app-registration-PUB-CLIENT-NAME.png)
+
+
+Uw [Desktop](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-registration)-, [mobiele](https://docs.microsoft.com/azure/active-directory/develop/scenario-mobile-app-registration) of toepassing met [één pagina](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-app-registration) als open bare toepassing configureren:
+
+1. Selecteer in de [Azure Portal](https://portal.azure.com)in **app-registraties**uw app en selecteer vervolgens **verificatie**.
+
+2. Selecteer **Geavanceerde instellingen**  >  **standaard client type**. Selecteer **Ja** **Als u de toepassing wilt behandelen als een open bare client**.
+
+3. Voor een toepassing met één pagina selecteert u **toegangs tokens** en **id-tokens** om een impliciete stroom in te scha kelen.
+
+   - Als uw toepassing zich aanmeldt bij gebruikers, selecteert u **id-tokens**.
+   - Als uw toepassing ook een beveiligde web-API moet aanroepen, selecteert u **toegangs tokens**.
 
 ## <a name="api-permissions"></a>API-machtigingen
 

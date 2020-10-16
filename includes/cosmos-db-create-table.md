@@ -9,19 +9,19 @@ ms.date: 04/13/2018
 ms.author: sngun
 ms.custom: include file
 ms.openlocfilehash: 5743d785afb87aef6b3a89af6dc8eb18f66b164d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "68854668"
 ---
 U kunt nu het hulpprogramma Data Explorer in Azure Portal gebruiken om een database en een tabel te maken. 
 
-1. Selecteer **Data Explorer** > **nieuwe tabel**. 
+1. Selecteer **Data Explorer** > **Nieuwe tabel**. 
     
     Helemaal rechts wordt het gebied **Tabel toevoegen** weergegeven. Mogelijk moet u naar rechts scrollen om het te zien.
 
-    ![Data Explorer in Azure Portal](./media/cosmos-db-create-table/azure-cosmosdb-data-explorer.png)
+    ![Data Explorer in de Azure Portal](./media/cosmos-db-create-table/azure-cosmosdb-data-explorer.png)
 
 2. Geef op de pagina **Tabel toevoegen** de instellingen voor de nieuwe tabel op.
 

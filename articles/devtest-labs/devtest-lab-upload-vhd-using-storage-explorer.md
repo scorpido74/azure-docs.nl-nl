@@ -4,10 +4,10 @@ description: VHD-bestand uploaden naar het opslag account van de Lab met behulp 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: d4e421932ebba5d4f389000c12bcf44ac2f37599
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91282524"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>VHD-bestand uploaden naar het opslag account van de Lab met behulp van Microsoft Azure Storage Explorer
@@ -24,7 +24,7 @@ De volgende stappen begeleiden u bij het uploaden van een VHD-bestand naar DevTe
 
 1. Haal de naam van het opslag account van de Lab op met behulp van de Azure Portal:
 
-    1. Meld u aan bij de [Azure-portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+    1. Meld u aan bij [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
     
     1. Selecteer **alle services**en selecteer vervolgens **DevTest Labs** in de lijst.
     

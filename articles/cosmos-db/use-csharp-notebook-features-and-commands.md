@@ -8,10 +8,10 @@ ms.date: 05/19/2020
 ms.author: dech
 ms.custom: devx-track-python, devx-track-csharp
 ms.openlocfilehash: 47ac6b4caf97b264df58732f8d031fc63091171e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89019263"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-c-notebooks-preview"></a>Ingebouwde notebook opdrachten en-functies gebruiken in Azure Cosmos DB C#-notitie blokken (preview-versie)
@@ -117,12 +117,12 @@ In het *GetingStarted_Csharp. ipynb* -voor beeld kunnen we de variabele afdrukke
 
 :::image type="content" source="media/use-notebook-features-and-commands/csharp-query-cell.png" alt-text="Cel csharp query":::
 
-:::image type="content" source="media/use-notebook-features-and-commands/csharp-nteract-built-in-chart.png" alt-text="nteract Data Explorer":::
+:::image type="content" source="media/use-notebook-features-and-commands/csharp-nteract-built-in-chart.png" alt-text="Cel csharp query":::
 
 ## <a name="use-built-in-dictionary-viewer"></a>Ingebouwde woordenlijst viewer gebruiken
 U kunt de ingebouwde woordenlijst viewer gebruiken om een variabele weer te geven. In een cel plaatst u de variabele die u wilt visualiseren in de laatste regel, die automatisch wordt weer gegeven wanneer de cel wordt uitgevoerd.
 
-:::image type="content" source="media/use-notebook-features-and-commands/csharp-built-in-dictionary-viewer.png" alt-text="Ingebouwde woordenlijst viewer":::
+:::image type="content" source="media/use-notebook-features-and-commands/csharp-built-in-dictionary-viewer.png" alt-text="Cel csharp query":::
 
 ## <a name="upload-json-items-to-a-container"></a>JSON-items uploaden naar een container
 U kunt de ``%%upload`` opdracht Magic gebruiken om gegevens van een JSON-bestand te uploaden naar een opgegeven Azure Cosmos-container. Gebruik de volgende opdracht om de items te uploaden:
@@ -160,7 +160,7 @@ Vervang door ``{notebookName}`` de naam van het notitie blok dat u wilt uitvoere
 ## <a name="reset-notebooks-workspace"></a>Werk ruimte notitie blokken opnieuw instellen
 Als u de werk ruimte notitie blokken opnieuw wilt instellen op de standaard instellingen, selecteert u **werk ruimte opnieuw instellen** op de opdracht balk. Hiermee worden alle aangepaste geïnstalleerde pakketten verwijderd en wordt de Jupyter-server opnieuw gestart. Uw notitie blokken, bestanden en Azure Cosmos-resources worden niet beïnvloed.  
 
-:::image type="content" source="media/use-notebook-features-and-commands/reset-workspace.png" alt-text="Werk ruimte notitie blokken opnieuw instellen":::
+:::image type="content" source="media/use-notebook-features-and-commands/reset-workspace.png" alt-text="Cel csharp query":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/15/2020
+ms.date: 10/14/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 48831a9482087dbeed0952cc30fcbc9c14fbaed0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bca960100ee0c9d7e2a779dc86030fc59949dca5
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91715629"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055967"
 ---
 # <a name="configure-object-replication-for-block-blobs"></a>Object replicatie configureren voor blok-blobs
 
@@ -345,6 +345,49 @@ az storage account or-policy create \
     -resource-group <resource-group> \
     --source-account <source-account-name> \
     --policy @policy.json
+```
+
+---
+
+## <a name="check-the-replication-status-of-a-blob"></a>De replicatie status van een BLOB controleren
+
+U kunt de replicatie status voor een BLOB in het bron account controleren met behulp van de Azure Portal, Power shell of Azure CLI. Eigenschappen van object replicatie worden pas ingevuld nadat de replicatie is voltooid of mislukt.
+
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+Voer de volgende stappen uit om de replicatie status voor een BLOB in het bron account in de Azure Portal te controleren:
+
+1. Navigeer naar het bron account in de Azure Portal.
+1. Zoek de container die de bron-BLOB bevat.
+1. Selecteer de blob om de eigenschappen ervan weer te geven. Als de blob is gerepliceerd, ziet u in de sectie **object replicatie** dat de status is ingesteld op *voltooid*. De ID van het replicatie beleid en de ID voor de regel voor object replicatie voor deze container worden ook weer gegeven.
+
+:::image type="content" source="media/object-replication-configure/check-replication-status-source.png" alt-text="Scherm opname van de replicatie regels in Azure Portal":::
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Als u de replicatie status voor een BLOB in het bron account met Power shell wilt controleren, haalt u de waarde van de eigenschap **ReplicationStatus** van de object replicatie op, zoals wordt weer gegeven in het volgende voor beeld. Vergeet niet om waarden tussen punt haken te vervangen door uw eigen waarden:
+
+```powershell
+$ctxSrc = (Get-AzStorageAccount -ResourceGroupName $rgname `
+    -StorageAccountName $srcAccountName).Context
+$blobSrc = Get-AzStorageBlob -Container $srcContainerName1 `
+    -Context $ctxSrc `
+    -Blob <blob-name>
+$blobSrc.BlobProperties.ObjectReplicationSourceProperties[0].Rules[0].ReplicationStatus
+```
+
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+
+Als u de replicatie status voor een BLOB in het bron account met Azure CLI wilt controleren, haalt u de waarde van de eigenschap object replicatie **status** op, zoals wordt weer gegeven in het volgende voor beeld:
+
+```azurecli
+az storage blob show \
+    --account-name <source-account-name> \
+    --container-name <source-container-name> \
+    --name <source-blob-name> \
+    --query 'objectReplicationSourceProperties[].rules[].status' \
+    --output tsv \
+    --auth-mode login
 ```
 
 ---

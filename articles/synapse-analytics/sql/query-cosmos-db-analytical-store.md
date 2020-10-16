@@ -9,19 +9,16 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6f4dd0836ba04d0e07ada8aced964317498b1f22
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 0cc2c04208c4800a883848896a0f1659e8bf72e9
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91757592"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097249"
 ---
 # <a name="query-azure-cosmos-db-data-using-sql-serverless-in-azure-synapse-link-preview"></a>Query's uitvoeren op Azure Cosmos DB gegevens met behulp van SQL serverloze koppeling in azure Synapse (preview)
 
 Met Synapse SQL serverloze (voorheen SQL on-demand) kunt u gegevens in uw Azure Cosmos DB containers [die in bijna](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) realtime zijn ingeschakeld, analyseren zonder dat dit van invloed is op de prestaties van uw transactionele werk belastingen. Het biedt een bekende T-SQL-syntaxis voor het opvragen van gegevens uit de [analytische opslag](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) en de geïntegreerde connectiviteit met een breed scala aan bi-en ad-hoc hulp middelen voor query's via de T-SQL-interface.
-
-> [!NOTE]
-> Ondersteuning voor het uitvoeren van query's in een Azure Cosmos DB analytische archief met SQL serverloze bevindt zich momenteel in de test preview. 
 
 Voor het uitvoeren van query's in Azure Cosmos DB wordt de volledige [selectie](/sql/t-sql/queries/select-transact-sql?view=sql-server-ver15) Surface Area ondersteund via de [OpenRowSet](develop-openrowset.md) -functie, inclusief het meren deel van [SQL-functies en-Opera tors](overview-features.md). U kunt ook resultaten van de query opslaan die gegevens uit Azure Cosmos DB leest, samen met gegevens in Azure Blob Storage of Azure Data Lake Storage met de [optie externe tabel maken als selecteren](develop-tables-cetas.md#cetas-in-sql-on-demand). U kunt momenteel geen SQL serverloze query resultaten opslaan in Azure Cosmos DB met behulp van [CETAS](develop-tables-cetas.md#cetas-in-sql-on-demand).
 
@@ -36,10 +33,15 @@ OPENROWSET(
        'CosmosDB',
        '<Azure Cosmos DB connection string>',
        <Container name>
-    )  [ < with clause > ]
+    )  [ < with clause > ] AS alias
 ```
 
-Met de Azure Cosmos DB connection string geeft u de Azure Cosmos DB account naam, de database naam, de hoofd sleutel van het database account en een optionele regio naam te `OPENROWSET` gebruiken. De connection string heeft de volgende indeling:
+Met de Azure Cosmos DB connection string geeft u de Azure Cosmos DB account naam, de database naam, de hoofd sleutel van het database account en een optionele regio naam te `OPENROWSET` gebruiken. 
+
+> [!IMPORTANT]
+> Zorg ervoor dat u alias gebruikt na `OPENROWSET` . Er is een [bekend probleem](#known-issues) waardoor het verbindings probleem met het Synapse SQL-eind punt zonder server wordt veroorzaakt als u de alias na-functie niet opgeeft `OPENROWSET` .
+
+De connection string heeft de volgende indeling:
 ```sql
 'account=<database account name>;database=<database name>;region=<region name>;key=<database account master key>'
 ```
@@ -252,6 +254,22 @@ Azure Cosmos DB-accounts van de SQL-API (core) ondersteunen JSON-eigenschaps typ
 | Genest object of matrix | varchar (max) (UTF8-database sortering), geserialiseerd als JSON-tekst |
 
 Voor het uitvoeren van query's op Azure Cosmos DB accounts van de Mongo DB-API-soort, kunt u meer te weten komen over de schema weergave voor volledige beeld kwaliteit in het analytische archief en de uitgebreide eigenschapnamen die [hier](../../cosmos-db/analytical-store-introduction.md#analytical-schema)worden gebruikt.
+
+## <a name="known-issues"></a>Bekende problemen
+
+- Alias **moet** worden opgegeven na `OPENROWSET` -functie (bijvoorbeeld `OPENROWSET (...) AS function_alias` ). Het weglaten van een alias kan leiden tot een verbindings probleem en Synapse SQL-eind punt zonder server mogelijk tijdelijk niet beschikbaar. Dit probleem wordt opgelost in november 2020.
+- Synapse SQL zonder server ondersteunt momenteel geen [Azure Cosmos DB schema met volledige kwaliteit](../../cosmos-db/analytical-store-introduction.md#schema-representation). Gebruik Synapse serverloze SQL alleen voor toegang tot Cosmos DB goed gedefinieerd schema.
+
+In de volgende tabel vindt u een lijst met mogelijke fouten en acties voor het oplossen van problemen:
+
+| Fout | Hoofdoorzaak |
+| --- | --- |
+| Syntaxis fouten:<br/> -Onjuiste syntaxis bij OPENROWSET<br/> - `...` is geen herkende optie voor BULKSGEWIJZE OPENROWSET-provider.<br/> -Onjuiste syntaxis bij `...` | Mogelijke hoofd oorzaken<br/> -Niet ' CosmosDB ' gebruiken als eerste para meter,<br/> -Letterlijke teken reeks gebruiken in plaats van id in derde para meter,<br/> -Niet opgeven derde para meter (container naam) |
+| Er is een fout opgetreden in de CosmosDB-connection string | -Account, Data Base, sleutel is niet opgegeven <br/> -Er is een optie in connection string die niet wordt herkend.<br/> -Punt komma `;` wordt toegevoegd aan het einde van Connection String |
+| Het omzetten van het CosmosDB-pad is mislukt met de fout ' onjuiste account/database naam ' | De opgegeven account naam of database naam kan niet worden gevonden. |
+| Het omzetten van het pad naar de CosmosDB is mislukt met de fout ' het geheim ' onjuiste geheime waarde ' is null of leeg ' | De account sleutel is ongeldig of ontbreekt. |
+
+U kunt suggesties en problemen melden op de [pagina met feedback over Azure Synapse](https://feedback.azure.com/forums/307516-azure-synapse-analytics?category_id=387862).
 
 ## <a name="next-steps"></a>Volgende stappen
 

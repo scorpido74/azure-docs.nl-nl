@@ -11,15 +11,15 @@ ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.openlocfilehash: a1ba7db72743ac122a697bf271e783ec64e041e8
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88165478"
 ---
 # <a name="add-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Een Azure Active Directory toevoegen met behulp van verbonden services in Visual Studio
 
-Door Azure Active Directory (Azure AD) te gebruiken, kunt u eenmalige aanmelding (SSO) voor ASP.NET MVC-webtoepassingen of Active Directory-verificatie in Web API-services ondersteunen. Met Azure AD-verificatie kunnen uw gebruikers hun accounts gebruiken van Azure Active Directory om verbinding te maken met uw webtoepassingen. De voor delen van Azure AD-verificatie met Web API bevatten verbeterde gegevens beveiliging bij het weer geven van een API van een webtoepassing. Met Azure AD hoeft u geen afzonderlijk verificatie systeem te beheren met een eigen account en gebruikers beheer.
+Met Azure Active Directory (Azure AD) kunt u één Sign-On (SSO) ondersteunen voor ASP.NET MVC-webtoepassingen of Active Directory verificatie in Web API-services. Met Azure AD-verificatie kunnen uw gebruikers hun accounts gebruiken van Azure Active Directory om verbinding te maken met uw webtoepassingen. De voor delen van Azure AD-verificatie met Web API bevatten verbeterde gegevens beveiliging bij het weer geven van een API van een webtoepassing. Met Azure AD hoeft u geen afzonderlijk verificatie systeem te beheren met een eigen account en gebruikers beheer.
 
 In dit artikel en de bijbehorende aanvullende artikelen vindt u informatie over het gebruik van de functie van Visual Studio Connected service voor Active Directory. De mogelijkheid is beschikbaar in Visual Studio 2015 en hoger.
 
@@ -32,7 +32,7 @@ Op dit moment biedt de Active Directory verbonden service geen ondersteuning voo
 
 ### <a name="connect-to-azure-active-directory-using-the-connected-services-dialog"></a>Verbinding maken met Azure Active Directory met behulp van het dialoog venster verbonden services
 
-1. Maak of open in Visual Studio een ASP.NET MVC-project of een ASP.NET Web API-project. U kunt de sjablonen MVC, Web API, single-page, Azure API app, Azure Mobile App en Azure Mobile Service gebruiken.
+1. Maak of open in Visual Studio een ASP.NET MVC-project of een ASP.NET Web API-project. U kunt de MVC-, Web-API-, Single-Page-toepassing, de Azure API-app, Azure Mobile App en Azure Mobile Service-sjablonen gebruiken.
 
 1. Selecteer de menu opdracht **Project > verbonden service toevoegen...** of dubbel klik op het knoop punt **verbonden services dat is** gevonden onder het project in Solution Explorer.
 

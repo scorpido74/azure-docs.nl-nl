@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/06/2019
 ms.author: azfuncdf
 ms.openlocfilehash: d480b8db69b34eda7ca1ea8e1b2755179f9c673f
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88055170"
 ---
 # <a name="developers-guide-to-durable-entities-in-net"></a>Ontwikkelaars handleiding voor duurzame entiteiten in .NET
@@ -267,7 +267,7 @@ Daarnaast worden enkele extra regels afgedwongen:
 * Entiteits interfaces moeten alleen methoden definiëren.
 * Entiteits interfaces mogen geen generieke para meters bevatten.
 * De methoden van de entity-interface mogen niet meer dan één para meter hebben.
-* De methoden van de entity-interface moeten retour neren `void` , `Task` of`Task<T>` 
+* De methoden van de entity-interface moeten retour neren `void` , `Task` of `Task<T>` 
 
 Als een van deze regels wordt geschonden, wordt tijdens `InvalidOperationException` runtime een gegenereerd wanneer de interface wordt gebruikt als een type argument voor `SignalEntity` of `CreateProxy` . In het uitzonderings bericht wordt uitgelegd welke regel is verbroken.
 

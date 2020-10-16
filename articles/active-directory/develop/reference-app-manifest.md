@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
 ms.openlocfilehash: 6971e62b20dc1155b875f69eb1d4da9d7b6e6887
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91627003"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory-app-manifest
@@ -33,7 +33,7 @@ U kunt de kenmerken van een app configureren via de Azure Portal of programmatis
 
 Het toepassings manifest configureren:
 
-1. Ga naar [Azure Portal](https://portal.azure.com). Zoek en selecteer de **Azure Active Directory** service.
+1. Ga naar de [Azure Portal](https://portal.azure.com). Zoek en selecteer de **Azure Active Directory** service.
 1. Selecteer **App-registraties**.
 1. Selecteer de app die u wilt configureren.
 1. Selecteer op de pagina **Overzicht** van de app de sectie **Manifest**. Een manifest editor op het web wordt geopend, zodat u het manifest in de portal kunt bewerken. Desgewenst kunt u **downloaden** selecteren om het manifest lokaal te bewerken en vervolgens **uploaden** gebruiken om het opnieuw toe te passen op uw toepassing.
@@ -350,7 +350,7 @@ Voorbeeld:
 
 | Sleutel | Waardetype |
 | :--- | :--- |
-| name | Tekenreeks |
+| naam | Tekenreeks |
 
 De weergave naam voor de app.
 
@@ -366,7 +366,7 @@ Voorbeeld:
 | :--- | :--- |
 | oauth2AllowImplicitFlow | Booleaans |
 
-Hiermee geeft u op of deze web-app OAuth 2.0 impliciet flow-toegangs tokens kan aanvragen. De standaard waarde is False. Deze markering wordt gebruikt voor apps die zijn gebaseerd op de browser, zoals Java script-apps met één pagina. Als u meer wilt weten, voert u `OAuth 2.0 implicit grant flow` in de inhouds opgave in en raadpleegt u de onderwerpen over impliciete stroom.
+Hiermee geeft u op of deze web-app OAuth 2.0 impliciet flow-toegangs tokens kan aanvragen. De standaardwaarde is false. Deze markering wordt gebruikt voor apps die zijn gebaseerd op de browser, zoals Java script-apps met één pagina. Als u meer wilt weten, voert u `OAuth 2.0 implicit grant flow` in de inhouds opgave in en raadpleegt u de onderwerpen over impliciete stroom.
 
 Voorbeeld:
 
@@ -380,7 +380,7 @@ Voorbeeld:
 | :--- | :--- |
 | oauth2AllowIdTokenImplicitFlow | Booleaans |
 
-Hiermee geeft u op of deze web-app OAuth 2.0 impliciete stroom-ID-tokens kan aanvragen. De standaard waarde is False. Deze markering wordt gebruikt voor apps die zijn gebaseerd op de browser, zoals Java script-apps met één pagina.
+Hiermee geeft u op of deze web-app OAuth 2.0 impliciete stroom-ID-tokens kan aanvragen. De standaardwaarde is false. Deze markering wordt gebruikt voor apps die zijn gebaseerd op de browser, zoals Java script-apps met één pagina.
 
 Voorbeeld:
 

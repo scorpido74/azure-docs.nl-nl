@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 94b8a26a398ad8604a469486185d805fcbb6a8b2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 43189d40c57ce6c300904207edc35011b0581ecc
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545400"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740443"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bluejeans-for-azure-ad"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met BlueJeans voor Azure AD
 
@@ -150,7 +150,7 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 2. Ga naar **ADMIN \> GROEPSINSTELLINGEN \> BEVEILIGING**.
 
-    ![Beheerder](./media/bluejeans-tutorial/ic785868.png "Beheerder")
+    ![Schermopname die een deel van een browservenster toont waarin het tabblad Admin is geselecteerd en Groepsinstellingen en Beveiliging zijn geselecteerd.](./media/bluejeans-tutorial/ic785868.png "Beheerder")
 
 3. Voer in het gedeelte **BEVEILIGING** de volgende stappen uit:
 
@@ -192,14 +192,14 @@ Het doel van dit gedeelte is het maken van een gebruiker met de naam B.Simon in 
 
 2. Ga naar **ADMIN \> GEBRUIKERS BEHEREN \> GEBRUIKER TOEVOEGEN**.
 
-    ![Beheerder](./media/bluejeans-tutorial/ic785877.png "Beheerder")
+    ![Schermopname die een deel van een browservenster toont waarin het tabblad Admin is geselecteerd en Gebruikers beheren en Gebruiker toevoegen zijn geselecteerd.](./media/bluejeans-tutorial/ic785877.png "Beheerder")
 
     > [!IMPORTANT]
     > Het tabblad **GEBRUIKER TOEVOEGEN** is alleen beschikbaar als op het tabblad **BEVEILIGING** **Automatische inrichting inschakelen** niet is ingeschakeld.
 
 3. Voer in het gedeelte **GEBRUIKER TOEVOEGEN** de volgende stappen uit:
 
-    ![Gebruiker toevoegen](./media/bluejeans-tutorial/ic785886.png "Gebruiker toevoegen")
+    ![Schermopname die de sectie Gebruiker toevoegen toont, waarin u de informatie kunt invoeren die in deze stap is beschreven.](./media/bluejeans-tutorial/ic785886.png "Gebruiker toevoegen")
 
     a. Typ in het tekstvak **First Name** de voornaam van de gebruiker, zoals **B**.
 
@@ -219,7 +219,7 @@ Het doel van dit gedeelte is het maken van een gebruiker met de naam B.Simon in 
 
     i. Klik op **CONTINUE**.
 
-    ![Gebruiker toevoegen](./media/bluejeans-tutorial/ic785887.png "Gebruiker toevoegen")
+    ![Schermopname die de sectie Gebruiker toevoegen toont, waarin u instellingen en functies kunt bekijken en waar de knop Gebruiker toevoegen is geselecteerd.](./media/bluejeans-tutorial/ic785887.png "Gebruiker toevoegen")
 
     J. Klik op **ADD USER**.
 

@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 07/23/2020
 ms.openlocfilehash: 0418785fe558503b716ff1e798446fb64db998b1
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87799835"
 ---
 # <a name="use-azure-active-directory-for-authentication-with-mysql"></a>Azure Active Directory gebruiken voor verificatie met MySQL
@@ -126,7 +126,7 @@ mysql -h mydb.mysql.database.azure.com \
 
 Belang rijke overwegingen bij het maken van verbinding:
 
-* `user@tenant.onmicrosoft.com`is de naam van de Azure AD-gebruiker of-groep waarmee u verbinding probeert te maken
+* `user@tenant.onmicrosoft.com` is de naam van de Azure AD-gebruiker of-groep waarmee u verbinding probeert te maken
 * De server naam altijd toevoegen na de gebruikers-of groeps naam van Azure AD (bijvoorbeeld `@mydb` )
 * Zorg ervoor dat u de exacte manier gebruikt waarop de naam van de Azure AD-gebruiker of-groep is gespeld
 * Namen van Azure AD-gebruikers en-groepen zijn hoofdletter gevoelig
@@ -205,7 +205,7 @@ De meeste Stuur Programma's worden ondersteund, maar u moet de instellingen voor
 * Perl
   * DBD:: mysql: ondersteund
   * Net:: MySQL: niet ondersteund
-* Aan de slag
+* Go
   * Go-SQL-stuur programma: ondersteund, toevoegen `?tls=true&allowCleartextPasswords=true` aan Connection String
 
 ## <a name="next-steps"></a>Volgende stappen

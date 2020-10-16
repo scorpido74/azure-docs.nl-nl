@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: 8a0d930d1c0fd30c48d97b0d1d4b94548077fbca
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86261754"
 ---
 # <a name="add-a-tile-layer"></a>Een titellaag toevoegen
@@ -51,11 +51,11 @@ Er worden drie verschillende naamgevings conventies voor tegel Services onderste
 
 De tegel-URL een HTTPS-URL naar een URL-sjabloon voor tegels die gebruikmaakt van de volgende para meters:
 
--   `{x}`-X-positie van de tegel. Ook nodig `{y}` en `{z}` .
--   `{y}`-Y-positie van de tegel. Ook nodig `{x}` en `{z}` .
--   `{z}`-Zoom niveau van de tegel. Ook nodig `{x}` en `{y}` .
--   `{quadkey}`-Tegel- `quadkey` id gebaseerd op de naam Conventie voor Bing Maps-tegel systemen.
--   `{bbox-epsg-3857}`-Een teken reeks voor selectie kader met de indeling `{west},{south},{east},{north}` in het EPSG 3857 Spatial Reference System.
+-   `{x}` -X-positie van de tegel. Ook nodig `{y}` en `{z}` .
+-   `{y}` -Y-positie van de tegel. Ook nodig `{x}` en `{z}` .
+-   `{z}` -Zoom niveau van de tegel. Ook nodig `{x}` en `{y}` .
+-   `{quadkey}` -Tegel- `quadkey` id gebaseerd op de naam Conventie voor Bing Maps-tegel systemen.
+-   `{bbox-epsg-3857}` -Een teken reeks voor selectie kader met de indeling `{west},{south},{east},{north}` in het EPSG 3857 Spatial Reference System.
 
 Het volgende voor beeld is een indelings-URL met een opmaak die wordt [weer](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview) gegeven in azure Maps. Opmerking: dit `[subscription-key]` is een tijdelijke aanduiding voor uw Azure Maps-abonnements sleutel.
 
@@ -68,4 +68,4 @@ Zie [zoom niveaus en tegel raster](zoom-levels-and-tile-grid.md)voor meer infor
 Meer context toevoegen aan de kaart:
 
 > [!div class="nextstepaction"]
-> [Realtime verkeer weer geven](power-bi-visual-show-real-time-traffic.md)
+> [Realtime verkeer weergeven](power-bi-visual-show-real-time-traffic.md)

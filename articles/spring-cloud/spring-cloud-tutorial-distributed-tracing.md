@@ -8,16 +8,16 @@ ms.date: 10/06/2019
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 97926d5bdf3123ae50714d36ad0234872f67aa96
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 30eb19e418292e74989be81d94ed684c917f6971
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90908291"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92088632"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Gedistribueerde tracering gebruiken met Azure Spring Cloud
 
-Met de hulpprogramma's voor gedistribueerde tracering in Azure Spring Cloud kunt u eenvoudig complexe problemen opsporen en bewaken. Azure Spring Cloud integreert [Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) met [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) van Azure. Deze integratie biedt krachtige functies voor gedistribueerde tracering via de Azure-portal.
+Met de hulpprogramma's voor gedistribueerde tracering in Azure Spring Cloud kunt u eenvoudig complexe problemen opsporen en bewaken. Azure Spring Cloud integreert [Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) met [Application Insights](../azure-monitor/app/app-insights-overview.md) van Azure. Deze integratie biedt krachtige functies voor gedistribueerde tracering via de Azure-portal.
 
 ::: zone pivot="programming-language-csharp"
 In dit artikel leert u hoe u een .NET core Steeltoe-app kunt inschakelen voor het gebruik van gedistribueerde tracering.
@@ -144,15 +144,15 @@ Als u al een toepassing hebt gemaakt en geïmplementeerd, kunt u de samplefreque
 
 ## <a name="view-the-application-map"></a>Het toepassingsoverzicht weergeven
 
-Ga terug naar de pagina **Gedistribueerde tracering** en selecteer **Toepassingsoverzicht weergeven**. Bekijk de visuele weergave van uw toepassings- en bewakingsinstellingen. Zie voor meer informatie over het gebruik van het toepassingsoverzicht [Toepassingsoverzicht: Gedistribueerde toepassingen classificeren](https://docs.microsoft.com/azure/azure-monitor/app/app-map).
+Ga terug naar de pagina **Gedistribueerde tracering** en selecteer **Toepassingsoverzicht weergeven**. Bekijk de visuele weergave van uw toepassings- en bewakingsinstellingen. Zie voor meer informatie over het gebruik van het toepassingsoverzicht [Toepassingsoverzicht: Gedistribueerde toepassingen classificeren](../azure-monitor/app/app-map.md).
 
 ## <a name="use-search"></a>De zoekfunctie gebruiken
 
-Gebruik de zoekfunctie om te zoeken naar andere specifieke telemetrie-items. Selecteer op de pagina **Gedistribueerde tracering** de optie **Zoeken**. Zie [Zoeken in Application Insights gebruiken](https://docs.microsoft.com/azure/azure-monitor/app/diagnostic-search) voor meer informatie over het gebruik van de zoekfunctie.
+Gebruik de zoekfunctie om te zoeken naar andere specifieke telemetrie-items. Selecteer op de pagina **Gedistribueerde tracering** de optie **Zoeken**. Zie [Zoeken in Application Insights gebruiken](../azure-monitor/app/diagnostic-search.md) voor meer informatie over het gebruik van de zoekfunctie.
 
 ## <a name="use-application-insights"></a>Application Insights gebruiken
 
-Application Insights biedt naast het toepassingsoverzicht en de zoekfunctie ook bewakingsmogelijkheden. Zoek in de Azure-portal naar de naam van uw toepassing en open vervolgens een Application Insights-pagina om bewakingsinformatie te vinden. Zie [Azure Monitor-logboekquery's](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language) voor meer informatie over het gebruik van deze hulpprogramma's.
+Application Insights biedt naast het toepassingsoverzicht en de zoekfunctie ook bewakingsmogelijkheden. Zoek in de Azure-portal naar de naam van uw toepassing en open vervolgens een Application Insights-pagina om bewakingsinformatie te vinden. Zie [Azure Monitor-logboekquery's](/azure/data-explorer/kusto/query/) voor meer informatie over het gebruik van deze hulpprogramma's.
 
 ## <a name="disable-application-insights"></a>Application Insights uitschakelen
 

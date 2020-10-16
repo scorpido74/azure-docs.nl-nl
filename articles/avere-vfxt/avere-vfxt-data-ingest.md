@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 12/16/2019
 ms.author: rohogue
 ms.openlocfilehash: 76bbe60397ebb01aed5694d933b3067f778a4c21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85505593"
 ---
 # <a name="moving-data-to-the-vfxt-cluster---parallel-data-ingest"></a>Gegevens verplaatsen naar het vFXT-cluster-parallelle gegevens opname
@@ -185,7 +185,7 @@ user@build:/mnt/source > find . -mindepth 4 -maxdepth 4 -type d
 ./atj5b55c53be6-02/support/trace/rolling
 ```
 
-Dit resultaat omleiden naar een bestand:`find . -mindepth 4 -maxdepth 4 -type d > /tmp/foo`
+Dit resultaat omleiden naar een bestand: `find . -mindepth 4 -maxdepth 4 -type d > /tmp/foo`
 
 Vervolgens kunt u het manifest door lopen met behulp van BASH-opdrachten om bestanden te tellen en de grootte van de submappen te bepalen:
 
@@ -280,13 +280,13 @@ Deze methode is een eenvoudige en time-outwaarde methode voor gegevens sets tot 
 
 Het ``msrsync`` hulp programma kan ook worden gebruikt om gegevens te verplaatsen naar een back-end-kern bestand voor het avere-cluster. Dit hulp programma is ontworpen om het bandbreedte gebruik te optimaliseren door meerdere parallelle processen uit te voeren ``rsync`` . Het is beschikbaar via GitHub op <https://github.com/jbd/msrsync> .
 
-``msrsync``Hiermee wordt de bron directory opgesplitst in afzonderlijke buckets en worden vervolgens afzonderlijke ``rsync`` processen uitgevoerd op elke Bucket.
+``msrsync`` Hiermee wordt de bron directory opgesplitst in afzonderlijke buckets en worden vervolgens afzonderlijke ``rsync`` processen uitgevoerd op elke Bucket.
 
 Voor bereiding van het testen met behulp van een virtuele machine met vier kernen wordt de beste efficiëntie weer gegeven wanneer u 64 processen Gebruik de ``msrsync`` optie ``-p`` om het aantal processen in te stellen op 64.
 
 U kunt ook het ``--inplace`` argument gebruiken met- ``msrsync`` opdrachten. Als u deze optie gebruikt, overweeg dan om een tweede opdracht (net als bij [rsync](#use-a-two-phase-rsync-process), hierboven beschreven) uit te voeren om de gegevens integriteit te waarborgen.
 
-``msrsync``kan alleen schrijven naar en van lokale volumes. De bron en het doel moeten toegankelijk zijn als lokale koppels in het virtuele netwerk van het cluster.
+``msrsync`` kan alleen schrijven naar en van lokale volumes. De bron en het doel moeten toegankelijk zijn als lokale koppels in het virtuele netwerk van het cluster.
 
 Als u wilt gebruiken ``msrsync`` om een Azure-Cloud volume te vullen met een avere-cluster, volgt u deze instructies:
 

@@ -1,17 +1,17 @@
 ---
 title: 'Zelfstudie: een app schalen die wordt uitgevoerd in Azure Service Fabric Mesh'
 description: In deze zelfstudie leert u hoe u de services kunt schalen in een toepassing die wordt uitgevoerd in Service Fabric Mesh.
-author: dkkapur
+author: georgewallace
 ms.topic: tutorial
 ms.date: 01/11/2019
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 1b9070e826c30bbeafdee4185ea45cfb53d9efd2
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: aad0da53dc667039a62d2115c1afe4e2c6662bff
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "75351810"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91840163"
 ---
 # <a name="tutorial-scale-an-application-running-in-service-fabric-mesh"></a>Zelfstudie: Een toepassing schalen die wordt uitgevoerd in Service Fabric Mesh
 

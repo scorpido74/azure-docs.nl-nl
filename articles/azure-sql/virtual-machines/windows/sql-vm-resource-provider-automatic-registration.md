@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 09/21/2020
-ms.openlocfilehash: 45285f2f26f1f17408f97bfede2b97e4c4752a5c
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: b986832e5febbb2a0f88b65213f9acf0dd4c5ab5
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91762450"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996885"
 ---
 # <a name="automatic-registration-with-sql-vm-resource-provider"></a>Automatische registratie bij de resource provider van de SQL-VM
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -77,6 +77,25 @@ Unregister-AzProviderFeature -FeatureName BulkRegistration -ProviderNamespace Mi
 
 ---
 
+## <a name="enable-for-multiple-subscriptions"></a>Inschakelen voor meerdere abonnementen
+
+U kunt de functie voor automatische registratie voor meerdere Azure-abonnementen inschakelen met behulp van Power shell. 
+
+Volg hiervoor de onderstaande stappen:
+
+1. Sla [Dit script](https://github.com/microsoft/tigertoolbox/blob/master/AzureSQLVM/RegisterSubscriptionsToSqlVmAutomaticRegistration.ps1) op in een `.ps1` bestand, zoals `EnableBySubscription.ps1` . 
+1. Ga naar de locatie waar u het script hebt opgeslagen met behulp van een opdracht prompt of Power shell-venster. 
+1. Verbinding maken met Azure ( `az login` ).
+1. Voer het script uit, door gegeven in SubscriptionIds als para meters zoals   
+   `.\EnableBySubscription.ps1 -SubscriptionList SubscriptionId1,SubscriptionId2`
+
+   Bijvoorbeeld: 
+
+   ```console
+   .\EnableBySubscription.ps1 -SubscriptionList a1a1a-aa11-11aa-a1a1-a11a111a1,b2b2b2-bb22-22bb-b2b2-b2b2b2bb
+   ```
+
+Mislukte registratie fouten worden opgeslagen in `RegistrationErrors.csv` dezelfde map als waar u het script hebt opgeslagen en uitgevoerd `.ps1` . 
 
 ## <a name="next-steps"></a>Volgende stappen
 

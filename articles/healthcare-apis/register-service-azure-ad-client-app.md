@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: 19d6b0ebfa2570b04c3a9dda3fe69428aa0eed75
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 6f7bf122b292ca144eac406957f19a13c7ba6662
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91629284"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975821"
 ---
 # <a name="register-a-service-client-application-in-azure-active-directory"></a>Een service-client toepassing registreren in Azure Active Directory
 
@@ -73,7 +73,7 @@ De service-client heeft een geheim (wacht woord) nodig om een token te verkrijge
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u een service-client toepassing registreert in Azure Active Directory. Vervolgens vindt u meer informatie over de aanvullende instellingen voor de Azure-API voor FHIR.
+In dit artikel hebt u geleerd hoe u een service-client toepassing registreert in Azure Active Directory. Test vervolgens de toegang tot uw FHIR-server met behulp van postman.
  
 >[!div class="nextstepaction"]
->[Aanvullende instellingen](azure-api-for-fhir-additional-settings.md)
+>[Azure API for FHIR openen met Postman](access-fhir-postman-tutorial.md)

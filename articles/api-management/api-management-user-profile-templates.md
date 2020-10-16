@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 1aef238ec0b947dda1417b567b343ae9d92754d9
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86249509"
 ---
 # <a name="user-profile-templates-in-azure-api-management"></a>Gebruikers profiel sjablonen in azure API Management
@@ -40,7 +40,7 @@ Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="profile"></a><a name="Profile"></a>Uplinkpoortprofiel  
+##  <a name="profile"></a><a name="Profile"></a> Uplinkpoortprofiel  
  Met de **profiel** sjabloon kunt u de sectie gebruikers profiel van de pagina gebruikers profiel in de ontwikkelaars portal aanpassen.  
   
  ![Gebruikers profiel pagina](./media/api-management-user-profile-templates/APIM-User-Profile-Page.png "Pagina APIM-gebruikers profiel")  
@@ -185,7 +185,7 @@ Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de
 }  
 ```  
   
-##  <a name="subscriptions"></a><a name="Subscriptions"></a>Geabonneerd  
+##  <a name="subscriptions"></a><a name="Subscriptions"></a> Geabonneerd  
  Met de **abonnementen** sjabloon kunt u de sectie abonnementen van de pagina gebruikers profiel in de ontwikkelaars portal aanpassen.  
   
  ![Pagina abonnements gebruiker](./media/api-management-user-profile-templates/APIM-User-Subscription-Page.png "Pagina APIM-gebruikers abonnement")  
@@ -406,7 +406,7 @@ Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de
 }  
 ```  
   
-##  <a name="applications"></a><a name="Applications"></a>Toepassingen  
+##  <a name="applications"></a><a name="Applications"></a> Toepassingen  
  Met de sjabloon **toepassingen** kunt u de sectie abonnementen van de pagina gebruikers profiel in de ontwikkelaars portal aanpassen.  
   
  ![De pagina gebruikers account toepassingen](./media/api-management-user-profile-templates/APIM-User-Account-Applications-Page.png "Pagina APIM-gebruikers accounts")  
@@ -569,7 +569,7 @@ Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de
 }  
 ```  
   
-##  <a name="update-account-info"></a><a name="UpdateAccountInfo"></a>Account gegevens bijwerken  
+##  <a name="update-account-info"></a><a name="UpdateAccountInfo"></a> Account gegevens bijwerken  
  Met de sjabloon **Update account info** kunt u de pagina **account gegevens bijwerken** aanpassen in de ontwikkelaars Portal.  
   
  ![Gebruikers account informatie pagina ontwikkelaars Portal sjablonen](./media/api-management-user-profile-templates/APIM-User-Account-Info-Page-Developer-Portal-Templates.png "APIM-gebruikers account informatie pagina ontwikkelaars Portal sjablonen")  

@@ -3,12 +3,12 @@ title: 'Sjabloon functies: teken reeks'
 description: Hierin worden de functies beschreven die u kunt gebruiken in een Azure Resource Manager sjabloon om te werken met teken reeksen.
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 42df0317658971b9e9bf3fb805c9a5ff44efaf45
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0733ffc790854c60dca46da3f763738b7820215
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "85962064"
+ms.locfileid: "91874710"
 ---
 # <a name="string-functions-for-arm-templates"></a>Teken reeks functies voor ARM-sjablonen
 
@@ -27,6 +27,7 @@ Resource Manager biedt de volgende functies voor het werken met teken reeksen in
 * [Formatteer](#format)
 * [guid](#guid)
 * [indexOf](#indexof)
+* [JSON](#json)
 * [duren](#last)
 * [lastIndexOf](#lastindexof)
 * [length](#length)
@@ -36,7 +37,7 @@ Resource Manager biedt de volgende functies voor het werken met teken reeksen in
 * [verdergaan](#skip)
 * [delen](#split)
 * [startsWith](#startswith)
-* [tekenreeks](#string)
+* [tekenreeksexpressie](#string)
 * [subtekenreeks](#substring)
 * [take](#take)
 * [toLower](#tolower)
@@ -894,6 +895,12 @@ De uitvoer van het vorige voor beeld met de standaard waarden is:
 | firstString | Int | 2 |
 | lastString | Int | 0 |
 | notFound | Int | -1 |
+
+## <a name="json"></a>json
+
+`json(arg1)`
+
+Hiermee wordt een geldige JSON-teken reeks geconverteerd naar een JSON-gegevens type. Zie [JSON function](template-functions-object.md#json)(Engelstalig) voor meer informatie.
 
 ## <a name="last"></a>duren
 

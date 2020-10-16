@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: d04311fce81d147a0830918aee1d4a2a9c0808d4
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88923395"
 ---
 # <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>Overzicht van OData-taal voor `$filter` , `$orderby` en `$select` in azure Cognitive Search
@@ -46,7 +46,7 @@ OData-expressies variëren van eenvoudig tot zeer complex, maar ze hebben allema
 
 ## <a name="field-paths"></a>Veld paden
 
-Met de volgende EBNF ([Extended Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) wordt de grammatica van veld paden gedefinieerd.
+Met de volgende EBNF ([uitgebreid Backus-Naur formulier](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) wordt de grammatica van veld paden gedefinieerd.
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -135,7 +135,7 @@ Een woord groep met een niet-geformatteerde apostrof zoals "Car auto" wordt bijv
 
 ### <a name="constants-syntax"></a>Syntaxis van constanten
 
-De volgende EBNF ([Extended Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definieert de grammatica voor de meeste constanten die in de bovenstaande tabel worden weer gegeven. De grammatica voor geo-ruimtelijke typen vindt u in de [georuimtelijke functies van OData in Azure Cognitive Search](search-query-odata-geo-spatial-functions.md).
+De volgende EBNF ([uitgebreid Backus-Naur formulier](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definieert de grammatica voor de meeste constanten die in de bovenstaande tabel worden weer gegeven. De grammatica voor geo-ruimtelijke typen vindt u in de [georuimtelijke functies van OData in Azure Cognitive Search](search-query-odata-geo-spatial-functions.md).
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -211,7 +211,7 @@ Veld paden en constanten vormen het meest eenvoudige deel van een OData-expressi
 
 In de meeste gevallen hebt u echter complexere expressies nodig die naar meer dan een veld en constante verwijzen. Deze expressies zijn op verschillende manieren gebouwd, afhankelijk van de para meter.
 
-De volgende EBNF ([Extended Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definieert de grammatica voor de para meters **$filter**, **$OrderBy**en **$Select** . Deze zijn gebaseerd op eenvoudige expressies die verwijzen naar veld paden en constanten:
+In de volgende EBNF ([Extended Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) wordt de grammatica voor de para meters **$filter**, **$OrderBy**en **$Select** gedefinieerd. Deze zijn gebaseerd op eenvoudige expressies die verwijzen naar veld paden en constanten:
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 

@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 87314e38225d6e08f81ce6c3855f70a13db9c6bf
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: fb534ae4a59c9a5c87a7eb7ab268a40b9771fdb2
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653176"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876223"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>Grootten van virtuele machines geoptimaliseerd voor GPU
 
 Geoptimaliseerde VM-grootten zijn gespecialiseerde virtuele machines die beschikbaar zijn met één, meerdere of gedeeltelijke Gpu's. Deze grootten zijn ontworpen voor computerintensieve, grafisch intensieve en visualisatie werk belastingen. Dit artikel bevat informatie over het aantal en het type Gpu's, Vcpu's, gegevens schijven en Nic's. Opslag doorvoer en netwerk bandbreedte worden ook voor elke grootte in deze groepering opgenomen.
 
-- De grootten van de [NC-serie](nc-series.md), de [NCv2-](ncv2-series.md)serie, de [NCv3-serie](ncv3-series.md) en de [NCT4_v3 serie](nct4-v3-series.md) zijn geoptimaliseerd voor computerintensieve en netwerkintensieve toepassingen en algoritmen. Enkele voor beelden zijn CUDA en OpenCL toepassingen en simulaties, AI en diep gaande lessen. De NCT4v3-serie is gericht op het afleiden van workloads met NVIDIA Tesla T4 GPU en AMD EPYC2 Rome-processor. De NCv3-serie is gericht op werk belastingen met hoge prestaties, met de Tesla V100 GPU van NVIDIA. De NC-serie maakt gebruik van de Intel Xeon E5-2690 v3 2,60 GHz v3-processor (Haswell) en de virtuele machines uit de NCv2-en NCv3-serie gebruiken de Intel Xeon E5-2690 v4-processor (Broadwell).
+- De grootten van de [NCv3-serie](ncv3-series.md) en de [NC T4_v3-serie](nct4-v3-series.md) zijn geoptimaliseerd voor computerintensieve toepassingen met GPU-snelheid. Enkele voor beelden zijn CUDA en OpenCL toepassingen en simulaties, AI en diep gaande lessen. De NC T4 v3-serie is gericht op het afleiden van workloads met NVIDIA Tesla T4 GPU en AMD EPYC2 Rome-processor. De NCv3-serie is gericht op High-Performance Computing en AI-workloads met de Tesla V100 GPU van NVIDIA.
 
-- [ND-serie](nd-series.md)en [NDv2-serie](ndv2-series.md) zijn gericht op trainings-en inleidende scenario's voor diep gaande lessen. De ND-serie maakt gebruik van de NVIDIA Tesla P40 GPU en de Intel Xeon E5-2690 v4-processor (Broadwell). De NDv2-serie gebruikt de NVIDIA Volta V100 en de Intel Xeon Platinum 8168-processor (Skylake).
+- De grootte van de [NDv2-serie](ndv2-series.md) is gericht op het opschalen en uitschalen van diep gaande trainings toepassingen. De NDv2-serie gebruikt de NVIDIA Volta V100 en de Intel Xeon Platinum 8168-processor (Skylake).
 
 - De grootte van de [nv-](nv-series.md) en [NVv3-serie](nvv3-series.md) is geoptimaliseerd en ontworpen voor externe visualisatie, streaming, games, code ring en VDI-scenario's met behulp van frameworks zoals OpenGL en DirectX. Deze Vm's worden ondersteund door de NVIDIA Tesla M60 GPU.
 
@@ -31,7 +31,7 @@ Geoptimaliseerde VM-grootten zijn gespecialiseerde virtuele machines die beschik
 
 Als u gebruik wilt maken van de GPU-mogelijkheden van Vm's in de Azure N-serie, moeten de NVIDIA-of AMD GPU-Stuur Programma's zijn geïnstalleerd.
 
-- Voor virtuele machines die worden ondersteund door NVIDIA-Gpu's, [worden de juiste](./extensions/hpccompute-gpu-windows.md) NVIDIA-CUDA of raster Stuur Programma's geïnstalleerd. De uitbrei ding installeren of beheren met de Azure Portal of hulpprogram ma's, zoals Azure PowerShell of Azure Resource Manager sjablonen. Zie de [documentatie over NVIDIA GPU-Stuur Programma's](./extensions/hpccompute-gpu-windows.md) voor ondersteunde besturings systemen en implementaties tappen. Zie [extensies en functies van virtuele Azure-machines](./extensions/overview.md)voor algemene informatie over VM-extensies.
+- Voor virtuele machines die worden ondersteund door NVIDIA-Gpu's, [worden de juiste](./extensions/hpccompute-gpu-windows.md) NVIDIA-CUDA of raster Stuur Programma's geïnstalleerd. De uitbrei ding installeren of beheren met de Azure Portal of hulpprogram ma's, zoals Azure PowerShell of Azure Resource Manager sjablonen. Zie de [documentatie over NVIDIA GPU-Stuur Programma's](./extensions/hpccompute-gpu-windows.md) voor ondersteunde besturings systemen en implementaties tappen. Zie [extensies en functies van virtuele Azure-machines](./extensions/overview.md)voor algemene informatie over VM-extensies.   
 
    U kunt ook de NVIDIA GPU-Stuur Programma's hand matig installeren. Zie [NVIDIA GPU-Stuur Programma's installeren op vm's uit de n-serie waarop Windows wordt uitgevoerd](./windows/n-series-driver-setup.md) of [Installeer NVIDIA GPU-Stuur Programma's op vm's met n-serie waarop Linux wordt uitgevoerd](./linux/n-series-driver-setup.md) voor ondersteunde besturings systemen, stuur Programma's, installatie en verificaties tappen.
 
@@ -51,7 +51,7 @@ Als u gebruik wilt maken van de GPU-mogelijkheden van Vm's in de Azure N-serie, 
 
 ## <a name="other-sizes"></a>Andere grootten
 
-- [Algemeen gebruik](sizes-general.md)
+- [Algemeen doel](sizes-general.md)
 - [Geoptimaliseerde rekenkracht](sizes-compute.md)
 - [Krachtig rekenvermogen](sizes-hpc.md)
 - [Geoptimaliseerd geheugen](sizes-memory.md)

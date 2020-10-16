@@ -5,7 +5,7 @@ services: virtual-machines-windows
 author: bobbytreed
 manager: carmonm
 tags: azure-resource-manager
-keywords: DSC
+keywords: dsc
 ms.assetid: b5402e5a-1768-4075-8c19-b7f7402687af
 ms.service: virtual-machines-windows
 ms.topic: article
@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
 ms.openlocfilehash: dc73b5b9f05d24de206b25095ea7eaf93f035298
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86511157"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Extensie voor desired state Configuration met Azure Resource Manager sjablonen
@@ -189,7 +189,7 @@ Zie het [standaard configuratie script](#default-configuration-script)voor een l
 | Settings. advancedOptions. downloadMappings |Verzameling |Definieert alternatieve locaties van waaruit WMF kan worden gedownload. Zie [Azure DSC-extensie 2,8 en down loads van de extensie afhankelijkheden toewijzen aan uw eigen locatie](https://devblogs.microsoft.com/powershell/azure-dsc-extension-2-8-how-to-map-downloads-of-the-extension-dependencies-to-your-own-location/)voor meer informatie. |
 | protectedSettings.configurationArguments |Verzameling |Hiermee definieert u de para meters die u wilt door geven aan uw DSC-configuratie. Deze eigenschap is versleuteld. |
 | protectedSettings.configurationUrlSasToken |tekenreeks |Hiermee geeft u het SAS-token op dat moet worden gebruikt om toegang te krijgen tot de URL die **settings.configuratie. URL** definieert. Deze eigenschap is versleuteld. |
-| protectedSettings.configurationDataUrlSasToken |tekenreeks |Hiermee geeft u het SAS-token op dat moet worden gebruikt om toegang te krijgen tot de URL die **settings.configurationData. URL** definieert. Deze eigenschap is versleuteld. |
+| protectedSettings.configurationDataUrlSasToken |tekenreeks |Hiermee geeft u het SAS-token op dat moet worden gebruikt om toegang te krijgen tot de URL die  **settings.configurationData. URL** definieert. Deze eigenschap is versleuteld. |
 
 ## <a name="default-configuration-script"></a>Standaard configuratie script
 
@@ -204,9 +204,9 @@ U kunt het standaard configuratie script van de DSC-extensie gebruiken om alleen
 | settings.configurationArguments.ConfigurationMode |tekenreeks |Hiermee geeft u de modus voor LCM op. Geldige opties zijn **ApplyOnly**, **ApplyandMonitor**en **ApplyandAutoCorrect**.  De standaard waarde is **ApplyandMonitor**. |
 | settings.configurationArguments. RefreshFrequencyMins | uint32 | Hiermee geeft u op hoe vaak LCM met het Automation-account probeert te controleren op updates.  De standaard waarde is **30**.  De minimum waarde is **15**. |
 | settings.configurationArguments.ConfigurationModeFrequencyMins | uint32 | Hiermee geeft u op hoe vaak LCM de huidige configuratie valideert. De standaard waarde is **15**. De minimum waarde is **15**. |
-| settings.configurationArguments. RebootNodeIfNeeded | boolean | Hiermee geeft u op of een knoop punt automatisch opnieuw kan worden opgestart als een DSC-bewerking dit aanvraagt. De standaard waarde is **False**. |
+| settings.configurationArguments. RebootNodeIfNeeded | booleaans | Hiermee geeft u op of een knoop punt automatisch opnieuw kan worden opgestart als een DSC-bewerking dit aanvraagt. De standaard waarde is **False**. |
 | settings.configurationArguments. ActionAfterReboot | tekenreeks | Hiermee geeft u op wat er gebeurt na het opnieuw opstarten bij het Toep assen van een configuratie. Geldige opties zijn **ContinueConfiguration** en **de stopconfiguration**. De standaard waarde is **ContinueConfiguration**. |
-| settings.configurationArguments. AllowModuleOverwrite | boolean | Hiermee geeft u op of de LCM bestaande modules op het knoop punt overschrijft. De standaard waarde is **False**. |
+| settings.configurationArguments. AllowModuleOverwrite | booleaans | Hiermee geeft u op of de LCM bestaande modules op het knoop punt overschrijft. De standaard waarde is **False**. |
 
 ## <a name="settings-vs-protectedsettings"></a>instellingen versus protectedSettings
 
@@ -275,7 +275,7 @@ In de Resource Manager-sjabloon geeft de volgende code de virtuele machine de op
 
 ## <a name="example-using-referenced-azure-automation-registration-values"></a>Voor beeld van het gebruik van Azure Automation registratie waarden waarnaar wordt verwezen
 
-In het volgende voor beeld worden de **RegistrationUrl** en **RegistrationKey** opgehaald door te verwijzen naar de Azure Automation-account eigenschappen en de methode **Listkeys ophalen** te gebruiken om de primaire sleutel op te halen (0).  In dit voor beeld zijn de para meters **automationAccountName** en **NodeConfigName** aan de sjabloon door gegeven.
+In het volgende voor beeld worden de **RegistrationUrl** en **RegistrationKey** opgehaald door te verwijzen naar de Azure Automation-account eigenschappen en de methode  **Listkeys ophalen** te gebruiken om de primaire sleutel op te halen (0).  In dit voor beeld zijn de para meters **automationAccountName** en **NodeConfigName** aan de sjabloon door gegeven.
 
 ```json
 "settings": {

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: aahi
 ms.openlocfilehash: 3cd6febfc774b214a8c1ae8553e6c127c4f452fa
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319075"
 ---
 # <a name="batch-processing-kit-for-speech-containers"></a>Batch processing Kit voor spraak containers
@@ -118,7 +118,7 @@ De batch verwerkings pakket biedt drie modi, met behulp van de `--run-mode` para
 
 `ONESHOT` modus transcribeert één batch met audio bestanden (van een invoer Directory en een lijst met optionele bestanden) naar een uitvoermap.
 
-:::image type="content" source="media/containers/batch-oneshot-mode.png" alt-text="Een diagram van de batch Kit container verwerkings bestanden in de modus OneShot.":::
+:::image type="content" source="media/containers/batch-oneshot-mode.png" alt-text="Een diagram met een voor beeld van een werk stroom voor een batch Kit-container.":::
 
 1. Definieer de eind punten van de spraak container die de batch-client in het bestand zal gebruiken `config.yaml` . 
 2. Plaats audio bestanden voor transcriptie in een invoer Directory.  
@@ -133,7 +133,7 @@ De batch verwerkings pakket biedt drie modi, met behulp van de `--run-mode` para
 
 `DAEMON` in de modus worden bestaande bestanden in een bepaalde map getranscribeerd en worden er voortdurend nieuwe audio bestanden getranscribeerd wanneer ze worden toegevoegd.          
 
-:::image type="content" source="media/containers/batch-daemon-mode.png" alt-text="Een diagram van de batch Kit container verwerkings bestanden in de daemon-modus.":::
+:::image type="content" source="media/containers/batch-daemon-mode.png" alt-text="Een diagram met een voor beeld van een werk stroom voor een batch Kit-container.":::
 
 1. Definieer de eind punten van de spraak container die de batch-client in het bestand zal gebruiken `config.yaml` . 
 2. Roep de container aan in een invoer Directory. De batch-client begint met het controleren van de map op binnenkomende bestanden. 
@@ -146,7 +146,7 @@ De batch verwerkings pakket biedt drie modi, met behulp van de `--run-mode` para
 
 `REST` modus is een API-server modus die een eenvoudige set HTTP-eind punten biedt voor het verzenden van audio bestanden, het controleren van statussen en lange polling. Maakt ook programmatisch gebruik mogelijk met behulp van een module-extensie van python of als een submodule importeren.
 
-:::image type="content" source="media/containers/batch-rest-api-mode.png" alt-text="Een diagram van de batch Kit container verwerkings bestanden in de daemon-modus.":::
+:::image type="content" source="media/containers/batch-rest-api-mode.png" alt-text="Een diagram met een voor beeld van een werk stroom voor een batch Kit-container.":::
 
 1. Definieer de eind punten van de spraak container die de batch-client in het bestand zal gebruiken `config.yaml` . 
 2. Verzend een aanvraag voor een HTTP-aanvraag naar een van de eind punten van de API-server. 

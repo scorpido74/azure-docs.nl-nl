@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: 4a6f6a052269bbfef6cafb359626031692a7d9c6
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 51c177af10713dfb35857097b267638156f0cc5d
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89418582"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057532"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>Back-ups maken en herstellen in Azure Database for MySQL
 
@@ -19,22 +19,33 @@ Azure Database for MySQL maakt automatisch server back-ups en slaat ze op in een
 
 ## <a name="backups"></a>Back-ups
 
-Azure Database for MySQL maakt back-ups van de gegevens bestanden en het transactie logboek. Afhankelijk van de ondersteunde maximale opslag grootte, nemen we volledige en differentiële back-ups (Maxi maal 4 TB opslag servers) of momentopname back-ups (Maxi maal 16 TB aan opslag servers). Met deze back-ups kunt u een server herstellen naar elk gewenst moment binnen de geconfigureerde back-upperiode. De standaard retentie periode voor back-ups is zeven dagen. U kunt [deze optioneel configureren](howto-restore-server-portal.md#set-backup-configuration) tot 35 dagen. Alle back-ups worden versleuteld met AES 256-bits versleuteling.
+Azure Database for MySQL maakt back-ups van de gegevens bestanden en het transactie logboek. Met deze back-ups kunt u een server herstellen naar elk gewenst moment binnen de geconfigureerde back-upperiode. De standaardretentieperiode voor back-ups is zeven dagen. U kunt [deze optioneel configureren](howto-restore-server-portal.md#set-backup-configuration) tot 35 dagen. Alle back-ups worden versleuteld met AES 256-bits versleuteling.
 
 Deze back-upbestanden zijn niet beschikbaar voor gebruikers en kunnen niet worden geëxporteerd. Deze back-ups kunnen alleen worden gebruikt voor herstel bewerkingen in Azure Database for MySQL. U kunt [mysqldump](concepts-migrate-dump-restore.md) gebruiken om een Data Base te kopiëren.
 
-### <a name="backup-frequency"></a>Back-upfrequentie
+Het type en de frequentie van de back-up is afhankelijk van de back-upopslag voor de servers.
 
-#### <a name="servers-with-up-to-4-tb-storage"></a>Servers met Maxi maal 4 TB opslag
+### <a name="backup-type-and-frequency"></a>Type en frequentie van back-ups
 
-Voor servers die Maxi maal 4 TB aan maximale opslag ondersteunen, worden er één keer per week volledige back-ups uitgevoerd. Differentiële back-ups worden twee keer per dag uitgevoerd. Back-ups van transactie logboeken worden om de vijf minuten uitgevoerd.
+#### <a name="basic-storage-servers"></a>Basis opslag servers
 
-#### <a name="servers-with-up-to-16-tb-storage"></a>Servers met Maxi maal 16 TB opslag
-In een subset van [Azure-regio's](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)kan alle nieuw ingerichte servers Maxi maal 16 TB opslag ondersteunen. Back-ups op deze grote opslag servers zijn gebaseerd op moment opnamen. De eerste volledige back-up van de moment opname wordt onmiddellijk gepland nadat een server is gemaakt. De eerste volledige back-up van de moment opname wordt bewaard als basis back-up van de server. Volgende back-ups voor moment opnamen zijn alleen differentiële back-ups. 
+De basis opslag is de back-end-opslag die de [Basic-laag servers](concepts-pricing-tiers.md)ondersteunt. Back-ups op eenvoudige opslag servers zijn gebaseerd op moment opnamen. Er wordt dagelijks een volledige database momentopname uitgevoerd. Er zijn geen differentiële back-ups die worden uitgevoerd voor basis opslag servers en alle back-ups van moment opnamen zijn alleen volledige database back-ups. 
 
-Back-ups van differentiële moment opnamen worden minstens één keer per dag uitgevoerd. Back-ups van differentiële moment opnamen worden niet uitgevoerd volgens een vast schema. Back-ups van differentiële moment opnamen worden elke 24 uur uitgevoerd, tenzij het transactie logboek (binlog in MySQL) 50-GB overschrijdt sinds de laatste differentiële back-up. In een dag zijn Maxi maal zes differentiële moment opnamen toegestaan. 
+Back-ups van transactielogboeken worden elke vijf minuten uitgevoerd. 
 
-Back-ups van transactie logboeken worden om de vijf minuten uitgevoerd. 
+#### <a name="general-purpose-storage-servers-with-up-to-4-tb-storage"></a>Opslag servers voor algemeen gebruik met Maxi maal 4 TB opslag
+
+De opslag voor algemeen gebruik is de back-end-opslag die [Algemeen](concepts-pricing-tiers.md) en de server met [geoptimaliseerd geheugen](concepts-pricing-tiers.md) ondersteunt. Voor servers met een algemene opslag van Maxi maal 4 TB worden er één keer per week volledige back-ups uitgevoerd. Differentiële back-ups worden twee keer per dag uitgevoerd. Back-ups van transactie logboeken worden om de vijf minuten uitgevoerd. De back-ups in algemene opslag ruimte tot 4 TB opslag worden niet op basis van een moment opname gemaakt en gebruiken de i/o-band breedte op het moment van de back-up. Voor grote data bases (> 1 TB) voor opslag van 4 TB raden wij u aan om 
+
+- Meer IOPs inrichten voor het account voor back-up-IOs of
+- U kunt ook migreren naar de opslag voor algemeen gebruik die ondersteuning biedt voor Maxi maal 16 TB opslag als de onderliggende opslag infastructure beschikbaar is in uw voor keuren [Azure-regio's](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage). Er zijn geen extra kosten verbonden aan opslag voor algemene doel einden, die ondersteuning biedt voor Maxi maal 16 TB aan opslag ruimte. Open een ondersteunings ticket van Azure Portal voor hulp bij de migratie naar 16 TB aan opslag ruimte. 
+
+#### <a name="general-purpose-storage-servers-with-up-to-16-tb-storage"></a>Opslag servers voor algemeen gebruik met Maxi maal 16 TB opslag
+In een subset van [Azure-regio's](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)kunnen alle nieuw ingerichte servers ondersteuning bieden voor algemeen gebruik, tot 16 TB aan opslag ruimte. Met andere woorden, opslag tot 16 TB opslag is de standaard opslag voor algemeen gebruik voor alle [regio's](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage) waar deze wordt ondersteund. Back-ups op deze opslag servers met 16 TB zijn op moment opnamen gebaseerd. De eerste volledige momentopnameback-up wordt gepland direct nadat een server is gemaakt. De eerste volledige back-up van de moment opname wordt bewaard als basis back-up van de server. Volgende momentopnameback-ups zijn alleen differentiële back-ups. 
+
+Differentiële momentopnameback-ups worden minstens één keer per dag uitgevoerd. Differentiële momentopnameback-ups worden niet uitgevoerd volgens een vast schema. Back-ups van differentiële moment opnamen worden elke 24 uur uitgevoerd, tenzij het transactie logboek (binlog in MySQL) 50-GB overschrijdt sinds de laatste differentiële back-up. Op één dag zijn maximaal zes differentiële momentopnamen toegestaan. 
+
+Back-ups van transactielogboeken worden elke vijf minuten uitgevoerd. 
 
 ### <a name="backup-retention"></a>Back-upretentie
 
@@ -55,7 +66,7 @@ Azure Database for MySQL biedt de flexibiliteit om te kiezen tussen lokaal redun
 
 Azure Database for MySQL biedt Maxi maal 100% van uw ingerichte Server opslag als back-upopslag zonder extra kosten. Alle extra back-upopslag wordt in GB per maand in rekening gebracht. Als u bijvoorbeeld een server hebt ingericht met 250 GB opslag, hebt u 250 GB aan extra opslag ruimte beschikbaar voor Server back-ups zonder extra kosten. Opslag die voor back-250 ups wordt gebruikt, wordt in rekening gebracht volgens het [prijs model](https://azure.microsoft.com/pricing/details/mysql/). 
 
-U kunt de metrische [back-upopslag](concepts-monitoring.md) gebruiken in azure monitor beschikbaar via de Azure Portal om de back-upopslag te bewaken die door een server wordt gebruikt. De metrische back-upopslagwaarde vertegenwoordigt de som van de opslag die wordt gebruikt door alle back-ups van de volledige data base, differentiële back-ups en logboek back-ups die worden bewaard op basis van de Bewaar periode voor back-ups die is ingesteld voor de server. De frequentie van de back-ups is service beheerd en wordt eerder uitgelegd. Zware transactionele activiteit op de server kan ertoe leiden dat het gebruik van back-ups wordt verg root onafhankelijk van de totale database grootte. Voor geo-redundante opslag is het gebruik van back-upopslag twee keer zo dat van de lokaal redundante opslag. 
+U kunt de metrische [back-upopslag](concepts-monitoring.md) gebruiken in azure monitor beschikbaar via de Azure Portal om de back-upopslag te bewaken die door een server wordt gebruikt. De metrische back-upopslagwaarde vertegenwoordigt de som van de opslag die wordt gebruikt door alle back-ups van de volledige data base, differentiële back-ups en logboek back-ups die worden bewaard op basis van de Bewaar periode voor back-ups die is ingesteld voor de server. De frequentie van de back-ups is service beheerd en wordt eerder uitgelegd. Intensieve transactionele activiteit op de server kan ertoe leiden dat het gebruik van back-upopslag toeneemt, onafhankelijk van de totale databasegrootte. Voor geo-redundante opslag is het gebruik van back-upopslag twee keer zo dat van de lokaal redundante opslag. 
 
 De belangrijkste manier om de opslag kosten voor back-ups te beheren, is door de juiste Bewaar periode voor back-ups in te stellen en de opties voor de juiste back-upredundantie te kiezen om te voldoen aan de gewenste herstel doelen. U kunt een Bewaar periode van 7 tot 35 dagen selecteren. Algemeen-servers en geoptimaliseerd voor geheugen kunnen ervoor kiezen om geografisch redundante opslag te hebben voor back-ups.
 
@@ -71,7 +82,7 @@ Er zijn twee soorten herstel beschikbaar:
 De geschatte duur van de herstel bewerking is afhankelijk van verschillende factoren, zoals de grootte van de data base, het transactie logboek, de netwerk bandbreedte en het totale aantal data bases dat op hetzelfde moment in dezelfde regio wordt hersteld. De herstel tijd is doorgaans minder dan 12 uur.
 
 > [!IMPORTANT]
-> Verwijderde servers **kunnen niet** worden hersteld. Als u de server verwijdert, worden ook alle data bases die deel uitmaken van de server, verwijderd en kunnen deze niet worden hersteld. Beheerders kunnen gebruikmaken van [beheer vergrendelingen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)om Server bronnen te beveiligen, na implementatie van onopzettelijk verwijderen of onverwachte wijzigingen.
+> Verwijderde servers kunnen alleen binnen **vijf dagen** na de verwijdering worden hersteld, waarna de back-ups worden verwijderd. De back-up van de data base kan worden geopend en alleen worden teruggezet vanuit het Azure-abonnement dat als host fungeert voor de server. Raadpleeg [gedocumenteerde stappen](howto-restore-dropped-server.md)om een verwijderde server te herstellen. Beheerders kunnen gebruikmaken van [beheer vergrendelingen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)om Server bronnen te beveiligen, na implementatie van onopzettelijk verwijderen of onverwachte wijzigingen.
 
 ### <a name="point-in-time-restore"></a>Terugzetten naar eerder tijdstip
 

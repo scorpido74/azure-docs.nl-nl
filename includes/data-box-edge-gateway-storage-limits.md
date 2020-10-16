@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 01/30/2019
 ms.author: alkohli
 ms.openlocfilehash: 51fde73565c9c4cdb21e998b8d43d303ceef062e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82561389"
 ---
 In deze sectie worden de limieten voor de Azure Storage-service en de vereiste naam conventies voor Azure Files, Azure Block blobs en Azure-pagina-blobs beschreven, zoals van toepassing op de Azure Stack EDGE/Data Box Gateway-Service. Controleer de opslag limieten zorgvuldig en volg alle aanbevelingen.

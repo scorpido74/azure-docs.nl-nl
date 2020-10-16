@@ -5,12 +5,12 @@ ms.author: puagarw
 ms.topic: tutorial
 ms.date: 07/12/2019
 author: pulkitaggarwl
-ms.openlocfilehash: 42bdde45b3a289a35c5bf4c4651e5a50a639f049
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 36b2e829e56cf4d3b5ace64af989fa7f71725c44
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251770"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360834"
 ---
 # <a name="deployment-center-for-azure-kubernetes"></a>Implementatiecentrum voor Azure Kubernetes
 
@@ -54,7 +54,7 @@ In deze zelfstudie leert u het volgende:
 
 1. Selecteer het AKS-cluster en selecteer vervolgens **Deployment Center (preview)** op de linker blade. Selecteer **Aan de slag**.
 
-   ![instellingen](media/deployment-center-launcher/settings.png)
+   ![Schermopname van Azure Portal met een pijl die naar het Implementatiecentrum wijst.](media/deployment-center-launcher/settings.png)
 
 1. Kies de locatie van de code en selecteer **Volgende**. Selecteer vervolgens een van de momenteel ondersteunde opslagplaatsen: **[Azure opslagplaats](/azure/devops/repos/index?view=azure-devops)** of **GitHub**.
 
@@ -66,7 +66,7 @@ In deze zelfstudie leert u het volgende:
 
     - **GitHub**: Autoriseer en selecteer de opslagplaats voor uw GitHub-account.
 
-        ![GitHub](media/deployment-center-launcher/github.gif)
+        ![Animatie van een proces in GitHub om eerst GitHub als de bron en vervolgens uw opslagplaats te selecteren.](media/deployment-center-launcher/github.gif)
 
 
 1. Het Implementatiecentrum analyseert de opslagplaats en detecteert uw Dockerfile. Als u de Dockerfile wilt bijwerken, kunt u het geïdentificeerde poortnummer bewerken.
@@ -75,7 +75,7 @@ In deze zelfstudie leert u het volgende:
 
     Als de opslagplaats de Dockerfile niet bevat, wordt in het systeem een bericht weergegeven dat er een moet worden doorgevoerd.
 
-    ![Dockerfile](media/deployment-center-launcher/dockerfile.png)
+    ![Schermopname van het Implementatiecentrum met het bericht Kan geen Dockerfile vinden in de opslagplaats.](media/deployment-center-launcher/dockerfile.png)
 
 1. Selecteer een bestaand containerregister of maak er een, en selecteer vervolgens **Voltooien**. De pijplijn wordt automatisch gemaakt en wacht op build-in [Azure-pijplijnen](/azure/devops/pipelines/index?view=azure-devops).
 
@@ -87,7 +87,7 @@ In deze zelfstudie leert u het volgende:
 
 1. U ziet de geslaagde logboeken nadat de implementatie is voltooid.
 
-    ![Logboeken](media/deployment-center-launcher/logs.png)
+    ![Schermopname van het Implementatiecentrum waarin Release-1 is gemarkeerd met een groen vinkje.](media/deployment-center-launcher/logs.png)
 
 ## <a name="examine-the-ci-pipeline"></a>De CI-pijplijn onderzoeken
 

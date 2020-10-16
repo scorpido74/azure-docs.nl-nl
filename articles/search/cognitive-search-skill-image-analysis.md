@@ -8,16 +8,16 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 63a1f8e30be2983c0df93ff5a7229460f8f39214
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 69b84a3edb606ed99b6aaca7db5ad0e57124f1b9
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936041"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948932"
 ---
 # <a name="image-analysis-cognitive-skill"></a>Cognitieve vaardigheid van Image Analysis
 
-De kwalificatie **analyse van installatie kopieën** extraheert een uitgebreide set visuele functies op basis van de inhoud van de installatie kopie. U kunt bijvoorbeeld een bijschrift genereren op basis van een afbeelding, tags genereren of beroemdheden en bezienswaardigheden identificeren. Deze vaardigheid maakt gebruik van de machine learning modellen van [Computer Vision](../cognitive-services/computer-vision/home.md) in cognitive Services. 
+De kwalificatie **analyse van installatie kopieën** extraheert een uitgebreide set visuele functies op basis van de inhoud van de installatie kopie. U kunt bijvoorbeeld een bijschrift genereren op basis van een afbeelding, tags genereren of beroemdheden en bezienswaardigheden identificeren. Deze vaardigheid maakt gebruik van de machine learning modellen van [Computer Vision](../cognitive-services/computer-vision/overview.md) in cognitive Services. 
 
 > [!NOTE]
 > Kleine volumes (minder dan 20 trans acties) kunnen gratis worden uitgevoerd in azure Cognitive Search, maar voor grotere werk belastingen moet [een factureer bare Cognitive Services resource worden gekoppeld](cognitive-search-attach-cognitive-services.md). Er worden kosten in rekening gebracht bij het aanroepen van Api's in Cognitive Services en voor het ophalen van afbeeldingen als onderdeel van de fase voor het kraken van documenten in azure Cognitive Search. Er worden geen kosten in rekening gebracht voor het ophalen van tekst uit documenten.

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/05/2020
 ms.author: apimpm
-ms.openlocfilehash: 345b4950e25f48eb1a48c5e583908d0f771771ba
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 3ceb8fd154e8ad533f4bf6bc9eb0ec3900749f8b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206248"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075362"
 ---
 # <a name="access-and-customize-developer-portal"></a>De ontwikkelaars Portal openen en aanpassen
 
@@ -38,7 +38,7 @@ Meer informatie over de ontwikkelaars Portal vindt u in het overzicht van de [Az
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Voer de volgende Snelstartgids uit: [een Azure API Management-exemplaar maken](get-started-create-service-instance.md)
+- Voltooi de volgende quickstart: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md)
 - Importeer en publiceer een Azure API Management-exemplaar. Zie voor meer informatie [importeren en publiceren](import-and-publish.md)
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
@@ -131,8 +131,8 @@ Nadat u de portal hebt gepubliceerd, kunt u deze openen op dezelfde URL als het 
 U moet CORS (cross-Origin Resource Sharing) inschakelen op uw Api's om de bezoekers van uw portal de Api's te laten testen via de ingebouwde interactieve console. Raadpleeg [Dit documentatie artikel](api-management-howto-developer-portal.md#cors) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Optimaliseer en sla uw Cloud uitgaven op](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+- [Optimaliseer en sla uw Cloud uitgaven op](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
 
 Meer informatie over de ontwikkelaars portal:
 
-- [Overzicht van Azure API Management-ontwikkelaars Portal](api-management-howto-developer-portal.md)
+- [Overzicht van de Azure API Management-ontwikkelaarsportal](api-management-howto-developer-portal.md)

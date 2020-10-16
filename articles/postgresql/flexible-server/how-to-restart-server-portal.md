@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: 952bd6dddf9f276ed1a4a18f03799147f1902198
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934872"
 ---
 # <a name="restart-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL-flexibele server opnieuw opstarten
@@ -43,7 +43,7 @@ Voer de volgende stappen uit om de flexibele server opnieuw op te starten.
 
 4.  Klik op **Ja** als u wilt door gaan.
    
-     :::image type="content" source="./media/how-to-restart-server-portal/restart-pop-up.png" alt-text="Opnieuw opstarten bevestigen":::
+     :::image type="content" source="./media/how-to-restart-server-portal/restart-pop-up.png" alt-text="Selectie opnieuw starten":::
  
 6.  Er wordt een melding weer gegeven dat de herstart bewerking is gestart.
 

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 06/25/2018
 ms.openlocfilehash: 97d7d21374062462248e1b86f2bde2fef2d25331
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87326049"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>De omgeving optimaliseren met behulp van System Center Operations Manager-statuscontrole (preview)
@@ -82,7 +82,7 @@ Het run as-account moet voldoen aan de volgende vereisten voordat u doorgaat:
 4. Selecteer op de pagina **algemene eigenschappen** de optie **Windows** in het **Run as-account type:** list.
 5. Typ een weergave naam in het tekstvak **weergave naam** en typ eventueel een beschrijving in het vak **Beschrijving** en klik vervolgens op **volgende**.
 6. Selecteer op de pagina **distributie beveiliging** de optie **veiliger**.
-7. Klik op **Create**.  
+7. Klik op **Maken**.  
 
 Nu het run as-account is gemaakt, moet het worden ingesteld op beheerser vers in de beheer groep en zijn gekoppeld aan een vooraf gedefinieerd run as-profiel zodat werk stromen met de referenties worden uitgevoerd.  
 

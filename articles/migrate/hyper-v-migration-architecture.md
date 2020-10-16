@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: raynew
 ms.openlocfilehash: 390a8a49e9a47ee5e6845d85fe4fe02f514708e8
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362194"
 ---
 # <a name="how-does-hyper-v-replication-work"></a>Hoe werkt Hyper-V-replicatie?
@@ -80,7 +80,7 @@ I
 Als u een reserve band breedte hebt voor replicatie en u uploads wilt verhogen, kunt u het aantal threads dat voor de upload taak is toegewezen als volgt verhogen:
 
 1. Open het REGI ster met Regedit.
-2. Ga naar Key HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM
+2. Navigeren naar Key HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM
 3. Verhoog de waarde voor het aantal threads dat wordt gebruikt voor het uploaden van gegevens voor elke replicerende VM. De standaard waarde is 4 en de maximum waarde is 32. 
 
 

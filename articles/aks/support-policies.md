@@ -4,12 +4,12 @@ description: Meer informatie over het ondersteunings beleid voor Azure Kubernete
 services: container-service
 ms.topic: article
 ms.date: 09/18/2020
-ms.openlocfilehash: 188416d9ef6f8e7568b10e8ccbb405be0bff315d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 86b1c0bba30b41a2ee17cfbdf05286c4d2b3fb8a
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90888979"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91892707"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Ondersteunings beleid voor de Azure Kubernetes-service
 
@@ -130,8 +130,7 @@ U kunt de Nsg's alleen aanpassen op aangepaste subnetten. U kunt Nsg's niet aanp
 
 ## <a name="stopped-or-de-allocated-clusters"></a>Gestopte of de toegewezen clusters
 
-Als u per hierboven hand matig de toewijzing van alle cluster knooppunten via de IaaS-Api's/CLI/Portal, wordt het cluster niet meer ondersteund.
-De enige ondersteunde manier om de toewijzing van alle knoop punten te stoppen/ongedaan te maken, is door [het AKS-cluster te stoppen, waardoor de cluster status Maxi maal 12 maanden wordt bewaard.
+Zoals eerder aangegeven, wordt door het hand matig opnieuw toewijzen van alle cluster knooppunten via de IaaS-Api's/CLI/Portal het cluster uit de ondersteuning weer gegeven. De enige ondersteunde manier om de toewijzing van alle knoop punten te stoppen/ongedaan te maken, is door [het AKS-cluster te stoppen](start-stop-cluster.md#stop-an-aks-cluster), waarmee de cluster status tot 12 maanden wordt bewaard.
 
 Clusters die meer dan 12 maanden worden gestopt, behouden de status niet langer. 
 

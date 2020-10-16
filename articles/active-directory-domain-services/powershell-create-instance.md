@@ -2,22 +2,22 @@
 title: Azure DS Domain Services inschakelen met behulp van PowerShell | Microsoft Docs
 description: Leer hoe u Azure Active Directory Domain Services configureert en inschakelt met behulp van Azure AD PowerShell en Azure PowerShell.
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: d4bc5583-6537-4cd9-bc4b-7712fdd9272a
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: sample
-ms.date: 07/09/2020
-ms.author: iainfou
+ms.date: 10/02/2020
+ms.author: joflore
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 27fec8b8b76bec4c5ac428258b1495fc1bef1abe
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 4b2ea0806f70d9f99982b9d9af9c462ff0099966
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89068963"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967950"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>Azure Active Directory Domain Services inschakelen met behulp van PowerShell
 
@@ -54,26 +54,33 @@ New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
 
 Maak nu een Azure AD-groep met de naam *AAD DC-beheerders*. Aan gebruikers die zijn toegevoegd aan deze groep, worden vervolgens machtigingen verleend voor het uitvoeren van beheertaken in het beheerde domein.
 
-Maak de groep *AAD DC-beheerders* met behulp van de [New-AzureADGroup][New-AzureADGroup]-cmdlet:
+Haal eerst de groepsobject-id *AAD DC-beheerders* op met de cmdlet [Get-AzureADGroup][Get-AzureADGroup]. Als de groep niet bestaat, maakt u de groep *AAD DC-beheerders* met behulp van de cmdlet [New-AzureADGroup][New-AzureADGroup]:
 
 ```powershell
-New-AzureADGroup -DisplayName "AAD DC Administrators" `
-  -Description "Delegated group to administer Azure AD Domain Services" `
-  -SecurityEnabled $true -MailEnabled $false `
-  -MailNickName "AADDCAdministrators"
-```
-
-Nu de groep *AAD DC-beheerders* is gemaakt, voegt u een gebruiker toe aan de groep met behulp van de cmdlet [Add-AzureADGroupMember][Add-AzureADGroupMember]. U haalt eerst de object-id voor de groep *AAD DC Administrators* op met behulp van de [Get-AzureADGroup][Get-AzureADGroup]-cmdlet. Vervolgens haalt u de object-id van de gewenste gebruiker op met behulp van de [Get-AzureADUser][Get-AzureADUser]-cmdlet.
-
-In het volgende voorbeeld ziet u de gebruikersobject-id voor het account met een UPN van `admin@contoso.onmicrosoft.com`. Vervang dit gebruikersaccount door de UPN van de gebruiker die u wilt toevoegen aan de groep *AAD DC Administrators*:
-
-```powershell
-# First, retrieve the object ID of the newly created 'AAD DC Administrators' group.
+# First, retrieve the object ID of the 'AAD DC Administrators' group.
 $GroupObjectId = Get-AzureADGroup `
   -Filter "DisplayName eq 'AAD DC Administrators'" | `
   Select-Object ObjectId
 
-# Now, retrieve the object ID of the user you'd like to add to the group.
+# If the group doesn't exist, create it
+if (!$GroupObjectId) {
+  $GroupObjectId = New-AzureADGroup -DisplayName "AAD DC Administrators" `
+    -Description "Delegated group to administer Azure AD Domain Services" `
+    -SecurityEnabled $true `
+    -MailEnabled $false `
+    -MailNickName "AADDCAdministrators"
+  }
+else {
+  Write-Output "Admin group already exists."
+}
+```
+
+Nu de groep *AAD DC-beheerders* is gemaakt, haalt u de gewenste gebruikersobject-id op met de cmdlet [Get-AzureADUser][Get-AzureADUser] en vervolgens voegt u de gebruiker toe aan de groep met de cmdlet [Add-AzureADGroupMember][Add-AzureADGroupMember].
+
+In het volgende voorbeeld ziet u de gebruikersobject-id voor het account met een UPN van `admin@contoso.onmicrosoft.com`. Vervang dit gebruikersaccount door de UPN van de gebruiker die u wilt toevoegen aan de groep *AAD DC Administrators*:
+
+```powershell
+# Retrieve the object ID of the user you'd like to add to the group.
 $UserObjectId = Get-AzureADUser `
   -Filter "UserPrincipalName eq 'admin@contoso.onmicrosoft.com'" | `
   Select-Object ObjectId
@@ -82,7 +89,7 @@ $UserObjectId = Get-AzureADUser `
 Add-AzureADGroupMember -ObjectId $GroupObjectId.ObjectId -RefObjectId $UserObjectId.ObjectId
 ```
 
-## <a name="create-supporting-azure-resources"></a>Ondersteunende Azure-resources maken
+## <a name="create-network-resources"></a>Netwerkbronnen maken
 
 Registreer eerst de Azure AD Domain Services-resourceprovider met behulp van de [Register-AzResourceProvider][Register-AzResourceProvider]-cmdlet:
 
@@ -109,11 +116,13 @@ Maak de subnetten met behulp van de [New-AzVirtualNetworkSubnetConfig][New-AzVir
 ```powershell
 $VnetName = "myVnet"
 
-# Create the dedicated subnet for AAD Domain Services.
+# Create the dedicated subnet for Azure AD Domain Services.
+$SubnetName = "DomainServices"
 $AaddsSubnet = New-AzVirtualNetworkSubnetConfig `
-  -Name DomainServices `
+  -Name $SubnetName `
   -AddressPrefix 10.0.0.0/24
 
+# Create an additional subnet for your own VM workloads
 $WorkloadSubnet = New-AzVirtualNetworkSubnetConfig `
   -Name Workloads `
   -AddressPrefix 10.0.1.0/24
@@ -125,6 +134,68 @@ $Vnet= New-AzVirtualNetwork `
   -Name $VnetName `
   -AddressPrefix 10.0.0.0/16 `
   -Subnet $AaddsSubnet,$WorkloadSubnet
+```
+
+### <a name="create-a-network-security-group"></a>Een netwerkbeveiligingsgroep maken
+
+Azure AD DS heeft een netwerkbeveiligingsgroep nodig om de poorten die nodig zijn voor het beheerde domein te beveiligen en al het andere inkomende verkeer te blokkeren. Een [netwerkbeveiligingsgroep][nsg-overview] (NSG: Network Security Group) bevat een lijst met beveiligingsregels waarmee netwerkverkeer naar verkeer in een virtueel Azure-netwerk wordt toegestaan of geweigerd. In Azure AD DS fungeert de netwerkbeveiligingsgroep als een extra beveiligingslaag om de toegang tot het beheerde domein af te grendelen. Zie [Netwerkbeveiligingsgroepen en vereiste poorten][network-ports]om de vereiste poorten weer te geven.
+
+De volgende PowerShell-cmdlets gebruiken [New-AzNetworkSecurityRuleConfig][New-AzNetworkSecurityRuleConfig] om de regels te maken en vervolgens [New-AzNetworkSecurityGroup][New-AzNetworkSecurityGroup] om de netwerkbeveiligingsgroep te maken. De netwerkbeveiligingsgroep en regels worden vervolgens gekoppeld aan het subnet van het virtuele netwerk met behulp van de [set-AzVirtualNetworkSubnetConfig][Set-AzVirtualNetworkSubnetConfig]-cmdlet.
+
+```powershell
+$NSGName = "aaddsNSG"
+
+# Create a rule to allow inbound TCP port 443 traffic for synchronization with Azure AD
+$nsg101 = New-AzNetworkSecurityRuleConfig `
+    -Name AllowSyncWithAzureAD `
+    -Access Allow `
+    -Protocol Tcp `
+    -Direction Inbound `
+    -Priority 101 `
+    -SourceAddressPrefix AzureActiveDirectoryDomainServices `
+    -SourcePortRange * `
+    -DestinationAddressPrefix * `
+    -DestinationPortRange 443
+
+# Create a rule to allow inbound TCP port 3389 traffic from Microsoft secure access workstations for troubleshooting
+$nsg201 = New-AzNetworkSecurityRuleConfig -Name AllowRD `
+    -Access Allow `
+    -Protocol Tcp `
+    -Direction Inbound `
+    -Priority 201 `
+    -SourceAddressPrefix CorpNetSaw `
+    -SourcePortRange * `
+    -DestinationAddressPrefix * `
+    -DestinationPortRange 3389
+
+# Create a rule to allow TCP port 5986 traffic for PowerShell remote management
+$nsg301 = New-AzNetworkSecurityRuleConfig -Name AllowPSRemoting `
+    -Access Allow `
+    -Protocol Tcp `
+    -Direction Inbound `
+    -Priority 301 `
+    -SourceAddressPrefix AzureActiveDirectoryDomainServices `
+    -SourcePortRange * `
+    -DestinationAddressPrefix * `
+    -DestinationPortRange 5986
+
+# Create the network security group and rules
+$nsg = New-AzNetworkSecurityGroup -Name $NSGName `
+    -ResourceGroupName $ResourceGroupName `
+    -Location $AzureLocation `
+    -SecurityRules $nsg101,$nsg201,$nsg301
+
+# Get the existing virtual network resource objects and information
+$vnet = Get-AzVirtualNetwork -Name $VnetName -ResourceGroupName $ResourceGroupName
+$subnet = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name $SubnetName
+$addressPrefix = $subnet.AddressPrefix
+
+# Associate the network security group with the virtual network subnet
+Set-AzVirtualNetworkSubnetConfig -Name $SubnetName `
+    -VirtualNetwork $vnet `
+    -AddressPrefix $addressPrefix `
+    -NetworkSecurityGroup $nsg
+$vnet | Set-AzVirtualNetwork
 ```
 
 ## <a name="create-a-managed-domain"></a>Een beheerd domein maken
@@ -143,6 +214,7 @@ $ManagedDomainName = "aaddscontoso.com"
 
 # Enable Azure AD Domain Services for the directory.
 New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.AAD/DomainServices/$ManagedDomainName" `
+  -ApiVersion "2017-06-01" `
   -Location $AzureLocation `
   -Properties @{"DomainName"=$ManagedDomainName; `
     "SubnetId"="/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/virtualNetworks/$VnetName/subnets/DomainServices"} `
@@ -155,8 +227,6 @@ Wanneer in de Azure-portal wordt weergegeven dat inrichten van het beheerde dome
 
 * Werk de DNS-instellingen voor het virtuele netwerk bij, zodat virtuele machines het beheerde domein kunnen vinden voor domeindeelname of verificatie.
     * Selecteer het beheerde domein in de portal om DNS te configureren. In het **Overzichtsvenster** wordt u gevraagd om deze DNS-instellingen automatisch te configureren.
-* Maak een netwerkbeveiligingsgroep om het verkeer in het virtuele netwerk voor het beheerde domein te beperken. Er wordt een Standard Load Balancer van Azure gemaakt waarvoor deze regels moeten worden uitgevoerd. Deze netwerkbeveiligingsgroep beveiligt Azure AD DS en is vereist voor een juiste werking van het beheerde domein.
-    * Als u de netwerkbeveiligingsgroep en de vereiste regels wilt maken, installeert u eerst het `New-AzureAddsNetworkSecurityGroup`-script met de opdracht `Install-Script -Name New-AaddsNetworkSecurityGroup` en voert u vervolgens `New-AaddsNetworkSecurityGroup`uit. De vereiste regels voor het beheerde domein worden voor u gemaakt.
 * U moet [Wachtwoordsynchronisatie in Azure AD DS inschakelen](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) zodat eindgebruikers zich bij het beheerde domein kunnen aanmelden met hun bedrijfsreferenties.
 
 ## <a name="complete-powershell-script"></a>PowerShell-script voltooien
@@ -184,16 +254,22 @@ Connect-AzAccount
 # Create the service principal for Azure AD Domain Services.
 New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
 
-# Create the delegated administration group for AAD Domain Services.
-New-AzureADGroup -DisplayName "AAD DC Administrators" `
-  -Description "Delegated group to administer Azure AD Domain Services" `
-  -SecurityEnabled $true -MailEnabled $false `
-  -MailNickName "AADDCAdministrators"
-
-# First, retrieve the object ID of the newly created 'AAD DC Administrators' group.
+# First, retrieve the object ID of the 'AAD DC Administrators' group.
 $GroupObjectId = Get-AzureADGroup `
   -Filter "DisplayName eq 'AAD DC Administrators'" | `
   Select-Object ObjectId
+
+# Create the delegated administration group for Azure AD Domain Services if it doesn't already exist.
+if (!$GroupObjectId) {
+  $GroupObjectId = New-AzureADGroup -DisplayName "AAD DC Administrators" `
+    -Description "Delegated group to administer Azure AD Domain Services" `
+    -SecurityEnabled $true `
+    -MailEnabled $false `
+    -MailNickName "AADDCAdministrators"
+  }
+else {
+  Write-Output "Admin group already exists."
+}
 
 # Now, retrieve the object ID of the user you'd like to add to the group.
 $UserObjectId = Get-AzureADUser `
@@ -212,6 +288,7 @@ New-AzResourceGroup `
   -Location $AzureLocation
 
 # Create the dedicated subnet for AAD Domain Services.
+$SubnetName = "DomainServices"
 $AaddsSubnet = New-AzVirtualNetworkSubnetConfig `
   -Name DomainServices `
   -AddressPrefix 10.0.0.0/24
@@ -227,9 +304,64 @@ $Vnet=New-AzVirtualNetwork `
   -Name $VnetName `
   -AddressPrefix 10.0.0.0/16 `
   -Subnet $AaddsSubnet,$WorkloadSubnet
+  
+$NSGName = "aaddsNSG"
+
+# Create a rule to allow inbound TCP port 443 traffic for synchronization with Azure AD
+$nsg101 = New-AzNetworkSecurityRuleConfig `
+    -Name AllowSyncWithAzureAD `
+    -Access Allow `
+    -Protocol Tcp `
+    -Direction Inbound `
+    -Priority 101 `
+    -SourceAddressPrefix AzureActiveDirectoryDomainServices `
+    -SourcePortRange * `
+    -DestinationAddressPrefix * `
+    -DestinationPortRange 443
+
+# Create a rule to allow inbound TCP port 3389 traffic from Microsoft secure access workstations for troubleshooting
+$nsg201 = New-AzNetworkSecurityRuleConfig -Name AllowRD `
+    -Access Allow `
+    -Protocol Tcp `
+    -Direction Inbound `
+    -Priority 201 `
+    -SourceAddressPrefix CorpNetSaw `
+    -SourcePortRange * `
+    -DestinationAddressPrefix * `
+    -DestinationPortRange 3389
+
+# Create a rule to allow TCP port 5986 traffic for PowerShell remote management
+$nsg301 = New-AzNetworkSecurityRuleConfig -Name AllowPSRemoting `
+    -Access Allow `
+    -Protocol Tcp `
+    -Direction Inbound `
+    -Priority 301 `
+    -SourceAddressPrefix AzureActiveDirectoryDomainServices `
+    -SourcePortRange * `
+    -DestinationAddressPrefix * `
+    -DestinationPortRange 5986
+
+# Create the network security group and rules
+$nsg = New-AzNetworkSecurityGroup -Name $NSGName `
+    -ResourceGroupName $ResourceGroupName `
+    -Location $AzureLocation `
+    -SecurityRules $nsg101,$nsg201,$nsg301
+
+# Get the existing virtual network resource objects and information
+$vnet = Get-AzVirtualNetwork -Name $VnetName -ResourceGroupName $ResourceGroupName
+$subnet = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name $SubnetName
+$addressPrefix = $subnet.AddressPrefix
+
+# Associate the network security group with the virtual network subnet
+Set-AzVirtualNetworkSubnetConfig -Name $SubnetName `
+    -VirtualNetwork $vnet `
+    -AddressPrefix $addressPrefix `
+    -NetworkSecurityGroup $nsg
+$vnet | Set-AzVirtualNetwork
 
 # Enable Azure AD Domain Services for the directory.
 New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.AAD/DomainServices/$ManagedDomainName" `
+  -ApiVersion "2017-06-01" `
   -Location $AzureLocation `
   -Properties @{"DomainName"=$ManagedDomainName; `
     "SubnetId"="/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/virtualNetworks/$VnetName/subnets/DomainServices"} `
@@ -242,8 +374,6 @@ Wanneer in de Azure-portal wordt weergegeven dat inrichten van het beheerde dome
 
 * Werk de DNS-instellingen voor het virtuele netwerk bij, zodat virtuele machines het beheerde domein kunnen vinden voor domeindeelname of verificatie.
     * Selecteer het beheerde domein in de portal om DNS te configureren. In het **Overzichtsvenster** wordt u gevraagd om deze DNS-instellingen automatisch te configureren.
-* Maak een netwerkbeveiligingsgroep om het verkeer in het virtuele netwerk voor het beheerde domein te beperken. Er wordt een Standard Load Balancer van Azure gemaakt waarvoor deze regels moeten worden uitgevoerd. Deze netwerkbeveiligingsgroep beveiligt Azure AD DS en is vereist voor een juiste werking van het beheerde domein.
-    * Als u de netwerkbeveiligingsgroep en de vereiste regels wilt maken, installeert u eerst het `New-AzureAddsNetworkSecurityGroup`-script met de opdracht `Install-Script -Name New-AaddsNetworkSecurityGroup` en voert u vervolgens `New-AaddsNetworkSecurityGroup`uit. De vereiste regels voor het beheerde domein worden voor u gemaakt.
 * U moet [Wachtwoordsynchronisatie in Azure AD DS inschakelen](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) zodat eindgebruikers zich bij het beheerde domein kunnen aanmelden met hun bedrijfsreferenties.
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -254,6 +384,8 @@ Als u het beheerde domein in actie wilt zien, kunt u [een Windows-VM koppelen][w
 [windows-join]: join-windows-vm.md
 [tutorial-ldaps]: tutorial-configure-ldaps.md
 [tutorial-phs]: tutorial-configure-password-hash-sync.md
+[nsg-overview]: ../virtual-network/network-security-groups-overview.md
+[network-ports]: network-considerations.md#network-security-groups-and-required-ports
 
 <!-- EXTERNAL LINKS -->
 [Connect-AzAccount]: /powershell/module/Az.Accounts/Connect-AzAccount
@@ -270,3 +402,6 @@ Als u het beheerde domein in actie wilt zien, kunt u [een Windows-VM koppelen][w
 [Get-AzSubscription]: /powershell/module/Az.Accounts/Get-AzSubscription
 [cloud-shell]: ../cloud-shell/cloud-shell-windows-users.md
 [availability-zones]: ../availability-zones/az-overview.md
+[New-AzNetworkSecurityRuleConfig]: /powershell/module/az.network/new-aznetworksecurityruleconfig
+[New-AzNetworkSecurityGroup]: /powershell/module/az.network/new-aznetworksecuritygroup
+[Set-AzVirtualNetworkSubnetConfig]: /powershell/module/az.network/set-azvirtualnetworksubnetconfig

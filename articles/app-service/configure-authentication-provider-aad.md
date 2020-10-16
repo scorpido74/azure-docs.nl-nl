@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
 ms.openlocfilehash: 4022ca97f88e2f06d3b4c1eeb103bb60d1856eda
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88962142"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Uw App Service of Azure Functions app configureren voor het gebruik van Azure AD-aanmelding
@@ -88,7 +88,7 @@ Voer de volgende stappen uit:
 1. Selecteer **Een bereik toevoegen**.
    1. Voer *user_impersonation*in **Scope naam**in.
    1. Voer in de tekst vakken de naam en beschrijving van het toestemming bereik in die gebruikers op de pagina toestemming moeten zien. Voer bijvoorbeeld *toegang tot mijn app*in.
-   1. Selecteer **bereik toevoegen**.
+   1. Selecteer **Bereik toevoegen**.
 1. Beschrijving Als u een client geheim wilt maken, selecteert u **certificaten & geheimen**  >  **Nieuw client geheim**  >  **toevoegen**. Kopieer de waarde van het client geheim dat op de pagina wordt weer gegeven. Het wordt niet meer weer gegeven.
 1. Beschrijving Selecteer **verificatie**om meerdere **antwoord-url's**toe te voegen.
 
@@ -123,13 +123,13 @@ U kunt systeem eigen clients registreren om verificatie toe te staan voor de hos
     > Gebruik in plaats daarvan de SID van het [pakket](/previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library#package-sid) als URI voor een Microsoft Store toepassing.
 1. Selecteer **Maken**.
 1. Nadat de app-registratie is gemaakt, kopieert u de waarde van de **toepassings-id (client)**.
-1. Selecteer **API-machtigingen**  >  **een machtiging**  >  **mijn api's**toevoegen.
+1. Selecteer **API-machtigingen** > **Een machtiging toevoegen** > **Mijn API's**.
 1. Selecteer de app-registratie die u eerder hebt gemaakt voor uw App Service-app. Als u de app-registratie niet ziet, zorg er dan voor dat u het **user_impersonation** bereik hebt toegevoegd in [een app-registratie in azure AD maken voor uw app service-app](#register).
 1. Selecteer onder **gedelegeerde machtigingen**de optie **user_impersonation**en selecteer vervolgens **machtigingen toevoegen**.
 
 U hebt nu een systeem eigen client toepassing geconfigureerd die toegang heeft tot uw App Service-app namens een gebruiker.
 
-## <a name="configure-a-daemon-client-application-for-service-to-service-calls"></a>Een daemon-client toepassing configureren voor service-naar-service-aanroepen
+## <a name="configure-a-daemon-client-application-for-service-to-service-calls"></a>Een daemon-clienttoepassing configureren voor service-naar-service-aanroepen
 
 Uw toepassing kan een token verkrijgen voor het aanroepen van een web-API die wordt gehost in uw App Service of functie-app namens zichzelf (niet namens een gebruiker). Dit scenario is nuttig voor niet-interactieve daemon-toepassingen die taken uitvoeren zonder een aangemelde gebruiker. De standaard OAuth 2,0- [client referenties](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md) worden verleend.
 

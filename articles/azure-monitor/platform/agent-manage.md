@@ -6,11 +6,11 @@ author: bwren
 ms.author: bwren
 ms.date: 06/14/2019
 ms.openlocfilehash: 4d0ceacd37748e9761903d02fd7e052d70b10e15
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79275098"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91871895"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>De Log Analytics-agent voor Windows en Linux beheren en onderhouden
 
@@ -32,7 +32,7 @@ Als u de agent op een virtuele Windows-machine wilt bijwerken naar de nieuwste v
 
 U kunt de nieuwste versie van de Windows-agent downloaden van uw Log Analytics-werk ruimte door de volgende stappen uit te voeren.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Klik in Azure Portal op **Alle services**. Typ in de lijst met resources **Log Analytics**. Als u begint te typen, wordt de lijst gefilterd op basis van uw invoer. Selecteer **Log Analytics-werkruimten**.
 
@@ -89,13 +89,13 @@ De stappen in deze sectie zijn nood zakelijk als u niet alleen de Windows-agent 
 
 1. Meld u aan bij de computer met een account met beheerders rechten.
 
-2. Open **het configuratie scherm**.
+2. Open het **Configuratiescherm**.
 
 3. Selecteer **micro soft Monitoring Agent** en klik vervolgens op het tabblad **Azure log Analytics** .
 
 4. Als u een werk ruimte verwijdert, selecteert u deze en klikt u vervolgens op **verwijderen**. Herhaal deze stap voor alle andere werk ruimten waarvan u wilt dat de agent stopt met rapporteren.
 
-5. Als u een werk ruimte wilt toevoegen, klikt u op **toevoegen** en plakt u de werk ruimte-id en werkruimte sleutel (primaire sleutel) in het dialoog venster **een log Analytics werkruimte toevoegen** . Als u de computer wilt laten rapporteren bij een Log Analytics-werkruimte in de Azure Government-cloud, selecteert u Azure US Government in de vervolgkeuzelijst Azure Cloud.
+5. Als u een werk ruimte wilt toevoegen, klikt u op **toevoegen** en plakt u de werk ruimte-id en werkruimte sleutel (primaire sleutel) in het dialoog venster **een log Analytics werkruimte toevoegen** . Als de computer moet rapporteren aan een Log Analytics-werk ruimte in Azure Government Cloud, selecteert u Azure US Government in de vervolg keuzelijst van de Azure-Cloud.
 
 6. Klik op **OK** om uw wijzigingen op te slaan.
 
@@ -172,7 +172,7 @@ Gebruik een van de volgende methoden om deze taak te volt ooien om de agent te c
 
 1. Meld u aan bij de computer met een account met beheerders rechten.
 
-2. Open **het configuratie scherm**.
+2. Open het **Configuratiescherm**.
 
 3. Selecteer **micro soft Monitoring Agent** en klik vervolgens op het tabblad **proxy-instellingen** .
 
@@ -261,7 +261,7 @@ Voer de volgende stappen uit om de Log Analytics-agent voor Windows te configure
 
 1. Meld u aan bij de computer met een account met beheerders rechten.
 
-2. Open **het configuratie scherm**.
+2. Open het **Configuratiescherm**.
 
 3. Klik op **micro soft Monitoring Agent** en klik vervolgens op het tabblad **Operations Manager** .
 
@@ -284,11 +284,11 @@ Voer de volgende stappen uit om de Log Analytics-agent voor Linux te configurere
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-1. Het bestand bewerken`/etc/opt/omi/conf/omiserver.conf`
+1. Het bestand bewerken `/etc/opt/omi/conf/omiserver.conf`
 
-2. Zorg ervoor dat de regel die begint met `httpsport=` de poort 1270 definieert. Zoals:`httpsport=1270`
+2. Zorg ervoor dat de regel die begint met `httpsport=` de poort 1270 definieert. Zoals: `httpsport=1270`
 
-3. Start de OMI-server opnieuw op:`sudo /opt/omi/bin/service_control restart`
+3. Start de OMI-server opnieuw op: `sudo /opt/omi/bin/service_control restart`
 
 ## <a name="next-steps"></a>Volgende stappen
 

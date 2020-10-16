@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
 ms.openlocfilehash: 8c3e76f1a7edffefc8773dfa548773ec0932fae6
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86129859"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>Windows geeft een ' kritieke SERVICE is mislukt ' weer op het blauwe scherm bij het opstarten van een Azure VM
@@ -106,7 +106,7 @@ Voer het volgende script uit om dump logboeken en seriële console in te scha ke
     bcdedit /store <OS DISK LETTER>:\boot\bcd /deletevalue {default} safeboot
     ```
 
-8.  Start de VM opnieuw. 
+8.  Start de VM opnieuw op. 
 
 ### <a name="optional-analyze-the-dump-logs-in-dump-crash-mode"></a>Optioneel: de dump Logboeken in de dump crash modus analyseren
 
@@ -117,7 +117,7 @@ Voer de volgende stappen uit om de dump logboeken zelf te analyseren:
 3. Start de **REGI ster-editor** (regedit.exe).
 4. Selecteer de **HKEY_LOCAL_MACHINE** sleutel. Selecteer in het menu de optie **bestand**  >  **laden**.
 5. Blader naar de map **\windows\system32\config\SYSTEM** op de besturingssysteem schijf die u hebt toegevoegd. Voer **BROKENSYSTEM**in voor de naam van de component. De nieuwe register component wordt weer gegeven onder de sleutel **HKEY_LOCAL_MACHINE** .
-6. Blader naar **HKEY_LOCAL_MACHINE \brokensystem\controlset00x\control\crashcontrol** en breng de volgende wijzigingen aan:
+6. Blader naar **HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Control\CrashControl** en breng de volgende wijzigingen aan:
 
     AutoReboot = 0
 

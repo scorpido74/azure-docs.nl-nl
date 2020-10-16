@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: 203176c4c7ffed95cb4f1616f29f3953fcc0afc5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 58d4459e1869a9d1f7ccb8234c0356ac486a950c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320095"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975549"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migreren naar Premium Storage met behulp van Azure Site Recovery
 
-[Azure Premium ssd's](disks-types.md) bieden hoogwaardige schijf ondersteuning met lage latentie voor virtuele machines (vm's) die I/O-intensieve workloads uitvoeren. Deze hand leiding helpt u bij het migreren van uw VM-schijven vanuit een Standard-opslag account naar een Premium Storage-account met behulp van [Azure site Recovery](../../site-recovery/site-recovery-overview.md).
+[Azure Premium ssd's](../disks-types.md) bieden hoogwaardige schijf ondersteuning met lage latentie voor virtuele machines (vm's) die I/O-intensieve workloads uitvoeren. Deze hand leiding helpt u bij het migreren van uw VM-schijven vanuit een Standard-opslag account naar een Premium Storage-account met behulp van [Azure site Recovery](../../site-recovery/site-recovery-overview.md).
 
 Site Recovery is een Azure-service die bijdraagt aan uw strategie voor bedrijfs continuïteit en herstel na nood gevallen door de replicatie van on-premises fysieke servers en virtuele machines naar de Cloud (Azure) of naar een secundair Data Center te organiseren. Als er uitval optreedt op uw primaire locatie, voert u een failover uit naar de secundaire locatie om toepassingen en workloads beschikbaar te houden. U kunt een failback uitvoeren naar de primaire locatie wanneer deze naar een normale bewerking wordt geretourneerd. 
 
@@ -167,7 +167,7 @@ Als u wilt controleren of uw configuratie server is gekoppeld aan het replicatie
 
    ![Het deel venster replicatie inschakelen met de geselecteerde bron][13]
 
-Wanneer u uw Azure Storage-omgeving ontwerpt, raden we u aan om afzonderlijke opslag accounts voor elke virtuele machine in een beschikbaarheidsset te gebruiken. U wordt aangeraden de best practice in de opslaglaag te volgen om [meerdere opslag accounts voor elke beschikbaarheidsset te gebruiken](../linux/manage-availability.md). Het distribueren van VM-schijven naar meerdere opslag accounts helpt u bij het verbeteren van de beschik baarheid van opslag en het distribueren van de I/O over de Azure-opslag infrastructuur.
+Wanneer u uw Azure Storage-omgeving ontwerpt, raden we u aan om afzonderlijke opslag accounts voor elke virtuele machine in een beschikbaarheidsset te gebruiken. U wordt aangeraden de best practice in de opslaglaag te volgen om [meerdere opslag accounts voor elke beschikbaarheidsset te gebruiken](../manage-availability.md). Het distribueren van VM-schijven naar meerdere opslag accounts helpt u bij het verbeteren van de beschik baarheid van opslag en het distribueren van de I/O over de Azure-opslag infrastructuur.
 
 Als uw Vm's zich in een beschikbaarheidsset bevinden, kunt u het beste meerdere Vm's meerdere keren migreren in plaats van schijven van alle Vm's te repliceren naar één opslag account. Op die manier delen de virtuele machines in dezelfde beschikbaarheidsset niet één opslag account. Gebruik het deel venster **replicatie inschakelen** voor het instellen van een bestemmings opslag account voor elke virtuele machine, één per keer.
  

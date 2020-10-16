@@ -14,10 +14,10 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: 8c757f3e067aeac5d8145ca47b2eac145daba574
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88272447"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Micro soft Identity platform en de OAuth 2,0-autorisatie voor het weigeren van apparaten
@@ -51,7 +51,7 @@ scope=user.read%20openid%20profile
 
 ```
 
-| Parameter | Voorwaarde | Beschrijving |
+| Parameter | Conditie | Beschrijving |
 | --- | --- | --- |
 | `tenant` | Vereist | Kan/veelvoorkomende,/consumers of/organizations. zijn  Het kan ook de Directory Tenant zijn waarvoor u een machtiging wilt aanvragen in de indeling GUID of beschrijvende naam.  |
 | `client_id` | Vereist | De **client-id** van de toepassing die de [Azure Portal – app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) ervaring die aan uw app is toegewezen. |

@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/06/2019
 ms.openlocfilehash: 165b7d00c3cf307e7996e84a35bb2a202f448cc0
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86076875"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>Apache Sqoop gebruiken met Hadoop in HDInsight
@@ -52,7 +52,7 @@ HDInsight-cluster wordt geleverd met een aantal voorbeeld gegevens. U gebruikt d
   | deviceplatform |tekenreeks |
   | devicemake |tekenreeks |
   | devicemodel |tekenreeks |
-  | state |tekenreeks |
+  | staat |tekenreeks |
   | country |tekenreeks |
   | querydwelltime |double |
   | SessionID |bigint |
@@ -86,8 +86,8 @@ Het cluster, SQL database en andere objecten worden via de Azure Portal gemaakt 
     |Clusternaam |Voer een naam in voor het Hadoop-cluster. Alleen kleine letters gebruiken.|
     |Gebruikersnaam voor clusteraanmelding |Behoud de vooraf ingevulde waarde `admin` .|
     |Wachtwoord voor clusteraanmelding |Voer een wachtwoord in.|
-    |SSH-gebruikers naam |Behoud de vooraf ingevulde waarde `sshuser` .|
-    |SSH-wacht woord |Voer een wachtwoord in.|
+    |Ssh-gebruikersnaam |Behoud de vooraf ingevulde waarde `sshuser` .|
+    |Ssh-wachtwoord |Voer een wachtwoord in.|
     |Aanmelding voor SQL-beheerder |Behoud de vooraf ingevulde waarde `sqluser` .|
     |Wacht woord voor SQL-beheerder |Voer een wachtwoord in.|
     |_artifacts locatie | Gebruik de standaard waarde tenzij u uw eigen Bacpac-bestand op een andere locatie wilt gebruiken.|
@@ -95,9 +95,9 @@ Het cluster, SQL database en andere objecten worden via de Azure Portal gemaakt 
     |Bacpac-bestands naam |Gebruik de standaard waarde tenzij u uw eigen Bacpac-bestand wilt gebruiken.|
     |Locatie |Gebruik de standaardwaarde.|
 
-    De naam van de [logische SQL-Server](../../azure-sql/database/logical-servers.md) is `<ClusterName>dbserver` . De naam van de data base is `<ClusterName>db` . De standaard naam van het opslag account is `e6qhezrh2pdqu` .
+    De naam van de [logische SQL-Server](../../azure-sql/database/logical-servers.md) is  `<ClusterName>dbserver` . De naam van de data base is `<ClusterName>db` . De standaard naam van het opslag account is `e6qhezrh2pdqu` .
 
-3. Selecteer **Ik ga akkoord met de bovenstaande voor waarden**.
+3. Selecteer **Ik ga akkoord met de bovenstaande voorwaarden**.
 
 4. Selecteer **Aankoop**. U ziet een nieuwe tegel met de titel verzenden van implementatie voor Sjabloonimlementatie. Het duurt ongeveer 20 minuten om het cluster en de SQL-database te maken.
 

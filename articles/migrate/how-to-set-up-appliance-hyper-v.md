@@ -4,10 +4,10 @@ description: Meer informatie over het instellen van een Azure Migrate apparaat o
 ms.topic: article
 ms.date: 03/23/2020
 ms.openlocfilehash: 8841f934ba21fda6cc36b856ea773ed0f53cfe32
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448092"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>Een apparaat instellen voor virtuele Hyper-V-machines
@@ -27,10 +27,10 @@ Nadat u het apparaat hebt gemaakt, controleert u of er verbinding kan worden gem
 
 Het apparaat instellen met behulp van een VHD-sjabloon:
 
-- Geef een naam op voor het apparaat en Genereer een Azure Migrate project sleutel in de portal.
-- Down load een gecomprimeerde Hyper-V VHD vanuit het Azure Portal.
-- Maak het apparaat en controleer of het verbinding kan maken met Azure Migrate server beoordeling.
-- Configureer het apparaat voor de eerste keer en registreer het met het Azure Migrate project met behulp van de Azure Migrate-project sleutel.
+- Geef een naam op voor het apparaat en genereer een Azure Migrate-projectsleutel in de portal.
+- Download een gecomprimeerde Hyper-V VHD vanuit de Azure Portal.
+- Maak het apparaat en controleer of het verbinding kan maken met Azure Migrate-serverevaluatie.
+- Configureer het apparaat voor het eerst en registreer het bij het Azure Migrate-project met behulp van de Azure Migrate-projectsleutel.
 
 ### <a name="generate-the-azure-migrate-project-key"></a>Azure Migrate-projectsleutel genereren
 
@@ -68,13 +68,13 @@ Controleer of het zip-bestand veilig is voordat u het implementeert.
 
 Importeer het gedownloade bestand en maak de virtuele machine.
 
-1. Pak het gecomprimeerde VHD-bestand uit in een map op de Hyper-V-host die als host fungeert voor de toestel-VM. Er worden drie mappen geëxtraheerd.
+1. Pak het gecomprimeerde VHD-bestand uit naar een map op de Hyper-V-host die als host moet fungeren voor de virtuele machine. Er worden drie mappen uitgepakt.
 2. Open Hyper-V-beheer. Klik in **Acties** op **Virtuele machine importeren**.
 
     ![VHD implementeren](./media/how-to-set-up-appliance-hyper-v/deploy-vhd.png)
 
 2. Klik in de wizard Virtuele machine importeren > **Voordat u begint** op **Volgende**.
-3. In **map zoeken**geeft u de map op die de geëxtraheerde VHD bevat. Klik op **Volgende**.
+3. Geef onder **Map zoeken** de map op die de uitgepakte VHD bevat. Klik op **Volgende**.
 1. Klik in **Virtuele machine selecteren** op **Volgende**.
 2. Klik in **Importtype kiezen** op **De virtuele machine kopiëren (een nieuwe unieke id maken)** . Klik op **Volgende**.
 3. Laat in **Bestemming kiezen** de standaardinstelling ongewijzigd. Klik op **Volgende**.
@@ -137,7 +137,7 @@ Als u VHD's uitvoert op SMB's, moet u de delegatie van referenties van het appar
     - Klik in **Lokaal computerbeleid** > **Computerconfiguratie** op **Administratieve sjablonen** > **Systeem** > **Delegatie van referenties**.
     - Dubbelklik op **Delegeren van nieuwe referenties toestaan** en selecteer **Ingeschakeld**.
     - Klik in **Opties** op **Weergeven** en voeg elke Hyper-V-host toe die u op de lijst wilt detecteren, waarbij u **wsman/** gebruikt als voorvoegsel.
-    - Dubbel klik in het overdragen van  **referenties**op het **delegeren van nieuwe referenties toestaan met NTLM-Server verificatie**. Voeg weer elke Hyper-V-host toe die u op de lijst wilt detecteren, met **wsman/** als voorvoegsel.
+    - Dubbelklik in **Delegatie van referenties** op **Delegeren van nieuwe referenties toestaan met NTLM-serververificatie**. Voeg weer elke Hyper-V-host toe die u op de lijst wilt detecteren, met **wsman/** als voorvoegsel.
 
 ## <a name="start-continuous-discovery"></a>Continue detectie starten
 

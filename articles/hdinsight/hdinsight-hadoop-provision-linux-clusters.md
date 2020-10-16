@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.date: 08/06/2020
 ms.openlocfilehash: b7757b5204c9b3b32145667367a71a9acc42c230
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89434653"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Clusters in HDInsight instellen met Apache Hadoop, Apache Spark, Apache Kafka en meer
@@ -78,7 +78,7 @@ Azure HDInsight biedt momenteel de volgende cluster typen, elk met een aantal on
 | --- | --- |
 | [Hadoop](hadoop/apache-hadoop-introduction.md) |Batch-query en analyse van opgeslagen gegevens |
 | [HBase](hbase/apache-hbase-overview.md) |Verwerking voor grote hoeveel heden schemaloos, NoSQL-gegevens |
-| [Interactive Query](./interactive-query/apache-interactive-query-get-started.md) |In-memory cache voor interactieve en snellere Hive-query's |
+| [Interactieve query](./interactive-query/apache-interactive-query-get-started.md) |In-memory cache voor interactieve en snellere Hive-query's |
 | [Kafka](kafka/apache-kafka-introduction.md) | Een gedistribueerd streaming-platform dat kan worden gebruikt om realtime streaming-gegevens pijplijnen en toepassingen te maken |
 | [ML Services](r-server/r-server-overview.md) |Diverse big data statistieken, voorspellende modellen en machine learning mogelijkheden |
 | [Spark](spark/apache-spark-overview.md) |Verwerking in het geheugen, interactieve query's, micro batch-stroom verwerking |

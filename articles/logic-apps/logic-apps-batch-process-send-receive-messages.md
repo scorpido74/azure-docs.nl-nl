@@ -9,10 +9,10 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.date: 07/31/2020
 ms.openlocfilehash: 0985afe3ddfd0d9de3c36ad6b030b6f259708c88
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87458258"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Berichten verzenden, ontvangen en verwerken in Azure Logic Apps
@@ -48,7 +48,7 @@ Uw batch-ontvanger en batch-Sender moeten hetzelfde Azure-abonnement *en* de Azu
 
 Voordat u berichten naar een batch kunt verzenden, moet deze batch eerst bestaan als de bestemming waar u deze berichten verzendt. Eerst moet u de Logic-app ' batch-ontvanger ' maken, die begint met de **batch** trigger. Op die manier kunt u tijdens het maken van de logische app Sender de logische app voor de batch-ontvanger selecteren. De batch-ontvanger gaat verder met het verzamelen van berichten totdat aan de opgegeven criteria wordt voldaan om deze berichten te vrijgeven en te verwerken. Terwijl batch-ontvangers niets hoeven te weten over batch afzenders, moeten batch afzenders de bestemming weten waar ze de berichten verzenden.
 
-1. Maak in de [Azure Portal](https://portal.azure.com) of Visual Studio een logische app met deze naam:`BatchReceiver`
+1. Maak in de [Azure Portal](https://portal.azure.com) of Visual Studio een logische app met deze naam: `BatchReceiver`
 
 1. Voeg in de ontwerp functie voor logische apps de **batch** trigger toe, waarmee de werk stroom van de logische app wordt gestart. Typ in het zoekvak `batch` en selecteer deze trigger: **batch berichten**
 
@@ -80,7 +80,7 @@ Voordat u berichten naar een batch kunt verzenden, moet deze batch eerst bestaan
 
    1. Selecteer **nieuwe stap**onder de batch trigger.
 
-   1. Voer in het zoekvak in `send email` als uw filter. Selecteer een e-mail connector op basis van uw e-mail provider.
+   1. Voer in het zoekvak `send email` als uw filter in. Selecteer een e-mail connector op basis van uw e-mail provider.
 
       Als u bijvoorbeeld een werk-of school account hebt, zoals @fabrikam.com of @fabrikam.onmicrosoft.com , selecteert u de **Microsoft 365 Outlook** -connector. Als u een persoonlijk account hebt, zoals @outlook.com of @hotmail.com , selecteert u de **Outlook.com** -connector. In dit voor beeld wordt de Microsoft 365 Outlook-Connector gebruikt.
 
@@ -126,11 +126,11 @@ Maak nu een of meer logische apps voor batch Sender die berichten verzenden naar
 
 * Zorg ervoor dat uw batch-ontvanger en batch-Sender dezelfde Azure-regio *en* hetzelfde Azure-abonnement delen. Als dat niet het geval is, kunt u de batch-ontvanger niet selecteren wanneer u de batch-afzender maakt, omdat deze niet zichtbaar zijn voor elkaar.
 
-1. Maak een andere logische app met deze naam:`BatchSender`
+1. Maak een andere logische app met deze naam: `BatchSender`
 
-   1. Voer in het zoekvak in `recurrence` als uw filter. Selecteer in de lijst triggers deze trigger: **terugkeer patroon**
+   1. Voer in het zoekvak `recurrence` als uw filter in. Selecteer in de lijst triggers deze trigger: **terugkeer patroon**
 
-      ![De trigger voor terugkeer patroon toevoegen](./media/logic-apps-batch-process-send-receive-messages/add-schedule-trigger-batch-sender.png)
+      ![De trigger Terugkeerpatroon toevoegen](./media/logic-apps-batch-process-send-receive-messages/add-schedule-trigger-batch-sender.png)
 
    1. Stel het interval en de frequentie in om elke minuut de logische app van de afzender uit te voeren.
 
@@ -190,7 +190,7 @@ Maak nu een of meer logische apps voor batch Sender die berichten verzenden naar
 
    1. Klik in het vak **partitie naam** zodat de lijst met dynamische inhoud wordt weer gegeven.
 
-   1. Selecteer **expressie**in de lijst met dynamische inhoud.
+   1. Selecteer in de lijst met dynamische inhoud de optie **Expressie**.
 
    1. Voer de expressie in `rand(1,6)` en selecteer **OK**.
 

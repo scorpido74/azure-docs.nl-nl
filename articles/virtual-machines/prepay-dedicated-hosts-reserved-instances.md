@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/28/2020
 ms.author: banders
-ms.openlocfilehash: 919ff7474dd64cfe3005975beb4cab6f77c177ce
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: d7af95b9fe2f6d31faa239985f8e8165fd968372
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825256"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978591"
 ---
 # <a name="save-costs-with-azure-dedicated-host-reservations"></a>Bespaar kosten met Azure dedicated host Reservations
 
-Wanneer u een gereserveerd exemplaar van voor Azure toegewezen hosts doorvoert, kunt u geld besparen. De reserverings korting wordt automatisch toegepast op het aantal actieve toegewezen hosts dat overeenkomt met het reserverings bereik en de kenmerken. U hoeft geen reserve ring aan een speciale host toe te wijzen om de kortingen te krijgen. Een gereserveerde instantie koopt alleen het reken onderdeel van uw gebruik en bevat software licentie kosten. Zie het [overzicht van de voor Azure toegewezen hosts voor virtuele machines](./windows/dedicated-hosts.md).
+Wanneer u een gereserveerd exemplaar van voor Azure toegewezen hosts doorvoert, kunt u geld besparen. De reserverings korting wordt automatisch toegepast op het aantal actieve toegewezen hosts dat overeenkomt met het reserverings bereik en de kenmerken. U hoeft geen reserve ring aan een speciale host toe te wijzen om de kortingen te krijgen. Een gereserveerde instantie koopt alleen het reken onderdeel van uw gebruik en bevat software licentie kosten. Zie het [overzicht van de voor Azure toegewezen hosts voor virtuele machines](./dedicated-hosts.md).
 
 ## <a name="determine-the-right-dedicated-host-sku-before-you-buy"></a>Bepaal de juiste specifieke host-SKU voordat u deze aanschaft
 
@@ -129,7 +129,7 @@ Raadpleeg de volgende artikelen voor meer informatie over Azure-reserveringen:
 
 - [Wat zijn Azure-reserveringen?](../cost-management-billing/reservations/save-compute-costs-reservations.md)
 
-- [Azure Dedicated Host gebruiken](./windows/dedicated-hosts.md)
+- [Azure Dedicated Host gebruiken](./dedicated-hosts.md)
 
 - [Prijzen van Dedicated Host](https://azure.microsoft.com/pricing/details/virtual-machines/dedicated-host/)
 
@@ -141,6 +141,6 @@ Raadpleeg de volgende artikelen voor meer informatie over Azure-reserveringen:
 
 - [Inzicht in het gebruik van reserveringen voor Enterprise-inschrijvingen](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
 
-- [Kosten van Windows-software zijn niet inbegrepen in reserveringen](../cost-management-billing/reservations/reserved-instance-windows-software-costs.md)
+- [Kosten van Windows-software zijn niet inbegrepen bij reserveringen](../cost-management-billing/reservations/reserved-instance-windows-software-costs.md)
 
-- [Azure-reserveringen in het CSP-programma (Cloud Solution Provider) van het Partnercentrum](/partner-center/azure-reservations)
+- [Azure-reserveringen in CSP-programma (Cloud Solution Provider) van partnercentrum](/partner-center/azure-reservations)

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 07/10/2020
+ms.date: 10/01/2020
 ms.author: alkohli
-ms.openlocfilehash: 301c75df6bedf430af64bbeff63f2eb759691355
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: bd8e6d4175c57bd31c3fd83bf6f9669d2b65ffb2
+ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86208839"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91660837"
 ---
 # <a name="tutorial-copy-data-from-azure-data-box-via-nfs-preview"></a>Zelfstudie: Gegevens kopiëren uit Azure Data Box via NFS (preview)
 
@@ -45,15 +45,17 @@ Zorg voordat u begint voor het volgende:
 
 [!INCLUDE [data-box-shares](../../includes/data-box-shares.md)]
 
-Voer de volgende stappen uit om Data Box zo te configureren dat toegang tot NFS-clients wordt toegestaan als u een Linux-hostcomputer gebruikt.
+Voer de volgende stappen uit om Data Box zo te configureren dat toegang tot NFS-clients wordt toegestaan als u een Linux-hostcomputer gebruikt. Data Box kan maximaal vijf NFS-clients tegelijkertijd verbinden.
 
-1. Geef de IP-adressen op van de clients die toegang hebben tot de share. Ga in de lokale gebruikersinterface naar de pagina **Verbinding maken en kopiëren**. Klik onder **NFS-instellingen** op **NFS-clienttoegang**. 
+1. Geef de IP-adressen op van de clients die toegang hebben tot de share:
 
-    ![NFS-clienttoegang configureren 1](media/data-box-deploy-export-copy-data/nfs-client-access-1.png)
+    1.  Ga in de lokale gebruikersinterface naar de pagina **Verbinding maken en kopiëren**. Klik onder **NFS-instellingen** op **NFS-clienttoegang**. 
 
-2. Geef het IP-adres op van de NFS-client en klik op **Toevoegen**. U kunt deze stap herhalen om toegang voor meerdere NFS-clients te configureren. Klik op **OK**.
+        ![NFS-clienttoegang openen](media/data-box-deploy-export-copy-data/nfs-client-access-1.png)
 
-    ![NFS-clienttoegang configureren 2](media/data-box-deploy-export-copy-data/nfs-client-access-2.png)
+    1. Geef het IP-adres van de client op en klik op **Toevoegen** om een NFS-client toe te voegen. Data Box kan maximaal vijf NFS-clients tegelijkertijd verbinden. Klik op **OK** als u klaar bent.
+
+         ![Een NFS-client toevoegen](media/data-box-deploy-export-copy-data/nfs-client-access-2.png)
 
 2. Zorg dat er een [ondersteunde versie](data-box-system-requirements.md) van de NFS-client op de Linux-hostcomputer is geïnstalleerd. Gebruik de specifieke versie voor uw Linux-distributie. 
 

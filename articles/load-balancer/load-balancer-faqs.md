@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/22/2020
 ms.author: errobin
 ms.openlocfilehash: 2b547dbc8671481275952f4c3eae5683e9e3a06c
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86207531"
 ---
 # <a name="load-balancer-frequently-asked-questions"></a>Veelgestelde vragen over Load Balancer
@@ -25,7 +25,7 @@ Voor beide typen biedt Azure een basis-SKU en een standaard-SKU met verschillend
 Zie de [upgrade van Basic naar Standard](upgrade-basic-standard.md) -artikel voor een geautomatiseerd script en richt lijnen voor het bijwerken van een load BALANCER-SKU.
 
  ## <a name="what-are-the-different-load-balancing-options-in-azure"></a>Wat zijn de verschillende opties voor taak verdeling in azure?
-Zie de [Load Balancer technologie handleiding](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview) voor de beschik bare taakverdelings Services en aanbevolen gebruik voor elk.
+Zie de [Load Balancer technologie handleiding](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview)  voor de beschik bare taakverdelings Services en aanbevolen gebruik voor elk.
 
 ## <a name="where-can-i-find-load-balancer-arm-templates"></a>Waar vind ik Load Balancer ARM-sjablonen?
 Bekijk de [lijst met Azure Load Balancer Quick](https://docs.microsoft.com/azure/templates/microsoft.network/loadbalancers#quickstart-templates) start-sjablonen voor arm-sjablonen van algemene implementaties.

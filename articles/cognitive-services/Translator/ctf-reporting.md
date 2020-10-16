@@ -12,10 +12,10 @@ ms.date: 12/14/2017
 ms.author: swmachan
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 68b0de40940fa75dd4eb4e1572405f31ce1c22b8
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88934375"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>CTF-rapportage (Collaborative Translation Framework) gebruiken
@@ -100,7 +100,7 @@ De resultatenset bevat de matrix van de **UserTranslationCount**. Elke UserTrans
 | Van | De bron taal|
 | Waardering| De classificatie die door de indiener wordt toegepast in de aanroep van de methode AddTranslation ()|
 | Tot| De doel taal|
-| Uri| De URI die wordt toegepast in de aanroep van de methode AddTranslation ()|
+| URI| De URI die wordt toegepast in de aanroep van de methode AddTranslation ()|
 | Gebruiker| De gebruikers naam|
 
 **Uitzonderingen**
@@ -173,7 +173,7 @@ De resultatenset bevat de matrix van de **UserTranslation**. Elke UserTranslatio
 |Waardering |De classificatie die door de indiener wordt toegepast in de aanroep van de methode AddTranslation ()|
 |Tot|    De doel taal|
 |TranslatedText|    De vertaling als verzonden in de aanroep van de methode AddTranslation ()|
-|Uri|   De URI die wordt toegepast in de aanroep van de methode AddTranslation ()|
+|URI|   De URI die wordt toegepast in de aanroep van de methode AddTranslation ()|
 |Gebruiker   |De gebruikers naam|
 
 **Uitzonderingen**

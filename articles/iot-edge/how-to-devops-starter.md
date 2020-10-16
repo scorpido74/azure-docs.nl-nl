@@ -7,12 +7,12 @@ ms.date: 08/25/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f0f0452854ef7456d1bdf7caf0674fab5bd14557
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d57c1828b9456851d37a65b88eb5f8ea860a80fe
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91297127"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045853"
 ---
 # <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-starter"></a>Een CI/CD-pijp lijn maken voor IoT Edge met Azure DevOps starter
 
@@ -81,7 +81,7 @@ DevOps starter heeft een Git-opslag plaats gemaakt voor uw project in azure opsl
 
    ![module.jsopenen voor een bestand in azure opslag plaatsen](./media/how-to-devops-starter/open-module-json.png)
 
-3. U ziet dat in dit bestand [Azure DevOps build-variabelen](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=vsts#build-variables) worden gebruikt in de **versie** parameter. Deze configuratie zorgt ervoor dat er een nieuwe versie van de module wordt gemaakt telkens wanneer een nieuwe build wordt uitgevoerd.
+3. U ziet dat in dit bestand [Azure DevOps build-variabelen](/azure/devops/pipelines/build/variables?view=vsts#build-variables) worden gebruikt in de **versie** parameter. Deze configuratie zorgt ervoor dat er een nieuwe versie van de module wordt gemaakt telkens wanneer een nieuwe build wordt uitgevoerd.
 
 ## <a name="examine-the-cicd-pipeline"></a>De CI/CD-pijplijn onderzoeken
 

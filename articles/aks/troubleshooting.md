@@ -4,12 +4,12 @@ description: Meer informatie over het oplossen van veelvoorkomende problemen bij
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: 81adbfe7a5a04ffb8fcb3311ad3561135b77ab7b
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: dcbfed4fc83b980b3e54a808406b8d27e1e6c919
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91614016"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074410"
 ---
 # <a name="aks-troubleshooting"></a>AKS-problemen oplossen
 
@@ -86,7 +86,7 @@ AKS heeft HA-besturings plannen die verticaal schalen op basis van het aantal ke
 
 Deze time-outs kunnen betrekking hebben op het interne verkeer tussen knoop punten die worden geblokkeerd. Controleer of dit verkeer niet wordt geblokkeerd, bijvoorbeeld door [netwerk beveiligings groepen](concepts-security.md#azure-network-security-groups) op het subnet voor de knoop punten van uw cluster.
 
-## <a name="im-trying-to-enable-role-based-access-control-rbac-on-an-existing-cluster-how-can-i-do-that"></a>Ik probeer op rollen gebaseerd Access Control (RBAC) in te scha kelen op een bestaand cluster. Hoe kan ik dat doen?
+## <a name="im-trying-to-enable-role-based-access-control-rbac-on-an-existing-cluster-how-can-i-do-that"></a>Ik probeer Role-Based Access Control (RBAC) in te scha kelen op een bestaand cluster. Hoe kan ik dat doen?
 
 Het inschakelen van op rollen gebaseerd toegangs beheer (RBAC) op bestaande clusters wordt op dit moment niet ondersteund, moet worden ingesteld bij het maken van nieuwe clusters. RBAC is standaard ingeschakeld bij gebruik van CLI, portal of een API-versie die hoger is dan `2020-03-01` .
 
@@ -197,6 +197,23 @@ De [Kubernetes-resource Viewer](kubernetes-portal.md) moet toegang hebben tot `-
 Bij het beperken van uitgaand verkeer van een AKS-cluster zijn er [vereiste en optionele aanbevolen](limit-egress-traffic.md) uitgaande poorten/netwerk regels en FQDN/toepassings regels voor AKS. Als uw instellingen conflicteren met een van deze regels, `kubectl` werken bepaalde opdrachten niet goed. Er worden ook fouten weer geven bij het maken van een AKS-cluster.
 
 Controleer of de instellingen niet conflicteren met een van de vereiste of optionele aanbevolen uitgaande poorten/netwerk regels en FQDN/toepassings regels.
+
+## <a name="im-receiving-429---too-many-requests-errors"></a>Ik ontvang berichten over "429-te veel aanvragen" 
+
+Wanneer een kubernetes-cluster op Azure (AKS of Nee) een regel matig omhoog/omlaag schaalt of gebruikmaakt van de cluster autoscaler (CA), kunnen deze bewerkingen leiden tot een groot aantal HTTP-aanroepen waardoor het toegewezen abonnements quotum wordt overschreden. De fouten zien er als volgt uit
+
+```
+Service returned an error. Status=429 Code=\"OperationNotAllowed\" Message=\"The server rejected the request because too many requests have been received for this subscription.\" Details=[{\"code\":\"TooManyRequests\",\"message\":\"{\\\"operationGroup\\\":\\\"HighCostGetVMScaleSet30Min\\\",\\\"startTime\\\":\\\"2020-09-20T07:13:55.2177346+00:00\\\",\\\"endTime\\\":\\\"2020-09-20T07:28:55.2177346+00:00\\\",\\\"allowedRequestCount\\\":1800,\\\"measuredRequestCount\\\":2208}\",\"target\":\"HighCostGetVMScaleSet30Min\"}] InnerError={\"internalErrorCode\":\"TooManyRequestsReceived\"}"}
+```
+
+Deze beperkings fouten worden [hier](../azure-resource-manager/management/request-limits-and-throttling.md) gedetailleerd beschreven [here](../virtual-machines/troubleshooting/troubleshooting-throttling-errors.md)
+
+De heropdracht van het technische team van AKS is om ervoor te zorgen dat u versie ten minste 1.18. x gebruikt, die veel verbeteringen bevat. Meer informatie vindt u [hier](https://github.com/Azure/AKS/issues/1413) in deze [verbeteringen.](https://github.com/kubernetes-sigs/cloud-provider-azure/issues/247)
+
+Deze beperkings fouten worden op abonnements niveau gemeten, maar kunnen ook worden uitgevoerd als:
+- Er zijn toepassingen van derden die GET-aanvragen maken (bijvoorbeeld toepassingen bewaken, enzovoort...). De aanbeveling is de frequentie van deze aanroepen te verlagen.
+- Er zijn veel AKS-clusters/nodepools in de VMSS. De gebruikelijke aanbeveling is dat er minder dan 20-30 clusters in een bepaald abonnement zijn.
+
 
 ## <a name="azure-storage-and-aks-troubleshooting"></a>Problemen met Azure Storage en AKS oplossen
 

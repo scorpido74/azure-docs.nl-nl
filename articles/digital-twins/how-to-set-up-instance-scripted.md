@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 83741f5bc55eb222b379a274ef403f766553b21f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4e8e26f73aef155e4194ca7a4178827b6a7366fb
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328633"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047417"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Een Azure Digital Apparaatdubbels-exemplaar en-verificatie instellen (met een script)
 
@@ -20,7 +20,7 @@ ms.locfileid: "91328633"
 
 In dit artikel worden de stappen beschreven voor het **instellen van een nieuwe Azure Digital apparaatdubbels-instantie**, inclusief het maken van het exemplaar en het instellen van verificatie. Nadat dit artikel is voltooid, hebt u een Azure Digital Apparaatdubbels-exemplaar gereed om te Program meren.
 
-Deze versie van dit artikel voert u deze stappen uit door een voor beeld van een [ **geautomatiseerd implementatie script** ](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/) uit te voeren dat het proces stroomlijnt. 
+Deze versie van dit artikel voert u deze stappen uit door een voor beeld van een [ **geautomatiseerd implementatie script** ](/samples/azure-samples/digital-twins-samples/digital-twins-samples/) uit te voeren dat het proces stroomlijnt. 
 * Zie de CLI-versie van dit artikel voor informatie over de hand matige CLI-stappen die door het script worden uitgevoerd achter de schermen: [*instructies: een exemplaar en authenticatie instellen (CLI)*](how-to-set-up-instance-cli.md).
 * Als u de hand matige stappen wilt bekijken volgens de Azure Portal, raadpleegt u de portal versie van dit artikel: [*instructies: een exemplaar en authenticatie instellen (Portal)*](how-to-set-up-instance-portal.md).
 
@@ -28,7 +28,7 @@ Deze versie van dit artikel voert u deze stappen uit door een voor beeld van een
 
 ## <a name="prerequisites-download-the-script"></a>Vereisten: het script downloaden
 
-Het voorbeeld script is geschreven in Power shell. Het maakt deel uit van de [**Azure Digital apparaatdubbels**](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/)-voor beelden, die u kunt downloaden naar uw computer door te navigeren naar de voorbeeld koppeling en de knop *zip downloaden* te selecteren onder de titel.
+Het voorbeeld script is geschreven in Power shell. Het maakt deel uit van de [**Azure Digital apparaatdubbels**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)-voor beelden, die u kunt downloaden naar uw computer door te navigeren naar de voorbeeld koppeling en de knop *zip downloaden* te selecteren onder de titel.
 
 Hiermee wordt het voorbeeld project gedownload naar uw computer als _**Azure_Digital_Twins_samples.zip**_. Ga naar de map op de computer en pak deze uit om de bestanden uit te pakken.
 
@@ -53,7 +53,7 @@ Hier volgen de stappen voor het uitvoeren van het implementatie script in Cloud 
 
 1. Selecteer het pictogram bestanden uploaden/downloaden en kies uploaden.
 
-    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Cloud Shell venster met de selectie van het pictogram uploaden":::
+    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Cloud Shell venster met de selectie van de Power shell-versie":::
 
     Ga naar het _**deploy.ps1**_ bestand op uw computer (in _Azure_Digital_Twins_samples > scripts > **deploy.ps1** _) en klik op openen. Hiermee wordt het bestand geüpload naar Cloud Shell, zodat u het kunt uitvoeren in het Cloud Shell-venster.
 
@@ -82,7 +82,7 @@ Met het script maakt u een Azure Digital Apparaatdubbels-exemplaar, wijst u uw A
 
 Hier volgt een fragment van het uitvoer logboek van het script:
 
-:::image type="content" source="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png" alt-text="Cloud Shell venster met het logboek van de invoer en uitvoer via het uitvoeren van het script implementeren" lightbox="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png":::
+:::image type="content" source="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png" alt-text="Cloud Shell venster met de selectie van de Power shell-versie" lightbox="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png":::
 
 Als het script is voltooid, wordt de uiteindelijke afdruk weer te zeggen `Deployment completed successfully` . Als dat niet het geval is, adresseert u het fout bericht en voert u het script opnieuw uit. De stappen die u al hebt voltooid, worden overgeslagen en de invoer wordt opnieuw gestart op het punt waar u was gebleven.
 
@@ -103,7 +103,7 @@ Zoek in het [Azure Portal](https://portal.azure.com)naar uw Azure Digital appara
 
 Als u deze optie selecteert, wordt de *overzichts* pagina van het exemplaar geopend. Noteer de *naam*, de *resource groep*en de *hostnaam*. U hebt deze mogelijk later nodig om uw exemplaar te identificeren en er verbinding mee te maken.
 
-:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="Markeren van de belang rijke waarden van de overzichts pagina van het exemplaar":::
+:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="Cloud Shell venster met de selectie van de Power shell-versie":::
 
 ### <a name="collect-app-registration-values"></a>App-registratie waarden verzamelen 
 
@@ -113,7 +113,7 @@ Als u deze wilt vinden, volgt u [deze koppeling](https://portal.azure.com/#blade
 
 De registratie van de app die u zojuist hebt gemaakt, ziet u in deze lijst. Selecteer deze om de details ervan te openen:
 
-:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="Portal weergave van de belang rijke waarden voor de app-registratie":::
+:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="Cloud Shell venster met de selectie van de Power shell-versie":::
 
 Noteer de ID van de *toepassings* -id en de *Directory (Tenant)* die op **de** pagina wordt weer gegeven. Als u niet de persoon bent die code gaat schrijven voor client toepassingen, moet u deze waarden delen met de persoon die het gaat doen.
 
@@ -157,7 +157,7 @@ Als een of beide van deze verificatie stappen mislukt, probeert u de app-registr
 ## <a name="next-steps"></a>Volgende stappen
 
 Test afzonderlijke REST API-aanroepen voor uw exemplaar met behulp van de Azure Digital Apparaatdubbels CLI-opdrachten: 
-* [AZ DT-referentie](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true)
+* [AZ DT-referentie](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest)
 * [*Instructies: De Azure Digital Twins-CLI gebruiken*](how-to-use-cli.md)
 
 U kunt ook zien hoe u uw client toepassing verbindt met uw instantie door de verificatie code van de client-app te schrijven:

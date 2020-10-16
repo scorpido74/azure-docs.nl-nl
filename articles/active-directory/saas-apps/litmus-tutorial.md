@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/06/2020
 ms.author: jeedes
-ms.openlocfilehash: 3e1386fdfafdea3112e26ce6480c7d20061236ba
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 494a698ac4b6f8262851878cfee4bb91126d9f02
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549667"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823028"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-litmus"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met Litmus
 
@@ -167,7 +167,7 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
     ![Configuratie van Litmus](./media/litmus-tutorial/user-profile.png)
 
-    a. Voer in het tekstvak **Email** het e-mailadres van de gebruiker in, bijvoorbeeld **B.Simon@contoso.com** .
+    a. Voer in het tekstvak **Email** het e-mailadres van de gebruiker in, zoals **B.Simon\@contoso.com**
 
     b. Voer in het vak **First name** de voornaam van de gebruiker in, zoals **B**.
 

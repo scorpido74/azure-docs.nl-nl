@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: ff0582e3c4f654ed2a7f5efdc9ce8fd7a226595a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 31e25fb8c67e3d271bc37eb4b0d28c67d94a664f
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906839"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092797"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>Een toepassing voorbereiden voor implementatie in azure lente-Cloud
 
@@ -23,7 +23,7 @@ Azure lente Cloud biedt krachtige services voor het hosten, controleren, schalen
 In dit artikel worden de afhankelijkheden, configuratie en code beschreven die nodig zijn voor het uitvoeren van een .NET core Steeltoe-app in azure lente Cloud. Voor informatie over het implementeren van een toepassing in azure lente-Cloud, raadpleegt u [uw eerste Azure lente-Cloud toepassing implementeren](spring-cloud-quickstart.md).
 
 >[!Note]
-> Steeltoe-ondersteuning voor Azure lente-Cloud wordt momenteel aangeboden als een open bare preview. Met openbare preview-aanbiedingen kunnen klanten voorafgaand aan de officiële release met nieuwe functies experimenteren.  Openbare preview-functies en -services zijn niet bedoeld voor gebruik in productie.  Raadpleeg de [Veelgestelde vragen](https://azure.microsoft.com/support/faq/) of een [ondersteuningsaanvraag](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)van het bestand voor meer informatie over ondersteuning tijdens previews.
+> Steeltoe-ondersteuning voor Azure Spring Cloud wordt momenteel aangeboden als openbare preview. Met openbare preview-aanbiedingen kunnen klanten voorafgaand aan de officiële release met nieuwe functies experimenteren.  Openbare preview-functies en -services zijn niet bedoeld voor gebruik in productie.  Voor meer informatie over ondersteuning tijdens previews kunt u de [Veelgestelde vragen](https://azure.microsoft.com/support/faq/) raadplegen of een [Ondersteuningsaanvraag](../azure-portal/supportability/how-to-create-azure-support-request.md) indienen.
 
 ##  <a name="supported-versions"></a>Ondersteunde versies
 
@@ -87,11 +87,11 @@ using (var client = new HttpClient(discoveryHandler, false))
 ::: zone pivot="programming-language-java"
 In dit onderwerp wordt beschreven hoe u een bestaande Java-toepassing voorbereidt voor implementatie naar Azure lente-Cloud. Als het goed is geconfigureerd, biedt Azure lente Cloud krachtige services voor het bewaken, schalen en bijwerken van uw Java-lente-Cloud toepassing.
 
-Voordat u dit voorbeeld kunt uitvoeren, kunt u de [eenvoudige quickstart](spring-cloud-quickstart.md) proberen.
+Voordat u dit voorbeeld kunt uitvoeren, kunt u de [eenvoudige quickstart](spring-cloud-quickstart.md) uitproberen.
 
 Andere voor beelden wordt uitgelegd hoe u een toepassing implementeert in azure lente-Cloud wanneer het POM-bestand wordt geconfigureerd. 
 * [Uw eerste app starten](spring-cloud-quickstart.md)
-* [Microservices bouwen en uitvoeren](spring-cloud-quickstart-sample-app-introduction.md)
+* [Micro services bouwen en uitvoeren](spring-cloud-quickstart-sample-app-introduction.md)
 
 In dit artikel worden de vereiste afhankelijkheden beschreven en wordt uitgelegd hoe u deze toevoegt aan het POM-bestand.
 
@@ -99,7 +99,7 @@ In dit artikel worden de vereiste afhankelijkheden beschreven en wordt uitgelegd
 
 Alleen veer-en Java-toepassingen kunnen worden uitgevoerd in azure lente-Cloud.
 
-Azure lente-Cloud ondersteunt Java 8 en Java 11. De hosting omgeving bevat de nieuwste versie van Azul Zulu OpenJDK voor Azure. Zie [install the jdk](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install)(Engelstalig) voor meer informatie over Azul Zulu openjdk voor Azure.
+Azure lente-Cloud ondersteunt Java 8 en Java 11. De hosting omgeving bevat de nieuwste versie van Azul Zulu OpenJDK voor Azure. Zie [install the jdk](/azure/developer/java/fundamentals/java-jdk-install)(Engelstalig) voor meer informatie over Azul Zulu openjdk voor Azure.
 
 ## <a name="spring-boot-and-spring-cloud-versions"></a>Lente-boot-en lente-Cloud versies
 
@@ -210,6 +210,8 @@ Neem de volgende dependenciy op in uw pom.xml-bestand als u een Spring boot 2,1 
         <version>2.1.2</version>
 </dependency>
 ```
+> [!WARNING]
+> Geef niets `server.port` op in uw configuratie. Deze instelling wordt door Azure lente Cloud OVERiDE naar een vast poort nummer. U moet deze instelling ook respecteren en de server poort niet opgeven in uw code.
 
 ## <a name="other-recommended-dependencies-to-enable-azure-spring-cloud-features"></a>Andere aanbevolen afhankelijkheden voor het inschakelen van Azure lente-Cloud functies
 
@@ -227,6 +229,7 @@ Als u de beheerde Azure Service Registry-service wilt gebruiken, neemt u de `spr
 ```
 
 Het eind punt van de service register server wordt automatisch geïnjecteerd als omgevings variabelen met uw app. Toepassingen kunnen zich bij de service register server registreren en andere afhankelijke micro services ontdekken.
+
 
 #### <a name="enablediscoveryclient-annotation"></a>EnableDiscoveryClient aantekening
 
@@ -302,9 +305,9 @@ Neem de volgende `spring-cloud-starter-sleuth` en `spring-cloud-starter-zipkin` 
  U moet ook een Azure-toepassing Insights-exemplaar inschakelen om te werken met uw Azure lente-Cloud service-exemplaar. Zie de [documentatie over gedistribueerde tracering](spring-cloud-tutorial-distributed-tracing.md)voor meer informatie over het gebruik van Application Insights met Azure lente Cloud.
 
 ## <a name="see-also"></a>Zie ook
-* [Toepassings logboeken en metrische gegevens analyseren](https://docs.microsoft.com/azure/spring-cloud/diagnostic-services)
-* [Uw configuratieserver instellen](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-config-server)
-* [Gedistribueerde tracering gebruiken met Azure Spring Cloud](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-distributed-tracing)
+* [Toepassings logboeken en metrische gegevens analyseren](./diagnostic-services.md)
+* [Uw configuratieserver instellen](./spring-cloud-tutorial-config-server.md)
+* [Gedistribueerde tracering gebruiken met Azure Spring Cloud](./spring-cloud-tutorial-distributed-tracing.md)
 * [Hand leiding voor veer Snelstartgids](https://spring.io/quickstart)
 * [Spring boot-documentatie](https://spring.io/projects/spring-boot)
 

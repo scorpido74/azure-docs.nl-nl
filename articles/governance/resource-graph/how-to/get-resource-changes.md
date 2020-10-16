@@ -1,14 +1,14 @@
 ---
 title: Resourcewijzigingen ophalen
 description: Meer informatie over hoe u kunt zoeken wanneer een resource is gewijzigd, een lijst met de gewijzigde eigenschappen ophalen en de verschillen evalueren.
-ms.date: 08/10/2020
+ms.date: 10/14/2020
 ms.topic: how-to
-ms.openlocfilehash: 02dfd2b8b66cd09be39a44166a0fd62bb13c8395
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: bab51ac7b55e2a838d98b46a09289f2cc19bfde3
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056564"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057566"
 ---
 # <a name="get-resource-changes"></a>Resourcewijzigingen ophalen
 
@@ -279,7 +279,7 @@ Het antwoord ziet er ongeveer uit als in dit voor beeld:
 }
 ```
 
-**beforeSnapshot** en **afterSnapshot** geven elk het tijdstip waarop de moment opname is gemaakt en de eigenschappen op dat moment. De wijziging is op een bepaald moment tussen deze moment opnamen. In het bovenstaande voor beeld zien we dat de gewijzigde eigenschap is **supportsHttpsTrafficOnly**.
+**beforeSnapshot** en **afterSnapshot** geven elk het tijdstip waarop de moment opname is gemaakt en de eigenschappen op dat moment. De wijziging is op een bepaald moment tussen deze moment opnamen. In het vorige voor beeld zien we dat de gewijzigde eigenschap is **supportsHttpsTrafficOnly**.
 
 Als u de resultaten wilt vergelijken, gebruikt u de eigenschap **Changes** in **resourceChanges** of evalueert u het **inhouds** gedeelte van elke moment opname in **resourceChangeDetails** om het verschil te bepalen. Als u de moment opnamen vergelijkt, wordt de **tijds tempel** altijd als een verschil weer gegeven ondanks de verwachte tijd.
 
@@ -287,5 +287,5 @@ Als u de resultaten wilt vergelijken, gebruikt u de eigenschap **Changes** in **
 
 - Zie de taal die wordt gebruikt in [Starter-query's](../samples/starter.md).
 - Zie [Geavanceerde query's](../samples/advanced.md) voor geavanceerde gebruikswijzen.
-- Lees meer over het [verkennen van resources](../concepts/explore-resources.md).
+- Meer informatie over het [verkennen van resources](../concepts/explore-resources.md).
 - Zie [richt lijnen voor beperkte aanvragen](../concepts/guidance-for-throttled-requests.md)voor meer informatie over het werken met query's met een hoge frequentie.

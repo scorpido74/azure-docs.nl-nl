@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: een zoek opdracht voor nieuws met PHP en de Bing News Search uitvoeren REST API'
+title: 'Snelstart: een zoekopdracht naar nieuws uitvoeren met PHP en de Bing News Search REST API'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze snelstartgids om een aanvraag naar de REST API van Bing News Search te verzenden via PHP en een JSON-antwoord te ontvangen.
 services: cognitive-services
@@ -12,17 +12,17 @@ ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: ecdcfc7d90f61443cc6947680df9bbf9d9b9514e
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: MT
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "83873233"
 ---
-# <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>Snelstartgids: een zoek opdracht voor nieuws uitvoeren met behulp van PHP en het Bing News Search REST API
+# <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>Snelstart: Nieuws zoeken met PHP en de REST API van Bing News Search
 
-Gebruik deze Quick Start om uw eerste oproep naar de Bing Nieuws zoeken-API te maken. Met deze eenvoudige PHP-toepassing wordt een zoek query naar de API verzonden en wordt het JSON-antwoord weer gegeven.
+Gebruik deze quickstart om uw eerste aanroep naar de Bing Nieuws zoeken-API te maken. Deze eenvoudige PHP-toepassing stuurt een zoekquery naar de API en geeft het JSON-antwoord weer.
 
-Hoewel deze toepassing wordt geschreven in PHP, is de API een REST-webservice die compatibel is met de meeste programmeer talen.
+Hoewel deze toepassing in PHP is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -30,17 +30,17 @@ Hoewel deze toepassing wordt geschreven in PHP, is de API een REST-webservice di
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-Zie [Cognitive Services prijzen-Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)voor meer informatie.
+Zie [Prijzen van Cognitive Services - Bing Search-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) voor meer informatie.
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
 Volg deze stappen voor het uitvoeren van deze toepassing:
 
-1. Schakel beveiligde HTTP-ondersteuning in uw `php.ini` bestand in door de regel niet op `;extension=php_openssl.dll` te heffen, zoals beschreven in de opmerking bij de code.
+1. Schakel veilige HTTP-ondersteuning voor het `php.ini`-bestand in door de opmerkingen bij regel `;extension=php_openssl.dll` te verwijderen, zoals beschreven in de opmerking bij de code.
 2. Maak een nieuw PHP-project in uw favoriete IDE of editor.
 3. Voeg de onderstaande code toe.
 4. Vervang de waarde `accessKey` door een geldige toegangssleutel voor uw abonnement.
-5. U kunt het globale eind punt in de volgende code gebruiken of het [aangepaste subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) eindpunt gebruiken dat wordt weer gegeven in de Azure portal voor uw resource.
+5. U kunt het globale eindpunt in de volgende code gebruiken of het eindpunt voor een [aangepast subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) gebruiken dat wordt weergegeven in de Azure-portal voor uw resource.
 6. Voer het programma uit.
 
 ```php

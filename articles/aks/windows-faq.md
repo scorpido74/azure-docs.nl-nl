@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Raadpleeg de veelgestelde vragen over het uitvoeren van Windows Server-knooppunt groepen en-werk belastingen in azure Kubernetes service (AKS).
 services: container-service
 ms.topic: article
-ms.date: 07/29/2020
-ms.openlocfilehash: df9a4dd546ddc5944d9a282e74c2444a5161b862
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.date: 10/12/2020
+ms.openlocfilehash: 00e749a8b066f72518b38685dd7a7779e406cf74
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927554"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013964"
 ---
 # <a name="frequently-asked-questions-for-windows-server-node-pools-in-aks"></a>Veelgestelde vragen over Windows Server-knooppunt groepen in AKS
 
@@ -58,7 +58,7 @@ AKS-clusters met Windows-knooppunt Pools moeten het netwerk model van Azure CNI 
 
 Op dit moment wordt het [IP-behoud van client bronnen][client-source-ip] niet ondersteund met Windows-knoop punten.
 
-## <a name="can-i-change-the-max--of-pods-per-node"></a>Kan ik de maximale waarde wijzigen. aantal peulen per knoop punt?
+## <a name="can-i-change-the-max--of-pods-per-node"></a>Kan ik het maximum aantal van het aantal peulen per knoop punt wijzigen?
 
 Ja. Zie [maximum aantal peulen][maximum-number-of-pods]voor de implicaties en opties die beschikbaar zijn.
 
@@ -113,6 +113,49 @@ Ja, u kunt Azure Monitor echter een open bare preview hebben voor het verzamelen
 
 Een cluster met Windows-knoop punten kan ongeveer 500 Services hebben voordat de poort wordt uitgeput.
 
+## <a name="can-i-use-azure-hybrid-benefit-with-windows-nodes"></a>Kan ik Azure Hybrid Benefit gebruiken met Windows-knoop punten?
+
+Ja. Azure Hybrid Benefit voor Windows Server reduceert de exploitatie kosten door uw on-premises Windows Server-licentie naar AKS Windows-knoop punten te brengen.
+
+Azure Hybrid Benefit kunnen worden gebruikt in uw hele AKS-cluster of op afzonderlijke knoop punten. Voor afzonderlijke knoop punten moet u naar de [resource groep knoop punt][resource-groups] navigeren en de Azure Hybrid Benefit rechtstreeks op de knoop punten Toep assen. Zie [Azure Hybrid Benefit voor Windows Server][hybrid-vms]voor meer informatie over het Toep assen van Azure Hybrid Benefit op afzonderlijke knoop punten. 
+
+Gebruik het argument om Azure Hybrid Benefit te gebruiken op een nieuw AKS-cluster `--enable-ahub` .
+
+```azurecli
+az aks create \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --load-balancer-sku Standard \
+    --windows-admin-password 'Password1234$' \
+    --windows-admin-username azure \
+    --network-plugin azure
+    --enable-ahub
+```
+
+Als u Azure Hybrid Benefit wilt gebruiken op een bestaand AKS-cluster, moet u het cluster bijwerken met behulp van het `--enable-ahub` argument.
+
+```azurecli
+az aks update \
+    --resource-group myResourceGroup
+    --name myAKSCluster
+    --enable-ahub
+```
+
+Als u wilt controleren of Azure Hybrid Benefit is ingesteld op het cluster, gebruikt u de volgende opdracht:
+
+```azurecli
+az vmss show --name myAKSCluster --resource-group MC_CLUSTERNAME
+```
+
+Als het cluster Azure Hybrid Benefit ingeschakeld, ziet de uitvoer van `az vmss show` er ongeveer als volgt uit:
+
+```console
+"platformFaultDomainCount": 1,
+  "provisioningState": "Succeeded",
+  "proximityPlacementGroup": null,
+  "resourceGroup": "MC_CLUSTERNAME"
+```
+
 ## <a name="can-i-use-the-kubernetes-web-dashboard-with-windows-containers"></a>Kan ik het Kubernetes-webdashboard met Windows-containers gebruiken?
 
 Ja, u kunt het [Kubernetes-Webdash Board][kubernetes-dashboard] gebruiken om toegang te krijgen tot informatie over Windows-containers, maar op dit moment kunt u *kubectl exec* niet rechtstreeks vanuit het Kubernetes Web dash board uitvoeren in een actieve Windows-container. Zie [verbinding maken met RDP naar Azure Kubernetes service (AKS) cluster Windows Server-knoop punten voor onderhoud of probleem oplossing][windows-rdp]voor meer informatie over het maken van een verbinding met uw actieve Windows-container.
@@ -152,3 +195,5 @@ Om aan de slag te gaan met Windows Server-containers in AKS, [maakt u een knoopp
 [windows-rdp]: rdp.md
 [upgrade-node-image]: node-image-upgrade.md
 [managed-identity]: use-managed-identity.md
+[hybrid-vms]: ../virtual-machines/windows/hybrid-use-benefit-licensing.md
+[resource-groups]: faq.md#why-are-two-resource-groups-created-with-aks

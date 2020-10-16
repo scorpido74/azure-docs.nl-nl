@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/12/2018
 ms.author: allensu
 ms.openlocfilehash: 4154c6a1e739f935022271e7a101f39d3ee5c500
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84343017"
 ---
 # <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>X-EC-fouten opsporen in HTTP-headers voor de engine van Azure CDN regels
@@ -33,7 +33,7 @@ Het antwoord van de POP-servers naar een gebruiker bevat `X-EC-Debug` alleen de 
 ## <a name="requesting-debug-cache-information"></a>Cache gegevens voor fout opsporing aanvragen
 Gebruik de volgende richt lijnen in de opgegeven aanvraag om de cache gegevens voor fout opsporing te definiëren die in het antwoord worden opgenomen:
 
-Aanvraagheader | Description |
+Aanvraagheader | Beschrijving |
 ---------------|-------------|
 X-EC-debug: x-EC-cache | [Cache status code](#cache-status-code-information)
 X-EC-debug: x-EC-cache-Remote | [Cache status code](#cache-status-code-information)
@@ -54,7 +54,7 @@ Fouten in de cache reactie van debug kunnen worden aangevraagd door de volgende 
 ## <a name="cache-status-code-information"></a>Informatie over cache status code
 De reactie header X-EC-debug kan een server identificeren en hoe deze het antwoord verwerkt via de volgende instructies:
 
-Koptekst | Description
+Koptekst | Beschrijving
 -------|------------
 X-EC-debug: x-EC-cache | Deze header wordt gerapporteerd wanneer de inhoud via het CDN wordt doorgestuurd. Hiermee wordt de POP-server geïdentificeerd die de aanvraag heeft voltooid.
 X-EC-debug: x-EC-cache-Remote | Deze header wordt alleen gerapporteerd wanneer de aangevraagde inhoud in de cache is opgeslagen op een originele schild server of een ADN-Gateway server.
@@ -70,7 +70,7 @@ De header X-EC-debug rapporteert cache status code gegevens in de volgende indel
 De termen die in de bovenstaande syntaxis van de reactie header worden gebruikt, zijn als volgt gedefinieerd:
 - Status code: Hiermee wordt aangegeven hoe de aangevraagde inhoud is verwerkt door het CDN, die wordt vertegenwoordigd door een cache statuscode.
     
-    De TCP_DENIED status code kan in plaats van geen worden gerapporteerd wanneer een niet-geautoriseerde aanvraag wordt geweigerd vanwege verificatie op basis van tokens. De status code geen kan echter nog steeds worden gebruikt bij het weer geven van de cache status rapporten of onbewerkte logboek gegevens.
+    De TCP_DENIED status code kan in plaats van geen worden gerapporteerd wanneer een niet-geautoriseerde aanvraag is geweigerd vanwege Token-Based-verificatie. De status code geen kan echter nog steeds worden gebruikt bij het weer geven van de cache status rapporten of onbewerkte logboek gegevens.
 
 - Platform: geeft het platform aan waarop de inhoud is aangevraagd. De volgende codes zijn geldig voor dit veld:
 
@@ -106,7 +106,7 @@ De term die wordt gebruikt in de bovenstaande syntaxis van de reactie header wor
 Waarde  | Beschrijving
 -------| --------
 JA    | Geeft aan dat de aangevraagde inhoud in aanmerking komt voor caching.
-NO     | Geeft aan dat de aangevraagde inhoud niet in aanmerking komt voor caching. Deze status kan een van de volgende oorzaken hebben: <br /> -Klantspecifieke configuratie: een configuratie die specifiek is voor uw account kan verhinderen dat de POP-servers een asset in de cache opslaan. Regels engine kan bijvoorbeeld voor komen dat een asset in de cache wordt opgeslagen door de functie voor het overs laan van de cache in te scha kelen voor het kwalificeren van aanvragen.<br /> -Cache-antwoord headers: de aangevraagde kopteksten Cache-Control en Expires van het activum kunnen verhinderen dat de POP-servers deze in de cache opslaan.
+NO     | Geeft aan dat de aangevraagde inhoud niet in aanmerking komt voor caching. Deze status kan een van de volgende oorzaken hebben: <br /> -Customer-Specific configuratie: een configuratie die specifiek is voor uw account kan verhinderen dat de POP-servers een asset in de cache opslaan. Regels engine kan bijvoorbeeld voor komen dat een asset in de cache wordt opgeslagen door de functie voor het overs laan van de cache in te scha kelen voor het kwalificeren van aanvragen.<br /> -Cache-antwoord headers: de kopteksten van het aangevraagde activum Cache-Control en Expires kunnen ertoe leiden dat de POP-servers deze niet in de cache opslaan.
 UNKNOWN | Geeft aan dat de servers niet kunnen beoordelen of het aangevraagde activum in de cache kan worden opgeslagen. Deze status treedt meestal op wanneer de aanvraag wordt geweigerd vanwege verificatie op basis van tokens.
 
 ### <a name="sample-response-header"></a>Voor beeld van reactie header
@@ -115,7 +115,7 @@ De volgende voor beeld van een antwoord header geeft aan of de aangevraagde inho
 
 `X-EC-Debug: x-ec-check-cacheable: YES`
 
-## <a name="cache-key-response-header"></a>Cache-sleutel antwoord header
+## <a name="cache-key-response-header"></a>Cache-Key reactie header
 De `X-EC-Debug: x-ec-cache-key` antwoord header geeft de fysieke cache sleutel aan die is gekoppeld aan de aangevraagde inhoud. Een fysieke cache sleutel bestaat uit een pad dat een Asset identificeert voor het opslaan in de cache. Met andere woorden, de servers controleren op een versie van een asset in de cache op basis van het pad dat is gedefinieerd door de cache sleutel.
 
 Deze fysieke cache sleutel begint met een dubbele slash (/), gevolgd door het protocol dat wordt gebruikt om de inhoud aan te vragen (HTTP of HTTPS). Dit protocol wordt gevolgd door het relatieve pad naar het aangevraagde activum, dat begint met het toegangs punt voor inhoud (bijvoorbeeld _/000001/_).
@@ -147,7 +147,7 @@ De `X-EC-Debug` antwoord header rapporteert cache status gegevens in de volgende
 
 De termen die in de bovenstaande syntaxis van de reactie header worden gebruikt, zijn als volgt gedefinieerd:
 
-- MASeconds: geeft de maximale leeftijd (in seconden) aan, zoals gedefinieerd door de cache-control-headers van de aangevraagde inhoud.
+- MASeconds: geeft de maximale leeftijd (in seconden) aan, zoals gedefinieerd door de Cache-Control headers van de aangevraagde inhoud.
 
 - MATimePeriod: converteert de waarde voor de maximale leeftijd (MASeconds) naar het geschatte equivalent van een grotere eenheid (bijvoorbeeld dagen). 
 

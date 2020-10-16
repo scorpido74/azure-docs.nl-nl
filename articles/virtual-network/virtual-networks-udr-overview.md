@@ -14,15 +14,15 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: aldomel
 ms.openlocfilehash: ad0a5fc5940c36aa5d2d6912987b154532bc80a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83727114"
 ---
 # <a name="virtual-network-traffic-routing"></a>Routering van verkeer in virtuele netwerken
 
-Lees hier hoe Azure verkeer routeert tussen Azure, on-premises en resources op internet. Azure maakt automatisch een routetabel voor elk subnet binnen een virtueel Azure-netwerk en voegt standaardysteemroutes toe aan de tabel. Zie [Azure Virtual Network](virtual-networks-overview.md) voor meer informatie over virtuele netwerken en subnetten. U kunt een aantal systeemroutes van Azure vervangen door [aangepaste routes](#custom-routes). Daarnaast kunt u aanvullende aangepaste routes toevoegen aan routetabellen. De route van uitgaand verkeer van een subnet wordt gebaseerd op de routes in de routetabel van een subnet.
+Lees hier hoe Azure verkeer routeert tussen Azure, on-premises en resources op internet. Azure maakt automatisch een routetabel voor elk subnet binnen een virtueel Azure-netwerk en voegt standaardsysteemroutes toe aan de tabel. Zie [Azure Virtual Network](virtual-networks-overview.md) voor meer informatie over virtuele netwerken en subnetten. U kunt een aantal systeemroutes van Azure vervangen door [aangepaste routes](#custom-routes). Daarnaast kunt u aanvullende aangepaste routes toevoegen aan routetabellen. De route van uitgaand verkeer van een subnet wordt gebaseerd op de routes in de routetabel van een subnet.
 
 ## <a name="system-routes"></a>Systeemroutes
 

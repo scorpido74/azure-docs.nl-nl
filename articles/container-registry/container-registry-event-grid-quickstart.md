@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 08/23/2018
 ms.custom: seodec18
 ms.openlocfilehash: dbeba56820a520e3435eeb0c5c8dbc5aae981241
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78403238"
 ---
 # <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>Quick Start: gebeurtenissen verzenden vanuit een persoonlijk container register naar Event Grid
@@ -200,7 +200,7 @@ De volgende scherm afbeelding toont de voor beeld-app met de drie gebeurtenissen
 
 ![Webbrowser met de voor beeld-app met ImagePushed-en ImageDeleted-gebeurtenissen][sample-app-03]
 
-Gefeliciteerd Als u de `ImagePushed` -en `ImageDeleted` -gebeurtenissen ziet, verzendt uw REGI ster gebeurtenissen naar Event grid en stuurt Event grid deze gebeurtenissen door naar het eind punt van uw web-app.
+Gefeliciteerd! Als u de `ImagePushed` -en `ImageDeleted` -gebeurtenissen ziet, verzendt uw REGI ster gebeurtenissen naar Event grid en stuurt Event grid deze gebeurtenissen door naar het eind punt van uw web-app.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

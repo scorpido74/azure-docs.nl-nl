@@ -7,16 +7,16 @@ ms.date: 09/23/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: edcfcda8de1fade605c409537155231d90d5849e
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: d61ca10612a0935f8483745d164835d7498280c0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91610072"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042810"
 ---
 # <a name="implement-iot-plug-and-play-on-constrained-devices"></a>IoT-Plug en Play op beperkte apparaten implementeren
 
-Als u voor *beperkte apparaten*ontwikkelt, kunt u IoT-Plug en Play gebruiken met de [Azure SDK voor Embedded C IOT-client bibliotheken](https://aka.ms/embeddedcsdk) of met [Azure rto's](https://docs.microsoft.com/azure/rtos/overview-rtos). Dit artikel bevat koppelingen en bronnen voor deze beperkte scenario's.
+Als u voor *beperkte apparaten*ontwikkelt, kunt u IoT-Plug en Play gebruiken met de [Azure SDK voor Embedded C IOT-client bibliotheken](https://aka.ms/embeddedcsdk) of met [Azure rto's](/azure/rtos/overview-rtos). Dit artikel bevat koppelingen en bronnen voor deze beperkte scenario's.
 
 ## <a name="use-the-sdk-for-embedded-c"></a>De SDK voor Embedded C gebruiken
 
@@ -24,7 +24,7 @@ De SDK voor Embedded C biedt een licht gewicht oplossing voor het verbinden van 
 
 ### <a name="use-a-real-device"></a>Een echt apparaat gebruiken
 
-Voor een volledige end-to-end zelf studie met de SDK voor Embedded C, de Device Provisioning Service en IoT Plug en Play op een echt apparaat, zie het [ontwikkel bord doel-pic-IOT wx om verbinding te maken met Azure via IOT hub Device Provisioning Service](https://github.com/Azure-Samples/Microchip-PIC-IoT-Wx).
+Voor een volledige end-to-end zelf studie met de SDK voor Embedded C, de Device Provisioning Service en IoT Plug en Play op een echt apparaat, Zie [redoel PIC-IoT wx Development Board om verbinding te maken met Azure via IOT hub Device Provisioning Service](https://github.com/Azure-Samples/Microchip-PIC-IoT-Wx).
 
 ### <a name="introductory-samples"></a>Inleidende voor beelden
 
@@ -39,7 +39,7 @@ De SDK voor Inge sloten C-opslag plaatsen bevat [verschillende voor beelden](htt
 
 ## <a name="using-azure-rtos"></a>Azure RTO'S gebruiken
 
-Azure RTO'S bevat een licht gewicht laag waarmee systeem eigen connectiviteit kan worden toegevoegd aan Azure IoT-Cloud Services. Deze laag biedt een eenvoudig mechanisme om beperkte apparaten te verbinden met Azure IoT en de geavanceerde functies van Azure RTO'S te gebruiken. Zie [Wat is Microsoft Azure rto's](https://docs.microsoft.com/azure/rtos/overview-rtos)voor meer informatie.
+Azure RTO'S bevat een licht gewicht laag waarmee systeem eigen connectiviteit kan worden toegevoegd aan Azure IoT-Cloud Services. Deze laag biedt een eenvoudig mechanisme om beperkte apparaten te verbinden met Azure IoT en de geavanceerde functies van Azure RTO'S te gebruiken. Zie [Wat is Microsoft Azure rto's](/azure/rtos/overview-rtos)voor meer informatie.
 
 ### <a name="toolchains"></a>Toolchains
 

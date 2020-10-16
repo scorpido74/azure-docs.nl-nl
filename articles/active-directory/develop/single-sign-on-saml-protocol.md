@@ -1,7 +1,7 @@
 ---
 title: Azure-SAML-protocol voor eenmalige aanmelding
 titleSuffix: Microsoft identity platform
-description: In dit artikel wordt het SAML-protocol voor eenmalige aanmelding (SSO) in Azure Active Directory beschreven
+description: In dit artikel wordt het SAML-protocol single Sign-On (SSO) beschreven in Azure Active Directory
 services: active-directory
 documentationcenter: .net
 author: kenwith
@@ -14,20 +14,20 @@ ms.date: 05/18/2020
 ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
-ms.openlocfilehash: 4990b81d929019b3d201f004176234fa0ea78339
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 40bf202e0f14f18d817e4e918f8372ba3c0a4ad8
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88118447"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950666"
 ---
-# <a name="single-sign-on-saml-protocol"></a>SAML-protocol voor eenmalige aanmelding
+# <a name="single-sign-on-saml-protocol"></a>Enkelvoudig Sign-On SAML-Protocol
 
-In dit artikel worden de SAML 2,0-verificatie aanvragen en antwoorden beschreven die Azure Active Directory (Azure AD) ondersteunt voor eenmalige aanmelding (SSO).
+In dit artikel worden de SAML 2,0-verificatie aanvragen en antwoorden beschreven die Azure Active Directory (Azure AD) ondersteunt voor single Sign-On (SSO).
 
 In het onderstaande protocol diagram wordt de volg orde van eenmalige aanmelding beschreven. De Cloud service (de service provider) gebruikt een binding voor HTTP-omleiding om een- `AuthnRequest` element (verificatie aanvraag) door te geven aan Azure AD (de ID-provider). Azure AD maakt vervolgens gebruik van een HTTP Post-binding om een- `Response` element te posten naar de Cloud service.
 
-![Eenmalige aanmelding (SSO)-werk stroom](./media/single-sign-on-saml-protocol/active-directory-saml-single-sign-on-workflow.png)
+![SSO-werk stroom (single Sign-On)](./media/single-sign-on-saml-protocol/active-directory-saml-single-sign-on-workflow.png)
 
 > [!NOTE]
 > In dit artikel wordt beschreven hoe u SAML gebruikt voor eenmalige aanmelding. Zie [eenmalige aanmelding bij toepassingen in azure Active Directory](../manage-apps/what-is-single-sign-on.md)voor meer informatie over andere manieren voor het afhandelen van eenmalige aanmelding (bijvoorbeeld met behulp van OpenID Connect Connect of geïntegreerde Windows-verificatie).
@@ -51,7 +51,7 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 | Id | Vereist | Azure AD gebruikt dit kenmerk om het `InResponseTo` kenmerk van het geretourneerde antwoord in te vullen. De ID mag niet beginnen met een getal, dus een algemene strategie is om een teken reeks als ' id ' te laten voorafgaan door naar de teken reeks representatie van een GUID. `id6c1c178c166d486687be4aaf5e482730`Is bijvoorbeeld een geldige id. |
 | Versie | Vereist | Deze para meter moet worden ingesteld op **2,0**. |
 | IssueInstant | Vereist | Dit is een datum/tijd-teken reeks met een UTC-waarde en een [notatie voor retour afronding ("o")](/dotnet/standard/base-types/standard-date-and-time-format-strings). In azure AD wordt een DateTime-waarde van dit type verwacht, maar de waarde wordt niet geëvalueerd of gebruikt. |
-| AssertionConsumerServiceUrl | Optioneel | Als deze para meter wordt opgegeven, moet deze overeenkomen met de `RedirectUri` Cloud service in azure AD. |
+| AssertionConsumerServiceURL | Optioneel | Als deze para meter wordt opgegeven, moet deze overeenkomen met de `RedirectUri` Cloud service in azure AD. |
 | ForceAuthn | Optioneel | Dit is een Booleaanse waarde. Als deze eigenschap waar is, betekent dit dat de gebruiker wordt afgedwongen om zich opnieuw te verifiëren, zelfs als ze een geldige sessie met Azure AD hebben. |
 | IsPassive | Optioneel | Dit is een Booleaanse waarde die aangeeft of Azure AD de gebruiker zonder tussen komst van de gebruiker op de achtergrond moet verifiëren, met behulp van de sessie cookie als er een bestaat. Als dit het geval is, probeert Azure AD de gebruiker te verifiëren met behulp van de sessie cookie. |
 
@@ -273,7 +273,7 @@ Dit bevat claims over het onderwerp of de gebruiker. Het volgende fragment bevat
 ```        
 
 * **Claim naam** : de waarde van het `Name` kenmerk ( `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` ) is de User Principal name van de geverifieerde gebruiker, zoals `testuser@managedtenant.com` .
-* **Claim van ObjectIdentifier** : de waarde van het `ObjectIdentifier` kenmerk ( `http://schemas.microsoft.com/identity/claims/objectidentifier` ) is het `ObjectId` van het Directory-object dat de geverifieerde gebruiker in azure AD vertegenwoordigt. `ObjectId`is een onveranderbare, wereld wijd unieke en hergebruikte veilige id van de geverifieerde gebruiker.
+* **Claim van ObjectIdentifier** : de waarde van het `ObjectIdentifier` kenmerk ( `http://schemas.microsoft.com/identity/claims/objectidentifier` ) is het `ObjectId` van het Directory-object dat de geverifieerde gebruiker in azure AD vertegenwoordigt. `ObjectId` is een onveranderbare, wereld wijd unieke en hergebruikte veilige id van de geverifieerde gebruiker.
 
 #### <a name="authnstatement"></a>AuthnStatement
 

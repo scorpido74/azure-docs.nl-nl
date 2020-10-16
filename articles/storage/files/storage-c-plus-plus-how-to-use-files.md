@@ -8,10 +8,10 @@ ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 6b201565ae2bcadccf55cee78ade0e011e603a15
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85515384"
 ---
 # <a name="develop-for-azure-files-with-c"></a>Ontwikkelen voor Azure Files met C++
@@ -160,7 +160,7 @@ directory.delete_directory_if_exists();
 
 ## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Bestanden en mappen in een Azure-bestands share opsommen
 
-U kunt eenvoudig een lijst met bestanden en mappen in een share verkrijgen door het aanroepen van **list_files_and_directories** op een **cloud_file_directory** verwijzing. Om toegang te krijgen tot de uitgebreide set eigenschappen en methoden voor een geretourneerde **list_file_and_directory_item**, moet u de methode **list_file_and_directory_item. as_file** aanroepen om een **cloud_file** object op te halen, of de methode **list_file_and_directory_item. as_directory** om een **cloud_file_directory** -object op te halen.
+U kunt eenvoudig een lijst met bestanden en mappen in een share verkrijgen door het aanroepen van **list_files_and_directories** op een **cloud_file_directory** verwijzing. Voor toegang tot de uitgebreide set eigenschappen en methoden voor een geretourneerde **list_file_and_directory_item**moet u de methode **list_file_and_directory_item. as _file** aanroepen om een **cloud_file** -object op te halen, of de methode **list_file_and_directory_item. as _directory** om een **cloud_file_directory** -object op te halen.
 
 De volgende code laat zien hoe u de URI van elk item in de hoofdmap van de share ophaalt en uitvoert.
 
@@ -185,7 +185,7 @@ for (auto it = directory.list_files_and_directories(); it != end_of_results; ++i
 }
 ```
 
-## <a name="upload-a-file"></a>Bestand uploaden
+## <a name="upload-a-file"></a>Een bestand uploaden
 
 Een Azure-bestands share bevat ten minste een hoofdmap waarin bestanden kunnen worden opgeslagen. In deze sectie leert u hoe u een bestand van de lokale opslag uploadt naar de hoofdmap van een share.
 
@@ -218,7 +218,7 @@ azure::storage::cloud_file file4 =
 file4.upload_from_file(_XPLATSTR("DataFile.txt"));
 ```
 
-## <a name="download-a-file"></a>Bestand downloaden
+## <a name="download-a-file"></a>Een bestand downloaden
 
 Als u bestanden wilt downloaden, moet u eerst een bestands verwijzing ophalen en vervolgens de **download_to_stream** -methode aanroepen om de bestands inhoud over te dragen naar een Stream-object, dat u vervolgens naar een lokaal bestand kunt blijven. U kunt ook de **download_to_file** -methode gebruiken om de inhoud van een bestand te downloaden naar een lokaal bestand. U kunt de **download_text** -methode gebruiken om de inhoud van een bestand als teken reeks te downloaden.
 

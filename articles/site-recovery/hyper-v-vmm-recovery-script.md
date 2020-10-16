@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: sharrai
 ms.openlocfilehash: 3217c30737a133c1c1092fc4a8a8caaa0338e980
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89425871"
 ---
 # <a name="add-a-vmm-script-to-a-recovery-plan"></a>Een VMM-script toevoegen aan een herstel plan
@@ -43,7 +43,7 @@ U kunt Power shell-scripts gebruiken in uw herstel plannen. Als u vanuit het her
 
   Als het pad naar de bibliotheek share extern is (of als het lokaal is, maar niet is gedeeld met MSCVMMLibrary), configureert u de share als volgt met behulp van \\ libserver2. contoso. com\share\ als voor beeld:
   
-  1. Open de REGI ster-editor en ga naar **HKEY_LOCAL_MACHINE \Software\microsoft\azure site Recovery\Registration**.
+  1. Open de REGI ster-editor en ga naar **HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\Azure Site Recovery\Registration**.
 
   1. Wijzig de waarde voor **ScriptLibraryPath** in ** \\ \libserver2.contoso.com\share \\ **. Geef de volledige FQDN op. Machtigingen voor de share locatie opgeven. Dit is het hoofd knooppunt van de share. Als u wilt controleren op het hoofd knooppunt, gaat u in VMM naar het hoofd knooppunt in de bibliotheek. Het pad dat wordt geopend, is de hoofdmap van het pad. Dit is het pad dat u moet gebruiken in de variabele.
 
@@ -51,7 +51,7 @@ U kunt Power shell-scripts gebruiken in uw herstel plannen. Als u vanuit het her
 
      a. Open de **64-bits Windows Power shell-** console als beheerder.
      
-     b. Geef **Set-ExecutionPolicy bypass**op. Zie [using the Set-ExecutionPolicy cmdlet](/previous-versions/windows/it-pro/windows-powershell-1.0/ee176961(v=technet.10))voor meer informatie.
+     b. Geef **Set-ExecutionPolicy bypass**op. Zie [using the Set-ExecutionPolicy cmdlet](/previous-versions/windows/it-pro/windows-powershell-1.0/ee176961(v=technet.10))(Engelstalig) voor meer informatie.
 
      > [!IMPORTANT]
      > Stel **Set-ExecutionPolicy bypass** alleen in de 64-bits Power shell-console in. Als u deze instelt voor de 32-bits Power shell-console, worden de scripts niet uitgevoerd.

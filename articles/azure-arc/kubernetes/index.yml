@@ -9,12 +9,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 06/26/2020
   ms.author: 
-  ms.openlocfilehash: 7c643d10971d93a3c6194bc7390d2271c1ed561b
-  ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+  ms.openlocfilehash: bc12e75904f375e2e40bce01d102186ec0d39f13
+  ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 08/24/2020
-  ms.locfileid: "88763734"
+  ms.lasthandoff: 10/14/2020
+  ms.locfileid: "92014253"
 landingContent:
 - title: Kubernetes-clusters verbinden met Azure met behulp van Azure Arc
   linkLists:
@@ -36,3 +36,9 @@ landingContent:
       url: use-azure-policy.md
     - text: Azure IoT Edge-workloads implementeren
       url: deploy-azure-iot-edge-workloads.md
+- title: Referentiearchitectuur
+  linkLists:
+  - linkListType: architecture
+    links:
+    - text: Beheerde implementaties en configuraties voor hybride Kubernetes-clusters
+      url: /azure/architecture/hybrid/arc-hybrid-kubernetes

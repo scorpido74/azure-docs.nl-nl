@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
 ms.openlocfilehash: c9cfe05b6547cbdc61a1c8cc6223f08900cf09d9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91342961"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>Een Azure Machine Learning Studio-webservice (klassiek) implementeren
@@ -27,7 +27,7 @@ Machine Learning Studio (Classic) webservices bieden een interface tussen een to
 
 Azure Machine Learning Studio (klassiek) heeft twee soorten webservices:
 
-* Aanvraag-antwoord service (RR'S): een zeer schaal bare service met een lage latentie die één gegevens record verstuurt.
+* Request-Response service (RR'S): een zeer schaal bare service met een lage latentie die één gegevens record verdeelt.
 * Batch Execution Service (BES): een asynchrone service die een batch met gegevens records verlaagt.
 
 De invoer voor BES is net als de gegevensinvoer die door RRS wordt gebruikt. Het belangrijkste verschil is dat BES een blok records uit diverse bronnen leest, zoals Azure Blob Storage, Azure Table Storage, Azure SQL Database, HDInsight (hive query) en HTTP-bronnen.
@@ -160,7 +160,7 @@ De pagina Quick Start van web service biedt u toegang tot en richt lijnen voor d
 
 ### <a name="test-your-new-web-service"></a>Uw nieuwe webservice testen
 
-Als u uw nieuwe webservice wilt testen, klikt u op **webservice testen** onder algemene taken. Op de pagina test kunt u uw webservice testen als een aanvraag-antwoord service (RR'S) of een batch Execution Service (BES).
+Als u uw nieuwe webservice wilt testen, klikt u op **webservice testen** onder algemene taken. Op de pagina test kunt u uw webservice testen als een Request-Response service (RR'S) of een batch Execution Service (BES).
 
 Op de pagina bron records testen worden de invoer, uitvoer en alle globale para meters weer gegeven die u voor het experiment hebt gedefinieerd. Als u de webservice wilt testen, kunt u hand matig de juiste waarden voor de invoer invoeren of een bestand met door komma's gescheiden waarden (CSV) met de test waarden opgeven.
 
@@ -212,7 +212,7 @@ Prijzen zijn specifiek voor regio's. u moet dus een facturerings plan definiëre
 6. Selecteer een resource groep voor het plan uit de vervolg keuzelijst **resource groep** . Zie [Azure Resource Manager Overview](../../azure-resource-manager/management/overview.md)(Engelstalig) voor meer informatie over resource groepen.
 7. Typ in **naam van plan** de naam van het plan.
 8. Klik onder **Opties plannen**op het facturerings niveau voor het nieuwe abonnement.
-9. Klik op **Create**.
+9. Klik op **Maken**.
 
 #### <a name="deploy-the-web-service-to-another-region"></a>De webservice implementeren in een andere regio
 

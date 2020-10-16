@@ -12,10 +12,10 @@ ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: b90f86576928e44e00c548f4f3ad3c22c27b8bb3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85829430"
 ---
 # <a name="split-merge-security-configuration"></a>Beveiligings configuratie splitsen en samen voegen
@@ -59,8 +59,8 @@ Er is een TLS/SSL-certificaat vereist om de communicatie te versleutelen en de s
 
 ### <a name="create-a-new-self-signed-certificate"></a>Een nieuw zelfondertekend certificaat maken
 
-1. [Een zelfondertekend certificaat maken](#create-a-self-signed-certificate)
-2. [PFX-bestand maken voor zelfondertekend TLS/SSL-certificaat](#create-pfx-file-for-self-signed-tlsssl-certificate)
+1. [Een Self-Signed certificaat maken](#create-a-self-signed-certificate)
+2. [PFX-bestand voor Self-Signed TLS/SSL-certificaat maken](#create-pfx-file-for-self-signed-tlsssl-certificate)
 3. [TLS/SSL-certificaat uploaden naar de Cloud service](#upload-tlsssl-certificate-to-cloud-service)
 4. [TLS/SSL-certificaat in service configuratie bestand bijwerken](#update-tlsssl-certificate-in-service-configuration-file)
 5. [TLS/SSL-certificerings instantie importeren](#import-tlsssl-certification-authority)
@@ -78,10 +78,10 @@ Er is een TLS/SSL-certificaat vereist om de communicatie te versleutelen en de s
 Client certificaten zijn vereist om aanvragen voor de service te verifiëren. Kies het meest toepas bare van de drie onderstaande scenario's en voer alle stappen uit:
 
 ### <a name="turn-off-client-certificates"></a>Client certificaten uitschakelen
-1. [Verificatie op basis van client certificaten uitschakelen](#turn-off-client-certificate-based-authentication)
+1. [Verificatie van client Certificate-Based uitschakelen](#turn-off-client-certificate-based-authentication)
 
 ### <a name="issue-new-self-signed-client-certificates"></a>Nieuwe zelfondertekende client certificaten uitgeven
-1. [Een zelf-ondertekende certificerings instantie maken](#create-a-self-signed-certification-authority)
+1. [Een Self-Signed certificerings instantie maken](#create-a-self-signed-certification-authority)
 2. [CA-certificaat uploaden naar de Cloud service](#upload-ca-certificate-to-cloud-service)
 3. [CA-certificaat in service configuratie bestand bijwerken](#update-ca-certificate-in-service-configuration-file)
 4. [Client certificaten uitgeven](#issue-client-certificates)
@@ -105,8 +105,8 @@ Toegang tot de service-eind punten kan worden beperkt tot specifieke bereiken va
 Een certificaat is vereist voor het versleutelen van de referenties die zijn opgeslagen in het meta gegevens archief. Kies het meest toepas bare van de drie onderstaande scenario's en voer alle stappen uit:
 
 ### <a name="use-a-new-self-signed-certificate"></a>Een nieuw zelfondertekend certificaat gebruiken
-1. [Een zelfondertekend certificaat maken](#create-a-self-signed-certificate)
-2. [PFX-bestand voor zelfondertekend versleutelings certificaat maken](#create-pfx-file-for-self-signed-tlsssl-certificate)
+1. [Een Self-Signed certificaat maken](#create-a-self-signed-certificate)
+2. [PFX-bestand voor Self-Signed versleutelings certificaat maken](#create-pfx-file-for-self-signed-tlsssl-certificate)
 3. [Versleutelings certificaat uploaden naar de Cloud service](#upload-encryption-certificate-to-cloud-service)
 4. [Versleutelings certificaat in service configuratie bestand bijwerken](#update-encryption-certificate-in-service-configuration-file)
 

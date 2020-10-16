@@ -1,25 +1,18 @@
 ---
 title: IBM Db2 HADR instellen op Azure virtual machines (Vm's) | Microsoft Docs
 description: Stel hoge Beschik baarheid in van IBM Db2 LUW op Azure virtual machines (Vm's).
-services: virtual-machines-linux
-documentationcenter: ''
 author: msjuergent
-manager: patfilot
-editor: ''
-tags: azure-resource-manager
-keywords: SAP
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 03/06/2020
 ms.author: juergent
-ms.openlocfilehash: 7d453fba37e62e8528ae7b4ea86d1604973b84a1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.reviewer: cynthn
+ms.openlocfilehash: 17df60cd039601d3f8036125c5c0098a8000667c
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052000"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993302"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-suse-linux-enterprise-server-with-pacemaker"></a>Hoge Beschik baarheid van IBM Db2 LUW op Azure Vm's op SUSE Linux Enterprise Server met pacemaker
 
@@ -327,7 +320,7 @@ De volgende items worden voorafgegaan door een van beide:
 > - Voor SLES 15/15 SP1 moet de versie ten minste resource-agents-4.3.0184.6 ee15eb2-4.13.1 zijn.  
 >
 > Houd er rekening mee dat voor de wijziging korte uitval tijd nodig is.  
-> Voor bestaande pacemaker-clusters geldt dat als de configuratie al is gewijzigd in het gebruik van socat zoals beschreven in [Azure Load-Balancer-detectie beveiliging](https://www.suse.com/support/kb/doc/?id=7024128), u niet onmiddellijk over de resource-agent van Azure lb hoeft te scha kelen.
+> Voor bestaande pacemaker-clusters geldt dat als de configuratie al is gewijzigd in het gebruik van socat, zoals beschreven in [Azure Load-Balancer-detectie beveiliging](https://www.suse.com/support/kb/doc/?id=7024128), u niet onmiddellijk over de resource-agent van Azure lb hoeft te scha kelen.
 
 **[1]** IBM Db2 HADR-specifieke pacemaker-configuratie:
 <pre><code># Put Pacemaker into maintenance mode
@@ -478,7 +471,7 @@ Als u de installatie hebt uitgevoerd voordat u de configuratie van de Db2 HADR h
 
 Gebruik het J2EE-configuratie programma om de JDBC-URL te controleren of bij te werken. Omdat het J2EE-configuratie programma een grafisch hulp programma is, moet X server zijn geïnstalleerd:
  
-1. Meld u aan bij de primaire toepassings server van het J2EE-exemplaar en voer de volgende handelingen uit:`sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh`
+1. Meld u aan bij de primaire toepassings server van het J2EE-exemplaar en voer de volgende handelingen uit:   `sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh`
 1. Kies in het linkerdeel venster de optie **beveiligings archief**.
 1. Kies in het rechterdeel venster de sleutel JDBC/pool/ \<SAPSID> /URL.
 1. Wijzig de hostnaam in de JDBC-URL in de naam van de virtuele host.

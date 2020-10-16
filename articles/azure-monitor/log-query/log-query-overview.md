@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/19/2019
-ms.openlocfilehash: 5a47de51a90d926b47f6b465d6c10111407da9c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55463f6af47ef8eda712b1787a89a710c08c1fe6
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90033163"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995211"
 ---
 # <a name="overview-of-log-queries-in-azure-monitor"></a>Overzicht van logboek query's in Azure Monitor
 Met logboek query's kunt u de waarde van de gegevens die in [Azure monitor logboeken](../platform/data-platform-logs.md)worden verzameld, volledig benutten. Met een krachtige query taal kunt u gegevens uit meerdere tabellen samen voegen, grote gegevens sets verzamelen en complexe bewerkingen met minimale code uitvoeren. Vrijwel elke vraag kan worden beantwoord en de analyse wordt uitgevoerd zolang de ondersteunende gegevens zijn verzameld en u begrijpt hoe u de juiste query kunt bouwen.
@@ -38,7 +38,7 @@ Zie [aan de slag met logboek query's in azure monitor](get-started-queries.md) v
 Zie [Azure monitor taal verschillen in de logboeken](data-explorer-difference.md) voor kleine verschillen in de versie van KQL die door Azure monitor wordt gebruikt.
 
 ## <a name="what-data-is-available-to-log-queries"></a>Welke gegevens zijn beschikbaar voor logboek query's?
-Alle gegevens die in Azure Monitor logboeken zijn verzameld, kunnen worden opgehaald en geanalyseerd in logboek query's. Met verschillende gegevens bronnen worden de gegevens naar verschillende tabellen geschreven, maar u kunt meerdere tabellen in één query toevoegen om gegevens te analyseren over meerdere bronnen. Wanneer u een query bouwt, moet u eerst bepalen welke tabellen de gegevens bevatten die u zoekt. Zie de [structuur van Azure monitor logboeken](logs-structure.md) voor een uitleg van de manier waarop de gegevens worden gestructureerd.
+Alle gegevens die in Azure Monitor logboeken zijn verzameld, kunnen worden opgehaald en geanalyseerd in logboek query's. Met verschillende gegevens bronnen worden de gegevens naar verschillende tabellen geschreven, maar u kunt meerdere tabellen in één query toevoegen om gegevens te analyseren over meerdere bronnen. Wanneer u een query bouwt, moet u eerst bepalen welke tabellen de gegevens bevatten die u zoekt. Zie de [structuur van Azure monitor logboeken](../platform/data-platform-logs.md) voor een uitleg van de manier waarop de gegevens worden gestructureerd.
 
 ## <a name="what-does-a-log-query-look-like"></a>Hoe ziet een logboek query eruit?
 Een query kan net zo eenvoudig zijn als een enkele tabel naam voor het ophalen van alle records uit de tabel:

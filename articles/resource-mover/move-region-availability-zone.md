@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: raynew
 ms.openlocfilehash: 315ea9b683ccd583f5c29c7527013f0d924336f4
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90061870"
 ---
 # <a name="move-azure-vms-to-an-availability-zone-in-another-region"></a>Virtuele Azure-machines verplaatsen naar een beschikbaarheids zone in een andere regio
@@ -26,7 +26,7 @@ In dit artikel leert u hoe u virtuele Azure-machines (en gerelateerde netwerk-en
 
 
 > [!IMPORTANT]
-> Azure resource-overdrijfing is momenteel beschikbaar als open bare preview.
+> Azure Resource Mover is momenteel beschikbaar als openbare preview-versie.
 
 Als u Vm's wilt verplaatsen naar een andere beschikbaarheids zone in dezelfde regio, [raadpleegt u dit artikel](../site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md).
 
@@ -34,26 +34,26 @@ Als u Vm's wilt verplaatsen naar een andere beschikbaarheids zone in dezelfde re
 
 - Toegang voor de *eigenaar* van het abonnement waarin resources zich bevinden die u wilt verplaatsen.
     - De eerste keer dat u een resource toevoegt voor een specifieke bron-en doel toewijzing in een Azure-abonnement, maakt resource-overschakeling een door het [systeem toegewezen beheerde identiteit](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) (voorheen bekend als managed service identify (MSI)) die wordt vertrouwd door het abonnement.
-    - Als u de identiteit wilt maken en de vereiste rol (Inzender of beheerder voor gebruikers toegang in het bron abonnement) wilt toewijzen, moet het account dat u gebruikt om resources toe te voegen *eigenaars* machtigingen voor het abonnement hebben. Meer [informatie](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) over Azure-rollen.
+    - Om de identiteit te maken en deze de juiste rol toe te wijzen (Inzender of Administrator voor gebruikerstoegang in het bronabonnement), moet het account dat u gebruikt om resources toe te voegen *Eigenaars*machtigingen hebben voor het abonnement. [Meer informatie](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) over rollen in Azure.
 - Het abonnement heeft voldoende quota nodig om de bron resources in de doel regio te maken. Als dat niet het geval is, moet u aanvullende limieten aanvragen. [Meer informatie](/azure/azure-resource-manager/management/azure-subscription-service-limits).
-- Controleer de prijzen en kosten die zijn gekoppeld aan de doel regio waarnaar u Vm's verplaatst. Gebruik de [prijs calculator](https://azure.microsoft.com/pricing/calculator/) om u te helpen.
+- Verifieer prijzen en kosten voor de doelregio waarnaar u virtuele machines verplaatst. Gebruik de [prijscalculator](https://azure.microsoft.com/pricing/calculator/) om u daarbij te helpen.
     
 
 
-## <a name="check-vm-requirements"></a>VM-vereisten controleren
+## <a name="check-vm-requirements"></a>Vereisten voor virtuele machines controleren
 
 1. Controleer of de virtuele machines die u wilt verplaatsen, worden ondersteund.
 
-    - [Controleer](support-matrix-move-region-azure-vm.md#windows-vm-support) de ondersteunde Windows-vm's.
-    - [Controleer](support-matrix-move-region-azure-vm.md#linux-vm-support) ondersteunde vm's en kernel-versies van Linux.
-    - Controleer ondersteunde instellingen voor [Compute](support-matrix-move-region-azure-vm.md#supported-vm-compute-settings), [opslag](support-matrix-move-region-azure-vm.md#supported-vm-storage-settings)en [netwerk](support-matrix-move-region-azure-vm.md#supported-vm-networking-settings) .
-2. Controleer of de Vm's die u wilt verplaatsen, zijn ingeschakeld.
+    - [Controleer](support-matrix-move-region-azure-vm.md#windows-vm-support) ondersteunde virtuele Windows-machines.
+    - [Controleer](support-matrix-move-region-azure-vm.md#linux-vm-support) ondersteunde virtuele Linux-machines en versies van de kernel.
+    - Controleer de ondersteunde [compute-](support-matrix-move-region-azure-vm.md#supported-vm-compute-settings), [opslag-](support-matrix-move-region-azure-vm.md#supported-vm-storage-settings) en [netwerk](support-matrix-move-region-azure-vm.md#supported-vm-networking-settings)instellingen.
+2. Controleer of de virtuele machines die u wilt verplaatsen, zijn ingeschakeld.
 3. Zorg ervoor dat Vm's de meest recente vertrouwde basis certificaten en een bijgewerkte certificaatintrekkingslijst (CRL) hebben. 
     - Installeer de meest recente Windows-updates op virtuele Azure-machines waarop Windows wordt uitgevoerd.
     - Op Vm's waarop Linux wordt uitgevoerd, volgt u de richt lijnen voor Linux-distributeurs om te controleren of de computer de meest recente certificaten en CERTIFICAATINTREKKINGSLIJST heeft. 
-4. Uitgaande verbindingen van Vm's toestaan:
-    - Als u een firewall proxy op basis van een URL gebruikt voor het beheren van uitgaande connectiviteit, kunt u toegang tot deze [url's](support-matrix-move-region-azure-vm.md#url-access) toestaan
-    - Als u regels voor de netwerk beveiligings groep (NSG) gebruikt om de uitgaande connectiviteit te beheren, maakt u deze [service-code regels](support-matrix-move-region-azure-vm.md#nsg-rules).
+4. Sta uitgaande connectiviteit vanaf VM's toe:
+    - Als u een URL-firewallproxy gebruikt om de uitgaande connectiviteit te beheren, staat u toegang tot deze [URL's](support-matrix-move-region-azure-vm.md#url-access) toe
+    - Als u regels voor netwerk beveiligingsgroepen (NSG) gebruikt om de uitgaande connectiviteit te beheren, maakt u deze [servicetagregels](support-matrix-move-region-azure-vm.md#nsg-rules).
 
 ## <a name="select-resources-to-move"></a>Te verplaatsen resources selecteren
 
@@ -62,7 +62,7 @@ Selecteer de resources die u wilt verplaatsen.
 - U kunt elk ondersteund resource type voor alle resource groepen selecteren in de bron regio die u selecteert.
 - U kunt resources verplaatsen naar een doel regio in het bron regio abonnement. Als u het abonnement wilt wijzigen, kunt u dat doen nadat de resources zijn verplaatst.
 
-1. Zoek in het Azure Portal naar resource verplaatsen. Selecteer vervolgens onder **Services** **Azure resource**-overschakeling.
+1. Zoek in de Azure-portal naar resource mover. Selecteer vervolgens **Azure Resource Mover** onder **Services**.
 
     ![Zoeken naar resource verplaatsen](./media/move-region-availability-zone/search.png)
 
@@ -70,21 +70,21 @@ Selecteer de resources die u wilt verplaatsen.
 
     ![Knop om aan de slag te gaan](./media/move-region-availability-zone/get-started.png)
 
-3. Selecteer in bron voor **resources verplaatsen**  >  **+ bestemming**het bron abonnement en de regio.
-4. Selecteer in **doel**de regio waarnaar u de vm's wilt verplaatsen. Klik op **Volgende**.
+3. Selecteer in **Resources verplaatsen** > **Bron en doel**, het bronabonnement en de regio.
+4. Selecteer in **Doel** de regio waarnaar u de virtuele machines wilt verplaatsen. Klik op **Volgende**.
 
      ![Pagina om het bron-en doel abonnement/de regio in te vullen](./media/move-region-availability-zone/source-target.png)
 
-6. Klik in **resources om te verplaatsen**op **resources selecteren**.
-7. Selecteer in **resources selecteren**de virtuele machine. U kunt alleen resources toevoegen die voor verplaatsen worden ondersteund. Klik vervolgens op **gereed**. Klik in **resources om te verplaatsen**op **volgende**.
+6. Klik in **Resources die moeten worden verplaatst** op **Resources selecteren**.
+7. Selecteer de virtuele machine in **Resources selecteren**. U kunt alleen resources selecteren waarvoor verplaatsing wordt ondersteund. Klik vervolgens op **Gereed**. Klik in **Resources die moeten worden verplaatst** op **Volgende**.
 
-    ![Pagina voor het selecteren van Vm's die moeten worden verplaatst](./media/move-region-availability-zone/select-vm.png)
-8. Controleer de bron-en doel instellingen bij **controleren en toevoegen**.
+    ![Pagina voor het selecteren van virtuele machines die moeten worden verplaatst](./media/move-region-availability-zone/select-vm.png)
+8. Controleer de bron-en doel instellingen in **Controleren en toevoegen**.
 
-    ![Pagina om instellingen te controleren en door te gaan met verplaatsen](./media/move-region-availability-zone/review.png)
+    ![Pagina voor het controleren van instellingen en doorgaan met de verplaatsing](./media/move-region-availability-zone/review.png)
 
-9. Klik op **door gaan**om te beginnen met het toevoegen van de resources.
-10. Nadat het toevoegen is voltooid, klikt u op **resources toevoegen voor verplaatsen** in het meldings pictogram.
+9. Klik op **Doorgaan** om te beginnen met toevoegen van de resources.
+10. Klik nadat het toevoegen geslaagd is op **Resources toevoegen** in het meldingspictogram.
 
     ![Bericht in meldingen](./media/move-region-availability-zone/notification.png)
 
@@ -92,61 +92,61 @@ Nadat u op de melding hebt geklikt, worden de resources weer gegeven op de pagin
 
 > [!NOTE]
 > Nadat u op de melding hebt geklikt, worden de resources weer gegeven op de pagina **over verschillende regio's** , in de status in *behandeling voorbereiden* .
-> - Als u een resource uit een verzameling verplaatsen wilt verwijderen, is dit afhankelijk van waar u zich in het Verplaats proces bevindt. [Meer informatie](remove-move-resources.md).
+> - Als u een resource uit een te verplaatsen verzameling wilt verwijderen, hangt de manier waarop u dat doet af van de plaats waar u zich in het verplaatsingsproces bevindt. [Meer informatie](remove-move-resources.md).
 
 ## <a name="resolve-dependencies"></a>Afhankelijkheden oplossen
 
-1. Als resources een bericht voor het *valideren van afhankelijkheden* in de kolom **problemen** weer geven, klikt u op de knop **afhankelijkheden valideren** . Het validatie proces wordt uitgevoerd.
-2. Als er afhankelijkheden worden gevonden, klikt u op **afhankelijkheden toevoegen**. 
-3. Selecteer bij **afhankelijkheden toevoegen**de afhankelijke resources > **afhankelijkheden toevoegen**. De voortgang in de meldingen bewaken.
+1. Als bij resources het bericht *Afhankelijkheden controleren* staat in de kolom **Problemen**, klikt u op de knop **Afhankelijkheden controleren**. Het validatie proces wordt uitgevoerd.
+2. Als er afhankelijkheden worden gevonden, klikt u op **Afhankelijkheden toevoegen**. 
+3. Selecteer in **Afhankelijkheden toevoegen** de afhankelijke Resources > **Afhankelijkheden toevoegen**. Controleer de voortgang in de meldingen.
 
     ![Knop voor het toevoegen van afhankelijkheden](./media/move-region-availability-zone/add-dependencies.png)
 
 3. Voeg indien nodig extra afhankelijkheden toe en valideer afhankelijkheden opnieuw. 
 
-    ![Pagina om extra afhankelijkheden toe te voegen](./media/move-region-availability-zone/add-additional-dependencies.png)
+    ![Pagina om aanvullende afhankelijkheden toe te voegen](./media/move-region-availability-zone/add-additional-dependencies.png)
 
-4. Controleer op de pagina **over verschillende regio's** of de resources nu in behandeling zijn en zonder problemen worden voor *bereid* .
+4. Controleer op de pagina **Tussen regio's** of de resources nu de status *Voorbereiding in behandeling* hebben, zonder problemen.
 
-    ![Pagina met resources bij het voorbereiden van de status in behandeling](./media/move-region-availability-zone/prepare-pending.png)
+    ![Pagina met resources met de status Voorbereiding in behandeling](./media/move-region-availability-zone/prepare-pending.png)
 
-## <a name="move-the-source-resource-group"></a>De bron resource groep verplaatsen 
+## <a name="move-the-source-resource-group"></a>De bronresourcegroep verplaatsen 
 
 Voordat u Vm's kunt voorbereiden en verplaatsen, moet de bron resource groep aanwezig zijn in de doel regio. 
 
-### <a name="prepare-to-move-the-source-resource-group"></a>Het verplaatsen van de bron resource groep voorbereiden
+### <a name="prepare-to-move-the-source-resource-group"></a>De bronresourcegroep voorbereiden voor verplaatsing
 
-Bereid u als volgt voor:
+Bereid als volgt voor:
 
-1. In **meerdere regio's**selecteert u de bron resource groep die > **voorbereiden**.
-2. Klik in **resources voorbereiden**op **voorbereiden**.
+1. Selecteer in **Tussen regio's** de bronresourcegroep > **Voorbereiden**.
+2. Klik in **Resources voorbereiden** op **Voorbereiden**.
 
     ![Knop voor het voorbereiden van de bron resource groep](./media/move-region-availability-zone/prepare-resource-group.png)
 
-    Tijdens het voorbereidings proces genereert resource-overwerker Azure Resource Manager (ARM)-Sjablonen met behulp van de instellingen van de resource groep. Resources in de resource groep worden niet beïnvloed.
+    Tijdens het voorbereidingsproces worden met Resource Mover ARM-sjablonen (Azure Resource Manager) gegenereerd met behulp van de instellingen voor de resourcegroep. Resources in de resourcegroep worden niet beïnvloed.
 
 > [!NOTE]
->  Nadat u de resource groep hebt voor bereid, is deze in de status *initiëren verplaatsen in behandeling* . 
+>  Nadat de resourcegroep is voorbereid, heeft deze niet de status *Initiëren verplaatsing in behandeling*. 
 
 ![Status waarin de status initiate in behandeling wordt weer gegeven](./media/move-region-availability-zone/initiate-resource-group-pending.png)
 
-### <a name="move-the-source-resource-group"></a>De bron resource groep verplaatsen
+### <a name="move-the-source-resource-group"></a>De bronresourcegroep verplaatsen
 
-Start de verplaatsing als volgt:
+Initieer de verplaatsing als volgt:
 
-1. In **meerdere regio's**selecteert u de resource groep > **initieert verplaatsen**
-2. **resources verplaatsen**, klikt u op **verplaatsen starten**. De resource groep wordt verplaatst naar een status *van initiëren verplaatsen in uitvoering* .
-3. Nadat de verplaatsing is gestart, wordt de doel resource groep gemaakt op basis van de gegenereerde ARM-sjabloon. De bron resource groep wordt verplaatst naar de status *door voeren verplaatsen in behandeling* .
+1. Selecteer in **Tussen regio's** de resourcegroep > **Verplaatsing initiëren**
+2. Klik in **Resources verplaatsen** op **Verplaatsing initiëren**. De resourcegroep wordt verplaatst naar een status *Initiëren verplaatsing wordt uitgevoerd*.
+3. Nadat de verplaatsing is geïnitieerd, wordt de doelresourcegroep gemaakt op basis van de gegenereerde ARM-sjabloon. De bronresourcegroep wordt verplaatst naar een status *Verplaatsing doorvoeren in behandeling*.
 
 ![Status van door Voer verplaatsen](./media/move-region-availability-zone/commit-move-pending.png)
 
-Ga als volgt te werk om het proces te verplaatsen en te volt ooien:
+Ga als volgt te werk om het verplaatsingsproces door te voeren en te voltooien:
 
 1. In **meerdere regio's**selecteert u de resource groep > **door voeren verplaatsen**
-2. **resources verplaatsen**, klikt u op **door voeren**.
+2. Klik in **Resources verplaatsen** op **Doorvoeren**.
 
 > [!NOTE]
-> Nadat de verplaatsing is doorgevoerd, bevindt de bron resource groep zich in de status *Verwijder bron in behandeling* .
+> Nadat de verplaatsing is doorgevoerd, bevindt de bronresourcegroep zich in de status *Verwijderen bron in behandeling*.
 
 
 ## <a name="add-a-target-availability-zone"></a>Een doel beschikbaarheids zone toevoegen
@@ -172,109 +172,109 @@ Voordat we de rest van de resources verplaatsen, stellen we een doel beschikbaar
     ![instellingen VM](./media/move-region-availability-zone/vm-settings.png)
 
 
-## <a name="prepare-resources-to-move"></a>Resources voorbereiden om te verplaatsen
+## <a name="prepare-resources-to-move"></a>Te verplaatsen resources voorbereiden
 
-Nu de bron resource groep is verplaatst, kunt u voorbereiden om de andere resources te verplaatsen.
+Nadat de bronresourcegroep is verplaatst, kunt u het verplaatsen van de andere resources voorbereiden.
 
-1. In **meerdere regio's**selecteert u de resources die u wilt voorbereiden. 
+1. Selecteer in **Tussen regio's** de resources die u wilt voorbereiden. 
 
-    ![Pagina voor het selecteren van voor bereiding voor andere resources](./media/move-region-availability-zone/prepare-other.png)
+    ![Pagina voor het selecteren van andere resources om voor te bereiden](./media/move-region-availability-zone/prepare-other.png)
 
-2. Selecteer **voorbereiden**. 
+2. Selecteer **Voorbereiden**. 
 
 > [!NOTE]
 > - Tijdens het voorbereidings proces wordt de Azure Site Recovery Mobility-agent geïnstalleerd op virtuele machines, voor replicatie.
-> - VM-gegevens worden periodiek gerepliceerd naar de doel regio. Dit heeft geen invloed op de bron-VM.
-> - Met resource verplaatsen worden ARM-sjablonen voor de andere bron bronnen gegenereerd.
-> - Na het voorbereiden van de resources bevinden ze zich in een status van *initiëren verplaatsen in behandeling* .
+> - VM-gegevens worden periodiek naar de doelregio gerepliceerd. Dit heeft geen invloed op de bron-VM.
+> - Met Resource Mover worden ARM-sjablonen voor de andere bronresources gegenereerd.
+> - Nadat de resources zijn voorbereid, bevinden ze zich in de status *Initiëren verplaatsing in behandeling*.
 
-![Pagina met resources in de status initiate verplaatsen in behandeling](./media/move-region-availability-zone/initiate-move-pending.png)
+![Pagina met resources met de status Initiëren verplaatsing in behandeling](./media/move-region-availability-zone/initiate-move-pending.png)
 
 ## <a name="initiate-the-move"></a>De verplaatsing initiëren
 
-Met de resources die zijn voor bereid, kunt u de verplaatsing nu initiëren. 
+Nu de resources zijn voorbereid, kunt u de verplaatsing initiëren. 
 
-1. In **meerdere regio's**selecteert u resources met de status *initiëren verplaatsen in behandeling*. Klik vervolgens op **Start verplaatsen**
-2. Klik in **resources verplaatsen**op **verplaatsen starten**.
+1. Selecteer in **Tussen regio's** resources met de status *Initiëren verplaatsing in behandeling*. Klik vervolgens op **Start verplaatsen**
+2. Klik in **Resources verplaatsen** op **Verplaatsing initiëren**.
 
     ![Pagina voor het initiëren van verplaatsen van resources](./media/move-region-availability-zone/initiate-move.png)
 
-3. Voortgang van verplaatsen volgen op de balk meldingen.
+3. Controleer de voortgang van de verplaatsing in de meldingenbalk.
 
 
 > [!NOTE]
-> - Voor Vm's worden replica-Vm's gemaakt in de doel regio. De bron-VM wordt afgesloten en er treedt enige downtime op (meestal minuten).
-> - Resource-verplaatsen maakt andere resources opnieuw met behulp van de ARM-sjablonen die zijn voor bereid. Meestal is er geen downtime.
+> - Voor VM's worden replica-VM's gemaakt in de doelregio. De bron-VM wordt uitgeschakeld en er treedt enige downtime op (meestal een aantal minuten).
+> - Met Resource Mover worden andere resources opnieuw gemaakt met behulp van de ARM-sjablonen die zijn voorbereid. Meestal treedt er geen downtime op.
 > - Na het voorbereiden van resources, hebben ze een status *door voeren die in behandeling* is.
 
 
 ![Pagina voor het weer geven van resources in de status door Voer verplaatsen in behandeling](./media/move-region-availability-zone/resources-commit-move-pending.png)
 
-## <a name="discard-or-commit"></a>Negeren of door voeren?
+## <a name="discard-or-commit"></a>Verwijderen of doorvoeren?
 
-Na de eerste verplaatsing kunt u beslissen of u de verplaatsing wilt door voeren of wilt negeren. 
+Na de eerste verplaatsing kunt u beslissen of u de verplaatsing wilt doorvoeren of verwijderen. 
 
-- **Negeren**: u kunt een verplaatsing negeren als u wilt testen en u niet echt de bron resource wilt verplaatsen. Als u de verplaatsing verwijdert, wordt de resource teruggezet naar een status van *initiëren verplaatsen in behandeling*.
-- **Door voeren**: door voeren voltooit de verplaatsing naar de doel regio. Na het door voeren heeft een bron resource de status *verwijderen in behandeling*en kunt u bepalen of u deze wilt verwijderen.
+- **Verwijderen**: Mogelijk wilt u een verplaatsing verwijderen als u een test uitvoert en de bronresource niet echt wilt verplaatsen. Als u de verplaatsing negeert, wordt de resource teruggezet in de status *Initiëren verplaatsing in behandeling*.
+- **Doorvoeren**: Met doorvoeren wordt de verplaatsing naar de doelregio voltooid. Na het doorvoeren heeft een bronresource de status *Verwijderen bron in behandeling*en kunt u besluiten of u deze wilt verwijderen.
 
-## <a name="discard-the-move"></a>Verplaatsen verwijderen 
+## <a name="discard-the-move"></a>De verplaatsing verwijderen 
 
-U kunt de verplaatsing als volgt negeren:
+U kunt de verplaatsing als volgt verwijderen:
 
-1. In **meerdere regio's**selecteert u resources met status *doorvoer verplaatsen in behandeling*en klikt u op **verwijderen verplaatsen**.
-2. Klik in **verwijderen verplaatsen**op **negeren**.
-3. Voortgang van verplaatsen volgen op de balk meldingen.
+1. Selecteer in **Tussen regio's** resources met de status *Verplaatsing doorvoeren in behandeling* en klik op **Verplaatsing verwijderen**.
+2. Klik in **Verplaatsing verwijderen** op **Verwijderen**.
+3. Controleer de voortgang van de verplaatsing in de meldingenbalk.
  
 
 > [!NOTE]
 > Voor virtuele machines, na het verwijderen van resources, hebben ze de status *initiëren in behandeling* .
 
-## <a name="commit-the-move"></a>De verplaatsing door voeren
+## <a name="commit-the-move"></a>De verplaatsing doorvoeren
 
-Als u het Verplaats proces wilt volt ooien, moet u de verplaatsing door voeren. 
+Als u het verplaatsingsproces wilt voltooien, moet u de verplaatsing doorvoeren. 
 
-1. In **meerdere regio's**selecteert u resources met status *doorvoer verplaatsen in behandeling*en klikt u op **door voeren verplaatsen**.
-2. Klik in **resources vastleggen**op **door voeren**.
+1. Selecteer in **Tussen regio's** resources met de status *Verplaatsing doorvoeren in behandeling* en klik op **Verplaatsing doorvoeren**.
+2. Klik in **Resources doorvoeren** op **Doorvoeren**.
 
-    ![Pagina voor het door voeren van resources voor het volt ooien van verplaatsen](./media/move-region-availability-zone/commit-resources.png)
+    ![Pagina voor het doorvoeren van resources om de verplaatsing te voltooien](./media/move-region-availability-zone/commit-resources.png)
 
-3. Volg de voortgang van de toewijzing in de balk meldingen.
+3. Controleer de voortgang van het doorvoeren in de meldingenbalk.
 
 > [!NOTE]
-> - Na het door voeren van de verplaatsing, stoppen Vm's repliceren. De bron-VM heeft geen invloed op de door voer.
-> - Door voeren heeft geen invloed op bron netwerk bronnen.
-> - Na het door voeren van de verplaatsing bevinden resources zich in de status *verwijderings bron in behandeling* .
+> - Na het doorvoeren van de verplaatsing, worden VM's niet meer gerepliceerd. De bron-VM wordt door de doorvoer niet beïnvloed.
+> - Doorvoeren heeft geen invloed op bronnetwerkresources.
+> - Nadat de verplaatsing is doorgevoerd, bevinden de resources zich in de status *Verwijderen bron in behandeling*.
 
-![Pagina met bronnen in * Verwijder bron in behandeling * status](./media/move-region-availability-zone/delete-source-pending.png)
+![Pagina met resources met de status *Verwijderen bron in behandeling*](./media/move-region-availability-zone/delete-source-pending.png)
 
-## <a name="configure-settings-after-the-move"></a>Instellingen configureren na het verplaatsen
+## <a name="configure-settings-after-the-move"></a>Instellingen configureren na de verplaatsing
 
-De Mobility-service wordt niet automatisch verwijderd van Vm's. Verwijder de service hand matig of sluit deze als u van plan bent om de server opnieuw te verplaatsen.
+De Mobility-service wordt niet automatisch van VM's verwijderd. Verwijder de service handmatig of laat deze staan als u van plan bent de server opnieuw te verplaatsen.
 
 
-## <a name="delete-source-resources-after-commit"></a>Bron bronnen verwijderen na door voeren
+## <a name="delete-source-resources-after-commit"></a>Bronresources verwijderen na doorvoeren
 
-Na de verplaatsing kunt u eventueel resources verwijderen in de bron regio.
+Na de verplaatsing kunt u desgewenst de resources in de bronregio verwijderen.
 
-1. In **meerdere regio's**klikt u op de naam van elke bron resource die u wilt verwijderen.
-2. Selecteer op de pagina eigenschappen voor elke resource **verwijderen**.
+1. Klik in **Tussen regio's** op de naam van elke bronresource die u wilt verwijderen.
+2. Selecteer **Verwijderen** op de eigenschappenpagina van elke resource.
 
-## <a name="delete-additional-resources-created-for-move"></a>Extra resources verwijderen die zijn gemaakt voor verplaatsen
+## <a name="delete-additional-resources-created-for-move"></a>Aanvullende resources verwijderen die zijn gemaakt om te worden verplaatst
 
-Na de verplaatsing kunt u hand matig de verzameling verplaatsen en Site Recovery gemaakte resources verwijderen.
+Na de verplaatsing kunt u handmatig de verzameling voor verplaatsen en de Site Recovery-resources die zijn gemaakt, verwijderen.
 
-- De verzameling verplaatsen wordt standaard verborgen. Als u dit wilt zien, moet u verborgen resources inschakelen.
-- De cache opslag heeft een vergren deling die moet worden verwijderd voordat deze kan worden verwijderd.
+- De verzameling voor verplaatsen wordt standaard verborgen. Als u deze wilt zien, moet u verborgen resources inschakelen.
+- De cacheopslag heeft een vergrendeling die moet worden verwijderd voordat de cacheopslag kan worden verwijderd.
 
-Verwijder als volgt: 
+Verwijder deze als volgt: 
 
-1. Zoek de resources in de resource groep ```RegionMoveRG-<sourceregion>-<target-region>``` .
-2. Controleer of alle virtuele machines en andere bron bronnen in de bron regio zijn verplaatst of verwijderd. Dit zorgt ervoor dat er geen resources in behandeling zijn.
+1. Zoek de resources in resourcegroep ```RegionMoveRG-<sourceregion>-<target-region>```.
+2. Controleer of alle virtuele machines en andere bronresources in de bronregio zijn verplaatst of verwijderd. Zo weet u zeker dat er geen resources in behandeling zijn die hiervan gebruikmaken.
 2. De resources verwijderen:
 
-    - De naam van de verzameling die u wilt verplaatsen ```movecollection-<sourceregion>-<target-region>``` .
-    - De naam van het cache-opslag account is ```resmovecache<guid>```
-    - De kluis naam is ```ResourceMove-<sourceregion>-<target-region>-GUID``` .
+    - De naam van de verzameling voor verplaatsen is ```movecollection-<sourceregion>-<target-region>```.
+    - De naam van het cacheopslagaccount is ```resmovecache<guid>```
+    - De naam van de kluis is ```ResourceMove-<sourceregion>-<target-region>-GUID```.
 
 ## <a name="next-steps"></a>Volgende stappen
 

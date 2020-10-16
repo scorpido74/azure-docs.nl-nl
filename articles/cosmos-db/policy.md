@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: 44519a21296fd658f12b8d7df2191797b16caf7f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91320894"
 ---
 # <a name="use-azure-policy-to-implement-governance-and-controls-for-azure-cosmos-db-resources"></a>Azure Policy gebruiken voor het implementeren van governance en controles voor Azure Cosmos DB resources
@@ -126,7 +126,7 @@ De scherm afbeelding toont de volgende resultaten van de compliantie-evaluatie v
 - Nul van twee accounts voldoet aan een beleid waarvoor het account moet worden geconfigureerd voor meerdere schrijf locaties
 - Nul van twee accounts voldoet aan een beleid dat is geïmplementeerd op de toegestane Azure-regio's.
 
-:::image type="content" source="./media/policy/compliance.png" alt-text="Nalevings resultaten voor Azure Policy toewijzingen in de lijst":::
+:::image type="content" source="./media/policy/compliance.png" alt-text="Zoeken naar Azure Cosmos DB ingebouwde beleids definities":::
 
 Zie [resources herstellen met Azure Policy](../governance/policy/how-to/remediate-resources.md)om de niet-compatibele resources te herstellen.
 

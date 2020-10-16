@@ -7,19 +7,60 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 08/09/2020
-ms.openlocfilehash: ad0ff98174a81518fe26063f9ccc6acbbddbf8d6
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.date: 10/07/2020
+ms.openlocfilehash: c1d43da3a0be65b2351a4b6dbeeb2772062356bc
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91442381"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974631"
 ---
 # <a name="archived-release-notes"></a>Gearchiveerde releaseopmerkingen
 
 ## <a name="summary"></a>Samenvatting
 
 Azure HDInsight is onder zakelijke klanten een van de meest populaire services voor open source Apache Hadoop- en Apache Spark-analyses in Azure.
+
+## <a name="release-date-09282020"></a>Release datum: 09/28/2020
+
+Deze versie is van toepassing op zowel HDInsight 3,6 als HDInsight 4,0. HDInsight-release wordt beschikbaar gesteld voor alle regio's over enkele dagen. De release datum geeft hier de release datum van de eerste regio aan. Als de onderstaande wijzigingen niet worden weer gegeven, wacht u tot de release over enkele dagen in uw regio actief is.
+
+### <a name="new-features"></a>Nieuwe functies
+#### <a name="autoscale-for-interactive-query-with-hdinsight-40-is-now-generally-available"></a>Automatisch schalen voor interactieve Query's met HDInsight 4,0 is nu algemeen beschikbaar
+Automatisch schalen voor interactief query cluster type is nu algemeen beschikbaar (GA) voor HDInsight 4,0. Alle interactieve query 4,0-clusters die zijn gemaakt na 27 augustus 2020, hebben ondersteuning voor automatisch schalen.
+
+#### <a name="hbase-cluster-supports-premium-adls-gen2"></a>HBase-cluster ondersteunt Premium-ADLS Gen2
+HDInsight ondersteunt nu Premium ADLS Gen2 als primair opslag account voor HDInsight HBase 3,6-en 4,0-clusters. In combi natie met [versnelde schrijf bewerkingen](./hbase/apache-hbase-accelerated-writes.md)kunt u betere prestaties voor uw HBase-clusters krijgen.
+
+#### <a name="kafka-partition-distribution-on-azure-fault-domains"></a>Distributie van Kafka-partities in azure-fout domeinen
+Een foutdomein is een logische groepering van de onderliggende hardware in een Azure-datacenter. Elk foutdomein deelt een algemene voedingsbron en netwerkswitch. Voordat HDInsight Kafka alle partitie replica's in hetzelfde fout domein kan opslaan. Vanaf deze release ondersteunt HDInsight nu automatisch de distributie van Kafka-partities op basis van Azure-fout domeinen. 
+
+#### <a name="encryption-in-transit"></a>Versleuteling 'in transit'
+Klanten kunnen versleuteling in transit tussen cluster knooppunten inschakelen met behulp van IPSec-versleuteling met door het platform beheerde sleutels. Deze optie kan worden ingeschakeld op het moment dat het cluster wordt gemaakt. Zie meer informatie over [het inschakelen van versleuteling tijdens de overdracht](./domain-joined/encryption-in-transit.md).
+
+#### <a name="encryption-at-host"></a>Versleuteling op de host
+Wanneer u versleuteling inschakelt op de host, worden gegevens die op de VM-host zijn opgeslagen, versleuteld op rest en stromen die zijn versleuteld naar de opslag service. Vanuit deze release kunt u versleuteling op de **tijdelijke gegevens schijf op de host inschakelen** bij het maken van het cluster. Versleuteling op host wordt alleen ondersteund op [bepaalde VM-sku's in beperkte regio's](https://docs.microsoft.com/azure/virtual-machines/linux/disks-enable-host-based-encryption-portal). HDInsight ondersteunt de [volgende knooppunt configuratie en sku's](./hdinsight-supported-node-configuration.md). Zie meer informatie over [het inschakelen van versleuteling op de host](https://docs.microsoft.com/azure/hdinsight/disk-encryption#encryption-at-host-using-platform-managed-keys).
+
+#### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Verplaatsen naar schaal sets voor virtuele Azure-machines
+HDInsight maakt nu gebruik van virtuele machines van Azure om het cluster in te richten. Vanaf deze release wordt de service geleidelijk naar [virtuele-machine schaal sets van Azure](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)gemigreerd. Het hele proces kan maanden duren. Nadat uw regio's en abonnementen zijn gemigreerd, worden nieuw gemaakte HDInsight-clusters uitgevoerd op virtuele-machine schaal sets zonder klant acties. Er wordt geen breuk wijziging verwacht.
+
+### <a name="deprecation"></a>Afschaffing
+Geen afschaffing voor deze release.
+
+### <a name="behavior-changes"></a>Gedrags wijzigingen
+Er is geen wijziging van het gedrag voor deze versie.
+
+### <a name="upcoming-changes"></a>Aanstaande wijzigingen
+De volgende wijzigingen worden uitgevoerd in toekomstige releases.
+
+#### <a name="ability-to-select-different-zookeeper-sku-for-spark-hadoop-and-ml-services"></a>Mogelijkheid om verschillende Zookeeper-SKU'S te selecteren voor Spark-, Hadoop-en ML-Services
+HDInsight biedt geen ondersteuning voor het wijzigen van Zookeeper SKU voor cluster typen van Spark, Hadoop en ML Services. Er wordt gebruikgemaakt van A2_v2/a2 SKU voor Zookeeper knooppunten en klanten worden niet in rekening gebracht. In de aanstaande release kunnen klanten de Zookeeper-SKU voor Spark-, Hadoop-en ML-Services indien nodig wijzigen. Zookeeper-knoop punten met een andere SKU dan A2_v2/a2 worden in rekening gebracht. De standaard-SKU wordt nog steeds A2_V2/a2 en gratis.
+
+### <a name="bug-fixes"></a>Opgeloste fouten
+HDInsight blijft de betrouw baarheid en prestaties van het cluster verbeteren. 
+
+### <a name="component-version-change"></a>Onderdeel versie wijzigen
+Er is geen wijziging van de onderdeel versie voor deze versie. In [dit document](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)vindt u de huidige versie van de onderdelen voor hdinsight 4,0 en hdinsight 3,6.
 
 ## <a name="release-date-08092020"></a>Release datum: 08/09/2020
 
@@ -304,7 +345,7 @@ Met HDInsight Identity Broker (HIB) kunnen gebruikers zich aanmelden bij Apache 
 
 #### <a name="kafka-rest-api-proxy-preview"></a>Kafka rest API-proxy (preview-versie)
 
-Kafka rest API proxy biedt één klik voor de implementatie van de Maxi maal beschik bare REST proxy met Kafka-cluster via een beveiligde AAD-autorisatie en een OAuth-protocol. 
+Kafka rest API proxy biedt één klik voor de implementatie van de Maxi maal beschik bare REST proxy met het Kafka-cluster via een beveiligde Azure AD-autorisatie en een OAuth-protocol. 
 
 #### <a name="auto-scale"></a>Automatisch schalen
 
@@ -751,7 +792,7 @@ Deze release bevat component 1.2.1 en hive 2.1.0 naast de volgende patches:
 
 -   [*Hive-18189*](https://issues.apache.org/jira/browse/HIVE-18189): de Hive-query retourneert onjuiste resultaten wanneer Hive. GroupBy. OrderBy. position. alias is ingesteld op True.
 
--   [*Hive-18258*](https://issues.apache.org/jira/browse/HIVE-18258): VECTORIZATION: groep voor verkleinen van MERGEPARTIAL met dubbele kolommen is verbroken.
+-   [*Hive-18258*](https://issues.apache.org/jira/browse/HIVE-18258): Vectorization: Reduce-Side groep door MERGEPARTIAL met dubbele kolommen is verbroken.
 
 -   [*Hive-18293*](https://issues.apache.org/jira/browse/HIVE-18293): de Hive kan geen tabellen bevatten die zijn opgenomen in een map die geen eigendom is van de identiteit waarop HiveMetaStore wordt uitgevoerd.
 
@@ -859,7 +900,7 @@ Deze release bevat component 1.2.1 en hive 2.1.0 naast de volgende patches:
 
 -   [*Hive-18189*](https://issues.apache.org/jira/browse/HIVE-18189): order by-positie werkt niet wanneer CBO is uitgeschakeld.
 
--   [*Hive-18258*](https://issues.apache.org/jira/browse/HIVE-18258): VECTORIZATION: groep voor verkleinen van MERGEPARTIAL met dubbele kolommen is verbroken.
+-   [*Hive-18258*](https://issues.apache.org/jira/browse/HIVE-18258): Vectorization: Reduce-Side groep door MERGEPARTIAL met dubbele kolommen is verbroken.
 
 -   [*Hive-18269*](https://issues.apache.org/jira/browse/HIVE-18269): LLAP: Fast LLAP io met trage verwerkings pijplijn kan leiden tot oom.
 
@@ -981,7 +1022,7 @@ In HDP-2.3. x en 2,4. x, in plaats van een specifieke Apache-release van mahout 
 
 Het revisie punt dat is gekozen voor mahout in HDP 2.3. x en 2,4. x is van de ' mahout-0,10. x ' vertakking van Apache mahout, vanaf 19 december 2014, Revision 0f037cb03e77c096 in GitHub.
 
-In HDP-2.5. x en 2.6. x is de bibliotheek ' commons-httpclient maakt ' van mahout verwijderd omdat deze wordt weer gegeven als een verouderde bibliotheek met mogelijke beveiligings problemen en de Hadoop-client in mahout is bijgewerkt naar versie 2.7.3, dezelfde versie die wordt gebruikt in HDP-2,5. Als gevolg hiervan:
+In HDP-2.5. x en 2.6. x is de bibliotheek ' commons-httpclient maakt ' verwijderd uit mahout omdat we deze weer geven als een verouderde bibliotheek met mogelijke beveiligings problemen en een upgrade van de Hadoop-Client in mahout naar versie 2.7.3, dezelfde versie die wordt gebruikt in HDP-2,5. Als gevolg hiervan:
 
 -   Eerder gecompileerde mahout-taken moeten opnieuw worden gecompileerd in de HDP-2,5-of 2,6-omgeving.
 
@@ -1139,7 +1180,7 @@ Deze release biedt Spark 2.3.0 en de volgende Apache-patches:
 
 -   [Spark-23598](https://issues.apache.org/jira/browse/SPARK-23598): Maak methoden in BufferedRowIterator openbaar om runtime fout voor een grote query te voor komen.
 
--   [Spark-23599](https://issues.apache.org/jira/browse/SPARK-23599): Voeg een uuid-Generator toe uit pseudo-wille keurige getallen.
+-   [Spark-23599](https://issues.apache.org/jira/browse/SPARK-23599): Voeg een uuid-Generator toe uit Pseudo-Random getallen.
 
 -   [Spark-23599](https://issues.apache.org/jira/browse/SPARK-23599): gebruik RandomUUIDGenerator in uuid-expressie.
 
@@ -1358,7 +1399,7 @@ Met opgeloste problemen worden geselecteerde problemen weer gegeven die eerder z
 | BUG-92957              | [HIVE-11266](https://issues.apache.org/jira/browse/HIVE-11266)                                                                                                                                                                                                                 | aantal ( \* ) onjuist resultaat op basis van tabel statistieken voor externe tabellen                                                   |
 | BUG-93097              | [ZWERVER-1944](https://issues.apache.org/jira/browse/RANGER-1944)                                                                                                                                                                                                               | Actie filter voor controle van beheerder werkt niet                                                                           |
 | BUG-93335              | [HIVE-12315](https://issues.apache.org/jira/browse/HIVE-12315)                                                                                                                                                                                                                 | vectorization \_ Short \_ Regress. q heeft een onjuist resultaat voor een dubbele berekening                                      |
-| BUG-93415              | [Hive-18258](https://issues.apache.org/jira/browse/HIVE-18258), [Hive-18310](https://issues.apache.org/jira/browse/HIVE-18310)                                                                                                                                                 | Vectorization: groep voor verkleinen van MERGEPARTIAL met dubbele kolommen is verbroken                                      |
+| BUG-93415              | [Hive-18258](https://issues.apache.org/jira/browse/HIVE-18258), [Hive-18310](https://issues.apache.org/jira/browse/HIVE-18310)                                                                                                                                                 | Vectorization: Reduce-Side GROUP BY MERGEPARTIAL met dubbele kolommen is verbroken                                      |
 | BUG-93939              | [ATLAS-2294](https://issues.apache.org/jira/browse/ATLAS-2294)                                                                                                                                                                                                                 | Er is een extra para meter "Description" toegevoegd bij het maken van een type                                                               |
 | BUG-94007              | [Phoenix-1751](https://issues.apache.org/jira/browse/PHOENIX-1751), [Phoenix-3112](https://issues.apache.org/jira/browse/PHOENIX-3112)                                                                                                                                         | Phoenix-Query's retour neren Null-waarden vanwege gedeeltelijke rijen van HBase                                                          |
 | BUG-94266              | [HIVE-12505](https://issues.apache.org/jira/browse/HIVE-12505)                                                                                                                                                                                                                 | Het overschrijven van een bestand in dezelfde versleutelde zone op de achtergrond wordt niet ongedaan gemaakt.                                   |
@@ -1751,7 +1792,7 @@ Met opgeloste problemen worden geselecteerde problemen weer gegeven die eerder z
 |**Kafka 1,0**|**N.v.t.**|**Wijzigingen zoals beschreven in de opmerkingen bij de Apache Spark-release** |https://kafka.apache.org/10/documentation.html#upgrade_100_notable|
 |**Hive/zwerver** | |Extra zwerver-Hive-beleids regels die vereist zijn voor het OVERSCHRIJVEN van de toevoeging |**Scenario:** Extra zwerver-Hive-beleids regels die vereist zijn voor het OVERSCHRIJVEN van de **toevoeging**<br /><br />**Vorig gedrag:** Het negeren van query's voor Hive- **invoegingen** slaagt zoals gebruikelijk.<br /><br />**Nieuw gedrag:** Het **overschrijven** van Hive-query's van het onderdeel is onverwacht mislukt na een upgrade naar HDP-2.6. x met de volgende fout:<br /><br />Fout bij het compileren van de instructie: mislukt: de HiveAccessControlException toestemming is geweigerd: de gebruiker jdoe heeft geen schrijf bevoegdheid op/tmp/ \* (status = 42000, code = 40000)<br /><br />Net als bij HDP-2.6.0 is voor het **overschrijven** van Hive-query's vereist een ZWERVER-URI-beleid om schrijf bewerkingen toe te staan, zelfs als de gebruiker schrijf bevoegdheid heeft verleend via HDFS-beleid.<br /><br />**Tijdelijke oplossing/verwachte klant actie:**<br /><br />1. Maak een nieuw beleid onder Hive-opslag.<br />2. Selecteer URI in de vervolg keuzelijst waar u de data base ziet.<br />3. het pad bijwerken (voor beeld:/tmp/*)<br />4. Voeg de gebruikers en groep toe en sla het op.<br />5. Voer de query INSERT opnieuw uit.|
 |**HDFS**|**N.v.t.** |HDFS moet ondersteuning bieden voor meerdere KMS-Uri's |**Gedrag vorige:** DFS. encryption. key. provider. URI is gebruikt voor het configureren van het pad van de KMS-provider.<br /><br />**Nieuw gedrag:** DFS. encryption. key. provider. URI is nu voor het configureren van het pad van de KMS-provider vervangen door Hadoop. Security. key. provider. Path.|
-|**Zeppelin**|[**ZEPPELIN-3271**](https://issues.apache.org/jira/browse/ZEPPELIN-3271)|Optie voor het uitschakelen van scheduler |**Betrokken onderdeel:** Zeppelin-server<br /><br />**Vorig gedrag:** In eerdere releases van Zeppelin was er geen optie voor het uitschakelen van scheduler.<br /><br />**Nieuw gedrag:** Standaard wordt scheduler niet meer weer geven voor gebruikers, omdat deze standaard is uitgeschakeld.<br /><br />**Tijdelijke oplossing/verwachte klant actie:** Als u scheduler wilt inschakelen, moet u azeppelin. notebook. cron. enable met de waarde True toevoegen onder de aangepaste Zeppelin-site in Zeppelin instellingen van Ambari.|
+|**Zeppelin**|[**ZEPPELIN-3271**](https://issues.apache.org/jira/browse/ZEPPELIN-3271)|Optie voor het uitschakelen van scheduler |**Betrokken onderdeel:** Zeppelin-Server<br /><br />**Vorig gedrag:** In eerdere releases van Zeppelin was er geen optie voor het uitschakelen van scheduler.<br /><br />**Nieuw gedrag:** Standaard wordt scheduler niet meer weer geven voor gebruikers, omdat deze standaard is uitgeschakeld.<br /><br />**Tijdelijke oplossing/verwachte klant actie:** Als u scheduler wilt inschakelen, moet u azeppelin. notebook. cron. enable met de waarde True toevoegen onder de aangepaste Zeppelin-site in Zeppelin instellingen van Ambari.|
 
 ### <a name="known-issues"></a>Bekende problemen
 

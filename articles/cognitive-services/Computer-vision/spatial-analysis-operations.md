@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: aahi
 ms.openlocfilehash: 80f0d29de6b3013ad02ed1a5d34bebdf81a8766b
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91628210"
 ---
 # <a name="spatial-analysis-operations"></a>Ruimtelijke analyse bewerkingen
 
-Ruimtelijke analyse maakt het mogelijk om realtime streaming video van camera apparaten te analyseren. Voor elk camera apparaat dat u configureert, wordt met de bewerkingen voor ruimtelijke analyse een uitvoer stroom gegenereerd van JSON-berichten die zijn verzonden naar uw exemplaar van Azure IoT Hub. 
+Met ruimtelijke analyse kunt u het realtime streamen van video van camera's analyseren. Voor elke camera die u configureert, wordt een uitvoerstroom van JSON-berichten gegenereerd die naar uw exemplaar van Azure IoT Hub wordt verzonden. 
 
 De container voor ruimtelijke analyse implementeert de volgende bewerkingen:
 

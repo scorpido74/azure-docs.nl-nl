@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
 ms.openlocfilehash: 0ed237debc2395ed307658b2d57a541574f9478a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87284146"
 ---
 # <a name="add-parameters-to-commands"></a>Parameters toevoegen aan opdrachten
@@ -36,7 +36,7 @@ Bewerk de bestaande **TurnOn** -opdracht om meerdere apparaten in te scha kelen 
    1. Selecteer **naam wijzigen**. Wijzig in het venster naam wijzigen de **optie** **naam** in **TurnOnOff**.
 
 1. Vervolgens voegt u een nieuwe para meter toe aan deze opdracht die aangeeft of de gebruiker het apparaat wil in-of uitschakelen.
-   1. Selecteer boven in het middelste deel venster de optie **toevoegen** . Selecteer in de vervolg keuzelijst de **para meter**.
+   1. Selecteer boven in het middelste deel venster de optie  **toevoegen** . Selecteer in de vervolg keuzelijst de **para meter**.
    1. In het rechterdeel venster, in het gedeelte **para meters** , voegt u waarde in het vak **naam** toe als **ONOFF**.
    1. Selecteer **vereist**. Selecteer in het venster **reactie voor een vereiste para meter toevoegen** de optie **eenvoudige editor**. In de **eerste variant**toevoegen
         ```
@@ -50,18 +50,18 @@ Bewerk de bestaande **TurnOn** -opdracht om meerdere apparaten in te scha kelen 
    1. Nu gaan we de eigenschappen van de para meters configureren. Ga naar [verwijzingen](./custom-commands-references.md)voor uitleg van alle configuratie-eigenschappen van een opdracht. Configureer de eigenschappen van de para meter als volgt:
       
 
-       | Configuration      | Voorgestelde waarde     | Beschrijving                                                      |
+       | Configuratie      | Voorgestelde waarde     | Beschrijving                                                      |
        | ------------------ | ----------------| ---------------------------------------------------------------------|
-       | Naam               | `OnOff`           | Een beschrijvende naam voor de para meter                                                                           |
+       | Name               | `OnOff`           | Een beschrijvende naam voor de para meter                                                                           |
        | Is wereld wijd          | uitgeschakeld       | Selectie vakje dat aangeeft of een waarde voor deze para meter globaal wordt toegepast op alle opdrachten in de toepassing|
        | Vereist           | wel         | Selectie vakje dat aangeeft of een waarde voor deze para meter vereist is voordat de opdracht wordt voltooid |
-       | Antwoord voor vereiste para meter      |Eenvoudige editor >`On or Off?`      | Een prompt om te vragen naar de waarde van deze para meter als deze niet bekend is |
+       | Antwoord voor vereiste para meter      |Eenvoudige editor > `On or Off?`      | Een prompt om te vragen naar de waarde van deze para meter als deze niet bekend is |
        | Type               | Tekenreeks          | Het type para meter, zoals getal, teken reeks, datum/tijd of geografie   |
-       | Configuration      | Vooraf gedefinieerde invoer waarden accepteren van interne catalogus | Voor teken reeksen beperkt de invoer tot een reeks mogelijke waarden |
+       | Configuratie      | Vooraf gedefinieerde invoer waarden accepteren van interne catalogus | Voor teken reeksen beperkt de invoer tot een reeks mogelijke waarden |
        | Vooraf gedefinieerde invoer waarden     | `on`, `off`           | Set mogelijke waarden en hun aliassen         |
        
         
-   1. Voor het toevoegen van vooraf gedefinieerde invoer waarden selecteert u **een vooraf gedefinieerde invoer toevoegen** en in het venster **Nieuw item** typt u **naam** zoals opgegeven in de bovenstaande tabel. In dit geval gebruiken we geen aliassen, zodat u deze leeg kunt laten.
+   1. Voor het toevoegen van vooraf gedefinieerde invoer waarden selecteert u **een vooraf gedefinieerde invoer toevoegen** en in het venster **Nieuw item**  typt u **naam** zoals opgegeven in de bovenstaande tabel. In dit geval gebruiken we geen aliassen, zodat u deze leeg kunt laten.
    
       > [!div class="mx-imgBorder"]
       > ![Para meter maken](media/custom-commands/create-on-off-parameter.png)
@@ -75,12 +75,12 @@ Bewerk de bestaande **TurnOn** -opdracht om meerdere apparaten in te scha kelen 
 
        | Instelling            | Voorgestelde waarde       |
        | ------------------ | --------------------- |
-       | Naam               | `SubjectDevice`         |
+       | Name               | `SubjectDevice`         |
        | Is wereld wijd          | uitgeschakeld             |
        | Vereist           | wel               |
-       | Antwoord voor vereiste para meter     | Eenvoudige editor >`Which device do you want to control?`    | 
+       | Antwoord voor vereiste para meter     | Eenvoudige editor > `Which device do you want to control?`    | 
        | Type               | Tekenreeks                |          |
-       | Configuration      | Vooraf gedefinieerde invoer waarden accepteren van interne catalogus | 
+       | Configuratie      | Vooraf gedefinieerde invoer waarden accepteren van interne catalogus | 
        | Vooraf gedefinieerde invoer waarden | `tv`, `fan`               |
        | Aliassen ( `tv` )      | `television`, `telly`     |
 
@@ -90,9 +90,9 @@ Bewerk de bestaande **TurnOn** -opdracht om meerdere apparaten in te scha kelen 
 
 Voor opdrachten met para meters is het handig om voorbeeld zinnen toe te voegen die betrekking hebben op alle mogelijke combi Naties. Bijvoorbeeld:
 
-* Volledige parameter informatie-`turn {OnOff} the {SubjectDevice}`
-* Gedeeltelijke parameter informatie-`turn it {OnOff}`
-* Geen parameter informatie-`turn something`
+* Volledige parameter informatie- `turn {OnOff} the {SubjectDevice}`
+* Gedeeltelijke parameter informatie- `turn it {OnOff}`
+* Geen parameter informatie- `turn something`
 
 Met een voor beeld van zinnen met een andere mate van informatie kan de toepassing van de aangepaste opdrachten zowel oplossingen met één afronding als multi-turn oplossen met gedeeltelijke informatie.
 
@@ -109,7 +109,7 @@ turn something
 Selecteer **Opslaan**.
 
 > [!TIP]
-> Gebruik accolades in de editor voor beelden om de para meters te raadplegen. - `turn {OnOff} the {SubjectDevice}`Tabblad gebruiken voor het automatisch volt ooien van de back-up door eerder gemaakte para meters.
+> Gebruik accolades in de editor voor beelden om de para meters te raadplegen. - `turn {OnOff} the {SubjectDevice}` Tabblad gebruiken voor het automatisch volt ooien van de back-up door eerder gemaakte para meters.
 
 ### <a name="modify-completion-rules-to-include-parameters"></a>Voltooiings regels voor het toevoegen van para meters wijzigen
 
@@ -126,7 +126,7 @@ Wijzig de bestaande **ConfirmationResponse**van de voltooiings regel.
     ```
 1. Selecteer **Opslaan**.
 
-### <a name="try-it-out"></a>Probeer het eens
+### <a name="try-it-out"></a>Uitproberen
 1. Selecteer het pictogram **trein** boven in het rechterdeel venster.
 
 1. Wanneer de training is voltooid, selecteert u **testen**. Er wordt een **test-app** -venster weer gegeven.
@@ -147,11 +147,11 @@ Wijzig de **SetTemperature** -opdracht om deze in te scha kelen, zodat de Tempe 
 
 Nieuwe parameter **temperatuur** toevoegen met de volgende configuratie
 
-| Configuration      | Voorgestelde waarde     |
+| Configuratie      | Voorgestelde waarde     |
 | ------------------ | ----------------|
-| Naam               | `Temperature`           |
+| Name               | `Temperature`           |
 | Vereist           | wel         |
-| Antwoord voor vereiste para meter      | Eenvoudige editor >`What temperature would you like?`
+| Antwoord voor vereiste para meter      | Eenvoudige editor > `What temperature would you like?`
 | Type               | Getal          |
 
 
@@ -166,12 +166,12 @@ change the temperature
 
 Bewerk de bestaande voltooiings regels volgens de volgende configuratie.
 
-| Configuration      | Voorgestelde waarde     |
+| Configuratie      | Voorgestelde waarde     |
 | ------------------ | ----------------|
 | Voorwaarden         | Vereiste para meter > temperatuur           |
-| Acties           | > spraak antwoord verzenden`Ok, setting temperature to {Temperature} degrees` |
+| Acties           | > spraak antwoord verzenden `Ok, setting temperature to {Temperature} degrees` |
 
-### <a name="try-it-out"></a>Probeer het eens
+### <a name="try-it-out"></a>Uitproberen
 
 **Train** en **test** de wijzigingen met enkele interacties.
 
@@ -186,9 +186,9 @@ Voeg een para meter met de naam **DateTime** toe met de volgende configuratie.
 
    | Instelling                           | Voorgestelde waarde                     | 
    | --------------------------------- | ----------------------------------------|
-   | Naam                              | `DateTime`                               |
+   | Name                              | `DateTime`                               |
    | Vereist                          | wel                                 |
-   | Antwoord voor vereiste para meter   | Eenvoudige editor >`For what time?`            | 
+   | Antwoord voor vereiste para meter   | Eenvoudige editor > `For what time?`            | 
    | Type                              | DateTime                                |
    | Standaard waarden                     | Als datum ontbreekt, gebruikt u vandaag            |
    | Standaard waarden voor tijd                     | Gebruik begin van dag als tijd ontbreekt     |
@@ -210,10 +210,10 @@ Bewerk de bestaande voltooiings regels volgens de volgende configuratie.
 
    | Instelling    | Voorgestelde waarde                               |
    | ---------- | ------------------------------------------------------- |
-   | Acties    | Spraak antwoord verzenden-`Ok, alarm set for {DateTime}`  |
+   | Acties    | Spraak antwoord verzenden- `Ok, alarm set for {DateTime}`  |
 
 
-### <a name="try-it-out"></a>Probeer het eens
+### <a name="try-it-out"></a>Uitproberen
 
 **Train** en **test** de wijzigingen.
 - Invoer: alarm instellen voor morgen om 12:00 uur

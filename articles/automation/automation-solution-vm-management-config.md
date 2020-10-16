@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 06/01/2020
 ms.topic: conceptual
 ms.openlocfilehash: b0bc23d515bebdd0d943bbad33c5ebba35a35605
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90987201"
 ---
 # <a name="configure-startstop-vms-during-off-hours"></a>VM's buiten bedrijfsuren starten/stoppen configureren
@@ -143,13 +143,13 @@ Als u e-mail meldingen wilt wijzigen nadat VM's buiten bedrijfsuren starten/stop
 
 2. Klik op de pagina StartStop_VM_Notification op **Details bewerken** onder **Details**. Hiermee opent u de pagina E-mail/SMS/push/Voice. Werk het e-mail adres bij en klik op **OK** om uw wijzigingen op te slaan.
 
-    :::image type="content" source="media/automation-solution-vm-management/change-email.png" alt-text="Scherm afbeelding van de pagina E-mail/SMS/push/Voice met een voor beeld van een e-mail adres bijgewerkt.":::
+    :::image type="content" source="media/automation-solution-vm-management/change-email.png" alt-text="Scherm afbeelding van de pagina monitor-actie groepen.":::
 
     U kunt ook aanvullende acties toevoegen aan de actie groep, Zie [actie groepen](../azure-monitor/platform/action-groups.md) voor meer informatie over actie groepen
 
 Hier volgt een voor beeld van een e-mail bericht dat wordt verzonden wanneer virtuele machines worden afgesloten met de functie.
 
-:::image type="content" source="media/automation-solution-vm-management/email.png" alt-text="Scherm afbeelding van een voor beeld van een e-mail bericht dat wordt verzonden wanneer virtuele machines worden afgesloten met het onderdeel.":::
+:::image type="content" source="media/automation-solution-vm-management/email.png" alt-text="Scherm afbeelding van de pagina monitor-actie groepen.":::
 
 ## <a name="add-or-exclude-vms"></a><a name="add-exclude-vms"></a>Vm's toevoegen of uitsluiten
 

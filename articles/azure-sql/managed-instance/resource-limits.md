@@ -13,10 +13,10 @@ ms.author: bonova
 ms.reviewer: sstein, jovanpop, sachinp
 ms.date: 09/14/2020
 ms.openlocfilehash: 71392b652f305f085e8eddbfe75e0585a756bc4a
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91618111"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Overzicht van resource limieten voor Azure SQL Managed instance
@@ -36,7 +36,7 @@ SQL Managed instance heeft kenmerken en resource limieten die afhankelijk zijn v
 | **Hardware** | Intel® E5-2673 v3 (Haswell) 2,4 GHz-processors, Attached SSD vCore = 1 PP (fysieke kern) | Intel® E5-2673 v4 (Broadwell) 2,3 GHz, Intel® SP-8160 (Skylake) en Intel® 8272CL (trapsgewijze Lake) 2,5 GHz processors, Fast NVMe SSD, vCore = 1 LP (Hyper-Thread) |
 | **Aantal vCores** | 8, 16, 24 vCores | 4, 8, 16, 24, 32, 40, 64, 80 vCores |
 | **Maxi maal geheugen (geheugen/kern percentage)** | 7 GB per vCore<br/>Voeg meer vCores toe om meer geheugen te verkrijgen. | 5,1 GB per vCore<br/>Voeg meer vCores toe om meer geheugen te verkrijgen. |
-| **Maxi maal in-Memory OLTP-geheugen** | Limiet voor instanties: 1-1,5 GB per vCore| Limiet voor instanties: 0,8-1,65 GB per vCore |
+| **Maxi maal In-Memory OLTP-geheugen** | Limiet voor instanties: 1-1,5 GB per vCore| Limiet voor instanties: 0,8-1,65 GB per vCore |
 | **Maximum aantal gereserveerde exemplaren** |  Algemeen: 8 TB<br/>Bedrijfskritiek: 1 TB | Algemeen: 8 TB<br/> Bedrijfskritiek 1 TB, 2 TB of 4 TB afhankelijk van het aantal kernen |
 
 > [!IMPORTANT]
@@ -90,7 +90,7 @@ SQL Managed instance heeft twee service lagen: [Algemeen](../database/service-ti
 Enkele aanvullende overwegingen: 
 
 - De **momenteel beschik bare opslag grootte voor instanties** is het verschil tussen de gereserveerde exemplaar grootte en de gebruikte opslag ruimte.
-- De grootte van de gegevens en het logboek bestand in de gebruikers-en systeem databases zijn opgenomen in de opslag grootte van het exemplaar, vergeleken met de maximale opslag grootte. Gebruik de systeem weergave [sys. master_files](/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql) om de totale hoeveelheid gebruikte ruimte te bepalen op basis van data bases. Fouten logboeken worden niet persistent gemaakt en zijn niet opgenomen in de grootte. Back-ups worden niet opgenomen in de opslag grootte.
+- De grootte van de gegevens en het logboek bestand in de gebruikers-en systeem databases zijn opgenomen in de opslag grootte van het exemplaar, vergeleken met de maximale opslag grootte. Gebruik de weer gave [sys.master_files](/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql) systeem om de totale hoeveelheid gebruikte ruimte te bepalen op basis van data bases. Fouten logboeken worden niet persistent gemaakt en zijn niet opgenomen in de grootte. Back-ups worden niet opgenomen in de opslag grootte.
 - De door Voer en IOPS in de laag Algemeen zijn ook afhankelijk van de [Bestands grootte](#file-io-characteristics-in-general-purpose-tier) die niet expliciet wordt beperkt door het SQL Managed instance.
   U kunt een andere Lees bare replica maken in een andere Azure-regio met behulp van [groepen voor automatische failover](../database/auto-failover-group-configure.md)
 - Het maximum aantal IOPS is afhankelijk van de bestands indeling en de distributie van de werk belasting. Als u bijvoorbeeld 7 x 1 TB bestanden maakt met Maxi maal 5K IOPS per en 7 kleine bestanden (kleiner dan 128 GB) met 500 IOPS per exemplaar, kunt u 38500 IOPS per instantie (7x5000 + 7x500) verkrijgen als uw werk belasting alle bestanden kan gebruiken. Houd er rekening mee dat een aantal IOPS ook wordt gebruikt voor automatische back-ups.
@@ -110,7 +110,7 @@ Als u een hoge IO-latentie krijgt bij een bepaald database bestand of als u ziet
 
 Er is ook een limiet op exemplaar niveau voor de maximale schrijf doorvoer in het logboek (22 MB/s), zodat u het Maxi maal toegestane bestand niet in het logboek bestand kunt bereiken omdat u de limiet voor de door Voer van het exemplaar bereikt.
 
-## <a name="supported-regions"></a>Ondersteunde regio's
+## <a name="supported-regions"></a>Ondersteunde regio’s
 
 Een SQL Managed instance kan alleen worden gemaakt in [ondersteunde regio's](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Als u een SQL Managed instance wilt maken in een regio die momenteel niet wordt ondersteund, kunt u [via de Azure Portal een ondersteunings aanvraag verzenden](../database/quota-increase-request.md).
 

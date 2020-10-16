@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: 7f9677bfd793e7ff21ff2c6c7e6760b630dc074b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90898530"
 ---
 # <a name="decision-forest-regression-module"></a>Regressie-module voor beslissings structuur
@@ -38,7 +38,7 @@ Beslissings structuren hebben de volgende voor delen:
 
 Dit regressie model bestaat uit een ensemble van beslissings structuren. Elke structuur in een regressie-beslissings forest voert een Gaussiaanse distributie uit als een voor spelling. Er wordt een aggregatie uitgevoerd over de ensemble van structuren om een Gaussiaanse distributie te vinden die het dichtst bij de gecombineerde distributie ligt voor alle structuren in het model.
 
-Raadpleeg dit artikel voor meer informatie over het theoretische Framework voor deze algoritme en de implementatie ervan: [beslissings bossen: een uniform Framework voor classificatie, regressie, dichtheids schatting, verzamel leer en semi-Super visie leren](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#)
+Raadpleeg dit artikel voor meer informatie over het theoretische Framework voor deze algoritme en de implementatie ervan: [beslissings bossen: een uniform Framework voor classificatie, regressie, dichtheids schatting, verzamel leer en Semi-Supervised Learning](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#)
 
 ## <a name="how-to-configure-decision-forest-regression-model"></a>Het regressie model voor beslissings structuur configureren
 

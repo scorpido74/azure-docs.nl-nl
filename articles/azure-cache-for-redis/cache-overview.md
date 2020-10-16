@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: overview
 ms.date: 05/12/2020
-ms.openlocfilehash: 3751560125ea8ac6cc00ed63521bff30b751e688
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 26f6c8e3aceddc6f766bb43a1e384d761dee32bf
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009593"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91631374"
 ---
 # <a name="azure-cache-for-redis"></a>Azure Cache voor Redis
 Azure Cache voor Redis biedt gegevensopslag in het geheugen op basis van de opensourcesoftware [Redis](https://redis.io/). Redis verbetert de prestaties en schaalbaarheid van toepassingen die gebruik maken van back-end-gegevensarchieven. Het kan grote hoeveelheden toepassingsaanvragen verwerken door vaak gebruikte gegevens in het servergeheugen te bewaren zodat deze snel kunnen worden geschreven en gelezen. Redis is een essentiële oplossing voor gegevensopslag met lage latentie en hoge doorvoer voor moderne toepassingen.
@@ -31,12 +31,20 @@ Azure Cache voor Redis verbetert de prestaties van toepassingen door veelgebruik
 | Wachtrij met taken en berichten | Toepassingen voegen taken vaak toe aan een wachtrij als er tijd nodig is om de bewerkingen van een bepaalde aanvraag uit te voeren. Langdurige bewerkingen worden in de wachtrij gezet en op volgorde verwerkt, vaak door een andere server.  Deze methode van werk uitstellen heet taken in de wachtrij plaatsen. Azure Cache voor Redis biedt een gedistribueerde wachtrij om dit patroon in te schakelen in uw toepassing.|
 | Gedistribueerde transacties | Toepassingen vereisen soms een reeks opdrachten voor een back-endgegevensopslag die moeten worden uitgevoerd als één atomische bewerking. Alle opdrachten moeten slagen of alle moet worden teruggezet naar de beginstatus. Azure Cache voor Redis ondersteunt het uitvoeren van een batch met opdrachten als één [transactie](https://redis.io/topics/transactions). |
 
+## <a name="redis-versions"></a>Redis-versies
+
+Azure Cache voor Redis ondersteunt Redis versie 4.x en, als preview, 6.0. We hebben besloten Redis 5.0 over te slaan om u te voorzien van de nieuwste versie. Voorheen werd in Azure Cache voor Redis slechts één Redis-versie bijhouden. Het biedt een nieuwere, grote release-upgrade en ten minste één oudere, stabiele versie die langer wordt ondersteund. U kunt [kiezen welke versie](cache-how-to-version.md) het beste werkt voor uw toepassing.
+
+> [!NOTE]
+> Redis 6.0 is momenteel beschikbaar als preview: [neem contact met ons op](mailto:azurecache@microsoft.com) als u geïnteresseerd bent. Deze preview wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+>
+
 ## <a name="service-tiers"></a>Servicelagen
 Azure Cache voor Redis is beschikbaar in de volgende lagen:
 
 | Laag | Beschrijving |
 |---|---|
-Basic | Een cache met één knooppunt. Deze laag ondersteunt meerdere geheugenformaten (250 MB - 53 GB) en is ideaal voor ontwikkel-/test- of niet-kritieke workloads. De Basic-laag heeft geen SLA (Service Level Agreement). |
+| Basic | Een cache met één knooppunt. Deze laag ondersteunt meerdere geheugenformaten (250 MB - 53 GB) en is ideaal voor ontwikkel-/test- of niet-kritieke workloads. De Basic-laag heeft geen SLA (Service Level Agreement). |
 | Standard | Een gerepliceerde cache in een configuratie met twee knooppunten (primair/replica) die door Azure wordt beheerd, met een [SLA](https://azure.microsoft.com/support/legal/sla/cache/v1_0/) met hoge beschikbaarheid. |
 | Premium | De Premium-laag is geschikt voor zakelijk gebruik. Caches op de Premium-laag ondersteunen meer functies en hebben een hogere doorvoersnelheid met een lagere latentie. Caches op de Premium-laag worden geïmplementeerd op krachtigere hardware en bieden daarom betere prestaties in vergelijking met de Basic- of Standard-laag. Dit voordeel betekent dat de doorvoer voor een cache van dezelfde grootte sneller gaat bij Premium dan bij Standard. |
 

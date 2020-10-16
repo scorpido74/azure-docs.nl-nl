@@ -4,10 +4,10 @@ description: Meer informatie over het inpakken van een bestaande toepassing als 
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.openlocfilehash: 72fde75e16341164106bb952d0bb66b83be744e1
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86259263"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>Een bestaand uitvoerbaar bestand inpakken en implementeren in Service Fabric
@@ -29,9 +29,9 @@ Visual Studio biedt een Service Fabric service sjabloon waarmee u een uitvoerbaa
    * Het *programma* geeft het uitvoer bare bestand op dat moet worden uitgevoerd om de service te starten.
    * *Argumenten* Hiermee geeft u de argumenten op die moeten worden door gegeven aan het uitvoer bare bestand. Dit kan een lijst met para meters met argumenten zijn.
    * *WorkingFolder* Hiermee geeft u de werkmap op voor het proces dat wordt gestart. U kunt drie waarden opgeven:
-     * `CodeBase`geeft aan dat de werkmap wordt ingesteld op de code Directory in het toepassings pakket ( `Code` map die in de voor gaande bestands structuur wordt weer gegeven).
-     * `CodePackage`Hiermee geeft u op dat de werkmap wordt ingesteld op de hoofdmap van het toepassings pakket ( `GuestService1Pkg` Zie de voor gaande bestands structuur).
-     * `Work`Hiermee geeft u op dat de bestanden in een submap met de naam werk worden geplaatst.
+     * `CodeBase` geeft aan dat de werkmap wordt ingesteld op de code Directory in het toepassings pakket ( `Code` map die in de voor gaande bestands structuur wordt weer gegeven).
+     * `CodePackage` Hiermee geeft u op dat de werkmap wordt ingesteld op de hoofdmap van het toepassings pakket ( `GuestService1Pkg` Zie de voor gaande bestands structuur).
+     * `Work` Hiermee geeft u op dat de bestanden in een submap met de naam werk worden geplaatst.
 4. Geef de service een naam en klik op **OK**.
 5. Als voor uw service een eind punt voor communicatie nodig is, kunt u nu het Protocol, de poort en het type toevoegen aan het ServiceManifest.xml-bestand. Bijvoorbeeld: `<Endpoint Name="NodeAppTypeEndpoint" Protocol="http" Port="3000" UriScheme="http" PathSuffix="myapp/" Type="Input" />`.
 6. U kunt nu de pakket-en publicatie actie voor uw lokale cluster gebruiken door de oplossing in Visual Studio te debuggen. Wanneer u klaar bent, kunt u de toepassing publiceren naar een extern cluster of de oplossing inchecken voor broncode beheer.
@@ -147,7 +147,7 @@ Het code package-element geeft de locatie (en versie) van de code van de service
 <CodePackage Name="Code" Version="1.0.0.0">
 ```
 
-Het `Name` element wordt gebruikt om de naam op te geven van de map in het toepassings pakket met de code van de service. `CodePackage`heeft ook het `version` kenmerk. Dit kan worden gebruikt om de versie van de code op te geven, en kan ook worden gebruikt om de code van de service bij te werken met behulp van de infra structuur voor toepassings levenscyclus beheer in Service Fabric.
+Het `Name` element wordt gebruikt om de naam op te geven van de map in het toepassings pakket met de code van de service. `CodePackage` heeft ook het `version` kenmerk. Dit kan worden gebruikt om de versie van de code op te geven, en kan ook worden gebruikt om de code van de service bij te werken met behulp van de infra structuur voor toepassings levenscyclus beheer in Service Fabric.
 
 #### <a name="optional-update-setupentrypoint"></a>Optioneel: SetupEntrypoint bijwerken
 
@@ -180,12 +180,12 @@ Het `EntryPoint` element in het service manifest bestand wordt gebruikt om op te
 
 Het `ExeHost` element geeft het uitvoer bare bestand (en de argumenten) op dat moet worden gebruikt om de service te starten. U kunt het kenmerk eventueel toevoegen `IsExternalExecutable="true"` aan `ExeHost` om aan te geven dat het programma een extern uitvoerbaar bestand is dat buiten het code pakket is. Bijvoorbeeld `<ExeHost IsExternalExecutable="true">`.
 
-* `Program`Hiermee geeft u de naam van het uitvoer bare bestand op waarmee de service moet worden gestart.
-* `Arguments`Hiermee geeft u de argumenten op die moeten worden door gegeven aan het uitvoer bare bestand. Dit kan een lijst met para meters met argumenten zijn.
-* `WorkingFolder`Hiermee geeft u de werkmap op voor het proces dat wordt gestart. U kunt drie waarden opgeven:
-  * `CodeBase`geeft aan dat de werkmap wordt ingesteld op de code Directory in het toepassings pakket ( `Code` map in de voor gaande bestands structuur).
-  * `CodePackage`Hiermee geeft u op dat de werkmap wordt ingesteld op de hoofdmap van het toepassings pakket ( `GuestService1Pkg` in de voor gaande bestands structuur).
-    * `Work`Hiermee geeft u op dat de bestanden in een submap met de naam werk worden geplaatst.
+* `Program` Hiermee geeft u de naam van het uitvoer bare bestand op waarmee de service moet worden gestart.
+* `Arguments` Hiermee geeft u de argumenten op die moeten worden door gegeven aan het uitvoer bare bestand. Dit kan een lijst met para meters met argumenten zijn.
+* `WorkingFolder` Hiermee geeft u de werkmap op voor het proces dat wordt gestart. U kunt drie waarden opgeven:
+  * `CodeBase` geeft aan dat de werkmap wordt ingesteld op de code Directory in het toepassings pakket ( `Code` map in de voor gaande bestands structuur).
+  * `CodePackage` Hiermee geeft u op dat de werkmap wordt ingesteld op de hoofdmap van het toepassings pakket ( `GuestService1Pkg` in de voor gaande bestands structuur).
+    * `Work` Hiermee geeft u op dat de bestanden in een submap met de naam werk worden geplaatst.
 
 De WorkingFolder is handig om de juiste werkmap in te stellen, zodat relatieve paden kunnen worden gebruikt door de toepassing of initialisatie scripts.
 
@@ -201,7 +201,7 @@ De WorkingFolder is handig om de juiste werkmap in te stellen, zodat relatieve p
 In het vorige voor beeld `Endpoint` bevat het element de eind punten waarop de toepassing kan Luis teren. In dit voor beeld luistert de Node.js-toepassing op http op poort 3000.
 
 Daarnaast kunt u Service Fabric vragen om dit eind punt te publiceren naar de Naming Service, zodat andere services het eindpunt adres naar deze service kunnen detecteren. Zo kunt u communiceren tussen services die gast-uitvoer bare bestanden zijn.
-Het gepubliceerde eindpunt adres is van het formulier `UriScheme://IPAddressOrFQDN:Port/PathSuffix` . `UriScheme`en `PathSuffix` zijn optionele kenmerken. `IPAddressOrFQDN`is het IP-adres of de Fully Qualified Domain Name van het knoop punt waarop dit uitvoer bare bestand wordt geplaatst, waarna het wordt berekend voor u.
+Het gepubliceerde eindpunt adres is van het formulier `UriScheme://IPAddressOrFQDN:Port/PathSuffix` . `UriScheme` en `PathSuffix` zijn optionele kenmerken. `IPAddressOrFQDN` is het IP-adres of de Fully Qualified Domain Name van het knoop punt waarop dit uitvoer bare bestand wordt geplaatst, waarna het wordt berekend voor u.
 
 In het volgende voor beeld, wanneer de service is geïmplementeerd, wordt in Service Fabric Explorer een eind punt weer gegeven dat vergelijkbaar is met `http://10.1.4.92:3000/myapp/` gepubliceerd voor het service-exemplaar. Of als dit een lokale computer is, ziet u `http://localhost:3000/myapp/` .
 
@@ -257,11 +257,11 @@ Console-omleiding kan worden geconfigureerd in het `ServiceManifest.xml` bestand
 </EntryPoint>
 ```
 
-`ConsoleRedirection`kan worden gebruikt om de console-uitvoer (stdout en stderr) om te leiden naar een werkmap. Dit biedt de mogelijkheid om te controleren of er geen fouten zijn tijdens het instellen of uitvoeren van de toepassing in het Service Fabric cluster.
+`ConsoleRedirection` kan worden gebruikt om de console-uitvoer (stdout en stderr) om te leiden naar een werkmap. Dit biedt de mogelijkheid om te controleren of er geen fouten zijn tijdens het instellen of uitvoeren van de toepassing in het Service Fabric cluster.
 
-`FileRetentionCount`Hiermee wordt bepaald hoeveel bestanden worden opgeslagen in de werkmap. Een waarde van 5 betekent bijvoorbeeld dat de logboek bestanden voor de voor gaande vijf uitvoeringen worden opgeslagen in de werkmap.
+`FileRetentionCount` Hiermee wordt bepaald hoeveel bestanden worden opgeslagen in de werkmap. Een waarde van 5 betekent bijvoorbeeld dat de logboek bestanden voor de voor gaande vijf uitvoeringen worden opgeslagen in de werkmap.
 
-`FileMaxSizeInKb`Hiermee geeft u de maximale grootte van de logboek bestanden.
+`FileMaxSizeInKb` Hiermee geeft u de maximale grootte van de logboek bestanden.
 
 Logboek bestanden worden opgeslagen in een van de werk mappen van de service. Om te bepalen waar de bestanden zich bevinden, gebruikt u Service Fabric Explorer om te bepalen op welk knoop punt de service wordt uitgevoerd en welke werkmap wordt gebruikt. Dit proces wordt verderop in dit artikel besproken.
 

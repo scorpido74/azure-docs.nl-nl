@@ -9,17 +9,17 @@ ms.date: 02/19/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: a3c10ca35ee2f085d4ce41e862a895ff17ff63a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84317715"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>Hoeveel VPN-clienteindpunten kan mijn punt-naar-site-configuratie hebben?
 
-Dit is afhankelijk van de gateway-SKU. Zie [Gateway-sku's](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku)voor meer informatie over het aantal ondersteunde verbindingen.
+Dit is afhankelijk van de gateway-SKU. Zie [Gateway-SKU's](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku) voor meer informatie over het aantal ondersteunde verbindingen.
 
-### <a name="what-client-operating-systems-can-i-use-with-point-to-site"></a><a name="supportedclientos"></a>Welke client besturingssystemen kan ik met punt-naar-site gebruiken?
+### <a name="what-client-operating-systems-can-i-use-with-point-to-site"></a><a name="supportedclientos"></a>Welke clientbesturingssystemen kan ik met point-to-site gebruiken?
 
 De volgende clientbesturingssystemen worden ondersteund:
 
@@ -31,7 +31,7 @@ De volgende clientbesturingssystemen worden ondersteund:
 * Windows Server 2016 (alleen 64-bits)
 * Windows Server 2019 (alleen 64-bits)
 * Windows 10
-* Mac OS X-versie 10,11 of hoger
+* Mac OS X versie 10.11 of hoger
 * Linux (StrongSwan)
 * iOS
 
@@ -39,13 +39,13 @@ De volgende clientbesturingssystemen worden ondersteund:
 
 ### <a name="can-i-traverse-proxies-and-firewalls-using-point-to-site-capability"></a>Kan ik met punt-naar-site-functionaliteit proxy's en firewalls passeren?
 
-Azure ondersteunt drie typen punt-naar-site VPN-opties:
+Azure ondersteunt drie soorten point-to-site-VPN-opties:
 
-* Secure Socket Tunneling Protocol (SSTP). SSTP is een eigen op SSL gebaseerde oplossing van micro soft die firewalls kan binnendringen, aangezien de meeste firewalls de uitgaande TCP-poort openen die 443 SSL gebruikt.
+* Secure Socket Tunneling Protocol (SSTP). SSTP is een bedrijfseigen, op SSL gebaseerde oplossing van Microsoft die firewalls kan passeren, omdat de meeste firewalls de uitgaande TCP-poort 443 openen die door SSL wordt gebruikt.
 
-* OpenVPN. OpenVPN is een op SSL gebaseerde oplossing die firewalls kan binnendringen, aangezien de meeste firewalls de uitgaande TCP-poort openen die 443 SSL gebruikt.
+* OpenVPN. OpenVPN is een op SSL gebaseerde oplossing van Microsoft die firewalls kan passeren, omdat de meeste firewalls de uitgaande TCP-poort 443 openen die door SSL wordt gebruikt.
 
-* IKEv2 VPN. IKEv2 VPN is een op standaarden gebaseerde IPsec VPN-oplossing die gebruikmaakt van uitgaande UDP-poorten 500 en 4500 en IP-protocol nummer. 50. Firewalls openen deze poorten niet altijd, zodat de kans bestaat dat een IKEv2 VPN proxy's en firewalls niet kan passeren.
+* IKEv2 VPN. IKEv2 VPN is een op standaarden gebaseerde IPsec VPN-oplossing die gebruikmaakt van uitgaande UDP-poorten 500 en 4500 en IP-protocol nr. 50. Firewalls openen deze poorten niet altijd, zodat de kans bestaat dat een IKEv2 VPN proxy's en firewalls niet kan passeren.
 
 ### <a name="if-i-restart-a-client-computer-configured-for-point-to-site-will-the-vpn-automatically-reconnect"></a>Als ik een clientcomputer die is geconfigureerd voor punt-naar-site opnieuw start, wordt de VPN-verbinding dan automatisch opnieuw tot stand gebracht?
 
@@ -59,13 +59,13 @@ Automatisch opnieuw verbinding maken en DDNS worden momenteel niet ondersteund i
 
 Ja. Voor het Resource Manager-implementatiemodel moet u een RouteBased VPN-type hebben voor uw gateway. Voor het klassieke implementatiemodel hebt u een dynamische gateway nodig. Point-to-site wordt niet ondersteund voor VPN-gateways met statische routering of PolicyBased VPN-gateways.
 
-### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-network-gateways-at-the-same-time"></a>Kan ik een punt-naar-site-client zo configureren dat deze op hetzelfde moment verbinding maakt met meerdere virtuele netwerk gateways?
+### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-network-gateways-at-the-same-time"></a>Kan ik een punt-naar-site-client configureren om verbinding te maken met meerdere virtuele netwerkgateways tegelijk?
 
-Afhankelijk van de gebruikte VPN-client software, kunt u verbinding maken met meerdere Virtual Network gateways, op voor voor de virtuele netwerken waarmee verbinding wordt gemaakt en er zijn geen conflicterende adres ruimten tussen de clients of het netwerk van waaruit de client verbinding maakt.  Terwijl de Azure VPN-client veel VPN-verbindingen ondersteunt, kan slechts één verbinding op een bepaald moment worden aangesloten.
+Afhankelijk van de gebruikte VPN-clientsoftware, is het wellicht mogelijk dat u verbinding kunt maken met meerdere virtuele netwerkgateways, mits er geen conflicterende adresruimten worden gebruikt in de virtuele netwerken onderling of het netwerk van waaruit de client verbinding maakt.  Hoewel de Azure VPN Client ondersteuning biedt voor veel VPN-verbindingen, kan er maar één verbinding tegelijk Verbonden zijn.
 
 ### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-networks-at-the-same-time"></a>Kan ik een punt-naar-site-client configureren om verbinding te maken met meerdere virtuele netwerken tegelijk?
 
-Ja, punt-naar-site-verbindingen met een Virtual Network gateway die is geïmplementeerd in een VNet dat is gekoppeld aan andere VNets, kan toegang hebben tot andere peered VNets.  Als de peered VNets gebruikmaakt van de UseRemoteGateway/AllowGatewayTransit-functies, kan de punt-naar-site-client verbinding maken met die peered VNets.  Raadpleeg [Dit](../articles/vpn-gateway/vpn-gateway-about-point-to-site-routing.md) artikel voor meer informatie.
+Ja, punt-naar-site-verbindingen met een virtuele netwerkgateway die is geïmplementeerd in een VNet dat is gekoppeld aan andere VNets, kunnen toegang hebben tot andere gekoppelde VNets.  Als de gekoppelde VNets gebruik maken van de functies UseRemoteGateway/AllowGatewayTransit, kan de punt-naar-site-client verbinding maken met die gekoppelde VNets.  Raadpleeg voor meer informatie [dit](../articles/vpn-gateway/vpn-gateway-about-point-to-site-routing.md) artikel.
 
 ### <a name="how-much-throughput-can-i-expect-through-site-to-site-or-point-to-site-connections"></a>Hoeveel doorvoer kan ik verwachten via site-naar-site- of punt-naar-site-verbindingen?
 
@@ -77,13 +77,13 @@ Nee. U kunt alleen de systeemeigen VPN-client van Windows voor SSTP en de systee
 
 ### <a name="does-azure-support-ikev2-vpn-with-windows"></a>Biedt Azure ondersteuning voor IKEv2-VPN met Windows?
 
-IKEv2 wordt ondersteund op Windows 10 en Server 2016. Als u IKEv2 wilt gebruiken, moet u lokaal updates installeren en een registersleutelwaarde instellen. Versies van besturings systemen voorafgaand aan Windows 10 worden niet ondersteund en kunnen alleen gebruikmaken van het SSTP-of **OpenVPN®-protocol**.
+IKEv2 wordt ondersteund op Windows 10 en Server 2016. Als u IKEv2 wilt gebruiken, moet u lokaal updates installeren en een registersleutelwaarde instellen. Besturingssysteemversies ouder dan Windows 10 worden niet ondersteund en kunnen alleen SSTP of het **OpenVPN® Protocol** gebruiken.
 
 Windows 10 of Server 2016 voorbereiden voor IKEv2:
 
 1. Installeer de update.
 
-   | Besturingssysteemversie | Datum | Aantal/koppeling |
+   | Besturingssysteemversie | Date | Aantal/koppeling |
    |---|---|---|
    | Windows Server 2016<br>Windows 10 versie 1607 | 17 januari 2018 | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
    | Windows 10 versie 1703 | 17 januari 2018 | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
@@ -106,7 +106,7 @@ Ja, u kunt deze nieuwe functies op reeds geïmplementeerde gateways inschakelen 
 
 ### <a name="how-do-i-remove-the-configuration-of-a-p2s-connection"></a><a name="removeconfig"></a>Hoe kan ik de configuratie van een P2S-verbinding verwijderen?
 
-Een P2S-configuratie kan worden verwijderd met behulp van Azure CLI en Power shell met behulp van de volgende opdrachten:
+Een P2S-configuratie kan worden verwijderd met behulp van Azure CLI en PowerShell met behulp van de volgende opdrachten:
 
 #### <a name="azure-powershell"></a>Azure PowerShell
 

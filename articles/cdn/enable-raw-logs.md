@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 09/25/2020
 ms.author: allensu
 ms.openlocfilehash: c41bf8bc6e5aa3749786bc1189343dfdebdc1508
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91321146"
 ---
 # <a name="monitoring-metrics-and-raw-logs-for-azure-cdn-from-microsoft"></a>Metrische gegevens en onbewerkte logboeken bewaken voor Azure CDN van micro soft
@@ -61,7 +61,7 @@ RAW-logboeken voor uw Azure CDN van het micro soft-profiel configureren:
     * **Streamen naar een Event Hub**
         * Selecteer het **abonnement**, de **Event hub-naam ruimte**, de naam van de **Event hub (optioneel)** en de naam van het **Event hub-beleid**.
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-02.png" alt-text="Configureer de doel locatie voor de logboek instellingen." border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-02.png" alt-text="Diagnostische instelling voor CDN-profiel toevoegen." border="true":::
 
 7. Selecteer **Opslaan**.
 
@@ -235,23 +235,23 @@ Scenario's die zijn uitgesloten voor de berekening van de verhouding treffers in
 
 2. Onder **bewaking**selecteert u **metrische gegevens**:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-03.png" alt-text="Metrische gegevens voor het CDN-profiel." border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-03.png" alt-text="Diagnostische instelling voor CDN-profiel toevoegen." border="true":::
 
 3. Selecteer **metrische gegevens toevoegen**en selecteer de toe te voegen metriek:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-04.png" alt-text="Voeg de metrische gegevens voor het CDN-profiel toe en selecteer deze." border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-04.png" alt-text="Diagnostische instelling voor CDN-profiel toevoegen." border="true":::
 
 4. Selecteer **filter toevoegen** om een filter toe te voegen:
     
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-05.png" alt-text="Filter Toep assen op metrieke waarden." border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-05.png" alt-text="Diagnostische instelling voor CDN-profiel toevoegen." border="true":::
 
 5. Selecteer splitsing **Toep assen** om trend op verschillende dimensies te bekijken:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-06.png" alt-text="Pas het splitsen toe op de metriek." border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-06.png" alt-text="Diagnostische instelling voor CDN-profiel toevoegen." border="true":::
 
 6. Selecteer **nieuwe** grafiek om een nieuwe grafiek toe te voegen:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-07.png" alt-text="Voeg een nieuwe grafiek toe aan de metrische weer gave." border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-07.png" alt-text="Diagnostische instelling voor CDN-profiel toevoegen." border="true":::
 
 ### <a name="alerts"></a>Waarschuwingen
 
@@ -259,7 +259,7 @@ U kunt waarschuwingen instellen op micro soft CDN door **bewakings**  >>  **waar
 
 Selecteer **nieuwe waarschuwings regel** voor metrische gegevens die worden weer gegeven in de sectie metrische gegevens:
 
-:::image type="content" source="./media/cdn-raw-logs/raw-logs-08.png" alt-text="Waarschuwingen configureren voor het CDN-eind punt." border="true":::
+:::image type="content" source="./media/cdn-raw-logs/raw-logs-08.png" alt-text="Diagnostische instelling voor CDN-profiel toevoegen." border="true":::
 
 Er wordt een waarschuwing berekend op basis van Azure Monitor. Zie [Azure monitor-waarschuwingen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)voor meer informatie over waarschuwingen.
 
@@ -270,21 +270,21 @@ U kunt extra metrische gegevens inschakelen met behulp van Azure Log Analytics e
 
 2. Selecteer de Log Analytics werk ruimte die u hebt gemaakt:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-09.png" alt-text="Log Analytics-werk ruimte selecteren" border="true":::   
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-09.png" alt-text="Diagnostische instelling voor CDN-profiel toevoegen." border="true":::   
 
 3. Selecteer **Logboeken** onder **Algemeen** in de log Analytics-werk ruimte.  Selecteer vervolgens **aan de slag**:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-10.png" alt-text="Resource-werk ruimte van log Analytics." border="true":::   
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-10.png" alt-text="Diagnostische instelling voor CDN-profiel toevoegen." border="true":::   
  
 4. Selecteer **CDN-profielen**.  Selecteer een voorbeeld query voor het uitvoeren of sluiten van het voorbeeld scherm om een aangepaste query in te voeren:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-11.png" alt-text="Voorbeeld scherm van query." border="true":::   
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-11.png" alt-text="Diagnostische instelling voor CDN-profiel toevoegen." border="true":::   
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-12.png" alt-text="Uitvoering van query." border="true":::   
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-12.png" alt-text="Diagnostische instelling voor CDN-profiel toevoegen." border="true":::   
 
 4. Als u gegevens wilt weer geven per grafiek, selecteert u **diagram**.  Selecteer **vastmaken aan dash board** om de grafiek aan het Azure-dash board vast te maken:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-13.png" alt-text="Een grafiek vastmaken aan het dash board." border="true"::: 
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-13.png" alt-text="Diagnostische instelling voor CDN-profiel toevoegen." border="true"::: 
 
 ## <a name="next-steps"></a>Volgende stappen
 In dit artikel hebt u HTTP RAW-logboeken ingeschakeld voor de micro soft CDN-service.

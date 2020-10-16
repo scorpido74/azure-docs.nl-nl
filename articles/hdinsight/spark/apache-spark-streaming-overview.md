@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
 ms.openlocfilehash: a88d4893daa12ff2c35ee7cf8f4e5b7569f854f6
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86086191"
 ---
-# <a name="overview-of-apache-spark-streaming"></a>Overzicht van Apache Spark streaming
+# <a name="overview-of-apache-spark-streaming"></a>Overzicht van Apache Spark-streaming
 
 [Apache Spark](https://spark.apache.org/) Streaming biedt verwerking van gegevens stromen in HDInsight Spark-clusters. Met een garantie dat elke invoer gebeurtenis precies één keer wordt verwerkt, zelfs als er een storing in een knoop punt optreedt. Een Spark-stroom is een langlopende taak waarmee invoer gegevens worden ontvangen van een groot aantal verschillende bronnen, waaronder Azure Event Hubs. Ook: Azure IoT Hub, Apache Kafka, Apache Flume, Twitter, `ZeroMQ` , onbewerkte TCP-sockets of bewaken Apache HADOOP garen bestands systeem. In tegens telling tot een enkel gebeurtenis gerichte proces, voert een Spark-stream batches invoer gegevens uit in tijd Vensters. Zoals een segment van twee seconden, en transformeert elke batch met gegevens met behulp van de bewerkingen kaart, verminderen, samen voegen en extra heren. De Spark-stroom schrijft vervolgens de getransformeerde gegevens uit naar bestands systeem, data bases, Dash boards en de-console.
 
@@ -71,7 +71,7 @@ Maak met het StreamingContext-exemplaar een invoer-DStream voor de invoer bron. 
 val lines = ssc.textFileStream("/uploads/Test/")
 ```
 
-#### <a name="apply-transformations"></a>Trans formaties Toep assen
+#### <a name="apply-transformations"></a>Transformaties toepassen
 
 U implementeert de verwerking door trans formaties op de DStream toe te passen. Deze toepassing ontvangt één regel tekst per keer uit het bestand, splitst elke regel in woorden. En maakt vervolgens gebruik van een patroon voor de toewijzing en het aantal keren dat elk woord wordt weer gegeven.
 
@@ -239,7 +239,7 @@ Na de eerste minuut zijn er 12 vermeldingen-zes items van elk van de twee in het
 
 De sliding window functies die beschikbaar zijn in de Spark streaming API omvatten Window, countByWindow, reduceByWindow en countByValueAndWindow. Zie trans [formaties op DStreams](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html#transformations-on-dstreams)voor meer informatie over deze functies.
 
-## <a name="checkpointing"></a>Controlepunten plaatsen
+## <a name="checkpointing"></a>Controlepunten maken
 
 Voor het leveren van tolerantie en fout tolerantie is de controle punten voor Spark-streaming vereist om ervoor te zorgen dat de stroom verwerking niet kan worden onderbroken, zelfs in het geval van storingen in knoop punten. Spark maakt controle punten voor duurzame opslag (Azure Storage of Data Lake Storage). Deze controle punten slaan meta gegevens van de toepassing op, zoals de configuratie, en de bewerkingen die door de toepassing zijn gedefinieerd. Ook alle batches die in de wachtrij zijn geplaatst, maar nog niet zijn verwerkt. Soms bevatten de controle punten ook de gegevens in de Rdd's om de status van de gegevens snel opnieuw op te bouwen van wat er aanwezig is in de Rdd's die wordt beheerd door Spark.
 
@@ -255,4 +255,4 @@ De status van alle toepassingen kan ook worden gecontroleerd met een GET-aanvraa
 
 * [Een Apache Spark-cluster maken in Azure HDInsight](../hdinsight-hadoop-create-linux-clusters-portal.md)
 * [Programmeer gids voor Apache Spark streaming](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html)
-* [Overzicht van Apache Spark Structured streaming](apache-spark-structured-streaming-overview.md)
+* [Overzicht van Gestructureerde streaming van Apache Spark](apache-spark-structured-streaming-overview.md)

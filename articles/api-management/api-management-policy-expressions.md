@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 7117ffcbaf4eba8d83a6e968f4fed7422673610b
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: ab83344f779f93107b59ca28348da3a66f1efc1a
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844237"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076858"
 ---
 # <a name="api-management-policy-expressions"></a>API Management-beleids expressies
 In dit artikel wordt de syntaxis van beleids expressies in C# 7 beschreven. Elke expressie heeft toegang tot de impliciet verschafte [context](api-management-policy-expressions.md#ContextVariables) variabele en een toegestane [subset](api-management-policy-expressions.md#CLRTypes) van .NET Framework typen.
@@ -33,12 +33,12 @@ Voor meer informatie:
 - Zie [API-Management-samples/policies](https://github.com/Azure/api-management-samples/tree/master/policies) github opslag plaats voor informatie over het downloaden van de beleids instructies.
 
 
-## <a name="syntax"></a><a name="Syntax"></a>Syntaxis
+## <a name="syntax"></a><a name="Syntax"></a> Syntaxis
 Enkelvoudige instructie-expressies zijn opgenomen in `@(expression)` , waarbij `expression` de C#-expressie-instructie een goed gevormd is.
 
 Expressies met meerdere instructies worden inge sloten in `@{expression}` . Alle code paden binnen expressies met meerdere instructies moeten eindigen met een- `return` instructie.
 
-## <a name="examples"></a><a name="PolicyExpressionsExamples"></a>Vindt
+## <a name="examples"></a><a name="PolicyExpressionsExamples"></a> Vindt
 
 ```
 @(true)
@@ -71,7 +71,7 @@ Expressies kunnen worden gebruikt als kenmerk waarden of tekst waarden in een AP
 > [!IMPORTANT]
 > Wanneer u beleids expressies gebruikt, is er slechts beperkte verificatie van de beleids expressies wanneer het beleid is gedefinieerd. Expressies worden tijdens runtime uitgevoerd door de gateway. eventuele uitzonde ringen die door beleids expressies worden gegenereerd, resulteren in een runtime-fout.
 
-## <a name="net-framework-types-allowed-in-policy-expressions"></a><a name="CLRTypes"></a>.NET Framework typen die zijn toegestaan in beleids expressies
+## <a name="net-framework-types-allowed-in-policy-expressions"></a><a name="CLRTypes"></a> .NET Framework typen die zijn toegestaan in beleids expressies
 De volgende tabel bevat de .NET Framework typen en de leden die zijn toegestaan in beleids expressies.
 
 |Type|Ondersteunde leden|
@@ -205,7 +205,7 @@ De volgende tabel bevat de .NET Framework typen en de leden die zijn toegestaan 
 |System.Xml. LINQ. XText|Alles|
 |System.Xml.XmlNodeType|Alles|
 
-## <a name="context-variable"></a><a name="ContextVariables"></a>Context variabele
+## <a name="context-variable"></a><a name="ContextVariables"></a> Context variabele
 Een variabele met de naam `context` is impliciet beschikbaar in elke beleids [expressie](api-management-policy-expressions.md#Syntax). De leden van deze familie bieden informatie die relevant is voor de `\request` . Alle `context` leden hebben het kenmerk alleen-lezen.
 
 |Context variabele|Toegestane methoden, eigenschappen en parameter waarden|
@@ -253,4 +253,4 @@ Zie voor meer informatie over het gebruik van beleid:
 + [Beleid in API Management](api-management-howto-policies.md)
 + [Api's transformeren](transform-api.md)
 + [Beleids verwijzing](./api-management-policies.md) voor een volledige lijst met beleids instructies en hun instellingen
-+ [Voor beelden van beleid](policy-samples.md)
++ [Voor beelden van beleid](./policy-reference.md)

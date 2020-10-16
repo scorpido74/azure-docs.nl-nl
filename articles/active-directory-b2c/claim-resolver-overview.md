@@ -12,10 +12,10 @@ ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 466e590ba22efe1c2fbb457c15bc7f979f8a172e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91259632"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Over claim resolvers in Azure Active Directory B2C aangepast beleid
@@ -70,7 +70,7 @@ De volgende secties bevatten een lijst met beschik bare claim resolvers.
 | {OIDC: ClientId} |De `client_id`  query teken reeks parameter. | 00000000-0000-0000-0000-000000000000 |
 | {OIDC: DomainHint} |De `domain_hint`  query teken reeks parameter. | facebook.com |
 | {OIDC: LoginHint} |  De `login_hint` query teken reeks parameter. | someone@contoso.com |
-| {OIDC: MaxAge} | De `max_age` . | N.v.t. |
+| {OIDC: MaxAge} | De `max_age`. | N.v.t. |
 | {OIDC: nonce} |De `Nonce`  query teken reeks parameter. | defaultNonce |
 | {OIDC: wacht woord}| Het wacht woord van de gebruiker van het [wacht woord voor de resource-eigenaar loopt](ropc-custom.md) .| Wachtwoord1| 
 | {OIDC: prompt} | De `prompt` query teken reeks parameter. | aanmelding |
@@ -123,8 +123,8 @@ Een parameter naam die deel uitmaakt van een OIDC-of OAuth2-aanvraag kan worden 
 | {SAML: AuthnContextClassReferences} | De `AuthnContextClassRef` element waarde, van de SAML-aanvraag. | urn: Oasis: names: TC: SAML: 2.0: AC: klassen: PasswordProtectedTransport |
 | {SAML: NameIdPolicyFormat} | Het `Format` kenmerk, van het `NameIDPolicy` element van de SAML-aanvraag. | urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress |
 | {SAML: verlener} |  De SAML- `Issuer` element waarde van de SAML-aanvraag.| `https://contoso.com` |
-| {SAML: AllowCreate} | De `AllowCreate` kenmerk waarde, van het `NameIDPolicy` element van de SAML-aanvraag. | Waar |
-| {SAML: ForceAuthn} | De `ForceAuthN` kenmerk waarde, van het `AuthnRequest` element van de SAML-aanvraag. | Waar |
+| {SAML: AllowCreate} | De `AllowCreate` kenmerk waarde, van het `NameIDPolicy` element van de SAML-aanvraag. | True |
+| {SAML: ForceAuthn} | De `ForceAuthN` kenmerk waarde, van het `AuthnRequest` element van de SAML-aanvraag. | True |
 | {SAML: ProviderName} | De `ProviderName` kenmerk waarde, van het `AuthnRequest` element van de SAML-aanvraag.| Contoso.com |
 | {SAML: RelayState} | De `RelayState` query teken reeks parameter.| 
 

@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 6aa4273933190ccfe495bcaf243ee15a5ce823fb
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 5cdee274ebc815b23b8ce59e8b9eca90d00e3818
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91577642"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042963"
 ---
 # <a name="how-to-certify-iot-plug-and-play-devices"></a>IoT Plug en Play-apparaten certificeren
 
-Het IoT Plug en Play Device-certificerings programma bevat hulpprogram ma's om te controleren of een apparaat voldoet aan de vereisten voor de IoT-Plug en Play certificering. De hulpprogram ma's helpen organisaties ook de beschik baarheid van hun IoT Plug en Play-apparaten te belichten. Deze gecertificeerde apparaten zijn afgestemd op IoT-oplossingen en helpen de time-to-market te verminderen.
+Het IoT Plug en Play-apparaatcertificeringsprogramma bevat hulpprogramma's om te controleren of een apparaat voldoet aan de vereisten voor de IoT-Plug en Play certificering. De hulpprogram ma's helpen organisaties ook de beschik baarheid van hun IoT Plug en Play-apparaten te belichten. Deze gecertificeerde apparaten zijn afgestemd op IoT-oplossingen en helpen de time-to-market te verminderen.
 
 In dit artikel leest u informatie over:
 
@@ -45,15 +45,15 @@ Om aan de certificerings vereisten te voldoen, moet uw apparaat:
 - De model-ID verzenden tijdens de [registratie van DPS](concepts-developer-guide-device-csharp.md#dps-payload) in de nettolading van de DPS-inrichting.
 - De model-ID tijdens de [MQTT-verbinding](concepts-developer-guide-device-csharp.md#model-id-announcement)aankondigen.
 
-## <a name="test-with-the-azure-iot-extension-cli"></a>Testen met de Azure IoT extension-CLI
+## <a name="test-with-the-azure-iot-extension-cli"></a>Testen met de Azure IoT-extensie-CLI
 
-Met de [Azure IOT cli-extensie](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/product?view=azure-cli-latest&preserve-view=true) kunt u controleren of de implementatie van het apparaat overeenkomt met het model voordat u het apparaat verzendt voor certificering via de Azure Certified Device-Portal.
+Met de [Azure IOT cli-extensie](/cli/azure/ext/azure-iot/iot/product?preserve-view=true&view=azure-cli-latest) kunt u controleren of de implementatie van het apparaat overeenkomt met het model voordat u het apparaat verzendt voor certificering via de Azure Certified Device-Portal.
 
 De volgende stappen laten zien hoe u de certificerings tests voorbereidt en uitvoert met behulp van de CLI:
 
 ### <a name="install-the-azure-iot-extension-for-the-azure-cli"></a>De Azure IoT-extensie voor de Azure CLI installeren
 
-Zie de installatie-instructies voor het instellen van de [Azure cli](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true) in uw omgeving.
+Zie de installatie-instructies voor het instellen van de [Azure cli](/cli/azure/?preserve-view=true&view=azure-cli-latest) in uw omgeving.
 
 Als u de Azure IoT-extensie wilt installeren, voert u de volgende opdracht uit:
 
@@ -61,7 +61,7 @@ Als u de Azure IoT-extensie wilt installeren, voert u de volgende opdracht uit:
 az extension add --name azure-iot
 ```
 
-Zie [Azure CLI voor Azure IOT voor](https://docs.microsoft.com/cli/azure/azure-cli-reference-for-iot?view=azure-cli-latest&preserve-view=true)meer informatie.
+Zie [Azure CLI voor Azure IOT voor](/cli/azure/azure-cli-reference-for-iot?preserve-view=true&view=azure-cli-latest)meer informatie.
 
 ### <a name="create-a-new-product-test"></a>Een nieuwe product test maken
 
@@ -75,7 +75,7 @@ az iot product test create --badge-type Pnp --at SymmetricKey --device-type Fini
 ```
 
 > [!NOTE]
-> Wanneer u de CLI gebruikt, moet u [zich aanmelden](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true) bij uw abonnement.
+> Wanneer u de CLI gebruikt, moet u [zich aanmelden](/cli/azure/authenticate-azure-cli?preserve-view=true&view=azure-cli-latest) bij uw abonnement.
 
 De JSON-uitvoer van de opdracht bevat de `primaryKey` , `registrationId` en `scopeID` om te gebruiken wanneer u verbinding maakt met uw apparaat.
 
@@ -162,7 +162,7 @@ Voorbeeld uitvoer van test uitvoering
             },
 ```
 
-## <a name="test-using-the-azure-certified-device-portal"></a>Testen met behulp van de Azure Certified Device Portal
+## <a name="test-using-the-azure-certified-device-portal"></a>Testen met behulp van het Azure Certified Device-portal
 
 De volgende stappen laten zien hoe u de [Azure-gecertificeerde Apparaatbeheer](https://aka.ms/acdp) kunt gebruiken om de onboarding uit te voeren, product gegevens te registreren, een aan de slag-hand leiding te verzenden en de certificerings tests uit te voeren.
 

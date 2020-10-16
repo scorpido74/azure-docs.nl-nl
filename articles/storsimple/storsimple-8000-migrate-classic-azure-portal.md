@@ -15,13 +15,13 @@ ms.workload: na
 ms.date: 03/14/2019
 ms.author: alkohli
 ms.openlocfilehash: a2d4aa8845472812cf1874b380c6cbf1e91e2149
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514742"
 ---
-# <a name="migrate-subscriptions-and-storage-accounts-associated-with-storsimple-device-manager-service"></a>Abonnementen en opslag accounts migreren die zijn gekoppeld aan de StorSimple-Apparaatbeheer service
+# <a name="migrate-subscriptions-and-storage-accounts-associated-with-storsimple-device-manager-service"></a>Migratie van abonnementen en opslagaccounts die zijn gekoppeld aan de StorSimple Device Manager-service
 
 Mogelijk moet u de StorSimple-service verplaatsen naar een nieuwe inschrijving of naar een nieuw abonnement. Deze migratie scenario's zijn account wijzigingen of wijzigingen in data centers. Gebruik de volgende tabel om te begrijpen welke van deze scenario's worden ondersteund, met inbegrip van de gedetailleerde stappen om te verplaatsen.
 

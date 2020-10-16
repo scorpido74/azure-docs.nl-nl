@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/08/2020
 ms.openlocfilehash: 8f8cfef5ed98682a1d03f7d36caa2008f4ff03b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84660444"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>Gegevens laden in Azure Data Lake Storage Gen2 met Azure Data Factory
@@ -40,7 +40,7 @@ Dit artikel laat u zien hoe u met het hulp programma Data Factory Gegevens kopi√
 * Azure Storage account met Data Lake Storage Gen2 ingeschakeld: als u geen opslag account hebt, [maakt u een account](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM).
 * AWS-account met een S3-Bucket die gegevens bevat: in dit artikel wordt beschreven hoe u gegevens kopieert vanuit Amazon S3. U kunt andere gegevens archieven gebruiken door vergelijk bare stappen te volgen.
 
-## <a name="create-a-data-factory"></a>Een gegevensfactory maken
+## <a name="create-a-data-factory"></a>Een data factory maken
 
 1. Selecteer in het linkermenu **Een resource maken** > **Gegevens en analyses** > **Data factory**:
    
@@ -51,7 +51,7 @@ Dit artikel laat u zien hoe u met het hulp programma Data Factory Gegevens kopi√
     * **Naam**: Voer een wereld wijd unieke naam in voor uw Azure-Data Factory. Als u de fout melding ' Data Factory-naam *naamvanuwgegevensfactory* is niet beschikbaar ' ontvangt, voert u een andere naam in voor de Data Factory. U kunt bijvoorbeeld _**de naam**_**ADFTutorialDataFactory**. Probeer de data factory opnieuw te maken. Raadpleeg het onderwerp [Data Factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
     * **Abonnement**: Selecteer het Azure-abonnement waarin u de Data Factory wilt maken. 
     * **Resource groep**: Selecteer een bestaande resource groep in de vervolg keuzelijst of selecteer de optie **nieuwe maken** en voer de naam van een resource groep in. Zie [Resourcegroepen gebruiken om Azure-resources te beheren](../azure-resource-manager/management/overview.md) voor meer informatie.  
-    * **Versie**: Selecteer **v2**.
+    * **Versie**: Selecteer **V2**.
     * **Locatie**: Selecteer de locatie voor de Data Factory. In de vervolgkeuzelijst worden alleen ondersteunde locaties weergegeven. De gegevens archieven die door data factory worden gebruikt, kunnen zich op andere locaties en regio's bevinden. 
 
 3. Selecteer **Maken**.
@@ -80,13 +80,13 @@ Dit artikel laat u zien hoe u met het hulp programma Data Factory Gegevens kopi√
    3. Klik op **verbinding testen** om de instellingen te valideren en selecteer vervolgens **maken**.
 
       ![Amazon S3-account opgeven](./media/load-azure-data-lake-storage-gen2/specify-amazon-s3-account.png)
-   4. U ziet dat er een nieuwe AmazonS3-verbinding wordt gemaakt. Selecteer **Volgende**. 
+   4. U ziet dat er een nieuwe AmazonS3-verbinding wordt gemaakt. Selecteer **Next**. 
 
 5. Blader op de pagina **Het invoerbestand of de invoermap kiezen** naar de map en het bestand dat u wilt kopi√´ren. Selecteer de map/het bestand en selecteer vervolgens **kiezen**.
 
     ![Het invoerbestand of de invoermap kiezen](./media/load-azure-data-lake-storage-gen2/choose-input-folder.png)
 
-6. Geef het Kopieer gedrag op door de **recursief** en **binaire Kopieer** opties te controleren. Selecteer **Volgende**.
+6. Geef het Kopieer gedrag op door de **recursief** en **binaire Kopieer** opties te controleren. Selecteer **Next**.
 
     ![Uitvoermap opgeven](./media/load-azure-data-lake-storage-gen2/specify-binary-copy.png)
     
@@ -131,5 +131,5 @@ Dit artikel laat u zien hoe u met het hulp programma Data Factory Gegevens kopi√
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Overzicht van de Kopieer activiteit](copy-activity-overview.md)
+* [Overzicht van kopieeractiviteiten](copy-activity-overview.md)
 * [Azure Data Lake Storage Gen2-connector](connector-azure-data-lake-storage.md)

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: inhenkel
-ms.openlocfilehash: 797ba00820e7ff9d96868acdfc1dddfff3d21623
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7941d542ca2cab1637b9edaef057f740a9a1b7ef
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91598290"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016822"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dynamische pakketten in Media Services v3
 
@@ -30,7 +30,7 @@ Microsoft Azure Media Services kunnen worden gebruikt voor het coderen van veel 
 In Media Services vertegenwoordigt een [streaming-eindpunt](streaming-endpoint-concept.md) (origin) een dynamische service (just-in-time) die u uw live en on-demand-inhoud rechtstreeks kan leveren aan een client-speler-app. De service maakt gebruik van een van de algemene protocollen voor het streamen van media die worden vermeld in de volgende sectie. *Dynamische pakketten* is een functie die standaard wordt geleverd op alle streaming-eindpunten.
 
 > [!NOTE]
-> U kunt de [Azure-portal](https://portal.azure.com/) gebruiken voor het beheren van v3 [live gebeurtenissen](live-events-outputs-concept.md), v3 [assets](assets-concept.md) weergeven, informatie opvragen over toegang tot API's. Gebruik voor alle andere beheertaken (bijvoorbeeld transformaties en taken) de [REST API](/rest/api/media/), [CLI](https://aka.ms/ams-v3-cli-ref)of een van de ondersteunde [SDK's](media-services-apis-overview.md#sdks).
+> U kunt de [Azure-portal](https://portal.azure.com/) gebruiken voor het beheren van v3 [live gebeurtenissen](live-events-outputs-concept.md), v3 [assets](assets-concept.md) weergeven, informatie opvragen over toegang tot API's. Gebruik voor alle andere beheertaken (bijvoorbeeld transformaties en taken) de [REST API](/rest/api/media/), [CLI](/cli/azure/ams)of een van de ondersteunde [SDK's](media-services-apis-overview.md#sdks).
 
 ## <a name="to-prepare-your-source-files-for-delivery"></a>Voorbereiding van de bronbestanden voor levering
 
@@ -88,7 +88,7 @@ De volgende stappen tonen een algemene Media Services-streaming-werkstroom waarb
 1. [Upload een invoerbestand](job-input-from-http-how-to.md), zoals een MP4-, QuickTime-/MOV-bestand of andere ondersteunde bestandsindeling. Dit bestand wordt ook wel het mezzanine- of bronbestand genoemd. Zie [indelingen die worden ondersteund door de Standard-encoder](media-encoder-standard-formats.md)voor een lijst met ondersteunde indelingen.
 1. [Codeer](#encode-to-adaptive-bitrate-mp4s) uw mezzanine-bestand in een H.264/AAC MP4-set met adaptieve bitsnelheid.
 
-    Als u al gecodeerde bestanden hebt en alleen de bestanden wilt kopiëren en streamen, gebruikt u: De API’s [CopyVideo](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#copyvideo) en [CopyAudio](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#copyaudio). Als gevolg daarvan zal een nieuw MP4-bestand met een streamingmanifest (.ism-bestand) worden gemaakt.
+    Als u al gecodeerde bestanden hebt en alleen de bestanden wilt kopiëren en streamen, gebruikt u: De API’s [CopyVideo](/rest/api/media/transforms/createorupdate#copyvideo) en [CopyAudio](/rest/api/media/transforms/createorupdate#copyaudio). Als gevolg daarvan zal een nieuw MP4-bestand met een streamingmanifest (.ism-bestand) worden gemaakt.
 1. Publiceer de uitvoer-asset die de MP4-set met adaptieve bitsnelheid bevat. U publiceert door het maken van een [streaming-locator](streaming-locators-concept.md).
 1. Bouw URL's die zijn gericht op verschillende indelingen (HLS, MPEG-DASH en Smooth Streaming). Het *streaming-eindpunt* zorgt voor het aanbieden van het juiste manifest en de juiste aanvragen voor al deze verschillende indelingen.
     

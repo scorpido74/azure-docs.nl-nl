@@ -1,5 +1,6 @@
 ---
-title: Een ASP.NET-web-API aanroepen die wordt beveiligd door Microsoft-identiteitsplatform
+title: 'Snelstart: Een ASP.NET-web-API aanroepen die wordt beveiligd door Microsoft-identiteitsplatform | Azure'
+titleSuffix: Microsoft identity platform
 description: In deze quickstart leert u hoe u een ASP.NET-web-API die wordt beveiligd door Azure Active Directory aanroept vanuit een Windows-desktoptoepassing (WPF).
 services: active-directory
 author: jmprieur
@@ -8,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 12/12/2019
+ms.date: 10/05/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: e1b76c9b6a442e3be23ddd54c926b13601287d7f
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 786f566b121d5f0d5d64e7b8b269c7cdfab9e4a6
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91354935"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825066"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-thats-protected-by-microsoft-identity-platform"></a>Quickstart: Een ASP.NET-web-API aanroepen die wordt beveiligd door Microsoft-identiteitsplatform
 
@@ -26,31 +27,28 @@ In dit artikel wordt ook een WPF-app (Windows Presentation Foundation) gebruikt 
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u de voorbeeldcode in dit artikel wilt uitvoeren, hebt u het volgende nodig:
-
-* Visual Studio 2017 of 2019.  U kunt [Visual Studio gratis](https://www.visualstudio.com/downloads/) downloaden.
-* Een [Microsoft-account](https://www.outlook.com) of het [Microsoft 365 Developer Program](/office/developer-program/office-365-developer-program).
+* Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Visual Studio 2017 of 2019. U kunt [Visual Studio gratis](https://www.visualstudio.com/downloads/) downloaden.
 
 ## <a name="clone-or-download-the-sample"></a>Het voorbeeld klonen of downloaden
 
-U kunt het voorbeeld op twee manieren ophalen:  
+U kunt het voorbeeld op twee manieren ophalen:
 
 * Kloon het vanaf uw shell of opdrachtregel:
    ```console
    git clone https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet.git
-   ```  
+   ```
 * [Download het als een ZIP-bestand](https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet/archive/complete.zip).
 
 ## <a name="register-your-web-api"></a>Uw web-API registreren
 
-In deze sectie registreert u uw web-API in de portal **App-registraties**.
+In deze sectie registreert u uw web-API in **App-registraties** in Azure Portal.
 
 ### <a name="choose-your-azure-ad-tenant"></a>Uw Azure Active Directory-tenant kiezen
 
 Als u uw apps handmatig wilt registreren, kiest u de Azure AD-tenant (Active Directory) waar u uw apps wilt maken.
 
 1. Meld u bij de [Azure Portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-
 1. Als uw account zich in meer dan één Azure AD-tenant bevindt, selecteert u uw profiel rechtsboven en selecteert u **Schakelen tussen mappen**.
 1. Stel de portalsessie in op de gewenste Azure AD-tenant.
 
@@ -60,21 +58,22 @@ Als u uw apps handmatig wilt registreren, kiest u de Azure AD-tenant (Active Dir
 1. Selecteer **Nieuwe registratie**.
 1. Wanneer de pagina **Een toepassing registreren** wordt geopend, voert u de registratiegegevens van de toepassing in:
 
-   a. Voer in de sectie **Naam** een beschrijvende toepassingsnaam in. Deze wordt weergegeven voor gebruikers van de app. Voer bijvoorbeeld **AppModelv2-NativeClient-DotNet-TodoListService** in.  
-   b. Bij **Ondersteunde accounttypen** selecteert u **Accounts in een organisatieadreslijst**.  
-   c. Selecteer **Registreren** om de toepassing te maken.
+    1. Voer in de sectie **Naam** een beschrijvende toepassingsnaam in. Deze wordt weergegeven voor gebruikers van de app. Voer bijvoorbeeld **AppModelv2-NativeClient-DotNet-TodoListService** in.
+    1. Bij **Ondersteunde accounttypen** selecteert u **Accounts in een organisatieadreslijst**.
+    1. Selecteer **Registreren** om de toepassing te maken.
 
 1. Zoek de waarde **Toepassings-id (client)** op de app-pagina **Overzicht** en noteer deze voor gebruik later. U hebt deze nodig om het Visual Studio-configuratiebestand van dit project te configureren (dat is `ClientId` in het bestand *TodoListService\Web.config*).
-1. Selecteer in de sectie **Een API beschikbaar maken** de optie **Een bereik toevoegen**, accepteer de voorgestelde URI voor de toepassings-id (API://{clientId}) door **Opslaan en doorgaan** te selecteren en de volgende informatie op te geven:
- 
-   a. Voer **access_as_user** in bij **Bereiknaam**.  
-   b. Zorg ervoor dat de optie **Beheerders en gebruikers** is geselecteerd voor **Wie kan toestemming verlenen?**  
-   c. Voer in het vak **Weergavenaam van de beheerderstoestemming** als naam **TodoListService openen als gebruiker** in.  
-   d. Voer in het vak **Beschrijving van de beheerderstoestemming** de tekst **TodoListService-web-API openen als gebruiker** in.  
-   e. Voer in het vak **Weergavenaam van de gebruikerstoestemming** als naam **TodoListService openen als gebruiker** in.  
-   f. Voer in het vak Beschrijving van **toestemming van de gebruiker** **de TodoListService-Web-API in als een gebruikers**.  
-   g. Laat **Status** op **Ingeschakeld** staan.  
-   h. Selecteer **Bereik toevoegen**.
+
+1. Selecteer in de sectie **Een API beschikbaar maken** de optie **Een bereik toevoegen**, accepteer de voorgestelde URI voor de toepassings-id (`api://{clientId}`) door **Opslaan en doorgaan** te selecteren en de volgende informatie op te geven:
+
+    1. Voer **access_as_user** in bij **Bereiknaam**.
+    1. Zorg ervoor dat de optie **Beheerders en gebruikers** is geselecteerd voor **Wie kan toestemming verlenen?**
+    1. Voer in het vak **Weergavenaam van de beheerderstoestemming** als naam **TodoListService openen als gebruiker** in.
+    1. Voer in het vak **Beschrijving van de beheerderstoestemming** de tekst **TodoListService-web-API openen als gebruiker** in.
+    1. Voer in het vak **Weergavenaam van de gebruikerstoestemming** als naam **TodoListService openen als gebruiker** in.
+    1. Voer in het vak Beschrijving van **toestemming van de gebruiker** **de TodoListService-Web-API in als een gebruikers**.
+    1. Laat **Status** op **Ingeschakeld** staan.
+    1. Selecteer **Bereik toevoegen**.
 
 ### <a name="configure-the-service-project"></a>Het serviceproject configureren
 
@@ -107,30 +106,30 @@ Ga als volgt te werk om de TodoListClient-app te registreren:
 1. Selecteer **Nieuwe registratie**.
 1. Wanneer de pagina **Een toepassing registreren** wordt geopend, voert u de registratiegegevens van de toepassing in:
 
-   a. Voer in de sectie **Naam** een beschrijvende toepassingsnaam die gebruikers van de app te zien krijgen. Bijvoorbeeld: **NativeClient-DotNet-TodoListClient**.  
-   b. Bij **Ondersteunde accounttypen** selecteert u **Accounts in een organisatieadreslijst**.  
-   c. Selecteer **Registreren** om de toepassing te maken.
-   
+    1. Voer in de sectie **Naam** een beschrijvende toepassingsnaam die gebruikers van de app te zien krijgen. Bijvoorbeeld: **NativeClient-DotNet-TodoListClient**.
+    1. Bij **Ondersteunde accounttypen** selecteert u **Accounts in een organisatieadreslijst**.
+    1. Selecteer **Registreren** om de toepassing te maken.
+
    > [!NOTE]
    > In het bestand *app.config* van het TodoListClient-project is de standaardwaarde voor `ida:Tenant` ingesteld op `common`. De mogelijke waarden zijn:
    > - `common`: u kunt zich aanmelden met behulp van een werk- of schoolaccount of een persoonlijk Microsoft-account (omdat u **Accounts in elke organisatiedirectory** hebt geselecteerd in stap 3b).
    > - `organizations`: u kunt zich aanmelden met behulp van een werk- of schoolaccount.
    > - `consumers`: u kunt zich alleen aanmelden met behulp van een persoonlijk Microsoft-account.
-   >
-   
+
 1. Selecteer op de pagina **Overzicht** van de app de optie **Verificatie** en doe dan het volgende:
 
-   a. Selecteer onder **Platformconfiguraties** de knop **Een platform toevoegen**.  
-   b. Bij **Mobiele toepassingen en bureaubladtoepassingen** selecteert u **Mobiele toepassingen en bureaubladtoepassingen**.  
-   c. Schakel bij **Omleidings-URI's** het selectievakje **https://login.microsoftonline.com/common/oauth2/nativeclient** in.  
-   d. Selecteer **Configureren**.   
+    1. Selecteer onder **Platformconfiguraties** de knop **Een platform toevoegen**.
+    1. Bij **Mobiele toepassingen en bureaubladtoepassingen** selecteert u **Mobiele toepassingen en bureaubladtoepassingen**.
+    1. Schakel bij **Omleidings-URI's** het selectievakje **https://login.microsoftonline.com/common/oauth2/nativeclient** in.
+    1. Selecteer **Configureren**.
+
 1. Selecteer **API-machtigingen** en ga dan als volgt te werk:
 
-   a. Selecteer de knop **Een machtiging toevoegen**.  
-   b. Selecteer het tabblad **Mijn API's**.  
-   c. Selecteer in de lijst met API's **AppModelv2-NativeClient-DotNet-TodoListService-API** of de naam die u hebt ingevoerd voor de web-API.  
-   d. Schakel de machtiging **access_as_user** in als dit selectievakje nog niet is ingeschakeld. Gebruik zo nodig het zoekvak.  
-   e. Selecteer de knop **Toestemmingen toevoegen**.
+    1. Selecteer de knop **Een machtiging toevoegen**.
+    1. Selecteer het tabblad **Mijn API's**.
+    1. Selecteer in de lijst met API's **AppModelv2-NativeClient-DotNet-TodoListService-API** of de naam die u hebt ingevoerd voor de web-API.
+    1. Schakel de machtiging **access_as_user** in als dit selectievakje nog niet is ingeschakeld. Gebruik zo nodig het zoekvak.
+    1. Selecteer de knop **Toestemmingen toevoegen**.
 
 ### <a name="configure-your-project"></a>Het project configureren
 

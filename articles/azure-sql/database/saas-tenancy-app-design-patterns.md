@@ -11,10 +11,10 @@ ms.reviewer: ''
 ms.date: 01/25/2019
 ms.custom: seoapril2019, sqldbrb=1
 ms.openlocfilehash: 493c18efa8bad2e366424c8c8130754ce0098913
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85250704"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Multitenancy-patronen voor SaaS-data base met meerdere tenants
@@ -135,7 +135,7 @@ In het algemeen hebben multi tenant-data bases de laagste kosten per Tenant.  De
 
 Twee varianten van een model voor multi tenant-data bases worden in de volgende stappen beschreven, waarbij het Shard multi tenant-model het meest flexibel en schaalbaar is.
 
-## <a name="f-multi-tenant-app-with-a-single-multi-tenant-database"></a>Ls. Multi tenant-app met één multi tenant-data base
+## <a name="f-multi-tenant-app-with-a-single-multi-tenant-database"></a>F. Multi tenant-app met één multi tenant-data base
 
 Het eenvoudigste multi tenant-database patroon maakt gebruik van één Data Base voor het hosten van gegevens voor alle tenants.  Naarmate er meer tenants worden toegevoegd, wordt de data base omhoog geschaald met meer opslag-en reken resources.  Deze schaal kan allemaal nodig zijn, hoewel er altijd een limiet voor een ultieme schaal is.  Lang voordat deze limiet is bereikt, wordt de data base lastig te beheren.
 
@@ -189,7 +189,7 @@ De volgende tabel bevat een overzicht van de verschillen tussen de belangrijkste
 | Isolatie van tenants | Zeer hoog  | Hoog | Gebrek behalve voor één Tenant (die zich alleen in een MT-Data Base bevindt). |
 | Database kosten per Tenant | Hogesnelheidsnet het formaat voor pieken. | Gebrek gebruikte groepen. | Laagst, voor kleine tenants in MT Db's. |
 | Prestaties bewaken en beheren | Alleen per Tenant | Aggregatie + per Tenant | Vatting Hoewel dit per Tenant geldt, is dat alleen voor singles. |
-| Complexiteit van ontwikkeling | Laag | Laag | Drager vanwege sharding. |
+| Complexiteit van ontwikkeling | Beperkt | Beperkt | Drager vanwege sharding. |
 | Operationele complexiteit | Laag-hoog. Afzonderlijk eenvoudig, complex op schaal. | Laag medium. Patronen herkennen de complexiteit op schaal. | Laag-hoog. Het beheer van afzonderlijke tenants is complex. |
 | &nbsp; ||||
 

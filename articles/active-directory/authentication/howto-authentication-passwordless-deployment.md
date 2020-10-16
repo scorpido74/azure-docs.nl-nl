@@ -7,16 +7,16 @@ ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: baselden
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95f4221b390071ad149699608d3937b9af4e1d5d
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 8f0c19e33ab6f91e69f9c7dbc5bc29fef1fd53bb
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527000"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964873"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Een authenticatie-implementatie met een wacht woord plannen in Azure Active Directory
 
@@ -118,7 +118,7 @@ Uw mede delingen aan eind gebruikers moeten de volgende informatie bevatten:
 - [Registreren in de Microsoft Authenticator-app](howto-authentication-passwordless-phone.md)
 - [Aanmelden met uw telefoon](../user-help/user-help-auth-app-sign-in.md)
 
-Micro soft biedt multi-factor Authentication- [communicatie sjablonen](https://aka.ms/mfatemplates), self-service voor het opnieuw instellen van wacht woorden ( [SSPR) en](https://www.microsoft.com/download/details.aspx?id=56768) [documentatie voor eind gebruikers](../user-help/security-info-setup-signin.md) om uw communicatie te ontwerpen. U kunt gebruikers verzenden naar [https://myprofile.microsoft.com](https://myprofile.microsoft.com/) om rechtstreeks te registreren door de koppelingen voor **beveiligings gegevens** op die pagina te selecteren.
+Micro soft voorziet in multi-factor Authentication- [communicatie sjablonen](https://aka.ms/mfatemplates), Self-Service voor het opnieuw instellen van wacht woorden ( [SSPR) en](https://www.microsoft.com/download/details.aspx?id=56768) [documentatie voor eind gebruikers](../user-help/security-info-setup-signin.md) om uw communicatie te ontwerpen. U kunt gebruikers verzenden naar [https://myprofile.microsoft.com](https://myprofile.microsoft.com/) om rechtstreeks te registreren door de koppelingen voor **beveiligings gegevens** op die pagina te selecteren.
 
 ### <a name="plan-to-pilot"></a>Een pilot plannen
 

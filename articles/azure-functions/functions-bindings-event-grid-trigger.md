@@ -7,10 +7,10 @@ ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python
 ms.openlocfilehash: 96daa93c28617bd34f263b11afcd244e3b7bacf0
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88214140"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Event Grid trigger voor Azure Functions
@@ -51,7 +51,7 @@ namespace Company.Function
 
 Zie pakketten, [kenmerken](#attributes-and-annotations), [configuratie](#configuration)en [gebruik](#usage)voor meer informatie.
 
-### <a name="version-1x"></a>Versie 1. x
+### <a name="version-1x"></a>Versie 1.x
 
 In het volgende voor beeld ziet u een [C#-functie](functions-dotnet-class-library.md) van het model functions 1. x die is gekoppeld aan `JObject` :
 
@@ -76,7 +76,7 @@ namespace Company.Function
 }
 ```
 
-# <a name="c-script"></a>[C#-script](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
 In het volgende voor beeld ziet u een trigger binding in een *function.jsin* een bestand en een [C#-script functie](functions-reference-csharp.md) die gebruikmaakt van de binding.
 
@@ -95,7 +95,7 @@ Hier vindt u de bindings gegevens in de *function.js* in het bestand:
 }
 ```
 
-### <a name="version-2x-and-higher"></a>Versie 2. x en hoger
+### <a name="version-2x-and-higher"></a>Versie 2.x en hoger
 
 Hier volgt een voor beeld dat is gekoppeld aan `EventGridEvent` :
 
@@ -112,7 +112,7 @@ public static void Run(EventGridEvent eventGridEvent, ILogger log)
 
 Zie pakketten, [kenmerken](#attributes-and-annotations), [configuratie](#configuration)en [gebruik](#usage)voor meer informatie.
 
-### <a name="version-1x"></a>Versie 1. x
+### <a name="version-1x"></a>Versie 1.x
 
 Dit is de functie 1. x C#-script code waarmee een binding wordt gemaakt `JObject` :
 
@@ -147,7 +147,7 @@ Hier vindt u de bindings gegevens in de *function.js* in het bestand:
 }
 ```
 
-Dit is de Java script-code:
+Dit is de JavaScript-code:
 
 ```javascript
 module.exports = function (context, eventGridEvent) {
@@ -179,7 +179,7 @@ Hier vindt u de bindings gegevens in de *function.js* in het bestand:
 }
 ```
 
-Dit is de python-code:
+Dit is de Python-code:
 
 ```python
 import json
@@ -263,7 +263,7 @@ Na aankomst wordt de JSON-nettolading van de gebeurtenis in de ```EventSchema```
   }
 ```
 
-Gebruik in de [runtime-bibliotheek van Java functions](/java/api/overview/azure/functions/runtime)de `EventGridTrigger` annotatie voor para meters waarvan de waarde afkomstig is van EventGrid. Door para meters met deze aantekeningen wordt de functie uitgevoerd wanneer er een gebeurtenis binnenkomt.  Deze aantekening kan worden gebruikt met systeem eigen Java-typen, Pojo's of nullable-waarden met `Optional<T>` .
+Gebruik in de [runtime-bibliotheek van Java functions](/java/api/overview/azure/functions/runtime)de `EventGridTrigger` annotatie voor para meters waarvan de waarde afkomstig is van EventGrid. Door parameters met deze aantekeningen wordt de functie uitgevoerd wanneer er een gebeurtenis optreedt.  Deze aantekening kan worden gebruikt met systeemeigen Java-typen, POJO's of nullbare waarden met `Optional<T>`.
 
 ---
 
@@ -285,17 +285,17 @@ public static void EventGridTest([EventGridTrigger] JObject eventGridEvent, ILog
 
 Zie C#-voor beeld voor een volledig voor beeld.
 
-# <a name="c-script"></a>[C#-script](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
-Kenmerken worden niet ondersteund door een C#-script.
+Kenmerken worden niet ondersteund door C# Script.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Kenmerken worden niet ondersteund door Java script.
+Kenmerken worden niet ondersteund door JavaScript.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Kenmerken worden niet ondersteund door python.
+Kenmerken worden niet ondersteund door Python.
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -307,7 +307,7 @@ Met de aantekening [EventGridTrigger](https://github.com/Azure/azure-functions-j
 
 De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand. Er zijn geen constructor-para meters of-eigenschappen om in het kenmerk in te stellen `EventGridTrigger` .
 
-|function.jsbij eigenschap |Beschrijving|
+|function.json-eigenschap |Beschrijving|
 |---------|---------|
 | **type** | Vereist: moet worden ingesteld op `eventGridTrigger` . |
 | **direction** | Vereist: moet worden ingesteld op `in` . |
@@ -329,7 +329,7 @@ In Azure Functions 2. x en hoger hebt u ook de mogelijkheid om het volgende para
 > [!NOTE]
 > In functions v1 als u probeert te binden aan `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent` , wordt in de compiler een ' afgeschaft ' bericht weer gegeven en wordt u aangeraden om `Microsoft.Azure.EventGrid.Models.EventGridEvent` in plaats daarvan te gebruiken. Als u het nieuwe type wilt gebruiken, verwijst u naar het NuGet-pakket [micro soft. Azure. EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) en geeft u de `EventGridEvent` type naam volledig door met het voor voegsel `Microsoft.Azure.EventGrid.Models` .
 
-# <a name="c-script"></a>[C#-script](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
 In Azure Functions 1. x kunt u de volgende parameter typen gebruiken voor de Event Grid trigger:
 
@@ -407,7 +407,7 @@ Voor functies die u ontwikkelt in het Azure Portal met de Event Grid trigger, se
 
 Wanneer u deze koppeling selecteert, wordt de pagina **gebeurtenis abonnement maken** geopend met het huidige trigger eindpunt dat al is gedefinieerd.
 
-:::image type="content" source="media/functions-bindings-event-grid/endpoint-url.png" alt-text="Gebeurtenis abonnement maken waarbij al een functie-eind punt is gedefinieerd" :::
+:::image type="content" source="media/functions-bindings-event-grid/endpoint-url.png" alt-text="Een nieuw gebeurtenis abonnement koppelen aan een trigger in de portal." :::
 
 Zie voor meer informatie over het maken van abonnementen met behulp van de Azure Portal [aangepaste gebeurtenis maken-Azure Portal](../event-grid/custom-event-quickstart-portal.md) in de Event grid documentatie.
 

@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
 ms.openlocfilehash: d62328534157a1e2d9e53830be9d6b87e08c9e40
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87129267"
 ---
 # <a name="how-to-configure-an-applications-publisher-domain"></a>Procedure: het domein van de uitgever van een toepassing configureren
@@ -97,7 +97,7 @@ Als uw app niet is geregistreerd in een Tenant, ziet u alleen de optie om een ni
 - Als uw Tenant domeinen heeft geverifieerd, selecteert u een van de domeinen in de vervolg keuzelijst **Selecteer een geverifieerd domein** .
 
 >[!Note]
-> De verwachte header content-type die moet worden geretourneerd, is `application/json` . Er wordt mogelijk een fout melding weer gegeven die hieronder wordt vermeld als u iets anders als gebruikt`application/json; charset=utf-8` 
+> De verwachte header content-type die moet worden geretourneerd, is `application/json` . Er wordt mogelijk een fout melding weer gegeven die hieronder wordt vermeld als u iets anders als gebruikt `application/json; charset=utf-8` 
 > 
 >``` "Verification of publisher domain failed. Error getting JSON file from https:///.well-known/microsoft-identity-association. The server returned an unexpected content type header value. " ```
 >

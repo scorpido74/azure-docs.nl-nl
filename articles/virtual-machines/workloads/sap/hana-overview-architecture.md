@@ -14,10 +14,10 @@ ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: e1575ee02a520fd39a1c659eadaeda5822207539
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87171125"
 ---
 #  <a name="what-is-sap-hana-on-azure-large-instances"></a>Wat is SAP HANA on Azure (grote exemplaren)?
@@ -56,7 +56,7 @@ De verschillende documenten van de HANA-ondersteuning voor grote instanties omva
 - [Problemen met SAP HANA (grote instanties) oplossen en controleren op Azure](troubleshooting-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Hoge Beschik baarheid die in SUSE is ingesteld met behulp van de STONITH](./ha-setup-with-stonith.md)
 - [Back-up en herstel van het besturings systeem voor de type II Sku's van Revision 3-stem pels](./os-backup-type-ii-skus.md)
-- [Opslaan op SAP HANA Large Instances met een Azure-reserve ring](../../../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md)
+- [Besparen op SAP HANA Large Instances met een Azure-reservering](../../../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md)
 
 **Volgende stappen**
 - Raadpleeg [de voor waarden](hana-know-terms.md)

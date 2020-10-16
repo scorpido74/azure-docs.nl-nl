@@ -1,6 +1,6 @@
 ---
 title: Eigendom aanvragen van facturering van Azure-abonnementen voor Microsoft Partner-overeenkomst (MPA)
-description: Meer informatie over het aanvragen van eigendom van facturering van Azure-abonnementen van andere gebruikers.
+description: Meer informatie over het aanvragen van eigendom van facturering van Azure-abonnementen van andere gebruikers voor Microsoft Partner-overeenkomst (MPA).
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: eef36726db735cfdd42f5a103073303cf3b3a632
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: bb2a58b76445f2cfd14a905de1fb66dbff3eee7e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684946"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371011"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>Eigendom aanvragen van facturering van Azure-abonnementen voor uw MPA-account
 
@@ -35,7 +35,7 @@ Dit artikel is van toepassing op factureringsrekeningen voor Microsoft Partner-o
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com) met de referenties van de CSP-beheeragent in de CSP-tenant.
 1. Zoek naar **Kostenbeheer en facturering**.  
-    ![Schermopname van zoekopdracht in Azure Portal naar kostenbeheer en facturering](./media/mpa-request-ownership/search-cmb.png)
+    ![Schermopname van zoekopdracht in Azure Portal naar kostenbeheer en facturering om eigendom van facturering aan te vragen.](./media/mpa-request-ownership/search-cmb.png)
 1. Selecteer **Klanten** aan de linkerkant en selecteer vervolgens een klant in de lijst.  
     [![Schermopname van de selectie van klanten](./media/mpa-request-ownership/mpa-select-customers.png)](./media/mpa-request-ownership/mpa-select-customers.png#lightbox)
 1. Selecteer **Overdrachtsaanvragen** aan de linkerkant en selecteer vervolgens **Een nieuwe aanvraag toevoegen**.  
@@ -56,7 +56,7 @@ Dit artikel is van toepassing op factureringsrekeningen voor Microsoft Partner-o
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Zoek naar **Kostenbeheer en facturering**.  
-    ![Schermopname van zoekopdracht in Azure Portal naar kostenbeheer en facturering](./media/mpa-request-ownership/billing-search-cost-management-billing.png)
+    ![Schermopname van zoekopdracht in Azure Portal naar kostenbeheer en facturering om de overdrachtsstatus aan te vragen.](./media/mpa-request-ownership/billing-search-cost-management-billing.png)
 1. Selecteer **Klanten** aan de linkerkant.  
     [![Schermopname van de selectie van klanten](./media/mpa-request-ownership/mpa-select-customers.png)](./media/mpa-request-ownership/mpa-select-customers.png#lightbox)
 1. Selecteer de klant in de lijst waarvoor u de overdrachtsaanvraag hebt verzonden.
@@ -127,7 +127,7 @@ Azure-reserveringen worden niet automatisch verplaatst met abonnementen. U kunt 
 
 ### <a name="access-to-azure-services"></a>Toegang tot Azure-services
 
-Toegang voor bestaande gebruikers, groepen of service-principals die is toegewezen met behulp van [Azure RBAC (op rollen gebaseerd toegangsbeheer)](../../role-based-access-control/overview.md) wordt niet beïnvloed tijdens de overgang. De partner krijgt geen nieuwe RBAC-toegang tot de abonnementen.
+Toegang voor bestaande gebruikers, groepen of service-principals die is toegewezen met behulp van [op rollen gebaseerd toegangsbeheer van Azure (Azure RBAC)](../../role-based-access-control/overview.md) wordt niet beïnvloed tijdens de overgang. De partner krijgt geen nieuwe Azure RBAC-toegang tot de abonnementen.
 
 De partners moeten samenwerken met de klant om toegang te krijgen tot abonnementen. De partners moeten [Beheer namens - AOBO (Admin On Behalf Of)](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) of [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/concepts/cloud-solution-provider)-toegang krijgen om ondersteuningstickets te openen.
 
@@ -174,4 +174,4 @@ Als u hulp nodig hebt, kunt u [contact opnemen met ondersteuning](https://portal
 ## <a name="next-steps"></a>Volgende stappen
 
 * Het eigendom van facturering van de Azure-abonnementen wordt overgezet naar u. Houd de kosten voor deze abonnementen bij in [Azure Portal.](https://portal.azure.com)
-* Werk samen met de klant om toegang te krijgen tot de overgedragen Azure-abonnementen. [Toegang tot Azure-resources beheren met behulp van RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
+* Werk samen met de klant om toegang te krijgen tot de overgedragen Azure-abonnementen. [Azure-roltoewijzingen toevoegen of verwijderen met behulp van Azure Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).

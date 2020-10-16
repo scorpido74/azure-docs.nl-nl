@@ -10,10 +10,10 @@ ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 51480a49aab2c1277eeb846c593fcb2bc858d1f0
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90983711"
 ---
 # <a name="about-virtual-hub-routing"></a>Over virtuele hub-routering
@@ -30,7 +30,7 @@ In de volgende secties worden de belangrijkste concepten in virtuele hub-route r
 
 Een route tabel van de virtuele hub kan een of meer routes bevatten. Een route bevat de naam, een label, een doel type, een lijst met doel voorvoegsels en de volgende hop-informatie voor een pakket dat moet worden doorgestuurd. Een **verbinding** heeft meestal een routerings configuratie die aan een route tabel is gekoppeld of door gegeven
 
-### <a name="connection"></a><a name="connection"></a>Combi
+### <a name="connection"></a><a name="connection"></a>Verbinding
 
 Verbindingen zijn Resource Manager-resources die een routerings configuratie hebben. De vier typen verbindingen zijn:
 
@@ -55,7 +55,7 @@ Verbindingen geven dynamische routes door aan een route tabel. Met een VPN-verbi
 
 Er is ook een **route tabel geen** beschikbaar voor elke virtuele hub. Door door te geven aan de geen route tabel, houdt in dat er geen routes moeten worden door gegeven van de verbinding. VPN-, ExpressRoute-en gebruikers-VPN-verbindingen sturen routes door naar dezelfde set route tabellen.
 
-:::image type="content" source="./media/about-virtual-hub-routing/concepts-propagation.png" alt-text="Doorgifte":::
+:::image type="content" source="./media/about-virtual-hub-routing/concepts-propagation.png" alt-text="Organisatie":::
 
 ### <a name="labels"></a><a name="static"></a>Labels
 Labels bieden een mechanisme voor het logisch groeperen van route tabellen. Dit is met name handig tijdens het door geven van routes van verbindingen naar meerdere route tabellen. De standaard route tabel heeft bijvoorbeeld een ingebouwd label met de naam default. Wanneer gebruikers verbindings routes door geven naar een standaard label, wordt deze automatisch toegepast op alle standaard route tabellen voor elke hub in het virtuele WAN. 

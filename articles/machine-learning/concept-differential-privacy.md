@@ -10,10 +10,10 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.openlocfilehash: 9728bf2c86c0629b09e2325650ce288cf9b3cc7e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86199798"
 ---
 # <a name="preserve-data-privacy-by-using-differential-privacy-and-the-whitenoise-package-preview"></a>Behoud de privacy van gegevens met behulp van differentiële privacy en het WhiteNoise-pakket (preview-versie)
@@ -76,7 +76,7 @@ De systeem bibliotheek bevat de volgende hulpprogram ma's en services voor het w
 
 |Onderdeel  |Beschrijving  |
 |---------|---------|
-|Gegevens toegang     | Bibliotheek die SQL-query's onderschept en verwerkt en rapporten produceert. Deze bibliotheek is geïmplementeerd in Python en ondersteunt de volgende ODBC-en DBAPI-gegevens bronnen:<ul><li>PostgreSQL</li><li>SQL Server</li><li>Spark</li><li>Preston</li><li>Pandas</li></ul>|
+|Data Access     | Bibliotheek die SQL-query's onderschept en verwerkt en rapporten produceert. Deze bibliotheek is geïmplementeerd in Python en ondersteunt de volgende ODBC-en DBAPI-gegevens bronnen:<ul><li>PostgreSQL</li><li>SQL Server</li><li>Spark</li><li>Preston</li><li>Pandas</li></ul>|
 |Service     | Uitvoerings service die een REST-eind punt biedt om aanvragen of query's te leveren aan gedeelde gegevens bronnen. De service is ontworpen om samen stelling van differentiële privacyfuncties toe te staan die wordt toegepast op aanvragen met verschillende Delta-en Epsilon-waarden, ook wel heterogene aanvragen genoemd. Deze referentie-implementatie accounts voor extra gevolgen van query's op gecorreleerde gegevens. |
 |Evaluator     | Stochastische evaluator die controleert op privacy-schendingen, nauw keurigheid en afwijking. De evaluator ondersteunt de volgende tests: <ul><li>Privacy testen: bepaalt of een rapport voldoet aan de voor waarden van differentiële privacy.</li><li>Nauw keurigheid testen: Hiermee wordt bepaald of de betrouw baarheid van rapporten binnen de boven-en ondergrenzen ligt op het betrouwbaarheids niveau 95%.</li><li>Hulp programma testen: Hiermee wordt bepaald of de vertrouwens grenzen van een rapport dicht bij de gegevens worden gesloten terwijl de privacy nog steeds wordt gemaximaliseerd.</li><li>Bias test: meet de distributie van rapporten voor herhaalde query's om ervoor te zorgen dat ze niet worden gesaldeerd</li></ul> |
 

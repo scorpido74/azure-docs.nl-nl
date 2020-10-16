@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017, devx-track-java
 ms.date: 11/20/2019
 ms.openlocfilehash: 15a86fd191eefc5882150fb276228d18efd6ff5d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87323788"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>Een Java UDF gebruiken met Apache Hive in HDInsight
@@ -22,9 +22,9 @@ Meer informatie over het maken van een op Java gebaseerde, door de gebruiker ged
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Hadoop-cluster in HDInsight. Zie aan de [slag met HDInsight op Linux](./apache-hadoop-linux-tutorial-get-started.md).
-* [JDK-versie 8 (Java Developer Kit)](https://aka.ms/azure-jdks)
+* [Java Developer Kit (JDK) versie 8](https://aka.ms/azure-jdks)
 * [Apache Maven](https://maven.apache.org/download.cgi) correct [geïnstalleerd](https://maven.apache.org/install.html) volgens Apache.  Maven is een systeem voor het bouwen van Java-projecten.
-* Het [URI-schema](../hdinsight-hadoop-linux-information.md#URI-and-scheme) voor de primaire opslag van uw clusters. Dit is wasb://voor Azure Storage, abfs://voor Azure Data Lake Storage Gen2 of adl://voor Azure Data Lake Storage Gen1. Als beveiligde overdracht is ingeschakeld voor Azure Storage, zou de URI zijn `wasbs://` .  Zie ook [beveiligde overdracht](../../storage/common/storage-require-secure-transfer.md).
+* Het [URI-schema](../hdinsight-hadoop-linux-information.md#URI-and-scheme) voor de primaire opslag voor uw clusters. Dit is wasb://voor Azure Storage, abfs://voor Azure Data Lake Storage Gen2 of adl://voor Azure Data Lake Storage Gen1. Als beveiligde overdracht is ingeschakeld voor Azure Storage, wordt de URI `wasbs://`.  Zie ook [beveiligde overdracht](../../storage/common/storage-require-secure-transfer.md).
 
 * Een tekst editor of Java IDE
 
@@ -273,4 +273,4 @@ $text = [IO.File]::ReadAllText($original_file) -replace "`r`n", "`n"
 
 Zie [Apache Hive gebruiken met HDInsight](hdinsight-use-hive.md)voor andere manieren om met hive te werken.
 
-Zie [Apache Hive Opera tors en door de gebruiker gedefinieerde functies](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) van de Hive-wiki op Apache.org voor meer informatie over door de gebruiker gedefinieerde Hive-functies.
+Zie voor meer informatie over Hive-User-Defined functies [Apache Hive Opera tors en de sectie User-Defined functies](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) van de Hive-wiki op Apache.org.

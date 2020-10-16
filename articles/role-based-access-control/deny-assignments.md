@@ -16,10 +16,10 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
 ms.openlocfilehash: a5f17f009caa9306631debf511f2c890f8f2a450
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82733768"
 ---
 # <a name="understand-azure-deny-assignments"></a>Meer informatie over Azure deny-toewijzingen
@@ -63,12 +63,12 @@ Het weigeren van toewijzingen volgt een vergelijkbaar patroon als roltoewijzinge
 > | `Permissions.DataActions` | Ten minste één actie of één DataActions | Teken reeks [] | Een matrix met teken reeksen waarmee de gegevens bewerkingen worden opgegeven waarnaar de weigerings toewijzing toegang blokkeert. |
 > | `Permissions.NotDataActions` | Nee | Teken reeks [] | Een matrix met teken reeksen waarmee de gegevens bewerkingen worden opgegeven die moeten worden uitgesloten van de weigerings toewijzing. |
 > | `Scope` | Nee | Tekenreeks | Een teken reeks die het bereik opgeeft waarop de weigerings toewijzing van toepassing is. |
-> | `DoNotApplyToChildScopes` | Nee | Boolean-waarde | Hiermee geeft u op of de weigerings toewijzing van toepassing is op onderliggende bereiken. De standaard waarde is False. |
+> | `DoNotApplyToChildScopes` | Nee | Booleaans | Hiermee geeft u op of de weigerings toewijzing van toepassing is op onderliggende bereiken. De standaard waarde is False. |
 > | `Principals[i].Id` | Ja | Teken reeks [] | Een matrix van Azure AD Principal-object-Id's (gebruiker, groep, Service-Principal of beheerde identiteit) waarop de weigerings toewijzing van toepassing is. Stel in op een lege GUID `00000000-0000-0000-0000-000000000000` om alle principals weer te geven. |
 > | `Principals[i].Type` | Nee | Teken reeks [] | Een matrix van object typen vertegenwoordigd door principals [i]. id. Stel in `SystemDefined` om alle principals weer te geven. |
 > | `ExcludePrincipals[i].Id` | Nee | Teken reeks [] | Een matrix van Azure AD Principal-object-Id's (gebruiker, groep, Service-Principal of beheerde identiteit) waarop de weigerings toewijzing niet van toepassing is. |
 > | `ExcludePrincipals[i].Type` | Nee | Teken reeks [] | Een matrix met object typen vertegenwoordigd door ExcludePrincipals [i]. id. |
-> | `IsSystemProtected` | Nee | Boolean-waarde | Hiermee wordt aangegeven of deze deny-toewijzing is gemaakt door Azure en niet kan worden bewerkt of verwijderd. Op dit moment worden alle deny-toewijzingen met het systeem beveiligd. |
+> | `IsSystemProtected` | Nee | Booleaans | Hiermee wordt aangegeven of deze deny-toewijzing is gemaakt door Azure en niet kan worden bewerkt of verwijderd. Op dit moment worden alle deny-toewijzingen met het systeem beveiligd. |
 
 ## <a name="the-all-principals-principal"></a>De principal alle principals
 
@@ -85,9 +85,9 @@ Principals              : {
 Alle principals kunnen worden gecombineerd met `ExcludePrincipals` om alle principals te weigeren, met uitzonde ring van sommige gebruikers. Voor alle principals gelden de volgende beperkingen:
 
 - Kan alleen worden gebruikt in `Principals` en kan niet worden gebruikt in `ExcludePrincipals` .
-- `Principals[i].Type`moet worden ingesteld op `SystemDefined` .
+- `Principals[i].Type` moet worden ingesteld op `SystemDefined` .
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Zelf studie: nieuwe resources beveiligen met Azure-blauw drukken resource vergrendelingen](../governance/blueprints/tutorials/protect-new-resources.md)
+* [Zelfstudie: Nieuwe resources beveiligen met resourcevergrendelingen in Azure Blueprints](../governance/blueprints/tutorials/protect-new-resources.md)
 * [Azure deny-toewijzingen weer geven met behulp van de Azure Portal](deny-assignments-portal.md)

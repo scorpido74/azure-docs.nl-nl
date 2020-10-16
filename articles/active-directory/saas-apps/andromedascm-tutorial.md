@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 31fc1877dd0edd2fd670f0f9466692ac7bc8ad15
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d1e2b91b46bee761c7feb1000920d5ae1e65ba4c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88531079"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713624"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-andromeda"></a>Zelfstudie: Azure Active Directory-integratie met Andromeda
 
@@ -100,7 +100,7 @@ Voer de volgende stappen uit om eenmalige aanmelding met Azure AD bij Andromeda 
 
 4. In het gedeelte **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
 
-    ![Informatie over eenmalige aanmelding bij Andromeda-domein en -URL's](common/idp-intiated.png)
+    ![Schermopname die de Standaard SAML-configuratie toont, waar u de id en URL kunt invoeren en vervolgens Opslaan selecteert.](common/idp-intiated.png)
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://<tenantURL>.ngcxpress.com/`
 
@@ -108,7 +108,7 @@ Voer de volgende stappen uit om eenmalige aanmelding met Azure AD bij Andromeda 
 
 5. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    ![Informatie over eenmalige aanmelding bij Andromeda-domein en -URL's](common/metadata-upload-additional-signon.png)
+    ![Schermopname die Extra URL's instellen toont, waar u een aanmeldings-URL kunt invoeren.](common/metadata-upload-additional-signon.png)
 
     In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<tenantURL>.ngcxpress.com/SAMLLogon.aspx`
 
@@ -117,7 +117,7 @@ Voer de volgende stappen uit om eenmalige aanmelding met Azure AD bij Andromeda 
 
 6. De Andromeda-toepassing verwacht de SAML-asserties in een specifieke indeling. Configureer de volgende claims voor deze toepassing. U kunt de waarden van deze kenmerken vanuit de sectie **Gebruikerskenmerken** op de integratiepagina van de toepassing-beheren. Op de pagina **Eenmalige aanmelding met SAML instellen** klikt u op de knop **Bewerken** om het dialoogvenster **Gebruikerskenmerken** te openen.
 
-    ![image](common/edit-attribute.png)
+    ![Schermopname met standaardwaarden zoals givenname user.givenname en emailaddress user.mail.](common/edit-attribute.png)
 
     > [!Important]
     > Wis de NameSpace-definities wanneer u deze instelt.
@@ -135,9 +135,9 @@ Voer de volgende stappen uit om eenmalige aanmelding met Azure AD bij Andromeda 
 
     a. Klik op **Nieuwe claim toevoegen** om het dialoogvenster **Gebruikersclaims beheren** te openen.
 
-    ![image](common/new-save-attribute.png)
+    ![Schermopname met Gebruikersclaims met opties Nieuwe claim toevoegen en Opslaan.](common/new-save-attribute.png)
 
-    ![image](common/new-attribute-details.png)
+    ![Schermopname met het dialoogvenster Gebruikersclaims beheren, waarin u de waarden kunt invoeren die worden beschreven in deze stap.](common/new-attribute-details.png)
 
     b. In het tekstvak **Naam** typt u de naam van het kenmerk die voor die rij wordt weergegeven.
 

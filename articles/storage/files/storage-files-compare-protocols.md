@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
 ms.openlocfilehash: 5149024f8621754451520e0ae249ed61f0b07f99
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91568468"
 ---
 # <a name="azure-file-share-protocols"></a>Protocollen voor Azure-bestands shares
@@ -64,7 +64,7 @@ Alle Azure Files gegevens worden op rest versleuteld. Voor versleuteling in tran
 - [Een persoonlijk eind punt](storage-files-networking-overview.md#private-endpoints)
 - [Azure VPN-gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md)
     - [Een punt-naar-site-VPN (P2S)](../../vpn-gateway/point-to-site-about.md)
-    - [Site-naar-site](https://docs.microsoft.com/azure/vpn-gateway/design#s2smulti)
+    - [Site-to-Site](https://docs.microsoft.com/azure/vpn-gateway/design#s2smulti)
 - [ExpressRoute](../../expressroute/expressroute-introduction.md)
 - [Een beperkt openbaar eind punt](storage-files-networking-overview.md#storage-account-firewall-settings)
 

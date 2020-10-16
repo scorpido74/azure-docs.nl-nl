@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 453cb28b3053ee2fd2706a5537dc71b6cdca4174
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91539840"
 ---
 # <a name="azure-database-for-mariadb-management-stored-procedures"></a>Opgeslagen procedures voor Azure Database for MariaDB beheer
@@ -25,11 +25,11 @@ De volgende opgeslagen procedures worden gebruikt om Replicatie van inkomende ge
 
 |**Naam van opgeslagen procedure**|**Invoerparameters**|**Uitvoer parameters**|**Opmerking over gebruik**|
 |-----|-----|-----|-----|
-|*MySQL. az_replication_change_master*|master_host<br/>master_user<br/>master_password<br/>master_port<br/>master_log_file<br/>master_log_pos<br/>master_ssl_ca|N.v.t.|Als u gegevens wilt overdragen met de SSL-modus, geeft u de context van het CA-certificaat door aan de para meter master_ssl_ca. </br><br>Als u gegevens zonder SSL wilt overdragen, geeft u een lege teken reeks door in de para meter master_ssl_ca.|
-|*MySQL. az_replication _start*|N.v.t.|N.v.t.|Replicatie wordt gestart.|
-|*MySQL. az_replication _stop*|N.v.t.|N.v.t.|De replicatie wordt gestopt.|
-|*MySQL. az_replication _remove_master*|N.v.t.|N.v.t.|Hiermee verwijdert u de replicatie relatie tussen de bron en de replica.|
-|*MySQL. az_replication_skip_counter*|N.v.t.|N.v.t.|Hiermee wordt één replicatie fout overs Laan.|
+|*mysql.az_replication_change_master*|master_host<br/>master_user<br/>master_password<br/>master_port<br/>master_log_file<br/>master_log_pos<br/>master_ssl_ca|N.v.t.|Als u gegevens wilt overdragen met de SSL-modus, geeft u de context van het CA-certificaat door aan de para meter master_ssl_ca. </br><br>Als u gegevens zonder SSL wilt overdragen, geeft u een lege teken reeks door in de para meter master_ssl_ca.|
+|*mysql.az_replication _start*|N.v.t.|N.v.t.|Replicatie wordt gestart.|
+|*mysql.az_replication _stop*|N.v.t.|N.v.t.|De replicatie wordt gestopt.|
+|*mysql.az_replication _remove_master*|N.v.t.|N.v.t.|Hiermee verwijdert u de replicatie relatie tussen de bron en de replica.|
+|*mysql.az_replication_skip_counter*|N.v.t.|N.v.t.|Hiermee wordt één replicatie fout overs Laan.|
 
 Zie [replicatie van inkomende gegevens configureren voor het](howto-data-in-replication.md)instellen van replicatie van inkomende gegevens tussen een bron en een replica in azure database for MariaDB.
 
@@ -39,9 +39,9 @@ De volgende opgeslagen procedures zijn beschikbaar in Azure Database for MariaDB
 
 |**Naam van opgeslagen procedure**|**Invoerparameters**|**Uitvoer parameters**|**Opmerking over gebruik**|
 |-----|-----|-----|-----|
-|*MySQL. az_kill*|processlist_id|N.v.t.|Gelijk aan- [`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) opdracht. De verbinding die is gekoppeld aan de geleverde processlist_id na het beëindigen van een instructie die wordt uitgevoerd, wordt beëindigd.|
-|*MySQL. az_kill_query*|processlist_id|N.v.t.|Gelijk aan- [`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) opdracht. Hiermee wordt de instructie beëindigd die momenteel wordt uitgevoerd door de verbinding. De verbinding zelf blijft actief.|
-|*MySQL. az_load_timezone*|N.v.t.|N.v.t.|Laadt tijd zone tabellen zodat de `time_zone` para meter kan worden ingesteld op benoemde waarden (bijvoorbeeld "VS/Pacific").|
+|*mysql.az_kill*|processlist_id|N.v.t.|Gelijk aan- [`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) opdracht. De verbinding die is gekoppeld aan de geleverde processlist_id na het beëindigen van een instructie die wordt uitgevoerd, wordt beëindigd.|
+|*mysql.az_kill_query*|processlist_id|N.v.t.|Gelijk aan- [`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) opdracht. Hiermee wordt de instructie beëindigd die momenteel wordt uitgevoerd door de verbinding. De verbinding zelf blijft actief.|
+|*mysql.az_load_timezone*|N.v.t.|N.v.t.|Laadt tijd zone tabellen zodat de `time_zone` para meter kan worden ingesteld op benoemde waarden (bijvoorbeeld "VS/Pacific").|
 
 ## <a name="next-steps"></a>Volgende stappen
 - Meer informatie over het instellen van [replicatie van inkomende gegevens](howto-data-in-replication.md)

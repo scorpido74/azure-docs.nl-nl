@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 01/26/2020
 ms.author: damendo
 ms.openlocfilehash: 6d16d878b0cf7a73c87b5d6e9263a24c4dfb4383
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84738138"
 ---
 # <a name="configure-nsg-flow-logs-from-an-azure-resource-manager-template"></a>NSG-stroom logboeken van een Azure Resource Manager sjabloon configureren
@@ -33,13 +33,13 @@ ms.locfileid: "84738138"
 
 [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) is de systeem eigen en krachtige manier waarop u uw [infra structuur kunt beheren als code](https://docs.microsoft.com/azure/devops/learn/what-is-infrastructure-as-code).
 
-Dit artikel laat u zien hoe u [NSG-stroom logboeken](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview) programmatisch kunt inschakelen met behulp van een Azure Resource Manager sjabloon en Azure PowerShell. We beginnen met het bieden van een overzicht van de eigenschappen van het NSG-flow logboek object, gevolgd door een paar voorbeeld sjablonen. Vervolgens wordt de sjabloon implementeren met een lokaal Power shell-exemplaar.
+Dit artikel laat u zien hoe u [NSG-stroom logboeken](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview) programmatisch kunt inschakelen met behulp van een Azure Resource Manager sjabloon en Azure PowerShell. We beginnen met het bieden van een overzicht van de eigenschappen van het NSG-flow logboek object, gevolgd door een paar voorbeeld sjablonen. Vervolgens implementeren we de sjabloon met behulp van een lokaal PowerShell-exemplaar.
 
 
-## <a name="nsg-flow-logs-object"></a>Object voor NSG-stroom logboeken
+## <a name="nsg-flow-logs-object"></a>Object NSG-stroomlogboeken
 
-Hieronder ziet u het object NSG flow-logboeken met alle para meters.
-Voor een volledig overzicht van de eigenschappen kunt u de referentie van de [sjabloon NSG-stroom logboeken](https://docs.microsoft.com/azure/templates/microsoft.network/2019-11-01/networkwatchers/flowlogs#RetentionPolicyParameters)lezen.
+Hieronder wordt het object NSG-stroomlogboeken met alle parameters weergegeven.
+Voor een volledig overzicht van de eigenschappen kunt u de [Sjabloonreferentie NSG-stroomlogboeken](https://docs.microsoft.com/azure/templates/microsoft.network/2019-11-01/networkwatchers/flowlogs#RetentionPolicyParameters) lezen.
 
 ```json
 {
@@ -69,12 +69,12 @@ Voor een volledig overzicht van de eigenschappen kunt u de referentie van de [sj
     }
   }
 ```
-Als u een micro soft. Network/networkWatchers/flowLogs-resource wilt maken, voegt u de bovenstaande JSON toe aan de sectie resources van uw sjabloon.
+Om een Microsoft.Network/networkWatchers/flowLogs-resource te maken, voegt u de bovenstaande JSON toe aan de sectie Resources van uw sjabloon.
 
 
 ## <a name="creating-your-template"></a>Uw sjabloon maken
 
-Als u Azure Resource Manager-sjablonen voor de eerste keer gebruikt, kunt u meer informatie hierover vinden met behulp van de onderstaande koppelingen.
+Als u voor het eerst Azure Resource Manager-sjablonen gebruikt, kunt u er meer informatie over vinden via de onderstaande koppelingen.
 
 * [Resources implementeren met Resource Manager-sjablonen en Azure PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell#deploy-local-template)
 * [Zelfstudie: Uw eerste Azure Resource Manager-sjabloon maken en implementeren](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-tutorial-create-first-template?tabs=azure-powershell)
@@ -110,9 +110,9 @@ Hieronder vindt u twee voor beelden van volledige sjablonen voor het instellen v
 ```
 
 > [!NOTE]
-> * De naam van de resource heeft de indeling ' bovenliggende Resource_Child resource '. Hier is de bovenliggende resource het regionale Network Watcher exemplaar (indeling: NetworkWatcher_RegionName. Voor beeld: NetworkWatcher_centraluseuap)
-> * targetResourceId is de resource-ID van de doel-NSG
-> * Id is de resource-ID van het doel-opslag account
+> * De naam van de resource heeft de indeling ‘Bovenliggende Resource_Onderliggende resource’. Hier is de bovenliggende resource het regionale Network Watcher-exemplaar (Indeling: NetworkWatcher_Regionaam. Voorbeeld: NetworkWatcher_vscentraaleuap)
+> * targetResourceId is de resource-id van de doel-NSG
+> * storageId is de resource-id van het doelopslagaccount
 
 **Voor beeld 2**: met de volgende sjablonen worden NSG-stroom Logboeken (versie 2) ingeschakeld met een Bewaar periode van vijf dagen. Het inschakelen van Traffic Analytics met een verwerkings interval van 10 minuten.
 
@@ -155,10 +155,10 @@ Hieronder vindt u twee voor beelden van volledige sjablonen voor het instellen v
 
 ## <a name="deploying-your-azure-resource-manager-template"></a>Uw Azure Resource Manager-sjabloon implementeren
 
-In deze zelf studie wordt ervan uitgegaan dat u een bestaande resource groep en een NSG hebt, waarmee u de stroom logboek registratie kunt inschakelen.
-U kunt elk van de bovenstaande voorbeeld sjablonen lokaal opslaan als `azuredeploy.json` . Werk de eigenschaps waarden zo bij dat ze verwijzen naar geldige resources in uw abonnement.
+In deze zelfstudie wordt ervan uitgegaan dat u een bestaande resourcegroep hebt en een NSG waarvoor u stroomlogboekregistratie kunt inschakelen.
+U kunt elk van de bovenstaande voorbeeldsjablonen lokaal opslaan als `azuredeploy.json`. Werk de eigenschapswaarden bij zodat ze naar geldige resources in uw abonnement wijzen.
 
-Als u de sjabloon wilt implementeren, voert u de volgende opdracht uit in Power shell.
+Voer de volgende opdracht in PowerShell uit om de sjabloon te implementeren.
 ```azurepowershell
 $context = Get-AzSubscription -SubscriptionId 56acfbd6-vc72-43e9-831f-bcdb6f2c5505
 Set-AzContext $context
@@ -167,19 +167,19 @@ New-AzResourceGroupDeployment -Name EnableFlowLog -ResourceGroupName NetworkWatc
 ```
 
 > [!NOTE]
-> Met de bovenstaande opdrachten wordt een resource geïmplementeerd naar de resource groep NetworkWatcherRG en niet de resource groep met de NSG
+> Met de bovenstaande opdrachten wordt een resource geïmplementeerd in de resourcegroep NetworkWatcherRG en niet in de resourcegroep die de NSG bevat
 
 
 ## <a name="verifying-your-deployment"></a>Uw implementatie verifiëren
 
-Er zijn een aantal manieren om te controleren of uw implementatie is geslaagd. De Power shell-console moet ' ProvisioningState ' weer geven als ' geslaagd '. Daarnaast kunt u de portal- [pagina van de NSG-stroom logboeken](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) bezoeken om uw wijzigingen te bevestigen. Als er problemen zijn met de implementatie, kunt u een kijkje nemen bij het [oplossen van veelvoorkomende problemen met Azure-implementaties met Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/templates/common-deployment-errors).
+Er zijn een paar manieren om te controleren of uw implementatie is geslaagd. Uw PowerShell-console zou ‘Geslaagd’ moeten weergegeven bij ‘ProvisioningState’. Daarnaast kunt u de [portalpagina NSG-stroomlogboeken](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) bezoeken om uw wijzigingen te bevestigen. Als er problemen zijn met de implementatie, raadpleegt u [Veelvoorkomende fouten in Azure-implementaties met Azure Resource Manager oplossen](https://docs.microsoft.com/azure/azure-resource-manager/templates/common-deployment-errors).
 
-## <a name="deleting-your-resource"></a>De resource verwijderen
-Azure maakt het verwijderen van resources mogelijk via de implementatie modus ' voltooid '. Als u een stroom logboek bron wilt verwijderen, geeft u een implementatie op in de modus voltooid zonder de resource die u wilt verwijderen op te nemen. Meer informatie over de [volledige implementatie modus](https://docs.microsoft.com/azure/azure-resource-manager/templates/deployment-modes#complete-mode)
+## <a name="deleting-your-resource"></a>Uw resource verwijderen
+Azure maakt resourceverwijdering mogelijk via de implementatiemodus ‘Volledig’. Om een Stroomlogboeken-resource te verwijderen, specificeert u een implementatie in de modus Volledig zonder de resource op te nemen die u wilt verwijderen. Lees meer over de [implementatiemodus Volledig](https://docs.microsoft.com/azure/azure-resource-manager/templates/deployment-modes#complete-mode)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Meer informatie over het visualiseren van uw NSG-stroom gegevens met behulp van:
 * [Microsoft Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
-* [Open-source hulpprogramma's](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
+* [Opensource-hulpprogramma’s](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
 * [Azure Traffic Analytics](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)

@@ -14,10 +14,10 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 9f0a3c3a96a73bd71a9b0c769a3ceff85ae428f1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89017614"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Aan de slag met aan Azure Queue Storage en Visual Studio verbonden services (cloudserviceprojecten)
@@ -149,8 +149,8 @@ int? cachedMessageCount = messageQueue.ApproximateMessageCount;
 Console.WriteLine("Number of messages in queue: " + cachedMessageCount);
 ```
 
-## <a name="use-the-async-await-pattern-with-common-azure-queue-apis"></a>Het async-await-patroon gebruiken met algemene Azure-wachtrij-Api's
-In dit voor beeld ziet u hoe u het async-await-patroon gebruikt met algemene Azure-wachtrij-Api's. In het voor beeld wordt de async-versie van elk van de opgegeven methoden aangeroepen. Dit kan worden gezien door de **asynchrone** na reparatie van elke methode. Wanneer een asynchrone methode wordt gebruikt, wordt het async-await-patroon onderbroken totdat de aanroep is voltooid. Dit gedrag zorgt ervoor dat de huidige thread andere werkzaamheden kan uitvoeren, waardoor prestatie knelpunten worden voor komen en de algehele reactie snelheid van uw toepassing wordt verbeterd. Zie [Async en Await (C# en Visual Basic)](https://msdn.microsoft.com/library/hh191443.aspx) voor meer informatie over het gebruik van het Async-Await-patroon in .NET.
+## <a name="use-the-async-await-pattern-with-common-azure-queue-apis"></a>Het Async-Await patroon gebruiken met algemene Azure-wachtrij-Api's
+Dit voor beeld laat zien hoe u het Async-Await patroon kunt gebruiken met algemene Azure-wachtrij-Api's. In het voor beeld wordt de async-versie van elk van de opgegeven methoden aangeroepen. Dit kan worden gezien door de **asynchrone** na reparatie van elke methode. Wanneer een asynchrone methode wordt gebruikt, wordt het async-await-patroon onderbroken totdat de aanroep is voltooid. Dit gedrag zorgt ervoor dat de huidige thread andere werkzaamheden kan uitvoeren, waardoor prestatie knelpunten worden voor komen en de algehele reactie snelheid van uw toepassing wordt verbeterd. Zie [Async en Await (C# en Visual Basic)](https://msdn.microsoft.com/library/hh191443.aspx) voor meer informatie over het gebruik van het Async-Await-patroon in .NET.
 
 ```csharp
 // Create a message to put in the queue

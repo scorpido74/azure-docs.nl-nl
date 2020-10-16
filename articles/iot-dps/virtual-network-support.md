@@ -7,12 +7,12 @@ ms.service: iot-dps
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: wesmc
-ms.openlocfilehash: 43d7b3ae906909312a9e9ec4517061a788267a0c
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: d90b18094a26830ee6909251d46837eff95a812a
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91612775"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91998582"
 ---
 # <a name="azure-iot-hub-device-provisioning-service-dps-support-for-virtual-networks"></a>Azure IoT Hub Device Provisioning Service (DPS)-ondersteuning voor virtuele netwerken
 
@@ -36,7 +36,7 @@ Om verschillende redenen kunnen klanten de connectiviteit met Azure-resources, z
 
 * Hieronder zijn de Azure-brede connectiviteits patronen ingesteld met behulp van [privé-eind punten](../private-link/private-endpoint-overview.md).
 
-Veelvoorkomende benaderingen voor het beperken van de connectiviteit zijn [DPS IP-filter regels](./iot-dps-ip-filtering.md) en virtuele netwerken (VNET) met [privé-eind punten](../private-link/private-endpoint-overview.md). Dit doel van dit artikel is om de VNET-benadering voor DPS te beschrijven met behulp van privé-eind punten. 
+Veelvoorkomende benaderingen voor het beperken van de connectiviteit zijn [DPS IP-filter regels](./iot-dps-ip-filtering.md) en virtuele netwerken (VNET) met [privé-eind punten](../private-link/private-endpoint-overview.md). Het doel van dit artikel is de VNET-benadering voor DPS te beschrijven met behulp van privé-eind punten. 
 
 Apparaten die in on-premises netwerken werken [, kunnen VPN (virtueel particulier netwerk)](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) of [ExpressRoute](https://azure.microsoft.com/services/expressroute/) privé-peering gebruiken om verbinding te maken met een VNET in Azure en toegang te krijgen tot DPS-bronnen via persoonlijke eind punten. 
 

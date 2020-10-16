@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2b06a7ee41a69e32f44c44cdec0da6a47ec4b284
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b63581b5192c93a8377a642c21eacbd291579b22
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82731863"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013675"
 ---
 # <a name="azure-analysis-services-samples"></a>Azure Analysis Services-voor beelden
 
@@ -28,7 +28,7 @@ De [Analysis Services](https://github.com/Microsoft/Analysis-Services) opslag pl
 
 ## <a name="sample-database-on-azure"></a>Voorbeeld database in azure
 
-Azure Synapse Analytics (SQL Data Warehouse) biedt een voor beeld van een AdventureWorksDW-data base die kan worden opgenomen in een ingerichte resource. Zie voor meer informatie [Quick Start: een Azure Synapse Analytics SQL-groep maken en er een query op uitvoeren](/azure/sql-data-warehouse/create-data-warehouse-portal).
+Azure Synapse Analytics (SQL Data Warehouse) biedt een voor beeld van een AdventureWorksDW-data base die kan worden opgenomen in een ingerichte resource. Zie voor meer informatie [Quick Start: een Azure Synapse Analytics SQL-groep maken en er een query op uitvoeren](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md).
 
 ## <a name="sample-databases-on-github"></a>Voorbeeld databases op GitHub
 
@@ -46,5 +46,5 @@ Als u een Analysis Services-server in Azure Portal hebt, kunt u snel en eenvoudi
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Adventure Works-zelf studie](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial)   
-[On-premises gegevens gateway van Azure](analysis-services-gateway.md)  
+[Adventure Works-zelf studie](/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial)   
+[On-premises gegevens gateway van Azure](analysis-services-gateway.md)

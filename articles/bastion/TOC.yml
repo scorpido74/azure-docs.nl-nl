@@ -5,9 +5,14 @@
     - name: Wat is Azure Bastion?
       href: bastion-overview.md
 - name: Snelstartgidsen
+  expanded: true
   items:
-    - name: Een bastionhost maken op basis van VM-instellingen
+    - name: Een host met VM-instellingen maken
       href: quickstart-host-portal.md
+- name: Zelfstudies
+  items:
+    - name: Een Windows VM maken en er verbinding mee maken
+      href: tutorial-create-host-portal.md
 - name: Concepten
   items:
     - name: Ondersteuning voor op afstand werken
@@ -16,10 +21,10 @@
       href: work-remotely-support.md
 - name: Instructiegidsen
   items:
-    - name: Een Bastion-host maken
+    - name: Een host maken
       items:
         - name: Azure Portal
-          href: bastion-create-host-portal.md
+          href: tutorial-create-host-portal.md
         - name: Azure PowerShell
           href: bastion-create-host-powershell.md
         - name: Azure CLI
@@ -65,7 +70,7 @@
     - name: Blog
       href: 'https://azure.microsoft.com/blog/topics/networking'
     - name: Microsoft Q&A-vragenpagina
-      href: 'https://docs.microsoft.com/en-us/answers/topics/azure-virtual-network.html'
+      href: /answers/topics/azure-virtual-network.html
     - name: Preview van SLA
       href: 'https://azure.microsoft.com/support/legal/preview-supplemental-terms'
     - name: SLA

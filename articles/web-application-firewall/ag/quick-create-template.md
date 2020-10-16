@@ -1,19 +1,19 @@
 ---
 title: 'Quickstart: Een Azure WAF v2 maken op Application Gateway - Azure Resource Manager-sjabloon'
 titleSuffix: Azure Application Gateway
-description: Leer hoe u een ARM-sjabloon (Azure Resource Manager-sjabloon) kunt gebruiken om een Web Application Firewall v2 te maken op Azure Application Gateway.
+description: Leer hoe u een ARM-sjabloon (Azure Resource Manager-quickstartsjabloon) kunt gebruiken om een Web Application Firewall v2 te maken op Azure Application Gateway.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: quickstart
-ms.date: 04/02/2020
+ms.date: 09/16/2020
 ms.author: victorh
-ms.openlocfilehash: b0a430ebfb19ca529ae96698173df27d18e6dd10
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 036503f95a7dc1aaa5690bacc01d07034e6d162f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705164"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91266952"
 ---
 # <a name="quickstart-create-an-azure-waf-v2-on-application-gateway-using-an-arm-template"></a>Quickstart: Een Azure WAF v2 maken op Application Gateway met behulp van een ARM-sjabloon
 

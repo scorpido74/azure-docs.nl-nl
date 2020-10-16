@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 160e8182a2de56b494e8f37bbedf4a8cec66c608
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88030891"
 ---
 # <a name="azure-maps-routing-coverage"></a>Routerings dekking Azure Maps
@@ -162,7 +162,7 @@ De volgende tabel bevat informatie over de dekking van Azure Maps route ring.
 | Belarus                        |        ✓       |                      |             |
 | België                        |        ✓       |         ✓            |     ✓      | 
 | Bolivia                        |        ✓       |                      |             |
-| Bosnië-Herzegovina             |        ✓       |                      |             |
+| Bosnia-Herzegovina             |        ✓       |                      |             |
 | Bulgarije                       |        ✓       |         ✓            |     ✓      | 
 | Kroatië                        |        ✓       |         ✓            |     ✓      |
 | Cyprus                         |        ✓       |                      |             |

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/11/2017
 ms.openlocfilehash: e780ef0b82240ac6771059f8bd239b90395135d9
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88213331"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>Het schalen van Azure Cache voor Redis
@@ -123,7 +123,7 @@ De volgende lijst bevat antwoorden op veelgestelde vragen over Azure cache voor 
 * U kunt niet rechtstreeks schalen van een **Basic** -cache naar een **Premium** -cache. Schaal eerst van **Basic** naar **Standard** in één schaal bewerking en vervolgens van **standaard** naar **Premium** bij een volgende schaal bewerking.
 * Als u clustering hebt ingeschakeld tijdens het maken van uw **Premium** -cache, kunt u [de cluster grootte wijzigen](cache-how-to-premium-clustering.md#cluster-size). Als uw cache is gemaakt zonder dat Clustering is ingeschakeld, kunt u Clustering op een later tijdstip configureren.
   
-  Zie [clustering configureren voor een Premium Azure-cache voor redis](cache-how-to-premium-clustering.md)voor meer informatie.
+  Zie [Clustering voor een Premium Azure Cache voor Redis configureren](cache-how-to-premium-clustering.md) voor meer informatie.
 
 ### <a name="after-scaling-do-i-have-to-change-my-cache-name-or-access-keys"></a>Moet ik na het schalen mijn cache naam of toegangs sleutels wijzigen?
 Nee, uw cache naam en sleutels zijn niet gewijzigd tijdens een schaal bewerking.

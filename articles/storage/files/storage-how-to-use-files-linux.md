@@ -8,10 +8,10 @@ ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 957e827e621d07ed9b5533a1607f955f05985d9b
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90004779"
 ---
 # <a name="use-azure-files-with-linux"></a>Azure Files gebruiken met Linux
@@ -250,22 +250,22 @@ Vanaf Linux kernel 4,18, de SMB-kernel-module, die wordt aangeroepen `cifs` om v
 
 | Distributie | Kan SMB 1 uitschakelen |
 |--------------|-------------------|
-| Ubuntu 14.04-16.04 | No |
-| Ubuntu 18.04 | Yes |
-| Ubuntu 19.04 + | Yes |
-| Debian 8-9 | No |
-| Debian 10 + | Yes |
-| Fedora 29 + | Yes |
-| CentOS 7 | No | 
-| CentOS 8 + | Yes |
-| Red Hat Enterprise Linux 6. x-7. x | No |
-| Red Hat Enterprise Linux 8 + | Yes |
-| openSUSE Schrikkel 15,0 | No |
-| openSUSE Schrikkel 15.1 + | Yes |
-| openSUSE Tumbleweed | Yes |
-| SUSE Linux Enter prise 11. x-12. x | No |
-| SUSE Linux Enter prise 15 | No |
-| SUSE Linux Enter prise 15,1 | No |
+| Ubuntu 14.04-16.04 | Nee |
+| Ubuntu 18.04 | Ja |
+| Ubuntu 19.04 + | Ja |
+| Debian 8-9 | Nee |
+| Debian 10 + | Ja |
+| Fedora 29 + | Ja |
+| CentOS 7 | Nee | 
+| CentOS 8 + | Ja |
+| Red Hat Enterprise Linux 6. x-7. x | Nee |
+| Red Hat Enterprise Linux 8 + | Ja |
+| openSUSE Schrikkel 15,0 | Nee |
+| openSUSE Schrikkel 15.1 + | Ja |
+| openSUSE Tumbleweed | Ja |
+| SUSE Linux Enter prise 11. x-12. x | Nee |
+| SUSE Linux Enter prise 15 | Nee |
+| SUSE Linux Enter prise 15,1 | Nee |
 
 U kunt controleren of uw Linux-distributie de `disable_legacy_dialects` module parameter ondersteunt met behulp van de volgende opdracht.
 
@@ -325,6 +325,6 @@ cat /sys/module/cifs/parameters/disable_legacy_dialects
 ## <a name="next-steps"></a>Volgende stappen
 Raadpleeg de volgende koppelingen voor meer informatie over Azure Files:
 
-* [Een Azure Files-implementatie plannen](storage-files-planning.md)
+* [Implementatie van Azure Files plannen](storage-files-planning.md)
 * [Veelgestelde vragen](../storage-files-faq.md)
 * [Problemen oplossen](storage-troubleshoot-linux-file-connection-problems.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 3c50e29e1373e9a9c01e9f5812c4146de070144a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 931a8463578468ec3a028d17b3f96d317c6fbe02
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553098"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826413"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>Zelfstudie: Azure Active Directory-integratie met HR2day by Merces
 
@@ -110,7 +110,7 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure AD wilt config
 
 5. In HR2day by Merces worden de SAML-asserties in een specifieke indeling verwacht. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van uw SAML-tokenkenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven. Klik op het pictogram **Bewerken** om het dialoogvenster **Gebruikerskenmerken** te openen.
 
-    ![image](common/edit-attribute.png)
+    ![Schermopname die Gebruikerskenmerken toont met het pictogram Bewerken geselecteerd.](common/edit-attribute.png)
 
     > [!NOTE]
     > Voordat u de SAML-assertie kunt configureren, moet u contact opnemen met het [ondersteuningsteam van HR2day by Merces](mailto:servicedesk@merces.nl) en de waarde opvragen van het kenmerk voor de unieke id voor uw tenant. U hebt deze waarde nodig om de stappen in de volgende sectie te voltooien.
@@ -124,9 +124,9 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure AD wilt config
 
     a. Klik op **Nieuwe claim toevoegen** om het dialoogvenster **Gebruikersclaims beheren** te openen.
 
-    ![image](common/new-save-attribute.png)
+    ![Schermopname die Gebruikersclaims toont met de optie om een nieuwe claim toe te voegen.](common/new-save-attribute.png)
 
-    ![image](common/new-attribute-details.png)
+    ![Schermopname die het dialoogvenster Gebruikersclaims beheren toont, waarin u de beschreven waarden kunt invoeren.](common/new-attribute-details.png)
 
     b. In het tekstvak **Naam** typt u de naam van het kenmerk die voor die rij wordt weergegeven.
 

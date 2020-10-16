@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 57b9d46918414cef9e8cbcffb941b98c98f985ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 42c79526288fb7e05959ac60cddc6f468656ffd4
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80240345"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972540"
 ---
 # <a name="communicate-with-edgeagent-using-built-in-direct-methods"></a>Communiceren met edgeAgent met behulp van ingebouwde directe methoden
 
@@ -69,13 +69,14 @@ Roep in de Azure Portal de methode met de naam van de methode `RestartModule` en
 
 ![Directe methode ' RestartModule ' aanroepen in Azure Portal](./media/how-to-edgeagent-direct-method/restartmodule-direct-method.png)
 
-## <a name="experimental-methods"></a>Experimentele methoden
+## <a name="diagnostic-direct-methods"></a>Diagnostische directe methoden
 
-Nieuwe opties voor directe methode zijn beschikbaar als experimentele functies om te testen, waaronder:
+* [GetModuleLogs](how-to-retrieve-iot-edge-logs.md#retrieve-module-logs): ophalen van module Logboeken inline in het antwoord van de directe methode.
+* [UploadModuleLogs](how-to-retrieve-iot-edge-logs.md#upload-module-logs): u kunt module Logboeken ophalen en deze uploaden naar Azure Blob Storage.
+* [UploadSupportBundle](how-to-retrieve-iot-edge-logs.md#upload-support-bundle-diagnostics): u kunt module Logboeken ophalen met behulp van een ondersteunings bundel en een zip-bestand uploaden naar Azure Blob Storage.
+* [GetTaskStatus](how-to-retrieve-iot-edge-logs.md#get-upload-request-status): Controleer de status van een upload logboek of een ondersteunings aanvraag.
 
-* [UploadLogs](https://github.com/Azure/iotedge/blob/master/doc/built-in-logs-pull.md): u kunt module Logboeken ophalen en deze uploaden naar Azure Blob Storage.
-* [GetTaskStatus](https://github.com/Azure/iotedge/blob/master/doc/built-in-logs-pull.md#gettaskstatus): Controleer de status van een aanvraag voor het uploaden van Logboeken.
-* [GetLogs](https://github.com/Azure/iotedge/blob/master/doc/built-in-logs-pull.md#getlogs): ophalen van module Logboeken inline in het antwoord van de directe methode.
+Deze diagnostische directe methoden zijn beschikbaar vanaf de 1.0.10-release.
 
 ## <a name="next-steps"></a>Volgende stappen
 

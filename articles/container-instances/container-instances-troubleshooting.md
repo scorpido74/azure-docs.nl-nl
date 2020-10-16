@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/25/2020
 ms.custom: mvc
 ms.openlocfilehash: 46d3ad6afb1761ca9503676ad2176482b7e4530e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86260746"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Veelvoorkomende problemen in Azure Container Instances oplossen
@@ -45,7 +45,7 @@ Als u een installatie kopie opgeeft die Azure Container Instances niet wordt ond
 }
 ```
 
-Deze fout treedt meestal op bij het implementeren van Windows-installatie kopieën die zijn gebaseerd op semi-Annual-kanaal release 1709 of 1803, wat niet wordt ondersteund. Zie [Veelgestelde vragen](container-instances-faq.md#what-windows-base-os-images-are-supported)voor ondersteunde Windows-installatie kopieën in azure container instances.
+Deze fout treedt meestal op bij het implementeren van Windows-installatie kopieën die zijn gebaseerd op Semi-Annual kanaal release 1709 of 1803, wat niet wordt ondersteund. Zie [Veelgestelde vragen](container-instances-faq.md#what-windows-base-os-images-are-supported)voor ondersteunde Windows-installatie kopieën in azure container instances.
 
 ### <a name="unable-to-pull-image"></a>Kan de installatie kopie niet ophalen
 
@@ -204,7 +204,7 @@ Azure Container Instances biedt geen rechtstreekse toegang tot de onderliggende 
 
 Azure Container Instances biedt nog geen ondersteuning voor poort toewijzing, zoals bij normale docker-configuratie. Als u het IP-adres van een container groep niet toegankelijk hebt wanneer u denkt dat dit het geval is, moet u ervoor zorgen dat u de container installatie kopie hebt geconfigureerd om te Luis teren naar dezelfde poorten die u in uw container groep beschikbaar maakt met de `ports` eigenschap.
 
-Als u wilt bevestigen dat Azure Container Instances kan Luis teren op de poort die u in de container installatie kopie hebt geconfigureerd, test u een implementatie van de `aci-helloworld` installatie kopie die de poort beschikbaar maakt. Voer de app ook uit `aci-helloworld` zodat deze op de poort luistert. `aci-helloworld`Hiermee wordt een optionele omgevings variabele geaccepteerd `PORT` voor het overschrijven van de standaard poort 80 die wordt geluisterd. Als u bijvoorbeeld poort 9000 wilt testen, stelt u de [omgevings variabele](container-instances-environment-variables.md) in wanneer u de container groep maakt:
+Als u wilt bevestigen dat Azure Container Instances kan Luis teren op de poort die u in de container installatie kopie hebt geconfigureerd, test u een implementatie van de `aci-helloworld` installatie kopie die de poort beschikbaar maakt. Voer de app ook uit `aci-helloworld` zodat deze op de poort luistert. `aci-helloworld` Hiermee wordt een optionele omgevings variabele geaccepteerd `PORT` voor het overschrijven van de standaard poort 80 die wordt geluisterd. Als u bijvoorbeeld poort 9000 wilt testen, stelt u de [omgevings variabele](container-instances-environment-variables.md) in wanneer u de container groep maakt:
 
 1. Stel de container groep in om poort 9000 beschikbaar te maken en geef het poort nummer door als de waarde van de omgevings variabele. Het voor beeld is opgemaakt voor de bash-shell. Als u de voor keur geeft aan een andere shell, zoals Power shell of opdracht prompt, moet u de toewijzing van de variabele dienovereenkomstig aanpassen.
     ```azurecli

@@ -7,10 +7,10 @@ ms.author: jgol
 ms.date: 05/31/2020
 ms.reviewer: mbullwin
 ms.openlocfilehash: 234f772b4a77b780f0b0c1faf307c93847e5caf2
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87310715"
 ---
 # <a name="what-is-auto-instrumentation-or-codeless-attach---azure-monitor-application-insights"></a>Wat is het automatisch instrumenteren of koppelen Azure Monitor Application Insights?
@@ -26,14 +26,14 @@ Wanneer we meer en meer integraties toevoegen, wordt de matrix voor automatische
 |Omgeving/resource provider | .NET            | .NET Core       | Java            | Node.js         |
 |------------------------------|-----------------|-----------------|-----------------|-----------------|
 |Azure App Service in Windows  | GA, OnBD *       | GA, opt-in      | Persoonlijke preview | Persoonlijke preview |
-|Azure App Service in Linux    | N.v.t.             | Niet ondersteund   | Open bare preview  | Open bare preview  |
+|Azure App Service in Linux    | N.v.t.             | Niet ondersteund   | Openbare preview  | Openbare preview  |
 |Azure App Service op AKS      | N.v.t.             | In de ontwerp       | In de ontwerp       | In de ontwerp       |
 |Azure Functions-basis       | GA, OnBD *       | GA, OnBD *       | GA, OnBD *       | GA, OnBD *       |
-|Azure Functions-afhankelijkheden| Niet ondersteund   | Niet ondersteund   | Open bare preview  | Niet ondersteund   |
+|Azure Functions-afhankelijkheden| Niet ondersteund   | Niet ondersteund   | Openbare preview  | Niet ondersteund   |
 |Azure Kubernetes Service      | N.v.t.             | In de ontwerp       | Via agent   | In de ontwerp       |
-|Azure Vm's Windows             | Open bare preview  | Niet ondersteund   | Niet ondersteund   | Niet ondersteund   |
+|Azure Vm's Windows             | Openbare preview  | Niet ondersteund   | Niet ondersteund   | Niet ondersteund   |
 |On-premises Vm's Windows       | GA, opt-in      | Niet ondersteund   | Via agent   | Niet ondersteund   |
-|Zelfstandige agent: elke env.   | Niet ondersteund   | Niet ondersteund   | Open bare preview  | Niet ondersteund   |
+|Zelfstandige agent: elke env.   | Niet ondersteund   | Niet ondersteund   | Openbare preview  | Niet ondersteund   |
 
 * OnBD is op de standaard waarde ingeschakeld. de Application Insights wordt automatisch geactiveerd wanneer u uw app in ondersteunde omgevingen implementeert. 
 

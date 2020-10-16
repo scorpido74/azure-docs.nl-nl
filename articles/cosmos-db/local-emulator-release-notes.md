@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
 ms.date: 09/21/2020
-ms.openlocfilehash: da17cd1ea6dac52797162e3ac2d733ad1fd50ea1
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: f2a40744053ccc804b2513faf1bc2879d4fde902
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90988174"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91777170"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos-emulator - opmerkingen bij de release en downloadgegevens
 
@@ -26,12 +26,16 @@ Dit artikel bevat de opmerkingen bij de release voor Azure Cosmos-emulator met e
 
 ## <a name="release-notes"></a>Releaseopmerkingen
 
+### <a name="2116-6-october-2020"></a>2.11.6 (6 oktober 2020)
+
+ - Met deze release wordt een probleem met gelijktijdigheid opgelost als er meerdere containers tegelijk worden gemaakt. In dergelijke gevallen zijn de emulatorgegevens beschadigd en kunnen de volgende API-aanvragen aan het eindpunt van de emulator mislukken waarbij fouten worden weergegeven die aangeven dat de 'service niet beschikbaar is', waardoor deze opnieuw moet worden opgestart en de lokale emulatorgegevens opnieuw moeten worden ingesteld.
+
 ### <a name="2115-23-august-2020"></a>2.11.5 (23 augustus 2020)
 
 In deze release zijn twee nieuwe opstartopties voor de Cosmos-emulator toegevoegd: 
 
 * /EnablePreview: hiermee kunnen preview-functies voor de emulator worden ingeschakeld. De preview-functies zijn nog in ontwikkeling en toegankelijk via CI en voorbeeldschrijfbewerkingen.
-* /EnableAadAuthentication: hiermee kan de emulator aangepaste Azure Active Directory-tokens accepteren als alternatief voor de Azure Cosmos-hoofdsleutels. Deze functie is nog in ontwikkeling; specifieke roltoewijzingen en andere machtigingsinstellingen worden momenteel niet ondersteund.
+* '/EnableAadAuthentication': hiermee kan de emulator aangepaste Azure Active Directory-tokens accepteren als alternatief voor de Azure Cosmos-hoofdsleutels. Deze functie is nog in ontwikkeling; specifieke roltoewijzingen en andere machtigingsinstellingen worden momenteel niet ondersteund.
 
 ### <a name="2112-07-july-2020"></a>2.11.2 (7 juli 2020)
 

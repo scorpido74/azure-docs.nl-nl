@@ -5,12 +5,12 @@ services: container-service
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.custom: mvc
-ms.openlocfilehash: 9a36e0903945a974f73187e4799e978c32f2d961
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: c41f6dbd3b85125ef290539040819ffa1833ef6f
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91576265"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629639"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>Zelfstudie: Kubernetes bijwerken in AKS (Azure Kubernetes Service)
 
@@ -143,10 +143,7 @@ In deze zelfstudie hebt u een upgrade van Kubernetes in een AKS-cluster uitgevoe
 > * De Kubernetes-knooppunten upgraden
 > * Een geslaagde upgrade valideren
 
-Volg deze koppeling voor meer informatie over AKS.
-
-> [!div class="nextstepaction"]
-> [Overzicht van AKS][aks-intro]
+Zie [Overzicht van AKS][aks-intro]voor meer informatie over AKS. Zie [Azure Kubernetes Service solution journey][aks-solution-guidance]voor hulp bij het maken van volledige oplossingen met AKS.
 
 <!-- LINKS - external -->
 [kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/
@@ -160,3 +157,4 @@ Volg deze koppeling voor meer informatie over AKS.
 [azure-cli-install]: /cli/azure/install-azure-cli
 [az-group-delete]: /cli/azure/group#az-group-delete
 [sp-delete]: kubernetes-service-principal.md#additional-considerations
+[aks-solution-guidance]: /azure/architecture/reference-architectures/containers/aks-start-here

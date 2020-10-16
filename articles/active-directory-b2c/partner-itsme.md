@@ -12,10 +12,10 @@ ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ba7875caa6a1db7638bfeafcfea1efa7b2462152
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87489512"
 ---
 # <a name="configure-itsme-openid-connect-oidc-with-azure-active-directory-b2c"></a>Itsme OpenID Connect Connect (OIDC) configureren met Azure Active Directory B2C
@@ -26,7 +26,7 @@ Met de Itsme digitale ID-app kunt u veilig inloggen zonder kaart lezers, wacht w
 
 Om aan de slag te gaan, hebt u het volgende nodig:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u zich aanmelden voor een[gratis account](https://azure.microsoft.com/free/).
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/).
 * [Een Azure AD B2C-Tenant](tutorial-create-tenant.md) die is gekoppeld aan uw Azure-abonnement.
 * Uw client-ID, ook wel bekend als partner code, die wordt verschaft door Itsme.
 * De service code die wordt verschaft door Itsme.
@@ -72,11 +72,11 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 > [!NOTE]
 > Als u nog geen account hebt, [maakt u een Azure AD B2C-Tenant](tutorial-create-tenant.md) die is gekoppeld aan uw Azure-abonnement.
 
-1. Zorg ervoor dat u de map gebruikt die Azure AD B2C Tenant bevat. Selecteer het filter **Directory + abonnement** in het bovenste menu en kies de map die uw Azure AD B2C Tenant bevat.
+1. Zorg ervoor dat u de map gebruikt die de Azure AD B2C-tenant bevat. Selecteer het filter **Map + Abonnement** in het bovenste menu en kies de map die uw Azure AD B2C-tenant bevat.
 
 2. Selecteer **Azure AD B2C** onder **Azure-Services**(of selecteer **meer services** en gebruik het zoekvak **alle services** om te zoeken naar *Azure AD B2C*).
 
-3. Selecteer **id-providers**en selecteer vervolgens **nieuwe OpenID Connect Connect-provider**.
+3. Selecteer **Id-providers** en selecteer vervolgens **Nieuwe OpenID Connect-provider**.
 
 4. Vul het formulier in met de volgende informatie:
 
@@ -91,7 +91,7 @@ Please clarify step 1 in the description below - we don't have steps in this tut
    |Antwoord modus | query |
    |Domein Hint | *U kunt dit leeg laten* |
    |UserID | sub |
-   |Weergavenaam | name |
+   |Weergavenaam | naam |
    |Voornaam | given_name |
    |Achternaam | family_name |
    |E-mail | e-mail|
@@ -106,7 +106,7 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
 3. Selecteer **Aanmelden en aanmelden**, selecteer een versie en selecteer vervolgens **maken**.
 
-4. Voer een **naam**in.
+4. Voer een **naam** in.
 
 5. Selecteer in de sectie **id-providers** de optie **Itsme**.
 

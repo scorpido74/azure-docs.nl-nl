@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8360eae71ddd41d3105dbd037f273139262727ad
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 849057ab1ccde2e0771f0c1cd52ea399ffe4cea7
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419560"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964686"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory-preview"></a>Gebruikers configureren en inschakelen voor verificatie op basis van SMS met behulp van Azure Active Directory (preview)
 
@@ -25,7 +25,7 @@ Azure Active Directory (Azure AD) biedt meerdere verificatie opties om de comple
 Dit artikel laat u zien hoe u verificatie op basis van SMS kunt inschakelen voor geselecteerde gebruikers of groepen in azure AD.
 
 > [!NOTE]
-> Verificatie op basis van SMS voor gebruikers is een open bare preview-functie van Azure Active Directory. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over Previews.
+> Verificatie op basis van SMS voor gebruikers is een open bare preview-functie van Azure Active Directory. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -62,7 +62,7 @@ Er zijn drie belang rijke stappen voor het inschakelen en gebruiken van verifica
 Eerst gaan we verificatie op basis van SMS inschakelen voor uw Azure AD-Tenant.
 
 1. Meld u aan bij de [Azure Portal][azure-portal] als *globale beheerder*.
-1. Zoek naar **Azure Active Directory** en selecteer deze optie.
+1. Zoek en selecteer de optie **Azure Active Directory**.
 1. Selecteer in het navigatie menu aan de linkerkant van het Azure Active Directory venster **beveiligings > verificatie methoden > verificatie methode beleid (preview)**.
 
     [![Blader naar en selecteer het venster verificatie methode beleid (preview) in de Azure Portal.](media/howto-authentication-sms-signin/authentication-method-policy-cropped.png)](media/howto-authentication-sms-signin/authentication-method-policy.png#lightbox)
@@ -93,7 +93,7 @@ Gebruikers zijn nu ingeschakeld voor verificatie op basis van SMS, maar hun tele
 
 Wanneer een telefoon nummer is ingesteld voor SMS-Sign, is het ook beschikbaar voor gebruik met [Azure multi-factor Authentication][tutorial-azure-mfa] en [self-service voor het opnieuw instellen van wacht woorden][tutorial-sspr].
 
-1. Zoek naar **Azure Active Directory** en selecteer deze optie.
+1. Zoek en selecteer de optie **Azure Active Directory**.
 1. Selecteer in het navigatie menu aan de linkerkant van het Azure Active Directory venster **gebruikers**.
 1. Selecteer de gebruiker die u hebt ingeschakeld voor verificatie op basis van SMS in de vorige sectie, zoals *Contoso-gebruiker*, en selecteer vervolgens **verificatie methoden**.
 1. Voer het telefoon nummer van de gebruiker in, met inbegrip van de land code, zoals *+ 1 xxxxxxxxx*. De Azure Portal valideert het telefoon nummer in de juiste indeling.
@@ -110,7 +110,7 @@ Wanneer het is ingericht, wordt er een vinkje weer gegeven voor *SMS-aanmelding 
 
 Voer de volgende stappen uit om het gebruikers account te testen dat nu is ingeschakeld voor aanmelden op basis van SMS:
 
-1. Open een nieuw InPrivate-of incognito-webbrowser venster om[https://www.office.com][office]
+1. Open een nieuw InPrivate-of incognito-webbrowser venster om [https://www.office.com][office]
 1. Selecteer **Aanmelden**in de rechter bovenhoek.
 1. Voer bij de aanmeldings prompt het telefoon nummer in dat is gekoppeld aan de gebruiker in de vorige sectie en selecteer vervolgens **volgende**.
 

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
 ms.openlocfilehash: d994df4d56f4958784256ff9cd92ce1e6f3b3e50
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88642160"
 ---
 # <a name="enable-azure-monitor-for-vms-for-a-hybrid-virtual-machine"></a>Azure Monitor voor VM's inschakelen voor een hybride virtuele machine
@@ -31,7 +31,7 @@ Voor virtuele machines buiten Azure zijn dezelfde Log Analytics agent en een afh
 Zie [Windows-computers verbinden met Azure monitor](../platform/agent-windows.md) of [Linux-computers verbinden met Azure monitor](../platform/agent-linux.md) voor meer informatie over het implementeren van de log Analytics agent. In dit artikel vindt u meer informatie over de afhankelijkheids agent. 
 
 ## <a name="firewall-requirements"></a>Firewallvereisten
-De firewall vereisten voor de Log Analytics-agent vindt u in [log Analytics Overzicht](../platform/log-analytics-agent.md#network-requirements)van de agent. De Azure Monitor voor VM's kaart afhankelijke agent verzendt geen gegevens zelf, en vereist geen wijzigingen in firewalls of poorten. De kaart gegevens worden altijd door de Log Analytics agent verzonden naar de Azure Monitor-service, hetzij rechtstreeks of via de [Operations Management Suite-gateway](../../azure-monitor/platform/gateway.md) als uw IT-beveiligings beleid niet toestaat dat computers in het netwerk verbinding maken met internet.
+De firewall vereisten voor de Log Analytics-agent vindt u in [log Analytics Overzicht](../platform/log-analytics-agent.md#network-requirements)van de agent. De Map en Dependency Agent van Azure Monitor voor VM's stuurt zelf geen gegevens door en u hoeft er geen wijzigingen in de firewalls en poorten voor aan te brengen. De kaart gegevens worden altijd door de Log Analytics agent verzonden naar de Azure Monitor-service, hetzij rechtstreeks of via de [Operations Management Suite-gateway](../../azure-monitor/platform/gateway.md) als uw IT-beveiligings beleid niet toestaat dat computers in het netwerk verbinding maken met internet.
 
 
 ## <a name="dependency-agent"></a>Agent voor afhankelijkheden
@@ -41,7 +41,7 @@ De firewall vereisten voor de Log Analytics-agent vindt u in [log Analytics Over
 
 U kunt de afhankelijkheids agent downloaden van de volgende locaties:
 
-| Bestand | Besturingssysteem | Versie | SHA-256 |
+| File | OS | Versie | SHA-256 |
 |:--|:--|:--|:--|
 | [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.10.5.10940 | C27A56D0BE9CF162DF73292DFBB2083F5FF749F2B80FCAD2545BC8B14B64A8D7  |
 | [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.10.5.10940 | 71B4E1DA5116E61E03317C49C6702B5069F01A0C9A7CB860F6ACFAF5C198740E |

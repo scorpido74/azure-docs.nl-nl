@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
 ms.openlocfilehash: bf9209e0c256412ccb06ea62a197046a7b012e00
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84629025"
 ---
 # <a name="train-a-model-for-custom-speech"></a>Een model trainen voor Custom Speech
@@ -25,7 +25,7 @@ Training van een model voor spraak naar tekst kan de nauw keurigheid van de herk
 
 Als u herkennings problemen ondervindt met uw model, kunt u de nauw keurigheid verbeteren door gebruik te maken van transcripten met menselijke labels en gerelateerde gegevens voor extra training. Gebruik deze tabel om te bepalen welke gegevensset moet worden gebruikt voor het oplossen van uw probleem (en):
 
-| Toepassing | Gegevenstype |
+| Gebruiksvoorbeeld | Gegevenstype |
 | -------- | --------- |
 | Verbeter nauw keurigheid van herkenning op branchespecifieke woorden lijst en grammatica, zoals medische terminologie of het jargon. | Gerelateerde tekst (zinnen/uitingen) |
 | Definieer de fonetische en weer gegeven vorm van een woord of term met een niet-standaard uitspraak, zoals product namen of acroniemen. | Gerelateerde tekst (uitspraak) |
@@ -62,7 +62,7 @@ Als u ervoor hebt gekozen om nauw keurigheid te testen, is het belang rijk dat u
 
 - [Uw model implementeren](how-to-custom-speech-deploy-model.md)
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 - [Uw gegevens voorbereiden en testen](how-to-custom-speech-test-data.md)
 - [Uw gegevens controleren](how-to-custom-speech-inspect-data.md)

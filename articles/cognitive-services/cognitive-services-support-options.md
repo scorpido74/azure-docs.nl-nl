@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: dapine
 ms.openlocfilehash: 0bf4750d5db5961ff8c572c3aa52cc06faf697c1
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83590533"
 ---
 # <a name="azure-cognitive-services-support-and-feedback-options"></a>Ondersteuning en feedback opties voor Azure Cognitive Services
@@ -28,10 +28,10 @@ Gaat u gewoon door met het verkennen van de functionaliteit van Azure Cognitive 
     <img alt='Azure support' src='https://docs.microsoft.com/media/logos/logo_azure.svg'>
 </div>
 
-Bekijk het bereik van de [ondersteunings opties voor Azure en kies het abonnement dat het](https://azure.microsoft.com/support/plans) beste past, of u nu een ontwikkelaar bent die uw Cloud traject of een grote organisatie die bedrijfs kritieke, strategische toepassingen implementeert. Azure-klanten kunnen ondersteunings aanvragen maken en beheren in de Azure Portal.
+Verken het aanbod aan [ondersteuningsopties voor Azure en kies het abonnement](https://azure.microsoft.com/support/plans) dat het meest geschikt voor u is, of u nu een ontwikkelaar bent die net aan zijn of haar kennismaking met de cloud is begonnen of bij een grote organisatie werkt die bedrijfskritische, strategische toepassingen implementeert. Azure-klanten kunnen ondersteuningsaanvragen maken en beheren in de Azure-portal.
 
-* [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
-* [Azure Portal voor de Verenigde Staten overheid](https://portal.azure.us)
+* [Azure-portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+* [Azure-portal voor de overheid van de Verenigde Staten](https://portal.azure.us)
 
 ### <a name="search"></a>Zoeken
 
@@ -47,17 +47,17 @@ Voor snellere resultaten kunt u een zoek opdracht uitvoeren naar relevante sites
 
 Waar `{search keywords}` is de context van uw zoek opdracht. U kunt deze Zoek opdrachten op de juiste manier gebruiken:
 
- - Stack Overflow:`site:stackoverflow.com`
- - Microsoft Docs:`site:docs.microsoft.com`
- - Voor beelden van GitHub:`site:github.com/azure-samples`
+ - Stack Overflow: `site:stackoverflow.com`
+ - Microsoft Docs: `site:docs.microsoft.com`
+ - Voor beelden van GitHub: `site:github.com/azure-samples`
 
-### <a name="post-a-question-on-stack-overflow"></a>Een vraag op Stack Overflow plaatsen
+### <a name="post-a-question-on-stack-overflow"></a>Een vraag stellen op Stack Overflow
 
 <div class='icon is-large'>
     <img alt='Stack Overflow' src='https://docs.microsoft.com/media/logos/logo_stackoverflow.svg'>
 </div>
 
-Als u geen antwoord op uw probleem kunt vinden met het zoekvak op Stack Overflow, dient u een nieuwe vraag te verzenden. Stack Overflow is het voorkeurs kanaal voor vragen met betrekking tot ontwikkeling. Het is waar leden van de Stack Overflow Community en micro soft-team leden rechtstreeks betrokken zijn bij het helpen oplossen van uw problemen.
+Als u geen antwoord op uw probleem kunt vinden met het zoekvak op Stack Overflow, dient u een nieuwe vraag te verzenden. Stack Overflow is het voorkeurskanaal voor vragen over ontwikkeling. Het is waar leden van de Stack Overflow Community en micro soft-team leden rechtstreeks betrokken zijn bij het helpen oplossen van uw problemen.
 
 [Hier](https://go.microsoft.com/fwlink/?linkid=2126464)kunt u een vraag plaatsen. Gebruik de juiste tag voor uw vraag, zodat u zeker weet dat u de vraag ziet.
 
@@ -83,7 +83,7 @@ De opmerkingen bij de Cognitive Services-release worden bijgewerkt wanneer er ni
  - [Language Understanding (LUIS)](LUIS/whats-new.md)
  - [Spraak Services](speech-service/releasenotes.md)
  - [SDK voor speech Services](speech-service/devices-sdk-release-notes.md)
- - [Text Analytics](text-analytics/whats-new.md)
+ - [Tekstanalyse](text-analytics/whats-new.md)
  - [Video Indexer](../media-services/video-indexer/release-notes.md)
 
 ### <a name="azure-blog"></a>Azure Blog
@@ -129,10 +129,10 @@ Als u nieuwe functies wilt aanvragen, plaatst u deze op UserVoice. Deel uw idee√
 | Language Understanding (LUIS) | https://cognitive.uservoice.com/forums/551524-luis |
 | Personalizer                  | https://cognitive.uservoice.com/forums/921562-personalizer |
 | QnA Maker                     | https://cognitive.uservoice.com/forums/578689-qna-maker |
-| Spraakservices               | https://cognitive.uservoice.com/forums/912208-speech-service |
-| Custom Speech                 | https://cognitive.uservoice.com/forums/555934-custom-speech-service |
-| Text Analytics                | https://cognitive.uservoice.com/forums/555922-text-analytics |
-| Translator               | https://cognitive.uservoice.com/forums/558796-translator |
+| Speech Services               | https://cognitive.uservoice.com/forums/912208-speech-service |
+| Aangepaste spraak                 | https://cognitive.uservoice.com/forums/555934-custom-speech-service |
+| Tekstanalyse                | https://cognitive.uservoice.com/forums/555922-text-analytics |
+| Vertaler               | https://cognitive.uservoice.com/forums/558796-translator |
 | Video Indexer                 | https://cognitive.uservoice.com/forums/598144-video-indexer |
 
 ## <a name="report-bugs"></a>Fouten rapporteren
@@ -156,7 +156,7 @@ Hier volgt een lijst met de Cognitive Services Snelstartgids en voorbeeld code:
 * [Cognitive Services: dotnet](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)
 * [Cognitive Services: go](https://github.com/Azure-Samples/azure-sdk-for-go-samples)
 * [Cognitive Services: Java](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
-* [Cognitive Services: node. js](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
+* [Cognitive Services: Node.js](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
 * [Cognitive Services: python](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
 
 #### <a name="cognitive-services-sdk-source-code"></a>Cognitive Services SDK-bron code

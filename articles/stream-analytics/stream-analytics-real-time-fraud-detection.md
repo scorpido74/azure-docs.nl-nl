@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/24/2020
 ms.custom: seodec18
 ms.openlocfilehash: 3bfc03dd7a04bea7e69aa1b62cef267a81b650f1
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86037610"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Aan de slag met Azure Stream Analytics: fraude detectie in realtime
@@ -81,7 +81,7 @@ In deze procedure maakt u eerst een Event Hub naam ruimte en voegt u vervolgens 
 
     <br/><img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-new-portal.png" alt="Name event hub in Azure portal" width="400px"/>
     
-9. Klik op **Create**.
+9. Klik op **Maken**.
 
 ### <a name="grant-access-to-the-event-hub-and-get-a-connection-string"></a>Toegang verlenen tot de event hub en een verbindingsreeks ophalen
 
@@ -98,7 +98,7 @@ Voordat een proces gegevens naar een Event Hub kan verzenden, moet de Event Hub 
 
     <br/><img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-shared-access-policy-manage-new-portal.png" alt="Create shared access policy for Stream Analytics" width="300px"/>
  
-4. Klik op **Create**.
+4. Klik op **Maken**.
 
 5. Nadat het beleid is geïmplementeerd, klikt u erop in de lijst met beleid voor gedeelde toegang.
 
@@ -186,7 +186,7 @@ Nu u een stroom van oproep gebeurtenissen hebt, kunt u een Stream Analytics taak
 
     <br/><img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-job-new-portal.png" alt="Create Stream Analytics job in portal" width="300px"/>
 
-3. Klik op **Create**.
+3. Klik op **Maken**.
 
     De taak wordt gemaakt en er worden taak details weer gegeven in de portal. Er wordt nog niets uitgevoerd, maar u moet de taak configureren voordat deze kan worden gestart.
 
@@ -201,7 +201,7 @@ Nu u een stroom van oproep gebeurtenissen hebt, kunt u een Stream Analytics taak
 
    |**Instelling**  |**Voorgestelde waarde**  |**Beschrijving**  |
    |---------|---------|---------|
-   |Invoeralias  |  CallStream   |  Voer een naam in om de invoer van de taak te identificeren.   |
+   |Invoeralias  |  CallStream   |  Voer een naam in voor de invoer van de taak.   |
    |Abonnement   |  \<Your subscription\> |  Selecteer het Azure-abonnement met de Event hub die u hebt gemaakt.   |
    |Event hub-naamruimte  |  ASA-eh-NS-demo |  Voer de naam van de Event hub-naam ruimte in.   |
    |Event Hub-naam  | ASA-eh-frauddetection-demo | Selecteer de naam van uw event hub.   |
@@ -211,7 +211,7 @@ Nu u een stroom van oproep gebeurtenissen hebt, kunt u een Stream Analytics taak
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-input-new-portal.png" alt="Create Stream Analytics input in portal" width="300px"/>
 
 
-4. Klik op **Create**.
+4. Klik op **Maken**.
 
 ## <a name="create-queries-to-transform-real-time-data"></a>Query's maken om real-time gegevens te transformeren
 
@@ -359,7 +359,7 @@ Als u een bestaand Blob Storage-account hebt, kunt u dat gebruiken. Voor deze ze
 
 ### <a name="create-an-azure-blob-storage-account"></a>Een Azure Blob Storage-account maken
 
-1. Selecteer in de linkerbovenhoek van de Azure Portal **een resource**  >  **opslag**-opslag  >  **account**maken. Vul de taak pagina voor het opslag account in met de **naam** die is ingesteld op ' asaehstorage ', de **locatie** die is ingesteld op ' vs-Oost ', de **resource groep** die is ingesteld op ' ASA-eh-NS-RG ' (host het opslag account in dezelfde resource groep als de streaming-taak voor betere prestaties). De overige instellingen kunnen op de standaardwaarden blijven staan.  
+1. Selecteer in de linkerbovenhoek in Azure Portal **Een resource maken** > **Storage** > **Storage-account**. Vul de taak pagina voor het opslag account in met de **naam** die is ingesteld op ' asaehstorage ', de **locatie** die is ingesteld op ' vs-Oost ', de **resource groep** die is ingesteld op ' ASA-eh-NS-RG ' (host het opslag account in dezelfde resource groep als de streaming-taak voor betere prestaties). De overige instellingen kunnen op de standaardwaarden blijven staan.  
 
    ![Opslag account maken in Azure Portal](./media/stream-analytics-real-time-fraud-detection/stream-analytics-storage-account-create.png)
 
@@ -371,9 +371,9 @@ Als u een bestaand Blob Storage-account hebt, kunt u dat gebruiken. Voor deze ze
 
    |**Instelling**  |**Voorgestelde waarde**  |**Beschrijving**  |
    |---------|---------|---------|
-   |Uitvoeralias  |  CallStream-FraudulentCalls   |  Voer een naam in om de uitvoer van de taak te identificeren.   |
+   |Uitvoeralias  |  CallStream-FraudulentCalls   |  Voer een naam in voor de uitvoer van de taak.   |
    |Abonnement   |  \<Your subscription\> |  Selecteer het Azure-abonnement met het opslagaccount dat u hebt gemaakt. Het opslagaccount kan voor hetzelfde of een ander abonnement gelden. Voor dit voorbeeld wordt aangenomen dat u een opslagaccount voor hetzelfde abonnement hebt gemaakt. |
-   |Storage-account  |  asaehstorage |  Voer de naam in van het opslag account dat u hebt gemaakt. |
+   |Storage-account  |  asaehstorage |  Voer de naam in van het opslagaccount dat u hebt gemaakt. |
    |Container  | ASA-fraudulentcalls-demo | Kies Nieuw maken en voer een container naam in. |
 
     <br/>

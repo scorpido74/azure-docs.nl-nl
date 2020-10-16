@@ -3,21 +3,21 @@ title: Docker-containers installeren en uitvoeren voor de anomalie detectie-API
 titleSuffix: Azure Cognitive Services
 description: Gebruik de algoritmen van de anomalie detectie-API om afwijkingen in uw gegevens, on-premises met behulp van een docker-container te vinden.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 09/28/2020
-ms.author: aahi
+ms.author: mbullwin
 ms.custom: cog-serv-seo-aug-2020
 keywords: on-premises, docker, container, streaming, algoritmen
-ms.openlocfilehash: ff4d15b33cb261e71ea883c0245afe5781005e38
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: e20ff5022b9b4a5b601160516f255af991a540c6
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91459997"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018607"
 ---
 # <a name="install-and-run-docker-containers-for-the-anomaly-detector-api"></a>Docker-containers installeren en uitvoeren voor de anomalie detectie-API 
 
@@ -194,6 +194,6 @@ In dit artikel hebt u concepten en werk stromen geleerd voor het downloaden, ins
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Containers voor configuratie-instellingen [configureren](anomaly-detector-container-configuration.md) controleren
+* Controleer [Containers configureren](anomaly-detector-container-configuration.md) voor configuratie-instellingen
 * [Een anomalie detectie container implementeren naar Azure Container Instances](how-to/deploy-anomaly-detection-on-container-instances.md)
 * [Meer informatie over de API-service voor anomalie detectie](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)

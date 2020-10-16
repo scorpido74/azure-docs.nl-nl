@@ -9,12 +9,12 @@ ms.date: 08/04/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 3d5ca648b149fa85b28f695956a438cdac9e67e8
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: a8d09f762002c89d225ccc00eac83da336850a3c
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90086620"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047944"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Zelfstudie: Gegevens aan de rand opslaan met SQL Server-databases
 
@@ -42,7 +42,7 @@ Voordat u met deze zelfstudie begint, moet u de vorige zelfstudie hebben doorlop
 * Een gratis of standaard [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-laag in Azure.
 * Een AMD64 [Linux-apparaat met Azure IoT Edge](quickstart-linux.md).
   * Op ARM-apparaten, zoals Raspberry Pi's, kan SQL Server niet worden uitgevoerd. Als u SQL wilt gebruiken op een ARM-apparaat, kunt u zich registreren om een preview van [Azure SQL Edge](https://azure.microsoft.com/services/sql-edge/) uit te proberen.
-* Een containerregister, zoals [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/).
+* Een containerregister, zoals [Azure Container Registry](../container-registry/index.yml).
 * [Visual Studio Code](https://code.visualstudio.com/) geconfigureerd met de [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 * [Docker CE](https://docs.docker.com/install/) geconfigureerd voor het uitvoeren van Linux-containers.
 
@@ -228,7 +228,7 @@ Een [distributiemanifest](module-composition.md) declareert welke modules de IoT
 7. Ga naar de sectie **modules**. U zou drie modules moeten zien. De module *SimulatedTemperatureSensor* wordt standaard in nieuwe oplossingen opgenomen, en zorgt voor testgegevens om bij uw andere modules te gebruiken. De module *sqlFunction* is de module die u aanvankelijk hebt gemaakt en bijgewerkt met nieuwe code. En ten slotte is de module *sql* geïmporteerd uit Azure Marketplace.
 
    >[!Tip]
-   >De SQL Server-module heeft een standaardwachtwoord dat wordt ingesteld in de omgevingsvariabelen van het distributiemanifest. Telkens wanneer u een SQL Server-container in een productieomgeving maakt, moet u [het standaardwachtwoord van de systeembeheerder](https://docs.microsoft.com/sql/linux/quickstart-install-connect-docker)wijzigen.
+   >De SQL Server-module heeft een standaardwachtwoord dat wordt ingesteld in de omgevingsvariabelen van het distributiemanifest. Telkens wanneer u een SQL Server-container in een productieomgeving maakt, moet u [het standaardwachtwoord van de systeembeheerder](/sql/linux/quickstart-install-connect-docker)wijzigen.
 
 8. Sluit het bestand **deployment.template.json**.
 
@@ -331,9 +331,9 @@ Anders kunt u de lokale configuraties en Azure-resources die u in dit artikel he
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-## <a name="next-steps"></a>Volgende stappen
+In deze zelfstudie hebt u een Azure Functions-module gemaakt die code bevat voor het filteren van onbewerkte gegevens die worden gegenereerd door uw IoT Edge-apparaat. Wanneer u klaar bent om uw eigen modules te bouwen, kunt u meer informatie krijgen over het [ontwikkelen van Azure Functions met Azure IoT Edge voor Visual Studio Code](./how-to-vs-code-develop-module.md).
 
-In deze zelfstudie hebt u een Azure Functions-module gemaakt die code bevat voor het filteren van onbewerkte gegevens die worden gegenereerd door uw IoT Edge-apparaat. Wanneer u klaar bent om uw eigen modules te bouwen, kunt u meer informatie krijgen over het [ontwikkelen van Azure Functions met Azure IoT Edge voor Visual Studio Code](how-to-develop-csharp-function.md).
+## <a name="next-steps"></a>Volgende stappen
 
 Als u een andere opslagmethode wilt gebruiken aan de rand, lees dan verder over het gebruiken van Azure Blob Storage op IoT Edge.
 

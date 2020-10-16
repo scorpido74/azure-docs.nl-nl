@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: jeedes
-ms.openlocfilehash: fb9c776061407669f27f61ac4bc536b859d04b66
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 41dd61182674d63e7c8b83232c53b9e7054de04d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550612"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816859"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-helpshift"></a>Zelfstudie: Eenmalige aanmelding (SSO) van Azure Active Directory integreren met Helpshift
 
@@ -134,11 +134,11 @@ In deze sectie stelt u B.Simon in staat gebruik te maken van eenmalige aanmeldin
 
 1. Open het Helpshift-**dashboard** en klik op het **Instellingenpictogram**.
 
-    ![De Helpshift-configuratie](./media/helpshift-tutorial/configuration01.png)
+    ![Schermopname met het pictogram Settings van Helpshift.](./media/helpshift-tutorial/configuration01.png)
 
 1. Klik op het tabblad **Integraties** en voer de volgende stappen uit:
 
-    ![De Helpshift-configuratie](./media/helpshift-tutorial/configuration02.png)
+    ![Schermopname met het tabblad Integrations waar u de stappen kunt uitvoeren die hier worden beschreven.](./media/helpshift-tutorial/configuration02.png)
 
     a. Schakel de **Eenmalige aanmelding (SAML-SSO)** in.
 

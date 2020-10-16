@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: trbye
 ms.openlocfilehash: 72fecbdc173a6174e54a28e48f983965f397ba6a
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86224584"
 ---
 # <a name="improve-synthesis-with-the-audio-content-creation-tool"></a>De synthese verbeteren met het hulp programma voor het maken van een audio-inhoud
@@ -25,7 +25,7 @@ Het hulp programma voor het maken van de audio-inhoud is gebaseerd op [SSML (Spe
 
 Zie de [video zelf studie](https://www.youtube.com/watch?v=O1wIJ7mts_w) voor het maken van audio-inhoud.
 
-## <a name="how-does-it-work"></a>Hoe werkt dit?
+## <a name="how-does-it-work"></a>Hoe werkt het?
 
 Dit diagram toont de stappen die nodig zijn om tekst-naar-spraak-uitvoer te verfijnen. Gebruik de onderstaande koppelingen voor meer informatie over elke stap.
 

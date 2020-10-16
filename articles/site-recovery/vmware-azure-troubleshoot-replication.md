@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
 ms.openlocfilehash: 8b44a1d6119cc658b9460e0a52fa0629f759964a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91336202"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>Replicatieproblemen voor virtuele VMware-machines en fysieke servers oplossen
@@ -146,7 +146,7 @@ Hieronder vindt u enkele van de meest voorkomende problemen
 #### <a name="cause-3-known-issue-in-sql-server-2016-and-2017"></a>Oorzaak 3: bekend probleem in SQL Server 2016 en 2017
 **Oplossen** : verwijzen naar KB- [artikel](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component)
 
-#### <a name="cause-4-app-consistency-not-enabled-on-linux-servers"></a>Oorzaak 4: app-consistentie niet ingeschakeld op Linux-servers
+#### <a name="cause-4-app-consistency-not-enabled-on-linux-servers"></a>Oorzaak 4: App-Consistency niet ingeschakeld op Linux-servers
 **Oplossen** : Azure site Recovery voor Linux-besturings systeem ondersteunt aangepaste scripts voor toepassingen voor app-consistentie. Het aangepaste script met de voor-en post opties wordt gebruikt door de Azure Site Recovery Mobility-agent voor app-consistentie. [Hier](./site-recovery-faq.md#replication) volgen de stappen om deze functie in te scha kelen.
 
 ### <a name="more-causes-due-to-vss-related-issues"></a>Meer oorzaken vanwege VSS-problemen:

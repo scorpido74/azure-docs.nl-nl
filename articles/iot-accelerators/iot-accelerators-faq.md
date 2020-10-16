@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: abab80f8c790a170ec30fa228dd86576079a73a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40c1fb314a2dea653740e7f87b5caa14c759fffb
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462544"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078218"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>Veelgestelde vragen over IoT-oplossingsversnellers
 
@@ -65,7 +65,7 @@ Als u zeker weet dat u een Azure-abonnement hebt, valideert u de Tenant toewijzi
 
 ### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>Waar vind ik informatie over de vorige versie van de oplossing voor bewaking op afstand?
 
-De vorige versie van de oplossing voor controle op afstand van externe bewaking heette de IoT Suite vooraf geconfigureerde oplossing voor externe controle. U kunt de gearchiveerde documentatie vinden op [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/) .
+De vorige versie van de oplossing voor controle op afstand van externe bewaking heette de IoT Suite vooraf geconfigureerde oplossing voor externe controle. U kunt de gearchiveerde documentatie vinden op [https://docs.microsoft.com/previous-versions/azure/iot-suite/](/previous-versions/azure/iot-suite/) .
 
 ### <a name="is-the-new-solution-accelerator-available-in-the-same-geographic-region-as-the-existing-solution"></a>Is de nieuwe oplossings versneller beschikbaar in dezelfde geografische regio als de bestaande oplossing?
 
@@ -101,13 +101,13 @@ Op dit moment kunt u geen oplossings versneller maken met een [Microsoft Azure v
 
 ### <a name="how-do-i-delete-an-azure-ad-tenant"></a>Hoe kan ik een Azure AD-Tenant verwijderen?
 
-Zie het blog bericht over het [verwijderen van een Azure AD-Tenant met](https://docs.microsoft.com/archive/blogs/ericgolpe/walkthrough-of-deleting-an-azure-ad-tenant)de bespreking van het weblog boek van Eric golpe.
+Zie het blog bericht over het [verwijderen van een Azure AD-Tenant met](/archive/blogs/ericgolpe/walkthrough-of-deleting-an-azure-ad-tenant)de bespreking van het weblog boek van Eric golpe.
 
 ### <a name="next-steps"></a>Volgende stappen
 
 U kunt ook enkele van de andere functies en mogelijkheden van de IoT-oplossingsversnellers bekijken:
 
 * [Bekijk de mogelijkheden van de oplossings versneller voor externe controle](quickstart-remote-monitoring-deploy.md)
-* [Overzicht van de oplossingsversneller Voorspeld onderhoud](iot-accelerators-predictive-overview.md)
+* [Overzicht van de oplossingsversneller Voorspeld onderhoud](./iot-accelerators-predictive-walkthrough.md)
 * [Connected Factory Solution Accelerator implementeren](quickstart-connected-factory-deploy.md)
-* [Fundamentele IoT-beveiliging](/azure/iot-fundamentals/iot-security-ground-up)
+* [Fundamentele IoT-beveiliging](../iot-fundamentals/iot-security-ground-up.md)

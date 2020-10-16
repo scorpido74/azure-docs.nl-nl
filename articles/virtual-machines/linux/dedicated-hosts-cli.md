@@ -6,17 +6,17 @@ ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 09/25/2020
 ms.author: cynthn
-ms.openlocfilehash: a85f5cb9cc519b180354445ca9ca2f8dd0354c23
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: d99f8c380b486ed818aff64782ca817dab41c916
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91370196"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975278"
 ---
 # <a name="deploy-to-dedicated-hosts-using-the-azure-cli"></a>Implementeren naar toegewezen hosts met behulp van de Azure CLI
  
 
-Dit artikel begeleidt u bij het maken van een toegewezen Azure- [host](dedicated-hosts.md) voor het hosten van uw virtuele machines (vm's). 
+Dit artikel begeleidt u bij het maken van een toegewezen Azure- [host](../dedicated-hosts.md) voor het hosten van uw virtuele machines (vm's). 
 
 Zorg ervoor dat u Azure CLI-versie 2.0.70 of hoger hebt geïnstalleerd en dat u bent aangemeld bij een Azure-account met `az login` . 
 
@@ -319,8 +319,8 @@ az group delete -n myDHResourceGroup
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie voor meer informatie het overzicht [gespecialiseerde hosts](dedicated-hosts.md) .
+- Zie voor meer informatie het overzicht [gespecialiseerde hosts](../dedicated-hosts.md) .
 
-- U kunt ook toegewezen hosts maken met behulp van de [Azure Portal](dedicated-hosts-portal.md).
+- U kunt ook toegewezen hosts maken met behulp van de [Azure Portal](../dedicated-hosts-portal.md).
 
 - [Hier](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)vindt u een voor beeld van een sjabloon, die zowel zones als fout domeinen gebruikt voor maximale tolerantie in een regio.

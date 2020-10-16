@@ -1,6 +1,6 @@
 ---
-title: Integratie met Azure Machine Learning Azure Stream Analytics
-description: In dit artikel wordt beschreven hoe u snel een eenvoudige Azure Stream Analytics-taak kunt instellen die Azure Machine Learning integreert met behulp van een door de gebruiker gedefinieerde functie.
+title: Azure Stream Analytics integratie met Azure Machine Learning Studio (klassiek)
+description: In dit artikel wordt beschreven hoe u snel een eenvoudige Azure Stream Analytics-taak kunt instellen die Azure Machine Learning Studio (klassiek) integreert met behulp van een door de gebruiker gedefinieerde functie.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -8,16 +8,16 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 26a1208131f1d9d3df7dccd8e27bda37992f043f
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 529b1ce8026d9880bbc8caf87ab59148baf92df3
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236651"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019457"
 ---
 # <a name="do-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-classic"></a>Sentiment analyse met Azure Stream Analytics en Azure Machine Learning Studio (klassiek)
 
-Dit artikel laat u zien hoe u een eenvoudige Azure Stream Analytics-taak kunt instellen die gebruikmaakt van Azure Machine Learning Studio (klassiek) voor sentiment analyse. U gebruikt een Machine Learning sentiment Analytics-model van de Cortana Intelligence Gallery voor het analyseren van streaming-tekst gegevens en het bepalen van de sentiment Score.
+Dit artikel laat u zien hoe u een eenvoudige Azure Stream Analytics-taak kunt instellen die gebruikmaakt van Azure Machine Learning Studio (klassiek) voor sentiment analyse. U gebruikt een studio (klassiek) sentiment Analytics-model van de Cortana Intelligence Gallery voor het analyseren van streaming-tekst gegevens en het bepalen van de sentiment Score.
 
 > [!TIP]
 > Het is raadzaam om [Azure machine learning UDFs](machine-learning-udf.md) te gebruiken in plaats van Azure machine learning Studio (klassiek) UDF voor verbeterde prestaties en betrouw baarheid.
@@ -79,31 +79,31 @@ Nu de voorbeeld gegevens zich in een BLOB bevindt, kunt u het sentiment-analyse 
 
 2. Selecteer **openen in Studio (klassiek)**.  
    
-   ![Open Machine Learning Studio Stream Analytics Machine Learning](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-open-ml-studio.png)  
+   ![Open Studio (klassiek) Stream Analytics Azure Machine Learning Studio (klassiek)](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-open-ml-studio.png)  
 
 3. Meld u aan om naar de werk ruimte te gaan. Selecteer een locatie.
 
 4. Selecteer **uitvoeren** onder aan de pagina. Het proces wordt uitgevoerd. dit duurt ongeveer een minuut.
 
-   ![experiment uitvoeren in Machine Learning Studio](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-run-experiment.png)  
+   ![Experiment uitvoeren in Studio (klassiek)](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-run-experiment.png)  
 
 5. Nadat het proces is uitgevoerd, selecteert u **webservice implementeren** onder aan de pagina.
 
-   ![experiment in Machine Learning Studio implementeren als een webservice](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-deploy-web-service.png)  
+   ![Experiment in Studio (klassiek) implementeren als een webservice](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-deploy-web-service.png)  
 
 6. Selecteer de knop **testen** om te controleren of het sentiment Analytics-model gereed is voor gebruik. Geef tekst invoer op zoals ' Ik hou van micro soft '.
 
-   ![test experiment in Machine Learning Studio](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-test.png)  
+   ![Test experiment in Studio (klassiek)](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-test.png)  
 
    Als de test werkt, ziet u een resultaat zoals in het volgende voor beeld:
 
-   ![test resultaten in Machine Learning Studio](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-test-results.png)  
+   ![Test resultaten in Studio (klassiek)](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-test-results.png)  
 
 7. Selecteer in de kolom **apps** de koppeling **Excel 2010 of een eerdere werkmap** om een Excel-werkmap te downloaden. De werkmap bevat de API-sleutel en de URL die u later nodig hebt om de Stream Analytics-taak in te stellen.
 
-    ![Stream Analytics Machine Learning, snel in de oogopslag](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-quick-glance.png)  
+    ![Stream Analytics Azure Machine Learning Studio (klassiek), beknopt](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-quick-glance.png)  
 
-## <a name="create-a-stream-analytics-job-that-uses-the-machine-learning-model"></a>Een Stream Analytics-taak maken die gebruikmaakt van het Machine Learning model
+## <a name="create-a-stream-analytics-job-that-uses-the-studio-classic-model"></a>Een Stream Analytics-taak maken die gebruikmaakt van het model studio (klassiek)
 
 U kunt nu een Stream Analytics-taak maken die de voorbeeld tweets leest uit het CSV-bestand in Blob Storage.
 
@@ -147,9 +147,9 @@ De taak verzendt resultaten naar dezelfde Blob-opslag waar de invoer wordt ingev
 
 3. Selecteer **Opslaan**.
 
-### <a name="add-the-machine-learning-function"></a>De functie Machine Learning toevoegen
+### <a name="add-the-studio-classic-function"></a>De functie Studio (klassiek) toevoegen
 
-Eerder hebt u een Machine Learning model gepubliceerd op een webservice. Als in dit scenario de stroom analyse taak wordt uitgevoerd, verzendt deze elke voorbeeld Tweet van de invoer naar de webservice voor sentiment analyse. De Machine Learning-webservice retourneert een sentiment ( `positive` , `neutral` of `negative` ) en een kans dat de Tweet positief is.
+Eerder hebt u een studio-model (klassiek) gepubliceerd naar een webservice. Als in dit scenario de stroom analyse taak wordt uitgevoerd, verzendt deze elke voorbeeld Tweet van de invoer naar de webservice voor sentiment analyse. De Studio-webservice (klassiek) retourneert een sentiment ( `positive` , `neutral` of `negative` ) en een kans dat de Tweet positief is.
 
 In deze sectie definieert u een functie in de analyse taak voor streams. De functie kan worden aangeroepen om een Tweet te verzenden naar de webservice en de reactie terug te halen.
 
@@ -169,7 +169,7 @@ In deze sectie definieert u een functie in de analyse taak voor streams. De func
 
 ### <a name="create-a-query-to-transform-the-data"></a>Een query maken om de gegevens te transformeren
 
-Stream Analytics maakt gebruik van een declaratieve SQL-query om de invoer te controleren en te verwerken. In deze sectie maakt u een query die elke Tweet leest uit invoer en roept vervolgens de functie Machine Learning aan om sentiment analyse uit te voeren. De query verzendt vervolgens het resultaat naar de uitvoer die u hebt gedefinieerd (Blob Storage).
+Stream Analytics maakt gebruik van een declaratieve SQL-query om de invoer te controleren en te verwerken. In deze sectie maakt u een query die elke Tweet leest uit invoer en vervolgens de functie Studio (klassiek) aanroept om sentiment analyse uit te voeren. De query verzendt vervolgens het resultaat naar de uitvoer die u hebt gedefinieerd (Blob Storage).
 
 1. Ga terug naar het overzicht van de Stream Analytics-taak.
 
@@ -215,18 +215,18 @@ U kunt nu de Stream Analytics-taak starten.
 
 3. Open het gegenereerde CSV-bestand. U ziet iets zoals in het volgende voor beeld:  
 
-   ![Stream Analytics Machine Learning, CSV-weer gave](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-csv-view.png)  
+   ![Stream Analytics Azure Machine Learning Studio (klassiek), CSV-weer gave](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-csv-view.png)  
 
 ### <a name="view-metrics"></a>Metrische gegevens bekijken
 
-U kunt ook Azure Machine Learning metrische gegevens over de functie weer geven. De volgende metrische functie gegevens worden weer gegeven in het vak **bewaking** van het taak overzicht:
+U kunt ook studio-gerelateerde metrische functie gegevens weer geven. De volgende metrische functie gegevens worden weer gegeven in het vak **bewaking** van het taak overzicht:
 
-* Met **functie aanvragen** wordt het aantal aanvragen aangegeven dat is verzonden naar een machine learning-webservice.  
-* **Functie gebeurtenissen** geeft het aantal gebeurtenissen in de aanvraag aan. Elke aanvraag voor een Machine Learning-webservice bevat standaard Maxi maal 1.000 gebeurtenissen.
+* Met **functie aanvragen** wordt het aantal aanvragen aangegeven dat is verzonden naar een studio-webservice (klassiek).  
+* **Functie gebeurtenissen** geeft het aantal gebeurtenissen in de aanvraag aan. Elke aanvraag van een studio-webservice (Classic) bevat standaard Maxi maal 1.000 gebeurtenissen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Inleiding tot Azure Stream Analytics](stream-analytics-introduction.md)
 * [Naslaggids voor Azure Stream Analytics Query](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [REST API en Machine Learning integreren](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
+* [REST API en Machine Learning Studio integreren (klassiek)](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
 * [REST API-naslaggids voor Azure Stream Analytics Management](https://msdn.microsoft.com/library/azure/dn835031.aspx)

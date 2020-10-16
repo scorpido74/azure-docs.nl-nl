@@ -17,15 +17,15 @@ ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7cfbca2e7542315b59d741a9e8f6f9eb92af6ebf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84760215"
 ---
 # <a name="how-to-configure-an-application-proxy-application-to-use-pingaccess"></a>Een toepassings proxy toepassing configureren voor het gebruik van PingAccess
 
-Met onze samen werking met PingAccess kunt u nu de voor delen van toepassings Proxy uitbreiden naar toepassingen met verificatie op basis van een header. Als uw toepassingen geen headers gebruiken, raadpleegt u de [documentatie voor eenmalige aanmelding](application-proxy-configure-single-sign-on-with-kcd.md) voor meer informatie over andere opties.
+Met onze samen werking met PingAccess kunt u nu de voor delen van toepassings Proxy uitbreiden naar toepassingen met verificatie op basis van een header. Als uw toepassingen geen headers gebruiken, raadpleegt u onze [enkele Sign-On-documentatie](application-proxy-configure-single-sign-on-with-kcd.md) voor meer informatie over andere opties.
 
 ## <a name="overview-of-steps-and-recommended-documents"></a>Overzicht van stappen en aanbevolen documenten
 
@@ -39,4 +39,4 @@ Als u een toepassing met PingAccess wilt configureren, zijn er vier stappen:
 
 4.  Toepassingen configureren in PingAccess
 
-Zie voor meer informatie over deze stappen onze [Single Sign-on with headers-documentatie](application-proxy-configure-single-sign-on-with-ping-access.md).
+Zie voor meer informatie over deze stappen onze [enkele Sign-On met documentatie](application-proxy-configure-single-sign-on-with-ping-access.md)over de koptekst.

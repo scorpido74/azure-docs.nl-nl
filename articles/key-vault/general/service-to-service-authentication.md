@@ -8,18 +8,17 @@ ms.author: mbaldwin
 ms.date: 09/04/2020
 ms.topic: how-to
 ms.service: key-vault
-ms.subservice: general
-ms.openlocfilehash: 00799f7c5239bfd744268f7353e1bac6cb038294
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 1a6ec20d860a409bbe7d3114c54e1e46a75968a0
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89483334"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970109"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Service-naar-service-verificatie voor het Azure Key Vault met behulp van .NET
 
 > [!NOTE]
-> **Micro soft. Azure. Services. AppAuthentication** wordt niet meer aanbevolen voor gebruik met een nieuwe Key Vault-SDK. Het wordt vervangen door de nieuwe Azure-identiteits bibliotheek **DefaultAzureCredentials** beschikbaar voor .net, Java, type script en python en moet worden gebruikt voor alle nieuwe ontwikkel aars. Meer informatie vindt u hier: [verificatie en de Azure SDK](https://devblogs.microsoft.com/azure-sdk/authentication-and-the-azure-sdk/).
+> **Micro soft. Azure. Services. AppAuthentication** wordt niet meer aanbevolen voor gebruik met een nieuwe Key Vault-SDK. Het wordt vervangen door een nieuwe **Azure Identity client-bibliotheek** die beschikbaar is voor .net, Java, type script en python en moet worden gebruikt voor alle nieuwe ontwikkeling. Meer informatie vindt u hier: [verificatie voor het Key Vault van code](https://docs.microsoft.com/azure/key-vault/general/developers-guide#azure-identity-client-libraries).
 
 Als u zich wilt verifiëren bij Azure Key Vault, hebt u een Azure Active Directory (Azure AD)-referentie nodig, ofwel een gedeeld geheim of een certificaat.
 

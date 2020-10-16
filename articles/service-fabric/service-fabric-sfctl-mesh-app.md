@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 835369116b07b74c666fba271476f1cba5a708b8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86259956"
 ---
 # <a name="sfctl-mesh-app"></a>sfctl mesh app
@@ -19,7 +19,7 @@ Toepassings resources ophalen en verwijderen.
 
 |Opdracht|Beschrijving|
 | --- | --- |
-| verwijderen | Hiermee verwijdert u de toepassings resource. |
+| delete | Hiermee verwijdert u de toepassings resource. |
 | list | Een lijst met alle toepassings bronnen. |
 | weergeven | Hiermee wordt de toepassings resource met de opgegeven naam opgehaald. |
 
@@ -38,8 +38,8 @@ Hiermee verwijdert u de toepassings resource die wordt geïdentificeerd door de 
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
-| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --help -h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden \: JSON, jsonc, Table, TSV.  Standaard \: JSON. |
 | --query | JMESPath-query reeks. Zie http \: //jmespath.org/voor meer informatie en voor beelden. |
 | --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
@@ -53,8 +53,8 @@ Hiermee haalt u de informatie op over alle toepassings resources in een bepaalde
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
-| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --help -h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden \: JSON, jsonc, Table, TSV.  Standaard \: JSON. |
 | --query | JMESPath-query reeks. Zie http \: //jmespath.org/voor meer informatie en voor beelden. |
 | --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
@@ -74,8 +74,8 @@ Hiermee wordt de informatie opgehaald over de toepassings resource met de opgege
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
-| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --help -h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden \: JSON, jsonc, Table, TSV.  Standaard \: JSON. |
 | --query | JMESPath-query reeks. Zie http \: //jmespath.org/voor meer informatie en voor beelden. |
 | --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |

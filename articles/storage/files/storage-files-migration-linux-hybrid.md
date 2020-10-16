@@ -8,10 +8,10 @@ ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
 ms.openlocfilehash: 202f7fd065641f9921df5237fb83e7900819c8f7
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90563502"
 ---
 # <a name="migrate-from-linux-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Migreren van Linux naar een hybride Cloud implementatie met Azure File Sync
@@ -24,7 +24,7 @@ Als gevolg hiervan is het transformeren van uw bestands Services naar een hybrid
 
 Het doel is om de shares die u hebt op uw Linux Samba-server te verplaatsen naar een Windows Server-exemplaar. Gebruik vervolgens Azure File Sync voor een hybride Cloud implementatie. Deze migratie moet zo worden uitgevoerd dat de integriteit van de productie gegevens en de beschik baarheid tijdens de migratie gewaarborgd is. Ten laatste moet de downtime tot een minimum worden beperkt, zodat deze kan worden aangepast aan of slechts een beetje meer regel matig onderhouds Vensters kan hebben.
 
-## <a name="migration-overview"></a>Overzicht van Migratie
+## <a name="migration-overview"></a>Migratieoverzicht
 
 Zoals vermeld in het [overzichts artikel](storage-files-migration-overview.md)over Azure files migratie, met het juiste Kopieer programma en de aanpak is belang rijk. Uw Linux Samba-server maakt SMB-shares rechtstreeks beschikbaar op uw lokale netwerk. Robocopy, ingebouwd in Windows Server, is de beste manier om uw bestanden in dit migratie scenario te verplaatsen.
 

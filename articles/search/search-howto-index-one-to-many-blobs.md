@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
 ms.openlocfilehash: e5a69525c4bd0717c0561bc61ee3c52aa68e1c9d
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91533958"
 ---
 # <a name="indexing-blobs-to-produce-multiple-search-documents"></a>Blobs indexeren om meerdere zoek documenten te maken
@@ -66,7 +66,7 @@ Wanneer u een Indexeer functie maakt en de **parsingMode** instelt op `jsonLines
 
 Met deze instelling wordt de Azure Cognitive Search-index met de volgende informatie (met base64 versleutelde ID afgekort voor de boog)
 
-| Id | temperatuur | druk | tijdstempel |
+| Id | temperatuur | pressure | tijdstempel |
 |----|-------------|----------|-----------|
 | aHR0 ... YjEuanNvbjsx | 100 | 100 | 2019-02-13T00:00:00Z |
 | aHR0 ... YjEuanNvbjsy | 33 | 30 | 2019-02-14T00:00:00Z |

@@ -7,10 +7,10 @@ ms.date: 10/02/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: a47126a48ea63efd4e49097428679b85b7a95a61
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91667160"
 ---
 # <a name="create-a-windows-virtual-desktop-host-pool-with-powershell"></a>Een Windows-hostgroep voor virtueel bureau blad maken met Power shell
@@ -140,8 +140,8 @@ De agent bijwerken:
    Als u deze bestanden wilt verwijderen, klikt u met de rechter muisknop op elke bestands naam en selecteert u vervolgens **verwijderen**.
 5. U kunt eventueel ook de volgende register instellingen verwijderen:
      
-     - Computer \ HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\RDInfraAgent
-     - Computer \ HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\RDAgentBootLoader
+     - Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\RDInfraAgent
+     - Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\RDAgentBootLoader
 
 6. Zodra u deze items hebt verwijderd, moeten alle koppelingen met de oude hostgroep worden verwijderd. Als u deze host opnieuw wilt registreren bij de service, volgt u de instructies in [de virtuele machines registreren bij de hostgroep voor virtuele Windows-Bureau bladen](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool).
 

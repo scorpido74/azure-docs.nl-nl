@@ -3,12 +3,12 @@ title: De open bare IP-functionaliteit gebruiken in virtuele WAN
 description: In dit artikel wordt uitgelegd hoe u de open bare IP-functionaliteit in azure Virtual WAN kunt gebruiken.
 ms.topic: how-to
 ms.date: 10/30/2020
-ms.openlocfilehash: ec8af45a98e82a7c1c657776c4fee2c3ef068dca
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 61ed6487bc000a35fd25cabde2b562b6eb08da46
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91744825"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048301"
 ---
 # <a name="how-to-use-the-public-ip-functionality-in-azure-virtual-wan"></a>De open bare IP-functionaliteit gebruiken in azure Virtual WAN
 
@@ -29,9 +29,9 @@ In dit artikel wordt beschreven hoe u de open bare IP-functionaliteit in virtuel
 
 ## <a name="prerequisites"></a>Vereisten
 
--   Azure VMware-oplossings omgeving
-
--   Een webserver die wordt uitgevoerd in de Azure VMware-oplossings omgeving.
+- Azure VMware-oplossings omgeving
+- Een webserver die wordt uitgevoerd in de Azure VMware-oplossings omgeving.
+- Een nieuw niet-overlappend IP-bereik voor de implementatie van de virtuele WAN-hub, meestal a `/24` .
 
 ## <a name="reference-architecture"></a>Referentiearchitectuur
 
@@ -62,15 +62,15 @@ In dit scenario moet u de IIS-webserver publiceren op internet. Gebruik de open 
 
    :::image type="content" source="media/public-ip-usage/connectivity-public-ip-tab.png" alt-text="Diagram van open bare IP-architectuur" border="true" lightbox="media/public-ip-usage/connectivity-public-ip-tab.png":::
 
-2.  Accepteer de standaard waarden of wijzig deze en selecteer **maken**.
+1. Accepteer de standaard waarden of wijzig deze en selecteer **maken**.
 
-   -  Resource groep voor virtueel Wide Area Network
+   - Resource groep voor virtueel Wide Area Network
 
-   -  Naam van virtueel Wide Area Network
+   - Naam van virtueel Wide Area Network
 
-   -  Virtuele-hub-adres blok
+   - Virtual hub-adres blok (met behulp van een nieuw niet-overlappend IP-bereik)
 
-   -  Aantal open bare Ip's (1-100)
+   - Aantal open bare Ip's (1-100)
 
 Het duurt ongeveer een uur voordat de implementatie van alle onderdelen is voltooid. Deze implementatie hoeft slechts eenmaal te worden uitgevoerd om alle toekomstige open bare Ip's voor deze Azure VMware-oplossings omgeving te ondersteunen.  
 

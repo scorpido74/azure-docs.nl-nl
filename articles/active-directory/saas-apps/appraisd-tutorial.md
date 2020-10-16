@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 2b8e8a6df2fc355ad6a8ef50d801dc7457e97c63
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2e355241191a4bdcab12c7c0b6527706b044a70c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547780"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714468"
 ---
 # <a name="tutorial-integrate-appraisd-with-azure-active-directory"></a>Zelfstudie: Appraisd integreren met Azure Active Directory
 
@@ -86,7 +86,7 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 1. In de Appraisd-toepassing worden de SAML-asserties in een specifieke indeling verwacht. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van uw SAML-tokenkenmerken. In de volgende schermafbeelding ziet u de lijst met standaardkenmerken, waarbij **nameidentifier** is toegewezen aan **user.userprincipalname**. In de Appraisd-toepassing wordt verwacht dat **nameidentifier** is toegewezen aan **user.mail**. Daarom moet u de kenmerktoewijzing bewerken door op het pictogram **Bewerken** te klikken en de kenmerktoewijzing te wijzigen.
 
-    ![image](common/edit-attribute.png)
+    ![Schermopname toont de sectie 'Gebruikerskenmerken', waarin het pictogram 'Bewerken' is gemarkeerd.](common/edit-attribute.png)
 
 1. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** gaat u naar **Certificaat (Base64)** en selecteert u **Downloaden** om het certificaat te downloaden en op te slaan op uw computer.
 
@@ -110,15 +110,15 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 4. Klik rechtsboven op de pagina op het pictogram **Instellingen** en ga vervolgens naar **Configuratie**.
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_sett.png)
+    ![Schermopname waarin de configuratielink is opgeroepen.](./media/appraisd-tutorial/tutorial_appraisd_sett.png)
 
 5. Klik aan de linkerkant van het menu op **SAML single sign-on**.
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_single.png)
+    ![Schermopname toont de configuratieopties met de optie voor eenmalige aanmelding via SAML gemarkeerd.](./media/appraisd-tutorial/tutorial_appraisd_single.png)
 
 6. Voer op de **configuratiepagina voor eenmalige aanmelding op basis van SAML 2.0** de volgende stappen uit:
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_saml.png)
+    ![Schermopname toont de configuratiepagina voor eenmalige aanmelding voor SAML 2.0, waar u de standaard relay-status en de door service geïnitieerde login-URL kunt bewerken.](./media/appraisd-tutorial/tutorial_appraisd_saml.png)
 
     a. Kopieer de waarde voor **Standaardrelaystatus** en plak deze in het tekstvak **Relaystatus** in **Standaard SAML-configuratie** in de Azure-portal.
 
@@ -126,7 +126,7 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 7. Schuif omlaag op de dezelfde pagina en voer de volgende stappen uit onder **Gebruikers identificeren**:
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_identifying.png)
+    ![Schermopname toont de identificatie van gebruikers waar u waarden uit deze stap kunt invoeren.](./media/appraisd-tutorial/tutorial_appraisd_identifying.png)
 
     a. Plak in het tekstvak **Identity Provider Single Sign-On URL** de waarde van de **aanmeldings-URL** die u hebt gekopieerd uit de Microsoft Azure-portal en klik op **Save**.
 
@@ -174,15 +174,15 @@ Als u wilt dat Microsoft Azure Active Directory-gebruikers zich kunnen aanmelden
 
 2. Klik rechtsboven op de pagina op het pictogram **Instellingen** en ga vervolgens naar **Beheercentrum**.
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_admin.png)
+    ![Schermopname toont de instellingenopties waar u Administratiecentrum kunt selecteren.](./media/appraisd-tutorial/tutorial_appraisd_admin.png)
 
 3. Klik in de werkbalk bovenaan de pagina op **Personen** en ga naar **Een nieuwe gebruiker toevoegen**.
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_user.png)
+    ![Schermopname toont de getaxeerde pagina met 'Mensen' en 'Een nieuwe gebruiker toevoegen' opgeroepen.](./media/appraisd-tutorial/tutorial_appraisd_user.png)
 
 4. Voer de volgende stappen uit in het dialoogvenster **Add a new user**:
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_newuser.png)
+    ![Schermopname met de knop 'Een nieuwe gebruiker toevoegen'.](./media/appraisd-tutorial/tutorial_appraisd_newuser.png)
 
     a. Typ in het tekstvak **First Name** de voornaam van de gebruiker, zoals **Britta**.
 

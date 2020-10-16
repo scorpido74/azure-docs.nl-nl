@@ -3,12 +3,12 @@ title: Opnamen van meerdere dagen afspelen - Azure
 description: In deze zelfstudie leert u hoe u Azure Media Service-API's gebruikt om een continue video-opname van meerdere dagen af te spelen.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: e01c8603869f17ef2d68a39861f11818a4cea975
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 1ec9260be7241057478b06446ac2aa53c14bcb47
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530570"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803429"
 ---
 # <a name="tutorial-playback-of-multi-day-recordings"></a>Zelfstudie: Opnamen van meerdere dagen afspelen  
 
@@ -70,13 +70,21 @@ Open vervolgens in Visual Studio Code de map src/ams-asset-player. Deze map beva
 } 
 ```
 
-In Visual Studio Code kunt u aan de linkerkant op het pictogram Uitvoeren (of Ctrl + Shift + D) klikken om de beschikbare toepassingen te tonen die kunnen worden uitgevoerd:
+1. Open in Visual Studio Code het tabblad **Extensies** (of druk op Ctrl+Shift+X) en zoek naar Azure IoT Hub.
+1. Klik met de rechtermuisknop en selecteer **Extensie-instellingen**.
 
-![In de schermafbeelding wordt een menu weergegeven in Visual Studio Code; Item uitvoeren is geselecteerd.](./media/playback-multi-day-recordings-tutorial/run.png)
- 
-Selecteer de AMS Asset Player-toepassing in de vervolgkeuzelijst, zoals hieronder wordt weergegeven, en druk op F5 om de foutopsporing te starten.
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Extensie-instellingen":::
+1. Zoek 'Uitgebreid bericht tonen' en schakel deze optie in.
 
-![In de schermafbeelding wordt een menu weergegeven in Visual Studio Code; ASM Asset Player is geselecteerd.](./media/playback-multi-day-recordings-tutorial/debug.png)
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Extensie-instellingen":::
+1. <!--In Visual Studio Code, you can click-->Klik aan de linkerkant op het pictogram Uitvoeren (of Ctrl + Shift + D) om de beschikbare toepassingen te tonen die kunnen worden uitgevoerd:
+
+    ![In de schermafbeelding wordt een menu weergegeven in Visual Studio Code; Item uitvoeren is geselecteerd.](./media/playback-multi-day-recordings-tutorial/run.png)
+1. Selecteer de AMS Asset Player-toepassing in de vervolgkeuzelijst, zoals hieronder wordt weergegeven, en druk op F5 om de foutopsporing te starten.
+
+    ![In de schermafbeelding wordt een menu weergegeven in Visual Studio Code; ASM Asset Player is geselecteerd.](./media/playback-multi-day-recordings-tutorial/debug.png)
 
 De voorbeeldtoepassing bouwt en start uw standaard browser-app en opent de AMS Asset Player-pagina.
 

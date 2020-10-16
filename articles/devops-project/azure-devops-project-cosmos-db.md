@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.custom: devx-track-js
-ms.openlocfilehash: 1ceac6edf6cadd380d6eeec545a85c4822748d3a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: de98d9db515e4ed88759efa7f22dddcca06151c8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91316117"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91854678"
 ---
 # <a name="deploy-nodejs-apps-powered-by-azure-cosmos-db-with-devops-starter"></a>Door Azure Cosmos DB aangedreven Node.js-apps implementeren met DevOps Starter
 
@@ -167,6 +167,4 @@ U kunt deze build- en release-pipelines desgewenst wijzigen in overeenstemming m
 > * Wijzigingen doorvoeren in Git en automatisch implementeren naar Azure
 > * Resources opschonen
 
-Raadpleeg [Een CD-pijplijn (continue implementatie) met meerdere fasen definiëren](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=azure-devops&viewFallbackFrom=vsts) voor meer informatie en de volgende stappen.
-
-
+Raadpleeg [Een CD-pijplijn (continue implementatie) met meerdere fasen definiëren](/azure/devops/pipelines/release/define-multistage-release-process?view=azure-devops&viewFallbackFrom=vsts) voor meer informatie en de volgende stappen.

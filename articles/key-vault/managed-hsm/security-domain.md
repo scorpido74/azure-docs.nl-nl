@@ -8,10 +8,10 @@ author: amitbapat
 ms.author: ambapat
 ms.date: 09/15/2020
 ms.openlocfilehash: 37e2541d0b53c96fd3f85da31b2c0ce5b68b551a
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90995541"
 ---
 # <a name="about-the-managed-hsm-security-domain"></a>Over het beheerde HSM-beveiligings domein
@@ -39,6 +39,6 @@ Back-ups (volledige back-up of een back-up van één sleutel) kunnen alleen word
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Een [overzicht van beheerde HSM](overview.md) lezen
+- Bekijk een [Overzicht van beheerde HSM's](overview.md)
 - Meer informatie over het [beheren van beheerde HSM met Azure cli](key-management.md)
-- [Best practices voor beheerde HSM](best-practices.md) controleren
+- Beoordeel [Best practices voor beheerde HSM's](best-practices.md)

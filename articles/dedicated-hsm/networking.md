@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbaldwin
 ms.openlocfilehash: 3764b261b491c660da16d7989be20742fead1fbf
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91359151"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Speciaal voor Azure toegewezen HSM-netwerken
@@ -39,7 +39,7 @@ Voordat u een toegewezen HSM-apparaat inricht, moet u eerst een Virtual Network 
 
 ### <a name="subnets"></a>Subnetten
 
-Met subnetten wordt het virtuele netwerk gesegmenteerd tot afzonderlijke adres ruimten die kunnen worden gebruikt door de Azure-resources die u in deze ruimte plaatst. Toegewezen Hsm's worden geïmplementeerd in een subnet in het virtuele netwerk. Elk toegewezen HSM-apparaat dat in het subnet van de klant wordt geïmplementeerd, ontvangt een privé IP-adres van dit subnet. Het subnet waarin het HSM-apparaat wordt geïmplementeerd, moet expliciet worden gedelegeerd naar de service: micro soft. HardwareSecurityModules/dedicatedHSMs. Hiermee worden bepaalde machtigingen verleend aan de HSM-service voor implementatie in het subnet. Delegering naar toegewezen Hsm's legt bepaalde beleids beperkingen op het subnet voor. Netwerk beveiligings groepen (Nsg's) en door de gebruiker gedefinieerde routes (Udr's) worden momenteel niet ondersteund op gedelegeerde subnetten. Als gevolg hiervan kan het eenmaal worden gebruikt voor het implementeren van HSM-bronnen zodra een subnet is gedelegeerd naar een toegewezen Hsm's. De implementatie van andere resources van de klant in het subnet zal mislukken.
+Met subnetten wordt het virtuele netwerk gesegmenteerd tot afzonderlijke adres ruimten die kunnen worden gebruikt door de Azure-resources die u in deze ruimte plaatst. Toegewezen Hsm's worden geïmplementeerd in een subnet in het virtuele netwerk. Elk toegewezen HSM-apparaat dat in het subnet van de klant wordt geïmplementeerd, ontvangt een privé IP-adres van dit subnet. Het subnet waarin het HSM-apparaat wordt geïmplementeerd, moet expliciet worden gedelegeerd naar de service: micro soft. HardwareSecurityModules/dedicatedHSMs. Hiermee worden bepaalde machtigingen verleend aan de HSM-service voor implementatie in het subnet. Delegering naar toegewezen Hsm's legt bepaalde beleids beperkingen op het subnet voor. Netwerk beveiligings groepen (Nsg's) en User-Defined routes (Udr's) worden momenteel niet ondersteund op gedelegeerde subnetten. Als gevolg hiervan kan het eenmaal worden gebruikt voor het implementeren van HSM-bronnen zodra een subnet is gedelegeerd naar een toegewezen Hsm's. De implementatie van andere resources van de klant in het subnet zal mislukken.
 
 
 ### <a name="expressroute-gateway"></a>ExpressRoute-gateway

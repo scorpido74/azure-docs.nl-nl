@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: a58b00018f6ac89f024661d8d3f50ea5249e620b
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 414ae3b2adb60b9442a69e3ebcc8b13b29c67cb7
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182119"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070500"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>Een open bare Standard Load Balancer gebruiken in azure Kubernetes service (AKS)
 
@@ -322,7 +322,7 @@ Hieronder vindt u een lijst met annotaties die worden ondersteund voor Kubernete
 | `service.beta.kubernetes.io/azure-load-balancer-internal`         | `true` of `false`                     | Geef op of de load balancer intern moet zijn. Het is standaard openbaar als dit niet is ingesteld.
 | `service.beta.kubernetes.io/azure-load-balancer-internal-subnet`  | Naam van het subnet                    | Geef op met welk subnet de interne load balancer moet worden gebonden. Het is standaard ingesteld op het subnet dat is geconfigureerd in het Cloud configuratie bestand als dit niet is ingeschakeld.
 | `service.beta.kubernetes.io/azure-dns-label-name`                 | Naam van het DNS-label op open bare Ip's   | Geef de DNS-label naam voor de **open bare** service op. Als deze is ingesteld op een lege teken reeks, wordt de DNS-vermelding in het open bare IP-adres niet gebruikt.
-| `service.beta.kubernetes.io/azure-shared-securityrule`            | `true` of `false`                     | Geef op dat de service moet worden weer gegeven met een Azure-beveiligings regel die kan worden gedeeld met een andere service, handels specificiteit van regels voor een toename van het aantal services dat kan worden blootgesteld. Deze aantekening is afhankelijk van de functie uitgebreide [beveiligings regels](../virtual-network/security-overview.md#augmented-security-rules) van netwerk beveiligings groepen van Azure. 
+| `service.beta.kubernetes.io/azure-shared-securityrule`            | `true` of `false`                     | Geef op dat de service moet worden weer gegeven met een Azure-beveiligings regel die kan worden gedeeld met een andere service, handels specificiteit van regels voor een toename van het aantal services dat kan worden blootgesteld. Deze aantekening is afhankelijk van de functie uitgebreide [beveiligings regels](../virtual-network/network-security-groups-overview.md#augmented-security-rules) van netwerk beveiligings groepen van Azure. 
 | `service.beta.kubernetes.io/azure-load-balancer-resource-group`   | Naam van de resource groep            | Geef de resource groep van load balancer open bare IP-adressen op die zich niet in dezelfde resource groep bevinden als de cluster infrastructuur (knooppunt resource groep).
 | `service.beta.kubernetes.io/azure-allowed-service-tags`           | Lijst met toegestane service Tags          | Geef een lijst met toegestane [service Tags][service-tags] op, gescheiden door komma's.
 | `service.beta.kubernetes.io/azure-load-balancer-tcp-idle-timeout` | Time-outs voor TCP-inactiviteit in minuten          | Geef op hoelang, in minuten, de time-outs voor de TCP-verbinding moeten worden uitgevoerd op het load balancer. De standaard waarde is 4. De maximum waarde is 30. Moet een geheel getal zijn.
@@ -426,4 +426,4 @@ Meer informatie over het gebruik van interne Load Balancer voor binnenkomend ver
 [requirements]: #requirements-for-customizing-allocated-outbound-ports-and-idle-timeout
 [use-multiple-node-pools]: use-multiple-node-pools.md
 [troubleshoot-snat]: #troubleshooting-snat
-[service-tags]: ../virtual-network/security-overview.md#service-tags
+[service-tags]: ../virtual-network/network-security-groups-overview.md#service-tags

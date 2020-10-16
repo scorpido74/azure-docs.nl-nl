@@ -9,10 +9,10 @@ ms.author: tisande
 ms.reviewer: sngun
 ms.custom: devx-track-js
 ms.openlocfilehash: 1e8e1aa9d8e582644d1d625fc8a97cc0e0c790df
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91334392"
 ---
 # <a name="javascript-query-api-in-azure-cosmos-db"></a>Java script-query-API in Azure Cosmos DB
@@ -59,7 +59,7 @@ De volgende tabel bevat verschillende SQL-query's en de bijbehorende java script
 |UITGESCHAKELD<br>VAN documenten<br>WHERE<br>&nbsp;&nbsp;&nbsp;docs. id = "X998_Y998"|__. filter (functie (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;retour doc.id = = = "X998_Y998";<br>});|Query's voor documenten met het predicaat: ID = "X998_Y998".|
 |UITGESCHAKELD<br>VAN documenten<br>WHERE<br>&nbsp;&nbsp;&nbsp;ARRAY_CONTAINS (docs. Tags, 123)|__. filter (functie (x) {<br>&nbsp;&nbsp;&nbsp;&nbsp;x. Tags retour neren && x. Tags. indexOf (123) >-1;<br>});|Query's voor documenten met de eigenschap Tags en tags zijn een matrix met de waarde 123.|
 |SELECT<br>&nbsp;&nbsp;&nbsp;docs.id,<br>&nbsp;&nbsp;&nbsp;docs. bericht als msg<br>VAN documenten<br>WHERE<br>&nbsp;&nbsp;&nbsp;docs. id = "X998_Y998"|__. Chain ()<br>&nbsp;&nbsp;&nbsp;&nbsp;. filter (functie (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;retour doc.id = = = "X998_Y998";<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;. map (functie (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;opvragen<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bericht: document<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>. Value ();|Query's voor documenten met een predikaat, ID = "X998_Y998" en vervolgens projecteert u de id en het bericht (als alias voor msg).|
-|WAARDEcode selecteren<br>VAN documenten<br>Voeg tag toe IN docs. Koptags<br>ORDER BY docs. _ts|__. Chain ()<br>&nbsp;&nbsp;&nbsp;&nbsp;. filter (functie (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;retour document. Tags && matrix. isArray (doc. Tags);<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;. sortBy (functie (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;retour document. _ts;<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;. Pluck ("Tags")<br>&nbsp;&nbsp;&nbsp;&nbsp;. afvlakking ()<br>&nbsp;&nbsp;&nbsp;&nbsp;. Value ()|Filters voor documenten met een matrix eigenschap, tags en sorteren de resulterende documenten door de _ts tijds tempel systeem eigenschap. vervolgens worden projecten en de labels matrix afgevlakt.|
+|WAARDEcode selecteren<br>VAN documenten<br>Voeg tag toe IN docs. Koptags<br>Sorteren op docs._ts|__. Chain ()<br>&nbsp;&nbsp;&nbsp;&nbsp;. filter (functie (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;retour document. Tags && matrix. isArray (doc. Tags);<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;. sortBy (functie (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;retour doc._ts;<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;. Pluck ("Tags")<br>&nbsp;&nbsp;&nbsp;&nbsp;. afvlakking ()<br>&nbsp;&nbsp;&nbsp;&nbsp;. Value ()|Filters voor documenten met een matrix eigenschap, tags en sorteren de resulterende documenten door de _ts tijds tempel systeem eigenschap. vervolgens worden projecten en de labels matrix afgevlakt.|
 
 ## <a name="next-steps"></a>Volgende stappen
 

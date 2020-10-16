@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: f2cf1011db37892f71bdd06f409cec1a76463507
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86257148"
 ---
 # <a name="sfctl-node"></a>sfctl node
@@ -52,8 +52,8 @@ Met deze API kunnen alle bestaande configuratie onderdrukkingen op het opgegeven
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
-| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --help -h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden \: JSON, jsonc, Table, TSV.  Standaard \: JSON. |
 | --query | JMESPath-query reeks. Zie http \: //jmespath.org/voor meer informatie en voor beelden. |
 | --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
@@ -75,8 +75,8 @@ Deactiveer een Service Fabric cluster knooppunt met de opgegeven deactiveren-int
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
-| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --help -h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden \: JSON, jsonc, Table, TSV.  Standaard \: JSON. |
 | --query | JMESPath-query reeks. Zie http \: //jmespath.org/voor meer informatie en voor beelden. |
 | --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
@@ -97,8 +97,8 @@ Hiermee activeert u een Service Fabric cluster knooppunt dat momenteel is gedeac
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
-| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --help -h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden \: JSON, jsonc, Table, TSV.  Standaard \: JSON. |
 | --query | JMESPath-query reeks. Zie http \: //jmespath.org/voor meer informatie en voor beelden. |
 | --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
@@ -119,8 +119,8 @@ Met deze API kunnen alle bestaande configuratie onderdrukkingen op het opgegeven
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
-| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --help -h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden \: JSON, jsonc, Table, TSV.  Standaard \: JSON. |
 | --query | JMESPath-query reeks. Zie http \: //jmespath.org/voor meer informatie en voor beelden. |
 | --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
@@ -142,8 +142,8 @@ Hiermee wordt de status van een Service Fabric knoop punt opgehaald. Gebruik Eve
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
-| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --help -h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden \: JSON, jsonc, Table, TSV.  Standaard \: JSON. |
 | --query | JMESPath-query reeks. Zie http \: //jmespath.org/voor meer informatie en voor beelden. |
 | --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
@@ -164,8 +164,8 @@ Het antwoord bevat de naam, status, ID, status, uptime en andere details over he
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
-| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --help -h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden \: JSON, jsonc, Table, TSV.  Standaard \: JSON. |
 | --query | JMESPath-query reeks. Zie http \: //jmespath.org/voor meer informatie en voor beelden. |
 | --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
@@ -188,8 +188,8 @@ Het antwoord bevat de naam, status, ID, status, uptime en andere details over de
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
-| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --help -h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden \: JSON, jsonc, Table, TSV.  Standaard \: JSON. |
 | --query | JMESPath-query reeks. Zie http \: //jmespath.org/voor meer informatie en voor beelden. |
 | --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
@@ -210,8 +210,8 @@ Hiermee haalt u de gegevens van de belasting van een Service Fabric knoop punt o
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
-| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --help -h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden \: JSON, jsonc, Table, TSV.  Standaard \: JSON. |
 | --query | JMESPath-query reeks. Zie http \: //jmespath.org/voor meer informatie en voor beelden. |
 | --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
@@ -232,8 +232,8 @@ Met deze API kunnen alle bestaande configuratie onderdrukkingen op het opgegeven
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
-| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --help -h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden \: JSON, jsonc, Table, TSV.  Standaard \: JSON. |
 | --query | JMESPath-query reeks. Zie http \: //jmespath.org/voor meer informatie en voor beelden. |
 | --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
@@ -254,8 +254,8 @@ Dit betekent dat het niet mogelijk is om de persistente status van het knoop pun
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
-| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --help -h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden \: JSON, jsonc, Table, TSV.  Standaard \: JSON. |
 | --query | JMESPath-query reeks. Zie http \: //jmespath.org/voor meer informatie en voor beelden. |
 | --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
@@ -284,8 +284,8 @@ Hiermee wordt de status van het opgegeven Service Fabric knoop punt gerapporteer
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
-| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --help -h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden \: JSON, jsonc, Table, TSV.  Standaard \: JSON. |
 | --query | JMESPath-query reeks. Zie http \: //jmespath.org/voor meer informatie en voor beelden. |
 | --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
@@ -308,8 +308,8 @@ Hiermee wordt een Service Fabric cluster knooppunt dat al is gestart, opnieuw ge
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
-| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --help -h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden \: JSON, jsonc, Table, TSV.  Standaard \: JSON. |
 | --query | JMESPath-query reeks. Zie http \: //jmespath.org/voor meer informatie en voor beelden. |
 | --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
@@ -334,8 +334,8 @@ Hiermee wordt een cluster knooppunt gestart of gestopt.  Een cluster knooppunt i
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
-| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --help -h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden \: JSON, jsonc, Table, TSV.  Standaard \: JSON. |
 | --query | JMESPath-query reeks. Zie http \: //jmespath.org/voor meer informatie en voor beelden. |
 | --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
@@ -357,8 +357,8 @@ Hiermee wordt de voortgang opgehaald van een bewerking die is gestart met StartN
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
-| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --help -h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden \: JSON, jsonc, Table, TSV.  Standaard \: JSON. |
 | --query | JMESPath-query reeks. Zie http \: //jmespath.org/voor meer informatie en voor beelden. |
 | --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |

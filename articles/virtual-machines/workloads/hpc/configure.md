@@ -1,24 +1,18 @@
 ---
 title: Configuratie en optimalisatie van met InfiniBand ingeschakelde H-Series en N-Series Azure Virtual Machines
 description: Meer informatie over het configureren en optimaliseren van de met InfiniBand ingeschakelde H-Series en N-Series Vm's voor HPC.
-services: virtual-machines
-documentationcenter: ''
 author: vermagit
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines
-ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 08/07/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: d4661c0819d214a2c750eb1582559f8d8a5959ed
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 9ecfe1df273834ae38bd6bb94980444f5e34f786
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006601"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994821"
 ---
 # <a name="configure-and-optimize-vms"></a>VM's configureren en optimaliseren
 
@@ -118,6 +112,6 @@ U kunt de WALinuxAgent eventueel uitschakelen als een voorbereidende taak en een
 
 - Meer informatie over het [inschakelen van Infiniband](enable-infiniband.md) op de vm's met de [H-Series](../../sizes-hpc.md) en [N-serie](../../sizes-gpu.md) van Infiniband.
 - Meer informatie over het installeren van verschillende [ondersteunde mpi-bibliotheken](setup-mpi.md) en hun optimale configuratie op de vm's.
-- Bekijk het [overzicht van de HB-serie](hb-series-overview.md) en het [HC-serie-overzicht](hc-series-overview.md) voor meer informatie over het optimaal configureren van workloads voor prestaties en schaal baarheid.
-- Meer informatie over de laatste aankondigingen en enkele HPC-voor beelden en-resultaten vindt u in de blogs van de [technische community van Azure Compute](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
-- Zie [High Performance Computing (HPC) in azure](/azure/architecture/topics/high-performance-computing/)voor een architectuur weergave op een hoger niveau voor het uitvoeren van HPC-workloads.
+- Bekijk [Overzicht HB-serie](hb-series-overview.md) en [Overzicht HC-serie](hc-series-overview.md) voor meer informatie over het optimaal configureren van workloads ten behoeve van de prestaties en schaalbaarheid.
+- Lees over de laatste aankondigingen en enkele HPC-voorbeelden en -resultaten in de [Azure Compute Tech Community-blogs](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
+- Zie [High Performance Computing (HPC) op Azure](/azure/architecture/topics/high-performance-computing/) voor een gedetailleerdere architectuurweergave van HPC-workloads die worden uitgevoerd.

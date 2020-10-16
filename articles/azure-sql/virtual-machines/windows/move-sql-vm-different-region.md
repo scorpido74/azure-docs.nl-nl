@@ -15,10 +15,10 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 4252528020dde731dd7bf14ae8f7a03467ba953a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91298573"
 ---
 # <a name="move-a-sql-server-vm-to-another-region-within-azure-with-azure-site-recovery"></a>Een SQL Server VM verplaatsen naar een andere regio in azure met Azure Site Recovery
@@ -73,7 +73,7 @@ Bereid de bron SQL Server-VM en de doel regio voor de verplaatsing voor.
 
 De volgende stappen laten zien hoe u Azure Site Recovery kunt gebruiken om gegevens te kopiëren naar de doel regio. Maak de Recovery Services kluis in een andere regio dan de bron regio. 
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
 1. Kies ervoor om **een resource te maken** in de linkerbovenhoek van het navigatie deel venster. 
 1. Selecteer **deze &-beheer hulpprogramma's** en selecteer vervolgens **back-up en site Recovery**. 
 1. Op het tabblad **basis beginselen** onder **Project Details**maakt u een nieuwe resource groep in de doel regio of selecteert u een bestaande resource groep in de doel regio. 

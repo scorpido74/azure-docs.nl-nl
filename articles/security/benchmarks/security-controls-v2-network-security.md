@@ -8,10 +8,10 @@ ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 9833f63d999ab7c24174853bd37f4e7a76f6dfbf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91329428"
 ---
 # <a name="security-control-v2-network-security"></a>Beveiligings controle v2: netwerk beveiliging
@@ -116,7 +116,7 @@ Beveilig Azure-bronnen tegen aanvallen van externe netwerken, waaronder DDoS-aan
 -   Bescherm uw assets tegen DDoS-aanvallen door DDoS Standard-beveiliging in te scha kelen op uw virtuele Azure-netwerken. 
 -   Gebruik Azure Security Center om onjuiste configuratie Risico's te detecteren die zijn gerelateerd aan de bovenstaande. 
 
-- [Documentatie voor Azure Firewall](/azure/firewall/)
+- [Documentatie over Azure Firewall](/azure/firewall/)
 
 - [Azure WAF implementeren](../../web-application-firewall/overview.md)
 

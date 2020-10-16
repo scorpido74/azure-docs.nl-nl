@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 08/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8884711bbb32054ca1d8e4d9f9e7dee753f0c629
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 63378369b9924f01c5d0217746a8a2c330c88631
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91361922"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970619"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines planning en implementatie voor SAP net-Weaver
 
@@ -417,7 +417,7 @@ De Azure-Services van micro soft worden verzameld in azure-regio's. Een Azure-re
 Voor een lijst van de verschillende Azure-regio's raadpleegt u het artikel [Azure-geografs](https://azure.microsoft.com/global-infrastructure/geographies/). Niet alle Azure-regio's bieden dezelfde services. Afhankelijk van het SAP-product dat u wilt uitvoeren en het besturings systeem en het DBMS dat erin is gerelateerd, kunt u een situatie ontvangen dat een bepaalde regio niet de VM-typen bevat die u nodig hebt. Dit geldt met name voor het uitvoeren van SAP HANA, waarbij u doorgaans Vm's van de M/Mv2 VM-serie nodig hebt. Deze VM-families worden alleen geïmplementeerd in een subset van de regio's. U kunt meer informatie vinden over de exacte VM, typen, Azure-opslag typen of andere Azure-Services die beschikbaar zijn in welke regio's, met behulp van de [beschik bare site producten per regio](https://azure.microsoft.com/global-infrastructure/services/). Wanneer u de planning start en bepaalde regio's in acht neemt als primaire regio en uiteindelijk secundaire regio, moet u eerst onderzoeken of de benodigde services in die regio's beschikbaar zijn.
 
 ### <a name="availability-zones"></a>Beschikbaarheidszones
-Verschillende Azure-regio's hebben een concept geïmplementeerd met de naam Beschikbaarheidszones. Beschikbaarheidszones zijn fysiek gescheiden locaties binnen een Azure-regio. Elke beschikbaarheidszone bestaat uit een of meer datacenters die zijn uitgerust met onafhankelijke voeding, koeling en netwerken. Als u bijvoorbeeld twee virtuele machines in twee Beschikbaarheidszones van Azure implementeert en een Framework met hoge Beschik baarheid implementeert voor uw SAP DBMS-systeem of de SAP Central-Services, beschikt u over de beste SLA in Azure. Voor deze specifieke SLA voor virtuele machines in azure, controleert u de meest recente versie van de service overeenkomst van de [virtuele](https://azure.microsoft.com/support/legal/sla/virtual-machines/)machine. Omdat Azure-regio's snel in de afgelopen jaren zijn ontwikkeld en uitgebreid, kan de topologie van de Azure-regio's, het aantal fysieke data centers, de afstand tussen deze data centers en de afstand tussen de Azure-beschikbaarheidszones verschillend zijn. En met de netwerk latentie.
+Verschillende Azure-regio's hebben een concept geïmplementeerd met de naam Beschikbaarheidszones. Beschikbaarheidszones zijn fysiek gescheiden locaties binnen een Azure-regio. Elke beschikbaarheidszone bestaat uit een of meer datacentra die zijn voorzien van een onafhankelijke stroomvoorziening, koeling en netwerk. Als u bijvoorbeeld twee virtuele machines in twee Beschikbaarheidszones van Azure implementeert en een Framework met hoge Beschik baarheid implementeert voor uw SAP DBMS-systeem of de SAP Central-Services, beschikt u over de beste SLA in Azure. Voor deze specifieke SLA voor virtuele machines in azure, controleert u de meest recente versie van de service overeenkomst van de [virtuele](https://azure.microsoft.com/support/legal/sla/virtual-machines/)machine. Omdat Azure-regio's snel in de afgelopen jaren zijn ontwikkeld en uitgebreid, kan de topologie van de Azure-regio's, het aantal fysieke data centers, de afstand tussen deze data centers en de afstand tussen de Azure-beschikbaarheidszones verschillend zijn. En met de netwerk latentie.
 
 Het principe van Beschikbaarheidszones is niet van toepassing op de HANA-specifieke service van [Hana grote instanties](./hana-overview-architecture.md). Service overeenkomsten voor HANA grote instanties vindt u in het artikel [Sla voor SAP Hana on Azure large instances](https://azure.microsoft.com/support/legal/sla/sap-hana-large/)
 
@@ -486,18 +486,18 @@ Als prijs model hebt u verschillende prijs opties die er als volgt uitzien:
 De prijs van elk van de verschillende aanbiedingen met verschillende service aanbiedingen rond besturings systemen en verschillende regio's is beschikbaar op de site [Linux virtual machines prijzen](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) en [Windows virtual machines prijzen](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). Raadpleeg de volgende artikelen voor meer informatie en flexibiliteit van één jaar en drie gereserveerde exemplaren van een jaar:
 
 - [Wat zijn Azure-reserveringen?](../../../cost-management-billing/reservations/save-compute-costs-reservations.md)
-- [Flexibiliteit van de VM-grootte met gereserveerde VM-instanties](../../windows/reserved-vm-instance-size-flexibility.md)
+- [Flexibiliteit van de VM-grootte met gereserveerde VM-instanties](../../reserved-vm-instance-size-flexibility.md)
 - [Toepassing van de reserveringskorting op virtuele machines](../../../cost-management-billing/manage/understand-vm-reservation-charges.md)
 
 Lees het artikel [Azure spot virtual machines](https://azure.microsoft.com/pricing/spot/)voor meer informatie over de prijzen. De prijzen van hetzelfde VM-type kunnen ook verschillen tussen de verschillende Azure-regio's. Voor sommige klanten was het waard om te worden geïmplementeerd in een goedkopere Azure-regio.
 
-Daarnaast biedt Azure de concepten van een specifieke host. Het speciale host-concept geeft u meer controle over patch-cycli die door Azure worden uitgevoerd. U kunt de patch op basis van uw eigen planningen laten duren. Deze aanbieding is specifiek gericht op klanten met werk belasting die mogelijk niet de normale werk belasting volgen. Lees voor meer informatie over de concepten van voor Azure exclusieve host aanbiedingen het artikel [Azure dedicated host](../../windows/dedicated-hosts.md). Het gebruik van deze aanbieding wordt ondersteund voor SAP-werk belasting en wordt gebruikt door verschillende SAP-klanten die meer controle moeten hebben over patching van de infra structuur en uiteindelijk onderhouds plannen van micro soft. Lees het artikel [onderhoud voor virtuele machines in azure](../../maintenance-and-updates.md)voor meer informatie over de manier waarop micro soft de Azure-infra structuur die als host fungeert voor virtuele machines, kan lezen en onderhouden.
+Daarnaast biedt Azure de concepten van een specifieke host. Het speciale host-concept geeft u meer controle over patch-cycli die door Azure worden uitgevoerd. U kunt de patch op basis van uw eigen planningen laten duren. Deze aanbieding is specifiek gericht op klanten met werk belasting die mogelijk niet de normale werk belasting volgen. Lees voor meer informatie over de concepten van voor Azure exclusieve host aanbiedingen het artikel [Azure dedicated host](../../dedicated-hosts.md). Het gebruik van deze aanbieding wordt ondersteund voor SAP-werk belasting en wordt gebruikt door verschillende SAP-klanten die meer controle moeten hebben over patching van de infra structuur en uiteindelijk onderhouds plannen van micro soft. Lees het artikel [onderhoud voor virtuele machines in azure](../../maintenance-and-updates.md)voor meer informatie over de manier waarop micro soft de Azure-infra structuur die als host fungeert voor virtuele machines, kan lezen en onderhouden.
 
 #### <a name="generation-1-and-generation-2-virtual-machines"></a>Virtuele machines van de eerste en tweede generatie
-De Hyper Visor van micro soft kan twee verschillende generaties virtuele machines verwerken. Deze indelingen worden **generatie 1** en **generatie 2**genoemd. **Generatie 2** is geïntroduceerd in het jaar 2012 met Windows Server 2012 Hyper Visor. Azure is gestart met virtuele machines van de eerste generatie. Wanneer u virtuele machines van Azure implementeert, is de standaard nog steeds de indeling van de eerste generatie. Ondertussen kunt u ook VM-indelingen van de tweede generatie implementeren. In het artikel [ondersteuning voor virtuele machines van de tweede generatie op Azure](../../windows/generation-2.md) worden de Azure VM-families weer gegeven die kunnen worden geïmplementeerd als virtuele machine van de tweede generatie. Dit artikel bevat ook een overzicht van de belangrijkste functionele verschillen van virtuele machines van de 2e generatie, zoals ze kunnen worden uitgevoerd op de privécloud van Hyper-V en Azure. Meer belang rijker dit artikel bevat ook functionele verschillen tussen virtuele machines van de eerste generatie en Vm's van de tweede generatie, omdat deze worden uitgevoerd in Azure.
+De Hyper Visor van micro soft kan twee verschillende generaties virtuele machines verwerken. Deze indelingen worden **generatie 1** en **generatie 2**genoemd. **Generatie 2** is geïntroduceerd in het jaar 2012 met Windows Server 2012 Hyper Visor. Azure is gestart met virtuele machines van de eerste generatie. Wanneer u virtuele machines van Azure implementeert, is de standaard nog steeds de indeling van de eerste generatie. Ondertussen kunt u ook VM-indelingen van de tweede generatie implementeren. In het artikel [ondersteuning voor virtuele machines van de tweede generatie op Azure](../../generation-2.md) worden de Azure VM-families weer gegeven die kunnen worden geïmplementeerd als virtuele machine van de tweede generatie. Dit artikel bevat ook een overzicht van de belangrijkste functionele verschillen van virtuele machines van de 2e generatie, zoals ze kunnen worden uitgevoerd op de privécloud van Hyper-V en Azure. Meer belang rijker dit artikel bevat ook functionele verschillen tussen virtuele machines van de eerste generatie en Vm's van de tweede generatie, omdat deze worden uitgevoerd in Azure.
 
 > [!NOTE]
-> Er zijn functionele verschillen tussen virtuele machines van de eerste en tweede generatie die worden uitgevoerd in Azure. Lees de artikel  [ondersteuning voor virtuele machines van de tweede generatie op Azure](../../windows/generation-2.md) om een lijst met deze verschillen te bekijken.
+> Er zijn functionele verschillen tussen virtuele machines van de eerste en tweede generatie die worden uitgevoerd in Azure. Lees de artikel  [ondersteuning voor virtuele machines van de tweede generatie op Azure](../../generation-2.md) om een lijst met deze verschillen te bekijken.
 
 Het is niet mogelijk om een bestaande virtuele machine van de ene generatie naar de andere generatie te verplaatsen. Als u de generatie van virtuele machines wilt wijzigen, moet u een nieuwe VM van de gewenste generatie implementeren en de software die u uitvoert opnieuw installeren op de virtuele machine van de generatie. Deze wijziging is alleen van invloed op de VHD-basis installatie kopie van de virtuele machine en heeft geen invloed op de gegevens schijven of gekoppelde NFS-of SMB-shares. Gegevens schijven, NFS of SMB-shares die oorspronkelijk zijn toegewezen aan, bijvoorbeeld op een virtuele machine van de eerste generatie.
 
@@ -767,7 +767,7 @@ Microsoft Azure biedt meerdere manieren om Vm's en gekoppelde schijven te implem
 
 U bent van plan een specifiek SAP-systeem van on-premises naar Azure te verplaatsen. Dit kan worden gedaan door het uploaden van de VHD, die het besturings systeem, de binaire bestanden van SAP en de binaire DBMS-bestanden bevat, plus de Vhd's met de gegevens en logbestanden van het DBMS naar Azure. In tegens telling tot [scenario #2 hieronder][planning-guide-5.1.2], de HOSTNAAM, SAP sid en SAP-gebruikers accounts in de virtuele Azure-machine blijven zoals ze zijn geconfigureerd in de on-premises omgeving. Daarom is het niet nodig om de installatie kopie te generaliseren. Zie hoofd stukken [voor bereiding voor het verplaatsen van een virtuele machine van on-premises naar Azure met een niet-algemene schijf][planning-guide-5.2.1] van dit document voor on-premises voorbereidende stappen en het uploaden van niet-gegeneraliseerde Vm's of Vhd's naar Azure. Lees hoofd stuk [3: een virtuele machine verplaatsen van on-premises met behulp van een niet-gegeneraliseerde Azure VHD met SAP][deployment-guide-3.4] in de [implementatie handleiding][deployment-guide] voor gedetailleerde stappen voor het implementeren van een dergelijke installatie kopie in Azure.
 
-Een andere optie die niet meer in deze hand leiding wordt beschreven, maakt gebruik van Azure Site Recovery om SAP NetWeaver-toepassings servers en SAP NetWeaver-centrale Services naar Azure te repliceren. Het is niet raadzaam om Azure Site Recovery te gebruiken voor de data base-laag en liever data base-specifieke replicatie mechanismen te gebruiken, zoals HANA-systeem replicatie. Zie voor meer informatie hoofd stuk [beveiligen SAP](https://docs.microsoft.com/azure/site-recovery/site-recovery-workload#protect-sap) van de hand leiding [over nood herstel voor on-premises apps](https://docs.microsoft.com/azure/site-recovery/site-recovery-workload) .
+Een andere optie die niet meer in deze hand leiding wordt beschreven, maakt gebruik van Azure Site Recovery om SAP NetWeaver-toepassings servers en SAP NetWeaver-centrale Services naar Azure te repliceren. Het is niet raadzaam om Azure Site Recovery te gebruiken voor de data base-laag en liever data base-specifieke replicatie mechanismen te gebruiken, zoals HANA-systeem replicatie. Zie voor meer informatie hoofd stuk [beveiligen SAP](../../../site-recovery/site-recovery-workload.md#protect-sap) van de hand leiding [over nood herstel voor on-premises apps](../../../site-recovery/site-recovery-workload.md) .
 
 #### <a name="deploying-a-vm-with-a-customer-specific-image"></a><a name="e18f7839-c0e2-4385-b1e6-4538453a285c"></a>Een VM implementeren met een klantspecifieke installatie kopie
 
@@ -890,7 +890,7 @@ In dit geval willen we een VHD uploaden, hetzij met ofwel zonder een besturings 
 * Een nieuwe virtuele machine maken op basis van de configuratie van de virtuele machine met *New-AzVM* -Zie <https://docs.microsoft.com/powershell/module/az.compute/new-Azvm>
 * Een gegevens schijf toevoegen aan een nieuwe virtuele machine met *add-AzVMDataDisk* -Zie <https://docs.microsoft.com/powershell/module/az.compute/add-Azvmdatadisk>
 
-**Azure CLI**
+**Azure-CLI**
 
 * Meld u aan bij uw abonnement met *AZ login*
 * Selecteer uw abonnement met *AZ account set--Subscription `<subscription name or id` > *
@@ -918,7 +918,7 @@ Als u een bestaande virtuele machine of VHD vanuit het on-premises netwerk wilt 
   * Beheerde schijf installatie kopie *instellen-AzVMSourceImage* -Zie <https://docs.microsoft.com/powershell/module/az.compute/set-Azvmsourceimage>
 * Een nieuwe virtuele machine maken op basis van de configuratie van de virtuele machine met *New-AzVM* -Zie <https://docs.microsoft.com/powershell/module/az.compute/new-Azvm>
 
-**Azure CLI**
+**Azure-CLI**
 
 * Gebruik *Sysprep* op Windows of *waagent-deprovisioning* in Linux om uw VM te generaliseren: Zie [technische Naslag informatie over Sysprep](/previous-versions/windows/it-pro/windows-vista/cc766049(v=ws.10)) voor Windows of [hoe u een virtuele Linux-machine vastlegt voor gebruik als Resource Manager-sjabloon][capture-image-linux-step-2-create-vm-image] voor Linux
 * Meld u aan bij uw abonnement met *AZ login*
@@ -963,7 +963,7 @@ Tijdens de download tijd kan de Vhd's of de Managed Disks niet actief zijn. Zelf
   Save-AzVhd -ResourceGroupName <resource group name of storage account> -SourceUri http://<storage account name>.blob.core.windows.net/<container name>/sapidedata.vhd -LocalFilePath E:\Azure_downloads\sapidesdata.vhd
   ```
 
-  Zie hier voor meer informatie over de cmdlet Save-AzVhd <https://docs.microsoft.com/powershell/module/az.compute/save-Azvhd> .
+  Zie hier voor meer informatie over de Save-AzVhd-cmdlet <https://docs.microsoft.com/powershell/module/az.compute/save-Azvhd> .
 
 #### <a name="azure-cli"></a>Azure CLI
 * Als u een beheerde schijf wilt downloaden, moet u eerst toegang krijgen tot de onderliggende blob van de beheerde schijf. Vervolgens kunt u de onderliggende BLOB kopiëren naar een nieuw opslag account en de BLOB downloaden van dit opslag account.
@@ -998,7 +998,7 @@ Gegevens schijven kunnen ook worden Managed Disks. In dit geval wordt de beheerd
 
 ##### <a name="powershell"></a>PowerShell
 
-U kunt Azure PowerShell-cmdlets gebruiken om een VHD te kopiëren zoals wordt weer gegeven in [dit artikel][storage-powershell-guide-full-copy-vhd]. Als u een nieuwe beheerde schijf wilt maken, gebruikt u New-AzDiskConfig en New-AzDisk, zoals wordt weer gegeven in het volgende voor beeld.
+U kunt Azure PowerShell-cmdlets gebruiken om een VHD te kopiëren zoals wordt weer gegeven in [dit artikel][storage-powershell-guide-full-copy-vhd]. Als u een nieuwe beheerde schijf wilt maken, gebruikt u New-AzDiskConfig en New-AzDisk, zoals in het volgende voor beeld wordt weer gegeven.
 
 ```powershell
 $config = New-AzDiskConfig -CreateOption Copy -SourceUri "/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Compute/disks/<disk name>" -Location <location>
@@ -1168,7 +1168,7 @@ Ervaar de ervaring van SAP-implementaties in de afgelopen twee jaar. Dit zijn en
 >
 
 ---
-* Premium Storage worden aanzienlijk betere prestaties weer gegeven, met name voor het schrijven van kritieke transactie Logboeken. Voor SAP-scenario's die naar verwachting productie leveren, zoals prestaties, is het raadzaam om gebruik te maken van VM-serie die gebruikmaakt van Azure Premium Storage.
+* Premium Storage worden aanzienlijk betere prestaties weer gegeven, met name voor het schrijven van kritieke transactie Logboeken. Voor SAP-scenario's die naar verwachting productie leveren, zoals prestaties, is het raadzaam om VM-Series te gebruiken die gebruikmaken van Azure Premium Storage.
 
 Houd er wel van uit dat de schijf, die het besturings systeem bevat, wordt aanbevolen, de binaire bestanden van SAP en de data base (basis-VM) ook niet langer beperkt tot 127 GB. Het kan nu Maxi maal 1 TB groot zijn. Dit moet voldoende ruimte zijn om alle benodigde bestanden op te slaan, waaronder bijvoorbeeld SAP batch-taak Logboeken.
 
@@ -1219,7 +1219,7 @@ Azure geo-replicatie werkt lokaal op elke VHD in een VM en repliceert het I/O's 
 >
 > Als u de automatisch koppelen wilt instellen, raadpleegt u de documentatie van het uitvoer bare bestand van de opdracht regel diskpart.exe hier:
 >
-> * [Opdracht regel opties voor Disk Part](/previous-versions/windows/it-pro/windows-xp/bb490893(v=technet.10))
+> * [Opties voor Disk Part Command-Line](/previous-versions/windows/it-pro/windows-xp/bb490893(v=technet.10))
 > * [Automount](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/cc753703(v=ws.11))
 >
 > Het Windows-opdracht regel venster moet als beheerder worden geopend.
@@ -1738,7 +1738,7 @@ De algemene architectuur van de Azure-extensie voor SAP ziet er als volgt uit:
 
 SAP-exemplaren die worden uitgevoerd in azure, moeten ook toegankelijk zijn vanuit SAProuter.
 
-![SAP-router-netwerk verbinding][planning-guide-figure-2600]
+![SAP-Router netwerk verbinding][planning-guide-figure-2600]
 
 Een SAProuter maakt de TCP/IP-communicatie tussen deelnemende systemen mogelijk als er geen directe IP-verbinding is. Dit biedt het voor deel dat er geen end-to-end-verbinding tussen de communicatie partners nodig is op het netwerk niveau. De SAProuter luistert standaard op poort 3299.
 Als u SAP-exemplaren wilt verbinden via een SAProuter, moet u de teken reeks en hostnaam van de SAProuter voorzien van elke poging om verbinding te maken.
@@ -1805,7 +1805,7 @@ Er zijn twee typen Azure-platform gebeurtenissen die van invloed kunnen zijn op 
 * Geplande onderhouds gebeurtenissen zijn periodieke updates die door micro soft zijn aangebracht in het onderliggende Azure-platform om de algehele betrouw baarheid, prestaties en beveiliging van de platform infrastructuur waarop uw virtuele machines worden uitgevoerd, te verbeteren.
 * Niet-gepland onderhoud vindt plaats wanneer de hardware of de fysieke infrastructuur die uw virtuele machine ondersteunt defect raakt. Voorbeelden hiervan zijn lokale netwerkproblemen, lokale schijfdefecten of andere defecten op rack-niveau. Wanneer een dergelijke fout wordt gedetecteerd, migreert het Azure-platform uw virtuele machine automatisch van de beschadigde fysieke server die als host fungeert voor uw virtuele machine naar een in orde zijnde fysieke server. Dergelijke gebeurtenissen zijn zeldzaam, maar kunnen er ook toe leiden dat uw virtuele machine opnieuw moet opstarten.
 
-Zie [Beschik baarheid van virtuele Windows-machines in azure](../../windows/manage-availability.md) en [Beschik baarheid van virtuele Linux-machines in azure](../../linux/manage-availability.md)voor meer informatie.
+Zie [Beschik baarheid van virtuele Windows-machines in azure](../../manage-availability.md) en [Beschik baarheid van virtuele Linux-machines in azure](../../manage-availability.md)voor meer informatie.
 
 #### <a name="azure-storage-redundancy"></a>Azure Storage-redundantie
 
@@ -1936,7 +1936,7 @@ Zie hier voor meer informatie over automatisch starten voor SAP-instanties:
 * [Automatisch starten van HANA-data base inschakelen](http://sapbasisinfo.com/blog/2016/08/15/enabling-autostart-of-sap-hana-database-on-server-boot-situation/)
 
 ### <a name="larger-3-tier-sap-systems"></a>Grotere SAP-systemen met 3 lagen
-Aspecten van een hoge Beschik baarheid van SAP-configuraties met drie lagen komen al in eerdere secties aan bod. Maar hoe weet het systeem waar de vereisten voor de DBMS-server te groot zijn om deze te hebben in azure, maar de SAP-toepassingslaag kan in Azure worden geïmplementeerd?
+High-Availability aspecten van 3-tier SAP-configuraties zijn al besproken in eerdere secties. Maar hoe weet het systeem waar de vereisten voor de DBMS-server te groot zijn om deze te hebben in azure, maar de SAP-toepassingslaag kan in Azure worden geïmplementeerd?
 
 #### <a name="location-of-3-tier-sap-configurations"></a>Locatie van de 3-tier SAP-configuraties
 Het wordt niet ondersteund om de toepassingslaag zelf of de toepassing en de DBMS-laag te splitsen tussen on-premises en Azure. Een SAP-systeem is volledig geïmplementeerd op locatie of in Azure. Het is ook niet mogelijk om sommige toepassings servers on-premises en andere in azure uit te voeren. Dat is het begin punt van de discussie. We ondersteunen ook niet dat de DBMS-onderdelen van een SAP-systeem en de SAP Application Server-laag in twee verschillende Azure-regio's zijn geïmplementeerd. Bijvoorbeeld: DBMS in VS-West en SAP-toepassingslaag in VS-midden. De reden voor het niet ondersteunen van dergelijke configuraties is de latentie gevoeligheid van de SAP NetWeaver-architectuur.

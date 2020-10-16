@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/23/2018
 ms.author: duau
-ms.openlocfilehash: e79dde0178c74965bde14956203e31e82e80d93e
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 4f646cdb4a3f000df219f627cbd7e7c841ed68ab
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89398406"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651238"
 ---
 # <a name="tutorial-improve-website-response-using-traffic-manager"></a>Zelfstudie: Website-responsiviteit verbeteren met Traffic Manager
 
@@ -203,7 +203,7 @@ In dit gedeelte kunt u Traffic Manager in werking zien.
 5. Er wordt mogelijk een certificaatwaarschuwing weergegeven tijdens het aanmelden. Als u de waarschuwing ontvangt, selecteert u **Ja** of **Doorgaan** om door te gaan met de verbinding.
 1. Typ in een webbrowser op de VM *myVMEastUS* de DNS-naam van uw Traffic Manager-profiel om uw website weer te geven. Omdat de VM in **VS - oost** ligt, wordt u doorgestuurd naar de dichtstbijzijnde website die wordt gehost op de dichtstbijzijnde IIS-server *myIISVMEastUS* in **VS - oost**.
 
-   ![Traffic Manager-profiel testen](./media/tutorial-traffic-manager-improve-website-response/eastus-traffic-manager-test.png)
+   ![Schermopname met het profiel 'Traffic Manager' in een webbrowser.](./media/tutorial-traffic-manager-improve-website-response/eastus-traffic-manager-test.png)
 
 2. Maak vervolgens met behulp van de stappen 1-5 verbinding met de virtuele machine *myVMWestEurope* in **Europa - west** en ga vanaf deze VM naar de domeinnaam van het Traffic Manager-profiel. Omdat de VM in **Europa - west** ligt, wordt u nu doorgestuurd naar de website die wordt gehost op de dichtstbijzijnde IIS-server *myIISVMWestEurope* in **Europa - west**.
 

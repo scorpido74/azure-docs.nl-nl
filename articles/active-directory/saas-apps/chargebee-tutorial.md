@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/08/2019
 ms.author: jeedes
-ms.openlocfilehash: 6358c41ab6d63baa8ed1fa6960d7d887825a1d78
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c620393903ee08199632d457ece3b4c06db8ed68
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88529474"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760645"
 ---
 # <a name="tutorial-integrate-chargebee-with-azure-active-directory"></a>Zelfstudie: Chargebee integreren met Azure Active Directory
 
@@ -132,11 +132,11 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 4. Klik aan de linkerkant van het menu op **Settings** > **Security** > **Manage**.
 
-    ![Configuratie van Chargebee](./media/chargebee-tutorial/config01.png)
+    ![Schermopname van de bedrijfssite van Chargebee met Settings, Security en Manage geselecteerd.](./media/chargebee-tutorial/config01.png)
 
 5. Voer op de pagina **Single Sign-On** de volgende stappen uit:
 
-    ![Configuratie van Chargebee](./media/chargebee-tutorial/config02.png)
+    ![Schermopname van het dialoogvenster Single Sign-On met SAML geselecteerd en de optie om te bevestigen.](./media/chargebee-tutorial/config02.png)
 
     a. Selecteer **SAML**.
 
@@ -156,11 +156,11 @@ Als u wilt dat gebruikers van Azure AD zich kunnen aanmelden bij Chargebee, moet
 
 2. Klik aan de linkerkant van het menu op **Customers** en navigeer vervolgens naar **Create a New Customer**.
 
-    ![Configuratie van Freedcamp](./media/chargebee-tutorial/config03.png)
+    ![Schermopname van de Chargebee-site met Customers en Create a New Customer geselecteerd.](./media/chargebee-tutorial/config03.png)
 
 3. Vul op de pagina **New Customer** de respectievelijke velden in die hieronder worden weergegeven en klik op **Create Customer** om de gebruiker te maken.
 
-    ![Configuratie van Freedcamp](./media/chargebee-tutorial/config04.png)
+    ![Schermopname van de pagina New Customer waar u klantgegevens kunt invoeren.](./media/chargebee-tutorial/config04.png)
 
 ## <a name="test-sso"></a>Eenmalige aanmelding testen 
 

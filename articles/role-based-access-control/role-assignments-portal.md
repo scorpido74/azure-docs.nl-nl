@@ -11,10 +11,10 @@ ms.date: 09/30/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 4e5c13c635091988f299d31c67795916e709d51a
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91597628"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-the-azure-portal"></a>Azure-roltoewijzingen toevoegen of verwijderen met behulp van de Azure-portal
@@ -41,7 +41,7 @@ Om de pagina toegangs beheer (IAM) het meest effectief te maken, kunt u deze sta
 
 1. Zoek de juiste rol. Machtigingen worden samen in rollen gegroepeerd. U kunt kiezen uit een lijst met verschillende [ingebouwde rollen van Azure](built-in-roles.md) of u kunt uw eigen aangepaste rollen gebruiken.
 
-1. Identificeer het benodigde bereik. Azure biedt vier niveaus van bereik: [beheer groep](../governance/management-groups/overview.md), abonnement, [resource groep](../azure-resource-manager/management/overview.md#resource-groups)en resource. Zie [inzicht in bereik](scope-overview.md)voor meer informatie over het bereik.
+1. Identificeer het benodigde bereik. Azure biedt vier niveaus van bereik: [beheer groep](../governance/management-groups/overview.md), abonnement, [resource groep](../azure-resource-manager/management/overview.md#resource-groups)en resource. Zie [Bereik](scope-overview.md) voor meer informatie over het bereik.
 
 1. Voer de stappen in een van de volgende secties uit om een rol toe te wijzen.
 

@@ -4,10 +4,10 @@ description: Meer informatie over het inschakelen van een beheerde identiteit in
 ms.topic: article
 ms.date: 07/02/2020
 ms.openlocfilehash: 23f2347593137a4846c8fd22e3b90f22db39bda3
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86259632"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Beheerde identiteiten gebruiken met Azure Container Instances
@@ -53,7 +53,7 @@ Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor 
 
 In de voor beelden in dit artikel wordt een beheerde identiteit in Azure Container Instances gebruikt om toegang te krijgen tot een geheim van Azure sleutel kluis. 
 
-Maak eerst een resourcegroep met de naam *myResourceGroup* op de locatie *eastus* met behulp van de volgende [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create)-opdracht:
+Maak eerst een resourcegroep met de naam *myResourceGroup* in de locatie *eastus* met behulp van de opdracht [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create):
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus

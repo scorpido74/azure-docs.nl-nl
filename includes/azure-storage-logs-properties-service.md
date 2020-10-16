@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 09/28/2020
 ms.author: normesta
 ms.openlocfilehash: 6d90b4b68f1f9f4a0fcd20c1d371a32759449fab
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91711255"
 ---
 | Eigenschap | Beschrijving |
@@ -29,7 +29,7 @@ ms.locfileid: "91711255"
 |**requestMd5** | De waarde van de kop **Content-MD5** of de header **x-MS-content-MD5** in de aanvraag. De MD5-hash-waarde die is opgegeven in dit veld vertegenwoordigt de inhoud in de aanvraag. Bijvoorbeeld: `788815fd0198be0d275ad329cafd1830`. <br>Dit veld mag leeg zijn.  |
 |**serverMd5** | De waarde van de MD5-hash die wordt berekend door de opslag service. Bijvoorbeeld: `3228b3cf1069a5489b298446321f8521`. <br>Dit veld mag leeg zijn.  |
 |**lastModifiedTime** | De tijd van de laatste wijziging (LMT) van het geretourneerde object.  Bijvoorbeeld: `Tuesday, 09-Aug-11 21:13:26 GMT`. <br>Dit veld is leeg voor bewerkingen die meerdere objecten kunnen retour neren. |
-|**conditionsUsed** | Een door punt komma's gescheiden lijst met sleutel-waardeparen die een voor waarde vertegenwoordigen. De voor waarden kunnen een van de volgende oorzaken hebben: <li> If-Modified-sinds <li> Als-ongewijzigd-sinds <li> If-match <li> If-None-Match  <br> Bijvoorbeeld: `If-Modified-Since=Friday, 05-Aug-11 19:11:54 GMT`. |
+|**conditionsUsed** | Een door punt komma's gescheiden lijst met sleutel-waardeparen die een voor waarde vertegenwoordigen. De voor waarden kunnen een van de volgende oorzaken hebben: <li> If-Modified-sinds <li> Als-ongewijzigd-sinds <li> If-Match <li> If-None-Match  <br> Bijvoorbeeld: `If-Modified-Since=Friday, 05-Aug-11 19:11:54 GMT`. |
 |**contentLengthHeader** | De waarde van de content-length-header voor de aanvraag die naar de opslag service wordt verzonden. Als de aanvraag is voltooid, is deze waarde gelijk aan requestBodySize. Als een aanvraag mislukt, is deze waarde mogelijk niet gelijk aan requestBodySize of kan deze leeg zijn. |
 |**tlsVersion** | De TLS-versie die wordt gebruikt in de verbinding van de aanvraag. Bijvoorbeeld: `TLS 1.2`. |
 |**smbTreeConnectID** | De SMB- **treeConnectId** (Server Message Block) is ingesteld tijdens de structuur verbindings tijd. Bijvoorbeeld: `0x3` |

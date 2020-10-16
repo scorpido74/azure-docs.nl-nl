@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
 ms.openlocfilehash: c0d4c72bd60f35088773ec6dc5df80709c5ae98c
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91666820"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network"></a>Wat is IPv6 voor Azure Virtual Network?
@@ -40,7 +40,7 @@ Voor delen van IPv6 voor Azure VNET:
 - Bouwt voort op lange, stabiele Azure VM-to-Internet IPv6-connectiviteit.
 - Standaard beveiligd omdat de IPv6-verbinding met het internet alleen wordt ingesteld wanneer u deze expliciet aanvraagt in uw implementatie.
 
-## <a name="capabilities"></a>Functionaliteit
+## <a name="capabilities"></a>Functies
 
 IPv6 voor Azure VNet bevat de volgende mogelijkheden:
 
@@ -50,7 +50,7 @@ IPv6 voor Azure VNet bevat de volgende mogelijkheden:
     > De subnetten voor IPv6 moeten exact/64 groot zijn.  Dit zorgt voor toekomstige compatibiliteit. hiervoor moet u ervoor kiezen om de route ring van het subnet naar een on-premises netwerk mogelijk te maken, omdat sommige routers alleen IPv6-routes kunnen accepteren/64.  
 - Beveilig uw resources met IPv6-regels voor netwerk beveiligings groepen.
     - En de DDoS-beveiliging (Distributed Denial of service) van het Azure-platform worden uitgebreid naar Internet gerichte open bare IP-adressen
-- Pas de route ring van IPv6-verkeer in het virtuele netwerk aan met door de gebruiker gedefinieerde routes, met name bij het gebruik van virtuele netwerk apparaten om uw toepassing uit te breiden.
+- Pas de route ring van IPv6-verkeer in het virtuele netwerk aan met User-Defined routes, met name bij het gebruik van virtuele netwerk apparaten om uw toepassing uit te breiden.
 - Linux en Windows Virtual Machines kunnen allemaal gebruikmaken van IPv6 voor Azure VNET
 - [Open bare standaard IPv6-Load Balancer](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) ondersteuning voor het maken van robuuste, schaal bare toepassingen, waaronder:
     - Optionele IPv6-status test om te bepalen welke back-end-pool instanties status zijn en dus nieuwe stromen kunnen ontvangen.

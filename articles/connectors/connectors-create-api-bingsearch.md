@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/21/2018
 tags: connectors
 ms.openlocfilehash: 52bf42434640dc965999895549b4fa12a139dcce
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87284061"
 ---
 # <a name="find-results-in-bing-search-by-using-azure-logic-apps"></a>Resultaten zoeken in Bing Search met behulp van Azure Logic Apps
@@ -124,7 +124,7 @@ Selecteer in de lijst acties de gewenste actie.
       ![Selecteer een functie](./media/connectors-create-api-bing-search/expression-select-function.png)
 
    3. Selecteer in de lijst met velden de **categorie**die wordt omgezet in een para meter. 
-   Voeg een komma toe na de eerste para meter en Voeg na de komma het volgende woord toe:`'tech'` 
+   Voeg een komma toe na de eerste para meter en Voeg na de komma het volgende woord toe: `'tech'` 
 
       ![Selecteer een veld](./media/connectors-create-api-bing-search/expression-select-field.png)
 

@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 99595e27b17db716b09325d5dd80633bf44ffb02
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91336646"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Het proces voor team gegevens wetenschap in actie-een Azure HDInsight Hadoop cluster op een gegevensset van 1 TB gebruiken
@@ -607,12 +607,12 @@ U bent nu klaar om een Azure Machine Learning model te bouwen met behulp van dez
 #### <a name="choice-of-learner"></a>Keuze van de kenniser
 Eerst moet u een leerer kiezen. Gebruik een geboostte beslissings structuur met twee klassen als onze kenniser. Dit zijn de standaard opties voor deze kenniser:
 
-![Twee klasse-para meters voor versterkte beslissings structuur](./media/hive-criteo-walkthrough/bH3ST2z.png)
+![Two-Class versterkte para meters voor de beslissings structuur](./media/hive-criteo-walkthrough/bH3ST2z.png)
 
 Kies voor het experiment de standaard waarden. De standaard waarden zijn nuttig en zijn een goede manier om snelle basis lijnen voor prestaties te krijgen. U kunt de prestaties verbeteren door para meters te verruimen als u een basis lijn hebt gekozen.
 
 #### <a name="train-the-model"></a>Het model trainen
-Voor training kunt u gewoon een **Train model** -module aanroepen. De twee ingangen hiervoor zijn de geboostte beslissings structuur van twee klassen en onze Train-gegevensset. Dit wordt hier weer gegeven:
+Voor training kunt u gewoon een **Train model** -module aanroepen. De twee invoer waarden zijn de Two-Class versterkte beslissings structuur leren en onze Train-gegevensset. Dit wordt hier weer gegeven:
 
 ![Train model-module](./media/hive-criteo-walkthrough/2bZDZTy.png)
 

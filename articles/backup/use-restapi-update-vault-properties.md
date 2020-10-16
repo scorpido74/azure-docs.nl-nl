@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
 ms.openlocfilehash: 19a335d17ee0aa5ff9f989556656f5cf20d2b1a9
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91567822"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>Recovery Services kluis configuraties van Azure bijwerken met behulp van REST API
@@ -43,7 +43,7 @@ GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 Het geslaagde antwoord voor de GET-bewerking wordt hieronder weer gegeven:
 
-|Naam  |Type  |Description  |
+|Naam  |Type  |Beschrijving  |
 |---------|---------|---------|
 |200 OK     |   [BackupResourceVaultConfig](/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
 
@@ -83,7 +83,7 @@ De volgende algemene definities worden gebruikt voor het maken van een aanvraag 
 
 Raadpleeg [de rest API-documentatie](/rest/api/backup/backupresourcevaultconfigs/update#request-body) voor meer informatie.
 
-|Name  |Vereist  |Type  |Description  |
+|Naam  |Vereist  |Type  |Beschrijving  |
 |---------|---------|---------|---------|
 |eTag     |         |   Tekenreeks      |  Optionele eTag       |
 |location     |  true       |Tekenreeks         |   Resourcelocatie      |
@@ -107,7 +107,7 @@ Het volgende voor beeld wordt gebruikt om de status van zacht verwijderen bij te
 
 Het geslaagde antwoord voor de PATCH bewerking wordt hieronder weer gegeven:
 
-|Naam  |Type  |Description  |
+|Naam  |Type  |Beschrijving  |
 |---------|---------|---------|
 |200 OK     |   [BackupResourceVaultConfig](/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
 

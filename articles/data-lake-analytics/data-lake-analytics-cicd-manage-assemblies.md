@@ -7,10 +7,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 10/30/2018
 ms.openlocfilehash: 4bb6ee60df291c1939d3bb0d72a9b3992be9b3c0
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132140"
 ---
 # <a name="best-practices-for-managing-u-sql-assemblies-in-a-cicd-pipeline"></a>Aanbevolen procedures voor het beheren van U-SQL-assembly's in een CI/CD-pijp lijn
@@ -82,7 +82,7 @@ U kunt een U-SQL database implementeren met behulp van een U-SQL database-projec
 
 ### <a name="deploy-a-u-sql-database-in-azure-devops"></a>Een U-SQL database implementeren in azure DevOps
 
-`PackageDeploymentTool.exe`biedt de programmeer-en opdracht regel interfaces die U helpen bij het implementeren van U-SQL-data bases. De SDK is opgenomen in het [U-SQL SDK Nuget-pakket](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/), dat zich bevindt in `build/runtime/PackageDeploymentTool.exe` .
+`PackageDeploymentTool.exe` biedt de programmeer-en opdracht regel interfaces die U helpen bij het implementeren van U-SQL-data bases. De SDK is opgenomen in het [U-SQL SDK Nuget-pakket](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/), dat zich bevindt in `build/runtime/PackageDeploymentTool.exe` .
 
 In azure DevOps kunt u een opdracht regel taak en deze SDK gebruiken om een Automation-pijp lijn in te stellen voor de U-SQL database vernieuwen. Meer [informatie over de SDK en het instellen van een CI/cd-pijp lijn voor U-SQL database-implementatie](data-lake-analytics-cicd-overview.md#deploy-u-sql-database-through-azure-pipelines).
 

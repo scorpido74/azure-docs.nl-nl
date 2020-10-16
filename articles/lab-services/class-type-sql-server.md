@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
 ms.openlocfilehash: 9fc0a965869207ba8d1b4eb6f45e878ae4b93c3a
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88079019"
 ---
 # <a name="set-up-a-lab-to-manage-and-develop-with-sql-server"></a>Een Lab instellen om te beheren en te ontwikkelen met SQL Server
@@ -20,7 +20,7 @@ In dit artikel laten we zien hoe u een virtuele-machine sjabloon kunt instellen 
 
 ## <a name="lab-configuration"></a>Lab-configuratie
 
-Als u dit Lab wilt instellen, hebt u een Azure-abonnement en een Lab-account nodig om aan de slag te gaan. Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint. Zodra u een Azure-abonnement hebt ontvangen, kunt u een nieuw Lab-account maken in Azure Lab Services. Zie [zelf studie voor het instellen van een Lab-account](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account)voor meer informatie over het maken van een nieuw Lab-account. U kunt ook een bestaand Lab-account gebruiken.
+Als u dit Lab wilt instellen, hebt u een Azure-abonnement en een Lab-account nodig om aan de slag te gaan. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint. Zodra u een Azure-abonnement hebt ontvangen, kunt u een nieuw Lab-account maken in Azure Lab Services. Zie [zelf studie voor het instellen van een Lab-account](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account)voor meer informatie over het maken van een nieuw Lab-account. U kunt ook een bestaand Lab-account gebruiken.
 
 ### <a name="lab-account-settings"></a>Instellingen van Lab-account
 
@@ -109,7 +109,7 @@ Nu u Azure Data Studio hebt geïnstalleerd, kunt u de verbinding met Azure SQL D
     - Stel het **wacht woord** in voor het wacht woord dat wordt gebruikt om de data base te maken.
     - Controleer **wacht woord onthouden**.
     - Selecteer voor de **Data Base** *classlabdb*.
-3. Klik op **Verbinden**.
+3. Klik op **Verbinding maken**.
 
 ## <a name="install-sql-server-management-studio"></a>Installeer SQL Server Management Studio
 

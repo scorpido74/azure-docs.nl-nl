@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.custom: has-adal-ref, devx-track-csharp
-ms.openlocfilehash: 817bc7624bb3a6b69d56265e40681287b7fc09fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 364b88966aa5ae6e1455156c2928713cac3b5b86
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90969599"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078065"
 ---
 # <a name="configure-role-based-access-control-in-the-remote-monitoring-solution-accelerator"></a>Op rollen gebaseerd toegangs beheer configureren in de oplossings versneller voor externe controle
 
@@ -52,7 +52,7 @@ De gebruiker die de oplossing heeft geïmplementeerd, krijgt standaard automatis
 
 Als Azure Active Directory eigenaar van de toepassing kunt u de Azure Portal gebruiken om een gebruiker toe te voegen aan of te verwijderen uit de oplossing voor externe controle. In de volgende stappen wordt gebruikgemaakt van de [Azure Active Directory Enter prise-toepassing](../active-directory/manage-apps/view-applications-portal.md) die is gemaakt tijdens de implementatie van de oplossing voor externe controle.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Controleer of de [gebruiker zich in de map bevindt](../active-directory/fundamentals/add-users-azure-active-directory.md) die u gebruikt. U hebt gekozen voor de map die u wilt gebruiken wanneer u zich aanmeldt bij de [Microsoft Azure IOT Solution Accelerators](https://www.azureiotsolutions.com/Accelerators) -site. De mapnaam wordt weer gegeven in de rechter bovenhoek van de [pagina](https://www.azureiotsolutions.com/Accelerators).
 
@@ -94,7 +94,7 @@ In de volgende stappen wordt beschreven hoe u een rol kunt toevoegen aan een toe
 
     ![App-registratie](media/iot-accelerators-remote-monitoring-rbac/app-registration-2.png)
 
-1. Selecteer uw toepassing en klik vervolgens op **manifest**. U kunt de twee bestaande [app-rollen](https://docs.microsoft.com/azure/architecture/multitenant-identity/app-roles) zien die zijn gedefinieerd voor de toepassing:
+1. Selecteer uw toepassing en klik vervolgens op **manifest**. U kunt de twee bestaande [app-rollen](/azure/architecture/multitenant-identity/app-roles) zien die zijn gedefinieerd voor de toepassing:
 
     ![Manifest weer geven](media/iot-accelerators-remote-monitoring-rbac/view-manifest.png)
 

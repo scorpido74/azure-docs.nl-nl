@@ -8,27 +8,31 @@ ms.topic: how-to
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: d661df57e4409c1d7fe196c7f136965191421bd4
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: decfa7020be7778e8ca64a9fb0cb4aac1657da27
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719655"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873333"
 ---
 # <a name="how-to-deploy-an-iot-central-application-using-the-video-analytics---object-and-motion-detection-application-template"></a>Een IoT Central-toepassing implementeren met behulp van de toepassings sjabloon video Analytics-object en Motion detectie
 
 Zie [object-en bewegings detectie video Analytics-toepassings architectuur](architecture-video-analytics.md)voor een overzicht van de belangrijkste *video analyse-* onderdelen voor het detecteren van objecten en motion-toepassingen.
 
+De volgende video biedt een overzicht van het gebruik van de _toepassings sjabloon video Analytics-object en Motion detectie_ om een IOT Central oplossing te implementeren:
+
+> [!VIDEO https://www.youtube.com/embed/Bo3FziU9bSA]
+
 ## <a name="deploy-the-application"></a>De toepassing implementeren
 
 Voer de volgende stappen uit om een IoT Central-toepassing te implementeren met behulp van de toepassing video Analytics:
 
-1. Voltooi de zelf studie [een video Analytics-toepassing maken in Azure IOT Central](tutorial-video-analytics-create-app.md) voor het volgende:
+1. Voltooi [een video Analytics-toepassing maken in azure IOT Central (YOLO v3)](tutorial-video-analytics-create-app-yolo-v3.md) of de zelf studie [een video analyse maken in azure IOT Central (openwijn &trade; )](tutorial-video-analytics-create-app-openvino.md) voor het volgende:
     - Een Azure Media Services-account maken.
     - Maak de IoT Central toepassing vanuit de sjabloon video Analytics-object-en bewegings detectie toepassing.
     - Een gateway apparaat configureren in de IoT Central-toepassing. Met de gateway kunnen camera apparaten verbinding maken met de toepassing.
 
-1. Voltooi de zelf studie [een IOT Edge-exemplaar voor video Analytics (Linux-VM) maken](tutorial-video-analytics-iot-edge-vm.md) voor het volgende:
+1. Voer een [IOT Edge-exemplaar maken voor video Analytics (Linux-VM)](tutorial-video-analytics-iot-edge-vm.md) of de [zelf studie: een IOT Edge instantie voor video Analytics (Intel NUC)-](tutorial-video-analytics-iot-edge-nuc.md) zelf studie maken voor het volgende:
     - Maak een virtuele machine van Azure waarop de Azure IoT Edge-runtime is geïnstalleerd.: bereid de IoT Edge installatie voor om de video Analytics-module te hosten.
     - Verbind het IoT Edge apparaat met uw IoT Central-toepassing.
 
@@ -41,4 +45,4 @@ Voer de volgende stappen uit om een IoT Central-toepassing te implementeren met 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt nu een overzicht van de stappen voor het implementeren en gebruiken van de toepassing video Analytics. Zie [een video Analytics-toepassing maken in Azure IOT Central](tutorial-video-analytics-create-app.md) om aan de slag te gaan.
+U hebt nu een overzicht van de stappen voor het implementeren en gebruiken van de toepassing video Analytics. Zie [een video Analytics-toepassing maken in azure IOT Central (YOLO v3)](tutorial-video-analytics-create-app-yolo-v3.md) of [een video-analyse maken in azure IOT Central &trade; (](tutorial-video-analytics-create-app-openvino.md) openladen) om aan de slag te gaan.

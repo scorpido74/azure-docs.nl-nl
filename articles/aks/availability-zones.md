@@ -6,10 +6,10 @@ ms.custom: fasttrack-edit, references_regions
 ms.topic: article
 ms.date: 09/04/2020
 ms.openlocfilehash: b6162249592bf470c3b8e52686abd44b813d5606
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89489133"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Een AKS-cluster (Azure Kubernetes service) maken dat gebruikmaakt van beschikbaarheids zones
@@ -22,7 +22,7 @@ In dit artikel wordt beschreven hoe u een AKS-cluster maakt en hoe u de knooppun
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-U moet de Azure CLI-versie 2.0.76 of hoger hebben geïnstalleerd en geconfigureerd. Voer  `az --version` uit om de versie te bekijken. Als u de Azure CLI wilt installeren of upgraden, raadpleegt u  [Azure CLI installeren][install-azure-cli].
+U moet de Azure CLI-versie 2.0.76 of hoger hebben geïnstalleerd en geconfigureerd. Voer  `az --version` uit om de versie te bekijken. Als u wilt installeren of upgraden, raadpleegt u [Azure cli installeren][install-azure-cli].
 
 ## <a name="limitations-and-region-availability"></a>Beperkingen en beschik baarheid van regio's
 
@@ -33,12 +33,12 @@ AKS-clusters kunnen momenteel worden gemaakt met beschikbaarheids zones in de vo
 * US - oost 2
 * VS - oost
 * Frankrijk - centraal
-* Japan - oost
+* Japan East
 * Europa - noord
 * Azië - zuidoost
 * Verenigd Koninkrijk Zuid
 * Europa -west
-* VS - west 2
+* West US 2
 
 De volgende beperkingen zijn van toepassing wanneer u een AKS-cluster maakt met beschikbaarheids zones:
 

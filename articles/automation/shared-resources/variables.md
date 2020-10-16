@@ -6,10 +6,10 @@ ms.subservice: shared-capabilities
 ms.date: 10/05/2020
 ms.topic: conceptual
 ms.openlocfilehash: 4749fcb6698ff1716f2cae257cc0efad458bf9a9
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91766190"
 ---
 # <a name="manage-variables-in-azure-automation"></a>Variabelen in Azure Automation beheren
@@ -38,7 +38,7 @@ Wanneer u een variabele met de Azure Portal maakt, moet u een gegevens type in d
 * Tekenreeks
 * Geheel getal
 * DateTime
-* Boolean
+* Booleaans
 * Null
 
 De variabele is niet beperkt tot het opgegeven gegevens type. U moet de variabele instellen met behulp van Windows Power shell als u een waarde van een ander type wilt opgeven. Als u opgeeft `Not defined` , wordt de waarde van de variabele ingesteld op null. U moet de waarde instellen met de cmdlet [set-AzAutomationVariable](/powershell/module/az.automation/set-azautomationvariable) of de interne `Set-AutomationVariable` cmdlet.

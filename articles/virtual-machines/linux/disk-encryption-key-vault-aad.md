@@ -9,10 +9,10 @@ ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: 4b533fa23d3c128b5f9f75737fb88d39aec94905
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88950065"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption-with-azure-ad-previous-release-for-linux-vms"></a>Een sleutel kluis maken en configureren voor Azure Disk Encryption met Azure AD (vorige versie) voor Linux-Vm's
@@ -129,7 +129,7 @@ Gebruik de stappen in de [Portal gebruiken om een Azure Active Directory-toepass
 3. [Haal de toepassings-id en de verificatie sleutel](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)op. 
      - De verificatie sleutel is het client geheim en wordt gebruikt als de AadClientSecret voor set-AzVMDiskEncryptionExtension. 
         - De verificatie sleutel wordt door de toepassing gebruikt als referentie om zich aan te melden bij Azure AD. In de Azure Portal heet dit geheim sleutels, maar het heeft geen betrekking op sleutel kluizen. Beveilig dit geheim op de juiste manier. 
-     - De toepassings-ID wordt later gebruikt als AadClientId voor set-AzVMDiskEncryptionExtension en als ServicePrincipalName voor set-AzKeyVaultAccessPolicy. 
+     - De toepassings-ID wordt later gebruikt als AadClientId voor Set-AzVMDiskEncryptionExtension en als ServicePrincipalName voor set-AzKeyVaultAccessPolicy. 
 
 ## <a name="set-the-key-vault-access-policy-for-the-azure-ad-app"></a><a name="bkmk_KVAP"></a> Het toegangs beleid voor de sleutel kluis instellen voor de Azure AD-app
 Om versleutelings geheimen te schrijven naar een opgegeven Key Vault, heeft Azure Disk Encryption de client-ID en het client geheim nodig van de Azure Active Directory toepassing die machtigingen heeft om geheimen naar de Key Vault te schrijven. 

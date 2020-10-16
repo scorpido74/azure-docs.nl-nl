@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 4b2068c3944f9e7616b0666c7bafcafc68ee0cd9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79471282"
 ---
 # <a name="how-to-install-iot-edge-on-kubernetes-preview"></a>IoT Edge installeren op Kubernetes (preview-versie)
@@ -25,7 +25,7 @@ IoT Edge kan worden geïntegreerd met Kubernetes als een robuuste, Maxi maal bes
 >Een goed geestelijke model voor deze integratie is om Kubernetes te beschouwen als een andere besturings omgeving IoT Edge toepassingen naast Linux en Windows kunnen worden uitgevoerd.
 
 ## <a name="architecture"></a>Architectuur 
-Op Kubernetes biedt IoT Edge *aangepaste resource definitie* (CRD) voor implementaties van Edge-workloads. IoT Edge agent gaat ervan uit dat de rol van een *CRD-controller* die de gewenste status van de Cloud Managed reconcilieert met de status van het lokale cluster.
+Op Kubernetes biedt IoT Edge *aangepaste resource definitie* (CRD) voor implementaties van Edge-workloads. IoT Edge agent gaat ervan uit dat de rol van een  *CRD-controller* die de gewenste status van de Cloud Managed reconcilieert met de status van het lokale cluster.
 
 De levens duur van de module wordt beheerd door de Kubernetes scheduler, die de beschik baarheid van modules onderhoudt en de plaatsing kiest. IoT Edge beheert het Edge-toepassings platform dat op de voor grond draait en doorlopend de gewenste status die is opgegeven in IoT Hub met de status op het Edge-cluster. Het toepassings model is nog steeds het vertrouwde model op basis van IoT Edge modules en routes. De IoT Edge agent controller voert het toepassings model van *automatische* vertaling IOT Edge uit naar de Kubernetes systeem eigen constructies zoals peulen, implementaties, services enzovoort.
 

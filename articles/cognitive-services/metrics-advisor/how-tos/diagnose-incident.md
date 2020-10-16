@@ -3,19 +3,19 @@ title: Incidenten diagnosticeren met metrische gegevens adviseur
 titleSuffix: Azure Cognitive Services
 description: Meer informatie over het vaststellen van een incident met metrische gegevens adviseur en het verkrijgen van gedetailleerde weer gaven van afwijkingen.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.author: aahi
-ms.openlocfilehash: fb70745cf7773e8caa91b31048af97e8e626bb91
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.author: mbullwin
+ms.openlocfilehash: d1f792859aa5407cfaceda0e3ed1b5c21ee160f0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91597943"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043371"
 ---
 # <a name="how-to-diagnose-an-incident-using-metrics-advisor"></a>Instructies: een incident diagnosticeren met metrische gegevens adviseur
 

@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 08/05/2020
 ms.author: alkohli
 ms.openlocfilehash: 866cf01243983863292ada0b086f8f5b2f94e412
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87925558"
 ---
 # <a name="troubleshoot-disk-unlocking-issues-in-azure-data-box-disk"></a>Problemen met het ontgrendelen van schijven oplossen in Azure Data Box Disk
@@ -51,7 +51,7 @@ In deze sectie vindt u een aantal veelvoorkomende problemen tijdens de implement
 
 U hebt het wacht woord in het dialoog venster van BitLocker gebruikt en probeert de schijf te ontgrendelen via het dialoog venster BitLocker-ontgrendelings stations. Dit werkt niet.
 
-**Afsluiting**
+**Oplossing**
 
 Als u de Data Box schijven wilt ontgrendelen, moet u het hulp programma Data Box Disk ontgrendelen gebruiken en het wacht woord van de Azure Portal opgeven. Ga voor meer informatie naar [zelf studie: Azure data Box Disk uitpakken, verbinding maken en ontgrendelen](data-box-disk-deploy-set-up.md#connect-to-disks-and-get-the-passkey).
  
@@ -65,7 +65,7 @@ Mogelijk wordt de volgende fout in het fouten logboek weer geven en kunnen sommi
  
 Dit geeft aan dat er waarschijnlijk de juiste versie van Windows Power shell op uw Windows-client ontbreekt.
 
-**Afsluiting**
+**Oplossing**
 
 U kunt [Windows Power shell v 5,0](https://www.microsoft.com/download/details.aspx?id=54616) installeren en de bewerking opnieuw proberen.
  

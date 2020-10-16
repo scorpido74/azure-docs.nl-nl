@@ -7,15 +7,15 @@ ms.service: media-services
 ms.topic: error-reference
 ms.date: 04/20/2020
 ms.openlocfilehash: 13d804ec39c3d7753d4ee04962a88d4451fb04d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81727253"
 ---
 # <a name="error-codes"></a>Foutcodes #
 
-Wanneer het afspelen niet kan worden gestart of gestopt, wordt een fout gebeurtenis geactiveerd en `error()` retourneert de functie een code en een optioneel bericht om de app-ontwikkelaar te helpen meer details te krijgen. `error().message`het bericht wordt niet weer gegeven voor de gebruiker.  Het bericht dat wordt weer gegeven aan de gebruiker is gebaseerd op `error().code` bits 27-20. Zie de tabel hieronder.
+Wanneer het afspelen niet kan worden gestart of gestopt, wordt een fout gebeurtenis geactiveerd en `error()` retourneert de functie een code en een optioneel bericht om de app-ontwikkelaar te helpen meer details te krijgen. `error().message` het bericht wordt niet weer gegeven voor de gebruiker.  Het bericht dat wordt weer gegeven aan de gebruiker is gebaseerd op `error().code` bits 27-20. Zie de tabel hieronder.
 
 ```javascript
 
@@ -44,7 +44,7 @@ Beschrijf het gebied van de fout.
 Geef een beschrijving van de fout, bits 27-20 biedt een hoog niveau, bits 19-0 meer details, indien beschikbaar.
 
 
-| amp. error code. naam | Codes, bits [27-0] (28 bits) | Description |
+| amp. error code. naam | Codes, bits [27-0] (28 bits) | Beschrijving |
 |---|---:|---|
 | **MEDIA_ERR_ABORTED-fouten bereik (0x0100000-0x01FFFFF)** | | |
 | abortedErrUnknown | 0x0100000 | Algemene Afbrekings fout |

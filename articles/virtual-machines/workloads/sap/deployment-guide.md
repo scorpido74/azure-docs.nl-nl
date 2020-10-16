@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: sedusch
 ms.openlocfilehash: 4494af89ac35a391f7dc6097b14d135a911d99dd
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91359610"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Azure Virtual Machines-implementatie voor SAP NetWeaver
@@ -506,7 +506,7 @@ Voer in het Azure Portal de volgende para meters voor de sjabloon in:
    * **Gebruikers naam** en **beheerders wachtwoord**voor de beheerder: een gebruikers naam en wacht woord.
      Er wordt een nieuwe gebruiker gemaakt om u aan te melden bij de virtuele machine.
    * **Nieuw of bestaand subnet**: Hiermee wordt bepaald of er een nieuw virtueel netwerk en subnet wordt gemaakt of een bestaand subnet wordt gebruikt. Als u al een virtueel netwerk hebt dat is verbonden met uw on-premises netwerk, selecteert u **bestaande**.
-   * **Subnet-id**: als u de virtuele machine wilt implementeren in een bestaand VNet waarvoor u een subnet hebt gedefinieerd, moet de virtuele machine worden toegewezen aan, de id van het specifieke subnet benoemen. De ID ziet er ongeveer als volgt uit:/Subscriptions/ &lt; -abonnements-id>/ResourceGroups/naam van de &lt; resource groep>/providers/Microsoft.Network/virtualnetworks/naam van het &lt; virtuele netwerk>/subnets/- &lt; subnet naam>
+   * **Subnet-id**: als u de virtuele machine wilt implementeren in een bestaand VNet waarvoor u een subnet hebt gedefinieerd, moet de virtuele machine worden toegewezen aan, de id van het specifieke subnet benoemen. De ID ziet er ongeveer als volgt uit:/Subscriptions/ &lt; -abonnements-id>/resourceGroups/naam van de &lt; resource groep>/providers/Microsoft.Network/virtualNetworks/naam van het &lt; virtuele netwerk>/subnets/- &lt; subnet naam>
 
 1. Voor **waarden**:  
     Bekijk en accepteer de juridische voor waarden.
@@ -646,7 +646,7 @@ Voer in het Azure Portal de volgende para meters voor de sjabloon in:
 
      Er wordt een nieuwe gebruiker gemaakt om u aan te melden bij de virtuele machine.
    * **Nieuw of bestaand subnet**: Hiermee wordt bepaald of er een nieuw virtueel netwerk en subnet wordt gemaakt of een bestaand subnet wordt gebruikt. Als u al een virtueel netwerk hebt dat is verbonden met uw on-premises netwerk, selecteert u **bestaande**.
-   * **Subnet-id**: als u de virtuele machine wilt implementeren in een bestaand VNet waarvoor u een subnet hebt gedefinieerd, moet de virtuele machine worden toegewezen aan, de id van het specifieke subnet benoemen. De ID ziet er ongeveer als volgt uit:/Subscriptions/ &lt; -abonnements-id>/ResourceGroups/naam van de &lt; resource groep>/providers/Microsoft.Network/virtualnetworks/naam van het &lt; virtuele netwerk>/subnets/- &lt; subnet naam>
+   * **Subnet-id**: als u de virtuele machine wilt implementeren in een bestaand VNet waarvoor u een subnet hebt gedefinieerd, moet de virtuele machine worden toegewezen aan, de id van het specifieke subnet benoemen. De ID ziet er ongeveer als volgt uit:/Subscriptions/ &lt; -abonnements-id>/resourceGroups/naam van de &lt; resource groep>/providers/Microsoft.Network/virtualNetworks/naam van het &lt; virtuele netwerk>/subnets/- &lt; subnet naam>
 
 1. Voor **waarden**:  
     Bekijk en accepteer de juridische voor waarden.
@@ -734,7 +734,7 @@ Voer in het Azure Portal de volgende para meters voor de sjabloon in:
    * **VHD-URI van besturingssysteem schijf** (alleen onbeheerde schijf sjabloon): de URI van de persoonlijke besturingssysteem schijf, bijvoorbeeld https:// &lt; accountnaam>. blob.core.Windows.net/VHDs/osdisk.VHD.
    * **Beheerde schijf-id van de besturingssysteem schijf** (alleen beheerde schijf sjabloon): de id van de beheerde schijf van het besturings systeem,/Subscriptions/92d102f7-81a5-4df7-9877-54987ba97dd9/resourceGroups/Group/providers/Microsoft.Compute/disks/Win
    * **Nieuw of bestaand subnet**: Hiermee wordt bepaald of er een nieuw virtueel netwerk en subnet wordt gemaakt, of dat er een bestaand subnet wordt gebruikt. Als u al een virtueel netwerk hebt dat is verbonden met uw on-premises netwerk, selecteert u **bestaande**.
-   * **Subnet-id**: als u de virtuele machine wilt implementeren in een bestaand VNet waarvoor u een subnet hebt gedefinieerd, moet de virtuele machine worden toegewezen aan, de id van het specifieke subnet benoemen. De ID ziet er ongeveer als volgt uit:/Subscriptions/ &lt; -abonnements-id>/ResourceGroups/naam van de &lt; resource groep>/providers/Microsoft.Network/virtualnetworks/naam van het &lt; virtuele netwerk>/subnets/- &lt; subnet naam>
+   * **Subnet-id**: als u de virtuele machine wilt implementeren in een bestaand VNet waarvoor u een subnet hebt gedefinieerd, moet de virtuele machine worden toegewezen aan, de id van het specifieke subnet benoemen. De ID ziet er ongeveer als volgt uit:/Subscriptions/ &lt; -abonnements-id>/resourceGroups/naam van de &lt; resource groep>/providers/Microsoft.Network/virtualNetworks/naam van het &lt; virtuele netwerk>/subnets/- &lt; subnet naam>
 
 1. Voor **waarden**:  
     Bekijk en accepteer de juridische voor waarden.
@@ -828,7 +828,7 @@ Als u een virtuele machine implementeert vanuit Azure Marketplace, is deze stap 
 
 Er is geen interactie van de gebruiker vereist om de Azure VM-agent bij te werken. De VM-agent wordt automatisch bijgewerkt en het opnieuw opstarten van de VM is niet vereist.
 
-#### <a name="linux"></a><a name="6889ff12-eaaf-4f3c-97e1-7c9edc7f7542"></a>Spreek
+#### <a name="linux"></a><a name="6889ff12-eaaf-4f3c-97e1-7c9edc7f7542"></a>Linux
 
 Gebruik de volgende opdrachten om de VM-agent voor Linux te installeren:
 
@@ -946,7 +946,7 @@ De Azure-extensie voor SAP installeren met behulp van Power shell:
 Nadat u uw account gegevens hebt ingevoerd, implementeert het script de vereiste uitbrei dingen en schakelt de vereiste functies in. Dit kan enkele minuten duren.
 `Set-AzVMAEMExtension`Zie [set-AzVMAEMExtension][msdn-set-Azvmaemextension]voor meer informatie over.
 
-![De SAP-specifieke Azure-cmdlet Set-AzVMAEMExtension is uitgevoerd.][deployment-guide-figure-900]
+![De SAP-specifieke Azure-cmdlet Set-AzVMAEMExtension is uitgevoerd][deployment-guide-figure-900]
 
 De `Set-AzVMAEMExtension` configuratie bevat alle stappen voor het configureren van het verzamelen van hostgegevens voor SAP.
 
@@ -1057,7 +1057,7 @@ De nieuwe VM-extensie voor SAP maakt gebruik van een beheerde identiteit die is 
    az login
    ```
 
-1. Volg de stappen in het artikel [beheerde identiteiten voor Azure-resources configureren op een Azure VM met behulp van Azure cli][qs-configure-cli-windows-vm] om een door het systeem toegewezen beheerde identiteit in te scha kelen voor de virtuele machine. Door de gebruiker toegewezen beheerde identiteiten worden niet ondersteund door de VM-extensie voor SAP. U kunt echter zowel een door het systeem toegewezen als een door de gebruiker toegewezen identiteit inschakelen.
+1. Volg de stappen in het artikel [beheerde identiteiten voor Azure-resources configureren op een Azure VM met behulp van Azure cli][qs-configure-cli-windows-vm] om een door System-Assigned beheerde identiteit in te scha kelen voor de virtuele machine. User-Assigned beheerde identiteiten worden niet ondersteund door de VM-extensie voor SAP. U kunt echter zowel een door het systeem toegewezen als een door de gebruiker toegewezen identiteit inschakelen.
 
    Voorbeeld:
    ```azurecli
@@ -1147,15 +1147,15 @@ Als de **status** waarde niet **OK**is, volgt u de instructies in [status contro
 
 1. Controleer de uitvoer van de Azure-extensie voor SAP.
 
-   a.  Voer `more /var/lib/AzureEnhancedMonitor/PerfCounters` uit.
+   a.  `more /var/lib/AzureEnhancedMonitor/PerfCounters` uitvoeren
 
    **Verwacht resultaat**: retourneert een lijst met prestatie meter items. Het bestand mag niet leeg zijn.
 
-   b. Voer `cat /var/lib/AzureEnhancedMonitor/PerfCounters | grep Error` uit.
+   b. `cat /var/lib/AzureEnhancedMonitor/PerfCounters | grep Error` uitvoeren
 
    **Verwacht resultaat**: retourneert één regel waarbij de fout **geen**is, bijvoorbeeld **3; config; Fout;; 0; 0; geen; 0; 1456416792; TST-servercs;**
 
-   c. Voer `more /var/lib/AzureEnhancedMonitor/LatestErrorRecord` uit.
+   c. `more /var/lib/AzureEnhancedMonitor/LatestErrorRecord` uitvoeren
 
    **Verwacht resultaat**: retourneert als leeg of bestaat niet.
 
@@ -1163,29 +1163,29 @@ Als de voor gaande controle niet is geslaagd, voert u de volgende extra controle
 
 1. Zorg ervoor dat de waagent is geïnstalleerd en ingeschakeld.
 
-   a.  Voer `sudo ls -al /var/lib/waagent/` uit.
+   a.  `sudo ls -al /var/lib/waagent/` uitvoeren
 
      **Verwacht resultaat**: hier wordt de inhoud van de waagent-map weer gegeven.
 
-   b.  Voer `ps -ax | grep waagent` uit.
+   b.  `ps -ax | grep waagent` uitvoeren
 
    **Verwacht resultaat**: er wordt een item weer gegeven dat er ongeveer als volgt uitziet: `python /usr/sbin/waagent -daemon`
 
 1. Zorg ervoor dat de Azure-extensie voor SAP is geïnstalleerd en wordt uitgevoerd.
 
-   a.  Voer `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-*/'` uit.
+   a.  `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-*/'` uitvoeren
 
    **Verwacht resultaat**: hier wordt de inhoud van de Azure-extensie voor SAP-Directory weer gegeven.
 
-   b. Voer `ps -ax | grep AzureEnhanced` uit.
+   b. `ps -ax | grep AzureEnhanced` uitvoeren
 
    **Verwacht resultaat**: er wordt een item weer gegeven dat er ongeveer als volgt uitziet: `python /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-2.0.0.2/handler.py daemon`
 
 1. Installeer de SAP host agent zoals beschreven in SAP Note [1031096]en controleer de uitvoer van `saposcol` .
 
-   a.  Voer `/usr/sap/hostctrl/exe/saposcol -d` uit.
+   a.  `/usr/sap/hostctrl/exe/saposcol -d` uitvoeren
 
-   b.  Voer `dump ccm` uit.
+   b.  `dump ccm` uitvoeren
 
    c.  Controleer of de **Virtualization_Configuration** meet waarde voor \Enhanced-controle **waar**is.
 
@@ -1228,29 +1228,29 @@ Als de voor gaande controle niet is geslaagd, voert u de volgende extra controle
 
 1. Zorg ervoor dat de waagent is geïnstalleerd en ingeschakeld.
 
-   a.  Voer `sudo ls -al /var/lib/waagent/` uit.
+   a.  `sudo ls -al /var/lib/waagent/` uitvoeren
 
      **Verwacht resultaat**: hier wordt de inhoud van de waagent-map weer gegeven.
 
-   b.  Voer `ps -ax | grep waagent` uit.
+   b.  `ps -ax | grep waagent` uitvoeren
 
    **Verwacht resultaat**: er wordt een item weer gegeven dat er ongeveer als volgt uitziet: `python /usr/sbin/waagent -daemon`
 
 1. Zorg ervoor dat de Azure-extensie voor SAP is geïnstalleerd en wordt uitgevoerd.
 
-   a.  Voer `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.AzureCAT.AzureEnhancedMonitoring.MonitorX64Linux-*/'` uit.
+   a.  `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.AzureCAT.AzureEnhancedMonitoring.MonitorX64Linux-*/'` uitvoeren
 
    **Verwacht resultaat**: hier wordt de inhoud van de Azure-extensie voor SAP-Directory weer gegeven.
 
-   b. Voer `ps -ax | grep AzureEnhanced` uit.
+   b. `ps -ax | grep AzureEnhanced` uitvoeren
 
    **Verwacht resultaat**: er wordt een item weer gegeven dat er ongeveer als volgt uitziet: `/var/lib/waagent/Microsoft.AzureCAT.AzureEnhancedMonitoring.MonitorX64Linux-1.0.0.82/AzureEnhancedMonitoring -monitor`
 
 1. Installeer de SAP host agent zoals beschreven in SAP Note [1031096]en controleer de uitvoer van `saposcol` .
 
-   a.  Voer `/usr/sap/hostctrl/exe/saposcol -d` uit.
+   a.  `/usr/sap/hostctrl/exe/saposcol -d` uitvoeren
 
-   b.  Voer `dump ccm` uit.
+   b.  `dump ccm` uitvoeren
 
    c.  Controleer of de **Virtualization_Configuration** meet waarde voor \Enhanced-controle **waar**is.
 
@@ -1370,11 +1370,11 @@ De map \\ var \\ lib \\ waagent heeft \\ geen submap voor de Azure-extensie voor
 
 De extensie is niet geïnstalleerd. Bepaal of dit een proxy probleem is (zoals eerder beschreven). Mogelijk moet u de computer opnieuw opstarten en/of het `Set-AzVMAEMExtension` configuratie script opnieuw uitvoeren.
 
-##### <a name="the-execution-of-set-azvmaemextension-and-test-azvmaemextension-show-warning-messages-stating-that-standard-managed-disks-are-not-supported"></a>Bij de uitvoering van set-AzVMAEMExtension en test-AzVMAEMExtension worden waarschuwings berichten weer gegeven met de mede deling dat standaard Managed Disks niet worden ondersteund
+##### <a name="the-execution-of-set-azvmaemextension-and-test-azvmaemextension-show-warning-messages-stating-that-standard-managed-disks-are-not-supported"></a>De uitvoering van Set-AzVMAEMExtension en Test-AzVMAEMExtension waarschuwings berichten weer geven met de mede deling dat standaard Managed Disks niet worden ondersteund
 
 ###### <a name="issue"></a>Probleem
 
-Bij het uitvoeren van set-AzVMAEMExtension of test-AzVMAEMExtension-berichten, zoals deze worden weer gegeven:
+Bij het uitvoeren van Set-AzVMAEMExtension of Test-AzVMAEMExtension berichten zoals deze worden weer gegeven:
 
 <pre><code>
 WARNING: [WARN] Standard Managed Disks are not supported. Extension will be installed but no disk metrics will be available.
@@ -1495,7 +1495,7 @@ Volg de stappen in hoofd stuk [de Azure-extensie voor SAP configureren][deployme
 
 Als de fouten niet verdwijnen, [neemt u contact op met de ondersteuning][deployment-guide-contact-support].
 
-#### <a name="contact-support"></a><a name="3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2"></a>Contact met ondersteuning
+#### <a name="contact-support"></a><a name="3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2"></a>Contact opnemen met ondersteuning
 
 Er is een onverwachte fout opgetreden of er is geen bekende oplossing. Verzamel het bestand AzureEnhancedMonitoring_service. log dat zich in de map C:\Packages\Plugins\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler \\ \<version\> \Drop (Windows) of/var/log/Azure/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux (Linux) bevindt en neem contact op met SAP-ondersteuning voor verdere ondersteuning.
 

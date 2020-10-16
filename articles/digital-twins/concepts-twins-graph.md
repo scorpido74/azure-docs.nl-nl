@@ -8,10 +8,10 @@ ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ms.openlocfilehash: 5821a1d1f6713ef39d7475fb004164e7c0fd71ec
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87062067"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Meer informatie over digitale apparaatdubbels en hun twee grafieken
@@ -21,7 +21,7 @@ In een Azure Digital Apparaatdubbels-oplossing worden de entiteiten in uw omgevi
 > [!TIP]
 > ' Azure Digital Apparaatdubbels ' verwijst naar deze Azure-service als geheel. ' Digitale twee (en) ' of alleen ' dubbele (s) ' verwijzen naar afzonderlijke dubbele knoop punten in uw exemplaar van de service.
 
-## <a name="digital-twins"></a>Digitale apparaatdubbels
+## <a name="digital-twins"></a>Digitale tweelingen
 
 Voordat u een digitale dubbele in uw Azure Digital Apparaatdubbels-exemplaar kunt maken, moet u een *model* hebben dat naar de service wordt geüpload. Een model beschrijft de set eigenschappen, telemetrie-berichten en relaties die een bepaalde dubbele kan hebben, onder andere. Zie [*concepten: Custom modelers*](concepts-models.md)(Engelstalig) voor informatie over de typen die in een model zijn gedefinieerd.
 
@@ -120,7 +120,7 @@ Wanneer het wordt weer gegeven als een JSON-object, worden de volgende velden we
 | `$metadata.{propertyName}.ackDescription` | [Alleen voor Beschrijf bare eigenschappen] De `ack` beschrijving die wordt geretourneerd door de apparaat-app die de digitale-twee implementeert |
 | `{componentName}` | Een JSON-object dat de eigenschaps waarden en meta gegevens van de component bevat, vergelijkbaar met die van het hoofd object. Dit object bestaat ook als het onderdeel geen eigenschappen heeft. |
 | `{componentName}.{propertyName}` | De waarde van de eigenschap van het onderdeel in JSON ( `string` , Number type of object) |
-| `{componentName}.$metadata` | De meta gegevens voor het onderdeel, vergelijkbaar met het hoofd niveau`$metadata` |
+| `{componentName}.$metadata` | De meta gegevens voor het onderdeel, vergelijkbaar met het hoofd niveau `$metadata` |
 
 Hier volgt een voor beeld van een digitale dubbele indeling als een JSON-object:
 

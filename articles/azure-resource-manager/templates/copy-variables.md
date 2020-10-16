@@ -4,10 +4,10 @@ description: Kopieer bewerking in een Azure Resource Manager sjabloon gebruiken 
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.openlocfilehash: aca69dd858c7a940592e74123b97b8d364d9e11c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84678440"
 ---
 # <a name="variable-iteration-in-arm-templates"></a>Variabele herhaling in ARM-sjablonen
@@ -314,7 +314,7 @@ In het volgende voor beeld ziet u de verschillende manieren waarop u kopiëren m
 
 In de volgende voor beelden ziet u algemene scenario's voor het maken van meer dan één waarde voor een variabele.
 
-|Template  |Description  |
+|Template  |Beschrijving  |
 |---------|---------|
 |[Variabelen kopiëren](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |Demonstreert de verschillende manieren om variabelen te herhalen. |
 |[Meerdere beveiligings regels](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |Implementeert diverse beveiligings regels voor een netwerk beveiligings groep. Hiermee worden de beveiligings regels van een para meter gemaakt. Zie [meerdere NSG-parameter bestanden](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json)voor de para meter. |

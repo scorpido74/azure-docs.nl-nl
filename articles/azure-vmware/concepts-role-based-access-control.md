@@ -4,10 +4,10 @@ description: Meer informatie over de belangrijkste mogelijkheden van toegangs be
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.openlocfilehash: a863f44dd5fdd485f8d5ebfcfbacee994e6b63a6
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91579873"
 ---
 # <a name="role-based-access-control-rbac-for-azure-vmware-solution"></a>Op rollen gebaseerd toegangs beheer (RBAC) voor Azure VMware-oplossing

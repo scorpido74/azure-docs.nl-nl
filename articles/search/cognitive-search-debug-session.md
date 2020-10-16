@@ -3,17 +3,17 @@ title: Concepten van debug-sessies (preview-versie)
 titleSuffix: Azure Cognitive Search
 description: Het opsporen van sessies, die toegankelijk zijn via de Azure Portal, biedt een IDE-achtige omgeving waarin u fouten kunt identificeren en herstellen, wijzigingen moet valideren en wijzigingen in de vaardig heden in de AI-verrijkings pijplijn naar een andere pusht. Debug-sessies is in preview.
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: 941d7f54bcb44653280abe264ff1cffbeae33679
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: f666cc2f9d11b1e05d11ba266897e6fca3cd287e
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743179"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057617"
 ---
 # <a name="debug-sessions-in-azure-cognitive-search"></a>Sessies voor fout opsporing in azure Cognitive Search
 

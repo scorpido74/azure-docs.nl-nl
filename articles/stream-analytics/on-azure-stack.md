@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/21/2020
 ms.custom: seodec18
 ms.openlocfilehash: 1fe035d99f8a5962406d5aae3f093d71d432b310
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88860847"
 ---
 # <a name="run-azure-stream-analytics-on-azure-stack-preview"></a>Azure Stream Analytics uitvoeren op Azure Stack (preview-versie)
@@ -47,7 +47,7 @@ Naast netwerk toegang tot de Azure Stack hub-resources, moet het IoT Edge appara
 In de volgende hand leidingen ziet u hoe u de IoT Edge runtime op uw apparaat of virtuele machine instelt:
 
 * [De Azure IoT Edge-runtime op Windows installeren](../iot-edge/how-to-install-iot-edge-windows.md)
-* [De Azure IoT Edge-runtime op op Debian gebaseerde Linux-systemen installeren](../iot-edge/how-to-install-iot-edge-linux.md)
+* [Installeer de Azure IoT Edge runtime op op Debian gebaseerde Linux-systemen](../iot-edge/how-to-install-iot-edge-linux.md)
 
 
 ## <a name="create-an-azure-stream-analytics-edge-job"></a>Een Azure Stream Analytics Edge-taak maken
@@ -67,7 +67,7 @@ Wanneer u een Azure Stream Analytics-taak maakt die op een IoT Edge-apparaat moe
    | Naam | Voer een unieke naam in voor het opslagaccount. |
    | Locatie | Kies een locatie dicht bij u in de buurt.|
    | Abonnement | Kies het hetzelfde abonnement als uw IoT-hub.|
-   | Resourcegroep | U wordt aangeraden dezelfde resource groep te gebruiken voor alle test resources die u hebt gemaakt tijdens de [IOT Edge Snelstartgids](https://docs.microsoft.com/azure/iot-edge/quickstart) en zelf studies. zoals **IoTEdgeResources**. |
+   | Resource Group | U wordt aangeraden dezelfde resource groep te gebruiken voor alle test resources die u hebt gemaakt tijdens de [IOT Edge Snelstartgids](https://docs.microsoft.com/azure/iot-edge/quickstart) en zelf studies. zoals **IoTEdgeResources**. |
 
 3. Houd de standaardwaarden voor de andere velden aan en selecteer **Maken**.
 
@@ -81,7 +81,7 @@ Wanneer u een Azure Stream Analytics-taak maakt die op een IoT Edge-apparaat moe
    | --- | --- |
    | Taaknaam | Geef de taak een naam. Bijvoorbeeld **IoTEdgeJob**. |
    | Abonnement | Kies het hetzelfde abonnement als uw IoT-hub.|
-   | Resourcegroep | U wordt aangeraden dezelfde resource groep te gebruiken voor alle test resources die u hebt gemaakt tijdens de [IOT Edge Snelstartgids](https://docs.microsoft.com/azure/iot-edge/quickstart) en zelf studies. zoals **IoTEdgeResources**. |
+   | Resource Group | U wordt aangeraden dezelfde resource groep te gebruiken voor alle test resources die u hebt gemaakt tijdens de [IOT Edge Snelstartgids](https://docs.microsoft.com/azure/iot-edge/quickstart) en zelf studies. zoals **IoTEdgeResources**. |
    | Locatie | Kies een locatie dicht bij u in de buurt. |
    | Hosting omgeving | Selecteer **Edge**. |
 
@@ -128,7 +128,7 @@ Zodra uw Stream Analytics-taak is gemaakt in de Azure-portal, kunt u deze config
    > [!div class="mx-imgBorder"]
    > [![IOT hub invoer ](media/on-azure-stack/iot-hub-input.png)](media/on-azure-stack/iot-hub-input.png#lightbox)
 
-6. Houd de standaardwaarden voor de andere velden aan en selecteer Opslaan.
+6. Behoud de standaardwaarden van de andere velden en selecteer Opslaan.
 7. Open onder Taaktopologie de optie Uitvoer en selecteer vervolgens Toevoegen.
 8. Kies Blob Storage, Event hub of Edge hub in de vervolg keuzelijst.
 9. Als de uitvoer een event hub is of Blob Storage in een Azure Stack hub-abonnement, moet u de informatie hand matig opgeven, zoals hieronder wordt weer gegeven.

@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f1d4c5b55dd2a24c1fb41540fdc5d3ae26849a2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3ef10f51f058739b0e545d341b77af4313dd9e97
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258673"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91992864"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>Een implementatie van voorwaardelijke toegang plannen
 
@@ -30,7 +30,7 @@ Azure Active Directory (Azure AD) voor analyses van voorwaardelijke toegang (CA)
 
 Micro soft biedt standaard voorwaardelijke beleids regels met de naam [beveiligings standaard instellingen](../fundamentals/concept-fundamentals-security-defaults.md) die een basis beveiligings niveau garanderen. Uw organisatie heeft echter mogelijk meer flexibiliteit nodig dan de standaard instellingen voor de beveiliging. U kunt voorwaardelijke toegang gebruiken voor het aanpassen van de standaard instellingen van de beveiliging met een meer granulariteit en voor het configureren van nieuwe beleids regels die voldoen aan uw vereisten.
 
-## <a name="learn"></a>Learn
+## <a name="learn"></a>Leren
 
 Voordat u begint, moet u weten hoe [voorwaardelijke toegang](overview.md) werkt en wanneer u deze moet gebruiken.
 
@@ -89,7 +89,7 @@ Houd rekening met de behoeften van uw organisatie terwijl u de strategie voor de
 
 ### <a name="engage-the-right-stakeholders"></a>De juiste belanghebbenden benaderen
 
-Wanneer technologie projecten mislukken, worden ze doorgaans als gevolg van niet-overeenkomende verwachtingen voor impact, resultaten en verantwoordelijkheden. Als u deze problemen wilt voor komen, moet [u ervoor zorgen dat u de juiste belanghebbenden gebruikt](https://aka.ms/deploymentplans) en dat de project rollen duidelijk zijn.
+Wanneer technologie projecten mislukken, worden ze doorgaans als gevolg van niet-overeenkomende verwachtingen voor impact, resultaten en verantwoordelijkheden. Als u deze problemen wilt voor komen, moet [u ervoor zorgen dat u de juiste belanghebbenden gebruikt](../fundamentals/active-directory-deployment-plans.md) en dat de project rollen duidelijk zijn.
 
 ### <a name="plan-communications"></a>De communicatie plannen
 
@@ -493,7 +493,7 @@ Wanneer u de gegevens hebt verzameld, raadpleegt u de volgende bronnen:
 
 * [Aanmeld problemen met voorwaardelijke toegang](troubleshoot-conditional-access.md) : inzicht in onverwachte aanmeldings resultaten die betrekking hebben op voorwaardelijke toegang met behulp van fout berichten en logboeken van Azure AD-aanmeldingen.
 
-* [Met het hulp programma What-if](troubleshoot-conditional-access-what-if.md) -begrijpt u waarom een beleid is of niet werd toegepast op een gebruiker in een specifieke omstandigheid of als een beleid van toepassing zou zijn op een bekende status.
+* [Gebruik het What-If-hulp programma](troubleshoot-conditional-access-what-if.md) om te begrijpen waarom een beleid is of niet is toegepast op een gebruiker in een specifieke omstandigheid of als een beleid van toepassing zou zijn op een bekende status.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 915b56e9a9340920e99f4d3d4de6da4c39233eab
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90014800"
 ---
 # <a name="upgrade-windows-azure-active-directory-sync-and-azure-active-directory-sync"></a>Windows Azure Active Directory-synchronisatie en Azure Active Directory-synchronisatie upgraden
@@ -35,7 +35,7 @@ De laatste versie van DirSync is uitgebracht in juli 2014 en de laatste release 
 Azure AD Connect is de opvolgende taak van DirSync en Azure AD Sync. Alle scenario's die deze twee ondersteunen worden gecombineerd. Meer informatie hierover vindt u in [uw on-premises identiteiten integreren met Azure Active Directory](whatis-hybrid-identity.md).
 
 ## <a name="deprecation-schedule"></a>Schema voor afschaffing
-| Datum | Opmerking |
+| Date | Opmerking |
 | --- | --- |
 | 13 april 2016 |Windows Azure Active Directory Sync (' DirSync ') en Microsoft Azure Active Directory Sync (' Azure AD Sync ') worden aangekondigd als afgeschaft. |
 | 13 april 2017 |Ondersteuning wordt beëindigd. Klanten kunnen niet langer een ondersteunings aanvraag openen zonder eerst een upgrade naar Azure AD Connect te hoeven uitvoeren. |

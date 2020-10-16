@@ -1,20 +1,18 @@
 ---
 title: Overzicht van Red Hat-workloads op Azure | Microsoft Docs
 description: Meer informatie over de productaanbiedingen van Red Hat die beschikbaar zijn op Azure.
-services: virtual-machines-linux
 author: asinn826
-manager: borisb2015
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
 ms.topic: overview
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 7394cb50010bddddf8f8eff4b4f04eaf4d3231b6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.reviewer: cynthn
+ms.openlocfilehash: 61f7461633aba18a21fcc18709055dc790ffee7b
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87052121"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993240"
 ---
 # <a name="red-hat-workloads-on-azure"></a>Red Hat-workloads op Azure
 
@@ -45,7 +43,7 @@ Azure biedt ook Red Hat Gold-installatiekopieën (`rhel-byos`). Deze installatie
 
 ### <a name="generation-2-images"></a>Installatiekopieën van de 2e generatie
 
-Virtuele machines (VM's) van de 2e generatie bieden een aantal nieuwere functies in vergelijking met virtuele machines van de 1e generatie. Voor meer informatie raadpleegt u de [documentatie over de 2e generatie](../../linux/generation-2.md). Het belangrijkste verschil van een RHEL-installatiekopieperspectief is dat virtuele machines van de 2e generatie een UEFI gebruiken in plaats van BIOS-firmware-interface. Ze gebruiken ook een GUID-partitietabel (GPT) in plaats van een Master Boot Record (MBR) bij het opstarten. Het gebruik van een GPT maakt onder andere een besturingssysteemschijf die groter is dan 2 TB mogelijk. Daarnaast worden de [VM's van de Mv2-serie](../../mv2-series.md) alleen uitgevoerd op installatiekopieën van de 2e generatie.
+Virtuele machines (VM's) van de 2e generatie bieden een aantal nieuwere functies in vergelijking met virtuele machines van de 1e generatie. Voor meer informatie raadpleegt u de [documentatie over de 2e generatie](../../generation-2.md). Het belangrijkste verschil van een RHEL-installatiekopieperspectief is dat virtuele machines van de 2e generatie een UEFI gebruiken in plaats van BIOS-firmware-interface. Ze gebruiken ook een GUID-partitietabel (GPT) in plaats van een Master Boot Record (MBR) bij het opstarten. Het gebruik van een GPT maakt onder andere een besturingssysteemschijf die groter is dan 2 TB mogelijk. Daarnaast worden de [VM's van de Mv2-serie](../../mv2-series.md) alleen uitgevoerd op installatiekopieën van de 2e generatie.
 
 RHEL installatiekopieën van de 2e generatie zijn beschikbaar via Azure Marketplace. Zoek naar Gen2 in de installatiekopie-SKU in de lijst met alle installatiekopieën die worden weergegeven wanneer u Azure CLI gebruikt. Ga naar het tabblad **Geavanceerd** in het implementatieproces van de VM om een virtuele machine van de 2e generatie te implementeren.
 

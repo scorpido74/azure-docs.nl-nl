@@ -1,18 +1,25 @@
 ---
-title: Migreren naar Bridge naar Kubernetes
+title: Bridge migreren naar Kubernetes
 services: azure-dev-spaces
-ms.date: 09/21/2020
+ms.date: 10/12/2020
 ms.topic: conceptual
-description: Hierin worden de processen beschreven die Power Azure dev Spaces
+description: Beschrijft het migratie proces van Azure dev Spaces om te Bridgepen naar Kubernetes
 keywords: Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, Bridge to Kubernetes
-ms.openlocfilehash: b585ee20efb7b377a041152996ef41d8c59c539e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 008cb90c172d8106115e4424956d82d026dbcee0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90995520"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044697"
 ---
-# <a name="migrating-to-bridge-to-kubernetes"></a>Migreren naar Bridge naar Kubernetes
+# <a name="migrating-to-bridge-to-kubernetes"></a>Bridge migreren naar Kubernetes
+
+> [!IMPORTANT]
+> Azure dev Spaces worden op 31 oktober 2023 ingetrokken. Ontwikkel aars moeten overstappen op het gebruik van Bridge naar Kubernetes, een hulp programma voor ontwikkel aars van clients.
+>
+> Het doel van Azure dev Spaces is het versnellen van ontwikkel aars tot het ontwikkelen op Kubernetes. Een aanzienlijke afweging van de aanpak van Azure dev Spaces is een extra last voor ontwikkel aars voor het verkrijgen van docker-en Kubernetes-configuraties en Kubernetes-implementatie concepten. In de loop van de tijd werd ook duidelijk dat de aanpak van Azure dev Spaces de snelheid van de interne herhalings ontwikkeling op Kubernetes niet effectief vermindert. Bridge to Kubernetes verlaagt effectief de snelheid van de interne loop-ontwikkeling en vermijdt overbodige last van ontwikkel aars.
+>
+> De kern missie blijft ongewijzigd: bouw de beste ervaring voor ontwikkel aars voor het ontwikkelen, testen en fout opsporing van micro service-code in de context van de grotere toepassing.
 
 Bridge to Kubernetes biedt een lichtere gewicht alternatief voor veel van de ontwikkelings scenario's die werken met Azure dev Spaces. Bridge to Kubernetes is een client-side ervaring met het gebruik van extensies in [Visual Studio][vs]   en [Visual Studio code][vsc].  
 
@@ -34,7 +41,7 @@ Bridge to Kubernetes stelt ontwikkel aars in staat om rechtstreeks op hun ontwik
 
 Azure dev Spaces en Bridge to Kubernetes hebben vergelijk bare functies, maar ze verschillen ook op verschillende gebieden:
 
-| Vereiste  | Azure Dev Spaces  | Brug naar Kubernetes  |
+| Vereiste  | Azure Dev Spaces  | Bridge to Kubernetes  |
 |---------------|-------------------|--------------------------------|
 | Azure Kubernetes Service | In 15 Azure-regio's | Een AKS-service regio    |
 | **Beveiliging** |
@@ -51,7 +58,7 @@ Azure dev Spaces en Bridge to Kubernetes hebben vergelijk bare functies, maar ze
 | Werkt op Windows 10  | Ja  | Ja  |
 | Werkt op Linux  | Ja  | Ja  |
 | Werkt op macOS  | Ja  | Ja  |
-| **Functies** |
+| **Functionaliteit** |
 | Isolatie van ontwikkel aars of team ontwikkeling  | Ja  | Ja  |
 | Omgevings variabelen selectief overschrijven  | Nee  | Ja  |
 | Dockerfile-en helm-grafiek maken  | Ja  | Nee  |
@@ -73,23 +80,37 @@ Bridge to Kubernetes heeft de flexibiliteit om te werken met toepassingen die wo
 > [!TIP]
 > Met de [micro soft Kubernetes-extensie][kubernetes-extension] kunt u snel Kubernetes-manifesten ontwikkelen met IntelliSense en helm-grafieken ontwerpen.  
 
-### <a name="use-visual-studio-to-transition-to-bridge-to-kubernetes-from-azure-dev-spaces"></a>Visual Studio gebruiken om over te stappen naar een brug naar Kubernetes vanuit Azure dev Spaces
+### <a name="transition-to-bridge-to-kubernetes-from-azure-dev-spaces"></a>Overgang naar brug naar Kubernetes vanuit Azure dev Spaces
 
-1. Werk uw Visual Studio IDE bij naar versie 16,7 of hoger en installeer de Bridge in de Kubernetes-extensie van [Visual Studio Marketplace][vs-marketplace].
+1. Als u Visual Studio gebruikt, werkt u uw Visual Studio IDE bij naar versie 16,7 of hoger en installeert u de Bridge in de Kubernetes-extensie van de [Visual Studio Marketplace][vs-marketplace]. Als u Visual Studio code gebruikt, installeert u de [Bridge in de Kubernetes-extensie][vsc-marketplace].
 1. Schakel de Azure dev Spaces-controller uit met behulp van de Azure Portal of de [Azure dev Spaces-cli][azds-delete].
-1. Verwijder het `azds.yaml` bestand uit uw project.
-1. Implementeer uw toepassing opnieuw.
-1. Configureer de brug naar Kubernetes op uw geïmplementeerde toepassing. Zie [Bridge gebruiken voor Kubernetes][use-btk-vs]voor meer informatie over het gebruik van Bridge voor Kubernetes in Visual Studio.
-1. Start de fout opsporing in Visual Studio met behulp van de zojuist gemaakte brug naar het Kubernetes-profiel voor fout opsporing.
+1. Gebruik [Azure Cloud shell](https://shell.azure.com). Of op Mac, Linux of Windows waarop bash is geïnstalleerd, opent u een bash shell-prompt. Zorg ervoor dat de volgende hulpprogram ma's beschikbaar zijn in uw opdracht regel omgeving: Azure CLI, docker, kubectl, krul, tar en gunzip.
+1. Een container register maken of een bestaand REGI ster gebruiken. U kunt een container register maken in azure met behulp van [Azure container Registry](../container-registry/index.yml) of met behulp van [docker hub](https://hub.docker.com/).
+1. Voer het migratie script uit om activa van Azure-ontwikkel ruimten te converteren naar Kubernetes-assets. Het script bouwt een nieuwe installatie kopie die compatibel is met Bridge naar Kubernetes, uploadt deze naar het aangewezen REGI ster en gebruikt vervolgens [helm](https://helm.sh) om het cluster bij te werken met de installatie kopie. U moet de resource groep, de naam van het AKS-cluster en een container register opgeven. Er zijn andere opdracht regel opties, zoals hier wordt weer gegeven:
 
-### <a name="use-visual-studio-code-to-transition-to-bridge-to-kubernetes-from-azure-dev-spaces"></a>Visual Studio code gebruiken om over te stappen naar een brug naar Kubernetes vanuit Azure dev Spaces
+   ```azure-cli
+   curl -sL https://aka.ms/migrate-tool | bash -s -- -g ResourceGroupName -n AKSName -h ContainerRegistryName -r PathOfTheProject -y
+   ```
 
-1. Installeer de [Bridge in de Kubernetes-extensie][vsc-marketplace].
-1. Schakel de Azure dev Spaces-controller uit met behulp van de Azure Portal of de [Azure dev Spaces-cli][azds-delete].
-1. Verwijder het `azds.yaml` bestand uit uw project.
-1. Implementeer uw toepassing opnieuw.
-1. Configureer de brug naar Kubernetes op uw geïmplementeerde toepassing. Zie [Bridge gebruiken voor Kubernetes][use-btk-vsc]voor meer informatie over het gebruik van Bridge voor Kubernetes in Visual Studio code.
-1. Start fout opsporing in Visual Studio code met behulp van de zojuist gemaakte brug naar het Kubernetes-start profiel.
+   Het script ondersteunt de volgende vlaggen:
+
+   ```cmd  
+    -g Name of resource group of AKS Cluster [required]
+    -n Name of AKS Cluster [required]
+    -h Container registry name. Examples: ACR, Docker [required]
+    -k Kubernetes namespace to deploy resources (uses 'default' otherwise)
+    -r Path to root of the project that needs to be migrated (default = current working directory)
+    -t Image name & tag in format 'name:tag' (default is 'projectName:stable')
+    -i Enable a public endpoint to access your service over internet. (default is false)
+    -y Doesn't prompt for non-tty terminals
+    -d Helm Debug switch
+   ```
+
+1. Migreer hand matig aanpassingen, zoals omgevings variabele-instellingen, in *azds. yaml* naar het bestand *Values. yml* van het project.
+1. Beschrijving Verwijder het `azds.yaml` bestand uit uw project.
+1. Configureer de brug naar Kubernetes op uw geïmplementeerde toepassing. Zie [Bridge gebruiken voor Kubernetes in Visual Studio][use-btk-vs]voor meer informatie over het gebruik van Bridge voor Kubernetes in Visual Studio. Zie [Bridge gebruiken voor Kubernetes in VS code][use-btk-vsc]voor VS code.
+1. Start fout opsporing met behulp van de zojuist gemaakte brug naar Kubernetes debug/start profile.
+1. U kunt het script opnieuw uitvoeren als dat nodig is om het opnieuw te implementeren in uw cluster.
 
 ## <a name="team-development-in-a-shared-cluster"></a>Team ontwikkeling in een gedeeld cluster
 

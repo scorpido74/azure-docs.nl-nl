@@ -7,10 +7,10 @@ ms.topic: troubleshooting
 ms.date: 03/18/2020
 ms.author: v-erkel
 ms.openlocfilehash: efa163a2c10a7dc93bf5d26865a0e7eb43f11dea
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87082763"
 ---
 # <a name="troubleshoot-nas-configuration-and-nfs-storage-target-issues"></a>Problemen met de NAS-configuratie en NFS-opslag doelen oplossen
@@ -96,7 +96,7 @@ Als u wilt voor komen dat er conflicten ontstaan met bestanden in meerdere uitvo
 
 De NAS moet de exports vermelden wanneer de Azure HPC-cache deze opvraagt.
 
-Op de meeste NFS-opslag systemen kunt u dit testen door de volgende query te verzenden vanaf een Linux-client:``showmount -e <storage IP address>``
+Op de meeste NFS-opslag systemen kunt u dit testen door de volgende query te verzenden vanaf een Linux-client: ``showmount -e <storage IP address>``
 
 Gebruik, indien mogelijk, een Linux-client uit hetzelfde virtuele netwerk als uw cache.
 
@@ -120,9 +120,9 @@ Er is geen eenvoudige manier om te bepalen of uw systeem dit probleem heeft tenz
 
   Dit zijn de opties in de opdracht:
 
-  * ``-M do``-Niet fragmenteren
-  * ``-c 1``-Slechts één pakket verzenden
-  * ``-s 1472``-Stel de grootte van de payload in op 1472 bytes. Dit is de maximale payload-waarde voor een 1500-byte-pakket na de accounting voor de Ethernet-overhead.
+  * ``-M do`` -Niet fragmenteren
+  * ``-c 1`` -Slechts één pakket verzenden
+  * ``-s 1472`` -Stel de grootte van de payload in op 1472 bytes. Dit is de maximale payload-waarde voor een 1500-byte-pakket na de accounting voor de Ethernet-overhead.
 
   Een geslaagd antwoord ziet er zo uit:
 

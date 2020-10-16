@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 04b5c9464c614c32f178e35e72cee98450007a62
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 38072e95ed89d8fbc095e2f8ed41ea1381636300
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91772784"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015152"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control-preview"></a>Toegang tot Key Vault sleutels, certificaten en geheimen bieden met behulp van een toegangs beheer op basis van rollen (preview) van Azure
 
@@ -37,7 +37,7 @@ Afzonderlijke sleutels, geheimen en machtigingen voor certificaten moeten alleen
 
 -   Toepassingen met meerdere lagen die het toegangs beheer tussen lagen moeten scheiden
 
--   Gedeelde sleutel kluis met veelvoorkomende geheimen, wanneer toepassingen toegang nodig hebben tot subsets van geheimen in die sleutel kluis
+-   Afzonderlijk geheim delen tussen meerdere toepassingen
 
 Meer informatie over de richt lijnen voor Azure Key Vault beheer vindt u in:
 
@@ -70,7 +70,7 @@ Het nieuwe Azure RBAC-machtigings model voor sleutel kluis biedt een alternatief
 Als u roltoewijzingen wilt toevoegen, hebt u het volgende nodig:
 
 - Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
-- Machtigingen voor `Microsoft.Authorization/roleAssignments/write` en `Microsoft.Authorization/roleAssignments/delete`, zoals [Beheerder van gebruikerstoegang](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles.md#user-access-administrator) of [Eigenaar](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles.md#owner)
+- Machtigingen voor `Microsoft.Authorization/roleAssignments/write` en `Microsoft.Authorization/roleAssignments/delete`, zoals [Beheerder van gebruikerstoegang](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) of [Eigenaar](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)
 
 ### <a name="enable-azure-rbac-permissions-on-key-vault"></a>Azure RBAC-machtigingen inschakelen voor Key Vault
 
@@ -224,7 +224,7 @@ Zie voor meer informatie over het maken van aangepaste rollen:
 
 -   Latentie van roltoewijzingen: bij huidige verwachte prestaties duurt het Maxi maal tien minuten (600 seconden) nadat roltoewijzingen zijn gewijzigd voor het Toep assen van de rol
 
-## <a name="learn-more"></a>Meer informatie
+## <a name="learn-more"></a>Lees meer
 
 - [Overzicht van Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
 - [Zelf studie voor aangepaste rollen](https://docs.microsoft.com/azure/role-based-access-control/tutorial-custom-role-cli)

@@ -7,12 +7,12 @@ ms.date: 01/27/2020
 ms.topic: how-to
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: e00b1cf11b906390335f257b20787d394b3a8ed4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26fc916a2bacc0f6ae9791a53b642e93bb031466
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85117162"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077980"
 ---
 # <a name="standard-quota-increase-limits-by-vm-series"></a>Standaardquotum: limieten verhogen per VM-reeks
 
@@ -30,7 +30,7 @@ Wanneer u een nieuwe spot-VM implementeert, mag het totale nieuwe en bestaande v
 
 U kunt een verhoging van de vCPU-quotum limiet voor de VM-serie aanvragen met behulp van de Azure Portal. Een toename in het quotum van de VM-reeks verhoogt automatisch de totale regionale vCPU limiet met hetzelfde bedrag.
 
-Zie vCPU voor [virtuele machines](../../virtual-machines/windows/quotas.md) en Azure-abonnementen en- [service limieten](https://docs.microsoft.com/azure/azure-supportability/classic-deployment-model-quota-increase-requests)voor meer informatie over standaard-quota quota's.
+Zie vCPU voor [virtuele machines](../../virtual-machines/windows/quotas.md) en Azure-abonnementen en- [service limieten](./classic-deployment-model-quota-increase-requests.md)voor meer informatie over standaard-quota quota's.
 
 Zie voor meer informatie over het verhogen van de limiet voor vCPU per regio voor standaard quotum de [standaard quota: limieten per regio verhogen](regional-quota-requests.md).
 

@@ -1,5 +1,5 @@
 ---
-title: Access Control op basis van rollen gebruiken in azure API Management | Microsoft Docs
+title: Role-Based Access Control gebruiken in azure API Management | Microsoft Docs
 description: Meer informatie over het gebruik van de ingebouwde rollen en het maken van aangepaste rollen in azure API Management
 services: api-management
 documentationcenter: ''
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
 ms.openlocfilehash: faef2721b48ffab12264c585d2dec55ab9334016
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87015286"
 ---
 # <a name="how-to-use-role-based-access-control-in-azure-api-management"></a>Op rollen gebaseerd toegangsbeheer gebruiken in API Management
@@ -44,7 +44,7 @@ De volgende tabel bevat korte beschrijvingen van de ingebouwde rollen. U kunt de
 
 <sup>[2] schrijf toegang tot API Management Services en entiteiten, met uitzonde ring van de volgende bewerkingen: instanties maken, verwijderen en schalen; VPN-configuratie; en aangepaste domein instelling.</sup>
 
-<sup>\*De functie Service-editor is beschikbaar nadat alle beheer-UI van de bestaande Publisher-Portal naar de Azure Portal zijn gemigreerd. De rol inhouds beheerder is beschikbaar nadat de Publisher-Portal is gefactord, zodat deze alleen functionaliteit bevat die betrekking heeft op het beheren van de ontwikkelaars Portal.</sup>  
+<sup>\* De functie Service-editor is beschikbaar nadat alle beheer-UI van de bestaande Publisher-Portal naar de Azure Portal zijn gemigreerd. De rol inhouds beheerder is beschikbaar nadat de Publisher-Portal is gefactord, zodat deze alleen functionaliteit bevat die betrekking heeft op het beheren van de ontwikkelaars Portal.</sup>  
 
 ## <a name="custom-roles"></a>Aangepaste rollen
 
@@ -79,7 +79,7 @@ Het artikel van de [Azure Resource Manager resource provider](../role-based-acce
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de volgende artikelen voor meer informatie over op rollen gebaseerde Access Control in Azure:
+Raadpleeg de volgende artikelen voor meer informatie over Role-Based Access Control in Azure:
   * [Aan de slag met toegangsbeheer in de Azure-portal](../role-based-access-control/overview.md)
   * [Roltoewijzingen gebruiken voor het beheer van de toegang tot de resources van uw Azure-abonnement](../role-based-access-control/role-assignments-portal.md)
   * [Aangepaste rollen in azure RBAC](../role-based-access-control/custom-roles.md)

@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 108bdf057cd375e28b10a6838ec5c8c6f57749a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84707273"
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>Gegevens verplaatsen van SAP Business Warehouse met behulp van Azure Data Factory
@@ -63,12 +63,12 @@ In de volgende tabel vindt u een beschrijving van de JSON-elementen die specifie
 
 Eigenschap | Beschrijving | Toegestane waarden | Vereist
 -------- | ----------- | -------------- | --------
-server | De naam van de server waarop het SAP BW-exemplaar zich bevindt. | tekenreeks | Yes
-systemNumber | Systeem nummer van het SAP BW systeem. | Decimaal getal van twee cijfers dat wordt weer gegeven als een teken reeks. | Yes
-clientId | Client-ID van de client in het SAP W-systeem. | Decimaal getal met drie cijfers dat wordt weer gegeven als een teken reeks. | Yes
-gebruikersnaam | Naam van de gebruiker die toegang heeft tot de SAP-server | tekenreeks | Yes
-wachtwoord | Het wachtwoord voor de gebruiker. | tekenreeks | Yes
-gatewayName | De naam van de gateway die de Data Factory-service moet gebruiken om verbinding te maken met het on-premises SAP BW exemplaar. | tekenreeks | Yes
+server | De naam van de server waarop het SAP BW-exemplaar zich bevindt. | tekenreeks | Ja
+systemNumber | Systeem nummer van het SAP BW systeem. | Decimaal getal van twee cijfers dat wordt weer gegeven als een teken reeks. | Ja
+clientId | Client-ID van de client in het SAP W-systeem. | Decimaal getal met drie cijfers dat wordt weer gegeven als een teken reeks. | Ja
+gebruikersnaam | Naam van de gebruiker die toegang heeft tot de SAP-server | tekenreeks | Ja
+wachtwoord | Het wachtwoord voor de gebruiker. | tekenreeks | Ja
+gatewayName | De naam van de gateway die de Data Factory-service moet gebruiken om verbinding te maken met het on-premises SAP BW exemplaar. | tekenreeks | Ja
 encryptedCredential | De versleutelde referentie teken reeks. | tekenreeks | No
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
@@ -86,7 +86,7 @@ Wanneer de bron in de Kopieer activiteit van het type **RelationalSource** is (i
 
 | Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
-| query | Hiermee geeft u de MDX-query op die gegevens uit het SAP BW exemplaar moet lezen. | MDX-query. | Yes |
+| query | Hiermee geeft u de MDX-query op die gegevens uit het SAP BW exemplaar moet lezen. | MDX-query. | Ja |
 
 
 ## <a name="json-example-copy-data-from-sap-business-warehouse-to-azure-blob"></a>JSON-voor beeld: gegevens kopiëren van SAP Business Warehouse naar Azure Blob
@@ -293,9 +293,9 @@ Gegevens type in de ABAP-woorden lijst | .NET-gegevens type
 ACCP |  Int
 CHAR | Tekenreeks
 CLNT | Tekenreeks
-LOPEN | Decimal
+LOPEN | Decimaal
 CUKY | Tekenreeks
-DEC | Decimal
+DEC | Decimaal
 FLTP | Dubbel
 INT1 | Byte
 INT2 | Int16
@@ -304,7 +304,7 @@ LANG | Tekenreeks
 LCHR | Tekenreeks
 LRAW | Byte []
 PREC | Int16
-QUAN | Decimal
+QUAN | Decimaal
 UITGANG | Byte []
 RAWSTRING | Byte []
 TEKENREEKSEXPRESSIE | Tekenreeks

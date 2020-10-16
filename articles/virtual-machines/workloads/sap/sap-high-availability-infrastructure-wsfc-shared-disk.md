@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/25/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8f389581d8fbeb912507b303c46109dd08fcab8d
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 2653742b788ab24fc295ebc156090d1db5f85268
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871513"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978489"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>De Azure-infra structuur voor SAP HA voorbereiden met behulp van een Windows-failovercluster en een gedeelde schijf voor SAP ASCS/SCS
 
@@ -165,10 +165,10 @@ ms.locfileid: "88871513"
 In dit artikel worden de stappen beschreven die u moet uitvoeren om de Azure-infra structuur voor te bereiden voor het installeren en configureren van een High-Availability SAP ASCS/SCS-exemplaar op een Windows-failovercluster met behulp van een *gedeelde cluster schijf* als optie voor het clusteren van een SAP ASCS-exemplaar.
 In de documentatie worden twee alternatieven voor *gedeelde cluster schijven* weer gegeven:
 
-- [Gedeelde Azure-schijven](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared)
+- [Gedeelde Azure-schijven](../../windows/disks-shared.md)
 - Met de [Data keeper-cluster versie van Sios](https://us.sios.com/products/datakeeper-cluster/) gespiegelde opslag maken, waarmee geclusterde gedeelde schijf wordt gesimuleerd 
 
-De gepresenteerde configuratie is afhankelijk van [Azure proximity placement groups (PPG)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios) om een optimale netwerk LATENTIE voor SAP-workloads te krijgen. De documentatie heeft geen betrekking op de laag van de data base.  
+De gepresenteerde configuratie is afhankelijk van [Azure proximity placement groups (PPG)](./sap-proximity-placement-scenarios.md) om een optimale netwerk LATENTIE voor SAP-workloads te krijgen. De documentatie heeft geen betrekking op de laag van de data base.  
 
 > [!NOTE]
 > Voor Azure proximity placement groups gelden de vereisten voor het gebruik van een gedeelde Azure-schijf.
@@ -192,14 +192,14 @@ De namen van de hosts en de IP-adressen voor het weer gegeven scenario zijn:
 | --- | --- | --- |---| ---|
 | ASCS/SCS-cluster van 1e cluster node |PR1-ascs-10 |10.0.0.4 |PR1-ascs-avset |PR1PPG |
 | 2e cluster knooppunt ASCS/SCS-cluster |PR1-ascs-11 |10.0.0.5 |PR1-ascs-avset |PR1PPG |
-| Cluster netwerk naam | pr1clust |10.0.0.42 (**alleen** voor het Win 2016-cluster) | N.v.t. | N.v.t. |
-| ASCS-cluster netwerk naam | pr1-ascscl |10.0.0.43 | N.v.t. | N.v.t. |
-| ERS-cluster netwerk naam (**alleen** voor ERS2) | pr1-erscl |10.0.0.44 | N.v.t. | N.v.t. |
+| Naam van het clusternetwerk | pr1clust |10.0.0.42 (**alleen** voor het Win 2016-cluster) | n.v.t. | n.v.t. |
+| ASCS-cluster netwerk naam | pr1-ascscl |10.0.0.43 | n.v.t. | n.v.t. |
+| ERS-cluster netwerk naam (**alleen** voor ERS2) | pr1-erscl |10.0.0.44 | n.v.t. | n.v.t. |
 
 
 ## <a name="create-azure-internal-load-balancer"></a><a name="fe0bd8b5-2b43-45e3-8295-80bee5415716"></a> Interne Azure-load balancer maken
 
-SAP ASCS, SAP SCS en de nieuwe SAP ERS2, gebruiken virtuele hostnamen en virtuele IP-adressen. In Azure is een [Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) vereist voor het gebruik van een virtueel IP-adres. Het is raadzaam om [standaard Load Balancer](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal)te gebruiken. 
+SAP ASCS, SAP SCS en de nieuwe SAP ERS2, gebruiken virtuele hostnamen en virtuele IP-adressen. In Azure is een [Load Balancer](../../../load-balancer/load-balancer-overview.md) vereist voor het gebruik van een virtueel IP-adres. Het is raadzaam om [standaard Load Balancer](../../../load-balancer/quickstart-load-balancer-standard-public-portal.md)te gebruiken. 
 
 
 De volgende lijst bevat de configuratie van de (A) SCS/ERS-load balancer. De configuratie voor zowel SAP ASCS als ERS2 wordt uitgevoerd in dezelfde Azure-load balancer.  
@@ -263,8 +263,8 @@ De volgende Register vermeldingen moeten op beide cluster knooppunten worden gew
 
 | Pad| Naam van de variabele | Type variabele  | Waarde | Documentatie |
 | --- | --- | --- |---| ---|
-| HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |KeepAliveTime |REG_DWORD (decimaal) |120000 |[KeepAliveTime](https://technet.microsoft.com/library/cc957549.aspx) |
-| HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |KeepAliveInterval |REG_DWORD (decimaal) |120000 |[KeepAliveInterval](https://technet.microsoft.com/library/cc957548.aspx) |
+| HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |KeepAliveTime |REG_DWORD (decimaal) |120000 |[KeepAliveTime](/previous-versions/windows/it-pro/windows-2000-server/cc957549(v=technet.10)) |
+| HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |KeepAliveInterval |REG_DWORD (decimaal) |120000 |[KeepAliveInterval](/previous-versions/windows/it-pro/windows-2000-server/cc957548(v=technet.10)) |
 
 
 Start beide cluster knooppunten opnieuw op om de wijzigingen toe te passen.
@@ -325,7 +325,7 @@ Zie voor meer informatie [Windows Server 2019 failover clustering nieuwe functie
    ```
 
 ### <a name="configure-cluster-cloud-quorum"></a>Het cluster Cloud quorum configureren
-Als u Windows Server 2016 of 2019 gebruikt, wordt u aangeraden [Azure-cloudwitness](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness)als cluster quorum te configureren.
+Als u Windows Server 2016 of 2019 gebruikt, wordt u aangeraden [Azure-cloudwitness](/windows-server/failover-clustering/deploy-cloud-witness)als cluster quorum te configureren.
 
 Voer deze opdracht uit op een van de cluster knooppunten:
 

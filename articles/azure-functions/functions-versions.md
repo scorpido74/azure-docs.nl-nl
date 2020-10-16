@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 12/09/2019
 ms.openlocfilehash: 6641461e63d7c9452351f3b0b99a274d2714a92e
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88208108"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Overzicht van Azure Functions runtime versies
@@ -28,7 +28,7 @@ De volgende tabel geeft aan welke programmeer talen momenteel worden ondersteund
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
-Zie [ondersteunde talen](supported-languages.md)voor meer informatie.
+Zie voor meer informatie [Ondersteunde talen](supported-languages.md).
 
 ## <a name="run-on-a-specific-version"></a><a name="creating-1x-apps"></a>Uitvoeren op een specifieke versie
 
@@ -100,7 +100,7 @@ De versie van de functions-runtime die wordt gebruikt door gepubliceerde apps in
 
 | Waarde | Runtime-doel |
 | ------ | -------- |
-| `~3` | controleert |
+| `~3` | 3.x |
 | `~2` | 2.x |
 | `~1` | 1.x |
 
@@ -115,7 +115,7 @@ U kunt de volgende updates gebruiken om apps te laten werken om de doel versies 
 
 In Visual Studio selecteert u de runtime versie wanneer u een project maakt. Azure Functions-hulpprogram ma's voor Visual Studio ondersteunt de drie belang rijke runtime versies. De juiste versie wordt gebruikt bij het opsporen van fouten en het publiceren op basis van project instellingen. De versie-instellingen worden gedefinieerd in het `.csproj` bestand in de volgende eigenschappen:
 
-##### <a name="version-1x"></a>Versie 1. x
+##### <a name="version-1x"></a>Versie 1.x
 
 ```xml
 <TargetFramework>net461</TargetFramework>

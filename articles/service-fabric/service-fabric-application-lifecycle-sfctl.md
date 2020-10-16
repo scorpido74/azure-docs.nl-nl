@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/31/2018
 ms.author: bikang
 ms.openlocfilehash: 7d361d44c349bc7a6e3c041f78d00ad66182fa15
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84711031"
 ---
 # <a name="manage-an-azure-service-fabric-application-by-using-azure-service-fabric-cli-sfctl"></a>Een Azure Service Fabric-toepassing beheren met behulp van Azure Service Fabric CLI (sfctl)
@@ -73,7 +73,7 @@ Als u het toepassings pakket uit het archief met installatie kopieën wilt verwi
 sfctl store delete --content-path app_package_dir
 ```
 
-`content-path`moet de naam zijn van de map die u hebt geüpload tijdens het maken van de toepassing.
+`content-path` moet de naam zijn van de map die u hebt geüpload tijdens het maken van de toepassing.
 
 ### <a name="create-an-application-from-an-application-type"></a>Een toepassing maken op basis van een toepassings type
 
@@ -83,7 +83,7 @@ Nadat u de toepassing hebt ingericht, gebruikt u de volgende opdracht voor het b
 sfctl application create --app-name fabric:/TestApp --app-type TestAppType --app-version 1.0
 ```
 
-`app-name`is de naam die u wilt gebruiken voor het toepassings exemplaar. U kunt aanvullende para meters ophalen uit het eerder ingerichte toepassings manifest.
+`app-name` is de naam die u wilt gebruiken voor het toepassings exemplaar. U kunt aanvullende para meters ophalen uit het eerder ingerichte toepassings manifest.
 
 De naam van de toepassing moet beginnen met het voor voegsel `fabric:/` .
 

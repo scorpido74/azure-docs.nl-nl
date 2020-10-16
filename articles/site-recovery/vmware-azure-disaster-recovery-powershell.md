@@ -8,20 +8,20 @@ ms.date: 01/10/2020
 ms.topic: conceptual
 ms.author: sutalasi
 ms.openlocfilehash: de25a3f9df04b09a7337dc889a688a171d98db28
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86129907"
 ---
-# <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>Herstel na nood geval instellen voor virtuele VMware-machines in azure met Power shell
+# <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>Herstel na noodgevallen van virtuele VMware-machines naar Azure instellen met PowerShell
 
 In dit artikel ziet u hoe u virtuele VMware-machines repliceert naar Azure met behulp van Azure PowerShell.
 
 In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
-> - Maak een Recovery Services kluis en stel de kluis context in.
+> - Een Recovery Services-kluis maken en de kluiscontext instellen.
 > - Valideer de registratie van de server in de kluis.
 > - Stel de replicatie in, met inbegrip van een replicatie beleid. Voeg uw vCenter-Server toe en ontdek Vm's.
 > - Een vCenter-Server toevoegen en detecteren
@@ -37,11 +37,11 @@ Voordat u begint:
 
 - Zorg ervoor dat u inzicht hebt in de [architectuur en onderdelen voor dit scenario](vmware-azure-architecture.md).
 - Raadpleeg de [ondersteuningsvereisten](./vmware-physical-azure-support-matrix.md) voor alle onderdelen.
-- U hebt de `Az` module Azure PowerShell. Als u Azure PowerShell moet installeren of upgraden, volgt u deze [hand leiding voor het installeren en configureren van Azure PowerShell](/powershell/azure/install-az-ps).
+- U hebt de `Az`  module Azure PowerShell. Als u Azure PowerShell moet installeren of upgraden, volgt u deze [hand leiding voor het installeren en configureren van Azure PowerShell](/powershell/azure/install-az-ps).
 
 ## <a name="log-into-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij uw Azure-abonnement met de cmdlet Connect-AzAccount:
+Meld u aan bij uw Azure-abonnement met behulp van de cmdlet Connect-AzAccount:
 
 ```azurepowershell
 Connect-AzAccount
@@ -98,7 +98,7 @@ Select-AzSubscription -SubscriptionName "ASR Test Subscription"
 
 4. Gebruik de gedownloade kluis registratie sleutel en volg de stappen in de onderstaande artikelen om de installatie en registratie van de configuratie server te volt ooien.
    - [Uw beveiligings doelen kiezen](vmware-azure-set-up-source.md#choose-your-protection-goals)
-   - [De bron omgeving instellen](vmware-azure-set-up-source.md#set-up-the-configuration-server)
+   - [De bronomgeving instellen](vmware-azure-set-up-source.md#set-up-the-configuration-server)
 
 ### <a name="set-the-vault-context"></a>De kluis context instellen
 
@@ -118,7 +118,7 @@ In het onderstaande voor beeld wordt de kluis Details van de variabele $vault ge
    VMwareDRToAzurePs VMwareDRToAzurePs Microsoft.RecoveryServices vaults
    ```
 
-Als alternatief voor de cmdlet Set-ASRVaultContext kan een van de cmdlet Import-AzRecoveryServicesAsrVaultSettingsFile ook worden gebruikt om de kluis context in te stellen. Geef het pad op waar het bestand met de kluis registratie sleutel zich bevindt als de para meter-Path van de cmdlet Import-AzRecoveryServicesAsrVaultSettingsFile. Bijvoorbeeld:
+Als alternatief voor de Set-ASRVaultContext cmdlet kan een ook de Import-AzRecoveryServicesAsrVaultSettingsFile cmdlet gebruiken om de kluis context in te stellen. Geef het pad op waar het bestand met de kluis registratie sleutel zich bevindt als de para meter-Path voor de cmdlet Import-AzRecoveryServicesAsrVaultSettingsFile. Bijvoorbeeld:
 
    ```azurepowershell
    Get-AzRecoveryServicesVaultSettingsFile -SiteRecovery -Vault $Vault -Path "C:\Work\"
@@ -279,7 +279,7 @@ In deze stap worden er twee replicatie beleidsregels gemaakt. Eén beleid voor h
 
 ## <a name="add-a-vcenter-server-and-discover-vms"></a>Een vCenter-Server toevoegen en Vm's detecteren
 
-Voeg een vCenter Server toe op IP-adres of hostnaam. De para meter **-Port** specificeert de poort op de vCenter-Server waarmee verbinding moet worden gemaakt. in de para meter-name wordt een beschrijvende naam voor de vCenter **-** server opgegeven en de para meter **-account** geeft de account ingang op de configuratie server op die moet worden gebruikt om virtuele machines te detecteren die worden beheerd door de vCenter-Server.
+Voeg een vCenter Server toe op IP-adres of hostnaam. De para meter **-Port** specificeert de poort op de vCenter-Server waarmee verbinding moet worden gemaakt. in de para meter-name wordt een beschrijvende naam voor de vCenter **-** server opgegeven en de para meter  **-account** geeft de account ingang op de configuratie server op die moet worden gebruikt om virtuele machines te detecteren die worden beheerd door de vCenter-Server.
 
 ```azurepowershell
 # The $AccountHandles[0] variable holds details of vCenter_account
@@ -351,10 +351,10 @@ U hebt de volgende gegevens nodig om een gedetecteerde virtuele machine te bevei
 Repliceer nu de volgende virtuele machines met de instellingen die zijn opgegeven in deze tabel
 
 
-|Virtuele machine  |Proces server        |Opslagaccount              |Opslag account voor logboek  |Beleid           |Account voor de installatie van de Mobility-service|Doel resource groep  | Virtueel netwerk van doel  |Doel-subnet  |
+|Virtuele machine  |Proces server        |Opslagaccount              |Opslag account voor logboek  |Beleid           |Account voor de installatie van de Mobility-service|Doelresourcegroep  | Virtueel doelnetwerk  |Doel-subnet  |
 |-----------------|----------------------|-----------------------------|---------------------|-----------------|-----------------------------------------|-----------------------|-------------------------|---------------|
 |CentOSVM1       |ConfigurationServer   |N.v.t.| logstorageaccount1                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |
-|Win2K12VM1       |Uitschalen-ProcessServer|premiumstorageaccount1       |logstorageaccount1   |ReplicationPolicy|WindowsAccount                           |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |   
+|Win2K12VM1       |ScaleOut-ProcessServer|premiumstorageaccount1       |logstorageaccount1   |ReplicationPolicy|WindowsAccount                           |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |   
 |CentOSVM2       |ConfigurationServer   |replicationstdstorageaccount1| N.v.t.                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |   
 
 
@@ -411,7 +411,7 @@ Win2K12VM1   Protected                       Normal
 
 ## <a name="configure-failover-settings"></a>Failover-instellingen configureren
 
-Failover-instellingen voor beveiligde computers kunnen worden bijgewerkt met de cmdlet Set-ASRReplicationProtectedItem. Enkele van de instellingen die kunnen worden bijgewerkt met deze cmdlet zijn:
+Failover-instellingen voor beveiligde computers kunnen worden bijgewerkt met behulp van de cmdlet Set-ASRReplicationProtectedItem. Enkele van de instellingen die kunnen worden bijgewerkt met deze cmdlet zijn:
 * De naam van de virtuele machine die moet worden gemaakt voor de failover
 * VM-grootte van de virtuele machine die moet worden gemaakt op failover
 * Virtueel Azure-netwerk en subnet waarmee de Nic's van de virtuele machine moeten worden verbonden bij failover
@@ -461,7 +461,7 @@ Errors           : {}
    ```
 2. Zodra de testfailover is voltooid, ziet u dat er een virtuele machine met de naam *'-test '* (in dit geval Win2K12VM1-test) is gemaakt in Azure.
 3. U kunt nu verbinding maken met de virtuele machine waarvoor de test is mislukt en de testfailover valideren.
-4. Ruim de testfailover op met de cmdlet start-ASRTestFailoverCleanupJob. Met deze bewerking wordt de virtuele machine verwijderd die is gemaakt als onderdeel van de testfailover.
+4. Ruim de testfailover op met behulp van de cmdlet Start-ASRTestFailoverCleanupJob. Met deze bewerking wordt de virtuele machine verwijderd die is gemaakt als onderdeel van de testfailover.
 
    ```azurepowershell
    $Job_TFOCleanup = Start-AzRecoveryServicesAsrTestFailoverCleanupJob -ReplicationProtectedItem $ReplicatedVM1

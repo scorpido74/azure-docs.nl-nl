@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.devlang: azurepowershell
 ms.date: 09/22/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9c921541cc1f27eb7a9af186c25346f101ba65d2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6912f7f6fdc88c5d611bfbfd78f15e5f7a949f70
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91347904"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951839"
 ---
 # <a name="quickstart-create-an-azure-custom-resource-provider-with-azure-powershell"></a>Quickstart: Een aangepaste Azure-resourceprovider maken met Azure PowerShell
 
@@ -25,7 +25,7 @@ In deze quickstart leert u hoe u uw eigen aangepaste Azure-resourceprovider kunt
 
 Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
-Als u PowerShell lokaal wilt gebruiken, moet u voor dit artikel de Az-module van PowerShell installeren en verbinding maken met uw Azure-account met behulp van de cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount). Zie [Azure PowerShell installeren](/powershell/azure/install-az-ps) voor meer informatie over het installeren van de Az-module van PowerShell. Als u Cloud Shell gebruikt, raadpleegt u [Overzicht van Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) voor meer informatie.
+Als u PowerShell lokaal wilt gebruiken, moet u voor dit artikel de Az-module van PowerShell installeren en verbinding maken met uw Azure-account met behulp van de cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount). Zie [Azure PowerShell installeren](/powershell/azure/install-az-ps) voor meer informatie over het installeren van de Az-module van PowerShell. Als u Cloud Shell gebruikt, raadpleegt u [Overzicht van Azure Cloud Shell](../../cloud-shell/overview.md) voor meer informatie.
 
 > [!IMPORTANT]
 > Zo lang de PowerShell-module **Az.CustomProviders** in de preview-fase is, moet u deze afzonderlijk installeren met behulp van de cmdlet `Install-Module`. Zodra de PowerShell-module algemeen beschikbaar komt, wordt het onderdeel van toekomstige releases van Az PowerShell en is de module systeemeigen beschikbaar vanuit Azure Cloud Shell.

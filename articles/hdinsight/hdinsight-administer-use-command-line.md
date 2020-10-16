@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/26/2020
 ms.openlocfilehash: 2c6495454e5ba2449d4b3c74a096681f74610813
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84699359"
 ---
 # <a name="manage-azure-hdinsight-clusters-using-azure-cli"></a>Azure HDInsight-clusters beheren met Azure CLI
@@ -31,7 +31,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="connect-to-azure"></a>Verbinding maken met Azure
 
-Meld u aan bij uw Azure-abonnement. Als u Azure Cloud Shell wilt gebruiken, selecteert u **deze** in de rechter bovenhoek van het code blok. Anders voert u de onderstaande opdracht in:
+Meld u aan bij uw Azure-abonnement. Als u Azure Cloud Shell wilt gebruiken, selecteert u **Probeer het** in de rechterbovenhoek van het codeblok. Anders voert u de onderstaande opdracht in:
 
 ```azurecli-interactive
 az login
@@ -40,7 +40,7 @@ az login
 # az account set --subscription "SUBSCRIPTIONID"
 ```
 
-## <a name="list-clusters"></a>Clusters weer geven
+## <a name="list-clusters"></a>Clusters weergeven
 
 Gebruik [AZ hdinsight List](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-list) om clusters weer te geven. Bewerk de onderstaande opdrachten door `RESOURCE_GROUP_NAME` de naam van de resource groep te vervangen en voer de volgende opdrachten in:
 
@@ -90,7 +90,7 @@ az hdinsight resize --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME --w
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u verschillende beheer taken voor HDInsight-clusters kunt uitvoeren. Raadpleeg de volgende artikelen voor meer informatie:
+In dit artikel hebt u geleerd hoe u verschillende beheer taken voor HDInsight-clusters kunt uitvoeren. Lees de volgende artikelen voor meer informatie:
 
 * [Apache Hadoop clusters in HDInsight beheren door gebruik te maken van de Azure Portal](hdinsight-administer-use-portal-linux.md)
 * [HDInsight beheren met behulp van Azure PowerShell](hdinsight-administer-use-powershell.md)

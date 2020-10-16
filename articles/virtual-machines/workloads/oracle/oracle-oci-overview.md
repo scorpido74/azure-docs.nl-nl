@@ -1,25 +1,18 @@
 ---
 title: Microsoft Azure integreren met Oracle-Cloud infrastructuur | Microsoft Docs
 description: Meer informatie over oplossingen voor het integreren van Oracle-apps die worden uitgevoerd op Microsoft Azure met data bases in Oracle Cloud Infrastructure (OCI).
-services: virtual-machines-linux
-documentationcenter: ''
 author: dbakevlar
-manager: ''
-tags: ''
-ms.assetid: ''
-ms.service: virtual-machines
+ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 06/01/2020
 ms.author: kegorman
-ms.custom: ''
-ms.openlocfilehash: a73d327ad2a251b5043da7e58c14e5f6f311e334
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.reviewer: cynthn
+ms.openlocfilehash: 2e09f92e21743d39cbd132637cc63b27e8cfe944
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91274500"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996137"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure"></a>Oracle-toepassings oplossingen die Microsoft Azure en Oracle-Cloud infrastructuur integreren
 
@@ -68,7 +61,7 @@ Met ExpressRoute en FastConnect kunnen klanten een virtueel netwerk in azure kop
 
 Netwerk beveiliging is een cruciaal onderdeel van een bedrijfs toepassing en is centraal voor deze oplossing met meerdere clouds. Elk verkeer dat ExpressRoute en FastConnect doorstuurt, wordt via een particulier netwerk verzonden. Met deze configuratie kunt u beveiligde communicatie tussen een virtueel Azure-netwerk en een virtuele Oracle-Cloud netwerk. U hoeft geen openbaar IP-adres op te geven voor virtuele machines in Azure. Op dezelfde manier hebt u geen Internet gateway nodig in OCI. Alle communicatie gebeurt via het privé-IP-adres van de computers.
 
-Daarnaast kunt u [beveiligings lijsten](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/securitylists.htm) instellen voor uw OCI virtuele Cloud netwerk en beveiligings regels (gekoppeld aan Azure- [netwerk beveiligings groepen](../../../virtual-network/security-overview.md)). Gebruik deze regels voor het beheren van het verkeer tussen computers in de virtuele netwerken. Netwerk beveiligings regels kunnen worden toegevoegd op computer niveau, op subnetniveau, en op het niveau van het virtuele netwerk.
+Daarnaast kunt u [beveiligings lijsten](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/securitylists.htm) instellen voor uw OCI virtuele Cloud netwerk en beveiligings regels (gekoppeld aan Azure- [netwerk beveiligings groepen](../../../virtual-network/network-security-groups-overview.md)). Gebruik deze regels voor het beheren van het verkeer tussen computers in de virtuele netwerken. Netwerk beveiligings regels kunnen worden toegevoegd op computer niveau, op subnetniveau, en op het niveau van het virtuele netwerk.
 
 De [WebLogic Server Azure-toepassingen](oracle-weblogic.md) maken elk een netwerk beveiligings groep vooraf geconfigureerd voor gebruik met de poort configuraties van de WebLogic-Server.
  

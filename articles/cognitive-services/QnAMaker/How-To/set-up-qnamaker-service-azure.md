@@ -6,10 +6,10 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.openlocfilehash: 9b8769ac5ccf83ebbdaaa0aa0d6452cc98eef7a3
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91777831"
 ---
 # <a name="manage-qna-maker-resources"></a>QnA Maker-resources beheren
@@ -236,7 +236,7 @@ De app service, die de QnA Maker Voorspellings runtime voor een gepubliceerde ke
 
 Als u de app voor Voorspellings eindpunt wilt laden, zelfs wanneer er geen verkeer is, stelt u de niet-actief in op altijd aan.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Zoek en selecteer de app service van uw QnA Maker-resource. Deze heeft dezelfde naam als de QnA Maker resource, maar heeft een ander **type** app service.
 1. Zoek **instellingen** en selecteer **configuratie**.
 1. In het deel venster configuratie selecteert u **algemene instellingen**, vervolgens **altijd zoeken in** **en selecteert u** als waarde.

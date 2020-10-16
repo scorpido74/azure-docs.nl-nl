@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 05/11/2020
 ms.author: memildin
 ms.openlocfilehash: 09b23e9951c6da597b82d2e012a57f2c93410a5d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91289800"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Wilt u archiveren wat er nieuw is in Azure Security Center?
@@ -88,7 +88,7 @@ De functies, bewerking en gebruikers interface voor het Azure Security Center va
 - **Veld motivering** : als u via de just-in-time pagina van de Azure portal toegang tot een virtuele machine (VM) wilt aanvragen, is er een nieuw optioneel veld beschikbaar om een reden voor de aanvraag in te voeren. Gegevens die in dit veld worden ingevoerd, kunnen in het activiteiten logboek worden bijgehouden. 
 - **Automatisch opschonen van redundante just-in-time (JIT)-regels** : wanneer u een JIT-beleid bijwerkt, wordt automatisch een opschoon programma uitgevoerd om de geldigheid van de volledige ruleset te controleren. Het hulp programma zoekt naar verschillen tussen regels in uw beleid en regels in het NSG. Als het hulp programma voor opschonen een niet-overeenkomend item detecteert, wordt de oorzaak bepaald en, wanneer het veilig is om dit te doen, verwijdert u ingebouwde regels die niet meer nodig zijn. De verruiming verwijdert nooit regels die u hebt gemaakt. 
 
-Meer informatie over [de JIT-toegangs functie](security-center-just-in-time.md).
+Meer informatie over [de JIT-toegangsfunctie](security-center-just-in-time.md).
 
 
 ### <a name="two-security-recommendations-for-web-applications-deprecated"></a>Twee beveiligings aanbevelingen voor afgeschafte webtoepassingen
@@ -96,7 +96,7 @@ Meer informatie over [de JIT-toegangs functie](security-center-just-in-time.md).
 Twee beveiligings aanbevelingen met betrekking tot webtoepassingen worden afgeschaft: 
 
 - De regels voor webtoepassingen op IaaS Nsg's moeten worden gehard.
-    (Gerelateerd beleid: de Nsg's-regels voor webtoepassingen op IaaS moeten worden gehard)
+    (Gerelateerd beleid: De regels voor NSG's ten aanzien van webtoepassingen op IaaS moeten strenger worden)
 
 - Toegang tot App Services moet worden beperkt.
     (Gerelateerd beleid: toegang tot App Services moet worden beperkt [Preview])
@@ -265,7 +265,7 @@ Met deze nieuwe ervaring hebben gebruikers een WAC-server voor Azure Security Ce
 
 ## <a name="september-2019"></a>September 2019
 
-De updates in september zijn onder andere:
+De updates in september zijn onder meer:
 
  - [Regels beheren met verbeteringen voor besturings elementen voor adaptieve toepassingen](#managing-rules-with-adaptive-application-controls-improvements)
  - [Aanbevelingen voor controle container beveiliging met behulp van Azure Policy](#control-container-security-recommendation-using-azure-policy)
@@ -274,7 +274,7 @@ De updates in september zijn onder andere:
 
 De ervaring van het beheren van regels voor virtuele machines met behulp van adaptieve toepassings besturings elementen is verbeterd. Met de adaptieve toepassings besturings elementen van Azure Security Center kunt u bepalen welke toepassingen kunnen worden uitgevoerd op uw virtuele machines. Naast een algemene verbetering van regel beheer, kunt u met een nieuw voor deel bepalen welke bestands typen worden beveiligd wanneer u een nieuwe regel toevoegt.
 
-Meer [informatie over adaptieve toepassings besturings elementen](security-center-adaptive-application.md).
+[Meer informatie over adaptieve toepassingsregelaars](security-center-adaptive-application.md).
 
 
 ### <a name="control-container-security-recommendation-using-azure-policy"></a>Aanbevelingen voor controle container beveiliging met behulp van Azure Policy
@@ -286,7 +286,7 @@ Als u uw ingeschakelde beveiligings beleid wilt bekijken, opent u de pagina beve
 
 ## <a name="august-2019"></a>Augustus 2019
 
-De updates in augustus zijn onder andere:
+De updates in augustus zijn onder meer:
 
  - [Just-in-time-VM-toegang voor Azure Firewall](#just-in-time-jit-vm-access-for-azure-firewall)
  - [Eén Klik op herbemiddeling om uw beveiligings postuur te verbeteren (preview-versie)](#single-click-remediation-to-boost-your-security-posture-preview)

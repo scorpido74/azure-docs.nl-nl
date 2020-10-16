@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 4/23/2019
 ms.author: ramamill
 ms.openlocfilehash: 40f912122e6ffb9cccbd32a747f6f0d46fd6c330
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87292803"
 ---
 # <a name="scale-with-additional-process-servers"></a>Schalen met extra proces servers
@@ -33,7 +33,7 @@ Vanuit 9,24-versie wordt hulp toegevoegd tijdens het selecteren van de proces se
 
 Controleer de grootte vereisten die in de tabel worden samenvatten. Als u in het algemeen uw implementatie moet schalen naar meer dan 200 bron machines of als u een totaal dagelijks verloop van meer dan 2 TB hebt, hebt u extra proces servers nodig om het verkeers volume af te handelen.
 
-| **Aanvullende proces server** | **Schijf grootte van cache** | **Gegevens wijzigings frequentie** | **Beveiligde machines** |
+| **Aanvullende proces server** | **Schijf grootte van cache** | **Frequentie van gegevenswijzigingen** | **Beveiligde machines** |
 | --- | --- | --- | --- |
 |4 Vcpu's (2 sockets * 2 kernen \@ 2,5 GHz), 8 GB geheugen |300 GB |250 GB of minder |Repliceren 85 of minder machines. |
 |8 Vcpu's (2 sockets * 4 kernen \@ 2,5 GHz), 12 GB geheugen |600 GB |250 GB tot 1 TB |Repliceren tussen 85-150 machines. |

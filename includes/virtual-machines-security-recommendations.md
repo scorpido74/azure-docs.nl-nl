@@ -9,10 +9,10 @@ ms.date: 11/13/2019
 ms.author: mbaldwin
 ms.custom: include file
 ms.openlocfilehash: e64e6b6abc921b1db6614ed36ba2e9c04fc86b1f
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87451118"
 ---
 Dit artikel bevat beveiligings aanbevelingen voor Azure Virtual Machines. Volg deze aanbevelingen om te voldoen aan de beveiligings verplichtingen die in ons model voor gedeelde verantwoordelijkheid zijn beschreven. De aanbevelingen helpen u ook om de algehele beveiliging van uw web-app-oplossingen te verbeteren. Zie [gedeelde verantwoordelijkheden voor Cloud Computing](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91)voor meer informatie over wat micro soft doet aan de verantwoordelijkheden van de service provider.
@@ -29,7 +29,7 @@ Zie [Wat is Azure Security Center?](../articles/security-center/security-center-
 | Zorg ervoor dat uw virtuele machines actueel blijven. | U kunt de [updatebeheer](../articles/automation/update-management/update-mgmt-overview.md) -oplossing in azure Automation gebruiken om updates van het besturings systeem voor uw Windows-en Linux-computers in azure te beheren. | [Ja](../articles/security-center/security-center-apply-system-updates.md) |
 | Maak een back-up van uw Vm's. | [Azure backup](../articles/backup/backup-overview.md) helpt bij het beveiligen van uw toepassings gegevens en minimale operationele kosten. Toepassings fouten kunnen uw gegevens beschadigen en menselijke fouten kunnen leiden tot fouten in uw toepassingen. Azure Backup beveiligt uw virtuele machines waarop Windows en Linux worden uitgevoerd. | - |
 | Gebruik meerdere Vm's voor grotere tolerantie en meer Beschik baarheid. | Als uw VM toepassingen uitvoert die Maxi maal beschikbaar moeten zijn, gebruikt u meerdere Vm's of [beschikbaarheids sets](../articles/virtual-machines/windows/manage-availability.md). | - |
-| Stel een strategie voor bedrijfs continuïteit en nood herstel (BCDR) vast. | Met Azure Site Recovery kunt u kiezen uit verschillende opties die zijn ontworpen ter ondersteuning van bedrijfs continuïteit. Het ondersteunt verschillende scenario's voor replicatie en failover. Zie [over site Recovery](../articles/site-recovery/site-recovery-overview.md)voor meer informatie. | - |
+| Stel een strategie voor bedrijfs continuïteit en nood herstel (BCDR) vast. | Met Azure Site Recovery kunt u kiezen uit verschillende opties die zijn ontworpen ter ondersteuning van bedrijfs continuïteit. Het ondersteunt verschillende scenario's voor replicatie en failover. Zie  [over site Recovery](../articles/site-recovery/site-recovery-overview.md)voor meer informatie. | - |
 
 ## <a name="data-security"></a>Gegevensbeveiliging
 

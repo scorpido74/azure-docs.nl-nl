@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: allensu
 ms.openlocfilehash: 0598f21cddbaeef6b3cd10cd77250eeae8bd34bf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84808712"
 ---
 # <a name="move-an-external-load-balancer-to-another-region-by-using-the-azure-portal"></a>Een externe load balancer naar een andere regio verplaatsen met behulp van de Azure Portal
@@ -28,7 +28,7 @@ U kunt in een letterlijke zin geen externe Azure-load balancer verplaatsen van d
 
 - Als u een externe load balancer configuratie wilt exporteren en een sjabloon wilt implementeren voor het maken van een externe load balancer in een andere regio, moet u de rol netwerk bijdrager of hoger toewijzen.
 
-- Identificeer de bron netwerk indeling en alle resources die u momenteel gebruikt. Deze indeling bevat, maar is niet beperkt tot load balancers, netwerk beveiligings groepen, open bare Ip's en virtuele netwerken.
+- Identificeer de bronnetwerkindeling en alle resources die u momenteel gebruikt. Deze indeling bevat, maar is niet beperkt tot load balancers, netwerk beveiligings groepen, open bare Ip's en virtuele netwerken.
 
 - Controleer of u met uw Azure-abonnement externe load balancers kunt maken in de doel regio. Neem contact op met ondersteuning voor het inschakelen van het vereiste quotum.
 
@@ -181,8 +181,8 @@ De volgende procedures laten zien hoe u de externe load balancer voor de verplaa
 6.  Als u de waarde van de open bare doel-IP wilt bewerken die u in de voor gaande stappen hebt verplaatst, moet u eerst de resource-ID ophalen en deze vervolgens in de parameters.jsin het bestand plakken. De ID ophalen:
 
     1. Meld u in een ander browser tabblad of-venster aan bij de [Azure Portal](https://portal.azure.com) en selecteer **resource groepen**.
-    2. Zoek de doel resource groep die het open bare IP-adres bevat dat u in de voor gaande stappen hebt verplaatst. Selecteer deze vraag.
-    3. Selecteer **instellingen**  >  **Eigenschappen**.
+    2. Zoek de doel resource groep die het open bare IP-adres bevat dat u in de voor gaande stappen hebt verplaatst. Selecteer deze.
+    3. Selecteer **Instellingen** > **Eigenschappen**.
     4. Markeer de **resource-id** op de Blade aan de rechter kant en kopieer deze naar het klem bord. U kunt ook **kopiëren naar het klem bord** rechts van het **resource-id-** pad selecteren.
     5. Plak de resource-ID in de eigenschap **waarde** in de editor **para meters bewerken** die is geopend in het andere browser venster of tabblad:
 
@@ -405,7 +405,7 @@ De volgende procedures laten zien hoe u de externe load balancer voor de verplaa
 
 Als u het doel-open bare IP-adres en de externe load balancer wilt verwijderen, verwijdert u de resource groep waarin deze zich bevinden. Als u dit wilt doen, selecteert u de resource groep in het dash board in de portal en selecteert u vervolgens **verwijderen** boven aan de pagina overzicht.
 
-## <a name="clean-up"></a>Opruimen
+## <a name="clean-up"></a>Opschonen
 
 Als u de wijzigingen wilt door voeren en de open bare IP-en externe load balancer wilt verplaatsen, verwijdert u de open bare IP-bron en de externe load balancer of resource groep. Hiertoe selecteert u die resource groep in het dash board in de portal en selecteert u vervolgens **verwijderen** boven aan elke pagina.
 

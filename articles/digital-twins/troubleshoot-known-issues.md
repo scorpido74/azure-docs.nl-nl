@@ -6,12 +6,12 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
-ms.openlocfilehash: e152c0227008dd12088660b2390a8d0a5f54de96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6f57f801f2270819d4a67a49590f5ba61b32afcb
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89290775"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047638"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Bekende problemen in azure Digital Apparaatdubbels
 
@@ -30,7 +30,7 @@ Voor Azure Digital Apparaatdubbels is dit van invloed op de volgende opdracht gr
 
 U kunt dit oplossen door de opdracht opnieuw `az login` uit te voeren in Cloud shell en volgende aanmeldings stappen te volt ooien. Daarna kunt u de opdracht opnieuw uitvoeren.
 
-Een alternatieve oplossing is om [de Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) op uw computer te installeren, zodat u Azure cli-opdrachten lokaal kunt uitvoeren. Dit probleem treedt niet op bij de lokale CLI.
+Een alternatieve oplossing is om [de Azure cli](/cli/azure/install-azure-cli?view=azure-cli-latest) op uw computer te installeren, zodat u Azure cli-opdrachten lokaal kunt uitvoeren. Dit probleem treedt niet op bij de lokale CLI.
 
 ### <a name="possible-causes"></a>Mogelijke oorzaken
 
@@ -60,7 +60,7 @@ Voor gebruikers die zijn aangemeld met een persoonlijk [Microsoft-account (MSA)]
 
 ## <a name="issue-with-interactive-browser-authentication"></a>Probleem met interactieve browser verificatie
 
-Wanneer u verificatie code in uw Azure Digital Apparaatdubbels-toepassingen schrijft met versie **1.2.0** van de ** [Azure. Identity](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet) -bibliotheek**, kunnen er problemen optreden met de [InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) -methode.
+Wanneer u verificatie code in uw Azure Digital Apparaatdubbels-toepassingen schrijft met versie **1.2.0** van de ** [Azure. Identity](/dotnet/api/azure.identity?view=azure-dotnet) -bibliotheek**, kunnen er problemen optreden met de [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) -methode.
 
 Dit is niet de meest recente versie van de bibliotheek. De meest recente versie is **1.2.2**.
 

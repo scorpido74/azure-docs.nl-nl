@@ -4,10 +4,10 @@ description: In dit artikel worden de stappen beschreven voor het weer geven van
 ms.topic: how-to
 ms.date: 07/10/2020
 ms.openlocfilehash: 24b5eb25f1c8c9044ad6e77545381a43a11714f9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87096756"
 ---
 # <a name="view-activity-logs-for-labs-in-azure-devtest-labs"></a>Activiteiten logboeken voor Labs in Azure DevTest Labs weer geven 
@@ -27,24 +27,24 @@ In dit artikel wordt uitgelegd hoe u activiteiten logboeken voor een lab in Azur
     :::image type="content" source="./media/activity-logs/configuration-policies-link.png" alt-text="Configuratie en beleid selecteren in het menu links":::
 1. Selecteer op de pagina **configuratie en beleid** de optie **activiteiten logboek** in het menu links onder **beheren**. U ziet vermeldingen voor bewerkingen die zijn uitgevoerd op het lab. 
 
-    :::image type="content" source="./media/activity-logs/activity-log.png" alt-text="Activiteitenlogboek":::    
+    :::image type="content" source="./media/activity-logs/activity-log.png" alt-text="Configuratie en beleid selecteren in het menu links":::    
 1. Selecteer een gebeurtenis om de details ervan weer te geven. Op de pagina **samen vatting** ziet u informatie zoals de naam van de bewerking, de tijds tempel en wie de bewerking heeft uitgevoerd. 
     
-    :::image type="content" source="./media/activity-logs/stop-vm-event.png" alt-text="VM-gebeurtenis stoppen-samen vatting":::        
+    :::image type="content" source="./media/activity-logs/stop-vm-event.png" alt-text="Configuratie en beleid selecteren in het menu links":::        
 1. Ga naar het tabblad **JSON** om meer details te bekijken. In het volgende voor beeld ziet u de naam van de virtuele machine en de bewerking die is uitgevoerd op de VM (gestopt).
 
-    :::image type="content" source="./media/activity-logs/stop-vm-event-json.png" alt-text="VM-gebeurtenis stoppen-JSON":::           
+    :::image type="content" source="./media/activity-logs/stop-vm-event-json.png" alt-text="Configuratie en beleid selecteren in het menu links":::           
 1. Ga naar het tabblad **wijzigings overzicht (preview)** voor een overzicht van de wijzigingen. In het volgende voor beeld ziet u de wijziging die op de virtuele machine is aangebracht. 
 
-    :::image type="content" source="./media/activity-logs/change-history.png" alt-text="Gebeurtenis-wijzigings geschiedenis van VM stoppen":::             
+    :::image type="content" source="./media/activity-logs/change-history.png" alt-text="Configuratie en beleid selecteren in het menu links":::             
 1. Selecteer de wijziging in de lijst wijzigings overzicht om meer informatie over de wijziging weer te geven. 
 
-    :::image type="content" source="./media/activity-logs/change-details.png" alt-text="VM-gebeurtenis stoppen-details wijzigen":::             
+    :::image type="content" source="./media/activity-logs/change-details.png" alt-text="Configuratie en beleid selecteren in het menu links":::             
 
 Zie [Azure-activiteiten logboek](../azure-monitor/platform/activity-log.md)voor meer informatie over activiteiten Logboeken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Zie [waarschuwingen maken](create-alerts.md)voor meer informatie over het instellen van **waarschuwingen** voor activiteiten Logboeken.
-- Zie [Azure-activiteiten logboek](../azure-monitor/platform/activity-log.md)voor meer informatie over activiteiten Logboeken.
+- Zie  [Azure-activiteiten logboek](../azure-monitor/platform/activity-log.md)voor meer informatie over activiteiten Logboeken.
 

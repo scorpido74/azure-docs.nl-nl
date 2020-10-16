@@ -8,10 +8,10 @@ ms.date: 06/10/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 7a07a42e208cb0f6fe91f6a65777fd28155106a1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91330579"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Consistentieniveaus in Azure Cosmos DB beheren
@@ -281,7 +281,7 @@ item = client.ReadItem(doc_link, options)
 
 Wat is de uiteindelijke consistentie? Voor het gemiddelde kunnen we verouderde grenzen bieden ten aanzien van versie geschiedenis en-tijd. De metrische gegevens van de [**Probabilistically-binding (PBS)**](https://pbs.cs.berkeley.edu/) proberen de waarschijnlijkheid van veroudering te bepalen en geeft deze weer als een metrieke waarde. Als u de metrische gegevens van de PBS wilt weer geven, gaat u naar uw Azure Cosmos-account in de Azure Portal. Open het deel venster **metrieken** en selecteer het tabblad **consistentie** . Bekijk de grafiek met de naam **kans op zeer consistente Lees bewerkingen op basis van uw werk belasting (Zie PBS)**.
 
-:::image type="content" source="./media/how-to-manage-consistency/pbs-metric.png" alt-text="PBS-grafiek in de Azure-portal":::
+:::image type="content" source="./media/how-to-manage-consistency/pbs-metric.png" alt-text="Menu Consistentie in de Azure-portal":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

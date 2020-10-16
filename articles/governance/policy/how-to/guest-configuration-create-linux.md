@@ -4,12 +4,12 @@ description: Meer informatie over het maken van een Azure Policy gast configurat
 ms.date: 08/17/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4f49732aa2be50b0d8be6f1f3af974121dc9f363
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 9ecf798a18f28c490d95b28c6ea8f02c6f22eee8
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89076358"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893234"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Beleidsregels voor gastconfiguratie voor Linux maken
 
@@ -171,7 +171,7 @@ New-GuestConfigurationPackage `
   -ChefInSpecProfilePath './'
 ```
 
-Nadat u het configuratie pakket hebt gemaakt, maar voordat u het naar Azure publiceert, kunt u het pakket testen vanaf uw werk station of CI/CD-omgeving. De GuestConfiguration-cmdlet `Test-GuestConfigurationPackage` bevat dezelfde agent in uw ontwikkel omgeving als wordt gebruikt binnen Azure-machines. Met deze oplossing kunt u integratie testen lokaal uitvoeren voordat u de gefactureerde Cloud omgevingen uitbrengt.
+Nadat u het configuratie pakket hebt gemaakt, maar voordat u het naar Azure publiceert, kunt u het pakket testen vanaf uw werk station of doorlopende integratie-en continue implementatie (CI/CD)-omgeving. De GuestConfiguration-cmdlet `Test-GuestConfigurationPackage` bevat dezelfde agent in uw ontwikkel omgeving als wordt gebruikt binnen Azure-machines. Met deze oplossing kunt u integratie testen lokaal uitvoeren voordat u de gefactureerde Cloud omgevingen uitbrengt.
 
 Omdat de agent de lokale omgeving werkelijk evalueert, moet u in de meeste gevallen de test-cmdlet uitvoeren op hetzelfde OS-platform als u wilt controleren.
 
@@ -194,7 +194,7 @@ De cmdlet ondersteunt ook invoer van de Power shell-pijp lijn. Pipet de uitvoer 
 New-GuestConfigurationPackage -Name AuditFilePathExists -Configuration ./Config/AuditFilePathExists.mof -ChefProfilePath './' | Test-GuestConfigurationPackage
 ```
 
-De volgende stap is het publiceren van het bestand naar de Blob-opslag. Het onderstaande script bevat een functie die u kunt gebruiken om deze taak te automatiseren. Voor de opdrachten die in de functie worden gebruikt, `publish` is de `Az.Storage` module vereist.
+De volgende stap is het publiceren van het bestand naar Azure Blob Storage. Het onderstaande script bevat een functie die u kunt gebruiken om deze taak te automatiseren. Voor de opdrachten die in de functie worden gebruikt, `publish` is de `Az.Storage` module vereist.
 
 ```azurepowershell-interactive
 function publish {

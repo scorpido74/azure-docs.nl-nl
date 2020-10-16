@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/21/2020
 ms.openlocfilehash: eece6f97e82f3800d4f59ac1849b34c2a1e4635b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83800087"
 ---
 # <a name="conditional-split-transformation-in-mapping-data-flow"></a>Voorwaardelijke Splits Transform in toewijzing van gegevens stroom
@@ -47,7 +47,7 @@ Gebruik de opbouw functie voor de data flow-expressie om een expressie voor de S
 
 ### <a name="example"></a>Voorbeeld
 
-Het onderstaande voor beeld is een Conditional Split trans formatie met de naam `SplitByYear` die in de inkomende stroom neemt `CleanData` . Deze trans formatie heeft twee gesplitste voor waarden `year < 1960` en `year > 1980` . `disjoint`is onwaar, omdat de gegevens worden verplaatst naar de eerste overeenkomende voor waarde. Elke rij die overeenkomt met de eerste voor waarde, gaat naar uitvoer stroom `moviesBefore1960` . Alle resterende rijen die overeenkomen met de tweede voor waarde, gaan naar uitvoer stroom `moviesAFter1980` . Alle andere rijen stromen via de standaard stroom `AllOtherMovies` .
+Het onderstaande voor beeld is een Conditional Split trans formatie met de naam `SplitByYear` die in de inkomende stroom neemt `CleanData` . Deze trans formatie heeft twee gesplitste voor waarden `year < 1960` en `year > 1980` . `disjoint` is onwaar, omdat de gegevens worden verplaatst naar de eerste overeenkomende voor waarde. Elke rij die overeenkomt met de eerste voor waarde, gaat naar uitvoer stroom `moviesBefore1960` . Alle resterende rijen die overeenkomen met de tweede voor waarde, gaan naar uitvoer stroom `moviesAFter1980` . Alle andere rijen stromen via de standaard stroom `AllOtherMovies` .
 
 In de Data Factory UX ziet deze trans formatie er als volgt uit:
 

@@ -12,15 +12,15 @@ ms.topic: how-to
 ms.date: 03/28/2017
 ms.custom: devx-track-csharp
 ms.openlocfilehash: a963a9f10ee23c50f50e66191e92f0839c457d9c
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362839"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>Azure Machine Learning Studio (klassieke) webservices implementeren die gebruikmaken van modules voor het importeren en exporteren van gegevens
 
-**van toepassing op:** ![ Van toepassing op. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klassiek) ![ is niet van toepassing op.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**VAN TOEPASSING OP:**  ![Van toepassing op.](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) ![Niet van toepassing op.](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
 
 
 Wanneer u een voorspellend experiment maakt, voegt u doorgaans een invoer en uitvoer van een webservice toe. Wanneer u het experiment implementeert, kunnen gebruikers gegevens van de webservice verzenden en ontvangen via de invoer en uitvoer. Voor sommige toepassingen is het mogelijk dat de gegevens van een consument beschikbaar zijn via een gegevensfeed of al aanwezig zijn in een externe gegevens bron, zoals Azure Blob Storage. In deze gevallen hebben ze geen lees-en schrijf gegevens met behulp van de invoer en uitvoer van webservices. Ze kunnen in plaats daarvan de batch Execution Service (BES) gebruiken voor het lezen van gegevens uit de gegevens bron met behulp van een import data-module en de Score resultaten naar een andere gegevens locatie schrijven met behulp van een module export data.

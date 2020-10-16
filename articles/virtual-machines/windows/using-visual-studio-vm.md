@@ -11,10 +11,10 @@ ms.date: 04/23/2020
 ms.author: cathys
 keywords: Visual Studio
 ms.openlocfilehash: 5ec8e0f6448e725998628e41b917942966d3ef2a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87836153"
 ---
 # <a name="visual-studio-images-on-azure"></a>Visual Studio-installatie kopieën op Azure
@@ -31,7 +31,7 @@ Installatie kopieën voor de meest recente primaire versies, Visual Studio 2019,
 | Release versie                                                                                                                                                | Edities              | Productversie   |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------:|:-----------------:|
 | [Visual Studio 2019: nieuwste (versie 16,5)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Enter prise, Community | Versie 16.5.4    |
-| Visual Studio 2019: RTW                         | Onderneming | Versie 16.0.13    |
+| Visual Studio 2019: RTW                         | Enterprise | Versie 16.0.13    |
 | Visual Studio 2017: nieuwste (versie 15,9)           | Enter prise, Community | Versie 15.9.22   |
 | Visual Studio 2017: RTW                             | Enter prise, Community | Versie 15.0.28  |
 | Visual Studio 2015: nieuwste (update 3)               | Enter prise, Community | Versie 14.0.25431.01 |

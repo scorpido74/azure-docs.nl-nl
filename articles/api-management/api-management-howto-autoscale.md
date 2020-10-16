@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: cbdc81789fcd996774090f12523e7404c0aa0111
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 9ddee5991efd5bde3bd139257ad154f02f5d0371
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205846"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071299"
 ---
 # <a name="automatically-scale-an-azure-api-management-instance"></a>Exemplaar van Azure API Management automatisch schalen  
 
@@ -31,7 +31,7 @@ In dit artikel wordt stapsgewijs uitgelegd hoe u automatisch schalen configureer
 
 Als u de stappen in dit artikel wilt volgen, moet u het volgende doen:
 
-+ Een actief Azure-abonnement hebben.
++ Een actief Azure-abonnement.
 + Een Azure API Management-exemplaar hebben. Zie [een Azure API Management-exemplaar maken](get-started-create-service-instance.md)voor meer informatie.
 + Inzicht in het concept van de [capaciteit van een Azure API Management-exemplaar](api-management-capacity.md).
 + Meer informatie [over het hand matig schalen van een Azure API Management-exemplaar](upgrade-and-scale.md), met inbegrip van kosten gevolgen.
@@ -78,7 +78,7 @@ Volg de onderstaande stappen om automatisch schalen te configureren voor een Azu
     |-----------------------|-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | Bron van metrische gegevens         | Huidige resource  | Definieer de regel op basis van de huidige metrische gegevens van Azure API Management resource.                                                                                                                                                                                                     |
     | *Criteria*            |                   |                                                                                                                                                                                                                                                                                 |
-    | Tijdverzameling      | Gemiddelde           |                                                                                                                                                                                                                                                                                 |
+    | Tijdverzameling      | Gemiddeld           |                                                                                                                                                                                                                                                                                 |
     | Naam van meetwaarde           | Capaciteit          | De metrische gegevens van de capaciteit zijn een Azure API Management metriek die het gebruik van resources van een Azure API Management instantie weerspiegelt.                                                                                                                                                            |
     | Tijdsintervalstatistieken  | Gemiddeld           |                                                                                                                                                                                                                                                                                 |
     | Operator              | Groter dan      |                                                                                                                                                                                                                                                                                 |
@@ -105,7 +105,7 @@ Volg de onderstaande stappen om automatisch schalen te configureren voor een Azu
     |-----------------------|-------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | Bron van metrische gegevens         | Huidige resource  | Definieer de regel op basis van de huidige metrische gegevens van Azure API Management resource.                                                                                                                                                                                                                                                                                                                                                                                                                         |
     | *Criteria*            |                   |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-    | Tijdverzameling      | Gemiddelde           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+    | Tijdverzameling      | Gemiddeld           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
     | Naam van meetwaarde           | Capaciteit          | Dezelfde metrische waarde als die voor de scale-out-regel.                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
     | Tijdsintervalstatistieken  | Gemiddeld           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
     | Operator              | Kleiner dan         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
@@ -132,4 +132,4 @@ Volg de onderstaande stappen om automatisch schalen te configureren voor een Azu
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Exemplaar van Azure API Management-service implementeren in meerdere Azure-regio's](api-management-howto-deploy-multi-region.md)
-- [Optimaliseer en sla uw Cloud uitgaven op](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+- [Optimaliseer en sla uw Cloud uitgaven op](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

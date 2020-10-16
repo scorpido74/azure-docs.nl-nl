@@ -1,14 +1,14 @@
 ---
 title: 'Patroon: De count-operator in een beleidsdefinitie'
 description: Dit Azure Policy-patroon biedt een voorbeeld van het gebruik van de count-operator in een beleidsdefinitie.
-ms.date: 06/29/2020
+ms.date: 10/14/2020
 ms.topic: sample
-ms.openlocfilehash: 807890b7fb08d790deff6e0be9e08ad91c4ec44d
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 1339dff7f8bc92a8e38ec5635690cc2069dd8df4
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85565746"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076399"
 ---
 # <a name="azure-policy-pattern-the-count-operator"></a>Azure Policy-patroon: de count-operator
 

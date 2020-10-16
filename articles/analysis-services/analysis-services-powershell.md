@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3e64ffe5007d27a44167f08807a9694875fe48c4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 28f414c5eaaea7b987f2c3694cb8fc73b70838e9
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050453"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018760"
 ---
 # <a name="manage-azure-analysis-services-with-powershell"></a>Azure Analysis Services beheren met PowerShell
 
@@ -33,11 +33,11 @@ Voor Server bewerkingen met Azure PowerShell-cmdlets moet uw account of het acco
 Module installeren- [AZ. AnalysisServices](https://www.powershellgallery.com/packages/Az.AnalysisServices)   
 Documentatie- [AZ. AnalysisServices Reference](/powershell/module/az.analysisservices)
 
-## <a name="database-operations"></a>Database bewerkingen
+## <a name="database-operations"></a>Databasebewerkingen
 
 Azure Analysis Services database bewerkingen gebruiken dezelfde SqlServer-module als SQL Server Analysis Services. Niet alle cmdlets worden echter ondersteund voor Azure Analysis Services. 
 
-De SqlServer-module bevat gebruikersspecifieke data base management-cmdlets en de cmdlet invoke-ASCmd die een TMSL-query (Tabular model scripting language) of script accepteert. De volgende cmdlets in de SqlServer-module worden ondersteund voor Azure Analysis Services.
+De SqlServer-module biedt taak-specifieke data base management-cmdlets en de cmdlet voor algemeen Invoke-ASCmd gebruik die een TMSL-query (Tabellair model scripting language) of script accepteert. De volgende cmdlets in de SqlServer-module worden ondersteund voor Azure Analysis Services.
 
 Module installeren- [sqlserver](https://www.powershellgallery.com/packages/SqlServer)   
 Documentatie- [sqlserver-referentie](/powershell/module/sqlserver)
@@ -46,21 +46,21 @@ Documentatie- [sqlserver-referentie](/powershell/module/sqlserver)
 
 |Cmdlet|Beschrijving|
 |------------|-----------------| 
-|[Add-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/Add-RoleMember)|Een lid toevoegen aan een databaserol.| 
-|[Backup-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/backup-asdatabase)|Back-up maken van een Analysis Services-Data Base.|  
-|[Remove-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/remove-rolemember)|Een lid uit een databaserol verwijderen.|   
-|[Invoke-ASCmd](https://docs.microsoft.com/powershell/module/sqlserver/invoke-ascmd)|Voer een TMSL-script uit.|
-|[Invoke-ProcessASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/invoke-processasdatabase)|Een Data Base verwerken.|  
-|[Invoke-ProcessPartition](https://docs.microsoft.com/powershell/module/sqlserver/invoke-processpartition)|Een partitie verwerken.| 
-|[Invoke-ProcessTable](https://docs.microsoft.com/powershell/module/sqlserver/invoke-processtable)|Een tabel verwerken.|  
-|[Samen voegen-partitie](https://docs.microsoft.com/powershell/module/sqlserver/merge-partition)|Een partitie samen voegen.|  
-|[Restore-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/restore-asdatabase)|Een Analysis Services-Data Base herstellen.| 
+|[Add-RoleMember](/powershell/module/sqlserver/Add-RoleMember)|Een lid toevoegen aan een databaserol.| 
+|[Backup-ASDatabase](/powershell/module/sqlserver/backup-asdatabase)|Back-up maken van een Analysis Services-Data Base.|  
+|[Remove-RoleMember](/powershell/module/sqlserver/remove-rolemember)|Een lid uit een databaserol verwijderen.|   
+|[Invoke-ASCmd](/powershell/module/sqlserver/invoke-ascmd)|Voer een TMSL-script uit.|
+|[Invoke-ProcessASDatabase](/powershell/module/sqlserver/invoke-processasdatabase)|Een Data Base verwerken.|  
+|[Invoke-ProcessPartition](/powershell/module/sqlserver/invoke-processpartition)|Een partitie verwerken.| 
+|[Invoke-ProcessTable](/powershell/module/sqlserver/invoke-processtable)|Een tabel verwerken.|  
+|[Samen voegen-partitie](/powershell/module/sqlserver/merge-partition)|Een partitie samen voegen.|  
+|[Restore-ASDatabase](/powershell/module/sqlserver/restore-asdatabase)|Een Analysis Services-Data Base herstellen.| 
   
 
 ## <a name="related-information"></a>Gerelateerde informatie
 
-* [SQL Server PowerShell](https://docs.microsoft.com/sql/powershell/sql-server-powershell)      
-* [SQL Server Power shell-module downloaden](https://docs.microsoft.com/sql/ssms/download-sql-server-ps-module)   
-* [SSMS downloaden](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)   
+* [SQL Server PowerShell](/sql/powershell/sql-server-powershell)      
+* [SQL Server Power shell-module downloaden](/sql/ssms/download-sql-server-ps-module)   
+* [SSMS downloaden](/sql/ssms/download-sql-server-management-studio-ssms)   
 * [SqlServer-module in PowerShell Gallery](https://www.powershellgallery.com/packages/SqlServer)    
-* [Program meren in tabellair model voor compatibiliteits niveau 1200 en hoger](https://docs.microsoft.com/analysis-services/tabular-model-programming-compatibility-level-1200/tabular-model-programming-for-compatibility-level-1200)
+* [Program meren in tabellair model voor compatibiliteits niveau 1200 en hoger](/analysis-services/tabular-model-programming-compatibility-level-1200/tabular-model-programming-for-compatibility-level-1200)

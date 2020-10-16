@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.openlocfilehash: 80644ed2d655544fa176a7be92aec3c01aa3bf14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75966077"
 ---
 # <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>Zelf studie: uw eerste pijp lijn maken om gegevens te transformeren met een Hadoop-cluster
@@ -82,7 +82,7 @@ Voordat u met deze zelfstudie begint, moet u aan de volgende vereisten voldoen:
 1. U moet beschikken over een **Azure-abonnement**. Als u geen Azure-abonnement hebt, kunt u in enkele minuten een gratis proefaccount maken. Zie het artikel [Gratis proefversie](https://azure.microsoft.com/pricing/free-trial/) voor informatie over het verkrijgen van een gratis proefaccount.
 2. U moet gebruikmaken van **Azure Storage**. U gebruikt een Azure-opslagaccount om de gegevens in deze zelfstudie op te slaan. Zie het artikel [Een opslagaccount maken](../../storage/common/storage-account-create.md) als u geen account Azure-opslagaccount hebt. Nadat u het opslag account hebt gemaakt, noteert u de **account naam** en de **toegangs sleutel**. Zie [toegangs sleutels voor opslag accounts beheren](../../storage/common/storage-account-keys-manage.md)voor meer informatie over het ophalen van toegangs sleutels voor opslag accounts.
 3. Down load en controleer het Hive-query bestand (**HQL**) dat zich bevindt op: [https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql](https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql) . Met deze query worden invoer gegevens getransformeerd om uitvoer gegevens te produceren.
-4. Down load en controleer het voorbeeld invoer bestand (**input. log**) dat zich bevindt in:[https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log](https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log)
+4. Down load en controleer het voorbeeld invoer bestand (**input. log**) dat zich bevindt in: [https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log](https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log)
 5. Maak een BLOB-container met de naam **adfgetstarted** in uw Azure Blob Storage.
 6. Upload **partitionweblogs. HQL** -bestand naar de map **script** in de **adfgetstarted** -container. Gebruik hulpprogram ma's zoals [Microsoft Azure Storage Explorer](https://storageexplorer.com/).
 7. Upload **input. log** -bestand naar de map **input data** in de container **adfgetstarted** .

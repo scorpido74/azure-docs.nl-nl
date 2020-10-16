@@ -14,10 +14,10 @@ ms.custom: it-pro, seodec18
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fbb7b7da4ed5268e66260e48d6367bbe02f0845a
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87797573"
 ---
 # <a name="add-or-remove-group-members-using-azure-active-directory"></a>Groeps leden toevoegen of verwijderen met Azure Active Directory
@@ -31,7 +31,7 @@ Met Azure Active Directory kunt u groeps leden toevoegen en verwijderen.
 
 3. Zoek op de pagina **groepen-alle groepen** naar de groep waaraan u het lid wilt toevoegen en selecteer deze. In dit geval gebruikt u onze eerder gemaakte groep, **MDM-beleid-West**.
 
-    ![Groepen-pagina alle groepen, groeps naam gemarkeerd](media/active-directory-groups-members-azure-portal/group-all-groups-screen.png)
+    ![Pagina Groups-All groepen, groeps naam gemarkeerd](media/active-directory-groups-members-azure-portal/group-all-groups-screen.png)
 
 4. Selecteer op de pagina **Overzicht van MDM-beleid - West** de optie **Leden** onder **Beheren**.
 

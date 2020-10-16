@@ -14,12 +14,12 @@ ms.date: 08/16/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00257dc549754f7466fdf1dd2d0293de944b0944
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4410708905610562feb15804277021950eb1edeb
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287029"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826526"
 ---
 # <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>Zelfstudie: Een enkele AD-forestomgeving federeren in de cloud
 
@@ -87,7 +87,7 @@ Om het bouwen van de virtuele machine te voltooien, moet u de installatie van he
 4. Selecteer uw taal in het opstartscherm van Windows Server en klik op **Volgende**.
 5. Klik op **Nu installeren**.
 6. Voer uw licentiecode in en klik op **Volgende**.
-7. Geef aan dat u akkoord gaat met de licentievoorwaarden en klik op **Volgende**.
+7. Selecteer **Ik ga akkoord met de licentievoorwaarden** en klik op **Volgende**.
 8. Selecteer **Aangepast:  Alleen Windows installeren (geavanceerd)**
 9. Klik op **Volgende**
 10. Als de installatie is voltooid, start u de virtuele machine opnieuw op, meldt u zich aan en installeert u de beschikbare Windows-updates om er zeker van te zijn dat de VM up-to-date is.  Installeer de laatste updates.

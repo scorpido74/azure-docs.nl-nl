@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: 3c5486e31dd3227cfcc8bd3b433602ce58cfa4fb
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: e92fab392dc73d8de0b7b2547e38b3f345562930
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852987"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975855"
 ---
 # <a name="register-a-resource-application-in-azure-active-directory"></a>Een resource toepassing registreren in Azure Active Directory
 
@@ -107,7 +107,7 @@ De Azure-API voor FHIR en de OSS FHIR-server voor Azure gebruiken [Azure Active 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u een resource toepassing kunt registreren in Azure Active Directory. Implementeer vervolgens de Azure API voor FHIR.
+In dit artikel hebt u geleerd hoe u een resource toepassing kunt registreren in Azure Active Directory. Registreer vervolgens uw vertrouwelijke client toepassing.
  
 >[!div class="nextstepaction"]
->[De Azure-API voor FHIR implementeren](fhir-paas-powershell-quickstart.md)
+>[Vertrouwelijke client toepassing registreren](register-confidential-azure-ad-client-app.md)

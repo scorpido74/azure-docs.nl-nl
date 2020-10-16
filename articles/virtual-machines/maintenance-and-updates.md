@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 05/22/2020
 ms.author: shants
-ms.openlocfilehash: 5dcf4ad7acb3becd2ca04407bc8e5b3ac45701f1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3cf126caaaa0c518574418aca194ebd82cc4d6b9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86501701"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972064"
 ---
 # <a name="maintenance-for-virtual-machines-in-azure"></a>Onderhoud voor virtuele machines in Azure
 
@@ -23,7 +23,7 @@ Updates zijn zelden van invloed op de gehoste Vm's. Wanneer de updates een effec
 - Als de update niet opnieuw moet worden opgestart, wordt de virtuele machine onderbroken terwijl de host wordt bijgewerkt, of wordt de virtuele machine Live gemigreerd naar een al bijgewerkte host. 
 - Als het onderhoud opnieuw moet worden opgestart, ontvangt u een melding van het geplande onderhoud. Azure biedt ook een tijd venster waarin u het onderhoud zelf kunt starten, op het moment dat u voor u werkt. Het venster voor zelf onderhoud is doorgaans 35 dagen, tenzij het onderhoud urgent is. Azure is investeren in technologieën om het aantal cases te verminderen waarvoor gepland platform onderhoud vereist dat de Vm's opnieuw worden opgestart. Zie voor instructies voor het beheren van gepland onderhoud geplande onderhouds meldingen verwerken met Azure [cli](maintenance-notifications-cli.md), [Power shell](maintenance-notifications-powershell.md) of [Portal](maintenance-notifications-portal.md).
 
-Op deze pagina wordt beschreven hoe Azure beide soorten onderhoud uitvoert. Zie [de beschik baarheid van vm's voor Windows](./windows/manage-availability.md) of het bijbehorende artikel voor [Linux](./linux/manage-availability.md)beheren voor meer informatie over niet-geplande gebeurtenissen (uitval).
+Op deze pagina wordt beschreven hoe Azure beide soorten onderhoud uitvoert. Zie [de beschik baarheid van vm's voor Windows](./manage-availability.md) of het bijbehorende artikel voor [Linux](./manage-availability.md)beheren voor meer informatie over niet-geplande gebeurtenissen (uitval).
 
 Binnen een VM kunt u meldingen ontvangen over aanstaande onderhoud door [gebruik te maken van Scheduled Events voor Windows](./windows/scheduled-events.md) of voor [Linux](./linux/scheduled-events.md).
 
@@ -41,7 +41,7 @@ Voor deze onderhouds bewerkingen die niet opnieuw moeten worden opgestart, wordt
 
 Deze typen updates kunnen van invloed zijn op sommige toepassingen. Wanneer de virtuele machine Live naar een andere host wordt gemigreerd, kan het even duren voordat de virtuele machine wordt onderbroken door bepaalde gevoelige workloads. Voor de voor bereiding op het onderhoud van de virtuele machine en het verminderen van de impact tijdens het onderhoud van Azure, kunt [u Scheduled Events voor Windows](./windows/scheduled-events.md) of [Linux](./linux/scheduled-events.md) gebruiken voor dergelijke toepassingen. 
 
-Voor meer controle over alle onderhouds activiteiten, inclusief het bijwerken van nul of het opnieuw opstarten van updates, kunt u de functie onderhouds beheer gebruiken. U moet een met [Azure toegewezen hosts](./linux/dedicated-hosts.md) of een [geïsoleerde VM](../security/fundamentals/isolation-choices.md)gebruiken. Onderhouds beheer biedt u de optie om alle platform updates over te slaan en de updates op uw gewenste tijdstip toe te passen binnen een 35-daagse venster. Zie [updates beheren met onderhouds beheer en de Azure cli](maintenance-control.md)voor meer informatie.
+Voor meer controle over alle onderhouds activiteiten, inclusief het bijwerken van nul of het opnieuw opstarten van updates, kunt u de functie onderhouds beheer gebruiken. U moet een met [Azure toegewezen hosts](./dedicated-hosts.md) of een [geïsoleerde VM](../security/fundamentals/isolation-choices.md)gebruiken. Onderhouds beheer biedt u de optie om alle platform updates over te slaan en de updates op uw gewenste tijdstip toe te passen binnen een 35-daagse venster. Zie [updates beheren met onderhouds beheer en de Azure cli](maintenance-control.md)voor meer informatie.
 
 
 ### <a name="live-migration"></a>Livemigratie
@@ -87,7 +87,7 @@ Binnen een beschikbaarheidsset worden afzonderlijke Vm's verdeeld over Maxi maal
 
 Virtuele-machine *schaal sets* vormen een Azure Compute-resource die u kunt gebruiken om een set identieke vm's te implementeren en te beheren als één resource. De schaalset wordt automatisch geïmplementeerd in de UDs, zoals virtuele machines in een beschikbaarheidsset. Net als bij beschikbaarheids sets, wanneer u schaal sets gebruikt, wordt slechts één UD bijgewerkt op een wille keurig tijdstip tijdens gepland onderhoud.
 
-Zie [de beschik baarheid van uw vm's voor Windows](./windows/manage-availability.md) of het bijbehorende artikel voor [Linux](./linux/manage-availability.md)beheren voor meer informatie over het instellen van uw vm's voor maximale Beschik baarheid.
+Zie [de beschik baarheid van uw vm's voor Windows](./manage-availability.md) of het bijbehorende artikel voor [Linux](./manage-availability.md)beheren voor meer informatie over het instellen van uw vm's voor maximale Beschik baarheid.
 
 #### <a name="availability-zones"></a>Beschikbaarheidszones
 
@@ -99,4 +99,4 @@ Elke infrastructuur update implementeert zone per zone, binnen één regio. Maar
 
 ## <a name="next-steps"></a>Volgende stappen 
 
-U kunt de [Azure cli](maintenance-notifications-cli.md), [Azure PowerShell](maintenance-notifications-powershell.md) of de [Portal](maintenance-notifications-portal.md) gebruiken voor het beheren van gepland onderhoud. 
+U kunt de [Azure cli](maintenance-notifications-cli.md), [Azure PowerShell](maintenance-notifications-powershell.md) of de [Portal](maintenance-notifications-portal.md) gebruiken voor het beheren van gepland onderhoud.

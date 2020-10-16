@@ -5,12 +5,12 @@ author: jjbfour
 ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
-ms.openlocfilehash: b6984bfdf7ec078d02999bccf77f3592cfbcab27
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 6e11e08d861538ddf395f522495798546e04ca7c
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "75649986"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948949"
 ---
 # <a name="set-up-azure-functions-for-azure-custom-providers"></a>Azure Functions instellen voor aangepaste Azure-providers
 
@@ -51,7 +51,7 @@ De Azure-functie zo instellen dat de RESTful-aanvraagmethoden van de aangepaste 
 > [!NOTE]
 > Als uw C#-projectbestand ontbreekt in de projectmap, kunt u het handmatig toevoegen. Of het wordt weergegeven nadat de extensie Microsoft.Azure.WebJobs.Extensions.Storage is geïnstalleerd op de functie-app.
 
-Werk vervolgens het C#-projectbestand bij zodat dit handige NuGet-bibliotheken bevat. Met deze bibliotheken is het gemakkelijker om binnenkomende aanvragen van aangepaste providers te parseren. Volg de stappen om [extensies toe te voegen vanuit de portal](../../azure-functions/install-update-binding-extensions-manual.md) en werk het C#-projectbestand bij zodat het de volgende pakketverwijzingen bevat:
+Werk vervolgens het C#-projectbestand bij zodat dit handige NuGet-bibliotheken bevat. Met deze bibliotheken is het gemakkelijker om binnenkomende aanvragen van aangepaste providers te parseren. Volg de stappen om [extensies toe te voegen vanuit de portal](../../azure-functions/functions-bindings-register.md) en werk het C#-projectbestand bij zodat het de volgende pakketverwijzingen bevat:
 
 ```xml
 <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Storage" Version="3.0.4" />
@@ -80,4 +80,3 @@ Het volgende XML-element is een voorbeeld C#-projectbestand:
 In deze zelfstudie stelt u een Azure-functie-app in om te werken als een aangepast Azure-providereindpunt.
 
 Voor meer informatie over het ontwerpen van een RESTful aangepast providereindpunt raadpleegt u [Zelfstudie: Een RESTful aangepast providereindpunt ontwerpen](./tutorial-custom-providers-function-authoring.md).
-

@@ -12,10 +12,10 @@ ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: synapse-analytics
 ms.openlocfilehash: 9eb1006bdba6c69136c972359bb13420a04f4180
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89048021"
 ---
 # <a name="monitor-your-azure-synapse-analytics-sql-pool-workload-using-dmvs"></a>De werk belasting van uw Azure Synapse Analytics SQL-groep controleren met behulp van Dmv's
@@ -32,7 +32,7 @@ GRANT VIEW DATABASE STATE TO myuser;
 
 ## <a name="monitor-connections"></a>Verbindingen controleren
 
-Alle aanmeldingen bij uw data warehouse worden vastgelegd in [sys. dm_pdw_exec_sessions](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-sessions-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  Deze DMV bevat de laatste 10.000 aanmeldingen.  De session_id is de primaire sleutel en wordt opeenvolgend toegewezen voor elke nieuwe aanmelding.
+Alle aanmeldingen bij uw data warehouse worden vastgelegd in [sys.dm_pdw_exec_sessions](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-sessions-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  Deze DMV bevat de laatste 10.000 aanmeldingen.  De session_id is de primaire sleutel en wordt opeenvolgend toegewezen voor elke nieuwe aanmelding.
 
 ```sql
 -- Other Active Connections
@@ -41,7 +41,7 @@ SELECT * FROM sys.dm_pdw_exec_sessions where status <> 'Closed' and session_id <
 
 ## <a name="monitor-query-execution"></a>Query uitvoering bewaken
 
-Alle query's die worden uitgevoerd op de SQL-groep worden vastgelegd in [sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  Deze DMV bevat de laatste 10.000 query's die zijn uitgevoerd.  De request_id unieke identificatie van elke query en is de primaire sleutel voor deze DMV.  De request_id wordt opeenvolgend toegewezen voor elke nieuwe query en wordt voorafgegaan door QID, wat staat voor query-ID.  Bij het uitvoeren van een query op deze DMV voor een gegeven session_id worden alle query's voor een bepaalde aanmelding weer gegeven.
+Alle query's die worden uitgevoerd op de SQL-groep worden vastgelegd in [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  Deze DMV bevat de laatste 10.000 query's die zijn uitgevoerd.  De request_id unieke identificatie van elke query en is de primaire sleutel voor deze DMV.  De request_id wordt opeenvolgend toegewezen voor elke nieuwe query en wordt voorafgegaan door QID, wat staat voor query-ID.  Bij het uitvoeren van een query op deze DMV voor een gegeven session_id worden alle query's voor een bepaalde aanmelding weer gegeven.
 
 > [!NOTE]
 > Opgeslagen procedures gebruiken meerdere aanvraag-Id's.  Aanvraag-Id's worden in sequentiële volg orde toegewezen.
@@ -67,9 +67,9 @@ ORDER BY total_elapsed_time DESC;
 
 In de voor gaande query resultaten **noteert u de aanvraag-id** van de query die u wilt onderzoeken.
 
-Query's in de **onderbroken** status kunnen worden geplaatst als gevolg van een groot aantal actieve query's. Deze query's worden ook weer gegeven in de [sys. dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) wacht op query met een type UserConcurrencyResourceType. Zie [geheugen-en gelijktijdigheids limieten](memory-concurrency-limits.md) of [resource klassen voor werkbelasting beheer](resource-classes-for-workload-management.md)voor meer informatie over gelijktijdigheids limieten. Query's kunnen ook worden gewacht op andere redenen, zoals voor object vergrendelingen.  Als uw query wacht op een resource, raadpleegt u [Query's onderzoeken](#monitor-waiting-queries) die in dit artikel wachten op resources.
+Query's in de **onderbroken** status kunnen worden geplaatst als gevolg van een groot aantal actieve query's. Deze query's worden ook weer gegeven in de [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) wacht op query met een type UserConcurrencyResourceType. Zie [geheugen-en gelijktijdigheids limieten](memory-concurrency-limits.md) of [resource klassen voor werkbelasting beheer](resource-classes-for-workload-management.md)voor meer informatie over gelijktijdigheids limieten. Query's kunnen ook worden gewacht op andere redenen, zoals voor object vergrendelingen.  Als uw query wacht op een resource, raadpleegt u [Query's onderzoeken](#monitor-waiting-queries) die in dit artikel wachten op resources.
 
-Als u het opzoeken van een query in de tabel [sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) wilt vereenvoudigen, gebruikt u [Label](/sql/t-sql/queries/option-clause-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) om een opmerking toe te wijzen aan uw query, die kan worden opgezocht in de weer gave sys. dm_pdw_exec_requests.
+Als u de zoek opdracht van een query in de tabel [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) wilt vereenvoudigen, gebruikt u [Label](/sql/t-sql/queries/option-clause-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) om een opmerking toe te wijzen aan uw query, die kan worden opgezocht in de weer gave sys.dm_pdw_exec_requests.
 
 ```sql
 -- Query with Label
@@ -87,7 +87,7 @@ WHERE   [label] = 'My Query';
 
 ### <a name="step-2-investigate-the-query-plan"></a>STAP 2: het query plan onderzoeken
 
-Gebruik de aanvraag-ID voor het ophalen van het gedistribueerde SQL-abonnement (DSQL) van [sys. dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+De aanvraag-ID gebruiken om het gedistribueerde SQL-plan (DSQL) van de query op te halen uit [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ```sql
 -- Find the distributed query plan steps for a specific query.
@@ -107,7 +107,7 @@ Als u meer informatie wilt over één stap, de *operation_type* kolom van de lan
 
 ### <a name="step-3-investigate-sql-on-the-distributed-databases"></a>STAP 3: SQL onderzoeken op gedistribueerde data bases
 
-Gebruik de aanvraag-ID en de stap index om gegevens op te halen uit [sys. dm_pdw_sql_requests](/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), die uitvoerings informatie bevat van de query stap op alle gedistribueerde data bases.
+Gebruik de aanvraag-ID en de stap index om gegevens op te halen uit [sys.dm_pdw_sql_requests](/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), die informatie over de uitvoering van de query stap op alle gedistribueerde data bases bevat.
 
 ```sql
 -- Find the distribution run times for a SQL step.
@@ -128,7 +128,7 @@ DBCC PDW_SHOWEXECUTIONPLAN(1, 78);
 
 ### <a name="step-4-investigate-data-movement-on-the-distributed-databases"></a>STAP 4: de verplaatsing van gegevens op de gedistribueerde data bases onderzoeken
 
-Gebruik de aanvraag-ID en de stap index om informatie op te halen over een stap voor het verplaatsen van gegevens die wordt uitgevoerd op elke distributie vanuit [sys. dm_pdw_dms_workers](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Gebruik de aanvraag-ID en de stap index om informatie op te halen over een stap voor het verplaatsen van gegevens die wordt uitgevoerd op elke distributie uit [sys.dm_pdw_dms_workers](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ```sql
 -- Find information about all the workers completing a Data Movement Step.
@@ -184,7 +184,7 @@ TempDB wordt gebruikt voor het opslaan van tussenliggende resultaten tijdens het
 
 ### <a name="monitoring-tempdb-with-views"></a>TempDB bewaken met weer gaven
 
-Als u het gebruik van tempdb wilt bewaken, installeert u eerst de weer gave [micro soft. vw_sql_requests](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/solutions/monitoring/scripts/views/microsoft.vw_sql_requests.sql) vanuit de [micro soft Toolkit voor SQL-groep](https://github.com/Microsoft/sql-data-warehouse-samples/tree/master/solutions/monitoring). Vervolgens kunt u de volgende query uitvoeren om het TempDB-gebruik per knoop punt voor alle uitgevoerde query's weer te geven:
+Als u het gebruik van tempdb wilt bewaken, moet u eerst de [Microsoft.vw_sql_requests](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/solutions/monitoring/scripts/views/microsoft.vw_sql_requests.sql) -weer gave installeren vanuit de [micro soft Toolkit voor SQL-groep](https://github.com/Microsoft/sql-data-warehouse-samples/tree/master/solutions/monitoring). Vervolgens kunt u de volgende query uitvoeren om het TempDB-gebruik per knoop punt voor alle uitgevoerde query's weer te geven:
 
 ```sql
 -- Monitor tempdb
@@ -216,7 +216,7 @@ WHERE DB_NAME(ssu.database_id) = 'tempdb'
 ORDER BY sr.request_id;
 ```
 
-Als u een query hebt die gebruikmaakt van een grote hoeveelheid geheugen of een fout bericht hebt ontvangen dat is gerelateerd aan de toewijzing van tempdb, kan dit worden veroorzaakt door een zeer grote [Create Table als Select (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) of [INSERT SELECT](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) -instructie die wordt uitgevoerd bij het uitvoeren van de laatste bewerking voor gegevens verplaatsing. Dit kan meestal worden geïdentificeerd als een ShuffleMove-bewerking in het gedistribueerde query plan voordat de laatste invoegen wordt geselecteerd.  Gebruik [sys. dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) om ShuffleMove-bewerkingen te bewaken.
+Als u een query hebt die gebruikmaakt van een grote hoeveelheid geheugen of een fout bericht hebt ontvangen dat is gerelateerd aan de toewijzing van tempdb, kan dit worden veroorzaakt door een zeer grote [Create Table als Select (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) of [INSERT SELECT](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) -instructie die wordt uitgevoerd bij het uitvoeren van de laatste bewerking voor gegevens verplaatsing. Dit kan meestal worden geïdentificeerd als een ShuffleMove-bewerking in het gedistribueerde query plan voordat de laatste invoegen wordt geselecteerd.  Gebruik [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) om ShuffleMove-bewerkingen te bewaken.
 
 De meest voorkomende oplossing is om uw CTAS te verstoren of een SELECT-instructie in meerdere laad instructies te plaatsen, zodat het gegevens volume niet de limiet van 1 TB per Node TempDB overschrijdt. U kunt uw cluster ook schalen naar een grotere grootte, waardoor de tempdb-grootte wordt verdeeld over meerdere knoop punten die de tempdb op elk afzonderlijke knoop punt verminderen.
 

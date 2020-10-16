@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
 ms.openlocfilehash: ff33bf771065e7af209934a5c54b6f8f2e34835e
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91666780"
 ---
 # <a name="reserved-public-ipv6-address-prefix"></a>Voor voegsel van gereserveerd openbaar IPv6-adres
@@ -38,7 +38,7 @@ De volgende open bare IP-voor voegsel grootten zijn beschikbaar:
 -  Minimale IPv6-voorvoegsel grootte:/127 = 2 adressen
 -  Maximale grootte van IPv6-voor voegsel:/124 = 16 adressen
 
-De voorvoegsel grootte is opgegeven als een CIDR-masker grootte (Classless Inter-Domain Routing). Zo vertegenwoordigt een masker van/128 een afzonderlijk IPv6-adres als IPv6-adressen bestaan uit 128 bits.
+De voorvoegsel grootte is opgegeven als een CIDR-masker grootte (Klasseloze Inter-Domain route ring). Zo vertegenwoordigt een masker van/128 een afzonderlijk IPv6-adres als IPv6-adressen bestaan uit 128 bits.
 
 ## <a name="pricing"></a>Prijzen
  

@@ -4,10 +4,10 @@ description: Meer informatie over het mechanisme voor het bijwerken van een best
 ms.date: 08/27/2020
 ms.topic: how-to
 ms.openlocfilehash: ddaac8110885d817bc96745965c1af7e522b1919
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89651378"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Een bestaande blauw druk-toewijzing bijwerken
@@ -32,11 +32,11 @@ Wanneer een blauw druk is toegewezen, kan de toewijzing worden bijgewerkt. Er zi
 
 1. Bekijk op de pagina bijgewerkte toewijzings Details de nieuwe status. In dit voor beeld hebben we **vergren deling** toegevoegd aan de toewijzing.
 
-   :::image type="content" source="../media/update-existing-assignments/updated-assignment.png" alt-text="Scherm opname van een bijgewerkte blauw druk-toewijzing waarin de vergrendelings modus is gewijzigd." border="false":::
+   :::image type="content" source="../media/update-existing-assignments/updated-assignment.png" alt-text="Scherm afbeelding van de toewijzings pagina blauw drukken met de knop Update toewijzing gemarkeerd." border="false":::
 
 1. Bekijk details over andere **toewijzings bewerkingen** met behulp van de vervolg keuzelijst. De tabel met **beheerde resources** die worden bijgewerkt op basis van de geselecteerde toewijzings bewerking.
 
-   :::image type="content" source="../media/update-existing-assignments/assignment-operations.png" alt-text="Scherm afbeelding van een bijgewerkte blauw druk-toewijzing met de toewijzings bewerkingen en hun status." border="false":::
+   :::image type="content" source="../media/update-existing-assignments/assignment-operations.png" alt-text="Scherm afbeelding van de toewijzings pagina blauw drukken met de knop Update toewijzing gemarkeerd." border="false":::
 
 ## <a name="rules-for-updating-assignments"></a>Regels voor het bijwerken van toewijzingen
 

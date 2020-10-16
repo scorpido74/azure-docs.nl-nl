@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
 ms.openlocfilehash: 0f93c7b185b292f8d9792a11807b7c99ad846d37
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89565834"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Slimme detectie-fout afwijkingen
@@ -73,11 +73,11 @@ Deze waarschuwings regel wordt gemaakt met een bijbehorende [actie groep](../pla
 
 Open de pagina waarschuwingen. Waarschuwings regels voor fout afwijkingen zijn opgenomen in alle waarschuwingen die u hand matig hebt ingesteld en u kunt zien of deze zich momenteel in de status van de waarschuwing bevindt.
 
-:::image type="content" source="./media/proactive-failure-diagnostics/021.png" alt-text="Klik op de pagina Application Insights resource op waarschuwingen tegel en vervolgens op regels voor waarschuwingen beheren." lightbox="./media/proactive-failure-diagnostics/021.png":::
+:::image type="content" source="./media/proactive-failure-diagnostics/021.png" alt-text="Voor beeld van een Smart detection-waarschuwing met analyse van het cluster." lightbox="./media/proactive-failure-diagnostics/021.png":::
 
 Klik op de waarschuwing om deze te configureren.
 
-:::image type="content" source="./media/proactive-failure-diagnostics/032.png" alt-text="Scherm regel configuratie." lightbox="./media/proactive-failure-diagnostics/032.png":::
+:::image type="content" source="./media/proactive-failure-diagnostics/032.png" alt-text="Voor beeld van een Smart detection-waarschuwing met analyse van het cluster." lightbox="./media/proactive-failure-diagnostics/032.png":::
 
 U kunt een waarschuwings regel voor fout afwijkingen uitschakelen of verwijderen, maar niet op dezelfde Application Insights resource maken.
 
@@ -299,7 +299,7 @@ U kunt ook de [Azure Portal](https://portal.azure.com)openen, naar de Applicatio
 
 Als u op fouten opsporen klikt, krijgt u meer informatie en kunt u het probleem oplossen.
 
-:::image type="content" source="./media/proactive-failure-diagnostics/051.png" alt-text="Diagnostische gegevens zoeken." lightbox="./media/proactive-failure-diagnostics/051.png#lightbox":::
+:::image type="content" source="./media/proactive-failure-diagnostics/051.png" alt-text="Voor beeld van een Smart detection-waarschuwing met analyse van het cluster." lightbox="./media/proactive-failure-diagnostics/051.png#lightbox":::
 
 Op basis van het percentage aanvragen en het aantal betrokken gebruikers kunt u bepalen hoe urgent het probleem is. In het bovenstaande voor beeld wordt het uitval percentage van 78,5% vergeleken met een normaal percentage van 2,2%, wat erop wijst dat er iets mis gaat. Aan de andere kant werden slechts 46 gebruikers beïnvloed. Als dit uw app is, kunt u beoordelen hoe ernstig het is.
 
@@ -307,13 +307,13 @@ In veel gevallen kunt u het probleem snel vaststellen op basis van de gegevens v
 
 In dit voor beeld is er een uitzonde ring van SQL Database omdat de aanvraag limiet is bereikt.
 
-:::image type="content" source="./media/proactive-failure-diagnostics/052.png" alt-text="Details van mislukte aanvragen." lightbox="./media/proactive-failure-diagnostics/052.png":::
+:::image type="content" source="./media/proactive-failure-diagnostics/052.png" alt-text="Voor beeld van een Smart detection-waarschuwing met analyse van het cluster." lightbox="./media/proactive-failure-diagnostics/052.png":::
 
 ## <a name="review-recent-alerts"></a>Recente waarschuwingen controleren
 
 Klik op **waarschuwingen** op de pagina Application Insights resource om de meest recente geactiveerde waarschuwingen weer te geven:
 
-:::image type="content" source="./media/proactive-failure-diagnostics/070.png" alt-text="Overzicht van waarschuwingen." lightbox="./media/proactive-failure-diagnostics/070.png":::
+:::image type="content" source="./media/proactive-failure-diagnostics/070.png" alt-text="Voor beeld van een Smart detection-waarschuwing met analyse van het cluster." lightbox="./media/proactive-failure-diagnostics/070.png":::
 
 ## <a name="whats-the-difference-"></a>Wat is het verschil...
 Slimme detectie van fout afwijkingen is een aanvulling op andere vergelijk bare functies van Application Insights.

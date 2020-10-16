@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e62da791e8c60f884855fba16315a03fe22cecb5
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 6d03f0057e657933f4b0f38c48f2a2cdbe1ba2a4
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91450712"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940324"
 ---
 # <a name="azure-security-baseline-for-azure-load-balancer"></a>Azure-beveiligings basislijn voor Azure Load Balancer
 
@@ -98,7 +98,7 @@ Security Center (Standard-laag) biedt just-in-time toegang tot virtuele machines
 Gebruik de functie adaptieve netwerk beveiliging van Security Center om configuraties van netwerk beveiligings groepen aan te bevelen die poorten en bron-Ip's beperken op basis van daad werkelijk verkeer en bedreigings informatie.
  
 
-- [Azure DDoS Protection Standard beheren met de Azure Portal](https://docs.microsoft.com/azure/virtual-network/manage-ddos`protection)
+- [Azure DDoS Protection Standard beheren met de Azure Portal](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
 
 - [Azure Firewall op bedreigingen gebaseerd filteren](https://docs.microsoft.com/azure/firewall/threat-intel)
 
@@ -544,7 +544,7 @@ Implementeer aanbevelingen van Security Center als een veilige configuratie basi
 
 - [Eén en meerdere resources exporteren naar een sjabloon in Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/export-template-portal)
 
-- [Aanbevelingen voor beveiliging: een referentie gids](https://docs.microsoft.com/azure/security-center/recommendations-reference)
+- [Aanbevelingen voor beveiliging: een naslaggids](https://docs.microsoft.com/azure/security-center/recommendations-reference)
 
 **Azure Security Center bewaking**: niet van toepassing
 

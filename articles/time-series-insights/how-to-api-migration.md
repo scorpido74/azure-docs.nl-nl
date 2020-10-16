@@ -10,18 +10,21 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: shresha
-ms.openlocfilehash: 30c3fa837f84ff318e9a03a8a11ef6259890f4bb
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 1effb62619f9767cc90c99e037445e7a95981460
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653737"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078235"
 ---
 # <a name="migrating-to-new-azure-time-series-insights-gen2-api-versions"></a>Migreren naar nieuwe Azure Time Series Insights API-versies Gen2
 
 ## <a name="overview"></a>Overzicht
 
-Als u een Azure Time Series Insights Gen2-omgeving hebt gemaakt op het moment dat deze in open bare Preview was (vóór 16 juli 2020), moet u de omgeving van de TSI bijwerken met de nieuwe algemene beschik bare versies van Api's door de stappen te volgen die in dit artikel worden beschreven.
+Als u een Azure Time Series Insights Gen2-omgeving hebt gemaakt op het moment dat deze in open bare Preview was (vóór 16 juli 2020), moet u de omgeving van de TSI bijwerken met de nieuwe algemene beschik bare versies van Api's door de stappen te volgen die in dit artikel worden beschreven. Deze wijziging is niet van invloed op gebruikers die gebruikmaken van de gen1-versie van Azure Time Series Insights.
+
+> [!IMPORTANT]
+> Met de updates die in dit artikel worden beschreven, worden alleen de API-versies bijgewerkt die worden gebruikt in uw TSI-omgeving. Deze wijziging is niet gerelateerd aan de nieuwe [JSON afvlakking-en Escape-regels](https://docs.microsoft.com/azure/time-series-insights/concepts-json-flattening-escaping-rules) die zijn geïntroduceerd voor Gen2-omgevingen.
 
 De nieuwe API-versie is `2020-07-31` en gebruikt een bijgewerkte syntaxis van de [expressie time series](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax).
 
@@ -39,7 +42,7 @@ Om gebruikers te helpen hun [Time Series-model variabelen](./concepts-variables.
 
 1. U wordt gevraagd om de syntaxis bij te werken die wordt gebruikt door uw time series model-variabelen en opgeslagen query's.
 
-    [![Vragen](media/api-migration/ux-prompt.png)](media/v2-update-overview/overview-one.png#lightbox)
+    [![Vraag](media/api-migration/ux-prompt.png)](media/v2-update-overview/overview-one.png#lightbox)
 
     Als u de melding per ongeluk hebt gesloten, kunt u deze vinden in het deel venster meldingen.
 

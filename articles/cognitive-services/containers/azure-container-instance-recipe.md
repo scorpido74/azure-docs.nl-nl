@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: f247465c7e2c0a212df2821ebc7165d3ee5b15f3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80876654"
 ---
 # <a name="deploy-and-run-container-on-azure-container-instance"></a>Container implementeren en uitvoeren in Azure Container Instance
@@ -29,18 +29,18 @@ Het recept werkt met een Cognitive Services-container. De cognitieve service res
 * URL van het cognitieve service- **eind punt** : Controleer de installatie van uw specifieke service voor de container, zodat u kunt vinden waar de eind punt-URL zich bevindt in het Azure Portal en wat een juist voor beeld van de URL is. De exacte indeling kan veranderen van service naar service.
 * Cognitieve service **sleutel** : de sleutels bevinden zich op de pagina **sleutels** voor de Azure-resource. U hebt slechts een van de twee sleutels nodig. De sleutel is een teken reeks van 32 alfanumerieke tekens.
 * Eén Cognitive Services-container op uw lokale host (uw computer). Zorg ervoor dat u het volgende kunt doen:
-  * Haal de installatie kopie op met `docker pull` een opdracht.
-  * Voer de lokale container uit met alle vereiste configuratie-instellingen met `docker run` een opdracht.
+  * Haal de installatie kopie op met een `docker pull` opdracht.
+  * Voer de lokale container uit met alle vereiste configuratie-instellingen met een `docker run` opdracht.
   * Roep het eind punt van de container aan, waarbij een reactie van HTTP-2xx en een JSON-antwoord wordt teruggestuurd.
 
-Alle variabelen tussen punt haken, `<>`moeten worden vervangen door uw eigen waarden. Deze vervanging omvat de punt haken.
+Alle variabelen tussen punt haken, `<>` moeten worden vervangen door uw eigen waarden. Deze vervanging omvat de punt haken.
 
 [!INCLUDE [Create a Text Analytics Containers on Azure Container Instances](includes/create-container-instances-resource.md)]
 
 ## <a name="use-the-container-instance"></a>Het container exemplaar gebruiken
 
-1. Selecteer het **overzicht** en kopieer het IP-adres. Dit is een numeriek IP-adres, zoals `55.55.55.55`.
-1. Open een nieuw browser tabblad en gebruik het IP-adres, bijvoorbeeld `http://<IP-address>:5000 (http://55.55.55.55:5000`). U ziet de start pagina van de container, zodat u weet dat de container wordt uitgevoerd.
+1. Selecteer het **overzicht** en kopieer het IP-adres. Dit is een numeriek IP-adres, zoals `55.55.55.55` .
+1. Open een nieuw browser tabblad en gebruik het IP-adres, bijvoorbeeld `http://<IP-address>:5000 (http://55.55.55.55:5000` ). U ziet de start pagina van de container, zodat u weet dat de container wordt uitgevoerd.
 
 1. Selecteer **Service-API-beschrijving** om de Swagger-pagina voor de container weer te geven.
 

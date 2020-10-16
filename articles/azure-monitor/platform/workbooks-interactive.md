@@ -2,19 +2,17 @@
 title: Azure Monitor werkmappen met aangepaste para meters
 description: Vereenvoudig complexe rapportage met vooraf samengestelde en aangepaste werkmappen met para meters
 services: azure-monitor
-author: mrbullwinkle
 manager: carmonm
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/20/2020
-ms.author: mbullwin
-ms.openlocfilehash: 33da3cd8a72bb4d93011c348db65c5b4d9e687ed
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: ee71082b96d41f9bad7fb54a70d308c24dec5b57
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461430"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91932036"
 ---
 # <a name="interactive-workbooks"></a>Interactieve workbooks
 
@@ -45,13 +43,13 @@ Een gebruiker kan bijvoorbeeld een raster hebben waarin een lijst met aanvragen 
     | order by AllRequests desc
     ```
 
-5. `Run query`de resultaten weer geven
+5. `Run query` de resultaten weer geven
 6. Selecteer het pictogram _Geavanceerde instellingen_ op de query voet tekst (het pictogram ziet eruit als een tand wiel). Hiermee opent u het deel venster Geavanceerde instellingen.
 7. Controleer de instelling: `When an item is selected, export a parameter` .
 8. Selecteer onder de instelling die u hebt geselecteerd *para meter toevoegen* en vul deze in met behulp van de onderstaande gegevens.
-    1. Te exporteren veld:`Request`
-    2. Parameter naam:`SelectedRequest`
-    3. Standaard waarde:`All requests`
+    1. Te exporteren veld: `Request`
+    2. Parameter naam: `SelectedRequest`
+    3. Standaard waarde: `All requests`
 9. Opslaan selecteren
 
     ![Scherm afbeelding met de geavanceerde editor met instellingen voor het exporteren van velden als para meters.](./media/workbooks-interactive/export-parameters-add.png)
@@ -64,7 +62,7 @@ Een gebruiker kan bijvoorbeeld een raster hebben waarin een lijst met aanvragen 
     | where name == '{SelectedRequest}' or 'All Requests' == '{SelectedRequest}'
     | summarize ['{SelectedRequest}'] = count() by bin(timestamp, 1h)
     ```
-13. `Run query`om de resultaten te bekijken.
+13. `Run query` om de resultaten te bekijken.
 14. Wijzig de _visualisatie_ in `Area chart` .
 15. Kies een rij om te selecteren in het eerste raster. U ziet hoe het vlak diagram onder filtert op de geselecteerde aanvraag.
 
@@ -99,12 +97,12 @@ Met werkmappen kunnen auteurs interactiviteit toevoegen via een speciaal type ra
     | order by Count desc
     ```
 
-5. `Run query`de resultaten weer geven
+5. `Run query` de resultaten weer geven
 6. Selecteer _kolom instellingen_ om het deel venster instellingen te openen.
 7. Stel in het gedeelte _kolommen_ het volgende in:
     1. Voor _beeld_ -kolom renderer: `Link` , weer geven om te openen: `Cell Details` , koppelings label:`Sample`
-    2. _Aantal_ -kolom renderer: `Bar` , kleuren palet: `Blue` , minimum waarde:`0`
-    3. _Aanvraag_ -kolom weergave:`Automatic`
+    2. _Aantal_ -kolom renderer: `Bar` , kleuren palet: `Blue` , minimum waarde: `0`
+    3. _Aanvraag_ -kolom weergave: `Automatic`
     4. Selecteer _opslaan en sluiten_ om de wijzigingen toe te passen
 
     ![Scherm afbeelding van het tabblad van de kolom instelling.](./media/workbooks-interactive/column-settings.png)
@@ -118,8 +116,8 @@ Met werkmappen kunnen auteurs interactiviteit toevoegen via een speciaal type ra
 | Koppelings actie | Actie bij klikken |
 |:------------- |:-------------|
 | `Generic Details` | Hiermee worden de rijwaarden in een eigenschappen raster weer gegeven tabblad context |
-| `Cell Details` | Hiermee wordt de celwaarde in een eigenschappen raster context tabblad weer gegeven. handig wanneer de cel een dynamisch type bevat met informatie (bijvoorbeeld JSON met aanvraag eigenschappen zoals locatie, rolinstantie, enz.). |
-| `Cell Details` | Hiermee wordt de celwaarde in een eigenschappen raster context tabblad weer gegeven. handig wanneer de cel een dynamisch type bevat met informatie (bijvoorbeeld JSON met aanvraag eigenschappen zoals locatie, rolinstantie, enz.). |
+| `Cell Details` | Hiermee wordt de celwaarde in een eigenschappen raster context tabblad weer gegeven. Dit is handig wanneer de cel een dynamisch type bevat met informatie (bijvoorbeeld JSON met aanvraag eigenschappen zoals locatie, rolinstantie, enzovoort). |
+| `Cell Details` | Hiermee wordt de celwaarde in een eigenschappen raster context tabblad weer gegeven. Dit is handig wanneer de cel een dynamisch type bevat met informatie (bijvoorbeeld JSON met aanvraag eigenschappen zoals locatie, rolinstantie, enzovoort). |
 | `Custom Event Details` | Hiermee opent u de Application Insights Zoek Details met de aangepaste gebeurtenis-ID ( `itemId` ) in de cel |
 | `* Details` | Vergelijkbaar met details van aangepaste gebeurtenissen, met uitzonde ring van afhankelijkheden, uitzonde ringen, pagina weergaven, aanvragen en traceringen. |
 | `Custom Event User Flows` | Hiermee opent u de Application Insights Gebruikersstromen ervaring die in de cel is gedraaid op de aangepaste gebeurtenis naam |
@@ -136,31 +134,31 @@ Met werkmap kunnen gebruikers bepaalde besturings elementen weer geven of verber
 
 1. Volg de stappen in de [rij een interactiviteit instellen op raster klikken](#setting-up-interactivity-on-grid-row-click) om twee interactieve besturings elementen in te stellen.
 2. Voeg aan de bovenkant een nieuwe para meter toe:
-    1. Naam: `ShowDetails`
-    2. Parameter type:`Drop down`
-    3. Vereist:`checked`
-    4. Gegevens ophalen uit:`JSON`
-    5. JSON-invoer:`["Yes", "No"]`
+    1. Name: `ShowDetails`
+    2. Parameter type: `Drop down`
+    3. Vereist: `checked`
+    4. Gegevens ophalen uit: `JSON`
+    5. JSON-invoer: `["Yes", "No"]`
     6. Opslaan om wijzigingen door te voeren.
 
     ![Nadat u de knop para meter toevoegen hebt geselecteerd, wordt het deel venster para meter bewerken weer gegeven.](./media/workbooks-interactive/edit-parameter.png)
 
-3. Parameter waarde instellen op`Yes`
+3. Parameter waarde instellen op `Yes`
 
     ![Boven de knop bewerken is de vervolg keuzelijst waarmee u de parameter waarde kunt instellen](./media/workbooks-interactive/set-parameter.png)
 
 4. Selecteer in het besturings element query met het vlak diagram het pictogram _Geavanceerde instellingen_ (tandwiel pictogram)
-5. Controleer de instelling`Make this item conditionally visible`
-    1. Dit item wordt weer gegeven als de `ShowDetails` waarde `equals` van de para meter`Yes`
+5. Controleer de instelling `Make this item conditionally visible`
+    1. Dit item wordt weer gegeven als de `ShowDetails` waarde `equals` van de para meter `Yes`
 6. Selecteer _gereed bewerken_ om wijzigingen door te voeren.
 7. Selecteer _gereed bewerken_ op de werk balk van de werkmap om de Lees modus in te voeren.
 8. Schakel de waarde van para meter `ShowDetails` in op `No` . U ziet dat de onderstaande grafiek verdwijnt.
 
-In de onderstaande afbeelding ziet u het zicht bare `ShowDetails` geval waar`Yes`
+In de onderstaande afbeelding ziet u het zicht bare `ShowDetails` geval waar `Yes`
 
 ![Scherm afbeelding van de voorwaardelijke zicht baarheid waar de grafiek wordt weer gegeven](./media/workbooks-interactive/interactivity-conditional-visibility-visible.png)
 
-In de onderstaande afbeelding ziet u de verborgen Case waar `ShowDetails` is`No`
+In de onderstaande afbeelding ziet u de verborgen Case waar `ShowDetails` is `No`
 
 ![Scherm afbeelding van de voorwaardelijke zicht baarheid waar de grafiek is verborgen](./media/workbooks-interactive/interactivity-conditional-visibility-invisible.png)
 

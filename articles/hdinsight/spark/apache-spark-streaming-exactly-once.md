@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/15/2018
 ms.openlocfilehash: 8e0037f6aea4aef53efc192066027e0a0143bda1
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86086174"
 ---
 # <a name="create-apache-spark-streaming-jobs-with-exactly-once-event-processing"></a>Apache Spark streaming-taken maken met precies één keer per gebeurtenis verwerking
@@ -47,15 +47,15 @@ In azure bieden zowel Azure Event Hubs als [Apache Kafka](https://kafka.apache.o
 
 In Spark streaming hebben bronnen als Event Hubs en Kafka *betrouw bare ontvangers*, waarbij elke ontvanger de voortgang van het lezen van de bron bijhoudt. Een betrouw bare ontvanger persistent is de status van fout tolerante opslag, hetzij binnen [Apache ZooKeeper](https://zookeeper.apache.org/) , hetzij in de controle punten voor Spark-streaming, geschreven naar HDFS. Als een dergelijke ontvanger mislukt en later opnieuw wordt gestart, kan deze de locatie ophalen waar deze wordt verlaten.
 
-### <a name="use-the-write-ahead-log"></a>Het Write-Ahead logboek gebruiken
+### <a name="use-the-write-ahead-log"></a>Het Write-Ahead-logboek gebruiken
 
-Spark streaming ondersteunt het gebruik van een write-Ahead logboek waarbij elke ontvangen gebeurtenis eerst wordt geschreven naar de map met het controle punt van Spark in fout tolerante opslag en vervolgens wordt opgeslagen in een flexibele, gedistribueerde gegevensset (RDD). In azure wordt de fout tolerante opslag ondersteund door een Azure Storage of Azure Data Lake Storage. In uw Spark-streaming-toepassing wordt het Write-Ahead logboek ingeschakeld voor alle ontvangers door de `spark.streaming.receiver.writeAheadLog.enable` configuratie-instelling in te stellen op `true` . Het Write-Ahead logboek biedt fout tolerantie voor fouten van zowel het stuur programma als de uitvoerder.
+Spark streaming ondersteunt het gebruik van een Write-Ahead logboek, waarbij elke ontvangen gebeurtenis eerst wordt geschreven naar de map met het controle punt van Spark in fout tolerante opslag en vervolgens wordt opgeslagen in een flexibele, gedistribueerde gegevensset (RDD). In azure wordt de fout tolerante opslag ondersteund door een Azure Storage of Azure Data Lake Storage. In uw Spark-streaming-toepassing wordt het Write-Ahead-logboek ingeschakeld voor alle ontvangers door de `spark.streaming.receiver.writeAheadLog.enable` configuratie-instelling in te stellen op `true` . Het Write-Ahead logboek biedt fout tolerantie voor fouten van zowel het stuur programma als de uitvoerder.
 
 Voor werk nemers die taken uitvoeren op basis van de gebeurtenis gegevens, wordt elke RDD per definitie gerepliceerd en gedistribueerd over meerdere werk rollen. Als een taak mislukt omdat het uitvoeren van de werk nemer is vastgelopen, wordt de taak opnieuw gestart op een andere werk nemer die een replica van de gebeurtenis gegevens heeft, zodat de gebeurtenis niet verloren gaat.
 
 ### <a name="use-checkpoints-for-drivers"></a>Controle punten gebruiken voor Stuur Programma's
 
-De taak Stuur Programma's moeten opnieuw worden gestart. Als het stuur programma dat uw Spark-streaming-toepassing uitvoert crasht, worden alle actieve ontvangers, taken en eventuele Rdd's opgeslagen. In dit geval moet u de voortgang van de taak kunnen opslaan, zodat u deze later kunt hervatten. Dit wordt bereikt door de gerichte acyclische grafiek (DAG) van de DStream periodiek te plaatsen op fout tolerante opslag. De DAG-meta gegevens bevatten de configuratie die wordt gebruikt voor het maken van de streaming-toepassing, de bewerkingen die de toepassing definiëren en alle batches die in de wachtrij staan, maar nog niet zijn voltooid. Met deze meta gegevens kan een defect stuur programma opnieuw worden gestart vanuit de controlepunt gegevens. Wanneer het stuur programma opnieuw wordt opgestart, worden nieuwe ontvangers gestart waarbij de gebeurtenis gegevens in het Rdd's worden hersteld.
+De taak Stuur Programma's moeten opnieuw worden gestart. Als het stuur programma dat uw Spark-streaming-toepassing uitvoert crasht, worden alle actieve ontvangers, taken en eventuele Rdd's opgeslagen. In dit geval moet u de voortgang van de taak kunnen opslaan, zodat u deze later kunt hervatten. Dit wordt bereikt door de gerichte acyclische grafiek (DAG) van de DStream periodiek te plaatsen op fout tolerante opslag. De DAG-meta gegevens bevatten de configuratie die wordt gebruikt voor het maken van de streaming-toepassing, de bewerkingen die de toepassing definiëren en alle batches die in de wachtrij staan, maar nog niet zijn voltooid. Met deze meta gegevens kan een defect stuur programma opnieuw worden gestart vanuit de controlepunt gegevens. Wanneer het stuur programma opnieuw wordt opgestart, worden nieuwe ontvangers gestart waarbij de gebeurtenis gegevens in het Write-Ahead logboek worden teruggezet naar Rdd's.
 
 Controle punten worden in twee stappen ingeschakeld in Spark-streaming.
 

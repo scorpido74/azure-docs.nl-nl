@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 0ff197a5603480e9143a14a4760f14dccf8b101b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 119b1fc646a0a781541784786b409d4a961c2dc3
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544518"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775925"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-confirmit-horizons"></a>Zelfstudie: Integratie van Azure Active Directory met Confirmit Horizons
 
@@ -101,7 +101,7 @@ Voor het configureren van eenmalige aanmelding bij Azure Active Directory met Co
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
 
-    ![Domein- en URL-gegevens voor eenmalige aanmelding bij Confirmit Horizons](common/idp-intiated.png)
+    ![Schermopname met de sectie "Standaard S A M L-configuratie" met de actie "Opslaan", het veld "Id" en het veld "Antwoord-U R L" gemarkeerd.](common/idp-intiated.png)
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon:
 

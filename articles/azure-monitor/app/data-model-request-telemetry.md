@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
 ms.openlocfilehash: 7a352f4ce3528d395599a91b53031c74b0873152
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87320558"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>Telemetrie aanvragen: Application Insights gegevens model
@@ -17,7 +17,7 @@ Een telemetrie van aanvragen (in [Application Insights](./app-insights-overview.
 
 Telemetrie aanvragen ondersteunt het model voor standaard uitbreid baarheid met behulp van aangepast `properties` en `measurements` .
 
-## <a name="name"></a>Naam
+## <a name="name"></a>Name
 
 De naam van de aanvraag vertegenwoordigt het codepad dat is gemaakt om de aanvraag te verwerken. Lage kardinaliteit waarde om een betere groepering van aanvragen mogelijk te maken. Voor HTTP-aanvragen vertegenwoordigt het de sjabloon HTTP-methode en URL-pad, zoals `GET /values/{id}` zonder de werkelijke `id` waarde.
 

@@ -12,10 +12,10 @@ ms.custom:
 - 'Role: Operations'
 - 'Role: Technical Support'
 ms.openlocfilehash: ec8d277de177942386d9f3becdf329cdff1ca812
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88797799"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referentie-IoT Hub quota's en beperking
@@ -30,7 +30,7 @@ Elke IoT-hub is ingericht met een bepaald aantal eenheden in een bepaalde laag. 
 
 De laag bepaalt ook de beperkings limieten die IoT Hub afgedwongen voor alle bewerkingen.
 
-## <a name="iot-plug-and-play"></a>IoT Plug en Play
+## <a name="iot-plug-and-play"></a>IoT Plug and Play
 
 IoT Plug en Play-apparaten verzenden ten minste één telemetrie-bericht voor elke interface, met inbegrip van de hoofdmap, waardoor het aantal berichten dat kan worden meegeteld voor uw bericht quotum kan toenemen.
 

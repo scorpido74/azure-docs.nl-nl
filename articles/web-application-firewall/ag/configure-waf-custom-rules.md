@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/21/2020
 ms.author: victorh
 ms.openlocfilehash: 2572e30c02552859eb5c61915a9ef524c0c6cc70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83758959"
 ---
 # <a name="configure-web-application-firewall-v2-on-application-gateway-with-a-custom-rule-using-azure-powershell"></a>Web Application firewall v2 op Application Gateway configureren met een aangepaste regel met behulp van Azure PowerShell
@@ -21,7 +21,7 @@ ms.locfileid: "83758959"
 
 Met aangepaste regels kunt u uw eigen regels maken die worden geëvalueerd voor elke aanvraag die wordt door gegeven via de Web Application firewall (WAF) v2. Deze regels hebben een hogere prioriteit dan de rest van de regels in de beheerde regelsets. De aangepaste regels hebben een actie (voor toestaan of blok keren), een match voorwaarde en een operator om de volledige aanpassing toe te staan.
 
-In dit artikel maakt u een Application Gateway WAF v2 die gebruikmaakt van een aangepaste regel. De aangepaste regel blokkeert het verkeer als de aanvraag header de *evilbot*van de gebruikers agent bevat.
+In dit artikel maakt u een Application Gateway WAF v2 die gebruikmaakt van een aangepaste regel. Met de aangepaste regel wordt verkeer geblokkeerd als de aanvraagheader User-Agent *evilbot* bevat.
 
 Zie [aangepaste Web Application firewall regels maken en gebruiken](create-custom-waf-rules.md) voor meer informatie over de voor beelden van aangepaste regels
 
@@ -31,7 +31,7 @@ Als u de Azure PowerShell in dit artikel wilt uitvoeren in één doorlopend scri
 
 ### <a name="azure-powershell-module"></a>Azure PowerShell-module
 
-Als u ervoor kiest om Azure PowerShell lokaal te installeren en te gebruiken, is voor dit script de Azure PowerShell module versie 2.1.0 of hoger vereist.
+Als u Azure PowerShell lokaal wilt installeren en gebruiken, is voor dit script moduleversie 2.1.0 of hoger van Azure PowerShell vereist.
 
 1. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps).
 2. Voer `Connect-AzAccount` uit om een verbinding met Azure tot stand te brengen.

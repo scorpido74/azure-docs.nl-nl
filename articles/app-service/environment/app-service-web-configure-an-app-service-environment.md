@@ -8,10 +8,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 598e43d07c213cfeb25f0ecbc7bd02b6ec54b7ed
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88962584"
 ---
 # <a name="configuring-an-app-service-environment-v1"></a>Een App Service Environment v1 configureren
@@ -29,7 +29,7 @@ Op hoog niveau bestaat een Azure App Service Environment uit verschillende belan
 * Een klassiek (v1) of Resource Manager (v2) Azure Virtual Network (VNet) 
 * Een subnet waarop de App Service Environment gehoste service wordt uitgevoerd
 
-### <a name="compute-resources"></a>Reken resources
+### <a name="compute-resources"></a>Rekenresources
 U gebruikt de reken resources voor uw vier resource groepen.  Elke App Service Environment (ASE) heeft een set front-ends en drie mogelijke werk groepen. U hoeft niet alle drie de werkgroepen te gebruiken. Als u wilt, kunt u slechts één of twee gebruiken.
 
 De hosts in de resource groepen (front-ends en werk rollen) zijn niet rechtstreeks toegankelijk voor tenants. U kunt Remote Desktop Protocol (RDP) niet gebruiken om er verbinding mee te maken, hun inrichting te wijzigen of als beheerder te fungeren.

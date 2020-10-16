@@ -9,27 +9,27 @@ ms.date: 08/14/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: f322803d3484b4ec2d5449e19d67d75b35d6d92f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75751533"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
 
-### <a name="what-should-i-do-if-im-getting-a-certificate-mismatch-when-connecting-using-certificate-authentication"></a>Wat moet ik doen als ik een certificaat krijg dat niet overeenkomt bij het verbinding maken met behulp van certificaat verificatie?
+### <a name="what-should-i-do-if-im-getting-a-certificate-mismatch-when-connecting-using-certificate-authentication"></a>Wat moet ik doen als een certificaat niet overeenkomt wanneer ik verbinding maak met certificaatverificatie?
 
-Schakel het selectie vakje **de identiteit van de server controleren door het certificaat te valideren** uit of **Voeg de server-FQDN samen met het certificaat toe** wanneer u een profiel hand matig maakt. U kunt dit doen door **Rasphone** uit te voeren vanaf een opdracht prompt en het profiel te selecteren in de vervolg keuzelijst.
+Schakel het vakje **De identiteit van de server verifiëren door het certificaat te valideren** of **voeg de server-FQDN toe met het certificaat** uit wanneer u handmatig een profiel maakt. U doet dit door **rasphone** uit te voeren vanuit de opdrachtprompt en het profiel te selecteren uit het vervolgkeuzemenu.
 
-Het overs laan van de validatie van server identiteiten wordt niet aanbevolen in het algemeen, maar met Azure-certificaat authenticatie wordt hetzelfde certificaat gebruikt voor Server validatie in het VPN-tunnelingprotocol (IKEv2/SSTP) en het EAP-protocol. Omdat het server certificaat en de FQDN al door het protocol VPN-tunneling zijn gevalideerd, is het overbodig om het opnieuw te valideren in EAP.
+Het is in het algemeen niet aan te raden om de validatie van de serveridentiteit over te slaan, maar met Azure-certificaatverificatie wordt hetzelfde certificaat gebruikt voor servervalidatie in het VPN-tunnelprotocol (IKEv2/SSTP) en het EAP-protocol. Aangezien het servercertificaat en de FQDN al gevalideerd zijn door het VPN-tunnelprotocol, is het overbodig om deze nogmaals te valideren in de EAP.
 
-![punt-naar-site](./media/vpn-gateway-faq-p2s-all-include/servercert.png "Server certificaat")
+![punt-naar-site](./media/vpn-gateway-faq-p2s-all-include/servercert.png "Servercertificaat")
 
-### <a name="can-i-use-my-own-internal-pki-root-ca-to-generate-certificates-for-point-to-site-connectivity"></a>Kan ik mijn eigen interne PKI-basis certificerings instantie gebruiken voor het genereren van certificaten voor punt-naar-site-connectiviteit?
+### <a name="can-i-use-my-own-internal-pki-root-ca-to-generate-certificates-for-point-to-site-connectivity"></a>Kan ik mijn eigen interne PKI basis-CA gebruiken om certificaten te genereren voor een punt-naar-site-verbinding?
 
 Ja. Voorheen konen alleen zelfondertekende basiscertificaten worden gebruikt. U kunt nog steeds 20 basiscertificaten uploaden.
 
-### <a name="can-i-use-certificates-from-azure-key-vault"></a>Kan ik certificaten van Azure Key Vault gebruiken?
+### <a name="can-i-use-certificates-from-azure-key-vault"></a>Kan ik certificaten gebruiken uit Azure Key Vault?
 
 Nee.
 
@@ -45,7 +45,7 @@ U kunt uw Enterprise PKI-oplossing (uw interne PKI), Azure PowerShell, MakeCert 
 
 * **MakeCert:** zie het [MakeCert](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-makecert.md)-artikel voor een stappenplan.
 
-* **OpenSSL** 
+* **OpenSSL:** 
 
     * Bij het exporteren van certificaten, moet u het basiscertificaat naar Base64 converteren.
 

@@ -10,10 +10,10 @@ ms.author: larryfr
 author: BlackMist
 ms.date: 07/08/2020
 ms.openlocfilehash: e1b92563acd6983b1680cacc06a8f2d0789dddf1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91302499"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>Wat zijn Azure Machine Learning omgevingen?
@@ -85,7 +85,7 @@ De tweede stap wordt wegge laten als u door de [gebruiker beheerde afhankelijkhe
 
 Als u dezelfde omgevings definitie gebruikt voor een andere uitvoering, gebruikt de Azure Machine Learning-service de in de cache opgeslagen afbeelding van de werk ruimte ACR. 
 
-Als u de details van een afbeelding in de cache wilt weer geven, gebruikt u de methode [environment. get_image_details](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-image-details-workspace-) .
+Gebruik [environment.get_image_details](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-image-details-workspace-) methode om de details van een afbeelding in de cache weer te geven.
 
 Als u wilt bepalen of u een installatie kopie in cache opnieuw wilt gebruiken of een nieuwe afbeelding wilt maken, berekent de service [een hashwaarde](https://en.wikipedia.org/wiki/Hash_table) van de omgevings definitie en vergelijkt deze met de hashes van bestaande omgevingen. De hash is gebaseerd op:
  

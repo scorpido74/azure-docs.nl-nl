@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
 ms.openlocfilehash: eea64520dd5440467c911b6de42d8c8c31fc1bde
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87543449"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Problemen met & beperkingen van Azure Cloud Shell oplossen
@@ -46,7 +46,7 @@ Bekende oplossingen voor het oplossen van problemen in Azure Cloud Shell zijn on
 
 ### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>Opslag dialoogvenster-fout: 403 RequestDisallowedByPolicy
 
-- **Details**: wanneer u een opslag account maakt via Cloud shell, mislukt dit vanwege een Azure Policy toewijzing die door uw beheerder is geplaatst. Fout bericht bevat:`The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
+- **Details**: wanneer u een opslag account maakt via Cloud shell, mislukt dit vanwege een Azure Policy toewijzing die door uw beheerder is geplaatst. Fout bericht bevat: `The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
 - **Oplossing**: Neem contact op met uw Azure-beheerder om de toewijzing van Azure Policy voor het weigeren van opslag te verwijderen of bij te werken.
 
 ### <a name="storage-dialog---error-400-disallowedoperation"></a>Opslag dialoogvenster-fout: 400 DisallowedOperation
@@ -80,10 +80,10 @@ Bekende oplossingen voor het oplossen van problemen in Azure Cloud Shell zijn on
 > [!NOTE]
 > Virtuele Azure-machines moeten een openbaar gericht IP-adres hebben.
 
-- **Details**: vanwege de standaard Windows Firewall-instellingen voor WinRM, kan de gebruiker de volgende fout zien:`Ensure the WinRM service is running. Remote Desktop into the VM for the first time and ensure it can be discovered.`
+- **Details**: vanwege de standaard Windows Firewall-instellingen voor WinRM, kan de gebruiker de volgende fout zien: `Ensure the WinRM service is running. Remote Desktop into the VM for the first time and ensure it can be discovered.`
 - **Oplossing**: Voer uit `Enable-AzVMPSRemoting` om alle aspecten van externe communicatie van Power shell op de doel computer in te scha kelen.
 
-### <a name="dir-does-not-update-the-result-in-azure-drive"></a>`dir`werkt het resultaat niet bij in azure drive
+### <a name="dir-does-not-update-the-result-in-azure-drive"></a>`dir` werkt het resultaat niet bij in azure drive
 
 - **Details**: standaard wordt voor het optimaliseren van de gebruikers ervaring de resultaten van `dir` in de cache opgeslagen in het Azure-station.
 - **Oplossing**: nadat u een Azure-resource hebt gemaakt, bijgewerkt of verwijderd, voert `dir -force` u uit om de resultaten in het Azure-station bij te werken.
@@ -196,4 +196,4 @@ PowerShell:
 Azure Cloud Shell in Azure Government is alleen toegankelijk via de Azure Portal.
 
 >[!Note]
-> Het is momenteel niet mogelijk om verbinding te maken met GCC-hoog of Government DoD-Clouds voor Exchange Online.
+> Verbinding maken met GCC-High of Government DoD-Clouds voor Exchange Online wordt momenteel niet ondersteund.

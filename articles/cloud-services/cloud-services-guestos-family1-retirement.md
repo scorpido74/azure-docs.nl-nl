@@ -9,12 +9,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 5/21/2017
 ms.author: raiye
-ms.openlocfilehash: c930636f9af45edc66670c3f757333fef8e8756e
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 6de03969a22c5b699fdfd2be17a6ba65905d23e6
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89458821"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073390"
 ---
 # <a name="guest-os-family-1-retirement-notice"></a>Kennisgeving van buitengebruikstelling van serie 1 van gastbesturingssysteem
 De buiten gebruiks telling van besturingssysteem familie 1 werd voor het eerst aangekondigd op 1 juni 2013.
@@ -23,7 +23,7 @@ De buiten gebruiks telling van besturingssysteem familie 1 werd voor het eerst a
 
 **3 November 2014** Uitgebreide ondersteuning voor gast besturingssysteem familie 1 is beëindigd en is volledig buiten gebruik gesteld. Alle services die nog op familie 1 worden getroffen, worden beïnvloed. We kunnen deze services op elk gewenst moment stoppen. Er is geen garantie dat uw services blijven worden uitgevoerd, tenzij u deze hand matig bijwerkt.
 
-Als u meer vragen hebt, gaat u naar de [pagina micro soft Q&een vraag voor Cloud Services](https://docs.microsoft.com/answers/topics/azure-cloud-services.html) of [neemt u contact op met de ondersteuning van Azure](https://azure.microsoft.com/support/options/).
+Als u meer vragen hebt, gaat u naar de [pagina micro soft Q&een vraag voor Cloud Services](/answers/topics/azure-cloud-services.html) of [neemt u contact op met de ondersteuning van Azure](https://azure.microsoft.com/support/options/).
 
 ## <a name="are-you-affected"></a>Hebt u last van dit probleem?
 Uw Cloud Services worden beïnvloed als een van de volgende van toepassing is:
@@ -32,7 +32,7 @@ Uw Cloud Services worden beïnvloed als een van de volgende van toepassing is:
 2. U hebt geen waarde voor osFamily expliciet opgegeven in het bestand ServiceConfiguration. cscfg voor uw Cloud service. Op dit moment gebruikt het systeem de standaard waarde ' 1 ' in dit geval.
 3. De Azure Portal bevat een lijst met de waarde van uw gast besturingssysteem familie als ' Windows Server 2008 '.
 
-Als u wilt weten welke van uw Cloud Services worden uitgevoerd, kunt u het volgende script uitvoeren in Azure PowerShell, maar u moet [Azure PowerShell eerst instellen](/powershell/azure/) . Meer informatie over het script vindt u in [Azure Guest OS Family 1 end of Life: juni 2014](https://docs.microsoft.com/archive/blogs/ryberry/azure-guest-os-family-1-end-of-life-june-2014).
+Als u wilt weten welke van uw Cloud Services worden uitgevoerd, kunt u het volgende script uitvoeren in Azure PowerShell, maar u moet [Azure PowerShell eerst instellen](/powershell/azure/) . Meer informatie over het script vindt u in [Azure Guest OS Family 1 end of Life: juni 2014](/archive/blogs/ryberry/azure-guest-os-family-1-end-of-life-june-2014).
 
 ```Powershell
 foreach($subscription in Get-AzureSubscription) {

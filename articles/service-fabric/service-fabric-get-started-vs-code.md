@@ -7,10 +7,10 @@ ms.date: 06/29/2018
 ms.author: pepogors
 ms.custom: devx-track-js
 ms.openlocfilehash: a2ac8a84b4df4a241665e7f4269803908733ca82
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91249906"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Service Fabric voor Visual Studio code
@@ -56,7 +56,7 @@ De volgende vereiste onderdelen moeten worden geïnstalleerd voor .NET core/C#-o
 1. Open VS Code.
 2. Klik op het pictogram uitbrei dingen in de **activiteiten balk** aan de linkerkant van VS code. Zoek naar "Service Fabric". Klik op **installeren** voor de uitbrei ding service Fabric reliable Services.
 
-## <a name="commands"></a>Opdrachten
+## <a name="commands"></a>Opdracht
 De uitbrei ding Service Fabric Reliable Services voor VS code biedt een groot aantal opdrachten waarmee ontwikkel aars Service Fabric projecten kunnen maken en implementeren. U kunt opdrachten vanuit het **opdracht palet** aanroepen door op, op de `(Ctrl + Shift + p)` opdracht naam in de invoer balk te drukken en de gewenste opdracht te selecteren in de lijst prompt. 
 
 * Service Fabric: toepassing maken 

@@ -7,12 +7,12 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: 53ce3764d074388213a3a4be08502b09743e28cb
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 5d8adea95708f4c7bbe3e7113c3e39e0484159ee
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91827609"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018046"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Intermetrie-correlatie in Application Insights
 
@@ -34,7 +34,7 @@ In een micro Services-omgeving kunnen traceringen van onderdelen naar verschille
 
 ## <a name="example"></a>Voorbeeld
 
-We bekijken een voorbeeld. Een toepassing met de naam aandelen prijzen toont de huidige markt prijs van een aandeel met behulp van een externe API met de naam Stock. De voorraad prijzen toepassing heeft een pagina met de naam Stock pagina die wordt geopend door de webbrowser van de client `GET /Home/Stock` . De toepassing voert een query uit op de voorraad-API met behulp van de HTTP-aanroep `GET /api/stock/value` .
+We kijken naar een voorbeeld. Een toepassing met de naam aandelen prijzen toont de huidige markt prijs van een aandeel met behulp van een externe API met de naam Stock. De voorraad prijzen toepassing heeft een pagina met de naam Stock pagina die wordt geopend door de webbrowser van de client `GET /Home/Stock` . De toepassing voert een query uit op de voorraad-API met behulp van de HTTP-aanroep `GET /api/stock/value` .
 
 U kunt de resulterende telemetrie analyseren door een query uit te voeren:
 
@@ -46,7 +46,7 @@ U kunt de resulterende telemetrie analyseren door een query uit te voeren:
 
 Houd er rekening mee dat alle telemetrie-items de hoofdmap delen `operation_Id` . Wanneer er een Ajax-aanroep van de pagina wordt gemaakt, wordt er een nieuwe unieke ID ( `qJSXU` ) toegewezen aan de telemetrie van de afhankelijkheid en wordt de id van de pagina weergave gebruikt als `operation_ParentId` . De server aanvraag gebruikt vervolgens de Ajax-ID als `operation_ParentId` .
 
-| Item type   | naam                      | Id           | operation_ParentId | operation_Id |
+| Item type   | name                      | Id           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
 | Pagina weergave   | Voorraad pagina                |              | STYz               | STYz         |
 | einde | /Home/Stock ophalen           | qJSXU        | STYz               | STYz         |
@@ -62,7 +62,7 @@ Application Insights wordt overgezet naar [W3C-tracering-context](https://w3c.gi
 - `traceparent`: Hiermee wordt de wereld wijde unieke bewerkings-ID en de unieke id van de aanroep uitgevoerd.
 - `tracestate`: Bevat systeemspecifieke tracerings context.
 
-De nieuwste versie van de Application Insights SDK ondersteunt het Trace-context protocol, maar u moet er mogelijk voor kiezen. (Achterwaartse compatibiliteit met het vorige correlatie protocol dat wordt ondersteund door de Application Insights SDK wordt behouden.)
+De nieuwste versie van de Application Insights SDK ondersteunt het Trace-Context-protocol, maar u moet er mogelijk voor kiezen. (Achterwaartse compatibiliteit met het vorige correlatie protocol dat wordt ondersteund door de Application Insights SDK wordt behouden.)
 
 Het [correlatie-HTTP-protocol, ook wel de aanvraag-id genoemd](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md), wordt afgeschaft. Dit protocol definieert twee headers:
 
@@ -84,7 +84,7 @@ Zie [Application Insights telemetrie-gegevens model](../../azure-monitor/app/dat
 
 ### <a name="enable-w3c-distributed-tracing-support-for-net-apps"></a>Ondersteuning voor gedistribueerde tracering van W3C inschakelen voor .NET-Apps
 
-Op W3C tracering voor gebaseerde gedistribueerde tracering is standaard ingeschakeld in alle recente Sdk's van .NET Framework/. NET core, samen met achterwaartse compatibiliteit met verouderd aanvraag-id-protocol.
+Op W3C tracering voor gebaseerde gedistribueerde tracering is standaard ingeschakeld in alle recente Sdk's van .NET Framework/. NET core, samen met achterwaartse compatibiliteit met verouderd Request-Id protocol.
 
 ### <a name="enable-w3c-distributed-tracing-support-for-java-apps"></a>Ondersteuning voor gedistribueerde W3C-tracering inschakelen voor java-apps
 
@@ -133,34 +133,21 @@ Op W3C tracering voor gebaseerde gedistribueerde tracering is standaard ingescha
 
 Deze functie is in `Microsoft.ApplicationInsights.JavaScript` . Het is standaard uitgeschakeld. Als u deze wilt inschakelen, gebruikt u `distributedTracingMode` configuratie. AI_AND_W3C is voor achterwaartse compatibiliteit met verouderde services die worden uitgevoerd door Application Insights.
 
-- **NPM-installatie (negeren bij het instellen van de fragment instelling)**
+- **[installatie op basis van NPM](./javascript.md#npm-based-setup)**
 
-  ```javascript
-  import { ApplicationInsights, DistributedTracingModes } from '@microsoft/applicationinsights-web';
-
-  const appInsights = new ApplicationInsights({ config: {
-    instrumentationKey: 'YOUR_INSTRUMENTATION_KEY_GOES_HERE',
+Voeg de volgende configuratie toe:
+  ```JavaScript
     distributedTracingMode: DistributedTracingModes.W3C
-    /* ...other configuration options... */
-  } });
-  appInsights.loadAppInsights();
   ```
   
-- **Setup van fragment (negeren bij gebruik van NPM-installatie)**
+- **[Installatie op basis van een fragment](./javascript.md#snippet-based-setup)**
 
+Voeg de volgende configuratie toe:
   ```
-  <script type="text/javascript">
-  var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(e){function n(e){i[e]=function(){var n=arguments;i.queue.push(function(){i[e].apply(i,n)})}}var i={config:e};i.initialize=!0;var a=document,t=window;setTimeout(function(){var n=a.createElement("script");n.src=e.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",a.getElementsByTagName("script")[0].parentNode.appendChild(n)});try{i.cookie=a.cookie}catch(e){}i.queue=[],i.version=2;for(var r=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];r.length;)n("track"+r.pop());n("startTrackPage"),n("stopTrackPage");var o="Track"+r[0];if(n("start"+o),n("stop"+o),!(!0===e.disableExceptionTracking||e.extensionConfig&&e.extensionConfig.ApplicationInsightsAnalytics&&!0===e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){n("_"+(r="onerror"));var s=t[r];t[r]=function(e,n,a,t,o){var c=s&&s(e,n,a,t,o);return!0!==c&&i["_"+r]({message:e,url:n,lineNumber:a,columnNumber:t,error:o}),c},e.autoExceptionInstrumented=!0}return i}
-  (
-    {
-      instrumentationKey:"INSTRUMENTATION_KEY",
       distributedTracingMode: 2 // DistributedTracingModes.W3C
-      /* ...other configuration options... */
-    }
-  );
-  window[aiName]=aisdk,aisdk.queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
-  </script>
   ```
+> [!IMPORTANT] 
+> Zie de documentatie van de [Java script-correlatie](/azure/azure-monitor/app/javascript#enable-correlation)voor een overzicht van alle configuraties die vereist zijn om correlatie in te scha kelen.
 
 ## <a name="telemetry-correlation-in-opencensus-python"></a>Telemetrie-correlatie in opentellingen python
 
@@ -170,7 +157,7 @@ Als referentie kunt u het gegevens model opentelling [hier](https://github.com/c
 
 ### <a name="incoming-request-correlation"></a>Correlatie van binnenkomende aanvragen
 
-Met opentellingen python worden W3C-tracering context headers van binnenkomende aanvragen afgestemd op de reeksen die worden gegenereerd op basis van de aanvragen. Met opentellingen wordt dit automatisch gedaan met integraties voor deze populaire Web Application Frameworks: kolf, Django en piramide. U hoeft alleen de header van de W3C-tracerings context in te vullen met de [juiste indeling](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format) en deze te verzenden met de aanvraag. Hier volgt een voor beeld van een kolf toepassing waarin dit wordt gedemonstreerd:
+Met opentellingen python worden de W3C-Trace-Context headers van binnenkomende aanvragen gecorreleerd aan de-reeksen die worden gegenereerd op basis van de aanvragen zelf. Met opentellingen wordt dit automatisch gedaan met integraties voor deze populaire Web Application Frameworks: kolf, Django en piramide. U hoeft alleen de W3C-Trace-Context headers in te vullen met de [juiste indeling](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format) en deze te verzenden met de aanvraag. Hier volgt een voor beeld van een kolf toepassing waarin dit wordt gedemonstreerd:
 
 ```python
 from flask import Flask

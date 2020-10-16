@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 07/16/2020
 ms.author: aahi
 ms.openlocfilehash: eedfe4f24797a9b564479b2f8d3f4d04b0751272
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91779200"
 ---
 > [!NOTE]
@@ -23,9 +23,9 @@ ms.locfileid: "91779200"
  
 De volgende entiteits categorieën worden geretourneerd wanneer u aanvragen naar het `/v3.1-preview.2/entities/recognition/pii` eind punt verzendt.
 
-| Categorie   | Subcategorie | Beschrijving                          | Model versie starten | Opmerkingen |
+| Categorie   | Subcategorie | Beschrijving                          | Model versie starten | Notities |
 |------------|-------------|--------------------------------------|------------------------|---|
-| Persoon     | N.v.t.         | Namen van personen.  | `2019-10-01`  | Ook geretourneerd met `domain=phi` . |
+| Person     | N.v.t.         | Namen van personen.  | `2019-10-01`  | Ook geretourneerd met `domain=phi` . |
 | PersonType | N.v.t.         | Taak typen of-rollen die door een persoon worden beheerd. | `2020-02-01` | |
 | PhoneNumber | N.v.t. | Telefoon nummers (alleen telefoon nummers voor VS en EU). | `2019-10-01` | Ook geretourneerd met `domain=phi` . |
 |Organisatie  | N.v.t. | Bedrijven, politieke groepen, muziek banden, sport clubs, overheids instanties en open bare organisaties.  | `2019-10-01` | Nationale en religions zijn niet opgenomen in dit entiteits type.  |
@@ -34,7 +34,7 @@ De volgende entiteits categorieën worden geretourneerd wanneer u aanvragen naar
 | Organisatie | Sporten | Sport organisaties. | `2020-04-01` |  |
 | Adres | N.v.t. | Volledige mailing adressen.  | `2020-04-01` | Ook geretourneerd met `domain=phi` . |
 | EU GPS-coördinaten | N.v.t. | GPS-coördinaten voor locaties binnen de Europese Unie.  | `2019-10-01` |  |
-| Email | N.v.t. | E-mail adressen. | `2019-10-01` | Ook geretourneerd met `domain=phi` .   |
+| E-mail | N.v.t. | E-mail adressen. | `2019-10-01` | Ook geretourneerd met `domain=phi` .   |
 | URL | N.v.t. | Url's naar websites. | `2019-10-01` | Ook geretourneerd met `domain=phi` . |
 | IP | N.v.t. | IP-adressen van het netwerk. | `2019-10-01` | Ook geretourneerd met `domain=phi` . |
 | DateTime | N.v.t. | Datums en tijden van de dag. | `2019-10-01` |  | 

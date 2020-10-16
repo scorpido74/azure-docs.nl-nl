@@ -6,14 +6,16 @@ ms.topic: conceptual
 description: Meer informatie over hoe u Kubernetes-geheimen kunt gebruiken tijdens het uitvoeren of bouwen tijdens het ontwikkelen van toepassingen met Azure dev Spaces
 keywords: Docker, Kubernetes, azure, AKS, Azure Container Service, containers
 ms.custom: devx-track-js
-ms.openlocfilehash: b9a9ef2592e7b2aa3630f19e2bc1a47b2b9ef0f8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8791480f420dfd76d5291ce82e8ebf7412a41326
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91308721"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972965"
 ---
 # <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>Geheimen beheren bij het werken met een Azure dev Space
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 Voor uw services zijn mogelijk bepaalde wacht woorden, verbindings reeksen en andere geheimen vereist, zoals voor data bases of andere beveiligde Azure-Services. Door de waarden van deze geheimen in configuratie bestanden in te stellen, kunt u ze beschikbaar maken in uw code als omgevings variabelen.  Deze configuratie bestanden moeten worden verwerkt om te voor komen dat de beveiliging van de geheimen in gevaar komt.
 

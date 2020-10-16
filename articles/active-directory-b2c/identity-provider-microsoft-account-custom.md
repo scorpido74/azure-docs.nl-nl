@@ -12,10 +12,10 @@ ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: db81f8b60cf4883223f6fc084c19c8da1d07bc9a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85388099"
 ---
 # <a name="set-up-sign-in-with-a-microsoft-account-using-custom-policies-in-azure-active-directory-b2c"></a>Aanmelden instellen met een Microsoft-account aangepaste beleids regels gebruiken in Azure Active Directory B2C
@@ -31,16 +31,16 @@ In dit artikel wordt beschreven hoe u aanmelden voor gebruikers vanaf een Micros
 
 ## <a name="register-an-application"></a>Een toepassing registreren
 
-Als u aanmelden voor gebruikers met een Microsoft-account wilt inschakelen, moet u een toepassing registreren in de Azure AD-Tenant. De Azure AD-Tenant is niet hetzelfde als uw Azure AD B2C-Tenant.
+Als u aanmelden voor gebruikers met een Microsoft-account wilt inschakelen, moet u een toepassing registreren in de Azure AD-Tenant. De Azure AD-tenant is niet dezelfde als uw Azure AD B2C-tenant.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-1. Zorg ervoor dat u de map met uw Azure AD-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Azure AD-Tenant bevat.
-1. Kies **alle services** in de linkerbovenhoek van de Azure Portal en zoek en selecteer **app-registraties**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Zorg ervoor dat u de map gebruikt die uw Azure AD-tenant bevat door in het bovenste menu op het filter **Map en abonnement** te klikken en de map te kiezen waarin de Azure AD-tenant zich bevindt.
+1. Kies linksboven in de Azure Portal **Alle services**, zoek **App-registraties** en selecteer deze.
 1. Selecteer **Nieuwe registratie**.
-1. Voer een **naam** in voor uw toepassing. Bijvoorbeeld *MSAapp1*.
+1. Voer een **Naam** in voor de toepassing. Bijvoorbeeld *MSAapp1*.
 1. Onder **ondersteunde account typen**selecteert u **accounts in elke organisatie Directory (een Azure AD-adres lijst en persoonlijke micro soft-accounts (bijvoorbeeld Skype, Xbox)**.
 1. Onder **omleidings-URI (optioneel)** selecteert u **Web** en voert u `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/oauth2/authresp` in het tekstvak in. Vervang door `<tenant-name>` de naam van uw Azure AD B2C-Tenant.
-1. Selecteer **registreren**
+1. Selecteer **Registreren**
 1. Noteer de **id van de toepassing (client)** die wordt weer gegeven op de overzichts pagina van de toepassing. U hebt deze nodig wanneer u de claim provider in een latere sectie configureert.
 1. **Certificaten & geheimen** selecteren
 1. Klik op **Nieuw clientgeheim**
@@ -64,7 +64,7 @@ Als u de `family_name` en `given_name` claims van Azure ad wilt ophalen, kunt u 
 
 Nu u de toepassing hebt gemaakt in uw Azure AD-Tenant, moet u het client geheim van die toepassing opslaan in uw Azure AD B2C-Tenant.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 1. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-Tenant bevat. Selecteer het filter **Directory + abonnement** in het bovenste menu en kies de map die uw Tenant bevat.
 1. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 1. Selecteer op de pagina overzicht **identiteits ervaring-Framework**.
@@ -73,7 +73,7 @@ Nu u de toepassing hebt gemaakt in uw Azure AD-Tenant, moet u het client geheim 
 1. Voer een **naam** in voor de beleids sleutel. Bijvoorbeeld `MSASecret`. Het voor voegsel `B2C_1A_` wordt automatisch toegevoegd aan de naam van uw sleutel.
 1. Voer in het **geheim**het client geheim in dat u in de vorige sectie hebt vastgelegd.
 1. Selecteer voor **sleutel gebruik** `Signature` .
-1. Klik op **Create**.
+1. Klik op **Maken**.
 
 ## <a name="add-a-claims-provider"></a>Een claim provider toevoegen
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1bf2e3f07d9e5576f62ef9badd9c8a46ac92fad0
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 1a11d3a9a972188af4cf8f054349da98d69691a3
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91450162"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876155"
 ---
 # <a name="monitor-module-twins"></a>Dubbele modules bewaken
 
@@ -168,15 +168,15 @@ Als u problemen ondervindt met uw downstream-apparaten, is het controleren van d
 
 De informatie over de connectiviteit van uw aangepaste modules wordt onderhouden in de module IoT Edge agent. De module twee voor uw aangepaste module wordt voornamelijk gebruikt voor het onderhouden van gegevens voor uw oplossing. De gewenste eigenschappen die u in uw deployment.jsin het bestand hebt gedefinieerd, worden weer gegeven in de module dubbele en de module kan de gerapporteerde eigenschaps waarden naar wens bijwerken.
 
-U kunt uw favoriete programmeer taal gebruiken met de [sdk's van het Azure IOT hub apparaat](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-device-sdks) om de gerapporteerde eigenschaps waarden in de module twee bij te werken, op basis van de toepassings code van uw module. De volgende procedure maakt gebruik van de Azure SDK voor .NET om dit te doen met behulp van code uit de [SimulatedTemperatureSensor](https://github.com/Azure/iotedge/blob/dd5be125df165783e4e1800f393be18e6a8275a3/edge-modules/SimulatedTemperatureSensor/src/Program.cs) -module:
+U kunt uw favoriete programmeer taal gebruiken met de [sdk's van het Azure IOT hub apparaat](../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks) om de gerapporteerde eigenschaps waarden in de module twee bij te werken, op basis van de toepassings code van uw module. De volgende procedure maakt gebruik van de Azure SDK voor .NET om dit te doen met behulp van code uit de [SimulatedTemperatureSensor](https://github.com/Azure/iotedge/blob/dd5be125df165783e4e1800f393be18e6a8275a3/edge-modules/SimulatedTemperatureSensor/src/Program.cs) -module:
 
-1. Maak een instantie van de [ModuleClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient) met de methode [CreateFromEnvironmentAysnc](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient.createfromenvironmentasync) .
+1. Maak een instantie van de [ModuleClient](/dotnet/api/microsoft.azure.devices.client.moduleclient) met de methode [CreateFromEnvironmentAysnc](/dotnet/api/microsoft.azure.devices.client.moduleclient.createfromenvironmentasync) .
 
-1. Haal een verzameling van de eigenschappen van de module twee op met de methode [GetTwinAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient.gettwinasync?view=azure-dotnet) .
+1. Haal een verzameling van de eigenschappen van de module twee op met de methode [GetTwinAsync](/dotnet/api/microsoft.azure.devices.client.moduleclient.gettwinasync) .
 
-1. Een listener maken (een call back door geven) om wijzigingen aan de gewenste eigenschappen te ondervangen met de methode [SetDesiredPropertyUpdateCallbackAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.setdesiredpropertyupdatecallbackasync?view=azure-dotnet) .
+1. Een listener maken (een call back door geven) om wijzigingen aan de gewenste eigenschappen te ondervangen met de methode [SetDesiredPropertyUpdateCallbackAsync](/dotnet/api/microsoft.azure.devices.client.deviceclient.setdesiredpropertyupdatecallbackasync) .
 
-1. Werk in uw call back-methode de gerapporteerde eigenschappen bij in de module, met de methode [UpdateReportedPropertiesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient) , waarbij een [TwinCollection](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.shared.twincollection) wordt door gegeven van de eigenschaps waarden die u wilt instellen.
+1. Werk in uw call back-methode de gerapporteerde eigenschappen bij in de module, met de methode [UpdateReportedPropertiesAsync](/dotnet/api/microsoft.azure.devices.client.moduleclient) , waarbij een [TwinCollection](/dotnet/api/microsoft.azure.devices.shared.twincollection) wordt door gegeven van de eigenschaps waarden die u wilt instellen.
 
 ## <a name="access-the-module-twins"></a>Toegang tot de module apparaatdubbels
 

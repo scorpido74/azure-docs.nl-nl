@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5ca65a428af02eaf5ae6ac461006c720da4461bd
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: e5aafaa02f503582bd0050f8a6389d78b52eaa76
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91538177"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939150"
 ---
 # <a name="cloud-tiering-overview"></a>Overzicht van Cloud lagen
 Cloud lagen is een optionele functie van Azure File Sync waarbij veelgebruikte bestanden lokaal op de server worden opgeslagen in de cache, terwijl alle andere bestanden worden gelaagd op Azure Files op basis van beleids instellingen. Wanneer een bestand wordt getierd, wordt het bestand door de Azure File Sync File System filter (StorageSync.sys) lokaal vervangen door een aanwijzer of een reparsepunt. Het reparsepunt vertegenwoordigt een URL naar het bestand in Azure Files. Een gelaagd bestand heeft zowel het kenmerk ' offline ' als het kenmerk FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS in NTFS ingesteld, zodat toepassingen van derden veilig gelaagde bestanden kunnen identificeren.
@@ -48,9 +48,9 @@ Voor Agent versie 9 en hoger is de minimale bestands grootte voor een bestand op
 |8 KB (8192)                 | 16 kB   |
 |16 KB (16384)               | 32 kB   |
 |32 KB (32768)               | 64 kB   |
-|64 KB (65536) en groter    | 128 kB  |
+|64 KB (65536)    | 128 kB  |
 
-Met Windows Server 2019 en Azure File Sync agent versie 12 (toekomstige agent versie) worden cluster grootten tot 2 MB ook ondersteund en wordt het trapsgewijs scha kelen van de grotere cluster grootten op dezelfde manier uitgevoerd. Oudere versies van het besturings systeem of de agent ondersteunen cluster grootten tot 64 KB, maar dit is niet het geval bij het werken met Cloud lagen.
+Cluster grootten tot 64 KB worden momenteel ondersteund, maar voor grotere grootten werkt Cloud lagen niet.
 
 Alle bestands systemen die worden gebruikt door Windows, organiseren de vaste schijf op basis van de cluster grootte (ook wel bekend als Allocation Unit Size). Cluster grootte vertegenwoordigt de kleinste hoeveelheid schijf ruimte die kan worden gebruikt om een bestand te bewaren. Wanneer de bestands grootte niet van een even veelvoud van de cluster grootte komt, moet er extra ruimte worden gebruikt om het bestand op te slaan op het volgende veelvoud van de cluster grootte.
 
@@ -184,7 +184,7 @@ Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint> -ThreadCoun
 ``` 
 
 > [!Note]  
-> - De cmdlet invoke-StorageSyncFileRecall kan ook worden gebruikt om de prestaties van het bestand te downloaden wanneer u een nieuw server eindpunt toevoegt aan een bestaande synchronisatie groep.  
+> - De cmdlet Invoke-StorageSyncFileRecall kan ook worden gebruikt om de prestaties van het downloaden van bestanden te verbeteren wanneer u een nieuw server eindpunt toevoegt aan een bestaande synchronisatie groep.  
 >- Als het lokale volume dat als host fungeert voor de server onvoldoende beschik bare ruimte heeft om alle gelaagde gegevens in te trekken, `Invoke-StorageSyncFileRecall` mislukt de cmdlet.  
 
 <a id="sizeondisk-versus-size"></a>

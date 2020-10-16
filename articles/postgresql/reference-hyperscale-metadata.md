@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: reference
 ms.date: 08/10/2020
 ms.openlocfilehash: 888f8c96e8c1aa596c76cf09cd95a104821740ca
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91320452"
 ---
 # <a name="system-tables-and-views"></a>Systeem tabellen en-weer gaven
@@ -129,11 +129,11 @@ De \_ tabel pag dist- \_ knoop punt bevat informatie over de worker-knoop punten
 | nodename         | tekst    | De hostnaam of het IP-adres van het PostgreSQL worker-knoop punt.                                                                                                                                     |
 | nodeport         | int     | Het poort nummer waarop het PostgreSQL-werk knooppunt luistert.                                                                                                                              |
 | noderack         | tekst    | Beschrijving Informatie over de plaatsing van rekken voor het worker-knoop punt.                                                                                                                                 |
-| hasmetadata      | boolean | Gereserveerd voor intern gebruik.                                                                                                                                                                 |
-| IsActive         | boolean | Hiermee wordt aangegeven of het knoop punt actief Shard plaatsen accepteert.                                                                                                                                     |
+| hasmetadata      | booleaans | Gereserveerd voor intern gebruik.                                                                                                                                                                 |
+| IsActive         | booleaans | Hiermee wordt aangegeven of het knoop punt actief Shard plaatsen accepteert.                                                                                                                                     |
 | noderole         | tekst    | Of het knoop punt een primair of secundair is                                                                                                                                                 |
 | nodecluster      | tekst    | De naam van het cluster dat dit knoop punt bevat                                                                                                                                               |
-| shouldhaveshards | boolean | Als false is ingesteld, wordt Shards buiten het knoop punt verplaatst tijdens het herverdelen, en worden Shards van nieuwe gedistribueerde tabellen niet op het knoop punt geplaatst, tenzij ze zijn gekoppeld met Shards al |
+| shouldhaveshards | booleaans | Als false is ingesteld, wordt Shards buiten het knoop punt verplaatst tijdens het herverdelen, en worden Shards van nieuwe gedistribueerde tabellen niet op het knoop punt geplaatst, tenzij ze zijn gekoppeld met Shards al |
 
 ```
 SELECT * from pg_dist_node;
@@ -233,7 +233,7 @@ In deze tabel worden strategieën gedefinieerd die [rebalance_table_shards](refe
 
 | Naam                           | Type    | Beschrijving                                                                                                                                       |
 |--------------------------------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------|
-| default_strategy               | boolean | Hiermee wordt aangegeven of rebalance_table_shards standaard deze strategie moet kiezen. Citus_set_default_rebalance_strategy gebruiken om deze kolom bij te werken             |
+| default_strategy               | booleaans | Hiermee wordt aangegeven of rebalance_table_shards standaard deze strategie moet kiezen. Citus_set_default_rebalance_strategy gebruiken om deze kolom bij te werken             |
 | shard_cost_function            | regproc | Id voor een functie van kosten, die een shardid moet hebben als bigint, en het principe van een kosten als type Real te retour neren                                |
 | node_capacity_function         | regproc | Id voor een capaciteits functie, die een nodeId moet maken als int en het begrip van de capaciteit van het knoop punt als het type werkelijk wilt retour neren                          |
 | shard_allowed_on_node_function | regproc | Id voor een functie die shardid bigint heeft gegeven en nodeidarg int retourneert een Booleaanse waarde voor of Citus de Shard op het knoop punt mag opslaan |

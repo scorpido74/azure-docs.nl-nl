@@ -8,12 +8,12 @@ ms.reviewer: amberb
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.author: banders
-ms.openlocfilehash: b154d723e82d02ea864459ef65eb5c05c14ae336
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 661b088d024a6da631fa06fbd97131091b9f650b
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88943158"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371878"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Toegang verlenen voor het maken van Azure Enterprise-abonnementen (preview)
 
@@ -23,11 +23,11 @@ Als Azure-klant op [Enterprise Agreement (EA)](https://azure.microsoft.com/prici
 
 ## <a name="grant-access"></a>Toegang verlenen
 
-Als u [abonnementen wilt maken onder een inschrijvingsaccount](programmatically-create-subscription.md), moeten gebruikers de rol [RBAC-eigenaar](../../role-based-access-control/built-in-roles.md#owner) hebben voor dat account. U kunt een gebruiker of een groep gebruikers de rol RBAC-eigenaar verlenen voor een inschrijvingsaccount door de volgende stappen uit te voeren:
+Als u [abonnementen wilt maken onder een inschrijvingsaccount](programmatically-create-subscription.md), moeten gebruikers de Azure RBAC [Eigenaar-rol](../../role-based-access-control/built-in-roles.md#owner) hebben voor dat account. U kunt een gebruiker of een groep gebruikers de Azure RBAC-eigenaarrol verlenen voor een inschrijvingsaccount door de volgende stappen uit te voeren:
 
 1. Haal de object-ID op van het inschrijvingsaccount waaraan u toegang wilt verlenen
 
-    Als u anderen de rol RBAC-eigenaar wilt verlenen voor een inschrijvingsaccount, moet u de Eigenaar van het account of een RBAC-eigenaar van het account zijn.
+    Als u anderen de Azure RBAC-eigenaarrol wilt verlenen voor een inschrijvingsaccount, moet u de Eigenaar van het account of een Azure RBAC-eigenaar van het account zijn.
 
     # <a name="rest"></a>[REST](#tab/rest)
 
@@ -62,7 +62,7 @@ Als u [abonnementen wilt maken onder een inschrijvingsaccount](programmatically-
     }
     ```
 
-    Gebruik de eigenschap `principalName` om het account te identificeren waartoe u de RBAC-eigenaar toegang wilt verlenen. Kopieer de `name` van dat account. Als u bijvoorbeeld de RBAC-eigenaar toegang wilt verlenen tot het SignUpEngineering@contoso.com-inschrijvingsaccount, kopieert u ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```. Dit is de object-id van het inschrijvingsaccount. Plak deze waarde ergens zodat u deze in de volgende stap als `enrollmentAccountObjectId` kunt gebruiken.
+    Gebruik de eigenschap `principalName` om het account te identificeren waaraan u Azure RBAC-eigenaarstoegang wilt verlenen. Kopieer de `name` van dat account. Als u bijvoorbeeld RBAC-eigenaarstoegang wilt verlenen aan het SignUpEngineering@contoso.com-inschrijvingsaccount, kopieert u ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```. Dit is de object-id van het inschrijvingsaccount. Plak deze waarde ergens zodat u deze in de volgende stap als `enrollmentAccountObjectId` kunt gebruiken.
 
     # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -80,7 +80,7 @@ Als u [abonnementen wilt maken onder een inschrijvingsaccount](programmatically-
     4cd2fcf6-xxxx-xxxx-xxxx-xxxxxxxxxxxx   | BillingPlatformTeam@contoso.com
     ```
 
-    Gebruik de eigenschap `principalName` om het account te identificeren waartoe u de RBAC-eigenaar toegang wilt verlenen. Kopieer de `ObjectId` van dat account. Als u bijvoorbeeld de RBAC-eigenaar toegang wilt verlenen tot het SignUpEngineering@contoso.com-inschrijvingsaccount, kopieert u ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```. Plak deze object-id ergens zodat u deze als `enrollmentAccountObjectId` in de volgende stap kunt gebruiken.
+    Gebruik de eigenschap `principalName` om het account te identificeren waaraan u Azure RBAC-eigenaarstoegang wilt verlenen. Kopieer de `ObjectId` van dat account. Als u bijvoorbeeld RBAC-eigenaarstoegang wilt verlenen aan het SignUpEngineering@contoso.com-inschrijvingsaccount, kopieert u ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```. Plak deze object-id ergens zodat u deze als `enrollmentAccountObjectId` in de volgende stap kunt gebruiken.
 
     # <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
@@ -111,18 +111,18 @@ Als u [abonnementen wilt maken onder een inschrijvingsaccount](programmatically-
 
     ---
 
-    Gebruik de eigenschap `principalName` om het account te identificeren waartoe u de RBAC-eigenaar toegang wilt verlenen. Kopieer de `name` van dat account. Als u bijvoorbeeld de RBAC-eigenaar toegang wilt verlenen tot het SignUpEngineering@contoso.com-inschrijvingsaccount, kopieert u ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```. Dit is de object-id van het inschrijvingsaccount. Plak deze waarde ergens zodat u deze in de volgende stap als `enrollmentAccountObjectId` kunt gebruiken.
+    Gebruik de eigenschap `principalName` om het account te identificeren waaraan u Azure RBAC-eigenaarstoegang wilt verlenen. Kopieer de `name` van dat account. Als u bijvoorbeeld RBAC-eigenaarstoegang wilt verlenen aan het SignUpEngineering@contoso.com-inschrijvingsaccount, kopieert u ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```. Dit is de object-id van het inschrijvingsaccount. Plak deze waarde ergens zodat u deze in de volgende stap als `enrollmentAccountObjectId` kunt gebruiken.
 
-1. <a id="userObjectId"></a>De object-ID ophalen van de gebruiker of groep waaraan u de RBAC-eigenaarsfunctie wilt toekennen
+1. <a id="userObjectId"></a>De object-ID ophalen van de gebruiker of groep waaraan u de Azure RBAC-eigenaarrol wilt toekennen
 
     1. Zoek in het Azure Portal op **Azure Active Directory**.
     1. Als u een gebruiker toegang wilt verlenen, selecteert u **Gebruikers** in het menu aan de linkerkant. Als u toegang tot een groep wilt verlenen, selecteert u **Groepen**.
-    1. Selecteer de gebruiker of groep waaraan u de RBAC-eigenaarsfunctie wilt toewijzen.
+    1. Selecteer de gebruiker of groep waaraan u de Azure RBAC-eigenaarrol wilt toewijzen.
     1. Als u een gebruiker hebt geselecteerd, vindt u de object-ID op de profielpagina. Als u een groep hebt geselecteerd, wordt de object-ID op het paginaoverzicht weergegeven. Kopieer de **ObjectID** door het pictogram rechts van het tekstvak te selecteren. Plak deze ergens zodat u deze als `userObjectId` kunt gebruiken tijdens de volgende stap.
 
-1. De gebruiker of groep de rol RBAC-eigenaar verlenen in het inschrijvingsaccount
+1. De gebruiker of groep de rol Azure RBAC-eigenaar verlenen in het inschrijvingsaccount
 
-    Ken met de waarden die u in de eerste twee stappen hebt verzameld, de gebruiker of groep de rol RBAC-eigenaar toe in het inschrijvingsaccount.
+    Ken met de waarden die u in de eerste twee stappen hebt verzameld, de gebruiker of groep de rol Azure RBAC-eigenaar toe in het inschrijvingsaccount.
 
     # <a name="rest"></a>[REST](#tab/rest-2)
 
@@ -174,7 +174,7 @@ Als u [abonnementen wilt maken onder een inschrijvingsaccount](programmatically-
     az role assignment create --role Owner --assignee-object-id <userObjectId> --scope /providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>
     ```
 
-    Zodra een gebruiker een RBAC-eigenaar wordt voor uw inschrijvingsaccount, kunnen ze er via programmacode [abonnementen maken](programmatically-create-subscription.md) in maken. Een abonnement dat is gemaakt door een gemachtigde gebruiker heeft nog steeds de oorspronkelijke eigenaar van het account als servicebeheerder, maar heeft standaard ook de gemachtigde gebruiker als RBAC-eigenaar.
+    Zodra een gebruiker een Azure RBAC-eigenaar wordt voor uw inschrijvingsaccount, kan deze [programmatisch abonnementen maken](programmatically-create-subscription.md) onder het account. Een abonnement dat is gemaakt door een gemachtigde gebruiker heeft nog steeds de oorspronkelijke eigenaar van het account als servicebeheerder, maar heeft standaard ook de gemachtigde gebruiker als Azure RBAC-eigenaar.
 
     ---
 

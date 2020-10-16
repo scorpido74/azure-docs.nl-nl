@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 6714b2c5d87141fd94d0f96d9cf07913442d18d6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91267054"
 ---
 # <a name="set-up-private-cloud-as-a-disaster-recovery-target-with-vmware-site-recovery-manager"></a>Een Privécloud instellen als een nood herstel doel met VMware Site Recovery Manager
@@ -111,7 +111,7 @@ Installeer vSphere Replication Appliance (vRA) in uw on-premises omgeving door d
 
 2. Implementeer vRA in uw on-premises omgeving met behulp van de OVF in de VR-ISO van vmware.com. Voor vRA 6,5 bevat [deze VMware-blog](https://blogs.vmware.com/virtualblocks/2017/01/20/vr-65-ovf-choices) de relevante informatie.
 
-3. Registreer uw on-premises vRA met de vCenter-eenmalige aanmelding op de on-premises site. Zie voor gedetailleerde instructies voor vSphere-replicatie 6,5 het VMware-document [VMware vSphere replicatie-6,5-installatie en-configuratie](https://docs.vmware.com/en/vSphere-Replication/6.5/vsphere-replication-65-install.pdf).
+3. Registreer uw on-premises vRA met vCenter single Sign-On op de on-premises site. Zie voor gedetailleerde instructies voor vSphere-replicatie 6,5 het VMware-document [VMware vSphere replicatie-6,5-installatie en-configuratie](https://docs.vmware.com/en/vSphere-Replication/6.5/vsphere-replication-65-install.pdf).
 
 ## <a name="install-vsphere-replication-appliance-in-your-private-cloud-environment"></a>VSphere-replicatie apparaat installeren in uw Privécloud
 
@@ -137,7 +137,7 @@ De installatie bestaat uit de volgende stappen op hoog niveau:
 3. Bereid uw persoonlijke cloud omgeving voor op de installatie van vRA.
 4. Implementeer vRA in uw Privécloud met behulp van de OVF in de VR. ISO van vmware.com. Voor vRA 6,5 bevat [deze VMware-blog](https://blogs.vmware.com/virtualblocks/2017/01/20/vr-65-ovf-choices) relevante informatie.
 5. Firewall regels configureren voor vRA. Hieronder beschreven in [CloudSimple portal: Firewall regels configureren voor vRA](#cloudsimple-portal-configure-firewall-rules-for-vra).
-6. Registreer de vRA van de privécloud op de Privécloud-site.
+6. Registreer vRA Sign-On voor de privécloud op de Privécloud-site.
 7. Configureer vSphere-replicatie verbindingen tussen de twee apparaten. Zorg ervoor dat de vereiste poorten zijn geopend via de firewalls. Zie [dit artikel in de VMware Knowledge Base](https://kb.vmware.com/s/article/2087769) voor een lijst met poort nummers die open moeten zijn voor VSphere-replicatie 6,5.
 
 Zie voor gedetailleerde installatie-instructies voor vSphere-replicatie 6,5 het VMware-document [VMware vSphere replicatie-6,5-installatie en-configuratie](https://docs.vmware.com/en/vSphere-Replication/6.5/vsphere-replication-65-install.pdf).
@@ -227,7 +227,7 @@ U hebt volledige controle over de vSphere-replicatie en de software-levens duur 
 * [OVF choices bij het implementeren van vSphere-replicatie 6,5](https://blogs.vmware.com/virtualblocks/2017/01/20/vr-65-ovf-choices/)
 * [VMware vSphere replicatie 6,5-installatie en-configuratie](https://docs.vmware.com/en/vSphere-Replication/6.5/vsphere-replication-65-install.pdf)
 * [Vereisten en aanbevolen procedures voor de 6,5](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-BB0C03E4-72BE-4C74-96C3-97AC6911B6B8.html)
-* [Site Recovery manager in een topologie met twee sites met een vCenter Server exemplaar per platform Services-controller](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-F474543A-88C5-4030-BB86-F7CC51DADE22.html)
+* [Site Recovery manager in een Two-Site topologie met één vCenter Server Instance per platform Services-controller](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-F474543A-88C5-4030-BB86-F7CC51DADE22.html)
 * [Installatie-en configuratie handleiding voor VMware Site Recovery Manager 6,5](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-437E1B65-A17B-4B4B-BA5B-C667C90FA418.html)
 * [VMware-blog op de vSphere met replicatie op basis van een matrix versus replicatie van de](https://blogs.vmware.com/virtualblocks/2017/06/22/srm-array-based-replication-vs-vsphere-replication)
 * [VMware-blog op een laag met meerdere locaties-opties](https://blogs.vmware.com/virtualblocks/2016/07/28/srm-multisite)

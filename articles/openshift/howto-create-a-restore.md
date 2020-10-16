@@ -8,12 +8,12 @@ author: troy0820
 ms.author: b-trconn
 keywords: Aro, open Shift, AZ Aro, Red Hat, cli
 ms.custom: mvc
-ms.openlocfilehash: 0cd6797bcdfadca807e25f8b3decf34bd553fc56
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 9eac34d643ba0df4be79a064858c580c884de727
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89470048"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078558"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-cluster-application-restore"></a>Een Azure Red Hat open Shift 4-cluster toepassing herstellen
 
@@ -23,7 +23,7 @@ In dit artikel maakt u een voor bereiding van uw omgeving voor het maken van een
 > * De vereisten instellen en de benodigde hulpprogram ma's installeren
 > * Een Azure Red Hat open Shift 4-toepassing herstellen
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u Azure CLI 2.6.0 of hoger gebruiken voor deze zelfstudie. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](/cli/azure/install-azure-cli?view=azure-cli-latest) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u Azure CLI 2.6.0 of hoger gebruiken voor deze zelfstudie. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -45,7 +45,7 @@ oc get backups -n velero
 Zodra u de back-up hebt die u wilt herstellen, moet u de herstel bewerking uitvoeren met de volgende opdracht:
 
 ```bash
-velero restore create --from-backup <name of backup from above output list>
+velero restore create <name of restore> --from-backup <name of backup from above output list>
 ```
 
 Met deze stap maakt u de Kubernetes-objecten waarvan een back-up is gemaakt van de vorige stap bij het maken van een back-up.
@@ -57,14 +57,36 @@ oc get restore -n velero <name of restore created previously> -o yaml
 ```
 Wanneer de fase aangeeft `Completed` , moet uw Azure Red Hat 4-toepassing worden hersteld.
 
+## <a name="restore-an-azure-red-hat-openshift-4-application-with-included-snapshots"></a>Een Azure Red Hat open Shift 4-toepassing met opgenomen moment opnamen herstellen
+
+
+Voor het maken van een herstel bewerking van een Azure Red Hat open Shift 4-toepassing met permanente volumes met behulp van velero, moet u de herstel bewerking uitvoeren met de volgende opdracht:
+
+```bash
+velero restore create <name of the restore> --from-backup <name of backup from above output list> --exclude-resources="nodes,events,events.events.k8s.io,backups.ark.heptio.com,backups.velero.io,restores.ark.heptio.com,restores.velero.io"
+```
+Met deze stap maakt u de Kubernetes-objecten waarvan een back-up is gemaakt van de vorige stap bij het maken van een back-up.
+
+Voer de volgende stap uit om de status van de herstel bewerking te bekijken:
+
+```bash
+oc get restore -n velero <name of restore created previously> -o yaml
+```
+Wanneer de fase aangeeft `Completed` , moet uw Azure Red Hat 4-toepassing worden hersteld.
+
+Voor meer informatie over het maken van back-ups en herstel bewerkingen met Velero raadpleegt u [de systeem eigen manier van back-ups](https://www.openshift.com/blog/backup-openshift-resources-the-native-way) .
+
 ## <a name="next-steps"></a>Volgende stappen
 
 In dit artikel is een Azure Red Hat open Shift 4-cluster toepassing teruggezet. U hebt geleerd hoe u:
 
 > [!div class="checklist"]
 > * Een open Shift v4 cluster toepassing Restore maken met behulp van velero
+> * Een open Shift v4-cluster toepassing herstellen met moment opnamen met behulp van velero
 
 
 Ga naar het volgende artikel voor meer informatie over de ondersteunde bronnen van Azure Red Hat open Shift 4.
 
 * [Ondersteunde bronnen voor Azure Red Hat open Shift v4](supported-resources.md)
+
+

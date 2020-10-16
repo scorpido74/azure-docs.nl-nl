@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
 ms.openlocfilehash: 09fef350a0ff8cc8c2481acd7b8f74cee15d1b9d
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86075549"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-uis"></a>SSH-tunneling gebruiken om toegang te krijgen tot Apache Ambari Web UI, JobHistory, NameNode, Apache Oozie en andere UIs
@@ -64,7 +64,7 @@ ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
 
 Met deze opdracht maakt u een verbinding die verkeer naar lokale poort 9876 naar het cluster via SSH routeert. U kunt kiezen uit de volgende opties:
 
-|Optie |Description |
+|Optie |Beschrijving |
 |---|---|
 |D 9876|De lokale poort die verkeer via de tunnel routeert.|
 |C|Comprimeer alle gegevens, omdat webverkeer voornamelijk tekst is.|
@@ -73,7 +73,7 @@ Met deze opdracht maakt u een verbinding die verkeer naar lokale poort 9876 naar
 |T|Schakel pseudo-tty-toewijzing uit omdat u alleen een poort doorstuurt.|
 |n|Lezen van STDIN voor komen, omdat u zojuist een poort doorstuurt.|
 |N|Voer geen externe opdracht uit, omdat u zojuist een poort doorstuurt.|
-|v|Op de achtergrond uitvoeren.|
+|f|Op de achtergrond uitvoeren.|
 
 Zodra de opdracht is voltooid, wordt verkeer dat is verzonden naar poort 9876 op de lokale computer doorgestuurd naar het hoofd knooppunt van het cluster.
 
@@ -93,7 +93,7 @@ Zodra de opdracht is voltooid, wordt verkeer dat is verzonden naar poort 9876 op
     |Poort|22|
     |Verbindingstype|SSH|
 
-1. Selecteer **Opslaan**.
+1. Selecteer **Opslaan**
 
     ![Maken van een putty-sessie HDInsight](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-create-putty-session.png)
 

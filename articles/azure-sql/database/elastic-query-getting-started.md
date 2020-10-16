@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 10/10/2019
 ms.openlocfilehash: 10be0fc28b53d114a8ff87f01980513ce1759dec
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91443303"
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>Rapport over uitgeschaalde Cloud databases (preview-versie)
@@ -131,7 +131,7 @@ U ziet dat de query de resultaten van alle Shards samenvoegt en de volgende uitv
 
 Alle rijen uit de tabel **klanten** , die zijn opgeslagen in verschillende Shards, vullen het Excel-werk blad.
 
-U kunt nu de krachtige functies van gegevens visualisatie van Excel gebruiken. U kunt de connection string met de server naam, de database naam en de referenties gebruiken om uw BI-en gegevens integratie hulpprogramma's te verbinden met de Elastic query-data base. Zorg ervoor dat SQL Server wordt ondersteund als gegevens bron voor uw hulp programma. U kunt naar de elastische query database en externe tabellen verwijzen net als andere SQL Server Data Base-en SQL Server tabellen waarmee u verbinding met uw hulp programma zou maken.
+U kunt nu de krachtige functies van gegevens visualisatie van Excel gebruiken. U kunt de connection string met de server naam, de database naam en de referenties gebruiken om uw BI-en gegevens integratie hulpprogramma's te verbinden met de Elastic query-data base. Zorg ervoor dat SQL Server wordt ondersteund als gegevensbron voor uw hulpprogramma. U kunt naar de elastische query database en externe tabellen verwijzen net als andere SQL Server Data Base-en SQL Server tabellen waarmee u verbinding met uw hulp programma zou maken.
 
 ### <a name="cost"></a>Kosten
 Er worden geen extra kosten in rekening gebracht voor het gebruik van de functie voor Elastic Database Query's.
@@ -141,10 +141,10 @@ Zie [SQL database prijs](https://azure.microsoft.com/pricing/details/sql-databas
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [overzicht van elastische query's](elastic-query-overview.md)voor een overzicht van elastische query's.
-* Zie aan de slag [met query's tussen data bases (verticaal partitioneren)](elastic-query-getting-started-vertical.md)voor een verticaal gepartitioneerde zelf studie.
-* Zie query's [uitvoeren op verticaal gepartitioneerde gegevens](elastic-query-vertical-partitioning.md) voor syntaxis-en voorbeeld query's voor verticaal gepartitioneerde gegevens)
-* Zie query's [uitvoeren in horizon taal gepartitioneerde gegevens](elastic-query-horizontal-partitioning.md) voor syntaxis-en voorbeeld query's voor Horizon taal gepartitioneerde gegevens)
-* Zie [ \_ \_ extern uitvoeren van SP](https://msdn.microsoft.com/library/mt703714) voor een opgeslagen procedure waarmee een Transact-SQL-instructie wordt uitgevoerd op één externe Azure SQL database of een set met data bases die fungeren als Shards in een horizon taal partitie schema.
+* Zie [Aan de slag met query's op meerdere databases (verticale partitionering)](elastic-query-getting-started-vertical.md) voor een zelfstudie over verticale partitionering.
+* Zie [Query's uitvoeren op verticaal gepartitioneerde gegevens](elastic-query-vertical-partitioning.md) voor de syntaxis van en voorbeeldquery's voor verticaal gepartitioneerde gegevens
+* Zie [Query's uitvoeren op horizontaal gepartitioneerde gegevens](elastic-query-horizontal-partitioning.md) voor de syntaxis van en voorbeeldquery's voor horizontaal gepartitioneerde gegevens
+* Zie [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714) voor een opgeslagen procedure waarmee een Transact-SQL-instructie wordt uitgevoerd op één externe Azure SQL-database of een aantal databases die als shards fungeren in een schema voor horizontale partitionering.
 
 
 <!--Image references-->

@@ -8,12 +8,12 @@ ms.date: 6/3/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 8f739982ac9193c80cae23d91b77091f75c3fd13
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: f6c6c1cfdfef864be17adfed2d115150c4fbede0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564356"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045122"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Azure Digital Apparaatdubbels gebruiken voor het bijwerken van een Azure Maps binnenste kaart
 
@@ -64,7 +64,7 @@ Dit patroon leest van de ruimte tussen direct, in plaats van het IoT-apparaat, d
     >[!NOTE]
     >Er is momenteel een **bekend probleem** in Cloud Shell dat deze opdrachtgroepen beïnvloedt: `az dt route`, `az dt model`, `az dt twin`.
     >
-    >Om dit probleem op te lossen, kunt u `az login` in Cloud Shell uitvoeren voordat u de opdracht uitvoert, of kunt u de [lokale CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) gebruiken in plaats van Cloud Shell. Zie [*Problemen oplossen: Bekende problemen in Azure Digital Twins*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell) voor meer informatie hierover.
+    >Om dit probleem op te lossen, kunt u `az login` in Cloud Shell uitvoeren voordat u de opdracht uitvoert, of kunt u de [lokale CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) gebruiken in plaats van Cloud Shell. Zie [*Problemen oplossen: Bekende problemen in Azure Digital Twins*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell) voor meer informatie hierover.
 
     ```azurecli
     az dt route create -n <your-Azure-Digital-Twins-instance-name> --endpoint-name <Event-Grid-endpoint-name> --route-name <my_route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
@@ -74,7 +74,7 @@ Dit patroon leest van de ruimte tussen direct, in plaats van het IoT-apparaat, d
 
 U gaat vanuit de end-to-end-zelf studie een door Event Grid geactiveerde functie maken in uw functie-app ([*zelf studie: een end-to-end oplossing verbinden*](./tutorial-end-to-end.md)). Met deze functie worden deze meldingen uitgepakt en worden updates naar een Azure Maps-functie statusset verzonden om de Tempe ratuur van één kamer bij te werken. 
 
-Raadpleeg het volgende document voor referentie-informatie: [*Azure Event grid trigger voor Azure functions*](https://docs.microsoft.com/azure/azure-functions/functions-bindings-event-grid-trigger).
+Raadpleeg het volgende document voor referentie-informatie: [*Azure Event grid trigger voor Azure functions*](../azure-functions/functions-bindings-event-grid-trigger.md).
 
 Vervang de functie code door de volgende code. Er worden alleen updates voor de ruimte apparaatdubbels, lees de bijgewerkte Tempe ratuur en verzend die informatie naar Azure Maps.
 
@@ -152,7 +152,7 @@ Volg de onderstaande stappen om de Tempe ratuur voor Live bijwerken te bekijken:
 
 Beide steek proeven verzenden temperatuur in een compatibel bereik, zodat u de kleur van de room 121-update op de kaart ongeveer elke 30 seconden zou moeten zien.
 
-:::image type="content" source="media/how-to-integrate-maps/maps-temperature-update.png" alt-text="Een Office-kaart met room 121 gekleurd oranje":::
+:::image type="content" source="media/how-to-integrate-maps/maps-temperature-update.png" alt-text="Een weer gave van Azure-Services in een end-to-end-scenario, waarbij u het integratie gedeelte over de binnenste kaarten markeert":::
 
 ## <a name="store-your-maps-information-in-azure-digital-twins"></a>Sla uw kaarten gegevens op in azure Digital Apparaatdubbels
 

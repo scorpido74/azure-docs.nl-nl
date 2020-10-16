@@ -64,8 +64,14 @@
           href: ./hdinsight-capacity-planning.md
         - name: Best practices voor clusterbeheer
           href: ./cluster-management-best-practices.md
-        - name: Beschikbaarheid en betrouwbaarheid
-          href: ./hdinsight-high-availability-linux.md
+        - name: Bedrijfscontinuïteit
+          items:
+            - name: Overzicht voor bedrijfscontinuïteit
+              href: hdinsight-business-continuity.md
+            - name: Architectuur voor bedrijfscontinuïteit
+              href: ./hdinsight-business-continuity-architecture.md
+            - name: Casestudy hoge beschikbaarheid
+              href: ./hdinsight-high-availability-case-study.md
         - name: Inzicht in beheerde identiteiten
           href: ./hdinsight-managed-identities.md
         - name: Opslagopties vergelijken
@@ -100,12 +106,16 @@
               iconUrl: null
         - name: Clusteropslag gebruiken
           items:
-            - name: Met behulp van Azure Storage
+            - name: Azure Storage gebruiken
               href: hdinsight-hadoop-use-blob-storage.md
-            - name: Azure Data Lake Storage Gen2 gebruiken
+            - name: Data Lake Storage Gen2 gebruiken
               href: hdinsight-hadoop-use-data-lake-storage-gen2.md
-            - name: Azure Data Lake Storage Gen1 gebruiken
-              href: hdinsight-hadoop-use-data-lake-store.md
+            - name: Data Lake Storage Gen2 gebruiken in de portal
+              href: hdinsight-hadoop-use-data-lake-storage-gen2-portal.md
+            - name: Data Lake Storage Gen2 gebruiken met Azure CLI
+              href: hdinsight-hadoop-use-data-lake-storage-gen2-azure-cli.md
+            - name: Data Lake Storage Gen1 gebruiken
+              href: hdinsight-hadoop-use-data-lake-storage-gen1.md
         - name: Clusters uitbreiden
           items:
             - name: HDInsight-apps installeren
@@ -757,6 +767,8 @@
           href: ./interactive-query/gateway-best-practices.md
         - name: Richtlijnen voor aanpassing van grootte
           href: ./interactive-query/sizing-guidelines.md
+        - name: Hive-replicatie
+          href: ./interactive-query/apache-hive-replication.md
     - name: Instructiegidsen
       items:
         - name: Ontwikkelen

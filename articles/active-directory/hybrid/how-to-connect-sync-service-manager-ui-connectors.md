@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d215c2e200308664f24daa28a0054c8f1bcfc09c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319874"
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Connectors gebruiken met de Azure AD Connect Sync Service Manager
@@ -31,7 +31,7 @@ ms.locfileid: "91319874"
 Het tabblad connectors wordt gebruikt voor het beheren van alle systemen waarop de synchronisatie-engine is aangesloten.
 
 ## <a name="connector-actions"></a>Connector acties
-| Actie | Opmerking |
+| Bewerking | Opmerking |
 | --- | --- |
 | Maken |Niet gebruiken. Gebruik de installatie wizard om verbinding te maken met extra AD-forests. |
 | Eigenschappen |Wordt gebruikt voor filteren op domein en OE. |
@@ -67,7 +67,7 @@ De ruimte van de Zoek connector is handig om objecten te vinden en problemen met
 
 Begin door een **bereik**te selecteren. U kunt zoeken op basis van gegevens (RDN, DN, anker, substructuur) of status van het object (alle andere opties).  
 ![Scherm afbeelding met de vervolg keuzelijst bereik.](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchscope.png)  
-Als u bijvoorbeeld een zoek opdracht op substructuur wilt uitvoeren, krijgt u alle objecten in één organisatie-eenheid.  
+Als u bijvoorbeeld een Sub-Tree zoek actie wilt uitvoeren, krijgt u alle objecten in één organisatie-eenheid.  
 ![Scherm afbeelding met een voor beeld van een ' substructuur ' zoeken.](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchsubtree.png)  
 Vanuit dit raster kunt u een object selecteren, **Eigenschappen**selecteren en dit in de bron connector ruimte [volgen](tshoot-connect-object-not-syncing.md) , via de tekst en de ruimte van de doel connector.
 

@@ -4,10 +4,10 @@ description: ReliableConcurrentQueue is een wachtrij met hoge door Voer waarmee 
 ms.topic: conceptual
 ms.date: 5/1/2017
 ms.openlocfilehash: 423ef3d1898176d7c25c596ad186a9c000108aa4
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86257448"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Inleiding tot ReliableConcurrentQueue in azure Service Fabric
@@ -215,7 +215,7 @@ while(!cancellationToken.IsCancellationRequested)
 }
 ```
 
-### <a name="best-effort-notification-based-processing"></a>Op meldingen gebaseerde verwerking op basis van het hoogste inspanning
+### <a name="best-effort-notification-based-processing"></a>Best-Effort Notification-Based verwerking
 Een ander interessant programmeer patroon maakt gebruik van de API Count. Hier kunnen we de op berichten gebaseerde verwerking op basis van meldingen voor de wachtrij implementeren. Het aantal wacht rijen kan worden gebruikt om een taak in de wachtrij te plaatsen of uit te zetten.  Zoals in het vorige voor beeld, omdat de verwerking buiten de trans actie plaatsvindt, kunnen niet-verwerkte items verloren gaan als er een fout optreedt tijdens de verwerking.
 
 ```
@@ -263,7 +263,7 @@ while(!cancellationToken.IsCancellationRequested)
 }
 ```
 
-### <a name="best-effort-drain"></a>Afvoer met Best effort
+### <a name="best-effort-drain"></a>Best-Effort afvoer
 Een afvoer van de wachtrij kan niet worden gegarandeerd vanwege de gelijktijdige aard van de gegevens structuur.  Het is mogelijk dat, zelfs als er geen gebruikers bewerkingen zijn in de vlucht, een bepaalde aanroep naar TryDequeueAsync mogelijk geen item retourneert dat eerder in de wachtrij is geplaatst en doorgevoerd.  Het in de wachtrij geplaatste item moet *uiteindelijk* zichtbaar worden gemaakt voor het dequeueren, maar zonder een out-of-band-communicatie mechanisme kan een onafhankelijke consument niet weten dat de wachtrij een stationaire status heeft bereikt, zelfs als alle producenten zijn gestopt en er geen nieuwe bewerkingen voor plaatsen zijn toegestaan. De afvoer bewerking is dus de beste werk wijze, zoals hieronder is geïmplementeerd.
 
 De gebruiker moet alle verdere producer-en Consumer taken stoppen en wachten tot trans acties die in de vlucht zijn doorgevoerd of afgebroken, voordat wordt geprobeerd om de wachtrij leeg te laten.  Als de gebruiker het verwachte aantal items in de wachtrij kent, kunnen ze een melding instellen die aangeeft dat alle items zijn verwijderd uit de wachtrij.

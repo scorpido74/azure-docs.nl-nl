@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.openlocfilehash: aa7d67cd6bd1bd422bd257b75ac5bde3bd534d7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85481830"
 ---
 # <a name="partitioning-in-azure-cosmos-db"></a>Partitionering in Azure Cosmos DB
@@ -48,7 +48,7 @@ Het selecteren van de partitie sleutel is een eenvoudige maar belang rijke ontwe
 Voor **alle** containers moet uw partitie sleutel:
 
 * Een eigenschap zijn die een waarde heeft die niet verandert. Als een eigenschap uw partitie sleutel is, kunt u de waarde van die eigenschap niet bijwerken.
-* Een hoge kardinaliteit hebben. Met andere woorden, de eigenschap moet een breed scala aan mogelijke waarden hebben.
+* Moet een hoge kardinaliteit hebben. Met andere woorden, de eigenschap moet een breed scala aan mogelijke waarden hebben.
 * Sprei ding-verbruik en gegevens opslag gelijkmatig over alle logische partities. Dit garandeert zelfs RU-verbruik en opslag distributie over uw fysieke partities.
 
 Als u [Meervoudige zuren-trans acties](database-transactions-optimistic-concurrency.md#multi-item-transactions) in azure Cosmos DB nodig hebt, moet u [opgeslagen procedures of triggers](how-to-write-stored-procedures-triggers-udfs.md#stored-procedures)gebruiken. Alle opgeslagen java script-procedures en triggers bevinden zich in een enkele logische partitie.

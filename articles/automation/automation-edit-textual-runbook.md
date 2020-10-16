@@ -10,10 +10,10 @@ ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: c51ef23e27cd63d3706c104d1e39a14bf61c258e
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86186347"
 ---
 # <a name="edit-textual-runbooks-in-azure-automation"></a>De tekst runbooks in Azure Automation bewerken
@@ -62,7 +62,7 @@ In dit artikel vindt u gedetailleerde stappen voor het uitvoeren van verschillen
 
 ## <a name="edit-an-azure-automation-runbook-using-windows-powershell"></a>Een Azure Automation runbook bewerken met behulp van Windows Power shell
 
-Als u een runbook wilt bewerken met Windows Power shell, gebruikt u de editor van uw keuze en slaat u het runbook op in een **. ps1** -bestand. U kunt de cmdlet [export-AzAutomationRunbook](/powershell/module/Az.Automation/Export-AzAutomationRunbook) gebruiken om de inhoud van het runbook op te halen. U kunt de cmdlet [import-AzAutomationRunbook](/powershell/module/Az.Automation/import-azautomationrunbook) gebruiken om het bestaande concept runbook te vervangen door de gewijzigde.
+Als u een runbook wilt bewerken met Windows Power shell, gebruikt u de editor van uw keuze en slaat u het runbook op in een **. ps1** -bestand. U kunt de cmdlet [export-AzAutomationRunbook](/powershell/module/Az.Automation/Export-AzAutomationRunbook) gebruiken om de inhoud van het runbook op te halen. U kunt de cmdlet  [import-AzAutomationRunbook](/powershell/module/Az.Automation/import-azautomationrunbook) gebruiken om het bestaande concept runbook te vervangen door de gewijzigde.
 
 ### <a name="retrieve-the-contents-of-a-runbook-using-windows-powershell"></a>De inhoud van een runbook ophalen met behulp van Windows Power shell
 

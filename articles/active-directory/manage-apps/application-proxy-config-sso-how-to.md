@@ -17,10 +17,10 @@ ms.author: kenwith
 ms.reviewer: japere, asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 54673e0018f83024d1c01599d0096c71b6b1d0ae
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88642126"
 ---
 # <a name="how-to-configure-single-sign-on-to-an-application-proxy-application"></a>Eenmalige aanmelding configureren voor een toepassings proxy toepassing
@@ -39,7 +39,7 @@ Configureer het specifieke type eenmalige aanmelding. De aanmeldings methoden wo
 
 -   **Aanmelden op basis van wacht woorden**: aanmelden op basis van wacht woorden kan worden gebruikt voor elke toepassing die gebruikmaakt van gebruikers naam en wacht woord om zich aan te melden. Configuratie stappen zijn [een eenmalige aanmelding met een wacht woord configureren voor een toepassing in de Azure AD-galerie](configure-password-single-sign-on-non-gallery-applications.md).
 
--   **Geïntegreerde Windows-verificatie**: voor toepassingen die gebruikmaken van geïntegreerde Windows-authenticatie (IWA), wordt eenmalige aanmelding ingeschakeld via beperkte Kerberos-delegering (KCD). Deze methode biedt toepassings proxy connectors machtiging in Active Directory om gebruikers te imiteren en om namens hen tokens te verzenden en ontvangen. Meer informatie over het configureren van KCD vindt u in de [eenmalige aanmelding met KCD-documentatie](application-proxy-configure-single-sign-on-with-kcd.md).
+-   **Geïntegreerde Windows-verificatie**: voor toepassingen die gebruikmaken van geïntegreerde Windows-authenticatie (IWA), wordt eenmalige aanmelding ingeschakeld via beperkte Kerberos-delegering (KCD). Deze methode biedt toepassings proxy connectors machtiging in Active Directory om gebruikers te imiteren en om namens hen tokens te verzenden en ontvangen. Meer informatie over het configureren van KCD vindt u in de [enkele Sign-On met KCD-documentatie](application-proxy-configure-single-sign-on-with-kcd.md).
 
 -   **Op headers gebaseerde aanmelding**: aanmelden op basis van een header is ingeschakeld via een partnerschap en vereist een aantal aanvullende configuratie. Zie de [PingAccess voor Azure AD-documentatie](application-proxy-configure-single-sign-on-with-ping-access.md)voor meer informatie over de samen werking en stapsgewijze instructies voor het configureren van eenmalige aanmelding voor een toepassing die gebruikmaakt van headers voor authenticatie.
 
@@ -47,7 +47,7 @@ Configureer het specifieke type eenmalige aanmelding. De aanmeldings methoden wo
 
 U kunt elk van deze opties vinden door naar uw toepassing te gaan in ' bedrijfs toepassingen ' en de pagina voor **eenmalige aanmelding** te openen in het menu links. Als uw toepassing is gemaakt in de oude Portal, ziet u mogelijk niet al deze opties.
 
-Op deze pagina ziet u ook een aanvullende aanmeldings optie: gekoppelde aanmelding. Deze optie wordt ook ondersteund door de toepassings proxy. Met deze optie wordt echter niet eenmalige aanmelding toegevoegd aan de toepassing. Die zei dat de toepassing mogelijk al een eenmalige aanmelding heeft geïmplementeerd met een andere service, zoals Active Directory Federation Services. 
+Op deze pagina ziet u ook een extra Sign-On optie: gekoppelde aanmelding. Deze optie wordt ook ondersteund door de toepassings proxy. Met deze optie wordt echter niet eenmalige aanmelding toegevoegd aan de toepassing. Die zei dat de toepassing mogelijk al een eenmalige aanmelding heeft geïmplementeerd met een andere service, zoals Active Directory Federation Services. 
 
 Met deze optie kan een beheerder een koppeling maken naar een toepassing waar gebruikers zich voor het eerst bevinden bij het openen van de toepassing. Als er bijvoorbeeld een toepassing is die is geconfigureerd om gebruikers te verifiëren met behulp van Active Directory Federation Services 2,0, kan een beheerder de optie ' gekoppelde aanmelding ' gebruiken om een koppeling naar de app te maken in mijn apps.
 

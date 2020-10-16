@@ -5,19 +5,19 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 8/13/2020
-ms.openlocfilehash: cb785a6d988772ba160806621e44900d630b7e61
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.date: 10/14/2020
+ms.openlocfilehash: 8ac47937650d766a159c53f7390a8f1e355a28c2
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225713"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074801"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database for MariaDB prijs Categorieën
 
 U kunt een Azure Database for MariaDB-server maken in een van drie verschillende prijs Categorieën: basis, Algemeen en geoptimaliseerd voor geheugen. De prijs categorieën worden onderscheiden van de hoeveelheid Compute in vCores die kan worden ingericht, het geheugen per vCore en de opslag technologie die wordt gebruikt om de gegevens op te slaan. Alle resources worden ingericht op het niveau van de MariaDB-server. Een server kan een of meer data bases bevatten.
 
-| Resource | **Basic** | **Algemeen** | **Geoptimaliseerd voor geheugen** |
+| Resource | **Basic** | **Algemeen doel** | **Geoptimaliseerd voor geheugen** |
 |:---|:----------|:--------------------|:---------------------|
 | Compute genereren | Gen 5 |Gen 5 | Gen 5 |
 | vCores | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
@@ -30,8 +30,8 @@ Als u een prijs categorie wilt kiezen, gebruikt u de volgende tabel als uitgangs
 | Prijscategorie | Beoogde workloads |
 |:-------------|:-----------------|
 | Basic | Werk belastingen waarvoor lichte reken kracht en I/O-prestaties zijn vereist. Voor beelden zijn servers die worden gebruikt voor ontwikkeling of testen of kleinschalige, niet-veelgebruikte toepassingen. |
-| Algemeen gebruik | De meeste zakelijke workloads die evenwichtige reken kracht en geheugen vereisen met schaal bare I/O-door voer. Voor beelden zijn servers voor het hosten van web-en mobiele apps en andere zakelijke toepassingen.|
-| Geoptimaliseerd geheugen | Data bases met hoogwaardige prestaties waarvoor de prestaties in het geheugen zijn vereist voor een snellere transactie verwerking en hogere gelijktijdigheid. Voor beelden zijn servers voor het verwerken van real-time gegevens en transactionele of analytische toepassingen met hoge prestaties.|
+| Algemeen gebruik | De meeste zakelijke workloads die evenwichtige reken kracht en geheugen vereisen met schaal bare I/O-door voer. Voorbeelden zijn onder meer servers voor het hosten van web- en mobiele apps en andere zakelijke toepassingen.|
+| Geoptimaliseerd geheugen | Data bases met hoogwaardige prestaties waarvoor de prestaties in het geheugen zijn vereist voor een snellere transactie verwerking en hogere gelijktijdigheid. Voorbeelden zijn onder meer servers voor het verwerken van realtime gegevens en transactionele of analytische toepassingen met hoge prestaties.|
 
 Nadat u een server hebt gemaakt, kunt u het aantal vCores en de prijs categorie (met uitzonde ring van en van basis) binnen enkele seconden omhoog of omlaag wijzigen. U kunt ook onafhankelijk de hoeveelheid opslag ruimte en de Bewaar periode voor back-ups op afstand aanpassen zonder uitval tijd van de toepassing. U kunt het opslag type voor back-ups niet wijzigen nadat een server is gemaakt. Zie de sectie [resources schalen](#scale-resources) voor meer informatie.
 
@@ -71,7 +71,10 @@ We verg Roten de opslag limieten in onze lagen van Algemeen en geoptimaliseerd v
 | IOPS | 3 IOPS/GB<br/>Min. 100 IOPS<br/>Maxi maal 20.000 IOPS| 3 IOPS/GB<br/>Min. 100 IOPS<br/>Maxi maal 20.000 IOPS |
 
 > [!IMPORTANT]
-> Grote opslag is momenteel in open bare preview in de volgende regio's: VS-Oost, VS-Oost 2, VS-midden, VS-West, Noord-Centraal VS, Zuid-Centraal VS, Europa-noord, Europa-west, UK-zuid, UK-west, Zuidoost-Azië, Azië-oost, Japan-Oost, Japan-West, Korea-centraal, Korea-zuid, Australië-oost, Australië-Zuid-Oost, VS-West
+> Grote opslag is momenteel beschikbaar in de open bare preview in de volgende regio's: VS-Oost, VS-Oost 2, VS-midden, VS-West, Noord-Centraal VS, Zuid-Centraal VS, Europa-noord, Europa-west, UK-zuid, UK-west, Zuidoost-Azië, Azië-oost, Japan-Oost, Japan-West, Korea-centraal, Korea-zuid, Australië-oost, Australië-Oost, Canada-oost en Canada-centraal.
+>
+> Alle andere regio's ondersteunen Maxi maal 4 TB opslag ruimte en Maxi maal 6000 IOPS.
+>
 
 ### <a name="reaching-the-storage-limit"></a>De opslag limiet wordt bereikt
 

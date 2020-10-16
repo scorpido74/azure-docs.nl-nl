@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 608f984b3e3a3020863e0c28b0aa2ad504531e3b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: aa13baf7c6fc6d3bb66b97e533da29e4a1a6e73c
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91273220"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876240"
 ---
 # <a name="azure-data-studio-dashboards"></a>Azure Data Studio Dash boards
 
@@ -57,7 +57,7 @@ Nu gaat u een URL naar uw eind punt samen stellen door deze informatie als volgt
 https://<ip address>:<port>
 
 Example:
-https://52.;154.152.24:30080
+https://52.154.152.24:30080
 ```
 
 Noteer uw IP-adres zoals u dit in de volgende stap gaat gebruiken.

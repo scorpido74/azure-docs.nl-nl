@@ -7,16 +7,16 @@ ms.date: 07/20/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: a0fa8c1c3d897ce65c70b6097dd323139716b8c7
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 5f1c52b764634f8086763aca67dfc32b507d2edd
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91613387"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042844"
 ---
 # <a name="manage-iot-plug-and-play-digital-twins"></a>IoT Plug en Play Digital apparaatdubbels beheren
 
-IoT Plug en Play biedt ondersteuning voor het verkrijgen van digitale **dubbele** en **bijgewerkte digitale dubbele** bewerkingen om digitale apparaatdubbels te beheren. U kunt de rest- [api's](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin) of een van de [service-sdk's](libraries-sdks.md)gebruiken.
+IoT Plug en Play biedt ondersteuning voor het verkrijgen van digitale **dubbele** en **bijgewerkte digitale dubbele** bewerkingen om digitale apparaatdubbels te beheren. U kunt de rest- [api's](/rest/api/iothub/service/digitaltwin) of een van de [service-sdk's](libraries-sdks.md)gebruiken.
 
 Op het moment van schrijven is de Digital-dubbele API-versie `2020-09-30` .
 
@@ -194,5 +194,5 @@ Updates kunnen mislukken als de gerapporteerde waarden van een apparaat niet vol
 Nu u over digitale apparaatdubbels hebt geleerd, zijn hier enkele aanvullende bronnen:
 
 - [Interactie met een apparaat vanuit uw oplossing](quickstart-service-node.md)
-- [IoT digitale dubbele REST API](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin)
+- [IoT digitale dubbele REST API](/rest/api/iothub/service/digitaltwin)
 - [Azure IoT Explorer](howto-use-iot-explorer.md)

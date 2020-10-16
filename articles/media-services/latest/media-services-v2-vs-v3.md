@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 10/01/2020
 ms.author: inhenkel
-ms.openlocfilehash: 515379a4207a582b441d132b1c28ff11bc83c714
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 23baa6ed92aa01251b4c7ccf34ef784910a0321f
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91651749"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019831"
 ---
 # <a name="media-services-v2-vs-v3"></a>Media Services v2 versus v3
 
@@ -74,7 +74,7 @@ In dit artikel worden wijzigingen beschreven die in Azure Media Services v3 zijn
 
 De V3 API heeft de volgende functie hiaten ten opzichte van de v2 API. Het sluiten van de hiaten is het onderhanden werk.
 
-* De [Premium encoder](../previous/media-services-premium-workflow-encoder-formats.md) en de verouderde [Media Analytics-processors](../previous/media-services-analytics-overview.md) (Azure Media Services indexer 2, Face Redactor, enzovoort) zijn niet toegankelijk via v3.<br/>Klanten die vanaf de preview-versie van Media Indexer 1 of 2 willen migreren, kunnen onmiddellijk de voor instelling AudioAnalyzer in de V3 API gebruiken.  Deze nieuwe definitie bevat meer functies dan de oudere Media Indexer 1 of 2. 
+* De [Premium encoder](../previous/media-services-encode-asset.md) en de verouderde [Media Analytics-processors](../previous/legacy-components.md) (Azure Media Services indexer 2, Face Redactor, enzovoort) zijn niet toegankelijk via v3.<br/>Klanten die vanaf de preview-versie van Media Indexer 1 of 2 willen migreren, kunnen onmiddellijk de voor instelling AudioAnalyzer in de V3 API gebruiken.  Deze nieuwe definitie bevat meer functies dan de oudere Media Indexer 1 of 2. 
 * Veel van de [geavanceerde functies van de Media Encoder Standard in v2](../previous/media-services-advanced-encoding-with-mes.md) -api's zijn momenteel niet beschikbaar in v3, zoals:
   
     * Activa bijvoegen
@@ -119,7 +119,7 @@ Ter bescherming van uw assets op rest moeten de activa worden versleuteld door d
 |---|---|---|---|
 |Opslag versleuteling Media Services|AES-256-versleuteling, sleutel beheerd door Media Services.|Ondersteund<sup>(1)</sup>|Niet ondersteund<sup>(2)</sup>|
 |[Storage Service Encryption voor Data-at-rest](../../storage/common/storage-service-encryption.md)|Versleuteling aan de server zijde die wordt aangeboden door Azure Storage, sleutel die wordt beheerd door Azure of door de klant.|Ondersteund|Ondersteund|
-|[Versleuteling van de opslag aan de client zijde](../../storage/common/storage-client-side-encryption.md)|Versleuteling aan de client zijde die wordt aangeboden door Azure Storage, sleutel die wordt beheerd door de klant in Key Vault.|Niet ondersteund|Niet ondersteund|
+|[Versleuteling van opslag Client-Side](../../storage/common/storage-client-side-encryption.md)|Versleuteling aan de client zijde die wordt aangeboden door Azure Storage, sleutel die wordt beheerd door de klant in Key Vault.|Niet ondersteund|Niet ondersteund|
 
 <sup>1</sup> hoewel Media Services de verwerking van inhoud in de Clear/zonder vorm van versleuteling ondersteunt, wordt dit niet aanbevolen.
 

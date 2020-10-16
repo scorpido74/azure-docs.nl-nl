@@ -4,10 +4,10 @@ description: In dit artikel vindt u de eigenschappen en het schema voor Azure Io
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 02ecf8d4df55aa6b4319e40892778f85f94e29a7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86113646"
 ---
 # <a name="azure-iot-hub-as-an-event-grid-source"></a>Azure IoT Hub als Event Grid bron
@@ -19,13 +19,13 @@ In dit artikel vindt u de eigenschappen en het schema voor Azure IoT Hub-gebeurt
 
 Azure IoT Hub verzendt de volgende gebeurtenis typen:
 
-| Gebeurtenistype | Description |
+| Gebeurtenistype | Beschrijving |
 | ---------- | ----------- |
-| Micro soft. devices. DeviceCreated | Gepubliceerd wanneer een apparaat wordt geregistreerd bij een IoT-hub. |
-| Micro soft. devices. DeviceDeleted | Gepubliceerd wanneer een apparaat wordt verwijderd uit een IoT-hub. | 
-| Micro soft. devices. DeviceConnected | Gepubliceerd wanneer een apparaat is verbonden met een IoT-hub. |
-| Micro soft. devices. DeviceDisconnected | Gepubliceerd wanneer een apparaat wordt losgekoppeld van een IoT-hub. | 
-| Micro soft. devices. DeviceTelemetry | Gepubliceerd wanneer een telemetrie-bericht wordt verzonden naar een IoT-hub. |
+| Microsoft.Devices.DeviceCreated | Gepubliceerd wanneer een apparaat wordt geregistreerd bij een IoT-hub. |
+| Microsoft.Devices.DeviceDeleted | Gepubliceerd wanneer een apparaat wordt verwijderd uit een IoT-hub. | 
+| Microsoft.Devices.DeviceConnected | Gepubliceerd wanneer een apparaat is verbonden met een IoT-hub. |
+| Microsoft.Devices.DeviceDisconnected | Gepubliceerd wanneer een apparaat wordt losgekoppeld van een IoT-hub. | 
+| Microsoft.Devices.DeviceTelemetry | Gepubliceerd wanneer een telemetrie-bericht wordt verzonden naar een IoT-hub. |
 
 Alle faxgebeurtenissen behalve telemetrie-gebeurtenissen van apparaten zijn algemeen beschikbaar in alle regio's die door Event Grid worden ondersteund. De telemetrie-gebeurtenis van het apparaat bevindt zich in de open bare preview en is beschikbaar in alle regio's behalve VS-Oost, VS-West, Europa-west, [Azure Government](../azure-government/documentation-government-welcome.md), [Azure China 21Vianet](/azure/china/china-welcome)en [Azure Duitsland](https://azure.microsoft.com/global-infrastructure/germany/).
 
@@ -140,11 +140,11 @@ Het schema voor DeviceCreated-en DeviceDeleted-gebeurtenissen heeft dezelfde str
 
 Alle gebeurtenissen bevatten dezelfde gegevens op het hoogste niveau: 
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | id | tekenreeks | De unieke id voor de gebeurtenis. |
 | onderwerp | tekenreeks | Volledige bronpad naar de bron van de gebeurtenis. Dit veld kan niet worden geschreven. Event Grid biedt deze waarde. |
-| Onderwerp | tekenreeks | Het door de uitgever gedefinieerde pad naar het gebeurtenisonderwerp. |
+| onderwerp | tekenreeks | Het door de uitgever gedefinieerde pad naar het gebeurtenisonderwerp. |
 | Type | tekenreeks | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. |
 | eventTime | tekenreeks | Het tijdstip waarop de gebeurtenis is gegenereerd op basis van de UTC-tijd van de provider. |
 | gegevens | object | IoT Hub gebeurtenis gegevens.  |
@@ -153,7 +153,7 @@ Alle gebeurtenissen bevatten dezelfde gegevens op het hoogste niveau:
 
 Voor alle IoT Hub gebeurtenissen bevat het gegevens object de volgende eigenschappen:
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | hubName | tekenreeks | De naam van de IoT Hub waarop het apparaat is gemaakt of verwijderd. |
 | deviceId | tekenreeks | De unieke id van het apparaat. Deze hoofdletter gevoelige teken reeks kan Maxi maal 128 tekens lang zijn, en ondersteunt ASCII 7-bits alfanumerieke tekens plus de volgende speciale tekens: `- : . + % _ # * ? ! ( ) , = @ ; $ '` . |
@@ -162,7 +162,7 @@ De inhoud van het gegevens object verschilt voor elke uitgever van de gebeurteni
 
 Het gegevens object bevat de volgende eigenschappen voor **apparaten die zijn verbonden met** het apparaat en de verbinding met het **apparaat** IOT hub gebeurtenissen:
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | moduleId | tekenreeks | De unieke id van de module. Dit veld wordt alleen uitgevoerd voor module apparaten. Deze hoofdletter gevoelige teken reeks kan Maxi maal 128 tekens lang zijn, en ondersteunt ASCII 7-bits alfanumerieke tekens plus de volgende speciale tekens: `- : . + % _ # * ? ! ( ) , = @ ; $ '` . |
 | deviceConnectionStateEventInfo | object | Informatie over de gebeurtenis van de verbindings status van het apparaat
@@ -170,7 +170,7 @@ Het gegevens object bevat de volgende eigenschappen voor **apparaten die zijn ve
 
 Voor de **telemetrie** van het apparaat IOT hub gebeurtenis bevat het gegevens object het apparaat-naar-Cloud bericht in de [IOT hub-bericht indeling](../iot-hub/iot-hub-devguide-messages-construct.md) en heeft de volgende eigenschappen:
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | body | tekenreeks | De inhoud van het bericht van het apparaat. |
 | properties | tekenreeks | Toepassings eigenschappen zijn door de gebruiker gedefinieerde teken reeksen die aan het bericht kunnen worden toegevoegd. Deze velden zijn optioneel. |
@@ -178,7 +178,7 @@ Voor de **telemetrie** van het apparaat IOT hub gebeurtenis bevat het gegevens o
 
 Het gegevens object van het apparaat dat is **gemaakt** en het **apparaat is verwijderd** IOT hub gebeurtenissen bevat de volgende eigenschappen:
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | dubbel | object | Informatie over het apparaat, namelijk de Cloud representatie van meta gegevens van toepassings apparaten. | 
 | deviceID | tekenreeks | De unieke id van het apparaat dubbele. | 
@@ -207,5 +207,5 @@ Het gegevens object van het apparaat dat is **gemaakt** en het **apparaat is ver
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Wat is Event grid?](overview.md) voor een inleiding tot Azure Event grid.
+* Zie [Wat is Event Grid?](overview.md) voor een inleiding tot Azure Event Grid.
 * Zie [reageren op IOT hub gebeurtenissen met Event grid om acties te activeren](../iot-hub/iot-hub-event-grid.md)voor meer informatie over de samen werking tussen IoT Hub en Event grid.

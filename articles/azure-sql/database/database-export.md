@@ -12,10 +12,10 @@ ms.reviewer: ''
 ms.date: 07/16/2019
 ms.topic: how-to
 ms.openlocfilehash: b91b7175fa4c7b91fec63a817206fa540813bdb7
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91443799"
 ---
 # <a name="export-to-a-bacpac-file---azure-sql-database-and-azure-sql-managed-instance"></a>Exporteren naar een BACPAC-bestand-Azure SQL Database en Azure SQL Managed instance
@@ -44,7 +44,7 @@ Wanneer u een Data Base voor archivering wilt exporteren of als u wilt overstapp
 Het exporteren van een BACPAC van een Data Base vanuit een [Azure SQL Managed instance](../managed-instance/sql-managed-instance-paas-overview.md) met behulp van de Azure portal wordt momenteel niet ondersteund. Gebruik in plaats daarvan SQL Server Management Studio of SQLPackage.
 
 > [!NOTE]
-> Machines voor het verwerken van import/export-aanvragen die zijn ingediend via de Azure Portal of Power shell moeten het BACPAC-bestand opslaan, evenals tijdelijke bestanden die worden gegenereerd door het Framework van de Gegevenslaagtoepassing (DacFX). De benodigde schijf ruimte varieert aanzienlijk tussen data bases met dezelfde grootte en kan Maxi maal drie keer zoveel schijf ruimte vereisen als de data base. Machines met het verzoek om te importeren/exporteren hebben 450GB lokale schijf ruimte. Als gevolg hiervan kunnen sommige aanvragen mislukken met de fout `There is not enough space on the disk` . In dit geval is de tijdelijke oplossing om sqlpackage.exe uit te voeren op een computer met voldoende lokale schijf ruimte. We raden u aan [SqlPackage](#sqlpackage-utility) -data bases die groter zijn dan 150 GB te importeren/exporteren om dit probleem te voor komen.
+> Op machines waarmee import-/exportaanvragen worden verwerkt die zijn verzonden via Azure Portal of PowerShell, moet het BACPAC-bestand worden opgeslagen, evenals tijdelijke bestanden die worden gegenereerd door Data-Tier Application Framework (DacFX). De benodigde schijfruimte varieert aanzienlijk tussen databases met dezelfde grootte. Er kan tot drie keer zoveel schijfruimte nodig zijn als de grootte van de database. Machines met het verzoek om te importeren/exporteren hebben 450GB lokale schijf ruimte. Als gevolg hiervan kunnen sommige aanvragen mislukken met de fout `There is not enough space on the disk`. Dit kan worden opgelost door sqlpackage.exe uit te voeren op een machine met voldoende lokale schijfruimte. We raden u aan [SqlPackage](#sqlpackage-utility) -data bases die groter zijn dan 150 GB te importeren/exporteren om dit probleem te voor komen.
 
 1. Als u een Data Base wilt exporteren met behulp van de [Azure Portal](https://portal.azure.com), opent u de pagina voor uw data base en klikt u op **exporteren** op de werk balk.
 
@@ -112,4 +112,4 @@ $exportStatus
 - Zie [een gegevenslaag toepassing exporteren](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application) voor meer informatie over het exporteren van een BACPAC vanuit een SQL Server-Data Base.
 - Zie voor meer informatie over het gebruik van de Data Migration-service voor het migreren van een Data Base [migreren van SQL Server naar Azure SQL database offline met behulp van DMS](../../dms/tutorial-sql-server-to-azure-sql.md).
 - Als u exporteert van SQL Server als een prelude naar Azure SQL Database, raadpleegt u [een SQL Server-Data Base migreren naar Azure SQL database](migrate-to-database-from-sql-server.md).
-- Zie [Azure Storage Security Guide (Engelstalig](https://docs.microsoft.com/azure/storage/common/storage-security-guide)) voor meer informatie over het veilig beheren en delen van opslag sleutels en gedeelde toegangs handtekeningen.
+- Zie de [Azure Storage-beveiligingshandleiding](https://docs.microsoft.com/azure/storage/common/storage-security-guide) voor meer informatie over het veilig beheren en delen van opslagsleutels en handtekeningen voor gedeelde toegang.

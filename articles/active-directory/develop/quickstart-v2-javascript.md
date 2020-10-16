@@ -1,7 +1,7 @@
 ---
-title: Gebruikers aanmelden in JavaScript-apps met één pagina | Azure
+title: 'Snelstart: Gebruikers aanmelden in JavaScript-apps met één pagina | Azure'
 titleSuffix: Microsoft identity platform
-description: Meer informatie over hoe u met een JavaScript-app een API kunt aanroepen waarvoor toegangstokens zijn vereist, met behulp van het Microsoft-identiteitsplatform.
+description: In deze quickstart vindt u meer informatie over hoe u met een JavaScript-app een API kunt aanroepen waarvoor toegangstokens zijn vereist die zijn verstrekt door het Microsoft-identiteitsplatform.
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -12,23 +12,22 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: b6e3e0c1ecf9ce3a9d86f6b03c3ad3efc5676b5c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1f5281ead3c0487b6052859df3b33fa6ddaaf45a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91257925"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91613319"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Quickstart: Gebruikers aanmelden en een toegangstoken verkrijgen in een JavaScript SPA
 
-In deze quickstart gebruikt u een codevoorbeeld om te leren hoe een Javascript-toepassing met één pagina (SPA) gebruikers van persoonlijke Microsoft-accounts, werkaccounts en schoolaccounts kan aanmelden. Een JavaScript-SPA-verificatie kan ook een toegangstoken krijgen om de Microsoft Graph API of een web-API aan te roepen. (Zie [Hoe het voorbeeld werkt](#how-the-sample-works) voor een illustratie.)
+In deze quickstart gebruikt u een codevoorbeeld om te leren hoe een Javascript-toepassing met één pagina (SPA) gebruikers van persoonlijke Microsoft-accounts, werkaccounts en schoolaccounts kan aanmelden. Een JavaScript-SPA-verificatie kan ook een toegangstoken krijgen om de Microsoft Graph API of een web-API aan te roepen. Zie [Hoe het voorbeeld werkt](#how-the-sample-works) voor een illustratie.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure-abonnement: [Gratis een Azure-abonnement maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * [Node.js](https://nodejs.org/en/download/)
 * [Visual Studio Code](https://code.visualstudio.com/download) (om projectbestanden te bewerken)
-
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-application"></a>De quickstart-toepassing registreren en downloaden
@@ -300,9 +299,4 @@ myMSALObj.acquireTokenPopup(requestObj)
 Voor een gedetailleerde stapsgewijze handleiding voor het bouwen van de toepassing die in deze quickstart, zie:
 
 > [!div class="nextstepaction"]
-> [Zelfstudie om u aan te melden en MS Graph aan te roepen](./tutorial-v2-javascript-spa.md)
-
-Om de MSAL-opslagplaats voor documentatie, veelgestelde vragen, problemen, en meer te verkijken, zie:
-
-> [!div class="nextstepaction"]
-> [MSAL.js GitHub-opslagplaats](https://github.com/AzureAD/microsoft-authentication-library-for-js)
+> [Zelfstudie: Gebruikers aanmelden en de Microsoft Graph API aanroepen vanuit een JavaScript-toepassing met één pagina (SPA)](tutorial-v2-javascript-spa.md)

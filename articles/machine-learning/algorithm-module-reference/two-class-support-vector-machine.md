@@ -1,5 +1,5 @@
 ---
-title: '2-klasse support vector machine: module verwijzing'
+title: 'Two-Class Support Vector machine: module verwijzing'
 titleSuffix: Azure Machine Learning
 description: Meer informatie over het gebruik van de machine module voor **ondersteuning van twee klassen** in azure machine learning om een model te maken dat is gebaseerd op de computer algoritme van de ondersteunings vector.
 services: machine-learning
@@ -10,13 +10,13 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: 1dc2f8bdf6ed2823b44d25bdf65766b1f7ae060c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90907671"
 ---
-# <a name="two-class-support-vector-machine-module"></a>Machine module voor de ondersteuning van twee klassen
+# <a name="two-class-support-vector-machine-module"></a>Machine module voor de ondersteuning van Two-Class vector
 
 In dit artikel wordt een module in Azure Machine Learning Designer beschreven.
 

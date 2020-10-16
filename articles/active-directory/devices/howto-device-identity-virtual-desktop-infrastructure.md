@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a9020e364a5c8d7a59dad5549e88036dc9edaad7
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90089663"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Apparaat-id en desktop-virtualisatie
@@ -58,7 +58,7 @@ Voordat u apparaat-id's configureert in azure AD voor uw VDI-omgeving, moet u ve
 |   |   |   | Niet-persistent | Nee |
 |   | Beheerd | Windows actueel | Permanent | Nee |
 |   |   |   | Niet-persistent | Nee |
-| Geregistreerd bij Azure AD | Federatief/beheerd | Windows-huidige/Windows-down level | Persistent/niet-persistent | Niet van toepassing |
+| Azure AD-geregistreerd | Federatief/beheerd | Windows-huidige/Windows-down level | Persistent/niet-persistent | Niet van toepassing |
 
 <sup>1</sup> **Windows-huidige** apparaten vertegenwoordigen Windows 10, Windows Server 2016 en Windows Server 2019.
 

@@ -10,10 +10,10 @@ ms.date: 03/08/2019
 ms.topic: conceptual
 ms.custom: mqtt, devx-track-js
 ms.openlocfilehash: 21d0587b951d909f0091eccf9a7f86a484bc5051
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91324039"
 ---
 # <a name="create-and-test-a-new-simulated-device"></a>Een nieuw gesimuleerd apparaat maken en testen
@@ -465,7 +465,7 @@ Postman instellen:
 
 1. Klik op **bestand > importeren**. Klik vervolgens op **bestanden kiezen**.
 
-1. Navigeer naar de map **device-simulatie-DotNet-Master/docs/postman** . Selecteer **Azure IOT Device simulatie Solution Accelerator. postman_collection** en **Azure IOT Device simulatie solution Accelerator. postman_environment** en klik op **openen**.
+1. Navigeer naar de map **device-simulatie-DotNet-Master/docs/postman** . Selecteer **Azure IOT Device simulatie solution Accelerator.postman_collection** en **Azure IOT device simulatie Solution Accelerator.postman_environment** en klik op **Open**.
 
 1. Vouw de **Azure IOT Device simulatie-oplossings versneller** uit voor de aanvragen die u kunt verzenden.
 

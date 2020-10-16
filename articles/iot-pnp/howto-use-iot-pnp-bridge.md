@@ -7,12 +7,12 @@ ms.date: 09/22/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 4c84fbb131809c92d597b46d18c53e46b636f8ef
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 6670f654685f8d5cdcaf55d2b1679738a57ecab4
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91613472"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042793"
 ---
 # <a name="how-to-connect-an--iot-plug-and-play-bridge-sample-running-on-linux-or-windows-to-iot-hub"></a>Verbinding maken met een IoT Plug en Play Bridge-voor beeld dat wordt uitgevoerd in Linux of Windows naar IoT Hub
 
@@ -48,7 +48,7 @@ gcc --version
 
 Om deze quickstart in Windows te voltooien, installeert u de volgende software in uw lokale Windows-omgeving:
 
-* [Visual Studio (Community, Professional of Enterprise)](https://visualstudio.microsoft.com/downloads/): zorg ervoor dat u de workload **Desktop Development with C++** kiest tijdens het [installeren](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2019&preserve-view=true) van Visual Studio.
+* [Visual Studio (Community, Professional of Enterprise)](https://visualstudio.microsoft.com/downloads/): zorg ervoor dat u de workload **Desktop Development with C++** kiest tijdens het [installeren](/cpp/build/vscpp-step-0-installation?preserve-view=true&view=vs-2019) van Visual Studio.
 * [Git](https://git-scm.com/download/).
 * [CMake](https://cmake.org/download/).
 
@@ -149,7 +149,7 @@ Voor het `root-_interface_model_id` veld moet u de IoT Plug en Play model-id kop
 
 Ga naar de map *pnpbridge* in de map opslag plaats.
 
-Voor Windows voert u het volgende uit in een [opdracht prompt voor ontwikkel aars voor Visual Studio](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs):
+Voor Windows voert u het volgende uit in een [opdracht prompt voor ontwikkel aars voor Visual Studio](/dotnet/framework/tools/developer-command-prompt-for-vs):
 
 ```cmd
 cd scripts\windows

@@ -9,19 +9,19 @@ ms.date: 03/19/2020
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: a00291182059506aeab9cde965fa4cbd5177ecf7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80132183"
 ---
-Als een gebruiker niet beschikt over de vereiste toegang voor het Toep assen van labels, kunt u de rol van de **Label bijdrage** toewijzen aan de gebruiker. Zie [zelf studie: een gebruiker toegang verlenen tot Azure-resources met RBAC en de Azure Portal](../articles/role-based-access-control/quickstart-assign-role-user-portal.md)voor meer informatie.
+Als een gebruiker niet beschikt over de vereiste toegang voor het toepassen van tags, kunt u de rol **Inzender van tag** toewijzen aan de gebruiker. Zie [Zelfstudie: Verleen een gebruiker toegang tot Azure-resources verlenen met behulp van RBAC en Azure Portal](../articles/role-based-access-control/quickstart-assign-role-user-portal.md).
 
-1. Als u de tags voor een resource of resource groep wilt weer geven, zoekt u naar bestaande tags in het overzicht. Als u nog niet eerder tags hebt toegepast, is de lijst leeg.
+1. Als u de tags voor een resource of resourcegroep wilt weergeven, selecteert u het pictogram Tags in het overzicht. Als u nog niet eerder tags hebt toegepast, is de lijst leeg.
 
-   ![Tags voor de resource of resource groep weer geven](./media/resource-manager-tag-resources/view-tags.png)
+   ![Tags weergeven voor de resource of resourcegroep.](./media/resource-manager-tag-resources/view-tags.png)
 
-1. Als u een tag wilt toevoegen, selecteert u **hier klikken om tags toe te voegen**.
+1. Als u een tag wilt toevoegen, selecteert u **Klik hier om tags toe te voegen**.
 
 1. Geef een naam en waarde op.
 
@@ -31,36 +31,36 @@ Als een gebruiker niet beschikt over de vereiste toegang voor het Toep assen van
 
    ![Tags opslaan](./media/resource-manager-tag-resources/save-tags.png)
 
-1. De tags worden nu weer gegeven in het overzicht.
+1. De tags worden nu weergegeven in het overzicht.
 
-   ![Labels weer geven](./media/resource-manager-tag-resources/view-new-tags.png)
+   ![Tags weergeven](./media/resource-manager-tag-resources/view-new-tags.png)
 
 1. Selecteer **wijzigen**om een tag toe te voegen of te verwijderen.
 
-1. Als u een tag wilt verwijderen, selecteert u het prullenbak pictogram. Selecteer vervolgens **Opslaan**.
+1. Als u een tag wilt verwijderen, selecteert u het prullenbakpictogram. Selecteer vervolgens **Opslaan**.
 
    ![Tag verwijderen](./media/resource-manager-tag-resources/delete-tag.png)
 
-Voor het bulksgewijs toewijzen van labels aan meerdere resources:
+Tags bulksgewijs toewijzen aan meerdere resources:
 
-1. Schakel in een lijst met resources het selectie vakje in voor de resources die u wilt toewijzen aan de tag. Selecteer vervolgens **labels toewijzen**.
+1. Schakel in een lijst met resources het selectievakje in voor de resources die u wilt toewijzen aan de tag. Selecteer **Tags toewijzen**.
 
-   ![Meerdere resources selecteren](./media/resource-manager-tag-resources/select-multiple-resources.png)
+   ![Selecteer Meerdere resources maken.](./media/resource-manager-tag-resources/select-multiple-resources.png)
 
-1. Voeg namen en waarden toe. Selecteer **Opslaan** wanneer u klaar bent.
+1. Voeg een naam en waarde toe. Selecteer **Opslaan** wanneer u klaar bent.
 
-   ![Toewijzing selecteren](./media/resource-manager-tag-resources/select-assign.png)
+   ![Selecteer Toewijzen](./media/resource-manager-tag-resources/select-assign.png)
 
-Om alle resources met een tag weer te geven:
+Alle resources met een tag weergeven:
 
-1. Zoek in het menu Azure Portal naar **labels**. Selecteer de optie in de beschik bare opties.
+1. Zoek in het menu Azure Portal naar **Tags**. Selecteer Tags bij de beschikbare opties.
 
-   ![Zoeken op label](./media/resource-manager-tag-resources/find-tags-general.png)
+   ![Zoeken op tag](./media/resource-manager-tag-resources/find-tags-general.png)
 
-1. Selecteer de tag voor het weer geven van resources.
+1. Selecteer de tag om de resources weer te geven.
 
    ![Tag selecteren](./media/resource-manager-tag-resources/select-tag.png)
 
-1. Alle resources met die tag worden weer gegeven.
+1. Alle resources met die tag worden weergegeven.
 
-   ![Resources weer geven op label](./media/resource-manager-tag-resources/view-resources-by-tag.png)
+   ![Resources zoeken op tag](./media/resource-manager-tag-resources/view-resources-by-tag.png)

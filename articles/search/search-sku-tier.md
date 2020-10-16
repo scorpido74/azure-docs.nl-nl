@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: c09c5b33f7960ffebfdfc8005537e75a249b8d99
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 0b0ff0abe438b2be3602b10d1c449901ef916901
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661090"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948082"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Een prijs categorie kiezen voor Azure Cognitive Search
 
@@ -130,7 +130,7 @@ U kunt de volgende suggesties gebruiken om kosten te verlagen of de kosten effec
 
 + Schaal omhoog voor resource-intensieve bewerkingen, zoals indexeren, en pas vervolgens de voor normale query werkbelastingen omlaag aan. Begin met de minimale configuratie voor Azure Cognitive Search (een SU die bestaat uit één partitie en één replica) en controleer vervolgens de gebruikers activiteiten om gebruiks patronen te identificeren die aangeven dat er meer capaciteit nodig is. Als er sprake is van een voorspelbaar patroon, kunt u de schaal aanpassen met de activiteit (u moet code schrijven om dit te automatiseren).
 
-Daarnaast kunt u het [facturerings-en kosten beheer](../cost-management-billing/manage/getting-started.md) bezoeken voor ingebouwde hulpprogram ma's en functies met betrekking tot uitgaven.
+Daarnaast kunt u het [facturerings-en kosten beheer](../cost-management-billing/cost-management-billing-overview.md) bezoeken voor ingebouwde hulpprogram ma's en functies met betrekking tot uitgaven.
 
 Het is niet mogelijk om een zoek service op tijdelijke basis af te sluiten. Toegewezen resources zijn altijd operationeel en worden toegewezen voor de levens duur van uw service. Het verwijderen van een service is permanent en verwijdert ook de bijbehorende gegevens.
 

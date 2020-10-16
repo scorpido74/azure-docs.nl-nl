@@ -16,10 +16,10 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 332d9a9ec28c4309fb1cf1d3e24d3cfd2d7d13d9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87321969"
 ---
 # <a name="view-activity-logs-for-azure-rbac-changes"></a>Activiteiten logboeken voor Azure RBAC-wijzigingen weer geven
@@ -43,7 +43,7 @@ De eenvoudigste manier om hieraan te beginnen is door de activiteitenlogboeken i
 
 Het activiteiten logboek in de portal heeft verschillende filters. Dit zijn de Azure RBAC-filters:
 
-| Filteren | Waarde |
+| Filter | Waarde |
 | --------- | --------- |
 | Gebeurteniscategorie | <ul><li>Administratief</li></ul> |
 | Bewerking | <ul><li>Roltoewijzing maken</li><li>Roltoewijzing verwijderen</li><li>Aangepaste roldefinitie maken of bijwerken</li><li>Aangepaste roldefinitie verwijderen</li></ul> |

@@ -1,5 +1,5 @@
 ---
-title: Een tunnel voor altijd-op-VPN configureren
+title: Een Always-On VPN-tunnel configureren
 titleSuffix: Azure VPN Gateway
 description: Meer informatie over het gebruik van gateways met Windows 10 altijd aan om permanente tunnels in te stellen en te configureren in Azure.
 services: vpn-gateway
@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: cherylmc
 ms.openlocfilehash: 7688e42175b2b4e35b63979f5df25702f3bb869d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90986584"
 ---
 # <a name="configure-an-always-on-vpn-device-tunnel"></a>Een AlwaysOn-VPN-apparaattunnel configureren
@@ -31,7 +31,7 @@ Configureer de VPN-gateway voor het gebruik van IKEv2 en verificatie op basis va
 
 Als u het profiel wilt verwijderen, voert u de volgende opdracht uit:
 
-![Scherm afbeelding toont een Power shell-venster waarin de opdracht Remove-VpnConnection-name MachineCertTest wordt uitgevoerd.](./media/vpn-gateway-howto-always-on-device-tunnel/cleanup.png)
+![Scherm afbeelding toont een Power shell-venster met de opdracht Remove-VpnConnection naam MachineCertTest.](./media/vpn-gateway-howto-always-on-device-tunnel/cleanup.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

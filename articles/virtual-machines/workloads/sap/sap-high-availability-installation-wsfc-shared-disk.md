@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3c5b7debe0c94839e2ca7742817a49216328c571
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 5126ae94d8c751952964aaf4df0736a5e546ff36
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855361"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963632"
 ---
 # <a name="install-sap-netweaver-ha-on-a-windows-failover-cluster-and-shared-disk-for-an-sap-ascsscs-instance-in-azure"></a>SAP NetWeaver HA installeren op een Windows-failovercluster en gedeelde schijf voor een SAP ASCS/SCS-exemplaar in azure
 
@@ -149,7 +149,7 @@ ms.locfileid: "88855361"
 
 In dit artikel wordt beschreven hoe u een SAP-systeem met hoge Beschik baarheid installeert en configureert in azure met behulp van een Windows Server-failovercluster en een gedeelde cluster schijf voor het clusteren van een SAP ASCS/SCS-exemplaar. Zoals beschreven in [architectuur gids: cluster a SAP ASCS/SCS-exemplaar op een Windows-failovercluster met behulp van een gedeelde cluster schijf][sap-high-availability-guide-wsfc-shared-disk], zijn er twee alternatieven voor *gedeelde cluster schijven*:
 
-- [Gedeelde Azure-schijven](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared)
+- [Gedeelde Azure-schijven](../../windows/disks-shared.md)
 - Met de [Data keeper-cluster versie van Sios](https://us.sios.com/products/datakeeper-cluster/) gespiegelde opslag maken, waarmee geclusterde gedeelde schijf wordt gesimuleerd 
 
 ## <a name="prerequisites"></a>Vereisten

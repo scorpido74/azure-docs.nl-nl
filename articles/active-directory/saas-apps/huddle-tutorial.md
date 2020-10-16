@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 77472e27a11614b7b5600f48e020afcceaeb967c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1cbc47820f4a9eeffc4e9fa3cf01290f7c35fd14
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88525850"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826420"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-huddle"></a>Zelfstudie: Azure Active Directory-integratie met Huddle
 
@@ -102,7 +102,7 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Microsoft Azure Acti
     > [!NOTE]
     > Uw Huddle-exemplaar wordt automatisch gedetecteerd vanuit het domein dat u hieronder invoert.
 
-    ![Informatie over domein en URL's voor eenmalige aanmelding met Huddle](common/idp-intiated.png)
+    ![Schermopname die de Standaard SAML-configuratie toont, waar u de id en URL kunt invoeren en vervolgens Opslaan selecteert.](common/idp-intiated.png)
 
     a. Typ in het tekstvak **Id** een URL:
 
@@ -121,7 +121,7 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Microsoft Azure Acti
 
 5. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    ![Informatie over domein en URL's voor eenmalige aanmelding met Huddle](common/metadata-upload-additional-signon.png)
+    ![Schermopname die Extra URL's instellen toont, waar u een aanmeldings-URL kunt invoeren.](common/metadata-upload-additional-signon.png)
 
     Typ in het tekstvak **Aanmeldings-URL** een URL met het volgende patroon:
 

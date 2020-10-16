@@ -17,10 +17,10 @@ ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
 ms.openlocfilehash: 54c14f1ef78694055c567ded0fdccede062605ba
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91400312"
 ---
 # <a name="azure-identity-management-security-overview"></a>Overzicht van Azure Identity Management-beveiliging
@@ -46,7 +46,7 @@ Het artikel is gericht op de volgende kern mogelijkheden van Azure Identity Mana
 * Identiteits-en toegangs beheer van consumenten
 * Apparaatregistratie
 * Privileged Identity Management
-* Identiteitsbeveiliging
+* Identiteitsbescherming
 * Hybride identiteits beheer/Azure AD Connect
 * Azure AD-toegangsbeoordelingen
 
@@ -163,7 +163,7 @@ Meer informatie:
 * [Wat is Azure AD Privileged Identity Management?](../../active-directory/privileged-identity-management/pim-configure.md)
 * [Azure AD-adreslijst rollen toewijzen in PIM](../../active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md)
 
-## <a name="identity-protection"></a>Identiteitsbeveiliging
+## <a name="identity-protection"></a>Identiteitsbescherming
 
 Azure AD Identity Protection is een beveiligings service die een geconsolideerde weer gave biedt voor risico detecties en mogelijke beveiligings problemen die van invloed zijn op de identiteiten van uw organisatie. Identiteits bescherming maakt gebruik van de bestaande Azure AD-detectie mogelijkheden voor afwijkingen, die beschikbaar zijn via rapporten van afwijkende activiteiten van Azure AD. Identiteits beveiliging introduceert ook nieuwe typen risico detectie waarmee afwijkingen in realtime kunnen worden gedetecteerd.
 

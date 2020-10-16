@@ -10,10 +10,10 @@ ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-python
 ms.openlocfilehash: 03c8f5acfc10738401f61de099f946c33497d705
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91569811"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB python SDK voor SQL API: release opmerkingen en bronnen
@@ -28,7 +28,7 @@ ms.locfileid: "91569811"
 > * [Async Java-SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java-SDK v2](sql-api-sdk-java.md)
 > * [Lente gegevens v2](sql-api-sdk-java-spring-v2.md)
-> * [Lente gegevens v3](sql-api-sdk-java-spring-v3.md)
+> * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark-connector](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
@@ -54,7 +54,7 @@ ms.locfileid: "91569811"
 **Nieuwe functies**
 - De mogelijkheid om de TTL voor de analytische opslag in te stellen bij het maken van een nieuwe container is toegevoegd.
 
-**Opgeloste fouten**
+**Oplossingen voor oplossingen**
 - Ondersteuning voor dicteer functies als invoer voor get_client-Api's.
 - Vaste python 2/3-compatibiliteit in query-iterators.
 - Fout in Hint voor vast type (probleem #12570).
@@ -294,7 +294,7 @@ Versie 4.0.0 B1 is de eerste preview van onze inspanningen voor het maken van ee
 ### <a name="142"></a>1.4.2
 
 * Implementeer Upsert. Er zijn nieuwe UpsertXXX-methoden toegevoegd ter ondersteuning van de functie Upsert.
-* Implementeer route ring op basis van ID'S. Geen wijzigingen in de open bare API, alle wijzigingen intern.
+* Implementeer ID-Based route ring. Geen wijzigingen in de open bare API, alle wijzigingen intern.
 
 ### <a name="130"></a>1.3.0
 

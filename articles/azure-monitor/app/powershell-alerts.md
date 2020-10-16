@@ -4,10 +4,10 @@ description: De configuratie van Application Insights automatiseren om e-mails o
 ms.topic: conceptual
 ms.date: 07/23/2016
 ms.openlocfilehash: 74d477b6660c0f7ec2ee32b34169bb85886936e5
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87322462"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>PowerShell gebruiken om waarschuwingen in te stellen in Application Insights
@@ -138,7 +138,7 @@ De metrische gegevens worden verzonden door verschillende telemetrie-modules:
 ## <a name="webhooks"></a>Webhooks
 U kunt [uw reactie op een waarschuwing automatiseren](../platform/alerts-webhooks.md). Azure roept een webadres van uw keuze aan wanneer een waarschuwing wordt gegenereerd.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 * [Script voor het configureren van Application Insights](./create-new-resource.md#creating-a-resource-automatically)
 * [Application Insights-en web-test resources maken op basis van sjablonen](powershell.md)
 * [Koppelings Microsoft Azure Diagnostics automatiseren voor Application Insights](powershell-azure-diagnostics.md)

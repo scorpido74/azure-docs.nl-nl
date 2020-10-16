@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
 ms.openlocfilehash: 826e475eb71563b52d687903aeac4ec936e267f6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87092997"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Durable Functions uitvoeren als webjobs
@@ -119,7 +119,7 @@ static void Main(string[] args)
 }
 ```
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Functies
 
 Durable Functions in de context van webjobs verschilt enigszins van Durable Functions in de context van Azure Functions. Het is belang rijk om rekening te houden met de verschillen tijdens het schrijven van code.
 

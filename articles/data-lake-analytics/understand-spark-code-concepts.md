@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.custom: Understand-apache-spark-code-concepts
 ms.date: 10/15/2019
 ms.openlocfilehash: 7b5be20bb8b5eb1d56c1214104037d5d824445b3
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132344"
 ---
 # <a name="understand-apache-spark-code-for-u-sql-developers"></a>Apache Spark code voor U-SQL-ontwikkel aars begrijpen
@@ -160,14 +160,14 @@ De kern taal van U-SQL is het transformeren van rijsets en is gebaseerd op SQL. 
 - `SELECT`/`FROM`/`WHERE`/`GROUP BY`+ Aggregaties +`HAVING`/`ORDER BY`+`FETCH`
 - `INNER`/`OUTER`/`CROSS`/`SEMI``JOIN`expressies
 - `CROSS`/`OUTER``APPLY`expressies
-- `PIVOT`/`UNPIVOT`termen
-- `VALUES`constructor Rijset
+- `PIVOT`/`UNPIVOT` termen
+- `VALUES` constructor Rijset
 
-- Expressies instellen`UNION`/`OUTER UNION`/`INTERSECT`/`EXCEPT`
+- Expressies instellen `UNION`/`OUTER UNION`/`INTERSECT`/`EXCEPT`
 
 Daarnaast biedt U-SQL een aantal scalaire expressies op basis van SQL, zoals
 
-- `OVER`expressies in Vensters
+- `OVER` expressies in Vensters
 - een aantal ingebouwde aggregaties en rangorde functies ( `SUM` `FIRST` enzovoort)
 - Enkele van de meest bekende scalaire SQL-expressies: `CASE` , `LIKE` , ( `NOT` ) `IN` , `AND` `OR` enzovoort.
 

@@ -1,71 +1,73 @@
 ---
-title: 'Snelstartgids: een nieuwe app maken in de LUIS-Portal'
-description: In deze Quick Start maakt u de basis onderdelen van een app, intenties en entiteiten, evenals de test met voorbeeld utterance in de LUIS-Portal.
+title: 'Quickstart: Een nieuwe app maken in de LUIS-portal'
+description: In deze quickstart maakt u de basisonderdelen van een app, intenties en entiteiten en voert u een test uit met een voorbeelduiting in de LUIS-portal.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/19/2020
-ms.openlocfilehash: 7cf55a7891b7e06c18c80d9d359b19e54f0413a9
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: MT
+ms.openlocfilehash: 38fffd7793e1f5bd59ac6dde4499b2eb25009b52
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697250"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91303843"
 ---
-# <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Snelstartgids: een nieuwe app maken in de LUIS-Portal
+# <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Quickstart: Een nieuwe app maken in de LUIS-portal
 
-In deze Quick Start maakt u een nieuwe app in de LUIS-Portal. Maak eerst de basis onderdelen van een app, **intenties**en **entiteiten**. Test vervolgens de app door een voor beeld van een gebruiker utterance in het interactieve test paneel op te geven om de voorspelde intentie te verkrijgen.
+In deze quickstart maakt u een nieuwe app in de LUIS-portal. Eerst maakt u de basisonderdelen van een app, **intenties** en **entiteiten**. Test vervolgens de app door een voorbeeld van een gebruikersuiting in te voeren in het interactieve testpaneel om de voorspelde intentie te verkrijgen.
 
 [!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
 ## <a name="create-an-app"></a>Een app maken
 
-1. Selecteer **+ nieuwe app voor gesprek** in de context werkbalk en selecteer vervolgens **+ nieuwe app voor gesprek** opnieuw.
+1. Selecteer **+ New app for conversation** (Nieuwe app voor gesprek) in de contextwerkbalk en selecteer vervolgens nogmaals **+ New app for conversation**.
 
     > [!div class="mx-imgBorder"]
-    > [![Scherm afbeelding van het maken van een nieuwe app in de LUIS-Portal](./media/create-app-in-portal.png)](./media/create-app-in-portal.png#lightbox)
+    > [![Schermopname van het maken van een nieuwe app in de LUIS-portal](./media/create-app-in-portal.png)](./media/create-app-in-portal.png#lightbox)
 
-1. Configureer in het pop-upvenster de app met de volgende instellingen en selecteer vervolgens **gereed**.
+1. Configureer in het pop-upvenster de app met de volgende instellingen en selecteer vervolgens **Done** (Gereed).
 
    |Naam van de instelling| Waarde | Doel|
    |--|--|--|
-   |Name|`myEnglishApp`|Unieke naam van de LUIS-app<br>vereist|
-   |Cultuur|**Engels**|Taal van uitingen van gebruikers, **en-US**<br>vereist|
-   |Beschrijving (optioneel)|`App made with LUIS Portal`|Beschrijving van de app<br>optioneel|
-   |Voorspellings bron (optioneel) |-  |Niet selecteren. LUIS biedt u een begin sleutel die gratis kan worden gebruikt voor het maken van bewerkings eindpunt aanvragen voor ontwerpen en 1.000. |
+   |Naam|`myEnglishApp`|Unieke naam van de LUIS-app<br>vereist|
+   |Cultuur|**Engels**|Taal van uitingen van gebruikers, **en-us**<br>vereist|
+   |Description (Optional)|`App made with LUIS Portal`|Beschrijving van de app<br>optioneel|
+   |Prediction resource (Optional) |-  |Niet selecteren. LUIS geeft u een starterssleutel die gratis kan worden gebruikt voor het maken van een app en 1.000 voorspellingseindpuntaanvragen. |
 
-   ![Scherm opname van het invoeren van nieuwe app-instellingen](./media/get-started-portal-build-app/create-new-app-settings.png)
+   ![Schermopname van het invoeren van instellingen voor een nieuwe app](./media/get-started-portal-build-app/create-new-app-settings.png)
 
 ## <a name="create-intents"></a>Intents maken
 
-Nadat de LUIS-app is gemaakt, moet u intenties maken. Met bedingen kunt u tekst van gebruikers classificeren. Een Human resources-app kan bijvoorbeeld twee functies hebben. Om mensen te helpen:
+Nadat de LUIS-app is gemaakt, moet u intenties maken. Intenties zijn een manier om teksten van gebruikers te classificeren. Zo zou een human resources-app bijvoorbeeld twee functies kunnen hebben. Om mensen te helpen:
 
- 1. Taken zoeken en Toep assen
- 1. Formulieren zoeken die moeten worden toegepast op taken
+ 1. Banen te zoeken en ernaar te solliciteren
+ 1. Formulieren te zoeken om naar banen te solliciteren
 
-De twee verschillende _bedoelingen_ van de app worden uitgelijnd op de volgende intenties:
+De twee verschillende _intenties_ van de app sluiten aan bij de volgende intenties:
 
-|Intentie|Voorbeeld tekst van gebruiker<br>ook wel bekend als een _utterance_|
+|Intentie|Voorbeeldtekst van gebruiker,<br>_uiting_ genoemd|
 |--|--|
 |ApplyForJob|`I want to apply for the new software engineering position in Cairo.`|
 |FindForm|`Where is the job transfer form hrf-123456?`|
 
 Voer de volgende stappen uit om intenties te maken:
 
-1. Nadat de app is gemaakt, bevindt u zich op de pagina **intenties** van de sectie **bouwen** . Selecteer **Maken**.
+1. Nadat de app is gemaakt, bevindt u zich op de pagina **Intents** (Intenties) van het gedeelte **Build** (Bouwen). Selecteer **Maken**.
 
-   [![Scherm opname van het selecteren van ' maken ' om een nieuwe intentie te maken](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
+   [![Schermopname van het selecteren van 'Create' om een nieuwe intentie te maken](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
 
-1. Voer de naam van de doel groep in `FindForm` en selecteer vervolgens **gereed**.
+1. Voer de naam van de nieuwe intentie, `FindForm`, in en selecteer **Done** (Gereed).
 
-## <a name="add-an-example-utterance"></a>Een voor beeld-utterance toevoegen
+## <a name="add-an-example-utterance"></a>Een voorbeelduiting toevoegen
 
-U kunt bijvoorbeeld uitingen toevoegen nadat u intenties hebt gemaakt. Voor beelden van uitingen zijn tekst die een gebruiker invoert in een chat-bot of een andere client toepassing. Ze wijzen de bedoeling van de tekst van de gebruiker toe aan een LUIS intentie.
+Nadat u intenties hebt gemaakt, voegt u voorbeelduitingen toe. Voorbeelduitingen zijn tekst die een gebruiker invoert in een chatbot of andere clienttoepassing. Ze stemmen de intentie van de gebruikerstekst af op een LUIS-intentie.
 
-Voor het doel van deze voorbeeld toepassing `FindForm` bevat bijvoorbeeld uitingen het formulier nummer. De client toepassing heeft het formulier nummer nodig om te voldoen aan de aanvraag van de gebruiker. het is dus belang rijk dat u deze opneemt in de utterance.
+Voor de `FindForm`-intentie van deze voorbeeldtoepassing bevatten voorbeelduitingen het formuliernummer. De clienttoepassing heeft het formuliernummer nodig om aan de vraag van de gebruiker te voldoen, dus het is belangrijk om het op te nemen in de uiting.
 
 > [!div class="mx-imgBorder"]
-> [![Scherm afbeelding van het invoeren van voor beeld-uitingen voor de FindForm intentie](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
+> [![Schermopname van het invoeren van voorbeelduitingen voor de intentie FindForm](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
 
-Voeg het volgende 15-voor beeld uitingen toe aan de `FindForm` bedoeling.
+Voeg de volgende 15 voorbeelduitingen toe aan de `FindForm`-intentie.
 
 |#|Voorbeelden van utterances|
 |--|--|
@@ -85,85 +87,85 @@ Voeg het volgende 15-voor beeld uitingen toe aan de `FindForm` bedoeling.
 |14|`will hrf-234567 be edited for new requirements`|
 |15|`hrf-123456, hrf-123123, hrf-234567`|
 
-Het ontwerp van dit voor beeld kan er als volgt uitzien:
+Deze voorbeelduitingen zijn met opzet zo gemaakt dat ze op de volgende manieren variëren:
 
-* lengte van utterance
+* lengte van de uiting
 * [interpunctie](luis-reference-application-settings.md#punctuation-normalization)
-* woorden keuze
-* werkwoordsvormen (is, was, is)
-* woord volgorde
+* woordkeus
+* werkwoordtijd (is, was, zal)
+* woordvolgorde
 
 
-## <a name="create-a-regular-expression-entity"></a>Een reguliere expressie-entiteit maken
+## <a name="create-a-regular-expression-entity"></a>Een entiteit in de vorm van een reguliere expressie maken
 
-Om het formulier nummer te retour neren in het runtime-Voorspellings antwoord, moet het formulier nummer worden geëxtraheerd als een entiteit. Omdat de tekst van het formulier nummer zeer gestructureerd is, kunt u een reguliere expressie-entiteit gebruiken. Maak de reguliere expressie-entiteit met de volgende stappen:
+Om het formuliernummer te retourneren in het voorspellingsantwoord van de runtime, moet het formuliernummer worden geëxtraheerd als een entiteit. Omdat de tekst van het formuliernummer zeer gestructureerd is, kunt u een reguliere expressie-entiteit gebruiken. Maak de reguliere expressie-entiteit met de volgende stappen:
 
-1. Selecteer **entiteiten** in het menu aan de linkerkant.
+1. Selecteer **Entities** (Entiteiten) in het menu aan de linkerkant.
 
-1. Selecteer **maken** op de pagina **entiteiten** .
+1. Selecteer **Create** (Maken) op de pagina **Entities**.
 
-1. Voer de naam in `FormNumber` , selecteer het type **regex** -entiteit.
+1. Voer de naam `FormNumber` in en selecteer het entiteitstype **Regex**.
 
-1. Voer de reguliere expressie `hrf-[0-9]{6}` in het veld **regex** in. Deze vermelding komt overeen met de letterlijke tekens, `hrf-` en staat precies zes cijfers toe, en selecteer vervolgens **maken**.
+1. Voer de reguliere expressie `hrf-[0-9]{6}` in het veld **Regex** in. Deze vermelding komt overeen met de letterlijke tekens `hrf-`, gevolgd door precies zes cijfers. Selecteer vervolgens **Create** (Maken).
 
     > [!div class="mx-imgBorder"]
-    > ![Scherm opname van entiteit voor reguliere expressie maken](./media/get-started-portal-build-app/create-regular-expression-entity.png)
+    > ![Schermopname van het maken van een reguliere expressie-entiteit](./media/get-started-portal-build-app/create-regular-expression-entity.png)
 
 
-    Deze entiteit extraheert alle tekst die overeenkomt met de reguliere expressie in een van de intenties.
+    Deze entiteit extraheert alle tekst die overeenkomt met de reguliere expressie in de intenties.
 
 ## <a name="add-example-utterances-to-the-none-intent"></a>Voorbeelduitingen toevoegen aan de intentie None
 
-**Geen** intentie is de terugval intentie en mag niet leeg blijven. Deze intentie moet één utterance bevatten voor elke 10 voorbeeld uitingen die u hebt toegevoegd voor de andere intentie van de app.
+De intentie **None** (Geen) is de terugvalintentie, en moet niet leeg worden gelaten. Deze intentie moet één uiting bevatten voor elke 10 voorbeelduitingen die u hebt toegevoegd voor de andere intenties van de app.
 
-De voor beeld-uitingen van **geen** intentie moet zich buiten uw client toepassings domein bevinden.
+De voorbeelduitingen voor de intentie **None** moeten buiten het toepassingsdomein van uw clienttoepassing liggen.
 
-1. Selecteer **intenties** in het menu links en selecteer vervolgens **geen** in de lijst intenties.
+1. Selecteer **Intents** (Intenties) in het menu links en selecteer vervolgens **None** (Geen) in de lijst met intenties.
 
-1. Voeg het volgende voor beeld uitingen toe aan de bedoeling:
+1. Voeg de volgende voorbeelduitingen toe aan de intentie:
 
-   |Voor beeld van geen intentie-uitingen|
+   |Geen voorbeelduitingen intent|
    |--|
    |`Barking dogs are annoying`|
    |`Penguins in the ocean`|
 
-   Voor deze app zijn dit voor beeld-uitingen buiten het domein. Als uw domein dieren bevat of de Oceaan, moet u een ander voor beeld uitingen gebruiken voor de **geen** intentie.
+   Deze voorbeelduitingen liggen buiten het domein van deze app. Als uw domein dieren bevat, of de oceaan, moet u andere voorbeelden gebruiken voor de intentie **None**.
 
 ## <a name="train-the-app"></a>De app trainen
 
 [!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
-## <a name="look-at-the-regular-expression-entity-in-the-example-utterances"></a>Bekijk de entiteit reguliere expressie in het voor beeld uitingen
+## <a name="look-at-the-regular-expression-entity-in-the-example-utterances"></a>De reguliere expressie-entiteit in de voor beelduitingen bekijken
 
-1. Controleer of de entiteit is gevonden in de **FindForm** -intentie door **intenties** te selecteren in het menu links. Selecteer vervolgens **FindForm** intentie.
+1. Controleer of de entiteit zich in de intentie **FindForm** bevindt door **Intents** (Intenties) te selecteren in het menu links. Selecteer de **FindForm**-intentie.
 
-   De entiteit is gemarkeerd waar deze wordt weer gegeven in het voor beeld uitingen.
+   De entiteit wordt gemarkeerd waar deze voorkomt in de voorbeelduitingen.
 
    > [!div class="mx-imgBorder"]
-   > [![Scherm afbeelding van alle voor beelden uitingen dat is gemarkeerd met entiteiten](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png)](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png#lightbox)
+   > [![Schermopname van alle voorbeelduitingen gemarkeerd met entiteiten](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png)](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png#lightbox)
 
-## <a name="test-your-new-app-with-the-interactive-test-pane"></a>Uw nieuwe app testen met het interactieve test venster
+## <a name="test-your-new-app-with-the-interactive-test-pane"></a>Uw nieuwe app testen met het interactieve testdeelvenster
 
-Gebruik het interactieve **test** venster in de Luis-Portal om te controleren of de entiteit is geëxtraheerd uit nieuwe uitingen de app nog niet is gedetecteerd.
+Gebruik het interactieve **Test**-deelvenster in de LUIS-portal om te valideren dat de entiteit wordt geëxtraheerd van nieuwe uitingen die de app nog niet heeft gezien.
 
-1. Selecteer **testen** in het menu in de rechter bovenhoek.
+1. Selecteer **Test** in het menu rechtsboven.
 
-1. Voeg een nieuwe utterance toe en druk vervolgens op ENTER:
+1. Voeg een nieuwe uiting toe en druk op Enter:
 
    ```Is there a form named hrf-234098```
 
-    Selecteer **controleren** om de voor spellingen van de entiteit te bekijken.
+    Selecteer **Inspect** (Inspecteren) om de voorspellingen van de entiteit weer te geven.
 
    > [!div class="mx-imgBorder"]
-   > ![Scherm opname van het testen van nieuwe utterance in het test venster](./media/get-started-portal-build-app/test-new-utterance.png)
+   > ![Schermopname van het testen van een nieuwe uiting in het testdeelvenster](./media/get-started-portal-build-app/test-new-utterance.png)
 
-   De eerste voorspelde intentie is op de juiste manier **FindForm** met meer dan 90% betrouw baarheid (0,977). De **FormNumber** -entiteit wordt geëxtraheerd met de waarde hrf-234098.
+   De hoogst scorende voorspelde intentie is inderdaad **FindForm**, met een betrouwbaarheid van 90% (0.977). De entiteit **FormNumber** wordt geëxtraheerd met de waarde hrf-234098.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u klaar bent met deze Snelstartgids en niet naar de volgende Snelstartgids gaat, selecteert u **mijn apps** in het bovenste navigatie menu. Schakel vervolgens het selectie vakje van de app naar links in de lijst in en selecteer **verwijderen** in de context werkbalk boven de lijst.
+Wanneer u klaar bent met deze quickstart en niet wilt doorgaan met de volgende, selecteert u **Mijn apps** in het bovenste navigatiemenu. Schakel het linker selectievakje van de app in de lijst in en selecteer **Verwijderen** in de contextwerkbalk boven in de lijst.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [2. een app implementeren](get-started-portal-deploy-app.md)
+> [2. Een app implementeren](get-started-portal-deploy-app.md)

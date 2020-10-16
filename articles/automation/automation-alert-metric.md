@@ -5,10 +5,10 @@ services: automation
 ms.date: 08/10/2020
 ms.topic: article
 ms.openlocfilehash: 8767687f0b72d3469bef570770ac81fa8300097f
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88055922"
 ---
 # <a name="monitor-runbooks-with-metric-alerts"></a>Runbooks bewaken met metrische waarschuwingen
@@ -46,7 +46,7 @@ Met waarschuwingen kunt u een voor waarde definiëren die moet worden bewaakt en
 
 3. Definieer onder **waarschuwings logica**de voor waarde en drempel waarde voor uw waarschuwing. Hieronder wordt een voor beeld van uw voor waarde gedefinieerd.
 
-4. Selecteer onder **geëvalueerd op basis van**de tijds duur voor de query en hoe vaak deze query moet worden uitgevoerd. Als u bijvoorbeeld **de laatste vijf minuten** voor de **periode**en **elke 1 minuut** voor de **frequentie**hebt gekozen, zoekt de waarschuwing naar het aantal runbooks dat in de afgelopen vijf minuten aan uw criteria is voldaan. Deze query wordt elke minuut uitgevoerd en zodra de opgegeven waarschuwings criteria niet meer in een venster van vijf minuten worden gevonden, wordt de waarschuwing automatisch opgelost. Klik op **Gereed** als u klaar bent.
+4. Selecteer onder **geëvalueerd op basis van**de tijds duur voor de query en hoe vaak deze query moet worden uitgevoerd. Als u bijvoorbeeld **de laatste vijf minuten** voor de **periode**en **elke 1 minuut** voor de **frequentie**hebt gekozen, zoekt de waarschuwing naar het aantal runbooks dat in de afgelopen vijf minuten aan uw criteria is voldaan. Deze query wordt elke minuut uitgevoerd en zodra de opgegeven waarschuwings criteria niet meer in een venster van vijf minuten worden gevonden, wordt de waarschuwing automatisch opgelost. Wanneer u klaar bent, klikt u op **gereed**.
 
    ![Een resource voor de waarschuwing selecteren](./media/automation-alert-activity-log/configure-signal-logic.png)
 

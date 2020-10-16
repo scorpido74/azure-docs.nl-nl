@@ -9,10 +9,10 @@ ms.date: 02/14/2020
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: 6e183a1e8cac8eec2806a35603c40a44aadac502
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84193510"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Azure Data Lake Storage Gen2 gebruiken voor big data vereisten
@@ -43,8 +43,8 @@ Hier volgt een lijst met hulpprogram ma's die u kunt gebruiken om ad hoc gegeven
 
 | Gegevensbron | Het opnemen met |
 | --- | --- |
-| Lokale computer |[Azure PowerShell](data-lake-storage-directory-file-acl-powershell.md)<br><br>[Azure-CLI](data-lake-storage-directory-file-acl-cli.md)<br><br>[Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)<br><br>[Hulp programma AzCopy](../common/storage-use-azcopy-v10.md)|
-| Azure Storage Blob |[Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md)<br><br>[Hulp programma AzCopy](../common/storage-use-azcopy-v10.md)<br><br>[DistCp uitgevoerd op HDInsight-cluster](data-lake-storage-use-distcp.md)|
+| Lokale computer |[Azure PowerShell](data-lake-storage-directory-file-acl-powershell.md)<br><br>[Azure-CLI](data-lake-storage-directory-file-acl-cli.md)<br><br>[Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)<br><br>[Hulpprogramma AzCopy](../common/storage-use-azcopy-v10.md)|
+| Azure Storage Blob |[Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md)<br><br>[Hulpprogramma AzCopy](../common/storage-use-azcopy-v10.md)<br><br>[DistCp uitgevoerd op HDInsight-cluster](data-lake-storage-use-distcp.md)|
 
 ### <a name="streamed-data"></a>Gestreamde gegevens
 
@@ -90,7 +90,7 @@ Hier volgt een lijst met hulpprogram ma's die u kunt gebruiken om gegevens op te
 |Hulpprogramma | Hulp |
 |---|--|
 |Apache DistCp | [Gebruik DistCp om gegevens te kopiëren tussen Azure Storage blobs en Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-distcp) |
-|Hulp programma AzCopy | [Gegevens overdragen met de AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10) |
+|Hulpprogramma AzCopy | [Gegevens overdragen met de AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10) |
 |Azure Data Factory | [Gegevens kopiëren van of naar Azure Data Lake Storage Gen2 met behulp van Azure Data Factory](https://docs.microsoft.com/azure/data-factory/load-azure-data-lake-storage-gen2) |
 
 ### <a name="data-stored-in-on-premises-or-iaas-hadoop-clusters"></a>Gegevens die zijn opgeslagen in on-premises of IaaS Hadoop-clusters
@@ -100,7 +100,7 @@ Grote hoeveel heden gegevens kunnen worden opgeslagen in bestaande Hadoop-cluste
 | Methode | Details | Voordelen | Overwegingen |
 | --- | --- | --- | --- |
 | Azure Data Factory (ADF) gebruiken om gegevens rechtstreeks vanuit Hadoop-clusters naar Azure Data Lake Storage Gen2 te kopiëren |[ADF ondersteunt HDFS als een gegevens bron](../../data-factory/connector-hdfs.md) |ADF biedt kant-en-klare ondersteuning voor HDFS en de eerste klasse end-to-end-beheer en-bewaking |Vereist dat Data Management Gateway on-premises of in het IaaS-cluster wordt geïmplementeerd |
-| Gebruik Distcp om gegevens van Hadoop naar Azure Storage te kopiëren. Kopieer vervolgens gegevens van Azure Storage naar Data Lake Storage Gen2 met behulp van het juiste mechanisme. |U kunt gegevens kopiëren van Azure Storage naar Data Lake Storage Gen2 met behulp van: <ul><li>[Azure Data Factory](../../data-factory/copy-activity-overview.md)</li><li>[Hulp programma AzCopy](../common/storage-use-azcopy-v10.md)</li><li>[Apache DistCp uitgevoerd op HDInsight-clusters](data-lake-storage-use-distcp.md)</li></ul> |U kunt open source-hulpprogram ma's gebruiken. |Proces voor meerdere stappen waarbij meerdere technologieën zijn vereist |
+| Gebruik Distcp om gegevens van Hadoop naar Azure Storage te kopiëren. Kopieer vervolgens gegevens van Azure Storage naar Data Lake Storage Gen2 met behulp van het juiste mechanisme. |U kunt gegevens kopiëren van Azure Storage naar Data Lake Storage Gen2 met behulp van: <ul><li>[Azure Data Factory](../../data-factory/copy-activity-overview.md)</li><li>[Hulpprogramma AzCopy](../common/storage-use-azcopy-v10.md)</li><li>[Apache DistCp uitgevoerd op HDInsight-clusters](data-lake-storage-use-distcp.md)</li></ul> |U kunt open source-hulpprogram ma's gebruiken. |Proces voor meerdere stappen waarbij meerdere technologieën zijn vereist |
 
 ### <a name="really-large-datasets"></a>Zeer grote gegevens sets
 
@@ -119,7 +119,7 @@ Hier volgt een lijst met hulpprogram ma's die u kunt gebruiken om taken voor geg
 |Hulpprogramma | Hulp |
 |---|--|
 |Azure HDInsight | [Azure Data Lake Storage Gen2 gebruiken met Azure HDInsight-clusters](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) |
-|Azure Databricks | [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)<br><br>[Snelstartgids: gegevens in Azure Data Lake Storage Gen2 analyseren met behulp van Azure Databricks](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-databricks-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br><br>[Zelfstudie: Gegevens extraheren, transformeren en laden met Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Azure Databricks | [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)<br><br>[Snelstartgids: gegevens in Azure Data Lake Storage Gen2 analyseren met behulp van Azure Databricks](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-databricks-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br><br>[Zelfstudie: Gegevens extraheren, transformeren en laden met behulp van Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 
 ## <a name="visualize-the-data"></a>De gegevens visualiseren
 
@@ -141,5 +141,5 @@ Hier volgt een lijst met hulpprogram ma's die u kunt gebruiken om gegevens te do
 |---|--|
 |Azure Data Factory | [Kopieeractiviteit in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/copy-activity-overview) |
 |Apache DistCp | [Gebruik DistCp om gegevens te kopiëren tussen Azure Storage blobs en Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-distcp) |
-|Azure Opslagverkenner|[Gebruik Azure Storage Explorer voor het beheren van mappen, bestanden en Acl's in Azure Data Lake Storage Gen2](data-lake-storage-explorer.md)|
-|Hulp programma AzCopy|[Gegevens overdragen met AzCopy en Blob Storage](../common/storage-use-azcopy-blobs.md)|
+|Azure Storage Explorer|[Azure Storage Explorer gebruiken voor het beheren van adreslijsten, bestanden en ACL's in Azure Data Lake Storage Gen2](data-lake-storage-explorer.md)|
+|Hulpprogramma AzCopy|[Gegevens overdragen met AzCopy en Blob Storage](../common/storage-use-azcopy-blobs.md)|

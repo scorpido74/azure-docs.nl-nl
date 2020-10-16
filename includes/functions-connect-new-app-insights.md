@@ -9,10 +9,10 @@ ms.date: 06/10/2020
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 87af50c5b5e5b69fd175ac4a570c4b6f659b97e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84730989"
 ---
 Met Azure Functions kunt u vanuit de [Azure Portal] eenvoudig de Application Insights-integratie aan een functie-app toevoegen.
@@ -30,7 +30,7 @@ Met Azure Functions kunt u vanuit de [Azure Portal] eenvoudig de Application Ins
     | **Nieuwe resourcenaam** | Unieke app-naam | Het is het gemakkelijkst om dezelfde naam als voor uw functie-app te gebruiken. Deze naam moet uniek zijn in uw abonnement. | 
     | **Locatie** | Europa -west | Gebruik, indien mogelijk, dezelfde [regio](https://azure.microsoft.com/regions/) als uw functie-app, of een nabijgelegen regio. |
 
-    :::image type="content" source="media/functions-connect-new-app-insights/ai-general.png" alt-text="Create an Application Insights resource"::: (Een Application Insights-resource maken)
+    :::image type="content" source="media/functions-connect-new-app-insights/ai-general.png" alt-text="Enable Application Insights from the portal"::: (Een Application Insights-resource maken)
 
 1. Selecteer **Toepassen**. 
 

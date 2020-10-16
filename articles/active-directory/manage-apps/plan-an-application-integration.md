@@ -16,10 +16,10 @@ ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cc691148723e610f0885f7c20fd8684f11a81dc0
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89182323"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Hand leiding voor het integreren van Azure Active Directory met toepassingen
@@ -71,7 +71,7 @@ In de volgende artikelen vindt u informatie over de verschillende manieren waaro
 * [Lijst met zelf studies voor SaaS-toepassingen integreren](../active-directory-saas-tutorial-list.md)
 
 ### <a name="authentication-types"></a>Verificatie typen
-Elk van uw toepassingen heeft mogelijk andere verificatie vereisten. Met Azure AD kunnen handtekening certificaten worden gebruikt met toepassingen die gebruikmaken van SAML 2,0-, WS-Federation-of OpenID Connect Connect-protocollen en een eenmalige aanmelding met een wacht woord. Zie [certificaten beheren voor federatieve eenmalige aanmelding in azure Active Directory](manage-certificates-for-federated-single-sign-on.md) en [op wacht woord gebaseerde eenmalige aanmelding](what-is-single-sign-on.md)voor meer informatie over toepassings verificatie typen voor gebruik met Azure AD.
+Elk van uw toepassingen heeft mogelijk andere verificatie vereisten. Met Azure AD kunnen handtekening certificaten worden gebruikt met toepassingen die gebruikmaken van SAML 2,0-, WS-Federation-of OpenID Connect Connect-protocollen en een eenmalige aanmelding met een wacht woord. Zie [certificaten voor federatieve enkele Sign-On beheren in azure Active Directory](manage-certificates-for-federated-single-sign-on.md) en [op wacht woord gebaseerde eenmalige aanmelding](what-is-single-sign-on.md)voor meer informatie over toepassings verificatie typen voor gebruik met Azure AD.
 
 ### <a name="enabling-sso-with-azure-ad-app-proxy"></a>Eenmalige aanmelding met Azure AD-app proxy inschakelen
 Met Microsoft Azure AD toepassings proxy kunt u vanaf elke locatie en op elk apparaat toegang bieden tot toepassingen die zich in uw particuliere netwerk bevinden. Nadat u een toepassings proxy connector hebt geïnstalleerd in uw omgeving, kunt u deze eenvoudig configureren met Azure AD.
@@ -79,7 +79,7 @@ Met Microsoft Azure AD toepassings proxy kunt u vanaf elke locatie en op elk app
 ### <a name="integrating-custom-applications"></a>Aangepaste toepassingen integreren
 Als u een nieuwe toepassing schrijft en ontwikkel aars wilt helpen om gebruik te maken van de kracht van Azure AD, raadpleegt u [ontwikkel aars](../active-directory-applications-guiding-developers-for-lob-applications.md)voor het maken van guid's.
 
-Als u uw aangepaste toepassing wilt toevoegen aan de Azure-toepassing galerie, raadpleegt u [' uw eigen app meenemen ' met Azure AD self-service SAML-configuratie](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/).
+Als u uw aangepaste toepassing wilt toevoegen aan de Azure-toepassing galerie, raadpleegt u [' uw eigen app meenemen ' met Azure AD Self-Service SAML-configuratie](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/).
 
 ## <a name="managing-access-to-applications"></a>Toegang tot toepassingen beheren
 In de volgende artikelen worden de manieren beschreven waarop u de toegang tot toepassingen kunt beheren wanneer ze zijn geïntegreerd met Azure AD met behulp van Azure AD-connectors en Azure AD.

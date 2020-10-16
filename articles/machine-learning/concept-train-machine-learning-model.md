@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 1714c1c3c9efb0e78d137ed042420f1c7ba2139f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4394cc4cb21b288215c75e484cb6446f0321158b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330108"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079068"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Modellen trainen met Azure Machine Learning
 
@@ -118,11 +118,6 @@ Met de ontwerper kunt u modellen trainen met behulp van een slepen-en-neerzetten
 
 + [Wat is de ontwerp functie?](concept-designer.md)
 + [Zelf studie: prijs van auto Mobile voors pellen](tutorial-designer-automobile-price-train-score.md)
-+ [Regressie: prijs voors pellen](how-to-designer-sample-regression-automobile-price-basic.md)
-+ [Classificatie: inkomen voors pellen](how-to-designer-sample-classification-predict-income.md)
-+ [Classificatie: verloop, verlangen en omhoog verkopen](how-to-designer-sample-classification-churn.md)
-+ [Classificatie met aangepast R-script: vertragingen van de vlucht voors pellen](how-to-designer-sample-classification-flight-delay.md)
-+ [Tekst classificatie: Wikipedia SP 500-gegevensset](how-to-designer-sample-text-classification.md)
 
 ## <a name="many-models-solution-accelerator"></a>Veel modellen oplossings versneller
 

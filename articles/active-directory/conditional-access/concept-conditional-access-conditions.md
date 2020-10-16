@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2dddad5692ab2eebb6ef9b427c091be449791d7c
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91818357"
 ---
 # <a name="conditional-access-conditions"></a>Voorwaardelijke toegang: voor waarden
@@ -132,14 +132,14 @@ Voor Chrome-ondersteuning in **Windows 10 Crea tors update (versie 1703)** of ni
 
 Als u deze uitbrei ding automatisch wilt implementeren in Chrome-browsers, maakt u de volgende register sleutel:
 
-- Pad HKEY_LOCAL_MACHINE \Software\Policies\Google\Chrome\ExtensionInstallForcelist
+- Pad HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist
 - Naam 1
 - Type REG_SZ (teken reeks)
 - Data ppnbnpeolgkicgegkbkbjmhlideopiji; https \: //clients2.Google.com/service/UPDATE2/CRX
 
 Voor Chrome-ondersteuning in **Windows 8,1 en 7**maakt u de volgende register sleutel:
 
-- Pad HKEY_LOCAL_MACHINE \SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls
+- Pad HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls
 - Naam 1
 - Type REG_SZ (teken reeks)
 - Data {"patroon": " https://device.login.microsoftonline.com ", "filter": {"uitgever": {"CN": "MS-organisatie-Access"}}}
@@ -169,7 +169,7 @@ Deze instelling heeft gevolgen voor toegangs pogingen van de volgende mobiele ap
 | Outlook 2016, Outlook 2013 (met moderne verificatie), Skype voor bedrijven (met moderne verificatie) | Exchange Online | Windows 8,1, Windows 7 |
 | Mobiele Outlook-app | Exchange Online | Android, iOS |
 | Power BI-app | Power BI-service | Windows 10, Windows 8,1, Windows 7, Android en iOS |
-| Skype voor bedrijven | Exchange Online| Android, iOS |
+| Skype voor Bedrijven | Exchange Online| Android, iOS |
 | App Visual Studio Team Services | Visual Studio Team Services | Windows 10, Windows 8,1, Windows 7, iOS en Android |
 
 ### <a name="exchange-activesync-clients"></a>Exchange ActiveSync-clients

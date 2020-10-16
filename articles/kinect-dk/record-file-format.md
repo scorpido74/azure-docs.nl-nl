@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: reference
 keywords: kinect, azure, sensor, SDK, depth, RGB, record, afspelen, Matroska, MKV
 ms.openlocfilehash: 3a78ed158c78df1c9a6eadcc0bfb2e40b22750bd
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87501777"
 ---
 # <a name="use-azure-kinect-sensor-sdk-to-record-file-format"></a>De Azure Kinect sensor SDK gebruiken voor het vastleggen van de bestands indeling
@@ -22,7 +22,7 @@ Details op laag niveau van de MKV-container indeling kunt u vinden op de [Matros
 
 | Naam bijhouden | Codec-indeling                          |
 |------------|---------------------------------------|
-| Kleur      | Mode-dependent (MJPEG, NV12 of YUY2) |
+| Kleur      | Mode-Dependent (MJPEG, NV12 of YUY2) |
 | DIEPGA      | b16g (16-bits grijs waarde, big-endian)   |
 | IR         | b16g (16-bits grijs waarde, big-endian)   |
 | IMU        | Aangepaste structuur, zie de [voorbeeld structuur IMU](record-file-format.md#imu-sample-structure) hieronder. |

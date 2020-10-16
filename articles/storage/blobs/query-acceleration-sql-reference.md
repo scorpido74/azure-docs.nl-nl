@@ -11,10 +11,10 @@ ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: ereilebr
 ms.openlocfilehash: affddf7367f58107106ae07a07b8baedac73e251
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89659560"
 ---
 # <a name="query-acceleration-sql-language-reference"></a>Naslag informatie over SQL-taal voor query versnelling
@@ -91,14 +91,14 @@ De volgende standaard SQL-Opera tors worden ondersteund:
 |[/](https://docs.microsoft.com/sql/t-sql/language-elements/divide-transact-sql)    |Deelt een getal met een andere waarde (een reken kundige delen-operator).|
 |[*](https://docs.microsoft.com/sql/t-sql/language-elements/multiply-transact-sql)    |Vermenigvuldigt twee expressies (een reken kundige operator voor vermenigvuldigen).|
 |[%](https://docs.microsoft.com/sql/t-sql/language-elements/modulo-transact-sql)    |Retourneert de rest van een getal gedeeld door een ander nummer.|
-|[MAAR](https://docs.microsoft.com/sql/t-sql/language-elements/bitwise-and-transact-sql)    |Hiermee wordt een bitsgewijze logische en-bewerking uitgevoerd tussen twee waarden met gehele getallen.|
+|[AND](https://docs.microsoft.com/sql/t-sql/language-elements/bitwise-and-transact-sql)    |Hiermee wordt een bitsgewijze logische en-bewerking uitgevoerd tussen twee waarden met gehele getallen.|
 |[OF](https://docs.microsoft.com/sql/t-sql/language-elements/bitwise-or-transact-sql)    |Hiermee wordt een bitsgewijze logische of-bewerking uitgevoerd tussen twee opgegeven waarden met gehele getallen die worden omgezet naar binaire expressies binnen Transact-SQL-instructies.|
-|[TEN](https://docs.microsoft.com/sql/t-sql/language-elements/not-transact-sql)    |Een Boole-invoer wordt genegeerd.|
-|[CAST](https://docs.microsoft.com/sql/t-sql/functions/cast-and-convert-transact-sql)    |Zet een expressie van één gegevenstype om in een ander type.|
+|[NOT](https://docs.microsoft.com/sql/t-sql/language-elements/not-transact-sql)    |Een Boole-invoer wordt genegeerd.|
+|[OMGEZET](https://docs.microsoft.com/sql/t-sql/functions/cast-and-convert-transact-sql)    |Zet een expressie van één gegevenstype om in een ander type.|
 |[VERDEELD](https://docs.microsoft.com/sql/t-sql/language-elements/between-transact-sql)    |Hiermee geeft u een bereik op om te testen.|
 |[Naast](https://docs.microsoft.com/sql/t-sql/language-elements/in-transact-sql)    |Hiermee wordt bepaald of een opgegeven waarde overeenkomt met een wille keurige waarde in een subquery of een lijst.|
 |[NULLIF](https://docs.microsoft.com/sql/t-sql/language-elements/nullif-transact-sql)    |Retourneert een null-waarde als de twee opgegeven expressies gelijk zijn.|
-|[Voeg](https://docs.microsoft.com/sql/t-sql/language-elements/coalesce-transact-sql)    |Evalueert de argumenten in volg orde en retourneert de huidige waarde van de eerste expressie die in eerste instantie niet wordt geëvalueerd als NULL.|
+|[COALESCE](https://docs.microsoft.com/sql/t-sql/language-elements/coalesce-transact-sql)    |Evalueert de argumenten in volg orde en retourneert de huidige waarde van de eerste expressie die in eerste instantie niet wordt geëvalueerd als NULL.|
 
 Als gegevens typen aan de linkerkant en rechts van een operator verschillend zijn, wordt automatische conversie uitgevoerd volgens de hier opgegeven regels: [gegevens type prioriteit (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-precedence-transact-sql).
 
@@ -121,7 +121,7 @@ De SQL-taal voor de query versnelling ondersteunt de volgende standaard SQL-teke
 |[LOWER](https://docs.microsoft.com/sql/t-sql/functions/lower-transact-sql)    |Retourneert een teken expressie na het omzetten van hoofd letters in kleine letters.|
 |[UPPER](https://docs.microsoft.com/sql/t-sql/functions/upper-transact-sql)    |Retourneert een teken expressie met kleine teken gegevens die worden omgezet in hoofd letters.|
 |[SUBTEKENREEKS](https://docs.microsoft.com/sql/t-sql/functions/substring-transact-sql)    |Retourneert een deel van een teken-, binaire-, tekst-of afbeeldings expressie in SQL Server.|
-|[INTERNE](https://docs.microsoft.com/sql/t-sql/functions/trim-transact-sql)    |Hiermee verwijdert u de spatie tekens (32) of andere opgegeven tekens vanaf het begin en het einde van een teken reeks.|
+|[TRIM](https://docs.microsoft.com/sql/t-sql/functions/trim-transact-sql)    |Hiermee verwijdert u de spatie tekens (32) of andere opgegeven tekens vanaf het begin en het einde van een teken reeks.|
 |WITRUIMTE    |Beschrijving|
 |Volg    |Beschrijving|
 
@@ -184,7 +184,7 @@ TO_STRING(CAST('1969-07-20T20:18Z' AS TIMESTAMP),  'MMMM d, y')
 
 In deze tabel worden teken reeksen beschreven die u kunt gebruiken om de uitvoer indeling van de functie op te geven ``TO_STRING`` .
 
-|Teken reeks voor opmaak    |Uitvoer                               |
+|Notatietekenreeks    |Uitvoer                               |
 |-----------------|-------------------------------------|
 |yy               |Jaar met een notatie van 2 cijfers – 1999 als ' 99 '|
 |y                |Jaar in 4-cijfer notatie               |

@@ -4,10 +4,10 @@ description: Referentie documentatie voor de Azure Functions host.jsin het besta
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.openlocfilehash: 400ff6f9db421552b2b2736ea48265deefe676ac
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91321846"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Referentie naar host.json voor Azure Functions 2.x en hoger 
@@ -147,13 +147,13 @@ Zie voor de volledige JSON-structuur het vorige [voor beeld host.jsop bestand](#
 
 | Eigenschap | Standaard | Beschrijving |
 | --------- | --------- | --------- | 
-| samplingSettings | N.v.t. | Zie [applicationInsights. samplingSettings](#applicationinsightssamplingsettings). |
+| samplingSettings | n.v.t. | Zie [applicationInsights. samplingSettings](#applicationinsightssamplingsettings). |
 | enableLiveMetrics | true | Hiermee wordt de verzameling Live Metrics ingeschakeld. |
 | enableDependencyTracking | true | Hiermee schakelt u het bijhouden van afhankelijkheden in. |
 | enablePerformanceCountersCollection | true | Hiermee schakelt u de verzameling kudu-prestatie meter items. |
 | liveMetricsInitializationDelay | 00:00:15 | Alleen voor intern gebruik. |
-| httpAutoCollectionOptions | N.v.t. | Zie [applicationInsights. httpAutoCollectionOptions](#applicationinsightshttpautocollectionoptions). |
-| snapshotConfiguration | N.v.t. | Zie [applicationInsights. snapshotConfiguration](#applicationinsightssnapshotconfiguration). |
+| httpAutoCollectionOptions | n.v.t. | Zie [applicationInsights. httpAutoCollectionOptions](#applicationinsightshttpautocollectionoptions). |
+| snapshotConfiguration | n.v.t. | Zie [applicationInsights. snapshotConfiguration](#applicationinsightssnapshotconfiguration). |
 
 ### <a name="applicationinsightssamplingsettings"></a>applicationInsights. samplingSettings
 
@@ -167,7 +167,7 @@ Zie voor de volledige JSON-structuur het vorige [voor beeld host.jsop bestand](#
 | samplingPercentageDecreaseTimeout | 00:00:01 | Wanneer de waarde voor het sampling percentage wordt gewijzigd, bepaalt deze eigenschap hoe snel Application Insights later het sampling percentage opnieuw wordt toegestaan om minder gegevens vast te leggen. |
 | minSamplingPercentage | 0,1 | Als het steekproef percentage varieert, bepaalt deze eigenschap het minimale toegestane sampling percentage. |
 | maxSamplingPercentage | 100,0 | Als het steekproef percentage varieert, bepaalt deze eigenschap het Maxi maal toegestane steekproef percentage. |
-| movingAverageRatio | 1,0 | Bij het berekenen van het zwevend gemiddelde wordt het gewicht toegewezen aan de meest recente waarde. Gebruik een waarde die gelijk is aan of kleiner is dan 1. Kleinere waarden zorgen ervoor dat het algoritme minder opnieuw wordt geactiveerd tot onverwachte wijzigingen. |
+| movingAverageRatio | 1.0 | Bij het berekenen van het zwevend gemiddelde wordt het gewicht toegewezen aan de meest recente waarde. Gebruik een waarde die gelijk is aan of kleiner is dan 1. Kleinere waarden zorgen ervoor dat het algoritme minder opnieuw wordt geactiveerd tot onverwachte wijzigingen. |
 | excludedTypes | null | Een door punt komma's gescheiden lijst met typen waarvan u geen steek proef wilt maken. De herkende typen zijn: `Dependency` ,, `Event` ,, `Exception` `PageView` `Request` en `Trace` . Alle exemplaren van de opgegeven typen worden verzonden. voor de typen die niet worden opgegeven, worden steek proeven gegeven. |
 | includedTypes | null | Een door punt komma's gescheiden lijst met typen waarvan u een steek proef wilt maken; een lege lijst impliceert alle typen. Typ in het `excludedTypes` veld overschrijvings typen die hier worden vermeld. De herkende typen zijn: `Dependency` ,, `Event` ,, `Exception` `PageView` `Request` en `Trace` . Voor exemplaren van de opgegeven typen wordt een steek proef gegeven; de typen die niet worden opgegeven of geïmpliceerd, worden zonder steek proeven verzonden. |
 
@@ -186,13 +186,13 @@ Voor meer informatie over moment opnamen raadpleegt u [debug-moment opnamen op u
 |Eigenschap | Standaard | Beschrijving |
 | --------- | --------- | --------- | 
 | agentEndpoint | null | Het eind punt dat wordt gebruikt om verbinding te maken met de Application Insights Snapshot Debugger-service. Als de waarde Null is, wordt een standaard eindpunt gebruikt. |
-| captureSnapshotMemoryWeight | 0.5 | Het gewicht dat aan de huidige geheugen grootte van het proces is gegeven om te controleren of er voldoende geheugen beschikbaar is om een moment opname te maken. De verwachte waarde is een groter dan 0 juiste fractie (0 < CaptureSnapshotMemoryWeight < 1). |
+| captureSnapshotMemoryWeight | 0,5 | Het gewicht dat aan de huidige geheugen grootte van het proces is gegeven om te controleren of er voldoende geheugen beschikbaar is om een moment opname te maken. De verwachte waarde is een groter dan 0 juiste fractie (0 < CaptureSnapshotMemoryWeight < 1). |
 | failedRequestLimit | 3 | De limiet voor het aantal mislukte aanvragen voor het aanvragen van moment opnamen voordat de telemetrie-processor wordt uitgeschakeld.|
 | handleUntrackedExceptions | true | Hiermee wordt het bijhouden van uitzonde ringen die niet worden bijgehouden door Application Insights telemetrie, in-of uitgeschakeld. |
 | isEnabled | true | Hiermee wordt de momentopname verzameling in-of uitgeschakeld | 
-| isEnabledInDeveloperMode | false | Hiermee wordt de momentopname verzameling ingeschakeld of uitgeschakeld in de ontwikkelaars modus. |
+| isEnabledInDeveloperMode | onjuist | Hiermee wordt de momentopname verzameling ingeschakeld of uitgeschakeld in de ontwikkelaars modus. |
 | isEnabledWhenProfiling | true | Hiermee wordt het maken van een moment opname in-of uitgeschakeld, zelfs als er een gedetailleerde profilerings sessie wordt verzameld door de Application Insights Profiler. |
-| isExceptionSnappointsEnabled | false | Hiermee wordt het filteren van uitzonde ringen in-of uitgeschakeld. |
+| isExceptionSnappointsEnabled | onjuist | Hiermee wordt het filteren van uitzonde ringen in-of uitgeschakeld. |
 | isLowPrioritySnapshotUploader | true | Hiermee wordt bepaald of het SnapshotUploader-proces op de normale prioriteit moet worden uitgevoerd. |
 | maximumCollectionPlanSize | 50 | Het maximum aantal problemen dat kan worden gevolgd op elk gewenst moment in een bereik van 1 tot en met 9999. |
 | maximumSnapshotsRequired | 3 | Het maximum aantal moment opnamen dat voor één probleem wordt verzameld, in een bereik van 1 tot 999. Een probleem kan worden beschouwd als een afzonderlijke instructie throw in uw toepassing. Zodra het aantal moment opnamen dat voor een probleem is verzameld deze waarde bereikt, worden er geen moment opnamen meer verzameld voor dat probleem totdat de probleem tellers opnieuw zijn ingesteld (Zie `problemCounterResetInterval` ) en de `thresholdForSnapshotting` limiet opnieuw wordt bereikt. |
@@ -310,9 +310,9 @@ Hiermee bepaalt u het gedrag van logboek registratie van de functie-app, met inb
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|Hiermee wordt gedefinieerd welk niveau van bestands logboek registratie is ingeschakeld.  Opties zijn `never` , `always` , `debugOnly` . |
-|logLevel|N.v.t.|Object dat de logboek categorie filtering definieert voor functies in de app. Versie 2. x en hoger volgen de ASP.NET Core indeling voor het filteren van de logboek categorie. Met deze instelling kunt u logboek registratie voor specifieke functies filteren. Zie [logboek filtering](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) in de ASP.net core-documentatie voor meer informatie. |
-|console|N.v.t.| De instelling voor de logboek registratie van de [console](#console) . |
-|applicationInsights|N.v.t.| De instelling [applicationInsights](#applicationinsights) . |
+|logLevel|n.v.t.|Object dat de logboek categorie filtering definieert voor functies in de app. Versie 2. x en hoger volgen de ASP.NET Core indeling voor het filteren van de logboek categorie. Met deze instelling kunt u logboek registratie voor specifieke functies filteren. Zie [logboek filtering](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) in de ASP.net core-documentatie voor meer informatie. |
+|console|n.v.t.| De instelling voor de logboek registratie van de [console](#console) . |
+|applicationInsights|n.v.t.| De instelling [applicationInsights](#applicationinsights) . |
 
 ## <a name="console"></a>console
 
@@ -332,7 +332,7 @@ Deze instelling is een onderliggend item van [logboek registratie](#logging). He
 
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
-|isEnabled|false|Hiermee wordt de logboek registratie van de console in-of uitgeschakeld.| 
+|isEnabled|onjuist|Hiermee wordt de logboek registratie van de console in-of uitgeschakeld.| 
 
 ## <a name="manageddependency"></a>managedDependency
 
@@ -380,7 +380,7 @@ Configuratie-instellingen voor het gedrag van Singleton-vergren deling. Zie [git
 |listenerLockPeriod|00:01:00|De periode waarin de luister vergrendelingen worden uitgevoerd.| 
 |listenerLockRecoveryPollingInterval|00:01:00|Het tijds interval dat wordt gebruikt voor het herstel van de listener-vergren deling als tijdens het opstarten geen listener-vergrendeling kan worden verkregen.| 
 |lockAcquisitionTimeout|00:01:00|De maximale hoeveelheid tijd die de runtime probeert een vergren deling te verkrijgen.| 
-|lockAcquisitionPollingInterval|N.v.t.|Het interval tussen overname pogingen voor vergren delen.| 
+|lockAcquisitionPollingInterval|n.v.t.|Het interval tussen overname pogingen voor vergren delen.| 
 
 ## <a name="version"></a>versie
 

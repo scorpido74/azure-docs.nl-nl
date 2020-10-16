@@ -7,16 +7,16 @@ ms.date: 07/29/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: c259e913a8ee5181bc58aea651af62324cf01fcb
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: 61779527d4b855f4327ad4b77a1e22207a94b8c0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439401"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048369"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>Zelfstudie: Azure Stream Analytics implementeren als een IoT Edge-module
 
-Veel IoT-oplossingen maken gebruik van analyseservices om inzicht te krijgen in gegevens wanneer deze binnenkomen in de cloud vanaf IoT-apparaten. Met Azure IoT Edge kunt u de logica van [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) verplaatsen naar het apparaat zelf. Door telemetriestromen te verwerken kunt u de hoeveelheid geüploade gegevens verkleinen en tijd besparen bij het reageren op inzichten waarvoor een actie kan worden uitgevoerd.
+Veel IoT-oplossingen maken gebruik van analyseservices om inzicht te krijgen in gegevens wanneer deze binnenkomen in de cloud vanaf IoT-apparaten. Met Azure IoT Edge kunt u de logica van [Azure Stream Analytics](../stream-analytics/index.yml) verplaatsen naar het apparaat zelf. Door telemetriestromen te verwerken kunt u de hoeveelheid geüploade gegevens verkleinen en tijd besparen bij het reageren op inzichten waarvoor een actie kan worden uitgevoerd.
 
 Azure IoT Edge en Azure Stream Analytics zijn geïntegreerd om uw workloadontwikkeling te vereenvoudigen. U kunt een Azure Stream Analytics-taak maken in Azure Portal en deze vervolgens zonder aanvullende code implementeren als een IoT Edge-module.  
 

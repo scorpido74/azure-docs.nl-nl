@@ -13,12 +13,12 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: 9fddd5cb749b1dfe50505c139ed7900f709b584e
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 0f40c91672310d5963dab01180ea92633e970c5c
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90706248"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055360"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Procedure: migreren vanuit Azure Access Control Service
 
@@ -181,7 +181,7 @@ Azure AD biedt ook niet noodzakelijkerwijs dezelfde verificatie protocollen als 
 
 Azure AD biedt echter verschillende potentiële voor delen om klanten te Access Controlen. De service ondersteunt eigen micro soft-werk-of school accounts die worden gehost in de Cloud. deze worden vaak gebruikt door Access Control klanten. 
 
-Een Azure AD-Tenant kan ook federatief zijn voor een of meer exemplaren van on-premises Active Directory via AD FS. Op deze manier kan uw app gebruikers van de Cloud verifiëren en gebruikers die lokaal worden gehost. Het biedt ook ondersteuning voor het WS-Federation-Protocol, waardoor het relatief eenvoudig kan worden geïntegreerd met een webtoepassing met behulp van WIF.
+Een Azure AD-Tenant kan ook federatief zijn voor een of meer exemplaren van on-premises Active Directory via AD FS. Op deze manier kan uw app gebruikers van de Cloud verifiëren en gebruikers die lokaal worden gehost. Het ondersteunt ook het WS-Federation-protocol, waardoor het relatief eenvoudig kan worden geïntegreerd met een webtoepassing met behulp van WIF.
 
 In de volgende tabel worden de functies van Access Control die relevant zijn voor webtoepassingen vergeleken met de functies die beschikbaar zijn in azure AD. 
 
@@ -214,7 +214,7 @@ Op hoog niveau *is Azure Active Directory waarschijnlijk de beste keuze voor uw 
 
 Als u besluit dat Azure AD het beste migratie traject is voor uw toepassingen en services, moet u rekening houden met twee manieren om uw app te integreren met Azure AD.
 
-Als u WS-Federation of WIF wilt gebruiken om te integreren met Azure AD, kunt u het beste de aanpak volgen die wordt beschreven in [federatieve eenmalige aanmelding configureren voor een toepassing buiten de galerie](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md). Het artikel verwijst naar het configureren van Azure AD voor op SAML gebaseerde eenmalige aanmelding, maar is ook geschikt voor het configureren van WS-Federation. Als u deze aanpak volgt, is een Azure AD Premium-licentie vereist. Deze aanpak heeft twee voor delen:
+Als u WS-Federation of WIF wilt gebruiken om te integreren met Azure AD, kunt u het beste de aanpak volgen die wordt beschreven in [federatieve eenmalige aanmelding configureren voor een toepassing buiten de galerie](../manage-apps/configure-saml-single-sign-on.md). Het artikel verwijst naar het configureren van Azure AD voor op SAML gebaseerde eenmalige aanmelding, maar is ook geschikt voor het configureren van WS-Federation. Als u deze aanpak volgt, is een Azure AD Premium-licentie vereist. Deze aanpak heeft twee voor delen:
 
 - U profiteert van de volledige flexibiliteit van het aanpassen van Azure AD-tokens. U kunt de claims die zijn uitgegeven door Azure AD, aanpassen om te voldoen aan de claims die worden uitgegeven door Access Control. Dit omvat met name de claim van de gebruikers-ID of de naam-id. Als u consistente gebruikers-Id's voor uw gebruikers wilt blijven ontvangen nadat u de technologieën hebt gewijzigd, moet u ervoor zorgen dat de gebruikers-Id's die zijn uitgegeven door Azure AD overeenkomen met die van Access Control.
 - U kunt een certificaat voor token-ondertekening configureren dat specifiek is voor uw toepassing en met een levens duur die u beheert.
@@ -226,7 +226,7 @@ Een alternatieve methode is het volgen van [Dit code voorbeeld](https://github.c
 
 Als u deze aanpak kiest, moet u inzicht krijgen [in de rollover van de handtekening sleutel in azure AD](../develop/active-directory-signing-key-rollover.md). Deze benadering maakt gebruik van de globale Azure AD-handtekening sleutel voor het uitgeven van tokens. WIF wordt standaard niet automatisch vernieuwd. Wanneer Azure AD de globale ondertekeningssleutel draait, moet uw WIF-implementatie worden voor bereid om de wijzigingen te accepteren. Zie [belang rijke informatie over de rollover van de handtekening sleutel in azure AD](/previous-versions/azure/dn641920(v=azure.100))voor meer informatie.
 
-Als u kunt integreren met Azure AD via de OpenID Connect Connect-of OAuth-protocollen, wordt u aangeraden dit te doen. We hebben uitgebreide documentatie en richt lijnen over hoe u Azure AD integreert in uw webtoepassing die beschikbaar is in onze [Azure AD-ontwikkelaars handleiding](https://aka.ms/aaddev).
+Als u kunt integreren met Azure AD via de OpenID Connect Connect-of OAuth-protocollen, wordt u aangeraden dit te doen. We hebben uitgebreide documentatie en richt lijnen over hoe u Azure AD integreert in uw webtoepassing die beschikbaar is in onze [Azure AD-ontwikkelaars handleiding](../develop/index.yml).
 
 #### <a name="migrate-to-azure-active-directory-b2c"></a>Migreren naar Azure Active Directory B2C
 
@@ -266,7 +266,7 @@ In de volgende tabel worden de functies van Access Control vergeleken die releva
 Als u besluit dat Azure AD B2C het beste migratie traject is voor uw toepassingen en services, begint u met de volgende bronnen:
 
 - [Documentatie over Azure AD B2C](../../active-directory-b2c/overview.md)
-- [Aangepaste beleids regels Azure AD B2C](../../active-directory-b2c/custom-policy-overview.md)
+- [Aangepast Azure AD B2C-beleid](../../active-directory-b2c/custom-policy-overview.md)
 - [Azure AD B2C prijzen](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 
 #### <a name="migrate-to-ping-identity-or-auth0"></a>Migreren naar ping-identiteit of Auth0
@@ -274,7 +274,7 @@ Als u besluit dat Azure AD B2C het beste migratie traject is voor uw toepassinge
 In sommige gevallen kan het voor komen dat Azure AD en Azure AD B2C niet voldoende zijn om Access Control te vervangen in uw webtoepassingen zonder dat belang rijke code wijzigingen worden aangebracht. Enkele algemene voor beelden hiervan zijn:
 
 - Webtoepassingen die gebruikmaken van WIF of WS-Federation voor aanmelding met sociale id-providers zoals Google of Facebook.
-- Webtoepassingen die direct Federatie uitvoeren op een ondernemings-id-provider via het WS-Federation-Protocol.
+- Webtoepassingen die direct Federatie uitvoeren op een ondernemings-id-provider via het WS-Federation-protocol.
 - Webtoepassingen die het toegangs token vereisen dat is uitgegeven door een sociale ID-provider (zoals Google of Facebook) als een claim in de tokens die zijn uitgegeven door Access Control.
 - Webtoepassingen met complexe token transformatie regels die niet kunnen worden gereproduceerd door Azure AD of Azure AD B2C.
 - Webtoepassingen voor meerdere tenants die ACS gebruiken om de Federatie centraal te beheren voor veel verschillende id-providers
@@ -332,7 +332,7 @@ U kunt ook Azure AD gebruiken voor server-naar-Server-verificatie met behulp van
 
 Raadpleeg de volgende bronnen voor hulp bij het implementeren van server-naar-server-scenario's:
 
-- Service-to-service-sectie van de [hand leiding voor Azure AD-ontwikkel aars](https://aka.ms/aaddev)
+- Service-to-service-sectie van de [hand leiding voor Azure AD-ontwikkel aars](../develop/index.yml)
 - [Voor beeld van een daemon-code met eenvoudige wacht woord-client referenties](https://github.com/Azure-Samples/active-directory-dotnet-daemon)
 - [Voor beeld van een daemon-code met behulp van de certificaat-client referenties](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential)
 

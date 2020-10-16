@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/23/2019
 ms.openlocfilehash: 82e3374491aa119d9985ea7ef31e180c920511d3
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86087738"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Apache HBase-clusters maken op HDInsight in azure Virtual Network
@@ -43,9 +43,9 @@ In deze sectie maakt u een op Linux gebaseerd Apache HBase-cluster met het afhan
 > * **Subnetnaam**: subnet1
 > * **Adres bereik van subnet**: 10.0.0.0/24
 >
-> `CLUSTERNAME`wordt vervangen door de naam van het cluster dat u opgeeft wanneer u de sjabloon gebruikt.
+> `CLUSTERNAME` wordt vervangen door de naam van het cluster dat u opgeeft wanneer u de sjabloon gebruikt.
 
-1. Selecteer de volgende afbeelding om de sjabloon te openen in de Azure Portal. De sjabloon bevindt zich in [Azure Quick](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-linux-vnet/)start-sjablonen.
+1. Selecteer de volgende afbeelding om de sjabloon in Azure Portal te openen. De sjabloon bevindt zich in [Azure-quickstart-sjablonen](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-linux-vnet/).
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux-vnet%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-provision-vnet/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
@@ -62,7 +62,7 @@ In deze sectie maakt u een op Linux gebaseerd Apache HBase-cluster met het afhan
     |Locatie|Selecteer een locatie voor de resourcegroep.|
     |Clusternaam|Voer een naam in voor het Hadoop-cluster dat moet worden gemaakt.|
     |Gebruikers naam en wacht woord voor cluster aanmelding|De standaard gebruikersnaam is **admin**. Geef een wacht woord op.|
-    |Gebruikers naam en wacht woord voor SSH|De standaard gebruikers naam is **sshuser**.  Geef een wacht woord op.|
+    |Gebruikers naam en wacht woord voor SSH|De standaard gebruikers naam is **sshuser**.  Geef een wachtwoord op.|
 
     Selecteer **Ik ga akkoord met de voor waarden die hierboven worden vermeld**.
 

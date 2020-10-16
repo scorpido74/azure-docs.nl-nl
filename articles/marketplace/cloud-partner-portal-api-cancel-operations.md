@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
 ms.openlocfilehash: 095d9cf68374ee81cafdb6e7a32df29a57d122cb
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87287922"
 ---
 # <a name="cancel-operation"></a>Bewerking annuleren
@@ -29,12 +29,12 @@ Deze API annuleert een bewerking die momenteel wordt uitgevoerd op de aanbieding
 
 |  **Naam**    |      **Beschrijving**                                  |    **Gegevenstype**  |
 | ------------ |     ----------------                                  |     -----------   |
-| publisherId  |  Uitgevers-id, bijvoorbeeld`contoso`         |   Tekenreeks          |
+| publisherId  |  Uitgevers-id, bijvoorbeeld `contoso`         |   Tekenreeks          |
 | offerId      |  Aanbiedings-id                                     |   Tekenreeks          |
 | api-versie  |  Huidige versie van API                               |    Date           |
 |  |  |  |
 
-## <a name="header"></a>Header
+## <a name="header"></a>Koptekst
 ------
 
 |  **Naam**              |  **Waarde**         |
@@ -63,7 +63,7 @@ Deze API annuleert een bewerking die momenteel wordt uitgevoerd op de aanbieding
 |  melding-e-mail berichten     | Door komma's gescheiden lijst met e-mail-Id's die moeten worden geïnformeerd over de voortgang van de publicatie bewerking. |
 |  |  |
 
-### <a name="response"></a>Reactie
+### <a name="response"></a>Antwoord
 
 #### <a name="migrated-offers"></a>Gemigreerde aanbiedingen
 

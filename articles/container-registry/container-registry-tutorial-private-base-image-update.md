@@ -3,13 +3,13 @@ title: Zelfstudie - Build van de installatiekopie activeren wanneer een privéba
 description: In deze zelfstudie configureert u een Azure Container Registry-taak om builds van containerinstallatiekopieën automatisch te activeren in de cloud wanneer een basisinstallatiekopie in een ander privécontainerregister in Azure wordt bijgewerkt.
 ms.topic: tutorial
 ms.date: 01/22/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: e28dc65f44f3d9997a59e6204451cc84b0e41e40
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: 09b795981c1afe497e6adbb14f4f62d45293f0e3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407129"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270964"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-another-private-container-registry"></a>Zelfstudie: Builds van containerinstallatiekopieën automatiseren wanneer een basisinstallatiekopie wordt bijgewerkt in een ander privécontainerregister 
 
@@ -171,7 +171,7 @@ docker run -d -p 8080:80 --name myapp --rm $ACR_NAME.azurecr.io/helloworld:<run-
 
 Ga naar `http://localhost:8080` in uw browser. U ziet nu het weergegeven nummer van de Node.js-versie op de webpagina, zoals hieronder weergegeven. In een latere stap verhoogt u de versie door een 'a' toe te voegen aan de versietekenreeks.
 
-![Schermafbeelding van de voorbeeldtoepassing die wordt weergegeven in de browser][base-update-01]
+![Schermopname van een voorbeeldtoepassing die wordt weergegeven in een browser.][base-update-01]
 
 Voer de volgende opdracht uit om de container te stoppen en te verwijderen:
 

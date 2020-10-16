@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: jushiman
-ms.openlocfilehash: a54de6dbfb320ca530e9c885af9ebe5d833274cc
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 7234c02d387e2fbf21a7f6002e44f84deb851133
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322975"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977592"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Ondersteuning voor virtuele machines van generatie 2 op Azure
 
@@ -64,10 +64,10 @@ Vm's van generatie 2 ondersteunen de volgende installatie kopieën van Marketpla
 * Ubuntu Server 16,04, 18,04, 19,04, 19,10 
 * RHEL 8,1, 8,0, 7,7, 7,6, 7,5, 7,4, 7,0
 * Cent OS 8,1, 8,0, 7,7, 7,6, 7,5, 7,4
-* Oracle Linux 7,7, 7,7-CI
+* Oracle Linux 7.7, 7.7CI
 
 > [!NOTE]
-> Specifieke grootten voor virtuele machines, zoals Mv2-Series, ondersteunen mogelijk alleen een subset van deze installatie kopieën. Raadpleeg de documentatie van de betreffende grootte van de virtuele machine voor meer informatie.
+> Bij specifieke grootten van virtuele machines, zoals Mv2-Series, wordt mogelijk alleen een subset van deze installatie kopieën ondersteund. Raadpleeg de documentatie van de betreffende grootte van de virtuele machine voor meer informatie.
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>On-premises versus Azure Generation 2 Vm's
 
@@ -89,7 +89,7 @@ Azure biedt momenteel geen ondersteuning voor enkele van de functies die on-prem
 |---------|--------------|--------------|
 | Opstarten             | PCAT                      | UEFI                               |
 | Schijf controllers | IDE                       | SCSI                               |
-| Formaten van virtuele machines         | Alle VM-grootten | [Beschik bare grootten weer geven](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2#generation-2-vm-sizes) |
+| Formaten van virtuele machines         | Alle VM-grootten | [Beschik bare grootten weer geven](#generation-2-vm-sizes) |
 
 ### <a name="generation-1-vs-generation-2-capabilities"></a>Mogelijkheden van generatie 1 vs. generatie 2
 
@@ -99,7 +99,7 @@ Azure biedt momenteel geen ondersteuning voor enkele van de functies die on-prem
 | Besturings systeem voor aangepaste schijf/image/swap         | :heavy_check_mark: | :heavy_check_mark: |
 | Ondersteuning voor schaal sets voor virtuele machines | :heavy_check_mark: | :heavy_check_mark: |
 | Azure Site Recovery               | :heavy_check_mark: | :heavy_check_mark: |
-| Back-up maken/herstellen                    | :heavy_check_mark: | :heavy_check_mark: |
+| Back-up/herstel                    | :heavy_check_mark: | :heavy_check_mark: |
 | Galerie met gedeelde afbeeldingen              | :heavy_check_mark: | :heavy_check_mark: |
 | Azure Disk Encryption             | :heavy_check_mark: | BxDxH                |
 
@@ -222,4 +222,3 @@ U kunt ook virtuele machines van de tweede generatie maken met behulp van schaal
 ## <a name="next-steps"></a>Volgende stappen
 
 Meer informatie over [virtuele machines van de 2e generatie in Hyper-V](/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
-

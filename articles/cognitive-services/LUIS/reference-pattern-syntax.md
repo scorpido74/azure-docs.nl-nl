@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/14/2020
 ms.openlocfilehash: 3caccd6766226ce68b371856b081b052c1033f71
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91542186"
 ---
 # <a name="pattern-syntax"></a>Patroonsyntaxis
@@ -23,7 +23,7 @@ Entiteiten in patronen worden omgeven door accolades, `{}` . Patronen kunnen ent
 
 De syntaxis van het patroon ondersteunt de volgende syntaxis:
 
-|Functie|Syntaxis|Niveau nesten|Voorbeeld|
+|Functie|Syntax|Niveau nesten|Voorbeeld|
 |--|--|--|--|
 |vennootschap| {} -accolades|2|Waar is formulier {entity-name}?|
 |optioneel|[]-vier Kante haken<BR><BR>Er is een limiet van 3 op geneste niveaus van een combi natie van optioneel en groepering |2|Het vraag teken is optioneel [?]|

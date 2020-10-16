@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.service: automation
 ms.custom: has-adal-ref
 ms.openlocfilehash: 1cbb5be8c1a4045b218c0e6bf5ac7ed0b901aa80
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87904799"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Problemen met runbooks oplossen
@@ -122,7 +122,7 @@ Voer de volgende stappen uit om te bepalen wat er mis is:
    }
    ```
 
-## <a name="scenario-run-login-azurermaccount-to-log-in"></a><a name="login-azurerm"></a>Scenario: aanmeldings AzureRMAccount uitvoeren om u aan te melden
+## <a name="scenario-run-login-azurermaccount-to-log-in"></a><a name="login-azurerm"></a>Scenario: Voer Login-AzureRMAccount uit om u aan te melden
 
 ### <a name="issue"></a>Probleem
 
@@ -228,7 +228,7 @@ Het runbook gebruikt niet de juiste context wanneer het wordt uitgevoerd.
 
 ### <a name="resolution"></a>Oplossing
 
-De context van het abonnement kan verloren gaan wanneer een runbook meerdere runbooks aanroept. Als u er zeker van wilt zijn dat de context van het abonnement wordt door gegeven aan de runbooks, laat u het runbook van de client de context door geven aan de `Start-AzureRmAutomationRunbook` cmdlet in de `AzureRmContext` para meter. Gebruik de `Disable-AzureRmContextAutosave` cmdlet met de `Scope` para meter ingesteld op `Process` om ervoor te zorgen dat de opgegeven referenties alleen worden gebruikt voor het huidige runbook. Zie [abonnementen](../automation-runbook-execution.md#subscriptions)voor meer informatie.
+De context van het abonnement kan verloren gaan wanneer een runbook meerdere runbooks aanroept. Als u er zeker van wilt zijn dat de context van het abonnement wordt door gegeven aan de runbooks, laat u het runbook van de client de context door geven aan de `Start-AzureRmAutomationRunbook` cmdlet in de `AzureRmContext` para meter. Gebruik de `Disable-AzureRmContextAutosave` cmdlet met de `Scope` para meter ingesteld op `Process` om ervoor te zorgen dat de opgegeven referenties alleen worden gebruikt voor het huidige runbook. Zie [Abonnementen](../automation-runbook-execution.md#subscriptions) voor meer informatie.
 
 ```azurepowershell-interactive
 # Ensures that any credentials apply only to the execution of this runbook
@@ -368,7 +368,7 @@ Gebruik een van de volgende oplossingen om het probleem op te lossen:
 * Als er sprake is van een naam conflict en de cmdlet is beschikbaar in twee verschillende modules, lost u het probleem op door de volledig gekwalificeerde naam voor de cmdlet te gebruiken. U kunt bijvoorbeeld `ModuleName\CmdletName` gebruiken.
 * Als u het runbook on-premises uitvoert in een Hybrid worker-groep, moet u ervoor zorgen dat de module en de cmdlet zijn geïnstalleerd op de computer die als host fungeert voor de Hybrid Worker.
 
-## <a name="scenario-incorrect-object-reference-on-call-to-add-azaccount"></a><a name="object-reference-not-set"></a>Scenario: onjuiste object verwijzing bij het aanroepen van add-AzAccount
+## <a name="scenario-incorrect-object-reference-on-call-to-add-azaccount"></a><a name="object-reference-not-set"></a>Scenario: onjuiste object verwijzing bij het aanroepen van Add-AzAccount
 
 ### <a name="issue"></a>Probleem
 
@@ -677,7 +677,7 @@ Volg [stap 5: Voeg verificatie toe om Azure-resources te beheren](../learn/autom
 
 ## <a name="recommended-documents"></a>Aanbevolen documenten
 
-* [Uitvoering van runbooks in Azure Automation](../automation-runbook-execution.md)
+* [Uitvoering van Runbook in Azure Automation](../automation-runbook-execution.md)
 * [Een runbook starten in Azure Automation](../start-runbooks.md)
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 7ab9d270ae5da52cbf9b5ba0ed4730233225a7c1
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 74c8924116cf9b565ea63e3b72a409686a4d725c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653438"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975717"
 ---
 # <a name="updated-ndv2-series"></a>Bijgewerkte NDv2-serie
 
@@ -27,7 +27,7 @@ De NDv2 is in de praktijk opgebouwd voor zowel reken kundige, intense schaling (
 > [!IMPORTANT]
 > Als u InfiniBand op de ND40rs_v2 virtuele machine [inschakelt](./workloads/hpc/enable-infiniband.md) , gebruikt u het OFED-stuur programma 4.7-1.0.0.1 Mellanox.
 >
-> Vanwege het toegenomen GPU-geheugen vereist de nieuwe ND40rs_v2 VM het gebruik van [virtuele machines van de tweede generatie](./windows/generation-2.md) en Marketplace-installatie kopieën. 
+> Vanwege het toegenomen GPU-geheugen vereist de nieuwe ND40rs_v2 VM het gebruik van [virtuele machines van de tweede generatie](./generation-2.md) en Marketplace-installatie kopieën. 
 >
 > Opmerking: de ND40s_v2 met 16 GB per GPU-geheugen is niet meer beschikbaar voor preview en is vervangen door de bijgewerkte ND40rs_v2.
 
@@ -57,7 +57,7 @@ Als u ervoor kiest om de NVIDIA GPU-Stuur Programma's hand matig te installeren,
 
 ## <a name="other-sizes"></a>Andere grootten
 
-- [Algemeen gebruik](sizes-general.md)
+- [Algemeen doel](sizes-general.md)
 - [Geoptimaliseerd geheugen](sizes-memory.md)
 - [Geoptimaliseerde opslag](sizes-storage.md)
 - [Geoptimaliseerde GPU](sizes-gpu.md)

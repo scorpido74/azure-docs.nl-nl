@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.custom: how-to, contperfq1
 ms.date: 08/20/2020
 ms.openlocfilehash: ce8ff8bedc6f6e4f99a940bbdb26bd3fafc930d8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91296770"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatisch een time-series-prognose model trainen
@@ -213,7 +213,7 @@ U hebt ook de optie om uw parametrisatie-instellingen aan te passen, zodat u zek
 
 Ondersteunde aanpassingen voor `forecasting` taken zijn onder andere:
 
-|Aanpassing|Definitie|
+|Aanpassen|Definitie|
 |--|--|
 |**Update van het kolom doel**|Overschrijf het automatisch gedetecteerde functie type voor de opgegeven kolom.|
 |**Para meter bijwerken van trans formatie** |De para meters voor de opgegeven transformator bijwerken. *Ondersteunt momenteel* toerekenings functie (fill_value en mediaan).|

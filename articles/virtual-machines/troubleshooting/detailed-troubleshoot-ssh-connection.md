@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 0b4890181721d08b741d327adb74bd097be5c9f2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c117f9697299b94a54d9184093e65c56822b8bd2
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87069163"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975668"
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>Gedetailleerde stappen om SSH-problemen op te lossen bij verbindingsproblemen van een Linux-VM in Azure
 Er zijn veel mogelijke redenen waarom de SSH-client de SSH-service mogelijk niet kan bereiken op de virtuele machine. Als u de meer [algemene stappen](troubleshoot-ssh-connection.md)voor het oplossen van SSH-problemen hebt gevolgd, moet u het verbindings probleem verder oplossen. In dit artikel vindt u gedetailleerde stappen voor probleem oplossing om te bepalen waar de SSH-verbinding is mislukt en hoe u deze kunt oplossen.
@@ -39,7 +39,7 @@ De volgende stappen helpen u bij het isoleren van de oorzaak van de fout en het 
 
 2. Selecteer **instellingen** om eind punten, IP-adressen, netwerk beveiligings groepen en andere instellingen te onderzoeken.
 
-   De virtuele machine moet een eind punt hebben dat is gedefinieerd voor SSH-verkeer dat u kunt weer geven in **eind punten** of **[netwerk beveiligings groep](../../virtual-network/security-overview.md)**. Eind punten in Vm's die zijn gemaakt met behulp van Resource Manager, worden opgeslagen in een netwerk beveiligings groep. Controleer of de regels zijn toegepast op de netwerk beveiligings groep en waarnaar wordt verwezen in het subnet.
+   De virtuele machine moet een eind punt hebben dat is gedefinieerd voor SSH-verkeer dat u kunt weer geven in **eind punten** of **[netwerk beveiligings groep](../../virtual-network/network-security-groups-overview.md)**. Eind punten in Vm's die zijn gemaakt met behulp van Resource Manager, worden opgeslagen in een netwerk beveiligings groep. Controleer of de regels zijn toegepast op de netwerk beveiligings groep en waarnaar wordt verwezen in het subnet.
 
 Controleer de geconfigureerde eind punten om de netwerk verbinding te controleren en te controleren of u verbinding kunt maken met de virtuele machine via een ander protocol, zoals HTTP of een andere service.
 
@@ -114,7 +114,7 @@ Als u het eind punt als een bron van het probleem wilt elimineren, verwijdert u 
 
 ## <a name="source-4-network-security-groups"></a>Bron 4: netwerk beveiligings groepen
 Met netwerk beveiligings groepen kunt u meer nauw keurige controle hebben over toegestaan binnenkomend en uitgaand verkeer. U kunt regels maken die subnetten en Cloud Services omvatten in een virtueel Azure-netwerk. Controleer de regels voor de netwerk beveiligings groep om ervoor te zorgen dat SSH-verkeer van en naar Internet wordt toegestaan.
-Zie [over netwerk beveiligings groepen](../../virtual-network/security-overview.md)voor meer informatie.
+Zie [over netwerk beveiligings groepen](../../virtual-network/network-security-groups-overview.md)voor meer informatie.
 
 U kunt ook IP-verificatie gebruiken om de NSG-configuratie te valideren. Zie overzicht van Azure- [netwerk bewaking](../../network-watcher/network-watcher-monitoring-overview.md)voor meer informatie. 
 
@@ -132,5 +132,5 @@ Probeer opnieuw verbinding te maken vanaf uw computer. Als de service nog steeds
 * De lokale firewall op de virtuele doel machine bevat regels die inkomend of uitgaand SSH-verkeer verhinderen.
 * De indringings detectie of de netwerk bewakings software die wordt uitgevoerd op de virtuele machine van Azure, verhindert SSH-verbindingen.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 Zie [problemen oplossen met toegang tot een toepassing die wordt uitgevoerd op een virtuele machine van Azure](./troubleshoot-app-connection.md) voor meer informatie over het oplossen van toepassings toegang

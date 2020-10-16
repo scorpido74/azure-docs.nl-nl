@@ -2,18 +2,17 @@
 title: 'Zelfstudie: nieuwe beleidstoewijzing met Azure-portal'
 description: In deze zelfstudie gebruikt u de Azure-portal om een Azure Policy-toewijzing te maken om niet-compatibele resources te identificeren.
 ms.topic: tutorial
-ms.date: 09/23/2020
-ms.openlocfilehash: fbfe7090db1b4e1a8f802b30fdf749466ea26f1f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 10/07/2020
+ms.openlocfilehash: 9a07e490525ce532f8f843b30b3b83715e65ce3c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321863"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826602"
 ---
 # <a name="tutorial-create-a-policy-assignment-to-identify-non-compliant-resources"></a>Zelfstudie: Een beleidstoewijzing maken om niet-conforme resources te identificeren
 
-De eerste stap in het begrijpen van naleving in Azure is het identificeren van de status van uw resources.
-In deze zelfstudie wordt stapsgewijs beschreven hoe u een beleidstoewijzing maakt om uw Azure-Arc-servers te identificeren en om Azure Arc-computers te identificeren waarop de Log Analytics-agent niet is geïnstalleerd.
+De eerste stap in het begrijpen van naleving in Azure is het identificeren van de status van uw resources. Azure Policy ondersteunt het controleren van de status van uw voor Arc ingeschakelde server met gastconfiguratiebeleid. Gastconfiguratiebeleid past geen configuraties toe, maar controleert alleen instellingen van de machine. In deze zelfstudie wordt u stapsgewijs begeleid bij het maken en toewijzen van een beleid, waarmee wordt aangegeven op welke van uw Arc-servers de Log Analytics-agent niet is geïnstalleerd.
 
 Aan het einde van dit proces kunt u computers identificeren waarop de Log Analytics-agent voor Windows of Linux niet is geïnstalleerd. Ze zijn _niet-compatibel_ met de beleidstoewijzing.
 
@@ -23,7 +22,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 
 ## <a name="create-a-policy-assignment"></a>Een beleidstoewijzing maken
 
-In deze zelfstudie maakt u een beleidstoewijzing en wijst u de beleidsdefinitie _Virtuele machines zonder beheerde schijven controleren_ toe.
+In deze zelfstudie maakt u een beleidstoewijzing en wijst u de _\[Preview] toe: Log Analytics-agent moet zijn geïnstalleerd op uw Linux Azure Arc-computers_.
 
 1. Start de Azure Policy-service in Azure Portal door **Alle services** te selecteren en dan **Beleid** te zoeken en te selecteren.
 
@@ -72,14 +71,14 @@ Selecteer **Naleving** links op de pagina. Zoek vervolgens de beleidstoewijzing 
 
 Als er bestaande resources zijn die niet conform deze nieuwe toewijzing zijn, worden deze weergegeven bij **Niet-conforme resources**.
 
-Als een voorwaarde wordt geëvalueerd ten opzichte van uw bestaande resources en deze waar blijkt te zijn, worden deze resources gemarkeerd als niet-compatibel met het beleid. In de volgende tabel ziet u hoe verschillende beleidsacties werken met de evaluatie van voorwaarden voor de resulterende nalevingsstatus. U kunt de evaluatielogica niet zien in de Azure-portal, maar de resultaten voor de nalevingsstatus worden wel weergegeven. Het resultaat voor de nalevingsstatus is compatibel of niet-compatibel.
+Als een voorwaarde wordt geëvalueerd ten opzichte van uw bestaande resources en deze waar blijkt te zijn, worden deze resources gemarkeerd als niet-compatibel met het beleid. In de volgende tabel ziet u hoe verschillende beleidsacties werken met de evaluatie van voorwaarden voor de resulterende nalevingsstatus. U kunt de evaluatielogica niet zien in Azure Portal, maar de resultaten voor de nalevingsstatus worden wel weergegeven. Het resultaat voor de nalevingsstatus is compatibel of niet-compatibel.
 
 | **Resourcestatus** | **Effect** | **Beleidsevaluatie** | **Nalevingsstatus** |
 | --- | --- | --- | --- |
-| Bestaat | Weigeren, Controleren, Toevoegen\*, DeployIfNotExist\*, AuditIfNotExist\* | Waar | Niet-compatibel |
-| Bestaat | Weigeren, Controleren, Toevoegen\*, DeployIfNotExist\*, AuditIfNotExist\* | Niet waar | Compliant |
-| Nieuw | Controleren, AuditIfNotExist\* | Waar | Niet-compatibel |
-| Nieuw | Controleren, AuditIfNotExist\* | Niet waar | Compliant |
+| Bestaat | Weigeren, Controleren, Toevoegen\*, DeployIfNotExist\*, AuditIfNotExist\* | True | Niet-compatibel |
+| Bestaat | Weigeren, Controleren, Toevoegen\*, DeployIfNotExist\*, AuditIfNotExist\* | False | Compatibel |
+| Nieuw | Controleren, AuditIfNotExist\* | True | Niet-compatibel |
+| Nieuw | Controleren, AuditIfNotExist\* | False | Compatibel |
 
 \*Voor de acties Toevoegen, DeployIfNotExist en AuditIfNotExist moet de IF-instructie TRUE zijn.
 De acties vereisen ook dat de bestaansvoorwaarde FALSE is om niet-compatibel te zijn. Indien TRUE, activeert de IF-voorwaarde de evaluatie van de bestaansvoorwaarde voor de gerelateerde resources.

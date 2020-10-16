@@ -1,115 +1,115 @@
 ---
-title: Schema in een app met één Tenant beheren
-description: Schema voor meerdere tenants beheren in een app met één Tenant die gebruikmaakt van Azure SQL Database
+title: Schema beheren in een app met één tenant
+description: Schema voor meerdere tenants beheren in een app met één tenant die gebruikmaakt van Azure SQL Database
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/19/2018
-ms.openlocfilehash: 60c2330578ef4b8e3e40dc3e37a0c8b1eb291e2f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 62e20a10e9709bc69a746a6f62e949c47c3a6d02
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255548"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91620151"
 ---
-# <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>Schema beheren in een SaaS-toepassing met behulp van het data base-per-Tenant patroon met Azure SQL Database
+# <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>Schema beheren in een SaaS-toepassing met behulp van het database-per-tenant-patroon met Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
  
-Wanneer een database toepassing wordt ontwikkeld, moeten de wijzigingen onvermijdelijk worden aangebracht in het database schema of de referentie gegevens.  Onderhouds taken voor de Data Base zijn ook regel matig nodig. Als u een toepassing wilt beheren die gebruikmaakt van de data base per Tenant patroon, moet u deze wijzigingen of onderhouds taken Toep assen op een vloot van Tenant databases.
+Naarmate een databasetoepassing evolueert, moeten er onvermijdelijk wijzigingen worden aangebracht in het databaseschema of de referentiegegevens.  Onderhoudstaken voor de database zijn ook regelmatig nodig. Als u een toepassing wilt beheren die gebruikmaakt van het database-per-tenant-patroon, moet u deze wijzigingen of onderhoudstaken toepassen op een fleet van tenantdatabases.
 
-In deze zelf studie wordt gerefereerd met twee scenario's: het implementeren van referentie gegevens updates voor alle tenants en het opnieuw samen stellen van een index voor de tabel die de referentie gegevens bevat. De functie [elastische taken](../../sql-database/elastic-jobs-overview.md) wordt gebruikt om deze acties uit te voeren op alle Tenant databases en op de sjabloon database die wordt gebruikt voor het maken van nieuwe Tenant databases.
+In deze zelfstudie worden twee scenario's beschreven: referentiegegevensupdates implementeren voor alle tenants en een opnieuw index bouwen van de tabel met de referentiegegevens. De functie [Elastische taken](../../sql-database/elastic-jobs-overview.md) wordt gebruikt om deze acties uit te voeren voor alle tenantdatabases, en voor de sjabloondatabase die gebruikt wordt om nieuwe tenantdatabases te maken.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
 > 
-> * Een taak agent maken
-> * T-SQL-taken worden uitgevoerd op alle Tenant databases
-> * Referentie gegevens bijwerken in alle Tenant databases
+> * Een taakagent maken
+> * Ervoor zorgen dat T-SQL-taken worden uitgevoerd op alle tenantdatabases
+> * Referentiegegevens in alle tenantdatabases bijwerken
 > * Een index in een tabel maken in alle tenantdatabases
 
 
 Voor het voltooien van deze zelfstudie moet u ervoor zorgen dat aan de volgende vereisten is voldaan:
 
-* De Wingtip tickets SaaS-data base per Tenant-app wordt geïmplementeerd. Zie [de SaaS-data base van Wingtip tickets implementeren en verkennen per Tenant toepassing](../../sql-database/saas-dbpertenant-get-started-deploy.md) om in minder dan vijf minuten te implementeren
+* De Wingtip Tickets SaaS Database Per Tenant-app wordt geïmplementeerd. Zie [De Wingtip Tickets-SaaS-database-per-tenant-toepassing implementeren en verkennen](../../sql-database/saas-dbpertenant-get-started-deploy.md) om in minder dan vijf minuten te implementeren
 * Azure PowerShell is geïnstalleerd. Zie [Aan de slag met Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps) voor meer informatie.
 * De laatste versie van SQL Server Management Studio (SSMS) moet zijn geïnstalleerd. [SSMS downloaden en installeren](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
 
 
-## <a name="introduction-to-saas-schema-management-patterns"></a>Inleiding tot SaaS-schema beheer patronen
+## <a name="introduction-to-saas-schema-management-patterns"></a>Kennismaking met patronen voor SaaS-schemabeheer
 
-Met de data base per Tenant patroon worden Tenant gegevens effectief geïsoleerd, maar wordt het aantal data bases dat moet worden beheerd en onderhouden, verhoogd. [Elastische taken](../../sql-database/elastic-jobs-overview.md) vereenvoudigt het beheer en het beheer van meerdere data bases. Met taken kunt u veilig en betrouwbaar taken (T-SQL-scripts) uitvoeren voor een groep data bases. Met taken kunnen schema's en algemene referentie gegevens wijzigingen worden geïmplementeerd in alle Tenant databases in een toepassing. Elastische taken kunnen ook worden gebruikt voor het onderhouden van een *sjabloon* database die wordt gebruikt voor het maken van nieuwe tenants, zodat deze altijd het meest recente schema en referentie gegevens heeft.
+Het database-per-tenant-patroon isoleert tenantgegevens effectief, maar verhoogt het aantal databases dat beheerd en onderhouden moet worden. [Elastische taken](../../sql-database/elastic-jobs-overview.md) vereenvoudigt het onderhoud en het beheer van meerdere databases. Met Elastische taken kunt u veilig en betrouwbaar taken uitvoeren (T-SQL-scripts) voor een groep databases. Taken kunnen wijzigingen in het schema en in de algemene referentiegegevens implementeren voor alle tenantdatabases in een toepassing. Elastische taken kan ook worden gebruikt om een *sjabloon* van de gebruikte database op te slaan voor het maken van nieuwe tenants. Op die manier beschikken deze altijd over het nieuwste schema en de meest recente referentiegegevens.
 
 ![scherm](./media/saas-tenancy-schema-management/schema-management-dpt.png)
 
 
-## <a name="elastic-jobs-public-preview"></a>Open bare preview van elastische taken
+## <a name="elastic-jobs-public-preview"></a>Openbare preview Elastische taken
 
-Er is een nieuwe versie van elastische taken die nu een geïntegreerde functie van Azure SQL Database zijn. Deze nieuwe versie van elastische taken is momenteel beschikbaar als open bare preview. Deze open bare preview ondersteunt momenteel het gebruik van Power shell om een taak agent te maken en T-SQL om taken te maken en te beheren.
-Zie het artikel over [Elastic database taken](https://docs.microsoft.com/azure/azure-sql/database/elastic-jobs-overview) voor meer informatie.
+Er is een nieuwe versie beschikbaar van Elastische taken; dit is nu een ingebouwde functie in Azure SQL Database. Van deze nieuwe versie van Elastische taken is momenteel een openbare preview beschikbaar. Deze openbare preview biedt ondersteuning voor PowerShell voor het maken van een taakagent en voor T-SQL voor het maken en beheren van taken.
+Raadpleeg het artikel over [Elastic Database-taken](https://docs.microsoft.com/azure/azure-sql/database/elastic-jobs-overview) voor meer informatie.
 
-## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>De Wingtip tickets SaaS-data base ophalen per Tenant toepassings scripts
+## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>De Wingtip Tickets-SaaS-database-per-tenant-toepassingsscripts ophalen
 
-De bron code-en beheer scripts van de toepassing zijn beschikbaar in de [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) github opslag plaats. Bekijk de [algemene richt lijnen](saas-tenancy-wingtip-app-guidance-tips.md) voor de stappen voor het downloaden en blok keren van de Wingtip tickets SaaS-scripts.
+De broncode en beheerscripts van de app zijn beschikbaar in de GitHub-opslagplaats [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant). Bekijk de [algemene richtlijnen](saas-tenancy-wingtip-app-guidance-tips.md) voor stappen voor het downloaden en het deblokkeren van de Wingtip Tickets-SaaS-scripts.
 
-## <a name="create-a-job-agent-database-and-new-job-agent"></a>Een taak agent-data base en nieuwe taak agent maken
+## <a name="create-a-job-agent-database-and-new-job-agent"></a>Een taakagentdatabase en een nieuwe taakagent maken
 
-Voor deze zelf studie moet u Power shell gebruiken om een taak agent en de data base van de back-uptaak van de-agent te maken. De data base van de taak agent bevat taak definities, taak status en geschiedenis. Zodra de taak agent en de bijbehorende data base zijn gemaakt, kunt u taken direct maken en bewaken.
+In deze zelfstudie moet u PowerShell gebruiken om een taakagent en de achterliggende taakagentdatabase te maken. De taakagentdatabase bevat taakdefinities, de taakstatus en de geschiedenis. Wanneer de taakagent en de database zijn gemaakt, kunt u direct aan de slag met het maken en bewaken van taken.
 
-1. Open **in Power shell ISE**.. \\ .Demo-SchemaManagement.ps1voor het schema beheer van learning modules \\ \\ * *.
+1. Open **in PowerShell ISE** \\Learning Modules\\Schema Management\\*Demo-SchemaManagement.ps1*.
 1. Druk op **F5** om het script uit te voeren.
 
-Het *Demo-SchemaManagement.ps1* script roept het *Deploy-SchemaManagement.ps1* script aan om een Data Base met de naam *osagent* te maken op de catalogus server. Vervolgens wordt de taak agent gemaakt met behulp van de-Data Base als een para meter.
+Met het script *Demo-SchemaManagement.ps1* wordt het script *Deploy-SchemaManagement.ps1* aangeroepen om op de catalogusserver een database te maken met de naam *osagent*. Vervolgens wordt de taakagent gemaakt met behulp van de database als een parameter.
 
 ## <a name="create-a-job-to-deploy-new-reference-data-to-all-tenants"></a>Een taak maken om nieuwe referentiegegevens te implementeren voor alle tenants
 
-In de Wingtip tickets-app bevat elke Tenant database een set ondersteunde typen locaties. Elke locatie is van een specifiek type locatie, dat het soort gebeurtenissen definieert dat kan worden gehost, en bepaalt de achtergrond afbeelding die in de app wordt gebruikt. Deze referentie gegevens moeten worden bijgewerkt en nieuwe locatie typen worden toegevoegd, zodat de toepassing nieuwe soorten gebeurtenissen kan ondersteunen.  In deze oefening implementeert u een update voor alle tenantdatabases waarbij twee nieuwe locatietypen worden toegevoegd: *Motorcycle Racing* en *Swimming Club*.
+In de Wingtip tickets-app bevat elke tenantdatabase een set ondersteunde locatietypen. Elke locatie behoort tot een specifiek locatietype, dat bepaalt welke soorten gebeurtenissen er kunnen worden gehouden, en de achtergrondafbeelding gebruikt in de app. Deze referentiegegevens moeten worden bijgewerkt en nieuwe locatietypen worden toegevoegd zodat de toepassing nieuwe soorten gebeurtenissen kan ondersteunen.  In deze oefening implementeert u een update voor alle tenantdatabases waarbij twee nieuwe locatietypen worden toegevoegd: *Motorcycle Racing* en *Swimming Club*.
 
-Controleer eerst de locatie typen die zijn opgenomen in elke Tenant database. Verbinding maken met een van de Tenant-data bases in SQL Server Management Studio (SSMS) en de VenueTypes-tabel controleren.  U kunt ook een query uitvoeren op deze tabel in de query-editor in het Azure Portal, toegankelijk via de pagina Data Base. 
+Controleer eerst de locatietypen die zijn opgenomen in elke tenantdatabase. Maak verbinding met een van de tenantdatabases in SQL Server Management Studio (SSMS) en inspecteer de tabel VenueTypes.  U kunt ook een query uitvoeren op deze tabel in de Query-editor in het Azure-portaal, toegankelijk vanaf de databasepagina. 
 
-1. Open SSMS en maak verbinding met de Tenant server: *tenants1-dpt- &lt; user &gt; . database.Windows.net*
-1. Als u wilt controleren of de motor met de *race* en de *zwem Club* op dit moment **niet is** opgenomen, bladert u naar de _contosoconcerthall_ -Data Base op de *tenants1-dpt- &lt; gebruikers &gt; * server en zoekt u de tabel *VenueTypes* .
+1. Open SSMS en maak verbinding met de tenantserver: *tenants1-dpt-&lt;user&gt;.database.windows.net*
+1. Om te bevestigen dat *Motorcycle Racing* en *Swimming Club* **momenteel niet** zijn opgenomen, gaat u naar de database _contosoconcerthall_ op de server *tenants1-dpt-&lt;user&gt;* en voert u een query uit op de tabel *VenueTypes*.
 
-Nu gaan we een taak maken om de *VenueTypes* -tabel in alle Tenant databases bij te werken om de nieuwe typen locaties toe te voegen.
+U gaat nu een taak maken om de tabel *VenueTypes* in alle tenantdatabases bij te werken om de nieuwe locatietypen toe te voegen.
 
-Als u een nieuwe taak wilt maken, gebruikt u een set taken opgeslagen systeem procedures die in de _jobagent_ -Data Base zijn gemaakt toen de taak agent werd gemaakt.
+Voor het maken van een nieuwe taak gebruikt u een reeks in het systeem opgeslagen procedures uit de _taakagent_-database die is gemaakt tijdens het maken van het taakagent.
 
-1. Maak in SSMS verbinding met de catalogus server: *Catalog-dpt- &lt; user &gt; . database.Windows.net-* server 
-1. Open het bestand in SSMS... \\ Learning modules \\ schema beheer \\ DeployReferenceData. SQL
-1. Wijzig de instructie: SET @wtpUser = &lt; User &gt; en substitueer de gebruikers waarde die wordt gebruikt bij het implementeren van de SaaS-data base van de Wingtip tickets per Tenant-app
-1. Zorg ervoor dat u bent verbonden met de _jobagent_ -data base en druk op **F5** om het script uit te voeren
+1. Maak in SSMS verbinding met de catalogusserver: server *catalog-dpt-&lt;user&gt;.database.windows.net* 
+1. Open in SSMS het bestand …\\Learning Modules\\Schema Management\\DeployReferenceData.sql
+1. Wijzig de instructie: STEL @wtpUser = &lt;user&gt; in en vervang de Gebruikerswaarde die u hebt gebruikt bij het implementeren van de Wingtip Tickets-SaaS-database-per-tenant-app
+1. Zorg dat u verbinding hebt met de _jobagent_-database en druk op **F5** om het script uit te voeren
 
-Bekijk de volgende elementen in het script *DeployReferenceData. SQL* :
-* **SP \_ add- \_ doel \_ groep** maakt de naam van de doel groep DemoServerGroup.
-* **SP \_ toevoegen \_ doel \_ groepslid \_ ** wordt gebruikt voor het definiëren van de set doel databases.  Eerst wordt de _tenants1-dpt &lt; - &gt; gebruikers_ server toegevoegd.  Als u de server als doel toevoegt, worden de data bases op die server op het moment van de taak uitvoering in de taak opgenomen. Vervolgens worden de _basetenantdb_ -data base en de *adhocreporting* -data base (gebruikt in een latere zelf studie) als doelen toegevoegd.
-* met **SP \_ add \_ Job** maakt u een taak met de naam _referentie gegevens implementatie_.
-* **SP \_ add \_ jobstep** maakt de taak stap die de T-SQL-opdracht tekst bevat voor het bijwerken van de referentie tabel, VenueTypes.
-* De resterende weergaven in het script tonen het bestaan van de objecten en controleren de taakuitvoering. Gebruik deze query's om de status waarde in de kolom **levens duur** te controleren om te bepalen wanneer de taak is voltooid voor alle doel databases.
+Bekijk de volgende elementen in het script *DeployReferenceData.sql*:
+* Met **sp\_add\_target\_group** maakt u de doelgroepnaam DemoServerGroup.
+* **sp\_add\_target\_group\_member** wordt gebruikt om de set doeldatabases te definiëren.  Eerst wordt de server _tenants1-dpt-&lt;user&gt;_ toegevoegd.  De server toevoegen als een doel zorgt ervoor de databases op die server op de moment van de taakuitvoering worden opgenomen in de taak. Vervolgens worden de database _basetenantdb_ en de database *adhocreporting* (gebruikt in een latere zelfstudie) als doelen toegevoegd.
+* Met **sp\_add\_job** maakt u een taak die ook wel _Implementatie van referentiegegevens_ heet.
+* Met **sp\_add\_jobstep** maakt u de taakstap met de T-SQL-opdracht om de referentietabel VenueTypes bij te werken.
+* De resterende weergaven in het script tonen het bestaan van de objecten en controleren de taakuitvoering. Gebruik deze query's om de statuswaarde in de kolom **levenscyclus** te controleren om te bepalen wanneer de taak is voltooid voor alle doeldatabases.
 
-Nadat het script is voltooid, kunt u controleren of de referentie gegevens zijn bijgewerkt.  Blader in SSMS naar de *contosoconcerthall* -Data Base op de *tenants1-dpt &lt; - &gt; gebruikers* server en zoek de tabel *VenueTypes* op.  Controleer of de race en *zwem Club* van *motor rijwiel* nu aanwezig **zijn** .
+Zodra het script is voltooid, kunt u controleren of de referentiegegevens zijn bijgewerkt.  Ga in SSMS naar de database *contosoconcerthall* op de server *tenants1-dpt-&lt;user&gt;* en voer een query uit op de tabel *VenueTypes*.  Controleer of *Motorcycle Racing* en *Swimming Club* nu aanwezig **zijn**.
 
 
 ## <a name="create-a-job-to-manage-the-reference-table-index"></a>Een taak maken voor het beheren van de referentietabelindex
 
-In deze oefening wordt een taak gebruikt voor het opnieuw samen stellen van de index op de primaire sleutel van de verwijzings tabel.  Dit is een normale onderhouds bewerking voor de data base die kan worden uitgevoerd na het laden van grote hoeveel heden gegevens.
+In deze oefening wordt een taak gebruikt om de index opnieuw samen te stellen op de primaire sleutel van de referentietabel.  Dit is een typische bewerking voor het onderhoud van een database, die kan plaatsvinden nadat grote hoeveelheden gegevens geladen zijn.
 
 Maak een taak met dezelfde in het systeem opgeslagen procedures.
 
-1. Open SSMS en maak verbinding met de _catalogus-dpt- &lt; user &gt; . database.Windows.net-_ server
-1. Het bestand openen _... \\ Learning modules \\ schema beheer \\ OnlineReindex. SQL_
-1. Klik met de rechter muisknop, Selecteer verbinding en maak verbinding met de _catalogus-dpt- &lt; user &gt; . database.Windows.net-_ server, als deze nog niet is verbonden
-1. Zorg ervoor dat u bent verbonden met de _jobagent_ -data base en druk op **F5** om het script uit te voeren
+1. Open SSMS en maak verbinding met de server _catalog-dpt-&lt;user&gt;.database.windows.net_
+1. Open het bestand _...\\Learning Modules\\Schema Management\\OnlineReindex.sql_
+1. Klik met de rechtermuisknop, selecteer Verbinding en maak verbinding met de server _catalog-&lt;user&gt;.database.windows.net_, als deze verbinding nog niet is gemaakt
+1. Zorg dat u verbinding hebt met de _jobagent_-database en druk op **F5** om het script uit te voeren
 
-Bekijk de volgende elementen in het script _OnlineReindex. SQL_ :
-* met de ** \_ \_ opdracht SP add** wordt een nieuwe taak gemaakt met de naam ' online REINDEX PK \_ \_ VenueTyp \_ \_ 265E44FD7FD4C885 '
-* **SP \_ add \_ jobstep** maakt de taak stap die de T-SQL-opdracht tekst bevat om de index bij te werken
-* De resterende weer gaven van de script controle taak worden uitgevoerd. Gebruik deze query's om de status waarde in de kolom **levens cyclus** te controleren om te bepalen wanneer de taak is voltooid voor alle leden van de doel groep.
+Bekijk de volgende elementen in het script _OnlineReindex.sql_:
+* Met **sp\_addjob\_job** maakt u een nieuwe taak met de naam 'Online Reindex PK\_\_VenueTyp\_\_265E44FD7FD4C885'
+* Met **sp\_add\_jobstep** maakt u de taakstap met de T-SQL-opdracht om de index bij te werken
+* De resterende weergaven van de script controleren taakuitvoering. Gebruik deze query's om de statuswaarde in de kolom **levenscyclus** te controleren om te bepalen wanneer de taak is voltooid voor alle groepsleden.
 
 
 
@@ -119,14 +119,14 @@ In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > 
-> * Een taak agent maken voor het uitvoeren van meerdere data bases in T-SQL-taken
-> * Referentie gegevens bijwerken in alle Tenant databases
+> * Een taakagent maken om uit te voeren op T-SQL-taken op meerdere databases
+> * Referentiegegevens in alle tenantdatabases bijwerken
 > * Een index in een tabel maken in alle tenantdatabases
 
-Probeer vervolgens de [zelf studie ad hoc Reporting](../../sql-database/saas-tenancy-cross-tenant-reporting.md) uit te voeren om gedistribueerde query's te verkennen in Tenant databases.
+Probeer vervolgens de [zelfstudie Ad-hoc](../../sql-database/saas-tenancy-cross-tenant-reporting.md) uit om te ontdekken hoe u gedistribueerde query's kunt uitvoeren op tenantdatabases.
 
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-* [Aanvullende zelf studies die voortbouwen op de Wingtip tickets SaaS data base per Tenant toepassings implementatie](../../sql-database/saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
+* [Aanvullende zelfstudies over de Wingtip Tickets SaaS Database Per Tenant-toepassingsimplementatie](../../sql-database/saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Uitgeschaalde clouddatabases beheren](../../sql-database/elastic-jobs-overview.md)

@@ -8,10 +8,10 @@ ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 515cfd5267917f88131571adcb1bea0db274157c
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89437935"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Azure-beveiligings basislijn voor Azure Data Factory
@@ -30,7 +30,7 @@ Zie het [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/a
 
 **Richt lijnen**: wanneer u een Azure-SSIS Integration runtime (IR) maakt, hebt u de mogelijkheid om deze te koppelen aan een virtueel netwerk. Hiermee kunnen Azure Data Factory bepaalde netwerk bronnen maken, zoals een netwerk beveiligings groep (NSG) en een load balancer. U hebt ook de mogelijkheid om uw eigen statische open bare IP-adres op te geven of Azure Data Factory een voor u te maken. Op het NSG dat automatisch wordt gemaakt door Azure Data Factory, is poort 3389 standaard geopend voor al het verkeer. Vergrendel dit om ervoor te zorgen dat alleen uw beheerders toegang hebben.
 
-Een zelf-Hostende IRs kan worden geïmplementeerd op een on-premises machine of virtuele Azure-machine in een virtueel netwerk. Zorg ervoor dat in de implementatie van het subnet van het virtuele netwerk een NSG is geconfigureerd om alleen beheerders toegang toe te staan. Azure-SSIS IR heeft poort 3389 standaard niet toegestaan op de Windows Firewall-regel op elk IR-knoop punt voor beveiliging. U kunt uw door het virtuele netwerk geconfigureerde bronnen beveiligen door een NSG aan het subnet te koppelen en strikte regels in te stellen.
+Self-Hosted IRs kan worden geïmplementeerd op een on-premises machine of virtuele Azure-machine in een virtueel netwerk. Zorg ervoor dat in de implementatie van het subnet van het virtuele netwerk een NSG is geconfigureerd om alleen beheerders toegang toe te staan. Azure-SSIS IR heeft poort 3389 standaard niet toegestaan op de Windows Firewall-regel op elk IR-knoop punt voor beveiliging. U kunt uw door het virtuele netwerk geconfigureerde bronnen beveiligen door een NSG aan het subnet te koppelen en strikte regels in te stellen.
 
 Als privé-koppeling beschikbaar is, gebruikt u privé-eind punten om alle resources te beveiligen die worden gekoppeld aan uw Azure Data Factory pijp lijn, zoals Azure SQL Server. Met een persoonlijke koppeling wordt verkeer tussen uw virtuele netwerk en de service over het micro soft-backbone-netwerk gepasseerd, waardoor de bloot stelling van het open bare Internet wordt geëlimineerd.
 
@@ -542,7 +542,7 @@ Gebruik de functie voor gegevens detectie en-classificatie van Azure SQL Databas
 
 **Richt lijnen**: afzonderlijke abonnementen en/of beheer groepen implementeren voor ontwikkeling, testen en productie. Integration Runtimes moeten worden gescheiden door de/subnet van het virtuele netwerk (VNet) en worden gelabeld.
 
- U kunt ook privé-eind punten gebruiken om netwerk isolatie uit te voeren. Een privé-eindpunt in Azure is een netwerkinterface waarmee u privé en veilig verbinding maakt met een service die door Azure Private Link mogelijk wordt gemaakt. Privé-eind punt gebruikt een privé-IP-adres uit uw VNet, waardoor de service effectief in uw VNet wordt gezet.
+ U kunt ook privé-eind punten gebruiken om netwerk isolatie uit te voeren. Een privé-eindpunt in Azure is een netwerkinterface waarmee u privé en veilig verbinding maakt met een service die door Azure Private Link mogelijk wordt gemaakt. Private Endpoint maakt gebruik van een privé-IP-adres van uw VNet, waarbij de service effectief in uw VNet wordt geplaatst.
 
 * [Aanvullende Azure-abonnementen maken](https://docs.microsoft.com/azure/billing/billing-create-subscription)
 
@@ -1172,7 +1172,7 @@ Raadpleeg de beveiligings basislijn van de service voor informatie over het vali
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: zorg voor de bescherming van back-ups en door de klant beheerde sleutels
 
-**Richt lijnen**: als u uw Integration runtime uitvoert op een virtuele Azure-machine (VM) en u een back-up hebt gemaakt van de vm met Azure backup, wordt uw virtuele machine in rust versleuteld met Storage service Encryption (SSE). Azure Backup kunt ook een back-up maken van virtuele Azure-machines die zijn versleuteld met behulp van Azure Disk Encryption. Azure Disk Encryption kan worden geïntegreerd met BitLocker-versleutelings sleutels (BEKs), die worden beveiligd in een sleutel kluis als geheimen. Azure Disk Encryption is ook geïntegreerd met Azure Key Vault Key Encryption Keys (KEKs). Schakel zacht verwijderen in Key Vault in om sleutels te beschermen tegen onbedoelde of schadelijke verwijdering.
+**Richt lijnen**: als u uw Integration runtime uitvoert op een virtuele Azure-machine (VM) en u een back-up hebt gemaakt van de vm met Azure backup, wordt uw virtuele machine in rust versleuteld met Storage service Encryption (SSE). Azure Backup kunt ook een back-up maken van virtuele Azure-machines die zijn versleuteld met behulp van Azure Disk Encryption. Azure Disk Encryption kan worden geïntegreerd met BitLocker-versleutelings sleutels (BEKs), die worden beveiligd in een sleutel kluis als geheimen. Azure Disk Encryption is ook geïntegreerd met Azure Key Vault Key Encryption Keys (KEKs). Schakel Soft-Delete in Key Vault in om sleutels te beschermen tegen onbedoelde of schadelijke verwijdering.
 
 * [Voorlopig verwijderen voor Vm's](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#soft-delete)
 

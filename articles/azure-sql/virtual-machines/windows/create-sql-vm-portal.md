@@ -15,10 +15,10 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: a7cd15bab0b26a13f9ffb818aa29e8e262c0bd06
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91332913"
 ---
 # <a name="how-to-use-the-azure-portal-to-provision-a-windows-virtual-machine-with-sql-server"></a>De Azure Portal gebruiken om een virtuele Windows-machine in te richten met SQL Server
@@ -42,7 +42,7 @@ Wanneer u een SQL Server virtuele machine maakt, kunt u een van de verschillende
 
    U kunt ook het sterretje naast **Azure SQL** selecteren om het als favoriet op te slaan en dit als een item toe te voegen aan de linkernavigatiebalk. 
 
-1. Selecteer **+ toevoegen** om de **optie pagina SQL-implementatie selecteren** te openen. U kunt aanvullende informatie weer geven door **Details weer geven**te selecteren. 
+1. Selecteer **+ Toevoegen** om de pagina **SQL-implementatieoptie selecteren** te openen. U kunt aanvullende informatie weer geven door **Details weer geven**te selecteren. 
 1. Typ *2017* in het zoekvak voor de SQL Server-installatie kopie op de tegel **virtuele SQL-machines** en selecteer vervolgens **gratis SQL Server licentie: SQL Server 2017-ontwikkelaar op Windows Server 2016** in de vervolg keuzelijst. 
 
    ![SQL VM-installatie kopie selecteren](./media/create-sql-vm-portal/select-sql-vm-image-portal.png)

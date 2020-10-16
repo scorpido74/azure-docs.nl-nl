@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18
 ms.openlocfilehash: 49a763af8d936ec9fd15c59c908ba9015f803930
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91568635"
 ---
 # <a name="azure-time-series-insights-gen1-explorer"></a>Azure Time Series Insights gen1 Explorer
 
 > [!CAUTION]
-> Dit is een gen1-artikel.
+> Dit is een Gen1-artikel.
 
 In dit artikel worden de functies en opties beschreven voor de [Web-app](https://insights.timeseries.azure.com/)Azure time series Insights gen1 Explorer. De Azure Time Series Insights Explorer demonstreert de krachtige functies voor gegevens visualisatie die door de service worden geboden en kunnen worden geopend in uw eigen omgeving.
 
@@ -115,7 +115,7 @@ Binnen enkele minuten nadat u uw gebeurtenis bron hebt verbonden met uw Azure Ti
 
 1. Wanneer u gebeurtenissen bekijkt door te selecteren of met de rechter muisknop te klikken, wordt het deel venster **gebeurtenissen** beschikbaar gesteld. Hier kunt u al uw onbewerkte gebeurtenissen controleren en uw gebeurtenissen exporteren als JSON-of CSV-bestanden. Azure Time Series Insights worden alle onbewerkte gegevens opgeslagen.
 
-    [![Gebeurtenissen](media/time-series-insights-explorer/tsi-ga-explorer-events-panel.png)](media/time-series-insights-explorer/tsi-ga-explorer-events-panel.png#lightbox)
+    [![Evenementen](media/time-series-insights-explorer/tsi-ga-explorer-events-panel.png)](media/time-series-insights-explorer/tsi-ga-explorer-events-panel.png#lightbox)
 
 1. Selecteer het tabblad **Statistieken** nadat u gebeurtenissen hebt bekeken om patronen en kolom statistieken weer te geven.
 

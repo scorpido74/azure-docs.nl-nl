@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/16/2020
+ms.date: 10/14/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 30e8bd7fda08795ecc1aa78b0d2507e7c915ad0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f2fa6cffd63811df596c8fca80afdc888a0eea9
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87087251"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091607"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Azure Storage-verbindingsreeksen configureren
 
@@ -110,9 +110,10 @@ De eind punt waarden in een connection string worden gebruikt voor het maken van
 
 Als u een opslag eindpunt hebt toegewezen aan een aangepast domein en dat eind punt weglaat van een connection string, kunt u die connection string niet gebruiken voor toegang tot gegevens in die service vanuit uw code.
 
+Zie [een aangepast domein toewijzen aan een Azure Blob Storage-eind punt](../blobs/storage-custom-domain-name.md)voor meer informatie over het configureren van een aangepast domein voor Azure Storage.
+
 > [!IMPORTANT]
-> De waarden van de service-eind punten in de verbindings reeksen moeten een juist opgemaakte Uri's zijn, waaronder `https://` (aanbevolen) of `http://` . Omdat Azure Storage geen HTTPS ondersteunt voor aangepaste domeinen, *moet* u opgeven `http://` voor elke eind punt-URI die verwijst naar een aangepast domein.
->
+> De waarden van de service-eind punten in de verbindings reeksen moeten een juist opgemaakte Uri's zijn, waaronder `https://` (aanbevolen) of `http://` .
 
 ### <a name="create-a-connection-string-with-an-endpoint-suffix"></a>Een connection string met een eind punt achtervoegsel maken
 

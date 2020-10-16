@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 08/28/2020
 ms.openlocfilehash: eb6029b206e7d47789371ee81e75c4e05c69ee65
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89084529"
 ---
 # <a name="move-azure-event-grid-system-topics-to-another-region"></a>Azure Event Grid systeem onderwerpen verplaatsen naar een andere regio
@@ -35,22 +35,7 @@ Als u aan de slag wilt gaan, exporteert u een resource manager-sjabloon voor de 
     :::image type="content" source="./media/move-system-topics-across-regions/resource-group-page.png" alt-text="Pagina resource groep":::        
 3. Selecteer in het menu links **sjabloon exporteren** onder **instellingen**en selecteer vervolgens **downloaden** op de werk balk. 
 
-    :::image type="content" source="./media/move-system-topics-across-regions/export-template-menu.png" alt-text="Storage-account-pagina sjabloon exporteren":::        
-5. Zoek het **zip** -bestand dat u hebt gedownload van de portal en pak het bestand uit naar een map van uw keuze. Dit zip-bestand bevat JSON-bestanden met de sjabloon en de para meters. 
-1. Open de **template.jsop** in een editor van uw keuze. 
-1. De URL voor de webhook wordt niet geëxporteerd naar de sjabloon. Voer daarom de volgende stappen uit:
-    1. Zoek in het sjabloon bestand naar **webhook**. 
-    1. Voeg in de sectie **Eigenschappen** een komma ( `,` ) toe aan het einde van de laatste regel. In dit voor beeld is dat `"preferredBatchSizeInKilobytes": 64` . 
-    1. Voeg de `endpointUrl` eigenschap toe met de waarde die is ingesteld op uw webhook-URL, zoals wordt weer gegeven in het volgende voor beeld. 
-
-        ```json
-        "destination": {
-            "properties": {
-                "maxEventsPerBatch": 1,
-                "preferredBatchSizeInKilobytes": 64,
-                "endpointUrl": "https://mysite.azurewebsites.net/api/updates"
-            },
-            "endpointType": "WebHook"
+    :::image type="content" source="./media/move-system-topics-across-regions/export-template-menu.png" alt-text="Pagina resource groep"
         }
         ```
 
@@ -91,7 +76,7 @@ Implementeer de sjabloon voor het maken van een opslag account en een systeem on
     1. Voer voor de naam van het **systeem onderwerp**een naam in voor het onderwerp System dat wordt gekoppeld aan het opslag account.  
     1. Voer voor de naam van het **opslag account**een naam in voor het opslag account dat moet worden gemaakt in de doel regio. 
 
-        :::image type="content" source="./media/move-system-topics-across-regions/deploy-template.png" alt-text="Resource Manager-sjabloon implementeren":::
+        :::image type="content" source="./media/move-system-topics-across-regions/deploy-template.png" alt-text="Pagina resource groep":::
     5. Selecteer **Controleren en maken** onderaan de pagina. 
     1. Controleer op de pagina **controleren en maken** de instellingen en selecteer **maken**. 
 
@@ -110,7 +95,7 @@ Een resource groep (bron of doel) verwijderen met behulp van de Azure Portal:
 1. In het zoek venster aan de bovenkant van Azure Portal, typt u **resource groepen**en selecteert u **resource groepen** uit Zoek resultaten. 
 2. Selecteer de resource groep die u wilt verwijderen en selecteer **verwijderen** op de werk balk. 
 
-    :::image type="content" source="./media/move-system-topics-across-regions/delete-resource-group-button.png" alt-text="Resourcegroep verwijderen":::
+    Resourcegroep verwijderen
 3. Voer op de pagina Bevestiging de naam van de resource groep in en selecteer **verwijderen**.  
 
 ## <a name="next-steps"></a>Volgende stappen

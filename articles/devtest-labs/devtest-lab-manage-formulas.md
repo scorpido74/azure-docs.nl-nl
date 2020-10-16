@@ -4,10 +4,10 @@ description: In dit artikel wordt beschreven hoe u een formule maakt vanuit een 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: f012a8c59a8e938334c3e1abc4c7b3ccd0e48d3e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91308891"
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>Azure DevTest Labs formules beheren
@@ -27,7 +27,7 @@ Zie [eigen aren en gebruikers toevoegen in azure DevTest Labs](./devtest-lab-add
 ### <a name="create-a-formula-from-a-base"></a>Een formule maken van een basis
 De volgende stappen leiden u door het proces van het maken van een formule op basis van een aangepaste installatie kopie, een Marketplace-installatie kopie of een andere formule.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 2. Selecteer **alle services**en selecteer vervolgens **DevTest Labs** in de lijst.
 
@@ -76,7 +76,7 @@ De volgende stappen leiden u door het proces van het maken van een formule op ba
 > 
 > 
 
-1. Meld u aan bij de [Azure-portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Meld u aan bij [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 2. Selecteer **alle services**en selecteer vervolgens **DevTest Labs** in de lijst.
 3. Selecteer in de lijst met Labs het gewenste Lab.  
 4. Op de **overzichts** pagina van het lab selecteert u de virtuele machine waarvan u de formule wilt maken.
@@ -93,7 +93,7 @@ De volgende stappen leiden u door het proces van het maken van een formule op ba
 ## <a name="modify-a-formula"></a>Een formule wijzigen
 Voer de volgende stappen uit om een formule te wijzigen:
 
-1. Meld u aan bij de [Azure-portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Meld u aan bij [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 2. Selecteer **alle services**en selecteer vervolgens **DevTest Labs** in de lijst.
 3. Selecteer in de lijst met Labs het gewenste Lab.  
 4. Selecteer op de pagina Lab de optie **formules (herbruikbare bases)**.
@@ -105,7 +105,7 @@ Voer de volgende stappen uit om een formule te wijzigen:
 ## <a name="delete-a-formula"></a>Een formule verwijderen
 Voer de volgende stappen uit om een formule te verwijderen:
 
-1. Meld u aan bij de [Azure-portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Meld u aan bij [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 2. Selecteer **alle services**en selecteer vervolgens **DevTest Labs** in de lijst.
 3. Selecteer in de lijst met Labs het gewenste Lab.  
 4. Selecteer op de pagina Lab- **instellingen** de optie **formules**.

@@ -15,10 +15,10 @@ ms.date: 06/02/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: ce3261eca8697ae1fabc07785353a4e845dadeba
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317001"
 ---
 # <a name="configure-a-distributed-network-name-for-an-fci"></a>Een gedistribueerde netwerk naam voor een FCI configureren 
@@ -119,7 +119,7 @@ Voer de volgende stappen uit om mogelijke eigen aars bij te werken:
    :::image type="content" source="media/hadr-distributed-network-name-dnn-configure/fci-dnn-properties.png" alt-text="Snelmenu voor de DNN-resource met de opdracht eigenschappen gemarkeerd.":::
 1. Schakel het selectie vakje uit voor knoop punten die geen deel uitmaken van het failover-cluster exemplaar. De lijst met mogelijke eigen aars voor de DNN-resource moet overeenkomen met de lijst met mogelijke eigen aars voor de SQL Server-exemplaar bron. Als er bijvoorbeeld wordt aangenomen dat DATA3 geen deel uitmaakt van de FCI, is de volgende afbeelding een voor beeld van het verwijderen van DATA3 uit de lijst met mogelijke eigen aars voor de DNN-resource: 
 
-   :::image type="content" source="media/hadr-distributed-network-name-dnn-configure/clear-check-for-nodes-not-in-fci.png" alt-text="Schakel het selectie vakje uit naast de knoop punten die geen deel uitmaken van de FCI voor mogelijke eigen aren van de DNN-resource":::
+   :::image type="content" source="media/hadr-distributed-network-name-dnn-configure/clear-check-for-nodes-not-in-fci.png" alt-text="Snelmenu voor de DNN-resource met de opdracht eigenschappen gemarkeerd.":::
 
 1. Selecteer **OK** om uw wijzigingen op te slaan. 
 
@@ -145,7 +145,7 @@ Testfailover van de geclusterde bron om de cluster functionaliteit te valideren.
 Voer de volgende stappen uit om de failover te testen: 
 
 1. Maak verbinding met een van de SQL Server cluster knooppunten met behulp van RDP.
-1. Open **Failoverclusterbeheer**. Selecteer **rollen**. U ziet welk knoop punt eigenaar is van de SQL Server rol FCI.
+1. Open **Failoverclusterbeheer**. Selecteer **Rollen**. U ziet welk knoop punt eigenaar is van de SQL Server rol FCI.
 1. Klik met de rechter muisknop op de SQL Server FCI rol. 
 1. Selecteer **verplaatsen**en selecteer vervolgens **best mogelijke knoop punt**.
 

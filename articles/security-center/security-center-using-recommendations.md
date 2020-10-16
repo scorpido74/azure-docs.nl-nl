@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
 ms.openlocfilehash: 4c6b8b0bfa78dca5ca32c8c72edcc463ebb9057a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91322135"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Azure Security Center-aanbevelingen gebruiken om de beveiliging te verbeteren
@@ -70,7 +70,7 @@ Jeff gaat door met de aanbevelingen met hoge prioriteit en normale prioriteit en
 
 ### <a name="enforce-recommendations-to-prevent-security-misconfigurations"></a>Aanbevelingen afdwingen om onjuiste configuraties van beveiliging te voor komen
 
-Om ervoor te zorgen dat gebruikers geen resources maken die een negatieve invloed hebben op de Score van Jeff, configureren ze de opties afdwingen en weigeren voor de aanbevelingen die het belangrijkst voor hen zijn. Meer informatie over het [voor komen van onjuiste configuraties met het afdwingen/weigeren van aanbevelingen](prevent-misconfigurations.md).
+Om ervoor te zorgen dat gebruikers geen resources maken die een negatieve invloed hebben op de Score van Jeff, configureren ze de opties afdwingen en weigeren voor de aanbevelingen die het belangrijkst voor hen zijn. Meer informatie vindt u in [Onjuiste configuraties voorkomen met de aanbevelingen voor afdwingen/weigeren](prevent-misconfigurations.md).
 
 
 ## <a name="conclusion"></a>Conclusie

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 98740153def94742a8bbba1ee6f4f022b614ecfa
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 12c0647e0244464966c52bafe8c976eb4a35ddda
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88537104"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741207"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-benselect"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met BenSelect
 
@@ -89,15 +89,15 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 1. In de BenSelect-toepassing worden de SAML-asserties in een specifieke indeling verwacht. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van uw SAML-tokenkenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
 
-    ![image](common/edit-attribute.png)
+    ![Schermopname van Gebruikerskenmerken met standaardwaarden zoals givenname user.givenname en emailaddress user.mail.](common/edit-attribute.png)
 
 1. Klik op het pictogram **Bewerken** om de **waarde van de naam-id** te bewerken.
 
-    ![image](media/benselect-tutorial/mail-prefix1.png)
+    ![Schermopname met het dialoogvenster Gebruikerskenmerken en claims, waarin het pictogram Bewerken is gemarkeerd.](media/benselect-tutorial/mail-prefix1.png)
 
 1. Voer in de sectie **Gebruikersclaims beheren** de volgende stappen uit:
 
-    ![image](media/benselect-tutorial/mail-prefix2.png)
+    ![Schermopname met het dialoogvenster Gebruikersclaims beheren, waarin u de waarden kunt invoeren die worden beschreven in deze stap.](media/benselect-tutorial/mail-prefix2.png)
 
     a. Selecteer **Transformatie** als **bron**.
 

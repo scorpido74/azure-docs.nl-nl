@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.openlocfilehash: 13ba529dd3067ae16167f0d9c14c8f72b982f52c
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88010839"
 ---
 # <a name="azure-cache-for-redis-planning-faqs"></a>Veelgestelde vragen over Azure cache voor redis planning
@@ -55,7 +55,7 @@ In deze tabel kunnen we de volgende conclusies tekenen:
 | P2 |  13 GB |  4 | 3.000/375   | 350.000 | 341.000 |
 | P3 |  26 GB |  4 | 3.000/375   | 350.000 | 341.000 |
 | P4 |  53 GB |  8 | 6.000/750   | 400,000 | 373.000 |
-| B5 | 120 GB | 20 | 6.000/750   | 400,000 | 373.000 |
+| P5 | 120 GB | 20 | 6.000/750   | 400,000 | 373.000 |
 
 Voor instructies over het instellen van stunnel of het downloaden van de redis-hulpprogram ma's zoals `redis-benchmark.exe` , Zie [Hoe kan ik redis-opdrachten uitvoeren?](cache-development-faq.md#how-can-i-run-redis-commands).
 

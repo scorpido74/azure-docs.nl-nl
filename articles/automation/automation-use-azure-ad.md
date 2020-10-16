@@ -5,10 +5,10 @@ services: automation
 ms.date: 03/30/2020
 ms.topic: conceptual
 ms.openlocfilehash: bbd1f977b548c2b8e7980709ea125c07e22b1fa2
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91400669"
 ---
 # <a name="use-azure-ad-to-authenticate-to-azure"></a>Azure AD gebruiken voor verificatie bij Azure
@@ -32,7 +32,7 @@ Voordat u de Azure AD-modules op uw computer installeert:
 
 * Verwijder alle vorige versies van de AzureRM/AZ-module en de MSOnline-module. 
 
-* Verwijder de micro soft Online Services-aanmeld hulp om te zorgen voor een juiste werking van de nieuwe Power shell-modules.  
+* Verwijder de micro soft Online Services Sign-In-assistent om te zorgen voor een juiste werking van de nieuwe Power shell-modules.  
 
 ### <a name="install-the-azurerm-and-az-modules"></a>De AzureRM-en AZ-modules installeren
 

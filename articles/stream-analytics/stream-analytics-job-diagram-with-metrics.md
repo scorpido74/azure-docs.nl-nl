@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/01/2017
 ms.openlocfilehash: fdb3c5c12af8e9022f5babc84126badda890dce5
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86044478"
 ---
 # <a name="data-driven-debugging-by-using-the-job-diagram"></a>Gegevensgestuurde foutopsporing met behulp van het taakdiagram
@@ -75,7 +75,7 @@ Als de voor gaande query stap een invoer processor is, gebruikt u de metrische g
  
 ### <a name="are-we-falling-behind-in-reading-data"></a>Vallen we achter in het lezen van gegevens?
 
-*   In de achterstand van de **invoer (totaal)** wordt uitgelegd hoe veel meer berichten moeten worden gelezen voor Event hubs en Azure IOT hub-invoer. Wanneer dit aantal groter is dan 0, betekent dit dat uw taak de gegevens niet kan verwerken wanneer deze zich in bevindt. In dat geval moet u mogelijk het aantal streaming-eenheden verhogen en/of ervoor zorgen dat uw taak kan worden geparallelleerd. Op de [pagina query parallel Lise ring](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization)vindt u meer informatie. 
+*   In de achterstand van de **invoer (totaal)** wordt uitgelegd hoe veel meer berichten moeten worden gelezen voor Event hubs en Azure IOT hub-invoer. Wanneer dit aantal groter is dan 0, betekent dit dat uw taak de gegevens niet kan verwerken wanneer deze zich in bevindt. In dat geval moet u mogelijk het aantal streaming-eenheden verhogen en/of ervoor zorgen dat uw taak kan worden geparallelleerd. Op de  [pagina query parallel Lise ring](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization)vindt u meer informatie. 
 
 
 ## <a name="get-help"></a>Hulp vragen

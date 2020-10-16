@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: 501ca51a9542229a14e98a56679837950a82891e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9dcf19f5318021df5d9fdde777b8786942e33d8
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80258291"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072251"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>De oplossings versneller voor externe controle implementeren met behulp van de CLI
 
@@ -73,12 +73,12 @@ Bij een basis implementatie worden de volgende services in uw Azure-abonnement g
 | 1     | [Virtuele Linux-machine](https://azure.microsoft.com/services/virtual-machines/) | Standard D1 v2  | Micro services hosten |
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                  | S1 – Standard-laag | Apparaatbeheer en communicatie |
 | 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)              | Standard        | Configuratie gegevens, regels, waarschuwingen en andere koude opslag opslaan |  
-| 1     | [Azure Storage-account](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)  | Standard        | Opslag voor VM-en streaming-controle punten |
+| 1     | [Azure Storage-account](../storage/common/storage-introduction.md#types-of-storage-accounts)  | Standard        | Opslag voor VM-en streaming-controle punten |
 | 1     | [Webtoepassing](https://azure.microsoft.com/services/app-service/web/)        |                 | Front-end-webtoepassing hosten |
 | 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | Gebruikers identiteiten en beveiliging beheren |
 | 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | Standard                | Activum locaties weer geven |
 | 1     | [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)        |   3 eenheden              | Real-time analyse inschakelen |
-| 1     | [Azure Device Provisioning Service](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | Inrichtings apparaten op schaal |
+| 1     | [Azure Device Provisioning Service](../iot-dps/index.yml)        |       S1          | Inrichtings apparaten op schaal |
 | 1     | [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 eenheid              | Opslag voor berichten gegevens en maakt diep gaande telemetrie-analyse mogelijk |
 
 ### <a name="standard"></a>Standard
@@ -94,12 +94,12 @@ Bij een standaard implementatie worden de volgende services in uw Azure-abonneme
 | 1     | [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service)| Een volledig beheerde Kubernetes-container Orchestrator-service gebruiken, standaard ingesteld op 3 agents|
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                     | S2 – Standard-laag | Apparaatbeheer, opdracht en controle |
 | 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)                 | Standard        | Configuratie gegevens en telemetrie van apparaten opslaan zoals regels, waarschuwingen en berichten |
-| 5     | [Azure Storage accounts](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)    | Standard        | 4 voor VM-opslag en 1 voor de controle punten voor streaming |
+| 5     | [Azure Storage accounts](../storage/common/storage-introduction.md#types-of-storage-accounts)    | Standard        | 4 voor VM-opslag en 1 voor de controle punten voor streaming |
 | 1     | [App Service](https://azure.microsoft.com/services/app-service/web/)             | S1 Standard     | Toepassings gateway via TLS |
 | 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | Gebruikers identiteiten en beveiliging beheren |
 | 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | Standard                | Activum locaties weer geven |
 | 1     | [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)        |   3 eenheden              | Real-time analyse inschakelen |
-| 1     | [Azure Device Provisioning Service](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | Inrichtings apparaten op schaal |
+| 1     | [Azure Device Provisioning Service](../iot-dps/index.yml)        |       S1          | Inrichtings apparaten op schaal |
 | 1     | [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 eenheid              | Opslag voor berichten gegevens en maakt diep gaande telemetrie-analyse mogelijk |
 
 > [!NOTE]

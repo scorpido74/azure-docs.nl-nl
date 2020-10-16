@@ -2,7 +2,7 @@
 title: Share point-gebruikers profiel service inschakelen met Azure AD DS | Microsoft Docs
 description: Meer informatie over het configureren van een Azure Active Directory Domain Services beheerd domein voor de ondersteuning van profiel synchronisatie voor share Point server
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
-ms.author: iainfou
-ms.openlocfilehash: aa66f7150e5c3ac4560d7f97cb73b1effb8eec89
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.author: joflore
+ms.openlocfilehash: 7bd63ece1ec32e5e4cecfd2a458124a4f24ccaa6
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749633"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962476"
 ---
 # <a name="configure-azure-active-directory-domain-services-to-support-user-profile-synchronization-for-sharepoint-server"></a>Azure Active Directory Domain Services configureren voor de ondersteuning van synchronisatie van gebruikers profielen voor share Point server
 

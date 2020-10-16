@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
 ms.openlocfilehash: e63c3f329cb9c1fd5ca91274540f5145c3ad098a
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85921550"
 ---
 # <a name="transformation-functions-in-wrangling-data-flow"></a>Transformatie functies in wrangling-gegevens stroom
@@ -68,15 +68,15 @@ Met de volgende functies worden kolommen toegevoegd of omgezet: [Table. AddColum
 ----------------------
 * Power Query wordt een geneste koppeling gegenereerd (Table. NestedJoin; gebruikers kunnen ook hand matig [Table. AddJoinColumn](https://docs.microsoft.com/powerquery-m/table-addjoincolumn)) schrijven.
     Gebruikers moeten vervolgens de geneste samenvoegings kolom uitvouwen tot een niet-geneste koppeling (Table. ExpandTableColumn, die niet wordt ondersteund in een andere context).
-* De functie [Table. join](https://docs.microsoft.com/powerquery-m/table-join) kan rechtstreeks worden geschreven om te voor komen dat er een extra uitbreidings stap nodig is, maar de gebruiker moet er zeker van zijn dat er geen dubbele kolom namen zijn in de gekoppelde tabellen
-* Ondersteunde typen joins: [inner](https://docs.microsoft.com/powerquery-m/joinkind-inner), [LeftOuter](https://docs.microsoft.com/powerquery-m/joinkind-leftouter), [RightOuter](https://docs.microsoft.com/powerquery-m/joinkind-rightouter), [FullOuter](https://docs.microsoft.com/powerquery-m/joinkind-fullouter)
-* Beide [waarden. equals](https://docs.microsoft.com/powerquery-m/value-equals) en [Value. NullableEquals](https://docs.microsoft.com/powerquery-m/value-nullableequals) worden ondersteund als Key gelijkheids vergelijkingen
+* De functie   [Table. join](https://docs.microsoft.com/powerquery-m/table-join) kan rechtstreeks worden geschreven om te voor komen dat er een extra uitbreidings stap nodig is, maar de gebruiker moet er zeker van zijn dat er geen dubbele kolom namen zijn in de gekoppelde tabellen
+* Ondersteunde typen joins:   [inner](https://docs.microsoft.com/powerquery-m/joinkind-inner),   [LeftOuter](https://docs.microsoft.com/powerquery-m/joinkind-leftouter),   [RightOuter](https://docs.microsoft.com/powerquery-m/joinkind-rightouter),   [FullOuter](https://docs.microsoft.com/powerquery-m/joinkind-fullouter)
+* Beide   [waarden. equals](https://docs.microsoft.com/powerquery-m/value-equals) en   [Value. NullableEquals](https://docs.microsoft.com/powerquery-m/value-nullableequals) worden ondersteund als Key gelijkheids vergelijkingen
 
 ## <a name="group-by"></a>Groeperen op
 
 Gebruik [Table. Group](https://docs.microsoft.com/powerquery-m/table-group) om waarden samen te voegen.
 * Moet worden gebruikt met een statistische functie
-* Ondersteunde aggregatie functies: [tabel. RowCount](https://docs.microsoft.com/powerquery-m/table-rowcount), [lijst. Sum](https://docs.microsoft.com/powerquery-m/list-sum), [lijst. Count](https://docs.microsoft.com/powerquery-m/list-count), [List. Average](https://docs.microsoft.com/powerquery-m/list-average), [List. min](https://docs.microsoft.com/powerquery-m/list-min), [List. Max](https://docs.microsoft.com/powerquery-m/list-max), [List. StandardDeviation](https://docs.microsoft.com/powerquery-m/list-standarddeviation), [List. First](https://docs.microsoft.com/powerquery-m/list-first), [List. last](https://docs.microsoft.com/powerquery-m/list-last)
+* Ondersteunde aggregatie functies:   [tabel. RowCount](https://docs.microsoft.com/powerquery-m/table-rowcount),   [lijst. Sum](https://docs.microsoft.com/powerquery-m/list-sum),   [lijst. Count](https://docs.microsoft.com/powerquery-m/list-count),   [List. Average](https://docs.microsoft.com/powerquery-m/list-average),   [List. min](https://docs.microsoft.com/powerquery-m/list-min),   [List. Max](https://docs.microsoft.com/powerquery-m/list-max),   [List. StandardDeviation](https://docs.microsoft.com/powerquery-m/list-standarddeviation),   [List. First](https://docs.microsoft.com/powerquery-m/list-first),   [List. last](https://docs.microsoft.com/powerquery-m/list-last)
 
 ## <a name="sorting"></a>Sorteren
 
@@ -90,7 +90,7 @@ Hoog behoud en verwijderen, bereik (overeenkomende M-functies, alleen ondersteun
 
 | Functie | Status |
 | -- | -- |
-| Table.PromoteHeaders | Wordt niet ondersteund. U kunt hetzelfde resultaat bereiken door in de gegevensset ' eerste rij als koptekst ' in te stellen. |
+| Table.PromoteHeaders | Niet ondersteund. U kunt hetzelfde resultaat bereiken door in de gegevensset ' eerste rij als koptekst ' in te stellen. |
 | Table.CombineColumns | Dit is een veelvoorkomend scenario dat niet rechtstreeks wordt ondersteund, maar kan worden bereikt door een nieuwe kolom toe te voegen waarmee twee opgegeven kolommen worden samengevoegd.  Bijvoorbeeld Table. AddColumn (RemoveEmailColumn, "name", elk [FirstName] & "" & [LastName]) |
 | Table.TransformColumnTypes | Dit wordt in de meeste gevallen ondersteund. De volgende scenario's worden niet ondersteund: het transformeren van de teken reeks naar het valuta type, het transformeren van de teken reeks naar het type tijd, het transformeren van de teken reeks naar het type percentage. |
 | Table.NestedJoin | Als u een koppeling uitvoert, treedt er een validatie fout op. De kolommen moeten worden uitgevouwen om te kunnen werken. |

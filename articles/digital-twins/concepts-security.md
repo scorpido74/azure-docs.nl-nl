@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 4dc768b92a9ffbeafc31ef81d065237f47fb645e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9b9fae8f32f9d7ffeee53df8e5a888394572cbd7
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331876"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015001"
 ---
 # <a name="secure-azure-digital-twins"></a>Azure Digital Apparaatdubbels beveiligen
 
@@ -80,6 +80,14 @@ Als een gebruiker probeert een actie uit te voeren die niet is toegestaan door h
 ## <a name="encryption-of-data-at-rest"></a>Versleuteling van data-at-rest
 
 Azure Digital Apparaatdubbels zorgt voor versleuteling van gegevens in rust en in transit als deze zijn geschreven in onze data centers en ontsleutelt deze voor u wanneer u er toegang toe hebt. Deze versleuteling vindt plaats met behulp van een door micro soft beheerde versleutelings sleutel.
+
+## <a name="cross-origin-resource-sharing-cors"></a>CORS (Cross-Origin Resource Sharing)
+
+Azure Digital Apparaatdubbels ondersteunt momenteel geen **CORS (cross-Origin Resource Sharing)**. Als u dus een REST API aanroept vanuit een browser-app, een API Management-interface [(APIM)](../api-management/api-management-key-concepts.md) of een [Power apps](https://docs.microsoft.com/powerapps/powerapps-overview) -connector, wordt er mogelijk een beleids fout weer geven.
+
+U kunt dit probleem op een van de volgende manieren oplossen:
+* De CORS-header `Access-Control-Allow-Origin` van het bericht verwijderen. Deze header geeft aan of het antwoord kan worden gedeeld. 
+* U kunt ook een CORS-proxy maken en de Azure Digital Apparaatdubbels REST API aanvraag door voeren. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

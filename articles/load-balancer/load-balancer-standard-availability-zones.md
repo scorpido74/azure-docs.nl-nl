@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 05/07/2020
 ms.author: allensu
 ms.openlocfilehash: 541aa7da3e804931c1793e455bcbfca83c809dae
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89669182"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Load Balancer van het type Standard en beschikbaarheidszones
@@ -123,14 +123,14 @@ Eén belang rijk onderdeel van uw toepassing kan van invloed zijn op uw hele toe
 
 - Als uw toepassing twee onderdelen heeft:
 
-    * IP-adres
+    * Het IP-adres
     * Virtuele machine met beheerde schijf
 
 Ze worden geconfigureerd in zone 1 en zone 2. Wanneer zone 1 mislukt, wordt uw service niet bewaard. Vermijd zones met zonegebonden-scenario's tenzij u zeker weet dat u een potentieel gevaarlijke fout modus maakt. Dit scenario mag flexibiliteit bieden.
 
 - Als uw toepassing twee onderdelen heeft:
 
-    * IP-adres
+    * Het IP-adres
     * Virtuele machine met beheerde schijf
 
 Ze zijn geconfigureerd voor zone-redundantie en zone 1. Uw service blijft de zone fout van zone 2, zone 3 of beide, tenzij zone 1 is mislukt. U verliest echter een mogelijke reden om de status van uw service te controleren als u er zeker van bent dat u de beschik baarheid van de front-end kunt bereiken.  Overweeg het ontwikkelen van een uitgebreidere status-en capaciteits model.  U kunt zone-redundante en zonegebonden-concepten samen gebruiken om inzicht en beheer baarheid uit te breiden.

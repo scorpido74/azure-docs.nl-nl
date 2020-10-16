@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: jhakulin
 ms.openlocfilehash: 421b9adf4ae5d2c641484e646bea096716d46cca
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74815413"
 ---
 # <a name="troubleshoot-the-speech-sdk"></a>Problemen met de Speech-SDK oplossen
@@ -73,7 +73,7 @@ Als u een geldige abonnements sleutel hebt opgegeven, retourneert de opdracht ee
 Als u een autorisatie token voor verificatie gebruikt, voert u een van de volgende opdrachten uit om te controleren of het autorisatie token nog geldig is. Tokens zijn 10 minuten geldig.
 
 > [!NOTE]
-> Vervang `YOUR_AUDIO_FILE` door het pad naar uw vastgelegde audio bestand. Vervang `YOUR_ACCESS_TOKEN` door het autorisatie token dat u in de vorige stap hebt geretourneerd. Vervang `YOUR_REGION` door de juiste regio.
+> Vervang door `YOUR_AUDIO_FILE` het pad naar uw vastgelegde audio bestand. Vervang door `YOUR_ACCESS_TOKEN` het autorisatie token dat u in de vorige stap hebt geretourneerd. Vervang door `YOUR_REGION` de juiste regio.
 
 * PowerShell
 
@@ -109,7 +109,7 @@ Als u een geldig autorisatie token hebt opgegeven, retourneert de opdracht de tr
 
 ## <a name="error-http-400-bad-request"></a>Fout: HTTP 400-ongeldige aanvraag
 
-Deze fout treedt meestal op wanneer de hoofd tekst van de aanvraag ongeldige audio gegevens bevat. Alleen de WAV-indeling wordt ondersteund. Controleer ook de headers van de aanvraag om er zeker van te zijn dat u `Content-Type` de `Content-Length`juiste waarden voor en hebt opgegeven.
+Deze fout treedt meestal op wanneer de hoofd tekst van de aanvraag ongeldige audio gegevens bevat. Alleen de WAV-indeling wordt ondersteund. Controleer ook de headers van de aanvraag om er zeker van te zijn dat u de juiste waarden voor en hebt opgegeven `Content-Type` `Content-Length` .
 
 ## <a name="error-http-408-request-timeout"></a>Fout: time-out HTTP 408-aanvraag
 
@@ -119,7 +119,7 @@ De meest waarschijnlijke fout treedt op omdat er geen audio gegevens naar de ser
 
 Dit probleem wordt meestal veroorzaakt door audio gegevens. U ziet deze fout mogelijk omdat:
 
-* Er is een lange stilte tijd aan het begin van de audio. In dat geval stopt de service de herkenning na een paar seconden en retourneert deze `InitialSilenceTimeout`.
+* Er is een lange stilte tijd aan het begin van de audio. In dat geval stopt de service de herkenning na een paar seconden en retourneert deze `InitialSilenceTimeout` .
 
 * Voor de audio wordt een niet-ondersteunde codec-indeling gebruikt, waardoor de audio gegevens als stilte worden beschouwd.
 

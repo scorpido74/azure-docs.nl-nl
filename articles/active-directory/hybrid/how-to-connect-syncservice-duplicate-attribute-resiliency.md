@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d1d364089d5df24cfc4e7a75c3fd6b81248f0cd6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91313309"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>Tolerantie voor synchronisatie- en duplicatiekenmerken identificeren
@@ -66,7 +66,7 @@ Als u wilt controleren of de functie is ingeschakeld voor uw Tenant, kunt u dit 
 `Get-MsolDirSyncFeatures -Feature DuplicateProxyAddressResiliency`
 
 > [!NOTE]
-> U kunt de cmdlet Set-MsolDirSyncFeature niet meer gebruiken om de tolerantie functie voor dubbele kenmerken proactief in te scha kelen voordat deze is ingeschakeld voor uw Tenant. Als u de functie wilt testen, moet u een nieuwe Azure Active Directory-Tenant maken.
+> U kunt Set-MsolDirSyncFeature cmdlet niet meer gebruiken om de tolerantie functie voor dubbel kenmerk te activeren voordat deze is ingeschakeld voor uw Tenant. Als u de functie wilt testen, moet u een nieuwe Azure Active Directory-Tenant maken.
 
 ## <a name="identifying-objects-with-dirsyncprovisioningerrors"></a>Objecten met DirSyncProvisioningErrors identificeren
 Er zijn momenteel twee methoden om objecten te identificeren die deze fouten hebben als gevolg van dubbele eigenschaps conflicten, Azure Active Directory Power shell en het [Microsoft 365-beheer centrum](https://admin.microsoft.com). Er zijn plannen die in de toekomst moeten worden uitgebreid naar extra rapportage op basis van portal.
@@ -85,7 +85,7 @@ Gebruik vervolgens de volgende cmdlets en Opera tors om fouten op verschillende 
 2. [Op eigenschaps type](#by-property-type)
 3. [Op conflicterende waarde](#by-conflicting-value)
 4. [Een teken reeks zoeken gebruiken](#using-a-string-search)
-5. Geordend
+5. Sorted
 6. [In een beperkt aantal of alle](#in-a-limited-quantity-or-all)
 
 #### <a name="see-all"></a>Alles weergeven

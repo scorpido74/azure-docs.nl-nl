@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 8c60e0275853f3c879db22f5414f0fbbbdb47b85
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86050258"
 ---
 ## <a name="preparing-for-updates"></a>Updates voorbereiden
@@ -19,7 +19,7 @@ U moet de volgende stappen uitvoeren voordat u de Update scant en toepast:
    
      `Test-Connection -Source <Fixed IP of your device controller> -Destination <Any IP or computer name outside of datacenter network>`
    
-    **Voorbeeld uitvoer voor test-verbinding wanneer vaste IP-adressen verbinding kunnen maken met Internet**
+    **Voorbeeld uitvoer voor Test-Connection als vaste IP-adressen kunnen verbinding maken met Internet**
 
     ```output
     Controller0>Test-Connection -Source 10.126.173.91 -Destination bing.com

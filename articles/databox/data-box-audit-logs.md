@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.openlocfilehash: 50dbe9ab649a708fb36b1c9e4fe89bccadc7ea90
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86209683"
 ---
 # <a name="audit-logs-for-your-azure-data-box-and-azure-data-box-heavy"></a>Controle logboeken voor uw Azure Data Box en Azure Data Box Heavy
@@ -72,7 +72,7 @@ De volgende toepassings logboek gebeurtenis-Id's worden verzameld als onderdeel 
 
 Hier volgt een tabel met een overzicht van de verschillende gebeurtenis providers en de bijbehorende gebeurtenis-Id's die in elk geval worden verzameld.
 
-|Naam van gebeurtenis provider    |Gebeurtenis-id    | Opmerkingen |
+|Naam van gebeurtenis provider    |Gebeurtenis-id    | Notities |
 |-----------------|-----------------|-------------------|
 |Micro soft-Azure-DataBox-OOBE-auditing |4624        |De aanmelding is voltooid.|
 |                                      |4625        |Het aanmelden bij een account is mislukt. Onbekende gebruikers naam of onjuist wacht woord.|

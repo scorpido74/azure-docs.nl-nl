@@ -7,10 +7,10 @@ ms.date: 11/01/2019
 ms.author: yunjchoi
 ms.custom: na
 ms.openlocfilehash: fb329273d442c023233fee2e7e01aabe5f5bff8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83122359"
 ---
 # <a name="azure-functions-diagnostics-overview"></a>Overzicht van Azure Functions diagnostische gegevens
@@ -31,11 +31,11 @@ Azure Functions diagnostische gegevens starten:
 
 Wanneer u een startpagina categorie selecteert die het beste past bij het probleem van uw functie-app, kan Azure Functions diagnostische gegevens van de interactieve interface, met de naam genie, u helpen bij het vaststellen en oplossen van het probleem van uw app. U kunt de snelkoppelingen voor tegels in genie gebruiken om het volledige diagnostische rapport te bekijken van de probleem categorie waarin u bent geïnteresseerd. De snelkoppelingen voor tegels bieden u een directe manier om toegang te krijgen tot uw diagnostische gegevens.
 
-:::image type="content" source="./media/functions-diagnostics/genie.png" alt-text="Genie is Azure Functions de interface voor diagnostische gegevens." border="false":::
+:::image type="content" source="./media/functions-diagnostics/genie.png" alt-text="Zoeken naar diagnostische gegevens over Azure Functions." border="false":::
 
 Nadat u een tegel hebt geselecteerd, ziet u een lijst met onderwerpen die betrekking hebben op het probleem dat wordt beschreven op de tegel. Deze onderwerpen bevatten fragmenten van belang rijke informatie uit het volledige rapport. Selecteer een van deze onderwerpen om de problemen verder te onderzoeken. U kunt ook **volledig rapport weer geven** selecteren om alle onderwerpen op één pagina te verkennen.
 
-:::image type="content" source="./media/functions-diagnostics/preview-of-diagnostic-report.png" alt-text="Voor beeld van diagnostisch rapport" border="false":::
+:::image type="content" source="./media/functions-diagnostics/preview-of-diagnostic-report.png" alt-text="Zoeken naar diagnostische gegevens over Azure Functions." border="false":::
 
 ## <a name="view-a-diagnostic-report"></a>Een diagnostisch rapport weer geven
 
@@ -45,9 +45,9 @@ Nadat u een onderwerp hebt gekozen, kunt u een diagnostisch rapport bekijken dat
 
 Voor functies op basis van een script kunt u **functie-uitvoering en fouten** onder **functie-app omlaag of fouten rapporteren** om te beperken op de regel code die uitzonde ringen of fouten veroorzaakt. U kunt dit hulp programma gebruiken voor het verkrijgen van de hoofd oorzaak en het oplossen van problemen met een specifieke regel code. Deze optie is niet beschikbaar voor vooraf gecompileerde C#-en Java-functies.
 
-:::image type="content" source="./media/functions-diagnostics/diagnostic-report-on-function-execution-errors.png" alt-text="Diagnostisch rapport over fouten bij de uitvoering van functies" border="false":::
+:::image type="content" source="./media/functions-diagnostics/diagnostic-report-on-function-execution-errors.png" alt-text="Zoeken naar diagnostische gegevens over Azure Functions." border="false":::
 
-:::image type="content" source="./media/functions-diagnostics/function-exception.png" alt-text="Weer gave van uitzonderings Details." border="false":::
+:::image type="content" source="./media/functions-diagnostics/function-exception.png" alt-text="Zoeken naar diagnostische gegevens over Azure Functions." border="false":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

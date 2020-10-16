@@ -4,10 +4,10 @@ description: Onderwerpen en gebeurtenis abonnementen bewaken
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: d230be4f74abd61ad7b7f0fdb3facb32ee63da73
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86171530"
 ---
 # <a name="monitor-topics-and-event-subscriptions"></a>Onderwerpen en gebeurtenis abonnementen bewaken
@@ -43,7 +43,7 @@ In zowel onderwerpen als gebeurtenis abonnementen worden metrische gegevens gege
 
 ### <a name="topic-metrics"></a>Metrische gegevens over het onderwerp
 
-| Metrische waarde | Beschrijving |
+| Gegevens | Beschrijving |
 | ------ | ----------- |
 | EventsReceived | Aantal gebeurtenissen dat is gepubliceerd naar het onderwerp
 | UnmatchedEvents | Het aantal gebeurtenissen dat is gepubliceerd naar het onderwerp dat niet overeenkomt met een gebeurtenis abonnement en wordt verwijderd
@@ -55,7 +55,7 @@ In zowel onderwerpen als gebeurtenis abonnementen worden metrische gegevens gege
 
 ### <a name="event-subscription-metrics"></a>Metrische gegevens van gebeurtenis abonnementen
 
-| Metrische waarde | Beschrijving |
+| Gegevens | Beschrijving |
 | ------ | ----------- |
 | DeliverySuccessCounts | Aantal gebeurtenissen dat is bezorgd bij het geconfigureerde eind punt
 | DeliveryFailureCounts | Aantal gebeurtenissen dat niet kan worden bezorgd bij het geconfigureerde eind punt

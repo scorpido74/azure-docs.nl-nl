@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
 ms.openlocfilehash: 876a96f579bff8d30e454e927054a951734f44ba
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89441096"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planning voor de implementatie van Azure Files Sync
@@ -98,7 +98,7 @@ In de volgende tabel hebben we zowel de grootte van de naam ruimte als de conver
 |---------|---------|---------|---------|
 | 3        | 1.4     | 2        | 8 (initiële synchronisatie)/2 (standaard verloop)      |
 | 5        | 2.3     | 2        | 16 (initiële synchronisatie)/4 (standaard verloop)    |
-| 10       | 4,7     | 4        | 32 (initiële synchronisatie)/8 (standaard verloop)   |
+| 10       | 4.7     | 4        | 32 (initiële synchronisatie)/8 (standaard verloop)   |
 | 30       | 14,0    | 8        | 48 (initiële synchronisatie)/16 (typische verloop)   |
 | 50       | 23,3    | 16       | 64 (initiële synchronisatie)/32 (standaard verloop)  |
 | 100 *     | 46,6    | 32       | 128 (initiële synchronisatie)/32 (standaard verloop)  |
@@ -161,7 +161,7 @@ De volgende tabel bevat de interop-status van NTFS-bestandssysteem functies:
 
 <a id="files-skipped"></a>Azure File Sync worden ook bepaalde tijdelijke bestanden en systeem mappen overs Laan:
 
-| Bestand/map | Notitie |
+| Bestand/map | Opmerking |
 |-|-|
 | pagefile.sys | Bestand dat specifiek is voor systeem |
 | Desktop.ini | Bestand dat specifiek is voor systeem |
@@ -306,8 +306,8 @@ Azure File Sync is beschikbaar in de volgende regio's:
 | Openbaar | Azië | Azië - oost | `eastasia` |
 | Openbaar | Azië | Azië - zuidoost | `southeastasia` |
 | Openbaar | Australië | Australië - oost | `australiaeast` |
-| Openbaar | Australië | Australië - zuidoost | `australiasoutheast` |
-| Openbaar | Brazilië | Brazilië - zuid | `brazilsouth` |
+| Openbaar | Australië | Australia Southeast | `australiasoutheast` |
+| Openbaar | Brazilië | Brazil South | `brazilsouth` |
 | Openbaar | Canada | Canada - midden | `canadacentral` |
 | Openbaar | Canada | Canada - oost | `canadaeast` |
 | Openbaar | Europa | Europa - noord | `northeurope` |
@@ -316,7 +316,7 @@ Azure File Sync is beschikbaar in de volgende regio's:
 | Openbaar | Frankrijk | Frankrijk-zuid * | `francesouth` |
 | Openbaar | India | India - centraal | `centralindia` |
 | Openbaar | India | India - zuid | `southindia` |
-| Openbaar | Japan | Japan - oost | `japaneast` |
+| Openbaar | Japan | Japan East | `japaneast` |
 | Openbaar | Japan | Japan - west | `japanwest` |
 | Openbaar | Korea | Korea - centraal | `koreacentral` |
 | Openbaar | Korea | Korea - zuid | `koreasouth` |
@@ -326,14 +326,14 @@ Azure File Sync is beschikbaar in de volgende regio's:
 | Openbaar | VAE | VAE - noord | `uaenorth` |
 | Openbaar | VK | Verenigd Koninkrijk Zuid | `uksouth` |
 | Openbaar | VK | Verenigd Koninkrijk West | `ukwest` |
-| Openbaar | VS | VS - centraal | `centralus` |
+| Openbaar | VS | Central US | `centralus` |
 | Openbaar | VS | VS - oost | `eastus` |
 | Openbaar | VS | VS - oost 2 | `eastus2` |
 | Openbaar | VS | VS - noord-centraal | `northcentralus` |
-| Openbaar | VS | VS - zuid-centraal | `southcentralus` |
+| Openbaar | VS | South Central US | `southcentralus` |
 | Openbaar | VS | VS - west-centraal | `westcentralus` |
 | Openbaar | VS | VS - west | `westus` |
-| Openbaar | VS | VS - west 2 | `westus2` |
+| Openbaar | VS | West US 2 | `westus2` |
 | US Gov | VS | VS (overheid) - Arizona | `usgovarizona` |
 | US Gov | VS | VS (overheid) - Texas | `usgovtexas` |
 | US Gov | VS | VS (overheid) - Virginia | `usgovvirginia` |
@@ -383,7 +383,7 @@ Als u liever een on-premises back-upoplossing gebruikt, moeten back-ups worden u
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Firewall-en proxy-instellingen overwegen](storage-sync-files-firewall-and-proxy.md)
-* [Een Azure Files-implementatie plannen](storage-files-planning.md)
+* [Implementatie van Azure Files plannen](storage-files-planning.md)
 * [Azure Files implementeren](storage-files-deployment-guide.md)
-* [Azure File Sync implementeren](storage-sync-files-deployment-guide.md)
+* [Azure Files SYNC implementeren](storage-sync-files-deployment-guide.md)
 * [Azure File Sync bewaken](storage-sync-files-monitoring.md)

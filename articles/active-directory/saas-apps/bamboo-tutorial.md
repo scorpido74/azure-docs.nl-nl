@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: ed587e8ee54aeb36b6790314e849f38b1bab1007
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 286d350493afb1e74f9d2ba6eb445b2c46d995b6
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549378"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713563"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-bamboo-by-resolution-gmbh"></a>Zelfstudie: Integratie van Azure Active Directory met SAML SSO voor Bamboo van resolution GmbH
 
@@ -100,7 +100,7 @@ Voer de volgende stappen uit om Azure AD-eenmalige aanmelding met SAML SSO voor 
 
 4. In het gedeelte **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
 
-    ![Domein- en URL-gegevens voor eenmalige aanmelding bij SAML SSO voor Bamboo van resolution GmbH](common/idp-intiated.png)
+    ![Domein- en URL-gegevens voor eenmalige aanmelding bij SAML S S O voor Bamboo van resolution GmbH](common/idp-intiated.png)
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://<server-base-url>/plugins/servlet/samlsso`
 
@@ -108,7 +108,7 @@ Voer de volgende stappen uit om Azure AD-eenmalige aanmelding met SAML SSO voor 
 
 5. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    ![Domein- en URL-gegevens voor eenmalige aanmelding bij SAML SSO voor Bamboo van resolution GmbH](common/metadata-upload-additional-signon.png)
+    ![Schermopname die Extra URL's instellen toont, waar u een aanmeldings-URL kunt invoeren.](common/metadata-upload-additional-signon.png)
 
     In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<server-base-url>/plugins/servlet/samlsso`
 

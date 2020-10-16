@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: c30b82e44833e413c1576bf64e8fef263c58b246
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3bc245fa02f57a433a76a316caac67ed5d884fe9
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91264606"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072744"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Gebruik kubenet-netwerken met uw eigen IP-adresbereiken in azure Kubernetes service (AKS)
 
@@ -34,7 +34,7 @@ Dit artikel laat u zien hoe u *kubenet* -netwerken kunt gebruiken om een subnet 
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-U moet de Azure CLI-versie 2.0.65 of hoger hebben geïnstalleerd en geconfigureerd. Voer  `az --version` uit om de versie te bekijken. Als u de Azure CLI wilt installeren of upgraden, raadpleegt u  [Azure CLI installeren][install-azure-cli].
+U moet de Azure CLI-versie 2.0.65 of hoger hebben geïnstalleerd en geconfigureerd. Voer  `az --version` uit om de versie te bekijken. Als u wilt installeren of upgraden, raadpleegt u [Azure cli installeren][install-azure-cli].
 
 ## <a name="overview-of-kubenet-networking-with-your-own-subnet"></a>Overzicht van kubenet-netwerken met uw eigen subnet
 
@@ -56,7 +56,7 @@ Met *Azure cni*ontvangt elke pod een IP-adres in het IP-subnet en kan het rechts
 * In tegens telling tot Azure CNI-clusters kunnen meerdere kubenet-clusters geen subnet delen.
 * Functies die **niet worden ondersteund in kubenet** zijn onder andere:
    * [Azure-netwerk beleid](use-network-policies.md#create-an-aks-cluster-and-enable-network-policy), maar Calico-netwerk beleid wordt ondersteund op kubenet
-   * [Windows-knooppunt groepen](windows-node-limitations.md)
+   * [Windows-knooppunt groepen](./windows-faq.md)
    * [Virtuele knoop punten toevoegen](virtual-nodes-portal.md#known-limitations)
 
 ### <a name="ip-address-availability-and-exhaustion"></a>Beschik baarheid en uitputting van IP-adressen

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
 ms.openlocfilehash: 38e80f1597a08b8db7cbfa852d1bcf38ac768b1f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74871139"
 ---
 # <a name="joins-in-azure-cosmos-db"></a>Samen voegen in Azure Cosmos DB
@@ -19,11 +19,11 @@ In een relationele data base is het samen voegen van meerdere tabellen de logisc
 
 Inner joins resulteren in een volledig ander product van de sets die deel nemen aan de join. Het resultaat van een N-way-koppeling is een set N-element-Tuples, waarbij elke waarde in de tuple is gekoppeld aan de aliasset die deelneemt aan de samen voeging en toegankelijk is door naar die alias in andere componenten te verwijzen.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Syntaxis
 
 De taal ondersteunt de syntaxis `<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>` . Deze query retourneert een set Tuples met `N` waarden. Elke tuple heeft waarden die worden geproduceerd door alle containeraliassen te herhalen voor hun respectieve sets. 
 
-Laten we eens kijken naar de volgende FROM-component:`<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>`  
+Laten we eens kijken naar de volgende FROM-component: `<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>`  
   
  Laat elke bron definiëren `input_alias1, input_alias2, …, input_aliasN` . Deze component FROM retourneert een set N-Tuples (tuple met N waarden). Elke tuple heeft waarden die worden geproduceerd door alle containeraliassen te herhalen voor hun respectieve sets.  
   
@@ -33,11 +33,11 @@ Laten we eens kijken naar de volgende FROM-component:`<from_source1> JOIN <from_
   
 - Laat `<from_source2>` het document bereik verwijzen naar input_alias1 en stellen sets voor:  
   
-    {1, 2} voor`input_alias1 = A,`  
+    {1, 2} voor `input_alias1 = A,`  
   
-    {3}zo`input_alias1 = B,`  
+    {3} zo `input_alias1 = B,`  
   
-    {4, 5} voor`input_alias1 = C,`  
+    {4, 5} voor `input_alias1 = C,`  
   
 - De component FROM `<from_source1> JOIN <from_source2>` levert de volgende Tuples op:  
   
@@ -51,17 +51,17 @@ Laten we eens kijken naar de volgende FROM-component:`<from_source1> JOIN <from_
   
 - Een `<from_source2>` verwijzing naar een document bereik maken `input_alias1` en sets vertegenwoordigen:  
   
-    {1, 2} voor`input_alias1 = A,`  
+    {1, 2} voor `input_alias1 = A,`  
   
-    {3}zo`input_alias1 = B,`  
+    {3} zo `input_alias1 = B,`  
   
-    {4, 5} voor`input_alias1 = C,`  
+    {4, 5} voor `input_alias1 = C,`  
   
 - Een `<from_source3>` verwijzing naar een document bereik maken `input_alias2` en sets vertegenwoordigen:  
   
-    {100, 200} voor`input_alias2 = 1,`  
+    {100, 200} voor `input_alias2 = 1,`  
   
-    {300}zo`input_alias2 = 3,`  
+    {300} zo `input_alias2 = 3,`  
   
 - De component FROM `<from_source1> JOIN <from_source2> JOIN <from_source3>` levert de volgende Tuples op:  
   
@@ -80,17 +80,17 @@ Laten we eens kijken naar de volgende FROM-component:`<from_source1> JOIN <from_
   
 - Laat <from_source2> het document bereik input_alias1 en sets vertegenwoordigen:  
   
-    {1, 2} voor`input_alias1 = A,`  
+    {1, 2} voor `input_alias1 = A,`  
   
-    {3}zo`input_alias1 = B,`  
+    {3} zo `input_alias1 = B,`  
   
-    {4, 5} voor`input_alias1 = C,`  
+    {4, 5} voor `input_alias1 = C,`  
   
 - `<from_source3>`Het bereik wordt ingesteld op `input_alias1` en vertegenwoordigen sets:  
   
-    {100, 200} voor`input_alias2 = A,`  
+    {100, 200} voor `input_alias2 = A,`  
   
-    {300}zo`input_alias2 = C,`  
+    {300} zo `input_alias2 = C,`  
   
 - De component FROM `<from_source1> JOIN <from_source2> JOIN <from_source3>` levert de volgende Tuples op:  
   
@@ -224,7 +224,7 @@ Met de volgende uitbrei ding van het voor gaande voor beeld wordt een dubbele ko
     }
 ```
 
-`AndersenFamily`heeft één onderliggend item met één huis dier, waardoor het cross product één rij (1 1 \* \* ) van deze familie overdraagt. `WakefieldFamily`heeft twee onderliggende items, maar één van huis dieren, maar dat kind heeft twee huis dieren. Het cross product voor deze familie levert 1 \* 1 \* 2 = 2 rijen.
+`AndersenFamily` heeft één onderliggend item met één huis dier, waardoor het cross product één rij (1 1 \* \* ) van deze familie overdraagt. `WakefieldFamily` heeft twee onderliggende items, maar één van huis dieren, maar dat kind heeft twee huis dieren. Het cross product voor deze familie levert 1 \* 1 \* 2 = 2 rijen.
 
 In het volgende voor beeld is er een extra filter aan `pet` , waarmee alle Tuples worden uitgesloten waarvan de naam van het huis dier niet is `Shadow` . U kunt Tuples maken op basis van matrices, filteren op een van de elementen van de tuple en een combi natie van de elementen projecteren.
 

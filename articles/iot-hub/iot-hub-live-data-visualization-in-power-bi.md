@@ -10,10 +10,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 6/08/2020
 ms.author: robinsh
 ms.openlocfilehash: ed429d2f584da20439b0cb0eedcf4742b9ae4599
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84634390"
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>Real-time sensor gegevens visualiseren vanuit Azure IoT Hub met behulp van Power BI
@@ -52,7 +52,7 @@ Laten we beginnen met het maken van een Stream Analytics taak. Nadat u de taak h
 
 ### <a name="create-a-stream-analytics-job"></a>Een Stream Analytics-taak maken
 
-1. Selecteer in de [Azure Portal](https://portal.azure.com) **een resource maken**  >  **Internet of Things**  >  **Stream Analytics taak**.
+1. Selecteer in [Azure Portal](https://portal.azure.com) de optie **Een resource maken** > **Internet of Things** > **Stream Analytics-taak**.
 
 2. Voer de volgende informatie in voor de taak.
 
@@ -78,7 +78,7 @@ Laten we beginnen met het maken van een Stream Analytics taak. Nadat u de taak h
 
    **Selecteer IOT hub uit uw abonnement**: Selecteer dit keuze rondje.
 
-   **Abonnement**: Selecteer het Azure-abonnement dat u voor deze zelf studie gebruikt.
+   **Abonnement**: Selecteer het Azure-abonnement dat u gebruikt voor deze zelfstudie.
 
    **IOT hub**: selecteer de IOT hub die u voor deze zelf studie gebruikt.
 
@@ -122,7 +122,7 @@ Laten we beginnen met het maken van een Stream Analytics taak. Nadat u de taak h
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>De query van de Stream Analytics-taak configureren
 
-1. Selecteer **query**onder **taak topologie**.
+1. Selecteer **Query** onder **Taaktopologie**.
 
 2. Vervang `[YourInputAlias]` door de invoeralias van de taak.
 
@@ -130,9 +130,9 @@ Laten we beginnen met het maken van een Stream Analytics taak. Nadat u de taak h
 
    ![Een query toevoegen aan een Stream Analytics-taak in azure](./media/iot-hub-live-data-visualization-in-power-bi/add-query-to-stream-analytics-job.png)
 
-4. Selecteer **query opslaan**.
+4. Selecteer **Query opslaan**.
 
-### <a name="run-the-stream-analytics-job"></a>Voer de Stream Analytics-taak uit
+### <a name="run-the-stream-analytics-job"></a>De Stream Analytics-taak uitvoeren
 
 Selecteer in de taak stream Analytics **overzicht** **en selecteer**  >  **nu**starten  >  **Start**. Zodra de taak kan worden gestart, wordt de taakstatus veranderd van **Gestopt** naar **In uitvoering**.
 
@@ -148,7 +148,7 @@ De volgende stappen laten zien hoe u een rapport maakt en publiceert met behulp 
 
 3. Selecteer de werk ruimte die u hebt gebruikt, **mijn werk ruimte**.
 
-4. Selecteer **gegevens sets**.
+4. Selecteer **Gegevenssets**.
 
    U ziet de gegevensset die u hebt opgegeven tijdens het maken van de uitvoer voor de Stream Analytics taak.
 

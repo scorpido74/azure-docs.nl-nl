@@ -1,6 +1,6 @@
 ---
 title: Inleiding tot de Azure Cosmos DB Cassandra-API
-description: Meer informatie over hoe u Azure Cosmos DB kunt gebruiken om bestaande toepassingen te ' til en verschuiven ' en nieuwe toepassingen te bouwen met behulp van de Cassandra-Stuur Programma's en CQL
+description: Kom erachter hoe u Azure Cosmos DB kunt gebruiken voor een 'lift-and-shift' van bestaande toepassingen en om nieuwe toepassingen te maken met de Cassandra-stuurprogramma's en CQL
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -9,29 +9,29 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 05/21/2019
 ms.openlocfilehash: 70dbceb51ed030124d1b793d77c6bc287da91065
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "81687630"
 ---
 # <a name="introduction-to-the-azure-cosmos-db-cassandra-api"></a>Inleiding tot de Azure Cosmos DB Cassandra-API
 
-Azure Cosmos DB Cassandra-API kan worden gebruikt als gegevensopslag voor apps die zijn geschreven voor [Apache Cassandra](https://cassandra.apache.org). Dit betekent dat uw bestaande Cassandra-toepassing nu kan communiceren met de Azure Cosmos DB Cassandra-API, door gebruik te maken van bestaande [Apache-apparaatstuurprogramma’s](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver) die compatibel zijn met CQLv4. In veel gevallen kunt u overschakelen van het gebruik van Apache Cassandra naar het gebruik van Azure Cosmos DB Cassandra-API door alleen een connection string te wijzigen. 
+Azure Cosmos DB Cassandra-API kan worden gebruikt als gegevensopslag voor apps die zijn geschreven voor [Apache Cassandra](https://cassandra.apache.org). Dit betekent dat uw bestaande Cassandra-toepassing nu kan communiceren met de Azure Cosmos DB Cassandra-API, door gebruik te maken van bestaande [Apache-apparaatstuurprogramma’s](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver) die compatibel zijn met CQLv4. In veel gevallen kunt u overschakelen van Apache Cassandra naar de Cassandra-API van Azure Cosmos DB door alleen een verbindingsreeks te wijzigen. 
 
-Met de Cassandra-API kunt u communiceren met gegevens die zijn opgeslagen in Azure Cosmos DB met behulp van de Cassandra query language (CQL), Cassandra-hulpprogram ma's (zoals cqlsh) en Cassandra-client Stuur Programma's waarmee u al bekend bent.
+De Cassandra-API stelt u in staat om gegevens te gebruiken die zijn opgeslagen in Azure Cosmos DB. Dit doet u via de Cassandra-querytaal (CQL), hulpprogramma's op basis van de Cassandra-querytaal (bijvoorbeeld cqlsh) en Cassandra-clientstuurprogramma's waarmee u al vertrouwd bent.
 
 ## <a name="what-is-the-benefit-of-using-apache-cassandra-api-for-azure-cosmos-db"></a>Wat is het voordeel van het gebruik van de Apache Cassandra-API voor Azure Cosmos DB?
 
 **Geen operationeel management**: Azure Cosmos DB Cassandra-API is een volledig beheerde cloudservice, waardoor beheerders zich niet bezig hoeven te houden met het beheren en controleren van talloze instellingen in OS-, JVM- en yaml-bestanden en de bijbehorende wisselwerkingen. Azure Cosmos DB biedt controle van doorvoer, latentie, opslag, beschikbaarheid en waarschuwingen die kunnen worden geconfigureerd.
 
-**Open-source Standard**: Hoewel een volledig beheerde service is, ondersteunt Cassandra-API nog steeds een grote Surface Area van het native [Apache Cassandra wire-protocol](cassandra-support.md), zodat u toepassingen kunt bouwen op een veelgebruikte en Cloud neutraal open source Standard.
+**Opensourcestandaard**: De Cassandra-API is een volledig beheerde service, maar ondersteunt een uitgebreide surface area van het systeemeigen [wire-protocol van Apache Cassandra](cassandra-support.md). Zo kunt u toepassingen ontwikkelen via een veelgebruikte en niet-cloudgebonden opensourcestandaard.
 
 **Prestatiebeheer**: Azure Cosmos DB biedt gegarandeerde lage latentie van lees- en schrijfbewerkingen voor een percentiel van 99%, ondersteund met een SLA. Gebruikers hoeven zich geen zorgen te maken over operationele overhead voor hoge prestaties en lage latentie van lees- en schrijfbewerkingen. Dit betekent dat gebruikers zich niet bezig hoeven te houden met geplande compressie, het beheren van testblokken, het handmatig instellen van bloomfilters en replica’s. Azure Cosmos DB verwijdert de overhead om deze zaken te beheren, waardoor u zich beter kunt focussen op de logica van de toepassing.
 
 **Mogelijkheid om bestaande code en hulpprogramma’s te gebruiken**: Azure Cosmos DB biedt compatibiliteit van wire-protocolniveau’s met bestaande Cassandra-SDK’s en hulpprogramma’s. Door deze compatibiliteit kunt u bestaande codebase gebruiken met de Azure Cosmos DB Cassandra-API, met slechts een klein aantal wijzigingen.
 
-**Elasticiteit van doorvoer en opslag**: Azure Cosmos DB biedt elasticiteit van gegarandeerde doorvoer naar alle regio’s en kan de geboden doorvoer opschalen met Azure Portal, PowerShell of de CLI. U kunt de opslag en door Voer op [elastische](manage-scale-cassandra.md) wijze naar behoefte schalen voor uw tabellen met voorspel bare prestaties.
+**Elasticiteit van doorvoer en opslag**: Azure Cosmos DB biedt elasticiteit van gegarandeerde doorvoer naar alle regio’s en kan de geboden doorvoer opschalen met Azure Portal, PowerShell of de CLI. U kunt naar behoefte [flexibel](manage-scale-cassandra.md) de schaal van de opslag en doorvoer voor de tabellen aanpassen met voorspelbare prestaties.
 
 **Wereldwijde distributie en beschikbaarheid**: Azure Cosmos DB heeft de mogelijkheid om gegevens wereldwijd te distribueren over alle Azure-regio’s en de gegevens lokaal aanbieden terwijl lage latentie gegevenstoegang en hoge beschikbaarheid gegarandeerd blijft. Azure Cosmos DB biedt 99,99% hoge beschikbaarheid binnen een regio, en 99,999% beschikbaarheid voor lezen en schrijven in meerdere regio’s, zonder operationele overhead. Lees het artikel [Gegevens wereldwijd distribueren](distribute-data-globally.md) voor meer informatie. 
 
@@ -39,7 +39,7 @@ Met de Cassandra-API kunt u communiceren met gegevens die zijn opgeslagen in Azu
 
 **Zakelijk niveau**: Azure Cosmos DB biedt [nalevingscertificeringen](https://www.microsoft.com/trustcenter) om ervoor te zorgen dat het platform veilig kan worden gebruikt. Azure Cosmos DB biedt ook versleuteling van niet-actieve en actieve gegevens, een IP-firewall en auditlogboeken voor beheeractiviteiten.
 
-**Gebeurtenis**bron: Cassandra-API biedt toegang tot een persistent wijzigingen logboek, de [wijzigings feed](cassandra-change-feed.md), waardoor gebeurtenis bronnen rechtstreeks vanuit de data base kunnen worden vergemakkelijkt. In Apache Cassandra is de enige gelijkwaardige waarde change data capture (CDC). Dit is slechts een mechanisme voor het markeren van specifieke tabellen voor archivering en het afwijzen van schrijf bewerkingen naar die tabellen wanneer een Configureer bare grootte-op-schijf voor het CDC-logboek wordt bereikt (deze mogelijkheden zijn overbodig in Cosmos DB als de relevante aspecten automatisch worden geregeld).
+**Gebeurtenisbronnen**: De Cassandra-API biedt toegang tot een permanent wijzigingenlogboek, de [wijzigingenfeed](cassandra-change-feed.md), waarmee u gebeurtenisbronnen rechtstreeks uit de database kunt ophalen. Het enige equivalent in Apache Cassandra is change data capture (CDC). Dit is een mechanisme om specifieke tabellen te markeren voor archivering. Hiermee kunnen ook schrijfbewerkingen naar die tabellen worden geweigerd wanneer de ingestelde grootte op de schijf voor het CDC-logboek wordt bereikt. Deze mogelijkheden zijn overbodig in Cosmos DB omdat de relevante aspecten automatisch worden beheerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -48,7 +48,7 @@ Met de Cassandra-API kunt u communiceren met gegevens die zijn opgeslagen in Azu
   - [.NET app](create-cassandra-dotnet.md)
   - [Python-app](create-cassandra-python.md)
 
-* Aan de slag met het [maken van een Cassandra-API-account,-data base en een tabel](create-cassandra-api-account-java.md) met behulp van een Java-toepassing.
+* Ga aan de slag met het [maken van een Cassandra-API-account, -database en een tabel](create-cassandra-api-account-java.md) met behulp van een Java-toepassing.
 
 * [Laad voorbeeldgegevens in de Cassandra-API-tabel](cassandra-api-load-data.md) met behulp van een Java-toepassing.
 

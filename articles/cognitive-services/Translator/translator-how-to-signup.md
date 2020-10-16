@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.openlocfilehash: a9050b85c974a3c04ca717e8fe3d5188c1bf7a40
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88244309"
 ---
 # <a name="how-to-sign-up-for-translator"></a>Aanmelden voor Translator
@@ -55,7 +55,7 @@ Micro soft Translator zorgt er in het algemeen voor dat uw eerste paar aanvragen
 
 - [Translator](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)
 
-## <a name="customization"></a>Aanpassing
+## <a name="customization"></a>Aanpassen
 
 Gebruik aangepaste vertaler om uw vertalingen aan te passen en een Vertaal systeem te maken dat is afgestemd op uw eigen terminologie en stijl, vanaf algemene micro soft Translator Neural machine translation-systemen. [Meer informatie](customization.md)
 

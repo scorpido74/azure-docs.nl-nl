@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 9f948fcc8ad36f8bef8b1ab6a1b74131faea9bd3
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 88bbd83d7ac5b834255c9b4d46d7cef4394f15d3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88068163"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968664"
 ---
 # <a name="azure-image-builder-service-devops-task"></a>Azure Image Builder service DevOps-taak
 
@@ -31,8 +31,8 @@ Er zijn twee taken voor Azure VM Image Builder (AIB) DevOps:
 * De [stabiele DevOps-taak installeren vanuit Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder).
 * U moet een VSTS DevOps-account hebben en een build-pijp lijn gemaakt
 * Registreer en schakel de functie vereisten voor Image Builder in het abonnement in dat door de pijp lijnen wordt gebruikt:
-    * [AZ Power shell](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-powershell#register-features)
-    * [AZ CLI](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder#register-the-features)
+    * [AZ Power shell](../windows/image-builder-powershell.md#register-features)
+    * [AZ CLI](../windows/image-builder.md#register-the-features)
     
 * Maak een standaard Azure Storage account in de resource groep bron afbeelding, kunt u andere resource groep-of opslag accounts gebruiken. Het opslag account wordt gebruikt om de build-artefacten van de DevOps-taak naar de installatie kopie te verplaatsen.
 
@@ -71,14 +71,14 @@ Gebruik de resource groep waarin de sjabloon artefact van de tijdelijke afbeeldi
  
 ### <a name="location"></a>Locatie
 
-De locatie is de regio waar de opbouw functie voor installatie kopieën wordt uitgevoerd. Alleen een set-aantal [regio's](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#regions) wordt ondersteund. De bron installatie kopieën moeten aanwezig zijn op deze locatie. Als u bijvoorbeeld galerie met gedeelde afbeeldingen gebruikt, moet er een replica in die regio bestaan.
+De locatie is de regio waar de opbouw functie voor installatie kopieën wordt uitgevoerd. Alleen een set-aantal [regio's](../windows/image-builder-overview.md#regions) wordt ondersteund. De bron installatie kopieën moeten aanwezig zijn op deze locatie. Als u bijvoorbeeld galerie met gedeelde afbeeldingen gebruikt, moet er een replica in die regio bestaan.
 
 ### <a name="managed-identity-required"></a>Beheerde identiteit (vereist)
-Voor de opbouw functie voor installatie kopieën is een beheerde identiteit vereist, die wordt gebruikt om aangepaste bron afbeeldingen te lezen, verbinding te maken met Azure Storage en aangepaste installatie kopieën te maken. Klik [hier](https://aka.ms/azvmimagebuilder#permissions) voor meer informatie.
+Voor de opbouw functie voor installatie kopieën is een beheerde identiteit vereist, die wordt gebruikt om aangepaste bron afbeeldingen te lezen, verbinding te maken met Azure Storage en aangepaste installatie kopieën te maken. Klik [hier](./image-builder-overview.md#permissions) voor meer informatie.
 
 ### <a name="vnet-support"></a>VNET-ondersteuning
 
-Op dit moment biedt de DevOps-taak geen ondersteuning voor het opgeven van een bestaand subnet. dit gebeurt op het schema, maar als u een bestaand VNET wilt gebruiken, kunt u met een ARM-sjabloon, waarbij een installatie kopie Builder-sjabloon is genest in, de Windows-installatie kopie maken voor beelden van de sjabloon om te zien hoe dit wordt bereikt, of gebruik [AZ AIB Power shell](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-powershell).
+Op dit moment biedt de DevOps-taak geen ondersteuning voor het opgeven van een bestaand subnet. dit gebeurt op het schema, maar als u een bestaand VNET wilt gebruiken, kunt u met een ARM-sjabloon, waarbij een installatie kopie Builder-sjabloon is genest in, de Windows-installatie kopie maken voor beelden van de sjabloon om te zien hoe dit wordt bereikt, of gebruik [AZ AIB Power shell](../windows/image-builder-powershell.md).
 
 ### <a name="source"></a>Bron
 
@@ -139,12 +139,12 @@ Selecteer de knop **pad bouwen** om de map build te kiezen die u op de installat
 
 In het volgende voor beeld wordt uitgelegd hoe dit werkt:
 
-:::image type="content" source="./media/image-builder-devops-task/build-artifacts.png" alt-text="Een mapstructuur waarin de hiërarchie wordt weer gegeven.":::
+:::image type="content" source="./media/image-builder-devops-task/build-artifacts.png" alt-text="Selecteer een artefact toevoegen in de release pijplijn.":::
 
 
 * Windows-bestanden bestaan in `C:\` . Er wordt een map `buildArtifacts` gemaakt met de naam die de `webapp` Directory bevat.
 
-* Linux-bestanden bestaan in `/tmp` . De `webapp` map wordt gemaakt, die alle bestanden en mappen bevat. U moet de bestanden uit deze map verplaatsen. Anders worden ze verwijderd omdat deze zich in de tijdelijke map bevindt.
+* Linux-bestanden bestaan in  `/tmp` . De `webapp` map wordt gemaakt, die alle bestanden en mappen bevat. U moet de bestanden uit deze map verplaatsen. Anders worden ze verwijderd omdat deze zich in de tijdelijke map bevindt.
 
 #### <a name="inline-customization-script"></a>Script voor inline-aanpassing
 
@@ -194,7 +194,7 @@ In het volgende voor beeld wordt uitgelegd hoe dit werkt:
     
 #### <a name="total-length-of-image-build"></a>Totale lengte van de afbeeldings opbouw
 
-De totale lengte kan nog niet worden gewijzigd in de pijplijn taak DevOps. De standaard instelling is 240 minuten. Als u de [buildTimeoutInMinutes](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-json?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fbreadcrumb%2Ftoc.json#properties-buildtimeoutinminutes)wilt verhogen, kunt u een AZ cli-taak gebruiken in de release pijplijn. Configureer de taak om een sjabloon te kopiëren en in te dienen. Zie deze [oplossing](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/4_Using_ENV_Variables#using-environment-variables-and-parameters-with-image-builder)voor een voor beeld of gebruik AZ Power shell.
+De totale lengte kan nog niet worden gewijzigd in de pijplijn taak DevOps. De standaard instelling is 240 minuten. Als u de [buildTimeoutInMinutes](./image-builder-json.md?bc=%252fazure%252fvirtual-machines%252fwindows%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json#properties-buildtimeoutinminutes)wilt verhogen, kunt u een AZ cli-taak gebruiken in de release pijplijn. Configureer de taak om een sjabloon te kopiëren en in te dienen. Zie deze [oplossing](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/4_Using_ENV_Variables#using-environment-variables-and-parameters-with-image-builder)voor een voor beeld of gebruik AZ Power shell.
 
 
 #### <a name="storage-account"></a>Opslagaccount
@@ -239,7 +239,7 @@ U kunt geen waarden door geven. met de opbouw functie voor installatie kopieën 
 
 * [VM-grootte](image-builder-json.md#vmprofile) : u kunt de grootte van de virtuele machine overschrijven van de standaard waarde van *Standard_D1_v2*. U kunt overschrijven om de totale aanpassings tijd te verminderen of omdat u de installatie kopieën wilt maken die afhankelijk zijn van bepaalde VM-grootten, zoals GPU/HPC, enzovoort.
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Uitleg
 
 Wanneer u de release maakt, maakt de taak een container in het opslag account met de naam *ImageBuilder-vststask*. Het zips en uploadt uw bouw artefacten en maakt een SAS-token voor het zip-bestand.
 
@@ -314,7 +314,7 @@ Als er een fout is opgetreden in de build, wordt de resource groep staging niet 
 
 Er wordt een fout melding weer geven in het DevOps-logboek voor de VM Image Builder-taak en de locatie van de aanpassings Logboeken. Bijvoorbeeld:
 
-:::image type="content" source="./media/image-builder-devops-task/devops-task-error.png" alt-text="Voor beeld van een DevOps taak fout waarin een fout wordt weer gegeven.":::
+:::image type="content" source="./media/image-builder-devops-task/devops-task-error.png" alt-text="Selecteer een artefact toevoegen in de release pijplijn.":::
 
 Zie [Troubleshooting Azure Image Builder service](image-builder-troubleshoot.md)(Engelstalig) voor meer informatie over het oplossen van problemen. 
 

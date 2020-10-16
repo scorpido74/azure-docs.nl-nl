@@ -8,10 +8,10 @@ ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 21e2b197c31a30ab8a249e2e8e398072a624154c
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89394088"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>Azure-beveiligings basislijn voor Azure Functions
@@ -541,7 +541,7 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-ge
 
 **Richt lijnen**: afzonderlijke abonnementen en/of beheer groepen implementeren voor ontwikkeling, testen en productie. Azure function-apps moeten worden gescheiden door de/subnet van het virtuele netwerk (VNet) en moeten op de juiste wijze worden gelabeld.
 
-U kunt ook privé-eind punten gebruiken om netwerk isolatie uit te voeren. Een persoonlijk Azure-eind punt is een netwerk interface waarmee u privé en veilig kunt verbinden met een service (bijvoorbeeld: Azure Functions HTTPs-eind punt van de app) met een persoonlijke Azure-koppeling. Privé-eind punt gebruikt een privé-IP-adres uit uw VNet, waardoor de service effectief in uw VNet wordt gezet. Persoonlijke eind punten zijn in (preview) voor functie-apps die worden uitgevoerd in het Premium-abonnement. Zorg ervoor dat privé-eind punten niet meer in (preview) zijn voordat u ze gebruikt met productie werkbelastingen.
+U kunt ook privé-eind punten gebruiken om netwerk isolatie uit te voeren. Een persoonlijk Azure-eind punt is een netwerk interface waarmee u privé en veilig kunt verbinden met een service (bijvoorbeeld: Azure Functions HTTPs-eind punt van de app) met een persoonlijke Azure-koppeling. Private Endpoint maakt gebruik van een privé-IP-adres van uw VNet, waarbij de service effectief in uw VNet wordt geplaatst. Persoonlijke eind punten zijn in (preview) voor functie-apps die worden uitgevoerd in het Premium-abonnement. Zorg ervoor dat privé-eind punten niet meer in (preview) zijn voordat u ze gebruikt met productie werkbelastingen.
 
 - [Aanvullende Azure-abonnementen maken](../cost-management-billing/manage/create-subscription.md)
 
@@ -1031,7 +1031,7 @@ Micro soft anti-malware is ingeschakeld op de onderliggende host die ondersteuni
 
 **Hulp**: gebruik de functie voor het maken en terugzetten van back-ups om regel matige back-ups van uw app te plannen. Functie-apps die worden uitgevoerd in het Premium-abonnement hebben dezelfde hosting mogelijkheden als web-apps in Azure App Service, die de functie back-up en herstellen bevatten.
 
-Maak ook gebruik van een broncode beheer oplossing zoals Azure opslag plaatsen en Azure DevOps om uw code veilig op te slaan en te beheren. Azure DevOps Services maakt gebruik van veel van de functies van Azure Storage om te zorgen voor de beschik baarheid van gegevens in het geval van hardwarestoringen, onderbreking van de service of de regionale nood situatie. Daarnaast volgt het Azure DevOps-team procedures voor het beveiligen van gegevens tegen onbedoelde of schadelijke verwijdering.
+Maak ook gebruik van een broncode beheer oplossing zoals Azure opslag plaatsen en Azure DevOps om uw code veilig op te slaan en te beheren. Azure DevOps Services maakt gebruik van veel van de functies van Azure Storage om te zorgen voor de beschikbaarheid van gegevens in het geval van hardwarestoringen, serviceonderbrekingen of een regionale noodsituatie. Daarnaast volgt het Azure DevOps-team procedures voor het beveiligen van gegevens tegen onbedoelde verwijdering of verwijdering met kwaadaardige opzet.
 
 - [Back-up maken van uw app in Azure](../app-service/manage-backup.md)
 
@@ -1049,7 +1049,7 @@ Maak ook gebruik van een broncode beheer oplossing zoals Azure opslag plaatsen e
 
 **Hulp**: gebruik de functie voor het maken en terugzetten van back-ups om regel matige back-ups van uw app te plannen. Functie-apps die worden uitgevoerd in het Premium-abonnement hebben dezelfde hosting mogelijkheden als web-apps in Azure App Service, die de functie back-up en herstellen bevatten. Back-ups van door de klant beheerde sleutels binnen Azure Key Vault.
 
-Maak ook gebruik van een broncode beheer oplossing zoals Azure opslag plaatsen en Azure DevOps om uw code veilig op te slaan en te beheren. Azure DevOps Services maakt gebruik van veel van de functies van Azure Storage om te zorgen voor de beschik baarheid van gegevens in het geval van hardwarestoringen, onderbreking van de service of de regionale nood situatie. Daarnaast volgt het Azure DevOps-team procedures voor het beveiligen van gegevens tegen onbedoelde of schadelijke verwijdering.
+Maak ook gebruik van een broncode beheer oplossing zoals Azure opslag plaatsen en Azure DevOps om uw code veilig op te slaan en te beheren. Azure DevOps Services maakt gebruik van veel van de functies van Azure Storage om te zorgen voor de beschikbaarheid van gegevens in het geval van hardwarestoringen, serviceonderbrekingen of een regionale noodsituatie. Daarnaast volgt het Azure DevOps-team procedures voor het beveiligen van gegevens tegen onbedoelde verwijdering of verwijdering met kwaadaardige opzet.
 
 - [Back-up maken van uw app in Azure](../app-service/manage-backup.md)
 
@@ -1083,11 +1083,11 @@ Maak ook gebruik van een broncode beheer oplossing zoals Azure opslag plaatsen e
 
 **Richt lijnen**: back-ups van de functie back-up en herstellen gebruiken een Azure Storage-account in uw abonnement. Azure Storage versleutelt alle gegevens in een opslag account in rust. Standaard worden gegevens versleuteld met door micro soft beheerde sleutels. Voor extra controle over versleutelings sleutels kunt u door de klant beheerde sleutels voor versleuteling van opslag gegevens leveren.
 
-Als u door de klant beheerde sleutels gebruikt, zorgt u ervoor dat de functie voor zacht verwijderen in Key Vault is ingeschakeld om sleutels te beschermen tegen onbedoelde of schadelijke verwijdering.
+Als u door de klant beheerde sleutels gebruikt, zorgt u ervoor dat Soft-Delete in Key Vault is ingeschakeld voor het beveiligen van sleutels tegen onbedoelde of schadelijke verwijdering.
 
 - [Versleuteling-at-rest in Azure Storage](../storage/common/storage-service-encryption.md)
 
-- [Zacht verwijderen inschakelen in Key Vault](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
+- [Soft-Delete in Key Vault inschakelen](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
 
 **Azure Security Center bewaking**: Ja
 

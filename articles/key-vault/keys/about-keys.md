@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: overview
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 29930a835297b0ddd3a91534dab9ccb6d74896e3
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 8ac5b0976e677cc48fb3fe47c50797b07acdbc44
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90967545"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91708863"
 ---
 # <a name="about-keys"></a>Over sleutels
 
@@ -47,7 +47,7 @@ Met HSM-beveiligde sleutels (ook wel HSM-sleutels genoemd) worden verwerkt in ee
 - Kluizen gebruiken **FIPS 140-2 Level 2** gevalideerde HSM's om HSM-sleutels in gedeelde HSM-backend-infrastructuur te beschermen. 
 - Beheerde HSM-pools maken gebruik van **FIPS 140-2 Level 3** gevalideerde HSM-modules om sleutels te beschermen. Elke HSM-pool is een geïsoleerd single-tenant exemplaar met een eigen [beveiligingsdomein](../managed-hsm/security-domain.md) dat volledige cryptografische isolatie biedt van alle andere HSM-pools die dezelfde hardware-infrastructuur delen.
 
-Deze sleutels worden beveiligd in HSM-groepen van één tenant. U een RSA-, EC- en symmetrische sleutel importeren, in zachte vorm of door te exporteren vanaf een ondersteund HSM-apparaat. U kunt ook sleutels genereren in HSM-pools. Wanneer u HSM-sleutels importeert met behulp van de-methode die wordt beschreven in de specificatie [BYOK (uw eigen sleutel gebruiken)](../keys/byok-specification.md), wordt het sleutelmateriaal voor beveiligd transport in beheerde HSM-pools ingeschakeld. 
+Deze sleutels worden beveiligd in HSM-groepen van één tenant. U een RSA-, EC- en symmetrische sleutel importeren, in zachte vorm of door te exporteren vanaf een ondersteund HSM-apparaat. U kunt ook sleutels genereren in HSM-pools. Wanneer u HSM-sleutels importeert met behulp van de methode die wordt beschreven in de specificatie [BYOK (uw eigen sleutel gebruiken)](../keys/byok-specification.md), wordt het sleutelmateriaal voor beveiligd transport in beheerde HSM-pools ingeschakeld. 
 
 Zie [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/privacy/) voor meer informatie over geografische grenzen
 

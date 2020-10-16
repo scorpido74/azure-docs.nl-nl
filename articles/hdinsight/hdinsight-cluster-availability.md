@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/01/2020
 ms.openlocfilehash: 615e23dc388f36f5ae1cd7e0d846acc14ffa2236
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86086412"
 ---
 # <a name="how-to-monitor-cluster-availability-with-apache-ambari-in-azure-hdinsight"></a>De beschik baarheid van clusters bewaken met Apache Ambari in azure HDInsight
@@ -55,7 +55,7 @@ Als u een lijst met waarschuwings definities en hun statussen wilt weer geven, s
 
 Ambari biedt veel vooraf gedefinieerde waarschuwingen met betrekking tot Beschik baarheid, waaronder:
 
-| Naam van waarschuwing                        | Description   |
+| Naam van waarschuwing                        | Beschrijving   |
 |---|---|
 | DataNode status overzicht           | Deze waarschuwing op service niveau wordt geactiveerd als er sprake is van een slechte DataNodes|
 | Status van hoge Beschik baarheid van NameNode | Deze waarschuwing op service niveau wordt geactiveerd als de actieve NameNode of stand-NameNode niet actief is.|

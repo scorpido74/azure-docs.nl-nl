@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
 ms.openlocfilehash: fdd5f7d291d9c56361c17547628795b378091109
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91443442"
 ---
 # <a name="using-the-recoverymanager-class-to-fix-shard-map-problems"></a>Problemen met shard-toewijzingen oplossen met de RecoveryManager-klasse
@@ -29,7 +29,7 @@ De klasse toewijzingen oplossen maakt deel uit van de [Elastic database-client b
 
 ![Shard-kaart][1]
 
-Zie [Elastic database extra woorden lijst](elastic-scale-glossary.md)voor termen definities. Zie [Shard map Management](elastic-scale-shard-map-management.md)voor informatie over hoe de **ShardMapManager** wordt gebruikt voor het beheren van gegevens in een Shard-oplossing.
+Zie de [woordenlijst voor hulpprogramma's van de elastische database](elastic-scale-glossary.md) voor definities van termen. Zie [Shard map Management](elastic-scale-shard-map-management.md)voor informatie over hoe de **ShardMapManager** wordt gebruikt voor het beheren van gegevens in een Shard-oplossing.
 
 ## <a name="why-use-the-recovery-manager"></a>Waarom de Recovery Manager gebruiken?
 

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: b3a0b904d65e6597c058ccf05ec837696e9ca20e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/10/2020
+ms.openlocfilehash: 14f08502f35afdc8a9a2cdc741b539b5f9cca712
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893622"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945585"
 ---
 # <a name="select-columns-transform"></a>Kolomtransformatie selecteren
 
@@ -46,8 +46,14 @@ In dit scenario wordt ervan uitgegaan dat u de functie selectie wilt gebruiken o
 
    *Verbind de invoer gegevensset niet.* Voeg in plaats daarvan de module [trans formatie Toep assen](apply-transformation.md) toe en verbind de uitvoer van de functie selectie transformatie.
 
+   De pijplijn structuur moet er als volgt uitzien:
+
+   > [!div class="mx-imgBorder"]
+   > ![Voorbeeld pijplijn](media/module/filter-based-feature-selection-score.png)
+
    > [!IMPORTANT]
    > Het is niet mogelijk om op [filters gebaseerde functie selectie](filter-based-feature-selection.md) toe te passen op de Score gegevensset en dezelfde resultaten te verkrijgen. Omdat de functie selectie is gebaseerd op waarden, kan er een andere set kolommen worden gekozen, waardoor de Score bewerking mislukt.
+    
 7. Verzend de pijp lijn.
 
 Dit proces voor het opslaan en vervolgens Toep assen van een kolom selectie zorgt ervoor dat hetzelfde gegevens schema beschikbaar is voor training en scores.

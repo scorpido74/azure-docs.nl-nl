@@ -14,10 +14,10 @@ ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
 ms.openlocfilehash: 7d937542201792c0d1c0be69df9bd1c2b34edea3
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89434466"
 ---
 # <a name="virtual-network-service-endpoints"></a>Service-eindpunten voor virtueel netwerk
@@ -62,7 +62,7 @@ Service-eindpunten bieden de volgende voordelen:
 
 - De functie is alleen beschikbaar voor virtuele netwerken die zijn geïmplementeerd met behulp van het Azure Resource Manager-implementatiemodel.
 - Eindpunten worden ingeschakeld in subnetten die zijn geconfigureerd in virtuele Azure-netwerken. Eind punten kunnen niet worden gebruikt voor verkeer van uw locatie naar Azure-Services. Zie voor meer informatie [Secure Azure Service Access van on-premises](#secure-azure-services-to-virtual-networks)
-- Voor Azure SQL geldt een service-eindpunt alleen voor Azure-serviceverkeer binnen de regio van een virtueel netwerk. Voor Azure Storage worden eind punten ook uitgebreid met gekoppelde regio's waar u het virtuele netwerk implementeert ter ondersteuning van geografisch redundante opslag met lees toegang (RA-GRS) en GRS-verkeer (geo-redundante opslag). Zie [gekoppelde Azure-regio's](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions)voor meer informatie.
+- Voor Azure SQL geldt een service-eindpunt alleen voor Azure-serviceverkeer binnen de regio van een virtueel netwerk. Voor Azure Storage worden eind punten ook uitgebreid met gekoppelde regio's waar u het virtuele netwerk implementeert ter ondersteuning van Read-Access-verkeer Geo-Redundant Storage (RA-GRS) en Geo-Redundant Storage (GRS). Zie [gekoppelde Azure-regio's](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions)voor meer informatie.
 - Voor Azure Data Lake Storage (ADLS) gen 1 is de integratie mogelijkheid voor VNet alleen beschikbaar voor virtuele netwerken binnen dezelfde regio. Houd er ook rekening mee dat de virtuele netwerk integratie voor ADLS Gen1 de eindpunt beveiliging van het virtuele netwerk tussen uw virtuele netwerk en Azure Active Directory (Azure AD) gebruikt om extra beveiligings claims in het toegangs token te genereren. Deze claims worden vervolgens gebruikt om het virtuele netwerk te verifiëren bij het Data Lake Storage Gen1-account en toegang toe te staan. De tag *micro soft. AzureActiveDirectory* die wordt vermeld onder Services die service-eind punten ondersteunen, wordt alleen gebruikt voor de ondersteuning van service-eind punten voor ADLS gen 1. Azure AD biedt geen ondersteuning voor service-eind punten. Zie [netwerk beveiliging in azure data Lake Storage gen1](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)voor meer informatie over de integratie van Azure data Lake Store gen 1-VNet.
 
 ## <a name="secure-azure-services-to-virtual-networks"></a>Azure-Services beveiligen met virtuele netwerken

@@ -13,10 +13,10 @@ ms.author: abnarain
 manager: anandsub
 robots: noindex
 ms.openlocfilehash: c64c40e96c0ff5864e5b9c9d34bad896c0b03d91
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89441694"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server opgeslagen procedure-activiteit
@@ -86,7 +86,7 @@ In de volgende procedure wordt gebruikgemaakt van de opgeslagen procedure-activi
    > [!IMPORTANT]
    > **Naam** en **behuizing** van de para meter (datetime in dit voor beeld) moet overeenkomen met de para meter die is opgegeven in de JSON van de pijp lijn/activiteit. Zorg ervoor dat in de opgeslagen procedure definitie **\@** wordt gebruikt als voor voegsel voor de para meter.
 
-### <a name="create-a-data-factory"></a>Een gegevensfactory maken
+### <a name="create-a-data-factory"></a>Een data factory maken
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Klik op **Nieuw** in het menu links, klik op **Intelligence en analytische**gegevens en klik op **Data Factory**.
 
@@ -305,13 +305,13 @@ In de volgende tabel worden deze JSON-eigenschappen beschreven:
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| naam | Naam van de activiteit |Yes |
-| description |Tekst waarin wordt beschreven waarvoor de activiteit wordt gebruikt |No |
-| type | Moet worden ingesteld op: **SqlServerStoredProcedure** | Yes |
-| invoer | Optioneel. Als u een invoer-gegevensset opgeeft, moet deze beschikbaar zijn (in de status gereed) voor het uitvoeren van de opgeslagen procedure activiteit. De invoer gegevensset kan niet worden gebruikt in de opgeslagen procedure als een para meter. Het wordt alleen gebruikt voor het controleren van de afhankelijkheid voordat de opgeslagen procedure activiteit wordt gestart. |No |
-| uitvoer | U moet een uitvoer gegevensset opgeven voor een opgeslagen procedure-activiteit. Uitvoer gegevensset Hiermee geeft u de **planning** op voor de opgeslagen procedure activiteit (elk uur, wekelijks, maandelijks, enzovoort). <br/><br/>De uitvoer gegevensset moet een **gekoppelde service** gebruiken die verwijst naar een Azure SQL database of Azure Synapse Analytics of een SQL Server-Data Base waarin u de opgeslagen procedure wilt uitvoeren. <br/><br/>De uitvoer gegevensset kan worden gebruikt als een manier om het resultaat van de opgeslagen procedure voor verdere verwerking door een andere activiteit (het[koppelen van activiteiten](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) in de pijp lijn) door te geven. Data Factory schrijft de uitvoer van een opgeslagen procedure echter niet automatisch naar deze gegevensset. Het is de opgeslagen procedure die naar een SQL-tabel schrijft waarnaar de uitvoer-gegevensset verwijst. <br/><br/>In sommige gevallen kan de uitvoer gegevensset een dummy- **gegevensset**zijn, die alleen wordt gebruikt om de planning op te geven voor het uitvoeren van de opgeslagen procedure activiteit. |Yes |
-| storedProcedureName |Geef de naam op van de opgeslagen procedure in Azure SQL Database, Azure Synapse Analytics of SQL Server die wordt vertegenwoordigd door de gekoppelde service die door de uitvoer tabel wordt gebruikt. |Yes |
-| storedProcedureParameters |Geef waarden op voor opgeslagen procedure parameters. Als u null moet door geven voor een para meter, gebruikt u de syntaxis: "param1": Null (alle kleine letters). Raadpleeg het volgende voor beeld voor meer informatie over het gebruik van deze eigenschap. |No |
+| naam | Naam van de activiteit |Ja |
+| description |Tekst waarin wordt beschreven waarvoor de activiteit wordt gebruikt |Nee |
+| type | Moet worden ingesteld op: **SqlServerStoredProcedure** | Ja |
+| invoer | Optioneel. Als u een invoer-gegevensset opgeeft, moet deze beschikbaar zijn (in de status gereed) voor het uitvoeren van de opgeslagen procedure activiteit. De invoer gegevensset kan niet worden gebruikt in de opgeslagen procedure als een para meter. Het wordt alleen gebruikt voor het controleren van de afhankelijkheid voordat de opgeslagen procedure activiteit wordt gestart. |Nee |
+| uitvoer | U moet een uitvoer gegevensset opgeven voor een opgeslagen procedure-activiteit. Uitvoer gegevensset Hiermee geeft u de **planning** op voor de opgeslagen procedure activiteit (elk uur, wekelijks, maandelijks, enzovoort). <br/><br/>De uitvoer gegevensset moet een **gekoppelde service** gebruiken die verwijst naar een Azure SQL database of Azure Synapse Analytics of een SQL Server-Data Base waarin u de opgeslagen procedure wilt uitvoeren. <br/><br/>De uitvoer gegevensset kan worden gebruikt als een manier om het resultaat van de opgeslagen procedure voor verdere verwerking door een andere activiteit (het[koppelen van activiteiten](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) in de pijp lijn) door te geven. Data Factory schrijft de uitvoer van een opgeslagen procedure echter niet automatisch naar deze gegevensset. Het is de opgeslagen procedure die naar een SQL-tabel schrijft waarnaar de uitvoer-gegevensset verwijst. <br/><br/>In sommige gevallen kan de uitvoer gegevensset een dummy- **gegevensset**zijn, die alleen wordt gebruikt om de planning op te geven voor het uitvoeren van de opgeslagen procedure activiteit. |Ja |
+| storedProcedureName |Geef de naam op van de opgeslagen procedure in Azure SQL Database, Azure Synapse Analytics of SQL Server die wordt vertegenwoordigd door de gekoppelde service die door de uitvoer tabel wordt gebruikt. |Ja |
+| storedProcedureParameters |Geef waarden op voor opgeslagen procedure parameters. Als u null moet door geven voor een para meter, gebruikt u de syntaxis: "param1": Null (alle kleine letters). Raadpleeg het volgende voor beeld voor meer informatie over het gebruik van deze eigenschap. |Nee |
 
 ## <a name="passing-a-static-value"></a>Een statische waarde door geven
 Nu kunt u een andere kolom met de naam scenario toevoegen aan de tabel met een statische waarde met de naam document Sample.

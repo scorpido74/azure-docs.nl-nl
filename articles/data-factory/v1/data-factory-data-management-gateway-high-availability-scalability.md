@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 4ee89f4bba70bb5e81eef21247d556f65a2a1f16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80065197"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Data Management Gateway-hoge Beschik baarheid en schaal baarheid (preview-versie)
@@ -133,7 +133,7 @@ In deze sectie wordt ervan uitgegaan dat u de volgende twee artikelen hebt door 
 U kunt een bestaande gateway bijwerken voor gebruik van de functie hoge Beschik baarheid en schaal baarheid. Deze functie werkt alleen met knoop punten die de Data Management Gateway van versie >= 2.12. xxxx hebben. U kunt de versie van de Data Management gateway die op een computer is geïnstalleerd, bekijken op het tabblad **Help** van de Data Management Gateway Configuration Manager. 
 
 1. Werk de gateway op de on-premises machine bij naar de meest recente versie door de volgende MSI-installatie pakket te downloaden en uit te voeren vanuit het [micro soft Download centrum](https://www.microsoft.com/download/details.aspx?id=39717). Zie de sectie [installatie](data-factory-data-management-gateway.md#installation) voor meer informatie.  
-2. Ga naar Azure Portal. Start de **Data Factory-pagina** voor uw Data Factory. Klik op de tegel gekoppelde services om de **pagina gekoppelde services**te starten. Selecteer de gateway om de **Gateway pagina**te starten. Klik en Schakel **Preview-functie** in, zoals wordt weer gegeven in de volgende afbeelding: 
+2. Navigeer naar de Azure Portal. Start de **Data Factory-pagina** voor uw Data Factory. Klik op de tegel gekoppelde services om de **pagina gekoppelde services**te starten. Selecteer de gateway om de **Gateway pagina**te starten. Klik en Schakel **Preview-functie** in, zoals wordt weer gegeven in de volgende afbeelding: 
 
     ![Data Management Gateway-preview-functie inschakelen](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-existing-gateway-enable-high-availability.png)   
 2. Zodra de preview-functie is ingeschakeld in de portal, sluit u alle pagina's. Open de **pagina gateway** opnieuw om de nieuwe preview-gebruikers interface (UI) weer te geven.

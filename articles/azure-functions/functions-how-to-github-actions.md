@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, github-actions-azure
-ms.openlocfilehash: 48482658fdabc3e826b6855c500829a16c166749
-ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
+ms.openlocfilehash: 3f35a8130c834112961f4542883704c2b8dbd08f
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91851115"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999244"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Continue levering met behulp van GitHub-actie
 
@@ -32,6 +32,18 @@ Voor een Azure Functions werk stroom heeft het bestand drie secties:
 > [!NOTE]
 > U hoeft geen service-principal te maken als u het publicatie profiel voor verificatie wilt gebruiken.
 
+## <a name="downloading-and-using-a-publish-profile-as-deployment-credential-recommended"></a>Een publicatie profiel als implementatie referentie downloaden en gebruiken (aanbevolen)
+
+Het publicatie Profiel van uw functie-app downloaden:
+
+1. Selecteer de pagina **overzicht** van de functie-app en selecteer vervolgens **publicatie profiel ophalen**.
+
+   :::image type="content" source="media/functions-how-to-github-actions/get-publish-profile.png" alt-text="Publicatie profiel downloaden":::
+
+1. Sla de inhoud van het bestand met publicatie-instellingen op en kopieer het.
+
+## <a name="create-a-service-principal-deprecated"></a>Een service-principal maken (afgeschaft)
+=======
 ## <a name="prerequisites"></a>Vereisten
 
 - Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
@@ -44,7 +56,8 @@ Voor een Azure Functions werk stroom heeft het bestand drie secties:
 
 De aanbevolen manier om te verifiëren met Azure Functions voor GitHub-acties is met een publicatie profiel. U kunt ook verifiëren met een Service-Principal, maar voor het proces zijn meer stappen vereist. 
 
-Sla de referentie of service-principal voor het publicatie profiel op als een [github-geheim](https://docs.github.com/en/actions/reference/encrypted-secrets) voor verificatie bij Azure. U hebt toegang tot het geheim in uw werk stroom. 
+## <a name="configure-the-github-secret"></a>Het GitHub-geheim configureren
+= = = = = = = Sla de referentie of service-principal voor het publicatie profiel op als een [github-geheim](https://docs.github.com/en/actions/reference/encrypted-secrets) voor verificatie met Azure. U hebt toegang tot het geheim in uw werk stroom. 
 
 # <a name="publish-profile"></a>[Profiel publiceren](#tab/publish-profile)
 
@@ -99,7 +112,7 @@ GitHub kan nu worden geverifieerd bij uw functie-app in Azure.
 
 Het instellen van de omgeving wordt uitgevoerd met een taalspecifiek installatie actie voor de publicatie.
 
-|**Japanse**  |**Installatie actie**  |
+|**Taal**  |**Installatie actie**  |
 |---------|---------|
 |**.NET**     | `actions/setup-dotnet` |
 |**ASP.NET**     | `actions/setup-dotnet` |

@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: duau
 ms.openlocfilehash: 21076fe23301c189d9987f78706cc81691ce7a4f
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89400531"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>Power shell gebruiken voor het beheren van Traffic Manager
@@ -109,7 +109,7 @@ Er zijn drie soorten Traffic Manager-eind punten:
 In alle drie de gevallen kunnen eind punten op twee manieren worden toegevoegd:
 
 1. U gebruikt een proces van drie stappen dat eerder is beschreven. Het voor deel van deze methode is dat verschillende wijzigingen in het eind punt kunnen worden aangebracht in één update.
-2. Met de cmdlet New-AzTrafficManagerEndpoint. Met deze cmdlet wordt een eind punt toegevoegd aan een bestaand Traffic Manager profiel in één bewerking.
+2. De cmdlet New-AzTrafficManagerEndpoint gebruiken. Met deze cmdlet wordt een eind punt toegevoegd aan een bestaand Traffic Manager profiel in één bewerking.
 
 ## <a name="adding-azure-endpoints"></a>Azure-eindpunten toevoegen
 
@@ -267,7 +267,7 @@ Een Traffic Manager profiel uitschakelen:
 Disable-AzTrafficManagerProfile -Name MyProfile -ResourceGroupName MyResourceGroup
 ```
 
-De cmdlet Disable-AzTrafficManagerProfile vraagt om bevestiging. Deze prompt kan worden onderdrukt met de para meter-Force.
+De Disable-AzTrafficManagerProfile-cmdlet vraagt om bevestiging. Deze prompt kan worden onderdrukt met de para meter-Force.
 
 ### <a name="example-2-enabling-and-disabling-a-traffic-manager-endpoint"></a>Voor beeld 2: een Traffic Manager-eind punt in-en uitschakelen
 

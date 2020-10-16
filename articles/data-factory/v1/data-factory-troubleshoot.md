@@ -14,10 +14,10 @@ ms.reviewer: maghan
 manager: anandsub
 robots: noindex
 ms.openlocfilehash: 45aa444393ed81bc320a770203ca114c35e16107
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84195906"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Problemen met Data Factory oplossen
@@ -47,16 +47,16 @@ Als u dit foutbericht ontvangt, is de resourceprovider van Azure Data Factory ni
 ### <a name="problem-unauthorized-error-when-running-a-data-factory-cmdlet"></a>Probleem: niet-geautoriseerde fout bij het uitvoeren van een Data Factory-cmdlet
 Waarschijnlijk gebruikt u een verkeerd Azure-account of -abonnement met de Azure PowerShell. Gebruik de volgende cmdlets om het juiste Azure-account en -abonnement te selecteren voor gebruik met de Azure PowerShell.
 
-1. Connect-AzAccount-juiste gebruikers-ID en wacht woord gebruiken
+1. Connect-AzAccount-gebruik de juiste gebruikers-ID en wacht woord
 2. Get-AzSubscription: alle abonnementen voor het account weer geven.
-3. Selecteer &lt; de naam van &gt; het AzSubscription-abonnement: Selecteer het juiste abonnement. Gebruik dezelfde versie die u gebruikt om een data factory te maken op de Azure Portal.
+3. Naam van Select-AzSubscription &lt; abonnement &gt; : Selecteer het juiste abonnement. Gebruik dezelfde versie die u gebruikt om een data factory te maken op de Azure Portal.
 
 ### <a name="problem-fail-to-launch-data-management-gateway-express-setup-from-azure-portal"></a>Probleem: starten van Data Management Gateway snelle installatie mislukt vanuit Azure Portal
 Voor de snelle installatie voor Data Management Gateway is Internet Explorer vereist of een webbrowser die compatibel is met Microsoft ClickOnce. Als u de snelle installatie niet kunt starten, voert u een van de volgende handelingen uit:
 
 * Gebruik Internet Explorer of een webbrowser die compatibel is met micro soft ClickOnce.
 
-    Als u met Chrome werkt, gaat u naar de [Chrome Web Store](https://chrome.google.com/webstore/), zoekt u op het trefwoord 'ClickOnce', en kiest en installeert u een van de ClickOnce-extensies.
+    Als u Chrome gebruikt, gaat u naar de [Chrome-webwinkel](https://chrome.google.com/webstore/), zoekt u met het sleutel woord ' ClickOnce ', kiest u een van de ClickOnce-extensies en installeert u het.
 
     Doe hetzelfde voor Firefox (invoeg toepassing installeren). Klik op de knop Menu openen op de werkbalk (drie horizontale lijnen in de rechterbovenhoek). Klik vervolgens op Invoegtoepassingen, zoek op het trefwoord 'ClickOnce', kies een van de ClickOnce-extensies en installeer deze.
 * Gebruik de koppeling **hand matige installatie** die wordt weer gegeven op dezelfde Blade in de portal. U kunt deze methode gebruiken om het installatie bestand te downloaden en het hand matig uit te voeren. Nadat de installatie is voltooid, ziet u het dialoog venster Data Management Gateway configuratie. Kopieer de **sleutel** uit het portalscherm en gebruik deze in Configuratiebeheer om de gateway handmatig bij de service te registreren.  

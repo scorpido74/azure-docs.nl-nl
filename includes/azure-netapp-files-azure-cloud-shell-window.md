@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 09/10/2019
 ms.author: b-juche
 ms.custom: include file
-ms.openlocfilehash: 3a63fd96b09910b0cd7ee8c3ab9947b034173c8f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: e78be737ef8d191cddc2da0f738250ca04cae9a1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "71836297"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91672177"
 ---
-1. Geef het abonnement op dat is white list voor Azure NetApp Files:
+1. Geef het abonnement op dat is goedgekeurd voor Azure NetApp Files:
     
     ```azurecli-interactive
     az account set --subscription <subscriptionId>
     ```
 
-1. De Azure-resource provider registreren: 
+1. Registreer de Azure Resourceprovider: 
     
     ```azurecli-interactive
     az provider register --namespace Microsoft.NetApp --wait  

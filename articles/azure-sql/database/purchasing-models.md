@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/28/2020
 ms.openlocfilehash: aef29eef7eb53c4cc4ffcc4926f9efe533374178
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319449"
 ---
 # <a name="choose-between-the-vcore-and-dtu-purchasing-models---azure-sql-database-and-sql-managed-instance"></a>Kiezen tussen de vCore-en DTU-aankoop modellen-Azure SQL Database en SQL Managed instance
@@ -102,7 +102,7 @@ De verhouding tussen deze resources wordt oorspronkelijk bepaald door een [OLTP-
 
 De resources die door uw werk belasting worden gebruikt, hebben geen invloed op de resources die beschikbaar zijn voor andere data bases in de Azure-Cloud. De resources die worden gebruikt door andere workloads, hebben ook geen invloed op de resources die beschikbaar zijn voor uw data base.
 
-![Selectie kader](./media/purchasing-models/bounding-box.png)
+![Begrenzingsvak](./media/purchasing-models/bounding-box.png)
 
 Dtu's zijn het handigst om te weten wat de relatieve resources zijn die zijn toegewezen voor data bases met verschillende reken grootten en service lagen. Bijvoorbeeld:
 
@@ -127,7 +127,7 @@ U kunt extra Edtu's toevoegen aan een bestaande pool zonder uitval tijd van de d
 
 ### <a name="determine-the-number-of-dtus-needed-by-a-workload"></a>Het aantal Dtu's bepalen dat nodig is voor een workload
 
-Als u een bestaande on-premises of SQL Server werk belasting van virtuele machine naar SQL Database wilt migreren, gebruikt u de [DTU-reken machine](https://dtucalculator.azurewebsites.net/) om het aantal benodigde dtu's te benaderen. Gebruik voor een bestaande SQL Database workload [query-prestatie inzichten](query-performance-insight-use.md) om inzicht te krijgen in uw database verbruik (dtu's) en krijg meer inzicht in het optimaliseren van uw werk belasting. Met de weer gave [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) Dynamic Management (DMV) kunt u het Resource verbruik voor het afgelopen uur weer geven. In de catalogus weergave [sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) wordt het Resource verbruik voor de afgelopen 14 dagen weer gegeven, maar een lagere betrouw baarheid van gemiddelden van vijf minuten.
+Als u een bestaande on-premises of SQL Server werk belasting van virtuele machine naar SQL Database wilt migreren, gebruikt u de [DTU-reken machine](https://dtucalculator.azurewebsites.net/) om het aantal benodigde dtu's te benaderen. Gebruik voor een bestaande SQL Database workload [query-prestatie inzichten](query-performance-insight-use.md) om inzicht te krijgen in uw database verbruik (dtu's) en krijg meer inzicht in het optimaliseren van uw werk belasting. Met de [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) dynamische beheer weergave (DMV) kunt u het Resource verbruik voor het afgelopen uur weer geven. In de catalogus weergave van de [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) wordt het Resource verbruik voor de afgelopen 14 dagen weer gegeven, maar een lagere betrouw baarheid van gemiddelden van vijf minuten.
 
 ### <a name="determine-dtu-utilization"></a>DTU-gebruik bepalen
 
@@ -135,7 +135,7 @@ Gebruik de volgende formule om het gemiddelde percentage van DTU/eDTU-gebruik te
 
 `avg_dtu_percent = MAX(avg_cpu_percent, avg_data_io_percent, avg_log_write_percent)`
 
-De invoer waarden voor deze formule kunnen worden verkregen uit [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database), [sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)en [sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) dmv's. Met andere woorden, om het percentage van DTU/eDTU-gebruik te bepalen ten opzichte van de DTU/eDTU-limiet van een Data Base of een elastische pool, kiest u de hoogste percentage waarde uit de volgende opties: `avg_cpu_percent` , `avg_data_io_percent` en `avg_log_write_percent` op een bepaald moment.
+De invoer waarden voor deze formule kunnen worden verkregen uit [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database), [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)en [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) dmv's. Met andere woorden, om het percentage van DTU/eDTU-gebruik te bepalen ten opzichte van de DTU/eDTU-limiet van een Data Base of een elastische pool, kiest u de hoogste percentage waarde uit de volgende opties: `avg_cpu_percent` , `avg_data_io_percent` en `avg_log_write_percent` op een bepaald moment.
 
 > [!NOTE]
 > De DTU-limiet van een Data Base wordt bepaald door CPU, lees bewerkingen, schrijf bewerkingen en geheugen dat beschikbaar is voor de data base. Maar omdat de SQL Database-Engine doorgaans al het beschik bare geheugen gebruikt voor de gegevens cache om de prestaties te verbeteren, `avg_memory_usage_percent` wordt de waarde doorgaans bijna 100 procent, ongeacht de huidige laad capaciteit van de data base. Daarom wordt het niet gebruikt in de formule voor het DTU-gebruik, zelfs als het geheugen indirect van invloed is op de DTU-limiet.

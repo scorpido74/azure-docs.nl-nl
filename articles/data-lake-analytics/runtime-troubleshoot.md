@@ -8,15 +8,15 @@ ms.topic: troubleshooting
 ms.workload: big-data
 ms.date: 10/10/2019
 ms.openlocfilehash: 39b4a3bc5e5f70a5699f4fd84ec86dc61cf21483
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87475257"
 ---
 # <a name="learn-how-to-troubleshoot-u-sql-runtime-failures-due-to-runtime-changes"></a>Meer informatie over het oplossen van problemen met U-SQL-runtime als gevolg van runtime wijzigingen
 
-De Azure Data Lake U-SQL-runtime, met inbegrip van compiler, Optimizer en taak beheer, is wat uw U-SQL-code verwerkt.
+De Azure Data Lake U-SQL-runtime, met inbegrip van compiler, optimizer en taakbeheer, is datgene waarmee uw U-SQL-code wordt verwerkt.
 
 ## <a name="choosing-your-u-sql-runtime-version"></a>Uw U-SQL-runtime versie kiezen
 
@@ -25,7 +25,7 @@ Wanneer u u-SQL-taken vanuit Visual Studio, de ADL-SDK of de Azure Data Lake Ana
 U kunt ook een aangepaste runtime versie kiezen. omdat u een nieuwe update wilt uitproberen, moet u een oudere versie van een runtime blijven of zijn voorzien van een hotfix voor een gemeld probleem waarin u niet kunt wachten op de gewone nieuwe update.
 
 > [!CAUTION]
-> Het kiezen van een runtime die afwijkt van de standaard waarde, is de kans om uw U-SQL-taken te verbreken. Gebruik deze andere versies alleen voor test doeleinden.
+> Als u een runtime kiest die verschilt van de standaardinstelling, kunt u uw U-SQL-taken onderbreken. Gebruik deze andere versies alleen voor test doeleinden.
 
 In zeldzame gevallen kan Microsoft Ondersteuning een andere versie van een runtime vastmaken als de standaard waarde voor uw account. Zorg ervoor dat u deze pincode zo snel mogelijk herstelt. Als u vastmaakt aan die versie, verloopt deze op een later tijdstip.
 
@@ -55,7 +55,7 @@ Er zijn twee mogelijke runtime-versie problemen die kunnen optreden:
 
 2. U hebt een niet-standaard runtime gebruikt, hetzij expliciet, impliciet als deze is vastgemaakt aan uw account en deze runtime is na enige tijd verwijderd. Als er ontbrekende Runtimes optreden, moet u uw scripts bijwerken om uit te voeren met de huidige standaard runtime. Als u meer tijd nodig hebt, neemt u contact op met Microsoft Ondersteuning
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 - [Overzicht van Azure Data Lake Analytics](data-lake-analytics-overview.md)
 - [Azure Data Lake Analytics beheren met Azure Portal](data-lake-analytics-manage-use-portal.md)

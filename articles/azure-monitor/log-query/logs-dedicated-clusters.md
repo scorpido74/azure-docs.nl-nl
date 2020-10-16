@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: 714a43ec197ac150488d4443c1eb6fe1be1da232
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 845336385fe7490d4c62df41af873c237ae34871
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91575517"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996324"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor logboeken toegewezen clusters
 
@@ -49,7 +49,7 @@ Er zijn twee facturerings methoden voor gebruik in een cluster. Deze kunnen word
 
 1. **Cluster**: in dit geval (dit is de standaard instelling), wordt de facturering voor opgenomen gegevens uitgevoerd op het cluster niveau. De opgenomen gegevens aantallen uit elke werk ruimte die aan een cluster is gekoppeld, worden geaggregeerd voor het berekenen van de dagelijkse factuur voor het cluster. 
 
-2. **Werk ruimten**: de kosten voor de capaciteits reservering voor uw cluster worden proportioneel toegeschreven aan de werk ruimten in het cluster (na de accounting van toewijzingen per knoop punt van [Azure Security Center](https://docs.microsoft.com/azure/security-center/) voor elke werk ruimte.)
+2. **Werk ruimten**: de kosten voor de capaciteits reservering voor uw cluster worden proportioneel toegeschreven aan de werk ruimten in het cluster (na de accounting van toewijzingen per knoop punt van [Azure Security Center](../../security-center/index.yml) voor elke werk ruimte.)
 
 Houd er rekening mee dat als uw werk ruimte verouderde prijs categorie per knoop punt gebruikt, wanneer deze is gekoppeld aan een cluster, wordt gefactureerd op basis van gegevens die zijn opgenomen in de capaciteits reservering van het cluster en niet langer per knoop punt. Gegevens toewijzingen per knoop punt van Azure Security Center worden nog steeds toegepast.
 
@@ -116,12 +116,12 @@ Moet 200 OK en een kop zijn.
 
 Het inrichten van het Log Analytics cluster duurt enige tijd. U kunt de inrichtings status op verschillende manieren controleren:
 
-- Voer de opdracht Get-AzOperationalInsightsCluster Power shell uit met de naam van de resource groep en controleer de eigenschap ProvisioningState. De waarde is *ProvisioningAccount* *tijdens het inrichten en voltooid* .
+- Voer Get-AzOperationalInsightsCluster Power shell-opdracht uit met de naam van de resource groep en controleer de eigenschap ProvisioningState. De waarde is *ProvisioningAccount* *tijdens het inrichten en voltooid* .
   ```powershell
   New-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} 
   ```
 
-- Kopieer de URL-waarde voor Azure-AsyncOperation uit het antwoord en volg de controle van de asynchrone bewerkings status.
+- Kopieer de Azure-AsyncOperation URL-waarde uit het antwoord en volg de controle op de asynchrone bewerkings status.
 
 - Verzend een GET-aanvraag op de *cluster* resource en kijk naar de waarde *provisioningState* . De waarde is *ProvisioningAccount* *tijdens het inrichten en voltooid* .
 
@@ -218,7 +218,7 @@ Content-type: application/json
 
 Het duurt enkele minuten om de doorgifte van de sleutel-id uit te voeren. U kunt de status van de update op twee manieren controleren:
 
-- Kopieer de URL-waarde voor Azure-AsyncOperation uit het antwoord en volg de controle van de asynchrone bewerkings status. 
+- Kopieer de Azure-AsyncOperation URL-waarde uit het antwoord en volg de controle op de asynchrone bewerkings status. 
 
    OF
 
@@ -319,9 +319,9 @@ Als u door de klant beheerde sleutels gebruikt, worden opgenomen gegevens na de 
 
 U kunt de status van de werkruimte koppeling op twee manieren controleren:
 
-- Kopieer de URL-waarde voor Azure-AsyncOperation uit het antwoord en volg de controle van de asynchrone bewerkings status.
+- Kopieer de Azure-AsyncOperation URL-waarde uit het antwoord en volg de controle op de asynchrone bewerkings status.
 
-- Een [werk ruimte verzenden – aanvraag ophalen](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get) en het antwoord bekijken. De gekoppelde werk ruimte bevat een clusterResourceId onder ' features '.
+- Een [werk ruimte verzenden – aanvraag ophalen](/rest/api/loganalytics/workspaces/get) en het antwoord bekijken. De gekoppelde werk ruimte bevat een clusterResourceId onder ' features '.
 
 Een verzend aanvraag ziet er als volgt uit:
 

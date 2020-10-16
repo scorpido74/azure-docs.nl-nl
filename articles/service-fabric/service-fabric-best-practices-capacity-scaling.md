@@ -7,10 +7,10 @@ ms.date: 04/25/2019
 ms.author: pepogors
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 96cd460ddfea863eb27a1087ff59f3b87acf65d8
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90531301"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Capaciteits planning en schalen voor Azure Service Fabric
@@ -170,7 +170,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 ```
 
 > [!NOTE]
-> Wanneer u in een cluster schaalt, ziet u dat het verwijderde knoop punt/VM-exemplaar wordt weer gegeven in een slechte staat in Service Fabric Explorer. Zie [gedragingen die u mogelijk in service Fabric Explorer kunt](./service-fabric-cluster-scale-in-out.md#behaviors-you-may-observe-in-service-fabric-explorer)zien voor een uitleg van dit gedrag. U kunt het volgende doen:
+> Wanneer u in een cluster schaalt, ziet u dat het verwijderde knoop punt/VM-exemplaar wordt weer gegeven in een slechte staat in Service Fabric Explorer. Zie [gedragingen die u mogelijk in service Fabric Explorer kunt](./service-fabric-cluster-scale-in-out.md#behaviors-you-may-observe-in-service-fabric-explorer)zien voor een uitleg van dit gedrag. U kunt:
 > * Roep de [opdracht Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps&preserve-view=true) aan met de juiste knooppunt naam.
 > * Implementeer het [service Fabric hulp programma voor automatisch schalen](https://github.com/Azure/service-fabric-autoscale-helper/) in uw cluster. Deze toepassing zorgt ervoor dat de geschaalde knoop punten uit Service Fabric Explorer worden gewist.
 

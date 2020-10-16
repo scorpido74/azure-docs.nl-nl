@@ -8,10 +8,10 @@ ms.date: 09/01/2019
 ms.author: thweiss
 ms.custom: devx-track-js
 ms.openlocfilehash: 81660bee32cace458424c9975c74ca7980148e29
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91316185"
 ---
 # <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>De kosten voor de aanvraag eenheid zoeken in Azure Cosmos DB
@@ -26,7 +26,7 @@ Als u de SQL-API gebruikt, hebt u meerdere opties voor het vinden van het RU-ver
 
 Op dit moment kunt u de aanvraag kosten in de Azure Portal alleen vinden voor een SQL-query.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. [Maak een nieuw Azure Cosmos-account](create-sql-api-dotnet.md#create-account) en voer het in met gegevens of selecteer een bestaand Azure Cosmos-account dat al gegevens bevat.
 
@@ -176,19 +176,19 @@ De RU-kosten worden weer gegeven met een aangepaste [database opdracht](https://
 
 Op dit moment kunt u de aanvraag kosten vinden in de Azure Portal alleen voor een query.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. [Maak een nieuw Azure Cosmos-account](create-mongodb-dotnet.md#create-a-database-account) en voer het in met gegevens of selecteer een bestaand account dat al gegevens bevat.
 
 1. Ga naar het deel venster **Data Explorer** en selecteer vervolgens de container waaraan u wilt werken.
 
-1. Selecteer **Nieuwe query**.
+1. Selecteer **New Query** (Nieuwe query).
 
 1. Voer een geldige query in en selecteer **query uitvoeren**.
 
 1. Selecteer **query statistieken** om de werkelijke aanvraag kosten weer te geven voor de aanvraag die u hebt uitgevoerd.
 
-:::image type="content" source="./media/find-request-unit-charge/portal-mongodb-query.png" alt-text="Scherm opname van een aanvraag voor een MongoDB-query in de Azure Portal":::
+:::image type="content" source="./media/find-request-unit-charge/portal-mongodb-query.png" alt-text="Scherm opname van de kosten van een SQL-query-aanvraag in de Azure Portal":::
 
 ### <a name="use-the-mongodb-net-driver"></a>Het MongoDB .NET-stuur programma gebruiken
 

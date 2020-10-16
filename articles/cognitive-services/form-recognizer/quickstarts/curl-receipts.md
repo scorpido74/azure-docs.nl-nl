@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 05/27/2020
+ms.date: 10/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 4fa31a5be41e89c8fdc821ae77ff151b184316df
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 282b8e1292bf1fe24655691fbbeb876d871bc31e
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88518013"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761342"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-curl"></a>Quickstart: Ontvangstgegevens ophalen met behulp van de Form Recognizer REST API met cURL
 
@@ -34,43 +34,43 @@ U hebt het volgende nodig om deze quickstart te voltooien:
 
 ## <a name="analyze-a-receipt"></a>Een ontvangstbewijs analyseren
 
-Als u wilt beginnen met het analyseren van een ontvangstbewijs, roept u de **[Ontvangstbewijs analyseren](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeReceiptAsync)** -API aan met de cURL-opdracht hieronder. Voordat u de opdracht uitvoert, moet u de volgende wijzigingen aanbrengen:
+Als u wilt beginnen met het analyseren van een ontvangstbewijs, roept u de **[Ontvangstbewijs analyseren](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeReceiptAsync)** -API aan met de cURL-opdracht hieronder. Voordat u de opdracht uitvoert, moet u de volgende wijzigingen aanbrengen:
 
 1. Vervang `<Endpoint>` door het eindpunt dat u hebt verkregen met uw Form Recognizer-abonnement.
 1. Vervang `<your receipt URL>` door het URL-adres van een afbeelding van het ontvangstbewijs.
 1. Vervang `<subscription key>` door de abonnementssleutel die u uit de vorige stap hebt gekopieerd.
 
 ```bash
-curl -i -X POST "https://<Endpoint>/formrecognizer/v2.0/prebuilt/receipt/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"source\": \"<your receipt URL>\"}"
+curl -i -X POST "https://<Endpoint>/formrecognizer/v2.1-preview.1/prebuilt/receipt/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"source\": \"<your receipt URL>\"}"
 ```
 
 U ontvangt een `202 (Success)` antwoord met am **Operation-Location**-koptekst. Deze waarde van deze header bevat een bewerkings-id die u kunt gebruiken om query's uit te voeren op de status van de asynchrone bewerking en de resultaten op te halen. In het volgende voorbeeld is de tekenreeks na `operations/` de bewerkings-id.
 
 ```console
-https://cognitiveservice/formrecognizer/v2.0/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
+https://cognitiveservice/formrecognizer/v2.1-preview.1/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
 
 ## <a name="get-the-receipt-results"></a>De resultaten van het ontvangstbewijs ophalen
 
-Nadat u de **Analyze Receipt**-API hebt aangeroepen, roept u de **[Get Analyze Receipt Result](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/GetAnalyzeReceiptResult)** -API aan om de status van de bewerking en de geëxtraheerde gegevens op te halen. Voordat u de opdracht uitvoert, moet u de volgende wijzigingen aanbrengen:
+Nadat u de **Analyze Receipt**-API hebt aangeroepen, roept u de **[Get Analyze Receipt Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/GetAnalyzeReceiptResult)** -API aan om de status van de bewerking en de geëxtraheerde gegevens op te halen. Voordat u de opdracht uitvoert, moet u de volgende wijzigingen aanbrengen:
 
 1. Vervang `<Endpoint>` door het eindpunt dat u hebt verkregen met uw Form Recognizer-abonnementssleutel. U vindt deze op het tabblad **Overzicht** van uw Form Recognizer-resource.
 1. Vervang `<operationId>` door de bewerkings-id uit de vorige stap.
 1. Vervang `<subscription key>` door uw abonnementssleutel.
 
 ```bash
-curl -X GET "https://<Endpoint>/formrecognizer/v2.0/prebuilt/receipt/analyzeResults/<operationId>" -H "Ocp-Apim-Subscription-Key: <subscription key>"
+curl -X GET "https://<Endpoint>/formrecognizer/v2.1-preview.1/prebuilt/receipt/analyzeResults/<operationId>" -H "Ocp-Apim-Subscription-Key: <subscription key>"
 ```
 
 ### <a name="examine-the-response"></a>Het antwoord bekijken
 
-U ontvangt een `200 (Success)` antwoord met JSON-uitvoer. Het eerste veld, `"status"`, geeft de status van de bewerking aan. Als de bewerking is voltooid, bevat het veld `"recognitionResults"` elke regel tekst die is geëxtraheerd uit het ontvangstbewijs, en het veld `"understandingResults"` bevat sleutel/waarde-informatie voor de meest relevante onderdelen van het ontvangstbewijs. Als de bewerking niet is voltooid, wordt de waarde van `"status"` `"running"` of `"notStarted"`. U moet de API opnieuw aanroepen, handmatig of via een script. We raden een interval van één seconde of meer aan tussen oproepen.
+U ontvangt een `200 (Success)` antwoord met JSON-uitvoer. Het eerste veld, `"status"`, geeft de status van de bewerking aan. Als de bewerking is voltooid, bevat het veld `"readResults"` elke regel tekst die is geëxtraheerd uit het ontvangstbewijs, en het veld `"documentResults"` bevat sleutel/waarde-informatie voor de meest relevante onderdelen van het ontvangstbewijs. Als de bewerking niet is voltooid, wordt de waarde van `"status"` `"running"` of `"notStarted"`. U moet de API opnieuw aanroepen, handmatig of via een script. We raden een interval van één seconde of meer aan tussen oproepen.
 
 Bekijk de volgende afbeelding van het ontvangstbewijs en de bijbehorende JSON-uitvoer. De uitvoer is voor het gemak ingekort.
 
 ![Een ontvangstbewijs van Contoso Store](../media/contoso-allinone.jpg)
 
-Het knooppunt `"recognitionResults"` bevat alle herkende tekst. De tekst wordt geordend op pagina, vervolgens per regel en vervolgens op afzonderlijke woorden. Het knooppunt `"understandingResults"` bevat de ontvangstbewijswaarden die het model heeft gedetecteerd. Hier vindt u nuttige sleutel/waarde-paren zoals de belasting, het totaal, het bedrijfsadres, enzovoort.
+Het knooppunt `"readResults"` bevat alle herkende tekst (als u de optionele parameter *includeTextDetails* instelt op `true`). De tekst wordt geordend op pagina, vervolgens per regel en vervolgens op afzonderlijke woorden. Het knooppunt `"documentResults"` bevat de ontvangstbewijswaarden die het model heeft gedetecteerd. Hier vindt u nuttige sleutel/waarde-paren zoals de belasting, het totaal, het bedrijfsadres, enzovoort.
 
 ```json
 {
@@ -78,7 +78,7 @@ Het knooppunt `"recognitionResults"` bevat alle herkende tekst. De tekst wordt g
   "createdDateTime":"2019-12-17T04:11:24Z",
   "lastUpdatedDateTime":"2019-12-17T04:11:32Z",
   "analyzeResult":{
-    "version":"2.0.0",
+    "version":"2.1.0",
     "readResults":[
       {
         "page":1,
@@ -402,4 +402,4 @@ Het knooppunt `"recognitionResults"` bevat alle herkende tekst. De tekst wordt g
 In deze quickstart hebt u de Form Recognizer REST API met cURL gebruikt om de inhoud van een kassabon te extraheren. Raadpleeg hierna de referentiedocumentatie om de Form Recognizer API verder te verkennen.
 
 > [!div class="nextstepaction"]
-> [REST API-referentiedocumentatie](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeReceiptAsync)
+> [REST API-referentiedocumentatie](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeReceiptAsync)

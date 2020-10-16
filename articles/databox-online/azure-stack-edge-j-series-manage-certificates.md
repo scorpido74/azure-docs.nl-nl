@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/29/2020
 ms.author: alkohli
 ms.openlocfilehash: 5cec5eda7cf398949865bf6d3d3e8be5b2d5e840
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91767360"
 ---
 # <a name="use-certificates-with-azure-stack-edge-pro-gpu-device"></a>Certificaten gebruiken met Azure Stack Edge Pro GPU-apparaat
@@ -77,7 +77,7 @@ Deze certificaten kunnen basis certificaten of tussenliggende certificaten zijn.
 - Een knooppunt certificaat moet worden gewijzigd als het DNS-domein wordt gewijzigd, maar de naam van het apparaat niet wordt gewijzigd. Als u uw eigen knooppunt certificaat wilt maken, kunt u het serie nummer van het apparaat niet wijzigen. u hoeft alleen de domein naam te wijzigen.
 - Gebruik de volgende tabel om u te helpen bij het maken van een knooppunt certificaat.
    
-    |Type  |Onderwerpnaam (SN)  |Alternatieve naam voor onderwerp (SAN)  |Voor beeld van onderwerpnaam |
+    |Type |Onderwerpnaam (SN)  |Alternatieve naam voor onderwerp (SAN)  |Voor beeld van onderwerpnaam |
     |---------|---------|---------|---------|
     |Knooppunt|`<NodeSerialNo>.<DnsDomain>`|`*.<DnsDomain>`<br><br>`<NodeSerialNo>.<DnsDomain>`|`mydevice1.microsoftdatabox.com` |
    
@@ -98,7 +98,7 @@ Wanneer u een ondertekend certificaat van uw eigen certificaten inbrengt, moet u
 - De eigenschappen van de eindpunt certificaten zijn vergelijkbaar met die van een standaard SSL-certificaat. 
 - Gebruik de volgende tabel bij het maken van een eindpunt certificaat:
 
-    |Type  |Onderwerpnaam (SN)  |Alternatieve naam voor onderwerp (SAN)  |Voor beeld van onderwerpnaam |
+    |Type |Onderwerpnaam (SN)  |Alternatieve naam voor onderwerp (SAN)  |Voor beeld van onderwerpnaam |
     |---------|---------|---------|---------|
     |Azure Resource Manager|`management.<Device name>.<Dns Domain>`|`login.<Device name>.<Dns Domain>`<br>`management.<Device name>.<Dns Domain>`|`management.mydevice1.microsoftdatabox.com` |
     |Blob Storage|`*.blob.<Device name>.<Dns Domain>`|`*.blob.< Device name>.<Dns Domain>`|`*.blob.mydevice1.microsoftdatabox.com` |
@@ -114,7 +114,7 @@ U kunt via een browser toegang krijgen tot de lokale webgebruikersinterface van 
 - Het lokale gebruikers interface certificaat wordt ook geüpload in een `.pfx` indeling met een persoonlijke sleutel die kan worden geëxporteerd.
 - Nadat u het lokale gebruikers interface certificaat hebt geüpload, moet u de browser opnieuw opstarten en de cache wissen. Raadpleeg de specifieke instructies voor uw browser.
 
-    |Type  |Onderwerpnaam (SN)  |Alternatieve naam voor onderwerp (SAN)  |Voor beeld van onderwerpnaam |
+    |Type |Onderwerpnaam (SN)  |Alternatieve naam voor onderwerp (SAN)  |Voor beeld van onderwerpnaam |
     |---------|---------|---------|---------|
     |Lokale gebruikers interface| `<Device name>.<DnsDomain>`|`<Device name>.<DnsDomain>`| `mydevice1.microsoftdatabox.com` |
    
@@ -385,7 +385,7 @@ De back-up van het pfx-bestand wordt nu opgeslagen op de locatie die u hebt gese
 
     ![Certificaat exporteren DER 1](media/azure-stack-edge-series-manage-certificates/export-cert-cer-1.png)
 
-2. De wizard certificaat wordt geopend. Selecteer de indeling als **der Encoded Binary X. 509 (. CER)**. Selecteer **Volgende**.
+2. De wizard certificaat wordt geopend. Selecteer de indeling als **der Encoded Binary X. 509 (. CER)**. Selecteer **Next**.
 
     ![Certificaat exporteren DER 2](media/azure-stack-edge-series-manage-certificates/export-cert-cer-2.png)
 

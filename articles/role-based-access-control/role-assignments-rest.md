@@ -16,15 +16,15 @@ ms.date: 05/06/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: d66b4c8e9f41f661cfc399f72a9ad97405a860fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84790843"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-the-rest-api"></a>Azure-roltoewijzingen toevoegen of verwijderen met behulp van de REST API
 
-[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)]In dit artikel wordt beschreven hoe u rollen toewijst met behulp van de REST API.
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] In dit artikel wordt beschreven hoe u rollen toewijst met behulp van de REST API.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -38,7 +38,7 @@ In azure RBAC kunt u een roltoewijzing toevoegen om toegang te verlenen. Als u e
 
 1. Gebruik de [roldefinities-lijst](/rest/api/authorization/roledefinitions/list) rest API of Zie [ingebouwde rollen](built-in-roles.md) om de id op te halen voor de roldefinitie die u wilt toewijzen.
 
-1. Gebruik een GUID-hulp programma voor het genereren van een unieke id die wordt gebruikt voor de toewijzings-id van de rol. De id heeft de volgende indeling:`00000000-0000-0000-0000-000000000000`
+1. Gebruik een GUID-hulp programma voor het genereren van een unieke id die wordt gebruikt voor de toewijzings-id van de rol. De id heeft de volgende indeling: `00000000-0000-0000-0000-000000000000`
 
 1. Beginnen met de volgende aanvraag en hoofd tekst:
 
@@ -119,7 +119,7 @@ Hieronder ziet u een voor beeld van de uitvoer:
 
 ## <a name="remove-a-role-assignment"></a>Roltoewijzing verwijderen
 
-In azure RBAC kunt u een roltoewijzing verwijderen om de toegang te verwijderen. Als u een roltoewijzing wilt verwijderen, gebruikt u de [roltoewijzingen rest API verwijderen](/rest/api/authorization/roleassignments/delete) . U moet toegang hebben tot de bewerking om deze API aan te roepen `Microsoft.Authorization/roleAssignments/delete` . Van de ingebouwde rollen wordt alleen de beheerder van de [eigenaar](built-in-roles.md#owner) en de [gebruiker toegang](built-in-roles.md#user-access-administrator) verleend tot deze bewerking.
+Als u in Azure RBAC de toegang wilt intrekken voor een rol, verwijdert u de roltoewijzing. Als u een roltoewijzing wilt verwijderen, gebruikt u de [roltoewijzingen rest API verwijderen](/rest/api/authorization/roleassignments/delete) . U moet toegang hebben tot de bewerking om deze API aan te roepen `Microsoft.Authorization/roleAssignments/delete` . Van de ingebouwde rollen wordt alleen de beheerder van de [eigenaar](built-in-roles.md#owner) en de [gebruiker toegang](built-in-roles.md#user-access-administrator) verleend tot deze bewerking.
 
 1. Haal de roltoewijzings-id (GUID) op. Deze id wordt geretourneerd wanneer u de roltoewijzing voor het eerst maakt of u kunt deze ophalen door de roltoewijzingen weer te geven.
 
@@ -170,5 +170,5 @@ Hieronder ziet u een voor beeld van de uitvoer:
 
 - [Azure-roltoewijzingen weer geven met behulp van de REST API](role-assignments-list-rest.md)
 - [Resources implementeren met Resource Manager-sjablonen en Resource Manager REST API](../azure-resource-manager/templates/deploy-rest.md)
-- [Naslag informatie over Azure REST API](/rest/api/azure/)
+- [Azure REST API-naslaginformatie](/rest/api/azure/)
 - [Aangepaste Azure-rollen maken of bijwerken met behulp van de REST API](custom-roles-rest.md)

@@ -9,15 +9,15 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.openlocfilehash: 9ab45495283f8751912d93e9799958a8effc887a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87323737"
 ---
 # <a name="quickstart-manage-blobs-with-java-v8-sdk"></a>Quick Start: blobs beheren met Java V8 SDK
 
-In deze Quick Start leert u hoe u blobs beheert met behulp van Java. Blobs zijn objecten die grote hoeveelheden tekst of binaire gegevens kunnen bevatten, zoals afbeeldingen, documenten, streaming media en archiefgegevens. U kunt blobs uploaden, downloaden en vermelden. U kunt ook containers maken, machtigingen instellen voor en verwijderen.
+In deze quickstart leert u hoe u blobs beheert met behulp van Java. Blobs zijn objecten die grote hoeveelheden tekst of binaire gegevens kunnen bevatten, zoals afbeeldingen, documenten, streaming media en archiefgegevens. U kunt blobs uploaden, downloaden en vermelden. U kunt ook containers maken, machtigingen instellen voor en verwijderen.
 
 > [!NOTE]
 > In deze snelstart wordt gebruikgemaakt van een oudere versie van de Azure Blob Storage-clientbibliotheek. Zie [Quick Start: blobs beheren met Java V12 SDK](storage-quickstart-blobs-java.md)om aan de slag te gaan met de nieuwste versie.

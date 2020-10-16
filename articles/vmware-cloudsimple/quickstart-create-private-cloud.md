@@ -10,10 +10,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 487308aca3231650aee3fac5ae127006649e19b9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87073914"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Snelstartgids-een Privécloud configureren
@@ -58,13 +58,13 @@ Persoonlijke Clouds worden beheerd via de CloudSimple-Portal. Ze hebben hun eige
 
 11. Klik op **volgende: controleren en maken**.
 12. Controleer de instellingen. Als u instellingen wilt wijzigen, klikt u op **vorige**.
-13. Klik op **Create**.
+13. Klik op **Maken**.
 
 Het inrichtings proces voor de privécloud wordt gestart.  Het kan tot twee uur duren voordat de Privécloud is ingericht.
 
 ## <a name="launch-cloudsimple-portal"></a>CloudSimple-Portal starten
 
-U kunt de CloudSimple-Portal openen via Azure Portal.  De CloudSimple-portal wordt gestart met uw Azure-aanmeldings referenties via eenmalige aanmelding (SSO).  Voor toegang tot de CloudSimple-Portal moet u de **CloudSimple-service autorisatie** toepassing autoriseren.  Zie [instemming met de CloudSimple-service autorisatie toepassing](access-cloudsimple-portal.md#consent-to-cloudsimple-service-authorization-application)voor meer informatie over het verlenen van machtigingen.
+U kunt de CloudSimple-Portal openen via Azure Portal.  De CloudSimple-portal wordt gestart met uw Azure-aanmeldings referenties met behulp van single Sign-On (SSO).  Voor toegang tot de CloudSimple-Portal moet u de **CloudSimple-service autorisatie** toepassing autoriseren.  Zie [instemming met de CloudSimple-service autorisatie toepassing](access-cloudsimple-portal.md#consent-to-cloudsimple-service-authorization-application)voor meer informatie over het verlenen van machtigingen.
 
 1. Selecteer **Alle services**.
 2. Zoek naar **CloudSimple Services**.
@@ -101,7 +101,7 @@ Een punt-naar-site-VPN-verbinding is de eenvoudigste manier om vanaf uw computer
 
     * Met de opties voor **automatisch toevoegen** wordt het globale beleid voor deze gateway ingesteld. De instellingen zijn van toepassing op de huidige gateway. De instellingen kunnen worden overschreven in het gebied **selecteren** .
     * Selecteer **vlan's voor beheer/subnetten van persoonlijke Clouds toevoegen**.
-    * Klik op door de gebruiker gedefinieerde vlan's **/subnetten toevoegen**om alle door de gebruiker gedefinieerde vlan's/subnetten toe te voegen.
+    * Klik op door de gebruiker gedefinieerde vlan's  **/subnetten toevoegen**om alle door de gebruiker gedefinieerde vlan's/subnetten toe te voegen.
     * De **selectie** -instellingen overschrijven de algemene instellingen onder **automatisch toevoegen**.
 
 7. Klik op **volgende** om de instellingen te controleren. Klik op de pictogrammen bewerken om wijzigingen aan te brengen.
@@ -159,7 +159,7 @@ U kunt zich nu aanmelden bij vCenter om virtuele machines en beleids regels in t
     ![VSphere-client starten](media/launch-vcenter-from-cloudsimple-portal.png)
 
 2. Selecteer de gewenste vSphere-client om toegang te krijgen tot de vCenter en meld u aan met uw gebruikers naam en wacht woord.  De standaard waarden zijn:
-    * Gebruikers naam:`CloudOwner@cloudsimple.local`
+    * Gebruikers naam: `CloudOwner@cloudsimple.local`
     * Wachtwoord: `CloudSimple123!`
 
 De vCenter-schermen in de volgende procedures zijn afkomstig van de vSphere-client (HTML5).

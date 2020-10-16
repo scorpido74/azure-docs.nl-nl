@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
 ms.openlocfilehash: 500fa45db7e0e6bffb587d9d352ee1ab49f14703
-ms.sourcegitcommit: 5b69ba21787c07547edfbfd5254eaf34315cfadd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91712269"
 ---
 # <a name="harden-your-docker-hosts"></a>Docker-hosts verharden
 
-Azure Security Center identificeert niet-beheerde containers die worden gehost op IaaS Linux-Vm's of andere Linux-machines waarop docker-containers worden uitgevoerd. Security Center doorlopend de configuraties van deze containers evalueren. Vervolgens worden ze vergeleken met de [CIS-Referentie (Center for Internet Security)](https://www.cisecurity.org/benchmark/docker/).
+Azure Security Center identificeert niet-beheerde containers die worden gehost op IaaS Linux-VM's of andere Linux-machines waarop Docker-containers worden uitgevoerd. Security Center evalueert doorlopend de configuraties van deze containers. Vervolgens worden ze vergeleken met de [Docker-benchmark van het CIS (Center for Internet Security)](https://www.cisecurity.org/benchmark/docker/).
 
-Security Center bevat de volledige regelset van de CIS docker-Bench Mark en waarschuwt u als uw containers niet voldoen aan een van de besturings elementen. Als er onjuiste configuraties worden gevonden, worden in Security Center beveiligings aanbevelingen gegenereerd. Op de **pagina aanbevelingen** van Security Center kunt u aanbevelingen bekijken en problemen oplossen.
+Security Center bevat de volledige regelset van de CIS Docker-benchmark en waarschuwt u als uw containers niet voldoen aan een van de controles. Als er onjuiste configuraties worden gevonden, worden in Security Center aanbevelingen voor de beveiliging gegenereerd. U kunt de aanbevelingen bekijken en problemen herstellen met behulp van de **pagina met aanbevelingen van Security Center**.
 
 Als er beveiligings problemen worden gevonden, worden deze gegroepeerd in één aanbeveling.
 
@@ -30,9 +30,9 @@ Als er beveiligings problemen worden gevonden, worden deze gegroepeerd in één 
 |Aspect|Details|
 |----|:----|
 |Releasestatus:|Algemeen verkrijgbaar (GA)|
-|Prijzen:|[Azure Defender voor servers](defender-for-servers-introduction.md) vereist|
+|Prijzen:|[Azure Defender voor servers](defender-for-servers-introduction.md) is vereist|
 |Vereiste rollen en machtigingen:|**Lezer** op de werk ruimte waarmee de host verbinding maakt|
-|Clouds:|![Ja](./media/icons/yes-icon.png) Commerciële clouds<br>![Ja](./media/icons/yes-icon.png) National/soeverein (US Gov, China gov, andere gov)|
+|Clouds:|![Ja](./media/icons/yes-icon.png) Commerciële clouds<br>![Ja](./media/icons/yes-icon.png) Nationaal/onafhankelijk (Overheid van de VS, China, andere overheden)|
 |||
 
 ## <a name="identify-and-remediate-security-vulnerabilities-in-your-docker-configuration"></a>Beveiligings problemen in uw docker-configuratie identificeren en oplossen

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ab24b3113f9dc69b8f3907037e228ba212a03106
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85252930"
 ---
 # <a name="group-policy-and-mdm-settings"></a>groepsbeleid-en MDM-instellingen
@@ -41,7 +41,7 @@ De MDM-beleids instellingen zijn van toepassing op Windows 10 en Windows 10 Mobi
 
 De instellingen voor groeps beleid zijn van toepassing op Windows 10-apparaten die lid zijn van een Active Directory domein. De tabel bevat ook verouderde instellingen die zouden moeten worden gebruikt voor het beheren van synchronisatie-instellingen, maar die niet werken voor Enterprise State Roaming voor Windows 10, die worden vermeld bij ' niet gebruiken ' in de beschrijving.
 
-Deze instellingen bevinden zich in:`Computer Configuration > Administrative Templates > Windows Components > Sync your settings` 
+Deze instellingen bevinden zich in: `Computer Configuration > Administrative Templates > Windows Components > Sync your settings` 
 
 | Naam | Beschrijving |
 | --- | --- |

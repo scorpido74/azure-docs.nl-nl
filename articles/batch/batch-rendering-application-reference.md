@@ -6,10 +6,10 @@ ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
 ms.openlocfilehash: ace3fe7aee6b9ffc7226448b455bcfea1f931458
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85964869"
 ---
 # <a name="rendering-applications"></a>Rendering van toepassingen
@@ -29,7 +29,7 @@ Naast de renderers die zijn ingebouwd in 3ds Max, zijn de volgende renderers bes
 
 ### <a name="task-command-line"></a>Opdracht regel van taak
 
-Roep de `3dsmaxcmdio.exe` toepassing aan om de opdracht regel weergave op een groeps knooppunt uit te voeren.  Deze toepassing bevindt zich op het pad wanneer de taak wordt uitgevoerd. De `3dsmaxcmdio.exe` toepassing heeft dezelfde beschik bare para meters als de `3dsmaxcmd.exe` toepassing, die wordt beschreven in de [Help-documentatie van 3ds Max](https://help.autodesk.com/view/3DSMAX/2018/ENU/) (Rendering | Sectie voor het weer geven van de opdracht regel).
+Roep de `3dsmaxcmdio.exe` toepassing aan om de opdracht regel weergave op een groeps knooppunt uit te voeren.  Deze toepassing bevindt zich op het pad wanneer de taak wordt uitgevoerd. De `3dsmaxcmdio.exe` toepassing heeft dezelfde beschik bare para meters als de `3dsmaxcmd.exe` toepassing, die wordt beschreven in de sectie [Help-documentatie van 3ds Max](https://help.autodesk.com/view/3DSMAX/2018/ENU/) (rendering | Command-Line rendering).
 
 Bijvoorbeeld:
 

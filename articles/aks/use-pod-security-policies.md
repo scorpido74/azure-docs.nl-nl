@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 07/21/2020
 ms.openlocfilehash: bec9c7b4be5c3c3e334a8e3cb3a8b2e0a7130de3
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89669299"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Voor beeld: uw cluster beveiligen met behulp van pod-beveiligings beleid in azure Kubernetes service (AKS)
@@ -16,7 +16,7 @@ ms.locfileid: "89669299"
 > [!WARNING]
 > **De functie die in dit document wordt beschreven, Pod-beveiligings beleid (preview), wordt ingesteld voor afschaffing en is niet meer beschikbaar na 1 februari 2021, wat de** voor keur heeft van [Azure Policy voor AKS](use-pod-security-on-azure-policy.md). De datum van afschaffing is verlengd vanaf de vorige datum van 15 oktober 2020.
 >
-> Nadat pod-beveiligings beleid (preview) is afgeschaft, moet u de functie op alle bestaande clusters uitschakelen met behulp van de afgeschafte functie om toekomstige cluster upgrades uit te voeren en de ondersteuning van Azure te blijven gebruiken.
+> Nadat de functie voor beveiligingsbeleid voor pods (preview) is afgeschaft, moet u de functie op alle bestaande clusters uitschakelen met behulp van de afgeschafte functie om toekomstige clusterupgrades uit te voeren en de ondersteuning van Azure te kunnen blijven gebruiken.
 >
 > Het wordt sterk aanbevolen om te beginnen met het testen van scenario's met Azure Policy voor AKS, die ingebouwde beleids regels biedt voor het beveiligen van de peulen en ingebouwde initiatieven die zijn toegewezen aan pod-beveiligings beleid. Klik hier voor meer informatie over [het migreren naar Azure Policy van pod-beveiligings beleid (preview-versie)](use-pod-security-on-azure-policy.md#migrate-from-kubernetes-pod-security-policy-to-azure-policy).
 
@@ -28,7 +28,7 @@ Als u de beveiliging van uw AKS-cluster wilt verbeteren, kunt u het aantal peule
 
 In dit artikel wordt ervan uitgegaan dat u beschikt over een bestaand AKS-cluster. Als u een AKS-cluster nodig hebt, raadpleegt u de AKS Quick Start [met behulp van de Azure cli][aks-quickstart-cli] of [met behulp van de Azure Portal][aks-quickstart-portal].
 
-U moet de Azure CLI-versie 2.0.61 of hoger hebben geïnstalleerd en geconfigureerd. Voer  `az --version` uit om de versie te bekijken. Als u de Azure CLI wilt installeren of upgraden, raadpleegt u  [Azure CLI installeren][install-azure-cli].
+U moet de Azure CLI-versie 2.0.61 of hoger hebben geïnstalleerd en geconfigureerd. Voer  `az --version` uit om de versie te bekijken. Als u wilt installeren of upgraden, raadpleegt u [Azure cli installeren][install-azure-cli].
 
 ### <a name="install-aks-preview-cli-extension"></a>De CLI-extensie aks-preview installeren
 
@@ -52,7 +52,7 @@ Als u een AKS-cluster wilt maken of bijwerken om pod-beveiligings beleid te gebr
 az feature register --name PodSecurityPolicyPreview --namespace Microsoft.ContainerService
 ```
 
-Het duurt enkele minuten voordat de status is *geregistreerd*. U kunt de registratie status controleren met de opdracht [AZ Feature List][az-feature-list] :
+Het duurt enkele minuten voordat de status is *geregistreerd*. U kunt de registratiestatus controleren met behulp van de opdracht [az feature list][az-feature-list]:
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/PodSecurityPolicyPreview')].{Name:name,State:properties.state}"

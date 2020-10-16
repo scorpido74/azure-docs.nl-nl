@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: jafreebe
 ms.openlocfilehash: 2465b2f260ed6c174b762fcf64a71100a148254d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86106708"
 ---
 # <a name="azure-app-service-as-an-event-grid-source"></a>Azure App Service als Event Grid bron
@@ -22,7 +22,7 @@ In dit artikel vindt u de eigenschappen en het schema voor Azure App Service geb
 
 Azure App Service worden de volgende gebeurtenis typen verzonden
 
-|    Gebeurtenistype                                             |    Description                                                     |
+|    Gebeurtenistype                                             |    Beschrijving                                                     |
 |-----------------------------------------------------------|--------------------------------------------------------------------|
 |    Micro soft. web/sites. BackupOperationStarted             |    Geactiveerd wanneer een back-up is gestart                             |
 |    Micro soft. web/sites. BackupOperationCompleted           |    Geactiveerd wanneer een back-up is voltooid                           |
@@ -43,12 +43,12 @@ Azure App Service worden de volgende gebeurtenis typen verzonden
 ### <a name="the-contents-of-an-event-response"></a>De inhoud van een gebeurtenis reactie
 
 Wanneer een gebeurtenis wordt geactiveerd, verzendt de Event Grid-Service gegevens over die gebeurtenis om het eind punt te abonneren.
-Deze sectie bevat een voor beeld van hoe de gegevens voor elke gebeurtenis eruitzien. Elke gebeurtenis heeft de volgende gegevens op het hoogste niveau:
+Deze sectie bevat een voorbeeld van hoe de gegevens voor elke gebeurtenis eruitzien. Elke gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 
-|     Eigenschap          |     Type     |     Description                                                                                                                                |
+|     Eigenschap          |     Type     |     Beschrijving                                                                                                                                |
 |-----------------------|--------------|------------------------------------------------------------------------------------------------------------------------------------------------|
 |    onderwerp              |    tekenreeks    |    Volledige bronpad naar de bron van de gebeurtenis. Dit veld kan niet worden geschreven. Event Grid biedt deze waarde.                                      |
-|    Onderwerp            |    tekenreeks    |    Het door de uitgever gedefinieerde pad naar het gebeurtenis onderwerp.                                                                                              |
+|    onderwerp            |    tekenreeks    |    Het door de uitgever gedefinieerde pad naar het gebeurtenis onderwerp.                                                                                              |
 |    Type          |    tekenreeks    |    Een van de geregistreerde gebeurtenis typen voor deze gebeurtenis bron.                                                                                  |
 |    eventTime          |    tekenreeks    |    Het tijdstip waarop de gebeurtenis is gegenereerd op basis van de UTC-tijd van de provider.                                                                         |
 |    id                 |    tekenreeks    |    De unieke id voor de gebeurtenis.                                                                                                            |
@@ -81,10 +81,10 @@ Deze sectie bevat een voor beeld van hoe de gegevens voor elke gebeurtenis eruit
 
 Het gegevens object bevat de volgende eigenschappen:
 
-|    Eigenschap                |    Type      |    Description                                                                                                       |
+|    Eigenschap                |    Type      |    Beschrijving                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    appEventTypeDetail      |    object    |    Details van actie op de app                                                                                       |
-|    action                  |    tekenreeks    |    Type actie van de bewerking                                                                                   |
+|    actie                  |    tekenreeks    |    Type actie van de bewerking                                                                                   |
 |    naam                    |    tekenreeks    |    naam van de website waarvoor deze gebeurtenis is opgetreden                                                                          |
 |    clientRequestId         |    tekenreeks    |    De client aanvraag-id die is gegenereerd door de app service voor de site-API-bewerking die deze gebeurtenis heeft geactiveerd         |
 |    correlationRequestId    |    tekenreeks    |    De correlatie aanvraag-id die door de app service is gegenereerd voor de site-API-bewerking die deze gebeurtenis heeft geactiveerd    |
@@ -119,10 +119,10 @@ Het gegevens object bevat de volgende eigenschappen:
 
 Het gegevens object bevat de volgende eigenschappen:
 
-|    Eigenschap                |    Type      |    Description                                                                                                       |
+|    Eigenschap                |    Type      |    Beschrijving                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    appEventTypeDetail      |    object    |    Details van actie op de app                                                                                       |
-|    action                  |    tekenreeks    |    Type actie van de bewerking                                                                                   |
+|    actie                  |    tekenreeks    |    Type actie van de bewerking                                                                                   |
 |    naam                    |    tekenreeks    |    naam van de website waarvoor deze gebeurtenis is opgetreden                                                                          |
 |    clientRequestId         |    tekenreeks    |    De client aanvraag-id die is gegenereerd door de app service voor de site-API-bewerking die deze gebeurtenis heeft geactiveerd         |
 |    correlationRequestId    |    tekenreeks    |    De correlatie aanvraag-id die door de app service is gegenereerd voor de site-API-bewerking die deze gebeurtenis heeft geactiveerd    |
@@ -157,10 +157,10 @@ Het gegevens object bevat de volgende eigenschappen:
 
 Het gegevens object bevat de volgende eigenschappen:
 
-|    Eigenschap                |    Type      |    Description                                                                                                       |
+|    Eigenschap                |    Type      |    Beschrijving                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    appEventTypeDetail      |    object    |    Details van actie op de app                                                                                       |
-|    action                  |    tekenreeks    |    Type actie van de bewerking                                                                                   |
+|    actie                  |    tekenreeks    |    Type actie van de bewerking                                                                                   |
 |    naam                    |    tekenreeks    |    naam van de website waarvoor deze gebeurtenis is opgetreden                                                                          |
 |    clientRequestId         |    tekenreeks    |    De client aanvraag-id die is gegenereerd door de app service voor de site-API-bewerking die deze gebeurtenis heeft geactiveerd         |
 |    correlationRequestId    |    tekenreeks    |    De correlatie aanvraag-id die door de app service is gegenereerd voor de site-API-bewerking die deze gebeurtenis heeft geactiveerd    |
@@ -196,10 +196,10 @@ Het gegevens object bevat de volgende eigenschappen:
 
 Het gegevens object bevat de volgende eigenschappen:
 
-|    Eigenschap                |    Type      |    Description                                                                                                       |
+|    Eigenschap                |    Type      |    Beschrijving                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    appEventTypeDetail      |    object    |    Details van actie op de app                                                                                       |
-|    action                  |    tekenreeks    |    Type actie van de bewerking                                                                                   |
+|    actie                  |    tekenreeks    |    Type actie van de bewerking                                                                                   |
 |    naam                    |    tekenreeks    |    naam van de website waarvoor deze gebeurtenis is opgetreden                                                                          |
 |    clientRequestId         |    tekenreeks    |    De client aanvraag-id die is gegenereerd door de app service voor de site-API-bewerking die deze gebeurtenis heeft geactiveerd         |
 |    correlationRequestId    |    tekenreeks    |    De correlatie aanvraag-id die door de app service is gegenereerd voor de site-API-bewerking die deze gebeurtenis heeft geactiveerd    |
@@ -234,10 +234,10 @@ Het gegevens object bevat de volgende eigenschappen:
 
 Het gegevens object heeft de volgende eigenschappen:
 
-|    Eigenschap                |    Type      |    Description                                                                                                       |
+|    Eigenschap                |    Type      |    Beschrijving                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    appEventTypeDetail      |    object    |    Details van actie op de app                                                                                       |
-|    action                  |    tekenreeks    |    Type actie van de bewerking                                                                                   |
+|    actie                  |    tekenreeks    |    Type actie van de bewerking                                                                                   |
 |    naam                    |    tekenreeks    |    naam van de website waarvoor deze gebeurtenis is opgetreden                                                                          |
 |    clientRequestId         |    tekenreeks    |    De client aanvraag-id die is gegenereerd door de app service voor de site-API-bewerking die deze gebeurtenis heeft geactiveerd         |
 |    correlationRequestId    |    tekenreeks    |    De correlatie aanvraag-id die door de app service is gegenereerd voor de site-API-bewerking die deze gebeurtenis heeft geactiveerd    |
@@ -281,11 +281,11 @@ Het gegevens object heeft de volgende eigenschappen:
 
 Het gegevens object heeft de volgende eigenschappen:
 
-|    Eigenschap                         |    Type      |    Description                                                                                                       |
+|    Eigenschap                         |    Type      |    Beschrijving                                                                                                       |
 |-------------------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    appServicePlanEventTypeDetail    |    object    |    Details van actie op het app service-plan                                                                          |
 |    stampKind                        |    tekenreeks    |    Type omgeving waarin het app service-plan wordt                                                                     |
-|    action                           |    tekenreeks    |    Type actie voor het app service-plan                                                                            |
+|    actie                           |    tekenreeks    |    Type actie voor het app service-plan                                                                            |
 |    status                           |    tekenreeks    |    Status van de bewerking op het app service-plan                                                                   |
 |    sku                              |    object    |    SKU van het app service-plan                                                                                       |
 |    naam                             |    tekenreeks    |    de naam van het app service-plan                                                                                      |
@@ -293,7 +293,7 @@ Het gegevens object heeft de volgende eigenschappen:
 |    Grootte                             |    tekenreeks    |    grootte van het app service-plan                                                                                      |
 |    Familie                           |    tekenreeks    |    app service-plan                                                                                        |
 |    Capaciteit                         |    tekenreeks    |    capaciteit van het app service-plan                                                                                      |
-|    action                           |    tekenreeks    |    Type actie van de bewerking                                                                                   |
+|    actie                           |    tekenreeks    |    Type actie van de bewerking                                                                                   |
 |    naam                             |    tekenreeks    |    naam van de website waarvoor deze gebeurtenis is opgetreden                                                                          |
 |    clientRequestId                  |    tekenreeks    |    De client aanvraag-id die is gegenereerd door de app service voor de site-API-bewerking die deze gebeurtenis heeft geactiveerd         |
 |    correlationRequestId             |    tekenreeks    |    De correlatie aanvraag-id die door de app service is gegenereerd voor de site-API-bewerking die deze gebeurtenis heeft geactiveerd    |

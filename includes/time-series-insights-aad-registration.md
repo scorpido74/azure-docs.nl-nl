@@ -10,10 +10,10 @@ ms.author: dpalled
 manager: cshankar
 ms.date: 10/02/2020
 ms.openlocfilehash: 7de4dc21391f7dbd817c56ce51606a808cf9e3c4
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91665805"
 ---
 1. Selecteer in de [Azure Portal](https://ms.portal.azure.com/) **Azure Active Directory**  >  **app-registraties**  >  **nieuwe registratie**.
@@ -47,7 +47,7 @@ ms.locfileid: "91665805"
     1. **Omleidings-uri's** moeten overeenkomen met het adres dat is opgegeven door de verificatie aanvraag:
 
         * Voor apps die worden gehost in een lokale ontwikkel omgeving selecteert u **open bare client (mobiele & bureau blad)**. Zorg ervoor dat de **open bare client** is ingesteld op **Ja**.
-        * Voor apps met één pagina die worden gehost op Azure App Service, selecteert u **Web**.
+        * Selecteer **Web**voor Single-Page-apps die worden gehost op Azure app service.
 
     1. Bepaal of een **Afmeldings-URL** geschikt is.
 

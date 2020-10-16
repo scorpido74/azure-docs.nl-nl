@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 565e6b8f23f159a5c231295694830917217a3d19
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89009297"
 ---
 # <a name="deploy-and-remove-applications-using-fabricclient"></a>Toepassingen implementeren en verwijderen met FabricClient
@@ -66,7 +66,7 @@ De [GetApplicationTypeListAsync](/dotnet/api/system.fabric.fabricclient.querycli
 Het is raadzaam het toepassings pakket te verwijderen nadat de toepassing is geregistreerd.  Als u toepassings pakketten uit de installatie kopie opslag verwijdert, worden de systeem bronnen vrijgemaakt.  Het houden van ongebruikte toepassings pakketten verbruikt schijf opslag en leidt tot prestatie problemen van toepassingen. Verwijder het toepassings pakket uit het archief met installatie kopieën met behulp van de [RemoveApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.removeapplicationpackage) -API.
 
 ## <a name="create-an-application-instance"></a>Een toepassings exemplaar maken
-U kunt een toepassing instantiëren vanuit elk toepassings type dat met succes is geregistreerd met behulp van de [CreateApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.createapplicationasync) -API. De naam van elke toepassing moet beginnen met het schema *' Fabric: '* en moet uniek zijn voor elke toepassings instantie (binnen een cluster). Alle standaard services die in het toepassings manifest van het type doel toepassing zijn gedefinieerd, worden ook gemaakt.
+U kunt een toepassing instantiëren vanuit elk toepassings type dat met succes is geregistreerd met behulp van de [CreateApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.createapplicationasync) -API. De naam van elke toepassing moet beginnen met het schema *' Fabric: '* en moet uniek zijn voor elke toepassings instantie (binnen een cluster). Sstandaardservices gedefinieerd in het toepassingsmanifest van het doeltoepassingstype worden ook aangemaakt.
 
 Er kunnen meerdere toepassings exemplaren worden gemaakt voor een bepaalde versie van een geregistreerd toepassings type. Elk exemplaar van de toepassing wordt uitgevoerd in isolatie, met een eigen werkmap en een set processen.
 

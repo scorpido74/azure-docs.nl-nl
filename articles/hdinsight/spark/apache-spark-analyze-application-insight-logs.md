@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
 ms.openlocfilehash: 1ddf2b6879d8d33f99281daba6fb1040e24a37af
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86078796"
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>Application Insights-telemetrie-logboeken analyseren met Apache Spark in HDInsight
@@ -31,7 +31,7 @@ Meer informatie over het gebruik van [Apache Spark](https://spark.apache.org/) i
 
 De volgende resources zijn gebruikt bij het ontwikkelen en testen van dit document:
 
-* Application Insights telemetriegegevens zijn gegenereerd met eenNode.js- [Web-app die is geconfigureerd om Application Insights te gebruiken](../../azure-monitor/app/nodejs.md).
+* Application Insights telemetriegegevens zijn gegenereerd met eenNode.js- [ Web-app die is geconfigureerd om Application Insights te gebruiken](../../azure-monitor/app/nodejs.md).
 
 * Er is een op Linux gebaseerde Spark op HDInsight-cluster versie 3,5 gebruikt voor het analyseren van de gegevens.
 

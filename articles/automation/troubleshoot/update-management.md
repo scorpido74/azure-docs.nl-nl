@@ -2,15 +2,15 @@
 title: Problemen met Azure Automation Updatebeheer oplossen
 description: In dit artikel leest u hoe u problemen oplost en oplost met Azure Automation Updatebeheer.
 services: automation
-ms.date: 09/30/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: c70d164325f536187c5ce99419bb41daaa9b1e88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d6a87d9b420ea394baaa21c87dff457e4c908d0
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91858401"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070330"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Problemen met Updatebeheer oplossen
 
@@ -486,6 +486,8 @@ Controleer of het systeem account lees toegang heeft tot de map **C:\ProgramData
 Het standaard onderhouds venster voor updates is 120 minuten. U kunt het onderhouds venster tot Maxi maal 6 uur of 360 minuten verhogen.
 
 ### <a name="resolution"></a>Oplossing
+
+Als u wilt weten waarom dit is gebeurd tijdens het uitvoeren van een update nadat deze is gestart, [controleert u de taak uitvoer](../update-management/update-mgmt-deploy-updates.md#view-results-of-a-completed-update-deployment) van de betrokken computer in de uitvoering. Mogelijk vindt u specifieke fout berichten van uw computers die u kunt onderzoeken en actie onderneemt.  
 
 Bewerk eventuele mislukte geplande update-implementaties en verg root het onderhouds venster.
 

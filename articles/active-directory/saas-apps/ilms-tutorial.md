@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 219dd6e4a8f04da8b28a28e5473394f0721e4013
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 03b8110db94a08f44035e75371fd7641fcd91626
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545202"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826364"
 ---
 # <a name="tutorial-integrate-ilms-with-azure-active-directory"></a>Zelfstudie: iLMS integreren met Azure Active Directory
 
@@ -130,29 +130,29 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 2. Klik op **SSO:SAML** onder het tabblad **Instellingen** om de SAML-instellingen te openen, en voer de volgende stappen uit:
 
-    ![Eenmalige aanmelding configureren](./media/ilms-tutorial/1.png)
+    ![Schermopname toont het tabblad 'Instellingen van I L M S' waarin u op 'S S O' kunt klikken: SAML.](./media/ilms-tutorial/1.png)
 
 3. Vouw de sectie **Serviceprovider** uit en kopieer de waarden voor **Id** en **Eindpunt (URL)** .
 
-    ![Eenmalige aanmelding configureren](./media/ilms-tutorial/2.png) 
+    ![Schermopname toont de SAML-instellingen waar u de waarden kunt ophalen.](./media/ilms-tutorial/2.png) 
 
 4. Klik onder de sectie **Id-provider** op **Metagegevens importeren**.
 
 5. Selecteer het bestand met **Federatieve metagegevens** dat u hebt gedownload in Azure Portal in de sectie **SAML-handtekeningcertificaat**.
 
-    ![Eenmalige aanmelding configureren](./media/ilms-tutorial/tutorial_ilms_ssoconfig1.png)
+    ![Schermopname toont de SAML-instellingen waar u het bestand met metagegevens kunt selecteren.](./media/ilms-tutorial/tutorial_ilms_ssoconfig1.png)
 
 6. Als u Just-In-Time inrichten wilt inschakelen om iLMS-accounts te maken voor niet-herkende gebruikers, volgt u onderstaande stappen:
 
     a. Controleer **Een niet-herkend gebruikersaccount maken**.
 
-    ![Eenmalige aanmelding configureren](./media/ilms-tutorial/tutorial_ilms_ssoconfig2.png)
+    ![Schermopname toont de optie 'Niet-herkende gebruikersaccount maken'.](./media/ilms-tutorial/tutorial_ilms_ssoconfig2.png)
 
     b. Wijs de kenmerken in Azure AD toe met de kenmerken in iLMS. Geef in de kenmerkkolom de naam van de kenmerken of de standaardwaarde op.
 
     c. Ga naar het tabblad **Bedrijfsregels** en voer de volgende stappen uit:
 
-    ![Eenmalige aanmelding configureren](./media/ilms-tutorial/5.png)
+    ![Schermopname toont de sectie 'Instellingen voor Business Rules', waar u de informatie van deze stap kunt invoeren.](./media/ilms-tutorial/5.png)
 
     d. Controleer **Niet-herkende regio's, divisies en afdelingen maken** om regio's, divisies en afdelingen te maken die nog niet bestaan op het moment van eenmalige aanmelding.
 
@@ -164,7 +164,7 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 7. Klik op **Save** om de instellingen op te slaan.
 
-    ![Eenmalige aanmelding configureren](./media/ilms-tutorial/save.png)
+    ![Schermopname toont de knop 'Opslaan'.](./media/ilms-tutorial/save.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
@@ -206,11 +206,11 @@ Als u handmatig een gebruiker moet maken, volgt u onderstaande stappen:
 
 2. Klik op **Gebruiker registreren** op het tabblad **Gebruikers**, om de pagina **Gebruiker registreren** te openen.
 
-   ![Werknemer toevoegen](./media/ilms-tutorial/3.png)
+   ![Schermopname toont het tabblad 'Instellingen van I L M S' waarin u op 'Gebruiker registreren' kunt klikken.](./media/ilms-tutorial/3.png)
 
 3. Voer op de pagina **Gebruiker registreren** de volgende stappen uit.
 
-    ![Werknemer toevoegen](./media/ilms-tutorial/create_testuser_add.png)
+    ![Schermopname toont het tabblad 'Gebruiker registreren' waarin u de opgegeven informatie invoert.](./media/ilms-tutorial/create_testuser_add.png)
 
     a. Typ in het tekstvak **Voornaam** de voornaam, bijvoorbeeld Britta.
 

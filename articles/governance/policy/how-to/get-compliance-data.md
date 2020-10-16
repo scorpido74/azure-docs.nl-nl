@@ -1,14 +1,14 @@
 ---
 title: Nalevings gegevens voor beleid ophalen
 description: Azure Policy evaluaties en effecten bepalen de naleving. Meer informatie over hoe u de compatibiliteits Details van uw Azure-resources kunt ophalen.
-ms.date: 09/22/2020
+ms.date: 10/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 2b4db7daf75f153cadb03e5dd028084e311bb874
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: 186312ae91c3545a7aac1a9c7a108e2197f3fa8a
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91596044"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873622"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Compatibiliteits gegevens van Azure-resources ophalen
 
@@ -161,14 +161,15 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 
 In een toewijzing is een resource **niet-compatibel** als deze niet voldoet aan het beleid of initiatief regels en niet wordt _uitgesloten_. In de volgende tabel ziet u hoe verschillende beleids effecten werken met de evaluatie van de voor waarde voor de resulterende nalevings status:
 
-| Resource status | Effect | Beleids evaluatie | Nalevings status |
+| Resourcestatus | Effect | Beleidsevaluatie | Nalevingsstatus |
 | --- | --- | --- | --- |
-| Bestaat | Weigeren, Controleren, Toevoegen\*, DeployIfNotExist\*, AuditIfNotExist\* | Waar | Niet-compatibel |
-| Bestaat | Weigeren, Controleren, Toevoegen\*, DeployIfNotExist\*, AuditIfNotExist\* | Niet waar | Compliant |
-| Nieuw | Controleren, AuditIfNotExist\* | Waar | Niet-compatibel |
-| Nieuw | Controleren, AuditIfNotExist\* | Niet waar | Compliant |
+| Nieuw of bijgewerkt | Audit, Modify, AuditIfNotExist | True | Niet-compatibel |
+| Nieuw of bijgewerkt | Audit, Modify, AuditIfNotExist | False | Compatibel |
+| Bestaat | Weigeren, controleren, toevoegen, wijzigen, DeployIfNotExist, AuditIfNotExist | True | Niet-compatibel |
+| Bestaat | Weigeren, controleren, toevoegen, wijzigen, DeployIfNotExist, AuditIfNotExist | False | Compatibel |
 
-\* Voor de effecten wijzigen, toevoegen, DeployIfNotExist en AuditIfNotExist moet de IF-instructie TRUE zijn. De acties vereisen ook dat de bestaansvoorwaarde FALSE is om niet-compatibel te zijn. Indien TRUE, activeert de IF-voorwaarde de evaluatie van de bestaansvoorwaarde voor de gerelateerde resources.
+> [!NOTE]
+> De DeployIfNotExist-en AuditIfNotExist-effecten vereisen dat de IF-instructie TRUE is en dat de voor waarde als onwaar als niet-compatibel is. Indien TRUE, activeert de IF-voorwaarde de evaluatie van de bestaansvoorwaarde voor de gerelateerde resources.
 
 Stel dat u een resource groep hebt – ContsoRG, waarbij sommige opslag accounts (rood gemarkeerd) worden weer gegeven in open bare netwerken.
 
@@ -189,7 +190,7 @@ Naast het **conform** -en **niet-nalevings**beleid en de bronnen gelden vier and
 - **Niet gestart**: de evaluatie cyclus is niet gestart voor het beleid of de resource.
 - **Niet geregistreerd**: de Azure Policy resource provider is niet geregistreerd of het account dat is aangemeld, heeft geen machtiging voor het lezen van de compatibiliteits gegevens.
 
-Azure Policy gebruikt de velden **type** en **naam** in de definitie om te bepalen of een resource een overeenkomst is. Wanneer de bron overeenkomt, wordt deze beschouwd als toepasselijk en heeft deze de status **compatibel**, **niet-compatibel**of **uitgezonderd**. Als een van beide **typen** of **namen** de enige eigenschap in de definitie is, worden alle opgenomen en niet-vrijgestelde resources beschouwd als toepasselijk en geëvalueerd.
+Azure Policy maakt gebruik van de velden **type**, **naam**of **kind** in de definitie om te bepalen of een resource een overeenkomst is. Wanneer de bron overeenkomt, wordt deze beschouwd als toepasselijk en heeft deze de status **compatibel**, **niet-compatibel**of **uitgezonderd**. Als een van beide **typen**, namen **of typen** de enige eigenschap in de definitie is, worden alle opgenomen en niet-vrijgestelde resources beschouwd als toepasselijk en geëvalueerd. **name**
 
 Het nalevings percentage wordt bepaald door het verdelen van de **compatibele** en **vrijgestelde** resources op basis van het _totale aantal resources_. _Het totale aantal resources_ wordt gedefinieerd als de som van de **compatibele**, **niet-compatibele**, **uitgesloten**en **conflicterende** resources. De algemene compatibiliteits aantallen zijn de som van afzonderlijke resources die in **overeenstemming** zijn met of worden **uitgesloten** van de som van alle afzonderlijke resources. In de onderstaande afbeelding zijn er 20 afzonderlijke resources die van toepassing zijn en slechts één **niet-compatibel**is.
 De algemene bron compatibiliteit is 95% (19 van 20).
@@ -210,14 +211,14 @@ Omdat een beleid of initiatief kan worden toegewezen aan verschillende bereiken,
 :::image type="content" source="../media/getting-compliance-data/compliance-details.png" alt-text="Diagram van opslag accounts die worden blootgesteld aan open bare netwerken in de resource groep contoso R G." border="false":::
 
 De lijst met resources op het tabblad **resource compatibiliteit** bevat de evaluatie status van bestaande resources voor de huidige toewijzing. Het tabblad wordt standaard ingesteld op **niet-compatibel**, maar kan worden gefilterd.
-Gebeurtenissen (toevoegen, controleren, weigeren, implementeren) die zijn geactiveerd door de aanvraag om een resource te maken, worden weer gegeven op het tabblad **gebeurtenissen** .
+Gebeurtenissen (toevoegen, controleren, weigeren, implementeren, wijzigen) die zijn geactiveerd door de aanvraag om een resource te maken, worden weer gegeven op het tabblad **gebeurtenissen** .
 
 > [!NOTE]
 > Voor een AKS-engine beleid is de weer gegeven resource de resource groep.
 
 :::image type="content" source="../media/getting-compliance-data/compliance-events.png" alt-text="Diagram van opslag accounts die worden blootgesteld aan open bare netwerken in de resource groep contoso R G." border="false":::
 
-Voor resources van de [resource provider modus](../concepts/definition-structure.md#resource-provider-modes) selecteert u op het tabblad **resource naleving** de resource, klikt u met de rechter muisknop op de rij en selecteert u **compatibiliteits details weer geven** de details van de onderdeel naleving. Deze pagina bevat ook tabbladen voor een overzicht van de beleids regels die zijn toegewezen aan deze resource, gebeurtenissen, onderdeel gebeurtenissen en wijzigings geschiedenis.
+<a name="component-compliance"></a> Voor resources van de [resource provider modus](../concepts/definition-structure.md#resource-provider-modes) selecteert u op het tabblad **resource naleving** de resource, klikt u met de rechter muisknop op de rij en selecteert u **compatibiliteits details weer geven** de details van de onderdeel naleving. Deze pagina bevat ook tabbladen voor een overzicht van de beleids regels die zijn toegewezen aan deze resource, gebeurtenissen, onderdeel gebeurtenissen en wijzigings geschiedenis.
 
 :::image type="content" source="../media/getting-compliance-data/compliance-components.png" alt-text="Diagram van opslag accounts die worden blootgesteld aan open bare netwerken in de resource groep contoso R G." border="false":::
 

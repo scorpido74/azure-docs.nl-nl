@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp
 ms.date: 02/20/2020
 ms.author: cshoe
 ms.openlocfilehash: 7fa49583c17c198642d4ad6d72a0faa19dcfe659
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91323325"
 ---
 # <a name="signalr-service-output-binding-for-azure-functions"></a>Uitvoer binding van de signaal/service voor Azure Functions
@@ -636,7 +636,7 @@ Voor beeld *function.jsop*
 }
 ```
 
-*\_\_init. py__*
+*\_\_init.py__*
 
 ```python
 def main(req: func.HttpRequest, action: func.Out[str]) -> func.HttpResponse:
@@ -663,7 +663,7 @@ Voor beeld *function.jsop*
 }
 ```
 
-*\_\_init. py__*
+*\_\_init.py__*
 
 ```python
 def main(req: func.HttpRequest, action: func.Out[str]) -> func.HttpResponse:
@@ -734,7 +734,7 @@ De volgende tabel bevat informatie over de bindingsconfiguratie-eigenschappen di
 |**direction**| N.v.t. | Moet worden ingesteld op `in`.|
 |**name**| N.v.t. | De naam van de variabele die wordt gebruikt in de functie code voor het verbindings info-object. |
 |**hubName**|**HubName**| Deze waarde moet worden ingesteld op de naam van de seingevings hub waarvoor de verbindings gegevens worden gegenereerd.|
-|**userId**|**Naam**| Optioneel: de waarde van de claim voor de gebruikers-id die moet worden ingesteld in het toegangs sleutel token. |
+|**Naam**|**UserId**| Optioneel: de waarde van de claim voor de gebruikers-id die moet worden ingesteld in het toegangs sleutel token. |
 |**connectionStringSetting**|**ConnectionStringSetting**| De naam van de app-instelling die de seingevings service connection string bevat (standaard ingesteld op ' AzureSignalRConnectionString ') |
 
 ### <a name="signalr"></a>SignalR

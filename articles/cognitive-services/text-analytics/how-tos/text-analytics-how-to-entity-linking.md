@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 09/24/2020
+ms.date: 10/09/2020
 ms.author: aahi
-ms.openlocfilehash: d6820e890607ff16230ecf48e8318e6d1119a3a2
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: f37828d5561ef382f572c1fdd4917a71f8a00407
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91707503"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91930166"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Benoemde entiteits herkenning gebruiken in Text Analytics
 
@@ -68,20 +68,6 @@ Maak een POST-aanvraag. U kunt [postman](text-analytics-how-to-call-api.md) of d
 
 ### <a name="request-endpoints"></a>Eindpunten voor aanvragen
 
-#### <a name="version-30"></a>[Versie 3.0](#tab/version-3)
-
-Met named entity Recognition v3 worden afzonderlijke eind punten gebruikt voor NER en aanvragen voor entiteits koppelingen. Gebruik een URL-indeling hieronder op basis van uw aanvraag:
-
-Entiteiten koppelen
-* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/linking`
-
-[Verwijzing naar benoemde entiteit Recognition versie 3,0 voor `Linking`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/EntitiesRecognitionGeneral)
-
-NER
-* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/recognition/general`
-
-[Verwijzing naar benoemde entiteit Recognition versie 3,0 voor `General`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/EntitiesRecognitionGeneral)
-
 #### <a name="version-31-preview2"></a>[Versie 3,1-Preview. 2](#tab/version-3-preview)
 
 Herkenning van benoemde entiteiten `v3.1-preview.2` gebruikt afzonderlijke eind punten voor ner en entiteits koppelings aanvragen. Gebruik een URL-indeling hieronder op basis van uw aanvraag:
@@ -105,6 +91,20 @@ U kunt ook de optionele `domain=phi` para meter gebruiken om informatie over de 
 Let op de toevoeging van de `redactedText` eigenschap in de JSON van de antwoorden die de gewijzigde invoer tekst bevat waarin de gedetecteerde PII-entiteiten worden vervangen door een * voor elk teken van de entiteiten.
 
 [Named entity Recognition versie 3,1-Preview-verwijzing voor `PII`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesRecognitionPii)
+
+#### <a name="version-30"></a>[Versie 3.0](#tab/version-3)
+
+Met named entity Recognition v3 worden afzonderlijke eind punten gebruikt voor NER en aanvragen voor entiteits koppelingen. Gebruik een URL-indeling hieronder op basis van uw aanvraag:
+
+Entiteiten koppelen
+* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/linking`
+
+[Verwijzing naar benoemde entiteit Recognition versie 3,0 voor `Linking`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/EntitiesRecognitionGeneral)
+
+NER
+* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/recognition/general`
+
+[Verwijzing naar benoemde entiteit Recognition versie 3,0 voor `General`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/EntitiesRecognitionGeneral)
 
 ---
 
@@ -142,6 +142,96 @@ Uitvoer wordt onmiddellijk geretourneerd. U kunt de resultaten streamen naar een
 ### <a name="example-responses"></a>Voorbeeld reacties
 
 Versie 3 biedt afzonderlijke eind punten voor algemene NER, PII en entiteits koppeling. De antwoorden voor beide bewerkingen vindt u hieronder. 
+
+#### <a name="version-31-preview"></a>[Versie 3.1-preview](#tab/version-3-preview)
+
+Voor beeld van een PII-antwoord:
+```json
+{
+  "documents": [
+    {
+    "redactedText": "You can even pre-order from their online menu at *************************, call ************ or send email to ***************************!",
+    "id": "0",
+    "entities": [
+        {
+        "text": "www.contososteakhouse.com",
+        "category": "URL",
+        "offset": 49,
+        "length": 25,
+        "confidenceScore": 0.8
+        }, 
+        {
+        "text": "312-555-0176",
+        "category": "Phone Number",
+        "offset": 81,
+        "length": 12,
+        "confidenceScore": 0.8
+        }, 
+        {
+        "text": "order@contososteakhouse.com",
+        "category": "Email",
+        "offset": 111,
+        "length": 27,
+        "confidenceScore": 0.8
+        }
+      ],
+    "warnings": []
+    }
+  ],
+  "errors": [],
+  "modelVersion": "2020-07-01"
+}
+```
+
+Voor beeld van een entiteit koppelings reactie:
+
+```json
+{
+  "documents": [
+    {
+      "id": "1",
+      "entities": [
+        {
+          "bingId": "f8dd5b08-206d-2554-6e4a-893f51f4de7e", 
+          "name": "Space Needle",
+          "matches": [
+            {
+              "text": "Space Needle",
+              "offset": 30,
+              "length": 12,
+              "confidenceScore": 0.4
+            }
+          ],
+          "language": "en",
+          "id": "Space Needle",
+          "url": "https://en.wikipedia.org/wiki/Space_Needle",
+          "dataSource": "Wikipedia"
+        },
+        {
+          "bingId": "5fbba6b8-85e1-4d41-9444-d9055436e473",
+          "name": "Seattle",
+          "matches": [
+            {
+              "text": "Seattle",
+              "offset": 62,
+              "length": 7,
+              "confidenceScore": 0.25
+            }
+          ],
+          "language": "en",
+          "id": "Seattle",
+          "url": "https://en.wikipedia.org/wiki/Seattle",
+          "dataSource": "Wikipedia"
+        }
+      ],
+      "warnings": []
+    }
+  ],
+  "errors": [],
+  "modelVersion": "2020-02-01"
+}
+```
+
 
 #### <a name="version-30"></a>[Versie 3.0](#tab/version-3)
 
@@ -197,92 +287,7 @@ Voor beeld van een algemeen NER-antwoord:
   "modelVersion": "2020-04-01"
 }
 ```
-#### <a name="version-31-preview"></a>[Versie 3,1-Preview](#tab/version-3-preview)
 
-Voor beeld van een PII-antwoord:
-```json
-{
-  "documents": [
-    {
-    "redactedText": "You can even pre-order from their online menu at *************************, call ************ or send email to ***************************!",
-    "id": "0",
-    "entities": [
-        {
-        "text": "www.contososteakhouse.com",
-        "category": "URL",
-        "offset": 49,
-        "length": 25,
-        "confidenceScore": 0.8
-        }, 
-        {
-        "text": "312-555-0176",
-        "category": "Phone Number",
-        "offset": 81,
-        "length": 12,
-        "confidenceScore": 0.8
-        }, 
-        {
-        "text": "order@contososteakhouse.com",
-        "category": "Email",
-        "offset": 111,
-        "length": 27,
-        "confidenceScore": 0.8
-        }
-      ],
-    "warnings": []
-    }
-  ],
-  "errors": [],
-  "modelVersion": "2020-07-01"
-}
-```
-Voor beeld van een entiteit koppelings reactie:
-```json
-{
-  "documents": [
-    {
-      "id": "1",
-      "entities": [
-        {
-          "bingId": "f8dd5b08-206d-2554-6e4a-893f51f4de7e", 
-          "name": "Space Needle",
-          "matches": [
-            {
-              "text": "Space Needle",
-              "offset": 30,
-              "length": 12,
-              "confidenceScore": 0.4
-            }
-          ],
-          "language": "en",
-          "id": "Space Needle",
-          "url": "https://en.wikipedia.org/wiki/Space_Needle",
-          "dataSource": "Wikipedia"
-        },
-        {
-          "bingId": "5fbba6b8-85e1-4d41-9444-d9055436e473",
-          "name": "Seattle",
-          "matches": [
-            {
-              "text": "Seattle",
-              "offset": 62,
-              "length": 7,
-              "confidenceScore": 0.25
-            }
-          ],
-          "language": "en",
-          "id": "Seattle",
-          "url": "https://en.wikipedia.org/wiki/Seattle",
-          "dataSource": "Wikipedia"
-        }
-      ],
-      "warnings": []
-    }
-  ],
-  "errors": [],
-  "modelVersion": "2020-02-01"
-}
-```
 ---
 
 

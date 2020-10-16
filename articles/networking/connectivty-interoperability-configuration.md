@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
 ms.openlocfilehash: 7be326e0f01ed6a00244c0f5b9ed6a960b2b6e0b
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86171853"
 ---
 # <a name="interoperability-in-azure-back-end-connectivity-features-test-configuration-details"></a>Interoperabiliteit in azure back-end-connectiviteits functies: Configuratie Details testen
@@ -29,7 +29,7 @@ In de volgende afbeelding ziet u de details van Azure Virtual Network peering va
 
 In de volgende afbeelding ziet u de VNet-peering Details van de hub VNet. Als u wilt dat de hub vnet toestaat dat de spoke VNet de gateways van de hub gebruikt, selecteert u **Gateway doorvoer toestaan**.
 
-[![twee]][2]
+[![2]][2]
 
 ## <a name="branch-vnet-connectivity-by-using-a-site-to-site-vpn"></a>Vertakkings-VNet-connectiviteit met behulp van een site-naar-site-VPN
 

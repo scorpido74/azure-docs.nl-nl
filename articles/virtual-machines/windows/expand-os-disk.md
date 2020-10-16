@@ -16,10 +16,10 @@ ms.date: 09/02/2020
 ms.author: kirpas
 ms.subservice: disks
 ms.openlocfilehash: b739bb94911e24002b359aabfa23583ecfc9de85
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91336000"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>De besturingssysteemschijf van een virtuele machine uitbreiden
@@ -45,11 +45,11 @@ Wanneer u een nieuwe virtuele machine (VM) maakt in een resource groep door een 
  
 3. Selecteer bij **schijf naam**de schijf waarvan u de grootte wilt wijzigen.
 
-    :::image type="content" source="./media/expand-os-disk/disk-name.png" alt-text="Scherm opname van het deel venster schijven waarin een schijf naam is geselecteerd.":::
+    :::image type="content" source="./media/expand-os-disk/disk-name.png" alt-text="Scherm afbeelding met de optie schijven die is geselecteerd in de sectie instellingen van het menu.":::
 
 4. Selecteer in het linkermenu onder **instellingen**de optie **configuratie**.
 
-    :::image type="content" source="./media/expand-os-disk/configuration.png" alt-text="Scherm opname van de configuratie optie die is geselecteerd in de sectie instellingen van het menu.":::
+    :::image type="content" source="./media/expand-os-disk/configuration.png" alt-text="Scherm afbeelding met de optie schijven die is geselecteerd in de sectie instellingen van het menu.":::
 
 5. Selecteer in **grootte (GIB)** de gewenste schijf grootte.
    
@@ -57,11 +57,11 @@ Wanneer u een nieuwe virtuele machine (VM) maakt in een resource groep door een 
    > De nieuwe grootte moet groter zijn dan de bestaande schijfgrootte. Het Maxi maal toegestane aantal is 2.048 GB voor besturingssysteem schijven. (Het is mogelijk om de VHD-BLOB buiten die grootte uit te breiden, maar het besturings systeem werkt alleen met de eerste 2.048 GB schijf ruimte.)
    > 
 
-    :::image type="content" source="./media/expand-os-disk/size.png" alt-text="Scherm opname van het configuratie deel venster waarin de schijf grootte is geselecteerd.":::
+    :::image type="content" source="./media/expand-os-disk/size.png" alt-text="Scherm afbeelding met de optie schijven die is geselecteerd in de sectie instellingen van het menu.":::
 
 6. Selecteer **Opslaan**.
 
-    :::image type="content" source="./media/expand-os-disk/save.png" alt-text="Scherm opname van het configuratie deel venster waarin de knop Opslaan is geselecteerd.":::
+    :::image type="content" source="./media/expand-os-disk/save.png" alt-text="Scherm afbeelding met de optie schijven die is geselecteerd in de sectie instellingen van het menu.":::
 
 
 ## <a name="resize-a-managed-disk-by-using-powershell"></a>Het formaat van een beheerde schijf wijzigen met behulp van Power shell

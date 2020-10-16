@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: c98aeaff3ba39a28fad68454d76f6f4d33f44e5d
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 763b9977f756075789b826c2f1e01cd41ac60a73
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836731"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091165"
 ---
 # <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>Meer informatie over de verschillen tussen Cloud Services en Service Fabric voordat u toepassingen migreert.
 Microsoft Azure Service Fabric is het Cloud toepassings platform van de volgende generatie voor zeer schaal bare, zeer betrouw bare gedistribueerde toepassingen. Het bevat een groot aantal nieuwe functies voor het verpakken, implementeren, bijwerken en beheren van gedistribueerde Cloud toepassingen. 
@@ -69,7 +69,7 @@ Met directe communicatie kunnen lagen rechtstreeks communiceren via het eind pun
 
 Service Fabric biedt een service detectie mechanisme, de Naming Service, die kan worden gebruikt voor het omzetten van eindpunt adressen van services. 
 
-![Service Fabric directe communicatie][6]
+![Diagram dat laat zien hoe Service Fabric een service detectie mechanisme biedt, de Naming Service, die kan worden gebruikt voor het omzetten van eindpunt adressen van services.][6]
 
 ### <a name="queues"></a>Wachtrijen
 Een gemeen schappelijk communicatie mechanisme tussen lagen in stateless omgevingen, zoals Cloud Services, is het gebruik van een externe opslag wachtrij om werk taken van de ene laag naar de andere te blijvend. Een veelvoorkomend scenario is een weblaag die taken verzendt naar een Azure-wachtrij of Service Bus waar werk rollen instanties de taken in de wachtrij kunnen plaatsen en verwerken.
@@ -91,7 +91,7 @@ Hetzelfde communicatie model kan worden gebruikt in Service Fabric. Dit kan hand
 | RoleInstance. GetUpgradeDomain | FabricClient. QueryManager. GetNodeList | Filteren op knooppunt naam en de eigenschap upgrade gebruiken |
 | RoleInstance. GetInstanceEndpoints | FabricRuntime. GetActivationContext of Naming (ResolveService) | CodePackageActivationContext die wordt weer gegeven door FabricRuntime. GetActivationContext en binnen de replica's via ServiceInitializationParameters. CodePackageActivationContext dat is gegeven tijdens. Initialiseren |
 | RoleEnvironment.GetRoles | FabricClient. QueryManager. GetNodeList | Als u hetzelfde Sorteer filter op type wilt uitvoeren, kunt u de lijst met knooppunt typen uit het cluster manifest ophalen via FabricClient. ClusterManager. GetClusterManifest en daar de rol/knooppunt typen uit te pakken. |
-| RoleEnvironment.GetIsAvailable | Connect-WindowsFabricCluster of maak een FabricRuntime punt naar een bepaald knoop punt | * |
+| RoleEnvironment.GetIsAvailable | Connect-WindowsFabricCluster of een FabricRuntime punt maken naar een bepaald knoop punt | * |
 | RoleEnvironment.GetLocalResource | CodePackageActivationContext. log/temp/werk | * |
 | RoleEnvironment.GetCurrentRoleInstance | CodePackageActivationContext. log/temp/werk | * |
 | LocalResource.GetRootPath | CodePackageActivationContext. log/temp/werk | * |

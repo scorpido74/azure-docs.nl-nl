@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
 ms.openlocfilehash: cc04a891bb32ede6c7bb72a339b728642cf343ed
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86207820"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Apache Ambari Hive-weergave gebruiken met Apache Hadoop in HDInsight
@@ -60,9 +60,9 @@ Een Hadoop-cluster in HDInsight. Zie aan de [slag met HDInsight op Linux](./apac
 
     Deze instructies doen de volgende acties:
 
-    |Rekeningen | Beschrijving |
+    |Instructie | Beschrijving |
     |---|---|
-    |TABEL NEERZETTEN|Hiermee verwijdert u de tabel en het gegevens bestand, voor het geval de tabel al bestaat.|
+    |DROP TABLE|Hiermee verwijdert u de tabel en het gegevens bestand, voor het geval de tabel al bestaat.|
     |CREATE EXTERNAL TABLE|Hiermee maakt u een nieuwe tabel ' External ' in de component. Externe tabellen slaan alleen de tabel definitie in Hive op. De gegevens blijven op de oorspronkelijke locatie.|
     |RIJ-INDELING|Laat zien hoe de gegevens worden opgemaakt. In dit geval worden de velden in elk logboek gescheiden door een spatie.|
     |OPGESLAGEN ALS TEXTFILE-LOCATIE|Hier wordt weer gegeven waar de gegevens worden opgeslagen en dat deze worden opgeslagen als tekst.|
@@ -83,7 +83,7 @@ Een Hadoop-cluster in HDInsight. Zie aan de [slag met HDInsight op Linux](./apac
     U kunt het tabblad **logboek** gebruiken om de logboek gegevens weer te geven die de taak heeft gemaakt.
 
    > [!TIP]  
-   > Down load of sla de resultaten op in het dialoog venster **acties** , onder het tabblad **resultaten** .
+   > Down load of sla de resultaten op in het dialoog venster **acties** , onder het tabblad  **resultaten** .
 
 ### <a name="visual-explain"></a>Visuele uitleg
 

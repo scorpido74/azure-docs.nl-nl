@@ -8,12 +8,12 @@ ms.date: 10/08/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-python
-ms.openlocfilehash: 11c31b9ce3c5a8d8fba18d8e7c46ac38b0559aec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8bef69037fad8bf8ee9537e90f26ca967560b9d2
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91856310"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876094"
 ---
 # <a name="develop-for-azure-files-with-python"></a>Ontwikkelen voor Azure Files met Python
 
@@ -95,7 +95,7 @@ Met [ShareServiceClient](/azure/developer/python/sdk/storage/azure-storage-file-
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-`FileService`Met het object kunt u werken met shares, mappen en bestanden. Met de volgende code wordt een `FileService` object gemaakt met behulp van de naam van het opslag account en de account sleutel. Vervang `<myaccount>` en `<mykey>` door uw accountnaam en -sleutel.
+Met het [File Service](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true) -object kunt u werken met shares, mappen en bestanden. Met de volgende code wordt een `FileService` object gemaakt met behulp van de naam van het opslag account en de account sleutel. Vervang `<myaccount>` en `<mykey>` door uw accountnaam en -sleutel.
 
 ```python
 file_service = FileService(account_name='myaccount', account_key='mykey')
@@ -113,7 +113,7 @@ In het volgende code voorbeeld wordt een [ShareClient](/azure/developer/python/s
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-In het volgende code voorbeeld wordt een- `FileService` object gebruikt om de share te maken als deze niet bestaat.
+In het volgende code voorbeeld wordt een [File Service](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true) -object gebruikt om de share te maken als deze niet bestaat.
 
 ```python
 file_service.create_share('myshare')
@@ -141,7 +141,7 @@ file_service.create_directory('myshare', 'sampledir')
 
 ---
 
-## <a name="upload-a-file"></a>Bestand uploaden
+## <a name="upload-a-file"></a>Een bestand uploaden
 
 In deze sectie leert u hoe u een bestand van lokale opslag uploadt naar Azure File Storage.
 
@@ -153,7 +153,7 @@ Met de volgende methode wordt de inhoud van het opgegeven bestand geüpload naar
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-Een Azure-bestands share bevat ten minste een hoofdmap waarin bestanden kunnen worden opgeslagen. Gebruik de methoden,, of om een bestand te maken en gegevens te uploaden `create_file_from_path` `create_file_from_stream` `create_file_from_bytes` `create_file_from_text` . Dit zijn methoden op hoog niveau die de benodigde Chunking uitvoeren wanneer de grootte van de gegevens groter is dan 64 MB.
+Een Azure-bestands share bevat ten minste een hoofdmap waarin bestanden kunnen worden opgeslagen. Gebruik de methoden [create_file_from_path](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#create-file-from-path-share-name--directory-name--file-name--local-file-path--content-settings-none--metadata-none--validate-content-false--progress-callback-none--max-connections-2--file-permission-none--smb-properties--azure-storage-file-models-smbproperties-object---timeout-none-), [create_file_from_stream](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#create-file-from-stream-share-name--directory-name--file-name--stream--count--content-settings-none--metadata-none--validate-content-false--progress-callback-none--max-connections-2--timeout-none--file-permission-none--smb-properties--azure-storage-file-models-smbproperties-object--), [create_file_from_bytes](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#create-file-from-bytes-share-name--directory-name--file-name--file--index-0--count-none--content-settings-none--metadata-none--validate-content-false--progress-callback-none--max-connections-2--timeout-none--file-permission-none--smb-properties--azure-storage-file-models-smbproperties-object--)of [create_file_from_text](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#create-file-from-text-share-name--directory-name--file-name--text--encoding--utf-8---content-settings-none--metadata-none--validate-content-false--timeout-none--file-permission-none--smb-properties--azure-storage-file-models-smbproperties-object--) om een bestand te maken en gegevens te uploaden. Dit zijn methoden op hoog niveau die de benodigde Chunking uitvoeren wanneer de grootte van de gegevens groter is dan 64 MB.
 
 `create_file_from_path` uploadt de inhoud van een bestand uit het opgegeven pad en `create_file_from_stream` uploadt de inhoud van een al geopend bestand/stream. `create_file_from_bytes` uploadt een byte matrix en `create_file_from_text` uploadt de opgegeven tekst waarde met behulp van de opgegeven code ring (wordt standaard ingesteld op UTF-8).
 
@@ -181,7 +181,7 @@ Als u de bestanden en mappen in een submap wilt weer geven, gebruikt u de method
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-Als u de bestanden en mappen in een share wilt weer geven, gebruikt u de methode ** \_ directory's \_ en \_ bestanden weer geven** . Deze methode retourneert een generator. Met de volgende code wordt de **naam** van elk bestand en elke map in een share naar de-console uitgevoerd.
+Gebruik de methode [list_directories_and_files](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#list-directories-and-files-share-name--directory-name-none--num-results-none--marker-none--timeout-none--prefix-none--snapshot-none-) om de bestanden en mappen in een share weer te geven. Deze methode retourneert een generator. Met de volgende code wordt de **naam** van elk bestand en elke map in een share naar de-console uitgevoerd.
 
 ```python
 generator = file_service.list_directories_and_files('myshare')
@@ -191,7 +191,7 @@ for file_or_dir in generator:
 
 ---
 
-## <a name="download-a-file"></a>Bestand downloaden
+## <a name="download-a-file"></a>Een bestand downloaden
 
 # <a name="python-v12"></a>[Python-V12](#tab/python)
 
@@ -203,7 +203,7 @@ Het volgende voor beeld wordt gebruikt `download_file` om de inhoud van het opge
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-Als u gegevens uit een bestand wilt downloaden, gebruikt,, `get_file_to_path` `get_file_to_stream` `get_file_to_bytes` of `get_file_to_text` . Dit zijn methoden op hoog niveau die de benodigde Chunking uitvoeren wanneer de grootte van de gegevens groter is dan 64 MB.
+Als u gegevens uit een bestand wilt downloaden, gebruikt u [get_file_to_path](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#get-file-to-path-share-name--directory-name--file-name--file-path--open-mode--wb---start-range-none--end-range-none--validate-content-false--progress-callback-none--max-connections-2--timeout-none--snapshot-none-), [get_file_to_stream](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#get-file-to-stream-share-name--directory-name--file-name--stream--start-range-none--end-range-none--validate-content-false--progress-callback-none--max-connections-2--timeout-none--snapshot-none-), [get_file_to_bytes](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#get-file-to-bytes-share-name--directory-name--file-name--start-range-none--end-range-none--validate-content-false--progress-callback-none--max-connections-2--timeout-none--snapshot-none-)of [get_file_to_text](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#get-file-to-text-share-name--directory-name--file-name--encoding--utf-8---start-range-none--end-range-none--validate-content-false--progress-callback-none--max-connections-2--timeout-none--snapshot-none-). Dit zijn methoden op hoog niveau die de benodigde Chunking uitvoeren wanneer de grootte van de gegevens groter is dan 64 MB.
 
 In het volgende voor beeld ziet u hoe u `get_file_to_path` de inhoud van het bestand **MyFile** downloadt en opslaat in het *out-sunset.png* -bestand.
 
@@ -313,7 +313,7 @@ Als u een bestand wilt verwijderen, roept u [delete_file](/azure/developer/pytho
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-Als u een bestand wilt verwijderen, roept u aan `delete_file` .
+Als u een bestand wilt verwijderen, roept u [delete_file](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#delete-file-share-name--directory-name--file-name--timeout-none-)aan.
 
 ```python
 file_service.delete_file('myshare', None, 'myfile')

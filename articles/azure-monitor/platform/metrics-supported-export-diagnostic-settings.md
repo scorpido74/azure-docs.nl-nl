@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 07/22/2020
 ms.subservice: metrics
 ms.openlocfilehash: ca6acb97e52123a0663d988b3f217d305bce2c4b
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87131681"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>De metrische gegevens van het Azure Monitor-platform exporteerbaar via Diagnostische instellingen
@@ -43,7 +43,7 @@ De wijziging heeft geen invloed op het gedrag van een van de volgende ervaringen
  
 Hier volgt een lijst met de metrische gegevens waarvan het gedrag is gewijzigd. 
 
-| ResourceType                    | Metrisch gegeven               |  MetricDisplayName  | 
+| ResourceType                    | Gegevens               |  MetricDisplayName  | 
 |---------------------------------|----------------------|---------------------|
 | Microsoft.ApiManagement/service | UnauthorizedRequests |  Niet-geautoriseerde gateway aanvragen (afgeschaft)  | 
 | Microsoft.ApiManagement/service | TotalRequests |  Totaal aantal gateway aanvragen (afgeschaft)  | 
@@ -218,10 +218,10 @@ Hier volgt een lijst met de metrische gegevens waarvan het gedrag is gewijzigd.
 | Micro soft. Insights/onderdelen | Performance Counters/exceptionsPerSecond |  Uitzonderings frequentie  | 
 | Micro soft. Insights/onderdelen | Page views/aantal |  Pagina weergaven  | 
 | Micro soft. Insights/onderdelen | uitzonde ringen/aantal |  Uitzonderingen  | 
-| Micro soft. Kusto/clusters | StreamingIngestResults |  Resultaat van streaming-opname  | 
-| Micro soft. Kusto/clusters | StreamingIngestDuration |  Opname duur van streaming  | 
-| Micro soft. Kusto/clusters | StreamingIngestDataRate |  Gegevens frequentie van streaming opname  | 
-| Micro soft. Kusto/clusters | SteamingIngestRequestRate |  Aanvraag frequentie voor streaming-opname  | 
+| Micro soft. Kusto/clusters | StreamingIngestResults |  Resultaat streamingopname  | 
+| Micro soft. Kusto/clusters | StreamingIngestDuration |  Duur streamingopname  | 
+| Micro soft. Kusto/clusters | StreamingIngestDataRate |  Gegevenssnelheid streamingopname  | 
+| Micro soft. Kusto/clusters | SteamingIngestRequestRate |  Aanvraagsnelheid streamingopname  | 
 | Micro soft. Kusto/clusters | QueryDuration |  Query duur  | 
 | Micro soft. Kusto/clusters | KeepAlive |  Actief houden  | 
 | Micro soft. Kusto/clusters | IngestionVolumeInMB |  Opname volume (in MB)  | 
@@ -257,36 +257,36 @@ Hier volgt een lijst met de metrische gegevens waarvan het gedrag is gewijzigd.
 | Micro soft. Logic/integrationServiceEnvironments | ActionsSkipped |  Overgeslagen acties   | 
 | Micro soft. Logic/integrationServiceEnvironments | ActionsFailed |  Mislukte acties   | 
 | Micro soft. Logic/integrationServiceEnvironments | ActionsCompleted |  Acties voltooid   | 
-| Micro soft. Logic/werk stromen | TriggerThrottledEvents |  Trigger beperkings gebeurtenissen  | 
-| Micro soft. Logic/werk stromen | TriggersSucceeded |  Geslaagde triggers   | 
-| Micro soft. Logic/werk stromen | TriggersStarted |  Triggers gestart   | 
-| Micro soft. Logic/werk stromen | TriggersSkipped |  Triggers overgeslagen  | 
-| Micro soft. Logic/werk stromen | TriggersFired |  Geactiveerde triggers   | 
-| Micro soft. Logic/werk stromen | TriggersFailed |  Mislukte triggers   | 
-| Micro soft. Logic/werk stromen | TriggersCompleted |  Triggers voltooid   | 
-| Micro soft. Logic/werk stromen | TotalBillableExecutions |  Totaal aantal factureer bare uitvoeringen  | 
-| Micro soft. Logic/werk stromen | RunThrottledEvents |  Vertraagde gebeurtenissen uitvoeren  | 
-| Micro soft. Logic/werk stromen | RunStartThrottledEvents |  Vertraagde gebeurtenissen uitvoeren  | 
-| Micro soft. Logic/werk stromen | RunsSucceeded |  Geslaagde uitvoeringen  | 
-| Micro soft. Logic/werk stromen | RunsStarted |  Uitvoeringen gestart  | 
-| Micro soft. Logic/werk stromen | RunsFailed |  Uitvoeringen mislukt  | 
-| Micro soft. Logic/werk stromen | RunsCompleted |  Uitvoeringen voltooid  | 
-| Micro soft. Logic/werk stromen | RunsCancelled |  Uitvoeringen geannuleerd  | 
-| Micro soft. Logic/werk stromen | RunFailurePercentage |  Percentage mislukte uitvoeringen  | 
-| Micro soft. Logic/werk stromen | BillingUsageStorageConsumption |  Facturerings gebruik voor uitvoeringen van opslag verbruik  | 
-| Micro soft. Logic/werk stromen | BillingUsageStorageConsumption |  Facturerings gebruik voor uitvoeringen van opslag verbruik  | 
-| Micro soft. Logic/werk stromen | BillingUsageStandardConnector |  Facturerings gebruik voor het uitvoeren van standaard-connectors  | 
-| Micro soft. Logic/werk stromen | BillingUsageStandardConnector |  Facturerings gebruik voor het uitvoeren van standaard-connectors  | 
-| Micro soft. Logic/werk stromen | BillingUsageNativeOperation |  Facturerings gebruik voor uitvoering van systeem eigen bewerkingen  | 
-| Micro soft. Logic/werk stromen | BillingUsageNativeOperation |  Facturerings gebruik voor uitvoering van systeem eigen bewerkingen  | 
-| Micro soft. Logic/werk stromen | BillableTriggerExecutions |  Factureer bare trigger uitvoeringen  | 
-| Micro soft. Logic/werk stromen | BillableActionExecutions |  Factureer bare actie-uitvoeringen  | 
-| Micro soft. Logic/werk stromen | ActionThrottledEvents |  Door actie vertraagde gebeurtenissen  | 
-| Micro soft. Logic/werk stromen | ActionsSucceeded |  Acties geslaagd   | 
-| Micro soft. Logic/werk stromen | ActionsStarted |  Gestarte acties   | 
-| Micro soft. Logic/werk stromen | ActionsSkipped |  Overgeslagen acties   | 
-| Micro soft. Logic/werk stromen | ActionsFailed |  Mislukte acties   | 
-| Micro soft. Logic/werk stromen | ActionsCompleted |  Acties voltooid   | 
+| Microsoft.Logic/workflows | TriggerThrottledEvents |  Trigger beperkings gebeurtenissen  | 
+| Microsoft.Logic/workflows | TriggersSucceeded |  Geslaagde triggers   | 
+| Microsoft.Logic/workflows | TriggersStarted |  Triggers gestart   | 
+| Microsoft.Logic/workflows | TriggersSkipped |  Triggers overgeslagen  | 
+| Microsoft.Logic/workflows | TriggersFired |  Geactiveerde triggers   | 
+| Microsoft.Logic/workflows | TriggersFailed |  Mislukte triggers   | 
+| Microsoft.Logic/workflows | TriggersCompleted |  Triggers voltooid   | 
+| Microsoft.Logic/workflows | TotalBillableExecutions |  Totaal aantal factureer bare uitvoeringen  | 
+| Microsoft.Logic/workflows | RunThrottledEvents |  Vertraagde gebeurtenissen uitvoeren  | 
+| Microsoft.Logic/workflows | RunStartThrottledEvents |  Vertraagde gebeurtenissen uitvoeren  | 
+| Microsoft.Logic/workflows | RunsSucceeded |  Geslaagde uitvoeringen  | 
+| Microsoft.Logic/workflows | RunsStarted |  Uitvoeringen gestart  | 
+| Microsoft.Logic/workflows | RunsFailed |  Uitvoeringen mislukt  | 
+| Microsoft.Logic/workflows | RunsCompleted |  Uitvoeringen voltooid  | 
+| Microsoft.Logic/workflows | RunsCancelled |  Uitvoeringen geannuleerd  | 
+| Microsoft.Logic/workflows | RunFailurePercentage |  Percentage mislukte uitvoeringen  | 
+| Microsoft.Logic/workflows | BillingUsageStorageConsumption |  Facturerings gebruik voor uitvoeringen van opslag verbruik  | 
+| Microsoft.Logic/workflows | BillingUsageStorageConsumption |  Facturerings gebruik voor uitvoeringen van opslag verbruik  | 
+| Microsoft.Logic/workflows | BillingUsageStandardConnector |  Facturerings gebruik voor het uitvoeren van standaard-connectors  | 
+| Microsoft.Logic/workflows | BillingUsageStandardConnector |  Facturerings gebruik voor het uitvoeren van standaard-connectors  | 
+| Microsoft.Logic/workflows | BillingUsageNativeOperation |  Facturerings gebruik voor uitvoering van systeem eigen bewerkingen  | 
+| Microsoft.Logic/workflows | BillingUsageNativeOperation |  Facturerings gebruik voor uitvoering van systeem eigen bewerkingen  | 
+| Microsoft.Logic/workflows | BillableTriggerExecutions |  Factureer bare trigger uitvoeringen  | 
+| Microsoft.Logic/workflows | BillableActionExecutions |  Factureer bare actie-uitvoeringen  | 
+| Microsoft.Logic/workflows | ActionThrottledEvents |  Door actie vertraagde gebeurtenissen  | 
+| Microsoft.Logic/workflows | ActionsSucceeded |  Acties geslaagd   | 
+| Microsoft.Logic/workflows | ActionsStarted |  Gestarte acties   | 
+| Microsoft.Logic/workflows | ActionsSkipped |  Overgeslagen acties   | 
+| Microsoft.Logic/workflows | ActionsFailed |  Mislukte acties   | 
+| Microsoft.Logic/workflows | ActionsCompleted |  Acties voltooid   | 
 | Micro soft. Network/frontdoors | WebApplicationFirewallRequestCount |  Aantal aanvragen voor Web Application firewall  | 
 | Micro soft. Network/frontdoors | TotalLatency |  Totale latentie  | 
 | Micro soft. Network/frontdoors | ResponseSize |  Grootte van antwoord  | 
@@ -296,7 +296,7 @@ Hier volgt een lijst met de metrische gegevens waarvan het gedrag is gewijzigd.
 | Micro soft. Network/frontdoors | BackendRequestLatency |  Latentie van back-upaanvraag  | 
 | Micro soft. Network/frontdoors | BackendRequestCount |  Aantal back-aanvragen  | 
 | Micro soft. Network/frontdoors | BackendHealthPercentage |  Back-status percentage  | 
-| Micro soft. Network/trafficManagerProfiles | QpsByEndpoint |  Query's op eind punt geretourneerd  | 
+| Microsoft.Network/trafficManagerProfiles | QpsByEndpoint |  Query's op eind punt geretourneerd  | 
 | Micro soft. notification hubs/naam ruimten/notification hubs | gepland. in behandeling |  Geplande meldingen in behandeling  | 
 | Micro soft. notification hubs/naam ruimten/notification hubs | registratie. update |  Registratie-update bewerkingen  | 
 | Micro soft. notification hubs/naam ruimten/notification hubs | registratie. ophalen |  Lees bewerkingen voor registratie  | 
@@ -372,7 +372,7 @@ Hier volgt een lijst met de metrische gegevens waarvan het gedrag is gewijzigd.
 | Micro soft. SQL/managedInstances | avg_cpu_percent |  Gemiddeld CPU-percentage  | 
 | Microsoft.Sql/servers | dtu_used |  DTU gebruikt  | 
 | Microsoft.Sql/servers | dtu_consumption_percent |  DTU-percentage  | 
-| Microsoft.Sql/servers/databases | xtp_storage_percent |  Percentage OLTP-opslag in het geheugen  | 
+| Microsoft.Sql/servers/databases | xtp_storage_percent |  Percentage In-Memory OLTP-opslag  | 
 | Microsoft.Sql/servers/databases | workers_percent |  Percentage werk nemers  | 
 | Microsoft.Sql/servers/databases | sessions_percent |  Percentage sessies  | 
 | Microsoft.Sql/servers/databases | physical_data_read_percent |  Gegevens-I/O-percentage  | 
@@ -388,7 +388,7 @@ Hier volgt een lijst met de metrische gegevens waarvan het gedrag is gewijzigd.
 | Microsoft.Sql/servers/databases | connection_failed |  Mislukte verbindingen  | 
 | Microsoft.Sql/servers/databases | cache_hit_percent |  Percentage cache treffers  | 
 | Microsoft.Sql/servers/databases | blocked_by_firewall |  Geblokkeerd door de firewall  | 
-| Micro soft. SQL/servers/elasticPools | xtp_storage_percent |  Percentage OLTP-opslag in het geheugen  | 
+| Micro soft. SQL/servers/elasticPools | xtp_storage_percent |  Percentage In-Memory OLTP-opslag  | 
 | Micro soft. SQL/servers/elasticPools | workers_percent |  Percentage werk nemers  | 
 | Micro soft. SQL/servers/elasticPools | sessions_percent |  Percentage sessies  | 
 | Micro soft. SQL/servers/elasticPools | physical_data_read_percent |  Gegevens-I/O-percentage  | 
@@ -520,7 +520,7 @@ Hier volgt een lijst met de metrische gegevens waarvan het gedrag is gewijzigd.
 | Microsoft.Sql/servers/databases | connection_failed | Mislukte verbindingen | 
 | Microsoft.Sql/servers/databases | blocked_by_firewall | Geblokkeerd door de firewall | 
 | Microsoft.Sql/servers/databases | constateer | Impassen | 
-| Microsoft.Sql/servers/databases | xtp_storage_percent | Percentage OLTP-opslag in het geheugen | 
+| Microsoft.Sql/servers/databases | xtp_storage_percent | Percentage In-Memory OLTP-opslag | 
 | Microsoft.Sql/servers/databases | workers_percent | Percentage werk nemers | 
 | Microsoft.Sql/servers/databases | sessions_percent | Percentage sessies | 
 | Microsoft.Sql/servers/databases | dtu_used | DTU gebruikt | 
@@ -545,7 +545,7 @@ Hier volgt een lijst met de metrische gegevens waarvan het gedrag is gewijzigd.
 | Micro soft. SQL/servers/elasticPools | workers_percent | Percentage werk nemers | 
 | Micro soft. SQL/servers/elasticPools | sessions_percent | Percentage sessies | 
 | Micro soft. SQL/servers/elasticPools | eDTU_used | eDTU gebruikt | 
-| Micro soft. SQL/servers/elasticPools | xtp_storage_percent | Percentage OLTP-opslag in het geheugen | 
+| Micro soft. SQL/servers/elasticPools | xtp_storage_percent | Percentage In-Memory OLTP-opslag | 
 | Microsoft.Sql/servers | dtu_consumption_percent | DTU-percentage | 
 | Microsoft.Sql/servers | dtu_used | DTU gebruikt | 
 | Micro soft. SQL/managedInstances | avg_cpu_percent | Gemiddeld CPU-percentage | 

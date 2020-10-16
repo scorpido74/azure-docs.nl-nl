@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/26/2019
 ms.author: mlottner
 ms.openlocfilehash: aec750d246ce99fa65431e23ef68e70418db0017
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936875"
 ---
 # <a name="defender-for-iot-event-aggregation"></a>Defender voor IoT-gebeurtenis aggregatie
@@ -69,11 +69,11 @@ Breng wijzigingen aan in de configuratie van Defender voor IoT-gebeurtenis aggre
 
 | Configuratie naam | Mogelijke waarden | Details | Opmerkingen |
 |:-----------|:---------------|:--------|:--------|
-| aggregationEnabledProcessCreate | boolean | Gebeurtenis aggregatie voor het maken van proces gebeurtenissen in-of uitschakelen |
+| aggregationEnabledProcessCreate | booleaans | Gebeurtenis aggregatie voor het maken van proces gebeurtenissen in-of uitschakelen |
 | aggregationIntervalProcessCreate | ISO8601 time span-teken reeks | Aggregatie-interval voor het maken van proces gebeurtenissen |
-| aggregationEnabledConnectionCreate | boolean| Aggregatie van gebeurtenissen in-of uitschakelen voor het maken van verbinding |
+| aggregationEnabledConnectionCreate | booleaans| Aggregatie van gebeurtenissen in-of uitschakelen voor het maken van verbinding |
 | aggregationIntervalConnectionCreate | ISO8601 time span-teken reeks | Aggregatie-interval voor het maken van verbindings gebeurtenissen |
-| aggregationEnabledProcessTerminate | boolean | Gebeurtenis aggregatie voor proces beëindigings gebeurtenissen in-/uitschakelen | Alleen in Windows|
+| aggregationEnabledProcessTerminate | booleaans | Gebeurtenis aggregatie voor proces beëindigings gebeurtenissen in-/uitschakelen | Alleen in Windows|
 | aggregationIntervalProcessTerminate | ISO8601 time span-teken reeks | Aggregatie-interval voor gebeurtenissen voor proces beëindigen | Alleen in Windows|
 |
 

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a249d5f3c47e8e8789f91f355c791cc50341ab01
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91827905"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Veelgestelde vragen over identiteits beveiliging in Azure Active Directory
@@ -52,7 +52,7 @@ Ga naar de weer gave risico detecties en filter op detectie type. U kunt dit rap
 
 ### <a name="why-cant-i-set-my-own-risk-levels-for-each-risk-detection"></a>Waarom kan ik mijn eigen risico niveaus niet instellen voor elke risico detectie?
 
-Risico niveaus in identiteits beveiliging zijn gebaseerd op de nauw keurigheid van de detectie en worden mogelijk gemaakt door onze gecontroleerde machine learning. Als u wilt aanpassen welke gebruikers ervaring worden gepresenteerd, kan de beheerder bepaalde gebruikers/groepen opnemen/uitsluiten van het risico beleid voor gebruikers Risico's en aanmeldings Risico's.
+Risico niveaus in identiteits beveiliging zijn gebaseerd op de nauw keurigheid van de detectie en worden mogelijk gemaakt door onze gecontroleerde machine learning. Als u wilt aanpassen welke gebruikers ervaring worden gepresenteerd, kan de beheerder bepaalde gebruikers/groepen opnemen in of uitsluiten van het risico beleid voor gebruikers en Sign-In.
 
 ### <a name="why-does-the-location-of-a-sign-in-not-match-where-the-user-truly-signed-in-from"></a>Waarom komt de locatie van een aanmelding niet overeen met waar de gebruiker zich daad werkelijk heeft aangemeld?
 

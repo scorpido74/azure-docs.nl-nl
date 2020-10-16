@@ -4,12 +4,12 @@ description: In dit artikel vindt u meer informatie over de ondersteunde scenari
 ms.topic: conceptual
 ms.date: 11/7/2019
 ms.custom: references_regions
-ms.openlocfilehash: e3bfc5ab9a91ae3aee73d7ed24161acae60211ce
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a3ad68fcaaa820daca842d567ecd40f011df729f
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022323"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946362"
 ---
 # <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Ondersteuningsmatrix voor back-up van SAP HANA-databases in virtuele Azure-machines
 
@@ -32,7 +32,7 @@ Azure Backup ondersteunt de back-up van SAP HANA-data bases naar Azure. In dit a
 | **HANA-database grootte**     | HANA-data bases van grootte <= 2 TB (dit is niet de geheugen grootte van het HANA-systeem)               |                                                              |
 | **Back-uptypen**           | Volledige, differentiële en logboek back-ups                          | Incrementeel, moment opnamen                                       |
 | **Hersteltypen**          | Raadpleeg de SAP HANA opmerking [1642148](https://launchpad.support.sap.com/#/notes/1642148) voor meer informatie over de ondersteunde typen herstel bewerkingen |                                                              |
-| **Back-uplimieten**          | Maxi maal 2 TB volledige back-upgrootte per SAP HANA-exemplaar         |                                                              |
+| **Back-uplimieten**          | Maxi maal 2 TB volledige back-upgrootte per SAP HANA-exemplaar (zachte limiet)         |                                                              |
 | **Speciale configuraties** |                                                              | SAP HANA en dynamische lagen <br>  Klonen via LaMa        |
 
 ------

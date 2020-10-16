@@ -4,10 +4,10 @@ description: Dit artikel laat u zien hoe u dynamisch partities kunt toevoegen aa
 ms.topic: how-to
 ms.date: 06/23/2020
 ms.openlocfilehash: 4a729147eaa11497c66f82a9764dfee9492786b9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87002536"
 ---
 # <a name="dynamically-add-partitions-to-an-event-hub-apache-kafka-topic-in-azure-event-hubs"></a>Dynamisch partities toevoegen aan een Event Hub (Apache Kafka onderwerp) in azure Event Hubs
@@ -74,7 +74,7 @@ Event Hubs biedt drie opties voor de afzender:
 - **Round Robin (standaard)** : in dit scenario worden de gebeurtenissen in het event hubs service Round Robin. Event Hubs-service is op de hoogte van het aantal partities dat wordt gewijzigd en verzonden naar nieuwe partities binnen enkele seconden van het wijzigen van het aantal partities.
 
 ### <a name="receiverconsumer-clients"></a>Ontvanger/consumenten clients
-Event Hubs biedt directe ontvangers en een eenvoudige consumenten bibliotheek met de naam van de [Event processor host (oude SDK)](event-hubs-event-processor-host.md) of de [gebeurtenis processor (nieuwe SDK)](event-processor-balance-partition-load.md).
+Event Hubs biedt directe ontvangers en een eenvoudige consumenten bibliotheek met de naam van de [Event processor host (oude SDK)](event-hubs-event-processor-host.md)  of de [gebeurtenis processor (nieuwe SDK)](event-processor-balance-partition-load.md).
 
 - **Directe ontvangers** : de ontvangers Luis teren naar specifieke partities. Het runtime gedrag wordt niet beïnvloed wanneer partities voor een Event Hub worden uitgeschaald. De toepassing die gebruikmaakt van directe ontvangers, moet ervoor zorgen dat de nieuwe partities worden opgehaald en de ontvangers dienovereenkomstig worden toegewezen.
 - **Event processor host** : deze client vernieuwt de meta gegevens van de entiteit niet automatisch. Dit leidt tot een toename van het aantal partities. Het opnieuw maken van een gebeurtenis processor exemplaar zorgt ervoor dat de meta gegevens van een entiteit worden opgehaald, waardoor nieuwe blobs worden gemaakt voor de zojuist toegevoegde partities. Bestaande blobs worden niet beïnvloed. Het opnieuw starten van alle gebeurtenis processor instanties wordt aanbevolen om ervoor te zorgen dat alle exemplaren op de hoogte zijn van de nieuwe toegevoegde partities en dat taak verdeling correct wordt afgehandeld tussen de gebruikers.

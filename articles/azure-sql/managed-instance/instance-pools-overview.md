@@ -13,10 +13,10 @@ ms.author: bonova
 ms.reviewer: sstein
 ms.date: 09/05/2019
 ms.openlocfilehash: 3753004b2bd9c18399655cffd594392b63c14264
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91325161"
 ---
 # <a name="what-is-an-azure-sql-managed-instance-pool-preview"></a>Wat is een Azure SQL Managed instance-groep (preview)?
@@ -24,7 +24,7 @@ ms.locfileid: "91325161"
 
 Exemplaar groepen in Azure SQL Managed instance bieden een handige en rendabele manier om kleinere SQL Server-exemplaren naar de Cloud op schaal te migreren.
 
-Met exemplaarpools kunt u rekenresources vooraf inrichten overeenkomstig uw totale migratievereisten. Vervolgens kunt u verschillende afzonderlijke beheerd exemplaren implementeren, tot uw vooraf ingerichte rekenniveau. Als u bijvoorbeeld 8 vCores vooraf inricht, kunt u twee vCore en één 4-vCore-exemplaar implementeren en vervolgens data bases migreren naar deze instanties. Voordat instantie groepen beschikbaar zijn, moeten kleinere en minder Compute-workloads vaak worden geconsolideerd in een groter beheerd exemplaar wanneer deze naar de cloud worden gemigreerd. De nood zaak om groepen data bases te migreren naar een grote instantie vereist meestal een zorgvuldige capaciteits planning en resource governance, extra veiligheids overwegingen en sommige extra gegevens consolidatie op het niveau van de instantie.
+Met exemplaarpools kunt u rekenresources vooraf inrichten overeenkomstig uw totale migratievereisten. Vervolgens kunt u verschillende afzonderlijke beheerd exemplaren implementeren, tot uw vooraf ingerichte rekenniveau. Als u bijvoorbeeld 8 vCores vooraf inricht, kunt u het exemplaar 2 2-vCore en 1 4-vCore implementeren en vervolgens de data bases migreren naar deze instanties. Voordat instantie groepen beschikbaar zijn, moeten kleinere en minder Compute-workloads vaak worden geconsolideerd in een groter beheerd exemplaar wanneer deze naar de cloud worden gemigreerd. De nood zaak om groepen data bases te migreren naar een grote instantie vereist meestal een zorgvuldige capaciteits planning en resource governance, extra veiligheids overwegingen en sommige extra gegevens consolidatie op het niveau van de instantie.
 
 Daarnaast ondersteunen instantie groepen systeem eigen VNet-integratie zodat u meerdere exemplaar groepen en meerdere afzonderlijke instanties in hetzelfde subnet kunt implementeren.
 
@@ -152,10 +152,10 @@ Raadpleeg de sectie *exemplaar groepen* op de [pagina met prijzen voor SQL Manag
 ## <a name="next-steps"></a>Volgende stappen
 
 - Zie instructies voor het gebruik van [SQL Managed instances](instance-pools-configure.md)om aan de slag te gaan met instantie groepen.
-- Zie [Quick Start Guide (Engelstalig](instance-create-quickstart.md)) voor meer informatie over het maken van uw eerste beheerde exemplaar.
+- Zie de [Quickstart-gids](instance-create-quickstart.md) voor meer informatie over het maken van uw eerste beheerde exemplaar.
 - Zie [algemene Azure SQL-functies](../database/features-comparison.md)voor een lijst met functies en vergelijkingen.
-- Zie [vnet-configuratie voor SQL Managed instance](connectivity-architecture-overview.md)voor meer informatie over vnet-configuraties.
-- Zie [een beheerd exemplaar maken](instance-create-quickstart.md)voor een Snelstartgids die een beheerd exemplaar maakt en een Data Base herstelt vanuit een back-upbestand.
-- Voor een zelf studie over het gebruik van Azure Database Migration Service voor migratie raadpleegt u [migratie van SQL-beheerde exemplaren met behulp van database Migration service](../../dms/tutorial-sql-server-to-managed-instance.md).
+- Zie [VNet-configuratie van SQL Managed Instance](connectivity-architecture-overview.md) voor meer informatie over VNet-configuratie.
+- Zie [Beheerd exemplaar maken](instance-create-quickstart.md) voor een quickstart waarmee u een beheerd exemplaar kunt maken en een database vanuit een back-upbestand kunt herstellen.
+- Zie [Migratie van SQL Managed Instance met behulp van Database Migration Service](../../dms/tutorial-sql-server-to-managed-instance.md) voor een zelfstudie over Azure Database Migration Service voor migratie.
 - Zie [Azure SQL Managed instance bewaken met Azure SQL-analyse](../../azure-monitor/insights/azure-sql.md)voor geavanceerde bewaking van prestaties van SQL Managed instance-data bases met ingebouwde probleemoplossings informatie.
 - Zie [prijzen van SQL Managed instance](https://azure.microsoft.com/pricing/details/sql-database/managed/)voor prijs informatie.

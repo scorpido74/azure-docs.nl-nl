@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.openlocfilehash: 0adb346a693beaa905438cfdc1249c1646c28811
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88608779"
 ---
 # <a name="how-to-choose-between-provisioned-throughput-and-serverless"></a>Kiezen tussen ingerichte door Voer en serverloos
@@ -28,7 +28,7 @@ Azure Cosmos DB is beschikbaar in twee verschillende capaciteits modi: [ingerich
 | --- | --- | --- |
 | Status | Algemeen beschikbaar | In preview |
 | Geschikt voor | Essentiële werk belastingen waarvoor voorspel bare prestaties zijn vereist | Kleine tot middel grote niet-kritieke workloads met licht verkeer |
-| Hoe het werkt | Voor elk van uw containers voorziet u een bepaalde hoeveelheid door Voer, uitgedrukt in [aanvraag eenheden](request-units.md) per seconde. Elke seconde is deze hoeveelheid aanvraag eenheden beschikbaar voor uw database bewerkingen. Ingerichte door Voer kan hand matig worden bijgewerkt of automatisch worden aangepast met automatische [schaling](provision-throughput-autoscale.md). | U voert uw database bewerkingen uit op uw containers zonder dat u enige capaciteit hoeft in te richten. |
+| Uitleg | Voor elk van uw containers voorziet u een bepaalde hoeveelheid door Voer, uitgedrukt in [aanvraag eenheden](request-units.md) per seconde. Elke seconde is deze hoeveelheid aanvraag eenheden beschikbaar voor uw database bewerkingen. Ingerichte door Voer kan hand matig worden bijgewerkt of automatisch worden aangepast met automatische [schaling](provision-throughput-autoscale.md). | U voert uw database bewerkingen uit op uw containers zonder dat u enige capaciteit hoeft in te richten. |
 | Beperkingen per account | Maximum aantal Azure-regio's: onbeperkt | Maximum aantal Azure-regio's: 1 |
 | Beperkingen per container | Maximale door Voer: onbeperkt<br>Maximale opslag: onbeperkt | Maximale door Voer: 5.000 RU/s<br>Maximale opslag: 50 GB |
 | Prestaties | 99,99% tot 99,999% Beschik baarheid gedekt door SLA<br>< 10 MS latentie voor punt-en schrijf bewerkingen onder SLA<br>99,99% gegarandeerde door Voer gedekt door SLA | 99,9% tot 99,99% Beschik baarheid gedekt door SLA<br>< 10 MS-latentie voor punt-en < 30 MS voor schrijf bewerkingen die worden gedekt door SLO<br>95% burstie gedekt door SLO |

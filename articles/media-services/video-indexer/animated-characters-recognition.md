@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: juliako
-ms.openlocfilehash: 3b449f68b25fce19dc034d2a0db0ae5ce8a28ec7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9d304767cf28c0e9230c93d5b9e7504b03ed25d4
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047498"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018879"
 ---
 # <a name="animated-character-detection-preview"></a>Detectie van geanimeerde tekens (preview)
 
@@ -55,7 +55,7 @@ Omdat de Custom Vision-integratie wordt beheerd door Video Indexer, kunt u begin
 
 ### <a name="connect-your-custom-vision-account-paid-accounts-only"></a>Verbinding maken met uw Custom Vision-account (alleen betaalde accounts)
 
-Als u een Video Indexer betaalde account hebt, moet u eerst verbinding maken met een Custom Vision-account. Als u nog geen Custom Vision-account hebt, moet u er een maken. Zie [Custom Vision](../../cognitive-services/custom-vision-service/home.md)voor meer informatie.
+Als u een Video Indexer betaalde account hebt, moet u eerst verbinding maken met een Custom Vision-account. Als u nog geen Custom Vision-account hebt, moet u er een maken. Zie [Custom Vision](../../cognitive-services/custom-vision-service/overview.md)voor meer informatie.
 
 > [!NOTE]
 > Beide accounts moeten zich in dezelfde regio bevinden. De integratie van Custom Vision wordt momenteel niet ondersteund in de Japan-regio.
@@ -160,7 +160,7 @@ Volg deze stappen om u te verbinden Custom Vision account te Video Indexer of he
 1. Verbinding maken met een Custom Vision-account.
 
     Als u een Video Indexer betaalde account hebt, moet u eerst verbinding maken met een Custom Vision-account. <br/>
-    Als u nog geen Custom Vision-account hebt, moet u er een maken. Zie [Custom Vision](../../cognitive-services/custom-vision-service/home.md)voor meer informatie.
+    Als u nog geen Custom Vision-account hebt, moet u er een maken. Zie [Custom Vision](../../cognitive-services/custom-vision-service/overview.md)voor meer informatie.
 
     [Verbind uw Custom Vision-account met behulp van API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Connect-Custom-Vision-Account?tags=&pattern=&groupBy=tag).
 1. Maak een model met animatie-tekens.
@@ -208,7 +208,7 @@ Bekijk de animatie tekens in het gegenereerde JSON-bestand.
 
 ## <a name="limitations"></a>Beperkingen
 
-* Momenteel wordt de functie voor animatie-identificatie niet ondersteund in de regio Oost-Azië.
+* Momenteel wordt de functie voor animatie-identificatie niet ondersteund in East-Asia regio.
 * Tekens die klein of ten opzichte van de video worden weer gegeven, worden mogelijk niet goed herkend als de kwaliteit van de video slecht is.
 * De aanbeveling is een model te gebruiken per set met animatie tekens (bijvoorbeeld per reeks met animatie).
 

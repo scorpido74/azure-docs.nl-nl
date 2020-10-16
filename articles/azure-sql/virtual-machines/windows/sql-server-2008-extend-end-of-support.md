@@ -14,10 +14,10 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 48288ed3765fa939fc56a4469f64070315c4c6aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84668743"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>Ondersteuning voor SQL Server 2008 en SQL Server 2008 R2 met Azure uitbreiden
@@ -82,11 +82,11 @@ Uw SQL Server VM migreren naar Azure:
 
 * [Een SQL Server-database naar een SQL Server in een virtuele machine van Azure migreren](migrate-to-vm-from-sql-server.md)
 
-Aan de slag met SQL Server op Azure Virtual Machines:
+Aan de slag met SQL Server in Azure Virtual Machines:
 
 * [Create a SQL Server VM in the Azure portal](sql-vm-create-portal-quickstart.md) (Een SQL Server-VM maken in Azure Portal)
 
-Antwoorden vinden op veelgestelde vragen over SQL Server Vm's:
+Vind antwoorden op veelgestelde vragen over VM's met SQL Server:
 
 * [Veelgestelde vragen over SQL Server op Azure Virtual Machines](frequently-asked-questions-faq.md)
 

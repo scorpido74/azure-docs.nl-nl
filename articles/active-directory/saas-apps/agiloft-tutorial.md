@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 5ca2e37c3524dc75328b0b6615e15c58652d20d1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a7ab3d32253b354f759c4d348526e22521a5fde4
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542952"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760717"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-agiloft"></a>Zelfstudie: Azure Active Directory-integratie met Agiloft
 
@@ -100,7 +100,7 @@ Als u eenmalige aanmelding van Azure AD met Agiloft wilt configureren, voert u d
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
 
-    ![Informatie over eenmalige aanmelding voor het domein en de URL’s in Agiloft](common/idp-intiated.png)
+    ![Schermopname met de vakken Id en Antwoord-URL gemarkeerd.](common/idp-intiated.png)
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon:
 
@@ -150,11 +150,11 @@ Als u eenmalige aanmelding van Azure AD met Agiloft wilt configureren, voert u d
 
 2. Klik (in het linkerdeelvenster) op **Setup** en selecteer vervolgens **Toegang**.
 
-    ![Agiloft-configuratie](./media/agiloft-tutorial/setup1.png)
+    ![Schermopname waarin de sectie Toegang is gemarkeerd.](./media/agiloft-tutorial/setup1.png)
 
 3. Klik op de knop **Eenmalige aanmelding van SAML 2.0 configureren**.
 
-    ![Agiloft-configuratie](./media/agiloft-tutorial/setup2.png)
+    ![Schermopname waarin de knop Eenmalige aanmelding van SAML 2.0 configureren is gemarkeerd.](./media/agiloft-tutorial/setup2.png)
 
 4. Er wordt een wizarddialoogvenster weergegeven. Klik in dit dialoogvenster op de **Id-providerdetails** en vul de volgende velden in:  
 

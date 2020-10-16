@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/29/2020
 ms.author: alkohli
 ms.openlocfilehash: 251b15f72c3216ad3ff4b2983c8cbbd2d9ec6579
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91618247"
 ---
 # <a name="deployment-checklist-for-your-azure-stack-edge-pro-gpu-device"></a>Controle lijst voor implementaties voor uw Azure Stack Edge Pro GPU-apparaat  
@@ -37,7 +37,7 @@ Gebruik de volgende controle lijst om ervoor te zorgen dat u deze informatie heb
 | Aanbevelingen Tijd instellingen       | Configureer tijd zone, primaire NTP-server, secundaire NTP-server. | Configureer de primaire en secundaire NTP-server in het lokale netwerk.<br>Als de lokale server niet beschikbaar is, kunnen open bare NTP-servers worden geconfigureerd.                                                    |
 | Beschrijving Server instellingen bijwerken | <li>Het IP-adres van de update server vereisen op het lokale netwerk, het pad naar de WSUS-server. </li> | Standaard wordt de open bare Windows Update-Server gebruikt.|
 | Apparaatinstellingen | <li>Fully Qualified Domain Name van apparaat (FQDN) </li><li>DNS-domein</li> | |
-| Beschrijving Bewijzen  | Gebruik de [optie certificaten genereren](azure-stack-edge-gpu-deploy-configure-certificates.md#generate-device-certificates) om niet-productiewerk belastingen te testen <br><br> Als u uw eigen certificaten met de handtekening keten (s) meebrengt, [voegt u certificaten toe](azure-stack-edge-gpu-deploy-configure-certificates.md#bring-your-own-certificates) in de juiste indeling.| Configureer certificaten alleen als u de apparaatnaam en/of het DNS-domein wijzigt. |
+| Beschrijving Bewijzen  | Gebruik de [optie certificaten genereren](azure-stack-edge-gpu-deploy-configure-certificates.md#generate-device-certificates) om niet-productiewerk belastingen te testen <br><br> Als u uw eigen certificaten hebt, inclusief de ondertekeningsketen(s), kunt u [Certificaten toevoegen](azure-stack-edge-gpu-deploy-configure-certificates.md#bring-your-own-certificates) in de juiste indeling.| Configureer certificaten alleen als u de apparaatnaam en/of het DNS-domein wijzigt. |
 | Activering  | De activerings sleutel van de Azure Stack Edge Pro/Data Box Gateway-bron is vereist.    | Nadat de sleutel is gegenereerd, verloopt deze over drie dagen. |
 
 <!--

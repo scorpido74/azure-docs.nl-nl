@@ -14,36 +14,36 @@ ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: acf3cba5046a20b99212e89b378327765d22fa23
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87421634"
 ---
 # <a name="bulk-remove-group-members-in-azure-active-directory"></a>Groeps leden bulksgewijs verwijderen in Azure Active Directory
 
 Met Azure Active Directory-Portal (Azure AD) kunt u een groot aantal leden uit een groep verwijderen door een bestand met door komma's gescheiden waarden (CSV) te gebruiken om groeps leden bulksgewijs te verwijderen.
 
-## <a name="understand-the-csv-template"></a>De CSV-sjabloon begrijpen
+## <a name="understand-the-csv-template"></a>Inzicht in de CSV-sjabloon
 
 Down load en vul de CSV-sjabloon bulksgewijs uploaden in om Azure AD-groeps leden bulksgewijs toe te voegen. Uw CSV-sjabloon kan er als volgt uitzien:
 
-![Werk blad voor upload-en aanroep-outs waarin het doel en de waarden voor elke rij en kolom worden uitgelegd](./media/groups-bulk-remove-members/template-example.png)
+![Werkblad voor uploaden en aanroepen, waarin het doel en de waarden voor elke rij en kolom worden uitgelegd](./media/groups-bulk-remove-members/template-example.png)
 
-### <a name="csv-template-structure"></a>Structuur van CSV-sjabloon
+### <a name="csv-template-structure"></a>CSV-sjabloonstructuur
 
 De rijen in een gedownloade CSV-sjabloon zijn als volgt:
 
-- **Versie nummer**: de eerste rij met het versie nummer moet worden opgenomen in de upload CSV.
-- **Kolom koppen**: de indeling van de kolom koppen is de &lt; *item naam* &gt; [propertyname] &lt; *vereist of leeg* &gt; . Bijvoorbeeld `Member object ID or user principal name [memberObjectIdOrUpn] Required`. Sommige oudere versies van de sjabloon hebben mogelijk een kleine variatie. Voor wijzigingen in groepslid maatschappen hebt u de mogelijkheid om te gebruiken id: lid object-ID of user principal name.
-- **Voor beelden van rij**: we hebben in de sjabloon een rij met voor beelden van geldige waarden voor elke kolom opgenomen. U moet de voor beelden van de rij verwijderen en vervangen door uw eigen vermeldingen.
+- **Versienummer**: De eerste rij met het versienummer moet worden opgenomen in het CSV-uploadbestand.
+- **Kolomkoppen**: De indeling van de kolomkoppen is &lt;*itemnaam*&gt; [eigenschapsnaam] &lt;*Required of leeg*&gt;. Bijvoorbeeld `Member object ID or user principal name [memberObjectIdOrUpn] Required`. Sommige oudere versies van de sjabloon kunnen iets afwijken. Voor wijzigingen in groepslid maatschappen hebt u de mogelijkheid om te gebruiken id: lid object-ID of user principal name.
+- **Rij met voorbeelden**: We hebben in de sjabloon een rij met voorbeelden van acceptabele waarden voor elke kolom opgenomen. U moet de rij met voorbeelden verwijderen en vervangen door uw eigen invoerwaarden.
 
 ### <a name="additional-guidance"></a>Aanvullende richtlijnen
 
-- De eerste twee rijen van de upload sjabloon mogen niet worden verwijderd of gewijzigd, of de upload kan niet worden verwerkt.
-- De vereiste kolommen worden eerst weer gegeven.
-- Het is niet raadzaam om nieuwe kolommen toe te voegen aan de sjabloon. Alle extra kolommen die u toevoegt, worden genegeerd en worden niet verwerkt.
-- U wordt aangeraden de meest recente versie van de CSV-sjabloon zo vaak mogelijk te downloaden.
+- De eerste twee rijen van de uploadsjabloon mogen niet worden verwijderd of gewijzigd, anders kan de upload niet worden verwerkt.
+- De vereiste kolommen worden het eerst weergegeven.
+- Het is niet raadzaam om nieuwe kolommen aan de sjabloon toe te voegen. Eventuele extra kolommen die u toevoegt, worden genegeerd en niet verwerkt.
+- U wordt aangeraden altijd de meest recente versie van de CSV-sjabloon te downloaden.
 
 ## <a name="to-bulk-remove-group-members"></a>Groeps leden bulksgewijs verwijderen
 
@@ -60,7 +60,7 @@ De rijen in een gedownloade CSV-sjabloon zijn als volgt:
     :::image type="content" source="./media/groups-bulk-import-members/csv-file.png" alt-text="Het CSV-bestand bevat namen en Id's van de groeps leden die moeten worden verwijderd":::
 
 1. Blader op de pagina **groeps leden bulksgewijs verwijderen** onder **uw CSV-bestand uploaden**naar het bestand. Wanneer u het bestand selecteert, wordt de validatie van het CSV-bestand gestart.
-1. Wanneer de bestands inhoud is gevalideerd, wordt het **bestand dat is geüpload**weer gegeven op de pagina Bulk Import. Als er fouten zijn, moet u deze oplossen voordat u de taak kunt indienen.
+1. Wanneer de bestands inhoud is gevalideerd, wordt het **bestand dat is geüpload**weer gegeven op de pagina Bulk Import. Als er fouten zijn, moet u deze corrigeren voordat u de taak kunt verzenden.
 1. Wanneer de validatie van uw bestand wordt door gegeven, selecteert u **verzenden** om de Azure-bulk bewerking te starten waarmee de groeps leden uit de groep worden verwijderd.
 1. Wanneer het verwijderen is voltooid, ziet u een melding dat de bulk bewerking is geslaagd.
 
@@ -70,7 +70,7 @@ U kunt de status van al uw bulk aanvragen in behandeling bekijken op de pagina *
 
 [![Controleer de status op de pagina resultaten van bulk bewerkingen](media/groups-bulk-remove-members/bulk-center.png)](media/groups-bulk-remove-members/bulk-center.png#lightbox)
 
-Selecteer de waarden onder de kolommen **# geslaagd**, **# fout**of **Totaal aantal aanvragen** voor meer informatie over elk regel item in de bulk bewerking. Als er fouten zijn opgetreden, worden de redenen voor de fout weer gegeven.
+Selecteer de waarden onder de kolommen **# geslaagd**, **# fout**of **Totaal aantal aanvragen** voor meer informatie over elk regel item in de bulk bewerking. Als er fouten zijn opgetreden, worden de redenen voor de fouten weergegeven.
 
 ## <a name="bulk-removal-service-limits"></a>Limieten voor bulksgewijs verwijderen van service
 

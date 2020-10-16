@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 09/26/2019
 ms.openlocfilehash: 4f8ef04343d873bcb94ccee599ecbc7c2a1ef94c
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89269485"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Aangepaste logboeken in Azure Monitor
@@ -74,7 +74,7 @@ Een toepassing kan bijvoorbeeld elke dag een logboek bestand maken met de datum 
 
 De volgende tabel bevat voor beelden van geldige patronen om andere logboek bestanden op te geven.
 
-| Description | Pad |
+| Beschrijving | Pad |
 |:--- |:--- |
 | Alle bestanden in *C:\Logs* met de extensie. txt op de Windows-agent |C:\Logs \\ \* . txt |
 | Alle bestanden in *C:\Logs* met een naam die begint met log en een. txt-extensie in Windows-agent |C:\Logs\log \* . txt |
@@ -109,7 +109,7 @@ Gebruik het volgende proces in de Azure Portal om een aangepast logboek te verwi
 1. Selecteer in het menu **Data** van de **Geavanceerde instellingen** voor uw werk ruimte de optie **aangepaste logboeken** om alle aangepaste logboeken weer te geven.
 2. Klik op **verwijderen** naast het aangepaste logboek dat u wilt verwijderen.
 
-## <a name="data-collection"></a>Gegevens verzamelen
+## <a name="data-collection"></a>Gegevensverzameling
 Azure Monitor worden ongeveer elke vijf minuten nieuwe vermeldingen van elk aangepast logboek verzameld.  De agent registreert de locatie in elk logboek bestand dat wordt verzameld.  Als de agent gedurende een bepaalde tijd offline gaat, worden er door Azure Monitor gegevens verzameld van waar deze zich voor het laatst heeft verlaten, zelfs als deze vermeldingen zijn gemaakt terwijl de agent offline was.
 
 De volledige inhoud van de logboek vermelding wordt geschreven naar één eigenschap met de naam **RawData**.  Zie [tekst gegevens parseren in azure monitor](../log-query/parse-text.md) voor methoden om elke geïmporteerde logboek vermelding te parseren in meerdere eigenschappen.

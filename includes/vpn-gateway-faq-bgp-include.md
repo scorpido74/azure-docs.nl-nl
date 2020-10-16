@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/17/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 32e4658af48a0ae3bde08de18cf1d8204878d671
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6054fe5f71f54794d4974a71cdfd61a7959534ff
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "91024827"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92082206"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>Wordt BGP ondersteund op alle Azure VPN-gateway SKU’s?
 BGP wordt ondersteund op alle Azure VPN Gateawy SKU's, behalve Basic SKU.
@@ -108,3 +108,6 @@ Ja.
 
 ### <a name="what-should-i-add-to-my-on-premises-vpn-device-for-the-bgp-peering-session"></a>Wat moet ik toevoegen aan mijn on-premises VPN-apparaat voor de BGP-peeringsessie?
 U moet een hostroute van het Azure BGP-peer-IP-adres toevoegen aan uw VPN-apparaat die verwijst naar de IPSec-S2S VPN-tunnel. Als het Azure VPN-peer-IP-adres bijvoorbeeld "10.12.255.30" is, dient u een hostroute toe te voegen voor "10.12.255.30" met een nexthop-interface van de overeenkomende IPsec-tunnelinterface op uw VPN-apparaat.
+
+### <a name="does-the-virtual-network-gateway-support-bidirectional-forwarding-detection-bfd-for-site-to-site-connections-with-bgp"></a>Ondersteunt de Virtual Network Gateway Bidirectional Forwarding Detection (BFD) voor site-naar-site-verbindingen met BGP?
+Nee. Bidirectional Forwarding Detection (BFD) is een protocol dat samen met BGP kan worden gebruikt om sneller naburige downtime te detecteren dan met standaard BGP-keepalives. BFD gebruikt timers die zijn ontworpen om te werken in LAN-omgevingen, maar niet in openbare internet- of Wide Area Network-verbindingen. Voor verbindingen via het openbare internet is het niet ongebruikelijk dat bepaalde pakketten worden vertraagd of zelfs wegvallen. Door deze agressieve timers te introduceren, ontstaat er instabiliteit die er mogelijk voor zorgt dat routes worden gedempt door BGP. Als alternatief kunt u uw on-premises apparaat configureren met timers die lager zijn dan de standaard keepalive-interval van 60 seconden en de holdtimer van 180 seconden voor een snellere convergentietijd.

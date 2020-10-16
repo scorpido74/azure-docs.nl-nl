@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: azfuncdf
 ms.openlocfilehash: 6650322834d491d78470e2d8dbd24e2c6750ae39
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87081692"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>Het afhandelen van fouten in Durable Functions (Azure Functions)
@@ -193,7 +193,7 @@ De functie aanroep van de activiteit in het vorige voor beeld neemt een para met
 
 * **Maximum aantal pogingen**: het maximum aantal nieuwe pogingen.
 * **Interval voor eerste poging**: de hoeveelheid tijd die moet worden gewacht voordat de eerste nieuwe poging wordt gedaan.
-* **Uitstel coëfficiënt**: de coëfficiënt die wordt gebruikt voor het bepalen van de mate van toename van uitstel. De standaard waarde is 1.
+* **Uitstel coëfficiënt**: de coëfficiënt die wordt gebruikt voor het bepalen van de mate van toename van uitstel. Standaardwaarde is 1.
 * Maximum **interval voor nieuwe pogingen**: de maximale tijds duur tussen nieuwe pogingen.
 * **Time-out voor opnieuw proberen**: de maximale hoeveelheid tijd die nodig is voor het uitvoeren van nieuwe pogingen. Het standaard gedrag is om voor onbepaalde tijd opnieuw te proberen.
 * **Ingang**: een door de gebruiker gedefinieerde retour aanroep kan worden opgegeven om te bepalen of een functie opnieuw moet worden uitgevoerd.

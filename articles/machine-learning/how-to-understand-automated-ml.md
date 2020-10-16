@@ -1,32 +1,32 @@
 ---
-title: Meer informatie over geautomatiseerde ML-resultaten
+title: Resultaten van AutoML-experiment evalueren
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het weer geven en begrijpen van grafieken en metrische gegevens voor elk van uw geautomatiseerde machine learning uitvoeringen.
+description: Meer informatie over het weer geven en evalueren van grafieken en metrische gegevens voor elk van uw geautomatiseerde machine learning experimenten.
 services: machine-learning
 author: aniththa
 ms.author: anumamah
 ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 12/05/2019
+ms.date: 10/09/2020
 ms.topic: conceptual
-ms.custom: how-to
-ms.openlocfilehash: a38d65e66debd8e718964efdce27fe42772d8e0a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: how-to, contperfq2
+ms.openlocfilehash: d27c65938d10f9061961ebb585327bc77d8b2859
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91315538"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092457"
 ---
-# <a name="understand-automated-machine-learning-results"></a>Geautomatiseerde machine learning-resultaten begrijpen
+# <a name="evaluate-automated-machine-learning-experiment-results"></a>Resultaten van automatische machine learning experimenten evalueren
 
+In dit artikel vindt u informatie over het weer geven en evalueren van de resultaten van uw geautomatiseerde machine learning, AutoML, experimenten. Deze experimenten bestaan uit meerdere uitvoeringen, waarbij elke uitvoering een model maakt. Om u te helpen elk model te evalueren, genereert AutoML automatisch metrische gegevens over prestaties en grafieken die specifiek zijn voor uw soort experiment. 
 
-In dit artikel leert u hoe u de diagrammen en metrische gegevens voor elk van uw geautomatiseerde machine learning-uitvoeringen kunt weer geven en begrijpen. 
+AutoML biedt bijvoorbeeld verschillende grafieken voor classificatie-en regressie modellen. 
 
-Meer informatie over:
-+ [Metrische gegevens en grafieken voor classificatie modellen](#classification)
-+ [Metrische gegevens en grafieken voor regressie modellen](#regression)
-+ [De interpretatie van modellen en de urgentie van het onderdeel](#explain-model)
+|Classificatie|Regressie
+|---|---|
+|<li> [Verwarringsmatrix](#confusion-matrix) <li>[Nauw keurigheid: grafiek intrekken](#precision-recall-chart) <li> [Bewerkings kenmerken van ontvanger (of ROC)](#roc) <li> [Bocht](#lift-curve)<li> [Toename curve](#gains-curve)<li> [Kalibratie tekening](#calibration-plot) | <li> [Voorspeld versus waar](#pvt) <li> [Histogram van verschillen](#histo)|
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -37,45 +37,31 @@ Meer informatie over:
     * De SDK gebruiken om een [classificatie model](how-to-auto-train-remote.md) of [regressie model](tutorial-auto-train-models.md) te bouwen
     * Gebruik [Azure machine learning Studio](how-to-use-automated-ml-for-ml-models.md) om een classificatie of regressie model te maken door de juiste gegevens te uploaden.
 
-## <a name="view-the-run"></a>De uitvoering weer geven
+## <a name="view-run-results"></a>Uitvoerings resultaten weer geven
 
-Nadat u een geautomatiseerd machine learning experiment hebt uitgevoerd, kunt u een overzicht van de uitvoeringen vinden in uw machine learning-werk ruimte. 
+Nadat uw geautomatiseerde machine learning-experiment is voltooid, kunt u een overzicht van de uitvoeringen vinden in uw machine learning-werk ruimte via de [Azure machine learning Studio](overview-what-is-machine-learning-studio.md). 
 
-1. Ga naar uw werkruimte.
+Voor SDK-experimenten ziet u dezelfde resultaten tijdens het uitvoeren wanneer u de `RunDetails` [Jupyter-widget](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true)gebruikt.
 
-1. Selecteer **experimenten**in het linkerdeel venster van de werk ruimte.
+In de volgende stappen en animatie ziet u hoe u de uitvoerings geschiedenis en de metrische gegevens over prestaties en grafieken van een specifiek model in Studio kunt weer geven.
 
-   ![Scherm opname van het menu experiment](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-menu.png)
+![Stappen voor het weer geven van uitvoerings geschiedenis en statistieken en grafieken voor model prestaties](./media/how-to-understand-automated-ml/view-run-metrics-ui.gif)
 
+Bekijk de uitvoerings geschiedenis en de metrische gegevens voor de model prestaties in de studio: 
+
+1. Meld u aan bij [de Studio](https://ml.azure.com/) en navigeer naar uw werk ruimte.
+1. Selecteer in het linkerdeel venster van de werk ruimte de optie **uitvoeren**.
 1. Selecteer in de lijst met experimenten het abonnement dat u wilt verkennen.
-
-   [![Proef lijst](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-list.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-list-expanded.png)
-
 1. Selecteer in de onderste tabel de **uitvoeren**.
+1. Selecteer op het tabblad **modellen** de naam van het **algoritme** voor het model dat u wilt verkennen.
+1. Selecteer op het tabblad **metrieken** de metrische gegevens en grafieken die u voor het model wilt evalueren. 
 
-   [ ![ Experimenteel uitvoeren](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-run.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-run-expanded.png))
 
-1. Selecteer in de modellen de **algoritme naam** voor het model dat u verder wilt verkennen.
+<a name="classification"></a> 
 
-   [![Model experimenteren](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-model.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-model-expanded.png)
+## <a name="classification-performance-metrics"></a>Metrische classificatie prestaties
 
-U ziet ook dezelfde resultaten tijdens het uitvoeren wanneer u de Jupyter- `RunDetails` [widget](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true)gebruikt.
-
-## <a name="classification-results"></a><a name="classification"></a> Classificatie resultaten
-
-Thee de volgende metrische gegevens en grafieken zijn beschikbaar voor elk classificatie model dat u bouwt met behulp van de geautomatiseerde machine learning mogelijkheden van Azure Machine Learning
-
-+ [Metrische gegevens](#classification-metrics)
-+ [Verwarringsmatrix](#confusion-matrix)
-+ [Nauw keurigheid: grafiek intrekken](#precision-recall-chart)
-+ [Bewerkings kenmerken van ontvanger (of ROC)](#roc)
-+ [Bocht](#lift-curve)
-+ [Toename curve](#gains-curve)
-+ [Kalibratie tekening](#calibration-plot)
-
-### <a name="classification-metrics"></a>Metrische classificaties
-
-De volgende metrische gegevens worden opgeslagen in elke uitvoerings herhaling voor een classificatie taak.
+De volgende tabel bevat een overzicht van de prestatie gegevens van het model die AutoML berekent voor elk classificatie model dat voor uw experiment wordt gegenereerd. 
 
 Gegevens|Beschrijving|Berekening|Extra para meters
 --|--|--|--
@@ -104,125 +90,126 @@ weighted_accuracy|Gewogen nauw keurigheid is nauw keurig wanneer het gewicht dat
 
 AutoML onderscheidt zich niet tussen binaire en multimetrische metrische gegevens. Dezelfde validatie gegevens worden gerapporteerd, of een gegevensset twee klassen of meer dan twee klassen heeft. Sommige metrische gegevens zijn echter bedoeld voor de classificatie van verschillende klassen. Wanneer dit wordt toegepast op een binaire gegevensset, worden deze metrische gegevens niet als `true` klasse beschouwd, zoals u mogelijk verwacht. Metrische gegevens die duidelijk bedoeld zijn voor multi class, worden met `micro` ,, of geachtervoegseld `macro` `weighted` . Voor beelden zijn `average_precision_score` , `f1_score` ,, en `precision_score` `recall_score` `AUC` .
 
-Een concreet voor beeld maakt dit onderscheid duidelijker: in plaats van het terughalen te berekenen als, wordt het gemiddelde voor `tp / (tp + fn)` het terughalen van multi klassen ( `micro` , `macro` of `weighted` ) voor beide klassen van een gegevensset van een binaire classificatie geclassificeerd. Dit komt overeen met het berekenen van het intrekken van de `true` klasse en de `false` klasse afzonderlijk en vervolgens het gemiddelde van de twee.
+In plaats van intrekken te berekenen als `tp / (tp + fn)` , wordt het gemiddelde van de multiklasse-inhaal ( `micro` , `macro` of `weighted` ) gemiddeld boven beide klassen van een gegevensset voor binaire classificatie. Dit komt overeen met het berekenen van het terughalen voor de `true` klasse en de `false` klasse afzonderlijk, en vervolgens het gemiddelde van de twee.
 
-<a name="confusion-matrix"></a>
+## <a name="confusion-matrix"></a>Verwarringsmatrix
 
-### <a name="confusion-matrix"></a>Verwarringsmatrix
+Een Verwar ring matrix beschrijft de prestaties van een classificatie model. Elke rij geeft de instanties van de echte of werkelijke klasse in uw gegevensset weer, en elke kolom vertegenwoordigt de exemplaren van de klasse die door het model is voor speld. 
 
-#### <a name="what-is-a-confusion-matrix"></a>Wat is een Verwar ring-matrix?
-Een Verwar ring matrix wordt gebruikt om de prestaties van een classificatie model te beschrijven. Elke rij geeft de instanties van de echte of werkelijke klasse in uw gegevensset weer, en elke kolom vertegenwoordigt de exemplaren van de klasse die door het model is voor speld. 
+Voor elke Verwar ring-matrix toont automatische ML de frequentie van elk voorspeld label (kolom) vergeleken met het werkelijke label (rij). Hoe donkerder de kleur, hoe hoger het aantal in het betreffende deel van de matrix. 
 
-#### <a name="what-does-automated-ml-do-with-the-confusion-matrix"></a>Wat doet automatische ML met de Verwar ring-matrix?
-Voor classificatie problemen biedt Azure Machine Learning automatisch een Verwar ring matrix voor elk model dat is gebouwd. Voor elke Verwar ring wordt de frequentie weer gegeven van elk voorspeld label (kolom) vergeleken met het werkelijke label (Row). Hoe donkerder de kleur, hoe hoger het aantal in het betreffende deel van de matrix. 
+### <a name="what-does-a-good-model-look-like"></a>Hoe ziet een goed model eruit?
 
-#### <a name="what-does-a-good-model-look-like"></a>Hoe ziet een goed model eruit?
-De werkelijke waarde van de gegevensset wordt vergeleken met de voorspelde waarden die het model heeft gekregen. Als gevolg hiervan hebben machine learning modellen een grotere nauw keurigheid als het model de meeste waarden in de diagonaal heeft, wat betekent dat het model de juiste waarde voor speld heeft. Als een model klasse onevenwichtig heeft, helpt de Verwar ring matrix bij het detecteren van een omliggend model.
+Een Verwar ring matrix vergelijkt de werkelijke waarde van de gegevensset met de voorspelde waarden die het model heeft gekregen. Als gevolg hiervan hebben machine learning modellen een grotere nauw keurigheid als het model de meeste waarden in de diagonaal heeft, wat betekent dat het model de juiste waarde voor speld heeft. Als een model klasse onevenwichtig heeft, helpt de Verwar ring matrix bij het detecteren van een verduidelijkend model.
 
-##### <a name="example-1-a-classification-model-with-poor-accuracy"></a>Voor beeld 1: een classificatie model met een slechte nauw keurigheid
+#### <a name="example-1-a-classification-model-with-poor-accuracy"></a>Voor beeld 1: een classificatie model met een slechte nauw keurigheid
 ![Een classificatie model met een slechte nauw keurigheid](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-confusion-matrix1.png)
 
-##### <a name="example-2-a-classification-model-with-high-accuracy"></a>Voor beeld 2: een classificatie model met hoge nauw keurigheid 
+#### <a name="example-2-a-classification-model-with-high-accuracy"></a>Voor beeld 2: een classificatie model met hoge nauw keurigheid 
 ![Een classificatie model met hoge nauw keurigheid](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-confusion-matrix2.png)
 
 ##### <a name="example-3-a-classification-model-with-high-accuracy-and-high-bias-in-model-predictions"></a>Voor beeld 3: een classificatie model met hoge nauw keurigheid en hoge afwijking in model voorspellingen
 ![Een classificatie model met hoge nauw keurigheid en hoge afwijking in model voorspellingen](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-biased-model.png)
 
 <a name="precision-recall-chart"></a>
-### <a name="precision-recall-chart"></a>Nauw keurigheid: grafiek intrekken
-#### <a name="what-is-a-precision-recall-chart"></a>Wat is een precisie: een grafiek intrekken?
-De curve voor het intrekken van precisie toont de relatie tussen Precision en intrekken van een model. De term precisie geeft aan dat de mogelijkheid voor een model om alle exemplaren correct te labelen. Intrekken vertegenwoordigt de mogelijkheid voor een classificatie om alle exemplaren van een bepaald label te vinden.
 
-#### <a name="what-does-automated-ml-do-with-the-precision-recall-chart"></a>Wat doen automatische ML met de grafiek voor precisie intrekken?
+## <a name="precision-recall-chart"></a>Nauw keurigheid: grafiek intrekken
+
+De curve voor het intrekken van precisie toont de relatie tussen Precision en intrekken van een model. De term Precision vertegenwoordigt de mogelijkheid voor een model om alle exemplaren correct te labelen. Intrekken vertegenwoordigt de mogelijkheid voor een classificatie om alle exemplaren van een bepaald label te vinden.
 
 Met deze grafiek kunt u de curven voor het intrekken van precisie vergelijken voor elk model om te bepalen welk model een acceptabele relatie heeft tussen Precision en intrekken voor uw specifieke bedrijfs probleem. Dit diagram toont de gemiddelde precisie van Macro's: terughalen, gemiddelde precisie van micron-terughalen en de nauwkeurigheids intrekken die zijn gekoppeld aan alle klassen voor een model. 
 
-Macro: berekent de metrische gegevens onafhankelijk van elke klasse en neemt vervolgens het gemiddelde over, waarbij alle klassen gelijk worden behandeld. Met micro gemiddelde worden de bijdragen van alle klassen echter geaggregeerd om het gemiddelde te berekenen. Micro-Gem is de voor keur als er sprake is van een klasse-onevenwichtigheid in de gegevensset.
+**Macro:** berekent de metrische gegevens onafhankelijk van elke klasse en neemt vervolgens het gemiddelde over, waarbij alle klassen gelijkmatig worden behandeld. **Micro-Gem** aggregeert echter de bijdragen van alle klassen om het gemiddelde te berekenen. Micro-Gem is de voor keur als er sprake is van een klasse-onevenwichtigheid in de gegevensset.
 
-#### <a name="what-does-a-good-model-look-like"></a>Hoe ziet een goed model eruit?
-Afhankelijk van het doel van het bedrijfs probleem, kan de perfecte nauw keurigheid voor het intrekken van de precisie verschillen. Enkele voor beelden worden hieronder gegeven
+### <a name="what-does-a-good-model-look-like"></a>Hoe ziet een goed model eruit?
+Afhankelijk van het doel van het bedrijfs probleem, kan de perfecte nauw keurigheid voor het intrekken van de precisie verschillen. 
 
 ##### <a name="example-1-a-classification-model-with-low-precision-and-low-recall"></a>Voor beeld 1: een classificatie model met lage precisie en weinig intrekken
 ![Een classificatie model met lage precisie en weinig intrekken](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-precision-recall1.png)
 
 ##### <a name="example-2-a-classification-model-with-100-precision-and-100-recall"></a>Voor beeld 2: een classificatie model met ~ 100% Precision en ~ 100% intrekken 
 ![Een classificatie model met hoge precisie en intrekken](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-precision-recall2.png)
-<a name="roc"></a>
-### <a name="roc-chart"></a>ROC diagram
 
-#### <a name="what-is-a-roc-chart"></a>Wat is een ROC diagram?
+<a name="roc"></a>
+
+## <a name="roc-chart"></a>ROC diagram
+
 Het besturings kenmerk van de ontvanger (of ROC) is een tekening van de juist geclassificeerde labels versus de onjuist geclassificeerde labels voor een bepaald model. De ROC-curve kan minder informatieve zijn bij het trainen van modellen op gegevens sets met een hoge onevenwichtige klasse, aangezien de meerderheids klasse de bijdrage van minderheids klassen kan verdrinken.
 
-#### <a name="what-does-automated-ml-do-with-the-roc-chart"></a>Wat doet automatische ML in het schema ROC?
 U kunt het gebied onder het ROC diagram visualiseren als het aandeel van de juiste geclassificeerde steek proeven. Een ervaren gebruiker van de ROC grafiek kan er meer uitzien dan het gebied onder de curve en een Intuition ophalen voor de echte positieve en onjuiste positieve tarieven als functie van de classificatie drempel of beslissings grens.
 
-#### <a name="what-does-a-good-model-look-like"></a>Hoe ziet een goed model eruit?
+### <a name="what-does-a-good-model-look-like"></a>Hoe ziet een goed model eruit?
 Een ROC-curve die de linkerbovenhoek benadert met 100% True positief percentage en 0% false positief percentage is het beste model. Een wille keurig model wordt weer gegeven als een platte lijn van linksonder naar de rechter bovenhoek. Erger dan wille keurig zou dip onder de lijn y = x.
 
-##### <a name="example-1-a-classification-model-with-low-true-labels-and-high-false-labels"></a>Voor beeld 1: een classificatie model met lage labels en hoge onwaar labels
+#### <a name="example-1-a-classification-model-with-low-true-labels-and-high-false-labels"></a>Voor beeld 1: een classificatie model met lage labels en hoge onwaar labels
 ![Classificatie model met lage labels en hoog/onwaar labels](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-roc-1.png)
 
-##### <a name="example-2-a-classification-model-with-high-true-labels-and-low-false-labels"></a>Voor beeld 2: een classificatie model met hoogwaardige labels en laagloze labels
+#### <a name="example-2-a-classification-model-with-high-true-labels-and-low-false-labels"></a>Voor beeld 2: een classificatie model met hoogwaardige labels en laagloze labels
+
 ![een classificatie model met hoogwaardige labels en lage labels met onwaar](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-roc-2.png)
+
+
 <a name="lift-curve"></a>
-### <a name="lift-chart"></a>Lift-grafiek
-#### <a name="what-is-a-lift-chart"></a>Wat is een lift diagram?
-Lift grafieken worden gebruikt om de prestaties van classificatie modellen te evalueren. In een lift diagram ziet u hoe vaak een model beter presteert vergeleken met een wille keurig model. Dit geeft u een relatieve prestaties waarbij rekening wordt gehouden met het feit dat de classificatie moeilijker wordt naarmate u het aantal klassen verhoogt. Een wille keurig model heeft een onjuiste voor speld op een hogere Fractie van steek proeven uit een gegevensset met tien klassen vergeleken met een gegevensset met twee klassen.
 
-#### <a name="what-does-automated-ml-do-with-the-lift-chart"></a>Wat doet automatische ML met het lift diagram?
-U kunt de lift van het model dat automatisch is gebouwd met Azure Machine Learning, vergelijken met de basis lijn om de waarde van het betreffende model te bekijken.
-#### <a name="what-does-a-good-model-look-like"></a>Hoe ziet een goed model eruit?
+## <a name="lift-chart"></a>Lift-grafiek
 
-##### <a name="example-1-a-classification-model-that-does-worse-than-a-random-selection-model"></a>Voor beeld 1: een classificatie model dat erger is dan een wille keurig selectie model
+Met een lift diagram worden de prestaties van classificatie modellen geëvalueerd. In een lift diagram ziet u hoe vaak een model beter presteert vergeleken met een wille keurig model. Dit geeft u een relatieve prestaties waarbij rekening wordt gehouden met het feit dat de classificatie moeilijker wordt naarmate u het aantal klassen verhoogt. Een wille keurig model voor spelt onjuist een grotere fractie van voor beelden van een gegevensset met tien klassen vergeleken met een gegevensset met twee klassen.
+
+U kunt de lift van het model dat automatisch is gebouwd met Azure Machine Learning vergelijken met de basis lijn (wille keurig model) om de waarde van het betreffende model te bekijken.
+
+### <a name="what-does-a-good-model-look-like"></a>Hoe ziet een goed model eruit?
+
+Een hogere Lift kromme is het hogere model boven de basis lijn. Dit geeft aan dat het model beter presteert. 
+
+#### <a name="example-1-a-classification-model-that-performs-poorly-compared-to-a-random-selection-model"></a>Voor beeld 1: een classificatie model dat slecht presteert ten opzichte van een wille keurig selectie model
 ![Een classificatie model dat erger is dan een wille keurig selectie model](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-lift-curve1.png)
-##### <a name="example-2-a-classification-model-that-performs-better-than-a-random-selection-model"></a>Voor beeld 2: een classificatie model dat beter presteert dan een wille keurig selectie model
+
+#### <a name="example-2-a-classification-model-that-performs-better-than-a-random-selection-model"></a>Voor beeld 2: een classificatie model dat beter presteert dan een wille keurig selectie model
 ![Een classificatie model dat beter presteert](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-lift-curve2.png)
+
 <a name="gains-curve"></a>
-### <a name="cumulative-gains-chart"></a>Grafiek met cumulatieve toename
-#### <a name="what-is-a-cumulative-gains-chart"></a>Wat is een cumulatief winst diagram?
 
-Een cumulatieve toename diagram evalueert de prestaties van een classificatie model door elk deel van de gegevens. In de grafiek wordt voor elk percentiel van de gegevensset weer gegeven hoeveel meer steek proeven nauw keurig zijn geclassificeerd.
+## <a name="cumulative-gains-chart"></a>Grafiek met cumulatieve toename
 
-#### <a name="what-does-automated-ml-do-with-the-gains-chart"></a>Wat doet automatische ML in het organigram?
-Gebruik het diagram cumulatieve toename om u te helpen bij het kiezen van de indelings beperking met behulp van een percentage dat overeenkomt met een gewenste toename van het model. Deze informatie biedt een andere manier om de resultaten in de bijbehorende Lift-grafiek te bekijken.
+Een cumulatieve toename diagram evalueert de prestaties van een classificatie model door elk deel van de gegevens. In de grafiek wordt voor elk percentiel van de gegevensset weer gegeven hoeveel meer steek proeven nauw keurig zijn geclassificeerd in vergelijking met een model dat altijd onjuist is. Deze informatie biedt een andere manier om de resultaten in de bijbehorende Lift-grafiek te bekijken.
+
+De cumulatieve toename grafiek helpt u bij het kiezen van de indelings beperking met behulp van een percentage dat overeenkomt met een gewenste toename van het model. U kunt het diagram van de cumulatieve toename vergelijken met de basis lijn (onjuist model) om het percentage van de voor beelden die goed zijn ingedeeld op elk betrouw bare percentiel te bekijken.
 
 #### <a name="what-does-a-good-model-look-like"></a>Hoe ziet een goed model eruit?
+
+Net als bij een lift diagram, is het hoger uw cumulatieve toename-curve boven de basis lijn, hoe beter uw model presteert. Daarnaast is de gebogen lijn nauw keuriger dan de linkerbovenhoek van de grafiek, hoe groter uw model het beste wordt vergeleken met de basis lijn. 
+
 ##### <a name="example-1-a-classification-model-with-minimal-gain"></a>Voor beeld 1: een classificatie model met minimale toename
-![een classificatie model met minimale toename](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-gains-curve1.png)
+![een classificatie model met minimale toename](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-gains-curve2.png)
 
 ##### <a name="example-2-a-classification-model-with-significant-gain"></a>Voor beeld 2: een classificatie model met aanzienlijke winst
-![Een classificatie model met aanzienlijke winst](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-gains-curve2.png)
-<a name="calibration-plot"></a>
-### <a name="calibration-chart"></a>Kalibratie diagram
+![Een classificatie model met aanzienlijke winst](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-gains-curve1.png)
 
-#### <a name="what-is-a-calibration-chart"></a>Wat is een ijklijn?
-Er wordt een kalibratie tekening gebruikt om het vertrouwen van een voorspellend model weer te geven. Dit doet u door de relatie tussen de voorspelde waarschijnlijkheid en de werkelijke kans weer te geven, waarbij ' kans ' staat voor de kans dat een bepaalde instantie tot een bepaald label behoort.
-#### <a name="what-does-automated-ml-do-with-the-calibration-chart"></a>Wat doet automatische ML met de ijklijn?
+<a name="calibration-plot"></a>
+
+## <a name="calibration-chart"></a>Kalibratie diagram
+
+In een kalibratie plot wordt het vertrouwen van een voorspellend model weer gegeven. Dit doet u door de relatie tussen de voorspelde waarschijnlijkheid en de werkelijke kans weer te geven, waarbij ' kans ' staat voor de kans dat een bepaalde instantie tot een bepaald label behoort.
+
 Voor alle classificatie problemen kunt u de kalibratie lijn voor micro-Average, macro-Gem en elke klasse in een bepaald voorspellend model controleren.
 
-Macro: berekent de metrische gegevens onafhankelijk van elke klasse en neemt vervolgens het gemiddelde over, waarbij alle klassen gelijk worden behandeld. Met micro gemiddelde worden de bijdragen van alle klassen echter geaggregeerd om het gemiddelde te berekenen. 
-#### <a name="what-does-a-good-model-look-like"></a>Hoe ziet een goed model eruit?
+**Macro-gemiddelde** berekent de metrische gegevens onafhankelijk van elke klasse en nemen vervolgens het gemiddelde uit, waarbij alle klassen gelijkmatig worden behandeld. **Micro-Gem** aggregeert echter de bijdragen van alle klassen om het gemiddelde te berekenen. 
+
+### <a name="what-does-a-good-model-look-like"></a>Hoe ziet een goed model eruit?
 Een goed gekalibreerd model wordt uitgelijnd met de lijn y = x, waarbij de kans wordt gedicteerd dat steek proeven bij elke klasse horen. Een over-vertrouwen model zal de waarschijnlijkheid voors pellen die bijna gelijk zijn aan nul en één, wat zelden duidelijk is over de klasse van elk voor beeld.
 
-
-##### <a name="example-1-a-well-calibrated-model"></a>Voor beeld 1: een goed gekalibreerd model
+#### <a name="example-1-a-well-calibrated-model"></a>Voor beeld 1: een goed gekalibreerd model
 ![ meer goed gekalibreerd model](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-calib-curve1.png)
 
-##### <a name="example-2-an-over-confident-model"></a>Voor beeld 2: een over-vertrouwen model
+#### <a name="example-2-an-over-confident-model"></a>Voor beeld 2: een over-vertrouwen model
 ![Een over-vertrouwen model](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-calib-curve2.png)
 
-## <a name="regression-results"></a><a name="regression"></a> Regressie resultaten
 
-Thee de volgende metrische gegevens en grafieken zijn beschikbaar voor elk regressie model dat u bouwt met behulp van de geautomatiseerde machine learning mogelijkheden van Azure Machine Learning
+<a name="regression"></a> 
 
-+ [Metrische gegevens](#reg-metrics)
-+ [Voorspeld versus waar](#pvt)
-+ [Histogram van verschillen](#histo)
+## <a name="regression-performance-metrics"></a>Gegevens over regressie prestaties
 
-
-### <a name="regression-metrics"></a><a name="reg-metrics"></a> Metrische gegevens over regressie
-
-De volgende metrische gegevens worden opgeslagen in elke uitvoerings herhaling voor een regressie-of prognose taak.
+De volgende tabel bevat een overzicht van de prestatie gegevens van het model die AutoML berekent voor elk regressie-of prognose model dat voor uw experiment wordt gegenereerd. 
 
 |Gegevens|Beschrijving|Berekening|Extra para meters
 --|--|--|--|
@@ -238,42 +225,47 @@ normalized_root_mean_squared_error|Genormaliseerd root-kwadraat fout is het root
 root_mean_squared_log_error|Het wortel gemiddelde van het logaritmische fout is de vierkantswortel van de verwachte kwadratische fout|[Berekening](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Geen|
 normalized_root_mean_squared_log_error|Genormaliseerde logaritmische fout in kwadraat is het belangrijkste gemiddelde logboek fout gedeeld door het bereik van de gegevens|[Berekening](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Delen door bereik van de gegevens|
 
-### <a name="predicted-vs-true-chart"></a><a name="pvt"></a> Voor speld versus waar grafiek
-#### <a name="what-is-a-predicted-vs-true-chart"></a>Wat is een voor speld versus waar grafiek?
-Voor speld versus waar ziet u de relatie tussen een voorspelde waarde en de bijbehorende waarde voor het correleren van een regressie probleem. Deze grafiek kan worden gebruikt om de prestaties van een model te meten als dichter bij de y = x-lijn de voorspelde waarden zijn, hoe beter de nauw keurigheid van een voorspellend model is.
+<a name="pvt"></a>
 
-#### <a name="what-does-automated-ml-do-with-the-predicted-vs-true-chart"></a>Wat doen automatische ML met de voor spelling en ware grafiek?
+## <a name="predicted-vs-true-chart"></a>Voor speld versus waar grafiek
+
+Voor speld versus waar ziet u de relatie tussen een voorspelde waarde en de bijbehorende waarde voor het correleren van een regressie probleem. 
+
 Na elke uitvoering ziet u een voorspelde versus ware grafiek voor elk regressie model. Ter bescherming van de privacy van gegevens zijn waarden binning samen en de grootte van elke bin wordt weer gegeven als een staaf diagram in het onderste gedeelte van het grafiek gebied. U kunt het voorspellende model vergelijken met het lichtere scha kering van de fout marges, vergeleken met de ideale waarde van waar het model moet zijn.
 
-#### <a name="what-does-a-good-model-look-like"></a>Hoe ziet een goed model eruit?
-##### <a name="example-1-a-classification-model-with-low-accuracy"></a>Voor beeld 1: een classificatie model met lage nauw keurigheid
+### <a name="what-does-a-good-model-look-like"></a>Hoe ziet een goed model eruit?
+Deze grafiek kan worden gebruikt om de prestaties van een model te meten als dichter bij de y = x-lijn de voorspelde waarden zijn, hoe beter de nauw keurigheid van een voorspellend model is.
+
+#### <a name="example-1-a-classification-model-with-low-accuracy"></a>Voor beeld 1: een classificatie model met lage nauw keurigheid
 ![Een regressie model met lage nauw keurigheid in voor spellingen](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression1.png)
 
-##### <a name="example-2-a-regression-model-with-high-accuracy"></a>Voor beeld 2: een regressie model met hoge nauw keurigheid 
-[![Een regressie model met hoge nauw keurigheid in de voor spellingen](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2-expanded.png)
+#### <a name="example-2-a-regression-model-with-high-accuracy"></a>Voor beeld 2: een regressie model met hoge nauw keurigheid 
+![Een regressie model met hoge nauw keurigheid in de voor spellingen](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2.png)
 
+<a name="histo"></a> 
 
+## <a name="histogram-of-residuals-chart"></a>Grafiek met het histogram van verschillen
 
-### <a name="histogram-of-residuals-chart"></a><a name="histo"></a> Grafiek met het histogram van verschillen
-#### <a name="what-is-a-residuals-chart"></a>Wat is een verschillen diagram?
-Een rest is het verschil tussen de voor spelling en de werkelijke waarde ( `y_pred - y_true` ). Als u een fout marge met een lage afwijking wilt weer geven, moet het histogram van de resten worden gevormd als klok curve, gecentreerd rond 0. 
-#### <a name="what-does-automated-ml-do-with-the-residuals-chart"></a>Wat doet automatische ML in het diagram verschillen?
-Automatische MILLILITERs bieden automatisch een grafiek van verschillen om de verdeling van fouten in de voor spellingen weer te geven.
-#### <a name="what-does-a-good-model-look-like"></a>Hoe ziet een goed model eruit?
-Een goed model heeft meestal resten die nauw keurig rond nul zijn.
+Automatische MILLILITERs bieden automatisch een grafiek van verschillen om de verdeling van fouten in de voor spellingen van een regressie model weer te geven. Een rest is het verschil tussen de voor spelling en de werkelijke waarde ( `y_pred - y_true` ). 
 
-##### <a name="example-1-a-regression-model-with-bias-in-its-errors"></a>Voor beeld 1: een regressie model met afwijking van fouten
+### <a name="what-does-a-good-model-look-like"></a>Hoe ziet een goed model eruit?
+Als u een fout marge met een lage afwijking wilt weer geven, moet het histogram van de resten worden gevormd als klok curve, gecentreerd rond nul.
+
+#### <a name="example-1-a-regression-model-with-bias-in-its-errors"></a>Voor beeld 1: een regressie model met afwijking van fouten
 ![SA-regressie model met afwijking van fouten](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression3.png)
 
-##### <a name="example-2-a-regression-model-with-more-even-distribution-of-errors"></a>Voor beeld 2: een regressie model met meer gelijkmatige verdeling van fouten
+#### <a name="example-2-a-regression-model-with-more-even-distribution-of-errors"></a>Voor beeld 2: een regressie model met meer gelijkmatige verdeling van fouten
 ![Een regressie model met een meer gelijkmatige verdeling van fouten](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression4.png)
 
-## <a name="model-interpretability-and-feature-importance"></a><a name="explain-model"></a> De interpretatie van modellen en de urgentie van het onderdeel
+<a name="explain-model"></a>
+
+## <a name="model-interpretability-and-feature-importance"></a>De interpretatie van modellen en de urgentie van het onderdeel
 Automated ML biedt een machine learning interpretable dash board voor uw uitvoeringen.
-Zie voor meer informatie over het inschakelen van functies voor het maken van interpretaties de [procedures](how-to-machine-learning-interpretability-automl.md) voor het inschakelen van de functie voor het maken van interpretiteit in geautomatiseerde ml experimenten.
+
+Zie voor meer informatie over het inschakelen van functies voor het maken van voorzieningen [interpretive: model uitleg in automatische machine learning](how-to-machine-learning-interpretability-automl.md).
 
 > [!NOTE]
-> Het ForecastTCN-model wordt momenteel niet ondersteund door de uitleg-client. Dit model retourneert geen uitzonderings dashboard als het wordt geretourneerd als het beste model en biedt geen ondersteuning voor uitleg over de uitvoering van een on-demand.
+> Het ForecastTCN-model wordt momenteel niet ondersteund door de uitleg-client. Dit model retourneert geen uitleg-dash board als het wordt geretourneerd als het beste model en biedt geen ondersteuning voor uitleg over de uitvoering van een on-demand.
 
 ## <a name="next-steps"></a>Volgende stappen
 

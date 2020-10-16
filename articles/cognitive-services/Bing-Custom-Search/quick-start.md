@@ -1,7 +1,7 @@
 ---
 title: 'Snelstartgids: Uw eerste exemplaar voor Bing Custom Search maken'
 titleSuffix: Azure Cognitive Services
-description: Gebruik deze Quick Start om een aangepast Bing-exemplaar te maken dat kan zoeken naar domeinen en webpagina's die u definieert.
+description: Gebruik deze quickstart om een aangepast Bing-exemplaar te maken waarmee u domeinen en webpagina's kunt doorzoeken die u hebt gedefinieerd.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: aahi
 ms.openlocfilehash: b8287250df4e278d4904e31121ed7d2df208e1c9
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "80238859"
 ---
 # <a name="quickstart-create-your-first-bing-custom-search-instance"></a>Snelstartgids: Uw eerste exemplaar voor Bing Custom Search maken
@@ -46,10 +46,10 @@ Een exemplaar voor aangepaste zoekopdrachten met Bing maken:
 
 5. Klik op **Publiceren** om uw wijzigingen naar de productieomgeving te publiceren, en werk de eindpunten van het exemplaar bij.
 
-6.  Klik op het tabblad **productie** onder **eind punten**en kopieer uw **aangepaste configuratie-ID**. U hebt deze id nodig om de Custom Search-API aan te roepen waarbij u de id aan de queryparameter `customconfig=` in uw aanroepen moet toevoegen.
+6.  Klik op het tabblad **Productie** onder **Eindpunten** en kopieer de **id van de aangepaste configuratie**. U hebt deze id nodig om de Custom Search-API aan te roepen waarbij u de id aan de queryparameter `customconfig=` in uw aanroepen moet toevoegen.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Snelstartgids: uw Bing Aangepaste zoekopdrachten-eind punt aanroepen](./call-endpoint-csharp.md)
+> [Snelstart: Uw Bing Custom Search-eindpunt aanroepen](./call-endpoint-csharp.md)

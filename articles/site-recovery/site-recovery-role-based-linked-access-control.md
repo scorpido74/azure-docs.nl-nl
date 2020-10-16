@@ -7,10 +7,10 @@ author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
 ms.openlocfilehash: 95ea8b61b01b17512d99d0316073835326e6d7bd
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87927161"
 ---
 # <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>Site Recovery toegang beheren met op rollen gebaseerd toegangs beheer (RBAC)
@@ -41,7 +41,7 @@ Een gebruiker heeft de volgende machtigingen nodig om de replicatie van een nieu
 > [!NOTE]
 > Als u replicatie inschakelt voor een virtuele Azure-machine en u Site Recovery wilt toestaan om updates te beheren, terwijl u replicatie inschakelt, kunt u ook een nieuw Automation-account maken. in dat geval hebt u toestemming nodig om een Automation-account te maken in hetzelfde abonnement als de kluis.
 
-| **Resourcetype** | **Implementatie model** | **Machtiging** |
+| **Resourcetype** | **Implementatiemodel** | **Machtiging** |
 | --- | --- | --- |
 | Compute | Resource Manager | Micro soft. Compute/Availability sets/lezen |
 |  |  | Micro soft. Compute/informatie/lezen |
@@ -66,7 +66,7 @@ Een gebruiker heeft de volgende machtigingen nodig om de replicatie van een nieu
 |  |  | Micro soft. Storage/Storage accounts/listkeys ophalen/Action |
 |  | Klassiek | Micro soft. ClassicStorage/Storage accounts/lezen |
 |  |  | Micro soft. ClassicStorage/Storage accounts/Listkeys ophalen/Action |
-| Resourcegroep | Resource Manager | Micro soft. resources/implementaties/* |
+| Resource Group | Resource Manager | Micro soft. resources/implementaties/* |
 |  |  | Micro soft. resources/abonnementen/resourceGroups/lezen |
 
 Overweeg het gebruik van de [ingebouwde rollen](../role-based-access-control/built-in-roles.md) ' virtual machine contributor ' en ' klassieke virtuele machine contributor ' voor respectievelijk Resource Manager en klassieke implementatie modellen.

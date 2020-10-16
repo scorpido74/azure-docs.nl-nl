@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
 ms.openlocfilehash: f7253be2844f40ca52df2f9b3bc9cbba552fea2b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85480130"
 ---
 # <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>Netwerkinterfaces toevoegen aan of verwijderen van netwerkinterfaces van virtuele machines
@@ -46,7 +46,7 @@ Als u er nog geen hebt, stelt u een Azure-account in met een actief abonnement. 
 
 Wanneer u via de portal een virtuele machine maakt, maakt de portal een netwerk interface met de standaard instellingen en koppelt de netwerk interface voor u aan de VM. U kunt de portal niet gebruiken om bestaande netwerk interfaces toe te voegen aan een nieuwe virtuele machine of om een virtuele machine met meerdere netwerk interfaces te maken. U kunt beide doen met behulp van de CLI of Power shell. Zorg ervoor dat u vertrouwd bent met de [beperkingen](#constraints). Als u een virtuele machine met meerdere netwerk interfaces maakt, moet u ook het besturings systeem configureren om ze goed te gebruiken nadat u de virtuele machine hebt gemaakt. Meer informatie over het configureren van [Linux](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) of [Windows](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) voor meerdere netwerk interfaces.
 
-### <a name="commands"></a>Opdrachten
+### <a name="commands"></a>Opdracht
 
 Voordat u de virtuele machine maakt, [maakt u een netwerk interface](virtual-network-network-interface.md#create-a-network-interface).
 
@@ -76,7 +76,7 @@ Een netwerk interface toevoegen aan de virtuele machine:
 
 Nu kunt u het VM-besturings systeem configureren om meerdere netwerk interfaces op de juiste manier te gebruiken. Meer informatie over het configureren van [Linux](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) of [Windows](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) voor meerdere netwerk interfaces.
 
-### <a name="commands"></a>Opdrachten
+### <a name="commands"></a>Opdracht
 
 |Hulpprogramma|Opdracht|
 |---|---|
@@ -98,7 +98,7 @@ U kunt de netwerk interfaces die momenteel zijn gekoppeld aan een virtuele machi
 
 Zie [netwerk interfaces beheren](virtual-network-network-interface.md)voor meer informatie over de instellingen van de netwerk interface en hoe u deze kunt wijzigen. Zie [IP-adressen van netwerk interfaces beheren](virtual-network-network-interface-addresses.md)voor meer informatie over het toevoegen, wijzigen of verwijderen van IP-adressen die zijn toegewezen aan een netwerk interface.
 
-### <a name="commands"></a>Opdrachten
+### <a name="commands"></a>Opdracht
 
 |Hulpprogramma|Opdracht|
 |---|---|
@@ -122,7 +122,7 @@ Zie [netwerk interfaces beheren](virtual-network-network-interface.md)voor meer 
     >[!NOTE]
     >Als er slechts één netwerk interface wordt weer gegeven, kunt u deze niet loskoppelen omdat er altijd ten minste één netwerk interface aan een virtuele machine is gekoppeld.
 
-### <a name="commands"></a>Opdrachten
+### <a name="commands"></a>Opdracht
 
 |Hulpprogramma|Opdracht|
 |---|---|

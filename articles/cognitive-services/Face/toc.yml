@@ -5,7 +5,7 @@
   items:
     - name: Wat is de Face-service?
       href: Overview.md
-- name: Quickstarts
+- name: Snelstartgidsen
   items:
     - name: De clientbibliotheek gebruiken
       href: Quickstarts/client-libraries.md

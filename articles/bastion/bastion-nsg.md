@@ -2,21 +2,21 @@
 title: Werken met Vm's en Nsg's in azure Bastion
 description: U kunt netwerk beveiligings groepen gebruiken met Azure Bastion. Meer informatie over de subnetten die zijn vereist voor deze configuratie.
 services: bastion
-author: charwen
+author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.author: charwen
-ms.openlocfilehash: a69aa8d8a6dc324d6fe28219316c36ac2ec816a5
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.author: cherylmc
+ms.openlocfilehash: 7853ac3ece01057282bc6cb421018020e15273b5
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987700"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079187"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>Werken met NSG-toegang en Azure Bastion
 
-Wanneer u met Azure Bastion werkt, kunt u netwerk beveiligings groepen (Nsg's) gebruiken. Zie [beveiligings groepen](../virtual-network/security-overview.md)voor meer informatie.
+Wanneer u met Azure Bastion werkt, kunt u netwerk beveiligings groepen (Nsg's) gebruiken. Zie [beveiligings groepen](../virtual-network/network-security-groups-overview.md)voor meer informatie.
 
 :::image type="content" source="./media/bastion-nsg/figure-1.png" alt-text="NSG":::
 
@@ -42,7 +42,7 @@ Azure Bastion wordt specifiek geïmplementeerd voor ***AzureBastionSubnet***.
    * **Binnenkomend verkeer vanuit het Azure Bastion-besturings vlak:** Schakel voor de connectiviteit van het besturings element het argument poort 443 binnenkomend van de **GatewayManager** -service in. Hiermee wordt het besturings vlak ingeschakeld, dat wil zeggen dat gateway beheer met Azure Bastion kan communiceren.
 
 
-   :::image type="content" source="./media/bastion-nsg/inbound.png" alt-text="Scherm opname bevat binnenkomende beveiligings regels voor Azure Bastion-connectiviteit.":::
+   :::image type="content" source="./media/bastion-nsg/inbound.png" alt-text="NSG":::
 
 * **Uitgaand verkeer:**
 
@@ -50,7 +50,7 @@ Azure Bastion wordt specifiek geïmplementeerd voor ***AzureBastionSubnet***.
    * Uitgaand **verkeer naar andere open bare eind punten in Azure:** Azure Bastion moet verbinding kunnen maken met verschillende open bare eind punten in azure (bijvoorbeeld voor het opslaan van Diagnostische logboeken en logboeken voor meters). Daarom heeft Azure Bastion een uitgaand verkeer naar 443 naar **Cloud** service-tag nodig.
 
 
-   :::image type="content" source="./media/bastion-nsg/outbound.png" alt-text="Scherm opname toont de uitgaande beveiligings regels voor Azure Bastion-connectiviteit.":::
+   :::image type="content" source="./media/bastion-nsg/outbound.png" alt-text="NSG":::
 
 ### <a name="target-vm-subnet"></a>Doel-VM-subnet
 Dit is het subnet dat de virtuele doel machine bevat waarnaar u RDP/SSH wilt.

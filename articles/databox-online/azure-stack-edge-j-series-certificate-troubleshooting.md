@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 09/29/2020
 ms.author: alkohli
 ms.openlocfilehash: f0f9dfa6e3d6ae02f66ac71f62586953cb21517e
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91568349"
 ---
 # <a name="troubleshooting-certificate-errors"></a>Certificaat fouten oplossen
@@ -26,7 +26,7 @@ De volgende tabel bevat algemene certificaat fouten en gedetailleerde informatie
 > [!NOTE]
 > Exemplaren van &#8220;{0} , {1} ,..., {n} &#8221; positionele para meters aangeven. De positionele para meters hebben waarden, afhankelijk van de certificaten die u gebruikt.
 
-| Foutcode | Description |
+| Foutcode | Beschrijving |
 |---|---|
 | CertificateManagement_UntrustedCertificate | De certificaat keten van het certificaat met de onderwerpnaam {0} is verbroken. Upload het handtekening keten certificaat voordat u dit certificaat uploadt.|
 | CertificateManagement_DeviceNotRegistered| Het apparaat is niet geactiveerd. U kunt een ondersteunings certificaat pas na activering uploaden.|

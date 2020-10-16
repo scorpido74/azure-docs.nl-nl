@@ -7,16 +7,16 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 05/27/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 8cda46a011ae92f26a15a4e9a918559801ce299c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 0c90062f1968cc7be5a742a67363f57b9632fdfa
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906861"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090672"
 ---
 # <a name="java-and-base-os-for-spring-microservice-apps"></a>Java- en Base-besturingssysteem voor Spring Microservice-apps
 
-**Dit artikel is van toepassing op:** ✔️ java
+**Dit artikel is van toepassing op:** ✔️ Java
 
 Hieronder vindt u de principes voor het onderhouden van een gezonde Java-en basis besturingssysteem voor lente-micro service-apps.
 ## <a name="principles-for-healthy-java-and-base-os"></a>Principes voor een gezonde Java-en basis besturingssysteem
@@ -46,7 +46,7 @@ Azul-systemen scannen voortdurend op wijzigingen in de basis besturingssystemen 
     * Ubuntu 20,04 LTS (brand Fossa). Apps blijven blijven werken met de meest recente LTS-versie van Ubuntu.
     * Zie [Ubuntu 20,04 LTS (brandpuntsafstand Fossa)](http://releases.ubuntu.com/focal/)
 * Hoe kan ik een ondersteunde Java-runtime voor lokale ontwikkel aars downloaden? 
-    * Zie [de JDK voor Azure en Azure stack installeren](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install)
+    * Zie [de JDK voor Azure en Azure stack installeren](/azure/developer/java/fundamentals/java-jdk-install)
 * Hoe kan ik ondersteuning krijgen voor problemen met het Java-runtime niveau?
     * Open een ondersteunings ticket met ondersteuning voor Azure.
  
@@ -57,4 +57,4 @@ Azul-systemen scannen voortdurend op wijzigingen in de basis besturingssystemen 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Snelstart: Uw eerste Azure Spring Cloud-toepassing implementeren](spring-cloud-quickstart.md)
-* [Java-ondersteuning op lange termijn voor Azure en Azure Stack](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-long-term-support)
+* [Java-ondersteuning op lange termijn voor Azure en Azure Stack](/azure/developer/java/fundamentals/java-jdk-long-term-support)

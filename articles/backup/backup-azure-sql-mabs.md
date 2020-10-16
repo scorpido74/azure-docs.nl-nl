@@ -4,10 +4,10 @@ description: In dit artikel leert u de configuratie voor het maken van back-ups 
 ms.topic: conceptual
 ms.date: 03/24/2017
 ms.openlocfilehash: 29813741e88ad5f2bc5109be87939abf7cc11502
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91316916"
 ---
 # <a name="back-up-sql-server-to-azure-by-using-azure-backup-server"></a>Back-ups van SQL Server naar Azure maken met behulp van Azure Backup Server
@@ -70,7 +70,7 @@ Als u SQL Server-data bases in azure wilt beveiligen, moet u eerst een back-upbe
 1. Geef de beveiligings groep de naam en selecteer **Ik wil online beveiliging**.
 
     ![Een methode voor gegevens beveiliging kiezen-beveiliging op korte termijn schijf of online Azure-beveiliging](./media/backup-azure-backup-sql/pg-name.png)
-1. Op de pagina doelen voor de **korte termijn opgeven** neemt u de benodigde invoer voor het maken van back-uppunten op de schijf op.
+1. Voeg op de pagina **Short-Term doelstellingen opgeven** de benodigde invoer toe voor het maken van back-uppunten op de schijf.
 
     In dit voor beeld is de **Bewaar** termijn ingesteld op *5 dagen*. De frequentie van de back- **upsynchronisatie** wordt ingesteld op elke *15 minuten*. **Snelle volledige back-up** is ingesteld op *8:00 pm*.
 

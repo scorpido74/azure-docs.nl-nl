@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cf39fcbfbde8a81400cd93c7f99b066a99f643bd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 715089d40f584fbbaf23f674e4243c92c718e9d1
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89005374"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093324"
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>Verbinding maken en communiceren met Services in Service Fabric
 In Service Fabric wordt een service ergens in een Service Fabric cluster uitgevoerd, meestal verdeeld over meerdere Vm's. Het kan worden verplaatst van de ene locatie naar de andere, hetzij door de eigenaar van de service, hetzij automatisch door Service Fabric. Services zijn niet statisch gebonden aan een bepaalde machine of een bepaald adres.
@@ -30,7 +30,7 @@ In een gedistribueerd systeem kunnen services van de ene machine naar de andere 
 
 Service Fabric biedt een detectie-en oplossings service die de Naming Service wordt genoemd. De Naming Service onderhoudt een tabel die benoemde service-exemplaren toewijst aan de eindpunt adressen waarop ze Luis teren. Alle benoemde service-exemplaren in Service Fabric hebben unieke namen die als Uri's worden weer gegeven, bijvoorbeeld `"fabric:/MyApplication/MyService"` . De naam van de service wordt niet gewijzigd gedurende de levens duur van de service. Dit zijn alleen de eindpunt adressen die kunnen veranderen wanneer services worden verplaatst. Dit is vergelijkbaar met websites die constante Url's hebben, maar waarbij het IP-adres kan veranderen. En net als bij DNS op het web, waarmee website-Url's worden omgezet naar IP-adressen, heeft Service Fabric een registratie-instantie waarmee service namen worden toegewezen aan hun eindpunt adres.
 
-![Service-eind punten][2]
+![Diagram dat laat zien dat Service Fabric een registratie-instantie heeft waarmee service namen worden toegewezen aan hun eindpunt adres.][2]
 
 Als u services wilt omzetten en er verbinding mee wilt maken, moet u de volgende stappen uitvoeren in een lus:
 
@@ -47,14 +47,14 @@ Omdat veel services, met name in container Services, een bestaande URL-naam kunn
 
 Zoals in het volgende diagram wordt weer gegeven, wijst de DNS-service, die wordt uitgevoerd in het Service Fabric cluster, DNS-namen toe aan service namen die vervolgens worden omgezet door de Naming Service om de eindpunt adressen te retour neren waarmee verbinding moet worden gemaakt. De DNS-naam voor de service wordt verschaft op het moment dat deze wordt gemaakt. 
 
-![Service-eind punten][9]
+![Diagram dat laat zien hoe de DNS-service, wanneer dit wordt uitgevoerd in het Service Fabric cluster, DNS-namen toewijst aan service namen die vervolgens worden omgezet door de Naming Service om de eindpunt adressen te retour neren waarmee verbinding moet worden gemaakt.][9]
 
 Zie de [DNS-service in Azure service Fabric-](service-fabric-dnsservice.md) artikel voor meer informatie over het gebruik van de DNS-service.
 
 ### <a name="reverse-proxy-service"></a>Reverse proxy service
 De services voor omgekeerde proxy adressen in het cluster die HTTP-eind punten, inclusief HTTPS, weer gegeven. De omgekeerde proxy vereenvoudigt het aanroepen van andere services en de bijbehorende methoden door een specifieke URI-indeling te hebben en de stappen voor het oplossen, verbinden en opnieuw proberen te verwerken die vereist zijn voor de ene service om met een andere te communiceren met behulp van de Naming Service. Met andere woorden, de Naming Service van u wordt verborgen wanneer u andere services aanroept door dit net zo eenvoudig te maken als het aanroepen van een URL.
 
-![Service-eind punten][10]
+![Diagram dat laat zien hoe de services voor omgekeerde proxy's in het cluster de HTTP-eind punten, inclusief HTTPS, beschikbaar stelt.][10]
 
 Zie voor meer informatie over het gebruik van de reverse proxy-service [reverse proxy in Azure service Fabric](service-fabric-reverseproxy.md) -artikel.
 
@@ -153,7 +153,7 @@ Als u bijvoorbeeld extern verkeer op poort **80**wilt accepteren, moet u de volg
     ![Een poort openen in een knooppunt type][4]
 3. Zodra het cluster is gemaakt, configureert u de Azure Load Balancer in de resource groep van het cluster voor het door sturen van verkeer op poort 80. Bij het maken van een cluster via de Azure Portal, wordt dit automatisch ingesteld voor elke aangepaste eindpunt poort die is geconfigureerd.
 
-    ![Verkeer door sturen in de Azure Load Balancer][5]
+    ![Scherm opname van het veld backend-poort onder regels voor taak verdeling.][5]
 4. De Azure Load Balancer gebruikt een test om te bepalen of het verkeer naar een bepaald knoop punt moet worden verzonden. De test controleert periodiek een eind punt op elk knoop punt om te bepalen of het knoop punt reageert. Als de test geen reactie heeft ontvangen na een geconfigureerd aantal keren, stopt de load balancer het verzenden van verkeer naar dat knoop punt. Bij het maken van een cluster via de Azure Portal, wordt er automatisch een test ingesteld voor elke aangepaste eindpunt poort die is geconfigureerd.
 
     ![Verkeer door sturen in de Azure Load Balancer][8]

@@ -4,10 +4,10 @@ description: In dit artikel vindt u informatie over het maken van een back-up va
 ms.topic: conceptual
 ms.date: 08/13/2020
 ms.openlocfilehash: 4f4ea202ee96e93a621c8dd0025c9ebc8b8d445d
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88891654"
 ---
 # <a name="back-up-a-sql-server-from-the-vm-pane"></a>Een back-up maken van een SQL Server vanuit het VM-deel venster

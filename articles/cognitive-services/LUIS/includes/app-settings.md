@@ -4,15 +4,15 @@ ms.topic: include
 ms.custom: include file
 ms.date: 5/17/2020
 ms.openlocfilehash: 69e6412cc16689b2b5302e3267eae9337af6780c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "83653208"
 ---
-Gebruik [app](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/58aeface39e2bb03dcd5909e) -api's om instellingen bij te werken **of de Luis** -portal te gebruiken, **instellingen** pagina.
+Gebruik [app](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/58aeface39e2bb03dcd5909e)-API's om instellingen bij te werken of gebruik de sectie **Beheren** in de LUIS-portal, pagina **Instellingen**.
 
 
-|Gebruikers interface-instelling|API-instelling|Informatie|
+|UI-instelling|API-instelling|Informatie|
 |--|--|--|
-|Eind punten openbaar maken|`Public`|Iedereen heeft toegang tot het **Voorspellings eindpunt** van de open bare app als ze een Voorspellings sleutel, app-id en versie-id hebben. |
+|Eindpunten openbaar maken|`Public`|Elke gebruiker heeft toegang tot het **voorspellingseindpunt** van de openbare app als deze een voorspellingssleutel, een app-id en een versie-id heeft. |

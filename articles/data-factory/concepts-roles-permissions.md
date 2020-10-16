@@ -11,10 +11,10 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.openlocfilehash: 40fa6bce67aa6c5643e4a153da610dce65907b56
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88036348"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Rollen en machtigingen voor Azure Data Factory
@@ -80,7 +80,7 @@ Hier volgen enkele voor beelden van hoe u met aangepaste rollen kunt profiteren:
   Voor dit scenario zijn twee roltoewijzingen vereist.
 
   1. Wijs de ingebouwde rol **Inzender** op het Data Factory niveau toe.
-  2. Maak een aangepaste rol met de machtiging **micro soft. resources/Deployments/**. Wijs deze aangepaste rol toe aan de gebruiker op het niveau van de resource groep.
+  2. Maak een aangepaste rol met de machtiging  **micro soft. resources/Deployments/**. Wijs deze aangepaste rol toe aan de gebruiker op het niveau van de resource groep.
 
 - Hiermee kan een gebruiker de verbinding in een gekoppelde service testen of een voor beeld van de gegevens in een gegevensset bekijken
 
@@ -88,7 +88,7 @@ Hier volgen enkele voor beelden van hoe u met aangepaste rollen kunt profiteren:
 
 - Laat een gebruiker een data factory bijwerken vanuit Power shell of de SDK, maar niet in de Azure Portal.
 
-  Wijs de ingebouwde rol **Inzender** toe aan de Data Factory resource voor de gebruiker. Met deze rol kan de gebruiker de resources in de Azure Portal zien, maar de gebruiker heeft geen toegang tot de knoppen **publiceren** en **publiceren** .
+  Wijs de ingebouwde rol **Inzender** toe aan de Data Factory resource voor de gebruiker. Met deze rol kan de gebruiker de resources in de Azure Portal zien, maar de gebruiker heeft geen toegang tot de knoppen  **publiceren** en **publiceren** .
 
 ## <a name="next-steps"></a>Volgende stappen
 

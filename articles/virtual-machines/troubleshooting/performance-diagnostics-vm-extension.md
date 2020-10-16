@@ -13,16 +13,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: c570c43560ad865b8bcc5161cbd0c6731ea4a237
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 16af8b8c1258ef7945e88a7af42e86a7bba2003b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090649"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963258"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>VM-extensie voor Windows voor diagnostische gegevens over Azure-prestaties
 
-Met de Azure-extensie voor diagnostische gegevens van virtuele machines kunt u prestatie diagnostiek verzamelen van Windows-Vm's. De uitbrei ding voert analyses uit en biedt een rapport met bevindingen en aanbevelingen voor het identificeren en oplossen van prestatie problemen op de virtuele machine. Met deze extensie wordt een hulp programma voor probleem oplossing met de naam [PerfInsights](https://aka.ms/perfinsights)geïnstalleerd.
+Met de Azure-extensie voor diagnostische gegevens van virtuele machines kunt u prestatie diagnostiek verzamelen van Windows-Vm's. De uitbrei ding voert analyses uit en biedt een rapport met bevindingen en aanbevelingen voor het identificeren en oplossen van prestatie problemen op de virtuele machine. Met deze extensie wordt een hulp programma voor probleem oplossing met de naam [PerfInsights](./how-to-use-perfinsights.md)geïnstalleerd.
 
 > [!NOTE]
 > Als u Diagnostische gegevens wilt uitvoeren op uw VM van de Azure Portal voor niet-klassieke Vm's, is het raadzaam om de nieuwe ervaring te gebruiken. Zie [prestatie diagnostiek voor virtuele Azure-machines](performance-diagnostics.md) voor meer informatie. 
@@ -79,7 +79,7 @@ De volgende JSON toont het schema voor de VM-extensie Azure prestatie diagnostie
 |apiVersion|2015-06-15|De versie van de API.
 |publisher|Micro soft. Azure. performance. Diagnostics|De naam ruimte van de uitgever voor de extensie.
 |type|AzurePerformanceDiagnostics|Het type van de VM-extensie.
-|typeHandlerVersion|1,0|De versie van de extensie-handler.
+|typeHandlerVersion|1.0|De versie van de extensie-handler.
 |performanceScenario|hoofd|Het prestatie scenario waarvoor gegevens moeten worden vastgelegd. Geldige waarden zijn: **Basic**, **vmslow**, **Azure files**en **Custom**.
 |traceDurationInSeconds|300|De duur van de traceringen, als een van de tracerings opties is geselecteerd.
 |perfCounterTrace|p|Optie voor het inschakelen van tracering van prestatie meter items. Geldige waarden zijn **p** of empty. Als u deze tracering niet wilt vastleggen, laat u de waarde leeg.
@@ -96,7 +96,7 @@ De volgende JSON toont het schema voor de VM-extensie Azure prestatie diagnostie
 
 Volg deze instructies voor het installeren van de uitbrei ding op virtuele Windows-machines:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer de virtuele machine waarop u deze extensie wilt installeren.
 
     ![Scherm opname van Azure Portal, waarbij virtuele machines zijn gemarkeerd](media/performance-diagnostics-vm-extension/select-the-virtual-machine.png)
@@ -237,7 +237,7 @@ Set-AzVMExtension -ExtensionName "AzurePerformanceDiagnostics" `
 ```
 
 ## <a name="information-on-the-data-captured"></a>Informatie over de gegevens die zijn vastgelegd
-Het hulp programma PerfInsights verzamelt diverse logboeken, configuratie en diagnostische gegevens, afhankelijk van het geselecteerde scenario. Zie de [PerfInsights-documentatie](https://aka.ms/perfinsights)voor meer informatie.
+Het hulp programma PerfInsights verzamelt diverse logboeken, configuratie en diagnostische gegevens, afhankelijk van het geselecteerde scenario. Zie de [PerfInsights-documentatie](./how-to-use-perfinsights.md)voor meer informatie.
 
 ## <a name="view-and-share-the-results"></a>De resultaten weer geven en delen
 

@@ -10,10 +10,10 @@ ms.author: rolyon
 ms.date: 09/22/2020
 ms.custom: generated
 ms.openlocfilehash: f5d5b4f801dd406518a6ba516bf2e38e01cb96ac
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91275265"
 ---
 # <a name="azure-built-in-roles"></a>Ingebouwde Azure-rollen
@@ -113,8 +113,8 @@ De volgende tabel bevat een korte beschrijving en de unieke ID van elke ingebouw
 > | [Inzender voor HDInsight Domain Services](#hdinsight-domain-services-contributor) | Kan gerelateerde bewerkingen die betrekking hebben op domein services lezen, maken, wijzigen en verwijderen die nodig zijn voor HDInsight-Enterprise Security Package | 8d8d5a11-05d3-4bda-a417-a08778121c7c |
 > | [Inzender van Log Analytics](#log-analytics-contributor) | Log Analytics Inzender kan alle bewakings gegevens lezen en controle-instellingen bewerken. Het bewerken van bewakings instellingen omvat het toevoegen van de VM-extensie aan Vm's; lezen van opslag account sleutels om het verzamelen van logboeken van Azure Storage te kunnen configureren. Automation-accounts maken en configureren; oplossingen toevoegen; en het configureren van Azure Diagnostics voor alle Azure-resources. | 92aaf0da-9dab-42b6-94a3-d43ce8d16293 |
 > | [Lezer van Log Analytics](#log-analytics-reader) | Log Analytics Reader kan alle bewakings gegevens weer geven en doorzoeken en controle-instellingen weer geven, inclusief het weer geven van de configuratie van Azure Diagnostics op alle Azure-resources. | 73c42c96-874c-492b-b04d-ab87d138a893 |
-> | [Inzender voor het schema register (preview-versie)](#schema-registry-contributor-preview) | Schema register groepen en schema's lezen, schrijven en verwijderen. | 5dffeca3-4936-4216-b2bc-10343a5abb25 |
-> | [Schema register lezer (preview-versie)](#schema-registry-reader-preview) | Register groepen en schema's van het schema lezen en weer geven. | 2c56ea50-c6b3-40a6-83c0-9d98858bc7d2 |
+> | [Inzender van schemaregisters (preview)](#schema-registry-contributor-preview) | Schemaregistergroepen en schema's lezen, schrijven en verwijderen. | 5dffeca3-4936-4216-b2bc-10343a5abb25 |
+> | [Lezer van schemaregisters (preview)](#schema-registry-reader-preview) | Schemaregistergroepen en schema's lezen en weergeven. | 2c56ea50-c6b3-40a6-83c0-9d98858bc7d2 |
 > | **Blockchain** |  |  |
 > | [Toegang tot Block Chain-leden knooppunt (preview-versie)](#blockchain-member-node-access-preview) | Hiermee wordt toegang tot Block Chain-leden knooppunten toegestaan | 31a002a1-acaf-453e-8a5b-297c9ca1ea24 |
 > | **AI + machine learning** |  |  |
@@ -164,7 +164,7 @@ De volgende tabel bevat een korte beschrijving en de unieke ID van elke ingebouw
 > | [Key Vault lezer (preview-versie)](#key-vault-reader-preview) | Lees de meta gegevens van sleutel kluizen en de bijbehorende certificaten, sleutels en geheimen. Kan geen gevoelige waarden lezen, zoals geheime inhoud of sleutel materiaal. Werkt alleen voor sleutel kluizen die gebruikmaken van het machtigings model ' Azure op rollen gebaseerd toegangs beheer '. | 21090545-7ca7-4776-b22c-e363652d74d2 |
 > | [Key Vaulte geheimen-auditeur (preview-versie)](#key-vault-secrets-officer-preview) | Acties uitvoeren op de geheimen van een sleutel kluis, met uitzonde ring van machtigingen beheren. Werkt alleen voor sleutel kluizen die gebruikmaken van het machtigings model ' Azure op rollen gebaseerd toegangs beheer '. | b86a8fe4-44ce-4948-aee5-eccb2c155cd7 |
 > | [Key Vault geheimen gebruiker (preview-versie)](#key-vault-secrets-user-preview) | Geheime inhoud lezen. Werkt alleen voor sleutel kluizen die gebruikmaken van het machtigings model ' Azure op rollen gebaseerd toegangs beheer '. | 4633458b-17de-408a-b874-0445c86b69e6 |
-> | [Beveiligings beheerder](#security-admin) | Machtigingen voor Security Center weer geven en bijwerken. Dezelfde machtigingen als de rol van beveiligings lezer en kunnen ook het beveiligings beleid bijwerken en waarschuwingen en aanbevelingen negeren. | fb1c8493-542b-48eb-b624-b4c8fea62acd |
+> | [Beveiligingsbeheerder](#security-admin) | Machtigingen voor Security Center weer geven en bijwerken. Dezelfde machtigingen als de rol van beveiligings lezer en kunnen ook het beveiligings beleid bijwerken en waarschuwingen en aanbevelingen negeren. | fb1c8493-542b-48eb-b624-b4c8fea62acd |
 > | [Inzender voor beveiligings beoordeling](#security-assessment-contributor) | Hiermee kunt u evaluaties naar Security Center pushen | 612c2aa1-cb24-443b-ac28-3ab7272de6f5 |
 > | [Beveiligings beheer (verouderd)](#security-manager-legacy) | Dit is een verouderde rol. Gebruik in plaats daarvan beveiligings beheerder. | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
 > | [Beveiligingslezer](#security-reader) | Machtigingen voor Security Center weer geven. Kan aanbevelingen, waarschuwingen, een beveiligings beleid en beveiligings status weer geven, maar kan geen wijzigingen aanbrengen. | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
@@ -4520,9 +4520,9 @@ Log Analytics Reader kan alle bewakings gegevens weer geven en doorzoeken en con
 }
 ```
 
-### <a name="schema-registry-contributor-preview"></a>Inzender voor het schema register (preview-versie)
+### <a name="schema-registry-contributor-preview"></a>Inzender van schemaregisters (preview)
 
-Schema register groepen en schema's lezen, schrijven en verwijderen.
+Schemaregistergroepen en schema's lezen, schrijven en verwijderen.
 
 > [!div class="mx-tableFixed"]
 > | Acties | Beschrijving |
@@ -4561,9 +4561,9 @@ Schema register groepen en schema's lezen, schrijven en verwijderen.
 }
 ```
 
-### <a name="schema-registry-reader-preview"></a>Schema register lezer (preview-versie)
+### <a name="schema-registry-reader-preview"></a>Lezer van schemaregisters (preview)
 
-Register groepen en schema's van het schema lezen en weer geven.
+Schemaregistergroepen en schema's lezen en weergeven.
 
 > [!div class="mx-tableFixed"]
 > | Acties | Beschrijving |
@@ -7252,7 +7252,7 @@ Met kunt u nieuwe Labs maken onder uw Azure Lab-accounts. [Meer informatie](../l
 }
 ```
 
-## <a name="monitor"></a>Controleren
+## <a name="monitor"></a>Monitor
 
 
 ### <a name="application-insights-component-contributor"></a>Inzender voor Application Insights onderdelen

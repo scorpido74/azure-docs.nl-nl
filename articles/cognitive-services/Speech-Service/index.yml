@@ -13,12 +13,12 @@ metadata:
   ms.topic: hub-page
   ms.date: 03/24/2020
   ms.author: trbye
-  ms.openlocfilehash: 2d1d1057d522d082b3a5a3c757d1fe988bc24ba1
-  ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+  ms.openlocfilehash: 2d00466672318ef05218fce392797df215b6bb5f
+  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 10/02/2020
-  ms.locfileid: "91667449"
+  ms.lasthandoff: 10/09/2020
+  ms.locfileid: "91856990"
 highlightedContent:
   items:
   - title: Wat is de Speech-service?
@@ -88,34 +88,6 @@ conceptualContent:
     footerLink:
       text: Meer
       url: index-intent-recognition.yml
-  - title: Gespreksscenario's
-    links:
-    - itemType: overview
-      text: Over gesprektranscriptie (vergaderingen)
-      url: conversation-transcription.md
-    - itemType: overview
-      text: Over gesprekken via meerdere apparaten (vergaderingen)
-      url: multi-device-conversation.md
-    - itemType: how-to-guide
-      text: Callcentertranscriptie
-      url: call-center-transcription.md
-    footerLink:
-      text: Meer
-      url: index-conversation-scenarios.yml
-  - title: Spraakassistenten
-    links:
-    - itemType: overview
-      text: Over spraakassistenten
-      url: voice-assistants.md
-    - itemType: quickstart
-      text: Een spraakassistent maken met aangepaste opdrachten
-      url: custom-commands.md
-    - itemType: get-started
-      text: Een spraakassistent maken met het Bot Framework
-      url: direct-line-speech.md
-    footerLink:
-      text: Meer
-      url: index-voice-assistants.yml
   - title: Speaker Recognition
     links:
     - itemType: overview
@@ -135,6 +107,26 @@ conceptualContent:
     - itemType: quickstart
       text: Aan de slag met Aangepast sleutelwoord
       url: custom-keyword-basics.md
+  - title: Uitgebreide scenario's
+    links:
+    - itemType: overview
+      text: Over gesprektranscriptie (vergaderingen)
+      url: conversation-transcription.md
+    - itemType: overview
+      text: Over gesprekken via meerdere apparaten (vergaderingen)
+      url: multi-device-conversation.md
+    - itemType: overview
+      text: Over spraakassistenten
+      url: voice-assistants.md
+    - itemType: quickstart
+      text: Een spraakassistent maken met aangepaste opdrachten
+      url: custom-commands.md
+    - itemType: quickstart
+      text: Een spraakassistent maken met het Bot Framework
+      url: direct-line-speech.md
+    - itemType: how-to-guide
+      text: Callcentertranscriptie inschakelen
+      url: call-center-transcription.md
   - title: Hulpprogramma's
     links:
     - itemType: overview

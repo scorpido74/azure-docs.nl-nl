@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
 ms.openlocfilehash: 4eb689b17df8236a00b5914912d1927804944f25
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87081199"
 ---
 # <a name="how-to-discover-data-sources-in-azure-data-catalog"></a>Gegevens bronnen in Azure Data Catalog ontdekken
@@ -37,7 +37,7 @@ Hoewel de standaard zoek functie voor vrije tekst eenvoudig en intuïtief is, ku
 | --- | --- | --- |
 | Eenvoudige zoek opdracht |Basis zoekopdracht die gebruikmaakt van een of meer zoek termen. Resultaten zijn alle assets die overeenkomen met een eigenschap met een of meer van de opgegeven voor waarden. |`sales data` |
 | Bereik van eigenschap |Alleen gegevens bronnen retour neren waarbij de zoek term overeenkomt met de opgegeven eigenschap. |`name:finance` |
-| Booleaanse operators |Een zoek opdracht uitbreiden of beperken met behulp van Boole-bewerkingen. |`finance NOT corporate` |
+| Booleaanse operatoren |Een zoek opdracht uitbreiden of beperken met behulp van Boole-bewerkingen. |`finance NOT corporate` |
 | Groeperen met haakjes |Gebruik haakjes om delen van de query te groeperen voor logische isolatie, met name in combi natie met Booleaanse Opera tors. |`name:finance AND (tags:Q1 OR tags:Q2)` |
 | Vergelijkingsoperators |Gebruik andere vergelijkingen dan gelijkheid voor eigenschappen die de gegevens typen numeriek en datum hebben. |`modifiedTime > "11/05/2014"` |
 

@@ -8,10 +8,10 @@ ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 1eb24871817f365efe58b8e687563727df74493c
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89400973"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Azure-beveiligings basislijn voor batch
@@ -366,7 +366,7 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 **Verantwoordelijkheid**: klant
 
-### <a name="34-utilize-single-sign-on-sso-with-azure-active-directory"></a>3,4: eenmalige aanmelding (SSO) met Azure Active Directory gebruiken
+### <a name="34-utilize-single-sign-on-sso-with-azure-active-directory"></a>3,4: eenmalige Sign-On (SSO) gebruiken met Azure Active Directory
 
 **Richt lijnen**: niet van toepassing, terwijl Azure batch Azure AD-verificatie ondersteunt, wordt eenmalige aanmelding niet ondersteund.
 
@@ -508,7 +508,7 @@ Lijst met door Klanten-lockbox ondersteunde services: https://docs.microsoft.com
 
 **Verantwoordelijkheid**: klant
 
-## <a name="data-protection"></a>Gegevensbeveiliging
+## <a name="data-protection"></a>Gegevensbescherming
 
 *Zie [beveiligings beheer: gegevens beveiliging](../security/benchmarks/security-control-data-protection.md)voor meer informatie.*
 
@@ -1135,7 +1135,7 @@ https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyva
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: zorg voor de bescherming van back-ups en door de klant beheerde sleutels
 
-**Richt lijnen**: als Azure Key Vault wordt gebruikt om sleutels te bewaren die betrekking hebben op Azure batch pool-opslag accounts, schakelt u zacht verwijderen in azure Key Vault in om sleutels te beschermen tegen onbedoelde of schadelijke verwijdering.
+**Richt lijnen**: als Azure Key Vault wordt gebruikt om sleutels te bewaren die betrekking hebben op Azure batch pool-opslag accounts, schakelt u Soft-Delete in azure Key Vault in om sleutels te beschermen tegen onbedoelde of schadelijke verwijdering.
 
 Het inschakelen van zacht verwijderen in Azure Key Vault:
 

@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
 ms.openlocfilehash: f3b84ba1c3571e3660d1d71a0167a7489c6ec4ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82145131"
 ---
 # <a name="integrate-cloud-foundry-with-azure"></a>Cloud Foundry integreren met Azure
@@ -40,7 +40,7 @@ De Azure-beschikbaarheids zone behaalt HA door een set Vm's in twee of meer data
 ## <a name="2-network-routing"></a>2. netwerk routering
 Standaard wordt Azure Basic load balancer gebruikt voor binnenkomende CF API/apps-aanvragen, door ze door te sturen naar de Gorouters. CF-onderdelen, zoals Diego hersenen, MySQL, ERT kunnen ook gebruikmaken van de load balancer om het verkeer voor HA te verdelen. Azure biedt ook een set volledig beheerde oplossingen voor taak verdeling. Als u op zoek bent naar TLS/SSL-beëindiging ("SSL-offload") of per HTTP/HTTPS-aanvraag verwerking, kunt u Application Gateway. Voor hoge Beschik baarheid en schaal baarheid taak verdeling op laag 4, kunt u het beste de standaard load balancer.
 ### <a name="azure-application-gateway-"></a>Azure-toepassing gateway *
-[Azure-toepassing gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) biedt verschillende mogelijkheden voor de taak verdeling van laag 7, zoals SSL-offloading, end-to-end TLS, Web Application firewall, sessie affiniteit op basis van cookies en meer. U kunt [Application Gateway configureren in Open Source Cloud Foundry](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/application-gateway). Voor PCF raadpleegt u de [release opmerkingen voor PCF 2,1](https://docs.pivotal.io/pivotalcf/2-1/pcf-release-notes/opsmanager-rn.html#azure-application-gateway) voor haalbaarheids test.
+[Azure-toepassing gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) biedt verschillende mogelijkheden voor de taak verdeling van laag 7, zoals SSL-offloading, end-to-end TLS, Web Application firewall, sessie affiniteit op basis van cookies en meer. U kunt [Application Gateway configureren in Open Source Cloud Foundry](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/application-gateway). Voor PCF raadpleegt u de  [release opmerkingen voor PCF 2,1](https://docs.pivotal.io/pivotalcf/2-1/pcf-release-notes/opsmanager-rn.html#azure-application-gateway) voor haalbaarheids test.
 
 ### <a name="azure-standard-load-balancer-"></a>Azure Standard Load Balancer *
 Azure Load Balancer is een laag 4-load balancer. Het wordt gebruikt om het verkeer te verdelen over instanties van services in een set met gelijke taak verdeling. De standaard versie biedt [geavanceerde functies](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) boven op de basis versie. Bijvoorbeeld 1. De maximum limiet voor de back-end-groep is verhoogd van 100 naar 1000 Vm's.  2. De eind punten ondersteunen nu meerdere beschikbaarheids sets in plaats van één beschikbaarheidsset.  3. Extra functies, zoals HA-poorten, uitgebreide bewakings gegevens, enzovoort. Als u overstapt naar de beschikbaarheids zone van Azure, is standaard load balancer vereist. Voor een nieuwe implementatie raden we u aan om te beginnen met Azure Standard Load Balancer. 

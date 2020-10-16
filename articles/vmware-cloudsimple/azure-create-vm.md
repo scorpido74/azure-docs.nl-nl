@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: ee3029de9826aee17dc76d0e69f08b3c1068423b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85847160"
 ---
 # <a name="create-a-virtual-machine-in-azure-using-vm-templates-on-the-vmware-infrastructure"></a>Een virtuele machine maken in azure met behulp van VM-sjablonen op de VMware-infra structuur
@@ -25,7 +25,7 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 ## <a name="create-cloudsimple-virtual-machine"></a>Een virtuele CloudSimple-machine maken
 
-1. Selecteer **alle services**.
+1. Selecteer **Alle services**.
 
 2. Zoek naar **CloudSimple-virtual machines**.
 
@@ -43,7 +43,7 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com).
     | Veld | Beschrijving |
     | ------------ | ------------- |
     | Abonnement | Het Azure-abonnement dat is gekoppeld aan uw Privécloud.  |
-    | Resourcegroep | De resource groep waaraan de virtuele machine wordt toegewezen. U kunt een bestaande groep selecteren of een nieuwe maken. |
+    | Resource Group | De resource groep waaraan de virtuele machine wordt toegewezen. U kunt een bestaande groep selecteren of een nieuwe maken. |
     | Name | Naam voor het identificeren van de virtuele machine.  |
     | Locatie | De Azure-regio waarin deze VM wordt gehost.  |
     | Privécloud | CloudSimple de Privécloud waar u de virtuele machine wilt maken. |
@@ -64,7 +64,7 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
     | Beheer | Beschrijving |
     | ------------ | ------------- |
-    | Naam | Voer een naam in om de interface te identificeren.  |
+    | Name | Voer een naam in om de interface te identificeren.  |
     | Netwerk | Selecteer in de lijst met geconfigureerde gedistribueerde poort groep in uw Privécloud vSphere.  |
     | Adapter | Selecteer een vSphere-adapter in de lijst met beschik bare typen die voor de virtuele machine zijn geconfigureerd. Zie het artikel over VMware Knowledge Base voor meer informatie. [Kies een netwerk adapter voor de virtuele machine](https://kb.vmware.com/s/article/1001805). |
     | Inschakelen bij opstarten | Kies of u de NIC-hardware wilt inschakelen wanneer de virtuele machine wordt opgestart. De standaard instelling is **ingeschakeld**. |
@@ -73,7 +73,7 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
     | Item | Beschrijving |
     | ------------ | ------------- |
-    | Naam | Voer een naam in om de schijf aan te duiden.  |
+    | Name | Voer een naam in om de schijf aan te duiden.  |
     | Grootte | Selecteer een van de beschik bare grootten.  |
     | SCSI-controller | Selecteer een SCSI-controller voor de schijf.  |
     | Modus | Hiermee wordt bepaald hoe de schijf deel uitmaakt van moment opnamen. Kies een van de volgende opties: <br> -Onafhankelijk permanent: alle gegevens die naar de schijf worden geschreven, worden permanent geschreven.<br> -Onafhankelijk niet-persistent: wijzigingen die naar de schijf worden geschreven, worden genegeerd wanneer u de virtuele machine uitschakelt of opnieuw instelt.  Met een onafhankelijke, niet-permanente modus kunt u de virtuele machine in dezelfde staat altijd opnieuw opstarten. Raadpleeg de [VMware-documentatie](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html)voor meer informatie.
@@ -84,7 +84,7 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 ## <a name="view-list-of-cloudsimple-virtual-machines"></a>Een lijst met virtuele CloudSimple-machines weer geven
 
-1. Selecteer **alle services**.
+1. Selecteer **Alle services**.
 
 2. Zoek naar **CloudSimple-virtual machines**.
 

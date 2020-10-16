@@ -9,12 +9,12 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
 ms.custom: references_regions
-ms.openlocfilehash: 3f74c593cd44470efd231578fddcf53715a3979a
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 3a5d0ba92ab976f9ea3aa2722f92865f06d5a70e
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91575092"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045037"
 ---
 # <a name="what-is-iot-plug-and-play"></a>Wat is IoT Plug en Play?
 
@@ -26,7 +26,7 @@ Met IoT Plug en Play kunnen ontwikkelaars slimme apparaten in hun oplossingen in
 
 U kunt deze elementen groeperen in interfaces om de elementen opnieuw te gebruiken in verschillende modellen waardoor samenwerking eenvoudiger wordt en ontwikkeling sneller verloopt.
 
-Als u IoT Plug en Play wilt gebruiken met [Azure Digital Twins](../digital-twins/about-digital-twins.md), definieert u modellen en interfaces met behulp van [Digital Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl). IoT Plug en Play en DTDL zijn beschikbaar voor de community en Microsoft verwelkomt de samenwerking met klanten, partners en de branche. Beide zijn gebaseerd op open W3C-standaarden, zoals JSON-LD en RDF, de voorzien in vereenvoudiging van ingebruikname in verschillende services en hulpprogramma's.
+Als u IoT Plug en Play wilt gebruiken met [Azure Digital Twins](../digital-twins/overview.md), definieert u modellen en interfaces met behulp van [Digital Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl). IoT Plug en Play en DTDL zijn beschikbaar voor de community en Microsoft verwelkomt de samenwerking met klanten, partners en de branche. Beide zijn gebaseerd op open W3C-standaarden, zoals JSON-LD en RDF, de voorzien in vereenvoudiging van ingebruikname in verschillende services en hulpprogramma's.
 
 Er zijn geen extra kosten verbonden aan het gebruik van IoT Plug en Play en DTDL. De standaardtarieven voor [Azure IoT Hub](../iot-hub/about-iot-hub.md) en andere Azure-services blijven gelijk.
 
@@ -68,14 +68,9 @@ Als apparaatontwikkelaar kunt u een IoT-hardwareproduct ontwikkelen dat onderste
 
 Het [programma voor IoT Plug and Play-apparaatcertificering](howto-certify-device.md) verifieert dat een apparaat voldoet aan de IoT Plug and Play-certificeringsvereisten. U kunt een gecertificeerd apparaat toevoegen aan de openbare [catalogus Gecertificeerd voor Azure IoT-apparaten](https://aka.ms/devicecatalog).
 
-## <a name="regional-availability"></a>Regionale beschikbaarheid
-
-Deze vernieuwde IoT Plug en Play is momenteel beschikbaar in IoT-hubs die zijn gemaakt in de regio's VS - centraal, Europa - noord en Japan - oost.
-
 ## <a name="next-steps"></a>Volgende stappen
 
 Nu u een overzicht van IoT Plug en Play hebt gekregen, is de voorgestelde volgende stap het uitproberen van een van de quickstart:
 
 - [Een apparaat verbinden met IoT Hub (C)](./quickstart-connect-device-c.md)
 - [Interactie met een apparaat vanuit uw oplossing (Node.js)](./quickstart-service-node.md)
-

@@ -4,10 +4,10 @@ description: Hierin wordt beschreven hoe u back-ups van versleutelde virtuele Az
 ms.topic: conceptual
 ms.date: 08/18/2020
 ms.openlocfilehash: 6ce0068203c91d9d2031ce2f8735cccf94172dd8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89014911"
 ---
 # <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>Back-up en herstel van versleutelde virtuele Azure-machines

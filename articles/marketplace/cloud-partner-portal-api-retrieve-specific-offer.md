@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
 ms.openlocfilehash: 9f3ba6b2f13b9f2bb1d538db84723e3a9baaef12
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87271838"
 ---
 # <a name="retrieve-a-specific-offer"></a>Een specifieke aanbieding ophalen
@@ -42,11 +42,11 @@ U kunt ook een bepaalde versie van de aanbieding ophalen of de aanbieding in con
 | publisherId | publisherId. Bijvoorbeeld contoso                                                        | Tekenreeks        |
 | offerId     | De GUID die de aanbieding uniek identificeert.                                                 | Tekenreeks        |
 | versie     | De versie van de aanbieding die wordt opgehaald. Standaard wordt de meest recente versie van de aanbieding opgehaald. | Geheel getal       |
-| slotId      | De sleuf van waaruit de aanbieding wordt opgehaald, kan een van de volgende zijn:      <br/>  - `Draft`(standaard) haalt de aanbiedings versie op die momenteel in concept wordt aangeboden.  <br/>  -  `Preview`haalt de aanbiedings versie op die momenteel in preview is.     <br/>  -  `Production`haalt de aanbiedings versie op die momenteel in productie is.          |      vaste |
+| slotId      | De sleuf van waaruit de aanbieding wordt opgehaald, kan een van de volgende zijn:      <br/>  - `Draft` (standaard) haalt de aanbiedings versie op die momenteel in concept wordt aangeboden.  <br/>  -  `Preview` haalt de aanbiedings versie op die momenteel in preview is.     <br/>  -  `Production` haalt de aanbiedings versie op die momenteel in productie is.          |      vaste |
 | api-versie | Nieuwste versie van API                                                                    | Date          |
 |  |  |  |
 
-## <a name="header"></a>Header
+## <a name="header"></a>Koptekst
 
 |  **Naam**          |   **Waarde**            |
 |  ---------------   |  --------------        |
@@ -56,7 +56,7 @@ U kunt ook een bepaalde versie van de aanbieding ophalen of de aanbieding in con
 
 ## <a name="body-example"></a>Voor beeld van tekst
 
-### <a name="response"></a>Reactie
+### <a name="response"></a>Antwoord
 
 ``` json
 {
@@ -186,10 +186,10 @@ U kunt ook een bepaalde versie van de aanbieding ophalen of de aanbieding in con
 
 | **Code**  | **Beschrijving**                                                                                                                 |
 |  ------   | ------------------------------------------------------------------------------------------------------------------------------- |
-|  200      | `OK`-De aanvraag is verwerkt en alle aanbiedingen onder de uitgever zijn geretourneerd naar de client.               |
-|  400      | `Bad/Malformed request`-De hoofd tekst van het fout bericht bevat mogelijk meer informatie.                                                 |
-|  403      | `Forbidden`-De client heeft geen toegang tot de opgegeven naam ruimte.                                                        |
-|  404      | `Not found`-De opgegeven entiteit bestaat niet. De client moet de publisherId, offerId en versie controleren (indien opgegeven).      |
+|  200      | `OK` -De aanvraag is verwerkt en alle aanbiedingen onder de uitgever zijn geretourneerd naar de client.               |
+|  400      | `Bad/Malformed request` -De hoofd tekst van het fout bericht bevat mogelijk meer informatie.                                                 |
+|  403      | `Forbidden` -De client heeft geen toegang tot de opgegeven naam ruimte.                                                        |
+|  404      | `Not found` -De opgegeven entiteit bestaat niet. De client moet de publisherId, offerId en versie controleren (indien opgegeven).      |
 |  |  |
 
 ### <a name="offer-status"></a>Status van aanbieding
@@ -199,7 +199,7 @@ U kunt ook een bepaalde versie van de aanbieding ophalen of de aanbieding in con
 |  NeverPublished             | De aanbieding is nooit gepubliceerd.               |
 |  NotStarted                 | De aanbieding is nieuw, maar is niet gestart.              |
 |  WaitingForPublisherReview  | Aanbieding wacht op goed keuring van de uitgever.      |
-|  In uitvoering                    | Verzen ding van aanbieding wordt verwerkt.          |
+|  Wordt uitgevoerd                    | Verzen ding van aanbieding wordt verwerkt.          |
 |  Geslaagd                  | Het verzenden van aanbiedingen is voltooid.    |
 |  Geannuleerd                   | Het verzenden van het aanbod is geannuleerd.                |
 |  Mislukt                     | Kan de aanbieding niet verzenden.                      |

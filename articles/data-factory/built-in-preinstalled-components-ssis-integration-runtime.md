@@ -12,12 +12,12 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 05/14/2020
-ms.openlocfilehash: 0c3fa3e61f3e35bcd29e923b87ddf68f0860486e
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 17831f06d4176ae6666bbc7b05a11ee689b842fc
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89483130"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096688"
 ---
 # <a name="built-in-and-preinstalled-components-on-azure-ssis-integration-runtime"></a>Ingebouwde en vooraf geïnstalleerde onderdelen op Azure-SSIS Integration Runtime
 
@@ -29,7 +29,7 @@ In dit artikel vindt u een lijst met alle ingebouwde en vooraf geïnstalleerde o
 
 | Type | Naam-versie-platform |
 |------|---------------------------|
-| **Ingebouwde clients/Stuur Programma's/providers** | *Access Data Base Engine 2016 Redistributable* -RTM-x64<br/><br/>*Micro soft Analysis Management Objects* -15.0.1000.81-x64<br/><br/>*Micro soft ANALYSIS Services OLEDB-provider* -15.0.1000.81-x64<br/><br/>*Micro soft ODBC-stuur programma 13 voor SQL Server* -14.0.900.902-x64<br/><br/>*Micro soft OLEDB driver 18 voor SQL Server* -18.1.0.0-x64<br/><br/>*Micro soft OLEDB-provider voor DB2* -6,0-x64<br/><br/>*Share point online-client onderdelen SDK* -15.4711.1001-x64 |
+| **Ingebouwde clients/Stuur Programma's/providers** | *Access Data Base Engine 2016 Redistributable* -RTM-x64<br/><br/>*Micro soft Analysis Management Objects* -15.0.1000.81-x64<br/><br/>*Micro soft ANALYSIS Services OLEDB-provider* -15.0.1000.81-x64<br/><br/>*Microsoft SQL Server 2012 systeem eigen client* -11.4.7462.6-x64<br/><br/>*Micro soft ODBC-stuur programma 13 voor SQL Server* -14.0.900.902-x64<br/><br/>*Micro soft OLEDB driver 18 voor SQL Server* -18.1.0.0-x64<br/><br/>*Micro soft OLEDB-provider voor DB2* -6,0-x64<br/><br/>*Share point online-client onderdelen SDK* -15.4711.1001-x64 |
 
 ## <a name="built-in-and-preinstalled-connection-managers-on-azure-ssis-ir"></a>Ingebouwde en vooraf geïnstalleerde verbindings beheer op Azure-SSIS IR
 

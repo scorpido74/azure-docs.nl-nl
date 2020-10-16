@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: b72c20cd67aa4792b5e2a2f96dc39e78301c9219
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 5e422b5292f77150e2755cb5963e2cd95d148654
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91543275"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939100"
 ---
 # <a name="machine-learning-capabilities-in-azure-synapse-analytics-workspaces-preview"></a>Machine Learning-mogelijkheden in Azure Synapse Analytics (preview van werkruimten)
 
@@ -66,7 +66,7 @@ In aanvulling op MLlib kunnen populaire bibliotheken, zoals [Scikit](https://sci
 
 #### <a name="train-models-with-azure-machine-learning-automl"></a>Modellen trainen met Azure Machine Learning AutoML
 
-Een andere manier om machine learning-modellen te trainen, waarvoor niet veel voorafgaande kennis van machine learning nodig is, is het gebruik van AutoML. [AutoML](/azure/machine-learning/concept-automated-mls) is een functie die automatisch een set machine learning-modellen traint en de gebruiker in staat stelt om het beste model te selecteren op basis van specifieke metrische gegevens. Dankzij een naadloze integratie met Azure Machine Learning van Azure Synapse-notebooks kunnen gebruikers eenvoudig gebruikmaken van AutoML in Synapse met Azure Active Directory-verificatie.  Dit betekent dat u alleen naar uw Azure Machine Learning-werkruimte hoeft te verwijzen en geen referenties moet invoeren. Hier vindt u een [zelfstudie voor AutoML](../spark/apache-spark-azure-machine-learning-tutorial.md) die beschrijft hoe u modellen traint met behulp van Azure Machine Learning AutoML op Synapse Spark-pools.
+Een andere manier om machine learning-modellen te trainen, waarvoor niet veel voorafgaande kennis van machine learning nodig is, is het gebruik van AutoML. [AutoML](/azure/machine-learning/concept-automated-ml) is een functie die automatisch een set machine learning-modellen traint en de gebruiker in staat stelt om het beste model te selecteren op basis van specifieke metrische gegevens. Dankzij een naadloze integratie met Azure Machine Learning van Azure Synapse-notebooks kunnen gebruikers eenvoudig gebruikmaken van AutoML in Synapse met Azure Active Directory-verificatie.  Dit betekent dat u alleen naar uw Azure Machine Learning-werkruimte hoeft te verwijzen en geen referenties moet invoeren. Hier vindt u een [zelfstudie voor AutoML](../spark/apache-spark-azure-machine-learning-tutorial.md) die beschrijft hoe u modellen traint met behulp van Azure Machine Learning AutoML op Synapse Spark-pools.
 
 ### <a name="model-deployment-and-scoring"></a>Modelimplementatie en -score
 

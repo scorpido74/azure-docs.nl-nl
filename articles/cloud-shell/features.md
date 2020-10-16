@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/26/2019
 ms.author: damaerte
 ms.openlocfilehash: a052364b06ac1b9b30cef76db10a79e8ed85b9a3
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89470150"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Functies &-hulpprogram ma's voor Azure Cloud Shell
@@ -55,13 +55,13 @@ Wijzigingen die zijn aangebracht in de Azure-resources, direct in Azure Portal o
 
 Power shell in Cloud Shell bevat een persoonlijke build van de module Exchange Online.  Voer uit `Connect-EXOPSSession` om uw Exchange-cmdlets op te halen.
 
-![Scherm afbeelding van een Azure Cloud Shell het uitvoeren van de opdrachten Connect-EXOPSSession en Get-User.](media/features-powershell/exchangeonline.png)
+![Scherm afbeelding van een Azure Cloud Shell het uitvoeren van de opdrachten Connect-EXOPSSession en Get-gebruiker.](media/features-powershell/exchangeonline.png)
 
- Voer `Get-Command -Module tmp_*` uit.
+ `Get-Command -Module tmp_*` uitvoeren
 > [!NOTE]
 > De module naam moet beginnen met `tmp_` , als u modules met hetzelfde voor voegsel hebt geïnstalleerd, worden de bijbehorende cmdlets ook weer gegeven. 
 
-![Scherm opname van een Azure Cloud Shell het uitvoeren van de opdracht Get-Command-module tmp_ *.](media/features-powershell/exchangeonlinecmdlets.png)
+![Scherm opname van een Azure Cloud Shell met de opdracht Get-Command-module tmp_ *.](media/features-powershell/exchangeonlinecmdlets.png)
 
 ### <a name="deep-integration-with-open-source-tooling"></a>Diep gaande integratie met open source-hulp programma
 
@@ -77,7 +77,7 @@ Cloud Shell bevat vooraf geconfigureerde authenticatie voor open source-hulpprog
 |Broncodebeheer         |git                    |
 |Hulpprogramma's om te bouwen            |make<br> maven<br> npm<br> gooien         |
 |Containers             |[Docker Machine](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [DC/OS CLI](https://github.com/dcos/dcos-cli)         |
-|Databases              |MySQL-client<br> PostgreSql-client<br> [Sqlcmd-hulp programma](/sql/tools/sqlcmd-utility)<br> [MSSQL-scripter](https://github.com/Microsoft/sql-xplat-cli) |
+|Databases              |MySQL-client<br> PostgreSql-client<br> [Hulpprogramma sqlcmd](/sql/tools/sqlcmd-utility)<br> [MSSQL-scripter](https://github.com/Microsoft/sql-xplat-cli) |
 |Anders                  |iPython-client<br> [Cloud Foundry CLI](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible](https://www.ansible.com/microsoft-azure)<br> [Chef-specificatie](https://www.chef.io/inspec/)<br> [Puppet-flits](https://puppet.com/docs/bolt/latest/bolt.html)<br> [HashiCorp Packer](https://www.packer.io/)<br> [Office 365 CLI](https://pnp.github.io/office365-cli/)|
 
 ## <a name="language-support"></a>Taalondersteuning
@@ -85,7 +85,7 @@ Cloud Shell bevat vooraf geconfigureerde authenticatie voor open source-hulpprog
 |Taal   |Versie   |
 |---|---|
 |.NET Core  |[3.1.302](https://github.com/dotnet/core/blob/master/release-notes/3.1/3.1.6/3.1.302-download.md)       |
-|Aan de slag         |1,9        |
+|Go         |1,9        |
 |Java       |1.8        |
 |Node.js    |8.16.0      |
 |PowerShell |[7.0.0](https://github.com/PowerShell/powershell/releases)       |

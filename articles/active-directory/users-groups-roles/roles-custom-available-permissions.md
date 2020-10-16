@@ -14,10 +14,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 624489033097c0da4d85488b7ae376c5e0f3a56b
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90967688"
 ---
 # <a name="application-registration-permissions-for-custom-roles-in-azure-active-directory"></a>Machtigingen voor toepassings registratie voor aangepaste rollen in Azure Active Directory
@@ -111,13 +111,13 @@ De mogelijkheid om de ondersteunde account type-eigenschap (signInAudience) bij 
 
 Hiermee worden dezelfde machtigingen verleend als voor micro soft. Directory/toepassingen/publiek/update, maar alleen voor toepassingen met één Tenant.
 
-#### <a name="microsoftdirectoryapplicationsauthenticationupdate"></a>micro soft. Directory/toepassingen/verificatie/bijwerken
+#### <a name="microsoftdirectoryapplicationsauthenticationupdate"></a>microsoft.directory/applications/authentication/update
 
 De mogelijkheid om de eigenschappen van de antwoord-URL, afmeldings-URL, impliciete stroom en uitgevers domein bij te werken in toepassingen met één Tenant en multi tenant. Verleent toegang tot alle velden op de pagina verificatie van toepassings registratie, met uitzonde ring van ondersteunde account typen:
 
 ![Hiermee wordt toegang verleend tot de authenticatie van de app-registratie, maar niet-ondersteunde account typen](./media/roles-custom-available-permissions/supported-account-types.png)
 
-#### <a name="microsoftdirectoryapplicationsmyorganizationauthenticationupdate"></a>micro soft. Directory/Applications. myOrganization/Authentication/update
+#### <a name="microsoftdirectoryapplicationsmyorganizationauthenticationupdate"></a>microsoft.directory/applications.myOrganization/authentication/update
 
 Hiermee worden dezelfde machtigingen verleend als voor micro soft. Directory/toepassingen/verificatie/update, maar alleen voor toepassingen met één Tenant.
 
@@ -131,7 +131,7 @@ De mogelijkheid om de naam, het logo, de URL van de Home page, de URL van de ser
 
 Verleent dezelfde machtigingen als micro soft. Directory/Applications/Basic/update, maar alleen voor toepassingen met één Tenant.
 
-#### <a name="microsoftdirectoryapplicationscredentialsupdate"></a>micro soft. Directory/toepassingen/referenties/bijwerken
+#### <a name="microsoftdirectoryapplicationscredentialsupdate"></a>microsoft.directory/applications/credentials/update
 
 De mogelijkheid om de certificaten en eigenschappen van client geheimen bij te werken in toepassingen met één Tenant en multi tenant. Verleent toegang tot alle velden op de pagina certificaten voor toepassings registratie & geheimen:
 
@@ -159,7 +159,7 @@ De mogelijkheid om de gedelegeerde machtigingen, toepassings machtigingen, geaut
 
 ![Deze machtigingen geven toegang tot de app-registratie een API-pagina weer](./media/roles-custom-available-permissions/app-registration-expose-api.png)
 
-#### <a name="microsoftdirectoryapplicationsmyorganizationpermissionsupdate"></a>micro soft. Directory/Applications. myOrganization/permissions/update
+#### <a name="microsoftdirectoryapplicationsmyorganizationpermissionsupdate"></a>microsoft.directory/applications.myOrganization/permissions/update
 
 Verleent dezelfde machtigingen als micro soft. Directory/Applications/permissions/update, maar alleen voor toepassingen met één Tenant.
 

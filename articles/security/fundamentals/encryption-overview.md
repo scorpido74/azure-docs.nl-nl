@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 07/20/2020
 ms.author: mbaldwin
 ms.openlocfilehash: d839ea042dec2224885f9ba4a0cb6adef5108568
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89458617"
 ---
 # <a name="azure-encryption-overview"></a>Overzicht van Azure-versleuteling
@@ -30,7 +30,7 @@ Zie [Azure Data Encryption-at-rest](encryption-atrest.md)voor meer informatie ov
 
 ## <a name="azure-encryption-models"></a>Azure-versleutelings modellen
 
-Azure biedt ondersteuning voor verschillende versleutelings modellen, waaronder versleuteling aan de server zijde die gebruikmaakt van door de klant beheerde sleutels, door de gebruiker door de beheerder in Key Vault of door de klant beheerde sleutels. Met versleuteling aan de client zijde kunt u sleutels on-premises of op een andere veilige locatie beheren en opslaan.
+Azure biedt ondersteuning voor verschillende versleutelings modellen, waaronder versleuteling aan de server zijde die gebruikmaakt van door de klant beheerde sleutels, door de gebruiker door de beheerder in Key Vault of door de klant beheerde sleutels. Met versleuteling aan clientzijde kunt u sleutels on-premises of op een andere veilige locatie beheren en opslaan.
 
 ### <a name="client-side-encryption"></a>Clientversleuteling
 
@@ -197,7 +197,7 @@ Zie [versleuteling van gegevens in data Lake Store](../../data-lake-store/data-l
 
 Zonder de juiste bescherming en het beheer van de sleutels, wordt de versleuteling onbruikbaar. Key Vault is de door micro soft aanbevolen oplossing voor het beheren en beheren van de toegang tot de versleutelings sleutels die worden gebruikt door Cloud Services. Machtigingen voor toegangs sleutels kunnen worden toegewezen aan services of aan gebruikers via Azure Active Directory accounts.
 
-Key Vault zijn organisaties ontheven van de nood zaak om Hardware Security modules (Hsm's) en sleutel beheer software te configureren, patchen en onderhouden. Wanneer u Key Vault gebruikt, behoudt u de controle. Micro soft bewaart nooit uw sleutels en toepassingen hebben geen directe toegang. U kunt ook sleutels importeren of genereren in Hsm's.
+Met Key Vault hoeven organisaties hardwarebeveiligingsmodules (Hardware Security Modules of HSM's) en sleutelbeheersoftware niet zelf te configureren, te onderhouden en hiervoor patches toe te passen. Wanneer u Key Vault gebruikt, behoudt u de controle. Micro soft bewaart nooit uw sleutels en toepassingen hebben geen directe toegang. U kunt ook sleutels importeren of genereren in Hsm's.
 
 ## <a name="next-steps"></a>Volgende stappen
 

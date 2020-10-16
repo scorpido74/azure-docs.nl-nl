@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 05/28/2019
 ms.openlocfilehash: 094b78fa35da451101f4f5664cca46292d78d146
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88650550"
 ---
 # <a name="regions-for-virtual-machines-in-azure"></a>Regio's voor virtuele machines in Azure
@@ -85,10 +85,10 @@ Meer informatie over [Azure Storage-replicatieopties vindt u hier](../storage/co
 De kosten zijn afhankelijk van het opslagtype en de beschikbaarheid die u selecteert.
 
 **Azure Managed Disks**
-* Premium-Managed Disks worden ondersteund door Ssd's (Solid-state drives) en standaard Managed Disks worden ondersteund door normale draaiende schijven. Voor zowel Premium als Standard Managed Disks worden kosten in rekening gebracht op basis van de ingerichte capaciteit van de schijf.
+* Premium-Managed Disks worden ondersteund door Solid-State drives (Ssd's) en standaard Managed Disks worden ondersteund door normale draaiende schijven. Voor zowel Premium als Standard Managed Disks worden kosten in rekening gebracht op basis van de ingerichte capaciteit van de schijf.
 
 **Niet-beheerde schijven**
-* Premium Storage wordt ondersteund door Ssd's (Solid-state drives) en wordt in rekening gebracht op basis van de capaciteit van de schijf.
+* Premium-opslag wordt ondersteund door Solid-State drives (Ssd's) en wordt in rekening gebracht op basis van de capaciteit van de schijf.
 * Standaard opslag wordt ondersteund door traditionele draaiende schijven en wordt in rekening gebracht op basis van de gebruikte capaciteit en de gewenste opslagbeschikbaarheid.
   * Voor RA-GRS wordt een toeslag in rekening gebracht voor de gegevensoverdracht voor geo-replicatie, voor de bandbreedtekosten van het repliceren van gegevens naar een andere Azure-regio.
 

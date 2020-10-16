@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: juergent
 ms.openlocfilehash: f2a62cb08fcce6597f02c080231f5e1808794054
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88509957"
 ---
 # <a name="installation-of-sap-hana-on-azure-virtual-machines"></a>Installatie van SAP HANA op virtuele machines van Azure
@@ -61,7 +61,7 @@ In deze fase moet u de stappen door lopen om HANA te installeren en uiteindelijk
 3. Pas de meest recente patches toe op het besturings systeem wanneer de virtuele machine is geïmplementeerd en geregistreerd. Geregistreerd bij uw eigen abonnement. Of als u een installatie kopie hebt gekozen die ondersteuning biedt voor het besturings systeem, moet de VM al toegang hebben tot de patches. 
 4. Pas de benodigde afstemmingen voor SAP HANA toe. Deze afstemmingen worden vermeld in deze SAP-ondersteunings opmerkingen:
 
-    - [SAP-ondersteunings Opmerking #2694118-Red Hat Enterprise Linux HA-invoeg toepassing in azure](https://launchpad.support.sap.com/#/notes/2694118)
+    - [SAP-ondersteuning: #2694118 Red Hat Enterprise Linux HA Add-On op Azure](https://launchpad.support.sap.com/#/notes/2694118)
     - [SAP-ondersteuning Opmerking #1984787-SUSE LINUX Enter prise Server 12: installatie notities](https://launchpad.support.sap.com/#/notes/1984787) 
     - [SAP-ondersteunings Opmerking #2578899-SUSE Linux Enterprise Server 15: installatie Opmerking](https://launchpad.support.sap.com/#/notes/2578899)
     - [SAP-ondersteunings Opmerking #2002167-Red Hat Enterprise Linux 7. x: installatie en upgrade](https://launchpad.support.sap.com/#/notes/0002002167)
@@ -72,7 +72,7 @@ In deze fase moet u de stappen door lopen om HANA te installeren en uiteindelijk
     -  [SAP-ondersteunings Opmerking #2382421-optimalisatie van de netwerk configuratie op HANA-en OS-niveau](https://launchpad.support.sap.com/#/notes/2382421)
 
 1. Selecteer het Azure-opslag type voor SAP HANA. In deze stap moet u beslissen over de opslag indeling voor de SAP HANA-installatie. U gaat gebruikmaken van gekoppelde Azure-schijven of de systeem eigen Azure NFS-shares. De Azure-opslag typen of ondersteunde en combi Naties van verschillende Azure-opslag typen die kunnen worden gebruikt, worden beschreven in [SAP Hana opslag configuraties van virtuele Azure-machines](./hana-vm-operations-storage.md). Volg de configuraties die worden beschreven als uitgangs punt. Voor niet-productie systemen kunt u mogelijk een lagere door Voer of IOPS configureren. Voor productie doeleinden moet u mogelijk een bit meer door Voer en IOPS configureren.
-2. Zorg ervoor dat u [Azure write Accelerator](../../how-to-enable-write-accelerator.md) hebt geconfigureerd voor uw volumes die de DBMS-transactie logboeken bevatten of meldt u opnieuw aan wanneer u virtuele machines uit de M-serie of Mv2-serie gebruikt. Houd rekening met de beperkingen voor Write Accelerator zoals beschreven.
+2. Zorg ervoor dat u [Azure write Accelerator](../../how-to-enable-write-accelerator.md) hebt geconfigureerd voor uw volumes die de DBMS-transactie logboeken bevatten of Logboeken opnieuw uitvoeren wanneer u met de M-serie of Mv2-Series-vm's werkt. Houd rekening met de beperkingen voor Write Accelerator zoals beschreven.
 2. Controleer of [Azure versneld netwerken](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) is ingeschakeld op de virtuele machine (s) die zijn geïmplementeerd.
 
 > [!NOTE]

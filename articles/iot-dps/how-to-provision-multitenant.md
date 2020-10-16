@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: bcdda8d1bd08a26dcdbec294be88fd4540670596
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90531420"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Inrichten voor multitenancy 
@@ -65,7 +65,7 @@ In deze sectie gebruikt u de Azure Cloud Shell om twee nieuwe regionale IoT-hubs
     az iot hub create --name contoso-east-hub --resource-group contoso-us-resource-group --location eastus --sku S1
     ```
     
-    Het kan enkele minuten duren voordat deze opdracht is voltooid.
+    Het volledig uitvoeren van de opdracht kan even duren.
 
 3. Gebruik de Azure Cloud Shell om een IoT-hub in de regio **westus** te maken met de opdracht [AZ IOT hub Create](/cli/azure/iot/hub#az-iot-hub-create) . Deze IoT-hub wordt ook toegevoegd aan de *groep contoso-US-Resource-Group*.
 
@@ -75,7 +75,7 @@ In deze sectie gebruikt u de Azure Cloud Shell om twee nieuwe regionale IoT-hubs
     az iot hub create --name contoso-west-hub --resource-group contoso-us-resource-group --location westus --sku S1
     ```
 
-    Het kan enkele minuten duren voordat deze opdracht is voltooid.
+    Het volledig uitvoeren van de opdracht kan even duren.
 
 
 
@@ -83,7 +83,7 @@ In deze sectie gebruikt u de Azure Cloud Shell om twee nieuwe regionale IoT-hubs
 
 In deze sectie maakt u een nieuwe registratie groep voor de Tenant apparaten.  
 
-Ter vereenvoudiging maakt dit artikel gebruik van [symmetrische sleutel attest](concepts-symmetric-key-attestation.md) met de inschrijving. Voor een veiligere oplossing kunt u het gebruik van [X. 509-certificaat attest](concepts-x509-attestation.md) met een vertrouwens keten gebruiken.
+Ter vereenvoudiging wordt in dit artikel bij de registratie gebruikgemaakt van een [verklaring met symmetrische sleutels](concepts-symmetric-key-attestation.md). Voor een veiligere oplossing kunt u gebruikmaken van de [verklaring met het X.509-certificaat](concepts-x509-attestation.md) met een vertrouwensketen.
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en open uw Device Provisioning service-exemplaar.
 
@@ -118,7 +118,7 @@ Ter vereenvoudiging maakt dit artikel gebruik van [symmetrische sleutel attest](
     ![De regionale hub-groep voor de inschrijving maken](./media/how-to-provision-multitenant/enrollment-regional-hub-group.png)
 
 
-6. Nadat u de inschrijving hebt opgeslagen, opent u deze opnieuw en noteert u de **primaire sleutel**. U moet de inschrijving eerst opslaan om de sleutels te genereren. Deze sleutel wordt gebruikt voor het later genereren van unieke apparaatinstellingen voor beide gesimuleerde apparaten.
+6. Nadat u de registratie hebt opgeslagen, opent u deze opnieuw en noteert u de **primaire sleutel**. U moet de registratie eerst opslaan voordat de sleutels kunnen worden gegenereerd. Deze sleutel wordt gebruikt voor het later genereren van unieke apparaatinstellingen voor beide gesimuleerde apparaten.
 
 
 ## <a name="create-regional-linux-vms"></a>Regionale Linux-Vm's maken
@@ -245,7 +245,7 @@ In deze sectie kloont u de Azure IoT C SDK op elke VM. De SDK bevat een voor bee
     ```    
 
 
-## <a name="derive-unique-device-keys"></a>Unieke Apparaatinstellingen afleiden
+## <a name="derive-unique-device-keys"></a>Unieke apparaatsleutels afleiden
 
 Wanneer u gebruikmaakt van symmetrische sleutel attest met groeps registraties, gebruikt u de sleutels van de registratie groep niet rechtstreeks. In plaats daarvan maakt u een unieke afgeleide sleutel voor elk apparaat dat wordt vermeld in [groeps registraties met symmetrische sleutels](concepts-symmetric-key-attestation.md#group-enrollments).
 
@@ -402,17 +402,17 @@ Met de voorbeeld code wordt een opstart volgorde voor apparaten gesimuleerd die 
 
 Als u van plan bent om verder te gaan met de resources die in dit artikel zijn gemaakt, kunt u ze blijven gebruiken. Als u niet van plan bent om door te gaan met het gebruik van de resource, gebruikt u de volgende stappen om alle resources te verwijderen die zijn gemaakt in dit artikel om onnodige kosten te voor komen.
 
-In de volgende stappen wordt ervan uitgegaan dat u alle resources in dit artikel hebt gemaakt, zoals u hebt opgegeven in dezelfde resource groep met de naam **Contoso-US-Resource-Group**.
+Bij de stappen die hier worden beschreven, wordt ervan uitgegaan dat u alle resources in dit artikel volgens de instructies hebt gemaakt in dezelfde resourcegroep met de naam **contoso-us-resource-group**.
 
 > [!IMPORTANT]
 > Het verwijderen van een resourcegroep kan niet ongedaan worden gemaakt. De resourcegroep en alle resources daarin worden permanent verwijderd. Zorg ervoor dat u niet per ongeluk de verkeerde resourcegroep of resources verwijdert. Als u de IoT Hub in een bestaande resourcegroep hebt gemaakt met resources die u wilt behouden, moet u alleen de IoT Hub-resource zelf verwijderen in plaats van de resourcegroep te verwijderen.
 >
 
-De resource groep op naam verwijderen:
+U verwijdert als volgt de resourcegroep op naam:
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com) en klik op **Resourcegroepen**.
 
-2. Typ in het tekstvak **filteren op naam...** de naam van de resource groep met uw resources, **Contoso-US-Resource-Group**. 
+2. Typ in het tekstvak **Filteren op naam...** de naam van de resourcegroep die uw resources bevat, **contoso-us-resource-group**. 
 
 3. Klik rechts van de resourcegroep in de lijst met resultaten op **...** en vervolgens op **Resourcegroep verwijderen**.
 

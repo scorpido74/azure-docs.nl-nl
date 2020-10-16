@@ -2,19 +2,19 @@
 title: Hero-voorbeeld van groepsgesprek
 titleSuffix: An Azure Communication Services sample overview
 description: Overzicht van hero-voorbeeld voor aanroepen waarin gebruik wordt gemaakt van Azure Communication Services om ontwikkelaars in staat te stellen meer te weten te komen over de interne mechanismen van het voorbeeld.
-author: ddematheu
+author: ddematheu2
 manager: nimag
 services: azure-communication-services
 ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 5aa168c8f280859112f3ab317ef83d32260cead4
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: d4c3c8e2f8470d187156f0dd98fab2bd74eb33bc
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91460591"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963105"
 ---
 # <a name="get-started-with-the-group-calling-hero-sample"></a>Aan de slag met het hero-voorbeeld voor groepsgesprekken
 
@@ -50,9 +50,9 @@ Zodra u uw weergavenaam en apparaten hebt geconfigureerd, kunt u deelnemen aan d
 
 Onderdelen van het hoofdgespreksscherm:
 
-- **Mediagalerie**: Het hoofdgebied waarin de deelnemers worden weergegeven. Als deelnemers hun camera hebben ingeschakeld, wordt hier hun videofeed weergegeven. Elke deelnemer beschikt over een afzonderlijke tegel waarop hun weergavenaam en videostream (indien beschikbaar) worden weergegeven
-- **Header**: Dit is het deel met de primaire besturingselementen voor het gesprek waarmee u tussen de instellingen en de zijbalk met deelnemers kunt wisselen, beeld en geluid kunt in- en uitschakelen, het scherm kunt delen en het gesprek kunt verlaten.
-- **Zijbalk**: Hier worden informatie over de deelnemers en de instellingen weergegeven wanneer u tussen de besturingselementen in de header wisselt. U kunt het onderdeel verwijderen door op X te klikken in de rechterbovenhoek. In de zijbalk met deelnemers ziet u een lijst met alle deelnemers en een koppeling om meer gebruikers voor het gesprek uit te nodigen. In de zijbalk met instellingen kunt u de microfoon- en camera-instellingen configureren.
+1. **Mediagalerie**: Het hoofdgebied waarin de deelnemers worden weergegeven. Als deelnemers hun camera hebben ingeschakeld, wordt hier hun videofeed weergegeven. Elke deelnemer beschikt over een afzonderlijke tegel waarop hun weergavenaam en videostream (indien beschikbaar) worden weergegeven
+2. **Header**: Dit is het deel met de primaire besturingselementen voor het gesprek waarmee u tussen de instellingen en de zijbalk met deelnemers kunt wisselen, beeld en geluid kunt in- en uitschakelen, het scherm kunt delen en het gesprek kunt verlaten.
+3. **Zijbalk**: Hier worden informatie over de deelnemers en de instellingen weergegeven wanneer u tussen de besturingselementen in de header wisselt. U kunt het onderdeel verwijderen door op X te klikken in de rechterbovenhoek. In de zijbalk met deelnemers ziet u een lijst met alle deelnemers en een koppeling om meer gebruikers voor het gesprek uit te nodigen. In de zijbalk met instellingen kunt u de microfoon- en camera-instellingen configureren.
 
 Hieronder vindt u meer informatie over de vereisten en stappen voor het instellen van het voorbeeld.
 
@@ -115,6 +115,6 @@ Raadpleeg voor meer informatie de volgende artikelen:
 
 - [Azure Communication GitHub](https://github.com/Azure/communication): u vindt meer voorbeelden en informatie op de officiële GitHub-pagina
 - [Redux](https://redux.js.org/): statusbeheer op de client
-- [FluentUI](https://developer.microsoft.com/fluentui#/): door Microsoft ondersteunde bibliotheek voor de gebruikersinterface
+- [FluentUI](https://aka.ms/fluent-ui): door Microsoft ondersteunde bibliotheek voor de gebruikersinterface
 - [React](https://reactjs.org/): bibliotheek voor het ontwikkelen van gebruikersinterfaces
 - [ASP.NET Core](https://docs.microsoft.com/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-3.1&preserve-view=true): een framework voor het bouwen van webtoepassingen

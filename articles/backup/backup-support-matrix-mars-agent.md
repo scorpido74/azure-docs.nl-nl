@@ -4,10 +4,10 @@ description: Dit artikel bevat een overzicht van Azure Backup ondersteuning bij 
 ms.date: 08/30/2019
 ms.topic: conceptual
 ms.openlocfilehash: b11a2e3ec2fdf3a46b324dcc0f95d4666a84c179
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91332675"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Ondersteunings matrix voor back-up met de Microsoft Azure Recovery Services-agent (MARS)
@@ -67,7 +67,7 @@ En naar deze IP-adressen:
 
 De toegang tot alle hierboven vermelde Url's en IP-adressen maakt gebruik van het HTTPS-protocol op poort 443.
 
-Bij het maken van back-ups van bestanden en mappen vanaf Azure Vm's met behulp van de MARS-agent moet het virtuele netwerk van Azure ook worden geconfigureerd om toegang toe te staan. Als u netwerkbeveiligingsgroepen (NSG's) gebruikt, gebruikt u de servicetag *AzureBackup* om uitgaande toegang tot Azure Backup toe te staan. Naast het Azure Backup-label moet u ook connectiviteit voor verificatie en gegevens overdracht toestaan door soort gelijke [NSG regels](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview#service-tags) te maken voor Azure AD (*AzureActiveDirectory*) en Azure Storage (*opslag*). In de volgende stappen wordt het proces voor het maken van een regel voor de Azure Backup-tag beschreven:
+Bij het maken van back-ups van bestanden en mappen vanaf Azure Vm's met behulp van de MARS-agent moet het virtuele netwerk van Azure ook worden geconfigureerd om toegang toe te staan. Als u netwerkbeveiligingsgroepen (NSG's) gebruikt, gebruikt u de servicetag *AzureBackup* om uitgaande toegang tot Azure Backup toe te staan. Naast de Azure Backup-tag moet u ook connectiviteit voor verificatie en gegevensoverdracht toestaan met behulp van [NSG-regels](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview#service-tags) voor Azure AD (*AzureActiveDirectory*) en Azure Storage (*Storage*). In de volgende stappen wordt het proces voor het maken van een regel voor de Azure Backup-tag beschreven:
 
 1. In **Alle services** gaat u naar **Netwerkbeveiligingsgroepen** en selecteert u de netwerkbeveiligingsgroep.
 2. Selecteer de optie **Uitgaande beveiligingsregels** onder **Instellingen**.
@@ -181,13 +181,13 @@ Decodeer<sup>*</sup>| Ondersteund.
 Gecomprimeerd | Ondersteund.
 Sparse | Ondersteund.
 Gecomprimeerd en verspreid |Ondersteund.
-Vaste koppelingen| Wordt niet ondersteund. Genegeerd.
-Reparsepunt| Wordt niet ondersteund. Genegeerd.
-Versleuteld en verspreid |Wordt niet ondersteund. Genegeerd.
-Gecomprimeerde stroom| Wordt niet ondersteund. Genegeerd.
-Sparse stream| Wordt niet ondersteund. Genegeerd.
-OneDrive (gesynchroniseerde bestanden zijn sparse-streams)| Wordt niet ondersteund.
-Mappen met DSF-replicatie ingeschakeld | Wordt niet ondersteund.
+Vaste koppelingen| Niet ondersteund. Genegeerd.
+Reparsepunt| Niet ondersteund. Genegeerd.
+Versleuteld en verspreid |Niet ondersteund. Genegeerd.
+Gecomprimeerde stroom| Niet ondersteund. Genegeerd.
+Sparse stream| Niet ondersteund. Genegeerd.
+OneDrive (gesynchroniseerde bestanden zijn sparse-streams)| Niet ondersteund.
+Mappen met DSF-replicatie ingeschakeld | Niet ondersteund.
 
 \* Zorg ervoor dat de MARS-agent toegang heeft tot de vereiste certificaten om toegang te krijgen tot de versleutelde bestanden. Niet-toegankelijke bestanden worden overgeslagen.
 

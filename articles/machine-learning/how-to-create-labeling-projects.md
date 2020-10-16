@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: e74d22d3d45079a6568f6fca35dc5d84e2d7469f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e30140dc23e64bfc733a0a51fa77fe811ba8fbc7
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90898012"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776116"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Een gegevenslabelproject maken en labels exporteren 
 
@@ -156,6 +156,9 @@ De exacte hoeveelheid gelabelde afbeeldingen die nodig is om ondersteund labelen
 
 Aangezien de definitieve labels nog steeds afhankelijk zijn van invoer van de labelaar, wordt deze technologie soms *HITL*-labelen (Human-in-the-loop) genoemd.
 
+> [!NOTE]
+> Het labelen van gegevens met behulp van ML biedt geen ondersteuning voor standaardopslagaccounts die zijn beveiligd achter een [virtueel netwerk](how-to-network-security-overview.md). U moet een niet-standaard opslagaccount gebruiken voor het labelen van gegevens met behulp van ML. Het niet-standaard opslagaccount kan worden beveiligd achter het virtuele netwerk. 
+
 ### <a name="clustering"></a>Clustering
 
 Nadat een bepaald aantal labels is verzonden, begint het machine learning-model voor de afbeeldingsclassificatie met het groeperen van gelijksoortige afbeeldingen.  Deze gelijksoortige afbeeldingen worden op hetzelfde scherm getoond aan de labelaars, om handmatig taggen te versnellen. Clustering is met name handig wanneer de labelaar een raster met 4, 6 of 9 afbeeldingen bekijkt. 
@@ -186,7 +189,7 @@ Als u het project wilt onderbreken of opnieuw wilt starten, schakelt u de status
 
 Op het tabblad **Dashboard** wordt de voortgang van de labeltaak weergegeven.
 
-:::image type="content" source="media/how-to-create-labeling-projects/labeling-dashboard.png" alt-text="Dashboard voor gegevens labelen":::
+:::image type="content" source="media/how-to-create-labeling-projects/labeling-dashboard.png" alt-text="Wizard Labelproject maken":::
 
 In het voortgangsdiagram ziet u hoeveel items zijn gelabeld en hoeveel er nog niet zijn gedaan.  Items in behandeling zijn mogelijk:
 

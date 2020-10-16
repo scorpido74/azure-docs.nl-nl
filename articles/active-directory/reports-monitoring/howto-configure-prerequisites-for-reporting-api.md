@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 22a8a0efe16b4ab2ea7b8a647284a3449741ac02
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89226961"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Vereisten voor toegang tot de API voor Azure Active Directory rapportage
@@ -46,7 +46,7 @@ Als u toegang wilt krijgen tot de rapportage gegevens via de API, moet een van d
 
 - Beveiligingsbeheer
 
-- Globale beheerder
+- Hoofdbeheerder
 
 ## <a name="license-requirements"></a>Licentie vereisten
 
@@ -141,7 +141,7 @@ U hebt deze waarden nodig bij het configureren van aanroepen naar de rapportage-
 
 **Uw domein naam ophalen:**
 
-1. Selecteer **Azure Active Directory**in de [Azure Portal](https://portal.azure.com)in het navigatie deel venster links.
+1. Selecteer **Azure Active Directory** in [Azure Portal](https://portal.azure.com) in het navigatiepaneel aan de linkerkant.
    
     ![Toepassing registreren](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
@@ -225,5 +225,5 @@ Volg de stappen in de [vereisten voor toegang tot de API voor Azure Active Direc
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Gegevens ophalen met de Azure Active Directory rapportage-API met certificaten](tutorial-access-api-with-certificates.md)
-* [Controle-API-verwijzing](/graph/api/resources/directoryaudit?view=graph-rest-beta) 
-* [API-naslag informatie voor aanmeld activiteiten](/graph/api/resources/signin?view=graph-rest-beta)
+* [Audit API-verwijzing](/graph/api/resources/directoryaudit?view=graph-rest-beta) 
+* [Verwijzing naar rapport-API voor aanmeldingsactiviteit](/graph/api/resources/signin?view=graph-rest-beta)

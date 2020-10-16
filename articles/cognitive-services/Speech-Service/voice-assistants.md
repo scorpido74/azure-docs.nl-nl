@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
 ms.openlocfilehash: 4bdca8921a99db764cbc8ee1edfdad8cf8b8568f
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91360936"
 ---
 # <a name="what-is-a-voice-assistant"></a>Wat is een spraakassistent?
@@ -68,7 +68,7 @@ Voorbeeld code voor het maken van een spraak-assistent is beschikbaar op GitHub.
 * [Zelf studie: spraak inschakelen voor uw assistent met behulp van Azure Bot Service met de C# Speech SDK](tutorial-voice-enable-your-bot-speech-sdk.md)
 * [Zelf studie: een toepassing voor aangepaste opdrachten maken met eenvoudige spraak opdrachten](how-to-custom-commands-create-application-with-simple-commands.md)
 
-## <a name="customization"></a>Aanpassing
+## <a name="customization"></a>Aanpassen
 
 Spraak assistenten die zijn gemaakt met Azure speech Services kunnen gebruikmaken van het volledige aanbod aan aanpassings opties.
 

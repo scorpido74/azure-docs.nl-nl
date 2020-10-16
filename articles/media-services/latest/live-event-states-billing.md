@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: 1b058eefe22238b60c3482c55b5ae340f4e597f0
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89296733"
 ---
 # <a name="live-event-states-and-billing"></a>Live gebeurtenis statussen en facturering
@@ -35,7 +35,7 @@ Wanneer **LiveEventEncodingType** voor uw [live-gebeurtenis](/rest/api/media/liv
 
 De live-gebeurtenis kan een van de volgende statussen hebben.
 
-|Staat|Beschrijving|
+|Status|Beschrijving|
 |---|---|
 |**Gestopt**| Dit is de begin status van de live gebeurtenis na het maken (tenzij auto start is ingesteld op True.) Er vindt geen facturering plaats in deze status. In deze status kunnen de eigenschappen van de live-gebeurtenis worden bijgewerkt, maar streaming is niet toegestaan.|
 |**Starten**| De live gebeurtenis wordt gestart en er worden resources toegewezen. Er vindt geen facturering plaats in deze status. Updates of streaming zijn niet toegestaan tijdens deze status. Als er een fout optreedt, keert de live-gebeurtenis terug naar de status gestopt.|

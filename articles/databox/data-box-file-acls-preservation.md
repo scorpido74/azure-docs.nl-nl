@@ -6,18 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: conceptual
-ms.date: 09/25/2019
+ms.date: 10/06/2020
 ms.author: alkohli
-ms.openlocfilehash: 74b8bfcd8cfedaa7c5e24b6c29d9229a4db5828a
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: e8df77356b6b5b1b40e2abd772e13c2e811413ae
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91450720"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950309"
 ---
 # <a name="preserving-file-acls-attributes-and-timestamps-with-azure-data-box"></a>Acl's, kenmerken en tijds tempels van bestanden behouden met Azure Data Box
 
-Met Azure Data Box kunt u toegangs beheer lijsten (Acl's), tijds tempels en bestands kenmerken behouden bij het verzenden van gegevens naar Azure. In dit artikel worden de meta gegevens beschreven die u kunt overdragen bij het kopiëren van gegevens naar Data Box via SMB (Server Message Block) om deze te uploaden naar Azure Files. Er zijn specifieke stappen voor het kopiëren van meta gegevens met hulpprogram ma's voor het kopiëren van Windows en Linux.
+Met Azure Data Box kunt u toegangs beheer lijsten (Acl's), tijds tempels en bestands kenmerken behouden bij het verzenden van gegevens naar Azure. In dit artikel worden de meta gegevens beschreven die u kunt overdragen bij het kopiëren van gegevens naar Data Box via SMB (Server Message Block) om deze te uploaden naar Azure Files. 
+
+Er zijn specifieke stappen voor het kopiëren van meta gegevens met hulpprogram ma's voor het kopiëren van Windows en Linux. Meta gegevens blijven niet behouden bij het overdragen van gegevens naar de Blob-opslag.
 
 In dit artikel worden de Acl's, tijds tempels en bestands kenmerken die worden overgedragen, gezamenlijk aangeduid als *meta gegevens*.
 

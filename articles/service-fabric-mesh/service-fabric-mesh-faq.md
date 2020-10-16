@@ -5,10 +5,10 @@ ms.author: pepogors
 ms.date: 4/23/2019
 ms.topic: troubleshooting
 ms.openlocfilehash: 64eeb43d743d71d5acd456409445a4fadfe91aeb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86260113"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Veelgestelde vragen over Service Fabric mesh
@@ -42,7 +42,7 @@ Ja. De quota's voor elk abonnement zijn:
 
 De levens duur van een toepassing is momenteel beperkt tot twee dagen. Dit is om het gebruik te maximaliseren van de gratis kernen die aan de preview-versie zijn toegewezen. Als gevolg hiervan is het alleen toegestaan om een bepaalde implementatie gedurende 48 uur continu uit te voeren, waarna de tijd wordt afgesloten.
 
-Als dit het geval is, kunt u valideren dat het systeem is afgesloten door de `az mesh app show` opdracht uit te voeren in de Azure cli. Controleren of deze retourneert`"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` 
+Als dit het geval is, kunt u valideren dat het systeem is afgesloten door de `az mesh app show` opdracht uit te voeren in de Azure cli. Controleren of deze retourneert `"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` 
 
 Bijvoorbeeld: 
 
@@ -127,7 +127,7 @@ Zie voor andere bekende DNS-problemen met het uitvoeren van een Service Fabric-o
 
 De NAT van het ServiceFabric-netwerk verdwijnt wanneer u uw app uitvoert op uw lokale machine. Als u wilt vaststellen of dit is gebeurd, voert u het volgende uit vanaf een opdracht prompt:
 
-`docker network ls`en noteer of `servicefabric_nat` wordt weer gegeven.  Als dat niet het geval is, voert u de volgende opdracht uit:`docker network create -d=nat --subnet 10.128.0.0/24 --gateway 10.128.0.1 servicefabric_nat`
+`docker network ls` en noteer of `servicefabric_nat` wordt weer gegeven.  Als dat niet het geval is, voert u de volgende opdracht uit: `docker network create -d=nat --subnet 10.128.0.0/24 --gateway 10.128.0.1 servicefabric_nat`
 
 Hiermee wordt het probleem opgelost, zelfs wanneer de app al lokaal en in een slechte staat wordt geïmplementeerd.
 
@@ -135,7 +135,7 @@ Hiermee wordt het probleem opgelost, zelfs wanneer de app al lokaal en in een sl
 
 U kunt de CPU-Beschik baarheid en de limieten voor alle toepassingen vast. Beperken:
 - Maak een cluster met vijf knoop punten.
-- Verminder het CPU-gebruik in Services in de app die is geïmplementeerd. Wijzig bijvoorbeeld in het bestand service. yaml van uw `cpu: 1.0` service in`cpu: 0.5`
+- Verminder het CPU-gebruik in Services in de app die is geïmplementeerd. Wijzig bijvoorbeeld in het bestand service. yaml van uw `cpu: 1.0` service in `cpu: 0.5`
 
 Meerdere toepassingen kunnen niet worden geïmplementeerd op een cluster met één knoop punt. Beperken:
 - Gebruik een cluster met vijf knoop punten wanneer u meerdere apps implementeert op een lokaal cluster.

@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: kenwith
 ms.openlocfilehash: 1765c6a7d19a11730567acd5e41deebc0a20cec2
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88235805"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Toewijzing van toepassingen op basis van kenmerken met bereik filters
@@ -64,7 +64,7 @@ Bereik filters worden geconfigureerd als onderdeel van de kenmerk toewijzingen v
 
 2. Selecteer de toepassing waarvoor u automatische inrichting hebt geconfigureerd: bijvoorbeeld ' ServiceNow '.
 
-3. Selecteer het tabblad **inrichten** .
+3. Selecteer het tabblad **Inrichten**.
 
 4. Selecteer in de sectie **toewijzingen** de toewijzing waarvoor u een bereik filter wilt configureren: bijvoorbeeld ' Synchroniseer Azure Active Directory gebruikers naar ServiceNow '.
 
@@ -129,4 +129,4 @@ Bereik filters worden geconfigureerd als onderdeel van de kenmerk toewijzingen v
 * [Expressies schrijven voor kenmerktoewijzingen](functions-for-customizing-application-data.md)
 * [Meldingen voor het inrichten van accounts](../app-provisioning/user-provisioning.md)
 * [Gebruik SCIM om automatische inrichting van gebruikers en groepen in te scha kelen van Azure Active Directory naar toepassingen](../app-provisioning/use-scim-to-provision-users-and-groups.md)
-* [Lijst met zelf studies voor het integreren van SaaS-apps](../saas-apps/tutorial-list.md)
+* [Lijst met handleidingen voor het integreren van SaaS-apps](../saas-apps/tutorial-list.md)

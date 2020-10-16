@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: a1fedb637bee9d98fb09d8fc3fa133b2992ce86e
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: ad7fc7d9d02cd9a9a6fe74534a7c674fe0ac778d
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89613676"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893251"
 ---
 # <a name="pbr-materials"></a>PBR-materialen
 
@@ -40,6 +40,8 @@ Deze eigenschappen zijn gebruikelijk voor alle materialen:
 * **useVertexColor:** Als de mesh :::no-loc text="vertex"::: kleuren bevat en deze optie is ingeschakeld, wordt de kleur van de netten :::no-loc text="vertex"::: vermenigvuldigd met de *albedoColor* en *albedoMap*. Standaard is *useVertexColor* uitgeschakeld.
 
 * **isDoubleSided:** Als Double-sidedness is ingesteld op True, worden drie hoeken met dit materiaal weer gegeven, zelfs als de camera op de achtergrond is. Voor de verlichting van PBR-materialen wordt ook correct berekend voor back-gezichten. Deze optie is standaard uitgeschakeld. Zie ook [ :::no-loc text="Single-sided"::: rendering](single-sided-rendering.md).
+
+* **TransparencyWritesDepth:** Als de vlag TransparencyWritesDepth is ingesteld op het materiaal en het materiaal transparant is, kunnen objecten die dit materiaal gebruiken, ook bijdragen aan de uiteindelijke diepte buffer. Zie de sectie voor het PBR-materiaal *transparant* in het volgende gedeelte. Het inschakelen van deze functie wordt aanbevolen als voor uw use-case een meer plausible [te late fase](late-stage-reprojection.md) ring van volledig transparante scènes nodig is. Voor gemengde dekkende/transparante scènes kan deze instelling leiden tot implausible-projectie gedrag of reprojectie-artefacten. Daarom is het uitschakelen van de standaard en aanbevolen instelling voor de algemene use-case dat deze vlag wordt uitgeschakeld. De geschreven diepte waarden worden opgehaald uit de laag diepte per pixel van het object dat zich het dichtst bij de camera bevindt.
 
 ## <a name="pbr-material-properties"></a>Eigenschappen van het PBR-materiaal
 
@@ -76,7 +78,7 @@ Het belangrijkste idee van het samen stellen van fysiek gebaseerd is het gebruik
 
 ## <a name="technical-details"></a>Technische details
 
-Azure remote rendering maakt gebruik van de Torrance micro facet BRDF met GGX NDF, Schlick Fresnel en een GGX Smith gecorreleerde zichtbaarheids termijn met een Lambert diffuse term. Dit model is op dit moment de meest facto industrie norm. Raadpleeg dit artikel: [fysieke rendering-Cook Torrance](http://www.codinglabs.net/article_physically_based_rendering_cook_torrance.aspx) voor meer gedetailleerde informatie.
+Azure remote rendering maakt gebruik van de Cook-Torrance micro facet BRDF met GGX NDF, Schlick Fresnel en een GGX Smith gecorreleerde zichtbaarheids termijn met een Lambert diffuse term. Dit model is op dit moment de meest facto industrie norm. Raadpleeg dit artikel: [fysieke rendering-Cook Torrance](http://www.codinglabs.net/article_physically_based_rendering_cook_torrance.aspx) voor meer gedetailleerde informatie.
 
  Een alternatief voor het in azure externe rendering geplaatste PBR *-* model is het *onspiegelde Glossiness PBR-* model. Dit model kan een breder scala aan materialen vertegenwoordigen. Het is echter duurder en werkt normaal gesp roken niet goed voor real-time cases.
 Het is niet altijd mogelijk om van *reflecterende Glossiness* te converteren *naar een* onscherpheid als er paren zijn *(diffuus, reflecterend)* die niet kunnen worden geconverteerd naar *(BaseColor, metaaling)*. De conversie in de andere richting is eenvoudiger en nauw keuriger, omdat alle paren *(BaseColor, metaaling)* overeenkomen met de goed gedefinieerde paren *(diffuus, reflecterend)* .

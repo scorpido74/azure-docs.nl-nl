@@ -14,19 +14,19 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9a562e31a26cc6cf7188dd635273bd9fa8c57213
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: a5b5759f0a7fff0f76e8c65cbf879fcd06337712
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269468"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017180"
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>Gezichten met Azure Media Analytics redigeren
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 ## <a name="overview"></a>Overzicht
-**Azure media Redactor** is een [Azure Media Analytics](media-services-analytics-overview.md) media processor (MP) dat schaal bare gezichts redactie in de Cloud biedt. Met gezichts redactie kunt u uw video aanpassen zodat u de gezichten van geselecteerde personen kunt vervagen. U kunt de gezichts redactie service gebruiken in de scenario's voor open bare veiligheid en nieuws media. Een paar minuten van beeld materiaal dat meerdere gezichten bevat, kan uren duren om hand matig te worden geredigeerd, maar bij deze service zijn slechts enkele eenvoudige stappen vereist voor het redactie proces van het gezicht. Zie [deze](https://azure.microsoft.com/blog/azure-media-redactor/) blog voor meer informatie.
+**Azure media Redactor** is een [Azure Media Analytics](./legacy-components.md) media processor (MP) dat schaal bare gezichts redactie in de Cloud biedt. Met gezichts redactie kunt u uw video aanpassen zodat u de gezichten van geselecteerde personen kunt vervagen. U kunt de gezichts redactie service gebruiken in de scenario's voor open bare veiligheid en nieuws media. Een paar minuten van beeld materiaal dat meerdere gezichten bevat, kan uren duren om hand matig te worden geredigeerd, maar bij deze service zijn slechts enkele eenvoudige stappen vereist voor het redactie proces van het gezicht. Zie [deze](https://azure.microsoft.com/blog/azure-media-redactor/) blog voor meer informatie.
 
 Dit artikel bevat informatie over **Azure media Redactor** en laat zien hoe u deze kunt gebruiken met Media Services SDK voor .net.
 
@@ -38,7 +38,7 @@ Naast een volledig automatische modus, is er een twee richtings werk stroom, waa
 ### <a name="combined-mode"></a>Gecombineerde modus
 Dit produceert automatisch een geredigeerde MP4 zonder hand matige invoer.
 
-| Fase | Bestandsnaam | Notities |
+| Fase | Bestandsnaam | Opmerkingen |
 | --- | --- | --- |
 | Invoer Asset |Foo. Bar |Video in WMV-, MOV-of MP4-indeling |
 | Invoer configuratie |Vooraf ingestelde taak configuratie |{' version ': ' 1.0 ', ' opties ': {' mode ': ' gecombineerd '}} |
@@ -53,7 +53,7 @@ Dit produceert automatisch een geredigeerde MP4 zonder hand matige invoer.
 ### <a name="analyze-mode"></a>Analyse modus
 De **analyse** fase van de werk stroom met twee slagen neemt een video-invoer en produceert een JSON-bestand met gezichts locaties en JPG-afbeeldingen van elk gedetecteerd gezicht.
 
-| Fase | Bestandsnaam | Notities |
+| Fase | Bestandsnaam | Opmerkingen |
 | --- | --- | --- |
 | Invoer Asset |Foo. Bar |Video in WMV-, MPV-of MP4-indeling |
 | Invoer configuratie |Vooraf ingestelde taak configuratie |{' version ': ' 1.0 ', ' opties ': {' mode ': ' analyse '}} |
@@ -118,7 +118,7 @@ Dit omvat een lijst met Id's voor vervagen, de oorspronkelijke video en de JSON 
 
 De uitvoer van de analyse fase bevat niet de oorspronkelijke video. De video moet worden geüpload naar de invoer Asset voor de redactie modus taak en als primair bestand zijn geselecteerd.
 
-| Fase | Bestandsnaam | Notities |
+| Fase | Bestandsnaam | Opmerkingen |
 | --- | --- | --- |
 | Invoer Asset |Foo. Bar |Video in WMV-, MPV-of MP4-indeling. Dezelfde video als in stap 1. |
 | Invoer Asset |foo_annotations.jsop |Meta gegevensbestand van de fase één, met optionele wijzigingen. |
@@ -163,9 +163,9 @@ Hieronder vindt u voor beelden van de vervagings typen die hieronder worden besc
 
 ![Hoog](./media/media-services-face-redaction/blur3.png)
 
-#### <a name="box"></a>Vak
+#### <a name="box"></a>Box
 
-![Vak](./media/media-services-face-redaction/blur4.png)
+![Box](./media/media-services-face-redaction/blur4.png)
 
 #### <a name="black"></a>Zwart
 
@@ -377,7 +377,6 @@ namespace FaceRedaction
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>Verwante koppelingen
-[Overzicht van Azure Media Services Analytics](media-services-analytics-overview.md)
+[Overzicht van Azure Media Services Analytics](./legacy-components.md)
 
 [Demo's Azure Media Analytics](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
-

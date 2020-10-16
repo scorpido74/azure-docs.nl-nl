@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
 ms.openlocfilehash: f908e37c7785744c2f26b6a9cd542ccde228eb38
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91255727"
 ---
 # <a name="tutorial-configure-reward-gateway-for-automatic-user-provisioning"></a>Zelf studie: belonings gateway voor automatische gebruikers inrichting configureren
@@ -46,7 +46,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
 * Het is raadzaam dat één Azure AD-gebruiker wordt toegewezen aan de prijs van de automatische gebruikers inrichtings configuratie. Extra gebruikers en/of groepen kunnen later worden toegewezen.
 
-* Wanneer u een gebruiker toewijst aan belonings gateway, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaard toegang** worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker toewijst aan belonings gateway, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaardtoegang** worden uitgesloten van het inrichten.
 
 ## <a name="setup-reward-gateway--for-provisioning"></a>Stel de gateway in voor de inrichting van het inrichten
 Voordat u een belonings gateway configureert voor automatische gebruikers toewijzing met Azure AD, moet u SCIM Provisioning inschakelen voor de belonings gateway.

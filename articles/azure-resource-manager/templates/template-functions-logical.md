@@ -2,23 +2,25 @@
 title: Sjabloon functies-logisch
 description: Hierin worden de functies beschreven die u kunt gebruiken in een Azure Resource Manager sjabloon om logische waarden te bepalen.
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: 8fe1c00240fc24c3c1454b118f9e0d9a9d54fe4e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 10/12/2020
+ms.openlocfilehash: ede41bd6c03eb7a01ae63526810d0310f31e4014
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84677386"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978506"
 ---
 # <a name="logical-functions-for-arm-templates"></a>Logische functies voor ARM-sjablonen
 
 Resource Manager biedt verschillende functies voor het maken van vergelijkingen in uw Azure Resource Manager-sjablonen (ARM).
 
-* [en](#and)
+* [and](#and)
 * [booleaans](#bool)
+* [onjuist](#false)
 * [If](#if)
 * [ten](#not)
-* [of](#or)
+* [or](#or)
+* [true](#true)
 
 ## <a name="and"></a>en
 
@@ -28,11 +30,11 @@ Controleert of alle parameter waarden waar zijn.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| Arg1 |Yes |booleaans |De eerste waarde om te controleren of deze waar is. |
-| Arg2 |Yes |booleaans |De tweede waarde om te controleren of waar is. |
-| aanvullende argumenten |No |booleaans |Aanvullende argumenten om te controleren of deze waar zijn. |
+| Arg1 |Ja |booleaans |De eerste waarde om te controleren of deze waar is. |
+| Arg2 |Ja |booleaans |De tweede waarde om te controleren of waar is. |
+| aanvullende argumenten |Nee |booleaans |Aanvullende argumenten om te controleren of deze waar zijn. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -80,12 +82,17 @@ Zet de para meter om in een Boole-waarde.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| Arg1 |Yes |teken reeks of int |De waarde die moet worden geconverteerd naar een Boole. |
+| Arg1 |Ja |teken reeks of int |De waarde die moet worden geconverteerd naar een Boole. |
 
 ### <a name="return-value"></a>Retourwaarde
+
 Een Boolean van de geconverteerde waarde.
+
+### <a name="remarks"></a>Opmerkingen
+
+U kunt ook [True ()](#true) en [False ()](#false) gebruiken om Booleaanse waarden op te halen.
 
 ### <a name="examples"></a>Voorbeelden
 
@@ -126,6 +133,44 @@ De uitvoer van het vorige voor beeld met de standaard waarden is:
 | trueInt | Booleaanse waarde | True |
 | falseInt | Booleaanse waarde | False |
 
+## <a name="false"></a>onjuist
+
+`false()`
+
+Retourneert onwaar.
+
+### <a name="parameters"></a>Parameters
+
+De functie false accepteert geen para meters.
+
+### <a name="return-value"></a>Retourwaarde
+
+Een Booleaanse waarde die altijd onwaar is.
+
+### <a name="example"></a>Voorbeeld
+
+In het volgende voor beeld wordt een onjuiste uitvoer waarde geretourneerd.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [],
+    "outputs": {
+        "falseOutput": {
+            "value": "[false()]",
+            "type" : "bool"
+        }
+    }
+}
+```
+
+De uitvoer van het vorige voor beeld is:
+
+| Naam | Type | Waarde |
+| ---- | ---- | ----- |
+| falseOutput | Booleaanse waarde | False |
+
 ## <a name="if"></a>if
 
 `if(condition, trueValue, falseValue)`
@@ -134,11 +179,11 @@ Retourneert een waarde op basis van het feit of een voor waarde waar of onwaar i
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| regeling |Yes |booleaans |De waarde om te controleren of deze True of False is. |
-| trueValue |Yes | teken reeks, int, object of matrix |De waarde die moet worden geretourneerd als de voor waarde waar is. |
-| falseValue |Yes | teken reeks, int, object of matrix |De waarde die moet worden geretourneerd als de voor waarde ONWAAR is. |
+| regeling |Ja |booleaans |De waarde om te controleren of deze True of False is. |
+| trueValue |Ja | teken reeks, int, object of matrix |De waarde die moet worden geretourneerd als de voor waarde waar is. |
+| falseValue |Ja | teken reeks, int, object of matrix |De waarde die moet worden geretourneerd als de voor waarde ONWAAR is. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -239,9 +284,9 @@ Zet Boole-waarde om in tegenovergestelde waarde.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| Arg1 |Yes |booleaans |De waarde die moet worden geconverteerd. |
+| Arg1 |Ja |booleaans |De waarde die moet worden geconverteerd. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -312,11 +357,11 @@ Controleert of een parameter waarde waar is.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| Arg1 |Yes |booleaans |De eerste waarde om te controleren of deze waar is. |
-| Arg2 |Yes |booleaans |De tweede waarde om te controleren of waar is. |
-| aanvullende argumenten |No |booleaans |Aanvullende argumenten om te controleren of deze waar zijn. |
+| Arg1 |Ja |booleaans |De eerste waarde om te controleren of deze waar is. |
+| Arg2 |Ja |booleaans |De tweede waarde om te controleren of waar is. |
+| aanvullende argumenten |Nee |booleaans |Aanvullende argumenten om te controleren of deze waar zijn. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -355,6 +400,44 @@ De uitvoer van het vorige voor beeld is:
 | andExampleOutput | Booleaanse waarde | False |
 | orExampleOutput | Booleaanse waarde | True |
 | notExampleOutput | Booleaanse waarde | False |
+
+## <a name="true"></a>true
+
+`true()`
+
+Retourneert True.
+
+### <a name="parameters"></a>Parameters
+
+De functie True accepteert geen para meters.
+
+### <a name="return-value"></a>Retourwaarde
+
+Een Booleaanse waarde die altijd waar is.
+
+### <a name="example"></a>Voorbeeld
+
+In het volgende voor beeld wordt een werkelijke uitvoer waarde geretourneerd.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [],
+    "outputs": {
+        "trueOutput": {
+            "value": "[true()]",
+            "type" : "bool"
+        }
+    }
+}
+```
+
+De uitvoer van het vorige voor beeld is:
+
+| Naam | Type | Waarde |
+| ---- | ---- | ----- |
+| trueOutput | Booleaanse waarde | True |
 
 ## <a name="next-steps"></a>Volgende stappen
 

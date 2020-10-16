@@ -7,10 +7,10 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 08/27/2020
 ms.openlocfilehash: 5032676848536f0b9498cf4beecf86277484a901
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89230803"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>Logische apps aanroepen, activeren of nesten met behulp van HTTPS-eind punten in Azure Logic Apps
@@ -355,7 +355,7 @@ Antwoorden hebben de volgende eigenschappen:
 | Eigenschap (weer geven) | Eigenschap (JSON) | Beschrijving |
 |--------------------|-----------------|-------------|
 | **Status code** | `statusCode` | De HTTPS-status code die moet worden gebruikt in het antwoord op de binnenkomende aanvraag. Deze code kan een geldige status code zijn die begint met 2xx, 4xx of 5xx. 3xx-status codes zijn echter niet toegestaan. |
-| **Koppen** | `headers` | Een of meer headers die moeten worden meegenomen in het antwoord |
+| **Headers** | `headers` | Een of meer headers die moeten worden meegenomen in het antwoord |
 | **Hoofdtekst** | `body` | Een body-object dat een teken reeks, een JSON-object of zelfs binaire inhoud waarnaar wordt verwezen vanuit een vorige stap kan zijn. |
 ||||
 

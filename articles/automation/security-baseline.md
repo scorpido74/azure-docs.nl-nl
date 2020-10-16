@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a57473a26d5fe809274f14c8767356914e0d4962
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 2d3f04777983d24d5219c55c5309b7d12c214594
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400514"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070687"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Azure-beveiligings basislijn voor Automation
 
@@ -84,7 +84,7 @@ U kunt de just-in-time-netwerk toegang van Azure Security Center gebruiken om de
 
 * [Azure Firewall implementeren](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Meer informatie over Azure Security Center geïntegreerde bedreigings informatie](../security-center/threat-protection.md)
+* [Meer informatie over Azure Security Center geïntegreerde bedreigings informatie](../security-center/azure-defender.md)
 
 * [Meer informatie over Azure Security Center adaptieve netwerk beveiliging](../security-center/security-center-adaptive-network-hardening.md)
 
@@ -150,7 +150,7 @@ U kunt ook Azure-blauw drukken gebruiken om grootschalige Azure-implementaties t
 
 * [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
-* [Voor beelden Azure Policy voor netwerken](/azure/governance/policy/samples/#network)
+* [Voor beelden Azure Policy voor netwerken](../governance/policy/samples/built-in-policies.md#network)
 
 * [Een Azure Blueprint maken](../governance/blueprints/create-blueprint-portal.md)
 
@@ -520,7 +520,7 @@ Als er echter Hybrid Runbook Workers worden gebruikt die worden ondersteund door
 
 * [Aanvullende Azure-abonnementen maken](../cost-management-billing/manage/create-subscription.md)
 
-* [Beheergroepen maken](../governance/management-groups/create.md)
+* [Beheergroepen maken](../governance/management-groups/create-management-group-portal.md)
 
 * [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
@@ -720,7 +720,7 @@ Als u Hybrid Runbook Workers gebruikt die worden ondersteund door virtuele machi
 
 * [Aanvullende Azure-abonnementen maken](../cost-management-billing/manage/create-subscription.md)
 
-* [Beheergroepen maken](../governance/management-groups/create.md)
+* [Beheergroepen maken](../governance/management-groups/create-management-group-portal.md)
 
 * [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
@@ -752,7 +752,7 @@ Daarnaast kunt u met de Azure-resource grafiek bronnen in abonnementen opvragen/
 
 * [Query's maken met Azure resource Graph](../governance/resource-graph/first-query-portal.md)
 
-* [Azure Policy voor beeld van ingebouwde invoeg toepassingen voor Azure Automation](./policy-samples.md)
+* [Azure Policy voor beeld van ingebouwde invoeg toepassingen voor Azure Automation](./policy-reference.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -854,7 +854,7 @@ Adaptief toepassings beheer is een intelligente, geautomatiseerde en end-to-end 
 
 * [Overzicht van de firewall van Azure Web Application](../web-application-firewall/overview.md)
 
-* [Netwerkbeveiligingsgroepen](../virtual-network/security-overview.md)
+* [Netwerkbeveiligingsgroepen](../virtual-network/network-security-groups-overview.md)
 
 * [Overzicht van Azure Virtual Network](../virtual-network/virtual-networks-overview.md)
 
@@ -882,11 +882,11 @@ U kunt ook aanbevelingen van Azure Security Center gebruiken als een veilige con
 
 * [Zelfstudie: Beleidsregels voor het afdwingen van naleving maken en beheren](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy voor beeld van ingebouwde invoeg toepassingen voor Azure Automation](./policy-samples.md)
+* [Azure Policy voor beeld van ingebouwde invoeg toepassingen voor Azure Automation](./policy-reference.md)
 
 * [Eén en meerdere resources exporteren naar een sjabloon in Azure Portal](../azure-resource-manager/templates/export-template-portal.md)
 
-* [Aanbevelingen voor beveiliging: een referentie gids](../security-center/recommendations-reference.md)
+* [Aanbevelingen voor beveiliging: een naslaggids](../security-center/recommendations-reference.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -920,7 +920,7 @@ Wanneer u de functie Hybrid Runbook Worker gebruikt, gebruikt u Azure Security C
 
 * [Een Automation-account implementeren met behulp van een Azure Resource Manager sjabloon](./quickstart-create-automation-account-template.md#deploy-the-template)
 
-* [Azure Policy voor beeld van ingebouwde invoeg toepassingen voor Azure Automation](./policy-samples.md)
+* [Azure Policy voor beeld van ingebouwde invoeg toepassingen voor Azure Automation](./policy-reference.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -984,7 +984,7 @@ Wanneer u de functie Hybrid Runbook Worker gebruikt, moet u ervoor zorgen dat u 
 
 * [Aliassen gebruiken](../governance/policy/concepts/definition-structure.md#aliases)
 
-* [Azure Policy voor beeld van ingebouwde invoeg toepassingen voor Azure Automation](./policy-samples.md)
+* [Azure Policy voor beeld van ingebouwde invoeg toepassingen voor Azure Automation](./policy-reference.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -1014,7 +1014,7 @@ Wanneer u de functie Hybrid Runbook Worker gebruikt, maakt u gebruik van Azure S
 
 * [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy voor beeld van ingebouwde invoeg toepassingen voor Azure Automation](./policy-samples.md)
+* [Azure Policy voor beeld van ingebouwde invoeg toepassingen voor Azure Automation](./policy-reference.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 

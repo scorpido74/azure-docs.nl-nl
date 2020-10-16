@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 7/7/2020
 ms.openlocfilehash: bea32b3b60c9013ea223513c95629092b9ab231b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86203322"
 ---
 # <a name="high-availability-in-azure-database-for-mariadb"></a>Hoge Beschik baarheid in Azure Database for MariaDB
@@ -60,8 +60,8 @@ Hier volgen enkele fout scenario's waarvoor gebruikers actie moet worden herstel
 
 | **Scenario** | **Herstel plan** |
 | ---------- | ---------- |
-| <b>Regio fout | Uitval van een regio is een zeldzame gebeurtenis. Als u echter beveiliging van een regio fout nodig hebt, kunt u een of meer Lees replica's in andere regio's configureren voor herstel na nood gevallen (DR). (Zie [dit artikel](howto-read-replicas-portal.md) over het maken en beheren van Lees replica's voor meer informatie). In het geval van een storing op regio niveau kunt u de Lees replica die is geconfigureerd voor de andere regio hand matig promo veren tot de productie database server. |
-| <b>Logische/gebruikers fouten | Herstel van gebruikers fouten, zoals het per ongeluk verwijderen van tabellen of onjuiste bijgewerkte gegevens, omvat het uitvoeren van een herstel naar een bepaald [tijdstip](concepts-backup.md) (PITR), door de gegevens te herstellen en te herstellen tot het moment dat de fout zich voordeed.<br> <br>  Als u alleen een subset van data bases of specifieke tabellen wilt herstellen in plaats van alle data bases in de database server, kunt u de database server herstellen in een nieuw exemplaar, de tabel (len) exporteren via [mysqldump](howto-migrate-dump-restore.md)en vervolgens [herstellen](howto-migrate-dump-restore.md#restore-your-mariadb-database) gebruiken om die tabellen te herstellen in uw data base. |
+| <b> Regio fout | Uitval van een regio is een zeldzame gebeurtenis. Als u echter beveiliging van een regio fout nodig hebt, kunt u een of meer Lees replica's in andere regio's configureren voor herstel na nood gevallen (DR). (Zie [dit artikel](howto-read-replicas-portal.md) over het maken en beheren van Lees replica's voor meer informatie). In het geval van een storing op regio niveau kunt u de Lees replica die is geconfigureerd voor de andere regio hand matig promo veren tot de productie database server. |
+| <b> Logische/gebruikers fouten | Herstel van gebruikers fouten, zoals het per ongeluk verwijderen van tabellen of onjuiste bijgewerkte gegevens, omvat het uitvoeren van een herstel naar een bepaald [tijdstip](concepts-backup.md) (PITR), door de gegevens te herstellen en te herstellen tot het moment dat de fout zich voordeed.<br> <br>  Als u alleen een subset van data bases of specifieke tabellen wilt herstellen in plaats van alle data bases in de database server, kunt u de database server herstellen in een nieuw exemplaar, de tabel (len) exporteren via [mysqldump](howto-migrate-dump-restore.md)en vervolgens [herstellen](howto-migrate-dump-restore.md#restore-your-mariadb-database) gebruiken om die tabellen te herstellen in uw data base. |
 
 
 

@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: eb6c9fed42f263ca6cfaa1ea975d31cb8f4a75cf
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86261757"
 ---
 # <a name="add-a-reference-layer"></a>Een referentielaag toevoegen
@@ -64,4 +64,4 @@ Meer context toevoegen aan de kaart:
 > [Een titellaag toevoegen](power-bi-visual-add-tile-layer.md)
 
 > [!div class="nextstepaction"]
-> [Realtime verkeer weer geven](power-bi-visual-show-real-time-traffic.md)
+> [Realtime verkeer weergeven](power-bi-visual-show-real-time-traffic.md)

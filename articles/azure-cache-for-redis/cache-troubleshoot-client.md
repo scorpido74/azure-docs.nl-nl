@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: troubleshooting
 ms.date: 10/18/2019
 ms.openlocfilehash: 122c96c95aea794fbba9cab8a9a5b867f9f34b48
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88008964"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-client-side-issues"></a>Problemen met Azure Cache voor Redis aan clientzijde oplossen
@@ -30,7 +30,7 @@ Geheugen druk op de client computer leidt naar alle soorten prestatie problemen 
 Geheugen druk op de client detecteren:
 
 - Controleer het geheugen gebruik op de computer om er zeker van te zijn dat deze niet groter is dan het beschik bare geheugen.
-- Het prestatie meter item van de client bewaken `Page Faults/Sec` . Tijdens normale werking hebben de meeste systemen enkele pagina fouten. Pieken in pagina fouten die overeenkomen met time-outs van aanvragen kunnen de geheugen belasting aangeven.
+- Het prestatie meter item van de client bewaken `Page Faults/Sec` . Tijdens normale werking hebben de meeste systemen enkele pagina fouten. Pieken in wisselbestandsfouten die overeenkomen met time-outs van aanvragen kunnen geheugenbelasting aangeven.
 
 Hoge geheugen druk op de client kan op verschillende manieren worden verminderd:
 
@@ -41,7 +41,7 @@ Hoge geheugen druk op de client kan op verschillende manieren worden verminderd:
 
 Bursts van verkeer in combi natie met slechte `ThreadPool` instellingen kunnen leiden tot vertragingen bij het verwerken van gegevens die al zijn verzonden door de redis-server, maar die nog niet zijn verbruikt aan de client zijde.
 
-Bewaak hoe uw `ThreadPool` statistieken in de loop van de tijd worden gewijzigd met [een voor `ThreadPoolLogger` beeld ](https://github.com/JonCole/SampleCode/blob/master/ThreadPoolMonitor/ThreadPoolLogger.cs). U kunt `TimeoutException` berichten van stack Exchange. redis zoals hieronder gebruiken om verder te onderzoeken:
+Bewaak hoe uw `ThreadPool` statistieken in de loop van de tijd worden gewijzigd met [een voor `ThreadPoolLogger` beeld ](https://github.com/JonCole/SampleCode/blob/master/ThreadPoolMonitor/ThreadPoolLogger.cs). U kunt  `TimeoutException` berichten van stack Exchange. redis zoals hieronder gebruiken om verder te onderzoeken:
 
 ```output
     System.TimeoutException: Timeout performing EVAL, inst: 8, mgr: Inactive, queue: 0, qu: 0, qs: 0, qc: 0, wr: 0, wq: 0, in: 64221, ar: 0,

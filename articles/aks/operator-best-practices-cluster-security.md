@@ -5,12 +5,12 @@ description: Meer informatie over de aanbevolen procedures voor cluster operator
 services: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: 5f249a7e6e7fac13301f0d2717336651b171b422
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 9cb51cb0f5b902553bda0b881c8392d74905c4bc
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776303"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073628"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor de beveiliging en upgrades van het cluster in azure Kubernetes service (AKS)
 
@@ -30,7 +30,7 @@ U kunt ook [integratie van Azure Kubernetes Services met Security Center][securi
 
 ## <a name="secure-access-to-the-api-server-and-cluster-nodes"></a>Veilige toegang tot de API-server en cluster knooppunten
 
-**Best Practice-richt lijnen** voor het beveiligen van de toegang tot de Kubernetes API-server is een van de belangrijkste dingen die u kunt doen om uw cluster te beveiligen. Kubernetes op rollen gebaseerd toegangs beheer (RBAC) integreren met Azure Active Directory om de toegang tot de API-server te beheren. Met deze besturings elementen kunt u AKS op dezelfde manier beveiligen als u de toegang tot uw Azure-abonnementen beveiligt.
+**Best Practice-richt lijnen** voor het beveiligen van de toegang tot de Kubernetes API-Server is een van de belangrijkste dingen die u kunt doen om uw cluster te beveiligen. Kubernetes op rollen gebaseerd toegangs beheer (RBAC) integreren met Azure Active Directory om de toegang tot de API-server te beheren. Met deze besturings elementen kunt u AKS op dezelfde manier beveiligen als u de toegang tot uw Azure-abonnementen beveiligt.
 
 De Kubernetes API-server biedt één verbindings punt voor aanvragen voor het uitvoeren van acties binnen een cluster. Als u de toegang tot de API-server wilt beveiligen en controleren, beperkt u de toegang en geeft u de mini maal privileged Access permissions vereist. Deze methode is niet uniek voor Kubernetes, maar is vooral belang rijk wanneer het AKS-cluster logisch is geïsoleerd voor gebruik door meerdere tenants.
 
@@ -237,4 +237,4 @@ Dit artikel is gericht op het beveiligen van uw AKS-cluster. Raadpleeg de volgen
 [best-practices-pod-security]: developer-best-practices-pod-security.md
 [pod-security-contexts]: developer-best-practices-pod-security.md#secure-pod-access-to-resources
 [aks-ssh]: ssh.md
-[security-center-aks]: ../security-center/azure-kubernetes-service-integration.md
+[security-center-aks]: ../security-center/defender-for-kubernetes-introduction.md

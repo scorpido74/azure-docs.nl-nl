@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 13f62631e4913434699f4c5dd5eb1956ca3e3a36
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 7dbb7b3fdc15c0a9d502fbe9a0d12d084f9ddf29
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90992267"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760390"
 ---
 # <a name="managed-hsm-disaster-recovery"></a>Herstel na noodgeval van beheerde HSM
 
@@ -61,7 +61,7 @@ az keyvault create --hsm-name "ContosoMHSM" --resource-group "ContosoResourceGro
 In de uitvoer van deze opdracht worden de eigenschappen weergegeven van de beheerde HSM die u hebt gemaakt. De twee belangrijkste eigenschappen zijn:
 
 * **name**: In het voorbeeld is ContosoMHSM de naam. U gebruikt deze naam voor andere Key Vault-opdrachten.
-* **hsmUri**: in het voorbeeld is de URI https://contosohsm.managedhsm.azure.net. Toepassingen die via de REST API gebruikmaken van uw HSM, moeten deze URI gebruiken.
+* **hsmUri**: In het voorbeeld is de URI https://contosohsm.managedhsm.azure.net. Toepassingen die via de REST API gebruikmaken van uw HSM, moeten deze URI gebruiken.
 
 Uw Azure-account is nu gemachtigd om alle bewerkingen op deze beheerde HSM uit te voeren. Op dit moment is nog niemand anders gemachtigd.
 
@@ -102,7 +102,7 @@ Als u een back-up van de HSM wilt maken, hebt u het volgende nodig
 - Een opslagaccount waarin de back-up wordt opgeslagen
 - Een container voor blob-opslag in dit opslagaccount, waar door het back-upproces een nieuwe map wordt gemaakt voor de versleutelde back-up
 
-In het onderstaande voorbeeld wordt de opdracht `az keyvault backup` gebruikt voor de back-up van de HSM in de opslagcontainer **mhsmbackupcontainer**, in opslagaccount **ContosoBackup-** . Er wordt een SAS-token gemaakt dat binnen dertig minuten verloopt. Dit token wordt aan de beheerde HSM verstrekt om de back-up te schrijven.
+We gebruiken de opdracht `az keyvault backup` voor de back-up van de HSM in de opslagcontainer **mhsmbackupcontainer**, die zich voor het onderstaande voorbeeld in het opslagaccount **ContosoBackup** bevindt. Er wordt een SAS-token gemaakt dat binnen dertig minuten verloopt. Dit token wordt aan de beheerde HSM verstrekt om de back-up te schrijven.
 
 ```azurecli-interactive
 end=$(date -u -d "30 minutes" '+%Y-%m-%dT%H:%MZ')

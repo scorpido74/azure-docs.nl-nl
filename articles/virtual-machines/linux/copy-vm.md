@@ -8,10 +8,10 @@ ms.date: 10/17/2018
 ms.author: cynthn
 ms.custom: legacy
 ms.openlocfilehash: c7d93ee928653cc1656e3e9a7cdb0d2fd6d7094b
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88654409"
 ---
 # <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-and-managed-disks"></a>Een kopie van een virtuele Linux-machine maken met behulp van Azure CLI en Managed Disks
@@ -22,7 +22,7 @@ U kunt ook [een virtuele machine uploaden en maken op basis van een VHD](upload-
 
 ## <a name="prerequisites"></a>Vereisten
 
--   Installeer de [Azure cli](/cli/azure/install-az-cli2).
+-   Installeer de [Azure CLI](/cli/azure/install-az-cli2).
 
 -   Meld u aan bij een Azure-account met [AZ login](/cli/azure/reference-index#az-login).
 

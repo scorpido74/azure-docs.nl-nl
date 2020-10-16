@@ -14,10 +14,10 @@ ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.openlocfilehash: 5de505ff9573fb186ca2bbe4f5bd6783022eb3ef
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89421455"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Procedure: claims aanpassen die zijn uitgegeven in het SAML-token voor zakelijke toepassingen
@@ -56,13 +56,13 @@ U kunt een van de volgende opties selecteren in de vervolg keuzelijst **Kies naa
 
 | NameID-indeling | Beschrijving |
 |---------------|-------------|
-| **Standaard** | Micro soft Identity platform gebruikt de standaard indeling voor de bron. |
+| **Prijs** | Micro soft Identity platform gebruikt de standaard indeling voor de bron. |
 | **Permanent** | Micro soft Identity platform gebruikt persistent als de NameID-indeling. |
 | **EmailAddress** | Micro soft Identity platform gebruikt EmailAddress als NameID-indeling. |
 | **Niet opgegeven** | Het micro soft Identity-platform wordt niet opgegeven als de NameID-indeling. |
 | **Gekwalificeerde Windows-domein naam** | Micro soft Identity platform gebruikt WindowsDomainQualifiedName als NameID-indeling. |
 
-Tijdelijke NameID wordt ook ondersteund, maar is niet beschikbaar in de vervolg keuzelijst en kan niet worden geconfigureerd op de kant van Azure. Zie het [SAML-protocol voor eenmalige aanmelding](single-sign-on-saml-protocol.md)voor meer informatie over het NameIDPolicy-kenmerk.
+Tijdelijke NameID wordt ook ondersteund, maar is niet beschikbaar in de vervolg keuzelijst en kan niet worden geconfigureerd op de kant van Azure. Zie voor meer informatie over het kenmerk NameIDPolicy [Single Sign-On SAML-protocol](single-sign-on-saml-protocol.md).
 
 ### <a name="attributes"></a>Kenmerken
 

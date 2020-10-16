@@ -3,12 +3,12 @@ title: Live video Analytics implementeren op een IoT Edge apparaat-Azure
 description: In dit artikel worden de stappen beschreven die u helpen bij het implementeren van live video Analytics op uw IoT Edge-apparaat. U kunt dit bijvoorbeeld doen als u toegang hebt tot een lokale Linux-machine en/of eerder een Azure Media Services-account hebt gemaakt.
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: 211dd0d61bbca39c4f4ec2f388d950c4615bb023
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a64fc11d7afa70d5200fdbd24bd3facdb8a95a7e
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90887236"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019576"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>Live video Analytics implementeren op een IoT Edge apparaat
 
@@ -20,11 +20,11 @@ In dit artikel worden de stappen beschreven die u helpen bij het implementeren v
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een x86-64-of een ARM64-apparaat met een van de [ondersteunde Linux-besturings systemen](https://docs.microsoft.com/azure/iot-edge/support#operating-systems)
+* Een x86-64-of een ARM64-apparaat met een van de [ondersteunde Linux-besturings systemen](../../iot-edge/support.md#operating-systems)
 * Azure-abonnement waarvoor u [eigenaars bevoegdheden](../../role-based-access-control/built-in-roles.md#owner) hebt
 * [IoT Hub maken en instellen](../../iot-hub/iot-hub-create-through-portal.md)
 * [IoT Edge-apparaat registreren](../../iot-edge/how-to-register-device.md)
-* [De Azure IoT Edge-runtime op op Debian gebaseerde Linux-systemen installeren](../../iot-edge/how-to-install-iot-edge-linux.md)
+* [Installeer de Azure IoT Edge runtime op op Debian gebaseerde Linux-systemen](../../iot-edge/how-to-install-iot-edge-linux.md)
 * [Een Azure Media Services-account maken](../latest/create-account-howto.md)
 
     * Gebruik een van deze regio's: VS-Oost 2, VS-West, VS-midden, VS-West, Japan-Oost, VS-West, VS-West 2, westelijk-Centraal VS, Canada-oost, UK-zuid, Frankrijk-centraal, Frankrijk-zuid, Zwitserland-noord, Zwitserland-west en Japan-West.
@@ -40,7 +40,7 @@ Zie [aangepaste Azure Resource Manager rol maken](create-custom-azure-resource-m
 
 Als u live video Analytics wilt gebruiken om video continu in de Cloud op te nemen en vervolgens [query-api's](playback-recordings-how-to.md#query-api) te gebruiken voordat u deze weer afspeelt, wordt u aangeraden uw media service bij te werken voor het gebruik van een Premium- [streaming-eind punt](../latest/streaming-endpoint-concept.md#types).  
 
-Dit is een optionele stap. U kunt hiervoor de volgende Azure CLI-opdracht gebruiken:
+Dit is een optionele taak. U kunt hiervoor de volgende Azure CLI-opdracht gebruiken:
 
 ```azurecli
 az ams streaming-endpoint scale --resource-group $RESOURCE_GROUP --account-name $AMS_ACCOUNT -n default --scale-units 1

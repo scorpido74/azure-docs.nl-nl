@@ -4,10 +4,10 @@ description: In dit artikel wordt beschreven hoe u Azure-app configuratie als Ev
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: bdd077c291bd1e1c441217740daf39c8bcaad732
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86116995"
 ---
 # <a name="azure-app-configuration-as-an-event-grid-source"></a>Configuratie Azure-app als Event Grid bron
@@ -19,7 +19,7 @@ In dit artikel vindt u de eigenschappen en het schema voor Azure-app configurati
 
 Azure-app configuratie worden de volgende gebeurtenis typen verzonden:
 
-| Gebeurtenistype | Description |
+| Gebeurtenistype | Beschrijving |
 | ---------- | ----------- |
 | Micro soft. AppConfiguration. KeyValueModified | Deze gebeurtenis treedt op wanneer een sleutel waarde wordt gemaakt of vervangen. |
 | Micro soft. AppConfiguration. KeyValueDeleted | Deze gebeurtenis treedt op wanneer een sleutel waarde wordt verwijderd. |
@@ -68,10 +68,10 @@ Het schema voor een gebeurtenis die door een sleutel waarde is verwijderd, is ve
 
 Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | onderwerp | tekenreeks | Volledige bronpad naar de bron van de gebeurtenis. Dit veld kan niet worden geschreven. Event Grid biedt deze waarde. |
-| Onderwerp | tekenreeks | Het door de uitgever gedefinieerde pad naar het gebeurtenisonderwerp. |
+| onderwerp | tekenreeks | Het door de uitgever gedefinieerde pad naar het gebeurtenisonderwerp. |
 | Type | tekenreeks | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. |
 | eventTime | tekenreeks | Het tijdstip waarop de gebeurtenis is gegenereerd op basis van de UTC-tijd van de provider. |
 | Id | tekenreeks | De unieke id voor de gebeurtenis. |
@@ -81,7 +81,7 @@ Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 
 Het gegevens object heeft de volgende eigenschappen:
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | sleutel | tekenreeks | De sleutel van de sleutel waarde die is gewijzigd of verwijderd. |
 | label | tekenreeks | Het label, indien van toepassing, van de sleutel waarde die is gewijzigd of verwijderd. |
@@ -96,6 +96,6 @@ Het gegevens object heeft de volgende eigenschappen:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Wat is Event grid?](overview.md) voor een inleiding tot Azure Event grid.
+* Zie [Wat is Event Grid?](overview.md) voor een inleiding tot Azure Event Grid.
 * Zie [Event grid Subscription schema](subscription-creation-schema.md)voor meer informatie over het maken van een Azure Event grid-abonnement.
 * Zie [Route Azure-app configuratie gebeurtenissen-Azure cli](../azure-app-configuration/howto-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json)voor een inleiding tot het werken met Azure-app configuratie gebeurtenissen. 

@@ -9,10 +9,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 9/22/2020
 ms.openlocfilehash: ec8f27d0376f7187fd36b3feba556dbced0946e9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90935202"
 ---
 # <a name="continuous-integration-and-deployment-cicd-for-azure-stream-analytics"></a>Continue integratie en implementatie (CI/CD) voor Azure Stream Analytics
@@ -21,7 +21,7 @@ U kunt uw Azure Stream Analytics taak continu implementeren met behulp van bronc
 
 Als u nog geen ervaring hebt met Azure Stream Analytics, kunt u aan de slag met de [Azure stream Analytics Snelstartgids](stream-analytics-quick-create-portal.md).
 
-## <a name="create-a-cicd-pipeline"></a>Een CI/CD-pijp lijn maken
+## <a name="create-a-cicd-pipeline"></a>Een CI/CD-pijplijn maken
 
 Volg de stappen in deze hand leiding voor het maken van een CI/CD-pijp lijn voor Stream Analytics.
 

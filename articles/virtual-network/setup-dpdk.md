@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: labattul
 ms.openlocfilehash: 622b7e629a7f5fea77afc18ec5121fe3466716ed
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87387554"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>DPDK instellen op een virtuele Linux-machine
@@ -45,8 +45,8 @@ De volgende distributies van Azure Marketplace worden ondersteund:
 | Ubuntu 16.04 | 4.15.0-1014-Azure +           | 
 | Ubuntu 18.04 | 4.15.0-1014-Azure +           |
 | SLES 15 SP1  | 4.12.14-8.19-Azure +          | 
-| RHEL 7.5     | 3.10.0-862.11.6. EL7. x86_64 +  | 
-| CentOS 7.5   | 3.10.0-862.11.6. EL7. x86_64 +  | 
+| RHEL 7.5     | 3.10.0-862.11.6.el7.x86_64 +  | 
+| CentOS 7.5   | 3.10.0-862.11.6.el7.x86_64 +  | 
 
 **Aangepaste kernel-ondersteuning**
 
@@ -251,7 +251,7 @@ Met de volgende opdrachten worden periodiek de statistieken van pakketten per se
 
 Wanneer u de vorige opdrachten op een virtuele machine uitvoert, wijzigt u *IP_SRC_ADDR* en *IP_DST_ADDR* in, `app/test-pmd/txonly.c` zodat deze overeenkomen met het werkelijke IP-adres van de virtuele machines voordat u compileert. Anders worden de pakketten verwijderd voordat de doorstuur server wordt bereikt. Het is niet mogelijk om een derde computer doorgestuurd verkeer te ontvangen, omdat de *testpmd* -doorstuur server de Layer 3-adressen niet wijzigt, tenzij u een aantal code wijzigingen aanbrengt.
 
-## <a name="references"></a>Verwijzingen
+## <a name="references"></a>Referenties
 
 * [Opties voor EAL](https://dpdk.org/doc/guides/testpmd_app_ug/run_app.html#eal-command-line-options)
 * [Testpmd-opdrachten](https://dpdk.org/doc/guides/testpmd_app_ug/run_app.html#testpmd-command-line-options)

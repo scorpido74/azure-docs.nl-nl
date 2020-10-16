@@ -10,13 +10,13 @@ ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 07/21/2020
-ms.openlocfilehash: 1d9fc9f50ac21e2ea621e26ad2b1fe0f146116de
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.date: 10/15/2020
+ms.openlocfilehash: d6936d6c72855bc22e3fc9323028fd0b8cd0fb29
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91618485"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097572"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Resourcelimieten voor individuele databases met gebruikmaking van het vCore-aankoopmodel
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -50,7 +50,7 @@ De [Compute-laag zonder server](serverless-tier-overview.md) is momenteel alleen
 |Opslagtype|Externe SSD|Externe SSD|Externe SSD|Externe SSD|Externe SSD|
 |I/o-latentie (bij benadering)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|
 |Max. gegevensiops *|320|640|1280|1920|2560|
-|Maximale logboek frequentie (MBps)|3.8|7.5|15|22,5|30|
+|Maximale logboek frequentie (MBps)|4.5|9|18|27|36|
 |Maxi maal aantal gelijktijdige werk nemers (aanvragen)|75|150|300|450|600|
 |Maximaal aantal gelijktijdige sessies|30.000|30.000|30.000|30.000|30.000|
 |Aantal replica's|1|1|1|1|1|
@@ -76,7 +76,7 @@ De [Compute-laag zonder server](serverless-tier-overview.md) is momenteel alleen
 |Opslagtype|Externe SSD|Externe SSD|Externe SSD|Externe SSD|
 |I/o-latentie (bij benadering)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|
 |Max. gegevensiops *|3200|3840|4480|5120|
-|Maximale logboek frequentie (MBps)|30|30|30|30|
+|Maximale logboek frequentie (MBps)|36|36|36|36|
 |Maxi maal aantal gelijktijdige werk nemers (aanvragen)|750|900|1050|1200|
 |Maximaal aantal gelijktijdige sessies|30.000|30.000|30.000|30.000|
 |Aantal replica's|1|1|1|1|
@@ -102,7 +102,7 @@ De [Compute-laag zonder server](serverless-tier-overview.md) is momenteel alleen
 |Opslagtype|Externe SSD|Externe SSD|Externe SSD|Externe SSD|Externe SSD|
 |I/o-latentie (bij benadering)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|
 |Max. gegevensiops *|5760|6400|7680|10240|12800|
-|Maximale logboek frequentie (MBps)|30|30|30|30|30|
+|Maximale logboek frequentie (MBps)|36|36|36|36|36|
 |Maxi maal aantal gelijktijdige werk nemers (aanvragen)|1350|1500|1800|2400|3000|
 |Maximaal aantal gelijktijdige sessies|30.000|30.000|30.000|30.000|30.000|
 |Aantal replica's|1|1|1|1|1|
@@ -225,7 +225,7 @@ De [Compute-laag zonder server](serverless-tier-overview.md) is momenteel alleen
 
 \* Behalve lokale SSD IO gebruiken werk belastingen externe pagina- [Server](service-tier-hyperscale.md#page-server) -io. Effectief IOPS is afhankelijk van de werk belasting. Zie [Data io governance](resource-limits-logical-server.md#resource-governance)en [Data io in statistieken voor bron gebruik](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics)voor meer informatie.
 
-#### <a name="notes"></a>Opmerkingen
+#### <a name="notes"></a>Notities
 
 **Opmerking 1**: grootschalige is een architectuur met meerdere lagen met afzonderlijke Compute-en opslag onderdelen: [grootschalige service tier-architectuur](service-tier-hyperscale.md#distributed-functions-architecture)
 
@@ -251,7 +251,7 @@ De [Compute-laag zonder server](serverless-tier-overview.md) is momenteel alleen
 |Opslagtype|Externe SSD|Externe SSD|Externe SSD|Externe SSD|Externe SSD|Externe SSD|
 |I/o-latentie (bij benadering)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|
 |Max. gegevensiops *|320|640|960|1280|1600|1920|
-|Maximale logboek frequentie (MBps)|3,75|7.5|11,25|15|18,75|22,5|
+|Maximale logboek frequentie (MBps)|4.5|9|13,5|18|22,5|27|
 |Maxi maal aantal gelijktijdige werk nemers (aanvragen)|200|400|600|800|1000|1200|
 |Maximaal aantal gelijktijdige sessies|30.000|30.000|30.000|30.000|30.000|30.000|
 |Aantal replica's|1|1|1|1|1|1|
@@ -276,7 +276,7 @@ De [Compute-laag zonder server](serverless-tier-overview.md) is momenteel alleen
 |Opslagtype|Externe SSD|Externe SSD|Externe SSD|Externe SSD|Externe SSD|Externe SSD|
 |I/o-latentie (bij benadering)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)
 |Max. gegevensiops *|2240|2560|2880|3200|5120|7680|
-|Maximale logboek frequentie (MBps)|26,3|30|30|30|30|30|
+|Maximale logboek frequentie (MBps)|31,5|36|36|36|36|36|
 |Maxi maal aantal gelijktijdige werk nemers (aanvragen)|1400|1600|1800|2000|3200|4800|
 |Maximaal aantal gelijktijdige sessies|30.000|30.000|30.000|30.000|30.000|30.000|
 |Aantal replica's|1|1|1|1|1|1|
@@ -303,7 +303,7 @@ De [Compute-laag zonder server](serverless-tier-overview.md) is momenteel alleen
 |Opslagtype|Externe SSD|Externe SSD|Externe SSD|Externe SSD|Externe SSD|Externe SSD|Externe SSD|
 |I/o-latentie (bij benadering)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|
 |Max. gegevensiops *|640|1280|1920|2560|3200|3840|4480|
-|Maximale logboek frequentie (MBps)|7.5|15|22,5|30|30|30|30|
+|Maximale logboek frequentie (MBps)|9|18|27|36|36|36|36|
 |Maxi maal aantal gelijktijdige werk nemers (aanvragen)|200|400|600|800|1000|1200|1400|
 |Maximaal aantal gelijktijdige sessies|30.000|30.000|30.000|30.000|30.000|30.000|30.000|
 |Aantal replica's|1|1|1|1|1|1|1|
@@ -328,7 +328,7 @@ De [Compute-laag zonder server](serverless-tier-overview.md) is momenteel alleen
 |Opslagtype|Externe SSD|Externe SSD|Externe SSD|Externe SSD|Externe SSD|Externe SSD|Externe SSD|
 |I/o-latentie (bij benadering)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|
 |Max. gegevensiops *|5120|5760|6400|7680|10240|12800|12800|
-|Maximale logboek frequentie (MBps)|30|30|30|30|30|30|30|
+|Maximale logboek frequentie (MBps)|36|36|36|36|36|36|36|
 |Maxi maal aantal gelijktijdige werk nemers (aanvragen)|1600|1800|2000|2400|3200|4000|8000|
 |Maximaal aantal gelijktijdige sessies|30.000|30.000|30.000|30.000|30.000|30.000|30.000|
 |Aantal replica's|1|1|1|1|1|1|1|
@@ -355,7 +355,7 @@ De [Compute-laag zonder server](serverless-tier-overview.md) is momenteel alleen
 |Opslagtype|Externe SSD|Externe SSD|Externe SSD|Externe SSD|Externe SSD|
 |I/o-latentie (bij benadering)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|
 |Max. gegevensiops *|2560|3200|3840|4480|5120|
-|Maximale logboek frequentie (MBps)|30|30|30|30|30|
+|Maximale logboek frequentie (MBps)|36|36|36|36|36|
 |Maxi maal aantal gelijktijdige werk nemers (aanvragen)|400|500|600|700|800|
 |Maximaal aantal gelijktijdige aanmeldingen|800|1000|1200|1400|1600|
 |Maximaal aantal gelijktijdige sessies|30.000|30.000|30.000|30.000|30.000|
@@ -381,7 +381,7 @@ De [Compute-laag zonder server](serverless-tier-overview.md) is momenteel alleen
 |Opslagtype|Externe SSD|Externe SSD|Externe SSD|Externe SSD|Externe SSD|Externe SSD|
 |I/o-latentie (bij benadering)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|
 |Max. gegevensiops *|5760|6400|7680|10240|11520|23040|
-|Maximale logboek frequentie (MBps)|30|30|30|30|30|30|
+|Maximale logboek frequentie (MBps)|36|36|36|36|36|36|
 |Maxi maal aantal gelijktijdige werk nemers (aanvragen)|900|1000|1200|1600|1800|3600|
 |Maximaal aantal gelijktijdige aanmeldingen|1800|2000|2400|3200|3600|7200|
 |Maximaal aantal gelijktijdige sessies|30.000|30.000|30.000|30.000|30.000|30.000|

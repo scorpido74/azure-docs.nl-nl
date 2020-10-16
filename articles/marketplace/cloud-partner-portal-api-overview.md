@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
 ms.openlocfilehash: bfb6e9cb510f5fe887f108dfdea5932406aafe0d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87292919"
 ---
 # <a name="cloud-partner-portal-api-reference"></a>Naslaginformatie over Cloud Partner-portal-API
@@ -33,7 +33,7 @@ Voordat u de Api's kunt gebruiken, moet u het volgende controleren:
 
 ## <a name="changes-to-cpp-apis-after-the-migration-to-partner-center"></a>Wijzigingen in CCP-Api's na de migratie naar partner Center
 
-| **API** | **Beschrijving wijzigen** | **Impact** |
+| **API** | **Beschrijving wijziging** | **Impact** |
 | ------- | ---------------------- | ---------- |
 | POST publiceren, GoLive, annuleren | Voor gemigreerde aanbiedingen heeft de reactie header een andere indeling, maar blijft op dezelfde manier werken, waarbij een relatief pad wordt opgegeven om de bewerkings status op te halen. | Bij het verzenden van een van de bijbehorende POST-aanvragen voor een aanbieding heeft de locatie header een van de twee notaties, afhankelijk van de migratie status van de aanbieding:<ul><li>Niet-gemigreerde aanbiedingen<br>`/api/operations/{PublisherId}${offerId}$2$preview?api-version=2017-10-31`</li><li>Gemigreerde aanbiedingen<br>`/api/publishers/{PublisherId}/offers/{offereId}/operations/408a4835-0000-1000-0000-000000000000?api-version=2017-10-31`</li> |
 | GET-bewerking | Voor aanbiedings typen waarvoor eerder het veld meldings-e in het antwoord wordt ondersteund, wordt dit veld afgeschaft en wordt het niet langer geretourneerd voor gemigreerde aanbiedingen. | Voor gemigreerde aanbiedingen worden er geen meldingen meer verzonden naar de lijst met e-mail berichten die in de aanvragen zijn opgegeven. In plaats daarvan wordt de API-service uitgelijnd met het e-mail proces voor meldingen in het partner centrum om e-mail berichten te verzenden. In het bijzonder worden meldingen verzonden naar het e-mail adres dat is ingesteld in het gedeelte contact gegevens van de verkoper van uw account instellingen in partner centrum om u te informeren over de voortgang van de bewerking.<br><br>Controleer het e-mail adres dat is ingesteld in het gedeelte contact gegevens van de verkoper van uw [account instellingen](https://partner.microsoft.com/dashboard/account/management) in partner centrum om te controleren of het juiste e-mail bericht is ontvangen voor meldingen.  |
@@ -50,7 +50,7 @@ Deze referentie Details Api's om de volgende algemene taken uit te voeren.
 - [Een aanbieding maken](./cloud-partner-portal-api-creating-offer.md)
 - [Een aanbieding publiceren](./cloud-partner-portal-api-publish-offer.md)
 
-### <a name="operations"></a>Bewerkingen
+### <a name="operations"></a>Operations
 
 - [Bewerkingen ophalen](./cloud-partner-portal-api-retrieve-operations.md)
 - [Bewerkingen annuleren](./cloud-partner-portal-api-cancel-operations.md)

@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 08/06/2020
 ms.author: swmachan
 ms.openlocfilehash: 59e064dc2b9d33bda966eb50544c8383b0394dd3
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89566599"
 ---
 # <a name="translator-30-translate"></a>Translator 3,0: vertalen
@@ -106,20 +106,20 @@ Aanvraag headers zijn onder andere:
   <th width="20%">Kopteksten</th>
   <th>Beschrijving</th>
   <tr>
-    <td>Verificatie header (s)</td>
-    <td>De <em>vereiste aanvraag header</em>.<br/>Bekijk de <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">beschik bare opties voor authenticatie</a>.</td>
+    <td>Verificatieheader(s)</td>
+    <td><em>Vereiste aanvraagheader</em>.<br/>Zie <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">Beschikbare opties voor verificatie</a>.</td>
   </tr>
   <tr>
     <td>Content-Type</td>
-    <td>De <em>vereiste aanvraag header</em>.<br/>Hiermee geeft u het inhouds type van de payload op.<br/> De geaccepteerde waarde is <code>application/json; charset=UTF-8</code> .</td>
+    <td><em>Vereiste aanvraagheader</em>.<br/>Hiermee geeft u het inhoudstype van de payload op.<br/> De geaccepteerde waarde is <code>application/json; charset=UTF-8</code>.</td>
   </tr>
   <tr>
     <td>Content-Length</td>
-    <td>De <em>vereiste aanvraag header</em>.<br/>De lengte van de aanvraag tekst.</td>
+    <td><em>Vereiste aanvraagheader</em>.<br/>De lengte van de aanvraagtekst.</td>
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td><em>Optioneel</em>.<br/>Een door de client gegenereerde GUID om de aanvraag uniek te identificeren. U kunt deze koptekst weglaten als u de tracerings-ID in de query reeks opneemt met behulp van een query parameter met de naam <code>ClientTraceId</code> .</td>
+    <td><em>Optioneel</em>.<br/>Een door de client gegenereerde GUID om de aanvraag op unieke wijze te identificeren. U kunt deze header weglaten als u de tracerings-id in de queryreeks opneemt middels een queryparameter met de naam <code>ClientTraceId</code>.</td>
   </tr>
 </table> 
 
@@ -364,7 +364,7 @@ Als u wilt voor komen dat de vertaling in het gemoeds oog komt, ongeacht de aanw
 
 <table width="100%">
   <th width="20%">ProfanityAction</th>
-  <th>Actie</th>
+  <th>Bewerking</th>
   <tr>
     <td><code>NoAction</code></td>
     <td>Dit is de standaardinstelling. Scheld is van bron naar doel.<br/><br/>

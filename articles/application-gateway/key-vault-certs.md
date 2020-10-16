@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: victorh
-ms.openlocfilehash: c1f6cc21c7a45dbc5c7be7e3f3cc46b4ec4e8c39
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e7c4842494c144f5cd64d46f53f7a99266064680
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282344"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993640"
 ---
 # <a name="tls-termination-with-key-vault-certificates"></a>TLS-beëindiging met Key Vault certificaten
 
@@ -32,7 +32,7 @@ Application Gateway integratie met Key Vault biedt veel voor delen, waaronder:
 - Ondersteuning voor het importeren van bestaande certificaten in uw sleutel kluis. Of gebruik Key Vault Api's om nieuwe certificaten te maken en te beheren met een van de vertrouwde Key Vault partners.
 - Ondersteuning voor het automatisch verlengen van certificaten die zijn opgeslagen in uw sleutel kluis.
 
-Application Gateway ondersteunt momenteel alleen door software gevalideerde certificaten. HSM (Hardware Security module)-gevalideerde certificaten worden niet ondersteund. Nadat Application Gateway is geconfigureerd voor het gebruik van Key Vault certificaten, haalt de instanties het certificaat op Key Vault en installeert ze lokaal voor TLS-beëindiging. De exemplaren pollen ook Key Vault met een interval van 24 uur om een vernieuwde versie van het certificaat op te halen, als dit bestaat. Als er een bijgewerkt certificaat wordt gevonden, wordt het TLS/SSL-certificaat dat momenteel is gekoppeld aan de HTTPS-listener automatisch gedraaid.
+Application Gateway ondersteunt momenteel alleen door software gevalideerde certificaten. HSM (Hardware Security module)-gevalideerde certificaten worden niet ondersteund. Nadat Application Gateway is geconfigureerd voor het gebruik van Key Vault certificaten, haalt de instanties het certificaat op Key Vault en installeert ze lokaal voor TLS-beëindiging. De exemplaren pollen ook Key Vault met een interval van 4 uur om een vernieuwde versie van het certificaat op te halen, als dit bestaat. Als er een bijgewerkt certificaat wordt gevonden, wordt het TLS/SSL-certificaat dat momenteel is gekoppeld aan de HTTPS-listener automatisch gedraaid.
 
 > [!NOTE]
 > Het Azure Portal ondersteunt alleen certificaten met alleen een sleutel kluis, geen geheimen. Application Gateway ondersteunt nog steeds referentie geheimen van de sleutel kluis, maar alleen via niet-Portal resources zoals Power shell, CLI, API, ARM-sjablonen, enzovoort. 

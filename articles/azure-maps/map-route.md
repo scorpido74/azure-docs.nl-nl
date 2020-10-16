@@ -10,10 +10,10 @@ services: azure-maps
 manager: timlt
 ms.custom: codepen
 ms.openlocfilehash: 54a196cc8323e676dfb054a5fad260302833fa53
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90090683"
 ---
 # <a name="show-directions-from-a-to-b"></a>Routebeschrijving van A naar B
@@ -74,7 +74,7 @@ De route query, gegevens bron, symbool, lijn lagen en camera grenzen worden in [
 Meer informatie over de klassen en methoden die in dit artikel worden gebruikt:
 
 > [!div class="nextstepaction"]
-> [Kaart](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
+> [Diagram](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
 
 Raadpleeg de volgende artikelen voor voor beelden van volledige code:
 

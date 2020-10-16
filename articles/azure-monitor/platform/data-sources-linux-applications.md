@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 05/04/2017
 ms.openlocfilehash: 10851754bda73fc769e613153582e491265ebb71
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85963237"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>Verzamelen van prestatie meter items voor Linux-toepassingen in Azure Monitor 
@@ -44,7 +44,7 @@ De vermeldingen in het verificatie bestand worden beschreven in de volgende tabe
 | Eigenschap | Beschrijving |
 |:--|:--|
 | Poort | Hiermee wordt de huidige poort van het MySQL-exemplaar geluisterd. Poort 0 geeft aan dat de volgende eigenschappen worden gebruikt voor het standaard exemplaar. |
-| Binding-adres| Huidig MySQL-bindings adres. |
+| Bind-Address| Huidig MySQL-bindings adres. |
 | gebruikersnaam| MySQL-gebruiker die wordt gebruikt om het MySQL-Server exemplaar te bewaken. |
 | Base64-gecodeerd wacht woord| Wacht woord van de MySQL-bewakings gebruiker die is gecodeerd in base64. |
 | Auto update| Hiermee geeft u op of wijzigingen in het bestand My. cnf opnieuw moeten worden gescand en het MySQL OMI-verificatie bestand moet worden overschreven wanneer de MySQL OMI-provider wordt bijgewerkt. |
@@ -70,12 +70,12 @@ Inbegrepen bij de installatie van de MySQL OMI-provider is een MySQL OMI-verific
 
 De volgende tabel bevat informatie over de syntaxis voor het gebruik van mycimprovauth.
 
-| Bewerking | Voorbeeld | Description
+| Bewerking | Voorbeeld | Beschrijving
 |:--|:--|:--|
 | Auto update *False of True* | mycimprovauth auto update False | Hiermee stelt u in of het verificatie bestand automatisch wordt bijgewerkt bij opnieuw opstarten of bijwerken. |
 | standaard *wachtwoord voor bind adres gebruikers naam* | mycimprovauth standaard 127.0.0.1 hoofd-pwd | Hiermee stelt u het standaard exemplaar in het MySQL OMI-verificatie bestand.<br>Het veld wacht woord moet worden ingevoerd in tekst zonder opmaak: het wacht woord in het MySQL OMI-verificatie bestand is base 64 gecodeerd. |
 | *standaard of port_num* verwijderen | mycimprovauth 3308 | Hiermee verwijdert u het opgegeven exemplaar standaard of op poort nummer. |
-| Help | Help bij mycimprov | Een lijst met te gebruiken opdrachten afdrukken. |
+| help | Help bij mycimprov | Een lijst met te gebruiken opdrachten afdrukken. |
 | afdrukken | mycimprov afdrukken | Hiermee drukt u een eenvoudig te lezen MySQL OMI-verificatie bestand. |
 | port_num *wacht woord van gebruikers naam voor bind-adres* bijwerken | mycimprov update 3307 127.0.0.1 root pwd | Hiermee wordt het opgegeven exemplaar bijgewerkt of wordt het exemplaar toegevoegd als het niet bestaat. |
 

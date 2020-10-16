@@ -4,10 +4,10 @@ description: In dit artikel worden de eigenschappen beschreven voor het abonnere
 ms.topic: reference
 ms.date: 07/07/2020
 ms.openlocfilehash: 21016627e545cc4935b4ac213df675e894c12d95
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86119069"
 ---
 # <a name="event-grid-subscription-schema"></a>Schema voor Event Grid abonnement
@@ -28,21 +28,21 @@ De naam van het gebeurtenis abonnement moet 3-64 tekens lang zijn en mag alleen 
  
 ## <a name="event-subscription-properties"></a>Eigenschappen van gebeurtenis abonnement
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | doel | object | Het object dat het eind punt definieert. |
 | filter | object | Een optioneel veld voor het filteren van de typen gebeurtenissen. |
 
 ### <a name="destination-object"></a>doel object
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | endpointType | tekenreeks | Het type eind punt voor het abonnement (webhook/HTTP, Event hub of queue). | 
 | endpointUrl | tekenreeks | De doel-URL voor gebeurtenissen in dit gebeurtenis abonnement. | 
 
 ### <a name="filter-object"></a>object filteren
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | includedEventTypes | matrix | Overeenkomen wanneer het gebeurtenis type in het gebeurtenis bericht exact overeenkomt met een van deze gebeurtenis type namen. Retourneert een fout wanneer de gebeurtenis naam niet overeenkomt met de geregistreerde gebeurtenis type namen voor de bron van de gebeurtenis. Standaard komt alle gebeurtenis typen overeen. |
 | subjectBeginsWith | tekenreeks | Een voorvoegsel filter voor het veld onderwerp in het gebeurtenis bericht. De standaard waarde of de lege teken reeks komt overeen met alle. | 

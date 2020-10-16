@@ -1,6 +1,6 @@
 ---
 title: Azure-SAML-protocol voor eenmalige afmelding
-description: In dit artikel wordt het SAML-protocol voor eenmalige afmeldingen in Azure Active Directory beschreven
+description: In dit artikel wordt het SAML-protocol single Sign-Out in Azure Active Directory beschreven.
 services: active-directory
 author: kenwith
 manager: CelesteDG
@@ -13,13 +13,13 @@ ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
 ms.openlocfilehash: 1d09355993af96e9e0cd334c57174cdaa771b388
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88118260"
 ---
-# <a name="single-sign-out-saml-protocol"></a>SAML-protocol voor eenmalige afmelding
+# <a name="single-sign-out-saml-protocol"></a>Enkelvoudig Sign-Out SAML-Protocol
 
 Azure Active Directory (Azure AD) ondersteunt de SAML 2,0-webbrowser voor eenmalige afmelding. Voor een juiste werking van eenmalige afmelding moet de **LogoutURL** voor de toepassing expliciet worden geregistreerd bij Azure ad tijdens de registratie van de toepassing. Azure AD gebruikt de LogoutURL om gebruikers te omleiden nadat ze zijn afgemeld.
 
@@ -40,9 +40,9 @@ De Cloud service stuurt een `LogoutRequest` bericht naar Azure AD om aan te geve
 ### <a name="logoutrequest"></a>LogoutRequest
 Het `LogoutRequest` element dat naar Azure AD wordt verzonden, vereist de volgende kenmerken:
 
-* `ID`-Hiermee wordt de afmeldings aanvraag geïdentificeerd. De waarde van `ID` mag niet beginnen met een getal. De gang bare procedure is het toevoegen van **id** aan de teken reeks representatie van een GUID.
-* `Version`-Stel de waarde van dit element in op **2,0**. Deze waarde is verplicht.
-* `IssueInstant`: Dit is een `DateTime` teken reeks met een UTC-waarde (Coordinate Universal Time) en een notatie voor de [retour Tour ("o")](/dotnet/standard/base-types/standard-date-and-time-format-strings). Azure AD verwacht een waarde van dit type, maar dwingt dit niet af.
+* `ID` -Hiermee wordt de afmeldings aanvraag geïdentificeerd. De waarde van `ID` mag niet beginnen met een getal. De gang bare procedure is het toevoegen van **id** aan de teken reeks representatie van een GUID.
+* `Version` -Stel de waarde van dit element in op **2,0**. Deze waarde is verplicht.
+* `IssueInstant` : Dit is een `DateTime` teken reeks met een UTC-waarde (Coordinate Universal Time) en een notatie voor de [retour Tour ("o")](/dotnet/standard/base-types/standard-date-and-time-format-strings). Azure AD verwacht een waarde van dit type, maar dwingt dit niet af.
 
 ### <a name="issuer"></a>Verlener
 Het `Issuer` element in een `LogoutRequest` moet exact overeenkomen met een van de **ServicePrincipalNames** in de Cloud service in azure AD. Dit is normaal gesp roken ingesteld op de **App-ID-URI** die is opgegeven tijdens de registratie van de toepassing.

@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/08/2020
+ms.date: 10/09/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: 3a585bc2bf3872a21bde9be036628922ee5743fa
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 7248dff25af4693f7f264c8cbf42236612dddda0
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90087351"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91931067"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>Anonieme open bare Lees toegang voor containers en blobs configureren
 
@@ -56,7 +56,7 @@ Als u open bare toegang voor een opslag account wilt toestaan of weigeren, confi
 > [!NOTE]
 > De eigenschap **AllowBlobPublicAccess** is niet standaard ingesteld en retourneert geen waarde voordat u deze expliciet hebt ingesteld. Het opslag account staat open bare toegang toe wanneer de waarde van de eigenschap **Null** is of wanneer deze **waar**is.
 >
-> De eigenschap **AllowBlobPublicAccess** is momenteel alleen beschikbaar voor opslag accounts in de open bare Azure-Cloud.
+> De eigenschap **AllowBlobPublicAccess** is beschikbaar voor alle opslag accounts in de open bare Azure-Cloud en in azure Government Clouds.
 
 # <a name="azure-portal"></a>[Azure-portal](#tab/portal)
 
@@ -207,7 +207,7 @@ Voer de volgende stappen uit om het niveau van de open bare toegang voor een of 
 
 Wanneer open bare toegang niet is toegestaan voor het opslag account, kan het open bare toegangs niveau van een container niet worden ingesteld. Als u het open bare toegangs niveau van de container probeert in te stellen, ziet u dat de instelling is uitgeschakeld, omdat open bare toegang niet is toegestaan voor het account.
 
-:::image type="content" source="media/anonymous-read-access-configure/container-public-access-blocked.png" alt-text="Scherm opname waarin wordt getoond dat het open bare toegangs niveau van de container wordt geblokkeerd wanneer open bare toegang niet is toegestaan":::
+:::image type="content" source="media/anonymous-read-access-configure/container-public-access-blocked.png" alt-text="Scherm opname van het toestaan of weigeren van open bare BLOB-toegang voor het account":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 

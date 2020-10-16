@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6bfe0fee14ed463e265dc4e7e4177c702b051c81
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89050196"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Azure AD Privileged Identity Management implementeren (PIM)
@@ -232,7 +232,7 @@ Voordat u uw Privileged Identity Management-oplossing implementeert, is het vers
 
 | Rol | MFA vereisen | Melding | Incident ticket | Goed keuring vereisen | Fiatteur | Activerings duur | Permanente beheerder |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| Globale beheerder | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Andere globale beheerders | 1 uur | Accounts voor toegang in nood gevallen |
+| Hoofdbeheerder | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Andere globale beheerders | 1 uur | Accounts voor toegang in nood gevallen |
 | Exchange-beheerder | :heavy_check_mark: | :heavy_check_mark: | BxDxH | BxDxH | Geen | 2 uur | Geen |
 | Helpdesk beheerder | BxDxH | BxDxH | :heavy_check_mark: | BxDxH | Geen | 8 uur | Geen |
 
@@ -240,9 +240,9 @@ Voordat u uw Privileged Identity Management-oplossing implementeert, is het vers
 
 | Rol | MFA vereisen | Melding | Goed keuring vereisen | Fiatteur | Activerings duur | Actieve beheerder | Actieve verval datum | Verval datum in aanmerking komend |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| Eigenaar van kritieke abonnementen | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Andere eigen aars van het abonnement | 1 uur | Geen | N.v.t. | 3 maand |
-| Gebruikers toegangs beheerder van minder kritieke abonnementen | :heavy_check_mark: | :heavy_check_mark: | BxDxH | Geen | 1 uur | Geen | N.v.t. | 3 maand |
-| Inzender voor virtuele machines | BxDxH | :heavy_check_mark: | BxDxH | Geen | 3 uur | Geen | N.v.t. | 6 maanden |
+| Eigenaar van kritieke abonnementen | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Andere eigen aars van het abonnement | 1 uur | Geen | n.v.t. | 3 maand |
+| Gebruikers toegangs beheerder van minder kritieke abonnementen | :heavy_check_mark: | :heavy_check_mark: | BxDxH | Geen | 1 uur | Geen | n.v.t. | 3 maand |
+| Inzender voor virtuele machines | BxDxH | :heavy_check_mark: | BxDxH | Geen | 3 uur | Geen | n.v.t. | 6 maanden |
 
 In de volgende tabel worden de instellingen beschreven.
 
@@ -310,7 +310,7 @@ Gebruik deze fase om te controleren of alle configuratie die u voor de rollen he
 
 | Rol | Verwacht gedrag tijdens de activering | Werkelijke resultaten |
 | --- | --- | --- |
-| Globale beheerder | (1) MFA vereisen<br/>(2) goed keuring vereisen<br/>(3) fiatteur ontvangt een melding en kan goed keuren<br/>(4) rol verloopt na vooraf ingestelde tijd |  |
+| Hoofdbeheerder | (1) MFA vereisen<br/>(2) goed keuring vereisen<br/>(3) fiatteur ontvangt een melding en kan goed keuren<br/>(4) rol verloopt na vooraf ingestelde tijd |  |
 | Eigenaar van abonnement *X* | (1) MFA vereisen<br/>(2) de in aanmerking komende toewijzing verloopt na de geconfigureerde tijds periode |  |
 
 ### <a name="communicate-privileged-identity-management-to-affected-stakeholders"></a>Privileged Identity Management met betrokken belanghebbenden communiceren
@@ -351,7 +351,7 @@ Als Privileged Identity Management niet naar wens werkt in de productie omgeving
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 1. Open **Azure AD privileged Identity Management**.
 1. Selecteer **Azure-resources** en selecteer vervolgens een abonnement of resource die u wilt terugzetten.
-1. Selecteer **rollen**.
+1. Selecteer **Rollen**.
 1. Voor elke rol die u hebt geconfigureerd, selecteert u het weglatings teken (**...**) voor alle gebruikers met een in aanmerking komende toewijzing.
 1. Selecteer de optie **permanent maken** om de roltoewijzing permanent te maken.
 

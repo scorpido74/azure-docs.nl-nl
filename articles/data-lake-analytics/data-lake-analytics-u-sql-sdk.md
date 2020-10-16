@@ -8,10 +8,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 03/01/2017
 ms.openlocfilehash: daf72fcf7baba289b4145d06d878c8a7232f1c6a
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132412"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>U-SQL uitvoeren en testen met Azure Data Lake U-SQL SDK
@@ -35,7 +35,7 @@ De Data Lake U-SQL SDK vereist de volgende afhankelijkheden:
 
     ![Windows 10 SDK voor Data Lake-Hulpprogram Ma's voor Visual Studio](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-for-visual-studio-local-run-windows-10-sdk.png)
 
-  - Installeer [Data Lake-Hulpprogram ma's voor Visual Studio](https://aka.ms/adltoolsvs). U kunt de voorverpakte Visual C++-en Windows SDK-bestanden vinden op`C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\ADL Tools\X.X.XXXX.X\CppSDK.`
+  - Installeer [Data Lake-Hulpprogram ma's voor Visual Studio](https://aka.ms/adltoolsvs). U kunt de voorverpakte Visual C++-en Windows SDK-bestanden vinden op `C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\ADL Tools\X.X.XXXX.X\CppSDK.`
 
     In dit geval kan de lokale U-SQL-compiler de afhankelijkheden niet automatisch vinden. U moet het pad naar de CppSDK opgeven. U kunt de bestanden kopiëren naar een andere locatie of gebruiken als.
 
@@ -143,18 +143,18 @@ Hier volgen enkele optionele argumenten voor **uitvoeren**:
 
 |Argument|Standaardwaarde|Beschrijving|
 |--------|-------------|-----------|
-|-CodeBehind|Niet waar|Het script heeft. cs-code achter|
+|-CodeBehind|False|Het script heeft. cs-code achter|
 |-CppSDK| |CppSDK Directory|
 |-Data root| Omgevings variabele data root|Data root voor lokale uitvoering, standaard ingesteld op de omgevings variabele LOCALRUN_DATAROOT|
 |-MessageOut| |Berichten op de console naar een bestand dumpen|
 |-Parallel|1|Het plan uitvoeren met de opgegeven parallellisme|
 |-Verwijzingen| |Lijst met paden naar extra referentie-assembly's of gegevens bestanden van code achter, gescheiden door '; '|
-|-UdoRedirect|Niet waar|Udo assembly-omleidings configuratie genereren|
+|-UdoRedirect|False|Udo assembly-omleidings configuratie genereren|
 |-UseDatabase|model|Te gebruiken Data Base voor code achter de tijdelijke assembly registratie|
-|-Verbose|Niet waar|Gedetailleerde uitvoer van runtime weer geven|
+|-Verbose|False|Gedetailleerde uitvoer van runtime weer geven|
 |-WorkDir|Huidige map|Map voor het gebruik en uitvoer van het Compileer programma|
 |-RunScopeCEP|0|Te gebruiken ScopeCEP-modus|
-|-ScopeCEPTempPath|ratuur|Tijdelijk pad dat moet worden gebruikt voor het streamen van gegevens|
+|-ScopeCEPTempPath|temp|Tijdelijk pad dat moet worden gebruikt voor het streamen van gegevens|
 |-OptFlags| |Door komma's gescheiden lijst met optimalisatie vlaggen|
 
 Hier volgt een voorbeeld:

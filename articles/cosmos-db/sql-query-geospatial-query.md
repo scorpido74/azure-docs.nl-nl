@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
 ms.openlocfilehash: bbfc31e810e2c11cde4907c9d5120b66195191af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84764975"
 ---
 # <a name="querying-geospatial-data-with-azure-cosmos-db"></a>Een query uitvoeren op georuimtelijke gegevens met Azure Cosmos DB
@@ -49,7 +49,7 @@ Ruimtelijke functies kunnen worden gebruikt om nabijheidsquery's uit te voeren o
 
 Als u ruimtelijke indexeringen opneemt in het indexerings beleid, worden ' query's op afstand ' efficiënt bediend via de index. Zie [georuimtelijke indexering](sql-query-geospatial-index.md)voor meer informatie over Spatial indexeren. Als u geen ruimtelijke index voor de opgegeven paden hebt, voert de query een scan uit van de container.
 
-`ST_WITHIN`kan worden gebruikt om te controleren of een punt binnen een veelhoek ligt. Meestal worden veelhoeken gebruikt om grenzen te vertegenwoordigen zoals post codes, status grenzen of natuurlijke vorm. Als u ruimtelijke indexering opneemt in uw indexerings beleid, worden ' in ' query's efficiënt bediend via de index.
+`ST_WITHIN` kan worden gebruikt om te controleren of een punt binnen een veelhoek ligt. Meestal worden veelhoeken gebruikt om grenzen te vertegenwoordigen zoals post codes, status grenzen of natuurlijke vorm. Als u ruimtelijke indexering opneemt in uw indexerings beleid, worden ' in ' query's efficiënt bediend via de index.
 
 Veelhoek argumenten in `ST_WITHIN` kunnen slechts één ring bevatten, dat wil zeggen dat de veelhoeken geen gaten mogen bevatten.
 
@@ -99,7 +99,7 @@ Azure Cosmos DB biedt ook ondersteuning voor het uitvoeren van inverse query's, 
     }]
 ```
 
-`ST_ISVALID`en `ST_ISVALIDDETAILED` kan worden gebruikt om te controleren of een ruimtelijk object geldig is. Met de volgende query wordt bijvoorbeeld de geldigheid van een punt met de waarde voor de breedte van een buiten bereik (-132,8) gecontroleerd. `ST_ISVALID`retourneert een Boole-waarde en `ST_ISVALIDDETAILED` retourneert de Boolean en een teken reeks met de reden waarom deze als ongeldig wordt beschouwd.
+`ST_ISVALID` en `ST_ISVALIDDETAILED` kan worden gebruikt om te controleren of een ruimtelijk object geldig is. Met de volgende query wordt bijvoorbeeld de geldigheid van een punt met de waarde voor de breedte van een buiten bereik (-132,8) gecontroleerd. `ST_ISVALID` retourneert een Boole-waarde en `ST_ISVALIDDETAILED` retourneert de Boolean en een teken reeks met de reden waarom deze als ongeldig wordt beschouwd.
 
 **Query**
 

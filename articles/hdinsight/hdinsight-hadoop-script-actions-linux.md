@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/28/2019
 ms.openlocfilehash: 08354e212b8ca3cae642b599f25ed318e79f581c
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86082247"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Ontwikkeling van script acties met HDInsight
@@ -73,7 +73,7 @@ elif [[ $OS_VERSION == 16* ]]; then
 fi
 ```
 
-### <a name="target-the-operating-system-version"></a><a name="bps10"></a>De versie van het besturings systeem als doel instellen
+### <a name="target-the-operating-system-version"></a><a name="bps10"></a> De versie van het besturings systeem als doel instellen
 
 HDInsight is gebaseerd op de Ubuntu Linux-distributie. Verschillende versies van HDInsight zijn afhankelijk van verschillende versies van Ubuntu, die kunnen veranderen hoe uw script zich gedraagt. HDInsight 3,4 en eerder zijn bijvoorbeeld gebaseerd op Ubuntu-versies die gebruikmaken van upstart. Versie 3,5 en hoger zijn gebaseerd op Ubuntu 16,04, dat gebruikmaakt van gesystemed. Systeem-en Upstarts zijn afhankelijk van verschillende opdrachten, zodat uw script moet worden geschreven om te werken met beide.
 
@@ -177,7 +177,7 @@ Hiermee wordt informatie die naar STDOUT is geschreven, omgeleid naar STDERR (2)
 
 Zie [problemen met script acties oplossen](./troubleshoot-script-action.md)voor meer informatie over het weer geven van gegevens die zijn geregistreerd door script acties.
 
-### <a name="save-files-as-ascii-with-lf-line-endings"></a><a name="bps8"></a>Bestanden opslaan als ASCII-regel eindigend op LF
+### <a name="save-files-as-ascii-with-lf-line-endings"></a><a name="bps8"></a> Bestanden opslaan als ASCII-regel eindigend op LF
 
 Bash-scripts moeten worden opgeslagen als ASCII-indeling, waarbij regels worden beëindigd door LF. Bestanden die zijn opgeslagen als UTF-8, of CRLF gebruiken als de regel die eindigt, kan mislukken met de volgende fout:
 
@@ -186,7 +186,7 @@ $'\r': command not found
 line 1: #!/usr/bin/env: No such file or directory
 ```
 
-### <a name="use-retry-logic-to-recover-from-transient-errors"></a><a name="bps9"></a>Pogings logica gebruiken om te herstellen van tijdelijke fouten
+### <a name="use-retry-logic-to-recover-from-transient-errors"></a><a name="bps9"></a> Pogings logica gebruiken om te herstellen van tijdelijke fouten
 
 Bij het downloaden van bestanden, het installeren van pakketten met apt-get of andere acties waarmee gegevens via internet worden verzonden, kan de actie mislukken vanwege tijdelijke netwerk fouten. De externe bron waarmee u communiceert, kan bijvoorbeeld worden overgeschakeld naar een back-upknooppunt.
 
@@ -235,7 +235,7 @@ wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.win
 
 De volgende helpers die beschikbaar zijn voor gebruik in uw script:
 
-| Help-gebruik | Description |
+| Help-gebruik | Beschrijving |
 | --- | --- |
 | `download_file SOURCEURL DESTFILEPATH [OVERWRITE]` |Hiermee wordt een bestand gedownload van de bron-URI naar het opgegeven bestandspad. Standaard wordt een bestaand bestand niet overschreven. |
 | `untar_file TARFILE DESTDIR` |Hiermee wordt een tar-bestand (met) uitgepakt `-xf` naar de doelmap. |
@@ -256,7 +256,7 @@ Deze sectie bevat richt lijnen voor het implementeren van een aantal algemene ge
 
 In sommige gevallen kan het script para meters nodig hebben. Het is bijvoorbeeld mogelijk dat u het beheerders wachtwoord voor het cluster nodig hebt wanneer u de Ambari-REST API gebruikt.
 
-Para meters die aan het script worden door gegeven, worden ook wel *positionele para meters*genoemd en worden toegewezen aan `$1` voor de eerste para meter, `$2` voor de tweede, enzovoort. `$0`bevat de naam van het script zelf.
+Para meters die aan het script worden door gegeven, worden ook wel *positionele para meters*genoemd en worden toegewezen aan `$1` voor de eerste para meter, `$2` voor de tweede, enzovoort. `$0` bevat de naam van het script zelf.
 
 Waarden die worden door gegeven aan het script als para meters moeten tussen enkele aanhalings tekens (') worden geplaatst. Dit zorgt ervoor dat de door gegeven waarde wordt beschouwd als een letterlijke teken reeks.
 
@@ -328,7 +328,7 @@ Zie [How to use script Action](hdinsight-hadoop-customize-cluster-linux.md)(Enge
 
 Micro soft biedt voorbeeld scripts voor het installeren van onderdelen in een HDInsight-cluster. Zie [kleur Toon op HDInsight-clusters installeren en gebruiken](hdinsight-hadoop-hue-linux.md) als een voorbeeld script actie.
 
-## <a name="troubleshooting"></a>Probleemoplossing
+## <a name="troubleshooting"></a>Problemen oplossen
 
 Hieronder vindt u fouten die kunnen optreden bij het gebruik van scripts die u hebt ontwikkeld:
 
@@ -360,7 +360,7 @@ Dit probleem treedt meestal op wanneer het script wordt gemaakt in een Windows-o
 awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
 ```
 
-Vervang door `INFILE` het bestand dat de stuk lijst bevat. `OUTFILE`moet een nieuwe bestands naam zijn die het script bevat zonder de stuk lijst.
+Vervang door `INFILE` het bestand dat de stuk lijst bevat. `OUTFILE` moet een nieuwe bestands naam zijn die het script bevat zonder de stuk lijst.
 
 ## <a name="next-steps"></a><a name="seeAlso"></a>Volgende stappen
 

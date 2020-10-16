@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
 ms.openlocfilehash: cdef21c69e8f05924097d57bbe78b86d38497b86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82188154"
 ---
 # <a name="configure-apache-spark-settings"></a>Apache Spark-instellingen configureren
@@ -29,7 +29,7 @@ Het aantal Vm's en VM-grootten voor de knoop punten in uw HDInsight-cluster kunn
 
 Gebruik de aanbevolen Spark-versie voor uw cluster.  De HDInsight-service bevat verschillende versies van zowel Spark als HDInsight.  Elke versie van Spark bevat een set standaard cluster instellingen.  
 
-Wanneer u een nieuw cluster maakt, zijn er meerdere Spark-versies waaruit u kunt kiezen. Voor een overzicht van de volledige lijst, [HDInsight-onderdelen en versies](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning).
+Wanneer u een nieuw cluster maakt, zijn er meerdere Spark-versies waaruit u kunt kiezen. Voor een overzicht van de volledige lijst,  [HDInsight-onderdelen en versies](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning).
 
 > [!NOTE]  
 > De standaard versie van Apache Spark in de HDInsight-service kan zonder kennisgeving worden gewijzigd. Als u een versie afhankelijkheid hebt, raadt micro soft u aan die bepaalde versie op te geven wanneer u clusters maakt met behulp van .NET SDK, Azure PowerShell en klassieke CLI van Azure.
@@ -90,7 +90,7 @@ Drie belang rijke para meters die vaak worden aangepast aan het afstemmen van Sp
 > [!NOTE]  
 > Deze drie configuratie parameters kunnen worden geconfigureerd op cluster niveau (voor alle toepassingen die in het cluster worden uitgevoerd) en ook zijn opgegeven voor elke afzonderlijke toepassing.
 
-Een andere bron van informatie over resources die worden gebruikt door Spark-uitvoerende modules is de gebruikers interface van Spark.  In de gebruikers interface geeft de **uitvoerende** module samenvattings-en detail weergaven weer van de configuratie en verbruikte resources.  Bepaal of u de waarden van de runtime voor het hele cluster of een bepaalde set taak uitvoeringen wilt wijzigen.
+Een andere bron van informatie over resources die worden gebruikt door Spark-uitvoerende modules is de gebruikers interface van Spark.  In de gebruikers interface geeft de  **uitvoerende** module samenvattings-en detail weergaven weer van de configuratie en verbruikte resources.  Bepaal of u de waarden van de runtime voor het hele cluster of een bepaalde set taak uitvoeringen wilt wijzigen.
 
 ![Spark-Uitvoerendeers](./media/apache-spark-settings/apache-spark-executors.png)
 

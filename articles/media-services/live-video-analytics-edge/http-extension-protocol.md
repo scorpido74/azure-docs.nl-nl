@@ -3,12 +3,12 @@ title: HTTP-extensieprotocol - Azure
 description: In dit artikel leert u het HTTP-extensieprotocol gebruiken om berichten te verzenden tussen de Live Video Analytics-module en uw aangepaste AI- of CV-module.
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: bfc8672185d284abc8f2985b44cea92000bc73db
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f1e1fb0e8fe63b3a83c59a4ec48abdac7f22096a
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89448046"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016651"
 ---
 # <a name="http-extension-protocol"></a>HTTP-extensieprotocol
 
@@ -100,4 +100,4 @@ Als er wel een antwoord met inhoudstype 'application/json' wordt geretourneerd m
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[gRPC-gegevenscontract](grpc-data-contract.md)
+[gRPC-gegevenscontract](./grpc-extension-protocol.md)

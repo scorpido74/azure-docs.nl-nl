@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: tutorial
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 9ed46f37c0906fa244d70cd2dea997f19c8bd462
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 0de41941fa5907b7d33e24de331571015510e7bf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447400"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91713786"
 ---
 # <a name="planning-and-operations-guide"></a>Handleiding voor planning en bewerking
 Deze gids is bedoeld voor IT-specialisten, IT-architecten, gegevensbeveiligingsanalisten en cloudbeheerders die willen gaan werken met Azure Security Center.
@@ -120,7 +120,7 @@ Beleidsregels van Security Center bevatten de volgende onderdelen:
 - [Gegevensverzameling](security-center-enable-data-collection.md): instellingen voor configuratie van agent en verzamelen van gegevens.
 - [Beveiligingsbeleid](tutorial-security-policy.md): een [Azure-beleid](../governance/policy/overview.md) dat bepaalt welke items worden bewaakt en aanbevolen door Security Center, of welke items Azure-beleid gebruiken voor het maken van nieuwe definities, het definiëren van extra beleidsregels en het toewijzen van beleidsregels binnen beheergroepen.
 - [E-mailmeldingen](security-center-provide-security-contact-details.md): instellingen voor contactpersonen en meldingen voor beveiliging.
-- [Prijscategorie](security-center-pricing.md): met of zonder Azure Defender, keuze uit de prijscategorie Gratis of Standaard, die bepaalt welke functies van Security Center beschikbaar zijn voor resources binnen het bereik (kan worden opgegeven voor abonnementen, resourcegroepen en werkruimten).
+- [Prijscategorie](security-center-pricing.md): met of zonder Azure Defender, die bepaalt welke functies van Security Center beschikbaar zijn voor resources binnen het bereik (kan worden opgegeven voor abonnementen en werkruimten of resourcegroepen die de API gebruiken).
 
 > [!NOTE]
 > Het opgeven van een contactpersoon voor beveiliging zorgt ervoor dat Azure de juiste persoon in uw organisatie kan bereiken als er zich een beveiligingsincident voordoet. Lees [Contactgegevens voor beveiliging verstrekken in Azure Security Center](security-center-provide-security-contact-details.md) voor meer informatie over het inschakelen van deze mogelijkheid.
@@ -161,7 +161,7 @@ Voor werkruimten die zijn gemaakt door Azure Security Center worden gegevens 30 
 > Microsoft doet er alles aan om de privacy van gegevens te beschermen en deze gegevens te beveiligen. Microsoft voldoet aan strikte nalevings- en beveiligingsrichtlijnen - van het schrijven van code tot de uitvoering van een service. Lees [Gegevensbeveiliging van Azure Security Center](security-center-data-security.md) voor meer informatie over de verwerking van gegevens en privacy.
 >
 
-## <a name="onboarding-non-azure-resources"></a>Onboarding van niet-Azure-resources
+## <a name="onboard-non-azure-resources"></a>Niet-Azure-resources onboarden
 
 Security Center kan de beveiligingsstatus van uw niet-Azure-computers controleren, maar u moet deze resources dan eerst onboarden. Lees [Onboarding van niet-Azure-computers](quickstart-onboard-machines.md) voor meer informatie over het onboarden van niet-Azure-resources.
 
@@ -219,11 +219,9 @@ Het volgende voorbeeld betreft een verdachte RDP-activiteit die op dat moment pl
 
 Deze pagina bevat informatie over het tijdstip waarop de aanval plaatsvond, de hostnaam van de bron, de VM die het doelwit was en aanbevolen maatregelen. Onder bepaalde omstandigheden kunnen de brongegevens van de aanval leeg zijn. Lees [Missing Source Information in Azure Security Center Alerts](https://blogs.msdn.microsoft.com/azuresecurity/2016/03/25/missing-source-information-in-azure-security-center-alerts/) voor meer informatie over dit type gedrag.
 
-Vanaf deze pagina kunt u ook een onderzoek starten om de tijdlijn van de aanval beter te begrijpen, een goed beeld te krijgen van de aanval, te zien welke systemen er mogelijk in gevaar zijn en welke referenties er zijn gebruikt. Daarnaast kunt u een grafische weergave bekijken van de hele aanvalsketen.
-
 Wanneer u het geïnfecteerde systeem hebt geïdentificeerd, kunt u een [Workflowautomatisering ](workflow-automation.md) uitvoeren die eerder is gemaakt. Dit is een verzameling procedures die na activering door een waarschuwing vanuit Security Center kunnen worden uitgevoerd.
 
-In de video [Reageren op incidenten met Azure Security Center & Microsoft Operations Management Suite](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703) ziet u enkele demonstraties om duidelijk te maken hoe Security Center kan worden gebruikt in elk van deze fasen.
+In de video [Reageren op incidenten met Azure Security Center en Microsoft Operations Management Suite](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703) ziet u enkele demonstraties die laten zien hoe Security Center kan worden gebruikt in elk van deze fasen.
 
 > [!NOTE]
 > Lees [Beveiligingswaarschuwingen beheren en erop reageren in Azure Security Center](security-center-managing-and-responding-alerts.md) voor meer informatie over hoe u Security Center kunt gebruiken wanneer u reageert op incidenten.

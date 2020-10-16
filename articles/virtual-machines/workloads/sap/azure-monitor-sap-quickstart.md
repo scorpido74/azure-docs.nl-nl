@@ -6,12 +6,13 @@ ms.author: sakhare
 ms.topic: how-to
 ms.service: virtual-machines
 ms.date: 08/17/2020
-ms.openlocfilehash: 2c3b11ca0c2bb916a5a3fcaf50eb99c7db3aa8e7
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.reviewer: cynthn
+ms.openlocfilehash: 6deb7b535c3876ae8a8e83174b97a75582e82e58
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642889"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996438"
 ---
 # <a name="deploy-azure-monitor-for-sap-solutions-with-azure-portal"></a>Azure Monitor implementeren voor SAP-oplossingen met Azure Portal
 
@@ -29,7 +30,7 @@ Meld u aan bij Azure Portal op https://portal.azure.com
 
 2. Geef op het tabblad **basis beginselen** de vereiste waarden op. Als dit van toepassing is, kunt u een bestaande Log Analytics-werk ruimte gebruiken.
 
-   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-2.png" alt-text="De Azure Portal configuratie opties weer geven." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-2.png":::
+   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-2.png" alt-text="Afbeelding toont het selecteren van de Azure Monitor voor SAP-oplossingen aanbod vanuit Azure Marketplace." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-2.png":::
 
 3. Wanneer u een virtueel netwerk selecteert, moet u ervoor zorgen dat de systemen die u wilt bewaken bereikbaar zijn vanuit dat VNET. 
 
@@ -42,7 +43,7 @@ Meld u aan bij Azure Portal op https://portal.azure.com
 
 1. Selecteer het tabblad **provider** om de providers toe te voegen die u wilt configureren. U kunt na het implementeren van de bewakings resource meerdere providers toevoegen, of toevoegen. 
 
-   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-3.png" alt-text="Toont het tabblad Provider om extra providers toe te voegen aan uw Azure Monitor voor SAP-oplossingen." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-3.png":::
+   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-3.png" alt-text="Afbeelding toont het selecteren van de Azure Monitor voor SAP-oplossingen aanbod vanuit Azure Marketplace." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-3.png":::
 
 2. Selecteer **provider toevoegen** en kies **SAP Hana** in de vervolg keuzelijst. 
 
@@ -56,7 +57,7 @@ Meld u aan bij Azure Portal op https://portal.azure.com
 
 7. Wanneer u klaar bent, selecteert u **provider toevoegen**. Ga verder met het toevoegen van extra providers of selecteer **controleren + maken** om de implementatie te volt ooien.
 
-   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-4.png" alt-text="Afbeelding van configuratie opties bij het toevoegen van provider gegevens." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-4.png":::
+   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-4.png" alt-text="Afbeelding toont het selecteren van de Azure Monitor voor SAP-oplossingen aanbod vanuit Azure Marketplace." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-4.png":::
 
 ### <a name="high-availability-cluster-pacemaker-provider"></a>Pacemaker-provider (high-availability cluster)
 
@@ -71,7 +72,7 @@ Meld u aan bij Azure Portal op https://portal.azure.com
 
 4. Wanneer u klaar bent, selecteert u **provider toevoegen**. Ga verder met het toevoegen van extra providers of selecteer **controleren + maken** om de implementatie te volt ooien.
 
-   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-5.png" alt-text="Afbeelding toont opties die betrekking hebben op de pacemaker-provider van HA-cluster." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-5.png":::
+   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-5.png" alt-text="Afbeelding toont het selecteren van de Azure Monitor voor SAP-oplossingen aanbod vanuit Azure Marketplace." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-5.png":::
 
 
 ### <a name="microsoft-sql-server-provider"></a>Microsoft SQL Server provider
@@ -109,7 +110,7 @@ Meld u aan bij Azure Portal op https://portal.azure.com
 
 4. Wanneer u klaar bent, selecteert u **provider toevoegen**. Ga verder met het toevoegen van extra providers of selecteer **controleren + maken** om de implementatie te volt ooien.
 
-     :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-6.png" alt-text="Afbeelding toont informatie die betrekking heeft op het toevoegen van de Microsoft SQL Server provider." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-6.png":::
+     :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-6.png" alt-text="Afbeelding toont het selecteren van de Azure Monitor voor SAP-oplossingen aanbod vanuit Azure Marketplace." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-6.png":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

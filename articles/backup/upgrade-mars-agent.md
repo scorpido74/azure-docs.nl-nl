@@ -4,10 +4,10 @@ description: Meer informatie over het upgraden van de Microsoft Azure Recovery S
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.openlocfilehash: a1ee26db962781643e9599069282647658301bac
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89181473"
 ---
 # <a name="upgrade-the-microsoft-azure-recovery-services-mars-agent"></a>De Microsoft Azure Recovery Services-agent (MARS) upgraden
@@ -56,12 +56,12 @@ Zodra u hebt vastgesteld welke servers een Azure Backup Agent update nodig hebbe
 
 1. Als uw server of server proxy beperkte internet toegang heeft, zorgt u ervoor dat de firewall-instellingen op de server/proxy zo zijn geconfigureerd dat de URL die geschikt is voor de Azure-Cloud die u gebruikt, wordt toegestaan:
 
-    Azure-Cloud | URL
+    Azure-cloud | URL
     --- | ---
     Azure-Cloud (openbaar) |   `https://login.windows.net`
     Azure China 21Vianet-Cloud   | `https://login.chinacloudapi.cn`
     Azure-cloud van de Amerikaanse overheid |   `https://login.microsoftonline.us`
-    Azure Duitse Cloud  |  `https://login.microsoftonline.de`
+    Cloud van Azure Duitsland  |  `https://login.microsoftonline.de`
 
 1. Kopieer het installatie programma voor de Azure Backup Agent-update naar de server.
 
@@ -71,7 +71,7 @@ Zodra u hebt vastgesteld welke servers een Azure Backup Agent update nodig hebbe
 
     ![De wizard upgrade van de Microsoft Azure Recovery Services-agent](./media/upgrade-mars-agent/agent-upgrade-wizard.png)
 
-1. Selecteer **Volgende**.
+1. Selecteer **Next**.
 
 1. Selecteer **upgrade**.
 

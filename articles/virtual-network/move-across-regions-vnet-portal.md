@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 08/26/2019
 ms.author: allensu
 ms.openlocfilehash: ed3da649ba65484a79b42ba5bb45431839e123d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84711439"
 ---
 # <a name="move-an-azure-virtual-network-to-another-region-by-using-the-azure-portal"></a>Een virtueel Azure-netwerk verplaatsen naar een andere regio met behulp van de Azure Portal
@@ -28,7 +28,7 @@ U kunt een Azure Resource Manager sjabloon gebruiken om de verplaatsing van het 
 
 - Peerings voor virtuele netwerken worden niet opnieuw gemaakt en mislukken als ze nog steeds in de sjabloon aanwezig zijn. Voordat u de sjabloon exporteert, moet u alle virtuele netwerk peers verwijderen. U kunt ze vervolgens opnieuw instellen nadat het virtuele netwerk is verplaatst.
 
-- Identificeer de bron netwerk indeling en alle resources die u momenteel gebruikt. Deze indeling bevat, maar is niet beperkt tot load balancers, netwerk beveiligings groepen (Nsg's) en open bare Ip's.
+- Identificeer de bronnetwerkindeling en alle resources die u momenteel gebruikt. Deze indeling bevat, maar is niet beperkt tot load balancers, netwerk beveiligings groepen (Nsg's) en open bare Ip's.
 
 - Controleer of u met uw Azure-abonnement virtuele netwerken in de doel regio kunt maken. Neem contact op met de ondersteuning om het vereiste quotum in te scha kelen.
 
@@ -194,13 +194,13 @@ Ga als volgt te werk om het virtuele netwerk te exporteren en het virtuele doel 
 
 ## <a name="delete-the-target-virtual-network"></a>Het virtuele netwerk van het doel verwijderen
 
-Als u het virtuele doel netwerk wilt verwijderen, verwijdert u de resource groep die het virtuele netwerk van het doel bevat. Dit doet u als volgt:
+Als u het virtuele doel netwerk wilt verwijderen, verwijdert u de resource groep die het virtuele netwerk van het doel bevat. Hiervoor doet u het volgende:
 1. Selecteer de resource groep in het dash board Azure Portal.
 1. Selecteer boven in het deel venster **overzicht** de optie **verwijderen**.
 
-## <a name="clean-up"></a>Opruimen
+## <a name="clean-up"></a>Opschonen
 
-Als u de wijzigingen wilt door voeren en de virtuele netwerk verplaatsing wilt volt ooien, verwijdert u het virtuele bron netwerk of de resource groep. Dit doet u als volgt:
+Als u de wijzigingen wilt door voeren en de virtuele netwerk verplaatsing wilt volt ooien, verwijdert u het virtuele bron netwerk of de resource groep. Hiervoor doet u het volgende:
 1. Selecteer op het dash board Azure Portal het virtuele netwerk of de resource groep.
 1. Selecteer boven aan elk deel venster de optie **verwijderen**.
 

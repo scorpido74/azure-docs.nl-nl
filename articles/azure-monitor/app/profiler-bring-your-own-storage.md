@@ -7,10 +7,10 @@ ms.author: regutier
 ms.date: 04/14/2020
 ms.reviewer: mbullwin
 ms.openlocfilehash: 719f0cfa0a1f80568acf3231ce3ffab441e5f6b7
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87117379"
 ---
 # <a name="configure-bring-your-own-storage-byos-for-application-insights-profiler-and-snapshot-debugger"></a>Uw eigen opslag (BYOS) configureren voor Application Insights Profiler en Snapshot Debugger
@@ -23,7 +23,7 @@ Met uw eigen opslag kunt u deze artefacten uploaden naar een opslag account dat 
 > [!NOTE]
 > Als u een persoonlijke koppeling inschakelt, moet u uw eigen opslag ruimte maken. [Raadpleeg de documentatie](../platform/private-link-security.md) voor meer informatie over persoonlijke koppelingen voor Application Insights.
 >
-> Als u door de klant beheerde sleutels inschakelt, moet u uw eigen opslag toevoegen. [Raadpleeg de documentatie](../platform/customer-managed-keys.md)voor meer informatie over door de klant beheerde sleutels voor Application Insights.
+> Als u Customer-Managed sleutels inschakelt, moet u uw eigen opslag ruimte maken. [Raadpleeg de documentatie](../platform/customer-managed-keys.md)voor meer informatie over Customer-Managed sleutels voor Application Insights.
 
 ## <a name="how-will-my-storage-account-be-accessed"></a>Hoe wordt mijn opslag account geopend?
 1. Agents die worden uitgevoerd in uw Virtual Machines of App Service uploaden artefacten (profielen, moment opnamen en symbolen) naar BLOB-containers in uw account. Dit proces omvat het maken van contact met de Application Insights Profiler-of Snapshot Debugger-service om een SAS-token (Shared Access Signature) te verkrijgen voor een nieuwe Blob in uw opslag account.
@@ -37,7 +37,7 @@ Met uw eigen opslag kunt u deze artefacten uploaden naar een opslag account dat 
 
 ## <a name="how-to-enable-byos"></a>BYOS inschakelen
 
-### <a name="create-storage-account"></a>Opslag account maken
+### <a name="create-storage-account"></a>Opslagaccount maken
 Maak een gloed nieuw opslag account (als u dit niet hebt) op dezelfde locatie als uw Application Insights-resource.
 Als uw Application Insights resource is ingeschakeld `West US 2` , moet uw opslag account zich in `West US 2` .
 
@@ -231,7 +231,7 @@ Er zijn drie opties voor het configureren van BYOS voor diagnostische gegevens o
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 ### <a name="template-schema-schema_uri-isnt-supported"></a>Het sjabloon schema {schema_uri} wordt niet ondersteund.
-* Zorg ervoor dat de `$schema` eigenschap van de sjabloon geldig is. Het moet het volgende patroon volgen:`https://schema.management.azure.com/schemas/{schema_version}/deploymentTemplate.json#`
+* Zorg ervoor dat de `$schema` eigenschap van de sjabloon geldig is. Het moet het volgende patroon volgen: `https://schema.management.azure.com/schemas/{schema_version}/deploymentTemplate.json#`
 * Zorg ervoor dat de `schema_version` sjabloon zich in geldige waarden bevindt: `2014-04-01-preview, 2015-01-01, 2018-05-01, 2019-04-01, 2019-08-01` .
     Foutbericht:
     ```powershell
@@ -280,13 +280,13 @@ Raadpleeg de [Snapshot debugger Troubleshooting-documentatie](snapshot-debugger-
 * Als ik Profiler of moment opname heb ingeschakeld en vervolgens BYOS ingeschakeld, worden mijn gegevens gemigreerd naar mijn opslag account?
     _Nee, dat is niet het geval._
 
-* Werkt BYOS met versleuteling op rest en door de klant beheerde sleutel?
-    _Ja, voor een nauw keurige BYOS is het vereist dat Profiler/Debugger is ingeschakeld met de sleutels van de klant Manager._
+* Werkt BYOS met versleuteling op rest-en Customer-Managed sleutel?
+    _Ja, voor een nauw keurige BYOS is het vereist dat Profiler/Debugger is ingeschakeld met Customer-Manager sleutels._
 
 * Werkt BYOS in een omgeving die is geïsoleerd van Internet?
     _Klikt. BYOS is in feite een vereiste voor geïsoleerde netwerk scenario's._
 
-* Werkt BYOS wanneer, door de klant beheerde sleutels en privé koppeling zijn ingeschakeld? 
+* Werkt BYOS wanneer, Customer-Managed sleutels en privé koppeling zijn ingeschakeld? 
     _Ja, dit kan mogelijk zijn._
 
 * Als ik BYOS heb ingeschakeld, kan ik dan teruggaan met de opslag accounts voor diagnostische services voor het opslaan van mijn verzamelde gegevens? 

@@ -9,10 +9,10 @@ ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: f3b492534bedde50d2413b88fa38cd6325ed5df7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91328255"
 ---
 # <a name="azure-security-benchmark-introduction"></a>Inleiding tot Azure Security Bench Mark
@@ -46,7 +46,7 @@ Azure Security Bench Mark wordt vaak gebruikt om deze veelvoorkomende uitdaginge
 De termen "besturings element", "bench Mark" en "baseline" worden vaak gebruikt in de documentatie over Azure Security Bench Mark. het is belang rijk om te begrijpen hoe Azure deze voor waarden gebruikt.
 
 
-| Term | Beschrijving | Voorbeeld |
+| Termijn | Beschrijving | Voorbeeld |
 |--|--|--|
 | Beheer | Een besturings element is een hoog niveau van een functie of activiteit die moet worden geadresseerd en niet specifiek is voor een technologie of implementatie. | Gegevens beveiliging is een van de beveiligings besturings elementen. Dit besturings element bevat specifieke acties die moeten worden geadresseerd om ervoor te zorgen dat gegevens beveiligd zijn. |
 | Benchmark | Een bench Mark bevat beveiligings aanbevelingen voor een specifieke technologie, zoals Azure. De aanbevelingen worden gecategoriseerd door het besturings element waarvan ze deel uitmaken. | De Security Bench Mark van Azure bestaat uit de beveiligings aanbevelingen die specifiek zijn voor het Azure-platform |

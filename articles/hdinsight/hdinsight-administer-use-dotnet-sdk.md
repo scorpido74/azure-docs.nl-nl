@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
 ms.openlocfilehash: dd0d7a3a05c108f0d7e95719356079633a0e2276
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89016084"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>Apache Hadoop-clusters in HDInsight beheren met behulp van de .NET-SDK
@@ -109,7 +109,7 @@ namespace HDInsightManagement
 Er wordt een prompt weer gegeven wanneer u dit programma uitvoert.  Als u de prompt niet wilt weer geven, raadpleegt u [niet-interactieve verificatie voor .net HDInsight-toepassingen maken](hdinsight-create-non-interactive-authentication-dotnet-applications.md).
 
 
-## <a name="list-clusters"></a>Clusters weer geven
+## <a name="list-clusters"></a>Clusters weergeven
 
 Het volgende code fragment bevat clusters en enkele eigenschappen:
 

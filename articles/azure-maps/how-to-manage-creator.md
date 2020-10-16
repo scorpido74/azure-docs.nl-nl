@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 579294388dbcf9f785ef41e06505c14b6767565f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83677946"
 ---
 # <a name="manage-azure-maps-creator"></a>Azure Maps Maker beheren
@@ -29,7 +29,7 @@ In dit artikel worden de stappen beschreven voor het maken en verwijderen van ee
 
     ![Start pagina van Azure Maps Portal](./media/how-to-manage-creator/select-maps-account.png)
 
-3. Als u zich op de pagina Azure Maps-account bevindt, gaat u naar de optie **overzicht** onder **Maker**. Klik op **maken** om een Azure Maps Creator-resource te maken.
+3. Als u zich op de pagina Azure Maps-account bevindt, gaat u naar de optie **overzicht** onder **Maker**. Klik op  **maken**  om een Azure Maps Creator-resource te maken.
 
     ![Azure Maps Creator-pagina maken](./media/how-to-manage-creator/creator-blade-settings.png)
 
@@ -71,7 +71,7 @@ De maker neemt de instellingen van Azure Maps Access Control (IAM) over. Alle AP
 
 De gebruiks gegevens van de maker zijn opgenomen in uw Azure Maps-gebruiks diagrammen en het activiteiten logboek.  Zie [verificatie beheren in azure Maps](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication)voor meer informatie.
 
-## <a name="access-to-creator-services"></a>Toegang tot Creator-Services
+## <a name="access-to-creator-services"></a>Toegang tot Creator-services
 
 De Creator-Services zijn alleen toegankelijk vanaf de locatie die is geselecteerd tijdens het maken. Als aanroepen naar Creator-services van buiten de geselecteerde locatie worden gedaan, wordt er een fout bericht van de gebruiker weer gegeven. Als u aanroepen buiten de geselecteerde locatie wilt maken, moet de service-URL het geografische voor voegsel voor de geselecteerde locaties bevatten. Als er bijvoorbeeld een Maker wordt gemaakt in de Verenigde Staten, moeten alle aanroepen naar de conversie service worden ingediend bij `us.atlas.microsoft.com/conversion/convert` .
 
@@ -105,4 +105,4 @@ Meer informatie over het gebruik van de maker voor het weer geven van binnenste 
 > [Dynamische opmaak van kaarten in een binnenshuis](indoor-map-dynamic-styling.md)
 
 > [!div class="nextstepaction"]
-> [De module binnenste kaarten gebruiken](how-to-use-indoor-module.md)
+> [De module Indoor Maps gebruiken](how-to-use-indoor-module.md)

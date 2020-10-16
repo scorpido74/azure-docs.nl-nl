@@ -6,12 +6,12 @@ ms.subservice: shared-capabilities
 ms.date: 01/13/2020
 ms.topic: conceptual
 ms.custom: has-adal-ref
-ms.openlocfilehash: 39085aa7967ffeac3416b61f32146ac023b46dfe
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 0a3cff616f814b8e5209b15f9d3f7439533452ca
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186653"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071758"
 ---
 # <a name="manage-connections-in-azure-automation"></a>Verbindingen in Azure Automation beheren
 
@@ -31,9 +31,9 @@ Wanneer u een verbinding maakt, moet u een verbindings type opgeven. Het verbind
 
 Azure Automation maakt de volgende ingebouwde verbindings typen beschikbaar:
 
-* `Azure`-Vertegenwoordigt een verbinding die wordt gebruikt om klassieke resources te beheren.
-* `AzureServicePrincipal`-Vertegenwoordigt een verbinding die wordt gebruikt door het uitvoeren als-account van Azure.
-* `AzureClassicCertificate`-Vertegenwoordigt een verbinding die wordt gebruikt door het klassieke uitvoeren als-account van Azure.
+* `Azure` -Vertegenwoordigt een verbinding die wordt gebruikt om klassieke resources te beheren.
+* `AzureServicePrincipal` -Vertegenwoordigt een verbinding die wordt gebruikt door het uitvoeren als-account van Azure.
+* `AzureClassicCertificate` -Vertegenwoordigt een verbinding die wordt gebruikt door het klassieke uitvoeren als-account van Azure.
 
 In de meeste gevallen hoeft u geen verbindings bron te maken omdat deze wordt gemaakt wanneer u een [uitvoeren als-account](manage-runas-account.md)maakt.
 
@@ -54,7 +54,7 @@ De interne cmdlet in de volgende tabel wordt gebruikt voor toegang tot verbindin
 
 |Interne cmdlet|Beschrijving|
 |---|---|
-|`Get-AutomationConnection` | Haalt de waarden van de verschillende velden in de verbinding op en retourneert deze als een [hashtabel](https://go.microsoft.com/fwlink/?LinkID=324844). U kunt deze hashtabel vervolgens gebruiken met de juiste opdrachten in het runbook of de DSC-configuratie.|
+|`Get-AutomationConnection` | Haalt de waarden van de verschillende velden in de verbinding op en retourneert deze als een [hashtabel](/powershell/module/microsoft.powershell.core/about/about_hash_tables). U kunt deze hashtabel vervolgens gebruiken met de juiste opdrachten in het runbook of de DSC-configuratie.|
 
 >[!NOTE]
 >Vermijd het gebruik van variabelen met de `Name` para meter van `Get-AutomationConnection` . Het gebruik van variabelen in dit geval kan de detectie van afhankelijkheden tussen runbooks of DSC-configuraties en verbindings assets tijdens het ontwerpen bemoeilijken.

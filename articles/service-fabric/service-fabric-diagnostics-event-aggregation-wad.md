@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/03/2018
 ms.author: srrengar
 ms.openlocfilehash: bcb9ca9e73c0898dc778202eca036a5ae92bebf8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87076145"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Gebeurtenis aggregatie en verzameling met behulp van Windows Azure Diagnostics
@@ -193,7 +193,7 @@ Nadat u de template.jsin het bestand hebt gewijzigd zoals beschreven, publiceert
 
 ### <a name="update-storage-quota"></a>Opslag quotum bijwerken
 
-Omdat de tabellen die worden gevuld door de uitbrei ding groeien tot het quotum wordt bereikt, kunt u overwegen de quotum grootte te verlagen. De standaard waarde is 50 GB en kan worden geconfigureerd in de sjabloon onder het `overallQuotaInMB` veld onder`DiagnosticMonitorConfiguration`
+Omdat de tabellen die worden gevuld door de uitbrei ding groeien tot het quotum wordt bereikt, kunt u overwegen de quotum grootte te verlagen. De standaard waarde is 50 GB en kan worden geconfigureerd in de sjabloon onder het `overallQuotaInMB` veld onder `DiagnosticMonitorConfiguration`
 
 ```json
 "overallQuotaInMB": "50000",
@@ -284,7 +284,7 @@ Als u Diagnostische gegevens wilt bijwerken om logboeken te verzamelen van nieuw
 
 Werk de `EtwEventSourceProviderConfiguration` sectie in het template.jsbestand om vermeldingen toe te voegen voor de nieuwe event source-kanalen voordat u de configuratie-update toepast met behulp van de `New-AzResourceGroupDeployment` Power shell-opdracht. De naam van de gebeurtenis bron wordt gedefinieerd als onderdeel van uw code in het Visual Studio-gegenereerde ServiceEventSource.cs-bestand.
 
-Als uw gebeurtenis bron bijvoorbeeld mijn-Event source heet, voegt u de volgende code toe om de gebeurtenissen van mijn-Event source te plaatsen in een tabel met de naam MyDestinationTableName.
+Als uw gebeurtenis bron bijvoorbeeld de naam mijn-Event source heeft, voegt u de volgende code toe om de gebeurtenissen van My-Eventsource te plaatsen in een tabel met de naam MyDestinationTableName.
 
 ```json
         {

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 787de3e3e44ca921c5dccd7b51a2e655a31d112b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ba76618892cace6681c82e96d7a2f9b36f839664
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555957"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775538"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-datahug"></a>Zelfstudie: Azure Active Directory-integratie met Datahug
 
@@ -99,7 +99,7 @@ Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding bij Datahug wil
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
 
-    ![Domein- en URL-gegevens voor eenmalige aanmelding bij Datahug](common/idp-intiated.png)
+    ![Schermopname toont de sectie 'Basic SAML-configuratie' waarin de knoppen 'Id', 'Antwoord-URL' en 'Opslaan' zijn gemarkeerd.](common/idp-intiated.png)
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://apps.datahug.com/identity/<uniqueID>`
 
@@ -206,11 +206,11 @@ In het geval van Datahug is dat een handmatige taak.
 
 2. Beweeg de muisaanwijzer over het **tandwiel** in de rechterbovenhoek en klik op **Instellingen**
    
-    ![Werknemer toevoegen](./media/datahug-tutorial/1.png)
+    ![Schermopname van de startpagina 'Datahug' waarop het pictogram met het tandwiel is geselecteerd en 'Instellingen' is geselecteerd in het vervolgkeuzemenu.](./media/datahug-tutorial/1.png)
 
 3. Selecteer **Mensen** en klik op het tabblad **Gebruikers toevoegen**
 
-    ![Werknemer toevoegen](./media/datahug-tutorial/2.png)
+    ![Schermopname van de pagina 'Instellingen' waarop het tabblad 'Personen' en 'Gebruikers toevoegen' zijn geselecteerd.](./media/datahug-tutorial/2.png)
 
 4. Typ de e-mail van de persoon voor wie u een account wilt aanmaken, en klik op **Toevoegen**.
 

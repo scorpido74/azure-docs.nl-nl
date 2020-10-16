@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 02/12/2020
+ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: bdd27645045195016b7a563787470bf6f2187115
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b1007fe89cf455b6af8ebba00f24e8019ad8013
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84985463"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078286"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>Een VNet-naar-VNet-verbinding configureren (klassiek)
 
@@ -32,8 +32,6 @@ Dit artikel helpt u bij het maken van een VPN-gateway verbinding tussen virtuele
 >
 
 ![Diagram van VNet-naar-VNet-connectiviteit](./media/vpn-gateway-howto-vnet-vnet-portal-classic/v2vclassic.png)
-
-
 
 ## <a name="about-vnet-to-vnet-connections"></a>Over VNet-naar-VNet-verbindingen
 
@@ -61,7 +59,7 @@ U wilt virtuele netwerken wellicht koppelen om de volgende redenen:
 
 Zie voor meer informatie over verbindingen tussen VNets de [Aandachtspunten bij VNet-naar-VNet](#faq) aan het einde van dit artikel.
 
-### <a name="working-with-azure-powershell"></a><a name="powershell"></a>Werken met Azure PowerShell
+## <a name="prerequisites"></a>Vereisten
 
 We gebruiken de portal voor de meeste stappen, maar u moet Power shell gebruiken om de verbindingen tussen de VNets te maken. U kunt de verbindingen niet maken met behulp van de Azure Portal. [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
@@ -80,23 +78,14 @@ In de volgende tabel ziet u een voor beeld van hoe u uw VNets definieert. Gebrui
 
 ## <a name="step-2---create-the-virtual-networks"></a><a name="vnetvalues"></a>Stap 2: de virtuele netwerken maken
 
-Maak twee virtuele netwerken in de [Azure Portal](https://portal.azure.com). Zie [een klassiek virtueel netwerk maken](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)voor de stappen voor het maken van klassieke virtuele netwerken. 
-
-Wanneer u de portal gebruikt om een klassiek virtueel netwerk te maken, moet u naar de pagina virtueel netwerk gaan door de volgende stappen uit te voeren. anders wordt de optie voor het maken van een klassiek virtueel netwerk niet weer gegeven:
-
-1. Klik op ' + ' om de pagina ' nieuw ' te openen.
-2. Typ ' Virtual Network ' in het veld Marketplace doorzoeken. Als u in plaats daarvan netwerk-> Virtual Network selecteert, krijgt u niet de mogelijkheid om een klassiek VNet te maken.
-3. Zoek naar ' Virtual Network ' in de lijst met resultaten en klik erop om de pagina Virtual Network te openen. 
-4. Selecteer op de pagina virtueel netwerk de optie klassiek om een klassiek VNet te maken. 
-
-Als u dit artikel gebruikt als oefening, kunt u de volgende voorbeeld waarden gebruiken:
+In deze stap maakt u twee klassieke virtuele netwerken. Als u dit artikel gebruikt als oefening, kunt u de volgende voorbeeld waarden gebruiken:
 
 **Waarden voor TestVNet1**
 
 Naam: TestVNet1<br>
 Adres ruimte: 10.11.0.0/16, 10.12.0.0/16 (optioneel)<br>
 Subnetnaam: standaard<br>
-Adres bereik van subnet: 10.11.0.1/24<br>
+Subnetadresbereik: 10.11.0.0/24<br>
 Resource groep: ClassicRG<br>
 Locatie: VS - oost<br>
 GatewaySubnet: 10.11.1.0/27
@@ -125,7 +114,11 @@ GatewaySubnet: 10.41.1.0/27
 
 * **DNS-servers** : Voer de naam en het IP-adres van de DNS-server in. Met deze instelling wordt geen DNS-server gemaakt. U kunt hiermee de DNS-servers opgeven die u wilt gebruiken voor de naamomzetting voor dit virtuele netwerk.
 
-In deze sectie configureert u het verbindings type, de lokale site, en maakt u de gateway.
+### <a name="to-create-a-classic-virtual-network"></a>Een klassiek virtueel netwerk maken
+
+[!INCLUDE [basic classic vnet](../../includes/vpn-gateway-vnet-classic.md)]
+
+[!INCLUDE [basic classic DNS](../../includes/vpn-gateway-dns-classic.md)]
 
 ## <a name="step-3---configure-the-local-site"></a><a name="localsite"></a>Stap 3: de lokale site configureren
 
@@ -205,38 +198,7 @@ Nadat de gateways voor het virtuele netwerk zijn gemaakt voor beide VNets, moet 
 
 ## <a name="step-7---retrieve-values-from-the-network-configuration-file"></a><a name="getvalues"></a>Stap 7: waarden uit het netwerk configuratie bestand ophalen
 
-Wanneer u een klassiek VNets maakt in de Azure Portal, is de naam die u wilt weer geven niet de volledige naam die u gebruikt voor Power shell. Zo kan een VNet dat **TestVNet1** in de portal heet, een veel langere naam hebben in het netwerk configuratie bestand. De naam kan er ongeveer als volgt uitzien: **Group ClassicRG TestVNet1**. Wanneer u uw verbindingen maakt, is het belang rijk dat u de waarden gebruikt die u in het netwerk configuratie bestand ziet.
-
-In de volgende stappen maakt u verbinding met uw Azure-account en downloadt en bekijkt u het netwerk configuratie bestand om de vereiste waarden voor uw verbindingen te verkrijgen.
-
-1. Down load en installeer de meest recente versie van de Power shell-cmdlets voor Azure Service Management (SM). Zie [werken met Azure PowerShell](#powershell)voor meer informatie.
-
-2. Open de Power shell-console met verhoogde bevoegdheden. Gebruik de volgende voor beelden om u te helpen verbinding te maken. U moet deze opdrachten lokaal uitvoeren met de module Power shell-Service beheer. Als u wilt overschakelen naar Service beheer, gebruikt u deze opdracht:
-
-   ```powershell
-   azure config mode asm
-   ```
-3. Maak verbinding met uw account. Gebruik het volgende voorbeeld als hulp bij het maken van de verbinding:
-
-   ```powershell
-   Add-AzureAccount
-   ```
-4. Controleer de abonnementen voor het account.
-
-   ```powershell
-   Get-AzureSubscription
-   ```
-5. Als u meerdere abonnementen hebt, selecteert u het abonnement dat u wilt gebruiken.
-
-   ```powershell
-   Select-AzureSubscription -SubscriptionId "Replace_with_your_subscription_ID"
-   ```
-6. Het netwerk configuratie bestand exporteren en weer geven. Maak een map op de computer en exporteer vervolgens het netwerkconfiguratiebestand naar de map. In dit voor beeld wordt het netwerk configuratie bestand geëxporteerd naar **C:\AzureNet**.
-
-   ```powershell
-   Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
-   ```
-7. Open het bestand met een tekst editor en Bekijk de namen voor uw VNets en sites. Deze namen zijn de namen die u gebruikt wanneer u uw verbindingen maakt.<br>VNet-namen worden vermeld als **VirtualNetworkSite name =**<br>Site namen worden vermeld als **LocalNetworkSiteRef name =**
+[!INCLUDE [retrieve values](../../includes/vpn-gateway-values-classic.md)]
 
 ## <a name="step-8---create-the-vpn-gateway-connections"></a><a name="createconnections"></a>Stap 8: de VPN-gateway verbindingen maken
 

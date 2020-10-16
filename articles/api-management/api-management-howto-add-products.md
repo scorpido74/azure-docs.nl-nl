@@ -1,28 +1,21 @@
 ---
-title: Een product maken en publiceren in Azure API Management
-description: Leer hoe u producten kunt maken en publiceren in Azure API Management. Zodra een product is gepubliceerd, kunnen ontwikkelaars de API's van het product gaan gebruiken.
-services: api-management
-documentationcenter: ''
+title: 'Zelfstudie: een product maken en publiceren in Azure API Management'
+description: In deze zelfstudie gaat u een product maken en publiceren in Azure API Management. Zodra het is gepubliceerd, kunnen ontwikkelaars de API's van het product gaan gebruiken.
 author: mikebudzynski
-manager: cfowler
-editor: ''
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
-ms.custom: mvc
 ms.topic: tutorial
-ms.date: 08/10/2018
+ms.date: 09/30/2020
 ms.author: apimpm
-ms.openlocfilehash: 69b5e381ed8446b45f68b4b1ce9bb13df47039c0
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 2f298f240d8aa7a38b42a8c78ee3c90fe3423d10
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904901"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630554"
 ---
-# <a name="create-and-publish-a-product"></a>Een product maken en publiceren  
+# <a name="tutorial-create-and-publish-a-product"></a>Zelfstudie: Een product maken en publiceren  
 
-In Azure API Management bevat een product een of meer API's, evenals een gebruiksquotum en de gebruiksvoorwaarden. Zodra een product is gepubliceerd, kunnen ontwikkelaars zich abonneren op het product en de API's van het product gaan gebruiken.  
+In Azure API Management bevat een [*product*](api-management-terminology.md#term-definitions) een of meer API's, evenals een gebruiksquotum en de gebruiksvoorwaarden. Zodra een product is gepubliceerd, kunnen ontwikkelaars zich abonneren op het product en de API's van het product gaan gebruiken.  
 
 In deze zelfstudie leert u het volgende:
 
@@ -30,7 +23,8 @@ In deze zelfstudie leert u het volgende:
 > * Een product maken en publiceren
 > * Een API toevoegen aan het product
 
-![Zelfstudie over product toevoegen](media/api-management-howto-add-products/added-product.png)
+:::image type="content" source="media/api-management-howto-add-products/added-product.png" alt-text="API Management-producten in portal":::
+
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -40,52 +34,56 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="create-and-publish-a-product"></a>Een product maken en publiceren
 
-![Product toevoegen](media/api-management-howto-add-products/02-create-publish-product-01.png)
+1. Meld u aan bij de Azure-portal en ga naar uw API Management-exemplaar.
+1. Selecteer in het linkernavigatievenster **Products** (Producten) >  **+ Add** (Toevoegen).
+1.  Voer in het venster **Add product** (Product toevoegen) de waarden in die in de volgende tabel worden beschreven om uw product te maken.
 
-1. Klik op **Producten** in het menu aan de linkerkant om de pagina **Producten** weer te geven.
-2. Klik op **+ Toevoegen**.
-
-    Wanneer u een product toevoegt, moet u de volgende informatie opgeven: 
+    :::image type="content" source="media/api-management-howto-add-products/02-create-publish-product-01.png" alt-text="API Management-producten in portal":::
 
     | Naam                     | Beschrijving                                                                                                                                                                                                                                                                                                             |
     |--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Weergavenaam             | De naam zoals u wilt dat deze wordt weergegeven in de **ontwikkelaarsportal**.                                                                                                                                                                                                                                                        |
-    | Naam                     | Een beschrijvende naam van het product.                                                                                                                                                                                                                                                                                      |
-    | Beschrijving              | In het veld **Beschrijving** kunt u gedetailleerde informatie over het product opgeven, zoals het doel, de API's waartoe het product toegang biedt, en andere nuttige informatie.                                                                                                                                               |
-    | Status                    | Druk op **Gepubliceerd** als u het product wilt publiceren. Voordat de API's in een product kunnen worden aangeroepen, moet het product worden gepubliceerd. Nieuwe producten zijn standaard niet-gepubliceerd, en alleen zichtbaar voor gebruikers in de groep **Beheerders**.                                                                                      |
-    | Abonnement is vereist    | Schakel **Abonnement vereisen**in als een gebruiker een abonnement moet hebben om het product te kunnen gebruiken.                                                                                                                                                                                                                                   |
-    | Goedkeuring vereist        | Schakel **Goedkeuring vereisen** in als u wilt dat een beheerder abonnementspogingen voor dit product beoordeelt en accepteert of weigert. Als het selectievakje uitgeschakeld is, worden abonnementspogingen automatisch goedgekeurd.                                                                                                                         |
-    | Limiet voor het aantal abonnementen | Als u het aantal gelijktijdige abonnementen wilt beperken, voert u de limiet voor het aantal abonnementen in.                                                                                                                                                                                                                                |
+    | Weergavenaam             | De naam zoals u wilt dat deze wordt weergegeven in de [ontwikkelaarsportal](api-management-howto-developer-portal.md).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+    | Beschrijving              | Geef informatie op over het product, zoals het doel, de API's waartoe het toegang geeft, en andere details.                                                                                                                                               |
+    | Status                    | Selecteer **Published** (Gepubliceerd) als u het product wilt publiceren. Voordat de API's in een product kunnen worden aangeroepen, moet het product worden gepubliceerd. Nieuwe producten worden standaard niet-gepubliceerd, en zijn alleen zichtbaar voor gebruikers in de groep **Beheerders**.                                                                                      |
+    | Abonnement is vereist    | Selecteer dit als een gebruiker een abonnement moet hebben om het product te kunnen gebruiken.                                                                                                                                                                                                                                   |
+    | Goedkeuring vereist        | Selecteer dit als u wilt dat een beheerder abonnementspogingen voor dit product beoordeelt en accepteert of weigert. Als dit niet geselecteerd is, worden abonnementspogingen automatisch goedgekeurd.                                                                                                                         |
+    | Limiet voor het aantal abonnementen | Beperk desgewenst het aantal gelijktijdige abonnementen.                                                                                                                                                                                                                                |
     | Juridische voorwaarden              | U kunt ook de gebruiksvoorwaarden voor het product opnemen, die abonnees moeten accepteren om het product te kunnen gebruiken.                                                                                                                                                                                                             |
-    | API's                     | Producten zijn koppelingen van een of meer API's. U kunt een aantal API's opnemen en deze beschikbaar stellen voor ontwikkelaars via de ontwikkelaarsportal. <br/> U kunt een bestaande API toevoegen tijdens het maken van het product. U kunt een API later aan het product toevoegen, hetzij vanuit de pagina van de product **Instellingen** of tijdens het maken van een API. |
+    | API's                     | Selecteer een of meer API's. U kunt ook API's toevoegen na het maken van het product. Zie [API's toevoegen aan een product](#add-apis-to-a-product) verderop in dit artikel voor meer informatie. |
 
-3. Klik op **Maken** om een nieuw product te maken.
+3. Klik op **Create** (Maken) om een nieuw product te maken.
 
 ### <a name="add-more-configurations"></a>Meer configuraties toevoegen
 
-U kunt doorgaan met het configureren van het product nadat het is opgeslagen door het tabblad **Instellingen** te kiezen. 
+Ga door met het configureren van het product nadat u het hebt opgeslagen. Selecteer in uw API Management-exemplaar het product in het venster **Products** (Producten). Toevoegen of bijwerken:
 
-Op het tabblad **Abonnementen** kunt u de abonnees van het product bekijken of abonnees aan het product toevoegen.
 
-Op het tabblad **Toegangsbeheer** kunt u de zichtbaarheid voor ontwikkelaars of gastgebruikers van een product instellen.
+|Item   |Beschrijving  |
+|---------|---------|
+|Instellingen     |    Metagegevens en status van product     |
+|API's     |  API's die zijn gekoppeld aan het product       |
+|[Beleidsregels](api-management-howto-policies.md)     |  Op product-API's toegepast beleid      |
+|Toegangsbeheer     |  Zichtbaarheid van het product voor ontwikkelaars of gasten       |
+|[Abonnementen](api-management-subscriptions.md)    |    Productabonnees     |
 
-## <a name="add-apis-to-a-product"></a><a name="add-apis"> </a>API's toevoegen aan een product
+## <a name="add-apis-to-a-product"></a>API's toevoegen aan een product
 
-Producten zijn koppelingen van een of meer API's. U kunt een aantal API's opnemen en deze beschikbaar stellen voor ontwikkelaars via de ontwikkelaarsportal. U kunt een bestaande API toevoegen tijdens het maken van het product. U kunt ook later een API aan het product toevoegen, via de pagina met **instellingen** van het product of tijdens het maken van een API.
+Producten zijn koppelingen van een of meer API's. U kunt een aantal API's opnemen en deze beschikbaar stellen voor ontwikkelaars via de ontwikkelaarsportal. Tijdens het maken van het product kunt u een of meer bestaande API's toevoegen. U kunt ook later API's aan het product toevoegen, via de pagina met **instellingen** van het product of tijdens het maken van een API.
 
 Ontwikkelaars moeten zich eerst abonneren op een product om toegang tot de API te krijgen. Wanneer ontwikkelaars zich abonneren, ontvangen ze een abonnementssleutel die toegang biedt tot elke API in het betreffende product. Als u de APIM-abonnementssleutel hebt gemaakt, bent u al een beheerder en bent u standaard geabonneerd op elk product.
 
 ### <a name="add-an-api-to-an-existing-product"></a>Een API toevoegen aan een bestaand product
 
-![product-API toevoegen](media/api-management-howto-add-products/02-create-publish-product-02.png)
 
-1. Selecteer op het tabblad **Producten** een product.
-2. Navigeer naar het tabblad **API's**.
-3. Klik op **+ Toevoegen**.
-4. Kies een API en klik op **Selecteren**.
+1. Selecteer **Products** (Producten) in de linkernavigatie van uw API Management-exemplaar.
+1. Selecteer een product en selecteer vervolgens **API's**.
+1. Selecteer **+ Toevoegen**.
+1. Selecteer een of meer API's en vervolgens **Select** (Selecteren).
+
+:::image type="content" source="media/api-management-howto-add-products/02-create-publish-product-02.png" alt-text="API Management-producten in portal":::
 
 > [!TIP]
-> U kunt het abonnement van een gebruiker maken of bijwerken naar een *Product* met aangepaste abonnementssleutels [via een REST API](/rest/api/apimanagement/2019-12-01/subscription/createorupdate) of een PowerShell-opdracht.
+> U kunt het abonnement van een gebruiker op een product maken of bijwerken met aangepaste abonnementssleutels via een [REST API](/rest/api/apimanagement/2019-12-01/subscription/createorupdate) of een PowerShell-opdracht.
 
 ## <a name="next-steps"></a>Volgende stappen
 

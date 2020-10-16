@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 057cbd5d42eafaa693abc418de62c3ae03a6b995
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 9eed237b1dd4d6bf6f2903b91c80847d615fe7a1
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984591"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978285"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>Zelfstudie: Azure Security Center gebruiken om virtuele Windows-machines te bewaken
 
@@ -66,7 +66,7 @@ Een beveiligingsbeleid voor een volledig abonnement instellen:
 
 ## <a name="view-vm-configuration-health"></a>Configuratiestatus van VM weergeven
 
-Zodra u gegevensverzameling hebt ingeschakeld en een beveiligingsbeleid hebt ingesteld, begint Security Center meldingen en aanbevelingen te geven. Wanneer virtuele machines worden geïmplementeerd, wordt de agent voor gegevensverzameling geïnstalleerd. Security Center wordt vervolgens gevuld met gegevens voor de nieuwe VM's. Zie [Protect your VMs in Security Center](../../security-center/security-center-virtual-machine-protection.md) (Uw VM's beschermen in Security Center) voor gedetailleerde informatie over de configuratiestatus van VM's. 
+Zodra u gegevensverzameling hebt ingeschakeld en een beveiligingsbeleid hebt ingesteld, begint Security Center meldingen en aanbevelingen te geven. Wanneer virtuele machines worden geïmplementeerd, wordt de agent voor gegevensverzameling geïnstalleerd. Security Center wordt vervolgens gevuld met gegevens voor de nieuwe VM's. Zie [Protect your VMs in Security Center](../../security-center/asset-inventory.md) (Uw VM's beschermen in Security Center) voor gedetailleerde informatie over de configuratiestatus van VM's. 
 
 Terwijl er gegevens worden verzameld, worden de resourcestatus voor elke VM en de gerelateerde Azure-resource verzameld. De informatie wordt weergegeven in een duidelijk diagram. 
 

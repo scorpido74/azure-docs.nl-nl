@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 01/09/2019
 ms.author: alkohli
 ms.openlocfilehash: a4ac56a4d588071f599f62e6de94d9ec7367a1ae
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87924750"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk"></a>De Azure-portal gebruiken om uw Data Box te beheren
@@ -51,7 +51,7 @@ Voer de volgende stappen uit om een order te klonen.
 
     ![Order klonen 1](media/data-box-portal-ui-admin/clone-order1.png)
 
-2.  Alle details van de order blijven hetzelfde. De ordernaam is de oorspronkelijke ordernaam met *-Kloon* eraan toegevoegd. Schakel het selectievakje in om te bevestigen dat u de privacyinformatie hebt gelezen. Klik op **Create**.    
+2.  Alle details van de order blijven hetzelfde. De ordernaam is de oorspronkelijke ordernaam met *-Kloon* eraan toegevoegd. Schakel het selectievakje in om te bevestigen dat u de privacyinformatie hebt gelezen. Klik op **Maken**.    
 
 De kloon wordt binnen enkele minuten gemaakt en de portal wordt bijgewerkt met de nieuwe order.
 

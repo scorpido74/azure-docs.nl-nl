@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: 0b7b09696cbbe12a57d066e452b4c8ea7a7b8f27
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90935882"
 ---
 # <a name="configure-and-access-logs-in-azure-database-for-postgresql---flexible-server"></a>Logboeken configureren en openen in Azure Database for PostgreSQL-flexibele server
@@ -36,7 +36,7 @@ Resource logboeken inschakelen met behulp van de Azure Portal:
 4. Selecteer uw gewenste eind punt (opslag account, Event Hub, log Analytics). 
 
 5. Selecteer het logboek type **PostgreSQLLogs**.
-   :::image type="content" source="media/howto-logging/diagnostic-create-setting.png" alt-text="PostgreSQL-logboeken kiezen":::
+   :::image type="content" source="media/howto-logging/diagnostic-create-setting.png" alt-text="Knop Diagnostische instellingen toevoegen":::
 
 7. Sla de instelling op.
 

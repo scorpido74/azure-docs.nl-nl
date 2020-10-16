@@ -10,12 +10,12 @@ ms.workload: storage
 ms.date: 06/01/2017
 ms.author: jaboes
 ms.subservice: disks
-ms.openlocfilehash: 298c6e4f33fff99fff01b6b911ec77c78f1fbd26
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: 7c66a8b8483673a9d8fbdc9922b9cc377781bab3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91666548"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976657"
 ---
 # <a name="using-disks-in-azure-resource-manager-templates"></a>Schijven in Azure Resource Manager sjablonen gebruiken
 
@@ -266,5 +266,4 @@ Raadpleeg de documentatie voor het [maken van een beheerde schijf rest API](/res
 * Ga naar het document [overzicht van Azure Managed disks](managed-disks-overview.md) voor meer informatie over Managed disks.
 * Raadpleeg de documentatie over de sjabloon voor virtuele machines voor meer informatie. Ga naar het document [micro soft. Compute/informatie voor sjablonen](/azure/templates/microsoft.compute/virtualmachines) .
 * Raadpleeg de documentatie over sjablonen voor schijf bronnen door naar het document [micro soft. Compute/disks-sjabloon](/azure/templates/microsoft.compute/disks) te gaan.
-* Ga voor meer informatie over het gebruik van beheerde schijven in virtuele-machine schaal sets van Azure naar het document [gegevens schijven met schaal sets gebruiken](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks) .
-
+* Ga voor meer informatie over het gebruik van beheerde schijven in virtuele-machine schaal sets van Azure naar het document [gegevens schijven met schaal sets gebruiken](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md) .

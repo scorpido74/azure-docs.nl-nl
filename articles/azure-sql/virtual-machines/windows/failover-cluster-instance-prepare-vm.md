@@ -13,10 +13,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.openlocfilehash: f42d6c8015061406958bdc16473dc0f042d3143a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91272494"
 ---
 # <a name="prepare-virtual-machines-for-an-fci-sql-server-on-azure-vms"></a>Virtuele machines voorbereiden voor een FCI (SQL Server op Azure-Vm's)
@@ -105,7 +105,7 @@ Als u een [Load Balancer](hadr-vnn-azure-load-balancer-configure.md)gebruikt, mo
 
 Deze tabel bevat informatie over de poorten die u mogelijk moet openen, afhankelijk van uw FCI-configuratie: 
 
-   | Doel | Poort | Opmerkingen
+   | Doel | Poort | Notities
    | ------ | ------ | ------
    | SQL Server | TCP 1433 | Normale poort voor standaard exemplaren van SQL Server. Als u een installatie kopie uit de galerie hebt gebruikt, wordt deze poort automatisch geopend. </br> </br> **Gebruikt door**: alle FCI-configuraties. |
    | Statustest | TCP 59999 | Een open TCP-poort. Configureer de load balancer [Health probe](hadr-vnn-azure-load-balancer-configure.md#configure-health-probe) en het cluster om deze poort te gebruiken. </br> </br> **Gebruikt door**: FCI met Load Balancer. |

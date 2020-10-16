@@ -4,10 +4,10 @@ description: Dit artikel bevat een overzicht van Azure Backup ondersteuning wann
 ms.date: 02/17/2019
 ms.topic: conceptual
 ms.openlocfilehash: 011e115c7f3cc94b03ffd9ad2467406c60738033
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91332692"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Ondersteunings matrix voor back-up met Microsoft Azure Backup Server of System Center DPM
@@ -102,7 +102,7 @@ U kunt MABS implementeren op een Azure Stack virtuele machine, zodat u een back-
 **.NET Framework op MABS** | Voor de MABS-VM moet .NET Framework 3,3 SP1 of hoger zijn geïnstalleerd.
 **Domein MABS** | De MABS-VM moet lid zijn van een domein. Een domein gebruiker met beheerders bevoegdheden moet MABS installeren op de virtuele machine.
 **Back-up van VM-gegevens Azure Stack** | U kunt back-ups maken van bestanden, mappen en apps.
-**Ondersteunde back-up** | Deze besturings systemen worden ondersteund voor virtuele machines waarvan u een back-up wilt maken:<br/><br/> Windows Server Semi-Annual-kanaal (Data Center, Enter prise, Standard)<br/><br/> Windows Server 2016, Windows Server 2012 R2, Windows Server 2008 R2
+**Ondersteunde back-up** | Deze besturings systemen worden ondersteund voor virtuele machines waarvan u een back-up wilt maken:<br/><br/> Windows Server Semi-Annual kanaal (Data Center, Enter prise, Standard)<br/><br/> Windows Server 2016, Windows Server 2012 R2, Windows Server 2008 R2
 **SQL Server ondersteuning voor Azure Stack Vm's** | Maak een back-up van SQL Server 2016 SQL Server 2014 SQL Server 2012 SP1.<br/><br/> Back-ups maken en herstellen van een Data Base.
 **Share point-ondersteuning voor Azure Stack Vm's** | Share point 2016, share point 2013, share point 2010.<br/><br/> Back-ups maken en herstellen van een farm, Data Base, front-end en webserver.
 **Netwerk vereisten voor het maken van back-ups van Vm's** | Alle virtuele machines in Azure Stack workload moeten deel uitmaken van hetzelfde virtuele netwerk en behoren tot hetzelfde abonnement.

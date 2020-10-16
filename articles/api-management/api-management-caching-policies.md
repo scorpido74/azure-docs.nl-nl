@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: f0aeef7bc67f5c59bb80d5ff24a97be737447a81
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: cc258a0e790559cb343bfbf2eda0787962e2063e
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510178"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071265"
 ---
 # <a name="api-management-caching-policies"></a>API Management-cachebeleid
-In dit onderwerp vindt u een verwijzing naar de volgende API Management-beleids regels. Zie [beleid in API Management](https://go.microsoft.com/fwlink/?LinkID=398186)voor meer informatie over het toevoegen en configureren van beleid.
+In dit onderwerp vindt u een verwijzing naar de volgende API Management-beleids regels. Zie [beleid in API Management](./api-management-policies.md)voor meer informatie over het toevoegen en configureren van beleid.
 
 ## <a name="caching-policies"></a><a name="CachingPolicies"></a> Cache beleidsregels
 
@@ -110,12 +110,12 @@ Zie [beleids expressies](api-management-policy-expressions.md) en [context varia
 
 | Naam                           | Beschrijving                                                                                                                                                                                                                                                                                                                                                 | Vereist | Standaard           |
 |--------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
-| toestaan: private-Response-caching | Als deze instelling `true` is ingesteld op, staat het opslaan van aanvragen in de cache toe die een autorisatie-header bevatten.                                                                                                                                                                                                                                                                        | Nee       | false             |
+| toestaan: private-Response-caching | Als deze instelling `true` is ingesteld op, staat het opslaan van aanvragen in de cache toe die een autorisatie-header bevatten.                                                                                                                                                                                                                                                                        | Nee       | onjuist             |
 | cache-type               | U kunt kiezen uit de volgende waarden van het kenmerk:<br />- `internal` de ingebouwde API Management-cache gebruiken<br />- `external` Als u de externe cache wilt gebruiken zoals wordt beschreven in [een externe Azure-cache gebruiken voor redis in Azure API Management](api-management-howto-cache-external.md),<br />- `prefer-external` Als u een externe cache wilt gebruiken als deze is geconfigureerd of als de interne cache anders. | Nee       | `prefer-external` |
 | downstream-caching-type        | Dit kenmerk moet worden ingesteld op een van de volgende waarden.<br /><br /> -geen-downstream-caching is niet toegestaan.<br />-Private-downstream-caching is toegestaan.<br />-openbaar-privé en gedeeld downstream-caching is toegestaan.                                                                                                          | Nee       | geen              |
 | moet opnieuw valideren                | Wanneer downstream-caching is ingeschakeld, wordt met dit kenmerk de `must-revalidate` Cache-Control-instructie in de gateway-antwoorden in-of uitgeschakeld.                                                                                                                                                                                                                      | Nee       | true              |
-| variëren per ontwikkelaar              | Instellen op `true` het opslaan van antwoorden per ontwikkelaars account dat eigenaar is van de [abonnements sleutel](./api-management-subscriptions.md) die in de aanvraag is opgenomen.                                                                                                                                                                                                                                                                                                  | Ja      |         Niet waar          |
-| variëren per ontwikkelaar-groepen       | Instellen op `true` het opslaan van antwoorden per [gebruikers groep](./api-management-howto-create-groups.md).                                                                                                                                                                                                                                                                                                             | Ja      |       Niet waar            |
+| variëren per ontwikkelaar              | Instellen op `true` het opslaan van antwoorden per ontwikkelaars account dat eigenaar is van de [abonnements sleutel](./api-management-subscriptions.md) die in de aanvraag is opgenomen.                                                                                                                                                                                                                                                                                                  | Ja      |         False          |
+| variëren per ontwikkelaar-groepen       | Instellen op `true` het opslaan van antwoorden per [gebruikers groep](./api-management-howto-create-groups.md).                                                                                                                                                                                                                                                                                                             | Ja      |       False            |
 
 ### <a name="usage"></a>Gebruik
 Dit beleid kan worden gebruikt in de volgende beleids [secties](./api-management-howto-policies.md#sections) en [bereiken](./api-management-howto-policies.md#scopes).
@@ -328,4 +328,4 @@ Zie voor meer informatie over het gebruik van beleid:
 + [Beleid in API Management](api-management-howto-policies.md)
 + [Api's transformeren](transform-api.md)
 + [Beleids verwijzing](./api-management-policies.md) voor een volledige lijst met beleids instructies en hun instellingen
-+ [Voor beelden van beleid](policy-samples.md)
++ [Voor beelden van beleid](./policy-reference.md)

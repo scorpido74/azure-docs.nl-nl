@@ -8,12 +8,12 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: 40a4fbd956b12d469247cb178007d0259cbeac75
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7b0db0f97531c60b3e809dd0dafa042dbcc2b542
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902922"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91667432"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>What is Azure Machine Learning-studio?
 
@@ -88,7 +88,7 @@ De volgende tabel bevat een overzicht van enkele van de belangrijkste verschille
 | Rekendoelen voor training | Eigen rekendoel, alleen CPU-ondersteuning | Breed scala aan aanpasbare [rekendoelen voor training](concept-compute-target.md#train). Inclusief GPU- en CPU-ondersteuning | 
 | Rekendoelen voor implementatie | Bedrijfseigen webservice-indeling, niet aanpasbaar | Breed scala aan aanpasbare [rekendoelen voor implementatie](concept-compute-target.md#deploy). Inclusief GPU- en CPU-ondersteuning |
 | ML-pijplijn | Niet ondersteund | Bouw flexibele, modulaire [pijplijnen](concept-ml-pipelines.md) om werkstromen te automatiseren |
-| MLOps | Eenvoudig modellen beheren en implementeren | Versiebeheer voor entiteiten (model, gegevens, werkstromen), werkstroomautomatisering, integratie met CICD-hulpprogramma, [en meer](concept-model-management-and-deployment.md) |
+| MLOps | Eenvoudig modellen beheren en implementeren; alleen voor CPU-implementaties | Versiebeheer voor entiteiten (model, gegevens, werkstromen), werkstroomautomatisering, integratie met CICD-hulpprogramma, CPU- en GPU-implementaties [en meer](concept-model-management-and-deployment.md) |
 | Modelindeling | Eigen indeling, alleen Studio (klassiek) | Meerdere ondersteunde indelingen, afhankelijk van het type trainingstaak |
 | Geautomatiseerde modeltraining en afstemming van hyperparameters |  Niet ondersteund | [Ondersteund](concept-automated-ml.md). Opties voor code-eerst en geen-code. | 
 | Gegevensdriftdetectie | Niet ondersteund | [Ondersteund](how-to-monitor-datasets.md) |

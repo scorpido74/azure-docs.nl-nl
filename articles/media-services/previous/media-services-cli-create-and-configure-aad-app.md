@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 08/26/2019
 ms.author: juliako
 ms.openlocfilehash: ceb01c97ec50f4e2a7aa146448c3da662d4314ba
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89258347"
 ---
 # <a name="use-azure-cli-to-create-an-azure-ad-app-and-configure-it-to-access-media-services-api"></a>Azure CLI gebruiken om een Azure AD-app te maken en deze te configureren voor toegang tot Media Services-API
@@ -36,7 +36,7 @@ In dit onderwerp wordt beschreven hoe u de Azure CLI gebruikt om een Azure Activ
 
 ## <a name="use-the-azure-cloud-shell"></a>De Azure Cloud Shell gebruiken
 
-1. Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Start de Cloud Shell vanuit het bovenste navigatie deel venster van de portal.
 
     ![Cloud Shell](./media/media-services-cli-create-and-configure-aad-app/media-services-cli-create-and-configure-aad-app01.png) 
@@ -67,7 +67,7 @@ Dit kan bijvoorbeeld een van de volgende niveaus zijn:
 
 Zie [een Azure-service-principal maken met de Azure cli](/cli/azure/create-an-azure-service-principal-azure-cli) voor meer informatie.
 
-Zie ook [Access Control op basis van rollen beheren met de Azure-opdracht regel interface](../../role-based-access-control/role-assignments-cli.md). 
+Zie ook [Manage Role-Based Access Control met de Azure-opdracht regel interface](../../role-based-access-control/role-assignments-cli.md). 
 
 ## <a name="next-steps"></a>Volgende stappen
 

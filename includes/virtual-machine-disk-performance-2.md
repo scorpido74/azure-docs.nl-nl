@@ -5,15 +5,15 @@ services: virtual-machines
 author: albecker1
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 09/25/2020
+ms.date: 10/12/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: e5a6dae98e786bf55dc17d8fabe42f84e9927442
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: f5ac97812f973a20f6ee4c2dea34baaeb91203af
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91606044"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016454"
 ---
 ![Documentatie voor Dsv3](media/vm-disk-performance/dsv3-documentation.jpg)
 
@@ -129,4 +129,21 @@ Metrische gegevens die helpen bij het vaststellen van de oorzaak van het opspore
 - **Percentage van verbruikte band breedte in de cache** : het percentage dat is berekend door de totale door Voer van de schijf is voltooid voor de maximale door Voer van de virtuele machine in de cache. Als dit bedrag ten 100% bedraagt, wordt er door de toepassing die wordt uitgevoerd, IO afgetopt van de bandbreedte limiet van uw virtuele machine in de cache.
 - **VM niet in cache geconsumeerd percentage** -het percentage dat is berekend door het totale aantal IOPS op een virtuele machine is voltooid met de Maxi maal aantal IOPS-limieten voor virtuele machines die niet in de cache zijn geplaatst. Als dit bedrag op 100% is, wordt er door de toepassing die wordt uitgevoerd, IO afgetopting van de IOPS-limiet van uw VM.
 - **Percentage van verbruikte band breedte** in de VM-geheugen: het percentage dat is berekend door de totale schijf doorvoer voor een virtuele machine is voltooid met de Maxi maal ingerichte door Voer van de virtuele machine. Als dit bedrag op 100% is, wordt er door de toepassing die wordt uitgevoerd, een IO-beperking van de limiet van de niet in cache opgeslagen band breedte van uw virtuele machine gebruikt.
+
+## <a name="storage-io-utilization-metrics-example"></a>Voor beeld van metrische gegevens voor gebruik van i/o-opslag
+Laten we een voor beeld zien van het gebruik van deze nieuwe metrische gegevens over i/o-capaciteits gebruik om te helpen bij het oplossen van fouten in het systeem. De installatie van het systeem is precies hetzelfde als in het vorige voor beeld, maar de besturingssysteem schijf die we hebben gekoppeld, is **niet** in de cache opgeslagen.
+
+Instellen:
+- Standard_D8s_v3 
+    - IOPS in cache: 16.000
+    - IOPS niet in cache: 12.800
+- P30-besturingssysteem schijf 
+    - IOPS: 5.000
+    - Caching van host: uitgeschakeld
+- 2 P30-gegevens schijven X 2
+    - IOPS: 5.000
+    - Host-caching: lezen/schrijven
+- 2 P30-gegevens schijven X 2
+    - IOPS: 5.000
+    - Caching van host: uitgeschakeld
 

@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: ambapat
 ms.openlocfilehash: a21d0db383e8c563f0b187061a95ac818dd2a4f0
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90995367"
 ---
-# <a name="managed-hsm-access-control"></a>Managed HSM Access Control
+# <a name="managed-hsm-access-control"></a>Toegangsbeheer van beheerde HSM
 
 > [!NOTE]
 > Key Vault resource provider ondersteunt twee resource typen: **kluizen** en **beheerde hsm's**. Toegangs beheer dat in dit artikel wordt beschreven, is alleen van toepassing op **beheerde hsm's**. Zie voor meer informatie over toegangs beheer voor beheerde HSM [toegang bieden tot Key Vault sleutels, certificaten en geheimen met een op rollen gebaseerd toegangs beheer van Azure](../general/rbac-guide.md).
 
-Azure Key Vault beheerde HSM is een Cloud service die versleutelings sleutels beveiligt. Omdat deze gegevens gevoelig en zakelijk kritiek zijn, moet u de toegang tot uw beheerde Hsm's beveiligen door alleen geautoriseerde toepassingen en gebruikers toegang te geven tot de service. Dit artikel bevat een overzicht van het beheerde HSM-toegangs beheer model. Hierin worden verificatie en autorisatie uitgelegd en wordt beschreven hoe u de toegang tot uw beheerde Hsm's kunt beveiligen.
+Door Azure Key Vault beheerde HSM is een cloudservice die versleutelingssleutels beveiligt. Omdat deze gegevens vertrouwelijk en bedrijfskritiek zijn, is het belangrijk om de toegang tot uw beheerde HSM's te beveiligen, zodat alleen gemachtigde toepassingen en gebruikers toegang hebben tot uw beheerde HSM's. Dit artikel bevat een overzicht van het toegangsbeheermodel voor beheerde HSM's. Hierin worden verificatie en autorisatie uitgelegd en wordt beschreven hoe u de toegang tot uw beheerde HSM's kunt beveiligen.
 
 ## <a name="access-control-model"></a>Model voor toegangs beheer
 
@@ -87,6 +87,6 @@ U verleent een beveiligingsprincipal toegang om specifieke sleutel bewerkingen u
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Wat is beheerde HSM?](overview.md)voor een aan de slag-zelf studie voor een beheerder.
+- Zie [Wat is beheerde HSM?](overview.md) voor een inleidende zelfstudie voor beheerders.
 - Zie [beheerde HSM Local RBAC](role-management.md) voor een zelf studie over het beheer van rollen.
-- Zie [Managed HSM logging](logging.md)(Engelstalig) voor meer informatie over het gebruik van logboek registratie voor de beheerde HSM-logboek registratie.
+- Zie [Logboekregistratie van beheerde HSM](logging.md) voor meer informatie over logboekregistratie van het gebruik van beheerde HSM's.

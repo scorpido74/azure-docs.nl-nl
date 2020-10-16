@@ -8,12 +8,12 @@ author: troy0820
 ms.author: b-trconn
 keywords: Aro, open Shift, AZ Aro, Red Hat, cli
 ms.custom: mvc
-ms.openlocfilehash: 6cf77aa41a9a485ba70519fed33c1b6aec736525
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 49ffc33310564299131e2831b74154719b7cf7c7
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89470065"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078575"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-cluster-application-backup"></a>Een Azure Red Hat open Shift 4-cluster toepassing back-up maken
 
@@ -120,14 +120,34 @@ oc get backups -n velero <name of backup> -o yaml
 
 Een geslaagde back-up wordt uitgevoerd `phase:Completed` en de objecten bevinden zich in de container in het opslag account.
 
+## <a name="create-a-backup-with-velero-to-include-snapshots"></a>Maak een back-up met Velero om moment opnamen op te nemen
+
+Als u een back-up van een toepassing wilt maken met Velero om de permanente volumes van uw toepassing op te nemen, moet u de naam ruimte die de toepassing bevat en de `snapshot-volumes=true` vlag toevoegen bij het maken van de back-up.
+
+```bash
+velero backup create <name of backup> --include-namespaces=nginx-example --snapshot-volumes=true --include-cluster-resources=true
+```
+
+U kunt de status van de back-up controleren door het volgende uit te voeren:
+
+```bash
+oc get backups -n velero <name of backup> -o yaml
+```
+
+Een geslaagde back-up met uitvoer `phase:Completed` en de objecten bevinden zich in de container in het opslag account.
+
+Voor meer informatie over het maken van back-ups en herstel bewerkingen met Velero raadpleegt u [de systeem eigen manier van back-ups](https://www.openshift.com/blog/backup-openshift-resources-the-native-way) .
+
 ## <a name="next-steps"></a>Volgende stappen
 
 In dit artikel is een back-up gemaakt van een Azure Red Hat open Shift 4-cluster toepassing. U hebt geleerd hoe u:
 
 > [!div class="checklist"]
 > * Een open Shift v4-cluster toepassing maken met behulp van velero
+> * Een open Shift v4-cluster toepassing back-up maken met moment opnamen met behulp van velero
 
 
 Ga naar het volgende artikel voor meer informatie over het maken van een Azure Red Hat open Shift 4-cluster toepassing herstellen.
 
 * [Een Azure Red Hat open Shift 4-cluster toepassing herstellen](howto-create-a-restore.md)
+* [Een Azure Red Hat open Shift 4-cluster toepassing herstellen met inbegrip van moment opnamen](howto-create-a-restore.md)

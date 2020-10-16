@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/02/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge Pro in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: b9f3b564e36939197acd532a37f9a6098fbc870f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ba903793844e44b26931a70183860c983adaf18a
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90900009"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743400"
 ---
 # <a name="tutorial-install-azure-stack-edge-pro-with-gpu"></a>Zelfstudie: Azure Stack Edge Pro met GPU installeren
 
@@ -124,7 +124,7 @@ Zoek de onderdelen voor het installeren van de railkit-assembly:
 3. Bevestig de linker- en rechtermontagerails aan de verticale rekrichels aan de voorzijde met behulp van twee paar schroeven.
 4. Schuif de linker- en rechterhaakjes naar voren tegen de verticale rekrichel en voeg deze toe met behulp van twee paar schroeven.
 
-    ![Rails met gereedschap installeren en verwijderen](./media/azure-stack-edge-deploy-install/installing-removing-tooled-rails.png)
+    ![Rails met gereedschap installeren en verwijderen 2](./media/azure-stack-edge-deploy-install/installing-removing-tooled-rails.png)
 
 ### <a name="install-the-system-in-a-rack"></a>Het systeem in een rek installeren
 
@@ -207,11 +207,11 @@ Voer de volgende stappen uit om uw apparaat te bekabelen voor stroom en verbindi
 
     - Apparaat met 3 PCI-sleuven en één GPU
 
-        ![Achterpaneel van een bekabeld apparaat](./media/azure-stack-edge-gpu-deploy-install/ase-three-pci-slots-one-gpu.png)
+        ![Achterpaneel van een bekabeld apparaat 2](./media/azure-stack-edge-gpu-deploy-install/ase-three-pci-slots-one-gpu.png)
 
     - Apparaat met 3 PCI-sleuven en twee GPU's
 
-        ![Achterpaneel van een bekabeld apparaat](./media/azure-stack-edge-gpu-deploy-install/ase-three-pci-slots-two-gpu.png)
+        ![Achterpaneel van een bekabeld apparaat 3](./media/azure-stack-edge-gpu-deploy-install/ase-three-pci-slots-two-gpu.png)
 
 2. Zoek de schijfsleuven en de aan/uit-knop aan de voorzijde van het apparaat.
 

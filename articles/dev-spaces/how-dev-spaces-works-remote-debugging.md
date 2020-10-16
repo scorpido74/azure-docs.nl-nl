@@ -5,14 +5,16 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Beschrijft de processen voor externe fout opsporing op de Azure Kubernetes-service met Azure dev Spaces
 keywords: Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers
-ms.openlocfilehash: fd984ff6a8ebe336f76643406c0957769dbfd3da
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 0487b80d23974a66bafe93ee1fbdf9b796d0ab53
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213386"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975039"
 ---
 # <a name="how-remote-debugging-your-code-with-azure-dev-spaces-works"></a>Hoe kan ik de code op afstand opsporen met Azure dev Spaces?
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../includes/dev-spaces-deprecation.md)]
 
 Met Azure dev Spaces kunt u op verschillende manieren snel en probleem oplossing voor Kubernetes-toepassingen en samen werken met uw team op een AKS-cluster (Azure Kubernetes service). Zodra het project wordt uitgevoerd in een dev Space, biedt Azure dev Spaces een manier om een actieve toepassing in AKS te koppelen en fouten op te sporen.
 
@@ -30,7 +32,7 @@ De afbeelding van het fout opsporingsprogramma wordt automatisch bepaald door he
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de werking van Azure dev Spaces.
+Meer informatie over hoe Azure Dev Spaces werkt.
 
 > [!div class="nextstepaction"]
 > [Hoe Azure Dev Spaces werkt](how-dev-spaces-works.md)

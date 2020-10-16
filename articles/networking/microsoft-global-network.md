@@ -14,10 +14,10 @@ ms.date: 06/13/2019
 ms.author: kumud
 ms.reviewer: ypitsch
 ms.openlocfilehash: 05e966d3f4631e3c344bd97c0faec99cc3c6dd66
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91819898"
 ---
 # <a name="microsoft-global-network"></a>Wereldwijd Microsoft-netwerk
@@ -36,7 +36,7 @@ Het is eenvoudig om te kiezen voor de [beste ervaring](https://www.sdxcentral.co
  
 Ongeacht of u verbinding maakt tussen Londen en Tokyo of van Washington DC naar Los Angeles, worden netwerk prestaties gekwantificeerd en beïnvloed door zaken als latentie, jitter, pakket verlies en door voer.  Bij micro soft gebruiken we uw voor keur voor directe interconnecties in tegens telling tot Transit-koppelingen, waardoor het antwoord verkeer wordt beperkt en de hops, peering partijen en paden zo kort en eenvoudig mogelijk zijn. 
 
-Als een gebruiker in Londen bijvoorbeeld probeert toegang te krijgen tot een service in Tokyo, voert het Internet verkeer een van onze randen in Londen in, gaat u naar micro soft WAN via Frank rijk, onze trans-Arabië-paden tussen Europa en India en vervolgens naar Japan waar de service wordt gehost. Antwoord verkeer is symmetrisch. Dit wordt soms aangeduid als ' [koude-aardappel routering](https://en.wikipedia.org/wiki/Hot-potato_and_cold-potato_routing) ', wat betekent dat het verkeer zo lang mogelijk op het micro soft-netwerk blijft voordat we het hand matig uitvallen.  
+Als een gebruiker in Londen bijvoorbeeld probeert toegang te krijgen tot een service in Tokyo, voert het Internet verkeer een van onze randen in Londen in, gaat u naar micro soft WAN via Frank rijk, onze Trans-Arabia paden tussen Europa en India en vervolgens naar Japan waar de service wordt gehost. Antwoord verkeer is symmetrisch. Dit wordt soms aangeduid als ' [koude-aardappel routering](https://en.wikipedia.org/wiki/Hot-potato_and_cold-potato_routing) ', wat betekent dat het verkeer zo lang mogelijk op het micro soft-netwerk blijft voordat we het hand matig uitvallen.  
   
 Dat betekent dat alle verkeer als u gebruikmaakt van micro soft-Services? Ja, elk verkeer tussen data centers binnen Microsoft Azure of tussen micro soft-Services, zoals Virtual Machines, Microsoft 365, XBox, SQL Db's, opslag en virtuele netwerken, worden gerouteerd binnen het wereld wijde netwerk en nooit via het open bare Internet, om optimale prestaties en integriteit te garanderen.  
  

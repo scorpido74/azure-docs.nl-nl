@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: a6664b5a2c0c6b4de2435ee5c8bb29f63560c342
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88037691"
 ---
 # <a name="localization-support-in-azure-maps"></a>Ondersteuning voor lokalisatie in Azure Maps
@@ -25,7 +25,7 @@ Azure Maps ondersteunt diverse talen en weer gaven op basis van land/regio. In d
 Azure Maps zijn gelokaliseerd in de verschillende talen van alle services. De volgende tabel bevat de ondersteunde taal codes voor elke service.  
   
 
-| Id         | Naam                   |  Kaarten | Zoeken | Routering | Weer | Verkeers incidenten | JS-toewijzings beheer |
+| Id         | Naam                   |  Maps | Zoeken | Routering | Weer | Verkeers incidenten | JS-toewijzings beheer |
 |------------|------------------------|:-----:|:------:|:-------:|:--------:|:-----------------:|:--------------:|
 | af-ZA      | Afrikaans              |       |    ✓   |    ✓    |         |                   |                |
 | ar-SA      | Arabisch                 |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
@@ -36,7 +36,7 @@ Azure Maps zijn gelokaliseerd in de verschillende talen van alle services. De vo
 | bg-BG      | Bulgaars              |   ✓   |    ✓   |    ✓    |     ✓     |                   |        ✓       |
 | ca-ES      | Catalaans                |       |    ✓   |         |    ✓      |                   |                |
 | zh-HanS    | Chinees (Vereenvoudigd)   |       |  zh-CN |         |     zh-CN   |                   |                |
-| zh-HanT    | Chinees (Hong Kong SAR)  |  |   |    |    zh-HK   |                   |           |
+| zh-HanT    | Chinees (Hongkong SAR)  |  |   |    |    zh-HK   |                   |           |
 | zh-HanT    | Chinees (Taiwan)  | zh-TW |  zh-TW |  zh-TW  |    zh-TW   |                   |      zh-TW     |
 | hr-HR      | Kroatisch               |       |    ✓   |         |    ✓      |                   |                |
 | cs-CZ      | Tsjechisch                  |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
@@ -51,7 +51,7 @@ Azure Maps zijn gelokaliseerd in de verschillende talen van alle services. De vo
 | fil-PH     | Filipino               |       |       |         |     ✓    |                   |                |
 | fi-FI      | Fins                |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
 | fr-FR      | Frans                 |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
-| FR-CA      | Frans (Canada)      |       |    ✓   |         |     ✓     |                   |                |
+| fr-CA      | Frans (Canada)      |       |    ✓   |         |     ✓     |                   |                |
 | gl-ES      | Galicisch               |       |    ✓   |         |         |                   |                |
 | de-DE      | Duits                 |   ✓   |    ✓   |    ✓    |   ✓      |         ✓         |        ✓       |
 | el-GR      | Grieks                  |   ✓   |    ✓   |    ✓    |    ✓     |         ✓         |        ✓       |
@@ -71,7 +71,7 @@ Azure Maps zijn gelokaliseerd in de verschillende talen van alle services. De vo
 | lt-LT      | Litouws             |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
 | MK-MK      | Macedonisch             |       |       |         |     ✓    |                   |                |
 | ms-MY      | Maleis (Latijns)          |   ✓   |    ✓   |    ✓    |    ✓   |                   |        ✓       |
-| Mr-IN      | Marathi                 |       |       |         |     ✓    |                   |                |
+| Mr-IN      | Mahrati                 |       |       |         |     ✓    |                   |                |
 | nb-NO      | Noors - Bokmål       |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
 | NGT        | Neutrale waarheid-officiële talen voor alle regio's in lokale scripts indien beschikbaar |   ✓     |        |         |       |        |      ✓          |
 | NGT-Latn   | Neutrale waarheid-Latijns exonyms. Latijns script wordt gebruikt indien beschikbaar |   ✓     |        |         |         |                |        ✓         |
@@ -88,7 +88,7 @@ Azure Maps zijn gelokaliseerd in de verschillende talen van alle services. De vo
 | es-ES      | Spaans                |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
 | es-MX      | Spaans (Mexico)       |   ✓   |        |    ✓    |     ✓    |                   |        ✓       |
 | sv-SE      | Zweeds                |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
-| ta      | Tamil (India)                 |       |       |         |     ✓    |                   |                |
+| ta-IN      | Tamil (India)                 |       |       |         |     ✓    |                   |                |
 | te-IN      | Telugu (India)                 |       |       |         |     ✓    |                   |                |
 | th-TH      | Thai                   |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
 | tr-TR      | Turks                |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
@@ -147,7 +147,7 @@ De weer gave-para meter is standaard ingesteld op **Unified**, zelfs als u deze 
 
 De volgende tabel bevat ondersteunde weer gaven.
 
-| Weergave         | Beschrijving                            |  Kaarten | Zoeken | JS-Map Control |
+| Weergave         | Beschrijving                            |  Maps | Zoeken | JS-Map Control |
 |--------------|----------------------------------------|:-----:|:------:|:--------------:|
 | AE           | Verenigde Arabische Emiraten (Arabische weer gave)    |   ✓   |        |     ✓          |
 | AR           | Argentinië (Argentijnse weer gave)           |   ✓   |    ✓   |     ✓          |

@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.workload: identity
 ROBOTS: NOINDEX
 ms.openlocfilehash: 1075cce9b9e3bc3267756bba84691788293fa8d2
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88116293"
 ---
 # <a name="developer-guidance-for-the-azure-active-directory-conditional-access-feature"></a>Richt lijnen voor ontwikkel aars voor de functie voor voorwaardelijke toegang van Azure Active Directory
@@ -153,9 +153,9 @@ In dit scenario wordt de zaak door lopen wanneer we een app met één pagina (SP
 
 In ADAL.js zijn er enkele functies die tokens verkrijgen: `login()` , `acquireToken(...)` , `acquireTokenPopup(…)` , en `acquireTokenRedirect(…)` .
 
-* `login()`Hiermee wordt een ID-token opgehaald via een interactieve aanmeldings aanvraag, maar geen toegangs tokens voor een service ontvangen (inclusief een beveiligde web-API met voorwaardelijke toegang).
-* `acquireToken(…)`kan vervolgens worden gebruikt om een toegangs token op de achtergrond te verkrijgen, wat betekent dat de gebruikers interface in geen enkele omstandigheid wordt weer gegeven.
-* `acquireTokenPopup(…)`en `acquireTokenRedirect(…)` worden beide gebruikt voor het interactief aanvragen van een token voor een bron, wat betekent dat ze altijd de AANMELDINGS gebruikersinterface weer geven.
+* `login()` Hiermee wordt een ID-token opgehaald via een interactieve aanmeldings aanvraag, maar geen toegangs tokens voor een service ontvangen (inclusief een beveiligde web-API met voorwaardelijke toegang).
+* `acquireToken(…)` kan vervolgens worden gebruikt om een toegangs token op de achtergrond te verkrijgen, wat betekent dat de gebruikers interface in geen enkele omstandigheid wordt weer gegeven.
+* `acquireTokenPopup(…)` en `acquireTokenRedirect(…)` worden beide gebruikt voor het interactief aanvragen van een token voor een bron, wat betekent dat ze altijd de AANMELDINGS gebruikersinterface weer geven.
 
 Wanneer een app een toegangs token nodig heeft om een web-API aan te roepen, wordt geprobeerd een `acquireToken(…)` . Als de token sessie is verlopen of als er een beleid voor voorwaardelijke toegang moet worden nageleefd, mislukt de functie *acquireToken* en gebruikt `acquireTokenPopup()` of. de app `acquireTokenRedirect()` .
 

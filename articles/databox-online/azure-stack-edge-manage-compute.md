@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 05/20/2019
 ms.author: alkohli
-ms.openlocfilehash: 00e5f8dc067d91e6ea6fed688d72b357d1d50678
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 0d93edbefb61cb8ded09f6402ca1e1661429efe1
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904440"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952145"
 ---
 # <a name="manage-compute-on-your-azure-stack-edge-pro"></a>Reken kracht beheren op uw Azure Stack Edge Pro
 
@@ -107,7 +107,7 @@ Voer de volgende stappen uit in de Azure Portal om de bestaande Edge Compute-con
 
 2. Als u de compute-configuratie verwijdert, moet u uw apparaat opnieuw configureren voor het geval dat u de berekening opnieuw moet gebruiken. Selecteer **Ja**als u om bevestiging wordt gevraagd.
 
-    ![Selecteer reken proces verwijderen](media/azure-stack-edge-manage-compute/remove-compute-2.png)
+    ![Selecteer Compute 2 verwijderen](media/azure-stack-edge-manage-compute/remove-compute-2.png)
 
 ### <a name="sync-up-iot-device-and-iot-edge-device-access-keys"></a>IoT-apparaat en toegangs sleutels voor IoT Edge apparaten synchroniseren
 

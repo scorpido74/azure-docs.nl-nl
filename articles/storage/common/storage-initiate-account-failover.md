@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e39548a923e76fc118dec4158398d02577ec20c5
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 300b9b6279231079807f8c923570bddab657ff56
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91610055"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92095888"
 ---
 # <a name="initiate-a-storage-account-failover"></a>Failover van een opslag account initiëren
 
@@ -45,13 +45,13 @@ Zie [Azure Storage redundantie](storage-redundancy.md)voor meer informatie over 
 Voer de volgende stappen uit om een account-failover te initiëren vanuit de Azure Portal:
 
 1. Ga naar uw opslagaccount.
-1. Onder **instellingen**selecteert u **geo-replicatie**. De volgende afbeelding toont de geo-replicatie en de failover-status van een opslag account.
+1. Selecteer onder **Instellingen** de optie **Geografische replicatie**. De volgende afbeelding toont de geo-replicatie en de failover-status van een opslag account.
 
     :::image type="content" source="media/storage-initiate-account-failover/portal-failover-prepare.png" alt-text="Scherm opname van geo-replicatie en failover-status":::
 
 1. Controleer of uw opslag account is geconfigureerd voor geo-redundante opslag (GRS) of geografisch redundante opslag met lees toegang (RA-GRS). Als dat niet het geval is, selecteert u vervolgens **configuratie** onder **instellingen** om uw account bij te werken naar geo-redundant.
 1. De **laatste synchronisatie tijd** eigenschap geeft aan hoe ver de secundaire achterligt van de primaire. **Tijd van laatste synchronisatie** biedt een schatting van de mate van gegevens verlies die u zult ondervinden nadat de failover is voltooid. Zie voor meer informatie over het controleren van de **laatste synchronisatie tijd** -eigenschap [de laatste synchronisatie tijd van een opslag account](last-sync-time-get.md).
-1. Selecteer **voorbereiden voor failover**.
+1. Selecteren **Voorbereiden voor failover**.
 1. Bekijk het bevestigings venster. Wanneer u klaar bent, voert u **Ja** in om de failover te bevestigen en te initiëren.
 
     :::image type="content" source="media/storage-initiate-account-failover/portal-failover-confirm.png" alt-text="Scherm opname van geo-replicatie en failover-status":::
@@ -91,7 +91,7 @@ Voer de volgende opdracht uit om een account-failover te initiëren vanuit Power
 Invoke-AzStorageAccountFailover -ResourceGroupName <resource-group-name> -Name <account-name>
 ```
 
-## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+## <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Als u Azure CLI wilt gebruiken om een account-failover te initiëren, voert u de volgende opdrachten uit:
 
@@ -107,6 +107,8 @@ az storage account failover \ --name accountName
 Wanneer u een failover voor een account initieert voor uw opslag account, worden de DNS-records voor het secundaire eind punt bijgewerkt zodat het secundaire eind punt het primaire eind punt wordt. Zorg ervoor dat u de mogelijke gevolgen voor uw opslag account begrijpt voordat u een failover initieert.
 
 Als u de omvang van waarschijnlijke gegevens verlies wilt schatten voordat u een failover initieert, controleert u de eigenschap **laatste synchronisatie tijd** . Zie voor meer informatie over het controleren van de **laatste synchronisatie tijd** -eigenschap [de laatste synchronisatie tijd van een opslag account](last-sync-time-get.md).
+
+De tijd die nodig is voor de failover na het initiëren van de initialisatie, kan verschillen van minder dan een uur.
 
 Na de failover wordt uw type opslag account automatisch geconverteerd naar lokaal redundante opslag (LRS) in de nieuwe primaire regio. U kunt geografisch redundante opslag (GRS) of geografisch redundante opslag met lees toegang (RA-GRS) opnieuw inschakelen voor het account. Houd er rekening mee dat het converteren van LRS naar GRS of RA-GRS een extra kosten in beslag brengt. Zie [prijs informatie voor band breedte](https://azure.microsoft.com/pricing/details/bandwidth/)voor meer informatie.
 

@@ -5,7 +5,7 @@
   items:
     - name: Wat is Azure Files?
       href: storage-files-introduction.md
-- name: Snelstartgidsen
+- name: Quickstarts
   items:
     - name: Bestandsshares maken/gebruiken - Windows
       href: storage-files-quick-create-use-windows.md
@@ -310,10 +310,10 @@
       href: 'https://azure.microsoft.com/updates/?category=storage'
     - name: Releaseopmerkingen Azure File Sync
       href: storage-files-release-notes.md
-    - name: Azure Storage in Microsoft Q&A
+    - name: Azure Files in Microsoft Q&A
       href: 'https://docs.microsoft.com/answers/topics/azure-files.html'
-    - name: Azure Storage op Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
+    - name: Azure Files in Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-files'
     - name: Prijzen voor Azure Files
       href: 'https://azure.microsoft.com/pricing/details/storage/files/'
     - name: Azure-prijscalculator

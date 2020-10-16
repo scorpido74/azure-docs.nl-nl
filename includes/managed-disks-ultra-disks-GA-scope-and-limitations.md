@@ -9,10 +9,10 @@ ms.date: 09/28/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 7b41105bafedb8eeaffe5f266f5dd824957c57e0
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91441184"
 ---
 Voor nu hebben Ultra disks de volgende beperkingen:
@@ -27,7 +27,7 @@ De volgende tabel geeft een overzicht van de regio's Ultra disks zijn beschikbaa
 |Regio's  |Redundantie opties  |
 |---------|---------|
 |Brazil South     |Alleen enkele Vm's (beschikbaarheids sets en virtuele-machine schaal sets worden niet ondersteund)|
-|Central India     |Alleen enkele Vm's (beschikbaarheids sets en virtuele-machine schaal sets worden niet ondersteund)|
+|India - centraal     |Alleen enkele Vm's (beschikbaarheids sets en virtuele-machine schaal sets worden niet ondersteund)|
 |Azië - oost     |Alleen enkele Vm's (beschikbaarheids sets en virtuele-machine schaal sets worden niet ondersteund)|
 |Duitsland - west-centraal     |Alleen enkele Vm's (beschikbaarheids sets en virtuele-machine schaal sets worden niet ondersteund)|
 |Korea - centraal     |Alleen enkele Vm's (beschikbaarheids sets en virtuele-machine schaal sets worden niet ondersteund)|

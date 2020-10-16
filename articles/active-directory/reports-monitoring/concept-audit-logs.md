@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 994fe6c5005eeeab1399091dca5f72024fdd7262
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91812587"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Controleactiviteitenrapporten in Azure Active Directory Portal 
@@ -92,7 +92,7 @@ U kunt de controle gegevens filteren op de volgende velden:
 
 Met het **service** filter kunt u een keuze uit een vervolg keuzelijst van de volgende services selecteren:
 
-- Alle
+- Alles
 - AAD-beheer UX
 - Toegangsbeoordelingen
 - Account inrichten
@@ -114,7 +114,7 @@ Met het **service** filter kunt u een keuze uit een vervolg keuzelijst van de vo
 
 Met het filter **categorie** kunt u een van de volgende filters selecteren:
 
-- Alle
+- Alles
 - AdministrativeUnit
 - ApplicationManagement
 - Verificatie
@@ -128,7 +128,7 @@ Met het filter **categorie** kunt u een van de volgende filters selecteren:
 - KerberosDomain
 - Beheer van handelingen
 - Label
-- Overige
+- Anders
 - PermissionGrantPolicy
 - Beleid
 - ResourceManagement
@@ -141,7 +141,7 @@ U kunt de lijst met alle controle activiteiten ophalen met behulp van de Graph A
 
 Met het filter **status** kunt u filteren op basis van de status van een audit bewerking. De status kan een van de volgende zijn:
 
-- Alle
+- Alles
 - Geslaagd
 - Fout
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
 ms.openlocfilehash: fbcb262fee6a2cc62bfe64e8a8589c92b4fe2b17
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82997445"
 ---
 # <a name="voice-assistants-on-windows"></a>Spraak assistenten in Windows
@@ -47,7 +47,7 @@ Wanneer de aanvraag van AAR wordt ontvangen, wordt de toepassing door de achterg
 
 Als de toepassing het tref woord heeft gecontroleerd, kan het een aanvraag indienen om op de voor grond te worden weer gegeven. Als deze aanvraag is voltooid, wordt de gebruikers interface weer gegeven in de toepassing en wordt de interactie met de gebruiker voortgezet.
 
-AAR signaleert actieve toepassingen nog steeds wanneer het sleutel woord wordt gesp roken. In plaats van met de methode voor het gebruik van `App.xaml.cs`de levens cyclus te Signa leren, wordt er echter wel een gebeurtenis in de ConversationalAgent-api's gesignaleerd.
+AAR signaleert actieve toepassingen nog steeds wanneer het sleutel woord wordt gesp roken. In plaats van met de methode voor het gebruik van de levens cyclus te Signa leren, wordt er echter `App.xaml.cs` wel een gebeurtenis in de ConversationalAgent-api's gesignaleerd.
 
 ### <a name="keyword-verification"></a>Trefwoord verificatie
 

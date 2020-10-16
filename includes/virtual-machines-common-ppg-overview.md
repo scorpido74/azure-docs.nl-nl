@@ -9,10 +9,10 @@ ms.date: 10/30/2019
 ms.author: zivr
 ms.custom: include file
 ms.openlocfilehash: b5827d60b5968eb9f5e9e0a2ca5ec884366aea3d
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91376699"
 ---
 Het plaatsen van Vm's in één regio vermindert de fysieke afstand tussen de exemplaren. Als u ze in één beschikbaarheids zone plaatst, worden deze ook fysiek dichter bij elkaar gebracht. Naarmate de Azure-footprint groeit, kan één beschikbaarheids zone echter meerdere fysieke data centers omvatten, wat kan leiden tot een netwerk latentie die van invloed is op uw toepassing. 
@@ -58,7 +58,7 @@ U kunt het volgende doen om de uitlijnings status van uw proximity-plaatsings gr
 
 - De positie van de samenplaatsings groep voor proximity-plaatsing kan worden weer gegeven met behulp van de portal, CLI en Power shell.
 
-    -   Wanneer u Power shell gebruikt, kan de co-locatie status worden verkregen met behulp van de cmdlet Get-AzProximityPlacementGroup door de optionele para meter-ColocationStatus op te nemen.
+    -   Wanneer u Power shell gebruikt, kan de status van de co-locatie worden verkregen met behulp van Get-AzProximityPlacementGroup cmdlet, met inbegrip van de optionele para meter-ColocationStatus.
 
     -   Wanneer u CLI gebruikt, kan de status van de co-locatie worden verkregen met behulp `az ppg show` van de optionele para meter--include-uplocation-status.
 

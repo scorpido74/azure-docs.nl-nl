@@ -2,14 +2,14 @@
 title: Ongestructureerde gegevens opslaan met behulp van Azure Cosmos DB en Functions
 description: Ongestructureerde gegevens opslaan met behulp van Azure Functions en Cosmos DB
 ms.topic: quickstart
-ms.date: 04/14/2020
+ms.date: 10/01/2020
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 2828bf14b6965e87ef9547020e870333c4e839af
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 5bc3895cb219338acde492b871dce806db70622b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987976"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91661156"
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>Ongestructureerde gegevens opslaan met behulp van Azure Functions en Azure Cosmos DB
 
@@ -132,7 +132,7 @@ In dit codevoorbeeld worden de queryreeksen van de HTTP-aanvraag gelezen en toeg
 
 ## <a name="test-the-function-and-database"></a>De functie en database testen
 
-1. Selecteer **Testen**. Selecteer onder **Query** de optie **+ Parameter toevoegen** en voeg de volgende parameters toe aan de querytekenreeks:
+1. Selecteer **Testen/Uitvoeren**. Selecteer onder **Query** de optie **+ Parameter toevoegen** en voeg de volgende parameters toe aan de querytekenreeks:
 
     + `name`
     + `task`

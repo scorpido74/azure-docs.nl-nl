@@ -8,10 +8,10 @@ ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: bf8ea45f37e421d70a68c4a6e138f5203e92d78f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87045772"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Resource groepen bewaken met Azure Monitor (preview-versie)
@@ -20,7 +20,7 @@ Moderne toepassingen zijn vaak complex en zeer gedistribueerd met veel discrete 
 
 ## <a name="access-insights-for-resource-groups"></a>Toegang tot inzichten voor resource groepen
 
-1. Selecteer **resource groepen** in de navigatie balk aan de linkerkant.
+1. Selecteer **resource groepen**  in de navigatie balk aan de linkerkant.
 2. Kies een van de resource groepen die u wilt verkennen. (Als u een groot aantal resource groepen hebt dat door het abonnement wordt gefilterd, kan het soms handig zijn.)
 3. Als u toegang wilt krijgen tot inzichten voor een resource groep, klikt u op **inzichten** in het menu aan de linkerkant van een resource groep.
 
@@ -117,6 +117,6 @@ Azure Monitor voor resource groepen is afhankelijk van het beheer systeem voor A
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Azure Monitor werkmappen](../platform/workbooks-overview.md)
+- [Azure Monitor-werkmappen](../platform/workbooks-overview.md)
 - [Azure Resource Health](../../service-health/resource-health-overview.md)
 - [Azure Monitor-waarschuwingen](../platform/alerts-overview.md)

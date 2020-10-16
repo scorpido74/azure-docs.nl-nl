@@ -3,15 +3,15 @@ title: Bestaande hostgroep uitbreiden met nieuwe sessie hosts-Azure
 description: Een bestaande hostgroep uitbreiden met nieuwe sessie-hosts in virtueel bureau blad van Windows.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 04/30/2020
+ms.date: 10/09/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 339fe25a5a75ca8bc5cc0af7c4d96651e90c7eb6
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: b65560a3b10d04887040c4da1e137912810b3095
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002444"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91929588"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Een bestaande hostgroep uitbreiden met nieuwe sessie-hosts
 
@@ -56,7 +56,7 @@ U kunt als volgt uw hostgroep uitbreiden door virtuele machines toe te voegen:
 8. Voer het aantal sessie-hosts in dat u wilt toevoegen aan uw hostgroep in **aantal vm's**. Als u uw hostgroep bijvoorbeeld met vijf hosts wilt uitbreiden, voert u **5**in.
 
     >[!NOTE]
-    >U kunt de grootte of afbeelding van de Vm's niet bewerken omdat het belang rijk is om ervoor te zorgen dat alle virtuele machines in de hostgroep dezelfde grootte hebben.
+    >Hoewel het mogelijk is om de installatie kopie en het voor voegsel van de Vm's te bewerken, wordt het niet aanbevolen deze te bewerken als u virtuele machines met verschillende installatie kopieën in dezelfde hostgroep hebt. Bewerk de installatie kopie en het voor voegsel alleen als u virtuele machines met oudere installatie kopieën uit de betrokken hostgroep wilt verwijderen.
 
 9. Selecteer voor de gegevens van het **virtuele netwerk**het virtuele netwerk en het subnet waaraan u de virtuele machines wilt koppelen. U kunt hetzelfde virtuele netwerk selecteren als de bestaande machines die momenteel worden gebruikt, of een andere naam kiezen die geschikter is voor de regio die u in stap 7 hebt geselecteerd.
 
@@ -67,7 +67,7 @@ U kunt als volgt uw hostgroep uitbreiden door virtuele machines toe te voegen:
 
 11. Selecteer het tabblad **tag** als u labels hebt waarop u de virtuele machines wilt groeperen. Als dat niet het geval is, slaat u dit tabblad over.
 
-12. Selecteer het tabblad **controleren + maken** . Controleer uw keuzes en klik op **maken**als alles er goed uitziet.
+12. Selecteer het tabblad **controleren + maken** . Controleer uw keuzes en selecteer **maken**als alles er goed uitziet.
 
 ## <a name="next-steps"></a>Volgende stappen
 

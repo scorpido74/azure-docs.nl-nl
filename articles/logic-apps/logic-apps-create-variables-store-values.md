@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.openlocfilehash: b486b94a74d98f5630bd0bf40ebf0864c2ec5ab8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333899"
 ---
 # <a name="store-and-manage-values-by-using-variables-in-azure-logic-apps"></a>Waarden opslaan en beheren met behulp van variabelen in Azure Logic Apps
@@ -362,7 +362,7 @@ Dit zijn de eigenschappen voor de actie **variabele instellen** :
 | Eigenschap | Vereist | Waarde |  Beschrijving |
 |----------|----------|-------|--------------|
 | **Naam** | Ja | <*variabele-naam*> | De naam van de variabele die moet worden gewijzigd |
-| **Waarde** | Yes | <*nieuwe waarde*> | De waarde die u wilt toewijzen aan de variabele. Beide moeten hetzelfde gegevens type hebben. |
+| **Waarde** | Ja | <*nieuwe waarde*> | De waarde die u wilt toewijzen aan de variabele. Beide moeten hetzelfde gegevens type hebben. |
 ||||| 
 
 > [!NOTE]
@@ -420,7 +420,7 @@ Dit zijn de eigenschappen voor de acties **toevoegen aan..** .:
 | Eigenschap | Vereist | Waarde |  Beschrijving |
 |----------|----------|-------|--------------|
 | **Naam** | Ja | <*variabele-naam*> | De naam van de variabele die moet worden gewijzigd |
-| **Waarde** | Yes | <*toegevoegde waarde*> | De waarde die u wilt toevoegen, die elk type kan hebben |
+| **Waarde** | Ja | <*toegevoegde waarde*> | De waarde die u wilt toevoegen, die elk type kan hebben |
 |||||
 
 Als u overschakelt van de ontwerp functie naar de code weergave-editor, is dit de manier waarop de actie **toevoegen aan matrix variabele** wordt weer gegeven in de definitie van de logische app, in JSON-indeling. In dit voor beeld wordt een matrix variabele gemaakt en wordt een andere waarde toegevoegd als het laatste item in de matrix. Het resultaat is een bijgewerkte variabele die deze matrix bevat: `[1,2,3,"red"]`

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
 ms.openlocfilehash: 99c5ff39820b652a33ab670e63ca709f8747c4cf
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88751275"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>On-premises Apache Hadoop clusters migreren naar Azure HDInsight-beveiligings-en DevOps best practices
@@ -78,8 +78,8 @@ End-to-end Bedrijfs beveiliging kan worden bereikt met de volgende besturings el
     - Alle wijzigingen in het toegangs beheer beleid weer geven en rapporteren.
 
 **Versleuteling**
-    - Transparante versleuteling aan de server zijde met door micro soft beheerde sleutels of door de klant beheerde sleutels.
-    - In transit versleuteling met versleuteling aan client zijde met behulp van HTTPS en TLS.
+    - Transparante Server-Side versleuteling met door micro soft beheerde sleutels of door de klant beheerde sleutels.
+    - In transit versleuteling met Client-Side versleuteling, HTTPS en TLS.
 
 Raadpleeg voor meer informatie de volgende artikelen:
 

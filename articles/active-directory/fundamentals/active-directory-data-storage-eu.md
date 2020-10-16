@@ -13,10 +13,10 @@ ms.date: 09/15/2020
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 06900483598e1c03bd56cd8ac8c905f885012f08
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91395886"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Identiteits gegevens opslag voor Europese klanten in Azure Active Directory
@@ -36,7 +36,7 @@ Voor Azure Multi-Factor Authentication in de Cloud, is verificatie voltooid in h
 
 Voor meer informatie over welke gebruikers gegevens worden verzameld door Azure Multi-Factor Authentication-server (MFA-server) en Azure MFA in de Cloud, Zie [azure multi-factor Authentication gebruikers gegevens verzamelen](../authentication/howto-mfa-reporting-datacollection.md).
 
-## <a name="password-based-single-sign-on-for-enterprise-applications"></a>Eenmalige aanmelding op basis van wacht woorden voor bedrijfs toepassingen
+## <a name="password-based-single-sign-on-for-enterprise-applications"></a>Enkele Sign-On op basis van wacht woorden voor bedrijfs toepassingen
  
 Als een klant een nieuwe bedrijfs toepassing maakt (of het gaat om een Azure AD-galerie of niet-galerie) en op wacht woord gebaseerde SSO maakt, worden de aanmeldings-URL van de toepassing en aangepaste aanmeldings aanmeld velden opgeslagen in de Verenigde Staten. Zie [eenmalige aanmelding op basis van wacht woorden configureren](../manage-apps/configure-password-single-sign-on-non-gallery-applications.md) voor meer informatie over deze functie
 

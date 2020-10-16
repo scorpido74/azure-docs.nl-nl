@@ -16,10 +16,10 @@ ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: b459f44308827308c28687db3c3fc33df470ea8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84790184"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-rest-api"></a>Aangepaste Azure-rollen maken of bijwerken met behulp van de REST API
@@ -44,7 +44,7 @@ Als u alle aangepaste rollen in een directory wilt weer geven, gebruikt u de [ro
 1. Vervang *{filter}* door het type rol.
 
     > [!div class="mx-tableFixed"]
-    > | Filteren | Description |
+    > | Filter | Beschrijving |
     > | --- | --- |
     > | `$filter=type+eq+'CustomRole'` | Filteren op basis van het type CustomRole |
 
@@ -71,7 +71,7 @@ Als u aangepaste rollen in een bereik wilt weer geven, gebruikt u de [roldefinit
 1. Vervang *{filter}* door het type rol.
 
     > [!div class="mx-tableFixed"]
-    > | Filteren | Description |
+    > | Filter | Beschrijving |
     > | --- | --- |
     > | `$filter=type+eq+'CustomRole'` | Filteren op basis van het type CustomRole |
 
@@ -98,9 +98,9 @@ Als u informatie wilt weer geven over een aangepaste rol met behulp van de weerg
 1. Vervang *{filter}* door de weergave naam voor de rol.
 
     > [!div class="mx-tableFixed"]
-    > | Filteren | Description |
+    > | Filter | Beschrijving |
     > | --- | --- |
-    > | `$filter=roleName+eq+'{roleDisplayName}'` | Gebruik het formulier URL-code ring van de exacte weergave naam van de rol. Bijvoorbeeld,`$filter=roleName+eq+'Virtual%20Machine%20Contributor'` |
+    > | `$filter=roleName+eq+'{roleDisplayName}'` | Gebruik het formulier URL-code ring van de exacte weergave naam van de rol. Bijvoorbeeld, `$filter=roleName+eq+'Virtual%20Machine%20Contributor'` |
 
 ## <a name="list-a-custom-role-definition-by-id"></a>Een aangepaste roldefinitie op basis van een ID weer geven
 
@@ -132,7 +132,7 @@ Als u een aangepaste rol wilt maken, gebruikt u de [roldefinities-rest API maken
 
 1. Bekijk de lijst met beschik bare bewerkingen voor de [resource provider](resource-provider-operations.md) voor het maken van de machtigingen voor uw aangepaste rol.
 
-1. Gebruik een GUID-hulp programma voor het genereren van een unieke id die wordt gebruikt voor de id van de aangepaste rol. De id heeft de volgende indeling:`00000000-0000-0000-0000-000000000000`
+1. Gebruik een GUID-hulp programma voor het genereren van een unieke id die wordt gebruikt voor de id van de aangepaste rol. De id heeft de volgende indeling: `00000000-0000-0000-0000-000000000000`
 
 1. Beginnen met de volgende aanvraag en hoofd tekst:
 
@@ -342,4 +342,4 @@ Als u een aangepaste rol wilt verwijderen, gebruikt u de [roldefinities-rest API
 
 - [Aangepaste Azure-rollen](custom-roles.md)
 - [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de REST API](role-assignments-rest.md)
-- [Naslag informatie over Azure REST API](/rest/api/azure/)
+- [Azure REST API-naslaginformatie](/rest/api/azure/)

@@ -10,17 +10,17 @@ ms.topic: include
 ms.date: 05/13/2020
 ms.author: aahi
 ms.openlocfilehash: 630f04bf2cc9e7de6331f9d25754a20fe2327d76
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91779803"
 ---
 De volgende entiteits categorieën worden geretourneerd bij het verzenden van aanvragen naar het `/entities/recognition/general` eind punt.
 
-| Categorie   | Subcategorie | Beschrijving                          | Model versie starten                                                    | Opmerkingen |
+| Categorie   | Subcategorie | Beschrijving                          | Model versie starten                                                    | Notities |
 |------------|-------------|--------------------------------------|-------------------------------------------------------------|--------------------------------------|
-| Persoon     | N.v.t.         | Namen van personen.  | `2019-10-01`  | Wordt ook geretourneerd door NER v 2.1 |
+| Person     | N.v.t.         | Namen van personen.  | `2019-10-01`  | Wordt ook geretourneerd door NER v 2.1 |
 | PersonType | N.v.t.         | Taak typen of-rollen die door een persoon worden beheerd. | `2020-02-01` | |
 |Locatie    | N.v.t.         | Natuurlijke en door de mens gemaakte bezienswaardigheden, structuren, geografische functies en geopolitieke entiteiten     |  `2019-10-01` | Wordt ook geretourneerd door NER v 2.1 |
 |Locatie     | Geopolitieke entiteit (GPE)        | Steden, landen/regio's, statussen.      | `2020-02-01` | |
@@ -39,7 +39,7 @@ De volgende entiteits categorieën worden geretourneerd bij het verzenden van aa
 | Vaardigheid | N.v.t. | Een mogelijkheid, vaardigheid of deskundigheid. | `2020-02-01` |  |
 | Adres | N.v.t. | Volledige mailing adressen.  | `2020-04-01` |  |
 | PhoneNumber | N.v.t. | Telefoon nummers (alleen telefoon nummers voor VS en EU). | `2019-10-01` | Wordt ook geretourneerd door NER v 2.1 |
-| Email | N.v.t. | E-mail adressen. | `2019-10-01` | Wordt ook geretourneerd door NER v 2.1 |
+| E-mail | N.v.t. | E-mail adressen. | `2019-10-01` | Wordt ook geretourneerd door NER v 2.1 |
 | URL | N.v.t. | Url's naar websites. | `2019-10-01` | Wordt ook geretourneerd door NER v 2.1  |
 | IP | N.v.t. | IP-adressen van het netwerk. | `2019-10-01` | Wordt ook geretourneerd door NER v 2.1 |
 | DateTime | N.v.t. | Datums en tijden van de dag. | `2019-10-01` | Wordt ook geretourneerd door NER v 2.1 | 

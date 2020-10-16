@@ -9,12 +9,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 01031159d1894c7cb5f36b48f268186dff21fd22
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 755d0077abcba71d705a14643f5c2b28001bfa13
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "77471326"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951431"
 ---
 # <a name="tutorial-use-data-box-heavy-to-import-data-as-managed-disks-in-azure"></a>Zelfstudie: Data Box Heavy gebruiken om gegevens als beheerde schijven in Azure te importeren
 
@@ -75,11 +75,11 @@ Als u een hostcomputer met Windows Server gebruikt, voert u deze stappen uit om 
     > [!NOTE]
     > De referenties voor alle shares voor beheerde schijven zijn identiek.
 
-    ![Sharereferenties 1 ophalen](media/data-box-deploy-copy-data-from-vhds/get-share-credentials1.png)
+    ![Sharereferenties ophalen](media/data-box-deploy-copy-data-from-vhds/get-share-credentials1.png)
 
 2. Kopieer in het dialoogvenster Verbinding maken met share en gegevens kopiëren de **gebruikersnaam** en het **wachtwoord** voor de share. Klik op **OK**.
     
-    ![Sharereferenties 1 ophalen](media/data-box-deploy-copy-data-from-vhds/get-share-credentials2.png)
+    ![Sharereferenties 2 ophalen](media/data-box-deploy-copy-data-from-vhds/get-share-credentials2.png)
 
 3. Als u vanaf uw hostcomputer toegang wilt krijgen tot de shares die zijn gekoppeld aan uw resource (*mydbmdrg1* in het volgende voorbeeld), opent u een opdrachtvenster. Typ in de opdrachtprompt:
 
@@ -101,7 +101,7 @@ Als u een hostcomputer met Windows Server gebruikt, voert u deze stappen uit om 
 
 4. Druk op Windows-toets+R. Geef in het venster **Uitvoeren** het `\\<device IP address>\<ShareName>` op. Klik op **OK** om Verkenner te openen.
     
-    ![Verbinding met de share maken via Verkenner 2](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer1.png)
+    ![Verbinding maken met share via Verkenner](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer1.png)
 
     U ziet nu de volgende, vooraf gemaakte mappen in elke share.
     
@@ -114,7 +114,7 @@ Als u een Linux-hostcomputer gebruikt, voert u de volgende stappen uit om uw app
 
 1. Geef de IP-adressen op van de clients die toegang hebben tot de share. Ga in de lokale gebruikersinterface naar de pagina **Verbinding maken en kopiëren**. Klik onder **NFS-instellingen** op **NFS-clienttoegang**.
 
-    ![NFS-clienttoegang configureren 1](media/data-box-deploy-copy-data-from-vhds/nfs-client-access1.png)
+    ![NFS-clienttoegang configureren](media/data-box-deploy-copy-data-from-vhds/nfs-client-access1.png)
 
 2. Geef het IP-adres op van de NFS-client en klik op **Toevoegen**. U kunt deze stap herhalen om toegang voor meerdere NFS-clients te configureren. Klik op **OK**.
 

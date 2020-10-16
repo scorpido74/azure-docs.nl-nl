@@ -1,21 +1,21 @@
 ---
 title: Activiteit van serviceprovider bekijken
 description: Klanten kunnen vastgelegde activiteiten weer geven om acties te bekijken die door service providers worden uitgevoerd via het beheer van gedelegeerde resources van Azure.
-ms.date: 07/07/2020
+ms.date: 10/12/2020
 ms.topic: how-to
-ms.openlocfilehash: 0c92fc9b45d17e37fb3721d9cf087c5e7a62f6d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ec9d49de953a0fed3a5afc669e9297148aadf32
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86131452"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974308"
 ---
 # <a name="view-service-provider-activity"></a>Activiteit van serviceprovider bekijken
 
 Klanten met gedelegeerde abonnementen voor [Azure Lighthouse](../overview.md) kunnen [Azure-activiteiten logboek gegevens weer geven](../../azure-monitor/platform/platform-logs-overview.md) om alle uitgevoerde acties weer te geven. Dit biedt klanten volledige zicht baarheid van de activiteiten die service providers uitvoeren via [Azure delegated resource management](../concepts/azure-delegated-resource-management.md), samen met bewerkingen die worden uitgevoerd door gebruikers binnen de eigen Azure Active Directory (Azure AD)-Tenant van de klant.
 
 > [!TIP]
-> We bieden ook een Azure Policy ingebouwde beleids definitie voor het controleren van de overdracht van scopes naar een beheer Tenant. Zie [audit delegaties in uw omgeving](view-manage-service-providers.md#audit-delegations-in-your-environment)voor meer informatie.
+> We bieden ook Azure Policy ingebouwde beleids definities om de [overdracht te beperken tot specifieke beheer tenants](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Lighthouse/AllowCertainManagingTenantIds_Deny.json) en om [de overdracht van scopes naar een beheer Tenant te controleren](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Lighthouse/Lighthouse_Delegations_Audit.json). Zie [audit delegaties in uw omgeving](view-manage-service-providers.md#audit-delegations-in-your-environment)voor meer informatie.
 
 ## <a name="view-activity-log-data"></a>Gegevens van activiteitenlogboek weergeven
 

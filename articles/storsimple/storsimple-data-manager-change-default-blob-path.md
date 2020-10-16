@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: 6af095c7abdb9aa61e57d543ff2ab2f9192dadc8
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91743570"
 ---
 # <a name="change-a-blob-path-from-the-default-path"></a>Het standaardpad van een blob wijzigen
@@ -25,13 +25,13 @@ Zorg ervoor dat u een correct geconfigureerde taak definitie hebt in uw StorSimp
 
 Voer de volgende stappen uit om een Azure-functie te maken:
 
-1. Ga naar [Azure Portal](https://portal.azure.com/).
+1. Ga naar de [Azure Portal](https://portal.azure.com/).
 
 2. Klik op **+ Een resource maken**. Typ **functie-app** in het **zoekvak** en druk op **Enter**. Selecteer en klik op **functie-app** in de lijst met weer gegeven apps.
 
     ![Typ ' functie-app ' in het zoekvak](./media/storsimple-data-manager-change-default-blob-path/search-function-app.png)
 
-3. Klik op **Create**.
+3. Klik op **Maken**.
 
     ![De knop ' maken ' van het functie-app venster](./media/storsimple-data-manager-change-default-blob-path/create-function-app.png)
 
@@ -46,7 +46,7 @@ Voer de volgende stappen uit om een Azure-functie te maken:
 
         ![Nieuwe functie-app configuratie gegevens invoeren](./media/storsimple-data-manager-change-default-blob-path/function-app-parameters.png)
 
-    7. Klik op **Create**. De functie-app is gemaakt.
+    7. Klik op **Maken**. De functie-app is gemaakt.
      
         ![functie-app gemaakt](./media/storsimple-data-manager-change-default-blob-path/function-app-created.png)
 
@@ -64,7 +64,7 @@ Voer de volgende stappen uit om een Azure-functie te maken:
 
         ![Een nieuwe C#-functie maken](./media/storsimple-data-manager-change-default-blob-path/new-function-parameters.png)
 
-    4. Klik op **Create**. De **functie** wordt gemaakt.
+    4. Klik op **Maken**. De **functie** wordt gemaakt.
 
      
 10. Voer in het functie venster het bestand _. CSX_ uit.

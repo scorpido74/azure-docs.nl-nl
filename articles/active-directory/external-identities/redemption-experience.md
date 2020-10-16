@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d6bf5d40262c5991504d3dc62490fb50f6a20592
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87908535"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Inwisseling uitnodiging Azure Active Directory B2B-samen werking
@@ -42,8 +42,8 @@ Als alternatief voor de uitnodigings-e-mail kunt u een gast een rechtstreekse ko
 
 > [!IMPORTANT]
 > De directe koppeling moet Tenant-specifiek zijn. Met andere woorden, het moet een Tenant-ID of geverifieerd domein bevatten zodat de gast kan worden geverifieerd in uw Tenant, waar de gedeelde app zich bevindt. Een gemeen schappelijke URL https://myapps.microsoft.com kan niet worden gebruikt voor een gast omdat deze wordt omgeleid naar hun eigen Tenant voor authenticatie. Hier volgen enkele voor beelden van directe koppelingen met de context van de Tenant:
- > - Toegangs venster voor apps:`https://myapps.microsoft.com/?tenantid=<tenant id>`
- > - Toegangs venster voor apps voor een geverifieerd domein:`https://myapps.microsoft.com/<;verified domain>`
+ > - Toegangs venster voor apps: `https://myapps.microsoft.com/?tenantid=<tenant id>`
+ > - Toegangs venster voor apps voor een geverifieerd domein: `https://myapps.microsoft.com/<;verified domain>`
  > - Azure Portal: `https://portal.azure.com/<tenant id>`
  > - Afzonderlijke app: zie een [koppeling voor direct aanmelden](../manage-apps/end-user-experiences.md#direct-sign-on-links) gebruiken
 
@@ -113,4 +113,4 @@ In uw Directory wordt de waarde van de **uitnodiging geaccepteerd** van de gast 
 - [Azure Active Directory B2B-samenwerkings gebruikers toevoegen aan de Azure Portal](add-users-administrator.md)
 - [Hoe voegen mede werkers B2B-samenwerkings gebruikers toe aan Azure Active Directory?](add-users-information-worker.md)
 - [Azure Active Directory B2B-samenwerkings gebruikers toevoegen met behulp van Power shell](customize-invitation-api.md#powershell)
-- [Een organisatie als gast gebruiker laten staan](leave-the-organization.md)
+- [Een organisatie verlaten als gastgebruiker](leave-the-organization.md)

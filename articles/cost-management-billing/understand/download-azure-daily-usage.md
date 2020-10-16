@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
-ms.openlocfilehash: 3b16e5b460f5fdfd0668db2b2e2fac78775cd893
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 141da3dfab9996110952ec266733271582e66ff9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688909"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439195"
 ---
 # <a name="view-and-download-your-azure-usage-and-charges"></a>Uw Azure-gebruik en -kosten weergeven en downloaden
 
@@ -28,12 +28,12 @@ Op basis van het type abonnement dat u gebruikt, variëren de opties voor het do
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Zoek naar *Kostenbeheer en facturering*.  
-    ![Schermopname met zoekfunctie in de Azure-portal](./media/download-azure-daily-usage/portal-cm-billing-search.png)
+    ![Schermopname van zoekopdracht in Azure Portal naar kostenbeheer en facturering.](./media/download-azure-daily-usage/portal-cm-billing-search.png)
 1. Afhankelijk van uw toegang moet u mogelijk een factureringsrekening of factureringsprofiel selecteren.
 1. Selecteer **Facturen** onder **Facturering** in het menu aan de linkerkant.
 1. Ga in het factuurraster naar de rij van de factureringsperiode die overeenkomt met de gebruiksgegevens die u wilt downloaden.
 1. Selecteer het **downloadpictogram** of het beletselteken (`...`) aan de rechterkant.  
-  ![Schermopname van de downloadlocatie voor Gebruik en kosten](./media/download-azure-daily-usage/download-usage-others.png)  
+  ![Schermopname van de pagina Facturen in Cost Management + Billing met downloadoptie.](./media/download-azure-daily-usage/download-usage-others.png)  
 1. Het deelvenster Downloaden wordt geopend aan de rechterkant. Selecteer **Downloaden** in de sectie **Gebruiksgegevens**.  
 
 ## <a name="download-usage-for-ea-customers"></a>Gebruiksgegevens downloaden voor EA-klanten
@@ -42,10 +42,10 @@ Om als een EA-klant gebruiksgegevens weer te geven en te downloaden, moet u een 
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Zoek naar *Kostenbeheer en facturering*.  
-    ![Schermopname met zoekfunctie in de Azure-portal](./media/download-azure-daily-usage/portal-cm-billing-search.png)
+    ![Schermopname van de zoekopdracht in Azure Portal.](./media/download-azure-daily-usage/portal-cm-billing-search.png)
 1. Selecteer **Gebruik + kosten**.
 1. Selecteer **Downloaden** voor de maand waarvan u de gegevens wilt downloaden.  
-    ![Schermopname van de downloadlocatie voor Gebruik en kosten](./media/download-azure-daily-usage/download-usage-ea.png)
+    ![Schermopname van de pagina Facturen van Cost Management + Billing voor EA-klanten.](./media/download-azure-daily-usage/download-usage-ea.png)
 
 ## <a name="download-usage-for-pending-charges"></a>Gebruiksgegevens voor kosten in behandeling
 

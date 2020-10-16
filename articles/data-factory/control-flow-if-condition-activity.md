@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 9f65ffc9ef24b18ce0f18571c1f3fc91e7ca7fdf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85414603"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Als conditie activiteit in Azure Data Factory
@@ -23,7 +23,7 @@ ms.locfileid: "85414603"
 
 De If Condition Activity biedt dezelfde functionaliteit als een If-instructie in een programmeertaal. Er wordt een reeks activiteiten uitgevoerd wanneer de voor waarde wordt geëvalueerd `true` en een andere set activiteiten wanneer de voor waarde wordt geëvalueerd `false` . 
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Syntaxis
 
 ```json
 
@@ -67,9 +67,9 @@ De If Condition Activity biedt dezelfde functionaliteit als een If-instructie in
 
 Eigenschap | Beschrijving | Toegestane waarden | Vereist
 -------- | ----------- | -------------- | --------
-naam | De naam van de activiteit voor de if-voor waarde. | Tekenreeks | Yes
-type | Moet worden ingesteld op **IfCondition** | Tekenreeks | Yes
-expressie | Expressie die moet worden geëvalueerd als waar of onwaar | Expressie met Booleaanse waarde voor resultaat type | Yes
+naam | De naam van de activiteit voor de if-voor waarde. | Tekenreeks | Ja
+type | Moet worden ingesteld op **IfCondition** | Tekenreeks | Ja
+expression | Expressie die moet worden geëvalueerd als waar of onwaar | Expressie met Booleaanse waarde voor resultaat type | Ja
 ifTrueActivities | Een set activiteiten die worden uitgevoerd wanneer de expressie wordt geëvalueerd `true` . | Matrix | Ja
 ifFalseActivities | Een set activiteiten die worden uitgevoerd wanneer de expressie wordt geëvalueerd `false` . | Matrix | Ja
 
@@ -79,7 +79,7 @@ Met de pijp lijn in dit voor beeld worden gegevens van een uitvoermap naar een u
 > [!NOTE]
 > Deze sectie bevat JSON-definities en voor beelden van Power shell-opdrachten voor het uitvoeren van de pijp lijn. Zie [zelf studie: een Data Factory maken met behulp van Azure PowerShell](quickstart-create-data-factory-powershell.md)voor een overzicht met stapsgewijze instructies voor het maken van een Data Factory pijp lijn met behulp van Azure PowerShell-en JSON-definities.
 
-### <a name="pipeline-with-if-condition-activity-adfv2quickstartpipelinejson"></a>Pijp lijn met activiteit als voor waarde (Adfv2QuickStartPipeline.jsaan)
+### <a name="pipeline-with-if-condition-activity-adfv2quickstartpipelinejson"></a>Pijp lijn met IF-Condition activiteit (Adfv2QuickStartPipeline.jsop)
 
 ```json
 {

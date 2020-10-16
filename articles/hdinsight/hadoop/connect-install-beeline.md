@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: contperfq1
 ms.date: 05/27/2020
 ms.openlocfilehash: 5495e6c6392ba2e824a0a70717bd19747db9b754
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88754953"
 ---
 # <a name="connect-to-apache-beeline-on-hdinsight-or-install-it-locally"></a>Verbinding maken met Apache Beeline op HDInsight of lokaal installeren
@@ -52,7 +52,7 @@ Vervang door `<username>` de naam van een account in het domein met machtigingen
 
 De JDBC-URL vinden vanuit Ambari:
 
-1. Ga in een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary` , waarbij `CLUSTERNAME` de naam van het cluster is. Zorg ervoor dat HiveServer2 wordt uitgevoerd.
+1. Navigeer in een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary`, waarbij `CLUSTERNAME` de naam van uw cluster is. Zorg ervoor dat HiveServer2 wordt uitgevoerd.
 
 1. Het klem bord gebruiken om de HiveServer2 JDBC-URL te kopiëren.
 

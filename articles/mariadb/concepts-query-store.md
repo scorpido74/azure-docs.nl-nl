@@ -7,17 +7,17 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: a502638744009fc34a7f0a27f8034b89d2c8fa26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79527806"
 ---
 # <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>Azure Database for MariaDB prestaties bewaken met query Store
 
 **Van toepassing op:** Azure Database for MariaDB 10,2
 
-De functie query Store in azure data base for Mariadb biedt een manier om query prestaties gedurende een periode bij te houden. Query Store vereenvoudigt het oplossen van prestaties, omdat u snel de langste en meest tijdrovende query's kunt vinden. In de query Store wordt automatisch een geschiedenis van query's en runtime-statistieken vastgelegd en worden deze voor uw beoordeling bewaard. De gegevens worden op tijd Vensters gescheiden, zodat u de database gebruiks patronen kunt zien. Gegevens voor alle gebruikers, data bases en query's worden opgeslagen in de **MySQL** -schema database in het Azure database for MariaDB-exemplaar.
+De functie query Store in azure data base for Mariadb biedt een manier om query prestaties gedurende een periode bij te houden. Query Store vereenvoudigt het oplossen van problemen met prestaties, omdat u snel de langstlopende en meest tijdrovende query's kunt vinden. In de query Store wordt automatisch een geschiedenis van query's en runtime-statistieken vastgelegd en worden deze voor uw beoordeling bewaard. De gegevens worden op tijd Vensters gescheiden, zodat u de database gebruiks patronen kunt zien. Gegevens voor alle gebruikers, data bases en query's worden opgeslagen in de **MySQL** -schema database in het Azure database for MariaDB-exemplaar.
 
 ## <a name="common-scenarios-for-using-query-store"></a>Algemene scenario's voor het gebruik van query Store
 
@@ -87,7 +87,7 @@ Wanneer query Store is ingeschakeld, worden gegevens opgeslagen in een periode v
 
 De volgende opties zijn beschikbaar voor het configureren van query Store-para meters.
 
-| **Parameter** | **Beschrijving** | **Standaard** | **Bereik** |
+| **Parameter** | **Beschrijving** | **Prijs** | **Bereik** |
 |---|---|---|---|
 | query_store_capture_mode | De functie query Store in-of uitschakelen op basis van de waarde. Opmerking: als performance_schema is uitgeschakeld, wordt performance_schema en een subset van de performance schema-instrumenten die voor deze functie zijn vereist query_store_capture_mode, ingeschakeld. | ALL | GEEN, ALLE |
 | query_store_capture_interval | De interval voor het vastleggen van de query opslag in minuten. Hiermee kunt u het interval opgeven waarin de metrische gegevens van de query worden geaggregeerd | 15 | 5 - 60 |
@@ -96,7 +96,7 @@ De volgende opties zijn beschikbaar voor het configureren van query Store-para m
 
 De volgende opties zijn specifiek van toepassing op wacht statistieken.
 
-| **Parameter** | **Beschrijving** | **Standaard** | **Bereik** |
+| **Parameter** | **Beschrijving** | **Prijs** | **Bereik** |
 |---|---|---|---|
 | query_store_wait_sampling_capture_mode | Hiermee kunt u de wacht statistieken in-of uitschakelen. | GEEN | GEEN, ALLE |
 | query_store_wait_sampling_frequency | Wijzigt de frequentie van wacht-sampling in seconden. 5 tot 300 seconden. | 30 | 5-300 |
@@ -112,7 +112,7 @@ Bekijk en beheer query Store met behulp van de volgende weer gaven en functies. 
 
 Query's worden genormaliseerd door de structuur te bekijken na het verwijderen van letterlijke waarden en constanten. Als twee query's identiek zijn, met uitzonde ring van letterlijke waarden, hebben ze dezelfde hash.
 
-### <a name="mysqlquery_store"></a>MySQL. query_store
+### <a name="mysqlquery_store"></a>mysql.query_store
 
 In deze weer gave worden alle gegevens in query Store geretourneerd. Er is één rij voor elke afzonderlijke data base-ID, gebruikers-ID en query-ID.
 
@@ -145,7 +145,7 @@ In deze weer gave worden alle gegevens in query Store geretourneerd. Er is één
 | `first_seen` | tijdstempel| NO| Het eerste exemplaar (UTC) van de query tijdens het aggregatie venster|
 | `last_seen` | tijdstempel| NO| Het laatste exemplaar (UTC) van de query tijdens dit aggregatie venster|
 
-### <a name="mysqlquery_store_wait_stats"></a>MySQL. query_store_wait_stats
+### <a name="mysqlquery_store_wait_stats"></a>mysql.query_store_wait_stats
 
 Met deze weer gave worden wachtende gebeurtenis gegevens in query Store geretourneerd. Er is één rij voor elke afzonderlijke data base-ID, gebruikers-ID, query-ID en gebeurtenis.
 

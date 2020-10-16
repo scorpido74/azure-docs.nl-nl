@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: ramamill
 ms.openlocfilehash: 3b9edab6e908b4506a92c78aa8f3f53277b9c17b
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91360868"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Virtuele Azure-machines waarvoor failover naar de primaire regio is uitgevoerd, opnieuw beveiligen
@@ -44,7 +44,7 @@ U kunt de volgende eigenschappen van de doel-VM aanpassen tijdens het opnieuw be
 
 ![Aanpassen](./media/site-recovery-how-to-reprotect-azure-to-azure/customizeblade.png)
 
-|Eigenschap |Opmerkingen  |
+|Eigenschap |Notities  |
 |---------|---------|
 |Doelresourcegroep | Wijzig de doel resource groep waarin de virtuele machine is gemaakt. Als onderdeel van de herbeveiliging wordt de doel-VM verwijderd. U kunt een nieuwe resource groep kiezen voor het maken van de virtuele machine na een failover. |
 |Virtueel doelnetwerk | Het doelnet werk kan niet worden gewijzigd tijdens de taak beveiliging opnieuw beveiligen. Als u het netwerk wilt wijzigen, voert u de netwerk toewijzing opnieuw uit. |

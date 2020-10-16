@@ -4,10 +4,10 @@ description: Bewaking van toepassings prestaties voor Java-toepassingen die word
 ms.topic: conceptual
 ms.date: 03/29/2020
 ms.openlocfilehash: 08e5b68ea5e5ec63531bb4f9c6b4483e9afbb9bc
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91370031"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Bewaking van Java-toepassingen Azure Monitor Application Insights-open bare preview-versie
@@ -134,12 +134,12 @@ De volgende tabel bevat momenteel ondersteunde aangepaste typen telemetrie die u
 
 |                     | Micrometer | Log4j, logback, JUL | 2. x SDK |
 |---------------------|------------|---------------------|---------|
-| **Aangepaste gebeurtenissen**   |            |                     |  Yes    |
+| **Aangepaste gebeurtenissen**   |            |                     |  Ja    |
 | **Aangepaste metrische gegevens**  |  Ja       |                     |  Ja    |
-| **Afhankelijkheden**    |            |                     |  Yes    |
+| **Afhankelijkheden**    |            |                     |  Ja    |
 | **Uitzonderingen**      |            |  Ja                |  Ja    |
-| **Paginaweergaven**      |            |                     |  Yes    |
-| **Aanvragen**        |            |                     |  Yes    |
+| **Paginaweergaven**      |            |                     |  Ja    |
+| **Aanvragen**        |            |                     |  Ja    |
 | **Traceringen**          |            |  Ja                |  Ja    |
 
 Er is op dit moment geen planning voor het vrijgeven van een SDK met Application Insights 3,0.

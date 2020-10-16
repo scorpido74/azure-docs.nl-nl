@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.openlocfilehash: 54109d5889ae2c08f444a3a089386d413bf4262b
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91650184"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-with-azure-cache-for-redis"></a>Een machine learning model implementeren voor het Azure Functions met Azure cache voor redis 
@@ -45,7 +45,7 @@ U kunt een machine learning model implementeren om te Azure Functions met een ba
    
 1. Selecteer op de pagina **Nieuw** de optie **Databases** en selecteer vervolgens **Azure Cache voor Redis**.
 
-    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="Selecteer Azure-cache voor redis.":::
+    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="Selecteer Azure Cache voor Redis.":::
    
 1. Configureer op de pagina **Nieuwe Redis-cache** de instellingen voor de nieuwe cache.
    
@@ -57,25 +57,25 @@ U kunt een machine learning model implementeren om te Azure Functions met een ba
    | **Locatie** | Open de vervolgkeuzelijst en selecteer een locatie. | Selecteer een [regio](https://azure.microsoft.com/regions/) in de buurt van andere services die gaan gebruikmaken van de cache. |
    | **Prijscategorie** | Open de vervolgkeuzelijst en selecteer een [Prijscategorie](https://azure.microsoft.com/pricing/details/cache/). |  De prijscategorie bepaalt de grootte, prestaties en functies die beschikbaar zijn voor de cache. Zie het [Azure Cache voor Redis-overzicht](cache-overview.md) voor meer informatie. |
 
-1. Selecteer het tabblad **netwerken** of Klik onder aan de pagina op de knop **netwerk** .
+1. Selecteer het tabblad **Netwerken** of klik op de knop **Netwerken** onderaan de pagina.
 
-1. Op het tabblad **netwerken** selecteert u de verbindings methode.
+1. Selecteer uw verbindingsmethode op het tabblad **Netwerk**.
 
-1. Selecteer het tabblad **volgende: Geavanceerd** of klik op de knop **volgende: Geavanceerd** aan de onderkant van de pagina.
+1. Selecteer het tabblad **Volgende: Geavanceerd** of klik op de knop **Volgende: Geavanceerd** onderaan de pagina.
 
-1. Selecteer op het tabblad **Geavanceerd** voor een basis-of Standard-cache-exemplaar de schakel optie inschakelen als u een niet-TLS-poort wilt inschakelen.
+1. Selecteer in het tabblad **Geavanceerd** voor een basic of standard cache-exemplaar de schakeloptie inschakelen als u een niet-TLS-poort wilt inschakelen.
 
-1. Configureer op het tabblad **Geavanceerd** voor het Premium-cache-exemplaar de instellingen voor niet-TLS-poort, clustering en gegevens persistentie.
+1. Configureer in het tabblad **Geavanceerd** voor premium cache-exemplaar de instellingen voor een niet-TLS-poort, clustering en gegevenspersistentie.
 
-1. Selecteer het tabblad **volgende: Labels** of klik op de knop **volgende: Labels** onder aan de pagina.
+1. Selecteer het tabblad **Volgende: Tags** of klik op de knop **Volgende: Tags** onderaan de pagina.
 
-1. Geef desgewenst de naam en waarde op op het tabblad **Tags** als u de resource wilt categoriseren. 
+1. Voer desgewenst in het tabblad **Tags** de naam en waarde in om de resource te categoriseren. 
 
-1. Selecteer **controleren + maken**. U gaat naar het tabblad controleren + maken, waar Azure uw configuratie valideert.
+1. Selecteer  **Beoordelen + maken**. Het tabblad Beoordelen + maken wordt weergegeven, waar uw configuratie wordt gevalideerd in Azure.
 
-1. Wanneer het bericht groene validatie is voltooid wordt weer gegeven, selecteert u **maken**.
+1. Selecteer **Maken** nadat het groene bericht Validatie geslaagd verschijnt.
 
-Het duurt even voordat de cache is gemaakt. U kunt de voortgang controleren op de **overzichts**pagina van de Azure-cache voor redis   . Wanneer de **status**   wordt weer gegeven als **actief**, is de cache klaar voor gebruik. 
+Het duurt even voor de cache is gemaakt. U kunt de voortgang bekijken op de  **overzichtspagina**  van Azure Cache voor Redis. Wanneer  **Status** wordt weergegeven als  **Wordt uitgevoerd**, is de cache klaar voor gebruik. 
 
 ## <a name="prepare-for-deployment"></a>Implementatie voorbereiden
 

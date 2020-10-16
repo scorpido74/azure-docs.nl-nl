@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 12/07/2018
 ms.openlocfilehash: 1278a03d3ffc7ccb11b0e3c4c84f6c213648440b
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88008777"
 ---
 # <a name="cluster-operator-and-developer-best-practices-to-build-and-manage-applications-on-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor cluster operators en ontwikkel aars voor het maken en beheren van toepassingen in azure Kubernetes service (AKS)
@@ -21,7 +21,7 @@ Deze aanbevolen procedures en conceptuele artikelen zijn geschreven in combi nat
 
 Als cluster operator kunt u samen werken met eigen aren van toepassingen en ontwikkel aars om inzicht te krijgen in hun behoeften. U kunt vervolgens de volgende aanbevolen procedures gebruiken om uw AKS-clusters naar behoefte te configureren.
 
-**Meerdere tenants**
+**Multitenancy**
 
 * [Aanbevolen procedures voor clusterisolatie](operator-best-practices-cluster-isolation.md)
     * Inclusief multitenancy-kern onderdelen en logische isolatie met naam ruimten.

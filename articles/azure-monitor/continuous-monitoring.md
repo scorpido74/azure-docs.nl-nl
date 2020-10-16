@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
-ms.openlocfilehash: 0173d324da4f6cf2a24b825fe44fc07b7fe50b84
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e41fa9f9918f4f17bd89e80610ae608e83eb3402
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318127"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996397"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Doorlopende bewaking met Azure Monitor
 
@@ -43,7 +43,7 @@ Toepassingen zijn alleen betrouwbaar als de onderliggende infra structuur. Als u
 
 [Infra structuur als code](/azure/devops/learn/what-is-infrastructure-as-code) is het beheer van de infra structuur in een beschrijvende model, waarbij dezelfde versie wordt gebruikt als voor de DevOps teams voor de bron code. Het voegt de betrouw baarheid en schaal baarheid aan uw omgeving toe en maakt het u mogelijk vergelijk bare processen te gebruiken waarmee uw toepassingen worden beheerd.
 
--  Gebruik [Resource Manager-sjablonen](platform/template-workspace-configuration.md) om bewaking in te scha kelen en waarschuwingen in te stellen voor een grote set resources.
+-  Gebruik [Resource Manager-sjablonen](./samples/resource-manager-workspace.md) om bewaking in te scha kelen en waarschuwingen in te stellen voor een grote set resources.
 - Gebruik [Azure Policy](../governance/policy/overview.md) om verschillende regels voor uw resources af te dwingen. Dit zorgt ervoor dat deze resources compatibel blijven met uw bedrijfs standaarden en service overeenkomsten. 
 
 
@@ -87,4 +87,3 @@ Zorg ervoor dat uw ontwikkeling en bewerkingen toegang hebben tot dezelfde telem
 
 - Meer informatie over de verschillen onderdelen van [Azure monitor](overview.md).
 - [Voeg doorlopende bewaking](./app/continuous-monitoring.md) toe aan uw release pijplijn.
-

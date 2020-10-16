@@ -9,10 +9,10 @@ ms.date: 11/13/2019
 ms.author: absha
 ms.custom: mvc
 ms.openlocfilehash: 4626d40acc9ae84e7fcc5da16add0de7ffe6ffcc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84807901"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-portal"></a>HTTP-aanvraag-en-antwoord headers herschrijven met Azure-toepassing gateway-Azure Portal
@@ -67,7 +67,7 @@ In dit voor beeld wijzigen we een omleidings-URL door de locatie header te hersc
 
    - Voer de naam in voor de herschrijfset in het vak **naam** .
    - Selecteer een of meer regels die worden vermeld in de lijst **gekoppelde routerings regels** . U kunt alleen regels selecteren die niet zijn gekoppeld aan andere herschrijf sets. De regels die al zijn gekoppeld aan andere herschrijf sets, worden grijs weer gegeven.
-   - Selecteer **Volgende**.
+   - Selecteer **Next**.
    
      ![Naam en koppeling toevoegen](media/rewrite-http-headers-portal/name-and-association.png)
 
@@ -91,7 +91,7 @@ In dit voor beeld wijzigen we een omleidings-URL door de locatie header te hersc
 
    - Selecteer in de lijst **header type** de optie **Response**.
 
-   - Omdat we in dit voor beeld de locatie header evalueren, een veelgebruikte header, selecteert u **algemene header** onder **header naam**.
+   - Omdat we in dit voor beeld de locatie header evalueren, een veelgebruikte header, selecteert u  **algemene header** onder **header naam**.
 
    - Selecteer in de lijst **common header** de optie **locatie**.
 
@@ -99,7 +99,7 @@ In dit voor beeld wijzigen we een omleidings-URL door de locatie header te hersc
 
    - Selecteer in de lijst **operator** de optie **gelijk aan (=)**.
 
-   - Geef een reguliere-expressie patroon op. In dit voor beeld gebruiken we het patroon `(https?):\/\/.*azurewebsites\.net(.*)$` .
+   - Geef een reguliere-expressie patroon op. In dit voor beeld gebruiken we het patroon  `(https?):\/\/.*azurewebsites\.net(.*)$` .
 
    - Selecteer **OK**.
 

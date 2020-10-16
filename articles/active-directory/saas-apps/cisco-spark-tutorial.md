@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 4fd6b46353cdeb4493c1a767c92e75d602e52843
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b6da84c1be38dde72b663de1db3756e77f4db915
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88528869"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759773"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met Cisco Webex
 
@@ -151,13 +151,13 @@ In deze sectie stelt u B.Simon in staat gebruik te maken van eenmalige aanmeldin
 
 4. Selecteer **Settings** en klik in de sectie **Authentication** op **Modify**.
 
-    ![Eenmalige aanmelding configureren](./media/cisco-spark-tutorial/tutorial-cisco-spark-10.png)
+    ![Schermopname met Settings waar u Modify kunt selecteren.](./media/cisco-spark-tutorial/tutorial-cisco-spark-10.png)
   
 5. Selecteer **Integrate a 3rd-party identity provider. (Advanced)** en ga naar het volgende scherm.
 
 6. Sleep het bestand met de Azure AD-metagegevens naar de pagina **Import Idp Metadata** of gebruik de optie 'file browser' om het bestand te zoeken en te uploaden. Selecteer vervolgens **Require certificate signed by a certificate authority in Metadata (more secure)** en klik op **Next**.
 
-    ![Eenmalige aanmelding configureren](./media/cisco-spark-tutorial/tutorial-cisco-spark-11.png)
+    ![Schermopname met de pagina I d P Metadata.](./media/cisco-spark-tutorial/tutorial-cisco-spark-11.png)
 
 7. Selecteer **Test SSO Connection**. Wanneer er een nieuw browsertabblad wordt geopend, moet u zich verifiëren bij Azure AD door u aan te melden.
 
@@ -171,13 +171,13 @@ In deze sectie maakt u een gebruiker met de naam B.Simon in Cisco Webex. In deze
 
 2. Klik op **Users** en vervolgens op **Manage Users**.
    
-    ![Eenmalige aanmelding configureren](./media/cisco-spark-tutorial/tutorial-cisco-spark-12.png) 
+    ![Schermopname met de pagina Users waar u gebruikers kunt beheren.](./media/cisco-spark-tutorial/tutorial-cisco-spark-12.png) 
 
 3. Selecteer **Manually Add or Modify Users** in het venster **Manage User** en klik vervolgens op **Next**.
 
 4. Selecteer **Names and Email address**. Vul vervolgens de tekstvakken als volgt in:
 
-    ![Eenmalige aanmelding configureren](./media/cisco-spark-tutorial/tutorial-cisco-spark-13.png) 
+    ![Schermopname met het dialoogvenster Manage Users waar u handmatig gebruikers kunt toevoegen of wijzigen.](./media/cisco-spark-tutorial/tutorial-cisco-spark-13.png) 
 
     a. Typ in het tekstvak **Voornaam** de voornaam van de gebruiker, bijvoorbeeld **B**.
 

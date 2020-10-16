@@ -5,14 +5,16 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Meer informatie over het oplossen van veelvoorkomende problemen bij het inschakelen en gebruiken van Azure dev Spaces
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, servicemesh, servicemeshroutering, kubectl, k8s '
-ms.openlocfilehash: d697a11f3087c31a49d9b88e99b18bab686a2b59
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 5d8bf69d456bca2a88b8aa2031d5ef0ba20f7c30
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90981068"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91979116"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Problemen met Azure dev Spaces oplossen
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../includes/dev-spaces-deprecation.md)]
 
 Deze hand leiding bevat informatie over veelvoorkomende problemen die zich kunnen voordoen bij het gebruik van Azure dev Spaces.
 
@@ -422,9 +424,9 @@ U kunt dit probleem oplossen door Visual Studio code te sluiten en opnieuw te op
 
 ### <a name="error-internal-watch-failed-watch-enospc-when-attaching-debugging-to-a-nodejs-application"></a>Fout ' interne controle mislukt: Bekijk ENOSPC ' bij het toevoegen van fout opsporing aan een Node.js-toepassing
 
-Deze fout treedt op wanneer het knoop punt met de Pod met de Node.js toepassing waarmee u probeert te koppelen met een fout opsporingsprogramma de waarde *FS. inotify. max_user_watches* overschrijdt. In sommige gevallen is [de standaard waarde *FS. inotify. max_user_watches* mogelijk te klein om het toevoegen van een fout opsporingsprogramma rechtstreeks aan een pod te kunnen afhandelen](https://github.com/Azure/AKS/issues/772).
+Deze fout treedt op wanneer het knoop punt waarop de Pod wordt uitgevoerd, met de Node.js toepassing waarmee u probeert te koppelen met een fout opsporingsprogramma, de *FS.inotify.max_user_watches* waarde overschrijdt. In sommige gevallen is [de standaard waarde van *FS.inotify.max_user_watches* mogelijk te klein om het toevoegen van een fout opsporingsprogramma rechtstreeks aan een pod toe te voegen](https://github.com/Azure/AKS/issues/772).
 
-Een tijdelijke oplossing voor dit probleem is om de waarde *FS. inotify. max_user_watches* op elk knoop punt in het cluster te verhogen en het knoop punt opnieuw op te starten om de wijzigingen van kracht te laten worden.
+Een tijdelijke oplossing voor dit probleem is om de waarde van *FS.inotify.max_user_watches* op elk knoop punt in het cluster te verhogen en het knoop punt opnieuw op te starten om de wijzigingen van kracht te laten worden.
 
 ## <a name="other-common-issues"></a>Overige algemene problemen
 

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
 ms.openlocfilehash: ab3597ddba3e41e88c8b2b575ed5857aca01e610
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91397960"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Azure-naar-Azure-VM-replicatiefouten oplossen
@@ -281,14 +281,14 @@ Als u de replicatie status van de virtuele machine weer in orde wilt maken, kunt
 1. Ga naar **gerepliceerde items**  >  _VM-naam_  >  **schijven**.
 1. Selecteer de niet-beveiligde schijf en selecteer vervolgens **replicatie inschakelen**:
 
-   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/add-disk.png" alt-text="Schakel replicatie in op VM-schijven.":::
+   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/add-disk.png" alt-text="com-fout.":::
 
 #### <a name="to-dismiss-the-warning"></a>De waarschuwing negeren
 
 1. Ga naar de VM-naam van de **gerepliceerde items**  >  _VM name_.
 1. Selecteer de waarschuwing in het gedeelte **overzicht** en selecteer vervolgens **OK**.
 
-   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/dismiss-warning.png" alt-text="Waarschuwing nieuwe schijf negeren.":::
+   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/dismiss-warning.png" alt-text="com-fout.":::
 
 ## <a name="vm-removed-from-vault-completed-with-information-error-code-150225"></a>De virtuele machine die is verwijderd uit de kluis is voltooid met informatie (fout code 150225)
 
@@ -309,7 +309,7 @@ U kunt deze waarschuwing negeren als u deze virtuele machine nooit opnieuw wilt 
 
 1. Verwijder de vergren deling van de virtuele machine of VM-resource groep. In de volgende afbeelding moet de resource vergrendeling op de VM met de naam bijvoorbeeld `MoveDemo` worden verwijderd:
 
-   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="Vergren deling van virtuele machine verwijderen.":::
+   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="com-fout.":::
 
 1. Down load het script om [een verouderde site Recovery configuratie te verwijderen](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1).
 1. Voer het script uit, _Cleanup-stale-asr-config-Azure-VM.ps1_. Geef de **abonnements-id**, **VM-resource groep**en **VM-naam** op als para meters.
@@ -334,7 +334,7 @@ Een verouderde configuratie kan optreden op een Azure-VM als u replicatie voor d
 
 1. Verwijder de vergren deling van de virtuele machine of VM-resource groep. In de volgende afbeelding moet de resource vergrendeling op de VM met de naam bijvoorbeeld `MoveDemo` worden verwijderd:
 
-   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="Vergren deling van virtuele machine verwijderen.":::
+   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="com-fout.":::
 
 1. Down load het script om [een verouderde site Recovery configuratie te verwijderen](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1).
 1. Voer het script uit, _Cleanup-stale-asr-config-Azure-VM.ps1_. Geef de **abonnements-id**, **VM-resource groep**en **VM-naam** op als para meters.
@@ -367,7 +367,7 @@ Mogelijk ziet u de virtuele machine die u wilt inschakelen voor replicatie als e
 
 1. Verwijder de vergren deling, indien van toepassing, van de virtuele machine of VM-resource groep. In de volgende afbeelding moet de resource vergrendeling op de VM met de naam bijvoorbeeld `MoveDemo` worden verwijderd:
 
-   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="Vergren deling van virtuele machine verwijderen.":::
+   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="com-fout.":::
 
 1. Down load het script om [een verouderde site Recovery configuratie te verwijderen](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1).
 1. Voer het script uit, _Cleanup-stale-asr-config-Azure-VM.ps1_. Geef de **abonnements-id**, **VM-resource groep**en **VM-naam** op als para meters.
@@ -404,17 +404,17 @@ Als u de replicatie op de virtuele machine wilt inschakelen, moet de inrichtings
 
 Als de bron-VM deel uitmaakt van een virtueel netwerk en er al een andere virtuele machine van hetzelfde virtuele netwerk is toegewezen aan een netwerk in de doel resource groep, is de vervolg keuzelijst netwerk selectie niet beschikbaar (grijs weer gegeven).
 
-:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/unabletoselectnw.png" alt-text="De lijst met netwerk selectie is niet beschikbaar.":::
+:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/unabletoselectnw.png" alt-text="com-fout.":::
 
 ### <a name="issue-2-you-previously-protected-the-vm-and-then-you-disabled-the-replication"></a>Probleem 2: u hebt de virtuele machine eerder beveiligd en vervolgens de replicatie uitgeschakeld
 
 Als u de replicatie van een virtuele machine uitschakelt, wordt de netwerk toewijzing niet verwijderd. De toewijzing moet worden verwijderd uit de Recovery Services kluis waar de virtuele machine is beveiligd. Selecteer de **Recovery Services kluis** en ga naar **Manage**  >  **site Recovery-infra structuur**beheren  >  **voor netwerk toewijzing van virtuele Azure-machines**  >  **Network Mapping**.
 
-:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/delete_nw_mapping.png" alt-text="Netwerk toewijzing verwijderen.":::
+:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/delete_nw_mapping.png" alt-text="com-fout.":::
 
 Het doelnet-netwerk dat tijdens de installatie van nood herstel is geconfigureerd, kan na de eerste installatie worden gewijzigd en nadat de virtuele machine is beveiligd. Als u **netwerk toewijzing wilt wijzigen** , selecteert u de netwerk naam:
 
-:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/modify_nw_mapping.png" alt-text="Netwerk toewijzing wijzigen.":::
+:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/modify_nw_mapping.png" alt-text="com-fout.":::
 
 
 ## <a name="com-or-vss-error-code-151025"></a>COM+ of VSS (fout code 151025)
@@ -437,7 +437,7 @@ Stel de COM+-systeem toepassing en Volume Shadow Copy Service in op automatische
 1. Open de console Services in Windows.
 1. Zorg ervoor dat de COM+-systeem toepassing en Volume Shadow Copy Service niet zijn ingesteld op **uitgeschakeld** als **opstart type**.
 
-   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/com-error.png" alt-text="Controleer het opstart type van de COM plus-systeem toepassing en het Volume Shadow Copy Service.":::
+   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/com-error.png" alt-text="com-fout.":::
 
 ## <a name="unsupported-managed-disk-size-error-code-150172"></a>Niet-ondersteunde beheerde schijf grootte (fout code 150172)
 

@@ -10,12 +10,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - contperfq1
-ms.openlocfilehash: e6c85ba79c21c9a8120feebc02477506eb93d2e5
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: ae0c4c69cf500fb352cc889e068888084d1d8f8b
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500365"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045955"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>Een IoT Edge-apparaat configureren om te communiceren via een proxyserver
 
@@ -25,7 +25,7 @@ In dit artikel worden de volgende vier stappen door lopen om een IoT Edge appara
 
 1. [**Installeer de IoT Edge runtime op uw apparaat**](#install-the-runtime-through-a-proxy)
 
-   Met de IoT Edge-installatie scripts worden pakketten en bestanden van het internet opgehaald, zodat uw apparaat moet communiceren via de proxy server om die aanvragen te kunnen uitvoeren. Voor Windows-apparaten biedt het installatie script ook een [offline-installatie](how-to-install-iot-edge-windows.md#offline-or-specific-version-installation) optie.
+   Met de IoT Edge-installatie scripts worden pakketten en bestanden van het internet opgehaald, zodat uw apparaat moet communiceren via de proxy server om die aanvragen te kunnen uitvoeren. Voor Windows-apparaten biedt het installatie script ook een offline-installatie optie.
 
    Deze stap is een eenmalig proces om het IoT Edge-apparaat te configureren wanneer u het voor het eerst instelt. Dezelfde verbindingen zijn ook vereist wanneer u de IoT Edge runtime bijwerkt.
 
@@ -65,7 +65,7 @@ Of uw IoT Edge-apparaat wordt uitgevoerd op Windows of Linux, u hebt toegang tot
 
 ### <a name="linux-devices"></a>Linux-apparaten
 
-Als u de IoT Edge runtime op een Linux-apparaat installeert, configureert u pakket beheer om door te gaan met de proxy server om toegang te krijgen tot het installatie pakket. [Stel bijvoorbeeld apt-get in voor het gebruik van een http-proxy](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy). Als uw pakket beheer is geconfigureerd, volgt u de instructies in [Install Azure IOT Edge runtime op Linux](how-to-install-iot-edge-linux.md) zoals gebruikelijk.
+Als u de IoT Edge runtime op een Linux-apparaat installeert, configureert u pakket beheer om door te gaan met de proxy server om toegang te krijgen tot het installatie pakket. [Stel bijvoorbeeld apt-get in voor het gebruik van een http-proxy](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy). Als uw pakket beheer is geconfigureerd, volgt u de instructies in [Install Azure IOT Edge runtime](how-to-install-iot-edge.md) zoals gebruikelijk.
 
 ### <a name="windows-devices"></a>Windows-apparaten
 
@@ -73,13 +73,13 @@ Als u de IoT Edge runtime op een Windows-apparaat installeert, moet u de proxy s
 
 In de volgende stappen ziet u een voor beeld van een Windows-installatie met behulp van het `-proxy` argument:
 
-1. De opdracht invoke-WebRequest heeft proxy gegevens nodig om toegang te krijgen tot het installatie script. Vervolgens moet de opdracht Deploy-IoTEdge de proxy gegevens hebben om de installatie bestanden te downloaden.
+1. De Invoke-WebRequest-opdracht heeft proxy gegevens nodig om toegang te krijgen tot het installatie script. De Deploy-IoTEdge-opdracht heeft de proxy gegevens nodig om de installatie bestanden te downloaden.
 
    ```powershell
    . {Invoke-WebRequest -proxy <proxy URL> -useb aka.ms/iotedge-win} | Invoke-Expression; Deploy-IoTEdge -proxy <proxy URL>
    ```
 
-2. De opdracht initialiseren-IoTEdge hoeft de proxy server niet te passeren, dus de tweede stap vereist alleen proxy gegevens voor invoke-WebRequest.
+2. De Initialize-IoTEdge opdracht hoeft de proxy server niet te door lopen, dus voor de tweede stap is alleen proxy-informatie vereist voor invoke-WebRequest.
 
    ```powershell
    . {Invoke-WebRequest -proxy <proxy URL> -useb aka.ms/iotedge-win} | Invoke-Expression; Initialize-IoTEdge
@@ -93,7 +93,7 @@ $proxyCredential = (Get-Credential).GetNetworkCredential()
 Deploy-IoTEdge -InvokeWebRequestParameters @{ '-Proxy' = '<proxy URL>'; '-ProxyCredential' = $proxyCredential }
 ```
 
-Zie [invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest)voor meer informatie over proxy parameters. Zie voor meer informatie over Windows-installatie opties, waaronder offline-installatie [Azure IOT Edge runtime installeren in Windows](how-to-install-iot-edge-windows.md).
+Zie [invoke-WebRequest](/powershell/module/microsoft.powershell.utility/invoke-webrequest)voor meer informatie over proxy parameters. Zie [Power shell-scripts voor IOT Edge in Windows](reference-windows-scripts.md)voor meer informatie over para meters voor de installatie van Windows.
 
 ## <a name="configure-the-daemons"></a>De daemons configureren
 
@@ -108,7 +108,7 @@ Omdat Moby is gebouwd op docker, raadpleegt u de docker-documentatie voor het co
 Kies het artikel dat van toepassing is op uw IoT Edge besturings systeem van het apparaat:
 
 * [Docker-daemon configureren op Linux](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy) De Moby-daemon op Linux-apparaten behoudt de naam docker.
-* [Docker-daemon configureren in Windows](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon#proxy-configuration) De Moby-daemon op Windows-apparaten heet iotedge-Moby. De namen verschillen, omdat het mogelijk is om zowel docker Desktop als Moby parallel op een Windows-apparaat uit te voeren.
+* [Docker-daemon configureren in Windows](/virtualization/windowscontainers/manage-docker/configure-docker-daemon#proxy-configuration) De Moby-daemon op Windows-apparaten heet iotedge-Moby. De namen verschillen, omdat het mogelijk is om zowel docker Desktop als Moby parallel op een Windows-apparaat uit te voeren.
 
 ### <a name="iot-edge-daemon"></a>IoT Edge-daemon
 

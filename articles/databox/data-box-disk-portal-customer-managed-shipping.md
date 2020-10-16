@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 05/20/2020
 ms.author: alkohli
 ms.openlocfilehash: c4b3479e5728c32e66bc40f950bc948bf61dce42
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91575160"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-disk-in-the-azure-portal"></a>Zelf-beheerde verzen ding voor Azure Data Box Disk gebruiken in de Azure Portal
@@ -43,7 +43,7 @@ Wanneer u een Data Box Disk order plaatst, kunt u de optie voor zelf-beheerde ve
 
 3. Zodra u uw verzend adres hebt ingevoerd, moet u dit valideren en uw bestelling volt ooien.
 
-   ![Scherm afbeelding van het dialoog venster verzend adres toevoegen met de opties verzenden met en de optie verzend adres toevoegen.](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
+   ![Schermopname van het dialoogvenster Verzendadres toevoegen met de opties Verzenden met en Verzendadres toevoegen uitgelicht.](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
 
 4. Zodra het apparaat is voor bereid en u een e-mail melding hebt ontvangen, kunt u een ophaling plannen. Ga in uw Azure Data Box Disk order naar **overzicht** en selecteer vervolgens **ophalen plannen**.
 

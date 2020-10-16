@@ -2,15 +2,13 @@
 title: IP-adressen die worden gebruikt door Application Insights en Log Analytics | Microsoft Docs
 description: Uitzonde ringen voor Server firewalls vereist voor Application Insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 09/15/2020
-ms.openlocfilehash: e4c5331177541c7543b386bf8c489d6315fe0bc1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 755fd62482d7e453814cab5b5b617ba5eb0cc85a
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91299018"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91932359"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>IP-adressen die worden gebruikt door Application Insights en Log Analytics
 De [Azure-toepassing Insights](./app-insights-overview.md) -service gebruikt een aantal IP-adressen. Mogelijk moet u deze adressen weten als de app die u bewaakt, wordt gehost achter een firewall.
@@ -64,7 +62,7 @@ Open poorten 80 (http) en 443 (https) voor binnenkomend verkeer van deze adresse
 ### <a name="addresses-grouped-by-location"></a>Adressen gegroepeerd op locatie
 
 > [!NOTE]
-> Deze adressen worden weer gegeven met een CIDR-notatie (Classless Inter-Domain Routing). Dit betekent dat een item zoals het `51.144.56.112/28` equivalent is aan 16 IP-adressen, beginnend bij `51.144.56.112` en eindigt op `51.144.56.127` .
+> Deze adressen worden weer gegeven met behulp van de CIDR-notatie (Classable Inter-Domain Routing). Dit betekent dat een item zoals het `51.144.56.112/28` equivalent is aan 16 IP-adressen, beginnend bij `51.144.56.112` en eindigt op `51.144.56.127` .
 
 ```
 Australia East

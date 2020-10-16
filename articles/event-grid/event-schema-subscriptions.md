@@ -4,10 +4,10 @@ description: Hierin worden de eigenschappen beschreven die worden verschaft voor
 ms.topic: reference
 ms.date: 07/07/2020
 ms.openlocfilehash: 72b1a73bf418b417cd29f88063781e7b45979998
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86105894"
 ---
 # <a name="azure-subscription-as-an-event-grid-source"></a>Azure-abonnement als een Event Grid bron
@@ -22,7 +22,7 @@ Wanneer u zich abonneert op gebeurtenissen voor een Azure-abonnement, ontvangt u
 
 Als u gebeurtenissen op een programmatische manier wilt afhandelen, kunt u gebeurtenissen sorteren door de waarde te bekijken `operationName` . Uw gebeurtenis eindpunt kan bijvoorbeeld alleen gebeurtenissen verwerken voor bewerkingen die gelijk zijn aan `Microsoft.Compute/virtualMachines/write` of `Microsoft.Storage/storageAccounts/write` .
 
-Het gebeurtenis onderwerp is de resource-ID van de resource die het doel van de bewerking is. Als u gebeurtenissen voor een resource wilt filteren, geeft u deze resource-ID op bij het maken van het gebeurtenis abonnement. Als u wilt filteren op een resource type, gebruikt u een waarde in de volgende notatie:`/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
+Het gebeurtenis onderwerp is de resource-ID van de resource die het doel van de bewerking is. Als u gebeurtenissen voor een resource wilt filteren, geeft u deze resource-ID op bij het maken van het gebeurtenis abonnement. Als u wilt filteren op een resource type, gebruikt u een waarde in de volgende notatie: `/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
 
 
 ## <a name="event-grid-event-schema"></a>Event Grid-gebeurtenisschema
@@ -31,7 +31,7 @@ Het gebeurtenis onderwerp is de resource-ID van de resource die het doel van de 
 
 Azure-abonnementen die beheer gebeurtenissen van Azure Resource Manager verzenden, zoals wanneer een virtuele machine wordt gemaakt of een opslag account wordt verwijderd.
 
-| Gebeurtenistype | Description |
+| Gebeurtenistype | Beschrijving |
 | ---------- | ----------- |
 | Micro soft. resources. ResourceActionCancel | Deze gebeurtenis treedt op wanneer de actie voor de resource wordt geannuleerd. |
 | Micro soft. resources. ResourceActionFailure | Deze gebeurtenis treedt op wanneer de actie voor de resource mislukt. |
@@ -231,10 +231,10 @@ In het volgende voor beeld ziet u het schema voor een **ResourceActionSuccess** 
 
 Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | onderwerp | tekenreeks | Volledige bronpad naar de bron van de gebeurtenis. Dit veld is niet beschrijfbaar. Event Grid biedt deze waarde. |
-| Onderwerp | tekenreeks | Het door de uitgever gedefinieerde pad naar het gebeurtenisonderwerp. |
+| onderwerp | tekenreeks | Het door de uitgever gedefinieerde pad naar het gebeurtenisonderwerp. |
 | Type | tekenreeks | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. |
 | eventTime | tekenreeks | Het tijdstip waarop de gebeurtenis is gegenereerd op basis van de UTC-tijd van de provider. |
 | id | tekenreeks | De unieke id voor de gebeurtenis. |
@@ -244,7 +244,7 @@ Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 
 Het gegevens object heeft de volgende eigenschappen:
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | autorisatie | object | De aangevraagde autorisatie voor de bewerking. |
 | claims | object | De eigenschappen van de claims. Zie [JWT-specificatie](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)voor meer informatie. |

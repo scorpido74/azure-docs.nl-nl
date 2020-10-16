@@ -4,10 +4,10 @@ description: Overzicht van het gebruik van Azure Functions-proxy's
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.openlocfilehash: 3e08b9cf633162cc7015f47774b043cf58c115a0
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87385871"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Werken met Azure Functions-proxy's
@@ -28,7 +28,7 @@ In deze sectie wordt beschreven hoe u een proxy maakt in de functions-Portal.
 3. Geef een naam op voor uw proxy.
 4. Configureer het eind punt dat wordt weer gegeven in deze functie-app door de **route sjabloon** en **http-methoden**op te geven. Deze para meters gedragen zich op basis van de regels voor [http-triggers].
 5. Stel de **back-end-URL** in op een ander eind punt. Dit eind punt kan een functie zijn in een andere functie-app of een andere API. De waarde hoeft niet statisch te zijn en kan verwijzen naar [Toepassings instellingen] en- [para meters van de oorspronkelijke client aanvraag].
-6. Klik op **Create**.
+6. Klik op **Maken**.
 
 Uw proxy bestaat nu als een nieuw eind punt in uw functie-app. Vanuit een client perspectief is het gelijk aan een http trigger in Azure Functions. U kunt de nieuwe proxy proberen door de proxy-URL te kopiëren en deze te testen met uw favoriete HTTP-client.
 
@@ -55,7 +55,7 @@ De configuratie voor een proxy hoeft niet statisch te zijn. U kunt de voor waard
 ### <a name="reference-local-functions"></a><a name="reference-localhost"></a>Referentie lokale functies
 U kunt gebruiken `localhost` om rechtstreeks naar een functie binnen dezelfde functie-app te verwijzen, zonder een retour proxy-aanvraag.
 
-`"backendurl": "https://localhost/api/httptriggerC#1"`verwijst naar een lokale HTTP-functie die op de route wordt geactiveerd`/api/httptriggerC#1`
+`"backendurl": "https://localhost/api/httptriggerC#1"` verwijst naar een lokale HTTP-functie die op de route wordt geactiveerd `/api/httptriggerC#1`
 
  
 >[!Note]  
@@ -142,7 +142,7 @@ Elke proxy heeft een beschrijvende naam, zoals *Proxy1* in het vorige voor beeld
 > [!NOTE] 
 > De eigenschap *route* in azure functions-proxy's voldoet niet aan de eigenschap *routePrefix* van de configuratie van de functie-app-host. Als u een voor voegsel wilt opnemen zoals `/api` , moet dit worden opgenomen in de eigenschap *route* .
 
-### <a name="disable-individual-proxies"></a><a name="disableProxies"></a>Afzonderlijke proxy's uitschakelen
+### <a name="disable-individual-proxies"></a><a name="disableProxies"></a> Afzonderlijke proxy's uitschakelen
 
 U kunt afzonderlijke proxy's uitschakelen door toe te voegen `"disabled": true` aan de proxy in het `proxies.json` bestand. Dit zorgt ervoor dat aanvragen die aan de matchCondition voldoen, 404 retour neren.
 ```json
@@ -160,14 +160,14 @@ U kunt afzonderlijke proxy's uitschakelen door toe te voegen `"disabled": true` 
 }
 ```
 
-### <a name="application-settings"></a><a name="applicationSettings"></a>Toepassings instellingen
+### <a name="application-settings"></a><a name="applicationSettings"></a> Toepassings instellingen
 
 Het proxy gedrag kan worden beheerd door verschillende app-instellingen. Deze worden beschreven in de [Naslag informatie over de app-instellingen van functions](./functions-app-settings.md)
 
 * [AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL](./functions-app-settings.md#azure_function_proxy_disable_local_call)
 * [AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES](./functions-app-settings.md#azure_function_proxy_backend_url_decode_slashes)
 
-### <a name="reserved-characters-string-formatting"></a><a name="reservedChars"></a>Gereserveerde tekens (teken reeks opmaak)
+### <a name="reserved-characters-string-formatting"></a><a name="reservedChars"></a> Gereserveerde tekens (teken reeks opmaak)
 
 Proxy's lezen alle teken reeksen uit een JSON-bestand met behulp van \ als een escape-teken. Proxy's interpreteren ook gekrulde accolades. Bekijk een volledige set met voor beelden hieronder.
 

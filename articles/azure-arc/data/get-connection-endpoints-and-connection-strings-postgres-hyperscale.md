@@ -11,10 +11,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 4087d618209ab4db46f89ef4e6db7ac87ca4cf57
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91331009"
 ---
 # <a name="get-connection-endpoints-and-form-connection-strings-for-your-arc-enabled-postgresql-hyperscale-server-group"></a>Verbindings eindpunten en formulier verbindings reeksen ophalen voor de PostgreSQL grootschalige-Server groep met Arc ingeschakeld
@@ -62,7 +62,7 @@ Er wordt een uitvoer geretourneerd zoals:
 ```
 Gebruik deze eind punten voor het volgende:
 - Uw verbindings reeksen vormen en verbinding maken met uw client hulpprogramma's of-toepassingen
-- Toegang tot de Grafana-en Kibana-Dash boards vanuit uw browser
+- Toegang tot de Grafana- en Kibana-dashboards vanuit uw browser
 
 U kunt bijvoorbeeld het eind punt met de naam _postgresql instance_ gebruiken om verbinding te maken met psql met uw server groep. Bijvoorbeeld:
 ```console

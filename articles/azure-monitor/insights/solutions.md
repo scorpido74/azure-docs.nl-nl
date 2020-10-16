@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/07/2020
 ms.openlocfilehash: d509862fe4dafff174ee03c3b5cc887fa9d9ff22
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90085991"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Bewakings oplossingen in Azure Monitor
@@ -36,7 +36,7 @@ Bewakings oplossingen kunnen meerdere typen Azure-resources bevatten en u kunt a
 
 Gebruik de volgende procedure om de bewakings oplossingen weer te geven die in uw abonnement zijn geïnstalleerd.
 
-1. Ga naar [Azure Portal](https://ms.portal.azure.com). Zoek en selecteer **oplossingen**.
+1. Ga naar de [Azure Portal](https://ms.portal.azure.com). Zoek en selecteer **oplossingen**.
 1. Oplossingen die in al uw werk ruimten zijn geïnstalleerd, worden weer gegeven. De naam van de oplossing wordt gevolgd door de naam van de werk ruimte waarin deze is geïnstalleerd.
 1. Gebruik de vervolg keuzelijsten aan de bovenkant van het scherm om te filteren op abonnement of resource groep.
 

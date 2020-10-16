@@ -1,20 +1,20 @@
 ---
 title: 'Zelfstudie: een aangepast domein maken dat wordt beheerd met Active Directory Domain Services | Microsoft Docs'
 description: In deze zelfstudie leert u hoe u een aangepast domein maakt en configureert dat wordt beheerd met Azure Active Directory Domain Services en hoe u geavanceerde configuratieopties opgeeft met Azure Portal.
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 8b48cfa29555cf0ca15428758208df27a52a84f7
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.author: joflore
+ms.openlocfilehash: 23c15bca8c3385a8e115cd0a85d2e5b4f1553007
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87491134"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967339"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-managed-domain-with-advanced-configuration-options"></a>Zelfstudie: Een door Azure Active Directory Domain Services beheerd domein maken en configureren met geavanceerde configuratieopties
 

@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 12/06/2019
 ms.openlocfilehash: cf080f2a6173651fce8f306619dba60347067e0e
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86085608"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Apache HBase-cluster replicatie in virtuele Azure-netwerken instellen
@@ -104,7 +104,7 @@ In de laatste sectie maakt de sjabloon een virtuele Ubuntu-machine in elk van de
 
 Voor het installeren van een BIND moet yon het open bare IP-adres van de twee virtuele DNS-machines vinden.
 
-1. Open de [Azure Portal](https://portal.azure.com).
+1. Open [Azure Portal](https://portal.azure.com).
 2. Open de virtuele DNS-machine door **resource groepen te selecteren > [naam resource groep] > [vnet1DNS]**.  De naam van de resource groep is het account dat u in de laatste procedure maakt. De standaard namen van de virtuele DNS-machines zijn *vnet1DNS* en *vnet2NDS*.
 3. Selecteer **Eigenschappen** om de pagina eigenschappen van het virtuele netwerk te openen.
 4. Noteer het **open bare IP-adres**en Controleer ook het **privé-IP-adres**.  Het privé-IP-adres is **10.1.0.4** voor vnet1DNS en **10.2.0.4** voor vnet2DNS.  

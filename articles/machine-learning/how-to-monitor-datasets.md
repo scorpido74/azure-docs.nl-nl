@@ -12,10 +12,10 @@ ms.date: 06/25/2020
 ms.topic: conceptual
 ms.custom: how-to
 ms.openlocfilehash: 8f54ece9a932ed4cc0adc29747e1c58ee22646c8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333865"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Gegevens drift (preview) detecteren in gegevens sets
@@ -145,7 +145,7 @@ Geef in de **schema** -instellingen de time stamp-kolom op uit een virtuele of R
 
 Als uw gegevens op datum zijn gepartitioneerd, zoals hier het geval is, kunt u ook de partition_timestamp opgeven.  Hierdoor kan de verwerking van datums efficiënter worden uitgevoerd.
 
-:::image type="content" source="media/how-to-monitor-datasets/timeseries-partitiontimestamp.png" alt-text="Tijds tempel van partitie":::
+:::image type="content" source="media/how-to-monitor-datasets/timeseries-partitiontimestamp.png" alt-text="De tijds tempel instellen":::
 
 
 ## <a name="create-dataset-monitors"></a>Gegevensset-monitors maken
@@ -213,7 +213,7 @@ Zie voor een volledig voor beeld van het instellen van een `timeseries` gegevens
 
 1. Klik op de knop **monitor maken** en ga door met de wizard door op **volgende**te klikken.  
 
-:::image type="content" source="media/how-to-monitor-datasets/wizard.png" alt-text="Een wizard voor het maken van een monitor":::
+:::image type="content" source="media/how-to-monitor-datasets/wizard.png" alt-text="De tijds tempel instellen":::
 
 * **Selecteer doel gegevensset**.  De doel-dataset is een gegevensset in tabel vorm waarvoor een time stamp-kolom is opgegeven die wordt geanalyseerd voor gegevens drift. De doel gegevensset moet algemene kenmerken hebben met de gegevensset van de basis lijn en moet een `timeseries` gegevensset zijn waaraan nieuwe gegevens worden toegevoegd. Historische gegevens in de doel-gegevensset kunnen worden geanalyseerd of nieuwe gegevens kunnen worden bewaakt.
 
@@ -223,14 +223,14 @@ Zie voor een volledig voor beeld van het instellen van een `timeseries` gegevens
 
     | Instelling | Beschrijving | Tips | Veranderlijk | 
     | ------- | ----------- | ---- | ------- |
-    | Naam | De naam van de monitor van de gegevensset. | | No |
-    | Functies | Lijst met functies die gedurende een bepaalde periode worden geanalyseerd voor gegevens opslag. | Ingesteld op de uitvoer functie (s) van een model om concept drift te meten. Neem geen functies op die in de loop van de tijd (maand, jaar, index enz.) natuurlijk zijn. U kunt backfill en een bestaande gegevensdrijf monitor na het aanpassen van de lijst met functies. | Yes | 
-    | Rekendoel | Azure Machine Learning Compute-doel voor het uitvoeren van de controle taken voor de gegevensset. | | Yes | 
-    | Inschakelen | Het schema in-of uitschakelen voor de monitor pijplijn van de gegevensset | Schakel het schema uit om historische gegevens te analyseren met de instelling backfill. De functie kan worden ingeschakeld nadat de monitor voor de gegevensset is gemaakt. | Yes | 
-    | Frequency | De frequentie die wordt gebruikt om de pijplijn taak te plannen en historische gegevens te analyseren als er een backfill wordt uitgevoerd. Opties zijn dagelijks, wekelijks of maandelijks. | Bij elke uitvoering worden de gegevens in de doel gegevensset vergeleken op basis van de frequentie: <li>Dagelijks: de meest recente volledige dag in de doel gegevensset vergelijken met de basis lijn <li>Wekelijks: de meest recente volledige week (maandag-zondag) in de doel gegevensset vergelijken met de basis lijn <li>Maandelijks: de meest recente volledige maand in de doel gegevensset vergelijken met de basis lijn | No | 
-    | Latentie | Tijd, in uren, duurt het om gegevens in de gegevensset te ontvangen. Als het bijvoorbeeld drie dagen duurt voordat de gegevens in de SQL-Data Base worden inge kapseld, stelt u de gegevensset in op 72. | Kan niet worden gewijzigd nadat de monitor voor de gegevensset is gemaakt | No | 
-    | E-mailadressen | E-mail adressen voor waarschuwingen op basis van schending van de drempel waarde voor het percentage gegevens drift. | E-mail berichten worden verzonden via Azure Monitor. | Yes | 
-    | Drempelwaarde | Drempel waarde voor het percentage gegevens drift voor e-mail waarschuwingen. | Verdere waarschuwingen en gebeurtenissen kunnen worden ingesteld op veel andere metrische gegevens in de gekoppelde Application Insights resource van de werk ruimte. | Yes |
+    | Naam | De naam van de monitor van de gegevensset. | | Nee |
+    | Functies | Lijst met functies die gedurende een bepaalde periode worden geanalyseerd voor gegevens opslag. | Ingesteld op de uitvoer functie (s) van een model om concept drift te meten. Neem geen functies op die in de loop van de tijd (maand, jaar, index enz.) natuurlijk zijn. U kunt backfill en een bestaande gegevensdrijf monitor na het aanpassen van de lijst met functies. | Ja | 
+    | Rekendoel | Azure Machine Learning Compute-doel voor het uitvoeren van de controle taken voor de gegevensset. | | Ja | 
+    | Inschakelen | Het schema in-of uitschakelen voor de monitor pijplijn van de gegevensset | Schakel het schema uit om historische gegevens te analyseren met de instelling backfill. De functie kan worden ingeschakeld nadat de monitor voor de gegevensset is gemaakt. | Ja | 
+    | Frequency | De frequentie die wordt gebruikt om de pijplijn taak te plannen en historische gegevens te analyseren als er een backfill wordt uitgevoerd. Opties zijn dagelijks, wekelijks of maandelijks. | Bij elke uitvoering worden de gegevens in de doel gegevensset vergeleken op basis van de frequentie: <li>Dagelijks: de meest recente volledige dag in de doel gegevensset vergelijken met de basis lijn <li>Wekelijks: de meest recente volledige week (maandag-zondag) in de doel gegevensset vergelijken met de basis lijn <li>Maandelijks: de meest recente volledige maand in de doel gegevensset vergelijken met de basis lijn | Nee | 
+    | Latentie | Tijd, in uren, duurt het om gegevens in de gegevensset te ontvangen. Als het bijvoorbeeld drie dagen duurt voordat de gegevens in de SQL-Data Base worden inge kapseld, stelt u de gegevensset in op 72. | Kan niet worden gewijzigd nadat de monitor voor de gegevensset is gemaakt | Nee | 
+    | E-mailadressen | E-mail adressen voor waarschuwingen op basis van schending van de drempel waarde voor het percentage gegevens drift. | E-mail berichten worden verzonden via Azure Monitor. | Ja | 
+    | Drempelwaarde | Drempel waarde voor het percentage gegevens drift voor e-mail waarschuwingen. | Verdere waarschuwingen en gebeurtenissen kunnen worden ingesteld op veel andere metrische gegevens in de gekoppelde Application Insights resource van de werk ruimte. | Ja |
 
 Nadat de wizard is voltooid, wordt de resulterende gegevensset-monitor weer gegeven in de lijst. Selecteer deze optie om naar de pagina met details van de monitor te gaan.
 
@@ -240,7 +240,7 @@ In deze sectie ziet u de resultaten van het bewaken van een gegevensset die is g
 
 Begin met inzichten op het hoogste niveau in de omvang van gegevens drift en een hooglicht van functies die verder moeten worden onderzocht.
 
-:::image type="content" source="media/how-to-monitor-datasets/drift-overview.png" alt-text="Overzicht van drift":::
+:::image type="content" source="media/how-to-monitor-datasets/drift-overview.png" alt-text="De tijds tempel instellen":::
 
 
 | Gegevens | Beschrijving | 
@@ -253,7 +253,7 @@ Begin met inzichten op het hoogste niveau in de omvang van gegevens drift en een
 
 Bekijk hoe de gegevensset verschilt van de doel gegevensset in de opgegeven tijds periode.  Dichter bij 100%, des te meer gegevens sets verschillen.
 
-:::image type="content" source="media/how-to-monitor-datasets/drift-magnitude.png" alt-text="Trend van grootte van drift":::
+:::image type="content" source="media/how-to-monitor-datasets/drift-magnitude.png" alt-text="De tijds tempel instellen":::
 
 ### <a name="drift-magnitude-by-features"></a>Grootte van de drift per functie
 
@@ -263,7 +263,7 @@ De doel gegevensset is ook in de loop van de tijd profileren. De statistische af
 
 Klik in de Azure Machine Learning Studio op een staaf in de grafiek om de details van het functie niveau voor die datum te bekijken. Standaard ziet u de distributie van de basislijn gegevensset en de distributie van de meest recente uitvoering van hetzelfde onderdeel.
 
-:::image type="content" source="media/how-to-monitor-datasets/drift-by-feature.gif" alt-text="Grootte van de drift per functie":::
+:::image type="content" source="media/how-to-monitor-datasets/drift-by-feature.gif" alt-text="De tijds tempel instellen":::
 
 Deze metrische gegevens kunnen ook worden opgehaald in de python-SDK via de `get_metrics()` methode voor een `DataDriftDetector` object.
 
@@ -271,7 +271,7 @@ Deze metrische gegevens kunnen ook worden opgehaald in de python-SDK via de `get
 
 Schuif ten slotte omlaag om de Details voor elke afzonderlijke functie weer te geven.  Gebruik de vervolg keuzelijsten boven de grafiek om de functie te selecteren en selecteer vervolgens de metrische gegevens die u wilt weer geven.
 
-:::image type="content" source="media/how-to-monitor-datasets/numeric-feature.gif" alt-text="Grafiek en vergelijking van numerieke functies":::
+:::image type="content" source="media/how-to-monitor-datasets/numeric-feature.gif" alt-text="De tijds tempel instellen":::
 
 De metrische gegevens in de grafiek zijn afhankelijk van het type functie.
 
@@ -293,7 +293,7 @@ De metrische gegevens in de grafiek zijn afhankelijk van het type functie.
 
 Selecteer in dit diagram één datum om de functie distributie tussen het doel en deze datum voor de weer gegeven functie te vergelijken. Voor numerieke functies worden er twee kans-distributies weer gegeven.  Als de functie numeriek is, wordt er een staaf diagram weer gegeven.
 
-:::image type="content" source="media/how-to-monitor-datasets/select-date-to-compare.gif" alt-text="Selecteer een datum om te vergelijken met het doel":::
+:::image type="content" source="media/how-to-monitor-datasets/select-date-to-compare.gif" alt-text="De tijds tempel instellen":::
 
 ## <a name="metrics-alerts-and-events"></a>Metrische gegevens, waarschuwingen en gebeurtenissen
 
@@ -301,7 +301,7 @@ U kunt de metrische gegevens opvragen in de [Azure-toepassing Insights](https://
 
 Om aan de slag te gaan, gaat u naar de [Azure Portal](https://portal.azure.com) en selecteert u de **overzichts** pagina van uw werk ruimte.  De gekoppelde Application Insights resource bevindt zich uiterst rechts:
 
-[![Overzicht van de Azure Portal](./media/how-to-monitor-datasets/ap-overview.png)](media/how-to-monitor-datasets/ap-overview-expanded.png)
+[![Overzicht van Azure Portal](./media/how-to-monitor-datasets/ap-overview.png)](media/how-to-monitor-datasets/ap-overview-expanded.png)
 
 Selecteer Logboeken (analyse) onder bewaking in het linkerdeel venster:
 

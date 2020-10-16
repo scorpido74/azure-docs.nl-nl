@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 71862bedc009d560adc8131eacc37c0afba25d81
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: fab49c4242afc2e4f2d0595e2aa95f19f3d976f8
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761716"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951576"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>API-versies in azure Cognitive Search
 
@@ -41,7 +41,7 @@ Daarnaast worden versies van de Azure Cognitive Search .NET SDK die ouder zijn d
 
 Na deze datum zullen toepassingen die gebruikmaken van een van de afgeschafte REST API-of SDK-versies niet meer werken en moeten ze worden bijgewerkt. Net als bij elke wijziging van dit type, geven we de kennisgeving van 12 maanden, zodat u voldoende tijd hebt om aan te passen.
 
-Als u Azure Cognitive Search wilt blijven gebruiken, migreert u de bestaande code die de [rest API](search-api-migration.md) streeft naar [rest API versie 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) of een nieuwere SDK op 15 oktober 2020.  Als u vragen hebt over het bijwerken van de nieuwste versie, stuurt u een e-mail naar azuresearch_contact@microsoft.com 15 mei 2020 om ervoor te zorgen dat u voldoende tijd hebt om uw code bij te werken.
+Als u Azure Cognitive Search wilt blijven gebruiken, migreert u de bestaande code die de [rest API](search-api-migration.md) streeft naar [rest API versie 2020-06-30](/rest/api/searchservice/) of een nieuwere SDK op 15 oktober 2020.  Als u vragen hebt over het bijwerken van de nieuwste versie, stuurt u een e-mail naar azuresearch_contact@microsoft.com 15 mei 2020 om ervoor te zorgen dat u voldoende tijd hebt om uw code bij te werken.
 
 ## <a name="rest-apis"></a>REST-API’s
 
@@ -74,8 +74,8 @@ Een zoek service maken en configureren en API-sleutels beheren.
 
 | Versie&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   | Status | Beschrijving |
 |-------------------------|--------|------------------------------|
-| [Beheer 2020-08-01](https://docs.microsoft.com/rest/api/searchmanagement/) | Stabiel | Nieuwste stabiele versie van de beheer REST-Api's. Hiermee wordt algemeen beschik bare ondersteuning voor gedeelde persoonlijke koppelings bronnen toegevoegd voor alle bronnen waarvoor toegang wordt verkregen via uitgaande resources, behalve die in de preview-versie |
-| [Beheer 2020-08-01-preview](https://docs.microsoft.com/rest/api/searchmanagement/index-preview) | Preview  | Momenteel als Preview: de resource ondersteuning voor gedeelde persoonlijke koppelingen voor Azure Functions en Azure Database for MySQL. |
+| [Beheer 2020-08-01](/rest/api/searchmanagement/) | Stabiel | Nieuwste stabiele versie van de beheer REST-Api's. Hiermee wordt algemeen beschik bare ondersteuning voor gedeelde persoonlijke koppelings bronnen toegevoegd voor alle bronnen waarvoor toegang wordt verkregen via uitgaande resources, behalve die in de preview-versie |
+| [Beheer 2020-08-01-preview](/rest/api/searchmanagement/index-preview) | Preview  | Momenteel als Preview: de resource ondersteuning voor gedeelde persoonlijke koppelingen voor Azure Functions en Azure Database for MySQL. |
 | Management 2020-03-13  | Stabiel | Voegt een [persoonlijk eind punt](service-create-private-endpoint.md) toe via een persoonlijke koppeling en [netwerk-IP-regels](service-configure-firewall.md) voor nieuwe services. Zie voor meer informatie deze [Swagger-specificatie](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/stable/2020-08-01). |
 | Management 2019-10-01-Preview | Preview  | Er zijn geen preview-functies geïntroduceerd in deze lijst. Dit voor beeld is functioneel equivalent aan 2020-03-13. Zie voor meer informatie deze [Swagger-specificatie](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/preview/2019-10-01-preview). |
 | Beheer 2015-08-19  | Stabiel | De eerste beschik bare versie van de beheer REST-Api's. Biedt service-inrichting, opschalen en API-sleutel beheer. Zie voor meer informatie deze [Swagger-specificatie](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/stable/2015-08-19). |

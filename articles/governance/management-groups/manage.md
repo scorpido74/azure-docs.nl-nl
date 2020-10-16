@@ -1,14 +1,14 @@
 ---
 title: Werken met uw beheer groepen-Azure governance
 description: Meer informatie over het weer geven, onderhouden, bijwerken en verwijderen van uw beheer groeps hiërarchie.
-ms.date: 08/10/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 82eeb2520815ddac69d27ddccd58c842c3e33deb
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 4ce265084662fb7a83f902e046d6e079abff9a48
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91531017"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058094"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Uw resources beheren met beheergroepen
 
@@ -119,7 +119,7 @@ U kunt elke beheer groep weer geven waarop u een directe of overgenomen Azure-ro
 
 1. Selecteer **alle services**-  >  **beheer groepen**.
 
-1. De pagina beheer groeps hiërarchie wordt geladen. Op deze pagina vindt u een onderzoek van alle beheer groepen en abonnementen waartoe u toegang hebt. Als u de groeps naam selecteert, wordt een niveau in de hiërarchie omlaag genoteerd. De navigatie werkt hetzelfde als een Verkenner.
+1. De pagina beheer groeps hiërarchie wordt geladen. Op deze pagina vindt u een onderzoek van alle beheer groepen en abonnementen waartoe u toegang hebt. Als u de groeps naam selecteert, gaat u naar een lager niveau in de hiërarchie. De navigatie werkt hetzelfde als een Verkenner.
 
 1. Als u de details van de beheer groep wilt weer geven, selecteert u de koppeling **(details)** naast de titel van de beheer groep. Als deze koppeling niet beschikbaar is, bent u niet gemachtigd om die beheer groep weer te geven.
 
@@ -127,7 +127,7 @@ U kunt elke beheer groep weer geven waarop u een directe of overgenomen Azure-ro
 
 ### <a name="view-in-powershell"></a>Weer geven in Power shell
 
-U gebruikt de opdracht Get-AzManagementGroup voor het ophalen van alle groepen. Zie [AZ. resources](/powershell/module/az.resources/Get-AzManagementGroup) -modules voor de volledige lijst van beheer groepen Get Power shell-opdrachten.  
+U gebruikt de opdracht Get-AzManagementGroup om alle groepen op te halen. Zie [AZ. resources](/powershell/module/az.resources/Get-AzManagementGroup) -modules voor de volledige lijst van beheer groepen Get Power shell-opdrachten.  
 
 ```azurepowershell-interactive
 Get-AzManagementGroup
@@ -211,7 +211,7 @@ Als u de verplaatsing wilt uitvoeren, hebt u het volgende nodig:
 
 **Uitzondering**: Als de beoogde of bestaande bovenliggende beheergroep de hoofdbeheergroep is, zijn de machtigingsvereisten niet van toepassing. Omdat de hoofdbeheergroep de standaardplek voor alle nieuwe beheergroepen en abonnementen is, hebt u geen machtigingen nodig om een item te verplaatsen.
 
-Als de rol Eigenaar van het abonnement wordt overgenomen van de huidige beheergroep, zijn de verplaatsingsdoelen beperkt. U kunt het abonnement alleen verplaatsen naar een andere beheergroep waarvan u de rol Eigenaar hebt. U kunt het niet verplaatsen naar een beheergroep waarvan u een Inzender bent, omdat u dan het eigendom van het abonnement kwijtraakt. Als u direct wordt toegewezen aan de rol van eigenaar van het abonnement (niet overgenomen van de beheer groep), kunt u dit verplaatsen naar een beheer groep waar u Inzender bent.
+Als de rol Eigenaar van het abonnement wordt overgenomen van de huidige beheergroep, zijn de verplaatsingsdoelen beperkt. U kunt het abonnement alleen verplaatsen naar een andere beheergroep waarvan u de rol Eigenaar hebt. U kunt het abonnement niet verplaatsen naar een beheer groep waarvan u alleen een bijdrager bent omdat u het eigendom van het abonnement kwijtraakt. Als u direct bent toegewezen aan de rol van eigenaar voor het abonnement, kunt u deze verplaatsen naar een beheer groep waar u een bijdrager bent.
 
 Als u wilt zien welke machtigingen u hebt in de Azure Portal, selecteert u de beheer groep en selecteert u vervolgens **iam**. Zie voor meer informatie over Azure-rollen [Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](../../role-based-access-control/overview.md).
 
@@ -304,7 +304,7 @@ az account management-group subscription remove --name 'Contoso' --subscription 
 
 ### <a name="move-management-groups-in-powershell"></a>Beheer groepen verplaatsen in Power shell
 
-Gebruik de opdracht update-AzManagementGroup in Power shell om een beheer groep te verplaatsen naar een andere groep.
+Gebruik de opdracht Update-AzManagementGroup in Power shell om een beheer groep te verplaatsen naar een andere groep.
 
 ```azurepowershell-interactive
 $parentGroup = Get-AzManagementGroup -GroupName ContosoIT
@@ -349,7 +349,7 @@ GET https://management.azure.com/providers/Microsoft.Management/managementgroups
 
 Voor meer informatie over beheergroepen gaat u naar:
 
-- [Beheergroepen maken om Azure-resources te ordenen](./create.md)
+- [Beheergroepen maken om Azure-resources te ordenen](./create-management-group-portal.md)
 - [Uw beheergroepen wijzigen, verwijderen of beheren](./manage.md)
 - [Beheergroepen bekijken via de module voor Azure PowerShell-resources](/powershell/module/az.resources#resources)
 - [Beheergroepen bekijken via de REST-API](/rest/api/resources/managementgroups)

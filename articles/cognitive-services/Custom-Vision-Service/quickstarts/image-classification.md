@@ -1,20 +1,22 @@
 ---
-title: 'Quickstart: Afbeeldingsclassificatie maken met Custom Vision-clientbibliotheek'
-description: 'Quickstart: Maak een project, voeg tags toe, upload afbeeldingen, train uw project en doe een voorspelling met behulp van de Custom Vision-SDK.'
+title: 'Quickstart: Afbeeldingsclassificatie met Custom Vision-clientbibliotheek'
+titleSuffix: Azure Cognitive Services
+description: 'Quickstart: Een afbeeldingsclassificatieproject maken, tags toevoegen, afbeeldingen uploaden, uw project trainen en een voorspelling doen met behulp van de Custom Vision-clientbibliotheek'
 author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 08/17/2020
-ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
+ms.date: 09/14/2020
+ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
+keywords: custom vision, afbeeldingsherkenning, app voor afbeeldingsherkenning, afbeeldingsanalyse, software voor afbeeldingsherkenning
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 805a88824d0fdf3102fb56ebcb02eb0d6dfa36bc
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 6583086c4b64c50f0cbef1fc12b7f4dc9e36be1f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919370"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91321052"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-client-library"></a>Quickstart: Een project voor afbeeldingsclassificatie maken met de Custom Vision-clientbibliotheek
 

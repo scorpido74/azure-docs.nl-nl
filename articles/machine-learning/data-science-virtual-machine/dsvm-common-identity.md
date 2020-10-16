@@ -2,7 +2,7 @@
 title: Een algemene identiteit instellen
 titleSuffix: Azure Data Science Virtual Machine
 description: Meer informatie over het maken van algemene gebruikers accounts die kunnen worden gebruikt voor meerdere data wetenschappen Virtual Machines. U kunt Azure Active Directory of een on-premises Active Directory gebruiken om gebruikers te verifiëren bij de Data Science Virtual Machine.
-keywords: diep leren, AI, data Science tools, data Science virtual machine, georuimtelijke analyse, team data Science process
+keywords: deep learning, AI, data science tools, data science virtual machine, geospatial analytics, team data science process
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -11,10 +11,10 @@ ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 05/08/2018
 ms.openlocfilehash: 69d6b8abc99863f29f82abcb44e18b426c5a456c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85959140"
 ---
 # <a name="set-up-a-common-identity-on-a-data-science-virtual-machine"></a>Stel een gemeen schappelijke identiteit in op een Data Science Virtual Machine
@@ -55,7 +55,7 @@ Azure AD DS maakt het eenvoudig om uw identiteiten te beheren door een volledig 
     
    1. Het gegenereerde wacht woord veilig distribueren naar de nieuwe gebruiker zodat deze zich kan aanmelden.
 
-1. Een Azure AD DS-exemplaar maken. Volg de instructies in [enable Azure Active Directory Domain Services using the Azure Portal](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started) (de sectie ' een instantie maken en basis instellingen configureren '). Het is belang rijk dat u de bestaande gebruikers wachtwoorden in Active Directory bijwerkt, zodat het wacht woord in azure AD DS wordt gesynchroniseerd. Het is ook belang rijk om DNS toe te voegen aan Azure AD DS, zoals wordt beschreven onder ' Vul de velden in het venster basis principes van de Azure Portal om een Azure AD DS-exemplaar te maken ' in die sectie.
+1. Een Azure AD DS-exemplaar maken. Volg de instructies in  [enable Azure Active Directory Domain Services using the Azure Portal](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started) (de sectie ' een instantie maken en basis instellingen configureren '). Het is belang rijk dat u de bestaande gebruikers wachtwoorden in Active Directory bijwerkt, zodat het wacht woord in azure AD DS wordt gesynchroniseerd. Het is ook belang rijk om DNS toe te voegen aan Azure AD DS, zoals wordt beschreven onder ' Vul de velden in het venster basis principes van de Azure Portal om een Azure AD DS-exemplaar te maken ' in die sectie.
 
 1. Maak een afzonderlijk DSVM-subnet in het virtuele netwerk dat u hebt gemaakt in de sectie ' het virtuele netwerk maken en configureren ' van de voor gaande stap.
 1. Maak een of meer DSVM-instanties in het DSVM-subnet.

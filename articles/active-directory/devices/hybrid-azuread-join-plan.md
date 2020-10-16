@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1106ec63e79d336b740b444a187244de64c03f5
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 955e77bc947baed889de24ce34e7acec737164f6
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269570"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097300"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Procedure: de implementatie van uw hybride Azure Active Directory-koppeling plannen
 
@@ -56,7 +56,7 @@ Hybride Azure AD-deelname ondersteunt een breed scala aan Windows-apparaten. Omd
 
 - Windows 10
 - Windows Server 2016
-  - **Opmerking**: Azure National Cloud-klanten hebben versie 1809
+  - **Opmerking**: Azure National Cloud-klanten hebben versie 1803
 - Windows Server 2019
 
 Voor apparaten met het Windows-besturings systeem wordt de ondersteunde versie vermeld in dit artikel [Windows 10 release-informatie](/windows/release-information/). Als best practice, raadt micro soft u aan om te upgraden naar de nieuwste versie van Windows 10.

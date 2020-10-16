@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: eliotga
 ms.openlocfilehash: f67ed44fffe6bd690d6bd76fcefa19d9ee23e52b
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90529393"
 ---
 # <a name="how-to-provision-devices-using-symmetric-key-enrollment-groups"></a>Apparaten inrichten met behulp van symmetrische sleutel registratie groepen
@@ -57,7 +57,7 @@ De volgende vereisten gelden voor een ontwikkelomgeving in Windows. Voor Linux o
 
 In deze sectie bereidt u een ontwikkelomgeving voor die wordt gebruikt om de [Azure IoT C-SDK](https://github.com/Azure/azure-iot-sdk-c) te bouwen. 
 
-De SDK bevat de voorbeeld code voor het gesimuleerde apparaat. Dit gesimuleerde apparaat probeert de inrichting uit te voeren tijdens de opstartprocedure van het apparaat.
+De SDK bevat de voorbeeldcode voor het gesimuleerde apparaat. Dit gesimuleerde apparaat probeert de inrichting uit te voeren tijdens de opstartprocedure van het apparaat.
 
 1. Download het [CMake-buildsysteem](https://cmake.org/download/).
 
@@ -206,13 +206,13 @@ Op uw apparaat wordt de afgeleide-apparaatwachtwoord gebruikt met uw unieke regi
 
 In deze sectie gaat u een inrichtings voorbeeld met de naam **Prov \_ dev \_ client \_ ** -voor beeld bijwerken in de Azure IOT C-SDK die u eerder hebt ingesteld. 
 
-Met deze voorbeeld code wordt een opstart volgorde voor apparaten gesimuleerd die de inrichtings aanvraag naar uw Device Provisioning service-exemplaar verzendt. De opstart procedure zorgt ervoor dat het apparaat wordt herkend en toegewezen aan de IoT-hub die u hebt geconfigureerd voor de registratie groep.
+Met deze voorbeeldcode wordt een opstartprocedure van het apparaat gesimuleerd waarbij de inrichtingsaanvraag naar uw Device Provisioning Service-instantie wordt verzonden. De opstart procedure zorgt ervoor dat het apparaat wordt herkend en toegewezen aan de IoT-hub die u hebt geconfigureerd voor de registratie groep.
 
 1. Selecteer in Azure Portal het tabblad **Overzicht** voor uw Device Provisioning-service en noteer de waarde van het **_Id-bereik_**.
 
     ![Device Provisioning Service-eindpuntgegevens uit de portalblade extraheren](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
-2. Open in Visual Studio het oplossings bestand **azure_iot_sdks. SLN** dat is gegenereerd door cmake eerder uit te voeren. Het oplossingsbestand bevindt zich als het goed is op de volgende locatie:
+2. Open in Visual Studio het oplossingsbestand **azure_iot_sdks.sln** dat eerder is gegenereerd door CMake uit te voeren. Het oplossingsbestand bevindt zich als het goed is op de volgende locatie:
 
     ```
     \azure-iot-sdk-c\cmake\azure_iot_sdks.sln
@@ -253,7 +253,7 @@ Met deze voorbeeld code wordt een opstart volgorde voor apparaten gesimuleerd di
 
 7. Klik met de rechtermuisknop op het **prov\_dev\_client\_sample**-project en selecteer **Set as Startup Project**. 
 
-8. Selecteer in het menu Visual Studio de optie **fout opsporing**  >  **starten zonder fout opsporing** om de oplossing uit te voeren. Klik in de prompt om het project opnieuw te bouwen op **Yes** om het project opnieuw te bouwen voordat het wordt uitgevoerd.
+8. Selecteer in het menu van Visual Studio de optie **Debug** > **Start without debugging** om de oplossing uit te voeren. Klik in de prompt om het project opnieuw te bouwen op **Yes** om het project opnieuw te bouwen voordat het wordt uitgevoerd.
 
     De volgende output is een voorbeeld waarbij het gesimuleerde apparaat met succes opstart en verbinding maakt met het inrichtingsservice-exemplaar voor toewijzing aan een IoT-hub:
 

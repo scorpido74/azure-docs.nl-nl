@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: 2e0788b6a7eb6f1d43185d8b484adddd76374ea3
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 51310b1569982e0b71f39dede0d4d7dbefd1a3c9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90086705"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975532"
 ---
 # <a name="azure-instance-metadata-service"></a>Meta gegevens service van Azure-exemplaar
 
@@ -47,13 +47,15 @@ Hieronder ziet u de voorbeeld code voor het ophalen van alle meta gegevens voor 
 **Aanvraag**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/instance?api-version=2020-06-01
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/instance?api-version=2020-06-01 | ConvertTo-Json
 ```
+> [!NOTE]
+> De `-NoProxy` vlag is alleen beschikbaar in Power shell 6 of hoger. U kunt de vlag weglaten als u geen proxy-instellingen hebt ingesteld.
 
 **Response**
 
 > [!NOTE]
-> Het antwoord is een JSON-teken reeks. Het volgende voor beeld is een mooie afdruk van de Lees baarheid.
+> Het antwoord is een JSON-teken reeks. We sluizen onze REST-query via de `ConvertTo-Json` cmdlet voor mooie afdrukken.
 
 ```json
 {
@@ -250,8 +252,8 @@ offer | Informatie over de installatie kopie van de virtuele machine weer geven 
 osType | Linux of Windows | 2017-04-02
 placementGroupId | [Plaatsings groep](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) van de schaalset voor virtuele machines | 2017-08-01
 plannen | [Plan](/rest/api/compute/virtualmachines/createorupdate#plan) met naam, product en uitgever voor een virtuele machine als dit een Azure Marketplace-installatie kopie is | 2018-04-02
-platformUpdateDomain |  [Domein bijwerken](manage-availability.md) waarop de VM wordt uitgevoerd | 2017-04-02
-platformFaultDomain | [Fout domein](manage-availability.md) waarop de VM wordt uitgevoerd | 2017-04-02
+platformUpdateDomain |  [Domein bijwerken](../manage-availability.md) waarop de VM wordt uitgevoerd | 2017-04-02
+platformFaultDomain | [Fout domein](../manage-availability.md) waarop de VM wordt uitgevoerd | 2017-04-02
 providers | Provider van de virtuele machine | 2018-10-01
 publicKeys | [Verzameling van open bare sleutels](/rest/api/compute/virtualmachines/createorupdate#sshpublickey) die zijn toegewezen aan de virtuele machine en de paden | 2018-04-02
 publisher | Uitgever van de VM-installatie kopie | 2017-04-02
@@ -821,7 +823,7 @@ De service is **algemeen beschikbaar** in alle Azure-Clouds.
 
 Voor beelden van het aanroepen van meta gegevens service met verschillende talen in de virtuele machine:
 
-Taal      | Voorbeeld
+Taal      | Voorbeeld:
 --------------|----------------
 C++ (Windows) | https://github.com/Microsoft/azureimds/blob/master/IMDSSample-windows.cpp
 C#            | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.cs

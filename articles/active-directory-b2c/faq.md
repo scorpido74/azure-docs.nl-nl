@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 10/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e701ac8cee15a338c363ec2697e02e82bb4f4e68
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 4db3c58da791a5cad5fc3b9c98f245202d8119e2
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91396430"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92054760"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: veelgestelde vragen (FAQ)
 
@@ -149,7 +149,6 @@ U kunt onze nieuwe geïntegreerde **app-registraties** ervaring of onze oudere  
 1. Selecteer elke gebruiker op zijn beurt (sluit de gebruikers van de *abonnements beheerder* die u momenteel bent aangemeld als). Selecteer **verwijderen** onder aan de pagina en selecteer **Ja** wanneer u hierom wordt gevraagd.
 1. Selecteer **Azure Active Directory** in het menu aan de linkerkant.
 1. Selecteer onder **beheren**de optie **gebruikers instellingen**.
-1. Indien aanwezig selecteert u onder **LinkedIn-account verbindingen**de optie **Nee**en selecteert u vervolgens **Opslaan**.
 1. Selecteer onder **beheren**de optie **Eigenschappen**
 1. Selecteer onder **Toegangsbeheer voor Azure-resources** **Ja** en selecteer vervolgens **Opslaan**.
 1. Meld u af bij de Azure Portal en meld u weer aan om uw toegang te vernieuwen.

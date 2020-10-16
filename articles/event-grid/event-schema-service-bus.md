@@ -4,10 +4,10 @@ description: Hierin worden de eigenschappen beschreven die worden gegeven voor S
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 81293321b3a8fb989023a231c905996b4059bd81
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86121131"
 ---
 # <a name="azure-service-bus-as-an-event-grid-source"></a>Azure Service Bus als Event Grid bron
@@ -20,7 +20,7 @@ In dit artikel vindt u de eigenschappen en het schema voor Service Bus gebeurten
 
 Service Bus worden de volgende gebeurtenis typen meeverzonden:
 
-| Gebeurtenistype | Description |
+| Gebeurtenistype | Beschrijving |
 | ---------- | ----------- |
 | Micro soft. ServiceBus. ActiveMessagesAvailableWithNoListeners | Deze gebeurtenis treedt op wanneer er actieve berichten in een wachtrij of abonnement zijn en er geen ontvangers Luis teren. |
 | Micro soft. ServiceBus. DeadletterMessagesAvailableWithNoListener | Deze gebeurtenis treedt op wanneer er actieve berichten in een wachtrij met onbestelbare meldingen en geen actieve listeners zijn. |
@@ -75,10 +75,10 @@ Het schema voor een wachtrij gebeurtenis met een onbestelbare berichten is verge
 
 Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | onderwerp | tekenreeks | Volledige bronpad naar de bron van de gebeurtenis. Dit veld kan niet worden geschreven. Event Grid biedt deze waarde. |
-| Onderwerp | tekenreeks | Het door de uitgever gedefinieerde pad naar het gebeurtenisonderwerp. |
+| onderwerp | tekenreeks | Het door de uitgever gedefinieerde pad naar het gebeurtenisonderwerp. |
 | Type | tekenreeks | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. |
 | eventTime | tekenreeks | Het tijdstip waarop de gebeurtenis is gegenereerd op basis van de UTC-tijd van de provider. |
 | id | tekenreeks | De unieke id voor de gebeurtenis. |
@@ -88,7 +88,7 @@ Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 
 Het gegevens object heeft de volgende eigenschappen:
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | namespaceName | tekenreeks | De naam ruimte van de Service Bus waarin de resource zich bevindt. |
 | requestUri | tekenreeks | De URI naar de specifieke wachtrij of het abonnement waarmee de gebeurtenis wordt verzonden. |
@@ -105,7 +105,7 @@ Het gegevens object heeft de volgende eigenschappen:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Wat is Event grid?](overview.md) voor een inleiding tot Azure Event grid.
+* Zie [Wat is Event Grid?](overview.md) voor een inleiding tot Azure Event Grid.
 * Zie [Event grid Subscription schema](subscription-creation-schema.md)voor meer informatie over het maken van een Azure Event grid-abonnement.
 * Zie het [overzicht van service bus voor Event grid integratie](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md)voor meer informatie over het gebruik van Azure Event Grid met Service Bus.
 * Probeer [Service Bus gebeurtenissen te ontvangen met functies of Logic apps](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json).

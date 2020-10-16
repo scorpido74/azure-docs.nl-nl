@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 12/14/2019
 ms.author: apimpm
 ms.openlocfilehash: 5e995d008b441e122f9e93e5f7c29f0bb9bf9c53
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86254687"
 ---
 # <a name="use-azure-api-management-with-microservices-deployed-in-azure-kubernetes-service"></a>Azure API Management gebruiken met micro services die zijn geïmplementeerd in azure Kubernetes service
@@ -60,11 +60,11 @@ Dit kan de eenvoudigste optie zijn voor het implementeren van API Management voo
 
 ![Services rechtstreeks publiceren](./media/api-management-aks/direct.png)
 
--Professionals
+Voordelen:
 * Eenvoudige configuratie aan de API Management zijde omdat deze niet in het cluster-VNet hoeft te worden geïnjecteerd
 * Er is geen wijziging aan de AKS-zijde als Services al openbaar zijn en verificatie logica al aanwezig is in micro Services
 
-Nadelen
+Nadelen:
 * Mogelijk beveiligings risico vanwege open bare zicht baarheid van service-eind punten
 * Geen enkel invoer punt voor binnenkomend cluster verkeer
 * Bemoeilijkt micro Services met dubbele verificatie logica
@@ -79,12 +79,12 @@ Wederzijdse TLS-verificatie wordt standaard [ondersteund](./api-management-howto
 ![Publiceren via een ingangs controller](./media/api-management-aks/ingress-controller.png)
 
 
--Professionals
+Voordelen:
 * Eenvoudige configuratie aan de API Management-zijde omdat deze niet hoeft te worden geïnjecteerd in het cluster-VNet en mTLS systeem eigen wordt ondersteund
 * Centraliseert de beveiliging voor binnenkomend cluster verkeer op de ingangs controller-laag
 * Vermindert het beveiligings risico door de open bare cluster eindpunten te minimaliseren
 
-Nadelen
+Nadelen:
 * Verhoogt de complexiteit van de cluster configuratie vanwege extra werk voor het installeren, configureren en onderhouden van de ingangs controller en het beheren van certificaten die worden gebruikt voor mTLS
 * Beveiligings risico vanwege open bare zicht baarheid van de ingangs-endpoint (s)
 
@@ -109,13 +109,13 @@ Als alle API-gebruikers zich in het cluster-VNet bevinden, kan de interne modus 
 
  In beide gevallen is het AKS-cluster niet openbaar zichtbaar. Vergeleken met optie 2 is de ingangs controller mogelijk niet nodig. Afhankelijk van uw scenario en configuratie is er mogelijk nog steeds verificatie vereist tussen API Management en uw micro Services. Als er bijvoorbeeld een service-net wordt aangenomen, is hiervoor altijd wederzijdse TLS-verificatie vereist. 
 
--Professionals
+Voordelen:
 * De veiligste optie omdat het AKS-cluster geen openbaar eind punt heeft
 * Vereenvoudigt de cluster configuratie omdat er geen openbaar eind punt is
 * De mogelijkheid om zowel API Management als AKS in het VNet te verbergen met de interne modus
 * Mogelijkheid om netwerk verkeer te beheren met Azure-netwerk mogelijkheden zoals netwerk beveiligings groepen (NSG)
 
-Nadelen
+Nadelen:
 * Verhoogt de complexiteit van het implementeren en configureren van API Management voor werken binnen het VNet
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -8,13 +8,13 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2019
 ms.author: cynthn
 ms.openlocfilehash: ee172203d6aa54b4b539356835f8a6bf2d21bad3
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87288416"
 ---
-# <a name="deploy-vms-to-proximity-placement-groups-using-azure-cli"></a>Vm's implementeren op proximity-plaatsings groepen met behulp van Azure CLI
+# <a name="deploy-vms-to-proximity-placement-groups-using-azure-cli"></a>VM's implementeren op nabijheidsplaatsingsgroepen met behulp van Azure CLI
 
 Als u virtuele machines zo dicht mogelijk wilt ophalen, moet u deze implementeren in een [proximity-plaatsings groep](co-location.md#proximity-placement-groups).
 

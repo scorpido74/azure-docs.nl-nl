@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/20/2018
 ms.author: genli
-ms.openlocfilehash: 6c877690cf27edd73f1d828b8a1dda6f4f34e780
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 878e2c233f2171c3c9a6fbd2a8d629d3f3987c3a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77918169"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976722"
 ---
 #  <a name="cannot-connect-remotely-to-a-vm-because-rdp-port-is-not-enabled-in-nsg"></a>Kan niet extern verbinding maken met een virtuele machine omdat de RDP-poort niet is ingeschakeld in NSG
 
@@ -48,7 +48,7 @@ Voer de volgende stappen uit om de RDP-poort in te scha kelen in een NSG:
 
 Als u het bron-IP-adres opgeeft, staat deze instelling alleen verkeer toe van een specifiek IP-adres of bereik van IP-adressen om verbinding te maken met de virtuele machine. Zorg ervoor dat de computer die u gebruikt om de RDP-sessie te starten, binnen het bereik valt.
 
-Zie [netwerk beveiligings groep](../../virtual-network/security-overview.md)voor meer informatie over nsg's.
+Zie [netwerk beveiligings groep](../../virtual-network/network-security-groups-overview.md)voor meer informatie over nsg's.
 
 > [!NOTE]
 > RDP-poort 3389 wordt blootgesteld aan Internet. Daarom wordt u aangeraden deze poort alleen te gebruiken voor het testen. Voor productie omgevingen wordt u aangeraden een VPN-of particuliere verbinding te gebruiken.
@@ -56,6 +56,3 @@ Zie [netwerk beveiligings groep](../../virtual-network/security-overview.md)voor
 ## <a name="next-steps"></a>Volgende stappen
 
 Als de RDP-poort al is ingeschakeld in NSG, raadpleegt u [problemen oplossen met een algemene RDP-fout in azure VM](./troubleshoot-rdp-general-error.md).
-
-
-

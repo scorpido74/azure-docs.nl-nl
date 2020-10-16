@@ -8,12 +8,12 @@ ms.date: 06/15/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: c7eb50caa4e7f0505809da64dd0309c6e0b8709f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 473e87904742395eca6b7eeba0875cd93789104d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691340"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978982"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-cli"></a>Een VHD uploaden naar Azure of een beheerde schijf kopiëren naar een andere regio-Azure CLI
 
@@ -22,7 +22,7 @@ ms.locfileid: "88691340"
 ## <a name="prerequisites"></a>Vereisten
 
 - Down load de nieuwste [versie van AzCopy V10 toevoegen](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy).
-- [Installeer de Azure cli](/cli/azure/install-azure-cli).
+- [Installeer de Azure CLI](/cli/azure/install-azure-cli).
 - Als u van plan bent om een VHD te uploaden van on-premises: een VHD met een vaste grootte die is [voor bereid voor Azure](../windows/prepare-for-upload-vhd-image.md), lokaal opgeslagen.
 - Of een beheerde schijf in azure, als u van plan bent om een kopieer actie uit te voeren.
 
@@ -79,7 +79,7 @@ Nu u een SAS hebt voor uw lege beheerde schijf, kunt u deze gebruiken om de behe
 
 Gebruik AzCopy V10 toevoegen om uw lokale VHD-bestand te uploaden naar een beheerde schijf door de SAS-URI op te geven die u hebt gegenereerd.
 
-Deze upload heeft dezelfde door Voer als de equivalente [standaard HDD](disks-types.md#standard-hdd). Als u bijvoorbeeld een grootte hebt die gelijk is aan S4, hebt u een door Voer van Maxi maal 60 MiB/s. Maar als u een grootte hebt die gelijk is aan S70, hebt u een door Voer van Maxi maal 500 MiB/s.
+Deze upload heeft dezelfde door Voer als de equivalente [standaard HDD](../disks-types.md#standard-hdd). Als u bijvoorbeeld een grootte hebt die gelijk is aan S4, hebt u een door Voer van Maxi maal 60 MiB/s. Maar als u een grootte hebt die gelijk is aan S70, hebt u een door Voer van Maxi maal 500 MiB/s.
 
 ```bash
 AzCopy.exe copy "c:\somewhere\mydisk.vhd" "sas-URI" --blob-type PageBlob
@@ -108,17 +108,17 @@ Vervang de `<sourceResourceGroupHere>` waarden,,, `<sourceDiskNameHere>` `<targe
 > Als u een besturingssysteem schijf maakt, voegt u--Hyper-v-generatie <yourGeneration> toe aan `az disk create` .
 
 ```azurecli
-sourceDiskName = <sourceDiskNameHere>
-sourceRG = <sourceResourceGroupHere>
-targetDiskName = <targetDiskNameHere>
-targetRG = <targetResourceGroupHere>
-targetLocale = <yourTargetLocationHere>
+sourceDiskName=<sourceDiskNameHere>
+sourceRG=<sourceResourceGroupHere>
+targetDiskName=<targetDiskNameHere>
+targetRG=<targetResourceGroupHere>
+targetLocation=<yourTargetLocationHere>
 
-sourceDiskSizeBytes= $(az disk show -g $sourceRG -n $sourceDiskName --query '[diskSizeBytes]' -o tsv)
+sourceDiskSizeBytes=$(az disk show -g $sourceRG -n $sourceDiskName --query '[diskSizeBytes]' -o tsv)
 
-az disk create -g $targetRG -n $targetDiskName -l $targetLocale --for-upload --upload-size-bytes $(($sourceDiskSizeBytes+512)) --sku standard_lrs
+az disk create -g $targetRG -n $targetDiskName -l $targetLocation --for-upload --upload-size-bytes $(($sourceDiskSizeBytes+512)) --sku standard_lrs
 
-targetSASURI = $(az disk grant-access -n $targetDiskName -g $targetRG  --access-level Write --duration-in-seconds 86400 -o tsv)
+targetSASURI=$(az disk grant-access -n $targetDiskName -g $targetRG  --access-level Write --duration-in-seconds 86400 -o tsv)
 
 sourceSASURI=$(az disk grant-access -n $sourceDiskName -g $sourceRG --duration-in-seconds 86400 --query [accessSas] -o tsv)
 
@@ -131,4 +131,4 @@ az disk revoke-access -n $targetDiskName -g $targetRG
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u een VHD hebt geüpload naar een beheerde schijf, kunt u de schijf als een [gegevens schijf koppelen aan een bestaande virtuele machine](add-disk.md) of [de schijf koppelen aan een virtuele machine als een besturingssysteem schijf](upload-vhd.md#create-the-vm), om een nieuwe virtuele machine te maken. 
+Nu u een VHD hebt geüpload naar een beheerde schijf, kunt u de schijf als een [gegevens schijf koppelen aan een bestaande virtuele machine](add-disk.md) of [de schijf koppelen aan een virtuele machine als een besturingssysteem schijf](upload-vhd.md#create-the-vm), om een nieuwe virtuele machine te maken.

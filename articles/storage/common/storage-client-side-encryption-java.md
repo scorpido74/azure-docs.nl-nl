@@ -1,5 +1,5 @@
 ---
-title: Versleuteling aan client zijde met Java voor Microsoft Azure Storage | Microsoft Docs
+title: Versleuteling Client-Side met Java voor Microsoft Azure Storage | Microsoft Docs
 description: De Azure Storage-client bibliotheek voor Java ondersteunt versleuteling van de client en integratie met Azure Key Vault voor een maximale beveiliging van uw Azure Storage toepassingen.
 services: storage
 author: tamram
@@ -12,13 +12,13 @@ ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-java
 ms.openlocfilehash: fafce52f9d760fac0d5c3f0ea1be2480547c5d4d
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91817520"
 ---
-# <a name="client-side-encryption-and-azure-key-vault-with-java-for-microsoft-azure-storage"></a>Versleuteling aan client zijde en Azure Key Vault met Java voor Microsoft Azure Storage
+# <a name="client-side-encryption-and-azure-key-vault-with-java-for-microsoft-azure-storage"></a>Client-Side versleuteling en Azure Key Vault met Java voor Microsoft Azure Storage
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
 
 ## <a name="overview"></a>Overzicht

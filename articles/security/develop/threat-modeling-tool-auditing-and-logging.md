@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: bac17073650736df9ec48e951290852e082e9417
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87542990"
 ---
 # <a name="security-frame-auditing-and-logging--mitigations"></a>Beveiligings frame: controle en logboek registratie | Oplossingen 
@@ -40,7 +40,7 @@ ms.locfileid: "87542990"
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Dynamics CRM | 
-| **SDL-fase**               | Build |  
+| **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | N.v.t.  |
@@ -51,7 +51,7 @@ ms.locfileid: "87542990"
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Build |  
+| **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | N.v.t.  |
@@ -62,7 +62,7 @@ ms.locfileid: "87542990"
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Build |  
+| **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | N.v.t.  |
@@ -73,7 +73,7 @@ ms.locfileid: "87542990"
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Build |  
+| **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | N.v.t.  |
@@ -84,7 +84,7 @@ ms.locfileid: "87542990"
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Build |  
+| **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | N.v.t.  |
@@ -95,7 +95,7 @@ ms.locfileid: "87542990"
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Build |  
+| **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | N.v.t.  |
@@ -106,7 +106,7 @@ ms.locfileid: "87542990"
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Build |  
+| **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | N.v.t.  |
@@ -117,7 +117,7 @@ ms.locfileid: "87542990"
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Build |  
+| **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | EnvironmentType-Azure |
 | **Referenties**              | N.v.t.  |
@@ -128,7 +128,7 @@ ms.locfileid: "87542990"
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Database | 
-| **SDL-fase**               | Build |  
+| **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | [Aanmeldingscontrole configureren](https://msdn.microsoft.com/library/ms175850.aspx) |
@@ -139,7 +139,7 @@ ms.locfileid: "87542990"
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Database | 
-| **SDL-fase**               | Build |  
+| **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | SQL Azure |
 | **Kenmerken**              | SQL-versie-V12 |
 | **Referenties**              | [Aan de slag met SQL Database detectie van bedreigingen](https://azure.microsoft.com/documentation/articles/sql-database-threat-detection-get-started/)|
@@ -161,7 +161,7 @@ ms.locfileid: "87542990"
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | WCF | 
-| **SDL-fase**               | Build |  
+| **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | .NET Framework |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Konink rijk](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_insufficient_logging) |
@@ -190,7 +190,7 @@ Hier volgt een voor beeld van een configuratie waarvoor controle is ingeschakeld
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | WCF | 
-| **SDL-fase**               | Build |  
+| **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | .NET Framework |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Konink rijk](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_insufficient_audit_failure_handling) |
@@ -217,7 +217,7 @@ Configureer WCF om het programma op de hoogte te stellen wanneer het niet kan sc
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Web-API | 
-| **SDL-fase**               | Build |  
+| **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | N.v.t.  |
@@ -228,7 +228,7 @@ Configureer WCF om het programma op de hoogte te stellen wanneer het niet kan sc
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | IoT-veld Gateway | 
-| **SDL-fase**               | Build |  
+| **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | N.v.t.  |
@@ -239,7 +239,7 @@ Configureer WCF om het programma op de hoogte te stellen wanneer het niet kan sc
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | IoT-Cloud gateway | 
-| **SDL-fase**               | Build |  
+| **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | [Inleiding tot de bewaking van IoT Hub bewerkingen](https://azure.microsoft.com/documentation/articles/iot-hub-operations-monitoring/) |

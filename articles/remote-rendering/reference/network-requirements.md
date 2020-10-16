@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: reference
 ms.openlocfilehash: fe684d15e2ce9b8d302db4eb6bd31dd1416abf21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83196535"
 ---
 # <a name="network-requirements"></a>Netwerkvereisten
@@ -21,11 +21,11 @@ Een stabiele netwerk verbinding met lage latentie met een Azure-Data Center is e
 De exacte netwerk vereisten zijn afhankelijk van uw specifieke use-case, zoals het aantal en de frequentie van wijzigingen in het externe scène diagram en de complexiteit van de weer gave, maar er zijn een aantal richt lijnen om ervoor te zorgen dat uw ervaring zo goed mogelijk is:
 
 * Uw Internet connectiviteit moet ten minste **40 Mbps downstream** en **5 Mbps upstream** consistent ondersteunen voor één gebruikers sessie van Azure remote rendering, ervan uitgaande dat er geen concurrerend verkeer op het netwerk is. We raden hogere tarieven aan voor betere ervaring. Met meer gebruikers op hetzelfde netwerk worden deze vereisten dienovereenkomstig geschaald.
-* Met behulp van de **5-GHz Wi-Fi-band** worden doorgaans betere resultaten geproduceerd dan de 2,4-GHz Wi-Fi-band, maar beide moeten werken.
-* Als er andere Wi-Fi-netwerken in de buurt zijn, vermijd dan het gebruik van Wi-Fi-kanalen die door deze andere netwerken worden gebruikt. U kunt de hulpprogram ma's voor netwerk scans zoals [WifiInfoView](https://www.nirsoft.net/utils/wifi_information_view.html) gebruiken om te controleren of de kanalen die uw Wi-Fi-netwerk gebruikt, geen concurrerend verkeer zijn.
-* **Vermijd het gebruik van Wi-Fi-verplaatsingen** of LAN-over-via-elektrische verzen ding.
-* **Vermijd concurrerend band breedte-intensief verkeer** , zoals video-of game streaming, op hetzelfde Wi-Fi-netwerk.
-* **Goede Wi-Fi-signaal sterkte** is essentieel. Als dat mogelijk is, houdt u de toegang tot uw Wi-Fi-toegangs punt en vermijdt u obstakels tussen uw client apparaat en de toegangs punten.
+* Het gebruik van de **5-gigahertz Wi-Fi-band** levert doorgaans betere resultaten op dan de Wi-Fi-band van 2,4 GHz, hoewel beide moeten werken.
+* Als er andere Wi-Fi netwerken in de buurt zijn, vermijd dan het gebruik van Wi-Fi-kanalen die door deze andere netwerken worden gebruikt. U kunt de hulpprogram ma's voor netwerk scans zoals [WifiInfoView](https://www.nirsoft.net/utils/wifi_information_view.html) gebruiken om te controleren of de kanalen die uw Wi-Fi netwerk gebruikt, geen concurrerend verkeer zijn.
+* **Vermijd het gebruik van Wi-Fi herhalingen** of LAN-over-via-netwerken door sturen strikt.
+* **Vermijd concurrerend band breedte-intensief verkeer** , zoals video-of game streaming, op hetzelfde Wi-Fi netwerk.
+* Een **goede Wi-Fi signaal sterkte** is essentieel. Als dat mogelijk is, houdt u de Wi-Fi toegangs punt in de buurt en vermijdt u obstakels tussen uw client apparaat en de toegangs punten.
 * Zorg ervoor dat u altijd verbinding maakt met het **dichtstbijzijnde Azure Data Center** voor uw [regio](regions.md). Dichter bij het Data Center, de lagere netwerk latentie, die een enorme invloed heeft op de stabiliteit van de hologram.
 
 > [!NOTE]

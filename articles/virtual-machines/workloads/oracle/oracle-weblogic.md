@@ -1,26 +1,20 @@
 ---
 title: Wat zijn oplossingen voor het uitvoeren van Oracle WebLogic Server op Azure Virtual Machines
 description: Meer informatie over het uitvoeren van Oracle WebLogic Server op Microsoft Azure Virtual Machines.
-services: virtual-machines-linux
-documentationcenter: ''
 author: rezar
-manager: gwallace
-tags: azure-resource-management
-ms.assetid: ''
-ms.service: virtual-machines-windows
+ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 09/23/2020
 ms.author: rezar
-ms.openlocfilehash: e8f1b115f8a52b4352478f91dd5849c45bfebdc1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.reviewer: cynthn
+ms.openlocfilehash: c19d6d2513d1bf266d10e90dfb1d6fe79c9410d1
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91274364"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993458"
 ---
-# <a name="what-are-solutions-for-running-oracle-weblogic-server-on-azure-virtual-machines"></a>Wat zijn oplossingen voor het uitvoeren van Oracle WebLogic Server op Azure Virtual Machines?
+# <a name="what-are-solutions-for-running-oracle-weblogic-server-on-azure-virtual-machines"></a>Wat zijn oplossingen om Oracle WebLogic Server uit te voeren in Azure-VM's?
 
 Op deze pagina worden de oplossingen beschreven voor het uitvoeren van een WebLogic-WLS-server op Azure virtual machines. Deze oplossingen zijn gezamenlijk ontwikkeld door Oracle en micro soft.
 
@@ -56,7 +50,7 @@ Met deze aanbieding maakt u een Maxi maal beschik bare en schaalbaar dynamisch c
 
 Met de oplossingen wordt een breed scala aan productie-Kante implementatie architecturen met relatief gemak ingeschakeld. U kunt op de meest productieve manier voldoen aan de meeste migratie aanvragen door de ontwikkeling van zakelijke toepassingen te richten.
 
-:::image type="content" source="media/oracle-weblogic/weblogic-architecture-vms.png" alt-text="Er zijn complexe WebLogic-Server implementaties ingeschakeld in azure":::
+:::image type="content" source="media/oracle-weblogic/weblogic-architecture-vms.png" alt-text="U kunt de Azure Portal gebruiken om WebLogic Server te implementeren op Azure":::
 
 Behalve wat automatisch door de oplossingen wordt ingericht, hebben klanten volledige flexibiliteit om hun implementaties verder aan te passen. De configuratie van de implementatie van toepassingen wordt waarschijnlijk uitgebreid met de implementaties van andere Azure-resources. Klanten wordt aangeraden feedback te geven over het verbeteren van de oplossingen.
 

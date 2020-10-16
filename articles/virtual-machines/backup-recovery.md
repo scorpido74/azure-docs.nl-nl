@@ -6,12 +6,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 8/03/2020
 ms.author: cynthn
-ms.openlocfilehash: bb1abb5b94653893e131c09af6de1625b0bc7998
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: c56adc852b504d3a0663a9607b3472cb3348e7a5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87554799"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972353"
 ---
 # <a name="backup-and-restore-options-for-linux-virtual-machines-in-azure"></a>Opties voor back-up en herstel voor virtuele Linux-machines in azure
 
@@ -32,7 +32,7 @@ Azure Site Recovery beschermt uw Vm's vanuit een belang rijke nood situatie, wan
 
 U kunt nood herstel oefeningen uitvoeren met testfailover op aanvraag, zonder dat dit van invloed is op uw productie workloads of voortdurende replicatie. Herstel plannen maken om de failover en failback te organiseren van de volledige toepassing die op meerdere Vm's wordt uitgevoerd. De functie herstel plan is geïntegreerd met Azure Automation-runbooks.
 
-U kunt aan de slag door [uw virtuele machines te repliceren](https://aka.ms/a2a-getting-started). 
+U kunt aan de slag door [uw virtuele machines te repliceren](../site-recovery/azure-to-azure-quickstart.md). 
 
 ## <a name="managed-snapshots"></a>Beheerde moment opnamen 
 

@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
 ms.openlocfilehash: 43203a756bcb42c7d00de9c11e9223f1d8b9e2a8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87001584"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>Aan de slag met het maken van een Internet gerichte load balancer met IPv6 met behulp van Power shell voor Resource Manager
@@ -112,7 +112,7 @@ Zorg ervoor dat u beschikt over de nieuwste productie versie van de module Azure
     > [!IMPORTANT]
     > Het load balancer gebruikt het domein label van het open bare IP als voor voegsel voor de FQDN. In dit voor beeld zijn de FQDN- *lbnrpipv4.westus.cloudapp.Azure.com* en *lbnrpipv6.westus.cloudapp.Azure.com*.
 
-## <a name="create-a-front-end-ip-configurations-and-a-back-end-address-pool"></a>Een front-end-IP-configuratie en een back-end-adres groep maken
+## <a name="create-a-front-end-ip-configurations-and-a-back-end-address-pool"></a>Een Front-End IP-configuraties en een Back-End-adres groep maken
 
 1. Een front-end-adres configuratie maken die gebruikmaakt van de open bare IP-adressen die u hebt gemaakt.
 

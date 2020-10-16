@@ -12,10 +12,10 @@ ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/27/2020
 ms.openlocfilehash: 33ad1deff4d543564db1b52bce986b11758042c9
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91445060"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>Actieve geo-replicatie-Azure SQL Database maken en gebruiken
@@ -54,7 +54,7 @@ Actieve geo-replicatie maakt gebruik van de AlwaysOn- [beschikbaarheids groep](h
 > Als er sprake is van een netwerk fout tussen twee regio's, wordt elke 10 seconden opnieuw geprobeerd verbindingen tot stand te brengen.
 
 > [!IMPORTANT]
-> Om ervoor te zorgen dat een kritieke wijziging op de primaire Data Base naar een secundair wordt gerepliceerd voordat u een failover doorvoert, kunt u de synchronisatie afdwingen om te zorgen voor de replicatie van belang rijke wijzigingen (bijvoorbeeld wachtwoord updates). Geforceerde synchronisatie is van invloed op de prestaties omdat het de aanroepende thread blokkeert totdat alle doorgevoerde trans acties worden gerepliceerd. Zie [sp_wait_for_database_copy_sync](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync)voor meer informatie. Als u de replicatie vertraging tussen de primaire data base en geo-secundair wilt bewaken, raadpleegt u [sys. dm_geo_replication_link_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database).
+> Om ervoor te zorgen dat een kritieke wijziging op de primaire Data Base naar een secundair wordt gerepliceerd voordat u een failover doorvoert, kunt u de synchronisatie afdwingen om te zorgen voor de replicatie van belang rijke wijzigingen (bijvoorbeeld wachtwoord updates). Geforceerde synchronisatie is van invloed op de prestaties omdat het de aanroepende thread blokkeert totdat alle doorgevoerde trans acties worden gerepliceerd. Zie [sp_wait_for_database_copy_sync](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync)voor meer informatie. Zie [sys.dm_geo_replication_link_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database)voor het bewaken van de replicatie vertraging tussen de primaire data base en geo-secundair.
 
 In de volgende afbeelding ziet u een voor beeld van actieve geo-replicatie die is geconfigureerd met een primaire waarde in de regio Noord-Centraal VS en secundair in de regio Zuid-Centraal vs.
 
@@ -122,9 +122,9 @@ Zowel de primaire als de secundaire data base moeten dezelfde servicelaag hebben
 
 Een ander gevolg van een niet-sluitende secundaire configuratie is dat na een failover de prestaties van de toepassing kunnen afnemen vanwege onvoldoende reken capaciteit van de nieuwe primaire. In dat geval is het nood zakelijk om de database service doelstelling te schalen naar het benodigde niveau. Dit kan aanzienlijke tijd en reken bronnen duren, en er is een failover voor [hoge Beschik baarheid](high-availability-sla.md) aan het eind van het opruimings proces vereist.
 
-Als u besluit om de secundaire te maken met een lagere reken grootte, biedt de grafiek IO-percentage in Azure Portal een goede manier om de minimale reken grootte van de secundaire te schatten die nodig is om de replicatie te laden. Als uw primaire data base bijvoorbeeld P6 (1000 DTU) is en het schrijf percentage van het logboek 50% is, moet het secundaire bedrijf ten minste P4 (500 DTU) zijn. Als u historische logboek-IO-gegevens wilt ophalen, gebruikt u de weer gave [sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) . Als u recente logboek Schrijf gegevens wilt ophalen met een grotere granulariteit die beter aansluit op korte-termijn pieken in de logboek frequentie, gebruikt u [sys. dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) weer gave.
+Als u besluit om de secundaire te maken met een lagere reken grootte, biedt de grafiek IO-percentage in Azure Portal een goede manier om de minimale reken grootte van de secundaire te schatten die nodig is om de replicatie te laden. Als uw primaire data base bijvoorbeeld P6 (1000 DTU) is en het schrijf percentage van het logboek 50% is, moet het secundaire bedrijf ten minste P4 (500 DTU) zijn. Als u historische logboek-IO-gegevens wilt ophalen, gebruikt u de weer gave [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) . Als u recente logboek Schrijf gegevens wilt ophalen met een grotere granulariteit die beter aansluit op korte-termijn pieken in de logboek frequentie, gebruikt u [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) weer gave.
 
-De frequentie beperking van transactie logboeken op de primaire waarde als gevolg van een lagere reken grootte op een secundair wordt gerapporteerd met behulp van het HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO wacht type, weer gegeven in de database weergaven [sys. dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) en [sys. dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) .
+De frequentie beperking van transactie logboeken op de primaire waarde als gevolg van een lagere reken grootte op een secundair wordt gerapporteerd met behulp van het HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO wacht type, zichtbaar in de [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) en [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) database weergaven.
 
 Standaard is de redundantie opslag ruimte van de back-up van de secundaire data base hetzelfde als die van de hoofd database. U kunt ervoor kiezen om de secundaire te configureren met een andere opslag redundantie voor back-ups. Back-ups worden altijd uitgevoerd op de primaire data base. Als de secundaire is geconfigureerd met een andere redundantie voor back-upopslag, worden back-ups gefactureerd op basis van de opslag redundantie die is geselecteerd op de nieuwe primaire (vorige secundaire) nadat de failover is gepromoveerd tot de primaire. 
 
@@ -132,7 +132,7 @@ Standaard is de redundantie opslag ruimte van de back-up van de secundaire data 
 > Het transactie logboek op de primaire waarde kan worden beperkt om redenen die niet te maken hebben met een lagere reken grootte op een secundaire. Dit type beperking kan optreden, zelfs als de secundaire computer dezelfde of een hogere reken grootte heeft dan de primaire. Zie [Trans Action log rate governance](resource-limits-logical-server.md#transaction-log-rate-governance)(Engelstalig) voor meer informatie, waaronder wacht typen voor verschillende soorten logboek frequentie beperking.
 
 > [!NOTE]
-> Azure SQL Database Configureer bare back-upopslag redundantie is momenteel beschikbaar in open bare preview in de Azure-regio Zuidoost-Azië. Als de bron database in de preview-versie is gemaakt met lokaal redundante of zone redundante back-upredundantie, wordt het maken van een secundaire data base in een andere Azure-regio niet ondersteund. 
+> Azure SQL Database Configurable Backup Storage Redundancy is momenteel alleen in de Azure-regio Azië - zuidoost beschikbaar als openbare preview. Als de bron database in de preview-versie is gemaakt met lokaal redundante of zone redundante back-upredundantie, wordt het maken van een secundaire data base in een andere Azure-regio niet ondersteund. 
 
 Zie [Wat zijn SQL database service lagen](purchasing-models.md)voor meer informatie over de SQL database Compute sizes.
 
@@ -235,7 +235,7 @@ Vanwege de hoge latentie van Wide Area Networks, gebruikt doorlopende kopieën e
 
 ## <a name="monitoring-geo-replication-lag"></a>Vertraging van geo-replicatie bewaken
 
-Als u de vertraging met betrekking tot RPO wilt bewaken, gebruikt u *replication_lag_sec* kolom van [sys. dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) op de primaire data base. Er wordt een vertraging in seconden weer gegeven tussen de trans acties die zijn doorgevoerd op de primaire en persistent gemaakt op de secundaire. Bijvoorbeeld Als de waarde van de vertraging 1 seconde is, betekent dit dat als de primaire wordt beïnvloed door een onderbreking op dit moment en failover wordt gestart, 1 seconde van de meest recente overgangen niet wordt opgeslagen.
+Als u de vertraging met betrekking tot RPO wilt bewaken, gebruikt u *replication_lag_sec* kolom van [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) op de primaire data base. Er wordt een vertraging in seconden weer gegeven tussen de trans acties die zijn doorgevoerd op de primaire en persistent gemaakt op de secundaire. Bijvoorbeeld Als de waarde van de vertraging 1 seconde is, betekent dit dat als de primaire wordt beïnvloed door een onderbreking op dit moment en failover wordt gestart, 1 seconde van de meest recente overgangen niet wordt opgeslagen.
 
 Als u de vertraging wilt meten met betrekking tot wijzigingen op de primaire data base die zijn toegepast op het secundaire, dat wil zeggen, de *last_commit* tijd op de secundaire data base vergelijken met dezelfde waarde op de primaire data base.
 
@@ -256,9 +256,9 @@ Zoals eerder besproken, kan actieve geo-replicatie ook programmatisch worden beh
 | [ALTER DATA BASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true) |Gebruik het argument secundair op SERVER toevoegen om een secundaire Data Base voor een bestaande Data Base te maken en gegevens replicatie te starten |
 | [ALTER DATA BASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true) |FAILOVER of FORCE_FAILOVER_ALLOW_DATA_LOSS gebruiken om naar een secundaire data base te scha kelen die primair moet zijn om FAILOVER te initiëren |
 | [ALTER DATA BASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true) |Gebruik secundaire verwijderen op de SERVER om een gegevens replicatie tussen een SQL Database en de opgegeven secundaire data base te beëindigen. |
-| [sys. geo_replication_links](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |Retourneert informatie over alle bestaande replicatie koppelingen voor elke Data Base op een server. |
-| [sys. dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |Hiermee worden de laatste replicatie tijd, de laatste replicatie vertraging en andere informatie over de replicatie koppeling voor een bepaalde data base opgehaald. |
-| [sys. dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |Hier wordt de status weer gegeven voor alle database bewerkingen, inclusief de status van de replicatie koppelingen. |
+| [sys.geo_replication_links](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |Retourneert informatie over alle bestaande replicatie koppelingen voor elke Data Base op een server. |
+| [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |Hiermee worden de laatste replicatie tijd, de laatste replicatie vertraging en andere informatie over de replicatie koppeling voor een bepaalde data base opgehaald. |
+| [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |Hier wordt de status weer gegeven voor alle database bewerkingen, inclusief de status van de replicatie koppelingen. |
 | [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) |zorgt ervoor dat de toepassing wacht totdat alle doorgevoerde trans acties worden gerepliceerd en bevestigd door de actieve secundaire data base. |
 |  | |
 
@@ -266,7 +266,7 @@ Zoals eerder besproken, kan actieve geo-replicatie ook programmatisch worden beh
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> De Power shell-Azure Resource Manager module wordt nog steeds ondersteund door Azure SQL Database, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. Zie [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)voor deze cmdlets. De argumenten voor de opdrachten in de module AZ en in de AzureRm-modules zijn aanzienlijk identiek.
+> De Power shell-Azure Resource Manager module wordt nog steeds ondersteund door Azure SQL Database, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. Zie [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)voor deze cmdlets. De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn vrijwel identiek.
 
 | Cmdlet | Beschrijving |
 | --- | --- |
@@ -288,8 +288,8 @@ Zoals eerder besproken, kan actieve geo-replicatie ook programmatisch worden beh
 | [Database status van maken of bijwerken ophalen](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Retourneert de status tijdens het maken van een bewerking. |
 | [Secundaire Data Base als primair instellen (geplande failover)](https://docs.microsoft.com/rest/api/sql/replicationlinks/failover) |Hiermee wordt ingesteld welke secundaire data base primair is door een failover uit te geven van de huidige primaire data base. **Deze optie wordt niet ondersteund voor SQL Managed instance.**|
 | [Secundaire Data Base als primair instellen (niet-geplande failover)](https://docs.microsoft.com/rest/api/sql/replicationlinks/failoverallowdataloss) |Hiermee wordt ingesteld welke secundaire data base primair is door een failover uit te geven van de huidige primaire data base. Deze bewerking kan leiden tot verlies van gegevens. **Deze optie wordt niet ondersteund voor SQL Managed instance.**|
-| [Replicatie koppeling ophalen](https://docs.microsoft.com/rest/api/sql/replicationlinks/get) |Hiermee wordt een specifieke replicatie koppeling voor een bepaalde data base in een geo-replicatie relatie opgehaald. Hiermee wordt de informatie opgehaald die zichtbaar is in de catalogus weergave sys. geo_replication_links. **Deze optie wordt niet ondersteund voor SQL Managed instance.**|
-| [Replicatie koppelingen-lijst op Data Base](https://docs.microsoft.com/rest/api/sql/replicationlinks/listbydatabase) | Hiermee worden alle replicatie koppelingen voor een bepaalde data base in een geo-replicatie relatie opgehaald. Hiermee wordt de informatie opgehaald die zichtbaar is in de catalogus weergave sys. geo_replication_links. |
+| [Replicatie koppeling ophalen](https://docs.microsoft.com/rest/api/sql/replicationlinks/get) |Hiermee wordt een specifieke replicatie koppeling voor een bepaalde data base in een geo-replicatie relatie opgehaald. Hiermee wordt de informatie opgehaald die zichtbaar is in de catalogus weergave van sys.geo_replication_links. **Deze optie wordt niet ondersteund voor SQL Managed instance.**|
+| [Replicatie koppelingen-lijst op Data Base](https://docs.microsoft.com/rest/api/sql/replicationlinks/listbydatabase) | Hiermee worden alle replicatie koppelingen voor een bepaalde data base in een geo-replicatie relatie opgehaald. Hiermee wordt de informatie opgehaald die zichtbaar is in de catalogus weergave van sys.geo_replication_links. |
 | [Replicatie koppeling verwijderen](https://docs.microsoft.com/rest/api/sql/replicationlinks/delete) | Hiermee verwijdert u een database replicatie koppeling. Kan niet worden uitgevoerd tijdens failover. |
 |  | |
 

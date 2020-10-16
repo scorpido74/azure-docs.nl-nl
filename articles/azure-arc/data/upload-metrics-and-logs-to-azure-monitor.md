@@ -9,19 +9,19 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: d508e2e24ac35171d87cdba9cb79981dfb8764e3
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 69a2bc002b2ccccba90bde5b6c92d162b6e78815
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91757466"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952247"
 ---
 # <a name="upload-usage-data-metrics-and-logs-to-azure-monitor"></a>De gebruiks gegevens, de metrieken en de logboeken uploaden naar Azure Monitor
 
 U kunt regel matig gebruiks gegevens voor facturerings doeleinden exporteren, metrische gegevens en logboeken bewaken en deze vervolgens uploaden naar Azure.  Als u een van deze drie typen gegevens exporteert en uploadt, worden ook de gegevens controller, SQL Managed instance en PostgreSQL grootschalige server-groeps resources in azure gemaakt en bijgewerkt.
 
 > [!NOTE] 
-Tijdens de preview-periode zijn er geen kosten verbonden aan het gebruik van Azure Arc enabled Data Services.
+> Tijdens de preview-periode zijn er geen kosten verbonden aan het gebruik van Azure Arc enabled Data Services.
 
 ## <a name="prerequisites"></a>Vereisten
 

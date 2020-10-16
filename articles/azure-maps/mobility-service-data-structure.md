@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 02d89226bd2df4bfe5d11897199c50c702e7bc1c
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88033220"
 ---
 # <a name="data-structures-in-azure-maps-mobility-service"></a>Gegevens structuren in de Azure Maps Mobility-service
@@ -25,7 +25,7 @@ De gegevens van de Mobility-service worden gegroepeerd op ondersteunde metro geb
 
 De `metroID` is de id van een metro gebied dat kan worden gebruikt voor het aanroepen van de informatie-API voor het ophalen van een [metro gebied](https://aka.ms/AzureMapsMobilityMetroAreaInfo). Gebruik Azure Maps ' "een metro-API verkrijgen" om doorvoer typen, doorvoer instanties, actieve waarschuwingen en aanvullende Details voor de gekozen metro lijn aan te vragen. U kunt ook de ondersteunde metro gebieden en metroIDs aanvragen. De Id's van een metro gebied kunnen worden gewijzigd.
 
-**metroID:** 522- **naam:** Seattle-Tacoma-Bellevue
+**metroID:** 522-   **naam:** Seattle-Tacoma-Bellevue
 
 ![Seattle-Metro, gebied](./media/mobility-service-data-structure/seattle-metro.png)
 

@@ -13,10 +13,10 @@ ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
 ms.openlocfilehash: 08e236d798f700a3c48dd41ba61941bc0037d613
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88055374"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>De locatie voorwaarde gebruiken in een beleid voor voorwaardelijke toegang 
@@ -80,7 +80,7 @@ Als u vertrouwde IP-adressen hebt geconfigureerd, worden ze als door **MFA vertr
 
 ### <a name="skipping-multi-factor-authentication"></a>Multi-factor Authentication overs Laan
 
-Op de pagina instellingen voor multi-factor Authentication-Service kunt u zakelijke intranet gebruikers identificeren door **multi-factor Authentication overs laan voor aanvragen van federatieve gebruikers op mijn intranet**te selecteren. Deze instelling geeft aan dat de binnen bedrijfs netwerk claim, die wordt uitgegeven door AD FS, moet worden vertrouwd en gebruikt om de gebruiker te identificeren als in het bedrijfs netwerk. Zie [de functie voor vertrouwde IP-adressen inschakelen met behulp van voorwaardelijke toegang](../authentication/howto-mfa-mfasettings.md#enable-the-trusted-ips-feature-by-using-conditional-access)voor meer informatie.
+Op de pagina instellingen voor multi-factor Authentication-Service kunt u zakelijke intranet gebruikers identificeren door  **multi-factor Authentication overs laan voor aanvragen van federatieve gebruikers op mijn intranet**te selecteren. Deze instelling geeft aan dat de binnen bedrijfs netwerk claim, die wordt uitgegeven door AD FS, moet worden vertrouwd en gebruikt om de gebruiker te identificeren als in het bedrijfs netwerk. Zie [de functie voor vertrouwde IP-adressen inschakelen met behulp van voorwaardelijke toegang](../authentication/howto-mfa-mfasettings.md#enable-the-trusted-ips-feature-by-using-conditional-access)voor meer informatie.
 
 Nadat u deze optie hebt ingeschakeld, worden door de benoemde locatie die door **MFA wordt vertrouwd ip's** toegepast op alle beleids regels waarvoor deze optie is geselecteerd.
 

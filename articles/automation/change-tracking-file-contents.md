@@ -6,10 +6,10 @@ ms.subservice: change-inventory-management
 ms.date: 06/15/2020
 ms.topic: conceptual
 ms.openlocfilehash: eab509e389c074232526aa93fcebb72f3bc986c0
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86185599"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>Wijzigingen bijhouden en inventaris beheren
@@ -141,10 +141,10 @@ Gebruik de volgende stappen om het bijhouden van register sleutels op Windows-co
 
 U kunt verschillende zoek acties uitvoeren op de Azure Monitor logboeken voor wijzigings records. Open de pagina wijzigingen bijhouden en klik op **log Analytics** om de pagina logboeken te openen. De volgende tabel bevat voor beelden van zoek opdrachten in Logboeken voor wijzigings records.
 
-|Query  |Beschrijving  |
+|Query’s uitvoeren  |Beschrijving  |
 |---------|---------|
-|`ConfigurationData`<br>&#124;`where ConfigDataType == "WindowsServices" and SvcStartupType == "Auto"`<br>&#124;`where SvcState == "Stopped"`<br>&#124;`summarize arg_max(TimeGenerated, *) by SoftwareName, Computer`         | Toont de meest recente inventaris records voor micro soft-services die zijn ingesteld op auto, maar die zijn gerapporteerd als gestopt. De resultaten zijn beperkt tot de meest recente record voor de opgegeven software naam en computer.    |
-|`ConfigurationChange`<br>&#124;`where ConfigChangeType == "Software" and ChangeCategory == "Removed"`<br>&#124;`order by TimeGenerated desc`|Geeft wijzigings records weer voor verwijderde software.|
+|`ConfigurationData`<br>&#124; `where ConfigDataType == "WindowsServices" and SvcStartupType == "Auto"`<br>&#124; `where SvcState == "Stopped"`<br>&#124; `summarize arg_max(TimeGenerated, *) by SoftwareName, Computer`         | Toont de meest recente inventaris records voor micro soft-services die zijn ingesteld op auto, maar die zijn gerapporteerd als gestopt. De resultaten zijn beperkt tot de meest recente record voor de opgegeven software naam en computer.    |
+|`ConfigurationChange`<br>&#124; `where ConfigChangeType == "Software" and ChangeCategory == "Removed"`<br>&#124; `order by TimeGenerated desc`|Geeft wijzigings records weer voor verwijderde software.|
 
 ## <a name="create-alerts-on-changes"></a>Waarschuwingen maken voor wijzigingen
 

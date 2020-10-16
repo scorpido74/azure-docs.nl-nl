@@ -1,14 +1,14 @@
 ---
 title: Veelvoorkomende fouten oplossen
 description: Meer informatie over het oplossen van problemen met het maken, toewijzen en verwijderen van blauw drukken, zoals beleids schendingen en Blue para meter-functies.
-ms.date: 06/29/2020
+ms.date: 10/14/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: e8362e2a22317d73e0fd392bd497cd9f2c5ffe4f
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: a1689141f95aaac9183391af79edb0cabf5343b6
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651328"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058281"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Problemen met Azure-blauw drukken oplossen
 
@@ -59,7 +59,7 @@ Het door geven van een blauw druk-para meter die gebruikmaakt van een functie, z
 
 #### <a name="resolution"></a>Oplossing
 
-Als u een functie wilt door geven door middel van een para meter, moet u de volledige teken reeks escapen, `[` zodat de blauw druk-para meter eruit ziet `[[resourceGroup().tags.myTag]` . Het escape teken resulteert in blauw drukken om de waarde te behandelen als een teken reeks bij het verwerken van de blauw druk. Blauw drukken plaatst vervolgens de functie op het artefact, zodat deze dynamisch kan worden uitgevoerd. Zie [syntaxis en expressies in azure Resource Manager-sjablonen](../../../azure-resource-manager/templates/template-expressions.md)voor meer informatie.
+Als u een functie wilt door geven door middel van een para meter, moet u de volledige teken reeks escapen, `[` zodat de blauw druk-para meter eruit ziet `[[resourceGroup().tags.myTag]` . Het escape teken resulteert in blauw drukken om de waarde te behandelen als een teken reeks bij het verwerken van de blauw druk. De blauw druk-service plaatst vervolgens de functie op het artefact zodat deze dynamisch kan worden uitgevoerd. Zie [syntaxis en expressies in azure Resource Manager-sjablonen](../../../azure-resource-manager/templates/template-expressions.md)voor meer informatie.
 
 ## <a name="delete-errors"></a>Fouten verwijderen
 
@@ -75,7 +75,7 @@ Een blauw druk-toewijzing kan worden vastlopen in een niet-Terminal status wanne
 
 #### <a name="resolution"></a>Oplossing
 
-Blauw druk-toewijzingen in een niet-Terminal status worden automatisch gemarkeerd als **mislukt** na een time-out van _6 uur_ . Zodra de time-out de status van de blauw druk toewijzing heeft gewijzigd, kan het verwijderen opnieuw worden uitgevoerd.
+Blauw druk-toewijzingen in een niet-Terminal status worden automatisch gemarkeerd als **mislukt** na een time-out van _zes uur_ . Zodra de time-out de status van de blauw druk toewijzing heeft gewijzigd, kan het verwijderen opnieuw worden uitgevoerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,20 +1,20 @@
 ---
 title: Azure AD Domain Services migreren vanuit een klassiek virtueel netwerk | Microsoft Docs
 description: Meer informatie over het migreren van een bestaand Azure AD Domain Services beheerd domein vanuit het klassieke virtuele netwerk model naar een op Resource Manager gebaseerd virtueel netwerk.
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 09/24/2020
-ms.author: iainfou
-ms.openlocfilehash: ef05704ea03316ef0c95510e27ee630ddcfb0b44
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.author: joflore
+ms.openlocfilehash: a66268c0cd0c2382b412873ec7f78b87d3491594
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91266901"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968171"
 ---
 # <a name="migrate-azure-active-directory-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Azure Active Directory Domain Services migreren van het klassieke virtuele netwerk model naar Resource Manager
 
@@ -174,7 +174,7 @@ Voordat u met het migratie proces begint, moet u de volgende eerste controles en
 
     Zorg ervoor dat de netwerk instellingen de vereiste poorten die vereist zijn voor Azure AD DS niet blokkeert. Poorten moeten zijn geopend op het klassieke virtuele netwerk en het virtuele netwerk van Resource Manager. Deze instellingen zijn onder andere route tabellen (hoewel het niet aanbevolen is om route tabellen te gebruiken) en netwerk beveiligings groepen.
 
-    Azure AD DS heeft een netwerk beveiligings groep nodig om de poorten die nodig zijn voor het beheerde domein te beveiligen en alle andere inkomend verkeer te blok keren. Deze netwerk beveiligings groep fungeert als een extra beveiligingslaag om de toegang tot het beheerde domein te vergren delen. Zie [netwerk beveiligings groepen en vereiste poorten][network-ports]om de vereiste poorten weer te geven.
+    Azure AD DS heeft een netwerkbeveiligingsgroep nodig om de poorten die nodig zijn voor het beheerde domein te beveiligen en al het andere inkomende verkeer te blokkeren. Deze netwerk beveiligings groep fungeert als een extra beveiligingslaag om de toegang tot het beheerde domein te vergren delen. Zie [Netwerkbeveiligingsgroepen en vereiste poorten][network-ports]om de vereiste poorten weer te geven.
 
     Als u beveiligde LDAP gebruikt, voegt u een regel toe aan de netwerk beveiligings groep om binnenkomend verkeer voor *TCP* -poort *636*toe te staan. Zie [beveiligde LDAP-toegang via internet vergren delen](tutorial-configure-ldaps.md#lock-down-secure-ldap-access-over-the-internet) voor meer informatie.
 

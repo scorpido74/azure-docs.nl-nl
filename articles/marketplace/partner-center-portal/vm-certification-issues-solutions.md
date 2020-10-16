@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
-ms.date: 06/16/2020
-ms.openlocfilehash: d724ef463d7c7ad237b5fd023e9c15f50de96f04
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.date: 10/14/2020
+ms.openlocfilehash: 1a8dbbb42a548a8c4e9a1117166aa621e8734208
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91803463"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044493"
 ---
 # <a name="common-issues-when-certifying-virtual-machine-images-for-azure-marketplace"></a>Veelvoorkomende problemen bij het certificeren van installatie kopieën van virtuele machines voor Azure Marketplace
 
@@ -217,7 +217,7 @@ Als uw installatie kopie niet is geïnstalleerd met een van de volgende kernel-v
 ||7.2|3.10.0-327.79.2|
 ||7.3|3.10.0-514.66.2|
 ||7.4|3.10.0-693.50.3|
-||7.5|3.10.0-862.34.2|
+||7,5|3.10.0-862.34.2|
 ||7.6|3.10.0-957.21.3|
 ||7,7|3.10.0-1062.1.1|
 ||8.0|4.18.0-80.4.2|
@@ -338,7 +338,7 @@ Stap 3. Nadat de opdracht is uitgevoerd, start u de VM opnieuw op.
 
 Stap 4. Generaliseer de virtuele machine, maak de VHD met installatie kopieën en stop de virtuele machine.
 
-Stap 5.     Verzend de gegeneraliseerde installatie kopie opnieuw.
+Stap 5.     Re-Submit de gegeneraliseerde installatie kopie.
 
 ## <a name="requesting-exceptions-custom-templates-on-vm-images-for-selective-tests"></a>Uitzonde ringen aanvragen (aangepaste sjablonen) op VM-installatie kopieën voor selectieve tests
 
@@ -372,6 +372,61 @@ Uitgevers moeten toegang krijgen tot de ondersteuning op [Marketplace-Uitgever o
    7. Tijd lijn: de datum waarop deze uitzonde ring is aangevraagd 
    8.   Bijlage: Voeg documenten met een belang rijk bewijs toe. Voor vergrendelde Vm's koppelt u het test rapport en aangepaste sjablonen, geeft u de aangepaste ARM-sjabloon op als bijlage. Fout bij het koppelen van het rapport voor de vergrendelde Vm's en de aangepaste ARM-sjabloon voor aangepaste sjablonen, resulteert in een weigering van de aanvraag
 
+## <a name="how-to-address-a-vulnerability-or-exploit-in-a-vm-offer"></a>Een beveiligingslek aanpakken of misbruik maken in een VM-aanbieding
+
+Deze veelgestelde vragen bieden een installatie kopie van een virtuele machine (VM) wanneer er een beveiligings probleem of misbruik wordt gedetecteerd met een van uw VM-installatie kopieën. Deze veelgestelde vragen gelden alleen voor Azure Virtual Machine-aanbiedingen die worden gepubliceerd op de Azure Marketplace.
+
+> [!NOTE]
+> U kunt de laatste VM-installatie kopie niet uit een abonnement verwijderen en u kunt niet stoppen met het verkopen van het laatste abonnement voor een aanbieding.
+
+Voer een van de volgende handelingen uit:
+
+1. Als u een nieuwe VM-installatie kopie hebt om de kwets bare VM-installatie kopie te vervangen, gaat u naar [een vaste VM-installatie kopie opgeven](#how-to-provide-a-fixed-vm-image).
+1. Als u geen nieuwe VM-installatie kopie hebt om de enige VM-installatie kopie in een abonnement te vervangen. Als u klaar bent met het abonnement, kunt u [stoppen met het verkopen van het abonnement](update-existing-offer.md#stop-selling-an-offer-or-plan).
+1. Als u niet van plan bent om de enige VM-installatie kopie in de aanbieding te vervangen, raden we u aan [de aanbieding niet meer te verkopen](update-existing-offer.md#stop-selling-an-offer-or-plan).
+
+### <a name="how-to-provide-a-fixed-vm-image"></a>Een vaste VM-installatie kopie opgeven
+
+Ga als volgt te werk als u een installatie kopie van een virtuele machine wilt vervangen door een VM-installatie kopie die een beveiligings probleem bevat of er misbruik van moet worden gemaakt:
+
+1. Geef een nieuwe VM-installatie kopie op om het beveiligings probleem op te lossen of misbruik te maken.
+1. Verwijder de VM-installatie kopie met het beveiligings probleem of de crack.
+1. Publiceer de aanbieding opnieuw.
+
+#### <a name="provide-a-new-vm-image-to-address-the-security-vulnerability-or-exploit"></a>Een nieuwe VM-installatie kopie opgeven om het beveiligings probleem op te lossen of misbruik te maken
+
+Als u deze stappen wilt uitvoeren, moet u het technische activum voorbereiden voor de VM-installatie kopie die u wilt toevoegen. Zie voor meer informatie [technische activa maken voor een virtuele machine aanbieding voor Azure Marketplace](create-azure-vm-technical-asset.md) en [een SAS-URI voor uw VM-installatie kopie ophalen](get-sas-uri.md).
+
+1. Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/home).
+1. Selecteer in het navigatie menu de optie **commerciële Marketplace**-  >  **overzicht**.
+1. Selecteer de aanbieding in de kolom **aanbiedings alias** .
+1. Selecteer op het tabblad **plan overzicht** , in de kolom **naam** , het plan waaraan u de virtuele machine wilt toevoegen.
+1. Selecteer op het tabblad **technische configuratie** onder **VM-installatie kopieën** **+ installatie kopie van virtuele machine toevoegen**.
+   > [!NOTE]
+   > U kunt slechts één VM-installatie kopie toevoegen aan een plan per keer. Als u meerdere VM-installatie kopieën wilt toevoegen, publiceert u de eerste en wacht u totdat de _Publisher aftekening_ -fase is bereikt voordat u de volgende VM-installatie kopie toevoegt.
+1. Geef in de weer gegeven vakken een nieuwe schijf versie en de installatie kopie van de virtuele machine op.
+1. Selecteer **Concept opslaan**.
+1. Ga door naar de volgende sectie om de VM-installatie kopie te verwijderen met het beveiligings probleem.
+
+#### <a name="remove-the-vm-image-that-has-the-security-vulnerability-or-exploit"></a>Verwijder de VM-installatie kopie met het beveiligings probleem of de crack
+
+Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/home).
+1. Selecteer in het navigatie menu de optie **commerciële Marketplace**-  >  **overzicht**.
+1. Selecteer de aanbieding in de kolom **aanbiedings alias** .
+1. Selecteer op het tabblad **plan overzicht** , in de kolom **naam** , het plan met de virtuele machine die u wilt verwijderen.
+1. Op het tabblad **technische configuratie** onder **VM-installatie kopieën**naast de VM-installatie kopie die u wilt verwijderen, selecteert u VM- **installatie kopie verwijderen**.
+1. Selecteer **door gaan**in het dialoog venster dat wordt weer gegeven.
+1. Selecteer **Concept opslaan**.
+1. Ga door naar de volgende sectie om de aanbieding opnieuw te publiceren.
+
+#### <a name="republish-the-offer"></a>De aanbieding opnieuw publiceren
+
+Nadat u de VM-installatie kopie hebt verwijderd of vervangen, moet u de aanbieding opnieuw publiceren.
+1. Selecteer **controleren en publiceren**.
+1. Als u informatie moet verstrekken aan het certificerings team, voegt u deze toe aan het vak **notities voor certificering** .
+1. Selecteer **Publiceren**.
+
+Zie [een aanbieding bekijken en publiceren naar de commerciële Marketplace](../review-publish-offer.md)voor meer informatie over het publicatie proces.
 
 ## <a name="next-steps"></a>Volgende stappen
 

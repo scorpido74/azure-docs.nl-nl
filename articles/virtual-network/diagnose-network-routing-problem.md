@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 05/30/2018
 ms.author: kumud
 ms.openlocfilehash: 1c23244707179e05c63ed44b5915e58eefd3f4a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84705046"
 ---
 # <a name="diagnose-a-virtual-machine-routing-problem"></a>Een routerings probleem van een virtuele machine vaststellen
@@ -85,7 +85,7 @@ In de vorige uitvoer is de naam van de netwerk interface *myVMNic1*.
 
 ## <a name="diagnose-using-azure-cli"></a>Diagnoses uitvoeren met Azure CLI
 
-U kunt de opdrachten uitvoeren die volgen in de [Azure Cloud shell](https://shell.azure.com/bash), of door de CLI vanaf uw computer uit te voeren. Voor dit artikel is de Azure CLI-versie 2.0.32 of hoger vereist. Voer `az --version` uit om te kijken welke versie is geïnstalleerd. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren. Als u de Azure CLI lokaal uitvoert, moet u ook uitvoeren en u `az login` Aanmelden bij Azure met een account dat over de [benodigde machtigingen](virtual-network-network-interface.md#permissions)beschikt.
+U kunt de opdrachten uitvoeren die volgen in de  [Azure Cloud shell](https://shell.azure.com/bash), of door de CLI vanaf uw computer uit te voeren. Voor dit artikel is de Azure CLI-versie 2.0.32 of hoger vereist. Voer `az --version` uit om te kijken welke versie is geïnstalleerd. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren. Als u de Azure CLI lokaal uitvoert, moet u ook uitvoeren en u `az login` Aanmelden bij Azure met een account dat over de [benodigde machtigingen](virtual-network-network-interface.md#permissions)beschikt.
 
 Haal de meest efficiënte routes op voor een netwerk interface met [AZ Network NIC show-ingangsdatum-route tabel](/cli/azure/network/nic#az-network-nic-show-effective-route-table). In het volgende voor beeld worden de efficiënte routes opgehaald voor een netwerk interface met de naam *myVMNic1* die zich in een resource groep met de naam *myResourceGroup*bevindt:
 

@@ -12,10 +12,10 @@ ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
 ms.openlocfilehash: c8f73c0789cd0211deeb66af5c7300a81d7b1be0
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619811"
 ---
 # <a name="extended-events-in-azure-sql-database"></a>Uitgebreide gebeurtenissen in Azure SQL Database 
@@ -51,7 +51,7 @@ Voorafgaande bloot stelling aan de volgende items is handig bij het kiezen van h
 
 Verwante onderwerpen bieden twee voor beelden van code:
 
-- [Doel code ring buffer voor uitgebreide gebeurtenissen in Azure SQL Database](xevent-code-ring-buffer.md)
+- [Ringbuffer-doelcode voor uitgebreide gebeurtenissen in Azure SQL Database](xevent-code-ring-buffer.md)
 
   - Kort eenvoudig Transact-SQL-script.
   - We benadrukken in het onderwerp code voorbeeld. Als u klaar bent met een ring buffer doel, moet u de resources vrijgeven door een instructie ALTER-drop uit te voeren `ALTER EVENT SESSION ... ON DATABASE DROP TARGET ...;` . Later kunt u een andere instantie van ring buffer toevoegen door `ALTER EVENT SESSION ... ON DATABASE ADD TARGET ...` .
@@ -75,13 +75,13 @@ De functie Extended Events wordt ondersteund door verschillende [catalogus weerg
 
 | Naam van<br/>Catalogus weergave | Beschrijving |
 |:--- |:--- |
-| **sys. database_event_session_actions** |Retourneert een rij voor elke actie op elke gebeurtenis van een gebeurtenis sessie. |
-| **sys. database_event_session_events** |Retourneert een rij voor elke gebeurtenis in een gebeurtenis sessie. |
-| **sys. database_event_session_fields** |Retourneert een rij voor elke kolom die kan worden aangepast en die expliciet is ingesteld op gebeurtenissen en doelen. |
-| **sys. database_event_session_targets** |Retourneert een rij voor elk gebeurtenis doel voor een gebeurtenis sessie. |
-| **sys. database_event_sessions** |Retourneert een rij voor elke gebeurtenis sessie in de data base. |
+| **sys.database_event_session_actions** |Retourneert een rij voor elke actie op elke gebeurtenis van een gebeurtenis sessie. |
+| **sys.database_event_session_events** |Retourneert een rij voor elke gebeurtenis in een gebeurtenis sessie. |
+| **sys.database_event_session_fields** |Retourneert een rij voor elke kolom die kan worden aangepast en die expliciet is ingesteld op gebeurtenissen en doelen. |
+| **sys.database_event_session_targets** |Retourneert een rij voor elk gebeurtenis doel voor een gebeurtenis sessie. |
+| **sys.database_event_sessions** |Retourneert een rij voor elke gebeurtenis sessie in de data base. |
 
-In Microsoft SQL Server hebben vergelijk bare catalogus weergaven namen die *. server \_ * bevatten in plaats van *. \_ Data Base*. Het naam patroon is als **sys. server_event_%**.
+In Microsoft SQL Server hebben vergelijk bare catalogus weergaven namen die *. server \_ * bevatten in plaats van *. \_ Data Base*. Het naam patroon is net als **sys.server_event_%**.
 
 ## <a name="new-dynamic-management-views-dmvs"></a>Nieuwe dynamische beheer weergaven [(dmv's)](https://msdn.microsoft.com/library/ms188754.aspx)
 
@@ -89,24 +89,24 @@ Azure SQL Database heeft [dynamische beheer weergaven (dmv's)](https://msdn.micr
 
 | Naam van DMV | Beschrijving |
 |:--- |:--- |
-| **sys. dm_xe_database_session_event_actions** |Hiermee wordt informatie over gebeurtenis sessie acties geretourneerd. |
-| **sys. dm_xe_database_session_events** |Retourneert informatie over sessie gebeurtenissen. |
-| **sys. dm_xe_database_session_object_columns** |Toont de configuratie waarden voor objecten die aan een sessie zijn gebonden. |
-| **sys. dm_xe_database_session_targets** |Retourneert informatie over sessie doelen. |
-| **sys. dm_xe_database_sessions** |Retourneert een rij voor elke gebeurtenis sessie die binnen het bereik van de huidige data base valt. |
+| **sys.dm_xe_database_session_event_actions** |Hiermee wordt informatie over gebeurtenis sessie acties geretourneerd. |
+| **sys.dm_xe_database_session_events** |Retourneert informatie over sessie gebeurtenissen. |
+| **sys.dm_xe_database_session_object_columns** |Toont de configuratie waarden voor objecten die aan een sessie zijn gebonden. |
+| **sys.dm_xe_database_session_targets** |Retourneert informatie over sessie doelen. |
+| **sys.dm_xe_database_sessions** |Retourneert een rij voor elke gebeurtenis sessie die binnen het bereik van de huidige data base valt. |
 
 In Microsoft SQL Server worden vergelijk bare catalogus weergaven benoemd zonder het * \_ Data Base* -gedeelte van de naam, zoals:
 
-- **sys. dm_xe_sessions**, in plaats van naam<br/>**sys. dm_xe_database_sessions**.
+- **sys.dm_xe_sessions**in plaats van naam<br/>**sys.dm_xe_database_sessions**.
 
 ### <a name="dmvs-common-to-both"></a>Gemeen schappelijk Dmv's voor beide
 
 Voor uitgebreide gebeurtenissen zijn er extra Dmv's die gemeen schappelijk zijn voor Azure SQL Database, Azure SQL Managed instance en Microsoft SQL Server:
 
-- **sys. dm_xe_map_values**
-- **sys. dm_xe_object_columns**
-- **sys. dm_xe_objects**
-- **sys. dm_xe_packages**
+- **sys.dm_xe_map_values**
+- **sys.dm_xe_object_columns**
+- **sys.dm_xe_objects**
+- **sys.dm_xe_packages**
 
 <a name="sqlfindseventsactionstargets" id="sqlfindseventsactionstargets"></a>
 

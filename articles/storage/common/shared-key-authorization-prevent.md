@@ -10,10 +10,10 @@ ms.date: 08/20/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.openlocfilehash: 16080440a9458753992c62309ce75ed241fb64d5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91715124"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>Verificatie van gedeelde sleutels voor een Azure Storage account voor komen (preview-versie)
@@ -125,7 +125,7 @@ De eigenschap **AllowSharedKeyAccess** is niet standaard ingesteld en retourneer
 > [!WARNING]
 > Als clients momenteel toegang hebben tot gegevens in uw opslag account met een gedeelde sleutel, raadt micro soft u aan deze clients te migreren naar Azure AD voordat u de gedeelde sleutel toegang tot het opslag account niet toestaat.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure-portal](#tab/portal)
 
 Voer de volgende stappen uit om de verificatie van de gedeelde sleutel voor een opslag account in de Azure Portal niet toe te staan:
 
@@ -215,7 +215,7 @@ Sommige hulpprogram ma's van Azure bieden de mogelijkheid om Azure AD-autorisati
 |-|-|
 | Azure Portal | Ondersteund. Voor informatie over het autoriseren van uw Azure AD-account uit de Azure Portal, Zie [kiezen hoe u de toegang tot BLOB-gegevens in de Azure Portal wilt autoriseren](../blobs/authorize-blob-access-portal.md). |
 | AzCopy | Ondersteund voor Blob Storage. Zie [kiezen hoe u autorisatie referenties opgeeft](storage-use-azcopy-v10.md#choose-how-youll-provide-authorization-credentials) in de AzCopy-documentatie voor meer informatie over het autoriseren van AzCopy-bewerkingen. |
-| Azure Opslagverkenner | Alleen ondersteund voor Blob Storage en alleen Azure Data Lake Storage Gen2. Azure AD-toegang tot de wachtrij opslag wordt niet ondersteund. Zorg ervoor dat u de juiste Azure AD-Tenant selecteert. Zie [aan de slag met Storage Explorer](/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows#sign-in-to-azure) voor meer informatie. |
+| Azure Storage Explorer | Alleen ondersteund voor Blob Storage en alleen Azure Data Lake Storage Gen2. Azure AD-toegang tot de wachtrij opslag wordt niet ondersteund. Zorg ervoor dat u de juiste Azure AD-Tenant selecteert. Zie [aan de slag met Storage Explorer](/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows#sign-in-to-azure) voor meer informatie. |
 | Azure PowerShell | Ondersteund. Zie [Power shell-opdrachten uitvoeren met Azure AD-referenties voor toegang tot blobgegevens](../blobs/authorize-active-directory-powershell.md) of [Power shell-opdrachten uitvoeren met Azure AD-referenties voor toegang tot wachtrij gegevens](../queues/authorize-active-directory-powershell.md)voor meer informatie over het autoriseren van Power shell-opdrachten voor BLOB-of wachtrij bewerkingen met Azure AD. |
 | Azure CLI | Ondersteund. Zie [Azure cli-opdrachten uitvoeren met Azure AD-referenties voor toegang tot BLOB-of wachtrij gegevens](authorize-data-operations-cli.md)voor meer informatie over het autoriseren van Azure cli-opdrachten met Azure AD voor toegang tot Blob-en wachtrij gegevens. |
 | Azure IoT Hub | Ondersteund. Zie [IOT hub-ondersteuning voor virtuele netwerken](../../iot-hub/virtual-network-support.md)voor meer informatie. |

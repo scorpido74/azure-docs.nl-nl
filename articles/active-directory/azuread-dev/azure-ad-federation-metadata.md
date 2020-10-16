@@ -14,10 +14,10 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: bcc44f61ccb7b4a19e7df39ab979669c5aa37da1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80154896"
 ---
 # <a name="federation-metadata"></a>Federatieve metagegevens
@@ -48,7 +48,7 @@ Een Tenant-specifiek eind punt kan bijvoorbeeld zijn `https://login.microsoftonl
 ## <a name="contents-of-federation-metadata"></a>Inhoud van federatieve meta gegevens
 De volgende sectie bevat informatie die nodig is voor services die gebruikmaken van de tokens die zijn uitgegeven door Azure AD.
 
-### <a name="entity-id"></a>Entiteit-ID
+### <a name="entity-id"></a>Entiteits-id
 Het `EntityDescriptor` element bevat een `EntityID` kenmerk. De waarde van het `EntityID` kenmerk vertegenwoordigt de uitgever, dat wil zeggen, de Security Token Service (STS) die het token heeft uitgegeven. Het is belang rijk dat u de uitgever valideert wanneer u een token ontvangt.
 
 In de volgende meta gegevens ziet u een voor beeld van een Tenant-specifiek `EntityDescriptor` element met een- `EntityID` element.
@@ -91,7 +91,7 @@ MIIDPjCCAiqgAwIBAgIQVWmXY/+9RqFA/OG9kFulHDAJBgUrDgMCHQUAMC0xKzApBgNVBAMTImFjY291
 
 Het `KeyDescriptor` element wordt weer gegeven op twee plaatsen in het document met federatieve meta gegevens, in de sectie WS-Federation-specific en de sectie SAML-specific. De certificaten die in beide secties worden gepubliceerd, zijn hetzelfde.
 
-In de sectie WS-Federation-specific worden de certificaten van een- `RoleDescriptor` element met het type door een WS-Federation-meta gegevens lezer gelezen `SecurityTokenServiceType` .
+In de sectie WS-Federation-specific worden de certificaten van een- `RoleDescriptor` element met het type in een WS-Federation lezer van de meta gegevens gelezen `SecurityTokenServiceType` .
 
 In de volgende meta gegevens wordt een voorbeeld element weer gegeven `RoleDescriptor` .
 
@@ -99,7 +99,7 @@ In de volgende meta gegevens wordt een voorbeeld element weer gegeven `RoleDescr
 <RoleDescriptor xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns:fed="https://docs.oasis-open.org/wsfed/federation/200706" xsi:type="fed:SecurityTokenServiceType"protocolSupportEnumeration="https://docs.oasis-open.org/wsfed/federation/200706">
 ```
 
-In de sectie SAML-specifiek worden de certificaten van een-element gelezen met de WS-Federation-meta gegevens lezer `IDPSSODescriptor` .
+In de sectie SAML-specific worden de certificaten van een-element gelezen met een WS-Federation-lezer `IDPSSODescriptor` .
 
 In de volgende meta gegevens wordt een voorbeeld element weer gegeven `IDPSSODescriptor` .
 
@@ -108,8 +108,8 @@ In de volgende meta gegevens wordt een voorbeeld element weer gegeven `IDPSSODes
 ```
 Er zijn geen verschillen in de indeling van Tenant-specifieke en Tenant-onafhankelijke certificaten.
 
-### <a name="ws-federation-endpoint-url"></a>URL van WS-Federation-eind punt
-De federatieve meta gegevens bevatten de URL die door Azure AD wordt gebruikt voor eenmalige aanmelding en eenmalige afmelding in het WS-Federation-Protocol. Dit eind punt wordt weer gegeven in het- `PassiveRequestorEndpoint` element.
+### <a name="ws-federation-endpoint-url"></a>URL van WS-Federation eind punt
+De federatieve meta gegevens bevatten de URL die door Azure AD wordt gebruikt voor eenmalige aanmelding en eenmalige afmelding in WS-Federation protocol. Dit eind punt wordt weer gegeven in het- `PassiveRequestorEndpoint` element.
 
 In de volgende meta gegevens ziet u een voorbeeld `PassiveRequestorEndpoint` element voor een Tenant-specifiek eind punt.
 
@@ -122,7 +122,7 @@ https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db45/wsfed
 </EndpointReference>
 </fed:PassiveRequestorEndpoint>
 ```
-Voor het Tenant-onafhankelijke eind punt wordt de WS-Federation-URL weer gegeven in het WS-Federation-eind punt, zoals wordt weer gegeven in het volgende voor beeld.
+Voor het Tenant-onafhankelijke eind punt wordt de WS-Federation URL weer gegeven in het WS-Federation-eind punt, zoals wordt weer gegeven in het volgende voor beeld.
 
 ```
 <fed:PassiveRequestorEndpoint>

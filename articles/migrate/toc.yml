@@ -52,10 +52,12 @@
           items:
             - name: Over migratieopties voor VMware-VM's
               href: server-migrate-overview.md
-            - name: VMware-VM's migreren met migratie zonder agent
+            - name: VMware-VM's migreren met migratie zonder agent - Azure Portal
               href: tutorial-migrate-vmware.md
             - name: VMware-VM's migreren met migratie op basis van een agent
               href: tutorial-migrate-vmware-agent.md
+            - name: VMware-VM's migreren met migratie zonder agent - PowerShell
+              href: tutorial-migrate-vmware-powershell.md
         - name: Hyper-V-VM's migreren
           href: tutorial-migrate-hyper-v.md
         - name: Fysieke servers migreren

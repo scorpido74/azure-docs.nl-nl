@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: kenwith
-ms.openlocfilehash: 666c4e52ed521c169ff80b33e2ab0e83b13e4d03
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 159a473b2b164d1f0692864e26f6127d9faf8287
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91266697"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069871"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Kenmerk toewijzingen voor het inrichten van gebruikers aanpassen voor SaaS-toepassingen in Azure Active Directory
 
@@ -55,7 +55,7 @@ Er worden vier verschillende toewijzings typen ondersteund:
 - **Direct** : het doel kenmerk wordt gevuld met de waarde van een kenmerk van het gekoppelde object in azure AD.
 - **Constante** : het doel kenmerk wordt ingevuld met een specifieke teken reeks die u hebt opgegeven.
 - **Expressie** -het doel kenmerk wordt ingevuld op basis van het resultaat van een script achtige expressie.
-  Zie [expressies schrijven voor kenmerk toewijzingen in azure Active Directory](../app-provisioning/functions-for-customizing-application-data.md)voor meer informatie.
+  Zie [expressies schrijven voor Attribute-Mappings in azure Active Directory](../app-provisioning/functions-for-customizing-application-data.md)voor meer informatie.
 - **Geen** -het doel kenmerk blijft ongewijzigd. Als het doel kenmerk echter ooit leeg is, wordt het ingevuld met de standaard waarde die u opgeeft.
 
 Naast deze vier basis typen ondersteunen aangepaste kenmerk toewijzingen het concept van een optionele **standaard** waarde voor toewijzingen. De toewijzing van de standaard waarde zorgt ervoor dat een doel kenmerk wordt gevuld met een waarde als er geen waarde in azure AD of op het doel object is. De meest voorkomende configuratie is om dit leeg te laten.
@@ -129,7 +129,7 @@ Bij het bewerken van de lijst met ondersteunde kenmerken, worden de volgende eig
 - **Meerdere waarden?** -Of het kenmerk meerdere waarden ondersteunt.
 - **Wat is er precies?** -Of de kenmerken waarden in een hoofdletter gevoelige manier worden geëvalueerd.
 - **API-expressie** : gebruik deze, tenzij dit wordt gedaan door de documentatie voor een specifieke inrichtings connector (zoals workday).
-- **Object kenmerk waarnaar wordt verwezen** : als het een verwijzings type kenmerk is, kunt u in dit menu de tabel en het kenmerk selecteren in de doel toepassing die de waarde bevat die aan het kenmerk is gekoppeld. Als u bijvoorbeeld een kenmerk met de naam ' Department ' hebt waarvan de opgeslagen waarde verwijst naar een object in een afzonderlijke tabel ' departments ', selecteert u ' Departments.Name '. De referentie tabellen en de primaire ID-velden die worden ondersteund voor een bepaalde toepassing, zijn vooraf geconfigureerd en kunnen momenteel niet worden bewerkt met de Azure Portal, maar u kunt deze bewerken met behulp van de [Microsoft Graph-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes).
+- **Object kenmerk waarnaar wordt verwezen** : als het een verwijzings type kenmerk is, kunt u in dit menu de tabel en het kenmerk selecteren in de doel toepassing die de waarde bevat die aan het kenmerk is gekoppeld. Als u bijvoorbeeld een kenmerk met de naam ' Department ' hebt waarvan de opgeslagen waarde verwijst naar een object in een afzonderlijke tabel ' departments ', selecteert u ' Departments.Name '. De referentie tabellen en de primaire ID-velden die worden ondersteund voor een bepaalde toepassing, zijn vooraf geconfigureerd en kunnen momenteel niet worden bewerkt met de Azure Portal, maar u kunt deze bewerken met behulp van de [Microsoft Graph-API](/graph/api/resources/synchronization-configure-with-custom-target-attributes).
 
 #### <a name="provisioning-a-custom-extension-attribute-to-a-scim-compliant-application"></a>Een aangepast uitbreidings kenmerk inrichten voor een SCIM-compatibele toepassing
 De SCIM-RFC definieert een kern gebruikers-en groeps schema, en biedt ook uitbrei dingen voor het schema om te voldoen aan de behoeften van uw toepassing. Een aangepast kenmerk toevoegen aan een SCIM-toepassing:
@@ -321,7 +321,7 @@ Als u deze optie selecteert, wordt een hersynchronisatie van alle gebruikers gef
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Gebruikers inrichting en ongedaan maken van de inrichting van SaaS-apps automatiseren](user-provisioning.md)
-- [Expressies schrijven voor kenmerk toewijzingen](../app-provisioning/functions-for-customizing-application-data.md)
-- [Filters voor het inrichten van gebruikers in bereik](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)
+- [Expressies schrijven voor kenmerk toewijzingen](functions-for-customizing-application-data.md)
+- [Filters voor het inrichten van gebruikers in bereik](define-conditional-rules-for-provisioning-user-accounts.md)
 - [Using SCIM to enable automatic provisioning of users and groups from Azure Active Directory to applications](use-scim-to-provision-users-and-groups.md) (SCIM gebruiken om in te stellen dat gebruikers en groepen van Azure Active Directory automatisch worden ingericht voor toepassingen)
 - [Lijst met zelf studies voor het integreren van SaaS-apps](../saas-apps/tutorial-list.md)

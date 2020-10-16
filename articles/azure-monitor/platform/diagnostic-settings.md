@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
 ms.openlocfilehash: 48d2a657059908417bc81fd8cc2a132d2d131530
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91449326"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Diagnostische instellingen maken om logboeken en metrische gegevens van het platform te verzenden naar verschillende bestemmingen
@@ -81,7 +81,7 @@ U kunt Diagnostische instellingen configureren in de Azure Portal in het menu Az
 
    - Klik voor het activiteiten logboek op **activiteiten logboek** in het menu **Azure monitor** en vervolgens op **Diagnostische instellingen**. Zorg ervoor dat u alle verouderde configuraties voor het activiteiten logboek uitschakelt. Zie [bestaande instellingen uitschakelen](./activity-log.md#legacy-collection-methods) voor meer informatie.
 
-        ![Scherm opname van het menu Azure Monitor waarin het activiteiten logboek is geselecteerd en diagnostische instellingen zijn gemarkeerd in de menu balk van het controle-activiteiten logboek.](media/diagnostic-settings/menu-activity-log.png)
+        ![Scherm opname van het menu Azure Monitor waarin het activiteiten logboek is geselecteerd en diagnostische instellingen zijn gemarkeerd in de menu balk van het Monitor-Activity logboek.](media/diagnostic-settings/menu-activity-log.png)
 
 2. Als er geen instellingen bestaan op de resource die u hebt geselecteerd, wordt u gevraagd een instelling te maken. Klik op **Diagnostische instelling toevoegen**.
 

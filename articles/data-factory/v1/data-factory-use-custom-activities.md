@@ -13,12 +13,12 @@ ms.author: abnarain
 ms.custom: devx-track-csharp
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: b8935b9f2c3c598aee7c5d0eb37f21d8114dac42
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f8cd72d34535ac3a2aec60aa3d2369da34dd7194
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997452"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017400"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-version-1-pipeline"></a>Aangepaste activiteiten gebruiken in een Azure Data Factory versie 1-pijp lijn
 > [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
@@ -31,7 +31,7 @@ ms.locfileid: "88997452"
 Er zijn twee soorten activiteiten die u in een Azure Data Factory pijp lijn kunt gebruiken.
 
 - [Gegevens verplaatsings activiteiten](data-factory-data-movement-activities.md) om gegevens te verplaatsen tussen het [ondersteunde bron-en Sink-gegevens archief](data-factory-data-movement-activities.md#supported-data-stores-and-formats).
-- [Activiteiten voor gegevens transformatie](data-factory-data-transformation-activities.md) voor het transformeren van gegevens met behulp van reken services zoals Azure HDInsight, Azure Batch en Azure machine learning.
+- [Activiteiten voor gegevens transformatie](data-factory-data-transformation-activities.md) voor het transformeren van gegevens met behulp van reken services zoals Azure HDInsight, Azure Batch en Azure machine learning Studio (klassiek).
 
 Als u gegevens wilt verplaatsen naar/van een gegevens archief dat Data Factory niet wordt ondersteund, maakt u een **aangepaste activiteit** met uw eigen gegevens verplaatsings logica en gebruikt u de activiteit in een pijp lijn. Als u gegevens wilt transformeren of verwerken op een manier die niet wordt ondersteund door Data Factory, maakt u een aangepaste activiteit met uw eigen gegevens transformatie logica en gebruikt u de activiteit in een pijp lijn.
 
@@ -1025,7 +1025,7 @@ Het voor beeld van de [Azure Data Factory-lokale omgeving](https://github.com/gb
 | Voorbeeld | Wat aangepaste activiteit doet |
 | --- | --- |
 | [Download programma voor http-gegevens](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HttpDataDownloaderSample). |Hiermee worden gegevens van een HTTP-eind punt gedownload naar Azure Blob Storage met behulp van aangepaste C#-activiteit in Data Factory. |
-| [Voor beeld van Twitter Sentimentanalyse](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |Hiermee wordt een Azure Machine Learning Studio-model aangeroepen en sentiment analyse, Score ring, voor spelling, enzovoort. |
+| [Voor beeld van Twitter Sentimentanalyse](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |Hiermee wordt een Azure Machine Learning Studio (klassiek)-model aangeroepen en sentiment analyse, Score ring, voor spelling, enzovoort. |
 | [R-script uitvoeren](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample). |Hiermee wordt het R-script aangeroepen door RScript.exe uit te voeren op uw HDInsight-cluster waarop al R is geïnstalleerd. |
 | [.NET-activiteit over meerdere forests](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample) |Maakt gebruik van verschillende assembly versies van die worden gebruikt door de Data Factory Launcher |
 | [Een model opnieuw verwerken in Azure Analysis Services](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/AzureAnalysisServicesProcessSample) |  Verwerkt een model opnieuw in Azure Analysis Services. |

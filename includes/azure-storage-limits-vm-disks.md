@@ -4,34 +4,34 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 03/18/2019
 ms.author: rogarana
-ms.openlocfilehash: c3028ed7629c41eece354dd2554ede9249bac4f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: e89676505bc211d01a4327f8816a048218e579fe
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80334672"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91829078"
 ---
-U kunt een aantal gegevens schijven koppelen aan een virtuele machine van Azure. Op basis van de schaalbaarheids-en prestatie doelen voor de gegevens schijven van een virtuele machine kunt u het aantal en type schijf bepalen dat u nodig hebt om te voldoen aan de prestatie-en capaciteits vereisten.
+U kunt een aantal gegevensschijven koppelen aan een virtuele Azure-machine. Op basis van schaalbaarheid- en prestatiedoelen voor de gegevensschijven van een VM kunt u het aantal en type schijven bepalen dat u nodig hebt om aan uw prestatie- en capaciteitsvereisten te voldoen.
 
 > [!IMPORTANT]
-> Voor optimale prestaties kunt u het aantal zeer gebruikte schijven dat is gekoppeld aan de virtuele machine beperken om mogelijke beperking te voor komen. Als alle aangesloten schijven niet op hetzelfde moment worden gebruikt, kan de virtuele machine een groter aantal schijven ondersteunen.
+> Voor optimale prestaties moet u het aantal intensief gebruikte schijven dat u aan de virtuele machine koppelt, echter zo laag mogelijk houden. Zo voorkomt u dat u tegen beperkingen aanloopt. Als alle gekoppelde schijven niet tegelijkertijd maximaal worden gebruikt, kan de virtuele machine een groot aantal schijven ondersteunen.
 
-**Voor Azure Managed disks:**
+**Voor beheerde Azure-schijven:**
 
-In de volgende tabel ziet u de standaard-en maximum limieten van het aantal resources per regio per abonnement. Er is geen limiet voor het aantal Managed Disks, moment opnamen en installatie kopieën per resource groep.  
+In de volgende tabel ziet u de standaard- en maximumlimieten van het aantal resources per regio per abonnement. Er is geen limiet voor het aantal beheerde schijven, momentopnamen en afbeelding per resourcegroep.  
 
 > | Resource | Limiet |
 > | --- | --- |
-> | Standard Managed disks | 50,000 |
-> | Beheerde schijven Standard-SSD | 50,000 |
-> | Premium Managed disks | 50,000 |
-> | Moment opnamen Standard_LRS | 50,000 |
-> | Moment opnamen Standard_ZRS | 50,000 |
-> | Beheerde installatie kopie | 50,000 |
+> | Standaard beheerde schijven | 50,000 |
+> | Standaard beheerde SSD-schijven | 50,000 |
+> | Premium beheerde schijven | 50,000 |
+> | Standard_LRS-momentopnamen | 50,000 |
+> | Standard_ZRS-momentopnamen | 50,000 |
+> | Beheerde installatiekopie | 50,000 |
 
-* **Voor standaard opslag accounts:** Een standaard opslag account heeft een maximale totale aanvraag frequentie van 20.000 IOPS. Het totale aantal IOPS voor alle virtuele-machine schijven in een Standard-opslag account mag deze limiet niet overschrijden.
+**Voor Standard-opslagaccounts:** Een standaardopslagaccount heeft een maximale totale aanvraagsnelheid van 20.000 IOP's. Het totale aantal IOP's van alle schijven van een virtuele machine in een standaardopslagaccount mag niet groter zijn dan deze limiet.
   
-    U kunt het aantal zeer gebruikte schijven dat wordt ondersteund door één standaard opslag account, berekenen op basis van de frequentie limiet van de aanvraag. Het maximum aantal zeer gebruikte schijven voor een virtuele machine in de laag is bijvoorbeeld ongeveer 66, dat wil zeggen 20000/300 IOPS per schijf. Het maximum aantal zeer gebruikte schijven voor een virtuele machine van de standaardlaag is ongeveer 40, dat wil zeggen 20000/500 IOPS per schijf. 
+    You can roughly calculate the number of highly utilized disks supported by a single Standard storage account based on the request rate limit. For example, for a Basic tier VM, the maximum number of highly utilized disks is about 66, which is 20,000/300 IOPS per disk. The maximum number of highly utilized disks for a Standard tier VM is about 40, which is 20,000/500 IOPS per disk. 
 
-* **Voor Premium Storage-accounts:** Een Premium-opslag account heeft een maximale totale doorvoer snelheid van 50 Gbps. De totale doorvoer op alle schijven in uw virtuele machine mag deze limiet niet overschrijden.
+**Voor Premium Storage-accounts:** Premium-opslagaccounts bieden een maximale totale doorvoersnelheid van 50 Gbps. De totale doorvoer op alle schijven in uw virtuele machine mag deze limiet niet overschrijden.
 

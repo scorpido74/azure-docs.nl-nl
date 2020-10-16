@@ -2,20 +2,20 @@
 title: Beheer concepten voor Azure AD Domain Services | Microsoft Docs
 description: Meer informatie over het beheren van een Azure Active Directory Domain Services beheerd domein en het gedrag van gebruikers accounts en wacht woorden
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 06/05/2020
-ms.author: iainfou
-ms.openlocfilehash: 6266248b817485562c7ed2643b3dda5f32cecc53
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.author: joflore
+ms.openlocfilehash: 95c6a1f24335849fb2d2c4de56b4ed60e8e5f73f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489670"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962816"
 ---
 # <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Beheer concepten voor gebruikers accounts, wacht woorden en beheer in Azure Active Directory Domain Services
 
@@ -81,7 +81,7 @@ In azure AD DS zijn de beschik bare prestaties en functies gebaseerd op de SKU. 
 | SKU-naam   | Maximum aantal objecten | Back-upfrequentie | Maximum aantal uitgaande forest-vertrouwens relaties |
 |------------|----------------------|------------------|----|
 | Standard   | Onbeperkt            | Elke 7 dagen     | 0  |
-| Onderneming | Onbeperkt            | Elke 3 dagen     | 5  |
+| Enterprise | Onbeperkt            | Elke 3 dagen     | 5  |
 | Premium    | Onbeperkt            | Dagelijks            | 10 |
 
 Vóór deze Azure AD DS Sku's werd een facturerings model gebruikt dat is gebaseerd op het aantal objecten (gebruikers-en computer accounts) in het beheerde domein. Er zijn geen variabele prijzen meer op basis van het aantal objecten in het beheerde domein.

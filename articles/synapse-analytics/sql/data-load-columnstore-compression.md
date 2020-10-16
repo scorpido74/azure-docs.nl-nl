@@ -12,10 +12,10 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: fecb78b240f5c983580d4bdb34535a879ffe3e2e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91289273"
 ---
 # <a name="maximize-rowgroup-quality-for-columnstore-index-performance"></a>Maximale Rijg roep-kwaliteit voor column store-index prestaties
@@ -42,7 +42,7 @@ Zie [bulksgewijs laden in een geclusterde column store-index](/sql/relational-da
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>Rijg roep-kwaliteit bewaken
 
-De DMV sys. dm_pdw_nodes_db_column_store_row_group_physical_stats ([sys. dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) bevat de weergave definitie die overeenkomt met de SQL-data base). deze geeft nuttige informatie weer, zoals het aantal rijen in Rijg roepen en de reden voor het bijsnijden als er een bijsnijden is gemaakt. U kunt de volgende weer gave maken als een handige manier om een query uit te geven op deze DMV om informatie op te halen over Rijg roep-bijsnijden.
+De DMV-sys.dm_pdw_nodes_db_column_store_row_group_physical_stats ([sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) bevat de definitie van de weer gave die overeenkomt met de SQL-data base) die nuttige informatie weergeeft, zoals het aantal rijen in Rijg roepen en de reden voor het verkleinen van de gegevens. U kunt de volgende weer gave maken als een handige manier om een query uit te geven op deze DMV om informatie op te halen over Rijg roep-bijsnijden.
 
 ```sql
 create view dbo.vCS_rg_physical_stats

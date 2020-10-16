@@ -3,12 +3,12 @@ title: Bron vergrendeling begrijpen
 description: Meer informatie over de vergrendelings opties in azure blauw drukken om resources te beveiligen wanneer u een blauw druk toewijst.
 ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8ac5c918a3c370b9d8e88800e05f83e585550e3c
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 01f69cbfebe203407287392c2433181396b541b2
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91744012"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92095991"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Meer informatie over het vergren delen van resources in azure-blauw drukken
 
@@ -24,7 +24,7 @@ Vergrendelings modi kunnen echter niet worden gewijzigd buiten Azure-blauw drukk
 
 Resources die zijn gemaakt door artefacten in een blauw druk-toewijzing, hebben vier statussen: **niet vergrendeld**, **alleen-lezen**, **niet bewerken/verwijderen**of **kan niet verwijderen**. Elk type artefact kan de status **niet vergrendeld** hebben. De volgende tabel kan worden gebruikt om de status van een resource te bepalen:
 
-|Modus|Bron type voor artefacten|Staat|Beschrijving|
+|Modus|Bron type voor artefacten|Status|Beschrijving|
 |-|-|-|-|
 |Niet vergren delen|*|Niet vergrendeld|Resources worden niet beveiligd door Azure-blauw drukken. Deze status wordt ook gebruikt voor resources die worden toegevoegd aan een **alleen-lezen** -of **verwijderings** artefact van een resource buiten een blauw druk-toewijzing.|
 |Alleen-lezen|Resourcegroep|Kan niet bewerken/verwijderen|De resource groep is alleen-lezen en tags op de resource groep kunnen niet worden gewijzigd. **Niet-vergrendelde** resources kunnen worden toegevoegd, verplaatst, gewijzigd of verwijderd uit deze resource groep.|
@@ -39,7 +39,7 @@ Deze beveiligings maatregel beveiligt de consistentie van de gedefinieerde blauw
 
 ### <a name="assign-at-management-group"></a>Toewijzen aan beheer groep
 
-Een extra optie om te voor komen dat abonnements eigenaren een blauw druk-toewijzing verwijderen, is het toewijzen van de blauw druk aan een beheer groep. In dit scenario hebben alleen **eigen aars** van de beheer groep de benodigde machtigingen voor het verwijderen van de blauw druk-toewijzing.
+De enige optie om te voor komen dat abonnements eigenaren een blauw druk-toewijzing verwijderen, is het toewijzen van de blauw druk aan een beheer groep. In dit scenario hebben alleen **eigen aars** van de beheer groep de benodigde machtigingen voor het verwijderen van de blauw druk-toewijzing.
 
 Als u de blauw druk wilt toewijzen aan een beheer groep in plaats van een abonnement, verandert de REST API aanroepen als volgt:
 

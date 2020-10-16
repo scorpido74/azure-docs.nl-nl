@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
 ms.openlocfilehash: 792486a78dfed606ce8317d9bc037221ae33d508
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91767200"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>Verrijkingen van berichten voor IoT Hub berichten van apparaat-naar-Cloud
@@ -62,7 +62,7 @@ Verrijkingen kunnen worden geconfigureerd met behulp van de volgende methoden:
 
 | **Methode** | **Opdracht** |
 | ----- | -----| 
-| Portal | [Azure Portal](https://portal.azure.com) | Raadpleeg de [zelf studie](tutorial-message-enrichments.md) voor het verbeteren van een bericht | 
+| Portal | [Azure-portal](https://portal.azure.com) | Raadpleeg de [zelf studie](tutorial-message-enrichments.md) voor het verbeteren van een bericht | 
 | Azure CLI   | [AZ IOT hub-bericht-verrijking](https://docs.microsoft.com/cli/azure/iot/hub/message-enrichment?view=azure-cli-latest) |
 | Azure PowerShell | [Add-AzIotHubMessageEnrichment](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubmessageenrichment) |
 

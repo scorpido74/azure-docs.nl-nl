@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/08/2020
 ms.author: v-miegge
-ms.openlocfilehash: 53e1daca47a2917a19cbc30db5348e4fcc06b325
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f181a6dee7ed182150bd0cad2b51690b6c77d7a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90039074"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963122"
 ---
 # <a name="vm-is-unresponsive-while-applying-default-domain-controllers-policy"></a>VM is niet responsief wanneer een beleid voor domeincontrollers wordt toegepast
 
@@ -28,7 +28,7 @@ Dit artikel bevat stappen voor het oplossen van problemen waarbij het standaard 
 
 ## <a name="symptom"></a>Symptoom
 
-Wanneer u [Diagnostische gegevens over opstarten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) gebruikt om de scherm opname van de virtuele machine weer te geven, ziet u dat het besturings systeem niet meer reageert tijdens het opstarten met het **standaard beleid voor domein controllers**van het bericht.
+Wanneer u [Diagnostische gegevens over opstarten](./boot-diagnostics.md) gebruikt om de scherm opname van de virtuele machine weer te geven, ziet u dat het besturings systeem niet meer reageert tijdens het opstarten met het **standaard beleid voor domein controllers**van het bericht.
 
   ![In afbeelding 1 wordt het besturings systeem weer gegeven dat is vastgelopen met het bericht standaard domein controllers beleid](./media/vm-unresponsive-domain-controllers-policy/1-default-domain-controllers-policy.png)
 
@@ -46,7 +46,7 @@ Als u dit probleem wilt oplossen, moet u eerst het geheugen dump bestand voor de
 
 ### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>De besturingssysteem schijf koppelen aan een nieuwe herstel-VM
 
-1. Gebruik stap 1-3 van de [VM-reparatie opdrachten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) om een herstel-VM voor te bereiden.
+1. Gebruik stap 1-3 van de [VM-reparatie opdrachten](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) om een herstel-VM voor te bereiden.
 
 1. Gebruik Verbinding met extern bureaublad verbinding maken met de herstel-VM.
 
@@ -56,4 +56,4 @@ Als u dit probleem wilt oplossen, moet u eerst het geheugen dump bestand voor de
 
 1. Zoek het bestand Memory. dmp en [Verzend een ondersteunings ticket](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) met het geheugen dump bestand.
 
-1. Als u problemen ondervindt bij het vinden van het bestand Memory. dmp, wilt u in plaats daarvan mogelijk [niet-maskeer bare interrupt-aanroepen (NMI) gebruiken in de seriële console](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows#use-the-serial-console-for-nmi-calls) . Volg de hand leiding voor het [genereren van een crash dump bestand met behulp van NMI-aanroepen](https://docs.microsoft.com/windows/client-management/generate-kernel-or-complete-crash-dump).
+1. Als u problemen ondervindt bij het vinden van het bestand Memory. dmp, wilt u in plaats daarvan mogelijk [niet-maskeer bare interrupt-aanroepen (NMI) gebruiken in de seriële console](./serial-console-windows.md#use-the-serial-console-for-nmi-calls) . Volg de hand leiding voor het [genereren van een crash dump bestand met behulp van NMI-aanroepen](/windows/client-management/generate-kernel-or-complete-crash-dump).

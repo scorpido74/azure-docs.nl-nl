@@ -1,6 +1,7 @@
 ---
-title: UWP-quickstart voor Microsoft-identiteitsplatform op Windows | Azure
-description: Leer hoe met een universeel Windows-platform (XAML) een toegangstoken kan worden opgehaald en een API kan worden aangeroepen die is beveiligd met een Microsoft-identiteitsplatform-eindpunt.
+title: 'Snelstart: Gebruikers aanmelden en Microsoft Graph aanroepen in een Universele Windows-platform-app | Azure'
+titleSuffix: Microsoft identity platform
+description: In deze snelstart leert u hoe met een universele Windows-platform (UWP)-toepassing een toegangstoken kan worden opgehaald en een API kan worden aangeroepen die is beveiligd door een Microsoft-identiteitsplatform.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,18 +12,23 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
-ms.openlocfilehash: d68017bcddf43066dd989904578b7d09a84f4a9e
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 5b954c5eae9c203efa65dc9dc1883d8e00f3937a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85553872"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91630522"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Quickstart: De Microsoft Graph-API aanroepen vanuit de Universeel Windows-platformtoepasing (UWP)
 
 Deze quickstart bevat een codevoorbeeld dat laat zien hoe een UWP-toepassing (universeel Windows-platform) kan worden gebruikt om gebruikers aan te melden met persoonlijke accounts of werk- en schoolaccounts, een toegangstoken op te halen en de Microsoft Graph-API aan te roepen. (Zie [Hoe het voorbeeld werkt](#how-the-sample-works) voor een illustratie.)
 
 > [!div renderon="docs"]
+> ## <a name="prerequisites"></a>Vereisten
+>
+> * Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+> * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)
+>
 > ## <a name="register-and-download-your-quickstart-app"></a>De quickstart-app registreren en downloaden
 > [!div renderon="docs" class="sxs-lookup"]
 > U hebt twee opties voor het starten van de snelstarttoepassing:

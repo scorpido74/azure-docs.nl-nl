@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/30/2017
 ms.openlocfilehash: 6c07ab4b18c017bd29723d2640129b8e67374e3c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87837377"
 ---
 # <a name="migrate-your-apps-and-solutions-from-biztalk-services-to-azure-logic-apps"></a>Migreer uw apps en oplossingen van BizTalk Services naar Azure Logic Apps
@@ -59,7 +59,7 @@ Elke Bridge heeft standaard een HTTP-eind punt dat is geconfigureerd met het run
 
 ## <a name="xml-processing-and-bridges"></a>XML-verwerking en bruggen
 
-In BizTalk Services is een brug gelijk aan een verwerkings pijplijn. Een Bridge kan gegevens ontvangen van een connector, sommige werk met de gegevens uitvoeren en de resultaten naar een ander systeem verzenden. Logic Apps doet hetzelfde door het ondersteunen van dezelfde op pijplijn gebaseerde interactie patronen als BizTalk Services en ook andere integratie patronen bieden. De [XML-aanvraag/antwoord-brug](/previous-versions/azure/hh689781(v=azure.100)) in BizTalk Services wordt ook wel een VETER-pijp lijn genoemd, die bestaat uit fasen die deze taken uitvoeren:
+In BizTalk Services is een brug gelijk aan een verwerkings pijplijn. Een Bridge kan gegevens ontvangen van een connector, sommige werk met de gegevens uitvoeren en de resultaten naar een ander systeem verzenden. Logic Apps doet hetzelfde door het ondersteunen van dezelfde op pijplijn gebaseerde interactie patronen als BizTalk Services en ook andere integratie patronen bieden. De [XML-Request-Reply Bridge](/previous-versions/azure/hh689781(v=azure.100)) in BizTalk Services wordt een VETER-pijp lijn genoemd, die bestaat uit fasen die deze taken uitvoeren:
 
 * (V) valideren
 * (E) verrijking
@@ -71,7 +71,7 @@ In deze afbeelding ziet u hoe de verwerking wordt gesplitst tussen de aanvraag e
 
 ![Scherm afbeelding die laat zien hoe de verwerking van de aanvraag en het antwoord wordt gesplitst.](media/logic-apps-move-from-mabs/xml-request-reply.png)
 
-Daarnaast voegt een XML eenrichtings brug de fase ring en versleutelen aan het begin en einde van de verwerking toe. De Pass-Through-brug bevat een enkele verrijkte fase.
+Daarnaast voegt een XML-One-Way Bridge decodeer-en versleutelings fasen toe aan het begin en het einde van de verwerking. De Pass-Through Bridge bevat een enkele verrijkte fase.
 
 ### <a name="message-processing-decoding-and-encoding"></a>Bericht verwerking, decoderen en coderen
 

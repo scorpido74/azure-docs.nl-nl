@@ -2,15 +2,13 @@
 title: Op werkruimte gebaseerd resourceschema van Azure Monitor Application Insights
 description: Meer informatie over de nieuwe tabel structuur en het schema voor Azure Monitor resources op basis van Application Insights werk ruimte.
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 05/09/2020
-ms.openlocfilehash: 1d7275c928b4d25e200a3a8d3d690c7575c056e7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8f0bee64d74cfd5b6abef5c918c023974fda3fcf
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323176"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91931050"
 ---
 # <a name="workspace-based-resource-changes-preview"></a>Resource wijzigingen op basis van werk ruimten (preview-versie)
 
@@ -18,7 +16,7 @@ Vóór de introductie van [Application Insights resources op basis van een werk 
 
 Met Application Insights resources-gegevens op basis van een werk ruimte worden opgeslagen in een Log Analytics-werk ruimte met andere bewakings gegevens en toepassings gegevens. Dit vereenvoudigt uw configuratie, zodat u gemakkelijker gegevens kunt analyseren over meerdere oplossingen en de mogelijkheden van werk ruimten kunt benutten.
 
-## <a name="table-structure"></a>Tabel structuur
+## <a name="table-structure"></a>Tabelstructuur
 
 | Verouderde tabel naam | Nieuwe tabel naam | Beschrijving |
 |:---|:---|:---|
@@ -29,7 +27,7 @@ Met Application Insights resources-gegevens op basis van een werk ruimte worden 
 | customMetrics | AppMetrics | Aangepaste metrische gegevens die door uw toepassing zijn gemaakt. |
 | Page views | AppPageViews| Gegevens over elke website weergave met browser informatie. |
 | Performance Counters | AppPerformanceCounters | Prestatie metingen van de reken bronnen die de toepassing ondersteunen, bijvoorbeeld Windows-prestatie meter items. |
-| aanvragen | AppRequests | Aanvragen die door uw toepassing zijn ontvangen. Een afzonderlijke aanvraag record wordt bijvoorbeeld vastgelegd voor elke HTTP-aanvraag die uw web-app ontvangt.  |
+| requests | AppRequests | Aanvragen die door uw toepassing zijn ontvangen. Een afzonderlijke aanvraag record wordt bijvoorbeeld vastgelegd voor elke HTTP-aanvraag die uw web-app ontvangt.  |
 | uitzonderingen | AppSystemEvents | Uitzonde ringen die worden veroorzaakt door de runtime van de toepassing, legt zowel server-als client-side-uitzonde ringen vast. |
 | traceringen | AppTraces | Gedetailleerde logboeken (traceringen) die worden verzonden via toepassings code/logboek registratie raamwerken vastgelegd via TrackTrace (). |
 
@@ -68,7 +66,7 @@ Verouderde tabel: Beschik baarheid
 |Item type|tekenreeks|Type|Tekenreeks|
 |location|tekenreeks|Locatie|tekenreeks|
 |message|tekenreeks|Bericht|tekenreeks|
-|name|tekenreeks|Naam|tekenreeks|
+|naam|tekenreeks|Naam|tekenreeks|
 |operation_Id|tekenreeks|OperationId|tekenreeks|
 |operation_Name|tekenreeks|OperationName|tekenreeks|
 |operation_ParentId|tekenreeks|OperationParentId|tekenreeks|
@@ -108,7 +106,7 @@ Verouderde tabel: browserTimings
 |itemCount|int|ItemCount|int|
 |itemId|tekenreeks|\_ItemId|tekenreeks|
 |Item type|tekenreeks|Type|tekenreeks|
-|name|tekenreeks|Naam|datum/tijd|
+|naam|tekenreeks|Naam|datum/tijd|
 |networkDuration|werkelijk|NetworkDurationMs|werkelijk|
 |operation_Id|tekenreeks|OperationId|tekenreeks|
 |operation_Name|tekenreeks|OperationName|tekenreeks|
@@ -155,7 +153,7 @@ Verouderde tabel: afhankelijkheden
 |itemCount|int|ItemCount|int|
 |itemId|tekenreeks|\_ItemId|tekenreeks|
 |Item type|tekenreeks|Type|Tekenreeks|
-|name|tekenreeks|Naam|tekenreeks|
+|naam|tekenreeks|Naam|tekenreeks|
 |operation_Id|tekenreeks|OperationId|tekenreeks|
 |operation_Name|tekenreeks|OperationName|tekenreeks|
 |operation_ParentId|tekenreeks|OperationParentId|tekenreeks|
@@ -197,7 +195,7 @@ Verouderde tabel: customEvents
 |itemCount|int|ItemCount|int|
 |itemId|tekenreeks|\_ItemId|tekenreeks|
 |Item type|tekenreeks|Type|tekenreeks|
-|name|tekenreeks|Naam|tekenreeks|
+|naam|tekenreeks|Naam|tekenreeks|
 |operation_Id|tekenreeks|OperationId|tekenreeks|
 |operation_Name|tekenreeks|OperationName|tekenreeks|
 |operation_ParentId|tekenreeks|OperationParentId|tekenreeks|
@@ -232,7 +230,7 @@ Verouderde tabel: customMetrics
 |iKey|tekenreeks|IKey|tekenreeks|
 |itemId|tekenreeks|\_ItemId|tekenreeks|
 |Item type|tekenreeks|Type|tekenreeks|
-|name|tekenreeks|Naam|tekenreeks|
+|naam|tekenreeks|Naam|tekenreeks|
 |operation_Id|tekenreeks|OperationId|tekenreeks|
 |operation_Name|tekenreeks|OperationName|tekenreeks|
 |operation_ParentId|tekenreeks|OperationParentId|tekenreeks|
@@ -277,7 +275,7 @@ Verouderde tabel: page views
 |itemCount|int|ItemCount|int|
 |itemId|tekenreeks|\_ItemId|tekenreeks|
 |Item type|tekenreeks|Type|Tekenreeks|
-|name|tekenreeks|Naam|tekenreeks|
+|naam|tekenreeks|Naam|tekenreeks|
 |operation_Id|tekenreeks|OperationId|tekenreeks|
 |operation_Name|tekenreeks|OperationName|tekenreeks|
 |operation_ParentId|tekenreeks|OperationParentId|tekenreeks|
@@ -317,7 +315,7 @@ Verouderde tabel: Performance Counters
 |exemplaar|tekenreeks|Exemplaar|tekenreeks|
 |itemId|tekenreeks|\_ItemId|tekenreeks|
 |Item type|tekenreeks|Type|tekenreeks|
-|name|tekenreeks|Naam|tekenreeks|
+|naam|tekenreeks|Naam|tekenreeks|
 |operation_Id|tekenreeks|OperationId|tekenreeks|
 |operation_Name|tekenreeks|OperationName|tekenreeks|
 |operation_ParentId|tekenreeks|OperationParentId|tekenreeks|
@@ -357,7 +355,7 @@ Verouderde tabel: aanvragen
 |itemCount|int|ItemCount|int|
 |itemId|tekenreeks|\_ItemId|tekenreeks|
 |Item type|tekenreeks|Type|Tekenreeks|
-|name|tekenreeks|Naam|Tekenreeks|
+|naam|tekenreeks|Naam|Tekenreeks|
 |operation_Id|tekenreeks|OperationId|tekenreeks|
 |operation_Name|tekenreeks|OperationName|tekenreeks|
 |operation_ParentId|tekenreeks|OperationParentId|tekenreeks|

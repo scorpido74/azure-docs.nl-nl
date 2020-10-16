@@ -17,10 +17,10 @@ ms.date: 07/24/2019
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 721389b557fde41b1461654b03299601e2384108
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91361327"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-file-share-in-azure"></a>Een SAP ASCS/SCS-exemplaar op een Windows-failovercluster clusteren met behulp van een bestands share in azure
@@ -133,7 +133,7 @@ Als u een scale-out bestands share wilt gebruiken, moet uw systeem voldoen aan d
 * U wordt aangeraden volumes te Format teren met behulp van een ReFS-bestands systeem.
     * Zie [SAP Note 1869038-SAP-ondersteuning voor ReFs-bestands][1869038] systeem en de [keuze van het bestandssysteem][planning-volumes-s2d-choosing-filesystem] in het artikel de volumes in opslagruimten direct plannen voor meer informatie.
     * Zorg ervoor dat u de [cumulatieve update van micro soft KB4025334][kb4025334]installeert.
-* U kunt Azure VM-grootten van de DS-serie of de DSv2-serie gebruiken.
+* U kunt DS-Series of DSv2-Series Azure VM-grootten gebruiken.
 * Gebruik voor goede netwerk prestaties tussen virtuele machines, die nodig zijn voor Opslagruimten Direct schijf synchronisatie, een VM-type met ten minste een ' hoge ' netwerk bandbreedte.
     Zie de specificaties van de [DSv2-serie][dv2-series] en de [DS-serie][ds-series] voor meer informatie.
 * U wordt aangeraden enkele niet-toegewezen capaciteit in de opslag groep te reserveren. Als er sprake is van een niet-toegewezen capaciteit in de opslag groep, kan de schijf ruimte in beschik bare volumes herstellen als een station mislukt. Dit verbetert de veiligheid en prestaties van uw gegevens.  Zie [volume grootte kiezen][choosing-the-size-of-volumes-s2d]voor meer informatie.

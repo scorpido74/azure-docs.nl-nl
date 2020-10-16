@@ -1,22 +1,23 @@
 ---
-title: Text Analytics-API referentie
+title: Naslaginformatie over de Text Analytics-API
 titleSuffix: Azure Cognitive Services
-description: Naslag informatie over de nieuwste stabiele en preview-API-definities
+description: Naslaginformatie over definities voor de nieuwste stabiele en preview-API
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: text-analytics
 ms.topic: include
 ms.date: 11/19/2019
 ms.author: assafi
-ms.openlocfilehash: 6fb6e62dbcf404f0c5f77592c2c8e6565f4bc687
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
-ms.translationtype: MT
+ms.openlocfilehash: b412308bf11a5e73287401e8b4b0cc522b26d623
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84144987"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91779883"
 ---
 > [!Tip]
-> Gebruik de volgende koppelingen voor gedetailleerde technische documentatie van de API en om deze in actie te zien. U kunt ook POST-aanvragen verzenden via de ingebouwde API-test console. Setup is niet vereist. Plak de resource sleutel en JSON-documenten gewoon in de aanvraag:
-> - Nieuwste stabiele API- [v 3.0](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0)
-> - Nieuwste preview-API- [v 3.1-Preview. 1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-1)
+> Gebruik de volgende koppelingen naar gedetailleerde technische documentatie over de API en om deze in actie te zien. U kunt ook POST-aanvragen verzenden via de ingebouwde API-testconsole. Geen installatie vereist. Plak gewoon uw resourcesleutel en JSON-documenten in de aanvraag:
+> - Nieuwste stabiele API: [v3.0](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0)
+> - Nieuwste preview-API: [v3.1-Preview.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-1)

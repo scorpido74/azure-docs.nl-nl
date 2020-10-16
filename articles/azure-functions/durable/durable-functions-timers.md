@@ -4,12 +4,12 @@ description: Meer informatie over het implementeren van duurzame timers in de Du
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 0226e5141b100aa3fcf89dd1a5cade8f3cd6cf1c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bb91f205a9b83b0b4b410644ef6c0fcbbf60876a
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056225"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876444"
 ---
 # <a name="timers-in-durable-functions-azure-functions"></a>Timers in Durable Functions (Azure Functions)
 
@@ -22,7 +22,7 @@ U maakt een duurzame timer door de `CreateTimer` methode (.net) of de `createTim
 Wanneer u een timer maakt die om 4:30 uur verloopt, in het onderliggende duurzame taak raamwerk een bericht dat alleen op 4:30 uur zichtbaar wordt. Bij het uitvoeren van het Azure Functions verbruiks abonnement zorgt het nieuw zicht bare timer bericht ervoor dat de functie-app wordt geactiveerd op een geschikte VM.
 
 > [!NOTE]
-> * Duurzame timers zijn momenteel beperkt tot 7 dagen. Als er langere vertragingen nodig zijn, kunnen ze worden gesimuleerd met behulp van de timer-Api's in een `while` lus.
+> * Vanaf [versie 2.3.0](https://github.com/Azure/azure-functions-durable-extension/releases/tag/v2.3.0) van de duurzame uitbrei ding zijn duurzame timers onbeperkt. In eerdere versies van de uitbrei ding zijn duurzame timers beperkt tot zeven dagen. Wanneer u een eerdere versie gebruikt en langer dan zeven dagen een vertraging nodig hebt, gebruikt u de timer-Api's in een `while` lus om deze vertraging te simuleren.
 > * Gebruik altijd `CurrentUtcDateTime` in plaats van `DateTime.UtcNow` in .net of in `currentUtcDateTime` plaats van `Date.now` of `Date.UTC` in Java script bij het berekenen van de brand tijd voor duurzame timers. Zie het artikel [Orchestrator functie code constraints](durable-functions-code-constraints.md) voor meer informatie.
 
 ## <a name="usage-for-delay"></a>Gebruik voor vertraging

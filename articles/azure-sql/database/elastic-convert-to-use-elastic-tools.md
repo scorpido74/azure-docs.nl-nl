@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 95afd0b9117caca4b531c453417217d8a8de7c7f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91443464"
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>Bestaande data bases migreren om uit te schalen
@@ -138,7 +138,7 @@ Add-RangeMapping -KeyType $([int]) -RangeHigh '5' -RangeLow '1' -RangeShardMap $
 
 ### <a name="step-4-option-3-map-the-data-for-multiple-tenants-on-an-individual-database"></a>Stap 4, optie 3: de gegevens voor meerdere tenants in een afzonderlijke data base toewijzen
 
-Voer voor elke Tenant de add-ListMapping (optie 1) uit.
+Voer voor elke Tenant de Add-ListMapping uit (optie 1).
 
 ## <a name="checking-the-mappings"></a>De toewijzingen controleren
 
@@ -156,7 +156,7 @@ Nadat u de installatie hebt voltooid, kunt u beginnen met het gebruik van de Ela
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Down load de Power shell-scripts van [Azure SQL database-Elastic database-hulpprogram ma's](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db).
+Down load de Power shell-scripts van [Azure SQL Database-Elastic data base tools-scripts](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db).
 
 De hulpprogram ma's bevinden zich ook in GitHub: [Azure/Elastic-db-tools](https://github.com/Azure/elastic-db-tools).
 

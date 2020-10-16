@@ -4,10 +4,10 @@ description: Hierin worden de eigenschappen beschreven die worden gegeven voor M
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: fb8cd76829622962b642580bbda7f2a655604c2f
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87458039"
 ---
 # <a name="azure-machine-learning-as-an-event-grid-source"></a>Azure Machine Learning als Event Grid bron
@@ -32,7 +32,7 @@ Azure Machine Learning worden de volgende gebeurtenis typen meeverzonden:
 
 Wanneer een gebeurtenis wordt geactiveerd, verzendt de Event Grid-Service gegevens over die gebeurtenis om het eind punt te abonneren.
 
-Deze sectie bevat een voor beeld van hoe de gegevens voor elke gebeurtenis eruitzien.
+Deze sectie bevat een voorbeeld van hoe de gegevens voor elke gebeurtenis eruitzien.
 
 ### <a name="microsoftmachinelearningservicesmodelregistered-event"></a>Micro soft. MachineLearningServices. ModelRegistered-gebeurtenis
 
@@ -186,11 +186,11 @@ Deze sectie bevat een voor beeld van hoe de gegevens voor elke gebeurtenis eruit
 
 Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | onderwerp | tekenreeks | Volledige bronpad naar de bron van de gebeurtenis. Dit veld kan niet worden geschreven. Event Grid biedt deze waarde. |
 | onderwerp | tekenreeks | Het door de uitgever gedefinieerde pad naar het gebeurtenisonderwerp. |
-| eventType | tekenreeks | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. |
+| Type | tekenreeks | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. |
 | eventTime | tekenreeks | Het tijdstip waarop de gebeurtenis is gegenereerd op basis van de UTC-tijd van de provider. |
 | id | tekenreeks | De unieke id voor de gebeurtenis. |
 | gegevens | object | Gebeurtenis gegevens van Blob-opslag. |
@@ -201,7 +201,7 @@ Het gegevens object heeft de volgende eigenschappen voor elk gebeurtenis type:
 
 ### <a name="microsoftmachinelearningservicesmodelregistered"></a>Micro soft. MachineLearningServices. ModelRegistered
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | ModelName | tekenreeks | De naam van het model dat is geregistreerd. |
 | ModelVersion | tekenreeks | De versie van het model dat is geregistreerd. |
@@ -210,7 +210,7 @@ Het gegevens object heeft de volgende eigenschappen voor elk gebeurtenis type:
 
 ### <a name="microsoftmachinelearningservicesmodeldeployed"></a>Micro soft. MachineLearningServices. ModelDeployed
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | ServiceName | tekenreeks | De naam van de geïmplementeerde service. |
 | ServiceComputeType | tekenreeks | Het reken type (bijvoorbeeld ACI, AKS) van de geïmplementeerde service. |
@@ -220,7 +220,7 @@ Het gegevens object heeft de volgende eigenschappen voor elk gebeurtenis type:
 
 ### <a name="microsoftmachinelearningservicesruncompleted"></a>Micro soft. MachineLearningServices. RunCompleted
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | experimentId | tekenreeks | De ID van het experiment waarvan de uitvoering deel uitmaakt. |
 | experimentnaam | tekenreeks | De naam van het experiment waarvan de uitvoering deel uitmaakt. |
@@ -231,7 +231,7 @@ Het gegevens object heeft de volgende eigenschappen voor elk gebeurtenis type:
 
 ### <a name="microsoftmachinelearningservicesdatasetdriftdetected"></a>Micro soft. MachineLearningServices. DatasetDriftDetected
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | DataDriftId | tekenreeks | De ID van de gegevensdrijf monitor die de gebeurtenis heeft geactiveerd. |
 | DataDriftName | tekenreeks | De naam van de gegevensdrijf monitor die de gebeurtenis heeft geactiveerd. |
@@ -244,7 +244,7 @@ Het gegevens object heeft de volgende eigenschappen voor elk gebeurtenis type:
 
 ### <a name="microsoftmachinelearningservicesrunstatuschanged"></a>Micro soft. MachineLearningServices. RunStatusChanged
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | experimentId | tekenreeks | De ID van het experiment waarvan de uitvoering deel uitmaakt. |
 | experimentnaam | tekenreeks | De naam van het experiment waarvan de uitvoering deel uitmaakt. |
@@ -261,7 +261,7 @@ Het gegevens object heeft de volgende eigenschappen voor elk gebeurtenis type:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Wat is Event grid?](overview.md) voor een inleiding tot Azure Event grid.
+* Zie [Wat is Event Grid?](overview.md) voor een inleiding tot Azure Event Grid.
 * Zie [Event grid-abonnements schema](subscription-creation-schema.md) voor meer informatie over het maken van een Azure Event grid-abonnement
 * Zie voor een inleiding tot het gebruik van Azure Event Grid met Azure Machine Learning [Azure machine learning gebeurtenissen gebruiken](../machine-learning/how-to-use-event-grid.md)
 * Zie [gebeurtenis gerichte machine learning werk stromen maken](../machine-learning/how-to-use-event-grid.md) voor een voor beeld van het gebruik van Azure Event Grid met Azure machine learning.

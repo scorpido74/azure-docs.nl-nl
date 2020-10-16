@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a9d2116062dc45f3602bf5ee0efba31ad815c0c9
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 73584353d0d003588ef7de6131d3c3c4bbfcff59
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447853"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046720"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Een downstream-apparaat verifiëren voor Azure IoT Hub
 
@@ -47,7 +47,7 @@ Kies hoe u het downstream-apparaat wilt verifiëren met IoT Hub:
 
 Nadat u het apparaat met een van deze drie methoden hebt geregistreerd, gaat u verder met de volgende sectie om de connection string voor het downstream-apparaat op te [halen en te wijzigen](#retrieve-and-modify-connection-string) .
 
-### <a name="symmetric-key-authentication"></a>Symmetrische-sleutel verificatie
+### <a name="symmetric-key-authentication"></a>Verificatie met symmetrische sleutel
 
 Verificatie op basis van symmetrische sleutels, of verificatie van de gedeelde toegangs sleutel, is de eenvoudigste manier om te verifiëren met IoT Hub. Bij symmetrische sleutel verificatie wordt een base64-sleutel gekoppeld aan uw IoT-apparaat-ID in IoT Hub. U neemt die sleutel op in uw IoT-toepassingen, zodat uw apparaat deze kan presen teren wanneer er verbinding wordt gemaakt met IoT Hub.
 
@@ -59,7 +59,7 @@ Wanneer u de nieuwe apparaat-id maakt, geeft u de volgende informatie op:
 
 * Selecteer **symmetrische sleutel** als het verificatie type.
 
-* U kunt desgewenst **een bovenliggend apparaat instellen** en het IOT Edge gateway apparaat selecteren dat door dit downstream-apparaat wordt verbonden. Deze stap is optioneel voor symmetrische sleutel verificatie, maar wordt aanbevolen omdat het instellen van een bovenliggend apparaat [offline mogelijkheden](offline-capabilities.md) voor het downstream-apparaat mogelijk maakt. U kunt de details van het apparaat altijd bijwerken om het bovenliggende item later toe te voegen of te wijzigen.
+* Selecteer **een bovenliggend apparaat instellen** en selecteer het IOT Edge gateway apparaat waarmee dit downstream-apparaat verbinding maakt. Met deze stap worden [offline mogelijkheden](offline-capabilities.md) voor het downstream-apparaat ingeschakeld. U kunt het bovenliggende item later altijd wijzigen.
 
    ![Apparaat-ID met symmetrische-sleutel verificatie maken in de portal](./media/how-to-authenticate-downstream-device/symmetric-key-portal.png)
 
@@ -110,7 +110,7 @@ Voor X. 509 zelfondertekende verificatie, ook wel vingerafdruk verificatie genoe
 
 4. Kopieer zowel het primaire als het secundaire certificaat van het apparaat en de sleutels naar een locatie op het downstream-apparaat. Verplaats ook een kopie van het gedeelde basis-CA-certificaat dat het certificaat van de gateway-apparaat en de downstream-apparaatstuurprogramma's heeft gegenereerd.
 
-   U verwijst naar deze certificaat bestanden in alle toepassingen op het downstream-apparaat die verbinding maken met IoT Hub. U kunt een service zoals [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) of een functie zoals [Secure Copy Protocol](https://www.ssh.com/ssh/scp/) gebruiken om de certificaat bestanden te verplaatsen.
+   U verwijst naar deze certificaat bestanden in alle toepassingen op het downstream-apparaat die verbinding maken met IoT Hub. U kunt een service zoals [Azure Key Vault](../key-vault/index.yml) of een functie zoals [Secure Copy Protocol](https://www.ssh.com/ssh/scp/) gebruiken om de certificaat bestanden te verplaatsen.
 
 5. Bekijk, afhankelijk van de taal van uw voor keur, de voor beelden van hoe X. 509-certificaten kunnen worden verwezen in IoT-toepassingen:
 
@@ -156,7 +156,7 @@ Deze sectie is gebaseerd op de instructies in het artikel IoT Hub [X. 509-beveil
 
 5. Kopieer het certificaat en de sleutels van het apparaat naar een wille keurige locatie op het downstream-apparaat. Verplaats ook een kopie van het gedeelde basis-CA-certificaat dat het certificaat van de gateway-apparaat en de downstream-apparaatstuurprogramma's heeft gegenereerd.
 
-   U verwijst naar deze bestanden in alle toepassingen op het downstream-apparaat die verbinding maken met IoT Hub. U kunt een service zoals [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) of een functie zoals [Secure Copy Protocol](https://www.ssh.com/ssh/scp/) gebruiken om de certificaat bestanden te verplaatsen.
+   U verwijst naar deze bestanden in alle toepassingen op het downstream-apparaat die verbinding maken met IoT Hub. U kunt een service zoals [Azure Key Vault](../key-vault/index.yml) of een functie zoals [Secure Copy Protocol](https://www.ssh.com/ssh/scp/) gebruiken om de certificaat bestanden te verplaatsen.
 
 6. Bekijk, afhankelijk van de taal van uw voor keur, de voor beelden van hoe X. 509-certificaten kunnen worden verwezen in IoT-toepassingen:
 
@@ -201,7 +201,7 @@ Of
 HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;x509=true;GatewayHostName=myGatewayDevice
 ```
 
-Als u een bovenliggende/onderliggende relatie hebt ingesteld voor dit downstream-apparaat, kunt u de connection string vereenvoudigen door de gateway rechtstreeks aan te roepen als de host van de verbinding. Bovenliggende/onderliggende relaties zijn vereist voor X. 509-verificatie, maar is optioneel voor symmetrische sleutel verificatie. Bijvoorbeeld:
+Dankzij de relatie tussen bovenliggende en onderliggende items kunt u de connection string vereenvoudigen door de gateway rechtstreeks aan te roepen als de host van de verbinding. Bijvoorbeeld:
 
 ```
 HostName=myGatewayDevice;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz

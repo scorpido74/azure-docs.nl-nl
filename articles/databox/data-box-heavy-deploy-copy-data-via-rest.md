@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: f9134b57d8a3e76417283e5d863724651b4f6a6f
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: e2fc174147b99b7b952c6d10084cfc969dacf5a6
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921160"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949136"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Zelfstudie: Gegevens kopiëren naar Azure Data Box-blobopslag via REST API's  
 
@@ -122,11 +122,11 @@ Volg deze stappen om het `.cer`-bestand te importeren in het basisarchief van ee
 
 3.  Selecteer **Alle certificaten in het onderstaande archief opslaan** en klik op **Bladeren**. Navigeer naar het basisarchief van de externe host en klik vervolgens op **Volgende**.
 
-    ![Certificaat importeren met PowerShell](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
+    ![Certificaat importeren met PowerShell 2](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
 
 4.  Klik op **Voltooien**. Er wordt een bericht weergegeven dat het importeren is geslaagd.
 
-    ![Certificaat importeren met PowerShell](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
+    ![Certificaat importeren met PowerShell 3](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
 
 #### <a name="use-a-linux-system"></a>Een Linux-systeem gebruiken
 

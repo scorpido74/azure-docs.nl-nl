@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: a69b4a068e62c6376660a79b3a7c8ab5402b5704
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b91f24f9c1a2cedd4292d98fc66630c6b66d37b0
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536254"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775160"
 ---
 # <a name="tutorial-integrate-displayr-with-azure-active-directory"></a>Zelfstudie: Displayr integreren met Azure Active Directory
 
@@ -88,15 +88,15 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 1. In Displayr worden de SAML-asserties in een specifieke indeling verwacht. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van uw SAML-tokenkenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven. Klik op het pictogram **Bewerken** om het dialoogvenster gebruikerskenmerken te openen.
 
-    ![image](common/edit-attribute.png)
+    ![Schermopname die de sectie 'Gebruikerskenmerken' toont met het pictogram 'Bewerken' geselecteerd.](common/edit-attribute.png)
 
 1. Bovendien verwacht Displayr nog enkele kenmerken die als SAML-antwoord moeten worden doorgestuurd. Voer in het gedeelte **Gebruikerskenmerken en -claims** in het dialoogvenster **Groepsclaims (preview)** de volgende stappen uit:
 
     a. Klik op de **pen** naast **Groepen die zijn geretourneerd in claim**.
 
-    ![image](./media/displayr-tutorial/config04.png)
+    ![Schermopname toont de sectie 'Gebruikerskenmerken en claims' waarin het pictogram 'Pen' naast 'Groepen die zijn geretourneerd in claim' is geselecteerd.](./media/displayr-tutorial/config04.png)
 
-    ![image](./media/displayr-tutorial/config05.png)
+    ![Schermopname toont het venster 'Groepsclaims (voorbeeld)' waarin 'Instellingen' is geselecteerd.](./media/displayr-tutorial/config05.png)
 
     b. Selecteer **Alle groepen** in de lijst met keuzerondjes.
 
@@ -126,11 +126,11 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 4. Klik op **Settings** en ga naar **Account**.
 
-    ![Configuratie](./media/displayr-tutorial/config01.png)
+    ![Schermopname waarin het pictogram 'Instellingen' en 'Account' zijn geselecteerd.](./media/displayr-tutorial/config01.png)
 
 5. Ga naar **Settings** in het bovenste menu en schuif naar beneden op de pagina om te klikken op **Configure Single Sign On (SAML)** .
 
-    ![Configuratie](./media/displayr-tutorial/config02.png)
+    ![Schermopname toont het tabblad 'Instellingen' waarin de actie 'Eenmalige aanmelding (SAML) configureren' is geselecteerd.](./media/displayr-tutorial/config02.png)
 
 6. Voer op de pagina **Single Sign On (SAML)** de volgende stappen uit:
 
@@ -190,11 +190,11 @@ Als u wilt dat gebruikers van Azure AD zich kunnen aanmelden bij Displayr, moete
 
 2. Klik op **Settings** en ga naar **Account**.
 
-    ![Configuratie van Displayr](./media/displayr-tutorial/config01.png)
+    ![Schermopname waarin het pictogram 'Instellingen' en 'Account' zijn geselecteerd.](./media/displayr-tutorial/config01.png)
 
 3. Ga naar **Settings** in het bovenste menu en schuif naar beneden op de pagina tot de se **Users** en klik daar op **New User**.
 
-    ![Configuratie van Displayr](./media/displayr-tutorial/config07.png)
+    ![Schermopname toont het tabblad 'Instellingen' waarin 'Gebruikers' is gemarkeerd en de knop 'Nieuwe gebruiker' is geselecteerd.](./media/displayr-tutorial/config07.png)
 
 4. Voer op de pagina **New User** de volgende stappen uit:
 

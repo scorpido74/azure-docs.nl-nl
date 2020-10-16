@@ -4,17 +4,17 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: bed2a4ccbe87aef9afa395ed789da393e885cc89
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 368c594352b59f7ec6d04b12ca44e0cd492dc907
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91779239"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92082247"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 - Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 
-- Een gebruikte Communication Services-resource. [Een Communication Services maken](../../create-communication-resource.md).
+- Een geïmplementeerde Communication Services-resource. [Een Communication Services maken](../../create-communication-resource.md).
 - A `User Access Token` om de aanroep-client in te scha kelen. Voor meer informatie over [het verkrijgen van een `User Access Token` ](../../access-tokens.md)
 - Optioneel: Voltooi de Snelstartgids om aan de [slag te gaan met het toevoegen van een oproep aan uw toepassing](../getting-started-with-calling.md)
 
@@ -56,7 +56,7 @@ dependencies {
 
 ## <a name="object-model"></a>Objectmodel
 
-De volgende klassen en interfaces verwerken enkele van de belangrijkste functies van de Azure Communication Services-clientbibliotheek voor aanroepen:
+De volgende klassen en interfaces verwerken enkele van de belangrijkste functies van de Azure Communication Services-clientbibliotheek voor oproepen:
 
 | Naam                                  | Beschrijving                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
@@ -517,7 +517,7 @@ Renderer-object na Api's
 // Create a view for a video stream
 renderer.createView()
 ```
-* Renderer verwijderen en alles `RendererView` aan deze renderer koppelen
+* De renderer en alle `RendererView` aan deze renderer verwijderen. Moet worden aangeroepen wanneer u alle gekoppelde weer gaven uit de gebruikers interface hebt verwijderd.
 ```java
 renderer.dispose()
 ```

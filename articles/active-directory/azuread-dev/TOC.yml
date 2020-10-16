@@ -1,15 +1,18 @@
 - name: Azure Active Directory voor ontwikkelaars
   href: index.yml
 - name: Overzicht
-  href: v1-overview.md
-- name: Voorbeelden
-  href: sample-v1-code.md
-- name: Concepten
+  expanded: true
   items:
+    - name: Overzicht
+      href: v1-overview.md
     - name: Evolutie van het Microsoft Identity Platform
       href: about-microsoft-identity-platform.md
     - name: Waarom updaten naar v2.0?
       href: azure-ad-endpoint-comparison.md
+- name: Voorbeelden
+  href: sample-v1-code.md
+- name: Concepten
+  items:
     - name: Toepassingstypen
       items:
         - name: Soorten toepassingen

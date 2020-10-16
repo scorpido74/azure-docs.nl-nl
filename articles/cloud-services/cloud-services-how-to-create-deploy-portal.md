@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
-ms.openlocfilehash: fca14ed4e3b338f9b49f949af7498dfd49990d3b
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: b42c693943c41176936ac796f4586463e9af917c
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142380"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076688"
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>Een Cloud service maken en implementeren
 De Azure Portal biedt twee manieren om een Cloud service te maken en te implementeren: *snel maken* en *aangepast maken*.
@@ -84,13 +84,10 @@ Als uw implementatie pakket is [geconfigureerd voor het gebruik van certificaten
 
     ![CloudServices_QuickGlance](./media/cloud-services-how-to-create-deploy-portal/running.png)
 
-[TFSTutorialForCloudService]: https://go.microsoft.com/fwlink/?LinkID=251796
+[TFSTutorialForCloudService]: ./cloud-services-choose-me.md
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Algemene configuratie van uw Cloud service](cloud-services-how-to-configure-portal.md).
 * Een [aangepaste domein naam](cloud-services-custom-domain-name-portal.md)configureren.
 * [Uw Cloud service beheren](cloud-services-how-to-manage-portal.md).
 * [TLS/SSL-certificaten](cloud-services-configure-ssl-certificate-portal.md)configureren.
-
-
-

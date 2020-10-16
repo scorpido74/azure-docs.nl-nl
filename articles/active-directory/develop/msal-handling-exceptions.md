@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 60c61ff4753413d2241820400dcbc899e925eecc
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88120946"
 ---
 # <a name="handle-msal-exceptions-and-errors"></a>MSAL-uitzonde ringen en-fouten verwerken
@@ -36,7 +36,7 @@ Raadpleeg de volgende sectie die overeenkomt met de taal die u gebruikt voor mee
 
 ## <a name="net"></a>[.NET](#tab/dotnet)
 
-Bij het verwerken van .NET-uitzonde ringen kunt u het uitzonderings type zelf en het `ErrorCode` lid gebruiken om onderscheid te maken tussen uitzonde ringen. `ErrorCode`waarden zijn constanten van het type [MsalError](/dotnet/api/microsoft.identity.client.msalerror?view=azure-dotnet).
+Bij het verwerken van .NET-uitzonde ringen kunt u het uitzonderings type zelf en het `ErrorCode` lid gebruiken om onderscheid te maken tussen uitzonde ringen. `ErrorCode` waarden zijn constanten van het type [MsalError](/dotnet/api/microsoft.identity.client.msalerror?view=azure-dotnet).
 
 U kunt ook een kijkje geven in de velden [MsalClientException](/dotnet/api/microsoft.identity.client.msalexception?view=azure-dotnet), [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet)en [MsalUIRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet).
 
@@ -48,7 +48,7 @@ Hier volgen enkele veelvoorkomende uitzonde ringen die mogelijk worden gegeneree
 
 | Uitzondering | Foutcode | Oplossing|
 | --- | --- | --- |
-| [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS65001: de gebruiker of beheerder heeft niet ingestemd met het gebruik van de toepassing met de ID {appId} met de naam {appName}. Verzend een interactieve autorisatie aanvraag voor deze gebruiker en resource.| U moet eerst de toestemming van de gebruiker ophalen. Als u geen .NET Core gebruikt (die geen Web-UI heeft), roept u (eenmaal) aan `AcquireTokeninteractive` . Als u .NET Core gebruikt of als u geen gebruik wilt maken van een `AcquireTokenInteractive` , kan de gebruiker naar een URL navigeren om toestemming te geven: `https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id={clientId}&response_type=code&scope=user.read` . om aan te roepen `AcquireTokenInteractive` :`app.AcquireTokenInteractive(scopes).WithAccount(account).WithClaims(ex.Claims).ExecuteAsync();`|
+| [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS65001: de gebruiker of beheerder heeft niet ingestemd met het gebruik van de toepassing met de ID {appId} met de naam {appName}. Verzend een interactieve autorisatie aanvraag voor deze gebruiker en resource.| U moet eerst de toestemming van de gebruiker ophalen. Als u geen .NET Core gebruikt (die geen Web-UI heeft), roept u (eenmaal) aan `AcquireTokeninteractive` . Als u .NET Core gebruikt of als u geen gebruik wilt maken van een `AcquireTokenInteractive` , kan de gebruiker naar een URL navigeren om toestemming te geven: `https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id={clientId}&response_type=code&scope=user.read` . om aan te roepen `AcquireTokenInteractive` : `app.AcquireTokenInteractive(scopes).WithAccount(account).WithClaims(ex.Claims).ExecuteAsync();`|
 | [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS50079: de gebruiker is verplicht [multi-factor Authentication (MFA)](../authentication/concept-mfa-howitworks.md)te gebruiken.| Er is geen beperking. Als MFA is geconfigureerd voor uw Tenant en Azure Active Directory (AAD) besluit het af te dwingen, moet u terugvallen op een interactieve stroom, zoals `AcquireTokenInteractive` of `AcquireTokenByDeviceCode` .|
 | [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) |AADSTS90010: het toekennings type wordt niet ondersteund via de */veelvoorkomende* -of */consumers* -eind punten. Gebruik het */organizations* -of Tenant-specifieke eind punt. U hebt */veelvoorkomende*gebruikt.| Zoals uitgelegd in het bericht van Azure AD, moet de instantie een Tenant of anderszins */organizations*hebben.|
 | [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) | AADSTS70002: de hoofd tekst van de aanvraag moet de volgende para meter bevatten: `client_secret or client_assertion` .| Deze uitzonde ring kan worden gegenereerd als uw toepassing niet is geregistreerd als een open bare client toepassing in azure AD. Bewerk in het Azure Portal het manifest voor uw toepassing en stel in `allowPublicClient` op `true` . |
@@ -63,7 +63,7 @@ De meeste tijd wanneer `AcquireTokenSilent` dit mislukt, komt doordat de token c
 
 De interactie is gericht op het uitvoeren van een actie door de gebruiker. Sommige van deze voor waarden zijn gemakkelijk te oplossen (bijvoorbeeld het accepteren van gebruiks voorwaarden met één klik), en sommige kunnen niet worden omgezet met de huidige configuratie (de computer in kwestie moet bijvoorbeeld verbinding maken met een specifiek bedrijfs netwerk). Sommige gebruikers helpen bij het instellen van multi-factor Authentication of het installeren van Microsoft Authenticator op het apparaat.
 
-### <a name="msaluirequiredexception-classification-enumeration"></a>`MsalUiRequiredException`inventarisatie van classificatie
+### <a name="msaluirequiredexception-classification-enumeration"></a>`MsalUiRequiredException` inventarisatie van classificatie
 
 In MSAL wordt een `Classification` veld weer gegeven, dat u kunt lezen om een betere gebruikers ervaring te bieden, bijvoorbeeld om de gebruiker te laten weten dat het wacht woord is verlopen of dat ze toestemming moeten geven om bepaalde resources te gebruiken. De ondersteunde waarden maken deel uit van de `UiRequiredExceptionClassification` Enum:
 
@@ -244,13 +244,13 @@ In MSAL voor python zijn uitzonde ringen zeldzame, omdat de meeste fouten worden
 
 In MSAL voor Java zijn er drie soorten uitzonde ringen: `MsalClientException` , `MsalServiceException` , en `MsalInteractionRequiredException` ; die overnemen van `MsalException` .
 
-- `MsalClientException`wordt gegenereerd wanneer er een fout optreedt die lokaal is voor de tape wisselaar of het apparaat.
-- `MsalServiceException`wordt gegenereerd wanneer de Secure token service (STS) een fout bericht retourneert of een andere netwerk fout optreedt.
-- `MsalInteractionRequiredException`wordt gegenereerd wanneer de gebruikers interface-interactie vereist is om de verificatie te volt ooien.
+- `MsalClientException` wordt gegenereerd wanneer er een fout optreedt die lokaal is voor de tape wisselaar of het apparaat.
+- `MsalServiceException` wordt gegenereerd wanneer de Secure token service (STS) een fout bericht retourneert of een andere netwerk fout optreedt.
+- `MsalInteractionRequiredException` wordt gegenereerd wanneer de gebruikers interface-interactie vereist is om de verificatie te volt ooien.
 
 ### <a name="msalserviceexception"></a>MsalServiceException
 
-`MsalServiceException`beschrijft HTTP-headers die in de aanvragen naar de STS worden geretourneerd. Toegang tot deze via`MsalServiceException.headers()`
+`MsalServiceException` beschrijft HTTP-headers die in de aanvragen naar de STS worden geretourneerd. Toegang tot deze via `MsalServiceException.headers()`
 
 ### <a name="msalinteractionrequiredexception"></a>MsalInteractionRequiredException
 
@@ -260,13 +260,13 @@ De meeste tijd is `AcquireTokenSilently` mislukt, omdat de token cache geen toke
 
 Sommige voor waarden die deze fout veroorzaken, kunnen gemakkelijk worden opgelost. Het is bijvoorbeeld mogelijk dat de gebruiksrecht overeenkomst moet worden geaccepteerd. Het kan ook zijn dat de aanvraag niet kan worden afgehandeld met de huidige configuratie, omdat de machine verbinding moet maken met een specifiek bedrijfs netwerk.
 
-In MSAL wordt een `reason` veld weer gegeven, dat u kunt gebruiken om een betere gebruikers ervaring te bieden. Zo `reason` kan het veld ertoe leiden dat u de gebruiker kunt vertellen dat het wacht woord is verlopen of dat ze toestemming nodig hebben om een aantal resources te gebruiken. De ondersteunde waarden maken deel uit van de `InteractionRequiredExceptionReason` Enum:
+In MSAL wordt een `reason` veld weer gegeven, dat u kunt gebruiken om een betere gebruikers ervaring te bieden. Zo `reason` kan het veld ertoe leiden dat u de gebruiker kunt vertellen dat het wacht woord is verlopen of dat ze toestemming nodig hebben om een aantal resources te gebruiken. De ondersteunde waarden maken deel uit van de  `InteractionRequiredExceptionReason` Enum:
 
 | Reden | Betekenis | Aanbevolen verwerking |
 |---------|-----------|-----------------------------|
 | `BasicAction` | De voor waarde kan worden opgelost door de gebruikers interactie tijdens de interactieve verificatie stroom | Aanroep `acquireToken` met interactieve para meters |
 | `AdditionalAction` | De voor waarde kan worden opgelost door extra Remedia-interactie met het systeem buiten de interactieve verificatie stroom. | Bel `acquireToken` met interactieve para meters om een bericht weer te geven waarin wordt uitgelegd hoe de herstel actie moet worden uitgevoerd. De aanroep-app kan ervoor kiezen om stromen te verbergen waarvoor extra actie moet worden ondernomen als de gebruiker de herstel actie niet waarschijnlijk kan volt ooien. |
-| `MessageOnly` | De voor waarde kan op dit moment niet worden opgelost. Start interactieve verificatie stroom om een bericht weer te geven waarin de voor waarde wordt uitgelegd. | Aanroep `acquireToken` met interactieve para meters om een bericht weer te geven waarin de voor waarde wordt uitgelegd. `acquireToken`retourneert de `UserCanceled` fout nadat de gebruiker het bericht heeft gelezen en het venster sluit. De app kan ervoor kiezen om stromen te verbergen die resulteren in een bericht als de gebruiker waarschijnlijk niet in aanmerking komt voor het bericht. |
+| `MessageOnly` | De voor waarde kan op dit moment niet worden opgelost. Start interactieve verificatie stroom om een bericht weer te geven waarin de voor waarde wordt uitgelegd. | Aanroep `acquireToken` met interactieve para meters om een bericht weer te geven waarin de voor waarde wordt uitgelegd. `acquireToken` retourneert de `UserCanceled` fout nadat de gebruiker het bericht heeft gelezen en het venster sluit. De app kan ervoor kiezen om stromen te verbergen die resulteren in een bericht als de gebruiker waarschijnlijk niet in aanmerking komt voor het bericht. |
 | `ConsentRequired`| Toestemming van de gebruiker ontbreekt of is ingetrokken. |Roep `acquireToken` met interactieve para meters, zodat de gebruiker toestemming kan geven. |
 | `UserPasswordExpired` | Het wacht woord van de gebruiker is verlopen. | Aanroep `acquireToken` met interactieve para meter zodat de gebruiker het wacht woord opnieuw kan instellen |
 | `None` |  Meer informatie vindt u hier. De voor waarde kan door de gebruikers interactie worden omgezet tijdens de interactieve verificatie stroom. | Aanroep `acquireToken` met interactieve para meters |

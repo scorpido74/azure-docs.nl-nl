@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 08/10/2019
 ms.author: rohink
 ms.openlocfilehash: e7c4db7a2fc3ba931415e3b167f7fe72ee2b3980
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84710538"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>Host load balanced Azure web apps op de zone Apex
@@ -45,8 +45,8 @@ Maak twee Web App Service-abonnementen in uw resource groep met behulp van de vo
 
 |Name  |Besturingssysteem  |Locatie  |Prijscategorie  |
 |---------|---------|---------|---------|
-|ASP-01     |Windows|VS - oost|Dev/test D1-gedeeld|
-|ASP-02     |Windows|VS - centraal|Dev/test D1-gedeeld|
+|ASP-01     |Windows|VS - oost|Dev/test-D1-Shared|
+|ASP-02     |Windows|Central US|Dev/test-D1-Shared|
 
 ## <a name="create-app-services"></a>App Services maken
 
@@ -58,10 +58,10 @@ Maak twee web-apps, één in elk App Service-abonnement.
 4. Selecteer **Maken**.
 5. Accepteer de standaard waarden en gebruik de volgende tabel om de twee web-apps te configureren:
 
-   |Name<br>(moet uniek zijn binnen. azurewebsites.net)|Resourcegroep |Runtimestack|Regio|Abonnement/locatie App Service
+   |Name<br>(moet uniek zijn binnen. azurewebsites.net)|Resource Group |Runtime stack|Regio|Abonnement/locatie App Service
    |---------|---------|-|-|-------|
    |App-01|Bestaande gebruiken<br>Uw resourcegroep selecteren|.NET Core 2.2|VS - oost|ASP-01 (D1)|
-   |App-02|Bestaande gebruiken<br>Uw resourcegroep selecteren|.NET Core 2.2|VS - centraal|ASP-02 (D1)|
+   |App-02|Bestaande gebruiken<br>Uw resourcegroep selecteren|.NET Core 2.2|Central US|ASP-02 (D1)|
 
 ### <a name="gather-some-details"></a>Enkele details verzamelen
 
@@ -87,10 +87,10 @@ U kunt nu de eind punten voor de twee web-apps maken.
 3. Selecteer **Toevoegen**.
 4. Gebruik de volgende tabel om de eind punten te configureren:
 
-   |Type  |Name  |Doel  |Locatie  |Instellingen voor aangepaste header|
+   |Type  |Naam  |Doel  |Locatie  |Instellingen voor aangepaste header|
    |---------|---------|---------|---------|---------|
    |Extern eind punt     |End-01|IP-adres dat u hebt genoteerd voor app-01|VS - oost|hostsite\<the URL you recorded for App-01\><br>Voor beeld: **host: app-01.azurewebsites.net**|
-   |Extern eind punt     |End-02|IP-adres dat u hebt vastgelegd voor app-02|VS - centraal|hostsite\<the URL you recorded for App-02\><br>Voor beeld: **host: app-02.azurewebsites.net**
+   |Extern eind punt     |End-02|IP-adres dat u hebt vastgelegd voor app-02|Central US|hostsite\<the URL you recorded for App-02\><br>Voor beeld: **host: app-02.azurewebsites.net**
 
 ## <a name="create-dns-zone"></a>DNS-zone maken
 
@@ -120,7 +120,7 @@ Voeg een aangepast domein toe voor beide web-apps.
 5. Selecteer **Valideren**.
 
    Uw domein moet validatie door geven en groene vinkjes weer geven naast **hostnamen Beschik baarheid** en **domein eigendom**.
-5. Selecteer **aangepast domein toevoegen**.
+5. Selecteer **Aangepast domein toevoegen**.
 6. Vernieuw uw browser om de nieuwe hostnaam te bekijken onder **hostnamen die zijn toegewezen aan de site**. Bij het vernieuwen op de pagina worden de wijzigingen niet altijd meteen weer gegeven.
 7. Herhaal deze procedure voor uw tweede web-app.
 
@@ -132,9 +132,9 @@ Voeg nu een alias record toe voor de zone Apex.
 2. Selecteer **Recordset**.
 3. Voeg de recordset toe met behulp van de volgende tabel:
 
-   |Naam  |Type  |Alias records instellen  |Alias type  |Azure-resource|
+   |Naam  |Type  |Recordset van alias  |Aliastype  |Azure-resource|
    |---------|---------|---------|---------|-----|
-   |@     |A|Yes|Azure-resource|Traffic Manager-uw profiel|
+   |@     |A|Ja|Azure-resource|Traffic Manager-uw profiel|
 
 
 ## <a name="test-your-web-apps"></a>Uw Web-Apps testen
@@ -156,7 +156,7 @@ U kunt nu testen om er zeker van te zijn dat u uw web-app kunt bereiken en dat d
 
 Raadpleeg de volgende artikelen voor meer informatie over alias records:
 
-- [Zelf studie: een alias record configureren om te verwijzen naar een openbaar IP-adres van Azure](tutorial-alias-pip.md)
+- [Zelfstudie: Een aliasrecord zo configureren dat deze naar een openbaar Azure-IP-adres verwijst](tutorial-alias-pip.md)
 - [Zelfstudie: een Azure DNS-aliasrecord configureren om het gebruik van hoofddomeinnaam met Traffic Manager te ondersteunen](tutorial-alias-tm.md)
 - [Veelgestelde vragen over DNS](https://docs.microsoft.com/azure/dns/dns-faq#alias-records)
 

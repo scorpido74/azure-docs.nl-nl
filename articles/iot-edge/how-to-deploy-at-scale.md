@@ -5,20 +5,20 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 4/21/2020
+ms.date: 10/13/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0c1d83c2dac0163cd9b9cbc07969103381e85471
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 9d03b6f4a512c22564480405ec0f0e0c0e62a958
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855382"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048420"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-the-azure-portal"></a>Implementeer IoT Edge modules op schaal met behulp van de Azure Portal
 
-Maak een **IOT Edge automatische implementatie** in de Azure portal voor het beheren van doorlopende implementaties voor veel apparaten tegelijk. Automatische implementaties voor IoT Edge maken deel uit van de functie voor het [automatisch beheren van apparaten](/azure/iot-hub/iot-hub-automatic-device-management) van IOT hub. Implementaties zijn dynamische processen waarmee u meerdere modules op meerdere apparaten kunt implementeren, de status en status van de modules kunt volgen en waar nodig wijzigingen kunt aanbrengen.
+Maak een **IOT Edge automatische implementatie** in de Azure portal voor het beheren van doorlopende implementaties voor veel apparaten tegelijk. Automatische implementaties voor IoT Edge maken deel uit van de functie voor het [automatisch beheren van apparaten](../iot-hub/iot-hub-automatic-device-management.md) van IOT hub. Implementaties zijn dynamische processen waarmee u meerdere modules op meerdere apparaten kunt implementeren, de status en status van de modules kunt volgen en waar nodig wijzigingen kunt aanbrengen.
 
 Zie [informatie over IOT Edge automatische implementaties voor één apparaat of op schaal](module-deployment-monitoring.md)voor meer informatie.
 
@@ -53,6 +53,11 @@ De stappen voor het maken van een implementatie en een gelaagde implementatie zi
 
 Er zijn vijf stappen voor het maken van een implementatie. In de volgende secties wordt elke stap uitgelegd.
 
+>[!NOTE]
+>De stappen in dit artikel zijn gebaseerd op de meest recente schema versie van de IoT Edge agent en hub. Schema versie 1,1 is uitgebracht samen met IoT Edge versie 1.0.10 en maakt de module opstart volgorde en de functies voor het door sturen van prioriteit.
+>
+>Als u implementeert op een apparaat waarop versie 1.0.9 of eerder wordt uitgevoerd, bewerkt u de **runtime-instellingen** in de stap **modules** van de wizard om schema versie 1,0 te gebruiken.
+
 ### <a name="step-1-name-and-label"></a>Stap 1: naam en label
 
 1. Geef uw implementatie een unieke naam van Maxi maal 128 kleine letters. Vermijd spaties en de volgende ongeldige tekens: `& ^ [ ] { } \ | " < > /` .
@@ -65,55 +70,19 @@ U kunt Maxi maal 50 modules aan een implementatie toevoegen. Als u een implement
 
 In implementaties kunt u de instellingen voor de IoT Edge agent en IoT Edge hub-modules beheren. Selecteer **runtime-instellingen** om de twee runtime modules te configureren. In gelaagde implementaties zijn de runtime modules niet opgenomen en kunnen niet worden geconfigureerd.
 
-U kunt drie soorten modules toevoegen:
-
-* Module IoT Edge
-* Marketplace-module
-* Module Azure Stream Analytics
-
-#### <a name="add-an-iot-edge-module"></a>Een IoT Edge module toevoegen
-
 Voer de volgende stappen uit om aangepaste code als een module toe te voegen of hand matig een Azure-service module toe te voegen:
 
-1. Geef in de sectie **container Registry referenties** van de pagina de namen en referenties op voor de persoonlijke container registers die de module installatie kopieën voor deze implementatie bevatten. De IoT Edge-agent rapporteert fout 500 als de container register referentie voor een docker-installatie kopie niet kan worden gevonden.
-1. Klik in de sectie **IOT Edge modules** van de pagina op **toevoegen**.
-1. Selecteer **IOT Edge module** in de vervolg keuzelijst.
-1. Geef uw module een **IOT Edge module naam**.
-1. Voer voor het veld **afbeeldings-URI** de container installatie kopie voor uw module in.
-1. Gebruik de vervolg keuzelijst om een **beleid voor opnieuw opstarten**te selecteren. Kies uit de volgende opties:
-   * **altijd** : de module wordt altijd opnieuw opgestart als deze om welke reden dan ook wordt afgesloten.
-   * **nooit** : de module wordt nooit opnieuw opgestart als deze om welke reden dan ook wordt afgesloten.
-   * **on-failure** -de module wordt opnieuw opgestart als deze crasht, maar niet als deze wordt uitgeschakeld.
-   * **bij een slechte** status: de module wordt opnieuw opgestart als deze niet meer reageert of een slecht resultaat heeft. Het is Maxi maal elke module voor het implementeren van de functie Health status.
-1. Gebruik de vervolg keuzelijst om de **gewenste status** voor de module te selecteren. Kies uit de volgende opties:
-   * **actieve** uitvoering is de standaard optie. De module wordt direct na de implementatie gestart.
-   * **gestopt** : na de implementatie blijft de module inactief totdat het starten van u of een andere module wordt aangeroepen.
-1. Geef de **Opties** voor het maken van containers op die moeten worden door gegeven aan de container. Zie [docker Create](https://docs.docker.com/engine/reference/commandline/create/)(Engelstalig) voor meer informatie.
-1. Selecteer de **dubbele instellingen** voor de module als u labels of andere eigenschappen wilt toevoegen aan de module dubbele.
-1. Voer **omgevings variabelen** voor deze module in. Omgevings variabelen bieden configuratie-informatie aan een module.
-1. Selecteer **toevoegen** om uw module toe te voegen aan de implementatie.
+1. Geef in de sectie **container Registry-instellingen** van de pagina de referenties op voor toegang tot persoonlijke container registers die uw module installatie kopieën bevatten.
+1. Selecteer in de sectie **IOT Edge-modules** van de pagina de optie **toevoegen**.
+1. Kies een van de drie typen modules in de vervolg keuzelijst:
 
-#### <a name="add-a-module-from-the-marketplace"></a>Een module toevoegen vanuit Marketplace
+   * **Module IOT Edge** : u geeft de module naam en URI van de container installatie kopie op. De afbeeldings-URI voor de voor beeld-SimulatedTemperatureSensor-module is bijvoorbeeld `mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0` . Als de module installatie kopie is opgeslagen in een persoonlijk container register, voegt u de referenties op deze pagina toe om de installatie kopie te openen.
+   * **Marketplace-module** : modules die worden gehost op de Azure Marketplace. Voor sommige Marketplace-modules is aanvullende configuratie vereist. Controleer dus de module gegevens in de lijst met [IOT Edge modules van Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules) .
+   * **Azure stream Analytics module** : modules die zijn gegenereerd op basis van een Azure stream Analytics workload.
 
-Voer de volgende stappen uit om een module toe te voegen vanuit Azure Marketplace:
+1. Herhaal indien nodig stap 2 en 3 om extra modules toe te voegen aan uw implementatie.
 
-1. Klik in de sectie **IOT Edge modules** van de pagina op **toevoegen**.
-1. Selecteer **Marketplace module** in de vervolg keuzelijst.
-1. Kies een module op de **Marketplace** -pagina van de IOT Edge-module. De module die u selecteert, wordt automatisch geconfigureerd voor uw abonnement, de resource groep en het apparaat. Deze wordt vervolgens weer gegeven in de lijst met IoT Edge-modules. Voor sommige modules is mogelijk aanvullende configuratie vereist. Zie [Deploying modules from Azure Marketplace](how-to-deploy-modules-portal.md#deploy-modules-from-azure-marketplace)(Engelstalig) voor meer informatie.
-
-#### <a name="add-a-stream-analytics-module"></a>Een Stream Analytics module toevoegen
-
-Voer de volgende stappen uit om een module van Azure Stream Analytics toe te voegen:
-
-1. Klik in de sectie **IOT Edge modules** van de pagina op **toevoegen**.
-1. Selecteer **Azure stream Analytics module** in de vervolg keuzelijst.
-1. Kies uw **abonnement**in het rechterdeel venster.
-1. Kies uw IoT **Edge-taak**.
-1. Selecteer **Opslaan** om uw module toe te voegen aan de implementatie.
-
-#### <a name="configure-module-settings"></a>Module-instellingen configureren
-
-Nadat u een module aan een implementatie hebt toegevoegd, kunt u de naam ervan selecteren om de pagina **IOT Edge module bijwerken** te openen. Op deze pagina kunt u de module-instellingen, omgevings variabelen, Create-opties en module twee bewerken. Als u een module van de Marketplace hebt toegevoegd, is het mogelijk dat sommige van deze para meters al zijn ingevuld.
+Nadat u een module aan een implementatie hebt toegevoegd, kunt u de naam ervan selecteren om de pagina **IOT Edge module bijwerken** te openen. Op deze pagina kunt u de module-instellingen, omgevings variabelen, Create-opties, opstart volgorde en module twee bewerken. Als u een module van de Marketplace hebt toegevoegd, is het mogelijk dat sommige van deze para meters al zijn ingevuld. Zie [module configuratie en-beheer](module-composition.md#module-configuration-and-management)voor meer informatie over de beschik bare module-instellingen.
 
 Als u een gelaagde implementatie maakt, kunt u een module configureren die zich in andere implementaties bevindt die gericht zijn op dezelfde apparaten. Open het tabblad **dubbele instellingen** voor de module om de module te updaten zonder andere versies te overschrijven. Maak een nieuwe **module dubbele eigenschap** met een unieke naam voor een Subsectie binnen de gewenste eigenschappen van de module `properties.desired.settings` . Als u eigenschappen binnen het veld definieert `properties.desired` , worden de gewenste eigenschappen overschreven voor de module die is gedefinieerd in een implementatie met lagere prioriteit.
 
@@ -125,9 +94,13 @@ Zodra u alle modules voor een implementatie hebt geconfigureerd, selecteert u **
 
 ### <a name="step-3-routes"></a>Stap 3: routes
 
-Routes bepalen hoe modules met elkaar communiceren binnen een implementatie. De wizard geeft standaard een route met de naam **upstream** en die is gedefinieerd als **van/messages/ \* naar $upstream**. Dit betekent dat alle berichten die door modules worden uitgevoerd, worden verzonden naar uw IOT-hub.  
+Op het tabblad **Routes** definieert u hoe berichten tussen modules en de IoT Hub worden uitgewisseld. Berichten worden gemaakt met behulp van naam/waarde-paren.
 
-Voeg de routes toe of werk deze bij met informatie van de [Declareer routes](module-composition.md#declare-routes)en selecteer vervolgens **volgende** om door te gaan naar de sectie beoordeling.
+Zo zou een route met een naam **route** en een waarde **van/messages/ \* naar $upstream** alle berichten uitvoeren die worden uitgevoerd door modules en deze naar uw IOT-hub verzenden.  
+
+De para meters **prioriteit** en **time to Live** zijn optionele para meters die u in een route definitie kunt gebruiken. Met de para meter Priority kunt u kiezen voor welke routes de berichten eerst moeten worden verwerkt of welke routes als laatste moeten worden verwerkt. Prioriteit wordt bepaald door het instellen van een getal van 0-9, waarbij 0 de hoogste prioriteit heeft. Met de para meter time to Live kunt u declareren hoe lang berichten in die route moeten worden bewaard totdat ze worden verwerkt of verwijderd uit de wachtrij.
+
+Zie voor meer informatie over het maken van routes [routes declareren](module-composition.md#declare-routes).
 
 Selecteer **volgende: metrische gegevens**.
 
@@ -183,7 +156,7 @@ Wanneer u een implementatie wijzigt, worden de wijzigingen onmiddellijk gereplic
 
 1. Selecteer **IOT Edge** in het linkerdeel venster van uw IOT-hub.
 1. Selecteer het tabblad **IOT Edge implementaties** en selecteer vervolgens de implementatie die u wilt configureren.
-1. Selecteer het tabblad **doel voorwaarde** . Wijzig de **doel voorwaarde zodat deze voldoet** aan de beoogde apparaten. U kunt de **prioriteit**ook aanpassen.  Selecteer **Opslaan**.
+1. Selecteer het tabblad **doel voorwaarde** . Wijzig de **doel voorwaarde** zodat deze op de gewenste apparaten is gericht. U kunt de **prioriteit**ook aanpassen.  Selecteer **Opslaan**.
 
     Als u de doel voorwaarde bijwerkt, worden de volgende updates uitgevoerd:
 

@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 12/27/2019
 ms.openlocfilehash: 1094235f5bc5cc25cf6d8f3762dc242503952de6
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86083794"
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-apache-spark-cluster-on-hdinsight"></a>Website logboeken analyseren met behulp van een aangepaste python-bibliotheek met Apache Spark cluster op HDInsight
@@ -29,7 +29,7 @@ In deze sectie gebruiken we het [Jupyter](https://jupyter.org) -notebook dat is 
 
 Zodra de gegevens zijn opgeslagen als een Apache Hive tabel, wordt in de volgende sectie verbinding gemaakt met de Hive-tabel met behulp van BI-hulpprogram ma's zoals Power BI en tableau.
 
-1. Ga in een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net/jupyter` , waarbij `CLUSTERNAME` de naam van het cluster is.
+1. Navigeer in een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net/jupyter`, waarbij `CLUSTERNAME` de naam van uw cluster is.
 
 1. Maak een nieuwe notebook. Selecteer **Nieuw**en vervolgens **PySpark**.
 
@@ -78,7 +78,7 @@ Zodra de gegevens zijn opgeslagen als een Apache Hive tabel, wordt in de volgend
     sc.addPyFile('wasbs:///HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py')
     ```
 
-1. `iislogparser`biedt een functie `parse_log_line` die retourneert `None` of een logboek regel een koprij is en een exemplaar van de `LogLine` klasse retourneert als er een logboek regel wordt aangetroffen. Gebruik de- `LogLine` klasse om alleen de logboek regels uit de RDD te extra heren:
+1. `iislogparser` biedt een functie `parse_log_line` die retourneert `None` of een logboek regel een koprij is en een exemplaar van de `LogLine` klasse retourneert als er een logboek regel wordt aangetroffen. Gebruik de- `LogLine` klasse om alleen de logboek regels uit de RDD te extra heren:
 
     ```pyspark
     def parse_line(l):

@@ -14,17 +14,17 @@ ms.author: jmprieur
 ms.reviewer: kkrishna
 ms.custom: aaddev
 ms.openlocfilehash: 5742ddf9553c3ac9187dbef93fc7927564cbc095
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88116968"
 ---
 # <a name="handle-samesite-cookie-changes-in-chrome-browser"></a>SameSite-cookiewijzigingen in Chrome-browser verwerken
 
 ## <a name="what-is-samesite"></a>Wat is SameSite?
 
-`SameSite`is een eigenschap die kan worden ingesteld in HTTP-cookies om CSRF-aanvallen (cross-site request vervalsing) in webtoepassingen te voor komen:
+`SameSite` is een eigenschap die kan worden ingesteld in HTTP-cookies om CSRF-aanvallen (cross-site request vervalsing) in webtoepassingen te voor komen:
 
 - Wanneer `SameSite` is ingesteld op **slordig**, wordt de cookie verzonden in aanvragen binnen dezelfde site en in Get-aanvragen van andere sites. Het wordt niet verzonden in GET-aanvragen die meerdere domeinen zijn.
 - Een waarde van **strikt** zorgt ervoor dat de cookie alleen binnen dezelfde site in aanvragen wordt verzonden.
@@ -88,4 +88,4 @@ Meer informatie over SameSite en het scenario voor de web-app:
 > [Pagina chroom SameSite](https://www.chromium.org/updates/same-site)
 
 > [!div class="nextstepaction"]
-> [Scenario: Web-app die gebruikers aantekent](scenario-web-app-sign-user-overview.md)
+> [Scenario: Web-app waarmee gebruikers worden aangemeld](scenario-web-app-sign-user-overview.md)

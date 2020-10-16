@@ -1,153 +1,175 @@
 ---
 title: C#-zelfstudie voor het maken van uw eerste app
 titleSuffix: Azure Cognitive Search
-description: Meer informatie over het stapsgewijs maken van uw eerste C#-zoek-app. De zelfstudie biedt zowel een koppeling naar een werkende app op GitHub als het volledige proces om de app helemaal zelf te bouwen. Meer informatie over de essentiële onderdelen van Azure Cognitive Search.
+description: Meer informatie over het stapsgewijs maken van uw eerste C#-zoek-app. De zelfstudie biedt zowel een downloadkoppeling naar een werkende app op GitHub als het volledige proces om de app helemaal zelf te bouwen.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 09/25/2020
+ms.date: 09/30/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 49dc551039e0fd82ddb4374713c59fca2f493b62
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: ec98762ac5918437e8fdb8426b54b79b1fb5b222
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91397943"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939718"
 ---
 # <a name="tutorial-create-your-first-search-app-using-the-net-sdk"></a>Zelfstudie: Uw eerste zoek-app maken met behulp van de .NET SDK
 
-Meer informatie over het maken van een webinterface voor het opvragen en presenteren van zoekresultaten uit een index met Azure Cognitive Search. Deze zelfstudie begint met een bestaande, gehoste index, zodat u zich kunt richten op het bouwen van een zoekpagina. De index bevat fictieve hotelgegevens. Zodra u een basispagina hebt, kunt u deze in de volgende lessen uitbreiden met paginering, facetten en automatisch aanvullen.
+In deze zelfstudie leert u hoe u een web-app maakt waarmee de resultaten van een zoekindex worden opgevraagd en geretourneerd met behulp van Azure Cognitive Search en Visual Studio.
 
 In deze zelfstudie leert u het volgende:
+
 > [!div class="checklist"]
 > * Een ontwikkelomgeving instellen
 > * Gegevensstructuren modelleren
-> * Een webpagina maken
-> * Methoden definiëren
+> * Een webpagina maken voor het verzamelen van query-invoer en het weergeven van resultaten
+> * Een zoekmethode definiëren
 > * De app testen
 
 U leert ook hoe eenvoudig een zoekaanroep is. De belangrijkste instructies in de code die u ontwikkelt, zijn in de volgende paar regels ingekapseld.
 
-```cs
-var parameters = new SearchParameters
+```csharp
+var options = new SearchOptions()
 {
-    // Enter Hotel property names into this list, so only these values will be returned.
-    Select = new[] { "HotelName", "Description" }
+    // The Select option specifies fields for the result set
+    options.Select.Add("HotelName");
+    options.Select.Add("Description");
 };
 
-DocumentSearchResult<Hotel> results  = await _indexClient.Documents.SearchAsync<Hotel>("search text", parameters);
+var searchResult = await _searchClient.SearchAsync<Hotel>(model.searchText, options).ConfigureAwait(false);
+model.resultList = searchResult.Value.GetResults().ToList();
 ```
 
-Met deze aanroep initieert u een zoekopdracht naar Azure-gegevens en worden de resultaten opgehaald.
+Met slechts één aanroep wordt een query uitgevoerd op de index en worden resultaten geretourneerd.
 
-:::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-pool.png" alt-text="Zoeken naar '*pool*'" border="false":::
+:::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-pool.png" alt-text="Zoeken naar '*pool*'" border="true":::
 
+## <a name="overview"></a>Overzicht
+
+In deze zelfstudie wordt een bestaande, gehoste voorbeeldindex gebruikt, zodat u zich kunt richten op het bouwen van een zoekpagina waarmee een queryreeks voor de aanvraag wordt verzameld en resultaten worden geretourneerd. De index bevat fictieve hotelgegevens. Zodra u een basispagina hebt, kunt u deze in de volgende lessen uitbreiden met paginering, facetten en automatisch aanvullen.
+
+Een voltooide versie van de code in deze zelfstudie vindt u in het volgende project:
+
+* [1-basic-search-page (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/1-basic-search-page)
+
+Deze zelfstudie is bijgewerkt voor het gebruik van het pakket Azure.Search.Documents (versie 11). Zie het [codevoorbeeld Microsoft.Azure.Search (versie 10)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10) voor een eerdere versie van de .NET SDK.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
+Omdat u een openbaar zoekindexvoorbeeld gebruikt dat wordt gehost door Microsoft, hebt u geen zoekservice of een Azure-account nodig voor deze zelfstudie.
 
-[Visual Studio installeren](https://visualstudio.microsoft.com/) om te gebruiken als IDE.
+* [Visual Studio](https://visualstudio.microsoft.com/)
+
+* [Azure Cognitive Search-clientbibliotheek (versie 11)](https://www.nuget.org/packages/Azure.Search.Documents/)
 
 ### <a name="install-and-run-the-project-from-github"></a>Het project installeren en uitvoeren vanuit GitHub
 
-1. Zoek het voorbeeld op GitHub: [Eerste app maken](https://github.com/Azure-Samples/azure-search-dotnet-samples).
-1. Selecteer **Clone or download** en maak uw persoonlijke lokale kopie van het project.
-1. Navigeer met Visual Studio naar en open de oplossing voor de eenvoudige zoekpagina en selecteer **Starten zonder foutopsporing** (of druk op F5).
-1. Typ enkele woorden (bijvoorbeeld 'wifi', 'view', 'bar', 'parking') en bekijk de resultaten.
+Als u verder wilt gaan naar een werkende app, volgt u de onderstaande stappen om de voltooide code te downloaden en uit te voeren.
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-wifi.png" alt-text="Zoeken naar '*pool*'" border="false":::
+1. Zoek het voorbeeld op GitHub: [Eerste app maken](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11).
 
-Hopelijk wordt dit project soepel uitgevoerd en wordt er een Azure-app uitgevoerd. Veel van de essentiële onderdelen voor complexere zoekopdrachten zijn opgenomen in deze ene app. Daarom is het een goed idee om deze te doorlopen en stap voor stap opnieuw te maken.
+1. Selecteer in de [hoofdmap](https://github.com/Azure-Samples/azure-search-dotnet-samples) de optie **Code**, gevolgd door **Klonen** of **ZIP-bestand downloaden** om uw persoonlijke lokale kopie van het project te maken.
 
-Als u dit project helemaal zelf wilt maken, en daarmee de onderdelen van Azure Cognitive Search die u in gedachten hebt, doorloopt u de volgende stappen.
+1. Navigeer met Visual Studio naar en open de oplossing voor de eenvoudige zoekpagina ('1-basic-search-page') en selecteer **Starten zonder foutopsporing** (of druk op F5) om het programma te bouwen en uit te voeren.
+
+1. Dit is een hotelindex. Typ dus enkele woorden die u kunt gebruiken om te zoeken naar hotels (bijvoorbeeld 'wifi', 'view', 'bar', 'parking') en bekijk de resultaten.
+
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-wifi.png" alt-text="Zoeken naar '*pool*'" border="true":::
+
+Hopelijk wordt dit project soepel uitgevoerd en wordt er een web-app uitgevoerd. Veel van de essentiële onderdelen voor complexere zoekopdrachten zijn opgenomen in deze ene app. Daarom is het een goed idee om deze te doorlopen en stap voor stap opnieuw te maken. In de volgende secties komen deze stappen aan de orde.
 
 ## <a name="set-up-a-development-environment"></a>Een ontwikkelomgeving instellen
 
-1. Selecteer in Visual Studio 2017 of hoger **Nieuw/Project** en **ASP.NET Core-webtoepassing**. Geef het project een naam zoals 'FirstAzureSearchApp'.
+Als u dit project helemaal zelf wilt maken, en daarmee de concepten van Azure Cognitive Search die u in gedachten hebt, begint u met een Visual Studio-project.
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-project1.png" alt-text="Zoeken naar '*pool*'" border="false":::
+1. Selecteer in Visual Studio **Nieuw** > **Project** en vervolgens **ASP.NET Core-webtoepassing**.
 
-2. Nadat u op **OK** hebt geklikt voor dit projecttype, krijgt u een tweede set opties die van toepassing zijn op dit project. Selecteer **Web Application (Model-View-Controller)** .
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-project1.png" alt-text="Zoeken naar '*pool*'" border="true":::
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-project2.png" alt-text="Zoeken naar '*pool*'":::
+1. Geef het project een naam zoals 'FirstSearchApp' en stel de locatie in. Selecteer **Maken**.
 
-3. Selecteer nu in het menu **Extra** de optie **NuGet Package Manager** en vervolgens **NuGet-pakketten voor oplossing beheren**. Er is één pakket dat moet worden geïnstalleerd. Selecteer het tabblad **Bladeren** en typ vervolgens 'Azure Cognitive Search' in het zoekvak. Installeer **Microsoft.Azure.Search** wanneer dit wordt weergegeven in de lijst (versie 9.0.1 of hoger). U moet door een paar extra dialoogvensters klikken om de installatie te voltooien.
+1. Gebruik de projectsjabloon **Web Application (Model-View-Controller)** .
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png" alt-text="Zoeken naar '*pool*'" border="false":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-project2.png" alt-text="Zoeken naar '*pool*'" border="true":::
+
+1. Installeer de clientbibliotheek. Selecteer in **Hulpprogramma's** > **NuGet Package Manager** > , **NuGet-pakketten voor oplossing beheren...** de optie **Bladeren** en zoek vervolgens naar 'azure.search.documents'. Installeer **Azure.Search.Documents** (versie 11 of hoger) en accepteer de licentieovereenkomsten en afhankelijkheden.
+
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png" alt-text="Zoeken naar '*pool*'" border="true":::
 
 ### <a name="initialize-azure-cognitive-search"></a>Azure Cognitive Search initialiseren
 
-Voor dit voorbeeld gebruiken we openbaar beschikbare hotelgegevens. Deze gegevens zijn een willekeurige verzameling van 50 fictieve hotelnamen en beschrijvingen die alleen zijn gemaakt voor het leveren van demogegevens. Voor toegang tot deze gegevens moet u er een naam en een sleutel voor opgeven.
+Voor dit voorbeeld gebruikt u openbaar beschikbare hotelgegevens. Deze gegevens zijn een willekeurige verzameling van 50 fictieve hotelnamen en beschrijvingen die alleen zijn gemaakt voor het leveren van demogegevens. Geef een naam en API-sleutel op om toegang te krijgen tot deze gegevens.
 
-1. Open het bestand appsettings.json in het nieuwe project en vervang de standaardregels door de volgende naam en sleutel. De API-sleutel die hier wordt weergegeven, is geen voorbeeld van een sleutel. Dit is _exact_ de sleutel die u nodig hebt voor toegang tot de hotelgegevens. Het bestand appsettings.json moet er nu als volgt uitzien.
+1. Open **appsettings.json** en vervang de standaardregels door de volgende naam en sleutel. De API-sleutel die hier wordt weergegeven, is geen voorbeeld van een sleutel. Dit is *exact* de sleutel die u nodig hebt voor toegang tot de hotelgegevens. Uw bestand moet er nu als volgt uitzien.
 
-    ```cs
+    ```csharp
     {
         "SearchServiceName": "azs-playground",
         "SearchServiceQueryApiKey": "EA4510A6219E14888741FCFC19BFBB82"
     }
     ```
 
-2. We zijn nog niet klaar met dit bestand. Selecteer de eigenschappen voor dit bestand en wijzig de instelling **Naar uitvoermap kopiëren** in **Kopiëren indien nieuwer**.
+1. In Solution Explorer selecteert u het bestand en wijzigt u in Eigenschappen de instelling **Naar uitvoermap kopiëren** in **Kopiëren indien nieuwer**.
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-copy-if-newer.png" alt-text="Zoeken naar '*pool*'" border="false":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-copy-if-newer.png" alt-text="Zoeken naar '*pool*'" border="true":::
 
 ## <a name="model-data-structures"></a>Gegevensstructuren modelleren
 
-Modellen (C#-klassen) worden gebruikt om gegevens te communiceren tussen de client (de weergave), de server (de controller) en ook de Azure-cloud met behulp van de MVC-architectuur (model, view, controller). Normaal gesproken wordt in deze modellen de structuur weergegeven van de gegevens die worden geopend. We hebben ook een model nodig om de communicatie van de weergave/controller te kunnen afhandelen.
+Modellen (C#-klassen) worden gebruikt om gegevens te communiceren tussen de client (de weergave), de server (de controller) en ook de Azure-cloud met behulp van de MVC-architectuur (model, view, controller). Normaal gesproken wordt in deze modellen de structuur weergegeven van de gegevens die worden geopend.
 
-1. Open de map **Models** van uw project met behulp van Solution Explorer. U ziet hier een standaardmodel: **ErrorViewModel.cs**.
+In deze stap modelleert u de gegevensstructuren van de zoekindex, evenals de zoekreeks die wordt gebruikt in de communicatie van de weergave/controller. In de hotelindex heeft elk hotel veel kamers en elk hotel heeft een adres dat uit meerdere delen bestaat. De volledige weergave van een hotel is een hiërarchische en geneste gegevensstructuur. U hebt drie klassen nodig om elk onderdeel te maken.
 
-2. Klik met de rechtermuisknop op de map **Modellen** en selecteer **Toevoegen** en vervolgens **Nieuw item**. Selecteer vervolgens in het dialoogvenster dat wordt weergegeven **ASP.NET Core** en vervolgens de eerste optie **Klasse**. Wijzig de naam van het .cs-bestand in Hotel.cs en klik op **Toevoegen**. Vervang alle inhoud van Hotel.cs door de volgende code. Let op de leden **Address** en **Room** van de klasse. Deze velden zijn zelf klassen, dus hier hebben we ook modellen voor nodig.
+De set klassen **Hotel**, **Address** en **Room** zijn wat bekend staat als [*complexe typen*](search-howto-complex-data-types.md), een belangrijke functie van Azure Cognitive Search. Complexe typen kunnen bestaan uit een groot aantal klassen en subklassen, en veel complexere gegevensstructuren weergeven dan *eenvoudige typen* (een klasse met alleen primitieve leden).
 
-    ```cs
-    using System;
-    using Microsoft.Azure.Search;
-    using Microsoft.Azure.Search.Models;
+1. Klik in Solution Explorer met de rechtermuisknop op **Modellen** > **Toevoegen** > **Nieuw item**.
+
+1. Selecteer**Klasse** en geef het item de naam Hotel.cs. Vervang alle inhoud van Hotel.cs door de volgende code. Let op de leden **Address** en **Room** van de klasse. Deze velden zijn zelf klassen, dus hier hebt u ook modellen voor nodig.
+
+    ```csharp
+    using Azure.Search.Documents.Indexes;
+    using Azure.Search.Documents.Indexes.Models;
     using Microsoft.Spatial;
-    using Newtonsoft.Json;
+    using System;
+    using System.Text.Json.Serialization;
 
     namespace FirstAzureSearchApp.Models
     {
         public partial class Hotel
         {
-            [System.ComponentModel.DataAnnotations.Key]
-            [IsFilterable]
+            [SimpleField(IsFilterable = true, IsKey = true)]
             public string HotelId { get; set; }
 
-            [IsSearchable, IsSortable]
+            [SearchableField(IsSortable = true)]
             public string HotelName { get; set; }
 
-            [IsSearchable]
-            [Analyzer(AnalyzerName.AsString.EnLucene)]
+            [SearchableField(AnalyzerName = LexicalAnalyzerName.Values.EnLucene)]
             public string Description { get; set; }
 
-            [IsSearchable]
-            [Analyzer(AnalyzerName.AsString.FrLucene)]
-            [JsonProperty("Description_fr")]
+            [SearchableField(AnalyzerName = LexicalAnalyzerName.Values.FrLucene)]
+            [JsonPropertyName("Description_fr")]
             public string DescriptionFr { get; set; }
 
-            [IsSearchable, IsFilterable, IsSortable, IsFacetable]
+            [SearchableField(IsFilterable = true, IsSortable = true, IsFacetable = true)]
             public string Category { get; set; }
 
-            [IsSearchable, IsFilterable, IsFacetable]
+            [SearchableField(IsFilterable = true, IsFacetable = true)]
             public string[] Tags { get; set; }
 
-            [IsFilterable, IsSortable, IsFacetable]
+            [SimpleField(IsFilterable = true, IsSortable = true, IsFacetable = true)]
             public bool? ParkingIncluded { get; set; }
 
-            [IsFilterable, IsSortable, IsFacetable]
+            [SimpleField(IsFilterable = true, IsSortable = true, IsFacetable = true)]
             public DateTimeOffset? LastRenovationDate { get; set; }
 
-            [IsFilterable, IsSortable, IsFacetable]
+            [SimpleField(IsFilterable = true, IsSortable = true, IsFacetable = true)]
             public double? Rating { get; set; }
 
             public Address Address { get; set; }
 
-            [IsFilterable, IsSortable]
+            [SimpleField(IsFilterable = true, IsSortable = true)]
             public GeographyPoint Location { get; set; }
 
             public Room[] Rooms { get; set; }
@@ -155,80 +177,76 @@ Modellen (C#-klassen) worden gebruikt om gegevens te communiceren tussen de clie
     }
     ```
 
-3. Volg hetzelfde proces voor het maken van een model voor de klasse **Address**, maar geef het bestand de naam Address.cs. Vervang de inhoud door het volgende.
+1. Herhaal hetzelfde proces voor het maken van een model voor de klasse **Address**, en geef het bestand de naam Address.cs. Vervang de inhoud door het volgende.
 
-    ```cs
-    using Microsoft.Azure.Search;
+    ```csharp
+    using Azure.Search.Documents.Indexes;
 
     namespace FirstAzureSearchApp.Models
     {
         public partial class Address
         {
-            [IsSearchable]
+            [SearchableField]
             public string StreetAddress { get; set; }
 
-            [IsSearchable, IsFilterable, IsSortable, IsFacetable]
+            [SearchableField(IsFilterable = true, IsSortable = true, IsFacetable = true)]
             public string City { get; set; }
 
-            [IsSearchable, IsFilterable, IsSortable, IsFacetable]
+            [SearchableField(IsFilterable = true, IsSortable = true, IsFacetable = true)]
             public string StateProvince { get; set; }
 
-            [IsSearchable, IsFilterable, IsSortable, IsFacetable]
+            [SearchableField(IsFilterable = true, IsSortable = true, IsFacetable = true)]
             public string PostalCode { get; set; }
 
-            [IsSearchable, IsFilterable, IsSortable, IsFacetable]
+            [SearchableField(IsFilterable = true, IsSortable = true, IsFacetable = true)]
             public string Country { get; set; }
         }
     }
     ```
 
-4. Volg opnieuw hetzelfde proces om de klasse **Room** te maken, en geef het bestand de naam Room.cs. Vervang de inhoud opnieuw door het volgende.
+1. Volg opnieuw hetzelfde proces om de klasse **Room** te maken, en geef het bestand de naam Room.cs.
 
-    ```cs
-    using Microsoft.Azure.Search;
-    using Microsoft.Azure.Search.Models;
-    using Newtonsoft.Json;
+    ```csharp
+    using Azure.Search.Documents.Indexes;
+    using Azure.Search.Documents.Indexes.Models;
+    using System.Text.Json.Serialization;
 
     namespace FirstAzureSearchApp.Models
     {
         public partial class Room
         {
-            [IsSearchable]
-            [Analyzer(AnalyzerName.AsString.EnMicrosoft)]
-
+            [SearchableField(AnalyzerName = LexicalAnalyzerName.Values.EnMicrosoft)]
             public string Description { get; set; }
 
-            [IsSearchable]
-            [Analyzer(AnalyzerName.AsString.FrMicrosoft)]
-            [JsonProperty("Description_fr")]
+            [SearchableField(AnalyzerName = LexicalAnalyzerName.Values.FrMicrosoft)]
+            [JsonPropertyName("Description_fr")]
             public string DescriptionFr { get; set; }
 
-            [IsSearchable, IsFilterable, IsFacetable]
+            [SearchableField(IsFilterable = true, IsFacetable = true)]
             public string Type { get; set; }
 
-            [IsFilterable, IsFacetable]
+            [SimpleField(IsFilterable = true, IsFacetable = true)]
             public double? BaseRate { get; set; }
 
-            [IsSearchable, IsFilterable, IsFacetable]
+            [SearchableField(IsFilterable = true, IsFacetable = true)]
             public string BedOptions { get; set; }
 
-            [IsFilterable, IsFacetable]
-
+            [SimpleField(IsFilterable = true, IsFacetable = true)]
             public int SleepsCount { get; set; }
 
-            [IsFilterable, IsFacetable]
+            [SimpleField(IsFilterable = true, IsFacetable = true)]
             public bool? SmokingAllowed { get; set; }
 
-            [IsSearchable, IsFilterable, IsFacetable]
+            [SearchableField(IsFilterable = true, IsFacetable = true)]
             public string[] Tags { get; set; }
         }
     }
     ```
 
-5. De set klassen **Hotel**, **Address** en **Room** zijn wat bekend staat in Azure als [_complexe typen_](search-howto-complex-data-types.md), een belangrijke functie van Azure Cognitive Search. Complexe typen kunnen bestaan uit een groot aantal klassen en subklassen, en veel complexere gegevensstructuren weergeven dan _eenvoudige typen_ (een klasse met alleen primitieve leden). We hebben nog één model nodig, dus doorlopen we het proces van het maken van een nieuwe modelklasse opnieuw, maar deze keer wordt de klasse SearchData.cs aangeroepen en de standaardcode vervangen door het volgende.
+1. Het laatste model dat u in deze zelfstudie maakt, is een klasse met de naam **SearchData** en vertegenwoordigt de invoer van de gebruiker (**searchText**) en de uitvoer van de zoekopdracht (**resultList**). Het type uitvoer is kritiek, **SearchResults&lt;Hotel&gt;** , omdat dit type precies overeenkomt met de resultaten van de zoekopdracht, en u deze verwijzing moet doorgeven aan de weergave. Vervang de standaardsjabloon door de volgende code.
 
-    ```cs
-    using Microsoft.Azure.Search.Models;
+    ```csharp
+    using Azure.Search.Documents.Models;
 
     namespace FirstAzureSearchApp.Models
     {
@@ -238,48 +256,46 @@ Modellen (C#-klassen) worden gebruikt om gegevens te communiceren tussen de clie
             public string searchText { get; set; }
 
             // The list of results.
-            public DocumentSearchResult<Hotel> resultList;
+            public SearchResults<Hotel> resultList;
         }
     }
     ```
 
-    Deze klasse bevat de gebruikersinvoer (**searchText**) en de uitvoer van de zoekopdracht (**resultList**). Het type uitvoer is kritiek, **DocumentSearchResult&lt;Hotel&gt;** , omdat dit type precies overeenkomt met de resultaten van de zoekopdracht, en we deze verwijzing moeten door geven aan de weergave.
-
-
-
 ## <a name="create-a-web-page"></a>Een webpagina maken
 
-Het project dat u hebt gemaakt, maakt standaard een aantal clientweergaven. De exacte weergaven zijn afhankelijk van de versie van Core .NET die u gebruikt (in dit voorbeeld gebruiken we 2.1). Ze bevinden zich allemaal in de map **Views** van het project. U hoeft alleen het bestand Index.cshtml te wijzigen (in de map **Views/Home**).
+Projectsjablonen worden geleverd met een aantal clientweergaven die zich in de map **Weergaven** bevinden. De exacte weergaven zijn afhankelijk van de versie van Core .NET die u gebruikt (in dit voorbeeld wordt 3.1 gebruikt). Voor deze zelfstudie wijzigt u **Index.cshtml** om de elementen van een zoekpagina op te nemen.
 
 Verwijder de inhoud van Index.cshtml in zijn geheel en bouw het bestand opnieuw op in de volgende stappen.
 
-1. We gebruiken twee kleine afbeeldingen in de weergave. U kunt uw eigen afbeelding gebruiken of de afbeeldingen vanuit het project GitHub-project kopiëren: azure-logo.png en search.png. Deze twee afbeeldingen moeten worden geplaatst in de map **wwwroot/images**.
+1. In de zelfstudie worden twee kleine afbeeldingen in de weergave gebruikt: een Azure-logo en een vergrootglaspictogram voor zoeken (azure-logo.png en search.png). Kopieer de installatiekopieën van het GitHub-project naar de map **wwwroot/images** in uw project.
 
-2. De eerste regel van index. cshtml moet verwijzen naar het model dat we gebruiken om gegevens te communiceren tussen de client (de weergave) en de server (de controller). Dit is het **SearchData-** model dat we hebben gemaakt. Voeg deze regel toe aan het bestand Index.cshtml file.
+1. De eerste regel van Index.cshtml moet verwijzen naar het model dat wordt gebruikt om gegevens te communiceren tussen de client (de weergave) en de server (de controller). Dit is het **SearchData**-model dat eerder is gemaakt. Voeg deze regel toe aan het bestand Index.cshtml file.
 
-    ```cs
+    ```csharp
     @model FirstAzureSearchApp.Models.SearchData
     ```
 
-3. Het is gebruikelijk om een titel voor de weergave in te voeren. De volgende regels moeten dus als volgt zijn:
+1. Het is gebruikelijk om een titel voor de weergave in te voeren. De volgende regels moeten dus als volgt zijn:
 
-    ```cs
+    ```csharp
     @{
         ViewData["Title"] = "Home Page";
     }
     ```
 
-4. Na de titel voert u een verwijzing in naar een HTML-opmaakmodel, dat we binnenkort gaan maken.
+1. Na de titel voert u een verwijzing in naar een HTML-opmaakmodel, dat u binnenkort gaat maken.
 
-    ```cs
+    ```csharp
     <head>
         <link rel="stylesheet" href="~/css/hotels.css" />
     </head>
     ```
 
-5. Nu naar de essentie van de weergave. Iets belangrijks waarmee u rekening moet houden, is dat de weergave twee situaties moet afhandelen. Ten eerste moet de weergave worden afgehandeld wanneer de app voor het eerst wordt gestart en er nog geen zoektekst is door de gebruiker. Ten tweede moet de weergave van resultaten, naast het zoekvak, worden afgehandeld voor herhaald gebruik door de gebruiker. Voor het afhandelen van deze twee situaties moeten we controleren of het model dat aan de weergave is verstrekt wel of niet null is. Een model van null geeft aan dat we ons in de eerste van de twee situaties bevinden (de eerste keer dat de app wordt uitgevoerd). Voeg het volgende toe aan het bestand Index.cshtml en lees de opmerkingen.
+1. In de hoofdtekst van de weergave worden twee gebruiksvoorbeelden verwerkt. Ten eerste moet er een lege pagina zijn bij het eerste gebruik, voordat de zoektekst wordt ingevoerd. Ten tweede moeten resultaten, naast het zoekvak, worden afgehandeld voor herhaalde query's.
 
-    ```cs
+   Voor het afhandelen van beide gevallen moeten we controleren of het model dat aan de weergave is verstrekt null is. Een null-model duidt op het eerste gebruiksvoorbeeld (de eerste keer dat de app wordt uitgevoerd). Voeg het volgende toe aan het bestand Index.cshtml en lees de opmerkingen.
+
+    ```csharp
     <body>
     <h1 class="sampleTitle">
         <img src="~/images/azure-logo.png" width="80" />
@@ -297,21 +313,23 @@ Verwijder de inhoud van Index.cshtml in zijn geheel en bouw het bestand opnieuw 
         {
             // Show the result count.
             <p class="sampleText">
-                @Html.DisplayFor(m => m.resultList.Results.Count) Results
+                @Model.resultList.Count Results
             </p>
 
-            @for (var i = 0; i < Model.resultList.Results.Count; i++)
+            @for (var i = 0; i < Model.resultList.Count; i++)
             {
                 // Display the hotel name and description.
-                @Html.TextAreaFor(m => Model.resultList.Results[i].Document.HotelName, new { @class = "box1" })
-                @Html.TextArea($"desc{i}", Model.resultList.Results[i].Document.Description, new { @class = "box2" })
+                @Html.TextAreaFor(m => m.resultList[i].Document.HotelName, new { @class = "box1" })
+                @Html.TextArea($"desc{i}", Model.resultList[i].Document.Description, new { @class = "box2" })
             }
         }
     }
     </body>
     ```
 
-6. Ten slotte voegen we het opmaakmodel toe. Selecteer in Visual Studio in het menu **Bestand** de optie **Nieuw/Bestand** en vervolgens **Opmaakmodel** (met **Algemeen** gemarkeerd). Vervang de code door het volgende. We gaan niet meer uitgebreid in op dit bestand. De stijlen zijn standaard-HTML.
+1. Voeg het opmaakmodel toe. Selecteer in Visual Studio in **Bestand**> **Nieuw** > **Bestand** de optie **Opmaakmodel** (met **Algemeen** gemarkeerd).
+
+   Vervang de code door het volgende. We gaan niet meer uitgebreid in op dit bestand. De stijlen zijn standaard-HTML.
 
     ```html
     textarea.box1 {
@@ -388,34 +406,38 @@ Verwijder de inhoud van Index.cshtml in zijn geheel en bouw het bestand opnieuw 
     }
     ```
 
-7. Sla het opmaakmodelbestand op als hotels.css, in de map wwwroot/css, naast het standaardbestand site.css.
+1. Sla het opmaakmodelbestand op als hotels.css, in de map **wwwroot/css**, naast het standaardbestand site.css.
 
-Hiermee is de weergave voltooid. We maken goede voortgang. De modellen en weergaven zijn voltooid. Nu is er alleen nog de controller die alles moet koppelen.
+Hiermee is de weergave voltooid. Op dit moment zijn beide modellen en weergaven voltooid. Nu is er alleen nog de controller die alles moet koppelen.
 
 ## <a name="define-methods"></a>Methoden definiëren
 
-We moeten wijzigingen aanbrengen in de inhoud van de ene controller (**Home Controller**) die standaard wordt gemaakt.
+In deze stap wijzigt u de inhoud van de **begincontroller**.
 
 1. Open het HomeController.cs-bestand en vervang de **using**-instructies door het volgende.
 
-    ```cs
+    ```csharp
+    using Azure;
+    using Azure.Search.Documents;
+    using Azure.Search.Documents.Indexes;
+    using FirstAzureSearchApp.Models;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Configuration;
     using System;
     using System.Diagnostics;
+    using System.Linq;
     using System.Threading.Tasks;
-    using Microsoft.AspNetCore.Mvc;
-    using FirstAzureSearchApp.Models;
-    using Microsoft.Extensions.Configuration;
-    using Microsoft.Azure.Search;
-    using Microsoft.Azure.Search.Models;
     ```
 
 ### <a name="add-index-methods"></a>Index-methoden toevoegen
 
-We hebben twee **Index**-methoden nodig, één waarbij geen parameters worden opgegeven (voor het geval dat de app voor het eerst wordt geopend) en één waarbij een model als parameter wordt genomen (voor het geval dat de gebruiker zoektekst heeft ingevoerd). De eerste van deze methoden wordt standaard gemaakt. 
+In een MVC-app is de methode **Index()** een standaardactiemethode voor een controller. Hiermee wordt de index-HTML-pagina geopend. De standaardmethode, die geen parameters accepteert, wordt in deze zelfstudie gebruikt voor de eerste gebruikstoepassing van de toepassing: een lege zoekpagina weergeven.
+
+In deze sectie wordt de methode uitgebreid voor het ondersteunen van een tweede gebruikstoepassing: de pagina weergeven wanneer een gebruiker de zoektekst heeft ingevoerd. Ter ondersteuning van deze gebruikstoepassing wordt de indexmethode uitgebreid om een model als parameter te accepteren.
 
 1. Voeg de volgende methode toe na de standaard **Index()** -methode.
 
-    ```cs
+    ```csharp
         [HttpPost]
         public async Task<ActionResult> Index(SearchData model)
         {
@@ -439,15 +461,15 @@ We hebben twee **Index**-methoden nodig, één waarbij geen parameters worden op
         }
     ```
 
-    Let op de **async**-declaratie van de methode en de **await**-aanroep naar **RunQueryAsync**. Deze trefwoorden zorgen dat onze aanroepen asynchroon worden en voorkomen zo dat threads op de server worden geblokkeerd.
+    Let op de **async**-declaratie van de methode en de **await**-aanroep naar **RunQueryAsync**. Deze trefwoorden zorgen ervoor dat aanroepen asynchroon worden en voorkomen daarmee dat threads op de server worden geblokkeerd.
 
-    Het **catch**-blok maakt gebruik van het foutmodel dat standaard voor ons is gemaakt.
+    Het **catch**-blok maakt gebruik van het foutmodel dat standaard is gemaakt.
 
 ### <a name="note-the-error-handling-and-other-default-views-and-methods"></a>De foutafhandeling en andere standaardweergaven en -methoden bekijken
 
-Afhankelijk van welke versie van .NET core u gebruikt, wordt standaard een iets andere set standaardweergaven gemaakt. Voor .NET Core 2.1 zijn de standaard weergaven Index, About, Contact, Privacy en Error. Voor .NET Core 2.2 zijn de standaardweergaven bijvoorbeeld Index, Privacy en Error. In beide gevallen kunt u deze standaardpagina's weergeven tijdens het uitvoeren van de app en onderzoeken hoe deze worden verwerkt in de controller.
+Afhankelijk van welke versie van .NET core u gebruikt, wordt standaard een iets andere set standaardweergaven gemaakt. Voor .NET Core 3.1 zijn de standaardweergaven Index, Privacy en Error. U kunt deze standaardpagina's weergeven tijdens het uitvoeren van de app en onderzoeken hoe deze worden verwerkt in de controller.
 
-De weergave Error wordt verderop in deze zelfstudie getest.
+U gaat de weergave Error verderop in deze zelfstudie testen.
 
 In het GitHub-voorbeeld zijn de niet-gebruikte weergaven en de bijbehorende acties verwijderd.
 
@@ -457,83 +479,82 @@ De aanroep van Azure Cognitive Search is ingekapseld in onze **RunQueryAsync**-m
 
 1. Voeg eerst enkele statische variabelen toe om de Azure-service in te stellen en een aanroep om deze te initiëren.
 
-    ```cs
-        private static SearchServiceClient _serviceClient;
-        private static ISearchIndexClient _indexClient;
+    ```csharp
+        private static SearchClient _searchClient;
+        private static SearchIndexClient _indexClient;
         private static IConfigurationBuilder _builder;
         private static IConfigurationRoot _configuration;
 
         private void InitSearch()
         {
-            // Create a configuration using the appsettings file.
+            // Create a configuration using appsettings.json
             _builder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
             _configuration = _builder.Build();
 
-            // Pull the values from the appsettings.json file.
-            string searchServiceName = _configuration["SearchServiceName"];
+            // Read the values from appsettings.json
+            string searchServiceUri = _configuration["SearchServiceUri"];
             string queryApiKey = _configuration["SearchServiceQueryApiKey"];
 
             // Create a service and index client.
-            _serviceClient = new SearchServiceClient(searchServiceName, new SearchCredentials(queryApiKey));
-            _indexClient = _serviceClient.Indexes.GetClient("hotels");
+            _indexClient = new SearchIndexClient(new Uri(searchServiceUri), new AzureKeyCredential(queryApiKey));
+            _searchClient = _indexClient.GetSearchClient("hotels");
         }
     ```
 
 2. Voeg nu de **RunQueryAsync**-methode zelf toe.
 
-    ```cs
-        private async Task<ActionResult> RunQueryAsync(SearchData model)
-        {
-            InitSearch();
+    ```csharp
+    private async Task<ActionResult> RunQueryAsync(SearchData model)
+    {
+        InitSearch();
 
-            var parameters = new SearchParameters
-            {
-                // Enter Hotel property names into this list so only these values will be returned.
-                // If Select is empty, all values will be returned, which can be inefficient.
-                Select = new[] { "HotelName", "Description" }
-            };
+        var options = new SearchOptions() { };
 
-            // For efficiency, the search call should be asynchronous, so use SearchAsync rather than Search.
-            model.resultList = await _indexClient.Documents.SearchAsync<Hotel>(model.searchText, parameters);
+        // Enter Hotel property names into this list so only these values will be returned.
+        // If Select is empty, all values will be returned, which can be inefficient.
+        options.Select.Add("HotelName");
+        options.Select.Add("Description");
 
-            // Display the results.
-            return View("Index", model);
-        }
+        // For efficiency, the search call should be asynchronous, so use SearchAsync rather than Search.
+        var searchResult = await _searchClient.SearchAsync<Hotel>(model.searchText, options).ConfigureAwait(false);
+        model.resultList = searchResult.Value.GetResults().ToList();
+
+        // Display the results.
+        return View("Index", model);
+    }
     ```
 
-    Met deze methode zorgen we er eerst voor dat de Azure-configuratie wordt gestart en stellen we vervolgens een aantal zoekparameters in. De namen van de velden in de **Select**-parameter die exact overeenkomen met de namen van de eigenschappen in de klasse **hotel**. Het is mogelijk om de **Select**-parameter weg te laten. In dat geval worden alle eigenschappen geretourneerd. Het niet instellen van **Select**-parameters is echter inefficiënt als we alleen geïnteresseerd zijn in een subset van de gegevens. Door de eigenschappen op te geven waarin we geïnteresseerd zijn, worden alleen deze eigenschappen geretourneerd.
+    Met deze methode zorgen we er eerst voor dat de Azure-configuratie wordt gestart en stellen we vervolgens een aantal zoekopties in. Met de optie **Selecteren** geeft u de velden op die in de resultaten moeten worden geretourneerd, en die dus overeenkomen met de namen van de eigenschappen in de klasse **Hotel**. Als u **Selecteren** weglaat, worden alle niet-verborgen velden geretourneerd. Dit kan inefficiënt zijn als u alleen geïnteresseerd bent in een subset van alle mogelijke velden.
 
-    De asynchrone aanroep voor zoeken (**model.resultList = await _indexClient.Documents.SearchAsync&lt;Hotel&gt;(model.searchText, parameters);** ) is waar deze zelfstudie en app over gaan. De **DocumentSearchResult**-klasse is een interessante, en het is een goed idee (wanneer de app wordt uitgevoerd) om hier een onderbrekingspunt in te stellen en een foutopsporingsprogramma te gebruiken om de inhoud van **model. resultList** te controleren. U ziet dat dit intuïtief is, en u de gegevens krijgt die u hebt gevraagd en niet veel meer.
-
-En dan nu het moment van de waarheid.
+    Met de asynchrone aanroep voor zoeken worden de aanvraag (gemodelleerd als **searchText**) en het antwoord (gemodelleerd als **searchResult**) geformuleerd. Als u fouten opspoort voor deze code, is de **SearchResult**-klasse een goede kandidaat voor het instellen van een onderbrekingspunt als u de inhoud van **model.resultList** wilt controleren. U ziet dat dit intuïtief is, en u de gegevens krijgt die u hebt gevraagd en niet veel meer.
 
 ### <a name="test-the-app"></a>De app testen
 
 We gaan nu controleren of de app correct wordt uitgevoerd.
 
-1. Selecteer **Fouten opsporen/Starten zonder foutopsporing** (of druk op de toets F5). Als u alles correct hebt gecodeerd, krijgt u de initiële indexweergave.
+1. Selecteer **Fouten opsporen** > **Starten zonder foutopsporing** of druk op **F5**. Als de app wordt uitgevoerd zoals verwacht, moet u de initiële indexweergave ophalen.
 
-     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-index.png" alt-text="Zoeken naar '*pool*'" border="false":::
+     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-index.png" alt-text="Zoeken naar '*pool*'" border="true":::
 
-2. Voer tekst in, bijvoorbeeld 'beach' (of andere tekst die u te binnen schiet), en klik op het zoekpictogram. U moet enkele resultaten krijgen.
+1. Voer een queryreeks in, bijvoorbeeld 'beach' (of andere tekst die u te binnen schiet), en klik op het zoekpictogram om de aanvraag te verzenden.
 
-     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-beach.png" alt-text="Zoeken naar '*pool*'" border="false":::
+     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-beach.png" alt-text="Zoeken naar '*pool*'" border="true":::
 
-3. Probeer 'five star' in te voeren. U ziet dat u geen resultaten krijgt. Een geavanceerdere zoekopdracht zou 'five star' behandelen als synoniem voor 'luxury' en deze resultaten retourneren. Het gebruik van synoniemen is beschikbaar in Azure Cognitive Search, maar we behandelen dit niet in de eerste zelfstudies.
- 
-4. Voer 'hot' in als zoektekst. Er worden _geen_ vermeldingen met het woord 'hotel' opgehaald. Onze zoekopdracht zoekt alleen naar hele woorden, maar er worden wel enkele resultaten opgehaald.
+1. Probeer 'five star' in te voeren. U ziet dat deze query geen resultaten oplevert. Een geavanceerdere zoekopdracht zou 'five star' behandelen als synoniem voor 'luxury' en deze resultaten retourneren. Ondersteuning voor [synoniemen](search-synonyms.md) is beschikbaar in Azure Cognitive Search, maar wordt niet behandeld in deze reeks zelfstudies.
 
-5. Probeer andere woorden: 'pool','sunshine', 'view', enzovoort. U ziet dat Azure Cognitive Search heel eenvoudig werkt, maar wel overtuigend is.
+1. Voer 'hot' in als zoektekst. Er worden _geen_ vermeldingen met het woord 'hotel' opgehaald. Onze zoekopdracht zoekt alleen naar hele woorden, maar er worden wel enkele resultaten opgehaald.
+
+1. Probeer andere woorden: 'pool','sunshine', 'view', enzovoort. U ziet dat Azure Cognitive Search heel eenvoudig werkt, maar wel overtuigend is.
 
 ## <a name="test-edge-conditions-and-errors"></a>Voorwaarden en fouten aan de rand testen
 
 Het is belangrijk om te controleren of de functies voor foutafhandeling werken zoals zou moeten, zelfs wanneer alles perfect werkt. 
 
-1. Voer in de **Index**-methode, na de aanroep **try {** de regel **Throw new Exception()** in. Deze uitzondering dwingt een fout af wanneer in tekst wordt gezocht.
+1. Voer in de **Index**-methode, na de aanroep **try {** de regel **Throw new Exception()** in. Deze uitzondering dwingt een fout af wanneer u in tekst zoekt.
 
 2. Voer de app uit, voer 'bar' in als zoektekst en klik op het zoekpictogram. De uitzondering moet de foutweergave tot gevolg hebben.
 
-     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-error.png" alt-text="Zoeken naar '*pool*'" border="false":::
+     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-error.png" alt-text="Zoeken naar '*pool*'" border="true":::
 
     > [!Important]
     > Het wordt beschouwd als een beveiligingsrisico om interne foutnummers op foutpagina's te retourneren. Doe als uw app bedoeld is voor algemeen gebruik onderzoek naar veilige en beste procedures voor wat er moet worden geretourneerd als er een fout optreedt.
@@ -546,15 +567,13 @@ Houd rekening met de volgende opgedane kennis van dit project:
 
 * Een Azure Cognitive Search-aanroep is beknopt en het is eenvoudig om de resultaten te interpreteren.
 * Asynchrone aanroepen voegen enige complexiteit toe aan de controller, maar zijn de best practice als u van plan bent om kwaliteits-apps te ontwikkelen.
-* Deze app heeft een eenvoudige zoekopdracht naar tekst uitgevoerd, die is gedefinieerd door wat is ingesteld in **searchParameters**. Deze ene klasse kan echter worden gevuld met veel leden die verfijning toevoegen aan een zoekopdracht. Er is niet veel extra werk nodig om deze app aanzienlijk krachtiger te maken.
+* Deze app heeft een eenvoudige zoekopdracht naar tekst uitgevoerd, die is gedefinieerd door wat is ingesteld in **searchOptions**. Deze ene klasse kan echter worden gevuld met veel leden die verfijning toevoegen aan een zoekopdracht. Er is niet veel extra werk nodig om deze app aanzienlijk krachtiger te maken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Om de beste gebruikerservaring met Azure Cognitive Search te bieden, moeten we meer functies toevoegen, met name paginering (met behulp van paginanummers of oneindig schuiven) en automatisch aanvullen/suggesties. We moeten ook complexere zoekparameters overwegen (bijvoorbeeld geografische zoekacties op hotels binnen een opgegeven straal van een bepaald punt en de volgorde van de zoekresultaten).
+Om de gebruikerservaring te verbeteren, moeten we meer functies toevoegen, met name paginering (met behulp van paginanummers of oneindig schuiven) en automatisch aanvullen/suggesties. U kunt ook complexere zoekopties overwegen (bijvoorbeeld geografische zoekacties op hotels binnen een opgegeven straal van een bepaald punt en de volgorde van de zoekresultaten).
 
-Deze volgende stappen worden behandeld in een reeks zelfstudies. Laten we beginnen met paginering.
+Deze volgende stappen worden behandeld in de overige zelfstudies. Laten we beginnen met paginering.
 
 > [!div class="nextstepaction"]
 > [C#-zelfstudie: Zoekresultaten pagineren: Azure Cognitive Search](tutorial-csharp-paging.md)
-
-

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
 ms.openlocfilehash: b8d16b4e112c9aebe86c60dc01d380d591fc7624
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91743519"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Aan de slag met automatisch schalen in azure
@@ -59,7 +59,7 @@ We gaan nu een eenvoudige stapsgewijze procedure volgen om uw eerste instelling 
    ![Schalen op basis van CPU][8]
 1. Klik op **Opslaan**.
 
-Gefeliciteerd U hebt nu uw eerste schaal instelling gemaakt om uw web-app automatisch te schalen op basis van het CPU-gebruik.
+Gefeliciteerd! U hebt nu uw eerste schaal instelling gemaakt om uw web-app automatisch te schalen op basis van het CPU-gebruik.
 
 > [!NOTE]
 > Dezelfde stappen zijn van toepassing om aan de slag te gaan met een virtuele-machine schaalset of een Cloud service-rol.
@@ -127,7 +127,7 @@ Het controle traject voor de status moet de essentiële onderdelen van uw toepas
 
 #### <a name="security"></a>Beveiliging 
 
-Ontwikkel teams in grote ondernemingen moeten vaak voldoen aan de beveiligings vereisten voor hun blootgestelde Api's. Als u het status controle-eind punt wilt beveiligen, moet u eerst functies zoals [IP-beperkingen](../../app-service/app-service-ip-restrictions.md#adding-ip-address-rules), [client certificaten](../../app-service/app-service-ip-restrictions.md#adding-ip-address-rules)of een Virtual Network gebruiken om de toegang tot de toepassing te beperken. U kunt het status controle-eind punt zelf beveiligen door te vereisen dat de `User-Agent` van de inkomende aanvragen overeenkomen `ReadyForRequest/1.0` . De gebruiker Agent kan niet worden vervalst omdat de aanvraag al is beveiligd door de eerdere beveiligings functies.
+Ontwikkel teams in grote ondernemingen moeten vaak voldoen aan de beveiligings vereisten voor hun blootgestelde Api's. Als u het status controle-eind punt wilt beveiligen, moet u eerst functies zoals [IP-beperkingen](../../app-service/app-service-ip-restrictions.md#adding-ip-address-rules), [client certificaten](../../app-service/app-service-ip-restrictions.md#adding-ip-address-rules)of een Virtual Network gebruiken om de toegang tot de toepassing te beperken. U kunt het status controle-eind punt zelf beveiligen door te vereisen dat de `User-Agent` van de inkomende aanvragen overeenkomen `ReadyForRequest/1.0` . De User-Agent kan niet worden vervalst omdat de aanvraag al is beveiligd door de eerdere beveiligings functies.
 
 ### <a name="behavior"></a>Gedrag
 

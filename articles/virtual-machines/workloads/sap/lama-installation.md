@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
 ms.openlocfilehash: 5e20863cd971a55142283676fe035d3238520ae1
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91361361"
 ---
 # <a name="sap-lama-connector-for-azure"></a>SAP LaMa-connector voor Azure
@@ -100,7 +100,7 @@ De service-principal heeft standaard geen machtigingen voor toegang tot uw Azure
 1. Klik op roltoewijzing toevoegen
 1. De rol bijdrager selecteren
 1. Voer de naam in van de toepassing die u hierboven hebt gemaakt
-1. Op Opslaan klikken
+1. Klik op Opslaan
 1. Herhaal stap 3 tot 8 voor alle resource groepen die u wilt gebruiken in SAP LaMa
 
 ### <a name="use-a-managed-identity-to-get-access-to-the-azure-api"></a><a name="af65832e-6469-4d69-9db5-0ed09eac126d"></a>Een beheerde identiteit gebruiken om toegang te krijgen tot de Azure API
@@ -117,14 +117,14 @@ De beheerde identiteit heeft standaard geen machtigingen voor toegang tot uw Azu
 1. De rol bijdrager selecteren
 1. Selecteer ' virtuele machine ' voor ' toegang toewijzen '
 1. Selecteer de virtuele machine waarop uw SAP LaMa-exemplaar wordt uitgevoerd
-1. Op Opslaan klikken
+1. Klik op Opslaan
 1. Herhaal de stappen voor alle resource groepen die u wilt gebruiken in SAP LaMa
 
 Selecteer beheerde identiteit gebruiken in de configuratie van uw SAP LaMa Azure-connector om het gebruik van de beheerde identiteit in te scha kelen. Als u een door het systeem toegewezen identiteit wilt gebruiken, zorg er dan voor dat u het veld gebruikers naam leeg laat. Als u een door de gebruiker toegewezen identiteit wilt gebruiken, voert u de gebruiker toegewezen identiteits-id in het veld gebruikers naam in.
 
 ### <a name="create-a-new-connector-in-sap-lama"></a>Een nieuwe connector maken in SAP LaMa
 
-Open de SAP LaMa-website en navigeer naar infra structuur. Ga naar tabblad Cloud managers en klik op toevoegen. Selecteer de Microsoft Azure Cloud Adapter en klik op volgende. Voer de volgende informatie in:
+Open de SAP LaMa-website en navigeer naar infra structuur. Ga naar tabblad Cloud managers en klik op toevoegen. Selecteer de Microsoft Azure Cloud Adapter en klik op volgende. Voer de volgende gegevens in:
 
 * Label: Kies een naam voor de connector instantie
 * Gebruikers naam: de Service-Principal-toepassings-ID of ID van de door de gebruiker toegewezen identiteit van de virtuele machine. Zie [een systeem-of door de gebruiker toegewezen identiteit gebruiken] voor meer informatie

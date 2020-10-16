@@ -14,10 +14,10 @@ ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
 ms.openlocfilehash: d55f52b5e99a7a617e2bec8bea4d6e6ef687730a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91336527"
 ---
 # <a name="cross-region-load-balancer-preview"></a>Load balancer voor meerdere regio's (preview-versie)
@@ -55,7 +55,7 @@ Als de ene regio uitvalt, wordt het verkeer doorgestuurd naar het dichtstbijzijn
 
 De status test van de Kruis regio load balancer informatie over beschik baarheid elke 20 seconden verzamelen. Als een regionale load balancer de beschik baarheid van 0 daalt, wordt de fout door de Kruis regio load balancer gedetecteerd. De regionale load balancer wordt vervolgens uit de rotatie gehaald. 
 
-:::image type="content" source="./media/cross-region-overview/global-region-view.png" alt-text="Diagram van de weer gave wereld wijde regio verkeer." border="true":::
+:::image type="content" source="./media/cross-region-overview/global-region-view.png" alt-text="Diagram van de load balancer voor meerdere regio's." border="true":::
 
 ### <a name="ultra-low-latency"></a>Extreem lage latentie
 
@@ -131,7 +131,7 @@ De load balancer over meerdere regio's stuurt het verkeer naar de juiste regiona
 * VS - west-centraal 
 * Australia Southeast 
 * Australië - oost 
-* Central India 
+* India - centraal 
 
 ## <a name="limitations"></a>Beperkingen
 

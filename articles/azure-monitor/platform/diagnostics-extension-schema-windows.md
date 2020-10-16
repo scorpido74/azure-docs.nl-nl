@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
 ms.openlocfilehash: d2b1afea746410e966b43bef01a039a8471d4ae7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87007925"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Uitbreidings schema voor Windows diagnostische gegevens
@@ -39,7 +39,7 @@ Toegevoegd in versie 1,3.
 
 Het element op het hoogste niveau van het diagnostische configuratie bestand.  
 
-**Kenmerk** xmlns-de XML-naam ruimte voor het diagnostische configuratie bestand is:  
+**Kenmerk**  xmlns-de XML-naam ruimte voor het diagnostische configuratie bestand is:  
 `http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration`
 
 
@@ -57,9 +57,9 @@ Het element op het hoogste niveau van het diagnostische configuratie bestand.
 |Onderliggende elementen|Beschrijving|  
 |--------------------|-----------------|  
 |**WadCfg**|Vereist. Zie de beschrijving elders op deze pagina.|  
-|**StorageAccount**|De naam van het Azure Storage-account waarin de gegevens moeten worden opgeslagen. Kan ook worden opgegeven als een para meter bij het uitvoeren van de cmdlet Set-AzureServiceDiagnosticsExtension.|  
+|**Storage account**|De naam van het Azure Storage-account waarin de gegevens moeten worden opgeslagen. Kan ook worden opgegeven als een para meter bij het uitvoeren van de cmdlet Set-AzureServiceDiagnosticsExtension.|  
 |**Para**|Kan *Table*, *BLOB*of *TableAndBlob*zijn. De tabel is standaard. Wanneer TableAndBlob is gekozen, worden diagnostische gegevens twee keer naar elk type geschreven.|  
-|**LocalResourceDirectory**|De map op de virtuele machine waar gebeurtenis gegevens worden opgeslagen met de bewakings agent. Als dat niet zo is, wordt ingesteld, wordt de standaard Directory gebruikt:<br /><br /> Voor een werk nemer/Web-rol:`C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> Voor een virtuele machine:`C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> De vereiste kenmerken zijn:<br /><br /> - **pad** : de map op het systeem die moet worden gebruikt door Azure Diagnostics.<br /><br /> - **expandEnvironment** : Hiermee bepaalt u of omgevings variabelen in de padnaam worden uitgevouwen.|  
+|**LocalResourceDirectory**|De map op de virtuele machine waar gebeurtenis gegevens worden opgeslagen met de bewakings agent. Als dat niet zo is, wordt ingesteld, wordt de standaard Directory gebruikt:<br /><br /> Voor een werk nemer/Web-rol: `C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> Voor een virtuele machine: `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> De vereiste kenmerken zijn:<br /><br /> - **pad** : de map op het systeem die moet worden gebruikt door Azure Diagnostics.<br /><br /> - **expandEnvironment** : Hiermee bepaalt u of omgevings variabelen in de padnaam worden uitgevouwen.|  
 
 ## <a name="wadcfg-element"></a>WadCFG-element  
  *Structuur: root-DiagnosticsConfiguration-PublicConfig-WadCFG*
@@ -85,7 +85,7 @@ Het element op het hoogste niveau van het diagnostische configuratie bestand.
 |--------------------|-----------------|  
 |**CrashDumps**|Zie de beschrijving elders op deze pagina.|  
 |**DiagnosticInfrastructureLogs**|Verzamelen van logboeken die zijn gegenereerd door Azure Diagnostics inschakelen. De logboeken voor de diagnose infrastructuur zijn handig voor het oplossen van problemen met het diagnose systeem zelf. Optionele kenmerken zijn:<br /><br /> - **scheduledTransferLogLevelFilter** : Hiermee configureert u het minimale Ernst niveau van de verzamelde Logboeken.<br /><br /> - **scheduledTransferPeriod** : het interval tussen geplande transfers naar opslag die is afgerond op de dichtstbijzijnde minuut. De waarde is een [XML-duur-gegevens type.](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
-|**Mappen**|Zie de beschrijving elders op deze pagina.|  
+|**Adressen**|Zie de beschrijving elders op deze pagina.|  
 |**EtwProviders**|Zie de beschrijving elders op deze pagina.|  
 |**Metrische gegevens**|Zie de beschrijving elders op deze pagina.|  
 |**Performance Counters**|Zie de beschrijving elders op deze pagina.|  
@@ -268,7 +268,7 @@ Het element op het hoogste niveau van het diagnostische configuratie bestand.
 
 |Kenmerk|Type|Beschrijving|  
 |---------------|----------|-----------------|  
-|**naam**|tekenreeks|Een teken reeks die de Sink-id aangeeft.|  
+|**name**|tekenreeks|Een teken reeks die de Sink-id aangeeft.|  
 
 |Element|Type|Beschrijving|  
 |-------------|----------|-----------------|  
@@ -296,7 +296,7 @@ Het element op het hoogste niveau van het diagnostische configuratie bestand.
 |Kenmerken|Type|Beschrijving|  
 |----------------|----------|-----------------|  
 |**logLevel**|**tekenreeksexpressie**|Hiermee geeft u het minimale Ernst niveau voor logboek vermeldingen die worden overgebracht. De standaard waarde is niet **gedefinieerd**, waardoor alle logboeken worden overgedragen. Andere mogelijke waarden (ten opzichte van de meest waarschijnlijke informatie) zijn **uitgebreide**, **informatie**, **waarschuwing**, **fout**en **kritiek**.|  
-|**naam**|**tekenreeksexpressie**|Een unieke naam van het kanaal waarnaar moet worden verwezen|  
+|**name**|**tekenreeksexpressie**|Een unieke naam van het kanaal waarnaar moet worden verwezen|  
 
 
 ## <a name="privateconfig-element"></a>PrivateConfig-element
@@ -310,7 +310,7 @@ Het element op het hoogste niveau van het diagnostische configuratie bestand.
 
 |Onderliggende elementen|Beschrijving|  
 |--------------------|-----------------|  
-|**StorageAccount**|Het opslag account dat moet worden gebruikt. De volgende kenmerken zijn vereist<br /><br /> - **naam** : de naam van het opslag account.<br /><br /> - **sleutel** : de sleutel voor het opslag account.<br /><br /> - **endpoint** : het eind punt voor toegang tot het opslag account. <br /><br /> -**sasToken** (toegevoegde 1.8.1): u kunt in de particuliere configuratie een SAS-token opgeven in plaats van een opslag account sleutel. Als u deze opgeeft, wordt de sleutel van het opslag account genegeerd. <br />Vereisten voor het SAS-token: <br />-Ondersteunt alleen het account-SAS-token <br />- *b*, *t* service types zijn vereist. <br /> - *a*, *c*, *u*, *w* machtigingen zijn vereist. <br /> - *c*, *o* -resource typen zijn vereist. <br /> -Ondersteunt alleen het HTTPS-protocol <br /> -Start en verloop tijd moeten geldig zijn.|  
+|**Storage account**|Het opslag account dat moet worden gebruikt. De volgende kenmerken zijn vereist<br /><br /> - **naam** : de naam van het opslag account.<br /><br /> - **sleutel** : de sleutel voor het opslag account.<br /><br /> - **endpoint** : het eind punt voor toegang tot het opslag account. <br /><br /> -**sasToken** (toegevoegde 1.8.1): u kunt in de particuliere configuratie een SAS-token opgeven in plaats van een opslag account sleutel. Als u deze opgeeft, wordt de sleutel van het opslag account genegeerd. <br />Vereisten voor het SAS-token: <br />-Ondersteunt alleen het account-SAS-token <br />- *b*, *t* service types zijn vereist. <br /> - *a*, *c*, *u*, *w* machtigingen zijn vereist. <br /> - *c*, *o* -resource typen zijn vereist. <br /> -Ondersteunt alleen het HTTPS-protocol <br /> -Start en verloop tijd moeten geldig zijn.|  
 
 
 ## <a name="isenabled-element"></a>IsEnabled-element  

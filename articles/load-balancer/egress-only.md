@@ -1,5 +1,5 @@
 ---
-title: Configuratie van alleen-uitgaand load balancer
+title: Load balancer-configuratie voor alleen uitgaand verkeer
 titleSuffix: Azure Load Balancer
 description: In dit artikel vindt u informatie over het maken van een interne load balancer met uitgaande NAT
 services: load-balancer
@@ -14,13 +14,13 @@ ms.workload: infrastructure-services
 ms.date: 08/07/2020
 ms.author: allensu
 ms.openlocfilehash: b44f626546b313299701687157b37b7df021bd61
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88038207"
 ---
-# <a name="outbound-only-load-balancer-configuration"></a>Configuratie van alleen-uitgaand load balancer
+# <a name="outbound-only-load-balancer-configuration"></a>Load balancer-configuratie voor alleen uitgaand verkeer
 
 Gebruik een combi natie van interne en externe standaard load balancers voor het maken van uitgaande connectiviteit voor Vm's achter een interne load balancer. 
 
@@ -63,9 +63,9 @@ Maak een virtuele machine in het nieuwe virtuele netwerk.
 
 1. [Meld u aan](https://portal.azure.com) bij Azure Portal.
 
-2. Selecteer in de linkerbovenhoek van het scherm **een resource maken > netwerk > virtueel netwerk** of zoek naar **virtueel netwerk** in het zoekvak.
+2. Selecteer in de linkerbovenhoek van het scherm **Een resource maken > Netwerken > Virtueel netwerk** of zoek naar **Virtueel netwerk** in het zoekvak.
 
-2. In **virtueel netwerk maken**typt of selecteert u deze informatie op het tabblad **basis beginselen** :
+2. Typ of selecteer in **Virtueel netwerk maken** de volgende gegevens op het tabblad **Basisinstellingen**:
 
     | **Instelling**          | **Waarde**                                                           |
     |------------------|-----------------------------------------------------------------|
@@ -73,40 +73,40 @@ Maak een virtuele machine in het nieuwe virtuele netwerk.
     | Abonnement     | Selecteer uw Azure-abonnement                                  |
     | Resourcegroep   | Selecteer **Nieuw maken**. </br> Voer **myResourceGroupLB**in. </br> Selecteer **OK**. |
     | **Exemplaardetails** |                                                                 |
-    | Naam             | **MyVNet** invoeren                                    |
+    | Naam             | Voer **myVNet** in                                    |
     | Regio           | Selecteer **VS Oost 2** |
 
-3. Selecteer het tabblad **IP-adressen** of selecteer de knop **volgende: IP-adressen** aan de onderkant van de pagina.
+3. Selecteer het tabblad **IP-adressen** of klik op de knop **Volgende: IP-adressen** onderaan de pagina.
 
-4. Voer de volgende gegevens in op het tabblad **IP-adressen** :
-
-    | Instelling            | Waarde                      |
-    |--------------------|----------------------------|
-    | IPv4-adres ruimte | Voer **10.1.0.0/16** in |
-
-5. Selecteer bij **subnetnaam**het woord **standaard**.
-
-6. Voer in **subnet bewerken**de volgende gegevens in:
+4. Voer op het tabblad **IP-adressen** deze gegevens in:
 
     | Instelling            | Waarde                      |
     |--------------------|----------------------------|
-    | Subnetnaam | **MyBackendSubnet** invoeren |
+    | IPv4-adresruimte | Voer **10.1.0.0/16** in |
+
+5. Onder **Subnetnaam** selecteert u het woord **standaard**.
+
+6. Voer in **Subnet bewerken** deze gegevens in:
+
+    | Instelling            | Waarde                      |
+    |--------------------|----------------------------|
+    | Subnetnaam | Voer **myBackendSubnet** in |
     | Subnetadresbereik | Voer **10.1.0.0/24** in |
 
 7. Selecteer **Opslaan**.
 
-8. Selecteer het tabblad **beveiliging** .
+8. Selecteer het tabblad **Beveiliging**.
 
-9. Selecteer **inschakelen**onder **BastionHost**. Voer de volgende gegevens in:
+9. Selecteer onder **BastionHost** de optie **Inschakelen**. Voer deze gegevens in:
 
     | Instelling            | Waarde                      |
     |--------------------|----------------------------|
-    | Bastion-naam | **MyBastionHost** invoeren |
-    | AzureBastionSubnet-adres ruimte | Voer **10.1.1.0/24** in |
-    | Openbaar IP-adres | Selecteer **Nieuw maken**. </br> Voer bij **naam** **myBastionIP**in. </br> Selecteer **OK**. |
+    | Bastion-naam | Voer **myBastionHost** in |
+    | AzureBastionSubnet-adresruimte | Voer **10.1.1.0/24** in |
+    | Openbaar IP-adres | Selecteer **Nieuw maken**. </br> Voer bij **Naam** de naam **myBastionIP** in. </br> Selecteer **OK**. |
 
 
-8. Selecteer het tabblad **controleren + maken** of selecteer de knop **beoordeling + maken** .
+8. Selecteer het tabblad **Controleren + maken** of klik op de knop **Controleren + maken**.
 
 9. Selecteer **Maken**.
 
@@ -122,8 +122,8 @@ Maak een virtuele machine in het nieuwe virtuele netwerk.
     | Abonnement | Selecteer uw Azure-abonnement |
     | Resourcegroep | Selecteer **myResourceGroupLB** |
     | **Exemplaardetails** |  |
-    | Naam van de virtuele machine | **MyVM** invoeren |
-    | Regio | Selecteer **VS Oost 2** |
+    | Naam van de virtuele machine | Open **myVM** |
+    | Region | Selecteer **VS Oost 2** |
     | Beschikbaarheidsopties | Selecteer **Geen infrastructuurredundantie vereist** |
     | Installatiekopie | Selecteer **Windows Server 2019 Datacenter** |
     | Azure Spot-exemplaar | Selecteer **Nee** |
@@ -146,7 +146,7 @@ Maak een virtuele machine in het nieuwe virtuele netwerk.
     | Virtueel netwerk | **myVNet** |
     | Subnet | **myBackendSubnet** |
     | Openbare IP | Selecteer **Geen**. |
-    | NIC-netwerkbeveiligingsgroep | **Geen** selecteren|
+    | NIC-netwerkbeveiligingsgroep | Selecteer **Geen**|
     | Deze virtuele machine achter een bestaande oplossing voor taak verdeling plaatsen? | Selecteer **Nee** |
    
 5. Selecteer het tabblad **Beheer** of selecteer **Volgende** > **Beheer**.
@@ -252,11 +252,11 @@ De **myPublicBackendPool**voor de back-end-adres groep maken:
 
 1. Selecteer **alle services** in het linkermenu, selecteer **alle resources**en selecteer vervolgens in de lijst met resources **myVM** die zich in de resource groep **myResourceGroupLB** bevindt.
 
-2. Selecteer op de pagina **overzicht** de optie **verbinding maken**en vervolgens op **Bastion**.
+2. Selecteer op de pagina **Overzicht** de optie **Verbinding maken** en daarna **Bastion**.
 
-4. Voer de gebruikers naam en het wacht woord in die zijn ingevoerd tijdens het maken van de VM.
+4. Voer de gebruikersnaam en het wachtwoord in die zijn ingevoerd tijdens het maken van de VM.
 
-5. Selecteer **Verbinden**.
+5. Selecteer **Verbinding maken**.
 
 6. Open Internet Explorer.
 
@@ -287,11 +287,11 @@ De **myPublicBackendPool**voor de back-end-adres groep maken:
 
 1. Selecteer **alle services** in het linkermenu, selecteer **alle resources**en selecteer vervolgens in de lijst met resources **myVM** die zich in de resource groep **myResourceGroupLB** bevindt.
 
-2. Selecteer op de pagina **overzicht** de optie **verbinding maken**en vervolgens op **Bastion**.
+2. Selecteer op de pagina **Overzicht** de optie **Verbinding maken** en daarna **Bastion**.
 
-4. Voer de gebruikers naam en het wacht woord in die zijn ingevoerd tijdens het maken van de VM.
+4. Voer de gebruikersnaam en het wachtwoord in die zijn ingevoerd tijdens het maken van de VM.
 
-5. Selecteer **Verbinden**.
+5. Selecteer **Verbinding maken**.
 
 6. Open Internet Explorer.
 

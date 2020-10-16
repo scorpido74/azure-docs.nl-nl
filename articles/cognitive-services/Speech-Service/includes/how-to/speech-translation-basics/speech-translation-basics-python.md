@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/13/2020
 ms.author: trbye
 ms.openlocfilehash: 91683b3328af384c073f7273b97a1cc0e49814a2
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91377493"
 ---
 Een van de belangrijkste functies van de speech-service is de mogelijkheid om menselijke spraak te herkennen en te vertalen naar andere talen. In deze Snelstartgids leert u hoe u de Speech SDK in uw apps en producten kunt gebruiken om spraak vertalingen van hoge kwaliteit uit te voeren. In deze Quick Start vindt u onderwerpen, waaronder:
@@ -17,9 +17,9 @@ Een van de belangrijkste functies van de speech-service is de mogelijkheid om me
 * Spraak omzetten naar meerdere doel talen
 * Direct omzetten van spraak naar spraak uitvoeren
 
-## <a name="skip-to-samples-on-github"></a>Overs laan voor voor beelden op GitHub
+## <a name="skip-to-samples-on-github"></a>Naar voorbeelden op GitHub
 
-Als u direct naar voorbeeld code wilt overs Laan, raadpleegt u de [python Quick](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/python) start-voor beelden op github.
+Raadpleeg de [Python-quickstartvoorbeelden](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/python) op GitHub als u direct naar voorbeeldcode wilt gaan.
 
 ## <a name="prerequisites"></a>Vereisten
 

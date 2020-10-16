@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4db7727558d0b7f4c26aba3ffa823bebb07862f6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b6b94c30f00765164385987ed0ea9b201044f248
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91713772"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077436"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>Azure-beveiligings basislijn voor API Management
 
@@ -100,7 +100,7 @@ Gebruik Azure Security Center geïntegreerde bedreigings informatie om communica
 
 * [Azure DDoS Protection Standard configureren](../virtual-network/manage-ddos-protection.md)
 
-* [Meer informatie over Azure Security Center geïntegreerde bedreigings informatie](../security-center/threat-protection.md)
+* [Meer informatie over Azure Security Center geïntegreerde bedreigings informatie](../security-center/azure-defender.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -367,7 +367,7 @@ Optioneel kunt u gegevens in-en inschakelen voor Azure Sentinel of een SIEM van 
 
 **Richt lijnen**: een inventaris van accounts met beheerders toegang tot de Azure API Management Control-besturings vlak (Azure Portal) onderhouden.
 
-Azure Active Directory (AD) heeft ingebouwde rollen die expliciet moeten worden toegewezen en waarop query's kunnen worden doorzocht. API Management is afhankelijk van deze rollen en op rollen gebaseerde Access Control om verfijnd toegangs beheer voor API Management Services en entiteiten in te scha kelen.
+Azure Active Directory (AD) heeft ingebouwde rollen die expliciet moeten worden toegewezen en waarop query's kunnen worden doorzocht. API Management is afhankelijk van deze rollen en Role-Based Access Control om verfijnd toegangs beheer voor API Management Services en entiteiten in te scha kelen.
 
 Daarnaast bevat API Management een ingebouwde groep Administrators in het gebruikers systeem van de API Management. Groepen in API Management beheersen de zicht baarheid van Api's in de ontwikkelaars Portal en de leden van de groep Administrators kunnen alle Api's zien.
 
@@ -568,7 +568,7 @@ Configureer geavanceerde bewaking met API Management met behulp van het `log-to-
 
 **Verantwoordelijkheid**: klant
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 *Zie [beveiligings beheer: gegevens beveiliging](../security/benchmarks/security-control-data-protection.md)voor meer informatie.*
 
@@ -588,7 +588,7 @@ Configureer geavanceerde bewaking met API Management met behulp van het `log-to-
 
 * [Aanvullende Azure-abonnementen maken](../cost-management-billing/manage/create-subscription.md)
 
-* [Beheergroepen maken](../governance/management-groups/create.md)
+* [Beheergroepen maken](../governance/management-groups/create-management-group-portal.md)
 
 * [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
@@ -774,7 +774,7 @@ Daarnaast kunt u met Azure Policy beperkingen opleggen aan het type resources da
 
 * [Aanvullende Azure-abonnementen maken](../cost-management-billing/manage/create-subscription.md)
 
-* [Beheergroepen maken](../governance/management-groups/create.md)
+* [Beheergroepen maken](../governance/management-groups/create-management-group-portal.md)
 
 * [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
@@ -838,7 +838,7 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen h
 
 * [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
-* [Een specifiek resource type weigeren met Azure Policy](/azure/governance/policy/samples/not-allowed-resource-types)
+* [Een specifiek resource type weigeren met Azure Policy](../governance/policy/samples/index.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -1112,9 +1112,9 @@ Beheerde identiteiten kunnen worden gebruikt voor het verkrijgen van certificate
 
 * [Beveiligings aanbeveling voor Blob Storage](../storage/blobs/security-recommendations.md)
 
-Schakel zacht verwijderen in Key Vault in om sleutels te beschermen tegen onbedoelde of schadelijke verwijdering.
+Schakel Soft-Delete in Key Vault in om sleutels te beschermen tegen onbedoelde of schadelijke verwijdering.
 
-* [Zacht verwijderen inschakelen in Key Vault](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
+* [Soft-Delete in Key Vault inschakelen](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure Security Center bewaking**: niet van toepassing
 

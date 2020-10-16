@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: quickstart
-ms.openlocfilehash: bb4e3be621e83ed66748e3eba683b983dbac98d7
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: f24c9c372ff91db5836a62ac2d08b569434ff253
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90528522"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761576"
 ---
 # <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>Snelstart: Een aangepast model voor vertalen bouwen, implementeren en gebruiken
 
@@ -27,6 +27,9 @@ Dit artikel biedt stapsgewijze instructies voor het bouwen van een vertaalsystee
 2. Een abonnement op de Translator Text-API via de Azure-portal. U hebt de Translator Text-API-abonnementssleutel nodig om uw werkruimte te koppelen in Custom Translator. Zie [registreren voor de Translator Text-API](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup).
 
 3. Wanneer u deze beide hebt, meldt u zich aan bij de [Custom Translator](https://portal.customtranslator.azure.ai)-portal om werkruimten en projecten te maken, bestanden te uploaden en modellen te maken/implementeren.
+
+>[!Note]
+>Custom Translator biedt geen ondersteuning voor het maken van werkruimte voor een Translator Text-API-resource die is gemaakt in [Ingeschakeld VNET](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet).
 
 ## <a name="create-a-workspace"></a>Een werkruimte maken
 

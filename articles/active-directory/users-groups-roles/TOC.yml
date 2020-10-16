@@ -183,6 +183,8 @@
                   href: roles-custom-available-permissions.md
                 - name: Machtigingen voor zakelijke apps
                   href: custom-enterprise-app-permissions.md
+                - name: Machtigingen voor app-toestemming
+                  href: custom-consent-permissions.md
             - name: App-beheerdersmachtigingen delegeren
               href: roles-delegate-app-roles.md
         - name: Groepen gebruiken om roltoewijzingen te beheren

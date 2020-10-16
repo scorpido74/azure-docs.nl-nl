@@ -4,10 +4,10 @@ description: Meer informatie over netwerk isolatie in Azure DevTest Labs.
 ms.topic: article
 ms.date: 08/25/2020
 ms.openlocfilehash: fbd2725cd3677e03cadbe0ae1f060b141f5d212b
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88875768"
 ---
 # <a name="network-isolation-in-devtest-labs"></a>Netwerk isolatie in DevTest Labs
@@ -38,7 +38,7 @@ Lees ook de volgende artikelen:
 1. Als u ervoor kiest om Lab-resources (Lab-opslag account en sleutel kluis) te isoleren in het standaard netwerk, is er geen verdere actie nodig en zal het lab het isoleren van resources afhandelen.
  
     > [!div class="mx-imgBorder"]
-    > ![Netwerkisolatie](./media/network-isolation/isolate-lab-resources.png)
+    > ![Netwerk isolatie](./media/network-isolation/isolate-lab-resources.png)
 1. Als u ervoor kiest om Lab-resources (Lab-opslag account en sleutel kluis) te isoleren met een bestaand netwerk dat u hebt geselecteerd, moet u de volgende stappen uitvoeren om te zorgen dat het lab in de geïsoleerde modus blijft werken. 
  
     > [!div class="mx-imgBorder"]

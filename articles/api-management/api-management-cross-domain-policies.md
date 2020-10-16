@@ -13,23 +13,23 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 99784e43130b70554c05ff79a10993f2b6eebbde
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 31d26769fa3ef49684f8a2eedf6a0691316e742b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499610"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071231"
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management-beleid voor meerdere domeinen
-In dit onderwerp vindt u een verwijzing naar de volgende API Management-beleids regels. Zie [beleid in API Management](https://go.microsoft.com/fwlink/?LinkID=398186)voor meer informatie over het toevoegen en configureren van beleid.
+In dit onderwerp vindt u een verwijzing naar de volgende API Management-beleids regels. Zie [beleid in API Management](./api-management-policies.md)voor meer informatie over het toevoegen en configureren van beleid.
 
-## <a name="cross-domain-policies"></a><a name="CrossDomainPolicies"></a>Beleid voor meerdere domeinen
+## <a name="cross-domain-policies"></a><a name="CrossDomainPolicies"></a> Beleid voor meerdere domeinen
 
 - [Interdomein-aanroepen toestaan](api-management-cross-domain-policies.md#AllowCrossDomainCalls) : maakt de API toegankelijk vanuit Adobe Flash en micro soft Silverlight-clients op basis van een browser.
 - [Cors](api-management-cross-domain-policies.md#CORS) -voegt cross-Origin resource SHARING (CORS)-ondersteuning toe aan een bewerking of een API voor het toestaan van interdomein-aanroepen vanuit clients op basis van de browser.
 - [Jsonp](api-management-cross-domain-policies.md#JSONP) : voegt JSON met opvulling (Jsonp)-ondersteuning toe aan een bewerking of een API voor het toestaan van cross-domein aanroepen vanuit Java script-clients op basis van een browser.
 
-## <a name="allow-cross-domain-calls"></a><a name="AllowCrossDomainCalls"></a>Interdomein-aanroepen toestaan
+## <a name="allow-cross-domain-calls"></a><a name="AllowCrossDomainCalls"></a> Interdomein-aanroepen toestaan
 Gebruik het `cross-domain` beleid om de API toegankelijk te maken vanuit Adobe Flash en micro soft Silverlight browser-gebaseerde clients.
 
 ### <a name="policy-statement"></a>Beleids verklaring
@@ -63,7 +63,7 @@ Dit beleid kan worden gebruikt in de volgende beleids [secties](./api-management
 - **Beleids secties:** binnenkomend
 - **Beleids bereik:** alle bereiken
 
-## <a name="cors"></a><a name="CORS"></a>VOORBEREIDENDE
+## <a name="cors"></a><a name="CORS"></a> VOORBEREIDENDE
 Met het `cors` beleid wordt ondersteuning geboden voor het gebruik van een CORS (cross-Origin Resource Sharing) aan een bewerking of een API voor het toestaan van interdomein-aanroepen vanuit clients die zijn gebaseerd op de browser.
 
 Met CORS kunnen een browser en een server communiceren en bepalen of specifieke cross-Origin-aanvragen (XMLHttpRequests-aanroepen van Java script op een webpagina naar andere domeinen) al dan niet mogen worden uitgevoerd. Dit biedt meer flexibiliteit dan alleen het toestaan van niet-oorspronkelijke aanvragen, maar is veiliger dan het toestaan van alle cross-Origin-aanvragen.
@@ -127,7 +127,7 @@ In dit voor beeld wordt gedemonstreerd hoe aanvragen voorafgaand aan de vlucht w
 |Naam|Beschrijving|Vereist|Standaard|
 |----------|-----------------|--------------|-------------|
 |voorbereidende|Hoofd element.|Ja|N.v.t.|
-|toegestaan-oorsprong|Bevat `origin` elementen die de toegestane oorsprongen voor meerdere domein aanvragen beschrijven. `allowed-origins`kan één `origin` element bevatten dat aangeeft dat een `*` wille keurige oorsprong of een of meer `origin` elementen die een URI bevatten, kunnen worden toegestaan.|Ja|N.v.t.|
+|toegestaan-oorsprong|Bevat `origin` elementen die de toegestane oorsprongen voor meerdere domein aanvragen beschrijven. `allowed-origins` kan één `origin` element bevatten dat aangeeft dat een `*` wille keurige oorsprong of een of meer `origin` elementen die een URI bevatten, kunnen worden toegestaan.|Ja|N.v.t.|
 |origin|De waarde kan ofwel `*` alle oorsprongen toestaan, ofwel een URI die één oorsprong opgeeft. De URI moet een schema, host en poort bevatten.|Ja|Als de poort wordt wegge laten in een URI, wordt poort 80 gebruikt voor HTTP en poort 443 wordt gebruikt voor HTTPS.|
 |toegestane methoden|Dit element is vereist als andere methoden dan GET of POST zijn toegestaan. Bevat `method` elementen waarmee de ondersteunde HTTP-woorden worden opgegeven. De waarde `*` geeft alle methoden aan.|Nee|Als deze sectie niet aanwezig is, worden GET en POST ondersteund.|
 |method|Hiermee geeft u een HTTP-woord op.|Er is mini maal één `method` element vereist als de `allowed-methods` sectie aanwezig is.|N.v.t.|
@@ -139,7 +139,7 @@ In dit voor beeld wordt gedemonstreerd hoe aanvragen voorafgaand aan de vlucht w
 
 |Naam|Beschrijving|Vereist|Standaard|
 |----------|-----------------|--------------|-------------|
-|toestaan-referenties|De `Access-Control-Allow-Credentials` header in het Preflight-antwoord wordt ingesteld op de waarde van dit kenmerk en is van invloed op de mogelijkheid van de client om referenties in meerdere domein aanvragen in te dienen.|Nee|false|
+|toestaan-referenties|De `Access-Control-Allow-Credentials` header in het Preflight-antwoord wordt ingesteld op de waarde van dit kenmerk en is van invloed op de mogelijkheid van de client om referenties in meerdere domein aanvragen in te dienen.|Nee|onjuist|
 |Preflight: resultaat-Max-Age|De `Access-Control-Max-Age` header in het Preflight-antwoord wordt ingesteld op de waarde van dit kenmerk en heeft invloed op de mogelijkheid van de gebruikers agent om een reactie in de cache op te slaan.|Nee|0|
 
 ### <a name="usage"></a>Gebruik
@@ -148,7 +148,7 @@ Dit beleid kan worden gebruikt in de volgende beleids [secties](./api-management
 - **Beleids secties:** binnenkomend
 - **Beleids bereik:** alle bereiken
 
-## <a name="jsonp"></a><a name="JSONP"></a>JSONP
+## <a name="jsonp"></a><a name="JSONP"></a> JSONP
 Het `jsonp` beleid voegt JSON met opvulling (Jsonp)-ondersteuning toe aan een bewerking of een API voor het toestaan van cross-domein aanroepen vanuit Java script-clients op basis van een browser. JSONP is een methode die wordt gebruikt in Java script-Program ma's om gegevens op te vragen van een server in een ander domein. JSONP omzeilt de beperking die wordt afgedwongen door de meeste webbrowsers, waarbij toegang tot webpagina's moet zich in hetzelfde domein bevallen.
 
 ### <a name="policy-statement"></a>Beleids verklaring
@@ -165,7 +165,7 @@ Het `jsonp` beleid voegt JSON met opvulling (Jsonp)-ondersteuning toe aan een be
 
 Als u de methode aanroept zonder de para meter call back? CB = XXX, wordt een ongewone JSON geretourneerd (zonder een functie aanroep wrapper).
 
-Als u de call back-para meter toevoegt `?cb=XXX` , wordt een Jsonp resultaat geretourneerd, waarbij de oorspronkelijke JSON-resultaten rond de call back-functie, zoals`XYZ('<json result goes here>');`
+Als u de call back-para meter toevoegt `?cb=XXX` , wordt een Jsonp resultaat geretourneerd, waarbij de oorspronkelijke JSON-resultaten rond de call back-functie, zoals `XYZ('<json result goes here>');`
 
 ### <a name="elements"></a>Elementen
 
@@ -192,4 +192,4 @@ Zie voor meer informatie over het gebruik van beleid:
 + [Beleid in API Management](api-management-howto-policies.md)
 + [Api's transformeren](transform-api.md)
 + [Beleids verwijzing](./api-management-policies.md) voor een volledige lijst met beleids instructies en hun instellingen
-+ [Voor beelden van beleid](policy-samples.md)
++ [Voor beelden van beleid](./policy-reference.md)

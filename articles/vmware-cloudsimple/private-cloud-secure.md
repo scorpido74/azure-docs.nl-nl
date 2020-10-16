@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: c31ebfedeee0fe208f68c190402796b98c73ea1b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85829870"
 ---
 # <a name="how-to-secure-your-private-cloud-environment"></a>Uw persoonlijke cloud omgeving beveiligen
@@ -39,7 +39,7 @@ Er wordt een standaard gebruiker `CloudOwner@cloudsimple.local` gemaakt in het v
 
 1. [Escalatie bevoegdheden](escalate-private-cloud-privileges.md) voor **CloudOwner \@ cloudsimple. local** user in de privécloud.
 2. Aanmelden bij vCenter met **CloudOwner \@ cloudsimple. local**
-3. [Gebruikers met eenmalige aanmelding via VCenter toevoegen](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-72BFF98C-C530-4C50-BF31-B5779D2A4BBB.html).
+3. [Voeg VCenter Single Sign-On-gebruikers toe](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-72BFF98C-C530-4C50-BF31-B5779D2A4BBB.html).
 4. Gebruikers toevoegen aan een [vCenter-groep voor eenmalige aanmelding](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html).
 
 Zie [CloudSimple Private Cloud permission model of VMware vCenter](learn-private-cloud-permissions.md) -artikel voor meer informatie over vooraf gedefinieerde rollen en groepen.

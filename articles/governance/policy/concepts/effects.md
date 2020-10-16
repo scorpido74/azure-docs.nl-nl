@@ -1,14 +1,14 @@
 ---
 title: Inzicht krijgen in de werking van effecten
 description: Azure Policy definities hebben verschillende effecten die bepalen hoe de naleving wordt beheerd en gerapporteerd.
-ms.date: 09/15/2020
+ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: b6622796ab0554f692a3b64e0b41d60f49c561b1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 19811eca33be7dff4d9bee5b8bd89dd38f185a57
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91252001"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873945"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy effecten begrijpen
 
@@ -98,7 +98,7 @@ Controle wordt gebruikt om een waarschuwings gebeurtenis in het activiteiten log
 
 ### <a name="audit-evaluation"></a>Controle-evaluatie
 
-Controle is het laatste effect dat door Azure Policy is gecontroleerd tijdens het maken of bijwerken van een resource. Voor een resource manager-modus wordt Azure Policy de resource vervolgens naar de resource provider verzonden. Audit werkt hetzelfde voor een resource aanvraag en een evaluatie cyclus. Azure Policy voegt een `Microsoft.Authorization/policies/audit/action` bewerking aan het activiteiten logboek toe en markeert de resource als niet-compatibel.
+Controle is het laatste effect dat door Azure Policy is gecontroleerd tijdens het maken of bijwerken van een resource. Voor een resource manager-modus wordt Azure Policy de resource vervolgens naar de resource provider verzonden. Audit werkt hetzelfde voor een resource aanvraag en een evaluatie cyclus. Voor nieuwe en bijgewerkte resources voegt Azure Policy een `Microsoft.Authorization/policies/audit/action` bewerking aan het activiteiten logboek toe en markeert de resource als niet-compatibel.
 
 ### <a name="audit-properties"></a>Controle-eigenschappen
 
@@ -145,7 +145,7 @@ AuditIfNotExists maakt het mogelijk om de resources te controleren die zijn _ger
 
 ### <a name="auditifnotexists-evaluation"></a>AuditIfNotExists-evaluatie
 
-AuditIfNotExists wordt uitgevoerd nadat een resource provider een aanvraag voor het maken of bijwerken van een resource heeft verwerkt en een status code voor geslaagd heeft geretourneerd. De controle treedt op als er geen gerelateerde resources zijn of als de resources die zijn gedefinieerd door **ExistenceCondition** niet naar waar worden geëvalueerd. Azure Policy voegt een `Microsoft.Authorization/policies/audit/action` bewerking aan het activiteiten logboek op dezelfde manier toe als het controle-effect. Als deze wordt geactiveerd, is de resource die voldoet aan de **if** -voor waarde de resource die is gemarkeerd als niet-compatibel.
+AuditIfNotExists wordt uitgevoerd nadat een resource provider een aanvraag voor het maken of bijwerken van een resource heeft verwerkt en een status code voor geslaagd heeft geretourneerd. De controle treedt op als er geen gerelateerde resources zijn of als de resources die zijn gedefinieerd door **ExistenceCondition** niet naar waar worden geëvalueerd. Voor nieuwe en bijgewerkte resources voegt Azure Policy een `Microsoft.Authorization/policies/audit/action` bewerking aan het activiteiten logboek toe en markeert de resource als niet-compatibel. Als deze wordt geactiveerd, is de resource die voldoet aan de **if** -voor waarde de resource die is gemarkeerd als niet-compatibel.
 
 ### <a name="auditifnotexists-properties"></a>AuditIfNotExists-eigenschappen
 

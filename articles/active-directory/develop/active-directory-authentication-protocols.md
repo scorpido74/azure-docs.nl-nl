@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.openlocfilehash: 41ea41b4d7c181dad9246653a68c329387ac5381
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80884678"
 ---
 # <a name="microsoft-identity-platform-authentication-protocols"></a>Verificatie protocollen voor micro soft-identiteits platform
@@ -31,9 +31,9 @@ Micro soft Identity platform ondersteunt verschillende van de meest gebruikte ve
 * [OpenID Connect Connect 1,0](v2-protocols-oidc.md) -meer informatie over het gebruik van OAuth 2,0, een autorisatie protocol, voor authenticatie.
 * [Service-to-service aanroepen met client referenties](v2-oauth2-client-creds-grant-flow.md) : informatie over het gebruik van OAuth 2,0-client referenties toekenning stroom voor service-to-service aanroepen.
 * [Service-to-service-aanroepen met](v2-oauth2-on-behalf-of-flow.md) namens een stroom-meer informatie over het gebruik van OAuth 2,0-stroom voor service-naar-service-aanroepen.
-* [SAML-protocol referentie](active-directory-saml-protocol-reference.md) -meer informatie over de SAML-profielen eenmalige aanmelding en eenmalige afmelding van micro soft Identity platform.
+* [SAML-protocol referentie](active-directory-saml-protocol-reference.md) -meer informatie over de SAML-profielen single Sign-On en Single Sign-out van micro soft Identity platform.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
-* [Overzicht van micro soft Identity platform](v2-overview.md)
+* [Overzicht van het Microsoft-identiteitsplatform](v2-overview.md)
 * [Voor beelden van Active Directory code](sample-v2-code.md)

@@ -1,6 +1,6 @@
 ---
 title: Azure Serial console voor Windows | Microsoft Docs
-description: Bidirectionele seriële console voor Azure Virtual Machines en Virtual Machine Scale Sets met behulp van een Windows-voor beeld.
+description: Bi-Directional seriële console voor Azure Virtual Machines en Virtual Machine Scale Sets met behulp van een Windows-voor beeld.
 services: virtual-machines-windows
 documentationcenter: ''
 author: asinn826
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: c5c139cb94358d70d1f23b68f2a369adb953da08
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9cf3f9a1cd933526c5e376d232fa5acbc97fad47
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325977"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969718"
 ---
 # <a name="azure-serial-console-for-windows"></a>Azure Serial console voor Windows
 
@@ -189,7 +189,7 @@ Er wordt alleen status informatie weer gegeven wanneer u verbinding maakt met ee
 SAC behaalt niet het volledige seriële console gebied in de browser | Dit is een bekend probleem met Windows en de terminal emulator. We volgen dit probleem met beide teams, maar nu is er geen oplossing.
 Kan niet op SAC-prompt typen als fout opsporing voor kernel is ingeschakeld. | RDP naar VM en wordt uitgevoerd `bcdedit /debug {current} off` vanaf een opdracht prompt met verhoogde bevoegdheid. Als u geen RDP hebt, kunt u in plaats daarvan de besturingssysteem schijf aan een andere Azure-VM koppelen en deze wijzigen terwijl deze wordt gekoppeld als een gegevens schijf door uit `bcdedit /store <drive letter of data disk>:\boot\bcd /debug <identifier> off` te voeren. vervolgens wordt de schijf opnieuw gewisseld.
 Plakken in Power shell in SAC resulteert in een derde teken als de oorspronkelijke inhoud een herhalend teken bevat. | Voer voor een tijdelijke oplossing `Remove-Module PSReadLine` uit om de PSReadLine-module uit de huidige sessie te verwijderen. Met deze actie wordt de module niet verwijderd of verwijderd.
-Sommige toetsenbord ingangen produceren een vreemde SAC-uitvoer (bijvoorbeeld **[A**, **[3 ~**). | [VT100](https://aka.ms/vtsequences) -escape reeksen worden niet ondersteund door de SAC-prompt.
+Sommige toetsenbord ingangen produceren een vreemde SAC-uitvoer (bijvoorbeeld **[A**, **[3 ~**). | [VT100](/windows/console/console-virtual-terminal-sequences) -escape reeksen worden niet ondersteund door de SAC-prompt.
 Het plakken van lange teken reeksen werkt niet. | De seriële console beperkt de lengte van teken reeksen die in de terminal worden geplakt tot 2048 tekens om te voor komen dat de band breedte van de seriële poort wordt overbelast.
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen

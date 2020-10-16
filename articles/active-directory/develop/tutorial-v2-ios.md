@@ -1,7 +1,7 @@
 ---
-title: 'Zelfstudie: Microsoft Authentication Library (MSAL) voor iOS en macOS | Azure'
+title: 'Zelfstudie: Een iOS- of macOS-app maken die gebruikmaakt van het Microsoft identiteitsplatform voor verificatie | Azure'
 titleSuffix: Microsoft identity platform
-description: Leer hoe u met apps van iOS en macOS (Swift) een API kunt aanroepen waarvoor toegangstokens zijn vereist, door gebruik te maken van het Microsoft-identiteitsplatform
+description: In deze zelfstudie bouwt u een iOS- of macOS-app die gebruikmaakt van het Microsoft-identiteitsplatform voor het aanmelden van gebruikers. U krijgt een toegangstoken waarmee u de Microsoft Graph API namens hen kunt aanroepen.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -13,20 +13,33 @@ ms.date: 09/18/2020
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 238f8426ae51bec64dfdb5edaa3107ca1f430914
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 70194c7adc55a00c5cb65928daac184499eb124d
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91256905"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611109"
 ---
-# <a name="sign-in-users-and-call-microsoft-graph-from-an-ios-or-macos-app"></a>Gebruikers aanmelden en Microsoft Graph aanroepen vanuit een iOS- of macOS-app
+# <a name="tutorial-sign-in-users-and-call-microsoft-graph-from-an-ios-or-macos-app"></a>Zelfstudie: Gebruikers aanmelden en Microsoft Graph aanroepen vanuit een iOS- of macOS-app
 
 In deze zelfstudie leert u hoe u een iOS- of macOS-app integreert met het Microsoft-identiteitsplatform. Via de app wordt een gebruiker aangemeld, een toegangstoken opgehaald om de Microsoft Graph API aan te roepen, en een aanvraag ingediend bij de Microsoft Graph API.
 
-Wanneer u de handleiding hebt voltooid, accepteert uw toepassing aanmeldingen van persoonlijke Microsoft-accounts (waaronder outlook.com, live.com en overige accounts), en werk- of schoolaccounts van elk bedrijf of elke organisatie waar Azure Active Directory wordt gebruikt.
+Wanneer u de handleiding hebt voltooid, accepteert uw toepassing aanmeldingen van persoonlijke Microsoft-accounts (waaronder outlook.com, live.com en overige accounts), en werk- of schoolaccounts van elk bedrijf of elke organisatie waar Azure Active Directory wordt gebruikt. Deze zelfstudie is van toepassing op iOS- en macOS-apps. Sommige stappen verschillen tussen de twee platforms.
 
-## <a name="how-this-tutorial-works"></a>Hoe deze zelfstudie werkt
+In deze zelfstudie:
+
+> [!div class="checklist"]
+> * Een iOS- of macOS-app-project maken in *Xcode*
+> * De app registreren in de Azure-portal
+> * Code toevoegen voor de ondersteuning van het aan- en afmelden van gebruikers
+> * Code toevoegen om de Microsoft Graph API aan te roepen
+> * De app testen
+
+## <a name="prerequisites"></a>Vereisten
+
+- [Xcode 11.x+](https://developer.apple.com/xcode/)
+
+## <a name="how-tutorial-app-works"></a>Hoe de zelfstudie-app werkt
 
 ![Er wordt getoond hoe de voorbeeld-app werkt die wordt gegenereerd in deze zelfstudie](../../../includes/media/active-directory-develop-guidedsetup-ios-introduction/iosintro.svg)
 
@@ -42,16 +55,10 @@ Met name:
 
 In dit voorbeeld wordt de MSAL (Microsoft Authentication Library) gebruikt om Authentication te implementeren. In MSAL worden tokens automatisch vernieuwd, eenmalige aanmelding (SSO) geboden tussen andere apps op het apparaat, en de accounts beheerd.
 
-Deze zelfstudie is van toepassing op iOS- en macOS-apps. Sommige stappen verschillen tussen beide platforms.
+Als u een voltooide versie wilt downloaden van de app die u in deze zelfstudie hebt gemaakt, kunt u beide versies vinden op GitHub:
 
-## <a name="prerequisites"></a>Vereisten
-
-- Xcode-versie 11.x of hoger is vereist om de app in deze handleiding te bouwen. U kunt Xcode downloaden op de [Mac App Store](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12 "Download-URL voor Xcode").
-- Microsoft Authentication Library ([MSAL.framework](https://github.com/AzureAD/microsoft-authentication-library-for-objc)). U kunt afhankelijkheidsbeheer gebruiken of de bibliotheek handmatig toevoegen. In de onderstaande instructies ziet u hoe u dit doet.
-
-In deze zelfstudie maakt u een nieuw project. Als u in plaats hiervan de voltooide zelfstudie wilt downloaden, downloadt u de code:
-- [iOS-voorbeeldcode](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
-- [macOS-voorbeeldcode](https://github.com/Azure-Samples/active-directory-macOS-swift-native-v2/archive/master.zip)
+- [Voorbeeld van iOS-code](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/) (Github)
+- [Voorbeeld van macOS-code](https://github.com/Azure-Samples/active-directory-macOS-swift-native-v2/) (GitHub)
 
 ## <a name="create-a-new-project"></a>Een nieuw project maken
 
@@ -159,7 +166,7 @@ Voeg een nieuwe sleutelketengroep toe aan uw project **Ondertekening en mogelijk
 
 In deze stap registreert u `CFBundleURLSchemes`, zodat de gebruiker na aanmelding kan worden omgeleid naar de app. Met `LSApplicationQueriesSchemes` kan uw app bovendien ook gebruikmaken van Microsoft Authenticator.
 
-Open `Info.plist` in Xcode als een broncodebestand, en voeg het volgende toe in de sectie `<dict>`. Vervang `[BUNDLE_ID]` door de waarde die u hebt gebruikt in de Azure-portal. Als u de code hebt gedownload, is deze waarde: `com.microsoft.identitysample.MSALiOS`. Als u een eigen project wilt maken, selecteert u uw project in Xcode en opent u het tabblad **Algemeen**. De bundel-id wordt weergegeven in de sectie **Identiteit**.
+Open `Info.plist` in Xcode als een broncodebestand, en voeg het volgende toe in de sectie `<dict>`. Vervang `[BUNDLE_ID]` door de waarde die u in de Azure Portal hebt gebruikt. Als u de code hebt gedownload, is de bundel-id `com.microsoft.identitysample.MSALiOS`. Als u een eigen project wilt maken, selecteert u uw project in Xcode en opent u het tabblad **Algemeen**. De bundel-id wordt weergegeven in de sectie **Identiteit**.
 
 ```xml
 <key>CFBundleURLTypes</key>
@@ -509,7 +516,7 @@ Voeg de volgende code toe aan de klasse `ViewController`:
 
 #### <a name="get-a-token-interactively"></a>Interactief een token ophalen
 
-Met de onderstaande code wordt de eerste keer een token opgehaald door een object `MSALInteractiveTokenParameters` te maken en `acquireToken` aan te roepen. Vervolgens voegt u code toe waarmee de volgende acties worden uitgevoerd:
+Met het volgende codefragment wordt de eerste keer een token opgehaald door een object `MSALInteractiveTokenParameters` te maken en `acquireToken` aan te roepen. Vervolgens voegt u code toe waarmee de volgende acties worden uitgevoerd:
 
 1. `MSALInteractiveTokenParameters` maken met bereiken.
 2. `acquireToken()` aanroepen met de gemaakte parameters.
@@ -847,4 +854,7 @@ Nadat u zich hebt aangemeld, verschijnen in de app de gegevens die zijn geretour
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Modus gedeelde apparaten voor iOS-apparaten](msal-ios-shared-devices.md) als u eerstelijns medewerkers wilt ondersteunen die apparaten delen met collega's uit andere ploegen.
+Meer informatie over het bouwen van mobiele apps die beveiligde web-API's aanroepen in deze reeks met meerdere scenario's.
+
+> [!div class="nextstepaction"]
+> [Scenario: Een mobiele app die web-API's aanroept](scenario-mobile-overview.md)

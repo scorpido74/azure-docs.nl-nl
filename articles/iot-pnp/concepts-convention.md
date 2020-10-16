@@ -7,12 +7,12 @@ ms.date: 07/10/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 8b5492a737b733f486455507a8a813b5d583d453
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: a58fa45f47ee8dce4ec96591551abad76c1218ee
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91573834"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045479"
 ---
 # <a name="iot-plug-and-play-conventions"></a>Conventies voor IoT Plug en Play
 
@@ -343,6 +343,6 @@ Op een apparaat of module gebruiken meerdere onderdeel interfaces opdracht namen
 Nu u over Plug en Play conventies van IoT hebt geleerd, zijn hier enkele aanvullende bronnen:
 
 - [DTDL (Digital Twins Definition Language)](https://github.com/Azure/opendigitaltwins-dtdl)
-- [Apparaat-SDK voor C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
-- [IoT-REST API](https://docs.microsoft.com/rest/api/iothub/device)
+- [Apparaat-SDK voor C](/azure/iot-hub/iot-c-sdk-ref/)
+- [IoT-REST API](/rest/api/iothub/device)
 - [Model onderdelen](./concepts-components.md)

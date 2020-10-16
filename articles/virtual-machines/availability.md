@@ -6,12 +6,12 @@ ms.author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 3826019a19aa744cb03737ed7f0c985f8063a1aa
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: b4009f3c132c76f6632d6bb706649befa746001f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815603"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972523"
 ---
 # <a name="availability-options-for-virtual-machines-in-azure"></a>Beschikbaarheidsopties voor virtuele machines in Azure
 
@@ -51,17 +51,17 @@ Met behulp van schaalsets voor virtuele Azure-machines kunt u een groep VM's met
 
 **Fout domeinen en update domeinen**
 
-Virtuele-machine schaal sets vereenvoudigen het ontwerpen voor hoge Beschik baarheid door het uitlijnen van fout domeinen en update domeinen. U hoeft alleen het aantal fout domeinen voor de schaalset te definiëren. Het aantal fout domeinen dat beschikbaar is voor de schaal sets kan per regio verschillen. Zie [de beschik baarheid van virtuele machines in azure beheren](./windows/manage-availability.md).
+Virtuele-machine schaal sets vereenvoudigen het ontwerpen voor hoge Beschik baarheid door het uitlijnen van fout domeinen en update domeinen. U hoeft alleen het aantal fout domeinen voor de schaalset te definiëren. Het aantal fout domeinen dat beschikbaar is voor de schaal sets kan per regio verschillen. Zie [de beschik baarheid van virtuele machines in azure beheren](./manage-availability.md).
 
 
 ## <a name="availability-sets"></a>Beschikbaarheidssets
-Een beschikbaarheidsset is een logische groepering van Vm's binnen een Data Center waarmee Azure kan begrijpen hoe uw toepassing is gebouwd om te voorzien in redundantie en beschik baarheid. We raden u aan twee of meer virtuele machines te maken binnen een beschikbaarheidsset om te voorzien in een Maxi maal beschik bare toepassing en om te voldoen aan de [99,95% Azure Sla](https://azure.microsoft.com/support/legal/sla/virtual-machines/). Er zijn geen kosten voor de Beschikbaarheidsset zelf, u betaalt alleen voor elk VM-exemplaar dat u maakt. Wanneer één virtuele machine gebruikmaakt van [Azure Premium ssd's](./disks-types.md#premium-ssd), is de Azure-sla van toepassing op niet-geplande onderhouds gebeurtenissen.
+Een beschikbaarheidsset is een logische groepering van VM's binnen een datacentrum zodat Azure begrijpt hoe uw toepassing is gebouwd om te voorzien in redundantie en beschikbaarheid. We raden u aan twee of meer virtuele machines te maken binnen een beschikbaarheidsset om te voorzien in een Maxi maal beschik bare toepassing en om te voldoen aan de [99,95% Azure Sla](https://azure.microsoft.com/support/legal/sla/virtual-machines/). Er zijn geen kosten voor de Beschikbaarheidsset zelf, u betaalt alleen voor elk VM-exemplaar dat u maakt. Wanneer één virtuele machine gebruikmaakt van [Azure Premium ssd's](./disks-types.md#premium-ssd), is de Azure-sla van toepassing op niet-geplande onderhouds gebeurtenissen.
 
 In een beschikbaarheidsset worden Vm's automatisch gedistribueerd in deze fout domeinen. Deze aanpak beperkt de gevolgen van mogelijke problemen met de fysieke hardware, netwerkstoringen of stroomonderbrekingen.
 
 Voor virtuele machines die gebruikmaken van [Azure Managed Disks](./faq-for-disks.md) en deel uitmaken van een beheerde beschikbaarheidsset, worden de virtuele machines afgestemd op Managed Disk-foutdomeinen. Deze afstemming zorgt ervoor dat alle beheerde schijven die zijn gekoppeld aan een virtuele machine, zich binnen hetzelfde Managed Disk-foutdomein bevinden. 
 
-In een beheerde beschikbaarheidsset kunnen alleen virtuele machines met beheerde schijven worden gemaakt. Het aantal Managed Disk-foutdomeinen verschilt per regio: er zijn twee of drie Managed Disk-foutdomeinen per regio. Meer informatie over deze Managed Disk-fout domeinen voor [Linux-vm's](./linux/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set) of [Windows-vm's](./windows/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set)vindt u hier.
+In een beheerde beschikbaarheidsset kunnen alleen virtuele machines met beheerde schijven worden gemaakt. Het aantal Managed Disk-foutdomeinen verschilt per regio: er zijn twee of drie Managed Disk-foutdomeinen per regio. Meer informatie over deze Managed Disk-fout domeinen voor [Linux-vm's](./manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) of [Windows-vm's](./manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)vindt u hier.
 
 ![Beheerde beschikbaarheidsset](./media/virtual-machines-common-manage-availability/md-fd-updated.png)
 

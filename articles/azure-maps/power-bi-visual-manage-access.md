@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: 2f7372d522c02eb86f1cc6470cefa9cb299605a7
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86261718"
 ---
 # <a name="manage-the-azure-maps-visual-within-your-organization"></a>De Azure Maps Visual in uw organisatie beheren
@@ -22,7 +22,7 @@ Power BI biedt ontwerpers en Tenant beheerders de mogelijkheid om het gebruik va
 
 ### <a name="designer-options"></a>Opties voor ontwerpers
 
-In Power bi Desktop kunnen ontwerpers de Azure Maps-Visual uitschakelen op het tabblad Beveiliging. Selecteer **Bestands** &gt; **Opties en instellingen** en selecteer vervolgens **Opties** &gt; **Preview-functies**. Als deze instelling is uitgeschakeld, wordt Azure Maps standaard niet geladen.  
+In Power BI Desktop kunnen ontwerpers de Azure Maps-Visual uitschakelen op het tabblad Beveiliging. Selecteer **Bestands** &gt; **Opties en instellingen** en selecteer vervolgens **Opties** &gt; **Preview-functies**. Als deze instelling is uitgeschakeld, wordt Azure Maps standaard niet geladen.  
   
 ![Power BI deel venster Opties waarin de opties voor preview-functies voor het visuele element van Azure Maps worden weer gegeven](media/power-bi-visual/preview-options-panel.png)
 

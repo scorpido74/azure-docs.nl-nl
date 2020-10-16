@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
 ms.openlocfilehash: ff612b7c052ead5658ea4bbfafd7aace51ba3c02
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86132486"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>De configuratie server voor herstel na nood gevallen voor fysieke servers beheren
@@ -28,18 +28,18 @@ De tabel bevat een overzicht van de vereisten voor het implementeren van de on-p
 | --- |---|
 | CPU-kernen| 8 |
 | RAM | 16 GB|
-| Aantal schijven | 3, met inbegrip van de besturingssysteem schijf, de cache schijf van de proces server en het Bewaar station voor failback |
+| Aantal schijven | 3, waaronder de besturingssysteemschijf, de cacheschijf van de processerver en de bewaarschijf voor failback |
 | Vrije schijfruimte (cache van de processerver) | 600 GB
 | Vrije schijfruimte (bewaarschijf) | 600 GB|
 | Besturingssysteem  | Windows Server 2012 R2 <br> Windows Server 2016 |
 | Landinstelling van het besturingssysteem | Engels (VS)|
 | VMware vSphere PowerCLI-versie | Niet vereist|
 | Windows Server-functies | Deze rollen niet inschakelen: <br> - Active Directory Domain Services <br>- Internet Information Services <br> - Hyper-V |
-| Groeps beleid| Dit groeps beleid niet inschakelen: <br> -Toegang tot de opdracht prompt voor komen <br> -Toegang tot register bewerkings Programma's voor komen <br> -Logica vertrouwen voor bestands bijlagen <br> -Uitvoering van script inschakelen <br> [Meer informatie](/previous-versions/windows/it-pro/windows-7/gg176671(v=ws.10))|
-| IIS | -Geen vooraf bestaande standaard website <br> - [Anonieme verificatie](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731244(v=ws.10)) inschakelen <br> - [Fastcgi](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753077(v=ws.10)) -instelling inschakelen  <br> -Geen vooraf bestaande website/toepassing die luistert op poort 443<br>|
-| NIC-type | VMXNET3 (wanneer geïmplementeerd als een VMware-VM) |
+| Groepsbeleidsregels| Deze groepsbeleidsregels niet inschakelen: <br> -Toegang tot de opdracht prompt voor komen <br> -Toegang tot register bewerkings Programma's voor komen <br> -Logica vertrouwen voor bestands bijlagen <br> -Uitvoering van script inschakelen <br> [Meer informatie](/previous-versions/windows/it-pro/windows-7/gg176671(v=ws.10))|
+| IIS | - Geen vooraf bestaande standaardwebsite <br> - [Anonieme verificatie](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731244(v=ws.10)) inschakelen <br> - Instelling [FastCGI](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753077(v=ws.10)) inschakelen  <br> - Geen vooraf bestaande website/toepassing die luistert op poort 443<br>|
+| Type NIC | VMXNET3 (wanneer geïmplementeerd als een VMware-VM) |
 | Type IP-adres | Statisch |
-| Internettoegang | De server moet toegang hebben tot deze Url's: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - `https://management.azure.com` <br> -*. services.visualstudio.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi(niet vereist voor scale-out proces servers) <br> - time.nist.gov <br> - time.windows.com |
+| Toegang tot het internet | De server moet toegang hebben tot deze Url's: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - `https://management.azure.com` <br> -*. services.visualstudio.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi (niet vereist voor scale-out proces servers) <br> - time.nist.gov <br> - time.windows.com |
 | Poorten | 443 (Orchestration-besturingselement)<br>9443 (Gegevenstransport)|
 
 ## <a name="download-the-latest-installation-file"></a>Down load het meest recente installatie bestand
@@ -58,16 +58,16 @@ De meest recente versie van het installatie bestand van de configuratie server i
 ## <a name="install-and-register-the-server"></a>De server installeren en registreren
 
 1. Voer het installatiebestand voor de geïntegreerde Setup uit.
-2. In **voordat u begint**, selecteert u **de configuratie server en proces server installeren**.
+2. Selecteer bij **Voordat u begint** de optie **De configuratieserver en processerver installeren**.
 
     ![Voordat u begint](./media/physical-manage-configuration-server/combined-wiz1.png)
 
 3. Klik bij **Licentievoorwaarden voor software van derden** op **Ik ga akkoord** om MySQL te downloaden en te installeren.
-4. Geef bij **Internetinstellingen** op hoe de provider die op de configuratieserver wordt uitgevoerd, via internet verbinding moet maken met Azure Site Recovery. Zorg ervoor dat u de vereiste Url's hebt toegestaan.
+4. Geef bij **Internetinstellingen** op hoe de provider die op de configuratieserver wordt uitgevoerd, via internet verbinding moet maken met Azure Site Recovery. Zorg ervoor dat u de vereiste URL's hebt.
 
-    - Als u verbinding wilt maken met de proxy die momenteel op de computer is ingesteld, selecteert u **verbinding maken met Azure site Recovery met behulp van een proxy server**.
-    - Als u wilt dat de provider rechtstreeks verbinding maakt, selecteert u **rechtstreeks verbinding maken met Azure site Recovery zonder proxy server**.
-    - Als voor de bestaande proxy verificatie is vereist of als u een aangepaste proxy voor de provider verbinding wilt gebruiken, selecteert u **verbinding maken met aangepaste proxy instellingen**en geeft u het adres, de poort en de referenties op.
+    - Als u verbinding wilt maken met de proxy die momenteel op de computer is ingesteld, selecteert u **Verbinding maken met Azure Site Recovery via een proxyserver**.
+    - Als u wilt dat de provider rechtstreeks verbinding maakt, selecteert u **Rechtstreeks verbinding maken met Azure Site Recovery zonder proxyserver**.
+    - Als voor de bestaande proxy verificatie is vereist of als u voor de verbinding met de provider een aangepaste proxy wilt gebruiken, selecteert u **Verbinding maken met aangepaste proxyinstellingen** en geeft u het adres, de poort en referenties op.
      ![Firewall](./media/physical-manage-configuration-server/combined-wiz4.png)
 6. Tijdens Setup wordt in **Controle op vereisten** gecontroleerd of de installatie kan worden uitgevoerd. Als er een waarschuwing wordt weergegeven over **Synchronisatiecontrole voor algemene tijd**, moet u controleren of de tijd op de systeemklok (instellingen voor **datum en tijd**) overeenkomt met de tijdzone.
 
@@ -79,7 +79,7 @@ De meest recente versie van het installatie bestand van de configuratie server i
 9. Selecteer bij **Installatielocatie** waar u de binaire bestanden wilt installeren en de cache wilt opslaan. Het station dat u selecteert, moet ten minste 5 GB vrije schijfruimte bevatten, maar wij raden u aan een cachestation te gebruiken met minstens 600 GB vrije ruimte.
 
     ![Installatielocatie](./media/physical-manage-configuration-server/combined-wiz8.png)
-10. Selecteer in **netwerk selectie**eerst de NIC die de ingebouwde proces server gebruikt voor detectie en push-installatie van Mobility service op bron machines, en selecteer vervolgens de NIC die door de configuratie server wordt gebruikt voor de connectiviteit met Azure. Poort 9443 is de standaardpoort voor het verzenden en ontvangen van replicatieverkeer, maar u kunt dit poortnummer aanpassen aan de vereisten van de omgeving. Naast poort 9443 wordt ook poort 443 geopend. Deze wordt door een webserver gebruikt om replicatiebewerkingen in te delen. Gebruik poort 443 niet voor het verzenden of ontvangen van replicatie verkeer.
+10. Selecteer in **Netwerkselectie** eerst de NIC die de ingebouwde processerver gebruikt voor herstel na noodgeval en push installatie van de mobiliteitsservice op de bronmachines. Selecteer vervolgens de NIC die de configuratieserver gebruikt voor de connectiviteit met Azure. Poort 9443 is de standaardpoort voor het verzenden en ontvangen van replicatieverkeer, maar u kunt dit poortnummer aanpassen aan de vereisten van de omgeving. Naast poort 9443 wordt ook poort 443 geopend. Deze wordt door een webserver gebruikt om replicatiebewerkingen in te delen. Gebruik poort 443 niet voor het verzenden of ontvangen van replicatieverkeer.
 
     ![Netwerk selecteren](./media/physical-manage-configuration-server/combined-wiz9.png)
 
@@ -87,7 +87,7 @@ De meest recente versie van het installatie bestand van de configuratie server i
 11. Lees de informatie bij **Samenvatting** en klik op **Installeren**. Wanneer de installatie is voltooid, wordt er een wachtwoordzin gegenereerd. U hebt deze nodig bij het inschakelen van de replicatie. Kopieer de wachtwoordzin daarom en bewaar deze op een veilige locatie.
 
 
-Nadat de registratie is voltooid, wordt de server weer gegeven op de Blade **instellingen**  >  **servers** in de kluis.
+Na voltooiing van de registratie wordt de server weergegeven op de blade **Instellingen** > **Servers** in de kluis.
 
 
 ## <a name="install-from-the-command-line"></a>Installeren vanaf de opdracht regel
@@ -108,13 +108,13 @@ Voer het installatie bestand als volgt uit:
 
 ### <a name="parameters"></a>Parameters
 
-|Parameternaam| Type | Description| Waarden|
+|Parameternaam| Type | Beschrijving| Waarden|
 |-|-|-|-|
 | /ServerMode|Vereist|Hiermee wordt aangegeven of zowel de configuratieserver als de processerver moet worden geïnstalleerd, of alleen de processerver|CS<br>PS|
 |/InstallLocation|Vereist|De map waarin de onderdelen worden geïnstalleerd| Een map op de computer|
 |/MySQLCredsFilePath|Vereist|Het bestandspad waarin de referenties voor de MySQL-server worden opgeslagen|Het bestand moet de indeling hebben die hieronder wordt aangegeven|
 |/VaultCredsFilePath|Vereist|Het pad naar het bestand met kluisreferenties|Geldig bestandspad|
-|/EnvType|Vereist|Type omgeving dat u wilt beveiligen |VMware<br>NonVMware|
+|/EnvType|Vereist|Type omgeving die u wilt beveiligen |VMware<br>NonVMware|
 |/PSIP|Vereist|IP-adres van de NIC dat wordt gebruikt voor de overdracht van replicatiegegevens| Een geldig IP-adres|
 |/CSIP|Vereist|Het IP-adres van de NIC waarop de configuratieserver luistert| Een geldig IP-adres|
 |/PassphraseFilePath|Vereist|Het volledige pad naar het bestand met de wachtwoordzin|Geldig bestandspad|
@@ -288,7 +288,7 @@ Voer als volgt een upgrade uit voor de server:
     `Remove-AzSiteRecoveryFabric -Fabric $Fabric [-Force]`
 
 > [!NOTE]
-> De optie **-Force** in de Remove-AzSiteRecoveryFabric kan worden gebruikt om het verwijderen of verwijderen van de configuratie server af te dwingen.
+> De optie **-Force** in het Remove-AzSiteRecoveryFabric kan worden gebruikt om het verwijderen of verwijderen van de configuratie server af te dwingen.
 
 ## <a name="renew-tlsssl-certificates"></a>TLS/SSL-certificaten vernieuwen
 De configuratie server heeft een ingebouwde webserver, die de activiteiten van de Mobility-service, de proces servers en de Master doel servers die ermee zijn verbonden, vastmaakt. De webserver gebruikt een TLS/SSL-certificaat om clients te verifiëren. Het certificaat verloopt na drie jaar en kan op elk gewenst moment worden vernieuwd.

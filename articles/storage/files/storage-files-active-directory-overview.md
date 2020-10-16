@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
 ms.openlocfilehash: be308a91b5b583f96406f10675344ab263150a81
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91716064"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>Overzicht van Azure Files verificatie opties op basis van een identiteit voor SMB-toegang
@@ -147,7 +147,7 @@ Er worden geen extra kosten in rekening gebracht voor het inschakelen van verifi
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende bronnen voor meer informatie over Azure Files en verificatie op basis van identiteit via SMB:
 
-- [Een Azure Files-implementatie plannen](storage-files-planning.md)
+- [Implementatie van Azure Files plannen](storage-files-planning.md)
 - [On-premises Active Directory Domain Services authenticatie inschakelen via SMB voor Azure-bestands shares](storage-files-identity-auth-active-directory-enable.md)
 - [Azure Active Directory Domain Services authenticatie inschakelen op Azure Files](storage-files-identity-auth-active-directory-domain-service-enable.md)
 - [Veelgestelde vragen](storage-files-faq.md)

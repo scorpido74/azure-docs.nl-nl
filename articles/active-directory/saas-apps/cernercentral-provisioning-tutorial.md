@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.openlocfilehash: 58b991f5b229d924bc933ff34987db24bc895e10
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88529862"
 ---
 # <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>Zelf studie: configureren van CERN-centraal voor het automatisch inrichten van gebruikers
@@ -23,7 +23,7 @@ Het doel van deze zelf studie is om u te laten zien welke stappen u moet uitvoer
 
 ## <a name="prerequisites"></a>Vereisten
 
-In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u de volgende items al hebt:
+In het scenario dat in deze zelfstudie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende items:
 
 * Een Azure Active Directory-tenant
 * Een CERN-centrale-Tenant
@@ -33,7 +33,7 @@ In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan 
 
 ## <a name="assigning-users-to-cerner-central"></a>Gebruikers toewijzen aan CERN-centraal
 
-Azure Active Directory gebruikt een concept met de naam ' toewijzingen ' om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers accounts, worden alleen de gebruikers en groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd. 
+Azure Active Directory gebruikt een concept met de naam 'toewijzingen' om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers accounts, worden alleen de gebruikers en groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd. 
 
 Voordat u de inrichtings service configureert en inschakelt, moet u bepalen welke gebruikers en/of groepen in azure AD de gebruikers vertegenwoordigen die toegang nodig hebben tot de CERN-centrale. Eenmaal besloten, kunt u deze gebruikers toewijzen aan CERN-centraal door de volgende instructies te volgen:
 
@@ -52,7 +52,7 @@ Voordat u de inrichtings service configureert en inschakelt, moet u bepalen welk
 In deze sectie wordt u begeleid bij het verbinden van uw Azure AD-gebruikers schema voor de configuratie van de SCIM-gebruikers account van de CERN-gebruiker en de inrichtings service te configureren voor het maken, bijwerken en uitschakelen van toegewezen gebruikers accounts in CERN-centraal op basis van de gebruikers-en groeps toewijzing in azure AD.
 
 > [!TIP]
-> U kunt er ook voor kiezen om eenmalige aanmelding op basis van SAML in te scha kelen voor CERN-centraal, volgens de instructies in [Azure Portal](https://portal.azure.com). Eenmalige aanmelding kan onafhankelijk van automatische inrichting worden geconfigureerd, hoewel deze twee functies elkaar aanvullen. Zie voor meer informatie de [zelf studie voor de eenmalige aanmelding in de CERN-centraal](cernercentral-tutorial.md).
+> U kunt er ook voor kiezen om op SAML gebaseerde single Sign-On te scha kelen voor CERN-centraal, volgens de instructies in [Azure Portal](https://portal.azure.com). Eenmalige aanmelding kan onafhankelijk van automatische inrichting worden geconfigureerd, hoewel deze twee functies elkaar aanvullen. Zie voor meer informatie de [zelf studie voor de eenmalige aanmelding in de CERN-centraal](cernercentral-tutorial.md).
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-cerner-central-in-azure-ad"></a>Automatische toewijzing van gebruikers accounts configureren voor CERN-centraal in azure AD:
 
@@ -88,7 +88,7 @@ Als u gebruikers accounts wilt inrichten voor CERN-centraal, moet u een CERN-cen
 
 7. Selecteer uw exemplaar van CERN-centraal en selecteer vervolgens het tabblad **inrichten** .
 
-8. Stel de **inrichtings modus** in op **automatisch**.
+8. Stel de **Inrichtingsmodus** in op **Automatisch**.
 
    ![Multivisioning van CERN-centraal](./media/cernercentral-provisioning-tutorial/Cerner.PNG)
 
@@ -114,15 +114,15 @@ Als u gebruikers accounts wilt inrichten voor CERN-centraal, moet u een CERN-cen
 
 1. Klik op **Opslaan**.
 
-Hiermee start u de initiële synchronisatie van gebruikers en/of groepen die zijn toegewezen aan CERN-centraal in de sectie gebruikers en groepen. Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan volgende synchronisaties, die ongeveer elke 40 minuten optreden, zolang de Azure AD-inrichtings service wordt uitgevoerd. U kunt de sectie **synchronisatie gegevens** gebruiken voor het bewaken van de voortgang en het volgen van koppelingen naar de inrichtings activiteiten logboeken, die alle acties beschrijven die worden uitgevoerd door de inrichtings service in uw CERN-Central-app.
+Hiermee start u de initiële synchronisatie van gebruikers en/of groepen die zijn toegewezen aan CERN-centraal in de sectie gebruikers en groepen. De initiële synchronisatie duurt langer dan volgende synchronisaties, die ongeveer om de 40 minuten plaatsvinden zolang de Azure AD-inrichtingsservice wordt uitgevoerd. U kunt de sectie **synchronisatie gegevens** gebruiken voor het bewaken van de voortgang en het volgen van koppelingen naar de inrichtings activiteiten logboeken, die alle acties beschrijven die worden uitgevoerd door de inrichtings service in uw CERN-Central-app.
 
-Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
+Zie [Rapportage over automatische inrichting van gebruikersaccounts](../app-provisioning/check-status-user-account-provisioning.md) voor informatie over het lezen van de Azure AD-inrichtingslogboeken.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [CERN-centraal: identiteits gegevens publiceren met Azure AD](https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+Azure+AD)
 * [Zelf studie: CERN-centraal configureren voor eenmalige aanmelding met Azure Active Directory](cernercentral-tutorial.md)
-* [Inrichten van gebruikers accounts voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Gebruikersaccountinrichting voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen

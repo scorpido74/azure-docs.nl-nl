@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/29/2020
+ms.date: 10/06/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: af168fe4c4dca71077464fdb9caf30f27c4b9fe2
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 0f71b1e75ecb60a53a004b7bf1bf0bd0c7522cc9
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91578254"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096518"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Gebruik en kosten beheren met Azure Monitor-logboeken    
 
@@ -46,9 +46,9 @@ Houd er ook rekening mee dat sommige oplossingen, zoals [Azure Security Center](
 
 ### <a name="log-analytics-dedicated-clusters"></a>Log Analytics toegewezen clusters
 
-Log Analytics toegewezen clusters zijn verzamelingen van werk ruimten in één beheerd Azure Data Explorer-cluster ter ondersteuning van geavanceerde scenario's zoals door de [klant beheerde sleutels](customer-managed-keys.md).  Log Analytics toegewezen clusters maken gebruik van een prijs model voor capaciteits reservering, dat moet worden geconfigureerd op ten minste 1000 GB per dag. Voor dit capaciteits niveau geldt een korting van 25% ten opzichte van de prijzen voor betalen per gebruik. Elk gebruik boven het reserverings niveau wordt gefactureerd op basis van het betalen naar gebruik-tarief. De reserve ring van de cluster capaciteit heeft een toezeggings periode van 31 dagen nadat het reserverings niveau is verhoogd. Tijdens de toezeggings periode kan het capaciteits reserverings niveau niet worden verminderd, maar het kan op elk gewenst moment worden verhoogd. Wanneer werk ruimten zijn gekoppeld aan een cluster, wordt de facturering van gegevens opname voor deze werk ruimten uitgevoerd op het cluster niveau met het geconfigureerde capaciteits reserverings niveau. Meer informatie over het [maken van een log Analytics clusters](customer-managed-keys.md#create-cluster-resource) en [het koppelen van werk ruimten aan het](customer-managed-keys.md#workspace-association-to-cluster-resource)cluster. De prijs informatie voor capaciteits reservering is beschikbaar op de [pagina met Azure monitor prijzen]( https://azure.microsoft.com/pricing/details/monitor/).  
+Log Analytics toegewezen clusters zijn verzamelingen van werk ruimten in één beheerd Azure Data Explorer-cluster ter ondersteuning van geavanceerde scenario's zoals door de [klant beheerde sleutels](customer-managed-keys.md).  Log Analytics toegewezen clusters maken gebruik van een prijs model voor capaciteits reservering, dat moet worden geconfigureerd op ten minste 1000 GB per dag. Voor dit capaciteits niveau geldt een korting van 25% ten opzichte van de prijzen voor betalen per gebruik. Elk gebruik boven het reserverings niveau wordt gefactureerd op basis van het betalen naar gebruik-tarief. De reserve ring van de cluster capaciteit heeft een toezeggings periode van 31 dagen nadat het reserverings niveau is verhoogd. Tijdens de toezeggings periode kan het capaciteits reserverings niveau niet worden verminderd, maar het kan op elk gewenst moment worden verhoogd. Wanneer werk ruimten zijn gekoppeld aan een cluster, wordt de facturering van gegevens opname voor deze werk ruimten uitgevoerd op het cluster niveau met het geconfigureerde capaciteits reserverings niveau. Meer informatie over het [maken van een log Analytics clusters](customer-managed-keys.md#create-cluster) en [het koppelen van werk ruimten aan het](customer-managed-keys.md#link-workspace-to-cluster)cluster. De prijs informatie voor capaciteits reservering is beschikbaar op de [pagina met Azure monitor prijzen]( https://azure.microsoft.com/pricing/details/monitor/).  
 
-Het reserverings niveau voor cluster capaciteit wordt via een programma geconfigureerd met Azure Resource Manager met behulp van de `Capacity` para meter onder `Sku` . De `Capacity` is opgegeven in eenheden van GB en kan waarden hebben van 1000 GB/dag of meer in stappen van 100 GB/dag. Dit is een gedetailleerde beschrijving van Azure Monitor door de [klant beheerde sleutel](customer-managed-keys.md#create-cluster-resource). Als voor uw cluster een reserve ring nodig is die hoger is dan 2000 GB/dag, neemt u contact met ons op [LAIngestionRate@microsoft.com](mailto:LAIngestionRate@microsoft.com) .
+Het reserverings niveau voor cluster capaciteit wordt via een programma geconfigureerd met Azure Resource Manager met behulp van de `Capacity` para meter onder `Sku` . De `Capacity` is opgegeven in eenheden van GB en kan waarden hebben van 1000 GB/dag of meer in stappen van 100 GB/dag. Dit is een gedetailleerde beschrijving van Azure Monitor door de [klant beheerde sleutel](customer-managed-keys.md#create-cluster). Als voor uw cluster een reserve ring nodig is die hoger is dan 2000 GB/dag, neemt u contact met ons op [LAIngestionRate@microsoft.com](mailto:LAIngestionRate@microsoft.com) .
 
 Er zijn twee facturerings methoden voor gebruik in een cluster. Deze kunnen worden opgegeven met de `billingType` para meter bij het [configureren van uw cluster](customer-managed-keys.md#cmk-management). De twee modi zijn: 
 
@@ -102,7 +102,7 @@ Abonnementen die een Log Analytics werk ruimte hebben of Application Insights re
 
 Het gebruik van de zelfstandige prijs categorie wordt gefactureerd op basis van het opgenomen gegevens volume. Het wordt gerapporteerd in de **log Analytics** -service en de meter heet ' geanalyseerde gegevens '. 
 
-De prijs categorie per knoop punt kosten per bewaakte VM (knoop punt) op een granulatie van het uur. Voor elk bewaakt knoop punt wordt voor de werk ruimte 500 MB aan gegevens toegewezen per dag die niet wordt gefactureerd. Deze toewijzing wordt geaggregeerd op het niveau van de werk ruimte. Gegevens die boven de cumulatieve dagelijkse gegevens toewijzing zijn opgenomen, worden per GB in rekening gebracht als gegevens overschrijding. Op uw factuur wordt de service **Insight and Analytics** voor log Analytics gebruik als de werk ruimte zich in de prijs categorie per knoop punt bevindt. Het gebruik wordt gerapporteerd op drie meters:
+De prijs categorie per knoop punt kosten per bewaakte VM (knoop punt) op een granulatie van het uur. Voor elk bewaakt knoop punt wordt voor de werk ruimte 500 MB aan gegevens toegewezen per dag die niet wordt gefactureerd. Deze toewijzing wordt berekend op basis van het uurloon en wordt elke dag geaggregeerd op het niveau van de werk ruimte. Gegevens die boven de cumulatieve dagelijkse gegevens toewijzing zijn opgenomen, worden per GB in rekening gebracht als gegevens overschrijding. Op uw factuur wordt de service **Insight and Analytics** voor log Analytics gebruik als de werk ruimte zich in de prijs categorie per knoop punt bevindt. Het gebruik wordt gerapporteerd op drie meters:
 
 1. Knoop punt: dit is het gebruik van het aantal bewaakte knoop punten (Vm's) in eenheden van knoop punt * maanden.
 2. Gegevens overschrijding per knoop punt: dit is het aantal GB aan gegevens dat de geaggregeerde gegevens toewijzing overschrijdt.
@@ -124,7 +124,11 @@ Meer informatie over de beperkingen van de prijs categorie is beschikbaar op [Az
 Geen van de verouderde prijs categorieën heeft prijzen op basis van regionaal.  
 
 > [!NOTE]
-> Als u de rechten wilt gebruiken die afkomstig zijn van het aanschaffen van OMS E1 Suite, OMS E2-Suite of OMS-invoeg toepassing voor System Center, kiest u de prijs categorie Log Analytics *per knoop punt* .
+> Als u de rechten wilt gebruiken die afkomstig zijn van het aanschaffen van OMS E1 Suite, OMS E2 Suite of OMS Add-On voor System Center, kiest u de prijs categorie Log Analytics *per knoop punt* .
+
+## <a name="log-analytics-and-security-center"></a>Log Analytics en Security Center
+
+[Azure Security Center](https://docs.microsoft.com/azure/security-center/) facturering is nauw verbonden met log Analytics facturering. Security Center biedt een toewijzing van 500 MB/knoop punten op basis van een set [typen beveiligings gegevens](https://docs.microsoft.com/azure/azure-monitor/reference/tables/tables-category#security) (WindowsEvent, SecurityAlert, Security Baseline baseline, Summary, SecurityDetection, SecurityEvent, WindowsFirewall, MaliciousIPCommunication, LinuxAuditLog, SysmonEvent, ProtectionStatus) en de gegevens typen update en update Summary wanneer de updatebeheer oplossing niet wordt uitgevoerd op de werk ruimte of de doel groep van de oplossing is ingeschakeld. Als de werk ruimte in de prijs categorie verouderd per knoop punt staat, worden de Security Center-en Log Analytics toewijzingen gecombineerd en gezamenlijk toegepast op alle factureer bare opgenomen gegevens.  
 
 ## <a name="change-the-data-retention-period"></a>De gegevensretentieperiode wijzigen
 
@@ -283,6 +287,24 @@ find where TimeGenerated > ago(24h) project _BilledSize, Computer
 | where computerName != ""
 | summarize TotalVolumeBytes=sum(_BilledSize) by computerName
 ```
+
+### <a name="nodes-billed-by-the-legacy-per-node-pricing-tier"></a>Knoop punten die worden gefactureerd op basis van de prijs categorie verouderd per knoop punt
+
+De [prijs categorie verouderd per knoop punt](#legacy-pricing-tiers) voor knoop punten met granulatie op basis van een uurloon en telt ook geen knoop punten die een set typen beveiligings gegevens verzenden. Het dagelijkse aantal knoop punten is bijna de volgende query:
+
+```kusto
+find where TimeGenerated >= startofday(ago(7d)) and TimeGenerated < startofday(now()) project Computer, _IsBillable, Type, TimeGenerated
+| where Type !in ("SecurityAlert", "SecurityBaseline", "SecurityBaselineSummary", "SecurityDetection", "SecurityEvent", "WindowsFirewall", "MaliciousIPCommunication", "LinuxAuditLog", "SysmonEvent", "ProtectionStatus", "WindowsEvent")
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| where computerName != ""
+| where _IsBillable == true
+| summarize billableNodesPerHour=dcount(computerName) by bin(TimeGenerated, 1h)
+| summarize billableNodesPerDay = sum(billableNodesPerHour)/24., billableNodeMonthsPerDay = sum(billableNodesPerHour)/24./31.  by day=bin(TimeGenerated, 1d)
+| sort by day asc
+```
+
+Het aantal eenheden op uw factuur is in eenheden van het knoop punt * maanden dat wordt weer gegeven `billableNodeMonthsPerDay` in de query. Als de Updatebeheer oplossing is geïnstalleerd op de werk ruimte, voegt u de gegevens typen update en update Summary toe aan de lijst in de WHERE-component in de bovenstaande query. Ten slotte is er een extra complexiteit in het feitelijke facturerings algoritme wanneer het doel van de oplossing wordt gebruikt die niet wordt weer gegeven in de bovenstaande query. 
+
 
 > [!TIP]
 > Gebruik deze `find` query's spaarzaam als scans over gegevens typen [veel resources](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane) zijn om uit te voeren. Als u geen resultaten **per computer** nodig hebt, voert u een query uit op het type gebruiks gegevens (zie hieronder).
@@ -567,7 +589,7 @@ union *
 Deze query is geen exacte replicatie van de manier waarop het gebruik wordt berekend, maar werkt in de meeste gevallen aan aanbevelingen voor de prijs categorie.  
 
 > [!NOTE]
-> Als u de rechten wilt gebruiken die afkomstig zijn van het aanschaffen van OMS E1 Suite, OMS E2-Suite of OMS-invoeg toepassing voor System Center, kiest u de prijs categorie Log Analytics *per knoop punt* .
+> Als u de rechten wilt gebruiken die afkomstig zijn van het aanschaffen van OMS E1 Suite, OMS E2 Suite of OMS Add-On voor System Center, kiest u de prijs categorie Log Analytics *per knoop punt* .
 
 ## <a name="create-an-alert-when-data-collection-is-high"></a>Een waarschuwing maken wanneer het verzamelen van gegevens hoog is
 

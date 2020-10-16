@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/19/2018
 ms.openlocfilehash: 95cbb509beba82a14b9f8f8a11c603a6d7b8689d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87280797"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Webactiviteit in Azure Data Factory
@@ -25,9 +25,9 @@ ms.locfileid: "87280797"
 De WebActivity kan worden gebruikt om een aangepast REST-eindpunt aan te roepen vanaf een Data Factory-pijplijn. U kunt gegevenssets en gekoppelde services doorgeven die moten worden verbruikt door en die toegankelijk zijn voor de activiteit.
 
 > [!NOTE]
-> Webactiviteit wordt ondersteund voor het aanroepen van Url's die worden gehost in een privé virtueel netwerk, door gebruik te maken van zelf-hostende Integration runtime. De Integration runtime moet een regel van het gezichts vermogen hebben tot het URL-eind punt. 
+> Webactiviteit wordt ondersteund voor het aanroepen van URL's die worden gehost in een virtueel privénetwerk, door gebruik te maken van zelf-hostende integratieruntime. De integratieruntime moet het URL-eindpunt kunnen bereiken. 
 
-## <a name="syntax"></a>Syntaxis
+## <a name="syntax"></a>Syntax
 
 ```json
 {
@@ -72,10 +72,10 @@ De WebActivity kan worden gebruikt om een aangepast REST-eindpunt aan te roepen 
 
 Eigenschap | Beschrijving | Toegestane waarden | Vereist
 -------- | ----------- | -------------- | --------
-name | De naam van de Web-activiteit | Tekenreeks | Ja
+naam | De naam van de Web-activiteit | Tekenreeks | Ja
 type | Moet worden ingesteld op **webactiviteit**. | Tekenreeks | Ja
 method | Rest API-methode voor het doel eindpunt. | Tekenreeks. <br/><br/>Ondersteunde typen: ' GET ', ' POST ', ' PUT ' | Ja
-url | Doel eindpunt en-pad | Teken reeks (of expressie met het resultType van de teken reeks). Voor de activiteit wordt een time-out van 1 minuut met een fout weer gegeven als er geen reactie van het eind punt wordt ontvangen. | Ja
+url | Doel eindpunt en-pad | Teken reeks (of expressie met het resultType van de teken reeks). Voor de activiteit wordt een time-out van één minuut met een fout weergegeven als er geen respons van het eindpunt wordt ontvangen. | Ja
 koppen | Kopteksten die naar de aanvraag worden verzonden. U kunt bijvoorbeeld de taal en het type van een aanvraag instellen: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }` . | Teken reeks (of expressie met het resultType van de teken reeks) | Ja, content-type-header is vereist. `"headers":{ "Content-Type":"application/json"}`
 body | Vertegenwoordigt de nettolading die naar het eind punt wordt verzonden.  | Teken reeks (of expressie met het resultType van de teken reeks). <br/><br/>Zie het schema van de sectie aanvraag lading in schema voor de lading van de [aanvraag](#request-payload-schema) . | Vereist voor POST/PUT-methoden.
 verificatie | De verificatie methode die wordt gebruikt voor het aanroepen van het eind punt. De ondersteunde typen zijn Basic of ClientCertificate. Zie de sectie [verificatie](#authentication) voor meer informatie. Als verificatie niet is vereist, sluit u deze eigenschap. | Teken reeks (of expressie met het resultType van de teken reeks) | Nee
@@ -84,7 +84,7 @@ linkedServices | Lijst met gekoppelde services die zijn door gegeven aan het ein
 connectVia | De [Integration runtime](https://docs.microsoft.com/azure/data-factory/concepts-integration-runtime) die moet worden gebruikt om verbinding te maken met het gegevens archief. U kunt de Azure Integration runtime of de zelf-hostende Integration runtime gebruiken (als uw gegevens archief zich in een particulier netwerk bevindt). Als deze eigenschap niet is opgegeven, gebruikt de service de standaard Azure Integration runtime. | De naslag informatie voor Integration runtime. | Nee 
 
 > [!NOTE]
-> REST-eind punten die de webactiviteit aanroept, moeten een reactie van het type JSON retour neren. Voor de activiteit wordt een time-out van 1 minuut met een fout weer gegeven als er geen reactie van het eind punt wordt ontvangen.
+> REST-eindpunten die door de webactiviteit worden aangeroepen, moeten een respons van het type JSON retourneren. Voor de activiteit wordt een time-out van één minuut met een fout weergegeven als er geen respons van het eindpunt wordt ontvangen.
 
 De volgende tabel bevat de vereisten voor JSON-inhoud:
 

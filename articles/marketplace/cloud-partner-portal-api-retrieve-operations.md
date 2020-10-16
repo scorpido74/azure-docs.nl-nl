@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
 ms.openlocfilehash: cb44d977407a7e854603e6bbacf3591752b109c2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87271940"
 ---
 # <a name="retrieve-operations"></a>Bewerkingen ophalen
@@ -33,13 +33,13 @@ Hiermee haalt u alle bewerkingen op de aanbieding op of krijgt u een bepaalde be
 
 |  **Naam**          |      **Beschrijving**                                                                                           | **Gegevenstype** |
 |  ----------------  |     --------------------------------------------------------------------------------------------------------   |  -----------  |
-|  publisherId       |  Uitgevers-id, bijvoorbeeld`Contoso`                                                                   |  Tekenreeks       |
+|  publisherId       |  Uitgevers-id, bijvoorbeeld `Contoso`                                                                   |  Tekenreeks       |
 |  offerId           |  Aanbiedings-id                                                                                              |  Tekenreeks       |
-|  operationId       |  GUID waarmee de bewerking op de aanbieding uniek wordt geïdentificeerd. De operationId kan worden opgehaald met behulp van deze API en wordt ook geretourneerd in de HTTP-header van het antwoord op een langlopende bewerking, zoals de API voor het [publiceren van aanbiedingen](./cloud-partner-portal-api-publish-offer.md) .  |   GUID   |
+|  operationId       |  GUID waarmee de bewerking op de aanbieding uniek wordt geïdentificeerd. De operationId kan worden opgehaald met behulp van deze API en wordt ook geretourneerd in de HTTP-header van het antwoord op een langlopende bewerking, zoals de API voor het [publiceren van aanbiedingen](./cloud-partner-portal-api-publish-offer.md) .  |   Guid   |
 |  api-versie       | Nieuwste versie van API |    Date      |
 |  |  |  |
 
-## <a name="header"></a>Header
+## <a name="header"></a>Koptekst
 
 |  **Naam**          |  **Waarde**           |
 |  ---------------   | -------------------- |
@@ -49,7 +49,7 @@ Hiermee haalt u alle bewerkingen op de aanbieding op of krijgt u een bepaalde be
 
 ## <a name="body-example"></a>Voor beeld van tekst
 
-### <a name="response"></a>Reactie
+### <a name="response"></a>Antwoord
 
 #### <a name="get-operations"></a>GET-bewerkingen
 
@@ -172,7 +172,7 @@ Hiermee haalt u alle bewerkingen op de aanbieding op of krijgt u een bepaalde be
 |  **Naam**                    |  **Beschrijving**                                                                                  |
 |  --------------------        |  ------------------------------------------------------------------------------------------------ |
 |  id                          | GUID die de bewerking uniek identificeert                                                       |
-|  submissionType              | Hiermee wordt het type bewerking aangegeven dat wordt gerapporteerd voor de aanbieding, bijvoorbeeld`Publish/GoLive`      |
+|  submissionType              | Hiermee wordt het type bewerking aangegeven dat wordt gerapporteerd voor de aanbieding, bijvoorbeeld `Publish/GoLive`      |
 |  createdDateTime             | UTC-datum/tijd waarop de bewerking is gemaakt                                                       |
 |  lastActionDateTime          | UTC-datum/tijd waarop de laatste update is uitgevoerd voor de bewerking                                       |
 |  status                      | De status van de bewerking `not started` \| `running` \| `failed` \| `completed` . Er kan slechts één bewerking `running` tegelijk een status hebben. |
@@ -185,7 +185,7 @@ Hiermee haalt u alle bewerkingen op de aanbieding op of krijgt u een bepaalde be
 |  --------------------        |  ------------------------------------------------------------------------------------------------ |
 | estimatedTimeFrame | De geschatte duur van deze bewerking |
 | id | De unieke id voor het stap proces |
-| beschrijving | Beschrijving van de stap |
+| description | Beschrijving van de stap |
 | Stapnaam | De beschrijvende naam voor de stap |
 | status | De status van de stap, ofwel `notStarted` \| `running` \| `failed` \|`completed` |
 | berichten | Alle meldingen of waarschuwingen die tijdens de stap zijn aangetroffen. Matrix van tekenreeksen |
@@ -196,8 +196,8 @@ Hiermee haalt u alle bewerkingen op de aanbieding op of krijgt u een bepaalde be
 
 | **Code**  |   **Beschrijving**                                                                                  |
 |  -------- |   -------------------------------------------------------------------------------------------------|
-|  200      | `OK`-De aanvraag is verwerkt en de aangevraagde bewerking (en) is geretourneerd.        |
-|  400      | `Bad/Malformed request`-De hoofd tekst van het fout bericht bevat mogelijk meer informatie.                    |
-|  403      | `Forbidden`-De client heeft geen toegang tot de opgegeven naam ruimte.                          |
-|  404      | `Not found`-De opgegeven entiteit bestaat niet.                                                 |
+|  200      | `OK` -De aanvraag is verwerkt en de aangevraagde bewerking (en) is geretourneerd.        |
+|  400      | `Bad/Malformed request` -De hoofd tekst van het fout bericht bevat mogelijk meer informatie.                    |
+|  403      | `Forbidden` -De client heeft geen toegang tot de opgegeven naam ruimte.                          |
+|  404      | `Not found` -De opgegeven entiteit bestaat niet.                                                 |
 |  |  |

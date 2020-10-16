@@ -7,10 +7,10 @@ ms.date: 07/28/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 049b962740abc98a6ac7d029c1419d40aa722165
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88922562"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Micro soft teams gebruiken op het virtuele bureau blad van Windows
@@ -42,7 +42,7 @@ In deze sectie wordt uitgelegd hoe u de teams bureau blad-app kunt installeren o
 
 Als u media optimalisatie voor teams wilt inschakelen, stelt u de volgende register sleutel op de host in:
 
-1. Voer in het menu Start **regedit** uit als Administrator. Ga naar **HKEY_LOCAL_MACHINE \software\microsoft\teams**.
+1. Voer in het menu Start **regedit** uit als Administrator. Navigeer naar **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Teams**.
 2. Maak de volgende waarde voor de sleutel teams:
 
 | Naam             | Type   | Gegevens/waarde  |
@@ -94,7 +94,7 @@ U kunt de teams bureau blad-app implementeren met behulp van een installatie per
 
         Hiermee worden teams geïnstalleerd in de map Program Files (x86) op een 64-bits besturings systeem en in de map Program Files op een 32-bits besturings systeem. Op dit moment is de installatie van de gouden installatie kopie voltooid. Het installeren van teams per computer is vereist voor niet-permanente Setup.
 
-        Er zijn twee vlaggen die kunnen worden ingesteld bij het installeren van teams, **ALLUSER = 1** en **ALLUSERS = 1**. Het is belang rijk dat u begrijpt wat het verschil is tussen deze para meters. De para meter **ALLUSER = 1** wordt alleen gebruikt in VDI-omgevingen om een installatie per computer op te geven. De para meter **ALLUSERS = 1** kan worden gebruikt in niet-VDI-en VDI-omgevingen. Wanneer u deze para meter instelt, wordt het installatie programma voor het hele team van de computer weer gegeven in Program Ma's en onderdelen in het configuratie scherm, evenals apps & functies in Windows-instellingen. Alle gebruikers met beheerders referenties op de computer kunnen teams verwijderen.
+        Er zijn twee vlaggen die kunnen worden ingesteld bij het installeren van teams, **ALLUSER = 1** en **ALLUSERS = 1**. Het is belang rijk dat u begrijpt wat het verschil is tussen deze para meters. De para meter **ALLUSER = 1** wordt alleen gebruikt in VDI-omgevingen om een installatie per computer op te geven. De para meter **ALLUSERS = 1** kan worden gebruikt in niet-VDI-en VDI-omgevingen. Wanneer u deze para meter instelt, wordt het installatie programma van teams Machine-Wide weer gegeven in Program Ma's en onderdelen in het configuratie scherm, evenals apps & functies in Windows-instellingen. Alle gebruikers met beheerders referenties op de computer kunnen teams verwijderen.
 
         > [!NOTE]
         > Gebruikers en beheerders kunnen de functie voor het automatisch starten van teams tijdens het aanmelden op dit moment niet uitschakelen.

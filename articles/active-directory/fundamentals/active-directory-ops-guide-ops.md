@@ -12,10 +12,10 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: 921a56dca8f1cda67e6f32458914fef4ac2d324c
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90601301"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Naslag informatie over Azure Active Directory algemene bedienings handleiding
@@ -156,7 +156,7 @@ Raadpleeg de volgende tabel voor meer informatie over het type meldingen dat wor
 
 Organisaties, waarmee toepassingen worden geconfigureerd om rechtstreeks naar Azure AD te worden geprofiteerd van [Azure AD Smart-vergren deling](../authentication/concept-sspr-howitworks.md). Als u AD FS gebruikt in Windows Server 2012 R2, implementeert u AD FS [beveiliging voor vergren delen](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)van het extranet. Als u AD FS op Windows Server 2016 of hoger gebruikt, moet u [extranet slimme vergren deling](https://support.microsoft.com/help/4096478/extranet-smart-lockout-feature-in-windows-server-2016)implementeren. We raden u aan om extranet vergrendeling in te scha kelen om het risico van beveiligings aanvallen tegen een on-premises Active Directory te bevatten. Als u echter AD FS hebt in Windows 2016 of hoger, moet u ook smartcard vergrendeling inschakelen die helpt bij het oplossen van aanvallen op [wachtwoord](https://www.microsoft.com/microsoft-365/blog/2018/03/05/azure-ad-and-adfs-best-practices-defending-against-password-spray-attacks/) niveau.
 
-Als AD FS alleen wordt gebruikt voor Azure AD Federation, zijn er een aantal eind punten die kunnen worden uitgeschakeld om de aanval surface area te minimaliseren. Als AD FS bijvoorbeeld alleen wordt gebruikt voor Azure AD, moet u WS-Trust-eind punten uitschakelen dan de eind punten die zijn ingeschakeld voor **usernamemixed** en **windowstransport**.
+Als AD FS alleen wordt gebruikt voor Azure AD Federation, zijn er een aantal eind punten die kunnen worden uitgeschakeld om de aanval surface area te minimaliseren. Als AD FS bijvoorbeeld alleen wordt gebruikt voor Azure AD, moet u WS-Trust eind punten uitschakelen, behalve de eind punten die zijn ingeschakeld voor **usernamemixed** en **windowstransport**.
 
 ### <a name="access-to-machines-with-on-premises-identity-components"></a>Toegang tot computers met on-premises identiteits onderdelen
 

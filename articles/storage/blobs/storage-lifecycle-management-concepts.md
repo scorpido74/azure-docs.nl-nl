@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
 ms.openlocfilehash: 49e82467cd5e9cef8100aa56016f778df3445f12
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91822398"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>De levenscyclus van Azure Blob-opslag beheren
@@ -62,7 +62,7 @@ Er zijn twee manieren om een beleid toe te voegen via de Azure Portal.
 
 #### <a name="azure-portal-list-view"></a>Lijst weergave Azure Portal
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 1. Zoek en selecteer uw opslag account in de Azure Portal. 
 
@@ -96,7 +96,7 @@ Er zijn twee manieren om een beleid toe te voegen via de Azure Portal.
 1. Selecteer **toevoegen** om het nieuwe beleid toe te voegen.
 
 #### <a name="azure-portal-code-view"></a>Code weergave Azure Portal
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 1. Zoek en selecteer uw opslag account in de Azure Portal.
 

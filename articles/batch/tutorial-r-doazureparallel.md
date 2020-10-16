@@ -3,21 +3,21 @@ title: Parallelle R-simulatie met Azure Batch
 description: 'Zelfstudie: Stapsgewijze instructies voor het uitvoeren van een financiële Monte Carlo-simulatie in Azure Batch met het R-pakket doAzureParallel'
 ms.devlang: r
 ms.topic: tutorial
-ms.date: 01/23/2018
+ms.date: 10/08/2020
 ms.custom: mvc
-ms.openlocfilehash: 2c988075031be326f01e02bceff1c948295d5845
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3ce4cff94bb565ce3dd9bc4e9307a2b21c4c0ac5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91292860"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91851132"
 ---
-# <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>Zelfstudie: Een parallelle R-simulatie uitvoeren met Azure Batch 
+# <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>Zelfstudie: Een parallelle R-simulatie uitvoeren met Azure Batch
 
 Voer uw parallelle R-workloads op schaal uit met behulp van [doAzureParallel](https://www.github.com/Azure/doAzureParallel), een lichtgewicht R-pakket dat het mogelijk maakt Azure Batch rechtstreeks vanuit uw R-sessie te gebruiken. Het pakket doAzureParallel is gebouwd op het populaire R-pakket [foreach](https://cran.r-project.org/web/packages/foreach/index.html). doAzureParallel haalt elke herhaling van de foreach-lus op en verzendt deze als een Azure Batch-taak.
 
 In deze zelfstudie wordt uitgelegd hoe u een Batch-pool implementeert en een parallelle R-taak in Azure Batch rechtstreeks uitvoert in RStudio. In deze zelfstudie leert u procedures om het volgende te doen:
- 
+
 
 > [!div class="checklist"]
 > * doAzureParallel installeren en configureren voor toegang tot uw Batch- en Storage-accounts
@@ -28,43 +28,43 @@ In deze zelfstudie wordt uitgelegd hoe u een Batch-pool implementeert en een par
 
 * Een geïnstalleerde [R](https://www.r-project.org/)-distributie, zoals [Microsoft R Open](https://mran.microsoft.com/open). Gebruik R versie 3.3.1 of hoger.
 
-* [RStudio](https://www.rstudio.com/), de commerciële versie of de open-source versie [RStudio Desktop](https://www.rstudio.com/products/rstudio/#Desktop). 
+* [RStudio](https://www.rstudio.com/), de commerciële versie of de open-source versie [RStudio Desktop](https://www.rstudio.com/products/rstudio/#Desktop).
 
-* Een Azure Batch-account en een Azure Storage-account. Raadpleeg de Batch-quickstarts met behulp van [Azure Portal](quick-create-portal.md) of [Azure CLI](quick-create-cli.md) voor instructies voor het maken van deze accounts. 
+* Een Azure Batch-account en een Azure Storage-account. Raadpleeg de Batch-quickstarts met behulp van [Azure Portal](quick-create-portal.md) of [Azure CLI](quick-create-cli.md) voor instructies voor het maken van deze accounts.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
 Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
 
-[!INCLUDE [batch-common-credentials](../../includes/batch-common-credentials.md)] 
+[!INCLUDE [batch-common-credentials](../../includes/batch-common-credentials.md)]
 ## <a name="install-doazureparallel"></a>doAzureParallel installeren
 
-Installeer het [GitHub-pakket doAzureParallel](https://www.github.com/Azure/doAzureParallel) in de RStudio-console. De volgende opdrachten downloaden en installeren het pakket en de bijbehorende afhankelijkheden in uw huidige R-sessie: 
+Installeer het [GitHub-pakket doAzureParallel](https://www.github.com/Azure/doAzureParallel) in de RStudio-console. De volgende opdrachten downloaden en installeren het pakket en de bijbehorende afhankelijkheden in uw huidige R-sessie:
 
 ```R
-# Install the devtools package  
-install.packages("devtools") 
+# Install the devtools package
+install.packages("devtools")
 
 # Install rAzureBatch package
-devtools::install_github("Azure/rAzureBatch") 
+devtools::install_github("Azure/rAzureBatch")
 
-# Install the doAzureParallel package 
-devtools::install_github("Azure/doAzureParallel") 
- 
-# Load the doAzureParallel library 
-library(doAzureParallel) 
+# Install the doAzureParallel package
+devtools::install_github("Azure/doAzureParallel")
+
+# Load the doAzureParallel library
+library(doAzureParallel)
 ```
 De installatie kan enkele minuten duren.
 
-Voor de configuratie van doAzureParallel met de accountreferenties die u eerder hebt opgehaald, genereert u een configuratiebestand genaamd *credentials.json* in uw werkmap: 
+Voor de configuratie van doAzureParallel met de accountreferenties die u eerder hebt opgehaald, genereert u een configuratiebestand genaamd *credentials.json* in uw werkmap:
 
 ```R
-generateCredentialsConfig("credentials.json") 
-``` 
+generateCredentialsConfig("credentials.json")
+```
 
 Vul dit bestand met de namen en sleutels van uw Batch- en opslagaccount. Laat de instelling `githubAuthenticationToken` ongewijzigd.
 
-Na voltooiing ziet het referentiebestand er ongeveer als volgt uit: 
+Na voltooiing ziet het referentiebestand er ongeveer als volgt uit:
 
 ```json
 {
@@ -81,28 +81,28 @@ Na voltooiing ziet het referentiebestand er ongeveer als volgt uit:
 }
 ```
 
-Sla het bestand op. Voer de volgende opdracht uit om de referenties voor uw huidige R-sessie in te stellen: 
+Sla het bestand op. Voer de volgende opdracht uit om de referenties voor uw huidige R-sessie in te stellen:
 
 ```R
-setCredentials("credentials.json") 
+setCredentials("credentials.json")
 ```
 
-## <a name="create-a-batch-pool"></a>Batch-pool maken 
+## <a name="create-a-batch-pool"></a>Batch-pool maken
 
-doAzureParallel bevat een functie die een Azure Batch-pool (cluster) genereert voor het uitvoeren van parallelle R-taken. Op de knooppunten draait een [virtuele machine voor datatechnologie van Azure](../machine-learning/data-science-virtual-machine/overview.md) op basis van Ubuntu. Microsoft R Open en populaire R-pakketten zijn vooraf geïnstalleerd in deze installatiekopie. U kunt bepaalde clusterinstellingen weergeven of aanpassen, zoals het aantal en de grootte van de knooppunten. 
+doAzureParallel bevat een functie die een Azure Batch-pool (cluster) genereert voor het uitvoeren van parallelle R-taken. Op de knooppunten draait een [virtuele machine voor datatechnologie van Azure](../machine-learning/data-science-virtual-machine/overview.md) op basis van Ubuntu. Microsoft R Open en populaire R-pakketten zijn vooraf geïnstalleerd in deze installatiekopie. U kunt bepaalde clusterinstellingen weergeven of aanpassen, zoals het aantal en de grootte van de knooppunten.
 
-Een JSON-bestand voor clusterconfiguratie in uw werkmap genereren: 
- 
+Een JSON-bestand voor clusterconfiguratie in uw werkmap genereren:
+
 ```R
 generateClusterConfig("cluster.json")
-``` 
- 
-Open het bestand om de standaardconfiguratie weer te geven, waaronder 3 toegewezen knooppunten en 3 knooppunten met een [lage prioriteit](batch-low-pri-vms.md). Deze instellingen zijn slechts voorbeelden waarmee u kunt experimenteren en die u kunt wijzigen. Toegewezen rekenknooppunten zijn gereserveerd voor uw pool. Knooppunten met een lage prioriteit worden aangeboden tegen een lagere prijs en worden gehaald uit het overschot van de VM-capaciteit in Azure. Knooppunten met een lage prioriteit zijn niet beschikbaar als Azure onvoldoende capaciteit heeft. 
+```
+
+Open het bestand om de standaardconfiguratie weer te geven, waaronder 3 toegewezen knooppunten en 3 knooppunten met een [lage prioriteit](batch-low-pri-vms.md). Deze instellingen zijn slechts voorbeelden waarmee u kunt experimenteren en die u kunt wijzigen. Toegewezen rekenknooppunten zijn gereserveerd voor uw pool. Knooppunten met een lage prioriteit worden aangeboden tegen een lagere prijs en worden gehaald uit het overschot van de VM-capaciteit in Azure. Knooppunten met een lage prioriteit zijn niet beschikbaar als Azure onvoldoende capaciteit heeft.
 
 Voor deze zelfstudie wijzigt u de configuratie als volgt:
 
-* Verhoog `maxTasksPerNode` naar *2* om gebruik te maken van beide kernen op elk knooppunt
-* Stel `dedicatedNodes` in op *0*, zodat u de VM's met lage prioriteit die beschikbaar zijn voor Batch kunt proberen. Stel `min` van `lowPriorityNodes` in op *5*. Stel `max` in op *10* of kies desgewenste lagere waarden. 
+* Verhoog `taskSlotsPerNode` naar *2* om gebruik te maken van beide kernen op elk knooppunt
+* Stel `dedicatedNodes` in op *0*, zodat u de VM's met lage prioriteit die beschikbaar zijn voor Batch kunt proberen. Stel `min` van `lowPriorityNodes` in op *5*. Stel `max` in op *10* of kies desgewenste lagere waarden.
 
 Laat de overige instellingen op de standaardwaarden staan en sla het bestand op. Het moet er ongeveer als volgt uitzien:
 
@@ -110,7 +110,7 @@ Laat de overige instellingen op de standaardwaarden staan en sla het bestand op.
 {
   "name": "myPoolName",
   "vmSize": "Standard_D2_v2",
-  "maxTasksPerNode": 2,
+  "taskSlotsPerNode": 2,
   "poolSize": {
     "dedicatedNodes": {
       "min": 0,
@@ -132,21 +132,21 @@ Laat de overige instellingen op de standaardwaarden staan en sla het bestand op.
 }
 ```
 
-U gaat nu het cluster maken. De pool wordt onmiddellijk gemaakt in Batch, maar het duurt enkele minuten voordat de rekenknooppunten zijn toegewezen en gestart. Als het cluster eenmaal beschikbaar is, registreert u dit als parallelle back-end voor uw R-sessie. 
+U gaat nu het cluster maken. De pool wordt onmiddellijk gemaakt in Batch, maar het duurt enkele minuten voordat de rekenknooppunten zijn toegewezen en gestart. Als het cluster eenmaal beschikbaar is, registreert u dit als parallelle back-end voor uw R-sessie.
 
 ```R
 # Create your cluster if it does not exist; this takes a few minutes
-cluster <- makeCluster("cluster.json") 
-  
-# Register your parallel backend 
-registerDoAzureParallel(cluster) 
-  
-# Check that the nodes are running 
-getDoParWorkers() 
+cluster <- makeCluster("cluster.json")
+
+# Register your parallel backend
+registerDoAzureParallel(cluster)
+
+# Check that the nodes are running
+getDoParWorkers()
 ```
 
-De uitvoer toont het aantal 'uitvoeringswerkrollen' voor doAzureParallel. Dit aantal is het aantal knooppunten vermenigvuldigd met de waarde van `maxTasksPerNode`. Als u de clusterconfiguratie hebt gewijzigd zoals eerder beschreven, is de waarde *10*. 
- 
+De uitvoer toont het aantal 'uitvoeringswerkrollen' voor doAzureParallel. Dit aantal is het aantal knooppunten vermenigvuldigd met de waarde van `taskSlotsPerNode`. Als u de clusterconfiguratie hebt gewijzigd zoals eerder beschreven, is de waarde *10*.
+
 ## <a name="run-a-parallel-simulation"></a>Een parallelle simulatie uitvoeren
 
 Nu uw cluster is gemaakt, bent u klaar om uw foreach-lus uit te voeren met uw geregistreerde parallelle back-end (Azure Batch-pool). Als voorbeeld voert u een financiële Monte Carlo-simulatie uit, eerst lokaal via een standaard foreach-lus, en daarna voert u foreach uit met Batch. Dit voorbeeld is een vereenvoudigde versie van het voorspellen van een aandelenkoers door een groot aantal verschillende uitkomsten na 5 jaar te simuleren.
@@ -156,32 +156,32 @@ Stel dat het aandeel van Contoso Corporation gemiddeld elke dag 1,001 keer de op
 Parameters voor de Monte Carlo-simulatie:
 
 ```R
-mean_change = 1.001 
-volatility = 0.01 
-opening_price = 100 
+mean_change = 1.001
+volatility = 0.01
+opening_price = 100
 ```
 
 Als u slotkoersen wilt simuleren, definieert u de volgende functie:
 
 ```R
-getClosingPrice <- function() { 
-  days <- 1825 # ~ 5 years 
-  movement <- rnorm(days, mean=mean_change, sd=volatility) 
-  path <- cumprod(c(opening_price, movement)) 
-  closingPrice <- path[days] 
-  return(closingPrice) 
-} 
+getClosingPrice <- function() {
+  days <- 1825 # ~ 5 years
+  movement <- rnorm(days, mean=mean_change, sd=volatility)
+  path <- cumprod(c(opening_price, movement))
+  closingPrice <- path[days]
+  return(closingPrice)
+}
 ```
 
 Voer eerst 10.000 simulaties lokaal uit via een standaard foreach-lus met het sleutelwoord `%do%`:
 
 ```R
-start_s <- Sys.time() 
-# Run 10,000 simulations in series 
-closingPrices_s <- foreach(i = 1:10, .combine='c') %do% { 
-  replicate(1000, getClosingPrice()) 
-} 
-end_s <- Sys.time() 
+start_s <- Sys.time()
+# Run 10,000 simulations in series
+closingPrices_s <- foreach(i = 1:10, .combine='c') %do% {
+  replicate(1000, getClosingPrice())
+}
+end_s <- Sys.time()
 ```
 
 
@@ -189,7 +189,7 @@ Zet de slotkoersen uit in een histogram om de distributie van de resultaten weer
 
 ```R
 hist(closingPrices_s)
-``` 
+```
 
 De uitvoer lijkt op het volgende:
 
@@ -198,13 +198,13 @@ De uitvoer lijkt op het volgende:
 Een lokale simulatie wordt in enkele seconden of minder uitgevoerd:
 
 ```R
-difftime(end_s, start_s) 
+difftime(end_s, start_s)
 ```
 
 De geschatte uitvoertijd voor 10 miljoen uitkomsten lokaal met behulp van een lineaire benadering is ongeveer 30 minuten:
 
-```R 
-1000 * difftime(end_s, start_s, unit = "min") 
+```R
+1000 * difftime(end_s, start_s, unit = "min")
 ```
 
 
@@ -212,35 +212,35 @@ Voer de code nu uit met behulp van `foreach` met het sleutelwoord `%dopar%` om t
 
 ```R
 # Optimize runtime. Chunking allows running multiple iterations on a single R instance.
-opt <- list(chunkSize = 10) 
-start_p <- Sys.time()  
-closingPrices_p <- foreach(i = 1:100, .combine='c', .options.azure = opt) %dopar% { 
-  replicate(100000, getClosingPrice()) 
-} 
-end_p <- Sys.time() 
+opt <- list(chunkSize = 10)
+start_p <- Sys.time()
+closingPrices_p <- foreach(i = 1:100, .combine='c', .options.azure = opt) %dopar% {
+  replicate(100000, getClosingPrice())
+}
+end_p <- Sys.time()
 ```
 
-De simulatie distribueert taken naar de knooppunten in de Batch-pool. U ziet de activiteit in de heatmap voor de pool in de Azure Portal. Ga naar **Batch-accounts** > *myBatchAccount*. Klik op **Pools** > *myPoolName*. 
+De simulatie distribueert taken naar de knooppunten in de Batch-pool. U ziet de activiteit in de heatmap voor de pool in de Azure Portal. Ga naar **Batch-accounts** > *myBatchAccount*. Klik op **Pools** > *myPoolName*.
 
 ![Heatmap van pool waarin parallelle R-taken worden uitgevoerd](media/tutorial-r-doazureparallel/pool.png)
 
-Na enkele minuten is de simulatie voltooid. Het pakket voegt de resultaten automatisch samen en haalt ze op uit de knooppunten. Vervolgens kunt u de resultaten gaan gebruiken in uw R-sessie. 
+Na enkele minuten is de simulatie voltooid. Het pakket voegt de resultaten automatisch samen en haalt ze op uit de knooppunten. Vervolgens kunt u de resultaten gaan gebruiken in uw R-sessie.
 
 ```R
-hist(closingPrices_p) 
+hist(closingPrices_p)
 ```
 
 De uitvoer lijkt op het volgende:
 
 ![Distributie van slotkoersen](media/tutorial-r-doazureparallel/closing-prices.png)
 
-Hoe lange duurde de parallelle simulatie? 
+Hoe lange duurde de parallelle simulatie?
 
 ```R
-difftime(end_p, start_p, unit = "min")  
+difftime(end_p, start_p, unit = "min")
 ```
 
-U ziet dat het uitvoeren van de simulatie in de Batch-pool een aanzienlijke toename in de prestaties oplevert ten opzichte van de tijd die het kost om de simulatie lokaal uit te voeren. 
+U ziet dat het uitvoeren van de simulatie in de Batch-pool een aanzienlijke toename in de prestaties oplevert ten opzichte van de tijd die het kost om de simulatie lokaal uit te voeren.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
 ms.openlocfilehash: 83725a3839d36fc753bb43803e67acaca7571a6e
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85851839"
 ---
 # <a name="custom-commands-concepts-and-definitions"></a>Concepten en definities voor aangepaste opdrachten
@@ -54,7 +54,7 @@ Aangepaste opdrachten bieden ondersteuning voor de volgende parameter typen:
 
 * DateTime
 * Geografie
-* Aantal
+* Getal
 * Tekenreeks
 
 Al deze parameter typen ondersteunen configuratie van de standaard waarde, die u vanuit de Azure Portal kunt configureren.
@@ -72,7 +72,7 @@ Configuratie is een para meter-eigenschap die alleen voor de type teken reeks is
 Validaties zijn constructies die van toepassing zijn op bepaalde parameter typen waarmee u beperkingen kunt configureren voor de waarde van een para meter. Op dit moment worden door aangepaste opdrachten validaties ondersteund voor de volgende parameter typen:
 
 * DateTime
-* Aantal
+* Getal
 
 ## <a name="rules-configuration"></a>Configuratie van regels
 Een regel in aangepaste opdrachten wordt gedefinieerd door een set *voor waarden* die, wanneer wordt voldaan, een reeks *acties*uitvoeren. Met regels kunt u ook de status van de *post-uitvoering* en de *verwachtingen* configureren voor de volgende beurt.

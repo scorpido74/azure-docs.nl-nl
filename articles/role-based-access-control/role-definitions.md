@@ -16,17 +16,17 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
 ms.openlocfilehash: 7c6f9203385c47da9803fb05358889d00d77d3e5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86511633"
 ---
 # <a name="understand-azure-role-definitions"></a>Informatie over Azure Role-definities
 
 Als u wilt weten hoe een Azure-rol werkt of als u uw eigen [aangepaste Azure-rol](custom-roles.md)maakt, is het handig om te begrijpen hoe rollen worden gedefinieerd. In dit artikel worden de details van roldefinities beschreven en vindt u enkele voor beelden.
 
-## <a name="role-definition"></a>Roldefinitie ophalen
+## <a name="role-definition"></a>Roldefinitie
 
 Een *roldefinitie* is een verzameling machtigingen. Het wordt soms gewoon een *rol*genoemd. Een roldefinitie beschijft de bewerkingen die kunnen worden uitgevoerd, zoals lezen, schrijven en verwijderen. Het kan ook een overzicht geven van de bewerkingen die zijn uitgesloten van toegestane bewerkingen of bewerkingen met betrekking tot onderliggende gegevens.
 
@@ -239,7 +239,7 @@ Eigenaar
 &nbsp;&nbsp;&nbsp;&nbsp;Regelen<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`*`
 
-Inzender voor Storage BLOB-gegevens
+Inzender voor Storage Blob-gegevens
 
 &nbsp;&nbsp;&nbsp;&nbsp;Regelen<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/delete`<br>
@@ -265,7 +265,7 @@ Als u gegevens bewerkingen wilt bekijken en gebruiken, moet u beschikken over de
 | Hulpprogramma  | Versie  |
 |---------|---------|
 | [Azure PowerShell](/powershell/azure/install-az-ps) | 1.1.0 of hoger |
-| [Azure CLI](/cli/azure/install-azure-cli) | 2.0.30 of hoger |
+| [Azure-CLI](/cli/azure/install-azure-cli) | 2.0.30 of hoger |
 | [Azure voor .NET](/dotnet/azure/) | 2.8.0-Preview of hoger |
 | [Azure SDK voor Go](/azure/go/azure-sdk-go-install) | 15.0.0 of hoger |
 | [Azure voor Java](/java/azure/) | 1.9.0 of hoger |
@@ -294,7 +294,7 @@ Als u de gegevens bewerkingen in het REST API wilt bekijken en gebruiken, moet u
 `NotActions`Met de machtiging worden de beheer bewerkingen opgegeven die worden uitgesloten van de toegestaan `Actions` . Gebruik de `NotActions` machtiging als de set bewerkingen die u wilt toestaan eenvoudiger is gedefinieerd door beperkte bewerkingen uit te sluiten. De toegang die wordt verleend door een rol (efficiënte machtigingen) wordt berekend door de `NotActions` bewerkingen van de bewerkingen af te trekken `Actions` .
 
 > [!NOTE]
-> Als aan een gebruiker een rol is toegewezen die een bewerking uitsluit in `NotActions` , en aan een tweede rol wordt toegewezen die toegang verleent aan dezelfde bewerking, mag de gebruiker die bewerking uitvoeren. `NotActions`is geen regel voor weigeren: het is een handige manier om een reeks toegestane bewerkingen te maken wanneer specifieke bewerkingen moeten worden uitgesloten.
+> Als aan een gebruiker een rol is toegewezen die een bewerking uitsluit in `NotActions` , en aan een tweede rol wordt toegewezen die toegang verleent aan dezelfde bewerking, mag de gebruiker die bewerking uitvoeren. `NotActions` is geen regel voor weigeren: het is een handige manier om een reeks toegestane bewerkingen te maken wanneer specifieke bewerkingen moeten worden uitgesloten.
 >
 
 ## <a name="dataactions"></a>DataActions
@@ -314,7 +314,7 @@ Als u de gegevens bewerkingen in het REST API wilt bekijken en gebruiken, moet u
 `NotDataActions`Met de machtiging worden de gegevens bewerkingen opgegeven die worden uitgesloten van de toegestaan `DataActions` . De toegang die wordt verleend door een rol (efficiënte machtigingen) wordt berekend door de `NotDataActions` bewerkingen van de bewerkingen af te trekken `DataActions` . Elke resource provider biedt de respectieve set Api's om te voldoen aan gegevens bewerkingen.
 
 > [!NOTE]
-> Als aan een gebruiker een rol is toegewezen die een gegevens bewerking uitsluit in en `NotDataActions` waaraan een tweede rol wordt toegewezen die toegang verleent aan dezelfde gegevens bewerking, mag de gebruiker die gegevens bewerking uitvoeren. `NotDataActions`is geen regel voor weigeren: het is een handige manier om een set toegestane gegevens bewerkingen te maken wanneer specifieke gegevens bewerkingen moeten worden uitgesloten.
+> Als aan een gebruiker een rol is toegewezen die een gegevens bewerking uitsluit in en `NotDataActions` waaraan een tweede rol wordt toegewezen die toegang verleent aan dezelfde gegevens bewerking, mag de gebruiker die gegevens bewerking uitvoeren. `NotDataActions` is geen regel voor weigeren: het is een handige manier om een set toegestane gegevens bewerkingen te maken wanneer specifieke gegevens bewerkingen moeten worden uitgesloten.
 >
 
 ## <a name="assignablescopes"></a>AssignableScopes

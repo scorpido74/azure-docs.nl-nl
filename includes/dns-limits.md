@@ -5,35 +5,35 @@ ms.topic: include
 ms.date: 2/14/2020
 ms.author: rohink
 ms.openlocfilehash: 0f7187300ec96ce417866c4fb8fa02783c1da63a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86515852"
 ---
-**Open bare DNS-zones**
+**Openbare DNS-zones**
 
 | Resource | Limiet |
 | --- | --- |
-| Open bare DNS-zones per abonnement |250 <sup>1</sup> |
-| Record sets per open bare DNS-zone |10.000 <sup>1</sup> |
-| Records per recordset die in open bare DNS-zone is ingesteld |20 |
-| Aantal alias records voor één Azure-resource |20|
+| Openbare DNS-zones per abonnement |250 <sup>1</sup> |
+| Recordsets per openbare DNS-zone |10.000 <sup>1</sup> |
+| Records per recordset in openbare DNS-zone |20 |
+| Aantal Alias-records voor een enkele Azure-resource |20|
 
-<sup>1</sup> Als u deze limieten wilt verhogen, neemt u contact op met de ondersteuning van Azure.
+<sup>1</sup>als u deze limieten wilt verhogen, neemt u contact op met ondersteuning voor Azure.
 
-**Privé-DNS zones**
+**Privé-DNS-zones**
 
 | Resource | Limiet |
 | --- | --- |
-| Privé-DNS zones per abonnement |1000|
-| Record sets per privé-DNS-zone |25.000|
+| Privé-DNS-zones per abonnement |1000|
+| Recordsets per privé-DNS-zone |25.000|
 | Records per recordset voor privé-DNS-zones |20|
-| Virtual Network koppelingen per privé-DNS-zone |1000|
-| Virtuele netwerken koppelingen per privé-DNS-zone met automatische registratie ingeschakeld |100|
+| Virtual Network-koppelingen per privé-DNS-zone |1000|
+| Virtual Network-koppelingen per privé-DNS-zones met automatische registratie ingeschakeld |100|
 | Aantal privé-DNS-zones waaraan een virtueel netwerk kan worden gekoppeld met automatische registratie ingeschakeld |1|
-| Aantal privé-DNS-zones waaraan een virtueel netwerk kan worden gekoppeld |1000|
-| Aantal DNS-query's dat een virtuele machine kan verzenden naar Azure DNS resolver per seconde |500 <sup>1</sup> |
-| Maximum aantal DNS-query's in wachtrij (reactie in behandeling) per virtuele machine |200 <sup>1</sup> |
+| Aantal privé-DNS-zones in een virtueel netwerk dat kan worden gekoppeld |1000|
+| Aantal DNS-query's dat een virtuele machine naar een Azure DNS-omzetter kan sturen, per seconde |500 <sup>1</sup> |
+| Maximumaantal DNS-query's in wachtrij (reactie in behandeling) per virtuele machine |200 <sup>1</sup> |
 
-<sup>1</sup> Deze limieten worden toegepast op elke afzonderlijke virtuele machine en niet op het niveau van het virtuele netwerk. DNS-query's die deze limieten overschrijden, worden verwijderd.
+<sup>1</sup>Deze limieten worden toegepast op elke afzonderlijke virtuele machine en niet op het niveau van het virtuele netwerk. DNS-query's die deze limieten overschrijden, worden verwijderd.

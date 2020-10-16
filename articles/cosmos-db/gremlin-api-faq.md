@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: sngun
 ms.openlocfilehash: 416cf4f027b6f1e72641324be39ba0304301db37
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82614497"
 ---
 # <a name="frequently-asked-questions-about-the-gremlin-api-in-azure-cosmos-db"></a>Veelgestelde vragen over de Gremlin-API in Azure Cosmos DB
@@ -142,7 +142,7 @@ Een Gremlin-verbinding wordt gemaakt via een WebSocket-verbinding. Hoewel WebSoc
 
 ### <a name="why-cant-i-use-fluent-api-calls-in-the-native-gremlin-drivers"></a>Waarom kan ik geen fluent API-aanroepen gebruiken in de systeem eigen Gremlin-Stuur Programma's?
 
-Fluent API-aanroepen worden nog niet ondersteund door de Azure Cosmos DB Gremlin API. Voor Fluent-API-aanroepen is een interne indelings functie vereist die ondersteuning biedt voor byte code die momenteel niet wordt ondersteund door Azure Cosmos DB Gremlin-API. Vanwege dezelfde reden wordt het meest recente Gremlin-java script-stuur programma momenteel ook niet ondersteund.
+Fluent API-aanroepen worden nog niet ondersteund door de Azure Cosmos DB Gremlin API. Voor Fluent-API-aanroepen is een interne indelings functie vereist die ondersteuning biedt voor byte code die momenteel niet wordt ondersteund door Azure Cosmos DB Gremlin-API. Om dezelfde reden wordt het meest recente Gremlin-JavaScript-stuur programma momenteel ook niet ondersteund.
 
 ## <a name="next-steps"></a>Volgende stappen
 

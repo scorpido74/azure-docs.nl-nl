@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: 0b032f48e18651af7f360471cc2834a5c45acc56
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 0297c8674cc47a1d5f59fef196a60175244eaae2
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831410"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978319"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>IBM DB2 pureScale op Azure
 
@@ -86,7 +86,7 @@ Deze architectuur voert de toepassings-, opslag-en gegevens lagen uit op virtuel
 
 ### <a name="storage-considerations"></a>Opslagoverwegingen
 
-Net als Oracle RAC is DB2 pureScale een krachtige blok-I/O-en scale-out-data base. We raden u aan om de grootste optie voor [Azure Premium SSD](disks-types.md) te gebruiken die aansluit bij uw behoeften. Kleinere opslag opties zijn mogelijk geschikt voor ontwikkel-en test omgevingen, terwijl productie omgevingen vaak meer opslag capaciteit nodig hebben. De voorbeeld architectuur maakt gebruik van [P30](https://azure.microsoft.com/pricing/details/managed-disks/) vanwege de verhouding van IOPS tot grootte en prijs. Ongeacht de grootte gebruikt u Premium Storage voor de beste prestaties.
+Net als Oracle RAC is DB2 pureScale een krachtige blok-I/O-en scale-out-data base. We raden u aan om de grootste optie voor [Azure Premium SSD](../disks-types.md) te gebruiken die aansluit bij uw behoeften. Kleinere opslag opties zijn mogelijk geschikt voor ontwikkel-en test omgevingen, terwijl productie omgevingen vaak meer opslag capaciteit nodig hebben. De voorbeeld architectuur maakt gebruik van [P30](https://azure.microsoft.com/pricing/details/managed-disks/) vanwege de verhouding van IOPS tot grootte en prijs. Ongeacht de grootte gebruikt u Premium Storage voor de beste prestaties.
 
 DB2 pureScale maakt gebruik van een gedeelde-alles-architectuur, waarbij alle gegevens toegankelijk zijn vanaf alle cluster knooppunten. Premium-opslag moet worden gedeeld door meerdere exemplaren, hetzij op aanvraag of op toegewezen exemplaren.
 

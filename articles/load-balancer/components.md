@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: ccc6611f14903e47a76de938994552378bb3bc24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4dbbd3443ec6c455ba9bcb88ff90dd4960aff5d2
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "88589704"
+ms.locfileid: "91930948"
 ---
 # <a name="azure-load-balancer-components"></a>Azure Load Balancer-componenten
 
@@ -125,6 +125,13 @@ Met een regel voor uitgaand verkeer wordt de uitgaande netwerkadresomzetting (NA
 Meer informatie over [uitgaande verbindingen en regels](load-balancer-outbound-connections.md).
 
 De Basic Load Balancer biedt geen ondersteuning voor regels voor uitgaand verkeer.
+
+## <a name="limitations"></a>Beperkingen
+
+- Voor deze specifieke TCP- of UDP-protocollen biedt Load Balancer taakverdeling en port forwarding. Taakverdelingsregels en inkomende NAT-regels bieden ondersteuning voor TCP en UDP, maar niet voor andere IP-protocollen, waaronder ICMP.
+- Uitgaande stroom van een back-end-VM naar een front-end van een interne Load Balancer mislukt.
+- Een regel voor een load balancer kan niet twee virtuele netwerken omvatten.  Front-ends en de bijbehorende back-endinstanties moeten zich in hetzelfde virtuele netwerk bevinden.  
+- Het doorsturen van IP-fragmenten wordt niet ondersteund voor taakverdelingsregels. IP-fragmentatie van UDP- en TCP-pakketten wordt niet ondersteund in taakverdelingsregels. De taakverdelingsregels voor HA-poorten kunnen worden gebruikt voor het doorsturen van bestaande IP-fragmenten. Zie [Overzicht van poorten met hoge beschikbaarheid](load-balancer-ha-ports-overview.md) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7e1eab20a8e315b977c21de46dd4f6ea2fec9f5d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d5537079341823275ba521c9d44139a0e0305286
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83701489"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014933"
 ---
 # <a name="setup-diagnostic-logging"></a>Registratie in diagnoselogboek instellen
 
-Een belang rijk onderdeel van een Analysis Services oplossing is het controleren hoe uw servers worden uitgevoerd. Azure Analysis Services is geïntegreerd met Azure Monitor. Met [Azure monitor-bron logboeken](../azure-monitor/platform/platform-logs-overview.md)kunt u logboeken controleren en verzenden naar [Azure Storage](https://azure.microsoft.com/services/storage/), ze streamen naar [Azure Event hubs](https://azure.microsoft.com/services/event-hubs/)en exporteren naar [Azure monitor logboeken](../azure-monitor/azure-monitor-log-hub.md).
+Een belang rijk onderdeel van een Analysis Services oplossing is het controleren hoe uw servers worden uitgevoerd. Azure Analysis Services is geïntegreerd met Azure Monitor. Met [Azure monitor-bron logboeken](../azure-monitor/platform/platform-logs-overview.md)kunt u logboeken controleren en verzenden naar [Azure Storage](https://azure.microsoft.com/services/storage/), ze streamen naar [Azure Event hubs](https://azure.microsoft.com/services/event-hubs/)en exporteren naar [Azure monitor logboeken](../azure-monitor/overview.md).
 
 ![Bron logboek registratie voor opslag, Event Hubs of Azure Monitor-logboeken](./media/analysis-services-logging/aas-logging-overview.png)
 
@@ -28,7 +28,7 @@ U kunt categorieën voor **engine**, **service**en **metrische gegevens** select
 
 ### <a name="engine"></a>Engine
 
-Selecteren **engine** Logboeken alle [xEvents](https://docs.microsoft.com/analysis-services/instances/monitor-analysis-services-with-sql-server-extended-events). U kunt geen afzonderlijke gebeurtenissen selecteren. 
+Selecteren **engine** Logboeken alle [xEvents](/analysis-services/instances/monitor-analysis-services-with-sql-server-extended-events). U kunt geen afzonderlijke gebeurtenissen selecteren. 
 
 |XEvent-Categorieën |Gebeurtenis naam  |
 |---------|---------|
@@ -40,13 +40,13 @@ Selecteren **engine** Logboeken alle [xEvents](https://docs.microsoft.com/analys
 |Voortgangs rapporten     |   Huidige voortgangs rapport      |
 |Query's     |  Start van query       |
 |Query's     |   Einde van query      |
-|Opdrachten     |  Begin opdracht       |
-|Opdrachten     |  Einde van opdracht       |
+|Opdracht     |  Begin opdracht       |
+|Opdracht     |  Einde van opdracht       |
 |Waarschuwingen voor fouten &     |   Fout      |
 |Ontdekken     |   End ontdekken      |
 |Melding     |    Melding     |
 |Sessie     |  Initialisatie van sessies       |
-|Vergrendelingen    |  Constateer       |
+|Vergrendelingen    |  Impasse       |
 |Query verwerking     |   Starten van VertiPaq SE-query      |
 |Query verwerking     |   Einde van VertiPaq SE-query      |
 |Query verwerking     |   Overeenkomende query cache van VertiPaq SE      |
@@ -80,7 +80,7 @@ De categorie metrische gegevens registreert dezelfde [Server metrieken](analysis
 
     * **Naam**. Voer een naam in voor de logboeken die u wilt maken.
 
-    * **Archiveren naar een opslag account**. Als u deze optie wilt gebruiken, hebt u een bestaand opslag account nodig om verbinding mee te maken. Zie [een opslag account maken](../storage/common/storage-create-storage-account.md). Volg de instructies voor het maken van een Resource Manager-account voor algemeen gebruik en selecteer vervolgens uw opslag account door terug te gaan naar deze pagina in de portal. Het kan enkele minuten duren voordat nieuwe opslagaccounts worden weergegeven in de vervolgkeuzelijst.
+    * **Archiveren naar een opslag account**. Als u deze optie wilt gebruiken, hebt u een bestaand opslag account nodig om verbinding mee te maken. Zie [een opslag account maken](../storage/common/storage-account-create.md). Volg de instructies voor het maken van een Resource Manager-account voor algemeen gebruik en selecteer vervolgens uw opslag account door terug te gaan naar deze pagina in de portal. Het kan enkele minuten duren voordat nieuwe opslagaccounts worden weergegeven in de vervolgkeuzelijst.
     * **Streamen naar een event hub**. Als u deze optie wilt gebruiken, hebt u een bestaande Event hub-naam ruimte en Event Hub nodig om verbinding te maken. Zie [Create an Event Hubs namespace and an event hub using the Azure portal](../event-hubs/event-hubs-create.md) (Een Event Hub-naamruimte en een Event Hub maken met behulp van de Azure-portal) voor meer informatie. Ga vervolgens terug naar deze pagina in de portal om de Event hub-naam ruimte en de naam van het beleid te selecteren.
     * **Send to Azure monitor (log Analytics-werk ruimte)**. Als u deze optie wilt gebruiken, moet u een bestaande werk ruimte gebruiken of [een nieuwe werkruimte resource maken](../azure-monitor/learn/quick-create-workspace.md) in de portal. Zie [Logboeken weer geven in log Analytics werk ruimte](#view-logs-in-log-analytics-workspace) in dit artikel voor meer informatie over het weer geven van uw logboeken.
 
@@ -90,7 +90,7 @@ De categorie metrische gegevens registreert dezelfde [Server metrieken](analysis
 
 3. Klik op **Opslaan**.
 
-    Als er een fout bericht wordt weer gegeven waarin wordt vermeld dat diagnostische gegevens niet kunnen worden bijgewerkt voor \<workspace name> . Het abonnement \<subscription id> is niet geregistreerd voor het gebruik van micro soft. Insights. Volg de instructies voor het [oplossen van problemen Azure Diagnostics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage) om het account te registreren en voer deze procedure opnieuw uit.
+    Als er een fout bericht wordt weer gegeven waarin wordt vermeld dat diagnostische gegevens niet kunnen worden bijgewerkt voor \<workspace name> . Het abonnement \<subscription id> is niet geregistreerd voor het gebruik van micro soft. Insights. Volg de instructies voor het [oplossen van problemen Azure Diagnostics](../azure-monitor/platform/resource-logs.md) om het account te registreren en voer deze procedure opnieuw uit.
 
     Als u wilt wijzigen hoe uw bron logboeken op elk moment in de toekomst worden opgeslagen, kunt u teruggaan naar deze pagina om de instellingen te wijzigen.
 
@@ -136,11 +136,11 @@ U kunt deze parameters combineren om meerdere uitvoeropties in te schakelen.
 
 ### <a name="rest-api"></a>REST-API
 
-Leer hoe u [diagnostische instellingen kunt wijzigen met behulp van de Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/). 
+Leer hoe u [diagnostische instellingen kunt wijzigen met behulp van de Azure Monitor REST API](/rest/api/monitor/). 
 
 ### <a name="resource-manager-template"></a>Resource Manager-sjabloon
 
-Leer hoe u [diagnostische instellingen kunt inschakelen tijdens het maken van een resource met behulp van een Resource Manager-sjabloon](../azure-monitor/platform/diagnostic-settings-template.md). 
+Leer hoe u [diagnostische instellingen kunt inschakelen tijdens het maken van een resource met behulp van een Resource Manager-sjabloon](../azure-monitor/samples/resource-manager-diagnostic-settings.md). 
 
 ## <a name="manage-your-logs"></a>Logboeken beheren
 
@@ -154,7 +154,7 @@ Logboeken zijn doorgaans beschikbaar binnen een paar uur na het instellen van lo
 
 Metrische gegevens en server gebeurtenissen zijn geïntegreerd met xEvents in uw Log Analytics werkruimte resource voor de analyse van de side-by-side. Log Analytics-werk ruimte kan ook worden geconfigureerd voor het ontvangen van gebeurtenissen van andere Azure-Services met een holistische weer gave van gegevens van diagnostische logboek registratie in uw architectuur.
 
-Als u uw diagnostische gegevens wilt weer geven, opent u in Log Analytics werk ruimte **Logboeken** vanuit het linkermenu.
+Als u uw diagnostische gegevens wilt weer geven, opent u in Log Analytics werk ruimte **Logboeken**  vanuit het linkermenu.
 
 ![Opties voor logboek zoeken in het Azure Portal](./media/analysis-services-logging/aas-logging-open-log-search.png)
 
@@ -213,7 +213,7 @@ Er zijn honderden query's die u kunt gebruiken. Zie aan de [slag met Azure monit
 
 ## <a name="turn-on-logging-by-using-powershell"></a>Logboek registratie inschakelen met behulp van Power shell
 
-In deze snelle zelf studie maakt u een opslag account in hetzelfde abonnement en dezelfde resource groep als uw Analysis Service-server. Vervolgens gebruikt u set-AzDiagnosticSetting om diagnostische logboek registratie in te scha kelen en de uitvoer naar het nieuwe opslag account te verzenden.
+In deze snelle zelf studie maakt u een opslag account in hetzelfde abonnement en dezelfde resource groep als uw Analysis Service-server. Vervolgens gebruikt u Set-AzDiagnosticSetting om diagnostische logboek registratie in te scha kelen en de uitvoer naar het nieuwe opslag account te verzenden.
 
 ### <a name="prerequisites"></a>Vereisten
 Voor het volt ooien van deze zelf studie hebt u de volgende resources nodig:
@@ -328,4 +328,4 @@ Set-AzDiagnosticSetting -ResourceId $account.ResourceId`
 
 Meer informatie over [Azure monitor bron logboek registratie](../azure-monitor/platform/platform-logs-overview.md).
 
-Zie [set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) in Power shell Help.
+Zie [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) in Power shell Help.

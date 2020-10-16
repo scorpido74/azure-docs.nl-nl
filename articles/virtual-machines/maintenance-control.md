@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 04/22/2020
 ms.author: cynthn
-ms.openlocfilehash: c3e914b904b0f6f1d3a4fae6c43c81cdf4eae819
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4d126d1e6bb92d2079ac3c0d95f754cb9aab3c21
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080009"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978608"
 ---
 # <a name="managing-platform-updates-with-maintenance-control"></a>Platform updates beheren met onderhouds controle 
 
@@ -28,7 +28,7 @@ Met onderhouds controle kunt u het volgende doen:
 
 ## <a name="limitations"></a>Beperkingen
 
-- Vm's moeten op een [specifieke host](./linux/dedicated-hosts.md)staan of worden gemaakt met behulp van een [geïsoleerde VM-grootte](isolation.md).
+- Vm's moeten op een [specifieke host](./dedicated-hosts.md)staan of worden gemaakt met behulp van een [geïsoleerde VM-grootte](isolation.md).
 - Na 35 dagen wordt een update automatisch toegepast.
 - De gebruiker moet toegang hebben tot de **resource bijdrager** .
 
@@ -36,7 +36,7 @@ Met onderhouds controle kunt u het volgende doen:
 
 U kunt onderhouds configuraties maken en beheren met een van de volgende opties:
 
-- [Azure CLI](maintenance-control-cli.md)
+- [Azure-CLI](maintenance-control-cli.md)
 - [Azure PowerShell](maintenance-control-powershell.md)
 - [Azure-portal](maintenance-control-portal.md)
 

@@ -4,7 +4,7 @@
   items:
     - name: Wat is Azure Load Balancer?
       href: load-balancer-overview.md
-- name: Snelstartgidsen
+- name: Quickstarts
   items:
     - name: Een openbare load balancer maken - Portal
       href: quickstart-load-balancer-standard-public-portal.md
@@ -45,7 +45,7 @@
       href: whats-new.md
     - name: Onderdelen
       href: components.md
-    - name: Concepten
+    - name: Algoritme voor taakverdeling
       href: concepts.md
     - name: SKU's
       href: skus.md
@@ -63,9 +63,12 @@
       href: load-balancer-ha-ports-overview.md
     - name: Meerdere frontends
       href: load-balancer-multivip-overview.md
-    - name: Uitgaande verbindingen
+    - name: Uitgaande proxy
       href: load-balancer-outbound-connections.md
     - name: TCP opnieuw instellen en TCP uitschakelen bij inactiviteit
+    - name: Regels voor uitgaand verkeer
+      href: outbound-rules.md
+    - name: TCP opnieuw instellen bij time-out wegens inactiviteit
       href: load-balancer-tcp-reset.md
     - name: Load Balancer van het type Standard en beschikbaarheidszones
       href: load-balancer-standard-availability-zones.md
@@ -79,7 +82,7 @@
       href: backend-pool-management.md
     - name: Standard Load Balancer en Virtual Machine Scale Sets
       href: load-balancer-standard-virtual-machine-scale-sets.md
-- name: Procedures
+- name: Uitleg
   items:
     - name: Portalinstellingen
       href: manage.md

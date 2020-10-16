@@ -9,10 +9,10 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.openlocfilehash: 590416f077fc1ff9430e42e27217548476c9032f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132769"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Functies zijn informatie over acties en context
@@ -131,7 +131,7 @@ Het is mogelijk om uw functie sets te verbeteren door ze te bewerken zodat deze 
 
 Een time stamp voor het tweede is bijvoorbeeld een zeer verspreide functie. Dit kan een meer compacte (effectief) zijn door tijden te classificeren naar 's ochtends, rond middaguur, 's middags enzovoort.
 
-Locatie gegevens hebben doorgaans voor delen ten opzichte van het maken van grotere classificaties. Een coördinaat van een breedte graad zoals lat: 47,67402 ° N, Long: 122,12154 ° W is bijvoorbeeld te nauw keurig en dwingt het model om de breedte graad en lengte graad als afzonderlijke dimensies te ontdekken. Wanneer u probeert te personaliseren op basis van locatie-informatie, is het handig om locatie gegevens te groeperen in grotere sectoren. Een eenvoudige manier om dat te doen is door een geschikte Afrondings precisie te kiezen voor de lat-lange getallen en de breedte graad en lengte graad te combi neren in ' gebieden ' door ze in één teken reeks te maken. Een goede manier om 47,67402 ° N te vertegenwoordigen, lang: 122,12154 ° W in regio's ongeveer een paar kilo meters is ' locatie ': ' 34.3, 12,1 '.
+Locatie gegevens hebben doorgaans voor delen ten opzichte van het maken van grotere classificaties. Bijvoorbeeld een Latitude-Longitude coördinaat zoals lat: 47,67402 ° N, Long: 122,12154 ° W is te nauw keurig en dwingt het model om de breedte graad en lengte graad als afzonderlijke dimensies te ontdekken. Wanneer u probeert te personaliseren op basis van locatie-informatie, is het handig om locatie gegevens te groeperen in grotere sectoren. Een eenvoudige manier om dat te doen, is door een geschikte Afrondings precisie te kiezen voor de Lat-Long getallen en de breedte graad en lengte graad te combi neren in ' gebieden ' door ze in één teken reeks te brengen. Een goede manier om 47,67402 ° N te vertegenwoordigen, lang: 122,12154 ° W in regio's ongeveer een paar kilo meters is ' locatie ': ' 34.3, 12,1 '.
 
 
 #### <a name="expand-feature-sets-with-extrapolated-information"></a>Functie sets met extrapolatie gegevens uitvouwen
@@ -152,7 +152,7 @@ Bijvoorbeeld:
 
 U kunt verschillende andere [Azure-Cognitive Services](https://www.microsoft.com/cognitive-services)gebruiken, zoals
 
-* [Entiteiten koppelen](../entitylinking/home.md)
+* [Entiteit koppelen](../entitylinking/home.md)
 * [Tekstanalyse](../text-analytics/overview.md)
 * [Emotion](../emotion/home.md)
 * [Computer Vision](../computer-vision/home.md)
@@ -177,7 +177,7 @@ Geen meer dan 50 acties verzenden bij het classificeren van acties. Dit kunnen d
 
 De acties die u naar de positie-API verzendt, zijn afhankelijk van wat u probeert te personaliseren.
 
-Hier volgen enkele voorbeelden:
+Enkele voorbeelden:
 
 |Doel|Bewerking|
 |--|--|

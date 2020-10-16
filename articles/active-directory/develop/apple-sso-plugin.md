@@ -14,10 +14,10 @@ ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.openlocfilehash: ec0ab4601e15129ecd8917e0e750a3e1661dc558
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91530694"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>Micro soft Enter prise SSO-invoeg toepassing voor Apple-apparaten (preview-versie)
@@ -35,7 +35,7 @@ In deze open bare preview-versie is de Enter prise SSO-invoeg toepassing alleen 
 
 De micro soft Enter prise SSO-invoeg toepassing voor Apple-apparaten biedt de volgende voor delen:
 
-- Voorziet in SSO voor Azure AD-accounts voor alle toepassingen die ondersteuning bieden voor de functie voor eenmalige aanmelding van Apple.
+- Voorziet in SSO voor Azure AD-accounts voor alle toepassingen die ondersteuning bieden voor de functie voor één Sign-On van Apple.
 - Wordt automatisch geleverd in de Microsoft Authenticator en kan worden ingeschakeld door elke Mobile Device Management (MDM)-oplossing.
 
 ## <a name="requirements"></a>Vereisten
@@ -125,7 +125,7 @@ Als u een toepassing bouwt voor Frontline-werk scenario's, raadpleegt u de [modu
 
 ## <a name="how-the-sso-plug-in-works"></a>Hoe de SSO-invoeg toepassing werkt
 
-De micro soft Enter prise SSO-invoeg toepassing is afhankelijk van het [Apple-Framework voor eenmalige aanmelding voor ondernemingen](https://developer.apple.com/documentation/authenticationservices/asauthorizationsinglesignonprovider?language=objc). Id-providers die de onboarding van het Framework mogelijk maken, kunnen netwerk verkeer voor hun domeinen onderscheppen en verbeteren of wijzigen hoe deze aanvragen worden afgehandeld. De SSO-invoeg toepassing kan bijvoorbeeld een extra gebruikers interface weer geven om referenties voor de eind gebruiker veilig te verzamelen, MFA vereist of op de achtergrond tokens voor de toepassing bieden.
+De micro soft Enter prise SSO-invoeg toepassing is gebaseerd op het [Single Sign-On Framework van Apple](https://developer.apple.com/documentation/authenticationservices/asauthorizationsinglesignonprovider?language=objc). Id-providers die de onboarding van het Framework mogelijk maken, kunnen netwerk verkeer voor hun domeinen onderscheppen en verbeteren of wijzigen hoe deze aanvragen worden afgehandeld. De SSO-invoeg toepassing kan bijvoorbeeld een extra gebruikers interface weer geven om referenties voor de eind gebruiker veilig te verzamelen, MFA vereist of op de achtergrond tokens voor de toepassing bieden.
 
 Systeem eigen toepassingen kunnen ook aangepaste bewerkingen implementeren en rechtstreeks communiceren met de SSO-invoeg toepassing.
 Meer informatie over het Framework voor eenmalige aanmelding vindt u in deze [2019 WWDC-video van Apple](https://developer.apple.com/videos/play/tech-talks/301/)

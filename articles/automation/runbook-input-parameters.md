@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
 ms.openlocfilehash: 84e2eaf71326f59102800428479768aeba9ef9ab
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87042144"
 ---
 # <a name="configure-runbook-input-parameters"></a>Invoerparameters voor een runbook configureren
@@ -27,7 +27,7 @@ Power shell-en Power shell-werk stroom-runbooks in Azure Automation ondersteunen
 | **Eigenschap** | **Beschrijving** |
 |:--- |:--- |
 | Type |Vereist. Het gegevens type wordt verwacht voor de parameter waarde. Elk .NET-type is geldig. |
-| Naam |Vereist. De naam van de para meter. Deze naam moet uniek zijn binnen het runbook, moet beginnen met een letter en mag alleen letters, cijfers of onderstrepings tekens bevatten. |
+| Name |Vereist. De naam van de para meter. Deze naam moet uniek zijn binnen het runbook, moet beginnen met een letter en mag alleen letters, cijfers of onderstrepings tekens bevatten. |
 | Verplicht |Optioneel. Booleaanse waarde die aangeeft of de para meter een waarde vereist. Als u dit instelt op waar, moet er een waarde worden opgegeven wanneer het runbook wordt gestart. Als u deze instelt op False, is een waarde optioneel. Als u geen waarde opgeeft voor de `Mandatory` eigenschap, wordt de invoer parameter standaard optioneel beschouwd door Power shell. |
 | Standaardwaarde |Optioneel. Een waarde die wordt gebruikt voor de para meter als er geen invoer waarde wordt door gegeven wanneer het runbook wordt gestart. Met het runbook kunt u een standaard waarde instellen voor elke para meter. |
 
@@ -201,7 +201,7 @@ In het label onder het invoervak ziet u de eigenschappen die zijn ingesteld om p
     }
    ```
 
-   U kunt deze methode starten door een woorden boek te maken voor het opslaan van de runbook-para meters `VMName` en `resourceGroupName` de waarden ervan. Start vervolgens het runbook. Hieronder vindt u het code fragment C# voor het aanroepen van de hierboven gedefinieerde methode.
+   U kunt deze methode starten door een woorden boek te maken voor het opslaan van de runbook-para meters `VMName` en  `resourceGroupName` de waarden ervan. Start vervolgens het runbook. Hieronder vindt u het code fragment C# voor het aanroepen van de hierboven gedefinieerde methode.
 
    ```csharp
    IDictionary<string, string> RunbookParameters = new Dictionary<string, string>();
@@ -216,7 +216,7 @@ In het label onder het invoervak ziet u de eigenschappen die zijn ingesteld om p
 
 #### <a name="start-a-runbook-using-the-rest-api-and-assign-parameters"></a>Een runbook starten met de para meters REST API en Assign
 
-U kunt een runbook-taak maken en starten met de Azure Automation REST API met behulp van de- `PUT` methode met de volgende aanvraag-URI:`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}?api-version=2017-05-15-preview`
+U kunt een runbook-taak maken en starten met de Azure Automation REST API met behulp van de- `PUT` methode met de volgende aanvraag-URI: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}?api-version=2017-05-15-preview`
 
 Vervang de volgende para meters in de aanvraag-URI:
 
@@ -324,7 +324,7 @@ Nu kunt u het runbook aanroepen vanaf uw lokale computer met behulp van Azure Po
     >[!NOTE]
     >Voor PowerShell-runbooks zijn `Add-AzAccount` en `Add-AzureRMAccount` aliassen voor `Connect-AzAccount`. Houd er rekening mee dat deze aliassen niet beschikbaar zijn voor grafische runbooks. Een grafisch runbook kan alleen worden gebruikt `Connect-AzAccount` .
 
-1. De inhoud van het opgeslagen JSON-bestand ophalen en converteren naar een teken reeks. `JsonPath`Hiermee geeft u het pad op naar de locatie waar u het JSON-bestand hebt opgeslagen.
+1. De inhoud van het opgeslagen JSON-bestand ophalen en converteren naar een teken reeks. `JsonPath` Hiermee geeft u het pad op naar de locatie waar u het JSON-bestand hebt opgeslagen.
 
    ```powershell
    $json =  (Get-content -path 'JsonPath\test.json' -Raw) | Out-string

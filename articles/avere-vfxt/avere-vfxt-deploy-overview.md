@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: 4c63fdf2164dd4dce12912669eec29c79755cc2a
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88271223"
 ---
 <!-- filename is linked to in the marketplace template, make sure it gets a redirect if we rename it -->
@@ -60,7 +60,7 @@ Hier volgt een overzicht van alle stappen.
 
    Maak verbinding met de configuratie-interface van AVERE vFXT (avere in het configuratie scherm) om de instellingen van het cluster aan te passen. Meld u aan voor ondersteunings bewaking en voeg uw opslag systeem toe als u hardware-opslag of extra BLOB-containers gebruikt.
 
-   * [Access the vFXT cluster](avere-vfxt-cluster-gui.md) (Toegang tot het vFXT-cluster)
+   * [Access the vFXT cluster (Toegang tot het vFXT-cluster)](avere-vfxt-cluster-gui.md)
    * [Ondersteuning inschakelen](avere-vfxt-enable-support.md)
    * [Opslag configureren](avere-vfxt-add-storage.md) (indien nodig)
 

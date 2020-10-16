@@ -1,5 +1,5 @@
 ---
-title: Herstel na nood geval en failover van het opslag account
+title: Herstel na noodgeval en failover van opslagaccount
 titleSuffix: Azure Storage
 description: Azure Storage ondersteunt de failover van accounts voor geo-redundante opslag accounts. Met account-failover kunt u het failover-proces voor uw opslag account initiëren als het primaire eind punt niet beschikbaar is.
 services: storage
@@ -11,13 +11,13 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.openlocfilehash: e9bd2db8bcc427118a76f87e49ade422a74a11c1
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87276921"
 ---
-# <a name="disaster-recovery-and-storage-account-failover"></a>Herstel na nood geval en failover van het opslag account
+# <a name="disaster-recovery-and-storage-account-failover"></a>Herstel na noodgeval en failover van opslagaccount
 
 Micro soft streeft ernaar om ervoor te zorgen dat Azure-Services altijd beschikbaar zijn. Er kunnen echter niet-geplande service storingen optreden. Als uw toepassing tolerantie vereist, raadt micro soft aan geografisch redundante opslag te gebruiken, zodat uw gegevens naar een tweede regio worden gekopieerd. Daarnaast moeten klanten een nood herstel plan hebben voor het verwerken van een regionale service storing. Een belang rijk onderdeel van een plan voor herstel na nood gevallen is bezig met het voorbereiden van een failover naar het secundaire eind punt in het geval dat het primaire eind punt niet beschikbaar is.
 
@@ -171,7 +171,7 @@ Als uw opslag account is geconfigureerd voor lees toegang tot de secundaire, kun
 
 In uitzonderlijke omstandigheden waarbij een regio door een belang rijke nood geval verloren gaat, kan micro soft een regionale failover initiëren. In dit geval is er geen actie voor uw onderdeel vereist. Totdat de door micro soft beheerde failover is voltooid, hebt u geen schrijf toegang tot uw opslag account. Uw toepassingen kunnen lezen uit de secundaire regio als uw opslag account is geconfigureerd voor RA-GRS of RA-GZRS.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 - [Geo-redundantie gebruiken om Maxi maal beschik bare toepassingen te ontwerpen](geo-redundant-design.md)
 - [Een failover van account initiëren](storage-initiate-account-failover.md)

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
 ms.openlocfilehash: 3747033fcaf65e0c6da07e9f1bb625771958bb4f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319058"
 ---
 # <a name="create-a-custom-voice"></a>Een Custom Voice maken
@@ -117,7 +117,7 @@ Nadat het letter type is gemaakt, kunt u het testen voordat u het voor gebruik i
     > [!NOTE]
     > De taal van de tekst moet hetzelfde zijn als de taal van uw spraak lettertype. Alleen goed getrainde modellen kunnen worden getest. In deze stap wordt alleen tekst zonder opmaak ondersteund.
 
-5.  Klik op **Create**.
+5.  Klik op **Maken**.
 
 Zodra u uw test aanvraag hebt verzonden, keert u terug naar de pagina test. De tabel bevat nu een vermelding die overeenkomt met uw nieuwe aanvraag en de kolom Status. Het kan een paar minuten duren om spraak te maken. Wanneer de kolom status **is geslaagd**, kunt u de audio afspelen of de tekst invoer (een. txt-bestand) en audio-uitvoer (een. wav-bestand) downloaden en de Audition voor kwaliteit verder afstemmen.
 

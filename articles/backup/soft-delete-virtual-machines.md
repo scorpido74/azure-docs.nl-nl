@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.custom: references_regions
 ms.openlocfilehash: a8b70d4c8240d096c19e5a8d7449921557b8896c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89022238"
 ---
 # <a name="soft-delete-for-virtual-machines"></a>Voorlopig verwijderen voor virtuele machines
@@ -19,7 +19,7 @@ Zacht verwijderen voor Vm's beveiligt de back-ups van uw Vm's tegen onbedoeld ve
 > Met zacht verwijderen worden verwijderde back-upgegevens alleen beveiligd. Als een virtuele machine wordt verwijderd zonder een back-up, blijven de gegevens in de functie voor het voorlopig verwijderen bewaard. Alle resources moeten worden beveiligd met Azure Backup om volledige tolerantie te garanderen.
 >
 
-## <a name="supported-regions"></a>Ondersteunde regio's
+## <a name="supported-regions"></a>Ondersteunde regio’s
 
 Voorlopig verwijderen wordt momenteel ondersteund in de West-Centraal VS, Azië-oost, Canada-centraal, Canada-oost, Frankrijk-centraal, Frankrijk-zuid, Korea-centraal, Korea-zuid, UK-zuid, UK-west, Australië-oost, Australië-Zuid-Oost, Europa-noord, VS-West, West VS2, VS-midden, Zuid-Azië-oost, Noord-Centraal VS, Zuid-Centraal VS, Japan-Oost, Japan-West, VS-Oost 2 , Zwitserland-noord, Zwitserland-west, Noor wegen West, Noor wegen Oost en alle nationale regio's.
 

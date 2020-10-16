@@ -12,16 +12,16 @@ ms.author: moslake
 ms.reviewer: sstein
 ms.date: 9/17/2020
 ms.openlocfilehash: 2d317ac2543289aca3a0741b424f71a2e903c74d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91321404"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database serverloos
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Serverloos is een compute-laag voor afzonderlijke data bases in Azure SQL Database waarmee de berekening automatisch wordt geschaald op basis van de vraag van de werk belasting en de facturen voor de hoeveelheid reken kracht die per seconde wordt gebruikt. De compute-laag zonder server onderbreekt ook automatisch data bases tijdens inactieve Peri Oden wanneer alleen opslag wordt gefactureerd en automatisch data bases hervat wanneer de activiteit wordt geretourneerd.
+Serverloos is een compute-laag voor afzonderlijke data bases in Azure SQL Database waarmee de berekening automatisch wordt geschaald op basis van de vraag van de werk belasting en de facturen voor de hoeveelheid reken kracht die per seconde wordt gebruikt. De serverloze compute-laag pauzeert databases ook automatisch tijdens inactieve perioden, zodat er alleen opslag wordt gefactureerd, en hervat databases automatisch wanneer er weer activiteit plaatsvindt.
 
 ## <a name="serverless-compute-tier"></a>Serverloze compute-laag
 
@@ -133,7 +133,7 @@ Autohervatten wordt geactiveerd als een van de volgende voor waarden op elk mome
 |Verificatie en autorisatie|Aanmelden|
 |Detectie van bedreigingen|Instellingen voor detectie van bedreigingen in-of uitschakelen op Data Base-of server niveau.<br>Instellingen voor detectie van bedreigingen wijzigen op Data Base-of server niveau.|
 |Gegevensdetectie en -classificatie|Toevoegen, wijzigen, verwijderen of weer geven van gevoeligheids labels|
-|Controle|Controle records weer geven.<br>Controle beleid bijwerken of weer geven.|
+|Controleren|Controle records weer geven.<br>Controle beleid bijwerken of weer geven.|
 |Gegevensmaskering|Regels voor gegevens maskering toevoegen, wijzigen, verwijderen of weer geven|
 |Transparent Data Encryption|Status of status van transparante gegevens versleuteling weer geven|
 |Evaluatie van beveiligingsproblemen|Ad hoc-scans en periodieke scans als deze functie is ingeschakeld|
@@ -367,5 +367,5 @@ De compute-laag zonder server is wereld wijd beschikbaar, met uitzonde ring van 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Quick Start: een enkele data base maken in Azure SQL database met behulp van de Azure Portal](single-database-create-quickstart.md)om aan de slag te gaan.
-- Zie [resource limieten voor serverloze Compute-lagen](resource-limits-vcore-single-databases.md#general-purpose---serverless-compute---gen5)voor resource limieten.
+- Als u aan de slag wilt gaan, raadpleegt u [Quickstart: Een individuele database maken in Azure SQL Database met de Azure-portal](single-database-create-quickstart.md).
+- Zie voor resourcelimieten [Resourcelimieten voor serverloze compute-lagen](resource-limits-vcore-single-databases.md#general-purpose---serverless-compute---gen5).

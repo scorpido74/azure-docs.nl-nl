@@ -4,10 +4,10 @@ description: Dit artikel bevat conceptuele informatie over Diagnostische logboek
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: c8f6734d9d43887d0eb0bb90bb08f727732feac3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86116740"
 ---
 #  <a name="diagnostic-logs-for-azure-event-grid-topicsdomains"></a>Diagnostische logboeken voor Azure Event Grid onderwerpen/domeinen
@@ -16,9 +16,9 @@ Met Diagnostische instellingen kunnen Event Grid gebruikers publicatie- **en bez
 
 ## <a name="schema-for-publishdelivery-failure-logs"></a>Schema voor fouten logboeken voor publiceren/afleveren
 
-| Naam van eigenschap | Gegevenstype | Description |
+| Naam van eigenschap | Gegevenstype | Beschrijving |
 | ------------- | --------- | ----------- | 
-| Tijd | DateTime | Het tijdstip waarop de logboek vermelding is gegenereerd <p>**Voorbeeld waarde:** 01-29-2020 09:52:02.700</p> |
+| Tijd | DateTime | Het tijdstip waarop de logboek vermelding is gegenereerd <p>**Voorbeeld waarde:**  01-29-2020 09:52:02.700</p> |
 | EventSubscriptionName | Tekenreeks | De naam van het gebeurtenis abonnement <p>**Voorbeeld waarde:** "EVENTSUB1"</p> <p>Deze eigenschap bestaat alleen voor het afleveren van fouten Logboeken.</p>  |
 | Categorie | Tekenreeks | De naam van de logboek categorie. <p>**Voorbeeld waarden:** "DeliveryFailures" of "PublishFailures" | 
 | OperationName | Tekenreeks | De naam van de bewerking die wordt uitgevoerd terwijl de fout optreedt.<p>**Voorbeeld waarden:** ' Leveren ' voor leverings fouten. |

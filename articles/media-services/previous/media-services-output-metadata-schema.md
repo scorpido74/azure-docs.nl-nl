@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: cd81ef78ecc5ef9cea71adb387597681460d50c8
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89261305"
 ---
 # <a name="output-metadata"></a>Uitvoer meta gegevens
@@ -50,7 +50,7 @@ U kunt een XML-voor beeld [-XML-voor](#xml)beeld vinden.
 ### <a name="attributes"></a>Kenmerken
 | Naam | Type | Beschrijving |
 | --- | --- | --- |
-| **Name**<br/><br/> Vereist |**XS: teken reeks** |De bestands naam voor het Media-activum. |
+| **Naam**<br/><br/> Vereist |**XS: teken reeks** |De bestands naam voor het Media-activum. |
 | **Grootte**<br/><br/> minInclusive = "0"<br/><br/> Vereist |**XS: Long** |Grootte van het activa bestand in bytes. |
 | **Duur**<br/><br/> Vereist |**XS: duration** |Duur van het afspelen van inhoud. |
 
@@ -79,7 +79,7 @@ U kunt een XML-voor beeld [-XML-voor](#xml)beeld vinden.
 ### <a name="attributes"></a>Kenmerken
 | Naam | Type | Beschrijving |
 | --- | --- | --- |
-| **Name**<br/><br/> Vereist |**XS: teken reeks** |Bestands naam van invoer bron. |
+| **Naam**<br/><br/> Vereist |**XS: teken reeks** |Bestands naam van invoer bron. |
 
 ## <a name="videotracks-element"></a><a name="VideoTracks"></a> VideoTracks-element
 Elk fysiek AssetFile kan in de waarde nul bevatten of meer Video's worden getraceerd in een geschikte container indeling. Het **VideoTracks** -element vertegenwoordigt een verzameling van alle video tracks.  
@@ -97,7 +97,7 @@ Een specifiek video spoor in het bovenliggende AssetFile.
 U kunt een XML-voor beeld [-XML-voor](#xml)beeld vinden.  
 
 ### <a name="attributes"></a>Kenmerken
-| Naam | Type | Description |
+| Naam | Type | Beschrijving |
 | --- | --- | --- |
 | **Id**<br/><br/> minInclusive = "0"<br/><br/> Vereist |**XS: int** |Op nul gebaseerde index van deze video track. **Opmerking:**  Deze **id** is niet noodzakelijkerwijs de TrackID die in een MP4-bestand wordt gebruikt. |
 | **FourCC**<br/><br/> Vereist |**XS: teken reeks** |Code van de video-codec FourCC. |
@@ -129,7 +129,7 @@ Een specifiek audio spoor in het bovenliggende AssetFile.
 U kunt een XML-voor beeld [-XML-voor](#xml)beeld vinden.  
 
 ### <a name="attributes"></a>Kenmerken
-| Naam | Type | Description |
+| Naam | Type | Beschrijving |
 | --- | --- | --- |
 | **Id**<br/><br/> minInclusive = "0"<br/><br/> Vereist |**XS: int** |Op nul gebaseerde index van dit audio spoor. **Opmerking:**  Dit is niet noodzakelijkerwijs de TrackID die in een MP4-bestand wordt gebruikt. |
 | **Videocodec** |**XS: teken reeks** |Teken reeks van codec audio track. |
@@ -150,7 +150,7 @@ Para meters voor Loudness-meet resultaten.
 U kunt een XML-voor beeld [-XML-voor](#xml)beeld vinden.  
 
 ### <a name="attributes"></a>Kenmerken
-| Naam | Type | Description |
+| Naam | Type | Beschrijving |
 | --- | --- | --- |
 | **DPLMVersionInformation** |**XS: teken reeks** |Versie van **Dolby** Professional LOUDNESS meter Development Kit. |
 | **DialogNormalization**<br/><br/> minInclusive = "-31" maxInclusive = "-1"<br/><br/> Vereist |**XS: int** |DialogNormalization gegenereerd via DPLM, vereist wanneer LoudnessMetering is ingesteld |

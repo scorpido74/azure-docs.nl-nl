@@ -10,10 +10,10 @@ services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
 ms.openlocfilehash: af31ab04653beb440655c4ab1a75946bed17c01b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91285091"
 ---
 # <a name="get-information-from-a-coordinate"></a>Informatie ophalen uit een coördinaat
@@ -62,10 +62,10 @@ De wijziging van de cursor, het pop-upobject en de Click-gebeurtenis worden alle
 Meer informatie over de klassen en methoden die in dit artikel worden gebruikt:
 
 > [!div class="nextstepaction"]
-> [Kaart](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
+> [Diagram](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
-> [Achtergrond](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup)
+> [Popup](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup)
 
 Raadpleeg de volgende artikelen voor voor beelden van volledige code:
 

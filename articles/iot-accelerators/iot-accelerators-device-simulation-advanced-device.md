@@ -13,12 +13,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: 101bd9ce351ea830688fc18affdf21ce527ba43a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3295815be035544d27da52926e5271c2c5551f28
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91261427"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076042"
 ---
 # <a name="create-an-advanced-device-model"></a>Een geavanceerd apparaatmodel maken
 
@@ -166,7 +166,7 @@ De velden die in het schema worden weer gegeven, kunnen van de volgende typen zi
 * Object-geserialiseerd met JSON
 * Binair geserialiseerd met base64
 * Tekst
-* Boolean-waarde
+* Boolean
 * Geheel getal
 * Dubbel
 * DateTime
@@ -520,4 +520,4 @@ Als uw bestanden worden gevalideerd, klikt u op **Opslaan** en is het model van 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze hand leiding vindt u informatie over de model bestanden van het apparaat die worden gebruikt in simulatie van apparaten en het maken van een geavanceerd model voor apparaten. Vervolgens wilt u mogelijk verkennen hoe u Time Series Insights kunt [gebruiken om de telemetrie te visualiseren die wordt verzonden vanuit de Device simulatie Solution Accelerator](https://docs.microsoft.com/azure/iot-accelerators/iot-accelerators-device-simulation-time-series-insights).
+In deze hand leiding vindt u informatie over de model bestanden van het apparaat die worden gebruikt in simulatie van apparaten en het maken van een geavanceerd model voor apparaten. Vervolgens wilt u mogelijk verkennen hoe u Time Series Insights kunt [gebruiken om de telemetrie te visualiseren die wordt verzonden vanuit de Device simulatie Solution Accelerator](./iot-accelerators-device-simulation-time-series-insights.md).

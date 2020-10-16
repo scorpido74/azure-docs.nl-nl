@@ -8,10 +8,10 @@ ms.author: mbaldwin
 ms.date: 10/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: 21194bf2fe76a7eb0ee034d4a502c20ee3032dd9
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87543670"
 ---
 # <a name="azure-disk-encryption-for-virtual-machines-and-virtual-machine-scale-sets"></a>Azure Disk Encryption voor virtuele machines en virtuele-machineschaalsets
@@ -25,9 +25,9 @@ De volgende artikelen bevatten richt lijnen voor het versleutelen van virtuele L
 ### <a name="current-version-of-azure-disk-encryption"></a>Huidige versie van Azure Disk Encryption
 
 - [Overzicht van Azure Disk Encryption voor Linux-VM's](../../virtual-machines/linux/disk-encryption-overview.md)
-- [Azure Disk Encryption-scenario's voor virtuele Linux-machines](../../virtual-machines/linux/disk-encryption-linux.md)
+- [Azure Disk Encryption-scenario's voor Linux-VM's](../../virtual-machines/linux/disk-encryption-linux.md)
 - [Een Linux-VM maken en versleutelen met behulp van Azure CLI](../../virtual-machines/linux/disk-encryption-cli-quickstart.md)
-- [Een virtuele Linux-machine maken en versleutelen met Azure PowerShell](../../virtual-machines/linux/disk-encryption-powershell-quickstart.md)
+- [Een Linux-VM maken en versleutelen met behulp van Azure PowerShell](../../virtual-machines/linux/disk-encryption-powershell-quickstart.md)
 - [Een Linux-VM maken en versleutelen met behulp van Azure Portal](../../virtual-machines/linux/disk-encryption-portal-quickstart.md)
 - [Azure Disk Encryption extensie schema voor Linux](../../virtual-machines/extensions/azure-disk-enc-linux.md)
 - [Een sleutelkluis voor Azure Disk Encryption maken en configureren](../../virtual-machines/linux/disk-encryption-key-vault.md)
@@ -78,5 +78,5 @@ De volgende artikelen bevatten richt lijnen voor het versleutelen van virtuele-m
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Overzicht van Azure-versleuteling](encryption-overview.md)
-- [Gegevens versleuteling in rust](encryption-atrest.md)
+- [Versleuteling van inactieve gegevens](encryption-atrest.md)
 - [Best practices voor gegevensbeveiliging en -versleuteling](data-encryption-best-practices.md)

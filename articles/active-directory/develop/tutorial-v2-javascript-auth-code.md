@@ -1,7 +1,7 @@
 ---
-title: JavaScript-zelfstudie voor een app met één pagina - autorisatiecodestroom | Azure
+title: 'Zelfstudie: Een JavaScript-app met één pagina maken die gebruikmaakt van de verificatiecodestroom | Azure'
 titleSuffix: Microsoft identity platform
-description: Hoe Java script-SPA-toepassingen de autorisatiecodestroom kunnen gebruiken voor het aanroepen van een API waarvoor toegangstokens zijn vereist door Azure Active Directory v 2.0-eindpunt
+description: In deze zelfstudie maakt u een JavaScript-app met één pagina waarmee gebruikers kunnen worden aangemeld en de verificatiecodestroom kan worden gebruikt om een toegangstoken van het Microsoft-identiteitsplatform te verkrijgen en de Microsoft Graph-API aan te roepen.
 services: active-directory
 author: hahamil
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 7a136c03db6e27763a22d92d2c335f23c616856e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3caf12e13b5999c40843f1203ac8ce7f2f21ef6b
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91256803"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665868"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>Zelfstudie: Gebruikers aanmelden en de Microsoft Graph API aanroepen vanuit een JavaScript-app met één pagina met behulp van autorisatiecodestroom
 
@@ -32,6 +32,11 @@ Deze zelfstudie laat zien hoe u een JavaScript-toepassing met één pagina (SPA)
 MSAL.js 2.0 verbetert MSAL.js 1.0 door de autorisatiecodestroom in de browser te ondersteunen in plaats van de impliciete toekenningsstroom. MSAL.js 2.0 biedt **GEEN** ondersteuning voor de impliciete stroom.
 
 [!INCLUDE [MSAL.js 2.0 and Azure AD B2C temporary incompatibility notice](../../../includes/msal-b2c-cors-compatibility-notice.md)]
+
+## <a name="prerequisites"></a>Vereisten
+
+* [Node.js-](https://nodejs.org/en/download/) voor het uitvoeren van een lokale webserver
+* [Visual Studio Code](https://code.visualstudio.com/download) of een andere code-editor
 
 ## <a name="how-the-tutorial-app-works"></a>Hoe de zelfstudie-app werkt
 
@@ -52,11 +57,6 @@ Wilt u in plaats daarvan het voltooide voorbeeldproject van deze zelfstudie down
 Ga verder met de [configuratiestap](#register-your-application) om het codevoorbeeld te configureren vóórdat u het uitvoert.
 
 Als u wilt doorgaan met de zelfstudie en de toepassing zelf wilt maken, gaat u naar de volgende sectie, [Vereisten](#prerequisites).
-
-## <a name="prerequisites"></a>Vereisten
-
-* [Node.js-](https://nodejs.org/en/download/) voor het uitvoeren van een lokale webserver
-* [Visual Studio Code](https://code.visualstudio.com/download) of een andere code-editor
 
 ## <a name="create-your-project"></a>Uw project maken
 
@@ -551,7 +551,9 @@ Wanneer een gebruiker de knop **Aanmelden** voor de eerste keer selecteert, roep
 
 Op dit moment wordt een met PKCE beveiligde autorisatiecode verzonden naar het eindpunt van het met CORS beveiligde token en wordt deze uitgewisseld voor tokens. Er worden een ID-token, toegangstoken en vernieuwingstoken ontvangen door uw toepassing en verwerkt door *msal.js*, en de gegevens in de tokens worden in de cache opgeslagen.
 
-Het ID-token bevat basisinformatie over de gebruiker, zoals de weergavenaam. Als u van plan bent om gegevens te gebruiken die worden verstrekt door het ID-token, *moet* uw back-endserver dit valideren om te garanderen dat het token is uitgegeven aan een geldige gebruiker voor uw toepassing. Het vernieuwingstoken heeft een beperkte levensduur en verloopt na 24 uur. Het vernieuwingstoken kan worden gebruikt om nieuwe toegangstokens op de achtergrond te verkrijgen.
+Het ID-token bevat basisinformatie over de gebruiker, zoals de weergavenaam. Als u van plan bent om gegevens te gebruiken die worden verstrekt door het ID-token, *moet* uw back-endserver dit valideren om te garanderen dat het token is uitgegeven aan een geldige gebruiker voor uw toepassing.
+
+Het toegangstoken heeft een beperkte levensduur en verloopt na 24 uur. Het vernieuwingstoken kan worden gebruikt om nieuwe toegangstokens op de achtergrond te verkrijgen.
 
 De SPA die u in deze zelfstudie hebt gemaakt, roept `acquireTokenSilent` en/of `acquireTokenPopup` aan om een *toegangstoken te verkrijgen* dat wordt gebruikt om een query uit te voeren op de Microsoft Graph API voor profielgegevens van gebruikers. Als u een voorbeeld nodig hebt dat het ID-token valideert, raadpleegt u de voorbeeldtoepassing [active-directory-javascript-singlepageapp-dotnet-webapi-v2](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) op GitHub. In het voorbeeld wordt een ASP.NET-web-API gebruikt voor het valideren van tokens.
 
@@ -649,14 +651,7 @@ Als voor een back-end-API geen bereik is vereist, wat niet aanbevolen wordt, kun
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Deze zelfstudie laat zien hoe u een JavaScript-toepassing met één pagina (SPA) maakt die gebruikmaakt van de Microsoft Authentication Library (MSAL) voor JavaScript v2.0 om:
+Zie voor meer informatie over het ontwikkelen van JavaScript-toepassingen met één pagina op het Microsoft-identiteitsplatform onze reeks scenario's:
 
-> [!div class="checklist"]
-> * De OAuth 2.0-autorisatiecodestroom uitvoeren met PKCE
-> * Zowel werk- en schoolaccounts als persoonlijke Microsoft-accounts aanmelden
-> * Een toegangstoken verkrijgen
-> * Roep Microsoft Graph aan of uw eigen API die toegangstokens vereist die zijn verkregen van het Microsoft identiteitsplatform-eindpunt
-
-Voor meer informatie over de autorisatiecodestroom, met inbegrip van de verschillen tussen de impliciete en autorisatiecodestromen, raadpleegt u [Microsoft-identiteitsplatform en de OAuth 2.0-autorisatiecodestroom](v2-oauth2-auth-code-flow.md).
-
-Als u meer wilt weten over het ontwikkelen van toepassingen met één pagina op het Microsoft-identiteitsplatform, is de reeks artikelen [Scenario: Een toepassing met één pagina](scenario-spa-overview.md)-serie artikelen is nuttig om mee aan de slag te gaan.
+> [!div class="nextstepaction"]
+> [Scenario: Toepassing met één pagina](scenario-spa-overview.md)

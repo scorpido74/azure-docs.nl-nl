@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/1/2016
 ms.author: alkohli
 ms.openlocfilehash: d7c7cf335336cc552adaf5d9490bc58d64b0cdc9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85515435"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-virtual-array"></a>De StorSimple Apparaatbeheer-service gebruiken voor het beheren van de virtuele StorSimple-matrix
@@ -60,10 +60,10 @@ Klik op de juiste procedure in de tabel voor meer informatie over elke werk stro
 | Herstel na nood gevallen en failover van het apparaat</br>Failover-vereisten</br>Bedrijfs continuïteit nood herstel (BCDR)</br>Fouten tijdens nood herstel |[Herstel na nood gevallen en failover van het apparaat voor uw virtuele StorSimple-matrix](storsimple-virtual-array-failover-dr.md) |
 | Back-ups maken van shares en volumes</br>Een hand matige back-up maken</br>Het back-upschema wijzigen</br>Bestaande back-ups weer geven |[Back-up maken van de virtuele StorSimple-matrix](storsimple-virtual-array-backup.md) |
 | Shares van een back-upset klonen</br>Volumes van een back-upset klonen</br>Herstel op item niveau (alleen bestands server) |[Klonen vanuit een back-up van uw virtuele StorSimple-matrix](storsimple-virtual-array-clone.md) |
-| Over opslag accounts</br>Een opslag account toevoegen</br>Een opslag account bewerken</br>Een opslagaccount verwijderen |[Opslag accounts beheren voor de virtuele StorSimple-matrix](storsimple-virtual-array-manage-storage-accounts.md) |
+| Over opslag accounts</br>Een opslagaccount toevoegen</br>Een opslag account bewerken</br>Een opslagaccount verwijderen |[Opslag accounts beheren voor de virtuele StorSimple-matrix](storsimple-virtual-array-manage-storage-accounts.md) |
 | Access Control records</br>Een Access Control Record toevoegen of wijzigen </br>Een Access Control Record verwijderen |[Access Control records beheren voor de virtuele StorSimple-matrix](storsimple-virtual-array-manage-acrs.md) |
 | Taakdetails weergeven |[StorSimple virtuele-matrix taken beheren](storsimple-virtual-array-manage-jobs.md) |
-| Instellingen voor waarschuwingen configureren</br>Waarschuwingen ontvangen</br>Waarschuwingen beheren</br>Waarschuwingen controleren |[Waarschuwingen voor de virtuele StorSimple-matrix weer geven en beheren](storsimple-virtual-array-manage-alerts.md) |
+| Waarschuwingsinstellingen configureren</br>Waarschuwingen ontvangen</br>Waarschuwingen beheren</br>Waarschuwingen weergeven |[Waarschuwingen voor de virtuele StorSimple-matrix weer geven en beheren](storsimple-virtual-array-manage-alerts.md) |
 | Het beheerders wachtwoord van het apparaat wijzigen |[Het beheerders wachtwoord voor de StorSimple Virtual array wijzigen](storsimple-virtual-array-change-device-admin-password.md) |
 | Software-updates installeren |[Uw virtuele matrix bijwerken](storsimple-virtual-array-install-update.md) |
 

@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
 ms.openlocfilehash: 090e3f93d025fe87ad5b89a98193574595f3d632
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91614579"
 ---
 # <a name="set-up-the-aggregated-namespace"></a>De geaggregeerde naam ruimte instellen
@@ -55,7 +55,7 @@ Laad de pagina **naam ruimte** -instellingen vanuit het Azure Portal. Op deze pa
 
 * **Een pad naar een naam ruimte verwijderen:** Selecteer het selectie vakje links van het pad en klik op de knop **verwijderen** .
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 [!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
 
@@ -117,7 +117,7 @@ Vul deze waarden in voor elk pad naar de naam ruimte:
 
 ![scherm afbeelding van de pagina Portal-naam ruimte met de update pagina aan de rechter kant openen](media/update-namespace-nfs.png)
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 [!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
 

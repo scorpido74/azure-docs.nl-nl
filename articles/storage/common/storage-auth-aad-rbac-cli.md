@@ -12,10 +12,10 @@ ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 31d98e0d37da1b957d86e425e01fe04de842f532
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91715145"
 ---
 # <a name="use-azure-cli-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>Azure CLI gebruiken om een Azure-rol toe te wijzen voor toegang tot Blob-en wachtrij gegevens
@@ -24,7 +24,7 @@ Met Azure Active Directory (Azure AD) worden de toegangs rechten voor beveiligde
 
 Wanneer een Azure-rol is toegewezen aan een Azure AD-beveiligings-principal, verleent Azure toegang tot de resources voor die beveiligings-principal. De toegang kan worden beperkt tot het niveau van het abonnement, de resource groep, het opslag account of een afzonderlijke container of wachtrij. Een beveiligings-principal voor Azure AD kan een gebruiker, een groep, een service-principal van de toepassing of een [beheerde identiteit voor Azure-resources](../../active-directory/managed-identities-azure-resources/overview.md)zijn.
 
-In dit artikel wordt beschreven hoe u Azure CLI gebruikt om ingebouwde rollen van Azure op te geven en ze toe te wijzen aan gebruikers. Zie [Azure-opdracht regel interface (CLI)](/cli/azure)voor meer informatie over het gebruik van Azure cli.
+In dit artikel wordt beschreven hoe u Azure CLI gebruikt om ingebouwde rollen van Azure op te geven en ze toe te wijzen aan gebruikers. Zie [azure Command-Line interface (CLI)](/cli/azure)voor meer informatie over het gebruik van Azure cli.
 
 ## <a name="azure-roles-for-blobs-and-queues"></a>Azure-rollen voor blobs en wacht rijen
 

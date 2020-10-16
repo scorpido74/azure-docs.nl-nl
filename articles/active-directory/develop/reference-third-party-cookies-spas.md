@@ -14,10 +14,10 @@ ms.author: hirsin
 ms.reviewer: kkrishna
 ms.custom: aaddev
 ms.openlocfilehash: cc93f4062851f01dd127c108ca60bc240a1940e6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87311752"
 ---
 # <a name="handle-itp-in-safari-and-other-browsers-where-third-party-cookies-are-blocked"></a>ITP in Safari en andere browsers waar cookies van derden worden geblokkeerd, afhandelen
@@ -83,4 +83,4 @@ Dit vernieuwings token patroon voor beperkte levens duur is gekozen als een even
 
 Meer informatie over de [autorisatie code stroom](v2-oauth2-auth-code-flow.md).
 
-Probeer de autorisatie code stroom uit met de [Snelstartgids vanMSAL.js 2,0](quickstart-v2-javascript-auth-code.md).
+Probeer de autorisatie code stroom uit met de [ Snelstartgids vanMSAL.js 2,0](quickstart-v2-javascript-auth-code.md).

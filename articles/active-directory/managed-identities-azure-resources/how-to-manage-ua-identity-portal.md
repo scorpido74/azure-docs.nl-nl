@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/26/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5045c81f280d9d7687a466aed2e918d21eec697
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 7ad91c916a6134f2507e74df6e87478421a00f43
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266384"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977422"
 ---
 # <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>Een rol maken, weer geven, verwijderen of toewijzen aan een door de gebruiker toegewezen beheerde identiteit met behulp van de Azure Portal
 
@@ -45,7 +45,7 @@ Als u een door de gebruiker toegewezen beheerde identiteit wilt maken, moet uw a
     - **Regio**: Kies een regio voor het implementeren van de door de gebruiker toegewezen beheerde identiteit, bijvoorbeeld **VS-West**.
     - **Naam**: dit is de naam voor de door de gebruiker toegewezen beheerde identiteit, bijvoorbeeld UAI1.
     ![Een door de gebruiker toegewezen beheerde identiteit maken](./media/how-to-manage-ua-identity-portal/create-user-assigned-managed-identity-portal.png)
-4. Klik op weer **geven + krat** om de wijzigingen te bekijken.
+4. Klik op **beoordeling + maken** om de wijzigingen te bekijken.
 5. Klik op **Create**.
 
 ## <a name="list-user-assigned-managed-identities"></a>Door de gebruiker toegewezen beheerde identiteiten weer geven

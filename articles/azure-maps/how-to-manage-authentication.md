@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 3383971b9984e6f565feebc3bdfb968fb77cbe85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6fb4d1459584e8dd2b230a424f043ad086f2570d
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311100"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089448"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Verificatie in Azure Maps beheren
 
@@ -41,7 +41,7 @@ Afhankelijk van de toepassings behoeften zijn er specifieke paden om de toepassi
 De volgende tabel bevat een overzicht van de algemene scenario's voor verificatie en autorisatie in Azure Maps. De tabel bevat een vergelijking van de soorten beveiliging die elk scenario biedt.
 
 > [!IMPORTANT]
-> Micro soft raadt aan om Azure Active Directory (Azure AD) te implementeren met op rollen gebaseerd toegangs beheer (RBAC) voor productie toepassingen.
+> Micro soft raadt aan om Azure Active Directory (Azure AD) te implementeren met op rollen gebaseerd toegangs beheer van Azure (Azure RBAC) voor productie toepassingen.
 
 | Scenario                                                                                    | Verificatie | Autorisatie | Ontwikkelings inspanning | Operationele inspanningen |
 | ------------------------------------------------------------------------------------------- | -------------- | ------------- | ------------------ | ------------------ |
@@ -63,10 +63,10 @@ Ga naar **toegangs beheer (IAM)** om Azure-functies weer te geven die beschikbaa
 
 ## <a name="view-role-assignments"></a>Roltoewijzingen weergeven
 
-Ga naar **Access Control (IAM)** om gebruikers en apps weer te geven die zijn toegewezen RBAC voor Azure Maps. Hier selecteert u **roltoewijzingen**en filtert u vervolgens op **Azure Maps**.
+Ga naar **Access Control (IAM)** om gebruikers en apps weer te geven die toegang hebben gekregen voor Azure Maps. Hier selecteert u **roltoewijzingen**en filtert u vervolgens op **Azure Maps**.
 
 > [!div class="mx-imgBorder"]
-> ![Gebruikers en apps weer geven waaraan RBAC is toegewezen](./media/how-to-manage-authentication/how-to-view-amrbac.png)
+> ![Gebruikers en apps weer geven waaraan toegang is verleend](./media/how-to-manage-authentication/how-to-view-amrbac.png)
 
 ## <a name="request-tokens-for-azure-maps"></a>Tokens aanvragen voor Azure Maps
 

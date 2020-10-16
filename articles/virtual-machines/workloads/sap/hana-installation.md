@@ -14,10 +14,10 @@ ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 60d889b232857ae69372df8ebabbd0edd01a2f17
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91529827"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>SAP HANA (grote instanties) installeren en configureren in azure
@@ -58,18 +58,18 @@ Daarom is het voor u als klant verplicht om de SAP-notities te lezen met betrekk
 
 Controleer met name de volgende para meters en pas deze uiteindelijk aan:
 
-- net. core. rmem_max = 16777216
-- net. core. wmem_max = 16777216
-- net. core. rmem_default = 16777216
-- net. core. wmem_default = 16777216
-- net. core. optmem_max = 16777216
-- net. IPv4. tcp_rmem = 65536 16777216 16777216
-- net. IPv4. tcp_wmem = 65536 16777216 16777216
+- net.core.rmem_max = 16777216
+- net.core.wmem_max = 16777216
+- net.core.rmem_default = 16777216
+- net.core.wmem_default = 16777216
+- net.core.optmem_max = 16777216
+- net.ipv4.tcp_rmem = 65536 16777216 16777216
+- net.ipv4.tcp_wmem = 65536 16777216 16777216
 
 Vanaf SLES12 SP1 en RHEL 7,2 moeten deze para meters worden ingesteld in een configuratie bestand in de map/etc/sysctl.d. Bijvoorbeeld, een configuratie bestand met de naam 91-NetApp-HANA. conf moet worden gemaakt. Voor oudere SLES-en RHEL-releases moet u deze para meters instellen in/etc/sysctl. conf.
 
 Voor alle RHEL-releases die beginnen met RHEL 6,3, moet u het volgende overwegen: 
-- De para meter sunrpc. tcp_slot_table_entries = 128 moet worden ingesteld in/etc/modprobe. d/sunrpc-local. conf. Als het bestand niet bestaat, moet u het eerst maken door de vermelding toe te voegen: 
+- De para meter sunrpc.tcp_slot_table_entries = 128 moet worden ingesteld in/etc/modprobe. d/sunrpc-local. conf. Als het bestand niet bestaat, moet u het eerst maken door de vermelding toe te voegen: 
     - opties sunrpc tcp_max_slot_table_entries = 128
 
 De **vijfde stap** is het controleren van de systeem tijd van de Hana grote exemplaar-eenheid. De exemplaren worden geïmplementeerd met een systeem tijd zone. Deze tijd zone vertegenwoordigt de locatie van de Azure-regio waarin de HANA grote instantie stempel zich bevindt. U kunt de systeem tijd of tijd zone wijzigen van de instanties waarvan u eigenaar bent. 

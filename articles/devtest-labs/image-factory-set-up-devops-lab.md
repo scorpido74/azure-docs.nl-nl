@@ -4,10 +4,10 @@ description: In dit artikel worden alle voor bereidingen behandeld die nodig zij
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: fa7050bae1ff8681e04b6ab38220be9eaf38a64a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85476135"
 ---
 # <a name="run-an-image-factory-from-azure-devops"></a>Een fabrieksinstallatiekopie uitvoeren vanuit Azure DevOps
@@ -26,7 +26,7 @@ De volgende stap bij het aannemen van de image Factory voor uw team is om te beg
     - Configuratie. De invoer voor de image Factory
         - GoldenImages. Deze map bevat JSON-bestanden die de definities van aangepaste installatie kopieën vertegenwoordigen.
         - Labs.jsop. Bestand waarin teams zich registreren voor het ontvangen van specifieke aangepaste installatie kopieën.
-- Scriptmap. De engine voor de image Factory.
+- Scripts. De engine voor de image Factory.
 
 In de artikelen in deze sectie vindt u meer informatie over deze scripts en sjablonen.
 
@@ -107,7 +107,7 @@ Als u de taak maken selecteert, ziet u alle details in het rechterdeel venster d
 3. Kies het **service-eind punt**.
 4. Selecteer voor **pad**naar script **... (weglatings tekens)** aan de rechter kant.
 5. Navigeer naar **MakeGoldenImageVMs.ps1** script.
-6. Script parameters moeten er als volgt uitzien:`-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -DevTestLabName $(DevTestLabName) -vmSize $(VMSize) -machineUserName $(MachineUserName) -machinePassword (ConvertTo-SecureString -string '$(MachinePassword)' -AsPlainText -Force) -StandardTimeoutMinutes $(StandardTimeoutMinutes)`
+6. Script parameters moeten er als volgt uitzien: `-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -DevTestLabName $(DevTestLabName) -vmSize $(VMSize) -machineUserName $(MachineUserName) -machinePassword (ConvertTo-SecureString -string '$(MachinePassword)' -AsPlainText -Force) -StandardTimeoutMinutes $(StandardTimeoutMinutes)`
 
     ![De build-definitie volt ooien](./media/set-up-devops-lab/complete-build-definition.png)
 

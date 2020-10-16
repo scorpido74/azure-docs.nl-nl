@@ -6,18 +6,18 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/21/2019
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 94955e27dcadb3acbea03926d6d1ed73e9c5c9ed
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 96f1e3983f3c093cdf643e7674221b04631eeabd
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051351"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91965621"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Aan de slag met verificatie op basis van certificaten in Azure Active Directory
 
@@ -104,7 +104,7 @@ Voor de configuratie kunt u de [Azure Active Directory Power shell versie 2](/po
 
 Als eerste configuratie stap moet u een verbinding maken met uw Tenant. Zodra er een verbinding met uw Tenant bestaat, kunt u de vertrouwde certificerings instanties die in uw Directory zijn gedefinieerd, bekijken, toevoegen, verwijderen en wijzigen.
 
-### <a name="connect"></a>Verbinding maken
+### <a name="connect"></a>Verbinden
 
 Gebruik de cmdlet [Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0) om verbinding te maken met uw Tenant:
 
@@ -184,7 +184,7 @@ De volgende stappen beschrijven het proces voor het bijwerken en ongeldig valide
         Set-MsolUser -UserPrincipalName test@yourdomain.com -StsRefreshTokensValidFrom ("03/05/2016")
 ```
 
-De datum die u instelt, moet in de toekomst liggen. Als de datum niet in de toekomst ligt, is de eigenschap **StsRefreshTokensValidFrom** niet ingesteld. Als de datum in de toekomst ligt, wordt **StsRefreshTokensValidFrom** ingesteld op de huidige tijd (niet de datum die wordt aangegeven door de set-MsolUser opdracht).
+De datum die u instelt, moet in de toekomst liggen. Als de datum niet in de toekomst ligt, is de eigenschap **StsRefreshTokensValidFrom** niet ingesteld. Als de datum in de toekomst ligt, wordt **StsRefreshTokensValidFrom** ingesteld op de huidige tijd (niet de datum die wordt aangegeven door Set-MsolUser opdracht).
 
 ## <a name="step-4-test-your-configuration"></a>Stap 4: uw configuratie testen
 

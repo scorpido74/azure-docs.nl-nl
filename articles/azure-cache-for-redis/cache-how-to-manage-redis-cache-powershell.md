@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
 ms.openlocfilehash: 327505dfbaf5f6f35b065f4f3941053c5114aa33
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89019212"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Azure-cache beheren voor redis met Azure PowerShell
@@ -59,7 +59,7 @@ Voordat u Windows Power shell met Azure Resource Manager kunt gebruiken, hebt u 
 
 * Windows Power shell, versie 3,0 of 4,0. Als u de versie van Windows Power shell wilt zoeken, typt u: `$PSVersionTable` en verifieert u de waarde van `PSVersion` 3,0 of 4,0. Zie [Windows Management Framework 3,0](https://www.microsoft.com/download/details.aspx?id=34595)om een compatibele versie te installeren.
 
-Gebruik de cmdlet Get-Help voor meer informatie over de cmdlets die u in deze zelf studie ziet.
+Gebruik de cmdlet Get-Help om gedetailleerde informatie te krijgen over de cmdlets die u in deze zelf studie ziet.
 
 ```azurepowershell
     Get-Help <cmdlet-name> -Detailed
@@ -148,7 +148,7 @@ De volgende tabel bevat eigenschappen en beschrijvingen voor veelgebruikte para 
 | ShardCount |Het aantal Shards dat moet worden gemaakt bij het maken van een Premium-cache met clustering ingeschakeld. Geldige waarden zijn: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 | |
 | SKU |Hiermee geeft u de SKU van de cache op. Geldige waarden zijn: Basic, Standard, Premium |Standard |
 | RedisConfiguration |Hiermee geeft u de redis-configuratie-instellingen. Zie de volgende tabel met [RedisConfiguration-eigenschappen](#redisconfiguration-properties) voor meer informatie over elke instelling. | |
-| EnableNonSslPort |Hiermee wordt aangegeven of de niet-SSL-poort is ingeschakeld. |Niet waar |
+| EnableNonSslPort |Hiermee wordt aangegeven of de niet-SSL-poort is ingeschakeld. |False |
 | MaxMemoryPolicy |Deze para meter is afgeschaft: gebruik in plaats daarvan RedisConfiguration. | |
 | StaticIP |Bij het hosten van uw cache in een VNET, geeft u een uniek IP-adres op in het subnet voor de cache. Indien niet opgegeven, wordt er een gekozen uit het subnet. | |
 | Subnet |Wanneer u uw cache host in een VNET, geeft u de naam op van het subnet waarin de cache moet worden geïmplementeerd. | |

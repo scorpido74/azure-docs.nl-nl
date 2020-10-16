@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
 ms.openlocfilehash: 19c40f2a7609d556448641e78fdeffe83e8660b1
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86083947"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>Meerdere HDInsight-clusters gebruiken met een Azure Data Lake Storage-account
@@ -65,7 +65,7 @@ We raden u aan om gegevens in te voeren voor een taak en de uitvoer van een taak
 
 De limiet voor het aantal clusters dat één Data Lake Storage account kan delen, is afhankelijk van de werk belasting die wordt uitgevoerd op die clusters. Als er te veel clusters of zeer zware werk belastingen zijn op de clusters die een opslag account delen, kan dit ertoe leiden dat het opslag account niet kan worden getrapt.
 
-## <a name="support-for-default-acls"></a>Ondersteuning voor standaard-Acl's
+## <a name="support-for-default-acls"></a>Ondersteuning voor Default-ACLs
 
 Bij het maken van een service-principal met de naam gebruikers toegang (zoals weer gegeven in de tabel hierboven), raden we aan de benoemde gebruiker **niet** toe te voegen met een standaard-ACL. Het inrichten van de naam gebruikers toegang met behulp van standaard-Acl's resulteert in de toewijzing van 770 machtigingen voor eigenaar-gebruiker, eigendom en anderen. Hoewel deze standaard waarde van 770 geen machtigingen van eigenaar-gebruiker (7) of eigendoms groep (7) accepteert, worden alle machtigingen voor anderen (0) verwijderd. Dit resulteert in een bekend probleem met een van de specifieke gebruiks gevallen die uitvoerig worden beschreven in de sectie [bekende problemen en tijdelijke oplossingen](#known-issues-and-workarounds) .
 
@@ -89,7 +89,7 @@ Zoals vermeld in de GARENs die eerder zijn gekoppeld, terwijl open bare bronnen 
 
 Stel de machtigingen lezen-uitvoeren voor **anderen** in via de hiërarchie, bijvoorbeeld op **/** **/clusters** en **/clusters/Finance** , zoals weer gegeven in de bovenstaande tabel.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 - [Snelstartgids: Clusters instellen in HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
 - [Azure Data Lake Storage Gen2 gebruiken met Azure HDInsight-clusters](hdinsight-hadoop-use-data-lake-storage-gen2.md)

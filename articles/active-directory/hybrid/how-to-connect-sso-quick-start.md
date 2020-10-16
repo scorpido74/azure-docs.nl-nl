@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: naadloze eenmalige aanmelding | Microsoft Docs'
-description: In dit artikel wordt beschreven hoe u aan de slag gaat met Azure Active Directory naadloze eenmalige aanmelding
+title: 'Azure AD Connect: naadloze single Sign-On-Quick Start | Microsoft Docs'
+description: In dit artikel wordt beschreven hoe u aan de slag gaat met Azure Active Directory naadloze single Sign-On
 services: active-directory
 keywords: Wat is Azure AD Connect, installeer Active Directory, vereiste onderdelen voor Azure AD, SSO, eenmalige aanmelding
 documentationcenter: ''
@@ -17,17 +17,17 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fde2052078e0131e720411f91aa8ae7484338252
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91295019"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory naadloze eenmalige aanmelding: Quick Start
 
-## <a name="deploy-seamless-single-sign-on"></a>Naadloze eenmalige aanmelding implementeren
+## <a name="deploy-seamless-single-sign-on"></a>Naadloze single Sign-On implementeren
 
-Azure Active Directory (Azure AD) naadloze eenmalige aanmelding (naadloze SSO) ondertekent automatisch gebruikers wanneer ze zich op hun bedrijfs Desk tops bevinden die zijn verbonden met uw bedrijfs netwerk. Naadloze SSO biedt uw gebruikers eenvoudige toegang tot uw Cloud toepassingen zonder dat hiervoor extra on-premises onderdelen nodig zijn.
+Azure Active Directory (Azure AD) naadloze single Sign-On (naadloze SSO) worden automatisch ondertekend door gebruikers wanneer ze zich op hun bedrijfs Desk tops bevinden die zijn verbonden met uw bedrijfs netwerk. Naadloze SSO biedt uw gebruikers eenvoudige toegang tot uw Cloud toepassingen zonder dat hiervoor extra on-premises onderdelen nodig zijn.
 
 Voer de volgende stappen uit om naadloze SSO te implementeren.
 
@@ -236,7 +236,7 @@ Zie [Azure Active Directory naadloze eenmalige aanmelding: veelgestelde vragen](
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Technisch diep gaande](how-to-connect-sso-how-it-works.md): begrijpen hoe de naadloze functie voor eenmalige aanmelding werkt.
+- [Technisch diep gaande](how-to-connect-sso-how-it-works.md): krijg inzicht in hoe de functie naadloze single Sign-On werkt.
 - [Veelgestelde vragen](how-to-connect-sso-faq.md): Hier vindt u antwoorden op veelgestelde vragen over naadloze eenmalige aanmelding.
-- [Problemen oplossen](tshoot-connect-sso.md): informatie over het oplossen van veelvoorkomende problemen met de functie voor naadloze eenmalige aanmelding.
+- [Problemen oplossen](tshoot-connect-sso.md): informatie over het oplossen van veelvoorkomende problemen met de functie naadloze single Sign-On.
 - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): gebruik het Azure Active Directory-forum om nieuwe functie aanvragen te verwerken.

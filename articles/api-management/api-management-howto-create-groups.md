@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 517b70d798d8cdd1b361b244111a8b6781286207
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea674981036b4be292329a4b30b43180ed26d642
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87851219"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092780"
 ---
 # <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>Groepen maken en gebruiken voor beheer van ontwikkelaarsaccounts in Azure API Management
 
@@ -53,7 +53,7 @@ In deze sectie wordt uitgelegd hoe u een nieuwe groep toevoegt aan uw API Manage
 3. Voer een unieke naam in voor de groep en een optionele beschrijving.
 4. Kies **Maken**.
 
-    ![Een nieuwe groep toevoegen](./media/api-management-howto-create-groups/groups001.png)
+    ![Een nieuwe groep maken](./media/api-management-howto-create-groups/groups001.png)
 
 Zodra de groep is gemaakt, wordt deze toegevoegd aan de lijst met **groepen** . <br/>Als u de **naam** of **Beschrijving** van de groep wilt bewerken, klikt u op de naam van de groep en de **instellingen**.<br/>Als u de groep wilt verwijderen, klikt u op de naam van de groep en drukt u op **verwijderen**.
 
@@ -66,10 +66,10 @@ Nu de groep is gemaakt, kan deze worden gekoppeld aan producten en ontwikkel aar
 3. Druk op **toegangs beheer**.
 4. Klik op **+ groep toevoegen**.
 
-    ![Een groep koppelen aan een product](./media/api-management-howto-create-groups/groups002.png)
+    ![Scherm opname van de knop groep toevoegen.](./media/api-management-howto-create-groups/groups002.png)
 5. Selecteer de groep die u wilt toevoegen.
 
-    ![Een groep koppelen aan een product](./media/api-management-howto-create-groups/groups003.png)
+    ![Scherm opname van de geselecteerde groep en markeert de knop selecteren.](./media/api-management-howto-create-groups/groups003.png)
 
     Als u een groep uit het product wilt verwijderen, klikt u op **verwijderen**.
 
@@ -90,7 +90,7 @@ In deze sectie wordt beschreven hoe u groepen koppelt aan leden.
     ![Lid toevoegen](./media/api-management-howto-create-groups/groups005.png)
 3. Druk op **+ toevoegen** en selecteer een lid.
 
-    ![Lid toevoegen](./media/api-management-howto-create-groups/groups006.png)
+    ![Scherm afbeelding met de knop toevoegen, de geselecteerde gebruiker en de knop selecteren.](./media/api-management-howto-create-groups/groups006.png)
 4. Druk op **selecteren**.
 
 Zodra de koppeling tussen de ontwikkelaar en de groep is toegevoegd, kunt u deze weer geven op het tabblad **gebruikers** .

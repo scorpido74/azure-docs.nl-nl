@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 7a8c348340be143f7059ce7e64a1c66b66074a45
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16c0b3e6dc4bd9097312e3a8c43618e66781ef85
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75430777"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092882"
 ---
 # <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>De Azure API Management-ontwikkelaars portal aanpassen met behulp van sjablonen
 
@@ -41,7 +41,7 @@ Het bewerken van sjablonen wordt uitgevoerd vanuit de **ontwikkelaars Portal** t
 
 Voor toegang tot de sjablonen voor de ontwikkelaars Portal klikt u op het pictogram aanpassen aan de linkerkant om het menu aanpassing weer te geven en klikt u op **sjablonen**.
 
-![Sjablonen voor ontwikkelaars Portal][api-management-customize-menu]
+![Scherm afbeelding die het pictogram aanpassen markeert om het menu aanpassing weer te geven.][api-management-customize-menu]
 
 In de lijst met sjablonen worden verschillende categorieën sjablonen weer gegeven die betrekking hebben op de verschillende pagina's in de ontwikkelaars Portal. Elke sjabloon is anders, maar de stappen om deze te bewerken en de wijzigingen te publiceren, zijn hetzelfde. Als u een sjabloon wilt bewerken, klikt u op de naam van de sjabloon.
 
@@ -103,7 +103,7 @@ In het vorige voor beeld worden twee producten weer gegeven in de ontwikkelaars 
 }
 ```
 
-De markering in de **product lijst** sjabloon verwerkt de gegevens om de gewenste uitvoer te leveren door de verzameling van producten te herhalen om informatie weer te geven en een koppeling naar elk afzonderlijk product. Let `<search-control>` op de `<page-control>` elementen en in de opmaak. Hiermee bepaalt u de weer gave van de besturings elementen zoeken en paginering op de pagina. `ProductsStrings|PageTitleProducts`is een gelokaliseerde teken reeks verwijzing die de `h2` koptekst voor de pagina bevat. Zie [API Management Naslag informatie voor ontwikkelaars portals](api-management-developer-portal-templates-reference.md)voor een lijst met teken reeks resources, pagina besturings elementen en pictogrammen die beschikbaar zijn voor gebruik in sjablonen voor ontwikkelaars portals.
+De markering in de **product lijst** sjabloon verwerkt de gegevens om de gewenste uitvoer te leveren door de verzameling van producten te herhalen om informatie weer te geven en een koppeling naar elk afzonderlijk product. Let `<search-control>` op de `<page-control>` elementen en in de opmaak. Hiermee bepaalt u de weer gave van de besturings elementen zoeken en paginering op de pagina. `ProductsStrings|PageTitleProducts` is een gelokaliseerde teken reeks verwijzing die de `h2` koptekst voor de pagina bevat. Zie [API Management Naslag informatie voor ontwikkelaars portals](api-management-developer-portal-templates-reference.md)voor een lijst met teken reeks resources, pagina besturings elementen en pictogrammen die beschikbaar zijn voor gebruik in sjablonen voor ontwikkelaars portals.
 
 ```html
 <search-control></search-control>
@@ -145,7 +145,7 @@ Opgeslagen sjablonen kunnen afzonderlijk of gezamenlijk worden gepubliceerd. Als
 
 Klik op **Ja** om te bevestigen en de sjabloon Live te maken op de ontwikkelaars Portal.
 
-![Publiceren bevestigen][api-management-publish-template-confirm]
+![Scherm afbeelding die laat zien waar u Ja selecteert om de sjabloon Live te maken.][api-management-publish-template-confirm]
 
 Als u alle momenteel niet-gepubliceerde sjabloon versies wilt publiceren, klikt u op **publiceren** in de lijst met sjablonen. Niet-gepubliceerde sjablonen worden aangeduid met een asterisk dat volgt op de naam van de sjabloon. In dit voor beeld worden de **product lijst** en **product** sjablonen gepubliceerd.
 
@@ -160,11 +160,11 @@ Nieuwe gepubliceerde sjablonen zijn direct van kracht in de ontwikkelaars Portal
 ## <a name="to-revert-a-template-to-the-previous-version"></a>Een sjabloon herstellen naar de vorige versie
 Als u een sjabloon wilt herstellen naar de vorige gepubliceerde versie, klikt u in de sjabloon editor op herstellen.
 
-![Sjabloon herstellen][api-management-revert-template]
+![Scherm opname van het pictogram dat u gebruikt om een sjabloon te herstellen.][api-management-revert-template]
 
 Klik op **Ja** om te bevestigen.
 
-![Bevestigen][api-management-revert-template-confirm]
+![Scherm afbeelding die laat zien waar u Ja selecteert om de wijzigingen te bevestigen.][api-management-revert-template-confirm]
 
 De eerder gepubliceerde versie van een sjabloon is in de ontwikkelaars Portal Live wanneer de herstel bewerking is voltooid.
 

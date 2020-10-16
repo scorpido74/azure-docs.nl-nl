@@ -17,10 +17,10 @@ ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c16008ac4a328f93669179ccca783efb9ef092a5
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91773502"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Wat is er nieuw in Azure Active Directory?
@@ -320,13 +320,13 @@ U kunt een beheerd domein uitbreiden als u meer dan één replicaset per Azure A
 
 ---
 
-### <a name="general-availability-of-azure-ad-my-sign-ins"></a>Algemene Beschik baarheid van Azure AD-aanmeldingen
+### <a name="general-availability-of-azure-ad-my-sign-ins"></a>Algemene Beschik baarheid van Azure AD My Sign-Ins
 
 **Type:** Nieuwe functie  
 **Service categorie:** Authenticaties (aanmeldingen)  
 **Product mogelijkheden:** Ervaringen van eind gebruikers
  
-Azure AD mijn aanmeldingen is een nieuwe functie waarmee zakelijke gebruikers hun aanmeldings geschiedenis kunnen bekijken om te controleren of er ongebruikelijke activiteiten zijn. Daarnaast kunnen eind gebruikers met deze functie "This was ik" of "Ik ben ik" niet op verdachte activiteiten rapporteren. Zie voor meer informatie over het gebruik van deze functie [uw recente aanmeldings activiteit bekijken en doorzoeken vanaf de pagina Mijn aanmeldingen](../user-help/my-account-portal-sign-ins-page.md#confirm-unusual-activity).
+Azure AD My Sign-Ins is een nieuwe functie waarmee zakelijke gebruikers hun aanmeldings geschiedenis kunnen bekijken om te controleren of er ongebruikelijke activiteiten zijn. Daarnaast kunnen eind gebruikers met deze functie "This was ik" of "Ik ben ik" niet op verdachte activiteiten rapporteren. Zie [uw recente aanmeldings activiteit bekijken en doorzoeken op de pagina mijn Sign-Ins](../user-help/my-account-portal-sign-ins-page.md#confirm-unusual-activity)voor meer informatie over het gebruik van deze functie.
  
 ---
 
@@ -460,7 +460,7 @@ Meer [informatie](../devices/reference-device-registration-tls-1-2.md) over TLS 
  
 Met Windows hello voor bedrijven kunnen eind gebruikers zich aanmelden bij Windows-computers met een penbeweging (zoals een pincode of biometrische). Azure AD-beheerders kunnen Windows hello voor bedrijven-aanmeldingen onderscheiden van andere Windows-aanmeldingen als onderdeel van de reis naar wacht woordloze verificatie. 
 
-Beheerders kunnen nu zien of een Windows-verificatie gebruikt Windows hello voor bedrijven door het tabblad verificatie gegevens voor een Windows-aanmeld gebeurtenis op de Blade Azure AD-aanmeldingen in de Azure Portal te controleren. Windows hello voor bedrijven-authenticaties bevatten ' WindowsHelloForBusiness ' in het veld verificatie methode. Raadpleeg de [documentatie bij aanmeld logboeken](../reports-monitoring/concept-sign-ins.md)voor meer informatie over het interpreteren van aanmeldings Logboeken.
+Beheerders kunnen nu zien of een Windows-verificatie gebruikt Windows hello voor bedrijven door het tabblad verificatie gegevens te controleren voor een Windows-aanmeld gebeurtenis op de Blade Azure AD Sign-Ins in de Azure Portal. Windows hello voor bedrijven-authenticaties bevatten ' WindowsHelloForBusiness ' in het veld verificatie methode. Raadpleeg de [documentatie bij aanmeld logboeken](../reports-monitoring/concept-sign-ins.md)voor meer informatie over het interpreteren van Sign-In Logboeken.
  
 ---
 
@@ -593,7 +593,7 @@ Voor de gebruikers risico voorwaarde is Azure AD Premium P2 vereist, omdat het g
 **Service categorie:** Zakelijke apps  
 **Product mogelijkheden:** SSO
  
-Voor sommige SAML-toepassingen moet SPNameQualifier worden geretourneerd in de bewering wanneer daarom wordt gevraagd. Azure AD reageert nu correct wanneer er een SPNameQualifier is aangevraagd in het beleid voor NameID van aanvragen. Dit geldt ook voor door SP geïnitieerde aanmelding en de IdP-aanmelding wordt gevolgd.  Zie het [SAML-protocol voor eenmalige aanmelding](../develop/single-sign-on-saml-protocol.md)voor meer informatie over het SAML-protocol in azure Active Directory.
+Voor sommige SAML-toepassingen moet SPNameQualifier worden geretourneerd in de bewering wanneer daarom wordt gevraagd. Azure AD reageert nu correct wanneer er een SPNameQualifier is aangevraagd in het beleid voor NameID van aanvragen. Dit geldt ook voor door SP geïnitieerde aanmelding en de IdP-aanmelding wordt gevolgd.  Zie [Single Sign-On SAML protocol](../develop/single-sign-on-saml-protocol.md)(Engelstalig) voor meer informatie over het SAML-protocol in azure Active Directory.
 
 ---
 
@@ -1039,7 +1039,7 @@ Ga naar [de nieuwe app registratie-ervaring voor Azure AD B2C](https://aka.ms/b2
 
 **Product mogelijkheden:** Beveiliging van identiteits beveiliging &
 
-De gecombineerde registratie-ervaring voor Multi-Factor Authentication (MFA) en self-service voor wachtwoord herstel (SSPR) is nu algemeen beschikbaar. Met deze nieuwe registratie-ervaring kunnen gebruikers zich registreren voor MFA en SSPR in één stap-voor-stap proces. Wanneer u de nieuwe ervaring voor uw organisatie implementeert, kunnen gebruikers zich minder tijd en minder moeite registreren. Bekijk [hier](https://bit.ly/3etiRyQ)het blog bericht.
+De gecombineerde registratie-ervaring voor Multi-Factor Authentication (MFA) en Self-Service wacht woord opnieuw instellen (SSPR) is nu algemeen beschikbaar. Met deze nieuwe registratie-ervaring kunnen gebruikers zich registreren voor MFA en SSPR in één stap-voor-stap proces. Wanneer u de nieuwe ervaring voor uw organisatie implementeert, kunnen gebruikers zich minder tijd en minder moeite registreren. Bekijk [hier](https://bit.ly/3etiRyQ)het blog bericht.
 
 ---
 
@@ -1237,7 +1237,7 @@ Zie beheer [eenheden beheren in azure Active Directory (preview)](https://aka.ms
 
 **Product mogelijkheden:** Access Control
 
-Gebruikers met deze rol kunnen services en instellingen met betrekking tot het inschakelen van hybride identiteit in azure AD inschakelen, configureren en beheren. Deze rol biedt de mogelijkheid om Azure AD te configureren voor een van de drie ondersteunde verificatie methoden&#8212;wacht woord-hash synchronisatie (PHS), Pass-Through-verificatie (PTA) of Federatie (AD FS of externe Federatie provider) &#8212;en een gerelateerde on-premises infra structuur te implementeren om deze in te scha kelen. On-premises infra structuur omvat het inrichten en PTA agents. Deze rol biedt de mogelijkheid om naadloze eenmalige aanmelding (S-SSO) in te scha kelen voor naadloze verificatie op niet-Windows 10-apparaten of niet-Windows Server 2016-computers. Daarnaast biedt deze rol de mogelijkheid om aanmeldings logboeken te bekijken en de status en analyse te openen voor het bewaken en oplossen van problemen. [Meer informatie.](../users-groups-roles/directory-assign-admin-roles.md#hybrid-identity-administrator)
+Gebruikers met deze rol kunnen services en instellingen met betrekking tot het inschakelen van hybride identiteit in azure AD inschakelen, configureren en beheren. Deze rol biedt de mogelijkheid om Azure AD te configureren voor een van de drie ondersteunde verificatie methoden&#8212;wacht woord-hash synchronisatie (PHS), Pass-Through-verificatie (PTA) of Federatie (AD FS of externe Federatie provider) &#8212;en een gerelateerde on-premises infra structuur te implementeren om deze in te scha kelen. On-premises infra structuur omvat het inrichten en PTA agents. Deze rol biedt de mogelijkheid om naadloze single Sign-On (S-SSO) in te scha kelen om naadloze verificatie mogelijk te maken op niet-Windows 10-apparaten of niet-Windows Server 2016-computers. Daarnaast biedt deze rol de mogelijkheid om aanmeldings logboeken te bekijken en de status en analyse te openen voor het bewaken en oplossen van problemen. [Meer informatie.](../users-groups-roles/directory-assign-admin-roles.md#hybrid-identity-administrator)
 
 ---
 

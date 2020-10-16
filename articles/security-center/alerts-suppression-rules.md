@@ -9,10 +9,10 @@ ms.date: 09/10/2020
 ms.service: security-center
 ms.topic: how-to
 ms.openlocfilehash: c4eb30df74e2a8d6748ede987df0b1c41cff0ca3
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448481"
 ---
 # <a name="suppress-alerts-from-azure-defender"></a>Waarschuwingen van Azure Defender onderdrukken
@@ -23,10 +23,10 @@ Op deze pagina wordt uitgelegd hoe u regels voor het onderdrukken van waarschuwi
 
 |Aspect|Details|
 |----|:----|
-|Release status:|Preview|
-|Koers|Gratis<br>(De meeste beveiligings waarschuwingen zijn alleen beschikbaar met Azure Defender)|
+|Releasestatus:|Preview|
+|Prijzen:|Gratis<br>(De meeste beveiligings waarschuwingen zijn alleen beschikbaar met Azure Defender)|
 |Vereiste rollen en machtigingen:|**Beveiligings beheerder** en- **eigenaar** kunnen regels maken/verwijderen.<br>**Beveiligings lezer** en **lezer** kunnen regels weer geven.|
-|Clouds|![Ja](./media/icons/yes-icon.png) Commerciële Clouds<br>![Ja](./media/icons/yes-icon.png) National/soeverein (US Gov, China gov, andere gov)|
+|Clouds:|![Ja](./media/icons/yes-icon.png) Commerciële clouds<br>![Ja](./media/icons/yes-icon.png) Nationaal/onafhankelijk (Overheid van de VS, China, andere overheden)|
 |||
 
 
@@ -34,7 +34,7 @@ Op deze pagina wordt uitgelegd hoe u regels voor het onderdrukken van waarschuwi
 
 De verschillende Azure Defender-abonnementen detecteren bedreigingen in elk gebied van uw omgeving en genereren beveiligings waarschuwingen.
 
-Wanneer één waarschuwing niet interessant of relevant is, kunt u deze hand matig verwijderen. U kunt ook de functie onderdrukkings regels gebruiken om in de toekomst automatisch vergelijk bare waarschuwingen te negeren. Normaal gesp roken gebruikt u een onderdrukkings regel voor het volgende:
+Wanneer één waarschuwing niet interessant of relevant is, kunt u deze hand matig verwijderen. U kunt ook de functie onderdrukkings regels gebruiken om in de toekomst automatisch vergelijk bare waarschuwingen te negeren. Normaal gesproken gebruikt u een onderdrukkingsregel voor het volgende:
 
 - Waarschuwingen onderdrukken die u als foutieve positieven hebt geïdentificeerd
 
@@ -109,7 +109,7 @@ Als u een of meer regels die u hebt gemaakt, wilt verwijderen, gebruikt u de pag
 
 ## <a name="view-suppressed-alerts"></a>Onderdrukt waarschuwingen weer geven
 
-Waarschuwingen die overeenkomen met uw ingeschakelde onderdrukkings regels worden nog steeds gegenereerd, maar de status wordt ingesteld op **genegeerd**. U kunt de status bekijken in de Azure Portal of u hebt echter toegang tot uw Security Center beveiligings waarschuwingen. 
+Waarschuwingen die overeenkomen met uw ingeschakelde onderdrukkings regels worden nog steeds gegenereerd, maar de status wordt ingesteld op **genegeerd**. U kunt de status bekijken in Azure Portal of de manier waarop u uw Security Center beveiligingswaarschuwingen bekijkt. 
 
 > [!TIP]
 > [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) maakt geen incidenten voor onderdrukte waarschuwingen. Voor andere Siem's kunt u onderdrukt waarschuwingen filteren met behulp van de waarschuwingen ' status ' (' genegeerd ').

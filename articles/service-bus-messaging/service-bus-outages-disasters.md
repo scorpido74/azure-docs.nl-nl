@@ -4,10 +4,10 @@ description: In deze artikelen vindt u technieken voor het beveiligen van toepas
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 4f3ff89e3ec59ad4445ab0b7ee7eeb45d18fa3b8
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88065621"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Best practices voor de isolatie van toepassingen tegen Service Bus-uitval en -noodgevallen
@@ -19,9 +19,9 @@ Een storing wordt gedefinieerd als de tijdelijke niet-beschik baarheid van Azure
 Een nood geval wordt gedefinieerd als permanent verlies van een Service Bus Scale-eenheid of Data Center. Het Data Center kan al dan niet meer beschikbaar zijn. Normaal gesp roken leidt een nood geval ertoe dat sommige of alle berichten of andere gegevens verloren gaan. Voor beelden van calamiteiten zijn brand, overstroming of aard beving.
 
 ## <a name="protecting-against-outages-and-disasters---service-bus-premium"></a>Bescherming tegen storingen en rampen-Service Bus Premium
-Concepten voor hoge Beschik baarheid en herstel na nood gevallen zijn ingebouwd in de Azure Service Bus Premium-laag, zowel binnen dezelfde regio (via Beschikbaarheidszones) als in verschillende regio's (via Geo-nood herstel).
+Concepten voor hoge Beschik baarheid en herstel na nood gevallen zijn ingebouwd in de Azure Service Bus Premium-laag, zowel binnen dezelfde regio (via Beschikbaarheidszones) als in verschillende regio's (via Geo-Disaster Recovery).
 
-### <a name="geo-disaster-recovery"></a>Geo-nood herstel
+### <a name="geo-disaster-recovery"></a>Geo-Disaster herstel
 
 Service Bus Premium ondersteunt geo-nood herstel op het niveau van de naam ruimte. Zie [Azure Service Bus Geo-disaster recovery](service-bus-geo-dr.md) (Geo-herstel na noodgeval in Azure Service Bus) voor meer informatie. De functie voor nood herstel, alleen beschikbaar voor de [Premium-SKU](service-bus-premium-messaging.md) , implementeert herstel na nood gevallen van meta gegevens en maakt gebruik van primaire en secundaire naam ruimten voor nood herstel.
 

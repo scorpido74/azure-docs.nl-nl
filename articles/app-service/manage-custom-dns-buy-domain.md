@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
 ms.openlocfilehash: 0111da00962f267387e66978952e8a7c9f5d7308
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90970055"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Aangepaste domeinnaam voor Azure App Service kopen
@@ -61,7 +61,7 @@ Selecteer een van de lagen die niet gratis zijn (**D1**, **B1**, **B2**, **B3** 
 
 Klik op **Toepassen**.
 
-:::image type="content" source="./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png" alt-text="Scherm opname van de prijs categorieën voor aangepaste domeinen in de productie categorie met het tabblad productie, B1 plannen en de knop Toep assen gemarkeerd.":::
+:::image type="content" source="./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png" alt-text="Scherm afbeelding van het navigatie menu links van de app-pagina met omhoog schalen (App Service plan) geselecteerd.":::
 
 Wanneer u de volgende melding ziet, is de schaalbewerking voltooid.
 

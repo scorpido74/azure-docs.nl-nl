@@ -9,10 +9,10 @@ ms.date: 07/30/2020
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
 ms.openlocfilehash: de10903be86b52b3415b57a53be81e7fd1661f63
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89226026"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio"></a>Webjobs ontwikkelen en implementeren met behulp van Visual Studio
@@ -218,10 +218,10 @@ De volgende instellingen worden ondersteund door webjobs:
 
 | **Instelling** | **Type**  | **Beschrijving** |
 | ----------- | --------- | --------------- |
-| `is_in_place` | Alle | Hiermee kan de Webtaak op locatie worden uitgevoerd zonder eerst naar een tijdelijke map te worden gekopieerd. Zie voor meer informatie [werk directory Webtaak](https://github.com/projectkudu/kudu/wiki/WebJobs#webjob-working-directory). |
+| `is_in_place` | Alles | Hiermee kan de Webtaak op locatie worden uitgevoerd zonder eerst naar een tijdelijke map te worden gekopieerd. Zie voor meer informatie [werk directory Webtaak](https://github.com/projectkudu/kudu/wiki/WebJobs#webjob-working-directory). |
 | `is_singleton` | Continu | Voer de Webtaak alleen uit op één instantie wanneer deze is uitgeschaald. Zie [een continue taak als Singleton instellen](https://github.com/projectkudu/kudu/wiki/WebJobs-API#set-a-continuous-job-as-singleton)voor meer informatie. |
 | `schedule` | Geactiveerd | Voer de Webtaak uit op basis van een CRON schema. Zie [NCRONTAB-expressies](../azure-functions/functions-bindings-timer.md#ncrontab-expressions)voor meer informatie. |
-| `stopping_wait_time`| Alle | Hiermee staat u het beheer van het afsluit gedrag toe. Zie voor meer informatie [correct afsluiten](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown). |
+| `stopping_wait_time`| Alles | Hiermee staat u het beheer van het afsluit gedrag toe. Zie voor meer informatie [correct afsluiten](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown). |
 
 ### <a name="continuous-execution"></a>Doorlopende uitvoering
 

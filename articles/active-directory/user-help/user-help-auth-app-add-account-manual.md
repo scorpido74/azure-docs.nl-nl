@@ -12,10 +12,10 @@ ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: olhaun
 ms.openlocfilehash: 3838234f9f65fcf91f8de33e3d7196aa13f2b903
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83741721"
 ---
 # <a name="manually-add-an-account-to-the-app"></a>Een account hand matig toevoegen aan de app
@@ -93,12 +93,12 @@ U kunt uw Amazon-account toevoegen door twee ledige verificatie in te scha kelen
 
 5. Typ op de pagina **een verificatie methode voor back-ups toevoegen** op uw computer de 6-cijferige verificatie code van uw back-upverificatie methode voor uw Amazon-account en selecteer vervolgens **code verifiëren en door gaan**.
 
-6. Bepaal op de pagina bijna klaar of u uw computer een vertrouwd apparaat moet maken en selecteer vervolgens **ontvangen. Schakel verificatie in twee stappen in**.
+6. Bepaal op de pagina bijna klaar of u uw computer een vertrouwd apparaat moet maken en selecteer vervolgens **ontvangen. Schakel Two-Step verificatie in**.
 
     De pagina **Geavanceerde beveiligings instellingen** wordt weer gegeven, met daarin de bijgewerkte gegevens over twee ledige verificatie.
 
     >[!NOTE]
-    >Zie [over verificatie in twee stappen](https://www.amazon.com/gp/help/customer/display.html?nodeId=201596330) en [Aanmelden met verificatie in twee stappen](https://www.amazon.com/gp/help/customer/display.html?nodeId=201962440)voor meer informatie over twee ledige verificatie en uw Amazon-account.    
+    >Zie [over Two-Step verificatie](https://www.amazon.com/gp/help/customer/display.html?nodeId=201596330) en [Aanmelden met Two-Step-verificatie](https://www.amazon.com/gp/help/customer/display.html?nodeId=201962440)voor meer informatie over twee ledige verificatie en uw Amazon-account.    
 
 ## <a name="next-steps"></a>Volgende stappen
 

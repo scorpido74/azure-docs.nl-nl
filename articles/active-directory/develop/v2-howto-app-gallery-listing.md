@@ -13,10 +13,10 @@ ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
 ms.openlocfilehash: dc271fa768bee66107e66a1b8d4f16c1188ce418
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89439741"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>Uw app publiceren in de app-galerie van Azure AD
@@ -72,7 +72,7 @@ Als u een toepassing in de Azure AD-App-galerie wilt weer geven, moet u ten mins
 
 De volgende tabel vergelijkt de belangrijkste standaarden: open verificatie 2,0 (OAuth 2,0) met OpenID Connect Connect (OIDC), Security Assertion Markup Language (SAML) en Webservices-federatie (WS-started).
 
-| Mogelijkheid| OAuth-OIDC| SAML/WS-voeder |
+| Mogelijkheid| OAuth-OIDC| SAML/WS-Fed |
 | - |-|-|
 | Op het web gebaseerde eenmalige aanmelding| √| √ |
 | Op het web gebaseerde eenmalige afmelding| √| √ |
@@ -96,7 +96,7 @@ OAuth 2,0 is een protocol voor de [industrie standaard](https://oauth.net/2/) vo
 **Enkele dingen die u moet overwegen**
 - Als u op SAML gebaseerde eenmalige aanmelding voor uw toepassing al hebt geïmplementeerd, wilt u mogelijk geen nieuwe standaard implementeren om uw app in de galerie op te halen.
 
-### <a name="saml-20-or-ws-fed"></a>SAML 2,0 of WS-voeder
+### <a name="saml-20-or-ws-fed"></a>SAML 2,0 of WS-Fed
 
 SAML is een volwassene en uitgebreide, [eenmalige aanmelding](https://www.oasis-open.org/standards#samlv2.0) voor webtoepassingen. Zie [hoe Azure het SAML-protocol gebruikt](active-directory-saml-protocol-reference.md)voor meer informatie over hoe Azure SAML gebruikt. 
 
@@ -143,8 +143,8 @@ Als uw app SAML 2,0 ondersteunt, kunt u deze rechtstreeks integreren met een Azu
 
 Micro soft biedt geen-of aanbevolen bibliotheken voor SAML-implementaties. Er zijn veel open-source bibliotheken beschikbaar.
 
-### <a name="implement-ws-fed"></a>WS-voeder implementeren
-Zie [gebruikers met WS-Federation verifiëren in ASP.net core](https://docs.microsoft.com/aspnet/core/security/authentication/ws-federation)voor meer informatie over de door WS gevoederde ASP.net core.
+### <a name="implement-ws-fed"></a>WS-Fed implementeren
+Zie [gebruikers verifiëren met WS-Federation in ASP.net core](https://docs.microsoft.com/aspnet/core/security/authentication/ws-federation)voor meer informatie over WS-Fed in ASP.net core.
 
 ### <a name="implement-password-vaulting"></a>Wachtwoord kluizen implementeren
 
@@ -238,7 +238,7 @@ Als u uw toepassing wilt toevoegen aan de lijst in de galerie met behulp van Ope
 
 Als u uw toepassing wilt toevoegen aan de lijst in de galerie met behulp van **saml 2,0** of **WS-voeder**, selecteert u **SAML 2.0/WS-wordt gevoederd** zoals weer gegeven.
 
-![Een SAML 2,0-of WS--toepassing in de galerie weer geven](./media/howto-app-gallery-listing/saml.png)
+![Een SAML 2,0-of WS-Fed-toepassing in de galerie weer geven](./media/howto-app-gallery-listing/saml.png)
 
 Als u uw toepassing wilt toevoegen aan de lijst in de galerie met behulp van wacht woord-SSO, selecteert u **SSO van wacht woord** , zoals wordt weer gegeven.
 
@@ -260,7 +260,7 @@ U kunt een bestaande galerie-app bijwerken of verwijderen in de portal van het [
 
 ### <a name="timelines"></a>Tijdlijnen
 
-De tijd lijn voor het proces van het weer geven van een SAML 2,0-of WS-set-toepassing in de galerie is 7 tot 10 werk dagen.
+De tijd lijn voor het proces van het weer geven van een SAML 2,0-of WS-Fed-toepassing in de galerie is 7 tot 10 werk dagen.
 
 ![Tijd lijn voor het weer geven van een SAML-toepassing in de galerie](./media/howto-app-gallery-listing/timeline.png)
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 1/25/2019
 ms.author: jeedes
-ms.openlocfilehash: e656eb0062cafcf7a34008e0034ec0111242807d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ddc4e040824a7239aecbb24fc90123a88dc4e263
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545308"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91824645"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-idid-manager"></a>Zelfstudie: Azure Active Directory-integratie met iDiD Manager
 
@@ -99,11 +99,11 @@ Voer de volgende stappen uit om eenmalige aanmelding met Azure AD met iDiD Manag
 
 4. In de sectie **SAML-basisconfiguratie** hoeft de gebruiker geen enkele stap uit te voeren omdat de app al vooraf is geïntegreerd met Azure.
 
-    ![Informatie over domein en URL's voor eenmalige aanmelding met iDiD Manager](common/preintegrated.png)
+    ![Schermopname van de basale SAML-configuratie.](common/preintegrated.png)
 
 5. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    ![Informatie over domein en URL's voor eenmalige aanmelding met iDiD Manager](common/metadata-upload-additional-signon.png)
+    ![Schermopname toont 'Aanvullende URL's instellen', waar u een aanmeldings-URL kunt invoeren.](common/metadata-upload-additional-signon.png)
 
     In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://idid2.fi/saml/login/<domain>`
 

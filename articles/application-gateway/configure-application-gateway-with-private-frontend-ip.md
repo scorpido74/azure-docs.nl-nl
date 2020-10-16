@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 04/16/2020
 ms.author: victorh
 ms.openlocfilehash: 64dfe284772faf2a345b7959f1a1bd6f474cd1bf
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90562482"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>Een toepassings gateway met een ILB-eind punt (interne load balancer) configureren
@@ -73,7 +73,7 @@ Er is een virtueel netwerk nodig voor communicatie tussen de resources die u maa
 24. Typ *80*voor de **back-end-poort**.
 25. Accepteer de resterende standaard waarden en selecteer **toevoegen**.
 26. Selecteer op de pagina **een routerings regel toevoegen** de optie **toevoegen**.
-27. Selecteer **volgende: Tags**.
+27. Selecteer **Volgende: Tags**.
 28. Selecteer **Volgende: Beoordelen en maken**.
 29. Controleer de instellingen op de pagina samen vatting en selecteer vervolgens **maken** om de netwerk resources en de toepassings gateway te maken. Het kan enkele minuten duren om de toepassingsgateway te maken. Wacht totdat de implementatie is voltooid voordat u doorgaat met de volgende sectie.
 

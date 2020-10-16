@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 03/16/2020
 ms.author: tagore
-ms.openlocfilehash: 9338ad86595771c1c70d243250c2d57af5eb7858
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae284a6afa1f2e396aef8177229c344b569be6ec
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83683787"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075668"
 ---
 # <a name="troubleshooting-applications-that-dont-support-tls-12"></a>Problemen oplossen met toepassingen die TLS 1,2 niet ondersteunen
 In dit artikel wordt beschreven hoe u de oudere TLS-protocollen (TLS 1,0 en 1,1) inschakelt, en het Toep assen van verouderde coderings suites ter ondersteuning van de extra protocollen op de web-en werk rollen van de Windows Server 2019 Cloud service. 
@@ -25,7 +25,7 @@ In dit artikel wordt beschreven hoe u de oudere TLS-protocollen (TLS 1,0 en 1,1)
 We begrijpen dat we met de stappen voor het afnemen van TLS 1,0 en TLS 1,1 de oudere protocollen en coderings suites mogelijk moeten ondersteunen totdat ze hun afschaffing kunnen plannen.  We raden u aan om deze verouderde waarden niet opnieuw in te scha kelen. we bieden hulp bij het helpen van klanten. We raden klanten aan om het risico van regressie te evalueren voordat ze de wijzigingen implementeren die in dit artikel worden beschreven. 
 
 > [!NOTE]
-> De release van het gast besturingssysteem Family 6 dwingt TLS 1,2 af door TLS 1,0 en 1,1 expliciet uit te scha kelen en een specifieke set coderings suites te definiëren. Zie [release News voor het gast besturingssysteem](https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases) voor meer informatie over gast besturingssysteem families
+> De release van het gast besturingssysteem Family 6 dwingt TLS 1,2 af door TLS 1,0 en 1,1 expliciet uit te scha kelen en een specifieke set coderings suites te definiëren. Zie [release News voor het gast besturingssysteem](./cloud-services-guestos-update-matrix.md#family-6-releases) voor meer informatie over gast besturingssysteem families
 
 
 ## <a name="dropping-support-for-tls-10-tls-11-and-older-cipher-suites"></a>Ondersteuning voor TLS 1,0-, TLS 1,1-en oudere coderings suites verwijderen 
@@ -342,7 +342,7 @@ Hier volgt een voor beeld waarin zowel de werk rollen als de webrol worden weer 
 ## <a name="step-4-add-the-scripts-to-your-cloud-service"></a>Stap 4: de scripts toevoegen aan uw Cloud service 
 
 1) Klik in Visual Studio met de rechter muisknop op uw webfunctie-of WorkerRole
-2) Selecteer **toevoegen**
+2) Selecteer **Toevoegen**
 3) **Bestaand item** selecteren
 4) Ga in Verkenner naar het bureau blad waar u de **TLSsettings.ps1** -en **RunTLSSettings. cmd** -bestanden hebt opgeslagen. 
 5) Selecteer de twee bestanden om deze aan uw Cloud Services project toe te voegen
@@ -362,4 +362,3 @@ Nu de bovenstaande stappen zijn voltooid, kunt u de update publiceren naar uw be
 
 U kunt [SSLLabs](https://www.ssllabs.com/) gebruiken om de TLS-status van uw eind punten te valideren 
 
- 

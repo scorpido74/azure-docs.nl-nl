@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: e2d075a58872f9337c7d1faa642a48047e2f9ddf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f45e8435ea26e575398801471904b5038a518a44
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78250185"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948830"
 ---
 # <a name="test-your-portal-interface-for-azure-managed-applications"></a>Uw portal-interface voor Azure Managed Applications testen
 
@@ -104,4 +104,4 @@ Nu u hebt gecontroleerd of uw portal-interface werkt zoals verwacht, is het tijd
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u uw portal interface hebt gevalideerd, leert u hoe u uw door [Azure beheerde toepassing beschikbaar maakt op Marketplace](publish-marketplace-app.md).
+Nadat u uw portal interface hebt gevalideerd, leert u hoe u uw door [Azure beheerde toepassing beschikbaar maakt op Marketplace](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md).

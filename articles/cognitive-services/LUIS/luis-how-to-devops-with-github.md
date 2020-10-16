@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.date: 06/5/2020
 ms.author: anwigley
 ms.openlocfilehash: 6df65040277ac61cca5fb4bf7fce5b5a7b2f3afe
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84783759"
 ---
-# <a name="apply-devops-to-luis-app-development-using-github-actions"></a>DevOps Toep assen op het ontwikkelen van LUIS-apps met behulp van GitHub-acties
+# <a name="apply-devops-to-luis-app-development-using-github-actions"></a>DevOps toepassen op het ontwikkelen van LUIS-apps met GitHub-acties
 
 Ga naar de [Luis DevOps-sjabloon opslag plaats](https://github.com/Azure-Samples/LUIS-DevOps-Template) voor een volledige oplossing waarmee de aanbevolen procedures voor DevOps en software techniek voor Luis worden geïmplementeerd. U kunt deze sjabloon opslag plaats gebruiken om uw eigen opslag plaats te maken met ingebouwde ondersteuning voor CI/CD-werk stromen en procedures voor het inschakelen van [broncode](luis-concept-devops-sourcecontrol.md)beheer, [geautomatiseerde builds](luis-concept-devops-automation.md), [testen](luis-concept-devops-testing.md)en [release beheer](luis-concept-devops-automation.md#release-management) met Luis voor uw eigen project.
 
@@ -38,6 +38,6 @@ Met de [Luis DevOps-sjabloon opslag plaats](https://github.com/Azure-Samples/LUI
 ## <a name="next-steps"></a>Volgende stappen
 
 * Gebruik het [Luis DevOps-sjabloon opslag plaats](https://github.com/Azure-Samples/LUIS-DevOps-Template) om DevOps toe te passen op uw eigen project.
-* [Broncode beheer en vertakkings strategieën voor LUIS](luis-concept-devops-sourcecontrol.md)
+* [Broncodebeheer en vertakkingsstrategieën voor LUIS](luis-concept-devops-sourcecontrol.md)
 * [Testen op LUIS DevOps](luis-concept-devops-testing.md)
 * [Automation-werk stromen voor LUIS DevOps](luis-concept-devops-automation.md)

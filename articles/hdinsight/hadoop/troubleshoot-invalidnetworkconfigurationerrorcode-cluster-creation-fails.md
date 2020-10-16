@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
 ms.openlocfilehash: 1fb5b78f210a9bd817a2987dcb30fa25d156d5d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82780433"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>Het maken van een cluster mislukt met InvalidNetworkConfigurationErrorCode in azure HDInsight
@@ -54,7 +54,7 @@ Fout beschrijving bevat ' kan geen verbinding maken met Azure Storage account ' 
 
 ### <a name="cause"></a>Oorzaak
 
-Azure Storage en SQL hebben geen vaste IP-adressen, dus moeten uitgaande verbindingen met alle Ip's worden toegestaan om toegang tot deze services toe te staan. De exacte stappen zijn afhankelijk van het feit of u een netwerk beveiligings groep (NSG) of door de gebruiker gedefinieerde regels (UDR) hebt ingesteld. Raadpleeg de sectie over het [beheren van netwerk verkeer met HDInsight met netwerk beveiligings groepen en door de gebruiker gedefinieerde routes](../control-network-traffic.md) voor meer informatie over deze configuraties.
+Azure Storage en SQL hebben geen vaste IP-adressen, dus moeten uitgaande verbindingen met alle Ip's worden toegestaan om toegang tot deze services toe te staan. De exacte stappen zijn afhankelijk van het feit of u een netwerk beveiligings groep (NSG) of User-Defined regels (UDR) hebt ingesteld. Raadpleeg de sectie over het [beheren van netwerk verkeer met HDInsight met netwerk beveiligings groepen en door de gebruiker gedefinieerde routes](../control-network-traffic.md) voor meer informatie over deze configuraties.
 
 ### <a name="resolution"></a>Oplossing
 
@@ -89,7 +89,7 @@ Er is waarschijnlijk een probleem met de aangepaste DNS-installatie.
 
 Controleer of 168.63.129.16 zich in de aangepaste DNS-keten bevindt. DNS-servers binnen een virtueel netwerk kunnen DNS-query's door sturen naar recursieve resolvers van Azure om hostnamen in dat virtuele netwerk op te lossen. Zie [naam omzetting in virtuele netwerken](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)voor meer informatie. Toegang tot recursieve resolvers van Azure wordt geboden via de 168.63.129.16 van het virtuele IP-adres.
 
-1. Gebruik de [SSH-opdracht](../hdinsight-hadoop-linux-use-ssh-unix.md) om verbinding te maken met uw cluster. Bewerk de onderstaande opdracht door CLUSTERNAME te vervangen door de naam van uw cluster en voer vervolgens de volgende opdracht in:
+1. Gebruik de [ssh-opdracht](../hdinsight-hadoop-linux-use-ssh-unix.md) om verbinding te maken met uw cluster. Bewerk de onderstaande opdracht door CLUSTERNAME te vervangen door de naam van uw cluster. Voer vervolgens deze opdracht in:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -101,7 +101,7 @@ Controleer of 168.63.129.16 zich in de aangepaste DNS-keten bevindt. DNS-servers
     cat /etc/resolv.conf | grep nameserver*
     ```
 
-    U ziet ongeveer het volgende:
+    De uitvoer moet er ongeveer als volgt uitzien:
 
     ```output
     nameserver 168.63.129.16

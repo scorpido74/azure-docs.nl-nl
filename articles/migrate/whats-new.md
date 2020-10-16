@@ -4,18 +4,24 @@ description: Meer informatie over nieuwe en recente updates in de Azure Migrate-
 ms.topic: overview
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: 019c04c5820a82b7910b6755ff69e5dfbe7eb66c
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 0552402661397a2a8aa09f989189cc08b46e638e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89421608"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91667075"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Nieuwe functies in Azure Migrate
 
 [Azure Migrate](migrate-services-overview.md) helpt u bij het detecteren, evalueren en migreren van on-premises servers, apps en gegevens naar de Microsoft Azure-cloud. In dit artikel vindt u een overzicht van nieuwe releases en functies in Azure Migrate.
+
 ## <a name="update-september-2020"></a>Update (september 2020)
-- Met Azure Migrate kunt u nu servers migreren naar beschikbaarheidszones
+- Servers migreren naar Beschikbaarheidszones wordt nu ondersteund.
+- Op UEFI gebaseerde VM's en fysieke servers migreren naar Azure-VM's van Generatie 2 wordt nu ondersteund
+- Er is een nieuw Power BI-evaluatiedashboard voor Azure Migrate beschikbaar om u te helpen bij het vergelijken van de kosten bij verschillende evaluatie-instellingen. Het dashboard bevat een PowerShell-hulpprogramma dat automatisch de evaluaties maakt die worden ingevoegd in het Power BI-dashboard. [Meer informatie.](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/assessment-utility)
+- Afhankelijkheidsanalyse (zonder agent) kan nu gelijktijdig worden uitgevoerd op 1000 VM's.
+- Afhankelijkheidsanalyse (zonder agent) kan nu worden ingeschakeld of uitgeschakeld op schaal met behulp van PowerShell-scripts. [Meer informatie.](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale)
+- Visualiseer netwerkverbindingen in Power BI met behulp van de gegevens die worden verzameld met behulp van afhankelijkheidsanalyse (zonder agent) [meer informatie.](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale)
 
 ## <a name="update-august-2020"></a>Update (augustus 2020)
 
@@ -23,9 +29,10 @@ ms.locfileid: "89421608"
 - Optie om ofwel OVA/VHD-bestanden of de installatiescripts te downloaden uit de portal om respectievelijk de VMware- en Hyper-V-apparaten in te stellen.
 - Vernieuwd apparaatconfiguratiebeheer met uitgebreide gebruikerservaring.
 - Ondersteuning voor meerdere referenties voor detectie van virtuele Hyper-V-machines.
-- Verbeterde zoek-, sorteer en filtermogelijkheden voor toegevoegde referenties en detectiebronnen.
-- Opties voor invoer van één item, invoer van meerdere items en het importeren van CSV-bestanden voor gebruikers om detectiebronnen toe te voegen voor Hyper-V-hosts/clusters en fysieke servers.
-- Uitgebreide foutervaring met statusupdates voor validatie- en detectiebewerkingen voor elke toegevoegde bron in de tabel. 
+
+## <a name="update-july-2020"></a>Update (juli 2020)
+
+- VMware-migratie zonder agent ondersteunt nu gelijktijdige replicatie van 300 VM's per vCenter
 
 ## <a name="update-june-2020"></a>Update (juni 2020)
 

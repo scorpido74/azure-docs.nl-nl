@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
 ms.openlocfilehash: c28a3b0f445ca905a882a7ede3fcfed2c1e673a4
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91531187"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Problemen met de Log Analytics-agent voor Linux oplossen 
@@ -27,7 +27,7 @@ Als geen van deze stappen voor u werkt, zijn de volgende ondersteunings kanalen 
 
 ## <a name="important-log-locations-and-log-collector-tool"></a>Belang rijke logboek locaties en logboek verzamelaar-hulp programma
 
- Bestand | Pad
+ File | Pad
  ---- | -----
  Log Analytics agent voor Linux-logboek bestand | `/var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`
  Logboek bestand voor configuratie van Log Analytics agent | `/var/opt/microsoft/omsconfig/omsconfig.log`
@@ -193,7 +193,7 @@ Problemen met betrekking tot prestaties doen zich niet altijd voor en ze zijn ze
 
 ### <a name="resolution-step-by-step"></a>Oplossing (stapsgewijze stap)
 
-1. Voer een upgrade uit van het pakket nss-PEM naar [v 1.0.3-5. el7_6.1](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-7.el7.x86_64.rpm.html). <br/>
+1. Voer een upgrade uit voor het pakket nss-PEM naar [v 1.0.3-5.el7_6.1](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-7.el7.x86_64.rpm.html). <br/>
 `sudo yum upgrade nss-pem`
 
 2. Als nss-PEM niet beschikbaar is voor upgrade (meestal gebeurt op CentOS), downgradet u krul naar 7.29.0-46. Als u per ongeluk ' yum update ' uitvoert, wordt krul bijgewerkt naar 7.29.0-51 en wordt het probleem opnieuw uitgevoerd. <br/>
@@ -298,7 +298,7 @@ Deze fout geeft aan dat de Linux Diagnostic extension (LAD) wordt geïnstalleerd
 * Het OMI-pakket is hand matig bijgewerkt naar een nieuwere versie, vergeleken met wat is geïnstalleerd door Log Analytics agent voor Linux-pakket
 * Fout in de klasse van de DSC-resource Logboeken is *niet gevonden* in het `omsconfig.log` logboek bestand
 * Er wordt een back-up gemaakt van Log Analytics-agent voor gegevens
-* DSC-logboeken *huidige configuratie bestaat niet. Voer de opdracht start-DscConfiguration uit met de para meter-Path om een configuratie bestand op te geven en maak eerst een huidige configuratie.* in het `omsconfig.log` logboek bestand, maar er bestaat geen logboek bericht over `PerformRequiredConfigurationChecks` bewerkingen.
+* DSC-logboeken *huidige configuratie bestaat niet. Voer Start-DscConfiguration opdracht met de para meter-Path uit om een configuratie bestand op te geven en maak eerst een huidige configuratie.* in het `omsconfig.log` logboek bestand, maar er bestaat geen logboek bericht over `PerformRequiredConfigurationChecks` bewerkingen.
 
 ### <a name="resolution"></a>Oplossing
 1. Installeer alle afhankelijkheden zoals het gecontroleerde pakket.

@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5b48a84bb69a356815cccd1e33c555eeb667699f
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89244718"
 ---
 # <a name="how-to-manage-inactive-user-accounts-in-azure-ad"></a>Procedure: inactieve gebruikers accounts beheren in azure AD
@@ -91,5 +91,5 @@ U moet een geslaagde aanmelding hebben als u een lastSignInDateTime-tijds tempel
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Gegevens ophalen met de Azure Active Directory rapportage-API met certificaten](tutorial-access-api-with-certificates.md)
-* [Controle-API-verwijzing](/graph/api/resources/directoryaudit?view=graph-rest-beta) 
-* [API-naslag informatie voor aanmeld activiteiten](/graph/api/resources/signin?view=graph-rest-beta)
+* [Audit API-verwijzing](/graph/api/resources/directoryaudit?view=graph-rest-beta) 
+* [Verwijzing naar rapport-API voor aanmeldingsactiviteit](/graph/api/resources/signin?view=graph-rest-beta)

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: yagupta
 ms.openlocfilehash: a187b31657ec2a67c306d817a75150d19a5cf9b6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86497179"
 ---
 # <a name="encryption-of-data-in-azure-data-lake-storage-gen1"></a>Versleuteling van gegevens in Azure Data Lake Storage Gen1
@@ -115,7 +115,7 @@ Houd er rekening mee dat als u de standaard opties voor versleuteling gebruikt, 
 
 ### <a name="how-to-rotate-the-mek-in-data-lake-storage-gen1"></a>De MEK draaien in Data Lake Storage Gen1
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Blader naar het Key Vault-exemplaar waarin uw sleutels zijn opgeslagen die zijn gekoppeld aan uw Data Lake Storage Gen1-account. Selecteer **Sleutels**.
 
     ![Schermafdruk van Key Vault](./media/data-lake-store-encryption/keyvault.png)

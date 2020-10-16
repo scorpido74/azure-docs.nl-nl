@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 7/16/2020
 ms.author: surmb
 ms.openlocfilehash: 160d056447bd53ea01437acd372b5efeb15b4773
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87083154"
 ---
 # <a name="rewrite-url-with-azure-application-gateway---azure-portal-preview"></a>URL opnieuw schrijven met Azure-toepassing gateway-Azure Portal (preview-versie)
@@ -53,13 +53,13 @@ In het onderstaande voor beeld wanneer de aanvraag-URL */article*bevat, worden h
     
     c. Selecteer **Volgende**.
     
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-2.png" alt-text="Koppelen aan een regel":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-2.png" alt-text="Set voor herschrijven toevoegen":::
 
 5. Een herschrijf regel maken:
 
     a. Selecteer **regel voor herschrijven toevoegen**.
     
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-3.png" alt-text="Regel voor herschrijven toevoegen":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-3.png" alt-text="Set voor herschrijven toevoegen":::
     
     b. Voer een naam in voor de regel voor herschrijven in het vak **regel naam herschrijven** . Voer een getal in het vak **regel reeks** in.
 
@@ -75,13 +75,13 @@ In het onderstaande voor beeld wanneer de aanvraag-URL */article*bevat, worden h
     
     e. Selecteer in de lijst **operator** de optie **gelijk aan (=)**.
     
-    f. Geef een reguliere-expressie patroon op. In dit voor beeld gebruiken we het patroon`.*article/(.*)/(.*)`
+    f. Geef een reguliere-expressie patroon op. In dit voor beeld gebruiken we het patroon `.*article/(.*)/(.*)`
     
       () wordt gebruikt voor het vastleggen van de subtekenreeks voor later gebruik bij het opstellen van de expressie voor het herschrijven van het URL-pad. Klik [hier](rewrite-http-headers-url.md#capturing) voor meer informatie.
 
     g. Selecteer **OK**.
 
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-4.png" alt-text="Condition":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-4.png" alt-text="Set voor herschrijven toevoegen":::
 
  
 
@@ -97,17 +97,17 @@ In het onderstaande voor beeld wanneer de aanvraag-URL */article*bevat, worden h
 
    e. Voer in de **URL-query teken reeks waarde**de nieuwe waarde van de URL-query teken reeks in. In dit voor beeld gebruiken we **id = {var_uri_path_1} &titel = {var_uri_path_2}**
     
-    `{var_uri_path_1}`en `{var_uri_path_1}` worden gebruikt voor het ophalen van de subtekenreeksen die zijn vastgelegd tijdens het evalueren van de voor waarde in deze expressie`.*article/(.*)/(.*)`
+    `{var_uri_path_1}` en `{var_uri_path_1}` worden gebruikt voor het ophalen van de subtekenreeksen die zijn vastgelegd tijdens het evalueren van de voor waarde in deze expressie `.*article/(.*)/(.*)`
     
    f. Selecteer **OK**.
 
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-5.png" alt-text="Actie":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-5.png" alt-text="Set voor herschrijven toevoegen":::
 
 8. Klik op **maken** om de set voor opnieuw schrijven te maken.
 
 9. Controleren of de nieuwe set opnieuw schrijven wordt weer gegeven in de lijst met herschrijf sets
 
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-6.png" alt-text="Regel voor herschrijven toevoegen":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-6.png" alt-text="Set voor herschrijven toevoegen":::
 
 ## <a name="verify-url-rewrite-through-access-logs"></a>URL-herschrijven controleren via toegangs logboeken
 

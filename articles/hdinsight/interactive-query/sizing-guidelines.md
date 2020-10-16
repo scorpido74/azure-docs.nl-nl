@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.openlocfilehash: a81eff1dcf48996c319933aa4dd46170043b943b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83664933"
 ---
 # <a name="interactive-query-cluster-sizing-guide-in-azure-hdinsight"></a>Aanpassings gids voor interactieve query clusters in azure HDInsight
@@ -75,13 +75,13 @@ Het standaard HDInsight-cluster bevat vier LLAP-daemons die worden uitgevoerd op
 
 ### <a name="tezamresourcememorymb-hivetezcontainersize"></a>TEZ. am. resource. Memory. MB, component. TEZ. container. size
 
-`tez.am.resource.memory.mb`Hiermee wordt de grootte van de toepassings Master van de TEZ gedefinieerd.  
+`tez.am.resource.memory.mb` Hiermee wordt de grootte van de toepassings Master van de TEZ gedefinieerd.  
 De aanbevolen waarde is **4096 MB**.
 
-`hive.tez.container.size`Hiermee definieert u de hoeveelheid geheugen die is opgegeven voor de TEZ-container. Deze waarde moet worden ingesteld tussen de minimale container grootte ( `yarn.scheduler.minimum-allocation-mb` ) en de maximale container grootte () van de garens `yarn.scheduler.maximum-allocation-mb` .  
+`hive.tez.container.size` Hiermee definieert u de hoeveelheid geheugen die is opgegeven voor de TEZ-container. Deze waarde moet worden ingesteld tussen de minimale container grootte ( `yarn.scheduler.minimum-allocation-mb` ) en de maximale container grootte () van de garens `yarn.scheduler.maximum-allocation-mb` .  
 U kunt het beste instellen op **4096 MB**.  
 
-Een algemene regel is om deze lager te houden dan de hoeveelheid geheugen per processor, waarbij één processor per container wordt overwogen. `Rreserve`geheugen voor het aantal TEZ AMs op een knoop punt voordat het geheugen voor LLAP-daemon wordt aangeboden. Als u bijvoorbeeld twee TEZ AMs (elk 4 GB per knoop punt) gebruikt, geeft u 82 GB van 90 GB voor LLAP-daemon die 8 GB reserveert voor twee TEZ AMs.
+Een algemene regel is om deze lager te houden dan de hoeveelheid geheugen per processor, waarbij één processor per container wordt overwogen. `Rreserve` geheugen voor het aantal TEZ AMs op een knoop punt voordat het geheugen voor LLAP-daemon wordt aangeboden. Als u bijvoorbeeld twee TEZ AMs (elk 4 GB per knoop punt) gebruikt, geeft u 82 GB van 90 GB voor LLAP-daemon die 8 GB reserveert voor twee TEZ AMs.
 
 ### <a name="yarnschedulercapacityrootllapcapacity"></a>garens. scheduler. capacity. root. llap. capacity
 

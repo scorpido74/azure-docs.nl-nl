@@ -10,10 +10,10 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/12/2019
 ms.openlocfilehash: 052b12817b788ff38f0fab72a5420896b062c732
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82857428"
 ---
 # <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>Fout bij het opsporen van Spark-taken met Azure-toolkit voor IntelliJ (preview-versie)
@@ -72,7 +72,7 @@ Maak een Spark scala/Java-toepassing en voer de toepassing uit op een Spark-clus
 
    ![Nieuwe configuratie IntelliJ toevoegen](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-01.png)
 
-3. Schakel over op **extern uitvoeren op** het tabblad cluster. Voer informatie in voor de **naam**, het **Spark-cluster**en de naam van de **hoofd klasse**. Onze hulp middelen ondersteunen debug met **uitvoerende**software. De **numExectors**, de standaard waarde is 5 en u kunt beter niet hoger dan 3 instellen. U kunt de uitvoerings tijd verminderen door **Spark. garens. maxAppAttempts** toe te voegen aan de **taak configuraties** en de waarde in te stellen op 1. Klik op de knop **OK** om de configuratie op te slaan.
+3. Overschakelen naar **extern uitvoeren op** het tabblad cluster. Voer informatie in voor de **naam**, het **Spark-cluster**en de naam van de **hoofd klasse**. Onze hulp middelen ondersteunen debug met **uitvoerende**software. De **numExectors**, de standaard waarde is 5 en u kunt beter niet hoger dan 3 instellen. U kunt de uitvoerings tijd verminderen door **Spark. garens. maxAppAttempts** toe te voegen aan de **taak configuraties** en de waarde in te stellen op 1. Klik op de knop **OK** om de configuratie op te slaan.
 
    ![IntelliJ voor fout opsporing uitvoeren](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-002.png)
 

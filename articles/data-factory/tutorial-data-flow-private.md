@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/19/2019
 ms.openlocfilehash: d752b747a0156bcef587f81ee421c55a6de81e17
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89079469"
 ---
 # <a name="transform-data-securely-by-using-mapping-data-flow"></a>Gegevens veilig transformeren met behulp van gegevens stroom toewijzen
@@ -35,19 +35,19 @@ In deze zelfstudie voert u de volgende stappen uit:
 
 ## <a name="prerequisites"></a>Vereisten
 * **Azure-abonnement**. Als u nog geen abonnement op Azure hebt, maak dan een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint.
-* **Azure-opslagaccount**. U gebruikt Data Lake Storage als *bron* -en *sink* -gegevens opslag. Als u geen opslagaccount hebt, raadpleegt u het artikel [Een opslagaccount maken](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-portal) om een account te maken. *Zorg ervoor dat het opslag account alleen toegang toestaat vanuit geselecteerde netwerken.* 
+* **Azure-opslagaccount**. U gebruikt Data Lake Storage als *bron* -en *sink* -gegevens opslag. Als u geen opslagaccount hebt, raadpleegt u het artikel [Een opslagaccount maken](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-portal) om een account te maken. *Zorg ervoor dat het opslagaccount alleen toegang toestaat vanuit geselecteerde netwerken.* 
 
 Het bestand dat in deze zelf studie wordt getransformeerd, is moviesDB.csv, dat u kunt vinden op deze [github-inhouds site](https://raw.githubusercontent.com/djpmsft/adf-ready-demo/master/moviesDB.csv). Als u het bestand wilt ophalen uit GitHub, kopieert u de inhoud naar een tekst editor van uw keuze om deze lokaal op te slaan als een CSV-bestand. Als u het bestand naar uw opslag account wilt uploaden, raadpleegt u [blobs uploaden met de Azure Portal](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal). In de voor beelden wordt verwezen naar een container met de naam **Sample-Data**.
 
-## <a name="create-a-data-factory"></a>Een gegevensfactory maken
+## <a name="create-a-data-factory"></a>Een data factory maken
 
 In deze stap maakt u een data factory en opent u de Data Factory-gebruikers interface om een pijp lijn te maken in de data factory.
 
-1. Open Microsoft Edge of Google Chrome. Op dit moment ondersteunen alleen de webbrowsers van micro soft Edge en Google Chrome de Data Factory-gebruikers interface.
+1. Open Microsoft Edge of Google Chrome. Op dit moment wordt de Data Factory-gebruikersinterface alleen ondersteund in de webbrowsers Microsoft Edge en Google Chrome.
 1. Selecteer in het linkermenu **Een resource maken** > **Analyse** > **Data Factory**.
 1. Voer op de pagina **Nieuwe data factory** **ADFTutorialDataFactory** in bij **Naam**.
 
-   De naam van de data factory moet *wereldwijd uniek* zijn. Als er een fout bericht over de naam waarde wordt weer gegeven, voert u een andere naam in voor de data factory (bijvoorbeeld Uwnaamadftutorialdatafactory). Zie [Data Factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
+   De naam van de data factory moet *wereldwijd uniek* zijn. Als u een foutbericht ontvangt over de naamwaarde, voert u een andere naam in voor de data factory (bijvoorbeeld uwnaamADFTutorialDataFactory). Zie [Data Factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
 
 1. Selecteer het Azure-**abonnement** waarin u de data factory wilt maken.
 1. Voer een van de volgende stappen uit voor **Resourcegroep**:
@@ -57,10 +57,10 @@ In deze stap maakt u een data factory en opent u de Data Factory-gebruikers inte
          
     Zie [Resourcegroepen gebruiken om Azure-resources te beheren](../azure-resource-manager/management/overview.md) voor meer informatie. 
 1. Selecteer **V2** onder **Versie**.
-1. Selecteer onder **Locatie** een locatie voor de data factory. Alleen locaties die worden ondersteund, worden weer gegeven in de vervolg keuzelijst. Gegevens archieven (bijvoorbeeld Azure Storage en Azure SQL Database) en berekeningen (zoals Azure HDInsight) die door de data factory worden gebruikt, kunnen zich in andere regio's bevindt.
+1. Selecteer onder **Locatie** een locatie voor de data factory. In de vervolgkeuzelijst worden alleen ondersteunde locaties weergegeven. Gegevens archieven (bijvoorbeeld Azure Storage en Azure SQL Database) en berekeningen (zoals Azure HDInsight) die door de data factory worden gebruikt, kunnen zich in andere regio's bevindt.
 
 1. Selecteer **Maken**.
-1. Nadat het maken is voltooid, ziet u de melding in het meldingen centrum. Selecteer **Ga naar resource** om naar de pagina **Data Factory** te gaan.
+1. Als het maken is voltooid, ziet u de melding in het meldingencentrum. Selecteer **Naar de resource gaan** om naar de pagina **Data Factory** te gaan.
 1. Selecteer de tegel **Maken en controleren** om de Data Factory-gebruikersinterface te openen op een afzonderlijk tabblad.
 
 ## <a name="create-an-azure-ir-in-data-factory-managed-virtual-network"></a>Een Azure IR maken in Data Factory beheerde Virtual Network
@@ -73,7 +73,7 @@ In deze stap maakt u een Azure IR en schakelt u Data Factory beheerde Virtual Ne
 
    ![Scherm opname waarin een nieuwe Azure IR wordt weer gegeven.](./media/tutorial-copy-data-portal-private/azure-ir.png)
 
-1. Selecteer onder **virtuele netwerk configuratie (preview)** de optie **inschakelen**.
+1. Selecteer onder **Configuratie van virtueel netwerk (preview)** de optie **Inschakelen**.
 
    ![Scherm opname van het inschakelen van een nieuwe Azure IR.](./media/tutorial-copy-data-portal-private/enable-managed-vnet.png)
 
@@ -85,7 +85,7 @@ In deze stap maakt u een pijp lijn die een gegevens stroom activiteit bevat.
 
 1. Selecteer op de pagina **Aan de slag** de optie **Pijplijn maken**.
 
-   ![Scherm opname waarin een pijp lijn wordt weer gegeven.](./media/doc-common-process/get-started-page.png)
+   ![Schermopname waarin het maken van een pijplijn wordt weergegeven.](./media/doc-common-process/get-started-page.png)
 
 1. Voer in het deel venster Eigenschappen voor de pijp lijn **TransformMovies** in voor de naam van de pijp lijn.
 1. Schuif in de bovenste balk van de fabriek de schuif regelaar voor **fout opsporing van gegevens stromen** aan. In de modus voor fout opsporing kunt u de transformatie logica interactief testen op een live Spark-cluster. Gegevens stroom clusters nemen vijf tot zeven minuten in beslag. Schakel de **fout opsporing van gegevens stromen** eerst in als u de ontwikkeling van gegevens stromen wilt plannen. Zie [debug mode (foutopsporingsmodus](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-debug-mode)) voor meer informatie.
@@ -119,17 +119,17 @@ In deze stap stelt u Data Lake Storage Gen2 in als een bron.
 
 1. Geef in het scherm gekoppelde service maken de naam op van de Data Lake Storage Gen2 gekoppelde service **ADLSGen2** en de verificatie methode op. Voer vervolgens uw verbindings referenties in. In deze zelf studie gebruiken we de **account sleutel** om verbinding te maken met het opslag account. 
 
-1. Zorg ervoor dat u **interactieve ontwerp**functie inschakelt. Het kan een minuut duren voordat deze is ingeschakeld.
+1. Zorg ervoor dat u **Interactieve creatie** inschakelt. Het kan een minuut duren voordat deze is ingeschakeld.
 
-    ![Scherm opname waarin interactieve ontwerpen worden weer gegeven.](./media/tutorial-data-flow-private/interactive-authoring.png)
+    ![Schermopname waarin interactieve creatie wordt weergegeven.](./media/tutorial-data-flow-private/interactive-authoring.png)
 
 1. Selecteer **Verbinding testen**. Het moet mislukken omdat het opslag account geen toegang tot de server inschakelt zonder een persoonlijk eind punt te maken en goed te keuren. In het foutbericht wordt een koppeling weergegeven om een privé-eindpunt te maken dat u kunt volgen om een beheerd privé-eindpunt te maken. U kunt ook rechtstreeks naar het tabblad **beheren** gaan en de instructies in [deze sectie](#create-a-managed-private-endpoint) volgen om een beheerd privé-eind punt te maken.
 
-1. Houd het dialoog venster geopend en ga vervolgens naar uw opslag account.
+1. Houd het dialoogvenster geopend en ga vervolgens naar uw opslagaccount.
 
 1. Volg de instructies in [deze sectie](#approval-of-a-private-link-in-a-storage-account) om de persoonlijke koppeling goed te keuren.
 
-1. Ga terug naar het dialoogvenster. Selecteer opnieuw **verbinding testen** en selecteer **maken** om de gekoppelde service te implementeren.
+1. Ga terug naar het dialoogvenster. Selecteer **Test de verbinding** opnieuw en selecteer vervolgens **Maken** om de gekoppelde service te implementeren.
 
 1. Voer in het scherm gegevensset maken de locatie in waar uw bestand zich bevindt in het veld **bestandspad** . In deze zelf studie wordt het bestand moviesDB.csv bevindt zich in de container **-voorbeeld gegevens**. Schakel het selectie vakje **eerste rij als koptekst** in, omdat het bestand kopteksten bevat. Selecteer **in verbinding/archief** om het header-schema rechtstreeks te importeren uit het bestand in de opslag. Selecteer **OK** wanneer u klaar bent.
 
@@ -141,36 +141,36 @@ In deze stap stelt u Data Lake Storage Gen2 in als een bron.
 
 #### <a name="create-a-managed-private-endpoint"></a>Een beheerd privé-eindpunt maken
 
-Als u de Hyper link niet hebt gebruikt tijdens het testen van de voor gaande verbinding, volgt u het pad. Nu moet u een beheerd persoonlijk eind punt maken dat u gaat verbinden met de gekoppelde service die u hebt gemaakt.
+Als u de Hyper link niet hebt gebruikt tijdens het testen van de voor gaande verbinding, volgt u het pad. Nu moet u een beheerd privé-eindpunt maken dat u verbindt met de gekoppelde service die u hebt gemaakt.
 
-1. Ga naar het tabblad **beheren** .
+1. Ga naar het tabblad **Beheren**.
 
    > [!NOTE]
-   > Het tabblad **beheren** is mogelijk niet beschikbaar voor alle exemplaren van Data Factory. Als u deze niet ziet, kunt u toegang krijgen tot persoonlijke eind punten door **Auteur**-verbindingen te selecteren  >  **Connections**  >  **persoonlijk eind punt**.
+   > Het tabblad **Beheren** is mogelijk niet beschikbaar voor alle exemplaren van Data Factory. Als u het niet ziet, kunt u toegang krijgen tot privé-eindpunten door **Auteur** > **Verbindingen** > **Privé-eindpunt** te selecteren.
 
-1. Ga naar de sectie **beheerde privé-eind punten** .
-1. Selecteer **+ Nieuw** onder **beheerde persoonlijke eind punten**.
+1. Ga naar het gedeelte **Beheerde privé-eindpunten**.
+1. Selecteer **+ Nieuwe** onder **Beheerde privé-eindpunten**.
 
-    ![Scherm afbeelding met de knop Nieuw privé-eind punten weer geven.](./media/tutorial-data-flow-private/new-managed-private-endpoint.png) 
+    ![Schermafbeelding met de knoppen Beheerde privé-eindpunten en Nieuw.](./media/tutorial-data-flow-private/new-managed-private-endpoint.png) 
 
 1. Selecteer de tegel **Azure data Lake Storage Gen2** in de lijst en selecteer **door gaan**.
-1. Voer de naam in van het opslag account dat u hebt gemaakt.
+1. Voer de naam in van het opslagaccount dat u hebt gemaakt.
 1. Selecteer **Maken**.
-1. Na een paar seconden ziet u dat er een goed keuring is vereist voor de persoonlijke koppeling die is gemaakt.
-1. Selecteer het persoonlijke eind punt dat u hebt gemaakt. U ziet een Hyper link waarmee u het persoonlijke eind punt kunt goed keuren op het niveau van het opslag account.
+1. Na enkele seconden wordt voor de privékoppeling een goedkeuring vereist.
+1. Selecteer het privé-eindpunt dat u hebt gemaakt. U ziet een hyperlink waarmee u het privé-eindpunt kunt goedkeuren op het niveau van het opslagaccount.
 
     ![Scherm opname van het deel venster privé-eind punt beheren.](./media/tutorial-data-flow-private/manage-private-endpoint.png) 
 
-#### <a name="approval-of-a-private-link-in-a-storage-account"></a>Goed keuring van een persoonlijke koppeling in een opslag account
+#### <a name="approval-of-a-private-link-in-a-storage-account"></a>Goedkeuring van een privékoppeling in een opslagaccount
 
-1. Ga in het opslag account naar **verbindingen met privé-eind punten** in de sectie **instellingen** .
+1. Ga in het opslagaccount naar **Privé-eindpuntverbindingen** in het gedeelte **Instellingen**.
 
 1. Schakel het selectie vakje in op het persoonlijke eind punt dat u hebt gemaakt en selecteer **goed keuren**.
 
     ![Scherm opname van de knop voor goed keuring van privé-eind punten.](./media/tutorial-data-flow-private/approve-private-endpoint.png)
 
-1. Voeg een beschrijving toe en selecteer **Ja**.
-1. Ga terug naar de sectie **beheerde persoonlijke eind punten** van het tabblad **beheren** in Data Factory.
+1. Voeg een beschrijving toe en selecteer **ja**.
+1. Ga terug naar het gedeelte **Beheerde privé-eindpunten** van het tabblad **Beheren** in Data Factory.
 1. Na ongeveer een minuut ziet u dat de goed keuring voor uw persoonlijke eind punt wordt weer gegeven.
 
 ### <a name="add-the-filter-transformation"></a>De filter transformatie toevoegen

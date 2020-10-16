@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 11/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0b910e3b119167fb4c6de55289d92b9d538c8ddb
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6fedefccf57364e690415542114030ba7ce12b49
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284554"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974088"
 ---
 # <a name="azure-disk-encryption-for-windows-virtual-machines-faq"></a>Veelgestelde vragen over Azure Disk Encryption voor virtuele Windows-machines
 
@@ -124,7 +124,7 @@ Azure Disk Encryption selecteert de versleutelings methode in BitLocker op basis
 | Windows Server 2012, Windows 8, 8,1, 10 | < 1511 |AES 256 bits *              |
 | Windows Server-2008R2            |        |AES 256-bit met diffusor |
 
-\*AES 256 bits met diffuser wordt niet ondersteund in Windows 2012 en hoger.
+\* AES 256 bits met diffuser wordt niet ondersteund in Windows 2012 en hoger.
 
 Als u de versie van het Windows-besturings systeem wilt bepalen, voert u het hulp programma winver uit in de virtuele machine.
 
@@ -140,5 +140,5 @@ U kunt vragen stellen of feedback geven op de [pagina micro soft Q&een vraag voo
 In dit document hebt u meer geleerd over de meest voorkomende vragen met betrekking tot Azure Disk Encryption. Raadpleeg de volgende artikelen voor meer informatie over deze service:
 
 - [Overzicht van Azure Disk Encryption](disk-encryption-overview.md)
-- [Schijf versleuteling Toep assen in Azure Security Center](../../security-center/security-center-virtual-machine-protection.md)
+- [Schijf versleuteling Toep assen in Azure Security Center](../../security-center/asset-inventory.md)
 - [Versleuteling van inactieve gegevens in Azure](../../security/fundamentals/encryption-atrest.md)

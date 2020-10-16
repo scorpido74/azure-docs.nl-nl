@@ -8,10 +8,10 @@ ms.custom:
 - devx-track-csharp
 - contperfq1
 ms.openlocfilehash: 1bacb0c71c05aeb983bfa9ebf71873a22fea39a1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91277696"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Toepassingen implementeren op reken knooppunten met batch-toepassings pakketten
@@ -77,7 +77,7 @@ De batch-service gebruikt Azure Storage om uw toepassings pakketten op te slaan 
 
 Als u de toepassingen wilt weer geven in uw batch-account, selecteert u **toepassingen** in het navigatie menu links.
 
-:::image type="content" source="media/batch-application-packages/app_pkg_02.png" alt-text="Scherm opname van het menu-item toepassingen in de Azure Portal.":::
+:::image type="content" source="media/batch-application-packages/app_pkg_02.png" alt-text="Diagram van een weer gave op hoog niveau van toepassingen en toepassings pakketten.":::
 
 Als u deze menu optie selecteert, wordt het venster **toepassingen** geopend. In dit venster wordt de ID weer gegeven van elke toepassing in uw account en de volgende eigenschappen:
 
@@ -101,9 +101,9 @@ Als u een nieuwe toepassing wilt maken, voegt u een toepassings pakket toe en ge
 
 Selecteer in uw batch-account **toepassingen** en selecteer vervolgens **toevoegen**.
 
-:::image type="content" source="media/batch-application-packages/app_pkg_05.png" alt-text="Scherm opname van het proces voor het maken van nieuwe toepassingen in de Azure Portal.":::
+:::image type="content" source="media/batch-application-packages/app_pkg_05.png" alt-text="Diagram van een weer gave op hoog niveau van toepassingen en toepassings pakketten.":::
 
-Voer de volgende informatie in:
+Voer de volgende gegevens in:
 
 - **Toepassings-id**: de id van de nieuwe toepassing.
 - **Versie**: de versie van het toepassings pakket dat u uploadt.
@@ -128,7 +128,7 @@ Zoals u voor de nieuwe toepassing hebt gedaan, geeft u de **versie** op voor het
 
 Als u een bestaand toepassings pakket wilt bijwerken of verwijderen, selecteert u de toepassing in de sectie **toepassingen** van uw batch-account. Selecteer het beletsel teken in de rij van het toepassings pakket dat u wilt wijzigen en selecteer vervolgens de actie die u wilt uitvoeren.
 
-:::image type="content" source="media/batch-application-packages/app_pkg_07.png" alt-text="Scherm afbeelding met de opties voor bijwerken en verwijderen voor toepassings pakketten in de Azure Portal.":::
+:::image type="content" source="media/batch-application-packages/app_pkg_07.png" alt-text="Diagram van een weer gave op hoog niveau van toepassingen en toepassings pakketten.":::
 
 Als u **bijwerken**selecteert, kunt u een nieuw zip-bestand uploaden. Hiermee wordt het vorige zip-bestand vervangen dat u hebt geüpload voor die versie.
 
@@ -243,7 +243,7 @@ CloudTask blenderTask = new CloudTask(taskId, commandLine);
 
 ## <a name="update-a-pools-application-packages"></a>De toepassingspakketten van een groep bijwerken
 
-Als een bestaande pool al is geconfigureerd met een toepassings pakket, kunt u een nieuw pakket voor de groep opgeven. Dit houdt in:
+Als een bestaande pool al is geconfigureerd met een toepassings pakket, kunt u een nieuw pakket voor de groep opgeven. Dit betekent:
 
 - De batch-service installeert het zojuist opgegeven pakket op alle nieuwe knoop punten die lid zijn van de groep en op elk bestaand knoop punt dat opnieuw wordt opgestart of een nieuwe installatie kopie heeft gemaakt.
 - Reken knooppunten die zich al in de groep bevinden wanneer u de pakket verwijzingen bijwerkt, installeren het nieuwe toepassings pakket niet automatisch. Deze reken knooppunten moeten opnieuw worden opgestart of worden geimageeerd om het nieuwe pakket te ontvangen.

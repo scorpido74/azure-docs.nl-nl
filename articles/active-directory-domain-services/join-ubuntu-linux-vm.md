@@ -2,7 +2,7 @@
 title: Een Ubuntu-VM toevoegen aan Azure AD Domain Services | Microsoft Docs
 description: Meer informatie over het configureren en toevoegen van een Ubuntu Linux virtuele machine aan een Azure AD Domain Services beheerd domein.
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 804438c4-51a1-497d-8ccc-5be775980203
 ms.service: active-directory
@@ -10,14 +10,14 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/13/2020
-ms.author: iainfou
+ms.author: joflore
 ms.custom: fasttrack-edit
-ms.openlocfilehash: d01d961a5d5b86f74bb785c3fddfa09843aa060c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ac620ffa36bdeb35ef524ef2956db03c8edcb566
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283143"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962085"
 ---
 # <a name="join-an-ubuntu-linux-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Een Ubuntu Linux virtuele machine toevoegen aan een Azure Active Directory Domain Services beheerd domein
 
@@ -77,7 +77,7 @@ Als u klaar bent, slaat u het *hosts* -bestand op en sluit u het af met de `:wq`
 
 ## <a name="install-required-packages"></a>De vereiste pakketten installeren
 
-De VM moet enkele extra pakketten hebben om de virtuele machine toe te voegen aan het beheerde domein. Als u deze pakketten wilt installeren en configureren, moet u de hulpprogram ma's voor domein deelname bijwerken en installeren met`apt-get`
+De VM moet enkele extra pakketten hebben om de virtuele machine toe te voegen aan het beheerde domein. Als u deze pakketten wilt installeren en configureren, moet u de hulpprogram ma's voor domein deelname bijwerken en installeren met `apt-get`
 
 Tijdens de installatie van Kerberos vraagt het *krb5-gebruikers* pakket voor de realm-naam in alle hoofd letters. Als de naam van uw beheerde domein bijvoorbeeld *aaddscontoso.com*is, voert u *AADDSCONTOSO.com* in als de realm. De installatie schrijft de `[realm]` `[domain_realm]` secties en in het configuratie bestand */etc/krb5.conf* . Zorg ervoor dat u de realm een hoofd letter opgeeft:
 

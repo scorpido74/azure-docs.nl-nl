@@ -11,17 +11,17 @@ ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: fa4a649115f8e89c27f435888b682b7de36e9894
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87533917"
 ---
 # <a name="create-an-image-version-from-a-vm-in-azure-using-the-azure-cli"></a>Een installatie kopie versie maken op basis van een virtuele machine in azure met behulp van Azure CLI
 
 Als u een bestaande VM hebt die u wilt gebruiken om meerdere, identieke Vm's te maken, kunt u die VM gebruiken om een installatie kopie te maken in een galerie met gedeelde afbeeldingen met behulp van de Azure CLI. U kunt ook een installatie kopie maken op basis van een virtuele machine met behulp van [Azure PowerShell](image-version-vm-powershell.md).
 
-Een **installatie kopie versie** is wat u gebruikt om een virtuele machine te maken wanneer u een galerie met gedeelde afbeeldingen gebruikt. U kunt meerdere versies van een installatie kopie naar behoefte hebben voor uw omgeving. Wanneer u een installatie kopie-versie gebruikt om een virtuele machine te maken, wordt de versie van de installatie kopie gebruikt voor het maken van schijven voor de nieuwe virtuele machine. Installatie kopie versies kunnen meerdere keren worden gebruikt.
+Een **installatie kopie versie** is wat u gebruikt om een virtuele machine te maken wanneer u een galerie met gedeelde afbeeldingen gebruikt. U kunt net zo veel versies van een installatiekopie voor uw omgeving gebruiken als u nodig hebt. Wanneer u een installatie kopie-versie gebruikt om een virtuele machine te maken, wordt de versie van de installatie kopie gebruikt voor het maken van schijven voor de nieuwe virtuele machine. Versies van installatiekopieën kunnen meerdere keren worden gebruikt.
 
 
 ## <a name="before-you-begin"></a>Voordat u begint
@@ -55,13 +55,13 @@ Definities van installatiekopieën maken een logische groepering voor installati
 
 Namen van installatiekopiedefinities kunnen bestaan uit hoofdletters, kleine letters, cijfers, streepjes en punten. 
 
-Zorg ervoor dat de definitie van de afbeelding het juiste type is. Als u de VM hebt gegeneraliseerd (met behulp van Sysprep voor Windows of waagent-deprovisioning voor Linux), moet u een algemene definitie voor de installatie kopie maken met behulp van `--os-state generalized` . Als u de virtuele machine wilt gebruiken zonder bestaande gebruikers accounts te verwijderen, maakt u een gespecialiseerde definitie van de installatie kopie met behulp van `--os-state specialized` .
+Controleer of uw installatiekopiedefinitie het juiste type heeft. Als u de VM hebt gegeneraliseerd (met behulp van Sysprep voor Windows of waagent-deprovision voor Linux), moet u een gegeneraliseerde installatiekopiedefinitie maken met behulp van `--os-state generalized`. Als u de VM wilt gebruiken zonder bestaande gebruikersaccounts te verwijderen, maakt u een gespecialiseerde installatiekopiedefinitie met behulp van `--os-state specialized`.
 
 Zie [Installatiekopiedefinities](./linux/shared-image-galleries.md#image-definitions) voor meer informatie over de waarden die u kunt specificeren voor een installatiekopiedefinitie.
 
 Een installatiekopiedefinitie in de galerie maken met [az sig image-definition create](/cli/azure/sig/image-definition#az-sig-image-definition-create).
 
-In dit voorbeeld heeft de definitie van de installatiekopie de naam *myImageDefinition* en is deze voor een [gespecialiseerde](./linux/shared-image-galleries.md#generalized-and-specialized-images) installatiekopie van een Linux-besturingssysteem. Als u een definitie voor installatie kopieën wilt maken met een Windows-besturings systeem, gebruikt u `--os-type Windows` . 
+In dit voorbeeld heeft de definitie van de installatiekopie de naam *myImageDefinition* en is deze voor een [gespecialiseerde](./linux/shared-image-galleries.md#generalized-and-specialized-images) installatiekopie van een Linux-besturingssysteem. Als u een definitie wilt maken voor installatiekopieën met een Windows-besturingssysteem, gebruikt u `--os-type Windows`. 
 
 ```azurecli-interactive 
 az sig image-definition create \

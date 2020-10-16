@@ -1,19 +1,20 @@
 ---
-title: Optimaliseer de kosten voor Blob Storage met gereserveerde capaciteit-Azure Storage
+title: Kosten optimaliseren voor blob-opslag met gereserveerde capaciteit
+titleSuffix: Azure Storage
 description: Meer informatie over het aanschaffen van Azure Storage gereserveerde capaciteit om kosten op blok-Blob en Azure Data Lake Storage Gen2 resources op te slaan.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 06/01/2020
+ms.date: 10/08/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: c06bbc412a51fc919b862aeb3f62ec58feec89cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf96906b0dab9a94febe83468f813c7cae0675b0
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84259198"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91874812"
 ---
 # <a name="optimize-costs-for-blob-storage-with-reserved-capacity"></a>Kosten optimaliseren voor blob-opslag met gereserveerde capaciteit
 
@@ -29,7 +30,7 @@ In de volgende secties worden de voor waarden van een Azure Storage reserve ring
 
 ### <a name="reservation-capacity"></a>Reserve ring capaciteit
 
-U kunt Azure Storage gereserveerde capaciteit kopen in eenheden van 100 TB en 1 PB per maand voor een periode van één of drie jaar.
+U kunt Azure Storage gereserveerde capaciteit kopen in eenheden van 100 TiB en 1 PiB per maand voor een periode van één of drie jaar.
 
 ### <a name="reservation-scope"></a>Reserverings bereik
 
@@ -62,7 +63,7 @@ Gereserveerde capaciteit kopen:
 
 Wanneer u een Azure Storage reserve ring aanschaft, moet u de regio, de toegangs laag en de redundantie optie voor de reserve ring kiezen. Uw reserve ring is alleen geldig voor gegevens die zijn opgeslagen in die regio, toegangs laag en redundantie niveau. Stel dat u een reserve ring aanschaft voor gegevens in VS West voor de warme laag met zone-redundante opslag (ZRS). U kunt niet dezelfde reserve ring voor gegevens gebruiken in VS Oost, gegevens in de opslaglaag of gegevens in geo-redundante opslag (GRS). U kunt echter wel een andere reserve ring aanschaffen voor uw aanvullende behoeften.  
 
-Er zijn vandaag nog reserve ringen beschikbaar voor 100 TB of 1 PB-blokken, met hogere kortingen voor 1 PB-blokken. Wanneer u een reserve ring aanschaft in de Azure Portal, kan micro soft u aanbevelingen geven op basis van uw vorige gebruik om te helpen bepalen welke reserve ring u moet aanschaffen.
+Er zijn vandaag nog reserve ringen beschikbaar voor 100 TiB-of 1 PiB-blokken, met hogere kortingen voor 1 PiB-blokken. Wanneer u een reserve ring aanschaft in de Azure Portal, kan micro soft u aanbevelingen geven op basis van uw vorige gebruik om te helpen bepalen welke reserve ring u moet aanschaffen.
 
 ## <a name="purchase-azure-storage-reserved-capacity"></a>Gereserveerde capaciteit van Azure Storage aankoop
 
@@ -86,7 +87,7 @@ Volg deze stappen om gereserveerde capaciteit aan te schaffen:
    | **Toegangslaag** | De Access-laag waar de waarvoor de reserve ring geldt. Opties zijn onder andere *Hot*, *cool*en *Archive*. Zie [Azure Blob Storage: warme, cool en archief toegangs lagen](storage-blob-storage-tiers.md)voor meer informatie over toegangs lagen. |
    | **Redundantie** | De redundantie optie voor de reserve ring. Opties zijn *LRS*, *ZRS*, *GRS*, *GZRS*, *Ra-GRS*en *Ra-GZRS*. Zie [Azure Storage redundantie](../common/storage-redundancy.md)voor meer informatie over redundantie opties. |
    | **Facturerings frequentie** | Hiermee wordt aangegeven hoe vaak het account wordt gefactureerd voor de reserve ring. De opties zijn *maandelijks* of *vooraf*. |
-   | **Grootte** | De regio waar de reserve ring van kracht is. |
+   | **Grootte** | De hoeveelheid capaciteit die moet worden gereserveerd. |
    |**Termijn**  | Eén jaar of drie jaar.   |
 
 1. Nadat u de para meters voor de reserve ring hebt geselecteerd, worden de kosten weer gegeven in de Azure Portal. In de portal wordt ook het kortings percentage weer gegeven over betalen per gebruik-facturering.

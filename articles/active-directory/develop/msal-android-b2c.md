@@ -14,10 +14,10 @@ ms.author: brianmel
 ms.reviewer: rapong
 ms.custom: aaddev
 ms.openlocfilehash: 0ad5fab685757d2efd91cd1df0e48a5f1258d17e
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88119875"
 ---
 # <a name="use-msal-for-android-with-b2c"></a>MSAL voor Android gebruiken met B2C
@@ -30,9 +30,9 @@ In MSAL voor Android worden B2C-beleid (gebruikers ritten) geconfigureerd als af
 
 Op basis van een B2C-toepassing met twee beleids regels:
 - Aanmelden/aanmelden
-    * Heet`B2C_1_SISOPolicy`
+    * Heet `B2C_1_SISOPolicy`
 - Profiel bewerken
-    * Heet`B2C_1_EditProfile`
+    * Heet `B2C_1_EditProfile`
 
 In het configuratie bestand voor de app worden twee gedeclareerd `authorities` . Eén voor elk beleid. De `type` eigenschap van elke instantie is `B2C` .
 
@@ -54,11 +54,11 @@ In het configuratie bestand voor de app worden twee gedeclareerd `authorities` .
 }
 ```
 
-De `redirect_uri` moet zijn geregistreerd in de app-configuratie en is ook in `AndroidManifest.xml` ter ondersteuning van omleiding tijdens de [autorisatie code toekennings stroom](../../active-directory-b2c/authorization-code-flow.md).
+De `redirect_uri` moet zijn geregistreerd in de app-configuratie en is ook in  `AndroidManifest.xml` ter ondersteuning van omleiding tijdens de [autorisatie code toekennings stroom](../../active-directory-b2c/authorization-code-flow.md).
 
 ## <a name="initialize-ipublicclientapplication"></a>IPublicClientApplication initialiseren
 
-`IPublicClientApplication`is gebouwd door een fabrieks methode zodat de configuratie van de toepassing asynchroon kan worden geparseerd.
+`IPublicClientApplication` is gebouwd door een fabrieks methode zodat de configuratie van de toepassing asynchroon kan worden geparseerd.
 
 ```java
 PublicClientApplication.createMultipleAccountPublicClientApplication(
@@ -235,7 +235,7 @@ B2C behandelt elk beleid als een afzonderlijke instantie. De toegangs tokens, ve
 
 Elk beleid voegt een `IAccount` aan de cache toe voor elke gebruiker. Als een gebruiker zich aanmeldt bij een toepassing en twee beleids regels aanroept, hebben ze twee `IAccount` s. Als u deze gebruiker uit de cache wilt verwijderen, moet u `removeAccount()` voor elk beleid aanroepen.
 
-Wanneer u tokens vernieuwt voor een beleid met `acquireTokenSilent` , geeft u hetzelfde op als het `IAccount` resultaat van eerdere aanroepen van het beleid naar `AcquireTokenSilentParameters` . Als u een account opgeeft dat door een ander beleid wordt geretourneerd, treedt er een fout op.
+Wanneer u tokens vernieuwt voor een beleid met `acquireTokenSilent` , geeft u hetzelfde op als het `IAccount` resultaat van eerdere aanroepen van het beleid naar  `AcquireTokenSilentParameters` . Als u een account opgeeft dat door een ander beleid wordt geretourneerd, treedt er een fout op.
 
 ## <a name="next-steps"></a>Volgende stappen
 

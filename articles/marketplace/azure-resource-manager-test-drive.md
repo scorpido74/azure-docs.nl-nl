@@ -8,10 +8,10 @@ ms.date: 06/19/2020
 ms.author: keferna
 author: keferna
 ms.openlocfilehash: 92fd4d629585ed465e2891be2dce1c1bdc8c88e6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87287946"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager test drive
@@ -74,7 +74,7 @@ U kunt een geldige naam voor de para meters gebruiken. test drive herkent parame
 |---|---|---|---|
 | **baseuri**     | tekenreeks          | Basis-URI van uw implementatie pakket| `https:\//\<\..\>.blob.core.windows.net/\<\..\>` |
 | **gebruikers**    | tekenreeks          | Nieuwe wille keurige gebruikers naam.| admin68876      |
-| **wachtwoord**    | beveiligde teken reeks    | Nieuw wille keurig wacht woord | LP! ACS \^ 2kh     |
+| **password**    | beveiligde teken reeks    | Nieuw wille keurig wacht woord | LP! ACS \^ 2kh     |
 | **sessie-id**   | tekenreeks          | Unieke test drive sessie-ID (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
 
 #### <a name="baseuri"></a>baseuri
@@ -122,7 +122,7 @@ Het test station initialiseert deze para meter met een nieuwe wille keurige gebr
 }
 ```
 
-Voorbeeld waarde:`admin68876`
+Voorbeeld waarde: `admin68876`
 
 U kunt wille keurige of constante gebruikers namen gebruiken voor uw oplossing.
 
@@ -144,7 +144,7 @@ Het test station initialiseert deze para meter met een nieuw wille keurig wacht 
 }
 ```
 
-Voorbeeld waarde:`Lp!ACS^2kh`
+Voorbeeld waarde:  `Lp!ACS^2kh`
 
 U kunt wille keurige of constante wacht woorden gebruiken voor uw oplossing.
 
@@ -166,7 +166,7 @@ Het test station initialiseert deze para meter met een unieke GUID die de sessie
 }
 ```
 
-Voorbeeld waarde:`b8c8693e-5673-449c-badd-257a405a6dee`
+Voorbeeld waarde: `b8c8693e-5673-449c-badd-257a405a6dee`
 
 U kunt deze para meter gebruiken om de test drive-sessie uniek te identificeren, als dat nodig is.
 
@@ -237,7 +237,7 @@ En gebruik deze locatie voor elke resource voor een specifiek Lab-exemplaar:
 
 Zorg ervoor dat uw abonnement alle gewenste resources in elk van de geselecteerde regio's mag implementeren. Zorg er ook voor dat uw installatie kopieën voor virtuele machines beschikbaar zijn in alle regio's die u gaat inschakelen. anders werkt uw implementatie sjabloon niet voor bepaalde regio's.
 
-### <a name="outputs"></a>Uitvoer
+### <a name="outputs"></a>Uitvoerwaarden
 
 Normaal gesp roken kunt u met Resource Manager-sjablonen implementeren zonder dat er uitvoer wordt geproduceerd. Dit komt doordat u alle waarden kent die u gebruikt om sjabloon parameters te vullen en u kunt altijd hand matig eigenschappen van een resource controleren.
 
@@ -266,7 +266,7 @@ Voorbeeld:
 
 ### <a name="subscription-limits"></a>Abonnements limieten
 
-Vergeet niet over de limieten voor abonnementen en services te komen. Als u bijvoorbeeld Maxi maal tien virtuele machines met 4 kernen wilt implementeren, kunt u ervoor zorgen dat het abonnement dat u gebruikt voor uw Lab gebruikmaken van 40-kernen. Zie [Azure-abonnement en service limieten, quota's en beperkingen](../azure-resource-manager/management/azure-subscription-service-limits.md)voor meer informatie over Azure-abonnementen en service limieten. Als er meerdere test stations tegelijk kunnen worden gemaakt, controleert u of uw abonnement het aantal kern geheugens kan verwerken vermenigvuldigd met het totale aantal gelijktijdige test schijven dat kan worden gemaakt.
+Vergeet niet over de limieten voor abonnementen en services te komen. Als u bijvoorbeeld tot 10 4-core virtuele machines wilt implementeren, kunt u ervoor zorgen dat voor het abonnement dat u gebruikt voor uw Lab, 40-kernen kunnen worden gebruikt. Zie [Azure-abonnement en service limieten, quota's en beperkingen](../azure-resource-manager/management/azure-subscription-service-limits.md)voor meer informatie over Azure-abonnementen en service limieten. Als er meerdere test stations tegelijk kunnen worden gemaakt, controleert u of uw abonnement het aantal kern geheugens kan verwerken vermenigvuldigd met het totale aantal gelijktijdige test schijven dat kan worden gemaakt.
 
 ### <a name="what-to-upload"></a>Wat u kunt uploaden
 

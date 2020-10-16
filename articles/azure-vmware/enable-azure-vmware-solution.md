@@ -3,19 +3,19 @@ title: Uw Azure VMware-oplossings resource inschakelen
 description: Meer informatie over het indienen van een ondersteunings aanvraag om uw Azure VMware-oplossings resource in te scha kelen. U kunt ook meer knoop punten aanvragen in uw bestaande privécloud van Azure VMware-oplossingen.
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 72a7aca97067ce4e9ed0e901e4016c82b3549eb1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc90a322b5592ca7f400a82deca65ea753711c27
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90817895"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948728"
 ---
 # <a name="how-to-enable-azure-vmware-solution-resource"></a>Azure VMware Solution resource inschakelen
 Meer informatie over het indienen van een ondersteunings aanvraag om uw Azure VMware-oplossings resource in te scha kelen. U kunt ook meer knoop punten aanvragen in uw bestaande privécloud van Azure VMware-oplossingen.
 
 ## <a name="eligibility-criteria"></a>Criteria om in aanmerking te komen
 
-* U hebt een [Azure Enterprise Agreement (EA)](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-agreements) met micro soft nodig.
+* U hebt een [Azure Enterprise Agreement (EA)](../cost-management-billing/manage/ea-portal-agreements.md) met micro soft nodig.
 * U hebt een Azure-account in een Azure-abonnement nodig.
 
 

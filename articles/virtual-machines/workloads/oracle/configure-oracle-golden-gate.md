@@ -1,25 +1,18 @@
 ---
 title: Oracle Golden-Gate implementeren op een Azure Linux-VM | Microsoft Docs
 description: U kunt snel een Oracle Golden-Gate maken en uitvoeren in uw Azure-omgeving.
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: dbakevlar
-manager: ''
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: kegorman
-ms.openlocfilehash: 24dfe52b7f08d93dfba70c7b63812eac53431d5c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.reviewer: cynthn
+ms.openlocfilehash: c1890ab9f99999c88e28eb9a76d6270fa08fb87c
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91274789"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996666"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Oracle Golden-Gate implementeren op een Azure Linux-VM 
 
@@ -68,7 +61,7 @@ az group create --name myResourceGroup --location westus
 
 ### <a name="create-an-availability-set"></a>Een beschikbaarheidsset maken
 
-De volgende stap is optioneel, maar wordt aanbevolen. Zie de [hand leiding voor Azure-beschikbaarheids sets](../../windows/infrastructure-example.md)voor meer informatie.
+De volgende stap is optioneel, maar wordt aanbevolen. Zie de [hand leiding voor Azure-beschikbaarheids sets](/previous-versions/azure/virtual-machines/windows/infrastructure-example)voor meer informatie.
 
 ```azurecli
 az vm availability-set create \
@@ -384,7 +377,7 @@ Voer de volgende stappen uit om de Oracle Golden-Gate-software te downloaden en 
    ```
 
 ### <a name="prepare-the-client-and-vm-to-run-x11-for-windows-clients-only"></a>De client en VM voorbereiden voor het uitvoeren van X11 (alleen voor Windows-clients)
-Dit is een optionele stap. U kunt deze stap overs Laan als u een Linux-client gebruikt of als u al een X11-installatie hebt.
+Dit is een optionele taak. U kunt deze stap overs Laan als u een Linux-client gebruikt of als u al een X11-installatie hebt.
 
 1. PuTTy-en Xming downloaden naar uw Windows-computer:
 

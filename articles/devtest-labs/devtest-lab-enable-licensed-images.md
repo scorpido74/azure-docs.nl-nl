@@ -4,10 +4,10 @@ description: Meer informatie over het inschakelen van een gelicentieerde install
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: e2b6e495be2257548782143517f5a970b424860c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91276353"
 ---
 # <a name="enable-a-licensed-image-in-your-lab-in-azure-devtest-labs"></a>Een gelicentieerde installatie kopie inschakelen in uw Lab in Azure DevTest Labs
@@ -17,7 +17,7 @@ In Azure DevTest Labs is een gelicentieerde installatie kopie die voor waarden b
 ## <a name="determining-whether-a-licensed-image-is-available-to-users"></a>Bepalen of een gelicentieerde installatie kopie beschikbaar is voor gebruikers
 De eerste stap om gebruikers toe te staan Vm's te maken op basis van een gelicentieerde installatie kopie, is ervoor te zorgen dat de voor waarden zijn geaccepteerd voor de gelicentieerde installatie kopie. De volgende stappen laten zien hoe u de status van een gelicentieerde installatie kopie kunt bekijken en, indien nodig, de voor waarden van de aanbieding accepteert.
 
-1. Meld u aan bij de [Azure-portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Meld u aan bij [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Selecteer **alle services**en selecteer vervolgens **DevTest Labs** in de lijst.
 

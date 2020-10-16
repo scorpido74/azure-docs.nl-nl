@@ -7,18 +7,18 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: lcozzens
-ms.openlocfilehash: 21eba653bcd853db9550d0d3781aacd281884605
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e127a11f3821325602a78d46c69b2330bfb8293
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88588072"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074614"
 ---
 # <a name="import-or-export-configuration-data"></a>Configuratiegegevens importeren of exporteren
 
 De configuratie van Azure-app ondersteunt het importeren en exporteren van gegevens. Gebruik deze bewerkingen om met configuratie gegevens in bulk te werken en gegevens uit te wisselen tussen uw app-configuratie archief en het code project. U kunt bijvoorbeeld één app-configuratie archief instellen voor test doeleinden en een andere voor productie. U kunt toepassings instellingen ertussen kopiëren zodat u gegevens niet twee keer hoeft in te voeren.
 
-Dit artikel bevat een hand leiding voor het importeren en exporteren van gegevens met app-configuratie. Als u een doorlopende synchronisatie met uw GitHub-opslag plaats wilt instellen, Bekijk dan onze github- [actie](https://aka.ms/azconfig-gha1).
+Dit artikel bevat een hand leiding voor het importeren en exporteren van gegevens met app-configuratie. Als u een doorlopende synchronisatie met uw GitHub-opslag plaats wilt instellen, Bekijk dan onze github- [actie](./concept-github-action.md).
 
 ## <a name="import-data"></a>Gegevens importeren
 
@@ -65,4 +65,4 @@ Gegevens exporteren met behulp van de [Azure Portal](https://portal.azure.com) o
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een ASP.NET Core-web-app maken](./quickstart-aspnet-core-app.md)  
+> [Een ASP.NET Core-web-app maken](./quickstart-aspnet-core-app.md)

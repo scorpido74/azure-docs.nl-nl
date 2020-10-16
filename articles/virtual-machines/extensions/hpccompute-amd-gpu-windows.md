@@ -12,15 +12,15 @@ ms.workload: infrastructure-services
 ms.date: 05/10/2020
 ms.author: vikancha
 ms.openlocfilehash: bc7bfecbcb387fa0da0809a9a2287b243e861c49
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87010866"
 ---
 # <a name="amd-gpu-driver-extension-for-windows"></a>Uitbrei ding van AMD GPU-stuur programma voor Windows
 
-Dit artikel bevat een overzicht van de VM-extensie voor het implementeren van AMD GPU-Stuur Programma's op virtuele machines uit de Windows [NVv4-serie](../nvv4-series.md) . Wanneer u AMD-Stuur Programma's installeert met behulp van deze uitbrei ding, accepteert en gaat u akkoord met de voor waarden van de [gebruiksrecht overeenkomst voor de AMD-eind gebruiker](https://amd.com/radeonsoftwarems). Tijdens het installatie proces kan de virtuele machine opnieuw worden opgestart om de installatie van het stuur programma te volt ooien.
+Dit artikel bevat een overzicht van de VM-extensie voor het implementeren van AMD GPU-Stuur Programma's op virtuele machines uit de Windows [NVv4-serie](../nvv4-series.md) . Wanneer u AMD-Stuur Programma's installeert met behulp van deze uitbrei ding, accepteert en gaat u akkoord met de voor waarden van de [licentie overeenkomst voor AMD End-User](https://amd.com/radeonsoftwarems). Tijdens het installatie proces kan de virtuele machine opnieuw worden opgestart om de installatie van het stuur programma te volt ooien.
 
 Instructies voor de hand matige installatie van de Stuur Programma's en de huidige ondersteunde versies zijn [hier](../windows/n-series-amd-driver-setup.md)beschikbaar.
 
@@ -67,9 +67,9 @@ In de volgende JSON wordt het schema voor de uitbrei ding weer gegeven.
 
 ### <a name="properties"></a>Eigenschappen
 
-| Naam | Waarde/voor beeld | Gegevenstype |
+| Name | Waarde/voor beeld | Gegevenstype |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | date |
+| apiVersion | 2015-06-15 | datum |
 | publisher | Micro soft. HpcCompute | tekenreeks |
 | type | AmdGpuDriverWindows | tekenreeks |
 | typeHandlerVersion | 1.0 | int |

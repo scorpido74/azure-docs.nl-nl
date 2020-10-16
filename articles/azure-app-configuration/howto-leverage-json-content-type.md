@@ -1,5 +1,5 @@
 ---
-title: JSON-inhouds type gebruiken voor sleutel waarden
+title: JSON-inhoudstype gebruiken voor sleutelwaarden
 titleSuffix: Azure App Configuration
 description: Meer informatie over het gebruik van JSON-inhouds type voor sleutel waarden
 services: azure-app-configuration
@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: avgupta
 ms.openlocfilehash: 725beb50e55852e35ee4434539ff158f082059df
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88122008"
 ---
 # <a name="leverage-content-type-to-store-json-key-values-in-app-configuration"></a>Maak gebruik van het inhouds type voor het opslaan van JSON-sleutel waarden in app-configuratie
@@ -46,7 +46,7 @@ Enkele voor beelden van geldige JSON-waarden zijn:
 
 - "John Doe"
 - 723
-- false
+- onjuist
 - null
 - "2020-01-01T12:34:56.789 Z"
 - [1, 2, 3, 4]
@@ -88,7 +88,7 @@ Blader naar uw app-configuratie archief en selecteer **Configuration Explorer** 
 |---|---|---|
 | Instellingen: BackgroundColor | Dag | application/json |
 | Instellingen: FontSize | 24 | application/json |
-| Instellingen: UseDefaultRouting | false | application/json |
+| Instellingen: UseDefaultRouting | onjuist | application/json |
 | Instellingen: BlockedUsers | null | application/json |
 | Instellingen: ReleaseDate | "2020-08-04T12:34:56.789 Z" | application/json |
 | Instellingen: RolloutPercentage | [25, 50, 75100] | application/json |
@@ -153,7 +153,7 @@ Houd rekening met deze sleutel waarden zonder JSON-inhouds type:
 | Sleutel | Waarde | Type inhoud |
 |---|---|---|
 | Instellingen: FontSize | 24 | |
-| Instellingen: UseDefaultRouting | false | |
+| Instellingen: UseDefaultRouting | onjuist | |
 
 Wanneer u deze sleutel waarden naar een JSON-bestand exporteert, worden de waarden geëxporteerd als teken reeksen:
 ```json
@@ -193,8 +193,8 @@ Als u de SDK of REST API gebruikt voor het lezen van sleutel waarden van de app-
 
 Nu u weet hoe u met JSON-sleutel waarden in uw app-configuratie archief kunt werken, maakt u een toepassing voor het gebruik van deze sleutel waarden:
 
-* [Snelstartgids ASP.NET Core](./quickstart-aspnet-core-app.md)
+* [Snelstartgids voor ASP.NET Core](./quickstart-aspnet-core-app.md)
     * Vereiste: [micro soft. Azure. AppConfiguration. AspNetCore](https://www.nuget.org/packages/Microsoft.Azure.AppConfiguration.AspNetCore) package v 4.0.0 of hoger.
 
-* [Snelstartgids voor .NET core](./quickstart-dotnet-core-app.md)
+* [Snelstartgids voor .NET Core](./quickstart-dotnet-core-app.md)
     * Vereiste: [Microsoft.Extensions.Configuratie. AzureAppConfiguration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureAppConfiguration) package v 4.0.0 of hoger.

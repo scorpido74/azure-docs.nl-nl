@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: alkohli
 ms.openlocfilehash: 1a8a9840cc6e1f3627c5fbd30e0b7432db0f16e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82561048"
 ---
 # <a name="azure-data-box-edgeazure-data-box-gateway-general-availability-release-notes"></a>Opmerkingen bij de release van Azure Data Box Edge/Azure Data Box Gateway algemene Beschik baarheid
@@ -31,9 +31,9 @@ De GA-release komt overeen met de software versies:
 
 ## <a name="whats-new"></a>Nieuw
 
-- **Nieuwe installatie kopieën van virtuele schijven** : nieuwe VHDX en VMDK zijn nu beschikbaar in de Azure Portal. Down load deze installatie kopieën om nieuwe Data Box Gateway GA-apparaten in te richten, te configureren en te implementeren. De Data Box Gateway-apparaten die zijn gemaakt in de eerdere Preview-versies, kunnen niet worden bijgewerkt naar deze versie. Ga voor meer informatie naar voor [bereiding voor het implementeren van Azure data Box gateway](data-box-gateway-deploy-prep.md).
+- **Nieuwe installatie kopieën van virtuele schijven** : nieuwe VHDX en VMDK zijn nu beschikbaar in de Azure Portal. Down load deze installatie kopieën om nieuwe Data Box Gateway GA-apparaten in te richten, te configureren en te implementeren. De Data Box Gateway-apparaten die zijn gemaakt in de eerdere Preview-versies, kunnen niet worden bijgewerkt naar deze versie. Ga voor meer informatie naar [Voorbereiding voor implementatie van Azure Data Box Gateway](data-box-gateway-deploy-prep.md).
 - **Ondersteuning voor NFS** : NFS-ondersteuning is momenteel beschikbaar in de preview-versie van v 3.0 en v 4.1-clients die toegang hebben tot de Data Box Edge en data Box gateway apparaten.
-- **Tolerantie van opslag** : uw data Box edge-apparaat kan een storing van één gegevens schijf met de functie voor opslag tolerantie hebben. Deze functie is momenteel in preview. U kunt de tolerantie voor opslag inschakelen door de optie voor **robuuste** toegang te selecteren in de **opslag instellingen** in de lokale webgebruikersinterface.
+- **Tolerantie van opslag** : uw data Box edge-apparaat kan een storing van één gegevens schijf met de functie voor opslag tolerantie hebben. Deze functie is momenteel beschikbaar als preview-product. U kunt de tolerantie voor opslag inschakelen door de optie voor **robuuste** toegang te selecteren in de **opslag instellingen** in de lokale webgebruikersinterface.
 
 
 ## <a name="known-issues-in-ga-release"></a>Bekende problemen in GA release

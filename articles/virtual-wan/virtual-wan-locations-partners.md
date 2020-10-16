@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to find a Virtual WAN partner
-ms.openlocfilehash: d1655b42b57edaeeaaaada802a248f56e0ba1470
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: c689c83e50a42885900f62d1a65d0aa75f36f2ec
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91801457"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014020"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>Virtuele WAN-partners en virtuele-hub-locaties
 
@@ -40,7 +40,7 @@ Sommige connectiviteits partners kunnen de automatisering uitbreiden om de virtu
 
 [!INCLUDE [partners](../../includes/virtual-wan-partners-include.md)]
 
-De volgende partners zijn zou op ons schema voor de nabije toekomst: 128 technologieën, Arista, Cisco Systems (Viptela), F5 Networks, Oracle SD-WAN en SharpLink.
+De volgende partners zijn zou op ons plan op basis van een voor waarden blad dat is ondertekend tussen de bedrijven die het werk bereik aangeven om de IPsec-connectiviteit tussen het partner apparaat en Azure Virtual WAN VPN-gateways te automatiseren: 128 technologieën, Arista, F5 Networks, Oracle SD-WAN (talari) en SharpLink.
 
 ## <a name="partners-with-integrated-virtual-hub-offerings"></a>Partners met geïntegreerde Virtual hub-aanbiedingen
 Sommige partners hebben niet alleen IPSec-verbinding met een geautomatiseerd filiaal, maar ook **nva's (Network Virtual Appliances)** die rechtstreeks kunnen worden geïntegreerd in de virtuele WAN-hub van Azure.  Hierdoor kunnen klanten de mogelijkheid hebben om hun vertakkings verbindingen te beëindigen in een compatibel apparaat van derden in de virtuele hub.  

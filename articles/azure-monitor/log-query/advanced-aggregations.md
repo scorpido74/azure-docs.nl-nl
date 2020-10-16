@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: dba058dce09e958a2ae769d927a5569fb3e42113
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87324553"
 ---
 # <a name="advanced-aggregations-in-azure-monitor-log-queries"></a>Geavanceerde aggregaties in Azure Monitor-logboek query's
@@ -38,7 +38,7 @@ Event
 | Computer2 | [326.105.302.301.300.102] |
 | ... | ... |
 
-`makelist`Hiermee wordt een lijst gegenereerd in de volg orde waarin er gegevens aan zijn door gegeven. Als u gebeurtenissen van oudste naar nieuwste wilt sorteren, gebruikt u `asc` in de instructie order in plaats van `desc` . 
+`makelist` Hiermee wordt een lijst gegenereerd in de volg orde waarin er gegevens aan zijn door gegeven. Als u gebeurtenissen van oudste naar nieuwste wilt sorteren, gebruikt u `asc` in de instructie order in plaats van `desc` . 
 
 Het is ook handig om een lijst met alleen unieke waarden te maken. Dit wordt een _set_ genoemd en kan worden gegenereerd met `makeset` :
 
@@ -163,7 +163,7 @@ Heartbeat
 
 
 
-## <a name="narrowing-results-to-a-set-of-elements-let-makeset-toscalar-in"></a>De resultaten beperken tot een set met elementen: `let` , `makeset` , `toscalar` ,`in`
+## <a name="narrowing-results-to-a-set-of-elements-let-makeset-toscalar-in"></a>De resultaten beperken tot een set met elementen: `let` , `makeset` , `toscalar` , `in`
 Een veelvoorkomend scenario is door de namen van bepaalde entiteiten te selecteren op basis van een set criteria en vervolgens een andere gegevensset te filteren die is ingesteld op die entiteit. U kunt bijvoorbeeld computers vinden waarvan bekend is dat deze updates bevatten en IP-adressen identificeren die op deze computers worden genoemd:
 
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 24de1b2cfc5e0804039923f23b6a5cd9f6c6fb80
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: b7d05cd394453ff7c3a40b80a4cd6c850b86ee21
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235694"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070364"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Implementatie van een automatische gebruikersinrichting plannen
 
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) automatische gebruikers inrichting vereenvoudi
 
 Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md) om meer inzicht te krijgen in de functionaliteit.
 
-## <a name="learn"></a>Leren
+## <a name="learn"></a>Learn
 
 Gebruikers inrichten maakt een basis voor de voortdurende identiteits bestuur en verbetert de kwaliteit van bedrijfs processen die afhankelijk zijn van gezaghebbende identiteits gegevens.
 
@@ -75,7 +75,7 @@ In dit artikel worden de volgende termen gebruikt:
 | Zelfstudies| Zie de [lijst met zelf studies over het integreren van SaaS-apps met Azure AD](../saas-apps/tutorial-list.md). |
 | Veelgestelde vragen| [Veelgestelde vragen](../app-provisioning/user-provisioning.md) over het automatisch inrichten van gebruikers |
 
-### <a name="solution-architectures"></a>Oplossings architecturen
+### <a name="solution-architectures"></a>Oplossingsarchitecturen
 
 De Azure AD-inrichtings service voorziet gebruikers van SaaS-apps en andere systemen door verbinding te maken met gebruikers beheer-API-eind punten die door elke leverancier van de toepassing worden geleverd. Met deze gebruikers beheer-API-eind punten kan Azure AD programmatisch gebruikers maken, bijwerken en verwijderen.
 
@@ -83,7 +83,7 @@ De Azure AD-inrichtings service voorziet gebruikers van SaaS-apps en andere syst
 
 In dit voor beeld worden gebruikers en of groepen gemaakt in een HR-data base die is verbonden met een on-premises Directory. De Azure AD-inrichtings service beheert het automatisch inrichten van gebruikers aan de doel-SaaS-toepassingen.
 
- ![Gebruikers inrichten](./media/plan-auto-user-provisioning/hybridprovisioning.png)
+ ![inrichten van gebruikers](./media/plan-auto-user-provisioning/hybridprovisioning.png)
 
 **Beschrijving van werk stroom:**
 
@@ -129,7 +129,7 @@ Bedenk wat uw organisatie nodig heeft om de strategie te bepalen voor het implem
 
 ### <a name="engage-the-right-stakeholders"></a>De juiste belanghebbenden benaderen
 
-Wanneer technologie projecten mislukken, is dit doorgaans het gevolg van niet-overeenkomende verwachtingen wat betreft impact, resultaten en verantwoordelijkheden. Als u deze problemen wilt voor komen, moet [u ervoor zorgen dat u de juiste belanghebbenden gebruikt](https://aka.ms/deploymentplans) en dat de rol van belanghebbenden in het project goed worden begrepen door de belanghebbenden en hun project invoer en accountabilities te documenteren.
+Wanneer technologie projecten mislukken, is dit doorgaans het gevolg van niet-overeenkomende verwachtingen wat betreft impact, resultaten en verantwoordelijkheden. Als u deze problemen wilt voor komen, moet [u ervoor zorgen dat u de juiste belanghebbenden gebruikt](../fundamentals/active-directory-deployment-plans.md) en dat de rol van belanghebbenden in het project goed worden begrepen door de belanghebbenden en hun project invoer en accountabilities te documenteren.
 
 ### <a name="plan-communications"></a>De communicatie plannen
 
@@ -207,7 +207,7 @@ Als u het automatisch inrichten van gebruikers wilt implementeren, moet u de geb
 
 Azure AD ondersteunt door directe toewijzing van kenmerk naar kenmerk, voor het leveren van constante waarden of het [schrijven van expressies voor kenmerk toewijzingen](../app-provisioning/functions-for-customizing-application-data.md). Met deze flexibiliteit kunt u precies bepalen wat er wordt ingevuld in het kenmerk van het doel systeem. U kunt [Microsoft Graph-API](../app-provisioning/export-import-provisioning-configuration.md) en Graph Explorer gebruiken om de kenmerk toewijzingen en het schema voor het inrichten van gebruikers te exporteren naar een JSON-bestand en dit weer te importeren in azure AD.
 
-Zie voor meer informatie [Gebruikers inrichten kenmerk toewijzingen voor SaaS-toepassingen in azure Active Directory aanpassen](../app-provisioning/customize-application-attributes.md).
+Zie voor meer informatie [Gebruikers inrichten aanpassen Attribute-Mappings voor SaaS-toepassingen in azure Active Directory](../app-provisioning/customize-application-attributes.md).
 
 ### <a name="special-considerations-for-user-provisioning"></a>Speciale overwegingen voor het inrichten van gebruikers
 
@@ -264,7 +264,7 @@ De inrichtings service slaat de status van beide systemen op na de eerste cyclus
 
 Gebruik de [Azure Portal](https://portal.azure.com/) voor het beheren van automatische toewijzing van gebruikers accounts en het ongedaan maken van de inrichting voor toepassingen die deze ondersteunen. Volg de stappen in [Hoe kan ik automatische inrichting instellen voor een toepassing?](../app-provisioning/user-provisioning.md)
 
-De Azure AD User Provisioning Service kan ook worden geconfigureerd en beheerd met behulp van de [Microsoft Graph-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview).
+De Azure AD User Provisioning Service kan ook worden geconfigureerd en beheerd met behulp van de [Microsoft Graph-API](/graph/api/resources/synchronization-overview).
 
 ## <a name="manage-automatic-user-provisioning"></a>Automatische gebruikers inrichting beheren
 
@@ -274,7 +274,7 @@ Nu u hebt geïmplementeerd, moet u de oplossing beheren.
 
 Na een geslaagde [eerste cyclus](../app-provisioning/user-provisioning.md)zullen de Azure AD-inrichtings service voor onbepaalde tijd incrementele updates uitvoeren, met intervallen die specifiek zijn voor elke toepassing, totdat een van de volgende gebeurtenissen zich voordoet:
 
-* De service wordt hand matig gestopt en er wordt een nieuwe eerste cyclus geactiveerd met behulp van de [Azure Portal](https://portal.azure.com/), of met behulp van de juiste [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) -opdracht.
+* De service wordt hand matig gestopt en er wordt een nieuwe eerste cyclus geactiveerd met behulp van de [Azure Portal](https://portal.azure.com/), of met behulp van de juiste [Microsoft Graph API](/graph/api/resources/synchronization-overview) -opdracht.
 
 * Een nieuwe eerste cyclus wordt geactiveerd door een wijziging in kenmerk toewijzingen of op filter bereik.
 
@@ -310,7 +310,7 @@ Raadpleeg de volgende koppelingen voor het oplossen van problemen die kunnen opt
 
 * [Expressies schrijven voor kenmerk toewijzingen](../app-provisioning/functions-for-customizing-application-data.md)
 
-* [Overzicht van Azure AD-synchronisatie-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
+* [Overzicht van Azure AD-synchronisatie-API](/graph/api/resources/synchronization-overview)
 
 * [Verwijdering van gebruikers accounts die buiten het bereik vallen, overs Laan](skip-out-of-scope-deletions.md)
 

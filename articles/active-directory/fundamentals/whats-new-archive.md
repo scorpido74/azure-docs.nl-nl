@@ -14,10 +14,10 @@ ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b1ef7d587cd8bec636f42673941edb69647ee8cb
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91449989"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Wilt u archiveren wat er nieuw is in Azure Active Directory?
@@ -143,7 +143,7 @@ De Azure AD-inrichtings service biedt een uitgebreide set configuratie mogelijkh
 ### <a name="sspr-self-service-password-reset-now-requires-two-gates-for-admins-in-microsoft-azure-operated-by-21vianet-azure-china-21vianet"></a>SSPR (self-service voor wacht woord opnieuw instellen) vereist nu twee poorten voor beheerders in Microsoft Azure die worden beheerd door 21Vianet (Azure China 21Vianet) 
 
 **Type:** Gewijzigde functie  
-**Service categorie:** Self-service voor wacht woord opnieuw instellen  
+**Service categorie:** Self-Service wacht woord opnieuw instellen  
 **Product mogelijkheden:** Beveiliging van identiteits beveiliging &
  
 Voorheen in Microsoft Azure beheerd door 21Vianet (Azure China 21Vianet), beheerders die gebruikmaken van selfservice voor wachtwoord herstel (SSPR) om hun eigen wacht woorden opnieuw in te stellen, was er slechts één ' Gate ' (uitdaging) nodig om hun identiteit te bewijzen. In open bare en andere nationale Clouds moeten beheerders doorgaans twee poorten gebruiken om hun identiteit te bewijzen wanneer ze SSPR gebruiken. Maar omdat we geen ondersteuning bieden voor SMS-of telefoon gesprekken in azure China 21Vianet, hebben we een wacht woord voor het opnieuw instellen van één poort per beheerder toegestaan.
@@ -532,7 +532,7 @@ Zie [Google als id-provider voor B2B-gast gebruikers toevoegen](../external-iden
 **Service categorie:** Voorwaardelijke toegang  
 **Product mogelijkheden:** Beveiliging van identiteits beveiliging &
 
-Azure AD voor micro soft Edge op iOS en Android biedt nu ondersteuning voor eenmalige aanmelding en voorwaardelijke toegang van Azure AD:
+Azure AD voor micro soft Edge op iOS en Android ondersteunt nu Azure AD single Sign-On en voorwaardelijke toegang:
 
 - Eenmalige **aanmelding voor micro soft Edge (SSO):** Eenmalige aanmelding is nu beschikbaar via systeem eigen clients (zoals micro soft Outlook en micro soft Edge) voor alle apps die zijn verbonden met Azure AD.
 
@@ -755,7 +755,7 @@ Het menu nieuwe **beveiliging** bevat:
 
 - Voorwaardelijke toegang
 - Identiteitsbeveiliging
-- Security Center
+- Beveiligingscentrum
 - Identiteits veilige Score
 - Verificatiemethoden
 - MFA
@@ -1256,7 +1256,7 @@ Zie [beveiligings controles voor Azure AD Domain Services inschakelen (preview)]
 
 **Type:** Nieuwe functie **service categorie:** B2B- **product functionaliteit:** B2B/B2C
 
-Directe Federatie maakt het gemakkelijker voor u om te werken met partners waarvan de IT-beheerde identiteits oplossing niet Azure AD is, door te werken met identiteits systemen die ondersteuning bieden voor de SAML-of WS-voeder-standaarden. Nadat u een directe Federatie relatie met een partner hebt ingesteld, kan elke nieuwe gast gebruiker die u uit dat domein uitnodigt met behulp van hun bestaande organisatie account samen werken, waardoor de gebruikers ervaring voor uw gasten naadloos wordt.
+Direct Federatie helpt u bij het werken met partners waarvan de IT-beheerde identiteits oplossing niet Azure AD is, door te werken met identiteits systemen die ondersteuning bieden voor de SAML-of WS-Fed-standaarden. Nadat u een directe Federatie relatie met een partner hebt ingesteld, kan elke nieuwe gast gebruiker die u uit dat domein uitnodigt met behulp van hun bestaande organisatie account samen werken, waardoor de gebruikers ervaring voor uw gasten naadloos wordt.
 
 Zie voor meer informatie [directe Federatie met AD FS en providers van derden voor gast gebruikers (preview)](../external-identities/direct-federation.md).
 
@@ -1344,7 +1344,7 @@ Zie de [referentie documentatie voor API voor risico detectie](/graph/api/resour
 
 In juni 2019 hebben we deze 22 nieuwe apps met federatieve ondersteuning toegevoegd aan de app-galerie:
 
-[Azure AD SAML Toolkit](../saas-apps/saml-toolkit-tutorial.md), [Otsuka Shokai (大塚商会)](../saas-apps/otsuka-shokai-tutorial.md), [ANAQUA](../saas-apps/anaqua-tutorial.md), [Azure VPN client](https://portal.azure.com/), [ExpenseIn](../saas-apps/expensein-tutorial.md), [helper helper](../saas-apps/helper-helper-tutorial.md), [Costpoint](../saas-apps/costpoint-tutorial.md), [GlobalOne](../saas-apps/globalone-tutorial.md), [Mercedes-Benz in-Car Office](https://me.secure.mercedes-benz.com/), [skore](https://app.justskore.it/), [Oracle Cloud Infrastructure console](../saas-apps/oracle-cloud-tutorial.md), [CyberArk SAML-verificatie](../saas-apps/cyberark-saml-authentication-tutorial.md), [scrible edu](https://www.scrible.com/sign-in/#/create-account), [PandaDoc](../saas-apps/pandadoc-tutorial.md), [Perceptyx](https://apexdata.azurewebsites.net/docs.microsoft.com/azure/active-directory/saas-apps/perceptyx-tutorial), [Proptimise OS](https://proptimise.co.uk/software/), [Vtiger CRM (SAML)](../saas-apps/vtiger-crm-saml-tutorial.md), Oracle Access Manager voor Oracle retail merchandising, Oracle Access Manager voor Oracle E-Business Suite, Oracle IDCS for E-Business Suite, Oracle IDCS voor People Soft, Oracle IDCS voor JD Edwards
+[Azure AD SAML Toolkit](../saas-apps/saml-toolkit-tutorial.md), [Otsuka Shokai (大塚商会)](../saas-apps/otsuka-shokai-tutorial.md), [ANAQUA](../saas-apps/anaqua-tutorial.md), [Azure VPN client](https://portal.azure.com/), [ExpenseIn](../saas-apps/expensein-tutorial.md), [helper helper](../saas-apps/helper-helper-tutorial.md), [Costpoint](../saas-apps/costpoint-tutorial.md), [GlobalOne](../saas-apps/globalone-tutorial.md), [Mercedes-Benz In-Car Office](https://me.secure.mercedes-benz.com/), [skore](https://app.justskore.it/), [Oracle Cloud Infrastructure console](../saas-apps/oracle-cloud-tutorial.md), [CyberArk SAML-verificatie](../saas-apps/cyberark-saml-authentication-tutorial.md), [scrible edu](https://www.scrible.com/sign-in/#/create-account), [PandaDoc](../saas-apps/pandadoc-tutorial.md), [Perceptyx](https://apexdata.azurewebsites.net/docs.microsoft.com/azure/active-directory/saas-apps/perceptyx-tutorial), [Proptimise OS](https://proptimise.co.uk/software/), [Vtiger CRM (SAML)](../saas-apps/vtiger-crm-saml-tutorial.md), Oracle Access Manager voor Oracle retail merchandising, Oracle Access Manager voor Oracle E-Business Suite, Oracle IDCS voor E-Business Suite, Oracle IDCS voor People Soft, Oracle IDCS voor JD Edwards
 
 Zie voor meer informatie over de apps [SaaS-toepassings integratie met Azure Active Directory](https://aka.ms/appstutorial). Zie [uw toepassing weer geven in de galerie van Azure Active Directory toepassingen](https://aka.ms/azureadapprequest)voor meer informatie over het weer geven van uw toepassing in de app-galerie van Azure AD.
 
@@ -1942,7 +1942,7 @@ Zie voor meer informatie [e-mail One-time wachtwoord code verificatie (preview)]
 
 We hebben drie nieuwe cookie-instellingen geïntroduceerd, die beschikbaar zijn voor uw apps die zijn gepubliceerd via toepassings proxy:
 
-- **Cookie met alleen HTTP gebruiken.** Hiermee stelt u de **HTTPOnly** -vlag in voor de toegangs-en sessie cookies van de toepassings proxy. Het inschakelen van deze instelling biedt extra veiligheids voordelen, zoals het voor komen van het kopiëren of wijzigen van cookies via scripting aan de client zijde. U wordt aangeraden deze vlag in te scha kelen ( **Ja**) om de extra voor delen te bepalen.
+- **Gebruik HTTP-Only cookie.** Hiermee stelt u de **HTTPOnly** -vlag in voor de toegangs-en sessie cookies van de toepassings proxy. Het inschakelen van deze instelling biedt extra veiligheids voordelen, zoals het voor komen van het kopiëren of wijzigen van cookies via scripting aan de client zijde. U wordt aangeraden deze vlag in te scha kelen ( **Ja**) om de extra voor delen te bepalen.
 
 - **Gebruik beveiligde cookie.** Hiermee stelt u de **beveiligde** vlag in voor de toegangs-en sessie cookies van de toepassings proxy. Het inschakelen van deze instelling biedt extra veiligheids voordelen door ervoor te zorgen dat cookies alleen worden verzonden via TLS-beveiligde kanalen, zoals HTTPS. U wordt aangeraden deze vlag in te scha kelen ( **Ja**) om de extra voor delen te bepalen.
 
@@ -2081,7 +2081,7 @@ Azure AD-beheerders kunnen nu hun eigen wacht woord opnieuw instellen met behulp
 
 - Andere Mobile Authenticator-app/hardware-token code
 
-- Email
+- E-mail
 
 - Telefoongesprek
 
@@ -2250,11 +2250,11 @@ Zie [een dynamische groep maken en de status controleren](../users-groups-roles/
 
 ---
 
-### <a name="simplified-single-sign-on-sso-configuration-settings-for-some-third-party-apps"></a>Vereenvoudigde configuratie-instellingen voor eenmalige aanmelding (SSO) voor sommige apps van derden
+### <a name="simplified-single-sign-on-sso-configuration-settings-for-some-third-party-apps"></a>Vereenvoudigde configuratie-instellingen voor eenmalige Sign-On (SSO) voor sommige apps van derden
 
 **Type:** Nieuwe functie **service categorie:** Enter prise apps **product Capability:** SSO
 
-We beseffen dat het instellen van eenmalige aanmelding (SSO) voor software as a Service (SaaS)-apps lastig is vanwege de unieke aard van elke configuratie van de apps. We hebben een vereenvoudigde configuratie-ervaring ontwikkeld voor het automatisch invullen van de SSO-configuratie-instellingen voor de volgende SaaS-apps van derden:
+We realiseren dat het instellen van een enkele Sign-On (SSO) voor SaaS-apps (Software as a Service) lastig kan zijn vanwege de unieke aard van elke configuratie van de apps. We hebben een vereenvoudigde configuratie-ervaring ontwikkeld voor het automatisch invullen van de SSO-configuratie-instellingen voor de volgende SaaS-apps van derden:
 
 - Zendesk
 
@@ -2323,7 +2323,7 @@ Zie voor meer informatie:
 
 ---
 
-### <a name="new-support-for-self-service-password-reset-from-the-windows-7881-lock-screen"></a>Nieuwe ondersteuning voor selfservice voor wachtwoord herstel via het vergrendelings scherm van Windows 7/8/8.1
+### <a name="new-support-for-self-service-password-reset-from-the-windows-7881-lock-screen"></a>Nieuwe ondersteuning voor het opnieuw instellen van Self-Service wacht woord vanaf het vergrendelings scherm van Windows 7/8/8.1
 
 **Type:** Nieuwe functie **service categorie:** SSPR- **product mogelijkheid:** gebruikers verificatie
 
@@ -2361,7 +2361,7 @@ Zie voor meer informatie over de apps [SaaS-toepassings integratie met Azure Act
 
 **Type:** Nieuwe functie **service categorie:** Enter prise apps **product Capability:** SSO
 
-We hebben nieuwe claim transformatie methoden, ToLower () en ToUpper () geïntroduceerd, die kunnen worden toegepast op SAML-tokens van de configuratie pagina voor **eenmalige aanmelding** op basis van SAML.
+We hebben nieuwe claim transformatie methoden, ToLower () en ToUpper () geïntroduceerd, die kunnen worden toegepast op SAML-tokens van de op SAML gebaseerde configuratie pagina voor **één Sign-On** .
 
 Zie [claims aanpassen die zijn uitgegeven in het SAML-token voor zakelijke toepassingen in azure AD](../develop/active-directory-saml-claims-customization.md) voor meer informatie.
 
@@ -2431,7 +2431,7 @@ Dit is een open bare preview-versie. Beheerders kunnen de nieuwe ervaring (indie
 
 ---
 
-### <a name="new-http-only-cookies-setting-in-azure-ad-application-proxy-apps"></a>Nieuwe instelling voor alleen HTTP-cookies in azure AD-toepassings proxy-apps
+### <a name="new-http-only-cookies-setting-in-azure-ad-application-proxy-apps"></a>Instelling voor nieuwe HTTP-Only cookies in azure AD Application proxy-apps
 
 **Type:** Nieuwe functie **service categorie:** app proxy- **Product mogelijkheid:** Access Control
 
@@ -2439,7 +2439,7 @@ Er is een nieuwe instelling met de naam **http-only cookies** in uw toepassings 
 
 Deze instelling is niet compatibel met apps die gebruikmaken van ActiveX-besturings elementen, zoals Extern bureaublad. Als u in deze situatie bent, raden we u aan deze instelling uit te scha kelen.
 
-Zie [toepassingen publiceren met Azure AD-toepassingsproxy](../manage-apps/application-proxy-add-on-premises-application.md)voor meer informatie over de instelling voor alleen HTTP-cookies.
+Zie [toepassingen publiceren met Azure AD-toepassingsproxy](../manage-apps/application-proxy-add-on-premises-application.md)voor meer informatie over de instelling voor het HTTP-Only cookies.
 
 ---
 
@@ -2607,7 +2607,7 @@ De nieuwste versie van Azure AD Connect omvat:
 
 - Problemen met oplossingen en ondersteunings updates
 
-- Algemene Beschik baarheid van de integratie met ping-webrelatie
+- Algemene Beschik baarheid van de Ping-Federate-integratie
 
 - Updates voor de nieuwste SQL 2012-client
 
@@ -3428,7 +3428,7 @@ Deze release bevat de volgende updates en wijzigingen:
 
 - De configuratie acties voor het terugschrijven van apparaten en een voortgangs balk voor het initialiseren van pagina's zijn toegevoegd.
 
-- Verbeterde algemene diagnostische gegevens met HTML-rapport en volledige gegevensverzameling in een ZIP-text-of HTML-rapport.
+- Verbeterde algemene diagnoses met HTML-rapport en volledige gegevens verzameling in een ZIP-Text/HTML-rapport.
 
 - Verbeterde betrouw baarheid van automatische upgrade en extra telemetrie toegevoegd om te zorgen dat de status van de server kan worden bepaald.
 

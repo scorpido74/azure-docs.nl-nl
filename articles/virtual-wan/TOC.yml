@@ -5,6 +5,7 @@
     - name: Wat is Virtual WAN?
       href: virtual-wan-about.md
 - name: Zelfstudies
+  expanded: true
   items:
     - name: Een site-naar-site-verbinding maken
       href: virtual-wan-site-to-site-portal.md

@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: arvinh
 ms.openlocfilehash: 429ccacea8eb4fd66336543615b11179af3e9276
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91361574"
 ---
 # <a name="tutorial-configure-linkedin-elevate-for-automatic-user-provisioning"></a>Zelf studie: LinkedIn-verhoging configureren voor automatische gebruikers inrichting
@@ -50,7 +50,7 @@ Voordat u de inrichtings service configureert en inschakelt, moet u bepalen welk
 
 In deze sectie wordt u begeleid bij het verbinden van de inrichtings-API van uw Azure AD to LinkedIn-SCIM en het configureren van de inrichtings service om toegewezen gebruikers accounts te maken, bij te werken en uit te scha kelen in LinkedIn-verhoging op basis van de gebruikers-en groeps toewijzing in azure AD.
 
-**Tip:** U kunt er ook voor kiezen om op SAML gebaseerde eenmalige aanmelding in te scha kelen voor een verhoging van het LinkedIn-niveau, volgens de instructies in [Azure Portal](https://portal.azure.com). Eenmalige aanmelding kan onafhankelijk van automatische inrichting worden geconfigureerd, hoewel deze twee functies elkaar aanvullen.
+**Tip:** U kunt er ook voor kiezen om op SAML gebaseerde single Sign-On voor een verhoogde bevoegdheid in te scha kelen, gevolgd door de instructies in [Azure Portal](https://portal.azure.com). Eenmalige aanmelding kan onafhankelijk van automatische inrichting worden geconfigureerd, hoewel deze twee functies elkaar aanvullen.
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-linkedin-elevate-in-azure-ad"></a>Automatische toewijzing van gebruikers accounts configureren voor LinkedIn-bevoegdheden in azure AD:
 

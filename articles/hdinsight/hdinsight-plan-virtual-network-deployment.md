@@ -1,5 +1,5 @@
 ---
-title: Een virtueel netwerk voor Azure HDInsight plannen
+title: Een virtueel netwerk plannen voor Azure HDInsight
 description: Meer informatie over het plannen van een Azure Virtual Network-implementatie om HDInsight te verbinden met andere cloud resources of resources in uw Data Center.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/04/2020
 ms.openlocfilehash: e2db6d1d60026a00fa8e766fbaa1c72975fa2e99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82786611"
 ---
-# <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Een virtueel netwerk voor Azure HDInsight plannen
+# <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Een virtueel netwerk plannen voor Azure HDInsight
 
 Dit artikel bevat achtergrond informatie over het gebruik van [Azure Virtual Networks](../virtual-network/virtual-networks-overview.md) (VNets) met Azure HDInsight. Ook worden ontwerp-en implementatie beslissingen beschreven die moeten worden uitgevoerd voordat u een virtueel netwerk kunt implementeren voor uw HDInsight-cluster. Zodra de plannings fase is voltooid, kunt u door gaan met het [maken van virtuele netwerken voor Azure HDInsight-clusters](hdinsight-create-virtual-network.md). Zie [IP-adressen voor hdinsight-beheer](hdinsight-management-ip-addresses.md)voor meer informatie over de IP-adressen voor hdinsight-beheer die nodig zijn om netwerk beveiligings groepen (nsg's) en door de gebruiker gedefinieerde routes correct te configureren.
 

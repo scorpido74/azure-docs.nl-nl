@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ad0111f9be8c0b981093618be7296d0ec7f90e30
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8c698cdf5b26cb1682eec2828922517cf4272275
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326538"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048437"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Een grafiek van digitale apparaatdubbels beheren met behulp van relaties
 
@@ -74,7 +74,7 @@ U kunt zelfs meerdere exemplaren van hetzelfde type relatie maken tussen dezelfd
 
 ## <a name="list-relationships"></a>Lijst met relaties
 
-Voor toegang tot de lijst met relaties voor een bepaalde dubbele in de grafiek kunt u het volgende gebruiken:
+Als u toegang wilt krijgen tot de lijst met **uitgaande** relaties die afkomstig zijn van een bepaalde dubbele in het diagram, kunt u het volgende gebruiken:
 
 ```csharp
 await client.GetRelationshipsAsync(id);
@@ -110,11 +110,11 @@ public async Task<List<BasicRelationship>> FindOutgoingRelationshipsAsync(string
 
 U kunt de opgehaalde relaties gebruiken om naar andere apparaatdubbels in uw grafiek te navigeren. U doet dit door het veld te lezen `target` in de relatie die wordt geretourneerd en dit te gebruiken als de id voor uw volgende oproep naar `GetDigitalTwin` . 
 
-### <a name="find-relationships-to-a-digital-twin"></a>Zoek relaties met een digitale dubbele
+### <a name="find-incoming-relationships-to-a-digital-twin"></a>Inkomende relaties zoeken naar een digitaal, twee
 
-Azure Digital Apparaatdubbels heeft ook een API voor het zoeken van alle inkomende relaties naar een opgegeven dubbele. Dit is vaak handig voor omgekeerde navigatie of bij het verwijderen van een dubbele.
+Azure Digital Apparaatdubbels heeft ook een API voor het zoeken van alle **inkomende** relaties naar een opgegeven dubbele. Dit is vaak handig voor omgekeerde navigatie of bij het verwijderen van een dubbele.
 
-Het vorige code voorbeeld is gericht op het vinden van uitgaande relaties. Het volgende voor beeld is vergelijkbaar, maar zoekt in plaats daarvan binnenkomende relaties. Ze worden ook verwijderd zodra ze zijn gevonden.
+Het vorige code voorbeeld is gericht op het vinden van uitgaande relaties van een dubbele. Het volgende voor beeld is op dezelfde manier gestructureerd, maar detecteert *inkomende* relaties met de dubbele plaats.
 
 Houd er rekening mee dat de `IncomingRelationship` aanroepen de volledige hoofd tekst van de relatie niet retour neren.
 
@@ -247,7 +247,7 @@ Bekijk de volgende gegevens tabel, met een beschrijving van een set digitale app
 | ruimte    | Room21 | Floor02 | contains | … |
 | ruimte    | Room22 | Floor02 | contains | … |
 
-De volgende code maakt gebruik van de [Microsoft Graph-API](https://docs.microsoft.com/graph/overview) om een spread sheet te lezen en een Azure Digital apparaatdubbels-grafiek te maken op basis van de resultaten.
+De volgende code maakt gebruik van de [Microsoft Graph-API](/graph/overview) om een spread sheet te lezen en een Azure Digital apparaatdubbels-grafiek te maken op basis van de resultaten.
 
 ```csharp
 var range = msftGraphClient.Me.Drive.Items["BuildingsWorkbook"].Workbook.Worksheets["Building"].usedRange;

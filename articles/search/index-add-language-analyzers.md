@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/05/2020
 ms.openlocfilehash: bda186f6bb45250763e439b77b4d3af988574401
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88935876"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Taal analyse functies toevoegen aan teken reeks velden in een Azure Cognitive Search-index
@@ -72,12 +72,12 @@ Zie [Create index &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchser
 |--------------|-----------------------------|--------------------------|  
 |Arabisch|AR. micro soft|AR. lucene|  
 |Armeens||HY. lucene|  
-|Bengalese|bn. micro soft||  
+|Bengaals|bn. micro soft||  
 |Baskisch||EU. lucene|  
 |Bulgaars|bg. micro soft|bg. lucene|  
 |Catalaans|ca. micro soft|ca. lucene|  
-|Vereenvoudigd Chinees|zh-Hans. micro soft|zh-Hans. lucene|  
-|Traditioneel Chinees|zh-hant. micro soft|zh-hant. lucene|  
+|Chinees (vereenvoudigd)|zh-Hans. micro soft|zh-Hans. lucene|  
+|Chinees (traditioneel)|zh-hant. micro soft|zh-hant. lucene|  
 |Kroatisch|HR. micro soft||  
 |Tsjechisch|CS. micro soft|CS. lucene|  
 |Deens|da. micro soft|da. lucene|  
@@ -102,9 +102,9 @@ Zie [Create index &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchser
 |Koreaans|ko. micro soft|ko. lucene|  
 |Lets|LV. micro soft|LV. lucene|  
 |Litouws|lt. micro soft||  
-|Malajalam|ml. micro soft||  
+|Malayalam|ml. micro soft||  
 |Maleis (Latijns)|MS. micro soft||  
-|Marathi|Mr. micro soft||  
+|Mahrati|Mr. micro soft||  
 |Noors|NB. micro soft|No. lucene|  
 |Perzisch||FA. lucene|  
 |Pools|pl. micro soft|pl. lucene|  

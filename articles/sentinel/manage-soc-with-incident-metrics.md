@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 08/11/2020
 ms.author: yelevin
 ms.openlocfilehash: 9d8d0fc46a463bda31595988d807854ef146d333
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88761714"
 ---
 # <a name="manage-your-soc-better-with-incident-metrics"></a>Uw SOC beter beheren met metrische gegevens over incidenten
@@ -80,11 +80,11 @@ Om de **SecurityIncidents** -tabel aan te vullen, hebben we u een out-of-the-box
 - Recente activiteiten 
 - Recente afsluit classificaties  
 
-U kunt deze nieuwe werkmap sjabloon vinden door **werkmappen** te kiezen in het navigatie menu van Azure Sentinel en het tabblad **sjablonen** te selecteren. Kies **beveiligings bewerkingen** in de galerie en klik op een van de knoppen **opgeslagen werkmap weer geven** en **sjabloon weer geven** .
+U kunt deze nieuwe werkmap sjabloon vinden door **werkmappen** te kiezen in het menu van de Azure-Sentinel navigatie en het tabblad **sjablonen** te selecteren. Kies de efficiëntie van de **beveiligings bewerkingen** in de galerie en klik op een van de knoppen **opgeslagen werkmap weer geven** en **sjabloon weer geven** .
 
-:::image type="content" source="./media/manage-soc-with-incident-metrics/security-incidents-workbooks-gallery.png" alt-text="Galerie met beveiligings incidenten werkmappen":::
+:::image type="content" source="./media/manage-soc-with-incident-metrics/security-incidents-workbooks-gallery.png" alt-text="Tabel met beveiligings incidenten":::
 
-:::image type="content" source="./media/manage-soc-with-incident-metrics/security-operations-workbook-1.png" alt-text="Werk blad met beveiligings incidenten voltooid":::
+:::image type="content" source="./media/manage-soc-with-incident-metrics/security-operations-workbook-1.png" alt-text="Tabel met beveiligings incidenten":::
 
 U kunt de sjabloon gebruiken om uw eigen aangepaste werkmappen te maken die zijn afgestemd op uw specifieke behoeften.
 

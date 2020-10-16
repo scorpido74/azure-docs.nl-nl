@@ -12,10 +12,10 @@ ms.service: active-directory
 ms.subservice: B2C
 ms.custom: devx-track-python
 ms.openlocfilehash: 6a113b3a3df475853f3690a0e932378bc0e2ab02
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87844623"
 ---
 # <a name="tutorial-enable-authentication-in-a-python-web-application-with-azure-ad-b2c"></a>Zelfstudie: Verificatie inschakelen in een Python-webtoepassing met Azure AD B2C
@@ -162,13 +162,13 @@ Deze voorbeeldtoepassing ondersteunt registreren, aanmelden en wachtwoorden opni
 
     Gebruik een geldig e-mailadres en voer de verificatie uit met de verificatiecode. Stel een wachtwoord in. Geef waarden voor de aangevraagde kenmerken op.
 
-    :::image type="content" source="media/tutorial-web-app-python/python-flask-web-app-02.png" alt-text="Registratiepagina die wordt weergegeven door de Azure AD B2C-gebruikersstroom":::
+    :::image type="content" source="media/tutorial-web-app-python/python-flask-web-app-02.png" alt-text="Webbrowser met Python Flask-webtoepassing die lokaal wordt uitgevoerd":::
 
 1. Selecteer **Maken** om een lokaal account te maken in de Azure AD B2C-directory.
 
 Wanneer u **Maken**selecteert, wordt de naam van de aangemelde gebruiker weergegeven in de toepassing.
 
-:::image type="content" source="media/tutorial-web-app-python/python-flask-web-app-03.png" alt-text="Webbrowser met Python Flask-webtoepassing met aangemelde gebruiker":::
+:::image type="content" source="media/tutorial-web-app-python/python-flask-web-app-03.png" alt-text="Webbrowser met Python Flask-webtoepassing die lokaal wordt uitgevoerd":::
 
 Als u het aanmelden wilt testen, selecteert u achtereenvolgens de koppeling **Afmelden** en de optie **Aanmelden** en meldt u zich aan met het e-mailadres en het wachtwoord dat u hebt ingevoerd tijdens de geregistratie.
 

@@ -7,10 +7,10 @@ ms.reviewer: apseth, divswa, logicappspm
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.openlocfilehash: 8c00d2e4f622bcfad7b2468013336f0d936e318c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87048665"
 ---
 # <a name="send-related-messages-in-order-by-using-a-sequential-convoy-in-azure-logic-apps-with-azure-service-bus"></a>Verzend gerelateerde berichten in de juiste volg orde door gebruik te maken van een opeenvolgende verwerkings in Azure Logic Apps met Azure Service Bus
@@ -195,11 +195,11 @@ Ga als volgt te werk om de waarden op te geven voor de trigger en acties in de *
 
   | Eigenschap | Vereist voor dit scenario | Waarde | Beschrijving |
   |----------|----------------------------|-------|-------------|
-  | **Wachtrijnaam** | Yes | <*wachtrij naam*> | De naam voor uw eerder gemaakte Service Bus wachtrij. In dit voor beeld wordt gebruikgemaakt van Fabrikam-service-bus-wachtrij. |
-  | **Wachtrij type** | Yes | **Hoofdformulier** | Uw primaire Service Bus wachtrij |
-  | **Sessie-id** | Yes | **Volgende beschikbaar** | Met deze optie wordt een sessie opgehaald voor elke trigger die wordt uitgevoerd op basis van de sessie-ID van het bericht in de Service Bus wachtrij. De sessie wordt ook vergrendeld, zodat er geen andere logische app of andere client berichten kan verwerken die aan deze sessie zijn gerelateerd. Met de volgende acties van de werk stroom worden alle berichten verwerkt die aan die sessie zijn gekoppeld, zoals verderop in dit artikel wordt beschreven. <p><p>Hier vindt u meer informatie over de andere **sessie-id-** opties: <p>- **Geen**: de standaard optie, waardoor er geen sessies zijn en kunnen niet worden gebruikt voor het implementeren van het sequentiële verwerkings-patroon. <p>- **Aangepaste waarde invoeren**: gebruik deze optie wanneer u de sessie-id kent die u wilt gebruiken, en u de trigger altijd wilt uitvoeren voor die sessie-id. <p>**Opmerking**: de service bus-connector kan een beperkt aantal unieke sessies per keer opslaan van Azure service bus naar de connector cache. Als het aantal sessies groter is dan deze limiet, worden oude sessies verwijderd uit de cache. Zie [Exchange-berichten in de Cloud met Azure Logic apps en Azure service bus](../connectors/connectors-create-api-servicebus.md#connector-reference)voor meer informatie. |
-  | **Interval** | Yes | <*aantal intervallen*> | Het aantal tijds eenheden tussen herhalingen voordat op een bericht wordt gecontroleerd. |
-  | **Frequentie** | Yes | **Seconde**, **minuut**, **uur**, **dag**, **week**of **maand** | De tijds eenheid voor het terugkeer patroon dat moet worden gebruikt bij het controleren op een bericht. <p>**Tip**: als u een **tijd zone** of **begin tijd**wilt toevoegen, selecteert u deze eigenschappen in de lijst **nieuwe para meters toevoegen** . |
+  | **Wachtrijnaam** | Ja | <*wachtrij naam*> | De naam voor uw eerder gemaakte Service Bus wachtrij. In dit voor beeld wordt gebruikgemaakt van Fabrikam-service-bus-wachtrij. |
+  | **Wachtrij type** | Ja | **Hoofd** | Uw primaire Service Bus wachtrij |
+  | **Sessie-id** | Ja | **Volgende beschikbaar** | Met deze optie wordt een sessie opgehaald voor elke trigger die wordt uitgevoerd op basis van de sessie-ID van het bericht in de Service Bus wachtrij. De sessie wordt ook vergrendeld, zodat er geen andere logische app of andere client berichten kan verwerken die aan deze sessie zijn gerelateerd. Met de volgende acties van de werk stroom worden alle berichten verwerkt die aan die sessie zijn gekoppeld, zoals verderop in dit artikel wordt beschreven. <p><p>Hier vindt u meer informatie over de andere **sessie-id-** opties: <p>- **Geen**: de standaard optie, waardoor er geen sessies zijn en kunnen niet worden gebruikt voor het implementeren van het sequentiële verwerkings-patroon. <p>- **Aangepaste waarde invoeren**: gebruik deze optie wanneer u de sessie-id kent die u wilt gebruiken, en u de trigger altijd wilt uitvoeren voor die sessie-id. <p>**Opmerking**: de service bus-connector kan een beperkt aantal unieke sessies per keer opslaan van Azure service bus naar de connector cache. Als het aantal sessies groter is dan deze limiet, worden oude sessies verwijderd uit de cache. Zie [Exchange-berichten in de Cloud met Azure Logic apps en Azure service bus](../connectors/connectors-create-api-servicebus.md#connector-reference)voor meer informatie. |
+  | **Interval** | Ja | <*aantal intervallen*> | Het aantal tijds eenheden tussen herhalingen voordat op een bericht wordt gecontroleerd. |
+  | **Frequentie** | Ja | **Seconde**, **minuut**, **uur**, **dag**, **week**of **maand** | De tijds eenheid voor het terugkeer patroon dat moet worden gebruikt bij het controleren op een bericht. <p>**Tip**: als u een **tijd zone** of **begin tijd**wilt toevoegen, selecteert u deze eigenschappen in de lijst **nieuwe para meters toevoegen** . |
   |||||
 
   Zie [service bus-wanneer een bericht wordt ontvangen in een wachtrij (Peek-Lock)](/connectors/servicebus/#when-a-message-is-received-in-a-queue-(peek-lock))voor meer informatie over triggers. De trigger voert een [ServiceBusMessage](/connectors/servicebus/#servicebusmessage)uit.

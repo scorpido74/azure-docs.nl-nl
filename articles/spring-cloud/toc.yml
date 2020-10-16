@@ -5,7 +5,7 @@
   items:
     - name: Wat is Azure Spring Cloud?
       href: spring-cloud-overview.md
-- name: Quickstarts
+- name: Snelstartgidsen
   expanded: true
   items:
     - name: Uw eerste app lanceren

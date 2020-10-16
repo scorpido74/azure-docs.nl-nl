@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 02/21/2018
 ms.author: hrasheed
 ms.openlocfilehash: faf13f580f6600e761cdaa9927fee4efa2b5995f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87500177"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>Migreren naar op Azure Resource Manager gebaseerde ontwikkel hulpprogramma's voor HDInsight-clusters
@@ -31,21 +31,21 @@ HDInsight reafschaffing van Azure Service Manager (ASM)-hulpprogram ma's voor HD
 
 Hieronder vindt u de basis opdrachten voor het werken met HDInsight via de klassieke Azure-CLI:
 
-* `azure hdinsight cluster create`-maakt een nieuw HDInsight-cluster
-* `azure hdinsight cluster delete`-een bestaand HDInsight-cluster verwijderen
-* `azure hdinsight cluster show`-informatie over een bestaand cluster weer geven
-* `azure hdinsight cluster list`-HDInsight-clusters voor uw Azure-abonnement weer geven
+* `azure hdinsight cluster create` -maakt een nieuw HDInsight-cluster
+* `azure hdinsight cluster delete` -een bestaand HDInsight-cluster verwijderen
+* `azure hdinsight cluster show` -informatie over een bestaand cluster weer geven
+* `azure hdinsight cluster list` -HDInsight-clusters voor uw Azure-abonnement weer geven
 
 Gebruik de `-h` Schakel optie om de para meters en switches te controleren die beschikbaar zijn voor elke opdracht.
 
 ### <a name="new-commands"></a>Nieuwe opdrachten
 Er zijn nieuwe opdrachten beschikbaar met Azure Resource Manager:
 
-* `azure hdinsight cluster resize`-Hiermee wordt het aantal worker-knoop punten in het cluster dynamisch gewijzigd
-* `azure hdinsight cluster enable-http-access`-Hiermee schakelt u HTTPs-toegang tot het cluster in (standaard ingeschakeld)
-* `azure hdinsight cluster disable-http-access`-de HTTPs-toegang tot het cluster wordt uitgeschakeld
-* `azure hdinsight script-action`-bevat opdrachten voor het maken/beheren van script acties op een cluster
-* `azure hdinsight config`-bevat opdrachten voor het maken van een configuratie bestand dat kan worden gebruikt met de `hdinsight cluster create` opdracht om configuratie gegevens op te geven.
+* `azure hdinsight cluster resize` -Hiermee wordt het aantal worker-knoop punten in het cluster dynamisch gewijzigd
+* `azure hdinsight cluster enable-http-access` -Hiermee schakelt u HTTPs-toegang tot het cluster in (standaard ingeschakeld)
+* `azure hdinsight cluster disable-http-access` -de HTTPs-toegang tot het cluster wordt uitgeschakeld
+* `azure hdinsight script-action` -bevat opdrachten voor het maken/beheren van script acties op een cluster
+* `azure hdinsight config` -bevat opdrachten voor het maken van een configuratie bestand dat kan worden gebruikt met de `hdinsight cluster create` opdracht om configuratie gegevens op te geven.
 
 ### <a name="deprecated-commands"></a>Afgeschafte opdrachten
 Als u de `azure hdinsight job` opdrachten gebruikt om taken te verzenden naar uw HDInsight-cluster, zijn deze opdrachten niet beschikbaar via de Resource Manager-opdrachten. Als u vanuit scripts programmatisch taken wilt verzenden naar HDInsight, moet u in plaats daarvan de REST Api's gebruiken die door HDInsight worden verstrekt. Raadpleeg de volgende documenten voor meer informatie over het verzenden van taken met behulp van REST-Api's.
@@ -59,26 +59,26 @@ Zie [MapReduce gebruiken met Hadoop in hdinsight](hadoop/hdinsight-use-mapreduce
 ### <a name="examples"></a>Voorbeelden
 **Een cluster maken**
 
-* Oude opdracht (ASM)-`azure hdinsight cluster create myhdicluster --location northeurope --osType linux --storageAccountName mystorage --storageAccountKey <storagekey> --storageContainer mycontainer --userName admin --password mypassword --sshUserName sshuser --sshPassword mypassword`
-* Nieuwe opdracht-`azure hdinsight cluster create myhdicluster -g myresourcegroup --location northeurope --osType linux --clusterType hadoop --defaultStorageAccountName mystorage --defaultStorageAccountKey <storagekey> --defaultStorageContainer mycontainer --userName admin -password mypassword --sshUserName sshuser --sshPassword mypassword`
+* Oude opdracht (ASM)- `azure hdinsight cluster create myhdicluster --location northeurope --osType linux --storageAccountName mystorage --storageAccountKey <storagekey> --storageContainer mycontainer --userName admin --password mypassword --sshUserName sshuser --sshPassword mypassword`
+* Nieuwe opdracht- `azure hdinsight cluster create myhdicluster -g myresourcegroup --location northeurope --osType linux --clusterType hadoop --defaultStorageAccountName mystorage --defaultStorageAccountKey <storagekey> --defaultStorageContainer mycontainer --userName admin -password mypassword --sshUserName sshuser --sshPassword mypassword`
 
 **Een cluster verwijderen**
 
-* Oude opdracht (ASM)-`azure hdinsight cluster delete myhdicluster`
-* Nieuwe opdracht-`azure hdinsight cluster delete mycluster -g myresourcegroup`
+* Oude opdracht (ASM)- `azure hdinsight cluster delete myhdicluster`
+* Nieuwe opdracht- `azure hdinsight cluster delete mycluster -g myresourcegroup`
 
-**Clusters weer geven**
+**Clusters weergeven**
 
-* Oude opdracht (ASM)-`azure hdinsight cluster list`
-* Nieuwe opdracht-`azure hdinsight cluster list`
+* Oude opdracht (ASM)- `azure hdinsight cluster list`
+* Nieuwe opdracht- `azure hdinsight cluster list`
 
 > [!NOTE]  
 > Als u voor de lijst opdracht de resource groep opgeeft, `-g` worden alleen de clusters in de opgegeven resource groep geretourneerd.
 
 **Cluster gegevens weer geven**
 
-* Oude opdracht (ASM)-`azure hdinsight cluster show myhdicluster`
-* Nieuwe opdracht-`azure hdinsight cluster show myhdicluster -g myresourcegroup`
+* Oude opdracht (ASM)- `azure hdinsight cluster show myhdicluster`
+* Nieuwe opdracht- `azure hdinsight cluster show myhdicluster -g myresourcegroup`
 
 ## <a name="migrating-azure-powershell-to-azure-resource-manager"></a>Azure PowerShell migreren naar Azure Resource Manager
 De algemene informatie over Azure PowerShell in de Azure Resource Manager modus vindt [u in azure PowerShell gebruiken met Azure Resource Manager](../powershell-azure-resource-manager.md).

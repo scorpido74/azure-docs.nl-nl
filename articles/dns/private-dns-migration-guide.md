@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 06/18/2019
 ms.author: rohink
 ms.openlocfilehash: 9302e922d509f3145fd7913835ce896a6da860fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: HT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84699461"
 ---
 # <a name="migrating-legacy-azure-dns-private-zones-to-new-resource-model"></a>Verouderde Azure DNS particuliere zones migreren naar een nieuw resource model
@@ -27,7 +27,7 @@ az network dns zone list --query "[?zoneType=='Private']"
 
 ## <a name="prerequisites"></a>Vereisten
 
-Zorg ervoor dat u de nieuwste versie van Azure PowerShell hebt geïnstalleerd. Voor meer informatie over Azure PowerShell (AZ) en hoe u deze kunt installeren, gaat u naarhttps://docs.microsoft.com/powershell/azure/new-azureps-module-az
+Zorg ervoor dat u de nieuwste versie van Azure PowerShell hebt geïnstalleerd. Voor meer informatie over Azure PowerShell (AZ) en hoe u deze kunt installeren, gaat u naar https://docs.microsoft.com/powershell/azure/new-azureps-module-az
 
 Zorg ervoor dat u de module AZ. PrivateDns hebt voor de Azure PowerShell geïnstalleerd. Als u deze module wilt installeren, opent u een Power shell-venster met verhoogde bevoegdheden (beheer modus) en voert u de volgende opdracht in
 
@@ -50,7 +50,7 @@ Voer ' A ' in wanneer u wordt gevraagd het script te installeren
 
 ![Het script installeren](./media/private-dns-migration-guide/install-migration-script.png)
 
-U kunt ook hand matig de meest recente versie van Power shell-script verkrijgen ophttps://www.powershellgallery.com/packages/PrivateDnsMigrationScript
+U kunt ook hand matig de meest recente versie van Power shell-script verkrijgen op https://www.powershellgallery.com/packages/PrivateDnsMigrationScript
 
 >[!IMPORTANT]
 >Het migratie script mag niet worden uitgevoerd in azure Cloud shell en moet worden uitgevoerd op een virtuele machine of lokale computer die is verbonden met internet.
@@ -102,7 +102,7 @@ Als u vindt dat DNS-query's niet worden opgelost, wacht u enkele minuten en voer
 
 Met deze stap worden de verouderde DNS-zones verwijderd en moeten deze pas worden uitgevoerd nadat u hebt gecontroleerd of de DNS-omzetting naar verwachting werkt. U wordt gevraagd elke privé-DNS-zone te verwijderen. Voer bij elke prompt ' Y ' in nadat u hebt gecontroleerd of de DNS-omzetting voor die zones goed werkt.
 
-![Opruimen](./media/private-dns-migration-guide/cleanup-migration-script.png)
+![Opschonen](./media/private-dns-migration-guide/cleanup-migration-script.png)
 
 ## <a name="update-your-automation"></a>Uw automatisering bijwerken
 
@@ -120,10 +120,10 @@ Maak een ondersteunings ticket als u meer hulp nodig hebt bij het migratie proce
 
 * Meer informatie over het maken van een privé zone in Azure DNS met behulp van [Azure PowerShell](./private-dns-getstarted-powershell.md) of [Azure cli](./private-dns-getstarted-cli.md).
 
-* Meer informatie over enkele veelvoorkomende [scenario's voor particuliere zones](./private-dns-scenarios.md) die kunnen worden gerealiseerd met persoonlijke zones in azure DNS.
+* Lees meer over een aantal veelvoorkomende [scenario's voor privézones](./private-dns-scenarios.md) die u kunt realiseren met privézones in Azure DNS.
 
-* Voor veelgestelde vragen en antwoorden over persoonlijke zones in Azure DNS, met inbegrip van specifieke gedrag dat u kunt verwachten voor bepaalde soorten bewerkingen, raadpleegt u [privé-DNS Veelgestelde vragen](./dns-faq-private.md).
+* Zie [Veelgestelde vragen over Privé-DNS](./dns-faq-private.md) voor veelgestelde vragen en antwoorden over privézones in Azure DNS, waaronder specifiek gedrag dat u kunt verwachten voor bepaalde soorten bewerkingen.
 
-* Ga voor meer informatie over DNS-zones en-records naar [overzicht van DNS-zones en-records](dns-zones-records.md).
+* Ga naar [Overzicht van DNS-zones en -records](dns-zones-records.md) voor meer informatie over DNS-zones en records.
 
 * Informatie over enkele van de andere belangrijke [netwerkmogelijkheden](../networking/networking-overview.md) van Azure.

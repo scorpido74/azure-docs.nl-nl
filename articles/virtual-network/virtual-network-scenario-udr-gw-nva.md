@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2016
 ms.author: kumud
 ms.openlocfilehash: 1d2dde4e77a39b114f721cd6d2be250141984e7f
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86231706"
 ---
 # <a name="virtual-appliance-scenario"></a>Scenario voor virtueel apparaat
@@ -38,7 +38,7 @@ Dit is een standaard perimeter netwerk (ook wel bekend als DMZ) met een DMZ en e
 
 De onderstaande oplossing maakt gebruik van virtuele firewall apparaten voor het implementeren van een perimeter netwerk (DMZ)/Protected-netwerk scenario.
 
-## <a name="considerations"></a>Aandachtspunten
+## <a name="considerations"></a>Overwegingen
 U kunt de hierboven beschreven omgeving in azure implementeren met behulp van verschillende functies die momenteel beschikbaar zijn.
 
 * **Virtueel netwerk (VNet)** . Een Azure-VNet fungeert op vergelijk bare wijze als een on-premises netwerk en kan worden gesegmenteerd in een of meer subnetten voor verkeer isolatie en een schei ding van de problemen.
@@ -147,7 +147,7 @@ AZF2 vertegenwoordigt een virtueel Azure-apparaat dat de volgende regels bevat:
 * **Route**: alle verkeer naar 10.0.0.0/16 (**onpremvnet**) moet worden verzonden naar het IP-adres van de Azure-gateway (bijvoorbeeld 10.0.0.1) via **port1**.
 * **Beleid**: alle bidirectionele verkeer tussen **port1** en **port2**toestaan.
 
-## <a name="network-security-groups-nsgs"></a>Netwerk beveiligings groepen (Nsg's)
+## <a name="network-security-groups-nsgs"></a>Netwerkbeveiligingsgroepen (NSG's)
 In dit scenario worden Nsg's niet gebruikt. U kunt echter Nsg's Toep assen op elk subnet om inkomend en uitgaand verkeer te beperken. U kunt bijvoorbeeld de volgende NSG-regels Toep assen op het externe FW-subnet.
 
 **Binnenkomende**

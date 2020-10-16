@@ -11,10 +11,10 @@ ms.service: active-directory
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 58b4bbcac110398ee4ff132b76ce8c4868ee17f8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317588"
 ---
 # <a name="azure-ad-userprincipalname-population"></a>Populatie van Azure AD UserPrincipalName
@@ -25,7 +25,7 @@ De waarde van het kenmerk UserPrincipalName is de Azure AD-gebruikers naam voor 
 ## <a name="upn-terminology"></a>UPN-terminologie
 In dit artikel wordt de volgende terminologie gebruikt:
 
-|Term|Beschrijving|
+|Termijn|Beschrijving|
 |-----|-----|
 |Eerste domein|Het standaard domein (onmicrosoft.com) in de Azure AD-Tenant. Bijvoorbeeld contoso.onmicrosoft.com.|
 |Micro soft online e-mail routering adres (MOERA)|Azure AD berekent de MOERA van het Azure AD mailnickname-kenmerk en het oorspronkelijke Azure AD-domein als &lt; mailNickname &gt;&#64;&lt; eerste domein &gt; .|

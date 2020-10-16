@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.topic: article
 ms.workload: identity
-ms.date: 08/05/2020
+ms.date: 10/14/2020
 ms.author: chmutali
-ms.openlocfilehash: 5ec06960e695abfa4bf004633b1f171214a5d29a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bbd274f6b039ef4492068d939c755ab279c2830a
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91286550"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069978"
 ---
 # <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>Zelf studie: kenmerk write-back van Azure AD naar SAP SuccessFactors configureren
 Het doel van deze zelf studie is het weer geven van de stappen voor het terugschrijven van kenmerken van Azure AD naar SAP SuccessFactors Employee Central. 
@@ -283,13 +283,13 @@ In deze sectie configureert u hoe gebruikers gegevens stromen van SuccessFactors
    | 4 | true | emailIsPrimary | Gebruik dit kenmerk om zakelijke e-mail in te stellen als primair in SuccessFactors. Als zakelijk e-mail adres niet primair is, stelt u deze vlag in op ONWAAR. |
    | 5 | userPrincipalName | [custom01 – custom15] | Met een **nieuwe toewijzing toevoegen**kunt u optioneel userPrincipalName of een Azure AD-kenmerk schrijven naar een aangepast kenmerk dat beschikbaar is in het SuccessFactors-gebruikers object.  |
    | 6 | on-premises-samAccountName | gebruikersnaam | Met een **nieuwe toewijzing toevoegen**kunt u optioneel een on-premises sAMAccountName toewijzen aan het kenmerk SuccessFactors username. |
-   | 7 | SSO | loginMethod | Als SuccessFactors-Tenant is ingesteld voor [gedeeltelijke SSO](https://apps.support.sap.com/sap/support/knowledge/en/2320766)en vervolgens nieuwe toewijzing toevoegen gebruikt, kunt u eventueel loginMethod instellen op een constante waarde van ' SSO ' of ' pwd '. |
+   | 7 | Eenmalige aanmelding | loginMethod | Als SuccessFactors-Tenant is ingesteld voor [gedeeltelijke SSO](https://apps.support.sap.com/sap/support/knowledge/en/2320766)en vervolgens nieuwe toewijzing toevoegen gebruikt, kunt u eventueel loginMethod instellen op een constante waarde van ' SSO ' of ' pwd '. |
    | 8 | telephoneNumber | businessPhoneNumber | Gebruik deze toewijzing om *telephoneNumber* uit te stromen van Azure AD naar SuccessFactors Business/Work-telefoon nummer. |
    | 9 | 10605 | businessPhoneType | Deze constante waarde is de SuccessFactors ID-waarde gekoppeld aan de zakelijke telefoon. Werk deze waarde bij zodat deze overeenkomt met uw SuccessFactors-omgeving. Zie de sectie [constante waarde ophalen voor phoneType](#retrieve-constant-value-for-phonetype) voor de stappen om deze waarde in te stellen. |
    | 10 | true | businessPhoneIsPrimary | Gebruik dit kenmerk om de primaire vlag voor het zakelijke telefoon nummer in te stellen. Geldige waarden zijn True of false. |
    | 11 | mobiel | cellPhoneNumber | Gebruik deze toewijzing om *telephoneNumber* uit te stromen van Azure AD naar SuccessFactors Business/Work-telefoon nummer. |
    | 12 | 10606 | cellPhoneType | Deze constante waarde is de SuccessFactors ID-waarde die is gekoppeld aan de mobiele telefoon. Werk deze waarde bij zodat deze overeenkomt met uw SuccessFactors-omgeving. Zie de sectie [constante waarde ophalen voor phoneType](#retrieve-constant-value-for-phonetype) voor de stappen om deze waarde in te stellen. |
-   | 13 | false | cellPhoneIsPrimary | Gebruik dit kenmerk om de primaire vlag voor het mobiele telefoon nummer in te stellen. Geldige waarden zijn True of false. |
+   | 13 | onjuist | cellPhoneIsPrimary | Gebruik dit kenmerk om de primaire vlag voor het mobiele telefoon nummer in te stellen. Geldige waarden zijn True of false. |
  
 1. Valideer en controleer uw kenmerk toewijzingen. 
  
@@ -324,13 +324,23 @@ Zodra de configuratie van de SuccessFactors-inrichting is voltooid, kunt u de in
 
 1. Stel op het tabblad **inrichten** de **inrichtings status** in **op aan**.
 
-2. Klik op **Opslaan**.
+1. Selecteer **bereik**. U kunt een van de volgende opties selecteren: 
+   * **Alle gebruikers en groepen synchroniseren**: Selecteer deze optie als u van plan bent toegewezen kenmerken van alle gebruikers te schrijven van Azure AD naar SuccessFactors, afhankelijk van de bereik regels die zijn gedefinieerd onder **toewijzing**van  ->  **bron object bereik**. 
+   * **Alleen toegewezen gebruikers en groepen synchroniseren**: Selecteer deze optie als u van plan bent toegewezen kenmerken te schrijven van alleen gebruikers die u hebt toegewezen aan **deze toepassing in de**  ->  **Manage**  ->  menu optie**gebruikers en groepen** beheren. Deze gebruikers zijn ook onderhevig aan de bereik regels die zijn gedefinieerd onder **toewijzing**van  ->  **bron object bereik**.
 
-3. Met deze bewerking wordt de eerste synchronisatie gestart, wat een variabel aantal uur kan duren, afhankelijk van het aantal gebruikers in de SuccessFactors-Tenant. U kunt de voortgangs balk controleren om de voortgang van de synchronisatie cyclus bij te houden. 
+   > [!div class="mx-imgBorder"]
+   > ![Terugschrijf bereik selecteren](./media/sap-successfactors-inbound-provisioning/select-writeback-scope.png)
 
-4. Controleer op elk gewenst moment het tabblad **controle logboeken** in de Azure Portal om te zien welke acties de inrichtings service heeft uitgevoerd. In de controle logboeken worden alle afzonderlijke synchronisatie gebeurtenissen vermeld die worden uitgevoerd door de inrichtings service, zoals welke gebruikers worden gelezen uit werk nemers centraal en vervolgens worden toegevoegd of bijgewerkt aan Active Directory. 
+   > [!NOTE]
+   > De SuccessFactors write Provisioning-app biedt geen ondersteuning voor "groeps toewijzing". Alleen ' gebruikers toewijzing ' wordt ondersteund. 
 
-5. Zodra de initiële synchronisatie is voltooid, wordt een overzichts rapport van de controle op het tabblad **inrichten** geschreven, zoals hieronder wordt weer gegeven.
+1. Klik op **Opslaan**.
+
+1. Met deze bewerking wordt de eerste synchronisatie gestart. Dit kan een variabel aantal uren duren, afhankelijk van het aantal gebruikers in de Azure AD-Tenant en het bereik dat is gedefinieerd voor de bewerking. U kunt de voortgangs balk controleren om de voortgang van de synchronisatie cyclus bij te houden. 
+
+1. Controleer op elk gewenst moment het tabblad **inrichtings logboeken** in de Azure Portal om te zien welke acties de inrichtings service heeft uitgevoerd. In de inrichtings logboeken worden alle afzonderlijke synchronisatie gebeurtenissen vermeld die worden uitgevoerd door de inrichtings service. 
+
+1. Zodra de initiële synchronisatie is voltooid, wordt een overzichts rapport van de controle op het tabblad **inrichten** geschreven, zoals hieronder wordt weer gegeven.
 
    > [!div class="mx-imgBorder"]
    > ![Voortgangs balk inrichten](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)

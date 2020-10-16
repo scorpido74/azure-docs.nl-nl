@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
 ms.openlocfilehash: c381c6e7d692eda32fea2033779bacddafc267bb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86253674"
 ---
-# <a name="infrastructure-as-code"></a>Infrastructuur als code
+# <a name="infrastructure-as-code"></a>Infrastructure als code
 
 Maak in een productie scenario Azure Service Fabric-clusters met behulp van Resource Manager-sjablonen. Resource Manager-sjablonen bieden meer controle over de bron eigenschappen en zorgen ervoor dat u een consistent resource model hebt.
 
@@ -104,7 +104,7 @@ Het upgraden van uw virtuele machines is een door de gebruiker geïnitieerde bew
 ```
 Wanneer u automatische OS-upgrades gebruikt met Service Fabric, wordt de nieuwe installatie kopie van het besturings systeem samen met één update domein per keer uitgedraaid om hoge Beschik baarheid van de services die in Service Fabric worden uitgevoerd, te onderhouden. Als u automatische besturingssysteem upgrades wilt gebruiken in Service Fabric moet uw cluster zijn geconfigureerd voor het gebruik van de Silver duurzaamheid-laag of hoger.
 
-Zorg ervoor dat de volgende register sleutel is ingesteld op false om te voor komen dat uw Windows-hostcomputers niet-gecoördineerde updates initiëren: HKEY_LOCAL_MACHINE \SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU.
+Zorg ervoor dat de volgende register sleutel is ingesteld op false om te voor komen dat uw Windows-hostcomputers niet-gecoördineerde updates initiëren: HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU.
 
 Hieronder vindt u de eigenschappen van de Resource Manager-sjabloon voor het berekenen van de naam van de compute virtual machine set om de register sleutel WindowsUpdate in te stellen op False
 ```json

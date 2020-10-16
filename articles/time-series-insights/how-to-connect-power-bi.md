@@ -9,10 +9,10 @@ ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.openlocfilehash: 105faf796583eb0f272eea7a316648993fdafd0d
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91653771"
 ---
 # <a name="visualize-data-from-azure-time-series-insights-in-power-bi"></a>Gegevens visualiseren van Azure Time Series Insights in Power BI
@@ -69,7 +69,7 @@ Aan de slag:
        > [!NOTE]
        > Er is een limiet van 250.000 gebeurtenissen voor onbewerkte gebeurtenis niveau gegevens.
 
-       [![Verbinding maken met](media/how-to-connect-power-bi/connect-to-power-bi.png)](media/how-to-connect-power-bi/connect-to-power-bi.png#lightbox)
+       [![Verbinding maken](media/how-to-connect-power-bi/connect-to-power-bi.png)](media/how-to-connect-power-bi/connect-to-power-bi.png#lightbox)
 
    1. Als u uw Azure Time Series Insights-omgeving niet hebt geconfigureerd met een **warme archief**, wordt een waarschuwing weer gegeven.
 

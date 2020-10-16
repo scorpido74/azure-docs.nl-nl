@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1a17f52e519a84c58c9ed5b75259cc0b96d0a175
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88949171"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory Identity Protection woordenlijst
@@ -26,7 +26,7 @@ Een gebruiker met een of meer actieve risico detecties.
 ### <a name="atypical-sign-in-location"></a>Ongewoone aanmeldings locatie
 Een aanmelding vanaf een geografische locatie die niet gebruikelijk is voor de specifieke gebruiker, soort gelijke gebruikers of de Tenant.
 
-### <a name="azure-ad-identity-protection"></a>Azure AD Identity Protection
+### <a name="azure-ad-identity-protection"></a>Azure AD-identiteitsbeveiliging
 Een beveiligings module van Azure Active Directory die een geconsolideerde weer gave biedt voor risico detecties en mogelijke beveiligings problemen die van invloed zijn op de identiteiten van een organisatie.
 
 ### <a name="conditional-access"></a>Voorwaardelijke toegang
@@ -62,7 +62,7 @@ Een risico detectie wordt geactiveerd wanneer de huidige gebruikers referenties 
 ### <a name="mitigation"></a>Oplossing
 Een actie om de mogelijkheid van een aanvaller te beperken of te elimineren om te voor komen dat de identiteit of het apparaat is aangetast zonder dat de identiteit of de status van een computer wordt hersteld. Bij een oplossing worden eerdere risico detecties die zijn gekoppeld aan de identiteit of het apparaat niet opgelost.
 
-### <a name="multi-factor-authentication"></a>Multi-Factor Authentication
+### <a name="multi-factor-authentication"></a>Meervoudige verificatie
 Een verificatie methode waarvoor twee of meer authenticatie methoden zijn vereist, die iets kunnen bevatten dat de gebruiker heeft, een dergelijk certificaat; iets wat de gebruiker weet, zoals gebruikers namen, wacht woorden of door gegeven zinsdelen; fysieke kenmerken, zoals een vinger afdruk. en persoonlijke kenmerken, zoals een persoonlijke hand tekening.
 
 ### <a name="offline-detection"></a>Offline detectie

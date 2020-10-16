@@ -3,19 +3,19 @@ title: Gegevensfeeds van verschillende bronnen toevoegen aan metrische gegevens 
 titleSuffix: Azure Cognitive Services
 description: verschillende gegevensfeeds toevoegen aan metrische gegevens Advisor
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
-ms.date: 09/04/2020
-ms.author: aahi
-ms.openlocfilehash: 343db078880f55701730e096c3da85a6a7e5428a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 10/12/2020
+ms.author: mbullwin
+ms.openlocfilehash: a37f3cfd250d152129245395680dbd847359e869
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324464"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046907"
 ---
 # <a name="add-data-feeds-from-different-data-sources-to-metrics-advisor"></a>Gegevensfeeds van verschillende gegevens bronnen toevoegen aan Metrics Advisor
 
@@ -133,7 +133,7 @@ Er is slechts één tijds tempel toegestaan per JSON-bestand.
 
 ## <a name="span-idkustoazure-data-explorer-kustospan"></a><span id="kusto">Azure Data Explorer (Kusto)</span>
 
-* **Verbindings reeks**: zie [een Connection String weer geven en kopiëren](https://docs.microsoft.com/azure/data-explorer/kusto/api/connection-strings/kusto) voor informatie over het ophalen van de Connection String van Azure Data Explorer (Kusto).
+* **Verbindings reeks**: metrische gegevens Advisor ondersteunt toegang tot Azure Data Explorer (Kusto) met behulp van Azure AD-toepassings verificatie. U moet een Azure AD-toepassing maken en registreren en vervolgens machtigen om toegang te krijgen tot een Azure Data Explorer-data base. Raadpleeg de documentatie van [Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/provision-azure-ad-app) als u uw Connection String wilt ontvangen.
 
 * **Query**: Zie [Kusto query language](https://docs.microsoft.com/azure/data-explorer/kusto/query) om gegevens op te halen en te formuleren in multi-dimensionale time series-gegevens. U kunt de `@StartTime` variabelen en gebruiken `@EndTime` in uw query. Ze moeten de volgende indeling hebben: `yyyy-MM-dd HH:mm:ss` .
 

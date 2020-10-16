@@ -9,10 +9,10 @@ ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 6628d693a8df3614097e23785ac234a451565ca3
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91777102"
 ---
 # <a name="overview-of-the-azure-security-benchmark-v2"></a>Overzicht van de Azure Security Bench Mark (v2)
@@ -22,7 +22,7 @@ De Azure Security Bench Mark (ASB) biedt prescriptieve aanbevolen procedures en 
 Deze bench Mark maakt deel uit van een aantal holistische beveiligings richtlijnen die ook het volgende bevatten:
 
 - **Cloud-acceptatie raamwerk** : richt lijnen voor beveiliging, inclusief [strategie](/azure/cloud-adoption-framework/strategy/define-security-strategy), [rollen en verantwoordelijkheden](/azure/cloud-adoption-framework/organize/cloud-security), [Aanbevolen Azure Top 10-beveiligings procedures](/azure/cloud-adoption-framework/get-started/security#step-1-establish-essential-security-practices)en [referentie-implementatie](/azure/cloud-adoption-framework/ready/enterprise-scale/).
-- **Azure goed ontworpen Framework** : richt lijnen voor [het beveiligen van uw workloads](https://docs.microsoft.com/assessments/?mode=pre-assessment&session=local) op Azure.
+- **Azure Well-Architected Framework** : richt lijnen voor [het beveiligen van uw workloads](https://docs.microsoft.com/assessments/?mode=pre-assessment&session=local) in Azure.
 - **Aanbevolen procedures voor micro soft-beveiliging** : [aanbevelingen](/security/compass/microsoft-security-compass-introduction) met voor beelden op Azure.
 
  De Azure Security-Bench Mark is gericht op Cloud gerichte controle gebieden. Deze besturings elementen zijn consistent met bekende beveiligings benchmarks, zoals die worden beschreven in het Center for Internet Security (CIS) Controls versie 7,1 en National Institute of Standards and Technology (NIST) SP800-53.

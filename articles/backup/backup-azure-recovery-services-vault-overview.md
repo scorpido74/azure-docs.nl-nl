@@ -3,12 +3,12 @@ title: Overzicht van Recovery Services-kluizen
 description: Een overzicht van Recovery Services kluizen.
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: cc09c1ffa84bc66e8fe2c48c80b8aea0977762ba
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: ab6b27bdc7ac9b01385ed43830d0af5900210d43
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90975145"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093664"
 ---
 # <a name="recovery-services-vaults-overview"></a>Overzicht van Recovery Services-kluizen
 
@@ -18,7 +18,7 @@ In dit artikel worden de functies van een Recovery Services kluis beschreven. Ee
 
 - **Centrale bewaking voor uw hybride IT-omgeving**: met Recovery Services kluizen kunt u niet alleen uw [Azure IaaS-vm's](backup-azure-manage-vms.md) , maar ook uw [on-premises assets](backup-azure-manage-windows-server.md#manage-backup-items) van een centrale Portal bewaken. [Meer informatie](backup-azure-monitoring-built-in-monitor.md)
 
-- **Op rollen gebaseerd Access Control (RBAC)**: RBAC biedt nauw keurig beheer van toegangs beheer in Azure. [Azure biedt verschillende ingebouwde rollen](../role-based-access-control/built-in-roles.md)en Azure backup heeft drie [ingebouwde rollen voor het beheren van herstel punten](backup-rbac-rs-vault.md). Recovery Services kluizen zijn compatibel met RBAC, waarmee back-up-en herstel toegang wordt beperkt tot de gedefinieerde set gebruikers rollen. [Meer informatie](backup-rbac-rs-vault.md)
+- **Toegangs beheer op basis van rollen (Azure RBAC)** van Azure: Azure RBAC biedt nauw keurig beheer van toegangs beheer in Azure. [Azure biedt verschillende ingebouwde rollen](../role-based-access-control/built-in-roles.md)en Azure backup heeft drie [ingebouwde rollen voor het beheren van herstel punten](backup-rbac-rs-vault.md). Recovery Services kluizen zijn compatibel met Azure RBAC, waarmee back-up-en herstel toegang wordt beperkt tot de gedefinieerde set gebruikers rollen. [Meer informatie](backup-rbac-rs-vault.md)
 
 - **Voorlopig verwijderen**: met zacht verwijderen, zelfs als een schadelijke actor een back-up verwijdert (of de back-upgegevens per ongeluk zijn verwijderd), worden de back-upgegevens 14 extra dagen bewaard, zodat het back-upitem zonder gegevens verlies kan worden hersteld. De extra 14 dagen voor het bewaren van back-upgegevens in de status ' voorlopig verwijderen ' maken geen kosten voor u. [Meer informatie](backup-azure-security-feature-cloud.md).
 
@@ -54,7 +54,7 @@ Azure Advisor voorziet in elk uur [aanbevelingen](../advisor/advisor-high-availa
 
 ![Azure Advisor](./media/backup-azure-recovery-services-vault-overview/azure-advisor.png)
 
-## <a name="additional-resources"></a>Extra resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Door de kluis ondersteunde en niet-ondersteunde scenario's](backup-support-matrix.md#vault-support)
 - [Veelgestelde vragen over de kluis](backup-azure-backup-faq.md)

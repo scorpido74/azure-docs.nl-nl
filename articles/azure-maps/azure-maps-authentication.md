@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 4a923fd34391137f2064cb338ea180ae3782f5e2
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 3ad4724280039f2820611a621186d8174e9af986
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036841"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091403"
 ---
 # <a name="authentication-with-azure-maps"></a>Verificatie met Azure Maps
 
@@ -51,7 +51,7 @@ Zie [Wat is verificatie?](https://docs.microsoft.com/azure/active-directory/deve
 
 ### <a name="managed-identities-for-azure-resources-and-azure-maps"></a>Beheerde identiteiten voor Azure-resources en-Azure Maps
 
-[Beheerde identiteiten voor Azure-resources](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) bieden Azure-Services met een automatisch beheerde op toepassingen gebaseerde beveiligingsprincipal die kan worden geverifieerd met Azure AD. Met op rollen gebaseerd toegangs beheer (RBAC) kan de beveiligings-principal van de beheerde identiteit worden gemachtigd om toegang te krijgen tot Azure Maps Services. Enkele voor beelden van beheerde identiteiten zijn: Azure App Service, Azure Functions en Azure Virtual Machines. Zie [beheerde identiteiten voor Azure-resources](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)voor een lijst met beheerde identiteiten.
+[Beheerde identiteiten voor Azure-resources](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) bieden Azure-Services met een automatisch beheerde op toepassingen gebaseerde beveiligingsprincipal die kan worden geverifieerd met Azure AD. Met op rollen gebaseerd toegangs beheer van Azure (Azure RBAC) kan de beveiligings-principal van de beheerde identiteit worden gemachtigd om toegang te krijgen tot Azure Maps Services. Enkele voor beelden van beheerde identiteiten zijn: Azure App Service, Azure Functions en Azure Virtual Machines. Zie [beheerde identiteiten voor Azure-resources](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)voor een lijst met beheerde identiteiten.
 
 ### <a name="configuring-application-azure-ad-authentication"></a>Azure AD-verificatie voor toepassingen configureren
 
@@ -65,7 +65,7 @@ Nadat de toepassing een toegangs token heeft ontvangen, verzendt de SDK en/of to
 | Autorisatie  | Bearer-token eyJ0e….HNIVN |
 
 > [!NOTE]
-> `x-ms-client-id`is de Azure Maps op een account gebaseerde GUID die wordt weer gegeven op de Azure Maps-verificatie pagina.
+> `x-ms-client-id` is de Azure Maps op een account gebaseerde GUID die wordt weer gegeven op de Azure Maps-verificatie pagina.
 
 Hier volgt een voor beeld van een Azure Maps route aanvraag die gebruikmaakt van een Azure AD OAuth Bearer-token:
 
@@ -82,7 +82,7 @@ Zie [verificatie details weer geven](https://aka.ms/amauthdetails)voor meer info
 
 Azure Maps ondersteunt toegang tot alle principal-typen voor [op rollen gebaseerd toegangs beheer (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) van Azure, waaronder: individuele Azure AD-gebruikers,-groepen,-toepassingen, Azure-resources en door Azure beheerde identiteiten. Aan principal-typen wordt een set machtigingen verleend, ook wel een roldefinitie genoemd. Een roldefinitie biedt machtigingen voor het REST API acties. Het Toep assen van toegang tot een of meer Azure Maps accounts wordt een bereik genoemd. Bij het Toep assen van een principal, roldefinitie en bereik wordt een roltoewijzing gemaakt. 
 
-In de volgende secties worden de concepten en onderdelen van Azure Maps integratie met Azure AD op rollen gebaseerd toegangs beheer besproken. Als onderdeel van het proces om uw Azure Maps-account in te stellen, wordt een Azure AD-adres lijst gekoppeld aan het Azure-abonnement waarop het Azure Maps-account zich bevindt. 
+In de volgende secties worden de concepten en onderdelen van Azure Maps integratie met Azure RBAC besproken. Als onderdeel van het proces om uw Azure Maps-account in te stellen, wordt een Azure AD-adres lijst gekoppeld aan het Azure-abonnement waarop het Azure Maps-account zich bevindt. 
 
 Wanneer u Azure RBAC configureert, kiest u een beveiligingsprincipal en past u deze toe op een roltoewijzing. Zie [Azure-roltoewijzingen toevoegen of verwijderen](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)voor meer informatie over het toevoegen van roltoewijzingen aan de Azure Portal.
 
@@ -104,7 +104,7 @@ Voor sommige Azure Maps Services zijn mogelijk verhoogde bevoegdheden vereist vo
 | Creator            | Inzender voor Azure Maps gegevens |
 | Ruimtelijk            | Inzender voor Azure Maps gegevens |
 
-Zie voor meer informatie over het weer geven van uw RBAC-instellingen [RBAC configureren voor Azure Maps](https://aka.ms/amrbac).
+Zie [Azure RBAC configureren voor Azure Maps](https://aka.ms/amrbac)voor meer informatie over het weer geven van uw Azure RBAC-instellingen.
 
 #### <a name="custom-role-definitions"></a>Definities voor aangepaste rollen
 
@@ -131,9 +131,9 @@ Als u een roltoewijzing aan een resource groep toewijst, kan toegang tot meerder
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over RBAC.
+Zie voor meer informatie over Azure RBAC.
 > [!div class="nextstepaction"]
-> [Toegangsbeheer op basis van rollen](https://docs.microsoft.com/azure/role-based-access-control/overview)
+> [Op rollen gebaseerd toegangsbeheer van Azure](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
 Zie voor meer informatie over het verifiëren van een toepassing met Azure AD en Azure Maps
 > [!div class="nextstepaction"]

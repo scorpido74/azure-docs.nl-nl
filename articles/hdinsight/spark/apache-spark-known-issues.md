@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.author: hrasheed
 ms.openlocfilehash: 1dbf6478a62675c8b514298007a7663239d8f7cf
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86084639"
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>Bekende problemen met Apache Spark cluster op HDInsight
@@ -67,13 +67,13 @@ En er is geen stuur programma-logboek geschreven.
 3. Update de locatie van de Spark-logboeken met behulp van Ambari als map met 777-machtigingen.  
 4. Voer Spark-Submit uit als sudo.  
 
-## <a name="spark-phoenix-connector-is-not-supported"></a>Spark-Phoenix-connector wordt niet ondersteund
+## <a name="spark-phoenix-connector-is-not-supported"></a>Spark-Phoenix connector wordt niet ondersteund
 
 HDInsight Spark-clusters bieden geen ondersteuning voor de Spark-Phoenix-connector.
 
 **Risico beperking**
 
-U moet in plaats daarvan de Spark-HBase-connector gebruiken. Zie [How to use Spark-HBase connector](https://web.archive.org/web/20190112153146/https://blogs.msdn.microsoft.com/azuredatalake/2016/07/25/hdinsight-how-to-use-spark-hbase-connector/)(Engelstalig) voor instructies.
+U moet in plaats daarvan de Spark-HBase-connector gebruiken. Zie [Spark-HBase-connector gebruiken](https://web.archive.org/web/20190112153146/https://blogs.msdn.microsoft.com/azuredatalake/2016/07/25/hdinsight-how-to-use-spark-hbase-connector/)voor instructies.
 
 ## <a name="issues-related-to-jupyter-notebooks"></a>Problemen met betrekking tot Jupyter-notebooks
 
@@ -119,7 +119,7 @@ Wanneer het Spark-cluster niet meer bronnen bevat, wordt er een time-out opgetre
 
 2. Start het notitie blok dat u probeerde op te starten. Er moeten voldoende resources beschikbaar zijn om nu een sessie te maken.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 * [Overzicht: Apache Spark in Azure HDInsight](apache-spark-overview.md)
 

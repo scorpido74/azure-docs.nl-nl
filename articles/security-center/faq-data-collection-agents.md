@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
 ms.openlocfilehash: 0a368e54c940ff580b7e8f49dd108fafddde5b17
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91441475"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>Veelgestelde vragen: vragen over het verzamelen van gegevens, agents en werk ruimten
@@ -47,13 +47,13 @@ Azure Security Center is afhankelijk van de [log Analytics agent](https://docs.m
 
 De agent wordt soms ook wel micro soft Monitoring Agent (of ' MMA ' genoemd). 
 
-De agent verzamelt diverse beveiligings configuratie details en gebeurtenis logboeken van verbonden computers en kopieert vervolgens de gegevens naar uw Log Analytics-werk ruimte voor verdere analyse. Voor beelden van dergelijke gegevens zijn: besturingssysteem type en-versie, logboeken van besturings systemen (Windows-gebeurtenis Logboeken), actieve processen, computer naam, IP-adressen en aangemelde gebruiker.
+De agent verzamelt diverse beveiligings configuratie details en gebeurtenis logboeken van verbonden computers en kopieert vervolgens de gegevens naar uw Log Analytics-werk ruimte voor verdere analyse. Voorbeelden van dergelijke gegevens zijn: besturingssysteemtype en -versie, besturingssysteemlogboeken (Windows-gebeurtenislogboeken), actieve processen, computernaam, IP-adressen en aangemelde gebruiker.
 
 Zorg ervoor dat op de computers een van de ondersteunde besturings systemen voor de agent wordt uitgevoerd, zoals wordt beschreven op de volgende pagina's:
 
-* [Log Analytics-agent voor door Windows ondersteunde besturings systemen](../azure-monitor/platform/agents-overview.md#supported-operating-systems)
+* [Log Analytics-agent voor door Windows ondersteunde besturingssystemen](../azure-monitor/platform/agents-overview.md#supported-operating-systems)
 
-* [Besturings systemen die worden ondersteund door Log Analytics-agent voor Linux](../azure-monitor/platform/agents-overview.md#supported-operating-systems)
+* [Log Analytics-agent voor door Linux ondersteunde besturingssystemen](../azure-monitor/platform/agents-overview.md#supported-operating-systems)
 
 Meer informatie over de [gegevens die worden verzameld door de log Analytics-agent](security-center-enable-data-collection.md).
 
@@ -107,30 +107,30 @@ U kunt een bestaande Log Analytics-werk ruimte selecteren om gegevens op te slaa
 - De werk ruimte moet worden gekoppeld aan uw geselecteerde Azure-abonnement.
 - U moet mini maal lees machtigingen hebben voor toegang tot de werk ruimte.
 
-Een bestaande Log Analytics-werk ruimte selecteren:
+Een bestaande Log Analytics-werkruimte selecteren:
 
 1. Onder **beveiligings beleid – gegevens verzamelen**selecteert **u een andere werk ruimte gebruiken**.
 
     ![Een andere werk ruimte gebruiken][4]
 
-1. Selecteer in de vervolg keuzelijst een werk ruimte om de verzamelde gegevens op te slaan.
+1. Selecteer in de vervolgkeuzelijst een werkruimte om de verzamelde gegevens op te slaan.
 
     > [!NOTE]
     > In het vervolg keuzemenu worden alleen werk ruimten weer gegeven waartoe u toegang hebt en die zich in uw Azure-abonnement bevinden.
 
 1. Selecteer **Opslaan**. U wordt gevraagd of u de bewaakte Vm's opnieuw wilt configureren.
 
-    - Selecteer **Nee** als u de nieuwe werkruimte instellingen **alleen op nieuwe vm's wilt Toep assen**. De nieuwe werk ruimte-instellingen zijn alleen van toepassing op nieuwe agent installaties. nieuw gedetecteerde Vm's waarop de Log Analytics-agent niet is geïnstalleerd.
-    - Selecteer **Ja** als u de nieuwe werkruimte instellingen wilt **Toep assen op alle vm's**. Daarnaast wordt elke VM die is verbonden met een Security Center gemaakte werk ruimte opnieuw verbonden met de nieuwe doel werkruimte.
+    - Selecteer **Nee** als u de nieuwe werkruimte instellingen **alleen op nieuwe vm's wilt Toep assen**. De nieuwe werkruimte-instellingen zijn alleen van toepassing op nieuwe agentinstallaties: nieuw gedetecteerde VM's waarop de Log Analytics-agent niet is geïnstalleerd.
+    - Selecteer **Ja** als u de nieuwe werkruimte instellingen wilt **Toep assen op alle vm's**. Daarnaast wordt elke VM die is verbonden met een door Security Center gemaakte werkruimte opnieuw verbonden met de nieuwe doelwerkruimte.
 
     > [!NOTE]
-    > Als u **Ja**selecteert, verwijdert u geen werk ruimten die zijn gemaakt door Security Center totdat alle virtuele machines opnieuw zijn verbonden met de nieuwe doel werkruimte. Deze bewerking mislukt als er te vroeg een werk ruimte wordt verwijderd.
+    > Als u **Ja**selecteert, verwijdert u geen werk ruimten die zijn gemaakt door Security Center totdat alle virtuele machines opnieuw zijn verbonden met de nieuwe doel werkruimte. Deze bewerking mislukt als een werkruimte te vroeg wordt verwijderd.
 
     - Als u de bewerking wilt annuleren, selecteert u **Annuleren**.
 
 ## <a name="what-if-the-log-analytics-agent-was-already-installed-as-an-extension-on-the-vm"></a>Wat gebeurt er als de Log Analytics-agent al is geïnstalleerd als een uitbrei ding op de VM?<a name="mmaextensioninstalled"></a>
 
-Wanneer de bewakings agent is geïnstalleerd als een uitbrei ding, staat de extensie configuratie slechts aan één werk ruimte toe. Security Center worden bestaande verbindingen met gebruikers ruimten niet overschreven. Security Center worden beveiligings gegevens van een virtuele machine opgeslagen in een werk ruimte die al is verbonden, op voor waarde dat de oplossing Security of SecurityCenterFree is geïnstalleerd. Security Center kunt de extensie versie in dit proces upgraden naar de meest recente versie.
+Wanneer de bewakingsagent is geïnstalleerd als een extensie, staat de extensieconfiguratie slechts rapportage aan één werkruimte toe. Security Center overschrijft bestaande verbindingen met gebruikerswerkruimten niet. Security Center worden beveiligings gegevens van een virtuele machine opgeslagen in een werk ruimte die al is verbonden, op voor waarde dat de oplossing Security of SecurityCenterFree is geïnstalleerd. Tijdens die proces kan Security Center de extensie upgraden naar de nieuwste versie.
 
 Zie [automatische inrichting in het geval van een bestaande Agent installatie](security-center-enable-data-collection.md#preexisting)voor meer informatie.
 
@@ -138,13 +138,13 @@ Zie [automatische inrichting in het geval van een bestaande Agent installatie](s
 
 ## <a name="what-if-a-log-analytics-agent-is-directly-installed-on-the-machine-but-not-as-an-extension-direct-agent"></a>Wat gebeurt er als een Log Analytics-agent rechtstreeks op de computer is geïnstalleerd, maar niet als een uitbrei ding (direct agent)?<a name="directagentinstalled"></a>
 
-Als de Log Analytics-agent rechtstreeks op de virtuele machine is geïnstalleerd (niet als een Azure-extensie), wordt Security Center de Log Analytics agent-extensie geïnstalleerd en kan de Log Analytics agent worden bijgewerkt naar de nieuwste versie.
+Als de Log Analytics-agent rechtstreeks op de VM is geïnstalleerd (niet als een Azure-extensie), installeert Security Center de Log Analytics-agentextensie, en wordt de Log Analytics-agent mogelijk bijgewerkt naar de nieuwste versie.
 
 De agent die is geïnstalleerd, blijft rapporteren aan de al geconfigureerde werk ruimte (n) en rapporteert bovendien aan de werk ruimte die is geconfigureerd in Security Center (multi-multihoming wordt ondersteund op Windows-computers).
 
 Als de geconfigureerde werk ruimte een gebruikers werkruimte is (niet Security Center de standaardwerk ruimte), moet u de oplossing ' Security/' SecurityCenterFree ' installeren voor Security Center om te beginnen met het verwerken van gebeurtenissen van Vm's en computers die aan die werk ruimte rapporteren.
 
-Voor Linux-machines wordt agent-multi-multihoming nog niet ondersteund. als er een bestaande agent wordt gedetecteerd, treedt er geen automatische inrichting op en wordt de configuratie van de computer niet gewijzigd.
+Voor Linux-machines wordt Agent-multihoming nog niet ondersteund. Als er een bestaande agentinstallatie wordt gedetecteerd, treedt er geen automatische inrichting op en wordt de configuratie van de machine niet gewijzigd.
 
 Voor bestaande machines op abonnementen die vóór 17 2019 maart op Security Center worden uitgevoerd, wordt de uitbrei ding van de Log Analytics agent niet geïnstalleerd en wordt de computer niet beïnvloed als er een bestaande agent wordt gedetecteerd. Voor deze computers raadpleegt u de aanbeveling bewakings agent status problemen op uw computers oplossen om de installatie problemen van de agent op deze computers op te lossen
 
@@ -252,7 +252,7 @@ Als automatische inrichting is ingeschakeld, wordt de Log Analytics agent door S
 
 De agent maakt de gebeurtenis 4688 voor het maken van processen en het veld *commandline* in gebeurtenis 4688 mogelijk. Nieuwe processen die op de virtuele machine worden gemaakt, worden vastgelegd door EventLog en gecontroleerd door de detectie services van Security Center. Zie voor meer informatie over de gegevens die voor elk nieuwe proces zijn vastgelegd de [velden Beschrijving in 4688](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4688#fields). De agent verzamelt ook de 4688-gebeurtenissen die zijn gemaakt op de virtuele machine en slaat ze op in de zoek opdracht.
 
-De agent maakt ook het verzamelen van gegevens mogelijk voor [adaptieve toepassings besturings elementen](security-center-adaptive-application.md), Security Center configureert een lokaal AppLocker-beleid in de controle modus om alle toepassingen toe te staan. Dit beleid zorgt ervoor dat AppLocker gebeurtenissen genereert die vervolgens worden verzameld en gebruikt door Security Center. Het is belang rijk te weten dat dit beleid niet wordt geconfigureerd op computers waarop al een geconfigureerd AppLocker-beleid is ingesteld. 
+De agent maakt ook het verzamelen van gegevens mogelijk voor [adaptieve toepassings besturings elementen](security-center-adaptive-application.md), Security Center configureert een lokaal AppLocker-beleid in de controle modus om alle toepassingen toe te staan. Dit beleid zorgt ervoor dat AppLocker gebeurtenissen genereert die vervolgens worden verzameld en gebruikt door Security Center. Het is belangrijk te weten dat dit beleid niet wordt geconfigureerd op machines waarop al een AppLocker-beleid is geconfigureerd. 
 
 Als Security Center verdachte activiteiten op de virtuele machine detecteert, wordt de klant per e-mail op de hoogte gesteld als er [contact gegevens](security-center-provide-security-contact-details.md) voor de beveiliging zijn verstrekt. Er is ook een waarschuwing zichtbaar in het dash board beveiligings waarschuwingen van Security Center.
 

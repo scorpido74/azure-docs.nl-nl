@@ -7,10 +7,10 @@ ms.author: tilee
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 333bba2b1d3cd83457196e38b827daa78199f235
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87033510"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Application Insights voor Azure Functions ondersteunde functies
@@ -27,27 +27,27 @@ Zie [afhankelijkheden](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Lo
 |-----------------------------------    |---------------    |------------------ |
 | | | | 
 | **Automatische verzameling van**        |                 |                   |               
-| &bull;Aanvragen                     | Ja             | Ja               | 
-| &bull;Uitzonderingen                   | Ja             | Ja               | 
-| &bull;Prestatie meter items         | Ja             | Ja               |
-| &bull;Elkaar                   |                   |                   |               
-| &nbsp;&nbsp;&nbsp;&mdash;HTTP      |                 | Yes               | 
-| &nbsp;&nbsp;&nbsp;&mdash;ServiceBus|                 | Yes               | 
-| &nbsp;&nbsp;&nbsp;&mdash;EventHub  |                 | Yes               | 
-| &nbsp;&nbsp;&nbsp;&mdash;SQL       |                 | Yes               | 
+| &bull; Aanvragen                     | Ja             | Ja               | 
+| &bull; Uitzonderingen                   | Ja             | Ja               | 
+| &bull; Prestatie meter items         | Ja             | Ja               |
+| &bull; Elkaar                   |                   |                   |               
+| &nbsp;&nbsp;&nbsp;&mdash; HTTP      |                 | Ja               | 
+| &nbsp;&nbsp;&nbsp;&mdash; ServiceBus|                 | Ja               | 
+| &nbsp;&nbsp;&nbsp;&mdash; EventHub  |                 | Ja               | 
+| &nbsp;&nbsp;&nbsp;&mdash; SQL       |                 | Ja               | 
 | | | | 
 | **Ondersteunde functies**                |                   |                   |               
-| &bull;QuickPulse/LiveMetrics       | Ja             | Ja               | 
-| &nbsp;&nbsp;&nbsp;&mdash;Kanaal voor beveiligde besturing|                 | Yes               | 
-| &bull;Proef                     | Ja             | Ja               | 
-| &bull;Heartbeats                   |                 | Yes               | 
+| &bull; QuickPulse/LiveMetrics       | Ja             | Ja               | 
+| &nbsp;&nbsp;&nbsp;&mdash; Kanaal voor beveiligde besturing|                 | Ja               | 
+| &bull; Proef                     | Ja             | Ja               | 
+| &bull; Heartbeats                   |                 | Ja               | 
 | | | | 
 | **Correlatie**                       |                   |                   |               
-| &bull;ServiceBus                     |                   | Yes               | 
-| &bull;EventHub                       |                   | Yes               | 
+| &bull; ServiceBus                     |                   | Ja               | 
+| &bull; EventHub                       |                   | Ja               | 
 | | | | 
 | **Configureerbaar**                      |                   |                   |           
-| &bull;Volledig configureerbaar.<br/>Zie [Azure functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) voor instructies.<br/>Zie [ASP.net core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) voor alle opties.               |                   | Yes                   | 
+| &bull;Volledig configureerbaar.<br/>Zie [Azure functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) voor instructies.<br/>Zie [ASP.net core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) voor alle opties.               |                   | Ja                   | 
 
 
 ## <a name="performance-counters"></a>Prestatiemeteritems

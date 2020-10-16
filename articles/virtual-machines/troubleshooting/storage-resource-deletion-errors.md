@@ -12,10 +12,10 @@ ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: 8d727bc8bdc8f015504baa57f9596b3bacac9712
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91651630"
 ---
 # <a name="troubleshoot-storage-resource-deletion-errors"></a>Fouten bij het verwijderen van een opslagresource oplossen
@@ -76,7 +76,7 @@ Probeer het opslag account, de container of de BLOB opnieuw te verwijderen nadat
 ## <a name="step-2-delete-vm-to-detach-os-disk"></a>Stap 2: de virtuele machine verwijderen om de besturingssysteem schijf los te koppelen
 Als de VHD een besturingssysteem schijf is, moet u de virtuele machine verwijderen voordat de gekoppelde VHD kan worden verwijderd. Er is geen aanvullende actie vereist voor gegevens schijven die zijn gekoppeld aan dezelfde VM wanneer deze stappen zijn voltooid:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Selecteer **virtual machines**in het menu hub.
 3. Selecteer de virtuele machine waaraan de VHD is gekoppeld.
 4. Zorg ervoor dat er niets actief gebruikmaakt van de virtuele machine en dat u de virtuele machine niet meer nodig hebt.
@@ -86,7 +86,7 @@ Als de VHD een besturingssysteem schijf is, moet u de virtuele machine verwijder
 ## <a name="step-3-detach-data-disk-from-the-vm"></a>Stap 3: de gegevens schijf loskoppelen van de VM
 Als de VHD een gegevens schijf is, koppelt u de VHD los van de virtuele machine om de lease te verwijderen:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Selecteer **virtual machines**in het menu hub.
 3. Selecteer de virtuele machine waaraan de VHD is gekoppeld.
 4. Selecteer **schijven** in het detail venster van de **virtuele machine** .

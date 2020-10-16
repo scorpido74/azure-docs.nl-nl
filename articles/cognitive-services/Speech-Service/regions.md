@@ -12,10 +12,10 @@ ms.date: 08/20/2020
 ms.author: panosper
 ms.custom: seodec18
 ms.openlocfilehash: b0574c41042e172af78365bb273c81729ce204ab
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88749312"
 ---
 # <a name="speech-service-supported-regions"></a>Ondersteunde regio's voor spraak Services
@@ -57,11 +57,11 @@ Beschik bare regio's voor **intentie herkenning** via de Speech SDK zijn de volg
 | Europa        | Europa -west      | `westeurope`         |
 | Noord-Amerika | VS - oost          | `eastus`             |
 | Noord-Amerika | VS - oost 2        | `eastus2`            |
-| Noord-Amerika | VS - zuid-centraal | `southcentralus`     |
+| Noord-Amerika | South Central US | `southcentralus`     |
 | Noord-Amerika | VS - west-centraal  | `westcentralus`      |
 | Noord-Amerika | VS - west          | `westus`             |
-| Noord-Amerika | VS - west 2        | `westus2`            |
-| Zuid-Amerika | Brazilië - zuid     | `brazilsouth`        |
+| Noord-Amerika | West US 2        | `westus2`            |
+| Zuid-Amerika | Brazil South     | `brazilsouth`        |
 
 Dit is een subset van de publicatie regio's die worden ondersteund door de [Language Understanding-service (Luis)](/azure/cognitive-services/luis/luis-reference-regions).
 

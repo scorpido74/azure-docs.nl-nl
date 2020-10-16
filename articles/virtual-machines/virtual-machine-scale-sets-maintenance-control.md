@@ -8,10 +8,10 @@ ms.workload: infrastructure-services
 ms.date: 09/11/2020
 ms.author: jushiman
 ms.openlocfilehash: 55cbc5db534dd1b05f91a24e0104b1f2dc110547
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90532639"
 ---
 # <a name="preview-maintenance-control-for-azure-virtual-machine-scale-sets"></a>Voor beeld: onderhouds beheer voor virtuele-machine schaal sets van Azure 
@@ -22,7 +22,7 @@ Met de onderhouds controle kunt u bepalen wanneer u updates wilt Toep assen op b
 
 Onderhouds configuraties werken in abonnementen en resource groepen.
 
-De volledige werk stroom is beschikbaar voor de volgende stappen: 
+De volledige werkstroom is beschikbaar voor de volgende stappen: 
 - Een onderhouds configuratie maken.
 - Een schaalset voor virtuele machines koppelen aan een onderhouds configuratie.
 - Automatische upgrades van besturings systemen inschakelen.

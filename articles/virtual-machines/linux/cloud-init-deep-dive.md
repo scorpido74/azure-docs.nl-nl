@@ -9,10 +9,10 @@ ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
 ms.openlocfilehash: f5028abadbe5600058c83a144d0095aee1278fe6
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86042069"
 ---
 # <a name="diving-deeper-into-cloud-init"></a>Meer diep in de Cloud-init
@@ -21,7 +21,7 @@ Voor meer informatie over [Cloud-init](https://cloudinit.readthedocs.io/en/lates
 Wanneer Cloud-init is opgenomen in een gegeneraliseerde installatie kopie en er een virtuele machine wordt gemaakt op basis van die installatie kopie, worden configuraties verwerkt en worden er vijf fasen uitgevoerd tijdens de eerste keer opstarten. In deze fasen, zoals u kunt zien, kunt u in het punt Cloud-init configuraties Toep assen. 
 
 
-## <a name="understand-cloud-init-configuration"></a>Informatie over Cloud-init-configuratie
+## <a name="understand-cloud-init-configuration"></a>Cloud-Init configuratie begrijpen
 Een virtuele machine configureren om te worden uitgevoerd op een platform, betekent dat Cloud-init meerdere configuraties moet Toep assen als een installatie kopie gebruiker, de belangrijkste configuraties waarmee u werkt `User data` (customData), die meerdere indelingen ondersteunt. deze worden [hier](https://cloudinit.readthedocs.io/en/latest/topics/format.html#user-data-formats)beschreven. U hebt ook de mogelijkheid om scripts (/var/lib/Cloud/scripts) toe te voegen en uit te voeren voor aanvullende configuratie. Hieronder vindt u meer informatie over dit onderwerp.
 
 Sommige configuraties zijn al geïntegreerde in azure Marketplace-installatie kopieën die worden geleverd met Cloud-init, zoals:
@@ -71,9 +71,9 @@ Bij het inrichten met Cloud-init zijn er vijf fasen van opstarten, die de config
 5. [Cloud-init laatste fase](https://cloudinit.readthedocs.io/en/latest/topics/boot.html#final): in deze laatste fase worden de modules in `cloud_final_modules` weer gegeven in/etc/Cloud/Cloud.cfg. Hier worden de modules die te laat worden uitgevoerd in het opstart proces, zoals pakket installaties, en het uitvoeren van scripts, enzovoort. 
 
    -   Tijdens deze fase kunt u scripts uitvoeren door ze in de mappen onder te plaatsen `/var/lib/cloud/scripts` :
-   - `per-boot`-scripts in deze map worden uitgevoerd op elke keer dat de computer opnieuw wordt opgestart
-   - `per-instance`-scripts in deze map worden uitgevoerd wanneer een nieuw exemplaar voor het eerst wordt opgestart
-   - `per-once`-scripts in deze map worden slechts één keer uitgevoerd
+   - `per-boot` -scripts in deze map worden uitgevoerd op elke keer dat de computer opnieuw wordt opgestart
+   - `per-instance` -scripts in deze map worden uitgevoerd wanneer een nieuw exemplaar voor het eerst wordt opgestart
+   - `per-once` -scripts in deze map worden slechts één keer uitgevoerd
 
 ## <a name="next-steps"></a>Volgende stappen
 

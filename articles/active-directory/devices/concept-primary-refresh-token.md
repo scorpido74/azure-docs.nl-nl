@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 000bc150b1a4addb4b68bd86b8d72524ec1015fc
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 457910f30830db06f148282a32551a400255f7e1
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91450409"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91965910"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>Wat is een primair vernieuwingstoken?
 
-Een primair vernieuwings token (PRT) is een sleutel artefact van Azure AD-verificatie op Windows 10-, iOS-en Android-apparaten. Het is een JSON Web Token (JWT) die speciaal is uitgegeven voor token Brokers van de eerste partij van micro soft om eenmalige aanmelding (SSO) in te scha kelen voor de toepassingen die op deze apparaten worden gebruikt. In dit artikel worden details gegeven over de manier waarop een PRT wordt uitgegeven, gebruikt en beveiligd op Windows 10-apparaten.
+Een primair vernieuwings token (PRT) is een sleutel artefact van Azure AD-verificatie op Windows 10, Windows Server 2016 en latere versies, iOS en Android-apparaten. Het is een JSON Web Token (JWT) die speciaal is uitgegeven voor token Brokers van de eerste partij van micro soft om eenmalige aanmelding (SSO) in te scha kelen voor de toepassingen die op deze apparaten worden gebruikt. In dit artikel worden details gegeven over de manier waarop een PRT wordt uitgegeven, gebruikt en beveiligd op Windows 10-apparaten.
 
 In dit artikel wordt ervan uitgegaan dat u al bekend bent met de verschillende beschik bare Apparaatstatus in azure AD en hoe eenmalige aanmelding werkt in Windows 10. Zie het artikel [Wat is Apparaatbeheer in azure Active Directory?](overview.md) voor meer informatie over apparaten in azure AD.
 
@@ -65,7 +65,7 @@ De PRT wordt uitgegeven tijdens de gebruikers verificatie op een Windows 10-appa
 In azure AD-scenario's voor geregistreerde apparaten is de Azure AD WAM-invoeg toepassing de primaire instantie voor de PRT, omdat Windows-aanmelding niet is gebeurd met dit Azure AD-account.
 
 > [!NOTE]
-> externe ID-providers moeten ondersteuning bieden voor het WS-Trust-protocol om PRT-uitgifte op Windows 10-apparaten in te scha kelen. Zonder WS-Trust kan PRT niet worden verleend aan gebruikers op hybride Azure AD gekoppelde of Azure AD gekoppelde apparaten. Op ADFS zijn alleen usernamemixed-eind punten vereist. ADFS/Services/Trust/2005/windowstransport en ADFS/Services/Trust/13/windowstransport moeten alleen worden ingeschakeld als intranet gerichte eind punten en **mogen niet worden weer gegeven** als aan een extranet gerichte eind punten via de Web Application proxy
+> externe ID-providers moeten het WS-Trust-protocol ondersteunen om PRT-uitgifte op Windows 10-apparaten in te scha kelen. Zonder WS-Trust kan PRT niet worden verleend aan gebruikers op hybride Azure AD gekoppelde of Azure AD gekoppelde apparaten. Op ADFS zijn alleen usernamemixed-eind punten vereist. ADFS/Services/Trust/2005/windowstransport en ADFS/Services/Trust/13/windowstransport moeten alleen worden ingeschakeld als intranet gerichte eind punten en **mogen niet worden weer gegeven** als aan een extranet gerichte eind punten via de Web Application proxy
 
 ## <a name="what-is-the-lifetime-of-a-prt"></a>Wat is de levens duur van een PRT?
 
@@ -87,7 +87,7 @@ Een PRT wordt op twee verschillende manieren vernieuwd:
    * Een app vraagt WAM voor een toegangs token op de achtergrond, maar er is geen vernieuwings token beschikbaar voor die app. In dit geval gebruikt WAM de PRT om een token voor de app aan te vragen en wordt er een nieuwe PRT in het antwoord teruggestuurd.
    * Een app vraagt WAM aan voor een toegangs token, maar de PRT is ongeldig of er is extra autorisatie vereist voor Azure AD (bijvoorbeeld Azure Multi-Factor Authentication). In dit scenario initieert WAM een interactieve aanmelding waarbij de gebruiker opnieuw moet worden geverifieerd of dat er aanvullende verificatie wordt gegeven en er een nieuwe PRT wordt uitgegeven voor een geslaagde authenticatie.
 
-In een AD FS-omgeving is het niet nodig om de PRT te vernieuwen. PRT-verlenging vereist alleen/ADFS/Services/Trust/2005/usernamemixed-en/ADFS/Services/Trust/13/usernamemixed-eind punten die zijn ingeschakeld op de proxy met behulp van het WS-Trust-protocol.
+In een AD FS-omgeving is het niet nodig om de PRT te vernieuwen. PRT-verlenging vereist alleen/ADFS/Services/Trust/2005/usernamemixed-en/ADFS/Services/Trust/13/usernamemixed-eind punten die zijn ingeschakeld op de proxy met behulp van WS-Trust-protocol.
 
 Windows-transport eindpunten zijn alleen vereist voor wachtwoord verificatie wanneer een wacht woord wordt gewijzigd, niet voor PRT-vernieuwing.
 

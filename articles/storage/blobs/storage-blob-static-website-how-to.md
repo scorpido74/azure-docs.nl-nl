@@ -9,10 +9,10 @@ ms.author: normesta
 ms.date: 03/04/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: 052a28dc69bf5c758133ca98366efc63105f4a56
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91289868"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Een statische website hosten in Azure Storage
@@ -50,11 +50,11 @@ Het hosten van statische websites is een functie die u moet inschakelen op het o
 
     ![Het hosten van een statische website inschakelen voor een opslagaccount](media/storage-blob-static-website-host/enable-static-website-hosting.png)
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 <a id="cli"></a>
 
-U kunt statisch website hosting inschakelen met behulp van de [Azure-opdracht regel interface (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
+U kunt statisch website hosting inschakelen met behulp van de [Azure Command-Line interface (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
 
 1. Open eerst de [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest)of als u de Azure cli lokaal hebt [geïnstalleerd](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) , opent u een opdracht console toepassing zoals Windows Power shell.
 
@@ -153,7 +153,7 @@ In deze instructies wordt uitgelegd hoe u bestanden kunt uploaden met behulp van
    >[!NOTE]
    > Storage Explorer wordt deze eigenschap automatisch ingesteld op `text/html` voor gebruikelijke, herkende extensies zoals `.html` . In sommige gevallen moet u dit echter zelf instellen. Als u deze eigenschap niet instelt op `text/html` , wordt gebruikers door de browser gevraagd het bestand te downloaden in plaats van de inhoud te renderen. Als u deze eigenschap wilt instellen, klikt u met de rechter muisknop op het bestand en klikt u vervolgens op **Eigenschappen**.
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Objecten uploaden naar de *$Web* container vanuit een bronmap.
 
@@ -208,7 +208,7 @@ In het deel venster dat wordt weer gegeven naast de pagina account overzicht van
 
 ![Metrische gegevens voor metrische gegevens van statische websites Azure Storage](./media/storage-blob-static-website/storage-blob-static-website-url.png)
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Zoek de open bare URL van uw statische website met behulp van de volgende opdracht:
 

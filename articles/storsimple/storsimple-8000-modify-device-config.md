@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: d0e13f8e66e6035c22c9c2323b9653c5c4a81671
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a08ddae1d10cc8b26f3aa7ee85e731c2cea15f93
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514669"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962884"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>De StorSimple Apparaatbeheer-service gebruiken om de configuratie van uw StorSimple-apparaat te wijzigen
 
@@ -44,7 +44,7 @@ U kunt de Azure Portal gebruiken om de naam van het apparaat te wijzigen en dit 
 
 Een StorSimple-apparaat dat is verbonden met de StorSimple Apparaatbeheer-service krijgt een standaard naam. De standaard naam weerspiegelt meestal het serie nummer van het apparaat. Bijvoorbeeld een standaard apparaatnaam die 15 tekens lang is, zoals 8600-SHX0991003G44HT, geeft het volgende aan:
 
-* **8600** : geeft het model van het apparaat aan.
+* **8600**  : geeft het model van het apparaat aan.
 * **SHX** : geeft de productie site aan.
 * **0991003** -geeft een specifiek product aan.
 * **G44HT**: de laatste vijf cijfers worden verhoogd om unieke serie nummers te maken. Dit is mogelijk geen opeenvolgende set.
@@ -61,7 +61,7 @@ Een apparaatbeschrijving helpt doorgaans bij het identificeren van de eigenaar e
 
 Uw apparaat moet de tijd synchroniseren om te verifiëren bij de service provider voor de Cloud opslag. Gebruik de Blade **algemene instellingen** op het apparaat om de apparaatinstellingen te wijzigen.
 
-![Apparaatbeschrijving in algemene instellingen](./media/storsimple-8000-modify-device-config/modify-general-settings2.png)
+![Apparaatbeschrijving in algemene instellingen 2](./media/storsimple-8000-modify-device-config/modify-general-settings2.png)
 
  Selecteer uw tijd zone in de vervolg keuzelijst. U kunt Maxi maal twee NTP-servers (Network Time Protocol) opgeven:
 

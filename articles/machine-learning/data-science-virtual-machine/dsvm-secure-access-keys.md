@@ -2,7 +2,7 @@
 title: Toegangs referenties veilig opslaan
 titleSuffix: Azure Data Science Virtual Machine
 description: Meer informatie over het veilig opslaan van toegangs referenties op de Data Science Virtual Machine. U leert hoe u beheerde service-identiteiten en Azure Key Vault kunt gebruiken om toegangs referenties op te slaan.
-keywords: diep leren, AI, data Science tools, data Science virtual machine, georuimtelijke analyse, team data Science process
+keywords: deep learning, AI, data science tools, data science virtual machine, geospatial analytics, team data science process
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -11,10 +11,10 @@ ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 05/08/2018
 ms.openlocfilehash: 1cb0c5094d49eac5a1c8f63406a28d2927d8fa94
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79477320"
 ---
 # <a name="store-access-credentials-securely-on-an-azure-data-science-virtual-machine"></a>Toegangs referenties veilig opslaan op een Azure-Data Science Virtual Machine

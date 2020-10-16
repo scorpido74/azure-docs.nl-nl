@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 09/04/2020
 ms.openlocfilehash: 51f226443e6f21b6c333cacf6c88f0d00208f5f2
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89484269"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Verkoop richtlijnen voor Azure Marketplace
@@ -82,7 +82,7 @@ In dit artikel worden de vereisten en richt lijnen uitgelegd voor het weer geven
 | 6 | Ondersteuning en Help voor oplossingen  | Ondersteuning en Help zijn niet vereist.  | | 
 | 7 | Het privacybeleid en de gebruiks voorwaarden zijn beschikbaar  |  Er zijn geen beleids regels of voor waarden vereist.  | | 
 | 8 | Service typen | Zorg ervoor dat het Service type overeenkomt met de titel. | |
-| 9 | Competenties | Moet competentie hebben in ten minste één van de volgende:<ul><li>Ontwikkeling van toepassingen</li><li>Integratie van toepassingen</li><li>Beheer van toepassingslevenscyclus</li><li>Cloud platform<li>Data Analytics</li><li>Datacentrum</li><li>Gegevens platform</li><li>DevOps |
+| 9 | Competenties | Moet competentie hebben in ten minste één van de volgende:<ul><li>Ontwikkeling van toepassingen</li><li>Integratie van toepassingen</li><li>Beheer van toepassings levenscyclus</li><li>Cloud platform<li>Data Analytics</li><li>Datacentrum</li><li>Gegevens platform</li><li>DevOps |
 | 10 | Producten | Azure-producten moeten zijn. | |
 | 11 | Land/regio | Zorg ervoor dat het land/de regio overeenkomt met de geselecteerde valuta. | |
 | 12 | Meer informatie  | <ul><li>Koppelingen aan de onderkant (onder de beschrijving, niet de koppelingen van Azure Marketplace aan de linkerkant) leiden tot meer informatie over de oplossing en zijn openbaar en worden correct weer gegeven.</li><li>Koppelingen moeten een beschrijvende naam hebben en worden niet weer gegeven als de bestands naam van een down load. | |

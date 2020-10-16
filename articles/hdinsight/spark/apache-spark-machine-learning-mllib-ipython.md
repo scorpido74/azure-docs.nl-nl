@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020, devx-track-python
 ms.date: 04/27/2020
 ms.openlocfilehash: bd61c6812d794d30e28f087dabf58db51e9c3296
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89230412"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Apache Spark MLlib gebruiken om een machine learning-toepassing te bouwen en een gegevensset te analyseren
@@ -25,14 +25,14 @@ MLlib is een belang rijke Spark-bibliotheek die veel hulpprogram ma's biedt die 
 * Regressie
 * Clustering
 * Modellen maken
-* Enkelvouds waarde (SVD) en Principal component analyse (PCA)
-* Hypo Thesen testen en voorbeeld statistieken berekenen
+* SVD (Singular Value Decomposition) en PCA (Principal Component Snalysis)
+* Hypothesen voor het testen en berekenen van voorbeeldstatistieken
 
-## <a name="understand-classification-and-logistic-regression"></a>Meer informatie over classificatie en logistiek regressie
+## <a name="understand-classification-and-logistic-regression"></a>Classificatie en logistieke regressie begrijpen
 
-*Classificatie*, een populaire machine learning taak, is het proces waarbij invoer gegevens in categorieën worden gesorteerd. Het is de taak van een classificatie algoritme om te bepalen hoe labels moeten worden toegewezen aan de invoer gegevens die u opgeeft. U kunt bijvoorbeeld een machine learning-algoritme zien waarin aandelen informatie als invoer wordt geaccepteerd. Vervolgens wordt het aandeel onderverdeeld in twee categorieën: aandelen die u moet verkopen en aandelen die u moet houden.
+*Classificatie*, een populaire machine learning-taak, is het proces waarbij invoergegevens worden gesorteerd in categorieën. Het is de taak van een classificatie algoritme om te bepalen hoe labels moeten worden toegewezen aan de invoer gegevens die u opgeeft. U kunt bijvoorbeeld een machine learning-algoritme zien waarin aandelen informatie als invoer wordt geaccepteerd. Vervolgens wordt het aandeel onderverdeeld in twee categorieën: aandelen die u moet verkopen en aandelen die u moet houden.
 
-Logistiek regressie is het algoritme dat u voor classificatie gebruikt. De logistiek regressie-API van Spark is handig voor *binaire classificatie*of het classificeren van invoer gegevens in een van twee groepen. Zie [Wikipedia](https://en.wikipedia.org/wiki/Logistic_regression)voor meer informatie over logistiek regressies.
+Logistiek regressie is het algoritme dat u voor classificatie gebruikt. De logistieke regressie-API van Spark is handig voor *binaire classificatie*, of voor het classificeren van invoergegevens in één van twee groepen. Zie [Wikipedia](https://en.wikipedia.org/wiki/Logistic_regression) voor meer informatie over logistieke regressies.
 
 In samen vatting produceert het proces van logistiek regressie een *logistiek functie*. Gebruik de functie om de kans te voors pellen dat een invoer vector deel uitmaakt van een groep of de andere.  
 
@@ -42,11 +42,11 @@ In dit voor beeld gebruikt u Spark voor het uitvoeren van een bepaalde voorspell
 
 In de onderstaande stappen ontwikkelt u een model om te zien wat er nodig is om een voedsel inspectie door te geven of uit te voeren.
 
-## <a name="create-an-apache-spark-mllib-machine-learning-app"></a>Een Apache Spark MLlib machine learning-app maken
+## <a name="create-an-apache-spark-mllib-machine-learning-app"></a>Een machine learning-app maken in Apache Spark MLlib
 
-1. Maak een Jupyter-notebook met behulp van de PySpark-kernel. Zie [een Jupyter-notebook bestand maken](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook-file)voor instructies.
+1. Maak een Jupyter-notebook met behulp van de PySpark-kernel. Zie [Een Jupyter Notebook-bestand maken](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook-file) voor de instructies.
 
-2. Importeer de typen die vereist zijn voor deze toepassing. Kopieer en plak de volgende code in een lege cel en druk op **SHIFT + ENTER**.
+2. Importeer de typen die zijn vereist voor deze toepassing. Kopieer en plak de volgende code in een lege cel en druk op **SHIFT + ENTER**.
 
     ```PySpark
     from pyspark.ml import Pipeline
@@ -59,7 +59,7 @@ In de onderstaande stappen ontwikkelt u een model om te zien wat er nodig is om 
 
     Als gevolg van de PySpark-kernel hoeft u geen contexten expliciet te maken. De Spark-en Hive-contexten worden automatisch gemaakt wanneer u de eerste code-cel uitvoert.
 
-## <a name="construct-the-input-dataframe"></a>De invoer-data frame maken
+## <a name="construct-the-input-dataframe"></a>Een invoergegevensframe maken
 
 Gebruik de Spark-context om de onbewerkte CSV-gegevens in het geheugen te halen als ongestructureerde tekst. Gebruik vervolgens de CSV-bibliotheek van python om elke regel van de gegevens te parseren.
 
@@ -143,7 +143,7 @@ Gebruik de Spark-context om de onbewerkte CSV-gegevens in het geheugen te halen 
     +------+--------------------+-------+--------------------+
     ```
 
-## <a name="understand-the-data"></a>Informatie over de gegevens
+## <a name="understand-the-data"></a>De gegevens begrijpen
 
 Laten we een idee krijgen van wat de gegevensset bevat. 
 
@@ -309,9 +309,9 @@ U kunt het model dat u eerder hebt gemaakt, gebruiken om te voors *pellen* wat d
 
     Door gebruik te maken van logistiek regressie met Spark krijgt u een model van de relatie tussen schendingen in het Engels. En of een bepaald bedrijf een voedsel inspectie zou slagen of mislukken.
 
-## <a name="create-a-visual-representation-of-the-prediction"></a>Een visuele weer gave van de voor spelling maken
+## <a name="create-a-visual-representation-of-the-prediction"></a>Een visuele weergave van de voorspelling maken
 
-U kunt nu een definitieve visualisatie maken om u te helpen de resultaten van deze test te controleren.
+U kunt nu een definitieve visualisatie maken om u te helpen de testresultaten te beoordelen.
 
 1. U begint met het extra heren van de verschillende voor spellingen en resultaten van de tijdelijke tabel met voor **spellingen** die u eerder hebt gemaakt. De volgende query's scheiden de uitvoer als *true_positive*, *false_positive*, *true_negative*en *false_negative*. In de onderstaande query's schakelt u visualisatie uit met behulp van `-q` en slaat u ook de uitvoer (met behulp van `-o` ) op als dataframes die vervolgens met het Magic kan worden gebruikt `%%local` .
 

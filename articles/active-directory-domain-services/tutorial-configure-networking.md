@@ -1,20 +1,20 @@
 ---
 title: 'Zelfstudie: Virtuele netwerken voor Azure AD Domain Services configureren | Microsoft Docs'
 description: In deze zelfstudie leert u hoe u een subnet voor een virtueel Azure-netwerk of netwerkpeering kunt maken en configureren voor een door Azure Active Directory Domain Services beheerd domein met Azure Portal.
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: e0d2b235f671ca9b30bf61aef254cb850b25373e
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.author: joflore
+ms.openlocfilehash: 33beb0767ef1f21d4fb3d08c9072d7c8479d2cb1
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024771"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967406"
 ---
 # <a name="tutorial-configure-virtual-networking-for-an-azure-active-directory-domain-services-managed-domain"></a>Zelfstudie: Virtuele netwerken configureren voor een door Azure Active Directory Domain Services beheerd domein
 

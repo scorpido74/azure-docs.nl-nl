@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/07/2020
 ms.author: raynew
 ms.openlocfilehash: 4925f6ffd2383c21f8ff9b0e3196d44fc15bb657
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89652868"
 ---
 # <a name="support-for-moving-azure-sql-resources-between-azure-regions"></a>Ondersteuning voor het verplaatsen van Azure SQL-resources tussen Azure-regio's
@@ -32,9 +32,9 @@ In de volgende tabel vindt u een overzicht van de vereisten.
 **TDE met door de service beheerde sleutel** | Ondersteund. |  Meer [informatie](../key-vault/general/move-region.md) over het verplaatsen van sleutel kluizen in verschillende regio's.
 **Regels voor dynamische gegevens maskering** | Ondersteund. | Regels worden automatisch naar de doel regio gekopieerd als onderdeel van de verplaatsing. [Meer informatie](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started-portal).
 **Advanced data security** | Niet ondersteund. | Tijdelijke oplossing: Stel in het doel gebied het SQL Server niveau in. [Meer informatie](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security).
-**Firewallregels** | Niet ondersteund. | Tijdelijke oplossing: Stel firewall regels in voor SQL Server in de doel regio. Firewall regels op database niveau worden van de bron server naar de doel server gekopieerd. [Meer informatie](https://docs.microsoft.com/azure/sql-database/sql-database-server-level-firewall-rule).
+**Firewall-regels** | Niet ondersteund. | Tijdelijke oplossing: Stel firewall regels in voor SQL Server in de doel regio. Firewall regels op database niveau worden van de bron server naar de doel server gekopieerd. [Meer informatie](https://docs.microsoft.com/azure/sql-database/sql-database-server-level-firewall-rule).
 **Controle beleid** | Niet ondersteund. | Het beleid wordt na de verplaatsing opnieuw ingesteld op de standaard waarde. [Meer informatie](https://docs.microsoft.com/azure/sql-database/sql-database-auditing) over hoe u opnieuw kunt instellen.
-**Back-upretentie** | Ondersteund. | Het Bewaar beleid voor back-ups voor de bron database wordt overgedragen naar de doel database. [Meer informatie](/azure/sql-database/sql-database-long-term-backup-retention-configure) over het wijzigen van instellingen na de verplaatsing.
+**Back-upretentie** | Ondersteund. | Het bewaarbeleid voor back-ups van de brondatabase wordt meegenomen naar de doeldatabase. [Meer informatie](/azure/sql-database/sql-database-long-term-backup-retention-configure) over het wijzigen van instellingen na de verplaatsing.
 **Automatisch afstemmen** | Niet ondersteund. | Tijdelijke oplossing: Stel de instellingen voor automatisch afstemmen in na de verplaatsing. [Meer informatie](https://docs.microsoft.com/azure/sql-database/sql-database-automatic-tuning-enable).
 **Database waarschuwingen** | Niet ondersteund. | Tijdelijke oplossing: Stel waarschuwingen in na de verplaatsing. [Meer informatie](https://docs.microsoft.com/azure/sql-database/sql-database-insights-alerts-portal).
 **Azure SQL Server stretch data base** | Niet ondersteund | Kan SQL Server stretch-data bases niet verplaatsen met resource-overdrijfing.

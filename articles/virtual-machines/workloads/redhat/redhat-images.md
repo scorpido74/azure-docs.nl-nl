@@ -1,23 +1,18 @@
 ---
 title: Overzicht van Red Hat Enterprise Linuxe installatie kopieën in azure
 description: Meer informatie over Red Hat Enterprise Linux installatie kopieën in Microsoft Azure.
-services: virtual-machines-linux
-documentationcenter: ''
 author: asinn826
-manager: BorisB2015
-editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 9aa0ca41f63da94e2dedaffe65ea518b8adff0dc
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.reviewer: cynthn
+ms.openlocfilehash: 46504f7d6d3a989119a3c851fc029bdf4494e01f
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439477"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994298"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Overzicht van Red Hat Enterprise Linux installatie kopieën
 
@@ -71,7 +66,7 @@ Deze vergelijking van de afbeeldings versie wordt uitgevoerd door de waarden te 
 
 Voor RHEL 6. x-installatie kopieën worden de afbeeldings typen weer gegeven in de volgende tabel.
 
-|Publisher | Aanbieding | SKU-waarde | Versie | Details
+|Uitgever | Aanbieding | SKU-waarde | Versie | Details
 |----------|-------|-----------|---------|--------
 |RedHat | RHEL | Secundaire versie (bijvoorbeeld 6,9) | Samengevoegde waarden van de RHEL secundaire versie en de publicatie datum (bijvoorbeeld 6.9.2018010506) | Alle Standard RHEL 6. x-installatie kopieën volgen deze Conventie.
 |RedHat | RHEL-BYOS | RHEL-raw69 | Samengevoegde waarden van de RHEL secundaire versie en de publicatie datum (bijvoorbeeld 6.9.20181023) | Deze installatie kopie is een RHEL 6,9 BYOS-installatie kopie.
@@ -85,7 +80,7 @@ Voor RHEL 7. x-installatie kopieën zijn er een aantal verschillende typen insta
 >[!NOTE]
 > Tenzij anders aangegeven, worden alle installatie kopieën LVM gepartitioneerd en wordt er verbinding gemaakt met gewone RHEL-opslag plaatsen. Dat wil zeggen dat de opslag plaatsen geen uitgebreide update ondersteuning (EUS) en geen Update Services voor SAP (E4S) zijn. We gaan nu door met het publiceren van alleen LVM-gepartitioneerde installatie kopieën, maar zijn geopend voor feedback over deze beslissing. Zie [Red Hat Enterprise Linux levens cyclus](https://access.redhat.com/support/policy/updates/errata)voor meer informatie over ondersteuning voor uitgebreide updates en Update Services voor SAP.
 
-|Publisher | Aanbieding | SKU-waarde | Versie | Details
+|Uitgever | Aanbieding | SKU-waarde | Versie | Details
 |----------|-------|------------|---------|--------
 |RedHat | RHEL | Secundaire versie (bijvoorbeeld 7,6) | Samengevoegde waarden van de RHEL secundaire versie en de publicatie datum (bijvoorbeeld 7.6.2019102813) | Afbeeldingen die vóór april 2019 zijn gepubliceerd, zijn gekoppeld aan standaard RHEL-opslag plaatsen. Installatie kopieën die zijn gepubliceerd na april 2019 zijn gekoppeld aan de EUS-opslag plaatsen van Red Hat zodat een specifieke secundaire versie kan worden vergrendeld. Klanten die normale opslag plaatsen willen, moeten de installatie kopieën gebruiken die 7-LVM of 7-RAW bevatten in de SKU-waarde (Details volgen). RHEL 7,7 en latere installatie kopieën van LVM worden gepartitioneerd. Alle andere installatie kopieën in deze categorie worden gepartitioneerd.
 |RedHat | RHEL | 7-RAW | Samengevoegde waarden van de RHEL secundaire versie en de publicatie datum (bijvoorbeeld 7.6.2019102813) | Deze installatie kopieën worden gepartitioneerd (er zijn bijvoorbeeld geen logische volumes toegevoegd).
@@ -105,10 +100,10 @@ Voor RHEL 7. x-installatie kopieën zijn er een aantal verschillende typen insta
 
 Details voor RHEL 8-afbeeldings typen vindt u hieronder.
 
-|Publisher | Aanbieding | SKU-waarde | Versie | Details
+|Uitgever | Aanbieding | SKU-waarde | Versie | Details
 |----------|-------|------------|---------|--------
 |RedHat | RHEL | 8 | Samengevoegde waarden van de RHEL secundaire versie en de publicatie datum (bijvoorbeeld 8.0.20191023) | Deze installatie kopieën zijn RHEL 8 gepartitioneerde installatie kopieën die zijn verbonden met standaard Red Hat-opslag plaatsen.
-|RedHat | RHEL | 8-Gen2 | Samengevoegde waarden van de RHEL secundaire versie en de publicatie datum (bijvoorbeeld 8.0.20191024) | Deze installatie kopieën zijn Hyper-V-generatie 2 RHEL 8 gepartitioneerde installatie kopieën die zijn verbonden met Standard Red Hat-opslag plaatsen. Zie [ondersteuning voor virtuele machines van de tweede generatie op Azure](../../linux/generation-2.md)voor meer informatie over virtuele machines van de tweede generatie in Azure.
+|RedHat | RHEL | 8-Gen2 | Samengevoegde waarden van de RHEL secundaire versie en de publicatie datum (bijvoorbeeld 8.0.20191024) | Deze installatie kopieën zijn Hyper-V-generatie 2 RHEL 8 gepartitioneerde installatie kopieën die zijn verbonden met Standard Red Hat-opslag plaatsen. Zie [ondersteuning voor virtuele machines van de tweede generatie op Azure](../../generation-2.md)voor meer informatie over virtuele machines van de tweede generatie in Azure.
 
 ## <a name="rhel-longer-support-add-ons"></a>RHEL meer ondersteuning voor invoeg toepassingen
 
@@ -116,7 +111,7 @@ Details voor RHEL 8-afbeeldings typen vindt u hieronder.
 
 Vanaf 2019 april zijn er RHEL-installatie kopieën beschikbaar die standaard zijn gekoppeld aan de EUS-opslag plaatsen. Meer informatie over RHEL EUS is beschikbaar in [de documentatie van Red Hat](https://access.redhat.com/articles/rhel-eus).
 
-Overschakelen naar EUS-opslag plaatsen is mogelijk en wordt ondersteund. Zie [RHEL Eus and versie-locking RHEL vm's](https://aka.ms/rhui-update#rhel-eus-and-version-locking-rhel-vms)(Engelstalig) voor instructies over het overschakelen van de virtuele machine naar Eus en meer informatie over Eus.
+Overschakelen naar EUS-opslag plaatsen is mogelijk en wordt ondersteund. Zie [RHEL Eus and versie-locking RHEL vm's](./redhat-rhui.md#rhel-eus-and-version-locking-rhel-vms)(Engelstalig) voor instructies over het overschakelen van de virtuele machine naar Eus en meer informatie over Eus.
 
 >[!NOTE]
 > EUS wordt niet ondersteund voor RHEL-Extra's. Dit betekent dat als u een pakket installeert dat doorgaans beschikbaar is via het RHEL extras-kanaal, u dit niet kunt doen wanneer u op EUS. Zie [Red Hat Enterprise Linux extra's levens cyclus](https://access.redhat.com/support/policy/updates/extras/)voor meer informatie over de levens cyclus van Red Hat extras.
@@ -183,6 +178,6 @@ Het huidige beleid is om alle eerder gepubliceerde installatie kopieën te blijv
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [Red Hat Enterprise Linux (RHEL)-installatie kopieën die beschikbaar zijn in azure](./redhat-imagelist.md)om de volledige lijst met RHEL-installatie kopieën in azure weer te geven.
-* Zie voor meer informatie over de Azure Red Hat-update-infra [structuur voor Red Hat update voor on-demand RHEL-vm's in azure](https://aka.ms/rhui-update).
+* Zie voor meer informatie over de Azure Red Hat-update-infra [structuur voor Red Hat update voor on-demand RHEL-vm's in azure](./redhat-rhui.md).
 * Voor meer informatie over de RHEL BYOS-aanbieding raadpleegt u [Red Hat Enterprise Linux uw Gold-installatie kopieën met uw eigen abonnement in azure](./byos.md).
 * Zie [Red Hat Enterprise Linux levens cyclus](https://access.redhat.com/support/policy/updates/errata)voor meer informatie over Red Hat-ondersteunings beleid voor alle versies van RHEL.

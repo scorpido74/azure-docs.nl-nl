@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: df73acfc469a8b7b5329b61095aefdbd73baafd4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77024837"
 ---
 # <a name="set-up-vcenter-on-your-private-cloud-for-vmware-vrealize-automation"></a>VCenter instellen in uw Privécloud voor VMware vRealize Automation
@@ -57,14 +57,14 @@ Voltooi deze taken voordat u de vCenter-Server configureert:
     ![vRA-installatie type](media/configure-vra-endpoint-install-type.png)
     7. Voer de aanmeldings gegevens van de IaaS-server in en klik op **volgende**. Als u Active Directory gebruikt, voert u de gebruikers naam in de indeling **domein\gebruiker** in. Gebruik anders **user@domain** notatie.
     ![vRA-aanmeldings gegevens](media/configure-vra-endpoint-account.png)
-    8. Voer voor de proxy-instellingen **vSphere** in voor het **agent type**. Voer een naam in voor de agent.
+    8. Voer voor de proxy-instellingen **vSphere** in voor het **agent type**. Voer een naam voor de agent in.
     9. Voer de FQDN van de IaaS-server in de velden **Manager servicehost** en **host Manager web service** in. Klik op **testen** om de verbinding voor elk van de FQDN-waarden te testen. Als de test mislukt, wijzigt u de DNS-instellingen zodat de hostnaam van de IaaS-server wordt opgelost.
     10. Voer een naam in voor het vCenter-Server eindpunt voor de Privécloud. Noteer de naam voor later in het configuratie proces.
 
         ![vRA-installatie proxy](media/configure-vra-endpoint-proxy.png)
 
     11. Klik op **Volgende**.
-    12. Klik op **Installeren**.
+    12. Klik op **Install**.
 
 ## <a name="configure-the-vsphere-agent"></a>De vSphere-agent configureren
 

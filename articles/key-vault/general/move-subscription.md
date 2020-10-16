@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: e6ab37539d00b6748d0e63a3f559bf70f493cf42
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 2a06fd55d73c37caaa35797131d2b31817bf90f0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89394734"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042402"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Een Azure Key Vault verplaatsen naar een ander abonnement
 
@@ -36,6 +36,9 @@ Wanneer u een sleutel kluis maakt, wordt deze automatisch gebonden aan de standa
 * Nieuwe aan tenant B gekoppelde vermeldingen van het toegangsbeleid toe te voegen.
 
 ## <a name="limitations"></a>Beperkingen
+
+> [!IMPORTANT]
+> **Sleutel kluizen die worden gebruikt voor schijf versleuteling, kunnen niet worden verplaatst** Als u sleutel kluis met schijf versleuteling voor een virtuele machine gebruikt, kan de sleutel kluis niet worden verplaatst naar een andere resource groep of een abonnement wanneer schijf versleuteling is ingeschakeld. U moet schijf versleuteling uitschakelen voordat u de sleutel kluis verplaatst naar een nieuwe resource groep of een nieuw abonnement. 
 
 Sommige service-principals (gebruikers en toepassingen) zijn gekoppeld aan een specifieke Tenant. Als u de sleutel kluis verplaatst naar een abonnement in een andere Tenant, is er een kans dat u de toegang tot een specifieke Service-Principal niet kunt herstellen. Controleer of alle essentiële service-principals aanwezig zijn in de Tenant waar u de sleutel kluis wilt verplaatsen.
 
@@ -72,7 +75,7 @@ Zorg ervoor dat u naar de pagina Azure Policy gaat in de Azure Portal en Bekijk 
 
 ### <a name="additional-steps-if-you-moved-key-vault-to-a-subscription-in-a-new-tenant"></a>Aanvullende stappen als u de sleutel kluis hebt verplaatst naar een abonnement in een nieuwe Tenant
 
-Als u de sleutel kluis naar een abonnement in een nieuwe Tenant hebt verplaatst, moet u de Tenant-ID hand matig bijwerken en het oude toegangs beleid verwijderen. Hier vindt u zelf studies voor deze stappen in Power shell en Azure CLI. Als u Power shell gebruikt, moet u mogelijk de opdracht Clear-AzContext uitvoeren die hieronder wordt beschreven, zodat u de resources buiten het huidige geselecteerde bereik kunt zien. 
+Als u de sleutel kluis naar een abonnement in een nieuwe Tenant hebt verplaatst, moet u de Tenant-ID hand matig bijwerken en het oude toegangs beleid verwijderen. Hier vindt u zelf studies voor deze stappen in Power shell en Azure CLI. Als u Power shell gebruikt, moet u mogelijk de Clear-AzContext-opdracht uitvoeren die hieronder wordt beschreven, zodat u de resources buiten het huidige geselecteerde bereik kunt zien. 
 
 ```azurepowershell
 Select-AzSubscription -SubscriptionId <your-subscriptionId>                # Select your Azure Subscription

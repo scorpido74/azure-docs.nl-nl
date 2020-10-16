@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.openlocfilehash: 207b597bc865c8234d447759ab8b0f53dc35413c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87090277"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Veelvoorkomende scenario's, voor beelden, zelf studies en scenario's voor Azure Logic Apps
@@ -43,8 +43,8 @@ Hier volgen enkele voor beelden van veelgebruikte triggers:
 
     Raadpleeg de volgende onderwerpen voor meer informatie:<p>
 
-    * [Zelf studie: geautomatiseerde werk stromen op basis van goed keuring maken met behulp van Azure Logic Apps](../logic-apps/tutorial-process-mailing-list-subscriptions-workflow.md)
-    * [Zelf studie: taken automatiseren voor het verwerken van e-mail berichten met behulp van Azure Logic Apps, Azure Functions en Azure Storage](../logic-apps/tutorial-process-email-attachments-workflow.md)
+    * [Zelfstudie: Geautomatiseerde op goedkeuring gebaseerde workflows maken met behulp van Azure Logic Apps](../logic-apps/tutorial-process-mailing-list-subscriptions-workflow.md)
+    * [Zelfstudie: Automatiseer taken om e-mails te verwerken met behulp van Azure Logic Apps, Azure Functions en Azure Storage](../logic-apps/tutorial-process-email-attachments-workflow.md)
 
   * Met de [ **http-** trigger](../connectors/connectors-native-http.md) kunt u een service-eind punt aanroepen via http of https. Zie voor meer informatie [werk stromen aanroepen, activeren of nesten met behulp van HTTP-eind punten](../logic-apps/logic-apps-http-endpoint.md).
 
@@ -83,7 +83,7 @@ Voor systemen en services die geen connectors hebben gepubliceerd, kunt u ook lo
 
 ## <a name="build-business-to-business-b2b-solutions"></a>Business-to-Business (B2B)-oplossingen bouwen
 
-Voor oplossingen voor bedrijfs integratie en naadloze communicatie tussen organisaties kunt u geautomatiseerde schaal bare werk stromen voor deze scenario's maken door de Enterprise Integration Pack (EIP) met Azure Logic Apps te gebruiken. Hoewel organisaties verschillende protocollen en indelingen gebruiken, kunnen ze berichten elektronisch uitwisselen. De EIP transformeert verschillende indelingen naar een indeling die de systemen van uw organisatie kunnen verwerken en ondersteunt industrie standaard protocollen, waaronder AS2, X12, EDIFACT en RosettaNet. Als u deze oplossingen wilt maken, maakt u een integratie account. Dit is een afzonderlijke Azure-resource die een veilige, schaal bare en beheersbare container biedt voor de artefacten die u definieert en gebruikt met uw logische app-werk stromen. Artefacten zijn bijvoorbeeld handels partners, overeenkomsten, kaarten, schema's, certificaten en batch configuraties.
+Voor oplossingen voor bedrijfs integratie en naadloze communicatie tussen organisaties kunt u geautomatiseerde schaal bare werk stromen voor deze scenario's maken door de Enterprise Integration Pack (EIP) met Azure Logic Apps te gebruiken. Hoewel organisaties verschillende protocollen en indelingen gebruiken, kunnen ze elektronisch berichten uitwisselen. De EIP transformeert verschillende indelingen naar een indeling die de systemen van uw organisatie kunnen verwerken en ondersteunt industrie standaard protocollen, waaronder AS2, X12, EDIFACT en RosettaNet. Als u deze oplossingen wilt maken, maakt u een integratie account. Dit is een afzonderlijke Azure-resource die een veilige, schaal bare en beheersbare container biedt voor de artefacten die u definieert en gebruikt met uw logische app-werk stromen. Artefacten zijn bijvoorbeeld handels partners, overeenkomsten, kaarten, schema's, certificaten en batch configuraties.
 
 * [Overzicht: zakelijke oplossingen voor B2B-integratie met Azure Logic Apps en Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md)
 * [Integratieaccounts voor B2B-ondernemingsintegraties maken en beheren met behulp van Azure Logic Apps](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
@@ -117,7 +117,7 @@ U kunt Logic apps volledig ontwikkelen en implementeren met Visual Studio, Azure
 * [Integratie accounts voor B2B-ondernemings integraties maken en beheren](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
 * [Integration service Environment (ISE) beheren in Azure Logic Apps](../logic-apps/ise-manage-integration-service-environment.md)
 
-### <a name="monitor"></a>Controleren
+### <a name="monitor"></a>Monitor
 
 * [Uitvoeringsstatus bewaken, triggergeschiedenis controleren, en waarschuwingen instellen voor Azure Logic Apps](../logic-apps/monitor-logic-apps.md)
 * [Azure Monitor logboeken instellen en diagnostische gegevens verzamelen voor Azure Logic Apps](../logic-apps/monitor-logic-apps-log-analytics.md)
@@ -128,7 +128,7 @@ U kunt Logic apps volledig ontwikkelen en implementeren met Visual Studio, Azure
 
 U kunt meerdere inhouds typen openen, converteren en transformeren met behulp van de vele functies in de [werk stroom definitie taal](https://aka.ms/logicappsdocs)van Azure Logic apps. U kunt bijvoorbeeld converteren tussen een teken reeks, JSON en XML met de- `@json()` en- `@xml()` werk stroom expressies. De Logic Apps-Engine behoudt inhouds typen voor de ondersteuning van inhouds overdracht met een verlies vrije manier tussen services.
 
-* [Inhouds typen verwerken in azure Logic apps](../logic-apps/logic-apps-content-type.md), zoals `application/` , `application/octet-stream` en`multipart/formdata`
+* [Inhouds typen verwerken in azure Logic apps](../logic-apps/logic-apps-content-type.md), zoals `application/` , `application/octet-stream` en `multipart/formdata`
 * [Naslag Gids voor het gebruik van functies in expressies voor Azure Logic Apps en energie automatisering](../logic-apps/workflow-definition-language-functions-reference.md)
 * [Schema voor werk stroom definitie taal voor Azure Logic Apps](../logic-apps/logic-apps-workflow-definition-language.md)
 

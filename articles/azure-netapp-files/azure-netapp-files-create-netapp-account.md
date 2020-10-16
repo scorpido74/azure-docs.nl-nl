@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 03/28/2018
 ms.author: b-juche
 ms.openlocfilehash: e5e0c43aa8c4fbf0db89065e0fab93ee174a4ede
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85483666"
 ---
 # <a name="create-a-netapp-account"></a>Een NetApp-account maken
@@ -54,7 +54,7 @@ U moet uw abonnement ook hebben geregistreerd voor het gebruik van de NetApp-res
      ![Nieuw NetApp-account](../media/azure-netapp-files/azure-netapp-files-new-netapp-account.png)
 
 
-5. Klik op **Create**.     
+5. Klik op **Maken**.     
    Het NetApp-account dat u hebt gemaakt, verschijnt nu in de Azure NetApp Files-blade. 
 
 > [!NOTE] 

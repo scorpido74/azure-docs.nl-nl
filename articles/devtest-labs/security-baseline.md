@@ -4,10 +4,10 @@ description: Azure-beveiligings basislijn voor Azure DevTest Labs
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.openlocfilehash: 49b07242068df5d7c46c602140c8b3e1f778e90c
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89398319"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure-beveiligings basislijn voor Azure DevTest Labs
@@ -258,7 +258,7 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure Activ
 
 **Verantwoordelijkheid:** Gebruikers
 
-## <a name="data-protection"></a>Gegevensbeveiliging
+## <a name="data-protection"></a>Gegevensbescherming
 *Zie [beveiligings beheer: gegevens beveiliging](../security/benchmarks/security-control-data-protection.md)voor meer informatie.*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: een inventaris van gevoelige informatie onderhouden
@@ -581,7 +581,7 @@ U kunt ook aanbevelingen van Azure Security Center gebruiken als een veilige con
 - [Beschik bare Azure Policy aliassen weer geven](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 - [Zelfstudie: Beleidsregels voor het afdwingen van naleving maken en beheren](../governance/policy/tutorials/create-and-manage.md)
 - [Eén en meerdere resources exporteren naar een sjabloon in Azure Portal](../azure-resource-manager/templates/export-template-portal.md)
-- [Aanbevelingen voor beveiliging: een referentie gids](../security-center/recommendations-reference.md)
+- [Aanbevelingen voor beveiliging: een naslaggids](../security-center/recommendations-reference.md)
 
 **Azure Security Center bewaking:** Niet van toepassing
 
@@ -591,7 +591,7 @@ U kunt ook aanbevelingen van Azure Security Center gebruiken als een veilige con
 **Hulp:** Gebruik Azure Security Center aanbevelingen voor het onderhouden van beveiligings configuraties op alle onderliggende reken resources die zijn gemaakt als onderdeel van DevTest Labs. Daarnaast kunt u aangepaste installatie kopieën van het besturings systeem of de Azure Automation status configuratie of DevTest Labs-artefacten gebruiken om de beveiligings configuratie te bepalen van het besturings systeem dat uw organisatie vereist.
 
 - [Azure Security Center aanbevelingen bewaken](../security-center/security-center-recommendations.md)
-- [Aanbevelingen voor beveiliging: een referentie gids](../security-center/recommendations-reference.md)
+- [Aanbevelingen voor beveiliging: een naslaggids](../security-center/recommendations-reference.md)
 - [Overzicht van Azure Automation status configuratie](../automation/automation-dsc-overview.md)
 - [Een VHD uploaden en gebruiken om nieuwe Windows-Vm's in azure te maken](../virtual-machines/windows/upload-generalized-managed.md)
 - [Een virtuele Linux-machine maken op basis van een aangepaste schijf met de Azure CLI](../virtual-machines/linux/upload-vhd.md)
@@ -799,7 +799,7 @@ Als u gebruikmaakt van Azure Disk Encryption, kunt u de Azure VM herstellen met 
 **Verantwoordelijkheid:** Gebruikers
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: zorg voor de bescherming van back-ups en door de klant beheerde sleutels
-**Hulp:** Wanneer u een back-up maakt van beheerde schijven met Azure Backup, worden virtuele machines op rest versleuteld met Storage Service Encryption (SSE). Azure Backup kunt ook een back-up maken van virtuele Azure-machines die zijn versleuteld met behulp van Azure Disk Encryption. Azure Disk Encryption kan worden geïntegreerd met BitLocker-versleutelings sleutels (BEKs), die worden beveiligd in een sleutel kluis als geheimen. Azure Disk Encryption is ook geïntegreerd met Azure Key Vault Key Encryption Keys (KEKs). Schakel zacht verwijderen in Key Vault in om sleutels te beschermen tegen onbedoelde of schadelijke verwijdering.
+**Hulp:** Wanneer u een back-up maakt van beheerde schijven met Azure Backup, worden virtuele machines op rest versleuteld met Storage Service Encryption (SSE). Azure Backup kunt ook een back-up maken van virtuele Azure-machines die zijn versleuteld met behulp van Azure Disk Encryption. Azure Disk Encryption kan worden geïntegreerd met BitLocker-versleutelings sleutels (BEKs), die worden beveiligd in een sleutel kluis als geheimen. Azure Disk Encryption is ook geïntegreerd met Azure Key Vault Key Encryption Keys (KEKs). Schakel Soft-Delete in Key Vault in om sleutels te beschermen tegen onbedoelde of schadelijke verwijdering.
 
 - [Voorlopig verwijderen voor Vm's](../backup/soft-delete-virtual-machines.md)
 - [Overzicht van Azure Key Vault-zacht-verwijderen](../key-vault/general/soft-delete-overview.md)

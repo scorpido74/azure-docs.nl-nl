@@ -3,12 +3,12 @@ title: Beleids definities voor gast configuratie maken van groepsbeleid basis li
 description: Meer informatie over het converteren van groepsbeleid van de Windows Server 2019-beveiligings basislijn naar een beleids definitie.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 58fe4fa3e5056192fa5febe4883a1457d130871b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: dce22885981ab01fe37fac8588899d12a5afb87d
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547765"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893370"
 ---
 # <a name="how-to-create-guest-configuration-policy-definitions-from-group-policy-baseline-for-windows"></a>Beleids definities voor gast configuratie maken van groepsbeleid basis lijn voor Windows
 
@@ -87,7 +87,7 @@ Vervolgens wordt de gedownloade server 2019-basis lijn geconverteerd naar een ga
 
 ## <a name="create-azure-policy-guest-configuration"></a>Azure Policy-gast configuratie maken
 
-De volgende stap is het publiceren van het bestand naar de Blob-opslag. 
+De volgende stap is het publiceren van het bestand naar Azure Blob Storage. 
 
 1. Het onderstaande script bevat een functie die u kunt gebruiken om deze taak te automatiseren. Opmerking: voor de opdrachten die in de functie worden gebruikt, `publish` is de `Az.Storage` module vereist.
 
@@ -145,7 +145,7 @@ De volgende stap is het publiceren van het bestand naar de Blob-opslag.
     $blob = 'Server2019Baseline.zip' 
     ```
 
-1. Gebruik de functie Publish met de toegewezen para meters voor het publiceren van het gast configuratie pakket naar open bare Blob-opslag.
+1. Gebruik de functie Publish met de toegewezen para meters voor het publiceren van het gast configuratie pakket op open bare Blob Storage.
 
 
    ```azurepowershell-interactive

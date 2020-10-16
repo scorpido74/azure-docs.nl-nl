@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 1f9f1b51ce09577bf17fa4d92273348665987848
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 9f86f7a0a7eaef7c0dc244a2e089596de3779eae
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266609"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018952"
 ---
 # <a name="publish-content-in-the-azure-portal"></a>Inhoud publiceren in de Azure Portal
 
@@ -66,14 +66,14 @@ Zie [overzicht van inhoud leveren](media-services-deliver-content-overview.md)vo
 > 
 > 
 
-Als u een verval datum van een Locator wilt bijwerken, kunt u gebruikmaken van een [rest API](/rest/api/media/operations/locator#update_a_locator) of een [.net API](https://go.microsoft.com/fwlink/?LinkID=533259). 
+Als u een verval datum van een Locator wilt bijwerken, kunt u gebruikmaken van een [rest API](/rest/api/media/operations/locator#update_a_locator) of een [.net API](/dotnet/api/microsoft.windowsazure.mediaservices.client.ilocator). 
 
 > [!NOTE]
 > Wanneer u de vervaldatum van een Shared Access Signature-locator bijwerkt, wordt de URL gewijzigd.
 
 ### <a name="to-use-the-portal-to-publish-an-asset"></a>De portal gebruiken om een asset te publiceren
 1. Selecteer uw Azure Media Services-account in [Azure Portal](https://portal.azure.com/).
-2. Selecteer **instellingen**  >  **assets**. Selecteer de asset die u wilt publiceren.
+2. Selecteer **Instellingen** > **Assets**. Selecteer de asset die u wilt publiceren.
 3. Selecteer de knop **Publiceren**.
 4. Selecteer het type locator.
 5. Selecteer **Toevoegen**.

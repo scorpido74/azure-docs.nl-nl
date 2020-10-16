@@ -3,12 +3,13 @@ title: Service Fabric service-eind punten opgeven
 description: Eindpunt resources beschrijven in een service manifest, inclusief het instellen van HTTPS-eind punten
 ms.topic: conceptual
 ms.date: 09/16/2020
-ms.openlocfilehash: c0c3c45c47447390901e5e0d60e77ab6b85a6a0d
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.custom: contperfq1
+ms.openlocfilehash: 775e554128b9828915ce7dafaf4bccf597911912
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91354756"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017587"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Resources opgeven in een service manifest
 ## <a name="overview"></a>Overzicht
@@ -220,7 +221,7 @@ Als in de ServiceManifest die u hebt opgegeven
 
 Stel dat de waarde Port1 en Protocol1 voor toepassings parameters null of leeg is. De poort wordt bepaald door ServiceFabric en het protocol is TCP.
 
-Stel dat u een verkeerde waarde opgeeft. Stel dat u voor poort een teken reeks waarde ' foo ' hebt opgegeven in plaats van een int.  De opdracht New-ServiceFabricApplication mislukt met een fout: `The override parameter with name 'ServiceEndpoint1' attribute 'Port1' in section 'ResourceOverrides' is invalid. The value specified is 'Foo' and required is 'int'.`
+Stel dat u een verkeerde waarde opgeeft. Stel dat u voor poort een teken reeks waarde ' foo ' hebt opgegeven in plaats van een int.  New-ServiceFabricApplication opdracht mislukt met een fout: `The override parameter with name 'ServiceEndpoint1' attribute 'Port1' in section 'ResourceOverrides' is invalid. The value specified is 'Foo' and required is 'int'.`
 
 ## <a name="next-steps"></a>Volgende stappen
 

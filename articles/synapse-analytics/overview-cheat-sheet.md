@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 98fc8b23369f961ca023832430d47c8868e42158
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4dd83bdd68773ac594c71767b9e316bdd05a0ae7
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91260662"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91620270"
 ---
 # <a name="azure-synapse-analytics-cheat-sheet"></a>Cheatsheet voor Azure Synapse Analytics
 
@@ -34,14 +34,18 @@ Met een werkruimte kunt u analyses uitvoeren met SQL en Apache Spark. Resources 
 ## <a name="apache-spark-for-synapse"></a>Apache Spark for Synapse
 Als u Spark-analyses wilt gebruiken, maakt en gebruikt u **Spark-pools** in uw Synapse-werkruimte.
 
-## <a name="terminology"></a>Terminologie
+## <a name="sql-terminology"></a>SQL-terminologie
+| Termijn                         | Definitie      |
+|:---                                 |:---                 |
+| **SQL-aanvraag**  |   Een bewerking zoals een query die wordt uitgevoerd via een SQL-pool of SQL on-demand. |
+
+## <a name="spark-terminology"></a>Spark-terminologie
 | Termijn                         | Definitie      |
 |:---                                 |:---                 |
 |**Apache Spark for Synapse** | Spark-runtime die wordt gebruikt in een Spark-pool. De huidige versie die wordt ondersteund is Spark 2.4 met python 3.6.1, scala 2.11.12, .NET-ondersteuning voor Apache Spark 0.5 en Delta Lake 0.3.  | 
 | **Apache Spark-pool**  | 0-to-N in Spark ingerichte resources en de bijbehorende databases kunnen in een werkruimte worden geïmplementeerd. Een Spark-pool kan automatisch worden onderbroken, hervat en geschaald.  |
 | **Spark-toepassing**  |   Het bestaat uit een stuurprogrammaproces en een reeks uitvoeringsprocedures. Een Spark-toepassing wordt uitgevoerd in een Spark-pool.            |
 | **Spark-sessie**  |   Uniform invoerpunt van een Spark-toepassing. Een sessie biedt een manier om te communiceren met de verschillende functies van Spark en met een kleiner aantal constructs. Als u een notebook wilt uitvoeren, moet u een sessie maken. Een sessie kan worden geconfigureerd om te worden uitgevoerd op een specifiek aantal uitvoerders van een specifiek formaat. De standaardconfiguratie voor een notebook-sessie is om op twee middelgrote uitvoerders te worden uitgevoerd. |
-| **SQL-aanvraag**  |   Een bewerking zoals een query die wordt uitgevoerd via een SQL-pool of SQL on-demand. |
 |**Gegevensintegratie**| Biedt de mogelijkheid om gegevens op te nemen in verschillende bronnen en activiteiten te organiseren die worden uitgevoerd binnen of buiten een werkruimte.| 
 |**Artefacten**| Een concept dat alle objecten omvat die een gebruiker nodig heeft om gegevensbronnen te beheren, te ontwikkelen, te organiseren en te visualiseren.|
 |**Notebook**| Interactieve en reactieve interface voor gegevenswetenschap en engineering die ondersteuning biedt voor Scala, PySpark, C# en SparkSQL. |

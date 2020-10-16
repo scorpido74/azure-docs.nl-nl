@@ -15,10 +15,10 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 00b25f1b506228d2d80aecae3845467759a4bc4f
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88165036"
 ---
 # <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>Wachtwoord kluis voor eenmalige aanmelding met toepassings proxy
@@ -48,7 +48,7 @@ U moet uw app al hebben gepubliceerd en getest met toepassings proxy. Als dat ni
 1. Selecteer **Opslaan**.
 1. Selecteer **toepassings proxy**. 
 1. Wijzig het **type verificatie vooraf** in **Azure Active Directory** en selecteer **Opslaan**. 
-1. Selecteer **gebruikers en groepen**.
+1. Selecteer **Users and Groups** (Gebruikers en groepen).
 1. Gebruikers toewijzen aan de toepassing met de optie **gebruiker toevoegen**. 
 1. Als u de referenties voor een gebruiker vooraf wilt definiëren, schakelt u het selectie vakje voor de gebruikers naam in en selecteert u **referenties bijwerken**.
 1. Selecteer **Azure Active Directory**  >  **App registrations**  >  **alle toepassingen**app-registraties.

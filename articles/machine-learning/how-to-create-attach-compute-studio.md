@@ -12,10 +12,10 @@ ms.date: 08/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
 ms.openlocfilehash: c22593fbd1e1653efa98c760d5bbb73b03761059
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91708392"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>Reken doelen voor model training en implementatie in Azure Machine Learning Studio maken
@@ -24,7 +24,7 @@ In dit artikel leert u hoe u Compute-doelen kunt maken en beheren in azure machi
 
 * Azure Machine Learning Learning SDK of CLI-extensie voor Azure Machine Learning
   * [Rekenproces](how-to-create-manage-compute-instance.md)
-  * [Reken cluster](how-to-create-attach-compute-cluster.md)
+  * [Rekencluster](how-to-create-attach-compute-cluster.md)
   * [Azure Kubernetes service-cluster](how-to-create-attach-kubernetes.md)
   * [Andere reken bronnen](how-to-attach-compute-targets.md)
 * De [VS code-extensie](how-to-manage-resources-vscode.md#compute-clusters) voor Azure machine learning.

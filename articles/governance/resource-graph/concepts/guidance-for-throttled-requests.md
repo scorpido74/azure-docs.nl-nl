@@ -1,15 +1,15 @@
 ---
 title: Richtlijnen voor vertraagde aanvragen
 description: Meer informatie over Group, sprei ding, pagineren en query's parallel om te voor komen dat aanvragen worden beperkt door Azure resource Graph.
-ms.date: 08/03/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c8576fe38433026a28a3fb09a03332b5dd756bab
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4a8ba991d13b9be221e67f2ff1e393fb01f8a2d4
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006003"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056171"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Richt lijnen voor vertraagde aanvragen in azure resource Graph
 
@@ -118,7 +118,7 @@ Het groeperen van query's op het abonnement, de resource groep of de afzonderlij
 
 ## <a name="staggering-queries"></a>Query's spreiden
 
-Vanwege de manier waarop het beperken van beperkingen wordt afgedwongen, wordt aangeraden query's te spreiden. Dat wil zeggen, in plaats van 60 query's tegelijkertijd te verzenden naar vier 5-Second Windows-vensters:
+Vanwege de manier waarop het beperken van beperkingen wordt afgedwongen, wordt aangeraden query's te spreiden. Dat wil zeggen, in plaats van 60 query's tegelijkertijd te verzenden naar 4 5-Second-Vensters:
 
 - Niet-gespreide query planning
 
@@ -132,7 +132,7 @@ Vanwege de manier waarop het beperken van beperkingen wordt afgedwongen, wordt a
   |---------------------|-----|------|-------|-------|
   | Tijds interval (sec.) | 0-5 | 5-10 | 10-15 | 15-20 |
 
-Hieronder ziet u een voor beeld van het respecteren van beperkings koppen bij het uitvoeren van query's in azure resource Graph:
+Hier volgt een voor beeld van het respecteren van beperkings koppen bij het uitvoeren van een query op Azure resource Graph:
 
 ```csharp
 while (/* Need to query more? */)
@@ -156,7 +156,7 @@ while (/* Need to query more? */)
 
 ### <a name="query-in-parallel"></a>Parallelle query
 
-Hoewel groepering wordt aanbevolen voor parallel Lise ring, zijn er momenten waarop query's niet eenvoudig kunnen worden gegroepeerd. In dergelijke gevallen kunt u een query uitvoeren op Azure resource Graph door meerdere query's op parallelle wijze te verzenden. Hieronder ziet u een voor beeld van hoe u _uitstel_ op basis van het beperken van headers in dergelijke scenario's:
+Hoewel groepering wordt aanbevolen voor parallel Lise ring, zijn er momenten waarop query's niet eenvoudig kunnen worden gegroepeerd. In dergelijke gevallen kunt u een query uitvoeren op Azure resource Graph door meerdere query's op parallelle wijze te verzenden. Hier volgt een voor beeld van hoe u _uitstel_ op basis van het beperken van headers in dergelijke scenario's:
 
 ```csharp
 IEnumerable<IEnumerable<string>> queryGroup = /* Groups of queries  */
@@ -219,7 +219,7 @@ Omdat Azure resource Graph Maxi maal 1000 vermeldingen in één query antwoord r
 
 - Azure CLI/Azure PowerShell
 
-  Wanneer u Azure CLI of Azure PowerShell gebruikt, worden query's naar Azure resource Graph automatisch gepagineerd om Maxi maal 5000 vermeldingen op te halen. De query resultaten retour neren een gecombineerde lijst met vermeldingen van alle gepagineerde aanroepen. In dit geval, afhankelijk van het aantal items in het query resultaat, kan één gepagineerde query meer dan één query quotum verbruiken. In het onderstaande voor beeld kan één uitvoering van de query bijvoorbeeld tot vijf query quota verbruiken:
+  Wanneer u Azure CLI of Azure PowerShell gebruikt, worden query's naar Azure resource Graph automatisch gepagineerd om Maxi maal 5000 vermeldingen op te halen. De query resultaten retour neren een gecombineerde lijst met vermeldingen van alle gepagineerde aanroepen. In dit geval, afhankelijk van het aantal items in het query resultaat, kan één gepagineerde query meer dan één query quotum verbruiken. In de volgende voor beelden kan één uitvoering van de query bijvoorbeeld tot vijf query quota verbruiken:
 
   ```azurecli-interactive
   az graph query -q 'Resources | project id, name, type' --first 5000

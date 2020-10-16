@@ -11,10 +11,10 @@ ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
 ms.openlocfilehash: f0c923bcb7df930ed4b1380d487ededc6c160844
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91743740"
 ---
 # <a name="train-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Scikit trainen-modellen op schaal leren met Azure Machine Learning
@@ -99,7 +99,7 @@ Zie [software omgevingen maken en gebruiken in azure machine learning](how-to-us
 ## <a name="configure-and-submit-your-training-run"></a>Uw trainings uitvoering configureren en verzenden
 
 ### <a name="create-a-scriptrunconfig"></a>Een ScriptRunConfig maken
-Maak een ScriptRunConfig-object om de configuratie gegevens van uw trainings taak op te geven, met inbegrip van het trainings script, de omgeving die u wilt gebruiken en het reken doel om uit te voeren.
+Maak een ScriptRunConfig-object om de configuratiegegevens van uw trainingstaak op te geven, inclusief het trainingsscript, de omgeving die u wilt gebruiken en het rekendoel om uit te voeren.
 Eventuele argumenten voor uw trainings script worden door gegeven via de opdracht regel indien opgegeven in de `arguments` para meter.
 
 Met de volgende code wordt een ScriptRunConfig-object geconfigureerd voor het verzenden van uw taak voor uitvoering op uw lokale computer.

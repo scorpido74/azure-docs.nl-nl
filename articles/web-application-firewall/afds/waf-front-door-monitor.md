@@ -8,10 +8,10 @@ services: web-application-firewall
 ms.date: 06/09/2020
 ms.author: victorh
 ms.openlocfilehash: 596374d4f3f188e08a10bd25b36b178cc79a6e57
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84808954"
 ---
 # <a name="azure-web-application-firewall-monitoring-and-logging"></a>Bewaking en logboek registratie van de firewall van Azure Web Application
@@ -24,7 +24,7 @@ WAF met-ingang-logboek is geïntegreerd met [Azure monitor](../../azure-monitor/
 
 Ga vanuit Azure Portal naar het resource type voor deur. Op het tabblad **bewakings** / **gegevens** aan de linkerkant kunt u **WebApplicationFirewallRequestCount** toevoegen om het aantal aanvragen bij te houden dat overeenkomt met WAF-regels. Aangepaste filters kunnen worden gemaakt op basis van actie typen en regel namen.
 
-:::image type="content" source="../media/waf-frontdoor-monitor/waf-frontdoor-metrics.png" alt-text="WAFMetrics":::
+:::image type="content" source="../media/waf-frontdoor-monitor/waf-frontdoor-metrics.png" alt-text="WAFMetrics ":::
 
 ## <a name="logs-and-diagnostics"></a>Logboeken en diagnostische gegevens
 
@@ -36,7 +36,7 @@ WAF met de voor deur biedt gedetailleerde rapportage over elke bedreiging die wo
 
 | Eigenschap  | Beschrijving |
 | ------------- | ------------- |
-|Bewerking|Actie uitgevoerd voor de aanvraag|
+|Actie|Actie uitgevoerd voor de aanvraag|
 | ClientIp | Het IP-adres van de client die de aanvraag heeft ingediend. Als er een X-doorgestuurd is voor de header in de aanvraag, wordt het client-IP-adres uit het veld header opgehaald. |
 | ClientPort | De IP-poort van de client die de aanvraag heeft ingediend. |
 | Details|Aanvullende details over de overeenkomende aanvraag |

@@ -12,10 +12,10 @@ ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 953653a758577ed3d48ca2d81403b4cb363ea294
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91259065"
 ---
 # <a name="integrating-twilio-verify-app-with-azure-active-directory-b2c"></a>De Twilio-verificatie-app integreren met Azure Active Directory B2C
@@ -45,7 +45,7 @@ De volgende onderdelen vormen een Twilio-oplossing:
 | Stap | Beschrijving |
 |------|------|
 | 1     | De gebruiker start het aanmelden of meldt zich aan bij de PSD2-demo-app. De gebruiker wordt geverifieerd via het Azure AD B2C gecombineerde aanmeldings-en registratie beleid. Er wordt een token geretourneerd naar de toepassing. Bij het aanmelden wordt het telefoon nummer van de gebruiker geverifieerd met behulp van SMS/Phone en geregistreerd op hun Azure AD B2C-account.     |
-| 2     | De gebruiker initieert een trans actie met een hoog risico, zoals een overdracht van $50,00. Het huidige toegangs token van de gebruiker wordt geëvalueerd voor de PolicyId om te bepalen of de gebruiker al is geverifieerd met behulp van een op stappen aangepast beleid.     |
+| 2     | De gebruiker initieert een trans actie met een hoog risico, zoals een overdracht van $50,00. Het huidige toegangs token van de gebruiker wordt geëvalueerd voor de PolicyId om te bepalen of de gebruiker al is geverifieerd via een Step-Up aangepast beleid.     |
 | 3     | De toepassing registreert de transactie waarde en de begunstigde, $50,00 en John Splinter en genereert een ondertekend token. Dit token heet een `id_token_hint` en bevat de claim `amount:$500, payee:john doe` . De `id_token_hint` wordt samen met de aanvraag verzonden naar het aangepaste beleid Azure AD B2C, dat is geïntegreerd met Twilio.     |
 | 4     | Azure AD B2C controleert de hand tekening van de id_token_hint door het Connect- `/.well-known` eind punt toepassingen OpenID Connect te controleren. Na het verifiëren worden de claims van dit token geëxtraheerd, met name de `amount` en `payee` . De gebruiker ziet een pagina om te controleren of hun mobiele telefoon nummer via SMS-bericht is.     |
 | 5     | De gebruiker vraagt om zijn telefoon nummer te verifiëren via SMS-bericht en Azure AD B2C maakt een REST API aanvraag voor het Twilio van het API-eind punt. Ook worden de trans actie `amount` en `payee` als onderdeel van het PSD2-proces voor het genereren van de eenmalige wachtwoord code (OTP) verzonden. Twilio verzendt een SMS-bericht naar het geregistreerde telefoon nummer van de gebruiker.     |

@@ -11,14 +11,14 @@ ms.topic: how-to
 ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
-ms.openlocfilehash: fee727e16909355fe614b875ff61d4d38f7a98ce
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 516989e37e8c9eb0c4ab35ea6add4f5b6526ee6d
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91804332"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893455"
 ---
-# <a name="manage-app-consent-policies"></a>Toestemming beleid voor apps beheren
+# <a name="manage-app-consent-policies"></a>Beleid voor app-toestemming beheren
 
 Met Azure AD Power shell kunt u toestemming beleid voor apps weer geven en beheren.
 
@@ -117,10 +117,7 @@ Zodra het beleid voor de toestemming van de app is gemaakt, kunt u toestemming v
 1. Hieronder ziet u hoe u een aangepast beleid voor app-toestemming kunt verwijderen. **Deze actie kan niet ongedaan worden gemaakt.**
 
    ```powershell
-   New-AzureADMSPermissionGrantPolicy `
-       -Id "my-custom-policy" `
-       -DisplayName "My first custom consent policy" `
-       -Description "This is a sample custom app consent policy."
+   Remove-AzureADMSPermissionGrantPolicy -Id "my-custom-policy"
    ```
 
 > [!WARNING]

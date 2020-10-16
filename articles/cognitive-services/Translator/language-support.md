@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
 ms.openlocfilehash: a913756c0348622ec0d885c50b55d5cecf6dd91d
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91568094"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Ondersteuning van talen en regio's voor tekst-en spraak omzetting
@@ -39,13 +39,13 @@ Translator ondersteunt de volgende talen voor tekst vertaling.
 |Afrikaans| `af`|
 |Arabisch|    `ar`    |
 |Assamees|  `as`    |
-|Bengalese|    `bn`    |
+|Bengaals|    `bn`    |
 |Bosnisch (Latijns)|   `bs`    |
 |Bulgaars| `bg`    |
 |Kantonees (traditioneel)|   `yue`|
 |Catalaans|   `ca`    |
-|Vereenvoudigd Chinees|    `zh-Hans`|
-|Traditioneel Chinees|   `zh-Hant`       |
+|Chinees (vereenvoudigd)|    `zh-Hans`|
+|Chinees (traditioneel)|   `zh-Hant`       |
 |Kroatisch|  `hr`    |
 |Tsjechisch| `cs`    |
 |Dari|  `prs`   |
@@ -53,7 +53,7 @@ Translator ondersteunt de volgende talen voor tekst vertaling.
 |Nederlands| `nl`|
 |Engels|   `en`    |
 |Ests|  `et`    |
-|Fijian|    `fj`    |
+|Fijisch|    `fj`    |
 |Filipino|  `fil`   |
 |Fins|   `fi`    |
 |Frans|    `fr`    |
@@ -79,12 +79,12 @@ Translator ondersteunt de volgende talen voor tekst vertaling.
 |Koerdisch (noordelijk) |`kmr`  |
 |Lets|   `lv`    |
 |Litouws|    `lt`    |
-|Malagassische|  `mg`    |
+|Malagassisch|  `mg`    |
 |Maleisisch| `ms`        |
-|Malajalam| `ml` |
+|Malayalam| `ml` |
 |Maltees|   `mt`    |
 |Maori| `mi`  |
-|Marathi| `mr`  |
+|Mahrati| `mr`  |
 |Noors| `nb`    |
 |Odia|  `or`    |
 |Pashto|    `ps`    |
@@ -96,7 +96,7 @@ Translator ondersteunt de volgende talen voor tekst vertaling.
 |Queretaro Otomi|   `otq`   |
 |Roemeens|  `ro`    |
 |Russisch|   `ru`    |
-|Samoan|    `sm`    |
+|Samoaans|    `sm`    |
 |Servisch (Cyrillisch)|    `sr-Cyrl`|
 |Servisch (Latijns)|   `sr-Latn`       |
 |Slowaaks|    `sk`    |
@@ -104,17 +104,17 @@ Translator ondersteunt de volgende talen voor tekst vertaling.
 |Spaans|   `es`    |
 |Swahili|   `sw`    |
 |Zweeds|   `sv`    |
-|Tahitian|  `ty`    |
+|Tahitiaans|  `ty`    |
 |Tamil| `ta`    |
 |Telugu|    `te`    |
 |Thai|  `th`    |
-|Tongaanse|    `to`    |
+|Tongaans|    `to`    |
 |Turks|   `tr`        |
 |Oekraïens| `uk`    |
 |Urdu|  `ur`    |
 |Vietnamees|    `vi`    |
 |Welsh| `cy`    |
-|Yucatec Maya|  `yua`   |
+|Yucateeks Maya|  `yua`   |
 
 > [!NOTE]
 > Taal code `pt` wordt standaard ingesteld op `pt-br` Portugees (Brazilië).
@@ -131,8 +131,8 @@ Translator detecteert de volgende talen voor vertaal-en vele.
 |Arabisch|    `ar`    |
 |Bulgaars| `bg`    |
 |Catalaans|   `ca`    |
-|Vereenvoudigd Chinees|    `zh-Hans`|
-|Traditioneel Chinees|   `zh-Hant`       |
+|Chinees (vereenvoudigd)|    `zh-Hans`|
+|Chinees (traditioneel)|   `zh-Hant`       |
 |Kroatisch|  `hr`    |
 |Tsjechisch| `cs`    |
 |Deens|    `da`        |
@@ -175,14 +175,14 @@ Translator detecteert de volgende talen voor vertaal-en vele.
 |Spaans|   `es`    |
 |Swahili|   `sw`    |
 |Zweeds|   `sv`    |
-|Tahitian|  `ty`    |
+|Tahitiaans|  `ty`    |
 |Thai|  `th`    |
 |Turks|   `tr`        |
 |Oekraïens| `uk`    |
 |Urdu|  `ur`    |
 |Vietnamees|    `vi`    |
 |Welsh| `cy`    |
-|Yucatec Maya|  `yua`   |
+|Yucateeks Maya|  `yua`   |
 
 ### <a name="transliterate"></a>Transcriberen
 
@@ -194,7 +194,7 @@ De methode transtranscrib ondersteunt de volgende talen. In de ' aan/van ', ' <-
 | Taal    | Taalcode | Script | Naar/van | Script|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | Arabisch | `ar` | Arabisch `Arab` | <--> | Latijnse `Latn` |
-| Bengalese  | `bn` | Bengaals `Beng` | <--> | Latijnse `Latn` |
+| Bengaals  | `bn` | Bengaals `Beng` | <--> | Latijnse `Latn` |
 | Chinees (Vereenvoudigd) | `zh-Hans` | Vereenvoudigd Chinees `Hans`| <--> | Latijnse `Latn` |
 | Chinees (Vereenvoudigd) | `zh-Hans` | Vereenvoudigd Chinees `Hans`| <--> | Traditioneel Chinees `Hant`|
 | Chinees (Traditioneel) | `zh-Hant` | Traditioneel Chinees `Hant`| <--> | Latijnse `Latn` |
@@ -204,8 +204,8 @@ De methode transtranscrib ondersteunt de volgende talen. In de ' aan/van ', ' <-
 | Hindi | `hi` | Devanagari `Deva` | <--> | Latijnse `Latn` |
 | Japans | `ja` | Japans `Jpan` | <--> | Latijnse `Latn` |
 | Kannada | `kn` | Kannada `Knda` | <--> | Latijnse `Latn` |
-| Malajalam | `ml` | Malajalam `Mlym` | <--> | Latijnse `Latn` |
-| Marathi | `mr` | Devanagari `Deva` | <--> | Latijnse `Latn` |
+| Malayalam | `ml` | Malajalam `Mlym` | <--> | Latijnse `Latn` |
+| Mahrati | `mr` | Devanagari `Deva` | <--> | Latijnse `Latn` |
 | Odia | `or` | Odia `Orya` | <--> | Latijnse `Latn` |
 | Punjabi | `pa` | Gurmukhi `Guru`  | <--> | Latijnse `Latn`  |
 | Servisch (Cyrillisch) | `sr-Cyrl` | Cyrillisch `Cyrl`  | --> | Latijnse `Latn` |
@@ -224,11 +224,11 @@ Referentie documentatie weer geven voor de bewerkingen voor het [opzoeken van wo
 |:----------- |:-------------:|
 | Afrikaans      | `af`          |
 | Arabisch       | `ar`          |
-| Bengalese      | `bn`          |
+| Bengaals      | `bn`          |
 | Bosnisch (Latijns)      | `bs`          |
 | Bulgaars      | `bg`          |
 | Catalaans      | `ca`          |
-| Vereenvoudigd Chinees      | `zh-Hans`          |
+| Chinees (vereenvoudigd)      | `zh-Hans`          |
 | Kroatisch      | `hr`          |
 | Tsjechisch      | `cs`          |
 | Deens      | `da`          |
@@ -279,7 +279,7 @@ U kunt een lijst met ondersteunde talen voor Translator ophalen met behulp van d
 
 [Documentatie voor het bewerkings overzicht van talen weer geven](reference/v3-0-languages.md)
 
-## <a name="customization"></a>Aanpassing
+## <a name="customization"></a>Aanpassen
 
 De volgende talen zijn beschikbaar voor aanpassing in of vanuit het Engels met [aangepaste vertaler](https://aka.ms/CustomTranslator).
 
@@ -287,19 +287,19 @@ De volgende talen zijn beschikbaar voor aanpassing in of vanuit het Engels met [
 |:----------- |:-------------:|
 |Afrikaans| `af`|
 | Arabisch       | `ar`          |
-| Bengalese      | `bn`          |
+| Bengaals      | `bn`          |
 | Bosnisch (Latijns)      | `bs`          |
 | Bulgaars      | `bg`          |
 |Catalaans|   `ca`    |
-| Vereenvoudigd Chinees      | `zh-Hans`          |
-|Traditioneel Chinees|   `zh-Hant`   |
+| Chinees (vereenvoudigd)      | `zh-Hans`          |
+|Chinees (traditioneel)|   `zh-Hant`   |
 | Kroatisch      | `hr`          |
 | Tsjechisch      | `cs`          |
 | Deens      | `da`          |
 | Nederlands      | `nl`          |
 | Engels    | `en`     |
 | Ests      | `et`          |
-|Fijian|    `fj`    |
+|Fijisch|    `fj`    |
 |Filipino|  `fil`   |
 | Fins      | `fi`          |
 | Frans      | `fr`          |
@@ -318,11 +318,11 @@ De volgende talen zijn beschikbaar voor aanpassing in of vanuit het Engels met [
 | Koreaans      | `ko`          |
 | Lets      | `lv`          |
 | Litouws      | `lt`          |
-| Malagassische| `mg`    |
+| Malagassisch| `mg`    |
 | Maleisisch|    `ms`        |
 |Maltees|   `mt`    |
 | Maori| `mi`  |
-| Marathi| `mr`  |
+| Mahrati| `mr`  |
 | Noors      | `nb`          |
 | Perzisch      | `fa`          |
 | Pools      | `pl`          |
@@ -330,16 +330,16 @@ De volgende talen zijn beschikbaar voor aanpassing in of vanuit het Engels met [
 | Punjabi|`pa`|
 | Roemeens      | `ro`          |
 | Russisch      | `ru`          |
-| Samoan|   `sm`    |
+| Samoaans|   `sm`    |
 | Servisch (Latijns)      | `sr-Latn`          |
 | Slowaaks     | `sk`          |
 | Sloveens      | `sl`          |
 | Spaans      | `es`          |
 | Swahili|  `sw`    |
 | Zweeds      | `sv`          |
-|Tahitian|  `ty`    |
+|Tahitiaans|  `ty`    |
 | Thai      | `th`          |
-|Tongaanse|    `to`    |
+|Tongaans|    `to`    |
 | Turks      | `tr`          |
 | Oekraïens      | `uk`          |
 | Urdu| `ur`    |
@@ -357,8 +357,8 @@ Converteer spraak naar tekst om om te zetten naar de tekst taal van uw keuze. Sp
 |Arabisch|
 |Kantonees (traditioneel)|
 |Catalaans|
-|Vereenvoudigd Chinees|
-|Traditioneel Chinees|
+|Chinees (vereenvoudigd)|
+|Chinees (traditioneel)|
 |Deens|
 |Nederlands|
 |Engels|
@@ -370,7 +370,7 @@ Converteer spraak naar tekst om om te zetten naar de tekst taal van uw keuze. Sp
 |Italiaans|
 |Japans|
 |Koreaans|
-|Marathi|
+|Mahrati|
 |Noors|
 |Pools|
 |Portugees (Brazilië)|
@@ -392,8 +392,8 @@ Zet tekst om in spraak. Tekst-naar-spraak wordt gebruikt om hoorbare uitvoer van
 |Bulgaars|
 |Kantonees (traditioneel)|
 |Catalaans|
-|Vereenvoudigd Chinees|
-|Traditioneel Chinees|
+|Chinees (vereenvoudigd)|
+|Chinees (traditioneel)|
 |Kroatisch|
 |Tsjechisch|
 |Deens|

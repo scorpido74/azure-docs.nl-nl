@@ -4,10 +4,10 @@ description: Dit artikel bevat informatie over het gebruik van de portal Azure S
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: e5e97c6860c2cc01048f4f7caf9f40f9e07592d0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91295597"
 ---
 # <a name="use-service-bus-explorer-to-perform-data-operations-on-service-bus-preview"></a>Service Bus Explorer gebruiken om gegevens bewerkingen op Service Bus uit te voeren (preview)
@@ -51,7 +51,7 @@ Nadat u de **' wacht rijen** ' of **' onderwerpen '** hebt geselecteerd, kiest u
 
 Selecteer de **Service Bus Explorer (preview)** in het navigatie menu links
 
-:::image type="content" source="./media/service-bus-explorer/left-navigation-menu-selected.png" alt-text="Menu Linkernavigatie van SB Explorer":::
+:::image type="content" source="./media/service-bus-explorer/left-navigation-menu-selected.png" alt-text="Entiteit selecteren":::
 
 ### <a name="sending-a-message-to-a-queue-or-topic"></a>Een bericht verzenden naar een wachtrij of onderwerp
 
@@ -66,17 +66,17 @@ Hier kunt u een bericht opstellen:
 
 Zodra het bericht is samengesteld, klikt u op verzenden.
 
-:::image type="content" source="./media/service-bus-explorer/send-experience.png" alt-text="Bericht opstellen":::
+:::image type="content" source="./media/service-bus-explorer/send-experience.png" alt-text="Entiteit selecteren":::
 
 Wanneer de verzend bewerking is voltooid, 
 
 * Bij verzen ding naar de wachtrij worden de tellers voor metrische gegevens van **actieve berichten** verhoogd.
 
-    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="QueueAfterSendMetrics":::
+    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="Entiteit selecteren":::
 
 * Bij verzen ding naar het onderwerp worden de tellers voor metrische gegevens van **actieve berichten** verhoogd op het abonnement waarnaar het bericht is doorgestuurd.
 
-    :::image type="content" source="./media/service-bus-explorer/topic-after-send-metrics.png" alt-text="TopicAfterSendMetrics":::
+    :::image type="content" source="./media/service-bus-explorer/topic-after-send-metrics.png" alt-text="Entiteit selecteren":::
 
 ### <a name="receiving-a-message-from-a-queue"></a>Een bericht ontvangen van een wachtrij
 
@@ -93,18 +93,18 @@ Een bericht van een wachtrij (of de bijbehorende deadletter subwachtrij) ontvang
 1. Klik op het tabblad ***ontvangen*** in de service bus Explorer.
 2. Controleer de metrische gegevens om te zien of er **actieve berichten** of **onbestelbare berichten** worden ontvangen.
 
-    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="QueueAfterSendMetrics":::
+    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="Entiteit selecteren":::
 
 3. Kiezen tussen de ***wachtrij*** of de ***Deadletter*** -subwachtrij.
 
-    :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="QueueOrDeadletter":::
+    :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="Entiteit selecteren":::
 
 4. Klik op de knop ***ontvangen*** , gevolgd door ***Ja*** om de bewerking ' ontvangen en verwijderen ' te bevestigen.
 
 
 Wanneer de ontvangst bewerking is gelukt, worden de gegevens van het bericht als hieronder weer gegeven in het raster. U kunt het bericht selecteren in het raster om de details ervan weer te geven.
 
-:::image type="content" source="./media/service-bus-explorer/receive-message-from-queue-2.png" alt-text="Scherm opname van het venster wacht rijen in de Azure Service Bus Explorer met bericht details die worden weer gegeven voor een actief bericht dat in de wachtrij is geselecteerd.":::
+:::image type="content" source="./media/service-bus-explorer/receive-message-from-queue-2.png" alt-text="Entiteit selecteren":::
 
 
 ### <a name="peeking-a-message-from-a-queue"></a>Een bericht uit een wachtrij bekijken
@@ -113,21 +113,21 @@ Met de functie Peek kunt u de Service Bus Explorer gebruiken om de belangrijkste
 
 1. Als u het bericht in een wachtrij wilt bekijken, klikt u op het tabblad ***Peek*** op de service bus Explorer.
 
-    :::image type="content" source="./media/service-bus-explorer/peek-tab-selected.png" alt-text="PeekTab":::
+    :::image type="content" source="./media/service-bus-explorer/peek-tab-selected.png" alt-text="Entiteit selecteren":::
 
 2. Controleer de metrische gegevens om te zien of er **actieve berichten** of **onbestelbare berichten** moeten worden weer gegeven.
 
-    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="QueueAfterSendMetrics":::
+    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="Entiteit selecteren":::
 
 3. Selecteer vervolgens tussen de ***wachtrij*** of de ***Deadletter*** -subwachtrij.
 
-    :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="QueueOrDeadletter":::
+    :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="Entiteit selecteren":::
 
 4. Klik op de knop ***Peek*** . 
 
 Zodra de Peek-bewerking is voltooid, worden Maxi maal 32 berichten weer gegeven in het raster. Als u de details van een bepaald bericht wilt weer geven, selecteert u het in het raster. 
 
-:::image type="content" source="./media/service-bus-explorer/peek-message-from-queue-2.png" alt-text="PeekMessageFromQueue":::
+:::image type="content" source="./media/service-bus-explorer/peek-message-from-queue-2.png" alt-text="Entiteit selecteren":::
 
 > [!NOTE]
 >
@@ -146,17 +146,17 @@ Net als bij een wachtrij kan de ***Receive*** -bewerking worden uitgevoerd op ee
 
 1. Klik op het tabblad ***ontvangen*** en selecteer het specifieke ***abonnement*** in de kiezer voor vervolg keuzelijst.
 
-    :::image type="content" source="./media/service-bus-explorer/receive-subscription-tab-selected.png" alt-text="ReceiveTabSelected":::
+    :::image type="content" source="./media/service-bus-explorer/receive-subscription-tab-selected.png" alt-text="Entiteit selecteren":::
 
 2. Kiezen tussen het ***abonnement*** of de ***DeadLetter*** -subentiteit.
 
-    :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="SubscriptionOrDeadletter":::
+    :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="Entiteit selecteren":::
 
 3. Klik op de knop ***ontvangen*** , gevolgd door ***Ja*** om de bewerking ' ontvangen en verwijderen ' te bevestigen.
 
 Wanneer de ontvangst bewerking is gelukt, wordt het ontvangen bericht als volgt weer gegeven in het raster. Klik op het bericht om de details van het bericht weer te geven.
 
-:::image type="content" source="./media/service-bus-explorer/receive-message-from-subscription.png" alt-text="Scherm afbeelding van het tabblad ontvangen in de Azure Service Bus Explorer met de bericht gegevens die worden weer gegeven voor een actief bericht dat is ontvangen.":::
+:::image type="content" source="./media/service-bus-explorer/receive-message-from-subscription.png" alt-text="Entiteit selecteren":::
 
 ### <a name="peeking-a-message-from-a-subscription"></a>Een bericht van een abonnement bekijken
 
@@ -164,17 +164,17 @@ Als u alleen door de berichten in een abonnement of de deadletter-subentiteit wi
 
 1. Klik op het tabblad ***Peek*** en selecteer het specifieke ***abonnement*** in de kiezer voor de vervolg keuzelijst.
 
-    :::image type="content" source="./media/service-bus-explorer/peek-subscription-tab-selected.png" alt-text="PeekTabSelected":::
+    :::image type="content" source="./media/service-bus-explorer/peek-subscription-tab-selected.png" alt-text="Entiteit selecteren":::
 
 2. Kiezen tussen het ***abonnement*** of de ***DeadLetter*** -subentiteit.
 
-    :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="SubscriptionOrDeadletter":::
+    :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="Entiteit selecteren":::
 
 3. Klik op de knop ***Peek*** .
 
 Zodra de Peek-bewerking is voltooid, worden Maxi maal 32 berichten weer gegeven in het raster. Als u de details van een bepaald bericht wilt weer geven, selecteert u het in het raster. 
 
-:::image type="content" source="./media/service-bus-explorer/peek-message-from-subscription.png" alt-text="PeekMessageFromSubscription":::
+:::image type="content" source="./media/service-bus-explorer/peek-message-from-subscription.png" alt-text="Entiteit selecteren":::
 
 > [!NOTE]
 >

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
 ms.openlocfilehash: 53967ab0bec9488691ff60cdabb8fedbb6b9730e
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87386704"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Ondersteunings matrix voor herstel na nood gevallen van on-premises virtuele Hyper-V-machines naar Azure
@@ -181,7 +181,7 @@ De kluis verplaatsen tussen resource groepen<br/><br/> Binnen en tussen abonneme
 Opslag, netwerk, Azure-Vm's verplaatsen tussen resource groepen<br/><br/> Binnen en tussen abonnementen | Nee | Nee
 
 > [!NOTE]
-> Wanneer u Hyper-Vm's van on-premises repliceert naar Azure, kunt u naar slechts één AD-Tenant repliceren vanaf één specifieke omgeving-Hyper-V-site of Hyper-V met VMM, indien van toepassing.
+> Bij het repliceren van Hyper-VMs van on-premises naar Azure, kunt u naar slechts één AD-Tenant repliceren vanaf één specifieke omgeving-Hyper-V-site of Hyper-V met VMM, indien van toepassing.
 
 
 ## <a name="provider-and-agent"></a>Provider en agent

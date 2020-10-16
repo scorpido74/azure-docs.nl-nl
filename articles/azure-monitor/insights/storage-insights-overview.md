@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: 6d6754594a321d297d983f9bd7e90ce074857919
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: c030c1548a931bc749ad799a5aa88813c35d19cd
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961972"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91997027"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>Uw opslag service controleren met Azure Monitor voor opslag
 
@@ -31,7 +31,7 @@ Gecombineerd IT-levert:
 
 * **Aanpasbaar** waar u kunt wijzigen welke metrische gegevens u wilt zien, wijzigen of instellen van drempel waarden die worden uitgelijnd met uw limieten en opslaan als uw eigen werkmap. Grafieken in de werkmap kunnen worden vastgemaakt aan het dash board van Azure.  
 
-Voor deze functie hoeft u niets in te scha kelen of te configureren. de metrische opslag gegevens van uw opslag accounts worden standaard verzameld. Als u niet bekend bent met metrische gegevens die beschikbaar zijn op Azure Storage, kunt u de beschrijving en definitie in Azure Storage metrieken bekijken door de [metrische gegevens voor Azure Storage](../../storage/common/monitor-storage.md)te controleren.
+Voor deze functie hoeft u niets in te scha kelen of te configureren. de metrische opslag gegevens van uw opslag accounts worden standaard verzameld. Als u niet bekend bent met metrische gegevens die beschikbaar zijn op Azure Storage, kunt u de beschrijving en definitie in Azure Storage metrieken bekijken door de [metrische gegevens voor Azure Storage](../../storage/blobs/monitor-blob-storage.md)te controleren.
 
 >[!NOTE]
 >Er zijn geen kosten verbonden aan het verkrijgen van toegang tot deze functie en er worden alleen kosten in rekening gebracht voor de Azure Monitor essentiële functies die u configureert of inschakelt, zoals wordt beschreven op de pagina met [Azure monitor prijs informatie](https://azure.microsoft.com/pricing/details/monitor/) .
@@ -67,7 +67,7 @@ De tegel item in de vervolg keuzelijst bevat een samen telling van het totale aa
 Selecteer een waarde in de kolommen **Beschik baarheid**, **E2E latentie**, **Server latentie**en **transactie fout type/fouten** stuurt u een rapport dat is afgestemd op het specifieke type metrische opslag gegevens dat overeenkomt met de geselecteerde kolom voor dat opslag account. Zie de sectie [gedetailleerde opslag werkmappen](#detailed-storage-workbooks) hieronder voor meer informatie over de werkmappen voor elke categorie. 
 
 >[!NOTE]
->Zie het [schema antwoord type](../../storage/common/monitor-storage-reference.md#metrics-dimensions) en zoek naar antwoord typen zoals **ServerOtherError**, **ClientOtherError**, **ClientThrottlingError**voor meer informatie over welke fouten in het rapport kunnen worden weer gegeven. Afhankelijk van de geselecteerde opslag accounts, worden alle andere fouten weer gegeven onder de **andere**categorie als er meer dan drie typen fouten worden gerapporteerd.
+>Zie het [schema antwoord type](../../storage/blobs/monitor-blob-storage-reference.md#metrics-dimensions) en zoek naar antwoord typen zoals **ServerOtherError**, **ClientOtherError**, **ClientThrottlingError**voor meer informatie over welke fouten in het rapport kunnen worden weer gegeven. Afhankelijk van de geselecteerde opslag accounts, worden alle andere fouten weer gegeven onder de **andere**categorie als er meer dan drie typen fouten worden gerapporteerd.
 
 De standaard drempelwaarde voor **Beschik baarheid** is:
 
@@ -274,4 +274,3 @@ Elke werkmap wordt opgeslagen in het opslag account waarin u deze hebt opgeslage
 * Meer informatie over de scenario's werkmappen zijn ontworpen voor ondersteuning, het ontwerpen van nieuwe en het aanpassen van bestaande rapporten en meer door [interactieve rapporten maken met Azure monitor werkmappen](../platform/workbooks-overview.md)te controleren.
 
 * Zie [Microsoft Azure Storage controleren, diagnosticeren en problemen oplossen](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md)voor meer informatie over het gebruik van Opslaganalyse en andere hulpprogram ma's voor het identificeren, vaststellen en oplossen van problemen met Azure Storage.
-

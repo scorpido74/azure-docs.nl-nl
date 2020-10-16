@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/28/2020
 ms.author: jingwang
 ms.openlocfilehash: 7f98fee687fca6a2b6e746b24ca582671e28391f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84216394"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Gegevens kopiëren van Netezza met behulp van Azure Data Factory
@@ -31,7 +31,7 @@ In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factor
 Deze Netezza-connector wordt ondersteund voor de volgende activiteiten:
 
 - [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
-- [Opzoek activiteit](control-flow-lookup-activity.md)
+- [Activiteit Lookup](control-flow-lookup-activity.md)
 
 
 U kunt gegevens van Netezza kopiëren naar elk ondersteund Sink-gegevens archief. Zie [ondersteunde gegevens archieven en-indelingen](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevens archieven die door de Kopieer activiteit worden ondersteund als bronnen en Sinks.
@@ -56,15 +56,15 @@ De volgende eigenschappen worden ondersteund voor de gekoppelde Netezza-service:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap **type** moet worden ingesteld op **Netezza**. | Yes |
-| Verbindings | Een ODBC-connection string om verbinding te maken met Netezza. <br/>U kunt ook wacht woord in Azure Key Vault plaatsen en de `pwd` configuratie uit de Connection String halen. Raadpleeg de volgende voor beelden en [Sla referenties op in azure Key Vault](store-credentials-in-key-vault.md) artikel met meer informatie. | Yes |
-| connectVia | De [Integration runtime](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevens archief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. |No |
+| type | De eigenschap **type** moet worden ingesteld op **Netezza**. | Ja |
+| connectionString | Een ODBC-connection string om verbinding te maken met Netezza. <br/>U kunt ook wacht woord in Azure Key Vault plaatsen en de `pwd` configuratie uit de Connection String halen. Raadpleeg de volgende voor beelden en [Sla referenties op in azure Key Vault](store-credentials-in-key-vault.md) artikel met meer informatie. | Ja |
+| connectVia | De [Integration runtime](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevens archief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. |Nee |
 
 Een typische connection string is `Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>` . In de volgende tabel worden meer eigenschappen beschreven die u kunt instellen:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| SecurityLevel | Het beveiligings niveau dat het stuur programma gebruikt voor de verbinding met het gegevens archief. Het stuur programma ondersteunt SSL-verbindingen met eenrichtings verificatie met behulp van SSL-versie 3. <br>Bijvoorbeeld: `SecurityLevel=preferredSecured`. Ondersteunde waarden zijn:<br/>- **Alleen niet beveiligd** (**OnlyUnSecured**): het stuur programma gebruikt geen SSL.<br/>- **Voor keur niet-beveiligd (preferredUnSecured) (standaard)**: als de server een keuze biedt, gebruikt het stuur programma geen SSL. <br/>- **Voorkeurs beveiliging (preferredSecured)**: als de server een keuze biedt, maakt het stuur programma gebruik van SSL. <br/>- **Alleen beveiligd (onlySecured)**: het stuur programma kan geen verbinding maken tenzij er een SSL-verbinding beschikbaar is. | No |
+| SecurityLevel | Het beveiligings niveau dat het stuur programma gebruikt voor de verbinding met het gegevens archief. Het stuur programma ondersteunt SSL-verbindingen met eenrichtings verificatie met behulp van SSL-versie 3. <br>Bijvoorbeeld: `SecurityLevel=preferredSecured`. Ondersteunde waarden zijn:<br/>- **Alleen niet beveiligd** (**OnlyUnSecured**): het stuur programma gebruikt geen SSL.<br/>- **Voor keur niet-beveiligd (preferredUnSecured) (standaard)**: als de server een keuze biedt, gebruikt het stuur programma geen SSL. <br/>- **Voorkeurs beveiliging (preferredSecured)**: als de server een keuze biedt, maakt het stuur programma gebruik van SSL. <br/>- **Alleen beveiligd (onlySecured)**: het stuur programma kan geen verbinding maken tenzij er een SSL-verbinding beschikbaar is. | Nee |
 | CaCertFile | Het volledige pad naar het SSL-certificaat dat door de server wordt gebruikt. Voorbeeld: `CaCertFile=<cert path>;`| Ja, als SSL is ingeschakeld |
 
 **Voorbeeld**
@@ -121,9 +121,9 @@ Als u gegevens van Netezza wilt kopiëren, stelt u de eigenschap **type** van de
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de gegevensset moet worden ingesteld op: **NetezzaTable** | Yes |
+| type | De eigenschap type van de gegevensset moet worden ingesteld op: **NetezzaTable** | Ja |
 | schema | De naam van het schema. |Nee (als "query" in activiteit bron is opgegeven)  |
-| tabel | De naam van de tabel. |Nee (als "query" in activiteit bron is opgegeven)  |
+| table | De naam van de tabel. |Nee (als "query" in activiteit bron is opgegeven)  |
 | tableName | De naam van de tabel met schema. Deze eigenschap wordt ondersteund voor achterwaartse compatibiliteit. Gebruik `schema` en `table` voor nieuwe werk belasting. | Nee (als "query" in activiteit bron is opgegeven) |
 
 **Voorbeeld**
@@ -157,13 +157,13 @@ Als u gegevens van Netezza wilt kopiëren, stelt u het **bron** type in de Kopie
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap **type** van de bron van de Kopieer activiteit moet zijn ingesteld op **NetezzaSource**. | Yes |
+| type | De eigenschap **type** van de bron van de Kopieer activiteit moet zijn ingesteld op **NetezzaSource**. | Ja |
 | query | Gebruik de aangepaste SQL-query om gegevens te lezen. Voorbeeld: `"SELECT * FROM MyTable"` | Nee (als ' Tablename ' in gegevensset is opgegeven) |
-| partitionOptions | Hiermee geeft u de opties voor gegevens partities op die worden gebruikt voor het laden van gegevens uit Netezza. <br>Toegestane waarden zijn: **geen** (standaard), **DataSlice**en **DynamicRange**.<br>Wanneer een partitie optie is ingeschakeld (dat wil zeggen, niet `None` ), is de mate van parallelle uitvoering om gegevens uit een Netezza-data base gelijktijdig te laden, beheerd door [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) de instelling van de Kopieer activiteit. | No |
-| partitionSettings | Geef de groep van de instellingen voor het partitioneren van gegevens op. <br>Toep assen als de partitie optie niet is `None` . | No |
-| partitionColumnName | Geef de naam op van de bron kolom **in een geheel getal** dat wordt gebruikt voor het partitioneren van het bereik voor parallelle kopieën. Als u niets opgeeft, wordt de primaire sleutel van de tabel automatisch gedetecteerd en gebruikt als de kolom partitie. <br>Toep assen wanneer de partitie optie is `DynamicRange` . Als u een query gebruikt om de bron gegevens op te halen, koppelt u de `?AdfRangePartitionColumnName` component WHERE. Zie voor beeld in [parallelle kopie van](#parallel-copy-from-netezza) de sectie Netezza. | No |
-| partitionUpperBound | De maximum waarde van de partitie kolom waaruit de gegevens moeten worden gekopieerd. <br>Toep assen wanneer partitie optie is `DynamicRange` . Als u query gebruikt om bron gegevens op te halen, Hook `?AdfRangePartitionUpbound` in de component WHERE. Zie de sectie [parallelle kopie van Netezza](#parallel-copy-from-netezza) voor een voor beeld. | No |
-| partitionLowerBound | De minimum waarde van de partitie kolom waaruit de gegevens moeten worden gekopieerd. <br>Toep assen wanneer de partitie optie is `DynamicRange` . Als u een query gebruikt om de bron gegevens op te halen, Hook `?AdfRangePartitionLowbound` in de component WHERE. Zie de sectie [parallelle kopie van Netezza](#parallel-copy-from-netezza) voor een voor beeld. | No |
+| partitionOptions | Hiermee geeft u de opties voor gegevens partities op die worden gebruikt voor het laden van gegevens uit Netezza. <br>Toegestane waarden zijn: **geen** (standaard), **DataSlice**en **DynamicRange**.<br>Wanneer een partitie optie is ingeschakeld (dat wil zeggen, niet `None` ), is de mate van parallelle uitvoering om gegevens uit een Netezza-data base gelijktijdig te laden, beheerd door [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) de instelling van de Kopieer activiteit. | Nee |
+| partitionSettings | Geef de groep van de instellingen voor het partitioneren van gegevens op. <br>Toep assen als de partitie optie niet is `None` . | Nee |
+| partitionColumnName | Geef de naam op van de bron kolom **in een geheel getal** dat wordt gebruikt voor het partitioneren van het bereik voor parallelle kopieën. Als u niets opgeeft, wordt de primaire sleutel van de tabel automatisch gedetecteerd en gebruikt als de kolom partitie. <br>Toep assen wanneer de partitie optie is `DynamicRange` . Als u een query gebruikt om de bron gegevens op te halen, koppelt u de `?AdfRangePartitionColumnName` component WHERE. Zie voor beeld in [parallelle kopie van](#parallel-copy-from-netezza) de sectie Netezza. | Nee |
+| partitionUpperBound | De maximum waarde van de partitie kolom waaruit de gegevens moeten worden gekopieerd. <br>Toep assen wanneer partitie optie is `DynamicRange` . Als u query gebruikt om bron gegevens op te halen, Hook `?AdfRangePartitionUpbound` in de component WHERE. Zie de sectie [parallelle kopie van Netezza](#parallel-copy-from-netezza) voor een voor beeld. | Nee |
+| partitionLowerBound | De minimum waarde van de partitie kolom waaruit de gegevens moeten worden gekopieerd. <br>Toep assen wanneer de partitie optie is `DynamicRange` . Als u een query gebruikt om de bron gegevens op te halen, Hook `?AdfRangePartitionLowbound` in de component WHERE. Zie de sectie [parallelle kopie van Netezza](#parallel-copy-from-netezza) voor een voor beeld. | Nee |
 
 **Voorbeeld:**
 

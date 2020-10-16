@@ -4,10 +4,10 @@ description: Dit artikel bevat richt lijnen voor het configureren en implementer
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: c34e05e184cfa6f0933701a76177fae3eed70c0a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87071929"
 ---
 # <a name="production-readiness-and-best-practices"></a>Productiegereedheid en best practices
@@ -152,7 +152,7 @@ De Linux-VM die u als een edge-apparaat gebruikt, kan niet meer reageren als dez
 1. `sudo apt-get autoremove1`
 
     Met de optie voor automatisch verwijderen worden de pakketten verwijderd die automatisch zijn geïnstalleerd, omdat een ander pakket dat vereist, maar met de andere pakketten die worden verwijderd, zijn ze niet meer nodig
-1. `sudo docker image ls`– Bevat een lijst met docker-installatie kopieën op uw rand systeem
+1. `sudo docker image ls` – Bevat een lijst met docker-installatie kopieën op uw rand systeem
 1. `sudo docker system prune `
 
     Docker gebruikt een conservatieve benadering voor het opschonen van ongebruikte objecten (ook wel garbagecollection genoemd), zoals installatie kopieën, containers, volumes en netwerken: deze objecten worden doorgaans niet verwijderd, tenzij u hiervoor expliciet een docker vraagt. Dit kan ervoor zorgen dat docker extra schijf ruimte gebruikt. Voor elk type object biedt docker een opdracht voor het weghalen. Daarnaast kunt u docker-systeem weghalen gebruiken om meerdere typen objecten tegelijk op te schonen. Raadpleeg [ongebruikte docker-objecten](https://docs.docker.com/config/pruning/)weghalen voor meer informatie.

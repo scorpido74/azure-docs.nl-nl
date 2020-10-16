@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/05/2019
 ms.author: jeedes
-ms.openlocfilehash: abd6382a9bf07f198e0344b8730c585cff0f96ca
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 987a8676fa9f738b788b183a1f3d964c0d0b88ad
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544279"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826798"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ekincare"></a>Zelfstudie: Azure Active Directory-integratie met eKincare
 
@@ -112,7 +112,7 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD met eKincare t
 
 5. De toepassing eKincare verwacht de SAML-asserties in een specifieke indeling. Configureer de volgende claims voor deze toepassing. U kunt de waarden van deze kenmerken vanuit de sectie **Gebruikerskenmerken** op de integratiepagina van de toepassing-beheren. Op de pagina **Eenmalige aanmelding met SAML instellen** klikt u op de knop **Bewerken** om het dialoogvenster **Gebruikerskenmerken** te openen.
 
-    ![image](common/edit-attribute.png)
+    ![Schermopname met het dialoogvenster 'Gebruikerskenmerken' met de knop 'Bewerken' geselecteerd.](common/edit-attribute.png)
 
 6. Bewerk in het gedeelte **Gebruikersclaims** in het dialoogvenster **Gebruikerskenmerken** de claims met het **pictogram Bewerken** of voeg de claims toe door met **Nieuwe claim toevoegen** het kenmerk van het SAML-token te configureren, zoals wordt weergegeven in de bovenstaande afbeelding. Hierna voert u de volgende stappen uit: 
 
@@ -124,7 +124,7 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD met eKincare t
     
     a. Klik op **Nieuwe claim toevoegen** om het dialoogvenster **Gebruikersclaims beheren** te openen.
 
-    ![image](common/new-save-attribute.png)
+    ![Schermopname van het dialoogvenster Gebruikersclaims met de knoppen Nieuwe claim toevoegen en Opslaan geselecteerd.](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 

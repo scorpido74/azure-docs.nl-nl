@@ -7,12 +7,12 @@ ms.date: 02/25/2020
 ms.author: barbkess
 ms.reviewer: lcozzens
 ms.service: azure-app-configuration
-ms.openlocfilehash: 560a2df5946b9cfe1160864752595e86cc6eeb65
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 270f8d471a95e67939a31357bc1cc056fe8ea4a1
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82981218"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072795"
 ---
 # <a name="how-to-use-managed-identities-for-azure-app-configuration"></a>Beheerde identiteiten gebruiken voor Azure-app configuratie
 
@@ -27,13 +27,13 @@ Aan uw toepassing kunnen twee typen identiteiten worden verleend:
 
 Het maken van een app-configuratie archief met een door het systeem toegewezen identiteit vereist een extra eigenschap die moet worden ingesteld in de Store.
 
-### <a name="using-the-azure-cli"></a>Azure CLI gebruiken
+### <a name="using-the-azure-cli"></a>Met behulp van de Azure CLI
 
 Als u een beheerde identiteit wilt instellen met behulp van de Azure CLI, gebruikt u de opdracht [AZ appconfig Identity Assign] voor een bestaande configuratie opslag. Er zijn drie opties voor het uitvoeren van de voor beelden in deze sectie:
 
 - Gebruik [Azure Cloud shell](../cloud-shell/overview.md) van de Azure Portal.
 - Gebruik de Inge sloten Azure Cloud Shell via de knop ' Probeer het ', in de rechter bovenhoek van elk hieronder opgenomen code blok.
-- [Installeer de nieuwste versie van Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli) (2,1 of hoger) als u liever een lokale cli-console gebruikt.
+- [Installeer de nieuwste versie van Azure cli](/cli/azure/install-azure-cli) (2,1 of hoger) als u liever een lokale cli-console gebruikt.
 
 De volgende stappen helpen u bij het maken van een app-configuratie archief en het toewijzen van een identiteit met behulp van de CLI:
 
@@ -60,13 +60,13 @@ De volgende stappen helpen u bij het maken van een app-configuratie archief en h
 
 Het maken van een app-configuratie archief met een door de gebruiker toegewezen identiteit vereist dat u de identiteit maakt en vervolgens de resource-id aan uw Store toewijst.
 
-### <a name="using-the-azure-cli"></a>Azure CLI gebruiken
+### <a name="using-the-azure-cli"></a>Met behulp van de Azure CLI
 
 Als u een beheerde identiteit wilt instellen met behulp van de Azure CLI, gebruikt u de opdracht [AZ appconfig Identity Assign] voor een bestaande configuratie opslag. Er zijn drie opties voor het uitvoeren van de voor beelden in deze sectie:
 
 - Gebruik [Azure Cloud shell](../cloud-shell/overview.md) van de Azure Portal.
 - Gebruik de Inge sloten Azure Cloud Shell via de knop ' Probeer het ', in de rechter bovenhoek van elk hieronder opgenomen code blok.
-- [Installeer de nieuwste versie van Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.31 of hoger) als u liever een lokale cli-console gebruikt.
+- [Installeer de nieuwste versie van Azure cli](/cli/azure/install-azure-cli) (2.0.31 of hoger) als u liever een lokale cli-console gebruikt.
 
 Met de volgende stappen wordt u begeleid bij het maken van een door de gebruiker toegewezen identiteit en een app-configuratie archief. vervolgens wijst u de identiteit toe aan de Store met behulp van de CLI:
 

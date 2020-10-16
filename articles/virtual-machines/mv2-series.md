@@ -7,18 +7,18 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: 5bf6a17c1a4aa1c7f212045af0d1b750ddb2a906
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: b4de2ec68d3cd10dfc4e95c6c2232837a7fca626
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653550"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975753"
 ---
 # <a name="mv2-series"></a>Mv2-serie
 
 De Mv2-serie biedt een platform met hoge door Voer en een laag latentie dat wordt uitgevoerd op een Hyper-Threaded Intel® Xeon® Platinum 8180M 2.5 GHz (Skylake)-processor met een basis frequentie van 2,5 GHz en een maximale Turbo frequentie van 3,8 GHz. Alle grootten voor virtuele machines uit de Mv2-serie kunnen zowel standaard als permanente schijven gebruiken. Instanties van de Mv2-serie zijn geoptimaliseerd voor geheugen die ongeëvenaarde reken prestaties bieden ter ondersteuning van grote data bases in het geheugen en workloads, met een hoge geheugen-naar-CPU-verhouding die ideaal is voor relationele database servers, grote caches en analyse in het geheugen.
 
-Mv2-serie VM-functie Intel® Hyper-Threading-technologie
+Mv2-serie VM-functie Intel® Hyper-Threading technologie
 
 [Premium Storage](premium-storage-performance.md): ondersteund<br>
 [Premium Storage caching](premium-storage-performance.md): ondersteund<br>
@@ -35,7 +35,7 @@ Mv2-serie VM-functie Intel® Hyper-Threading-technologie
 | Standard_M416ms_v2<sup>1</sup> | 416 | 11400 | 8192 | 64 | 250000/1600 (14080) | 80000/2000 | 8 | 32000 |
 | Standard_M416s_v2<sup>1</sup> | 416 | 5700 | 8192 | 64 | 250000/1600 (14080) | 80000/2000 | 8 | 32000 |
 
-<sup>1</sup> virtuele machines uit de Mv2-serie zijn alleen van de tweede generatie en ondersteunen een subset van met generatie 2 ondersteunde installatie kopieën. Zie hieronder voor de volledige lijst met ondersteunde installatie kopieën voor Mv2-Series. Als u Linux gebruikt, raadpleegt u [ondersteuning voor virtuele machines van de tweede generatie op Azure](./linux/generation-2.md) voor instructies over het zoeken en selecteren van een installatie kopie. Als u Windows gebruikt, raadpleegt u [ondersteuning voor virtuele machines van de 2e generatie op Azure](./windows/generation-2.md) voor instructies over het zoeken en selecteren van een installatie kopie. 
+<sup>1</sup> virtuele machines uit de Mv2-serie zijn alleen van de tweede generatie en ondersteunen een subset van met generatie 2 ondersteunde installatie kopieën. Zie hieronder voor de volledige lijst met ondersteunde installatie kopieën voor Mv2-Series. Als u Linux gebruikt, raadpleegt u [ondersteuning voor virtuele machines van de tweede generatie op Azure](./generation-2.md) voor instructies over het zoeken en selecteren van een installatie kopie. Als u Windows gebruikt, raadpleegt u [ondersteuning voor virtuele machines van de 2e generatie op Azure](./generation-2.md) voor instructies over het zoeken en selecteren van een installatie kopie. 
 
 - Windows Server 2019 of hoger
 - SUSE Linux Enterprise Server 12 SP4 en hoger of SUSE Linux Enterprise Server 15 SP1 en hoger
@@ -48,7 +48,7 @@ Mv2-serie VM-functie Intel® Hyper-Threading-technologie
 
 ## <a name="other-sizes-and-information"></a>Andere grootten en informatie
 
-- [Algemeen gebruik](sizes-general.md)
+- [Algemeen doel](sizes-general.md)
 - [Geoptimaliseerd geheugen](sizes-memory.md)
 - [Geoptimaliseerde opslag](sizes-storage.md)
 - [Geoptimaliseerde GPU](sizes-gpu.md)

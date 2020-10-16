@@ -1,7 +1,7 @@
 ---
-title: Zelfstudie voor Angular-apps met één pagina - Azure
+title: 'Zelfstudie: Een Angular-app maken die gebruikmaakt van het Microsoft Identity-platform voor verificatie | Azure'
 titleSuffix: Microsoft identity platform
-description: Meer informatie over hoe Angular SPA-toepassingen een API kunnen aanroepen die toegangstokens vereisen van het Microsoft-identiteitsplatformeindpunt.
+description: In deze zelfstudie bouwt u een Angular-app met één pagina die gebruikmaakt van het Microsoft-identiteitsplatform voor het aanmelden van gebruikers. U krijgt een toegangstoken waarmee u de Microsoft Graph API namens hen kunt aanroepen.
 services: active-directory
 author: hamiltonha
 manager: CelesteDG
@@ -12,30 +12,36 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: 76e82a474d2575325b09e6e82c7319b22f451715
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ae486ac8ddd233487bb10c897a155337aa815fe5
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91256922"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611245"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Zelfstudie: Gebruikers aanmelden en de Microsoft Graph API aanroepen vanuit een Angular-app met één pagina
 
-In deze zelfstudie leert u hoe u een Angular-app met één pagina (SPA):
-- Persoonlijke accounts, werkaccounts of schoolaccounts aanmeldt.
-- Een toegangstoken verkrijgt.
-- De Microsoft Graph API of andere API's aanroept die toegangstokens nodig hebben van het *Microsoft-identiteitsplatformeindpunt*.
+In deze zelfstudie leert u hoe u een eenvoudige app met één pagina bouwt waarmee gebruikers zich kunnen aanmelden met een persoonlijke Microsoft-account en werk- of schoolaccount en de Microsoft Graph API namens hen kan aanroepen.
 
->[!NOTE]
->In deze zelfstudie wordt uitgelegd hoe u een nieuwe Angular SPA maakt met behulp van Microsoft Authentication Library (MSAL). Als u een voorbeeld-app wilt downloaden, raadpleegt u de [quickstart](quickstart-v2-angular.md).
+In deze zelfstudie:
+
+> [!div class="checklist"]
+> * Een Angular-project maken met `npm`
+> * De app registreren in Azure Portal
+> * Code toevoegen voor de ondersteuning van het aan- en afmelden van gebruikers
+> * Code toevoegen om de Microsoft Graph API aan te roepen
+> * De app testen
+
+## <a name="prerequisites"></a>Vereisten
+
+* [Node.js-](https://nodejs.org/en/download/) voor het uitvoeren van een lokale webserver.
+* [Visual Studio Code](https://code.visualstudio.com/download) of een andere editor voor het wijzigen van projectbestanden.
 
 ## <a name="how-the-sample-app-works"></a>Hoe de voorbeeld-app werkt
 
 ![Diagram dat laat zien hoe de voorbeeld-app werkt die wordt gegenereerd in deze zelfstudie](./media/tutorial-v2-angular/diagram-auth-flow-spa-angular.svg)
 
-### <a name="more-information"></a>Meer informatie
-
-Met de voorbeeldtoepassing die in deze zelfstudie wordt gemaakt, kan een Angular SPA een query uitvoeren bij de Microsoft Graph API of een web-API die tokens accepteert van het Microsoft-identiteitsplatformeindpunt. De MSAL voor de Angular-bibliotheek is een wrapper van de core MSAL.js-bibliotheek. Daarmee kunnen Angular-toepassingen (6+) enterprise-gebruikers verifiëren met behulp van Microsoft Azure Active Directory, Microsoft-accountgebruikers en gebruikers van een sociale identiteit (zoals Facebook, Google en LinkedIn). De bibliotheek zorgt er ook voor dat toepassingen toegang krijgen tot Microsoft-cloudservices of Microsoft Graph.
+Met de voorbeeldtoepassing die in deze zelfstudie wordt gemaakt, kan een Angular SPA een query uitvoeren bij de Microsoft Graph API of een web-API die tokens accepteert die zijn uitgegeven door het Microsoft-identiteitsplatform. Hierbij wordt de Microsoft Authentication Library (MSAL) voor Angular gebruikt, een wrapper van de core MSAL.js-bibliotheek. Daarmee kunnen MSAL Angular 6+-toepassingen enterprise-gebruikers verifiëren met behulp van Azure Active Directory (Azure AD), en ook gebruikers met een Microsoft-account en met een sociale identiteit, zoals Facebook, Google en LinkedIn. De bibliotheek zorgt er ook voor dat toepassingen toegang krijgen tot Microsoft-cloudservices en Microsoft Graph.
 
 Wanneer in dit scenario een gebruiker zich aanmeldt, wordt er een toegangstoken gevraagd en toegevoegd aan HTTP-aanvragen via de autorisatie-header. Tokens worden opgehaald en verlengd door MSAL.
 
@@ -48,13 +54,6 @@ Deze zelfstudie maakt gebruik van de volgende bibliotheek:
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Micro Authentication Library voor JavaScript Angular Wrapper|
 
 U vindt de broncode voor de MSAL.js-bibliotheek in de opslagplaats [AzureAD/microsoft-authentication-library-for-js](https://github.com/AzureAD/microsoft-authentication-library-for-js) op GitHub.
-
-## <a name="prerequisites"></a>Vereisten
-
-U hebt het volgende nodig om deze zelfstudie te volgen:
-
-* Een lokale webserver, zoals [Node.js](https://nodejs.org/en/download/). De instructies in deze zelfstudie zijn gebaseerd op Node.js.
-* Een Integrated Development Environment (IDE), zoals [Visual Studio Code](https://code.visualstudio.com/download), om de projectbestanden te bewerken.
 
 ## <a name="create-your-project"></a>Uw project maken
 
@@ -343,6 +342,7 @@ Als voor een back-end-API geen bereik is vereist (niet aanbevolen), kunt u *clie
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u geen ervaring hebt met identiteits- en toegangsbeheer, zijn er verschillende artikelen die u helpen moderne verificatieconcepten te leren, beginnend met [verificatie vs. autorisatie](authentication-vs-authorization.md).
+Lees meer over het ontwikkelen van toepassingen met één pagina op het Microsoft-identiteitsplatform in onze reeks artikelen.
 
-Als u meer wilt weten over het ontwikkelen van toepassingen met één pagina op het Microsoft-identiteitsplatform, is de reeks artikelen [Scenario: Een toepassing met één pagina](scenario-spa-overview.md) nuttig om mee aan de slag te gaan.
+> [!div class="nextstepaction"]
+> [Scenario: Toepassing met één pagina](scenario-spa-overview.md)

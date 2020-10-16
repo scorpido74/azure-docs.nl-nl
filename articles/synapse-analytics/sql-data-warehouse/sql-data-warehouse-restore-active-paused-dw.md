@@ -12,10 +12,10 @@ ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: dead71d08b5a7a16871816580107c8aed8a0a77c
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91405102"
 ---
 # <a name="restore-an-existing-sql-pool"></a>Een bestaande SQL-groep herstellen
@@ -91,13 +91,13 @@ $RestoredDatabase.status
 
 ## <a name="restore-an-existing-sql-pool-through-the-azure-portal"></a>Een bestaande SQL-groep herstellen via de Azure Portal
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Ga naar de SQL-groep waarvan u wilt herstellen.
 3. Klik boven aan de Blade overzicht op **herstellen**.
 
     ![ Overzicht van Herstellen](./media/sql-data-warehouse-restore-active-paused-dw/restoring-01.png)
 
-4. Selecteer **automatische herstel punten** of door de **gebruiker gedefinieerde herstel punten**. Als de SQL-groep geen automatische herstel punten heeft, wacht u enkele uren of maakt u een door de gebruiker gedefinieerd herstel punt voordat u het systeem herstelt. Voor door de gebruiker gedefinieerde herstel punten selecteert u een bestaande en maakt u een nieuwe. Voor- **Server**kunt u een server in een andere resource groep en regio kiezen of een nieuwe maken. Nadat u alle para meters hebt opgegeven, klikt u op **bekijken + herstellen**.
+4. Selecteer **automatische herstel punten** of door de **gebruiker gedefinieerde herstel punten**. Als de SQL-groep geen automatische herstel punten heeft, wacht u enkele uren of maakt u een door de gebruiker gedefinieerd herstel punt voordat u het systeem herstelt. Voor User-Defined herstel punten selecteert u een bestaande en maakt u een nieuw item. Voor- **Server**kunt u een server in een andere resource groep en regio kiezen of een nieuwe maken. Nadat u alle para meters hebt opgegeven, klikt u op **bekijken + herstellen**.
 
     ![Automatische herstelpunten](./media/sql-data-warehouse-restore-active-paused-dw/restoring-11.png)
 

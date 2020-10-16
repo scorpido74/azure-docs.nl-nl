@@ -8,12 +8,12 @@ ms.date: 04/27/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0e4ec7127df288ec1818df307da1ea9824141309
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 540c4394a73ceff1f68a613561c034ca3bc7efc5
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87902453"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046567"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>Problemen met uw IoT Edge apparaat oplossen
 
@@ -71,7 +71,7 @@ iotedge support-bundle --since 6h
 
 ## <a name="check-your-iot-edge-version"></a>Controleer uw IoT Edge versie
 
-Als u een oudere versie van IoT Edge hebt, kunt u het probleem mogelijk oplossen door een upgrade uit te voeren. Het `iotedge check` hulp programma controleert of de IOT Edge Security daemon de meest recente versie is, maar controleert niet de versies van de modules IOT Edge hub en agent. Als u de versie van de runtime modules op uw apparaat wilt controleren, gebruikt u de opdrachten `iotedge logs edgeAgent` en `iotedge logs edgeHub` . Het versie nummer wordt in de logboeken gedeclareerd wanneer de module wordt gestart.
+Als u een oudere versie van IoT Edge hebt, kunt u het probleem mogelijk oplossen door een upgrade uit te voeren. Het `iotedge check` hulp programma controleert of de IOT Edge Security daemon de meest recente versie is, maar controleert niet de versies van de modules IOT Edge hub en agent. Als u de versie van de runtime modules op uw apparaat wilt controleren, gebruikt u de opdrachten `iotedge logs edgeAgent` en `iotedge logs edgeHub` . Het versienummer staat in de logboeken vermeld wanneer de module wordt gestart.
 
 Zie [IOT Edge Security daemon en runtime bijwerken](how-to-update-iot-edge.md)voor instructies voor het bijwerken van uw apparaat.
 
@@ -251,7 +251,7 @@ iotedge restart edgeAgent && iotedge restart edgeHub
 
 ## <a name="check-your-firewall-and-port-configuration-rules"></a>Controleer uw firewall en poort configuratie regels
 
-Zie [een communicatie protocol kiezen](../iot-hub/iot-hub-devguide-protocols.md)Azure IOT Edge communicatie van een on-premises server naar Azure-Cloud met ondersteunde IOT hub protocollen toestaat. Voor een betere beveiliging worden communicatie kanalen tussen Azure IoT Edge en Azure IoT Hub altijd geconfigureerd als uitgaand verkeer. Deze configuratie is gebaseerd op het [service-ondersteunde communicatie patroon](https://blogs.msdn.microsoft.com/clemensv/2014/02/09/service-assisted-communication-for-connected-devices/), waarmee de kwets baarheid voor een kwaadwillende entiteit wordt geminimaliseerd. Inkomende communicatie is alleen vereist voor specifieke scenario's waarbij Azure-IoT Hub berichten naar het Azure IoT Edge apparaat moet pushen. Cloud-naar-apparaat-berichten worden beveiligd met behulp van beveiligde TLS-kanalen en kunnen verder worden beveiligd met X. 509-certificaten en TPM-apparaat modules. De Azure IoT Edge Security Manager bepaalt hoe deze communicatie tot stand kan worden gebracht. Zie [IOT Edge Security Manager](../iot-edge/iot-edge-security-manager.md).
+Zie [een communicatie protocol kiezen](../iot-hub/iot-hub-devguide-protocols.md)Azure IOT Edge communicatie van een on-premises server naar Azure-Cloud met ondersteunde IOT hub protocollen toestaat. Voor een betere beveiliging worden communicatie kanalen tussen Azure IoT Edge en Azure IoT Hub altijd geconfigureerd als uitgaand verkeer. Deze configuratie is gebaseerd op het [service-ondersteunde communicatie patroon](/archive/blogs/clemensv/service-assisted-communication-for-connected-devices), waarmee de kwets baarheid voor een kwaadwillende entiteit wordt geminimaliseerd. Inkomende communicatie is alleen vereist voor specifieke scenario's waarbij Azure-IoT Hub berichten naar het Azure IoT Edge apparaat moet pushen. Cloud-naar-apparaat-berichten worden beveiligd met behulp van beveiligde TLS-kanalen en kunnen verder worden beveiligd met X. 509-certificaten en TPM-apparaat modules. De Azure IoT Edge Security Manager bepaalt hoe deze communicatie tot stand kan worden gebracht. Zie [IOT Edge Security Manager](../iot-edge/iot-edge-security-manager.md).
 
 Hoewel IoT Edge een verbeterde configuratie biedt voor het beveiligen van Azure IoT Edge runtime en geïmplementeerde modules, is het nog steeds afhankelijk van de onderliggende computer-en netwerk configuratie. Daarom is het van cruciaal belang om ervoor te zorgen dat de juiste netwerk-en firewall regels worden ingesteld voor beveiligde Edge-to-Cloud communicatie. De volgende tabel kan worden gebruikt als richt lijn bij de configuratie van firewall regels voor de onderliggende servers waarop Azure IoT Edge runtime wordt gehost:
 

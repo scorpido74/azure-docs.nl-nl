@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2017
 ms.author: alkohli
-ms.openlocfilehash: 9f92a6277765447cbc1a9b12f06c3ec49548f4d1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 15c35fb314af27b1ced129a12f752d0a2794e0f8
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513444"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949901"
 ---
 # <a name="use-the-storsimple-manager-service-to-manage-access-control-records"></a>De StorSimple Manager-service gebruiken voor het beheren van records voor Access Control
 
@@ -63,11 +63,11 @@ Voer de volgende stappen uit om een ACR toe te voegen.
 
     3. Klik op **toevoegen** om de ACR te maken.
 
-        ![Klik op ACR toevoegen](./media/storsimple-8000-manage-acrs/createacr2.png)
+        ![Klik op ACR toevoegen 2.](./media/storsimple-8000-manage-acrs/createacr2.png)
 
 4.  De zojuist toegevoegde ACR wordt weer gegeven in de lijst in tabel vorm van ACRs.
 
-    ![Klik op ACR toevoegen](./media/storsimple-8000-manage-acrs/createacr5.png)
+    ![Klik op ACR toevoegen 3](./media/storsimple-8000-manage-acrs/createacr5.png)
 
 
 ## <a name="edit-an-access-control-record"></a>Een Access Control Record bewerken
@@ -89,11 +89,11 @@ Voer de volgende stappen uit om een ACR te bewerken.
 
 3. Geef op de Blade **bewerken Access Control record** een andere IQN op die overeenkomt met een andere host.
 
-    ![Access Control records bewerken](./media/storsimple-8000-manage-acrs/editacr2.png)
+    ![Access Control records bewerken 2](./media/storsimple-8000-manage-acrs/editacr2.png)
 
 4. Klik op **Opslaan**. Klik op **Ja** als u om bevestiging wordt gevraagd. 
 
-    ![Access Control records bewerken](./media/storsimple-8000-manage-acrs/editacr3.png)
+    ![Access Control records bewerken 3](./media/storsimple-8000-manage-acrs/editacr3.png)
 
 5. U wordt gewaarschuwd wanneer de ACR wordt bijgewerkt. De lijst in tabel vorm wordt ook bijgewerkt om de wijziging weer te geven.
 
@@ -109,23 +109,23 @@ Voer de volgende stappen uit om een Access Control Record te verwijderen.
 #### <a name="to-delete-an-access-control-record"></a>Een Access Control Record verwijderen
 1.  Ga naar de StorSimple-Apparaatbeheer service, dubbel klik op de service naam en klik vervolgens in de sectie **configuratie** op **Access Control records**.
 
-    ![Ga naar Access Control records](./media/storsimple-8000-manage-acrs/createacr1.png)
+    ![Ga naar Access Control records 1B](./media/storsimple-8000-manage-acrs/createacr1.png)
 
 2. In de lijst in tabel vorm van de Access Control records klikt en selecteert u de ACR die u wilt verwijderen.
 
-    ![Ga naar Access Control records](./media/storsimple-8000-manage-acrs/deleteacr1.png)
+    ![Ga naar Access Control records 2](./media/storsimple-8000-manage-acrs/deleteacr1.png)
 
 3. Klik met de rechter muisknop om het context menu aan te roepen en selecteer **verwijderen**.
 
-    ![Ga naar Access Control records](./media/storsimple-8000-manage-acrs/deleteacr2.png)
+    ![Ga naar Access Control records 3](./media/storsimple-8000-manage-acrs/deleteacr2.png)
 
 4. Als u om bevestiging wordt gevraagd, controleert u de informatie en klikt u vervolgens op **verwijderen**.
 
-    ![Ga naar Access Control records](./media/storsimple-8000-manage-acrs/deleteacr3.png)
+    ![Ga naar Access Control records 4](./media/storsimple-8000-manage-acrs/deleteacr3.png)
 
 5. U wordt gewaarschuwd wanneer het verwijderen is voltooid. De lijst in tabel vorm wordt bijgewerkt om de verwijdering weer te geven.
 
-    ![Ga naar Access Control records](./media/storsimple-8000-manage-acrs/deleteacr5.png)
+    ![Ga naar Access Control records 5](./media/storsimple-8000-manage-acrs/deleteacr5.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over het [beheren van StorSimple-volumes](storsimple-8000-manage-volumes-u2.md).

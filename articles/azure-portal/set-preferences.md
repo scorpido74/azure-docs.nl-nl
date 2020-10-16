@@ -10,13 +10,13 @@ ms.topic: how-to
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: 20ed84a87486f1095a90e012368b1f56d6426c8e
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88205725"
 ---
-# <a name="manage-azure-portal-settings-and-preferences"></a>Azure Portal instellingen en voor keuren beheren
+# <a name="manage-azure-portal-settings-and-preferences"></a>Azure-portalinstellingen en -voorkeuren beheren
 
 U kunt de standaard instellingen van de Azure Portal wijzigen om te voldoen aan uw eigen voor keuren. De meeste instellingen zijn beschikbaar via het menu **instellingen** in de koptekst van de algemene pagina.
 
@@ -33,7 +33,7 @@ U kunt het abonnement dat standaard wordt geopend, wijzigen wanneer u zich aanme
 
 1. Selecteer de abonnementen die u wilt als de standaard abonnementen wanneer u de portal start. 
 
-    :::image type="content" source="media/set-preferences/default-directory-subscription-filter.png" alt-text="Selecteer de abonnementen die u wilt als de standaard abonnementen wanneer u de portal start."::: 
+    :::image type="content" source="media/set-preferences/default-directory-subscription-filter.png" alt-text="Resource lijst filteren op abonnement."::: 
 
 
 ## <a name="choose-your-default-view"></a>Kies uw standaard weergave 

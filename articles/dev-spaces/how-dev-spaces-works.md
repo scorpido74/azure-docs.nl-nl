@@ -5,14 +5,16 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 description: Hierin worden de processen beschreven die Power Azure dev Spaces
 keywords: Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers
-ms.openlocfilehash: 81408ed4bbe5322538d893b29c7397104c5b0844
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 8de2c27ce03c871e60b6437656ad630fc8de8408
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90981278"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963700"
 ---
 # <a name="how-azure-dev-spaces-works"></a>Hoe Azure Dev Spaces werkt
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../includes/dev-spaces-deprecation.md)]
 
 Het ontwikkelen van een Kubernetes-toepassing kan lastig zijn. U hebt configuratie bestanden voor docker en Kubernetes nodig. U moet nagaan hoe u uw toepassing lokaal kunt testen en interactie met andere afhankelijke services. U moet mogelijk meerdere services tegelijk en met een team van ontwikkel aars verwerken en testen.
 
@@ -22,7 +24,7 @@ Met Azure dev Spaces kunt u op verschillende manieren snel en probleem oplossing
 
 Azure dev Spaces vermindert de inspanningen voor het ontwikkelen, testen en herhalen van uw Kubernetes-toepassing in de context van uw AKS-cluster. Met deze reductie in inspanningen kunnen ontwikkel aars zich richten op de bedrijfs logica van hun toepassingen en hun services niet configureren om te worden uitgevoerd in Kubernetes.
 
-### <a name="bridge-to-kubernetes"></a>Brug naar Kubernetes
+### <a name="bridge-to-kubernetes"></a>Bridge to Kubernetes
 
 Met Bridge to Kubernetes kunt u uw ontwikkel computer verbinden met uw Kubernetes-cluster, zodat u code op uw ontwikkel computer uitvoert, alsof deze op het cluster wordt uitgevoerd. Brug naar Kubernetes omleidt verkeer tussen uw verbonden cluster door een pod uit te voeren op uw cluster dat fungeert als een externe agent om verkeer tussen uw ontwikkel computer en het cluster om te leiden. Met deze omleidings functie voor verkeer kan code op uw ontwikkel computer en services die in uw cluster worden uitgevoerd, communiceren alsof ze zich in hetzelfde cluster bevonden. Zie [hoe Bridge to Kubernetes werkt][how-it-works-bridge-to-kubernetes]voor meer informatie over het verbinden van uw ontwikkel computer met een Kubernetes-cluster.
 

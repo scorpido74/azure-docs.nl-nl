@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
 ms.openlocfilehash: 53132cc21b8298f951f2daa979ed433103ad0ac0
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91541285"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Zelf studie: workday configureren voor het automatisch inrichten van gebruikers
@@ -370,7 +370,7 @@ Zet het installatie programma van de gedownloade agent over naar de server host 
    >[!div class="mx-imgBorder"]
    >![Scherm afsluiten](./media/workday-inbound-tutorial/pa_install_screen_9.png "Scherm afsluiten")
    
-1. Controleer de installatie van de agent en zorg ervoor dat deze wordt uitgevoerd door de module ' Services ' te openen en te zoeken naar de service met de naam ' Microsoft Azure AD Connect inrichtings agent '.
+1. Controleer de installatie van de agent en zorg ervoor dat deze wordt uitgevoerd door de Snap-In services te openen en te zoeken naar de service met de naam ' Microsoft Azure AD Connect inrichtings agent '.
 
    >[!div class="mx-imgBorder"]
    >![Scherm afbeelding van de Microsoft Azure AD verbinding maken met de inrichtings agent die in Services wordt uitgevoerd.](./media/workday-inbound-tutorial/services.png)
@@ -478,7 +478,7 @@ In deze sectie configureert u hoe gebruikers gegevens stromen van workday naar A
 
          * **Alleen tijdens het maken** : pas deze toewijzing alleen toe bij het maken van gebruikers acties
 
-1. Klik boven aan de sectie kenmerk toewijzing op **Opslaan** om uw toewijzingen op te slaan.
+1. Als u uw toewijzingen wilt opslaan, klikt u boven aan de sectie Attribute-Mapping op **Opslaan** .
    >[!div class="mx-imgBorder"]
    >![Scherm opname waarin de pagina kenmerk toewijzing wordt weer gegeven en de actie opslaan is geselecteerd.](./media/workday-inbound-tutorial/wd_2.png)
 
@@ -1126,7 +1126,7 @@ Als u deze wijziging wilt uitvoeren, moet u [werkdag Studio](https://community.w
 
     ![Workday Studio](./media/workday-inbound-tutorial/wdstudio_aad2.png)
 
-11. Selecteer hierboven **Opslaan** en vervolgens **Ja** in het dialoog venster. Sluit het scherm kenmerk toewijzing als het nog is geopend.
+11. Selecteer hierboven **Opslaan** en vervolgens **Ja** in het dialoog venster. Sluit het Attribute-Mapping scherm als het nog is geopend.
 
 12. Klik op het tabblad belangrijkste **inrichting** op **werk dagen synchroniseren met on-premises Active Directory** (of **werk rollen synchroniseren met Azure AD**) opnieuw.
 

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 02/16/2017
 ms.author: cynthn
 ms.openlocfilehash: 38f231e63ad4974a23a1201aad4d290685860b50
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87292155"
 ---
 # <a name="create-virtual-network-interface-cards-and-use-internal-dns-for-vm-name-resolution-on-azure"></a>Virtuele netwerk interface kaarten maken en interne DNS gebruiken voor VM-naam omzetting in azure
@@ -42,7 +42,7 @@ az network nic create \
 ```
 
 ### <a name="deploy-a-vm-and-connect-the-vnic"></a>Een virtuele machine implementeren en verbinding maken met de vNic
-Maak een virtuele machine met [AZ VM Create](/cli/azure/vm). De `--nics` vlag verbindt de vNic met de virtuele machine tijdens de implementatie naar Azure. In het volgende voor beeld wordt een VM gemaakt met de naam `myVM` Azure Managed disks en wordt de vNic gekoppeld aan de naam `myNic` van de vorige stap:
+Maak een VM met [az vm create](/cli/azure/vm). De `--nics` vlag verbindt de vNic met de virtuele machine tijdens de implementatie naar Azure. In het volgende voor beeld wordt een VM gemaakt met de naam `myVM` Azure Managed disks en wordt de vNic gekoppeld aan de naam `myNic` van de vorige stap:
 
 ```azurecli
 az vm create \
@@ -142,7 +142,7 @@ az network nic create \
 ## <a name="deploy-the-vm-into-the-virtual-network-infrastructure"></a>Implementeer de VM in de infra structuur van het virtuele netwerk
 We hebben nu een virtueel netwerk en subnet, een netwerk beveiligings groep die fungeert als een firewall om ons subnet te beveiligen door al het binnenkomende verkeer behalve poort 22 voor SSH en een vNic te blok keren. U kunt nu een virtuele machine implementeren in deze bestaande netwerk infrastructuur.
 
-Maak een virtuele machine met [AZ VM Create](/cli/azure/vm). In het volgende voor beeld wordt een VM gemaakt met de naam `myVM` Azure Managed disks en wordt de vNic gekoppeld aan de naam `myNic` van de vorige stap:
+Maak een VM met [az vm create](/cli/azure/vm). In het volgende voor beeld wordt een VM gemaakt met de naam `myVM` Azure Managed disks en wordt de vNic gekoppeld aan de naam `myNic` van de vorige stap:
 
 ```azurecli
 az vm create \

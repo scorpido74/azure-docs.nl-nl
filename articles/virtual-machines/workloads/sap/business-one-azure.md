@@ -1,26 +1,18 @@
 ---
 title: SAP Business One in azure Virtual Machines | Microsoft Docs
 description: SAP Business One in Azure.
-services: virtual-machines-linux,virtual-machines-windows
-documentationcenter: ''
 author: msjuergent
-manager: patfilot
-editor: ''
-tags: azure-resource-manager
-keywords: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 07/15/2018
 ms.author: juergent
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ccec58f012dcd4b6371c15e79fa964600e775f54
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.reviewer: cynthn
+ms.openlocfilehash: caabaa6fbf65787f90c0033a06af26996c2388f2
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654647"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994100"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>SAP Business One in virtuele Azure-machines
 Dit document bevat richt lijnen voor het implementeren van SAP Business One in azure Virtual Machines. De documentatie is geen vervanging voor de installatie documentatie van Business One voor SAP. De documentatie moet betrekking hebben op elementaire plannings-en implementatie richtlijnen voor de Azure-infra structuur voor het uitvoeren van één toepassing op.
@@ -58,7 +50,7 @@ Afgezien van de Azure-documentatie moet u zich bewust zijn van de belangrijkste 
 - [2483583-centrale notitie voor SAP Business One 9,3](https://launchpad.support.sap.com/#/notes/2483583)
 - [2483615-release-updates opmerking voor SAP Business One 9,3](https://launchpad.support.sap.com/#/notes/2483615)
 - [2483595-collectieve notitie voor SAP Business One 9,3 algemene problemen](https://launchpad.support.sap.com/#/notes/2483595)
-- [2027458-collectieve Consulting opmerking voor SAP HANA-gerelateerde onderwerpen van SAP Business One, versie voor SAP HANA](https://launchpad.support.sap.com/#/notes/2027458)
+- [2027458-collectieve Consulting opmerking voor SAP HANA-Related-onderwerpen van SAP Business One, versie voor SAP HANA](https://launchpad.support.sap.com/#/notes/2027458)
 
 
 ## <a name="business-one-architecture"></a>Bedrijf met één architectuur
@@ -95,7 +87,7 @@ De netwerk infrastructuur die u nodig hebt om te implementeren in azure, is afha
 De weer gegeven vereenvoudigde configuratie introduceert diverse beveiligings instanties waarmee route ring kan worden beheerd en beperkt. Deze begint met 
 
 - De router/firewall voor de on-premises kant van de klant.
-- De volgende instantie is de [Azure-netwerk beveiligings groep](../../../virtual-network/security-overview.md) die u kunt gebruiken om routerings-en beveiligings regels in te voeren voor Azure VNet dat u uw SAP Business One-configuratie uitvoert in.
+- De volgende instantie is de [Azure-netwerk beveiligings groep](../../../virtual-network/network-security-groups-overview.md) die u kunt gebruiken om routerings-en beveiligings regels in te voeren voor Azure VNet dat u uw SAP Business One-configuratie uitvoert in.
 - Als u wilt voor komen dat gebruikers van bedrijven één client ook de server kunnen zien waarop het bedrijf één server uitvoert, waarmee de data base wordt uitgevoerd, moet u de virtuele machine die als host fungeert voor het bedrijf met één client en het bedrijf één server in twee verschillende subnetten binnen het VNet, scheiden.
 - U gebruikt Azure NSG opnieuw toegewezen aan de twee verschillende subnetten om de toegang tot het bedrijf één server te beperken.
 
@@ -111,7 +103,7 @@ SQL Server en SAP HANA zijn beschikbaar voor het database type. Onafhankelijk va
 
 Hoewel er al een nadruk is gelegd op de specifieke en algemene database documenten, moet u vertrouwd zijn met:
 
-- [De beschik baarheid van virtuele Windows-machines in azure beheren](../../windows/manage-availability.md) en [de beschik baarheid van virtuele Linux-machines in azure beheren](../../linux/manage-availability.md)
+- [De beschik baarheid van virtuele Windows-machines in azure beheren](../../manage-availability.md) en [de beschik baarheid van virtuele Linux-machines in azure beheren](../../manage-availability.md)
 - [SLA voor virtuele machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)
 
 Deze documenten moeten u helpen bij het bepalen van de selectie van opslag typen en de configuratie met een hoge Beschik baarheid.

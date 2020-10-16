@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: ef4633953f7ac03737608124309d94e436913794
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 99c74547d5f48f57af56af69f47190d80d9cd350
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91715447"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074954"
 ---
 # <a name="azure-app-configuration-faq"></a>Veelgestelde vragen over Azure-app configuratie
 
@@ -45,11 +45,11 @@ Ja. App-configuratie versleutelt alle sleutel waarden die worden bewaard en vers
 
 ## <a name="where-does-data-stored-in-app-configuration-reside"></a>Waar worden gegevens opgeslagen in de app-configuratie? 
 
-Klant gegevens die zijn opgeslagen in app-configuratie bevinden zich in de regio waar de app-configuratie van de klant is gemaakt. App-configuratie kan gegevens repliceren naar [gekoppelde regio's](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) voor gegevens tolerantie, maar er worden geen klant gegevens gerepliceerd of verplaatst buiten hun geografische regio zoals gedefinieerd door [Data locatie in azure](https://azure.microsoft.com/global-infrastructure/data-residency/). Klanten en eind gebruikers kunnen hun klant gegevens vanaf elke locatie wereld wijd verplaatsen, kopiëren of gebruiken.
+Klant gegevens die zijn opgeslagen in app-configuratie bevinden zich in de regio waar de app-configuratie van de klant is gemaakt. App-configuratie kan gegevens repliceren naar [gekoppelde regio's](../best-practices-availability-paired-regions.md) voor gegevens tolerantie, maar er worden geen klant gegevens gerepliceerd of verplaatst buiten hun geografische regio zoals gedefinieerd door [Data locatie in azure](https://azure.microsoft.com/global-infrastructure/data-residency/). Klanten en eind gebruikers kunnen hun klant gegevens vanaf elke locatie wereld wijd verplaatsen, kopiëren of gebruiken.
 
 ## <a name="how-is-app-configuration-different-from-azure-app-service-settings"></a>Hoe wijkt de configuratie van de app af van Azure App Service instellingen?
 
-Met Azure App Service kunt u app-instellingen definiëren voor elk App Service exemplaar. Deze instellingen worden door gegeven als omgevings variabelen aan de toepassings code. Als u wilt, kunt u een instelling koppelen aan een specifieke implementatie sleuf. Zie [app-instellingen configureren](/azure/app-service/configure-common#configure-app-settings)voor meer informatie.
+Met Azure App Service kunt u app-instellingen definiëren voor elk App Service exemplaar. Deze instellingen worden door gegeven als omgevings variabelen aan de toepassings code. Als u wilt, kunt u een instelling koppelen aan een specifieke implementatie sleuf. Zie [app-instellingen configureren](../app-service/configure-common.md#configure-app-settings)voor meer informatie.
 
 Azure-app configuratie daarentegen kunt u instellingen definiëren die kunnen worden gedeeld tussen meerdere apps. Dit geldt ook voor apps die worden uitgevoerd in App Service, evenals andere platforms. Uw toepassings code heeft toegang tot deze instellingen via de configuratie providers voor .NET en Java, via de Azure SDK of rechtstreeks via REST Api's.
 
@@ -111,7 +111,7 @@ Wanneer de limiet van een Store is bereikt, wordt de HTTP-status code 429 gereto
 
 Als uw toepassing regel matig HTTP-status code 429 reacties ondervindt, kunt u deze het beste opnieuw ontwerpen om het aantal aanvragen te verminderen. Zie [aanvragen beperken tot app-configuratie](./howto-best-practices.md#reduce-requests-made-to-app-configuration) voor meer informatie.
 
-## <a name="my-application-receives-http-status-code-429-responses-why"></a>Mijn toepassing ontvangt HTTP-status code 429-reacties. Hoe komt dat?
+## <a name="my-application-receives-http-status-code-429-responses-why"></a>Mijn toepassing ontvangt HTTP-status code 429-reacties. Hoe kan dat?
 
 In deze gevallen ontvangt u een HTTP-status code van 429:
 

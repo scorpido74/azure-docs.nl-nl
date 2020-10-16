@@ -1,6 +1,6 @@
 ---
 title: Azure Serial console voor Linux | Microsoft Docs
-description: Bidirectionele seriële console voor Azure Virtual Machines en Virtual Machine Scale Sets met behulp van een Linux-voor beeld.
+description: Bi-Directional seriële console voor Azure Virtual Machines en Virtual Machine Scale Sets met behulp van een Linux-voor beeld.
 services: virtual-machines-linux
 documentationcenter: ''
 author: asinn826
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 9a31a22a5b037162198f594d9bcf35c91a0a4654
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 25e3a9cb363ae4e64b953aeb7a6da4e2e66c9fc7
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91306868"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977096"
 ---
 # <a name="azure-serial-console-for-linux"></a>Azure Serial Console voor Linux
 
@@ -73,7 +73,7 @@ Oracle Linux        | Seriële console toegang is standaard ingeschakeld.
 ### <a name="custom-linux-images"></a>Aangepaste Linux-installatiekopieën
 Als u de seriële console voor uw aangepaste Linux VM-installatie kopie wilt inschakelen, schakelt u toegang tot de console in het bestand */etc/inittab* in om een Terminal op uit te voeren `ttyS0` . Bijvoorbeeld: `S0:12345:respawn:/sbin/agetty -L 115200 console vt102`. Mogelijk moet u ook een getty op ttyS0 starten. U kunt dit doen met `systemctl start serial-getty@ttyS0.service` .
 
-U moet ook ttyS0 toevoegen als doel voor de seriële uitvoer. Voor meer informatie over het configureren van een aangepaste installatie kopie voor gebruik met de seriële console raadpleegt u de algemene systeem vereisten bij het [maken en uploaden van een Linux-VHD in azure](https://aka.ms/createuploadvhd#general-linux-system-requirements).
+U moet ook ttyS0 toevoegen als doel voor de seriële uitvoer. Voor meer informatie over het configureren van een aangepaste installatie kopie voor gebruik met de seriële console raadpleegt u de algemene systeem vereisten bij het [maken en uploaden van een Linux-VHD in azure](../linux/create-upload-generic.md#general-linux-system-requirements).
 
 Als u een aangepaste kernel bouwt, kunt u overwegen om deze kernel-vlaggen in te scha kelen: `CONFIG_SERIAL_8250=y` en `CONFIG_MAGIC_SYSRQ_SERIAL=y` . Het configuratie bestand bevindt zich doorgaans in het pad */boot/* .
 
@@ -109,7 +109,7 @@ Alle toegang tot de seriële console is momenteel geregistreerd in de logboeken 
 Als een gebruiker is verbonden met de seriële console en een andere gebruiker de toegang tot dezelfde virtuele machine heeft gevraagd, wordt de verbinding met de eerste gebruiker verbroken en wordt de tweede gebruiker verbonden met dezelfde sessie.
 
 > [!CAUTION]
-> Dit betekent dat een gebruiker die de verbinding is verbroken niet afmeldt. De mogelijkheid om een afmelding af te dwingen bij het verbreken van de verbinding (met behulp van SIGHUP of soortgelijk mechanisme) bevindt zich nog in het schema Voor Windows is er een automatische time-out ingeschakeld in speciale beheer console (SAC); voor Linux kunt u echter de instelling time-out terminal configureren. Als u dit wilt doen, voegt `export TMOUT=600` u het bestand *. bash_profile* of *. profile* toe aan de gebruiker die u gebruikt om u aan te melden bij de-console. Deze instelling is een time-out voor de sessie na 10 minuten.
+> Dit betekent dat een gebruiker die de verbinding is verbroken niet afmeldt. De mogelijkheid om een afmelding af te dwingen bij het verbreken van de verbinding (met behulp van SIGHUP of soortgelijk mechanisme) bevindt zich nog in het schema Voor Windows is er een automatische time-out ingeschakeld in speciale beheer console (SAC); voor Linux kunt u echter de instelling time-out terminal configureren. Als u dit wilt doen, voegt `export TMOUT=600` u de gebruiker die u gebruikt om u aan te melden bij de-console, toe in uw *.bash_profile* -of *profiel* bestand. Deze instelling is een time-out voor de sessie na 10 minuten.
 
 ## <a name="accessibility"></a>Toegankelijkheid
 Toegankelijkheid is een belang rijke focus voor de Azure Serial console. Daarom hebben we ervoor gezorgd dat de seriële console volledig toegankelijk is.
@@ -128,7 +128,7 @@ Probleem                           |   Oplossing
 Wanneer u op **Enter** drukt na de verbindings banner, wordt er geen aanmeldings prompt weer gegeven. | GRUB is mogelijk niet juist geconfigureerd. Voer de volgende opdrachten uit: `grub2-mkconfig -o /etc/grub2-efi.cfg` en/of `grub2-mkconfig -o /etc/grub2.cfg` . Voor meer informatie, zie op ' door [voeren Enter ' niets](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). Dit probleem kan optreden als u een aangepaste VM, een vrijgemaakt apparaat of een GRUB-configuratie uitvoert die ervoor zorgt dat Linux geen verbinding kan maken met de seriële poort.
 Seriële console tekst neemt een deel van de scherm grootte in beslag (vaak na het gebruik van een tekst editor). | Seriële consoles bieden geen ondersteuning voor onderhandelen over de venster grootte ([RFC 1073](https://www.ietf.org/rfc/rfc1073.txt)). Dit betekent dat er geen SIGWINCH-signaal wordt verzonden naar de scherm grootte van de update en dat de virtuele machine geen kennis heeft van de grootte van uw Terminal. Installeer xterm of een soortgelijk hulp programma om u de opdracht te geven `resize` en vervolgens uit te voeren `resize` .
 Het plakken van lange teken reeksen werkt niet. | De seriële console beperkt de lengte van teken reeksen die in de terminal worden geplakt tot 2048 tekens om te voor komen dat de band breedte van de seriële poort wordt overbelast.
-Er zijn geen toetsenbord invoer in SLES BYOS-installatie kopieën. Toetsenbord invoer wordt alleen sporadisch herkend. | Dit is een probleem met het Plymouth-pakket. Plymouth moet niet worden uitgevoerd in azure omdat u geen welkomst scherm nodig hebt en Plymouth de mogelijkheid biedt om de seriële console te gebruiken. Verwijder Plymouth met `sudo zypper remove plymouth` en start de computer opnieuw op. U kunt ook de kernel-regel van uw GRUB-configuratie wijzigen door `plymouth.enable=0` toe te voegen aan het einde van de regel. U kunt dit doen door [de opstart vermelding tijdens het opstarten te bewerken](https://aka.ms/serialconsolegrub#single-user-mode-in-suse-sles)of door de GRUB_CMDLINE_LINUX regel in `/etc/default/grub` te bewerken, grub opnieuw te maken met en vervolgens opnieuw op te `grub2-mkconfig -o /boot/grub2/grub.cfg` starten.
+Er zijn geen toetsenbord invoer in SLES BYOS-installatie kopieën. Toetsenbord invoer wordt alleen sporadisch herkend. | Dit is een probleem met het Plymouth-pakket. Plymouth moet niet worden uitgevoerd in azure omdat u geen welkomst scherm nodig hebt en Plymouth de mogelijkheid biedt om de seriële console te gebruiken. Verwijder Plymouth met `sudo zypper remove plymouth` en start de computer opnieuw op. U kunt ook de kernel-regel van uw GRUB-configuratie wijzigen door `plymouth.enable=0` toe te voegen aan het einde van de regel. U kunt dit doen door [de opstart vermelding tijdens het opstarten te bewerken](./serial-console-grub-single-user-mode.md#single-user-mode-in-suse-sles)of door de GRUB_CMDLINE_LINUX regel in `/etc/default/grub` te bewerken, grub opnieuw te maken met en vervolgens opnieuw op te `grub2-mkconfig -o /boot/grub2/grub.cfg` starten.
 
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen

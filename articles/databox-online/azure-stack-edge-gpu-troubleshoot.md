@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 08/19/2020
+ms.date: 10/07/2020
 ms.author: alkohli
-ms.openlocfilehash: 026f476b888380b6f262a6a52c064c939e27e931
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 413847b7858549dc6130f219829b220b2857c7e2
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743196"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938887"
 ---
 # <a name="troubleshoot-issues-on-your-azure-stack-edge-pro-gpu-device"></a>Problemen met uw Azure Stack Edge Pro GPU-apparaat oplossen 
 
@@ -143,7 +143,7 @@ Hier vindt u de fouten die kunnen worden weer gegeven tijdens de configuratie va
 | **Probleem/fouten** |  **Oplossing** | 
 |------------|-----------------|
 |Algemene problemen|<li>[Controleer of het edge-apparaat juist is geconfigureerd](#verify-the-device-is-configured-properly).<li> [Controleren of de client correct is geconfigureerd](#verify-the-client-is-configured-properly)|
-|Add-AzureRmEnvironment: er is een fout opgetreden tijdens het verzenden van de aanvraag.<br>Op regel: 1 teken: 1<br>+ Add-AzureRmEnvironment-name Az3-ARMEndpoint " https://management.dbe ...|Deze fout betekent dat uw Azure Stack Edge Pro-apparaat niet bereikbaar is of niet juist is geconfigureerd. Controleer of het edge-apparaat en de-client correct zijn geconfigureerd. Zie de rij met **algemene problemen** in deze tabel voor hulp.|
+|Add-AzureRmEnvironment: er is een fout opgetreden tijdens het verzenden van de aanvraag.<br>Op regel: 1 teken: 1<br>+ Add-AzureRmEnvironment naam Az3-ARMEndpoint " https://management.dbe ...|Deze fout betekent dat uw Azure Stack Edge Pro-apparaat niet bereikbaar is of niet juist is geconfigureerd. Controleer of het edge-apparaat en de-client correct zijn geconfigureerd. Zie de rij met **algemene problemen** in deze tabel voor hulp.|
 |De service heeft een fout geretourneerd. Controleer InnerException voor meer details: de onderliggende verbinding is gesloten: kan geen vertrouwens relatie tot stand brengen voor het beveiligde SSL/TLS-kanaal. |   Deze fout wordt waarschijnlijk veroorzaakt door een of meer stappen voor het uitvoeren van uw eigen certificaat. U vindt [hier](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-j-series-connect-resource-manager#step-2-create-and-install-certificates)meer informatie. |
 |De bewerking heeft een ongeldige status code ServiceUnavailable geretourneerd <br> De antwoord status code geeft niet aan dat geslaagd is: 503 (service niet beschikbaar). | Deze fout kan het gevolg zijn van een van deze voor waarden.<li>ArmStsPool heeft de status gestopt.</li><li>Een van de websites van Azure Resource Manager/Security Token Services is niet beschikbaar.</li><li>De Azure Resource Manager cluster bron is niet beschikbaar.</li><br><strong>Opmerking:</strong> Door het apparaat opnieuw op te starten, kan het probleem worden opgelost, maar moet u het ondersteunings pakket verzamelen zodat u het verder kunt opsporen.|
 |AADSTS50126: Ongeldige gebruikers naam of wacht woord.<br>Traceer-ID: 29317da9-52fc-4ba0-9778-446ae5625e5a<br>Correlatie-ID: 1b9752c4-8cbf-4304-a714-8a16527410f4<br>Tijds tempel: 2019-11-15 09:21:57Z: de externe server heeft een fout geretourneerd: (400) ongeldige aanvraag.<br>Op regel: 1 teken: 1 |Deze fout kan het gevolg zijn van een van deze voor waarden.<li>Voor een ongeldige gebruikers naam en wacht woord controleert u of de klant het wacht woord heeft gewijzigd van Azure Portal door de volgende stappen te volgen en vervolgens het juiste wacht [woord te gebruiken](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-j-series-set-azure-resource-manager-password) .<li>De Tenant-id voor een ongeldige Tenant-ID is een vaste GUID en moet worden ingesteld op `c0257de7-538f-415c-993a-1b87a031879d`</li>|
@@ -200,6 +200,7 @@ Hier vindt u de fouten met betrekking tot Blob Storage op Azure Stack Edge Pro/D
 |Er is een time-out opgestaan.|Meld u aan bij de Azure Stack Edge Pro en controleer of deze is ontgrendeld. Telkens wanneer het apparaat opnieuw wordt opgestart, blijft het vergrendeld totdat iemand zich aanmeldt.|
 
 
+
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [bekende problemen in deze versie](azure-stack-edge-gpu-2008-release-notes.md).
+- Meer informatie over het [oplossen van problemen met het activeren van apparaten](azure-stack-edge-gpu-troubleshoot-activation.md).

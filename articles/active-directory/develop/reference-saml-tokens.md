@@ -14,10 +14,10 @@ ms.author: kenwith
 ms.reviewer: paulgarn
 ms.custom: aaddev
 ms.openlocfilehash: 6dda32bb2bab4123ede0133b31625c499380fd59
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90705704"
 ---
 # <a name="saml-token-claims-reference"></a>Naslag informatie over SAML-token claims
@@ -156,5 +156,5 @@ Dit is een voor beeld van een typisch SAML-token.
 
 * Zie het [overzicht van Azure AD-beleids bronnen](/graph/api/resources/policy)voor meer informatie over het beheren van het token levensduur beleid met behulp van de Microsoft Graph-API.
 * [Aangepaste en optionele claims](active-directory-optional-claims.md) toevoegen aan de tokens voor uw toepassing.
-* Eenmalige [aanmelding (SSO) met SAML](single-sign-on-saml-protocol.md)gebruiken.
-* Het [SAML-protocol voor eenmalige afmelding van Azure](single-sign-out-saml-protocol.md) gebruiken
+* Gebruik [Single Sign-On (SSO) met SAML](single-sign-on-saml-protocol.md).
+* Het [Azure Single Sign-Out SAML-protocol](single-sign-out-saml-protocol.md) gebruiken

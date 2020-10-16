@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: e2b0dbe8b7738a8c4c551eccca72897bbf1594b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80157888"
 ---
 # <a name="manage-your-personal-application-preferences"></a>Uw persoonlijke toepassings voorkeuren beheren
@@ -32,7 +32,7 @@ We bieden ondersteuning voor zowel het donkere thema als het licht thema. Hoewel
 ![IoT Central thema kiezer](media/howto-manage-preferences/settings.png)
 
 > [!NOTE]
-> De optie om te kiezen tussen lichte en donkere Thema's is niet beschikbaar als uw beheerder een aangepast thema voor de toepassing heeft geconfigureerd.
+> De optie om te kiezen tussen lichte en donkere thema's is niet beschikbaar als uw beheerder een aangepast thema voor de toepassing heeft geconfigureerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

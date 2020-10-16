@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
 ms.author: harshacs
-ms.openlocfilehash: f0a3ac0c81291a1231ef660481d8e31b38c0e212
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 622f0d66f2c8a9f7cf0539d14499897acf7b68e6
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91631338"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096331"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>Over netwerken in nood herstel voor Azure VM
 
@@ -40,13 +40,13 @@ Normaal gesp roken worden netwerken beveiligd met firewalls en netwerk beveiligi
 >[!IMPORTANT]
 > Het gebruik van een geverifieerde proxy voor het beheren van de netwerk verbinding wordt niet ondersteund door Site Recovery en de replicatie kan niet worden ingeschakeld.
 
+>[!NOTE]
+> Filteren op basis van IP-adressen mag niet worden uitgevoerd om de uitgaande verbinding te beheren.
+> Azure Site Recovery IP-adressen mogen niet worden toegevoegd aan de Azure-routerings tabel om de uitgaande verbinding te beheren.
 
 ## <a name="outbound-connectivity-for-urls"></a>Uitgaande connectiviteit voor URL's
 
 Als u een firewall proxy op basis van een URL gebruikt voor het beheren van uitgaande connectiviteit, kunt u deze Site Recovery Url's toestaan:
-
->[!NOTE]
-> Filteren op basis van IP-adressen mag niet worden uitgevoerd om de uitgaande verbinding te beheren.
 
 **URL** | **Details**
 --- | ---
@@ -59,7 +59,7 @@ login.microsoftonline.com | Vereist voor autorisatie en verificatie voor de Url'
 
 ## <a name="outbound-connectivity-using-service-tags"></a>Uitgaande connectiviteit met Service Tags
 
-Als u een NSG gebruikt om de uitgaande connectiviteit te beheren, moeten deze service tags worden toegestaan.
+Wanneer u NSG gebruikt om de uitgaande connectiviteit te beheren, moeten deze service tags worden toegestaan.
 
 - Voor de opslag accounts in de bron regio:
     - Maak een NSG-regel op basis van een [opslag service label](../virtual-network/security-overview.md#service-tags) voor de bron regio.

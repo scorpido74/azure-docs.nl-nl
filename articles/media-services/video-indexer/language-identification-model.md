@@ -11,13 +11,13 @@ ms.topic: article
 ms.date: 04/12/2020
 ms.author: ellbe
 ms.openlocfilehash: 3a71a29fdf4af10162e2f7961fb457d0e99b18e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81687126"
 ---
-# <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>Automatische identificatie van de gesp roken taal met taal identificatie model
+# <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>De gesproken taal automatisch identificeren met het taalidentificatiemodel
 
 Video Indexer ondersteunt automatische taal identificatie (deksel). Dit is het proces van het automatisch identificeren van de gesp roken taal van de audio en het verzenden van het Media bestand dat moet worden getranscribeerd in de taal die als dominant is geïdentificeerd. 
 
@@ -67,4 +67,4 @@ De dominante taal van het model is beschikbaar in de JSON Insights als het `sour
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Overzicht](video-indexer-overview.md)
-* [Meerdere talen inhoud automatisch identificeren en transcriberen](multi-language-identification-transcription.md)
+* [Inhoud in meerdere talen automatisch identificeren en transcriberen](multi-language-identification-transcription.md)

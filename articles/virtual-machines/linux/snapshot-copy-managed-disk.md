@@ -10,10 +10,10 @@ ms.date: 07/11/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 6374108247b9bfb950c42495b13b501ded8a02d2
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89317992"
 ---
 # <a name="create-a-snapshot-using-the-portal-or-azure-cli"></a>Een moment opname maken met behulp van de portal of Azure CLI
@@ -65,7 +65,7 @@ az snapshot list \
 5. Selecteer een bestaande resource groep of typ de naam van een nieuwe. 
 7. Voor de **bron schijf**selecteert u de beheerde schijf voor de moment opname.
 8. Het **account type** selecteren dat moet worden gebruikt voor het opslaan van de moment opname. Gebruik **Standard-HDD** tenzij u het hebt opgeslagen op een high-upssd.
-9. Klik op **Create**.
+9. Klik op **Maken**.
 
 
 ## <a name="next-steps"></a>Volgende stappen

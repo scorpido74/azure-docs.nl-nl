@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: 7bdb2c6ba6717624b19184ca3bcb47ee9b3da367
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 268455e582e54dfa8eb73fe81eaad19f453e303b
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91856106"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057889"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Wat is SQL Data Sync voor Azure?
 
@@ -136,7 +136,7 @@ Het inrichten en verwijderen van de inrichting tijdens het maken van een synchro
 - Wees voorzichtig wanneer u de volgende gegevens typen als primaire sleutel gebruikt, omdat de ondersteunde precisie alleen geldt voor de tweede: time, datetime, DATETIME2, date time offset.
 - De namen van objecten (data bases, tabellen en kolommen) mogen niet de periode van het afdruk bare teken (.), het linker vier Kante haakje ([) of de rechter rechte haak (]) bevatten.
 - Azure Active Directory-verificatie wordt niet ondersteund.
-- Tabellen met dezelfde naam maar een ander schema (bijvoorbeeld dbo. klanten en Sales. klanten) worden niet ondersteund.
+- Als er tabellen met dezelfde naam maar een ander schema zijn (bijvoorbeeld dbo. klanten en Sales. klanten), kan slechts één van de tabellen worden toegevoegd aan de synchronisatie.
 - Kolommen met User-Defined gegevens typen worden niet ondersteund
 - Het verplaatsen van servers tussen verschillende abonnementen wordt niet ondersteund. 
 
@@ -156,7 +156,7 @@ Met gegevens synchronisatie kunnen alleen-lezen of door het systeem gegenereerde
 
 #### <a name="limitations-on-service-and-database-dimensions"></a>Beperkingen voor service-en database dimensies
 
-| **Dimensies**                                                  | **Limiet**              | **Tijdelijke oplossing**              |
+| **Afmetingen**                                                  | **Limiet**              | **Tijdelijke oplossing**              |
 |-----------------------------------------------------------------|------------------------|-----------------------------|
 | Het maximum aantal synchronisatie groepen waarvan elke Data Base deel kan uitmaken.       | 5                      |                             |
 | Maximum aantal eind punten in één synchronisatie groep              | 30                     |                             |
@@ -250,7 +250,7 @@ Moet u het schema van een data base in een synchronisatie groep bijwerken? Wijzi
 - [De replicatie van schema wijzigingen automatiseren met SQL Data Sync in azure](../../sql-database/sql-database-update-sync-schema.md)
 - [PowerShell gebruiken voor het bijwerken van het synchronisatieschema in een bestaande synchronisatiegroep](scripts/update-sync-schema-in-sync-group.md)
 
-### <a name="monitor-and-troubleshoot"></a>Controleren en problemen oplossen
+### <a name="monitor-and-troubleshoot"></a>Bewaken en problemen oplossen
 
 Wordt SQL Data Sync als verwachting uitgevoerd? Raadpleeg de volgende artikelen voor informatie over het bewaken van activiteiten en het oplossen van problemen:
 

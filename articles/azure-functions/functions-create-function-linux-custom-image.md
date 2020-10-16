@@ -5,16 +5,18 @@ ms.date: 03/30/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 1a29b8cfbc07e1232ffee788da8d195d39b9ca93
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 7940e0f90e29e5c69ccde79dfbec889dbe31fe63
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531641"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758979"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Een functie in Linux maken met een aangepaste container
 
 In deze zelfstudie maakt en implementeert u uw code in Azure Functions als een aangepaste Docker-container met behulp van een Linux-basisinstallatiekopie. Een aangepaste installatiekopie gebruikt u meestal wanneer uw functies een specifieke taalversie nodig hebben of een specifieke afhankelijkheid of configuratie vereisen die niet wordt aangeboden door de ingebouwde installatiekopie.
+
+Om uw functiecode te implementeren in een aangepaste Linux-container is hosting met een [Premium-abonnement](functions-premium-plan.md#features) of een [Dedicated (App Service)-abonnement](functions-scale.md#app-service-plan) vereist. Bij het voltooien van deze zelfstudie worden er kosten ter hoogte van een paar Amerikaanse dollars in rekening gebracht op uw Azure-account. U kunt deze kosten minimaliseren door [resources op te schonen](#clean-up-resources) wanneer u klaar bent.
 
 U kunt ook een standaardcontainer van Azure App Service gebruiken, zoals wordt beschreven in [Create your first function hosted on Linux](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python) (Uw eerste functie maken die wordt gehost in Linux). Ondersteunde basisinstallatie kopieën voor Azure Functions vindt u in de [opslagplaats voor basisinstallatiekopieën van Azure Functions](https://hub.docker.com/_/microsoft-azure-functions-base).
 
@@ -31,7 +33,7 @@ In deze zelfstudie leert u het volgende:
 > * SSH-verbindingen naar de container inschakelen.
 > * Een uitvoerbinding voor Queue Storage toevoegen. 
 
-U kunt deze zelfstudie volgen op elke computer met Windows, macOS of Linux. Als u de zelfstudie voltooit, worden er kosten ter hoogte van een paar Amerikaanse dollars in rekening gebracht in uw Azure-account.
+U kunt deze zelfstudie volgen op elke computer met Windows, macOS of Linux. 
 
 [!INCLUDE [functions-requirements-cli](../../includes/functions-requirements-cli.md)]
 
@@ -243,7 +245,7 @@ U gebruikt opdrachten van de Azure CLI om deze items te maken. Elke opdracht bie
     az functionapp plan create --resource-group AzureFunctionsContainers-rg --name myPremiumPlan --location westeurope --number-of-workers 1 --sku EP1 --is-linux
     ```   
 
-    Linux-hosting voor aangepaste functiecontainers wordt ondersteund in [toegewezen abonnementen (App Service)](functions-scale.md#app-service-plan) en [Premium-abonnementen](functions-premium-plan.md#features). We gebruiken hier het Premium-abonnement, maar dit kan naar behoefte worden aangepast. Zie [deze vergelijking van hostingabonnementen van Azure Functions](functions-scale.md) voor meer informatie over hosting. Zie de [pagina met prijzen voor Functions](https://azure.microsoft.com/pricing/details/functions/) om de kosten te berekenen.
+    We gebruiken hier het Premium-abonnement, maar dit kan naar behoefte worden aangepast. Zie [deze vergelijking van hostingabonnementen van Azure Functions](functions-scale.md) voor meer informatie over hosting. Zie de [pagina met prijzen voor Functions](https://azure.microsoft.com/pricing/details/functions/) om de kosten te berekenen.
 
     Met deze opdracht wordt in dezelfde resourcegroep ook een gekoppelde instantie van Azure Application Insights ingericht, waarmee u uw functie-app kunt bewaken en logboeken kunt weergeven. Zie [Monitor Azure Functions](functions-monitoring.md) (Azure Functions bewaken) voor meer informatie. Er worden pas kosten in rekening gebracht voor de instantie als u deze activeert.
 

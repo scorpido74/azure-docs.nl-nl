@@ -8,12 +8,12 @@ ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 8ccd9120937148043590d30232acd6b556b09dc6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 56f98d41fc73cdd2be0923de66a5af09c875a050
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015269"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013590"
 ---
 # <a name="manage-database-roles-and-users"></a>Database rollen en-gebruikers beheren
 
@@ -26,7 +26,7 @@ Rolmachtigingen zijn onder andere:
 *  **Proces** : gebruikers kunnen verbinding maken met en proces bewerkingen uitvoeren op de data base en model database gegevens analyseren.
 *  **Lezen** -gebruikers kunnen een client toepassing gebruiken om verbinding te maken met de model database gegevens en deze te analyseren.
 
-Bij het maken van een tabellaire model project maakt u rollen en voegt u gebruikers of groepen toe aan die rollen met behulp van Role Manager in Visual Studio met Analysis Services-projecten. Gebruik SQL Server Management Studio (SSMS), [Analysis Services Power shell-cmdlets](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)of [Tabellaire model scripting language](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) (TMSL) om rollen en gebruikers leden toe te voegen of te verwijderen wanneer deze op een server worden geïmplementeerd.
+Bij het maken van een tabellaire model project maakt u rollen en voegt u gebruikers of groepen toe aan die rollen met behulp van Role Manager in Visual Studio met Analysis Services-projecten. Gebruik SQL Server Management Studio (SSMS), [Analysis Services Power shell-cmdlets](/analysis-services/powershell/analysis-services-powershell-reference)of [Tabellaire model scripting language](/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) (TMSL) om rollen en gebruikers leden toe te voegen of te verwijderen wanneer deze op een server worden geïmplementeerd.
 
 Gebruik wanneer u een **beveiligings groep**toevoegt `obj:groupid@tenantid` .
 
@@ -85,7 +85,7 @@ Als u functies en gebruikers wilt toevoegen aan een geïmplementeerde model data
 
 ## <a name="to-add-roles-and-users-by-using-a-tmsl-script"></a>Rollen en gebruikers toevoegen met behulp van een TMSL-script
 
-U kunt een TMSL-script uitvoeren in het XMLA-venster in SSMS of met behulp van Power shell. Gebruik de opdracht [CreateOrReplace](https://docs.microsoft.com/analysis-services/tmsl/createorreplace-command-tmsl) en het object [roles](https://docs.microsoft.com/analysis-services/tmsl/roles-object-tmsl) .
+U kunt een TMSL-script uitvoeren in het XMLA-venster in SSMS of met behulp van Power shell. Gebruik de opdracht [CreateOrReplace](/analysis-services/tmsl/createorreplace-command-tmsl) en het object [roles](/analysis-services/tmsl/roles-object-tmsl) .
 
 **Voor beeld van TMSL-script**
 
@@ -119,13 +119,13 @@ In dit voor beeld worden een B2B externe gebruiker en een groep toegevoegd aan d
 
 ## <a name="to-add-roles-and-users-by-using-powershell"></a>Rollen en gebruikers toevoegen met behulp van Power shell
 
-De [sqlserver](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) -module biedt taak-specifieke data base management-cmdlets en de cmdlet invoke-ASCmd voor algemeen gebruik die een TMSL-query (Tabellair model scripting language) of script accepteert. De volgende cmdlets worden gebruikt voor het beheren van database rollen en-gebruikers.
+De [sqlserver](/analysis-services/powershell/analysis-services-powershell-reference) -module biedt gebruikersspecifieke data base management-cmdlets en de Invoke-ASCmd cmdlet voor algemeen gebruik die een TMSL-query (Tabellair model scripting language) of script accepteert. De volgende cmdlets worden gebruikt voor het beheren van database rollen en-gebruikers.
   
 |Cmdlet|Beschrijving|
 |------------|-----------------| 
-|[Add-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/Add-RoleMember)|Een lid toevoegen aan een databaserol.| 
-|[Remove-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/remove-rolemember)|Een lid uit een databaserol verwijderen.|   
-|[Invoke-ASCmd](https://docs.microsoft.com/powershell/module/sqlserver/invoke-ascmd)|Voer een TMSL-script uit.|
+|[Add-RoleMember](/powershell/module/sqlserver/Add-RoleMember)|Een lid toevoegen aan een databaserol.| 
+|[Remove-RoleMember](/powershell/module/sqlserver/remove-rolemember)|Een lid uit een databaserol verwijderen.|   
+|[Invoke-ASCmd](/powershell/module/sqlserver/invoke-ascmd)|Voer een TMSL-script uit.|
 
 ## <a name="row-filters"></a>Rijgegevens  
 
@@ -151,5 +151,4 @@ Rijgegevens zijn van toepassing op de opgegeven rijen en gerelateerde rijen. Wan
 
   [Server beheerders beheren](analysis-services-server-admins.md)   
   [Azure Analysis Services beheren met PowerShell](analysis-services-powershell.md)  
-  [Naslag informatie over tabellaire model scripting language (TMSL)](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference)
-
+  [Naslag informatie over tabellaire model scripting language (TMSL)](/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference)

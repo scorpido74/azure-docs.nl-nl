@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: afa95609e0bcb879b6ad4b3b50b5dff5feb9a9f7
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 5498fd83efa0fa52f5f0861588eaa8cdeb0953ac
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682787"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371793"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Uw factureringsrekening configureren voor een Microsoft-klantovereenkomst
 
@@ -132,7 +132,7 @@ Azure-services in uw abonnement worden zonder onderbreking uitgevoerd. We zetten
 
 ### <a name="user-access-to-azure-resources"></a>Gebruikerstoegang tot Azure-resources
 
-Toegang tot Azure-resources die is ingesteld met Azure RBAC (op rollen gebaseerd toegangsbeheer) wordt niet beïnvloed tijdens de overgang.
+Toegang tot Azure-resources die is ingesteld met op rollen gebaseerd toegangsbeheer van Azure (Azure RBAC) wordt niet beïnvloed tijdens de overgang.
 
 ### <a name="azure-reservations"></a>Azure-reserveringen
 
@@ -225,7 +225,7 @@ Alle Azure-reserveringen in uw Enterprise Agreement-inschrijving worden verplaat
 
 4. Selecteer **Toegangsbeheer (IAM)** aan de linkerzijde.
 
-   ![Schermopname met toegang van ondernemingsbeheerders na de overgang](./media/mca-setup-account/mca-ea-admins-ba-access-post-transition.png)
+   ![Schermopname met toegang van ondernemingsbeheerders die na de overgang worden vermeld als eigenaar van de factureringsrekening.](./media/mca-setup-account/mca-ea-admins-ba-access-post-transition.png)
 
 Ondernemingsbeheerders worden vermeld als eigenaar van de factureringsrekening terwijl de ondernemingsbeheerders met alleen-lezen machtigingen worden vermeld als lezers van de factureringsrekening. Als u denkt dat toegang voor een ondernemingsbeheerder ontbreekt, geeft u hen toegang in de Azure-portal. Raadpleeg [Factureringsrollen beheren in de Azure-portal](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal) voor meer informatie.
 
@@ -241,7 +241,7 @@ Ondernemingsbeheerders worden vermeld als eigenaar van de factureringsrekening t
 
 4. Selecteer **Toegangsbeheer (IAM)** aan de linkerzijde.
 
-   ![Schermopname met toegang van ondernemingsbeheerders na de overgang](./media/mca-setup-account/mca-ea-admins-bp-access-post-transition.png)
+   ![Schermopname met toegang van ondernemingsbeheerders die na de overgang worden vermeld als eigenaar van het factureringsprofiel.](./media/mca-setup-account/mca-ea-admins-bp-access-post-transition.png)
 
 Ondernemingsbeheerders worden vermeld als eigenaar van factureringsprofielen terwijl de ondernemingsbeheerders met alleen-lezenmachtiging worden vermeld als factureringsprofiellezers. Als u denkt dat toegang voor een ondernemingsbeheerder ontbreekt, geeft u hen toegang in de Azure-portal. Raadpleeg [Factureringsrollen beheren in de Azure-portal](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal) voor meer informatie.
 

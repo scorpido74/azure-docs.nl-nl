@@ -9,10 +9,10 @@ ms.date: 09/24/2020
 ms.author: jingwang
 ms.custom: include file
 ms.openlocfilehash: f3678045eae269429909f7ba0e007e13d2b02bc6
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91422044"
 ---
 | Categorie | Gegevensarchief |
@@ -61,7 +61,7 @@ ms.locfileid: "91422044"
 | **NoSQL** |[Cassandra](../articles/data-factory/connector-cassandra.md) |
 | &nbsp; |[Couchbase (preview)](../articles/data-factory/connector-couchbase.md) |
 | **File** |[Amazon S3](../articles/data-factory/connector-amazon-simple-storage-service.md) |
-| &nbsp; |[Bestandssysteem](../articles/data-factory/connector-file-system.md) |
+| &nbsp; |[Bestands systeem](../articles/data-factory/connector-file-system.md) |
 | &nbsp; |[FTP](../articles/data-factory/connector-ftp.md) |
 | &nbsp; |[Google Cloud Storage](../articles/data-factory/connector-google-cloud-storage.md) |
 | &nbsp; |[HDFS](../articles/data-factory/connector-hdfs.md) |

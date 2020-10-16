@@ -7,12 +7,12 @@ ms.date: 3/10/2020
 ms.topic: conceptual
 ms.service: iot-edge
 ms.reviewer: arduppal
-ms.openlocfilehash: da163e902d06bd98ac47a24256cb809cb222173b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b5b7b45cc52d900e5ecde59e6a5ae203533286b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80804619"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978863"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>De Azure Blob Storage op de IoT Edge-module implementeren naar uw apparaat
 
@@ -21,7 +21,10 @@ Er zijn verschillende manieren om modules op een IoT Edge apparaat te implemente
 ## <a name="prerequisites"></a>Vereisten
 
 - Een [IOT-hub](../iot-hub/iot-hub-create-through-portal.md) in uw Azure-abonnement.
-- Een [IOT edge apparaat](how-to-register-device.md) waarop de IOT Edge-runtime is geïnstalleerd.
+- Een IoT Edge-apparaat.
+
+  Als u geen IoT Edge apparaat hebt ingesteld, kunt u er een maken in een virtuele Azure-machine. Volg de stappen in een van de Quick Start-artikelen voor het [maken van een virtueel Linux-apparaat](quickstart-linux.md) of [het maken van een virtueel Windows-apparaat](quickstart.md).
+
 - [Visual Studio code](https://code.visualstudio.com/) en de [Azure IOT-hulpprogram ma's](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) bij het implementeren vanuit Visual Studio code.
 
 ## <a name="deploy-from-the-azure-portal"></a>Implementeren vanuit de Azure Portal
@@ -203,10 +206,10 @@ Azure IoT Edge biedt sjablonen in Visual Studio code om u te helpen bij het ontw
      - Voor Linux-containers is de indeling ** \<your storage path or volume> :/blobroot**. Bijvoorbeeld:
          - [volume koppeling](https://docs.docker.com/storage/volumes/)gebruiken:`my-volume:/blobroot`
          - [binding koppelen](https://docs.docker.com/storage/bind-mounts/)gebruiken: `/srv/containerdata:/blobroot` . Volg de stappen om [Directory toegang te verlenen aan de container gebruiker](how-to-store-data-blob.md#granting-directory-access-to-container-user-on-linux)
-     - Voor Windows-containers is de indeling ** \<your storage path or volume> : C:/BlobRoot**. Bijvoorbeeld
-         - [volume koppeling](https://docs.docker.com/storage/volumes/)gebruiken: `my-volume:C:/BlobRoot` .
-         - [binding koppelen](https://docs.docker.com/storage/bind-mounts/)gebruiken: `C:/ContainerData:C:/BlobRoot` .
-         - In plaats van uw lokale station te gebruiken, kunt u uw SMB-netwerk locatie toewijzen voor meer informatie Raadpleeg [SMB share gebruiken als uw lokale opslag](how-to-store-data-blob.md#using-smb-share-as-your-local-storage)
+     - Voor Windows-containers is de indeling ** \<your storage path or volume> : C:/BlobRoot**. Bijvoorbeeld:
+         - [Volume koppeling](https://docs.docker.com/storage/volumes/)gebruiken: `my-volume:C:/BlobRoot` .
+         - [Binding koppelen](https://docs.docker.com/storage/bind-mounts/)gebruiken: `C:/ContainerData:C:/BlobRoot` .
+         - In plaats van uw lokale station te gebruiken, kunt u uw SMB-netwerk locatie toewijzen. Zie [SMB-share gebruiken als lokale opslag](how-to-store-data-blob.md#using-smb-share-as-your-local-storage)voor meer informatie.
 
      > [!IMPORTANT]
      > Wijzig de tweede helft van de opslag koppelings waarde niet, die verwijst naar een specifieke locatie in het Blob Storage op IoT Edge-module. De opslag koppeling moet altijd eindigen op **:/blobroot** for Linux-containers en **: C:/blobroot** voor Windows-containers.
@@ -271,7 +274,7 @@ Dit proces wordt beschreven in [een IOT edge apparaat configureren om te communi
 
 Daarnaast moet voor een Blob Storage-module ook de HTTPS_PROXY-instelling in het manifest bestand van de toepassing zijn. U kunt het manifest bestand van de implementatie rechtstreeks bewerken of de Azure Portal gebruiken.
 
-1. Navigeer naar uw IOT-hub in het Azure Portal en selecteer **IOT Edge** in het menu van het linkerdeel venster.
+1. Navigeer naar uw IOT-hub in de Azure Portal en selecteer **IOT Edge** in het menu van het linkerdeel venster.
 
 1. Selecteer het apparaat met de module die u wilt configureren.
 

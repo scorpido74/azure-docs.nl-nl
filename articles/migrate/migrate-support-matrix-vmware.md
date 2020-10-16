@@ -4,10 +4,10 @@ description: Meer informatie over ondersteuning voor VMware VM-evaluatie met Azu
 ms.topic: conceptual
 ms.date: 06/08/2020
 ms.openlocfilehash: f672c90f6056cd735d5ddc8dd96de9e7007999ce
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91667789"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Ondersteunings matrix voor VMware-evaluatie 
@@ -23,7 +23,7 @@ Als u virtuele VMware-machines wilt migreren naar Azure, raadpleegt u de [onders
 **Ondersteuning** | **Details**
 --- | ---
 **Project limieten** | U kunt meerdere projecten maken in een Azure-abonnement.<br/><br/> U kunt Maxi maal 35.000 VMware-Vm's in één [project](migrate-support-matrix.md#azure-migrate-projects)detecteren en beoordelen. Een project kan ook fysieke servers en virtuele Hyper-V-machines bevatten, tot aan de evaluatie limieten voor elke.
-**Detectie** | Het Azure Migrate-apparaat kan Maxi maal 10.000 VMware-Vm's detecteren op een vCenter Server.
+**Discovery** (Detectie) | Het Azure Migrate-apparaat kan Maxi maal 10.000 VMware-Vm's detecteren op een vCenter Server.
 **Evaluatie** | U kunt Maxi maal 35.000 computers in één groep toevoegen.<br/><br/> U kunt Maxi maal 35.000 Vm's in één evaluatie evalueren.
 
 Meer [informatie](concepts-assessment-calculation.md) over evaluaties.
@@ -67,7 +67,7 @@ Naast het detecteren van computers kunnen server analyses apps, rollen en functi
 **Ondersteuning** | **Details**
 --- | ---
 **Ondersteunde computers** | App-detectie wordt momenteel alleen ondersteund voor virtuele VMware-machines.
-**Detectie** | App-detectie is zonder agent. Hierbij worden de gast referenties van de machine gebruikt en kunnen computers op afstand worden benaderd met WMI-en SSH-aanroepen.
+**Discovery** (Detectie) | App-detectie is zonder agent. Hierbij worden de gast referenties van de machine gebruikt en kunnen computers op afstand worden benaderd met WMI-en SSH-aanroepen.
 **VM-ondersteuning** | App-Discovery wordt ondersteund voor Vm's waarop alle Windows-en Linux-versies worden uitgevoerd.
 **vCenter** | Het vCenter Server alleen-lezen account dat wordt gebruikt voor de evaluatie, heeft bevoegdheden nodig die zijn ingeschakeld voor **virtual machines**  >  **gast bewerkingen**om te kunnen communiceren met de virtuele machine voor toepassings detectie.
 **VM-toegang** | App-detectie heeft een lokaal gebruikers account op de virtuele machine nodig voor toepassings detectie.<br/><br/> Azure Migrate biedt momenteel ondersteuning voor het gebruik van één referentie voor alle Windows-servers en één referentie voor alle Linux-servers.<br/><br/> U maakt een gast gebruikers account voor Windows-Vm's en een standaard/normaal gebruikers account (niet-sudo toegang) voor alle virtuele Linux-machines.

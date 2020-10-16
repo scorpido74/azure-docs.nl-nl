@@ -12,10 +12,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 ms.openlocfilehash: 6a8f39ae5d73bade2c86a7e15efe75956c2aed24
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87327562"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Real-time sensor gegevens visualiseren vanuit uw Azure IoT hub in een webtoepassing
@@ -254,7 +254,7 @@ Als u problemen ondervindt met dit voor beeld, probeert u de stappen in de volge
 
 * Ga in Azure Portal naar uw web-app. Selecteer onder **bewaking** in het linkerdeel venster de optie **app service logboeken**. Schakel **toepassings Logboeken (bestands systeem)** in op, stel **niveau** in op fout en selecteer vervolgens **Opslaan**. Open vervolgens **logboek stroom** (onder **bewaking**).
 
-* Vanuit uw web-app in Azure Portal selecteert u onder **ontwikkelingsprogram Ma's** **console** en valideert u node-en NPM-versies met `node -v` en `npm -v` .
+* Vanuit uw web-app in Azure Portal selecteert u onder **ontwikkelingsprogram Ma's**  **console** en valideert u node-en NPM-versies met `node -v` en `npm -v` .
 
 * Als er een fout bericht wordt weer geven over het niet vinden van een pakket, kunt u de stappen in de juiste volg orde uitvoeren. Wanneer de site wordt geïmplementeerd (met `git push` ), wordt de app service uitgevoerd `npm install` , die wordt uitgevoerd op basis van de huidige versie van het knoop punt dat is geconfigureerd. Als dat later in de configuratie wordt gewijzigd, moet u een betekenisloze wijziging aanbrengen in de code en de push bewerking opnieuw uitvoeren.
 

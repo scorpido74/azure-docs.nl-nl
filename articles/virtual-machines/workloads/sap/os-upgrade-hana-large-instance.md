@@ -14,10 +14,10 @@ ms.date: 07/04/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8485f3474da18e052bc0eab6c053be084ef884a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82192413"
 ---
 # <a name="operating-system-upgrade"></a>Upgrade van besturings systeem
@@ -95,7 +95,7 @@ SAP on Azure HANA grote instanties (type I) kunnen na de upgrade een niet-opstar
 
 
 *   `multipath -ll`Opdracht uitvoeren.
-*   Haal de LUN-ID op waarvan de grootte ongeveer 50G is of gebruik de opdracht:`fdisk -l | grep mapper`
+*   Haal de LUN-ID op waarvan de grootte ongeveer 50G is of gebruik de opdracht: `fdisk -l | grep mapper`
 *   `/etc/default/grub_installdevice`Bestand bijwerken met regel `/dev/mapper/<LUN ID>` . Voor beeld:/dev/mapper/3600a09803830372f483f495242534a56
 >[!NOTE]
 >LUN-ID varieert van server naar server.
@@ -110,7 +110,7 @@ SAP on Azure HANA grote instanties (type I) kunnen na de upgrade een niet-opstar
 ```
 lsmod | grep -i edac 
 ```
-* De modules uitschakelen door de volgende regels toe te voegen aan het bestand`/etc/modprobe.d/blacklist.conf`
+* De modules uitschakelen door de volgende regels toe te voegen aan het bestand `/etc/modprobe.d/blacklist.conf`
 ```
 blacklist sb_edac
 blacklist edac_core
@@ -121,8 +121,8 @@ De computer moet opnieuw worden opgestart om wijzigingen te kunnen aanbrengen. `
 ### <a name="kernel-parameters"></a>Kernel-para meters
    Zorg ervoor dat de juiste instelling `transparent_hugepage` voor `numa_balancing` , `processor.max_cstate` , `ignore_ce` en `intel_idle.max_cstate` wordt toegepast.
 
-* intel_idle. max_cstate = 1
-* processor. max_cstate = 1
+* intel_idle intel_idle.max_cstate = 1
+* processor.max_cstate = 1
 * transparent_hugepage = nooit
 * numa_balancing = uitschakelen
 * MCE = ignore_ce
@@ -130,7 +130,7 @@ De computer moet opnieuw worden opgestart om wijzigingen te kunnen aanbrengen. `
 
 #### <a name="execution-steps"></a>Uitvoerings stappen
 
-* Deze para meters toevoegen aan de `GRB_CMDLINE_LINUX` regel in het bestand`/etc/default/grub`
+* Deze para meters toevoegen aan de `GRB_CMDLINE_LINUX` regel in het bestand `/etc/default/grub`
 ```
 intel_idle.max_cstate=1 processor.max_cstate=1 transparent_hugepage=never numa_balancing=disable mce=ignore_ce
 ```

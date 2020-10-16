@@ -10,12 +10,12 @@ author: saachigopal
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 8239d037d6bd68638998cbb36c47c7dac4bce30d
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 13a88b327b5ba56b52cd4f08d9c7fae5d653ed38
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91537613"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92095939"
 ---
 # <a name="train-a-model-using-a-custom-docker-image"></a>Een model trainen met een aangepaste docker-installatie kopie
 
@@ -29,7 +29,7 @@ Hoewel Azure Machine Learning een standaard docker-basis installatie kopie biedt
 Voer deze code uit in een van de volgende omgevingen:
 * Azure Machine Learning Compute-instantie-geen down loads of installatie vereist
     * Voltooi de [zelf studie: installatie omgeving en werk ruimte](tutorial-1st-experiment-sdk-setup.md) om een toegewezen notebook server te maken vooraf geladen met de SDK en de voor beeld-opslag plaats.
-    * Zoek in de [opslag plaats](https://github.com/Azure/azureml-examples)Azure machine learning een voltooid notitie blok door naar deze map te navigeren: **How to use-azureml > ml-frameworks > fastai > Train-with-custom-docker** 
+    * Zoek in het Azure Machine Learning- [voor beeld-opslag plaats](https://github.com/Azure/azureml-examples)een voltooid notitie blok door naar deze map te navigeren: **notebooks > fastai > Train-huis dieren-resnet34. ipynb** 
 
 * Uw eigen Jupyter Notebook-server
     * Maak een [configuratie bestand voor de werk ruimte](how-to-configure-environment.md#workspace).

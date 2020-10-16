@@ -9,10 +9,10 @@ ms.date: 02/25/2019
 ms.author: duau
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 460ea446fc6dfc43e81a1a57bbba032a61f3a72d
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90532542"
 ---
 # <a name="move-expressroute-circuits-from-classic-to-resource-manager-deployment-model-using-powershell"></a>ExpressRoute-circuits verplaatsen van klassiek naar Resource Manager-implementatie model met behulp van Power shell
@@ -92,7 +92,7 @@ Wijzig en voer het volgende code fragment uit om het circuit te verplaatsen:
 Move-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -Location "West US" -ServiceKey "<Service-key>"
 ```
 
-In de klassieke modus is een ExpressRoute-circuit niet in staat om te worden gekoppeld aan een regio. In Resource Manager moet elke resource echter worden toegewezen aan een Azure-regio. De regio die is opgegeven in de cmdlet Move-AzExpressRouteCircuit kan technisch een wille keurige regio zijn. Voor organisatie doeleinden wilt u mogelijk een regio kiezen die de locatie van uw peering nauw keurig weergeeft.
+In de klassieke modus is een ExpressRoute-circuit niet in staat om te worden gekoppeld aan een regio. In Resource Manager moet elke resource echter worden toegewezen aan een Azure-regio. De regio die is opgegeven in de Move-AzExpressRouteCircuit cmdlet, kan in elk land worden beschouwd. Voor organisatie doeleinden wilt u mogelijk een regio kiezen die de locatie van uw peering nauw keurig weergeeft.
 
 > [!NOTE]
 > * Nadat u uw klassieke ExpressRoute-circuit naar het Resource Manager-implementatie model hebt verplaatst, heeft het standaard toegang tot de klassieke en Resource Manager-implementatie modellen.

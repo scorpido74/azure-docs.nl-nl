@@ -9,10 +9,10 @@ ms.date: 04/08/2020
 ms.reviewer: sngun
 ms.custom: seodec18
 ms.openlocfilehash: 4cd0ad1553f04a781349a4664fbb408108015632
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88510280"
 ---
 # <a name="change-feed-in-azure-cosmos-db"></a>Wijzigingenfeed in Azure Cosmos DB
@@ -25,7 +25,7 @@ Meer informatie over [ontwerp patronen voor veranderingen in feeds](change-feed-
 
 Deze functie wordt momenteel ondersteund door de volgende Azure Cosmos DB-Api's en client-Sdk's.
 
-| **Clientstuurprogramma's** | **SQL-API** | **API van Azure Cosmos DB voor Cassandra** | **Azure Cosmos DB-API voor MongoDB** | **Gremlin-API**|**Table-API** |
+| **Client Stuur Programma's** | **SQL-API** | **API van Azure Cosmos DB voor Cassandra** | **Azure Cosmos DB-API voor MongoDB** | **Gremlin-API**|**Table-API** |
 | --- | --- | --- | --- | --- | --- | --- |
 | .NET | Ja | Ja | Ja | Ja | Nee |
 |Java|Ja|Ja|Ja|Ja|Nee|

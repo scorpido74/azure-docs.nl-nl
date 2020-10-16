@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b99ac957c9c5030b484b244223847be4aa53a39d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 174ad4692d043390e6773a98e31f0985d75c8e2e
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749081"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018811"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Ondersteunde gegevensbronnen in Azure Analysis Services
 
@@ -23,7 +23,7 @@ Gegevens bronnen en connectors die worden weer gegeven in de wizard gegevens oph
 |Gegevensbron  |In het geheugen  |DirectQuery  |Opmerkingen |
 |---------|---------|---------|---------|
 |Azure SQL Database      |   Ja      |    Ja      |<sup>[2](#azprovider)</sup>, <sup> [3](#azsqlmanaged)</sup>|
-|Azure Synapse Analytics (SQL DW)      |   Ja      |   Ja       |<sup>[twee](#azprovider)</sup>|
+|Azure Synapse Analytics (SQL DW)      |   Ja      |   Ja       |<sup>[2](#azprovider)</sup>|
 |Azure Blob Storage      |   Ja       |    Nee      | <sup>[i](#tab1400a)</sup> |
 |Azure Table Storage     |   Ja       |    Nee      | <sup>[i](#tab1400a)</sup>|
 |Azure Cosmos DB     |  Ja        |  Nee        |<sup>[i](#tab1400a)</sup> |
@@ -46,40 +46,40 @@ Gegevens bronnen en connectors die worden weer gegeven in de wizard gegevens oph
 |Gegevensbron | In het geheugen | DirectQuery |Opmerkingen   |
 |  --- | --- | --- | --- |
 |Access-database     |  Ja | Nee |  |
-|Active Directory     |  Ja | Nee | <sup>[6,5](#tab1400b)</sup>  |
+|Active Directory     |  Ja | Nee | <sup>[6](#tab1400b)</sup>  |
 |Analysis Services     |  Ja | Nee |  |
 |Analytics platform systeem     |  Ja | Nee |  |
 |CSV-bestand  |Ja | Nee |  |
-|Dynamics 365     |  Ja | Nee | <sup>[6,5](#tab1400b)</sup> |
+|Dynamics 365     |  Ja | Nee | <sup>[6](#tab1400b)</sup> |
 |Excel-werkmap     |  Ja | Nee |  |
-|Exchange      |  Ja | Nee | <sup>[6,5](#tab1400b)</sup> |
-|Map      |Ja | Nee | <sup>[6,5](#tab1400b)</sup> |
+|Exchange      |  Ja | Nee | <sup>[6](#tab1400b)</sup> |
+|Map      |Ja | Nee | <sup>[6](#tab1400b)</sup> |
 |IBM Informix  |Ja | Nee |  |
-|JSON-document      |  Ja | Nee | <sup>[6,5](#tab1400b)</sup> |
-|Regels van binair bestand      | Ja | Nee | <sup>[6,5](#tab1400b)</sup> |
+|JSON-document      |  Ja | Nee | <sup>[6](#tab1400b)</sup> |
+|Regels van binair bestand      | Ja | Nee | <sup>[6](#tab1400b)</sup> |
 |MySQL-database     | Ja | Nee |  |
-|OData-feed      |  Ja | Nee | <sup>[6,5](#tab1400b)</sup> |
+|OData-feed      |  Ja | Nee | <sup>[6](#tab1400b)</sup> |
 |ODBC-query     | Ja | Nee |  |
 |OLE DB     |   Ja | Nee |  |
-|Oracle  | Ja  |Ja  | <sup>[9](#oracle)</sup> |
-|PostgreSQL-database   | Ja | Nee | <sup>[6,5](#tab1400b)</sup> |
-|Salesforce-objecten|  Ja | Nee | <sup>[6,5](#tab1400b)</sup> |
-|Salesforce-rapporten |Ja | Nee | <sup>[6,5](#tab1400b)</sup> |
+|Oracle  | Ja  |Ja  | <sup>[9,4](#oracle)</sup> |
+|PostgreSQL-database   | Ja | Nee | <sup>[6](#tab1400b)</sup> |
+|Salesforce-objecten|  Ja | Nee | <sup>[6](#tab1400b)</sup> |
+|Salesforce-rapporten |Ja | Nee | <sup>[6](#tab1400b)</sup> |
 |SAP HANA     |  Ja | Nee |  |
-|SAP Business Warehouse    |  Ja | Nee | <sup>[6,5](#tab1400b)</sup> |
+|SAP Business Warehouse    |  Ja | Nee | <sup>[6](#tab1400b)</sup> |
 |SharePoint-lijst      |   Ja | Nee | <sup>[6](#tab1400b)</sup>, <sup> [11](#filesSP)</sup> |
 |SQL Server |Ja   | Ja  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
 |SQL Server Data Warehouse |Ja   | Ja  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
 |Sybase-database     |  Ja | Nee |  |
 |Teradata | Ja  | Ja  | <sup>[6](#teradata)</sup> |
 |TXT-bestand  |Ja | Nee |  |
-|XML-tabel    |  Ja | Nee | <sup>[6,5](#tab1400b)</sup> |
+|XML-tabel    |  Ja | Nee | <sup>[6](#tab1400b)</sup> |
 | | | |
 
 **Opmerkingen:**  
 <a name="tab1400b">6</a> : alleen in tabel vorm 1400 en hoger.  
 <a name="sqlim">7</a> -als de gegevens bron van een *provider* is opgegeven in tabellaire 1200 en hoger, geeft u micro soft OLE DB driver op voor SQL Server MSOLEDBSQL (aanbevolen), SQL Server Native Client 11,0 of .NET Framework gegevens provider voor SQL Server.  
-<a name="instgw">8</a> -als MSOLEDBSQL als gegevens provider worden opgegeven, kan het nodig zijn om het [micro soft OLE DB-stuur programma voor SQL Server](https://docs.microsoft.com/sql/connect/oledb/oledb-driver-for-sql-server) te downloaden en te installeren op dezelfde computer als de on-premises gegevens gateway.  
+<a name="instgw">8</a> -als MSOLEDBSQL als gegevens provider worden opgegeven, kan het nodig zijn om het [micro soft OLE DB-stuur programma voor SQL Server](/sql/connect/oledb/oledb-driver-for-sql-server) te downloaden en te installeren op dezelfde computer als de on-premises gegevens gateway.  
 <a name="oracle">9</a> : Geef de Oracle 1200-gegevens provider voor .net op, of als een *provider* gegevens bron in tabellaire 1400 en-modellen. Zorg ervoor dat u [Oracle Managed Provider inschakelt](#enable-oracle-managed-provider), indien opgegeven als een gestructureerde gegevens bron.   
 <a name="teradata">10</a> -voor in tabel 1200-modellen, of als gegevens bron van een *provider* in tabellaire 1400 + modellen, geeft u de Teradata-gegevens provider voor .net op.  
 <a name="filesSP">11</a> -bestanden in on-premises share point worden niet ondersteund.

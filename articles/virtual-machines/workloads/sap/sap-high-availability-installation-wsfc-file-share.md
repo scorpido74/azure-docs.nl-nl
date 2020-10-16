@@ -17,10 +17,10 @@ ms.date: 08/04/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3a6d3d4c791cebdee02d7d2c739be3b32b8086ec
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87760886"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>Een hoge Beschik baarheid van SAP NetWeaver installeren op een Windows-failovercluster en een bestands share voor SAP ASCS/SCS-exemplaren in azure
@@ -197,7 +197,7 @@ ms.locfileid: "87760886"
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
-In dit artikel wordt beschreven hoe u een SAP-systeem met hoge Beschik baarheid installeert en configureert op Azure met behulp van WSFC (Windows Server failover cluster) en Scale-out bestandsserver als optie voor het clusteren van SAP ASCS/SCS-instanties.
+In dit artikel wordt beschreven hoe u een SAP-systeem met hoge Beschik baarheid installeert en configureert op Azure met behulp van WSFC (Windows Server failover cluster) en Scale-Out Bestands server als optie voor het clusteren van SAP ASCS/SCS-instanties.
 
 ## <a name="prerequisites"></a>Vereisten
 

@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
 ms.openlocfilehash: 19db4fb0d75369a0f272eef1180e86f47d45d284
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91335327"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Het kaartbesturingselement in Azure Maps gebruiken
@@ -198,7 +198,7 @@ U kunt een kaart insluiten in een webpagina met behulp van de Map Control java s
 
    ![Kaart afbeelding die het gegenereerde resultaat weergeeft](./media/how-to-use-map-control/map-of-seattle.png)
 
-## <a name="localizing-the-map"></a>De kaart lokaliseren
+## <a name="localizing-the-map"></a>Lokaliseren van de kaart
 
 Azure Maps biedt twee verschillende manieren om de taal-en regionale weer gave voor de gerenderde kaart in te stellen. De eerste optie is om deze informatie toe te voegen aan de globale `atlas` naam ruimte, wat resulteert in alle instanties van de kaart besturing in uw app die standaard worden ingesteld op deze instellingen. Hiermee stelt u de taal in op Frans ("fr-FR") en de regionale weer gave op ' auto ':
 
@@ -254,12 +254,12 @@ Als u rechtstreeks toegang hebt tot de Azure Maps REST-services, wijzigt u het U
 
 ## <a name="javascript-frameworks"></a>Java script-Frameworks
 
-Bij het ontwikkelen met behulp van een Java script-Framework kan een van de volgende open source-projecten nuttig zijn:
+Bij het ontwikkelen met behulp van een JavaScript-framework kan een van de volgende opensource-projecten nuttig zijn:
 
-- [aardgas-Azure-Maps](https://github.com/arnaudleclerc/ng-azure-maps) -hoek 10-wrapper rond Azure Maps.
-- [AzureMapsControl. Components](https://github.com/arnaudleclerc/AzureMapsControl.Components) : een Azure Maps razendsnelle component.
-- [Azure Maps een reactie](https://github.com/WiredSolutions/react-azure-maps) van het onderdeel-een reactie op een wrapper voor het Azure Maps besturings element.
-- [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps) -een Azure Maps-onderdeel voor Vue-toepassing.
+- [ng-azure-maps](https://github.com/arnaudleclerc/ng-azure-maps): Angular 10-wrapper rond Azure Maps.
+- [AzureMapsControl.Components](https://github.com/arnaudleclerc/AzureMapsControl.Components): een Azure Maps Blazor-onderdeel.
+- [Azure Maps React-onderdeel](https://github.com/WiredSolutions/react-azure-maps): een react-wrapper voor het Azure Maps-besturingselement.
+- [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps): een Azure Maps-onderdeel voor de Vue-toepassing.
 
 ## <a name="next-steps"></a>Volgende stappen
 

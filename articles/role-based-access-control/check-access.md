@@ -1,6 +1,6 @@
 ---
-title: 'Snelstartgids: de toegang van een gebruiker tot Azure-resources weer geven-Azure RBAC'
-description: In deze Quick Start leert u hoe u de toegang tot een gebruiker of een andere beveiligingsprincipal kunt weer geven met Azure-resources met behulp van de Azure Portal en Azure op rollen gebaseerd toegangs beheer (Azure RBAC).
+title: 'Quickstart: de toegang weergeven die een gebruiker heeft tot Azure-resources - Azure RBAC'
+description: In deze quickstart leert u hoe u de toegang die een gebruiker of een andere beveiligings-principal heeft tot Azure-resources kunt weergeven via de Azure Portal en met op rollen gebaseerd toegangsbeheer (RBAC) van Azure.
 services: role-based-access-control
 documentationCenter: ''
 author: rolyon
@@ -15,15 +15,15 @@ ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 9be53aa964e75bab0b90495640537fe927a5af0e
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
-ms.translationtype: MT
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/03/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "82734158"
 ---
-# <a name="quickstart-view-the-access-a-user-has-to-azure-resources"></a>Snelstartgids: de toegang van een gebruiker tot Azure-resources weer geven
+# <a name="quickstart-view-the-access-a-user-has-to-azure-resources"></a>Snelstart: De toegang die een gebruiker heeft tot Azure-resources bekijken
 
-U kunt de Blade **toegangs beheer (IAM)** in [Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](overview.md) gebruiken om de toegang van een gebruiker of een andere beveiligings-principal te bekijken voor Azure-resources. Maar soms wilt u alleen snel de toegang van één gebruiker of een andere beveiligings-principal bekijken. De eenvoudigste manier om dit te doen, is met de functie **Toegang controleren** in de Azure-portal.
+U kunt de blade **Toegangsbeheer (IAM)** in [Op rollen gebaseerd toegangsbeheer van Azure (Azure RBAC)](overview.md) gebruiken om de toegang weer te geven die een gebruiker of een andere beveiligings-principal tot de Azure-resources heeft. Maar soms wilt u alleen snel de toegang van één gebruiker of een andere beveiligings-principal bekijken. De eenvoudigste manier om dit te doen, is met de functie **Toegang controleren** in de Azure-portal.
 
 ## <a name="view-role-assignments"></a>Roltoewijzingen weergeven
 
@@ -33,7 +33,7 @@ U kunt de Blade **toegangs beheer (IAM)** in [Azure op rollen gebaseerd toegangs
 
 1. Klik op uw abonnement.
 
-1. Klik op **Toegangsbeheer (IAM)**.
+1. Klik op **Toegangsbeheer (IAM)** .
 
 1. Klik op het tabblad **Toegang controleren**.
 
@@ -54,4 +54,4 @@ U kunt de Blade **toegangs beheer (IAM)** in [Azure op rollen gebaseerd toegangs
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Zelf studie: een gebruiker toegang verlenen tot Azure-resources met behulp van de Azure Portal](quickstart-assign-role-user-portal.md)
+> [Zelfstudie: Toegang tot Azure-resources verlenen aan een gebruiker met behulp van de Azure-portal](quickstart-assign-role-user-portal.md)

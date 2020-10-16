@@ -10,10 +10,10 @@ services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
 ms.openlocfilehash: a67fad5d0980730eb73f4219f12eaf3a7b9ec7dc
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91310472"
 ---
 # <a name="add-a-popup-to-the-map"></a>Een pop-upvenster toevoegen aan de kaart
@@ -279,7 +279,7 @@ Zie de <a href='https://codepen.io/azuremaps/pen/BXrpvB/'>pop-up gebeurtenissen<
 Meer informatie over de klassen en methoden die in dit artikel worden gebruikt:
 
 > [!div class="nextstepaction"]
-> [Achtergrond](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup)
+> [Popup](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup)
 
 > [!div class="nextstepaction"]
 > [PopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popupoptions)
@@ -290,7 +290,7 @@ Meer informatie over de klassen en methoden die in dit artikel worden gebruikt:
 Raadpleeg de volgende fantastische artikelen voor voor beelden van volledige code:
 
 > [!div class="nextstepaction"]
-> [Een symboollaag toevoegen](./map-add-pin.md)
+> [Een symbool laag toevoegen](./map-add-pin.md)
 
 > [!div class="nextstepaction"]
 > [Een HTML-markering toevoegen](./map-add-custom-html.md)

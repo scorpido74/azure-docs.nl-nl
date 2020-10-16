@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: tomfitz
 ms.openlocfilehash: c4eb3972be85ac7e291380f64127c20424b0d0f0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87004274"
 ---
 # <a name="microsoftcommonfileupload-ui-element"></a>UI-element micro soft. common. FileUpload
@@ -80,13 +80,13 @@ Bij het testen van een CreateUiDefinition kapten sommige browsers (zoals Google 
 
 ## <a name="remarks"></a>Opmerkingen
 
-- `constraints.accept`Hiermee geeft u de typen bestanden die worden weer gegeven in het dialoog venster bestand van de browser. Zie de [HTML5-specificatie](https://html.spec.whatwg.org/multipage/input.html#attr-input-accept) voor toegestane waarden. De standaard waarde is **Null**.
+- `constraints.accept` Hiermee geeft u de typen bestanden die worden weer gegeven in het dialoog venster bestand van de browser. Zie de [HTML5-specificatie](https://html.spec.whatwg.org/multipage/input.html#attr-input-accept) voor toegestane waarden. De standaard waarde is **Null**.
 - Als `options.multiple` is ingesteld op **True**, mag de gebruiker meer dan één bestand selecteren in het dialoog venster bestand van de browser. De standaardwaarde is **onwaar**.
 - Dit element ondersteunt het uploaden van bestanden in twee modi, op basis van de waarde van `options.uploadMode` . Als het **bestand** is opgegeven, heeft de uitvoer de inhoud van het bestand als een blob. Als de **URL** is opgegeven, wordt het bestand geüpload naar een tijdelijke locatie en bevat de uitvoer de URL van de blob. Tijdelijke blobs worden na 24 uur leeg gemaakt. De standaard waarde is **File**.
 - Een geüpload bestand is beveiligd. De uitvoer-URL bevat een [SAS-token](../../storage/common/storage-sas-overview.md?toc=/azure/storage/blobs/toc.json) voor toegang tot het bestand tijdens de implementatie.
 - De waarde van `options.openMode` bepaalt hoe het bestand wordt gelezen. Als het bestand wordt verwacht als tekst zonder opmaak, geeft u **tekst**op. u kunt ook **binary**opgeven. De standaard waarde is **tekst**.
 - Als `options.uploadMode` is ingesteld op **File** en `options.openMode` is ingesteld op **binary**, is de uitvoer base64-gecodeerd.
-- `options.encoding`Hiermee geeft u de code ring op die moet worden gebruikt bij het lezen van het bestand. De standaard waarde is **UTF-8**en wordt alleen gebruikt wanneer `options.openMode` is ingesteld op **tekst**.
+- `options.encoding` Hiermee geeft u de code ring op die moet worden gebruikt bij het lezen van het bestand. De standaard waarde is **UTF-8**en wordt alleen gebruikt wanneer `options.openMode` is ingesteld op **tekst**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
 ms.openlocfilehash: f1b194f2c65f95ad4daff0353d05ca589db9ce51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79477660"
 ---
 # <a name="convert-to-indicator-values"></a>Converteren naar indicatorwaarden
@@ -47,7 +47,7 @@ Stel dat u een kolom hebt met scores die aangeven of een server een hoge, gemidd
 
 | Server-ID | Fout Score |
 | --------- | ------------- |
-| 10301     | Laag           |
+| 10301     | Beperkt           |
 | 10302     | Normaal        |
 | 10303     | Hoog          |
 
@@ -98,7 +98,7 @@ Deze sectie bevat implementatie details, tips en antwoorden op veelgestelde vrag
 
 -   Alleen kolommen die zijn gemarkeerd als categorische kunnen worden geconverteerd naar indicator kolommen. Als u de volgende fout ziet, is een van de geselecteerde kolommen waarschijnlijk niet categorische:  
 
-     Fout 0056: de kolom met \<column name> de naam bevindt zich niet in een toegestane categorie.  
+     Fout 0056: de kolom met  \<column name> de naam bevindt zich niet in een toegestane categorie.  
 
      Standaard worden de meeste kolommen met teken reeksen verwerkt als teken reeks functies, dus u moet ze expliciet markeren als categorische met behulp van [meta gegevens bewerken](edit-metadata.md).  
 

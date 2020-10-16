@@ -12,10 +12,10 @@ ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 411fa207323a9bff6cfcc3b17769203c444dd844
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85388677"
 ---
 # <a name="deploy-custom-policies-with-azure-pipelines"></a>Aangepaste beleids regels implementeren met Azure-pijp lijnen
@@ -122,7 +122,7 @@ Als uw opslag plaats is geïnitialiseerd en gevuld met uw aangepaste beleids bes
     1. Kies een **standaard vertakking**. Als u in de vorige sectie een nieuwe opslag plaats hebt gemaakt, is de standaard vertakking *Master*.
     1. Behoud de **standaard versie** -instelling van *de standaard vertakking*.
     1. Voer een **bron alias** voor de opslag plaats in. Bijvoorbeeld *policyRepo*. Neem geen spaties op in de alias naam.
-1. Selecteer **toevoegen**
+1. Selecteer **Toevoegen**
 1. Wijzig de naam van de pijp lijn zodat deze overeenkomt met de bedoeling. *Implementeer bijvoorbeeld aangepaste beleids pijplijn*.
 1. Selecteer **Opslaan** om de pijplijn configuratie op te slaan.
 
@@ -131,7 +131,7 @@ Als uw opslag plaats is geïnitialiseerd en gevuld met uw aangepaste beleids bes
 1. Selecteer het tabblad **variabelen** .
 1. Voeg de volgende variabelen onder **pijplijn variabelen** toe en stel de waarden in zoals opgegeven:
 
-    | Name | Waarde |
+    | Naam | Waarde |
     | ---- | ----- |
     | `clientId` | **Toepassings-id (client)** van de toepassing die u eerder hebt geregistreerd. |
     | `clientSecret` | De waarde van het **client geheim** dat u eerder hebt gemaakt. <br /> Wijzig het variabele type in **geheim** (Selecteer het vergrendelings pictogram). |

@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/15/2020
 ms.author: cynthn
 ms.reviewer: cynthn
-ms.openlocfilehash: 3a206a7aabee9f75524ab4715afa30ec05c612bf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d01ac7d5b01f485c3b0100c468332475a9bd4274
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328060"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978540"
 ---
 # <a name="troubleshooting-shared-image-galleries-in-azure"></a>Problemen met gedeelde afbeeldings galerieën in azure oplossen
 
@@ -79,7 +79,7 @@ Mogelijke oorzaken:
 
 *De gebruiker die probeert een virtuele machine of VM-schaalset te maken, heeft geen lees toegang tot de versie van de installatie kopie.*
 
-Neem contact op met de eigenaar van het abonnement en vraag hen om Lees toegang te verlenen aan de installatie kopie versie of de bovenliggende resources (zoals de galerie met gedeelde installatie kopieën of de definitie van de installatie kopie) via [Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles). 
+Neem contact op met de eigenaar van het abonnement en vraag hen om Lees toegang te verlenen aan de installatie kopie versie of de bovenliggende resources (zoals de galerie met gedeelde installatie kopieën of de definitie van de installatie kopie) via [Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](../role-based-access-control/rbac-and-directory-admin-roles.md). 
 
 *De versie van de installatie kopie is niet gevonden.*
 
@@ -91,7 +91,7 @@ Controleer of de **OSTYPE** van de versie van de installatie kopie die u probeer
 
 ## <a name="unable-to-share-resources"></a>Kan geen resources delen
 
-Het delen van de galerie met gedeelde installatie kopieën, de definitie van de installatie kopie en de versie van de installatie kopie van de resources tussen abonnementen is ingeschakeld met behulp [van Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles). 
+Het delen van de galerie met gedeelde installatie kopieën, de definitie van de installatie kopie en de versie van de installatie kopie van de resources tussen abonnementen is ingeschakeld met behulp [van Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](../role-based-access-control/rbac-and-directory-admin-roles.md). 
 
 ## <a name="replication-is-slow"></a>De replicatie is traag
 
@@ -99,7 +99,7 @@ Gebruik de markering **--expand ReplicationStatus** om te controleren of de repl
 
 ## <a name="azure-limits-and-quotas"></a>Limieten en quota in Azure 
 
-[Azure-limieten en-quota](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) zijn van toepassing op alle resources van de gedeelde installatie kopie, de afbeeldings definitie en de versie van de installatie kopie. Zorg ervoor dat u zich binnen de limieten voor uw abonnementen bevindt. 
+[Azure-limieten en-quota](../azure-resource-manager/management/azure-subscription-service-limits.md) zijn van toepassing op alle resources van de gedeelde installatie kopie, de afbeeldings definitie en de versie van de installatie kopie. Zorg ervoor dat u zich binnen de limieten voor uw abonnementen bevindt. 
 
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -1,7 +1,7 @@
 ---
-title: Aanmelding met Microsoft toevoegen aan ASP.NET Core-web-apps | Azure
+title: 'Snelstart: Aanmelding met Microsoft toevoegen aan een ASP.NET Core-web-app | Azure'
 titleSuffix: Microsoft identity platform
-description: Informatie over het implementeren van Microsoft-aanmelding in een ASP.NET Core-web-app met behulp van OpenID Connect
+description: In deze quickstart leert u hoe een app Microsoft-aanmelding implementeert in een ASP.NET Core-web-app met behulp van OpenID Connect
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,18 +12,23 @@ ms.workload: identity
 ms.date: 09/11/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 1d31fc70aaf8449ed8bdafe4e290113e20865906
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: bf80a15131a8808359d21d5a9655ef04db236178
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902356"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91613489"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Quickstart: aanmelding met Microsoft toevoegen aan een ASP.NET Core-web-app
 
 In deze quickstart gebruikt u een codevoorbeeld om te leren hoe een ASP.NET Core-web-app persoonlijke accounts (hotmail.com, outlook.com, enz.) en werk- en schoolaccounts kan aanmelden vanuit een willekeurig exemplaar van Azure Active Directory (Azure AD). (Zie [Hoe het voorbeeld werkt](#how-the-sample-works) voor een illustratie.)
 
 > [!div renderon="docs"]
+> ## <a name="prerequisites"></a>Vereisten
+>
+> * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) of [Visual Studio Code](https://code.visualstudio.com/)
+> * [.NET Core SDK 3.1+](https://dotnet.microsoft.com/download)
+>
 > ## <a name="register-and-download-your-quickstart-app"></a>De quickstart-app registreren en downloaden
 > U hebt twee opties voor het starten van de snelstarttoepassing:
 > * [Express] [Optie 1: registreer de toepassing en laat deze automatisch configureren. Download vervolgens het codevoorbeeld](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
@@ -44,7 +49,7 @@ In deze quickstart gebruikt u een codevoorbeeld om te leren hoe een ASP.NET Core
 > 1. Als u toegang hebt tot meerdere tenants, gebruikt u het filter **Directory + abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: in het bovenste menu om de tenant te selecteren waarin u een toepassing wilt registreren.
 > 1. Zoek en selecteer de optie **Azure Active Directory**.
 > 1. Selecteer onder **Beheren** de optie **App-registraties** en vervolgens **Nieuwe registratie**.
-> 1. Voer een **Naam** in voor de toepassing, bijvoorbeeld `AspNetCore-Quickstart`. Gebruikers van uw app kunnen de naam zien. U kunt deze later wijzigen.
+> 1. Voer een **Naam** in voor de toepassing. Gebruikers van uw app kunnen de naam zien. U kunt deze later wijzigen.
 > 1. Voer een **Omleidings-URI** van `https://localhost:44321/` in
 > 1. Selecteer **Registreren**.
 > 1. Selecteer **Verificatie** onder **Beheren**.
@@ -90,9 +95,9 @@ In deze quickstart gebruikt u een codevoorbeeld om te leren hoe een ASP.NET Core
 >    "TenantId": "common",
 >    ```
 >
->    - Vervang `Enter_the_Application_Id_here` met de **Toepassings(client)-ID** voor de toepassing die is geregistreerd in de Azure-portal. U vindt de **toepassings-id (client-id)** op de pagina **Overzicht** van de app.
+>    - Vervang `Enter_the_Application_Id_here`met de **Toepassings(client)-ID** voor de toepassing die is geregistreerd in de Azure-portal. U vindt de **toepassings-id (client-id)** op de pagina **Overzicht** van de app.
 >    - Vervang `common` door een van de volgende opties:
->       - Als uw toepassing **Accounts alleen in deze organisatiemap** ondersteunt, vervangt u deze waarde door de **Map (tenant)-ID**  (een GUID) of **tenantnaam** (bijvoorbeeld, `contoso.onmicrosoft.com`). U vindt de **Directory (Tenant)-ID** op de pagina **Overzicht**van de apps.
+>       - Als uw toepassing **Accounts alleen in deze organisatiemap** ondersteunt, vervangt u deze waarde door de **Map (tenant)-ID**  (een GUID) of  **tenantnaam** (bijvoorbeeld, `contoso.onmicrosoft.com`). U vindt de **Directory (Tenant)-ID** op de pagina **Overzicht**van de apps.
 >       - Als uw toepassing **Accounts in elke organisatiemap** ondersteunt, vervang deze waarde dan door `organizations`
 >       - Als uw toepassing **Alle Microsoft-accountgebruikers** ondersteunt, vervang deze waarde dan door `common`
 >
@@ -108,7 +113,7 @@ In deze quickstart gebruikt u een codevoorbeeld om te leren hoe een ASP.NET Core
 >
 > Nadat u de gewenste machtigingen hebt opgegeven, wordt in de app weer gegeven dat u bent aangemeld met uw referenties voor Azure Active Directory.
 >
-> :::image type="content" source="media/quickstart-v2-aspnet-core-webapp/webapp-02-signed-in.png" alt-text="Webbrowser met de actieve web-app en de gebruiker die is aangemeld":::
+> :::image type="content" source="media/quickstart-v2-aspnet-core-webapp/webapp-02-signed-in.png" alt-text="Dialoogvenster Toestemming met de machtigingen die de app aanvraagt bij de > gebruiker":::
 
 ## <a name="more-information"></a>Meer informatie
 
@@ -145,7 +150,7 @@ Met de regel die `.AddMicrosoftIdentityWebApp` bevat, wordt het Microsoft-identi
 
 | Sleutel *appSettings.json* | Description                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `ClientId`             | **Toepassings(client)-ID** van de toepassing die is geregistreerd in de Azure-portal.                                                                                       |
+| `ClientId`             | Toepassings(client)-ID van de toepassing die is geregistreerd in de Azure-portal.                                                                                       |
 | `Instance`             | STS-eindpunt (Security Token Service) voor de gebruiker te verifiëren. Deze waarde is doorgaans `https://login.microsoftonline.com/`, wat de openbare Azure-cloud aangeeft. |
 | `TenantId`             | De naam van uw tenant of de tenant-ID (een GUID) of *algemene* om gebruikers met werk- of schoolaccounts of persoonlijke Microsoft-accounts aan te melden.                             |
 

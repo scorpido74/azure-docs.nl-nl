@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: reference
 ms.date: 03/03/2020
 ms.openlocfilehash: cdd08742e6aad956325508046a182674ec1bb1ea
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91292010"
 ---
 # <a name="services-and-tools-available-for-data-migration-scenarios"></a>Services en hulpprogramma's voor gegevensmigratiescenario's
@@ -29,7 +29,7 @@ In de volgende tabellen worden de services en hulpprogram ma's geïdentificeerd 
 
 ## <a name="business-justification-phase"></a>Zakelijke rechtvaardigings fase
 
-| Bron | Doel | Via<br/>Inventaris | Doel en SKU<br/>advies | TCO/ROI en<br/>Business Case |
+| Bron | Doel | Via<br/>Inventaris | Doel en SKU<br/>aanbeveling | TCO/ROI en<br/>Business Case |
 | --- | --- | --- | --- | --- |
 | SQL Server | Azure SQL Database | [KAART Toolkit](https://msdn.microsoft.com/library/bb977556.aspx)<br/>[Azure Migrate](https://azure.microsoft.com/services/azure-migrate/)<br/>[Cloudamize](https://www.cloudamize.com/) | [DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)<br/>[Cloud Atlas *](https://www.unifycloud.com/cloud-migration-tool/)<br/>[Cloudamize](https://www.cloudamize.com/) | [TCO reken machine](https://azure.microsoft.com/pricing/tco/calculator/) |
  SQL Server | Azure SQL DB MI | [KAART Toolkit](https://msdn.microsoft.com/library/bb977556.aspx)<br/>[Azure Migrate](https://azure.microsoft.com/services/azure-migrate/)<br/>[Cloudamize](https://www.cloudamize.com/) | [DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)<br/>[Cloud Atlas *](https://www.unifycloud.com/cloud-migration-tool/)<br/>[Cloudamize](https://www.cloudamize.com/) | [TCO reken machine](https://azure.microsoft.com/pricing/tco/calculator/) |

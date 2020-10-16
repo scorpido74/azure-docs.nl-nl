@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 12/14/2018
 ms.topic: conceptual
 ms.openlocfilehash: f175e495af8e925c0d5a6c61669a5e2f44f73ae7
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86185994"
 ---
 # <a name="learn-powershell-workflow-for-azure-automation"></a>Power shell-werk stroom voor Azure Automation leren
@@ -76,7 +76,7 @@ $Service = Get-Service -Name MyService
 $Service.Stop()
 ```
 
-Als u dit probeert uit te voeren in een werk stroom, ontvangt u een fout melding`Method invocation is not supported in a Windows PowerShell Workflow.`
+Als u dit probeert uit te voeren in een werk stroom, ontvangt u een fout melding `Method invocation is not supported in a Windows PowerShell Workflow.`
 
 Een optie is om deze twee regels code in een [InlineScript](#use-inlinescript) -blok te laten teruglopen. In dit geval `Service` vertegenwoordigt een service object binnen het blok.
 
@@ -261,7 +261,7 @@ Workflow Copy-Files
 }
 ```
 
-Omdat de referenties van de gebruikers naam niet worden bewaard nadat u de activiteit [suspend-workflow](/powershell/module/psworkflow/about/about_suspend-workflow) of na het laatste controle punt hebt aangeroepen, moet u de referenties instellen op null en ze vervolgens opnieuw uit het activa archief ophalen nadat `Suspend-Workflow` of het controle punt is aangeroepen.  Anders wordt mogelijk het volgende fout bericht weer gegeven:`The workflow job cannot be resumed, either because persistence data could not be saved completely, or saved persistence data has been corrupted. You must restart the workflow.`
+Omdat de referenties van de gebruikers naam niet worden bewaard nadat u de activiteit [suspend-workflow](/powershell/module/psworkflow/about/about_suspend-workflow) of na het laatste controle punt hebt aangeroepen, moet u de referenties instellen op null en ze vervolgens opnieuw uit het activa archief ophalen nadat `Suspend-Workflow` of het controle punt is aangeroepen.  Anders wordt mogelijk het volgende fout bericht weer gegeven: `The workflow job cannot be resumed, either because persistence data could not be saved completely, or saved persistence data has been corrupted. You must restart the workflow.`
 
 In de volgende code ziet u hoe u deze situatie kunt afhandelen in uw Power shell workflow-runbooks.
 
@@ -290,7 +290,7 @@ workflow CreateTestVms
 ```
 
 > [!NOTE]
-> Voor niet-grafische power shell-runbooks `Add-AzAccount` en `Add-AzureRMAccount` aliassen voor [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0). U kunt deze cmdlets gebruiken of u kunt [uw modules bijwerken](automation-update-azure-modules.md) naar de nieuwste versie in uw Automation-account. Zelfs wanneer u zojuist een nieuw Automation-account hebt aangemaakt, moet u mogelijk uw modules bijwerken. Het gebruik van deze cmdlets is niet vereist als u verificatie uitvoert met een run as-account dat is geconfigureerd met een service-principal.
+> Voor niet-grafische power shell-runbooks `Add-AzAccount` en `Add-AzureRMAccount` aliassen voor [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0). U kunt deze cmdlets gebruiken of u kunt [uw modules bijwerken](automation-update-azure-modules.md) naar de nieuwste versie in uw Automation-account. Zelfs wanneer u juist een nieuw Automation-account heeft aangemaakt, moet u mogelijk uw modules bijwerken. Het gebruik van deze cmdlets is niet vereist als u verificatie uitvoert met een run as-account dat is geconfigureerd met een service-principal.
 
 Zie [controle punten toevoegen aan een script werk stroom](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj574114(v=ws.11))voor meer informatie over controle punten.
 

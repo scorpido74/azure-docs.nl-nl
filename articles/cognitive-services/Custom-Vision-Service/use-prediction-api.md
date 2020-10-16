@@ -12,10 +12,10 @@ ms.date: 04/02/2019
 ms.author: pafarley
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 7f1939536e033d2cf964dd2f4ee562e4ee20061b
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88934749"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>Uw model gebruiken met de Voorspellings-API
@@ -43,7 +43,7 @@ Zodra uw model is gepubliceerd, kunt u de vereiste gegevens ophalen door de URL 
 
 ![Het tabblad prestaties wordt weer gegeven met een rode rechthoek rondom de knop voor de Voorspellings-URL.](./media/use-prediction-api/published-iteration-prediction-url.png)
 
-![Het tabblad prestaties wordt weer gegeven met een rode rechthoek rondom de waarde van de Voorspellings-URL voor het gebruik van een afbeeldings bestand en de waarde voor de voor Spellings sleutel.](./media/use-prediction-api/prediction-api-info.png)
+![Het tabblad prestaties wordt weer gegeven met een rode rechthoek rondom de waarde van de Voorspellings-URL voor het gebruik van een afbeeldings bestand en de Prediction-Key waarde.](./media/use-prediction-api/prediction-api-info.png)
 
 
 In deze hand leiding maakt u gebruik van een lokale installatie kopie en kopieert u de URL onder **Als u een afbeeldings bestand** op een tijdelijke locatie hebt. Kopieer ook de bijbehorende __Voorspellings sleutel__ waarde.

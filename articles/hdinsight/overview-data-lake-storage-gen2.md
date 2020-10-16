@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: a7ae1a0f77d0d19fc48695ddc5cc3d3a14d65ab9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82195125"
 ---
 # <a name="azure-data-lake-storage-gen2-overview-in-hdinsight"></a>Azure Data Lake Storage Gen2 overzicht in HDInsight
@@ -57,11 +57,11 @@ Azure Data Lake Storage Gen2 gebruikt een nieuw URI-schema voor toegang tot best
 
 Het URI-schema biedt met SSL versleutelde toegang.
 
-`<FILE_SYSTEM_NAME>`Hiermee wordt het pad van het bestands systeem Data Lake Storage Gen2 geïdentificeerd.
+`<FILE_SYSTEM_NAME>` Hiermee wordt het pad van het bestands systeem Data Lake Storage Gen2 geïdentificeerd.
 
-`<ACCOUNT_NAME>`Hiermee wordt de naam van het Azure Storage-account aangeduid. Een FQDN (Fully Qualified Domain Name) is vereist.
+`<ACCOUNT_NAME>` Hiermee wordt de naam van het Azure Storage-account aangeduid. Een FQDN (Fully Qualified Domain Name) is vereist.
 
-`<PATH>`is de naam van het bestand of de map HDFS-pad.
+`<PATH>` is de naam van het bestand of de map HDFS-pad.
 
 Als waarden voor `<FILE_SYSTEM_NAME>` en `<ACCOUNT_NAME>` niet worden opgegeven, wordt het standaard bestandssysteem gebruikt. Voor de bestanden in het standaard bestandssysteem gebruikt u een relatief pad of een absoluut pad. U `hadoop-mapreduce-examples.jar` kunt bijvoorbeeld een van de volgende paden naar het bestand met HDInsight-clusters verwijzen:
 
@@ -77,6 +77,6 @@ Zie [de Azure data Lake Storage GEN2 URI gebruiken](../storage/blobs/data-lake-s
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Inleiding in Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)
+* [Inleiding tot Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)
 * [Kennismaking met Azure Storage](../storage/common/storage-introduction.md)
 * [Azure Data Lake Storage Gen1-overzicht](./overview-data-lake-storage-gen1.md)

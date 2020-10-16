@@ -6,10 +6,10 @@ ms.subservice: update-management
 ms.date: 07/16/2018
 ms.topic: conceptual
 ms.openlocfilehash: dabe914ffd4e84e8ded5c0e3b519036479fe33ec
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90987606"
 ---
 # <a name="migrate-azure-monitor-logs-update-deployments-to-azure-portal"></a>Update-implementaties van Azure Monitor-logboeken migreren naar Azure Portal
@@ -43,7 +43,7 @@ De portal van operations management suite (OMS) wordt [afgeschaft](../azure-moni
 
 Alle update-implementaties die in de OMS-Portal zijn gemaakt, hebben een [opgeslagen zoek opdracht](../azure-monitor/platform/computer-groups.md) ook wel een computer groep genoemd, met dezelfde naam als de update-implementatie die bestaat. De opgeslagen zoek actie bevat de lijst met computers die zijn gepland in de update-implementatie.
 
-:::image type="content" source="media/migrate-oms-update-deployments/oms-deployment.png" alt-text="Scherm afbeelding van de pagina update-implementaties met de velden naam en servers gemarkeerd.":::
+:::image type="content" source="media/migrate-oms-update-deployments/oms-deployment.png" alt-text="Scherm afbeelding van de pagina voor update beheer.":::
 
 Voer de volgende stappen uit om deze bestaande opgeslagen zoek opdracht te gebruiken:
 

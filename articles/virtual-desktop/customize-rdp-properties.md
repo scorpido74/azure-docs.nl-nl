@@ -3,15 +3,15 @@ title: RDP-eigenschappen aanpassen met Power shell-Azure
 description: RDP-eigenschappen voor virtuele Windows-Bureau bladen aanpassen met Power shell-cmdlets.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 09/04/2020
+ms.date: 10/09/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7c4bda1ecf28e964db6ba672157790114affe650
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86e3422cbd1cbf92a0d0d218267001c934403753
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462221"
+ms.locfileid: "91930693"
 ---
 # <a name="customize-remote-desktop-protocol-rdp-properties-for-a-host-pool"></a>Eigenschappen van Remote Desktop Protocol (RDP) voor een hostgroep aanpassen
 
@@ -28,8 +28,8 @@ RDP-bestanden hebben standaard de volgende eigenschappen:
 
 |RDP-eigenschap|Op bureau blad|Als een RemoteApp|
 |---|---|---|
-|Modus voor meerdere monitors|Ingeschakeld|N.v.t.|
-|Omleidingen van stations ingeschakeld|Stations, klem bord, printers, COM-poorten, USB-apparaten en-Smart Cards|Stations, klem bord en printers|
+|Modus voor meerdere monitors|Uitgeschakeld|Ingeschakeld|
+|Omleidingen van stations ingeschakeld|Stations, klem bord, printers, COM-poorten en Smart Cards|Stations, klem bord en printers|
 |Modus voor externe audio|Lokaal afspelen|Lokaal afspelen|
 
 ## <a name="prerequisites"></a>Vereisten
@@ -45,8 +45,9 @@ RDP-eigenschappen configureren in de Azure Portal:
 3. Onder Services selecteert u **virtueel bureau blad voor Windows**.
 4. Selecteer op de pagina virtueel bureau blad van Windows de optie **hostgroepen** in het menu aan de linkerkant van het scherm.
 5. Selecteer **de naam van de hostgroep** die u wilt bijwerken.
-6. Selecteer **Eigenschappen** in het menu aan de linkerkant van het scherm.
-7. Ga op het tabblad **Eigenschappen** naar **RDP-instellingen** om het bewerken van de RDP-eigenschappen te starten. Eigenschappen moeten zich in een door punt komma's gescheiden indeling bevinden, zoals de Power shell-voor beelden.
+6. Selecteer **RDP-eigenschappen** in het menu aan de linkerkant van het scherm.
+7. Stel de gewenste eigenschap in.
+   - U kunt ook het tabblad **Geavanceerd** openen en uw RDP-eigenschappen toevoegen in een door punt komma's gescheiden indeling zoals de Power shell-voor beelden in de volgende secties.
 8. Wanneer u klaar bent, selecteert u **Opslaan** om uw wijzigingen op te slaan.
 
 In de volgende secties wordt uitgelegd hoe u aangepaste RDP-eigenschappen hand matig kunt bewerken in Power shell.

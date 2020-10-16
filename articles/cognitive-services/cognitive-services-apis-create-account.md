@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: aahi
 ms.openlocfilehash: cad20f589bb5a6d3e73481081d9fe532381ab647
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91827394"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-portal"></a>Snelstartgids: een Cognitive Services resource maken met behulp van de Azure Portal
@@ -56,7 +56,7 @@ Azure Cognitive Services zijn Cloud Services met REST-Api's en Sdk's voor client
 
     Gebruik de onderstaande koppelingen om een resource te maken voor de beschik bare Cognitive Services:
 
-    | Vision                      | Speech                  | Taal                          | Besluit             | Search                 |
+    | Vision                      | Speech                  | Taal                          | Besluit             | Zoeken                 |
     |-----------------------------|-------------------------|-----------------------------------|----------------------|------------------------|
     | [Computer Vision](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)         | [Spraak Services](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices)     | [Insluitende lezer](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesImmersiveReader)              | [Anomaliedetectie](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) | [Bing Search API V7](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7) |
     | [Aangepaste Vision-service](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesCustomVision) | [Speaker Recognition](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeakerRecognition) | [Language Understanding (LUIS)](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) | [Content Moderator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) | [Bing Aangepaste zoekopdrachten](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch) |
@@ -80,7 +80,7 @@ Azure Cognitive Services zijn Cloud Services met REST-Api's en Sdk's voor client
 
     ![Scherm voor het maken van resources voor meerdere services](media/cognitive-services-apis-create-account/resource_create_screen-multi.png)
 
-    Klik op **Create**.
+    Klik op **Maken**.
 
     #### <a name="single-service-resource"></a>[Resource met één service](#tab/singleservice)
 
@@ -94,7 +94,7 @@ Azure Cognitive Services zijn Cloud Services met REST-Api's en Sdk's voor client
 
     ![Het scherm voor het maken van een resource voor één service](media/cognitive-services-apis-create-account/resource_create_screen.png)
 
-    Klik op **Create**.
+    Klik op **Maken**.
 
     ***
 
@@ -120,7 +120,7 @@ Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de
 2. Zoek de resourcegroep die de resource bevat die u wilt verwijderen
 3. Klik met de rechtermuisknop op de vermelding van de resourcegroep. Selecteer **Resourcegroep verwijderen** en bevestig dit.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 * [Aanvragen verifiëren bij Azure Cognitive Services](authentication.md)
 * [Wat is Azure Cognitive Services?](Welcome.md)

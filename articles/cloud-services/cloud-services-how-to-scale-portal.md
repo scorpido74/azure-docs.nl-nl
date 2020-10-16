@@ -7,21 +7,21 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
-ms.openlocfilehash: e5452e0794083afabbee2759c5b37feb1eed0c88
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 5e457742d8a940ff3a1602cc3dcf1b1d77126ac3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223683"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076671"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>Automatisch schalen configureren voor een Cloud service in de portal
 
 Er kunnen voor waarden worden ingesteld voor een werk rollen van de Cloud service die een schaal-of uitvoer bewerking activeren. De voor waarden voor de rol kunnen worden gebaseerd op de CPU, schijf of netwerk belasting van de rol. U kunt ook een voor waarde instellen op basis van een berichten wachtrij of de metriek van een andere Azure-resource die aan uw abonnement is gekoppeld.
 
 > [!NOTE]
-> Dit artikel richt zich op Web-en werk rollen van de Cloud service. Wanneer u een virtuele machine (klassiek) rechtstreeks maakt, wordt deze gehost in een Cloud service. U kunt een standaard virtuele machine schalen door deze te koppelen aan een [beschikbaarheidsset](../virtual-machines/windows/classic/configure-availability-classic.md) en ze hand matig in of uit te scha kelen.
+> Dit artikel richt zich op Web-en werk rollen van de Cloud service. Wanneer u een virtuele machine (klassiek) rechtstreeks maakt, wordt deze gehost in een Cloud service. U kunt een standaard virtuele machine schalen door deze te koppelen aan een [beschikbaarheidsset](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic) en ze hand matig in of uit te scha kelen.
 
-## <a name="considerations"></a>Aandachtspunten
+## <a name="considerations"></a>Overwegingen
 U moet rekening houden met de volgende informatie voordat u schaling voor uw toepassing configureert:
 
 * Schalen wordt beïnvloed door het gebruik van kernen.
@@ -105,6 +105,3 @@ Met deze instelling wordt automatisch schalen van de rol verwijderd en kunt u he
 3. De exemplaren van de rol waarop moet worden geschaald.
 
 Nadat u de schaal instellingen hebt geconfigureerd, selecteert u het pictogram **Opslaan** bovenaan.
-
-
-

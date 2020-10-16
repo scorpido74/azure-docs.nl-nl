@@ -4,12 +4,12 @@ description: Bewaking van toepassings prestaties voor Azure app Services. Grafie
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: 36f6ad4c248b3de54de5de0893410e9b13df0c26
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: e326f9764147b882a5009c53b9f13a3c3bd0bfc1
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91759455"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91875602"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service-prestaties bewaken
 
@@ -75,7 +75,7 @@ Er zijn twee manieren om toepassings bewaking in te scha kelen voor door Azure-a
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
-De volgende versies van .NET core worden ondersteund: ASP.NET Core 2,0, ASP.NET Core 2,1, ASP.NET Core 2,2, ASP.NET Core 3,0
+De volgende versies van .NET core worden ondersteund: ASP.NET Core 2,1, ASP.NET Core 2,2, ASP.NET Core 3,0, ASP.NET Core 3,1
 
 Het is **niet mogelijk** om het volledige Framework te richten op basis van .net core, op zichzelf gebaseerde implementatie en op Linux gebaseerde toepassingen die op agent/op extensie gebaseerde bewaking niet worden ondersteund. ([Hand matige instrumentatie](./asp-net-core.md) via code werkt in alle eerdere scenario's.)
 
@@ -90,7 +90,7 @@ Het is **niet mogelijk** om het volledige Framework te richten op basis van .net
 
      ![Uw web-app instrumenteren](./media/azure-web-apps/create-resource-01.png)
 
-2. Nadat u hebt opgegeven welke resource moet worden gebruikt, kunt u kiezen hoe Application Insights gegevens per platform wilt verzamelen voor uw toepassing. .NET core biedt **Aanbevolen verzameling** of **uitgeschakeld** voor .net Core 2,0, 2,1, 2,2 en 3,0.
+2. Nadat u hebt opgegeven welke resource moet worden gebruikt, kunt u kiezen hoe Application Insights gegevens per platform wilt verzamelen voor uw toepassing. .NET core biedt **Aanbevolen verzameling** of **uitgeschakeld** voor ASP.net Core 2,1, 2,2, 3,0 en 3,1.
 
     ![Opties per platform kiezen](./media/azure-web-apps/choose-options-new-net-core.png)
 
@@ -359,8 +359,8 @@ Hieronder vindt u stapsgewijze richt lijnen voor het oplossen van problemen met 
 
     ![Scherm afbeelding van https://yoursitename.scm.azurewebsites/applicationinsights resultaten pagina](./media/azure-web-apps/app-insights-sdk-status.png)
 
-    * Bevestig dat de `Application Insights Extension Status` is `Pre-Installed Site Extension, version 2.8.12.1527, is running.`
-        * Als deze niet wordt uitgevoerd, volgt u de instructies voor het [inschakelen van Application Insights](#enable-application-insights)
+    * Bevestig dat de `Application Insights Extension Status` is `Pre-Installed Site Extension, version 2.8.12.1527, is running.` 
+    * Als deze niet wordt uitgevoerd, volgt u de instructies voor het [inschakelen van Application Insights](#enable-application-insights)
 
     * Controleer of de status bron bestaat en ziet er als volgt uit: `Status source D:\home\LogFiles\ApplicationInsights\status\status_RD0003FF0317B6_4248_1.json`
         * Als er geen vergelijk bare waarde aanwezig is, betekent dit dat de toepassing momenteel niet wordt uitgevoerd of niet wordt ondersteund. Om ervoor te zorgen dat de toepassing wordt uitgevoerd, probeert u de toepassings-URL/toepassings eindpunten hand matig te bezoeken, waardoor de runtime gegevens beschikbaar worden.
@@ -406,6 +406,10 @@ PHP-en WordPress-sites worden niet ondersteund. Er is momenteel geen officieel o
 ### <a name="connection-string-and-instrumentation-key"></a>Verbindings reeks en instrumentatie sleutel
 
 Wanneer bewaking zonder code wordt gebruikt, is alleen de connection string vereist. We raden u echter aan om de instrumentatie sleutel in te stellen om achterwaartse compatibiliteit met oudere versies van de SDK te behouden wanneer hand matige instrumentatie wordt uitgevoerd.
+
+## <a name="release-notes"></a>Releaseopmerkingen
+
+[Raadpleeg de opmerkingen bij de release](./web-app-extension-release-notes.md)voor de nieuwste updates en oplossingen voor problemen.
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Voer de profiler uit in uw live app](./profiler.md).

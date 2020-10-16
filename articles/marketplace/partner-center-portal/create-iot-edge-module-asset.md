@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 04/03/2020
 ms.openlocfilehash: dec0711c4763983e520d247fd8b775b1810e0479
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87324638"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>De technische activa van uw IoT Edge module voorbereiden
@@ -64,7 +64,7 @@ Kopieer deze HTML-tekst of gebruik de bijbehorende RTF-functies in het bewerking
 <p><u>Minimum hardware requirements:</u> Linux x64 and arm32 OS, 1GB of RAM, 500 Mb of storage</p>
 ```
 
-### <a name="configuration"></a>Configuration
+### <a name="configuration"></a>Configuratie
 
 De module moet standaard configuratie-instellingen bevatten om de implementatie zo eenvoudig mogelijk op een IoT Edge apparaat te kunnen uitvoeren. Deze informatie kan worden verstrekt op de pagina **technische configuratie** voor het plan in [Partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace). De container kan ook de SDK van IoT Edge module bevatten om communicatie met de Edge hub en IoT Hub in te scha kelen.
 

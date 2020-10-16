@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android
 ms.openlocfilehash: 9a70cfe3c9ced2d22fcb50224d991e34c516a04c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936476"
 ---
 # <a name="quickstart-use-the-communication-services-calling-client-library"></a>Snelstartgids: de communicatie Services-client bibliotheek gebruiken
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
-Ga aan de slag met Azure Communication Services door gebruik te maken van de communicatie services die de client bibliotheek aanroepen om spraak en video aan uw app toe te voegen. 
+Ga aan de slag met Azure Communication Services door de clientbibliotheek voor aanroepen van Communications Services te gebruiken om spraak- en video-oproepen aan uw app toe te voegen. 
 
 ::: zone pivot="platform-web"
 [!INCLUDE [Calling with JavaScript](./includes/calling-sdk-js.md)]
@@ -37,11 +37,11 @@ Ga aan de slag met Azure Communication Services door gebruik te maken van de com
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u een communicatie Services-abonnement wilt opschonen en verwijderen, kunt u de resource of resource groep verwijderen. Als u de resourcegroep verwijdert, worden ook alle bijbehorende resources verwijderd. Meer informatie over het [opschonen van resources](../create-communication-resource.md#clean-up-resources).
+Als u een Communication Services-abonnement wilt opschonen en verwijderen, kunt u de resource of resourcegroep verwijderen. Als u de resourcegroep verwijdert, worden ook alle bijbehorende resources verwijderd. Meer informatie over het [opschonen van resources](../create-communication-resource.md#clean-up-resources).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Raadpleeg voor meer informatie de volgende artikelen:
 
-- Bekijk ons voor [beeld](../../samples/calling-hero-sample.md) van een held
-- Meer informatie over [hoe Works kan worden aangeroepen](../../concepts/voice-video-calling/about-call-types.md)
+- Bekijk ons [voorbeeld van een aanroephero](../../samples/calling-hero-sample.md)
+- Meer informatie over [de werking van aanroepen](../../concepts/voice-video-calling/about-call-types.md)

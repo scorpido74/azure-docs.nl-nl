@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: philmea
-ms.openlocfilehash: 8309b625a590131c5f521335e180967ab2c2667c
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 57d2ac4f1e80c24a750e0e5f8eb22850718594a1
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91363151"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071027"
 ---
 # <a name="tutorial-manage-your-connected-devices-in-bulk"></a>Zelfstudie: Uw verbonden apparaten bulksgewijs beheren
 
@@ -59,7 +59,7 @@ Voordat u begint:
 * Controleer of de [bootloader op uw IoT DevKit-apparaat versie 1.4.0 of hoger](https://microsoft.github.io/azure-iot-developer-kit/docs/firmware-upgrading/) is.
 * Controleer of de SDK van IoT DevKit dezelfde versie heeft als de bootloader. U kunt de SDK van IoT DevKit bijwerken met behulp van de Azure IoT Workbench in VS Code. Open het opdrachtenpalet en voer **Arduino: Board Manager** in. Zie [Prepare the development environment](../iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started.md#prepare-the-development-environment) (De ontwikkelomgeving voorbereiden) voor meer informatie.
 
-U hebt ook minimaal één IoT DevKit-apparaat met de verbetering voor de externe bewakingsoplossing nodig. Als u nog geen IoT DevKit-apparaat hebt verbonden, zie dan [Connect MXChip IoT DevKit AZ3166 to the IoT Remote Monitoring solution accelerator](iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2.md) (MXChip IoT DevKit AZ3166 verbinden met de IoT-verbetering voor de externe bewakingsoplossing).
+U hebt ook minimaal één IoT DevKit-apparaat met de verbetering voor de externe bewakingsoplossing nodig. Als u nog geen IoT DevKit-apparaat hebt verbonden, zie dan [Connect MXChip IoT DevKit AZ3166 to the IoT Remote Monitoring solution accelerator](./iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoring-v2.md) (MXChip IoT DevKit AZ3166 verbinden met de IoT-verbetering voor de externe bewakingsoplossing).
 
 ## <a name="navigate-to-the-dashboard"></a>Naar het dashboard navigeren
 
@@ -274,4 +274,4 @@ Klik op de pagina **Implementaties** op een implementatie om de status van uw ap
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u gezien hoe u de firmware bijwerkt van een groep apparaten die zijn verbonden met uw oplossing. Uw oplossing maakt gebruik van automatische apparaatbeheer voor het bijwerken van de apparaten. Voor meer informatie over de functie voor automatisch apparaatbeheer in de onderliggende IoT Hub van uw oplossing raadpleegt u [Configure and monitor IoT devices at scale using the Azure portal](../iot-hub/iot-hub-auto-device-config.md) (IoT-apparaten op schaal configureren en controleren met de Azure-portal).
+In deze zelfstudie hebt u gezien hoe u de firmware bijwerkt van een groep apparaten die zijn verbonden met uw oplossing. Uw oplossing maakt gebruik van automatische apparaatbeheer voor het bijwerken van de apparaten. Voor meer informatie over de functie voor automatisch apparaatbeheer in de onderliggende IoT Hub van uw oplossing raadpleegt u [Configure and monitor IoT devices at scale using the Azure portal](../iot-hub/iot-hub-automatic-device-management.md) (IoT-apparaten op schaal configureren en controleren met de Azure-portal).

@@ -9,22 +9,22 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 59c00b06f1fef613b00ade13c7cacc0b88e61bf1
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: ca01397959aa50c77218742320f8ced128876bad
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91649543"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018675"
 ---
 # <a name="dv4-and-dsv4-series"></a>Dv4- en Dsv4-serie
 
-De Dv4-en Dsv4-serie worden uitgevoerd op de Intel &reg; Xeon &reg; Platinum 8272CL-processors (Cascade Lake) in een configuratie met Hyper-Threading, met een betere toegevoegde waarde voor de meeste werk belastingen voor algemeen gebruik. De IT-functie heeft een zeer hoge Turbo klok snelheid van 3,4 GHz. 
+De Dv4-en Dsv4-serie worden uitgevoerd op de Intel &reg; Xeon &reg; Platinum 8272CL-processors (Cascade Lake) in een configuratie met Hyper-Threading, met een betere toegevoegde waarde voor de meeste werk belastingen voor algemeen gebruik. Het bevat een kern klok snelheid van 3,4 GHz. 
 
 > [!NOTE]
 > Voor veelgestelde vragen raadpleegt u  [Azure VM-grootten zonder lokale tijdelijke schijf](azure-vms-no-temp-disk.md).
 ## <a name="dv4-series"></a>Dv4-serie
 
-Dv4-serie-grootten worden uitgevoerd op Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake). De grootte van de Dv4-serie biedt een combi natie van opties voor vCPU, geheugen en externe opslag voor de meeste productiewerk belastingen. Virtuele machines uit de Dv4-serie beschikken over de [Intel &reg; Hyper-Threading-technologie](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html).
+Dv4-serie-grootten worden uitgevoerd op Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake). De grootte van de Dv4-serie biedt een combi natie van opties voor vCPU, geheugen en externe opslag voor de meeste productiewerk belastingen. Virtuele machines uit de Dv4-serie bieden een [Intel &reg; Hyper-Threading technologie](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html).
 
 Opslag van externe gegevens schijven wordt afzonderlijk van virtuele machines gefactureerd. Als u Premium Storage-schijven wilt gebruiken, gebruikt u de Dsv4-grootten. De prijs-en facturerings meters voor Dsv4-grootten zijn gelijk aan die van de Dv4-serie.
 
@@ -48,7 +48,7 @@ Opslag van externe gegevens schijven wordt afzonderlijk van virtuele machines ge
 
 ## <a name="dsv4-series"></a>Dsv4-serie
 
-Dsv4-serie-grootten worden uitgevoerd op Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake). De grootte van de Dv4-serie biedt een combi natie van opties voor vCPU, geheugen en externe opslag voor de meeste productiewerk belastingen. Virtuele machines uit de Dsv4-serie beschikken over de [Intel &reg; Hyper-Threading-technologie](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html). Opslag van externe gegevens schijven wordt afzonderlijk van virtuele machines gefactureerd.
+Dsv4-serie-grootten worden uitgevoerd op Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake). De grootte van de Dv4-serie biedt een combi natie van opties voor vCPU, geheugen en externe opslag voor de meeste productiewerk belastingen. Virtuele machines uit de Dsv4-serie bieden een [Intel &reg; Hyper-Threading technologie](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html). Opslag van externe gegevens schijven wordt afzonderlijk van virtuele machines gefactureerd.
 
 [ACU](acu.md): 195-210<br>
 [Premium Storage](premium-storage-performance.md): ondersteund<br>

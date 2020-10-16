@@ -11,10 +11,10 @@ ms.date: 05/05/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
 ms.openlocfilehash: 6221b36263b55f54faef18d6596f97c5b3798d3d
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91541710"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Educatief leren (preview) met Azure Machine Learning
@@ -326,7 +326,7 @@ rl_estimator = ReinforcementLearningEstimator(
 
 Het [invoer script](https://aka.ms/azure-rl-pong-script) `pong_rllib.py` traint een Neural-netwerk met behulp van de [OpenAI Gym-omgeving](https://github.com/openai/gym/) `PongNoFrameSkip-v4` . OpenAI Gyms zijn gestandaardiseerde interfaces voor het testen van de algoritmen voor versterking van het onderwijs op klassieke Atari-Games.
 
-In dit voor beeld wordt een trainings algoritme gebruikt dat bekend staat als [IMPALA](https://arxiv.org/abs/1802.01561) (de architectuur van de leer factor met belang rijke actors). IMPALA parallelizes afzonderlijke Learning actor om te schalen over verschillende reken knooppunten zonder dat de snelheid of stabiliteit wordt gereduceerd.
+In dit voor beeld wordt een trainings algoritme gebruikt dat wordt aangeduid als [IMPALA](https://arxiv.org/abs/1802.01561) (gewogen Actor-Learner architectuur). IMPALA parallelizes afzonderlijke Learning actor om te schalen over verschillende reken knooppunten zonder dat de snelheid of stabiliteit wordt gereduceerd.
 
 Met [Ray Tune](https://ray.readthedocs.io/en/latest/tune.html) worden de IMPALA-werk taken beheerd.
 

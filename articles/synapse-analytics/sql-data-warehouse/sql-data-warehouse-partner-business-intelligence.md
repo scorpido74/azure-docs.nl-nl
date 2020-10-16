@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 1414859d0735e75e2139dd79aab7dbba5b1e2f13
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 909ea33ed96225c75a2d093f5bf2f4878ea51d2e
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91710185"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939181"
 ---
 # <a name="azure-synapse-analytics-business-intelligence-partners"></a>business intelligence partners van Azure Synapse Analytics
 
@@ -27,7 +27,6 @@ Als u uw data warehouse-oplossing wilt maken, kunt u kiezen uit verschillende so
 | ------- | ----------- | -------------------- |
 | ![AtScale](./media/sql-data-warehouse-partner-business-intelligence/atscale-logo.png) |**AtScale**<br>AtScale biedt een enkele, beveiligde en beheerde werk ruimte voor gedistribueerde gegevens. De Cloud-OLAP, autonome gegevens techniek™ en de™ van de universele laag van AtScale business intelligence resultaten voor snellere, nauw keurige zakelijke beslissingen. |[Product pagina](https://www.atscale.com/partners/microsoft/)<br> |
 | ![Birst](./media/sql-data-warehouse-partner-business-intelligence/birst_logo.png) |**Birst**<br>Birst maakt verbinding met de hele organisatie via een netwerk van ingevoerd gevirtualiseerde BI-instanties op het hoogste niveau van een gedeelde, gemeen schappelijke analytische infra structuur|[Product pagina](https://www.birst.com/)<br> |
-| ![ClearStory-gegevens](./media/sql-data-warehouse-partner-business-intelligence/clearstory_data_logo.png) |**ClearStory-gegevens (continue bedrijfs inzichten)**<br>ClearStory-gegevens maken snelle cyclus analyse mogelijk voor verschillende gegevens die zijn opgeslagen in Synapse SQL-groep. Het geïntegreerde op Spark gebaseerde platform en de analytische toepassing snelheid gegevens toegang en harmonisatie van verschillende gegevens sets. Ze bieden snelle, samenwerkings exploratie die zakelijke gebruikers ondersteunt om zichzelf te laten vertrouwen in het verkrijgen van snelle inzichten. |[Product pagina](https://www.clearstorydata.com/product/continuous-insights/)<br> |
 | ![Dremio](./media/sql-data-warehouse-partner-business-intelligence/dremio-logo.png) |**Dremio**<br> Analisten en gegevens wetenschappers kunnen gegevens ontdekken, verkennen en nagaan met behulp van de intuïtieve gebruikers interface van Dremio, terwijl governance en beveiliging wordt gehandhaafd. Dremio maakt het eenvoudig om ADLS te koppelen aan Blob Storage, Azure SQL Database, Azure Synapse SQL, HDInsight en meer. Met Dremio kunnen Power BI analisten zoeken naar nieuwe gegevens sets die zijn opgeslagen op ADLS, direct toegang hebben tot deze gegevens in Power BI zonder voor bereiding door IT, visualisaties maken en rapporten in realtime verfijnen. En analisten kunnen nieuwe rapporten maken waarin gegevens worden gecombineerd tussen ADLS en andere data bases. |[Product pagina](https://www.dremio.com/azure/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/dremiocorporation.dremio_ce)<br> |
 | ![Dundas](./media/sql-data-warehouse-partner-business-intelligence/dundas_software_logo.png) |**Dundas BI**<br>Dundas gegevens visualisatie is een toonaangevende, wereld wijde provider van Business Intelligence en gegevens visualisatie software.  Dundas-Dash boards,-rapporten en visuele gegevens analyse bieden naadloze integratie in zakelijke toepassingen, waardoor betere beslissingen en snelle inzichten worden geboden.|[Product pagina](https://www.dundas.com/dundas-bi)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/dundas.dundas-bi)<br> |
 | ![IBM Cognos](./media/sql-data-warehouse-partner-business-intelligence/cognos_analytics_logo.png) |**IBM Cognos Analytics**<br>Cognos Analytics bevat selfservice mogelijkheden waarmee u eenvoudig, duidelijk en gemakkelijk te gebruiken bent, of u nu een ervaren bedrijfs analist bent die een enorme toeleverings keten bekijkt, of een Marketer die een campagne optimaliseert. Cognos Analytics maakt gebruik van AI-en andere mogelijkheden om gegevens te verkennen. Hiermee kunnen gebruikers gemakkelijker de antwoorden krijgen die ze nodig hebben|[Product pagina](https://www.ibm.com/products/cognos-analytics)<br>|

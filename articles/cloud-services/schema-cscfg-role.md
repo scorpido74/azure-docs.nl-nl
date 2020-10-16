@@ -10,10 +10,10 @@ caps.latest.revision: 12
 author: tgore03
 ms.author: tagore
 ms.openlocfilehash: b64f9d27e382a39b132593502fed32c565af473a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79528418"
 ---
 # <a name="azure-cloud-services-config-role-schema"></a>Rollen schema voor Azure Cloud Services Configuration
@@ -22,7 +22,7 @@ Het `Role` element van het configuratie bestand bevat het aantal rolinstanties d
 
 Zie [Cloud service (klassiek)-configuratie schema](schema-cscfg-file.md)voor meer informatie over het configuratie schema van de Azure-service. Zie het [definitie schema voor Cloud service (klassiek)](schema-csdef-file.md)voor meer informatie over het Azure service definition-schema.
 
-##  <a name="role-element"></a><a name="Role"></a>Role-element
+##  <a name="role-element"></a><a name="Role"></a> Role-element
 In het volgende voor beeld ziet u het `Role` element en de onderliggende elementen.
 
 ```xml 

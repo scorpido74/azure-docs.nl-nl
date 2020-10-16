@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 4200bc9879aba5e18282123be03576cc617a5e14
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88549225"
 ---
 # <a name="tutorial-configure-cornerstone-ondemand-for-automatic-user-provisioning"></a>Zelf studie: hoek steen configureren voor automatische gebruikers inrichting
@@ -68,7 +68,7 @@ Voordat u het automatisch inrichten van gebruikers configureert en inschakelt, m
 
 * We raden u aan één Azure AD-gebruiker toe te wijzen op hoek steen van de OnDemand om de configuratie van automatische gebruikers inrichting te testen. U kunt later aanvullende gebruikers of groepen toewijzen.
 
-* Wanneer u een gebruiker toewijst op hoek steen, selecteert u een geldige toepassingsspecifieke rol, indien beschikbaar, in het dialoog venster toewijzing. Gebruikers met de rol **standaard toegang** worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker toewijst op hoek steen, selecteert u een geldige toepassingsspecifieke rol, indien beschikbaar, in het dialoog venster toewijzing. Gebruikers met de rol **Standaardtoegang** worden uitgesloten van het inrichten.
 
 ## <a name="configure-automatic-user-provisioning-to-cornerstone-ondemand"></a>Automatische gebruikers inrichten op hoek steen van de OnDemand configureren
 
@@ -76,7 +76,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 Ga als volgt te werk om het automatisch inrichten van gebruikers te configureren voor de OnDemand van een hoek steen in azure AD.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). **Bedrijfs toepassingen**selecteren  >  **alle toepassingen op de**  >  **OnDemand**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). **Bedrijfs toepassingen**selecteren  >  **alle toepassingen op de**  >  **OnDemand**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -84,7 +84,7 @@ Ga als volgt te werk om het automatisch inrichten van gebruikers te configureren
 
     ![De koppeling van de hoek steen in de lijst toepassingen](common/all-applications.png)
 
-3. Selecteer het tabblad **inrichten** .
+3. Selecteer het tabblad **Inrichten**.
 
     ![Hoek steen van de OnDemand-inrichting](./media/cornerstone-ondemand-provisioning-tutorial/ProvisioningTab.png)
 
@@ -136,9 +136,9 @@ Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers of
 
 U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen naar het rapport inrichtings activiteiten te volgen. In het rapport worden alle acties beschreven die worden uitgevoerd door de Azure AD Provisioning-Service op de hoek steen van de OnDemand.
 
-Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
+Zie [Rapportage over automatische toewijzing van gebruikersaccounts](../app-provisioning/check-status-user-account-provisioning.md) voor informatie over het lezen van de Azure AD-inrichtingslogboeken.
 
-## <a name="connector-limitations"></a>Connector beperkingen
+## <a name="connector-limitations"></a>Connectorbeperkingen
 
 Het kenmerk voor de OnDemand- **positie** van de hoek steen verwacht een waarde die overeenkomt met de functies op de portal van de hoek steen. Als u een lijst met geldige **positie** waarden wilt ophalen, gaat u naar **gebruikers record bewerken > organisatie structuur > positie** in de portal van de hoek steen.
 
@@ -155,7 +155,7 @@ Het kenmerk voor de OnDemand- **positie** van de hoek steen verwacht een waarde 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../app-provisioning/check-status-user-account-provisioning.md)
+* [Meer informatie over het controleren van logboeken en het ophalen van rapporten over de inrichtingsactiviteit](../app-provisioning/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: ./media/cornerstone-ondemand-provisioning-tutorial/tutorial_general_01.png

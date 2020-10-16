@@ -8,15 +8,15 @@ ms.subservice: core
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 06/17/2020
+ms.date: 10/12/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-csharp
-ms.openlocfilehash: 6aacc2778e02b96f31c633671da014ced30778fd
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 5ffdb7a3bb177092d728fbd469aa8cf95e93edb5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91756667"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966097"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Een Azure Machine Learning-model gebruiken dat als een webservice is geïmplementeerd
 
@@ -46,7 +46,9 @@ De klasse [azureml. core. webservice](https://docs.microsoft.com/python/api/azur
 * `scoring_uri` -Het REST API adres.
 * `swagger_uri` -Het adres van de OpenAPI-specificatie. Deze URI is beschikbaar als u automatische schema generatie hebt ingeschakeld. Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.md)voor meer informatie.
 
-Er zijn drie manieren om deze informatie op te halen voor geïmplementeerde webservices:
+Er zijn verschillende manieren om deze informatie op te halen voor geïmplementeerde webservices:
+
+# <a name="python"></a>[Python](#tab/python)
 
 * Wanneer u een model implementeert, `Webservice` wordt er een object geretourneerd met informatie over de service:
 
@@ -72,6 +74,30 @@ Er zijn drie manieren om deze informatie op te halen voor geïmplementeerde webs
     print(service.scoring_uri)
     print(service.swagger_uri)
     ```
+
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+
+Als u de naam van de geïmplementeerde service weet, gebruikt u de opdracht [AZ ml service show](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext_azure_cli_ml_az_ml_service_show) :
+
+```azurecli
+az ml service show -n <service-name>
+```
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+
+In Azure Machine Learning Studio selecteert u __eind punten__, __realtime-eind punten__en vervolgens de naam van het eind punt. In Details voor het eind punt bevat het veld __rest-eind punt__ de Score-URI. De __Swagger-URI__ bevat de SWAGGER-URI.
+
+---
+
+In de volgende tabel ziet u hoe deze Uri's eruitzien:
+
+| URI-type | Voorbeeld |
+| ----- | ----- |
+| Score ring-URI | `http://104.214.29.152:80/api/v1/service/<service-name>/score` |
+| Swagger-URI | `http://104.214.29.152/api/v1/service/<service-name>/swagger.json` |
+
+> [!TIP]
+> Het IP-adres is anders voor uw implementatie. Elk AKS-cluster heeft een eigen IP-adres dat wordt gedeeld door implementaties naar dat cluster.
 
 ### <a name="secured-web-service"></a>Beveiligde webservice
 
@@ -268,7 +294,7 @@ De geretourneerde resultaten zijn vergelijkbaar met het volgende JSON-document:
 
 ## <a name="call-the-service-go"></a>De service aanroepen (Go)
 
-In dit voor beeld ziet u hoe u kunt gebruiken om de webservice aan te roepen die is gemaakt vanuit de [trein in het notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/notebook_example.ipynb) -voor beeld:
+In dit voor beeld ziet u hoe u kunt gebruiken om de webservice aan te roepen die is gemaakt vanuit de [trein in het notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/notebook_runner/training_notebook.ipynb) -voor beeld:
 
 ```go
 package main
@@ -360,7 +386,7 @@ De geretourneerde resultaten zijn vergelijkbaar met het volgende JSON-document:
 
 ## <a name="call-the-service-java"></a>De service aanroepen (Java)
 
-Dit voor beeld laat zien hoe u Java gebruikt voor het aanroepen van de webservice die is gemaakt op basis van de [trein in het notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/notebook_example.ipynb) -voor beeld:
+Dit voor beeld laat zien hoe u Java gebruikt voor het aanroepen van de webservice die is gemaakt op basis van de [trein in het notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/notebook_runner/training_notebook.ipynb) -voor beeld:
 
 ```java
 import java.io.IOException;
@@ -440,7 +466,7 @@ De geretourneerde resultaten zijn vergelijkbaar met het volgende JSON-document:
 
 ## <a name="call-the-service-python"></a>De service aanroepen (python)
 
-In dit voor beeld wordt gedemonstreerd hoe u python gebruikt om de webservice aan te roepen die is gemaakt via de [trein in een notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/notebook_example.ipynb) -voor beeld:
+In dit voor beeld wordt gedemonstreerd hoe u python gebruikt om de webservice aan te roepen die is gemaakt via de [trein in een notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/notebook_runner/training_notebook.ipynb) -voor beeld:
 
 ```python
 import requests

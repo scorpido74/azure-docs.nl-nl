@@ -14,10 +14,10 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: d0cffbd1fa09abef9853e0ef853696c3c8ed353c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86246806"
 ---
 # <a name="design-secure-applications-on-azure"></a>Veilige toepassingen ontwerpen in azure
@@ -25,11 +25,11 @@ In dit artikel bieden we beveiligings activiteiten en-controles waarmee u rekeni
 
 In dit artikel komen de volgende SDL-fasen aan bod:
 
-- Bezig met trainen
+- Training
 - Vereisten
-- Ontwerpen
+- Ontwerp
 
-## <a name="training"></a>Bezig met trainen
+## <a name="training"></a>Training
 Voordat u begint met het ontwikkelen van uw Cloud toepassing, is het tijd om inzicht te krijgen in de beveiliging en privacy van Azure. Als u deze stap uitvoert, kunt u het aantal en de ernst van de zwakke plekken in uw toepassing beperken. U bent er meer voor bereid om op de juiste manier te reageren op de steeds veranderende bedreigings breedte.
 
 Gebruik de volgende resources tijdens de trainings fase om vertrouwd te raken met de Azure-Services die beschikbaar zijn voor ontwikkel aars en met best practices voor beveiliging op Azure:
@@ -97,7 +97,7 @@ U wilt echter ook [aannemen dat er](https://docs.microsoft.com/azure/devops/lear
 
   - Hoe kan ik de aanval herstellen, zoals gegevens lekken of knoeien?
 
-## <a name="design"></a>Ontwerpen
+## <a name="design"></a>Ontwerp
 
 De ontwerp fase is essentieel voor het opstellen van aanbevolen procedures voor ontwerp-en functionele specificaties. Het is ook essentieel voor het uitvoeren van een risico analyse waardoor beveiligings-en privacy-problemen in een project worden verholpen.
 

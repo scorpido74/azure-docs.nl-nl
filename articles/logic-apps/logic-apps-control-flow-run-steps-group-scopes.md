@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
 ms.openlocfilehash: 1ee8c7eabd33ad2d8773d55041fcdf54a7dd489b
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91575007"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Acties uitvoeren op basis van de groeps status met behulp van scopes in Azure Logic Apps
@@ -82,7 +82,7 @@ U kunt uw logische app op elk gewenst moment opslaan, zodat u uw werk regel mati
       | **Afstandseenheid** | <*your-preference*> | Voer de afstands eenheid in om uw route te berekenen. In dit voor beeld wordt deze waarde gebruikt: ' mijl ' | 
       | **Vervoermiddel** | Auto | Voer de reis wijze in voor uw route. In dit voor beeld wordt deze waarde ' aangedreven ' gebruikt | 
       | **Datum/tijd openbaar vervoer** | Geen | Is alleen van toepassing op de doorvoer modus. | 
-      | **Transit datum-type type** | Geen | Is alleen van toepassing op de doorvoer modus. | 
+      | **Type door Voer Date-Type** | Geen | Is alleen van toepassing op de doorvoer modus. | 
       ||||  
 
 1. [Voeg een voor waarde toe](../logic-apps/logic-apps-control-flow-conditional-statement.md) waarmee wordt gecontroleerd of de huidige reis tijd met het verkeer een opgegeven tijd overschrijdt. 

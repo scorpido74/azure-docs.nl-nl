@@ -14,10 +14,10 @@ ms.custom: aaddev
 ms.reviewer: luleon, hirsin, paulgarn
 ROBOTS: NOINDEX
 ms.openlocfilehash: fcdb0a571a9d6b81e25d061c33d8a3a812da189f
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91819318"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Foutopsporing uitvoeren in op SAML gebaseerde eenmalige aanmelding bij toepassingen in Azure Active Directory
@@ -77,7 +77,7 @@ Als er geen oplossing wordt aangeboden voor de aanmeldings fout, wordt u aangera
 1. Ga terug naar Azure AD en zoek de Blade **eenmalige aanmelding testen** .
 1. Plak in het bovenstaande tekstvak de **richt lijnen voor probleem oplossing**de fout melding.
 1. Klik op **oplossings richtlijnen ophalen** om de stappen voor het oplossen van het probleem weer te geven. Voor de richt lijnen is mogelijk informatie vereist van de SAML-aanvraag of het SAML-antwoord. Als u de beveiligde aanmeldings extensie voor mijn apps niet gebruikt, hebt u mogelijk een hulp programma zoals [Fiddler](https://www.telerik.com/fiddler) nodig om de SAML-aanvraag en het-antwoord op te halen.
-1. Controleer of de bestemming in de SAML-aanvraag overeenkomt met de URL voor de SSO-service voor eenmalige aanmelding die is verkregen van Azure AD.
+1. Controleer of de bestemming in de SAML-aanvraag overeenkomt met de URL van de SAML single Sign-On-service die is verkregen van Azure AD.
 1. Controleer of de uitgever in de SAML-aanvraag dezelfde id is die u hebt geconfigureerd voor de toepassing in azure AD. Azure AD maakt gebruik van de verlener om een toepassing in uw directory te vinden.
 1. Controleer of AssertionConsumerServiceURL de toepassing verwacht het SAML-token van Azure AD te ontvangen. U kunt deze waarde configureren in azure AD, maar dit is niet verplicht als deze deel uitmaakt van de SAML-aanvraag.
 

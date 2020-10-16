@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/12/2017
 ms.author: alkohli
 ms.openlocfilehash: c8d8e3b9058b753dc2a6da35878449c94399225e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85508041"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-device"></a>De StorSimple Apparaatbeheer-service gebruiken voor het beheren van uw StorSimple-apparaat
@@ -37,7 +37,7 @@ Na het lezen van dit artikel leert u het volgende:
 De StorSimple-Apparaatbeheer-service wordt uitgevoerd in Microsoft Azure en er wordt verbinding gemaakt met meerdere StorSimple-apparaten. U gebruikt een centrale Microsoft Azure-portal die in een browser wordt uitgevoerd om deze apparaten te beheren. Ga als volgt te werk om verbinding te maken met de StorSimple-Apparaatbeheer service.
 
 #### <a name="to-connect-to-the-service"></a>Verbinding maken met de service
-1. Ga naar [https://portal.azure.com/](https://portal.azure.com/) .
+1. Navigeer naar [https://portal.azure.com/](https://portal.azure.com/) .
 2. Meld u met uw Microsoft-account-referenties aan bij de Microsoft Azure-portal (in de rechter bovenhoek van het deel venster).
 3. Schuif omlaag in het navigatie deel venster aan de linkerkant om toegang te krijgen tot de StorSimple-Apparaatbeheer service.
 
@@ -60,11 +60,11 @@ Klik op de juiste procedure in de tabel voor meer informatie over elke werk stro
 | Back-ups van een volume weer geven</br>Een back-upset selecteren</br>Een back-upset verwijderen |[Back-ups beheren](storsimple-8000-manage-backup-catalog.md) |
 | Een volume klonen |[Een volume klonen](storsimple-8000-clone-volume-u2.md) |
 | Een back-upset herstellen |[Een back-upset herstellen](storsimple-8000-restore-from-backup-set-u2.md) |
-| Over opslag accounts</br>Een opslag account toevoegen</br>Een opslag account bewerken</br>Een opslagaccount verwijderen</br>Sleutel rotatie van opslag accounts |[Opslagaccounts beheren](storsimple-8000-manage-storage-accounts.md) |
+| Over opslag accounts</br>Een opslagaccount toevoegen</br>Een opslag account bewerken</br>Een opslagaccount verwijderen</br>Sleutel rotatie van opslag accounts |[Opslagaccounts beheren](storsimple-8000-manage-storage-accounts.md) |
 | Over bandbreedte sjablonen</br>Een bandbreedte sjabloon toevoegen</br>Een bandbreedte sjabloon bewerken</br>Een bandbreedte sjabloon verwijderen</br>Een standaard sjabloon voor band breedte gebruiken</br>Een sjabloon voor een hele dag-band breedte maken die op een opgegeven tijdstip begint |[Bandbreedtesjablonen beheren](storsimple-8000-manage-bandwidth-templates.md) |
 | Access Control records</br>Een Access Control Record maken</br>Een Access Control Record bewerken</br>Een Access Control Record verwijderen |[Access Control records beheren](storsimple-8000-manage-acrs.md) |
 | Taakdetails weergeven</br>Een taak annuleren |[Taken beheren](storsimple-8000-manage-jobs-u2.md) |
-| Waarschuwingen ontvangen</br>Waarschuwingen beheren</br>Waarschuwingen controleren |[StorSimple-waarschuwingen weer geven en beheren](storsimple-8000-manage-alerts.md) |
+| Waarschuwingen ontvangen</br>Waarschuwingen beheren</br>Waarschuwingen weergeven |[StorSimple-waarschuwingen weer geven en beheren](storsimple-8000-manage-alerts.md) |
 | Bewakings grafieken maken |[Uw StorSimple-apparaat bewaken](storsimple-monitor-device.md) |
 | Een volume container toevoegen</br>Een volume container wijzigen</br>Een volume container verwijderen |[Volumecontainers beheren](storsimple-8000-manage-volume-containers.md) |
 | Een volume toevoegen</br>Een volume wijzigen</br>Een volume offline halen</br>Een volume verwijderen</br>Een volume bewaken |[Volumes beheren](storsimple-8000-manage-volumes-u2.md) |
@@ -72,7 +72,7 @@ Klik op de juiste procedure in de tabel voor meer informatie over elke werk stro
 | Webproxy-instellingen weer geven |[Webproxy voor uw apparaat configureren](storsimple-8000-configure-web-proxy.md) |
 | Beheerders wachtwoord voor het apparaat wijzigen</br>StorSimple Snapshot Manager wacht woord wijzigen |[StorSimple-wacht woorden wijzigen](storsimple-8000-change-passwords.md) |
 | Extern beheer configureren |[Extern verbinding maken met uw StorSimple-apparaat](storsimple-8000-remote-connect.md) |
-| Instellingen voor waarschuwingen configureren |[StorSimple-waarschuwingen weer geven en beheren](storsimple-8000-manage-alerts.md) |
+| Waarschuwingsinstellingen configureren |[StorSimple-waarschuwingen weer geven en beheren](storsimple-8000-manage-alerts.md) |
 | CHAP configureren voor uw StorSimple-apparaat |[CHAP configureren voor uw StorSimple-apparaat](storsimple-configure-chap.md) |
 | Een back-upbeleid toevoegen</br>Een planning toevoegen of wijzigen</br>Een back-upbeleid verwijderen</br>Een hand matige back-up maken</br>Een aangepast back-upbeleid maken met meerdere volumes en schema's |[Back-upbeleid beheren](storsimple-8000-manage-backup-policies-u2.md) |
 | Apparaatbeheer stoppen</br>Apparaatbeheer opnieuw starten</br>Apparaat-controllers uitschakelen</br>De fabrieks instellingen van uw apparaat herstellen</br>(Hierboven gelden alleen voor on-premises apparaten) |[StorSimple Device controller beheren](storsimple-8000-manage-device-controller.md) |

@@ -12,10 +12,10 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 036cb15cf16b5f90dc17ccdce378a073a398d403
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86181332"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-synapse-sql-pool"></a>Ontwerp richtlijnen voor het gebruik van gerepliceerde tabellen in de Synapse SQL-pool
@@ -47,7 +47,7 @@ Gerepliceerde tabellen werken goed voor dimensie tabellen in een ster schema. Di
 Overweeg het gebruik van een gerepliceerde tabel wanneer:
 
 - De tabel grootte op schijf is minder dan 2 GB, ongeacht het aantal rijen. Als u de grootte van een tabel wilt weten, kunt u de [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) -opdracht gebruiken: `DBCC PDW_SHOWSPACEUSED('ReplTableCandidate')` .
-- De tabel wordt gebruikt in samen voegingen waarvoor gegevens verplaatsing anders zou worden vereist. Bij het koppelen van tabellen die niet in dezelfde kolom worden gedistribueerd, zoals een hash-gedistribueerde tabel naar een Round-Robin tabel, is gegevens verplaatsing vereist om de query te volt ooien.  Als een van de tabellen klein is, overweeg dan een gerepliceerde tabel. In de meeste gevallen kunt u het beste gerepliceerde tabellen gebruiken in plaats van Round-Robin tabellen. Gebruik [sys. dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)om bewerkingen voor het verplaatsen van gegevens in query plannen te bekijken.  De BroadcastMoveOperation is de gebruikelijke bewerking voor het verplaatsen van gegevens die kan worden verwijderd met behulp van een gerepliceerde tabel.  
+- De tabel wordt gebruikt in samen voegingen waarvoor gegevens verplaatsing anders zou worden vereist. Bij het koppelen van tabellen die niet in dezelfde kolom worden gedistribueerd, zoals een hash-gedistribueerde tabel naar een Round-Robin tabel, is gegevens verplaatsing vereist om de query te volt ooien.  Als een van de tabellen klein is, overweeg dan een gerepliceerde tabel. In de meeste gevallen kunt u het beste gerepliceerde tabellen gebruiken in plaats van Round-Robin tabellen. Gebruik [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)om bewerkingen voor gegevens verplaatsing in query plannen weer te geven.  De BroadcastMoveOperation is de gebruikelijke bewerking voor het verplaatsen van gegevens die kan worden verwijderd met behulp van een gerepliceerde tabel.  
 
 Gerepliceerde tabellen leveren mogelijk niet de beste query prestaties als:
 
@@ -99,7 +99,7 @@ DROP TABLE [dbo].[DimSalesTerritory_old];
 
 ### <a name="query-performance-example-for-round-robin-versus-replicated"></a>Voor beeld van query prestaties voor Round Robin versus gerepliceerd
 
-Voor een gerepliceerde tabel is geen verplaatsing van gegevens vereist voor samen voegingen omdat de volledige tabel al aanwezig is op elk reken knooppunt. Als de dimensie tabellen Round-Robin gedistribueerd zijn, kopieert een koppeling de dimensie tabel volledig naar elk reken knooppunt. Als u de gegevens wilt verplaatsen, bevat het query plan een bewerking met de naam BroadcastMoveOperation. Dit type verplaatsings bewerking voor gegevens vertraagt de query prestaties en wordt geëlimineerd door het gebruik van gerepliceerde tabellen. Als u de stappen in het query plan wilt weer geven, gebruikt u de weer gave [sys. dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) -systeem catalogus.  
+Voor een gerepliceerde tabel is geen verplaatsing van gegevens vereist voor samen voegingen omdat de volledige tabel al aanwezig is op elk reken knooppunt. Als de dimensie tabellen Round-Robin gedistribueerd zijn, kopieert een koppeling de dimensie tabel volledig naar elk reken knooppunt. Als u de gegevens wilt verplaatsen, bevat het query plan een bewerking met de naam BroadcastMoveOperation. Dit type verplaatsings bewerking voor gegevens vertraagt de query prestaties en wordt geëlimineerd door het gebruik van gerepliceerde tabellen. Als u de stappen in het query plan wilt weer geven, gebruikt u de weer gave [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) systeem catalogus.  
 
 In de volgende query op basis van het AdventureWorks-schema is de tabel bijvoorbeeld een `FactInternetSales` hash-distributie. De `DimDate` `DimSalesTerritory` tabellen en zijn kleinere dimensie tabellen. Met deze query wordt de totale omzet in Noord-Amerika voor boek jaar 2004 geretourneerd:
 
@@ -170,7 +170,7 @@ Met dit laad patroon worden bijvoorbeeld gegevens van vier bronnen geladen, maar
 
 Om ervoor te zorgen dat er consistente query's worden uitgevoerd, kunt u overwegen de build van de gerepliceerde tabellen te forceren na het laden van een batch. Anders zal de eerste query nog steeds gegevens verplaatsing gebruiken om de query te volt ooien.
 
-Deze query gebruikt de [sys. pdw_replicated_table_cache_state](/sql/relational-databases/system-catalog-views/sys-pdw-replicated-table-cache-state-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) dmv om de gerepliceerde tabellen weer te geven die zijn gewijzigd, maar niet opnieuw opgebouwd.
+Deze query gebruikt de [sys.pdw_replicated_table_cache_state](/sql/relational-databases/system-catalog-views/sys-pdw-replicated-table-cache-state-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) dmv om de gerepliceerde tabellen weer te geven die zijn gewijzigd, maar niet opnieuw opgebouwd.
 
 ```sql
 SELECT [ReplicatedTable] = t.[name]

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 7c429ad04a4c1e881c84c3af9dfa9ee553963917
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 5696bd167010ae81249eeac3134b79d3d5307288
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91629791"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91943863"
 ---
 # <a name="azure-operational-security-best-practices"></a>Best practices voor Azure Operational Security
 Dit artikel bevat een reeks operationele aanbevolen procedures voor het beveiligen van uw gegevens, toepassingen en andere assets in Azure.
@@ -116,7 +116,7 @@ Met de beveiligde Score, die is gebaseerd op de besturings elementen Center voor
 **Details**: Volg de [beveiligings aanbevelingen](../../security-center/security-center-recommendations.md) in Security Center starten, met de items met de hoogste prioriteit.
 
 **Aanbevolen procedure**: Integreer Security Center waarschuwingen in uw Siem-oplossing (Security Information and Event Management).   
-**Details**: de meeste organisaties met een Siem gebruiken deze als centraal-Clearinghouse voor beveiligings waarschuwingen waarvoor een analisten reactie is vereist. Verwerkte gebeurtenissen die zijn geproduceerd door Security Center worden gepubliceerd in het Azure-activiteiten logboek, een van de logboeken die beschikbaar zijn via Azure Monitor. Azure Monitor biedt een geconsolideerde pijp lijn voor de route ring van uw bewakings gegevens in een SIEM-hulp programma. Zie [beveiligings waarschuwingen en aanbevelingen exporteren](../../security-center/continuous-export.md#configure-siem-integration-via-azure-event-hubs) voor instructies... Als u Azure Sentinel gebruikt, raadpleegt u [verbinding maken Azure Security Center](../../sentinel/connect-azure-security-center.md).
+**Details**: de meeste organisaties met een Siem gebruiken deze als centraal-Clearinghouse voor beveiligings waarschuwingen waarvoor een analisten reactie is vereist. Verwerkte gebeurtenissen die zijn geproduceerd door Security Center worden gepubliceerd in het Azure-activiteiten logboek, een van de logboeken die beschikbaar zijn via Azure Monitor. Azure Monitor biedt een geconsolideerde pijp lijn voor de route ring van uw bewakings gegevens in een SIEM-hulp programma. Zie [streaming-waarschuwingen naar een Siem-, via-of IT-Service beheer oplossing](../../security-center/export-to-siem.md) voor instructies. Als u Azure Sentinel gebruikt, raadpleegt u [verbinding maken Azure Security Center](../../sentinel/connect-azure-security-center.md).
 
 **Best Practice**: Azure-logboeken integreren met uw Siem.   
 **Details**: gebruik [Azure monitor om gegevens te verzamelen en te exporteren](/azure/azure-monitor/overview#integrate-and-export-data). Deze procedure is essentieel voor het inschakelen van het onderzoek van beveiligings incidenten en het online bewaren van Logboeken is beperkt. Zie [verbinding maken met gegevens bronnen](../../sentinel/connect-data-sources.md)als u Azure Sentinel gebruikt.

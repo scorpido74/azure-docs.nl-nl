@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
 ms.openlocfilehash: 23b0961c369c21f50d9a873678a1c910385e6a91
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88206207"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Naslaginformatie over Azure Functions C# voor ontwikkelaars
@@ -30,7 +30,7 @@ Versies van de functions-runtime werken met specifieke versies van .NET. De volg
 
 | Runtime versie van functions | Maximum versie van .NET |
 | ---- | ---- |
-| Functies 3. x | .NET Core 3,1 |
+| Functies 3. x | .NET Core 3.1 |
 | Functions 2.x | .NET Core 2.2 |
 | Functions 1.x | .NET Framework 4,7 |
 

@@ -13,10 +13,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: e378c1e25fb434e689eadd91e9e8562ffe7e61fd
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91570091"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Azure Data Factory pijp lijnen bewaken en beheren met behulp van de app voor bewaking en beheer
@@ -159,7 +159,7 @@ Activiteit Vensters kunnen een van de volgende statussen hebben:
 
 <table>
 <tr>
-    <th align="left">Status</th><th align="left">Substatus</th><th align="left">Description</th>
+    <th align="left">Status</th><th align="left">Substatus</th><th align="left">Beschrijving</th>
 </tr>
 <tr>
     <td rowspan="8">Wachten</td><td>ScheduleTime</td><td>De tijd voor het uitvoeren van het activiteiten venster kan niet worden uitgevoerd.</td>
@@ -187,7 +187,7 @@ Activiteit Vensters kunnen een van de volgende statussen hebben:
 </tr>
 <tr>
 <tr>
-<td rowspan="2">InProgress</td><td>Valideren</td><td>De validatie wordt uitgevoerd.</td>
+<td rowspan="2">Wordt uitgevoerd</td><td>Valideren</td><td>De validatie wordt uitgevoerd.</td>
 </tr>
 <td>-</td>
 <td>Het activiteiten venster wordt verwerkt.</td>

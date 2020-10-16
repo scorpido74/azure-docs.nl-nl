@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 950447aa146f05714b6ec5ea3d6e47c368a2140e
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 46805427e6d00e858cf869eef68bf68549f57fb9
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229307"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018114"
 ---
 # <a name="tutorial-connect-with-power-bi-desktop"></a>Zelfstudie: Verbinden met Power BI Desktop
 
@@ -70,4 +70,4 @@ In **Azure Portal** > server > **Overview** > **Servernaam**,kopieer de serverna
 Als u het rapport niet meer nodig hebt, slaat u het niet op of verwijdert u het bestand als u het rapport wel hebt opgeslagen.
 
 ## <a name="next-steps"></a>Volgende stappen
-In deze zelfstudie hebt u geleerd hoe u Power BI Desktop gebruikt om verbinding te maken met een gegevensmodel op een server en een basisrapport te maken. Zie de zelfstudie [Adventure Works Internet Sales tabular data modeling](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial) (Gegevensmodellering in tabelvorm voor de internetverkoop van Adventure Works) in de documenten van SQL Server Analysis Services als u niet bekend bent met het maken van een gegevensmodel.
+In deze zelfstudie hebt u geleerd hoe u Power BI Desktop gebruikt om verbinding te maken met een gegevensmodel op een server en een basisrapport te maken. Zie de zelfstudie [Adventure Works Internet Sales tabular data modeling](/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial) (Gegevensmodellering in tabelvorm voor de internetverkoop van Adventure Works) in de documenten van SQL Server Analysis Services als u niet bekend bent met het maken van een gegevensmodel.

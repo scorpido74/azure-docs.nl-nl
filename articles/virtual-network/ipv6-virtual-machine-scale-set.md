@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
 ms.openlocfilehash: f969d7edc22c9c36481ca42449193af5f8c7b0d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84709994"
 ---
 # <a name="deploy-virtual-machine-scale-sets-with-ipv6-in-azure"></a>Schaal sets voor virtuele machines implementeren met IPv6 in azure
@@ -27,7 +27,7 @@ In dit artikel wordt beschreven hoe u een virtuele-machine Schaalset met dubbele
 2.    Maak een dual stack-load balancer.  
 3.    Maak regels voor netwerk beveiligings groepen (NSG).  
 
-De enige stap die verschilt van afzonderlijke Vm's is het maken van de netwerk interface configuratie (NIC) die gebruikmaakt van de virtuele-machine Scale set resource: networkProfile/Networkinterfaceconfigurations schaalset. De JSON-structuur is vergelijkbaar met die van het object micro soft. Network/networkInterfaces dat wordt gebruikt voor afzonderlijke Vm's, waarbij het instellen van de NIC en de IPv4 IpConfiguration als primaire interface wordt gebruikt, zoals wordt weer gegeven **in het volgende** voor beeld:
+De enige stap die verschilt van afzonderlijke Vm's is het maken van de netwerk interface configuratie (NIC) die gebruikmaakt van de virtuele-machine Scale set resource: networkProfile/Networkinterfaceconfigurations schaalset. De JSON-structuur is vergelijkbaar met die van het object micro soft. Network/networkInterfaces dat wordt gebruikt voor afzonderlijke Vm's, waarbij het instellen van de NIC en de IPv4 IpConfiguration als primaire interface wordt gebruikt, zoals wordt weer gegeven **in het volgende**  voor beeld:
 
 ```json
           "networkProfile": {

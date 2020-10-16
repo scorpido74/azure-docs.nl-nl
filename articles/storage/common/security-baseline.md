@@ -8,10 +8,10 @@ ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: f4687add8fdd55c8084a7180a6e0a3bffd9751b1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91715146"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Azure-beveiligings basislijn voor Azure Storage
@@ -316,7 +316,7 @@ U kunt ook Just-in-time/alleen-voldoende toegang inschakelen met behulp van Azur
 
 **Verantwoordelijkheid**: klant
 
-### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3,4: gebruik Azure Active Directory eenmalige aanmelding (SSO)
+### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3,4: single Sign-On (SSO) van Azure Active Directory gebruiken
 
 **Richt lijnen**: gebruik waar mogelijk Azure Active Directory-SSO in plaats van afzonderlijke zelfstandige referenties per service te configureren. Gebruik Azure Security Center aanbevelingen voor identiteits-en toegangs beheer. 
 
@@ -590,7 +590,7 @@ Daarnaast kunt u het virtuele netwerk service-eindpunt beleid gebruiken om uitga
 
 **Richt lijnen**: Volg aanbevelingen van Azure Security Center om de configuratie van uw opslag accounts continu te controleren en te controleren. 
 
-- [Aanbevelingen voor beveiliging: een referentie gids](https://docs.microsoft.com/azure/security-center/recommendations-reference)
+- [Aanbevelingen voor beveiliging: een naslaggids](https://docs.microsoft.com/azure/security-center/recommendations-reference)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -785,7 +785,7 @@ Daarnaast gebruikt u de resource grafiek van Azure voor het opvragen/detecteren 
 
 **Hulp**: gebruik Azure Policy aliassen in de naam ruimte ' micro soft. Storage ' om aangepaste beleids regels te maken om de configuratie van uw opslag account-exemplaren te controleren of af te dwingen. U kunt ook ingebouwde Azure Policy definities voor Azure Storage account gebruiken, zoals: 
 
-Netwerktoegang tot opslagaccounts moet zijn beperkt  
+Onbeperkte netwerktoegang tot opslagaccounts controleren  
 Advanced Threat Protection implementeren voor opslagaccounts  
 Opslagaccounts moeten worden gemigreerd naar nieuwe Azure Resource Manager-resources  
 Beveiligde overdracht naar opslagaccounts moet zijn ingeschakeld  
@@ -960,7 +960,7 @@ U kunt ook alle inhoud voor schadelijke software scannen voordat u deze uploadt 
 
 U kunt Azure Automation ook inschakelen om regel matige moment opnamen van de blobs te maken.
 
-- [Informatie over Azure Storage redundantie en service level agreements](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
+- [Informatie over Azure Storage redundantie en Service-Level-overeenkomsten](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
 
 - [Een moment opname van een BLOB maken](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob)
 

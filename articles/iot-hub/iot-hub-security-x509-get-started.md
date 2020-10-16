@@ -14,10 +14,10 @@ ms.custom:
 - 'Role: IoT Device'
 - devx-track-csharp
 ms.openlocfilehash: 8c9555bc208766d5275e392ee22889f5b618e216
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90018302"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>X.509-beveiliging instellen in uw Azure IoT Hub
@@ -96,7 +96,7 @@ Als u uw X. 509-apparaat wilt verifiëren, moet u het apparaat eerst ondertekene
 
 We laten nu zien hoe u een C#-toepassing kunt maken om het X. 509-apparaat te simuleren dat voor uw IoT-hub is geregistreerd. De waarden voor de Tempe ratuur en lucht vochtigheid worden verzonden vanaf het gesimuleerde apparaat naar uw hub. In deze zelf studie maakt u alleen de apparaat-app. Het is aan de lezers te blijven om de IoT Hub-service toepassing te maken die een reactie verzendt naar de gebeurtenissen die door dit gesimuleerde apparaat worden verzonden. De C#-toepassing veronderstelt dat u de stappen in het [beheer van test-CA-certificaten voor voor beelden en zelf studies](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)hebt gevolgd.
 
-1. Open Visual Studio, selecteer **een nieuw project maken**en kies vervolgens de project sjabloon **console-app (.NET Framework)** . Selecteer **Volgende**.
+1. Open Visual Studio, selecteer **een nieuw project maken**en kies vervolgens de project sjabloon **console-app (.NET Framework)** . Selecteer **Next**.
 
 1. Geef in **uw nieuwe project**de naam project *SimulateX509Device*en selecteer vervolgens **maken**.
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 56a7b91327e84ca36e6ec6e4b15f594dbc61830e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76bc3273177e94c7619d69293c1e79546d96662c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91274296"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977303"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SQL Server Azure Virtual Machines DBMS-implementatie voor SAP net-Weaver
 
@@ -384,13 +384,13 @@ SQL Server 2014 en hoger geeft u de mogelijkheid om database bestanden rechtstre
 * Op de host gebaseerde caching als beschikbaar voor Azure Premium Storage schijven is niet beschikbaar wanneer u SQL Server gegevens bestanden rechtstreeks op Azure-blobs plaatst.
 * Op virtuele machines uit de M-serie kan Azure Write Accelerator niet worden gebruikt voor de ondersteuning van submilliseconde schrijf bewerkingen voor het SQL Server transactie logboek bestand. 
 
-Meer informatie over deze functionaliteit vindt u in het artikel [SQL Server gegevens bestanden in Microsoft Azure](https://docs.microsoft.com/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure)
+Meer informatie over deze functionaliteit vindt u in het artikel [SQL Server gegevens bestanden in Microsoft Azure](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure)
 
 Aanbeveling voor productie systemen is om deze configuratie te vermijden en in plaats daarvan de plaatsingen van SQL Server gegevens en logboek bestanden in azure Premium Storage Vhd's te kiezen in plaats van rechtstreeks op Azure-blobs.
 
 
 ## <a name="sql-server-2014-buffer-pool-extension"></a>Extensie van SQL Server 2014-buffer groep
-SQL Server 2014 heeft een nieuwe functie geïntroduceerd, die een [buffergroepuitbreiding wordt genoemd.](https://docs.microsoft.com/sql/database-engine/configure-windows/buffer-pool-extension) Deze functie breidt de buffer groep van SQL Server uit, die in het geheugen wordt bewaard met een cache van het tweede niveau die wordt ondersteund door de lokale Ssd's van een server of virtuele machine. Met de buffergroepuitbreiding kan een grotere werkset gegevens in het geheugen worden bewaard. Vergeleken met het openen van Azure Standard-opslag is de toegang tot de uitbrei ding van de buffer groep, die is opgeslagen op de lokale Ssd's van een Azure-VM, veel factoren sneller. Als u de extensie van de buffer groep vergelijkt met Azure Premium Storage Lees cache, zoals aanbevolen voor SQL Server gegevens bestanden, worden er geen aanzienlijke voor delen verwacht voor de extensies van de buffer groep. De reden hiervoor is dat beide caches (SQL Server Buffergroepuitbreiding en Premium Storage Lees cache) gebruikmaken van de lokale schijven van het Azure Compute-knoop punt.
+SQL Server 2014 heeft een nieuwe functie geïntroduceerd, die een [buffergroepuitbreiding wordt genoemd.](/sql/database-engine/configure-windows/buffer-pool-extension) Deze functie breidt de buffer groep van SQL Server uit, die in het geheugen wordt bewaard met een cache van het tweede niveau die wordt ondersteund door de lokale Ssd's van een server of virtuele machine. Met de buffergroepuitbreiding kan een grotere werkset gegevens in het geheugen worden bewaard. Vergeleken met het openen van Azure Standard-opslag is de toegang tot de uitbrei ding van de buffer groep, die is opgeslagen op de lokale Ssd's van een Azure-VM, veel factoren sneller. Als u de extensie van de buffer groep vergelijkt met Azure Premium Storage Lees cache, zoals aanbevolen voor SQL Server gegevens bestanden, worden er geen aanzienlijke voor delen verwacht voor de extensies van de buffer groep. De reden hiervoor is dat beide caches (SQL Server Buffergroepuitbreiding en Premium Storage Lees cache) gebruikmaken van de lokale schijven van het Azure Compute-knoop punt.
 
 Ervaringen die in de tussen tijd worden opgedaan met SQL Server-Buffergroepuitbreiding met SAP-werk belasting, worden gecombineerd en blijven geen duidelijke aanbevelingen voor het gebruik van de groep in alle gevallen. Het ideale geval is dat de werkset die de SAP-toepassing nodig heeft in het hoofd geheugen past. Met Azure ondertussen bieden Vm's die Maxi maal 4 TB aan geheugen hebben geleverd, het kan worden behaald om de werkset in het geheugen te blijven gebruiken. Daarom is het gebruik van de extensie van de buffer groep beperkt tot enkele zeldzame gevallen en mag het geen gang bare zaak zijn.  
 
@@ -408,7 +408,7 @@ U hebt verschillende mogelijkheden om hand matig back-ups uit te voeren:
 
 De eerste methode is goed bekend en wordt ook in veel gevallen in de on-premises wereld toegepast. Niettemin verlaat het de taak om de back-uplocatie voor langere termijn op te lossen. Omdat u uw back-ups gedurende 30 of meer dagen niet wilt bewaren in de lokaal gekoppelde Azure Storage, moet u Azure Backup Services of een ander hulp programma voor back-up/herstel van derden gebruiken, waaronder het beheer en de retentie van uw back-ups. Of u bouwt een grote Bestands server in azure met behulp van Windows-opslag ruimten.
 
-De tweede methode wordt dichter in het artikel beschreven [SQL Server back-up naar URL](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/backup-restore). Verschillende versies van SQL Server hebben enkele variaties in deze functionaliteit. Daarom moet u de documentatie raadplegen voor uw specifieke SQL Server versie controle. Het is belang rijk te weten dat dit artikel een groot aantal beperkingen vermeldt. U hebt de mogelijkheid om de back-up uit te voeren op:
+De tweede methode wordt dichter in het artikel beschreven [SQL Server back-up naar URL](../../../azure-sql/virtual-machines/windows/backup-restore.md). Verschillende versies van SQL Server hebben enkele variaties in deze functionaliteit. Daarom moet u de documentatie raadplegen voor uw specifieke SQL Server versie controle. Het is belang rijk te weten dat dit artikel een groot aantal beperkingen vermeldt. U hebt de mogelijkheid om de back-up uit te voeren op:
 
 - Eén Azure-pagina-blob, die vervolgens de grootte van de back-up beperkt tot 1000 GB. Deze beperking beperkt ook de door Voer die u kunt behaalt.
 - Meerdere (tot 64) Azure-blok-blobs, waarmee een theoretische back-up van 12 TB wordt ingeschakeld. Tests met klant databases hebben echter aangetoond dat de maximale back-upgrootte kleiner kan zijn dan de theoretische limiet. In dit geval bent u verantwoordelijk voor het beheren van het bewaren van back-ups en de toegang tot de back-ups.
@@ -422,7 +422,7 @@ Meer informatie over de mogelijkheden van deze methode vindt u in de volgende ar
 - SQL Server 2014: [geautomatiseerde back-up voor SQL Server 2014 virtual machines (Resource Manager)](../../../azure-sql/virtual-machines/windows/automated-backup-sql-2014.md)
 - SQL Server 2016/2017: [automatische back-up v2 voor Azure virtual machines (Resource Manager)](../../../azure-sql/virtual-machines/windows/automated-backup.md)
 
-Als u de documentatie wilt raadplegen, kunt u zien dat de functionaliteit van de meest recente SQL Server releases verbeterd. Meer informatie over SQL Server automatische back-ups vindt u in het artikel [SQL Server beheerde back-up naar Microsoft Azure](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure). De maximale grootte van de theoretische back-up is 12 TB.  De automatische back-ups kunnen een goede methode zijn voor back-upgroottes van Maxi maal 12 TB. Aangezien er parallel meerdere blobs worden geschreven, kunt u een door Voer van meer dan 100 MB/seconde verwachten. 
+Als u de documentatie wilt raadplegen, kunt u zien dat de functionaliteit van de meest recente SQL Server releases verbeterd. Meer informatie over SQL Server automatische back-ups vindt u in het artikel [SQL Server beheerde back-up naar Microsoft Azure](/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure). De maximale grootte van de theoretische back-up is 12 TB.  De automatische back-ups kunnen een goede methode zijn voor back-upgroottes van Maxi maal 12 TB. Aangezien er parallel meerdere blobs worden geschreven, kunt u een door Voer van meer dan 100 MB/seconde verwachten. 
  
 
 ### <a name="azure-backup-for-sql-server-vms"></a>Azure Backup voor SQL Server Vm's
@@ -468,10 +468,10 @@ Als het resultaat afwijkt, stopt u het implementeren van SAP en onderzoekt u waa
 Als u SQL Server gebruikt in azure IaaS-implementaties voor SAP, hebt u verschillende mogelijkheden om toe te voegen om de DBMS-laag Maxi maal beschikbaar te maken. Zoals beschreven in [overwegingen voor azure virtual machines DBMS-implementatie voor SAP-werk belasting](dbms_guide_general.md) , biedt Azure verschillende eenmalige service overeenkomsten voor één virtuele machine en een combi natie van vm's die zijn geïmplementeerd in een Azure-beschikbaarheidsset. Hypo these is dat u zich aanmeldt voor de up-time-SLA voor uw productie-implementaties waarvoor de implementatie in azure-beschikbaarheids sets is vereist. In dat geval moet u Mini maal twee Vm's implementeren in een dergelijke Beschikbaarheidsset. Met één virtuele machine wordt het actieve SQL Server-exemplaar uitgevoerd. Het passieve exemplaar wordt uitgevoerd op de andere VM
 
 ### <a name="sql-server-clustering-using-windows-scale-out-file-server-or-azure-shared-disk"></a>SQL Server clustering met behulp van scale-out Bestands server of gedeelde Azure-schijf
-Met Windows Server 2016 heeft micro soft [opslagruimten direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)geïntroduceerd. Op basis van Opslagruimten Direct-implementatie wordt SQL Server FCI-clustering in het algemeen ondersteund. Azure biedt ook [gedeelde Azure-schijven](https://docs.microsoft.com/azure/virtual-machines/disks-shared-enable?tabs=azure-cli) die kunnen worden gebruikt voor Windows-Clustering. Voor SAP-workload ondersteunen we deze HA-opties niet. 
+Met Windows Server 2016 heeft micro soft [opslagruimten direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)geïntroduceerd. Op basis van Opslagruimten Direct-implementatie wordt SQL Server FCI-clustering in het algemeen ondersteund. Azure biedt ook [gedeelde Azure-schijven](../../disks-shared-enable.md?tabs=azure-cli) die kunnen worden gebruikt voor Windows-Clustering. Voor SAP-workload ondersteunen we deze HA-opties niet. 
 
 ### <a name="sql-server-log-shipping"></a>SQL Server logboek verzending
-Een van de methoden van hoge Beschik baarheid (HA) is SQL Server logboek verzending. Als de virtuele machines die deel uitmaken van de HA-configuratie een naam omzetting hebben, is er geen probleem en is de installatie in azure niet afhankelijk van de instellingen die on-premises worden uitgevoerd. Met betrekking tot het instellen van de verzen ding van Logboeken en de principes voor het vastleggen van de back-upfunctie Details over SQL Server logboek verzending vindt u in het artikel [over het verzenden van Logboeken (SQL Server)](https://docs.microsoft.com/sql/database-engine/log-shipping/about-log-shipping-sql-server).
+Een van de methoden van hoge Beschik baarheid (HA) is SQL Server logboek verzending. Als de virtuele machines die deel uitmaken van de HA-configuratie een naam omzetting hebben, is er geen probleem en is de installatie in azure niet afhankelijk van de instellingen die on-premises worden uitgevoerd. Met betrekking tot het instellen van de verzen ding van Logboeken en de principes voor het vastleggen van de back-upfunctie Details over SQL Server logboek verzending vindt u in het artikel [over het verzenden van Logboeken (SQL Server)](/sql/database-engine/log-shipping/about-log-shipping-sql-server).
 
 De functie voor het verzenden van SQL Server-Logboeken is in azure nauwelijks gebruikt voor een hoge Beschik baarheid binnen een Azure-regio. In de volgende scenario's gebruiken SAP-klanten echter een geslaagde back-ups van het logboek in combi natie met Azure:
 
@@ -519,7 +519,7 @@ SQL Server always on is de meest voorkomende gebruikte functionaliteit voor hoge
 Er zijn veel klanten die gebruikmaken van de SQL Server altijd on-functioneel voor extra functionaliteit voor herstel na nood gevallen tussen Azure-regio's. Diverse klanten gebruiken ook de mogelijkheid om back-ups uit te voeren vanaf een secundaire replica. 
 
 ## <a name="sql-server-transparent-data-encryption"></a>SQL Server Transparent Data Encryption
-Er zijn een aantal klanten die SQL Server [transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) gebruiken bij het implementeren van hun SAP SQL server-data bases in Azure. De functionaliteit van de SQL Server TDE wordt volledig ondersteund door SAP (Zie SAP Note [#1380493](https://launchpad.support.sap.com/#/notes/1380493)). 
+Er zijn een aantal klanten die SQL Server [transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) gebruiken bij het implementeren van hun SAP SQL server-data bases in Azure. De functionaliteit van de SQL Server TDE wordt volledig ondersteund door SAP (Zie SAP Note [#1380493](https://launchpad.support.sap.com/#/notes/1380493)). 
 
 ### <a name="applying-sql-server-tde"></a>SQL Server TDE Toep assen
 In gevallen waarin u een heterogene migratie uitvoert vanuit een ander DBMS, on-premises uitvoert naar Windows/SQL Server die in Azure worden uitgevoerd, moet u de lege doel database in SQL Server van tevoren maken. Als volgende stap past u SQL Server TDE-functionaliteit toe. Terwijl u nog steeds uw productie systeem op locatie uitvoert. De reden dat u in deze volg orde wilt uitvoeren, is dat het proces van het versleutelen van de lege data base heel even kan duren. De SAP-import processen worden vervolgens tijdens de downtime-fase geïmporteerd in de versleutelde data base. De overhead van importeren in een versleutelde data base heeft een manier om de data base te versleutelen na de export fase in de fase van de runtime. Er zijn negatieve ervaringen gemaakt bij het Toep assen van TDE met een SAP-werk belasting die boven op de data base wordt uitgevoerd. Daarom behandelt de aanbeveling de implementatie van TDE als een activiteit die moet worden uitgevoerd zonder SAP-werk belasting voor de betreffende data base.
@@ -537,9 +537,9 @@ Azure biedt de service van een [Key Vault](https://azure.microsoft.com/services/
 
 Meer informatie over het gebruik van Azure Key Vault voor SQL Server TDE-lijsten, zoals:
 
-- [Extensible Key Management met behulp van Azure Key Vault (SQL Server)](https://docs.microsoft.com/sql/relational-databases/security/encryption/extensible-key-management-using-azure-key-vault-sql-server).
-- [SQL Server TDe voor uitbreid bare sleutels met behulp van Azure Key Vault-installatie stappen](https://docs.microsoft.com/sql/relational-databases/security/encryption/setup-steps-for-extensible-key-management-using-the-azure-key-vault).
-- [SQL Server-connector onderhoud & probleem oplossing](https://docs.microsoft.com/sql/relational-databases/security/encryption/sql-server-connector-maintenance-troubleshooting?).
+- [Extensible Key Management met behulp van Azure Key Vault (SQL Server)](/sql/relational-databases/security/encryption/extensible-key-management-using-azure-key-vault-sql-server).
+- [SQL Server TDe voor uitbreid bare sleutels met behulp van Azure Key Vault-installatie stappen](/sql/relational-databases/security/encryption/setup-steps-for-extensible-key-management-using-the-azure-key-vault).
+- [SQL Server-connector onderhoud & probleem oplossing](/sql/relational-databases/security/encryption/sql-server-connector-maintenance-troubleshooting).
 - [Meer vragen van klanten over SQL Server transparent Data Encryption – TDe + Azure Key Vault](/archive/blogs/saponsqlserver/more-questions-from-customers-about-sql-server-transparent-data-encryption-tde-azure-key-vault).
 
 

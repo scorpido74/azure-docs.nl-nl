@@ -6,10 +6,10 @@ author: MS-jgol
 ms.author: jgol
 ms.date: 06/26/2020
 ms.openlocfilehash: b9da3b0647d5abe60dd8f6cb21163ff21f07205b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86539717"
 ---
 # <a name="release-notes-for-azure-web-app-extension-for-application-insights"></a>Release opmerkingen voor de Azure web app-extensie voor Application Insights
@@ -26,7 +26,7 @@ Meer [informatie](azure-web-apps.md) over de extensie van Azure web-apps voor Ap
 - Wat gebeurt er als ik persoonlijke extensies gebruik?
     - Verwijder de uitbrei dingen van de persoonlijke site, omdat deze niet meer worden ondersteund.
 
-## <a name="release-notes"></a>Opmerkingen bij de release
+## <a name="release-notes"></a>Releaseopmerkingen
 
 ### <a name="2833"></a>2.8.33
 

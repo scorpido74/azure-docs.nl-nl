@@ -8,10 +8,10 @@ ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: how-to
 ms.date: 06/30/2017
 ms.openlocfilehash: 1c22aa9fb91b0a86704b95586afc1779023e85b6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87288937"
 ---
 # <a name="u-sql-programmability-guide"></a>Programmeer handleiding voor U-SQL
@@ -83,7 +83,7 @@ OUTPUT @rs1
 
 ### <a name="use-c-expressions-for-todays-date"></a>C#-expressies gebruiken voor de datum van vandaag
 
-We kunnen de volgende C#-expressie gebruiken om de datum van vandaag te halen:`DateTime.Now.ToString("M/d/yyyy")`
+We kunnen de volgende C#-expressie gebruiken om de datum van vandaag te halen: `DateTime.Now.ToString("M/d/yyyy")`
 
 Hier volgt een voor beeld van het gebruik van deze expressie in een script:
 
@@ -529,9 +529,9 @@ De `IFormatter` interface is een serialisatie en de serialisatie van een object 
 
 * **Serialiseren**: een object of grafiek met objecten met de opgegeven basis naar de opgegeven stroom serialiseren.
 
-`MyType`exemplaar: exemplaar van het type.  
-`IColumnWriter`schrijver/ `IColumnReader` lezer: de onderliggende kolom stroom.  
-`ISerializationContext`context: Enum die een set vlaggen definieert waarmee de bron-of doel context voor de stream wordt opgegeven tijdens de serialisatie.
+`MyType` exemplaar: exemplaar van het type.  
+`IColumnWriter` schrijver/ `IColumnReader` lezer: de onderliggende kolom stroom.  
+`ISerializationContext` context: Enum die een set vlaggen definieert waarmee de bron-of doel context voor de stream wordt opgegeven tijdens de serialisatie.
 
 * **Tussenliggend**: Hiermee geeft u op dat de bron-of doel context geen persistente archief is.
 
@@ -1071,7 +1071,7 @@ Het kan handig zijn om een aangepaste Extractor te ontwikkelen. Dit kan handig z
 * Niet-gestructureerde gegevens, zoals webpagina's en e-mail berichten of semi-gestructureerde gegevens, zoals XML/JSON parseren.
 * Gegevens parseren in niet-ondersteunde code ring.
 
-Als u een door de gebruiker gedefinieerde Extractor of USIEF wilt definiëren, moet u een `IExtractor` interface maken. Alle invoer parameters voor het Extractor, zoals kolom/rij scheidings tekens en code ring, moeten worden gedefinieerd in de constructor van de-klasse. De `IExtractor` interface moet ook een definitie voor de `IEnumerable<IRow>` onderdrukking bevatten:
+Als u een door de gebruiker gedefinieerde Extractor of USIEF wilt definiëren, moet u een `IExtractor` interface maken. Alle invoer parameters voor het Extractor, zoals kolom/rij scheidings tekens en code ring, moeten worden gedefinieerd in de constructor van de-klasse. De `IExtractor`  interface moet ook een definitie voor de `IEnumerable<IRow>` onderdrukking bevatten:
 
 ```csharp
 [SqlUserDefinedExtractor]
@@ -1259,9 +1259,9 @@ public class MyOutputter : IOutputter
 }
 ```
 
-* `Output`wordt aangeroepen voor elke invoercel. Retourneert de `IUnstructuredWriter output` rijenset.
+* `Output` wordt aangeroepen voor elke invoercel. Retourneert de `IUnstructuredWriter output` rijenset.
 * De constructor-klasse wordt gebruikt om para meters door te geven aan de door de gebruiker gedefinieerde outputter.
-* `Close`wordt gebruikt om de dure status vrij te geven of te bepalen wanneer de laatste rij is geschreven.
+* `Close` wordt gebruikt om de dure status vrij te geven of te bepalen wanneer de laatste rij is geschreven.
 
 **SqlUserDefinedOutputter** kenmerk geeft aan dat het type moet worden geregistreerd als een door de gebruiker gedefinieerde outputter. Deze klasse kan niet worden overgenomen.
 
@@ -2105,7 +2105,7 @@ Het kenmerk **SqlUserDefinedReducer** geeft aan dat het type moet worden geregis
 **SqlUserDefinedReducer** is een optioneel kenmerk voor een door de gebruiker gedefinieerde beperkings definitie. Deze wordt gebruikt voor het definiëren van de eigenschap IsRecursive.
 
 * BOOL IsRecursive    
-* **waar** = geeft aan of deze versmaller een associatief en Commutative is
+* **waar**  = geeft aan of deze versmaller een associatief en Commutative is
 
 De belangrijkste Programmeer bare objecten zijn **invoer** en **uitvoer**. Het invoer object wordt gebruikt voor het opsommen van invoer rijen. Uitvoer wordt gebruikt om uitvoer rijen in te stellen als gevolg van het verminderen van de activiteit.
 

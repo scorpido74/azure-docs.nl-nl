@@ -7,13 +7,13 @@ ms.author: juluk
 ms.date: 06/29/2020
 author: jluk
 ms.openlocfilehash: d8ae03d52691a6c30f78439a579e7e7c136dda76
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90975284"
 ---
-# <a name="customize-cluster-egress-with-a-user-defined-route"></a>Cluster uitgang aanpassen met een door de gebruiker gedefinieerde route
+# <a name="customize-cluster-egress-with-a-user-defined-route"></a>Cluster uitgang aanpassen met een User-Defined route
 
 Een AKS-cluster kan worden aangepast aan specifieke scenario's. AKS zal standaard een standaard-SKU inrichten Load Balancer worden ingesteld en gebruikt voor uitgaand verkeer. Het is echter mogelijk dat de standaard instelling niet voldoet aan de vereisten van alle scenario's als open bare IP-adressen zijn niet toegestaan of extra hops zijn vereist voor het uitvallen van de gegevens.
 

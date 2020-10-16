@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: 549c14e0506613aca91ee4666026348d74afedbe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6ab4694159c6269f2f72d3d591147d43aef34a0a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514758"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961592"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-backup-catalog"></a>De StorSimple Apparaatbeheer-service gebruiken voor het beheren van uw back-upcatalogus
 ## <a name="overview"></a>Overzicht
@@ -75,11 +75,11 @@ Voer de volgende stappen uit om een back-upset voor een volume of back-upbeleid 
       
       De back-ups die zijn gekoppeld aan het geselecteerde volume of back-upbeleid, moeten worden weer gegeven in de lijst met back-upsets.
 
-      ![Ga naar back-upcatalogus](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
+      ![Ga naar back-upcatalogus 2](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
 
 3. Selecteer en vouw een back-upset uit. U kunt nu de back-upsets zien die zijn gesplitst op de volumes die het bevat. De opties voor **terugzetten** en **verwijderen** zijn beschikbaar via het context menu (Klik met de rechter muisknop) voor de back-upset. U kunt een van deze acties uitvoeren op de back-upset die u hebt geselecteerd.
 
-    ![Ga naar back-upcatalogus](./media/storsimple-8000-manage-backup-catalog/bucatalog2.png)
+    ![Ga naar back-upcatalogus 3](./media/storsimple-8000-manage-backup-catalog/bucatalog2.png)
 
 ## <a name="delete-a-backup-set"></a>Een back-upset verwijderen
 Verwijder een back-up wanneer u de gekoppelde gegevens niet meer wilt behouden. Voer de volgende stappen uit om een back-upset te verwijderen.
@@ -95,19 +95,19 @@ Verwijder een back-up wanneer u de gekoppelde gegevens niet meer wilt behouden. 
       
       De back-ups die zijn gekoppeld aan het geselecteerde volume of back-upbeleid, moeten worden weer gegeven in de lijst met back-upsets.
 
-      ![Ga naar back-upcatalogus](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
+      ![Ga naar back-upcatalogus 4](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
 
 1. Selecteer en vouw een back-upset uit. U kunt nu de back-upsets zien die zijn gesplitst op de volumes die het bevat. De opties voor **terugzetten** en **verwijderen** zijn beschikbaar via het context menu (Klik met de rechter muisknop) voor de back-upset. Klik met de rechter muisknop op de geselecteerde back-upset en selecteer **verwijderen**in het context menu.
 
-    ![Ga naar back-upcatalogus](./media/storsimple-8000-manage-backup-catalog/bucatalog3.png)
+    ![Ga naar back-upcatalogus 5](./media/storsimple-8000-manage-backup-catalog/bucatalog3.png)
 
 1. Als u om bevestiging wordt gevraagd, raadpleegt u de weer gegeven informatie en klikt u op **verwijderen**. De geselecteerde back-up wordt definitief verwijderd.
 
-    ![Ga naar back-upcatalogus](./media/storsimple-8000-manage-backup-catalog/bucatalog4.png)  
+    ![Ga naar back-upcatalogus 6](./media/storsimple-8000-manage-backup-catalog/bucatalog4.png)  
 
 1. U ontvangt een melding wanneer de verwijdering wordt uitgevoerd en wanneer deze is voltooid. Nadat de verwijdering is voltooid, vernieuwt u de query op deze pagina. De verwijderde back-upset wordt niet meer weer gegeven in de lijst met back-upsets.
 
-    ![Ga naar back-upcatalogus](./media/storsimple-8000-manage-backup-catalog/bucatalog7.png)
+    ![Ga naar back-upcatalogus 7](./media/storsimple-8000-manage-backup-catalog/bucatalog7.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over [het gebruik van de back-catalogus om uw apparaat te herstellen vanuit een back-upset](storsimple-8000-restore-from-backup-set-u2.md).

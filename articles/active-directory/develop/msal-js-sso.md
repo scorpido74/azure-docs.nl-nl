@@ -14,15 +14,15 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 8080d4cf4c3f0091f7837b3fccead5474c42db55
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84690775"
 ---
 # <a name="single-sign-on-with-msaljs"></a>Eenmalige aanmelding met MSAL.js
 
-Met eenmalige aanmelding (SSO) kunnen gebruikers hun referenties eenmaal invoeren om zich aan te melden en een sessie tot stand te brengen die opnieuw kan worden gebruikt in meerdere toepassingen zonder dat ze opnieuw moeten worden geverifieerd. Dit biedt een naadloze ervaring voor de gebruiker en vermindert de herhaalde prompts voor referenties.
+Met single Sign-On (SSO) kunnen gebruikers hun referenties eenmaal invoeren om zich aan te melden en een sessie tot stand te brengen die opnieuw kan worden gebruikt in meerdere toepassingen zonder dat ze opnieuw moeten worden geverifieerd. Dit biedt een naadloze ervaring voor de gebruiker en vermindert de herhaalde prompts voor referenties.
 
 Azure AD biedt SSO-mogelijkheden voor toepassingen door een sessie cookie in te stellen wanneer de gebruiker de eerste keer verifieert. Met de MSAL.js-bibliotheek kunnen toepassingen op een aantal manieren gebruikmaken.
 

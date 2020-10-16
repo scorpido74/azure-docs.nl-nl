@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 9/06/2020
 ms.author: allensu
 ms.openlocfilehash: f9293206526778f8c3de8a368a1916a2cb3f88c2
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89504670"
 ---
 # <a name="azure-cdn-endpoint-multi-origin-preview"></a>Azure CDN-eind punt met meerdere oorsprong (preview-versie)
@@ -42,7 +42,7 @@ Stel een of meer oorspronkelijke groepen in en kies een standaard oorspronkelijk
 
 4. Als u meerdere Origins wilt inschakelen, moet u ten minste één oorsprongs groep hebben. Selecteer een **oorsprongs groep maken**:
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-2.png" alt-text="Oorspronkelijke instellingen" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-2.png" alt-text="CDN-eindpunt" border="true":::
 
 5. Typ of selecteer de volgende informatie in de configuratie van de groep voor het toevoegen van de **oorsprong** :
 
@@ -56,7 +56,7 @@ Stel een of meer oorspronkelijke groepen in en kies een standaard oorspronkelijk
    | Test methode      | Selecteer **Head** of **Get**.                                           |
    | Standaard groep oorsprong | Selecteer het vak om in te stellen als standaard groep van oorsprong.
     
-   :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-3.png" alt-text="Oorsprongs groep toevoegen" border="true":::
+   :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-3.png" alt-text="CDN-eindpunt" border="true":::
 
 6. Selecteer **Toevoegen**.
 
@@ -64,7 +64,7 @@ Stel een of meer oorspronkelijke groepen in en kies een standaard oorspronkelijk
 
 1. Selecteer **+ oorsprong maken**in de oorspronkelijke instellingen voor het eind punt:
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-5.png" alt-text="Oorsprong maken" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-5.png" alt-text="CDN-eindpunt" border="true":::
 
 2. Voer de volgende informatie in of Selecteer deze in de configuratie **oorsprong toevoegen** :
 
@@ -82,13 +82,13 @@ Stel een of meer oorspronkelijke groepen in en kies een standaard oorspronkelijk
     > [!NOTE]
     > Wanneer een oorsprong in een oorspronkelijke groep wordt gemaakt, moet er een prioriteit en gewicht worden verleend. Als een oorspronkelijke groep slechts één oorsprong heeft, wordt de standaard prioriteit en het basis gewicht ingesteld op 1. Het verkeer wordt doorgestuurd naar de oorsprong van de hoogste prioriteit als de oorsprong in orde is. Als wordt vastgesteld dat een oorsprong een slechte status heeft, worden de verbindingen in de volg orde van prioriteit doorverkocht naar een andere oorsprong. Als twee oorsprongen dezelfde prioriteit hebben, wordt verkeer gedistribueerd als per gewicht dat is opgegeven voor de oorsprong 
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-6.png" alt-text="Aanvullende oorsprong toevoegen" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-6.png" alt-text="CDN-eindpunt" border="true":::
 
 3. Selecteer **Toevoegen**.
 
 4. Selecteer **oorsprong configureren** om het bronpad in te stellen voor alle oorsprongen:
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-7.png" alt-text="Bronpad configureren" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-7.png" alt-text="CDN-eindpunt" border="true":::
 
 5. Selecteer **OK**.
 
@@ -98,27 +98,27 @@ Zodra u verschillende oorsprongen en een oorspronkelijke groep hebt, kunt u de o
 
 1. Selecteer in de oorspronkelijke instellingen van het Azure CDN-eind punt de naam van de oorspronkelijke groep die u wilt configureren:
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-8.png" alt-text="Instellingen voor oorsprong en oorspronkelijke groep configureren" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-8.png" alt-text="CDN-eindpunt" border="true":::
 
 2. Selecteer in **oorspronkelijke groep bijwerken**de optie **+ oorsprong selecteren**:
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-9.png" alt-text="Oorspronkelijke groep bijwerken" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-9.png" alt-text="CDN-eindpunt" border="true":::
 
 4. Selecteer de oorsprong die u wilt toevoegen aan de groep in de vervolg keuzelijst en selecteer **OK**.
 
 5. Controleer of de oorsprong is toegevoegd aan de groep en selecteer vervolgens **Opslaan**:
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-10.png" alt-text="Bijkomende oorsprong die is toegevoegd aan de groep verifiëren" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-10.png" alt-text="CDN-eindpunt" border="true":::
 
 ## <a name="remove-origin-from-origin-group"></a>Oorsprong uit de oorspronkelijke groep verwijderen
 
 1. Selecteer in de oorspronkelijke instellingen van het eind punt van de Azure CDN de naam van de oorspronkelijke groep:
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-8.png" alt-text="Oorsprong uit groep verwijderen" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-8.png" alt-text="CDN-eindpunt" border="true":::
 
 2. Als u een oorsprong uit de oorspronkelijke groep wilt verwijderen, selecteert u het prullenbak pictogram naast de oorsprong en selecteert u **Opslaan**:
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-11.png" alt-text="Oorsprong van groep voor updates verwijderen" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-11.png" alt-text="CDN-eindpunt" border="true":::
 
 ## <a name="override-origin-group-with-rules-engine"></a>Bron groep overschrijven met regels-engine
 
@@ -128,7 +128,7 @@ Distribueer verkeer naar een andere groep op basis van de aanvraag-URL.
 
 1. Selecteer in het CDN-eind punt **regel engine** onder **instellingen**:
 
-:::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-12.png" alt-text="Engine voor regels" border="true":::
+:::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-12.png" alt-text="CDN-eindpunt" border="true":::
 
 2. Selecteer **+ regel toevoegen**.
 
@@ -144,7 +144,7 @@ Distribueer verkeer naar een andere groep op basis van de aanvraag-URL.
 
 8. In **oorspronkelijke groep**selecteert u de oorspronkelijke groep in de vervolg keuzelijst.
 
-:::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-13.png" alt-text="Voor waarden van regel engine" border="true":::
+:::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-13.png" alt-text="CDN-eindpunt" border="true":::
 
 Voor alle binnenkomende aanvragen als het URL-pad **/images**bevat, wordt de aanvraag toegewezen aan de oorspronkelijke groep in de sectie Action **(myorigingroup)**. 
 

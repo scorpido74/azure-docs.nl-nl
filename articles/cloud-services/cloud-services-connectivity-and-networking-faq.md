@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: genli
-ms.openlocfilehash: 2a27161ca9a218b1f7c0e3fb51c9935438d9778e
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: d8f57cc16cad4c0b081478932f820c983e4bbdc7
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91533414"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070024"
 ---
 # <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problemen met de verbinding en het netwerk voor Azure Cloud Services: veelgestelde vragen (FAQ)
 
@@ -40,7 +40,7 @@ Nee, niet met behulp van het normale ' ping '/ICMP-protocol. Het ICMP-protocol i
 
 Als u de connectiviteit wilt testen, raden we u aan een poort ping uit te voeren. Hoewel Ping.exe ICMP gebruikt, kunt u andere hulpprogram ma's, zoals PSPing, nmap en Telnet, gebruiken om de connectiviteit met een specifieke TCP-poort te testen.
 
-Zie voor meer informatie [poort pingen gebruiken in plaats van ICMP om Azure VM-connectiviteit te testen](https://blogs.msdn.microsoft.com/mast/2014/06/22/use-port-pings-instead-of-icmp-to-test-azure-vm-connectivity/).
+Zie voor meer informatie [poort pingen gebruiken in plaats van ICMP om Azure VM-connectiviteit te testen](/archive/blogs/mast/use-port-pings-instead-of-icmp-to-test-azure-vm-connectivity).
 
 ## <a name="how-do-i-prevent-receiving-thousands-of-hits-from-unknown-ip-addresses-that-might-indicate-a-malicious-attack-to-the-cloud-service"></a>Hoe kan ik geen duizenden treffers ontvangen van onbekende IP-adressen die kunnen wijzen op een schadelijke aanval van de Cloud service?
 Azure implementeert een netwerk beveiliging met meerdere lagen om de platform services te beschermen tegen gedistribueerde Denial-of-service-aanvallen (DDoS). Het Azure DDoS-verdedigings systeem maakt deel uit van het doorlopende bewakings proces van Azure, dat voortdurend wordt verbeterd door indringings tests. Dit DDoS-verdedigings systeem is zodanig ontworpen dat het niet alleen aanvallen van de buiten kant is, maar ook van andere Azure-tenants. Zie [Azure-netwerk beveiliging](https://download.microsoft.com/download/C/A/3/CA3FC5C0-ECE0-4F87-BF4B-D74064A00846/AzureNetworkSecurity_v3_Feb2015.pdf)voor meer informatie.
@@ -67,7 +67,7 @@ Het gebruikte distributie algoritme is een hash van 5-tuple (bron-IP, bron poort
 
 De module voor het herschrijven van URL'S van IIS kan worden gebruikt om verkeer dat wordt omgeleid naar de standaard-URL voor de Cloud service (bijvoorbeeld \* . cloudapp.net), om te leiden naar een aangepaste naam/URL. Omdat de module voor het herschrijven van URL'S standaard is ingeschakeld op webrollen en de bijbehorende regels worden geconfigureerd in de web.config van de toepassing, is deze altijd beschikbaar op de virtuele machine, ongeacht het opnieuw opstarten/terugzetten van installatie kopieën. Zie voor meer informatie:
 
-- [Herschrijf regels maken voor de module voor het herschrijven van URL'S](https://docs.microsoft.com/iis/extensions/url-rewrite-module/creating-rewrite-rules-for-the-url-rewrite-module)
+- [Herschrijf regels maken voor de module voor het herschrijven van URL'S](/iis/extensions/url-rewrite-module/creating-rewrite-rules-for-the-url-rewrite-module)
 - [Een standaard koppeling verwijderen](https://stackoverflow.com/questions/32286487/azure-website-how-to-remove-default-link?answertab=votes#tab-top)
 
 ## <a name="how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service"></a>Hoe kan ik binnenkomend verkeer naar de standaard-URL van mijn Cloud service blok keren/uitschakelen?

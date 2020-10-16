@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/8/2020
 ms.author: allensu
 ms.openlocfilehash: e1080aea12e70f4312fbee07b063d5a5cfbd1201
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89596279"
 ---
 # <a name="azure-load-balancer-portal-settings"></a>Portal-instellingen voor Azure Load Balancer
@@ -47,7 +47,7 @@ Als u **openbaar** selecteert als uw type, ziet u de volgende informatie:
 | ---------- | ---------- |
 | Openbaar IP-adres | Selecteer **nieuwe maken** om een openbaar IP-adres te maken voor uw open bare Load Balancer. </br> Als u een bestaand openbaar IP-adres hebt, selecteert u **bestaande gebruiken**.  |
 | Naam openbaar IP-adres | De naam van het open bare IP-adres.|
-| SKU openbaar IP-adres | Open bare IP-adressen hebben twee Sku's: **Basic** en **Standard**. </br> Basic biedt geen ondersteuning voor zone-tolerantie-en zonegebonden-kenmerken. </br> **Standaard** wordt aanbevolen voor productie werkbelastingen. </br> De Load Balancer en het open bare IP-adres-Sku's **moeten overeenkomen**. |
+| Openbaar IP-adres SKU | Open bare IP-adressen hebben twee Sku's: **Basic** en **Standard**. </br> Basic biedt geen ondersteuning voor zone-tolerantie-en zonegebonden-kenmerken. </br> **Standaard** wordt aanbevolen voor productie werkbelastingen. </br> De Load Balancer en het open bare IP-adres-Sku's **moeten overeenkomen**. |
 | Toewijzing | **Statisch** is automatisch geselecteerd voor standaard. </br> Algemene open bare Ip's hebben twee typen: **dynamisch** en **statisch**. </br> Dynamische open bare IP-adressen worden pas toegewezen nadat ze zijn gemaakt. </br> Ip's kunnen verloren gaan als de bron wordt verwijderd. </br> Statische IP-adressen worden aanbevolen. |
 | Beschikbaarheidszone | Selecteer **Zone-redundant** om een tolerante load balancer te maken. </br> Als u een zonegebonden-load balancer wilt maken, selecteert u een specifieke zone van **1**, **2**of **3**. </br> Standard-load balancer en open bare IPs-zones voor ondersteuning. </br> Meer informatie over [Load Balancer-en beschikbaarheids zones](load-balancer-standard-availability-zones.md). </br> U ziet geen zone selectie voor Basic. Een basisversie van een load balancer biedt geen ondersteuning voor zones. |
 | Een openbaar IPv6-adres toevoegen | De Load Balancer biedt ondersteuning voor **IPv6-** adressen voor uw frontend. </br> Meer informatie over [Load Balancer en IPv6](load-balancer-ipv6-overview.md)
@@ -63,7 +63,7 @@ Als u **intern** selecteert in type, ziet u de volgende informatie:
 | IP-adrestoewijzing | Uw opties zijn **statisch** of **dynamisch**. </br> Statisch garandeert dat het IP-adres niet wordt gewijzigd. Een dynamisch IP-adres kan veranderen. |
 | Beschikbaarheidszone | Uw opties zijn: </br> **Zone-redundant** </br> **Zone 1** </br> **Zone 2** </br> **Zone 3** </br> Selecteer een **zone-redundante** IP als u een Load Balancer wilt maken dat Maxi maal beschikbaar is voor fouten in de beschikbaarheids zone. |
 
-:::image type="content" source="./media/manage/create-internal-load-balancer-basics.png" alt-text="Load balancer intern maken." border="true":::
+:::image type="content" source="./media/manage/create-internal-load-balancer-basics.png" alt-text="Maak load balancer openbaar." border="true":::
 
 ## <a name="frontend-ip-configuration"></a>Front-end-IP-configuratie
 
@@ -80,7 +80,7 @@ Als u een front-end-IP-configuratie aan uw load balancer wilt toevoegen, gaat u 
 | IP-type | IP-type bepaalt of één IP-adres is gekoppeld aan uw front-end of een bereik van IP-adressen met behulp van een IP-voor voegsel. </br> Een [openbaar IP-voor voegsel](../virtual-network/public-ip-address-prefix.md) helpt wanneer u herhaaldelijk verbinding met hetzelfde eind punt moet maken. Het voor voegsel zorgt ervoor dat voldoende poorten worden gegeven om te helpen bij het oplossen van problemen met de SNAT-poort. |
 | Openbaar IP-adres (of voor voegsel als u hierboven een voor voegsel hebt geselecteerd) | Selecteer of maak een nieuw openbaar IP-adres (of voor voegsel) voor uw load balancer frontend. |
 
-:::image type="content" source="./media/manage/frontend.png" alt-text="Pagina front-end-IP-configuratie maken." border="true":::
+:::image type="content" source="./media/manage/frontend.png" alt-text="Maak load balancer openbaar." border="true":::
 
 ## <a name="backend-pools"></a>Back-end-Pools
 
@@ -96,7 +96,7 @@ Als u een back-end-groep aan uw load balancer wilt toevoegen, gaat u naar uw loa
 
 U kunt virtuele machines of virtuele-machine schaal sets toevoegen aan de back-end-groep van uw Azure Load Balancer. Maak eerst de virtuele machines of virtuele-machine schaal sets. Voeg deze vervolgens toe aan de load balancer in de portal.
 
-:::image type="content" source="./media/manage/backend.png" alt-text="Pagina Back-upgroep maken." border="true":::
+:::image type="content" source="./media/manage/backend.png" alt-text="Maak load balancer openbaar." border="true":::
 
 ## <a name="health-probes"></a>Statuscontroles
 
@@ -112,7 +112,7 @@ Als u een status test aan uw load balancer wilt toevoegen, gaat u naar uw load b
 | Interval | Het aantal seconden tussen de test pogingen. </br> Het interval bepaalt hoe vaak de Health probe zal proberen om het back-end-exemplaar te bereiken. </br> Als u 5 selecteert, wordt de tweede test poging gedaan na vijf seconden, enzovoort. |
 | Drempelwaarde voor beschadigde status | Het aantal opeenvolgende test fouten dat moet optreden voordat een VM als slecht wordt beschouwd.</br> Als u 2 selecteert, worden er na twee opeenvolgende fouten geen nieuwe stromen ingesteld op deze back-end-instantie. |
 
-:::image type="content" source="./media/manage/health-probe.png" alt-text="Status test toevoegen." border="true":::
+:::image type="content" source="./media/manage/health-probe.png" alt-text="Maak load balancer openbaar." border="true":::
 
 ## <a name="load-balancing-rules"></a>Taakverdelings regels
 
@@ -130,13 +130,13 @@ Als u een load balancer regel wilt toevoegen aan uw load balancer, gaat u naar u
 | Back-endpoort | Deze instelling is de poort van de exemplaren in de back-endadresgroep waarnaar de load balancer verkeer moet verzenden. Deze instelling kan hetzelfde zijn als de frontend-poort of andere als u de flexibiliteit voor uw toepassing nodig hebt. |
 | Back-end-pool | De back-end-groep waarop u deze load balancer regel wilt Toep assen. |
 | Statustest | De status test die u hebt gemaakt om de status van de exemplaren in de back-end-pool te controleren. </br> Alleen in orde zijnde instanties ontvangen nieuw verkeer. |
-| Sessiepersistentie |  Uw opties zijn: </br> **Geen** </br> **IP van client** </br> **Client-IP en-protocol**</br> </br> Verkeer van een client naar dezelfde virtuele machine in de back-end-groep onderhouden. Dit verkeer wordt gedurende de duur van de sessie bewaard. </br> **Geen** geeft aan dat opeenvolgende aanvragen van dezelfde client kunnen worden verwerkt door elke virtuele machine. </br> **Client-IP** geeft aan dat opeenvolgende aanvragen van hetzelfde client-IP-adres worden verwerkt door dezelfde virtuele machine. </br> **Client-IP en-protocol** zorgen ervoor dat opeenvolgende aanvragen van hetzelfde client-IP-adres en-protocol worden verwerkt door dezelfde virtuele machine. </br> Meer informatie over [distributie modi](load-balancer-distribution-mode.md). |
+| Sessie persistentie |  Uw opties zijn: </br> **Geen** </br> **IP van client** </br> **Client-IP en-protocol**</br> </br> Verkeer van een client naar dezelfde virtuele machine in de back-end-groep onderhouden. Dit verkeer wordt gedurende de duur van de sessie bewaard. </br> **Geen** geeft aan dat opeenvolgende aanvragen van dezelfde client kunnen worden verwerkt door elke virtuele machine. </br> **Client-IP** geeft aan dat opeenvolgende aanvragen van hetzelfde client-IP-adres worden verwerkt door dezelfde virtuele machine. </br> **Client-IP en-protocol** zorgen ervoor dat opeenvolgende aanvragen van hetzelfde client-IP-adres en-protocol worden verwerkt door dezelfde virtuele machine. </br> Meer informatie over [distributie modi](load-balancer-distribution-mode.md). |
 | Time-out voor inactiviteit (minuten) | Ervoor zorgen dat een **TCP** **-of http-** verbinding wordt geopend zonder dat er wordt gebruikgemaakt van clients om Keep-Alive-berichten te verzenden |  
 | TCP opnieuw instellen | De Load Balancer kan **TCP-resets** verzenden om een meer voorspel bare toepassings gedrag te maken wanneer de verbinding niet actief is. </br> Meer informatie over [TCP Reset](load-balancer-tcp-reset.md)|
 | Zwevend IP-adres | Zwevend IP is de terminologie van Azure voor een deel van wat **direct server Return (DSR)** wordt genoemd. </br> DSR bestaat uit twee delen: <br> 1. stroom topologie </br> 2. een IP-adres toewijzings schema op platform niveau. </br></br> Azure Load Balancer werkt altijd in een DSR-stroom topologie, ongeacht of zwevende IP is ingeschakeld. </br> Met deze bewerking wordt aangegeven dat het uitgaande deel van een stroom altijd correct wordt herschreven naar flow direct terug naar de oorsprong. </br> Zonder zwevend IP-adres van Azure wordt een traditioneel IP-toewijzings schema voor taak verdeling weer gegeven, de VM-exemplaren IP. </br> Als zwevende IP wordt ingeschakeld, wordt de IP-adres toewijzing gewijzigd in het frontend-IP van de Load Balancer om extra flexibiliteit te bieden. </br> Zie meerdere front-ends [voor Azure Load Balancer](load-balancer-multivip-overview.md)voor meer informatie.|
 | Impliciete uitgaande regels maken | Selecteer **Nee**. </br> Standaard: **disableoutboundsnat toegevoegd = False**  </br> In dit geval wordt uitgaand uitgevoerd via hetzelfde frontend-IP-adres. </br></br> **Disableoutboundsnat toegevoegd = True** </br>In dit geval zijn uitgaande regels nodig voor uitgaand verkeer. |
 
-:::image type="content" source="./media/manage/load-balancing-rule.png" alt-text="Regel voor taak verdeling toevoegen." border="true":::
+:::image type="content" source="./media/manage/load-balancing-rule.png" alt-text="Maak load balancer openbaar." border="true":::
 
 ## <a name="inbound-nat-rules"></a>Inkomende NAT-regels
 
@@ -163,7 +163,7 @@ Als u een binnenkomende NAT-regel aan uw load balancer wilt toevoegen, gaat u na
 | Virtuele doelmachine. | Het onderdeel virtuele machine van de back-endserver waaraan u deze regel wilt koppelen. |
 | Poort toewijzing | Deze instelling kan standaard of aangepast zijn op basis van de voor keuren van uw toepassing. |
 
-:::image type="content" source="./media/manage/inbound-nat-rule.png" alt-text="Voeg een binnenkomende NAT-regel toe." border="true":::
+:::image type="content" source="./media/manage/inbound-nat-rule.png" alt-text="Maak load balancer openbaar." border="true":::
 
 ## <a name="outbound-rules"></a>Regels voor uitgaand verkeer
 
@@ -193,7 +193,7 @@ Als u een regel voor uitgaande verbindingen aan uw load balancer wilt toevoegen,
 | Kiezen op | Selecteer **Poorten per exemplaar** |
 | Poorten per instantie | Voer **10.000**in. |
 
-:::image type="content" source="./media/manage/outbound-rule.png" alt-text="Binnenkomende uitgaande regel toevoegen." border="true":::
+:::image type="content" source="./media/manage/outbound-rule.png" alt-text="Maak load balancer openbaar." border="true":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

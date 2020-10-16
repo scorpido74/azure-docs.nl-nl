@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
 ms.openlocfilehash: cd6602f68b63e2c236e7f3905d33b88fbda36ed2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81429861"
 ---
 # <a name="security-controls-for-azure-key-vault"></a>Beveiligings controles voor Azure Key Vault
@@ -45,14 +45,14 @@ In dit artikel worden de beveiligings besturings elementen gedocumenteerd die zi
 | Verificatie| Ja | Verificatie is via Azure Active Directory. |
 | Autorisatie| Ja | Key Vault toegangs beleid gebruiken. |
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 | Beveiligings beheer | Ja/Nee | Opmerkingen |
 |---|---|--|
 | Versleuteling aan server zijde op rest: door micro soft beheerde sleutels | Ja | Alle objecten zijn versleuteld. |
 | Versleuteling aan server zijde op rest: door de klant beheerde sleutels (BYOK) | Ja | De klant beheert alle sleutels in hun Key Vault. Wanneer er ondersteunde sleutels voor de Hardware Security module (HSM) worden opgegeven, wordt de sleutel, het certificaat of het geheim beschermd door een HSM met FIPS Level 2. |
 | Versleuteling op kolom niveau (Azure Data Services)| N.v.t. |  |
-| Versleuteling in transit (zoals ExpressRoute-versleuteling, in VNet-versleuteling en VNet-VNet-versleuteling)| Ja | Alle communicatie via versleutelde API-aanroepen |
+| Versleuteling in transit (zoals ExpressRoute-versleuteling, in VNet-versleuteling en VNet-VNet versleuteling)| Ja | Alle communicatie via versleutelde API-aanroepen |
 | Versleutelde API-aanroepen| Ja | HTTPS gebruiken. |
 
 ## <a name="access-controls"></a>Besturingselementen voor toegang

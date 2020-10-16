@@ -7,10 +7,10 @@ ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
 ms.openlocfilehash: 01021530c491fd25a199f32475c031a0e7f6cd0b
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89376635"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Azure-wachtrij opslag trigger voor Azure Functions
@@ -42,7 +42,7 @@ public static class QueueFunctions
 }
 ```
 
-# <a name="c-script"></a>[C#-script](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
 In het volgende voor beeld ziet u een binding van een wachtrij trigger in een *function.jsvoor* de code van het bestand en [C#-script (. CSX)](functions-reference-csharp.md) die gebruikmaakt van de binding. De functie pollt de `myqueue-items` wachtrij en schrijft een logboek wanneer een wachtrij-item wordt verwerkt.
 
@@ -65,7 +65,7 @@ Dit is de *function.jsvoor* het volgende bestand:
 
 In de [configuratie](#configuration) sectie worden deze eigenschappen uitgelegd.
 
-Dit is de C#-script code:
+Dit is de C# Script-code:
 
 ```csharp
 #r "Microsoft.WindowsAzure.Storage"
@@ -123,7 +123,7 @@ In de [configuratie](#configuration) sectie worden deze eigenschappen uitgelegd.
 > [!NOTE]
 > De para meter name komt overeen met de `context.bindings.<name>` Java script-code die de nettolading van het wachtrij-item bevat. Deze nettolading wordt ook door gegeven als de tweede para meter voor de functie.
 
-Dit is de Java script-code:
+Dit is de JavaScript-code:
 
 ```javascript
 module.exports = async function (context, message) {
@@ -266,17 +266,17 @@ Het opslag account dat moet worden gebruikt, wordt in de volgende volg orde bepa
 * Het `StorageAccount` kenmerk dat wordt toegepast op de klasse.
 * De instelling van de app ' AzureWebJobsStorage '.
 
-# <a name="c-script"></a>[C#-script](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
-Kenmerken worden niet ondersteund door een C#-script.
+Kenmerken worden niet ondersteund door C# Script.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Kenmerken worden niet ondersteund door Java script.
+Kenmerken worden niet ondersteund door JavaScript.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Kenmerken worden niet ondersteund door python.
+Kenmerken worden niet ondersteund door Python.
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -309,15 +309,15 @@ public class QueueTriggerDemo {
 
 ## <a name="configuration"></a>Configuratie
 
-De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `QueueTrigger` kenmerk.
+De volgende tabel bevat informatie over de bindingsconfiguratie-eigenschappen die u instelt in het bestand *function.json* en het kenmerk `QueueTrigger`.
 
-|function.jsbij eigenschap | Kenmerk eigenschap |Beschrijving|
+|function.json-eigenschap | Kenmerkeigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**type** | N.v.t.| Moet worden ingesteld op `queueTrigger` . Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal.|
-|**direction**| N.v.t. | In de *function.jsalleen voor* het bestand. Moet worden ingesteld op `in` . Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal. |
+|**type** | N.v.t.| Moet worden ingesteld op `queueTrigger`. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure-portal.|
+|**direction**| N.v.t. | In de *function.jsalleen voor* het bestand. Moet worden ingesteld op `in`. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure-portal. |
 |**name** | N.v.t. |De naam van de variabele die de nettolading van het wachtrij-item bevat in de functie code.  |
 |**queueName** | **QueueName**| De naam van de wachtrij die moet worden gecontroleerd. |
-|**Combi** | **Verbinding** |De naam van een app-instelling die de opslag connection string bevat die moet worden gebruikt voor deze binding. Als de naam van de app-instelling begint met ' AzureWebJobs ', kunt u hier alleen de rest van de naam opgeven. Als u bijvoorbeeld instelt `connection` op ' mijn opslag ', zoekt de functie runtime naar een app-instelling met de naam ' mijn opslag '. Als u `connection` leeg laat, gebruikt de functions runtime de standaard opslag Connection String in de app-instelling met de naam `AzureWebJobsStorage` .|
+|**connection** | **Verbinding** |De naam van een app-instelling die de opslag connection string bevat die moet worden gebruikt voor deze binding. Als de naam van de app-instelling begint met ' AzureWebJobs ', kunt u hier alleen de rest van de naam opgeven. Als u bijvoorbeeld instelt `connection` op ' mijn opslag ', zoekt de functie runtime naar een app-instelling met de naam ' mijn opslag '. Als u `connection` leeg laat, gebruikt de functions runtime de standaard opslag Connection String in de app-instelling met de naam `AzureWebJobsStorage` .|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -334,7 +334,7 @@ Toegang krijgen tot de bericht gegevens met behulp van een methode parameter, zo
 
 Als u probeert verbinding te maken met `CloudQueueMessage` een fout bericht, moet u ervoor zorgen dat u een verwijzing naar [de juiste versie van de Storage SDK](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x)hebt.
 
-# <a name="c-script"></a>[C#-script](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
 Toegang krijgen tot de bericht gegevens met behulp van een methode parameter, zoals `string paramName` . De `paramName` is de waarde die is opgegeven in de `name` eigenschap van *function.jsop*. U kunt verbinding maken met een van de volgende typen:
 
@@ -402,7 +402,7 @@ De Batch grootte en de drempel waarde voor het ophalen van een nieuwe batch kunn
 
 De wachtrij trigger voor komt automatisch dat een functie meerdere malen tegelijk een wachtrij bericht verwerkt.
 
-## <a name="hostjson-properties"></a>host.jsop Eigenschappen
+## <a name="hostjson-properties"></a>host.json-eigenschappen
 
 De [host.jsin](functions-host-json.md#queues) het bestand bevat instellingen die het gedrag van de wachtrij activeren controleren. Zie de sectie [host.jsop instellingen](functions-bindings-storage-queue-output.md#hostjson-settings) voor meer informatie over de beschik bare instellingen.
 

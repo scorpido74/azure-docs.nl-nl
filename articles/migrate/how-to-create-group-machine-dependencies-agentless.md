@@ -4,10 +4,10 @@ description: Een afhankelijkheids analyse zonder agent instellen in de evaluatie
 ms.topic: how-to
 ms.date: 6/08/2020
 ms.openlocfilehash: 57e5add810cf4fac232bce08fc7ca96df0a7c3a0
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91667466"
 ---
 # <a name="analyze-machine-dependencies-agentless"></a>Machine-afhankelijkheden analyseren (zonder agents)
@@ -144,7 +144,7 @@ Down load de Power shell-module van [Azure PowerShell samples](https://github.co
 
 ### <a name="log-in-to-azure"></a>Meld u aan bij Azure.
 
-1. Meld u aan bij uw Azure-abonnement met de cmdlet Connect-AzAccount.
+1. Meld u aan bij uw Azure-abonnement met behulp van de cmdlet Connect-AzAccount.
 
     ```PowerShell
     Connect-AzAccount
@@ -197,7 +197,7 @@ Azure Migrate biedt een Power BI sjabloon die u kunt gebruiken om netwerk verbin
 1. Down load de Power shell-module en de Power BI sjabloon vanuit [Azure PowerShell samples](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale) opslag plaats op github.
 
 2. Meld u aan bij Azure met behulp van de onderstaande instructies: 
-- Meld u aan bij uw Azure-abonnement met de cmdlet Connect-AzAccount.
+- Meld u aan bij uw Azure-abonnement met behulp van de cmdlet Connect-AzAccount.
 
     ```PowerShell
     Connect-AzAccount

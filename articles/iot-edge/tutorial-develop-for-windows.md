@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: d4846a69f548c99de735cc9d9e06bd6bb263b4bd
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: 0728e5d12b13164d127941a49603836ff92fd515
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439701"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045785"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Zelfstudie: IoT Edge-modules ontwikkelen voor Windows-apparaten
 
@@ -87,13 +87,13 @@ In deze zelfstudie leert u de ontwikkelstappen voor Visual Studio 2019. Als u Vi
 
 1. Bereid Visual Studio 2019 voor op uw ontwikkelcomputer.
 
-   * Als u Visual Studio nog niet op uw ontwikkelcomputer hebt, [installeert u Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/install-visual-studio) met de volgende workloads:
+   * Als u Visual Studio nog niet op uw ontwikkelcomputer hebt, [installeert u Visual Studio 2019](/visualstudio/install/install-visual-studio) met de volgende workloads:
 
       * Azure-ontwikkeling
       * Desktopontwikkeling met C++
       * Platformoverschrijdende ontwikkelmogelijkheden van .NET Core
 
-   * Als u Visual Studio 2019 al hebt geïnstalleerd op uw ontwikkelcomputer, volgt u de stappen in [Visual Studio aanpassen](https://docs.microsoft.com/visualstudio/install/modify-visual-studio) om de vereiste workloads toe te voegen.
+   * Als u Visual Studio 2019 al hebt geïnstalleerd op uw ontwikkelcomputer, volgt u de stappen in [Visual Studio aanpassen](/visualstudio/install/modify-visual-studio) om de vereiste workloads toe te voegen.
 
 2. Download en installeer de [Azure IoT Edge Tools](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools)-extensie voor Visual Studio 2019.
 
@@ -181,17 +181,17 @@ De oplossingssjabloon die u hebt gemaakt, bevat voorbeeldcode voor een IoT Edge-
 
 Elke module kan meerdere *invoer*- en *uitvoer*wachtrijen hebben die in hun code zijn gedeclareerd. Met de IoT Edge-hub die op het apparaat wordt uitgevoerd, worden berichten van de uitvoer van een module naar de invoer van een of meer modules gerouteerd. De specifieke code voor het declareren van invoer en uitvoer verschilt per taal, maar het concept is voor alle modules hetzelfde. Zie [Routes declareren](module-composition.md#declare-routes) voor meer informatie over routering tussen modules.
 
-De C#-voorbeeldcode die bij de projectsjabloon hoort, maakt gebruik van de [ModuleClient-klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet) van de IoT Hub SDK voor .NET.
+De C#-voorbeeldcode die bij de projectsjabloon hoort, maakt gebruik van de [ModuleClient-klasse](/dotnet/api/microsoft.azure.devices.client.moduleclient) van de IoT Hub SDK voor .NET.
 
 1. Zoek in het bestand **program.cs** de methode **SetInputMessageHandlerAsync** op.
 
-2. Met de methode [SetInputMessageHandlerAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient.setinputmessagehandlerasync?view=azure-dotnet) wordt een invoerwachtrij ingesteld voor het ontvangen van inkomende berichten. Bekijk deze methode en zie hoe hiermee een invoerwachtrij met de naam **input1** wordt geïnitialiseerd.
+2. Met de methode [SetInputMessageHandlerAsync](/dotnet/api/microsoft.azure.devices.client.moduleclient.setinputmessagehandlerasync) wordt een invoerwachtrij ingesteld voor het ontvangen van inkomende berichten. Bekijk deze methode en zie hoe hiermee een invoerwachtrij met de naam **input1** wordt geïnitialiseerd.
 
    ![De invoernaam zoeken in de SetInputMessageHandlserAsync-constructor](./media/tutorial-develop-for-windows/declare-input-queue.png)
 
 3. Zoek vervolgens de methode **SendEventAsync**.
 
-4. Met de methode [SendEventAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient.sendeventasync?view=azure-dotnet) worden ontvangen berichten verwerkt en wordt een uitvoerwachtrij ingesteld om de berichten door te geven. Bekijk deze methode en controleer of er een uitvoerwachtrij met de naam **output1** wordt geïnitialiseerd.
+4. Met de methode [SendEventAsync](/dotnet/api/microsoft.azure.devices.client.moduleclient.sendeventasync) worden ontvangen berichten verwerkt en wordt een uitvoerwachtrij ingesteld om de berichten door te geven. Bekijk deze methode en controleer of er een uitvoerwachtrij met de naam **output1** wordt geïnitialiseerd.
 
    ![De uitvoernaam zoeken in de SendEventAsync-constructor](./media/tutorial-develop-for-windows/declare-output-queue.png)
 
@@ -275,7 +275,7 @@ Als er fouten optreden bij het bouwen en pushen van de installatiekopie van de m
 
 U hebt gecontroleerd of de gemaakte containerinstallatiekopieën zijn opgeslagen in het containerregister, dus het is tijd om ze te implementeren op een apparaat. Zorg ervoor dat uw IoT Edge-apparaat actief is.
 
-1. Open de Cloud Explorer in Visual Studio en vouw de details voor uw IoT-hub uit.
+1. Open Cloud Explorer in Visual Studio en vouw de details voor uw IoT-hub uit.
 
 2. Selecteer de naam van het apparaat waarop u wilt implementeren. Selecteer in de lijst **Actions** de optie **Create Deployment**.
 
@@ -285,7 +285,7 @@ U hebt gecontroleerd of de gemaakte containerinstallatiekopieën zijn opgeslagen
 
    Gebruik niet het bestand deployment.template.json, dat niet de volledige module-installatiekopiewaarden bevat.
 
-4. Vouw de details van uw IoT Edge-apparaat uit in de Cloud Explorer om de modules op uw apparaat te bekijken.
+4. Vouw de details van uw IoT Edge-apparaat uit in Cloud Explorer om de modules op uw apparaat te bekijken.
 
 5. Gebruik de knop **Vernieuwen** om de status van het apparaat bij te werken om te zien of de modules SimulatedTemperatureSensor en IotEdgeModule1 op uw apparaat zijn geïmplementeerd.
 
@@ -295,7 +295,7 @@ U hebt gecontroleerd of de gemaakte containerinstallatiekopieën zijn opgeslagen
 
 De IotEdgeModule1-code ontvangt berichten via de invoerwachtrij en geeft deze door aan de uitvoerwachtrij. Het implementatiemanifest heeft routes gedeclareerd die berichten hebben doorgegeven van SimulatedTemperatureSensor aan IotEdgeModule1 en berichten vervolgens hebben doorgestuurd van IotEdgeModule1 naar IoT Hub. Met de Azure IoT Edge Tools voor Visual Studio kunt u berichten zien wanneer ze vanaf uw afzonderlijke apparaten op IoT Hub arriveren.
 
-1. Selecteer in de Visual Studio Cloud Explorer de naam van het IoT Edge-apparaat waarop u hebt geïmplementeerd.
+1. Selecteer in Cloud Explorer van Visual Studio de naam van het IoT Edge-apparaat waarop u hebt geïmplementeerd.
 
 2. Selecteer in het menu **Actions** de optie **Start Monitoring Built-in Event Endpoint**.
 

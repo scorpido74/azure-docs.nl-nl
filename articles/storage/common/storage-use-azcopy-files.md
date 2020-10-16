@@ -8,10 +8,10 @@ ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.openlocfilehash: 793f3869a9534c71d860cc8dea7a1995f5ee278d
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88871238"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>Gegevens overdragen met AzCopy en bestandsopslag 
@@ -41,7 +41,7 @@ U kunt de azcopy-opdracht [kopiëren](storage-ref-azcopy-copy.md) gebruiken om b
 Deze sectie bevat de volgende voor beelden:
 
 > [!div class="checklist"]
-> * Bestand uploaden
+> * Een bestand uploaden
 > * Een map uploaden
 > * De inhoud van een map uploaden
 > * Een specifiek bestand uploaden
@@ -61,7 +61,7 @@ Deze sectie bevat de volgende voor beelden:
 > [!NOTE]
 > De MD5-hash-code van het bestand wordt niet automatisch door AzCopy berekend en opgeslagen. Als u dit wilt doen, voegt u de markering toe `--put-md5` aan elke Kopieer opdracht. Op die manier wordt, wanneer het bestand wordt gedownload, AzCopy een MD5-hash voor gedownloade gegevens berekend en wordt gecontroleerd of de MD5-hash die is opgeslagen in de eigenschap van het bestand `Content-md5` overeenkomt met de berekende hash.
 
-### <a name="upload-a-file"></a>Bestand uploaden
+### <a name="upload-a-file"></a>Een bestand uploaden
 
 |    |     |
 |--------|-----------|
@@ -147,7 +147,7 @@ U kunt de azcopy-opdracht [kopiëren](storage-ref-azcopy-copy.md) gebruiken om b
 Deze sectie bevat de volgende voor beelden:
 
 > [!div class="checklist"]
-> * Bestand downloaden
+> * Een bestand downloaden
 > * Een directory downloaden
 > * De inhoud van een map downloaden
 > * Specifieke bestanden downloaden
@@ -166,7 +166,7 @@ Deze sectie bevat de volgende voor beelden:
 > [!NOTE]
 > Als de `Content-md5` eigenschaps waarde van een bestand een hash bevat, wordt in AzCopy een MD5-hash voor gedownloade gegevens berekend en wordt gecontroleerd of de MD5-hash die is opgeslagen in de eigenschap van het bestand `Content-md5` overeenkomt met de berekende hash. Als deze waarden niet overeenkomen, mislukt de down load tenzij u dit gedrag overschrijft door toe te voegen `--check-md5=NoCheck` of `--check-md5=LogOnly` aan de Kopieer opdracht.
 
-### <a name="download-a-file"></a>Bestand downloaden
+### <a name="download-a-file"></a>Een bestand downloaden
 
 |    |     |
 |--------|-----------|

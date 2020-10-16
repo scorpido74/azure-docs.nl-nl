@@ -8,10 +8,10 @@ ms.date: 07/29/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
 ms.openlocfilehash: 2362326bccd90af997aa9237ec5f14e39ae62c85
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89019994"
 ---
 # <a name="create-an-azure-cosmos-container"></a>Een Azure Cosmos-container maken
@@ -53,7 +53,7 @@ In dit artikel worden de verschillende manieren beschreven om een Azure Cosmos-c
    * Geef een door Voer op die moet worden ingericht (bijvoorbeeld 1000 RUs).
    * Selecteer **OK**.
 
-    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-mongodb.png" alt-text="Scherm opname van Azure Cosmos DB-API voor MongoDB, container toevoegen dialoog venster":::
+    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-mongodb.png" alt-text="Scherm afbeelding van Data Explorer deel venster, met nieuwe container gemarkeerd":::
 
 ### <a name="cassandra-api"></a><a id="portal-cassandra"></a>Cassandra-API
 
@@ -69,7 +69,7 @@ In dit artikel worden de verschillende manieren beschreven om een Azure Cosmos-c
    * Geef een door Voer op die moet worden ingericht (bijvoorbeeld 1000 RUs).
    * Selecteer **OK**.
 
-    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-cassandra.png" alt-text="Schermopname van Cassandra-API, dialoogvenster Tabel toevoegen":::
+    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-cassandra.png" alt-text="Scherm afbeelding van Data Explorer deel venster, met nieuwe container gemarkeerd":::
 
 > [!NOTE]
 > Voor de Cassandra-API wordt de primaire sleutel gebruikt als de partitiesleutel.
@@ -89,7 +89,7 @@ In dit artikel worden de verschillende manieren beschreven om een Azure Cosmos-c
    * Geef een door Voer op die moet worden ingericht (bijvoorbeeld 1000 RUs).
    * Selecteer **OK**.
 
-    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-gremlin.png" alt-text="Schermopname van Gremlin-API, dialoogvenster Grafiek toevoegen":::
+    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-gremlin.png" alt-text="Scherm afbeelding van Data Explorer deel venster, met nieuwe container gemarkeerd":::
 
 ### <a name="table-api"></a><a id="portal-table"></a>Tabel-API
 
@@ -103,7 +103,7 @@ In dit artikel worden de verschillende manieren beschreven om een Azure Cosmos-c
    * Geef een door Voer op die moet worden ingericht (bijvoorbeeld 1000 RUs).
    * Selecteer **OK**.
 
-    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-table.png" alt-text="Schermopname van Table-API, dialoogvenster Grafiek toevoegen":::
+    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-table.png" alt-text="Scherm afbeelding van Data Explorer deel venster, met nieuwe container gemarkeerd":::
 
 > [!Note]
 > Voor de Table-API wordt de partitiesleutel opgegeven telkens wanneer u een nieuwe rij toevoegt.

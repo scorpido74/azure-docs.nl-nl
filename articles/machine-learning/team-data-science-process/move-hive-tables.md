@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 7cce0a927c2ffd69252a22ea4459f789d22721c2
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86080734"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Hive-tabellen maken en gegevens laden vanuit Azure Blob Storage
@@ -27,7 +27,7 @@ In dit artikel wordt ervan uitgegaan dat u het volgende hebt:
 
 * Er is een Azure Storage-account gemaakt. Zie [over Azure Storage-accounts](../../storage/common/storage-introduction.md)als u instructies nodig hebt.
 * Er is een aangepast Hadoop-cluster ingericht met de HDInsight-service.  Zie [installatie clusters in HDInsight](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)als u instructies nodig hebt.
-* Externe toegang tot het cluster ingeschakeld, aangemeld en de Hadoop-opdracht regel console geopend. Zie [Apache Hadoop-clusters beheren](../../hdinsight/hdinsight-administer-use-portal-linux.md)als u instructies nodig hebt.
+* Externe toegang tot het cluster ingeschakeld, aangemeld en de Hadoop Command-Line-console geopend. Zie [Apache Hadoop-clusters beheren](../../hdinsight/hdinsight-administer-use-portal-linux.md)als u instructies nodig hebt.
 
 ## <a name="upload-data-to-azure-blob-storage"></a>Gegevens uploaden naar Azure Blob Storage
 Als u een virtuele machine van Azure hebt gemaakt met behulp van de instructies in [een virtuele Azure-machine instellen voor geavanceerde analyses](../../machine-learning/data-science-virtual-machine/overview.md), moet dit script bestand zijn gedownload naar de map *C: \\ gebruikers \\ \<user name\> \\ documenten \\ Data Science scripts* op de virtuele machine. Deze Hive-query's vereisen alleen dat u een gegevens schema en Azure Blob-opslag configuratie opgeeft in de juiste velden die kunnen worden verzonden.

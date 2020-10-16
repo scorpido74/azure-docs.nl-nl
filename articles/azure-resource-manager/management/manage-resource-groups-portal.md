@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
 ms.openlocfilehash: 6086dffaefba003461a6edd8177afab05377103d
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91371249"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Azure Resource Manager resource groepen beheren met behulp van de Azure Portal
@@ -32,7 +32,7 @@ De resourcegroep slaat metagegevens op over de resources. Dat is de reden waarom
 
 ## <a name="create-resource-groups"></a>Resource groepen maken
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. **Resource groepen** selecteren
 
     ![resource groep toevoegen](./media/manage-resource-groups-portal/manage-resource-groups-add-group.png)
@@ -52,7 +52,7 @@ De resourcegroep slaat metagegevens op over de resources. Dat is de reden waarom
 
 ## <a name="list-resource-groups"></a>Resource groepen weer geven
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Als u de resource groepen wilt weer geven, selecteert u **resource groepen**
 
     ![Bladeren in resource groepen](./media/manage-resource-groups-portal/manage-resource-groups-list-groups.png)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/23/2019
 ms.author: jeedes
-ms.openlocfilehash: 6773805fac9a23ca918a1bf6e4889d3e1a3bb336
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a2c1ba8feb933be7c4970f061dd5acdc1ef68a16
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550101"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775436"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-darwinbox"></a>Zelfstudie: Azure Active Directory SSO-integratie (eenmalige aanmelding) met Darwinbox
 
@@ -143,19 +143,19 @@ Wanneer u op de tegel Darwinbox in het toegangsvenster klikt, wordt u automatisc
 
 1. Open de mobiele app Darwinbox. Klik op **URL van organisatie invoeren** en voer de URL van uw organisatie in het tekstvak in. Klik op de knop met de pijl.
 
-    ![Mobiele app Darwinbox](media/darwinbox-tutorial/DarwinboxMobile01.jpg)
+    ![Schermopname die de mobiele app 'Darwinbox' toont met het selectie vakje 'URL van organisatie invoeren' geselecteerd, en een voorbeeld van een organisatie en de knop met de pijl gemarkeerd.](media/darwinbox-tutorial/DarwinboxMobile01.jpg)
 
 1. Als u meerdere domeinen hebt, klikt u op uw domein.
 
-    ![Mobiele app Darwinbox](media/darwinbox-tutorial/DarwinboxMobile02.jpg)
+    ![Schermopname van het venster 'Domein kiezen' met een voorbeeld van een domein.](media/darwinbox-tutorial/DarwinboxMobile02.jpg)
 
 1. Voer uw Azure AD-e-mail in de Darwinbox-toepassing in en klik op **Volgende**.
 
-    ![Mobiele app Darwinbox](media/darwinbox-tutorial/DarwinboxMobile03.jpg)
+    ![Schermopname van het venster 'Aanmelden' met de knop 'Volgende' gemarkeerd.](media/darwinbox-tutorial/DarwinboxMobile03.jpg)
 
 1. Voer uw Azure AD-wachtwoord in de Darwinbox-app in en klik op **Volgende**.
 
-    ![Mobiele app Darwinbox](media/darwinbox-tutorial/DarwinboxMobile04.jpg)
+    ![Schermopname van het venster 'Wachtwoord invoeren' met de knop 'Volgende' gemarkeerd.](media/darwinbox-tutorial/DarwinboxMobile04.jpg)
 
 1. Als het aanmelden is gelukt, wordt de startpagina van de toepassing weergegeven.
 

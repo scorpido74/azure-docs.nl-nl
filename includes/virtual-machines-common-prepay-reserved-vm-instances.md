@@ -5,10 +5,10 @@ ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 07/15/2020
 ms.openlocfilehash: fb3282666362e3ef592f253405cff01a52941203
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88655211"
 ---
 Wanneer u een gereserveerde VM-instantie voor Azure doorvoert, kunt u geld besparen. De reserverings korting wordt automatisch toegepast op het aantal actieve virtuele machines die overeenkomen met het reserverings bereik en de kenmerken. U hoeft geen reserve ring aan een virtuele machine toe te wijzen om de kortingen te krijgen. Voor een gereserveerde instantie aankoop geldt alleen het reken onderdeel van uw VM-gebruik. Voor virtuele Windows-machines wordt de gebruiks meter gesplitst in twee afzonderlijke meters. Er is een compute-meter, die gelijk is aan de Linux meter en een Windows IP-meter. De kosten die u ziet wanneer u de aankoop uitvoert, zijn alleen voor de reken kosten. Kosten zijn niet van toepassing op Windows-software. Zie [software kosten die niet zijn opgenomen in azure reserved VM instances](../articles/cost-management-billing/reservations/reserved-instance-windows-software-costs.md)voor meer informatie over software kosten.
@@ -86,7 +86,7 @@ Deze vereisten zijn van toepassing op het kopen van een gereserveerde VM-instant
 
 Een instantie kopen:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Selecteer **Alle services** > **Reserveringen**.
 1. Selecteer **toevoegen** om een nieuwe reserve ring te kopen en klik vervolgens op **virtuele machine**.
 1. Vul de verplichte velden in. Actieve VM-instanties die overeenkomen met de kenmerken die u selecteert, komen in aanmerking voor de reserveringskorting. Het werkelijke aantal VM-exemplaren dat de korting krijgt, is afhankelijk van het bereik en de geselecteerde hoeveelheid.
@@ -97,12 +97,12 @@ Als u een EA-overeenkomst hebt, kunt u de **optie meer toevoegen** gebruiken om 
 | Veld      | Beschrijving|
 |------------|--------------|
 |Abonnement|Het abonnement dat wordt gebruikt om te betalen voor de reserve ring. Via de betalingswijze voor het abonnement worden de kosten voor de reservering in rekening gebracht. Het abonnements type moet een Enter prise Agreement zijn (nummer van de aanbieding: MS-AZR-0017P of MS-AZR-0148P) of een micro soft-klant overeenkomst of een afzonderlijk abonnement met betalen per gebruik-tarieven (aanbiedings nummers: MS-AZR-0003P of MS-AZR-0023P). De kosten worden in mindering gebracht op het saldo van het reserveringsbedrag, indien beschikbaar, of in rekening gebracht als overschrijding. Voor een abonnement met betalen per gebruik-tarieven worden de kosten in rekening gebracht op basis van de credit card-of factuur betalings methode voor het abonnement.|    
-|Bereik       |Het bereik van de reserve ring kan betrekking hebben op één abonnement of meerdere abonnementen (gedeeld bereik). Als u het volgende selecteert: <ul><li>**Bereik van één resourcegroep**: de reserveringskorting wordt alleen toegepast op de overeenkomende resources in de geselecteerde resourcegroep.</li><li>**Bereik van één abonnement**: de reserveringskorting wordt toegepast op de overeenkomende resources in het geselecteerde abonnement.</li><li>**Gedeeld bereik**: de reserveringskorting wordt toegepast op overeenkomende resources binnen in aanmerking komende abonnementen die zich in de factureringscontext bevinden. Voor EA-klanten is de facturerings context de inschrijving. Voor afzonderlijke abonnementen met betalen per gebruik-tarieven bestaat het factureringsbereik uit alle in aanmerking komende abonnementen die zijn gemaakt door de accountbeheerder.</li></ul>|
+|Bereik       |Het bereik van de reserve ring kan betrekking hebben op één abonnement of meerdere abonnementen (gedeeld bereik). Als u het volgende selecteert: <ul><li>**Bereik van één resourcegroep**: de reserveringskorting wordt alleen toegepast op de overeenkomende resources in de geselecteerde resourcegroep.</li><li>**Bereik van één abonnement**: de reserveringskorting wordt toegepast op de overeenkomende resources in het geselecteerde abonnement.</li><li>**Gedeeld bereik**: de reserveringskorting wordt toegepast op overeenkomende resources binnen in aanmerking komende abonnementen die zich in de factureringscontext bevinden. Voor EA-klanten is de facturerings context de inschrijving. Voor afzonderlijke abonnementen met tarieven voor betalen per gebruik is het factureringsbereik alle in aanmerking komende abonnementen die zijn gemaakt door de accountbeheerder.</li></ul>|
 |Regio    |De Azure-regio die wordt gedekt door de reserve ring.|    
 |VM-grootte     |De grootte van de VM-exemplaren.|
 |Optimaliseren voor     |De flexibiliteit van VM-instantie grootte is standaard geselecteerd. Klik op **Geavanceerde instellingen** om de waarde voor de flexibiliteit van de instantie grootte te wijzigen om de reserverings korting toe te passen op andere virtuele machines in dezelfde [VM-grootte groep](../articles/virtual-machines/reserved-vm-instance-size-flexibility.md). Met de capaciteitsprioriteit wordt prioriteit toegekend aan de datacentercapaciteit voor uw implementaties. Het biedt extra vertrouwen in uw vermogen om de VM-exemplaren te starten wanneer u ze nodig hebt. Capaciteits prioriteit is alleen beschikbaar wanneer het reserverings bereik één abonnement is. |
 |Termijn        |Eén jaar of drie jaar. Er is ook een periode van 5 jaar die alleen beschikbaar is voor HBv2 Vm's.|
-|Aantal    |Het aantal exemplaren dat wordt aangeschaft binnen de reserve ring. De hoeveelheid is het aantal actieve VM-exemplaren waarmee de factuur korting kan worden verkregen. Als u bijvoorbeeld tien Standard_D2 Vm's uitvoert in het VS-Oost, geeft u hoeveelheid op als 10 om het voor deel voor alle actieve Vm's te maximaliseren. |
+|Hoeveelheid    |Het aantal exemplaren dat wordt aangeschaft binnen de reserve ring. De hoeveelheid is het aantal actieve VM-exemplaren waarmee de factuur korting kan worden verkregen. Als u bijvoorbeeld tien Standard_D2 Vm's uitvoert in het VS-Oost, geeft u hoeveelheid op als 10 om het voor deel voor alle actieve Vm's te maximaliseren. |
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2PjmT]
 
@@ -126,7 +126,7 @@ U kunt de volgende typen wijzigingen na de aankoop niet rechtstreeks aanbrengen:
 
 - Een bestaande reserverings regio
 - SKU
-- Aantal
+- Hoeveelheid
 - Duur
 
 U kunt echter wel een reserve ring *uitwisselen* als u wijzigingen wilt aanbrengen.
@@ -135,7 +135,7 @@ U kunt echter wel een reserve ring *uitwisselen* als u wijzigingen wilt aanbreng
 
 Annulering, ruiling of terugbetaling van reserveringen is mogelijk met bepaalde beperkingen. Zie [Selfserviceopties voor inwisselen en retourneren van Azure-reserveringen](../articles/cost-management-billing/reservations/exchange-and-refund-azure-reservations.md) voor meer informatie.
 
-## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
+## <a name="need-help-contact-us"></a>Hulp nodig? Neem contact met ons op.
 
 Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 

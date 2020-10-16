@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/21/2020
 ms.author: v-mibufo
-ms.openlocfilehash: b07033f96402edc24edd51de57661603e57472bc
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b13b61aff819271ed1722572f251f9a6d14b17ab
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91344818"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976994"
 ---
 # <a name="windows-stop-error---0xc000021a-status-system-process-terminated"></a>Windows-Stop fout: 0xC000021A status systeem proces beëindigd
 
@@ -27,7 +27,7 @@ Dit artikel bevat stappen voor het oplossen van problemen waarbij het besturings
 
 ## <a name="symptom"></a>Symptoom
 
-Wanneer u [Diagnostische gegevens over opstarten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) gebruikt om de scherm opname van de virtuele machine weer te geven, wordt in de scherm opname het bericht weer gegeven dat het besturings systeem een fout heeft aangetroffen tijdens het opstarten, met het volgende bericht:
+Wanneer u [Diagnostische gegevens over opstarten](./boot-diagnostics.md) gebruikt om de scherm opname van de virtuele machine weer te geven, wordt in de scherm opname het bericht weer gegeven dat het besturings systeem een fout heeft aangetroffen tijdens het opstarten, met het volgende bericht:
 
 **Er is een probleem opgetreden op de PC en opnieuw moet worden opgestart. Er worden alleen fout gegevens verzameld en vervolgens kunt u de computer opnieuw opstarten. (# #% voltooid) Als u meer wilt weten, kunt u later online zoeken naar deze fout: 0xC000021a**.
 
@@ -37,7 +37,7 @@ Wanneer u [Diagnostische gegevens over opstarten](https://docs.microsoft.com/azu
 
 Fout 0xC000021A betekent dat **STATUS_SYSTEM_PROCESS_TERMINATED**.
 
-Deze fout treedt op wanneer een kritiek proces, zoals WinLogon (winlogon.exe) of het client server run-time Subsystem (csrss.exe) mislukt. Zodra de kernel detecteert dat een van deze services is gestopt, wordt de fout **Stop 0xc000021a** gegenereerd. Deze fout kan verschillende oorzaken hebben, zoals:
+Deze fout treedt op wanneer een kritiek proces, zoals WinLogon (winlogon.exe) of het Run-Time subsysteem (csrss.exe) van de client server, niet kan worden uitgevoerd. Zodra de kernel detecteert dat een van deze services is gestopt, wordt de fout **Stop 0xc000021a** gegenereerd. Deze fout kan verschillende oorzaken hebben, zoals:
 
 - Er zijn niet-overeenkomende systeem bestanden geïnstalleerd.
 - Een installatie van een service pack of KB-update is mislukt.
@@ -52,17 +52,17 @@ Om dit probleem op te lossen moet de crash dump worden geanalyseerd. Verzamel he
 
 ### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>De besturingssysteem schijf koppelen aan een nieuwe herstel-VM
 
-1.  Gebruik stap 1-3 van de [VM-reparatie opdrachten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) om een herstel-VM voor te bereiden.
+1.  Gebruik stap 1-3 van de [VM-reparatie opdrachten](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) om een herstel-VM voor te bereiden.
 2.  Maak met behulp van **verbinding met extern bureaublad**verbinding met de herstel-VM.
 
 ### <a name="locate-the-dump-file-and-submit-a-support-ticket"></a>Het dump bestand zoeken en een ondersteunings ticket verzenden
 
 1.  Ga op de virtuele machine herstellen naar de map Windows in de gekoppelde besturingssysteem schijf. Als de stuur programma-letter die is toegewezen aan de gekoppelde besturingssysteem schijf F, gaat u naar F:\Windows.
 2.  Zoek het bestand Memory. dmp en [Verzend een ondersteunings ticket](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) met het geheugen dump bestand.
-3.  Als u problemen ondervindt bij het vinden van het bestand Memory. dmp, wilt u in plaats daarvan mogelijk [niet-maskeer bare interrupt-aanroepen (NMI) gebruiken in de seriële console](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows#use-the-serial-console-for-nmi-calls) . U kunt de handleiding volgen om [een crashdumpbestand te genereren met behulp van NMI-aanroepen](https://docs.microsoft.com/windows/client-management/generate-kernel-or-complete-crash-dump).
+3.  Als u problemen ondervindt bij het vinden van het bestand Memory. dmp, wilt u in plaats daarvan mogelijk [niet-maskeer bare interrupt-aanroepen (NMI) gebruiken in de seriële console](./serial-console-windows.md#use-the-serial-console-for-nmi-calls) . U kunt de handleiding volgen om [een crashdumpbestand te genereren met behulp van NMI-aanroepen](/windows/client-management/generate-kernel-or-complete-crash-dump).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Raadpleeg voor meer informatie over het oplossen van problemen [veelvoorkomende opstart fouten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-error-troubleshoot) of het [oplossen van problemen met een Windows-VM door de besturingssysteem schijf te koppelen aan een herstel-VM](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-windows). U moet ook vertrouwd zijn met [het gebruik van diagnostische gegevens over opstarten voor het oplossen van problemen met een virtuele machine](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics).
-- Zie [Azure Resource Manager Overview](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)voor meer informatie over het gebruik van Resource Manager.
-- Als u geen verbinding kunt maken met uw virtuele machine, raadpleegt u [problemen met RDP-verbindingen met een virtuele machine van Azure oplossen](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-rdp-connection).
+- Raadpleeg voor meer informatie over het oplossen van problemen [veelvoorkomende opstart fouten](./boot-error-troubleshoot.md) of het [oplossen van problemen met een Windows-VM door de besturingssysteem schijf te koppelen aan een herstel-VM](./troubleshoot-recovery-disks-windows.md). U moet ook vertrouwd zijn met [het gebruik van diagnostische gegevens over opstarten voor het oplossen van problemen met een virtuele machine](./boot-diagnostics.md).
+- Zie [Azure Resource Manager Overview](../../azure-resource-manager/management/overview.md)voor meer informatie over het gebruik van Resource Manager.
+- Als u geen verbinding kunt maken met uw virtuele machine, raadpleegt u [problemen met RDP-verbindingen met een virtuele machine van Azure oplossen](./troubleshoot-rdp-connection.md).

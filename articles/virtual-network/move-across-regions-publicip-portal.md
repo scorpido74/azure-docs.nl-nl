@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 08/29/2019
 ms.author: allensu
 ms.openlocfilehash: 23fe515ddfdecb9ef168dd662e3fa2d91ece688f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84711473"
 ---
 # <a name="move-azure-public-ip-configuration-to-another-region-using-the-azure-portal"></a>De open bare IP-configuratie van Azure naar een andere regio verplaatsen met behulp van de Azure Portal
@@ -29,7 +29,7 @@ Er zijn verschillende scenario's waarin u uw bestaande open bare IP-configuratie
 
 - Als u een open bare IP-configuratie wilt exporteren en een sjabloon wilt implementeren voor het maken van een openbaar IP-adres in een andere regio, hebt u de rol netwerk bijdrager of hoger nodig.
 
-- Identificeer de bron netwerk indeling en alle resources die u momenteel gebruikt. Deze indeling bevat, maar is niet beperkt tot load balancers, netwerk beveiligings groepen (Nsg's) en virtuele netwerken.
+- Identificeer de bronnetwerkindeling en alle resources die u momenteel gebruikt. Deze indeling bevat, maar is niet beperkt tot load balancers, netwerk beveiligings groepen (Nsg's) en virtuele netwerken.
 
 - Controleer of u met uw Azure-abonnement open bare Ip's kunt maken in de doel regio die wordt gebruikt. Neem contact op met ondersteuning voor het inschakelen van het vereiste quotum.
 
@@ -156,7 +156,7 @@ De volgende stappen laten zien hoe u het open bare IP-adres voor de configuratie
 
 Als u het doel bare IP-adres wilt verwijderen, verwijdert u de resource groep die het open bare doel-IP-adres bevat.  Hiervoor selecteert u de resource groep in het dash board in de portal en selecteert u **verwijderen** boven aan de pagina overzicht.
 
-## <a name="clean-up"></a>Opruimen
+## <a name="clean-up"></a>Opschonen
 
 Als u de wijzigingen wilt door voeren en de open bare IP wilt verplaatsen, verwijdert u de open bare IP-bron of resource groep. Hiertoe selecteert u het open bare IP-adres of de resource groep in het dash board in de portal en selecteert u **verwijderen** boven aan elke pagina.
 

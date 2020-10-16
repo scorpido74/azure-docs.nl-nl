@@ -12,10 +12,10 @@ ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
 ms.openlocfilehash: d4a08035b03c104555c39311bfb812218cca44b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85482544"
 ---
 # <a name="backup-and-restore-in-azure-synapse-sql-pool"></a>Back-ups maken en herstellen in azure Synapse SQL-pool
@@ -76,11 +76,11 @@ Er wordt één keer per dag een geo-back-up gemaakt naar een [gekoppeld Data Cen
 
 ## <a name="backup-and-restore-costs"></a>Kosten voor back-up en herstel
 
-U ziet dat de Azure-factuur een regel item bevat voor opslag en een regel item voor nood herstel opslag. De opslag kosten zijn de totale kosten voor het opslaan van uw gegevens in de primaire regio, samen met de incrementele wijzigingen die zijn vastgelegd door moment opnamen. Raadpleeg de [informatie over het samen voegen](/rest/api/storageservices/Understanding-How-Snapshots-Accrue-Charges?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)van moment opnamen voor een gedetailleerde uitleg over de kosten voor moment opnamen. De geo-redundante kosten omvatten de kosten voor het opslaan van de geo-back-ups.  
+U ziet dat de Azure-factuur een regel item bevat voor opslag en een regel item voor nood herstel opslag. De opslag kosten zijn de totale kosten voor het opslaan van uw gegevens in de primaire regio, samen met de incrementele wijzigingen die zijn vastgelegd door moment opnamen. Raadpleeg de  [informatie over het samen voegen](/rest/api/storageservices/Understanding-How-Snapshots-Accrue-Charges?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)van moment opnamen voor een gedetailleerde uitleg over de kosten voor moment opnamen. De geo-redundante kosten omvatten de kosten voor het opslaan van de geo-back-ups.  
 
 De totale kosten voor uw primaire Data Warehouse en zeven dagen aan momentopname wijzigingen worden afgerond op de dichtstbijzijnde TB. Als uw data warehouse bijvoorbeeld 1,5 TB is en de moment opnamen 100 GB worden vastgelegd, worden er twee TB aan gegevens in rekening gebracht op Azure Premium Storage-tarieven.
 
-Als u geografisch redundante opslag gebruikt, ontvangt u afzonderlijke opslag kosten. De geo-redundante opslag wordt gefactureerd op basis van het standaard-GRS-snelheid (geografisch redundante opslag met lees toegang).
+Als u geografisch redundante opslag gebruikt, ontvangt u afzonderlijke opslag kosten. De geo-redundante opslag wordt gefactureerd op basis van de standaard Read-Access geografisch redundante opslag (RA-GRS).
 
 Zie [prijzen voor Azure Synapse](https://azure.microsoft.com/pricing/details/sql-data-warehouse/gen2/)voor meer informatie over de prijzen van Azure Synapse. Er worden geen kosten in rekening gebracht voor het afrekenen van gegevens bij het herstellen tussen regio's.
 

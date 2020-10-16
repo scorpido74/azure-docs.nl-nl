@@ -7,16 +7,16 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 257656a29733972672570648d4317b7847fedff1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88997673"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature-in-windows-virtual-desktop-classic"></a>Log Analytics gebruiken voor de functie voor diagnostische gegevens in Windows virtueel bureau blad (klassiek)
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op Windows Virtual Desktop (classic), dat geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../diagnostics-log-analytics.md) als u probeert Azure Resource Manager Windows Virtual Desktop-objecten te beheren.
+>Deze inhoud is van toepassing op Windows Virtual Desktop (klassiek), dat geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../diagnostics-log-analytics.md) als u Azure Resource Manager Windows Virtual Desktop-objecten probeert te beheren.
 
 Virtueel bureau blad van Windows biedt een functie voor diagnostische gegevens waarmee de beheerder problemen kan identificeren via één interface. Met deze functie worden diagnostische gegevens vastgelegd wanneer de service wordt gebruikt door iemand die is toegewezen aan de Windows-functie virtueel bureau blad. Elk logboek bevat informatie over welke Windows-functie voor virtueel bureau blad is betrokken bij de activiteit, eventuele fout berichten die tijdens de sessie worden weer gegeven, informatie over de Tenant en gebruikers gegevens. De functie diagnostische gegevens maakt activiteiten logboeken voor gebruikers-en beheer acties. Elk activiteiten logboek valt onder drie hoofd categorieën:
 

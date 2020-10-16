@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: ambapat
 ms.openlocfilehash: 2100572c0bcf5bf65fe5a70ab9e552c2d7f72934
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90983257"
 ---
 # <a name="authentication-requests-and-responses"></a>Verificatie, vragen en antwoorden
@@ -23,14 +23,14 @@ Azure Key Vault biedt twee typen containers voor het opslaan en beheren van gehe
 
 |Container type|Ondersteunde object typen|Data-vlak eindpunt|
 |--|--|--|
-| **Kluizen**|<ul><li>Met software beschermde sleutels</li><li>Met HSM beveiligde sleutels (met Premium-SKU)</li><li>Certificaten</li><li>Opslagaccountsleutels</li></ul> | https://{kluis-name}. kluis. Azure. net
-|**Beheerde HSM** |<ul><li>HSM-beveiligde sleutels</li></ul> | https://{HSM-name}. managedhsm. Azure. net
+| **Kluizen**|<ul><li>Met software beveiligde sleutels</li><li>Met HSM beveiligde sleutels (met Premium-SKU)</li><li>Certificaten</li><li>Opslagaccountsleutels</li></ul> | https://{vault-name}.vault.azure.net
+|**Beheerde HSM** |<ul><li>HSM-beveiligde sleutels</li></ul> | https://{hsm-name}.managedhsm.azure.net
 
 Hier vindt u de URL-achtervoegsels die worden gebruikt voor toegang tot elk type object
 
 |Objecttype|URL-achtervoegsel|
 |--|--|
-|Met software beschermde sleutels| /keys |
+|Met software beveiligde sleutels| /keys |
 |HSM-beveiligde sleutels| /keys |
 |Geheimen|/secrets|
 |Certificaten| /certificates|
@@ -121,7 +121,7 @@ Authorization: Bearer <access_token>
 
 ```  
 
- Wanneer er geen toegangs token is opgegeven of wanneer een token niet wordt geaccepteerd door de service, wordt er een HTTP 401-fout geretourneerd naar de client en wordt de WWW-Authenticate-header opgenomen, bijvoorbeeld:  
+ Als er geen toegangs token is opgegeven of wanneer een token niet wordt geaccepteerd door de service, wordt er een HTTP 401-fout geretourneerd naar de client en wordt de WWW-Authenticate-header opgenomen, bijvoorbeeld:  
 
 ```  
 401 Not Authorized  
@@ -129,7 +129,7 @@ WWW-Authenticate: Bearer authorization="…", resource="…"
 
 ```  
 
- De para meters voor de WWW-Authenticate-header zijn:  
+ De para meters in de WWW-Authenticate-header zijn:  
 
 -   autorisatie: het adres van de OAuth2-autorisatie service dat kan worden gebruikt om een toegangs token voor de aanvraag te verkrijgen.  
 

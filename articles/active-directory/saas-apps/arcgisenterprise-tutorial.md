@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2018
 ms.author: jeedes
-ms.openlocfilehash: a544a98b3a9d5c2d30f95240325e91018d2f40c9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: fc0303cc4ba00f873ecfea7b02047ebd1bff7da1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549603"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713882"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-enterprise"></a>Zelfstudie: Azure Active Directory-integratie met ArcGIS Enterprise
 
@@ -104,7 +104,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met [toepassingsnaam], m
 
 4. Voer in het gedeelte **Standaard SAML-configuratie** de volgende stappen uit als u de toepassing in de door **IDP geïnitieerde** modus wilt configureren:
 
-    ![Gegevens van domein en URL's voor eenmalige aanmelding van ArcGIS Enterprise](common/idp-intiated.png)
+    ![Schermopname die de Standaard SAML-configuratie toont, waar u de id en URL kunt invoeren en vervolgens Opslaan selecteert.](common/idp-intiated.png)
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon: `<EXTERNAL_DNS_NAME>.portal`
 
@@ -112,7 +112,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met [toepassingsnaam], m
 
     c. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    ![Gegevens van domein en URL's voor eenmalige aanmelding van ArcGIS Enterprise](common/metadata-upload-additional-signon.png)
+    ![Schermopname die Extra URL's instellen toont, waar u een aanmeldings-URL kunt invoeren.](common/metadata-upload-additional-signon.png)
 
     In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<EXTERNAL_DNS_NAME>/portal/sharing/rest/oauth2/saml/signin`
 
@@ -138,19 +138,19 @@ Voor het configureren van Azure AD-eenmalige aanmelding met [toepassingsnaam], m
 
 1. Selecteer **Organization >EDIT SETTINGS**.
 
-    ![Configuratie van ArcGIS Enterprise](./media/arcgisenterprise-tutorial/configure1.png)
+    ![Schermopname toont het tabblad 'ArcGIS Enterprise Organization' met instellingen voor bewerken uitgevouwen.](./media/arcgisenterprise-tutorial/configure1.png)
 
 1. Selecteer het tabblad **Security**.
 
-    ![Configuratie van ArcGIS Enterprise](./media/arcgisenterprise-tutorial/configure2.png)
+    ![Schermopname toont het geselecteerde tabblad Beveiliging.](./media/arcgisenterprise-tutorial/configure2.png)
 
 1. Blader omlaag naar de sectie **Enterprise Logins via SAML** en selecteer **SET ENTERPRISE LOGIN**.
 
-    ![Configuratie van ArcGIS Enterprise](./media/arcgisenterprise-tutorial/configure3.png)
+    ![Schermopname toont de Enterprise-aanmeldingen via SAML, waar u op 'Enterprise-aanmelding instellen' kunt klikken.](./media/arcgisenterprise-tutorial/configure3.png)
 
 1. Voer in de sectie **Set Identity Provider** de volgende stappen uit:
 
-    ![Configuratie van ArcGIS Enterprise](./media/arcgisenterprise-tutorial/configure4.png)
+    ![Schermopname toont de pagina 'Gebruiker toevoegen', waar u de stappen kunt uitvoeren die hier worden beschreven.](./media/arcgisenterprise-tutorial/configure4.png)
 
     a. Geef in het tekstvak **Name** een naam op, zoals **Azure Active Directory Test**.
 
@@ -158,7 +158,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met [toepassingsnaam], m
 
     c. Klik op **Show advanced settings**, kopieer de waarde van **Entity ID** en plak deze in het tekstvak **Id** in de sectie **ArcGIS Enterprise-domein en -URL's** in de Azure-portal.
     
-    ![Configuratie van ArcGIS Enterprise](./media/arcgisenterprise-tutorial/configure5.png)
+    ![Schermopname toont waar u de eenheids-id kunt verkrijgen en waar u de identificatieprovider kunt bijwerken.](./media/arcgisenterprise-tutorial/configure5.png)
 
     d. Klik op **UPDATE IDENTITY PROVIDER**.
 

@@ -1,7 +1,7 @@
 ---
-title: 'Anomalie detectie op basis van PCA: module verwijzing'
+title: 'Afwijkings detectie PCA-Based: module verwijzing'
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het gebruik van de op PCA gebaseerde anomalie detectie module voor het maken van een anomalie detectie model op basis van Principal component Analysis (PCA).
+description: Meer informatie over het gebruik van de module PCA-Based anomalie detectie voor het maken van een anomalie detectie model op basis van Principal component Analysis (PCA).
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,19 +10,19 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: fa90fcb9ebc17be9a658b08873234eada98b0fba
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90898464"
 ---
-# <a name="pca-based-anomaly-detection-module"></a>Module voor afwijkings detectie op basis van PCA
+# <a name="pca-based-anomaly-detection-module"></a>Module voor afwijkings detectie PCA-Based
 
-In dit artikel wordt beschreven hoe u de module voor afwijkings detectie op basis van PCA in Azure Machine Learning Designer kunt gebruiken om een anomalie detectie model te maken op basis van Principal component Analysis (PCA).
+In dit artikel wordt beschreven hoe u de module PCA-Based anomalie detectie in Azure Machine Learning Designer gebruikt om een anomalie detectie model te maken op basis van Principal component Analysis (PCA).
 
 Deze module helpt u bij het bouwen van een model in scenario's waarin het eenvoudig is om trainings gegevens uit een klasse op te halen, zoals geldige trans acties, maar moeilijk voldoende voor beelden van de doel afwijkingen te verkrijgen. 
 
-Als u bijvoorbeeld frauduleuze trans acties wilt detecteren, hebt u vaak niet voldoende voor beelden van fraude voor het trainen van. Maar mogelijk hebt u veel voor beelden van goede trans acties. De module voor anomalie detectie op basis van PCA lost het probleem op door de beschik bare functies te analyseren om te bepalen wat een ' normale ' klasse vormt. De module past vervolgens afstands waarden toe om aanvragen te identificeren die afwijkingen vertegenwoordigen. Met deze benadering kunt u een model trainen door bestaande, onevenwichtige gegevens te gebruiken.
+Als u bijvoorbeeld frauduleuze trans acties wilt detecteren, hebt u vaak niet voldoende voor beelden van fraude voor het trainen van. Maar mogelijk hebt u veel voor beelden van goede trans acties. De module PCA-Based anomalie detectie lost het probleem op door de beschik bare functies te analyseren om te bepalen wat een ' normale ' klasse vormt. De module past vervolgens afstands waarden toe om aanvragen te identificeren die afwijkingen vertegenwoordigen. Met deze benadering kunt u een model trainen door bestaande, onevenwichtige gegevens te gebruiken.
 
 ## <a name="more-about-principal-component-analysis"></a>Meer informatie over het analyseren van hoofd onderdelen
 
@@ -38,7 +38,7 @@ Raadpleeg de volgende artikelen voor meer informatie over hoe PCA werkt en over 
 
 - [Structuur zoeken met wille keurigheid: Probabilistic-algoritmen voor het samen stellen van geschatte matrix ontledingen](http://users.cms.caltech.edu/~jtropp/papers/HMT11-Finding-Structure-SIREV.pdf) (PDF-down load), door Halko, Martinsson en Tropp
 
-## <a name="how-to-configure-pca-based-anomaly-detection"></a>Anomalie detectie op basis van PCA configureren
+## <a name="how-to-configure-pca-based-anomaly-detection"></a>PCA-Based anomalie detectie configureren
 
 1. Voeg de module voor **afwijkings detectie op basis van PCA** toe aan uw pijp lijn in de ontwerp functie. U kunt deze module vinden in de categorie **anomalie detectie** .
 

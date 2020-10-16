@@ -14,10 +14,10 @@ caps.latest.revision: 17
 author: tgore03
 ms.author: tagore
 ms.openlocfilehash: e53c10395ec3168e656633cc43fb2d01902209fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79534725"
 ---
 # <a name="azure-cloud-services-definition-networktrafficrules-schema"></a>NetworkTrafficRules-schema voor Azure Cloud Services definition
@@ -64,16 +64,16 @@ AllowAllTraffic-element
 
 [FromRole-element](#FromRole)
 
-##  <a name="networktrafficrules-element"></a><a name="NetworkTrafficRules"></a>NetworkTrafficRules-element
+##  <a name="networktrafficrules-element"></a><a name="NetworkTrafficRules"></a> NetworkTrafficRules-element
 Het `NetworkTrafficRules` element geeft aan welke rollen met welk eind punt met een andere rol kunnen communiceren. Een service kan één `NetworkTrafficRules` definitie bevatten.
 
-##  <a name="onlyallowtrafficto-element"></a><a name="OnlyAllowTrafficTo"></a>OnlyAllowTrafficTo-element
+##  <a name="onlyallowtrafficto-element"></a><a name="OnlyAllowTrafficTo"></a> OnlyAllowTrafficTo-element
 Het `OnlyAllowTrafficTo` element beschrijft een verzameling bestemmings eindpunten en de rollen die met hen kunnen communiceren. U kunt meerdere `OnlyAllowTrafficTo` knoop punten opgeven.
 
-##  <a name="destinations-element"></a><a name="Destinations"></a>Doel element
+##  <a name="destinations-element"></a><a name="Destinations"></a> Doel element
 Het `Destinations` element beschrijft een verzameling RoleEndpoints dan kan worden gecommuniceerd met.
 
-##  <a name="roleendpoint-element"></a><a name="RoleEndpoint"></a>RoleEndpoint-element
+##  <a name="roleendpoint-element"></a><a name="RoleEndpoint"></a> RoleEndpoint-element
 Het `RoleEndpoint` element beschrijft een eind punt voor een rol om communicatie toe te staan. U kunt meerdere `RoleEndpoint` elementen opgeven als er meer dan één eind punt voor de rol is.
 
 | Kenmerk      | Type     | Beschrijving |
@@ -84,14 +84,14 @@ Het `RoleEndpoint` element beschrijft een eind punt voor een rol om communicatie
 ## <a name="allowalltraffic-element"></a>AllowAllTraffic-element
 Het `AllowAllTraffic` element is een regel waarmee alle rollen kunnen communiceren met de eind punten die in het `Destinations` knoop punt zijn gedefinieerd.
 
-##  <a name="whensource-element"></a><a name="WhenSource"></a>WhenSource-element
+##  <a name="whensource-element"></a><a name="WhenSource"></a> WhenSource-element
 Het `WhenSource` element beschrijft een verzameling functies die kunnen communiceren met de eind punten die in het `Destinations` knoop punt zijn gedefinieerd.
 
 | Kenmerk | Type     | Beschrijving |
 | --------- | -------- | ----------- |
 | `matches` | `string` | Vereist. Hiermee geeft u de regel op die moet worden toegepast bij het toestaan van communicaties. De enige geldige waarde is momenteel `AnyRule` .|
   
-##  <a name="fromrole-element"></a><a name="FromRole"></a>FromRole-element
+##  <a name="fromrole-element"></a><a name="FromRole"></a> FromRole-element
 `FromRole`Met het element worden de rollen opgegeven die kunnen communiceren met de eind punten die in het `Destinations` knoop punt zijn gedefinieerd. U kunt meerdere `FromRole` elementen opgeven als er meer dan één rol met de eind punten kan communiceren.
 
 | Kenmerk  | Type     | Beschrijving |

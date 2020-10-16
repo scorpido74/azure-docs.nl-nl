@@ -9,10 +9,10 @@ ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: e3997fc215637175165402a926bffc6ac8d02771
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77914855"
 ---
 # <a name="multi-protocol-access-on-azure-data-lake-storage"></a>Toegang met meerdere protocollen in Azure Data Lake Storage
@@ -40,7 +40,7 @@ BLOB-Api's en Data Lake Storage Gen2-Api's kunnen worden gebruikt op dezelfde ge
 
 Bestaande hulpprogram ma's en toepassingen die gebruikmaken van de BLOB API, krijgen deze voor delen automatisch. Ontwikkel aars hoeven ze niet te wijzigen. Data Lake Storage Gen2 consistent Toep assen op Acl's op Directory-en bestands niveau, ongeacht het protocol dat hulpprogram ma's en toepassingen gebruiken om toegang te krijgen tot de gegevens. 
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 - [Blob Storage functies die beschikbaar zijn in Azure Data Lake Storage Gen2](data-lake-storage-supported-blob-storage-features.md)
 - [Azure-Services die ondersteuning bieden voor Azure Data Lake Storage Gen2](data-lake-storage-supported-azure-services.md)

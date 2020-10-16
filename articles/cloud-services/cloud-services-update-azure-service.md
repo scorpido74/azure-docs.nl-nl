@@ -7,12 +7,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
-ms.openlocfilehash: 731f4e8cc8a93f33d6887f44fc8d09585e92a75a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f12e5b6b0b2902d69936b9cf2695b7ee21db88e2
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75360341"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075039"
 ---
 # <a name="how-to-update-a-cloud-service"></a>Een Cloud service bijwerken
 
@@ -21,7 +21,7 @@ Het bijwerken van een Cloud service, met inbegrip van de rollen en het gast best
 ## <a name="update-an-azure-service"></a>Een Azure-service bijwerken
 Met Azure worden uw rolinstanties ingedeeld in logische groepen met de naam upgrade domeinen (UD). Upgrade domeinen (UD) zijn logische sets van rolinstanties die als groep worden bijgewerkt.  Azure werkt een Cloud service één UD tegelijk bij, waardoor instanties in andere UDs geen verkeer meer kunnen verwerken.
 
-Het standaard aantal upgrade domeinen is 5. U kunt een ander aantal upgrade domeinen opgeven door het kenmerk upgradeDomainCount in het definitie bestand (. csdef) van de service op te nemen. Zie [Azure Cloud Services definition schema (csdef-bestand)](https://docs.microsoft.com/azure/cloud-services/schema-csdef-file)voor meer informatie over het kenmerk upgradeDomainCount.
+Het standaard aantal upgrade domeinen is 5. U kunt een ander aantal upgrade domeinen opgeven door het kenmerk upgradeDomainCount in het definitie bestand (. csdef) van de service op te nemen. Zie [Azure Cloud Services definition schema (csdef-bestand)](./schema-csdef-file.md)voor meer informatie over het kenmerk upgradeDomainCount.
 
 Wanneer u een in-place update van een of meer functies in uw service uitvoert, worden door Azure de sets rolinstanties bijgewerkt op basis van het upgrade domein waartoe ze behoren. Alle exemplaren in een opgegeven upgrade domein worden door Azure bijgewerkt. deze worden vervolgens gestopt, bijgewerkt, teruggezet, waarna ze weer online worden gezet. vervolgens gaat u naar het volgende domein. Als u alleen de exemplaren stopt die worden uitgevoerd in het huidige upgrade domein, zorgt Azure ervoor dat er een update wordt uitgevoerd met de minste mogelijke gevolgen voor de actieve service. Zie [hoe de update verloopt](#howanupgradeproceeds) verderop in dit artikel voor meer informatie.
 
@@ -53,7 +53,7 @@ In de volgende tabel ziet u de wijzigingen die zijn toegestaan voor een service 
 | Instellingen voor lokale opslag |Meer dan<sup>2</sup> |Ja |Ja |
 | Rollen toevoegen aan of verwijderen uit een service |Ja |Ja |Ja |
 | Aantal exemplaren van een bepaalde rol |Ja |Ja |Ja |
-| Aantal of type eind punten voor een service |Ja<sup>2</sup> |Nee |Yes |
+| Aantal of type eind punten voor een service |Ja<sup>2</sup> |Nee |Ja |
 | Namen en waarden van configuratie-instellingen |Ja |Ja |Ja |
 | Waarden (maar geen namen) van configuratie-instellingen |Ja |Ja |Ja |
 | Nieuwe certificaten toevoegen |Ja |Ja |Ja |
@@ -104,7 +104,7 @@ Wanneer u een service van één exemplaar bijwerkt naar meerdere instanties, wor
 |VM opnieuw opstarten|Behouden|Behouden|Behouden|
 |Portal opnieuw opstarten|Behouden|Behouden|Verbroken|
 |Herinstallatie kopie van portal|Behouden|Verbroken|Verbroken|
-|In-place upgrade|Behouden|Behouden|Verbroken|
+|In-Place upgrade|Behouden|Behouden|Verbroken|
 |Knooppunt migratie|Verbroken|Verbroken|Verbroken|
 
 Houd er rekening mee dat in de bovenstaande lijst het station E: staat voor het hoofd station van de rol en niet moet worden vastgelegd. In plaats daarvan gebruikt u de omgevings variabele **% RoleRoot%** om het station aan te duiden.
@@ -182,7 +182,4 @@ In het volgende diagram ziet u hoe een service dan twee rollen bevat, wanneer de
 ## <a name="next-steps"></a>Volgende stappen
 [Cloud Services beheren](cloud-services-how-to-manage-portal.md)  
 [Cloud Services bewaken](cloud-services-how-to-monitor.md)  
-[Cloud Services configureren](cloud-services-how-to-configure-portal.md)  
-
-
-
+[Cloud Services configureren](cloud-services-how-to-configure-portal.md)

@@ -3,12 +3,12 @@ title: Back-ups van virtuele Azure-machines maken en herstellen met Power shell
 description: Hierin wordt beschreven hoe u back-ups van virtuele Azure-machines maakt en herstelt met Azure Backup met Power shell
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 87d655652d0207a50f8980f18d18e76fea0b1e21
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: ded2bc8a71bf564e31f40ca9f0d6c8049188768b
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90975096"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92094089"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Back-ups van virtuele Azure-machines maken en herstellen met Power shell
 
@@ -529,7 +529,7 @@ Nadat u de schijven hebt hersteld, gebruikt u de volgende stappen om de virtuele
 > [!NOTE]
 >
 > 1. AzureAz-module 3.0.0 of hoger is vereist. <br>
-> 2. Als u versleutelde Vm's van herstelde schijven wilt maken, moet uw Azure-rol gemachtigd zijn om de actie uit te voeren, **micro soft. sleutel kluis/kluizen/implementeren/actie**. Als uw rol niet over deze machtiging beschikt, maakt u een aangepaste rol met deze actie. Zie [aangepaste rollen in azure RBAC](../role-based-access-control/custom-roles.md)voor meer informatie. <br>
+> 2. Als u versleutelde Vm's van herstelde schijven wilt maken, moet uw Azure-rol gemachtigd zijn om de actie uit te voeren, **micro soft. sleutel kluis/kluizen/implementeren/actie**. Als uw rol niet over deze machtiging beschikt, maakt u een aangepaste rol met deze actie. Zie [aangepaste rollen voor Azure](../role-based-access-control/custom-roles.md)voor meer informatie. <br>
 > 3. Na het herstellen van de schijven kunt u nu een implementatie sjabloon ophalen die u rechtstreeks kunt gebruiken om een nieuwe virtuele machine te maken. U hebt geen verschillende Power shell-cmdlets nodig om beheerde/onbeheerde Vm's te maken die versleuteld/niet-versleuteld zijn.<br>
 > <br>
 

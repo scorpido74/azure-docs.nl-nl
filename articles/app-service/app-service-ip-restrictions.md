@@ -8,10 +8,10 @@ ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: ce5882f2621dc5b8c48bcf5be6d4ea3a2f723bfe
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88962958"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Toegangs beperkingen Azure App Service
@@ -48,7 +48,7 @@ Wanneer u een regel maakt, moet u toestaan/weigeren en ook het type regel select
 
 ![een beperkings regel voor IP-toegang toevoegen](media/app-service-ip-restrictions/access-restrictions-ip-add.png)
 
-Als u een regel op basis van een IP-adres wilt instellen, selecteert u een type IPv4 of IPv6. IP-adres notatie moet worden opgegeven in CIDR-notatie voor IPv4-en IPv6-adressen. Als u een exact adres wilt opgeven, kunt u een van de voor keuren, zoals 1.2.3.4/32, gebruiken waarbij de eerste vier octetten uw IP-adres vertegenwoordigen en/32 is het masker. De IPv4 CIDR-notatie voor alle adressen is 0.0.0.0/0. Voor meer informatie over CIDR-notatie kunt u [Klasseloze route ring](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)lezen. 
+Als u een regel op basis van een IP-adres wilt instellen, selecteert u een type IPv4 of IPv6. IP-adres notatie moet worden opgegeven in CIDR-notatie voor IPv4-en IPv6-adressen. Als u een exact adres wilt opgeven, kunt u een van de voor keuren, zoals 1.2.3.4/32, gebruiken waarbij de eerste vier octetten uw IP-adres vertegenwoordigen en/32 is het masker. De IPv4 CIDR-notatie voor alle adressen is 0.0.0.0/0. Voor meer informatie over CIDR-notatie kunt u [klasseloze Inter-Domain route ring](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)lezen. 
 
 ## <a name="service-endpoints"></a>Service-eindpunten
 

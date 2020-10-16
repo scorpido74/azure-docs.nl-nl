@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: dec0503ec369ae473fb592db958c0e30a27a4268
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 897df7f07a349457c49929b69993c75345f52241
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297430"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017808"
 ---
 # <a name="media-services-terminology-and-concepts"></a>Terminologie en concepten Media Services
 
@@ -30,13 +30,13 @@ De basis concepten die in deze onderwerpen worden beschreven, moeten worden geco
 
 > [!NOTE]
 > Op dit moment kunt u de [Azure Portal](https://portal.azure.com/) gebruiken om te: Media Services v3 [Live Events](live-events-outputs-concept.md)beheren, v3- [assets](assets-concept.md)weer geven (niet beheren) en [informatie opvragen over toegang tot api's](./access-api-howto.md).
-> Gebruik voor alle andere beheertaken (bijvoorbeeld [transformaties en taken](transforms-jobs-concept.md) en [inhoudsbeveiliging](content-protection-overview.md)), de [REST API](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref) of een van de ondersteunde [SDK's](media-services-apis-overview.md#sdks).
+> Gebruik voor alle andere beheertaken (bijvoorbeeld [transformaties en taken](transforms-jobs-concept.md) en [inhoudsbeveiliging](content-protection-overview.md)), de [REST API](/rest/api/media/accountfilters), [CLI](/cli/azure/ams) of een van de ondersteunde [SDK's](media-services-apis-overview.md#sdks).
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="media-services-v3-terminology"></a>Media Services v3-terminologie
 
-|Term|Beschrijving|
+|Termijn|Beschrijving|
 |---|---|
 |Live-gebeurtenis|Een **live-gebeurtenis** vertegenwoordigt een pijp lijn voor opname, code ring (optioneel) en het verpakken van live streams van video, audio en realtime meta gegevens.<br/><br/>Voor klanten die migreren van Media Services v2 Api's, vervangt de **live-gebeurtenis** de **kanaal** entiteit in v2. Zie voor meer informatie [migreren van v2 naar v3](migrate-from-v2-to-v3.md).|
 |Streaming-eind punt/verpakking/oorsprong|Een **streaming-eind punt** vertegenwoordigt een dynamische (just-in-time) verpakkings-en bron service die uw Live-en on-demand-inhoud rechtstreeks aan een client speler kan leveren. Er wordt een van de algemene protocollen voor streaming media (HLS of DASH) gebruikt. Daarnaast biedt het **streaming-eind punt** dynamische code ring (just-in-time) voor toonaangevende Digital Rights Management systemen (DRMs).<br/><br/>In de media streaming-industrie wordt deze service meestal een **packager** of **Origin**genoemd.  Andere veelvoorkomende termen in de branche voor deze mogelijkheid zijn JITP (just-in-time-packager) of JITE (just-in-time-Encryption).

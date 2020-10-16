@@ -4,10 +4,10 @@ description: Hierin worden de eigenschappen beschreven die worden gegeven voor B
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: a914edbb6f624617766c77b277d7ee8e6ad08bd9
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87458940"
 ---
 # <a name="azure-blob-storage-as-an-event-grid-source"></a>Azure Blob Storage als Event Grid bron
@@ -295,7 +295,7 @@ Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 | -------- | ---- | ----------- |
 | onderwerp | tekenreeks | Volledige bronpad naar de bron van de gebeurtenis. Dit veld kan niet worden geschreven. Event Grid biedt deze waarde. |
 | onderwerp | tekenreeks | Het door de uitgever gedefinieerde pad naar het gebeurtenisonderwerp. |
-| eventType | tekenreeks | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. |
+| Type | tekenreeks | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. |
 | eventTime | tekenreeks | Het tijdstip waarop de gebeurtenis is gegenereerd op basis van de UTC-tijd van de provider. |
 | id | tekenreeks | De unieke id voor de gebeurtenis. |
 | gegevens | object | Gebeurtenis gegevens van Blob-opslag. |
@@ -304,7 +304,7 @@ Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 
 Het gegevens object heeft de volgende eigenschappen:
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | api | tekenreeks | De bewerking die de gebeurtenis heeft geactiveerd. |
 | clientRequestId | tekenreeks | een aanvraag-id van de client voor de bewerking van de opslag-API. Deze id kan worden gebruikt om te correleren Azure Storage Diagnostische logboeken met behulp van het veld ' client-request-id ' in de logboeken, en kan worden verschaft in client aanvragen via de header ' x-MS-Client-Request-id '. Zie de [logboek indeling](/rest/api/storageservices/storage-analytics-log-format). |
@@ -317,7 +317,7 @@ Het gegevens object heeft de volgende eigenschappen:
 | destinationUrl |tekenreeks | De URL van het bestand dat bestaat nadat de bewerking is voltooid. Als bijvoorbeeld de naam van een bestand wordt gewijzigd, bevat de `destinationUrl` eigenschap de URL van de nieuwe bestands naam. <br>Wordt alleen weer gegeven voor gebeurtenissen die zijn geactiveerd op Blob Storage-accounts die een hiërarchische naam ruimte hebben.|
 | sourceUrl |tekenreeks | De URL van het bestand dat voor de bewerking bestaat. Als bijvoorbeeld de naam van een bestand wordt gewijzigd, bevat de `sourceUrl` URL van de oorspronkelijke bestands naam vóór de bewerking naamswijziging. <br>Wordt alleen weer gegeven voor gebeurtenissen die zijn geactiveerd op Blob Storage-accounts die een hiërarchische naam ruimte hebben. |
 | url | tekenreeks | Het pad naar de blob. <br>Als de client gebruikmaakt van een BLOB-REST API, heeft de URL deze structuur: * \<storage-account-name\> . \<container-name\> / \<file-name\> blob.core.Windows.net/*. <br>Als de client een Data Lake Storage REST API gebruikt, heeft de URL deze structuur: * \<storage-account-name\> . DFS.core.Windows.net/ \<file-system-name\> / \<file-name\> *. |
-| recursieve | tekenreeks | `True`de bewerking uitvoeren op alle onderliggende directory's. anders `False` . <br>Wordt alleen weer gegeven voor gebeurtenissen die zijn geactiveerd op Blob Storage-accounts die een hiërarchische naam ruimte hebben. |
+| recursieve | tekenreeks | `True` de bewerking uitvoeren op alle onderliggende directory's. anders `False` . <br>Wordt alleen weer gegeven voor gebeurtenissen die zijn geactiveerd op Blob Storage-accounts die een hiërarchische naam ruimte hebben. |
 | sequencer | tekenreeks | Een ondoorzichtige teken reeks waarde voor de logische reeks gebeurtenissen voor een bepaalde blobnaam.  Gebruikers kunnen standaard teken reeks vergelijking gebruiken om inzicht te krijgen in de relatieve volg orde van twee gebeurtenissen op dezelfde blobnaam. |
 | storageDiagnostics | object | Diagnostische gegevens die af en toe worden opgenomen door de Azure Storage service. Indien aanwezig, moet worden genegeerd door gebeurtenis verbruikers. |
 
@@ -334,6 +334,6 @@ Het gegevens object heeft de volgende eigenschappen:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Wat is Event grid?](overview.md) voor een inleiding tot Azure Event grid.
+* Zie [Wat is Event Grid?](overview.md) voor een inleiding tot Azure Event Grid.
 * Zie [Event grid Subscription schema](subscription-creation-schema.md)voor meer informatie over het maken van een Azure Event grid-abonnement.
 * Zie voor een inleiding tot het werken met Blob Storage [-gebeurtenissen routeren van Blob-opslag-Azure cli](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json). 

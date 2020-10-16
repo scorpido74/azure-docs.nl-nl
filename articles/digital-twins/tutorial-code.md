@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 30a782c7d7c13eb9c92e4a4bf64e268416a2b382
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 8e7ad721eba103679f55886053e8ba9e888573c0
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90561547"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057481"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Zelfstudie: Coderen met de Azure Digital Twins-API's
 
@@ -181,7 +181,7 @@ Maak in de map waar u het project hebt gemaakt een nieuw *.json*-bestand met de 
 > Als u Visual Studio voor deze zelfstudie gebruikt, wilt u mogelijk het zojuist gemaakte JSON-bestand selecteren en de eigenschap *Kopiëren naar uitvoermap* instellen in de Eigenschappencontrole naar te *Kopiëren als nieuwer* of *Altijd kopiëren*. Hierdoor kan Visual Studio het JSON-bestand met het standaardpad vinden wanneer u het programma uitvoert met **F5** tijdens de rest van de zelfstudie.
 
 > [!TIP] 
-> Er is een taalagnostisch [DTDL-validatorvoorbeeld](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) dat u kunt gebruiken om modeldocumenten te controleren en u ervan te verzekeren dat de DTDL geldig is. Het voorbeeld is gemaakt op basis van de DTDL-parserbibliotheek, waarover u meer kunt lezen in [*Instructies: Modellen parseren en valideren*](how-to-parse-models.md).
+> Er is een taalagnostisch [DTDL-validatorvoorbeeld](/samples/azure-samples/dtdl-validator/dtdl-validator) dat u kunt gebruiken om modeldocumenten te controleren en u ervan te verzekeren dat de DTDL geldig is. Het voorbeeld is gemaakt op basis van de DTDL-parserbibliotheek, waarover u meer kunt lezen in [*Instructies: Modellen parseren en valideren*](how-to-parse-models.md).
 
 Voeg vervolgens wat meer code toe aan *Program.cs* om het model dat u zojuist hebt gemaakt, te uploaden naar uw Azure Digital Twins-exemplaar.
 
@@ -234,8 +234,7 @@ await foreach (ModelData md in modelDataList)
     Console.WriteLine($"Type name: {md.DisplayName}: {md.Id}");
 }
 ```
-
-Voordat u het programma opnieuw uitvoert om deze nieuwe code te testen, houd er rekening mee dat de laatste keer dat u het programma hebt uitgevoerd, u uw model al hebt geüpload. Met Azure Digital Twins kunt u hetzelfde model niet twee keer uploaden, dus verwacht een uitzondering wanneer u het programma opnieuw uitvoert.
+Voordat u het programma opnieuw uitvoert om deze nieuwe code te testen, houd er rekening mee dat de laatste keer dat u het programma hebt uitgevoerd, u uw model al hebt geüpload. Met Azure Digital Twins kunt u hetzelfde model niet twee keer uploaden, dus als u probeert hetzelfde model nogmaals te uploaden, moet het programma een uitzondering genereren.
 
 Voer in het opdrachtvenster de programma uit met de volgende opdracht:
 
@@ -258,7 +257,6 @@ try {
     Console.WriteLine($"Load model: {rex.Status}:{rex.Message}");
 }
 ```
-
 Als u het programma nu uitvoert met `dotnet run` in uw opdrachtvenster, ziet u dat er een foutcode wordt weergegeven. De uitvoer ziet er ongeveer zo uit:
 
 ```cmd/sh
@@ -270,11 +268,11 @@ Load model: 409:Service request failed.
 Status: 409 (Conflict)
 
 Content:
-{"error":{"code":"DocumentAlreadyExists","message":"A document with same identifier already exists.","details":[]}}
+{"error":{"code":"ModelAlreadyExists","message":"Model with same ID already exists dtmi:com:contoso:SampleModel;1. Use Model_List API to view models that already exist. See the Swagger example. (http://aka.ms/ModelListSwSmpl):}}
 
 Headers:
 api-supported-versions: REDACTED
-Date: Tue, 05 May 2020 01:57:51 GMT
+Date: Thu, 10 Sep 2020 01:57:51 GMT
 Content-Length: 115
 Content-Type: application/json; charset=utf-8
 
@@ -392,6 +390,25 @@ await ListRelationships(client, "sampleTwin-0");
 ```
 
 Voer in het opdrachtvenster de programma uit met `dotnet run`. Er wordt een lijst weergegeven met alle relaties die u hebt gemaakt.
+
+Hier volgt een voorbeeld van uitvoer:
+
+```cmd/sh
+Hello World!
+Service client created - ready to go
+
+Upload a model
+Type name: System.Collections.Generic.Dictionary'2[System.String,System.String]: dtmi:contosocom:DigitalTwins:SampleModel;1
+Create twin: sampleTwin-0
+Create twin: sampleTwin-1
+Create twin: sampleTwin-2
+Created relationship successfully
+Created relationship successfully
+Twin sampleTwin-0 is connected to:
+-contains->sampleTwin-1
+-contains->sampleTwin-2
+
+```
 
 ### <a name="query-digital-twins"></a>Query's uitvoeren op digitale tweelingen
 

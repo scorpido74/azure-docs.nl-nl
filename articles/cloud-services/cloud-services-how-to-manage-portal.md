@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
-ms.openlocfilehash: 471aa6e5297f8b68f08567a66e3f07e9688ca57e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 84e450a55f9482c3a713943adfcc4d7940ab873f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87002927"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076705"
 ---
 # <a name="manage-cloud-services-in-the-azure-portal"></a>Cloud Services beheren in de Azure Portal
 In het gedeelte **Cloud Services** van de Azure Portal kunt u het volgende doen:
@@ -83,7 +83,7 @@ Houd er rekening mee dat de bewerkingen voor het bijwerken van gast besturingssy
 
 **Maakt een wissel uitval tijd voor mijn toepassing plaats? Hoe kan ik dit afhandelen?**
 
-Zoals beschreven in de vorige sectie, is een implementatie swap doorgaans snel omdat het een configuratie wijziging in de Azure-load balancer is. In sommige gevallen kan het 10 of meer seconden duren en leiden tot tijdelijke verbindings fouten. Als u de gevolgen voor uw klanten wilt beperken, kunt u overwegen de implementatie van de [client opnieuw](../best-practices-retry-general.md)te implementeren.
+Zoals beschreven in de vorige sectie, is een implementatie swap doorgaans snel omdat het een configuratie wijziging in de Azure-load balancer is. In sommige gevallen kan het 10 of meer seconden duren en leiden tot tijdelijke verbindings fouten. Als u de gevolgen voor uw klanten wilt beperken, kunt u overwegen de implementatie van de [client opnieuw](/azure/architecture/best-practices/transient-faults)te implementeren.
 
 ## <a name="delete-deployments-and-a-cloud-service"></a>Implementaties en een Cloud service verwijderen
 Voordat u een Cloud service kunt verwijderen, moet u elke bestaande implementatie verwijderen.
@@ -124,6 +124,3 @@ De Blade **overzicht** bevat bovenaan een status balk. Wanneer u de balk selecte
 * Meer informatie over het [implementeren van een Cloud service](cloud-services-how-to-create-deploy-portal.md).
 * Een [aangepaste domein naam](cloud-services-custom-domain-name-portal.md)configureren.
 * [TLS/SSL-certificaten](cloud-services-configure-ssl-certificate-portal.md)configureren.
-
-
-

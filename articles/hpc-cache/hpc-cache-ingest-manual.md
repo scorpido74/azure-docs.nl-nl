@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 10/30/2019
 ms.author: v-erkel
 ms.openlocfilehash: f96a0fa264124f9d050e667b003d98579da63b77
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87092334"
 ---
 # <a name="azure-hpc-cache-data-ingest---manual-copy-method"></a>Gegevens opname van de Azure HPC-cache-hand matige Kopieer methode
@@ -153,7 +153,7 @@ user@build:/mnt/source > find . -mindepth 4 -maxdepth 4 -type d
 ./atj5b55c53be6-02/support/trace/rolling
 ```
 
-Dit resultaat omleiden naar een bestand:`find . -mindepth 4 -maxdepth 4 -type d > /tmp/foo`
+Dit resultaat omleiden naar een bestand: `find . -mindepth 4 -maxdepth 4 -type d > /tmp/foo`
 
 Vervolgens kunt u het manifest door lopen met behulp van BASH-opdrachten om bestanden te tellen en de grootte van de submappen te bepalen:
 

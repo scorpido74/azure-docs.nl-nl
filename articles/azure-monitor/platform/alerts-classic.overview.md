@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 05/19/2018
 ms.subservice: alerts
 ms.openlocfilehash: c7dfbd60b7a668b849c3150bb16e40285c345634
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87844110"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Wat zijn klassieke waarschuwingen in Microsoft Azure?
@@ -33,7 +33,7 @@ De gebruikers ervaring van nieuwe waarschuwingen heeft de volgende voor delen te
 - **Geactiveerde log Analytics waarschuwingen weer geven in azure Portal** -u kunt nu ook gebrande log Analytics waarschuwingen in uw abonnement zien. Voorheen waren deze in een afzonderlijke portal.
 - **Schei ding van gebrande waarschuwingen en waarschuwings regels** : waarschuwings regels (de definitie van voor waarde waarmee een waarschuwing wordt geactiveerd) en gebrande waarschuwingen (een exemplaar van het starten van de waarschuwings regel) worden gedifferentieerd, waardoor de operationele en configuratie weergaven gescheiden zijn.
 - **Betere werk stroom** : de nieuwe ervaring voor het ontwerpen van waarschuwingen begeleidt de gebruiker over het proces van het configureren van een waarschuwings regel, waardoor het eenvoudiger wordt om op de hoogte te worden gesteld van de juiste dingen om te worden gewaarschuwd.
-- **Consolidatie van intelligente waarschuwingen** en **instellen van waarschuwings status** : nieuwe waarschuwingen zijn de functionaliteit voor automatische groepering van vergelijk bare waarschuwingen, zodat de overbelasting in de gebruikers interface wordt verminderd. 
+- **Consolidatie van intelligente waarschuwingen** en **instellen van waarschuwings status**  : nieuwe waarschuwingen zijn de functionaliteit voor automatische groepering van vergelijk bare waarschuwingen, zodat de overbelasting in de gebruikers interface wordt verminderd. 
 
 De nieuwere metrische waarschuwingen hebben de volgende voor delen ten opzichte van de klassieke metrische waarschuwingen:
 - **Verbeterde latentie**: nieuwere metrische waarschuwingen kunnen per minuut worden uitgevoerd. Oudere metrische waarschuwingen worden altijd uitgevoerd met een frequentie van vijf minuten. Nieuwere waarschuwingen verg Roten de kleinere vertraging van het probleem met de melding of actie (3 tot 5 minuten). Oudere waarschuwingen zijn vijf tot 15 minuten, afhankelijk van het type.  Logboek waarschuwingen hebben doorgaans een vertraging van 10 tot 15 minuten als gevolg van de tijd die nodig is om de logboeken op te nemen, maar nieuwere verwerkings methoden verkorten die tijd. 

@@ -17,10 +17,10 @@ ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
 ms.openlocfilehash: d2862d5ab2c42ebdd1787022dc86119bc4e0f596
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86229360"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Overzicht van Azure Virtual Machines-beveiliging
@@ -160,7 +160,7 @@ Meer informatie:
 
 Hoewel vertrouwelijke computing geen technisch onderdeel is van de beveiliging van de virtuele machine, behoort het onderwerp van de beveiliging van de virtuele machine tot het hogere niveau van "Compute"-beveiliging. Vertrouwelijk computing behoort tot de categorie "Compute"-beveiliging.
 
-Met vertrouwelijke computing zorgt u ervoor dat wanneer gegevens ' in de heldere ' zijn, die is vereist voor een efficiënte verwerking, de gegevens worden beschermd binnen een vertrouwde uitvoerings omgeving https://en.wikipedia.org/wiki/Trusted_execution_environment (Tee, ook wel een enclave genoemd), een voor beeld van dat wordt weer gegeven in de afbeelding hieronder.  
+Met vertrouwelijke computing zorgt u ervoor dat wanneer gegevens ' in de heldere ' zijn, die is vereist voor een efficiënte verwerking, de gegevens worden beschermd binnen een vertrouwde uitvoerings omgeving  https://en.wikipedia.org/wiki/Trusted_execution_environment (Tee, ook wel een enclave genoemd), een voor beeld van dat wordt weer gegeven in de afbeelding hieronder.  
 
 TEEs zorgt ervoor dat er geen manier is om gegevens of de bewerkingen in de buiten kant weer te geven, zelfs met een fout opsporingsprogramma. Ze kunnen er ook voor zorgen dat alleen geautoriseerde code toegang heeft tot gegevens. Als de code wordt gewijzigd of gewijzigd, worden de bewerkingen geweigerd en wordt de omgeving uitgeschakeld. De TEE dwingt deze beveiligingen af tijdens het uitvoeren van code in het bestand.
 

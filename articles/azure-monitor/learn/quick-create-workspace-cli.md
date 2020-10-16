@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
 ms.openlocfilehash: 7421162ed68a879d9f935a3efd5c6267e159a648
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87324298"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-cli-20"></a>Een Log Analytics-werk ruimte maken met Azure CLI 2,0
@@ -116,7 +116,7 @@ Met de volgende para meters wordt een standaard waarde ingesteld:
 
 De implementatie kan enkele minuten duren. Wanneer de bewerking is voltooid, ziet u een bericht dat lijkt op het volgende:
 
-![Voor beeld van resultaat wanneer de implementatie is voltooid](media/quick-create-workspace-cli/template-output-01.png)
+![Voorbeeld van uitvoer als de implementatie is voltooid](media/quick-create-workspace-cli/template-output-01.png)
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 Wanneer u een werk ruimte maakt die in de afgelopen 14 dagen is verwijderd en de status voor het [voorlopig verwijderen](../platform/delete-workspace.md#soft-delete-behavior)heeft, kan de bewerking afwijken, afhankelijk van de configuratie van uw werk ruimte:

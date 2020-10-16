@@ -31,10 +31,6 @@
           href: azure-stack-edge-gpu-deploy-activate.md
         - name: 8 - Rekenproces configureren
           href: azure-stack-edge-gpu-deploy-configure-compute.md
-        - name: '9A - Toevoegen, verbinding maken om te delen'
-          href: azure-stack-edge-j-series-deploy-add-shares.md
-        - name: '9B - Toevoegen, verbinding maken met opslagaccounts'
-          href: azure-stack-edge-j-series-deploy-add-storage-accounts.md
     - name: Concepten
       items:
         - name: Vereisten beoordelen
@@ -61,6 +57,8 @@
               href: azure-stack-edge-gpu-kubernetes-rbac.md
             - name: Kubernetes-werkbelastingen
               href: azure-stack-edge-gpu-kubernetes-workload-management.md
+        - name: Key Vault-integratie bekijken
+          href: azure-stack-edge-gpu-activation-key-vault.md
     - name: Procedures
       items:
         - name: IoT Edge-voorbeelden implementeren
@@ -87,6 +85,8 @@
               items:
                 - name: Staatloze app
                   href: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
+                - name: C#-module ontwikkelen
+                  href: azure-stack-edge-j-series-create-iot-edge-module.md
             - name: Via Azure Arc (preview)
               items:
                 - name: Arc inschakelen op Kubernetes-cluster
@@ -123,12 +123,14 @@
               href: azure-stack-edge-j-series-create-certificates-tool.md
             - name: Certificaatfouten oplossen
               href: azure-stack-edge-j-series-certificate-troubleshooting.md
-        - name: C#-module ontwikkelen
-          href: azure-stack-edge-j-series-create-iot-edge-module.md
         - name: Edge-rekenproces beheren
           href: azure-stack-edge-j-series-manage-compute.md
         - name: Opslag-gateway beheren
           items:
+            - name: 'Toevoegen, verbinding maken met share'
+              href: azure-stack-edge-j-series-deploy-add-shares.md
+            - name: 'Toevoegen, verbinding maken met opslagaccounts'
+              href: azure-stack-edge-j-series-deploy-add-storage-accounts.md
             - name: Shares
               href: azure-stack-edge-j-series-manage-shares.md
             - name: Gebruikers
@@ -149,6 +151,10 @@
               href: azure-stack-edge-return-device.md
             - name: Apparaat vervangen
               href: azure-stack-edge-replace-device.md
+            - name: Voorbereiden op apparaatfout
+              href: azure-stack-edge-gpu-prepare-device-failure.md
+            - name: Herstellen na apparaatfout
+              href: azure-stack-edge-gpu-recover-device-failure.md
         - name: Controleren
           items:
             - name: Metrische grafieken gebruiken
@@ -161,6 +167,8 @@
               href: azure-stack-edge-gpu-troubleshoot.md
             - name: Problemen met ordenen
               href: azure-stack-edge-troubleshoot-ordering.md
+            - name: Activeringsproblemen
+              href: azure-stack-edge-gpu-troubleshoot-activation.md
             - name: Neem contact op met Microsoft Ondersteuning
               href: azure-stack-edge-contact-microsoft-support.md
     - name: Releaseopmerkingen

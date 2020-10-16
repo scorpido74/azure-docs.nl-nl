@@ -10,10 +10,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 5af7645db662a238099e013f84b0dc0fee2af62c
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91355853"
 ---
 # <a name="secure-a-daemon-application"></a>Een daemon-toepassing beveiligen
@@ -100,7 +100,7 @@ Wanneer een niet-Azure-omgeving wordt uitgevoerd, zijn er geen beheerde identite
     * Als uw toepassing gebruikmaakt van server-of toepassings verificatie, gaat u op de pagina app-registratie naar **certificaten & geheimen**. Upload vervolgens een certificaat met een open bare sleutel of maak een wacht woord door **Nieuw client geheim**te selecteren.
 
         > [!div class="mx-imgBorder"]
-        > ![Een clientgeheim maken](./media/how-to-manage-authentication/app-keys.png)
+        > ![Een client geheim maken](./media/how-to-manage-authentication/app-keys.png)
 
     * Nadat u **toevoegen**hebt geselecteerd, kopieert u het geheim en slaat u het veilig op in een service zoals Azure Key Vault. Raadpleeg [Azure Key Vault ontwikkelaars handleiding](https://docs.microsoft.com/azure/key-vault/general/developers-guide) om het certificaat of geheim veilig op te slaan. U gebruikt dit geheim om tokens van Azure AD op te halen.
 

@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 03/19/2020
 ms.author: mimart
 ms.openlocfilehash: 9b660bf20c90a84780175e70573c96a0ce1b0b7d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91377531"
 ---
 ## <a name="use-custom-page-content"></a>Aangepaste pagina-inhoud gebruiken
@@ -114,7 +114,7 @@ In dit artikel gebruiken we Azure Blob-opslag om onze inhoud te hosten. U kunt e
 
 Als u uw HTML-inhoud in Blob Storage wilt hosten, voert u de volgende stappen uit:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Selecteer in het **hub** -menu de optie **Nieuw**  >  **opslag**  >  **opslag account**.
 1. Selecteer een **abonnement** voor uw opslag account.
 1. Maak een **resource groep** of selecteer een bestaande.

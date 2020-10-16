@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 6dfced457f6840294700fb998c93cf2ab993024c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: b1f261d3d777ccf19cea84e77ef83eb45ecc2065
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683535"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372252"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Aan de slag met Azure Cost Management voor partners
 
@@ -22,7 +22,7 @@ Azure Cost Management is standaard beschikbaar voor directe partners die hun kla
 
 Voor directe partners en indirecte providers hebben de globale beheerder en beheerderagents toegang tot Cost Management in de partnertenant en kosten beheren tegen gefactureerde prijzen.
 
-Resellers en klanten hebben toegang tot Cost Management in de tenant van de klant en kunnen abonnementskosten weergeven, waarbij de kosten worden berekend en weergegeven in tarieven voor de detailhandel. Ze moeten wel RBAC-toegang tot het abonnement in de tenant van de klant hebben om de kosten te kunnen zien. Het beleid voor de zichtbaarheid van kosten moet zijn ingeschakeld door de provider van de tenant van de klant.
+Resellers en klanten hebben toegang tot Cost Management in de tenant van de klant en kunnen abonnementskosten weergeven, waarbij de kosten worden berekend en weergegeven in tarieven voor de detailhandel. Ze moeten wel Azure RBAC-toegang tot het abonnement in de tenant van de klant hebben om de kosten te kunnen zien. Het beleid voor de zichtbaarheid van kosten moet zijn ingeschakeld door de provider van de tenant van de klant.
 
 Klanten kunnen Cost Management-functies gebruiken wanneer ze zijn ingeschakeld door hun CSP-partner.
 
@@ -55,13 +55,13 @@ Azure Cost Management heeft leestoegang tot uw factureringsrekening of abonnemen
 
 Zie [Gebruikersrollen en machtigingen toewijzen](/partner-center/permissions-overview) voor meer informatie over het inschakelen en toewijzen van toegang tot Azure Cost Management voor een factureringsrekening. De rollen **Globale beheerder** en **Beheerdersagent** kunnen de kosten voor een factureringsrekening beheren.
 
-Om toegang te krijgen tot Azure Cost Management op het abonnementsbereik, kunnen gebruikers met RBAC-toegang tot een abonnement de kosten bekijken op detailhandel-tarieven (betalen naar gebruik). Het beleid voor de [zichtbaarheid van kosten voor de tenant van de klant](#enable-the-policy-to-view-azure-usage-charges) moet echter zijn ingeschakeld. Zie voor een volledige lijst met ondersteunde accounttypen [Gegevens van Cost Management begrijpen](understand-cost-mgt-data.md).
+Om toegang te krijgen tot Azure Cost Management op het abonnementsbereik, kunnen gebruikers met Azure RBAC-toegang tot een abonnement de kosten bekijken op detailhandel-tarieven (betalen naar gebruik). Het beleid voor de [zichtbaarheid van kosten voor de tenant van de klant](#enable-the-policy-to-view-azure-usage-charges) moet echter zijn ingeschakeld. Zie voor een volledige lijst met ondersteunde accounttypen [Gegevens van Cost Management begrijpen](understand-cost-mgt-data.md).
 
 ## <a name="how-cost-management-uses-scopes"></a>Hoe Cost Management bereiken gebruikt
 
-Bereiken zijn de plekken waar u factureringsgegevens beheert, over rollen beschikt die specifiek zijn voor betalingen, facturen beheert en algemeen accountbeheer uitvoert. Facturerings- en accountrollen worden afzonderlijk beheerd vanaf bereiken die worden gebruikt voor resourcebeheer, en die gebruik maken van RBAC. Om de intentie van de afzonderlijke bereiken duidelijk te onderscheiden, met inbegrip van de verschillen in toegangsbeheer, worden ze respectievelijk factureringsbereiken en RBAC-bereiken genoemd.
+Bereiken zijn de plekken waar u factureringsgegevens beheert, over rollen beschikt die specifiek zijn voor betalingen, facturen beheert en algemeen accountbeheer uitvoert. Facturerings- en accountrollen worden afzonderlijk beheerd vanaf bereiken die worden gebruikt voor resourcebeheer, en die gebruik maken van Azure RBAC. Om de intentie van de afzonderlijke bereiken duidelijk te onderscheiden, met inbegrip van de verschillen in toegangsbeheer, worden ze respectievelijk factureringsbereiken en Azure RBAC-bereiken genoemd.
 
-Zie [Begrijpen en werken met bereiken](understand-work-scopes.md) voor meer informatie over factureringsbereiken en RBAC-bereiken en hoe kostenbeheer werkt met bereiken.
+Zie [Begrijpen en werken met bereiken](understand-work-scopes.md) voor meer informatie over factureringsbereiken en Azure RBAC-bereiken en hoe kostenbeheer werkt met bereiken.
 
 ## <a name="manage-costs-with-partner-tenant-billing-scopes"></a>Kosten beheren met factureringsbereiken van een partner-tenant
 
@@ -116,9 +116,9 @@ Alleen gebruikers met de rollen **Globale beheerder** en **Beheerdersagent** kun
 
 ## <a name="enable-cost-management-for-customer-tenant-subscriptions"></a>Kostenbeheer inschakelen voor tenantabonnementen van klanten
 
-Partners kunnen toegang tot Cost Management mogelijk maken nadat klanten zijn voorbereid op een Microsoft-klantovereenkomst. Vervolgens kunnen partners een beleid inschakelen waarmee klanten hun kosten voor gebruikte services in Azure bekijken die worden berekend op basis van betalen naar gebruik-detailhandelstarieven. Kosten worden weergegeven in de factureringsvaluta van de klant voor het verbruikte gebruik van het abonnement en de resourcegroepen van het RBAC.
+Partners kunnen toegang tot Cost Management mogelijk maken nadat klanten zijn voorbereid op een Microsoft-klantovereenkomst. Vervolgens kunnen partners een beleid inschakelen waarmee klanten hun kosten voor gebruikte services in Azure bekijken die worden berekend op basis van betalen naar gebruik-detailhandelstarieven. Kosten worden weergegeven in de factureringsvaluta van de klant voor het verbruikte gebruik van het abonnement en de resourcegroepen van het Azure RBAC.
 
-Wanneer het beleid voor de zichtbaarheid van kosten wordt ingeschakeld door de partner, kan elke gebruiker met Azure Resource Manager-toegang tot het abonnement, kosten op basis van betalen naar gebruik-tarieven beheren en analyseren. Effectief kunnen wederverkopers en klanten die de juiste RBAC-toegang hebben tot de Azure-abonnementen, kosten bekijken.
+Wanneer het beleid voor de zichtbaarheid van kosten wordt ingeschakeld door de partner, kan elke gebruiker met Azure Resource Manager-toegang tot het abonnement, kosten op basis van betalen naar gebruik-tarieven beheren en analyseren. Effectief kunnen wederverkopers en klanten die de juiste Azure RBAC-toegang hebben tot de Azure-abonnementen, kosten bekijken.
 
 Ongeacht het beleid kunnen globale beheerders en beheerdersagenten van de provider abonnementskosten bekijken als ze toegang hebben tot het abonnement en de resourcegroep.
 
@@ -149,9 +149,9 @@ Als u de kosten voor een abonnement wilt bekijken, opent u **Kostenbeheer en fac
 
 [![Kostenanalyse als klant weergeven](./media/get-started-partners/subscription-costs.png)](./media/get-started-partners/subscription-costs.png#lightbox)
 
-Kostenanalyse, budgetten en waarschuwingen zijn beschikbaar voor het abonnement en de RBAC-scopes van de resourcegroep tegen kosten op basis van Betalen per gebruik.
+Kostenanalyse, budgetten en waarschuwingen zijn beschikbaar voor het abonnement en de Azure RBAC-scopes van de resourcegroep tegen kosten op basis van Betalen per gebruik.
 
-Bij afgeschreven weergaven en werkelijke kosten voor gereserveerde instanties in de RBAC-bereiken worden nul kosten weergegeven. Kosten voor gereserveerde instanties worden alleen weergegeven in factureringsbereiken waar de aankopen zijn gedaan.
+Bij afgeschreven weergaven en werkelijke kosten voor gereserveerde instanties in de Azure RBAC-bereiken worden nul kosten weergegeven. Kosten voor gereserveerde instanties worden alleen weergegeven in factureringsbereiken waar de aankopen zijn gedaan.
 
 De verkoopprijzen die worden gebruikt voor het berekenen van de kosten in de weergave zijn dezelfde prijzen die worden weergegeven in de Azure-prijscalculator voor alle klanten. De kosten die worden weergegeven, omvatten geen eventuele kortingen of tegoeden van de partner, zoals door partner verdiende tegoeden (PEC), niveaukortingen en Global Service-kortingen.
 
@@ -159,7 +159,7 @@ De verkoopprijzen die worden gebruikt voor het berekenen van de kosten in de wee
 
 Partners met toegang tot de factureringsbereiken in de partner-tenant kunnen gefactureerde kosten in kostenanalyse over klanten verkennen en analyseren voor een specifieke klant of voor een factuur. In de [Kostenanalyse](quick-acm-cost-analysis.md)-weergave kunt u ook [weergaven opslaan](quick-acm-cost-analysis.md#saving-and-sharing-customized-views) en gegevens exporteren naar [CSV- en PNG-bestanden](quick-acm-cost-analysis.md#download-usage-data).
 
-RBAC-gebruikers met toegang tot het abonnement in de tenant van de klant kunnen ook retailkosten analyseren voor abonnementen in de tenant van de klant, weergaven opslaan en gegevens exporteren naar CSV- en PNG-bestanden.
+Azure RBAC-gebruikers met toegang tot het abonnement in de tenant van de klant kunnen ook retailkosten analyseren voor abonnementen in de tenant van de klant, weergaven opslaan en gegevens exporteren naar CSV- en PNG-bestanden.
 
 U kunt filteren en groeperen op functies in kostenanalyse gebruiken om kosten te analyseren op basis van meerdere velden. In de volgende sectie worden de partner-specifieke velden weergegeven.
 
@@ -223,8 +223,8 @@ De volgende gegevensvelden zijn te vinden in detailbestanden voor gebruik en Cos
 | costinBillingCurrency | ExtendedCost of overvloeikosten vóór belasting in de gefactureerde valuta. | N.v.t. |
 | costinPricingCurrency | Berekende kosten of overvloeikosten vóór belasting in de prijsvaluta om te correleren met prijzen. | N.v.t. |
 | **costinUSD** | Geschatte berekende kosten of overvloei kosten vóór belasting in USD. | N.v.t. |
-| **paygCostInBillingCurrency** | Hiermee worden de kosten weergegeven als de prijzen verkoopprijzen zijn. Hiermee worden de prijzen voor betalen naar gebruik in de factureringsvaluta weergegeven. Alleen beschikbaar voor RBAC-bereiken. | N.v.t. |
-| **paygCostInUSD** | Hiermee worden de kosten weergegeven als de prijzen verkoopprijzen zijn. Toont de prijzen voor Betalen naar gebruik in USD. Alleen beschikbaar voor RBAC-bereiken. | N.v.t. |
+| **paygCostInBillingCurrency** | Hiermee worden de kosten weergegeven als de prijzen verkoopprijzen zijn. Hiermee worden de prijzen voor betalen naar gebruik in de factureringsvaluta weergegeven. Alleen beschikbaar voor Azure RBAC-bereiken. | N.v.t. |
+| **paygCostInUSD** | Hiermee worden de kosten weergegeven als de prijzen verkoopprijzen zijn. Toont de prijzen voor Betalen naar gebruik in USD. Alleen beschikbaar voor Azure RBAC-bereiken. | N.v.t. |
 | exchangeRate | De wisselkoers die is gebruikt om de kosten van de prijsvaluta om te zetten in de factureringsvaluta. | Wordt aangeduid als PCToBCExchangeRate in het partnercentrum. De prijsvaluta voor facturerings-wisselkoers.|
 | exchangeRateDate | De datum voor de wisselkoers die is gebruikt om de kosten van de prijsvaluta om te zetten in de factureringsvaluta. | Wordt aangeduid als PCToBCExchangeRateDat in het partnercentrum. De prijsvaluta voor de datum van de facturerings-wisselkoers.|
 | isAzureCreditEligible | Geeft aan of de kosten in aanmerking komen voor betaling door Azure-tegoed. | N.v.t. |
@@ -262,7 +262,7 @@ U kunt ook groeperen en filteren op de eigenschap **PartnerEarnedCreditApplied**
 
 Partners met toegang tot de factureringsbereiken in een partner-tenant kunnen hun kosten- en gebruiksgegevens exporteren naar een Azure Storage-blob. De BLOB moet zich in de partner-tenant in een abonnement bevinden dat geen gedeeld serviceabonnement of een klantabonnement is. Om het exporteren van kostengegevens in te schakelen, raden wij u aan een onafhankelijk Betalen per gebruik-abonnement in de partner-tenant in te stellen om de geëxporteerde kostengegevens te hosten. Het export-opslagaccount wordt gemaakt op de Azure Storage-blob die wordt gehost in het abonnement voor Betalen naar gebruik. Op basis van het bereik waarin de partner de export maakt, worden de bijbehorende gegevens automatisch op regelmatige basis geëxporteerd naar het opslagaccount.
 
-Gebruikers met RBAC-toegang tot het abonnement kunnen de kostengegevens ook exporteren naar een Azure Storage-blob die wordt gehost in een abonnement in de tenant van de klant.
+Gebruikers met Azure RBAC-toegang tot het abonnement kunnen de kostengegevens ook exporteren naar een Azure Storage-blob die wordt gehost in een abonnement in de tenant van de klant.
 
 ### <a name="create-an-export-in-a-partner-tenant-or-customer-tenant"></a>Een export maken in een tenant van een partner of klant
 
@@ -276,7 +276,7 @@ Selecteer vervolgens **Toevoegen**, typ de naam en selecteer een exporttype. Sel
 
 Wanneer u een export maakt in de partner-tenant, selecteert u het abonnement voor Betalen naar gebruik in de partner-tenant. Maak een Azure Storage-account met dat abonnement.
 
-Voor RBAC-gebruikers in de tenant van de klant selecteert u een abonnement in de tenant van de klant. Maak een Azure Storage-account met het abonnement.
+Voor Azure RBAC-gebruikers in de tenant van de klant selecteert u een abonnement in de tenant van de klant. Maak een Azure Storage-account met het abonnement.
 
 Bekijk de inhoud en selecteer vervolgens **Maken** om een export te plannen.
 

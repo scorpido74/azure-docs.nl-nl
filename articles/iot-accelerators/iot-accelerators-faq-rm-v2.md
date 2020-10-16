@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: c410ac7f41adb623a7198320a1edced097778569
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64391d7f5a7b1a295be7e404d27e5cbe8c691eb2
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73826236"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079085"
 ---
 # <a name="frequently-asked-questions-for-remote-monitoring-solution-accelerator"></a>Veelgestelde vragen over oplossings versneller voor externe controle
 
@@ -40,13 +40,13 @@ Zie [Update toewijzings sleutel voor het weer geven van apparaten op een dynamis
 
 ### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>Waar vind ik informatie over de vorige versie van de oplossing voor bewaking op afstand?
 
-De vorige versie van de oplossing voor controle op afstand van externe bewaking heette de IoT Suite vooraf geconfigureerde oplossing voor externe controle. U kunt de gearchiveerde documentatie vinden op [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/) .
+De vorige versie van de oplossing voor controle op afstand van externe bewaking heette de IoT Suite vooraf geconfigureerde oplossing voor externe controle. U kunt de gearchiveerde documentatie vinden op [https://docs.microsoft.com/previous-versions/azure/iot-suite/](/previous-versions/azure/iot-suite/) .
 
 ### <a name="next-steps"></a>Volgende stappen
 
 U kunt ook enkele van de andere functies en mogelijkheden van de IoT-oplossingsversnellers bekijken:
 
 * [Bekijk de mogelijkheden van de oplossings versneller voor externe controle](quickstart-remote-monitoring-deploy.md)
-* [Overzicht van de oplossingsversneller Voorspeld onderhoud](iot-accelerators-predictive-overview.md)
+* [Overzicht van de oplossingsversneller Voorspeld onderhoud](./iot-accelerators-predictive-walkthrough.md)
 * [Connected Factory Solution Accelerator implementeren](quickstart-connected-factory-deploy.md)
-* [Fundamentele IoT-beveiliging](/azure/iot-fundamentals/iot-security-ground-up)
+* [Fundamentele IoT-beveiliging](../iot-fundamentals/iot-security-ground-up.md)

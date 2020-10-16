@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: alkohli
 ms.openlocfilehash: 4f21e7f64338b7d50ca401081bf73ca0c1a1c88f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85504300"
 ---
 # <a name="data-transfer-for-small-datasets-with-low-to-moderate-network-bandwidth"></a>Gegevensoverdracht voor kleine gegevenssets met weinig tot gemiddelde netwerkbandbreedte
@@ -49,15 +49,15 @@ De opties die worden aanbevolen in dit scenario zijn:
 
 De volgende tabel bevat een overzicht van de verschillen in de belangrijkste mogelijkheden.
 
-| Functie | Azure Opslagverkenner | Azure Portal | AzCopy<br>Azure PowerShell<br>Azure CLI | Azure Storage REST Api's of Sdk's |
+| Functie | Azure Storage Explorer | Azure Portal | AzCopy<br>Azure PowerShell<br>Azure CLI | Azure Storage REST Api's of Sdk's |
 |---------|------------------------|--------------|-----------------------------------------|---------------------------------|
 | Beschikbaarheid | Downloaden en installeren <br>Zelfstandig hulp programma | Webgebaseerde hulpprogram ma's voor onderzoek in Azure Portal | Opdracht regel programma |Programmeer bare interfaces in .NET, Java, Python, java script, C++, go, Ruby en PHP |
 | Grafische interface | Ja | Ja | Nee | Nee |
 | Ondersteunde platforms | Windows, Mac, Linux | Op internet gebaseerde |Windows, Mac, Linux |Alle platforms |
 | Toegestane bewerkingen voor Blob-opslag<br>voor blobs en mappen | Uploaden<br>Downloaden<br>Beheren | Uploaden<br>Downloaden<br>Beheren |Uploaden<br>Downloaden<br>Beheren | Ja, aanpasbaar |
-| Data Lake gen1-opslag toegestaan<br>bewerkingen voor bestanden en mappen | Uploaden<br>Downloaden<br>Beheren | No |Uploaden<br>Downloaden<br>Beheren                   | No |
+| Data Lake gen1-opslag toegestaan<br>bewerkingen voor bestanden en mappen | Uploaden<br>Downloaden<br>Beheren | Nee |Uploaden<br>Downloaden<br>Beheren                   | Nee |
 | Toegestane bewerkingen voor bestands opslag<br>voor bestanden en mappen | Uploaden<br>Downloaden<br>Beheren | Uploaden<br>Downloaden<br>Beheren   |Uploaden<br>Downloaden<br>Beheren | Ja, aanpasbaar |
-| Toegestane bewerkingen voor tabel opslag<br>voor tabellen |Beheren | No |Tabel ondersteuning in AzCopy V7 |Ja, aanpasbaar|
+| Toegestane bewerkingen voor tabel opslag<br>voor tabellen |Beheren | Nee |Tabel ondersteuning in AzCopy V7 |Ja, aanpasbaar|
 | Toegestane wachtrij opslag | Beheren | Nee  |Nee | Ja, is aanpasbaar|
 
 

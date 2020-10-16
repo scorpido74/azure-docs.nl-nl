@@ -8,19 +8,19 @@ ms.date: 09/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: efbe8bc24b430716da46601ed073300e4c79cca7
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 6b7d670f5e38968fa6592e323ede075abf687435
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743723"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939014"
 ---
 # <a name="performance-tiers-for-managed-disks-preview"></a>Prestatie lagen voor beheerde schijven (preview-versie)
 
 Azure Disk Storage biedt momenteel ingebouwde burst-mogelijkheden om betere prestaties te bieden voor het verwerken van onverwacht verkeer op korte termijn. Premium-Ssd's hebben de flexibiliteit om de schijf prestaties te verbeteren zonder de daad werkelijke schijf grootte te verg Roten. Met deze mogelijkheid kunt u voldoen aan de prestatie behoeften van uw werk belasting en de kosten verlagen. 
 
 > [!NOTE]
-> Deze functie is momenteel in preview. 
+> Deze functie is momenteel beschikbaar als preview-product. 
 
 Deze functie is ideaal voor gebeurtenissen waarvoor tijdelijk een consistent hoger prestatie niveau is vereist, zoals het kopen van vakantie dagen, het testen van prestaties of het uitvoeren van een trainings omgeving. Als u deze gebeurtenissen wilt verwerken, kunt u een hogere prestatie laag gebruiken, zolang u deze nodig hebt. U kunt vervolgens terugkeren naar de oorspronkelijke laag wanneer u de extra prestaties niet meer nodig hebt.
 
@@ -58,7 +58,7 @@ Zie [prijzen voor beheerde schijven](https://azure.microsoft.com/pricing/details
 
 ## <a name="regional-availability"></a>Regionale beschikbaarheid
 
-De mogelijkheid om de prestatie laag van een beheerde schijf aan te passen, is momenteel alleen beschikbaar in Premium Ssd's in de regio West-Centraal vs. 
+De mogelijkheid om de prestatie tier van een beheerde schijf aan te passen, is momenteel alleen beschikbaar in Premium Ssd's in de VS-Oost 2, Zuid-Centraal VS, West-Centraal VS, Australië-Zuid-Oost.
 
 ## <a name="create-an-empty-data-disk-with-a-tier-higher-than-the-baseline-tier"></a>Een lege gegevens schijf maken met een hogere laag dan de basislijn laag
 

@@ -4,10 +4,10 @@ description: Meer informatie over het maken van een bestands share in een lab en
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: b2dbbf349da4e352fe20a22db03cc9063d801990
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87282242"
 ---
 # <a name="test-your-app-in-azure"></a>Uw app in Azure testen 
@@ -75,7 +75,7 @@ In deze sectie publiceert u uw app vanuit Visual Studio naar een test-VM in de C
 
 1. Ga naar de pagina virtuele machine voor uw VM in het lab. 
 2. Selecteer **Start** op de werk balk om de VM te starten als deze de status gestopt heeft. U kunt automatisch starten en beleid voor automatisch afsluiten instellen voor uw virtuele machine om te voor komen dat elke keer wordt gestart en gestopt. 
-3. Selecteer **Verbinden**.
+3. Selecteer **Verbinding maken**.
 
     ![Pagina virtuele machine](media/test-app-in-azure/virtual-machine-page.png)
 4. Open in de virtuele machine de **bestanden Verkenner**en selecteer **deze PC** om uw bestands share te vinden.

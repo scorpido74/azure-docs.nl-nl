@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
-ms.openlocfilehash: 6253dd616ca184449f3f144d538c1ed20de54cc2
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: d91d896da21d9d96e45c0eab3d5d895364f3e149
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89566417"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077351"
 ---
 # <a name="expressroute-faq"></a>Veelgestelde vragen ExpressRoute
 
@@ -243,6 +243,9 @@ Ja. Als u geen standaard routes (0.0.0.0/0) of Internet route voorvoegsels via d
 
 Ja. U kunt standaard routes (0.0.0.0/0) adverteren om alle Internet connectiviteit met virtuele machines die binnen een virtueel netwerk zijn geïmplementeerd, te blok keren en alle verkeer via het ExpressRoute-circuit te routeren.
 
+> [!NOTE]
+> Als de geadverteerde route van 0.0.0.0/0 wordt ingetrokken vanuit de routes die worden geadverteerd (bijvoorbeeld vanwege een storing of een onjuiste configuratie), biedt Azure een [systeem route](../virtual-network/virtual-networks-udr-overview.md#system-routes) naar resources op de verbonden Virtual Network om verbinding te maken met internet.  Om ervoor te zorgen dat uitgaand verkeer naar Internet wordt geblokkeerd, wordt u aangeraden een netwerk beveiligings groep te plaatsen op alle subnetten met een uitgaande regel voor weigeren voor Internet verkeer.
+
 Als u standaard routes adverteert, forceren we het verkeer naar services die worden aangeboden via micro soft-peering (zoals Azure Storage en SQL data base) terug naar uw eigen locatie. U moet uw routers configureren om verkeer naar Azure te retour neren via het pad naar micro soft-peering of via internet. Als u een service-eind punt voor de service hebt ingeschakeld, wordt het verkeer naar de service niet naar uw locatie afgedwongen. Het verkeer blijft binnen het Azure-backbone-netwerk. Zie [service-eind punten voor virtueel netwerk](../virtual-network/virtual-network-service-endpoints-overview.md?toc=%2fazure%2fexpressroute%2ftoc.json) voor meer informatie over service-eind punten
 
 ### <a name="can-virtual-networks-linked-to-the-same-expressroute-circuit-talk-to-each-other"></a>Kunnen virtuele netwerken die zijn gekoppeld aan hetzelfde ExpressRoute-circuit met elkaar communiceren?
@@ -407,7 +410,7 @@ Uw bestaande circuit gaat verder met het adverteren van de voor voegsels voor Mi
 
 * Micro soft-peering van ExpressRoute-circuits die zijn geconfigureerd op of na 1 augustus 2017, heeft geen voor voegsels die worden geadverteerd totdat een route filter aan het circuit is gekoppeld. Er worden standaard geen voor voegsels weer geven.
 
-## <a name="expressroute-direct"></a><a name="expressRouteDirect"></a>ExpressRoute Direct
+## <a name="expressroute-direct"></a><a name="expressRouteDirect"></a>ExpressRoute direct
 
 [!INCLUDE [ExpressRoute Direct](../../includes/expressroute-direct-faq-include.md)]
 

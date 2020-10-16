@@ -4,16 +4,16 @@ description: Controleer de specifieke eigenschappen en hun waarden voor de edgeA
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/17/2019
+ms.date: 08/31/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f2d6603c264c9da3f2700f460a8c61b24681fac6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa7a56bcad067176d8f9805b418cca45ad144579
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80546193"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978693"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>Eigenschappen van de IoT Edge agent en IoT Edge hub-module apparaatdubbels
 
@@ -33,7 +33,7 @@ De module voor de IoT Edge-agent wordt aangeroepen `$edgeAgent` en coördineert 
 
 | Eigenschap | Beschrijving | Vereist |
 | -------- | ----------- | -------- |
-| schemaVersion | Moet ' 1,0 ' zijn | Ja |
+| schemaVersion | "1,0" of "1,1". Versie 1,1 is geïntroduceerd in IoT Edge versie 1.0.10 en wordt aanbevolen. | Ja |
 | runtime. type | Moet ' docker ' zijn | Ja |
 | runtime. settings. minDockerVersion | Ingesteld op de minimale docker-versie die is vereist voor dit implementatie manifest | Ja |
 | runtime. settings. loggingOptions | Een stringified-JSON met de registratie opties voor de container van de IoT Edge agent. [Opties voor docker-logboek registratie](https://docs.docker.com/engine/admin/logging/overview/) | Nee |
@@ -47,6 +47,7 @@ De module voor de IoT Edge-agent wordt aangeroepen `$edgeAgent` en coördineert 
 | systemModules. edgeHub. type | Moet ' docker ' zijn | Ja |
 | systemModules. edgeHub. status | Moet worden uitgevoerd | Ja |
 | systemModules.edgeHub.restartPolicy | Moet ' Always ' zijn | Ja |
+| systemModules.edgeHub.startupOrder | Een geheel getal dat een module in de opstart volgorde heeft. 0 is het eerste en maximum geheel getal (4294967295) is de laatste waarde. Als er geen waarde wordt gegeven, is de standaard instelling een maximum geheel getal.  | Nee |
 | systemModules. edgeHub. settings. image | De URI van de afbeelding van de IoT Edge hub. | Ja |
 | systemModules. edgeHub. settings<br>.createOptions | Een stringified-JSON met de opties voor het maken van de IoT Edge hub-container. [Opties voor het maken van docker](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | Nee |
 | systemModules.edgeHub.configuration.id | De ID van de implementatie die deze module heeft geïmplementeerd. | IoT Hub stelt deze eigenschap in wanneer het manifest wordt toegepast met behulp van een implementatie. Maakt geen deel uit van een implementatie manifest. |
@@ -54,8 +55,9 @@ De module voor de IoT Edge-agent wordt aangeroepen `$edgeAgent` en coördineert 
 | modules. {moduleId}. type | Moet ' docker ' zijn | Ja |
 | modules. {moduleId}. status | {"uitvoeren" \| "gestopt"} | Ja |
 | modules. {moduleId}. restartPolicy | {"Never" \| "on-failure" \| " \| " altijd "} | Ja |
+| modules. {moduleId}. startupOrder | Een geheel getal dat een module in de opstart volgorde heeft. 0 is het eerste en maximum geheel getal (4294967295) is de laatste waarde. Als er geen waarde wordt gegeven, is de standaard instelling een maximum geheel getal.  | Nee |
 | modules. {moduleId}. imagePullPolicy | {"on-Create" \| ' Never '} | Nee |
-| modules. {moduleId}. env | Een lijst met omgevings variabelen die moeten worden door gegeven aan de module. Neemt de indeling`"<name>": {"value": "<value>"}` | Nee |
+| modules. {moduleId}. env | Een lijst met omgevings variabelen die moeten worden door gegeven aan de module. Neemt de indeling `"<name>": {"value": "<value>"}` | Nee |
 | modules. {moduleId}. settings. image | De URI naar de module afbeelding. | Ja |
 | modules. {moduleId}. settings. createOptions | Een stringified-JSON met de opties voor het maken van de module container. [Opties voor het maken van docker](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | Nee |
 | modules. {moduleId}. configuratie.-id | De ID van de implementatie die deze module heeft geïmplementeerd. | IoT Hub stelt deze eigenschap in wanneer het manifest wordt toegepast met behulp van een implementatie. Maakt geen deel uit van een implementatie manifest. |
@@ -80,8 +82,8 @@ De volgende tabel bevat niet de informatie die uit de gewenste eigenschappen is 
 | lastDesiredVersion | Dit geheel getal verwijst naar de laatste versie van de gewenste eigenschappen die worden verwerkt door de IoT Edge agent. |
 | lastDesiredStatus. code | Deze status code verwijst naar de laatste gewenste eigenschappen die worden weer gegeven door de IoT Edge agent. Toegestane waarden: `200` geslaagd, `400` Ongeldige configuratie, `412` Ongeldige schema versie, `417` de gewenste eigenschappen zijn leeg, `500` mislukt |
 | lastDesiredStatus. Description | Tekst beschrijving van de status |
-| deviceHealth | `healthy`Als de runtime status van alle modules ofwel `running` of `stopped` `unhealthy` anders is |
-| configurationHealth. {deploymentId}. status | `healthy`Als de runtime status van alle modules die zijn ingesteld door de implementatie {deploymentId} `running` `stopped` , of `unhealthy` anders |
+| deviceHealth | `healthy` Als de runtime status van alle modules ofwel `running` of `stopped` `unhealthy` anders is |
+| configurationHealth. {deploymentId}. status | `healthy` Als de runtime status van alle modules die zijn ingesteld door de implementatie {deploymentId} `running` `stopped` , of `unhealthy` anders |
 | runtime. platform. OS | Melden van het besturings systeem dat op het apparaat wordt uitgevoerd |
 | runtime. platform. Architecture | Rapportage van de architectuur van de CPU op het apparaat |
 | systemModules.edgeAgent.runtimeStatus | De gerapporteerde status van de IoT Edge-agent: {"wordt uitgevoerd" \| "is beschadigd"} |
@@ -107,7 +109,7 @@ De module voor de IoT Edge hub wordt aangeroepen `$edgeHub` en coördineert de c
 
 | Eigenschap | Beschrijving | Vereist in het implementatie manifest |
 | -------- | ----------- | -------- |
-| schemaVersion | Moet ' 1,0 ' zijn | Ja |
+| schemaVersion | "1,0" of "1,1". Versie 1,1 is geïntroduceerd in IoT Edge versie 1.0.10 en wordt aanbevolen. | Ja |
 | stuurt. RouteName | Een teken reeks die een IoT Edge hub-route vertegenwoordigt. Zie voor meer informatie [routes declareren](module-composition.md#declare-routes). | Het `routes` element kan aanwezig zijn, maar leeg zijn. |
 | storeAndForwardConfiguration.timeToLiveSecs | De tijd in seconden dat IoT Edge hub berichten houdt als de verbinding met de routerings eindpunten is verbroken, of IoT Hub of een lokale module. De waarde kan elk positief geheel getal zijn. | Ja |
 

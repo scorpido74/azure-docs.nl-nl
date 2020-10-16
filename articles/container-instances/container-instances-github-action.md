@@ -3,13 +3,13 @@ title: Container exemplaar implementeren op GitHub-actie
 description: Configureer een GitHub-actie waarmee de stappen voor het maken, pushen en implementeren van een container installatie kopie naar Azure Container Instances worden geautomatiseerd.
 ms.topic: article
 ms.date: 08/20/2020
-ms.custom: ''
-ms.openlocfilehash: 8da72d3911797e8e3a4551f2af100afb0d7ea0fb
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.custom: github-actions-azure
+ms.openlocfilehash: c01075bcb64aa9b91869daba2e995957da74daf4
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88755004"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019185"
 ---
 # <a name="configure-a-github-action-to-create-a-container-instance"></a>Een GitHub-actie configureren voor het maken van een containerinstantie
 
@@ -220,7 +220,7 @@ az extension add \
 
 Zie [extensies gebruiken met Azure cli](/cli/azure/azure-cli-extensions-overview)voor meer informatie over het zoeken, installeren en beheren van uitbrei dingen.
 
-### <a name="run-az-container-app-up"></a>Voer `az container app up` uit.
+### <a name="run-az-container-app-up"></a>`az container app up` uitvoeren
 
 Als u de opdracht [AZ container app up][az-container-app-up] wilt uitvoeren, geeft u Mini maal:
 

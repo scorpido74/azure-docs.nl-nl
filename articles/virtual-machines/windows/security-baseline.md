@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 7726a0f1acb8f7fde2b491979d478badeca1b384
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: e79055c3dbc710be23a82eede98e1b55b17e10d5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400378"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978017"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>Azure-beveiligings basislijn voor Windows Virtual Machines
 
@@ -32,7 +32,7 @@ Zie [overzicht van Azure Security-basis lijnen](../../security/benchmarks/securi
 
 Als u een specifieke use-case voor een gecentraliseerde firewall hebt, kunt Azure Firewall ook worden gebruikt om aan deze vereisten te voldoen.
 
-* [Virtuele netwerken en virtuele machines in azure](./network-overview.md)
+* [Virtuele netwerken en virtuele machines in azure](../network-overview.md)
 
 * [Een Virtual Network maken](../../virtual-network/quick-create-portal.md)
 
@@ -80,7 +80,7 @@ U kunt de just-in-time-netwerk toegang van Azure Security Center gebruiken om de
 
 * [Azure Firewall implementeren](../../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Meer informatie over Azure Security Center geïntegreerde bedreigings informatie](../../security-center/threat-protection.md)
+* [Meer informatie over Azure Security Center geïntegreerde bedreigings informatie](../../security-center/azure-defender.md)
 
 * [Meer informatie over Azure Security Center adaptieve netwerk beveiliging](../../security-center/security-center-adaptive-network-hardening.md)
 
@@ -146,7 +146,7 @@ U kunt de just-in-time-netwerk toegang van Azure Security Center gebruiken om de
 
 * [Azure Policy configureren en beheren](../../governance/policy/tutorials/create-and-manage.md)
 
-* [Voor beelden Azure Policy voor netwerken](/azure/governance/policy/samples/#network)
+* [Voor beelden Azure Policy voor netwerken](../../governance/policy/samples/built-in-policies.md#network)
 
 * [Een Azure Blueprint maken](../../governance/blueprints/create-blueprint-portal.md)
 
@@ -180,7 +180,7 @@ Gebruik Azure Policy om configuraties te valideren (en/of te herstellen) voor ne
 
 * [Azure Policy configureren en beheren](../../governance/policy/tutorials/create-and-manage.md)
 
-* [Voor beelden Azure Policy voor netwerken](/azure/governance/policy/samples/#network)
+* [Voor beelden Azure Policy voor netwerken](../../governance/policy/samples/built-in-policies.md#network)
 
 **Azure Security Center bewaking**: niet beschikbaar
 
@@ -252,7 +252,7 @@ Als uw organisatie de gegevens van het beveiligings logboek van de virtuele mach
 
 **Richt lijnen**: Zorg ervoor dat voor opslag accounts of log Analytics-werk ruimten die worden gebruikt voor het opslaan van de logboeken van de virtuele machine, de Bewaar periode voor logboek registratie is ingesteld volgens de nalevings voorschriften van uw organisatie.
 
-* [Virtuele machines in azure controleren](./monitor.md)
+* [Virtuele machines in azure controleren](../../azure-monitor/insights/monitor-vm-azure.md)
 
 * [De Bewaar periode van Log Analytics Workspace configureren](../../azure-monitor/platform/manage-cost-storage.md)
 
@@ -458,7 +458,7 @@ U kunt ook gegevens in-of uitschakelen voor Azure Sentinel of een SIEM van derde
 
 * [Aangepaste query's uitvoeren in Azure Monitor](../../azure-monitor/log-query/get-started-queries.md)
 
-* [Virtuele machines in azure controleren](./monitor.md)
+* [Virtuele machines in azure controleren](../../azure-monitor/insights/monitor-vm-azure.md)
 
 **Azure Security Center bewaking**: niet beschikbaar
 
@@ -508,7 +508,7 @@ U kunt ook gegevens in-of uitschakelen voor Azure Sentinel of een SIEM van derde
 
 * [Aanvullende Azure-abonnementen maken](../../cost-management-billing/manage/create-subscription.md)
 
-* [Beheergroepen maken](../../governance/management-groups/create.md)
+* [Beheergroepen maken](../../governance/management-groups/create-management-group-portal.md)
 
 * [Tags maken en gebruiken](../../azure-resource-manager/management/tag-resources.md)
 
@@ -610,7 +610,7 @@ Micro soft maakt gebruik van het Transport Layer Security (TLS)-protocol voor he
 
 **Richt lijnen**: Volg aanbevelingen van Azure Security Center over het uitvoeren van evaluatie van beveiligings problemen op uw Azure virtual machines. Gebruik Azure-beveiliging aanbevolen of een oplossing van derden voor het uitvoeren van evaluatie van beveiligings problemen voor uw virtuele machines.
 
-* [Aanbevelingen voor de evaluatie van Azure Security Center-beveiligings problemen implementeren](../../security-center/security-center-vulnerability-assessment-recommendations.md)
+* [Aanbevelingen voor de evaluatie van Azure Security Center-beveiligings problemen implementeren](../../security-center/deploy-vulnerability-assessment-vm.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -692,7 +692,7 @@ Micro soft maakt gebruik van het Transport Layer Security (TLS)-protocol voor he
 
 * [Aanvullende Azure-abonnementen maken](../../cost-management-billing/manage/create-subscription.md)
 
-* [Beheergroepen maken](../../governance/management-groups/create.md)
+* [Beheergroepen maken](../../governance/management-groups/create-management-group-portal.md)
 
 * [Tags maken en gebruiken](../../azure-resource-manager/management/tag-resources.md)
 
@@ -775,7 +775,7 @@ Naast het gebruik van Wijzigingen bijhouden voor het bewaken van software toepas
 
 * [Azure Policy configureren en beheren](../../governance/policy/tutorials/create-and-manage.md)
 
-* [Een specifiek resource type weigeren met Azure Policy](/azure/governance/policy/samples/not-allowed-resource-types)
+* [Een specifiek resource type weigeren met Azure Policy](../../governance/policy/samples/index.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -817,13 +817,13 @@ Naast het gebruik van Wijzigingen bijhouden voor het bewaken van software toepas
 
 **Richt lijnen**: toepassingen met een hoog risico die zijn geïmplementeerd in uw Azure-omgeving, kunnen worden geïsoleerd met virtuele netwerken, subnetten, abonnementen, beheer groepen, enzovoort en voldoende beveiligd met een Azure firewall, Web Application firewall (WAF) of netwerk beveiligings groep (NSG).
 
-* [Virtuele netwerken en virtuele machines in azure](./network-overview.md)
+* [Virtuele netwerken en virtuele machines in azure](../network-overview.md)
 
 * [Overzicht van Azure Firewall](../../firewall/overview.md)
 
 * [Overzicht van Web Application firewall](../../web-application-firewall/overview.md)
 
-* [Overzicht van netwerkbeveiliging](../../virtual-network/security-overview.md)
+* [Overzicht van netwerkbeveiliging](../../virtual-network/network-security-groups-overview.md)
 
 * [Overzicht van Azure Virtual Network](../../virtual-network/virtual-networks-overview.md)
 
@@ -969,7 +969,7 @@ In de meeste gevallen kunnen de micro soft-sjablonen voor virtuele machines in c
 
 **Hulp**: gebruik Managed Service Identity in combi natie met Azure Key Vault om het geheim beheer voor uw Cloud toepassingen te vereenvoudigen en te beveiligen.
 
-* [Integratie met door Azure beheerde identiteiten](../../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
+* [Integratie met Azure-Managed-identiteiten](../../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
 * [Een Key Vault maken](../../key-vault/secrets/quick-create-portal.md)
 
@@ -1089,7 +1089,7 @@ Als u gebruikmaakt van Azure Disk Encryption, kunt u de Azure VM herstellen met 
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: zorg voor de bescherming van back-ups en door de klant beheerde sleutels
 
-**Richt lijnen**: wanneer u een back-up maakt van Azure Managed disks met Azure backup, worden virtuele machines op rest versleuteld met Storage service Encryption (SSE). Azure Backup kunt ook een back-up maken van virtuele Azure-machines die zijn versleuteld met behulp van Azure Disk Encryption. Azure Disk Encryption kan worden geïntegreerd met BitLocker-versleutelings sleutels (BEKs), die worden beveiligd in een sleutel kluis als geheimen. Azure Disk Encryption is ook geïntegreerd met Azure Key Vault Key Encryption Keys (KEKs). Schakel zacht verwijderen in Key Vault in om sleutels te beschermen tegen onbedoelde of schadelijke verwijdering.
+**Richt lijnen**: wanneer u een back-up maakt van Azure Managed disks met Azure backup, worden virtuele machines op rest versleuteld met Storage service Encryption (SSE). Azure Backup kunt ook een back-up maken van virtuele Azure-machines die zijn versleuteld met behulp van Azure Disk Encryption. Azure Disk Encryption kan worden geïntegreerd met BitLocker-versleutelings sleutels (BEKs), die worden beveiligd in een sleutel kluis als geheimen. Azure Disk Encryption is ook geïntegreerd met Azure Key Vault Key Encryption Keys (KEKs). Schakel Soft-Delete in Key Vault in om sleutels te beschermen tegen onbedoelde of schadelijke verwijdering.
 
 * [Voorlopig verwijderen voor Vm's](../../backup/soft-delete-virtual-machines.md)
 

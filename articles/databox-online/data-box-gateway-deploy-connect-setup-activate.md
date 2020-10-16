@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 78c06cc7f08fe94a25ea63d9bf76cc1352d9f2b7
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: cb6ef6ac25c4afa72160ba437e0ea3b5492cfd93
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82561667"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741955"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway"></a>Zelfstudie: Azure Data Box Gateway verbinden, instellen en activeren
 
@@ -126,7 +126,7 @@ Uw dashboard geeft de verschillende instellingen weer die nodig zijn voor het co
     
     3. Het apparaat wordt geactiveerd en essentiële updates, indien beschikbaar, worden automatisch toegepast. U ziet hiervoor een melding. Controleer de voortgang van de update via de Azure Portal.
 
-        ![Pagina 'Cloudinstellingen' van lokale webgebruikersinterface](./media/data-box-gateway-deploy-connect-setup-activate/image12.png)
+        ![Pagina 2 van 'Cloudinstellingen' van de lokale webgebruikersinterface](./media/data-box-gateway-deploy-connect-setup-activate/image12.png)
         
         **Het dialoogvenster bevat ook een herstelsleutel die u moet kopiëren en opslaan op een veilige locatie. Deze sleutel wordt gebruikt om uw gegevens te herstellen in het geval dat het apparaat niet kan worden opgestart.**
 

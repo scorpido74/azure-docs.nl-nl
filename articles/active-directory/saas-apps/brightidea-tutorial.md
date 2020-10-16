@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
-ms.openlocfilehash: 7909f793407956247a8378a86e20bbe7b1bcddb6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 75e4937966c549c4d815a8776c70aa6366abe3e0
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542799"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740788"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brightidea"></a>Zelfstudie: Azure Active Directory-integratie met Brightidea
 
@@ -112,14 +112,14 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure AD met Brighti
 
     c. Nadat het bestand met metagegevens is geüpload, worden de waarde voor **Id** en **Antwoord-URL** automatisch ingevuld in het tekstvak van de sectie Brightidea:
 
-    ![image](common/idp-intiated.png)
+    ![Schermopname die de Standaard SAML-configuratie toont, waar u de id en URL kunt invoeren en vervolgens Opslaan selecteert.](common/idp-intiated.png)
 
     > [!Note]
     > Als de waarden voor **Id** en **Antwoord-URL** niet automatisch worden ingevuld, kunt u de waarden zelf invullen afhankelijk van uw behoeften.
 
 5. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    ![image](common/metadata-upload-additional-signon.png)
+    ![Schermopname die Extra URL's instellen toont, waar u een aanmeldings-URL kunt invoeren.](common/metadata-upload-additional-signon.png)
 
     In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<SUBDOMAIN>.brightidea.com`
 
@@ -143,21 +143,21 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure AD met Brighti
 
 2. Ga naar **Enterprise Setup** -> **Authentication Tab** als u de functie Eenmalige aanmelding voor uw Brightidea-systeem wilt ophalen. U ziet hier twee subtabbladen: Auth Selection en SAML Profiles.
 
-    ![Configuratie van Brightidea](./media/brightidea-tutorial/configure1.png)
+    ![Schermopname die de Brightidea-site toont met het tabblad Verificatie geselecteerd.](./media/brightidea-tutorial/configure1.png)
 
 3. Selecteer **Auth Selection**. Er worden standaard slechts twee standaardmethoden weergegeven: Brightidea: Login en Registration. Als er een methode voor eenmalige aanmelding wordt toegevoegd, wordt deze in de lijst weergegeven.
 
-    ![Configuratie van Brightidea](./media/brightidea-tutorial/configure2.png)
+    ![Schermopname die de Brightidea-site met het tabblad Verificatie toont met Verificatieselectie geselecteerd.](./media/brightidea-tutorial/configure2.png)
 
 4. Selecteer **SAML Profiles** en voer de volgende stappen uit:
 
-    ![Configuratie van Brightidea](./media/brightidea-tutorial/configure3.png)
+    ![Schermopname die het tabblad Verificatie met SAML-profielen geselecteerd van Brightidea toont, dat opties biedt voor het downloaden van metagegevens en het toevoegen van nieuwe metagegevens.](./media/brightidea-tutorial/configure3.png)
 
     a. Klik op **Metagegevens downloaden** en upload de bestanden in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
     b. Klik onder **Identity Provider Setting** op de knop **Nieuwe toevoegen** en voer de volgende stappen uit:
     
-    ![Configuratie van Brightidea](./media/brightidea-tutorial/configure4.png)
+    ![Schermopname die de instelling voor de identiteitsprovider van Brightidea toont, waar u informatie invoert.](./media/brightidea-tutorial/configure4.png)
     
    * Voer een naam in bij **SAML Profile Name**, bijvoorbeeld `Azure Ad SSO`
     

@@ -9,10 +9,10 @@ ms.date: 05/29/2020
 ms.author: wachegha
 ms.custom: devx-track-js
 ms.openlocfilehash: c84367a5e3ab57090f59196e8474c14cba87f32b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91250144"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>Een API toevoegen aan de preview-versie van statische Web Apps van Azure met Azure Functions
@@ -43,7 +43,7 @@ Wanneer het project is gemaakt, kopieert u de URL in uw browser naar de nieuwe o
 1. Druk op **F1** om de opdracht in het opdracht palet te openen.
 1. Plak de URL in de modus _git: Clone_ en druk op **Enter**.
 
-   :::image type="content" source="media/add-api/vscode-git-0.png" alt-text="Een GitHub-project klonen met Visual Studio code":::
+   :::image type="content" source="media/add-api/vscode-git-0.png" alt-text="Een nieuwe opslag plaats maken op basis van vanille-Basic":::
 
     Volg de aanwijzingen om een locatie voor de opslag plaats te selecteren om het project te klonen.
 
@@ -57,9 +57,9 @@ Vervolgens maakt u een Azure Functions project als de API van de toepassing.
 1. Druk op **Enter**
 1. Klik op **Bladeren**
 1. Selecteer de map **API** als de Directory voor uw project werkruimte
-1. Kies **selecteren**
+1. Kies **Selecteren**
 
-   :::image type="content" source="media/add-api/create-azure-functions-vscode-1.png" alt-text="Een nieuwe Azure Functions maken met Visual Studio code":::
+   :::image type="content" source="media/add-api/create-azure-functions-vscode-1.png" alt-text="Een nieuwe opslag plaats maken op basis van vanille-Basic":::
 
 1. Geef de volgende informatie op bij de prompts:
 
@@ -145,13 +145,13 @@ Visual Studio Code integreert met [Azure Functions Core Tools](../azure-function
 
     De kern Hulpprogramma's tonen uitvoer van de toepassing die wordt uitgevoerd in het deel venster _Terminal_ . Als onderdeel van de uitvoer ziet u het URL-eind punt van de HTTP-geactiveerde functie die lokaal wordt uitgevoerd.
 
-    :::image type="content" source="media/add-api/create-azure-functions-vscode-2.png" alt-text="Een nieuwe Azure Functions maken met Visual Studio code":::
+    :::image type="content" source="media/add-api/create-azure-functions-vscode-2.png" alt-text="Een nieuwe opslag plaats maken op basis van vanille-Basic":::
 
 1. Als er kern Hulpprogramma's worden uitgevoerd, gaat u naar de volgende URL om te controleren of de API correct wordt uitgevoerd: `http://localhost:7071/api/message` .
 
    Het antwoord in de browser moet er ongeveer uitzien als in het volgende voor beeld:
 
-   :::image type="content" source="media/add-api/create-azure-functions-vscode-3.png" alt-text="Een nieuwe Azure Functions maken met Visual Studio code":::
+   :::image type="content" source="media/add-api/create-azure-functions-vscode-3.png" alt-text="Een nieuwe opslag plaats maken op basis van vanille-Basic":::
 
 1. Druk op **SHIFT + F5** om de foutopsporingssessie te stoppen.
 
@@ -199,7 +199,7 @@ Bij implementatie naar Azure worden aanvragen voor de API automatisch doorgestuu
 
     U ziet nu het API-bericht op de webpagina.
 
-   :::image type="content" source="media/add-api/create-azure-functions-vscode-4.png" alt-text="Een nieuwe Azure Functions maken met Visual Studio code":::
+   :::image type="content" source="media/add-api/create-azure-functions-vscode-4.png" alt-text="Een nieuwe opslag plaats maken op basis van vanille-Basic":::
 
    > [!NOTE]
    > U kunt andere HTTP-servers of-proxy's gebruiken om het `index.html` bestand te verwerken. Het `index.html` is niet mogelijk om toegang te krijgen tot de van `file:///` .
@@ -251,11 +251,11 @@ Voeg vervolgens de volgende details van de build toe.
 
     Wanneer de app op de achtergrond wordt gebouwd, kunt u op de banner klikken met een koppeling om de status van de build weer te geven.
 
-    :::image type="content" source="media/add-api/github-action-flag.png" alt-text="GitHub-werk stroom":::
+    :::image type="content" source="media/add-api/github-action-flag.png" alt-text="Een nieuwe opslag plaats maken op basis van vanille-Basic":::
 
 1. Zodra de implementatie is voltooid, kan de organisatie-eenheid naar de web-app navigeren door te klikken op de _URL_ -koppeling die wordt weer gegeven op de pagina _overzicht_ .
 
-    :::image type="content" source="media/add-api/static-app-url-from-portal.png" alt-text="Toegang tot de statische app-URL vanuit de Azure Portal":::
+    :::image type="content" source="media/add-api/static-app-url-from-portal.png" alt-text="Een nieuwe opslag plaats maken op basis van vanille-Basic":::
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -264,7 +264,7 @@ Als u deze toepassing niet wilt blijven gebruiken voor verder gebruik, kunt u de
 1. Ga naar [Azure Portal](https://portal.azure.com)
 1. Typ in de bovenste zoek balk **resource groepen**
 1. Klik op **resource groepen**
-1. **MyResourceGroup** selecteren
+1. Selecteer **myResourceGroup**.
 1. Controleer op de pagina _myResourceGroup_ of de weergegeven resources de resources zijn die u wilt verwijderen.
 1. Selecteer **verwijderen**
 1. Typ **myResourceGroup** in het tekstvak

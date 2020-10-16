@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 0db43f438eaff3e783b829eabe7152c5f13e943d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 659cca6979a8d8be7d12c49fe01a9d0a5d7ac58e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548285"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713760"
 ---
 # <a name="tutorial-integrate-amazon-business-with-azure-active-directory"></a>Zelfstudie: Amazon Business integreren met Azure Active Directory
 
@@ -101,19 +101,19 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 1. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven. Bewerk de kenmerken door op het pictogram **Bewerken** te klikken in het gedeelte **Gebruikerskenmerken en -claims**.
 
-    ![Kenmerken](media/amazon-business-tutorial/map-attribute3.png)
+    ![Schermopname van User Attributes & Claims (Gebruikerskenmerken en claims) met standaardwaarden zoals Givenname user.givenname en Emailaddress user.mail.](media/amazon-business-tutorial/map-attribute3.png)
 
 1. Bewerk de kenmerken en kopieer de waarde **Naamruimte** van deze kenmerken naar het kladblok.
 
-    ![Kenmerken](media/amazon-business-tutorial/map-attribute4.png)
+    ![Schermopname van User Attributes & Claims (Gebruikerskenmerken en claims) met kolommen voor claimnaam en waarde.](media/amazon-business-tutorial/map-attribute4.png)
 
 1. Bovendien verwacht de Amazon Business-toepassing nog enkele kenmerken die als SAML-antwoord moeten worden doorgestuurd. Voer in het gedeelte **Gebruikerskenmerken en -claims** in het dialoogvenster **Groepsclaims** de volgende stappen uit:
 
     a. Klik op de **pen** naast **Groepen die zijn geretourneerd in claim**.
 
-    ![image](./media/amazon-business-tutorial/config04.png)
+    ![Schermopname van User Attributes & Claims (Gebruikerskenmerken en claims) met pictogram voor Groups returned in claim (In claim geretourneerde groepen) geselecteerd.](./media/amazon-business-tutorial/config04.png)
 
-    ![image](./media/amazon-business-tutorial/config05.png)
+    ![Schermopname van Group Claims (Groepclaims) met waarden zoals beschreven in deze procedure.](./media/amazon-business-tutorial/config05.png)
 
     b. Selecteer **Alle groepen** in de lijst met keuzerondjes.
 
@@ -145,54 +145,54 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 1. Selecteer in de wizard **Eenmalige aanmelding instellen** de provider volgens de vereisten van uw organisatie en klik op **Volgende**.
 
-    ![Standaardgroep](media/amazon-business-tutorial/default-group1.png)
+    ![Schermopname van Set up S S O, (S S O instellen) met Microsoft Azure A D en Next (Volgende) geselecteerd.](media/amazon-business-tutorial/default-group1.png)
     
     > [!NOTE]
     > Hoewel Microsoft ADFS een vermelde optie is, werkt het niet met Azure AD-eenmalige aanmelding.
 
 1. Selecteer in de wizard **Standaardinstellingen voor het nieuwe gebruikersaccount** de **Standaardgroep** en selecteer vervolgens **Standaardaankooprol** op basis van de gebruikersrol in uw organisatie en klik op **Volgende**.
 
-    ![Standaardgroep](media/amazon-business-tutorial/dafault-group2.png)
+    ![Schermopname van de standaardinstellingen voor een nieuw gebruikersaccount, met Microsoft S S O, Requisitioner (Aanvrager) en Next (Volgende) geselecteerd.](media/amazon-business-tutorial/dafault-group2.png)
 
 1. Klik in de wizard **Uw metagegevensbestand uploaden** op **Bladeren** om het **XML-bestand met metagegevens** te uploaden dat u hebt gedownload uit Azure Portal. Klik dan op **Uploaden**.
 
-    ![Verbindingsgegevens](media/amazon-business-tutorial/connection-data1.png)
+    ![Schermopname van Upload your metadata file (Metagegevensbestand uploaden) waarmee u naar een x m l-bestand kunt bladeren en dit uploaden.](media/amazon-business-tutorial/connection-data1.png)
 
 1. Wanneer u het gedownloade metagegevensbestand hebt geüpload, worden de velden in de sectie **Verbindingsgegevens** automatisch ingevuld. Klik daarna op **Volgende**.
 
-    ![Verbindingsgegevens](media/amazon-business-tutorial/connection-data2.png)
+    ![Schermopname van Connection data (Verbindingsgegevens), waar u een Azure A D i d, aanmeldings-U R L en SAML-ondertekeningscertificaat kunt opgeven.](media/amazon-business-tutorial/connection-data2.png)
 
 1. Klik in de wizard **Uw kenmerkinstructie uploaden** op **Overslaan**.
 
-    ![Kenmerken](media/amazon-business-tutorial/map-attribute1.png)
+    ![Schermopname van Upload your Attribute statement, waarmee u naar een kenmerkinstructie kunt bladeren maar in dit geval Skip (overslaan) selecteert.](media/amazon-business-tutorial/map-attribute1.png)
 
 1. Voeg in de wizard **Kenmerktoewijzing** de velden voor vereisten toe door te klikken op de optie **+ Een veld toevoegen**. Voeg de kenmerkwaarden toe, met inbegrip van de naamruimte die u hebt gekopieerd uit de sectie **Gebruikerskenmerken en -claims** van Azure Portal naar het veld **SAML AttributeName** en klik op **Volgende**.
 
-    ![Kenmerken](media/amazon-business-tutorial/map-attribute2.png)
+    ![Schermopname van Attribute mapping (Kenmerktoewijzing), waar u de SAML-kenmerknamen voor uw Amazon-gegevens kunt wijzigen.](media/amazon-business-tutorial/map-attribute2.png)
 
 1. Klik in de wizard **Amazon-verbindingsgegevens** op **Volgende**.
 
-    ![Verbinding](media/amazon-business-tutorial/amazon-connect.png)
+    ![Schermopname van Amazon-verbindingsgegevens, waar u op Next (Volgende) kunt klikken om door te gaan.](media/amazon-business-tutorial/amazon-connect.png)
 
 1. Controleer de **status** van de stappen die zijn geconfigureerd en klik op **Beginnen met testen**.
 
-    ![Verbinding](media/amazon-business-tutorial/sso-connection1.png)
+    ![Schermopname van S S O Connection Details (S S O-verbindingsdetails) met de optie Start testing (Testen starten).](media/amazon-business-tutorial/sso-connection1.png)
 
 1. Klik in de wizard **SSO-verbinding testen** op **Testen**.
 
-    ![Verbinding](media/amazon-business-tutorial/sso-connection2.png)
+    ![Schermopname van Test S S O Connection (S S O-verbinding testen) met de knop Test.](media/amazon-business-tutorial/sso-connection2.png)
 
 1. Kopieer, voordat u op **Activeren** klikt, in de wizard **Door IDP geïnitieerde URL** de waarde die is toegewezen aan **idpid** en plak deze in de parameter **idpid** in de **antwoord-URL** in het gedeelte **Standaard SAML-configuratie** in Azure Portal.
 
-    ![Verbinding](media/amazon-business-tutorial/sso-connection3.png)
+    ![Schermopname van I D P initiated U R L (Door IPD geïnitieerde U R L) waar u een U R L kunt ophalen om te testen en vervolgens Activate (Activeren) selecteren.](media/amazon-business-tutorial/sso-connection3.png)
 
 1. Schakel in de wizard **bent u klaar om over te schakelen naar de actieve SSO?** het selectievakje **Ik heb SSO volledig getest en ben klaar om live te gaan** in en klik op **Overschakelen naar actief**.
 
-    ![Verbinding](media/amazon-business-tutorial/sso-connection4.png)
+    ![Schermopname van het bevestigingsvenster Are you ready to switch to active S S O (Bent u klaar om over te schakelen naar actieve SSO) waar u Switch to active (Overschakelen naar actief) kunt selecteren.](media/amazon-business-tutorial/sso-connection4.png)
 
 1. Ten slotte wordt in de sectie **SSO-verbindingsgegevens** de **status** weergegeven als **Actief**.
 
-    ![Verbinding](media/amazon-business-tutorial/sso-connection5.png)
+    ![Schermopname van S S O Connection Details (S S O-verbindingsdetails) met de status Active (Actief).](media/amazon-business-tutorial/sso-connection5.png)
     
     > [!NOTE]
     > Als u de toepassing wilt configureren in de door **SP** geïnitieerde modus, voert u de volgende stap uit en plakt u de aanmeldings-URL van de bovenstaande schermopname in het tekstvak **Aanmeldings-URL** van de sectie **Extra URL's instellen** in Azure Portal. Gebruik de volgende indeling:
@@ -218,15 +218,15 @@ In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Porta
 
 1. Klik op **Azure Active Directory > Alle groepen**.
 
-    ![Een Azure AD-beveiligingsgroep maken](./media/amazon-business-tutorial/all-groups-tab.png)
+    ![Schermopname van het Azure-portalmenu met Azure Active Directory geselecteerd en Alle groepen geselecteerd in het deelvenster Groepen.](./media/amazon-business-tutorial/all-groups-tab.png)
 
 1. Klik op **Nieuwe groep**:
 
-    ![Een Azure AD-beveiligingsgroep maken](./media/amazon-business-tutorial/new-group-tab.png)
+    ![Schermopname van de knop Nieuwe groep.](./media/amazon-business-tutorial/new-group-tab.png)
 
 1. Vul **Groepstype**, **Groepsnaam**, **Groepsbeschrijving**, **Lidmaatschapstype** in. Klik op de pijl om leden te selecteren, zoek vervolgens naar of klik op het lid dat u aan de groep wilt toevoegen. Klik op **Selecteren** om de geselecteerde leden toe te voegen en klik vervolgens op **Maken**.
 
-    ![Een Azure AD-beveiligingsgroep maken](./media/amazon-business-tutorial/group-information.png)
+    ![Schermopname van het deelvenster Groep met opties, waaronder het selecteren van leden en het uitnodigen van externe gebruikers.](./media/amazon-business-tutorial/group-information.png)
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -240,7 +240,7 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
-    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
+    ![Schermopname van de knop Gebruiker toevoegen.](common/add-assign-user.png)
 
 1. Selecteer in het dialoogvenster **Gebruikers en groepen** de optie **B.Simon** in de lijst Gebruikers. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
 1. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
@@ -249,7 +249,7 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
     >[!NOTE]
     > Als u de gebruikers niet toewijst in Azure AD, wordt de volgende fout weergeven.
 
-    ![De koppeling Gebruiker toevoegen](media/amazon-business-tutorial/assign-user.png)
+    ![Schermopname van een foutbericht met de mededeling dat de gebruiker niet kan worden aangemeld.](media/amazon-business-tutorial/assign-user.png)
 
 ### <a name="assign-the-azure-ad-security-group-in-the-azure-portal"></a>De Azure AD-beveiligingsgroep toewijzen in Azure Portal
 

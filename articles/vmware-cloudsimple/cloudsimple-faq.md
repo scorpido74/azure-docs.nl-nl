@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 0db8c13a7467ed864c0845319b37f958f60fa4d9
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88140884"
 ---
 # <a name="frequently-asked-questions-about-vmware-solution-by-cloudsimple"></a>Veelgestelde vragen over VMware-oplossing per CloudSimple
@@ -131,7 +131,7 @@ CloudSimple bewaakt voortdurend alle hardware-onderdelen van de Privécloud.  Al
 
 **Hoe kan ik grootschalige upload-of migratie van toepassingen en gegevens van on-premises uitvoeren?**
 
-CloudSimple biedt een systeem eigen VMware vSphere oplossing.  Alle VMware-hulpprogram ma's voor het bulksgewijs migreren van gegevens kunnen worden gebruikt in combi natie met uw Privécloud.  Een aantal opties:
+CloudSimple biedt een systeem eigen VMware vSphere oplossing.  Alle VMware-hulpprogram ma's voor het bulksgewijs migreren van gegevens kunnen worden gebruikt in combi natie met uw Privécloud.  Opties zijn onder andere:
 
 * VMware HCX voor het bulksgewijs migreren van gegevens.
 * Koud migreren van gegevens met behulp van Storage vMotion van on-premises naar CloudSimple.
@@ -150,7 +150,7 @@ CloudSimple voert geen upgrades of updates van toepassingen uit die zijn geïnst
 
 **Welke Azure-Services worden ondersteund?**
 
-CloudSimple biedt een Azure ExpressRoute-verbinding met uw abonnement op Azure.  Alle services die in uw abonnement worden uitgevoerd, kunnen verbinding maken met uw Privécloud.  Enkele voorbeelden:
+CloudSimple biedt een Azure ExpressRoute-verbinding met uw abonnement op Azure.  Alle services die in uw abonnement worden uitgevoerd, kunnen verbinding maken met uw Privécloud.  Voorbeelden zijn:
 
 * **Azure Active Directory** als een identiteits bron voor uw CloudSimple vCenter.
 * **Azure Storage** voor het opslaan van back-ups, afbeeldingen en andere gegevens vanuit uw privécloud.

@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 68459253114e97c5e113b863a075c210ef50bf2e
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89441116"
 ---
 # <a name="data-management-gateway"></a>Gegevensbeheergateway
@@ -95,7 +95,7 @@ Data Management Gateway kan op de volgende manieren worden geïnstalleerd:
 2. Klik op **downloaden**, selecteer de **64-bits** versie (32-bits wordt niet meer ondersteund) en klik op **volgende**.
 3. Voer het **MSI** -bestand rechtstreeks uit of sla het op de vaste schijf op en voer uit.
 4. Selecteer op de pagina **Welkom** een **taal** en klik op **volgende**.
-5. **Accepteer** de gebruiksrecht overeenkomst en klik op **volgende**.
+5. **Accepteer** de gebruiksrecht overeenkomst van End-User en klik op **volgende**.
 6. Selecteer **map** om de gateway te installeren en klik op **volgende**.
 7. Klik op de pagina **gereed voor installatie** op **installeren**.
 8. Klik op **volt ooien** om de installatie te volt ooien.

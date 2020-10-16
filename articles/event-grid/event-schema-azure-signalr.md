@@ -4,10 +4,10 @@ description: Hierin worden de eigenschappen beschreven die worden gegeven voor A
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 2ac391f366c4b9a82741a1b6b3135f5d7b5fe331
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86106648"
 ---
 # <a name="azure-event-grid-event-schema-for-signalr-service"></a>Azure Event Grid-gebeurtenis schema voor de signaal service
@@ -20,7 +20,7 @@ Dit artikel bevat de eigenschappen en het schema voor de seingevings service-geb
 
 De seingevings service verzendt de volgende gebeurtenis typen:
 
-| Gebeurtenistype | Description |
+| Gebeurtenistype | Beschrijving |
 | ---------- | ----------- |
 | Micro soft. SignalRService. ClientConnectionConnected | Deze gebeurtenis treedt op wanneer een verbinding met een client is gemaakt. |
 | Micro soft. SignalRService. ClientConnectionDisconnected | Deze gebeurtenis treedt op wanneer de verbinding van een client verbinding is verbroken. |
@@ -72,10 +72,10 @@ Het schema voor een gebeurtenis waarmee een client verbinding is verbroken, is v
 
 Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | onderwerp | tekenreeks | Volledige bronpad naar de bron van de gebeurtenis. Dit veld kan niet worden geschreven. Event Grid biedt deze waarde. |
-| Onderwerp | tekenreeks | Het door de uitgever gedefinieerde pad naar het gebeurtenisonderwerp. |
+| onderwerp | tekenreeks | Het door de uitgever gedefinieerde pad naar het gebeurtenisonderwerp. |
 | Type | tekenreeks | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. |
 | eventTime | tekenreeks | Het tijdstip waarop de gebeurtenis is gegenereerd op basis van de UTC-tijd van de provider. |
 | id | tekenreeks | De unieke id voor de gebeurtenis. |
@@ -85,7 +85,7 @@ Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 
 Het gegevens object heeft de volgende eigenschappen:
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | tijdstempel | tekenreeks | Het tijdstip waarop de gebeurtenis is gegenereerd op basis van de UTC-tijd van de provider. |
 | hubName | tekenreeks | De hub waartoe de client verbinding behoort. |
@@ -101,5 +101,5 @@ Het gegevens object heeft de volgende eigenschappen:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Wat is Event grid?](overview.md) voor een inleiding tot Azure Event grid.
+* Zie [Wat is Event Grid?](overview.md) voor een inleiding tot Azure Event Grid.
 * Zie [Event grid Subscription schema](subscription-creation-schema.md)voor meer informatie over het maken van een Azure Event grid-abonnement.

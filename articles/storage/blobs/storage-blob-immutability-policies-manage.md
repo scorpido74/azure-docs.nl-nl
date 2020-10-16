@@ -9,10 +9,10 @@ ms.date: 11/26/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: a09dbd7d778a4f7ea2a9aac9ca07b9e6d06bc1ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84463600"
 ---
 # <a name="set-and-manage-immutability-policies-for-blob-storage"></a>Onveranderbaarheid-beleid instellen en beheren voor Blob Storage
@@ -61,7 +61,7 @@ In dit artikel wordt beschreven hoe u Onveranderbaarheid-beleid kunt instellen e
 
 ### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
-De functie is opgenomen in de volgende opdracht groepen: `az storage container immutability-policy` en `az storage container legal-hold` . Voer `-h` deze uit om de opdrachten weer te geven.
+De functie is opgenomen in de volgende opdracht groepen: `az storage container immutability-policy`  en `az storage container legal-hold` . Voer `-h` deze uit om de opdrachten weer te geven.
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -174,7 +174,7 @@ Remove-AzRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy
 
 ### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
-De functie is opgenomen in de volgende opdracht groepen: `az storage container immutability-policy` en `az storage container legal-hold` . Voer `-h` deze uit om de opdrachten weer te geven.
+De functie is opgenomen in de volgende opdracht groepen: `az storage container immutability-policy`  en `az storage container legal-hold` . Voer `-h` deze uit om de opdrachten weer te geven.
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

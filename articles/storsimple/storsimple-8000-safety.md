@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/04/2017
 ms.author: alkohli
 ms.openlocfilehash: 556a84acb3461fb39b3eb0390b54878254bafabf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514538"
 ---
 # <a name="safely-install-and-operate-your-storsimple-device"></a>Uw StorSimple-apparaat veilig installeren en uitvoeren
@@ -30,7 +30,7 @@ Lees alle informatie over de veiligheid en status in dit artikel die van toepass
 ## <a name="safety-icon-conventions"></a>Conventies voor veiligheids pictogrammen
 Hier vindt u de pictogrammen die u zult vinden wanneer u de veiligheids maatregelen controleert die moeten worden waargenomen bij het instellen en uitvoeren van uw Microsoft Azure StorSimple-apparaat.
 
-| Pictogram | Description |
+| Pictogram | Beschrijving |
 |:--- |:--- |
 | ![Gevaar voor risico pictogram ](./media/storsimple-safety/IC740879.png) **!** |Duidt op een gevaarlijke situatie die, indien dat niet wordt vermeden, leidt tot dood of ernstige schade. Dit signaal Word is beperkt tot de meest extreme situaties. |
 | ![Waarschuwing voor waarschuwings pictogram ](./media/storsimple-safety/IC740879.png) **.** |Duidt op een gevaarlijke situatie die, indien dat niet wordt vermeden, kan leiden tot overlijden of ernstige schade. |
@@ -148,7 +148,7 @@ Om het risico van korte, brand, ontploffing, verwonding of dood te verminderen:
 
 ![Meldings pictogram ](./media/storsimple-safety/IC740881.png) **:**
 
-Wanneer u de batterijen verzendt of anderszins transporteert door de lucht, volgt u het IATA lithium battery-richt lijn document dat beschikbaar is op[https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx](https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx)
+Wanneer u de batterijen verzendt of anderszins transporteert door de lucht, volgt u het IATA lithium battery-richt lijn document dat beschikbaar is op [https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx](https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx)
 
 Nadat u deze veiligheids kennisgevingen hebt gecontroleerd, moet u de volgende stappen uitvoeren om uw apparaat uit te pakken, te rek en te bekabelen.
 

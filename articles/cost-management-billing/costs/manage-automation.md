@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: matrive
-ms.openlocfilehash: eb6ed73305d55b4f76464a4567c6b53715b10c3a
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 2bf28384ae672440a18331cad8ac95f6ea051b85
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526643"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372184"
 ---
 # <a name="manage-costs-with-automation"></a>Kosten beheren met automatisering
 
@@ -234,7 +234,7 @@ Er zijn vele manieren om een budget te configureren in uw Azure-omgeving. Overwe
 - **Tijdsperiode**: Vertegenwoordigt hoelang uw budget geldig is. Het budget bewaakt actief en waarschuwt u alleen terwijl het geldig is.
 - **Meldingen**
   - Contact-e-mails: De e-mailadressen ontvangen waarschuwingen wanneer een budget kosten maakt en gedefinieerde drempels overschrijdt.
-  - Contactrollen: Alle gebruikers die een overeenkomende Azure RBAC-rol in het opgegeven bereik hebben, ontvangen e-mailwaarschuwingen met deze optie. Abonnementseigenaren kunnen bijvoorbeeld een waarschuwing ontvangen voor een budget dat in het abonnementsbereik is gemaakt.
+  - Contactrollen: Alle gebruikers die een overeenkomende Azure-rol in het opgegeven bereik hebben, ontvangen e-mailwaarschuwingen met deze optie. Abonnementseigenaren kunnen bijvoorbeeld een waarschuwing ontvangen voor een budget dat in het abonnementsbereik is gemaakt.
   - Contactgroepen: Het budget roept de geconfigureerde actiegroepen aan wanneer een waarschuwingsdrempel wordt overschreden.
 - **Kostendimensiefilters**: Voor uw budget kunt u dezelfde filters gebruiken als die u in Kostenanalyse of de Query-API gebruikt. Gebruik dit filter om het bereik te verkleinen van de kosten die u met het budget bewaakt.
 

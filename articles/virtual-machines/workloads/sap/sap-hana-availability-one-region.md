@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 58ea65e53f4a1262b448a3abd08807113d016fcb
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 8c706ba6847334648fade1e8983e00433d3fa618
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833314"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978200"
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>Beschik baarheid van SAP HANA binnen een Azure-regio
 In dit artikel worden verschillende beschikbaarheids scenario's binnen één Azure-regio beschreven. Azure heeft veel regio's, verspreid over de hele wereld. Zie [Azure-regio's](https://azure.microsoft.com/regions/)voor de lijst met Azure-regio's. Voor de implementatie van SAP HANA op Vm's binnen één Azure-regio, biedt micro soft de implementatie van één virtuele machine met een HANA-exemplaar. Voor een verhoogde Beschik baarheid kunt u twee virtuele machines implementeren met twee HANA-instanties binnen een [Azure-beschikbaarheidsset](../../windows/tutorial-availability-sets.md) die gebruikmaakt van Hana-systeem replicatie voor Beschik baarheid. 
@@ -29,7 +29,7 @@ Op dit moment biedt Azure [Azure-beschikbaarheidszones](../../../availability-zo
 
 Azure-regio's waar Beschikbaarheidszones worden aangeboden, hebben meerdere data centers. De data centers zijn onafhankelijk van de voeding van voedings bronnen, koeling en netwerk. De reden voor het bieden van verschillende zones binnen één Azure-regio is het implementeren van toepassingen op twee of drie Beschikbaarheidszones die worden aangeboden. Implementaties in verschillende zones, problemen in de stroom en netwerken die van invloed zijn op één Azure-beschikbaarheids zone-infra structuur, de implementatie van uw toepassing binnen een Azure-regio nog steeds functioneel is. Er kan enige gereduceerde capaciteit optreden. Zo kunnen Vm's in de ene zone verloren gaan, maar worden de Vm's in de andere twee zones nog steeds uitgevoerd. 
  
-Een Azure-Beschikbaarheidsset is een logische groeperings functie waarmee u ervoor kunt zorgen dat de VM-resources die u in de Beschikbaarheidsset plaatst, niet van elkaar zijn geïsoleerd wanneer ze worden geïmplementeerd in een Azure-Data Center. Azure zorgt ervoor dat de VM's die u in een beschikbaarheidsset plaatst, op meerdere fysieke servers, rekenrekken, opslageenheden en netwerkswitches worden uitgevoerd. In sommige Azure-documentatie wordt deze configuratie plaatsingen genoemd in verschillende update- [en fout domeinen](../../windows/manage-availability.md). Deze plaatsingen bevinden zich doorgaans in een Azure-Data Center. Ervan uitgaande dat energie bronnen en netwerk problemen van invloed zijn op het Data Center dat u implementeert, is dit van invloed op uw capaciteit in één Azure-regio.
+Een Azure-Beschikbaarheidsset is een logische groeperings functie waarmee u ervoor kunt zorgen dat de VM-resources die u in de Beschikbaarheidsset plaatst, niet van elkaar zijn geïsoleerd wanneer ze worden geïmplementeerd in een Azure-Data Center. Azure zorgt ervoor dat de VM's die u in een beschikbaarheidsset plaatst, op meerdere fysieke servers, rekenrekken, opslageenheden en netwerkswitches worden uitgevoerd. In sommige Azure-documentatie wordt deze configuratie plaatsingen genoemd in verschillende update- [en fout domeinen](../../manage-availability.md). Deze plaatsingen bevinden zich doorgaans in een Azure-Data Center. Ervan uitgaande dat energie bronnen en netwerk problemen van invloed zijn op het Data Center dat u implementeert, is dit van invloed op uw capaciteit in één Azure-regio.
 
 De plaatsing van data centers die Azure-beschikbaarheidszones vertegenwoordigen, is een inbreuk tussen het leveren van een acceptabele netwerk latentie tussen services die zijn geïmplementeerd in verschillende zones en een afstand tussen data centers. Natuurlijk rampen is in het ideale geval niet van invloed op de kracht, het netwerk aanbod en de infra structuur voor alle Beschikbaarheidszones in deze regio. Als Monumental Natural rampen zijn weer gegeven, levert Beschikbaarheidszones mogelijk niet altijd de beschik baarheid die u binnen één regio wilt. U kunt nadenken over orkaan Maria dat op 20 september 2017 op het eiland Puerto Rico raakt. De orkaan veroorzaakt een bijna 100 procente bedrukbaar op het eiland 90-km breed.
 
@@ -127,4 +127,4 @@ Ga voor stapsgewijze instructies voor het instellen van deze configuraties in az
 
 Zie voor meer informatie over de beschik baarheid van SAP HANA in azure-regio's:
 
-- [Beschik baarheid van SAP HANA in azure-regio's](./sap-hana-availability-across-regions.md) 
+- [Beschik baarheid van SAP HANA in azure-regio's](./sap-hana-availability-across-regions.md)

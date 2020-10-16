@@ -2,19 +2,19 @@
 title: Azure Storage firewalls en virtuele netwerken configureren | Microsoft Docs
 description: Configureer gelaagde netwerk beveiliging voor uw opslag account met Azure Storage firewalls en Azure Virtual Network.
 services: storage
-author: tamram
+author: santoshc
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/05/2020
+ms.date: 10/08/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 49285727e1c2e845ea63905d20b3343576b01612
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 7e7a61247c8f449291fb8ec0b91b7513ee75f6c9
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91816747"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072489"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage-firewalls en virtuele netwerken configureren
 
@@ -398,7 +398,7 @@ Met de instelling **vertrouwde micro soft-Services toestaan...** kunt u ook een 
 | Azure Machine Learning-service | Microsoft.MachineLearningServices      | Geautoriseerde Azure Machine Learning-werk ruimten schrijven experiment-uitvoer, modellen en logboeken naar Blob Storage en lezen de gegevens. [Meer informatie](/azure/machine-learning/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace). | 
 | Azure Synapse Analytics (voorheen Azure SQL Data Warehouse)       | Microsoft.Sql                          | Staat het importeren en exporteren van gegevens uit specifieke SQL-data bases toe met behulp van de instructie COPY of poly base. [Meer informatie](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview). |
 | Azure SQL Database       | Microsoft.Sql                          | Staat het [importeren](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql?view=sql-server-ver15#f-importing-data-from-a-file-in-azure-blob-storage) van gegevens uit opslag accounts toe en het [schrijven](https://docs.microsoft.com/azure/azure-sql/database/audit-write-storage-account-behind-vnet-firewall) van controle gegevens naar opslag accounts achter de firewall. |
-| Azure Stream Analytics         | Microsoft.StreamAnalytics             | Hiermee staat u toe dat gegevens van een streaming-taak naar de Blob-opslag worden geschreven. Deze functie is momenteel beschikbaar als preview-product. [Meer informatie](/azure/stream-analytics/blob-output-managed-identity). |
+| Azure Stream Analytics         | Microsoft.StreamAnalytics             | Hiermee staat u toe dat gegevens van een streaming-taak naar de Blob-opslag worden geschreven. [Meer informatie](/azure/stream-analytics/blob-output-managed-identity). |
 | Azure Synapse Analytics        | Micro soft. Synapse/werk ruimten          | Hiermee schakelt u toegang tot gegevens in Azure Storage van Synapse Analytics. |
 
 

@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: 0e44280c0a6c0d39c98e3aeecd5e9a3707332e81
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 027a816e846996aa7c61a1747327128f9a0feed0
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236570"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079204"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Wat is er nieuw in Azure SQL Database & SQL Managed instance?
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -64,6 +64,7 @@ Deze tabel bevat een snelle vergelijking voor de wijziging in de terminologie:
 
 | Functie | Details |
 | ---| --- |
+| <a href="/azure/azure-sql/database/elastic-transactions-overview">Gedistribueerde transacties</a> | Gedistribueerde trans acties over beheerde exemplaren. |
 | <a href="/azure/sql-database/sql-database-instance-pools">Exemplaargroepen</a> | Een handige en rendabele manier om kleinere SQL-instanties naar de cloud te migreren. |
 | <a href="https://aka.ms/managed-instance-aadlogins">Azure AD server-principals op exemplaar niveau (aanmeldingen)</a> | Aanmeldingen op exemplaar niveau maken met behulp van de instructie een <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">aanmelding maken vanuit een externe provider</a> . |
 | [Transactionele replicatie](../managed-instance/replication-transactional-overview.md) | Repliceer de wijzigingen van uw tabellen in andere data bases in een SQL Managed instance, SQL Database of SQL Server. Of werk uw tabellen bij wanneer sommige rijen worden gewijzigd in andere exemplaren van SQL Managed instance of SQL Server. Zie [replicatie configureren in Azure SQL Managed instance](../managed-instance/replication-between-two-instances-configure-tutorial.md)voor meer informatie. |
@@ -72,7 +73,7 @@ Deze tabel bevat een snelle vergelijking voor de wijziging in de terminologie:
 
 ---
 
-## <a name="sql-managed-instance-new-features-and-known-issues"></a>Nieuwe functies en bekende problemen met SQL Managed instance
+## <a name="new-features"></a>Nieuwe functies
 
 ### <a name="sql-managed-instance-h2-2019-updates"></a>SQL Managed instance H2 2019-updates
 
@@ -93,10 +94,13 @@ De volgende functies zijn ingeschakeld in het implementatie model voor SQL-behee
   - Met de nieuwe [rol Inzender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-managed-instance-contributor) voor ingebouwde instanties kunt u SoD-naleving met beveiligings principes en naleving van de bedrijfs normen.
   - SQL Managed instance is beschikbaar in de volgende Azure Government regio's voor GA (US Gov-Texas, US Gov-Arizona) en in China-noord 2 en China-oost 2. Het is ook beschikbaar in de volgende open bare regio's: Australië-centraal, Australië-centraal 2, Brazilië-zuid, Frankrijk-zuid, UAE-centraal, UAE-noord, Zuid-Afrika-noord, Zuid-Afrika-west.
 
-### <a name="known-issues"></a>Bekende problemen
+## <a name="known-issues"></a>Bekende problemen
 
 |Probleem  |Gedetecteerde datum  |Status  |Opgelost op  |
 |---------|---------|---------|---------|
+|[Gedistribueerde trans acties kunnen worden uitgevoerd nadat het beheerde exemplaar is verwijderd uit de vertrouwens groep van de server](#distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group)|Okt 2020|Heeft tijdelijke oplossing||
+|[Gedistribueerde trans acties kunnen niet worden uitgevoerd nadat de bewerking voor het schalen van het beheerde exemplaar](#distributed-transactions-cannot-be-executed-after-managed-instance-scaling-operation)|Okt 2020|Heeft tijdelijke oplossing||
+|[Bulk Insert](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql) in Azure SQL en de `BACKUP` / `RESTORE` instructie in het beheerde exemplaar kunnen de Azure AD-identiteit voor het beheren van de verificatie bij Azure Storage niet gebruiken|Sep 2020|Heeft tijdelijke oplossing||
 |[Service-Principal heeft geen toegang tot Azure AD en Azure](#service-principal-cannot-access-azure-ad-and-akv)|Aug 2020|Heeft tijdelijke oplossing||
 |[Hand matige back-up herstellen zonder CONTROLESOM kan mislukken](#restoring-manual-backup-without-checksum-might-fail)|Mei 2020|Opgelost|Juni 2020|
 |[Agent reageert niet meer wanneer u bestaande taken wijzigt, uitschakelt of inschakelt](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|Mei 2020|Opgelost|Juni 2020|
@@ -125,11 +129,34 @@ De volgende functies zijn ingeschakeld in het implementatie model voor SQL-behee
 |Data base mail-functie met externe e-mail servers (niet-Azure) via een beveiligde verbinding||Opgelost|Okt 2019|
 |Inge sloten data bases worden niet ondersteund in een SQL-beheerd exemplaar||Opgelost|Aug 2019|
 
+### <a name="distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group"></a>Gedistribueerde trans acties kunnen worden uitgevoerd nadat het beheerde exemplaar is verwijderd uit de vertrouwens groep van de server
+
+[Server vertrouwens groepen](https://docs.microsoft.com/azure/azure-sql/managed-instance/server-trust-group-overview) worden gebruikt om een vertrouwens relatie tot stand te brengen tussen beheerde exemplaren die vereisten zijn voor het uitvoeren van [gedistribueerde trans acties](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview). Nadat u het beheerde exemplaar uit de vertrouwens groep van de server hebt verwijderd of de groep hebt verwijderd, kunt u nog steeds gedistribueerde trans acties uitvoeren. Er is een tijdelijke oplossing die u kunt Toep assen om ervoor te zorgen dat gedistribueerde trans acties worden uitgeschakeld en dat door de [gebruiker geïnitieerde hand matige failover](https://docs.microsoft.com/azure/azure-sql/managed-instance/user-initiated-failover) wordt uitgevoerd op een beheerd exemplaar.
+
+### <a name="distributed-transactions-cannot-be-executed-after-managed-instance-scaling-operation"></a>Gedistribueerde trans acties kunnen niet worden uitgevoerd nadat de bewerking voor het schalen van het beheerde exemplaar
+
+Door bewerkingen voor het schalen van beheerde instanties die de service tier of het aantal vCores omvatten, worden de instellingen voor de vertrouwens groep van de server op de back-end opnieuw ingesteld en worden [gedistribueerde trans acties](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview)uitgeschakeld Als tijdelijke oplossing verwijdert en maakt u een nieuwe [vertrouwens groep voor servers](https://docs.microsoft.com/azure/azure-sql/managed-instance/server-trust-group-overview) op Azure Portal.
+
+### <a name="bulk-insert-and-backuprestore-statements-cannot-use-managed-identity-to-access-azure-storage"></a>Met de instructies voor BULK INSERT en BACKUP/Restore kan geen beheerde identiteit worden gebruikt voor toegang tot Azure Storage
+
+De instructie BULK INSERT kan niet `DATABASE SCOPED CREDENTIAL` met beheerde identiteit worden gebruikt voor verificatie bij Azure Storage. U kunt dit probleem omzeilen door te scha kelen naar verificatie van de hand tekening voor gedeelde toegang. Het volgende voor beeld werkt niet voor Azure SQL (zowel het Data Base-als het beheerde exemplaar):
+
+```sql
+CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Identity';
+GO
+CREATE EXTERNAL DATA SOURCE MyAzureBlobStorage
+  WITH ( TYPE = BLOB_STORAGE, LOCATION = 'https://****************.blob.core.windows.net/curriculum', CREDENTIAL= msi_cred );
+GO
+BULK INSERT Sales.Invoices FROM 'inv-2017-12-08.csv' WITH (DATA_SOURCE = 'MyAzureBlobStorage');
+```
+
+**Tijdelijke oplossing**: gebruik [Shared Access Signature om te verifiëren bij de opslag](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql?view=sql-server-ver15#f-importing-data-from-a-file-in-azure-blob-storage).
+
 ### <a name="service-principal-cannot-access-azure-ad-and-akv"></a>Service-Principal heeft geen toegang tot Azure AD en Azure
 
 In sommige gevallen kan er sprake zijn van een probleem met een service-principal die wordt gebruikt voor toegang tot Azure AD en Azure Key Vault-Services (Azure). Als gevolg hiervan heeft dit probleem gevolgen voor het gebruik van Azure AD-verificatie en transparante database versleuteling (TDE) met SQL Managed instance. Dit kan worden veroorzaakt als een probleem met een onregelmatige verbinding of dat er geen instructies kunnen worden uitgevoerd, zoals aanmelden/gebruiker maken van externe PROVIDER of uitvoeren als aanmelding/gebruiker. Het instellen van TDE met door de klant beheerde sleutel op een nieuw exemplaar van Azure SQL Managed kan in sommige gevallen ook niet worden gebruikt.
 
-**Tijdelijke oplossing**: als u wilt voor komen dat dit probleem optreedt in uw SQL Managed instance voordat u update-opdrachten uitvoert, of als u dit probleem al hebt ondervonden na het bijwerken van opdrachten, gaat u naar Azure Portal en opent u SQL Managed instance [Active Directory-beheer Blade](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell#azure-portal). Controleer of het fout bericht ' beheerde exemplaar moet een Service-Principal hebben om toegang te krijgen tot Azure Active Directory. Klik hier om een service-principal te maken. Als dit fout bericht wordt weer gegeven, klikt u erop en volgt u de instructies voor stap voor stap, totdat deze fout is opgelost.
+**Tijdelijke oplossing**: als u wilt voor komen dat dit probleem zich voordoet in uw SQL Managed instance voordat u update-opdrachten uitvoert, of als u dit probleem al hebt ondervonden nadat u de opdrachten hebt bijgewerkt, gaat u naar Azure Portal en opent u de [Blade beheerder](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell#azure-portal)SQL Managed instance Active Directory. Controleer of het fout bericht ' beheerde exemplaar moet een Service-Principal hebben om toegang te krijgen tot Azure Active Directory. Klik hier om een service-principal te maken. Als dit fout bericht wordt weer gegeven, klikt u erop en volgt u de instructies voor stap voor stap, totdat deze fout is opgelost.
 
 ### <a name="restoring-manual-backup-without-checksum-might-fail"></a>Hand matige back-up herstellen zonder CONTROLESOM kan mislukken
 
@@ -243,7 +270,7 @@ De `tempdb` Data Base is altijd gesplitst in 12 gegevens bestanden en de bestand
 
 Elk Algemeen exemplaar van een SQL Managed instance heeft tot 35 TB aan opslag gereserveerd voor Azure Premium-schijf ruimte. Elk database bestand wordt geplaatst op een afzonderlijke fysieke schijf. Schijf grootten kunnen 128 GB, 256 GB, 512 GB, 1 TB of 4 TB zijn. Voor ongebruikte ruimte op de schijf worden geen kosten in rekening gebracht, maar de totale som van Azure Premium-schijf grootten mag niet groter zijn dan 35 TB. In sommige gevallen kan een beheerd exemplaar dat niet 8 TB in totaal nodig heeft, de Azure-limiet van 35 TB overschrijden bij de opslag grootte vanwege interne fragmentatie.
 
-Zo kan een Algemeen exemplaar van een SQL Managed instance een groot bestand hebben met een grootte van 1,2 TB op een schijf van 4 TB. Het bestand kan ook 248 bestanden van 1 GB zijn en die op afzonderlijke schijven van 128 GB worden geplaatst. In dit voorbeeld:
+Zo kan een Algemeen exemplaar van een SQL Managed instance een groot bestand hebben met een grootte van 1,2 TB op een schijf van 4 TB. Het bestand kan ook 248 bestanden van 1 GB zijn en die op afzonderlijke schijven van 128 GB worden geplaatst. In dit voorbeeld geldt het volgende:
 
 - De totale toegewezen schijf ruimte is 1 x 4 TB + 248 x 128 GB = 35 TB.
 - De totale gereserveerde ruimte voor data bases op het exemplaar is 1 x 1,2 TB + 248 x 1 GB = 1,4 TB.

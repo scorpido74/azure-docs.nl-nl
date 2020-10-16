@@ -8,10 +8,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.openlocfilehash: a34544eb29f0a1417d10955bba755fb4f9965320
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88136036"
 ---
 # <a name="data-modeling-in-azure-cosmos-db"></a>Gegevens modellering in Azure Cosmos DB
@@ -299,7 +299,7 @@ In het bovenstaande voor beeld hebben we de niet-gebonden verzameling verwijderd
 In een relationele data base zijn *veel* relaties vaak gemodelleerd met samenvoeg tabellen, die alleen worden gekoppeld aan records uit andere tabellen.
 
 
-:::image type="content" source="./media/sql-api-modeling-data/join-table.png" alt-text="Tabellen koppelen" border="false":::
+:::image type="content" source="./media/sql-api-modeling-data/join-table.png" alt-text="Relationeel database model" border="false":::
 
 Misschien bent u geneigd om hetzelfde te repliceren met behulp van documenten en een gegevens model te produceren dat er ongeveer als volgt uitziet.
 
@@ -442,4 +442,4 @@ Raadpleeg de [documentatie](https://azure.microsoft.com/documentation/services/c
 
 Als u wilt weten hoe u uw gegevens op meerdere partities kunt Shard, raadpleegt u [gegevens partitioneren in azure Cosmos DB](sql-api-partition-data.md).
 
-Raadpleeg voor meer informatie over het model leren en partitioneren van gegevens op Azure Cosmos DB met behulp van een echt voor beeld van [gegevens modellering en partitionering: een praktijk voorbeeld](how-to-model-partition-example.md).
+Raadpleeg [ gegevens modellering en partitioneren-een Real-World voor beeld](how-to-model-partition-example.md)voor meer informatie over het model leren en partitioneren van gegevens op Azure Cosmos DB met behulp van een Real-World-voor beeld.

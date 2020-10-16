@@ -9,10 +9,10 @@ ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to work with routing tables for NVA.
 ms.openlocfilehash: 40154a9c3cefed69bd3f1639153099b944da79b5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91267122"
 ---
 # <a name="create-a-virtual-hub-route-table-to-steer-traffic-to-a-network-virtual-appliance"></a>Een route tabel voor de virtuele hub maken om verkeer naar een virtueel netwerk apparaat te sturen
@@ -65,7 +65,7 @@ Zorg ervoor dat u de meest recente versie van de Power shell-cmdlets voor Resour
 
 ## <a name="2-create-resources"></a><a name="rg"></a>2. resources maken
 
-1. Een resourcegroep maken.
+1. Maak een resourcegroep.
 
    ```powershell
    New-AzResourceGroup -Location "West US" -Name "testRG"

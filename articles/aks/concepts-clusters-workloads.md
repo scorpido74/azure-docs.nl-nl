@@ -5,10 +5,10 @@ services: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 2fe687ddd63ee85faec2d1aa4c02fa2636a3058f
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86251855"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Kubernetes-kernconcepten voor Azure Kubernetes Service (AKS)
@@ -113,7 +113,7 @@ Naast reserve ringen voor Kubernetes, reserveert het onderliggende knooppunt bes
 
 Zie [Best Practices for Basic scheduler-functies in AKS][operator-best-practices-scheduler]voor gekoppelde aanbevolen procedures.
 
-### <a name="node-pools"></a>Knooppunt groepen
+### <a name="node-pools"></a>Knooppuntpools
 
 Knoop punten van dezelfde configuratie worden samen in *knooppunt groepen*gegroepeerd. Een Kubernetes-cluster bevat een of meer knooppunt groepen. Het eerste aantal knoop punten en grootte worden gedefinieerd wanneer u een AKS-cluster maakt, waarmee een *standaard knooppunt groep*wordt gemaakt. Deze standaard knooppunt groep in AKS bevat de onderliggende virtuele machines waarop de agent knooppunten worden uitgevoerd.
 

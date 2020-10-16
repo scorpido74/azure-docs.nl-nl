@@ -10,10 +10,10 @@ ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
 ms.openlocfilehash: fdde7613627c9fec0694f3985f78cf10e52f59c2
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91397093"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>PostgreSQL op Azure installeren en configureren
@@ -205,7 +205,7 @@ Controleer of het eind punt van PostgreSQL zich op:
 # netstat -tunlp|grep 1999
 ```
 
-In dat geval moet de volgende uitvoer worden weergegeven:
+U moet de volgende uitvoer zien:
 
 ![Scherm opname waarin het eind punt van PostgreSQL wordt weer gegeven.](./media/postgresql-install/no3.png)
 

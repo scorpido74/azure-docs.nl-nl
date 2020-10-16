@@ -6,12 +6,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 639764c9cae5e27e90a55da00b246807e49d2a20
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 9a3a7cad8399146834eed0282e0655a551bc083a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652845"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977269"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>Mainframe-opslag verplaatsen naar Azure
 
@@ -57,7 +57,7 @@ Azure Storage is beschikbaar als [Azure-schijven](../../../managed-disks-overvie
 <tr><td>Azure Files
 </td>
 <td>
-Biedt een SMB-interface,-client bibliotheken en een <a href="https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api">rest</a> -interface waarmee u overal toegang kunt krijgen tot opgeslagen bestanden.
+Biedt een SMB-interface,-client bibliotheken en een <a href="/rest/api/storageservices/file-service-rest-api">rest</a> -interface waarmee u overal toegang kunt krijgen tot opgeslagen bestanden.
 </td>
 <td><ul>
 <li>Til en verplaats een toepassing naar de Cloud wanneer de toepassing gebruikmaakt van de systeem eigen Api's van het systeem voor het delen van gegevens tussen IT en andere toepassingen die worden uitgevoerd in Azure.</li>
@@ -67,7 +67,7 @@ Biedt een SMB-interface,-client bibliotheken en een <a href="https://docs.micros
 </tr>
 <tr><td>Azure-blobs
 </td>
-<td>Biedt client bibliotheken en een <a href="https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api">rest</a> -interface waarmee ongestructureerde gegevens kunnen worden opgeslagen en geopend op een enorme schaal in blok-blobs. Biedt ook ondersteuning voor <a href="/azure/storage/blobs/data-lake-storage-introduction">Azure data Lake Storage Gen2</a> voor oplossingen voor enter prise Big Data Analytics.
+<td>Biedt client bibliotheken en een <a href="/rest/api/storageservices/blob-service-rest-api">rest</a> -interface waarmee ongestructureerde gegevens kunnen worden opgeslagen en geopend op een enorme schaal in blok-blobs. Biedt ook ondersteuning voor <a href="/azure/storage/blobs/data-lake-storage-introduction">Azure data Lake Storage Gen2</a> voor oplossingen voor enter prise Big Data Analytics.
 </td>
 <td><ul>
 <li>Ondersteuning voor streaming en scenario's voor wille keurige toegang in een toepassing.</li>
@@ -77,7 +77,7 @@ Biedt een SMB-interface,-client bibliotheken en een <a href="https://docs.micros
 </tr>
 <tr><td>Azure-schijven
 </td>
-<td>Biedt client bibliotheken en een <a href="https://docs.microsoft.com/rest/api/compute/disks">rest</a> -interface waarmee gegevens permanent kunnen worden opgeslagen en geopend vanaf een gekoppelde virtuele harde schijf.
+<td>Biedt client bibliotheken en een <a href="/rest/api/compute/disks">rest</a> -interface waarmee gegevens permanent kunnen worden opgeslagen en geopend vanaf een gekoppelde virtuele harde schijf.
 </td>
 <td><ul>
 <li>Til en verplaats toepassingen die gebruikmaken van systeem eigen bestandssysteem-Api's om gegevens te lezen en te schrijven naar permanente schijven.</li>
@@ -97,8 +97,8 @@ Ssd's bieden de hoogste opslag prestaties op Azure. De volgende opties zijn besc
 | Type         | Grootte           | IOPS                  |
 |--------------|----------------|-----------------------|
 | Ultra - SSD    | 4 GB tot 64 TB  | 1.200 tot 160.000 IOPS |
-| Premium - SSD  | 32 GB tot 32 TB | 12 tot 15.000 IOPS     |
-| Standard - SSD | 32 GB tot 32 TB | 12 tot 2.000 IOPS      |
+| Premium SSD  | 32 GB tot 32 TB | 12 tot 15.000 IOPS     |
+| Standard SSD | 32 GB tot 32 TB | 12 tot 2.000 IOPS      |
 
 Blob-opslag biedt de grootste hoeveelheid opslag ruimte op Azure. Naast de opslag grootte biedt Azure zowel beheerde als onbeheerde opslag. Met beheerde opslag neemt Azure zorg voor het beheren van de onderliggende opslag accounts. Met niet-beheerde opslag neemt de gebruiker verantwoordelijk voor het instellen van Azure-opslag accounts van de juiste grootte om te voldoen aan de opslag vereisten.
 

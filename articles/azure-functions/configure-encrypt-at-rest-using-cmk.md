@@ -4,10 +4,10 @@ description: Versleutel uw toepassings gegevens in Azure Storage en implementeer
 ms.topic: article
 ms.date: 03/06/2020
 ms.openlocfilehash: 1dd0d11baa16a325a22a501d40e22e5bad6adb21
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87282327"
 ---
 # <a name="encrypt-your-application-data-at-rest-using-customer-managed-keys"></a>Versleutel uw toepassings gegevens in rust met door de klant beheerde sleutels

@@ -8,10 +8,10 @@ ms.service: api-management
 ms.topic: reference
 ms.custom: subject-policy-reference
 ms.openlocfilehash: 719d46fe9f013fd05e3e36f35978699d841c618d
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91824295"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-api-management"></a>Lijst met ingebouwde beleidsdefinities van Azure Policy voor Azure API Management

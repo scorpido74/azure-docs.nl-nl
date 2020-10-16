@@ -10,10 +10,10 @@ ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
 ms.openlocfilehash: d44964b5aed55e2ee70d18e6be5d632b652956e1
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90976259"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>Scenario: verkeer routeren via een NVA
@@ -69,14 +69,14 @@ In dit scenario moeten we echter nadenken over welke statische routes moeten wor
 
 De statische routes die we nodig hebben in de standaard tabel om verkeer te verzenden naar de NVA-spokes achter de NVA VNet, zijn als volgt:
 
-| Description | Routetabel | Statische route              |
+| Beschrijving | Routetabel | Statische route              |
 | ----------- | ----------- | ------------------------- |
 | VNet 2       | Standaard     | 10.2.0.0/16-> eastusconn |
 | VNet 4       | Standaard     | 10.4.0.0/16-> weconn     |
 
 Het virtuele WAN weet nu naar welke verbinding de pakketten moeten worden verzonden, maar de verbinding moet weten wat er moet gebeuren wanneer deze pakketten worden ontvangen: hier worden de verbindings route tabellen gebruikt. Hier gaan we de kortere voor voegsels (/24 in plaats van de meer/16) gebruiken om ervoor te zorgen dat deze routes de voor keur hebben boven routes die worden geïmporteerd uit de NVA VNets (VNet 2 en VNet 4):
 
-| Description | Verbinding | Statische route            |
+| Beschrijving | Verbinding | Statische route            |
 | ----------- | ---------- | ----------------------- |
 | VNet 5       | eastusconn | 10.2.1.0/24-> 10.2.0.5 |
 | VNet 6       | eastusconn | 10.2.2.0/24-> 10.2.0.5 |
@@ -99,7 +99,7 @@ In **afbeelding 2**zijn er twee hubs; **Hub1** en **Hub2**.
 
 **Afbeelding 2**
 
-:::image type="content" source="./media/routing-scenarios/nva/nva.png" alt-text="Afbeelding 2" lightbox="./media/routing-scenarios/nva/nva.png":::
+:::image type="content" source="./media/routing-scenarios/nva/nva.png" alt-text="Afbeelding 1" lightbox="./media/routing-scenarios/nva/nva.png":::
 
 ## <a name="scenario-workflow"></a><a name="workflow"></a>Scenario werk stroom
 
@@ -117,7 +117,7 @@ Virtual WAN biedt geen ondersteuning voor een scenario waarbij VNets 5, 6 verbin
 
 2. Voeg een geaggregeerde statische route vermelding toe voor de standaard route tabel van VNets 2, 5, 6 naar hub 1.
 
-   :::image type="content" source="./media/routing-scenarios/nva/nva-static-expand.png" alt-text="Voorbeeld":::
+   :::image type="content" source="./media/routing-scenarios/nva/nva-static-expand.png" alt-text="Afbeelding 1":::
 
 3. Configureer een statische route voor VNets 5, 6 in de virtuele netwerk verbinding van VNet 2. Zie [virtuele hub-route ring](how-to-virtual-hub-routing.md#routing-configuration)voor het instellen van routerings configuratie voor een virtuele netwerk verbinding.
 
@@ -129,7 +129,7 @@ Dit heeft tot gevolg dat de routerings configuratie verandert, zoals wordt weer 
 
 **Afbeelding 3**
 
-   :::image type="content" source="./media/routing-scenarios/nva/nva-result.png" alt-text="Afbeelding 3" lightbox="./media/routing-scenarios/nva/nva-result.png":::
+   :::image type="content" source="./media/routing-scenarios/nva/nva-result.png" alt-text="Afbeelding 1" lightbox="./media/routing-scenarios/nva/nva-result.png":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

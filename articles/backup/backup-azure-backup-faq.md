@@ -3,12 +3,12 @@ title: Antwoorden op veelgestelde vragen
 description: 'Antwoorden op veelgestelde vragen over de functies van Azure Backup, waaronder de Recovery Services-kluis, waarvan een back-up kan worden gemaakt, hoe het werkt, versleuteling en limieten. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 26d833dfea214c5f29b77c2ac34a5f8863c7fbc0
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 72a4f805b34ba8a536cd398efd5e6809bd66f0d4
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986422"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096620"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - veelgestelde vragen
 
@@ -58,6 +58,10 @@ Als u de back-up al hebt geconfigureerd en wilt overstappen van GRS naar LRS, ra
 - ILR wordt ondersteund voor Azure-VM's waarvan een back-up is gemaakt met Azure VM Backup. Raadpleeg dit [artikel](backup-azure-restore-files-from-vm.md) voor meer informatie
 - ILR wordt niet ondersteund voor online herstel punten van on-premises Vm's waarvan een back-up is gemaakt door Azure Backup Server (MABS) of System Center DPM.
 
+### <a name="how-can-i-move-data-from-the-recovery-services-vault-to-on-premises"></a>Hoe kan ik gegevens van de Recovery Services kluis verplaatsen naar on-premises?
+
+Het is niet mogelijk om gegevens rechtstreeks vanuit de Recovery Services kluis naar on-premises te exporteren met behulp van Data Box. Gegevens moeten worden hersteld naar een opslag account en vervolgens kunnen worden verplaatst naar on-premises via [Data Box](https://docs.microsoft.com/azure/databox/data-box-overview) of [importeren/exporteren](https://docs.microsoft.com/azure/storage/common/storage-import-export-service).
+
 ## <a name="azure-backup-agent"></a>Azure Backup-agent
 
 ### <a name="where-can-i-find-common-questions-about-the-azure-backup-agent-for-azure-vm-backup"></a>Waar vind ik veelgestelde vragen over de Azure Backup-agent voor Azure VM Backup?
@@ -86,7 +90,7 @@ Windows 10 64-bits | Enterprise, Pro, Home | Op machines moeten de nieuwste serv
 Windows 8.1 64-bits | Enterprise, Pro | Op machines moeten de nieuwste servicepacks en updates worden uitgevoerd.
 Windows 8 64-bits | Enterprise, Pro | Op machines moeten de nieuwste servicepacks en updates worden uitgevoerd.
 Windows 7 64-bits | Ultimate, Enterprise, Professional, Home Premium Home Basic, Starter | Op machines moeten de nieuwste servicepacks en updates worden uitgevoerd.
-server | |
+Server | |
 Windows Server 2019 64-bits | Standard, Datacenter, Essentials | Met de nieuwste servicepacks/updates.
 Windows Server 2016 64-bits | Standard, Datacenter, Essentials | Met de nieuwste servicepacks/updates.
 Windows Server 2012 R2 64-bits | Standard, Datacenter, Foundation | Met de nieuwste servicepacks/updates.
@@ -174,7 +178,7 @@ Producten met een lange bewaartermijn slaan de back-upgegevens doorgaans op als 
 - De volledige punten maken *inefficiënt* gebruik van de opslagruimte, maar kunnen wel gemakkelijker en sneller worden hersteld.
 - Incrementele kopieën maken *efficiënt* gebruik van de opslagruimte, maar vereisen dat u een keten van gegevens hersteld, wat van invloed is op de hersteltijd
 
-De opslagarchitectuur van Azure Backup biedt u het beste van beide werelden door de gegevens optimaal op te slaan voor snelle herstelbewerkingen en lage opslagkosten. Dit zorgt ervoor dat uw bandbreedte voor inkomend en uitgaand verkeer efficiënt wordt gebruikt. De hoeveelheid gegevens die moet worden opgeslagen, en de benodigde tijd om de gegevens te herstellen, blijft tot een minimum beperkt. Meer informatie over [incrementele back-ups](https://azure.microsoft.com/blog/microsoft-azure-backup-save-on-long-term-storage/).
+De opslagarchitectuur van Azure Backup biedt u het beste van beide werelden door de gegevens optimaal op te slaan voor snelle herstelbewerkingen en lage opslagkosten. Dit zorgt ervoor dat uw bandbreedte voor inkomend en uitgaand verkeer efficiënt wordt gebruikt. De hoeveelheid gegevens die moet worden opgeslagen, en de benodigde tijd om de gegevens te herstellen, blijft tot een minimum beperkt. Meer informatie over [incrementele back-ups](backup-architecture.md#backup-types).
 
 ### <a name="is-there-a-limit-on-the-number-of-recovery-points-that-can-be-created"></a>Geldt er een limiet voor het aantal herstelpunten dat kan worden gemaakt?
 

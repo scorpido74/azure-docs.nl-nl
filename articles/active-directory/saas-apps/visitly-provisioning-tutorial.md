@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
 ms.openlocfilehash: 15031a3e139265410179baa13db9ed3f1b41cf17
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88531800"
 ---
 # <a name="tutorial-configure-visitly-for-automatic-user-provisioning"></a>Zelf studie: voor het automatisch inrichten van gebruikers naar een andere configuratie
@@ -29,7 +29,7 @@ Het doel van deze zelf studie is het demonstreren van de stappen die u in een st
 
 ## <a name="prerequisites"></a>Vereisten
 
-In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende vereisten:
+In het scenario dat in deze zelfstudie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende vereisten:
 
 * Een Azure AD-Tenant
 * [Een bezochte Tenant](https://www.visitly.io/pricing/)
@@ -46,7 +46,7 @@ Voordat u het automatisch inrichten van gebruikers configureert en inschakelt, m
 
 * We raden u aan één Azure AD-gebruiker toe te wijzen om de automatische gebruikers inrichtings configuratie te testen. Extra gebruikers of groepen kunnen later worden toegewezen.
 
-* Wanneer u een gebruiker toewijst om deze te openen, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol standaard toegang worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker toewijst om deze te openen, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol Standaardtoegang worden uitgesloten van het inrichten.
 
 ## <a name="set-up-visitly-for-provisioning"></a>Ga naar de inrichting instellen
 
@@ -96,7 +96,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="configure-automatic-user-provisioning-for-visitly-in-azure-ad"></a>Automatisch gebruikers inrichten configureren voor bezoek aan Azure AD
 
-1. Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com). Selecteer **Enterprise Applications**  >  **alle toepassingen**in bedrijfs toepassingen.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **Enterprise Applications**  >  **alle toepassingen**in bedrijfs toepassingen.
 
     ![Alle toepassingen](common/enterprise-applications.png)
 
@@ -104,11 +104,11 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![De Visitly-koppeling in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer het tabblad **inrichten** .
+3. Selecteer het tabblad **Inrichten**.
 
-    ![Tabblad inrichten](common/provisioning.png)
+    ![Tabblad Inrichting](common/provisioning.png)
 
-4. Stel de **inrichtings modus** in op **automatisch**.
+4. Stel de **Inrichtingsmodus** in op **Automatisch**.
 
     ![Inrichtings modus ingesteld op automatisch](common/provisioning-automatic.png)
 
@@ -126,7 +126,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Gebruikers toewijzingen voor het bezoek](media/visitly-provisioning-tutorial/usermapping.png)
 
-9. Bekijk de gebruikers kenmerken die door Azure AD worden gesynchroniseerd om te bezoeken in de sectie **kenmerk toewijzingen** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om de gebruikers accounts in een bezoek te brengen aan update bewerkingen. Selecteer **Opslaan** om eventuele wijzigingen door te voeren.
+9. Bekijk de gebruikers kenmerken die door Azure AD worden gesynchroniseerd om te bezoeken in de sectie **kenmerk toewijzingen** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om de gebruikers accounts in een bezoek te brengen aan update bewerkingen. Selecteer **Opslaan** om eventuele wijzigingen toe te passen.
 
     ![Gebruikers kenmerken voor het bezoek](media/visitly-provisioning-tutorial/userattribute.png)
 
@@ -138,7 +138,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 12. Definieer de gebruikers of groepen die u wilt inrichten door te klikken op de gewenste waarden in het **bereik** in het gedeelte **instellingen** .
 
-    ![Inrichtings bereik](common/provisioning-scope.png)
+    ![Inrichtingsbereik](common/provisioning-scope.png)
 
 13. Wanneer u klaar bent om in te richten, selecteert u **Opslaan**.
 
@@ -148,7 +148,7 @@ Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers of
 
 U kunt de **huidige status** sectie gebruiken om de voortgang te controleren en koppelingen naar uw inrichtings activiteiten rapport te volgen, waarin alle acties worden beschreven die worden uitgevoerd door de Azure AD Provisioning-Service. Zie [de status van gebruikers inrichten controleren](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)voor meer informatie. Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor informatie over het vastleggen van Azure AD-inrichtings Logboeken.
 
-## <a name="connector-limitations"></a>Connector beperkingen
+## <a name="connector-limitations"></a>Connectorbeperkingen
 
 Biedt geen ondersteuning voor harde verwijderingen. Alles is alleen zacht verwijderen.
 
@@ -159,4 +159,4 @@ Biedt geen ondersteuning voor harde verwijderingen. Alles is alleen zacht verwij
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../app-provisioning/check-status-user-account-provisioning.md)
+* [Meer informatie over het controleren van logboeken en het ophalen van rapporten over de inrichtingsactiviteit](../app-provisioning/check-status-user-account-provisioning.md)

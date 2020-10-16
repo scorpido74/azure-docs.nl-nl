@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 08/20/2020
 ms.openlocfilehash: fff8638a819511f84f15c52ad0695cdd5759f971
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89084547"
 ---
 # <a name="move-azure-event-grid-domains-to-another-region"></a>Azure Event Grid domeinen verplaatsen naar een andere regio
@@ -37,10 +37,10 @@ Exporteer een resource manager-sjabloon voor het domein om aan de slag te gaan.
     :::image type="content" source="./media/move-domains-across-regions/search-domains.png" alt-text="Event Grid domeinen zoeken en selecteren":::
 3. Selecteer het **domein** dat u wilt exporteren naar een resource manager-sjabloon. 
 
-    :::image type="content" source="./media/move-domains-across-regions/select-domain.png" alt-text="Het domein selecteren":::   
+    :::image type="content" source="./media/move-domains-across-regions/select-domain.png" alt-text="Event Grid domeinen zoeken en selecteren":::   
 4. Selecteer op de pagina **Event grid domein** de optie **sjabloon exporteren** onder **instellingen** in het menu links en selecteer vervolgens **downloaden** op de werk balk. 
 
-    :::image type="content" source="./media/move-domains-across-regions/export-template-download.png" alt-text="Sjabloon exporteren-> downloaden" lightbox="./media/move-domains-across-regions/export-template-download.png":::   
+    :::image type="content" source="./media/move-domains-across-regions/export-template-download.png" alt-text="Event Grid domeinen zoeken en selecteren" lightbox="./media/move-domains-across-regions/export-template-download.png":::   
 
     > [!IMPORTANT]
     > Domein-en domein onderwerpen worden geëxporteerd. Abonnementen voor domein onderwerpen worden niet geëxporteerd. U moet dus abonnementen voor domein onderwerpen maken nadat u domein onderwerpen hebt verplaatst. 
@@ -73,7 +73,7 @@ Implementeer de sjabloon voor het maken van de onderwerpen domein en domein in d
     1. Voer voor de **domein naam**een nieuwe naam in voor het domein. 
     1. Selecteer **Controleren + maken**. 
     
-        :::image type="content" source="./media/move-domains-across-regions/deploy-template.png" alt-text="Sjabloon implementeren":::        
+        :::image type="content" source="./media/move-domains-across-regions/deploy-template.png" alt-text="Event Grid domeinen zoeken en selecteren":::        
     1. Nadat de validatie van de sjabloon is geslaagd, selecteert u onder aan de pagina **maken** om de resource te implementeren. 
     1. Nadat de implementatie is voltooid, selecteert u **Ga naar resource groep** om naar de pagina resource groep te gaan. Bevestig dat er zich een domein in de resource groep bevindt. Selecteer het domein. Controleer of er domein onderwerpen aanwezig zijn in het domein. 
 

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: how-to
 ms.date: 03/09/2020
 ms.openlocfilehash: 57108bed97b59513309213d55a0654f4405d509c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90893325"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Modellen trainen met geautomatiseerde machine learning in de cloud
@@ -163,7 +163,7 @@ experiment = Experiment(ws, 'automl_remote')
 remote_run = experiment.submit(automl_config, show_output=True)
 ```
 
-De uitvoer ziet er ongeveer uit zoals in het volgende voor beeld:
+De uitvoer is vergelijkbaar met de uitvoer in het volgende voorbeeld:
 
 ```output
 Running on remote compute: mydsvmParent Run ID: AutoML_015ffe76-c331-406d-9bfd-0fd42d8ab7f6

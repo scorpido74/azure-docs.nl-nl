@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
 ms.openlocfilehash: e28ce4cd46cb802241e02e4060441747389d3989
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90888164"
 ---
 # <a name="create-external-stream-transact-sql"></a>EXTERNE STREAM maken (Transact-SQL)
@@ -24,7 +24,7 @@ Een externe stroom kan ook worden opgegeven en gemaakt als uitvoer en invoer voo
 
 Azure SQL Edge ondersteunt momenteel alleen de volgende gegevens bronnen als invoer en uitvoer van streams.
 
-| Gegevens bron type | Invoer | Uitvoer | Description |
+| Gegevens bron type | Invoer | Uitvoer | Beschrijving |
 |------------------|-------|--------|------------------|
 | Azure IoT Edge hub | J | J | Gegevens bron om streaminggegevens te lezen en schrijven naar een Azure IoT Edge hub. Zie [IOT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)voor meer informatie.|
 | SQL Database | N | J | Gegevens bron verbinding om streaminggegevens te schrijven naar SQL Database. De data base kan een lokale Data Base zijn in Azure SQL Edge of een externe data base in SQL Server of Azure SQL Database.|
@@ -96,7 +96,7 @@ WITH  ( <with_options> )
 - [FILE_FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql/)
 - **Locatie**: Hiermee geeft u de naam op van de werkelijke gegevens of locatie in de gegevens bron. 
    - Voor Edge hub-of Kafka-stroom objecten, locatie geeft de naam van de Edge hub of het Kafka-onderwerp op waaruit moet worden gelezen of waarnaar wordt geschreven.
-   - Voor de locatie van SQL Stream-objecten (SQL Server, Azure SQL Database of Azure SQL Edge) geeft u de naam van de tabel op. Als de stroom is gemaakt in dezelfde data base en hetzelfde schema als de doel tabel, dan hoeft alleen de tabel naam voldoende te zijn. Als dat niet het geval is, moet u de naam van de tabel volledig kwalificeren (<database_name. schema_name. table_name).
+   - Voor de locatie van SQL Stream-objecten (SQL Server, Azure SQL Database of Azure SQL Edge) geeft u de naam van de tabel op. Als de stroom is gemaakt in dezelfde data base en hetzelfde schema als de doel tabel, dan hoeft alleen de tabel naam voldoende te zijn. Als dat niet het geval is, moet u de naam van de tabel volledig kwalificeren (<database-SCHEMA_NAME. table_name).
    - Voor Azure Blob Storage Stream-object locatie verwijst naar het pad patroon dat in de BLOB-container moet worden gebruikt. Raadpleeg voor meer informatie over deze functie (/articles/stream-Analytics/stream-Analytics-define-outputs.MD # Blob-Storage-and-Azure-data-Lake-Gen2)
 
 - **INPUT_OPTIONS**: Geef opties op als sleutel-waardeparen voor services, zoals Kafka, IOT Edge hub die is invoer van streaming-query's

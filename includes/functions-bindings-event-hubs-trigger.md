@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
 ms.openlocfilehash: d8c6b79dca97de3dd46eb9c677f2c94191f276b0
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89304121"
 ---
 Gebruik de functietrigger om te reageren op een gebeurtenis die naar een event hub-gebeurtenisstroom wordt verzonden. U moet leestoegang hebben tot de onderliggende event hub om de trigger in te stellen. Wanneer de functie wordt geactiveerd, wordt het aan de functie doorgegeven bericht getypeerd als een tekenreeks.

@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
 ms.openlocfilehash: 183273e6f93bbfda8ed4e5fe913192994a0b6ce2
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87833382"
 ---
 # <a name="sap-hana-azure-backup-on-file-level"></a>Azure Backup op bestands niveau SAP HANA
@@ -43,7 +43,7 @@ Eén kan specifieke Vhd's voor SAP HANA back-ups worden geplaatst in een toegewe
 
 ## <a name="azure-blobxfer-utility-details"></a>Details van het hulp programma Azure blobxfer
 
-Om directory's en bestanden op te slaan in azure Storage, kan de ene CLI of Power shell gebruiken of een hulp programma ontwikkelen met behulp van een van de [Azure sdk's](https://azure.microsoft.com/downloads/). Er is ook een gebruiks klare hulp programma, AzCopy, voor het kopiëren van gegevens naar Azure Storage. (Zie [gegevens overdragen met het opdracht regel programma AzCopy](../../../storage/common/storage-use-azcopy-v10.md)).
+Om directory's en bestanden op te slaan in azure Storage, kan de ene CLI of Power shell gebruiken of een hulp programma ontwikkelen met behulp van een van de [Azure sdk's](https://azure.microsoft.com/downloads/). Er is ook een gebruiks klare hulp programma, AzCopy, voor het kopiëren van gegevens naar Azure Storage. (Zie [gegevens overdragen met het AzCopy-hulp programma van Command-Line](../../../storage/common/storage-use-azcopy-v10.md)).
 
 Daarom is blobxfer gebruikt voor het kopiëren van SAP HANA back-upbestanden. Het is open source en wordt gebruikt door veel klanten in productie omgevingen en is beschikbaar op [github](https://github.com/Azure/blobxfer). Met dit hulp programma kunt u gegevens rechtstreeks naar Azure Blob-opslag of een Azure-bestands share kopiëren. Het biedt ook een aantal nuttige functies, zoals MD5-hash, of automatische parallellisme bij het kopiëren van een map met meerdere bestanden.
 

@@ -11,10 +11,10 @@ ms.date: 04/02/2018
 ms.author: liydu
 ms.custom: mqtt
 ms.openlocfilehash: 09ea3ceb15c9b175b8366bf3ac57a61e468ab72a
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91356023"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>Berichten verzenden naar een MQTT-server
@@ -33,7 +33,7 @@ In dit project leert u het volgende:
 
 De aan de slag- [hand leiding](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) volt ooien om:
 
-* Uw DevKit hebben verbonden met Wi-Fi
+* Uw DevKit verbonden met Wi-Fi
 * De ontwikkelomgeving voorbereiden
 
 ## <a name="open-the-project-folder"></a>Open de projectmap
@@ -70,7 +70,7 @@ In VS code kunt u deze procedure volgen om de seriële monitor te openen en in t
   
 3. Klik op de status balk op het nummer waarmee de baud-rate wordt aangeduid en stel deze in op `115200` : ![ scherm afbeelding toont het instellen van de baudrate in Visual Studio code.](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-baud-rate.jpg)
 
-In de seriële monitor worden alle berichten weer gegeven die door de voorbeeld schets worden verzonden. De schets verbindt de DevKit met Wi-Fi. Zodra de Wi-Fi-verbinding is gelukt, verzendt de schets een bericht naar de MQTT-Broker. Daarna verzendt het voor beeld herhaaldelijk twee "iot.eclipse.org"-berichten die respectievelijk gebruikmaken van QoS 0 en QoS 1.
+In de seriële monitor worden alle berichten weer gegeven die door de voorbeeld schets worden verzonden. De schets verbindt de DevKit met Wi-Fi. Zodra de Wi-Fi verbinding is geslaagd, stuurt de schets een bericht naar de MQTT-Broker. Daarna verzendt het voor beeld herhaaldelijk twee "iot.eclipse.org"-berichten die respectievelijk gebruikmaken van QoS 0 en QoS 1.
 
 ![Scherm afbeelding toont de seriële monitor die de berichten weergeeft die worden verzonden door de schets.](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/serial-output.jpg)
 

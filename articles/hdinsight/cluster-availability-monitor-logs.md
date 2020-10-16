@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.openlocfilehash: 19e3f1a157ee2c042dfebfc96c9b51c3c4698ebc
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88163727"
 ---
 # <a name="how-to-monitor-cluster-availability-with-azure-monitor-logs-in-hdinsight"></a>De beschik baarheid van een cluster bewaken met Azure Monitor-Logboeken in HDInsight
@@ -99,7 +99,7 @@ Hiermee wordt de **actie groep toevoegen**geopend. Kies een **naam voor de actie
 > [!NOTE]
 > Er zijn verschillende andere acties die een waarschuwing kan activeren naast een E-mail/SMS/push/Voice, zoals een Azure-functie, LogicApp, webhook, ITSM en Automation-Runbook. [Meer informatie.](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#action-specific-information)
 
-Hiermee wordt **e-mail/SMS/push/Voice**geopend. Kies een **naam** voor de ontvanger, **Schakel** het vak **e-mail** in en typ een e-mail adres waarnaar de waarschuwing moet worden verzonden. Selecteer **OK** in **e-mail/SMS/push/Voice**en klik vervolgens in **actie groep toevoegen** om het configureren van uw actie groep te volt ooien.
+Hiermee wordt **e-mail/SMS/push/Voice**geopend. Kies een **naam** voor de ontvanger, **Schakel** het vak **e-mail** in en typ een e-mail adres waarnaar de waarschuwing moet worden verzonden. Selecteer **OK** in  **e-mail/SMS/push/Voice**en klik vervolgens in **actie groep toevoegen** om het configureren van uw actie groep te volt ooien.
 
 ![Waarschuwings regel maakt actie groep toevoegen](media/cluster-availability-monitor-logs/portal-add-action-group.png)
 

@@ -13,12 +13,12 @@ ms.date: 10/09/2020
 ms.author: jmprieur
 ms.reviewer: marsma
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 4d915cee962546e355ee9d53c683581730bbbf36
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 77cb3b0c13a6bfe41c6f7a1a5a0f9d7278aea1db
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91778849"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91930149"
 ---
 # <a name="microsoft-identity-web-authentication-library"></a>Micro soft Identity Web authentication-bibliotheek
 
@@ -44,6 +44,7 @@ Micro soft Identity web is beschikbaar op NuGet als een reeks pakketten die modu
 - [Micro soft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) : het belangrijkste pakket. Vereist voor alle apps die gebruikmaken van micro soft Identity web.
 - [Micro soft. Identity. Web. UI](https://www.nuget.org/packages/Microsoft.Identity.Web.UI) -optioneel. Voegt gebruikers interface toe voor het aanmelden en afmelden van gebruikers en een gekoppelde controller voor web-apps.
 - [Micro soft. Identity. Web. MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph) -optioneel. Biedt vereenvoudigde interactie met de Microsoft Graph-API.
+- [Micro soft. Identity. Web. MicrosoftGraphBeta](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraphBeta) -optioneel. Biedt vereenvoudigde interactie met het bèta- [eind punt](/graph/api/overview?view=graph-rest-beta&preserve-view=true)van Microsoft Graph-API.
 
 #### <a name="project-templates"></a>Project sjablonen
 
@@ -69,7 +70,7 @@ dotnet new blazorserver2 --auth SingleOrg --calls-graph --client-id &quot;000000
 
 #### <a name="github"></a>GitHub
 
-Micro soft Identity web is een open-source project dat wordt gehost op GitHub: [AzureAD/micro soft-Identity-Web](https://github.com/AzureAD/microsoft-identity-web?azure-portal=true)
+Micro soft Identity web is een open-source project dat wordt gehost op GitHub: <a href="https://github.com/AzureAD/microsoft-identity-web" target="_blank">AzureAD/micro soft <span class="docon docon-navigate-external x-hidden-focus"></span> -Identity-Web</a>
 
 De [wiki van de opslag plaats](https://github.com/AzureAD/microsoft-identity-web/wiki) bevat aanvullende documentatie en als u hulp nodig hebt of een bug ontdekt, kunt u [een probleem oplossen](https://github.com/AzureAD/microsoft-identity-web/issues).
 
@@ -94,12 +95,12 @@ Micro soft Identity web bevat verschillende functies die niet worden gegeven als
 
 Als u micro soft Identity web in actie wilt zien, kunt u de zelf studie voor de razendsnelle server proberen:
 
-[Zelf studie: een razendsnelle server-app maken die gebruikmaakt van het micro soft-identiteits platform voor verificatie](tutorial-blazor-server.md)
+[Zelfstudie: Een Blazor Server-app maken die gebruikmaakt van het Microsoft-identiteitsplatform voor verificatie](tutorial-blazor-server.md)
 
 De micro soft Identity Web-wiki op GitHub bevat een uitgebreide referentie documentatie voor verschillende aspecten van de bibliotheek. U kunt bijvoorbeeld de naslag informatie over het gebruik van certificaten, incrementele toestemming en voorwaardelijke toegang vinden op de volgende locatie:
 
-- [Certificaten gebruiken met micro soft. Identity. Web](https://github.com/AzureAD/microsoft-identity-web/wiki/Using-certificates?azure-portal=true) (github)
-- [Incrementele toestemming en voorwaardelijke toegang](https://github.com/AzureAD/microsoft-identity-web/wiki/Managing-incremental-consent-and-conditional-access?azure-portal=true) (github)
+- <a href="https://github.com/AzureAD/microsoft-identity-web/wiki/Using-certificates" target="_blank">Certificaten gebruiken met micro soft. Identity. <span class="docon docon-navigate-external x-hidden-focus"></span> Web</a> GitHub
+- <a href="https://github.com/AzureAD/microsoft-identity-web/wiki/Managing-incremental-consent-and-conditional-access" target="_blank">Incrementele toestemming en voorwaardelijke toegang <span class="docon docon-navigate-external x-hidden-focus"></span> </a> GitHub
 
 <!-- LINKS -->
 <!--  [miw-certs]: microsoft-identity-web-certificates.md  -->

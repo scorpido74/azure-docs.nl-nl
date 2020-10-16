@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/11/2018
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c072298bf5cce4e22fe50d2474c7abe6b915f74
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 6c523c276e736b1fb0d78531eda87b9b64635b2a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919502"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966675"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-iis-web-apps"></a>Azure Multi-Factor Authentication-server configureren voor IIS-webtoepassingen
 
@@ -40,7 +40,7 @@ Als u een IIS-webtoepassing wilt beveiligen die gebruikmaakt van verificatie op 
 1. Klik op de Azure Multi-Factor Authentication-server in het menu links op het pictogram IIS-verificatie.
 2. Klik op het tabblad **op formulier gebaseerd** .
 3. Klik op **Add**.
-4. Als u de gebruikers naam, het wacht woord en de domein variabelen automatisch wilt detecteren, voert u de aanmeldings-URL (bijvoorbeeld `https://localhost/contoso/auth/login.aspx` ) in het dialoog venster formulier-gebaseerde website automatisch configureren in en klikt u op **OK**.
+4. Als u de gebruikers naam, het wacht woord en de domein variabelen automatisch wilt detecteren, voert u de aanmeldings-URL (bijvoorbeeld `https://localhost/contoso/auth/login.aspx` ) in het dialoog venster Form-Based website automatisch configureren in en klikt u op **OK**.
 5. Schakel het selectievakje **Overeenkomende Multi-Factor Authentication-gebruiker vereisen** in als alle gebruikers zijn of moeten worden geïmporteerd in de server en aan Multi-Factor Authentication moeten worden onderworpen. Als een groot aantal gebruikers nog niet is geïmporteerd in de server en/of vrijgesteld zal zijn van Multi-Factor Authentication, laat u het vakje uitgeschakeld.
 6. Als de paginavariabelen niet automatisch kunnen worden gedetecteerd, klikt u op de **Handmatig opgeven** in het dialoogvenster Formulier-gebaseerde website automatisch configureren.
 7. Voer in het dialoogvenster Formulier-gebaseerde website toevoegen in het veld Indienings-URL de URL naar de aanmeldingspagina in en voer een toepassingsnaam in (optioneel). De naam van de toepassing wordt vermeld in Azure Multi-Factor Authentication-rapporten en kan worden weergegeven in verificatieberichten via sms of mobiele apps.
@@ -74,8 +74,8 @@ Als u een IIS-webtoepassing wilt beveiligen die gebruikmaakt van geïntegreerde 
 
 Nadat u de URL's en instellingen voor op formulier gebaseerde of HTTP-verificaties hebt ingesteld, selecteert u de locaties waar de IIS-invoegtoepassingen van Azure Multi-Factor Authentication moeten worden geladen en ingeschakeld in IIS. Gebruik de volgende procedure:
 
-1. Als IIS 6 wordt uitgevoerd, klikt u op het tabblad **ISAPI** . Selecteer de website waaronder de webtoepassing wordt uitgevoerd (bijvoorbeeld standaard website) om de invoeg toepassing Azure multi-factor Authentication ISAPI-filter voor die site in te scha kelen.
-2. Indien uitgevoerd op IIS 7 of hoger, klikt u op het tabblad **systeem eigen module** . Selecteer de server, websites of toepassingen om de IIS-invoeg toepassing op de gewenste niveaus in te scha kelen.
+1. Als IIS 6 wordt uitgevoerd, klikt u op het tabblad **ISAPI** . Selecteer de website waaronder de webtoepassing wordt uitgevoerd (bijvoorbeeld de standaard website) om de invoeg toepassing Azure Multi-Factor Authentication ISAPI-filter voor die site in te scha kelen.
+2. Als wordt uitgevoerd op IIS 7 of hoger, klikt u op het tabblad **systeem eigen module** . Selecteer de server, websites of toepassingen om de IIS-invoeg toepassing op de gewenste niveaus in te scha kelen.
 3. Klik op het vak **IIS-verificatie** inschakelen aan de bovenkant van het scherm. Azure Multi-Factor Authentication is nu de beveiliging van de geselecteerde IIS-toepassing. Zorg ervoor dat gebruikers in de server zijn geïmporteerd.
 
 ## <a name="trusted-ips"></a>Goedgekeurde IP-adressen

@@ -7,12 +7,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
-ms.openlocfilehash: fa48953e5e86ffa758fe556b7fb1072be9d74647
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2417389de98f9998c189e7cbbbcdae77fbb8840
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75360307"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075056"
 ---
 # <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>Opstart taken voor een Cloud service configureren en uitvoeren
 U kunt opstart taken gebruiken om bewerkingen uit te voeren voordat een rol wordt gestart. Bewerkingen die u mogelijk wilt uitvoeren, zijn onder andere het installeren van een onderdeel, het registreren van COM-onderdelen, het instellen van register sleutels of het starten van een langlopend proces.
@@ -154,13 +154,10 @@ Meer informatie over het uitvoeren van enkele [veelvoorkomende opstart taken](cl
 [Verpakken](cloud-services-model-and-package.md) uw Cloud service.  
 
 [ServiceDefinition. csdef]: cloud-services-model-and-package.md#csdef
-[Taak]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
-[Opstarten]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
-[Runtime]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
-[Omgeving]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
-[Variabele]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
-[RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
-[RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
-
-
-
+[Taak]: /previous-versions/azure/reference/gg557552(v=azure.100)#Task
+[Opstarten]: /previous-versions/azure/reference/gg557552(v=azure.100)#Startup
+[Runtime]: /previous-versions/azure/reference/gg557552(v=azure.100)#Runtime
+[Omgeving]: /previous-versions/azure/reference/gg557552(v=azure.100)#Environment
+[Variabele]: /previous-versions/azure/reference/gg557552(v=azure.100)#Variable
+[RoleInstanceValue]: /previous-versions/azure/reference/gg557552(v=azure.100)#RoleInstanceValue
+[RoleEnvironment]: /previous-versions/azure/reference/ee773173(v=azure.100)

@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 8/17/2020
+ms.date: 10/12/2020
 ms.author: yohaddad
-ms.openlocfilehash: d79fd60f4fe3786cfe3106329904d9d262078411
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: b2f66f9d4a96bda323413ac9016f582f5605e6cd
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90024210"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073322"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure Guest OS releases en SDK Compatibility Matrix
 Voorziet in actuele informatie over de nieuwste versies van het Azure-gast besturingssysteem voor Cloud Services. Deze informatie helpt u bij het plannen van het upgradepad voordat een gast besturingssysteem wordt uitgeschakeld. Als u uw rollen configureert voor het gebruik van *automatische* updates van gast besturingssystemen zoals beschreven in de update-instellingen van het [Azure-gast besturingssysteem][Azure Guest OS Update Settings], is het niet belang rijk dat u deze pagina leest.
@@ -41,6 +41,9 @@ Voorziet in actuele informatie over de nieuwste versies van het Azure-gast bestu
 Weet u niet zeker hoe u uw gast besturingssysteem kunt bijwerken? Bekijk [Dit][cloud updates] uit.
 
 ## <a name="news-updates"></a>Nieuws updates
+
+###### <a name="october-10-2020"></a>**10 oktober 2020**
+Het besturings systeem september gast is uitgebracht. 
 
 ###### <a name="september-5-2020"></a>**5 september 2020**
 Het besturings systeem voor augustus gast is uitgebracht. 
@@ -140,8 +143,9 @@ Het besturings systeem september gast is uitgebracht.
 
 | Configuratie teken reeks | Releasedatum | Datum uitschakelen |
 | --- | --- | --- |
+|  WA-GUEST-OS-6.23 _202009-01  |  10 oktober 2020  |  Post 6,25  |  
 |  WA-GUEST-OS-6.22 _202008-02  |  5 september 2020  |  Post 6,24  |  
-|  WA-GUEST-OS-6.21 _202007-01  |  17 augustus 2020  |  Post 6,23  |  
+|~~WA-GUEST-OS-6.21 _202007-01~~|  17 augustus 2020  |  10 oktober 2020  |  
 |~~WA-GUEST-OS-6.20 _202006-02~~|  10 augustus 2020  |  5 september 2020  |  
 |~~WA-GUEST-OS-6.19 _202005-02~~|  2 juni 2020  |  17 augustus 2020  |  
 |~~WA-GUEST-OS-6.18 _202004-01~~|  4 mei 2020  |  10 augustus 2020  |  
@@ -175,8 +179,9 @@ Het besturings systeem september gast is uitgebracht.
 
 | Configuratie teken reeks | Releasedatum | Datum uitschakelen |
 | --- | --- | --- |
+|  WA-GUEST-OS-5.47 _202009-01  |  10 oktober 2020  |  Post 5,49  | 
 |  WA-GUEST-OS-5.46 _202008-02  |  5 september 2020  |  Post 5,48  |  
-|  WA-GUEST-OS-5.45 _202007-01  |  17 augustus 2020  |  Post 5,47  |  
+|~~WA-GUEST-OS-5.45 _202007-01~~|  17 augustus 2020  |  10 oktober 2020  |  
 |~~WA-GUEST-OS-5.44 _202006-02~~|  10 augustus 2020  |  5 september 2020  |  
 |~~WA-GUEST-OS-5.43 _202005-02~~|  2 juni 2020  |  17 augustus 2020  |  
 |~~WA-GUEST-OS-5.42 _202004-01~~|  4 mei 2020  |  10 augustus 2020  |  
@@ -207,8 +212,9 @@ Het besturings systeem september gast is uitgebracht.
 
 | Configuratie teken reeks | Releasedatum | Datum uitschakelen |
 | --- | --- | --- |
+|  WA-GUEST-OS-4.82 _202009-01  |  10 oktober 2020  |  Post 4,84  | 
 |  WA-GUEST-OS-4.81 _202008-02  |  5 september 2020  |  Post 4,83  | 
-|  WA-GUEST-OS-4.80 _202007-01  |  17 augustus 2020  |  Post 4,82  | 
+|~~WA-GUEST-OS-4.80 _202007-01~~|  17 augustus 2020  |  10 oktober 2020  | 
 |~~WA-GUEST-OS-4.79 _202006-02~~|  10 augustus 2020  |  5 september 2020  | 
 |~~WA-GUEST-OS-4.78 _202005-02~~|  2 juni 2020  |  17 augustus 2020  |  
 |~~WA-GUEST-OS-4.77 _202004-01~~|  4 mei 2020  |  10 augustus 2020  |  
@@ -239,8 +245,9 @@ Het besturings systeem september gast is uitgebracht.
 
 | Configuratie teken reeks | Releasedatum | Datum uitschakelen |
 | --- | --- | --- |
+|  WA-GUEST-OS-3.89 _202009-01  |  10 oktober 2020  |  Post 3,91  |  
 |  WA-GUEST-OS-3.88 _202008-02  |  5 september 2020  |  Post 3,90  |  
-|  WA-GUEST-OS-3.87 _202007-01  |  17 augustus 2020  |  Post 3,89  |  
+|~~WA-GUEST-OS-3.87 _202007-01~~|  17 augustus 2020  |  10 oktober 2020  |  
 |~~WA-GUEST-OS-3.86 _202006-02~~|  10 augustus 2020  |  5 september 2020  |  
 |~~WA-GUEST-OS-3.85 _202005-02~~|  2 juni 2020  |  17 augustus 2020  |  
 |~~WA-GUEST-OS-3.84 _202004-01~~|  4 mei 2020  |  10 augustus 2020  |  
@@ -271,8 +278,9 @@ Het besturings systeem september gast is uitgebracht.
 
 | Configuratie teken reeks | Releasedatum | Datum uitschakelen |
 | --- | --- | --- |
+|  WA-GUEST-OS-2.102 _202009-01  |  10 oktober 2020  |  Post 2,104  |  
 |  WA-GUEST-OS-2.101 _202008-02  |  5 september 2020  |  Post 2,103  |  
-|  WA-GUEST-OS-2.100 _202007-01  |  17 augustus 2020  |  Post 2,102  |  
+|~~WA-GUEST-OS-2.100 _202007-01~~|  17 augustus 2020  |  10 oktober 2020  |  
 |~~WA-GUEST-OS-2.99 _202006-02~~|  10 augustus 2020  | 5 september 2020  |  
 |~~WA-GUEST-OS-2.98 _202005-02~~|  2 juni 2020  |  17 augustus 2020  |  
 |~~WA-GUEST-OS-2.97 _202004-01~~|  4 mei 2020  |  10 augustus 2020  |  
@@ -352,26 +360,26 @@ Als u het gast besturingssysteem hand matig bijwerkt, raadpleegt u het [uittredi
 ## <a name="guest-os-supportability-and-retirement-policy"></a>Ondersteunings beleid voor gast besturingssystemen en buiten gebruik stellen
 Het beleid voor de ondersteuning van gast besturingssystemen en het buiten gebruik stellen wordt [hier][retirepolicy]uitgelegd.
 
-[cloud updates]: https://docs.microsoft.com/azure/cloud-services/cloud-services-update-azure-service
+[cloud updates]: ./cloud-services-update-azure-service.md
 [RSS-feed voor het gast besturingssysteem bijwerken]: https://raw.githubusercontent.com/MicrosoftDocs/azure-cloud-services-files/master/GuestOS/GuestOSFeed.xml
-[Install .NET on a Cloud Service Role]: https://azure.microsoft.com/documentation/articles/cloud-services-dotnet-install-dotnet/?WT.mc_id=azurebg_email_Trans_963_RevisedNET_Update
+[Install .NET on a Cloud Service Role]: ./cloud-services-dotnet-install-dotnet.md?WT.mc_id=azurebg_email_Trans_963_RevisedNET_Update
 [Azure Guest OS Update Settings]: cloud-services-how-to-configure-portal.md
 [ssl3 announcement]: https://azure.microsoft.com/blog/2014/12/09/azure-security-ssl-3-0-update/
-[Microsoft Security Advisory 3009008]: https://technet.microsoft.com/library/security/3009008.aspx
+[Microsoft Security Advisory 3009008]: /security-updates/SecurityAdvisories/2015/3009008
 [ssl3-fixit]: https://go.microsoft.com/?linkid=9863266
-[MS14-066]: https://technet.microsoft.com/library/security/ms14-066.aspx
-[MS14-046]: https://technet.microsoft.com/library/security/ms14-046.aspx
-[retire policy sdk]: https://msdn.microsoft.com/library/dn479282.aspx
+[MS14-066]: /security-updates/SecurityBulletins/2014/ms14-066
+[MS14-046]: /security-updates/SecurityBulletins/2014/ms14-046
+[retire policy sdk]: /previous-versions/azure/reference/dn479282(v=azure.100)
 [server and gos]: https://msdn.microsoft.com/library/dn775043.aspx
 [azuresupport]: https://azure.microsoft.com/support/options/
 [net install pkg]: https://www.microsoft.com/download/details.aspx?id=42643
 [msrc]: https://technet.microsoft.com/security/dn440717.aspx
 [update guest os portal]: https://msdn.microsoft.com/library/gg433101.aspx
 [update guest os svc]: https://msdn.microsoft.com/library/gg456324.aspx
-[restarts]: https://docs.microsoft.com/archive/blogs/kwill/role-instance-restarts-due-to-os-upgrades
+[restarts]: /archive/blogs/kwill/role-instance-restarts-due-to-os-upgrades
 [patches]: cloud-services-guestos-msrc-releases.md
 [retirepolicy]: cloud-services-guestos-retirement-policy.md
 [fam1retire]: cloud-services-guestos-family1-retirement.md
-[fix]: https://technet.microsoft.com/library/security/ms17-010.aspx
+[fix]: /security-updates/SecurityBulletins/2017/ms17-010
 [Windows Azure SDK]: https://www.microsoft.com/en-us/download/details.aspx?id=54917
-[grotere]: https://docs.microsoft.com/azure/cloud-services/applications-dont-support-tls-1-2  
+[grotere]: ./applications-dont-support-tls-1-2.md

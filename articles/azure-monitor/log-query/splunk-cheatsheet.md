@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/21/2018
 ms.openlocfilehash: 00fdaf93553c97112c67caa66cb2246756b63c33
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86207488"
 ---
 # <a name="splunk-to-azure-monitor-log-query"></a>Splunk naar Azure Monitor-logboek query
@@ -25,15 +25,15 @@ In de volgende tabel worden de concepten en gegevens structuren tussen Splunk en
  | --- | --- | --- | ---
  | Implementatie-eenheid  | cluster |  cluster |  Azure Monitor kunnen wille keurige query's op meerdere clusters worden uitgevoerd. Splunk niet. |
  | Gegevens caches |  buckets  |  Cache-en bewaar beleid |  Hiermee bepaalt u de periode en het cache niveau voor de gegevens. Deze instelling heeft rechtstreeks gevolgen voor de prestaties van query's en kosten voor de implementatie. |
- | Logische partitie van gegevens  |  TabIndex  |  database  |  Logische schei ding van de gegevens toestaan. Met beide implementaties kunnen vakbonden samen voegen en deel nemen aan deze partities. |
+ | Logische partitie van gegevens  |  index  |  database  |  Logische schei ding van de gegevens toestaan. Met beide implementaties kunnen vakbonden samen voegen en deel nemen aan deze partities. |
  | Meta gegevens van gestructureerde gebeurtenissen | N.v.t. | table |  Splunk heeft niet het concept dat wordt weer gegeven in de Zoek taal van de meta gegevens van gebeurtenissen. Azure Monitor Logboeken bevat het concept van een tabel, die kolommen bevat. Elk gebeurtenis exemplaar is toegewezen aan een rij. |
- | Gegevens record | gebeurtenislog | rijkoppen |  Alleen terminologie wijzigen. |
+ | Gegevens record | gebeurtenislog | rij |  Alleen terminologie wijzigen. |
  | Gegevens record kenmerk | veld |  kolom |  In Azure Monitor is dit vooraf gedefinieerd als onderdeel van de tabel structuur. In Splunk heeft elke gebeurtenis een eigen set velden. |
  | Typen | param1 |  param1 |  Azure Monitor gegevens typen zijn explicieter, omdat ze zijn ingesteld voor de kolommen. Beide hebben de mogelijkheid om dynamisch te werken met gegevens typen en een ongeveer gelijkwaardige verzameling gegevens sets, waaronder JSON-ondersteuning. |
  | Query's en zoek opdrachten  | zoeken | query |  Concepten zijn in wezen hetzelfde als die van zowel Azure Monitor als Splunk. |
  | Opname tijd van gebeurtenis | Systeem tijd | ingestion_time() |  In Splunk haalt elke gebeurtenis een systeem tijds tempel van het tijdstip waarop de gebeurtenis is geïndexeerd. In Azure Monitor kunt u een beleid definiëren met de naam ingestion_time dat een systeem kolom beschrijft waarnaar kan worden verwezen via de functie ingestion_time (). |
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Functies
 
 De volgende tabel bevat functies in Azure Monitor die gelijk zijn aan Splunk-functies.
 
@@ -53,7 +53,7 @@ De volgende tabel bevat functies in Azure Monitor die gelijk zijn aan Splunk-fun
 | searchmatch | == | In Splunk `searchmatch` kunt u zoeken naar de exacte teken reeks.
 | willekeurig | rand()<br>ASELECT (n) | De functie Splunk retourneert een getal tussen nul en 2<sup>31</sup>-1. Azure Monitor ' retourneert een getal tussen 0,0 en 1,0, of als een para meter is gegeven, tussen 0 en n-1.
 | nu | now() | (1)
-| relative_time | totimespan() | (1)<br>In Azure Monitor is het equivalent van relative_time (datetimeVal, offsetVal) datetimeVal + totimespan (offsetVal).<br>Wordt bijvoorbeeld <code>search &#124; eval n=relative_time(now(), "-1d@d")</code> <code>...  &#124; extend myTime = now() - totimespan("1d")</code> .
+| relative_time | totimespan() | (1)<br>In Azure Monitor is het equivalent van relative_time (datetimeVal, offsetVal) datetimeVal + totimespan (offsetVal).<br><code>search &#124; eval n=relative_time(now(), "-1d@d")</code> wordt bijvoorbeeld <code>...  &#124; extend myTime = now() - totimespan("1d")</code>.
 
 (1) in Splunk wordt de functie aangeroepen met de `eval` operator. In Azure Monitor wordt het gebruikt als onderdeel van `extend` of `project` .<br>(2) in Splunk wordt de functie aangeroepen met de `eval` operator. In Azure Monitor kan het worden gebruikt met de `where` operator.
 
@@ -71,7 +71,7 @@ In Splunk kunt u het `search` tref woord weglaten en een niet-geciteerde teken r
 | | Operator | Voorbeeld |
 |:---|:---|:---|
 | **Splunk** | **opdracht** | <code>search Session.Id="c8894ffd-e684-43c9-9125-42adc25cd3fc" earliest=-24h</code> |
-| **Azure Monitor** | **find** | <code>find Session.Id=="c8894ffd-e684-43c9-9125-42adc25cd3fc" and ingestion_time()> ago(24h)</code> |
+| **Azure Monitor** | **moeilijk** | <code>find Session.Id=="c8894ffd-e684-43c9-9125-42adc25cd3fc" and ingestion_time()> ago(24h)</code> |
 
 
 ### <a name="filter"></a>Filter
@@ -107,7 +107,7 @@ Splunk heeft ook een `eval` functie die niet vergelijkbaar is met de `eval` oper
 | **Azure Monitor** | **uitbreidbaar** | <code>Office_Hub_OHubBGTaskError<br>&#124; extend state = iif(Data_Exception == 0,"success" ,"error")</code> |
 
 ### <a name="rename"></a>Naam wijzigen 
-Azure Monitor gebruikt de `project-rename` operator om de naam van een veld te wijzigen. `project-rename`Hiermee kan de query profiteren van alle indexen die vooraf zijn gebouwd voor een veld. Splunk heeft een `rename` operator om hetzelfde te doen.
+Azure Monitor gebruikt de `project-rename` operator om de naam van een veld te wijzigen. `project-rename` Hiermee kan de query profiteren van alle indexen die vooraf zijn gebouwd voor een veld. Splunk heeft een `rename` operator om hetzelfde te doen.
 
 | | Operator | Voorbeeld |
 |:---|:---|:---|
@@ -119,7 +119,7 @@ Splunk lijkt geen operator vergelijkbaar met te hebben `project-away` . U kunt d
 
 | | Operator | Voorbeeld |
 |:---|:---|:---|
-| **Splunk** | **tabel** |  <code>Event.Rule=330009.2<br>&#124; table rule, state</code> |
+| **Splunk** | **table** |  <code>Event.Rule=330009.2<br>&#124; table rule, state</code> |
 | **Azure Monitor** | **project**<br>**project-weg** | <code>Office_Hub_OHubBGTaskError<br>&#124; project exception, state</code> |
 
 ### <a name="aggregation"></a>Aggregatie

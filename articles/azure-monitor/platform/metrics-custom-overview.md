@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/01/2020
 ms.subservice: metrics
 ms.openlocfilehash: 73c9b2bf8cf88ca5e8576c451c9d9ac5f0eae8a3
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88639899"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Aangepaste metrische gegevens in Azure Monitor (preview-versie)
@@ -177,7 +177,7 @@ Nadat aangepaste metrische gegevens zijn verzonden naar Azure Monitor, kunt u ze
 > U moet een rol lezer of Inzender zijn om aangepaste metrische gegevens weer te geven.
 
 ### <a name="browse-your-custom-metrics-via-the-azure-portal"></a>Door uw aangepaste metrische gegevens bladeren via de Azure Portal
-1.    Ga naar [Azure Portal](https://portal.azure.com).
+1.    Ga naar de [Azure Portal](https://portal.azure.com).
 2.    Selecteer het deel venster **monitor** .
 3.    Selecteer **Metrische gegevens**.
 4.    Selecteer een resource waarvoor u aangepaste metrische gegevens hebt verzonden.
@@ -191,10 +191,10 @@ Tijdens de open bare preview-periode is de mogelijkheid om aangepaste metrische 
 |---|---|
 | **VS en Canada** | |
 |VS - west-centraal | https: \/ /westcentralus.monitoring.Azure.com |
-|VS - west 2       | https: \/ /westus2.monitoring.Azure.com |
+|West US 2       | https: \/ /westus2.monitoring.Azure.com |
 |VS - noord-centraal | https: \/ /northcentralus.monitoring.Azure.com
-|VS - zuid-centraal| https: \/ /southcentralus.monitoring.Azure.com |
-|VS - centraal      | https: \/ /centralus.monitoring.Azure.com |
+|South Central US| https: \/ /southcentralus.monitoring.Azure.com |
+|Central US      | https: \/ /centralus.monitoring.Azure.com |
 |Canada - midden | https: \/ /canadacentral.monitoring.Azure.com |
 |VS - oost| https: \/ /eastus.monitoring.Azure.com |
 |VS - oost 2 | https: \/ /eastus2.monitoring.Azure.com |
@@ -208,7 +208,7 @@ Tijdens de open bare preview-periode is de mogelijkheid om aangepaste metrische 
 | **Azië** | |
 |India - centraal | https: \/ /centralindia.monitoring.Azure.com |
 |Australië - oost | https: \/ /australiaeast.monitoring.Azure.com |
-|Japan - oost | https: \/ /japaneast.monitoring.Azure.com |
+|Japan East | https: \/ /japaneast.monitoring.Azure.com |
 |Azië - zuidoost  | https: \/ /southeastasia.monitoring.Azure.com |
 |Azië - oost | https: \/ /EastAsia.monitoring.Azure.com |
 |Korea - centraal   | https: \/ /koreacentral.monitoring.Azure.com |

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/20/2018
 ms.openlocfilehash: 947b509468857b98b868881bdd48adf67a5d60db
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86498998"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Inzichten over uw DNS-infra structuur verzamelen met de preview-oplossing van DNS-analyse
@@ -44,7 +44,7 @@ De volgende tabel beschrijft de verbonden bronnen die worden ondersteund door de
 
 De oplossing verzamelt DNS-inventarisatie-en DNS-gegevens over gebeurtenissen van de DNS-servers waarop een Log Analytics-agent is geïnstalleerd. Deze gegevens worden vervolgens geüpload naar Azure Monitor en weer gegeven in het dash board van de oplossing. Inventaris-gerelateerde gegevens, zoals het aantal DNS-servers, zones en bron records, worden verzameld door de DNS Power shell-cmdlets uit te voeren. De gegevens worden elke twee dagen bijgewerkt. De gebeurtenis gegevens worden in realtime verzameld van de [analyse-en audit logboeken](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn800669(v=ws.11)#enhanc) die zijn opgenomen in de verbeterde DNS-logboek registratie en diagnoses in Windows Server 2012 R2.
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Configuratie
 
 Gebruik de volgende informatie om de oplossing te configureren:
 

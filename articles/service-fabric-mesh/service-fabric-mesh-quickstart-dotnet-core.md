@@ -1,17 +1,17 @@
 ---
-title: 'Quick Start: een web-app implementeren in azure Service Fabric mesh'
+title: 'Quickstart: een web-app maken en implementeren in Azure Service Fabric Mesh'
 description: In deze quickstart kunt u zien hoe u een ASP.NET Core-website maakt en publiceert in Azure Service Fabric Mesh met behulp van Visual Studio.
-author: dkkapur
+author: georgewallace
 ms.topic: quickstart
 ms.date: 07/17/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 276f8860f407693a7ff08048399fa6edf16aaf0a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 15e0c3bcbc19eae344ca3965b2b866ca9a15f28d
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75459066"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840316"
 ---
 # <a name="quickstart-create-and-deploy-a-web-app-to-azure-service-fabric-mesh"></a>Snelstart, een web-app maken en implementeren in Azure Service Fabric Mesh
 
@@ -25,7 +25,7 @@ U hebt een Azure-abonnement nodig. Als u nog geen abonnement op Azure hebt, kunt
 
 ## <a name="create-a-service-fabric-mesh-project"></a>Een Service Fabric Mesh-project maken
 
-Open Visual Studio en selecteer **bestand** > **New** > **project...**
+Open Visual Studio en selecteer **Bestand** > **Nieuw** > **Project...**
 
 In het dialoogvenster **New Project** typt u `mesh` in het vak **Search**. Selecteer de sjabloon **Service Fabric Mesh Application**. (Als u de sjabloon niet ziet, controleert u of u de Mesh-SDK en de previewversie van de hulpmiddelen van Visual Studio hebt geïnstalleerd, zoals beschreven in [set up your development environment](service-fabric-mesh-howto-setup-developer-environment-sdk.md) (uw ontwikkelomgeving instellen).) 
 
@@ -33,7 +33,7 @@ Typ **ServiceFabricMesh1** in het vak **Naam** en stel in het vak **Locatie** he
 
 Controleer of het selectievakje **Create directory for solution** is ingeschakeld en klik op **OK** om het Service Fabric Mesh-project te maken.
 
-![Dialoogvenster Nieuw project van Service Fabric Mesh in Visual Studio](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-new-project.png)
+![Schermopname van het maken van een Service Fabric Mesh-project.](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-new-project.png)
 
 ### <a name="create-a-service"></a>Een service maken
 
@@ -67,11 +67,11 @@ Vervolgens ziet u het dialoogvenster **Service Fabric-toepassing publiceren**.
 
 Selecteer uw Azure-account en -abonnement. Kies een **Locatie**. In dit artikel wordt gebruikgemaakt van **VS - oost**.
 
-Selecteer onder **Resourcegroep****\<Nieuwe resourcegroep maken...>**. Het dialoogvenster **Resourcegroep maken** wordt weergegeven. Stel de **naam van de resourcegroup** en **Locatie** in.  In deze snelstart wordt de locatie **VS - oost** gebruikt en krijgt de groep de naam **sfmeshTutorial1RG** (kies een unieke resourcegroepsnaam als meerdere mensen in uw organisatie gebruikmaken van hetzelfde abonnement).  Klik op **Maken** om de resourcegroep te maken en ga terug naar het publicatiedialoogvenster.
+Selecteer onder **Resourcegroep** de optie **\<Create New Resource Group...>** . Het dialoogvenster **Resourcegroep maken** wordt weergegeven. Stel de **naam van de resourcegroup** en **Locatie** in.  In deze snelstart wordt de locatie **VS - oost** gebruikt en krijgt de groep de naam **sfmeshTutorial1RG** (kies een unieke resourcegroepsnaam als meerdere mensen in uw organisatie gebruikmaken van hetzelfde abonnement).  Klik op **Maken** om de resourcegroep te maken en ga terug naar het publicatiedialoogvenster.
 
-![Dialoogvenster in Visual Studio over nieuwe resourcegroep in Service Fabric Mesh](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-resource-group-dialog.png)
+![Schermopname van het maken van een nieuwe resourcegroep.](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-resource-group-dialog.png)
 
-In het dialoogvenster **Service Fabric-toepassing publiceren** selecteert u onder **Azure Container Registry****\<Nieuw containerregister maken...>**. In het dialoogvenster **Containerregister maken** gebruikt u een unieke naam voor de **Containerregisternaam**. Geef een **Locatie** op (in deze snelstart wordt gebruikgemaakt van **VS - oost**). Selecteer in de vervolgkeuzelijst de **Resourcegroep** die u eerder hebt gemaakt, bijvoorbeeld **sfmeshTutorial1RG**. Stel de **SKU** in op **Basic** en klik vervolgens op **Maken** om terug te keren naar het publicatiedialoogvenster.
+In het dialoogvenster **Service Fabric-toepassing publiceren** selecteert u onder **Azure Container Registry** **\<Create New Container Registry...>** . In het dialoogvenster **Containerregister maken** gebruikt u een unieke naam voor de **Containerregisternaam**. Geef een **Locatie** op (in deze snelstart wordt gebruikgemaakt van **VS - oost**). Selecteer in de vervolgkeuzelijst de **Resourcegroep** die u eerder hebt gemaakt, bijvoorbeeld **sfmeshTutorial1RG**. Stel de **SKU** in op **Basic** en klik vervolgens op **Maken** om terug te keren naar het publicatiedialoogvenster.
 
 ![Dialoogvenster in Visual Studio over nieuwe resourcegroep in Service Fabric Mesh](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-container-registry-dialog.png)
 

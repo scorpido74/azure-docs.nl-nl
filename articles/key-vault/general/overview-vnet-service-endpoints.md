@@ -10,10 +10,10 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
 ms.openlocfilehash: 3b1e71a5aadbe9e6a4fa89d4b3ec0fb6b1d9e6ce
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90530451"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Virtuele netwerk service-eind punten voor Azure Key Vault
@@ -87,5 +87,5 @@ Hier volgt een lijst met vertrouwde services die toegang mogen hebben tot een sl
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Uw sleutel kluis beveiligen](secure-your-key-vault.md)
+* [Uw Key Vault beveiligen](secure-your-key-vault.md)
 * [Azure Key Vault-firewalls en virtuele netwerken configureren](network-security.md)

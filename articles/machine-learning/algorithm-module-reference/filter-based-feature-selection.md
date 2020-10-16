@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: 1afa5df20c9bcbf63f8ad9f527e54f622eba3d19
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/10/2020
+ms.openlocfilehash: f4a7f5581703ae6932f3b40e62085fed76f5e6f2
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893800"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945699"
 ---
 # <a name="filter-based-feature-selection"></a>Functieselectie op basis van filters
 
@@ -36,7 +36,7 @@ Normaal gesp roken gebruikt u alleen de kolommen met de beste scores om uw voors
 
 ## <a name="how-to-choose-a-feature-selection-metric"></a>De metriek van een functie selecteren
 
-De functie selectie module voor het filteren van functies biedt diverse metrische gegevens voor het beoordelen van de informatie waarde in elke kolom. Deze sectie bevat een algemene beschrijving van elke metriek en hoe deze wordt toegepast. U vindt aanvullende vereisten voor het gebruik van elke metriek in de [technische opmerkingen](#technical-notes) en in de [instructies](#how-to-configure-filter-based-feature-selection) voor het configureren van elke module.
+De module Filter-Based onderdelen electie biedt diverse metrische gegevens voor het beoordelen van de informatie waarde in elke kolom. Deze sectie bevat een algemene beschrijving van elke metriek en hoe deze wordt toegepast. U vindt aanvullende vereisten voor het gebruik van elke metriek in de [technische opmerkingen](#technical-notes) en in de [instructies](#how-to-configure-filter-based-feature-selection) voor het configureren van elke module.
 
 -   **Pearson-correlatie**  
 
@@ -52,11 +52,11 @@ De functie selectie module voor het filteren van functies biedt diverse metrisch
 > [!TIP]
 > Als u een andere optie voor de selectie methode voor aangepaste functies nodig hebt, gebruikt u de module [R-script uitvoeren](execute-r-script.md) . 
 
-## <a name="how-to-configure-filter-based-feature-selection"></a>Selectie van functies op basis van filters configureren
+## <a name="how-to-configure-filter-based-feature-selection"></a>Filter-Based functie selectie configureren
 
 U kiest een standaard statistische metrische waarde. De module berekent de correlatie tussen een paar kolommen: de kolom Label en een functie kolom.
 
-1.  Voeg de functie selectie module voor het filteren van functies toe aan uw pijp lijn. U kunt deze vinden in de categorie **functie selectie** in de ontwerper.
+1.  Voeg de module voor het selecteren van Filter-Based onderdelen toe aan uw pijp lijn. U kunt deze vinden in de categorie **functie selectie** in de ontwerper.
 
 2. Verbind een invoer-gegevensset die ten minste twee kolommen bevat die mogelijke functies zijn.  
 
@@ -90,8 +90,14 @@ U kiest een standaard statistische metrische waarde. De module berekent de corre
 
     - Als u minder resultaat kolommen opgeeft dan er functie kolommen zijn, worden de functies gerangschikt op aflopende Score. Alleen de belangrijkste functies worden geretourneerd. 
 
-7.  Dien de pijp lijn in of selecteer de module filter op basis van de functie selectie en selecteer vervolgens **geselecteerde uitvoeren**.
+7.  Verzend de pijp lijn.
 
+> [!IMPORTANT]
+> Als u de **functie selectie op basis van filters** wilt gebruiken in de afleiding, moet u [Select column Transform](./select-columns-transform.md) gebruiken om de functie geselecteerd resultaat op te slaan en [trans formatie](./apply-transformation.md) toe te passen om de geselecteerde functie van trans formatie toe te passen op de Score gegevensset.
+>
+> Raadpleeg de volgende scherm afbeelding om uw pijp lijn te bouwen, om ervoor te zorgen dat de kolom selecties hetzelfde zijn voor het Score proces.
+> [!div class="mx-imgBorder"]
+> ![Voorbeeld pijplijn](media/module/filter-based-feature-selection-score.png)
 
 ## <a name="results"></a>Resultaten
 

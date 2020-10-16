@@ -13,10 +13,10 @@ ms.date: 09/28/2020
 ms.author: aahi
 keywords: on-premises, docker, container
 ms.openlocfilehash: c65a81d9daed85b5bf056d24949e36ec227c19c6
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91460982"
 ---
 # <a name="install-and-run-docker-containers-for-luis"></a>Docker-containers voor LUIS installeren en uitvoeren
@@ -260,9 +260,9 @@ De query parameters configureren hoe en wat wordt geretourneerd in de query-antw
 |Query parameter|Type|Doel|
 |--|--|--|
 |`query`|tekenreeks|De utterance van de gebruiker.|
-|`verbose`|boolean|Een Booleaanse waarde die aangeeft of alle meta gegevens voor de voorspelde modellen moeten worden geretourneerd. De standaardinstelling is onwaar.|
-|`log`|boolean|Registreert query's die later kunnen worden gebruikt voor [actief leren](luis-how-to-review-endpoint-utterances.md). De standaardinstelling is onwaar.|
-|`show-all-intents`|boolean|Een Booleaanse waarde waarmee wordt aangegeven of alleen de intenties of de bovenste Score intentie moeten worden geretourneerd. De standaardinstelling is onwaar.|
+|`verbose`|booleaans|Een Booleaanse waarde die aangeeft of alle meta gegevens voor de voorspelde modellen moeten worden geretourneerd. De standaardinstelling is onwaar.|
+|`log`|booleaans|Registreert query's die later kunnen worden gebruikt voor [actief leren](luis-how-to-review-endpoint-utterances.md). De standaardinstelling is onwaar.|
+|`show-all-intents`|booleaans|Een Booleaanse waarde waarmee wordt aangegeven of alleen de intenties of de bovenste Score intentie moeten worden geretourneerd. De standaardinstelling is onwaar.|
 
 # <a name="v2-prediction-endpoint"></a>[V2-voorspellingseindpunt](#tab/v2)
 
@@ -277,9 +277,9 @@ De query parameters configureren hoe en wat wordt geretourneerd in de query-antw
 |--|--|--|
 |`q`|tekenreeks|De utterance van de gebruiker.|
 |`timezoneOffset`|getal|Met de time zone offset kunt u [de tijd zone wijzigen](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) die wordt gebruikt door de vooraf samengestelde entiteit datetimeV2.|
-|`verbose`|boolean|Retourneert alle intenten en hun scores als deze zijn ingesteld op waar. De standaard waarde is False, waarmee alleen de hoogste intentie wordt geretourneerd.|
-|`staging`|boolean|Retourneert een query van de resultaten van de faserings omgeving indien ingesteld op waar. |
-|`log`|boolean|Registreert query's die later kunnen worden gebruikt voor [actief leren](luis-how-to-review-endpoint-utterances.md). De standaardwaarde is true.|
+|`verbose`|booleaans|Retourneert alle intenten en hun scores als deze zijn ingesteld op waar. De standaard waarde is False, waarmee alleen de hoogste intentie wordt geretourneerd.|
+|`staging`|booleaans|Retourneert een query van de resultaten van de faserings omgeving indien ingesteld op waar. |
+|`log`|booleaans|Registreert query's die later kunnen worden gebruikt voor [actief leren](luis-how-to-review-endpoint-utterances.md). De standaardwaarde is true.|
 
 ***
 
@@ -395,7 +395,7 @@ In dit artikel hebt u concepten en werk stromen geleerd voor het downloaden, ins
 * Bekijk [containers configureren](luis-container-configuration.md) voor configuratie-instellingen.
 * Zie [Luis-container beperkingen](luis-container-limitations.md) voor bekende beperkingen van de functionaliteit.
 * Raadpleeg [problemen oplossen](troubleshooting.md) voor het oplossen van problemen met betrekking tot de functionaliteit van Luis.
-* Meer [Cognitive Services containers](../cognitive-services-container-support.md) gebruiken
+* Gebruik meer [Cognitive Services-containers](../cognitive-services-container-support.md)
 
 <!-- Links - external -->
 [download-published-package]: https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/apps-packagepublishedapplicationasgzip

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: f89358f4ca34c39527d7e65307ada042ba3df7e0
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 6519f9d549c513e03400366447812a170f9ab41c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776150"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978659"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium-opslag: ontwerpen voor hoge prestaties
 
@@ -130,7 +130,7 @@ De prestatie meter items zijn beschikbaar voor processor, geheugen en, elke logi
 | **Max. geheugen** |Hoeveelheid geheugen die nodig is om de toepassing probleemloos uit te voeren |Percentage toegewezen bytes in gebruik |Vmstat gebruiken |
 | **Max. CPU** |Hoeveelheid CPU vereist om toepassing probleemloos uit te voeren |Percentage processor tijd |% util |
 
-Meer informatie over [iostat gebruiken](https://linux.die.net/man/1/iostat) en [perfmon](https://docs.microsoft.com/windows/win32/perfctrs/performance-counters-portal).
+Meer informatie over [iostat gebruiken](https://linux.die.net/man/1/iostat) en [perfmon](/windows/win32/perfctrs/performance-counters-portal).
 
 
 
@@ -183,10 +183,10 @@ Hier volgt een voor beeld van hoe u de IOPS en de door Voer/band breedte kunt be
 
 | Toepassings vereiste | I/O-grootte | IOPS | Door Voer/band breedte |
 | --- | --- | --- | --- |
-| Max. IOPS |8 kB |5.000 |40 MB per seconde |
+| Max. IOPS |8 kB |5\.000 |40 MB per seconde |
 | Maximale door Voer |1024 KB |200 |200 MB per seconde |
 | Maximale door Voer + hoge IOPS |64 kB |3.200 |200 MB per seconde |
-| Maximale IOPS + hoge door Voer |32 kB |5.000 |160 MB per seconde |
+| Maximale IOPS + hoge door Voer |32 kB |5\.000 |160 MB per seconde |
 
 Als u IOPS en band breedte wilt ophalen die hoger is dan de maximum waarde van één Premium-opslag schijf, gebruikt u meerdere Premium-schijven die met elkaar zijn gesegmenteerd. U kunt bijvoorbeeld twee P30-schijven opstrepen om een gecombineerde IOPS van 10.000 IOPS te verkrijgen of een gecombineerde door Voer van 400 MB per seconde. Zoals uitgelegd in de volgende sectie, moet u een VM-grootte gebruiken die ondersteuning biedt voor de gecombineerde schijf-IOPS en-door voer.
 
@@ -197,7 +197,7 @@ Als u de gevolgen van de i/o-grootte voor de prestaties van de toepassing wilt W
 
 ## <a name="high-scale-vm-sizes"></a>VM-grootten hoog schalen
 
-Wanneer u begint met het ontwerpen van een toepassing, selecteert u een virtuele machine om uw toepassing te hosten. Premium Storage wordt geleverd met grootschalige VM-grootten die toepassingen kunnen uitvoeren die een hogere reken kracht vereisen en een hoge I/O-prestaties van de lokale schijf. Deze Vm's bieden snellere processors, een hogere geheugen-naar-kern-verhouding en een SSD (Solid-State Drive) voor de lokale schijf. Voor beelden van virtuele machines met een hoge schaal ondersteuning die Premium Storage zijn de virtuele machines uit de DS-en GS-serie.
+Wanneer u begint met het ontwerpen van een toepassing, selecteert u een virtuele machine om uw toepassing te hosten. Premium Storage wordt geleverd met grootschalige VM-grootten die toepassingen kunnen uitvoeren die een hogere reken kracht vereisen en een hoge I/O-prestaties van de lokale schijf. Deze Vm's bieden snellere processors, een hogere geheugen-naar-kern-verhouding en een Solid-State station (SSD) voor de lokale schijf. Voor beelden van virtuele machines met een hoge schaal ondersteuning die Premium Storage zijn de virtuele machines uit de DS-en GS-serie.
 
 Virtuele machines met een hoge schaal zijn beschikbaar in verschillende groottes met een verschillend aantal CPU-kernen, geheugen, besturings systeem en tijdelijke schijf grootte. Elke VM-grootte heeft ook een maximum aantal gegevens schijven dat u kunt koppelen aan de virtuele machine. Daarom is de gekozen VM-grootte van invloed op de hoeveelheid verwerking, het geheugen en de opslag capaciteit die beschikbaar is voor uw toepassing. Dit is ook van invloed op de reken-en opslag kosten. Hieronder ziet u bijvoorbeeld de specificaties van de grootste VM-grootte in een DS-reeks en een GS-serie:
 
@@ -343,7 +343,7 @@ Er zijn configuratie-instellingen die u kunt wijzigen om deze multi-threading of
 
 Stel bijvoorbeeld dat uw toepassing gebruikmaakt van SQL Server een grote query en een index bewerking tegelijk uitvoert. We gaan ervan uit dat u wilt dat de index bewerking meer presteert vergeleken met de grote query. In een dergelijk geval kunt u de MAXDOP-waarde van de index bewerking hoger instellen dan de waarde voor MAXDOP voor de query. Op deze manier heeft SQL Server een groter aantal processors dat het kan gebruiken voor de index bewerking vergeleken met het aantal processors dat kan worden gebruikt voor de grote query. Houd er rekening mee dat u het aantal threads dat SQL Server gebruikt voor elke bewerking, niet beheert. U kunt het maximum aantal processors bepalen dat specifiek is voor meerdere threads.
 
-Meer informatie over de [mate van parallelle](https://technet.microsoft.com/library/ms188611.aspx) uitvoering in SQL Server. Lees deze instellingen die van invloed zijn op meerdere threads in uw toepassing en de bijbehorende configuraties om de prestaties te optimaliseren.
+Meer informatie over de [mate van parallelle](/previous-versions/sql/sql-server-2008-r2/ms188611(v=sql.105)) uitvoering in SQL Server. Lees deze instellingen die van invloed zijn op meerdere threads in uw toepassing en de bijbehorende configuraties om de prestaties te optimaliseren.
 
 ## <a name="queue-depth"></a>Wachtrij diepte
 

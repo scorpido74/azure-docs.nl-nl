@@ -4,10 +4,10 @@ description: In dit artikel vindt u antwoorden op enkele veelgestelde vragen ove
 ms.topic: article
 ms.date: 07/17/2020
 ms.openlocfilehash: 3f36b8238ccb69b3b1f14166b522e47d5debe54e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87289371"
 ---
 # <a name="azure-devtest-labs-faq"></a>Veelgestelde vragen over Azure DevTest Labs
@@ -29,7 +29,7 @@ We werken momenteel aan het migreren van bestaande blog berichten (met uitzonde 
 Er worden nu uitval updates geboekt via onze Twitter-handle. Volg ons op Twitter om de nieuwste updates te ontvangen op storingen en bekende bugs.
 
 ### <a name="twitter"></a>Twitter
-Onze Twitter-ingang:[@azlabservices](https://twitter.com/azlabservices)
+Onze Twitter-ingang: [@azlabservices](https://twitter.com/azlabservices)
 
 ## <a name="general"></a>Algemeen
 ### <a name="what-if-my-question-isnt-answered-here"></a>Wat gebeurt er als mijn vraag hier niet wordt beantwoord?
@@ -68,7 +68,7 @@ DevTest Labs is een gratis service. Het maken van Labs en het configureren van b
 ## <a name="security"></a>Beveiliging
 
 ### <a name="what-are-the-different-security-levels-in-devtest-labs"></a>Wat zijn de verschillende beveiligings niveaus in DevTest Labs?
-De toegang tot de beveiliging wordt bepaald door Access Control op basis van rollen (RBAC). Meer informatie over de werking van Access vindt u in de verschillen tussen een machtiging, een rol en een bereik, zoals gedefinieerd door RBAC.
+Beveiligings toegang wordt bepaald door Role-Based Access Control (RBAC). Meer informatie over de werking van Access vindt u in de verschillen tussen een machtiging, een rol en een bereik, zoals gedefinieerd door RBAC.
 
 - **Machtiging**: een machtiging is een gedefinieerde toegang tot een specifieke actie. Een machtiging kan bijvoorbeeld lees toegang zijn tot alle virtuele machines.
 - **Rol**: een rol is een set machtigingen die kan worden gegroepeerd en toegewezen aan een gebruiker. Een gebruiker met de rol eigenaar van abonnement heeft bijvoorbeeld toegang tot alle resources in een abonnement.
@@ -277,7 +277,7 @@ Als u het uploaden van VHD-bestanden voor het maken van aangepaste installatie k
 
 Zoeken naar het doel-opslag account dat is gekoppeld aan uw Lab:
 
-1.  Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1.  Meld u aan bij [Azure Portal](https://portal.azure.com).
 2.  Selecteer **resource groepen**in het menu links.
 3.  Zoek en selecteer de resource groep die is gekoppeld aan uw Lab.
 4.  Selecteer een van de opslag accounts onder **overzicht**.

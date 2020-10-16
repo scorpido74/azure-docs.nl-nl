@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
 ms.openlocfilehash: 04ce45f428604275696d83938708bcee0c6c023f
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91536763"
 ---
 # <a name="apply-math-operation"></a>Wiskundige bewerking toepassen
@@ -254,7 +254,7 @@ De volg orde waarin u de kolommen voor het delen en aftrekken hebt gekozen, lijk
 Bewerking|Num1|Num2|Resultaten kolom|Resultaat waarde|
 ----|----|----|----|----
 |Optellen|1|5|Toevoegen (Num2_Num1)| 4|
-|Vermenigvuldiging|1|5|Meerdere (Num2_Num1)|5|
+|Vermenigvuldigen|1|5|Meerdere (Num2_Num1)|5|
 |Aftrekking|1|5|Aftrekken (Num2_Num1)|4|
 |Aftrekking|0|1|Aftrekken (Num2_Num1)|0|
 |Afdeling|1|5|Delen (Num2_Num1)|5|

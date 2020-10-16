@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 5c76e45f09a0f432d2775eb19d3dcaa668294e6f
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84672660"
 ---
 # <a name="language-understanding-luis-container-limitations"></a>Beperkingen van de container Language Understanding (LUIS)
@@ -57,7 +57,7 @@ LUIS-containers bieden ondersteuning voor een subset van de talen die worden [on
 | Hindi | `hi-IN`| ❌ | ❌ | ❌ | ❌ |
 | Italiaans |`it-IT` | ✔️ | ✔️ | ✔️ | ✔️ |
 | Koreaans |`ko-KR` | ✔️ | ❌ | ❌ | Alleen *sleutel woorden* |
-| Marathi | `mr-IN`|❌|❌|❌|❌|
+| Mahrati | `mr-IN`|❌|❌|❌|❌|
 | Portugees (Brazilië) |`pt-BR` | ✔️ | ✔️ | ✔️ | niet alle subcultuuren |
 | Spaans (Spanje) |`es-ES` | ✔️ | ✔️ |✔️|✔️|
 | Spaans (Mexico)|`es-MX` | ❌ | ❌ |✔️|✔️|

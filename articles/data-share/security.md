@@ -1,19 +1,19 @@
 ---
-title: Overzicht van beveiliging voor Azure-gegevens share
-description: Overzicht van beveiliging voor Azure-gegevens share
+title: Beveiligingsoverzicht van Azure Data Share
+description: Beveiligingsoverzicht van Azure Data Share
 author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.openlocfilehash: 10f31b74b461941b15f13e45f90b5fbc408c90fe
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86108410"
 ---
-# <a name="security-overview-for-azure-data-share"></a>Overzicht van beveiliging voor Azure-gegevens share
+# <a name="security-overview-for-azure-data-share"></a>Beveiligingsoverzicht van Azure Data Share
 
 Dit artikel bevat een overzicht van de beveiliging van de Azure data share-service.
 

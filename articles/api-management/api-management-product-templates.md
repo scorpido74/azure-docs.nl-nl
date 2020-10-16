@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 4c8cd4aa3e91c5d69c40e47683818ed8bc9be338
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86249900"
 ---
 # <a name="product-templates-in-azure-api-management"></a>Product sjablonen in azure API Management
@@ -37,7 +37,7 @@ Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="product-list"></a><a name="ProductList"></a>Product lijst  
+##  <a name="product-list"></a><a name="ProductList"></a> Product lijst  
  Met de sjabloon **producten lijst** kunt u de hoofd tekst van de product lijst pagina aanpassen in de ontwikkelaars Portal.  
   
  ![Lijst met producten](./media/api-management-product-templates/APIM_ProductsListTemplatePage.png "APIM_ProductsListTemplatePage")  
@@ -123,7 +123,7 @@ Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de
 }  
 ```  
   
-##  <a name="product"></a><a name="Product"></a>Voortplant  
+##  <a name="product"></a><a name="Product"></a> Voortplant  
  Met de **product** sjabloon kunt u de hoofd tekst van de product pagina aanpassen in de ontwikkelaars Portal.  
   
  ![Product pagina voor ontwikkelaars Portal](./media/api-management-product-templates/APIM_ProductPage.png "APIM_ProductPage")  
@@ -208,7 +208,7 @@ Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de
 |--------------|----------|-----------------|  
 |Product|[Product](api-management-template-data-model-reference.md#Product)|Het opgegeven product.|  
 |IsDeveloperSubscribed|booleaans|Hiermee wordt aangegeven of de huidige gebruiker is geabonneerd op dit product.|  
-|Subscription State|getal|De status van het abonnement. Mogelijke statussen zijn:<br /><br /> -   `0 - suspended`: het abonnement is geblokkeerd en de abonnee kan geen Api's van het product aanroepen.<br />-   `1 - active`: het abonnement is actief.<br />-   `2 - expired`-het abonnement heeft de verval datum bereikt en is gedeactiveerd.<br />-   `3 - submitted`: de abonnements aanvraag is ingediend door de ontwikkelaar, maar is nog niet goedgekeurd of afgekeurd.<br />-   `4 - rejected`-de abonnements aanvraag is geweigerd door een beheerder.<br />-   `5 - cancelled`: het abonnement is geannuleerd door de ontwikkelaar of beheerder.|  
+|Subscription State|getal|De status van het abonnement. Mogelijke statussen zijn:<br /><br /> -   `0 - suspended` : het abonnement is geblokkeerd en de abonnee kan geen Api's van het product aanroepen.<br />-   `1 - active` : het abonnement is actief.<br />-   `2 - expired` -het abonnement heeft de verval datum bereikt en is gedeactiveerd.<br />-   `3 - submitted` : de abonnements aanvraag is ingediend door de ontwikkelaar, maar is nog niet goedgekeurd of afgekeurd.<br />-   `4 - rejected` -de abonnements aanvraag is geweigerd door een beheerder.<br />-   `5 - cancelled` : het abonnement is geannuleerd door de ontwikkelaar of beheerder.|  
 |Limieten|matrix|Deze eigenschap is afgeschaft en mag niet worden gebruikt.|  
 |DelegatedSubscriptionEnabled|booleaans|Of [delegering](./api-management-howto-setup-delegation.md) is ingeschakeld voor dit abonnement.|  
 |DelegatedSubscriptionUrl|tekenreeks|Als delegering is ingeschakeld, wordt de URL van het overgedragen abonnement.|  

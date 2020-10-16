@@ -8,18 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 09/29/2020
+ms.date: 10/07/2020
 ms.author: aahi
-ms.openlocfilehash: 12f3ce506d8b4588dc9c670e49cabd3bc7767566
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: f79152dbfa5a0576cd13484f9b3704eaed3901ea
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91460268"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015921"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Wat is er nieuw in de Text Analytics-API?
 
 De Text Analytics-API wordt doorlopend bijgewerkt. In dit artikel vindt u informatie over nieuwe releases en functies, zodat u op de hoogte blijft van recente ontwikkelingen.
+
+## <a name="october-2020"></a>Oktober 2020
+
+* Hindi-ondersteuning voor Sentimentanalyse v3. x, te beginnen met model versie `2020-04-01` . 
+* Model versie `2020-09-01` voor het v3/languages-eind punt, waarmee verbeterde taal detectie en nauw keurigere verbeteringen worden toegevoegd.
 
 ## <a name="september-2020"></a>September 2020
 
@@ -171,11 +176,11 @@ Er zijn nu extra entiteits typen beschikbaar in de open bare preview-service van
     * Vaardigheid
 
 * Herkenning van de volgende entiteits typen van persoonlijke gegevens (alleen Engels):
-    * Persoon
+    * Person
     * Organisatie
     * Leeftijd als subtype onder hoeveelheid
     * Datum als een subtype onder DateTime
-    * E-mail 
+    * Email 
     * Telefoon nummer (alleen VS)
     * URL
     * IP-adres
@@ -187,9 +192,9 @@ Er zijn nu extra entiteits typen beschikbaar in de open bare preview-service van
 
 #### <a name="named-entity-recognition-ner"></a>NER (Herkenning van benoemde entiteiten)
 
-* Een [Nieuw eind punt](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionPii) voor het herkennen van entiteits typen van persoonlijke gegevens (alleen Engels)
+* Een [Nieuw eind punt](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesRecognitionPii) voor het herkennen van entiteits typen van persoonlijke gegevens (alleen Engels)
 
-* Afzonderlijke eind punten voor [entiteits herkenning](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral) en [entiteits koppeling](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesLinking).
+* Afzonderlijke eind punten voor [entiteits herkenning](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesRecognitionGeneral) en [entiteits koppeling](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesLinking).
 
 * [Model versie](concepts/model-versioning.md) `2019-10-01` , waaronder:
     * Uitgebreide detectie en categorisatie van entiteiten gevonden in tekst. 
@@ -201,7 +206,7 @@ Koppeling van entiteit ondersteunt Engels en Spaans. NER taal ondersteuning vari
 
 #### <a name="sentiment-analysis-v3-public-preview"></a>Open bare preview van Sentimentanalyse v3
 
-* Een [Nieuw eind punt](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment) voor het analyseren van sentiment.
+* Een [Nieuw eind punt](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/Sentiment) voor het analyseren van sentiment.
 * [Model versie](concepts/model-versioning.md) `2019-10-01` , waaronder:
 
     * Aanzienlijke verbeteringen in de nauw keurigheid en Details van de tekst categorisatie en Score van de API.

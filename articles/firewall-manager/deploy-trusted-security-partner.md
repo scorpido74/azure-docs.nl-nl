@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 06/30/2020
 ms.author: victorh
 ms.openlocfilehash: 3323f73c137905fbe677c68d3830d7f609fa0172
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85611574"
 ---
 # <a name="deploy-a-security-partner-provider"></a>Een beveiligingspartnerprovider implementeren
@@ -39,10 +39,10 @@ Sla deze sectie over als u een provider van derden in een bestaande hub implemen
    > Beveiligings partner providers maken verbinding met uw hub met behulp van VPN Gateway tunnels. Als u de VPN Gateway verwijdert, gaan de verbindingen met uw aanbieders van beveiligings partners verloren.
 9. Als u Azure Firewall wilt implementeren voor het filteren van privé verkeer samen met de service provider van derden om het Internet verkeer te filteren, selecteert u een beleid voor Azure Firewall. Zie de [ondersteunde scenario's](trusted-security-partners.md#key-scenarios).
 10. Als u alleen een beveiligings provider van derden wilt implementeren in de hub, selecteert u **Azure firewall: ingeschakeld/uitgeschakeld** om deze in te stellen op **uitgeschakeld**. 
-11. Selecteer **volgende: provider van beveiligings partner**.
+11. Selecteer  **volgende: provider van beveiligings partner**.
 12. Stel **beveiligings partner provider** in op **ingeschakeld**. 
 13. Selecteer een partner. 
-14. Selecteer **Volgende: Controleren en maken**. 
+14. Selecteer **Volgende: Beoordelen en maken**. 
 15. Bekijk de inhoud en selecteer vervolgens **maken**.
 
 De implementatie van de VPN-gateway kan meer dan 30 minuten duren.
@@ -101,7 +101,7 @@ Om tunnels in te stellen voor de VPN Gateway van de virtuele hub, hebben externe
 5. U moet **beveiligde verbindingen** selecteren en de verbindingen selecteren waarop deze routes moeten worden ingesteld. Hiermee wordt aangegeven welke VNets/branches Internet verkeer naar de externe provider kunnen gaan verzenden.
 6. Selecteer vanuit **route**-instellingen **beveiligde verbindingen** onder Internet verkeer en selecteer vervolgens de VNet of vertakkingen (*sites* in virtueel WAN) die moeten worden beveiligd. Selecteer **beveiligd Internet verkeer**.
    ![Beveiligd Internet verkeer](media/deploy-trusted-security-partner/secure-internet-traffic.png)
-7. Ga terug naar de pagina hubs. De status van de provider van de **beveiligings partner** van de hub moet nu worden **beveiligd**.
+7. Ga terug naar de pagina hubs. De status van de provider van de **beveiligings partner** van de hub moet nu worden  **beveiligd**.
 
 ## <a name="branch-or-vnet-internet-traffic-via-third-party-service"></a>Vertakkings-of VNet-Internet verkeer via een service van derden
 
@@ -111,4 +111,4 @@ Na het volt ooien van de stappen voor het instellen van de route worden de virtu
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Zelf studie: uw Cloud netwerk beveiligen met Azure Firewall Manager met behulp van de Azure Portal](secure-cloud-network.md)
+- [Zelfstudie: uw cloudnetwerk beveiligen met Azure Firewall Manager via de Azure-portal](secure-cloud-network.md)

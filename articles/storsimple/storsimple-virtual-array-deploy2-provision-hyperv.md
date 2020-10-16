@@ -16,10 +16,10 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: d6dfc95820e911781ffa88e2207601703f165839
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87070597"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-hyper-v"></a>StorSimple Virtual array implementeren-inrichten in Hyper-V
@@ -168,11 +168,11 @@ Voer de volgende stappen uit om uw virtuele matrix te starten en er verbinding m
    ![Scherm opname van het tabblad vSphere client console met onbepaalde tekens in het aanmeldings venster.](./media/storsimple-virtual-array-deploy2-provision-hyperv/image23.png)
 4. Uit veiligheidsoverwegingen verloopt het beheerderswachtwoord voor het apparaat na de eerste aanmelding. U wordt gevraagd om het wachtwoord te wijzigen.
 
-   ![Scherm afbeelding van het tabblad vSphere client console. tekst op de pagina geeft aan dat het wacht woord moet worden gewijzigd.](./media/storsimple-virtual-array-deploy2-provision-hyperv/image24.png)
+   ![Scherm afbeelding van het tabblad vSphere client console. Tekst op de pagina geeft aan dat het wacht woord moet worden gewijzigd.](./media/storsimple-virtual-array-deploy2-provision-hyperv/image24.png)
 
    Voer een wachtwoord in van minimaal acht tekens. Het wachtwoord moet voldoen aan ten minste 3 van de volgende 4 vereisten: hoofdletters, kleine letters, cijfers en speciale tekens. Voer het wachtwoord opnieuw in ter bevestiging. U ontvangt een melding dat het wachtwoord is gewijzigd.
 
-   ![Scherm afbeelding van het tabblad vSphere client console. tekst op de pagina geeft aan dat het wacht woord is gewijzigd.](./media/storsimple-virtual-array-deploy2-provision-hyperv/image25.png)
+   ![Scherm afbeelding van het tabblad vSphere client console. De tekst op de pagina geeft aan dat het wacht woord is gewijzigd.](./media/storsimple-virtual-array-deploy2-provision-hyperv/image25.png)
 5. Nadat het wacht woord is gewijzigd, wordt de virtuele matrix mogelijk opnieuw opgestart. Wacht tot het apparaat is gestart.
 
    ![Scherm afbeelding van de hoofd pagina van StorSimpleAdmin. Tekst op de pagina vraagt de gebruiker te wachten op de meldings service voor systeem gebeurtenissen.](./media/storsimple-virtual-array-deploy2-provision-hyperv/image26.png)
@@ -192,7 +192,7 @@ Voer de volgende stappen uit om uw virtuele matrix te starten en er verbinding m
 
     `Set-HcsIpAddress –Name Ethernet –IpAddress 10.161.22.90 –Netmask 255.255.255.0 –Gateway 10.161.22.1`
 
-    ![Scherm afbeelding met een console venster met de uitvoer van de opdracht Get-Help set-HcsIpAddress en het juiste gebruik van de set-HcsIpAddress opdracht.](./media/storsimple-virtual-array-deploy2-provision-hyperv/image30.png)
+    ![Scherm afbeelding met een console venster met de uitvoer van de Get-Help Set-HcsIpAddress opdracht en het juiste gebruik van de Set-HcsIpAddress opdracht.](./media/storsimple-virtual-array-deploy2-provision-hyperv/image30.png)
 9. Nadat de initiële installatie voltooid is en het apparaat is opgestart, ziet u de bannertekst van het apparaat. Noteer het IP-adres en de URL die wordt weergegeven in de bannertekst om het apparaat te beheren. Gebruik dit IP-adres om verbinding te maken met de Web-UI van uw virtuele matrix en de lokale installatie en registratie te volt ooien.
 
    ![Scherm opname van een console venster met de banner tekst van het apparaat. Deze tekst bevat het IP-adres en de URL van het apparaat.](./media/storsimple-virtual-array-deploy2-provision-hyperv/image31m.png)

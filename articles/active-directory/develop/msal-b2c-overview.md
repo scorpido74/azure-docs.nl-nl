@@ -14,10 +14,10 @@ ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: 13b478e85278827258ea2fc25a0ee4298039fb1c
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88119785"
 ---
 # <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>Micro soft-verificatie bibliotheek voor Java script gebruiken om te werken met Azure AD B2C
@@ -201,7 +201,7 @@ Wanneer een gebruiker een **verg eten wacht woord**selecteert, genereert uw toep
 
     Nadat het wacht woord opnieuw is ingesteld, keert de gebruiker terug naar de toepassing om u opnieuw aan te melden.
 
-    :::image type="content" source="media/msal-b2c-overview/user-journey-02-password-reset.png" alt-text="Scherm voor wachtwoord herstel wordt weer gegeven door Azure AD B2C" border="false":::
+    :::image type="content" source="media/msal-b2c-overview/user-journey-02-password-reset.png" alt-text="Aanmeldings scherm weer gegeven door Azure AD B2C" border="false":::
 
     Zie [MSAL-fout-en uitzonderings codes](msal-handling-exceptions.md)voor meer informatie over fout codes en het verwerken van uitzonde ringen.
 
@@ -209,6 +209,6 @@ Wanneer een gebruiker een **verg eten wacht woord**selecteert, genereert uw toep
 
 Meer informatie over deze Azure AD B2C-concepten:
 
-- [Gebruikers stromen](../../active-directory-b2c/tutorial-create-user-flows.md)
+- [Gebruikersstromen](../../active-directory-b2c/tutorial-create-user-flows.md)
 - [Aangepast beleid](../../active-directory-b2c/custom-policy-get-started.md)
 - [UX-aanpassing](../../active-directory-b2c/custom-policy-configure-user-input.md)

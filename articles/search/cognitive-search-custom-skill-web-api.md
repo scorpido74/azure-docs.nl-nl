@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: cb5ee7d3549e433fb184b8c55c28b9a28ed89272
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84982115"
 ---
 # <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Aangepaste web API-vaardigheid in een Azure Cognitive Search-verrijkings pijplijn
@@ -37,8 +37,8 @@ Parameters zijn hoofdlettergevoelig.
 | Parameternaam     | Beschrijving |
 |--------------------|-------------|
 | `uri` | De URI van de Web-API waarnaar de _JSON_ -nettolading wordt verzonden. Alleen **https** URI-schema is toegestaan |
-| `httpMethod` | De methode die moet worden gebruikt bij het verzenden van de payload. Toegestane methoden zijn `PUT` of`POST` |
-| `httpHeaders` | Een verzameling sleutel-waardeparen waarbij de sleutels koptekst namen en-waarden vertegenwoordigen header waarden die worden verzonden naar uw web-API en de payload. De volgende headers mogen niet voor komen in deze verzameling: `Accept` , `Accept-Charset` , `Accept-Encoding` ,,, `Content-Length` `Content-Type` `Cookie` , `Host` , `TE` , `Upgrade` ,`Via` |
+| `httpMethod` | De methode die moet worden gebruikt bij het verzenden van de payload. Toegestane methoden zijn `PUT` of `POST` |
+| `httpHeaders` | Een verzameling sleutel-waardeparen waarbij de sleutels koptekst namen en-waarden vertegenwoordigen header waarden die worden verzonden naar uw web-API en de payload. De volgende headers mogen niet voor komen in deze verzameling:  `Accept` , `Accept-Charset` , `Accept-Encoding` ,,, `Content-Length` `Content-Type` `Cookie` , `Host` , `TE` , `Upgrade` , `Via` |
 | `timeout` | Beschrijving Hiermee geeft u de time-out op voor de HTTP-client die de API-aanroep maakt. Deze moet worden ingedeeld als een XSD ' dayTimeDuration-waarde (een beperkte subset van een [ISO 8601 duration](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) -waarde). Bijvoorbeeld `PT60S` gedurende 60 seconden. Als deze niet is ingesteld, wordt de standaard waarde van 30 seconden gekozen. De time-out kan worden ingesteld op een maximum van 230 seconden en een minimum van 1 seconde. |
 | `batchSize` | Beschrijving Hiermee wordt aangegeven hoeveel ' gegevens records ' (Zie de structuur van de _JSON_ -nettolading hieronder) per API-aanroep worden verzonden. Als deze niet is ingesteld, wordt de standaard waarde 1000 gekozen. We raden u aan gebruik te maken van deze para meter om een geschikte verhouding te krijgen tussen het door voeren van de indexering en de belasting van uw API |
 | `degreeOfParallelism` | Beschrijving Indien opgegeven, wordt hiermee het aantal aanroepen aangegeven dat de Indexeer functie parallel moet maken aan het eind punt dat u hebt opgegeven. U kunt deze waarde verlagen als uw eind punt met een te hoge belasting van de aanvraag is mislukt of als u het wilt verhogen als uw eind punt meer aanvragen kan accepteren en u de prestaties van de Indexeer functie wilt verhogen.  Als deze niet is ingesteld, wordt de standaard waarde 5 gebruikt. De `degreeOfParallelism` kan worden ingesteld op een maximum van 10 en een minimum van 1. |
@@ -87,7 +87,7 @@ Er zijn geen vooraf gedefinieerde uitvoer voor deze vaardigheid. Afhankelijk van
 Deze _JSON_ -structuur vertegenwoordigt de nettolading die wordt verzonden naar uw web-API.
 Deze beperkingen worden altijd gevolgd:
 
-* De entiteit op het hoogste niveau wordt aangeroepen `values` en is een matrix met objecten. Het aantal objecten is de meeste`batchSize`
+* De entiteit op het hoogste niveau wordt aangeroepen `values` en is een matrix met objecten. Het aantal objecten is de meeste `batchSize`
 * Elk object in de `values` matrix heeft
     * Een `recordId` eigenschap die een **unieke** teken reeks is, die wordt gebruikt om die record te identificeren.
     * Een `data` eigenschap die een _JSON_ -object is. De velden van de `data` eigenschap komen overeen met de namen die zijn opgegeven in de `inputs` sectie van de vaardigheids definitie. De waarde van deze velden gaat uit `source` van deze velden (die mogelijk afkomstig zijn uit een veld in het document of mogelijk van een andere vaardigheid)
@@ -201,7 +201,7 @@ Naast de Web-API die niet beschikbaar is, of het verzenden van niet-geslaagde st
 
 Als de Web-API niet beschikbaar is of een HTTP-fout retourneert, wordt een beschrijvende fout met alle beschik bare Details over de HTTP-fout toegevoegd aan de indexerings geschiedenis.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 + [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)
 + [Aangepaste vaardigheid toevoegen aan een AI-verrijkings pijplijn](cognitive-search-custom-skill-interface.md)

@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9bc3175017e5b26251d1a12d0d1e2c51c4e5f9c9
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87908792"
 ---
 # <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>Hoe gebruikers in uw organisatie gast gebruikers kunnen uitnodigen voor een app
@@ -102,7 +102,7 @@ Voor Self-service app-beheer is een aantal initiële installaties vereist door e
 
 ### <a name="configure-the-app-for-self-service-and-assign-the-group-to-the-app"></a>De app configureren voor Self-service en de groep toewijzen aan de app
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als een Azure AD-beheerder of globale beheerder.
-2. Selecteer **Azure Active Directory**in het navigatie deel venster.
+2. Selecteer in het navigatiedeelvenster de service **Azure Active Directory**.
 3. Selecteer onder **beheren**de optie **bedrijfs toepassingen**  >  **alle toepassingen**.
 4. Zoek en open de app in de lijst met toepassingen.
 5. Selecteer onder **beheren**de optie **eenmalige aanmelding**en configureer de toepassing voor eenmalige aanmelding. (Zie [eenmalige aanmelding beheren voor zakelijke apps](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-non-gallery-applications)(Engelstalig) voor meer informatie.

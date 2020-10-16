@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: seodec18,seoapr2020
 ms.date: 04/17/2020
 ms.openlocfilehash: 7792ac688ede32155ec32e1f4ba25b328102f86c
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86079833"
 ---
 # <a name="enterprise-security-package-configurations-with-azure-active-directory-domain-services-in-hdinsight"></a>Enterprise Security Package configuraties met Azure Active Directory Domain Services in HDInsight
@@ -64,7 +64,7 @@ Gebruik een door de *gebruiker toegewezen beheerde identiteit* voor het vereenvo
 
 Bepaalde Domain Services-bewerkingen, zoals het maken van organisatie-eenheden en service-principals, zijn vereist voor HDInsight-Enterprise Security Package. U kunt in elk abonnement beheerde identiteiten maken. Zie [beheerde identiteiten voor Azure-resources](../../active-directory/managed-identities-azure-resources/overview.md)voor meer informatie over beheerde identiteiten in het algemeen. Zie [beheerde identiteiten in azure hdinsight](../hdinsight-managed-identities.md)voor meer informatie over de werking van beheerde identiteiten in azure hdinsight.
 
-Als u ESP-clusters wilt instellen, moet u een door de gebruiker toegewezen beheerde identiteit maken als u er nog geen hebt. Zie [`Create, list, delete, or assign a role to a user-assigned managed identity by using the Azure portal`](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) .
+Als u ESP-clusters wilt instellen, moet u een door de gebruiker toegewezen beheerde identiteit maken als u er nog geen hebt. Zie [`Create, list, delete, or assign a role to a user-assigned managed identity by using the Azure portal`](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md).
 
 Wijs vervolgens de rol van **HDInsight Domain Services-Inzender** toe aan de beheerde identiteit in **toegangs beheer** voor Azure AD DS. U hebt Azure AD DS-beheerders bevoegdheden nodig om deze roltoewijzing te kunnen maken.
 

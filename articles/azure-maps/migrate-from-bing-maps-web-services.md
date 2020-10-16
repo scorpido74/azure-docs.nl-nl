@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 4520332fbc5040aff682ce52e819fa4a940999cc
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 14e0998b75e0e5bd3ae996f5f5010ecc50180f14
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90108031"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741666"
 ---
 # <a name="migrate-web-service-from-bing-maps"></a>Webservice migreren vanuit Bing Maps
 
@@ -249,7 +249,7 @@ De API voor routering in Azure Maps bevat veel extra functies die niet beschikba
 
 Er zijn verschillende manieren waarop u coördinaten kunt uitlijnen met wegen in Azure Maps.
 
--   Gebruik de API voor routebeschrijvingen om coördinaten uit te lijnen en een logische route te koppelen aan het wegennet.
+-   Gebruik de API voor routebeschrijvingen om coördinaten uit te lijnen op een logische route over het wegennet.
 -   Gebruik de Azure Maps Web SDK om afzonderlijke coördinaten uit te lijnen met de dichtstbijzijnde weg op de vectortegels.
 -   Gebruik de Azure Maps-vectortegels om afzonderlijke coördinaten uit te lijnen.
 

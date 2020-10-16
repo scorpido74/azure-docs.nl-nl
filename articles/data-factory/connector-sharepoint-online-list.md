@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: jingwang
 ms.openlocfilehash: f560a01c4ec00649157a9c43aedf0ed6cfc2e050
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83871922"
 ---
 # <a name="copy-data-from-sharepoint-online-list-by-using-azure-data-factory"></a>Gegevens uit de share point online-lijst kopiëren met behulp van Azure Data Factory
@@ -28,7 +28,7 @@ In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factor
 Deze share point online List-connector wordt ondersteund voor de volgende activiteiten:
 
 - [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
-- [Opzoek activiteit](control-flow-lookup-activity.md)
+- [Activiteit Lookup](control-flow-lookup-activity.md)
 
 U kunt gegevens uit de share point online-lijst kopiëren naar elk ondersteund Sink-gegevens archief. Zie [ondersteunde gegevens archieven en-indelingen](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevens archieven die door de Kopieer activiteit worden ondersteund als bronnen en Sinks.
 
@@ -55,8 +55,8 @@ De share Point List Online-connector maakt gebruik van Service-Principal-verific
     1. Open share point online-site koppeling bijvoorbeeld `https://[your_site_url]/_layouts/15/appinv.aspx` (Vervang de URL van de site).
     2. Zoek de toepassings-ID die u hebt geregistreerd, vul de lege velden in en klik op maken.
 
-        - App-domein:`localhost.com`
-        - Omleidings-URL:`https://www.localhost.com`
+        - App-domein: `localhost.com`
+        - Omleidings-URL: `https://www.localhost.com`
         - XML voor machtigings aanvraag:
 
         ```xml
@@ -81,12 +81,12 @@ De volgende eigenschappen worden ondersteund voor een gekoppelde service van een
 
 | **Eigenschap**        | **Beschrijving**                                              | **Vereist** |
 | ------------------- | ------------------------------------------------------------ | ------------ |
-| type                | De eigenschap type moet worden ingesteld op: **SharePointOnlineList**.  | Yes          |
-| siteUrl             | De URL van de share point online-site, bijvoorbeeld `https://contoso.sharepoint.com/sites/siteName` . | Yes          |
-| servicePrincipalId  | De client-ID van de toepassing die is geregistreerd in Azure Active Directory. | Yes          |
-| servicePrincipalKey | De sleutel van de toepassing. Markeer dit veld als **SecureString** om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Yes          |
-| tenantId            | De Tenant-ID waaronder uw toepassing zich bevindt.          | Yes          |
-| connectVia          | De [Integration runtime](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevens archief. Meer informatie over de [vereisten](#prerequisites)vindt u eerder in dit artikel. Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. | No           |
+| type                | De eigenschap type moet worden ingesteld op: **SharePointOnlineList**.  | Ja          |
+| siteUrl             | De URL van de share point online-site, bijvoorbeeld `https://contoso.sharepoint.com/sites/siteName` . | Ja          |
+| servicePrincipalId  | De client-ID van de toepassing die is geregistreerd in Azure Active Directory. | Ja          |
+| servicePrincipalKey | De sleutel van de toepassing. Markeer dit veld als **SecureString** om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja          |
+| tenantId            | De Tenant-ID waaronder uw toepassing zich bevindt.          | Ja          |
+| connectVia          | De [Integration runtime](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevens archief. Meer informatie over de [vereisten](#prerequisites)vindt u eerder in dit artikel. Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. | Nee           |
 
 **Voorbeeld:**
 
@@ -114,8 +114,8 @@ Zie [gegevens sets en gekoppelde services](concepts-datasets-linked-services.md)
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap **type** van de DataSet moet worden ingesteld op **SharePointOnlineLResource**. | Yes |
-| listName | De naam van de share point online-lijst. | Yes |
+| type | De eigenschap **type** van de DataSet moet worden ingesteld op **SharePointOnlineLResource**. | Ja |
+| listName | De naam van de share point online-lijst. | Ja |
 
 **Voorbeeld**
 
@@ -147,9 +147,9 @@ Als u gegevens wilt kopiëren uit de share point online-lijst, worden de volgend
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap **type** van de bron van de Kopieer activiteit moet zijn ingesteld op **SharePointOnlineListSource**. | Yes |
-| query | Aangepaste OData-query opties voor het filteren van gegevens. Bijvoorbeeld: `"$top=10&$select=Title,Number"`. | No |
-| httpRequestTimeout | De time-out (in seconden) voor de HTTP-aanvraag om een antwoord te krijgen. De standaard waarde is 300 (5 minuten). | No |
+| type | De eigenschap **type** van de bron van de Kopieer activiteit moet zijn ingesteld op **SharePointOnlineListSource**. | Ja |
+| query | Aangepaste OData-query opties voor het filteren van gegevens. Bijvoorbeeld: `"$top=10&$select=Title,Number"`. | Nee |
+| httpRequestTimeout | De time-out (in seconden) voor de HTTP-aanvraag om een antwoord te krijgen. De standaard waarde is 300 (5 minuten). | Nee |
 
 **Voorbeeld**
 
@@ -196,7 +196,7 @@ Wanneer u gegevens kopieert vanuit share point online-lijst, worden de volgende 
 | Valuta ($, ¥, €)                              | Edm.Double                                           | Dubbel                                   |
 | Datum en tijd                                   | EDM. DateTime                                         | DateTime                                 |
 | Opzoeken (informatie die al op deze site aanwezig is)       | Edm.Int32                                            | Int32                                    |
-| Ja/Nee (selectie vakje)                              | Edm.Boolean                                          | Boolean-waarde                                  |
+| Ja/Nee (selectie vakje)                              | Edm.Boolean                                          | Booleaans                                  |
 | Persoon of groep                                 | Edm.Int32                                            | Int32                                    |
 | Hyper Link of afbeelding                            | Edm.String                                           | Tekenreeks                                   |
 | Berekend (berekening op basis van andere kolommen) | EDM. String/EDM. Double/EDM. DateTime/EDM. Boolean | Teken reeks/dubbele/DateTime/Boolean     |
@@ -219,7 +219,7 @@ U kunt een bestand vanuit share point online kopiëren met behulp van de **webac
     - **Methode**: post
     - **Kopteksten**:
         - Content-type: Application/x-www-form-urlencoded
-    - **Hoofd tekst**: `grant_type=client_credentials&client_id=[Client-ID]@[Tenant-ID]&client_secret=[Client-Secret]&resource=00000003-0000-0ff1-ce00-000000000000/[Tenant-Name].sharepoint.com@[Tenant-ID]` . Vervang de client-ID, het client geheim, de Tenant-ID en de Tenant naam.
+    - **Hoofd tekst**:  `grant_type=client_credentials&client_id=[Client-ID]@[Tenant-ID]&client_secret=[Client-Secret]&resource=00000003-0000-0ff1-ce00-000000000000/[Tenant-Name].sharepoint.com@[Tenant-ID]` . Vervang de client-ID, het client geheim, de Tenant-ID en de Tenant naam.
 
     > [!CAUTION]
     > Stel de optie voor beveiligde uitvoer in op waar in de webactiviteit om te voor komen dat de token waarde wordt vastgelegd in tekst zonder opmaak. Voor verdere activiteiten waarvoor deze waarde wordt gebruikt, moet de optie voor beveiligde invoer zijn ingesteld op waar.

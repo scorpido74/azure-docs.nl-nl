@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 08/21/2020
 ms.author: victorh
 ms.openlocfilehash: 6fb613578e520f50701c9a09169f2d78c0c08c4f
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88723993"
 ---
 # <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Zelfstudie: Een toepassingsgateway maken en configureren waarmee meerdere websites worden gehost via Azure PortaI
@@ -50,7 +50,7 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
    - **Resourcegroep**: Selecteer **myResourceGroupAG** als de resourcegroep. Als deze nog niet bestaat, selecteert u **Nieuwe maken** om deze te maken.
    - **Naam toepassingsgateway**: Typ *myAppGateway* als naam voor de toepassingsgateway.
 
-     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png" alt-text="Een toepassingsgateway maken":::
+     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png" alt-text="Een toepassingsgateway voor meerdere sites maken":::
 
 2.  Er is een virtueel netwerk nodig voor communicatie tussen de resources die u maakt. U kunt een nieuw virtueel netwerk maken of een bestaand gebruiken. In dit voorbeeld maakt u een virtueel netwerk op hetzelfde moment dat u de toepassingsgateway maakt. Instanties van toepassingsgateways worden in afzonderlijke subnetten gemaakt. In dit voorbeeld maakt u twee subnetten: één voor de toepassingsgateway en één voor de back-endservers.
 
@@ -66,7 +66,7 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
 
     Selecteer **OK** om het venster **Virtueel netwerk maken** te sluiten en de instellingen van het virtuele netwerk op te slaan.
 
-     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-vnet.png" alt-text="VNet maken":::
+     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-vnet.png" alt-text="Een toepassingsgateway voor meerdere sites maken":::
     
 3. Accepteer in het tabblad **Basisinstellingen** de standaardwaarden voor de overige instellingen en selecteer dan **Volgende: Front-ends**.
 
@@ -78,7 +78,7 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
 
 2. Kies **Nieuw maken** voor het **Openbaar IP-adres** en voer *myAGPublicIPAddress* in als naam voor het openbaar IP-adres en selecteer vervolgens **OK**. 
 
-     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png" alt-text="Nog een VNet maken":::
+     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png" alt-text="Een toepassingsgateway voor meerdere sites maken":::
 
 3. Selecteer **Volgende: Back-ends**.
 
@@ -96,7 +96,7 @@ De back-endpool word gebruikt om aanvragen te routeren naar de back-endservers d
 3. Selecteer in het venster **Een back-endpool maken** de optie **Toevoegen** om de configuratie van de back-endpool op te slaan en terug te keren naar het tabblad **Back-ends**.
 4. Voeg nu nog een back-endpool toe met de naam *fabrikamPool*.
 
-    :::image type="content" source="./media/create-multiple-sites-portal/backend-pools.png" alt-text="Back-ends maken":::
+    :::image type="content" source="./media/create-multiple-sites-portal/backend-pools.png" alt-text="Een toepassingsgateway voor meerdere sites maken":::
 
 4. Selecteer in het tabblad **Back-ends** de optie **Volgende: Configuratie**.
 
@@ -119,7 +119,7 @@ Op het tabblad **Configuratie** verbindt u de front-end- en de back-endpool die 
 
    Accepteer de standaardwaarden voor de overige instellingen in het tabblad **Listener** en selecteer vervolgens het tabblad **Back-enddoelen** om de rest van de regel voor doorsturen te configureren.
 
-   :::image type="content" source="./media/create-multiple-sites-portal/routing-rule.png" alt-text="Een regel voor doorsturen maken":::
+   :::image type="content" source="./media/create-multiple-sites-portal/routing-rule.png" alt-text="Een toepassingsgateway voor meerdere sites maken":::
 
 4. Selecteer op het tabblad **Back-enddoelen** de optie **contosoPool** als het **back-enddoel**.
 
@@ -128,7 +128,7 @@ Op het tabblad **Configuratie** verbindt u de front-end- en de back-endpool die 
 6. Selecteer in het venster **Een regel voor doorsturen toevoegen** de optie **Toevoegen** om de routeringsregel op te slaan en terug te keren naar het tabblad **Configuratie**.
 7. Selecteer **Een regel toevoegen** en voeg een vergelijkbare regel, listener, back-enddoel en HTTP-instelling voor Fabrikam toe.
 
-     :::image type="content" source="./media/create-multiple-sites-portal/fabrikam-rule.png" alt-text="Fabrikam-regel":::
+     :::image type="content" source="./media/create-multiple-sites-portal/fabrikam-rule.png" alt-text="Een toepassingsgateway voor meerdere sites maken":::
 
 7. Selecteer **Volgende: Tags** en vervolgens **Volgende: Beoordelen en maken**.
 

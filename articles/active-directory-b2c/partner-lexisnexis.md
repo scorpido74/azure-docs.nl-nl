@@ -11,10 +11,10 @@ ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
 ms.openlocfilehash: c753e9a18f9869e1bf11aa437fb60484f2553e17
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91259251"
 ---
 # <a name="tutorial-for-configuring-lexisnexis-with-azure-active-directory-b2c"></a>Zelf studie voor het configureren van LexisNexis met Azure Active Directory B2C
@@ -82,7 +82,7 @@ Implementeer de meegeleverde [API-code](https://github.com/azure-ad-b2c/partner-
 
 Toepassings instellingen kunnen worden [geconfigureerd in de app service in azure](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings).  Met deze methode kunnen instellingen veilig worden geconfigureerd zonder deze in een opslag plaats te controleren. U moet de volgende instellingen opgeven voor de rest-API:
 
-| Toepassingsinstellingen | Bron | Opmerkingen |
+| Toepassingsinstellingen | Bron | Notities |
 | :-------- | :------------| :-----------|
 |ThreatMetrix: URL | ThreatMetrix-account configuratie |     |
 |ThreatMetrix: OrgId | ThreatMetrix-account configuratie |     |

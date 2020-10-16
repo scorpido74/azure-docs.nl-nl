@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: aa0b3a05fb26f6be951b697145d7b22e03b7792d
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86171615"
 ---
 # <a name="delivery-and-retry"></a>Leveren en opnieuw proberen
@@ -25,14 +25,14 @@ Event Grid biedt een duurzame levering. Er wordt een poging gedaan om elk berich
 
 Event Grid wacht een reactie van 60 seconden nadat een bericht is afgeleverd. Als het eind punt van de abonnee niet het antwoord stuurt, wordt het bericht in een van onze back-upwachtrijen voor volgende pogingen in de wachtrij geplaatst.
 
-Er zijn twee vooraf geconfigureerde back-ups van wacht rijen die bepalen op welk schema een nieuwe poging wordt gedaan. Dat zijn:
+Er zijn twee vooraf geconfigureerde back-ups van wacht rijen die bepalen op welk schema een nieuwe poging wordt gedaan. Dit zijn:
 
 | Schema | Beschrijving |
 | ---------| ------------ |
 | 1 minuut | Berichten die hier worden beëindigd, worden elke minuut geprobeerd.
 | 10 minuten | Berichten die hier worden beëindigd, worden elke tien minuten geprobeerd.
 
-### <a name="how-it-works"></a>Hoe werkt het?
+### <a name="how-it-works"></a>Uitleg
 
 1. Bericht binnenkomt in de Event Grid-module. Er wordt geprobeerd deze direct te leveren.
 1. Als er een fout optreedt, wordt het bericht in de wachtrij van 1 minuut in de wacht gezet en na een minuut opnieuw geprobeerd.
@@ -41,7 +41,7 @@ Er zijn twee vooraf geconfigureerde back-ups van wacht rijen die bepalen op welk
 
 ## <a name="retry-policy-limits"></a>Limieten voor beleid opnieuw proberen
 
-Er zijn twee configuraties die het beleid voor opnieuw proberen bepalen. Dat zijn:
+Er zijn twee configuraties die het beleid voor opnieuw proberen bepalen. Dit zijn:
 
 * Maximum aantal pogingen
 * Time-to-Live (TTL) van gebeurtenis

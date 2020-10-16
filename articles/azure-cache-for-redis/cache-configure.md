@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 81a65c088fd83ce179f67edd1ecdb96149dd1614
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: 22025e7be9a0ff276336511a906055dc31a67230
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91840248"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089720"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Azure-cache configureren voor redis
 In dit onderwerp worden de configuraties beschreven die beschikbaar zijn voor uw Azure-cache voor redis-exemplaren. In dit onderwerp wordt ook de standaard redis-server configuratie voor Azure cache voor redis-exemplaren besproken.
@@ -72,7 +72,7 @@ Klik op **activiteiten logboek** om de acties weer te geven die zijn uitgevoerd 
 
 ### <a name="access-control-iam"></a>Toegangsbeheer (IAM)
 
-De sectie **toegangs beheer (IAM)** biedt ondersteuning voor op rollen gebaseerd toegangs beheer (RBAC) in de Azure Portal. Met deze configuratie kunnen organisaties eenvoudig en nauw keurig voldoen aan de vereisten voor toegangs beheer. Zie op [rollen gebaseerd toegangs beheer in de Azure Portal](../role-based-access-control/role-assignments-portal.md)voor meer informatie.
+De sectie **toegangs beheer (IAM)** biedt ondersteuning voor op rollen gebaseerd toegangs beheer (Azure RBAC) van Azure in de Azure Portal. Met deze configuratie kunnen organisaties eenvoudig en nauw keurig voldoen aan de vereisten voor toegangs beheer. Zie voor meer informatie op [rollen gebaseerd toegangs beheer van Azure in de Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
 ### <a name="tags"></a>Tags
 
@@ -214,7 +214,7 @@ Als u de cluster grootte wilt wijzigen, gebruikt u de schuif regelaar of typt u 
 
 
 ### <a name="redis-data-persistence"></a>Redis-gegevenspersistentie
-Klik op **gegevens persistentie** om gegevens persistentie voor uw Premium-cache in te scha kelen, uit te scha kelen of te configureren. Azure cache voor redis biedt redis persistentie met behulp van [RDB-persistentie](cache-how-to-premium-persistence.md#configure-rdb-persistence) of [AOF-persistentie](cache-how-to-premium-persistence.md#configure-aof-persistence).
+Klik op **gegevens persistentie** om gegevens persistentie voor uw Premium-cache in te scha kelen, uit te scha kelen of te configureren. Azure cache voor redis biedt redis persistentie met behulp van RDB-persistentie of AOF-persistentie.
 
 Zie [Persistentie configureren voor een Premium Azure Cache voor Redis](cache-how-to-premium-persistence.md) voor meer informatie.
 
@@ -392,7 +392,7 @@ Nieuwe Azure-cache voor redis-exemplaren worden geconfigureerd met de volgende s
 | `maxclients` |Is afhankelijk van de prijs categorie<sup>2</sup> |Deze waarde is het maximum aantal aangesloten clients dat tegelijkertijd is toegestaan. Zodra de limiet is bereikt, sluit redis alle nieuwe verbindingen af en wordt de fout ' maximum aantal clients bereikt ' geretourneerd. |
 | `maxmemory-policy` |`volatile-lru` |Maxmemory-beleid is de instelling voor hoe redis selecteert wat moet worden verwijderd wanneer `maxmemory` (de grootte van de cache aanbieding die u hebt geselecteerd tijdens het maken van de cache) is bereikt. Met Azure cache voor redis is de standaard instelling `volatile-lru` , waarmee de sleutels met een verloopset worden verwijderd met behulp van een LRU-algoritme. Deze instelling kan worden geconfigureerd in de Azure Portal. Zie [geheugen beleid](#memory-policies)voor meer informatie. |
 | `maxmemory-samples` |3 |Voor het opslaan van geheugen zijn LRU en minimale TTL-algoritmen een geschatte algoritme in plaats van nauw keurige algoritmen. Standaard worden met redis drie sleutels gecontroleerd en wordt de versie gekozen die minder recent is gebruikt. |
-| `lua-time-limit` |5.000 |Maximale uitvoerings tijd van een Lua-script in milliseconden. Als de maximale uitvoerings tijd is bereikt, redis logboeken dat een script nog steeds wordt uitgevoerd na de Maxi maal toegestane tijd en begint met het beantwoorden van query's met een fout. |
+| `lua-time-limit` |5\.000 |Maximale uitvoerings tijd van een Lua-script in milliseconden. Als de maximale uitvoerings tijd is bereikt, redis logboeken dat een script nog steeds wordt uitgevoerd na de Maxi maal toegestane tijd en begint met het beantwoorden van query's met een fout. |
 | `lua-event-limit` |500 |Maximale grootte van script gebeurtenis wachtrij. |
 | `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |De limieten voor client uitvoer buffers kunnen worden gebruikt om te voor komen dat clients die geen gegevens van de server snel genoeg worden gelezen, om een of andere reden. (een veelvoorkomende reden is dat een pub/sub-client berichten niet kan gebruiken als de uitgever deze kan produceren). Zie [https://redis.io/topics/clients](https://redis.io/topics/clients) voor meer informatie. |
 

@@ -10,10 +10,10 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 07/08/2020
 ms.openlocfilehash: 8648347eb48081389cf360fa949b31bbd0b8c71e
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88936704"
 ---
 # <a name="upgrading-versions-of-the-azure-search-net-management-sdk"></a>Versies van de Azure Search .NET Management SDK bijwerken
@@ -27,7 +27,7 @@ Management-Sdk's richten zich op een specifieke versie van de beheer REST API. Z
 | SDK-versie | Overeenkomende REST API versie | Wijziging van de functie of het gedrag |
 |-------------|--------------------------------|-------------------------------------|
 | [3,0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/3.0.0) | API-Version = 2020-30-20 | Endpoint Security toevoegen (IP-firewalls en integratie met [persoonlijke Azure-koppeling](../private-link/private-endpoint-overview.md)) |
-| [2,0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/2.0.0) | API-Version = 2019-10-01 | Verbeteringen in het gebruik. De wijziging van de [lijst query sleutels](/rest/api/searchmanagement/querykeys/listbysearchservice) opsplitsen (Get wordt stopgezet). |
+| [2.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/2.0.0) | API-Version = 2019-10-01 | Verbeteringen in het gebruik. De wijziging van de [lijst query sleutels](/rest/api/searchmanagement/querykeys/listbysearchservice) opsplitsen (Get wordt stopgezet). |
 | [1,0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/1.0.1) | API-Version = 2015-08-19  | Eerste versie |
 
 ## <a name="how-to-upgrade"></a>Een upgrade uitvoeren

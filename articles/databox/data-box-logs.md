@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.openlocfilehash: 50dbbe3a6a1af1e73cdf1ee7f5bd3a63cf2f6a50
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87498800"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-import-order"></a>Tracering en logboek registratie voor uw Azure Data Box en Azure Data Box Heavy import volgorde
@@ -76,9 +76,9 @@ Tijdens het kopiëren van gegevens naar Data Box of Data Box Heavy, wordt een fo
 
 ### <a name="errorxml-file"></a>Error.xml-bestand
 
-Zorg ervoor dat de Kopieer taken zonder fouten zijn voltooid. Als er fouten optreden tijdens het kopieer proces, downloadt u de logboeken van de pagina **verbinding maken en kopiëren** .
+Zorg ervoor dat de Kopieer taken zonder fouten zijn voltooid. Als er fouten optreden tijdens het kopieerproces, downloadt u de logboeken op de pagina **Verbinding maken en kopiëren**.
 
-- Als u een bestand hebt gekopieerd dat niet 512 bytes is uitgelijnd op een map met beheerde schijven op uw Data Box, wordt het bestand niet geüpload als pagina-BLOB naar uw staging Storage-account. Er wordt een fout in de logboeken weer geven. Verwijder het bestand en kopieer een bestand dat 512 bytes is uitgelijnd.
+- Als u een bestand hebt gekopieerd dat niet 512 bytes is uitgelijnd op een map met beheerde schijven op uw Data Box, wordt het bestand niet geüpload als pagina-BLOB naar uw staging Storage-account. In de logboeken wordt een fout vermeld. Verwijder het bestand en kopieer een bestand dat een veelvoud van 512 bytes is.
 - Als u een VHDX of een dynamische VHD of een differentiërende VHD hebt gekopieerd (deze bestanden worden niet ondersteund), wordt er een fout in de logboeken weer geven.
 
 Hier volgt een voor beeld van de *error.xml* voor verschillende fouten bij het kopiëren naar Managed disks.
@@ -297,7 +297,7 @@ Nadat de gegevens zijn gewist van de Data Box schijven volgens de richt lijnen v
 
 ### <a name="audit-logs"></a>Auditlogboeken
 
-Audit logboeken bevatten informatie over het inschakelen en openen van shares op de Data Box of Data Box Heavy wanneer deze zich buiten het Azure-Data Center bevindt. Deze logboeken bevinden zich in:`storage-account/azuredatabox-chainofcustodylogs`
+Audit logboeken bevatten informatie over het inschakelen en openen van shares op de Data Box of Data Box Heavy wanneer deze zich buiten het Azure-Data Center bevindt. Deze logboeken bevinden zich in: `storage-account/azuredatabox-chainofcustodylogs`
 
 Hier volgt een voor beeld van het audit logboek van een Data Box:
 

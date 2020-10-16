@@ -4,10 +4,10 @@ description: Hierin wordt beschreven hoe u Service Fabric toepassingen ontwikkel
 ms.topic: conceptual
 ms.date: 1/19/2018
 ms.openlocfilehash: 6a36c97c6f1be96dcb8353e886f2159929e8e794
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86248307"
 ---
 # <a name="service-fabric-application-lifecycle"></a>Service Fabric-toepassingslevenscyclus
@@ -19,7 +19,7 @@ Net als bij andere platforms gaat een toepassing op Azure Service Fabric meestal
 De functies van het service model zijn:
 
 * **Service ontwikkelaar**: ontwikkelt modulaire en algemene services die kunnen worden gebruikt in meerdere toepassingen van hetzelfde type of verschillende typen. Een wachtrij service kan bijvoorbeeld worden gebruikt voor het maken van een ticket toepassing (Help Desk) of een e-commerce-toepassing (winkel wagen).
-* **Application Developer**: maakt toepassingen door een verzameling services te integreren om te voldoen aan bepaalde specifieke vereisten of scenario's. Een e-commerce website kan bijvoorbeeld ' JSON stateless front-end-service ', ' veiling stateful service ' en ' queue stateful service ' integreren om een oplossing voor veilingen te maken.
+* **Application Developer**: maakt toepassingen door een verzameling services te integreren om te voldoen aan bepaalde specifieke vereisten of scenario's. Een e-commerce website kan bijvoorbeeld de status ' JSON stateless Front-End-service ', ' veiling stateful service ' en ' Queueive service ' integreren om een oplossing voor veilingen te maken.
 * **Toepassings beheerder**: maakt besluiten voor de configuratie van de toepassing (het invullen van de para meters van de configuratie sjabloon), implementatie (toewijzing aan beschik bare resources) en Quality of service. Een toepassings beheerder besluit bijvoorbeeld de taal land instelling (Engels voor de Verenigde Staten of Japans voor Japan) van de toepassing. Een andere geïmplementeerde toepassing kan verschillende instellingen hebben.
 * **Operator**: implementeert toepassingen op basis van de toepassings configuratie en vereisten die zijn opgegeven door de toepassings beheerder. Een operator kan bijvoorbeeld de toepassing inrichten en implementeren en ervoor zorgen dat deze wordt uitgevoerd in Azure. Opera tors bewaken informatie over de status en prestaties van de toepassing en behouden de fysieke infra structuur als dat nodig is.
 
@@ -41,7 +41,7 @@ Zie [aan de slag met reliable actors](service-fabric-reliable-actors-get-started
 
 Zie [een toepassing implementeren](service-fabric-deploy-remove-applications.md) voor voor beelden.
 
-## <a name="test"></a>Test
+## <a name="test"></a>Testen
 1. Na de implementatie van het lokale ontwikkelings cluster of een test cluster, voert een *service ontwikkelaar* het ingebouwde failover-test scenario uit met behulp van de klassen [**FailoverTestScenarioParameters**](/dotnet/api/system.fabric.testability.scenario.failovertestscenarioparameters) en [**FailoverTestScenario**](/dotnet/api/system.fabric.testability.scenario.failovertestscenario) , of met de [cmdlet **invoke-ServiceFabricFailoverTestScenario** ](/powershell/module/servicefabric/invoke-servicefabricfailovertestscenario?view=azureservicefabricps). Het test scenario voor de failover voert een opgegeven service uit door middel van belang rijke overgangen en failovers om ervoor te zorgen dat deze nog steeds beschikbaar is en goed werkt.
 2. De *service ontwikkelaar* voert vervolgens het ingebouwde chaos-test scenario uit met behulp van de klassen [**ChaosTestScenarioParameters**](/dotnet/api/system.fabric.testability.scenario.chaostestscenarioparameters) en [**ChaosTestScenario**](/dotnet/api/system.fabric.testability.scenario.chaostestscenario) , of met de [cmdlet **invoke-ServiceFabricChaosTestScenario** ](/powershell/module/servicefabric/invoke-servicefabricchaostestscenario?view=azureservicefabricps). Het chaos-test scenario veroorzaakt wille keurig meerdere knoop punten, code pakketten en replica fouten in het cluster.
 3. De *service ontwikkelaar* test [service-to-service-communicatie](service-fabric-testability-scenarios-service-communication.md) door test scenario's te ontwerpen waarmee primaire replica's rond het cluster worden verplaatst.

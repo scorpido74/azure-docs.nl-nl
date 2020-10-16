@@ -9,10 +9,10 @@ ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.openlocfilehash: e9c56f59d6dd64002632a5f74e9f39c51293caab
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87836357"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Het Azure Blob-bestandssysteem stuur programma (ABFS): een speciaal Azure Storage stuur programma voor Hadoop
@@ -31,7 +31,7 @@ Er zijn echter enkele functies die het stuur programma nog moet uitvoeren:
 
 ### <a name="uri-scheme-to-reference-data"></a>URI-schema om te verwijzen naar gegevens
 
-Consistent met andere bestandssysteem implementaties in Hadoop, het ABFS-stuur programma definieert een eigen URI-schema, zodat resources (directory's en bestanden) kunnen worden verholpen. Het URI-schema wordt beschreven in [de Azure data Lake Storage Gen2-URI gebruiken](./data-lake-storage-introduction-abfs-uri.md). De structuur van de URI is:`abfs[s]://file_system@account_name.dfs.core.windows.net/<path>/<path>/<file_name>`
+Consistent met andere bestandssysteem implementaties in Hadoop, het ABFS-stuur programma definieert een eigen URI-schema, zodat resources (directory's en bestanden) kunnen worden verholpen. Het URI-schema wordt beschreven in [de Azure data Lake Storage Gen2-URI gebruiken](./data-lake-storage-introduction-abfs-uri.md). De structuur van de URI is: `abfs[s]://file_system@account_name.dfs.core.windows.net/<path>/<path>/<file_name>`
 
 Met de bovenstaande URI-indeling kunnen standaard Hadoop-hulpprogram ma's en-frameworks worden gebruikt om te verwijzen naar deze bronnen:
 
@@ -53,7 +53,7 @@ Het ABFS-stuur programma ondersteunt twee vormen van verificatie, zodat de Hadoo
    > [!NOTE]
    > Azure Data Lake Storage Gen2 ondersteunt alleen Azure AD v 1.0-eind punten.
 
-### <a name="configuration"></a>Configuration
+### <a name="configuration"></a>Configuratie
 
 Alle configuratie voor het ABFS-stuur programma wordt opgeslagen in het <code>core-site.xml</code> configuratie bestand. Bij Hadoop-distributies met [Ambari](https://ambari.apache.org/)kan de configuratie ook worden beheerd met de webportal of Ambari rest API.
 

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 07/14/2020
 ms.openlocfilehash: 40f688d6acd1714999210e67567d25faa14c5d6e
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87384851"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>Logboek gegevens naar Azure Monitor verzenden met de HTTP-gegevens verzamelaar-API (open bare preview)
@@ -49,10 +49,10 @@ Als u de HTTP data collector API wilt gebruiken, maakt u een POST-aanvraag die d
 | API-versie |De versie van de API die moet worden gebruikt voor deze aanvraag. Momenteel is dit 2016-04-01. |
 
 ### <a name="request-headers"></a>Aanvraagheaders
-| Header | Beschrijving |
+| Koptekst | Beschrijving |
 |:--- |:--- |
 | Autorisatie |De autorisatie handtekening. Verderop in dit artikel vindt u meer informatie over het maken van een HMAC-SHA256-header. |
-| Logboek-type |Geef het record type op van de gegevens die worden verzonden. Mag alleen letters, cijfers en onderstrepings tekens (_) bevatten en mag niet langer zijn dan 100. |
+| Log-Type |Geef het record type op van de gegevens die worden verzonden. Mag alleen letters, cijfers en onderstrepings tekens (_) bevatten en mag niet langer zijn dan 100. |
 | x-MS-date |De datum waarop de aanvraag is verwerkt, in RFC 1123-indeling. |
 | x-MS-AzureResourceId | Resource-ID van de Azure-resource waaraan de gegevens moeten worden gekoppeld. Hiermee wordt de eigenschap [_ResourceId](log-standard-properties.md#_resourceid) gevuld en kunnen de gegevens worden opgenomen in [resource-context](design-logs-deployment.md#access-mode) query's. Als dit veld niet wordt opgegeven, worden de gegevens niet opgenomen in resource-context query's. |
 | gegenereerde tijd-veld | De naam van een veld in de gegevens die de tijds tempel van het gegevens item bevat. Als u een veld opgeeft, wordt de inhoud ervan gebruikt voor **TimeGenerated**. Als dit veld niet is opgegeven, is de standaard waarde voor **TimeGenerated** het tijdstip waarop het bericht wordt opgenomen. De inhoud van het veld bericht moet de ISO 8601-notatie JJJJ-MM-DDTuu: mm: ssZ hebben. |
@@ -135,7 +135,7 @@ Als u het gegevens type van een eigenschap wilt identificeren, voegt Azure Monit
 | Eigenschaps gegevens type | Achtervoegsel |
 |:--- |:--- |
 | Tekenreeks |_s |
-| Boolean-waarde |_b |
+| Booleaans |_b |
 | Dubbel |_d |
 | Datum/tijd |_t |
 | GUID (opgeslagen als een teken reeks) |_g |

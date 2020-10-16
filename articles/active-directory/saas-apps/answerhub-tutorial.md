@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: d453cc5300dc658e4b33bb0591100deae5f34aef
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 69ebc238d36223a4287ae1de668f60f9c2db014a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544737"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713588"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>Zelfstudie: Azure Active Directory-integratie met AnswerHub
 
@@ -140,7 +140,7 @@ In deze sectie stelt u eenmalige aanmelding voor AnswerHub in.
 
 4. Voltooi op het tabblad **IDP Config** de volgende stappen:
 
-    ![Tabblad Gebruikers en groepen](./media/answerhub-tutorial/ic785172.png "SAML-installatie")  
+    ![Schermopname van de pagina AnswerHub page met het tabblad Users & Groups geselecteerd.](./media/answerhub-tutorial/ic785172.png "SAML-installatie")  
   
     a. Plak in het vak **IDP Login URL** de **aanmeldings-URL** die u uit de Azure-portal hebt gekopieerd.
   
@@ -231,7 +231,7 @@ Als u wilt dat Azure AD-testgebruikers zich kunnen aanmelden bij AnswerHub, moet
 
 4. Ga naar het linkerdeelvenster en selecteer in de sectie **Manage Users** de optie **Create or import users** en selecteer vervolgens **Users & Groups**.
 
-   ![Tabblad Gebruikers en groepen](./media/answerhub-tutorial/ic785175.png "Gebruikers en groepen")
+   ![Schermopname met de pagina AnswerHub met het tabblad Users & Groups geselecteerd en een bijschrift voor de link Create or import users.](./media/answerhub-tutorial/ic785175.png "Gebruikers en groepen")
 
 5. Voer het e-mailadres, de gebruikersnaam en het wachtwoord van een geldig Azure AD-account dat u wilt toevoegen in de desbetreffende vakken **Email address**, **Username** en **Password** in en selecteer **Save**.
 

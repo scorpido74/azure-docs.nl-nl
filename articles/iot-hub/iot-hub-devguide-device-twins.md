@@ -1,22 +1,22 @@
 ---
 title: Meer informatie over Azure IoT Hub Device apparaatdubbels | Microsoft Docs
 description: 'Ontwikkelaars handleiding: gebruik apparaat apparaatdubbels om status-en configuratie gegevens te synchroniseren tussen IoT Hub en uw apparaten'
-author: ash2017
+author: nehsin
 manager: philmea
-ms.author: asrastog
+ms.author: nehsin
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 02/01/2020
+ms.date: 09/29/2020
 ms.custom:
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: 4887315ddef3f15ee3f6ef5ad80cf8df8b1dcd34
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ef1d6787ab3d4083ee6418694d1965ea0f90f730
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327766"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996117"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Apparaat-apparaatdubbels in IoT Hub begrijpen en gebruiken
 
@@ -250,7 +250,7 @@ Labels, gewenste eigenschappen en gerapporteerde eigenschappen zijn JSON-objecte
 
 * **Sleutels**: alle sleutels in JSON-objecten zijn UTF-8-code ring, hoofdletter gevoelig en Maxi maal 1 KB lang. Toegestane tekens bevatten UNICODE-besturings tekens (segmenten C0 en C1), en, en `.` `$` sp.
 
-* **Waarden**: alle waarden in JSON-objecten kunnen van de volgende JSON-typen zijn: Boolean, Number, String, object. Matrices zijn niet toegestaan.
+* **Waarden**: alle waarden in JSON-objecten kunnen van de volgende JSON-typen zijn: Boolean, Number, String, object. Matrices worden ook ondersteund.
 
     * Gehele getallen kunnen een minimum waarde van-4503599627370496 en een maximum waarde van 4503599627370495 hebben.
 

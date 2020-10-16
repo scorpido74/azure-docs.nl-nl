@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/8/2020
 ms.openlocfilehash: c3f557c757a46252b9fa0416cc62a827b233f1b2
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88065349"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mariadb"></a>Connectiviteits architectuur in Azure Database for MariaDB
@@ -37,11 +37,11 @@ De volgende tabel geeft een lijst van de primaire en secundaire IP-adressen van 
 | Brazil South | 104.41.11.5, 191.233.201.8, 191.233.200.16  |
 | Canada - midden |40.85.224.249  |
 | Canada - oost | 40.86.226.166    |
-| VS - centraal | 23.99.160.139, 13.67.215.62, 52.182.136.37, 52.182.136.38     |
+| Central US | 23.99.160.139, 13.67.215.62, 52.182.136.37, 52.182.136.38     |
 | China East | 139.219.130.35    |
-| China-oost 2 | 40.73.82.1  |
+| China - oost 2 | 40.73.82.1  |
 | China - noord | 139.219.15.17    |
-| China-noord 2 | 40.73.50.0     |
+| China - noord 2 | 40.73.50.0     |
 | Azië - oost | 191.234.2.139, 52.175.33.150, 13.75.33.20, 13.75.33.21     |
 | VS - oost | 40.121.158.30, 191.238.6.43, 40.71.8.203, 40.71.83.113   |
 | VS - oost 2 |40.79.84.180, 191.239.224.107, 52.177.185.181, 40.70.144.38, 52.167.105.38  |
@@ -63,13 +63,13 @@ De volgende tabel geeft een lijst van de primaire en secundaire IP-adressen van 
 | South Central US |13.66.62.124, 23.98.162.75, 104.214.16.39, 20.45.120.0   |
 | Azië - zuidoost | 104.43.15.0, 23.100.117.95, 40.78.233.2, 23.98.80.12     |
 | UAE - centraal | 20.37.72.64  |
-| UAE - noord | 65.52.248.0    |
+| VAE - noord | 65.52.248.0    |
 | Verenigd Koninkrijk Zuid | 51.140.184.11   |
 | Verenigd Koninkrijk West | 51.141.8.11  |
 | VS - west-centraal | 13.78.145.25     |
 | Europa -west | 40.68.37.158, 191.237.232.75, 13.69.105.208, 104.40.169.187  |
 | VS - west | 104.42.238.205, 23.99.34.75, 13.86.216.212, 13.86.217.212 |
-| VS - west 2 | 13.66.226.202  |
+| West US 2 | 13.66.226.202  |
 ||||
 
 ## <a name="connection-redirection"></a>Verbindings omleiding

@@ -7,10 +7,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 06/20/2017
 ms.openlocfilehash: 1c054dcfe12ad1d2098fc5352183839704e39330
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87127397"
 ---
 # <a name="extend-u-sql-scripts-with-r-code-in-azure-data-lake-analytics"></a>U-SQL-scripts uitbreiden met R-code in Azure Data Lake Analytics
@@ -92,7 +92,7 @@ DECLARE @PartitionCount int = 10;
 
 * Teken reeks-en numerieke kolommen van U-SQL worden geconverteerd als-tussen R data frame en U-SQL [ondersteunde typen: `double` , `string` , `bool` , `integer` , `byte` ].
 * Het `Factor` gegevens type wordt niet ondersteund in U-SQL.
-* `byte[]`moet worden geserialiseerd als een base64-gecodeerd `string` .
+* `byte[]` moet worden geserialiseerd als een base64-gecodeerd `string` .
 * U-SQL-teken reeksen kunnen worden geconverteerd naar factoren in R-code, wanneer U-SQL een R-invoer data frame maakt of door de para meter reducer in te stellen `stringsAsFactors: true` .
 
 ### <a name="schemas"></a>Schema 's

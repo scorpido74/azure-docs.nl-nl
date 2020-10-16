@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
 ms.openlocfilehash: 896baa70fb6e18165a025459a063e33d705261ba
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936266"
 ---
 # <a name="security-agent-authentication-methods"></a>Verificatie methoden voor beveiligings agenten
@@ -48,14 +48,14 @@ Zie [para meters voor de beveiligings agent installeren](#security-agent-install
 ## <a name="authentication-methods-known-limitations"></a>Bekende beperkingen van de verificatie methoden
 
 - De **SecurityModule** -verificatie modus ondersteunt alleen symmetrische sleutel verificatie.
-- CA-ondertekend certificaat wordt niet ondersteund door de verificatie modus van het **apparaat** .
+- CA-Signed certificaat wordt niet ondersteund door de verificatie modus van het **apparaat** .
 
 ## <a name="security-agent-installation-parameters"></a>Beveiligings agent-installatie parameters
 
 Wanneer u [een beveiligings agent implementeert](how-to-deploy-agent.md), moeten de verificatie gegevens als argumenten worden gegeven.
 Deze argumenten worden beschreven in de volgende tabel.
 
-|Naam van Linux-para meter | Naam van Windows-para meter | Steno parameter |Description|Opties|
+|Naam van Linux-para meter | Naam van Windows-para meter | Steno parameter |Beschrijving|Opties|
 |---------------------|---------------|---------|---------------|---------------|
 |verificatie-identiteit|AuthenticationIdentity|aui|Verificatie-identiteit| **SecurityModule** of **apparaat**|
 |verificatie-methode|Authentic|aum|Verificatiemethode|**SymmetricKey** of **SelfSignedCertificate**|

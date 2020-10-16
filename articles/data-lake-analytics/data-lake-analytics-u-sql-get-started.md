@@ -8,10 +8,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 06/23/2017
 ms.openlocfilehash: 6f2af2eed8aa01f35e1813bcd910f3ea22e2a335
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87128842"
 ---
 # <a name="get-started-with-u-sql-in-azure-data-lake-analytics"></a>Aan de slag met U-SQL in Azure Data Lake Analytics
@@ -56,8 +56,8 @@ Let op het vraag teken naast het gegevens type in het `Duration` veld. Dit betek
 ### <a name="key-concepts"></a>Belangrijkste concepten
 
 * **Variabelen van de rijenset**: elke query-expressie die een rijenset produceert, kan worden toegewezen aan een variabele. U-SQL volgt het naamgevings patroon T-SQL-variabele ( `@searchlog` bijvoorbeeld) in het script.
-* Het sleutel woord **extract** leest gegevens uit een bestand en definieert het schema bij lezen. `Extractors.Tsv`is een ingebouwde U-SQL-extractor voor bestanden met door tabs gescheiden waarden. U kunt aangepaste Extracts ontwikkelen.
-* De **uitvoer** schrijft gegevens van een rijenset naar een bestand. `Outputters.Csv()`is een ingebouwde U-SQL-outputter voor het maken van een bestand met door komma's gescheiden waarden. U kunt aangepaste outputters ontwikkelen.
+* Het sleutel woord **extract** leest gegevens uit een bestand en definieert het schema bij lezen. `Extractors.Tsv` is een ingebouwde U-SQL-extractor voor bestanden met door tabs gescheiden waarden. U kunt aangepaste Extracts ontwikkelen.
+* De **uitvoer** schrijft gegevens van een rijenset naar een bestand. `Outputters.Csv()` is een ingebouwde U-SQL-outputter voor het maken van een bestand met door komma's gescheiden waarden. U kunt aangepaste outputters ontwikkelen.
 
 ### <a name="file-paths"></a>Bestands paden
 

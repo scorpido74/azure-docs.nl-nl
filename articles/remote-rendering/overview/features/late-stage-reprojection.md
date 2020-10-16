@@ -5,12 +5,12 @@ author: sebastianpick
 ms.author: sepick
 ms.date: 02/04/2020
 ms.topic: article
-ms.openlocfilehash: 8d42087008f1812bc3713456025ed3be351d0917
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad9d135df428c79df745ad24d9e7382e06599168
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "84022177"
+ms.locfileid: "91893200"
 ---
 # <a name="late-stage-reprojection"></a>Vertraagde fase van het project
 
@@ -34,7 +34,9 @@ Als dat het geval is, gebruikt uw app diepte LSR, anders wordt vlakke LSR gebrui
 
 Voor een uitgebreide LSR moet de client toepassing een geldige diepte buffer opgeven die alle relevante geometrie bevat die tijdens LSR moet worden gebruikt.
 
-Diepte LSR probeert het video frame te stabiliseren op basis van de inhoud van de opgegeven diepte buffer. Als gevolg hiervan kunnen inhoud die niet is gerenderd, zoals transparante objecten, niet worden aangepast met LSR en kunnen Instabiliteits-en reprojectie-artefacten worden weer gegeven.
+Diepte LSR probeert het video frame te stabiliseren op basis van de inhoud van de opgegeven diepte buffer. Als gevolg hiervan kunnen inhoud die niet is gerenderd, zoals transparante objecten, niet worden aangepast met LSR en kunnen Instabiliteits-en reprojectie-artefacten worden weer gegeven. 
+
+Als u de instabiliteit van de herprojectie voor transparante objecten wilt verhelpen, kunt u de diepte buffer geforceerd schrijven. Zie de *TransparencyWritesDepth* voor de [kleur](color-materials.md) en [PBR](pbr-materials.md) -materiaal. Houd er echter rekening mee dat de visuele kwaliteit van de interactie van transparant/ondoorzichtige objecten kan lijden bij het inschakelen van deze vlag.
 
 ## <a name="planar-lsr"></a>Vlakke LSR
 

@@ -12,10 +12,10 @@ ms.date: 12/14/2017
 ms.author: swmachan
 ROBOTS: NOINDEX
 ms.openlocfilehash: 1fe370070aa97befb418d27def32725bf0a148b3
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83592675"
 ---
 # <a name="how-to-return-n-best-translations"></a>N-beste vertalingen retour neren
@@ -41,7 +41,7 @@ De hand tekening is:
 | appId | **Vereist** Als de autorisatie-header wordt gebruikt, laat u het veld AppID leeg een teken reeks opgeven met ' Bearer ' + ' "+ toegangs token.|
 | tekst | **Vereist** Een teken reeks voor de tekst die moet worden vertaald. De tekst mag niet langer zijn dan 10000 tekens.|
 | from | **Vereist** Een teken reeks die de taal code vertegenwoordigt van de tekst die moet worden vertaald. |
-| tot | **Vereist** Een teken reeks die de taal code vertegenwoordigt voor het vertalen van de tekst in. |
+| in op | **Vereist** Een teken reeks die de taal code vertegenwoordigt voor het vertalen van de tekst in. |
 | maxTranslations | **Vereist** Een geheel getal dat het maximum aantal vertalingen vertegenwoordigt dat moet worden geretourneerd. |
 | opties | **Optioneel** Een TranslateOptions-object met daarin de waarden die hieronder worden weer gegeven. Ze zijn allemaal optioneel en standaard ingesteld op de meest voorkomende instellingen.
 

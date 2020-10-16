@@ -10,10 +10,10 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
 ms.openlocfilehash: a416c22c5b8e09104b20a17bc5042302fa56d8ba
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88035141"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>BLOB-gegevens worden opnieuw gehydrateerd op basis van de opslaglaag
@@ -61,7 +61,7 @@ Blobs in de archief laag moeten mini maal 180 dagen worden opgeslagen. Als u gea
 
 ### <a name="rehydrate-an-archive-blob-to-an-online-tier"></a>Een archief-BLOB naar een online-laag opnieuw gehydrateerd
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 1. Zoek in het Azure Portal **alle resources**en selecteer deze.
 

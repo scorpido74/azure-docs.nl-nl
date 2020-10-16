@@ -9,12 +9,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: cffb753d515c4d066c8ce52e7dacebe5a8f6f8ca
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 12b20f7556a460506067305401fb2379678ee58e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682634"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371691"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>API's voor automatisering van Azure-reserveringen
 
@@ -88,9 +88,9 @@ Als u merkt dat de reserveringen van uw organisatie niet voldoende worden gebrui
 
 Haal de lijst op met alle reserveringen waartoe een gebruiker toegang heeft met behulp van [Reservering - Bewerking - Lijst-API](/rest/api/reserved-vm-instances/reservationorder/list). Raadpleeg een van de volgende artikelen om programmatisch toegang tot een reservering te geven:
 
-- [Toegang beheren met op rollen gebaseerd toegangsbeheer en de REST API](../../role-based-access-control/role-assignments-rest.md)
-- [Toegang beheren met toegangsbeheer op basis van rollen en Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)
-- [Toegang beheren met toegangsbeheer op basis van rollen en Azure CLI](../../role-based-access-control/role-assignments-cli.md)
+- [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de REST API](../../role-based-access-control/role-assignments-rest.md)
+- [Azure-roltoewijzingen toevoegen of verwijderen met behulp van Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)
+- [Azure-roltoewijzingen toevoegen of verwijderen met behulp van Azure CLI](../../role-based-access-control/role-assignments-cli.md)
 
 ## <a name="split-or-merge-reservation"></a>Reserveringen splitsen of samenvoegen
 

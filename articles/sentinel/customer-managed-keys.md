@@ -12,24 +12,25 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/19/2020
+ms.date: 10/12/2020
 ms.author: yelevin
-ms.openlocfilehash: 58936066abcbe4c3f9fcfad78bf914c74079aa95
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: bc3da6f0d82adab2d21d4dbd91dee8654145b896
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141785"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951482"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>Door de klant beheerde sleutel met Azure-Sentinel instellen
-
 
 Dit artikel bevat achtergrond informatie en stappen voor het configureren van een door de klant beheerde sleutel (CMK) voor Azure Sentinel. CMK maakt het mogelijk dat alle gegevens die worden opgeslagen of verzonden naar Azure Sentinel, worden versleuteld in alle relevante opslag resources met een Azure Key Vault sleutel die u hebt gemaakt of waarvan u eigenaar bent.
 
 > [!NOTE]
-> -   De Azure Sentinel CMK-mogelijkheid wordt alleen verstrekt aan klanten die **Nieuw** zijn en toegang tot deze mogelijkheid hebben, wordt bepaald door de registratie van Azure-functies.U kunt toegang aanvragen door contact op azuresentinelCMK@microsoft.com te nemen en wanneer capaciteit beschikbaar is, worden aanvragen in behandeling goedgekeurd.
-> -   De Azure Sentinel CMK-functie is alleen beschikbaar in de regio's VS-Oost, VS-West 2 en Zuid-Centraal.
-> -   De CMK-mogelijkheid is alleen beschikbaar voor klanten die 1 TB per dag of langer verzenden. U ontvangt informatie over aanvullende prijzen wanneer u van toepassing bent op micro soft om CMK in te richten op uw Azure-abonnement. Meer informatie over [log Analytics prijzen](../azure-monitor/platform/manage-cost-storage.md#log-analytics-dedicated-clusters).
+> - De Azure Sentinel CMK-mogelijkheid wordt alleen door gegeven aan **nieuwe klanten**.
+>
+> - Toegang tot deze mogelijkheid wordt bepaald door de Azure-functie registratie.U kunt toegang aanvragen door contact op te nemen azuresentinelCMK@microsoft.com . Aanvragen in behandeling worden goedgekeurd volgens de beschik bare capaciteit.
+>
+> - De CMK-mogelijkheid is alleen beschikbaar voor klanten die 1 TB per dag of langer verzenden. U ontvangt informatie over aanvullende prijzen wanneer u van toepassing bent op micro soft om CMK in te richten op uw Azure-abonnement. Meer informatie over [log Analytics prijzen](../azure-monitor/platform/manage-cost-storage.md#log-analytics-dedicated-clusters).
 
 ## <a name="how-cmk-works"></a>Hoe CMK werkt 
 
@@ -54,11 +55,11 @@ Voer de volgende stappen uit om CMK in te richten: 
 
 5.  Schakel CMK in bij Azure Sentinel.
 
-6.  Activeer Azure Sentinel.
+6.  Azure Sentinel inschakelen.
 
 ### <a name="step-1-create-an-azure-key-vault-and-storing-key"></a>STAP 1: een Azure Key Vault maken en een sleutel opslaan
 
-1.  [Maak Azure Key Vault resource](https://docs.microsoft.com/azure-stack/user/azure-stack-key-vault-manage-portal?view=azs-1910)en Genereer of importeer een sleutel die moet worden gebruikt voor gegevens versleuteling.
+1.  [Maak Azure Key Vault resource](https://docs.microsoft.com/azure-stack/user/azure-stack-key-vault-manage-portal)en Genereer of importeer een sleutel die moet worden gebruikt voor gegevens versleuteling.
     > [!NOTE]
     >  Azure Key Vault moet worden geconfigureerd als herstel bare voor het beveiligen van uw sleutel en de toegang.
 

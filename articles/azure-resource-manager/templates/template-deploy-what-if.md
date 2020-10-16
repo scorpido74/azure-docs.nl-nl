@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: tomfitz
 ms.openlocfilehash: 27efe1e03b8a0d373d566106a53a41007731973e
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87810068"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>Wat als'-bewerking van ARM-sjabloon implementatie (preview-versie)
@@ -110,18 +110,18 @@ Resource changes: 1 to modify.
 
 Als u de wijzigingen wilt bekijken voordat u een sjabloon implementeert, gebruikt u [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) of [New-AzSubscriptionDeployment](/powershell/module/az.resources/new-azdeployment). Voeg de `-Whatif` para meter switch toe aan de implementatie opdracht.
 
-* `New-AzResourceGroupDeployment -Whatif`voor implementaties van resource groepen
-* `New-AzSubscriptionDeployment -Whatif`en `New-AzDeployment -Whatif` voor implementaties op abonnements niveau
+* `New-AzResourceGroupDeployment -Whatif` voor implementaties van resource groepen
+* `New-AzSubscriptionDeployment -Whatif` en `New-AzDeployment -Whatif` voor implementaties op abonnements niveau
 
 U kunt de `-Confirm` para meter switch gebruiken om de wijzigingen te bekijken en u wordt gevraagd om door te gaan met de implementatie.
 
-* `New-AzResourceGroupDeployment -Confirm`voor implementaties van resource groepen
-* `New-AzSubscriptionDeployment -Confirm`en `New-AzDeployment -Confirm` voor implementaties op abonnements niveau
+* `New-AzResourceGroupDeployment -Confirm` voor implementaties van resource groepen
+* `New-AzSubscriptionDeployment -Confirm` en `New-AzDeployment -Confirm` voor implementaties op abonnements niveau
 
 De voor gaande opdrachten retour neren een tekst samenvatting die u hand matig kunt controleren. Gebruik [Get-AzResourceGroupDeploymentWhatIfResult](/powershell/module/az.resources/get-azresourcegroupdeploymentwhatifresult) of [Get-AzSubscriptionDeploymentWhatIfResult](/powershell/module/az.resources/get-azdeploymentwhatifresult)om een object op te halen dat u programmatisch kunt controleren op wijzigingen.
 
-* `$results = Get-AzResourceGroupDeploymentWhatIfResult`voor implementaties van resource groepen
-* `$results = Get-AzSubscriptionDeploymentWhatIfResult`of `$results = Get-AzDeploymentWhatIfResult` voor implementaties op abonnements niveau
+* `$results = Get-AzResourceGroupDeploymentWhatIfResult` voor implementaties van resource groepen
+* `$results = Get-AzSubscriptionDeploymentWhatIfResult` of `$results = Get-AzDeploymentWhatIfResult` voor implementaties op abonnements niveau
 
 ### <a name="azure-cli"></a>Azure CLI
 

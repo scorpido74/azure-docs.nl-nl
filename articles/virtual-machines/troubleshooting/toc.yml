@@ -241,9 +241,9 @@
 - name: Problemen met galerieën met gedeelde installatiekopieën oplossen
   items:
     - name: Problemen met Shared Image Gallery oplossen - Windows
-      href: ../windows/troubleshooting-shared-images.md
+      href: ../troubleshooting-shared-images.md
     - name: Problemen met Shared Image Gallery oplossen - Linux
-      href: ../linux/troubleshooting-shared-images.md
+      href: ../troubleshooting-shared-images.md
 - name: Problemen met VM-extensies
   items:
     - name: Overzicht van Azure-extensies

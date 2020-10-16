@@ -5,254 +5,184 @@ services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
 ms.devlang: csharp
-ms.custom: devx-track-csharp
+ms.custom: devx-track-csharp, contperfq1
 ms.topic: quickstart
-ms.date: 02/19/2020
+ms.date: 09/25/2020
 ms.author: lcozzens
-ms.openlocfilehash: 41675eb1911eede750b5a9cdc19cfe49e4699bac
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 5fd042b91ede91491590a53abf4dec552fbf6487
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590299"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91440403"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Quickstart: Een ASP.NET Core-app maken met Azure-app-configuratie
 
-In deze quickstart gaat u met Azure App Configuration de opslag en het beheer van toepassingsinstellingen voor een ASP.NET Core-toepassing centraliseren. ASP.NET Core bouwt een configuratieobject met één-sleutelwaarde met behulp van instellingen van een of meer gegevensbronnen, die worden opgegeven door een toepassing. Deze gegevensbronnen worden *configuratieproviders* genoemd. Omdat de .NET Core-client van App Configuration wordt geïmplementeerd als configuratieprovider, wordt de service als elke andere gegevensbron weergegeven.
+In deze quickstart gebruikt u Azure App Configuration om de opslag en het beheer van toepassingsinstellingen voor een ASP.NET Core-app te centraliseren. ASP.NET Core maakt één configuratieobject met sleutels en waarden op basis van instellingen van een of meer gegevensbronnen die worden opgegeven door een app. Deze gegevensbronnen worden *configuratieproviders* genoemd. Omdat de .NET Core-client van App Configuration wordt geïmplementeerd als configuratieprovider, wordt de service als elke andere gegevensbron weergegeven.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Azure-abonnement: [u kunt een gratis abonnement nemen](https://azure.microsoft.com/free/)
-- [.NET Core-SDK](https://dotnet.microsoft.com/download)
+* Azure-abonnement: [u kunt een gratis abonnement nemen](https://azure.microsoft.com/free/dotnet)
+* [.NET Core-SDK](https://dotnet.microsoft.com/download)
 
->[!TIP]
-> Azure Cloud Shell is een gratis interactieve shell waarmee u de opdrachtregelinstructies in dit artikel kunt uitvoeren.  Deze heeft algemene Azure-hulpprogramma's die vooraf zijn geïnstalleerd, met inbegrip van de .NET Core SDK. Als u bent aangemeld bij uw Azure-abonnement, start u uw [Azure Cloud Shell](https://shell.azure.com) vanuit shell.azure.com.  Meer informatie over Azure Cloud Shell vindt u door [onze documentatie te lezen](../cloud-shell/overview.md)
+> [!TIP]
+> Azure Cloud Shell is een gratis interactieve shell waarmee u de opdrachtregelinstructies in dit artikel kunt uitvoeren. Deze heeft algemene Azure-hulpprogramma's die vooraf zijn geïnstalleerd, met inbegrip van de .NET Core SDK. Als u bent aangemeld bij uw Azure-abonnement, start u [Azure Cloud Shell](https://shell.azure.com) vanaf shell.azure.com. Meer informatie over Azure Cloud Shell vindt u door [onze documentatie te lezen](../cloud-shell/overview.md)
 
 ## <a name="create-an-app-configuration-store"></a>Een App Configuration-archief maken
 
-[!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
+[!INCLUDE[Azure App Configuration resource creation steps](../../includes/azure-app-configuration-create.md)]
 
-6. Selecteer **Configuratieverkenner** > **Maken** > **Sleutelwaarde** om de volgende sleutel-waardeparen toe te voegen:
+7. Selecteer **Bewerkingen** > **Configuratieverkenner** > **Maken** > **Sleutel-waarde** om de volgende sleutel-waardeparen toe te voegen:
 
-    | Sleutel | Waarde |
-    |---|---|
-    | TestApp:Settings:BackgroundColor | Wit |
-    | TestApp:Settings:FontSize | 24 |
-    | TestApp:Settings:FontColor | Zwart |
-    | TestApp:Settings:Message | Gegevens van Azure App Configuration |
+    | Sleutel                                | Waarde                               |
+    |------------------------------------|-------------------------------------|
+    | `TestApp:Settings:BackgroundColor` | *#FFF*                              |
+    | `TestApp:Settings:FontColor`       | *#000*                              |
+    | `TestApp:Settings:FontSize`        | *24*                                |
+    | `TestApp:Settings:Message`         | *Gegevens van Azure App Configuration* |
 
     Laat **Label** en **Inhoudstype** nog even leeg. Selecteer **Toepassen**.
 
 ## <a name="create-an-aspnet-core-web-app"></a>Een ASP.NET Core-web-app maken
 
-Gebruik de [opdrachtregelinterface (CLI) van .NET Core](https://docs.microsoft.com/dotnet/core/tools/) om een nieuw web-app-project van ASP.NET Core MVC te maken. De [Azure Cloud Shell](https://shell.azure.com) biedt u deze hulpprogramma's.  Ze zijn ook beschikbaar op het Windows-, macOS- en Linux-platform.
+Gebruik de [opdrachtregelinterface (CLI) van .NET Core](/dotnet/core/tools) om een nieuw project van ASP.NET Core MVC te maken. De [Azure Cloud Shell](https://shell.azure.com) biedt u deze hulpprogramma's. Ze zijn ook beschikbaar op het Windows-, macOS- en Linux-platform.
 
-1. Maak een nieuwe map voor uw project. Noem deze *TestAppConfig* voor deze quickstart.
-
-1. Voer in de nieuwe map de volgende opdracht uit om een nieuw web-app-project van ASP.NET Core MVC te maken:
+Voer de volgende opdracht uit om een ASP.NET Core MVC-project te maken in een nieuwe *TestAppConfig*-map:
 
 ```dotnetcli
-dotnet new mvc --no-https
+dotnet new mvc --no-https --output TestAppConfig
 ```
 
-## <a name="add-secret-manager"></a>Secret Manager toevoegen
+[!INCLUDE[Add Secret Manager support to an ASP.NET Core project](../../includes/azure-app-configuration-add-secret-manager.md)]
 
-Als u Secret Manager wilt gebruiken, voegt u een `UserSecretsId`-element toe aan uw *.csproj*-bestand.
+## <a name="connect-to-the-app-configuration-store"></a>Verbinding maken met het App Configuration-archief
 
-1. Open het *.csproj*-bestand.
-
-1.  Voeg een `UserSecretsId`-element toe, zoals hier wordt weergegeven. U kunt dezelfde GUID gebruiken, maar u kunt deze waarde ook vervangen door uw eigen waarden.
-
-    > [!IMPORTANT]
-    > `CreateHostBuilder` wordt vervangen door `CreateWebHostBuilder` in .NET Core 3.0.  Selecteer de juiste syntaxis op basis van uw omgeving.
-    
-    #### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
-    
-    ```xml
-    <Project Sdk="Microsoft.NET.Sdk.Web">
-    
-        <PropertyGroup>
-            <TargetFramework>netcoreapp2.1</TargetFramework>
-            <UserSecretsId>79a3edd0-2092-40a2-a04d-dcb46d5ca9ed</UserSecretsId>
-        </PropertyGroup>
-    
-        <ItemGroup>
-            <PackageReference Include="Microsoft.AspNetCore.App" />
-            <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
-        </ItemGroup>
-    
-    </Project>
-    ```
-    
-    #### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
-    
-    ```xml
-    <Project Sdk="Microsoft.NET.Sdk.Web">
-        
-        <PropertyGroup>
-            <TargetFramework>netcoreapp3.1</TargetFramework>
-            <UserSecretsId>79a3edd0-2092-40a2-a04d-dcb46d5ca9ed</UserSecretsId>
-        </PropertyGroup>
-    
-    </Project>
-    ```
-    ---
-
-1. Sla het *.csproj*-bestand op.
-
-Dit hulpprogramma slaat gevoelige gegevens voor ontwikkeltaken op buiten de projectstructuur. Deze aanpak voorkomt dat er per ongeluk appgeheimen worden gedeeld in de broncode.
-
-> [!TIP]
-> Raadpleeg [Veilige opslag van app-geheimen in ontwikkeling in ASP.NET Core](https://docs.microsoft.com/aspnet/core/security/app-secrets) voor meer informatie over Secret Manager
-
-## <a name="connect-to-an-app-configuration-store"></a>Verbinding maken met een App Configuration-archief
-
-1. Voeg een verwijzing toe naar het NuGet-pakket `Microsoft.Azure.AppConfiguration.AspNetCore` door de volgende opdracht uit te voeren:
+1. Voer de volgende opdracht uit om een verwijzing van een NuGet-pakket voor [Microsoft.Azure.AppConfiguration.AspNetCore](https://www.nuget.org/packages/Microsoft.Azure.AppConfiguration.AspNetCore) te maken:
 
     ```dotnetcli
     dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore
     ```
 
-1. Voer de volgende opdracht uit om pakketten voor uw project te herstellen:
+1. Voer de volgende opdracht uit in dezelfde map als waar het *.csproj*-bestand zich bevindt. De opdracht maakt gebruik van Secret Manager voor het opslaan van een geheim met de naam `ConnectionStrings:AppConfig`, waarin de verbindingstekenreeks voor uw App Configuration-opslagplaats wordt opgeslagen. Vervang de tijdelijke aanduiding `<your_connection_string>` door de verbindingstekenreeks van uw App Configuration-opslagplaats. U vindt de verbindingsreeks onder **Toegangssleutels** in Azure Portal.
 
     ```dotnetcli
-    dotnet restore
-    ```
-
-1. Voeg een geheim met de naam *ConnectionStrings:AppConfig* toe aan Secret Manager.
-
-    Dit geheim bevat straks de verbindingsreeks voor toegang tot uw App Configuration-archief. Vervang de waarde in de volgende opdracht door de verbindingsreeks voor uw App Configuration-archief. U vindt de verbindingsreeks onder **Toegangssleutels** in Azure Portal.
-
-    Deze opdracht moet worden uitgevoerd in de map met het bestand *.csproj*.
-
-    ```dotnetcli
-    dotnet user-secrets set ConnectionStrings:AppConfig <your_connection_string>
+    dotnet user-secrets set ConnectionStrings:AppConfig "<your_connection_string>"
     ```
 
     > [!IMPORTANT]
     > Bij sommige shells wordt de verbindingsreeks afgekapt, tenzij deze tussen aanhalingstekens staat. Zorg ervoor dat de uitvoer van de `dotnet user-secrets`-opdracht de volledige verbindingsreeks toont. Als dat niet het geval is, voert u de opdracht opnieuw uit en plaatst u de verbindingsreeks tussen aanhalingstekens.
 
-    Secret Manager wordt alleen gebruikt om de web-app lokaal te testen. Wanneer de app is geïmplementeerd bijvoorbeeld naar [Azure App Service](https://azure.microsoft.com/services/app-service/web), gebruikt u een toepassingsinstelling **Verbindingsreeksen** in App Service in plaats van Secret Manager om de verbindingsreeks op te slaan.
+    Secret Manager wordt alleen gebruikt om de web-app lokaal te testen. Wanneer de app is geïmplementeerd naar [Azure App Service](https://azure.microsoft.com/services/app-service/web), gebruikt u een toepassingsinstelling **Verbindingsreeksen** in App Service in plaats van Secret Manager om de verbindingsreeks op te slaan.
 
-    Open dit geheim met behulp van de configuratie-API. Een dubbele punt (:) werkt in de configuratienaam met de configuratie-API op alle ondersteunde platforms. Zie [Configuratie per omgeving](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0).
+    Open dit geheim met behulp van de .NET Core-configuratie-API. Een dubbele punt (`:`) werkt in de configuratienaam met de configuratie-API op alle ondersteunde platforms. Zie [Configuratiesleutels en -waarden](/aspnet/core/fundamentals/configuration#configuration-keys-and-values) voor meer informatie.
 
-1. Open *Program.cs* en voeg een verwijzing naar de .NET Core App Configuration-provider toe.
+1. Voeg in *Program.cs* een verwijzing toe naar de naamruimte van de .NET Core Configuration-API:
 
     ```csharp
-    using Microsoft.Extensions.Configuration.AzureAppConfiguration;
+    using Microsoft.Extensions.Configuration;
     ```
 
-1. Werk de methode `CreateWebHostBuilder` bij voor het gebruik van App Configuration door de methode `config.AddAzureAppConfiguration()` aan te roepen.
+1. Werk de methode `CreateWebHostBuilder` bij voor het gebruik van App Configuration door de methode `AddAzureAppConfiguration` aan te roepen.
 
     > [!IMPORTANT]
-    > `CreateHostBuilder` wordt vervangen door `CreateWebHostBuilder` in .NET Core 3.0.  Selecteer de juiste syntaxis op basis van uw omgeving.
-
-    #### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
-
-    ```csharp
-    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-        WebHost.CreateDefaultBuilder(args)
-            .ConfigureAppConfiguration((hostingContext, config) =>
-            {
-                var settings = config.Build();
-                config.AddAzureAppConfiguration(settings["ConnectionStrings:AppConfig"]);
-            })
-            .UseStartup<Startup>();
-    ```
+    > `CreateHostBuilder` wordt vervangen door `CreateWebHostBuilder` in .NET Core 3.x. Selecteer de juiste syntaxis op basis van uw omgeving.
 
     #### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
 
     ```csharp
     public static IHostBuilder CreateHostBuilder(string[] args) =>
         Host.CreateDefaultBuilder(args)
-        .ConfigureWebHostDefaults(webBuilder =>
-        webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
-        {
-            var settings = config.Build();
-            config.AddAzureAppConfiguration(settings["ConnectionStrings:AppConfig"]);
-        })
-        .UseStartup<Startup>());
+            .ConfigureWebHostDefaults(webBuilder =>
+                webBuilder.ConfigureAppConfiguration(config =>
+                {
+                    var settings = config.Build();
+                    var connection = settings.GetConnectionString("AppConfig");
+                    config.AddAzureAppConfiguration(connection);
+                }).UseStartup<Startup>());
+    ```
+
+    #### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
+
+    ```csharp
+    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        WebHost.CreateDefaultBuilder(args)
+            .ConfigureAppConfiguration(config =>
+            {
+                var settings = config.Build();
+                var connection = settings.GetConnectionString("AppConfig");
+                config.AddAzureAppConfiguration(connection);
+            })
+            .UseStartup<Startup>();
     ```
 
     ---
 
-1. Navigeer naar *<app root>/Views/Home* en open *index.cshtml*. Vervang de inhoud ervan door de volgende code:
+    Door de voorgaande wijziging is de [configuratieprovider voor App Configuration](https://go.microsoft.com/fwlink/?linkid=2074664) geregistreerd bij de .NET Core-Configuratie-API.
 
-    ```HTML
-    @using Microsoft.Extensions.Configuration
-    @inject IConfiguration Configuration
+## <a name="read-from-the-app-configuration-store"></a>Uitlezen uit het App Configuration-archief
 
-    <style>
-        body {
-            background-color: @Configuration["TestApp:Settings:BackgroundColor"]
-        }
-        h1 {
-            color: @Configuration["TestApp:Settings:FontColor"];
-            font-size: @Configuration["TestApp:Settings:FontSize"]px;
-        }
-    </style>
+Voer de volgende stappen uit om waarden die in het App Configuration-archief zijn opgeslagen, uit te lezen en weer te geven. The .NET Core Configuration-API wordt gebruikt om toegang tot het archief te krijgen. De waarden van de sleutels worden weergegeven in Razor-syntaxis.
 
-    <h1>@Configuration["TestApp:Settings:Message"]</h1>
-    ```
+Open *\<app root>/Views/Home/Index.cshtml* en vervang de inhoud door de volgende code:
 
-1. Navigeer naar *<app root>/Views/Shared* en open *_Layout.cshtml*. Vervang de inhoud ervan door de volgende code:
+```cshtml
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
 
-    ```HTML
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>@ViewData["Title"] - hello_world</title>
+<style>
+    body {
+        background-color: @Configuration["TestApp:Settings:BackgroundColor"]
+    }
+    h1 {
+        color: @Configuration["TestApp:Settings:FontColor"];
+        font-size: @Configuration["TestApp:Settings:FontSize"]px;
+    }
+</style>
 
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
-    </head>
-    <body>
-        <div class="container body-content">
-            @RenderBody()
-        </div>
+<h1>@Configuration["TestApp:Settings:Message"]</h1>
+```
 
-        <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
+In de voorgaande code worden de sleutels van het App Configuration-archief als volgt gebruikt:
 
-        @RenderSection("Scripts", required: false)
-    </body>
-    </html>
-    ```
+* De waarde van de sleutel `TestApp:Settings:BackgroundColor` wordt toegewezen aan de CSS-eigenschap `background-color`.
+* De waarde van de sleutel `TestApp:Settings:FontColor` wordt toegewezen aan de CSS-eigenschap `color`.
+* De waarde van de sleutel `TestApp:Settings:FontSize` wordt toegewezen aan de CSS-eigenschap `font-size`.
+* De waarde van de sleutel `TestApp:Settings:Message` wordt weergegeven als kop.
 
 ## <a name="build-and-run-the-app-locally"></a>De app lokaal compileren en uitvoeren
 
-1. Als u de app wilt bouwen met behulp van de .NET Core CLI, gaat u naar de hoofdmap van uw toepassing en voert u de volgende opdracht uit in de opdrachtshell:
+1. Als u de app wilt compileren met de .NET Core CLI, gaat u naar de hoofdmap van uw project. Voer de volgende opdracht uit in de opdrachtshell:
 
     ```dotnetcli
     dotnet build
     ```
 
-1. Nadat het bouwen is voltooid, voert u de volgende opdracht uit om de web-app lokaal uit te voeren:
+1. Nadat het compileren is voltooid, gebruikt u de volgende opdracht om de web-app lokaal uit te voeren:
 
     ```dotnetcli
     dotnet run
     ```
 
-1. Als u op uw lokale computer werkt, gebruikt u een browser om naar `http://localhost:5000` te navigeren. Dit is de standaard-URL voor de web-app die lokaal wordt gehost.  
+1. Als u op uw lokale computer werkt, gebruikt u een browser om naar `http://localhost:5000` te navigeren. Dit adres is de standaard-URL voor de lokaal gehoste web-app. Als u werkt in Azure Cloud Shell, selecteert u de knop **Web-preview** gevolgd door **Configureren**.
 
-Als u werkt in Azure Cloud Shell, selecteert u de knop *Web-preview* gevolgd door *Configureren*.  
+    ![De knop Web-preview zoeken](./media/quickstarts/cloud-shell-web-preview.png)
 
-![De knop Web-preview zoeken](./media/quickstarts/cloud-shell-web-preview.png)
-
-Wanneer u wordt gevraagd om de poort voor de preview te configureren, voert u 5000 in en selecteert u *Openen en bladeren*.  Op de webpagina staat Gegevens van Azure App Configuration.
-
-![Quickstart-app starten](./media/quickstarts/aspnet-core-app-launch-local-before.png)
+    Wanneer u wordt gevraagd om de poort voor de preview te configureren, voert u *5000* in en selecteert u **Openen en bladeren**. Op de webpagina staat Gegevens van Azure App Configuration.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-[!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
+[!INCLUDE[Azure App Configuration cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze quickstart hebt u een nieuw App Configuration-archief gemaakt en dit via de [App Configuration-provider](https://go.microsoft.com/fwlink/?linkid=2074664) gebruikt met een ASP.NET Core-web-app. Ga door naar de volgende zelfstudie voor meer informatie over het configureren van uw ASP.NET Core-app om configuratie-instellingen dynamisch te vernieuwen.
+In deze snelstart, gaat u het volgende doen:
+
+* Een nieuw App Configuration-archief ingericht
+* De .NET Core-configuratieprovider van het App Configuration-archief geregistreerd
+* De sleutels van het App Configuration-archief uitgelezen met de configuratieprovider
+* De waarden van de sleutels van het App Configuration-archief weergegeven in Razor-syntaxis
+
+Ga door naar de volgende zelfstudie voor meer informatie over het configureren van uw ASP.NET Core-app om configuratie-instellingen dynamisch te vernieuwen.
 
 > [!div class="nextstepaction"]
 > [Dynamische configuratie inschakelen](./enable-dynamic-configuration-aspnet-core.md)

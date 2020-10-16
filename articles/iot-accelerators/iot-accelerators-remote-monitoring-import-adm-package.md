@@ -8,19 +8,19 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8100914e9a1d1489cb80de55a689e17f6d28a941
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 266e31ae9865c8fb427e06e89cd755e7ff38b27f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "61443330"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073866"
 ---
 # <a name="import-an-automatic-device-management-package-into-your-remote-monitoring-solution-accelerator"></a>Een apparaat voor automatische Apparaatbeheer importeren in uw oplossings versneller voor externe controle
 
 Een automatische configuratie van Apparaatbeheer definieert de configuratie wijzigingen die moeten worden geïmplementeerd op een groep apparaten. In dit artikel wordt ervan uitgegaan dat een ontwikkelaar in uw organisatie al een automatische configuratie voor Apparaatbeheer heeft gemaakt. Voor meer informatie over hoe een ontwikkelaar een configuratie maakt, raadpleegt u een van de volgende IoT Hub procedures:
 
-- [IoT-apparaten op schaal configureren en bewaken met behulp van de Azure Portal](../iot-hub/iot-hub-auto-device-config.md)
-- [IoT-apparaten op schaal configureren en bewaken met behulp van de Azure CLI](../iot-hub/iot-hub-auto-device-config-cli.md)
+- [IoT-apparaten op schaal configureren en bewaken met behulp van de Azure Portal](../iot-hub/iot-hub-automatic-device-management.md)
+- [IoT-apparaten op schaal configureren en bewaken met behulp van de Azure CLI](../iot-hub/iot-hub-automatic-device-management-cli.md)
 
 Een ontwikkelaar maakt en test een automatische configuratie van Apparaatbeheer in een ontwikkel omgeving. Wanneer u klaar bent, kunt u de configuratie importeren in uw oplossings versneller voor externe controle.
 

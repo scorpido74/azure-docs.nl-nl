@@ -1,6 +1,6 @@
 ---
 title: Directe Federatie met een id-provider voor B2B-Azure AD
-description: Direct communiceren met een SAML-of een door de WS gevoede ID-provider zodat gasten zich kunnen aanmelden bij uw Azure AD-apps
+description: Direct met een SAML-of WS-Fed-ID-provider communiceren zodat gasten zich kunnen aanmelden bij uw Azure AD-apps
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -13,24 +13,24 @@ ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 78ad8761d3a4ff3e3cdab9dee5f50b469ff840fd
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87908681"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Directe Federatie met AD FS en providers van derden voor gast gebruikers (preview-versie)
 
 > [!NOTE]
->  Directe Federatie is een open bare preview-functie van Azure Active Directory. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over Previews.
+>  Directe Federatie is een open bare preview-functie van Azure Active Directory. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
-In dit artikel wordt beschreven hoe u directe Federatie kunt instellen met een andere organisatie voor B2B-samen werking. U kunt directe Federatie instellen met elke organisatie waarvan de ID-provider (IdP) ondersteuning biedt voor het SAML 2,0-of WS-inschakel protocol.
+In dit artikel wordt beschreven hoe u directe Federatie kunt instellen met een andere organisatie voor B2B-samen werking. U kunt directe Federatie instellen met elke organisatie waarvan de ID-provider (IdP) het SAML 2,0-of WS-Fed-protocol ondersteunt.
 Wanneer u directe Federatie instelt met de IdP van een partner, kunnen nieuwe gast gebruikers uit dat domein hun eigen door IdP beheerd organisatie account gebruiken om zich aan te melden bij uw Azure AD-Tenant en samen met u aan de slag te gaan. De gast gebruiker hoeft geen afzonderlijk Azure AD-account te maken.
 > [!NOTE]
 > Gebruikers met een directe Federatie gast moeten zich aanmelden met behulp van een koppeling die de Tenant context bevat (bijvoorbeeld `https://myapps.microsoft.com/?tenantid=<tenant id>` of `https://portal.azure.com/<tenant id>` , of in het geval van een geverifieerd domein `https://myapps.microsoft.com/\<verified domain>.onmicrosoft.com` ). Directe koppelingen naar toepassingen en bronnen werken ook zolang ze de context van de Tenant bevatten. Directe Federatie gebruikers kunnen zich momenteel niet aanmelden met algemene eind punten die geen Tenant context hebben. Als bijvoorbeeld, `https://myapps.microsoft.com` `https://portal.azure.com` of wordt gebruikt, `https://teams.microsoft.com` resulteert dit in een fout.
  
 ## <a name="when-is-a-guest-user-authenticated-with-direct-federation"></a>Wanneer is een gast gebruiker geverifieerd met directe Federatie?
-Nadat u directe Federatie hebt ingesteld met een organisatie, worden nieuwe gast gebruikers die u uitnodigt, geverifieerd met behulp van directe Federatie. Het is belang rijk te weten dat het instellen van directe Federatie de verificatie methode niet wijzigt voor gast gebruikers die al een uitnodiging van u hebben ingewisseld. Hier volgen enkele voorbeelden:
+Nadat u directe Federatie hebt ingesteld met een organisatie, worden nieuwe gast gebruikers die u uitnodigt, geverifieerd met behulp van directe Federatie. Het is belang rijk te weten dat het instellen van directe Federatie de verificatie methode niet wijzigt voor gast gebruikers die al een uitnodiging van u hebben ingewisseld. Enkele voorbeelden:
  - Als gast gebruikers al uitnodigingen van u hebben ingewisseld en u vervolgens direct Federation hebt ingesteld met hun organisatie, blijven deze gast gebruikers dezelfde verificatie methode gebruiken die ze hebben gebruikt voordat u directe Federatie hebt ingesteld.
  - Als u directe Federatie hebt ingesteld met een partner organisatie en gast gebruikers uitnodigt en vervolgens de partner organisatie later naar Azure AD verplaatst, blijven de gast gebruikers die al ingedeelde uitnodigingen hebben ingewisseld, gebruikmaken van directe Federatie, zolang het directe Federatie beleid in uw Tenant bestaat.
  - Als u directe Federatie met een partner organisatie verwijdert, kunnen gast gebruikers die momenteel direct Federation gebruiken, zich niet aanmelden.
@@ -83,11 +83,11 @@ Nee, de functie voor [eenmalige e-mail wachtwoord code](one-time-passcode.md) mo
 Eerst moet uw partner organisatie hun ID-provider configureren met de vereiste claims en Relying Party-vertrouwens relaties. 
 
 > [!NOTE]
-> Om te laten zien hoe u een id-provider voor directe Federatie kunt configureren, gebruiken we Active Directory Federation Services (AD FS) als voor beeld. Zie het artikel [direct Federatie configureren met AD FS](direct-federation-adfs.md), dat voor beelden bevat van het configureren van AD FS als een SAML 2,0-of WS-productie-ID-provider in voor bereiding op directe Federatie.
+> Om te laten zien hoe u een id-provider voor directe Federatie kunt configureren, gebruiken we Active Directory Federation Services (AD FS) als voor beeld. Zie het artikel [direct Federatie configureren met AD FS](direct-federation-adfs.md), dat voor beelden bevat van het configureren van AD FS als een SAML 2,0-of WS-Fed-ID-provider in voor bereiding op directe Federatie.
 
 ### <a name="saml-20-configuration"></a>SAML 2,0-configuratie
 
-Azure AD B2B kan worden geconfigureerd om te communiceren met id-providers die het SAML-protocol gebruiken met specifieke vereisten die hieronder worden weer gegeven. Zie [een saml 2,0-ID-provider (IDP) gebruiken voor eenmalige aanmelding](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-saml-idp)voor meer informatie over het instellen van een vertrouwens relatie tussen uw SAML-ID-provider en Azure AD.  
+Azure AD B2B kan worden geconfigureerd om te communiceren met id-providers die het SAML-protocol gebruiken met specifieke vereisten die hieronder worden weer gegeven. Zie  [een saml 2,0-ID-provider (IDP) gebruiken voor eenmalige aanmelding](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-saml-idp)voor meer informatie over het instellen van een vertrouwens relatie tussen uw SAML-ID-provider en Azure AD.  
 
 > [!NOTE]
 > Het doel domein voor directe Federatie mag niet worden geverifieerd door DNS op Azure AD. Het domein van de verificatie-URL moet overeenkomen met het doel domein of het moet het domein zijn van een toegestane ID-provider. Zie de sectie [beperkingen](#limitations) voor meer informatie. 
@@ -101,7 +101,7 @@ Vereiste kenmerken voor het SAML 2,0-antwoord van de IdP:
 |---------|---------|
 |AssertionConsumerService     |`https://login.microsoftonline.com/login.srf`         |
 |Doelgroep     |`urn:federation:MicrosoftOnline`         |
-|Verlener     |De uitgevers-URI van de partner-IdP, bijvoorbeeld`http://www.example.com/exk10l6w90DHM0yi...`         |
+|Verlener     |De uitgevers-URI van de partner-IdP, bijvoorbeeld `http://www.example.com/exk10l6w90DHM0yi...`         |
 
 
 Vereiste claims voor het SAML 2,0-token dat is uitgegeven door de IdP:
@@ -111,25 +111,25 @@ Vereiste claims voor het SAML 2,0-token dat is uitgegeven door de IdP:
 |NameID-indeling     |`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`         |
 |emailaddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
 
-### <a name="ws-fed-configuration"></a>WS-gevoederde configuratie 
-Azure AD B2B kan worden geconfigureerd om te communiceren met id-providers die gebruikmaken van het WS-invoer protocol met enkele specifieke vereisten zoals hieronder wordt weer gegeven. Op dit moment zijn de twee WS-insluitings providers getest op compatibiliteit met Azure AD AD FS en shibboleth. Zie voor meer informatie over het instellen van een Relying Party-vertrouwens relatie tussen een WS-inwisselende provider met Azure AD het document ' STS-integratie met WS-protocollen ' dat beschikbaar is in de [compatibiliteits documenten voor de Azure AD-identiteits provider](https://www.microsoft.com/download/details.aspx?id=56843).
+### <a name="ws-fed-configuration"></a>WS-Fed configuratie 
+Azure AD B2B kan worden geconfigureerd om te communiceren met id-providers die het WS-Fed-protocol gebruiken met enkele specifieke vereisten zoals hieronder wordt weer gegeven. Op dit moment zijn de twee WS-Fed providers getest op compatibiliteit met Azure AD AD FS en shibboleth. Zie voor meer informatie over het instellen van een Relying Party-vertrouwens relatie tussen een WS-Fed compatibele provider met Azure AD het document ' STS-integratie met WS-protocollen ' dat beschikbaar is in de [compatibiliteits documenten voor de Azure AD-identiteits provider](https://www.microsoft.com/download/details.aspx?id=56843).
 
 > [!NOTE]
 > Het doel domein voor directe Federatie mag niet worden geverifieerd door DNS op Azure AD. Het domein van de verificatie-URL moet overeenkomen met het doel domein of het domein van een toegestane ID-provider. Zie de sectie [beperkingen](#limitations) voor meer informatie. 
 
-#### <a name="required-ws-fed-attributes-and-claims"></a>Vereiste WS-gevoederde kenmerken en claims
+#### <a name="required-ws-fed-attributes-and-claims"></a>Vereiste WS-Fed kenmerken en claims
 
-In de volgende tabellen worden de vereisten voor specifieke kenmerken en claims weer gegeven die moeten worden geconfigureerd bij de WS-ID-provider van de externe partij. Als u directe Federatie wilt instellen, moeten de volgende kenmerken worden ontvangen in het WS-instel bericht van de ID-provider. Deze kenmerken kunnen worden geconfigureerd door te koppelen aan het XML-bestand van de online beveiligings token service of door ze hand matig in te voeren.
+In de volgende tabellen worden de vereisten voor specifieke kenmerken en claims weer gegeven die moeten worden geconfigureerd bij de WS-Fed-ID-provider van derden. Als u directe Federatie wilt instellen, moeten de volgende kenmerken worden ontvangen in het WS-Fed bericht van de identiteits provider. Deze kenmerken kunnen worden geconfigureerd door te koppelen aan het XML-bestand van de online beveiligings token service of door ze hand matig in te voeren.
 
-Vereiste kenmerken in het WS-ingevoerd bericht van de IdP:
+Vereiste kenmerken in het WS-Fed bericht van de IdP:
  
 |Kenmerk  |Waarde  |
 |---------|---------|
 |PassiveRequestorEndpoint     |`https://login.microsoftonline.com/login.srf`         |
 |Doelgroep     |`urn:federation:MicrosoftOnline`         |
-|Verlener     |De uitgevers-URI van de partner-IdP, bijvoorbeeld`http://www.example.com/exk10l6w90DHM0yi...`         |
+|Verlener     |De uitgevers-URI van de partner-IdP, bijvoorbeeld `http://www.example.com/exk10l6w90DHM0yi...`         |
 
-Vereiste claims voor het WS-invoeder token dat is uitgegeven door de IdP:
+Vereiste claims voor het WS-Fed token dat is uitgegeven door de IdP:
 
 |Kenmerk  |Waarde  |
 |---------|---------|
@@ -144,15 +144,15 @@ Vervolgens configureert u Federatie met de ID-provider die is geconfigureerd in 
 
 ### <a name="to-configure-direct-federation-in-the-azure-ad-portal"></a>Direct Federatie configureren in de Azure AD-Portal
 
-1. Ga naar [Azure Portal](https://portal.azure.com/). Selecteer de knop **Azure Active Directory** in het linkerdeelvenster. 
+1. Ga naar de [Azure Portal](https://portal.azure.com/). Selecteer de knop **Azure Active Directory** in het linkerdeelvenster. 
 2. Selecteer **externe identiteiten**  >  **alle id-providers**.
 3. Selecteer en selecteer vervolgens **nieuwe SAML/WS-IDP**.
 
-    ![Scherm afbeelding met de knop voor het toevoegen van een nieuwe SAML-of WS-IdP](media/direct-federation/new-saml-wsfed-idp.png)
+    ![Scherm afbeelding met de knop voor het toevoegen van een nieuwe SAML-of WS-Fed IdP](media/direct-federation/new-saml-wsfed-idp.png)
 
 4. Selecteer op de **nieuwe IDP-pagina voor SAML/WS-** inschakeling onder **ID-provider protocol** **SAML** of **WS-voeder**.
 
-    ![Scherm opname van de knop parseren op de pagina SAML of WS-IdP](media/direct-federation/new-saml-wsfed-idp-parse.png)
+    ![Scherm opname van de knop parseren op de pagina met het SAML-of WS-Fed IdP](media/direct-federation/new-saml-wsfed-idp-parse.png)
 
 5. Voer de domein naam van uw partner organisatie in, die de doel domeinnaam voor directe Federatie is
 6. U kunt een meta gegevensbestand uploaden om details van meta gegevens in te vullen. Als u ervoor kiest om meta gegevens hand matig in te voeren, voert u de volgende gegevens in:
@@ -192,7 +192,7 @@ Test nu uw directe Federatie-installatie door een nieuwe B2B-gast gebruiker uit 
  
 ## <a name="how-do-i-edit-a-direct-federation-relationship"></a>Een directe Federatie relatie Hoe kan ik bewerken?
 
-1. Ga naar [Azure Portal](https://portal.azure.com/). Selecteer de knop **Azure Active Directory** in het linkerdeelvenster. 
+1. Ga naar de [Azure Portal](https://portal.azure.com/). Selecteer de knop **Azure Active Directory** in het linkerdeelvenster. 
 2. Selecteer **externe identiteiten**.
 3. **Alle id-providers** selecteren
 4. Selecteer de provider onder **SAML/WS-id-providers**.
@@ -203,7 +203,7 @@ Test nu uw directe Federatie-installatie door een nieuwe B2B-gast gebruiker uit 
 ## <a name="how-do-i-remove-direct-federation"></a>Direct Federatie Hoe kan ik verwijderen?
 U kunt uw directe Federatie-instellingen verwijderen. Als u dit doet, kunnen gebruikers met een directe Federatie gast die hun uitnodigingen al hebben ingewisseld, zich niet aanmelden. Maar u kunt ze ook weer toegang geven tot uw resources door ze te verwijderen uit de map en ze opnieuw uit te nodigen. Directe Federatie verwijderen met een id-provider in de Azure AD-portal:
 
-1. Ga naar [Azure Portal](https://portal.azure.com/). Selecteer de knop **Azure Active Directory** in het linkerdeelvenster. 
+1. Ga naar de [Azure Portal](https://portal.azure.com/). Selecteer de knop **Azure Active Directory** in het linkerdeelvenster. 
 2. Selecteer **externe identiteiten**.
 3. Selecteer **alle id-providers**.
 4. Selecteer de ID-provider en selecteer vervolgens **verwijderen**. 

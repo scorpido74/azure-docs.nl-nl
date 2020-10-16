@@ -7,10 +7,10 @@ ms.service: data-share
 ms.topic: how-to
 ms.date: 08/14/2020
 ms.openlocfilehash: eed3e8275400a3e677df53b9d62cf0e0bc70271c
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88257835"
 ---
 # <a name="how-to-configure-a-dataset-mapping-for-a-received-share-in-azure-data-share"></a>Een toewijzing van een gegevensset configureren voor een ontvangen share in de Azure-gegevens share
@@ -29,9 +29,9 @@ Schakel het selectie vakje in naast de gegevensset waaraan u een bestemming wilt
 
 ## <a name="select-a-target-store"></a>Selecteer een doel archief
 
-Selecteer een doel gegevens archief type waarvoor u wilt dat de gegevens binnenkomen. Voor het delen op basis van moment opnamen worden alle gegevens die al in een eerder toegewezen opslag account bestaan, niet automatisch verplaatst naar het nieuwe doel archief. Selecteer voor in-place delen een gegevens archief op de opgegeven locatie. De locatie is het Azure Data Center waar de bron gegevens opslag van de gegevens provider zich bevindt.
+Selecteer het type doelgegevensarchief waarin u de gegevens wilt opslaan. Voor het delen op basis van moment opnamen worden alle gegevens die al in een eerder toegewezen opslag account bestaan, niet automatisch verplaatst naar het nieuwe doel archief. Selecteer voor in-place delen een gegevensarchief op de opgegeven locatie. De locatie is het Azure-datacenter waar het brongegevensarchief van de gegevensprovider zich bevindt.
 
-![Doel opslag account](./media/dataset-map-target-sql.png "Doelopslag") 
+![Doelopslagaccount](./media/dataset-map-target-sql.png "Doelopslag") 
 
 ## <a name="select-a-file-format-sql-sources-only"></a>Selecteer een bestands indeling (alleen SQL-bronnen)
 

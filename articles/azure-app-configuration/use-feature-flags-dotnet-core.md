@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/17/2020
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: f863ca855ca36603085ed96b5aa17d277ae00516
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f8ad2558c664d1a8b577f01b707200d416d5348a
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317307"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078898"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Zelfstudie: Functievlaggen gebruiken in een ASP.NET Core-app
 
@@ -27,7 +27,7 @@ De .NET Core Feature Management-bibliotheken bieden idiomatische ondersteuning v
 
 De Feature Management-bibliotheken beheren ook de levenscyclus van functievlaggen achter de schermen. Bijvoorbeeld: de bibliotheken worden vernieuwd en slaan vlagstatussen op in een cache of garanderen dat een vlagstatus onveranderbaar is tijdens het aanroepen van een aanvraag. Daarnaast biedt de ASP.NET Core-bibliotheek kant-en-klare integraties, waaronder acties, weergaven, routes en middleware voor MVC-controllers.
 
-De [quickstart Functievlaggen toevoegen aan een ASP.NET Core-app](./quickstart-feature-flag-aspnet-core.md) bevat verschillende manieren om functievlaggen toe te voegen in een ASP.NET Core-toepassing. In deze zelfstudie worden deze methoden uitgebreid beschreven. Zie de [documentatie over het beheren van ASP.NET Core-functies](https://go.microsoft.com/fwlink/?linkid=2091410) voor een volledig overzicht.
+De [quickstart Functievlaggen toevoegen aan een ASP.NET Core-app](./quickstart-feature-flag-aspnet-core.md) bevat verschillende manieren om functievlaggen toe te voegen in een ASP.NET Core-toepassing. In deze zelfstudie worden deze methoden uitgebreid beschreven. Zie de [documentatie over het beheren van ASP.NET Core-functies](/dotnet/api/microsoft.featuremanagement) voor een volledig overzicht.
 
 In deze zelfstudie leert u het volgende:
 
@@ -301,6 +301,6 @@ app.UseForFeature(featureName, appBuilder => {
 
 In deze zelfstudie hebt u geleerd hoe u functievlaggen kunt implementeren in een ASP.NET Core-toepassing met behulp van de `Microsoft.FeatureManagement`-bibliotheken. Raadpleeg de volgende bronnen voor meer informatie over de ondersteuning van functiebeheer in ASP.NET Core en App Configuration:
 
-* [Voorbeeldcode voor de ASP.NET Core-functievlag](/azure/azure-app-configuration/quickstart-feature-flag-aspnet-core)
-* [Documentatie voor Microsoft.FeatureManagement](https://docs.microsoft.com/dotnet/api/microsoft.featuremanagement)
+* [Voorbeeldcode voor de ASP.NET Core-functievlag](./quickstart-feature-flag-aspnet-core.md)
+* [Documentatie voor Microsoft.FeatureManagement](/dotnet/api/microsoft.featuremanagement)
 * [Functievlaggen beheren](./manage-feature-flags.md)

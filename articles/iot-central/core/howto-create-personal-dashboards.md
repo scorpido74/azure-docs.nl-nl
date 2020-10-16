@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: f7dca7352a49e668231f64632371a445985e4de3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83634552"
 ---
 # <a name="create-and-manage-multiple-dashboards"></a>Meerdere Dash boards maken en beheren
@@ -38,7 +38,7 @@ Als u een **beheerder** van de toepassing bent, krijgt u de optie om een dash bo
 > [!div class="mx-imgBorder"]
 > ![Formulier Details van apparaat configureren met Details voor de Tempe ratuur](media/howto-create-personal-dashboards/device-details.png)
 
-U kunt bijvoorbeeld een **telemetrie** -tegel toevoegen voor de huidige Tempe ratuur van het apparaat. Dit doet u als volgt:
+U kunt bijvoorbeeld een **telemetrie** -tegel toevoegen voor de huidige Tempe ratuur van het apparaat. Hiervoor doet u het volgende:
 
 1. Een sjabloon voor een **apparaat** selecteren
 1. Selecteer een apparaat in **apparaten** voor het apparaat dat u wilt weer geven op een dashboard tegel. Vervolgens ziet u een lijst met de eigenschappen van het apparaat die kunnen worden gebruikt op de tegel.

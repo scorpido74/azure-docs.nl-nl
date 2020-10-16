@@ -9,12 +9,12 @@ ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
 ms.custom: has-adal-ref
-ms.openlocfilehash: c578958616e4b4d2d7d3aef1de1650566e0bd40e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 52964c906df7a96685c8eb80c1d23ef9a9efc6e1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496403"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91361837"
 ---
 # <a name="use-multi-factor-aad-authentication-with-synapse-sql-ssms-support-for-mfa"></a>Multi-Factor Authentication van AAD gebruiken met Synapse SQL (SSMS-ondersteuning voor MFA)
 
@@ -22,13 +22,11 @@ Synapse SQL biedt ondersteuning voor verbindingen vanuit SQL Server Management S
 
 In dit artikel worden de verschillen beschreven tussen de verschillende verificatie-opties, evenals de beperkingen van universele verificatie. 
 
-**Download de nieuwste versie van SSMS** Download op de clientcomputer de meest recente versie van SSMS. Ga hiervoor naar de pagina [Download SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx) (SQL Server Management Studio (SSMS) downloaden). 
-
-**Download de nieuwste versie van SSMS** Download op de clientcomputer de meest recente versie van SSMS. Ga hiervoor naar de pagina [Download SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) (SQL Server Management Studio (SSMS) downloaden).
+**Download de nieuwste versie van SSMS** Download op de clientcomputer de meest recente versie van SSMS. Ga hiervoor naar de pagina [Download SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SQL Server Management Studio (SSMS) downloaden).
 
 Voor alle functies die in dit artikel worden besproken, hebt u ten minste versie 17.2 van juli 2017 nodig.  Het meest recente dialoogvenster Verbinding maken met server moet er ongeveer uitzien als in de volgende afbeelding:
 
-![1mfa-universal-connect](./media/mfa-authentication/1mfa-universal-connect.png "Vult het vak Gebruikersnaam in.")  
+![Schermopname van het dialoogvenster Verbinding maken met server waar u een servernaam en verificatieoptie kunt selecteren.](./media/mfa-authentication/1mfa-universal-connect.png "Vult het vak Gebruikersnaam in.")  
 
 ## <a name="the-five-authentication-options"></a>De vijf verificatieopties  
 
@@ -51,7 +49,7 @@ Zie [Multi-Factor Authentication](../../active-directory/authentication//concept
 
 ### <a name="azure-ad-domain-name-or-tenant-id-parameter"></a>Azure AD-domeinnaam of tenant-id als parameter
 
-Vanaf [SSMS versie 17](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) kunnen gebruikers die vanuit andere Azure Active Directory's zijn geïmporteerd als gastgebruiker, de naam van het Azure AD-domein of hun tenant-id opgeven wanneer ze verbinding willen maken. 
+Vanaf [SSMS versie 17](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) kunnen gebruikers die vanuit andere Azure Active Directory's zijn geïmporteerd als gastgebruiker, de naam van het Azure AD-domein of hun tenant-id opgeven wanneer ze verbinding willen maken. 
 
 Gastgebruikers zijn gebruikers die zijn uitgenodigd bij andere Azure ADs, Microsoft-accounts zoals outlook.com, hotmail.com, live.com of andere accounts zoals gmail.com. Aan de hand van deze gegevens kan de verificatiemethode **Active Directory Universeel met MFA** de juiste verificatie-instantie identificeren. Deze optie is ook vereist voor de ondersteuning van Microsoft-accounts (MSA) zoals outlook.com, hotmail.com, live.com, of niet-MSA-accounts. 
 
@@ -61,11 +59,11 @@ Als de Azure server bijvoorbeeld is gekoppeld aan het Azure AD-domein `contosote
 
 Als de gebruiker een systeemeigen gebruiker is van de Azure AD die is gekoppeld aan de Azure-server, en geen MSA-account is, hoeft er geen domeinnaam of tenant-id te worden ingevoerd. 
 
-Als u de parameter wilt invoeren (vanaf SSMS versie 17.2), vult u het dialoogvenster **Verbinding maken met database** in, waarbij u de verificatiemethode **Active Directory - Universeel met MFA** selecteert, klikt op **Opties**, het vak **Gebruikersnaam** invult en vervolgens op het tabblad **Verbindingseigenschappen** klikt. 
+Als u de parameter wilt invoeren (vanaf SSMS versie 17.2), vult u het dialoogvenster **Verbinding maken met database** in, waarbij u de verificatiemethode **Active Directory - Universeel met MFA** selecteert. Selecteer **Opties**, vul het vak **Gebruikersnaam** in en selecteer het tabblad **Verbindingseigenschappen**. 
 
 Schakel het selectievakje **AD-domeinnaam of tenant-id** in en geef de gegevens van de verificatie-instantie op, zoals de domeinnaam (**contosotest.onmicrosoft.com**) of de GUID van de tenant-id.  
 
-   ![mfa-tenant-ssms](./media/mfa-authentication/mfa-tenant-ssms.png)
+   ![Schermopname van Verbinding maken met server op het tabblad Verbindingseigenschappen met ingevoerde waarden.](./media/mfa-authentication/mfa-tenant-ssms.png)
 
 Als u SSMS 18.x of hoger gebruikt, is de AD-domeinnaam of tenant-id niet meer nodig voor gastgebruikers omdat 18.x of hoger deze automatisch herkent.
 
@@ -80,7 +78,7 @@ Nadat de databasegebruiker is gemaakt, kan de gebruiker `steve@gmail.com` zich a
 
 De gebruikersgroep heeft standaard alleen de machtiging om verbinding te maken en alle verdere gegevenstoegang moet op de gebruikelijke manier worden verleend. 
 
-De gebruiker `steve@gmail.com` moet als gastgebruiker het selectievakje inschakelen en de AD-domeinnaam `contosotest.onmicrosoft.com` toevoegen in het dialoogvenster **Verbindingseigenschap** van SSMS. De optie **AD-domeinnaam of tenant-id** wordt alleen ondersteund voor de verbindingsopties van Universeel met MFA; anders wordt deze grijs weergegeven.
+Als gastgebruiker moet `steve@gmail.com` het selectievakje inschakelen en de AD-domeinnaam `contosotest.onmicrosoft.com` toevoegen in het dialoogvenster **Verbindingseigenschap** van SSMS. De optie **AD-domeinnaam of tenant-id** wordt alleen ondersteund voor de verbindingsopties van Universeel met MFA; anders wordt deze grijs weergegeven.
 
 ## <a name="universal-authentication-limitations-for-synapse-sql"></a>Beperkingen van universele verificatie voor Synapse SQL
 

@@ -1,6 +1,7 @@
 ---
-title: Quickstart over Java-webapp voor Microsoft-identiteitsplatform | Azure
-description: Informatie over het implementeren van Microsoft-aanmelding in een Java-webapp met behulp van OpenID Connect
+title: 'Snelstart: Aanmelden met Microsoft toevoegen aan een Java-webapp | Azure'
+titleSuffix: Microsoft identity platform
+description: In deze quickstart leert u hoe u Microsoft-aanmelding implementeert in een Java-webtoepassing met behulp van OpenID Connect.
 services: active-directory
 author: sangonzal
 manager: CelesteDG
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: d1b79d60bba89ef01b261c403fe3b25939669d0b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f00a935815b64f7c2c06dd33130c1a950582e5c3
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258095"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743485"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Quickstart: Aanmelden met Microsoft toevoegen aan een Java-webapp
 
@@ -257,4 +258,4 @@ import com.microsoft.aad.msal4j.*;
 Voor een uitgebreidere bespreking van het bouwen van web-apps waarmee gebruikers zich aanmelden op het Microsoft Identity-platform, gaat u verder naar onze reeks scenario's:
 
 > [!div class="nextstepaction"]
-[Scenario: Web-app waarmee gebruikers worden aangemeld](scenario-web-app-sign-user-overview.md?tabs=java)
+> [Scenario: Web-app waarmee gebruikers worden aangemeld](scenario-web-app-sign-user-overview.md?tabs=java)

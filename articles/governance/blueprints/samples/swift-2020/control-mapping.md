@@ -1,14 +1,14 @@
 ---
 title: Besturingselementen van het blauwdrukvoorbeeld SWIFT CSP-CSCF v2020
-description: Beheer de toewijzing van het blauwdrukvoorbeeld SWIFT CSP-CSCF v2020. Elke beheeroptie wordt toegewezen aan een of meer Azure-beleidsregels die helpt bij de evaluatie.
+description: Beheer de toewijzing van het blauwdrukvoorbeeld SWIFT CSP-CSCF v2020. Elke beheeroptie wordt toegewezen aan een of meer Azure Policy-definities die helpen bij de evaluatie.
 ms.date: 08/18/2020
 ms.topic: sample
-ms.openlocfilehash: 868971b0523e077f0f76c0340a87df550448913a
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 5aa4ee556c4ec7348566f45592b5e9fbf00eaf20
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540809"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91932189"
 ---
 # <a name="control-mapping-of-the-swift-csp-cscf-v2020-blueprint-sample"></a>Beheer de toewijzing van het blauwdrukvoorbeeld SWIFT CSP-CSCF v2020
 
@@ -21,7 +21,7 @@ De volgende toewijzingen zijn voor de besturingselementen van **SWIFT CSP-CSCF v
 
 ## <a name="12-and-51-account-management"></a>1.2 en 5.1 Account Management
 
-Deze blauwdruk helpt u bij het controleren van accounts die mogelijk niet voldoen aan de accountbeheervereisten van uw organisatie. Met deze blauwdruk worden [Azure Policy](../../../policy/overview.md)-definities toegewezen die externe accounts controleren met lees-, schrijf- en eigenaarsmachtigingen voor een abonnement en afgeschafte accounts. Door de evaluatie van de door dit beleid gecontroleerde accounts kunt u de juiste actie ondernemen om ervoor te zorgen dat aan de vereisten voor accountbeheer is voldaan.
+Deze blauwdruk helpt u bij het controleren van accounts die mogelijk niet voldoen aan de accountbeheervereisten van uw organisatie. Met deze blauwdruk worden [Azure Policy](../../../policy/overview.md)-definities toegewezen die externe accounts controleren met lees-, schrijf- en eigenaarsmachtigingen voor een abonnement en afgeschafte accounts. Door de evaluatie van de door dit beleid gecontroleerde accounts kunt u de juiste actie ondernemen om ervoor te zorgen dat aan de vereisten voor accountbeheer wordt voldaan.
 
 - Afgeschafte accounts moeten worden verwijderd uit uw abonnement
 - Afgeschafte accounts met eigenaarsmachtigingen moeten worden verwijderd uit uw abonnement
@@ -39,7 +39,7 @@ Deze blauwdruk helpt u bij het controleren van accounts die mogelijk niet voldoe
 
 ## <a name="29a--account-management--account-monitoring--atypical-usage"></a>2.9A Account Management | Accountbewaking/ongewoon gebruik
 
-Met Just-In-Time-VM-toegang wordt binnenkomend verkeer naar uw Azure-VM's vergrendeld, zodat u minder kwetsbaar bent voor aanvallen maar wordt tegelijkertijd eenvoudig toegang geboden om verbinding met VM's te kunnen maken wanneer dat nodig is. Alle JIT-aanvragen voor toegang tot virtuele machines worden vastgelegd in het activiteitenlogboek, zodat u kunt controleren op ongewoon gebruik. Met deze blauwdruk wordt een [Azure Policy](../../../policy/overview.md)-definitie toegewezen waarmee u virtuele machines kunt bewaken die Just-In-Time-toegang kunnen ondersteunen, maar die nog niet zijn geconfigureerd.
+Just-In-Time-VM-toegang vergrendelt binnenkomend verkeer naar uw Azure-VM's, zodat u minder kwetsbaar bent voor aanvallen maar tegelijkertijd eenvoudig toegang wordt geboden om verbinding met VM's te kunnen maken wanneer dat nodig is. Alle JIT-aanvragen voor toegang tot virtuele machines worden vastgelegd in het activiteitenlogboek, zodat u dit kunt controleren op ongewoon gebruik. Met deze blauwdruk wordt een [Azure Policy](../../../policy/overview.md)-definitie toegewezen waarmee u virtuele machines kunt bewaken die Just-In-Time-toegang kunnen ondersteunen, maar die nog niet zijn geconfigureerd.
 
 - Beheerpoorten van virtuele machines moeten worden beveiligd met Just-In-Time-netwerktoegangsbeheer
 
@@ -63,7 +63,7 @@ Als er slechts één eigenaar van een Azure-abonnement is, is er geen administra
 
 ## <a name="22-and-27-security-attributes"></a>2.2 en 2.7 Security Attributes
 
-De gegevensdetectie en -classificatiefunctie voor Advanced Data Protection voor Azure SQL Database biedt mogelijkheden voor het detecteren, classificeren, labelen en beveiligen van de gevoelige gegevens in uw databases. Het kan worden gebruikt voor het zichtbaar maken van de classificatiestatus van gegevens in uw database, en het traceren van de toegang tot gevoelige gegevens binnen en buiten de database. Met Advanced Data Security kunt u de gegevens waarborgen die zijn gekoppeld aan de juiste beveiligingskenmerken voor uw organisatie. Met deze blauwdruk worden [Azure Policy](../../../policy/overview.md)-definities toegewezen die Advanced Data Security controleren en afdwingen op SQL-servers. 
+De gegevensdetectie en -classificatiefunctie voor Advanced Data Protection voor Azure SQL Database biedt mogelijkheden voor het detecteren, classificeren, labelen en beveiligen van de gevoelige gegevens in uw databases. Het kan worden gebruikt voor het zichtbaar maken van de classificatiestatus van gegevens in uw database, en het traceren van de toegang tot gevoelige gegevens binnen en buiten de database. Met Advanced Data Security kunt u de gegevens waarborgen die zijn gekoppeld aan de juiste beveiligingskenmerken voor uw organisatie. Met deze blauwdruk worden [Azure Policy](../../../policy/overview.md)-definities toegewezen die Advanced Data Security controleren en afdwingen op SQL-servers.
 
 - Advanced Data Security moet zijn ingeschakeld op uw SQL-servers
 - Advanced Data Security implementeren op SQL-servers
@@ -105,7 +105,8 @@ Logboekgegevens die door Azure Monitor worden verzameld, worden opgeslagen in ee
 
 ## <a name="13-22-27-64-and-65a-audit-generation"></a>1.3, 2.2, 2.7, 6.4 en 6.5A Audit Generation
 
-Met deze blauwdruk kunt u ervoor zorgen dat systeemgebeurtenissen worden geregistreerd door [Azure Policy](../../../policy/overview.md)-definities toe te wijzen waarmee u logboekinstellingen op Azure-resources kunt controleren. Met deze beleidsdefinities wordt de implementatie gecontroleerd en afgedwongen van de Log Analytics-agent op virtuele Azure-machines en het controle-instellingen voor andere Azure-resourcetypen geconfigureerd. Met deze beleidsdefinities wordt ook de configuratie gecontroleerd van diagnostische logboeken om inzicht te bieden in bewerkingen die worden uitgevoerd binnen Azure-resources. Daarnaast worden controle en Advanced Data Security geconfigureerd op SQL-servers.
+Met deze blauwdruk kunt u ervoor zorgen dat systeemgebeurtenissen worden geregistreerd door [Azure Policy](../../../policy/overview.md)-definities toe te wijzen waarmee u logboekinstellingen op Azure-resources kunt controleren.
+Met deze beleidsdefinities wordt de implementatie gecontroleerd en afgedwongen van de Log Analytics-agent op virtuele Azure-machines en het controle-instellingen voor andere Azure-resourcetypen geconfigureerd. Met deze beleidsdefinities wordt ook de configuratie gecontroleerd van diagnostische logboeken om inzicht te bieden in bewerkingen die worden uitgevoerd binnen Azure-resources. Daarnaast worden controle en Advanced Data Security geconfigureerd op SQL-servers.
 
 - Implementatie van de Log Analytics-agent controleren - VM-installatiekopie (besturingssysteem) onvermeld
 - Log Analytics-agent voor Linux-VM-schaalsets (VMSS) implementeren
@@ -181,7 +182,8 @@ Met deze blauwdruk kunt u sterke wachtwoorden afdwingen door [Azure Policy](../.
 
 ## <a name="22-and-27-vulnerability-scanning"></a>2.2 en 2.7 Vulnerability Scanning
 
-Met deze blauwdruk kunt u beveiligingsproblemen met informatiesystemen beheren door [Azure Policy](../../../policy/overview.md)-definities toe te wijzen waarmee wordt gecontroleerd op beveiligingsproblemen met het besturingssysteem, SQL en virtuele machines in Azure Security Center. Azure Security Center biedt rapportagemogelijkheden waarmee u real-time inzicht kunt krijgen in de beveiligingsstatus van geïmplementeerde Azure-resources. Met deze blauw druk worden ook beleidsdefinities toegewezen die Advanced Data Security controleren en afdwingen op SQL-servers. In Advanced Data Security is de evaluatie van beveiligingsproblemen en Advanced Threat Protection-functies opgenomen, waarmee u meer inzicht krijgt in beveiligingsproblemen in de door u geïmplementeerde resources.
+Met deze blauwdruk kunt u beveiligingsproblemen met informatiesystemen beheren door [Azure Policy](../../../policy/overview.md)-definities toe te wijzen waarmee wordt gecontroleerd op beveiligingsproblemen met het besturingssysteem, SQL en virtuele machines in Azure Security Center.
+Azure Security Center biedt rapportagemogelijkheden waarmee u real-time inzicht kunt krijgen in de beveiligingsstatus van geïmplementeerde Azure-resources. Met deze blauw druk worden ook beleidsdefinities toegewezen die Advanced Data Security controleren en afdwingen op SQL-servers. In Advanced Data Security is de evaluatie van beveiligingsproblemen en Advanced Threat Protection-functies opgenomen, waarmee u meer inzicht krijgt in beveiligingsproblemen in de door u geïmplementeerde resources.
 
 - Advanced Data Security moet zijn ingeschakeld op uw SQL-servers
 - Controle op SQL-servers moet zijn ingeschakeld
@@ -197,8 +199,7 @@ De DDoS-standaardlaag (DDoS: Distributed Denial of service) van Azure biedt extr
 
 ## <a name="11-and-61-boundary-protection"></a>1.1 en 6.1 Boundary Protection
 
-Met deze blauwdruk kunt u de systeemgrens beheren en bepalen door een [Azure Policy](../../../policy/overview.md)-definitie toe te wijzen waarmee u kunt controleren op aanbevelingen voor de beveiliging van netwerkbeveiligingsgroepen in Azure Security Center. Azure Security Center analyseert verkeerspatronen van virtuele machines die vanaf het internet toegankelijk zijn, en formuleert aanbevelingen voor netwerkbeveiligingsgroepsregels die de mogelijkheid op aanvallen beperken
-Daarnaast wordt met deze blauwdruk ook beleidsdefinities toegewezen waarmee onbeveiligde eindpunten, toepassingen en opslagaccounts worden bewaakt. Eindpunten en toepassingen die niet zijn beveiligd door een firewall, en opslagaccounts met onbeperkte toegang, kunnen onbedoeld toegang verlenen tot gegevens in het informatiesysteem.
+Met deze blauwdruk kunt u de systeemgrens beheren en bepalen door een [Azure Policy](../../../policy/overview.md)-definitie toe te wijzen waarmee u kunt controleren op aanbevelingen voor de beveiliging van netwerkbeveiligingsgroepen in Azure Security Center. Azure Security Center analyseert verkeerspatronen van virtuele machines die vanaf het internet toegankelijk zijn, en formuleert aanbevelingen voor netwerkbeveiligingsgroepsregels die de mogelijkheid op aanvallen beperken Daarnaast wordt met deze blauwdruk ook beleidsdefinities toegewezen waarmee onbeveiligde eindpunten, toepassingen en opslagaccounts worden bewaakt. Eindpunten en toepassingen die niet zijn beveiligd door een firewall, en opslagaccounts met onbeperkte toegang, kunnen onbedoeld toegang verlenen tot gegevens in het informatiesysteem.
 
 - Aanbevelingen voor Adaptieve netwerkbeveiliging moeten worden toegepast op op internet gerichte virtuele machines
 - Toegang via een eindpunt gericht op internet moet worden beperkt

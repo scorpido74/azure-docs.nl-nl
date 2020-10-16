@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 12/04/2019
 ms.topic: conceptual
 ms.openlocfilehash: f1e4e288b5b95f355221188a45f1e6c764fde77c
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86187333"
 ---
 # <a name="use-source-control-integration-in-azure-automation---legacy"></a>Broncode beheer integratie gebruiken in Azure Automation-verouderd
@@ -28,7 +28,7 @@ Met broncode beheer kunt u code pushen van Azure Automation naar broncode beheer
 
 Er zijn twee eenvoudige stappen vereist voor het configureren van broncode beheer voor uw Automation-account en slechts één als u al een GitHub-account hebt. 
 
-### <a name="create-a-github-repository"></a>Een GitHub-opslag plaats maken
+### <a name="create-a-github-repository"></a>Een GitHub-opslagplaats maken
 
 Als u al een GitHub-account en een opslag plaats hebt die u wilt koppelen aan Azure Automation, meldt u zich aan bij uw bestaande account en begint u bij stap 2 hieronder. Als dat niet het geval is, gaat u naar [github](https://github.com/), meldt u zich aan voor een nieuw account en [maakt u een nieuwe opslag plaats](https://help.github.com/articles/create-a-repo/).
 
@@ -115,7 +115,7 @@ Met de knop synchroniseren op de pagina bibliotheek synchronisatie kunt u alle r
 
     ![De knop synchroniseren met het bericht bevestigen dat alle runbooks worden gesynchroniseerd](media/source-control-integration-legacy/automation-SyncButtonwithMessage.png)
 
-2. Sync Start het runbook **Sync-MicrosoftAzureAutomationAccountFromGitHubV1** , dat verbinding maakt met github en de wijzigingen van uw opslag plaats naar Azure Automation haalt. Er wordt een nieuwe taak weer geven op de pagina bibliotheek synchronisatie voor deze actie. Als u details over de synchronisatie taak wilt weer geven, klikt u om de pagina taak details te openen.  
+2. Sync Start het runbook  **Sync-MicrosoftAzureAutomationAccountFromGitHubV1** , dat verbinding maakt met github en de wijzigingen van uw opslag plaats naar Azure Automation haalt. Er wordt een nieuwe taak weer geven op de pagina bibliotheek synchronisatie voor deze actie. Als u details over de synchronisatie taak wilt weer geven, klikt u om de pagina taak details te openen.  
 
     ![Een venster met de synchronisatie resultaten van een synchronisatie taak in een GitHub-opslag plaats](media/source-control-integration-legacy/automation-SyncRunbook.png)
 

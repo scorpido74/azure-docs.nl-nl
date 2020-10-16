@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/25/2019
 tags: connectors
 ms.openlocfilehash: 5348ade1ba6eec6cbd360849411b4520cb3c2b19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74787333"
 ---
 # <a name="delay-running-the-next-action-in-azure-logic-apps"></a>Uitvoering van de volgende actie in Azure Logic Apps vertragen
@@ -50,10 +50,10 @@ Hier volgen enkele voor beelden van manieren om deze acties te gebruiken:
 
    ![Stel de hoeveelheid tijd in voor de vertraging](./media/connectors-native-delay/delay-time-intervals.png)
 
-   | Eigenschap | JSON-naam | Vereist | Type | Description |
+   | Eigenschap | JSON-naam | Vereist | Type | Beschrijving |
    |----------|-----------|----------|------|-------------|
-   | Count | count | Ja | Geheel getal | Het aantal tijds eenheden dat moet worden vertraagd |
-   | Eenheid | eenheid | Ja | Tekenreeks | De tijds eenheid, bijvoorbeeld:,, `Second` `Minute` ,, `Hour` `Day` `Week` of`Month` |
+   | Aantal | count | Ja | Geheel getal | Het aantal tijds eenheden dat moet worden vertraagd |
+   | Eenheid | eenheid | Ja | Tekenreeks | De tijds eenheid, bijvoorbeeld:,, `Second` `Minute` ,, `Hour` `Day` `Week` of `Month` |
    ||||||
 
 1. Voeg andere acties toe die u in uw werk stroom wilt uitvoeren.
@@ -76,7 +76,7 @@ Hier volgen enkele voor beelden van manieren om deze acties te gebruiken:
 
    ![Tijds tempel opgeven voor wanneer de vertraging moet worden beëindigd](./media/connectors-native-delay/delay-until-timestamp.png)
 
-   | Eigenschap | JSON-naam | Vereist | Type | Description |
+   | Eigenschap | JSON-naam | Vereist | Type | Beschrijving |
    |----------|-----------|----------|------|-------------|
    | Tijdstempel | tijdstempel | Ja | Tekenreeks | De eind datum en-tijd voor het hervatten van de werk stroom met de volgende indeling: <p>JJJJ-MM-DDTuu: mm: ssZ <p>Als u bijvoorbeeld 18 september 2017 om 2:00 uur wilt, geeft u "2017-09-18T14:00:00Z" op. <p>**Opmerking:** Deze tijd notatie moet voldoen aan de [ISO 8601-datum](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) en-tijd [notatie in UTC-datum](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)en-tijd, maar zonder UTC- [afwijking](https://en.wikipedia.org/wiki/UTC_offset). Zonder tijd zone moet u de letter ' Z ' aan het einde toevoegen zonder spaties. Deze "Z" verwijst naar de equivalente [zeemijl tijd](https://en.wikipedia.org/wiki/Nautical_time). |
    ||||||

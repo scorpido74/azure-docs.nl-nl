@@ -11,10 +11,10 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 04/09/2020
 ms.openlocfilehash: 77b5b52153c552008406b4b85083bcba5542cebe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87012719"
 ---
 # <a name="prevent-overfitting-and-imbalanced-data-with-automated-machine-learning"></a>Voor komen dat gegevens met automatische machine learning worden verdeeld en gebalanceerd.
@@ -27,7 +27,7 @@ Over het machine learning vindt plaats wanneer een model te groot is voor de opl
 
 Bekijk de volgende getrainde modellen en de bijbehorende trein-en test keurigheden.
 
-| Model | Nauw keurigheid trainen | Nauw keurigheid testen |
+| Modelleren | Nauw keurigheid trainen | Nauw keurigheid testen |
 |-------|----------------|---------------|
 | A | 99,9% | 95% |
 | B | 87% | 87% |

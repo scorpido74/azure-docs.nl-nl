@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18
-ms.openlocfilehash: d36c0ab78f9f96a051e6cb0a53b756c7409ca142
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a9259e287c75a3a39ad1d4e701638f38b4512ee0
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893401"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966403"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>De toegang tot een Azure Machine Learning-werkruimte beheren
 
@@ -66,6 +66,22 @@ az ml workspace share -w my_workspace -g my_resource_group --role Contributor --
 ## <a name="azure-machine-learning-operations"></a>Azure Machine Learning bewerkingen
 
 Azure Machine Learning ingebouwde acties voor veel bewerkingen en taken. Zie [Azure resource provider-bewerkingen](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)voor een volledige lijst.
+
+## <a name="mlflow-operations-in-azure-machine-learning"></a>MLflow-bewerkingen in azure machine learning
+
+Deze tabellen beschrijft het machtigings bereik dat moet worden toegevoegd aan acties in de aangepaste rol die is gemaakt voor het uitvoeren van MLflow-bewerkingen.
+
+| Bewerking MLflow | Bereik |
+| --- | --- |
+| Alle experimenten in de werk ruimte bijhouden, een experimenteren met de id, een experiment verkrijgen op naam | Micro soft. MachineLearningServices/werk ruimtes/experimenten/lezen |
+| Een experiment met een naam maken, een tag op een experiment instellen, een experiment herstellen dat is gemarkeerd voor verwijdering| Micro soft. MachineLearningServices/werk ruimten/experimenten/schrijven | 
+| Een experiment verwijderen | Micro soft. MachineLearningServices/werk ruimten/experimenten/verwijderen |
+| Een uitvoering en gerelateerde gegevens en meta gegevens ophalen, een lijst ophalen van alle waarden voor de opgegeven metriek voor een bepaalde uitvoering, lijst artefacten voor een uitvoering | Micro soft. MachineLearningServices/werk ruimten/experimenten/uitvoeringen/lezen |
+| Een nieuwe uitvoeringsrun binnen een experiment maken, uitvoeringen verwijderen, verwijderde uitvoeringen herstellen, metrische gegevens registreren onder de huidige uitvoering, tags instellen voor een uitvoering, Tags verwijderen bij een uitvoering, logboek-para meters (sleutel waarde-paar) voor een uitvoering registreren, een batch met metrische gegevens, para meters en Tags vastleggen voor een uitvoering, de status van de update-uitvoering | Micro soft. MachineLearningServices/werk ruimten/experimenten/uitvoeringen/schrijven |
+| Geregistreerd model op naam ophalen, een lijst met alle geregistreerde modellen in het REGI ster ophalen, zoeken naar geregistreerde modellen, nieuwste versie modellen voor elke aanvragen fase, een geregistreerde model versie ophalen, versies van het zoek model ontvangen, URI ophalen waarbij de artefacten van een model versie worden opgeslagen, zoeken naar uitvoeringen op experiment-id's | Micro soft. MachineLearningServices/werk ruimten/modellen/lezen |
+| Maak een nieuw geregistreerd model, werk de naam/beschrijving van een geregistreerd model bij, wijzig de naam van het bestaande geregistreerde model, maak een nieuwe versie van het model, werk de beschrijving van een model versie bij en zet een geregistreerd model om in een van de fasen | Micro soft. MachineLearningServices/werk ruimten/modellen/schrijven |
+| Een geregistreerd model samen met alle versies verwijderen, specifieke versies van een geregistreerd model verwijderen | Micro soft. MachineLearningServices/werk ruimten/modellen/verwijderen |
+
 
 ## <a name="create-custom-role"></a>Aangepast rol maken
 
@@ -141,7 +157,7 @@ De volgende tabel bevat een overzicht van Azure Machine Learning activiteiten en
 | Een pijplijn eindpunt publiceren | Niet vereist | Niet vereist | Eigenaar, bijdrager of aangepaste rol, waardoor: `"/workspaces/pipelines/write", "/workspaces/endpoints/pipelines/*", "/workspaces/pipelinedrafts/*", "/workspaces/modules/*"` |
 | Een geregistreerd model implementeren op een AKS/ACI-bron | Niet vereist | Niet vereist | Eigenaar, bijdrager of aangepaste rol, waardoor: `"/workspaces/services/aks/write", "/workspaces/services/aci/write"` |
 | Score voor een geïmplementeerd AKS-eind punt | Niet vereist | Niet vereist | Eigenaar, bijdrager of aangepaste rol waarmee: `"/workspaces/services/aks/score/action", "/workspaces/services/aks/listkeys/action"` (wanneer u geen Azure Active Directory auth) of `"/workspaces/read"` (wanneer u token verificatie gebruikt) |
-| Toegang tot opslag met interactieve notebooks | Niet vereist | Niet vereist | Eigenaar, bijdrager of aangepaste rol, waardoor: `"/workspaces/computes/read", "/workspaces/notebooks/samples/read", "/workspaces/notebooks/storage/*"` |
+| Toegang tot opslag met interactieve notebooks | Niet vereist | Niet vereist | Eigenaar, bijdrager of aangepaste rol, waardoor: `"/workspaces/computes/read", "/workspaces/notebooks/samples/read", "/workspaces/notebooks/storage/*", "/workspaces/listKeys/action"` |
 | Nieuwe aangepaste rol maken | Eigenaar, bijdrager of aangepaste rol die `Microsoft.Authorization/roleDefinitions/write` | Niet vereist | Eigenaar, bijdrager of aangepaste rol, waardoor: `/workspaces/computes/write` |
 
 > [!TIP]
@@ -253,6 +269,46 @@ Ja hier volgen enkele algemene scenario's met aangepaste roldefinities die u als
         ]
     }
     ```
+     
+* __MLflow data wetenschapper Custom__: Hiermee staat u toe dat een gegevens wetenschapper alle ondersteunde MLflow-bewerkingen voor AzureML kan uitvoeren **, met uitzonde ring**van:
+
+   * Maken van compute
+   * Modellen implementeren in een productie AKS-cluster
+   * Een pijplijn eindpunt implementeren in productie
+
+   `mlflow_data_scientist_custom_role.json` :
+   ```json
+   {
+        "Name": "MLFlow Data Scientist Custom",
+        "IsCustom": true,
+        "Description": "Can perform azureml mlflow integrated functionalities that includes mlflow tracking, projects, model registry",
+        "Actions": [
+            "Microsoft.MachineLearningServices/workspaces/experiments/read",
+            "Microsoft.MachineLearningServices/workspaces/experiments/write",
+            "Microsoft.MachineLearningServices/workspaces/experiments/delete",
+            "Microsoft.MachineLearningServices/workspaces/experiments/runs/read",
+            "Microsoft.MachineLearningServices/workspaces/experiments/runs/write",
+            "Microsoft.MachineLearningServices/workspaces/models/read",
+            "Microsoft.MachineLearningServices/workspaces/models/write",
+            "Microsoft.MachineLearningServices/workspaces/models/delete"
+        ],
+        "NotActions": [
+            "Microsoft.MachineLearningServices/workspaces/delete",
+            "Microsoft.MachineLearningServices/workspaces/write",
+            "Microsoft.MachineLearningServices/workspaces/computes/*/write",
+            "Microsoft.MachineLearningServices/workspaces/computes/*/delete", 
+            "Microsoft.Authorization/*",
+            "Microsoft.MachineLearningServices/workspaces/computes/listKeys/action",
+            "Microsoft.MachineLearningServices/workspaces/listKeys/action",
+            "Microsoft.MachineLearningServices/workspaces/services/aks/write",
+            "Microsoft.MachineLearningServices/workspaces/services/aks/delete",
+            "Microsoft.MachineLearningServices/workspaces/endpoints/pipelines/write"
+        ],
+     "AssignableScopes": [
+            "/subscriptions/<subscription_id>"
+        ]
+    }
+    ```   
 
 * __MLOps aangepast__: Hiermee kunt u een rol aan een Service-Principal toewijzen en gebruiken om uw MLOps-pijp lijnen te automatiseren. Bijvoorbeeld voor het verzenden van uitvoeringen voor een al gepubliceerde pijp lijn:
 

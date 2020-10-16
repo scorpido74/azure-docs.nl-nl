@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: f20302a4993da1754255254ce6d69c000750d4ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84806779"
 ---
 # <a name="how-to-upgrade-application-gateway-ingress-controller-using-helm"></a>Een upgraden uitvoeren van de controller voor inkomend verkeer van Application Gateway met behulp van Helm 
@@ -56,7 +56,7 @@ Voordat u met de upgrade procedure begint, moet u ervoor zorgen dat u de vereist
     application-gateway-kubernetes-ingress/ingress-azure    0.6.0           0.6.0           Use Azure Application Gateway as the ingress for an Azure...
     ```
 
-    De meest recente beschik bare versie van de bovenstaande lijst is:`0.7.0-rc1`
+    De meest recente beschik bare versie van de bovenstaande lijst is: `0.7.0-rc1`
 
 1. Bekijk de helm-grafieken die momenteel zijn geïnstalleerd:
 
@@ -100,7 +100,7 @@ Als de implementatie van de helm mislukt, kunt u terugdraaien naar een eerdere v
     2               Fri Jun 21 15:56:06 2019        FAILED          ingress-azure-xx        xxxx
     ```
 
-    Vanuit de voorbeeld uitvoer van de opdracht lijkt het alsof `helm history` de laatste geslaagde implementatie van onze `odd-billygoat` revisie`1`
+    Vanuit de voorbeeld uitvoer van de opdracht lijkt het alsof `helm history` de laatste geslaagde implementatie van onze `odd-billygoat` revisie `1`
 
 1. Herstellen naar de laatste geslaagde revisie:
 

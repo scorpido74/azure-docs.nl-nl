@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendleton
 ms.custom: codepen, devx-track-js
 ms.openlocfilehash: f43c0086cfd6e51e0fbcd5d30911aa6c8e9a6518
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91335548"
 ---
 # <a name="how-to-use-image-templates"></a>Afbeeldingssjablonen gebruiken
@@ -523,7 +523,7 @@ Meer informatie over de klassen en methoden die in dit artikel worden gebruikt:
 Raadpleeg de volgende artikelen voor meer code voorbeelden waarbij afbeeldings sjablonen kunnen worden gebruikt:
 
 > [!div class="nextstepaction"]
-> [Een symboollaag toevoegen](map-add-pin.md)
+> [Een symbool laag toevoegen](map-add-pin.md)
 
 > [!div class="nextstepaction"]
 > [Een lijnlaag toevoegen](map-add-line-layer.md)

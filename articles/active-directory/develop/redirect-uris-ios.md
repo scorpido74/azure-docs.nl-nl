@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: jak
 ms.custom: aaddev
 ms.openlocfilehash: 95bd7b5ac325ef5484bd01284c46489acb919a32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: HT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85830346"
 ---
 # <a name="using-redirect-uris-with-the-microsoft-authentication-library-for-ios-and-macos"></a>Omleidings-Uri's gebruiken met de micro soft-verificatie bibliotheek voor iOS en macOS
@@ -41,7 +41,7 @@ De omleidings-Uri's moeten voor elke iOS-app verschillend zijn. Hierdoor kan de 
 Op basis van de volgende registratie van de toepassing in de Azure Portal:
 
 * Client-ID: `ABCDE-12345` (dit is één client-id)
-* RedirectUris: `msauth.com.contoso.app1://auth` , `msauth.com.contoso.app2://auth` ,`msauth.com.contoso.app3://auth`
+* RedirectUris: `msauth.com.contoso.app1://auth` , `msauth.com.contoso.app2://auth` , `msauth.com.contoso.app3://auth`
 
 App1 maakt gebruik van omleiding `msauth.com.contoso.app1://auth` . \
 App2 maakt gebruik van `msauth.com.contoso.app2://auth` . \
@@ -53,13 +53,13 @@ Bij het migreren van code die de Azure AD-verificatie bibliotheek (ADAL) heeft g
 
 ## <a name="msal-redirect-uri-format-requirements"></a>Vereisten voor MSAL-omleidings-URI-indeling
 
-* De MSAL-omleidings-URI moet de vorm hebben`<scheme>://host`
+* De MSAL-omleidings-URI moet de vorm hebben `<scheme>://host`
 
     Waar `<scheme>` is een unieke teken reeks waarmee uw app wordt geïdentificeerd. Het is voornamelijk gebaseerd op de bundel-id van uw toepassing om uniekheid te garanderen. Als de bundel-ID van uw app bijvoorbeeld is, is de `com.contoso.myapp` omleidings-URI in de vorm: `msauth.com.contoso.myapp://auth` .
 
     Als u migreert vanaf ADAL, heeft de omleidings-URI waarschijnlijk deze indeling: `<scheme>://[Your_Bundle_Id]` , waar `scheme` is een unieke teken reeks. Deze indeling blijft werken wanneer u MSAL gebruikt.
 
-* `<scheme>`moeten worden geregistreerd in de info. plist van uw app onder `CFBundleURLTypes > CFBundleURLSchemes` .  In dit voor beeld is info. plist geopend als bron code:
+* `<scheme>` moeten worden geregistreerd in de info. plist van uw app onder `CFBundleURLTypes > CFBundleURLSchemes` .  In dit voor beeld is info. plist geopend als bron code:
 
     ```xml
     <key>CFBundleURLTypes</key>

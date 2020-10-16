@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: 1542bba53b51ffdf2129953a81e5d13975ade434
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936122"
 ---
 # <a name="scale-operations-in-flexible-server"></a>Schaal bewerkingen op een flexibele server
@@ -43,18 +43,18 @@ Volg deze stappen om de compute-laag te kiezen.
  :::image type="content" source="./media/how-to-scale-compute-storage-portal/click-compute-storage.png" alt-text="berekenings-en opslag weergave":::
 
 4.  U kunt de compute-klasse kiezen tussen de laagst bebreekbaar, algemeen gebruik en geoptimaliseerd voor geheugen.
-   :::image type="content" source="./media/how-to-scale-compute-storage-portal/list-compute-tiers.png" alt-text="Reken lagen weer geven":::
+   :::image type="content" source="./media/how-to-scale-compute-storage-portal/list-compute-tiers.png" alt-text="berekenings-en opslag weergave":::
 
 
 5.  Als u goed met de standaard vCores en-geheugen grootten werkt, kunt u de volgende stap overs Laan.
 
 6.  Als u het aantal vCores wilt wijzigen, klikt u op de vervolg keuzelijst van de **berekenings grootte** en klikt u op het gewenste aantal VCores/geheugen in de lijst.
     
-    - Burstable Compute-laag: :::image type="content" source="./media/how-to-scale-compute-storage-portal/compute-burstable-dropdown.png" alt-text="Burstable Compute":::
+    - Burstable Compute-laag: :::image type="content" source="./media/how-to-scale-compute-storage-portal/compute-burstable-dropdown.png" alt-text="berekenings-en opslag weergave":::
 
-    - Compute-laag voor algemeen gebruik: :::image type="content" source="./media/how-to-scale-compute-storage-portal/compute-general-purpose-dropdown.png" alt-text="Compute voor algemeen"::: gebruik
+    - Compute-laag voor algemeen gebruik: :::image type="content" source="./media/how-to-scale-compute-storage-portal/compute-general-purpose-dropdown.png" alt-text="berekenings-en opslag weergave"::: gebruik
 
-    - Compute-laag geoptimaliseerd voor geheugen: :::image type="content" source="./media/how-to-scale-compute-storage-portal/compute-memory-optimized-dropdown.png" alt-text="reken kracht geoptimaliseerd voor geheugen":::
+    - Compute-laag geoptimaliseerd voor geheugen: :::image type="content" source="./media/how-to-scale-compute-storage-portal/compute-memory-optimized-dropdown.png" alt-text="berekenings-en opslag weergave":::
 
 7.  Klik op **Opslaan**. 
 8.  Er wordt een bevestigings bericht weer gegeven. Klik op **OK** als u wilt door gaan. 
@@ -70,12 +70,12 @@ Volg deze stappen om uw opslag grootte te verg Roten.
 
 3.  Er wordt een pagina met de huidige instellingen weer gegeven.
    
-:::image type="content" source="./media/how-to-scale-compute-storage-portal/click-compute-storage.png" alt-text="Klik op Compute + Storage":::
+:::image type="content" source="./media/how-to-scale-compute-storage-portal/click-compute-storage.png" alt-text="berekenings-en opslag weergave":::
 4.  De **grootte van het veld opslag in GiB** met een schuif balk wordt weer gegeven met de huidige grootte.
 
 5.  Schuif de balk naar de gewenste grootte. Het bijbehorende IOPS-nummer wordt weer gegeven. De IOPS is afhankelijk van de compute-laag en de grootte. De gegevens over de kosten worden ook weer gegeven. 
 
- :::image type="content" source="./media/how-to-scale-compute-storage-portal/storage-scaleup.png" alt-text="opslag omhoog schalen":::
+ :::image type="content" source="./media/how-to-scale-compute-storage-portal/storage-scaleup.png" alt-text="berekenings-en opslag weergave":::
 
 6.  Als u goed bent met de opslag grootte, klikt u op **Opslaan**. 
 7.  Er wordt een bevestigings bericht weer gegeven. Klik op **OK** als u wilt door gaan. 

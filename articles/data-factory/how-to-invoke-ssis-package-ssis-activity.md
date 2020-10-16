@@ -15,10 +15,10 @@ manager: mflasko
 ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.date: 07/20/2020
 ms.openlocfilehash: 901693c512ddfcf5d3c4dafaec71b1606b5dc5f1
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89077844"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Een SSIS-pakket uitvoeren met de activiteit SSIS-pakket uitvoeren in Azure Data Factory
@@ -251,7 +251,7 @@ Voer de volgende stappen uit op het tabblad **verbindings beheer** van de activi
 
       Bijvoorbeeld, zonder uw oorspronkelijke pakket op SSDT te wijzigen, kunt u de on-premises-to-on-premises gegevens stromen die worden uitgevoerd op SQL Server converteren naar on-premises-naar-Cloud gegevens stromen die worden uitgevoerd op SSIS IR in ADF door de waarden van **ConnectByProxy**, **Connections Tring**en **ConnectUsingManagedIdentity** -eigenschappen in bestaande verbindings beheer tijdens runtime te overschrijven.
       
-      Deze run-time onderdrukkingen kunnen zelf-Hostende IR (SHIR) inschakelen als proxy voor SSIS IR bij het openen van gegevens on-premises. Zie [Configuring SHIR as a proxy for SSIS IR](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)en Azure SQL database/Managed instance Connections met behulp van het nieuwste MSOLEDBSQL-stuur programma waarmee Azure Active Directory (Aad)-verificatie wordt ingeschakeld met de identiteit voor het uitvoeren [van](https://docs.microsoft.com/sql/integration-services/connection-manager/ole-db-connection-manager?view=sql-server-ver15#managed-identities-for-azure-resources-authentication)webservers.
+      Met deze runtime onderdrukkingen kunt u Self-Hosted IR (SHIR) inschakelen als proxy voor SSIS IR bij het openen van gegevens on-premises, Zie [Configuring SHIR as a proxy for SSIS IR](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)en Azure SQL database/Managed instance Connections met behulp van het nieuwste MSOLEDBSQL-stuur programma waarmee Azure Active Directory (Aad)-verificatie wordt ingeschakeld met de [door ADF beheerde identiteit.](https://docs.microsoft.com/sql/integration-services/connection-manager/ole-db-connection-manager?view=sql-server-ver15#managed-identities-for-azure-resources-authentication)
 
       ![Eigenschappen instellen van SSDT op het tabblad verbindings beheer](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-connection-managers2.png)
    

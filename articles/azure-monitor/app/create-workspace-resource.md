@@ -1,22 +1,20 @@
 ---
 title: Een nieuwe Azure Monitor maken Application Insights resource op basis van werk ruimte | Microsoft Docs
 description: Meer informatie over de stappen die nodig zijn om de nieuwe Azure Monitor Application Insights op werk ruimte gebaseerde resources in te scha kelen.
-author: mrbullwinkle
-ms.author: mbullwin
 ms.topic: conceptual
-ms.date: 09/10/2020
-ms.openlocfilehash: 196be1caf91b6f1f1731d7c4afbfe72482c8f2ac
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/06/2020
+ms.openlocfilehash: 9b91e5065729bee6af3f8018c36930e132eb1a15
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90894535"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945410"
 ---
 # <a name="workspace-based-application-insights-resources"></a>Application Insights resources op basis van een werk ruimte
 
 Resources op basis van een werk ruimte ondersteunen volledige integratie tussen Application Insights en Log Analytics. U kunt nu uw Application Insights telemetrie naar een gemeen schappelijke Log Analytics-werk ruimte verzenden, zodat u volledige toegang hebt tot alle functies van Log Analytics terwijl logboeken voor toepassings-, infra structuur-en platform bestanden in één geconsolideerde locatie worden bewaard.
 
-Dit biedt ook algemene op rollen gebaseerde Access Control (RBAC) in uw resources en elimineert de nood zaak van query's tussen apps en werk ruimten.
+Dit biedt ook algemene Role-Based Access Control (RBAC) in uw resources en elimineert de nood zaak van query's tussen apps en werk ruimten.
 
 > [!NOTE]
 > Gegevens opname en retentie voor op werk ruimte gebaseerde Application Insights resources worden gefactureerd via de Log Analytics werk ruimte waarin de gegevens zich bevinden. Meer [informatie]( ./pricing.md#workspace-based-application-insights) over facturering voor op werk ruimte gebaseerde Application Insights resources.
@@ -206,6 +204,10 @@ Selecteer in het deel venster Resource Application Insights **Eigenschappen**  >
 ## <a name="export-telemetry"></a>Telemetrie exporteren
 
 De verouderde functionaliteit voor continue export wordt niet ondersteund voor op werk ruimte gebaseerde resources. Selecteer in plaats daarvan diagnostische **instellingen**  >  **Diagnostische instelling toevoegen** vanuit uw Application Insights-resource. U kunt alle tabellen selecteren of een subset van tabellen die u wilt archiveren naar een opslag account of naar een Azure Event hub streamen.
+
+> [!NOTE]
+> Er zijn momenteel geen extra kosten voor het exporteren van de telemetrie. De prijs informatie voor deze functie is beschikbaar op de [pagina met Azure monitor prijzen](https://azure.microsoft.com/pricing/details/monitor/).  Vóór het begin van de facturering worden meldingen verzonden. Als u ervoor kiest om <feature name> na de kennisgevings periode verder te gaan met, wordt u gefactureerd tegen het toepasselijke rente bedrag. 
+ 
 
 ## <a name="next-steps"></a>Volgende stappen
 

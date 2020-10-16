@@ -13,10 +13,10 @@ ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
 ms.openlocfilehash: e2cdf7d5213f1667b0b588cc5bfa9f105245b6b3
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619114"
 ---
 # <a name="powershell-and-the-azure-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>Power shell en Azure CLI: Schakel Transparent Data Encryption in met door de klant beheerde sleutel van Azure Key Vault
@@ -45,7 +45,7 @@ Raadpleeg [Azure PowerShell installeren](/powershell/azure/install-az-ps) voor i
 Voor specifieke informatie over Key Vault raadpleegt u [Power shell-instructies van Key Vault](../../key-vault/secrets/quick-create-powershell.md) en [hoe u Key Vault Soft-verwijderings opdracht kunt gebruiken met Power shell](../../key-vault/general/soft-delete-powershell.md).
 
 > [!IMPORTANT]
-> De module Power shell Azure Resource Manager (RM) wordt nog steeds ondersteund, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. De AzureRM-module blijft oplossingen ontvangen tot ten minste december 2020.  De argumenten voor de opdrachten in de module AZ en in de AzureRm-modules zijn aanzienlijk identiek. Zie [Inleiding tot de nieuwe Azure PowerShell AZ-module](/powershell/azure/new-azureps-module-az)voor meer informatie over de compatibiliteit.
+> De module PowerShell Azure Resource Manager (RM) wordt nog steeds ondersteund, maar alle toekomstige ontwikkeling is voor de Az.Sql-module. De AzureRM-module blijft tot ten minste december 2020 bugfixes ontvangen.  De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn vrijwel identiek. Zie [Introductie van de nieuwe Az-module van Azure PowerShell](/powershell/azure/new-azureps-module-az) voor meer informatie over de compatibiliteit van de argumenten.
 
 ## <a name="assign-an-azure-active-directory-azure-ad-identity-to-your-server"></a>Een Azure Active Directory-identiteit (Azure AD) toewijzen aan uw server
 
@@ -123,7 +123,7 @@ Get-AzSqlDatabaseTransparentDataEncryptionActivity -ResourceGroupName <SQLDataba
 
 # <a name="the-azure-cli"></a>[De Azure CLI](#tab/azure-cli)
 
-Zie [de Azure-opdracht regel 2,0 interface voor meerdere platforms installeren en configureren](https://docs.microsoft.com/cli/azure/install-azure-cli)voor meer informatie over het installeren van de vereiste versie van de Azure cli (versie 2,0 of hoger) en het maken van verbinding met uw Azure-abonnement.
+Als u de vereiste versie van de Azure CLI (versie 2,0 of hoger) wilt installeren en verbinding wilt maken met uw Azure-abonnement, raadpleegt u [de Azure platformoverschrijdende Command-Line Interface 2,0 installeren en configureren](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 Voor specifieke informatie over Key Vault raadpleegt [u Key Vault beheren met de cli 2,0](../../key-vault/general/manage-with-cli2.md) en [hoe u Key Vault zacht-Delete gebruikt met de CLI](../../key-vault/general/soft-delete-cli.md).
 

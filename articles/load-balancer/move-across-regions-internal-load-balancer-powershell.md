@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: allensu
 ms.openlocfilehash: 63083c4bd058c63e21a40f2d245312a3f010b696
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84808363"
 ---
 # <a name="move-azure-internal-load-balancer-to-another-region-using-powershell"></a>Interne Azure-Load Balancer naar een andere regio verplaatsen met behulp van Power shell
@@ -28,7 +28,7 @@ Interne load balancers van Azure kunnen niet van de ene regio naar de andere wor
 
 - Als u een interne load balancer configuratie wilt exporteren en een sjabloon wilt implementeren voor het maken van een interne load balancer in een andere regio, hebt u de rol netwerk bijdrager of hoger nodig.
    
-- Identificeer de bron netwerk indeling en alle resources die u momenteel gebruikt. Deze indeling bevat, maar is niet beperkt tot load balancers, netwerk beveiligings groepen, virtuele machines en virtuele netwerken.
+- Identificeer de bronnetwerkindeling en alle resources die u momenteel gebruikt. Deze indeling bevat, maar is niet beperkt tot load balancers, netwerk beveiligings groepen, virtuele machines en virtuele netwerken.
 
 - Controleer of u met uw Azure-abonnement interne load balancers kunt maken in de doel regio die wordt gebruikt. Neem contact op met ondersteuning voor het inschakelen van het vereiste quotum.
 
@@ -470,7 +470,7 @@ Remove-AzResourceGroup -Name <resource-group-name>
 
 ```
 
-## <a name="clean-up"></a>Opruimen
+## <a name="clean-up"></a>Opschonen
 
 Als u de wijzigingen wilt door voeren en de NSG wilt verplaatsen, verwijdert u de bron-NSG of de resource groep, gebruikt u [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0) of [Remove-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/remove-azvirtualnetwork?view=azps-2.6.0) en [Remove-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/remove-azloadbalancer?view=azps-2.6.0)
 

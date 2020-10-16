@@ -3,19 +3,19 @@ title: "Quickstart: Een zoekindex maken in PowerShell met behulp van REST API's"
 titleSuffix: Azure Cognitive Search
 description: In deze REST API-quickstart leert u hoe u een index maakt, gegevens laadt en query's uitvoert met behulp van Invoke-RestMethod van PowerShell en van de REST API's van Azure Cognitive Search.
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 08/17/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f803532e7d08d0de21541cb5d1b52639b623bb90
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8ad5c73fee93d935ad050cea8feca2754649a61f
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89078296"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058502"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-powershell-using-rest-apis"></a>Quickstart: Een Azure Cognitive Search-index maken in PowerShell met behulp van REST API's
 > [!div class="op_single_selector"]

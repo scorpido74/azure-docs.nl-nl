@@ -4,10 +4,10 @@ description: Hierin worden resource grafiek tabellen en de beschik bare Kusto-ge
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.openlocfilehash: ef588bd3fd8afcf1f1139f97d5df2d48a14b4dd9
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91578526"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Informatie over de query taal van Azure resource Graph
@@ -128,7 +128,7 @@ Hier volgt een lijst met KQL-Opera tors die worden ondersteund door resource gra
 |[ondergrens](/azure/kusto/query/limitoperator) |[Een lijst van alle openbare IP-adressen weergeven](../samples/starter.md#list-publicip) |Synoniem van `take` . Werkt niet met [overs Laan](./work-with-data.md#skipping-records). |
 |[mvexpand](/azure/kusto/query/mvexpandoperator) | | Verouderde operator `mv-expand` . gebruik in plaats daarvan. _RowLimit_ maximum van 400. De standaard waarde is 128. |
 |[MV-uitvouwen](/azure/kusto/query/mvexpandoperator) |[Een lijst met Cosmos DB met specifieke schrijflocaties weergeven](../samples/advanced.md#mvexpand-cosmosdb) |_RowLimit_ maximum van 400. De standaard waarde is 128. |
-|[ter](/azure/kusto/query/orderoperator) |[Een lijst van resources weergeven, gesorteerd op naam](../samples/starter.md#list-resources) |Synoniem van `sort` |
+|[order](/azure/kusto/query/orderoperator) |[Een lijst van resources weergeven, gesorteerd op naam](../samples/starter.md#list-resources) |Synoniem van `sort` |
 |[project](/azure/kusto/query/projectoperator) |[Een lijst van resources weergeven, gesorteerd op naam](../samples/starter.md#list-resources) | |
 |[project-weg](/azure/kusto/query/projectawayoperator) |[Kolommen verwijderen uit resultaten](../samples/advanced.md#remove-column) | |
 |[acties](/azure/kusto/query/sortoperator) |[Een lijst van resources weergeven, gesorteerd op naam](../samples/starter.md#list-resources) |Synoniem van `order` |

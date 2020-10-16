@@ -10,17 +10,17 @@ ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: c93508bebdcfce35a89b3d5e2a8abecc7ac84722
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91280144"
 ---
 # <a name="storage-account-overview"></a>Overzicht van opslagaccounts
 
 Een Azure-opslag account bevat al uw Azure Storage gegevens objecten: blobs, bestanden, wacht rijen, tabellen en schijven. Het opslag account biedt een unieke naam ruimte voor uw Azure Storage gegevens die overal ter wereld toegankelijk zijn via HTTP of HTTPS. Gegevens in uw Azure Storage-account zijn duurzaam en Maxi maal beschikbaar, veilig en zeer schaalbaar.
 
-Zie [een opslag account maken](storage-account-create.md)voor meer informatie over het maken van een Azure-opslag account.
+Zie [Een opslagaccount maken](storage-account-create.md) voor meer informatie over het maken van een Azure-opslagaccount.
 
 ## <a name="types-of-storage-accounts"></a>Typen opslagaccounts
 
@@ -167,7 +167,7 @@ Wanneer u een upgrade uitvoert naar een v2-account voor algemeen gebruik van een
 
 ### <a name="azcopy"></a>AzCopy
 
-AzCopy is een Windows-opdrachtregelprogramma dat is  ontworpen voor het high-performance kopiëren van gegevens van en naar Azure Storage. U kunt AzCopy gebruiken om gegevens te kopiëren naar een Blob Storage-account vanuit een bestaand opslag account voor algemeen gebruik of om gegevens van on-premises opslag apparaten te uploaden. Zie [gegevens overdragen met het opdracht regel programma AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)voor meer informatie.
+AzCopy is een Windows-opdrachtregelprogramma dat is  ontworpen voor het high-performance kopiëren van gegevens van en naar Azure Storage. U kunt AzCopy gebruiken om gegevens te kopiëren naar een Blob Storage-account vanuit een bestaand opslag account voor algemeen gebruik of om gegevens van on-premises opslag apparaten te uploaden. Zie [gegevens overdragen met het AzCopy-hulp programma van Command-Line](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)voor meer informatie.
 
 ### <a name="data-movement-library"></a>Bibliotheek voor gegevensverplaatsing
 

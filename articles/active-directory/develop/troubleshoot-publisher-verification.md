@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 71b6f35b107a8cb213e97d9a05bdf93b93967606
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4a66db34adb4eb751abc741964b740b3b6f48c69
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91256888"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073730"
 ---
 # <a name="troubleshoot-publisher-verification"></a>Problemen met Verificatie van uitgever oplossen
 Als u het proces niet kunt volt ooien of onverwachte problemen ondervindt met de verificatie van de [Uitgever](publisher-verification-overview.md), moet u eerst het volgende doen als u fouten ontvangt of een onverwacht gedrag ziet: 
@@ -30,10 +30,10 @@ Als u het proces niet kunt volt ooien of onverwachte problemen ondervindt met de
 
 1. Reproduceer de aanvraag met [Graph Explorer](#making-microsoft-graph-api-calls) om aanvullende informatie te verzamelen en eventuele problemen in de gebruikers interface op te lossen.
 
-## <a name="common-issues"></a>Algemene problemen
+## <a name="common-issues"></a>Veelvoorkomende problemen
 Hieronder vindt u enkele veelvoorkomende problemen die zich kunnen voordoen tijdens het proces. 
 
-- **Ik weet niet wat mijn Microsoft Partner Network-ID is (MPN-ID) of ik ben niet wie de primaire contact persoon voor het account is** 
+- **Ik weet niet wat mijn Microsoft Partner Network-ID is (MPN-ID) of ik weet niet wie de primaire contact persoon voor het account is** 
     1. Ga naar de [registratie pagina voor MPN](https://partner.microsoft.com/dashboard/account/v3/enrollment/joinnow/basicpartnernetwork/new)
     1. Meld u aan met een gebruikers account in de primaire Azure AD-Tenant van de organisatie 
     1. Als er al een MPN-account bestaat, wordt dit herkend en wordt u aan het account toegevoegd 
@@ -58,7 +58,7 @@ Hieronder vindt u enkele veelvoorkomende problemen die zich kunnen voordoen tijd
     Uw app-registraties zijn mogelijk gemaakt met een ander gebruikers account in deze Tenant, een persoonlijk/Consumer account of een andere Tenant. Zorg ervoor dat u bent aangemeld met het juiste account in de Tenant waar de app-registraties zijn gemaakt.
 
 - **Er verschijnt een fout met betrekking tot multi-factor Authentication. Wat moet ik doen?** 
-    Zorg ervoor dat [multi-factor Authentication](../fundamentals/concept-fundamentals-mfa-get-started.md) is ingeschakeld en is vereist voor de gebruiker waarbij u zich aanmeldt en voor dit scenario. MFA kan bijvoorbeeld zijn:
+    Zorg ervoor dat [multi-factor Authentication](../fundamentals/concept-fundamentals-mfa-get-started.md) is ingeschakeld en is **vereist** voor de gebruiker waarbij u zich aanmeldt en voor dit scenario. MFA kan bijvoorbeeld zijn:
     - Altijd vereist voor de gebruiker waarbij u zich aanmeldt
     - [Vereist voor Azure-beheer](../conditional-access/howto-conditional-access-policy-azure-management.md).
     - [Vereist voor het type beheerder](../conditional-access/howto-conditional-access-policy-admin-mfa.md) waarbij u zich aanmeldt.
@@ -226,7 +226,9 @@ Deze functie wordt niet ondersteund voor micro soft-consumenten accounts. Alleen
 
 ### <a name="interactionrequired"></a>InteractionRequired
 
-Treedt op wanneer multi-factor Authentication niet is uitgevoerd voordat een geverifieerde uitgever aan de app wordt toegevoegd. Zie [algemene problemen](#common-issues) voor meer informatie.
+Treedt op wanneer multi-factor Authentication niet is uitgevoerd voordat een geverifieerde uitgever aan de app wordt toegevoegd. Zie [algemene problemen](#common-issues) voor meer informatie. Opmerking: MFA moet in dezelfde sessie worden uitgevoerd wanneer u een geverifieerde uitgever probeert toe te voegen. Als MFA is ingeschakeld maar niet moet worden uitgevoerd in de sessie, mislukt de aanvraag.   
+
+Het volgende fout bericht wordt weer gegeven: "als gevolg van een configuratie wijziging door de beheerder of omdat u naar een nieuwe locatie hebt verplaatst, moet u multi-factor Authentication gebruiken om door te gaan."
 
 ## <a name="next-steps"></a>Volgende stappen
 

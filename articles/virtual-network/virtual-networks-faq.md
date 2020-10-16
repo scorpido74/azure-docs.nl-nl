@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 171fc11c8de9cd53a7abd9602768a117341826ef
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d676d891683cc11dd8c1999c26464373d17e97be
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91306597"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91932019"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Veelgestelde vragen over virtuele Azure-netwerken (FAQ)
 
@@ -255,7 +255,6 @@ De volgende resources kunnen Basic load balancers gebruiken. Dit betekent dat u 
 - Redis Cache 
 - Application Gateway (v1) SKU
 - Service Fabric
-- SQL MI
 - API Management
 - Active Directory-domein-service (toevoegen)
 - Logic Apps

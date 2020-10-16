@@ -2,7 +2,7 @@
 title: Hoe synchronisatie werkt in Azure AD Domain Services | Microsoft Docs
 description: Meer informatie over hoe het synchronisatie proces werkt voor objecten en referenties van een Azure AD-Tenant of een on-premises Active Directory Domain Services omgeving naar een Azure Active Directory Domain Services beheerd domein.
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 57cbf436-fc1d-4bab-b991-7d25b6e987ef
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 10eec1527fb0ac5109822da398642613219771f6
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.author: joflore
+ms.openlocfilehash: 683a6c9f31947355a5415a5b8b57b621f717af91
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039837"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967661"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-active-directory-domain-services-managed-domain"></a>Hoe objecten en referenties worden gesynchroniseerd in een Azure Active Directory Domain Services beheerd domein
 
@@ -40,7 +40,7 @@ Het synchronisatie proces is een manier/unidirectioneel. Er is geen omgekeerde s
 
 De volgende tabel bevat enkele algemene kenmerken en hoe deze worden gesynchroniseerd met Azure AD DS.
 
-| Kenmerk in azure AD DS | Bron | Notities |
+| Kenmerk in azure AD DS | Bron | Opmerkingen |
 |:--- |:--- |:--- |
 | UPN | Het *UPN* -kenmerk van de gebruiker in de Azure AD-Tenant | Het UPN-kenmerk van de Azure AD-Tenant wordt gesynchroniseerd naar Azure AD DS. De meest betrouw bare manier om u aan te melden bij een beheerd domein, is het gebruik van de UPN. |
 | SAMAccountName | Het *mailNickname* -kenmerk van de gebruiker in azure AD-Tenant of automatisch gegenereerd | Het kenmerk *SAMAccountName* wordt afgeleid van het kenmerk *mailNickname* in de Azure AD-Tenant. Als meerdere gebruikers accounts hetzelfde *mailNickname* -kenmerk hebben, wordt de *SAMAccountName* automatisch gegenereerd. Als de *mailNickname* of het *UPN* -voor voegsel van de gebruiker langer is dan 20 tekens, wordt de *SAMAccountName* automatisch gegenereerd om te voldoen aan de limiet van 20 tekens voor *SAMAccountName* -kenmerken. |
@@ -77,10 +77,10 @@ In de volgende tabel ziet u hoe specifieke kenmerken voor gebruikers objecten in
 | onPremiseSecurityIdentifier |Sid |
 | passwordPolicies |userAccountControl (Hiermee wordt de DONT_EXPIRE_PASSWORD bit ingesteld of gewist) |
 | physicalDeliveryOfficeName |physicalDeliveryOfficeName |
-| Code |Code |
+| postalCode |postalCode |
 | preferredLanguage |preferredLanguage |
 | proxyAddresses | proxyAddresses |
-| state |st |
+| staat |st |
 | streetAddress |streetAddress |
 | surname |sn |
 | telephoneNumber |telephoneNumber |

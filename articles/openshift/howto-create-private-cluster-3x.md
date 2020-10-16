@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/02/2020
 keywords: Aro, open Shift, persoonlijk cluster, Red Hat
 ms.openlocfilehash: f4ce6c79fa9fe6d05fdea4b877a8aa7faf404a9b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83727646"
 ---
 # <a name="create-a-private-cluster-with-azure-red-hat-openshift-311"></a>Een persoonlijk cluster maken met Azure Red Hat open Shift 3,11
@@ -23,7 +23,7 @@ Particuliere clusters bieden de volgende voor delen:
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-De velden in het volgende configuratie fragment zijn nieuw en moeten worden opgenomen in de cluster configuratie. `managementSubnetCidr`moet zich in het virtuele cluster netwerk bevindt en door Azure wordt gebruikt om het cluster te beheren.
+De velden in het volgende configuratie fragment zijn nieuw en moeten worden opgenomen in de cluster configuratie. `managementSubnetCidr` moet zich in het virtuele cluster netwerk bevindt en door Azure wordt gebruikt om het cluster te beheren.
 
 ```json
 properties:

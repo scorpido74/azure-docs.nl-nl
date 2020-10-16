@@ -13,10 +13,10 @@ ms.date: 08/26/2019
 ms.author: marsma
 ms.custom: aaddev
 ms.openlocfilehash: a570dccad5f14cf9adf5ca2825d8a3b31ae60d3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85477189"
 ---
 # <a name="how-to-request-custom-claims-using-msal-for-ios-and-macos"></a>Procedure: aangepaste claims aanvragen met MSAL voor iOS en macOS
@@ -33,7 +33,7 @@ Er zijn meerdere scenario's waarin dit nodig is. Bijvoorbeeld:
 > [!NOTE]
 > Met MSAL wordt de cache van het toegangs token omzeild wanneer een claim aanvraag wordt opgegeven. Het is belang rijk dat u alleen `claimsRequest` para meters opgeeft wanneer er aanvullende claims nodig zijn (in plaats van altijd dezelfde `claimsRequest` para meter te verstrekken in elke API-AANROEP van MSAL).
 
-`claimsRequest`kan worden opgegeven in `MSALSilentTokenParameters` en `MSALInteractiveTokenParameters` :
+`claimsRequest` kan worden opgegeven in `MSALSilentTokenParameters` en `MSALInteractiveTokenParameters` :
 
 ```objc
 /*!
@@ -49,7 +49,7 @@ Er zijn meerdere scenario's waarin dit nodig is. Bijvoorbeeld:
 
 @end
 ```
-`MSALClaimsRequest`kan worden samengesteld op basis van een NSStringe weer gave van een JSON-claim aanvraag. 
+`MSALClaimsRequest` kan worden samengesteld op basis van een NSStringe weer gave van een JSON-claim aanvraag. 
 
 Doel-C:
 
@@ -98,7 +98,7 @@ do {
 
 
 
-`MSALClaimsRequest`moet vervolgens worden ingesteld in de token parameters en worden opgegeven aan een van de MSAL-Api's voor het ophalen van tokens:
+`MSALClaimsRequest` moet vervolgens worden ingesteld in de token parameters en worden opgegeven aan een van de MSAL-Api's voor het ophalen van tokens:
 
 Doel-C:
 

@@ -9,10 +9,10 @@ ms.date: 05/17/2018
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 8110b98c055a211203fb937990e860fc8dea74f4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88520459"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>De status van de Import/Export-taken in Azure bekijken
@@ -33,7 +33,7 @@ U ziet een van de volgende taak statussen, afhankelijk van waar uw station zich 
 | Maken | Nadat een taak is gemaakt, wordt de status ingesteld op **maken**. Terwijl de taak de status **bezig met maken** heeft, neemt de import/export-service aan dat de stations niet naar het Data Center zijn verzonden. Een taak kan Maxi maal twee weken in deze status blijven, waarna deze automatisch door de service wordt verwijderd. |
 | Verzending | Nadat u het pakket hebt verzonden, moet u de tracerings gegevens in het Azure Portal bijwerken.  Als u dit doet, wordt de **Verzend** status ingeschakeld. De taak blijft in de **Verzend** status voor Maxi maal twee weken. 
 | Ontvangen | Nadat alle stations in het Data Center zijn ontvangen, wordt de status van de taak ingesteld op **ontvangen**. |
-| Geboekt | Als ten minste één station wordt verwerkt, wordt de taak status ingesteld op **overdragen**. Ga naar de status van het [station](#view-drive-status)voor meer informatie. |
+| Overbrengen | Als ten minste één station wordt verwerkt, wordt de taak status ingesteld op **overdragen**. Ga naar de status van het [station](#view-drive-status)voor meer informatie. |
 | Verpakking | Nadat de verwerking van alle stations is voltooid, wordt de taak in de **verpakkings** status geplaatst totdat de stations naar u worden teruggestuurd. |
 | Voltooid | Als de taak is voltooid zonder fouten, wordt de taak ingesteld op **voltooid**nadat alle stations naar u zijn teruggestuurd. De taak wordt automatisch verwijderd na 90 dagen met de status **voltooid** . |
 | Gesloten | Nadat alle stations naar u zijn teruggestuurd, wordt de taak ingesteld op **gesloten**als er fouten zijn opgetreden tijdens de verwerking van het project. De taak wordt automatisch verwijderd na 90 dagen met de status **gesloten** . |
@@ -49,7 +49,7 @@ In de volgende tabel wordt elke status beschreven waarin elke schijf van een taa
 | Opgegeven | Voor een import taak wordt de begin status voor een station **opgegeven**wanneer de taak wordt gemaakt op basis van de Azure Portal. Voor een export taak, omdat er geen station is opgegeven wanneer de taak wordt gemaakt, wordt de eerste status van het station **ontvangen**. |
 | Ontvangen | De schijf wordt overgezet naar de status **ontvangen** wanneer de import/export-service de stations heeft verwerkt die zijn ontvangen van het verzend bedrijf voor een import taak. Voor een export taak is de eerste status van het station de status **ontvangen** . |
 | NeverReceived | Het station wordt verplaatst naar de **NeverReceived** -status wanneer het pakket voor een taak arriveert, maar het-pakket het station niet bevat. Een station wordt ook verplaatst naar deze status als het pakket nog niet is ontvangen door het Data Center en de service ten minste twee weken geleden de verzend gegevens heeft ontvangen. |
-| Geboekt | Een station wordt verplaatst naar de **overdrachts** status wanneer de service begint met het overdragen van gegevens van het station naar Azure Storage. |
+| Overbrengen | Een station wordt verplaatst naar de **overdrachts** status wanneer de service begint met het overdragen van gegevens van het station naar Azure Storage. |
 | Voltooid | Een station wordt verplaatst naar de status **voltooid** wanneer de service alle gegevens zonder fouten heeft overgebracht.
 | CompletedMoreInfo | Een station wordt verplaatst naar de **CompletedMoreInfo** -status wanneer de service problemen heeft ondervonden bij het kopiëren van gegevens van of naar het station. De informatie kan fouten, waarschuwingen of informatieve berichten bevatten over het overschrijven van blobs.
 | ShippedBack | Een station wordt verplaatst naar de status **ShippedBack** wanneer het is verzonden van het Data Center terug naar het retour adres. |

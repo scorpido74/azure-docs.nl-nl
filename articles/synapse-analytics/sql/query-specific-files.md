@@ -10,10 +10,10 @@ ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.openlocfilehash: c03051e2c8fddc21e4399375faeff6a40fb4d0d4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91288100"
 ---
 # <a name="use-file-metadata-in-queries"></a>Metagegevens van bestand gebruiken in query's
@@ -28,7 +28,7 @@ U kunt de functie gebruiken `filepath` en `filename` bestands namen en/of het pa
 
 De eerste stap bestaat uit het **maken van een Data Base** met een gegevens bron die verwijst naar het opslag account. Initialiseer vervolgens de objecten door een [installatiescript](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) uit te voeren op die database. Met dit installatie script worden de gegevens bronnen, referenties voor het data base-bereik en externe bestands indelingen gemaakt die in deze voor beelden worden gebruikt.
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Functies
 
 ### <a name="filename"></a>Bestands
 

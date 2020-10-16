@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
-ms.openlocfilehash: 08ce69856dd36b6029297109fcb8610b856c8b98
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 8650b8670c61cab15b26163dd5108145b8509434
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142363"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072421"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Overzicht van certificaten voor Azure Cloud Services
 Certificaten worden gebruikt in azure voor Cloud Services ([service certificaten](#what-are-service-certificates)) en voor de verificatie met behulp van de beheer-API ([beheer certificaten](#what-are-management-certificates)). In dit onderwerp vindt u een algemeen overzicht van beide certificaat typen, hoe u deze kunt [maken](#create) en implementeren in Azure.
@@ -76,7 +76,7 @@ Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $pass
 > Als u het certificaat wilt gebruiken met een IP-adres in plaats van een domein, gebruikt u het IP-adres in de para meter-DnsName.
 
 
-Als u dit certificaat wilt gebruiken [met de beheer Portal](../azure-api-management-certs.md), exporteert u het naar een **. CER** -bestand:
+Als u dit certificaat wilt gebruiken [met de beheer Portal](/previous-versions/azure/azure-api-management-certs), exporteert u het naar een **. CER** -bestand:
 
 ```powershell
 Export-Certificate -Type CERT -Cert $cert -FilePath .\my-cert-file.cer
@@ -91,8 +91,4 @@ In [Dit](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual
 ## <a name="next-steps"></a>Volgende stappen
 [Upload uw service certificaat naar de Azure Portal](cloud-services-configure-ssl-certificate-portal.md).
 
-Upload een [API-certificaat voor beheer](../azure-api-management-certs.md) naar het Azure Portal.
-
-
-
-
+Upload een [API-certificaat voor beheer](/previous-versions/azure/azure-api-management-certs) naar het Azure Portal.

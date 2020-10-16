@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: b1836b1d0dc69a2a0b186a54974895eb0d8cd91a
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89265487"
 ---
 <!-- If you update limits in this topic, make sure to also update https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#media-services-limits -->
@@ -26,7 +26,7 @@ ms.locfileid: "89265487"
 In dit artikel vindt u een aantal van de meest voorkomende Microsoft Azure Media Services limieten, ook wel quota's genoemd.
 
 > [!NOTE]
-> Voor bronnen die niet zijn opgelost, opent u een ondersteunings ticket om te vragen om een toename van de quota's. Maak geen aanvullende Azure Media Services accounts in een poging om hogere limieten te verkrijgen.
+> Open een ndersteuningsticket voor resources die niet zijn opgelost om te vragen om een toename van de quota. Maak geen extra Azure Media Services-accounts in een poging om de limieten te verhogen.
 
 ## <a name="account-limits"></a>Account limieten
 
@@ -47,11 +47,11 @@ In dit artikel vindt u een aantal van de meest voorkomende Microsoft Azure Media
 | Bestandsgrootte| In sommige scenario's geldt een limiet voor de maximale bestands grootte die wordt ondersteund voor verwerking in Media Services. <sup>i</sup> |
 | [Opslagaccounts](storage-account-concept.md) | 100<sup>(2)</sup> (vast) |
 
-<sup>1</sup> de maximale grootte die voor één BLOB wordt ondersteund, is momenteel Maxi maal 5 TB in Azure Blob Storage. Er zijn extra limieten van toepassing op Media Services op basis van de VM-grootten die worden gebruikt door de service. De limiet voor de grootte is van toepassing op de bestanden die u uploadt en ook de bestanden die worden gegenereerd als gevolg van de verwerking van Media Services (code ring of analyse). Als uw bron bestand groter is dan 260-GB, zal uw taak waarschijnlijk mislukken. 
+<sup>1</sup> de maximale grootte die voor één BLOB wordt ondersteund, is momenteel Maxi maal 5 TB in Azure Blob Storage. Aanvullende limieten zijn van toepassing in Media Services op basis van VM-grootten die worden gebruikt door de service. De groottelimieten zijn van toepassing op de bestanden die u upload en ook de bestanden die worden gegenereerd als resultaat van Media Services-verwerking (coderen of analyseren). Als uw bronbestand groter is dan 260 GB, mislukt uw taak waarschijnlijk. 
 
-De volgende tabel bevat de limieten voor de gereserveerde media-eenheden S1, S2 en S3. Als het bron bestand groter is dan de limieten die in de tabel zijn gedefinieerd, mislukt de coderings taak. Als u resources van 4 KB met een lange duur wilt coderen, moet u gereserveerde S3-media-eenheden gebruiken om de benodigde prestaties te verzorgen. Als u onbewerkte inhoud hebt die groter is dan de limiet van 260 GB op de gereserveerde S3-media-eenheden, opent u een ondersteunings ticket.
+De volgende tablel laat de limieten zijn van de gereserveerde media-eenheden S1, S2 en S3. Als uw bronbestand groter is dan de limieten die zijn gedefinieerd in de tabel, mislukt de coderingstaak waarschijnlijk. As u 4K-resolutiebronnen van een lange duur codeert, moet u gereserveerde media-eenheden van S3 gebruiken om de benodigde prestaties te halen. Als u 4k-inhoud heeft die groter is dan het limiet van 260 GB voor gereserveerde media-eenheden in S3, opent u een ondersteuningsticket.
 
-|Type gereserveerde media-eenheid|Maximale invoer grootte (GB)|
+|Type gereserveerde media-eenheid|Maximale invoergrootte (GB)|
 |---|---|
 |S1 |    26|
 |S2    | 60|

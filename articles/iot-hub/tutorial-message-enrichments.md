@@ -9,10 +9,10 @@ ms.date: 12/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-azurecli, devx-track-csharp
 ms.openlocfilehash: 1e04ed8fe9087cb06b1533887da3c0fed61259ef
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89019722"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>Zelf studie: verrijkingen van Azure IoT Hub-berichten gebruiken
@@ -83,7 +83,7 @@ Dit zijn de resources die zijn gemaakt door het script. *Verrijkt* betekent dat 
 | container naam | Origineel  |
 | container naam | geavanceerde  |
 | IoT-apparaatnaam | Contoso-test-apparaat |
-| Naam van de IoT Hub | ContosoTestHubMsgEn |
+| IoT Hub naam | ContosoTestHubMsgEn |
 | Naam van opslag account | contosostorage |
 | eindpunt naam 1 | ContosoStorageEndpointOriginal |
 | Naam van eind punt 2 | ContosoStorageEndpointEnriched|
@@ -303,7 +303,7 @@ U kunt een resource manager-sjabloon gebruiken om de resources, bericht Routerin
    | container naam | Origineel  |
    | container naam | geavanceerde  |
    | IoT-apparaatnaam | Contoso-test-apparaat |
-   | Naam van de IoT Hub | ContosoTestHubMsgEn |
+   | IoT Hub naam | ContosoTestHubMsgEn |
    | Naam van opslag account | contosostorage |
    | eindpunt naam 1 | ContosoStorageEndpointOriginal |
    | Naam van eind punt 2 | ContosoStorageEndpointEnriched|
@@ -384,7 +384,7 @@ Dit is een niet-verrijkt bericht. U ziet dat ' mijn IoT Hub, ' devicelocation ' 
 
 Als u alle resources wilt verwijderen die u in deze zelf studie hebt gemaakt, verwijdert u de resource groep. Hiermee verwijdert u ook alle resources in de groep. In dit geval worden de IoT-hub, het opslagaccount en de resourcegroep zelf verwijderd.
 
-### <a name="use-the-azure-cli-to-clean-up-resources"></a>De Azure CLI gebruiken om resources op te schonen
+### <a name="use-the-azure-cli-to-clean-up-resources"></a>Resources opschonen met de Azure-CLI
 
 U kunt de resourcegroep verwijderen met de opdracht [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete). Terughalen dat `$resourceGroup` is ingesteld op **ContosoResourcesMsgEn** aan het begin van deze zelf studie.
 

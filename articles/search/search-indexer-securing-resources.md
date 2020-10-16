@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/07/2020
-ms.openlocfilehash: 5075c4858f9584cb19442e19d9009d46d0e00ff8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 85446847e8ad77bc83eea657ab17268839e0b231
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89463550"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949816"
 ---
 # <a name="indexer-access-to-data-sources-using-azure-network-security-features"></a>Indexeer functie toegang tot gegevens bronnen met behulp van Azure-netwerk beveiligings functies
 
@@ -46,11 +46,11 @@ Klanten kunnen deze bronnen beveiligen via verschillende netwerk isolatie mechan
 | Azure Functions | Ondersteund | Ondersteund, alleen voor bepaalde Sku's van Azure functions |
 
 > [!NOTE]
-> Naast de bovenstaande opties kunt u voor Azure-opslag accounts die zijn beveiligd met het netwerk, het feit gebruikmaken dat Azure Cognitive Search een [vertrouwde micro soft-service](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services)is. Dit betekent dat een specifieke zoek service virtuele netwerk-of IP-beperkingen kan omzeilen voor het opslag account en toegang kan krijgen tot gegevens in het opslag account als het juiste op rollen gebaseerd toegangs beheer is ingeschakeld voor het opslag account. Meer informatie vindt u in de [hand leiding](search-indexer-howto-access-trusted-service-exception.md). Deze optie kan worden gebruikt in plaats van de IP-beperkings route, in het geval het opslag account of de zoek service niet kan worden verplaatst naar een andere regio.
+> Naast de bovenstaande opties kunt u voor Azure-opslag accounts die zijn beveiligd met het netwerk, het feit gebruikmaken dat Azure Cognitive Search een [vertrouwde micro soft-service](../storage/common/storage-network-security.md#trusted-microsoft-services)is. Dit betekent dat een specifieke zoek service virtuele netwerk-of IP-beperkingen kan omzeilen voor het opslag account en toegang kan krijgen tot gegevens in het opslag account als het juiste op rollen gebaseerd toegangs beheer is ingeschakeld voor het opslag account. Meer informatie vindt u in de [hand leiding](search-indexer-howto-access-trusted-service-exception.md). Deze optie kan worden gebruikt in plaats van de IP-beperkings route, in het geval het opslag account of de zoek service niet kan worden verplaatst naar een andere regio.
 
 Houd rekening met de volgende beperkingen bij het kiezen van het mechanisme voor beveiligde toegang dat een Indexeer functie moet gebruiken:
 
-- [Service-eind punten](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) worden niet ondersteund voor een Azure-resource.
+- [Service-eind punten](../virtual-network/virtual-network-service-endpoints-overview.md) worden niet ondersteund voor een Azure-resource.
 - Er kan geen zoek service worden ingericht in een specifiek virtueel netwerk. deze functionaliteit wordt niet aangeboden door Azure Cognitive Search.
 - Wanneer Indexeer functies (uitgaand) persoonlijke eind punten gebruiken om toegang te krijgen tot resources, kunnen er extra [kosten](https://azure.microsoft.com/pricing/details/search/) in rekening worden gebracht.
 
@@ -68,31 +68,31 @@ Voor elke gewenste uitvoering van de Indexeer functie bepaalt Azure Cognitive Se
 Als de bron waartoe uw Indexeer functie probeert toegang wordt beperkt tot slechts een bepaalde set IP-bereiken, moet u de set uitbreiden om de mogelijke IP-bereiken op te nemen waaruit een Indexeer functie-aanvraag kan afkomstig zijn. Zoals hierboven vermeld, zijn er twee mogelijke omgevingen waarin Indexeer functies worden uitgevoerd en van waaruit de toegangs aanvragen afkomstig zijn. U moet de IP-adressen van __beide__ omgevingen toevoegen zodat de toegang tot de Indexeer functie werkt.
 
 - Om het IP-adres van de zoek service te verkrijgen, `nslookup` (of `ping` ) de Fully QUALIFIED domain name (FQDN) van uw zoek service. De FQDN-namen van een zoek service in de open bare Cloud zijn bijvoorbeeld `<service-name>.search.windows.net` . Deze informatie is beschikbaar op de Azure Portal.
-- De IP-adressen van de omgevingen met meerdere tenants zijn beschikbaar via de `AzureCognitiveSearch` service-tag. [Azure-service Tags](https://docs.microsoft.com/azure/virtual-network/service-tags-overview) hebben een gepubliceerd bereik van IP-adressen voor elke service: dit is beschikbaar via een [detectie-API (preview)](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview) of een [downloadbaar JSON-bestand](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files). In beide gevallen worden IP-bereiken onderverdeeld per regio: u kunt alleen de IP-bereiken kiezen die zijn toegewezen voor de regio waarin uw zoek service is ingericht.
+- De IP-adressen van de omgevingen met meerdere tenants zijn beschikbaar via de `AzureCognitiveSearch` service-tag. [Azure-service Tags](../virtual-network/service-tags-overview.md) hebben een gepubliceerd bereik van IP-adressen voor elke service: dit is beschikbaar via een [detectie-API (preview)](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) of een [downloadbaar JSON-bestand](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files). In beide gevallen worden IP-bereiken onderverdeeld per regio: u kunt alleen de IP-bereiken kiezen die zijn toegewezen voor de regio waarin uw zoek service is ingericht.
 
-Voor bepaalde gegevens bronnen kan de servicetag zelf rechtstreeks worden gebruikt in plaats van het opsommen van de lijst met IP-bereiken (het IP-adres van de zoek service moet nog steeds expliciet worden gebruikt). Deze gegevens bronnen beperken de toegang door middel van het instellen van een regel voor een [netwerk beveiligings groep](https://docs.microsoft.com/azure/virtual-network/security-overview), die systeem eigen ondersteuning biedt voor het toevoegen van een servicetag, in tegens telling tot IP-regels, zoals de services die worden aangeboden door Azure Storage, CosmosDB, Azure SQL, enzovoort, de gegevens bronnen die de mogelijkheid bieden om de `AzureCognitiveSearch` servicetag direct naast de zoek service-IP-adressen te gebruiken:
+Voor bepaalde gegevens bronnen kan de servicetag zelf rechtstreeks worden gebruikt in plaats van het opsommen van de lijst met IP-bereiken (het IP-adres van de zoek service moet nog steeds expliciet worden gebruikt). Deze gegevens bronnen beperken de toegang door middel van het instellen van een regel voor een [netwerk beveiligings groep](../virtual-network/network-security-groups-overview.md), die systeem eigen ondersteuning biedt voor het toevoegen van een servicetag, in tegens telling tot IP-regels, zoals de services die worden aangeboden door Azure Storage, CosmosDB, Azure SQL, enzovoort, de gegevens bronnen die de mogelijkheid bieden om de `AzureCognitiveSearch` servicetag direct naast de zoek service-IP-adressen te gebruiken:
 
-- [SQL Server op IaaS Vm's](https://docs.microsoft.com/azure/search/search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers#restrict-access-to-the-azure-cognitive-search)
+- [SQL Server op IaaS Vm's](./search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md#restrict-access-to-the-azure-cognitive-search)
 
-- [SQL Managed instances](https://docs.microsoft.com/azure/search/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers#verify-nsg-rules)
+- [SQL Managed instances](./search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md#verify-nsg-rules)
 
 Details worden beschreven in de [hand leiding](search-indexer-howto-access-ip-restricted.md).
 
 ## <a name="granting-access-via-private-endpoints"></a>Toegang verlenen via persoonlijke eind punten
 
-Indexeer functies kunnen privé- [eind punten](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) gebruiken om toegang te krijgen tot resources, de toegang die is vergrendeld om virtuele netwerken te selecteren of waarvoor geen open bare toegang is ingeschakeld.
+Indexeer functies kunnen privé- [eind punten](../private-link/private-endpoint-overview.md) gebruiken om toegang te krijgen tot resources, de toegang die is vergrendeld om virtuele netwerken te selecteren of waarvoor geen open bare toegang is ingeschakeld.
 Deze functionaliteit is alleen beschikbaar voor betaalde Services, met limieten voor het aantal privé-eind punten dat wordt gemaakt. Details over de limieten worden beschreven op de [pagina Azure Search limieten](search-limits-quotas-capacity.md).
 
 ### <a name="step-1-create-a-private-endpoint-to-the-secure-resource"></a>Stap 1: een persoonlijk eind punt maken voor de beveiligde resource
 
-Klanten moeten de bewerking voor het beheer van zoek bewerkingen aanroepen, de resource-API van de [ *gedeelde persoonlijke koppeling* maken of bijwerken](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources/createorupdate) om een privé-eindpunt verbinding te maken met de beveiligde bron (bijvoorbeeld een opslag account). Verkeer dat overgaat op deze (uitgaand) particuliere endpoint-verbinding, is alleen afkomstig van het virtuele netwerk in de zoek service specifieke ' persoonlijke ' uitvoerings omgeving.
+Klanten moeten de bewerking voor het beheer van zoek bewerkingen aanroepen, de resource-API van de [ *gedeelde persoonlijke koppeling* maken of bijwerken](/rest/api/searchmanagement/sharedprivatelinkresources/createorupdate) om een privé-eindpunt verbinding te maken met de beveiligde bron (bijvoorbeeld een opslag account). Verkeer dat overgaat op deze (uitgaand) particuliere endpoint-verbinding, is alleen afkomstig van het virtuele netwerk in de zoek service specifieke ' persoonlijke ' uitvoerings omgeving.
 
 Azure Cognitive Search valideert dat aanroepers van deze API machtigingen hebben voor het goed keuren van verbindings aanvragen voor een privé-eind punt naar de beveiligde bron. Als u bijvoorbeeld een verbinding met een persoonlijk eind punt aanvraagt met een opslag account waartoe u geen toegang hebt, wordt deze aanroep geweigerd.
 
 ### <a name="step-2-approve-the-private-endpoint-connection"></a>Stap 2: de verbinding met een privé-eind punt goed keuren
 
 Wanneer de (asynchrone) bewerking die een gedeelde persoonlijke koppelings bron maakt, is voltooid, wordt een verbinding voor een persoonlijk eind punt gemaakt met de status in behandeling. Er is nog geen verkeer dat via de verbinding loopt.
-De klant wordt vervolgens naar verwachting deze aanvraag te vinden op hun beveiligde resource en ' goed keuren '. Normaal gesp roken kunt u dit doen via de portal of via de [rest API](https://docs.microsoft.com/rest/api/virtualnetwork/privatelinkservices/updateprivateendpointconnection).
+De klant wordt vervolgens naar verwachting deze aanvraag te vinden op hun beveiligde resource en ' goed keuren '. Normaal gesp roken kunt u dit doen via de portal of via de [rest API](/rest/api/virtualnetwork/privatelinkservices/updateprivateendpointconnection).
 
 ### <a name="step-3-force-indexers-to-run-in-the-private-environment"></a>Stap 3: Indexeer functies kunnen worden uitgevoerd in de ' persoonlijke ' omgeving
 

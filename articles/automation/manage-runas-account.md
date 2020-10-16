@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 09/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3357cb40ff476a3cc0bce259930068aeccf2c10c
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 0849eb0c421883ecb0510451ff81b604538c9cc3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767479"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069888"
 ---
 # <a name="manage-an-azure-automation-run-as-account"></a>Een Azure Automation uitvoeren als-account beheren
 
@@ -214,7 +214,7 @@ U kunt Azure Automation laten verifiëren of Key Vault en de service-principal v
 * Machtigingen verlenen aan Key Vault.
 * Stel het toegangs beleid in.
 
-U kunt het [Extend-AutomationRunAsAccountRoleAssignmentToKeyVault.ps1](https://aka.ms/AA5hugb) script in de PowerShell Gallery gebruiken om uw uitvoeren als-account machtigingen te geven voor Key Vault. Zie [een Key Vault toegangs beleid toewijzen](/azure/key-vault/general/assign-access-policy-powershell) voor meer informatie over het instellen van machtigingen op Key Vault.
+U kunt het [Extend-AutomationRunAsAccountRoleAssignmentToKeyVault.ps1](https://aka.ms/AA5hugb) script in de PowerShell Gallery gebruiken om uw uitvoeren als-account machtigingen te geven voor Key Vault. Zie [een Key Vault toegangs beleid toewijzen](../key-vault/general/assign-access-policy-powershell.md) voor meer informatie over het instellen van machtigingen op Key Vault.
 
 ## <a name="resolve-misconfiguration-issues-for-run-as-accounts"></a>Onjuiste configuratie problemen oplossen voor Run as-accounts
 

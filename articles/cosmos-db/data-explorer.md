@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: dech
 ms.openlocfilehash: ebfb175de67d7bb8ea011ac340b57f5d62d9e223
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91318803"
 ---
 # <a name="work-with-data-using-azure-cosmos-explorer"></a>Werken met gegevens in Azure Cosmos Explorer 
@@ -35,7 +35,7 @@ Azure Cosmos DB Explorer is een zelfstandige webgebaseerde interface waarmee u d
 
 4. Open de Blade **Data Explorer** en selecteer **Open volledige scherm**. In het pop-upvenster kunt u twee toegangs-Url's bekijken: **lezen/schrijven** en **lezen**. Met deze Url's kunt u uw Azure Cosmos DB-account tijdelijk delen met andere gebruikers. De toegang tot het account verloopt over 24 uur waarna u opnieuw verbinding kunt maken met behulp van een nieuwe toegangs-URL of de connection string. 
 
-   **Lezen-schrijven** : wanneer u de lees-schrijf-URL met andere gebruikers deelt, kunnen ze de data bases, verzamelingen, query's en andere resources die zijn gekoppeld aan dit specifieke account weer geven en wijzigen.
+   **Lezen/schrijven** : wanneer u de Read-Write URL met andere gebruikers deelt, kunnen ze de data bases, verzamelingen, query's en andere resources die zijn gekoppeld aan dit specifieke account weer geven en wijzigen.
 
    **Lezen** : wanneer u de alleen-lezen URL deelt met andere gebruikers, kunnen ze de data bases, verzamelingen, query's en andere resources weer geven die zijn gekoppeld aan dit specifieke account. Als u bijvoorbeeld resultaten wilt delen van een query met uw team leden die geen toegang hebben tot Azure Portal of uw Azure Cosmos DB account, kunt u deze opgeven met deze URL.
 

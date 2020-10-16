@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: shuawan
-ms.openlocfilehash: 2b5440ad2bec94d4ef14fa29e723cc91a4fcdf10
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: ee5f70f40103a92ff26cfcabc6adf9e2b825b59b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91766853"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074835"
 ---
 # <a name="integrate-with-kubernetes-deployment-using-helm"></a>Integreren met Kubernetes-implementatie met Helm
 
@@ -28,12 +28,12 @@ In deze zelfstudie leert u het volgende:
 > * Gebruik waarden uit App Configuration wanneer u een toepassing in Kubernetes implementeert met Helm.
 > * Maak een Kubernetes-geheim op basis van een sleutelkluisverwijzing in App Configuration.
 
-In deze zelfstudie wordt ervan uitgegaan dat u basisbegrip hebt van het beheren van Kubernetes met Helm. Meer informatie over het installeren van toepassingen met Helm in [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/kubernetes-helm).
+In deze zelfstudie wordt ervan uitgegaan dat u basisbegrip hebt van het beheren van Kubernetes met Helm. Meer informatie over het installeren van toepassingen met Helm in [Azure Kubernetes Service](../aks/kubernetes-helm.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-- [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) (versie 2.4.0 of hoger) installeren
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) (versie 2.4.0 of hoger) installeren
 - [Helm](https://helm.sh/docs/intro/install/) (versie 2.14.0 of hoger) installeren
 - Een Kubernetes-cluster.
 
@@ -51,7 +51,7 @@ In deze zelfstudie wordt ervan uitgegaan dat u basisbegrip hebt van het beheren 
     Laat **Label** en **Inhoudstype** nog even leeg.
 
 ## <a name="add-a-key-vault-reference-to-app-configuration"></a>Een sleutelkluisverwijzing toevoegen aan App Configuration
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com) en voeg een geheim aan [Sleutelkluis](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#add-a-secret-to-key-vault) toe met de naam **Wachtwoord** en de waarde **mijnwachtwoord**. 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) en voeg een geheim aan [Sleutelkluis](../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault) toe met de naam **Wachtwoord** en de waarde **mijnwachtwoord**. 
 2. Selecteer het App Configuration-archiefexemplaar dat u in de vorige sectie hebt gemaakt.
 
 3. Selecteer **Configuratieverkenner**.
@@ -185,7 +185,7 @@ settings:
 Download de configuratie uit App Configuration eerst naar een *myConfig.yaml*-bestand. Gebruik een sleutelfilter om alleen de sleutels te downloaden die met **settings.** beginnen. Als het sleutelfilter in uw geval niet voldoende is om sleutels uit te sluiten van sleutelkluisverwijzingen, kunt u het argument **--skip-keyvault** gebruiken om ze uit te sluiten. 
 
 > [!TIP]
-> Meer informatie over de [exportopdracht](https://docs.microsoft.com/cli/azure/appconfig/kv?view=azure-cli-latest#az-appconfig-kv-export). 
+> Meer informatie over de [exportopdracht](/cli/azure/appconfig/kv?view=azure-cli-latest#az-appconfig-kv-export). 
 
 ```azurecli-interactive
 az appconfig kv export -n myAppConfiguration -d file --path myConfig.yaml --key "settings.*"  --separator "." --format yaml
@@ -225,7 +225,7 @@ else{
 
 ```
 
-Verifieer dat configuraties en geheimen succesvol zijn ingesteld door het [Kubernetes-dashboard](https://docs.microsoft.com/azure/aks/kubernetes-dashboard) te openen. U ziet dat de waarden voor **color** en **message** uit App Configuration zijn ingevuld in de omgevingsvariabelen van de container.
+Verifieer dat configuraties en geheimen succesvol zijn ingesteld door het [Kubernetes-dashboard](../aks/kubernetes-dashboard.md) te openen. U ziet dat de waarden voor **color** en **message** uit App Configuration zijn ingevuld in de omgevingsvariabelen van de container.
 
 ![Quickstart voor het lokaal starten van een app](./media/kubernetes-dashboard-env-variables.png)
 
@@ -242,4 +242,4 @@ Eén geheim, **password**, dat als sleutelkluisverwijzing in App Configuration i
 In deze zelfstudie hebt u Azure App Configuration-gegevens geëxporteerd die moeten worden gebruikt in een Kubernetes-implementatie met Helm. Voor meer informatie over het gebruik van App Configuration gaat u verder naar de Azure CLI-voorbeelden.
 
 > [!div class="nextstepaction"]
-> [Azure-CLI](https://docs.microsoft.com/cli/azure/appconfig?view=azure-cli-latest)
+> [Azure-CLI](/cli/azure/appconfig?view=azure-cli-latest)

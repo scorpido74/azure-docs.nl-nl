@@ -12,12 +12,12 @@ ms.date: 09/24/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 84f488863a39307ac7b55d5238fab786084a3614
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4566e3d40a67a9cd9d61f78884df11536c0809bc
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91259540"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949289"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>De gebruikers interface in Azure Active Directory B2C aanpassen
 
@@ -42,7 +42,7 @@ Als u [aangepaste beleids regels](custom-policy-overview.md) gebruikt voor het a
 
 Als u dynamische inhoud op basis van de beslissing van een klant wilt opgeven, gebruikt u aangepaste beleids regels die de [pagina-inhoud dynamisch kunnen wijzigen](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri) , afhankelijk van een para meter die wordt verzonden in een query reeks. U kunt bijvoorbeeld de achtergrond afbeelding wijzigen op de Azure AD B2C registratie-of aanmeldings pagina op basis van een para meter die u doorgeeft vanuit uw web-of mobiele toepassing.
 
-### <a name="javascript"></a>JavaScript
+### <a name="javascript"></a>Javascript
 
 U kunt Java script-code aan de client zijde inschakelen in zowel [gebruikers stromen](user-flow-javascript-overview.md) als [aangepaste beleids regels](page-layout.md).
 
@@ -178,7 +178,6 @@ Houd bij het configureren van de huis stijl van het bedrijf in Azure AD B2C de v
 
 * De huis stijl van het bedrijf in Azure AD B2C is momenteel beperkt tot de **achtergrond afbeelding**, het **vaandel logo**en de aanpassing van de **achtergrond kleur** . De andere eigenschappen in het deel venster huis stijl van het bedrijf, bijvoorbeeld in **Geavanceerde instellingen**, worden *niet ondersteund*.
 * Op de pagina's van de gebruikers stroom wordt de achtergrond kleur weer gegeven voordat de achtergrond afbeelding wordt geladen. We raden u aan een achtergrond kleur te kiezen die nauw keurig overeenkomt met de kleuren in de achtergrond afbeelding voor een probleemloze laad ervaring.
-* Het banner logo wordt weer gegeven in de verificatie-e-mail berichten die worden verzonden naar uw gebruikers wanneer ze een registratie gebruikers stroom initiëren.
 
 ### <a name="enable-branding-in-user-flow-pages"></a>Huis stijl inschakelen op pagina's van gebruikers stroom
 

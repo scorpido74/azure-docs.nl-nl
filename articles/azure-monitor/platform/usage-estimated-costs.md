@@ -9,10 +9,10 @@ ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.subservice: ''
 ms.openlocfilehash: eb96537f67c61fb31759da020068f784d0e89993
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87323397"
 ---
 # <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>Gebruik en geschatte kosten in Azure Monitor bewaken
@@ -70,11 +70,11 @@ Hier kunt u inzoomen op basis van dit geaccumuleerde kosten overzicht om de deta
 Meer details van uw gebruik zijn beschikbaar door [uw gebruik te downloaden van de Azure Portal](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal). In het gedownloade werk blad kunt u het gebruik per Azure-resource per dag bekijken. In dit Excel-werk blad kunt u het gebruik van uw Application Insights-resources vinden door eerst te filteren op de kolom meter categorie om "Application Insights" en "Log Analytics" weer te geven, en vervolgens een filter toe te voegen aan de kolom exemplaar-ID, dat is "bevat micro soft. Insights/Components".  Het meeste Application Insights gebruik wordt gerapporteerd op meters van de meter categorie Log Analytics, omdat er één logboek back-end is voor alle Azure Monitor-onderdelen.  Alleen Application Insights bronnen in verouderde prijs categorieën en webtests met meerdere stappen worden gerapporteerd met een meter categorie van Application Insights.  Het gebruik wordt weer gegeven in de kolom verbruikte hoeveelheid en de eenheid voor elk item wordt weer gegeven in de kolom eenheid.  Er is meer informatie beschikbaar om u te helpen [inzicht te krijgen in uw Microsoft Azure-factuur](../../cost-management-billing/understand/review-individual-bill.md). 
 
 > [!NOTE]
-> Het gebruik van **Cost Management** in de **Azure Cost Management + billing** hub is de aanbevolen benadering om de berekenings kosten breed te controleren.  Het **gebruik en de geschatte kosten** voor [log Analytics](./manage-cost-storage.md#understand-your-usage-and-estimate-costs) en [Application Insights](../app/pricing.md#understand-your-usage-and-estimate-costs) bieden een dieper inzicht voor elk van deze onderdelen van Azure monitor.
+> Het gebruik van **Cost Management** in de **Azure Cost Management + billing** hub is de aanbevolen benadering om de berekenings kosten breed te controleren.  Het **gebruik en de geschatte kosten** voor [log Analytics](./manage-cost-storage.md#understand-your-usage-and-estimate-costs)  en [Application Insights](../app/pricing.md#understand-your-usage-and-estimate-costs) bieden een dieper inzicht voor elk van deze onderdelen van Azure monitor.
 
 Een andere optie voor het weer geven van uw Azure Monitor gebruik is de pagina **gebruik en geschatte kosten** in de hub bewaken. Hiermee wordt het gebruik van kern bewakings functies, zoals [waarschuwingen, metrische gegevens, meldingen](https://azure.microsoft.com/pricing/details/monitor/), [Azure log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/)en [Azure-toepassing Insights](https://azure.microsoft.com/pricing/details/application-insights/), weer gegeven. Voor klanten over de prijzen plannen die beschikbaar zijn vóór 2018 april, bevat dit ook Log Analytics gebruik dat u hebt aangeschaft via de aanbieding inzichten en analyse.
 
-Op deze pagina kunnen gebruikers hun resource gebruik weer geven voor de afgelopen 31 dagen, geaggregeerd per abonnement. `Drill-ins`gebruiks trends weer geven gedurende de periode van 31 dagen. Er zijn veel gegevens nodig om deze schatting samen te stellen. het is dus even geduld als de pagina wordt geladen.
+Op deze pagina kunnen gebruikers hun resource gebruik weer geven voor de afgelopen 31 dagen, geaggregeerd per abonnement. `Drill-ins` gebruiks trends weer geven gedurende de periode van 31 dagen. Er zijn veel gegevens nodig om deze schatting samen te stellen. het is dus even geduld als de pagina wordt geladen.
 
 In dit voor beeld ziet u het gebruik van bewaking en een schatting van de resulterende kosten:
 

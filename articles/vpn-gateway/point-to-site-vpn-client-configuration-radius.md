@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.openlocfilehash: e6d811e19bb19c8c8bf96764cfcca2b1294f4a85
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91440055"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>VPN-client configuratie bestanden maken en installeren voor P2S RADIUS-verificatie
@@ -43,7 +43,7 @@ Als u de secties in dit artikel wilt gebruiken, moet u eerst bepalen welk type v
 
 U kunt gebruikers naam-en wachtwoord verificatie configureren voor gebruik van Active Directory of Active Directory niet gebruiken. Zorg er bij beide scenario's voor dat alle Connect-gebruikers gebruikers naam/wacht woord hebben die kunnen worden geverifieerd via RADIUS.
 
-Wanneer u gebruikers naam-en wachtwoord verificatie configureert, kunt u alleen een configuratie maken voor het verificatie protocol EAP-MSCHAPv2 gebruikers naam/wacht woord. In de opdrachten, `-AuthenticationMethod` is `EapMSChapv2` .
+Wanneer u de verificatie van gebruikers naam/wacht woord configureert, kunt u alleen een configuratie maken voor het verificatie protocol EAP-MSCHAPv2 gebruikers naam en wacht woord. In de opdrachten, `-AuthenticationMethod` is `EapMSChapv2` .
 
 ### <a name="1-generate-vpn-client-configuration-files"></a><a name="usernamefiles"></a> 1. configuratie bestanden voor VPN-clients genereren
 
@@ -265,7 +265,7 @@ Gebruik de volgende stappen om de systeem eigen VPN-client te configureren op ee
 
 ## <a name="working-with-other-authentication-types-or-protocols"></a><a name="otherauth"></a>Werken met andere verificatie typen of-protocollen
 
-Als u een ander verificatie type wilt gebruiken (bijvoorbeeld OTP) of als u een ander verificatie Protocol (zoals PEAP-MSCHAPv2 in plaats van EAP-MSCHAPv2) wilt gebruiken, moet u uw eigen VPN-client configuratie profiel maken. Als u het profiel wilt maken, hebt u informatie nodig, zoals het IP-adres van de gateway van het virtuele netwerk, het tunnel type en routes met Split-tunnels. U kunt deze informatie ophalen met behulp van de volgende stappen:
+Als u een ander verificatie type wilt gebruiken (bijvoorbeeld OTP) of als u een ander verificatie protocol wilt gebruiken (zoals PEAP-MSCHAPv2 in plaats van EAP-MSCHAPv2), moet u uw eigen VPN-client configuratie profiel maken. Als u het profiel wilt maken, hebt u informatie nodig, zoals het IP-adres van de gateway van het virtuele netwerk, het tunnel type en routes met Split-tunnels. U kunt deze informatie ophalen met behulp van de volgende stappen:
 
 1. Gebruik de `Get-AzVpnClientConfiguration` cmdlet om de VPN-client configuratie voor EapMSChapv2 te genereren.
 

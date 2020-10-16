@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 8f6c815bf6b8be6d280dcdc60401f7a91e171e66
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b8593873774575635b31176b162086795e8a1320
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542738"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91744284"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-boomi"></a>Zelfstudie: Integratie van eenmalige aanmelding via Azure Active Directory met Boomi
 
@@ -89,14 +89,16 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
     c. Nadat het bestand met metagegevens is geüpload, worden de waarden voor **Id** en **antwoord-URL** automatisch ingevuld in de sectie Standaard SAML-configuratie.
 
-    ![image](common/idp-intiated.png)
+    ![Schermopname van de Standaard SAML-configuratie, waar de waarden voor ID en Antwoord-URL worden weergegeven.](common/idp-intiated.png)
+
+    d. Voer een **aanmeldings-URL** in, zoals `https://platform.boomi.com/AtomSphere.html#build;accountId={your-accountId}`.
 
     > [!Note]
     > U ontvangt het **metagegevensbestand van de serviceprovider** in de sectie **Eenmalige aanmelding bij Boomi configureren**, die verderop in de zelfstudie wordt beschreven. Als de waarden voor **Id** en **Antwoord-URL** niet automatisch worden ingevuld, kunt u de waarden zelf invullen afhankelijk van uw behoeften.
 
 1. In de Boomi-toepassing worden de SAML-asserties in een specifieke indeling verwacht. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van uw SAML-tokenkenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
 
-    ![image](common/default-attributes.png)
+    ![Schermopname van Gebruikerskenmerken en claims met standaardwaarden zoals Givenname user.givenname en Emailaddress user.mail.](common/default-attributes.png)
 
 1. Bovendien worden in de Boomi-toepassing nog enkele kenmerken verwacht die als SAML-antwoord moeten worden doorgestuurd. Deze worden hieronder weergegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze herzien volgens uw vereisten.
 
@@ -174,13 +176,13 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Boomi, moeten ze wo
 
 1. Ga na het aanmelden naar **User Management** en **Users**.
 
-    ![Gebruikers](./media/boomi-tutorial/tutorial_boomi_001.png "Gebruikers")
+    ![Schermopname van de pagina Gebruikersbeheer; Gebruikers is geselecteerd.](./media/boomi-tutorial/tutorial_boomi_001.png "Gebruikers")
 
 1. Klik op het pictogram **+** om het dialoogvenster **Add / Maintain User Roles** te openen.
 
-    ![Gebruikers](./media/boomi-tutorial/tutorial_boomi_002.png "Gebruikers")
+    ![Schermopname van het geselecteerd ‘+’-pictogram.](./media/boomi-tutorial/tutorial_boomi_002.png "Gebruikers")
 
-    ![Gebruikers](./media/boomi-tutorial/tutorial_boomi_003.png "Gebruikers")
+    ![Schermopname van Gebruikersrollen toevoegen/onderhouden, waar u een gebruiker configureert.](./media/boomi-tutorial/tutorial_boomi_003.png "Gebruikers")
 
     a. Typ in het tekstvak **User e-mail address** het e-mailadres van de gebruiker, bijvoorbeeld B.Simon@contoso.com.
 

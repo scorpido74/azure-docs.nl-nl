@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 08/12/2020
-ms.openlocfilehash: 4a78e966d420591ebe7a9607777158cf17ddf698
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: a6f2c16730a9140fdbd1710a3aa0df0ee91795d6
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91370875"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91874829"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Gegevens stromen toewijzen prestaties en afstemmings handleiding
 
@@ -109,7 +109,7 @@ Gegevens stromen distribueren de gegevens verwerking over verschillende knoop pu
 
 De standaard cluster grootte is vier Stuur knooppunten en vier werk knooppunten.  Bij het verwerken van meer gegevens worden grotere clusters aanbevolen. Hieronder ziet u de mogelijke opties voor de grootte:
 
-| Kernen van werk nemers | Kern geheugens van Stuur Programma's | Totaal aantal cores | Opmerkingen |
+| Kernen van werk nemers | Kern geheugens van Stuur Programma's | Totaal aantal cores | Notities |
 | ------------ | ------------ | ----------- | ----- |
 | 4 | 4 | 8 | Niet beschikbaar voor berekenings optimalisatie |
 | 8 | 8 | 16 | |
@@ -173,7 +173,7 @@ Hoewel gegevens stromen ondersteuning bieden voor verschillende bestands typen, 
 
 Als u dezelfde gegevens stroom uitvoert voor een set bestanden, raden we u aan een map te lezen met behulp van joker tekens of het lezen van een lijst met bestanden. Met een activiteit voor het uitvoeren van één gegevens stroom kan al uw bestanden in batch worden verwerkt. Meer informatie over het instellen van deze instellingen vindt u in de documentatie van de connector, zoals [Azure Blob Storage](connector-azure-blob-storage.md#source-transformation).
 
-Vermijd het gebruik van de for-each-activiteit voor het uitvoeren van gegevens stromen over een set bestanden, indien mogelijk. Dit zorgt ervoor dat elke herhaling van de voor-elk als een eigen Spark-cluster draait, wat vaak niet nodig is en duur kan zijn. 
+Vermijd het gebruik van de For-Each activiteit voor het uitvoeren van gegevens stromen over een set bestanden, indien mogelijk. Dit zorgt ervoor dat elke herhaling van de voor-elk als een eigen Spark-cluster draait, wat vaak niet nodig is en duur kan zijn. 
 
 ## <a name="optimizing-sinks"></a>Sinks optimaliseren
 
@@ -260,6 +260,10 @@ Als u letterlijke waarden in uw samenvoegings voorwaarden gebruikt of meerdere o
 #### <a name="sorting-before-joins"></a>Sorteren voor samen voegingen
 
 In tegens telling tot merge-koppeling in hulpprogram ma's als SSIS is de koppelings transformatie geen verplichte samenvoeg bewerking samen voegen. De koppelings sleutels hoeven niet te worden gesorteerd vóór de trans formatie. Het Azure Data Factory team wordt niet aanbevolen om sorteer bewerkingen te gebruiken voor het toewijzen van gegevens stromen.
+
+### <a name="window-transformation-performance"></a>Prestaties van de venster transformatie
+
+Met de [venster transformatie](data-flow-window.md) worden uw gegevens gepartitioneerd op waarde in kolommen die u als onderdeel van de ```over()``` component in de trans formatie-instellingen selecteert. Er zijn een aantal populaire statistische en analytische functies die worden weer gegeven in de Windows-trans formatie. Als uw use-case echter een venster voor uw hele gegevensset moet genereren voor het doel van de rang schikking ```rank()``` of het rijnummer ```rowNumber()``` , is het raadzaam om in plaats daarvan de [rang transformatie](data-flow-rank.md) en de [surrogaat sleutel transformatie](data-flow-surrogate-key.md)te gebruiken. Met deze trans formatie worden de volledige gegevensset-bewerkingen sneller uitgevoerd met behulp van deze functies.
 
 ### <a name="repartitioning-skewed-data"></a>Gescheefe gegevens opnieuw partitioneren
 

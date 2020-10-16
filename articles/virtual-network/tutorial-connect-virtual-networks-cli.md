@@ -16,10 +16,10 @@ ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 855ea936ff91d4c22b0670cd989f91c692c567c8
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87502593"
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-the-azure-cli"></a>Virtuele netwerken verbinden met virtuele netwerk peering met behulp van Azure CLI
@@ -126,7 +126,7 @@ Maak een VM in elk virtueel netwerk, zodat u er in een latere stap tussen kunt c
 
 ### <a name="create-the-first-vm"></a>De eerste VM maken
 
-Maak een virtuele machine met [AZ VM Create](/cli/azure/vm). In het volgende voor beeld wordt een VM gemaakt met de naam *myVm1* in het virtuele netwerk *myVirtualNetwork1* . Als SSH-sleutels niet al bestaan op de standaardlocatie van de sleutel, worden ze met deze opdracht gemaakt. Als u een specifieke set sleutels wilt gebruiken, gebruikt u de optie `--ssh-key-value`. Met deze `--no-wait` optie wordt de virtuele machine op de achtergrond gemaakt, zodat u verder kunt gaan met de volgende stap.
+Maak een VM met [az vm create](/cli/azure/vm). In het volgende voor beeld wordt een VM gemaakt met de naam *myVm1* in het virtuele netwerk *myVirtualNetwork1* . Als SSH-sleutels niet al bestaan op de standaardlocatie van de sleutel, worden ze met deze opdracht gemaakt. Als u een specifieke set sleutels wilt gebruiken, gebruikt u de optie `--ssh-key-value`. Met deze `--no-wait` optie wordt de virtuele machine op de achtergrond gemaakt, zodat u verder kunt gaan met de volgende stap.
 
 ```azurecli-interactive
 az vm create \

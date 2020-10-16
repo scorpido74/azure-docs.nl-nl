@@ -8,10 +8,10 @@ ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 75344204e03920c96d0868ad584b8701813fabf0
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91569534"
 ---
 # <a name="azure-security-baseline-for-cosmos-db"></a>Azure-beveiligings basislijn voor Cosmos DB
@@ -334,7 +334,7 @@ Programmatisch toegang tot sleutels met Azure Active Directory: https://docs.mic
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: eenmalige aanmelding (SSO) met Azure Active Directory gebruiken
 
-**Richt lijnen**: Azure Cosmos DB gebruikt twee soorten sleutels om gebruikers te autoriseren en biedt geen ondersteuning voor eenmalige aanmelding (SSO) op het niveau van het gegevens vlak. Toegang tot het besturings vlak voor Cosmos DB is beschikbaar via REST API en ondersteunt SSO. Als u zich wilt verifiëren, stelt u de autorisatie-header voor uw aanvragen in op een JSON Web Token dat u hebt verkregen via Azure Active Directory.
+**Hulp**: Azure Cosmos DB gebruikt twee soorten sleutels om gebruikers te autoriseren en biedt geen ondersteuning voor eenmalige Sign-On (SSO) op het niveau van het gegevens vlak. Toegang tot het besturings vlak voor Cosmos DB is beschikbaar via REST API en ondersteunt SSO. Als u zich wilt verifiëren, stelt u de autorisatie-header voor uw aanvragen in op een JSON Web Token dat u hebt verkregen via Azure Active Directory.
 
 Meer informatie over Azure data base for Cosmos DB REST API: https://docs.microsoft.com/rest/api/cosmos-db/
 
@@ -1013,11 +1013,11 @@ https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyva
 
 **Richt lijnen**: omdat alle gebruikers gegevens die zijn opgeslagen in Cosmos DB, worden versleuteld op rest en in Trans Port, hoeft u geen actie te ondernemen. Een andere manier om dit te doen is dat versleuteling op rest standaard is. Er zijn geen besturings elementen om deze in of uit te scha kelen. Azure Cosmos DB maakt gebruik van AES-256-versleuteling voor alle regio's waar het account wordt uitgevoerd.
 
-Schakel zacht verwijderen in Key Vault in om sleutels te beschermen tegen onbedoelde of schadelijke verwijdering.
+Schakel Soft-Delete in Key Vault in om sleutels te beschermen tegen onbedoelde of schadelijke verwijdering.
 
 Informatie over het versleutelen van gegevens in Azure Cosmos DB: https://docs.microsoft.com/azure/cosmos-db/database-encryption-at-rest
 
-Het inschakelen van zacht verwijderen in Key Vault: https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
+Soft-Delete in Key Vault inschakelen: https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
 
 **Azure Security Center bewaking**: Ja
 

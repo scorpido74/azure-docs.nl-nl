@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: aecda5ed9b87ba2345a52923a574919d6a08594f
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362668"
 ---
 # <a name="getting-started-with-the-azure-maps-power-bi-visual"></a>Aan de slag met de Azure Maps Power BI Visual
@@ -110,7 +110,7 @@ De sectie **instellingen toewijzen** van het deel venster indeling bieden opties
 | Wereld wijde terugloop          | Hiermee kan de gebruiker de kaart horizon taal oneindig pannen. |
 | Stijl kiezer        | Hiermee voegt u een knop toe aan de kaart waarmee de rapport lezers de stijl van de kaart kunnen wijzigen. |
 | Besturings elementen voor navigatie | Voegt knoppen aan de kaart toe als een andere methode zodat de rapport lezers de Toon hoogte van de kaart kunnen in-en uitzoomen, draaien en wijzigen. Zie dit document over het [navigeren op de kaart](map-accessibility.md#navigating-the-map) voor meer informatie over de verschillende manieren waarop gebruikers door de kaart kunnen navigeren. |
-| Kaart stijl           | De stijl van de kaart. Zie dit document voor meer informatie over [ondersteunde kaart stijlen](supported-map-styles.md). |
+| Kaartstijl           | De stijl van de kaart. Zie dit document voor meer informatie over [ondersteunde kaart stijlen](supported-map-styles.md). |
 
 ### <a name="map-view-settings"></a>Instellingen voor kaart weergave
 
@@ -135,7 +135,7 @@ De Azure Maps Visual is beschikbaar in de volgende services en toepassingen:
 | Mobiele Power BI-toepassingen             | Ja          |
 | Power BI publiceren op internet                  | Nee           |
 | Power BI Embedded                        | Nee           |
-| Power BI-service insluiten (PowerBI.com) | Yes          |
+| Power BI-service insluiten (PowerBI.com) | Ja          |
 
 Ondersteuning voor extra Power BI Services/apps wordt toegevoegd aan toekomstige updates.
 

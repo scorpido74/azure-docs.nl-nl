@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 5806266955eafab8c3c8c99695ff82736de92e9b
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86187061"
 ---
 # <a name="troubleshoot-storsimple-device-deployment-issues"></a>Problemen met de implementatie van StorSimple-apparaten oplossen
@@ -135,7 +135,7 @@ U gebruikt de StorSimple Apparaatbeheer-service die wordt uitgevoerd in Microsof
 | 5 |Fout 350031: het apparaat is al geregistreerd. | |Geen actie vereist. |
 | 6 |Fout 350016: registratie van het apparaat is mislukt. | |Controleer of de registratie sleutel juist is. |
 | 7 |Invoke-Hcssetupwizard uit: er is een fout opgetreden tijdens het registreren van uw apparaat. Dit kan worden veroorzaakt door een onjuist IP-adres of een onjuiste DNS-naam. Controleer de netwerk instellingen en probeer het opnieuw. Als het probleem zich blijft voordoen, [neemt u contact op met Microsoft ondersteuning](storsimple-8000-contact-microsoft-support.md). (Fout 350050) |Zorg ervoor dat het apparaat het externe netwerk kan pingen. Als u geen verbinding met een extern netwerk hebt, kan de registratie mislukken met deze fout. Deze fout kan bestaan uit een combi natie van een of meer van de volgende:<ul><li>Onjuist IP-adres</li><li>Onjuist subnet</li><li>Onjuiste gateway</li><li>Onjuiste DNS-instellingen</li></ul> |Raadpleeg de stappen in het [voor beeld van stapsgewijze probleem oplossing](#step-by-step-storsimple-troubleshooting-example). |
-| 8 |Invoke-Hcssetupwizard uit: de huidige bewerking is mislukt vanwege een interne service fout [0x1FBE2]. Voer de bewerking na enige tijd opnieuw uit. Als het probleem zich blijft voordoen, neemt u contact op met Microsoft Ondersteuning. |Dit is een algemene fout die wordt gegenereerd voor alle gebruikers onzichtbare fouten van de service of de agent. De meest voorkomende reden is mogelijk dat de ACS-verificatie is mislukt. Een mogelijke oorzaak van de fout is dat er problemen zijn met de configuratie van de NTP-server en dat de tijd op het apparaat niet juist is ingesteld. |Corrigeer de tijd (als er problemen zijn) en voer de registratie bewerking opnieuw uit. Als u de opdracht set-HcsSystem-zone gebruiken om de tijd zone aan te passen, moet u elk woord met een hoofd letter in de tijd zone (bijvoorbeeld ' Pacific (standaard tijd) ').  Als dit probleem zich blijft voordoen, [neemt u contact op met Microsoft ondersteuning](storsimple-8000-contact-microsoft-support.md) voor de volgende stappen. |
+| 8 |Invoke-Hcssetupwizard uit: de huidige bewerking is mislukt vanwege een interne service fout [0x1FBE2]. Voer de bewerking na enige tijd opnieuw uit. Als het probleem zich blijft voordoen, neemt u contact op met Microsoft Ondersteuning. |Dit is een algemene fout die wordt gegenereerd voor alle gebruikers onzichtbare fouten van de service of de agent. De meest voorkomende reden is mogelijk dat de ACS-verificatie is mislukt. Een mogelijke oorzaak van de fout is dat er problemen zijn met de configuratie van de NTP-server en dat de tijd op het apparaat niet juist is ingesteld. |Corrigeer de tijd (als er problemen zijn) en voer de registratie bewerking opnieuw uit. Als u de tijd zone kunt aanpassen met behulp van de opdracht Set-HcsSystem-zone, typt u elk woord in de tijd zone (bijvoorbeeld ' Pacific (standaard tijd) ').  Als dit probleem zich blijft voordoen, [neemt u contact op met Microsoft ondersteuning](storsimple-8000-contact-microsoft-support.md) voor de volgende stappen. |
 | 9 |Waarschuwing: kan het apparaat niet activeren. Uw StorSimple-wacht woord voor de apparaat-en gebruikers Snapshot Manager zijn niet gewijzigd. |Als de registratie mislukt, worden de StorSimple en de wacht woorden van de apparaat-Snapshot Manager niet gewijzigd. | |
 
 ## <a name="tools-for-troubleshooting-storsimple-deployments"></a>Hulpprogramma's voor het oplossen van problemen met StorSimple-implementaties
@@ -173,11 +173,11 @@ Gebruik de volgende Windows Power shell-cmdlets om connectiviteits fouten te det
 * `Test-Connection`: Gebruik deze cmdlet om de netwerk verbinding binnen en buiten het netwerk te controleren.
 * `Test-HcsmConnection`: Gebruik deze cmdlet om de connectiviteit van een geregistreerd apparaat te controleren.
 * `Sync-HcsTime`: Gebruik deze cmdlet om de tijd van het apparaat weer te geven en een tijd synchronisatie met de NTP-server af te dwingen.
-* `Enable-HcsPing`en `Disable-HcsPing` : met deze cmdlets kunnen de hosts de netwerk interfaces op uw StorSimple-apparaat pingen. Standaard reageren de StorSimple-netwerk interfaces niet op ping-aanvragen.
+* `Enable-HcsPing` en `Disable-HcsPing` : met deze cmdlets kunnen de hosts de netwerk interfaces op uw StorSimple-apparaat pingen. Standaard reageren de StorSimple-netwerk interfaces niet op ping-aanvragen.
 * `Trace-HcsRoute`: Gebruik deze cmdlet als een hulp programma voor route tracering. Er worden pakketten naar elke router verzonden naar een eind bestemming gedurende een bepaalde periode en vervolgens worden de resultaten berekend op basis van de pakketten die worden geretourneerd door elke hop. Aangezien `Trace-HcsRoute` de mate van pakket verlies bij elke router of koppeling wordt weer gegeven, kunt u bepalen welke routers of koppelingen mogelijk netwerk problemen veroorzaken.
 * `Get-HcsRoutingTable`: Gebruik deze cmdlet om de lokale IP-routerings tabel weer te geven.
 
-## <a name="troubleshoot-with-the-get-netadapter-cmdlet"></a>Problemen oplossen met de cmdlet Get-netadapter
+## <a name="troubleshoot-with-the-get-netadapter-cmdlet"></a>Problemen oplossen met de cmdlet Get-NetAdapter
 Wanneer u netwerk interfaces configureert voor een implementatie voor de eerste keer dat het apparaat wordt geïmplementeerd, is de hardware-status niet beschikbaar in de gebruikers interface van de StorSimple Apparaatbeheer-service omdat het apparaat nog niet is geregistreerd bij de service. Daarnaast is het mogelijk dat de Blade **Hardware-status** niet altijd goed overeenkomt met de status van het apparaat, met name als er problemen zijn die van invloed zijn op de service synchronisatie. In deze gevallen kunt u de- `Get-NetAdapter` cmdlet gebruiken om de status en status van uw netwerk interfaces te bepalen.
 
 ### <a name="to-see-a-list-of-all-the-network-adapters-on-your-device"></a>Een lijst met alle netwerk adapters op het apparaat weer geven
@@ -274,10 +274,10 @@ HCSNODE0      outlook.com     132.245.92.194
 HCSNODE0      outlook.com     132.245.92.194
 ```
 
-## <a name="troubleshoot-with-the-test-hcsmconnection-cmdlet"></a>Problemen oplossen met de cmdlet test-HcsmConnection
+## <a name="troubleshoot-with-the-test-hcsmconnection-cmdlet"></a>Problemen oplossen met de cmdlet Test-HcsmConnection
 Gebruik de `Test-HcsmConnection` cmdlet voor een apparaat dat al is verbonden met en geregistreerd bij uw StorSimple-Apparaatbeheer service. Met deze cmdlet kunt u de connectiviteit controleren tussen een geregistreerd apparaat en de bijbehorende StorSimple-Apparaatbeheer service. U kunt deze opdracht uitvoeren op Windows PowerShell voor StorSimple.
 
-### <a name="to-run-the-test-hcsmconnection-cmdlet"></a>De cmdlet test-HcsmConnection uitvoeren
+### <a name="to-run-the-test-hcsmconnection-cmdlet"></a>De cmdlet Test-HcsmConnection uitvoeren
 1. Zorg ervoor dat het apparaat is geregistreerd.
 2. Controleer de Apparaatstatus. Als het apparaat wordt gedeactiveerd, in de onderhouds modus of offline, ziet u mogelijk een van de volgende fouten:
    
@@ -376,10 +376,10 @@ Time difference between NTP server and appliance is 00.0824069 seconds. Do you w
 Controller0>
 ```
 
-## <a name="troubleshoot-with-the-enable-hcsping-and-disable-hcsping-cmdlets"></a>Problemen oplossen met de cmdlets Enable-HcsPing en Disable-HcsPing
+## <a name="troubleshoot-with-the-enable-hcsping-and-disable-hcsping-cmdlets"></a>Problemen oplossen met de Enable-HcsPing-en Disable-HcsPing-cmdlets
 Gebruik deze cmdlets om ervoor te zorgen dat de netwerk interfaces op uw apparaat reageren op ICMP-ping-aanvragen. Standaard reageren de StorSimple-netwerk interfaces niet op ping-aanvragen. Het gebruik van deze cmdlet is de eenvoudigste manier om erachter te komen of uw apparaat online en bereikbaar is.
 
-**Voorbeeld uitvoer: Enable-HcsPing en Disable-HcsPing**
+**Voorbeeld uitvoer – Enable-HcsPing en Disable-HcsPing**
 
 ```output
 Controller0>
@@ -425,7 +425,7 @@ Als u bijvoorbeeld 2 netwerk interfaces, DATA 2 en DATA 3 hebt, verbonden met in
 
 Als u update 1 op uw StorSimple-apparaat uitvoert, heeft uw DATA 0-netwerk interface de hoogste voor keur voor het Cloud verkeer. Dit betekent dat zelfs als er andere Cloud interfaces zijn ingeschakeld, het Cloud verkeer wordt gerouteerd via gegevens 0.
 
-Als u de `Get-HcsRoutingTable` cmdlet uitvoert zonder para meters op te geven (zoals in het volgende voor beeld), voert de cmdlet zowel IPv4-als IPv6-routerings tabellen uit. U kunt ook `Get-HcsRoutingTable -IPv4` `Get-HcsRoutingTable -IPv6` een relevante routerings tabel opgeven of ophalen.
+Als u de `Get-HcsRoutingTable` cmdlet uitvoert zonder para meters op te geven (zoals in het volgende voor beeld), voert de cmdlet zowel IPv4-als IPv6-routerings tabellen uit. U kunt ook `Get-HcsRoutingTable -IPv4` `Get-HcsRoutingTable -IPv6`  een relevante routerings tabel opgeven of ophalen.
 
 ```output
 Controller0>
@@ -525,9 +525,9 @@ De fout kan een van de volgende oorzaken hebben:
   
 3. Controleer de status van de netwerk interface:
    
-   * Gebruik de cmdlet Get-netadapter om de status van de netwerk interfaces voor DATA 0 te detecteren. 
+   * Gebruik de Get-NetAdapter cmdlet om de status van de netwerk interfaces voor de gegevens 0 te detecteren. 
    * Als de koppeling niet werkt, wordt in de status van **ifindex** aangegeven dat de interface niet beschikbaar is. Vervolgens moet u de netwerk verbinding van de poort naar het apparaat en de switch controleren. U moet ook onjuiste kabels uitchecken. 
-   * Als u vermoedt dat de DATA 0-poort op de actieve controller is mislukt, kunt u dit bevestigen door verbinding te maken met de DATA 0-poort op controller 1. Om dit te bevestigen, verbreekt u de verbinding tussen de netwerk kabel en de achterkant van het apparaat van controller 0, sluit u de kabel aan op controller 1 en voert u de cmdlet Get-netadapter opnieuw uit.
+   * Als u vermoedt dat de DATA 0-poort op de actieve controller is mislukt, kunt u dit bevestigen door verbinding te maken met de DATA 0-poort op controller 1. Om dit te bevestigen, verbreekt u de verbinding tussen de netwerk kabel en de achterkant van het apparaat van controller 0, sluit u de kabel aan op controller 1 en voert u de Get-NetAdapter cmdlet opnieuw uit.
      Als de DATA 0-poort op een controller mislukt, [neemt u contact op met Microsoft ondersteuning](storsimple-8000-contact-microsoft-support.md) voor de volgende stappen. Mogelijk moet u de controller op het systeem vervangen.
 4. Controleer de verbinding met de switch:
    
@@ -543,7 +543,7 @@ De fout kan een van de volgende oorzaken hebben:
      > Als er meerdere services worden uitgevoerd, moet u ervoor zorgen dat de registratie sleutel voor de juiste service wordt gebruikt om het apparaat te registreren. Als u een apparaat met de verkeerde StorSimple-Apparaatbeheer service hebt geregistreerd, moet u [contact opnemen met Microsoft ondersteuning](storsimple-8000-contact-microsoft-support.md) om de volgende stappen uit te voeren. Mogelijk moet u de fabrieks instellingen van het apparaat opnieuw instellen (wat kan leiden tot gegevens verlies) om deze vervolgens te verbinden met de gewenste service.
      > 
      > 
-6. Gebruik de cmdlet Test-Connection om te controleren of u verbinding hebt met het externe netwerk. Ga voor meer informatie naar [problemen oplossen met de cmdlet Test-Connection](#troubleshoot-with-the-test-connection-cmdlet).
+6. Gebruik de Test-Connection-cmdlet om te controleren of u verbinding hebt met het externe netwerk. Ga voor meer informatie naar [problemen oplossen met de cmdlet Test-Connection](#troubleshoot-with-the-test-connection-cmdlet).
 7. Controleren op Firewall interferentie. Als u hebt gecontroleerd of de instellingen voor de virtuele IP (VIP), het subnet, de gateway en DNS juist zijn en u nog steeds verbindings problemen ziet, is het mogelijk dat de firewall de communicatie blokkeert tussen uw apparaat en het externe netwerk. U moet ervoor zorgen dat de poorten 80 en 443 op uw StorSimple-apparaat beschikbaar zijn voor uitgaande communicatie. Zie [netwerk vereisten voor uw StorSimple-apparaat](storsimple-8000-system-requirements.md#networking-requirements-for-your-storsimple-device)voor meer informatie.
 8. Bekijk de logboeken. Ga naar [ondersteunings pakketten en logboeken voor apparaten die beschikbaar zijn voor het oplossen van problemen](#support-packages-and-device-logs-available-for-troubleshooting).
 9. Als de voor gaande stappen het probleem niet oplossen, [neemt u contact op met Microsoft ondersteuning](storsimple-8000-contact-microsoft-support.md) voor hulp.

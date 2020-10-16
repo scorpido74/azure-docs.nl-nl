@@ -1,17 +1,17 @@
 ---
 title: Een app voor meerdere service maken en implementeren naar Service Fabric Mesh
 description: In deze zelfstudie maakt u een Azure Service Fabric Mesh-toepassing voor meerdere services, bestaande uit een ASP.NET Core-website die communiceert met een back-endwebservice. U spoort de fouten in de toepassing lokaal op en publiceert de toepassing in Azure.
-author: dkkapur
+author: georgewallace
 ms.topic: tutorial
 ms.date: 09/18/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter, devx-track-csharp
-ms.openlocfilehash: 4a64d1999f13ee09cf92633fd188bfc7ed0e4856
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: fa15432072f6478100a378fdbdb697556fdf1dc9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011206"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842543"
 ---
 # <a name="tutorial-create-debug-deploy-and-upgrade-a-multi-service-service-fabric-mesh-app"></a>Zelfstudie: Een Service Fabric Mesh-toepassing met meerdere services bouwen, foutvrij maken, implementeren en upgraden
 
@@ -59,7 +59,7 @@ Typ `todolistapp` in het vak **Name** en stel in het vak **Location** het mappad
 
 Controleer of het selectievakje **Create directory for solution** is ingeschakeld en klik op **OK** om het Service Fabric Mesh-project te maken.
 
-![Dialoogvenster Nieuw project van Service Fabric Mesh in Visual Studio](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-project.png)
+![Schermopname van het maken van een Service Fabric Mesh-project.](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-project.png)
 
 Vervolgens ziet u het dialoogvenster **New Service Fabric Service**.
 
@@ -73,7 +73,7 @@ Stel **Service Name** in op **WebFrontEnd**. Druk op **OK** om de ASP.NET Core-s
 
 Vervolgens ziet u het dialoogvenster ASP.NET Core Web Application. Selecteer **Webtoepassing** en klik op **OK**.
 
-![Nieuwe ASP.NET Core-toepassing in Visual Studio](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-aspnetcore-app.png)
+![Schermafbeelding met de sjabloon Webtoepassing.](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-aspnetcore-app.png)
 
 U hebt nu een Service Fabric Mesh-toepassing gemaakt. Vervolgens maakt u het model voor taakinformatie.
 

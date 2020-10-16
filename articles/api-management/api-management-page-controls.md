@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: b826c986a0af26bb79fb0823e4e8626f0165d460
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86250019"
 ---
 # <a name="azure-api-management-page-controls"></a>Besturings elementen van Azure API Management-pagina
@@ -47,7 +47,7 @@ Zie [de API Management ontwikkelaars portal aanpassen met behulp van sjablonen](
 -   [abonneren: knop](#subscribe-button)  
 -   [abonnement-annuleren](#subscription-cancel)  
   
-##  <a name="app-actions"></a><a name="app-actions"></a>app-acties  
+##  <a name="app-actions"></a><a name="app-actions"></a> app-acties  
  Het `app-actions` besturings element biedt een gebruikers interface voor interactie met toepassingen op de pagina gebruikers profiel in de ontwikkelaars Portal.  
   
  ![besturings element voor app-&#45;acties](./media/api-management-page-controls/APIM-app-actions-control.png "APIM app-acties beheren")  
@@ -69,7 +69,7 @@ Zie [de API Management ontwikkelaars portal aanpassen met behulp van sjablonen](
   
 -   [Toepassingen](api-management-user-profile-templates.md#Applications)  
   
-##  <a name="basic-signin"></a><a name="basic-signin"></a>basis-aanmelden  
+##  <a name="basic-signin"></a><a name="basic-signin"></a> basis-aanmelden  
  Het `basic-signin` besturings element bevat een besturings element voor het verzamelen van informatie over gebruikers aanmelding op de aanmeldings pagina in de ontwikkelaars Portal.  
   
  ![basis beheer van&#45;-aanmelding](./media/api-management-page-controls/APIM-basic-signin-control.png "APIM Basic-besturings element voor aanmelden")  
@@ -88,7 +88,7 @@ Zie [de API Management ontwikkelaars portal aanpassen met behulp van sjablonen](
   
 -   [Aanmelden](api-management-page-templates.md#SignIn)  
   
-##  <a name="paging-control"></a><a name="paging-control"></a>paginering-besturings element  
+##  <a name="paging-control"></a><a name="paging-control"></a> paginering-besturings element  
  De `paging-control` pagina biedt paginerings functionaliteit op pagina's voor de ontwikkelaars portal die een lijst met items weer geven.  
   
  ![besturings element voor paginering](./media/api-management-page-controls/APIM-paging-control.png "Besturings element APIM")  
@@ -111,7 +111,7 @@ Zie [de API Management ontwikkelaars portal aanpassen met behulp van sjablonen](
   
 -   [Product lijst](api-management-product-templates.md#ProductList)  
   
-##  <a name="providers"></a><a name="providers"></a>hardwareproviders  
+##  <a name="providers"></a><a name="providers"></a> hardwareproviders  
  Het `providers` besturings element biedt een besturings element voor selectie van verificatie providers op de aanmeldings pagina in de ontwikkelaars Portal.  
   
  ![besturings element providers](./media/api-management-page-controls/APIM-providers-control.png "Besturings element APIM providers")  
@@ -130,7 +130,7 @@ Zie [de API Management ontwikkelaars portal aanpassen met behulp van sjablonen](
   
 -   [Aanmelden](api-management-page-templates.md#SignIn)  
   
-##  <a name="search-control"></a><a name="search-control"></a>besturings element zoeken  
+##  <a name="search-control"></a><a name="search-control"></a> besturings element zoeken  
  De `search-control` biedt zoek functionaliteit op pagina's van de ontwikkelaars portal die een lijst met items weer geven.  
   
  ![besturings element voor zoeken](./media/api-management-page-controls/APIM-search-control.png "Besturings element voor APIM zoeken")  
@@ -151,7 +151,7 @@ Zie [de API Management ontwikkelaars portal aanpassen met behulp van sjablonen](
   
 -   [Product lijst](api-management-product-templates.md#ProductList)  
   
-##  <a name="sign-up"></a><a name="sign-up"></a>registratie  
+##  <a name="sign-up"></a><a name="sign-up"></a> registratie  
  Het `sign-up` besturings element bevat een besturings element voor het verzamelen van informatie over gebruikers profielen op de registratie pagina in de ontwikkelaars Portal.  
   
  ![&#45;besturings element registreren](./media/api-management-page-controls/APIM-sign-up-control.png "APIM-registratie beheer")  
@@ -170,7 +170,7 @@ Zie [de API Management ontwikkelaars portal aanpassen met behulp van sjablonen](
   
 -   [Aanmelden](api-management-page-templates.md#SignUp)  
   
-##  <a name="subscribe-button"></a><a name="subscribe-button"></a>abonneren: knop  
+##  <a name="subscribe-button"></a><a name="subscribe-button"></a> abonneren: knop  
  De `subscribe-button` biedt een controle voor het abonneren van een gebruiker op een product.  
   
  ![besturings element&#45;knop Abonneren](./media/api-management-page-controls/APIM-subscribe-button-control.png "Besturings element voor APIM-Abonneer knop")  
@@ -189,7 +189,7 @@ Zie [de API Management ontwikkelaars portal aanpassen met behulp van sjablonen](
   
 -   [Product](api-management-product-templates.md#Product)  
   
-##  <a name="subscription-cancel"></a><a name="subscription-cancel"></a>abonnement-annuleren  
+##  <a name="subscription-cancel"></a><a name="subscription-cancel"></a> abonnement-annuleren  
  Het `subscription-cancel` besturings element bevat een besturings element voor het annuleren van een abonnement op een product op de pagina gebruikers profiel in de ontwikkelaars Portal.  
   
  ![abonnement&#45;besturings element annuleren](./media/api-management-page-controls/APIM-subscription-cancel-control.png "APIM-abonnement: beheer annuleren")  

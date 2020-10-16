@@ -1,5 +1,5 @@
 ---
-title: Overzicht van Azure Diagnostics extensie
+title: Overzicht van Azure Diagnostics-extensie
 description: Diagnostische gegevens van Azure gebruiken voor het opsporen van fouten, het meten van prestaties, bewaking, verkeers analyse in Cloud Services, virtuele machines en service Fabric
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
@@ -7,17 +7,17 @@ author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
 ms.openlocfilehash: 6201a4e0551f0f75dde65b2bc4b8b560a0f5ea20
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87007993"
 ---
-# <a name="azure-diagnostics-extension-overview"></a>Overzicht van Azure Diagnostics extensie
+# <a name="azure-diagnostics-extension-overview"></a>Overzicht van Azure Diagnostics-extensie
 Azure Diagnostics extensie is een [agent in azure monitor](agents-overview.md) die bewakings gegevens verzamelt van het gast besturingssysteem van Azure Compute-resources, inclusief virtuele machines. Dit artikel bevat een overzicht van Azure Diagnostics extensie, inclusief specifieke functionaliteit die wordt ondersteund en opties voor installatie en configuratie. 
 
 > [!NOTE]
-> Azure Diagnostics-extensie is een van de agents die beschikbaar zijn voor het verzamelen van bewakings gegevens uit het gast besturingssysteem van reken resources. Zie [overzicht van de Azure monitor-agents](agents-overview.md) voor een beschrijving van de verschillende agents en richt lijnen voor het selecteren van de juiste agents voor uw vereisten.
+> Azure Diagnostics-extensie is een van de agents die beschikbaar zijn voor het verzamelen van bewakings gegevens uit het gast besturingssysteem van reken resources. Zie [overzicht van de Azure monitor-agents ](agents-overview.md) voor een beschrijving van de verschillende agents en richt lijnen voor het selecteren van de juiste agents voor uw vereisten.
 
 ## <a name="primary-scenarios"></a>Primaire scenario's
 De belangrijkste scenario's die worden behandeld door de uitbrei ding van diagnostische gegevens zijn:

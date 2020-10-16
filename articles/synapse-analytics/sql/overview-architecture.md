@@ -11,10 +11,10 @@ ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.openlocfilehash: 9f2f3eee12bb8741f6d079f6f081a08f4e2db9b5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87046856"
 ---
 # <a name="azure-synapse-sql-architecture"></a>Azure Synapse SQL-architectuur 
@@ -59,7 +59,7 @@ Met SQL on-Demand kunt u bestanden in uw data Lake doorzoeken op een alleen-leze
 
 ## <a name="control-node"></a>Beheerknooppunt
 
-Het knoop punt beheer is het brein van de architectuur. Het is de front-end met interactie met alle toepassingen en verbindingen. 
+Het beheerknooppunt is het brein van de architectuur. Het is de front-end met interactie met alle toepassingen en verbindingen. 
 
 In de SQL-groep wordt de MPP-engine op het beheer knooppunt uitgevoerd om parallelle query's te optimaliseren en te coördineren. Wanneer u een T-SQL-query naar een SQL-groep verzendt, transformeert het knoop punt deze in query's die parallel op elke distributie worden uitgevoerd.
 
@@ -69,7 +69,7 @@ In SQL on demand wordt de DQP-Engine uitgevoerd op het knoop punt beheer om gedi
 
 De rekenknooppunten leveren de rekenkracht. 
 
-Distributies in SQL-groep worden toegewezen aan reken knooppunten voor verwerking. Wanneer u betaalt voor meer reken bronnen, wijst de groep de distributies opnieuw toe aan de beschik bare reken knooppunten. Het aantal Compute-knoop punten ligt tussen 1 en 60, en wordt bepaald door het service niveau voor de SQL-groep. Elk Compute-knoop punt heeft een knoop punt-ID die zichtbaar is in systeem weergaven. U kunt de ID van het reken knooppunt zien door te zoeken naar de node_id kolom in systeem weergaven waarvan de naam begint met sys. pdw_nodes. Zie [MPP System views](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=azure-sqldw-latest)(Engelstalig) voor een lijst met deze systeem weergaven.
+Distributies in SQL-groep worden toegewezen aan reken knooppunten voor verwerking. Wanneer u betaalt voor meer reken bronnen, wijst de groep de distributies opnieuw toe aan de beschik bare reken knooppunten. Het aantal Compute-knoop punten ligt tussen 1 en 60, en wordt bepaald door het service niveau voor de SQL-groep. Elk Compute-knoop punt heeft een knoop punt-ID die zichtbaar is in systeem weergaven. U kunt de ID van het reken knooppunt zien door te zoeken naar de node_id kolom in systeem weergaven waarvan de namen beginnen met sys.pdw_nodes. Zie [MPP System views](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=azure-sqldw-latest)(Engelstalig) voor een lijst met deze systeem weergaven.
 
 In SQL on-demand wordt aan elk reken knooppunt taak en set bestanden toegewezen voor het uitvoeren van een taak. De taak is een gedistribueerde eenheid voor query uitvoering, die eigenlijk deel uitmaakt van de query gebruiker die is verzonden. Automatisch schalen is actief om er zeker van te zijn dat er voldoende reken knooppunten worden gebruikt voor het uitvoeren van een gebruikers query.
 

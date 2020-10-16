@@ -3,20 +3,29 @@ title: Azure function als gebeurtenis-handler voor Azure Event Grid gebeurteniss
 description: Hierin wordt beschreven hoe u Azure functions kunt gebruiken als gebeurtenis-handlers voor Event Grid-gebeurtenissen.
 ms.topic: conceptual
 ms.date: 09/18/2020
-ms.openlocfilehash: db06962c020eb954bf0c595e5a4019b1df774898
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: cd500eed180096388eede96f768f08b896ca6456
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91629685"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873724"
 ---
 # <a name="azure-function-as-an-event-handler-for-event-grid-events"></a>Azure function als gebeurtenis-handler voor Event Grid gebeurtenissen
 
 Een gebeurtenis-handler is de plaats waar de gebeurtenis wordt verzonden. De handler heeft een actie nodig om de gebeurtenis te verwerken. Verschillende Azure-Services worden automatisch geconfigureerd voor het afhandelen van gebeurtenissen en **Azure functions** is een hiervan. 
 
-Gebruik **Azure functions** in een serverloze architectuur om te reageren op gebeurtenissen van Event grid. Wanneer u een Azure-functie als handler gebruikt, gebruikt u de trigger Event Grid in plaats van de algemene HTTP-trigger. Event Grid triggers worden door Event Grid automatisch gevalideerd. Bij algemene HTTP-triggers moet u het [validatie antwoord](webhook-event-delivery.md) zelf implementeren.
 
-Zie [Event grid trigger voor Azure functions](../azure-functions/functions-bindings-event-grid.md) voor een overzicht van het gebruik van de Event grid trigger in functions voor meer informatie.
+Ga op een van de volgende manieren te werk om een Azure-functie als handler voor gebeurtenissen te gebruiken: 
+
+-   Gebruik [Event grid trigger](../azure-functions/functions-bindings-event-grid-trigger.md).  Geef een **Azure-functie** op als het **type eind punt**. Vervolgens geeft u de Azure-functie-app en de functie op waarmee gebeurtenissen worden verwerkt. 
+-   [Http-trigger](../azure-functions/functions-bindings-http-webhook.md)gebruiken.  Geef een **Webhook** op als het **type eind punt**. Geef vervolgens de URL op voor de Azure-functie waarmee gebeurtenissen worden verwerkt. 
+
+U wordt aangeraden de eerste benadering (Event Grid trigger) te gebruiken, omdat deze de volgende voor delen heeft ten opzichte van de tweede benadering:
+-   Event Grid triggers worden door Event Grid automatisch gevalideerd. Bij algemene HTTP-triggers moet u het [validatie antwoord](webhook-event-delivery.md) zelf implementeren.
+-   Event Grid past automatisch de snelheid aan waarmee gebeurtenissen worden afgeleverd aan een functie die wordt geactiveerd door een Event Grid gebeurtenis op basis van de waargenomen snelheid waarmee de functie gebeurtenissen kan verwerken. Met deze functie voor de prijs overeenkomst worden bezorgings fouten van de functie voor het verwerken van gebeurtenissen in de loop van de tijd van de functie van de gebeurtenis verwerkings frequentie in Avert. Schakel batch verwerking in voor het gebeurtenis abonnement om de efficiëntie bij hoge door voer te verbeteren. Zie [batching inschakelen](#enable-batching)voor meer informatie.
+
+    > [!NOTE]
+    > Op dit moment kunt u geen Event Grid trigger gebruiken voor een Azure Functions-app wanneer de gebeurtenis wordt bezorgd in het **CloudEvents** -schema. Gebruik in plaats daarvan een HTTP-trigger.
 
 ## <a name="tutorials"></a>Zelfstudies
 
@@ -48,7 +57,7 @@ Zie [Event grid trigger voor Azure functions](../azure-functions/functions-bindi
 }
 ```
 
-## <a name="enable-batching"></a>Batch verwerking inschakelen
+## <a name="enable-batching"></a>Batchverwerking inschakelen
 Schakel voor een hogere door Voer batch verwerking in voor het abonnement. Als u de Azure Portal gebruikt, kunt u het maximum aantal gebeurtenissen per batch en de gewenste Batch grootte instellen op kilo bytes op het moment dat u een abonnement maakt of na het maken. 
 
 U kunt batch-instellingen configureren met behulp van de sjabloon Azure Portal, Power shell, CLI of Resource Manager. 

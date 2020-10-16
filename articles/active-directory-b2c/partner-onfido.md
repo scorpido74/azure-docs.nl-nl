@@ -12,10 +12,10 @@ ms.date: 08/03/2020
 ms.author: gasinh
 ms.subservice: B2C
 ms.openlocfilehash: 5d0835114844069d4ebdc992b872f9be1f0b3ca6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91259217"
 ---
 # <a name="tutorial-for-configuring-onfido-with-azure-active-directory-b2c"></a>Zelf studie voor het configureren van Onfido met Azure Active Directory B2C
@@ -84,7 +84,7 @@ Zie [ONFIDO API documentation](https://documentation.onfido.com) and [Onfido Dev
 
 Toepassings instellingen kunnen worden geconfigureerd in de [app service in azure](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings). Met de app service kunnen instellingen veilig worden geconfigureerd zonder deze in een opslag plaats te controleren. De rest-API moet de volgende instellingen hebben:
 
-| Naam van toepassings instelling | Bron | Opmerkingen |
+| Naam van toepassings instelling | Bron | Notities |
 |:-------------------------|:-------|:-------|
 |OnfidoSettings: AuthToken| Onfido-account |
 

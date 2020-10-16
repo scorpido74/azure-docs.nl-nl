@@ -10,10 +10,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.openlocfilehash: 4f839de6e276727fa910f91eccc34601cf34f85c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81418011"
 ---
 # <a name="switch-activity-in-azure-data-factory"></a>Activiteit in Azure Data Factory scha kelen
@@ -22,7 +22,7 @@ ms.locfileid: "81418011"
 
 De switch-activiteit biedt dezelfde functionaliteit als een switch-instructie in programmeer talen. Er wordt een reeks activiteiten geëvalueerd die overeenkomen met een aanvraag die overeenkomt met de evaluatie van de voor waarde.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Syntaxis
 
 ```json
 
@@ -71,7 +71,7 @@ Eigenschap | Beschrijving | Toegestane waarden | Vereist
 -------- | ----------- | -------------- | --------
 naam | De naam van de switch activiteit. | Tekenreeks | Ja
 type | Moet worden ingesteld op *Switch** | Tekenreeks | Ja
-expressie | Expressie die moet worden geëvalueerd als teken reeks waarde | Expressie met teken reeks resultaat type | Ja
+expression | Expressie die moet worden geëvalueerd als teken reeks waarde | Expressie met teken reeks resultaat type | Ja
 meldingen | Set cases die een waarde en een set activiteiten bevatten die moeten worden uitgevoerd wanneer de waarde overeenkomt met de evaluatie van de expressie. U moet ten minste één geval opgeven. Er is een maximum limiet van 25 gevallen. | Reeks Case-objecten | Ja
 defaultActivities | Een set activiteiten die worden uitgevoerd wanneer aan de evaluatie van de expressie niet wordt voldaan. | Matrix van activiteiten | Ja
 

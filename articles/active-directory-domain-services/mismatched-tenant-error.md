@@ -2,7 +2,7 @@
 title: Problemen met niet-overeenkomende mappen oplossen in Azure AD Domain Services | Microsoft Docs
 description: Meer informatie over wat een fout met een niet-overeenkomende map is en hoe u deze kunt oplossen in Azure AD Domain Services
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 40eb75b7-827e-4d30-af6c-ca3c2af915c7
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/09/2020
-ms.author: iainfou
-ms.openlocfilehash: 62768dcc8df9f7dbd6cbb15c434ec9886e2d1d44
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.author: joflore
+ms.openlocfilehash: 0c2a6ee4ee5c92122e896e62485479d50c660c7f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91713006"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968069"
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-active-directory-domain-services-managed-domains"></a>Fouten van niet-overeenkomende mappen oplossen voor bestaande Azure Active Directory Domain Services beheerde domeinen
 

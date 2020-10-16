@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: raynew
 ms.openlocfilehash: 68e5f937b8ad8367abf488598bda311a39d462c6
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90600650"
 ---
 # <a name="common-questions"></a>Veelgestelde vragen
@@ -34,16 +34,16 @@ Op dit moment kunt u resources verplaatsen van elke open bare bron regio naar ee
 
 ### <a name="what-resources-can-i-move-across-regions-using-resource-mover"></a>Welke resources kan ik verplaatsen tussen regio's met resource-overdrijf?
 
-Met resource-overzetten kunt u momenteel de volgende resources verplaatsen tussen regio's:
+Met Resource Mover kunt u momenteel de volgende resources tussen regio's verplaatsen:
 
-- Azure-Vm's en gekoppelde schijven
+- Azure-VM's en gekoppelde schijven
 - NIC’s
 - Beschikbaarheidssets 
-- Virtuele netwerken van Azure 
+- Virtuele netwerken van Azure. 
 - Openbare IP-adressen
 - Netwerkbeveiligingsgroepen (NSG's)
-- Interne en open bare load balancers 
-- Azure SQL-data bases en elastische Pools
+- Interne en openbare load balancers 
+- Azure SQL-databases en elastische pools
 
 
 ### <a name="can-i-move-resources-across-subscriptions-when-i-move-them-across-regions"></a>Kan ik resources verplaatsen tussen abonnementen wanneer ik deze Verplaats tussen regio's?
@@ -71,12 +71,12 @@ Ja, zowel onderweg als in rust.
 
 ### <a name="what-managed-identity-permissions-does-resource-mover-need"></a>Welke beheerde identiteits machtigingen moeten resource-overschakeling hebben?
 
-De beheerde identiteit van de Azure-resource-overschakeling moet ten minste de volgende machtigingen hebben: 
+De beheerde identiteit van de Azure Resource Mover moet ten minste de volgende machtigingen hebben: 
 
 - Machtiging voor het schrijven/maken van resources in het gebruikers abonnement, beschikbaar met de rol *Inzender* . 
 - Machtiging om roltoewijzingen te maken. Normaal gesp roken beschikbaar bij de rol van *eigenaar* of *beheerder voor toegang tot de gebruiker* , of met een aangepaste rol waaraan de *machtiging micro soft. Authorization/Role Assignment/write Schrijf* is toegewezen. Deze machtiging is niet nodig als de beheerde identiteit van de bron van de gegevens share al toegang tot de Azure-gegevens opslag heeft gekregen. 
  
-Wanneer u resources toevoegt in de resource-overdrijfings hub in de portal, worden de machtigingen automatisch afgehandeld zolang de gebruiker beschikt over de machtigingen die hierboven worden beschreven. Als u resources toevoegt met Power shell, wijst u machtigingen hand matig toe.
+Wanneer u resources toevoegt in de Resource Mover-hub in de portal, worden de machtigingen automatisch afgehandeld zolang de gebruiker beschikt over de machtigingen die hierboven worden beschreven. Als u resources toevoegt met Power shell, wijst u machtigingen hand matig toe.
 
 > [!IMPORTANT]
 > We raden u ten zeerste aan geen toewijzing van identiteits rollen te wijzigen of verwijderen. 
@@ -96,4 +96,4 @@ Wijzig zo nodig de bron-en doel combinaties met de optie wijzigen in de portal.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer [informatie](about-move-process.md) over resource-overdrijfings onderdelen en het verplaatsings proces.
+[Meer informatie](about-move-process.md) over Resource Mover-onderdelen en het verplaatsingsproces.

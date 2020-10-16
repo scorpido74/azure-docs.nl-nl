@@ -4,10 +4,10 @@ description: Meer informatie over het gebruik van REST API om Azure-bestands sha
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.openlocfilehash: 60c73caa5db684e38b94b4d5786f2fd24aa65d08
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88761794"
 ---
 # <a name="restore-azure-file-shares-using-rest-api"></a>Azure-bestands shares herstellen met behulp van REST API
@@ -222,7 +222,7 @@ Met de volgende aanvraag tekst wordt de *Azure files* -bestands share in het *af
 Het activeren van een herstel bewerking is een [asynchrone bewerking](../azure-resource-manager/management/async-operations.md). Met deze bewerking wordt een andere bewerking gemaakt die afzonderlijk moet worden bijgehouden.
 Er worden twee antwoorden geretourneerd: 202 (geaccepteerd) wanneer een andere bewerking wordt gemaakt en 200 (OK) wanneer de bewerking is voltooid.
 
-#### <a name="response-example"></a>Antwoord voorbeeld
+#### <a name="response-example"></a>Voorbeeld van antwoord
 
 Wanneer u de *post* -URI voor het activeren van een herstel bewerking verzendt, wordt het eerste antwoord 202 (geaccepteerd) met een locatie header of Azure-async-header.
 
@@ -245,7 +245,7 @@ HTTP/1.1" 202
 'Date': 'Wed, 05 Feb 2020 07:43:47 GMT'
 ```
 
-Volg vervolgens de resulterende bewerking met behulp van de locatie header of de Azure-AsyncOperation-header met een GET-opdracht.
+Volg vervolgens de resulterende bewerking met behulp van de locatie header of de Azure-AsyncOperation header met een GET-opdracht.
 
 ```http
 GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupOperations/68ccfbc1-a64f-4b29-b955-314b5790cfa9?api-version=2016-12-01

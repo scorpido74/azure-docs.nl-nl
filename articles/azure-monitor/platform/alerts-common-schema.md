@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
 ms.openlocfilehash: faf9975e2795623305583d061d1af7f5eb0cfbe0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86539479"
 ---
 # <a name="common-alert-schema"></a>Algemeen waarschuwingsschema
@@ -31,7 +31,7 @@ Dit betekent dat u mogelijk minder integraties kunt hebben, waardoor het proces 
 
 Het algemene waarschuwings schema wordt in eerste instantie in uw waarschuwings meldingen gemanifesteerd. De uitbrei dingen die u ziet, worden hieronder weer gegeven:
 
-| Actie | Verbeteringen |
+| Bewerking | Verbeteringen |
 |:---|:---|
 | Sms | Een consistente SMS-sjabloon voor alle waarschuwings typen. |
 | E-mail | Een consistente en gedetailleerde e-mail sjabloon waarmee u problemen eenvoudig kunt onderzoeken in één oogopslag. Inge sloten diep gaande koppelingen naar het waarschuwings exemplaar op de portal en de betreffende resource zorgen ervoor dat u snel naar het herstel proces kunt gaan. |

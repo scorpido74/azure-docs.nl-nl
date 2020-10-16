@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: 4b629ddeb1db8dd94c1c96ecb62fafb9ca7bfc60
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: d3d58cab6e3b9ed0bf3b8ed409aa736357687f09
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91569668"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759642"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL Flexible Server (preview-versie)
 
@@ -54,7 +54,9 @@ Zie [concepten met betrekking tot hoge beschikbaarheid](concepts-high-availabili
 
 ## <a name="automated-patching-with-managed-maintenance-window"></a>Automatische toepassing van patches met beheerd onderhoudsvenster
 
-De service voert automatische patches uit van de onderliggende hardware, het besturingssysteem en de database-engine. De patches omvatten beveiligings- en software-updates. Voor de MySQL-engine maken kleine versie-upgrades ook deel uit van de geplande onderhoudsrelease. Gebruikers kunnen het schema voor het toepassen van patches configureren voor beheer door het systeem of zelf hun eigen aangepaste schema definiëren. Tijdens het onderhoudsschema wordt de patch toegepast en moet de server mogelijk opnieuw worden opgestart als onderdeel van het patchproces om de update te voltooien. Met een aangepast schema kunnen gebruikers hun patchcyclus voorspelbaar maken en een onderhoudsvenster kiezen met minimale gevolgen voor het bedrijf. Over het algemeen volgt de service de maandelijkse releaseplanning, als onderdeel van de continue integratie en releases. 
+De service voert automatische patches uit van de onderliggende hardware, het besturingssysteem en de database-engine. De patches omvatten beveiligings- en software-updates. Voor de MySQL-engine maken kleine versie-upgrades ook deel uit van de geplande onderhoudsrelease. Gebruikers kunnen het schema voor het toepassen van patches configureren voor beheer door het systeem of zelf hun eigen aangepaste schema definiëren. Tijdens het onderhoudsschema wordt de patch toegepast en moet de server mogelijk opnieuw worden opgestart als onderdeel van het patchproces om de update te voltooien. Met een aangepast schema kunnen gebruikers hun patchcyclus voorspelbaar maken en een onderhoudsvenster kiezen met minimale gevolgen voor het bedrijf. Over het algemeen volgt de service de maandelijkse releaseplanning, als onderdeel van de continue integratie en releases.
+
+Zie [Gepland onderhoud](concepts-maintenance.md) voor meer informatie. 
 
 ## <a name="automatic-backups"></a>Automatische back-ups
 
@@ -87,13 +89,15 @@ Zie [Reken- en opslagconcepten](concepts-compute-storage.md) voor meer informati
 
 De service voor flexibele servers biedt u de mogelijkheid om de server op aanvraag te stoppen en te starten om de kosten te optimaliseren. Het factureren van de rekenlaag wordt direct gestopt wanneer de server is gestopt. Hierdoor kunt u aanzienlijke kostenbesparingen realiseren tijdens het ontwikkelen en testen en krijgt u tijdgebonden, voorspelbare productieworkloads. De server blijft gedurende zeven dagen gestopt, tenzij deze opnieuw wordt gestart. 
 
+Zie [Serverconcepten](concept-servers.md) voor meer informatie. 
+
 ## <a name="enterprise-grade-security-and-privacy"></a>Toonaangevende beveiliging en privacy
 
 De service voor flexibele servers maakt gebruik van de door FIPS 140-2 gevalideerde cryptografische module voor opslagversleuteling van niet-actieve gegevens. Gegevens, inclusief back-ups en tijdelijke bestanden die worden gemaakt tijdens het uitvoeren van query's, worden versleuteld. De service maakt gebruikt van de AES 256-bits versleuteling die deel uitmaakt van Azure Storage-versleuteling. De sleutels kunnen door het systeem worden beheerd (standaardinstelling). 
 
 De service versleutelt actieve gegevens met TLS (Transport Layer Security) dat standaard wordt afgedwongen. Flexibele servers bieden alleen ondersteuning voor versleutelde verbindingen met behulp van TLS 1.2 (Transport Layer Security) en alle binnenkomende verbindingen met TLS 1.0 en TLS 1.1 worden geweigerd. 
 
-Zie [Versleutelde verbindingen gebruiken met flexibele servers](/articles/mysql/flexible-server/how-to-connect-tls-ssl.md) voor meer informatie.
+Zie [Versleutelde verbindingen gebruiken met flexibele servers](https://docs.mongodb.com/manual/tutorial/configure-ssl) voor meer informatie.
 
 Flexibele servers bieden volledige privétoegang tot de servers met behulp van [VNet-integratie (Virtual Network) van Azure](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview). Servers in een virtueel netwerk van Azure kunnen alleen worden bereikt en verbonden via privé-IP-adressen. Met VNet-integratie wordt openbare toegang geweigerd en kunnen er geen servers worden bereikt via openbare eindpunten. 
 

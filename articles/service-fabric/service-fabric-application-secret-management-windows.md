@@ -4,10 +4,10 @@ description: Meer informatie over het instellen van een versleutelings certifica
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.openlocfilehash: eb4909d62a2627c368f24dab572b25c6f1df30ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82583290"
 ---
 # <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-windows-clusters"></a>Een versleutelings certificaat instellen en geheimen op Windows-clusters versleutelen
@@ -16,7 +16,7 @@ In dit artikel wordt beschreven hoe u een versleutelings certificaat instelt en 
 [Azure Key Vault][key-vault-get-started] wordt hier gebruikt als een veilige opslag locatie voor certificaten en als manier om certificaten te verkrijgen die zijn geïnstalleerd op service Fabric clusters in Azure. Als u niet in azure implementeert, hoeft u Key Vault niet te gebruiken om geheimen in Service Fabric toepassingen te beheren. Het *gebruik* van geheimen in een toepassing is echter het Cloud platform-neutraal zodat toepassingen kunnen worden geïmplementeerd in een cluster dat overal wordt gehost. 
 
 ## <a name="obtain-a-data-encipherment-certificate"></a>Een certificaat voor gegevens codering verkrijgen
-Een gegevens versleuteling certificaat wordt uitsluitend gebruikt voor het versleutelen en ontsleutelen van [para meters][parameters-link] in de Settings.xml en [omgevings variabelen][environment-variables-link] van een service in de ServiceManifest.xml van een service. Het wordt niet gebruikt voor verificatie of ondertekening van versleutelings tekst. Het certificaat moet voldoen aan de volgende vereisten:
+Een gegevens versleuteling certificaat wordt uitsluitend gebruikt voor het versleutelen en ontsleutelen van [para meters][parameters-link] in de Settings.xml en [omgevings variabelen][environment-variables-link] van een service in de ServiceManifest.xml van een service. Het wordt niet gebruikt voor verificatie of ondertekening van versleutelings tekst. Het certificaat moet aan de volgende vereisten voldoen:
 
 * Het certificaat moet een persoonlijke sleutel bevatten.
 * Het certificaat moet worden gemaakt voor sleutel uitwisseling, exporteerbaar naar een pfx-bestand (Personal Information Exchange).

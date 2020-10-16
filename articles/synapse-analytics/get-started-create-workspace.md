@@ -8,33 +8,36 @@ manager: julieMSFT
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
-ms.date: 08/27/2020
-ms.openlocfilehash: 78ec233e618511c748ed9f51b97161eddc5e8308
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.date: 10/07/2020
+ms.openlocfilehash: d3a5f2bd4bf536c1bc5b3723b9b612beef6a647c
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707523"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812315"
 ---
-# <a name="create-a-synapse-workspace"></a>Een Synapse-werkruimte maken
+# <a name="creating-a-synapse-workspace"></a>Een Synapse-werkruimte maken
 
 In deze zelfstudie leert u hoe u een Synapse-werkruimte, een SQL-pool en een Apache Spark-pool maakt. 
 
-## <a name="create-a-synapse-workspace"></a>Een Synapse-werkruimte maken
+## <a name="prerequisites"></a>Vereisten
+
+Om alle stappen van deze zelfstudie te kunnen voltooien, moet u toegang hebben tot een resourcegroep waarvoor de rol **Eigenaar** aan u is toegewezen. Maak de Synapse-werkruimte in deze resourcegroep.
+
+## <a name="create-a-synapse-workspace-in-the-azure-portal"></a>Open een Synapse-werkruimte in de Azure-portal
 
 1. Open de [Azure-portal](https://portal.azure.com) en zoek bovenin naar **Synapse**.
 1. Selecteer in de zoekresultaten onder **Services** de optie **Azure Synapse Analytics (voorbeeld van werkruimten)** .
 1. Selecteer **Toevoegen** om een werkruimte te maken.
-1. Kies in **Basisinstellingen** een naam voor de werkruimte. In deze zelfstudie gebruiken we **myworkspace**.
+1. Voer in **Basis** de vereiste velden toe en kies een werkruimtenaam. In deze zelfstudie gebruiken we **myworkspace**.
 1. U hebt een ADLSGEN2-account nodig om een werkruimte te maken. Het meest eenvoudige is om een nieuw account te maken. Als u een bestaand account opnieuw wilt gebruiken, moet u een aantal extra configuratiestappen uitvoeren. 
 1. OPTIE 1 Een nieuw ADLSGEN2-account maken 
     1. Navigeer naar **Data Lake Storage Gen 2 selecteren**. 
     1. Klik op **Nieuwe maken** en voer de naam **contosolake** in.
-    1. Klik op **Bestandssysteem** en voer de naam **users** in.
+    1. Klik op **Bestandssysteem** en voer de naam **gebruikers** in. Hiermee maakt u een container met de naam **gebruikers**
 1. OPTIE 2 Een bestaand ADLSGEN2-account gebruiken. Zie de instructies in **Een ADLSGEN2-opslagaccount voorbereiden** onderaan dit document.
 1. De Azure Synapse-werkruimte gebruikt dit opslagaccount als primair opslagaccount en de container als opslag voor werkruimtegegevens. In de werkruimte worden gegevens opgeslagen in Apache Spark-tabellen. Het slaat Apache Spark-toepassingslogboeken op in een map met de naam **/synapse/workspacename**.
 1. Selecteer **Beoordelen en maken** > **Maken**. Uw werkruimte is binnen een paar minuten klaar.
-
 
 ## <a name="open-synapse-studio"></a>Synapse Studio openen
 
@@ -113,8 +116,8 @@ Configureer toegang tot het opslagaccount vanuit uw werkruimte. Beheerde identit
 1. Wijs vervolgens de volgende rollen toe of controleer of ze al zijn toegewezen. We gebruiken dezelfde naam voor de werkruimte-id en de werkruimtenaam.
     * Wijs voor de rol **Bijdrager voor opslagblobgegevens** in het opslagaccount **myworkspace** toe als werkruimte-id.
     * Wijs **myworkspace** als werkruimtenaam toe.
-
 1. Selecteer **Opslaan**.
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -14,10 +14,10 @@ ms.workload: iaas-sql-server
 ms.date: 01/29/2020
 ms.author: mathoma
 ms.openlocfilehash: 43b0f64a1d88a71b221fac240392dc71b93eef76
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91298825"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>Een beschikbaarheids groep voor werk groepen configureren 
@@ -40,7 +40,7 @@ Ter referentie worden de volgende para meters in dit artikel gebruikt, maar kunn
 | :------ | :---------------------------------- |
 | **Knooppunt1**   | AGNode1 (10.0.0.4) |
 | **Knooppunt2**   | AGNode2 (10.0.0.5) |
-| **Cluster naam** | AGWGAG (10.0.0.6 ALS) |
+| **Clusternaam** | AGWGAG (10.0.0.6 ALS) |
 | **Listener** | AGListener (10.0.0.7) | 
 | **DNS-achtervoegsel** | ag.wgcluster.example.com | 
 | **Naam van werk groep** | AGWorkgroup | 

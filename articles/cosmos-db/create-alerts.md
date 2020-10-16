@@ -9,10 +9,10 @@ ms.devlang: dotnet
 ms.topic: how-to
 ms.date: 07/16/2020
 ms.openlocfilehash: 84c2ad3a24d944db6a55f3f21e8a2a0c4084d033
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87097618"
 ---
 # <a name="create-alerts-for-azure-cosmos-db-using-azure-monitor"></a>Waarschuwingen maken voor Azure Cosmos DB met behulp van Azure Monitor
@@ -83,7 +83,7 @@ In deze sectie wordt beschreven hoe u een waarschuwing maakt wanneer u een HTTP-
 
    * Geef een naam op voor uw actie en selecteer **e-mail/SMS-bericht/push/Voice** als **actie type**. De volgende scherm afbeelding toont de details van het actie Type:
 
-     :::image type="content" source="./media/create-alerts/configure-alert-action-type.png" alt-text="Het actie Type zoals e-mail melding configureren om de waarschuwing te ontvangen":::
+     :::image type="content" source="./media/create-alerts/configure-alert-action-type.png" alt-text="De logica configureren voor het ontvangen van waarschuwingen voor een aantal beperkte/429-aanvragen":::
 
 1. Vul de sectie **Details van waarschuwings regel** in:
 

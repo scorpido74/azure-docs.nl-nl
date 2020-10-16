@@ -13,10 +13,10 @@ ms.author: celested
 ms.reviewer: asteen, jlu, hirsin
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bed6bc43dfc15abf2bdf9f38a5de2240d348d6fb
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89320253"
 ---
 # <a name="configure-the-stay-signed-in-prompt-for-azure-ad-accounts"></a>De ' aangemeld blijven? ' configureren vragen om Azure AD-accounts
@@ -40,20 +40,20 @@ In het volgende diagram ziet u de aanmeldings stroom van de gebruiker voor een b
    * Als u **Nee**kiest, wordt de optie **aangemeld blijven** verborgen nadat de gebruiker zich heeft aangemeld en moet de gebruiker zich aanmelden telkens wanneer de browser wordt gesloten en opnieuw wordt geopend.
    * Als u **Ja**kiest, wordt de optie **aangemeld blijven?** weer gegeven aan de gebruiker.
 
-    :::image type="content" source="./media/keep-me-signed-in/kmsi-company-branding-advanced-settings-kmsi-1.png" alt-text="Scherm afbeelding toont de optie weer geven om aangemeld te blijven":::
+    :::image type="content" source="./media/keep-me-signed-in/kmsi-company-branding-advanced-settings-kmsi-1.png" alt-text="Diagram van de aanmeldings stroom van de gebruiker voor een beheerde versus federatieve Tenant":::
 
 ## <a name="troubleshoot-sign-in-issues"></a>Problemen met aanmelden oplossen
 
 Als een gebruiker niet op de vraag **aangemeld blijven?** wordt weer gegeven, zoals in het volgende diagram, maar de aanmeldings poging wordt afgebroken, ziet u een aanmeldings logboek vermelding die de interrupt aanduidt.
 
-:::image type="content" source="./media/keep-me-signed-in/kmsi-stay-signed-in-prompt.png" alt-text="Ziet u de aangemeld blijven? verschijnt":::
+:::image type="content" source="./media/keep-me-signed-in/kmsi-stay-signed-in-prompt.png" alt-text="Diagram van de aanmeldings stroom van de gebruiker voor een beheerde versus federatieve Tenant":::
 
 Meer informatie over de aanmeldings fout vindt u in het voor beeld.
 
 * **Fout code voor aanmelden**: 50140
 * **Reden van fout**: deze fout is opgetreden vanwege een onderbreking bij het aanmelden bij de aanmelding van de gebruiker.
 
-:::image type="content" source="./media/keep-me-signed-in/kmsi-sign-ins-log-entry.png" alt-text="Voor beeld van een aanmeldings logboek vermelding met de hand aangemeld bij interrupt":::
+:::image type="content" source="./media/keep-me-signed-in/kmsi-sign-ins-log-entry.png" alt-text="Diagram van de aanmeldings stroom van de gebruiker voor een beheerde versus federatieve Tenant":::
 
 U kunt voor komen dat gebruikers de interrupt zien door de **optie weer geven in te stellen op** **Nee** in de geavanceerde huisstijl instellingen. Hiermee wordt de KMSI-prompt voor alle gebruikers in uw Azure AD-adres lijst uitgeschakeld.
 

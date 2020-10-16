@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/20/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 84850b7d44033a2759c51c5c6b9c53d1c945a99d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 27a00c69a4423e45b46b9c3d0340bb7cd1a35d65
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87005375"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92095895"
 ---
 # <a name="localization-element"></a>Lokalisatie-element
 
@@ -45,7 +45,7 @@ Het **lokalisatie** -element bevat de volgende kenmerken:
 
 Het **lokalisatie** -element bevat de volgende XML-elementen
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | SupportedLanguages | 1: n | Lijst met ondersteunde talen. |
 | LocalizedResources | 0: n | Lijst met gelokaliseerde resources. |
@@ -63,7 +63,7 @@ Het **SupportedLanguages** -element bevat de volgende kenmerken:
 
 Het **SupportedLanguages** -element bevat de volgende elementen:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | SupportedLanguage | 1: n | Geeft inhoud weer die voldoet aan een taal code per RFC 5646-Tags voor het identificeren van talen. |
 
@@ -77,7 +77,7 @@ Het **LocalizedResources** -element bevat de volgende kenmerken:
 
 Het **LocalizedResources** -element bevat de volgende elementen:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | LocalizedCollections | 0: n | Definieert volledige verzamelingen in verschillende cult uren. Een verzameling kan een verschillend aantal items en verschillende teken reeksen voor verschillende cult uren hebben. Voor beelden van verzamelingen zijn de opsommingen die worden weer gegeven in claim typen. Een lijst met landen/regio's wordt bijvoorbeeld weer gegeven aan de gebruiker in een vervolg keuzelijst. |
 | LocalizedStrings | 0: n | Hiermee worden alle teken reeksen gedefinieerd, met uitzonde ring van de teken reeksen die in verzamelingen worden weer gegeven, in verschillende cult uren. |
@@ -86,7 +86,7 @@ Het **LocalizedResources** -element bevat de volgende elementen:
 
 Het **LocalizedCollections** -element bevat de volgende elementen:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | LocalizedCollection | 1: n | Lijst met ondersteunde talen. |
 
@@ -102,7 +102,7 @@ Het **LocalizedCollection** -element bevat de volgende kenmerken:
 
 Het **LocalizedCollection** -element bevat de volgende elementen:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | Item | 0: n | Hiermee definieert u een beschik bare optie voor de gebruiker om te selecteren voor een claim in de gebruikers interface, zoals een waarde in een vervolg keuzelijst. |
 
@@ -138,7 +138,7 @@ In het volgende voor beeld ziet u het gebruik van het element **LocalizedCollect
 
 Het **LocalizedStrings** -element bevat de volgende elementen:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | LocalizedString | 1: n | Een gelokaliseerde teken reeks. |
 
@@ -163,6 +163,7 @@ De verwijzing naar het element type naar een claim object, een claim transformat
 |Gebruikers bericht van predikaat|`Predicate`|De naam van het predikaat| Het kenmerk van het predikaat dat moet worden gelokaliseerd. Mogelijke waarden: `HelpText` .|
 |Gebruikers bericht van de predicaat groep|`InputValidation`|De ID van het PredicateValidation-element.|De ID van het PredicateGroup-element. De predikaat-groep moet een onderliggend element zijn van het validatie-predicaat dat is gedefinieerd in de ElementId.|
 |Elementen van de gebruikersinterface |`UxElement` | | De ID van het element van de gebruikers interface dat moet worden gelokaliseerd.|
+|[Besturings element weer geven](display-controls.md) |`DisplayControl` |De ID van het weergave besturings element. | De ID van het element van de gebruikers interface dat moet worden gelokaliseerd.|
 
 ## <a name="examples"></a>Voorbeelden
 
@@ -330,6 +331,23 @@ De UxElement-waarde wordt gebruikt om een van de elementen van de gebruikers int
 ```xml
 <LocalizedString ElementType="UxElement" StringId="button_continue">Create new account</LocalizedString>
 <LocalizedString ElementType="UxElement" StringId="button_cancel">Cancel</LocalizedString>
+```
+
+### <a name="displaycontrol"></a>Besturings
+
+De waarde voor weer gave wordt gebruikt om een van de elementen van de gebruikers interface van het [Weergave besturings element](display-controls.md) te lokaliseren. In het volgende voor beeld ziet u hoe u de knoppen verzenden en verifiëren kunt lokaliseren. 
+
+```xml
+<LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_send_code">Send verification code</LocalizedString>
+<LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_verify_code">Verify code</LocalizedString>
+```
+
+In de sectie meta gegevens van een niet-bevestigd technisch profiel moet DataUri zijn ingesteld op [versie](page-layout.md) 2.1.0 of hoger van de ContentDefinition. Bijvoorbeeld:
+
+```xml
+<ContentDefinition Id="api.selfasserted">
+  <DataUri>urn:com:microsoft:aad:b2c:elements:selfasserted:2.1.0</DataUri>
+  ...
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

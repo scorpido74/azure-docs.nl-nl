@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 52c18f8d51f18b9bc167a99fbafda2365824dfc9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91312088"
 ---
 # <a name="tutorial-configure-zscaler-for-automatic-user-provisioning"></a>Zelf studie: Zscaler configureren voor automatische gebruikers inrichting
@@ -71,7 +71,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
 * U wordt aangeraden één Azure AD-gebruiker toe te wijzen aan Zscaler om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
 
-* Wanneer u een gebruiker toewijst aan Zscaler, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaard toegang** worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker toewijst aan Zscaler, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaardtoegang** worden uitgesloten van het inrichten.
 
 ## <a name="configuring-automatic-user-provisioning-to-zscaler"></a>Automatische gebruikers inrichting configureren voor Zscaler
 
@@ -108,7 +108,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Scherm afbeelding van het dialoog venster S A M L configureren met de tekst vakken basis U R L en Bearer-token.](./media/zscaler-provisioning-tutorial/secret-token-2.png)
 
-    Selecteer **op scim gebaseerde inrichting inschakelen** om de **basis-URL** en **Bearer-token**op te halen en sla de instellingen vervolgens op. Kopieer de **basis-URL** naar de **Tenant-URL**en **Bearer-token**  naar een **geheim token** in de Azure Portal.
+    Selecteer **SCIM-Based inrichting inschakelen** om basis- **URL** en **Bearer-token**op te halen en sla de instellingen op. Kopieer de **basis-URL** naar de **Tenant-URL**en **Bearer-token**  naar een **geheim token** in de Azure Portal.
 
 7. Klik bij het invullen van de velden die worden weer gegeven in stap 5 op **verbinding testen** om te controleren of Azure AD verbinding kan maken met Zscaler. Als de verbinding mislukt, zorg er dan voor dat uw Zscaler-account beheerders machtigingen heeft en probeer het opnieuw.
 
@@ -126,7 +126,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 11. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar Zscaler in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in Zscaler voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
 
-    ![Scherm afbeelding van de sectie kenmerk toewijzingen met zeven toewijzingen weer gegeven.](./media/zscaler-provisioning-tutorial/user-attribute-mappings.png)
+    ![Schermopname van de sectie Kenmerktoewijzingen met zeven toewijzingen weergegeven.](./media/zscaler-provisioning-tutorial/user-attribute-mappings.png)
 
 12. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory groepen synchroniseren met Zscaler**.
 
@@ -134,7 +134,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 13. Controleer de groeps kenmerken die zijn gesynchroniseerd vanuit Azure AD naar Zscaler in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen, worden gebruikt om de groepen in Zscaler te vergelijken voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
 
-    ![Scherm afbeelding van de sectie kenmerk toewijzingen waarbij drie toewijzingen worden weer gegeven.](./media/zscaler-provisioning-tutorial/group-attribute-mappings.png)
+    ![Schermopname van de sectie Kenmerktoewijzingen met drie toewijzingen weergegeven.](./media/zscaler-provisioning-tutorial/group-attribute-mappings.png)
 
 14. Als u bereikfilters wilt configureren, raadpleegt u de volgende instructies in de [zelfstudie Bereikfilter](./../active-directory-saas-scoping-filters.md).
 

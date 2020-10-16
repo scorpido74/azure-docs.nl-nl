@@ -9,10 +9,10 @@ ms.author: mlearned
 description: Azure IoT Edge workloads implementeren
 keywords: Kubernetes, Arc, azure, K8s, containers
 ms.openlocfilehash: bfaa43a03ddd98616b22fc3fc7b4dccb4c38f44c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86103973"
 ---
 # <a name="deploy-azure-iot-edge-workloads-preview"></a>Azure IoT Edge workloads implementeren (preview-versie)
@@ -49,7 +49,7 @@ Gebruik de `az` cli- `connectedk8s` extensie om een Kubernetes-cluster te verbin
 
 ## <a name="create-a-configuration-for-iot-edge"></a>Een configuratie maken voor IoT Edge
 
-Voor beeld van opslag plaats:https://github.com/veyalla/edgearc
+Voor beeld van opslag plaats: https://github.com/veyalla/edgearc
 
 Deze opslag plaats verwijst naar het IoT Edge helm-diagram en verwijst naar het geheim dat is gemaakt in de sectie vereisten.
 

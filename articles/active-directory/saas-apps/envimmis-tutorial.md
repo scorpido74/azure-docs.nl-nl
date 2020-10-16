@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: aababc6ffd84540b99ba68f6bbb449d2aa78ed4b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1eb408025a45f09a6bdb854f4379a560842ef2d7
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551741"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826275"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-envi-mmis"></a>Zelfstudie: Azure Active Directory-integratie met Envi MMIS
 
@@ -99,7 +99,7 @@ Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding wilt configurer
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
 
-    ![Informatie over eenmalige aanmelding van domeinen en URL's van Envi MMIS](common/idp-intiated.png)
+    ![Schermopname toont de 'Basic SAML-configuratie' waarin de knoppen 'Id', 'Antwoord-URL' en 'Opslaan ' zijn gemarkeerd.](common/idp-intiated.png)
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://www.<CUSTOMER DOMAIN>.com/Account`
 
@@ -134,23 +134,23 @@ Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding wilt configurer
 
 2. Klik op het tabblad **My Domain**.
 
-    ![De knop voor enkelvoudige aanmelding configureren](./media/envimmis-tutorial/configure1.png)
+    ![Schermopname toont het menu 'Gebruiker' met 'Mijn domein' geselecteerd.](./media/envimmis-tutorial/configure1.png)
 
 3. Klik op **Bewerken**.
 
-    ![De knop voor enkelvoudige aanmelding configureren](./media/envimmis-tutorial/configure2.png)
+    ![Schermopname toont de geselecteerde knop 'Bewerken'.](./media/envimmis-tutorial/configure2.png)
 
 4. Schakel het selectievakje **Use remote authentication** in en selecteer vervolgens **HTTP Redirect** in de vervolgkeuzelijst **Authentication Type**.
 
-    ![De knop voor enkelvoudige aanmelding configureren](./media/envimmis-tutorial/configure3.png)
+    ![Schermopname toont het tabblad 'Details' met de optie 'Externe verificatie gebruiken' aangevinkt en 'H T T P omleiding' geselecteerd.](./media/envimmis-tutorial/configure3.png)
 
 5. Selecteer het tabblad **Resources** en klik op **Upload Metadata**.
 
-    ![De knop voor enkelvoudige aanmelding configureren](./media/envimmis-tutorial/configure4.png)
+    ![Schermopname toont het tabblad 'Resources' waarop de actie 'Metagegevens uploaden ' is geselecteerd.](./media/envimmis-tutorial/configure4.png)
 
 6. Voer in het pop-upvenster **Upload Metadata** de volgende stappen uit:
 
-    ![De knop voor enkelvoudige aanmelding configureren](./media/envimmis-tutorial/configure5.png)
+    ![Schermopname toont de pop-up 'Metagegevens uploaden', waarin de optie 'Bestand' is geselecteerd en het pictogram 'Bestand kiezen' en de button zijn 'OK' gemarkeerd.](./media/envimmis-tutorial/configure5.png)
 
     a. Selecteer de optie **File** in de vervolgkeuzelijst **Upload From**.
 
@@ -223,11 +223,11 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Envi MMIS, moeten z
 
 2. Klik op het tabblad **User List**.
 
-    ![Werknemer toevoegen](./media/envimmis-tutorial/user1.png)
+    ![Schermopname toont het menu 'Gebruiker' met 'Mijn domein' geselecteerd.](./media/envimmis-tutorial/user1.png)
 
 3. Klik op de knop **Add User**.
 
-    ![Werknemer toevoegen](./media/envimmis-tutorial/user2.png)
+    ![Schermopname toont de sectie 'Gebruikers' met 'Gebruiker toevoegen' geselecteerd.](./media/envimmis-tutorial/user2.png)
 
 4. Voer in de sectie **Add User** de volgende stappen uit:
 

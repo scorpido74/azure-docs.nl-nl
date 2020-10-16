@@ -13,10 +13,10 @@ ms.author: jaszymas
 ms.reviewer: vanto, emlisa
 ms.date: 09/21/2020
 ms.openlocfilehash: f0ebd511d0b706d1d2066ea87f45c89ae536da69
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91321421"
 ---
 # <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>Een overzicht van de beveiligings mogelijkheden van Azure SQL Database en SQL Managed instance
@@ -75,9 +75,9 @@ Maak als best practice aangepaste rollen wanneer dat nodig is. Voeg gebruikers t
 
 ### <a name="row-level-security"></a>Beveiliging op rijniveau
 
-Met beveiliging op rijniveau kunnen klanten de toegang tot rijen in een database tabel beheren op basis van de kenmerken van de gebruiker die een query uitvoert (bijvoorbeeld groepslid maatschap of uitvoerings context). Beveiliging op rijniveau kan ook worden gebruikt voor het implementeren van op aangepaste labels gebaseerde beveiligings concepten. Zie [beveiliging op rijniveau](/sql/relational-databases/security/row-level-security)voor meer informatie.
+Met Row-Level Security kunnen klanten de toegang tot rijen in een database tabel beheren op basis van de kenmerken van de gebruiker die een query uitvoert (bijvoorbeeld groepslid maatschap of uitvoerings context). Row-Level beveiliging kan ook worden gebruikt voor het implementeren van op aangepaste labels gebaseerde beveiligings concepten. Zie [beveiliging op rijniveau](/sql/relational-databases/security/row-level-security)voor meer informatie.
 
-![Diagram waarin wordt getoond dat de beveiliging op rijniveau Shields afzonderlijke rijen van een SQL database van toegang door gebruikers via een client-app.](./media/security-overview/azure-database-rls.png)
+![Diagram waarin wordt weer gegeven dat Row-Level beveiligings Shields afzonderlijke rijen van een SQL database van toegang door gebruikers via een client-app.](./media/security-overview/azure-database-rls.png)
 
 ## <a name="threat-protection"></a>Bescherming tegen bedreigingen
 

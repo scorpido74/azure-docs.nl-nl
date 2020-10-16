@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 10/29/2019
 ms.author: Zhchia
 ms.openlocfilehash: b78de4769f49954c4d4e860e75818f6485247a17
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91305627"
 ---
 # <a name="tutorial-configure-harness-for-automatic-user-provisioning"></a>Zelf studie: harnas configureren voor automatische gebruikers inrichting
@@ -45,7 +45,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
 * We raden u aan één Azure AD-gebruiker toe te wijzen om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers of groepen kunnen later worden toegewezen.
 
-* Wanneer u een gebruiker toewijst aan de harnas, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster **toewijzing** . Gebruikers met de rol *Standaard toegang* worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker toewijst aan de harnas, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster **toewijzing** . Gebruikers met de rol *Standaardtoegang* worden uitgesloten van het inrichten.
 
 ## <a name="set-up-harness-for-provisioning"></a>Harnas instellen voor inrichting
 

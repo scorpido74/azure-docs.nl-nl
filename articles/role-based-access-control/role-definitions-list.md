@@ -15,15 +15,15 @@ ms.date: 06/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 9819b90ba390e8601cc33a17338ce9b16bf3b3cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84982489"
 ---
 # <a name="list-azure-role-definitions"></a>Definities van Azure-rollen weer geven
 
-Een roldefinitie is een verzameling machtigingen die kan worden uitgevoerd, zoals lezen, schrijven en verwijderen. Normaal gesp roken wordt gewoon een rol genoemd. [Toegangs beheer op basis van rollen (Azure RBAC) van Azure](overview.md) heeft meer dan 120 [ingebouwde rollen](built-in-roles.md) of u kunt uw eigen aangepaste rollen maken. In dit artikel wordt beschreven hoe u de ingebouwde en aangepaste rollen vermeldt die u kunt gebruiken om toegang te verlenen tot Azure-resources.
+Een roldefinitie is een verzameling machtigingen die kan worden uitgevoerd, zoals lezen, schrijven en verwijderen. Het wordt meestal gewoon een rol genoemd. [Toegangs beheer op basis van rollen (Azure RBAC) van Azure](overview.md) heeft meer dan 120 [ingebouwde rollen](built-in-roles.md) of u kunt uw eigen aangepaste rollen maken. In dit artikel wordt beschreven hoe u de ingebouwde en aangepaste rollen vermeldt die u kunt gebruiken om toegang te verlenen tot Azure-resources.
 
 Zie [beheerders rollen in azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md)voor een overzicht van de beheerders rollen voor Azure Active Directory.
 
@@ -356,7 +356,7 @@ Als u roldefinities wilt weer geven, gebruikt u de [functie definities-lijst](/r
 1. Vervang *{filter}* door de voor waarde die u wilt Toep assen om de lijst met functie definities te filteren.
 
     > [!div class="mx-tableFixed"]
-    > | Filteren | Description |
+    > | Filter | Beschrijving |
     > | --- | --- |
     > | `$filter=atScopeAndBelow()` | Hiermee worden roldefinities voor het opgegeven bereik en eventuele subbereiken weer gegeven. |
     > | `$filter=type+eq+'{type}'` | Hiermee wordt een lijst met roldefinities van het opgegeven type weer gegeven. Type rol kan of zijn `CustomRole` `BuiltInRole` . |
@@ -476,7 +476,7 @@ Hieronder ziet u een voor beeld van de uitvoer:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Ingebouwde rollen van Azure](built-in-roles.md)
+- [Ingebouwde Azure-rollen](built-in-roles.md)
 - [Aangepaste Azure-rollen](custom-roles.md)
 - [Azure-roltoewijzingen weer geven met behulp van de Azure Portal](role-assignments-list-portal.md)
-- [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de Azure Portal](role-assignments-portal.md)
+- [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de Azure-portal](role-assignments-portal.md)

@@ -9,14 +9,14 @@ author: clauren42
 ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 08/06/2020
-ms.topic: conceptual
-ms.custom: troubleshooting, contperfq4, devx-track-python
-ms.openlocfilehash: 82b9db2f3575e50367ed154246f9fb69b74c60cf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.topic: troubleshooting
+ms.custom: contperfq4, devx-track-python, deploy
+ms.openlocfilehash: 259b5c789d2323dbc797116cf0d09045811a6873
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333769"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073339"
 ---
 # <a name="troubleshoot-docker-deployment-of-models-with-azure-kubernetes-service-and-azure-container-instances"></a>Problemen met docker-implementatie van modellen met Azure Kubernetes service en Azure Container Instances 
 
@@ -199,7 +199,7 @@ Gebruik de informatie in de sectie [het docker-logbestand controleren](#dockerlo
 
 ## <a name="function-fails-get_model_path"></a>De functie is mislukt: get_model_path ()
 
-Vaak wordt de functie `init()` [model. get_model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-model-path-model-name--version-none---workspace-none-) in de functie van het Score script aangeroepen om een model bestand of een map met model bestanden in de container te vinden. Als het model bestand of de map niet kan worden gevonden, mislukt de functie. De eenvoudigste manier om deze fout op te lossen is door de onderstaande python-code uit te voeren in de container shell:
+Vaak wordt de functie `init()` [model.get_model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-model-path-model-name--version-none---workspace-none-) van de functie in het Score script aangeroepen om een model bestand of een map met model bestanden in de container te vinden. Als het model bestand of de map niet kan worden gevonden, mislukt de functie. De eenvoudigste manier om deze fout op te lossen is door de onderstaande python-code uit te voeren in de container shell:
 
 ```python
 from azureml.core.model import Model

@@ -9,10 +9,10 @@ ms.date: 03/19/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: e85dc8c079205484db9b7b7c43a0086f69feb3be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80059932"
 ---
 ## <a name="create-a-self-signed-root-certificate"></a><a name="rootcert"></a>Een zelfondertekend basis certificaat maken
@@ -36,7 +36,7 @@ Op elke clientcomputer die via punt-naar-site verbinding maakt met een VNet, moe
 
 De volgende stappen helpen u bij het genereren van een client certificaat van een zelfondertekend basis certificaat. U kunt meerdere client certificaten genereren uit hetzelfde basis certificaat. Wanneer u client certificaten genereert met behulp van de onderstaande stappen, wordt het client certificaat automatisch geïnstalleerd op de computer die u hebt gebruikt voor het genereren van het certificaat. Als u een client certificaat op een andere client computer wilt installeren, kunt u het certificaat exporteren.
 
-In de voor beelden wordt de cmdlet New-SelfSignedCertificate gebruikt om een client certificaat te genereren dat binnen een jaar verloopt. Zie [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate)voor meer informatie over para meters, zoals het instellen van een andere verloop waarde voor het client certificaat.
+In de voor beelden wordt de New-SelfSignedCertificate-cmdlet gebruikt om een client certificaat te genereren dat binnen een jaar verloopt. Zie [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate)voor meer informatie over para meters, zoals het instellen van een andere verloop waarde voor het client certificaat.
 
 ### <a name="example-1---powershell-console-session-still-open"></a>Voor beeld 1: Power shell-console sessie is nog geopend
 

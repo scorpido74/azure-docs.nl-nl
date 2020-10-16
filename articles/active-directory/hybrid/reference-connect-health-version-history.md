@@ -17,10 +17,10 @@ ms.date: 08/10/2020
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e7653f850edc910fc78b14a628b87dcb22aeb903
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89279411"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Versiegeschiedenis van status Azure AD Connect
@@ -93,7 +93,7 @@ Azure AD Connect Health voor synchronisatie is geïntegreerd met Azure AD Connec
 
 * Azure AD Connect Health Agent voor AD FS (versie 3.1.24.0)  
    1. Compatibiliteit en afdwinging van Protocol versie 1,2 van Transport Layer Security (TLS)
-   2. Ondersteuning van test-ADFSRequestToken voor gelokaliseerd besturings systeem
+   2. Ondersteuning van Test-ADFSRequestToken voor gelokaliseerd besturings systeem
    3. Probleem met het oplossen van problemen met de diagnostische agent is opgelost
    4. Fout oplossingen voor registratie van Health Agent
 

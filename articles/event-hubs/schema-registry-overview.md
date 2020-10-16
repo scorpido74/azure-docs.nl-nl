@@ -4,12 +4,12 @@ description: In dit artikel wordt een overzicht gegeven van de ondersteuning voo
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: a0cc54f6ada1a5900e817c8e22fc192cd73f6550
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 30ef2f102a4b8d9f9908ba915f179889710bafd0
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91653567"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938794"
 ---
 # <a name="azure-schema-registry-in-event-hubs-preview"></a>Azure Schema Registry in Event Hubs (preview)
 In veel scenario's voor het streamen van gebeurtenissen en voor het verzenden van berichten bevat de gebeurtenis of het bericht een nettolading d die gestructureerde gegevens bevat die worden geserialiseerd of gedeserialiseerd met behulp van een indeling die is gebaseerd op een schema, zoals Apache Avro. Zowel afzenders als ontvangers willen mogelijk de integriteit van de gegevens valideren met een schemadocument, zoals bij het JSON-schema. Voor indelingen die zijn gebaseerd op een schema is het een vereiste dat het schema voor de gebruiker van berichten beschikbaar wordt gemaakt zodat deze de gegevens kan deserialiseren. 
@@ -41,7 +41,7 @@ U kunt een van de volgende bibliotheken gebruiken die een AVRO-serialisatieprogr
 - [Java: azure-data-schemaregistry-avro](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/schemaregistry/azure-data-schemaregistry-avro/)
 - [Python: azure-schemaregistry-avroserializer](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/schemaregistry/azure-schemaregistry-avroserializer)
 - [JavaScript: @azure/schema-registry-avro](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/schemaregistry/schema-registry-avro)
-- [Apache Kafka](https://github.com/Azure/azure-schema-registry-for-kafka/tree/master/avro/samples): voer met Kafka geïntegreerde Apache Avro-programma's voor serialisatie en deserialisatie uit die worden ondersteund door het Azure-schemaregister. Het Apache Kafka-clientserialisatieprogramma van de Java-client voor het Azure-schemaregister kan in elk Apache Kafka-scenario en met elke Apache Kafka®-implementatie of cloudservice worden gebruikt. 
+- [Apache Kafka](https://github.com/Azure/azure-schema-registry-for-kafka/): voer met Kafka geïntegreerde Apache Avro-programma's voor serialisatie en deserialisatie uit die worden ondersteund door het Azure-schemaregister. Het Apache Kafka-clientserialisatieprogramma van de Java-client voor het Azure-schemaregister kan in elk Apache Kafka-scenario en met elke Apache Kafka®-implementatie of cloudservice worden gebruikt. 
 
 In de volgende afbeelding ziet u de informatiestroom van het schemaregister bij Event Hubs: 
 
@@ -70,4 +70,4 @@ Zie [Een app registreren bij Microsoft Azure Active Directory](../active-directo
     - [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/schemaregistry/azure-data-schemaregistry-avro/src/samples)
     - [JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/schemaregistry/schema-registry-avro/samples )
     - [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/schemaregistry/azure-schemaregistry-avroserializer/samples )
-    - [Kafka Avro-integratie voor het Azure-schemaregister](https://github.com/Azure/azure-schema-registry-for-kafka/tree/master/avro/samples)
+    - [Kafka Avro-integratie voor het Azure-schemaregister](https://github.com/Azure/azure-schema-registry-for-kafka/tree/master/csharp/avro/samples)

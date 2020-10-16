@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b78d3cab17b0cc4085c824cf35d4c6037f0e2af5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319857"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: upgraden van een vorige naar de meest recente versie
@@ -131,7 +131,7 @@ Er zijn mogelijk situaties waarin u niet wilt dat deze onderdrukkingen onmiddell
 5. Voer de volgende cmdlet uit om de scheduler te hervatten: `Set-ADSyncScheduler -SyncCycleEnabled $true`
 
    >[!IMPORTANT]
-   > Vergeet niet om de vereiste synchronisatie stappen zo snel mogelijk uit te voeren. U kunt deze stappen hand matig uitvoeren met de Synchronization Service Manager of de onderdrukkingen opnieuw toevoegen met behulp van de cmdlet Set-ADSyncSchedulerConnectorOverride.
+   > Vergeet niet om de vereiste synchronisatie stappen zo snel mogelijk uit te voeren. U kunt deze stappen hand matig uitvoeren met de Synchronization Service Manager of de onderdrukkingen opnieuw toevoegen met de Set-ADSyncSchedulerConnectorOverride-cmdlet.
 
 Voer de volgende cmdlet uit om de onderdrukkingen voor zowel volledige import als volledige synchronisatie van een wille keurige connector toe te voegen:  `Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid> -FullImportRequired $true -FullSyncRequired $true`
 

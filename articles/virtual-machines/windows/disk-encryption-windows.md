@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 951c1fd89f9e943b72c32492ff40dae3bd07bb61
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: cf7e596c8ed057a3244ed2b12de59d02c4ba2cae
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88794480"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977932"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Azure Disk Encryption-scenario's voor Windows-VM's
 
@@ -44,7 +44,7 @@ In dit scenario kunt u versleuteling inschakelen met behulp van de Resource Mana
 ### <a name="enable-encryption-on-existing-or-running-vms-with-azure-powershell"></a>Versleuteling inschakelen op bestaande of actieve Vm's met Azure PowerShell 
 Gebruik de cmdlet [set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) om versleuteling in te scha kelen op een actieve IaaS-virtuele machine in Azure. 
 
--  **Een actieve VM versleutelen:** Het onderstaande script initialiseert uw variabelen en voert de cmdlet Set-AzVMDiskEncryptionExtension uit. De resource groep, de virtuele machine en de sleutel kluis moeten al zijn gemaakt als vereisten. Vervang MyKeyVaultResourceGroup, MyVirtualMachineResourceGroup, MySecureVM en MySecureVault door uw waarden.
+-  **Een actieve VM versleutelen:** Het onderstaande script initialiseert uw variabelen en voert de Set-AzVMDiskEncryptionExtension-cmdlet uit. De resource groep, de virtuele machine en de sleutel kluis moeten al zijn gemaakt als vereisten. Vervang MyKeyVaultResourceGroup, MyVirtualMachineResourceGroup, MySecureVM en MySecureVault door uw waarden.
 
      ```azurepowershell
       $KVRGname = 'MyKeyVaultResourceGroup';
@@ -188,11 +188,11 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
 U kunt [een nieuwe schijf toevoegen aan een Windows-VM met behulp van Power shell](attach-disk-ps.md)of [via de Azure Portal](attach-managed-disk-portal.md). 
 
 ### <a name="enable-encryption-on-a-newly-added-disk-with-azure-powershell"></a>Versleuteling inschakelen op een nieuw toegevoegde schijf met Azure PowerShell
- Wanneer u Power shell gebruikt om een nieuwe schijf voor Windows-Vm's te versleutelen, moet u een nieuwe reeks versie opgeven. De reeks versie moet uniek zijn. In het onderstaande script wordt een GUID voor de reeks versie gegenereerd. In sommige gevallen kan een nieuw toegevoegde gegevens schijf automatisch worden versleuteld door de extensie Azure Disk Encryption. Automatische versleuteling vindt doorgaans plaats wanneer de virtuele machine opnieuw wordt opgestart nadat de nieuwe schijf online is. Dit wordt meestal veroorzaakt doordat ' all ' is opgegeven voor het volume type wanneer schijf versleuteling eerder is uitgevoerd op de virtuele machine. Als Automatische versleuteling op een nieuw toegevoegde gegevens schijf plaatsvindt, raden we u aan om de cmdlet Set-AzVmDiskEncryptionExtension opnieuw uit te voeren met een nieuwe reeks versie. Als uw nieuwe gegevens schijf automatisch versleuteld is en u niet wilt versleutelen, moet u eerst alle stations ontsleutelen en vervolgens opnieuw versleutelen met een nieuwe reeks versie die het besturings systeem specificeert voor het volume type. 
+ Wanneer u Power shell gebruikt om een nieuwe schijf voor Windows-Vm's te versleutelen, moet u een nieuwe reeks versie opgeven. De reeks versie moet uniek zijn. In het onderstaande script wordt een GUID voor de reeks versie gegenereerd. In sommige gevallen kan een nieuw toegevoegde gegevens schijf automatisch worden versleuteld door de extensie Azure Disk Encryption. Automatische versleuteling vindt doorgaans plaats wanneer de virtuele machine opnieuw wordt opgestart nadat de nieuwe schijf online is. Dit wordt meestal veroorzaakt doordat ' all ' is opgegeven voor het volume type wanneer schijf versleuteling eerder is uitgevoerd op de virtuele machine. Als Automatische versleuteling op een nieuw toegevoegde gegevens schijf plaatsvindt, raden we u aan om de Set-AzVmDiskEncryptionExtension-cmdlet opnieuw uit te voeren met een nieuwe reeks versie. Als uw nieuwe gegevens schijf automatisch versleuteld is en u niet wilt versleutelen, moet u eerst alle stations ontsleutelen en vervolgens opnieuw versleutelen met een nieuwe reeks versie die het besturings systeem specificeert voor het volume type. 
   
  
 
--  **Een actieve VM versleutelen:** Het onderstaande script initialiseert uw variabelen en voert de cmdlet Set-AzVMDiskEncryptionExtension uit. De resource groep, de virtuele machine en de sleutel kluis moeten al zijn gemaakt als vereisten. Vervang MyKeyVaultResourceGroup, MyVirtualMachineResourceGroup, MySecureVM en MySecureVault door uw waarden. In dit voor beeld wordt ' all ' gebruikt voor de para meter-VolumeType, waarin zowel het besturings systeem als de gegevens volumes zijn opgenomen. Als u alleen het volume van het besturings systeem wilt versleutelen, gebruikt u ' OS ' voor de para meter-VolumeType. 
+-  **Een actieve VM versleutelen:** Het onderstaande script initialiseert uw variabelen en voert de Set-AzVMDiskEncryptionExtension-cmdlet uit. De resource groep, de virtuele machine en de sleutel kluis moeten al zijn gemaakt als vereisten. Vervang MyKeyVaultResourceGroup, MyVirtualMachineResourceGroup, MySecureVM en MySecureVault door uw waarden. In dit voor beeld wordt ' all ' gebruikt voor de para meter-VolumeType, waarin zowel het besturings systeem als de gegevens volumes zijn opgenomen. Als u alleen het volume van het besturings systeem wilt versleutelen, gebruikt u ' OS ' voor de para meter-VolumeType. 
 
      ```azurepowershell
       $KVRGname = 'MyKeyVaultResourceGroup';
@@ -262,7 +262,7 @@ Azure Disk Encryption werkt niet voor de volgende scenario's, functies en techno
 - Versleuteling van gedeelde/gedistribueerde bestands systemen zoals (maar niet beperkt tot) DFS, GFS, DRDB en CephFS.
 - Een versleutelde virtuele machine verplaatsen naar een ander abonnement of nieuwe regio.
 - Een installatie kopie of moment opname van een versleutelde virtuele machine maken en deze gebruiken voor het implementeren van extra Vm's.
-- Gen2 Vm's (zie: [ondersteuning voor virtuele machines van generatie 2 op Azure](generation-2.md#generation-1-vs-generation-2-capabilities))
+- Gen2 Vm's (zie: [ondersteuning voor virtuele machines van generatie 2 op Azure](../generation-2.md#generation-1-vs-generation-2-capabilities))
 - Vm's uit de M-serie met Write Accelerator-schijven.
 - ADE Toep assen op een virtuele machine met schijven die zijn versleuteld met versleuteling aan de [server zijde met door de klant beheerde sleutels](disk-encryption.md) (SSE + CMK). Het Toep assen van SSE en CMK op een gegevens schijf op een virtuele machine die is versleuteld met ADE, is ook een niet-ondersteund scenario.
 - Migratie van een VM die is versleuteld met ADE of **ooit** is versleuteld met ADE, voor versleuteling aan de [server zijde met door de klant beheerde sleutels](disk-encryption.md).

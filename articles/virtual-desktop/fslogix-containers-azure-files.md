@@ -7,15 +7,15 @@ ms.date: 08/07/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 669f4baa723b78b8933f3a75fc361c468f9e2df9
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88002388"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix-profielcontainers en Azure Files
 
-De Windows Virtual Desktop-service beveelt FSLogix-profiel containers aan als een gebruikers profiel oplossing. FSLogix is ontworpen om profielen te roamen in omgevingen met externe computers, zoals Windows Virtual Desktop. Een volledig gebruikersprofiel wordt opgeslagen in één container. Bij het aanmelden wordt deze container dynamisch gekoppeld aan de computer omgeving met behulp van systeem eigen ondersteunde virtuele harde schijven (VHD) en Hyper-V virtuele harde schijf (VHDX). Het gebruikers profiel is onmiddellijk beschikbaar en wordt in het systeem weer gegeven op dezelfde manier als een systeem eigen gebruikers profiel. In dit artikel wordt beschreven hoe FSLogix-profiel containers die worden gebruikt met Azure Files functie in Windows virtueel bureau blad.
+De Windows Virtual Desktop-service beveelt FSLogix-profiel containers aan als een gebruikers profiel oplossing. FSLogix is ontworpen om profielen te roamen in omgevingen met externe computers, zoals Windows Virtual Desktop. Een volledig gebruikersprofiel wordt opgeslagen in één container. Bij het aanmelden wordt deze container dynamisch gekoppeld aan de computer omgeving met behulp van systeem eigen ondersteunde virtuele harde schijven (VHD) en Hyper-V virtuele harde schijf (VHDX). Het gebruikersprofiel is onmiddellijk beschikbaar en wordt in het systeem op dezelfde manier weergegeven als een systeemeigen gebruikersprofiel. In dit artikel wordt beschreven hoe FSLogix-profiel containers die worden gebruikt met Azure Files functie in Windows virtueel bureau blad.
 
 >[!NOTE]
 >Zie [opslag opties voor FSLogix-profiel containers](store-fslogix-profile.md)als u op zoek bent naar het vergelijkings materiaal over de verschillende FSLogix-profiel container opslag opties in Azure.
@@ -45,7 +45,7 @@ Bestaande en verouderde micro soft-oplossingen voor gebruikers profielen zijn me
 
 In de volgende tabel worden de voor delen en beperkingen van eerdere gebruikers profiel technologieën weer gegeven.
 
-| Technologie | Moderne instellingen | Win32-instellingen | BESTURINGSSYSTEEM instellingen | Gebruikersgegevens | Ondersteund op de server-SKU | Back-end-opslag in azure | On-premises back-end-opslag | Versie ondersteuning | Volgende aanmeldings tijd |Opmerkingen|
+| Technologie | Moderne instellingen | Win32-instellingen | BESTURINGSSYSTEEM instellingen | Gebruikersgegevens | Ondersteund op de server-SKU | Back-end-opslag in azure | On-premises back-end-opslag | Versie ondersteuning | Volgende aanmeldings tijd |Notities|
 | ---------- | :-------------: | :------------: | :---------: | --------: | :---------------------: | :-----------------------: | :--------------------------: | :-------------: | :---------------------: |-----|
 | **Gebruikers profiel schijven (UDP)** | Ja | Ja | Ja | Ja | Ja | Nee | Ja | Win 7 + | Ja | |
 | **Zwervend gebruikers profiel (ZWERVENDE gebruikers profielen), onderhouds modus** | Nee | Ja | Ja | Ja | Ja| Nee | Ja | Win 7 + | Nee | |

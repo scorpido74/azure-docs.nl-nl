@@ -1,6 +1,6 @@
 ---
 title: Woorden lijst Azure Maps | Microsoft Docs
-description: Een verklarende woorden lijst met veelgebruikte termen die zijn gekoppeld aan Azure Maps, op locatie gebaseerde services en GIS.
+description: Een verklarende woorden lijst met veelgebruikte termen die zijn gekoppeld aan Azure Maps, Location-Based Services en GIS.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 09/18/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 4c3e6216c172b0ba1273fea1690c030a05f4c456
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 831fc28711a181d45a8c69e3f46056604b30649e
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83742220"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089465"
 ---
 # <a name="glossary"></a>Woordenlijst
 
@@ -53,7 +53,7 @@ In de volgende lijst worden veelvoorkomende woorden beschreven die worden gebrui
 
 <a name="azure-location-based-services-lbs"></a>**Azure Location Based Services (lbs)**: de oude naam van Azure Maps bij de preview-versie.
 
-<a name="azure-active-directory"></a>**Azure Active Directory (Azure AD)**: Azure AD is de cloud-gebaseerde service voor identiteits-en toegangs beheer van micro soft. Azure Maps Azure AD-integratie is momenteel beschikbaar als preview-versie voor alle Azure Maps-Api's. Azure AD biedt ondersteuning voor op rollen gebaseerd toegangs beheer (RBAC) voor het toestaan van verfijnde toegang tot Azure Maps-resources. Zie [Azure Maps en Azure AD](azure-maps-authentication.md) en [verificatie beheren in azure Maps](how-to-manage-authentication.md)voor meer informatie over Azure Maps Azure AD-integratie.
+<a name="azure-active-directory"></a>**Azure Active Directory (Azure AD)**: Azure AD is de cloud-gebaseerde service voor identiteits-en toegangs beheer van micro soft. Azure Maps Azure AD-integratie is momenteel beschikbaar als preview-versie voor alle Azure Maps-Api's. Azure AD biedt ondersteuning voor op rollen gebaseerd toegangs beheer (Azure RBAC) voor Azure om de toegang tot Azure Maps resources te verfijnen. Zie [Azure Maps en Azure AD](azure-maps-authentication.md) en [verificatie beheren in azure Maps](how-to-manage-authentication.md)voor meer informatie over Azure Maps Azure AD-integratie.
 
 <a name="azure-maps-key"></a>**Azure Maps sleutel**: Zie [verificatie van gedeelde sleutel](#shared-key-authentication).
 

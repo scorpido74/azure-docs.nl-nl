@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 339273c091a1bcfc4f2de66ef2f79ea8cebbc49b
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86026046"
 ---
 # <a name="sample-data-in-azure-hdinsight-hive-tables"></a>Voorbeeldgegevens in Hive-tabellen in Azure HDInsight
@@ -31,9 +31,9 @@ Als de gegevensset die u wilt analyseren groot is, is het doorgaans een goed ide
 Deze steekproef taak is een stap in het [team data Science process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
 ## <a name="how-to-submit-hive-queries"></a>Hive-query's verzenden
-Hive-query's kunnen worden verzonden vanuit de Hadoop-opdracht regel console op het hoofd knooppunt van het Hadoop-cluster.  Meld u aan bij het hoofd knooppunt van het Hadoop-cluster, open de Hadoop-opdracht regel console en verzend de Hive-query's. Zie [Hive-Query's verzenden](move-hive-tables.md#submit)voor instructies over het verzenden van Hive-query's in de Hadoop-opdracht regel console.
+Hive-query's kunnen worden verzonden vanuit de Hadoop Command-Line-console op het hoofd knooppunt van het Hadoop-cluster.  Meld u aan bij het hoofd knooppunt van het Hadoop-cluster, open de Hadoop Command-Line-console en verzend de Hive-query's. Zie [Hive-Query's verzenden](move-hive-tables.md#submit)voor instructies over het verzenden van Hive-query's in de Hadoop Command-Line-console.
 
-## <a name="uniform-random-sampling"></a><a name="uniform"></a>Uniforme aselecte steek proef
+## <a name="uniform-random-sampling"></a><a name="uniform"></a> Uniforme aselecte steek proef
 Uniforme wille keurige steek proeven betekenen dat elke rij in de gegevensset een gelijke kans heeft om te worden steek proeven. Het kan worden geïmplementeerd door een extra veld ASELECT () toe te voegen aan de gegevensset in de binnenste ' Select '-query en in de buitenste ' Select ' query die voor waarde voor dat wille keurig veld.
 
 Hier volgt een voorbeeld van een query:
@@ -53,7 +53,7 @@ where samplekey<='${hiveconf:sampleRate}'
 
 Hier `<sample rate, 0-1>` geeft u het aandeel van records op waarmee de gebruikers willen steek proeven.
 
-## <a name="random-sampling-by-groups"></a><a name="group"></a>Wille keurige steek proeven per groep
+## <a name="random-sampling-by-groups"></a><a name="group"></a> Wille keurige steek proeven per groep
 Bij het bemonsteren van categorische-gegevens wilt u mogelijk alle instanties opnemen of uitsluiten voor een bepaalde waarde van de variabele categorische. Deze soort steek proef wordt ' steek proef op groep ' genoemd. Als u bijvoorbeeld een categorische-variabele '*State*' hebt, die waarden bevat zoals NY, ma, CA, NJ en PA, wilt u dat records uit elke staat samen komen, ongeacht of ze worden bemonsterd of niet.
 
 Hier volgt een voor beeld van een query die voor beelden per groep bevat:

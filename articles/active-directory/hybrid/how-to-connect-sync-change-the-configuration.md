@@ -13,10 +13,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 07c1405482f107e370327ffbc049c77f483c29bd
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89662577"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect synchronisatie: een wijziging in de standaard configuratie aanbrengen
@@ -181,7 +181,7 @@ De out-of-Box Sync-regels beginnen met een prioriteits waarde van 100. Als u vee
 
 U kunt de synchronisatie-engine instrueren dat u aanvullende regels wilt invoegen vóór de out-of-Box-regels. Voer de volgende stappen uit om dit gedrag te verkrijgen:
 
-1. Markeer de eerste out-of-Box-synchronisatie regel (**in van de AD-gebruikers koppeling**) in de editor voor synchronisatie regels en selecteer **exporteren**. Kopieer de waarde voor de SR-id.  
+1. Markeer de eerste out-of-Box-synchronisatie regel (**in vanuit AD-User-koppeling**) in de editor voor synchronisatie regels en selecteer **exporteren**. Kopieer de waarde voor de SR-id.  
 ![Power shell vóór wijziging](./media/how-to-connect-sync-change-the-configuration/powershell1.png)  
 2. Maak de nieuwe synchronisatie regel. U kunt de editor voor synchronisatie regels gebruiken om deze te maken. Exporteer de regel naar een Power shell-script.
 3. In de eigenschap **PrecedenceBefore**voert u de id-waarde in van de out-of-Box-regel. Stel de **prioriteit** in op **0**. Zorg ervoor dat het kenmerk Identifier uniek is en dat u geen GUID van een andere regel opnieuw gebruikt. Zorg er ook voor dat de eigenschap **ImmutableTag** niet is ingesteld. Deze eigenschap moet alleen worden ingesteld voor een out-of-Box-regel.

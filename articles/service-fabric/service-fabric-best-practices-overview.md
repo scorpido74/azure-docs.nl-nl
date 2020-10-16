@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: pepogors
 ms.openlocfilehash: 86a02fd489ca0eec61b798db7136f963277f6c82
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86261084"
 ---
 # <a name="azure-service-fabric-application-and-cluster-best-practices"></a>Aanbevolen procedures voor Azure Service Fabric-toepassing en-cluster
@@ -29,7 +29,7 @@ Dit artikel bevat koppelingen naar aanbevolen procedures voor het beheren van Az
 * [Aanbevolen procedures voor reken schalen](service-fabric-best-practices-capacity-scaling.md)
 * [Planning van de berekening van de capaciteit](./service-fabric-cluster-capacity.md)
 
-## <a name="infrastructure-as-code"></a>Infrastructuur als code
+## <a name="infrastructure-as-code"></a>Infrastructure als code
 
 * [Aanbevolen procedures voor het implementeren van de infra structuur als code](service-fabric-best-practices-infrastructure-as-code.md)
 

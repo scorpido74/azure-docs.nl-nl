@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
 ms.openlocfilehash: 291a5850540ea7d7d24a4a544c1eb65183df8ffb
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91667738"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Aanbevolen procedures voor het gebruik van Azure Data Lake Storage Gen1
@@ -27,7 +27,7 @@ In dit artikel vindt u informatie over de aanbevolen procedures en overwegingen 
 
 Azure Data Lake Storage Gen1 biedt POSIX-toegangs controles en gedetailleerde controles voor Azure Active Directory (Azure AD)-gebruikers,-groepen en-service-principals. Deze toegangs elementen kunnen worden ingesteld op bestaande bestanden en mappen. De toegangs elementen kunnen ook worden gebruikt om standaard waarden te maken die kunnen worden toegepast op nieuwe bestanden of mappen. Wanneer machtigingen zijn ingesteld op bestaande mappen en onderliggende objecten, moeten de machtigingen recursief worden door gegeven aan elk object. Als er grote aantallen bestanden zijn, kan het door geven van de machtigingen lang duren. Hoe lang het duurt, kan variëren tussen 30-50 objecten die per seconde worden verwerkt. Plan daarom de mapstructuur en gebruikers groepen op de juiste manier. Als dat niet het geval is, kan dit leiden tot onverwachte vertragingen en problemen wanneer u met uw gegevens werkt.
 
-Stel dat u een map hebt met onderliggende 100.000-objecten. Als u de ondergrens van 30 objecten die per seconde worden verwerkt, bijwerkt, kan het een uur duren om de machtiging voor de hele map bij te werken. Meer informatie over Data Lake Storage Gen1 Acl's vindt u [in azure data Lake Storage gen1 voor toegangs beheer](data-lake-store-access-control.md). Voor betere prestaties bij het recursief toewijzen van Acl's, kunt u het opdracht regel programma Azure Data Lake gebruiken. Het hulp programma maakt meerdere threads en recursieve navigatie logica om snel Acl's toe te passen op miljoenen bestanden. Het hulp programma is beschikbaar voor Linux en Windows, en de [documentatie](https://github.com/Azure/data-lake-adlstool) en [down loads](https://aka.ms/adlstool-download) voor dit hulp programma vindt u op github. Deze dezelfde prestatie verbeteringen kunnen worden ingeschakeld door uw eigen hulpprogram ma's die zijn geschreven met de Data Lake Storage Gen1 [.net](data-lake-store-data-operations-net-sdk.md) -en [Java](data-lake-store-get-started-java-sdk.md) -sdk's.
+Stel dat u een map hebt met onderliggende 100.000-objecten. Als u de ondergrens van 30 objecten die per seconde worden verwerkt, bijwerkt, kan het een uur duren om de machtiging voor de hele map bij te werken. Meer informatie over Data Lake Storage Gen1 Acl's vindt u [in azure data Lake Storage gen1 voor toegangs beheer](data-lake-store-access-control.md). Voor betere prestaties bij het recursief toewijzen van Acl's, kunt u het hulp programma Azure Data Lake Command-Line gebruiken. Het hulp programma maakt meerdere threads en recursieve navigatie logica om snel Acl's toe te passen op miljoenen bestanden. Het hulp programma is beschikbaar voor Linux en Windows, en de [documentatie](https://github.com/Azure/data-lake-adlstool) en [down loads](https://aka.ms/adlstool-download) voor dit hulp programma vindt u op github. Deze dezelfde prestatie verbeteringen kunnen worden ingeschakeld door uw eigen hulpprogram ma's die zijn geschreven met de Data Lake Storage Gen1 [.net](data-lake-store-data-operations-net-sdk.md) -en [Java](data-lake-store-get-started-java-sdk.md) -sdk's.
 
 ### <a name="use-security-groups-versus-individual-users"></a>Beveiligings groepen gebruiken versus afzonderlijke gebruikers
 
@@ -102,7 +102,7 @@ Hieronder ziet u de belangrijkste drie aanbevolen opties voor het indelen van re
 |---------|---------|---------|---------|
 |**Schaal limieten**     | Begrensd door worker-knoop punten        | Beperkt door Max. eenheden voor gegevens verplaatsing in de Cloud        | Gebonden aan Analytics units        |
 |**Ondersteunt het kopiëren van verschillen**     |   Ja      | Nee         | Nee         |
-|**Ingebouwde indeling**     |  Nee (gebruik Oozie lucht flow of cron-taken)       | Yes        | Nee (gebruik Azure Automation of Windows Task Scheduler)         |
+|**Ingebouwde indeling**     |  Nee (gebruik Oozie lucht flow of cron-taken)       | Ja        | Nee (gebruik Azure Automation of Windows Task Scheduler)         |
 |**Ondersteunde bestands systemen**     | ADL, HDFS, WASB, S3, GS, CFS        |Talloze, Zie [connectors](../data-factory/connector-azure-blob-storage.md).         | ADL naar ADL, WASB op ADL (alleen voor dezelfde regio)        |
 |**Ondersteuning voor besturings systeem**     |Elk besturings systeem dat Hadoop uitvoert         | N.v.t.          | Windows 10         |
 

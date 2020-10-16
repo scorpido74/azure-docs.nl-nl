@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 10/07/2019
 ms.author: mlottner
 ms.openlocfilehash: d97fa4c3c57f6f0dcc5c55b76d839308156c40fb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936296"
 ---
 # <a name="azure-defender-for-iot-baseline-and-custom-checks"></a>Azure Defender voor IoT-basis lijn en aangepaste controles
@@ -62,7 +62,7 @@ Aangepaste controles voor basis lijn configureren:
 
 ## <a name="baseline-custom-check-properties"></a>Aangepaste controle-eigenschappen van basis lijn
 
-| Name| Status | Geldige waarden| Standaardwaarden| Description |
+| Naam| Status | Geldige waarden| Standaardwaarden| Beschrijving |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
 |baselineCustomChecksEnabled|Vereist: True |Geldige waarden: **Booleaans** |Standaard waarde: **False** |Het maximale tijds interval voor berichten met een hoge prioriteit wordt verzonden.|
 |baselineCustomChecksFilePath |Vereist: True|Geldige waarden: **teken reeks**, **Null** |Standaard waarde: **Null** |Volledig pad van de XML-configuratie voor basis lijn|

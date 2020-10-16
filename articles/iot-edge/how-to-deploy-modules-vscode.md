@@ -4,17 +4,17 @@ description: Gebruik Visual Studio code met de Azure IoT-Hulpprogram Ma's om een
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 01/8/2019
+ms.date: 10/13/2020
 ms.topic: conceptual
 ms.reviewer: ''
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e4ac1a6e56cdbf47fd174d5244fc6ab51c63fb07
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ccc87b1b3103e799a5974542de602090df8e1e4b
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82133884"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048386"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-visual-studio-code"></a>Azure IoT Edge-modules implementeren vanuit Visual Studio code
 
@@ -25,7 +25,10 @@ In dit artikel wordt beschreven hoe u een JSON-implementatie manifest maakt en d
 ## <a name="prerequisites"></a>Vereisten
 
 * Een [IOT-hub](../iot-hub/iot-hub-create-through-portal.md) in uw Azure-abonnement.
-* Een [IOT edge apparaat](how-to-register-device.md#register-with-visual-studio-code) waarop de IOT Edge-runtime is geïnstalleerd.
+* Een IoT Edge apparaat
+
+  Als u geen IoT Edge apparaat hebt ingesteld, kunt u er een maken in een virtuele Azure-machine. Volg de stappen in een van de Quick Start-artikelen voor het [maken van een virtueel Linux-apparaat](quickstart-linux.md) of [het maken van een virtueel Windows-apparaat](quickstart.md).
+
 * [Visual Studio Code](https://code.visualstudio.com/).
 * [Azure IOT-Hulpprogram ma's](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools#overview) voor Visual Studio code.
 
@@ -37,12 +40,15 @@ Als u modules wilt implementeren met Visual Studio code, slaat u het implementat
 
 Hier volgt een basis implementatie manifest met een module als voor beeld:
 
+>[!NOTE]
+>In dit voor beeld-implementatie manifest wordt schema versie 1,1 gebruikt voor de IoT Edge agent en hub. Schema versie 1,1 is uitgebracht samen met IoT Edge versie 1.0.10 en biedt functies als opstart volgorde voor modules en prioriteiten voor route ring.
+
    ```json
    {
      "modulesContent": {
        "$edgeAgent": {
          "properties.desired": {
-           "schemaVersion": "1.0",
+           "schemaVersion": "1.1",
            "runtime": {
              "type": "docker",
              "settings": {
@@ -85,7 +91,7 @@ Hier volgt een basis implementatie manifest met een module als voor beeld:
        },
        "$edgeHub": {
          "properties.desired": {
-           "schemaVersion": "1.0",
+           "schemaVersion": "1.1",
            "routes": {
                "route": "FROM /messages/* INTO $upstream"
            },

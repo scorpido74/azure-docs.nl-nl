@@ -8,10 +8,10 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 82114164d70eae71678e70ff2bdb7ea44a54d4cd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87076303"
 ---
 # <a name="security-control-logging-and-monitoring"></a>Beveiligings beheer: logboek registratie en controle
@@ -64,7 +64,7 @@ Diagnostische instellingen op Azure-resources inschakelen voor toegang tot contr
 
 | Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 2,4 | 6,2, 6,3 | Klant |
+| 2.4 | 6,2, 6,3 | Klant |
 
 Als de reken resource eigendom is van micro soft, is micro soft verantwoordelijk voor het bewaken van de bron. Als de reken resource eigendom is van uw organisatie, is het uw verantwoordelijkheid om deze te controleren. U kunt Azure Security Center gebruiken om het besturings systeem te bewaken. Gegevens die worden verzameld door Security Center van het besturings systeem zijn onder andere besturingssysteem type en-versie, besturings systeem (Windows-gebeurtenis Logboeken), actieve processen, computer naam, IP-adressen en aangemelde gebruiker. De Log Analytics-agent verzamelt ook crash dump bestanden.
 
@@ -76,7 +76,7 @@ Als de reken resource eigendom is van micro soft, is micro soft verantwoordelijk
 
 | Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 2.5 | 6.4 | Klant |
+| 2,5 | 6.4 | Klant |
 
 Stel binnen Azure Monitor uw Bewaar periode voor Log Analytics werk ruimte in volgens de nalevings voorschriften van uw organisatie. Gebruik Azure Storage-accounts voor lange termijn/archiverings opslag.
 
@@ -120,7 +120,7 @@ U kunt ook gegevens naar Azure-Sentinel inschakelen en op het bord zetten.
 
 | Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 2,8 | 8,6 | Klant |
+| 2.8 | 8,6 | Klant |
 
 Schakel de verzameling van antimalware-gebeurtenissen in voor Azure Virtual Machines en Cloud Services.
 
@@ -142,7 +142,7 @@ Implementeer een oplossing van derden van Azure Marketplace voor de DNS-registra
 
 | Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 2,10 | 8,8 | Klant |
+| 2.10 | 8,8 | Klant |
 
 Gebruik micro soft Monitoring Agent op alle ondersteunde virtuele machines van Azure Windows om de gebeurtenis voor het maken van processen en het veld CommandLine te registreren.   Voor ondersteunde virtuele machines van Azure Linux kunt u hand matig console logboek registratie configureren per knoop punt en syslog gebruiken om de gegevens op te slaan.  U kunt ook de werk ruimte Log Analytics van Azure Monitor gebruiken om logboeken te controleren en query's uit te voeren op geregistreerde gegevens van virtuele Azure-machines. 
 

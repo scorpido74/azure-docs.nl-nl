@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 611edb06762b96ded7671b70ec0f5d4f07f51848
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 78ea26adb8299cc13d4677c66a0e06cba901d9dc
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829081"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977371"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Extensies en functies van virtuele machines voor Windows
 
@@ -70,7 +70,7 @@ Uitbreidings pakketten worden gedownload uit de opslag plaats van de Azure Stora
 > [!IMPORTANT]
 > Als u de toegang tot *168.63.129.16* hebt geblokkeerd met behulp van de gast firewall of met een proxy, mislukt de extensies, ongeacht het bovenstaande. Poorten 80, 443 en 32526 zijn vereist.
 
-Agents kunnen alleen worden gebruikt voor het downloaden van uitbreidings pakketten en rapportage status. Als een extensie bijvoorbeeld een script moet downloaden van GitHub (aangepast script) of toegang moet hebben tot Azure Storage (Azure Backup), moeten er extra firewall/netwerk beveiligings groep poorten worden geopend. Verschillende uitbrei dingen hebben verschillende vereisten, omdat ze toepassingen in hun eigen recht zijn. Voor uitbrei dingen waarvoor toegang tot Azure Storage of Azure Active Directory vereist is, kunt u toegang tot opslag of AzureActiveDirectory via de [Azure NSG-service Tags](../../virtual-network/security-overview.md#service-tags) toestaan.
+Agents kunnen alleen worden gebruikt voor het downloaden van uitbreidings pakketten en rapportage status. Als een extensie bijvoorbeeld een script moet downloaden van GitHub (aangepast script) of toegang moet hebben tot Azure Storage (Azure Backup), moeten er extra firewall/netwerk beveiligings groep poorten worden geopend. Verschillende uitbrei dingen hebben verschillende vereisten, omdat ze toepassingen in hun eigen recht zijn. Voor uitbrei dingen waarvoor toegang tot Azure Storage of Azure Active Directory vereist is, kunt u toegang tot opslag of AzureActiveDirectory via de [Azure NSG-service Tags](../../virtual-network/network-security-groups-overview.md#service-tags) toestaan.
 
 De Windows-gast agent heeft geen proxyserver ondersteuning voor u om aanvragen voor agent verkeer om te leiden via. Dit betekent dat de Windows-gast agent afhankelijk is van uw aangepaste proxy (als u er een hebt) om toegang te krijgen tot bronnen op internet of op de host via IP-168.63.129.16.
 
@@ -254,7 +254,7 @@ Als u de opdracht verplaatst naar de eigenschap **Execute** naar de **beveiligde
 
 Op een Azure IaaS-VM die gebruikmaakt van extensies, ziet u in de console certificaten mogelijk certificaten met het onderwerp **_Windows Azure CRP Certificate Generator_**. Op een klassieke RDFE-VM hebben deze certificaten de object naam **_Windows Azure Service Management voor uitbrei dingen_**.
 
-Deze certificaten beveiligen de communicatie tussen de virtuele machine en de host tijdens de overdracht van beveiligde instellingen (wacht woord, andere referenties) die worden gebruikt door uitbrei dingen. De certificaten worden gebouwd door de Azure Fabric-controller en door gegeven aan de VM-agent. Als u de VM elke dag stopt en start, wordt er mogelijk een nieuw certificaat gemaakt door de infrastructuur controller. Het certificaat wordt opgeslagen in het persoonlijke certificaat archief van de computer. Deze certificaten kunnen worden verwijderd. De VM-agent maakt de certificaten zo nodig opnieuw.
+Deze certificaten beveiligen de communicatie tussen de virtuele machine en de host tijdens de overdracht van beveiligde instellingen (wachtwoord, andere aanmeldingsgegevens) die worden gebruikt door extensies. De certificaten worden gebouwd door de Azure-infrastructuurcontroller en doorgegeven aan de VM-agent. Als u de VM elke dag stopt en start, wordt er mogelijk een nieuw certificaat gemaakt door de infrastructuurcontroller. Het certificaat wordt opgeslagen in het persoonlijke certificaatarchief van de computer. Deze certificaten kunnen worden verwijderd. De VM-agent maakt de certificaten zo nodig opnieuw.
 
 ### <a name="how-do-agents-and-extensions-get-updated"></a>Hoe worden agents en uitbrei dingen bijgewerkt?
 

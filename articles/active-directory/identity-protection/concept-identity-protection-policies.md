@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7587ed6d414a69cff67aca9446aebf6260c99fcd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83736497"
 ---
 # <a name="identity-protection-policies"></a>Identiteitsbeveiligingbeleid
@@ -30,7 +30,7 @@ Identiteits beveiliging kan organisaties helpen bij het implementeren van Azure 
 
 Meer informatie over Azure Multi-Factor Authentication vindt u in het artikel, [hoe het werkt: Azure multi-factor Authentication](../authentication/concept-mfa-howitworks.md).
 
-## <a name="sign-in-risk-policy"></a>Beleid voor aanmeldings Risico's
+## <a name="sign-in-risk-policy"></a>Beleid voor aanmeldingsrisico's
 
 Identiteits beveiliging analyseert signalen van elke aanmelding, zowel in realtime als offline en berekent een risico Score op basis van de kans dat de gebruiker zich niet heeft aangemeld. Beheerders kunnen een beslissing nemen op basis van dit signaal van een risico Score om de vereisten van de organisatie af te dwingen. Beheerders kunnen kiezen om de toegang te blok keren, toegang toe te staan of toegang toe te staan, maar multi-factor Authentication te vereisen.
 

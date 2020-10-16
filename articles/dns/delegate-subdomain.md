@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 2/7/2019
 ms.author: rohink
 ms.openlocfilehash: add7674771fd19f6029a94c46624006f0cf30f1a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84710878"
 ---
 # <a name="delegate-an-azure-dns-subdomain"></a>Een Azure DNS subdomein delegeren
@@ -36,7 +36,7 @@ Maak eerst de zone voor het **technische** subdomein.
 3. Selecteer **Maken**.
 4. Typ **engineering.contoso.com** in het tekstvak **naam** in het deel venster **DNS-zone maken** .
 5. Selecteer de resource groep voor uw zone. Mogelijk wilt u dezelfde resource groep gebruiken als de bovenliggende zone om Vergelijk bare resources samen te brengen.
-6. Klik op **Create**.
+6. Klik op **Maken**.
 7. Nadat de implementatie is voltooid, gaat u naar de nieuwe zone.
 
 ## <a name="note-the-name-servers"></a>Noteer de naam servers
@@ -54,7 +54,7 @@ Maak een **A** -record die moet worden gebruikt voor het testen. U kunt bijvoorb
 Maak vervolgens een NS-record (naam server) voor de **technische** zone.
 
 1. Navigeer naar de zone voor het bovenliggende domein.
-2. Selecteer **Recordset toevoegen**.
+2. Selecteer **+ Recordset**.
 3. Typ in het deel venster **recordset toevoegen** de tekst **engineering** in het tekstvak **naam** .
 4. Selecteer bij **type**de optie **NS**.
 5. Voer onder **naam server**de vier naam servers in die u eerder hebt vastgelegd in de **technische** zone.
@@ -65,7 +65,7 @@ Maak vervolgens een NS-record (naam server) voor de **technische** zone.
 Gebruik Nslookup om de overdracht te testen.
 
 1. Open een Powershell-venster.
-2. Typ bij opdracht prompt`nslookup www.engineering.contoso.com.`
+2. Typ bij opdracht prompt `nslookup www.engineering.contoso.com.`
 3. U ontvangt een niet-bindend antwoord met het adres **10.10.10.10**.
 
 ## <a name="next-steps"></a>Volgende stappen

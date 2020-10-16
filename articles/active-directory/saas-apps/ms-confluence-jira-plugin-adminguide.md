@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 11/19/2018
 ms.author: jeedes
 ms.openlocfilehash: 07bd9353f08e9440e495dfa92c608b4d6f70f5cf
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88543979"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Atlassian Jira en confluence-beheer handleiding voor Azure Active Directory
@@ -24,7 +24,7 @@ ms.locfileid: "88543979"
 
 Met de Azure Active Directory-invoeg toepassing (Azure AD) eenmalige aanmelding (SSO) kunnen Microsoft Azure AD klanten hun werk-of school account gebruiken om zich aan te melden bij Atlassian Jira en confluence server-gebaseerde producten. Het implementeert SSO op basis van SAML 2,0.
 
-## <a name="how-it-works"></a>Hoe het werkt
+## <a name="how-it-works"></a>Uitleg
 
 Wanneer gebruikers zich willen aanmelden bij de Atlassian Jira of confluence-toepassing, zien ze de knop **Aanmelden met Azure AD** op de aanmeldings pagina. Wanneer deze optie is geselecteerd, moeten ze zich aanmelden met behulp van de aanmeldings pagina van de Azure AD-organisatie (dat wil zeggen, hun werk-of school account).
 

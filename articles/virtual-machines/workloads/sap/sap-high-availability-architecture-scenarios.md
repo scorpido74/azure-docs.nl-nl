@@ -17,10 +17,10 @@ ms.date: 02/26/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: c837a4020ab1aaad1798d6b19e72e09edafea1f5
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91360349"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>Architectuur en scenario's met hoge Beschik baarheid voor SAP net-Weaver
@@ -315,7 +315,7 @@ De gegevens in uw opslag account worden altijd gerepliceerd om duurzaamheid en h
 
 Omdat Azure Storage standaard drie installatie kopieën van de gegevens houdt, is het gebruik van RAID 5 of RAID 1 op meerdere Azure-schijven overbodig.
 
-Zie [Azure storage-replicatie][azure-storage-redundancy]voor meer informatie.
+Zie [Azure Storage-replicatie][azure-storage-redundancy] voor meer informatie.
 
 ### <a name="azure-managed-disks"></a>Azure Managed Disks
 Managed Disks is een resource type in Azure Resource Manager dat wordt aanbevolen om te worden gebruikt in plaats van virtuele harde schijven (Vhd's) die zijn opgeslagen in azure Storage-accounts. Beheerde schijven worden automatisch uitgelijnd met een Azure-beschikbaarheidsset van de virtuele machine waaraan deze zijn gekoppeld. Ze verg Roten de beschik baarheid van uw virtuele machine en de services die erop worden uitgevoerd.

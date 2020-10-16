@@ -1,20 +1,19 @@
 ---
 title: Externe bewakings oplossing implementeren lokaal-IntelliJ IDE-Azure | Microsoft Docs
 description: In deze hand leiding wordt uitgelegd hoe u de oplossing voor externe controle kunt implementeren op uw lokale computer met behulp van IntelliJ voor testen en ontwikkeling.
-author: v-krghan
-manager: dominicbetts
+author: dominicbetts
 ms.custom: devx-track-java
-ms.author: v-krghan
+ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: f7554843db247ade1cddff78902430a5d84debe1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 78573cfe00d8e2e7ddcbf705dffdd5530f82c4e0
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319164"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91998606"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>De externe controle oplossings versneller implementeren lokaal-IntelliJ
 
@@ -191,10 +190,10 @@ Elke webservice opent een opdracht prompt venster en webbrowser venster. Bij de 
 
 Als u toegang wilt krijgen tot de status van de services, gaat u naar de volgende Url's:
 
-* IoT-hub-beheer:`http://localhost:9002/v1/status`
-* Telemetrie van apparaat:`http://localhost:9004/v1/status`
-* configuraties`http://localhost:9005/v1/status`
-* opslag adapter:`http://localhost:9022/v1/status`
+* IoT-Hub Manager: `http://localhost:9002/v1/status`
+* Telemetrie van apparaat: `http://localhost:9004/v1/status`
+* configuraties `http://localhost:9005/v1/status`
+* opslag adapter: `http://localhost:9022/v1/status`
 
 ### <a name="start-the-stream-analytics-job"></a>De Stream Analytics-taak starten
 
@@ -229,7 +228,7 @@ Zie [nginx voor Windows](https://nginx.org/en/docs/windows.html)voor meer inform
 
 Ga naar in uw browser om toegang te krijgen tot het dash board van de oplossing voor externe controle `http://localhost:9000` .
 
-## <a name="clean-up"></a>Opruimen
+## <a name="clean-up"></a>Opschonen
 
 Verwijder de Cloud Services uit uw Azure-abonnement nadat u klaar bent met testen om onnodige kosten te voor komen. Als u de services wilt verwijderen, gaat u naar de [Azure Portal](https://ms.portal.azure.com)en verwijdert u de resource groep waarin het script **Start. cmd** is gemaakt.
 

@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 07b5b81dd7e23f25e7bfba90bbab7083090724d4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ce38fd1a9c49a1715562b59fb14667a88ce44181
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018855"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653159"
 ---
 # <a name="tutorial-manipulating-models"></a>Zelfstudie: Modellen bewerken
 
@@ -161,7 +161,7 @@ Wanneer het **RemoteBounds**-script wordt toegevoegd aan hetzelfde gameobject al
 
 1. Voer de toepassing opnieuw uit. Kort nadat het model is geladen, ziet u de grenzen voor het externe object. U ziet iets zoals de onderstaande waarden:
 
-     ![Grenzen bijgewerkt](./media/updated-bounds.png)
+     ![Schermopname van het voorbeeld van de grenzen van het externe object.](./media/updated-bounds.png)
 
 Nu hebben we een lokale **BoxCollider** geconfigureerd met nauwkeurige grenzen voor het Unity-object. Met de grenzen kunnen voor visualisatie en interactie dezelfde strategieën gebruikt worden als voor een lokaal gegenereerd object. Bijvoorbeeld scripts die de Transformatie, fysica en meer veranderen.
 

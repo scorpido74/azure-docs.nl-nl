@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 03/30/2020
 ms.openlocfilehash: 3cdbe1f3428418f082d53febca950a6a443fe5ff
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86120362"
 ---
 # <a name="use-an-https-endpoint-to-manage-commercial-marketplace-leads"></a>Een HTTPS-eind punt gebruiken om leads voor commerciële Marketplace te beheren
@@ -132,7 +132,7 @@ In dit artikel wordt uitgelegd hoe u een nieuwe stroom maakt in automatische ene
 
 ### <a name="connect-to-a-crm-system"></a>Verbinding maken met een CRM-systeem
 
-1. Selecteer **+ Nieuwe stap**.
+1. Selecteer **+ nieuwe stap**.
 1. Kies het CRM-systeem van uw keuze door ernaar te zoeken waar **Zoek connectors en acties**worden vermeld. Selecteer deze op het tabblad **acties** met de actie om een nieuwe record te maken. In het volgende scherm ziet u **een nieuwe record (Dynamics 365)** als voor beeld.
 
     ![Een nieuwe record maken](./media/commercial-marketplace-lead-management-instructions-https/create-new-record.png)
@@ -158,7 +158,7 @@ In dit artikel wordt uitgelegd hoe u een nieuwe stroom maakt in automatische ene
     >[!NOTE]
     >Als u een andere e-mail provider wilt gebruiken, zoekt en selecteert u in plaats daarvan **een e-mail melding (e-mail) verzenden** als actie.
 
-    ![Een e-mail actie toevoegen](./media/commercial-marketplace-lead-management-instructions-https/https-request-received-send-email.png)
+    ![Een e-mailactie maken](./media/commercial-marketplace-lead-management-instructions-https/https-request-received-send-email.png)
 
 1. Configureer in het venster **een E-mail verzenden** de volgende vereiste velden:
 
@@ -173,7 +173,7 @@ In dit artikel wordt uitgelegd hoe u een nieuwe stroom maakt in automatische ene
    - **Hoofd tekst**: Voeg de gewenste informatie toe aan de hoofd tekst van het e-mail bericht in de lijst met dynamische inhoud. Gebruik bijvoorbeeld LastName, FirstName, email en Company. Wanneer u klaar bent met het instellen van de e-mail melding, ziet u in het voor beeld in het volgende scherm.
 
 
-       ![Voor beeld van e-mail melding](./media/commercial-marketplace-lead-management-instructions-https/send-an-email.png)
+       ![Voorbeeld van e-mailmelding](./media/commercial-marketplace-lead-management-instructions-https/send-an-email.png)
 
 1. Selecteer **Opslaan** om de stroom te volt ooien. Er wordt een HTTP POST-URL gemaakt en deze is toegankelijk in het venster **Wanneer een HTTP-aanvraag wordt ontvangen** . Kopieer deze URL met behulp van het Kopieer besturings element, dat zich rechts van de URL voor HTTP POST bevindt. Het is belang rijk dat u dit besturings element gebruikt, zodat u geen deel van de volledige URL hoeft te missen. Sla deze URL op omdat u deze nodig hebt bij het configureren van het beheer van leads in de portal voor publiceren.
 

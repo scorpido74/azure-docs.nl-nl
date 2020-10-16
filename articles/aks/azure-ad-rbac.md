@@ -6,10 +6,10 @@ services: container-service
 ms.topic: article
 ms.date: 07/21/2020
 ms.openlocfilehash: 2845a091c8a89f22e8892141dd2dad26d6049447
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88006839"
 ---
 # <a name="control-access-to-cluster-resources-using-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>Toegang tot cluster bronnen beheren met op rollen gebaseerd toegangs beheer en Azure Active Directory identiteiten in de Azure Kubernetes-service
@@ -28,7 +28,7 @@ U moet de Azure CLI-versie 2.0.61 of hoger hebben geïnstalleerd en geconfiguree
 
 In dit artikel gaan we twee gebruikers rollen maken die kunnen worden gebruikt om te laten zien hoe Kubernetes RBAC en Azure AD Control toegang hebben tot cluster bronnen. De volgende twee voorbeeld rollen worden gebruikt:
 
-* **Toepassings ontwikkelaar**
+* **Toepassingsontwikkelaar**
     * Een gebruiker met de naam *aksdev* die deel uitmaakt van de groep *appdev* .
 * **Site betrouwbaarheids technicus**
     * Een gebruiker met de naam *akssre* die deel uitmaakt van de groep *opssre* .
@@ -164,7 +164,7 @@ Haal vervolgens de resource-ID voor de *appdev* -groep op met behulp van de opdr
 az ad group show --group appdev --query objectId -o tsv
 ```
 
-Maak nu een RoleBinding voor de *appdev* -groep om de eerder gemaakte rol voor naam ruimte toegang te gebruiken. Maak een bestand `rolebinding-dev-namespace.yaml` met de naam en plak het volgende YAML-manifest. Op de laatste regel vervangt u *groupObjectId* door de groeps object-id-uitvoer van de vorige opdracht:
+Maak nu een RoleBinding voor de *appdev* -groep om de eerder gemaakte rol voor naam ruimte toegang te gebruiken. Maak een bestand `rolebinding-dev-namespace.yaml` met de naam en plak het volgende YAML-manifest. Op de laatste regel vervangt u *groupObjectId*  door de groeps object-id-uitvoer van de vorige opdracht:
 
 ```yaml
 kind: RoleBinding
@@ -229,7 +229,7 @@ De resource-ID voor de *opssre* -groep ophalen met de opdracht [AZ Ad Group show
 az ad group show --group opssre --query objectId -o tsv
 ```
 
-Maak een RoleBinding voor de *opssre* -groep om de eerder gemaakte rol voor naam ruimte toegang te gebruiken. Maak een bestand `rolebinding-sre-namespace.yaml` met de naam en plak het volgende YAML-manifest. Op de laatste regel vervangt u *groupObjectId* door de groeps object-id-uitvoer van de vorige opdracht:
+Maak een RoleBinding voor de *opssre* -groep om de eerder gemaakte rol voor naam ruimte toegang te gebruiken. Maak een bestand `rolebinding-sre-namespace.yaml` met de naam en plak het volgende YAML-manifest. Op de laatste regel vervangt u *groupObjectId*  door de groeps object-id-uitvoer van de vorige opdracht:
 
 ```yaml
 kind: RoleBinding

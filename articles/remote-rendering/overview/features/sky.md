@@ -7,10 +7,10 @@ ms.date: 02/07/2020
 ms.topic: article
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 39e3b41d49ad06e5dbe5164809a6743da8dedae5
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89613746"
 ---
 # <a name="sky-reflections"></a>Luchtreflecties
@@ -143,7 +143,7 @@ Externe rendering van Azure biedt een aantal ingebouwde omgevings kaarten die al
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Verlichting](../../overview/features/lights.md)
+* [Lampen](../../overview/features/lights.md)
 * [Materialen](../../concepts/materials.md)
 * [Patronen](../../concepts/textures.md)
 * [Het opdracht regel programma TexConv](../../resources/tools/tex-conv.md)

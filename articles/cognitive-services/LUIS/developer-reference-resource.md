@@ -7,10 +7,10 @@ ms.topic: reference
 ms.date: 05/19/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: e4e43ead957bb6feca09fc8b2a8c16e37821c9b4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91327167"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>SDK-, REST-en CLI-ontwikkelaars bronnen voor Language Understanding (LUIS)
@@ -23,7 +23,7 @@ Gebruik de Azure Cognitive Services Management-laag voor het maken, bewerken, we
 
 Zoek naar de referentie documentatie op basis van het hulp programma:
 
-* [Azure CLI](https://docs.microsoft.com/cli/azure/cognitiveservices#az-cognitiveservices-list)
+* [Azure-CLI](https://docs.microsoft.com/cli/azure/cognitiveservices#az-cognitiveservices-list)
 
 * [PowerShell voor Azure RM](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services)
 
@@ -86,13 +86,13 @@ Het [app-schema](app-schema-definition.md) wordt geïmporteerd en geëxporteerd 
 
 ### <a name="language-based-sdks"></a>Op taal gebaseerde Sdk's
 
-|Taal |Referentie documentatie|Pakket|Quickstarts|
+|Taal |Referentie documentatie|Pakket|Snelstartgidsen|
 |--|--|--|--|
-|C#|[Ontwerp](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring?view=azure-dotnet)</br>[Voorspelling](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime?view=azure-dotnet)|[NuGet ontwerpen](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[NuGet-voor spelling](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[Ontwerp](azure-sdk-quickstart.md?pivots=programming-language-csharp)<br>[Query voorspelling](azure-sdk-quickstart.md?pivots=programming-language-csharp)|
+|C#|[Ontwerpen](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring?view=azure-dotnet)</br>[Voorspelling](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime?view=azure-dotnet)|[NuGet ontwerpen](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[NuGet-voor spelling](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[Ontwerpen](azure-sdk-quickstart.md?pivots=programming-language-csharp)<br>[Query voorspelling](azure-sdk-quickstart.md?pivots=programming-language-csharp)|
 |Go|[Ontwerpen en voors pellen](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/luis)|[SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis)||
 |Java|[Ontwerpen en voors pellen](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-java-stable)|[Maven ontwerpen](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-authoring)<br>[Maven-voor spelling](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-runtime)|
-|JavaScript|[Ontwerp](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)<br>[Voorspelling](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)|[NPM ontwerpen](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)<br>[NPM-voor spelling](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)|[Ontwerp](azure-sdk-quickstart.md?pivots=programming-language-javascript)<br>[Voorspelling](azure-sdk-quickstart.md?pivots=programming-language-javascript)|
-|Python|[Ontwerpen en voors pellen](azure-sdk-quickstart.md?pivots=programming-language-python)|[Pip](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[Ontwerp](azure-sdk-quickstart.md?pivots=programming-language-python)<br>[Voorspelling](azure-sdk-quickstart.md?pivots=programming-language-python)|
+|Javascript|[Ontwerpen](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)<br>[Voorspelling](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)|[NPM ontwerpen](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)<br>[NPM-voor spelling](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)|[Ontwerpen](azure-sdk-quickstart.md?pivots=programming-language-javascript)<br>[Voorspelling](azure-sdk-quickstart.md?pivots=programming-language-javascript)|
+|Python|[Ontwerpen en voors pellen](azure-sdk-quickstart.md?pivots=programming-language-python)|[Pip](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[Ontwerpen](azure-sdk-quickstart.md?pivots=programming-language-python)<br>[Voorspelling](azure-sdk-quickstart.md?pivots=programming-language-python)|
 
 
 ### <a name="containers"></a>Containers
@@ -109,7 +109,7 @@ Het importeren en exporteren van deze indelingen is beschikbaar via de Api's en 
 
 * GitHub: (workshop) [gesprek-AI: NLU met Luis](https://github.com/GlobalAICommunity/Workshop-Conversational-AI)
 
-## <a name="continuous-integration-tools"></a>Hulpprogram ma's voor continue integratie
+## <a name="continuous-integration-tools"></a>Hulpprogramma's voor continue integratie
 
 * GitHub: (preview) [het ontwikkelen van een Luis-app met behulp van DevOps-procedures](https://github.com/Azure-Samples/LUIS-DevOps-Template)
 * GitHub: [NLU. DevOps](https://github.com/microsoft/NLU.DevOps) -tools die ondersteuning bieden voor continue integratie en implementatie voor NLU-Services.

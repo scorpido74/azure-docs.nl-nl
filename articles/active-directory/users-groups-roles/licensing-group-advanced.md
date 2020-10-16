@@ -16,10 +16,10 @@ ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c7cc4065297c35164f1e37b187c6280b3d3546ee
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91538837"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Scenario's, beperkingen en bekende problemen met behulp van groepen voor het beheren van licenties in Azure Active Directory
@@ -163,7 +163,7 @@ Hier volgt een voor beeld van recente wijzigingen in groeps licenties, met Detai
 
 Wanneer een licentie wordt gewijzigd voor een groep, gaat Azure AD de wijzigingen Toep assen op alle gebruikers.
 
-1. Als u wilt zien wanneer groepen zijn begonnen met de verwerking, stelt u het **activiteit** filter in op het *Toep assen van groeps licentie op gebruikers*. Houd er rekening mee dat de actor voor de bewerking is *Microsoft Azure AD op groep gebaseerde licentie verlening* : een systeem account dat wordt gebruikt voor het uitvoeren van alle groeps licentie wijzigingen.
+1. Als u wilt zien wanneer groepen zijn begonnen met de verwerking, stelt u het **activiteit** filter in op het *Toep assen van groeps licentie op gebruikers*. Houd er rekening mee dat de actor voor de bewerking is *Microsoft Azure AD Group-Based-licentie verlening* : een systeem account dat wordt gebruikt voor het uitvoeren van alle groeps licentie wijzigingen.
    >[!TIP]
    > Klik op een item in de lijst om het veld *gewijzigde eigenschappen* weer te geven. hier worden de licentie wijzigingen weer gegeven die zijn opgenomen voor verwerking. Dit is handig als u meerdere wijzigingen in een groep hebt aangebracht en u niet zeker weet welk item is verwerkt.
 
@@ -179,7 +179,7 @@ Wanneer een licentie wordt gewijzigd voor een groep, gaat Azure AD de wijziginge
    > ```
 
 3. Stel de volgende filters in om het volledige logboek voor de verwerking van een groep te bekijken, inclusief alle gebruikers wijzigingen:
-   - **Gestart door (actor)**: "Microsoft Azure AD op groeps gebaseerde licentie verlening"
+   - **Gestart door (actor)**: "Microsoft Azure AD Group-Based-licentiëring"
    - **Datum bereik** (optioneel): aangepast bereik voor wanneer u een specifieke groep hebt gestart en de verwerking hebt voltooid
 
 In deze voorbeeld uitvoer ziet u het begin van de verwerking, alle resulterende gebruikers wijzigingen en de eind datum van de verwerking.

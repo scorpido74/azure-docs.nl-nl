@@ -9,13 +9,13 @@ ms.date: 04/08/2019
 ms.author: alkohli
 ms.custom: include file
 ms.openlocfilehash: 7ecc36218df23d81c4646612b5474a1465f428eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80282474"
 ---
-FedEx, UPS of DHL kan worden gebruikt om het pakket naar Azure Data Center te verzenden. Als u een andere transporteur dan FedEx/DHL wilt gebruiken, neemt u contact op met Azure Data Box Operations-team op`adbops@microsoft.com`
+FedEx, UPS of DHL kan worden gebruikt om het pakket naar Azure Data Center te verzenden. Als u een andere transporteur dan FedEx/DHL wilt gebruiken, neemt u contact op met Azure Data Box Operations-team op `adbops@microsoft.com`
 
 * Geef een geldig account nummer voor FedEx, UPS of DHL op dat door micro soft wordt gebruikt om de stations terug te leveren.
   * Een FedEx-, UPS-of DHL-account nummer is vereist voor het terugsturen van schijven vanaf de VS-en Europe-locaties.

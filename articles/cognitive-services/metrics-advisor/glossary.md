@@ -3,19 +3,19 @@ title: Verklarende woorden lijst voor metrische gegevens adviseur
 titleSuffix: Azure Cognitive Services
 description: Belang rijke ideeën en concepten voor de biometrische Advisor-service
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/14/2020
-ms.author: aahi
-ms.openlocfilehash: 25e5cb6e34624f3272e83e1e7c1cd847b865ae8e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.author: mbullwin
+ms.openlocfilehash: 34f9d480234ecaef0d581cfecd68e2cdd1cf6fdc
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935852"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046771"
 ---
 # <a name="metrics-advisor-glossary-of-common-vocabulary-and-concepts"></a>Verklarende woorden lijst voor metrische gegevens adviseur van common vocabulaire en concepten
 
@@ -181,7 +181,7 @@ Het waarschuwings bereik verwijst naar het bereik waarop de waarschuwing van toe
 
 **Afwijkingen in de bovenste n van alle reeksen**: waarschuwingen worden alleen geactiveerd voor afwijkingen in de eerste n-serie. U kunt para meters instellen om het aantal tijds tempels op te geven waarmee rekening moet worden gehouden en hoeveel afwijkingen er moeten zijn om de waarschuwing te verzenden.
 
-### <a name="severity"></a>Ernst
+### <a name="severity"></a>Severity
 
 Ernst is een cijfer dat door de metrieke Advisor wordt gebruikt om de ernst van het incident te beschrijven, met inbegrip van *hoog*, *gemiddeld*en *laag*.
 

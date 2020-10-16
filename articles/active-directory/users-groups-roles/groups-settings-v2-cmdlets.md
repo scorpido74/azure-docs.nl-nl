@@ -15,10 +15,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c00c89e5f81bcb142c50e5f3438c1af2d72a9de5
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90056214"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Azure Active Directory versie 2-cmdlets voor groeps beheer
@@ -138,7 +138,7 @@ U kunt zoeken naar een specifieke groep met behulp van de para meter-filter. Dez
 
 ## <a name="create-groups"></a>Groepen maken
 
-Als u een nieuwe groep in uw Directory wilt maken, gebruikt u de cmdlet New-AzureADGroup. Met deze cmdlet wordt een nieuwe beveiligings groep gemaakt met de naam ' Marketing ':
+Gebruik de cmdlet New-AzureADGroup om een nieuwe groep te maken in uw Directory. Met deze cmdlet wordt een nieuwe beveiligings groep gemaakt met de naam ' Marketing ':
 
 ```powershell
     PS C:\Windows\system32> New-AzureADGroup -Description "Marketing" -DisplayName "Marketing" -MailEnabled $false -SecurityEnabled $true -MailNickName "Marketing"
@@ -238,7 +238,7 @@ Als u het eerder aan de groep toegevoegde lid wilt verwijderen, gebruikt u de cm
 
 ### <a name="verify-members"></a>Leden controleren
 
-Als u de groepslid maatschappen van een gebruiker wilt controleren, gebruikt u de cmdlet Select-AzureADGroupIdsUserIsMemberOf. Deze cmdlet krijgt de ObjectId van de gebruiker waarvoor de groepslid maatschappen moeten worden gecontroleerd en een lijst met groepen waarvoor de lidmaatschappen moeten worden gecontroleerd. De lijst met groepen moet worden weer gegeven in de vorm van een complexe variabele van het type micro soft. open. AzureAD. model. GroupIdsForMembershipCheck. Daarom moet u eerst een variabele met dat type maken:
+Gebruik de cmdlet Select-AzureADGroupIdsUserIsMemberOf om de groepslid maatschappen van een gebruiker te controleren. Deze cmdlet krijgt de ObjectId van de gebruiker waarvoor de groepslid maatschappen moeten worden gecontroleerd en een lijst met groepen waarvoor de lidmaatschappen moeten worden gecontroleerd. De lijst met groepen moet worden weer gegeven in de vorm van een complexe variabele van het type micro soft. open. AzureAD. model. GroupIdsForMembershipCheck. Daarom moet u eerst een variabele met dat type maken:
 
 ```powershell
     PS C:\Windows\system32> $g = new-object Microsoft.Open.AzureAD.Model.GroupIdsForMembershipCheck
@@ -290,7 +290,7 @@ Als u eigen aren wilt toevoegen aan een groep, gebruikt u de cmdlet Add-AzureADG
 
 De para meter-ObjectId is de ObjectID van de groep waaraan we een eigenaar willen toevoegen en de-RefObjectId is de ObjectID van de gebruiker of service-principal die u wilt toevoegen als een eigenaar van de groep.
 
-Als u de eigen aren van een groep wilt ophalen, gebruikt u de cmdlet Get-AzureADGroupOwner:
+Gebruik de cmdlet Get-AzureADGroupOwner om de eigen aren van een groep op te halen:
 
 ```powershell
     PS C:\Windows\system32> Get-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df

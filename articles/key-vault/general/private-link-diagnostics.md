@@ -7,12 +7,12 @@ ms.date: 09/30/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 52ac5b89a0c7173b9b2585f84b5f34361b4b136c
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 156edbeda225b5457d6f5e7d29482e393b510736
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91744216"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91998399"
 ---
 # <a name="diagnose-private-links-configuration-issues-on-azure-key-vault"></a>Problemen met de configuratie van particuliere koppelingen diagnosticeren op Azure Key Vault
 
@@ -34,7 +34,7 @@ Als u geen ervaring hebt met deze functie, raadpleegt u [Key Vault integreren me
 ### <a name="problems-not-covered-by-this-article"></a>Problemen die niet onder dit artikel vallen
 
 - Er is een probleem met de verbinding. In een bepaalde client ziet u dat sommige aanvragen werken en sommige niet werken. *Tijdelijke problemen worden meestal niet veroorzaakt door een probleem in de configuratie van particuliere koppelingen; ze zijn een teken van netwerk-of client overbelasting.*
-- U gebruikt een Azure-product dat ondersteuning biedt voor BYOK (Bring Your Own Key) of CMK (door de klant beheerde sleutels), en dat product heeft geen toegang tot uw sleutel kluis. *Bekijk de andere product documentatie. Zorg ervoor dat het expliciet ondersteuning biedt voor sleutel kluizen waarvoor de firewall is ingeschakeld. Neem zo nodig contact op met de product ondersteuning voor dat specifieke product.*
+- U gebruikt een Azure-product dat ondersteuning biedt voor BYOK (Bring Your Own Key), CMK (door de klant beheerde sleutels) of toegang tot geheimen die zijn opgeslagen in de sleutel kluis. Wanneer u de firewall in de sleutel kluis instellingen inschakelt, heeft dat product geen toegang tot uw sleutel kluis. *Bekijk productspecifieke documentatie. Zorg ervoor dat het expliciet ondersteuning biedt voor sleutel kluizen waarvoor de firewall is ingeschakeld. Neem zo nodig contact op met de ondersteuning voor dat specifieke product.*
 
 ### <a name="how-to-read-this-article"></a>Lees dit artikel
 
@@ -46,9 +46,11 @@ Laten we beginnen.
 
 ### <a name="confirm-that-your-client-runs-at-the-virtual-network"></a>Controleren of de client wordt uitgevoerd in het virtuele netwerk
 
-Deze hand leiding is bedoeld om u te helpen bij het oplossen van verbindingen met de sleutel kluis die afkomstig zijn uit toepassings code. Voor beelden zijn toepassingen en scripts die worden uitgevoerd in azure Virtual Machines, Azure Service Fabric-clusters, Azure App Service, Azure Kubernetes service (AKS) en vergelijk bare andere.
+Deze hand leiding is bedoeld om u te helpen bij het oplossen van verbindingen met de sleutel kluis die afkomstig zijn uit toepassings code. Voor beelden zijn toepassingen en scripts die worden uitgevoerd in azure Virtual Machines, Azure Service Fabric-clusters, Azure App Service, Azure Kubernetes service (AKS) en vergelijk bare andere. Deze hand leiding is ook van toepassing op toegang die wordt uitgevoerd in de Azure Portal web-base-gebruikers interface, waarbij de browser rechtstreeks toegang heeft tot uw sleutel kluis.
 
-Op basis van de definitie van persoonlijke koppelingen moet de toepassing of het script worden uitgevoerd op de computer, het cluster of de omgeving die is verbonden met de Virtual Network waar de [privé-eindpunt resource](../../private-link/private-endpoint-overview.md) is geïmplementeerd. Als de toepassing wordt uitgevoerd op een wille keurig netwerk met Internet verbinding, is deze hand leiding niet van toepassing en kunnen er mogelijk privé koppelingen niet worden gebruikt.
+Op basis van de definitie van persoonlijke koppelingen moet de toepassing, het script of de portal worden uitgevoerd op de computer, het cluster of de omgeving die is verbonden met de Virtual Network waar de [privé-eindpunt resource](../../private-link/private-endpoint-overview.md) is geïmplementeerd.
+
+Als de toepassing, het script of de portal wordt uitgevoerd op een wille keurig netwerk met Internet verbinding, is deze hand leiding niet van toepassing en kunnen er mogelijk privé koppelingen niet worden gebruikt. Deze beperking is ook van toepassing op opdrachten die worden uitgevoerd in de Azure Cloud Shell, omdat deze worden uitgevoerd op een externe Azure-machine, in plaats van via de browser van de gebruiker.
 
 ### <a name="if-you-use-a-managed-solution-refer-to-specific-documentation"></a>Raadpleeg specifieke documentatie voor meer informatie over het gebruik van een beheerde oplossing.
 
@@ -74,7 +76,7 @@ Het is een goed idee om inwerkende verbindingen te verwijderen, zodat u alles sc
 >[!IMPORTANT]
 > Als u de firewall instellingen wijzigt, kan de toegang tot legitieme clients die nog steeds geen persoonlijke koppelingen gebruiken, worden verwijderd. Zorg ervoor dat u op de hoogte bent van de implicaties van elke wijziging in de firewall configuratie.
 
-Een belang rijke ding is dat persoonlijke koppelingen alleen toegang tot uw sleutel kluis *bieden* . Er wordt geen bestaande toegang *verwijderd* . Als u de toegang tot het open bare Internet effectief wilt blok keren, moet u de firewall voor de sleutel kluis expliciet inschakelen:
+Een belang rijk voor stel is dat de functie persoonlijke koppelingen alleen toegang *geeft* tot uw sleutel kluis in een Virtual Network dat gesloten is om gegevens exfiltration te voor komen. Er wordt geen bestaande toegang *verwijderd* . Als u de toegang tot het open bare Internet effectief wilt blok keren, moet u de firewall voor de sleutel kluis expliciet inschakelen:
 
 1. Open de Azure Portal en open uw sleutel kluis resource.
 2. Selecteer in het menu links de optie **netwerken**.
@@ -229,11 +231,11 @@ Uw Azure-abonnement moet een [privé-DNS zone](../../dns/private-dns-privatednsz
 
 U kunt controleren of deze resource aanwezig is door naar de pagina abonnement in de portal te gaan en ' resources ' te selecteren in het menu aan de linkerkant. De resource naam moet zijn `privatelink.vaultcore.azure.net` en het resource type moet **privé-DNS zone**zijn.
 
-Normaal gesp roken wordt deze resource automatisch gemaakt wanneer u een persoonlijk eind punt maakt met behulp van een typische methode. Er zijn echter gevallen waarin deze resource niet automatisch wordt gemaakt en u deze hand matig moet doen. Mogelijk is deze resource ook per ongeluk verwijderd.
+Normaal gesp roken wordt deze resource automatisch gemaakt wanneer u een persoonlijk eind punt maakt met behulp van een gemeen schappelijke procedure. Er zijn echter gevallen waarin deze resource niet automatisch wordt gemaakt en u deze hand matig moet doen. Mogelijk is deze resource ook per ongeluk verwijderd.
 
 Als u deze resource niet hebt, maakt u een nieuwe Privé-DNS zone resource in uw abonnement. Houd er rekening mee dat de naam exact moet zijn `privatelink.vaultcore.azure.net` , zonder spaties of extra punten. Als u de verkeerde naam opgeeft, werkt de naam omzetting die in dit artikel wordt uitgelegd, niet. Zie [een Azure private DNS-zone maken met behulp van de Azure Portal](../../dns/private-dns-getstarted-portal.md)voor meer informatie over het maken van deze bron. Als u deze pagina volgt, kunt u het maken van Virtual Network overs Laan omdat u op dit moment al een hebt. U kunt ook de validatie procedures over Virtual Machines overs Laan.
 
-### <a name="confirm-that-the-private-dns-zone-must-be-linked-to-the-virtual-network"></a>Controleer of de Privé-DNS zone moet worden gekoppeld aan de Virtual Network
+### <a name="confirm-that-the-private-dns-zone-is-linked-to-the-virtual-network"></a>Controleer of de Privé-DNS zone is gekoppeld aan de Virtual Network
 
 Het is niet voldoende om een Privé-DNS zone te hebben. Het moet ook worden gekoppeld aan de Virtual Network die het persoonlijke eind punt bevat. Als de Privé-DNS zone niet is gekoppeld aan de juiste Virtual Network, wordt de zone Privé-DNS door de DNS-omzetting van die Virtual Network genegeerd.
 
@@ -250,7 +252,7 @@ Open met behulp van de Portal de Privé-DNS zone met de naam `privatelink.vaultc
 
 De naam omzetting van de sleutel kluis werkt alleen als er een `A` record is met de naam van de eenvoudige kluis zonder achtervoegsel of punten. Als de hostnaam bijvoorbeeld is `fabrikam.vault.azure.net` , moet er een `A` record zijn met de naam `fabrikam` , zonder achtervoegsel of punten.
 
-De waarde van de `A` record (het IP-adres) moet ook [het privé-IP-adres van de sleutel kluis](#find-the-key-vault-private-ip-address-in-the-virtual-network)zijn. Als u de `A` record vindt, maar deze in het verkeerde IP-adres bevat, moet u het verkeerde IP-adres verwijderen en een nieuw item toevoegen. Het is raadzaam om de gehele `A` record te verwijderen en een nieuwe te voegen.
+De waarde van de `A` record (het IP-adres) moet ook [het privé-IP-adres van de sleutel kluis](#find-the-key-vault-private-ip-address-in-the-virtual-network)zijn. Als u de `A` record vindt, maar deze het verkeerde IP-adres bevat, moet u het verkeerde IP-adres verwijderen en een nieuwe toevoegen. Het is raadzaam om de gehele `A` record te verwijderen en een nieuwe te voegen.
 
 >[!NOTE]
 > Wanneer u een record verwijdert of wijzigt `A` , kan de computer nog steeds worden omgezet naar het oude IP-adres, omdat de TTL-waarde (time to Live) mogelijk nog niet is verlopen. Het is raadzaam om altijd een TTL-waarde op te geven die niet kleiner is dan 60 seconden (één minuut) en niet groter is dan 600 seconden (10 minuten). Als u een waarde opgeeft die te groot is, kunnen uw clients te lang duren om te herstellen na storingen.
@@ -259,9 +261,9 @@ De waarde van de `A` record (het IP-adres) moet ook [het privé-IP-adres van de 
 
 Als er meerdere virtuele netwerken zijn en elk een eigen privé-eindpunt resource heeft die verwijst naar dezelfde sleutel kluis, moet de sleutel kluis hostnaam worden omgezet in een ander privé-IP-adres, afhankelijk van het netwerk. Dit betekent dat er meerdere Privé-DNS zones nodig zijn, elk gekoppeld aan een andere Virtual Network en een ander IP-adres in de `A` record gebruiken.
 
-In meer geavanceerde scenario's zijn er meerdere virtuele netwerken waarvoor peering is ingeschakeld. In dit geval heeft slechts één Virtual Network de persoonlijke eindpunt resource nodig, hoewel beide mogelijk moeten worden gekoppeld aan de Privé-DNS zone resource. Dit is een scenario dat niet direct onder dit document valt.
+In meer geavanceerde scenario's is het mogelijk dat peering is ingeschakeld voor de virtuele netwerken. In dit geval heeft slechts één Virtual Network de persoonlijke eindpunt resource nodig, hoewel beide mogelijk moeten worden gekoppeld aan de Privé-DNS zone resource. Dit is een scenario dat niet direct onder dit document valt.
 
-### <a name="fact-you-have-control-over-dns-resolution"></a>Fact: u hebt controle over de DNS-omzetting
+### <a name="understand-that-you-have-control-over-dns-resolution"></a>Meer informatie over de controle over de DNS-omzetting
 
 Zoals beschreven in de [vorige sectie](#key-vault-with-private-link-resolving-from-arbitrary-internet-machine), heeft een sleutel kluis met persoonlijke koppelingen de alias `{vaultname}.privatelink.vaultcore.azure.net` in de *open bare* registratie. Op de DNS-server die door de Virtual Network wordt gebruikt, wordt de open bare registratie gebruikt, maar wordt elke alias voor een *privé* registratie gecontroleerd en als er een wordt gevonden, worden de volgende aliassen voor de registratie gestopt.
 
@@ -324,7 +326,7 @@ Het antwoord moet header bevatten `x-ms-keyvault-network-info` :
 ### <a name="query-the-key-vault-ip-address-directly"></a>Het IP-adres van de sleutel kluis rechtstreeks opvragen
 
 >[!IMPORTANT]
-> Toegang tot de sleutel kluis zonder HTTPS-certificaat validatie is gevaarlijk en kan alleen worden gebruikt voor leer doeleinden. Productie code mag nooit toegang hebben tot de sleutel kluis zonder deze validatie aan de client zijde. Zelfs als u gewoon problemen wilt vaststellen, is het mogelijk dat er een voortdurende poging wordt gedaan die niet wordt onthuld als u HTTPS-certificaat validatie altijd uitschakelt in uw aanvragen voor sleutel kluis.
+> Toegang tot de sleutel kluis zonder HTTPS-certificaat validatie is gevaarlijk en kan alleen worden gebruikt voor leer doeleinden. Productie code mag nooit toegang hebben tot de sleutel kluis zonder deze validatie aan de client zijde. Zelfs als u gewoon problemen wilt vaststellen, is het mogelijk dat u pogingen ondervindt die niet worden onthuld als u regel matig HTTPS-certificaat validatie in uw aanvragen voor sleutel kluis uitschakelt.
 
 Als u een recente versie van Power shell hebt geïnstalleerd, kunt u gebruiken `-SkipCertificateCheck` om HTTPS-certificaat controles over te slaan. vervolgens kunt u het [IP-adres van de sleutel kluis](#find-the-key-vault-private-ip-address-in-the-virtual-network) rechtstreeks richten:
 
@@ -334,7 +336,7 @@ Als u gebruikt `curl` , kunt u hetzelfde doen met het `-k` argument:
 
     joe@MyUbuntu:~$ curl -i -k https://10.1.2.3/healthstatus
 
-De antwoorden moeten hetzelfde zijn als de vorige sectie, wat betekent dat de `x-ms-keyvault-network-info` kop met dezelfde waarde moet worden meegenomen. Het `/healthstatus` eind punt is niet van belang als u de sleutel kluis hostnaam of het IP-adres gebruikt.
+De antwoorden moeten hetzelfde zijn als de vorige sectie, wat betekent dat deze de `x-ms-keyvault-network-info` koptekst met dezelfde waarde moet bevatten. Het `/healthstatus` eind punt is niet van belang als u de sleutel kluis hostnaam of het IP-adres gebruikt.
 
 Als u `x-ms-keyvault-network-info` een waarde voor de aanvraag retourneert met behulp van de sleutel kluis hostnaam en een andere waarde voor de aanvraag met behulp van het IP-adres, is elke aanvraag gericht op een ander eind punt. Raadpleeg de uitleg van het `addr` veld `x-ms-keyvault-network-info` in het vorige gedeelte om te bepalen welk geval onjuist is en moet worden opgelost.
 
@@ -354,7 +356,7 @@ Veel besturings systemen maken het instellen van een expliciet vast IP-adres per
 
 ### <a name="promiscuous-proxies-fiddler-etc"></a>Ongeordende proxy's (Fiddler, enzovoort)
 
-Met uitzonde ring van expliciet opgemerkt, werken de diagnostische opties in dit artikel alleen als er geen ongeordende proxy in de omgeving aanwezig is. Hoewel deze proxy's vaak alleen worden geïnstalleerd op de computer die wordt gecontroleerd (Fiddler is het meest voorkomende voor beeld), kunnen ervaren beheerders basis certificerings instanties (Ca's) overschrijven en een ongeordende proxy installeren in gateway apparaten die van meerdere computers in het netwerk worden gebruikt. Deze proxy's kunnen de beveiliging en betrouw baarheid aanzienlijk beïnvloeden. Micro soft biedt geen ondersteuning voor configuraties die gebruikmaken van dergelijke producten.
+Behalve als dit expliciet wordt vermeld, werken de diagnostische opties in dit artikel alleen als er geen ongeordende proxy in de omgeving aanwezig is. Hoewel deze proxy's vaak alleen worden geïnstalleerd op de computer die wordt gecontroleerd (Fiddler is het meest voorkomende voor beeld), kunnen ervaren beheerders basis certificerings instanties (Ca's) overschrijven en een ongeordende proxy installeren in gateway apparaten die van meerdere computers in het netwerk worden gebruikt. Deze proxy's kunnen de beveiliging en betrouw baarheid aanzienlijk beïnvloeden. Micro soft biedt geen ondersteuning voor configuraties die gebruikmaken van dergelijke producten.
 
 ### <a name="other-things-that-may-affect-connectivity"></a>Andere zaken die van invloed kunnen zijn op de connectiviteit
 

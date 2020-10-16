@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/13/2020
 ms.author: victorh
 ms.openlocfilehash: 75435155ba1dad798d301006a30a5d5b6e96226a
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88611174"
 ---
 # <a name="azure-firewall-faq"></a>Veelgestelde vragen over Azure Firewall
@@ -62,7 +62,7 @@ De Web Application firewall (WAF) is een functie van Application Gateway die gec
 
 ## <a name="what-is-the-difference-between-network-security-groups-nsgs-and-azure-firewall"></a>Wat is het verschil tussen netwerk beveiligings groepen (Nsg's) en Azure Firewall?
 
-De Azure Firewall-service is een aanvulling op de functionaliteit van de netwerk beveiligings groep. Samen bieden ze een betere "ingrijpende" netwerk beveiliging. Netwerk beveiligings groepen bieden gedistribueerde filters voor het filteren van netwerk lagen om het verkeer te beperken tot bronnen in virtuele netwerken in elk abonnement. Azure Firewall is een volledig stateful, gecentraliseerd netwerk firewall as-a-service, die beveiliging op netwerk-en toepassings niveau biedt voor verschillende abonnementen en virtuele netwerken.
+De Azure Firewall-service is een aanvulling op de functionaliteit van de netwerk beveiligings groep. Samen bieden ze een betere "ingrijpende" netwerk beveiliging. Netwerkbeveiligingsgroepen bieden gedistribueerde filtering voor netwerklagen om het verkeer te beperken tot resources in virtuele netwerken in elk abonnement. Azure Firewall is een volledig stateful, gecentraliseerd netwerk firewall as-a-service, die beveiliging op netwerk-en toepassings niveau biedt voor verschillende abonnementen en virtuele netwerken.
 
 ## <a name="are-network-security-groups-nsgs-supported-on-the-azurefirewallsubnet"></a>Worden netwerk beveiligings groepen (Nsg's) ondersteund op de AzureFirewallSubnet?
 

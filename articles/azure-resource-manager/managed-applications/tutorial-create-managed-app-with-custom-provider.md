@@ -6,12 +6,12 @@ ms.author: lazinnat
 author: lazinnat
 ms.date: 06/20/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e8824f534f573d97353cc86d2a1b112b1acdb211
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ace58bd3bb89f9e8545bf125f272e62c3a134061
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494499"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949809"
 ---
 # <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>Zelfstudie: Een beheerde toepassing maken met aangepaste acties en resources
 
@@ -353,6 +353,6 @@ Als u vragen hebt over Azure Managed Applications, kunt u dit vragen op [Stack O
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Door Azure beheerde toepassingen in Marketplace](publish-marketplace-app.md) voor het in Azure Marketplace publiceren van uw beheerde toepassing.
+Zie [Door Azure beheerde toepassingen in Marketplace](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md) voor het in Azure Marketplace publiceren van uw beheerde toepassing.
 
 Meer informatie over [aangepaste Azure-providers](../custom-providers/overview.md).

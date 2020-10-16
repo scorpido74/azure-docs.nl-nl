@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/09/2018
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 2de6c07395a559085db237eb1bc7f885998860d0
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 3dcbb2567b9a92ea7d806acedb5d1cc6a31a966e
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235074"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069803"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Zelf studie: rapportage over automatische toewijzing van gebruikers accounts
 
@@ -29,7 +29,7 @@ In dit artikel wordt beschreven hoe u de status van inrichtings taken kunt contr
 De inrichtings connectors worden ingesteld en geconfigureerd met behulp van de [Azure Portal](https://portal.azure.com), door de [meegeleverde documentatie](../saas-apps/tutorial-list.md) voor de ondersteunde toepassing te volgen. Zodra de configuratie is geconfigureerd en wordt uitgevoerd, kunnen er twee methoden worden gebruikt voor het inrichten van taken:
 
 * **Azure Portal** : in dit artikel wordt voornamelijk beschreven hoe u rapport gegevens ophaalt op basis van de [Azure Portal](https://portal.azure.com), die zowel een samenvattings rapport voor de inrichting als gedetailleerde audit logboeken voor een bepaalde toepassing bevat.
-* **Audit-API** -Azure Active Directory biedt ook een controle-API waarmee de gedetailleerde inrichtings audit logboeken kunnen worden opgehaald. Zie [Azure Active Directory audit API-naslag informatie](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) voor documentatie die specifiek is voor het gebruik van deze API. Hoewel dit artikel niet specifiek betrekking heeft op het gebruik van de API, worden de typen inrichtings gebeurtenissen die in het audit logboek zijn vastgelegd, gedetailleerd beschreven.
+* **Audit-API** -Azure Active Directory biedt ook een controle-API waarmee de gedetailleerde inrichtings audit logboeken kunnen worden opgehaald. Zie [Azure Active Directory audit API-naslag informatie](/graph/api/resources/directoryaudit) voor documentatie die specifiek is voor het gebruik van deze API. Hoewel dit artikel niet specifiek betrekking heeft op het gebruik van de API, worden de typen inrichtings gebeurtenissen die in het audit logboek zijn vastgelegd, gedetailleerd beschreven.
 
 ### <a name="definitions"></a>Definities
 
@@ -71,5 +71,5 @@ Zie problemen met het [configureren en inrichten van gebruikers voor een toepass
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-* [Inrichten van gebruikers accounts voor zakelijke apps beheren](configure-automatic-user-provisioning-portal.md)
+* [Gebruikersaccountinrichting voor zakelijke apps beheren](configure-automatic-user-provisioning-portal.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)

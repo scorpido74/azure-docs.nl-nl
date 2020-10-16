@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 07/01/2020
 ms.author: tamram
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 115ab9767c23afd5876eb23821bd1283777cdb5e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 9fb77179a00969da7a3dc372dc70c99cfe4220ca
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018923"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090995"
 ---
 # <a name="manage-container-properties-and-metadata-with-net"></a>Container eigenschappen en meta gegevens beheren met .NET
 
-BLOB-containers ondersteunen systeem eigenschappen en door de gebruiker gedefinieerde meta gegevens, naast de gegevens die ze bevatten. In dit artikel wordt beschreven hoe u systeem eigenschappen en door de gebruiker gedefinieerde meta gegevens beheert met de [Azure Storage-client bibliotheek voor .net](/dotnet/api/overview/azure/storage?view=azure-dotnet).
+BLOB-containers ondersteunen systeem eigenschappen en door de gebruiker gedefinieerde meta gegevens, naast de gegevens die ze bevatten. In dit artikel wordt beschreven hoe u systeem eigenschappen en door de gebruiker gedefinieerde meta gegevens beheert met de [Azure Storage-client bibliotheek voor .net](/dotnet/api/overview/azure/storage).
 
 ## <a name="about-properties-and-metadata"></a>Over eigenschappen en meta gegevens
 

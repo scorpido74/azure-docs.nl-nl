@@ -3,12 +3,12 @@ title: Toegang tot een leslokaallab in Azure Lab Services | Microsoft Docs
 description: Meer informatie over hoe u zich registreert bij een leslokaal Lab, alle Labs bekijken die u kunt openen, een virtuele machine in de test omgeving starten/stoppen en verbinding maken met de virtuele machine.
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: cd06bfc2dff27f1ef1bc84f01b001b8dbd282cf4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0c2f0ba5e6a47e00f47a31e08c036ea17ff2507a
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334052"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946107"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Toegang tot een leslokaallab in Azure Lab Services
 In dit artikel wordt beschreven hoe u zich registreert bij een leslokaal Lab, alle lessen bekijkt die u kunt openen, een virtuele machine in het Lab wilt starten/stoppen en verbinding kunt maken met de virtuele machine. 

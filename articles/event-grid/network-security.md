@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: vkukke
 ms.openlocfilehash: 81544d71db5131f76dc2f9a613b6fd89ed57d076
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91326453"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>Netwerk beveiliging voor Azure Event Grid bronnen
@@ -33,7 +33,7 @@ U kunt service tags gebruiken voor het definiëren van netwerk toegangs beheer v
 ## <a name="ip-firewall"></a>IP-firewall 
 Azure Event Grid ondersteunt toegangs beheer op basis van IP voor het publiceren naar onderwerpen en domeinen. Met besturings elementen op basis van IP kunt u de uitgevers beperken tot een onderwerp of domein tot een set goedgekeurde computers en Cloud Services. Deze functie is een aanvulling op de [verificatie mechanismen](security-authentication.md) die door Event grid worden ondersteund.
 
-Het onderwerp en het domein zijn standaard toegankelijk vanaf internet, zolang de aanvraag geldig is voor verificatie en autorisatie. Met IP-firewall kunt u dit nog verder beperken tot een reeks IP-adressen of IP-adresbereiken in CIDR-notatie [(Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) . Uitgevers die afkomstig zijn van een ander IP-adres, worden geweigerd en ontvangen een 403 (verboden)-antwoord.
+Het onderwerp en het domein zijn standaard toegankelijk vanaf internet, zolang de aanvraag geldig is voor verificatie en autorisatie. Met IP-firewall kunt u dit nog verder beperken tot een reeks IP-adressen of IP-adresbereiken in CIDR-notatie [(klasseloze Inter-Domain route ring)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) . Uitgevers die afkomstig zijn van een ander IP-adres, worden geweigerd en ontvangen een 403 (verboden)-antwoord.
 
 Zie [Configure IP firewall](configure-firewall.md)(Engelstalig) voor stapsgewijze instructies voor het configureren van IP-Firewall voor onderwerpen en domeinen.
 
@@ -83,10 +83,10 @@ In de volgende tabel worden de verschillende statussen van de verbinding met het
 
 | Verbindings status   |  Publiceren voltooid (Ja/Nee) |
 | ------------------ | -------------------------------|
-| Goedgekeurd           | Yes                            |
-| Afgewezen           | No                             |
-| In behandeling            | No                             |
-| Ontkoppeld       | No                             |
+| Goedgekeurd           | Ja                            |
+| Afgewezen           | Nee                             |
+| In behandeling            | Nee                             |
+| Ontkoppeld       | Nee                             |
 
 Voor een geslaagde publicatie moet de verbindings status van het particuliere eind punt worden **goedgekeurd**. Als een verbinding wordt geweigerd, kan deze niet worden goedgekeurd met behulp van de Azure Portal. De enige mogelijkheid is de verbinding te verwijderen en in plaats daarvan een nieuwe te maken.
 

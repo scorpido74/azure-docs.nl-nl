@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 95f92d4e5616d7754c355610685701a8e089b84e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85847573"
 ---
 # <a name="move-data-from-an-odata-source-using-azure-data-factory"></a>Gegevens verplaatsen vanuit een OData-bron met behulp van Azure Data Factory
@@ -62,13 +62,13 @@ De volgende tabel bevat een beschrijving van de JSON-elementen die specifiek zij
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| type |De eigenschap type moet worden ingesteld op: **OData** |Yes |
-| url |De URL van de OData-service. |Yes |
-| authenticationType |Type verificatie dat wordt gebruikt om verbinding te maken met de OData-bron. <br/><br/> Voor Cloud OData zijn mogelijke waarden anoniem, basis en OAuth (Opmerking Azure Data Factory momenteel alleen op Azure Active Directory gebaseerde OAuth). <br/><br/> Voor on-premises OData zijn mogelijke waarden anoniem, basis en Windows. |Yes |
+| type |De eigenschap type moet worden ingesteld op: **OData** |Ja |
+| url |De URL van de OData-service. |Ja |
+| authenticationType |Type verificatie dat wordt gebruikt om verbinding te maken met de OData-bron. <br/><br/> Voor Cloud OData zijn mogelijke waarden anoniem, basis en OAuth (Opmerking Azure Data Factory momenteel alleen op Azure Active Directory gebaseerde OAuth). <br/><br/> Voor on-premises OData zijn mogelijke waarden anoniem, basis en Windows. |Ja |
 | gebruikersnaam |Geef de gebruikers naam op als u basis verificatie gebruikt. |Ja (alleen als u basis verificatie gebruikt) |
 | wachtwoord |Geef het wacht woord op voor het gebruikers account dat u hebt opgegeven voor de gebruikers naam. |Ja (alleen als u basis verificatie gebruikt) |
 | authorizedCredential |Als u OAuth gebruikt, klikt u op de knop **machtigen** in de wizard Data Factory kopiëren of de editor en voert u uw referenties in. vervolgens wordt de waarde van deze eigenschap automatisch gegenereerd. |Ja (alleen als u OAuth-verificatie gebruikt) |
-| gatewayName |De naam van de gateway die de Data Factory-service moet gebruiken om verbinding te maken met de on-premises OData-service. Geef alleen op als u gegevens kopieert uit on-premises OData-bron. |No |
+| gatewayName |De naam van de gateway die de Data Factory-service moet gebruiken om verbinding te maken met de on-premises OData-service. Geef alleen op als u gegevens kopieert uit on-premises OData-bron. |Nee |
 
 ### <a name="using-basic-authentication"></a>Basis verificatie gebruiken
 ```json
@@ -147,7 +147,7 @@ De sectie **typeProperties** verschilt voor elk type gegevensset en bevat inform
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| path |Pad naar de OData-resource |No |
+| leertraject |Pad naar de OData-resource |Nee |
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 Zie het artikel [pijp lijnen maken](data-factory-create-pipelines.md) voor een volledige lijst met secties & eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. Eigenschappen zoals naam, beschrijving, invoer-en uitvoer tabellen en beleid zijn beschikbaar voor alle typen activiteiten.
@@ -158,7 +158,7 @@ Wanneer bron van het type **RelationalSource** (inclusief OData), zijn de volgen
 
 | Eigenschap | Beschrijving | Voorbeeld | Vereist |
 | --- | --- | --- | --- |
-| query |Gebruik de aangepaste query om gegevens te lezen. |"? $select = naam, beschrijving&$top = 5" |No |
+| query |Gebruik de aangepaste query om gegevens te lezen. |"? $select = naam, beschrijving&$top = 5" |Nee |
 
 ## <a name="type-mapping-for-odata"></a>Type toewijzing voor OData
 Zoals vermeld in het artikel [activiteiten voor gegevens verplaatsing](data-factory-data-movement-activities.md) voert Kopieer activiteit automatisch type conversies uit van bron typen naar Sink-typen met de volgende twee stappen.
@@ -174,10 +174,10 @@ Bij het verplaatsen van gegevens uit OData worden de volgende toewijzingen gebru
 | Edm.Boolean |Booleaanse waarde |
 | EDM. byte |Byte [] |
 | EDM. DateTime |DateTime |
-| EDM. decimaal |Decimal |
+| EDM. decimaal |Decimaal |
 | Edm.Double |Dubbel |
 | EDM. single |Enkelvoudig |
-| EDM. GUID |GUID |
+| EDM. GUID |Guid |
 | EDM. Int16 |Int16 |
 | Edm.Int32 |Int32 |
 | Edm.Int64 |Int64 |

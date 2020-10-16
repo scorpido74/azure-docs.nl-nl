@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 09/26/2019
 ms.openlocfilehash: c0648100e155d1462f3291a7f5f078cf316bc0aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84465640"
 ---
 # <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>Azure NetApp Files integreren met de Azure Kubernetes-service
@@ -21,7 +21,7 @@ In dit artikel wordt ervan uitgegaan dat u beschikt over een bestaand AKS-cluste
 > [!IMPORTANT]
 > Uw AKS-cluster moet ook deel uitmaken [van een regio die Azure NetApp files ondersteunt][anf-regions].
 
-Ook moet de Azure CLI-versie 2.0.59 of hoger zijn geïnstalleerd en geconfigureerd. Voer  `az --version` uit om de versie te bekijken. Als u de Azure CLI wilt installeren of upgraden, raadpleegt u  [Azure CLI installeren][install-azure-cli].
+Ook moet de Azure CLI-versie 2.0.59 of hoger zijn geïnstalleerd en geconfigureerd. Voer  `az --version` uit om de versie te bekijken. Als u wilt installeren of upgraden, raadpleegt u [Azure cli installeren][install-azure-cli].
 
 ### <a name="limitations"></a>Beperkingen
 
@@ -36,7 +36,7 @@ De volgende beperkingen zijn van toepassing wanneer u Azure NetApp Files gebruik
 ## <a name="configure-azure-netapp-files"></a>Azure NetApp Files configureren
 
 > [!IMPORTANT]
-> Voordat u de resource provider *micro soft. NetApp* kunt registreren, moet u het [Verzend formulier van de Azure NetApp files Waitlist][anf-waitlist] voor uw abonnement volt ooien. U kunt de levering van resources pas registreren nadat u de officiële bevestigings-e-mail van het Azure NetApp Files-team hebt ontvangen.
+> Voordat u de resource provider  *micro soft. NetApp* kunt registreren, moet u het [Verzend formulier van de Azure NetApp files Waitlist][anf-waitlist] voor uw abonnement volt ooien. U kunt de levering van resources pas registreren nadat u de officiële bevestigings-e-mail van het Azure NetApp Files-team hebt ontvangen.
 
 Registreer de resource provider *micro soft. NetApp* :
 

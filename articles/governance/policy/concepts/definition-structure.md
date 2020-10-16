@@ -1,14 +1,14 @@
 ---
 title: Details van de structuur van de beleids definitie
 description: Hierin wordt beschreven hoe beleids definities worden gebruikt om conventies voor Azure-resources in uw organisatie in te richten.
-ms.date: 09/22/2020
+ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: f9b64255723c6e53a6d8fe945bf19506ba30644e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 84af781ae58ab45b69d71ebdc22fbced910da246
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330278"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074257"
 ---
 # <a name="azure-policy-definition-structure"></a>Structuur van Azure-beleidsdefinities
 
@@ -104,17 +104,17 @@ U wordt aangeraden de **modus** `all` in de meeste gevallen in te stellen. Alle 
 
 ### <a name="resource-provider-modes"></a>Resource provider modi
 
-Het volgende knoop punt van de resource provider wordt volledig ondersteund:
+De volgende resource provider modus wordt volledig ondersteund:
 
 - `Microsoft.Kubernetes.Data` voor het beheren van uw Kubernetes-clusters in of uit Azure. Definities die gebruikmaken van deze resource provider modus, gebruiken effecten _controleren_, _weigeren_en _uitgeschakeld_. Het gebruik van het [EnforceOPAConstraint](./effects.md#enforceopaconstraint) -effect is _afgeschaft_.
 
 De volgende resource provider modi worden momenteel ondersteund als een **Preview**:
 
 - `Microsoft.ContainerService.Data` voor het beheren van regels voor toegangs beheer in de [Azure Kubernetes-service](../../../aks/intro-kubernetes.md). Definities die gebruikmaken van deze resource provider modus **moeten** het [EnforceRegoPolicy](./effects.md#enforceregopolicy) -effect gebruiken. Deze modus is _afgeschaft_.
-- `Microsoft.KeyVault.Data` voor het beheren van kluizen en certificaten in [Azure Key Vault](../../../key-vault/general/overview.md).
+- `Microsoft.KeyVault.Data` voor het beheren van kluizen en certificaten in [Azure Key Vault](../../../key-vault/general/overview.md). Zie [Azure Key Vault integreren met Azure Policy](../../../key-vault/general/azure-policy.md)voor meer informatie over deze beleids definities.
 
 > [!NOTE]
-> De modi van de resource provider ondersteunen alleen ingebouwde beleids definities.
+> De modi van de resource provider ondersteunen alleen ingebouwde beleids definities en bieden geen ondersteuning voor [uitzonde ringen](./exemption-structure.md).
 
 ## <a name="metadata"></a>Metagegevens
 
@@ -226,12 +226,12 @@ In de **blok kering** definieert u het effect dat optreedt wanneer aan de voor w
         <condition> | <logical operator>
     },
     "then": {
-        "effect": "deny | audit | append | auditIfNotExists | deployIfNotExists | disabled"
+        "effect": "deny | audit | modify | append | auditIfNotExists | deployIfNotExists | disabled"
     }
 }
 ```
 
-### <a name="logical-operators"></a>Logische operators
+### <a name="logical-operators"></a>Logische operatoren
 
 Ondersteunde logische Opera tors zijn:
 
@@ -306,6 +306,9 @@ De volgende velden worden ondersteund:
 - `type`
 - `location`
   - Gebruik **Global** voor resources die de locatie neutraal.
+- `id`
+  - Retourneert de resource-ID van de resource die wordt geëvalueerd.
+  - Voorbeeld: `/subscriptions/06be863d-0996-4d56-be22-384767287aa2/resourceGroups/myRG/providers/Microsoft.KeyVault/vaults/myVault`
 - `identity.type`
   - Retourneert het type [beheerde identiteit](../../../active-directory/managed-identities-azure-resources/overview.md) dat is ingeschakeld voor de bron.
 - `tags`
@@ -435,7 +438,7 @@ Gebruik in plaats daarvan de functie [als ()](../../../azure-resource-manager/te
 
 Met de gereviseerde beleids regel `if()` controleert u de lengte van de **naam** voordat u probeert een `substring()` waarde op te halen die korter is dan drie tekens. Als de **naam** te kort is, wordt de waarde ' niet beginnend met ABC ' geretourneerd in plaats van **ABC**. Een resource met een korte naam die niet met **ABC** begint, mislukt nog steeds de beleids regel, maar veroorzaakt geen fout meer tijdens de evaluatie.
 
-### <a name="count"></a>Aantal
+### <a name="count"></a>Count
 
 Voor waarden die tellen hoeveel leden van een matrix in de resource-nettolading voldoen aan een voor waarde-expressie, kunnen worden gevormd met de expressie **Count** . Bij algemene scenario's wordt gecontroleerd of ten minste één van ', ' precies één van ', ' alle of ' geen van ' de matrix leden voldoen aan de voor waarde. met **Count** wordt elk lid van een [ \[ \* \] alias](#understanding-the--alias) matrix geëvalueerd voor een voorwaarde expressie en worden de _werkelijke_ resultaten opgeteld, die vervolgens worden vergeleken met de operator voor expressies. Expressies met **aantallen** kunnen Maxi maal drie keer worden toegevoegd aan een enkele **policyRule** -definitie.
 
@@ -606,8 +609,20 @@ De volgende functies zijn alleen beschikbaar in beleids regels:
     "definitionReferenceId": "StorageAccountNetworkACLs"
   }
   ```
-  
-  
+
+
+- `ipRangeContains(range, targetRange)`
+    - **Range**: [required] string-teken reeks die een bereik van IP-adressen aangeeft.
+    - **targetRange**: [vereist] teken reeks-teken reeks die een bereik van IP-adressen aangeeft.
+
+    Retourneert of het opgegeven IP-adres bereik het doel-IP-adres bereik bevat. Lege bereiken of combi neren tussen IP-families is niet toegestaan en resulteert in een evaluatie fout.
+
+    Ondersteunde indelingen:
+    - Eén IP-adres (voor beelden: `10.0.0.0` , `2001:0DB8::3:FFFE` )
+    - CIDR-bereik (voor beelden: `10.0.0.0/24` , `2001:0DB8::/110` )
+    - Het bereik dat is gedefinieerd door de begin-en eind-IP-adressen (voor beelden: `192.168.0.1-192.168.0.9` , `2001:0DB8::-2001:0DB8::3:FFFF` )
+
+
 #### <a name="policy-function-example"></a>Voor beeld van beleids functie
 
 In dit voor beeld van een beleids regel wordt de `resourceGroup` functie resource gebruikt voor het ophalen van de eigenschap **name** , gecombineerd met de `concat` functie Array en object, om een voor waarde op te bouwen `like` die de resource naam afdwingt om te beginnen met de naam van de resource groep.

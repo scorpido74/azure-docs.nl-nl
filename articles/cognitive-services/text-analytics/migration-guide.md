@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 06/25/2020
 ms.author: aahi
 ms.openlocfilehash: 12c09ad8e1db3914263fcc864c9c2d09069d63a6
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85412580"
 ---
 # <a name="migrate-to-version-3x-of-the-text-analytics-api"></a>Migreren naar versie 3. x van de Text Analytics-API
@@ -23,7 +23,7 @@ ms.locfileid: "85412580"
 
 Als u versie 2,1 van de Text Analytics-API gebruikt, helpt dit artikel u bij het upgraden van uw toepassing tot het gebruik van versie 3. x. Versie 3,0 is algemeen beschikbaar en introduceert nieuwe functies zoals uitgebreide [entity Recognition (ner)](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) en [model versie beheer](concepts/model-versioning.md). Er is ook een preview-versie van v 3.1 (v 3.1-Preview. x) beschikbaar, waarmee u functies zoals [opinie Mining](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)kunt toevoegen. De modellen die in v2 worden gebruikt, ontvangen geen toekomstige updates. 
 
-#### <a name="sentiment-analysis"></a>[Sentiment analyse](#tab/sentiment-analysis)
+#### <a name="sentiment-analysis"></a>[Sentimentanalyse](#tab/sentiment-analysis)
 
 ## <a name="feature-changes"></a>Functie wijzigingen 
 
@@ -67,7 +67,7 @@ U moet uw toepassing ook bijwerken om de [entiteits categorieën](named-entity-t
 [!INCLUDE [Client library migration information](includes/client-library-migration-section.md)]
 
 
-#### <a name="language-detection"></a>[Taal detectie](#tab/language-detection)
+#### <a name="language-detection"></a>[Taaldetectie](#tab/language-detection)
 
 ## <a name="feature-changes"></a>Functie wijzigingen 
 
@@ -84,7 +84,7 @@ Als uw toepassing het REST API gebruikt, werkt u het aanvraag eindpunt bij naar 
 [!INCLUDE [Client library migration information](includes/client-library-migration-section.md)]
 
 
-#### <a name="key-phrase-extraction"></a>[Extractie van sleutel woorden](#tab/key-phrase-extraction)
+#### <a name="key-phrase-extraction"></a>[Sleuteltermextractie](#tab/key-phrase-extraction)
 
 ## <a name="feature-changes"></a>Functie wijzigingen 
 
@@ -106,6 +106,6 @@ Als uw toepassing het REST API gebruikt, werkt u het aanvraag eindpunt bij naar 
 ## <a name="see-also"></a>Zie ook
 
 * [Naslag informatie over Text Analytics-API v2](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/)
-* [Wat is het Text Analytics-API](overview.md)
+* [Wat is de Text Analytics-API?](overview.md)
 * [Taalondersteuning](language-support.md)
 * [Versiebeheer model](concepts/model-versioning.md)

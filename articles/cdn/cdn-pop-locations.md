@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2020
 ms.author: allensu
-ms.openlocfilehash: 66eafb818b09d6d1cde6c1f3e2dbcdaf55352248
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e9092e9564fadb07311b151948656bc6cd007323
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87002978"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951720"
 ---
 # <a name="azure-cdn-coverage-by-metro"></a>Dekking Azure CDN per metro lijn 
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ In dit artikel vindt u een overzicht van de huidige metro lijnen die POP-locatie
 | Regio | Microsoft | Verizon | Akamai |
 | --- | --- | --- | --- |
 | Noord-Amerika | Toronto, Canada<br />Vancouver, Canada<br />Montreal, Canada<br />Querétaro, Mexico<br />San-Juan, Puerto Rico<br />Ashburn, VA, USA<br />Atlanta, NH, USA<br />Raleigh, NC, USA<br />Boston, MA, USA<br />Cheyenne, WY, USA<br />Chicago, IL, USA<br /> Rotterdam, TX, USA<br />Denver, CO, USA<br />Honolulu, HI, USA<br />Houston, TX, USA<br />Neon, NV, USA<br />Los Angeles, CA, USA<br />Miami, FL, USA<br />New York, NY, USA<br />Newark, NJ, USA<br />Phoenix, AZ, USA<br />Rotterdam, of USA<br />San Antonio, TX, USA<br />San Jose, CA, USA<br />Seattle, WA, USA | Guadalajara, Mexico<br />Mexico City, Mexico<br />Puebla, Mexico<br />Querétaro, Mexico<br />Atlanta, NH, USA<br />Boston, MA, USA<br />Chicago, IL, USA<br />Rotterdam, TX, USA<br />Denver, CO, USA<br />Detroit, MI, USA<br />Los Angeles, CA, USA<br />Miami, FL, USA<br />New York, NY, USA<br />Philadelphia, PA, USA<br />San Jose, CA, USA<br />Seattle, WA, USA<br />Washington, DC, USA <br /> Ashburn, VA, USA <br /> Phoenix, AZ, USA | Canada<br />Mexico<br />VS |
-| Zuid-Amerika | Campinas, Brazilië<br />Rio de Janeiro, Brazilië<br />Sao Paulo, Brazilië<br />Santiago, Chili<br />Bogotá, Colombia<br />Buenos Aires, Argentinië | Buenos Aires, Argentinië<br />Rio de Janeiro, Brazilië<br />Sao Paulo, Brazilië<br />Valparaíso, Chili<br />Bogotá, Colombia<br />Barranquilla, Colombia<br />Medellin, Colombia<br />Quito, Ecuador<br />Lima, Peru | Argentinië<br />Brazilië<br />Chili<br />Laan<br />Ecuador<br />Peru<br />Uruguay |
+| Zuid-Amerika | Campinas, Brazilië<br />Rio de Janeiro, Brazilië<br />Sao Paulo, Brazilië<br />Santiago, Chili<br />Bogotá, Colombia<br />Buenos Aires, Argentinië | Buenos Aires, Argentinië<br />Rio de Janeiro, Brazilië<br />Sao Paulo, Brazilië<br />Valparaíso, Chili<br />Bogotá, Colombia<br />Barranquilla, Colombia<br />Medellin, Colombia<br />Quito, Ecuador<br />Lima, Peru | Argentinië<br />Brazilië<br />Chili<br />Colombia<br />Ecuador<br />Peru<br />Uruguay |
 | Europa | Wenen, Oosten rijk<br />Brussel, België<br />Sofia, Bulgarije<br />Zagreb, Kroatië<br />Praag, Tsjechië<br />Kopen Hagen, Denemarken<br /> Helsinki, Finland<br /> Oslo, Noor wegen<br />Marseille, Frank rijk<br />Parijs, Frankrijk<br />Berlijn, Duitsland<br />Frankfurt, Duitsland<br />Athene, Grieken land<br />Boedapest, Hongarije<br />Dublin, Ierland<br />Milaan, Italië<br />Rome, Italië<br />Amsterdam, Nederland<br />Warschau, Polen<br />Lissabon, Portugal<br />Boekarest, Roemenië<br />Barcelona, Spanje<br />Madrid, Spanje<br />Stockholm, Zweden<br />Zürich, Zwitser land<br />Genève, Zwitser land<br />Londen, UK<br />Manchester, UK | Wenen, Oosten rijk<br />Kopen Hagen, Denemarken<br />Helsinki, Finland<br />Marseille, Frank rijk<br />Parijs, Frankrijk<br />Frankfurt, Duitsland<br />Milaan, Italië<br />Riga, Letland<br />Amsterdam, Nederland<br />Warschau, Polen<br />Madrid, Spanje<br />Stockholm, Zweden<br />Londen, UK <br /> Manchester, UK| Oostenrijk<br />Bulgarije<br />Denemarken<br />Finland<br />Frankrijk<br />Duitsland<br />Griekenland<br />Ierland<br />Italië<br />Nederland<br />Polen<br />Rusland<br />Spanje<br />Zweden<br />Zwitserland<br />Verenigd Koninkrijk |
 | Afrika | Kaap stad, Zuid-Afrika<br />Johannes Burg, Zuid-Afrika<br />Lagos, Nigeria<br />Nairobi, Kenia | Johannes Burg, Zuid-Afrika <br/> Nairobi, Kenia | Zuid-Afrika |
 | Midden-Oosten | Dubai, Verenigde Arabische Emiraten<br />Tel Aviv, Israël<br />Istanboel, Turkije | Muscat, Oman<br />Fujirah, Verenigde Arabische Emiraten | Qatar<br />Verenigde Arabische Emiraten |

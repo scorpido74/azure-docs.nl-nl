@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/22/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: d1e7c90e558a6834a169b528d2e8c2f96af377b0
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 4f217a53c23df4f161207aaceb528680ddcddbe7
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705694"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972795"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>Niet-aangesloten beheerde en niet-beheerde Azure-schijven zoeken en verwijderen
 
@@ -20,7 +20,7 @@ Wanneer u een virtuele machine (VM) in azure verwijdert, worden schijven die zij
 
 ## <a name="managed-disks-find-and-delete-unattached-disks"></a>Managed disks: niet-gekoppelde schijven zoeken en verwijderen
 
-Het volgende script zoekt naar niet-gekoppelde [beheerde schijven](managed-disks-overview.md) door de waarde van de eigenschap **ManagedBy** te controleren. Wanneer een beheerde schijf is gekoppeld aan een virtuele machine, bevat de eigenschap **ManagedBy** de resource-id van de virtuele machine. Wanneer een beheerde schijf niet is gekoppeld, is de eigenschap **ManagedBy** null. Het script onderzoekt alle beheerde schijven in een Azure-abonnement. Wanneer het script een beheerde schijf zoekt waarvan de eigenschap **ManagedBy** is ingesteld op NULL, wordt door het script bepaald dat de schijf niet is gekoppeld.
+Het volgende script zoekt naar niet-gekoppelde [beheerde schijven](../managed-disks-overview.md) door de waarde van de eigenschap **ManagedBy** te controleren. Wanneer een beheerde schijf is gekoppeld aan een virtuele machine, bevat de eigenschap **ManagedBy** de resource-id van de virtuele machine. Wanneer een beheerde schijf niet is gekoppeld, is de eigenschap **ManagedBy** null. Het script onderzoekt alle beheerde schijven in een Azure-abonnement. Wanneer het script een beheerde schijf zoekt waarvan de eigenschap **ManagedBy** is ingesteld op NULL, wordt door het script bepaald dat de schijf niet is gekoppeld.
 
 >[!IMPORTANT]
 >Voer eerst het script uit door de variabele **deleteUnattachedDisks** in te stellen op 0. Met deze actie kunt u alle niet-gekoppelde beheerde schijven zoeken en weer geven.

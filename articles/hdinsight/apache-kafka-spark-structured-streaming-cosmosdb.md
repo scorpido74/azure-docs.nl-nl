@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/18/2019
 ms.openlocfilehash: 0a2e69a220f6752e5f0392c345b02967e2e76beb
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86203468"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Apache Spark Structured streaming gebruiken met Apache Kafka en Azure Cosmos DB
@@ -32,7 +32,7 @@ Spark Structured Streaming is een streamverwerkingsengine gebaseerd op Spark SQL
 
 ## <a name="create-the-clusters"></a>De clusters maken
 
-Apache Kafka op HDInsight biedt geen toegang tot de Kafka-Brokers via het open bare Internet. Alles wat er naar Kafka praat, moet zich in hetzelfde virtuele Azure-netwerk bevindt als de knoop punten in het Kafka-cluster. In dit voor beeld bevinden zowel de Kafka-als Spark-clusters zich in een virtueel Azure-netwerk. In het volgende diagram ziet u hoe communicatie stromen tussen de clusters:
+Apache Kafka in HDInsight biedt geen toegang tot de Kafka-brokers via het openbare internet. Alles wat er naar Kafka praat, moet zich in hetzelfde virtuele Azure-netwerk bevindt als de knoop punten in het Kafka-cluster. In dit voor beeld bevinden zowel de Kafka-als Spark-clusters zich in een virtueel Azure-netwerk. In het volgende diagram ziet u hoe communicatie stromen tussen de clusters:
 
 ![Diagram van Spark- en Kafka-clusters in een Azure Virtual Network](./media/apache-kafka-spark-structured-streaming-cosmosdb/apache-spark-kafka-vnet.png)
 
@@ -73,12 +73,12 @@ Hoewel u hand matig een Azure Virtual Network-, Kafka-en Spark-cluster kunt make
     |Cluster versie|De versie van het HDInsight-cluster. Dit voor beeld is getest met HDInsight 3,6 en werkt mogelijk niet met andere cluster typen.|
     |Gebruikersnaam voor clusteraanmelding|De gebruikers naam van de beheerder voor de Spark-en Kafka-clusters.|
     |Wachtwoord voor clusteraanmelding|Het gebruikers wachtwoord van de beheerder voor de Spark-en Kafka-clusters.|
-    |SSH-gebruikers naam|De SSH-gebruiker die moet worden gemaakt voor de Spark-en Kafka-clusters.|
-    |SSH-wacht woord|Het wacht woord voor de SSH-gebruiker voor de Spark-en Kafka-clusters.|
+    |Ssh-gebruikersnaam|De SSH-gebruiker die moet worden gemaakt voor de Spark-en Kafka-clusters.|
+    |Ssh-wachtwoord|Het wacht woord voor de SSH-gebruiker voor de Spark-en Kafka-clusters.|
 
     ![Aangepaste waarden voor HDInsight-implementatie](./media/apache-kafka-spark-structured-streaming-cosmosdb/hdi-custom-parameters.png)
 
-1. Lees de voor **waarden**en selecteer **Ik ga akkoord met de bovenstaande voor waarden**.
+1. Lees de **voorwaarden** en schakel vervolgens het selectievakje **Ik ga akkoord met de bovenstaande voorwaarden** in.
 
 1. Selecteer ten slotte **Inkoop**. Het kan 45 minuten duren om de clusters, het virtuele netwerk en het Cosmos DB-account te maken.
 

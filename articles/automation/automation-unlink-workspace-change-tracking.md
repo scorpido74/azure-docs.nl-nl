@@ -6,17 +6,17 @@ ms.date: 4/11/2019
 ms.topic: conceptual
 ms.custom: mvc
 ms.openlocfilehash: 2be702ec6e820fe71dd8d2da7aa4cf831b52402e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83828250"
 ---
 # <a name="unlink-workspace-from-automation-account"></a>De werkruimte ontkoppelen van het Automation-account
 
 U kunt ervoor kiezen uw Automation-account niet te integreren met een Log Analytics-werk ruimte bij het inschakelen van [Wijzigingen bijhouden-en inventaris](change-tracking.md) bewerkingen. In dit artikel leest u hoe u de werk ruimte ontkoppelt van uw account.
 
-1. Aanmelden bij Azure op https://portal.azure.com.
+1. Meld u aan bij Azure op https://portal.azure.com.
 
 2. Verwijder Updatebeheer voor uw virtuele machines. Zie [vm's uit wijzigingen bijhouden en inventaris verwijderen](automation-remove-vms-from-change-tracking.md).
 

@@ -7,17 +7,17 @@ ms.topic: how-to
 ms.date: 01/25/2019
 ms.author: cynthn
 ms.openlocfilehash: 34f43d51bf0df488e04605f7f7c77e9c6dcfe9a4
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87374079"
 ---
 # <a name="find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Linux-VM-installatiekopieën zoeken in de Azure Marketplace met de Azure CLI
 
 In dit onderwerp wordt beschreven hoe u de Azure CLI gebruikt om VM-installatie kopieën te vinden in de Azure Marketplace. Gebruik deze informatie om een Marketplace-installatie kopie op te geven wanneer u via een programma een virtuele machine maakt met de CLI, Resource Manager-sjablonen of andere hulpprogram ma's.
 
-Blader ook naar beschik bare installatie kopieën en aanbiedingen met behulp van de [Azure Marketplace](https://azuremarketplace.microsoft.com/) -winkel, de [Azure Portal](https://portal.azure.com)of [Azure PowerShell](../windows/cli-ps-findimage.md). 
+Blader ook naar beschik bare installatie kopieën en aanbiedingen met behulp van de [Azure Marketplace](https://azuremarketplace.microsoft.com/) -winkel, de [Azure Portal](https://portal.azure.com)of  [Azure PowerShell](../windows/cli-ps-findimage.md). 
 
 Zorg ervoor dat u de nieuwste [Azure cli](/cli/azure/install-azure-cli) hebt geïnstalleerd en bent aangemeld bij een Azure-account ( `az login` ).
 

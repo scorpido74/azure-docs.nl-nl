@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/1/2018
 ms.openlocfilehash: 73560c49e10ab96c934d4dd3cea9395093a26420
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82629045"
 ---
 # <a name="copy-files-from-multiple-containers-with-azure-data-factory"></a>Bestanden van meerdere containers met Azure Data Factory kopiëren
@@ -36,7 +36,7 @@ De sjabloon bevat drie activiteiten:
 - **Foreach** haalt de container lijst op uit de **GetMetadata** -activiteit en herhaalt vervolgens de lijst en geeft elke container door aan de Kopieer activiteit.
 - **Copy** kopieert elke container uit het opslag archief van de bron naar het doel archief.
 
-De sjabloon definieert de volgende para meters:
+Met de sjabloon worden de volgende parameters gedefinieerd:
 - *SourceFileFolder* is het mappad van de gegevens bron opslag, waar u een lijst van de containers kunt ophalen. Het pad is de hoofdmap die meerdere container mappen bevat. De standaard waarde van deze para meter is `sourcefolder` .
 - *SourceFileDirectory* is het pad naar de submap onder de hoofdmap van uw gegevens bron archief. De standaard waarde van deze para meter is `subfolder` .
 - *DestinationFileFolder* is het mappad waarnaar de bestanden worden gekopieerd in uw doel archief. De standaard waarde van deze para meter is `destinationfolder` .

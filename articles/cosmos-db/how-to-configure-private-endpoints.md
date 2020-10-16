@@ -8,10 +8,10 @@ ms.date: 09/18/2020
 ms.author: thweiss
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: dd1a59c2e6b0656233174c53b08ab013ce73d0f1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91334426"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Een persoonlijke Azure-koppeling configureren voor een Azure Cosmos-account
@@ -98,7 +98,7 @@ Nadat het persoonlijke eind punt is ingericht, kunt u een query uitvoeren op de 
 1. Zoek naar het persoonlijke eind punt dat u eerder hebt gemaakt. In dit geval is het **cdbPrivateEndpoint3**.
 1. Selecteer het tabblad **overzicht** om de DNS-instellingen en IP-adressen te bekijken.
 
-:::image type="content" source="./media/how-to-configure-private-endpoints/private-ip-addresses-portal.png" alt-text="Privé-IP-adressen in de Azure Portal":::
+:::image type="content" source="./media/how-to-configure-private-endpoints/private-ip-addresses-portal.png" alt-text="Selecties voor het maken van een persoonlijk eind punt in de Azure Portal":::
 
 Er zijn meerdere IP-adressen gemaakt per particulier eind punt:
 
@@ -411,7 +411,7 @@ Voor deze accounts moet u één persoonlijk eind punt maken voor elk API-type. H
 
 Nadat de sjabloon is geïmplementeerd, kunt u een uitvoer zien die vergelijkbaar is met wat er in de volgende afbeelding wordt weer gegeven. De `provisioningState` waarde is `Succeeded` als de persoonlijke eind punten correct zijn ingesteld.
 
-:::image type="content" source="./media/how-to-configure-private-endpoints/resource-manager-template-deployment-output.png" alt-text="Implementatie-uitvoer voor de Resource Manager-sjabloon":::
+:::image type="content" source="./media/how-to-configure-private-endpoints/resource-manager-template-deployment-output.png" alt-text="Selecties voor het maken van een persoonlijk eind punt in de Azure Portal":::
 
 Nadat de sjabloon is geïmplementeerd, worden de privé-IP-adressen in het subnet gereserveerd. De firewall regel van het Azure Cosmos-account is geconfigureerd om alleen verbindingen van het privé-eind punt te accepteren.
 

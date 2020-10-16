@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: ramamill
 ms.openlocfilehash: 14f0eaee1ede4da3b80ddd94d5c915438e97f8f4
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90530060"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>Over de Mobility-service voor VMware-Vm's en fysieke servers
@@ -85,15 +85,15 @@ Tijdens een push-installatie van de Mobility-service worden de volgende stappen 
 
 1. Controleer de installatie in **voortgang**van de installatie. Nadat de installatie is voltooid, selecteert u **door gaan naar configuratie** om de service te registreren bij de configuratie server.
 
-    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility3.png" alt-text="Pagina registratie van Mobility-service.":::
+    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility3.png" alt-text="Pagina installatie optie voor Mobility-service.":::
 
 1. Geef in details van de **Configuratie server**het IP-adres en de wachtwoordzin op die u hebt geconfigureerd.
 
-    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility4.png" alt-text="Pagina registratie van Mobility-service.":::
+    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility4.png" alt-text="Pagina installatie optie voor Mobility-service.":::
 
 1. Selecteer **registreren** om de registratie te volt ooien.
 
-    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility5.png" alt-text="Laatste pagina Registratie Mobility-service.":::
+    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility5.png" alt-text="Pagina installatie optie voor Mobility-service.":::
 
 ## <a name="install-the-mobility-service-using-command-prompt"></a>De Mobility-service installeren met behulp van de opdracht prompt
 

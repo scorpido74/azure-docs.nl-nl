@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: conceptual
-ms.date: 09/14/2020
+ms.date: 10/12/2020
 tags: connectors
-ms.openlocfilehash: 2993fc718462d1ac2a9cfd02be5642fb21f86702
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 5834a1927fda71faa924e14265fb7f82034887de
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526524"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996353"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Berichten uitwisselen in de Cloud met behulp van Azure Logic Apps en Azure Service Bus
 
@@ -79,7 +79,7 @@ Controleer of uw logische app machtigingen heeft om toegang te krijgen tot uw Se
    Sommige triggers, zoals het **tijdstip waarop een of meer berichten binnenkomen in een wachtrij (automatisch volt ooien)** , kunnen een of meer berichten retour neren. Wanneer deze triggers worden geactiveerd, retour neren ze tussen één en het aantal berichten dat is opgegeven door de eigenschap **maximum aantal berichten** van de trigger.
 
     > [!NOTE]
-    > Met de trigger automatisch aanvullen wordt een bericht automatisch voltooid, maar de voltooiing wordt alleen uitgevoerd bij de volgende trigger. Dit gedrag kan van invloed zijn op het ontwerp van uw logische app. Vermijd het wijzigen van de gelijktijdigheid van de trigger voor automatisch aanvullen, omdat deze wijziging kan leiden tot dubbele berichten als de logische app een vertraagde status krijgt. Het wijzigen van het gelijktijdigheids beheer heeft de volgende voor waarden: beperkte triggers worden overgeslagen met de `WorkflowRunInProgress` code, de voltooiings bewerking vindt niet plaats en de volgende trigger wordt uitgevoerd na het polling-interval. U moet de vergrendelings duur van de service bus instellen op een waarde die langer is dan het polling-interval. Ondanks deze instelling kan het bericht echter nog steeds niet worden voltooid als uw logische app in een vertragings status bij het volgende polling-interval blijft.
+    > Met de trigger voor automatisch aanvullen wordt automatisch een bericht voltooid, maar de voltooiing vindt alleen plaats bij de volgende aanroep van Service Bus. Dit gedrag kan van invloed zijn op het ontwerp van uw logische app. Vermijd het wijzigen van de gelijktijdigheid van de trigger voor automatisch aanvullen, omdat deze wijziging kan leiden tot dubbele berichten als de logische app een vertraagde status krijgt. Het wijzigen van het gelijktijdigheids beheer heeft de volgende voor waarden: beperkte triggers worden overgeslagen met de `WorkflowRunInProgress` code, de voltooiings bewerking vindt niet plaats en de volgende trigger wordt uitgevoerd na het polling-interval. U moet de vergrendelings duur van de service bus instellen op een waarde die langer is dan het polling-interval. Ondanks deze instelling kan het bericht echter nog steeds niet worden voltooid als uw logische app in een vertragings status bij het volgende polling-interval blijft.
 
 1. Als uw trigger voor de eerste keer verbinding maakt met uw Service Bus-naam ruimte, voert u de volgende stappen uit wanneer de ontwerp functie voor logische apps u om verbindings informatie vraagt.
 
@@ -162,6 +162,10 @@ Controleer of uw logische app machtigingen heeft om toegang te krijgen tot uw Se
 Wanneer u verwante berichten in een specifieke volg orde wilt verzenden, kunt u het [ *sequentiële verwerkings* patroon](/azure/architecture/patterns/sequential-convoy) gebruiken met behulp van de [Azure service bus-connector](../connectors/connectors-create-api-servicebus.md). Gerelateerde berichten hebben een eigenschap die de relatie tussen deze berichten definieert, zoals de ID van de [sessie](../service-bus-messaging/message-sessions.md) in service bus.
 
 Wanneer u een logische app maakt, kunt u de **gecorreleerde order levering selecteren met behulp van service bus-sessie** sjabloon, waarmee het sequentiële verwerkings-patroon wordt geïmplementeerd. Zie [Verwante berichten verzenden in de aangegeven volg orde](../logic-apps/send-related-messages-sequential-convoy.md)voor meer informatie.
+
+## <a name="delays-in-updates-to-your-logic-app-taking-effect"></a>Vertragingen in updates voor uw logische app die van kracht worden
+
+Als het polling-interval van een Service Bus trigger klein is, zoals 10 seconden, worden updates van uw logische app mogelijk Maxi maal tien minuten van kracht. U kunt dit probleem omzeilen door het polling-interval tijdelijk te verhogen naar een grotere waarde, zoals 30 seconden of 1 minuut voordat u uw logische app bijwerkt. Nadat u de update hebt gemaakt, kunt u het polling-interval opnieuw instellen op de oorspronkelijke waarde. 
 
 <a name="connector-reference"></a>
 

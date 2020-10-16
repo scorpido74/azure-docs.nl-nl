@@ -9,15 +9,16 @@ ms.author: gopalv
 author: gvashishtha
 ms.date: 08/03/2020
 ms.topic: conceptual
-ms.custom: how-to, tracking-python
-ms.openlocfilehash: c95e1012decf1e3ae4ee3fbab8aae1a4c1a71be9
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.reviewer: larryfr
+ms.custom: how-to, tracking-python, deploy
+ms.openlocfilehash: ab4551f64919dad711967b33f85962a5c607d1c5
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87544568"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999150"
 ---
-# <a name="continuously-deploy-models"></a>Continu implementeren van modellen
+# <a name="continuously-deploy-models"></a>Continu modellen implementeren
 
 In dit artikel wordt beschreven hoe u doorlopende implementatie in azure DevOps kunt gebruiken om automatisch te controleren op nieuwe versies van geregistreerde modellen en deze nieuwe modellen te pushen naar productie.
 
@@ -25,7 +26,7 @@ In dit artikel wordt beschreven hoe u doorlopende implementatie in azure DevOps 
 
 In dit artikel wordt ervan uitgegaan dat u al een model hebt geregistreerd in uw Azure Machine Learning-werk ruimte. Raadpleeg [deze zelf studie](how-to-train-scikit-learn.md) voor een voor beeld van training en het registreren van een scikit-leer model.
 
-## <a name="continuously-deploy-models"></a>Continu implementeren van modellen
+## <a name="continuously-deploy-models"></a>Continu modellen implementeren
 
 U kunt modellen voortdurend implementeren met behulp van de Machine Learning-extensie voor [Azure DevOps](https://azure.microsoft.com/services/devops/). U kunt de Machine Learning extensie voor Azure DevOps gebruiken om een implementatie pijplijn te activeren wanneer een nieuw machine learning model wordt geregistreerd in een Azure Machine Learning-werk ruimte.
 
@@ -55,5 +56,5 @@ U kunt modellen voortdurend implementeren met behulp van de Machine Learning-ext
 
 Bekijk de onderstaande projecten op GitHub voor meer voor beelden van continue implementatie voor ML-modellen.
 
-* [Micro soft-MLOps](https://github.com/Microsoft/MLOps)
-* [Micro soft-MLOpsPython](https://github.com/microsoft/MLOpsPython)
+* [Microsoft/MLOps](https://github.com/Microsoft/MLOps)
+* [Microsoft/MLOpsPython](https://github.com/microsoft/MLOpsPython)

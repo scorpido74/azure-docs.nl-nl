@@ -8,10 +8,10 @@ ms.date: 06/04/2018
 ms.author: sngun
 ms.custom: devx-track-csharp
 ms.openlocfilehash: ce81ce9afa45c93010c457bc292bba037607f96f
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89020878"
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>Het buiten gebruik stellen van de prestatieniveaus S1, S2 en S3
@@ -43,7 +43,7 @@ De prestatie niveaus S1, S2 en S3 bieden niet de flexibiliteit die de standaard 
 
 De volgende tabel vergelijkt de door Voer en opslag opties die beschikbaar zijn in verzamelingen met één partitie, gepartitioneerde verzamelingen en de prestatie niveaus S1, S2 en S3. Hier volgt een voor beeld van de regio VS Oost 2:
 
-| Quotum naam  |Gepartitioneerde verzameling|Verzameling met één partitie|S1|S2|S3|
+| Quotumnaam  |Gepartitioneerde verzameling|Verzameling met één partitie|S1|S2|S3|
 |---|---|---|---|---|---|
 |Maximale doorvoer|Onbeperkt|10.000 RU/s|250 RU/s|1 K RU/s|2,5 K RU/s|
 |Minimale door Voer|2,5 K RU/s|400 RU/s|250 RU/s|1 K RU/s|2,5 K RU/s|

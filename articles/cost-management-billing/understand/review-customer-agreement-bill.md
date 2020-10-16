@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 4adb3bb1408357d40e3869c2a0d251b11d015195
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 619dec1b2246b7e74b058e570df4021888196b0c
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689521"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447546"
 ---
 # <a name="tutorial-review-your-microsoft-customer-agreement-invoice"></a>Zelfstudie: Uw factuur voor uw Microsoft-klantovereenkomst controleren
 
@@ -47,7 +47,7 @@ Controleer het type overeenkomst om te bepalen of u toegang hebt tot een facture
 
 Typ in de Azure-portal *kostenbeheer en facturering* in het zoekvak en selecteer vervolgens **Kostenbeheer en facturering**.
 
-![Schermopname van zoekopdracht in de Azure-portal naar kostenbeheer en facturering](./media/review-customer-agreement-bill/billing-search-cost-management-billing.png)
+![Schermopname van zoekopdracht in Azure Portal naar kostenbeheer en facturering.](./media/review-customer-agreement-bill/billing-search-cost-management-billing.png)
 
 Als u toegang hebt tot slechts één factureringsbereik, selecteert u **Eigenschappen** aan de linkerkant. U hebt toegang tot een factureringsaccount voor een Microsoft-klantovereenkomst als het type factureringsaccount **Microsoft-klantovereenkomst** is.
 
@@ -106,7 +106,7 @@ Selecteer het tabblad **Overzicht** bovenaan het scherm.
 
 De kostensectie geeft de maandkosten tot heden en de kosten van vorige maand weer.
 
-![Schermopname van zoekopdracht in de Azure-portal naar kostenbeheer en facturering](./media/review-customer-agreement-bill/mca-billing-profile-summary.png)
+![Schermopname van het overzicht van een factureringsprofiel.](./media/review-customer-agreement-bill/mca-billing-profile-summary.png)
 
 De maandkosten tot heden zijn de openstaande kosten voor de huidige maand en worden gefactureerd wanneer de factuur voor deze maand wordt gegenereerd. Als de factuur van de vorige maand nog steeds niet is gegenereerd, dan zijn de kosten van vorige maand ook openstaand en verschijnen zij op uw volgende factuur.
 
@@ -138,7 +138,7 @@ Selecteer **Alle abonnementen** aan de linkerzijde van de pagina.
 
 De pagina Azure-abonnementen geeft de kosten voor elk abonnement voor de huidige en vorige maand weer in het factureringsprofiel. De maandkosten tot heden zijn de openstaande kosten voor de huidige maand en worden gefactureerd wanneer de factuur voor deze maand wordt gegenereerd. Als de factuur van de vorige maand nog steeds niet is gegenereerd, dan zijn de kosten van vorige maand ook openstaand.
 
-![Schermopname van lijst met Azure-abonnementen voor het factureringsprofiel](./media/review-customer-agreement-bill/mca-billing-profile-subscriptions-list.png)
+![Schermopname van abonnementen met kosten van de huidige maand tot heden en kosten van de afgelopen maand.](./media/review-customer-agreement-bill/mca-billing-profile-subscriptions-list.png)
 
 ## <a name="analyze-your-azure-usage-charges"></a>Uw Azure-gebruikskosten analyseren
 
@@ -172,7 +172,7 @@ U kunt het CSV-bestand met Azure-gebruik en -kosten filteren om de gebruikskoste
 
 De volgende afbeelding toont de lijst met abonnementen in de Azure-portal.
 
-![Schermopname van lijst met Azure-abonnementen voor het factureringsprofiel](./media/review-customer-agreement-bill/mca-billing-profile-subscriptions-list-highlighted.png)
+![Schermopname van de lijst met abonnementen in Azure Portal waarin één abonnement is uitgelicht.](./media/review-customer-agreement-bill/mca-billing-profile-subscriptions-list-highlighted.png)
 
 Filter de kolom **subscriptionName** in het CSV-bestand met Azure-gebruik en -kosten op **WA_abonnement** om de gedetailleerde gebruikskosten voor WA_abonnement weer te geven.
 

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: lagayhar
 ms.openlocfilehash: b6377cdcdb5816426eba62fdbef79eeb42659dcc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82892080"
 ---
 # <a name="how-to-use-groups-in-workbooks"></a>Groepen gebruiken in werkmappen
@@ -24,7 +24,7 @@ Groepen in werkmappen zijn handig om verschillende dingen te doen:
 
 - Layout
   - In scenario's waarin u wilt dat items verticaal worden georganiseerd, kunt u een groep items maken die allemaal worden gestapeld en de stijl van de groep instellen op een percentage breedte in plaats van de breedte van het percentage voor alle afzonderlijke items.
-- Zichtbaarheid
+- Zicht
   - In scenario's waarin u veel items wilt verbergen/weer geven, kunt u de zicht baarheid van de hele groep items instellen, in plaats van de zichtbaarheids instellingen voor elk afzonderlijk item in te stellen. Dit kan handig zijn in sjablonen die gebruikmaken van tabbladen, omdat u een groep kunt gebruiken als de inhoud van het tabblad en de volledige groep kan worden verborgen/weer gegeven op basis van een para meter die is ingesteld op het geselecteerde tabblad.
 - Prestaties
   - In gevallen waarin u een zeer grote sjabloon hebt met veel secties of tabbladen, kunt u elke sectie omzetten in een eigen subsjabloon en groepen gebruiken om alle subsjablonen binnen de sjabloon op het hoogste niveau te laden. De inhoud van de subsjablonen kan pas worden geladen of uitgevoerd als een gebruiker deze groepen zichtbaar maakt. Meer informatie over [het splitsen van een grote sjabloon in veel sjablonen](#how-to-split-a-large-template-into-many-templates).
@@ -68,7 +68,7 @@ De groep wordt alleen geladen wanneer het item wordt weer gegeven. Hiermee kan e
 
 Voor groepen die zijn gemaakt op basis van een sjabloon, wordt de inhoud van de sjabloon niet opgehaald en worden de items in de groep pas gemaakt als de groep zichtbaar wordt. De gebruiker krijgt de voortgangs kringen voor de hele groep te zien terwijl de inhoud wordt opgehaald.
 
-### <a name="explicit"></a>Duidelijke
+### <a name="explicit"></a>Expliciet
 
 In deze modus wordt een knop weer gegeven waar de groep zou zijn, en er wordt geen inhoud opgehaald of gemaakt totdat de gebruiker expliciet op de knop klikt om de inhoud te laden. Dit is handig in scenario's waarin de inhoud kostbaar kan zijn om te worden berekend of zelden wordt gebruikt. De auteur kan de tekst opgeven die op de knop moet worden weer gegeven.
 
@@ -98,8 +98,8 @@ Wanneer een sjabloon in een groep wordt geladen, probeert de werkmap alle para m
 
 Overweeg een sjabloon met twee para meters bovenaan.
 
-- `TimeRange`-een tijds bereik parameter.
-- `Filter`-een tekst parameter.
+- `TimeRange` -een tijds bereik parameter.
+- `Filter` -een tekst parameter.
 
 ![Parameter item bewerken: para meters op het hoogste niveau](./media/workbooks-groups/groups-top-level-params.png)
 
@@ -113,12 +113,12 @@ Wanneer de tweede sjabloon in de groep wordt geladen, worden de dubbele para met
 
 Houd rekening met de sjabloon van een groep met twee para meters bovenaan.
 
-- `TimeRange`-een tijds bereik parameter.
-- `FilterB`-een tekst parameter, Let erop dat deze niet `Filter` lijkt op de bovenste sjabloon.
+- `TimeRange` -een tijds bereik parameter.
+- `FilterB` -een tekst parameter, Let erop dat deze niet `Filter` lijkt op de bovenste sjabloon.
 
 ![Een groeps item bewerken met het resultaat van het samen voegen van para meters](./media/workbooks-groups/groups-wont-merge-away.png)
 
-Wanneer de item's-sjabloon van de groep wordt geladen, `TimeRange` wordt de para meter uit de groep ingevoegd. De werkmap heeft dan de eerste para meters `TimeRange` en `Filter` de para meter-stap van de groep bevat alleen`FilterB`
+Wanneer de item's-sjabloon van de groep wordt geladen, `TimeRange` wordt de para meter uit de groep ingevoegd. De werkmap heeft dan de eerste para meters `TimeRange` en `Filter` de para meter-stap van de groep bevat alleen `FilterB`
 
 ![resultaat van para meters die niet worden samengevoegd](./media/workbooks-groups/groups-wont-merge-away-result.png)
 

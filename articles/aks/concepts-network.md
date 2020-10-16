@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 06/11/2020
 ms.custom: fasttrack-edit
 ms.openlocfilehash: edb195fae2e05a1f746c10482576f7e0b1bff7c9
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88243901"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Netwerk concepten voor toepassingen in azure Kubernetes service (AKS)
@@ -18,8 +18,8 @@ In een op containers gebaseerde micro Services-aanpak voor toepassings ontwikkel
 In dit artikel worden de belangrijkste concepten geïntroduceerd voor het bieden van netwerken aan uw toepassingen in AKS:
 
 - [Services](#services)
-- [Virtuele netwerken van Azure](#azure-virtual-networks)
-- [Ingangs controllers](#ingress-controllers)
+- [Virtuele netwerken van Azure.](#azure-virtual-networks)
+- [Toegangsbeheerobjectcontrollers](#ingress-controllers)
 - [Netwerk beleid](#network-policies)
 
 ## <a name="kubernetes-basics"></a>Basisbeginselen voor Kubernetes
@@ -54,7 +54,7 @@ Het IP-adres voor load balancers en services kan dynamisch worden toegewezen, ma
 
 Zowel *interne* als *externe* load balancers kunnen worden gemaakt. Interne load balancers krijgen alleen een privé-IP-adres, zodat ze niet toegankelijk zijn via internet.
 
-## <a name="azure-virtual-networks"></a>Virtuele netwerken van Azure
+## <a name="azure-virtual-networks"></a>Virtuele netwerken van Azure.
 
 In AKS kunt u een cluster implementeren dat gebruikmaakt van een van de volgende twee netwerkmodellen:
 
@@ -121,7 +121,7 @@ Hoewel functies, zoals service-eind punten of Udr's worden ondersteund met zowel
 * Als u de virtuele netwerk resources voor een AKS-cluster hand matig maakt, wordt u ondersteund bij het configureren van uw eigen Udr's of service-eind punten.
 * Als het Azure-platform automatisch de virtuele netwerk resources voor uw AKS-cluster maakt, wordt het niet ondersteund om deze AKS-beheerde resources hand matig te wijzigen om uw eigen Udr's of service-eind punten te configureren.
 
-## <a name="ingress-controllers"></a>Ingangs controllers
+## <a name="ingress-controllers"></a>Toegangsbeheerobjectcontrollers
 
 Wanneer u een Load Balancer-type service maakt, wordt er een onderliggende Azure load balancer-resource gemaakt. De load balancer is zo geconfigureerd dat verkeer naar het Peul in uw service op een bepaalde poort wordt gedistribueerd. De LoadBalancer werkt alleen op laag 4: de service is niet op de hoogte van de daad werkelijke toepassingen en kan geen verdere routerings overwegingen nemen.
 

@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/10/2019
 ms.author: dekapur
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 4c812ab4f6c8908e3cabcf2d3afcc63959073ed4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 1940e65fc5a9fd4aecd0b0cbcf6631e0628bda91
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020105"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653125"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>Zelfstudie: Bewaking en diagnose van een ASP.NET Core-toepassing in Service Fabric met behulp van Application Insights
 
@@ -191,7 +191,7 @@ U kunt op een van deze traceringen klikken om er meer informatie over te bekijke
 
 Bovendien kunt u klikken op *Toepassing toewijzen* in het linkermenu op de pagina Overzicht of klikken op het pictogram **App-kaart** om de App-kaart weer te geven met de twee verbonden services.
 
-![AI-traceringsdetails](./media/service-fabric-tutorial-monitoring-aspnet/app-map-new.png)
+![Schermopname waarin de App-kaart in het linkermenu is gemarkeerd.](./media/service-fabric-tutorial-monitoring-aspnet/app-map-new.png)
 
 Met het Toepassingsoverzicht kunt u beter inzicht krijgen in uw toepassingstopologie, vooral wanneer u meerdere verschillende services toevoegt die met elkaar samenwerken. U krijgt ook eenvoudige gegevens over succespercentages van aanvragen en inzicht in mislukte aanvragen om te zien waar iets fout kan zijn gegaan. Bekijk [Application Map in Application Insights](../azure-monitor/app/app-map.md) (Toepassingsoverzicht in Application Insights) voor meer informatie over het gebruik van het toepassingsoverzicht.
 

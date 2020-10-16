@@ -12,10 +12,10 @@ ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
 ms.openlocfilehash: a8fa14999c75528171fbe811ee64f65b913ed820
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91399802"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Vijf stappen voor het beveiligen van uw identiteits infrastructuur
@@ -35,7 +35,7 @@ Deze controle lijst helpt u bij het snel implementeren van kritieke aanbevolen a
 Zorg ervoor dat u bijhoudt welke functies en stappen zijn voltooid tijdens het lezen van deze controle lijst.
 
 > [!NOTE]
-> Veel van de aanbevelingen in dit document gelden alleen voor toepassingen die zijn geconfigureerd om Azure Active Directory als id-provider te gebruiken. Door apps voor eenmalige aanmelding te configureren, kunt u de voor delen van referentie beleid, detectie van bedreigingen, controle, logboek registratie en andere functies toevoegen aan deze toepassingen. [Azure AD-toepassings beheer](../../active-directory/manage-apps/what-is-application-management.md) is de basis waarop al deze aanbevelingen zijn gebaseerd.
+> Veel van de aanbevelingen in dit document gelden alleen voor toepassingen die zijn geconfigureerd om Azure Active Directory als id-provider te gebruiken. Het configureren van apps voor één Sign-On garandeert dat referentie beleid, detectie van bedreigingen, controle, logboek registratie en andere functies aan deze toepassingen worden toegevoegd. [Azure AD-toepassings beheer](../../active-directory/manage-apps/what-is-application-management.md) is de basis waarop al deze aanbevelingen zijn gebaseerd.
 
 De aanbevelingen in dit document zijn afgestemd op de [identiteits veilige Score](../../active-directory/fundamentals/identity-secure-score.md), een geautomatiseerde evaluatie van de identiteits beveiligings configuratie van uw Azure AD-Tenant. Organisaties kunnen de pagina identiteits beveiliging in de Azure AD-Portal gebruiken om hiaten in hun huidige beveiligings configuratie te vinden om te controleren of ze de huidige [Aanbevolen procedures](identity-management-best-practices.md) van micro soft voor beveiliging volgen. Wanneer u elke aanbeveling op de pagina beveiligde Score implementeert, wordt uw score verhoogd en kunt u uw voortgang volgen, plus de hulp bij het vergelijken van uw implementatie met andere vergelijk bare organisaties of uw branche.
 

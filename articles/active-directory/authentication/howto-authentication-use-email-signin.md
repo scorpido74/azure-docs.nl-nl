@@ -6,16 +6,16 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 10/01/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calui
-ms.openlocfilehash: 9b9617b4109318257895587cc0d8e75054a7f729
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: c822aaebb2451d709f6afcdeba959f39c4d491cb
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91650303"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964533"
 ---
 # <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>Meld u aan Azure Active Directory gebruik te maken van een e-mail adres als een alternatieve aanmeldings-ID (preview-versie)
 
@@ -65,7 +65,7 @@ In de huidige preview-status gelden de volgende beperkingen wanneer een gebruike
 
 Traditionele verificatie van Active Directory Domain Services (AD DS) of Active Directory Federation Services (AD FS) gebeurt rechtstreeks op uw netwerk en wordt verwerkt door uw AD DS-infra structuur. Met hybride verificatie kunnen gebruikers zich in plaats daarvan rechtstreeks aanmelden bij Azure AD.
 
-Ter ondersteuning van deze hybride verificatie benadering synchroniseert u uw on-premises AD DS omgeving met Azure AD met behulp van [Azure AD Connect][azure-ad-connect] en configureert u deze voor het gebruik van PHS (Password Hash Sync) of Pass Through-verificatie (PTA).
+Ter ondersteuning van deze hybride verificatie benadering synchroniseert u uw on-premises AD DS omgeving met Azure AD met behulp van [Azure AD Connect][azure-ad-connect] en configureert u deze voor het gebruik van PHS (Password Hash Sync) of Pass-Through Authentication (PTA).
 
 In beide configuratie opties verzendt de gebruiker de gebruikers naam en het wacht woord naar Azure AD, waarmee de referenties worden gevalideerd en een ticket wordt uitgegeven. Wanneer gebruikers zich aanmelden bij Azure AD, wordt de nood zaak van uw organisatie om een AD FS-infra structuur te hosten en te beheren, verwijderd.
 

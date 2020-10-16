@@ -16,10 +16,10 @@ ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: efd3f0f19325bdaccf98d10306c90488c78b3de7
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88653763"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Hoge Beschik baarheid voor SAP net-Weaver op Azure-Vm's
@@ -678,7 +678,7 @@ De sjablonen met drie lagen in Azure Resource Manager bieden ook ondersteuning v
 Hier kunt u Azure Resource Manager sjablonen ophalen voor het voorbeeld scenario dat in dit artikel wordt beschreven:
 
 * [Azure Marketplace-installatie kopie](https://github.com/Azure/azure-quickstart-templates/)  
-* [Aangepaste installatie kopie](https://github.com/Azure/azure-quickstart-templates/)
+* [Aangepaste installatiekopie](https://github.com/Azure/azure-quickstart-templates/)
 
 De infra structuur voorbereiden voor de architectuur sjabloon 1:
 
@@ -701,7 +701,7 @@ _**Afbeelding 11:** SAP-Azure Resource Manager-para meters met hoge Beschik baar
     * <*SAPSystemSID*>-NIC-ascs-<*nummer*>
     * <*SAPSystemSID*>-NIC-db-<*nummer*>
 
-  * **Azure-opslagaccounts**
+  * **Azure-opslag accounts**
 
   * **Beschikbaarheids groepen** voor:
     * SAP-toepassings server virtuele machines: <*SAPSystemSID*>-avset-di
@@ -769,7 +769,7 @@ U kunt deze Azure Resource Manager sjabloon voor SAP gebruiken om de implementat
 Hier kunt u Azure Resource Manager sjablonen voor dit implementatie scenario ophalen:
 
 * [Azure Marketplace-installatie kopie](https://github.com/Azure/azure-quickstart-templates/)  
-* [Aangepaste installatie kopie](https://github.com/Azure/azure-quickstart-templates/)
+* [Aangepaste installatiekopie](https://github.com/Azure/azure-quickstart-templates/)
 
 
 ### <a name="prepare-the-infrastructure-for-architectural-template-3"></a>De infra structuur voorbereiden voor de architectuur sjabloon 3
@@ -798,7 +798,7 @@ Als u de sjabloon ASCS/SCS multi-SID wilt instellen, voert u in de [sjabloon ASC
   -  **Systeem beschikbaarheid**. Selecteer **ha**.
   -  **Gebruikers naam en beheerders wachtwoord**voor de beheerder. Maak een nieuwe gebruiker die kan worden gebruikt om u aan te melden bij de computer.
   -  **Nieuw of bestaand subnet**. Stel in of een nieuw virtueel netwerk en subnet moet worden gemaakt of dat een bestaand subnet moet worden gebruikt. Als u al een virtueel netwerk hebt dat is verbonden met uw on-premises netwerk, selecteert u **bestaande**.
-  -  **Subnet-id**. Als u de virtuele machine wilt implementeren in een bestaand VNet waarvoor u een subnet hebt gedefinieerd, moet de virtuele machine worden toegewezen aan, de ID van het specifieke subnet benoemen. De ID ziet er ongeveer als volgt uit:/Subscriptions/<*abonnements-ID*>/ResourceGroups/<naam van de *resource groep*>/providers/Microsoft.Network/virtualnetworks/<naam van het *virtuele netwerk*>/subnets/<naam van het *subnet*>
+  -  **Subnet-id**. Als u de virtuele machine wilt implementeren in een bestaand VNet waarvoor u een subnet hebt gedefinieerd, moet de virtuele machine worden toegewezen aan, de ID van het specifieke subnet benoemen. De ID ziet er ongeveer als volgt uit:/Subscriptions/<*abonnements-ID*>/resourceGroups/<naam van de *resource groep*>/providers/Microsoft.Network/virtualNetworks/<naam van het *virtuele netwerk*>/subnets/<naam van het *subnet*>
 
 De sjabloon implementeert een Azure Load Balancer-exemplaar dat meerdere SAP-systemen ondersteunt.
 

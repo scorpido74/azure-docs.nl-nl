@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: beebe60d70b7e4908bd3e9348fe815036d6955c3
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 77cea7ebd333b958675438aaeb5e0e2a326a5866
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920067"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075175"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>Veelvoorkomende opstart taken voor de Cloud service
 Dit artikel bevat enkele voor beelden van veelvoorkomende opstart taken die u in uw Cloud service wilt uitvoeren. U kunt opstart taken gebruiken om bewerkingen uit te voeren voordat een rol wordt gestart. Bewerkingen die u mogelijk wilt uitvoeren, zijn onder andere het installeren van een onderdeel, het registreren van COM-onderdelen, het instellen van register sleutels of het starten van een langlopend proces. 
@@ -52,7 +52,7 @@ Variabelen kunnen ook een [geldige Azure XPath-waarde](cloud-services-role-confi
 
 
 ## <a name="configure-iis-startup-with-appcmdexe"></a>Opstarten met IIS configureren met AppCmd.exe
-Het opdracht regel programma [AppCmd.exe](https://technet.microsoft.com/library/jj635852.aspx) kan worden gebruikt om IIS-instellingen te beheren bij het opstarten van Azure. *AppCmd.exe* biedt handige, opdracht regel toegang tot configuratie-instellingen voor gebruik in opstart taken in Azure. U kunt met behulp van *AppCmd.exe*website-instellingen toevoegen, wijzigen of verwijderen voor toepassingen en sites.
+Het opdracht regel programma [AppCmd.exe](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj635852(v=ws.11)) kan worden gebruikt om IIS-instellingen te beheren bij het opstarten van Azure. *AppCmd.exe* biedt handige, opdracht regel toegang tot configuratie-instellingen voor gebruik in opstart taken in Azure. U kunt met behulp van *AppCmd.exe*website-instellingen toevoegen, wijzigen of verwijderen voor toepassingen en sites.
 
 Er zijn echter enkele zaken om te bekijken in het gebruik van *AppCmd.exe* als een opstart taak:
 
@@ -377,7 +377,7 @@ EXIT /B 0
 Hier volgen enkele aanbevolen procedures voor het configureren van de taak voor uw web-of worker-rol.
 
 ### <a name="always-log-startup-activities"></a>Opstart activiteiten altijd vastleggen in logboek
-Visual Studio biedt geen fout opsporing voor het uitvoeren van batch-bestanden, zodat u zoveel mogelijk gegevens kunt ophalen over de werking van batch-bestanden. Het registreren van de uitvoer van batch bestanden, **stdout** en **stderr**, kan u belang rijke informatie geven bij het opsporen van fouten en het herstellen van batch bestanden. Als u **stdout** en **stderr** wilt vastleggen in het StartupLog.txt bestand in de map waarnaar wordt geverwijst door de **% temp%** -omgevings variabele, voegt u de tekst toe `>>  "%TEMP%\\StartupLog.txt" 2>&1` aan het einde van specifieke regels die u wilt registreren. Als u bijvoorbeeld setup.exe wilt uitvoeren in de map **% PathToApp1Install%** :`"%PathToApp1Install%\setup.exe" >> "%TEMP%\StartupLog.txt" 2>&1`
+Visual Studio biedt geen fout opsporing voor het uitvoeren van batch-bestanden, zodat u zoveel mogelijk gegevens kunt ophalen over de werking van batch-bestanden. Het registreren van de uitvoer van batch bestanden, **stdout** en **stderr**, kan u belang rijke informatie geven bij het opsporen van fouten en het herstellen van batch bestanden. Als u **stdout** en **stderr** wilt vastleggen in het StartupLog.txt bestand in de map waarnaar wordt geverwijst door de **% temp%** -omgevings variabele, voegt u de tekst toe `>>  "%TEMP%\\StartupLog.txt" 2>&1` aan het einde van specifieke regels die u wilt registreren. Als u bijvoorbeeld setup.exe wilt uitvoeren in de map **% PathToApp1Install%** : `"%PathToApp1Install%\setup.exe" >> "%TEMP%\StartupLog.txt" 2>&1`
 
 Als u uw XML wilt vereenvoudigen, kunt u een wrapper- *cmd* -bestand maken dat alle opstart taken samen met logboek registratie aanroept en zorgt ervoor dat alle onderliggende taken dezelfde omgevings variabelen delen.
 
@@ -499,14 +499,14 @@ Meer informatie over hoe [taken](cloud-services-startup-tasks.md) werken.
 [Maak en implementeer](cloud-services-how-to-create-deploy-portal.md) uw Cloud service pakket.
 
 [ServiceDefinition. csdef]: cloud-services-model-and-package.md#csdef
-[Taak]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
-[Startup]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
-[Runtime]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
-[Omgeving]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
-[Variabele]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
-[RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
-[RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
-[Eind punten]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
-[LocalStorage]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalStorage
-[LocalResources]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalResources
-[RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
+[Taak]: /previous-versions/azure/reference/gg557552(v=azure.100)#Task
+[Startup]: /previous-versions/azure/reference/gg557552(v=azure.100)#Startup
+[Runtime]: /previous-versions/azure/reference/gg557552(v=azure.100)#Runtime
+[Omgeving]: /previous-versions/azure/reference/gg557552(v=azure.100)#Environment
+[Variabele]: /previous-versions/azure/reference/gg557552(v=azure.100)#Variable
+[RoleInstanceValue]: /previous-versions/azure/reference/gg557552(v=azure.100)#RoleInstanceValue
+[RoleEnvironment]: /previous-versions/azure/reference/ee773173(v=azure.100)
+[Eind punten]: /previous-versions/azure/reference/gg557552(v=azure.100)#Endpoints
+[LocalStorage]: /previous-versions/azure/reference/gg557552(v=azure.100)#LocalStorage
+[LocalResources]: /previous-versions/azure/reference/gg557552(v=azure.100)#LocalResources
+[RoleInstanceValue]: /previous-versions/azure/reference/gg557552(v=azure.100)#RoleInstanceValue

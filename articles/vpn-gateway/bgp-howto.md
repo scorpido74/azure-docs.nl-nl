@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/18/2020
 ms.author: yushwang
 ms.openlocfilehash: f52d684d1e6ef63fdf4287c610608061f30395f8
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90995370"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways"></a>BGP op Azure VPN-gateways configureren
@@ -45,7 +45,7 @@ In deze sectie maakt en configureert u een virtueel netwerk, maakt en configuree
 
 **Diagram 2**
 
-:::image type="content" source="./media/bgp-howto/bgp-gateway.png" alt-text="Diagram met de instellingen voor de virtuele netwerk gateway" border="false":::
+:::image type="content" source="./media/bgp-howto/bgp-gateway.png" alt-text="Diagram van weer gave van netwerk architectuur en-instellingen" border="false":::
 
 ### <a name="1-create-and-configure-testvnet1"></a>1. TestVNet1 maken en configureren
 
@@ -53,11 +53,11 @@ In deze stap maakt en configureert u TestVNet1. Volg de stappen in de [zelf stud
 
 * Virtueel netwerk:
 
-   :::image type="content" source="./media/bgp-howto/testvnet-1.png" alt-text="TestVNet1 met bijbehorende adres voorvoegsels":::
+   :::image type="content" source="./media/bgp-howto/testvnet-1.png" alt-text="Diagram van weer gave van netwerk architectuur en-instellingen":::
 
 * Subnetten:
 
-   :::image type="content" source="./media/bgp-howto/testvnet-1-subnets.png" alt-text="TestVNet1-subnetten":::
+   :::image type="content" source="./media/bgp-howto/testvnet-1-subnets.png" alt-text="Diagram van weer gave van netwerk architectuur en-instellingen":::
 
 ### <a name="2-create-the-vpn-gateway-for-testvnet1-with-bgp-parameters"></a>2. Maak de VPN-gateway voor TestVNet1 met BGP-para meters
 
@@ -67,11 +67,11 @@ In deze stap maakt u een VPN-gateway met de bijbehorende BGP-para meters.
 
 1. Vul de para meters in, zoals hieronder wordt weer gegeven:
 
-   :::image type="content" source="./media/bgp-howto/create-gateway-1.png" alt-text="VNG1 maken":::
+   :::image type="content" source="./media/bgp-howto/create-gateway-1.png" alt-text="Diagram van weer gave van netwerk architectuur en-instellingen":::
 
 1. Configureer de volgende instellingen in het gedeelte gemarkeerde **BGP configureren** van de pagina:
 
-   :::image type="content" source="./media/bgp-howto/create-gateway-1-bgp.png" alt-text="BGP configureren":::
+   :::image type="content" source="./media/bgp-howto/create-gateway-1-bgp.png" alt-text="Diagram van weer gave van netwerk architectuur en-instellingen":::
 
    * Selecteer **BGP**  -  **ingeschakeld** configureren om de sectie BGP-configuratie weer te geven.
 
@@ -96,7 +96,7 @@ Zodra de gateway is gemaakt, kunt u de IP-adressen van de BGP-peer verkrijgen op
 
 1. Navigeer naar de resource van de virtuele netwerk gateway en selecteer de **configuratie** pagina om de BGP-configuratie gegevens te zien, zoals weer gegeven in de volgende scherm afbeelding. Op deze pagina kunt u alle BGP-configuratie gegevens op uw Azure VPN-gateway: ASN, openbaar IP-adres en de bijbehorende IP-adressen van de BGP-peer aan de Azure-zijde (standaard en APIPA) weer geven.
 
-   :::image type="content" source="./media/bgp-howto/vnet-1-gw-bgp.png" alt-text="BGP-gateway":::
+   :::image type="content" source="./media/bgp-howto/vnet-1-gw-bgp.png" alt-text="Diagram van weer gave van netwerk architectuur en-instellingen":::
 
 1. Op de pagina **configuratie** kunt u de volgende configuratie wijzigingen aanbrengen:
 
@@ -111,13 +111,13 @@ Als u een cross-premises verbinding tot stand wilt brengen, moet u een *lokale n
 
 **Diagram 3**
 
-:::image type="content" source="./media/bgp-howto/bgp-crosspremises.png" alt-text="Diagram waarin IPsec wordt weer gegeven" border="false":::
+:::image type="content" source="./media/bgp-howto/bgp-crosspremises.png" alt-text="Diagram van weer gave van netwerk architectuur en-instellingen" border="false":::
 
 ### <a name="1-configure-bgp-on-the-local-network-gateway"></a>1. Configureer BGP op de lokale netwerk gateway
 
 In deze stap configureert u BGP op de lokale netwerk gateway. Gebruik de volgende scherm afbeelding als voor beeld. De scherm opname toont de lokale netwerk gateway (Site5) met de para meters die zijn opgegeven in diagram 3.
 
-:::image type="content" source="./media/bgp-howto/create-local-bgp.png" alt-text="BGP configureren voor de lokale netwerk gateway":::
+:::image type="content" source="./media/bgp-howto/create-local-bgp.png" alt-text="Diagram van weer gave van netwerk architectuur en-instellingen":::
 
 #### <a name="important-configuration-considerations"></a>Belang rijke overwegingen met betrekking tot de configuratie
 
@@ -130,7 +130,7 @@ In deze stap configureert u BGP op de lokale netwerk gateway. Gebruik de volgend
 
 In dit voor beeld wordt een APIPA-adres (169.254.100.1) gebruikt als het IP-adres van de on-premises BGP-peer:
 
-:::image type="content" source="./media/bgp-howto/local-apipa.png" alt-text="Lokale netwerk gateway APIPA en BGP":::
+:::image type="content" source="./media/bgp-howto/local-apipa.png" alt-text="Diagram van weer gave van netwerk architectuur en-instellingen":::
 
 ### <a name="2-configure-a-s2s-connection-with-bgp-enabled"></a>2. een S2S-verbinding configureren waarvoor BGP is ingeschakeld
 
@@ -140,13 +140,13 @@ In deze stap maakt u een nieuwe verbinding waarvoor BGP is ingeschakeld. Als u a
 
 Als u een nieuwe verbinding wilt maken waarvoor BGP is ingeschakeld, vult u de waarden in op de pagina **verbinding toevoegen** en schakelt u de optie **BGP inschakelen** in om BGP in te scha kelen voor deze verbinding. Selecteer **OK** om de verbinding te maken.
 
-:::image type="content" source="./media/bgp-howto/ipsec-connection-bgp.png" alt-text="IPsec-cross-premises verbinding met BGP":::
+:::image type="content" source="./media/bgp-howto/ipsec-connection-bgp.png" alt-text="Diagram van weer gave van netwerk architectuur en-instellingen":::
 
 #### <a name="to-update-an-existing-connection"></a><a name ="update"></a>Een bestaande verbinding bijwerken
 
 Als u de BGP-optie voor een verbinding wilt wijzigen, gaat u naar de pagina **configuratie** van de verbindings bron en schakelt u de **BGP** -optie in als gemarkeerd in het volgende voor beeld. Selecteer **Opslaan** om de wijzigingen op te slaan.
 
-:::image type="content" source="./media/bgp-howto/update-bgp.png" alt-text="BGP voor een verbinding bijwerken":::
+:::image type="content" source="./media/bgp-howto/update-bgp.png" alt-text="Diagram van weer gave van netwerk architectuur en-instellingen":::
 
 ## <a name="part-3-configure-bgp-on-vnet-to-vnet-connections"></a><a name ="v2v"></a>Deel 3: BGP configureren voor VNet-naar-VNet-verbindingen
 
@@ -160,7 +160,7 @@ Als BGP moet worden uitgeschakeld tussen TestVNet2 en TestVNet1, worden de route
 
 **Diagram 4**
 
-:::image type="content" source="./media/bgp-howto/bgp-crosspremises-v2v.png" alt-text="Diagram waarin het volledige netwerk wordt weer gegeven" border="false":::
+:::image type="content" source="./media/bgp-howto/bgp-crosspremises-v2v.png" alt-text="Diagram van weer gave van netwerk architectuur en-instellingen" border="false":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

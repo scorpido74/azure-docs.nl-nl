@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: alexeyo
 ms.openlocfilehash: 7e22b772ec35ff9b63c99acd81ad6bb5abe328a0
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91567159"
 ---
 # <a name="speech-services-quotas-and-limits"></a>Quota en limieten voor Speech Services
@@ -86,7 +86,7 @@ Het verhogen van de limiet voor gelijktijdige aanvragen heeft **geen** invloed o
 
 Gelijktijdige aanvraag limieten voor **basis** -en **aangepaste** modellen moeten **afzonderlijk**worden aangepast.
 
-De bestaande waarde van de para meter voor gelijktijdige aanvraag limiet is **niet** zichtbaar via Azure Portal, opdracht regel PROGRAMMA'S of API-aanvragen. Als u de bestaande waarde wilt verifiëren, maakt u een ondersteunings aanvraag voor Azure.
+De bestaande waarde van de para meter voor gelijktijdige aanvraag limiet is **niet** zichtbaar via Azure Portal, Command-Line-hulpprogram MA'S of API-aanvragen. Als u de bestaande waarde wilt verifiëren, maakt u een ondersteunings aanvraag voor Azure.
 
 >[!NOTE]
 >Voor [spraak containers](speech-container-howto.md) is geen verhoging van de limiet van gelijktijdige aanvragen vereist, omdat containers alleen worden beperkt door de cpu's van de hardware waarop ze worden gehost.
@@ -94,9 +94,9 @@ De bestaande waarde van de para meter voor gelijktijdige aanvraag limiet is **ni
 #### <a name="have-the-required-information-ready"></a>De vereiste gegevens zijn gereed:
 - Voor **basis model**:
   - Spraak Resource-ID
-  - Region
+  - Regio
 - Voor **aangepast model**: 
-  - Region
+  - Regio
   - Aangepaste eind punt-ID
 
 - **Informatie over het ophalen van gegevens (basis model)**:  
@@ -152,7 +152,7 @@ Het aantal gelijktijdige aanvragen voor een aangepast spraak eind punt is standa
 
 Het verhogen van de limiet voor gelijktijdige aanvragen heeft **geen** invloed op uw kosten. Spraak Services maakt gebruik van het model ' alleen betalen voor wat u gebruikt '. De limiet bepaalt hoe hoog de service kan worden geschaald voordat uw aanvragen worden vertraagd.
 
-De bestaande waarde van de para meter voor gelijktijdige aanvraag limiet is **niet** zichtbaar via Azure Portal, opdracht regel PROGRAMMA'S of API-aanvragen. Als u de bestaande waarde wilt verifiëren, maakt u een ondersteunings aanvraag voor Azure.
+De bestaande waarde van de para meter voor gelijktijdige aanvraag limiet is **niet** zichtbaar via Azure Portal, Command-Line-hulpprogram MA'S of API-aanvragen. Als u de bestaande waarde wilt verifiëren, maakt u een ondersteunings aanvraag voor Azure.
 
 >[!NOTE]
 >Voor [spraak containers](speech-container-howto.md) is geen verhoging van de limiet van gelijktijdige aanvragen vereist, omdat containers alleen worden beperkt door de cpu's van de hardware waarop ze worden gehost.

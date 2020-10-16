@@ -8,10 +8,10 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 347a63cc77c565d800328c19d1d543c2c9efafc0
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89400089"
 ---
 # <a name="security-control-secure-configuration"></a>Beveiligings beheer: beveiligde configuratie
@@ -22,7 +22,7 @@ De beveiligings configuratie van Azure-resources tot stand brengen, implementere
 
 | Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 7.1 | 5,1 | Klant |
+| 7.1 | 5.1 | Klant |
 
 Gebruik Azure Policy aliassen om aangepaste beleids regels te maken om de configuratie van uw Azure-resources te controleren of af te dwingen. U kunt ook ingebouwde Azure Policy definities gebruiken.
 
@@ -36,19 +36,19 @@ U kunt ook aanbevelingen van Azure Security Center gebruiken als een veilige con
 
 - [Eén en meerdere resources exporteren naar een sjabloon in Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/export-template-portal)
 
-- [Aanbevelingen voor beveiliging: een referentie gids](https://docs.microsoft.com/azure/security-center/recommendations-reference)
+- [Aanbevelingen voor beveiliging: een naslaggids](https://docs.microsoft.com/azure/security-center/recommendations-reference)
 
 ## <a name="72-establish-secure-operating-system-configurations"></a>7,2: veilige configuraties van besturings systemen instellen
 
 | Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 7.2 | 5,1 | Klant |
+| 7.2 | 5.1 | Klant |
 
 Gebruik Azure Security Center aanbevelingen voor het onderhouden van beveiligings configuraties op alle reken resources.  Daarnaast kunt u aangepaste installatie kopieën van besturings systemen of de configuratie van Azure Automation status gebruiken om de beveiligings configuratie te bepalen van het besturings systeem dat door uw organisatie wordt vereist.
 
 - [Azure Security Center aanbevelingen bewaken](https://docs.microsoft.com/azure/security-center/security-center-recommendations)
 
-- [Aanbevelingen voor beveiliging: een referentie gids](https://docs.microsoft.com/azure/security-center/recommendations-reference)
+- [Aanbevelingen voor beveiliging: een naslaggids](https://docs.microsoft.com/azure/security-center/recommendations-reference)
 
 - [Overzicht van Azure Automation status configuratie](https://docs.microsoft.com/azure/automation/automation-dsc-overview)
 
@@ -74,7 +74,7 @@ Gebruik Azure Policy [deny] en [implementeren indien niet aanwezig] voor het afd
 
 | Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 7,4 | 5.2 | Gedeeld |
+| 7.4 | 5.2 | Gedeeld |
 
 Volg de aanbevelingen van Azure Security Center over het uitvoeren van evaluatie van beveiligings problemen op uw Azure Compute-resources.  Daarnaast kunt u Azure Resource Manager-sjablonen, aangepaste installatie kopieën van besturings systemen of de configuratie van Azure Automation status gebruiken om de beveiligings configuratie van het besturings systeem te onderhouden dat door uw organisatie wordt vereist.   De micro soft-sjablonen voor virtuele machines in combi natie met de Azure Automation desired state Configuration kunnen helpen bij de vergadering en het onderhouden van de beveiligings vereisten. 
 
@@ -110,7 +110,7 @@ Gebruik Azure DevOps om uw code veilig op te slaan en te beheren, zoals aangepas
 |--|--|--|
 | 7.6 | 5.3 | Klant |
 
-Als u aangepaste installatie kopieën gebruikt, kunt u Azure RBAC (op rollen gebaseerd toegangs beheer) gebruiken om ervoor te zorgen dat alleen geautoriseerde gebruikers toegang hebben tot de installatie kopieën. Met behulp van een galerie met gedeelde afbeeldingen kunt u uw installatie kopieën delen met verschillende gebruikers, service-principals of AD-groepen binnen uw organisatie.  Voor container installatie kopieën slaat u ze op in Azure Container Registry en maakt u gebruik van Azure RBAC om ervoor te zorgen dat alleen geautoriseerde gebruikers toegang hebben tot de installatie kopieën.  
+Als u aangepaste installatie kopieën gebruikt, kunt u Azure RBAC (op rollen gebaseerd toegangs beheer) gebruiken om ervoor te zorgen dat alleen geautoriseerde gebruikers toegang hebben tot de installatie kopieën. Met behulp van Shared Image Gallery kunt u uw installatiekopieën delen met verschillende gebruikers, service-principals of AD-groepen binnen uw organisatie.  Voor container installatie kopieën slaat u ze op in Azure Container Registry en maakt u gebruik van Azure RBAC om ervoor te zorgen dat alleen geautoriseerde gebruikers toegang hebben tot de installatie kopieën.  
 
 - [Meer informatie over Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
 

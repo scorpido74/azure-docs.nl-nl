@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
 ms.openlocfilehash: 646ce94587a9aa1bb8fd20a28b84658994b25cf1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90886542"
 ---
 # <a name="supported-features-of-azure-sql-edge"></a>Ondersteunde functies van Azure SQL Edge 
@@ -52,7 +52,7 @@ Azure SQL Edge ondersteunt alleen de data base-engine. Het bevat geen ondersteun
 Naast het ondersteunen van een subset van de functies van SQL Server on Linux biedt Azure SQL EDGE ondersteuning voor de volgende nieuwe functies: 
 
 - SQL-streaming, dat is gebaseerd op dezelfde engine die Azure Stream Analytics, biedt mogelijkheden voor realtime gegevens stromen in Azure SQL Edge. 
-- De T-SQL-functie aanroep `Date_Bucket` voor Time Series Data Analytics.
+- De T-SQL-functie aanroep `Date_Bucket` voor Time-Series gegevens analyse.
 - Machine learning-mogelijkheden via de ONNX-runtime, opgenomen in de SQL-engine.
 
 ## <a name="unsupported-features"></a>Niet-ondersteunde functies
@@ -67,7 +67,7 @@ De volgende lijst bevat de SQL Server 2019 in Linux-functies die momenteel niet 
 | &nbsp; | Stretch DB en gerelateerde DDL-opdrachten en Transact-SQL-functies, catalogus weergaven en dynamische beheer weergaven. |
 | &nbsp; | Volledige-tekst indexen en zoek acties, en gerelateerde DDL-opdrachten en Transact-SQL-functies, catalogus weergaven en dynamische beheer weergaven.|
 | &nbsp; | `FileTable`, `FILESTREAM` en gerelateerde DDL-opdrachten en Transact-SQL-functies, catalogus weergaven en dynamische beheer weergaven.|
-| **Data base-engine** | Replicat. Houd er rekening mee dat u Azure SQL Edge kunt configureren als een push-abonnee van een replicatie topologie. |
+| **Database Engine** | Replicat. Houd er rekening mee dat u Azure SQL Edge kunt configureren als een push-abonnee van een replicatie topologie. |
 | &nbsp; | Poly base. Houd er rekening mee dat u Azure SQL Edge kunt configureren als een doel voor externe tabellen in poly base. |
 | &nbsp; | Taal uitbreid baarheid via Java en Spark. |
 | &nbsp; | Integratie van Active Directory. |

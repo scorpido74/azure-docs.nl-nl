@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.reviewer: azfuncdf
 ms.openlocfilehash: b029fa246977dfe4210f6e8df242415f7e4103f1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87081913"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Durable Functions maken met behulp van de Azure Portal
@@ -40,19 +40,12 @@ Als u Java script-Durable Functions maakt, moet u het NPM- [ `durable-functions`
 
 3. Selecteer in de kudu-console **fout opsporing console**en klik vervolgens op **cmd**.
 
-   :::image type="content" source="./media/durable-functions-create-portal/kudu-choose-debug-console.png" alt-text="Console voor fout opsporing kudu":::
-
-3. De structuur van de bestands directory van de functie-app moet worden weer gegeven. Navigeer naar de map `site/wwwroot`. Van daaruit kunt u een bestand uploaden `package.json` door het te slepen en neer te zetten in het venster van de bestands directory. Hieronder ziet u een voor beeld `package.json` :
-
-    ```json
-    {
-      "dependencies": {
-        "durable-functions": "^1.3.1"
+   :::image type="content" source="./media/durable-functions-create-portal/kudu-choose-debug-console.png" alt-text="Functies platform functies kiezen kudu"
       }
     }
     ```
 
-   :::image type="content" source="./media/durable-functions-create-portal/kudu-choose-debug-console.png" alt-text="Kudu-upload package.jsop":::
+   :::image type="content" source="./media/durable-functions-create-portal/kudu-choose-debug-console.png" alt-text="Functies platform functies kiezen kudu":::
 
 4. Nadat uw `package.json` is geüpload, voert u de `npm install` opdracht uit vanuit de kudu-console voor externe uitvoering.
 
@@ -64,7 +57,7 @@ Als u Java script-Durable Functions maakt, moet u het NPM- [ `durable-functions`
 
 1. Voer in het zoek veld van de pagina **nieuwe functie** in `durable` en kies vervolgens de sjabloon **Durable functions http-starter** .
 
-   :::image type="content" source="./media/durable-functions-create-portal/durable-functions-http-starter-template.png" alt-text="Durable Functions HTTP-starter selecteren":::
+   :::image type="content" source="./media/durable-functions-create-portal/durable-functions-http-starter-template.png" alt-text="Functies platform functies kiezen kudu":::
 
 1. Voer voor de **nieuwe functie** naam in `HttpStart` en selecteer vervolgens **functie maken**.
 

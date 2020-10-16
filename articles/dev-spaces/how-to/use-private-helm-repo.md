@@ -8,14 +8,16 @@ ms.topic: conceptual
 description: Gebruik een persoonlijke helm-opslag plaats in een Azure dev-ruimte.
 keywords: Docker, Kubernetes, azure, AKS, Azure Container Service, containers, helm
 manager: gwallace
-ms.openlocfilehash: c8f0e463bc78d278d8162f8389664dbb46a83301
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c5f28595df2e552fd48033b44e4e1f0ea4ec306
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80240475"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960334"
 ---
 # <a name="use-a-private-helm-repository-in-azure-dev-spaces"></a>Een persoonlijke helm-opslag plaats gebruiken in azure dev Spaces
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 [Helm][helm] is een pakket beheerder voor Kubernetes. Helm maakt gebruik van een [grafiek][helm-chart] indeling voor pakket afhankelijkheden. Helm-grafieken worden opgeslagen in een opslag plaats, die openbaar of privé kan zijn. Met Azure dev Spaces worden alleen helm-grafieken uit open bare opslag plaatsen opgehaald wanneer uw toepassing wordt uitgevoerd. In gevallen waarin de helm-opslag plaats privé is of Azure dev Spaces geen toegang hebben, kunt u een grafiek van die opslag plaats rechtstreeks aan uw toepassing toevoegen. Door de grafiek rechtstreeks toe te voegen, kunnen Azure-ontwikkel ruimten uw toepassing uitvoeren zonder dat u toegang hebt tot de persoonlijke helm-opslag plaats.
 
@@ -37,7 +39,7 @@ azds prep --enable-ingress
 ```
 
 > [!TIP]
-> `prep`Met deze opdracht wordt geprobeerd [een Dockerfile-en helm-grafiek](../how-dev-spaces-works-prep.md#prepare-your-code) voor uw project te genereren. Azure dev Spaces gebruiken deze bestanden om uw code te bouwen en uit te voeren, maar u kunt deze bestanden wijzigen als u wilt wijzigen hoe het project wordt gemaakt en uitgevoerd.
+> Met de opdracht `prep` wordt geprobeerd [een Dockerfile en Helm-grafiek](../how-dev-spaces-works-prep.md#prepare-your-code) voor uw project te genereren. Azure Dev Spaces maakt gebruik van deze bestanden om uw code te compileren en uit te voeren, maar u kunt deze bestanden wijzigen als u de opzet en uitvoering van het project wilt wijzigen.
 
 Maak een [yaml][helm-requirements] -bestand met vereisten voor uw grafiek in de map grafieken van uw toepassing. Als uw toepassing bijvoorbeeld *app1*heet, maakt u *grafieken/app1/vereisten. yaml*.
 

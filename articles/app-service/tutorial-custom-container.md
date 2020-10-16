@@ -8,10 +8,10 @@ keywords: azure-app-service, web-app, linux, windows, docker, container
 ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python
 zone_pivot_groups: app-service-containers-windows-linux
 ms.openlocfilehash: f4b2aea0a6782b5484b2f6d15066d71990348596
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91312053"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>Aangepaste software naar Azure App Service migreren met een aangepaste container

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: b-juche
-ms.openlocfilehash: 6a7bf07359344e26280021a6a55eecc5b96b7a86
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 9a07c6ae48cdca68a95db7770d90076eb8f10f95
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653686"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91929453"
 ---
 # <a name="faqs-about-smb-performance-for-azure-netapp-files"></a>Veelgestelde vragen over SMB-prestaties voor Azure NetApp Files
 
@@ -39,7 +39,7 @@ Als SMB meerdere kanalen is ingeschakeld, brengt een SMB3-client via een netwerk
 
 ## <a name="which-windows-versions-support-smb-multichannel"></a>Welke Windows-versies ondersteunen SMB meerdere kanalen?
 
-SMB meerdere kanalen sinds Windows 2012 wordt ondersteund om de beste prestaties mogelijk te maken.  Zie [SMB meerdere kanalen](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn610980(v%3Dws.11)) en [de basis beginselen van SMB meerdere kanalen](https://blogs.technet.microsoft.com/josebda/2012/06/28/the-basics-of-smb-multichannel-a-feature-of-windows-server-2012-and-smb-3-0/) implementeren voor meer informatie. 
+SMB meerdere kanalen sinds Windows 2012 wordt ondersteund om de beste prestaties mogelijk te maken.  Zie [SMB meerdere kanalen](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn610980(v%3Dws.11)) en [de basis beginselen van SMB meerdere kanalen](/archive/blogs/josebda/the-basics-of-smb-multichannel-a-feature-of-windows-server-2012-and-smb-3-0) implementeren voor meer informatie. 
 
 
 ## <a name="does-my-azure-virtual-machine-support-rss"></a>Ondersteunt mijn virtuele Azure-machine RSS?
@@ -132,7 +132,7 @@ Nadat u gegevens verkeer hebt uitgevoerd op uw volumes, kunt u uw adapters bewak
 
 ## <a name="is-accelerated-networking-recommended"></a>Wordt versneld netwerken aanbevolen?
 
-Voor maximale prestaties kunt u het beste zo snel mogelijk [netwerken](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell) configureren. Houd rekening met de volgende aandachtspunten:  
+Voor maximale prestaties kunt u het beste zo snel mogelijk [netwerken](../virtual-network/create-vm-accelerated-networking-powershell.md) configureren. Houd rekening met de volgende aandachtspunten:  
 
 * Met de Azure Portal is versneld netwerken standaard ingeschakeld voor virtuele machines die deze functie ondersteunen.  Andere implementatie methoden, zoals Ansible en vergelijk bare configuratie hulpprogramma's, zijn echter niet mogelijk.  Fout bij het inschakelen van versneld netwerken kan de prestaties van een machine hobble.  
 * Als versneld netwerken niet zijn ingeschakeld op de netwerk interface van een virtuele machine vanwege een gebrek aan ondersteuning voor een exemplaar type of-grootte, blijft het uitgeschakeld met grotere instantie typen. In die gevallen hebt u hand matige interventie nodig.

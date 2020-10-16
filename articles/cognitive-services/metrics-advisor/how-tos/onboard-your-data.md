@@ -3,19 +3,19 @@ title: De gegevensfeed onboarden naar metrische gegevens Advisor
 titleSuffix: Azure Cognitive Services
 description: Hoe u aan de slag gaat met het voorbereiden van uw gegevensfeeds voor metrische gegevens Advisor.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/14/2020
-ms.author: aahi
-ms.openlocfilehash: 83ff710804b43837657ea0da7c8f44c245017c7e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.author: mbullwin
+ms.openlocfilehash: fe3b87c733f54d8bd52c4d973977e3c8cbfefe19
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936496"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043194"
 ---
 # <a name="how-to-onboard-your-metric-data-to-metrics-advisor"></a>Instructies: uw metrische gegevens opwaarderen naar metrische Advisor
 
@@ -82,7 +82,7 @@ Als de tijds tempel van een gegevens punt wordt wegge laten, gebruikt metrische 
 
 Als u kolommen wilt negeren, raden we u aan om uw query of gegevens bron bij te werken om die kolommen uit te sluiten. U kunt kolommen ook negeren met **kolommen negeren** en vervolgens **negeren** voor de specifieke kolommen. Als een kolom een dimensie moet zijn en per ongeluk als *genegeerd*wordt ingesteld, kan het zijn dat metrische gegevens door Advisor worden opgenomen. Stel bijvoorbeeld dat de gegevens van uw query als volgt zijn:
 
-| Rij-ID | Tijdstempel | Land/regio | Taal | Inkomsten |
+| Rij-ID | Tijdstempel | Land | Taal | Inkomsten |
 | --- | --- | --- | --- | --- |
 | 1 | 2019/11/10 | China | ZH-CN | 10.000 |
 | 2 | 2019/11/10 | China | EN-US | 1000 |
@@ -99,7 +99,7 @@ Als *land* een dimensie is en de *taal* wordt ingesteld op *genegeerd*, hebben d
 
 Met metrische gegevens adviseur kunnen automatisch aggregatie (bijvoorbeeld SUM, MAX, MIN) worden uitgevoerd voor elke dimensie tijdens opname. vervolgens wordt er een hiërarchie gemaakt die wordt gebruikt in hoofd case analyses en andere diagnostische functies. 
 
-Stel u de volgende scenario's voor:
+Neem de volgende scenario's:
 
 * *Ik hoef niet de rollup-analyse voor mijn gegevens op te nemen.*
 
@@ -109,7 +109,7 @@ Stel u de volgende scenario's voor:
 
     Met deze optie wordt aangegeven dat metrische gegevens niet in het totaal hoeven te worden samengevouwen omdat de rijen al zijn opgeteld. Als u bijvoorbeeld *alleen null*selecteert, wordt de tweede gegevensrij in het onderstaande voor beeld gezien als aggregatie van alle landen en taal en *-US*. de vierde gegevensrij met een lege waarde voor het *land* zal echter worden gezien als een gewone rij die kan duiden op onvolledige gegevens.
     
-    | Land/regio | Taal | Inkomsten |
+    | Land | Taal | Inkomsten |
     |---------|----------|--------|
     | China   | ZH-CN    | 10.000  |
     | Null  | EN-US    | 999999 |
@@ -188,7 +188,7 @@ Details van opname fout controleren:
 2. Klik op **status** en vervolgens op **mislukt** of **fout**.
 3. Beweeg de muis aanwijzer over een mislukte opname en Bekijk het detail bericht dat wordt weer gegeven.
 
-:::image type="content" source="../media/datafeeds/check-failed-ingestion.png" alt-text="Mislukte opname controleren":::
+:::image type="content" source="../media/datafeeds/check-failed-ingestion.png" alt-text="Voortgangs balk opname":::
 
 Een *mislukte* status geeft aan dat de opname van deze gegevens bron later opnieuw wordt uitgevoerd.
 Een *fout* status geeft aan dat de gegevens bron niet opnieuw wordt geprobeerd door Advisor. Als u gegevens opnieuw wilt laden, moet u een backfill/opnieuw laden hand matig activeren.

@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: eliotga
 ms.openlocfilehash: b9fc37c6589cdd0bc6a5cdce7b7ebebe2c6e9a85
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90531607"
 ---
 # <a name="iot-hub-device-provisioning-service-dps-terminology"></a>Terminologie van IoT Hub Device Provisioning Service (DPS)
@@ -46,7 +46,7 @@ De instelling op service niveau die bepaalt hoe Device Provisioning Service appa
 
 * **Statische configuratie via de registratie lijst**: specificatie van de gewenste IOT-hub in de registratie lijst heeft voor rang op het toewijzings beleid op service niveau.
 
-* **Aangepast (Azure function gebruiken): met**een aangepast toewijzings beleid hebt u meer controle over hoe apparaten worden toegewezen aan een IOT-hub. Dit wordt bereikt door gebruik te maken van aangepaste code in een Azure-functie om apparaten toe te wijzen aan een IoT-hub. De Device Provisioning Service roept de code van uw Azure-functie aan om alle relevante informatie over het apparaat en de inschrijving van uw code op te geven. De functie code wordt uitgevoerd en retourneert de IoT hub-gegevens die worden gebruikt om het apparaat in te richten.
+* **Aangepast (Azure function gebruiken): met**een aangepast toewijzings beleid hebt u meer controle over hoe apparaten worden toegewezen aan een IOT-hub. Dit wordt bereikt door gebruik te maken van aangepaste code in een Azure-functie om apparaten toe te wijzen aan een IoT-hub. De Device Provisioning Service roept de code van uw Azure-functie aan om alle relevante informatie over het apparaat en de inschrijving van uw code op te geven. De functiecode wordt uitgevoerd en retourneert de gegevens van de IoT-hub die worden gebruikt om het apparaat in te richten.
 
 ## <a name="enrollment"></a>Inschrijving
 
@@ -123,6 +123,6 @@ De apparaat-ID is de ID zoals deze wordt weer gegeven in IoT Hub. De gewenste ap
 
 
 
-## <a name="operations"></a>Bewerkingen
+## <a name="operations"></a>Operations
 
 Bewerkingen zijn de facturerings eenheid van de Device Provisioning Service. Eén bewerking is het volt ooien van een instructie naar de service. Bewerkingen omvatten apparaatregistratie en nieuwe registraties; bewerkingen omvatten ook wijzigingen aan de service zijde, zoals het toevoegen van inschrijvings lijst vermeldingen en het bijwerken van inschrijvings lijst vermeldingen.

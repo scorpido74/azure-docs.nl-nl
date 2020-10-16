@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: b-juche
-ms.openlocfilehash: bed1375631c017d23ed53b6102c424533237099e
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: bb3d1fd49c2623ff6dcbe8a19ae8c8ca3b46425a
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447553"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91930625"
 ---
 # <a name="delegate-a-subnet-to-azure-netapp-files"></a>Een subnet delegeren aan Azure NetApp Files 
 
@@ -33,7 +33,7 @@ U dient een subnet te delegeren aan Azure NetApp Files.   Als u een volume maakt
    U kunt slechts één gedelegeerd subnet in een VNet hebben. Een NetApp-account kan volumes implementeren in meerdere VNets, elk met een eigen overgedragen subnet.  
 * U kunt geen netwerkbeveiligingsgroep of service-eindpunt in het gedelegeerde subnet toewijzen. Als u dit doet, mislukt het delegeren van het subnet.
 * Toegang tot een volume vanuit een globaal gekoppeld virtueel netwerk wordt momenteel niet ondersteund.
-* Door de [gebruiker gedefinieerde routes](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#custom-routes) (udr's) en netwerk beveiligings groepen (nsg's) worden niet ondersteund op gedelegeerde subnetten voor Azure NetApp files. U kunt echter Udr's en Nsg's Toep assen op andere subnetten, zelfs binnen hetzelfde VNet als het subnet dat is overgedragen aan Azure NetApp Files.  
+* Door de [gebruiker gedefinieerde routes](../virtual-network/virtual-networks-udr-overview.md#custom-routes) (udr's) en netwerk beveiligings groepen (nsg's) worden niet ondersteund op gedelegeerde subnetten voor Azure NetApp files. U kunt echter Udr's en Nsg's Toep assen op andere subnetten, zelfs binnen hetzelfde VNet als het subnet dat is overgedragen aan Azure NetApp Files.  
    Azure NetApp Files maakt een systeem route naar het overgedragen subnet. De route wordt weer gegeven in de **juiste routes** in de route tabel als u deze nodig hebt voor het oplossen van problemen.
 
 ## <a name="steps"></a>Stappen
@@ -54,6 +54,4 @@ U kunt ook een subnet maken en delegeren als u [een volume maakt voor Azure NetA
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Een volume maken voor Azure NetApp Files](azure-netapp-files-create-volumes.md)
-* Meer informatie over [Integratie van virtuele netwerken voor Azure-services](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)
-
-
+* Meer informatie over [Integratie van virtuele netwerken voor Azure-services](../virtual-network/virtual-network-for-azure-services.md)

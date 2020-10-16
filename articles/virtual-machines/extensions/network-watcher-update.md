@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 09/23/2020
 ms.author: damendo
-ms.openlocfilehash: c386685d63894472623ffc4392a529541a91391c
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.openlocfilehash: fd3fff2d438bbf804e35f04db0cfae15eea5e782
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91410315"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973336"
 ---
 # <a name="how-to-update-the-network-watcher-extension-to-the-latest-the-version"></a>De Network Watcher-extensie bijwerken naar de nieuwste versie 
 
@@ -114,4 +114,4 @@ Als u de automatische upgrade hebt ingesteld op True voor de NetworkWatcher-exte
 
 ## <a name="support"></a>Ondersteuning
 
-Als u op elk gewenst moment meer hulp nodig hebt, kunt u de documentatie voor de Network Watcher-extensie ([Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/network-watcher-linux), [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/network-watcher-windows)) raadplegen of contact opnemen met de Azure-experts op [MSDN Azure en stack overflow forums](https://azure.microsoft.com/support/forums/). U kunt ook een ondersteunings incident voor Azure opslaan. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer ondersteuning verkrijgen. Lees de [Veelgestelde vragen over ondersteuning voor Microsoft Azure](https://azure.microsoft.com/support/faq/)voor meer informatie over het gebruik van Azure-ondersteuning.
+Als u op elk gewenst moment meer hulp nodig hebt, kunt u de documentatie voor de Network Watcher-extensie ([Linux](./network-watcher-linux.md), [Windows](./network-watcher-windows.md)) raadplegen of contact opnemen met de Azure-experts op [MSDN Azure en stack overflow forums](https://azure.microsoft.com/support/forums/). U kunt ook een ondersteunings incident voor Azure opslaan. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer ondersteuning verkrijgen. Lees de [Veelgestelde vragen over ondersteuning voor Microsoft Azure](https://azure.microsoft.com/support/faq/)voor meer informatie over het gebruik van Azure-ondersteuning.

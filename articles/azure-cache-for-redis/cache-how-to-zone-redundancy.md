@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/11/2020
 ms.openlocfilehash: 33c346fa2e4572799ad6341bd5115cdd6e3b9ec9
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91569984"
 ---
 # <a name="enable-zone-redundancy-for-azure-cache-for-redis-preview"></a>Zone redundantie voor Azure cache inschakelen voor redis (preview-versie)
@@ -36,7 +36,7 @@ Voer de volgende stappen uit om een cache te maken:
   
 1. Selecteer op de pagina **Nieuw** de optie **Databases** en selecteer vervolgens **Azure Cache voor Redis**.
 
-    :::image type="content" source="media/cache-create/new-cache-menu.png" alt-text="Selecteer Azure-cache voor redis.":::
+    :::image type="content" source="media/cache-create/new-cache-menu.png" alt-text="Selecteer Azure Cache voor Redis.":::
    
 1. Configureer de instellingen voor de nieuwe cache op de pagina **basis beginselen** .
    
@@ -50,11 +50,11 @@ Voer de volgende stappen uit om een cache te maken:
    
 1. Kies op de pagina **Geavanceerd** de optie **aantal replica's**.
    
-    :::image type="content" source="media/cache-how-to-multi-replicas/create-multi-replicas.png" alt-text="Selecteer Azure-cache voor redis.":::
+    :::image type="content" source="media/cache-how-to-multi-replicas/create-multi-replicas.png" alt-text="Selecteer Azure Cache voor Redis.":::
 
 1. Selecteer **beschikbaarheids zones**. 
    
-    :::image type="content" source="media/cache-how-to-zone-redundancy/create-zones.png" alt-text="Selecteer Azure-cache voor redis.":::
+    :::image type="content" source="media/cache-how-to-zone-redundancy/create-zones.png" alt-text="Selecteer Azure Cache voor Redis.":::
 
 1. Wijzig de standaard instellingen van andere opties. 
 
@@ -62,9 +62,9 @@ Voer de volgende stappen uit om een cache te maken:
     > Ondersteuning voor zone redundantie werkt momenteel alleen met niet-geclusterde en niet-Geo-gerepliceerde caches. Daarnaast biedt het geen ondersteuning voor persoonlijke koppelingen, schalen, gegevens persistentie of importeren/exporteren.
     >
 
-1. Klik op **Create**. 
+1. Klik op **Maken**. 
    
-    Het duurt even voordat de cache is gemaakt. U kunt de voortgang bekijken op de **overzichtspagina** van Azure Cache voor Redis. Als u bij **Status** **Wordt uitgevoerd** ziet staan, kunt u de cache gebruiken.
+    Het duurt even voor de cache is gemaakt. U kunt de voortgang bekijken op de **overzichtspagina** van Azure Cache voor Redis. Als u bij **Status** **Wordt uitgevoerd** ziet staan, kunt u de cache gebruiken.
    
     > [!NOTE]
     > Beschikbaarheids zones kunnen niet worden gewijzigd nadat een cache is gemaakt.

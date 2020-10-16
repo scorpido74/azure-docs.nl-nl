@@ -8,10 +8,10 @@ ms.date: 03/18/2020
 ms.author: sngun
 ms.reviewer: sngun
 ms.openlocfilehash: 32266695770f627f7044bce92e4505f45776fd28
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83747352"
 ---
 # <a name="compliance-in-azure-cosmos-db"></a>Naleving in Azure Cosmos DB 
@@ -28,7 +28,7 @@ Azure Cosmos DB is beschikbaar in alle Azure-regio's. Micro soft maakt vijf afzo
 
 * **Azure Government voor ministerie van defensie (DoD)** is beschikbaar in twee regio's in de Verenigde Staten van het Amerikaanse ministerie van defensie.
 
-Om klanten te helpen hun eigen nalevings verplichtingen voor gereglementeerde industrieën en markten wereld wijd te voldoen, onderhoudt Azure de grootste nalevings portefeuille in de branche met betrekking tot zowel de breedte (het totale aantal aanbiedingen) als de diepte (het aantal klant gerichte Services in het beoordelings bereik).  Nalevings aanbiedingen voor Azure worden gegroepeerd in vier wereld wijd toepas bare, Amerikaanse overheid, branchespecifieke en land/regio-specifieke.  Nalevings aanbiedingen zijn gebaseerd op verschillende soorten garanties, waaronder formele certificeringen, verklaringen, validering, autorisaties en beoordelingen die worden geproduceerd door onafhankelijke controle bedrijven van derden, evenals contractuele wijzigingen, zelf beoordeling en klant begeleiding documenten die door micro soft worden geproduceerd.
+Om klanten te helpen hun eigen nalevings verplichtingen voor gereglementeerde industrieën en markten wereld wijd te voldoen, onderhoudt Azure de grootste nalevings portefeuille in de branche met betrekking tot zowel de breedte (het totale aantal aanbiedingen) als de diepte (het aantal klant gerichte Services in het beoordelings bereik).  Nalevingsaanbiedingen voor Azure worden gegroepeerd in vier segmenten - wereldwijd toepasbaar, Amerikaanse overheid, branchespecifiek en land/regio-specifiek.  Nalevingsaanbiedingen zijn gebaseerd op verschillende soorten garanties, waaronder formele certificeringen, verklaringen, validering, autorisaties en beoordelingen die worden geproduceerd door onafhankelijke controlebedrijven van derden, evenals contractuele wijzigingen, zelf beoordeling en klantbegeleidingsdocumenten die door Microsoft worden geproduceerd.
 
 ## <a name="azure-cosmos-db-certifications"></a>Azure Cosmos DB-certificeringen  
 

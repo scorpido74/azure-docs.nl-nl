@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18
 ms.openlocfilehash: 401d22ee68ba0652eb684b03b06fddf0b0fe3d72
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91569464"
 ---
 # <a name="create-a-new-azure-time-series-insights-gen1-environment-in-the-azure-portal"></a>Maak een nieuwe Azure Time Series Insights gen1-omgeving in de Azure Portal
 
 > [!CAUTION]
-> Dit is een gen1-artikel.
+> Dit is een Gen1-artikel.
 
 In dit artikel wordt beschreven hoe u een nieuwe Azure Time Series Insights-omgeving maakt met behulp van de Azure Portal.
 

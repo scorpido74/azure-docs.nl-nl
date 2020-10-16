@@ -16,10 +16,10 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 7d18273d07cda3a6fe3517c47c9be12a2d236438
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91316933"
 ---
 # <a name="pricing-guidance-for-sql-server-on-azure-vms"></a>Prijs informatie voor SQL Server op virtuele machines van Azure
@@ -59,7 +59,7 @@ Als u een niet-lichte productie werk belasting hebt, gebruikt u een van de volge
 |-----|-----|
 | Web | Kleine websites |
 | Standard | Kleine tot middel grote werk belastingen |
-| Onderneming | Grote of bedrijfskritische workloads|
+| Enterprise | Grote of bedrijfskritische workloads|
 
 U hebt twee opties om te betalen voor SQL Server licenties voor deze edities: u *betaalt per gebruik* of *u kunt uw eigen licentie (BYOL) meenemen*.
 
@@ -92,7 +92,7 @@ Zie de volgende koppelingen voor het maken van een Azure-VM met SQL Server 2017 
 >Het bevat geen aanvullende SQL Server licentie kosten voor web-, Standard-en Enter prise-edities. Als u de meest nauw keurige prijs schatting wilt krijgen, selecteert u uw besturings systeem en SQL Server editie op de pagina met prijzen voor [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) of [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
 > [!NOTE]
-> Het is nu mogelijk om het licentie model te wijzigen van betalen per gebruik om uw eigen licentie (BYOL) en terug te brengen. Zie [How to Change the License model for a SQL Server VM](licensing-model-azure-hybrid-benefit-ahb-change.md)(Engelstalig) voor meer informatie. 
+> Het is nu mogelijk om het licentie model te wijzigen van betalen per gebruik om uw eigen licentie (BYOL) en terug te brengen. Raadpleeg [Het licentiemodel voor een SQL Server-VM wijzigen](licensing-model-azure-hybrid-benefit-ahb-change.md) voor meer informatie. 
 
 ## <a name="bring-your-own-license-byol"></a><a id="byol"></a> Bring Your Own License (BYOL)
 
@@ -115,7 +115,7 @@ Als u BYOL wilt gebruiken met een SQL Server-VM, moet u een licentie hebben voor
 | BYOL voor deel | Beschrijving |
 |-----|-----|
 | **Kostenbesparingen** | De [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) biedt een besparing van maxi maal 55%. Zie voor meer informatie [switching licentie model](licensing-model-azure-hybrid-benefit-ahb-change.md) |
-| **Gratis passieve secundaire replica** | Een ander voor deel van het meebrengen van uw eigen licentie is de [gratis licentie voor één passieve secundaire replica](https://azure.microsoft.com/pricing/licensing-faq/) per SQL Server voor hoge Beschik baarheid. Dit is de helft van de licentie kosten van een Maxi maal beschik bare SQL Server implementatie (bijvoorbeeld met behulp van AlwaysOn-beschikbaarheids groepen). De rechten om de passieve secundaire uit te voeren, worden verschaft via de Software Assurance-voor delen van failover-servers. |
+| **Gratis passieve secundaire replica** | Een ander voor deel van het meebrengen van uw eigen licentie is de [gratis licentie voor één passieve secundaire replica](https://azure.microsoft.com/pricing/licensing-faq/) per SQL Server voor hoge Beschik baarheid. Dit is de helft van de licentie kosten van een Maxi maal beschik bare SQL Server implementatie (bijvoorbeeld met behulp van AlwaysOn-beschikbaarheids groepen). De rechten om de passieve secundaire uit te voeren, worden via het Fail-Over servers Software Assurance-voor deel verschaft. |
 
 Als u een Azure-VM met SQL Server 2017 wilt maken met een van deze kopieën van uw eigen licentie, raadpleegt u de Vm's die worden voorafgegaan door {BYOL}:
 
@@ -126,7 +126,7 @@ Als u een Azure-VM met SQL Server 2017 wilt maken met een van deze kopieën van 
 > Laat ons binnen tien dagen weten hoeveel SQL Server-licenties u in azure gebruikt. De koppelingen naar de vorige installatie kopieën bevatten instructies over hoe u dit doet.
 
 > [!NOTE]
-> Het is nu mogelijk om het licentie model te wijzigen van betalen per gebruik om uw eigen licentie (BYOL) en terug te brengen. Zie [How to Change the License model for a SQL Server VM](licensing-model-azure-hybrid-benefit-ahb-change.md)(Engelstalig) voor meer informatie. 
+> Het is nu mogelijk om het licentie model te wijzigen van betalen per gebruik om uw eigen licentie (BYOL) en terug te brengen. Raadpleeg [Het licentiemodel voor een SQL Server-VM wijzigen](licensing-model-azure-hybrid-benefit-ahb-change.md) voor meer informatie. 
 
 
 

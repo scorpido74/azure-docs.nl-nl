@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 10/13/2017
 ms.author: alkohli
 ms.openlocfilehash: 0c54b4e3015e255a6948202a6c3ea7a83362032f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514912"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>Geautomatiseerde oplossing voor herstel na nood gevallen met Azure Site Recovery voor bestands shares die worden gehost op StorSimple
@@ -170,7 +170,7 @@ U kunt een herstel plan maken in ASR om het proces voor het uitvoeren van de fai
    
 1. Klik in het Automation-account op **variabelen** &gt; **een variabele toevoegen** en voeg de volgende variabelen toe. U kunt ervoor kiezen om deze assets te versleutelen. Deze variabelen zijn een specifiek herstel plan. Als uw herstel plan, dat u in de volgende stap gaat maken, naam is TestPlan, moeten de variabelen TestPlan-StorSimRegKey, TestPlan-AzureSubscriptionName, enzovoort zijn.
 
-   - **BaseUrl**: de URL van de Resource Manager voor de Azure-Cloud. Get **-AzEnvironment gebruiken | Select-object naam, ResourceManagerUrl-** cmdlet.
+   - **BaseUrl**: de URL van de Resource Manager voor de Azure-Cloud. Gebruik **Get-AzEnvironment | Select-Object name, ResourceManagerUrl** cmdlet.
    - _RecoveryPlanName_**-ResourceGroupName**: de Resource Manager-groep die de StorSimple-resource heeft.
    - _RecoveryPlanName_**-managernaam**: de StorSimple-resource met het StorSimple-apparaat.
    - _RecoveryPlanName_**-DeviceName**: het StorSimple-apparaat waarvoor een failover moet worden uitgevoerd.

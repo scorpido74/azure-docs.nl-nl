@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2bec6667ea44e195ea1fccb5313b45ed060312a1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 35c4875ca9bf3165fff84164eb3bb7ebe44cf932
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000104"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093392"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>Foutopsporing uitvoeren in uw Service Fabric-toepassing met behulp van Visual Studio
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ U kunt tijd en geld besparen door uw Azure Service Fabric-toepassing te implemen
 1. Start een lokaal ontwikkel cluster door de stappen in [uw service Fabric-ontwikkel omgeving](service-fabric-get-started.md)in te stellen.
 2. Druk op **F5** of klik op **fout**  >  **opsporing starten**.
    
-    ![Fout opsporing in een toepassing starten][startdebugging]
+    ![Scherm opname van het menu fout opsporing.][startdebugging]
 3. Stel onderbrekings punten in uw code in en door loop de toepassing door te klikken op opdrachten in het menu **fout opsporing** .
    
    > [!NOTE]

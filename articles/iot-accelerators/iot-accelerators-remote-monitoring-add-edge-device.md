@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/09/2018
 ms.topic: conceptual
-ms.openlocfilehash: 0a42763ff47cccfa506acbbbd95d20d41eb0827f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de060be7ace84ea309b71087a50fd572091bed43
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "72965378"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076450"
 ---
 # <a name="add-an-iot-edge-device-to-your-remote-monitoring-solution-accelerator"></a>Een IoT Edge apparaat toevoegen aan de oplossings versneller voor externe controle
 
@@ -40,15 +40,15 @@ Het is ook mogelijk om een IoT Edge apparaat rechtstreeks te registreren bij het
 
 Wanneer u een apparaat rechtstreeks registreert bij de IoT-hub in de oplossings versneller voor externe controle, wordt deze weer gegeven op de pagina **device Explorer** in de webgebruikersinterface.
 
-## <a name="install-the-iot-edge-runtime"></a>De IoT Edge runtime installeren
+## <a name="install-the-iot-edge-runtime"></a>De IoT Edge-runtime installeren
 
 Voordat u modules kunt implementeren op uw edge-apparaat, moet u de IoT Edge runtime op het echte apparaat installeren. In de volgende hand leidingen ziet u hoe u de runtime installeert op algemene platformen:
 
 - [Installeer de Azure IoT Edge runtime op Linux (x64)](../iot-edge/how-to-install-iot-edge-linux.md)
-- [Azure IoT Edge runtime installeren op Linux (ARM32v7/armhf)](../iot-edge/how-to-install-iot-edge-linux-arm.md)
-- [Azure IoT Edge runtime installeren op Windows voor gebruik met Windows-containers](../iot-edge/how-to-install-iot-edge-windows-with-windows.md)
+- [Azure IoT Edge runtime installeren op Linux (ARM32v7/armhf)](../iot-edge/how-to-install-iot-edge-linux.md)
+- [Azure IoT Edge runtime installeren op Windows voor gebruik met Windows-containers](../iot-edge/how-to-install-iot-edge-windows.md)
 - [Installeer de Azure IoT Edge runtime op Windows voor gebruik met Linux-containers](../iot-edge/how-to-install-iot-edge-windows-with-linux.md)
-- [Installeer de IoT Edge runtime op Windows IoT core](../iot-edge/how-to-install-iot-core.md)
+- [Installeer de IoT Edge runtime op Windows IoT core](../iot-edge/how-to-install-iot-edge-windows.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 

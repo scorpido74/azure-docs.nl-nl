@@ -3,19 +3,19 @@ title: Advisor-waarschuwingen voor metrische gegevens configureren
 titleSuffix: Azure Cognitive Services
 description: De Advisor-waarschuwingen voor metrische gegevens configureren met behulp van hooks voor e-mail, Web en Azure DevOps.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/14/2020
-ms.author: aahi
-ms.openlocfilehash: 870b412a1fa5d362ac7b5be1df6c92d95c2936ca
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.author: mbullwin
+ms.openlocfilehash: ab1c07bd7814afb054bb20b77bbc84c1ee9df017
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90977793"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046788"
 ---
 # <a name="how-to-configure-alerts-and-get-notifications-using-a-hook"></a>Instructies: waarschuwingen configureren en meldingen ontvangen met behulp van een hook
 
@@ -36,7 +36,7 @@ Een e-mail Hook is het kanaal voor afwijkende waarschuwingen die moeten worden v
 
 |Parameter |Beschrijving  |
 |---------|---------|
-| Name | De naam van de e-mail Hook |
+| Naam | De naam van de e-mail Hook |
 | E-mail verzenden naar| E-mail adressen waarnaar een waarschuwing wordt verzonden|
 | Externe koppeling | Optioneel veld dat een aangepaste omleiding mogelijk maakt, zoals voor het oplossen van problemen. |
 | Titel van aangepaste afwijkings waarschuwing | Titel sjabloon ondersteunt `${severity}` , `${alertSettingName}` , `${datafeedName}` , `${metricName}` , `${detectConfigName}` , `${timestamp}` , `${topDimension}` , `${incidentCount}` , `${anomalyCount}`
@@ -75,7 +75,7 @@ Als u een Azure DevOps-Hook wilt maken, moet u de volgende gegevens toevoegen
 
 |Parameter |Beschrijving  |
 |---------|---------|
-| Name | Een naam voor de Hook |
+| Naam | Een naam voor de Hook |
 | Organisatie | De organisatie waartoe uw DevOps behoort |
 | Project | Het specifieke project in DevOps. |
 | Toegangstoken |  Een token voor de verificatie van DevOps. | 
@@ -88,11 +88,11 @@ Als u een Azure DevOps-Hook wilt maken, moet u de volgende gegevens toevoegen
 Ga naar de detail pagina met metrische gegevens om de sectie **waarschuwings instellingen** te vinden in de linkerbenedenhoek van de detail pagina met metrische gegevens. Hiermee worden alle waarschuwings instellingen weer gegeven die van toepassing zijn op de geselecteerde detectie configuratie. Wanneer er een nieuwe detectie configuratie wordt gemaakt, wordt er geen instelling voor waarschuwingen weer gegeven en worden er geen waarschuwingen verzonden.  
 U kunt de pictogrammen **toevoegen**, **bewerken** en **verwijderen** gebruiken om de instellingen voor waarschuwingen te wijzigen.
 
-:::image type="content" source="../media/alerts/alert-setting.png" alt-text="Menu-item waarschuwings instellingen.":::
+:::image type="content" source="../media/alerts/alert-setting.png" alt-text="venster voor het maken van webhooks.":::
 
 Klik op de knoppen **toevoegen** of **bewerken** om een venster te openen om de instellingen voor waarschuwingen toe te voegen of te bewerken.
 
-:::image type="content" source="../media/alerts/edit-alert.png" alt-text="Waarschuwings instellingen toevoegen of bewerken":::
+:::image type="content" source="../media/alerts/edit-alert.png" alt-text="venster voor het maken van webhooks.":::
 
 **Naam van waarschuwings instelling**: de naam van deze waarschuwings instelling. Deze wordt weer gegeven in de titel van het e-mail bericht.
 
@@ -131,10 +131,10 @@ De **operator** kiezer is de logische relatie van elke sectie om te bepalen of e
 
 |Operator  |Beschrijving  |
 |---------|---------|
-|EN     | Alleen een waarschuwing verzenden als een reeks overeenkomt met elke waarschuwings sectie en alle gegevens punten afwijkingen zijn. Als de metrische gegevens verschillende dimensie namen hebben, wordt er nooit een waarschuwing geactiveerd.         |
+|AND     | Alleen een waarschuwing verzenden als een reeks overeenkomt met elke waarschuwings sectie en alle gegevens punten afwijkingen zijn. Als de metrische gegevens verschillende dimensie namen hebben, wordt er nooit een waarschuwing geactiveerd.         |
 |OF     | De waarschuwing verzenden als ten minste één sectie afwijkingen bevat.         |
 
-:::image type="content" source="../media/alerts/alert-setting-operator.png" alt-text="De operator voor de sectie meerdere waarschuwings instellingen":::
+:::image type="content" source="../media/alerts/alert-setting-operator.png" alt-text="venster voor het maken van webhooks.":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

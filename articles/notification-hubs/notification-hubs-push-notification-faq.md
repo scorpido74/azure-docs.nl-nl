@@ -16,10 +16,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/13/2019
 ms.openlocfilehash: 85ebb7f5ac52f4eea25f9e6f1a2b1b5ac6f4caa5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87077918"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Push meldingen met Azure Notification Hubs: veelgestelde vragen
@@ -151,7 +151,7 @@ Alle verbindingen, van de afzender naar de Azure-Notification Hubs naar de PNS, 
 
 Als u gevoelige nettoladingen wilt verzenden, kunt u het beste een beveiligd push patroon gebruiken. De afzender levert een ping-melding met een bericht-id aan het apparaat zonder de gevoelige nettolading. Wanneer de app op het apparaat de payload ontvangt, roept de app een beveiligde API rechtstreeks aan om de bericht gegevens op te halen. Ga voor een hand leiding voor het implementeren van dit patroon naar de pagina [veilige push-zelf studie van Notification hubs] .
 
-## <a name="operations"></a>Bewerkingen
+## <a name="operations"></a>Operations
 
 ### <a name="what-support-is-provided-for-disaster-recovery"></a>Welke ondersteuning wordt geboden voor herstel na nood gevallen?
 

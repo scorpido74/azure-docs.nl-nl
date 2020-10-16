@@ -7,14 +7,14 @@ ms.date: 01/30/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 9a6a56491a327d5d4eafc2c05dc2b54b137096b8
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: e3642a621253b79fdfcdd8cb2b648dee534c6758
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752059"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968682"
 ---
-# <a name="reduce-costs-with-azure-disks-reservation"></a>Kosten verlagen met Azure Disk reservation
+# <a name="reduce-costs-with-azure-disks-reservation"></a>Kosten verlagen met Azure-schijfreservering
 
 Bespaar op uw Azure Disk Storage gebruik met gereserveerde capaciteit. Azure Disk Storage reserve ringen gecombineerd met Azure Reserved Virtual Machine Instances kunt u de totale kosten van virtuele machines (VM) verlagen. De reserverings korting wordt automatisch toegepast op de overeenkomende schijven in het geselecteerde reserverings bereik. Als gevolg van deze automatische toepassing hoeft u geen reserve ring toe te wijzen aan een beheerde schijf om de kortingen te krijgen.
 
@@ -89,7 +89,7 @@ Nadat u een reserve ring hebt aangeschaft, wordt deze automatisch toegepast op a
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Reserveringen annuleren, ruilen of terugbetalen
 
-U kunt in bepaalde beperkingen reserve ringen annuleren, uitwisselen of terugbetalen. Zie [Selfserviceopties voor inwisselen en retourneren van Azure-reserveringen](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations) voor meer informatie.
+U kunt in bepaalde beperkingen reserve ringen annuleren, uitwisselen of terugbetalen. Zie [Selfserviceopties voor inwisselen en retourneren van Azure-reserveringen](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md) voor meer informatie.
 
 ## <a name="expiration-of-a-reservation"></a>Verval datum van een reserve ring
 
@@ -104,4 +104,4 @@ Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Wat zijn Azure-reserveringen?](../cost-management-billing/reservations/save-compute-costs-reservations.md)
-- [Reserveringskorting toepassen op Azure Disk Storage](../cost-management-billing/reservations/understand-disk-reservations.md)
+- [Begrijpen hoe uw reserverings korting wordt toegepast op Azure Disk Storage](../cost-management-billing/reservations/understand-disk-reservations.md)

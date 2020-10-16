@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/03/2020
 ms.openlocfilehash: 07cbb28b98fcbac1932424c1c72f388813ec2400
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86037559"
 ---
 # <a name="autoscale-stream-analytics-jobs-using-azure-automation"></a>Stream Analytics taken automatisch schalen met behulp van Azure Automation
@@ -43,7 +43,7 @@ Voeg de volgende variabelen toe binnen het Azure Automation-account. Deze variab
 
 ### <a name="create-runbooks"></a>Runbooks maken
 De volgende stap bestaat uit het maken van twee Power shell-runbooks. Eén voor omhoog schalen en de andere voor het omlaag schalen van bewerkingen.
-1. Ga in uw Azure Automation-account naar **Runbooks** onder **proces automatisering** en selecteer **Runbook maken**.
+1. Ga in uw Azure Automation-account naar **Runbooks** onder **proces automatisering**  en selecteer **Runbook maken**.
 2. Noem de eerste runbook- *ScaleUpRunbook* met het type dat is ingesteld op Power shell. Gebruik het [Power shell-script ScaleUpRunbook](https://github.com/Azure/azure-stream-analytics/blob/master/Autoscale/ScaleUpRunbook.ps1) dat beschikbaar is in github. Sla de app op en publiceer deze.
 3. Maak een ander runbook met de naam *ScaleDownRunbook* met het type Power shell. Gebruik het [Power shell-script ScaleDownRunbook](https://github.com/Azure/azure-stream-analytics/blob/master/Autoscale/ScaleDownRunbook.ps1) dat beschikbaar is in github. Sla de app op en publiceer deze.
 

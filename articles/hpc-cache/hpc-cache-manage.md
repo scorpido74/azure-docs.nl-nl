@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: v-erkel
 ms.openlocfilehash: 19950ca215abbac3a56bdb901448c9d92ad369be
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91613038"
 ---
 # <a name="manage-your-cache"></a>Uw cache beheren
@@ -56,7 +56,7 @@ Als u een gestopt cache opnieuw wilt activeren, klikt u op de knop **starten** .
 
 ![scherm afbeelding van de bovenste knoppen met de markering begin gemarkeerd](media/start-cache.png)
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 [!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
 
@@ -111,7 +111,7 @@ Als u de cache wilt leegmaken, klikt u op de knop **leegmaken** en klikt u vervo
 
 ![scherm afbeelding van de bovenste knoppen met flush gemarkeerd en een pop-upbericht waarin de actie Flush wordt beschreven en u wordt gevraagd om door te gaan? met Ja (standaard) en geen knoppen](media/hpc-cache-flush.png)
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 [!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
 
@@ -159,7 +159,7 @@ Als uw cache wordt gestopt wanneer de eind datum wordt door gegeven, wordt de so
 
 Klik op de knop **bijwerken** om de software-update te starten. De cache status verandert in **een upgrade** totdat de bewerking is voltooid.
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 [!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
 
@@ -223,7 +223,7 @@ De back-end-opslag volumes die als opslag doelen worden gebruikt, worden niet be
 
 Nadat u de cache hebt gestopt, klikt u op de knop **verwijderen** om de cache permanent te verwijderen.
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 [!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
 

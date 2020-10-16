@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
 ms.openlocfilehash: 7d47c21da1279271b12933a2e4642abcce622600
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90015480"
 ---
 # <a name="tutorial-configure-workday-to-azure-ad-user-provisioning"></a>Zelf studie: workday configureren voor Azure AD-gebruikers inrichten
@@ -115,9 +115,9 @@ In de volgende secties worden de stappen beschreven voor het configureren van ge
    
      | URL-indeling | WWS API-versie gebruikt | XPATH-wijzigingen vereist |
      |------------|----------------------|------------------------|
-     | https://####.workday.com/ccx/service/tenantName | v 21.1 | No |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | No |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Yes |
+     | https://####.workday.com/ccx/service/tenantName | v 21.1 | Nee |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | Nee |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Ja |
 
       > [!NOTE]
      > Als er geen versie gegevens zijn opgegeven in de URL, gebruikt de app workday Web Services (WWS) v 21.1 en zijn er geen wijzigingen vereist voor de standaard XPATH API-expressies die worden geleverd bij de app. Als u een specifieke API-versie van WWS wilt gebruiken, geeft u het versie nummer op in de URL <br>
@@ -183,7 +183,7 @@ In deze sectie configureert u hoe gebruikers gegevens stromen van workday naar A
 
      * **Alleen tijdens het maken** : pas deze toewijzing alleen toe bij het maken van gebruikers acties
 
-6. Klik boven aan de sectie kenmerk toewijzing op **Opslaan** om uw toewijzingen op te slaan.
+6. Als u uw toewijzingen wilt opslaan, klikt u boven aan de sectie Attribute-Mapping op **Opslaan** .
 
 
 ## <a name="enable-and-launch-user-provisioning"></a>Gebruikers inrichting inschakelen en starten

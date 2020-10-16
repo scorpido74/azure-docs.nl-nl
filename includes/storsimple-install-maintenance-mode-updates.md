@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 720288aff462b0590bb9da509096a9305b9b6cc7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67176070"
 ---
 #### <a name="to-install-maintenance-mode-updates-via-windows-powershell-for-storsimple"></a>Updates voor onderhouds modus installeren via Windows PowerShell voor StorSimple
@@ -18,7 +18,7 @@ ms.locfileid: "67176070"
    
      `Get-HcsUpdateAvailability` 
 4. U wordt gewaarschuwd als er updates beschikbaar zijn en of de updates storend zijn of niet zijn verstoord. Als u storende updates wilt Toep assen, moet u het apparaat in de onderhouds modus plaatsen. Zie [stap 2: de onderhouds modus](../articles/storsimple/storsimple-update-device.md#step2) voor instructies opgeven.
-5. Wanneer het apparaat zich in de onderhouds modus bevindt, typt u bij de opdracht prompt:`Start-HcsUpdate`
+5. Wanneer het apparaat zich in de onderhouds modus bevindt, typt u bij de opdracht prompt: `Start-HcsUpdate`
 6. U wordt gevraagd om een bevestiging. Nadat u de updates hebt bevestigd, worden deze geïnstalleerd op de controller waartoe u momenteel toegang hebt. Nadat de updates zijn geïnstalleerd, wordt de controller opnieuw opgestart. 
 7. Bewaak de status van updates. Type:
    

@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
 ms.openlocfilehash: 2db941edef93b1e836e82753a6d6016adb977e65
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91322594"
 ---
 # <a name="troubleshoot-dms-errors-when-connecting-to-source-databases"></a>DMS-fouten oplossen bij het verbinden van de brondatabases
@@ -58,7 +58,7 @@ Mogelijke problemen met het maken van verbinding met een bron AWS RDS PostgreSQL
 | Fout         | Details van oorzaak en probleem oplossing |
 | ------------- | ------------- |
 | **Fout [101]**[08001]-verbinding is mislukt. FOUT [08001] time-out verstreken. | Deze fout treedt op als het post gres-stuur programma geen verbinding kan maken met de bron server. Om het probleem op te lossen, raadpleegt u de documenten voor probleem oplossing in de opmerking onder deze tabel en probeert u het opnieuw. |
-| **Fout: de para meter wal_level heeft de waarde {Value}. Wijzig de waarde in logisch om replicatie toe te staan.** | Deze fout treedt op als de para meter wal_level een onjuiste waarde heeft. Om het probleem op te lossen, wijzigt u de RDS. logical_replication in de parameter groep in 1 en start u het exemplaar opnieuw op. Zie voor meer informatie de [vereisten voor het migreren naar Azure postgresql met behulp van DMS](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#prerequisites) of [POSTGRESQL op Amazon RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html). |
+| **Fout: de para meter wal_level heeft de waarde {Value}. Wijzig de waarde in logisch om replicatie toe te staan.** | Deze fout treedt op als de para meter wal_level een onjuiste waarde heeft. U kunt het probleem oplossen door de rds.logical_replication in de parameter groep te wijzigen in 1 en vervolgens het exemplaar opnieuw op te starten. Zie voor meer informatie de [vereisten voor het migreren naar Azure postgresql met behulp van DMS](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#prerequisites) of [POSTGRESQL op Amazon RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html). |
 
 > [!NOTE]
 > Raadpleeg de volgende bronnen voor meer informatie over het oplossen van problemen met het maken van verbinding met een bron-AWS RDS PostgreSQL-Data Base:

@@ -12,10 +12,10 @@ ms.author: moslake
 ms.reviewer: jrasnick, sstein
 ms.date: 03/12/2019
 ms.openlocfilehash: 2e751a77d40403c7bdd4644e8e6fb03ff89063e8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91335065"
 ---
 # <a name="manage-file-space-for-databases-in-azure-sql-database"></a>Bestands ruimte voor data bases in Azure SQL Database beheren
@@ -41,12 +41,12 @@ Mogelijk moet u in de volgende scenario's het gebruik van bestandsruimte bewaken
 De meeste metrische gegevens over opslag ruimte worden weer gegeven in het Azure Portal en de volgende Api's meten alleen de grootte van de gebruikte data pagina's:
 
 - Api's met metrische gegevens op basis van Azure Resource Manager, waaronder Power shell [Get-Metrics](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetric)
-- T-SQL: [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
+- T-SQL: [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
 
 De volgende Api's meten echter ook de grootte van de ruimte die is toegewezen voor data bases en elastische Pools:
 
-- T-SQL:  [sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
-- T-SQL: [sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
+- T-SQL:  [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
+- T-SQL: [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
 
 ### <a name="shrinking-data-files"></a>Gegevens bestanden verkleinen
 
@@ -146,7 +146,7 @@ Wijzig de volgende voor beelden om een tabel te retour neren met een lijst met d
 De query resultaten voor het bepalen van de toegewezen ruimte voor elke data base in de pool kunnen samen worden toegevoegd om de totale toegewezen ruimte voor de elastische pool te bepalen. De toegewezen elastische groeps ruimte mag niet groter zijn dan de maximale grootte van de elastische pool.  
 
 > [!IMPORTANT]
-> De Power shell-Azure Resource Manager module wordt nog steeds ondersteund door Azure SQL Database, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. De AzureRM-module blijft oplossingen ontvangen tot ten minste december 2020. De argumenten voor de opdrachten in de module AZ en in de AzureRm-modules zijn aanzienlijk identiek. Zie [Inleiding tot de nieuwe Azure PowerShell AZ-module](/powershell/azure/new-azureps-module-az)voor meer informatie over de compatibiliteit.
+> De Power shell-Azure Resource Manager module wordt nog steeds ondersteund door Azure SQL Database, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. De AzureRM-module blijft tot ten minste december 2020 bugfixes ontvangen. De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn vrijwel identiek. Zie [Introductie van de nieuwe Az-module van Azure PowerShell](/powershell/azure/new-azureps-module-az) voor meer informatie over de compatibiliteit van de argumenten.
 
 Voor het Power shell-script is SQL Server Power shell-module vereist. Zie [Power shell-module downloaden](https://docs.microsoft.com/sql/powershell/download-sql-server-ps-module) om te installeren.
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: dacurwin
 ms.openlocfilehash: 84ff3e18cf488f5536d5945d7b8fc8d78882424e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86511174"
 ---
 # <a name="azure-backup-for-sql-server-running-in-azure-vm"></a>Azure Backup voor SQL Server die worden uitgevoerd in azure VM
@@ -24,7 +24,7 @@ Hiervoor installeert Azure Backup de **AzureBackupWindowsWorkload** -extensie op
 
 Raadpleeg de [ondersteunings matrix](../../backup/sql-support-matrix.md#scenario-support) die wordt ondersteund door Azure backup voor de lijst met ondersteunde scenario's.
 
-## <a name="network-connectivity"></a>Netwerkconnectiviteit
+## <a name="network-connectivity"></a>Netwerkverbinding
 
 Azure Backup ondersteunt NSG-Tags, het implementeren van een proxy server of weer gegeven IP-bereiken. Raadpleeg dit [artikel](../../backup/backup-sql-server-database-azure-vms.md#establish-network-connectivity)voor meer informatie over elk van deze methoden.
 
@@ -85,7 +85,7 @@ In de volgende JSON wordt het schema voor de WorkloadBackup-extensie weer gegeve
 
 ### <a name="property-values"></a>Eigenschaps waarden
 
-Naam | Waarde/voor beeld | Gegevenstype
+Name | Waarde/voor beeld | Gegevenstype
  --- | --- | ---
 landinstelling | nl-nl  |  tekenreeks
 taskId | "1c0ae461-9d3b-418c-a505-bb31dfe2095d"  | tekenreeks
@@ -100,7 +100,7 @@ statusBlobUri | <https://seapod01coord1exsapk732.blob.core.windows.net/bcdrexten
 
 We raden u aan om de AzureBackupWindowsWorkload-extensie toe te voegen aan een virtuele machine door SQL Server back-up in te scha kelen op de virtuele machine. Dit kan worden bereikt via de [Resource Manager-sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-vm-workload-backup) die is ontworpen voor het automatiseren van back-ups op een SQL Server-VM.
 
-## <a name="powershell-deployment"></a>Power shell-implementatie
+## <a name="powershell-deployment"></a>PowerShell-implementatie
 
 U moet de Azure-VM die de SQL-toepassing met een Recovery Services-kluis bevat registreren. Tijdens de registratie wordt de AzureBackupWindowsWorkload-extensie op de VM geïnstalleerd. Gebruik de cmdlet [REGI ster-AzRecoveryServicesBackupContainerPS](/powershell/module/az.recoveryservices/register-azrecoveryservicesbackupcontainer?view=azps-1.5.0) om de virtuele machine te registreren.
 

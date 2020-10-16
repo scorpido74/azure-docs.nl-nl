@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 06/21/2018
 ms.author: allensu
 ms.openlocfilehash: d716b026159311c12341c30a8c32d5a9ecc6fa3f
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87432754"
 ---
 # <a name="using-azure-cdn-with-sas"></a>Azure CDN gebruiken met SAS
@@ -58,7 +58,7 @@ Deze optie is het eenvoudigste en maakt gebruik van één SAS-token, dat wordt d
 
 2. Nadat u SAS hebt ingesteld voor uw opslag account, moet u het SAS-token met het CDN-eind punt en de oorspronkelijke server-Url's gebruiken om het bestand te openen. 
    
-   De resulterende URL van het CDN-eind punt heeft de volgende indeling:`https://<endpoint hostname>.azureedge.net/<container>/<file>?sv=<SAS token>`
+   De resulterende URL van het CDN-eind punt heeft de volgende indeling: `https://<endpoint hostname>.azureedge.net/<container>/<file>?sv=<SAS token>`
 
    Bijvoorbeeld:   
    ```
@@ -90,7 +90,7 @@ Deze optie is alleen beschikbaar voor **Azure CDN Premium van Verizon** -profiel
    ![Regel voor het opnieuw schrijven van de CDN-URL-links ](./media/cdn-sas-storage-support/cdn-url-rewrite-rule.png)
     ![ CDN URL herschrijven regel-rechts](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-4.png)
 
-2. Nadat de nieuwe regel actief wordt, heeft iedereen toegang tot bestanden in de opgegeven container op het CDN-eind punt, ongeacht of ze een SAS-token in de URL gebruiken. Dit is de indeling:`https://<endpoint hostname>.azureedge.net/<container>/<file>`
+2. Nadat de nieuwe regel actief wordt, heeft iedereen toegang tot bestanden in de opgegeven container op het CDN-eind punt, ongeacht of ze een SAS-token in de URL gebruiken. Dit is de indeling: `https://<endpoint hostname>.azureedge.net/<container>/<file>`
  
    Bijvoorbeeld:   
    `https://sasstoragedemo.azureedge.net/container1/demo.jpg`

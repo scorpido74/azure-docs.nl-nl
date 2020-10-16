@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 11/10/2019
 ms.author: raynew
 ms.openlocfilehash: 5a6e4b415a9fe8ea80a84e415879df9d2f359478
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84434371"
 ---
 # <a name="troubleshoot-microsoft-azure-site-recovery-provider-upgrade-failures"></a>Problemen met het upgraden van de Microsoft Azure Site Recovery-provider oplossen
@@ -48,7 +48,7 @@ De upgrade kan alleen worden uitgevoerd als de naam van de map van de derde part
 
 Om het probleem op te lossen.
 
-1. Start de REGI ster-editor (regedit.exe) en open de vertakking HKEY_LOCAL_MACHINE \SOFTWARE\WOW6432Node\InMage Systems\Installed Products\10.
+1. Start de REGI ster-editor (regedit.exe) en open de HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\InMage Systems\Installed Products\10 vertakking.
 1. Inspecteer de `Build_Version` sleutel waarde. Als deze is ingesteld op de meest recente versie, vermindert u het versie nummer. Bijvoorbeeld, als de meest recente versie 9,22 is. \* en de `Build_Version` sleutel ingesteld op die waarde, en verminder deze tot 9,21. \* .
 1. Down load de nieuwste Microsoft Azure Site Recovery Unified Setup:
    1. Selecteer in de sectie Koppelingen naar momenteel ondersteunde update pakketten van de service- [updates in azure site Recovery](service-updates-how-to.md#links-to-currently-supported-update-rollups) -artikel de provider waarmee u een upgrade uitvoert.
@@ -73,8 +73,8 @@ Bij het upgraden van Microsoft Azure Site Recovery provider (DRA), mislukt de in
 
 Dit kan worden veroorzaakt door een null-waarde voor een para meter in de register sleutel. Om het probleem op te lossen-
 
-1. Start de REGI ster-editor (regedit.exe) en open de vertakking HKEY_LOCAL_MACHINE \SOFTWARE\Wow6432Node\InMage Systems\Installed Products\4.
+1. Start de REGI ster-editor (regedit.exe) en open de HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\InMage Systems\Installed Products\4 vertakking.
 1. Controleer de sleutel waarde ' InstallDirectory '.Als deze null is, voegt u de huidige waarde van de installatiemap toe.
-1. Open ook de vertakking HKEY_LOCAL_MACHINE \SOFTWARE\Wow6432Node\InMage Systems\Installed Products\5 in de REGI ster-editor.
+1. Open ook de vertakking HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\InMage Systems\Installed Products\5 in de REGI ster-editor.
 1. Inspecteer de sleutel waarde ' InstallDirectory ' en voeg de huidige waarde voor de installatiemap toe.
 1. Voer het installatie programma voor Unified Setup opnieuw uit.

@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: dcabe4b1520c66b8d5bfa398dc1248972587cd32
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936806"
 ---
 # <a name="delete-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Een Azure-PostgreSQL grootschalige-Server groep verwijderen
@@ -49,7 +49,7 @@ azdata arc postgres server delete -n postgres01
 
 ## <a name="reclaim-the-kubernetes-persistent-volume-claims-pvcs"></a>De Kubernetes permanente volume claims (Pvc's) opnieuw claimen
 
-Als u een server groep verwijdert, worden de bijbehorende [pvc's](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)niet verwijderd. Dit is standaard. De bedoeling is de gebruiker te helpen bij het openen van de database bestanden voor het geval het verwijderen van de instantie onbedoeld is. Het verwijderen van Pvc's is niet verplicht. Het wordt echter wel aanbevolen. Als u deze Pvc's niet vrijmaakt, wordt er uiteindelijk een fout opgetreden bij het uitvoeren van een Kubernetes-cluster dat er bijna geen schijf ruimte meer is. Voer de volgende stappen uit om de Pvc's vrij te maken:
+Als u een server groep verwijdert, worden de bijbehorende [pvc's](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)niet verwijderd. Dit is standaard. De bedoeling is de gebruiker te helpen bij het openen van de databasebestanden voor het geval het verwijderen van het exemplaar onbedoeld is. Het verwijderen van PVC's is niet verplicht. Het wordt echter wel aanbevolen. Als u deze PVC's niet vrijmaakt, zullen er uiteindelijk fouten optreden omdat uw Kubernetes-cluster denkt dat er bijna geen schijfruimte meer is. Voer de volgende stappen uit om de PVC's vrij te maken:
 
 ### <a name="1-list-the-pvcs-for-the-server-group-you-deleted"></a>1. de Pvc's weer geven voor de Server groep die u hebt verwijderd
 Als u de Pvc's wilt weer geven, voert u deze opdracht uit:

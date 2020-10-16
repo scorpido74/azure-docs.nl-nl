@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/25/2019
 ms.openlocfilehash: daa1bbbace55281f81e04c4639b083b3e934b9f8
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91443088"
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>Query's uitvoeren in Cloud databases met verschillende schema's (preview-versie)
@@ -23,12 +23,12 @@ ms.locfileid: "91443088"
 
 ![Query's uitvoeren voor meerdere tabellen in verschillende data bases][1]
 
-Verticaal gepartitioneerde data bases gebruiken verschillende sets tabellen in verschillende data bases. Dit betekent dat het schema afwijkt van verschillende data bases. Zo bevinden alle tabellen voor de inventarisatie zich op één data base, terwijl alle aan de administratie gerelateerde tabellen zich in een tweede data base bevinden.
+Verticaal gepartitioneerde data bases gebruiken verschillende sets tabellen in verschillende data bases. Dit betekent dat het schema afwijkt in verschillende databases. Zo bevinden alle tabellen voor de inventarisatie zich in één database, terwijl alle aan de administratie gerelateerde tabellen zich in een tweede database bevinden.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* De gebruiker moet beschikken over de machtiging voor het wijzigen van externe gegevens bronnen. Deze machtiging is opgenomen in de machtiging ALTER data base.
-* Machtigingen voor externe gegevens bronnen wijzigen is nodig om te verwijzen naar de onderliggende gegevens bron.
+* De gebruiker moet beschikken over de machtiging voor het wijzigen van externe gegevens bronnen. Deze machtiging is opgenomen in de machtiging ALTER DATABASE.
+* Machtigingen voor ALTER ANY EXTERNAL DATA SOURCE zijn nodig om te verwijzen naar de onderliggende gegevensbron.
 
 ## <a name="overview"></a>Overzicht
 
@@ -180,9 +180,9 @@ Voorbeeld:
         N'select count(w_id) as foo from warehouse'
 ```
 
-## <a name="connectivity-for-tools"></a>Connectiviteit voor hulpprogram ma's
+## <a name="connectivity-for-tools"></a>Connectiviteit voor hulpprogramma's
 
-U kunt gewone SQL Server verbindings reeksen gebruiken om uw BI-en gegevens integratie hulpprogramma's te koppelen aan data bases op de server waarop elastische query's zijn ingeschakeld en externe tabellen zijn gedefinieerd. Zorg ervoor dat SQL Server wordt ondersteund als gegevens bron voor uw hulp programma. Raadpleeg vervolgens de elastische query database en de externe tabellen, net als andere SQL Server Data Base waarmee u verbinding wilt maken met uw hulp programma.
+U kunt gewone SQL Server verbindings reeksen gebruiken om uw BI-en gegevens integratie hulpprogramma's te koppelen aan data bases op de server waarop elastische query's zijn ingeschakeld en externe tabellen zijn gedefinieerd. Zorg ervoor dat SQL Server wordt ondersteund als gegevensbron voor uw hulpprogramma. Raadpleeg vervolgens de elastische query database en de externe tabellen, net als andere SQL Server Data Base waarmee u verbinding wilt maken met uw hulp programma.
 
 ## <a name="best-practices"></a>Aanbevolen procedures
 
@@ -192,10 +192,10 @@ U kunt gewone SQL Server verbindings reeksen gebruiken om uw BI-en gegevens inte
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [overzicht van elastische query's](elastic-query-overview.md)voor een overzicht van elastische query's.
-* Zie aan de slag [met query's tussen data bases (verticaal partitioneren)](elastic-query-getting-started-vertical.md)voor een verticaal gepartitioneerde zelf studie.
-* Zie aan de slag [met elastische query's voor horizontale partitionering (sharding)](elastic-query-getting-started.md)voor een zelf studie over horizontale partitionering (sharding).
-* Zie query's [uitvoeren in horizon taal gepartitioneerde gegevens](elastic-query-horizontal-partitioning.md) voor syntaxis-en voorbeeld query's voor Horizon taal gepartitioneerde gegevens)
-* Zie [ \_ \_ extern uitvoeren van SP](https://msdn.microsoft.com/library/mt703714) voor een opgeslagen procedure waarmee een Transact-SQL-instructie wordt uitgevoerd op één externe Azure SQL database of een set met data bases die fungeren als Shards in een horizon taal partitie schema.
+* Zie [Aan de slag met query's op meerdere databases (verticale partitionering)](elastic-query-getting-started-vertical.md) voor een zelfstudie over verticale partitionering.
+* Zie [Aan de slag met elastische query's voor horizontale partitionering (sharding)](elastic-query-getting-started.md) voor een zelfstudie over horizontale partitionering (sharding).
+* Zie [Query's uitvoeren op horizontaal gepartitioneerde gegevens](elastic-query-horizontal-partitioning.md) voor de syntaxis van en voorbeeldquery's voor horizontaal gepartitioneerde gegevens
+* Zie [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714) voor een opgeslagen procedure waarmee een Transact-SQL-instructie wordt uitgevoerd op één externe Azure SQL-database of een aantal databases die als shards fungeren in een schema voor horizontale partitionering.
 
 <!--Image references-->
 [1]: ./media/elastic-query-vertical-partitioning/verticalpartitioning.png

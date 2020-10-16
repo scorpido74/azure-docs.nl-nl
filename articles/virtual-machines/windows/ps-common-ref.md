@@ -8,10 +8,10 @@ ms.workload: infrastructure-services
 ms.date: 06/01/2018
 ms.author: cynthn
 ms.openlocfilehash: 6f7f2adb5c3e154c3910ee1082e9afad70de9758
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87836170"
 ---
 # <a name="common-powershell-commands-for-creating-and-managing-azure-virtual-machines"></a>Algemene PowerShell-opdrachten voor het maken en beheren van virtuele Azure-machines
@@ -31,7 +31,7 @@ Deze variabelen kunnen nuttig zijn als u meer dan een van de opdrachten in dit a
 | Taak | Opdracht |
 | ---- | ------- |
 | Een eenvoudige virtuele machine maken | [New-AzVM](/powershell/module/az.compute/new-azvm) -name $myVM <BR></BR><BR></BR> New-AzVM heeft een reeks *vereenvoudigde* para meters, waarbij alles wat vereist is, één naam is. De waarde voor-name wordt gebruikt als de naam van alle resources die nodig zijn voor het maken van een nieuwe virtuele machine. U kunt meer opgeven, maar dit is wel het vereiste.|
-| Een VM maken van een aangepaste installatiekopie | New-AzVm-ResourceGroupName $myResourceGroup name $myVM image naam "myImage"-location $location  <BR></BR><BR></BR>U moet al uw eigen [beheerde installatie kopie](capture-image-resource.md)hebben gemaakt. U kunt een installatie kopie gebruiken om meerdere, identieke Vm's te maken. |
+| Een VM maken van een aangepaste installatiekopie | New-AzVm-ResourceGroupName $myResourceGroup-name $myVM image naam "myImage"-locatie $location  <BR></BR><BR></BR>U moet al uw eigen [beheerde installatie kopie](capture-image-resource.md)hebben gemaakt. U kunt een installatie kopie gebruiken om meerdere, identieke Vm's te maken. |
 
 
 
@@ -52,7 +52,7 @@ Deze variabelen kunnen nuttig zijn als u meer dan een van de opdrachten in dit a
 | ---- | ------- |
 | Vm's in een abonnement weer geven |[Get-AzVM](/powershell/module/az.compute/get-azvm) |
 | Vm's in een resource groep weer geven |Get-AzVM-ResourceGroupName $myResourceGroup<BR></BR><BR></BR>Gebruik [Get-AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup)om een lijst met resource groepen in uw abonnement op te halen. |
-| Informatie over een VM ophalen |Get-AzVM-ResourceGroupName $myResourceGroup-name $myVM |
+| Informatie over een VM ophalen |Get-AzVM-ResourceGroupName $myResourceGroup-naam $myVM |
 
 ## <a name="manage-vms"></a>Virtuele machines beheren
 | Taak | Opdracht |

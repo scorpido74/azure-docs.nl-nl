@@ -3,19 +3,19 @@ title: Uw service voor metrische gegevens adviseur configureren met de webportal
 titleSuffix: Azure Cognitive Services
 description: Informatie over het configureren van uw Metrics Advisor-exemplaar en het afstemmen van de resultaten van de anomalie detectie.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/10/2020
-ms.author: aahi
-ms.openlocfilehash: 93fdf2884ca6593cfdb4fb2878ba0dd21246266d
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.author: mbullwin
+ms.openlocfilehash: 7923dad3d47122c0ceb04d1240736e2b66a0dd64
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91446345"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048250"
 ---
 # <a name="how-to-configure-metrics-and-fine-tune-detecting-configuration"></a>Informatie over het configureren van metrische gegevens en het afstemmen van de configuratie van detectie
 

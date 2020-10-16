@@ -15,10 +15,10 @@ ms.author: RamaKoni
 ms.reviewer: sqlblt, daleche
 ms.custom: seo-lt-2019
 ms.openlocfilehash: a57a432a5f0f8e5a6bd802ec08b18350da3a77b3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91293370"
 ---
 # <a name="in-place-change-of-sql-server-version-on-azure-vm"></a>In-place wijziging van SQL Server-versie op Azure VM
@@ -31,7 +31,7 @@ In dit artikel wordt beschreven hoe u de versie van Microsoft SQL Server wijzigt
 
 Voor een in-place upgrade van SQL Server gelden de volgende voor waarden:
 
-- De installatie media van de gewenste versie van SQL Server zijn vereist. Klanten met [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) kunnen hun installatie media verkrijgen via het [Volume Licensing Center](https://www.microsoft.com/Licensing/servicecenter/default.aspx). Klanten die geen Software Assurance hebben, kunnen het installatie medium van een Azure Marketplace gebruiken SQL Server VM-installatie kopie met een latere versie van SQL Server (meestal opgeslagen in C:\SQLServerFull).
+- De installatie media van de gewenste versie van SQL Server zijn vereist. Klanten die beschikken over [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) kunnen hun installatiemedia downloaden van het [Volume Licensing Center](https://www.microsoft.com/Licensing/servicecenter/default.aspx). Klanten die geen Software Assurance hebben, kunnen het installatie medium van een Azure Marketplace gebruiken SQL Server VM-installatie kopie met een latere versie van SQL Server (meestal opgeslagen in C:\SQLServerFull).
 - Editie-upgrades moeten de [ondersteunings upgrade paden](https://docs.microsoft.com/sql/database-engine/install-windows/supported-version-and-edition-upgrades-version-15?view=sql-server-ver15)volgen.
 
 ## <a name="planning-for-version-change"></a>Planning voor versie wijziging
@@ -69,11 +69,11 @@ Als u de versie van SQL Server wilt bijwerken, moet u de SQL Server Setup-media 
 1. Selecteer op de pagina **product code** een optie om aan te geven of u een upgrade uitvoert naar een gratis versie van SQL Server of dat u een PID-sleutel hebt voor een productie versie van het product. Zie [edities en ondersteunde functies van SQL Server 2019 (15. x)](https://docs.microsoft.com/sql/sql-server/editions-and-components-of-sql-server-version-15?view=sql-server-ver15) en [ondersteunde versie-en editie-Upgrades (SQL Server 2016)](https://docs.microsoft.com/sql/database-engine/install-windows/supported-version-and-edition-upgrades?view=sql-server-ver15)voor meer informatie.
 1. Selecteer **volgende** totdat u de pagina **gereed voor de upgrade** hebt bereikt en selecteer vervolgens **upgrade**. Het installatie venster reageert mogelijk enkele minuten niet meer wanneer de wijziging wordt doorgevoerd. Op een **volledige** pagina wordt bevestigd dat uw upgrade is voltooid. Zie [de volledige procedure](https://docs.microsoft.com/sql/database-engine/install-windows/upgrade-sql-server-using-the-installation-wizard-setup?view=sql-server-ver15#procedure)voor een stapsgewijze procedure voor het uitvoeren van een upgrade.
 
-   :::image type="content" source="./media/change-sql-server-version/complete-page.png" alt-text="Volledige pagina":::
+   :::image type="content" source="./media/change-sql-server-version/complete-page.png" alt-text="Selectie voor het bijwerken van de versie van SQL Server":::
 
 Als u de SQL Server-editie hebt gewijzigd naast het wijzigen van de versie, moet u ook de editie bijwerken en raadpleegt u de sectie **versie en editie controleren in de portal** om de SQL-VM-instantie te wijzigen.
 
-   :::image type="content" source="./media/change-sql-server-version/change-portal.png" alt-text="Meta gegevens van de versie wijzigen":::
+   :::image type="content" source="./media/change-sql-server-version/change-portal.png" alt-text="Selectie voor het bijwerken van de versie van SQL Server":::
 
 ## <a name="downgrade-the-version-of-sql-server"></a>De versie van SQL Server downgrade
 
@@ -91,7 +91,7 @@ U kunt de versie van SQL Server downgrade door de volgende stappen uit te voeren
 
    Zorg ervoor dat u de juiste opties selecteert wanneer u scripteert voor de doel versie, afhankelijke objecten en geavanceerde opties.
 
-   :::image type="content" source="./media/change-sql-server-version/scripting-options.png" alt-text="Script opties":::
+   :::image type="content" source="./media/change-sql-server-version/scripting-options.png" alt-text="Selectie voor het bijwerken van de versie van SQL Server":::
 
 1. SQL Server en alle gekoppelde services volledig verwijderen.
 1. Start de VM opnieuw op.
@@ -104,7 +104,7 @@ U kunt de versie van SQL Server downgrade door de volgende stappen uit te voeren
 
 Nadat u de versie van SQL Server hebt gewijzigd, registreert u uw SQL Server VM opnieuw met de [resource provider](sql-vm-resource-provider-register.md) van de SQL-VM, zodat u de Azure Portal kunt gebruiken om de versie van SQL Server weer te geven. Het vermelde versie nummer moet nu overeenkomen met de zojuist bijgewerkte versie en editie van uw SQL Server-installatie.
 
-:::image type="content" source="./media/change-sql-server-version/verify-portal.png" alt-text="Versie controleren":::
+:::image type="content" source="./media/change-sql-server-version/verify-portal.png" alt-text="Selectie voor het bijwerken van de versie van SQL Server":::
 
 > [!NOTE]
 > Als u zich al hebt geregistreerd bij de resource provider van de SQL-VM, maakt u de [registratie van de RP ongedaan](sql-vm-resource-provider-register.md#unregister-from-rp) en [registreert u de SQL VM-resource](sql-vm-resource-provider-register.md#register-with-rp) opnieuw zodat de juiste versie en editie van SQL Server worden gedetecteerd die is geïnstalleerd op de VM. Hiermee worden de meta gegevens en facturerings gegevens bijgewerkt die aan deze virtuele machine zijn gekoppeld.

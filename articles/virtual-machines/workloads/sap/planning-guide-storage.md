@@ -17,10 +17,10 @@ ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 819ac1f01cc182c79571de35ec0753f694dc7722
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88653610"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>Azure Storage-typen voor SAP-workload
@@ -335,8 +335,8 @@ In het tegenovergestelde van on-premises scenario's speelt het afzonderlijke VM-
 
 | Opslagtype| Linux | Windows | Opmerkingen |
 | --- | --- | --- | --- |
-| Standard - HDD | [Grootten voor virtuele Linux-machines in azure](../../sizes.md) | [Grootten voor virtuele Windows-machines in azure](../../sizes.md) | De opslag limieten van medium of grote Vm's zijn waarschijnlijk hard. |
-| Standard - SSD | [Grootten voor virtuele Linux-machines in azure](../../sizes.md) | [Grootten voor virtuele Windows-machines in azure](../../sizes.md) | De opslag limieten van medium of grote Vm's zijn waarschijnlijk hard. |
+| Standard HDD | [Grootten voor virtuele Linux-machines in azure](../../sizes.md) | [Grootten voor virtuele Windows-machines in azure](../../sizes.md) | De opslag limieten van medium of grote Vm's zijn waarschijnlijk hard. |
+| Standard SSD | [Grootten voor virtuele Linux-machines in azure](../../sizes.md) | [Grootten voor virtuele Windows-machines in azure](../../sizes.md) | De opslag limieten van medium of grote Vm's zijn waarschijnlijk hard. |
 | Premium Storage | [Grootten voor virtuele Linux-machines in azure](../../sizes.md) | [Grootten voor virtuele Windows-machines in azure](../../sizes.md) | Onbeperkte limieten voor IOPS of VM-doorvoer opslag met opslag configuratie |
 | Ultra Disk-opslag | [Grootten voor virtuele Linux-machines in azure](../../sizes.md) | [Grootten voor virtuele Windows-machines in azure](../../sizes.md) | Onbeperkte limieten voor IOPS of VM-doorvoer opslag met opslag configuratie |
 | Azure NetApp Files | [Grootten voor virtuele Linux-machines in azure](../../sizes.md) | [Grootten voor virtuele Windows-machines in azure](../../sizes.md) | Opslag verkeer maakt gebruik van netwerk doorvoer bandbreedte en geen opslag bandbreedte. |

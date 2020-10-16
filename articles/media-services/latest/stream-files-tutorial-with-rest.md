@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 08/31/2020
+ms.date: 10/12/2020
 ms.author: inhenkel
-ms.openlocfilehash: 350584984bff82c7dc80aff38044d887f981424c
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 023c4d685804b2c6c201f44ab672139d56338cdb
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89256749"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91979101"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Zelfstudie: Extern bestand coderen op basis van URL en video streamen - REST
 
@@ -117,7 +117,7 @@ In deze sectie verzenden we aanvragen die relevant zijn voor het coderen en make
     De volgende **POST**-bewerking wordt verzonden.
 
     ```
-    https://login.microsoftonline.com/:tenantId/oauth2/token
+    https://login.microsoftonline.com/:aadTenantDomain/oauth2/token
     ```
 
 4. Het antwoord bevat de token en stelt de omgevingsvariabele AccessToken in op de tokenwaarde. Klik op het tabblad **Tests** voor de code waarmee AccessToken wordt ingesteld. 

@@ -4,12 +4,12 @@ description: Meer informatie over hoe u snel een Kubernetes-cluster maakt, een t
 services: container-service
 ms.topic: article
 ms.date: 07/16/2020
-ms.openlocfilehash: ff7fc00c8de5b4d577770c140d356d7f9da1b7e7
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 2c99244df7811b09abaf10d54d924a727201bbad
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421226"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076637"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Een Windows Server-container maken op een Azure Kubernetes service (AKS)-cluster met behulp van Azure CLI
 
@@ -71,7 +71,7 @@ Als u een AKS-cluster wilt uitvoeren dat knooppunt Pools ondersteunt voor Window
 
 * Het cluster is geconfigureerd met twee knoop punten
 * De para meters *Windows-admin-password* en *Windows-admin-username* stellen de beheerders referenties in voor alle Windows Server-containers die op het cluster zijn gemaakt en moeten voldoen aan de [vereisten voor Windows Server-wacht woorden][windows-server-password].
-* De knooppunt groep gebruikt`VirtualMachineScaleSets`
+* De knooppunt groep gebruikt `VirtualMachineScaleSets`
 
 > [!NOTE]
 > Om ervoor te zorgen dat uw cluster betrouwbaar functioneert, moet u ten minste twee knoop punten in de standaard knooppunt groep uitvoeren.
@@ -268,7 +268,7 @@ Voor meer informatie over AKS en een volledig stapsgewijs voorbeeld van code tot
 
 <!-- LINKS - internal -->
 [kubernetes-concepts]: concepts-clusters-workloads.md
-[aks-monitor]: https://aka.ms/coingfonboarding
+[aks-monitor]: ../azure-monitor/insights/container-insights-onboard.md
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
 [az-aks-browse]: /cli/azure/aks?view=azure-cli-latest#az-aks-browse
 [az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create

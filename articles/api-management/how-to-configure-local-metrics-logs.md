@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 04/30/2020
 ms.author: apimpm
 ms.openlocfilehash: ac147863fe54be3343eda653fc863ebd08dac54d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86254500"
 ---
 # <a name="configure-local-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>Lokale metrische gegevens en logboeken voor Azure API Management zelf-hostende gateway configureren
@@ -152,9 +152,9 @@ Nu zowel de statistieken als de Prometheus zijn geïmplementeerd, kunnen we de c
 | Veld  | Standaard | Beschrijving |
 | ------------- | ------------- | ------------- |
 | telemetrie. Metrics. local  | `none` | Hiermee schakelt u de logboek registratie in via statistieken. Waarde kan zijn `none` , `statsd` . |
-| telemetrie. Metrics. local. stats. restated. Endpoint  | N.v.t. | Hiermee geeft u het getunnelde eind punt op. |
-| telemetrie. Metrics. local. statd. samples. sampling  | N.v.t. | Geeft de sampling frequentie van metrische gegevens aan. De waarde kan tussen 0 en 1 liggen. bijvoorbeeld,`0.5`|
-| telemetrie. Metrics. local. stats. tag-Format  | N.v.t. | Indeling van de [code ring](https://github.com/prometheus/statsd_exporter#tagging-extensions)van het export model met statistieken. Waarde kan zijn `none` , `librato` , `dogStatsD` , `influxDB` . |
+| telemetrie. Metrics. local. stats. restated. Endpoint  | n.v.t. | Hiermee geeft u het getunnelde eind punt op. |
+| telemetrie. Metrics. local. statd. samples. sampling  | n.v.t. | Geeft de sampling frequentie van metrische gegevens aan. De waarde kan tussen 0 en 1 liggen. bijvoorbeeld, `0.5`|
+| telemetrie. Metrics. local. stats. tag-Format  | n.v.t. | Indeling van de [code ring](https://github.com/prometheus/statsd_exporter#tagging-extensions)van het export model met statistieken. Waarde kan zijn `none` , `librato` , `dogStatsD` , `influxDB` . |
 
 Hier volgt een voor beeld van een configuratie:
 
@@ -210,13 +210,13 @@ De zelf-hostende gateway biedt ook ondersteuning voor een aantal protocollen `lo
 
 | Veld  | Standaard | Beschrijving |
 | ------------- | ------------- | ------------- |
-| telemetrie. logs. std  | `text` | Hiermee schakelt u de logboek registratie in voor standaard stromen. Waarde kan zijn `none` , `text` ,`json` |
-| telemetrie. logs. lokaal  | `none` | Lokale logboek registratie inschakelen. Waarde kan `none` ,, `auto` , `localsyslog` `rfc5424` ,`journal`  |
-| telemetrie. logs. local. localsyslog. eind punt  | N.v.t. | Hiermee wordt het localsyslog-eind punt opgegeven.  |
-| telemetrie. logs. local. localsyslog. Facility  | N.v.t. | Hiermee wordt localsyslog [faciliteit code](https://en.wikipedia.org/wiki/Syslog#Facility)opgegeven. bijvoorbeeld,`7` 
-| telemetrie. logs. local. rfc5424. eind punt  | N.v.t. | Hiermee wordt het rfc5424-eind punt opgegeven.  |
-| telemetrie. logs. local. rfc5424. Facility  | N.v.t. | Geeft faciliteit code per [rfc5424](https://tools.ietf.org/html/rfc5424)aan. bijvoorbeeld,`7`  |
-| telemetrie. logs. lokaal. dagboek. eind punt  | N.v.t. | Hiermee wordt het eind punt van het logboek opgegeven.  |
+| telemetrie. logs. std  | `text` | Hiermee schakelt u de logboek registratie in voor standaard stromen. Waarde kan zijn `none` , `text` , `json` |
+| telemetrie. logs. lokaal  | `none` | Lokale logboek registratie inschakelen. Waarde kan `none` ,, `auto` , `localsyslog` `rfc5424` , `journal`  |
+| telemetrie. logs. local. localsyslog. eind punt  | n.v.t. | Hiermee wordt het localsyslog-eind punt opgegeven.  |
+| telemetrie. logs. local. localsyslog. Facility  | n.v.t. | Hiermee wordt localsyslog [faciliteit code](https://en.wikipedia.org/wiki/Syslog#Facility)opgegeven. bijvoorbeeld, `7` 
+| telemetrie. logs. local. rfc5424. eind punt  | n.v.t. | Hiermee wordt het rfc5424-eind punt opgegeven.  |
+| telemetrie. logs. local. rfc5424. Facility  | n.v.t. | Geeft faciliteit code per [rfc5424](https://tools.ietf.org/html/rfc5424)aan. bijvoorbeeld, `7`  |
+| telemetrie. logs. lokaal. dagboek. eind punt  | n.v.t. | Hiermee wordt het eind punt van het logboek opgegeven.  |
 
 Hier volgt een voor beeld van de configuratie van lokale logboek registratie:
 

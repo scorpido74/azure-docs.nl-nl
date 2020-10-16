@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
 ms.openlocfilehash: 78fddb5b4512883f8e78d6ed53f6e3dbbeba0e4f
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90524994"
 ---
 # <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>Bron machine voorbereiden voor de push-installatie van de Mobility-agent
@@ -24,7 +24,7 @@ Ga als volgt te werk op elke Windows-computer die u wilt beveiligen:
 1. Zorg ervoor dat er een netwerk verbinding is tussen de computer en de proces server. Als u geen afzonderlijke proces server hebt ingesteld, wordt deze standaard uitgevoerd op de configuratie server.
 1. Maak een account dat op de processerver kan worden gebruikt voor toegang tot de computer. Het account moet beheerders rechten, lokaal of domein, hebben. Gebruik dit account alleen voor de push-installatie en voor agent-updates.
 2. Als u geen domein account gebruikt, schakelt u toegangs beheer voor externe gebruikers op de lokale computer als volgt uit:
-    - Voeg onder HKEY_LOCAL_MACHINE register sleutel \SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System een nieuwe DWORD toe: **LocalAccountTokenFilterPolicy**. Stel de waarde in op **1**.
+    - Voeg onder HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System register sleutel een nieuwe DWORD toe: **LocalAccountTokenFilterPolicy**. Stel de waarde in op **1**.
     -  Voer de volgende opdracht uit vanaf een opdracht prompt:
     
        ```

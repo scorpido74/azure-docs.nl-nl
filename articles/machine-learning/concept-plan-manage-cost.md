@@ -11,10 +11,10 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.openlocfilehash: 031ec44cec473d9f2b2f05669aa3fc18084985f2
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91704725"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>Kosten plannen en beheren voor Azure Machine Learning
@@ -109,11 +109,11 @@ Hier volgen enkele opties die u hebt:
 
 ## <a name="use-low-priority-vms"></a><a id="low-pri-vm"></a> Virtuele machines met lage prioriteit gebruiken
 
-Met Azure kunt u overtollige ongebruikte capaciteit gebruiken als virtuele machines met lage prioriteit voor virtuele-machine schaal sets, batch en de Machine Learning service. Deze toewijzingen zijn pre-emptible, maar worden geleverd tegen een gereduceerde prijs vergeleken met toegewezen Vm's. Over het algemeen kunt u het beste virtuele machines met lage prioriteit gebruiken voor batch-workloads. U moet ze ook gebruiken waar onderbrekingen kunnen worden hersteld via opnieuw verzenden (voor batch destorie) of via het opnieuw opstarten (voor diepe trainingen met controle punten).
+Met Azure kunt u gebruikmaken van overtollige ongebruikte capaciteit als Low-Priority Vm's voor schaal sets voor virtuele machines, batch en de Machine Learning-service. Deze toewijzingen zijn pre-emptible, maar worden geleverd tegen een gereduceerde prijs vergeleken met toegewezen Vm's. Over het algemeen kunt u het beste Low-Priority Vm's gebruiken voor batch-workloads. U moet ze ook gebruiken waar onderbrekingen kunnen worden hersteld via opnieuw verzenden (voor batch destorie) of via het opnieuw opstarten (voor diepe trainingen met controle punten).
 
-Virtuele machines met lage prioriteit hebben één quotum gescheiden van de toegewezen quota waarde, die wordt door de VM-serie. Meer informatie [over AmlCompute-quota's](how-to-manage-quotas.md).
+Low-Priority-Vm's hebben één quotum gescheiden van de toegewezen quota waarde, die wordt door de VM-serie. Meer informatie [over AmlCompute-quota's](how-to-manage-quotas.md).
 
- Vm's met lage prioriteit werken niet voor reken instanties, omdat ze interactieve notitieblok ervaringen moeten ondersteunen.
+ Low-Priority-Vm's werken niet voor reken instanties, omdat ze interactieve notitieblok ervaringen moeten ondersteunen.
 
 ## <a name="use-reserved-instances"></a>Gereserveerde instanties gebruiken
 

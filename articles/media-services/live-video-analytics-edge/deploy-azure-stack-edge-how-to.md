@@ -3,12 +3,12 @@ title: Live Video Analytics implementeren op Azure Stack Edge
 description: In dit artikel worden de stappen beschreven die u helpen bij het implementeren van live video Analytics op uw Azure Stack-rand.
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: b13bb779a5a780b21f2d5d96ed8831ef5c26564d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f33b6fb0f0dc5c5b733a0fcb021e2792ce9c6ec6
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935264"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019593"
 ---
 # <a name="deploy-live-video-analytics-on-azure-stack-edge"></a>Live Video Analytics implementeren op Azure Stack Edge
 
@@ -21,27 +21,27 @@ Voor live video analyses zullen we implementeren via IoT Hub, maar de Azure Stac
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Het Azure-abonnement waarvoor u [eigenaars bevoegdheden](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)hebt.
-* Een [Azure stack Edge](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-gpu-deploy-prep) -resource
+* Het Azure-abonnement waarvoor u [eigenaars bevoegdheden](../../role-based-access-control/built-in-roles.md#owner)hebt.
+* Een [Azure stack Edge](../../databox-online/azure-stack-edge-gpu-deploy-prep.md) -resource
    
-* [Een IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal)
-* Een [Service-Principal](https://docs.microsoft.com/azure/media-services/live-video-analytics-edge/create-custom-azure-resource-manager-role-how-to#create-service-principal) voor de module live video analyse.
+* [Een IoT Hub](../../iot-hub/iot-hub-create-through-portal.md)
+* Een [Service-Principal](./create-custom-azure-resource-manager-role-how-to.md#create-service-principal) voor de module live video analyse.
 
    Gebruik een van deze regio's waar IoT Hub beschikbaar is: VS-Oost 2, centraal VS, Noord-Centraal VS, Japan-Oost, VS-West 2, VS-West-Centraal, Canada-oost, UK-zuid, Frankrijk-centraal, Frankrijk-zuid, Zwitserland-noord, Zwitserland-west en Japan-West.
 * Storage-account
 
     Het is raadzaam om GPv2-opslag accounts (General-Purpose v2) te gebruiken.  
-    Meer informatie over een [v2-opslag account voor algemeen gebruik](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade?tabs=azure-portal).
+    Meer informatie over een [v2-opslag account voor algemeen gebruik](../../storage/common/storage-account-upgrade.md?tabs=azure-portal).
 * [Visual Studio Code](https://code.visualstudio.com/) op uw ontwikkelcomputer. Zorg ervoor dat u beschikt over de [Azure IoT Tools-extensie](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 * Zorg ervoor dat het netwerk waarmee uw ontwikkelcomputer is verbonden Advanced Message Queueing Protocol toestaat via poort 5671. Dankzij deze instelling kan Azure IoT Tools communiceren met Azure IoT Hub.
 
 ## <a name="configuring-azure-stack-edge-for-using-live-video-analytics"></a>Azure Stack Edge configureren voor het gebruik van live video Analytics
 
-Azure Stack Edge is een hardware-as-a-service-oplossing en een met AI ingeschakeld Edge computing-apparaat met mogelijkheden voor netwerk gegevens overdracht. Lees meer over [Azure stack Edge en gedetailleerde installatie-instructies](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-prep). Volg de instructies in de onderstaande koppelingen om aan de slag te gaan:
+Azure Stack Edge is een hardware-as-a-service-oplossing en een met AI ingeschakeld Edge computing-apparaat met mogelijkheden voor netwerk gegevens overdracht. Lees meer over [Azure stack Edge en gedetailleerde installatie-instructies](../../databox-online/azure-stack-edge-deploy-prep.md). Volg de instructies in de onderstaande koppelingen om aan de slag te gaan:
 
-* [Azure Stack rand/Data Box Gateway het maken van resources](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-prep)
-* [Installeren en instellen](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-install)
-* [Verbinding en activering](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-connect-setup-activate)
+* [Azure Stack rand/Data Box Gateway het maken van resources](../../databox-online/azure-stack-edge-deploy-prep.md)
+* [Installeren en instellen](../../databox-online/azure-stack-edge-deploy-install.md)
+* [Verbinding en activering](../../databox-online/azure-stack-edge-deploy-connect-setup-activate.md)
 
 ### <a name="attach-an-iot-hub-to-azure-stack-edge"></a>Een IoT Hub aan Azure Stack rand koppelen
 
@@ -58,11 +58,11 @@ Azure Stack Edge is een hardware-as-a-service-oplossing en een met AI ingeschake
     |Naam|Voer een naam in voor uw IoT Hub-resource.|
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/azure-stack-edge-get-started.png" alt-text="Aan de slag met Azure Stack Edge":::
+    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/azure-stack-edge-get-started.png" alt-text="Azure Stack Edge":::
 1. Selecteer **Maken**. Het maken van de IoT Hub-resource duurt enkele minuten. Nadat de IoT Hub-resource is gemaakt, wordt de tegel **Rekenproces configureren** bijgewerkt om de configuratie van het rekenproces weer te geven. Als u wilt bevestigen dat de Edge-rekenprocesrol is geconfigureerd, selecteert u **Rekenproces weergeven** op de tegel **Rekenproces configureren**.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/edge-compute-config.png" alt-text="IoT Hub resources maken":::
+    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/edge-compute-config.png" alt-text="Azure Stack Edge":::
 
     > [!NOTE]
     > Als het dialoog venster Compute configureren wordt gesloten voordat de IoT Hub is gekoppeld aan de resource Azure Stack Edge, wordt de IoT Hub gemaakt, maar wordt deze niet weer gegeven in de compute-configuratie. Laad de pagina na een paar minuten opnieuw op en weer gegeven.
@@ -72,7 +72,7 @@ Azure Stack Edge is een hardware-as-a-service-oplossing en een met AI ingeschake
     Zodra alle gegevens zijn gevuld, ziet u de kaart Edge Compute configureren iets zoals hieronder:
     
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/configure-edge-compute.png" alt-text="Edge Compute-kaart configureren ":::
+    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/configure-edge-compute.png" alt-text="Azure Stack Edge":::
  
 ### <a name="enable-compute-prerequisites-on-the-azure-stack-edge-local-ui"></a>Berekenings vereisten inschakelen op de lokale gebruikers interface van Azure Stack Edge
 
@@ -80,7 +80,7 @@ Voordat u doorgaat, moet u ervoor zorgen dat:
 
 * U hebt uw Azure Stack Edge-resource geactiveerd.
 * U hebt toegang tot een Windows-client systeem waarop Power shell 5,0 of hoger wordt uitgevoerd om toegang te krijgen tot de Azure Stack Edge-resource.
-* Als u een Kubernetes-cluster wilt implementeren, moet u uw Azure Stack Edge-resource configureren via de [lokale webgebruikersinterface](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-connect-setup-activate#connect-to-the-local-web-ui-setup). 
+* Als u een Kubernetes-cluster wilt implementeren, moet u uw Azure Stack Edge-resource configureren via de [lokale webgebruikersinterface](../../databox-online/azure-stack-edge-deploy-connect-setup-activate.md#connect-to-the-local-web-ui-setup). 
     
     * Als u de compute wilt inschakelen, gaat u naar de pagina Compute in de lokale webgebruikersinterface van uw apparaat.
     
@@ -89,7 +89,7 @@ Voordat u doorgaat, moet u ervoor zorgen dat:
         * Selecteer Toep assen: deze bewerking moet ongeveer twee minuten duren.
         
         > [!div class="mx-imgBorder"]
-        > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/azure-stack-edge-commercial.png" alt-text=" Berekenings vereisten voor de Azure Stack Edge lokale gebruikers interface":::
+        > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/azure-stack-edge-commercial.png" alt-text="Azure Stack Edge":::
 
         * Als DNS niet is geconfigureerd voor de Kubernetes-API en Azure Stack Edge-resource, kunt u het hostbestand van het venster bijwerken.
         
@@ -185,7 +185,7 @@ Deze stappen hebben betrekking op het maken van een gateway gebruiker en het ins
     1. Klik op **maken**.
         
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/local-share.png" alt-text="Lokale share":::
+    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/local-share.png" alt-text="Azure Stack Edge":::
     
 1. Maak een externe share voor bestands synchronisatie opslag.
 
@@ -203,36 +203,7 @@ Deze stappen hebben betrekking op het maken van een gateway gebruiker en het ins
     1. Klik op **maken**.    
     
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/remote-share.png" alt-text="Externe share":::
-    
-    > [!TIP]
-    > Gebruik uw Windows-client die is verbonden met uw Azure Stack Edge om verbinding te maken met de SMB-shares volgens de stappen die [in dit document worden beschreven](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-add-shares#connect-to-an-smb-share).
-    
-1. De opties voor het maken van de container van de live video Analytics Edge-module bijwerken (zie punt 4 in [modules document toevoegen](deploy-iot-edge-device.md#add-modules)) om volume koppelingen te gebruiken.
-
-   ```json
-    // Original (Bind Mounts)
-    "createOptions": {
-        "HostConfig": {
-            "Binds": [
-                "/var/lib/azuremediaservices:/var/lib/azuremediaservices",
-                "/var/media:/var/media"
-            ]
-        }
-    }
-    // Updated (Volume Mounts)
-    "createOptions": {
-        "HostConfig": {
-            "Mounts": [
-            {
-                "Target": "/var/lib/azuremediaservices",
-                "Source": "lva",
-                "Type": "volume"
-            },
-            {
-                "Target": "/var/media",
-                "Source": "media",
-                "Type": "volume"
+    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/remote-share.png" alt-text="Azure Stack Edge"
             }]
         }
     }
@@ -248,7 +219,7 @@ Doe het volgende om te controleren of de module wordt uitgevoerd:
 1. Selecteer de tegel modules. Hiermee gaat u naar de blade Modules. Zoek in de lijst met modules de module die u hebt geïmplementeerd. De runtimestatus van de module die u hebt toegevoegd, moet Wordt uitgevoerd zijn.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/iot-edge-custom-module.png" alt-text="Aangepaste module":::
+    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/iot-edge-custom-module.png" alt-text="Azure Stack Edge":::
 
 ### <a name="configure-the-azure-iot-tools-extension"></a>Configureer de Azure IoT Tools-extensie
 

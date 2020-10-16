@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 03/09/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23ce2f02ef96a88b6bf4471377ce97a529dbd1a9
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 88cdad5b2b92d9b7449d93e1abeb09c08df89e7b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90706333"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964754"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>Aanmeldings wachtwoord zonder wacht woord inschakelen voor on-premises resources met Azure Active Directory (preview-versie)
 
@@ -58,7 +58,7 @@ Organisaties moeten ook voldoen aan de volgende software vereisten.
 Het scenario ondersteunt eenmalige aanmelding (SSO) in de volgende scenario's:
 
 - Voor cloud resources als Microsoft 365 en andere SAML-toepassingen.
-- Voor on-premises resources en geïntegreerde Windows-verificatie voor websites. De resources kunnen websites en share point-sites bevatten waarvoor IIS-verificatie is vereist, en/of bronnen die gebruikmaken van NTLM-verificatie.
+- Voor on-premises resources en Windows-Integrated verificatie voor websites. De resources kunnen websites en share point-sites bevatten waarvoor IIS-verificatie is vereist, en/of bronnen die gebruikmaken van NTLM-verificatie.
 
 ### <a name="unsupported-scenarios"></a>Niet-ondersteunde scenario's
 

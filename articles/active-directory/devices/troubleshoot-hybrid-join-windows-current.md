@@ -13,10 +13,10 @@ ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: ec59c07d66150bf7b184c149a9b1ed9015c17645
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89433650"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Problemen met hybride Azure Active Directory-gekoppelde apparaten oplossen
@@ -233,7 +233,7 @@ Gebruik Logboeken Logboeken om de fase en fout code voor het samen voegen van fo
    - Reden: HTTP 503 van DRS-server.
    - Oplossing: de server is momenteel niet beschikbaar. toekomstige deelname pogingen zullen waarschijnlijk slagen zodra de server weer online is.
 
-###### <a name="other-errors"></a>Andere fouten
+###### <a name="other-errors"></a>Overige fouten
 
 - **E_INVALIDDATA** (0x8007000d/-2147024883)
    - Reden: de JSON van het server antwoord kan niet worden geparseerd. Waarschijnlijk vanwege een proxy retour nering van HTTP 200 met een HTML-auth-pagina.
@@ -284,13 +284,13 @@ Gebruik Logboeken Logboeken om de fout code, subfout code, fout code voor de ser
    - Reden: de poging om verbinding te maken met `https://login.microsoftonline.com` is mislukt.
    - Oplossing: Controleer de netwerk verbinding met `https://login.microsoftonline.com` .
 
-##### <a name="other-errors"></a>Andere fouten
+##### <a name="other-errors"></a>Overige fouten
 
 - **ERROR_ADAL_SERVER_ERROR_INVALID_GRANT** (0xcaa20003/-895352829)
    - Reden: SAML-token van de on-premises ID-provider is niet geaccepteerd door Azure AD.
    - Oplossing: Controleer de instellingen van de Federatie server. Zoek naar de fout code van de server in de verificatie Logboeken.
 - **ERROR_ADAL_WSTRUST_REQUEST_SECURITYTOKEN_FAILED** (0xcaa90014/-894894060)
-   - Reden: de server WS-Trust Response heeft een fout uitzondering gerapporteerd en de bevestiging is niet opgehaald
+   - Reden: het antwoord van de server WS-Trust heeft een fout uitzondering gerapporteerd en de bevestiging is niet opgehaald
    - Oplossing: Controleer de instellingen van de Federatie server. Zoek naar de fout code van de server in de verificatie Logboeken.
 - **ERROR_ADAL_WSTRUST_TOKEN_REQUEST_FAIL** (0xcaa90006/-894894074)
    - Reden: er is een fout opgetreden bij het ophalen van het toegangs token van het token eindpunt.

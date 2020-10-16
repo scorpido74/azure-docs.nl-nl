@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: buhollan
 ms.openlocfilehash: 61ec96a35fac6a033fe6c8b65cff156ba63e5e58
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87563344"
 ---
 # <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>Een aangepast domein instellen in de preview-versie van Azure Static Web Apps
@@ -31,9 +31,9 @@ Er zijn een aantal verschillende typen DNS-configuraties beschikbaar voor een to
 
 | Als u wilt                                 | Kies                                                |
 | -----------------------------------------------| --------------------------------------------------- |
-| Ondersteuning `www.example.com` of`blog.example.net`| [Een CNAME-record toewijzen](#map-a-cname-record)           |
-| Voor`example.com`                          | [Een hoofd domein configureren](#configure-a-root-domain) |
-| Alle subdomeinen naar`www.example.com`      | [Een Joker teken toewijzen](#map-a-wildcard-domain)            |
+| Ondersteuning `www.example.com` of `blog.example.net`| [Een CNAME-record toewijzen](#map-a-cname-record)           |
+| Voor `example.com`                          | [Een hoofd domein configureren](#configure-a-root-domain) |
+| Alle subdomeinen naar `www.example.com`      | [Een Joker teken toewijzen](#map-a-wildcard-domain)            |
 
 ## <a name="map-a-cname-record"></a>Een CNAME-record toewijzen
 
@@ -55,7 +55,7 @@ Een CNAME-record wijst één domein aan een andere toe. U kunt een CNAME-record 
 
 2. Ga naar de pagina voor het beheren van DNS-records. Elke domeinprovider heeft zijn eigen interface voor het beheren van DNS-records. Raadpleeg daarom de documentatie van de provider. Doorgaans heeft het sitegedeelte waar u moet zijn, een naam als **Domain Name**, **DNS** of **Name Server Management**.
 
-3. Vaak kunt u de pagina met DNS-records vinden door uw accountgegevens te bekijken en te zoeken naar een link als **My domains** (of iets vergelijkbaars). Ga naar deze pagina en zoek naar een koppeling met de naam vergelijkbaar met **zone bestand**, **DNS-records**of **Geavanceerde configuratie**.
+3. Vaak kunt u de pagina met DNS-records vinden door uw account gegevens weer te geven en vervolgens naar een koppeling zoals **mijn domeinen**te zoeken. Ga naar deze pagina en zoek naar een koppeling met de naam vergelijkbaar met **zone bestand**, **DNS-records**of **Geavanceerde configuratie**.
 
     In de schermafbeelding hieronder wordt een voorbeeld van een pagina met DNS-records weergegeven:
 
@@ -100,7 +100,7 @@ Soms wilt u al het verkeer dat naar een subdomein wordt verzonden, naar een ande
 
 2. Ga naar de pagina voor het beheren van DNS-records. Elke domeinprovider heeft zijn eigen interface voor het beheren van DNS-records. Raadpleeg daarom de documentatie van de provider. Doorgaans heeft het sitegedeelte waar u moet zijn, een naam als **Domain Name**, **DNS** of **Name Server Management**.
 
-3. Vaak kunt u de pagina met DNS-records vinden door uw accountgegevens te bekijken en te zoeken naar een link als **My domains** (of iets vergelijkbaars). Ga naar deze pagina en zoek vervolgens naar een koppeling met de naam vergelijkbaar met **zone bestand**, **DNS-records**of **Geavanceerde configuratie**.
+3. Vaak kunt u de pagina met DNS-records vinden door uw account gegevens weer te geven en vervolgens naar een koppeling zoals **mijn domeinen**te zoeken. Ga naar deze pagina en zoek vervolgens naar een koppeling met de naam vergelijkbaar met **zone bestand**, **DNS-records**of **Geavanceerde configuratie**.
 
     In de schermafbeelding hieronder wordt een voorbeeld van een pagina met DNS-records weergegeven:
 

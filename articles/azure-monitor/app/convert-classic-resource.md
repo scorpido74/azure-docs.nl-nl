@@ -1,22 +1,20 @@
 ---
 title: Een Azure Monitor Application Insights klassieke resource migreren naar een op werk ruimte gebaseerde resource | Microsoft Docs
 description: Meer informatie over de stappen die nodig zijn om uw Azure Monitor Application Insights klassieke resource bij te werken naar het nieuwe model op basis van werk ruimte.
-author: mrbullwinkle
-ms.author: mbullwin
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: aab2d1ec5a6c3e046840e736ced0993e560c4661
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0d2c7d1b9ee57e6d201205c04557e1b5f5623eb0
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333338"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91930574"
 ---
 # <a name="migrate-to-workspace-based-application-insights-resources"></a>Migreren naar op werk ruimte gebaseerde Application Insights resources
 
 In deze hand leiding wordt stapsgewijs uitgelegd hoe u een klassieke Application Insights resource migreert naar een resource op basis van een werk ruimte. Resources op basis van een werk ruimte ondersteunen volledige integratie tussen Application Insights en Log Analytics. Resources op basis van een werk ruimte verzenden Application Insights telemetrie naar een algemene Log Analytics-werk ruimte, waarmee u toegang krijgt tot [de nieuwste functies van Azure monitor](#new-capabilities) terwijl logboeken voor de toepassings-, infra structuur en het platform op één geconsolideerde locatie worden bewaard.
 
-Op werk ruimte gebaseerde resources maken algemene op rollen gebaseerde Access Control (RBAC) mogelijk voor uw resources en elimineert de nood zaak van query's tussen apps en werk ruimten.
+Met resources op basis van een werk ruimte kunt u algemene Role-Based Access Control (RBAC) voor uw resources maken en de nood zaak van query's tussen apps en werk ruimten voor komen.
 
 **Op werk ruimte gebaseerde resources zijn momenteel beschikbaar in alle commerciële regio's en de Amerikaanse overheid van Azure**
 

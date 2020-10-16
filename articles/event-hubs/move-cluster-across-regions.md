@@ -4,10 +4,10 @@ description: Dit artikel laat u zien hoe u een toegewezen Azure Event Hubs-clust
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.openlocfilehash: 94be44ee8f9442a3a65e899d7a58524b2570f194
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89380705"
 ---
 # <a name="move-an-azure-event-hubs-dedicated-cluster-to-another-region"></a>Een toegewezen Azure Event Hubs-cluster verplaatsen naar een andere regio
@@ -50,7 +50,7 @@ Implementeer de sjabloon voor het maken van een Event Hubs toegewezen cluster in
     4. Voer de volgende stappen uit in de sectie **instellingen** :    
         1. Voer de naam van het nieuwe **cluster**in. 
 
-            :::image type="content" source="./media/move-cluster-across-regions/deploy-template.png" alt-text="Resource Manager-sjabloon implementeren":::
+            :::image type="content" source="./media/move-cluster-across-regions/deploy-template.png" alt-text="Resource Manager-sjabloon downloaden":::
     5. Selecteer **Controleren en maken** onderaan de pagina. 
     1. Controleer op de pagina **controleren en maken** de instellingen en selecteer vervolgens **maken**.  
 

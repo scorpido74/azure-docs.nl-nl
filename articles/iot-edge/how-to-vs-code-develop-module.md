@@ -9,12 +9,12 @@ ms.date: 08/07/2019
 ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-js
-ms.openlocfilehash: 2fcb389736df8bedb2602919e986f7d65e8f3024
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ebc12e6d64d015267497497bebc22c8586adf999
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91296906"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043728"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Visual Studio code gebruiken voor het ontwikkelen en opsporen van fouten in modules voor Azure IoT Edge
 
@@ -51,13 +51,13 @@ U moet ook extra, taalspecifieke hulpprogram ma's installeren om uw module te on
 
 - Node.js: [Node.js](https://nodejs.org). U wilt ook [Yeoman](https://www.npmjs.com/package/yo) en de [Module Generator van Azure IOT Edge Node.js](https://www.npmjs.com/package/generator-azure-iot-edge-module)installeren.
 
-- Java: [Java SE Development Kit 10](https://aka.ms/azure-jdks) en [maven](https://maven.apache.org/). U moet [de `JAVA_HOME` omgevings variabele instellen](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) om naar uw jdk-installatie te verwijzen.
+- Java: [Java SE Development Kit 10](/azure/developer/java/fundamentals/java-jdk-long-term-support) en [maven](https://maven.apache.org/). U moet [de `JAVA_HOME` omgevings variabele instellen](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) om naar uw jdk-installatie te verwijzen.
 
 Als u uw module-installatie kopie wilt bouwen en implementeren, moet u docker gebruiken om de module installatie kopie te bouwen en een container register voor de module installatie kopie:
 
 - [Docker Community Edition](https://docs.docker.com/install/) op uw ontwikkel computer.
 
-- [Azure container Registry](https://docs.microsoft.com/azure/container-registry/) of [docker hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
+- [Azure container Registry](../container-registry/index.yml) of [docker hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
 
     > [!TIP]
     > U kunt een lokaal docker-REGI ster gebruiken voor prototype-en test doeleinden in plaats van een Cloud register.

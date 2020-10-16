@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/02/2020
 ms.openlocfilehash: 70e0a95a85920562af8bf9d3fffa6633709dccc5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84322087"
 ---
 # <a name="select-transformation-in-mapping-data-flow"></a>Trans formatie selecteren in gegevens stroom toewijzen
@@ -72,7 +72,7 @@ Als uw gedefinieerde projectie een hiërarchie heeft, kunt u toewijzing op basis
 
 ![toewijzing op basis van een regel](media/data-flow/rule-based-hierarchy.png "Toewijzing op basis van een regel")
 
-Het bovenstaande voor beeld komt overeen met alle subkolomsen van een complexe kolom `a` . `a`bevat twee subkoloms `b` en `c` . Het uitvoer schema bevat twee kolommen `b` en `c` de voor waarde ' name als ' is `$$` .
+Het bovenstaande voor beeld komt overeen met alle subkolomsen van een complexe kolom `a` . `a` bevat twee subkoloms `b` en `c` . Het uitvoer schema bevat twee kolommen `b` en `c` de voor waarde ' name als ' is `$$` .
 
 ### <a name="parameterization"></a>Parameterisering
 

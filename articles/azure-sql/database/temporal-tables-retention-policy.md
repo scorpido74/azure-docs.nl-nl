@@ -12,10 +12,10 @@ ms.author: bonova
 ms.reviewer: sstein
 ms.date: 09/25/2018
 ms.openlocfilehash: 1d68163a9fba3ba3bcd4c0c0f3fb5f442296e781
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619386"
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>Historische gegevens in tijdelijke tabellen beheren met het Bewaar beleid
@@ -120,7 +120,7 @@ Voor de opschoon taak voor tabellen met rowstore geclusterde index moet index wo
 
 Het is belang rijk te zien dat de standaard geschiedenis tabel die is gemaakt door Azure SQL Database en dat Azure SQL Managed instance al een geclusterde index heeft, die compatibel is met het Bewaar beleid. Als u probeert die index te verwijderen voor een tabel met een beperkte Bewaar periode, mislukt de bewerking met de volgende fout:
 
-*Msg 13766, niveau 16, status 1 <br> </br> kan de geclusterde index ' WebsiteUserInfoHistory. IX_WebsiteUserInfoHistory ' niet verwijderen omdat deze wordt gebruikt voor het automatisch opschonen van verouderde gegevens. U kunt HISTORY_RETENTION_PERIOD instellen op oneindig in de bijbehorende tijdelijke systeem versie tabel als u deze index wilt verwijderen.*
+*Msg 13766, niveau 16, status 1 <br> </br> kan de geclusterde index WebsiteUserInfoHistory.IX_WebsiteUserInfoHistory niet verwijderen omdat deze wordt gebruikt voor het automatisch opschonen van verouderde gegevens. U kunt HISTORY_RETENTION_PERIOD instellen op oneindig in de bijbehorende tijdelijke systeem versie tabel als u deze index wilt verwijderen.*
 
 Opschonen van de geclusterde column store-index werkt optimaal als historische rijen worden ingevoegd in oplopende volg orde (gesorteerd op de kolom einde van de periode). Dit is altijd het geval wanneer de geschiedenis tabel uitsluitend wordt gevuld door het SYSTEM_VERSIONIOING-mechanisme. Als de rijen in de geschiedenis tabel niet worden gerangschikt op de kolom einde van de periode (dit kan het geval zijn als u bestaande historische gegevens hebt gemigreerd), moet u een geclusterde column store-index boven op de rowstore-index van de B-structuur maken die op de juiste manier is besteld, om optimale prestaties te krijgen.
 

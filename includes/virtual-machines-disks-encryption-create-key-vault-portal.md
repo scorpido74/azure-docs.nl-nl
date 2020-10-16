@@ -9,10 +9,10 @@ ms.date: 03/23/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: a967777b65c06cf23239a47e8e691fb3a29231b4
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88815467"
 ---
 Door door de klant beheerde sleutels voor uw schijven in te stellen, moet u resources in een bepaalde volg orde maken, als u deze voor de eerste keer uitvoert. Eerst moet u een Azure Key Vault maken en instellen.
@@ -65,7 +65,7 @@ Door door de klant beheerde sleutels voor uw schijven in te stellen, moet u reso
 1. Selecteer **klikken om een sleutel te selecteren**.
 1. Selecteer de sleutel kluis en de sleutel die u eerder hebt gemaakt, evenals de versie.
 1. Druk op **selecteren**.
-1. Selecteer **controleren + maken** en vervolgens **maken**.
+1. Selecteer **Controleren en maken**, en vervolgens **Maken**.
 
     ![Scherm opname van de Blade voor het maken van schijf versleuteling. Het abonnement, de resource groep, de naam van de schijf versleutelings, de regio en de sleutel kluis + sleutel kiezer worden weer gegeven.](./media/virtual-machines-disk-encryption-portal/server-side-encryption-disk-set-blade.png)
 

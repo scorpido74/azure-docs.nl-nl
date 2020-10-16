@@ -3,15 +3,15 @@ title: Virtuele Windows-bureau blad-taak verdeling configureren-Azure
 description: De taakverdelings methode configureren voor een virtuele Windows-desktop omgeving.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 08/29/2019
+ms.date: 10/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 07eae73a36bf4051925547fa375f46963a162881
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 2c57ac10fbd318dd4bbb2dc86457e186dd824834
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88010103"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951652"
 ---
 # <a name="configure-the-windows-virtual-desktop-load-balancing-method"></a>De taakverdelingsmethode voor Windows Virtual Desktop configureren
 
@@ -51,13 +51,19 @@ Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname>
 
 ## <a name="configure-depth-first-load-balancing"></a>Diepte configureren-eerste taak verdeling
 
-Diepte: voor de taak verdeling worden nieuwe gebruikers sessies gedistribueerd naar een beschik bare sessiehost met het hoogste aantal verbindingen, maar de drempel waarde voor de maximale sessie limiet is niet bereikt. Bij het configureren van diepte-eerste taak verdeling moet u een maximum aantal sessies per sessiehost instellen in de hostgroep.
+Diepte: voor de taak verdeling worden nieuwe gebruikers sessies gedistribueerd naar een beschik bare sessiehost met het hoogste aantal verbindingen, maar de drempel waarde voor de maximale sessie limiet is niet bereikt.
+
+>[!IMPORTANT]
+>Bij het configureren van diepte-eerste taak verdeling moet u een maximum aantal sessies per sessiehost instellen in de hostgroep.
 
 Voer de volgende Power shell-cmdlet uit om een hostgroep te configureren voor het uitvoeren van diepte-eerste taak verdeling:
 
 ```powershell
 Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -LoadBalancerType 'DepthFirst' -MaxSessionLimit ###
 ```
+
+>[!NOTE]
+> Met het algoritme voor het gelijkmatige taak verdeling worden sessies gedistribueerd naar sessie-hosts op basis van de maximum limiet voor de sessie-host ( `-MaxSessionLimit` ). De standaard waarde van deze para meter is `999999` . Dit is ook het hoogste mogelijke getal waarmee u deze variabele kunt instellen. Deze para meter is vereist wanneer u het algoritme voor de taak verdeling van de diepte eerste gebruikt. Voor de best mogelijke gebruikers ervaring moet u de maximum limiet voor de sessie-hostparameters wijzigen in een getal dat het beste bij uw omgeving past.
 
 Voer de volgende cmdlet uit om ervoor te zorgen dat de instelling is bijgewerkt:
 

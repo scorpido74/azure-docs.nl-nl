@@ -4,10 +4,10 @@ description: Configureer uw gebruikers account voor Azure Notebooks met behulp v
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.openlocfilehash: 929a21785b5b48c81c2d2016874feed61021d3c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85832182"
 ---
 # <a name="your-user-account-for-azure-notebooks-preview"></a>Uw gebruikers account voor Azure Notebooks preview
@@ -35,7 +35,7 @@ Als u niet zeker weet, selecteert u de opdracht **een maken** in het account pro
 ![Opdracht voor het maken van een nieuwe Microsoft-account](media/accounts/create-new-microsoft-account.png)
 
 > [!Note]
-> Als u probeert een nieuw account te maken met een e-mail adres waaraan al een account is gekoppeld, wordt het volgende bericht weer gegeven: ' u kunt u niet aanmelden met een werk-of school-e-mail adres. Gebruik een persoonlijk e-mail adres, zoals Gmail of Yahoo!, of ontvang een nieuwe Outlook-e-mail. Probeer in dat geval u aan te melden met het werk-e-mail adres zonder een nieuw account te maken.
+> Als u probeert een nieuw account te maken met een e-mailadres waaraan al een account is gekoppeld, wordt het volgende bericht weergegeven: U kunt zich hier niet aanmelden met een werk- of school-e-mailadres. Gebruik een persoonlijk e-mailadres, zoals Gmail of Yahoo!, of vraag een nieuw Outlook-e-mailadres aan. Probeer in dat geval u aan te melden met het werk-e-mailadres zonder een nieuw account te maken.
 
 Voor onderliggende accounts is de toegang tot Azure Notebooks standaard geblokkeerd. Als u zich aanmeldt met een kinder account, wordt de volgende fout weer gegeven:
 

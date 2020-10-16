@@ -16,10 +16,10 @@ ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: johndeu
 ms.openlocfilehash: 84e94a431efdc84ff6896de416bd222120784899
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89264280"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Overzicht van Media Services bewerkingen REST API
@@ -78,9 +78,9 @@ Hier volgt een aantal optionele kopteksten:
 
 | Koptekst | Type | Waarde |
 | --- | --- | --- |
-| Datum |RFC 1123-datum |Tijds tempel van de aanvraag |
+| Date |RFC 1123-datum |Tijds tempel van de aanvraag |
 | Accepteren |Inhoudstype |Het aangevraagde inhouds type voor het antwoord, zoals de volgende:<p> -application/json; odata = verbose<p> -Application/Atom + XML<p> Antwoorden kunnen een ander inhouds type hebben, zoals het ophalen van een blob, waarbij een geslaagd antwoord de BLOB-stream als de payload bevat. |
-| Accepteren-coderen |Gzip, verkleinen |GZIP-en deflate-code ring, indien van toepassing. Opmerking: voor grote bronnen kan Media Services deze header negeren en niet-gecomprimeerde gegevens retour neren. |
+| Accept-Encoding |Gzip, verkleinen |GZIP-en deflate-code ring, indien van toepassing. Opmerking: voor grote bronnen kan Media Services deze header negeren en niet-gecomprimeerde gegevens retour neren. |
 | Accept-Language |"en", "ES", enzovoort. |Hiermee geeft u de voorkeurs taal op voor het antwoord. |
 | Accept-Charset |Charset-type like "UTF-8" |De standaard waarde is UTF-8. |
 | X-HTTP-methode |HTTP-methode |Biedt clients of firewalls die geen ondersteuning bieden voor HTTP-methoden zoals PUT of DELETE om deze methoden te gebruiken, via een GET-aanroep. |
@@ -94,7 +94,7 @@ Hier volgt een reeks kopteksten die kunnen worden geretourneerd, afhankelijk van
 | --- | --- | --- |
 | aanvraag-id |Tekenreeks |Een unieke id voor de huidige bewerking, gegenereerde service. |
 | client-aanvraag-id |Tekenreeks |Een id die is opgegeven door de aanroeper in de oorspronkelijke aanvraag, indien aanwezig. |
-| Datum |RFC 1123-datum |De datum/tijd waarop de aanvraag is verwerkt. |
+| Date |RFC 1123-datum |De datum/tijd waarop de aanvraag is verwerkt. |
 | Content-Type |Varieert |Het inhouds type van de antwoord tekst. |
 | Content-Encoding |Varieert |Gzip of verkleinen, indien van toepassing. |
 
@@ -107,7 +107,7 @@ Hier volgt een volledige lijst met HTTP-termen die kunnen worden gebruikt bij he
 | POST |Hiermee wordt een object gemaakt op basis van de verstrekte gegevens of wordt een opdracht verzonden. |
 | PUT |Hiermee wordt een object vervangen of een benoemd object gemaakt (indien van toepassing). |
 | DELETE |Hiermee verwijdert u een object. |
-| SAMEN |Hiermee wordt een bestaand object bijgewerkt met de benoemde eigenschaps wijzigingen. |
+| SAMENVOEGEN |Hiermee wordt een bestaand object bijgewerkt met de benoemde eigenschaps wijzigingen. |
 | HEAD |Retourneert meta gegevens van een object voor een GET-antwoord. |
 
 ## <a name="discover-and-browse-the-media-services-entity-model"></a>Het Media Services-entiteits model ontdekken en doorzoeken

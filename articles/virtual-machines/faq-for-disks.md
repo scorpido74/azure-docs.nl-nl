@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: e375ce88b8e5bd96e19dc4f5da2143c3f9de53a9
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 8a762cfd1ecb4e290417b5d24b0ae75f6e10baf1
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91575857"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973697"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Veelgestelde vragen over Azure IaaS VM-schijven en beheerde en onbeheerde Premium-schijven
 
@@ -26,15 +26,15 @@ Managed Disks is een functie die schijf beheer voor Azure IaaS-Vm's vereenvoudig
 
 **Als ik een standaard beheerde schijf Maak op basis van een bestaande VHD van 80 GB, hoeveel krijg ik dan de kosten?**
 
-Een standaard beheerde schijf die is gemaakt op basis van een VHD van 80 GB, wordt beschouwd als de volgende beschik bare standaard schijf grootte, een S10-schijf. Er worden kosten in rekening gebracht op basis van de S10-schijf prijzen. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/storage)voor meer informatie.
+Een standaard beheerde schijf die is gemaakt op basis van een VHD van 80 GB, wordt beschouwd als de volgende beschik bare standaard schijf grootte, een S10-schijf. Er worden kosten in rekening gebracht op basis van de S10-schijf prijzen. Zie de pagina [prijzen](https://azure.microsoft.com/pricing/details/storage) voor meer informatie.
 
 **Zijn er transactie kosten voor Standard Managed disks?**
 
-Ja. Er worden kosten in rekening gebracht voor elke trans actie. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/storage)voor meer informatie.
+Ja. Er worden kosten in rekening gebracht voor elke trans actie. Zie de pagina [prijzen](https://azure.microsoft.com/pricing/details/storage) voor meer informatie.
 
 **Voor een Standard Managed disk worden er kosten in rekening gebracht voor de werkelijke grootte van de gegevens op de schijf of voor de ingerichte capaciteit van de schijf?**
 
-Er worden kosten in rekening gebracht op basis van de ingerichte capaciteit van de schijf. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/storage)voor meer informatie.
+Er worden kosten in rekening gebracht op basis van de ingerichte capaciteit van de schijf. Zie de pagina [prijzen](https://azure.microsoft.com/pricing/details/storage) voor meer informatie.
 
 **Hoe worden de prijzen van Premium-beheerde schijven afwijkend van niet-beheerde schijven?**
 
@@ -76,7 +76,7 @@ Afhankelijk van de regio waar de beschikbaarheidsset met Managed Disks zich bevi
 
 U stelt een privé opslag account in voor de diagnostische gegevens van de virtuele machine.
 
-**Welk soort op rollen gebaseerd Access Control ondersteuning is beschikbaar voor Managed Disks?**
+**Welk soort Role-Based Access Control ondersteuning is beschikbaar voor Managed Disks?**
 
 Managed Disks ondersteunt drie belangrijkste standaard rollen:
 
@@ -136,7 +136,7 @@ Voor beheerde schijven kunt u de naam niet wijzigen. U kunt de naam van een niet
 
 Installatie kopieën van de eerste generatie kunnen alleen gebruikmaken van GPT-partitionering op gegevens schijven, niet op besturingssysteem schijven. Voor besturingssysteem schijven moet de partitie stijl MBR worden gebruikt.
 
-[Installatie kopieën van de 2e generatie](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2) kunnen gebruikmaken van GPT-partitionering op de besturingssysteem schijf en de gegevens schijven.
+[Installatie kopieën van de 2e generatie](./generation-2.md) kunnen gebruikmaken van GPT-partitionering op de besturingssysteem schijf en de gegevens schijven.
 
 **Welke schijf typen ondersteunen moment opnamen?**
 
@@ -241,7 +241,7 @@ Nee, uploaden kan alleen worden gebruikt tijdens het maken van een nieuwe lege s
 
 **Hoe kan ik uploaden naar een beheerde schijf?**
 
-Een beheerde schijf maken met de eigenschap [createOption](https://docs.microsoft.com/rest/api/compute/disks/createorupdate#diskcreateoption) van [creationData](https://docs.microsoft.com/rest/api/compute/disks/createorupdate#creationdata) ingesteld op ' Upload ' en vervolgens kunt u er gegevens naar uploaden.
+Een beheerde schijf maken met de eigenschap [createOption](/rest/api/compute/disks/createorupdate#diskcreateoption) van [creationData](/rest/api/compute/disks/createorupdate#creationdata) ingesteld op ' Upload ' en vervolgens kunt u er gegevens naar uploaden.
 
 **Kan ik een schijf koppelen aan een virtuele machine terwijl deze een upload status heeft?**
 
@@ -364,7 +364,7 @@ Een Premium-gegevens schijf die is gemaakt op basis van een VHD van 80 GB, wordt
 
 **Zijn er transactie kosten om Premium-SSD schijven te gebruiken?**
 
-Er zijn vaste kosten voor elke schijf grootte, die wordt geleverd met specifieke limieten voor IOPS en door voer. De overige kosten zijn uitgaande band breedte en moment opname capaciteit, indien van toepassing. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/storage)voor meer informatie.
+Er zijn vaste kosten voor elke schijf grootte, die wordt geleverd met specifieke limieten voor IOPS en door voer. De overige kosten zijn uitgaande band breedte en moment opname capaciteit, indien van toepassing. Zie de pagina [prijzen](https://azure.microsoft.com/pricing/details/storage) voor meer informatie.
 
 **Wat zijn de limieten voor IOPS en door Voer die ik uit de schijf cache kan halen?**
 
@@ -427,7 +427,7 @@ U hoeft de bestaande Azure-hulpprogram ma's niet bij te werken om schijven grote
 
 **Worden de schijf grootten van P4 en P6 ondersteund voor onbeheerde schijven of pagina-blobs?**
 
-P4-schijf grootten (32 GiB) en P6 (64 GiB) worden niet ondersteund als de standaard schijf lagen voor onbeheerde schijven en pagina-blobs. U moet [de BLOB-laag expliciet instellen](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) op P4 en P6 om ervoor te hebben dat uw schijf aan deze lagen wordt toegewezen. Als u een niet-beheerde schijf of pagina-BLOB implementeert met de schijf grootte of de lengte van de inhoud kleiner dan 32 GiB of tussen 32 GiB tot 64 GiB zonder de BLOB-laag in te stellen, blijft u op P10 met 500 IOPS en 100 MiB/s en de toegewezen prijs categorie.
+P4-schijf grootten (32 GiB) en P6 (64 GiB) worden niet ondersteund als de standaard schijf lagen voor onbeheerde schijven en pagina-blobs. U moet [de BLOB-laag expliciet instellen](/rest/api/storageservices/set-blob-tier) op P4 en P6 om ervoor te hebben dat uw schijf aan deze lagen wordt toegewezen. Als u een niet-beheerde schijf of pagina-BLOB implementeert met de schijf grootte of de lengte van de inhoud kleiner dan 32 GiB of tussen 32 GiB tot 64 GiB zonder de BLOB-laag in te stellen, blijft u op P10 met 500 IOPS en 100 MiB/s en de toegewezen prijs categorie.
 
 **Hoe worden er kosten in rekening gebracht als mijn bestaande Premium Managed Disk lager dan 64 GiB is gemaakt voordat de kleine schijf werd ingeschakeld (ongeveer 15 juni 2017)?**
 
@@ -497,6 +497,6 @@ Nee.
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>Wat gebeurt er als mijn vraag hier niet wordt beantwoord?
 
-Als uw vraag hier niet wordt vermeld, laat het ons weten en wij helpen u een antwoord te vinden. U kunt aan het einde van dit artikel een vraag plaatsen in de opmerkingen. Gebruik de [pagina micro soft Q&een vraag voor Azure Storage](https://docs.microsoft.com/answers/products/azure?product=storage)om contact op te nemen met het Azure Storage team en andere leden van de community over dit artikel.
+Als uw vraag hier niet wordt vermeld, laat het ons weten en wij helpen u een antwoord te vinden. U kunt aan het einde van dit artikel een vraag plaatsen in de opmerkingen. Gebruik de [pagina micro soft Q&een vraag voor Azure Storage](/answers/products/azure?product=storage)om contact op te nemen met het Azure Storage team en andere leden van de community over dit artikel.
 
 Als u functies wilt aanvragen, moet u uw aanvragen en ideeën verzenden naar het [Feedback forum van Azure Storage](https://feedback.azure.com/forums/217298-storage).

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 15680a4f8228af95e6643478c9262653171912ca
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6807174f374e75f826001afecc1eccf8ba1a0603
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903477"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743383"
 ---
 # <a name="tutorial-activate-azure-stack-edge-pro-with-gpu"></a>Zelfstudie: Azure Stack Edge Pro met GPU activeren
 
@@ -52,12 +52,12 @@ Zorg dat aan deze voorwaarden wordt voldaan voordat u uw Azure Stack Edge Pro-ap
 
 4. Selecteer **Toepassen**.
 
-    ![Pagina 'Clouddetails' van lokale webgebruikersinterface](./media/azure-stack-edge-gpu-deploy-activate/activate-2.png)
+    ![Pagina 2 'Clouddetails' van lokale webgebruikersinterface](./media/azure-stack-edge-gpu-deploy-activate/activate-2.png)
 
 
 5. Eerst wordt het apparaat geactiveerd. Vervolgens wordt u gevraagd het sleutelbestand te downloaden.
     
-    ![Pagina 'Clouddetails' van lokale webgebruikersinterface](./media/azure-stack-edge-gpu-deploy-activate/activate-3.png)
+    ![Pagina 3 'Clouddetails' van lokale webgebruikersinterface](./media/azure-stack-edge-gpu-deploy-activate/activate-3.png)
     
     Selecteer **Downloaden en doorgaan** en sla het bestand *device-serial-no.json* op een veilige locatie buiten het apparaat op. **Dit sleutelbestand bevat de herstelsleutels voor de besturingssysteemschijf en gegevensschijven op uw apparaat**. Deze sleutels kunnen nodig zijn om een toekomstig herstel van het systeem mogelijk te maken.
 
@@ -88,7 +88,7 @@ Zorg dat aan deze voorwaarden wordt voldaan voordat u uw Azure Stack Edge Pro-ap
 
 6. Ga naar de pagina **Overzicht**. De apparaatstatus zou **Geactiveerd** moeten zijn.
 
-    ![Pagina 'Clouddetails' van lokale webgebruikersinterface](./media/azure-stack-edge-gpu-deploy-activate/activate-4.png)
+    ![Pagina 4 'Clouddetails' van lokale webgebruikersinterface](./media/azure-stack-edge-gpu-deploy-activate/activate-4.png)
  
 De apparaatactivering is voltooid. U kunt nu shares toevoegen op uw apparaat.
 

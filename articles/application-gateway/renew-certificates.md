@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 8/15/2018
 ms.author: victorh
 ms.openlocfilehash: de57a58f7c891009d2e0cc43b351c2cad42a2766
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84807877"
 ---
 # <a name="renew-application-gateway-certificates"></a>Application Gateway certificaten vernieuwen
@@ -24,7 +24,7 @@ U kunt een certificaat dat is gekoppeld aan een listener vernieuwen met behulp v
 
 Als u een listener-certificaat wilt vernieuwen vanuit de portal, gaat u naar de gateway-listeners van uw toepassing. Klik op de listener met een certificaat dat moet worden vernieuwd en klik vervolgens op het **geselecteerde certificaat vernieuwen of bewerken**.
 
-![Certificaat vernieuwen](media/renew-certificate/ssl-cert.png)
+![Certificaat verlengen](media/renew-certificate/ssl-cert.png)
 
 Upload uw nieuwe PFX-certificaat, geef het een naam, typ het wacht woord en klik vervolgens op **Opslaan**.
 

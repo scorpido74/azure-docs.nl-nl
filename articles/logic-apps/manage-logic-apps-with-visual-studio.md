@@ -8,10 +8,10 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 04/29/2020
 ms.openlocfilehash: cde8db5310e3ede2721ba327b28c789ccd0b7dd0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87280763"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Logische apps beheren met Visual Studio
@@ -53,11 +53,11 @@ U kunt ook [uw Logic apps beheren in de Azure Portal](manage-logic-apps-with-azu
 
     U kunt hulpprogramma's van Azure Logic Apps ofwel rechtstreeks vanuit Visual Studio Marketplace downloaden en installeren, of leer [deze extensie te installeren vanuit Visual Studio](/visualstudio/ide/finding-and-using-visual-studio-extensions). Zorg ervoor dat u Visual Studio opnieuw opstart na de installatie.
 
-  * Als u Azure Government-abonnementen met Visual Studio wilt gebruiken, raadpleegt u de volgende onderwerpen voor aanvullende installatie:
+  * Lees de volgende onderwerpen voor aanvullende installatiegegevens als u Azure Government-abonnementen met Visual Studio wilt gebruiken:
 
-    * Visual Studio 2019: [Quick Start: verbinding maken met Azure Government met Visual Studio](../azure-government/documentation-government-connect-vs.md)
+    * Visual Studio 2019: [Snelstart: Verbinding maken met Azure Government met Visual Studio](../azure-government/documentation-government-connect-vs.md)
 
-    * Visual Studio 2017: [introductie van de Azure Environment selector Visual Studio-extensie](https://devblogs.microsoft.com/azuregov/introducing-the-azure-environment-selector-visual-studio-extension/), die u kunt downloaden en installeren via de [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=SteveMichelotti.AzureEnvironmentSelector).
+    * Visual Studio 2017: [Introductie van de Visual Studio-extensie Azure Environment-selector ](https://devblogs.microsoft.com/azuregov/introducing-the-azure-environment-selector-visual-studio-extension/), die u kunt downloaden en installeren via de [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=SteveMichelotti.AzureEnvironmentSelector).
 
 * Toegang tot het web terwijl u de Inge sloten Logic Apps Designer gebruikt
 

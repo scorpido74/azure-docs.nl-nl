@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 55c6cbc18e37368dd47c47227041024b13987c47
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 41f2ee9806b8f6818f2b2dd7a48920ac9907ca79
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82233207"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91854644"
 ---
 # <a name="create-a-cicd-pipeline-for-github-repo-using-azure-devops-starter"></a>Een CI/CD-pijplijn voor een GitHub-opslagplaats maken met Azure DevOps Starter
 
@@ -118,9 +118,9 @@ Toen u het CI/CD-proces in deze zelfstudie configureerde, zijn er automatisch ee
 Voor meer informatie over de CI/CD-pijplijn raadpleegt u:
 
 > [!div class="nextstepaction"]
-> [Een CD-pijplijn (continue implementatie) met meerdere fasen definiëren](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [Een CD-pijplijn (continue implementatie) met meerdere fasen definiëren](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
 
 Zie voor meer informatie over toepassingsbewaking:
   
  > [!div class="nextstepaction"]
- > [Wat is Azure Monitor?](https://docs.microsoft.com/azure/azure-monitor/overview)
+ > [Wat is Azure Monitor?](../azure-monitor/overview.md)

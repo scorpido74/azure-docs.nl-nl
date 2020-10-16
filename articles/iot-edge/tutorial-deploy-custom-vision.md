@@ -9,16 +9,16 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 07945926600163a3fca228ef6d848b50efc4318d
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 4854e61b646c0ca2a2070d676e3efc5cfbac6b9b
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042799"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044578"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Zelfstudie: Custom Vision Service gebruiken om afbeeldingsclassificatie uit te voeren aan de rand
 
-Met Azure IoT Edge kunt uw IoT-oplossing efficiënter maken door werkbelastingen van de cloud naar de rand te verplaatsen. Deze mogelijkheid is met name geschikt voor services die grote hoeveelheden gegevens verwerken, zoals Computer Vision-modellen. Met de [Custom Vision Service](../cognitive-services/custom-vision-service/home.md) kunt u aangepaste afbeeldingsclassificaties maken en deze als containers op apparaten implementeren. Met deze twee services samen kunt u inzichten vinden op basis van afbeeldingen of videostreams zonder dat u eerst alle gegevens van de site moet overbrengen. Custom Vision biedt een classificatie die een installatiekopie vergelijkt met een getraind model om inzichten te genereren.
+Met Azure IoT Edge kunt uw IoT-oplossing efficiënter maken door werkbelastingen van de cloud naar de rand te verplaatsen. Deze mogelijkheid is met name geschikt voor services die grote hoeveelheden gegevens verwerken, zoals Computer Vision-modellen. Met de [Custom Vision Service](../cognitive-services/custom-vision-service/overview.md) kunt u aangepaste afbeeldingsclassificaties maken en deze als containers op apparaten implementeren. Met deze twee services samen kunt u inzichten vinden op basis van afbeeldingen of videostreams zonder dat u eerst alle gegevens van de site moet overbrengen. Custom Vision biedt een classificatie die een installatiekopie vergelijkt met een getraind model om inzichten te genereren.
 
 Zo kunt u met Custom Vision op een IoT Edge-apparaat bepalen of er op een snelweg meer of minder verkeer is dan normaal, en of er in een parkeergarage nog vrije plaatsen zijn in een rij. Deze inzichten kunnen worden gedeeld met een andere service om actie te ondernemen.
 
@@ -46,7 +46,7 @@ Voordat u met deze zelfstudie begint, moet u de vorige zelfstudie hebben doorlop
 
 * Een gratis of standaard [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-laag in Azure.
 * Een [Linux-apparaat met Azure IoT Edge](quickstart-linux.md)
-* Een containerregister, zoals [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/).
+* Een containerregister, zoals [Azure Container Registry](../container-registry/index.yml).
 * [Visual Studio Code](https://code.visualstudio.com/) geconfigureerd met de [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 * [Docker CE](https://docs.docker.com/install/) geconfigureerd voor het uitvoeren van Linux-containers.
 

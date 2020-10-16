@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: raynew
 ms.openlocfilehash: 3236e0a95c6a4b4f57ac38ed067011c3d6848b5a
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89670399"
 ---
 # <a name="move-resources-across-regions-in-powershell"></a>Resources verplaatsen tussen regio's in Power shell
@@ -19,7 +19,7 @@ ms.locfileid: "89670399"
 Meer informatie over hoe u Azure-resources naar een andere regio kunt verplaatsen met behulp van Power shell in azure resource verhuizer. 
 
 > [!NOTE]
-> Azure resource-overdrijfing is momenteel beschikbaar als preview-versie.
+> Azure Resource Mover is momenteel in preview.
 
 
 
@@ -344,10 +344,10 @@ Invoke-AzResourceMoverInitiateMove -SubscriptionId <subscription-id> -ResourceGr
 
 ## <a name="discard-or-commit-the-move"></a>De verplaatsing negeren of door voeren
 
-Na de eerste verplaatsing kunt u beslissen of u de verplaatsing wilt door voeren of wilt negeren. 
+Na de eerste verplaatsing kunt u beslissen of u de verplaatsing wilt doorvoeren of verwijderen. 
 
-- **Negeren**: u kunt een verplaatsing negeren als u wilt testen en u niet echt de bron resource wilt verplaatsen. Als u de verplaatsing verwijdert, wordt de resource teruggezet naar een status van *initiëren verplaatsen in behandeling*. U kunt de verplaatsing vervolgens opnieuw starten als dat nodig is.
-- **Door voeren**: door voeren voltooit de verplaatsing naar de doel regio. Na het door voeren heeft een bron resource de status *verwijderen in behandeling*en kunt u bepalen of u deze wilt verwijderen.
+- **Verwijderen**: Mogelijk wilt u een verplaatsing verwijderen als u een test uitvoert en de bronresource niet echt wilt verplaatsen. Als u de verplaatsing negeert, wordt de resource teruggezet in de status *Initiëren verplaatsing in behandeling*. U kunt de verplaatsing vervolgens opnieuw starten als dat nodig is.
+- **Doorvoeren**: Met doorvoeren wordt de verplaatsing naar de doelregio voltooid. Na het doorvoeren heeft een bronresource de status *Verwijderen bron in behandeling*en kunt u besluiten of u deze wilt verwijderen.
 
 ### <a name="discard"></a>Verwijderen
 

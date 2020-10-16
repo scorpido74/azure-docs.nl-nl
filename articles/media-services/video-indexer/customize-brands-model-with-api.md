@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 01/14/2020
 ms.author: kumud
 ms.openlocfilehash: 5fc565ecc1b501f52e934784695594dcfef2a83a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87047282"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-api"></a>Een Brands model aanpassen met de Video Indexer-API
@@ -37,7 +37,7 @@ Enkele andere para meters die u in de hoofd tekst kunt instellen:
 * De `referenceUrl` waarde kan verwijzen naar websites voor het merk, zoals een koppeling naar de Wikipedia-pagina.
 * De `tags` waarde is een lijst met tags voor het merk. Deze tag wordt weer gegeven in het *categorie* veld van het merk op de website van video indexer. Het merk "Azure" kan bijvoorbeeld worden gelabeld of gecategoriseerd als "Cloud".
 
-### <a name="response"></a>Reactie
+### <a name="response"></a>Antwoord
 
 Het antwoord bevat informatie over het merk dat u zojuist hebt gemaakt, in de indeling van het onderstaande voor beeld.
 
@@ -63,7 +63,7 @@ Het antwoord bevat informatie over het merk dat u zojuist hebt gemaakt, in de in
 
 Met de brand-API [verwijderen](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Brand?) wordt een merk van het aangepaste merk model verwijderd voor het opgegeven account. Het account is opgegeven in de `accountId` para meter. Zodra het merk is aangeroepen, bevallen de lijsten voor het *opnemen* of *uitsluiten* van merken niet meer.
 
-### <a name="response"></a>Reactie
+### <a name="response"></a>Antwoord
 
 Er is geen inhoud die wordt geretourneerd wanneer het merk is verwijderd.
 
@@ -71,7 +71,7 @@ Er is geen inhoud die wordt geretourneerd wanneer het merk is verwijderd.
 
 Met de [een merk](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brand?) -API ophalen kunt u zoeken naar de details van een merk in het aangepaste merk model voor het opgegeven account met behulp van de merk-id.
 
-### <a name="response"></a>Reactie
+### <a name="response"></a>Antwoord
 
 Het antwoord bevat informatie over het merk dat u hebt gezocht (met behulp van merk-ID) volgens de indeling van het voor beeld hieronder.
 
@@ -94,13 +94,13 @@ Het antwoord bevat informatie over het merk dat u hebt gezocht (met behulp van m
 ```
 
 > [!NOTE]
-> `enabled`wordt ingesteld om aan te `true` geven dat het merk zich in de lijst met *insluitingen* bevindt voor video indexer om te detecteren, en False geeft aan `enabled` dat het merk zich in de *uitsluitings* lijst bevindt, zodat dit niet door video indexer wordt gedetecteerd.
+> `enabled` wordt ingesteld om aan te `true` geven dat het merk zich in de lijst met *insluitingen* bevindt voor video indexer om te detecteren, en False geeft aan `enabled` dat het merk zich in de *uitsluitings* lijst bevindt, zodat dit niet door video indexer wordt gedetecteerd.
 
 ## <a name="update-a-specific-brand"></a>Een specifiek merk bijwerken
 
 Met de [Update een gloed](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brand?) -API kunt u zoeken naar de details van een merk in het aangepaste merk model voor het opgegeven account met behulp van de merk-id.
 
-### <a name="response"></a>Reactie
+### <a name="response"></a>Antwoord
 
 Het antwoord bevat de bijgewerkte informatie over het merk dat u hebt bijgewerkt volgens de indeling van het onderstaande voor beeld.
 
@@ -126,7 +126,7 @@ Het antwoord bevat de bijgewerkte informatie over het merk dat u hebt bijgewerkt
 
 De [all Brands](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands?) -API ophalen retourneert alle Brands in het aangepaste Brands model voor het opgegeven account, ongeacht of het merk is bedoeld om te worden *opgenomen* in de lijst met merken of *uitsluiten* .
 
-### <a name="response"></a>Reactie
+### <a name="response"></a>Antwoord
 
 Het antwoord bevat een lijst met alle Brands in uw account en alle details op basis van de indeling van het onderstaande voor beeld.
 
@@ -166,7 +166,7 @@ Het antwoord bevat een lijst met alle Brands in uw account en alle details op ba
 
 Met de API-instellingen voor het [ophalen van Brands](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands) worden de model instellingen voor Brands in het opgegeven account geretourneerd. De instellingen van het merk model geven aan of detectie van de Bing Brands-data base is ingeschakeld. Als Bing-merken niet zijn ingeschakeld, detecteert Video Indexer alleen Brands van het aangepaste merk model van het opgegeven account.
 
-### <a name="response"></a>Reactie
+### <a name="response"></a>Antwoord
 
 In het antwoord wordt weer gegeven of Bing Brands is ingeschakeld volgens de indeling van het onderstaande voor beeld.
 
@@ -178,7 +178,7 @@ In het antwoord wordt weer gegeven of Bing Brands is ingeschakeld volgens de ind
 ```
 
 > [!NOTE]
-> `useBuiltIn`Als wordt ingesteld op True, wordt het Bing-merk ingeschakeld. Als de waarde `useBuiltin` False is, zijn Bing-merken uitgeschakeld. De `state` waarde kan worden genegeerd omdat deze is afgeschaft.
+> `useBuiltIn` Als wordt ingesteld op True, wordt het Bing-merk ingeschakeld. Als de waarde `useBuiltin` False is, zijn Bing-merken uitgeschakeld. De `state` waarde kan worden genegeerd omdat deze is afgeschaft.
 
 ## <a name="update-brands-model-settings"></a>Model instellingen voor update Brands bijwerken
 
@@ -186,7 +186,7 @@ De [Update brandss](https://api-portal.videoindexer.ai/docs/services/operations/
 
 De `useBuiltIn` vlag ingesteld op True betekent dat Bing-merken zijn ingeschakeld. Als de waarde `useBuiltin` False is, zijn Bing-merken uitgeschakeld.
 
-### <a name="response"></a>Reactie
+### <a name="response"></a>Antwoord
 
 Er is geen inhoud die wordt geretourneerd wanneer de instelling voor het model Brands is bijgewerkt.
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 1d39b29ba340b34d6f0add8ff5da473408bd6360
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 204e89bdf8c660a7e96438f8cb3b8a18aeaec306
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259129"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742380"
 ---
 # <a name="tutorial-copy-data-from-azure-data-box-via-smb-preview"></a>Zelfstudie: Gegevens kopiëren uit Azure Data Box via SMB (preview)
 
@@ -50,7 +50,7 @@ Als u een hostcomputer met Windows Server gebruikt, voert u deze stappen uit om 
 
 1. U moet eerst een verificatie uitvoeren en een sessie starten. Ga naar **Verbinding maken en kopiëren**. Selecteer **Referenties ophalen** om de toegangsreferenties te krijgen voor de shares die aan uw opslagaccount zijn gekoppeld. 
 
-    ![Sharereferenties 1 ophalen](media/data-box-deploy-export-copy-data/get-share-credentials-1.png)
+    ![Sharereferenties ophalen](media/data-box-deploy-export-copy-data/get-share-credentials-1.png)
 
 2. Kopieer in het dialoogvenster Verbinding maken met share en gegevens kopiëren de **Gebruikersnaam** en het **Wachtwoord** voor de share. Selecteer **OK**.
     
@@ -75,7 +75,7 @@ Als u een hostcomputer met Windows Server gebruikt, voert u deze stappen uit om 
 
 4. Druk op Windows-toets+R. Geef in het venster **Uitvoeren** het `\\<device IP address>` op. Selecteer **OK** om Verkenner te openen.
     
-    ![Verbinding met de share maken via Verkenner 2](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-1.png)
+    ![Verbinding maken met share via Verkenner](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-1.png)
 
     Als het goed is, worden de shares nu weergegeven als mappen.
     

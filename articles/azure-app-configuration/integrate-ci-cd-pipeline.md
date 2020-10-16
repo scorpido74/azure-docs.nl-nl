@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.custom: devx-track-csharp
 ms.date: 01/30/2020
 ms.author: lcozzens
-ms.openlocfilehash: f0d1e57c7e212fefc6e17a8170e3b4537b190f60
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: b8756db881448edcaac1fda44b60229975350676
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211649"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074733"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>Integreren met een CI/CD-pijplijn
 
@@ -35,9 +35,9 @@ U kunt elke code-editor gebruiken om de stappen in deze zelfstudie uit te voeren
 
 ### <a name="prerequisites"></a>Vereisten
 
-Als u lokaal bouwt, downloadt en installeert u de [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) als u dit nog niet hebt gedaan.
+Als u lokaal bouwt, downloadt en installeert u de [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) als u dit nog niet hebt gedaan.
 
-Als u een cloud-build gebruikt, bijvoorbeeld met Azure DevOps, zorgt u ervoor dat de [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) is geïnstalleerd in het buildsysteem.
+Als u een cloud-build gebruikt, bijvoorbeeld met Azure DevOps, zorgt u ervoor dat de [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) is geïnstalleerd in het buildsysteem.
 
 ### <a name="export-an-app-configuration-store"></a>Een App Configuration-archief exporteren
 
@@ -107,4 +107,4 @@ Als u een cloud-build gebruikt, bijvoorbeeld met Azure DevOps, zorgt u ervoor da
 In deze zelfstudie hebt u Azure App Configuration-gegevens geëxporteerd die moeten worden gebruikt in een implementatiepijplijn. Voor meer informatie over het gebruik van App Configuration gaat u verder naar de Azure CLI-voorbeelden.
 
 > [!div class="nextstepaction"]
-> [Azure-CLI](https://docs.microsoft.com/cli/azure/appconfig?view=azure-cli-latest)
+> [Azure-CLI](/cli/azure/appconfig?view=azure-cli-latest)

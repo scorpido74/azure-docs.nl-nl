@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 07/17/2017
 ms.custom: devx-track-java
 ms.author: cynthn
-ms.openlocfilehash: 6c4ee08c1679abd54b98d2804ab120c9330f6968
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: f571dc5f4f3aee2405d4968b050bd2dd92a709db
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827483"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973662"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Virtuele Windows-machines maken en beheren in azure met behulp van Java
 
@@ -33,7 +33,7 @@ Het duurt ongeveer 20 minuten om deze stappen uit te voeren.
 
 ## <a name="create-a-maven-project"></a>Een Maven-project maken
 
-1. Als u dit nog niet hebt gedaan, installeert u [Java](https://aka.ms/azure-jdks).
+1. Als u dit nog niet hebt gedaan, installeert u [Java](/azure/developer/java/fundamentals/java-jdk-long-term-support).
 2. Installeer [maven](https://maven.apache.org/download.cgi).
 3. Maak een nieuwe map en het project:
     
@@ -141,7 +141,7 @@ Voordat u met deze stap begint, moet u ervoor zorgen dat u toegang hebt tot een 
     package com.fabrikam.testAzureApp;
     ```
 
-2. Voeg onder de instructie package de volgende import instructies toe:
+2. Voeg onder de pakketinstructie deze importinstructies toe:
    
     ```java
     import com.microsoft.azure.management.Azure;

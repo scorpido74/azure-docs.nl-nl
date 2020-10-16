@@ -9,10 +9,10 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9810a34021aa039354aad24f84aff373229c0190
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87021474"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>StorSimple Virtual array implementeren-inrichten in VMware
@@ -196,10 +196,10 @@ Voer de volgende stappen uit om uw virtuele apparaat te starten en verbinding te
    ![Scherm afbeelding van het tabblad vSphere client console. Het vak wacht woord is leeg.](./media/storsimple-virtual-array-deploy2-provision-vmware/image38.png)
 3. Uit veiligheidsoverwegingen verloopt het beheerderswachtwoord voor het apparaat na de eerste aanmelding. U wordt gevraagd om het wachtwoord te wijzigen.
 
-   ![Scherm afbeelding van het tabblad vSphere client console. tekst op de pagina geeft aan dat het wacht woord moet worden gewijzigd.](./media/storsimple-virtual-array-deploy2-provision-vmware/image39.png)
+   ![Scherm afbeelding van het tabblad vSphere client console. Tekst op de pagina geeft aan dat het wacht woord moet worden gewijzigd.](./media/storsimple-virtual-array-deploy2-provision-vmware/image39.png)
 4. Voer een wachtwoord in van minimaal acht tekens. Het wacht woord moet drie van de vier van de volgende vereisten bevatten: hoofd letters, kleine letters, cijfers en speciale tekens. Voer het wachtwoord opnieuw in ter bevestiging. Er wordt een melding weer gegeven dat het wacht woord is gewijzigd.
 
-   ![Scherm afbeelding van het tabblad vSphere client console. tekst op de pagina geeft aan dat het wacht woord is gewijzigd.](./media/storsimple-virtual-array-deploy2-provision-vmware/image40.png)
+   ![Scherm afbeelding van het tabblad vSphere client console. De tekst op de pagina geeft aan dat het wacht woord is gewijzigd.](./media/storsimple-virtual-array-deploy2-provision-vmware/image40.png)
 5. Nadat het wacht woord is gewijzigd, wordt het virtuele apparaat mogelijk opnieuw opgestart. Wacht tot de computer opnieuw is opgestart. De Windows Power shell-console van het apparaat kan samen met een voortgangs balk worden weer gegeven.
 
    ![Scherm opname waarin een console venster met een voortgangs balk wordt weer gegeven. De tekst in het venster geeft aan dat de eerste Setup actief is en vraagt de gebruiker te wachten.](./media/storsimple-virtual-array-deploy2-provision-vmware/image41.png)
@@ -215,7 +215,7 @@ Voer de volgende stappen uit om uw virtuele apparaat te starten en verbinding te
 
     `Set-HcsIpAddress –Name Ethernet –IpAddress 10.161.22.90 –Netmask 255.255.255.0 –Gateway 10.161.22.1`
 
-    ![Scherm afbeelding met een console venster met de uitvoer van de opdracht Get-Help set-HcsIpAddress en het juiste gebruik van de set-HcsIpAddress opdracht.](./media/storsimple-virtual-array-deploy2-provision-vmware/image44.png)
+    ![Scherm afbeelding met een console venster met de uitvoer van de Get-Help Set-HcsIpAddress opdracht en het juiste gebruik van de Set-HcsIpAddress opdracht.](./media/storsimple-virtual-array-deploy2-provision-vmware/image44.png)
 9. Nadat de initiële installatie voltooid is en het apparaat is opgestart, ziet u de bannertekst van het apparaat. Noteer het IP-adres en de URL die wordt weergegeven in de bannertekst om het apparaat te beheren. U gebruikt dit IP-adres om verbinding te maken met de Web-UI van uw virtuele apparaat en de lokale installatie en registratie te volt ooien.
 
    ![Scherm opname van een console venster met de banner tekst van het apparaat. Deze tekst bevat het IP-adres en de URL van het apparaat.](./media/storsimple-virtual-array-deploy2-provision-vmware/image45.png)

@@ -8,10 +8,10 @@ ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 7604e8519e7ae8db255a0e033ca3df0bb941a845
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91626255"
 ---
 # <a name="azure-security-baseline-for-vpn-gateway"></a>Azure-beveiligings basislijn voor VPN Gateway
@@ -532,7 +532,7 @@ U kunt ook aanbevelingen van Azure Security Center gebruiken als een veilige con
 
 - [Eén en meerdere resources exporteren naar een sjabloon in Azure Portal](../azure-resource-manager/templates/export-template-portal.md)
 
-- [Aanbevelingen voor beveiliging: een referentie gids](../security-center/recommendations-reference.md)
+- [Aanbevelingen voor beveiliging: een naslaggids](../security-center/recommendations-reference.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 

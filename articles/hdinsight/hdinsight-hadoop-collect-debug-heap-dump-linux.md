@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
 ms.openlocfilehash: 1ef52d74f7ae6e7e0d8c58e3b1972a0a1227c6b5
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85962200"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>Heap-dumps inschakelen voor Apache Hadoop Services op HDInsight op basis van Linux
@@ -81,7 +81,7 @@ U kunt ook een script activeren als er een **OutOfMemoryError** optreedt. U kunt
 
 Als u de configuratie voor een service wilt wijzigen, gebruikt u de volgende stappen:
 
-1. Ga in een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net` , waarbij `CLUSTERNAME` de naam van het cluster is.
+1. Navigeer in een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net`, waarbij `CLUSTERNAME` de naam van uw cluster is.
 
 2. Selecteer in de lijst met aan de linkerkant het service gebied dat u wilt wijzigen. Bijvoorbeeld **HDFS**. Selecteer in het middelste gebied het tabblad **configuratie** .
 

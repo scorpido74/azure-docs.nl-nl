@@ -16,10 +16,10 @@ ms.date: 12/10/2019
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bd49c60a23a0ad58f0907d3c1d7c38178ac08c97
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89266354"
 ---
 # <a name="create-list-and-delete-a-user-assigned-managed-identity-using-azure-resource-manager"></a>Een door de gebruiker toegewezen beheerde identiteit maken, weer geven en verwijderen met behulp van Azure Resource Manager
@@ -40,12 +40,12 @@ Het is niet mogelijk om een door de gebruiker toegewezen beheerde identiteit wee
 
 ## <a name="template-creation-and-editing"></a>Sjabloon maken en bewerken
 
-Net als bij de Azure Portal en scripting bieden Azure Resource Manager sjablonen de mogelijkheid om nieuwe of gewijzigde resources te implementeren die zijn gedefinieerd door een Azure-resource groep. Er zijn verschillende opties beschikbaar voor het bewerken en implementeren van sjablonen, zowel lokaal als op basis van een portal, waaronder:
+Net als Azure Portal en het uitvoeren van scripts, bieden Azure Resource Manager-sjablonen de mogelijkheid om nieuwe of gewijzigde resources gedefinieerd door een Azure-resourcegroep te implementeren. Er zijn verschillende opties beschikbaar voor het bewerken en implementeren van sjablonen, zowel lokaal als op basis van een portal, waaronder:
 
-- Met een [aangepaste sjabloon van Azure Marketplace](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)kunt u een volledig nieuwe sjabloon maken of deze baseren op een bestaande sjabloon common of [Quick](https://azure.microsoft.com/documentation/templates/)start.
-- Deze worden afgeleid van een bestaande resource groep door een sjabloon te exporteren uit [de oorspronkelijke implementatie](../../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates)of vanuit de [huidige status van de implementatie](../../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates).
-- Een lokale [JSON-editor gebruiken (zoals VS code)](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)en vervolgens uploaden en implementeren met behulp van Power shell of cli.
-- Het Visual Studio [Azure Resource Group-project](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md) gebruiken om een sjabloon te maken en te implementeren. 
+- Door een [aangepaste sjabloon van de Azure Marketplace](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template) te gebruiken, waarmee u een volledig nieuwe sjabloon kunt maken, of door het te baseren op een bestaande algemene sjabloon of een [quickstart-sjabloon](https://azure.microsoft.com/documentation/templates/).
+- Door af te leiden van een bestaande resourcegroep, door een sjabloon te exporteren vanaf ofwel [de oorspronkelijke implementatie](../../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates) ofwel van de [huidige status van de implementatie](../../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates).
+- Door een lokale [JSON-editor (zoals VS Code)](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md) te gebruiken en deze vervolgens te uploaden en implementeren met behulp van PowerShell of CLI.
+- Door het [Azure Resource Group-project](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md) van Visual Studio te gebruiken om een sjabloon te maken en te implementeren. 
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Een door de gebruiker toegewezen beheerde identiteit maken 
 

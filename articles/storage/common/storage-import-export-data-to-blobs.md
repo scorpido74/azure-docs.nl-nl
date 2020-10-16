@@ -9,10 +9,10 @@ ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 6d12c0ce0df44c37f4e7df49df2c11301513917c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514209"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>De Azure import/export-service gebruiken om gegevens te importeren in Azure Blob Storage
@@ -77,12 +77,12 @@ Voer de volgende stappen uit om de stations voor te bereiden.
 
     De gebruikte para meters worden in de volgende tabel beschreven:
 
-    |Optie  |Description  |
+    |Optie  |Beschrijving  |
     |---------|---------|
     |/j     |De naam van het logboek bestand met de extensie. jrn. Er wordt een logboek bestand gegenereerd per station. Het is raadzaam om het serie nummer van de schijf als de naam van het logboek bestand te gebruiken.         |
     |/ID:     |De sessie-ID. Gebruik een uniek sessie nummer voor elk exemplaar van de opdracht.      |
     |/t:     |De stationsletter van de schijf die moet worden verzonden. Bijvoorbeeld station `D` .         |
-    |/bk:     |De BitLocker-sleutel voor het station. Het numerieke wacht woord van de uitvoer van`manage-bde -protectors -get D:`      |
+    |/bk:     |De BitLocker-sleutel voor het station. Het numerieke wacht woord van de uitvoer van `manage-bde -protectors -get D:`      |
     |/srcdir:     |De stationsletter van de schijf die moet worden verzonden, gevolgd door `:\` . Bijvoorbeeld `D:\`.         |
     |/dstdir:     |De naam van de doel container in Azure Storage.         |
     |/blobtype:     |Met deze optie geeft u het type blobs op waarnaar u de gegevens wilt importeren. Voor blok-blobs is dit `BlockBlob` en voor pagina-blobs `PageBlob` .         |
@@ -127,7 +127,7 @@ Voer de volgende stappen uit om een import taak te maken in de Azure Portal.
 
 6. In **retour verzendings gegevens**:
 
-   * Selecteer de transporteur in de vervolg keuzelijst. Als u een andere transporteur dan FedEx/DHL wilt gebruiken, kiest u een bestaande optie in de vervolg keuzelijst. Neem contact op met Azure Data Box Operations-team `adbops@microsoft.com` met de informatie over de provider die u wilt gebruiken.
+   * Selecteer de transporteur in de vervolg keuzelijst. Als u een andere transporteur dan FedEx/DHL wilt gebruiken, kiest u een bestaande optie in de vervolg keuzelijst. Neem contact op met Azure Data Box Operations-team `adbops@microsoft.com`  met de informatie over de provider die u wilt gebruiken.
    * Voer een geldig account nummer van een transporteur in dat u hebt gemaakt met die transporteur. Micro soft gebruikt dit account om de schijven terug naar u te verzenden zodra uw import taak is voltooid. Als u geen account nummer hebt, maakt u een [FedEx](https://www.fedex.com/us/oadr/) -of [DHL](https://www.dhl.com/) -draaggolf account.
    * Geef een volledige en geldige naam op voor de contact persoon, telefoon, e-mail, adres, plaats, post code, provincie en land/regio.
 

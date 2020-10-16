@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperfq1
-ms.openlocfilehash: 6d05f5fa20b5deee14b1a2fada389d869d48908a
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: fc5b958813ea1107d98525b6dfc1b0b56c9c5400
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91709084"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091199"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Geautomatiseerde ML-experimenten configureren in Python
 
@@ -343,7 +343,7 @@ Er &nbsp; is een score &nbsp; &nbsp; &nbsp; bereikt| Gebruik `experiment_exit_sc
 
 U kunt uw trainings resultaten weer geven in een widget of inline als u zich in een notebook bevindt. Zie [modellen volgen en evalueren](how-to-monitor-view-training-logs.md#monitor-automated-machine-learning-runs) voor meer informatie.
 
-Zie [automatische machine learning resultaten](how-to-understand-automated-ml.md) voor definities en voor beelden van de prestatie diagrammen en metrische gegevens die voor elke uitvoering worden geleverd. 
+Bekijk de [resultaten van automatische machine learning experimenten evalueren](how-to-understand-automated-ml.md) voor definities en voor beelden van de prestatie diagrammen en metrische gegevens die voor elke uitvoering worden geleverd. 
 
 Zie [parametrisatie transparantie](how-to-configure-auto-features.md#featurization-transparency)voor een parametrisatie samen vatting en inzicht in de functies die zijn toegevoegd aan een bepaald model. 
 

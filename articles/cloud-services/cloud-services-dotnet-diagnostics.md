@@ -11,15 +11,15 @@ ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: tagore
-ms.openlocfilehash: 397239f92e3b07669a22481b07a67d9859176b7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a015a8d56cf3991d04b212db73d5b752c13a793
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88932335"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077538"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>Azure Diagnostics in azure inschakelen Cloud Services
-Zie [Azure Diagnostics overzicht](../azure-diagnostics.md) voor een achtergrond op Azure Diagnostics.
+Zie [Azure Diagnostics overzicht](../azure-monitor/platform/diagnostics-extension-overview.md) voor een achtergrond op Azure Diagnostics.
 
 ## <a name="how-to-enable-diagnostics-in-a-worker-role"></a>Diagnostische gegevens inschakelen in een worker-rol
 In dit scenario wordt beschreven hoe u een Azure worker-rol implementeert die telemetriegegevens verzendt met behulp van de .NET Event source-klasse. Azure Diagnostics wordt gebruikt om de telemetriegegevens te verzamelen en op te slaan in een Azure-opslag account. Wanneer u een werknemersrol maakt, schakelt Visual Studio automatisch diagnostische gegevens van 1,0 in als onderdeel van de oplossing in azure Sdk's voor .NET 2,4 en eerdere versies. De volgende instructies beschrijven het proces voor het maken van de rol van werk nemers, het uitschakelen van diagnose 1,0 van de oplossing en het implementeren van diagnostische gegevens 1,2 of 1,3 voor uw werknemersrol.
@@ -188,20 +188,17 @@ Ga in Visual Studio **Server Explorer**naar het opslag account wadexample. Nadat
 ![CloudServices_diag_tables](./media/cloud-services-dotnet-diagnostics/WadExampleTables.png)
 
 ## <a name="configuration-file-schema"></a>Schema van configuratie bestand
-Het configuratie bestand voor diagnostische gegevens definieert waarden die worden gebruikt voor het initialiseren van diagnostische configuratie-instellingen wanneer de diagnostische agent wordt gestart. Zie de [meest recente schema referentie](/azure/azure-monitor/platform/diagnostics-extension-schema) voor geldige waarden en voor beelden.
+Het configuratie bestand voor diagnostische gegevens definieert waarden die worden gebruikt voor het initialiseren van diagnostische configuratie-instellingen wanneer de diagnostische agent wordt gestart. Zie de [meest recente schema referentie](../azure-monitor/platform/diagnostics-extension-versions.md) voor geldige waarden en voor beelden.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
-Zie [probleem oplossing Azure Diagnostics](../azure-diagnostics-troubleshooting.md) voor hulp bij veelvoorkomende problemen als u problemen ondervindt.
+Zie [probleem oplossing Azure Diagnostics](../azure-monitor/platform/diagnostics-extension-troubleshooting.md) voor hulp bij veelvoorkomende problemen als u problemen ondervindt.
 
 ## <a name="next-steps"></a>Volgende stappen
 [Bekijk een lijst met verwante artikelen over diagnostische gegevens van virtuele machines van Azure](../azure-monitor/platform/diagnostics-extension-overview.md) voor het wijzigen van de door u verzamelde informatie, het oplossen van problemen of meer informatie over diagnostiek in het algemeen.
 
-[EventSource Class]: https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource(v=vs.110).aspx
+[EventSource Class]: /dotnet/api/system.diagnostics.tracing.eventsource
 
 [Debugging an Azure Application]: https://msdn.microsoft.com/library/windowsazure/ee405479.aspx   
-[Collect Logging Data by Using Azure Diagnostics]: https://msdn.microsoft.com/library/windowsazure/gg433048.aspx
+[Collect Logging Data by Using Azure Diagnostics]: /previous-versions/azure/gg433048(v=azure.100)
 [Free Trial]: https://azure.microsoft.com/pricing/free-trial/
 [Install and configure Azure PowerShell version 0.8.7 or later]: /powershell/azure/
-
-
-

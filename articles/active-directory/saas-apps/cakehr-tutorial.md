@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 2884302ae636739243e0277fa49ef6889b077c86
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8464d8918ccb6351de06dcba9a355e93c2cd97cd
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547593"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740340"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cakehr"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met CakeHR - SSO
 
@@ -142,11 +142,11 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Klik in de rechterbovenhoek van de pagina op **Profiel** en navigeer vervolgens naar **Instellingen**.
 
-    ![CakeHR-configuratie](./media/cakehr-tutorial/config01.png)
+    ![Schermopname met Profiel en Instellingen geselecteerd.](./media/cakehr-tutorial/config01.png)
 
 1. Klik in het linkermenu op **INTEGRATIE** > **SAML SSO** en voer de volgende stappen uit:
 
-    ![CakeHR-configuratie](./media/cakehr-tutorial/config02.png)
+    ![Schermopname met het deelvenster Instellingen waarin u deze stappen kunt uitvoeren.](./media/cakehr-tutorial/config02.png)
 
     a. Typ `cake.hr` in het tekstvak **Entiteits-ID**.
 
@@ -168,11 +168,11 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij CakeHR, moeten ze w
 
 2. Klik in de linkerkant van de menubalk op **BEDRIJF** > **TOEVOEGEN**.
 
-    ![CakeHR-configuratie](./media/cakehr-tutorial/config03.png)
+    ![Schermopname van CakeHR met COMPANY en ADD geselecteerd.](./media/cakehr-tutorial/config03.png)
 
 3. Voer de volgende stappen uit in de pop-up **Nieuwe werknemer toevoegen**:
 
-     ![CakeHR-configuratie](./media/cakehr-tutorial/config04.png)
+     ![Schermopname met Add new employee waar u deze stappen uitvoert.](./media/cakehr-tutorial/config04.png)
 
     a. Voer in het tekstvak **Full name** de naam van de gebruiker in, bijvoorbeeld B.Simon.
 

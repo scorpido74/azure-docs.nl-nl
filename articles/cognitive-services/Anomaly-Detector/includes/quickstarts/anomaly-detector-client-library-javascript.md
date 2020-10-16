@@ -2,19 +2,19 @@
 title: Snelstart voor Anomaly Detector-clientbibliotheek voor JavaScript
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/22/2020
-ms.author: aahi
+ms.author: mbullwin
 ms.custom: devx-track-js
-ms.openlocfilehash: 0aecf99c248d745288716c8638066ddec92e1a39
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 376ad893bf6fee36543e691fe50f369d8a43142c
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319241"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018445"
 ---
 Aan de slag met de Anomaly Detector-clientbibliotheek voor JavaScript. Voer de volgende stappen uit om het pakket te installeren en de algoritmen te gaan gebruiken die door de service worden geleverd. Met de Anomaly Detector-service kunt u afwijkingen in uw tijdreeksgegevens vinden door automatisch de best passende modellen erop uit te voeren, onafhankelijk van bedrijfstak, scenario of gegevensvolume.
 

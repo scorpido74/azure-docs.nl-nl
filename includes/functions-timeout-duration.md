@@ -9,27 +9,27 @@ ms.date: 02/21/2018
 ms.author: nzthiago
 ms.custom: include file
 ms.openlocfilehash: eca2d3359614875e5bff0c9bb67f006f0a8cdba1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77198323"
 ---
-## <a name="function-app-timeout-duration"></a><a name="timeout"></a>Time-outperiode van functie-app 
+## <a name="function-app-timeout-duration"></a><a name="timeout"></a>Time-outduur voor Function-app 
 
-De time-outwaarde van een functie-app wordt gedefinieerd door de `functionTimeout` eigenschap in het [host.jsvan](../articles/azure-functions/functions-host-json.md#functiontimeout) het project bestand. In de volgende tabel ziet u de standaard-en maximum waarden in minuten voor beide plannen en de verschillende runtime versies:
+De time-outduur van een Function-app wordt gedefinieerd door de eigenschap `functionTimeout` in het projectbestand [host.json](../articles/azure-functions/functions-host-json.md#functiontimeout). In de volgende tabel ziet u de standaard- en maximumwaarden in minuten voor beide abonnementen en de verschillende runtimeversies:
 
-| Plannen | Runtime versie | Standaard | Maximum |
+| Plannen | Runtime-versie | Standaard | Maximum |
 |------|---------|---------|---------|
 | Verbruik | 1.x | 5 | 10 |
 | Verbruik | 2.x | 5 | 10 |
-| Verbruik | controleert | 5 | 10 |
+| Verbruik | 3.x | 5 | 10 |
 | Premium | 1.x | 30 | Onbeperkt |
 | Premium | 2.x | 30 | Onbeperkt |
-| Premium | controleert | 30 | Onbeperkt |
+| Premium | 3.x | 30 | Onbeperkt |
 | App Service | 1.x | Onbeperkt | Onbeperkt |
 | App Service | 2.x | 30 | Onbeperkt |
-| App Service | controleert | 30 | Onbeperkt |
+| App Service | 3.x | 30 | Onbeperkt |
 
 > [!NOTE] 
-> Ongeacht de time-outinstelling van de functie-app is 230 seconden de maximale tijds duur die een door HTTP geactiveerde functie kan ondernemen om te reageren op een aanvraag. Dit komt door de [standaard time-out voor inactiviteit van Azure Load Balancer](../articles/app-service/faq-availability-performance-application-issues.md#why-does-my-request-time-out-after-230-seconds). Overweeg het [Durable functions async-patroon](../articles/azure-functions/durable/durable-functions-overview.md#async-http) te gebruiken of [de werkelijke hoeveelheid werk uit te stellen en een onmiddellijke reactie te retour neren](../articles/azure-functions/functions-best-practices.md#avoid-long-running-functions)voor langere verwerkings tijden.
+> Ongeacht de time-outinstelling van de Function-app is 230 seconden de maximale tijdsduur die een door HTTP geactiveerde functie heeft om te reageren op een aanvraag. Dit komt door de [standaard time-out voor inactiviteit van Azure Load Balancer](../articles/app-service/faq-availability-performance-application-issues.md#why-does-my-request-time-out-after-230-seconds). Overweeg voor langere verwerkingstijden het [asynchrone Durable Functions-patroon](../articles/azure-functions/durable/durable-functions-overview.md#async-http) te gebruiken of [stel het werk uit en stuur onmiddellijk een antwoord terug](../articles/azure-functions/functions-best-practices.md#avoid-long-running-functions).

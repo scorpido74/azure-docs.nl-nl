@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 08ab71375171d4bb4167c725bc7118bec2e1ebfa
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91371996"
 ---
 # <a name="machine-learning-features"></a>Machine learning-functies
@@ -226,7 +226,7 @@ Nadat u de machine learning-entiteit hebt gemaakt, moet u voorbeeld uitingen toe
 
 Voor het ticket reserverings voorbeeld labelt u het voor beeld uitingen in de intentie met de `TicketBooking` entiteit en eventuele subentiteiten in de tekst.
 
-:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity.png" alt-text="Voorbeelden van uitingen labelen":::
+:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity.png" alt-text="Ticketbooking-entiteits schema":::
 
 ### <a name="example-pizza-ordering-app"></a>Voor beeld: Pizza best Ellen
 
@@ -234,13 +234,13 @@ Voor een tweede voor beeld moet u een app voor een pizza-restaurant ontvangen. d
 
 De machine learning-entiteit in dit voor beeld is complexer met geneste subentiteiten, woordgroepen lijsten, vooraf gemaakte entiteiten en aangepaste entiteiten.
 
-:::image type="content" source="media/luis-concept-features/pizza-order-entity.png" alt-text="Entiteits schema voor pizza order":::
+:::image type="content" source="media/luis-concept-features/pizza-order-entity.png" alt-text="Ticketbooking-entiteits schema":::
 
 In dit voor beeld worden functies op het niveau van de subentiteit en het onderliggende niveau van de subentiteit gebruikt. Welk niveau wordt opgehaald voor het soort woordgroepen lijst of model als onderdeel, is een belang rijk onderdeel van het ontwerp van de entiteit.
 
 Hoewel subentiteiten een groot aantal woordgroepen lijsten kunnen hebben als functies waarmee de entiteit kan worden gedetecteerd, heeft elke subeenheid slechts één model als een functie. In deze [pizza-app](https://github.com/Azure/pizza_luis_bot/blob/master/CognitiveModels/MicrosoftPizza.json)zijn deze modellen voornamelijk lijsten.
 
-:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity-pizza.png" alt-text="Pizza order intentie met gelabeld voor beeld uitingen":::
+:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity-pizza.png" alt-text="Ticketbooking-entiteits schema":::
 
 Het correct gelabelde voorbeeld uitingen wordt weer gegeven op een manier om te laten zien hoe de entiteiten zijn genest. 
 

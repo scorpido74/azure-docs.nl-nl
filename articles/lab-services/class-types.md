@@ -4,10 +4,10 @@ description: Biedt een aantal typen klassen waarvoor u Labs kunt instellen met b
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 21159aacfcd87bb929eaeaf9884b0275c7005e1a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87001620"
 ---
 # <a name="class-types-overview---azure-lab-services"></a>Overzicht van klassen typen-Azure Lab Services
@@ -46,7 +46,7 @@ U kunt een sjabloon machine instellen in Azure Lab Services met de hulpprogram m
 
 Zie [een Lab instellen om data Science te leren met python-en Jupyter-notebooks](class-type-jupyter-notebook.md)voor gedetailleerde informatie over het instellen van dit type Lab.
 
-## <a name="big-data-analytics"></a>Analyse van big data
+## <a name="big-data-analytics"></a>Big data-analyse
 U kunt een GPU-Lab instellen om een big data Analytics-klasse te leren. Met dit type klasse leren cursisten hoe ze grote hoeveel heden gegevens verwerken en de algoritmen voor machine-en statistische lessen Toep assen om gegevens inzichten af te leiden. Een belang rijke doel stelling voor studenten is het leren gebruiken van hulpprogram ma's voor gegevens analyse, zoals het open-source software pakket van Apache Hadoop waarmee u big data kunt opslaan, beheren en verwerken. 
 
 Zie [een Lab instellen voor Big Data Analytics met docker-implementatie van HortonWorks-gegevens platform](class-type-big-data-analytics.md)voor meer informatie over het instellen van dit type Lab.

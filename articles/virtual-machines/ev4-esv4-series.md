@@ -9,23 +9,23 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: 97d3b87edad56394d42daca19cdb8dbf962fade9
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: b8f6768ebf988ff568739c86303b52ea5b0a9234
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91649504"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018709"
 ---
 # <a name="ev4-and-esv4-series"></a>Ev4- en Esv4-serie
 
-De Ev4-en Esv4-serie worden uitgevoerd op de Intel &reg; Xeon &reg; Platinum 8272CL-processors (Cascade Lake) in een configuratie met Hyper-Threading, ideaal voor diverse geheugenintensieve bedrijfs toepassingen en-functies tot 504GIB aan RAM-geheugen. De IT-functie heeft een zeer hoge Turbo klok snelheid van 3,4 GHz.
+De Ev4-en Esv4-serie worden uitgevoerd op de Intel &reg; Xeon &reg; Platinum 8272CL-processors (Cascade Lake) in een configuratie met Hyper-Threading, ideaal voor diverse geheugenintensieve bedrijfs toepassingen en-functies tot 504GIB aan RAM-geheugen. Het bevat een kern klok snelheid van 3,4 GHz.
 
 > [!NOTE]
 > Voor veelgestelde vragen raadpleegt u  [Azure VM-grootten zonder lokale tijdelijke schijf](azure-vms-no-temp-disk.md).
 
 ## <a name="ev4-series"></a>Ev4-serie
 
-Ev4-serie-grootten worden uitgevoerd op Intel Xeon &reg; Platinum 8272CL (Cascade Lake). De instanties van de Ev4-serie zijn ideaal voor geheugenintensieve bedrijfs toepassingen. Virtuele machines uit de Ev4-serie beschikken over de Intel &reg; Hyper-Threading-technologie.
+Ev4-serie-grootten worden uitgevoerd op Intel Xeon &reg; Platinum 8272CL (Cascade Lake). De instanties van de Ev4-serie zijn ideaal voor geheugenintensieve bedrijfs toepassingen. Virtuele machines uit de Ev4-serie bieden een Intel &reg; Hyper-Threading technologie.
 
 Opslag van externe gegevens schijven wordt afzonderlijk van virtuele machines gefactureerd. Als u Premium Storage-schijven wilt gebruiken, gebruikt u de Esv4-grootten. De prijs-en facturerings meters voor Esv4-grootten zijn gelijk aan die van de Ev4-serie.
 
@@ -51,7 +51,7 @@ Opslag van externe gegevens schijven wordt afzonderlijk van virtuele machines ge
 
 ## <a name="esv4-series"></a>Esv4-serie
 
-Esv4-serie-grootten worden uitgevoerd op Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake). De instanties van de Esv4-serie zijn ideaal voor geheugenintensieve bedrijfs toepassingen. Virtuele machines uit de Evs4-serie beschikken over de Intel &reg; Hyper-Threading-technologie. Opslag van externe gegevens schijven wordt afzonderlijk van virtuele machines gefactureerd.
+Esv4-serie-grootten worden uitgevoerd op Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake). De instanties van de Esv4-serie zijn ideaal voor geheugenintensieve bedrijfs toepassingen. Virtuele machines uit de Evs4-serie bieden een Intel &reg; Hyper-Threading technologie. Opslag van externe gegevens schijven wordt afzonderlijk van virtuele machines gefactureerd.
 
 [ACU](acu.md): 195-210<br>
 [Premium Storage](premium-storage-performance.md): ondersteund<br>
@@ -78,7 +78,7 @@ Er zijn <sup>1</sup> [beperkte core-grootten beschikbaar](./constrained-vcpu.md)
 
 ## <a name="other-sizes-and-information"></a>Andere grootten en informatie
 
-- [Algemeen gebruik](sizes-general.md)
+- [Algemeen doel](sizes-general.md)
 - [Geoptimaliseerd geheugen](sizes-memory.md)
 - [Geoptimaliseerde opslag](sizes-storage.md)
 - [Geoptimaliseerde GPU](sizes-gpu.md)

@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: 8e02a47cd6ae6e4883b5113b07d4049cd723232d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 419de27ad87b113de62dacb0dc384702420afbd6
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250189"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071112"
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>Back-endservices beveiligen met behulp van verificatie via clientcertificaten in Azure API Management
 
 Met API Management kunt u de toegang tot de back-end-service van een API beveiligen met behulp van client certificaten. In deze hand leiding wordt uitgelegd hoe u certificaten beheert in het Azure API Management service-exemplaar in de Azure Portal. Ook wordt uitgelegd hoe u een API configureert om een certificaat te gebruiken voor toegang tot een back-end-service.
 
-Voor informatie over het beheren van certificaten met behulp van de API Management REST API, zie de <a href="https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-certificate-entity">entiteit Azure API Management rest API-certificaat</a>.
+Voor informatie over het beheren van certificaten met behulp van de API Management REST API, zie de <a href="/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-certificate-entity">entiteit Azure API Management rest API-certificaat</a>.
 
 ## <a name="prerequisites"></a><a name="prerequisites"> </a>Vereisten
 
@@ -46,7 +46,7 @@ Volg de onderstaande stappen om een nieuw client certificaat te uploaden. Als u 
 3. Klik op de knop **+ Toevoegen**.
     ![Client certificaten toevoegen](media/api-management-howto-mutual-certificates/apim-client-cert-add.png)
 4. Blader naar het certificaat en geef de ID en het wacht woord op.
-5. Klik op **Maken**.
+5. Klik op **Create**.
 
 > [!NOTE]
 > Het certificaat moet de indeling **. pfx** hebben. Zelfondertekende certificaten zijn toegestaan.

@@ -6,14 +6,14 @@ ms.service: virtual-machines
 ms.subservice: imaging
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 08/11/2020
+ms.date: 10/12/2020
 ms.author: cynthn
-ms.openlocfilehash: 91f485d03717ab80bac26abd16da165d7b0dead7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 73a7090afe771eef82523753c4067399d9f5dd5e
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89291922"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048080"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>Voor beeld: door de klant beheerde sleutels gebruiken voor het versleutelen van installatie kopieën
 
@@ -37,11 +37,11 @@ Voor dit artikel moet u al een schijf versleuteling instellen die voor uw instal
 
 Er zijn enkele beperkingen bij het gebruik van door de klant beheerde sleutels voor het versleutelen van afbeeldingen uit de galerie met gedeelde afbeeldingen:  
 
-- Versleutelings sleutel sets moeten zich in hetzelfde abonnement en dezelfde regio bevinden als uw installatie kopie.
+- Versleutelings sleutel sets moeten zich in hetzelfde abonnement benemen als uw installatie kopie.
 
-- U kunt geen afbeeldingen delen die gebruikmaken van door de klant beheerde sleutels. 
+- Coderings sleutel sets zijn regionale resources, zodat voor elke regio een andere versleutelings sleutel is ingesteld.
 
-- U kunt geen installatie kopieën repliceren die door de klant beheerde sleutels worden gebruikt naar andere regio's.
+- U kunt geen afbeeldingen kopiëren of delen die gebruikmaken van door de klant beheerde sleutels. 
 
 - Wanneer u uw eigen sleutels hebt gebruikt om een schijf of installatie kopie te versleutelen, kunt u niet teruggaan naar met een platform beheerde sleutel voor het versleutelen van die schijven of installatie kopieën.
 
@@ -97,7 +97,19 @@ $encryption1 = @{OSDiskImage=$osDiskImageEncryption;DataDiskImages=$dataDiskImag
 
 $region1 = @{Name='West US';ReplicaCount=1;StorageAccountType=Standard_LRS;Encryption=$encryption1}
 
-$targetRegion = @($region1)
+$eastUS2osDiskImageEncryption = @{DiskEncryptionSetId='subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.Compute/diskEncryptionSets/myEastUS2DESet'}
+
+$eastUS2dataDiskImageEncryption1 = @{DiskEncryptionSetId='subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.Compute/diskEncryptionSets/myEastUS2DESet1';Lun=1}
+
+$eastUS2dataDiskImageEncryption2 = @{DiskEncryptionSetId='subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.Compute/diskEncryptionSets/myEastUS2DESet2';Lun=2}
+
+$eastUS2DataDiskImageEncryptions = @($eastUS2dataDiskImageEncryption1,$eastUS2dataDiskImageEncryption2)
+
+$encryption2 = @{OSDiskImage=$eastUS2osDiskImageEncryption;DataDiskImages=$eastUS2DataDiskImageEncryptions}
+
+$region2 = @{Name='East US 2';ReplicaCount=1;StorageAccountType=Standard_LRS;Encryption=$encryption2}
+
+$targetRegion = @($region1, $region2)
 
 
 # Create the image
@@ -158,8 +170,8 @@ az sig image-version create \
    -g MyResourceGroup \
    --gallery-image-version 1.0.0 \
    --location westus \
-   --target-regions westus=2=standard_lrs \
-   --target-region-encryption DiskEncryptionSet1,0,DiskEncryptionSet2 \
+   --target-regions westus=2=standard_lrs eastus2 \
+   --target-region-encryption WestUSDiskEncryptionSet1,0,WestUSDiskEncryptionSet2 EastUS2DiskEncryptionSet1,0,EastUS2DiskEncryptionSet2 \
    --gallery-name MyGallery \
    --gallery-image-definition MyImage \
    --managed-image "/subscriptions/<subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myImage"
@@ -174,8 +186,8 @@ az sig image-version create \
    -g MyResourceGroup \
    --gallery-image-version 1.0.0 \
    --location westus\
-   --target-regions westus=2=standard_lrs \
-   --target-region-encryption DiskEncryptionSet1,0,DiskEncryptionSet2 \
+   --target-regions westus=2=standard_lrs eastus\
+   --target-region-encryption WestUSDiskEncryptionSet1,0,WestUSDiskEncryptionSet2 EastUS2DiskEncryptionSet1,0,EastUS2DiskEncryptionSet2 \
    --os-snapshot "/subscriptions/<subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/snapshots/myOSSnapshot" \
    --data-snapshot-luns 0 \
    --data-snapshots "/subscriptions/<subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/snapshots/myDDSnapshot" \

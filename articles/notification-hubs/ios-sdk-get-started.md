@@ -9,10 +9,10 @@ ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
 ms.openlocfilehash: 7cdf095898bfe85e6f3b14fa1dcdb7b0c94ccde6
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88042442"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Zelfstudie: Pushmeldingen verzenden naar iOS-apps met Azure Notification Hubs
@@ -60,11 +60,11 @@ Genereer het bestand met de aanvraag voor certificaatondertekening dat door Appl
 
 3. Selecteer uw  **E-mailadres van de gebruiker**, voer uw waarde voor  **Algemene naam**  in, zorg ervoor dat u  **Opgeslagen op schijf** hebt opgegeven en selecteer  **Doorgaan**. Laat  **E-mailadres van CA**  leeg omdat dit niet vereist is.
 
-   :::image type="content" source="media/ios-sdk-get-started/image2.png" alt-text="Vereiste certificaatgegevens":::
+   :::image type="content" source="media/ios-sdk-get-started/image2.png" alt-text="Toegang tot sleutelhanger":::
 
 4. Voer een naam in voor het CSR-bestand in **Opslaan als**, selecteer de locatie in  **Waar** en selecteer vervolgens **Opslaan**.
 
-   :::image type="content" source="media/ios-sdk-get-started/image3.png" alt-text="Bestandsnaam kiezen":::
+   :::image type="content" source="media/ios-sdk-get-started/image3.png" alt-text="Toegang tot sleutelhanger":::
 
    Met deze actie wordt het CSR-bestand opgeslagen op de geselecteerde locatie. De standaardlocatie is  **Desktop**. Onthoud de locatie die u voor het bestand hebt gekozen.
 
@@ -76,26 +76,26 @@ Registreer uw app bij Apple en registreer u voor pushmeldingen om pushmeldingen 
 
 1. Als u uw app nog niet hebt geregistreerd, bladert u naar de  [iOS Provisioning Portal](https://go.microsoft.com/fwlink/p/?LinkId=272456)  in het Apple Developer Center. Meld u aan bij de portal met uw Apple ID en selecteer  **ID's**. Selecteer vervolgens **+**  om een nieuwe app te registreren.
 
-   :::image type="content" source="media/ios-sdk-get-started/image4.png" alt-text="Pagina app-id's":::
+   :::image type="content" source="media/ios-sdk-get-started/image4.png" alt-text="Toegang tot sleutelhanger":::
 
 2. Selecteer op het scherm  **Een nieuwe id registreren**  het keuzerondje  **App-id's** . Selecteer vervolgens  **Doorgaan**.
 
-   :::image type="content" source="media/ios-sdk-get-started/image5.png" alt-text="Pagina Nieuwe id registreren":::
+   :::image type="content" source="media/ios-sdk-get-started/image5.png" alt-text="Toegang tot sleutelhanger":::
 
 3. Werk de volgende drie waarden voor uw nieuwe app bij en selecteer vervolgens  **Doorgaan**:
 
    - **Beschrijving**: Typ een beschrijvende naam voor uw app.
    - **Bundel-id**: Voer een bundel-id in van het formulier  **Organization Identifier.Product Name**  zoals genoemd in de  [App Distribution Guide](https://help.apple.com/xcode/mac/current/#/dev91fe7130a). De waarden voor  **Organisatie-id**  en  **Productnaam**  die u gebruikt, moeten overeenkomen met de organisatie-id en productnaam die u gebruikt als u een Xcode-project gaat maken. In de volgende schermopname wordt  **NotificationHubs**  gebruikt als de organisatie-id en  **GetStarted**  als de productnaam. Zorg ervoor dat de waarde voor  **Bundel-id**  overeenkomt met de waarde in uw Xcode-project, zodat Xcode het juiste publicatieprofiel gebruikt.
 
-      :::image type="content" source="media/ios-sdk-get-started/image6.png" alt-text="App-id registreren":::
+      :::image type="content" source="media/ios-sdk-get-started/image6.png" alt-text="Toegang tot sleutelhanger":::
 
    - **Pushmeldingen**: Schakel de optie  **Pushmeldingen**  in het gedeelte  **Mogelijkheden**  in.
 
-      :::image type="content" source="media/ios-sdk-get-started/image7.png" alt-text="Nieuwe app-id registreren":::
+      :::image type="content" source="media/ios-sdk-get-started/image7.png" alt-text="Toegang tot sleutelhanger":::
 
       Met deze actie wordt uw app-id gegenereerd en wordt u gevraagd om de gegevens te bevestigen. Selecteer  **Doorgaan** en selecteer vervolgens  **Registreren**  om de nieuwe app-id te bevestigen.
 
-      :::image type="content" source="media/ios-sdk-get-started/image8.png" alt-text="Nieuwe app-id bevestigen":::
+      :::image type="content" source="media/ios-sdk-get-started/image8.png" alt-text="Toegang tot sleutelhanger":::
 
       Nadat u  **Registreren** hebt geselecteerd, ziet u de nieuwe app-id als een regelitem op de pagina  **Certificaten, id's en profielen** .
 
@@ -118,11 +118,11 @@ De tweede optie heeft een aantal voordelen ten opzichte van het gebruik van cert
 
 1. Scrol omlaag naar de ingeschakelde optie  **Pushmeldingen**  en selecteer vervolgens  **Configureren**  om het certificaat te maken.
 
-   :::image type="content" source="media/ios-sdk-get-started/image9.png" alt-text="App-id":::
+   :::image type="content" source="media/ios-sdk-get-started/image9.png" alt-text="Toegang tot sleutelhanger":::
 
 2. Het venster  **Apple Push Notification Service SSL-certificaten**  wordt weergegeven. Selecteer de knop  **Certificaat maken**  in het gedeelte  **SSL-certificaat ontwikkelen** .
 
-   :::image type="content" source="media/ios-sdk-get-started/image10.png" alt-text="Certificaat maken":::
+   :::image type="content" source="media/ios-sdk-get-started/image10.png" alt-text="Toegang tot sleutelhanger":::
 
    Het scherm  **Een nieuw certificaat maken**  wordt weergegeven.
 
@@ -133,11 +133,11 @@ De tweede optie heeft een aantal voordelen ten opzichte van het gebruik van cert
 
 4. Nadat de portal het certificaat heeft gemaakt, selecteert u de knop  **Downloaden** . Sla het certificaat op en onthoud de locatie waar het wordt opgeslagen.
 
-   :::image type="content" source="media/ios-sdk-get-started/image11.png" alt-text="Certificaat downloaden":::
+   :::image type="content" source="media/ios-sdk-get-started/image11.png" alt-text="Toegang tot sleutelhanger":::
 
    Het certificaat wordt gedownload en opgeslagen in uw map  **Downloads** .
 
-   :::image type="content" source="media/ios-sdk-get-started/image12.png" alt-text="Certificaatbestand zoeken":::
+   :::image type="content" source="media/ios-sdk-get-started/image12.png" alt-text="Toegang tot sleutelhanger":::
 
    Standaard krijgt het gedownloade ontwikkelingscertificaat de naam **aps_development.cer**.
 
@@ -149,7 +149,7 @@ De tweede optie heeft een aantal voordelen ten opzichte van het gebruik van cert
 
 6. In Sleutelhangertoegang klikt u met de rechtermuisknop op het nieuwe pushcertificaat dat u hebt gemaakt in de categorie  **Certificaten** . Selecteer  **Exporteren**, geef het bestand een naam, selecteer de indeling  **.p12**  en klik vervolgens op  **Opslaan**.
 
-   :::image type="content" source="media/ios-sdk-get-started/image14.png" alt-text="Certificaat exporteren":::
+   :::image type="content" source="media/ios-sdk-get-started/image14.png" alt-text="Toegang tot sleutelhanger":::
 
    U kunt ervoor kiezen om het certificaat met een wachtwoord te beveiligen, maar dit is optioneel. Klik op  **OK**  als u het maken van wachtwoorden wilt overslaan. Noteer de bestandsnaam en locatie van het geëxporteerde .p12-certificaat. Ze worden gebruikt om verificatie met APNS mogelijk te maken.
 
@@ -201,11 +201,11 @@ Aan het einde van deze stappen moet u de volgende informatie gebruiken voor late
 
 2. Selecteer  **Ontwikkeling iOS-app**  onder  **Ontwikkeling**  als het inrichtingsprofieltype en selecteer vervolgens  **Doorgaan**.
 
-   :::image type="content" source="media/ios-sdk-get-started/image15.png" alt-text="Lijst met inrichtingsprofielen":::
+   :::image type="content" source="media/ios-sdk-get-started/image15.png" alt-text="Toegang tot sleutelhanger":::
 
 3. Selecteer vervolgens in de vervolgkeuzelijst  **App-id**  de app-id die u hebt gemaakt en selecteer  **Doorgaan**.
 
-   :::image type="content" source="media/ios-sdk-get-started/image16.png" alt-text="App-id selecteren":::
+   :::image type="content" source="media/ios-sdk-get-started/image16.png" alt-text="Toegang tot sleutelhanger":::
 
 4. Selecteer in het venster  **Certificaten selecteren**  het ontwikkelingscertificaat dat u gebruikt voor het ondertekenen bij programmacode en selecteer  **Doorgaan**. Dit certificaat is niet het pushcertificaat dat u hebt gemaakt. Als er nog geen bestaat, moet u er een maken. Als er wel een certificaat bestaat, gaat u verder met de volgende stap. Een ontwikkelingscertificaat maken als er geen bestaat:
 
@@ -224,7 +224,7 @@ Aan het einde van deze stappen moet u de volgende informatie gebruiken voor late
 
 8. Kies ten slotte een naam voor het profiel in  **Inrichtingsprofielnaam** en selecteer  **Genereren**.
 
-   :::image type="content" source="media/ios-sdk-get-started/image17.png" alt-text="Naam kiezen voor het inrichtingsprofiel":::
+   :::image type="content" source="media/ios-sdk-get-started/image17.png" alt-text="Toegang tot sleutelhanger":::
 
 9. Wanneer het nieuwe inrichtingsprofiel is gemaakt, selecteert u  **Downloaden**. Onthoud de locatie waar het wordt opgeslagen.
 
@@ -238,11 +238,11 @@ In dit gedeelte maakt u een Notification Hub en configureert u verificatie met A
 
 2. Selecteer  **Alle services**  in het menu links en selecteer vervolgens  **Notification Hubs**  in de sectie  **Mobiel** . Selecteer het sterpictogram naast de servicenaam om de service toe te voegen aan de sectie  **FAVORIETEN**  in het menu links. Nadat u  **Notification Hubs**  hebt toegevoegd aan  **FAVORIETEN**, selecteert u dit.
 
-   :::image type="content" source="media/ios-sdk-get-started/image18.png" alt-text="Azure-portal":::
+   :::image type="content" source="media/ios-sdk-get-started/image18.png" alt-text="Toegang tot sleutelhanger":::
 
 3. Selecteer op de pagina  **Notification Hubs**  de optie  **Toevoegen**  op de werkbalk.
 
-   :::image type="content" source="media/ios-sdk-get-started/image19.png" alt-text="Werkbalkknop Toevoegen":::
+   :::image type="content" source="media/ios-sdk-get-started/image19.png" alt-text="Toegang tot sleutelhanger":::
 
 4. Doe het volgende op de pagina  **Notification Hubs** :
 
@@ -252,18 +252,18 @@ In dit gedeelte maakt u een Notification Hub en configureert u verificatie met A
    4. Selecteer een bestaande resourcegroep in  **Resourcegroep** of maak een nieuwe resourcegroep.
    5. Selecteer  **Maken**.
 
-   :::image type="content" source="media/ios-sdk-get-started/image20.png" alt-text="Eigenschappen instellen":::
+   :::image type="content" source="media/ios-sdk-get-started/image20.png" alt-text="Toegang tot sleutelhanger":::
 
 5. Selecteer  **Meldingen**  (het pictogram van een bel) en selecteer vervolgens  **Ga naar resource**. U kunt ook de lijst op de pagina  **Notification Hubs**  vernieuwen en uw hub selecteren.
 
-   :::image type="content" source="media/ios-sdk-get-started/image21.png" alt-text="Meldingen in portal":::
+   :::image type="content" source="media/ios-sdk-get-started/image21.png" alt-text="Toegang tot sleutelhanger":::
 
 6. Selecteer  **Toegangsbeleid**  in de lijst. U ziet dat de twee verbindingsreeksen voor u beschikbaar zijn. Later moet u er pushmeldingen mee afhandelen.
 
    > [!IMPORTANT]
    > Gebruik niet het beleid **DefaultFullSharedAccessSignature** in uw toepassing. Deze mag alleen in uw back-end worden gebruikt.
 
-   :::image type="content" source="media/ios-sdk-get-started/image22.png" alt-text="Verbindingsreeksen":::
+   :::image type="content" source="media/ios-sdk-get-started/image22.png" alt-text="Toegang tot sleutelhanger":::
 
 ## <a name="configure-the-notification-hub-with-apns-information"></a>De Notification Hub configureren met APNS-gegevens
 
@@ -284,7 +284,7 @@ Selecteer  **Apple (APNS)** onder  **Notification Services** en voer vervolgen
 
 5. Selecteer  **Sandbox** -modus.
 
-   :::image type="content" source="media/ios-sdk-get-started/image23.png" alt-text="Configureren":::
+   :::image type="content" source="media/ios-sdk-get-started/image23.png" alt-text="Toegang tot sleutelhanger":::
 
 6. Selecteer **Opslaan**.
 

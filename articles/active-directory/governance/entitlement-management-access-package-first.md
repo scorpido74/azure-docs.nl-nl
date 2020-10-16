@@ -12,24 +12,24 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.subservice: compliance
-ms.date: 07/22/2020
+ms.date: 09/30/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e58a98f8503c271eec113298a7e7a0cab5e0003e
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 38edbd9e491d4bea469c6b83ad98df48fbce1d4f
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707489"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597495"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Zelfstudie: Uw eerste toegangspakket maken in Azure AD-rechtenbeheer
 
 Het beheren van toegang tot alle resources die werknemers nodig hebben, zoals groepen, toepassingen en sites, is een belangrijke functie voor organisaties. U wilt werknemers het juiste toegangsniveau verlenen om productief te zijn en hun toegang verwijderen wanneer deze niet meer nodig is.
 
-In deze zelfstudie werkt u als IT-beheerder voor de Woodgrove Bank. U bent gevraagd om een pakket met resources te maken voor een marketingcampagne waarvoor interne gebruikers een selfserviceaanvraag kunnen indienen. Voor aanvragen is geen goedkeuring nodig en de toegang van gebruikers verloopt na 30 dagen. Voor deze zelfstudie zijn de resources van de marketingcampagne lid van slechts één groep, maar dit kan een verzameling van groepen, toepassingen of SharePoint Online-sites zijn.
+In deze zelfstudie werkt u als IT-beheerder voor de Woodgrove Bank. U bent gevraagd om een pakket met resources te maken voor een marketingcampagne die interne gebruikers kunnen gebruiken om een selfserviceaanvraag in te dienen. Voor aanvragen is geen goedkeuring nodig en de toegang van gebruikers verloopt na 30 dagen. Voor deze zelfstudie zijn de resources van de marketingcampagne lid van slechts één groep, maar dit kan een verzameling van groepen, toepassingen of SharePoint Online-sites zijn.
 
-![Overzicht van scenario's](./media/entitlement-management-access-package-first/elm-scenario-overview.png)
+![Diagram met een overzicht van het scenario.](./media/entitlement-management-access-package-first/elm-scenario-overview.png)
 
 In deze zelfstudie leert u het volgende:
 
@@ -110,17 +110,21 @@ Een *toegangspakket* is een bundel resources die een team of project nodig heeft
 
      Standaard ziet u groepen binnen de catalogus Algemeen. Wanneer u een groep buiten de catalogus Algemeen selecteert, zoals u kunt zien als u het selectievakje **Alles weergeven** inschakelt, wordt deze toegevoegd aan de catalogus Algemeen.
 
-    ![Nieuw toegangspakket - tabblad Resourcerollen](./media/entitlement-management-access-package-first/resource-roles-select-groups.png)
+    ![Schermopname van het tabblad Nieuw toegangspakket - Resourcerollen en het venster Groepen selecteren.](./media/entitlement-management-access-package-first/resource-roles-select-groups.png)
 
 10. Klik op **Selecteren** om de groep aan de lijst toe te voegen.
 
 11. Selecteer in de vervolgkeuzelijst **Rol** de optie **Lid**.
 
     ![Nieuw toegangspakket - tabblad Resourcerollen](./media/entitlement-management-access-package-first/resource-roles.png)
+    >[!IMPORTANT]
+    >De roltoewijzingsgroepen die aan een toegangspakket zijn toegevoegd, worden aangegeven met het subtype **Toewijsbaar aan rollen**. Raadpleeg [Een roltoewijsbare groep maken](../users-groups-roles/roles-groups-create-eligible.md) in Azure Active Directory voor meer informatie over groepen die kunnen worden toegewezen aan Azure AD-rollen. Als u geen roltoewijsbare groep ziet die u wilt toevoegen of als u deze niet kunt toevoegen, zorg er dan voor dat u de vereiste Azure AD-rol en rechtenbeheerrol hebt om deze bewerking uit te voeren. Mogelijk moet u iemand met de vereiste rollen vragen om de bron aan uw catalogus toe te voegen. Bekijk [Vereiste rollen om bronnen aan een catalogus toe te voegen](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog) voor meer informatie.
 
     >[!NOTE]
     > Wanneer u [dynamische groepen](../users-groups-roles/groups-create-rule.md) gebruikt, ziet u behalve de eigenaar geen andere beschikbare rollen. Dit is standaard.
     > ![Overzicht van scenario's](./media/entitlement-management-access-package-first/dynamic-group-warning.png)
+    
+
 
 12. Klik op **Volgende** om het tabblad **Aanvragen** te openen.
 

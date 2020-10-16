@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: 4f2b338b8629209363acb7bbe0533831a089fe6f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 7d1233c97ec80d5a2efa8b53c68e9e07a823165d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447322"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977028"
 ---
 # <a name="windows-stop-error---0x00000074-bad-system-config-info"></a>Windows-Stop fout-0x00000074 onjuiste systeem configuratie gegevens
 
@@ -27,7 +27,7 @@ Dit artikel bevat stappen voor het oplossen van problemen waarbij Windows niet k
 
 ## <a name="symptom"></a>Symptoom
 
-Wanneer u [Diagnostische gegevens over opstarten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) gebruikt om de scherm opname van de virtuele machine weer te geven, ziet u dat de scherm opname de Windows-stop code **#0x00000074** of **BAD_SYSTEM_CONFIG_INFO**weergeeft.
+Wanneer u [Diagnostische gegevens over opstarten](./boot-diagnostics.md) gebruikt om de scherm opname van de virtuele machine weer te geven, ziet u dat de scherm opname de Windows-stop code **#0x00000074** of **BAD_SYSTEM_CONFIG_INFO**weergeeft.
 
 *Er is een probleem opgetreden op de PC en opnieuw moet worden opgestart. U kunt opnieuw opstarten.* 
  *Ga voor meer informatie over dit probleem en mogelijke oplossingen naar http://windows.com/stopcode * 
@@ -58,7 +58,7 @@ De **BAD_SYSTEM_CONFIG_INFO** stop code treedt op als het **systeem** register o
 
 ### <a name="create-and-access-a-repair-vm"></a>Een herstel-VM maken en openen
 
-1. Gebruik stap 1-3 van de [VM-reparatie opdrachten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) om een herstel-VM voor te bereiden.
+1. Gebruik stap 1-3 van de [VM-reparatie opdrachten](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) om een herstel-VM voor te bereiden.
 1. Controleer op beschadiging van Hive.
 1. Gebruik Verbinding met extern bureaublad om verbinding te maken met de herstel-VM.
 1. Kopieer de `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config` map en sla deze op in een goede schijf partitie of op een andere veilige locatie. Maak een back-up van deze map als voorzorgsmaatregel, omdat u essentiële register bestanden gaat bewerken. 
@@ -133,4 +133,4 @@ Met de onderstaande instructies kunt u bepalen of de oorzaak is veroorzaakt door
    
 ### <a name="rebuild-the-vm"></a>De virtuele machine opnieuw bouwen
 
-Gebruik [stap 5 van de opdrachten voor het herstellen van de virtuele machine](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) om de virtuele machine opnieuw samen te stellen.
+Gebruik [stap 5 van de opdrachten voor het herstellen van de virtuele machine](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) om de virtuele machine opnieuw samen te stellen.

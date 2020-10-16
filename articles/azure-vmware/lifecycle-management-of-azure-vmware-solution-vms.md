@@ -3,12 +3,12 @@ title: Levenscyclus beheer van virtuele machines met Azure VMware-oplossingen
 description: Meer informatie over het beheren van alle aspecten van de levens cyclus van uw Azure VMware-oplossing-Vm's met Microsoft Azure systeem eigen hulpprogram ma's.
 ms.topic: conceptual
 ms.date: 09/11/2020
-ms.openlocfilehash: 10e721996b2e3186417a702d2d7473b36b11237f
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 452fa6bf4610c9d0dcb46587242e8d6df9cebd0d
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91575470"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950360"
 ---
 # <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Levenscyclus beheer van virtuele machines met Azure VMware-oplossingen
 
@@ -21,10 +21,10 @@ Met Microsoft Azure systeem eigen hulp middelen kunt u uw virtuele machines (Vm'
 - Met Azure Updatebeheer in Azure Automation kunt u updates van het besturings systeem voor zowel uw Windows-als Linux-machines beheren. 
 - Azure Security Center biedt geavanceerde beveiliging tegen bedreigingen, waaronder:
     - Bestandsintegriteit controleren
-    - Beveiligings waarschuwingen met een bestand
+    - Bestandsloze beveiligingswaarschuwingen
     - Evaluatie van patch voor besturings systeem
-    - Evaluatie van onjuiste beveiligings configuratie
-    - Endpoint Protection-evaluatie 
+    - Evaluatie van onjuiste beveiligingsconfiguratie
+    - Evaluatie van eindpuntbeveiliging 
 - Implementeer eenvoudig de micro soft Monitoring Agent (MMA) met behulp van Azure ARC voor nieuwe Vm's. 
 - Met uw Log Analytics-werk ruimte in Azure Monitor kan de verzameling van Logboeken en prestatie meter items worden verzameld met MMA of extensies. Verzamel gegevens en logboeken op één punt en presenteer die gegevens aan verschillende Azure systeem eigen services. 
 - Extra voor delen van Azure Monitor zijn: 
@@ -58,7 +58,7 @@ Met **log Analytics werk ruimte** kan de verzameling van Logboeken en prestatie 
 
 **Azure Security Center** biedt geavanceerde beveiliging tegen bedreigingen in uw hybride werk belastingen in de Cloud en on-premises. Hiermee wordt het beveiligings probleem van Vm's van Azure VMware-oplossingen beoordeeld en worden indien nodig waarschuwingen gegenereerd. Deze beveiligings waarschuwingen kunnen worden doorgestuurd naar Azure Monitor voor oplossing.
 - Voor Azure Security Center is geen implementatie vereist. Zie een lijst met [ondersteunde functies voor virtuele machines](../security-center/security-center-services.md)voor meer informatie.
-- Als u virtuele machines met Azure VMware-oplossingen en niet-Azure-Vm's wilt toevoegen aan Azure Security Center, raadpleegt u [Windows-computers Onboarden om](../security-center/quick-onboard-windows-computer.md) Linux-computers Azure Security Center en [onboarding te Azure Security Center](../security-center/quick-onboard-linux-computer.md).
+- Als u virtuele machines met Azure VMware-oplossingen en niet-Azure-Vm's wilt toevoegen aan Azure Security Center, raadpleegt u [Windows-computers Onboarden om](../security-center/quickstart-onboard-machines.md) Linux-computers Azure Security Center en [onboarding te Azure Security Center](../security-center/quickstart-onboard-machines.md).
 - Na het toevoegen van Vm's, Azure Security Center analyseert de beveiligings status van de resources om mogelijke beveiligings problemen te identificeren. Het bevat ook aanbevelingen op het tabblad Overzicht. Zie [beveiligings aanbevelingen in azure Security Center](../security-center/security-center-recommendations.md)voor meer informatie.
 - U kunt beveiligings beleid definiëren in Azure Security Center. Zie [werken met beveiligings beleid](../security-center/tutorial-security-policy.md)voor meer informatie over het configureren van uw beveiligings beleid.
 

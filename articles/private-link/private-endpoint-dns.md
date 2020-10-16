@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: 6e3d87d613db63e05ddee47d43aead779eca75c3
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: e71325246b69f501ec8af91c59cb4f042180542c
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91628006"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999653"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>DNS-configuratie van Azure-privé-eindpunt
 
@@ -117,7 +117,7 @@ Dit model kan worden uitgebreid naar meerdere peered virtuele netwerken die zijn
 > Er is één privé-DNS-zone vereist voor deze configuratie. Het maken van meerdere zones met dezelfde naam voor verschillende virtuele netwerken zou hand matige bewerkingen nodig hebben om de DNS-records samen te voegen.
 
 > [!IMPORTANT]
-> Als u gebruikmaakt van een persoonlijk eind punt in een hub-en-spoke-model van een ander abonnement, moet u dezelfde privé-DNS-zone opnieuw gebruiken op de hub.
+> Als u een persoonlijk eind punt in een hub-en-spoke-model gebruikt vanuit een ander abonnement, moet u dezelfde privé-DNS-zone opnieuw gebruiken op de hub.
 
 In dit scenario is er een [hub-en-spoke](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) -netwerk topologie met de spoke-netwerken die een gemeen schappelijk persoonlijk eind punt delen en alle spoke-virtuele netwerken zijn gekoppeld aan dezelfde particuliere DNS-zone. 
 

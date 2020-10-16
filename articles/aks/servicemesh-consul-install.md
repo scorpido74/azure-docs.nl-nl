@@ -7,10 +7,10 @@ ms.date: 10/09/2019
 ms.author: dastrebe
 zone_pivot_groups: client-operating-system
 ms.openlocfilehash: 2f47ded22209a9d53510c7d0a2f8270096161354
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86244124"
 ---
 # <a name="install-and-use-consul-in-azure-kubernetes-service-aks"></a>Consul installeren en gebruiken in azure Kubernetes service (AKS)
@@ -67,10 +67,10 @@ Gebruik helm en de gedownloade `consul-helm` grafiek om de consul-onderdelen `co
 > **Installatieopties**
 > 
 > We gebruiken de volgende opties als onderdeel van onze installatie:
-> - `connectInject.enabled=true`-proxy's inschakelen voor injectie in peul
-> - `client.enabled=true`-Consul-clients kunnen worden uitgevoerd op elk knoop punt
-> - `client.grpc=true`-gRPC-listener inschakelen voor connectInject
-> - `syncCatalog.enabled=true`-Kubernetes-en consul-Services synchroniseren
+> - `connectInject.enabled=true` -proxy's inschakelen voor injectie in peul
+> - `client.enabled=true` -Consul-clients kunnen worden uitgevoerd op elk knoop punt
+> - `client.grpc=true` -gRPC-listener inschakelen voor connectInject
+> - `syncCatalog.enabled=true` -Kubernetes-en consul-Services synchroniseren
 >
 > **Knooppunt selecties**
 >

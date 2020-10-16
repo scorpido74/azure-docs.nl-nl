@@ -6,18 +6,18 @@ author: lgayhardt
 ms.custom: devx-track-java
 ms.author: lagayhar
 ms.date: 05/24/2019
-ms.openlocfilehash: f0583af05ae7d8e365b50610bfb812ac7764f223
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 12497d3ac86888ed861e8d5f655f45c8cbe4b6e3
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90602462"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996164"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Snelstartgids: aan de slag met Application Insights in een Java-webproject
 
 
 > [!IMPORTANT]
-> De aanbevolen benadering voor het bewaken van Java-toepassingen is het gebruik van de automatische instrumentatie zonder de code te wijzigen. Volg de richt lijnen voor [Application Insights Java 3,0-agent](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent).
+> De aanbevolen benadering voor het bewaken van Java-toepassingen is het gebruik van de automatische instrumentatie zonder de code te wijzigen. Volg de richt lijnen voor [Application Insights Java 3,0-agent](./java-in-process-agent.md).
 
 In deze Snelstartgids gebruikt u Application Insights SDK om de aanvraag te instrumenteren, afhankelijkheden bij te houden en prestatie meter items te verzamelen, prestatie problemen en uitzonde ringen te diagnosticeren en code te schrijven om te volgen wat gebruikers met uw app doen.
 
@@ -30,7 +30,7 @@ Application Insights is een uitbreidbare analyseservice voor webontwikkelaars di
 
 ## <a name="get-an-application-insights-instrumentation-key"></a>Een Application Insights-instrumentatiesleutel ophalen
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Maak in de Azure Portaleen Application Insights-resource. Stel het toepassingstype in op Java-webtoepassing.
 
 3. Zoek de instrumentatiesleutel van de nieuwe resource. U moet deze sleutel zo dadelijk in de code van uw project plakken.
@@ -199,7 +199,7 @@ Publiceer nu uw app op de server, geef de app vrij voor gebruik en bekijk de tel
 
 ## <a name="azure-app-service-aks-vms-config"></a>Azure App Service, AKS, Vm's configuratie
 
-De beste en eenvoudigste benadering voor het bewaken van uw toepassingen die worden uitgevoerd op een van de Azure-resource providers is het gebruik van Application Insights automatische instrumentatie via [Java 3,0-agent](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent).
+De beste en eenvoudigste benadering voor het bewaken van uw toepassingen die worden uitgevoerd op een van de Azure-resource providers is het gebruik van Application Insights automatische instrumentatie via [Java 3,0-agent](./java-in-process-agent.md).
 
 
 ## <a name="exceptions-and-request-failures"></a>Uitzonderingen en mislukte aanvragen
@@ -313,4 +313,3 @@ Application Insights kan uw website regelmatig testen om te controleren of deze 
 [javalogs]: java-trace-logs.md
 [metrics]: ../platform/metrics-charts.md
 [usage]: javascript.md
-

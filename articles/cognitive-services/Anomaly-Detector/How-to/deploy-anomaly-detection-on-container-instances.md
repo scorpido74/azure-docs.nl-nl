@@ -3,19 +3,19 @@ title: Afwijkende detector-container uitvoeren in Azure Container Instances
 titleSuffix: Azure Cognitive Services
 description: Implementeer de afwijkende detector container in een Azure-container exemplaar en test deze in een webbrowser.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.author: aahi
-ms.openlocfilehash: 975efa9fdaff9175317794d8b6df7afbfc73cba8
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.author: mbullwin
+ms.openlocfilehash: c7ce1985f4c7dcd14befce14abe5b913e2c9a67e
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585676"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014734"
 ---
 # <a name="deploy-an-anomaly-detector-container-to-azure-container-instances"></a>Een anomalie detectie container implementeren naar Azure Container Instances
 
@@ -32,5 +32,5 @@ Meer informatie over het implementeren van de Cognitive Services [anomalie detec
 ## <a name="next-steps"></a>Volgende stappen
 
 * Controleer de [installatie-en uitvoer containers](../anomaly-detector-container-configuration.md) voor het ophalen van de container installatie kopie en voer de container uit
-* Containers voor configuratie-instellingen [configureren](../anomaly-detector-container-configuration.md) controleren
+* Controleer [Containers configureren](../anomaly-detector-container-configuration.md) voor configuratie-instellingen
 * [Meer informatie over de API-service voor anomalie detectie](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)

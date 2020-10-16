@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 08/28/2019
 ms.author: tiag
 ms.openlocfilehash: 5a2fd7fcfdae8559bfb39bffff7c73c7082a86aa
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87543279"
 ---
 # <a name="linux-vm-boots-to-grub-rescue"></a>Virtuele Linux-machine wordt opgestart naar grub-herstel
@@ -45,7 +45,7 @@ Volg de onderstaande stappen, afhankelijk van de fout die u ontvangt:
 
     1. Zorg ervoor dat er `/etc/default/grub` bestaat en de juiste/gewenste instellingen heeft. Als u niet weet wat de standaard instellingen zijn, kunt u controleren met een werkende VM.
 
-    2. Voer vervolgens de volgende opdracht uit om de configuratie opnieuw te genereren:`grub2-mkconfig -o /boot/grub2/grub.cfg`
+    2. Voer vervolgens de volgende opdracht uit om de configuratie opnieuw te genereren: `grub2-mkconfig -o /boot/grub2/grub.cfg`
 
    * Als het ontbrekende bestand is `/boot/grub/menu.lst` , is deze fout voor oudere versies van het besturings systeem (**RHEL 6. x**, **CentOS 6. x** en **Ubuntu 14,04**), zodat de opdrachten kunnen verschillen. U moet een oude server opzetten en testen om er zeker van te zijn dat de juiste opdrachten worden weer gegeven.
 

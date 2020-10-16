@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: banders
-ms.openlocfilehash: 27a6f8f0ed0d58deb64f768d2e47bafebc910edb
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: fce0ca7df3851aa0e96b6ee630a4a1b0b85eb070
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690422"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371739"
 ---
 # <a name="get-started-with-your-updated-azure-billing-account"></a>Aan de slag met uw bijgewerkte Azure-factureringsaccount
 
@@ -113,7 +113,7 @@ In de volgende secties vindt u meer informatie over uw nieuwe ervaring.
 
 **Geen servicedowntime** Azure-services in uw abonnement worden zonder onderbreking uitgevoerd. De enige update is aan uw factureringservaring. Dit heeft geen invloed op bestaande resources, resourcegroepen of beheergroepen.
 
-**Geen wijzigingen in Azure-resources** De toegang tot Azure-resources die zijn ingesteld met behulp van Azure RBAC (Role-Based Access Control), wordt niet beïnvloed door de update.
+**Geen wijzigingen in Azure-resources** De toegang tot Azure-resources die zijn ingesteld met behulp van op rollen gebaseerd toegangsbeheer van Azure (Azure RBAC), wordt niet beïnvloed door de update.
 
 **Eerdere facturen zijn beschikbaar in de nieuwe ervaring** Facturen die waren gegenereerd voordat uw account werd bijgewerkt, zijn nog steeds beschikbaar in de Azure-portal.
 

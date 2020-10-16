@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/04/2020
 ms.openlocfilehash: d6f20780ccd90d83631ce07411820fb8c9280c3e
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86084083"
 ---
 # <a name="optimize-apache-pig-with-apache-ambari-in-azure-hdinsight"></a>Apache Pig optimaliseren met Apache Ambari in azure HDInsight
@@ -51,7 +51,7 @@ Net als bij Hive wordt de lokale modus gebruikt om taken te versnellen met relat
 
 Varken kopieert de JAR-bestanden die zijn vereist door Udf's naar een gedistribueerde cache om ze beschikbaar te maken voor taak knooppunten. Deze potten veranderen niet regel matig. Als deze optie is ingeschakeld, `pig.user.cache.enabled` kunnen potten in een cache worden geplaatst om ze opnieuw te gebruiken voor taken die door dezelfde gebruiker worden uitgevoerd. Deze instelling resulteert in een kleine toename van de taak prestaties.
 
-1. Stel in op waar om in te scha kelen `pig.user.cache.enabled` . De standaard waarde is False.
+1. Stel in op waar om in te scha kelen `pig.user.cache.enabled` . De standaardwaarde is false.
 
 1. Als u het basispad van de in de cache geplaatste potten wilt instellen, stelt `pig.user.cache.location` u het pad naar het basispad in. De standaardwaarde is `/tmp`.
 

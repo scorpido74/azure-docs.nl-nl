@@ -4,10 +4,10 @@ description: In dit artikel vindt u informatie over de Azure Monitor Log Analyti
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.openlocfilehash: 1fcb4eb0c584f792132f19c8c4d66289342aa36e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89020946"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics gegevens model voor Azure Backup gegevens
@@ -35,9 +35,9 @@ Deze tabel bevat details over velden die betrekking hebben op waarschuwingen.
 | AlertStatus_s |Tekst |De status van de waarschuwing, bijvoorbeeld actief |
 | AlertOccurrenceDateTime_s |Datum en tijd |Datum en tijd waarop de waarschuwing is gemaakt |
 | AlertSeverity_s |Tekst |Ernst van de waarschuwing, bijvoorbeeld kritiek |
-|AlertTimeToResolveInMinutes_s    | Aantal        |De tijd die nodig is om een waarschuwing op te lossen. Leeg voor actieve waarschuwingen.         |
+|AlertTimeToResolveInMinutes_s    | Getal        |De tijd die nodig is om een waarschuwing op te lossen. Leeg voor actieve waarschuwingen.         |
 |AlertConsolidationStatus_s   |Tekst         |Vaststellen of de waarschuwing een geconsolideerde waarschuwing is         |
-|CountOfAlertsConsolidated_s     |Aantal         |Aantal waarschuwingen dat is geconsolideerd als het een geconsolideerde waarschuwing is          |
+|CountOfAlertsConsolidated_s     |Getal         |Aantal waarschuwingen dat is geconsolideerd als het een geconsolideerde waarschuwing is          |
 |AlertRaisedOn_s     |Tekst         |Het type entiteit waarop de waarschuwing is opgetreden         |
 |AlertCode_s     |Tekst         |Code voor een unieke identificatie van een waarschuwings type         |
 |RecommendedAction_s   |Tekst         |Aanbevolen actie om de waarschuwing op te lossen         |
@@ -155,8 +155,8 @@ Deze tabel bevat details over projectgerelateerde velden.
 | JobStartDateTime_s |Datum en tijd |Datum en tijd waarop de taak is gestart |
 | BackupStorageDestination_s |Tekst |Doel van back-upopslag, bijvoorbeeld Cloud, schijf  |
 | AdHocOrScheduledJob_s |Tekst | Veld om op te geven of de taak ad-hoc of gepland is |
-| JobDurationInSecs_s | Aantal |Totale taak duur in seconden |
-| DataTransferredInMB_s | Aantal |Gegevens die worden overgebracht in MB voor deze taak|
+| JobDurationInSecs_s | Getal |Totale taak duur in seconden |
+| DataTransferredInMB_s | Getal |Gegevens die worden overgebracht in MB voor deze taak|
 | JobUniqueId_g |Tekst |Unieke ID voor het identificeren van de taak |
 | RecoveryJobDestination_s |Tekst | Doel van een herstel taak, waarbij de gegevens worden hersteld |
 | RecoveryJobRPDateTime_s |DateTime | De datum, het tijdstip waarop het herstel punt dat wordt hersteld, is gemaakt |
@@ -297,8 +297,8 @@ Deze tabel bevat basis velden die betrekking hebben op opslag en die opslag aan 
 | BackupItemUniqueId_s |Tekst |Unieke ID die wordt gebruikt om het back-upitem te identificeren dat is gerelateerd aan de opslag entiteit |
 | BackupManagementServerUniqueId_s |Tekst |Unieke ID die wordt gebruikt om de back-upbeheerserver te identificeren die betrekking heeft op de opslag entiteit|
 | VaultUniqueId_s |Tekst |Unieke ID die wordt gebruikt om de kluis te identificeren die is gerelateerd aan de opslag entiteit|
-| StorageConsumedInMBs_s |Aantal|Grootte van de opslag die wordt gebruikt door het bijbehorende back-upitem in de bijbehorende opslag |
-| StorageAllocatedInMBs_s |Aantal |Grootte van de opslag die wordt toegewezen door het bijbehorende back-upitem in de bijbehorende opslag van het type schijf|
+| StorageConsumedInMBs_s |Getal|Grootte van de opslag die wordt gebruikt door het bijbehorende back-upitem in de bijbehorende opslag |
+| StorageAllocatedInMBs_s |Getal |Grootte van de opslag die wordt toegewezen door het bijbehorende back-upitem in de bijbehorende opslag van het type schijf|
 
 ### <a name="vault"></a>Kluis
 

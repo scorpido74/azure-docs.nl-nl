@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 06/25/2020
 ms.author: mahain
 ms.openlocfilehash: 400c2d91383b5f21fcd40fdbbe279bd83fcef51a
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91576537"
 ---
 # <a name="server-assessment-overview-migrate-to-azure-vmware-solution"></a>Overzicht van server evaluatie (migreren naar Azure VMware-oplossing)
@@ -119,9 +119,9 @@ Dit is what's opgenomen in een AVS-evaluatie in Server evaluatie:
 | **Eigenschap** | **Details** 
 | - | - 
 | **Doellocatie** | Hiermee geeft u de automatische AVS-Cloud locatie op waarnaar u wilt migreren.<br/><br/> AVS-evaluatie in Server evaluatie ondersteunt momenteel deze doel regio's: VS-Oost, Europa-west, VS-West. 
-| **Opslagtype** | Hiermee geeft u de opslag engine moet worden gebruikt in AVS.<br/><br/> AVS-evaluaties ondersteunen alleen vSAN als een standaard type opslag. 
+| **Opslag type** | Hiermee geeft u de opslag engine moet worden gebruikt in AVS.<br/><br/> AVS-evaluaties ondersteunen alleen vSAN als een standaard type opslag. 
 **Gereserveerde instanties (RIs)** | Met deze eigenschap kunt u gereserveerde instanties in AVS opgeven. RIs wordt momenteel niet ondersteund voor AVS-knoop punten. 
-**Knooppunt type** | Hiermee geeft u het [AVS-knooppunt type](../azure-vmware/concepts-private-clouds-clusters.md) op dat wordt gebruikt om de on-premises vm's toe te wijzen. Het standaard knooppunt type is AV36. <br/><br/> Azure Migrate wordt een vereist aantal knoop punten aanbevolen voor de virtuele machines die moeten worden gemigreerd naar AVS. 
+**Knooppunt type** | Hiermee geeft u het [AVS-knooppunt type](../azure-vmware/concepts-private-clouds-clusters.md) op dat wordt gebruikt om de on-premises vm's toe te wijzen. Het standaard knooppunttype is AV36. <br/><br/> Azure Migrate wordt een vereist aantal knoop punten aanbevolen voor de virtuele machines die moeten worden gemigreerd naar AVS. 
 **FTT-instelling, RAID-niveau** | Hiermee geeft u de toepasselijke fout op voor verdragen en RAID-combi Naties. De geselecteerde FTT-optie in combi natie met de on-premises VM-schijf vereiste bepaalt de totale vSAN-opslag die is vereist in AVS. 
 **Criterium voor het aanpassen van de grootte** | Hiermee stelt u de criteria in die moeten worden gebruikt voor de *juiste grootte* van VM'S voor AVS. U kunt kiezen voor een hoge grootte op *basis van prestaties* of *als on-premises,* zonder rekening te houden met de prestatie geschiedenis. 
 **Prestatiegeschiedenis** | Hiermee stelt u de duur in waarmee rekening moet worden gehouden bij het evalueren van de prestatie gegevens van machines. Deze eigenschap is alleen van toepassing wanneer de grootte criteria *op basis van prestaties*zijn. 
@@ -172,7 +172,7 @@ Nadat een computer is gemarkeerd als gereed voor AVS, maakt AVS-evaluatie in Ser
 
 ### <a name="ftt-sizing-parameters"></a>FTT-formaat parameters
 
-De opslag-engine die in AVS wordt gebruikt, is vSAN. vSAN opslag beleid definieert opslag vereisten voor uw virtuele machines. Deze beleidsregels garanderen het vereiste serviceniveau voor VM’s, omdat ze bepalen hoe opslag wordt toegewezen aan de VM. De beschik bare FTT-RAID-combi Naties zijn: 
+De opslag-engine die in AVS wordt gebruikt, is vSAN. vSAN opslag beleid definieert opslag vereisten voor uw virtuele machines. Deze beleidsregels garanderen het vereiste serviceniveau voor VM’s, omdat ze bepalen hoe opslag wordt toegewezen aan de VM. De beschik bare FTT-Raid combinaties zijn: 
 
 **FTT (te tolereren fouten)** | **RAID-configuratie** | **Minimumaantal vereiste hosts** | **Overwegingen voor de grootte**
 --- | --- | --- | --- 

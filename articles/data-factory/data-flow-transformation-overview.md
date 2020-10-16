@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: 0442c701f39fd3e84361ad0201aaf8d1840d8851
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81606274"
 ---
 # <a name="mapping-data-flow-transformation-overview"></a>Overzicht van gegevens stroom transformatie toewijzen
@@ -29,7 +29,7 @@ Hieronder ziet u een lijst van de trans formaties die momenteel worden ondersteu
 | [Exists](data-flow-exists.md) | Meerdere invoer/uitvoer | Controleer of uw gegevens zich in een andere bron of stream bevindt. | 
 | [Filter](data-flow-filter.md) | Rij-aanpassing | Een rij filteren op basis van een voor waarde. |
 | [Platmaken](data-flow-flatten.md) | Schema wijziging |  Haal matrix waarden op in hiërarchische structuren zoals JSON en maak ze ongedaan in afzonderlijke rijen. |
-| [Toevoegen](data-flow-join.md) | Meerdere invoer/uitvoer |  Gegevens uit twee bronnen of streams combi neren. |
+| [Join](data-flow-join.md) | Meerdere invoer/uitvoer |  Gegevens uit twee bronnen of streams combi neren. |
 | [Opzoeken](data-flow-lookup.md) | Meerdere invoer/uitvoer | Referentie gegevens uit een andere bron. |
 | [Nieuwe vertakking](data-flow-new-branch.md) | Meerdere invoer/uitvoer | Meerdere sets bewerkingen en trans formaties Toep assen op dezelfde gegevens stroom. |
 | [Draaitabel](data-flow-pivot.md) | Schema wijziging | Een aggregatie waarbij een of meer groeperings kolommen de afzonderlijke rijwaarden in afzonderlijke kolommen hebben getransformeerd. |

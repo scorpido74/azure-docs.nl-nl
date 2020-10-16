@@ -11,10 +11,10 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: devx-track-csharp, aaddev, vs-azure
 ms.openlocfilehash: a070bee7a9fa836eeac7c739cf2757295533ad7f
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88165359"
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>Wat is er gebeurd met mijn WebAPI-project (Visual Studio Azure Active Directory Connected service)
@@ -23,7 +23,7 @@ ms.locfileid: "88165359"
 > - [Aan de slag](vs-active-directory-webapi-getting-started.md)
 > - [Wat is er gebeurd](vs-active-directory-webapi-what-happened.md)
 
-In dit artikel worden de exacte wijzigingen aangegeven die zijn aangebracht in ASP.NET WebAPI, ASP.NET toepassing met één pagina en ASP.NET Azure API-projecten wanneer [u de Azure Active Directory verbonden service toevoegt met behulp van Visual Studio](vs-active-directory-add-connected-service.md). Is ook van toepassing op de Azure Mobile Service-projecten van ASP.NET in Visual Studio 2015.
+In dit artikel worden de exacte wijzigingen aangegeven die zijn aangebracht in ASP.NET WebAPI, ASP.NET Single-Page Application en ASP.NET Azure API projects wanneer [u de Azure Active Directory Connected service toevoegt met behulp van Visual Studio](vs-active-directory-add-connected-service.md). Is ook van toepassing op de Azure Mobile Service-projecten van ASP.NET in Visual Studio 2015.
 
 Zie [aan](vs-active-directory-webapi-getting-started.md)de slag voor meer informatie over het werken met de verbonden service.
 

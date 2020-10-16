@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/25/2019
 ms.openlocfilehash: d8dd9aaeaadf13fa48577cf2853e7bcf58badb41
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86079289"
 ---
 # <a name="use-the-extended-features-of-the-apache-spark-history-server-to-debug-and-diagnose-spark-applications"></a>De uitgebreide functies van de Apache Spark History-server gebruiken om fouten op te sporen en op te sporen in Spark-toepassingen
@@ -26,7 +26,7 @@ De Spark-geschiedenis server is de Web-UI voor voltooide en actieve Spark-toepas
 ### <a name="open-the-spark-history-server-web-ui-from-the-azure-portal"></a>Open de Web-UI van de Spark-geschiedenis server vanuit de Azure Portal
 
 1. Open in het [Azure Portal](https://portal.azure.com/)het Spark-cluster. Zie voor meer informatie het [overzicht en weer geven van clusters](../hdinsight-administer-use-portal-linux.md#showClusters).
-2. Selecteer in **cluster dashboards**de optie **Spark-geschiedenis server**. Wanneer u hierom wordt gevraagd, voert u de beheerders referenties in voor het Spark-cluster.
+2. Selecteer in **cluster dashboards**de optie  **Spark-geschiedenis server**. Wanneer u hierom wordt gevraagd, voert u de beheerders referenties in voor het Spark-cluster.
 
     ![Start de Spark-geschiedenis server vanuit het Azure Portal.](./media/apache-azure-spark-history-server/azure-portal-dashboard-spark-history.png "Spark-geschiedenis server")
 
@@ -97,9 +97,9 @@ Selecteer de taak-ID en selecteer vervolgens **gegevens** in het menu van het hu
    ![De heatmap op de pagina & taak grafiek van Spark-toepassing.](./media/apache-azure-spark-history-server/sparkui-graph-heatmap.png)
 
 
-    |Kleur |Description |
+    |Kleur |Beschrijving |
     |---|---|
-    |Groen|De taak is voltooid.|
+    |Green|De taak is voltooid.|
     |Oranje|De taak is mislukt, maar dit heeft geen invloed op het uiteindelijke resultaat van de taak. Deze taken bevatten dubbele of nieuwe exemplaren die later kunnen worden uitgevoerd.|
     |Blauw|De taak wordt uitgevoerd.|
     |Wit|De taak wacht op uitvoering of het stadium is overgeslagen.|
@@ -309,10 +309,10 @@ Als u een upgrade wilt uitvoeren met een hotfix, gebruikt u het volgende script 
 
     |Eigenschap |Waarde |
     |---|---|
-    |Script type|-Aangepast|
+    |Scripttype|- Aangepast|
     |Name|UpgradeJar|
     |Bash-script-URI|`https://hdinsighttoolingstorage.blob.core.windows.net/shsscriptactions/upgrade_spark_enhancement.sh`|
-    |Knooppunt type (n)|Hoofd, werk nemer|
+    |Knooppunttype(n)|Hoofd, werk nemer|
     |Parameters|`https://${account_name}.blob.core.windows.net/packages/jars/spark-enhancement-${version}.jar`|
 
      ![Azure Portal script actie verzenden](./media/apache-azure-spark-history-server/apache-spark-upload1.png)

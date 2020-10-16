@@ -8,10 +8,10 @@ ms.date: 07/09/2020
 ms.author: tisande
 ms.custom: query-reference
 ms.openlocfilehash: aec567c642f8eb3cb421ef5a119fe58f3a5fe05a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86261822"
 ---
 # <a name="datetimefromparts-azure-cosmos-db"></a>DateTimeFromParts (Azure Cosmos DB)
@@ -26,21 +26,21 @@ DateTimeFromParts(<numberYear>, <numberMonth>, <numberDay> [, numberHour]  [, nu
 
 ## <a name="arguments"></a>Argumenten
   
-*numberYear* Gehele waarde voor het jaar in de notatie`YYYY`
+*numberYear* Gehele waarde voor het jaar in de notatie `YYYY`
 
 *numberMonth*  
-   Geheel getal voor de maand in de notatie`MM`
+   Geheel getal voor de maand in de notatie `MM`
 
 *numberDay*  
-   Gehele waarde voor de dag in de notatie`DD`
+   Gehele waarde voor de dag in de notatie `DD`
 
-*numberHour* (optioneel) geheel getal voor het uur in de notatie`hh`
+*numberHour* (optioneel) geheel getal voor het uur in de notatie `hh`
 
-*numberMinute* (optioneel) geheel getal voor de minuut in de notatie`mm`
+*numberMinute* (optioneel) geheel getal voor de minuut in de notatie `mm`
 
-*numberSecond* (optioneel) geheel getal voor de seconde in de notatie`ss`
+*numberSecond* (optioneel) geheel getal voor de seconde in de notatie `ss`
 
-*numberOfFractionsOfSecond* (optioneel) geheel getal als waarde voor de Fractie van een seconde in de notatie`.fffffff`
+*numberOfFractionsOfSecond* (optioneel) geheel getal als waarde voor de Fractie van een seconde in de notatie `.fffffff`
 
 ## <a name="return-types"></a>Retour typen
 

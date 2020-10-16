@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/09/2019
 ms.author: jeedes
-ms.openlocfilehash: b11955c040225f66bc3eda9fe762cb1cbfc2d308
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9836c4e8f644a4e1b39e5aef7208262d6701f5bb
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542850"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760677"
 ---
 # <a name="tutorial-integrate-aha-with-azure-active-directory"></a>Zelfstudie: Aha! integreren met Azure Active Directory
 
@@ -148,7 +148,7 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 6. Klik op **Security and single sign-on**.
 
-    ![Security and single sign-on](./media/aha-tutorial/IC798952.png "Security and single sign-on")
+    ![Schermopname waarin de menu-optie Security and single sign-on is gemarkeerd.](./media/aha-tutorial/IC798952.png "Security and single sign-on")
 
 7. Ga naar de sectie **Single Sign-On** en selecteer als **Identity Provider** de optie **SAML2.0**.
 

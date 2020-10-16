@@ -8,14 +8,14 @@ ms.workload: infrastructure-services
 ms.date: 06/01/2020
 ms.author: ericrad
 ms.reviewer: mimckitt
-ms.openlocfilehash: fee57efb3517131049f986c743125f17573fdc34
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 265b99fb985602604eefee27d722b4dc8d7593a8
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816725"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970381"
 ---
-# <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Scheduled Events voor Linux-Vm's
+# <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Geplande gebeurtenissen voor Linux-VM’s
 
 Scheduled Events is een Azure-Metadata Service die uw toepassings tijd biedt voor het voorbereiden van onderhoud van virtuele machines (VM). Het bevat informatie over aanstaande onderhouds gebeurtenissen (bijvoorbeeld opnieuw opstarten), zodat uw toepassing deze kan voorbereiden en de onderbreking kan beperken. Het is beschikbaar voor alle Azure-Virtual Machines typen, waaronder PaaS en IaaS in Windows en Linux. 
 
@@ -98,7 +98,7 @@ Als u een virtuele machine opnieuw opstart, wordt een gebeurtenis met het type `
 
 ## <a name="use-the-api"></a>De API gebruiken
 
-### <a name="headers"></a>Kopteksten
+### <a name="headers"></a>Headers
 Wanneer u Metadata Service een query uitvoert, moet u de header opgeven `Metadata:true` om ervoor te zorgen dat de aanvraag niet per ongeluk is omgeleid. De `Metadata:true` header is vereist voor alle aanvragen voor geplande gebeurtenissen. Het toevoegen van de header in de aanvraag resulteert in een antwoord op een ' ongeldige aanvraag ' van Metadata Service.
 
 ### <a name="query-for-events"></a>Query's uitvoeren op gebeurtenissen
@@ -135,7 +135,7 @@ Als er geplande gebeurtenissen zijn, bevat het antwoord een matrix met gebeurten
 | Gebeurtenis | De wereld wijde unieke id voor deze gebeurtenis. <br><br> Voorbeeld: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
 | EventType | Dit heeft invloed op deze gebeurtenis. <br><br> Waarden: <br><ul><li> `Freeze`: De virtuele machine is gepland om enkele seconden te worden onderbroken. De CPU-en netwerk verbinding wordt mogelijk onderbroken, maar er is geen invloed op het geheugen of geopende bestanden.<li>`Reboot`: De virtuele machine is gepland voor opnieuw opstarten (niet-permanent geheugen gaat verloren). <li>`Redeploy`: De virtuele machine is ingepland om te worden verplaatst naar een ander knoop punt (tijdelijke schijven gaan verloren). <li>`Preempt`: De locatie van de virtuele machine wordt verwijderd (tijdelijke schijven gaan verloren). <li> `Terminate`: De virtuele machine is gepland om te worden verwijderd. |
 | ResourceType | Type resource waarop deze gebeurtenis betrekking heeft. <br><br> Waarden: <ul><li>`VirtualMachine`|
-| Resources| Lijst met resources die deze gebeurtenis beïnvloedt. De lijst is gegarandeerd dat machines uit Maxi maal één [update domein](manage-availability.md)worden opgenomen, maar bevat mogelijk niet alle computers in de UD. <br><br> Voorbeeld: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
+| Resources| Lijst met resources die deze gebeurtenis beïnvloedt. De lijst is gegarandeerd dat machines uit Maxi maal één [update domein](../manage-availability.md)worden opgenomen, maar bevat mogelijk niet alle computers in de UD. <br><br> Voorbeeld: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | EventStatus | De status van deze gebeurtenis. <br><br> Waarden: <ul><li>`Scheduled`: Deze gebeurtenis is gepland om te starten na het tijdstip dat is opgegeven in de `NotBefore` eigenschap.<li>`Started`: Deze gebeurtenis is gestart.</ul> Er `Completed` is ooit geen of vergelijk bare status. De gebeurtenis wordt niet meer geretourneerd wanneer de gebeurtenis is voltooid.
 | NotBefore| Tijdstip waarna deze gebeurtenis kan worden gestart. <br><br> Voorbeeld: <br><ul><li> Ma, 19 sep 2016 18:29:47 GMT  |
 | Beschrijving | Beschrijving van deze gebeurtenis. <br><br> Voorbeeld: <br><ul><li> De hostserver ondergaat onderhoud. |

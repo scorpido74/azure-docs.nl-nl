@@ -4,10 +4,10 @@ description: Exporteer diagnostische en gebruiks gegevens naar opslag in Microso
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.openlocfilehash: f67a5c555c438298cee701ca065aaf8c01c6406e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87324332"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Telemetrie exporteren vanuit Application Insights
@@ -36,7 +36,7 @@ Continue export **biedt geen ondersteuning** voor de volgende functies/configura
 
 * [Azure data Lake Storage Gen2](../../storage/blobs/data-lake-storage-introduction.md).
 
-## <a name="create-a-continuous-export"></a><a name="setup"></a>Een continue export maken
+## <a name="create-a-continuous-export"></a><a name="setup"></a> Een continue export maken
 
 1. Open in de resource Application Insights voor uw app onder configureren aan de linkerkant de optie doorlopend exporteren en kies **toevoegen**:
 
@@ -81,7 +81,7 @@ Als u de export permanent wilt stoppen, verwijdert u deze. Hierdoor worden uw ge
 ### <a name="cant-add-or-change-an-export"></a>Kunt u een export niet toevoegen of wijzigen?
 * Als u exports wilt toevoegen of wijzigen, hebt u de machtiging voor Eigenaar, Inzender of Application Insights-Inzender nodig. [Meer informatie over rollen][roles].
 
-## <a name="what-events-do-you-get"></a><a name="analyze"></a>Welke gebeurtenissen krijgt u?
+## <a name="what-events-do-you-get"></a><a name="analyze"></a> Welke gebeurtenissen krijgt u?
 De geëxporteerde gegevens zijn de ruwe telemetriegegevens die we van uw toepassing ontvangen, behalve dat er locatie gegevens worden toegevoegd die worden berekend op basis van het IP-adres van de client.
 
 Gegevens die zijn verwijderd door middel van [steek proeven](./sampling.md) , worden niet opgenomen in de geëxporteerde gegevens.
@@ -95,7 +95,7 @@ De gegevens bevatten ook de resultaten van alle [beschik bare-webtesten](./monit
 >
 >
 
-## <a name="inspect-the-data"></a><a name="get"></a>De gegevens controleren
+## <a name="inspect-the-data"></a><a name="get"></a> De gegevens controleren
 U kunt de opslag direct in de portal inspecteren. Klik op Start in het meest linkse menu, waar u ' Azure-Services ' selecteert, selecteer **opslag accounts**, selecteer de naam van het opslag account op de pagina overzicht Selecteer **blobs** onder Services en selecteer ten slotte de container naam.
 
 Als u Azure Storage wilt controleren in Visual Studio, opent u **weer gave**, **Cloud Explorer**. (Als u deze menu opdracht niet hebt, moet u de Azure SDK installeren: Open het dialoog venster **New Project** , vouw Visual C#/Cloud uit en kies **Get Microsoft Azure SDK voor .net**.)
@@ -114,10 +114,10 @@ $"{applicationName}_{instrumentationKey}/{type}/{blobDeliveryTimeUtc:yyyy-MM-dd}
 
 Waar
 
-* `blobCreationTimeUtc`is de tijd waarop de blob is gemaakt in de interne staging-opslag
-* `blobDeliveryTimeUtc`is de tijd waarop BLOB wordt gekopieerd naar de export doel opslag
+* `blobCreationTimeUtc` is de tijd waarop de blob is gemaakt in de interne staging-opslag
+* `blobDeliveryTimeUtc` is de tijd waarop BLOB wordt gekopieerd naar de export doel opslag
 
-## <a name="data-format"></a><a name="format"></a>Gegevens indeling
+## <a name="data-format"></a><a name="format"></a> Gegevens indeling
 * Elke blob is een tekst bestand dat meerdere \n-gescheiden rijen bevat. Het bevat de telemetrie die gedurende een periode van ongeveer een halve minuut is verwerkt.
 * Elke rij vertegenwoordigt een telemetrie-gegevens punt, zoals een aanvraag of pagina weergave.
 * Elke rij is een niet-opgemaakt JSON-document. Als u de rijen wilt weer geven, opent u de BLOB in Visual Studio en **Edit**kiest u  >  **Geavanceerde**  >  **indelings bestand**bewerken:
@@ -197,7 +197,7 @@ Overweeg op grotere schaal [HDInsight](https://azure.microsoft.com/services/hdin
   * Daarnaast worden er voor toepassingen met veel verkeer extra partitie-eenheden toegewezen. In dit geval maakt elke eenheid elke minuut een blob.
 * *Ik heb de sleutel opnieuw gegenereerd voor mijn opslag of de naam van de container gewijzigd en nu werkt de export niet.*
 
-    Bewerk de export en open het tabblad uitvoer bestemming. Wijzig dezelfde opslag als voorheen en klik op OK om te bevestigen. Het exporteren wordt opnieuw gestart. Als de wijziging in de afgelopen paar dagen valt, gaan er geen gegevens verloren.
+    Bewerk de export en open het tabblad Export bestemming. Wijzig dezelfde opslag als voorheen, en klik op OK om te bevestigen. Het exporteren wordt opnieuw gestart. Als de wijziging in de afgelopen paar dagen valt, gaan er geen gegevens verloren.
 * *Kan ik het exporteren onderbreken?*
 
     Ja. Klik op Uitschakelen.

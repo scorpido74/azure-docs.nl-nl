@@ -7,10 +7,10 @@ ms.reviewer: deli, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.openlocfilehash: a5f01e81564561fe43ef6e55e6e9b3b67d6e1d77
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84945610"
 ---
 # <a name="schedule-and-run-recurring-automated-tasks-processes-and-workflows-with-azure-logic-apps"></a>Terugkerende en geautomatiseerde taken, processen en werkstromen plannen en uitvoeren met Azure Logic Apps
@@ -126,7 +126,7 @@ Dus hoe ver in het verleden u de start tijd opgeeft, bijvoorbeeld 2017-09-**05**
 
 Hier volgen enkele voor beelden van herhalingen die u kunt instellen voor de triggers die ondersteuning bieden voor de opties:
 
-| Trigger | Terugkeerpatroon | Interval | Frequentie | Begintijd | Deze dagen | Deze uren | Deze minuten | Notitie |
+| Trigger | Terugkeerpatroon | Interval | Frequency | Begintijd | Deze dagen | Deze uren | Deze minuten | Notitie |
 |---------|------------|----------|-----------|------------|---------------|----------------|------------------|------|
 | Optreden <br>Sliding window | Wordt elke 15 minuten uitgevoerd (geen begin datum en-tijd) | 15 | Minuut | geen | niet beschikbaar | geen | geen | Dit schema wordt onmiddellijk gestart, waarna toekomstige terugkeer patronen worden berekend op basis van de laatste uitvoerings tijd. |
 | Optreden <br>Sliding window | Wordt elke 15 minuten uitgevoerd (met begin datum en-tijd) | 15 | Minuut | *start date* T*Start*tijd Z | niet beschikbaar | geen | geen | Dit schema wordt niet *eerder* gestart dan de opgegeven begin datum en-tijd, waarna toekomstige terugkeer patronen worden berekend op basis van de laatste uitvoerings tijd. |

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
 ms.openlocfilehash: ce7ff6ae134835de23a0d2670e8b4f44783654f8
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89079197"
 ---
 # <a name="translator-encryption-of-data-at-rest"></a>Conversie van gegevens in rust versleutelen
@@ -37,7 +37,7 @@ Voor abonnementen die alleen door micro soft beheerde versleutelings sleutels on
 Uw abonnement maakt standaard gebruik van door Microsoft beheerde versleutelingssleutels. Er is ook de mogelijkheid om uw abonnement te beheren met uw eigen sleutels, genaamd door de klant beheerde sleutels (CMK). CMK biedt meer flexibiliteit voor het maken, draaien, uitschakelen en intrekken van toegangs beheer. U kunt ook de versleutelingssleutels controleren die worden gebruikt voor het beveiligen van uw gegevens. Als CMK is geconfigureerd voor uw abonnement, wordt er dubbele versleuteling gegeven, die een tweede beveiligingslaag biedt, terwijl u de versleutelings sleutel via uw Azure Key Vault kunt beheren.
 
 > [!IMPORTANT]
-> Door de klant beheerde sleutels zijn beschikbaar voor alle prijs categorieën voor de Vertaal service. Als u de mogelijkheid wilt bieden om door de klant beheerde sleutels te gebruiken, vult u het aanvraag formulier voor de door de [klant beheerde sleutel](https://aka.ms/cogsvc-cmk) te vullen en in. het duurt ongeveer 3-5 werk dagen voordat de status van uw aanvraag wordt weer gegeven. Afhankelijk van de vraag, kunt u in een wachtrij plaatsen en worden goedgekeurd als er ruimte beschikbaar is. Na goed keuring voor het gebruik van CMK met de Translator-service, moet u een nieuwe Translator-resource maken. Zodra uw Translator-resource is gemaakt, kunt u Azure Key Vault gebruiken om uw beheerde identiteit in te stellen.
+> Door de klant beheerde sleutels zijn beschikbaar voor alle prijs categorieën voor de Vertaal service. Als u de mogelijkheid wilt bieden om door de klant beheerde sleutels te gebruiken, vult u het [vertaal Customer-Managed het aanvraag formulier](https://aka.ms/cogsvc-cmk) in. het duurt ongeveer 3-5 werk dagen voordat de status van uw aanvraag wordt weer gegeven. Afhankelijk van de vraag, kunt u in een wachtrij plaatsen en worden goedgekeurd als er ruimte beschikbaar is. Na goed keuring voor het gebruik van CMK met de Translator-service, moet u een nieuwe Translator-resource maken. Zodra uw Translator-resource is gemaakt, kunt u Azure Key Vault gebruiken om uw beheerde identiteit in te stellen.
 
 Volg deze stappen om door de klant beheerde sleutels voor Translator in te scha kelen:
 
@@ -47,7 +47,7 @@ Volg deze stappen om door de klant beheerde sleutels voor Translator in te scha 
 
 ### <a name="enable-customer-managed-keys"></a>Door de klant beheerde sleutels inschakelen
 
-U moet Azure Key Vault gebruiken om uw door de klant beheerde sleutels op te slaan. U kunt uw eigen sleutels maken en deze opslaan in een sleutelkluis of u kunt de Azure Key Vault API's gebruiken om sleutels te genereren. De Cognitive Services resource en de sleutel kluis moeten zich in dezelfde regio bevinden en in dezelfde Azure Active Directory (Azure AD)-Tenant, maar ze kunnen zich in verschillende abonnementen bevinden. Zie [Wat is Azure Key Vault?](https://docs.microsoft.com/azure/key-vault/key-vault-overview)voor meer informatie over Azure Key Vault.
+U moet Azure Key Vault gebruiken om door de klant beheerde sleutels op te slaan. U kunt uw eigen sleutels maken en deze opslaan in een sleutelkluis of u kunt de Azure Key Vault API's gebruiken om sleutels te genereren. De Cognitive Services resource en de sleutel kluis moeten zich in dezelfde regio bevinden en in dezelfde Azure Active Directory (Azure AD)-Tenant, maar ze kunnen zich in verschillende abonnementen bevinden. Zie [Wat is Azure Key Vault?](https://docs.microsoft.com/azure/key-vault/key-vault-overview)voor meer informatie over Azure Key Vault.
 
 Een nieuwe Cognitive Services resource wordt altijd versleuteld met door micro soft beheerde sleutels. Het is niet mogelijk om door de klant beheerde sleutels in te scha kelen op het moment dat de resource wordt gemaakt. Door de klant beheerde sleutels worden opgeslagen in Azure Key Vault en de sleutel kluis moet worden ingericht met toegangs beleid waarmee sleutel machtigingen worden verleend aan de beheerde identiteit die aan de Cognitive Services-resource is gekoppeld. De beheerde identiteit is beschikbaar zodra de resource is gemaakt.
 

@@ -10,10 +10,10 @@ ms.date: 07/07/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: 3de79e5cb3db2d0c52d13826900ec7160271edf9
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86225096"
 ---
 # <a name="supply-azure-marketplace-purchase-plan-information-when-creating-images"></a>Informatie over het aankoop plan van Azure Marketplace leveren bij het maken van installatie kopieën
@@ -51,7 +51,7 @@ $gallery = Get-AzGallery `
    -ResourceGroupName myGalleryRG
 ```
 
-De definitie van de installatie kopie maken met behulp van de `-PurchasePlanPublisher` `-PurchasePlanProduct` `-PurchasePlanName` para meters, en.
+De definitie van de installatie kopie maken met behulp van de  `-PurchasePlanPublisher` `-PurchasePlanProduct` `-PurchasePlanName` para meters, en.
 
 ```azurepowershell-interactive
  $imageDefinition = New-AzGalleryImageDefinition `
@@ -72,7 +72,7 @@ De definitie van de installatie kopie maken met behulp van de `-PurchasePlanPubl
 Maak vervolgens een installatie kopie versie met behulp van [New-AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion). U kunt een installatie kopie versie maken op basis van een [virtuele machine](image-version-vm-powershell.md#create-an-image-version), een [beheerde installatie kopie](image-version-managed-image-powershell.md#create-an-image-version), een [VHD\snapshot](image-version-snapshot-powershell.md#create-an-image-version)of [een andere versie van de installatie kopie](image-version-another-gallery-powershell.md#create-the-image-version). 
 
 
-## <a name="create-the-vm"></a>De VM maken
+## <a name="create-the-vm"></a>De virtuele machine maken
 
 Wanneer u een virtuele machine maakt op basis van de installatie kopie, kunt u de informatie uit de definitie van de installatie kopie gebruiken om de gegevens van de uitgever door te geven met behulp van [set-AzVMPlan](/powershell/module/az.compute/set-azvmplan).
 

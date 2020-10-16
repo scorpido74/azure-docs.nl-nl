@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 09/16/2020
 ms.author: b-juche
 ms.openlocfilehash: 3aaa5d2bc6fdbda0d1db212539c719aa65cae61b
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90708764"
 ---
 # <a name="troubleshoot-cross-region-replication"></a>Problemen met replicatie tussen regio's oplossen
@@ -66,9 +66,9 @@ In dit artikel worden fout berichten en oplossingen beschreven die u kunnen help
 
 ## <a name="next-steps"></a>Volgende stappen  
 
-* [Replicatie tussen regio's](cross-region-replication-introduction.md)
+* [Replicatie in meerdere regio's](cross-region-replication-introduction.md)
 * [Vereisten en overwegingen voor het gebruik van replicatie tussen regio's](cross-region-replication-requirements-considerations.md)
-* [Replicatie-peering maken](cross-region-replication-create-peering.md)
-* [Status van replicatie relatie weer geven](cross-region-replication-display-health-status.md)
+* [Replicatiepeering maken](cross-region-replication-create-peering.md)
+* [Status van replicatierelatie weergeven](cross-region-replication-display-health-status.md)
 * [Herstel na noodgevallen beheren](cross-region-replication-manage-disaster-recovery.md)
 * [Problemen met replicatie tussen regio's oplossen](troubleshoot-cross-region-replication.md)

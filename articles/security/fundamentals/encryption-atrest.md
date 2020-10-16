@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/13/2020
 ms.author: mbaldwin
 ms.openlocfilehash: ec81a8f7f9d9f45f1d068a415a599ce30a0d4581
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91397246"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Versleuteling van inactieve gegevens in Azure
@@ -107,7 +107,7 @@ Alle Managed Disks, moment opnamen en installatie kopieën worden versleuteld me
 
 #### <a name="custom-encryption-at-rest"></a>Aangepaste versleuteling bij rest
 
-Het wordt aanbevolen om waar mogelijk IaaS toepassingen Azure Disk Encryption en versleuteling te gebruiken bij rest opties die worden verschaft door alle verbruikte Azure-Services. In sommige gevallen, zoals onregelmatige versleutelings vereisten of opslag op basis van Azure, moet een ontwikkelaar van een IaaS-toepassing mogelijk versleuteling op rest zelf implementeren. Ontwikkel aars van IaaS-oplossingen kunnen beter integreren met Azure-beheer en klant verwachtingen door gebruik te maken van bepaalde Azure-onderdelen. Met name moeten ontwikkel aars de Azure Key Vault-service gebruiken voor het leveren van beveiligde sleutel opslag en hun klanten een consistente sleutel beheer opties bieden met die van de meeste services van het Azure-platform. Daarnaast moeten aangepaste oplossingen door Azure beheerde service-identiteiten worden gebruikt om service accounts toegang te geven tot versleutelings sleutels. Voor informatie over ontwikkel aars over Azure Key Vault en beheerde service-identiteiten raadpleegt u hun respectieve Sdk's.
+Het wordt aanbevolen om waar mogelijk IaaS toepassingen Azure Disk Encryption en versleuteling te gebruiken bij rest opties die worden verschaft door alle verbruikte Azure-Services. In sommige gevallen, zoals onregelmatige versleutelings vereisten of opslag op basis van Azure, moet een ontwikkelaar van een IaaS-toepassing mogelijk versleuteling op rest zelf implementeren. Ontwikkel aars van IaaS-oplossingen kunnen beter integreren met Azure-beheer en klant verwachtingen door gebruik te maken van bepaalde Azure-onderdelen. Met name moeten ontwikkel aars de Azure Key Vault-service gebruiken voor het leveren van beveiligde sleutel opslag en hun klanten een consistente sleutel beheer opties bieden met die van de meeste services van het Azure-platform. Daarnaast moeten aangepaste oplossingen Azure-Managed service-identiteiten gebruiken om service accounts toegang te geven tot versleutelings sleutels. Voor informatie over ontwikkel aars over Azure Key Vault en beheerde service-identiteiten raadpleegt u hun respectieve Sdk's.
 
 ## <a name="azure-resource-providers-encryption-model-support"></a>Ondersteuning voor het versleutelings model van Azure-resource providers
 
@@ -124,7 +124,7 @@ Alle Azure Storage services (Blob-opslag, wachtrij opslag, tabel opslag en Azure
 - Aan de server zijde: alle Azure Storage services maken server zijde versleuteling mogelijk door gebruik te maken van door de service beheerde sleutels, die transparant zijn voor de toepassing. Zie [Azure Storage-service versleuteling voor Data-at-rest](../../storage/common/storage-service-encryption.md)voor meer informatie. Azure Blob-opslag en Azure Files ondersteunen ook RSA 2048-bits door de klant beheerde sleutels in Azure Key Vault. Zie [Storage service Encryption het gebruik van door de klant beheerde sleutels in azure Key Vault](../../storage/common/storage-encryption-keys-portal.md)voor meer informatie.
 - Client zijde: Azure-blobs,-tabellen en-wacht rijen ondersteunen versleuteling aan de client zijde. Wanneer u versleuteling aan de client zijde gebruikt, versleutelt klanten de gegevens en uploadt de gegevens als een versleutelde blob. Sleutel beheer wordt uitgevoerd door de klant. Zie [versleuteling aan client zijde en Azure Key Vault voor Microsoft Azure Storage](../../storage/common/storage-client-side-encryption.md)voor meer informatie.
 
-#### <a name="azure-sql-database"></a>Azure SQL-database
+#### <a name="azure-sql-database"></a>Azure SQL Database
 
 Azure SQL Database biedt momenteel ondersteuning voor versleuteling in rust voor micro soft-beheerde service-en versleutelings scenario's aan de client zijde.
 

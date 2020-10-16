@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 0eb814ea0d941ca01d3a21db1cb507ef273a1a18
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: dc08e23b6ef040ba5833ffa97f71d8cd1da3bb8a
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328340"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019797"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Live streamen met Azure Media Services v3
 
@@ -37,7 +37,7 @@ Voor klanten die inhoud willen leveren aan grote Internet doelgroepen, raden we 
 In dit artikel vindt u een overzicht en richt lijnen voor live streamen met Media Services en koppelingen naar andere relevante artikelen.
  
 > [!NOTE]
-> U kunt de [Azure Portal](https://portal.azure.com/) gebruiken om v3 [Live-gebeurtenissen](live-events-outputs-concept.md)te beheren, v3- [assets](assets-concept.md)weer te geven, informatie over het openen van api's op te halen. Gebruik voor alle andere beheer taken (bijvoorbeeld trans formaties en taken) de [rest API](/rest/api/media/), [cli](https://aka.ms/ams-v3-cli-ref)of een van de ondersteunde [sdk's](media-services-apis-overview.md#sdks).
+> U kunt de [Azure Portal](https://portal.azure.com/) gebruiken om v3 [Live-gebeurtenissen](live-events-outputs-concept.md)te beheren, v3- [assets](assets-concept.md)weer te geven, informatie over het openen van api's op te halen. Gebruik voor alle andere beheer taken (bijvoorbeeld trans formaties en taken) de [rest API](/rest/api/media/), [cli](/cli/azure/ams)of een van de ondersteunde [sdk's](media-services-apis-overview.md#sdks).
 
 ## <a name="dynamic-packaging-and-delivery"></a>Dynamische verpakking en levering
 

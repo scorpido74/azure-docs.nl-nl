@@ -115,7 +115,7 @@
               href: partner-center-portal/azure-vm-create-offer.md
             - name: Technische assets voor Azure-VM maken
               items:
-                - name: 'Certificering van virtuele machines: problemen en oplossingen'
+                - name: Certificeringsproblemen met virtuele machines
                   href: partner-center-portal/vm-certification-issues-solutions.md
                 - name: Een technische asset voor een Azure-VM maken
                   href: partner-center-portal/create-azure-vm-technical-asset.md
@@ -324,17 +324,27 @@
       href: marketplace-faq-publisher-guide.md
     - name: Veelgestelde vragen over Cloud Partner Portal-migratie
       href: cloud-partner-portal-migration-faq.md
+    - name: Kantooruren bedrijfskansen
+      href: 'https://aka.ms/marketplaceofficehours'
+    - name: Kantooruren technische ondersteuning en publicatie
+      href: 'https://aka.ms/marketplacepublishingofficehours'
     - name: Ondersteuningsopties voor Partner Center
       href: partner-center-portal/support.md
+    - name: Aankondigingen van partnercentrum
+      href: /partner-center/announcements
+    - name: Microsoft-partnercommunity
+      href: 'https://www.microsoftpartnercommunity.com/'
+    - name: Forum van partnercommunity
+      href: 'https://www.microsoftpartnercommunity.com/t5/Microsoft-AppSource-and-Azure/bd-p/2222'
     - name: Geografische beschikbaarheid en valuta's
       href: marketplace-geo-availability-currencies.md
+    - name: Tenant- en object-ID's zoeken
+      href: find-tenant-object-id.md
     - name: Ondersteunde landen en regio's
       href: sell-from-countries.md
-    - name: Ondersteunde HTML-tags
-      href: supported-html-tags.md
     - name: Land- en regiocodes voor collectieve verkoop
       href: partner-center-portal/commercial-marketplace-co-sell-countries.md
     - name: Staatcodes voor collectieve verkoop
       href: partner-center-portal/commercial-marketplace-co-sell-states.md
-    - name: 'Forums, blogs en snelle links'
-      href: marketplace-roadmap.md
+    - name: Ondersteunde HTML-tags
+      href: supported-html-tags.md

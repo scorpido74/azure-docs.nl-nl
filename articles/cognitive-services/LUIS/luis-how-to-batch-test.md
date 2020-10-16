@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
 ms.openlocfilehash: 8b34005f2796403e32b41a93e4163c7da16d40bb
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91540945"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>Batch tests met een set voor beeld-uitingen
@@ -49,7 +49,7 @@ Als u de test wilt uitvoeren, selecteert u de naam van de gegevensset en selecte
 
 De gegevensset die u wilt downloaden is hetzelfde als het bestand dat is geüpload voor batch tests.
 
-|Staat|Betekenis|
+|Status|Betekenis|
 |--|--|
 |![Groene cirkel pictogram met geslaagde test](./media/luis-how-to-batch-test/batch-test-result-green.png)|Alle uitingen zijn geslaagd.|
 |![Rode x-pictogram testen mislukt](./media/luis-how-to-batch-test/batch-test-result-red.png)|Ten minste één utterance-intentie komt niet overeen met de voor spelling.|

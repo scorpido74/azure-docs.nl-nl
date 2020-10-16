@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pafarley
 ms.openlocfilehash: 3957a9cde957c8e92806f10d39c949d73f20153e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91323019"
 ---
 # <a name="face-recognition-concepts"></a>Gezichtsherkenningsconcepten
@@ -71,4 +71,4 @@ Gebruik de volgende tips om ervoor te zorgen dat uw invoer installatie kopieën 
 
 Nu u bekend bent met de concepten van gezichts herkenning, schrijft u een script dat gezichten identificeert op basis van een getrainde PersonGroup.
 
-* [Snelstartgids voor client bibliotheek](../Quickstarts/client-libraries.md)
+* [Quickstart voor de Face-clientbibliotheek](../Quickstarts/client-libraries.md)

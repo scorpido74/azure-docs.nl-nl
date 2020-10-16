@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/29/2016
 ms.author: manuaery
 ms.openlocfilehash: 1ab72788c768568366f2627055015c74028330b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85515239"
 ---
 # <a name="use-the-device-summary-blade-for-storsimple-device-manager-connected-to-storsimple-virtual-array"></a>De Blade samen vatting van apparaten gebruiken voor StorSimple Apparaatbeheer verbonden met virtuele StorSimple-matrix
@@ -49,7 +49,7 @@ In het gebied essentiële elementen worden enkele belang rijke eigenschappen vas
 
 * In het **gebruiks** diagram kunt u de primaire opslag weer geven die wordt gebruikt in uw virtuele matrix, evenals de Cloud opslag die in de afgelopen 7 dagen wordt verbruikt, de standaard periode. Gebruik de optie **bewerken** in de rechter bovenhoek van de grafiek om een andere tijd schaal te kiezen.
 
-* De tegel **shares** of **volumes** bevat een samen vatting van het aantal shares of volumes in uw apparaat, gegroepeerd op status. Klik op de tegel om de Blade **shares** of **volumes** lijst te openen en klik vervolgens op een afzonderlijke share of een volume om de eigenschappen weer te geven of te wijzigen. Zie [shares beheren](storsimple-virtual-array-manage-shares.md) of [volumes beheren](storsimple-virtual-array-manage-volumes.md)voor meer informatie.
+* De tegel **shares** of **volumes** bevat een samen vatting van het aantal shares of volumes in uw apparaat, gegroepeerd op status. Klik op de tegel om de Blade **shares**  of **volumes** lijst te openen en klik vervolgens op een afzonderlijke share of een volume om de eigenschappen weer te geven of te wijzigen. Zie [shares beheren](storsimple-virtual-array-manage-shares.md) of [volumes beheren](storsimple-virtual-array-manage-volumes.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 Leer hoe u het volgende doet:

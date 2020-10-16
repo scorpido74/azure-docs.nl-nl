@@ -12,14 +12,14 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 6a5fb517b3ea6626a929da10954bd58cc8e39ef0
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 9ff43202bdace577024413c9cc177de2997a0ad5
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91574225"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627938"
 ---
-# <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Aanmelding bij Microsoft toevoegen aan een ASP.NET-web-app
+# <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Zelfstudie: Aanmelding bij Microsoft toevoegen aan een ASP.NET-web-app
 
 Deze handleiding toont hoe u aanmelding bij Microsoft implementeert met behulp van een ASP.NET MVC-oplossing met behulp van een traditionele toepassing op basis van een webbrowser en OpenID Connect.
 
@@ -295,7 +295,7 @@ Deze controller demonstreert het gebruik van het kenmerk `[Authorize]` om een co
         {
             var userClaims = User.Identity as System.Security.Claims.ClaimsIdentity;
 
-            //You get the user’s first and last name below:
+            //You get the user's first and last name below:
             ViewBag.Name = userClaims?.FindFirst("name")?.Value;
 
             // The 'preferred_username' claim can be used for showing the username
@@ -313,7 +313,7 @@ Deze controller demonstreert het gebruik van het kenmerk `[Authorize]` om een co
     ```
 
 ### <a name="more-information"></a>Meer informatie
-Vanwege het gebruik van het kenmerk `[Authorize]` kunnen alle methoden van deze controller alleen worden uitgevoerd als de gebruiker is geverifieerd. Als een niet-geverifieerde gebruiker toegang probeert te krijgen tot de controller, wordt met OWIN een verificatievraag gestart en wordt de gebruiker gedwongen zich te verifiëren. De voorgaande code onderzoekt de lijst met claims voor specifieke gebruikerskenmerken die deel uitmaken van de id-token van de gebruiker. Deze kenmerken omvatten de volledige naam en gebruikersnaam van de gebruiker, en het globale onderwerp voor de gebruikers-id. Ze omvatten ook de *Tenant-id*. Dit is de id voor de organisatie van de gebruiker.
+Vanwege het gebruik van het kenmerk `[Authorize]` kunnen alle methoden van deze controller alleen worden uitgevoerd als de gebruiker is geverifieerd. Als een niet-geverifieerde gebruiker toegang probeert te krijgen tot de controller, wordt met OWIN een verificatievraag gestart en wordt de gebruiker gedwongen zich te verifiëren. De voorgaande code onderzoekt de lijst met claims voor specifieke gebruikerskenmerken die deel uitmaken van de id-token van de gebruiker. Deze kenmerken omvatten de volledige naam en gebruikersnaam van de gebruiker, en het globale onderwerp voor de gebruikers-id. Ze omvatten ook de *tenant-id*. Dit is de id voor de organisatie van de gebruiker.
 
 ## <a name="create-a-view-to-display-the-users-claims"></a>Een weergave maken om de claims van de gebruiker weer te geven
 
@@ -415,7 +415,7 @@ Bekijk [Machtigingen en toestemming in het eindpunt van het Microsoft-identiteit
 
 ### <a name="view-application-results"></a>Resultaten van de toepassing weergeven
 
-Nadat u zich hebt aangemeld, wordt de gebruiker omgeleid naar de startpagina van uw website. De startpagina is de HTTPS-URL die is opgegeven in de registratiegegevens van uw toepassing in het Microsoft-portal voor toepassingsregistratie. De startpagina bevat een welkomstbericht *'Hallo \<user>'* , een koppeling naar om u af te melden en een koppeling om de claims van de gebruiker weer te geven. De koppeling voor de claims van de gebruiker maakt verbinding met de claimscontroller die u eerder heeft gemaakt.
+Nadat u zich hebt aangemeld, wordt de gebruiker omgeleid naar de startpagina van uw website. De startpagina is de HTTPS-URL die is opgegeven in de registratiegegevens van uw toepassing in het Microsoft-portal voor toepassingsregistratie. De startpagina bevat een welkomstbericht *'Hello \<user>'* , een koppeling om u af te melden en een koppeling om de claims van de gebruiker weer te geven. De koppeling voor de claims van de gebruiker maakt verbinding met de claimscontroller die u eerder heeft gemaakt.
 
 ### <a name="view-the-users-claims"></a>De claims van gebruiker weergeven
 
@@ -427,7 +427,7 @@ Wanneer u naar de controllerweergave gaat, ziet u normaal gezien een tabel met d
 
 |Eigenschap |Waarde |Beschrijving |
 |---|---|---|
-|**Naam** |Volledige naam van gebruiker | Voor- en achternaam van de gebruiker
+|**Naam** |Volledige naam van gebruiker | De voor- en achternaam van de gebruiker
 |**Gebruikersnaam** |gebruiker<span>@domain.com</span> | De gebruikersnaam die is gebruikt om de gebruiker te identificeren|
 |**Onderwerp** |Onderwerp |Een tekenreeks die de gebruiker op unieke wijze identificeerd op het internet|
 |**Tenant ID** |Guid | Een **guid** die de Azure AD-organisatie van de gebruiker op unieke wijze vertegenwoordigt|

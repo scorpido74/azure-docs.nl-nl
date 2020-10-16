@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.openlocfilehash: 170d5eaa4c14c6de54825bc08f3aef0fd0dfa0c5
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91707996"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql---single-server"></a>Virtual Network Service-eind punten en-regels voor Azure Database for PostgreSQL-één server gebruiken
@@ -129,7 +129,7 @@ Als u alleen een VNet-firewall regel instelt, kunt u de server niet beveiligen m
 U kunt de vlag **IgnoreMissingServiceEndpoint** instellen met behulp van de Azure CLI of portal.
 
 ## <a name="related-articles"></a>Verwante artikelen:
-- [Virtuele netwerken van Azure][vm-virtual-network-overview]
+- [Virtuele netwerken van Azure.][vm-virtual-network-overview]
 - [Service-eindpunten voor een virtueel Azure-netwerk][vm-virtual-network-service-endpoints-overview-649d]
 
 ## <a name="next-steps"></a>Volgende stappen

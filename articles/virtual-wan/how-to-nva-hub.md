@@ -1,6 +1,6 @@
 ---
 title: 'Virtueel WAN van Azure: een virtueel netwerk apparaat (NVA) maken in de hub'
-description: In deze zelf studie leert u hoe u een virtueel netwerk apparaat implementeert in de virtuele WAN-hub.
+description: Meer informatie over het implementeren van een virtueel netwerk apparaat in de virtuele WAN-hub.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -8,23 +8,23 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a Network Virtual Appliance (NVA) in my Virtual WAN hub.
-ms.openlocfilehash: 014339b02167a1bb4cba11cc10c9740b8fa53f2c
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 0e174f9b78606e0bea5cded3a176f4207745bb5c
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91773243"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077300"
 ---
 # <a name="how-to-create-a-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Een virtueel netwerk apparaat maken in een virtuele WAN-hub van Azure (preview)
 
-In deze zelf studie ziet u hoe u met behulp van virtueel WAN verbinding maakt met uw resources in azure via een **virtueel netwerk apparaat** (NVA) in Azure. Voor dit type verbinding moet er on-premises een VPN-apparaat aanwezig zijn waaraan een extern openbaar IP-adres is toegewezen. Zie voor meer informatie over Virtual WAN het [Overzicht van Virtual WAN](virtual-wan-about.md).
+Dit artikel laat u zien hoe u met Virtual WAN verbinding maakt met uw resources in azure via een **virtueel netwerk apparaat** (NVA) in Azure. Voor dit type verbinding moet er on-premises een VPN-apparaat aanwezig zijn waaraan een extern openbaar IP-adres is toegewezen. Zie [Wat is virtueel WAN?](virtual-wan-about.md)voor meer informatie over Virtual WAN.
 
 Met de stappen in dit artikel kunt u een virtueel **Barracuda CLOUDGEN WAN** -netwerk maken in de virtuele WAN-hub. U kunt deze oefening alleen uitvoeren als u een Barracuda-Cloud apparaat (CPE) en een licentie voor het Barracuda CloudGen WAN-toestel hebt dat u in de hub implementeert voordat u begint.
 
 Voor implementatie documentatie van **Cisco SD-WAN** in azure Virtual WAN, stuurt u een E-mail naar Cisco op het volgende e-mail adres: vwan_public_preview@external.cisco.com
 
 
-## <a name="before-you-begin"></a>Voordat u begint
+## <a name="prerequisites"></a>Vereisten
 
 Controleer voordat u met de configuratie begint of u aan de volgende criteria hebt voldaan:
 
@@ -90,7 +90,7 @@ In deze stap maakt u een virtueel netwerk apparaat in de hub. De procedure voor 
    * **NVA infrastructuur eenheden** : Hiermee geeft u het aantal NVA-infrastructuur eenheden aan waarop u deze NVA wilt implementeren. Kies de hoeveelheid cumulatieve band breedte die u wilt bieden voor alle Branch sites die via deze NVA met deze hub worden verbonden.
    * Voor **token** -Barracuda moet u hier een verificatie token opgeven, zodat u zich kunt identificeren als een geregistreerde gebruiker van dit product. U moet dit verkrijgen van Barracuda.
 1. Selecteer de knop **controleren en maken** om door te gaan.
-1. Op deze pagina wordt u gevraagd de voor waarden van de gebruiksrecht overeenkomst voor co-beheerders te accepteren. Dit is standaard met beheerde toepassingen waarbij de uitgever toegang heeft tot bepaalde resources in deze implementatie. Schakel het selectie vakje **Ik ga akkoord met de bovenstaande voor waarden** in en selecteer vervolgens **maken**.
+1. Op deze pagina wordt u gevraagd om de voor waarden van de Co-Admin toegangs overeenkomst te accepteren. Dit is standaard met beheerde toepassingen waarbij de uitgever toegang heeft tot bepaalde resources in deze implementatie. Schakel het selectie vakje **Ik ga akkoord met de bovenstaande voor waarden** in en selecteer vervolgens **maken**.
 
 ## <a name="connect-the-vnet-to-the-hub"></a><a name="vnet"></a>VNet verbinden met de hub
 
@@ -98,5 +98,5 @@ In deze stap maakt u een virtueel netwerk apparaat in de hub. De procedure voor 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie voor meer informatie over Virtual WAN de pagina [Overzicht van Virtual WAN](virtual-wan-about.md).
+* Zie de pagina [Wat is een virtueel WAN?](virtual-wan-about.md) voor meer informatie over Virtual WAN.
 * Zie [over het virtuele netwerk apparaat in de virtuele WAN-hub (preview)](about-nva-hub.md)voor meer informatie over nva's in een virtuele WAN-hub.

@@ -9,12 +9,14 @@ ms.author: gopalv
 author: gvashishtha
 ms.date: 09/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 17260c3890df0bd78b1503a046ff39ab173712be
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.reviewer: larryfr
+ms.custom: deploy
+ms.openlocfilehash: 9a6e2de07921d05e123154f604c3d1b369b3b89d
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91622049"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91998757"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Hoge prestaties met een Triton-inrichtings server (preview-versie) 
 
@@ -163,7 +165,7 @@ model = Model.register(
     workspace=ws
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 ```azurecli
 az ml model register --model-path='triton' \
@@ -266,7 +268,7 @@ print(local_service.state)
 print(local_service.scoring_uri)
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 > [!TIP]
 > Zie voor meer informatie over het maken van een Afleidings configuratie het [schema](./reference-azure-machine-learning-cli.md#inference-configuration-schema)voor het afstellen van interferentie.

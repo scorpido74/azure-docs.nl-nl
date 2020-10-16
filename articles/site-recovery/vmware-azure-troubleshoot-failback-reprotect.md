@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: sharrai
 ms.openlocfilehash: ed4e52470264441a99c5ccf0a736bb00233510c1
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87423113"
 ---
 # <a name="troubleshoot-failback-to-on-premises-from-azure"></a>Problemen met failback naar on-premises vanuit Azure oplossen
@@ -20,7 +20,7 @@ In dit artikel wordt beschreven hoe u problemen oplost die kunnen optreden wanne
 
 Voor failback zijn in feite twee belang rijke stappen vereist. Voor de eerste stap moet u na een failover de Azure-Vm's opnieuw beveiligen naar on-premises zodat ze worden gerepliceerd. De tweede stap bestaat uit het uitvoeren van een failover vanuit Azure om een failback uit te voeren naar uw on-premises site.
 
-## <a name="common-issues"></a>Veelvoorkomende problemen
+## <a name="common-issues"></a>Algemene problemen
 
 - Als u een alleen-lezen gebruikers-vCenter-detectie uitvoert en virtuele machines beveiligt, is de beveiliging geslaagd en werkt failover. Tijdens het opnieuw beveiligen mislukt de failover omdat de gegevens opslag niet kan worden gedetecteerd. Een symptoom is dat de gegevens opslag niet wordt weer gegeven tijdens het opnieuw beveiligen. U kunt dit probleem oplossen door de vCenter-referenties bij te werken met een geschikt account dat machtigingen heeft en de taak vervolgens opnieuw uit te voeren.
 - Wanneer u een back-up van een virtuele Linux-machine maakt en deze on-premises uitvoert, kunt u zien dat het pakket met de netwerk beheerder is verwijderd van de computer. Dit wordt veroorzaakt doordat het pakket voor netwerk beheer wordt verwijderd wanneer de virtuele machine wordt hersteld in Azure.

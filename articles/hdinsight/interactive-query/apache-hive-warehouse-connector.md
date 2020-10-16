@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
 ms.openlocfilehash: 24968511d038b2cea41a59187c0a361684c6720e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86511888"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-hive-warehouse-connector-in-azure-hdinsight"></a>Apache Spark en Apache Hive integreren met hive Warehouse connector in azure HDInsight
@@ -73,12 +73,12 @@ Hive Warehouse connector heeft afzonderlijke clusters nodig voor Spark-en intera
 
 1. Selecteer **eigenschap toevoegen...** om de volgende configuraties toe te voegen:
 
-    | Configuration | Waarde |
+    | Configuratie | Waarde |
     |----|----|
     |`spark.datasource.hive.warehouse.load.staging.dir`|`wasbs://STORAGE_CONTAINER_NAME@STORAGE_ACCOUNT_NAME.blob.core.windows.net/tmp`. <br> Stel in op een geschikte, met HDFS compatibele tijdelijke directory. Als u twee verschillende clusters hebt, moet de map voor gefaseerde installatie een map zijn in de map met tijdelijke bestanden van het opslag account van het LLAP-cluster, zodat HiveServer2 er toegang toe heeft.  Vervang door de `STORAGE_ACCOUNT_NAME` naam van het opslag account dat wordt gebruikt door het cluster en `STORAGE_CONTAINER_NAME` met de naam van de opslag container. |
     |`spark.sql.hive.hiveserver2.jdbc.url`| De waarde die u eerder hebt verkregen van de **HiveServer2 Interactive JDBC-URL** |
     |`spark.datasource.hive.warehouse.metastoreUri`| De waarde die u eerder hebt verkregen uit **Hive. meta Store. uri's**. |
-    |`spark.security.credentials.hiveserver2.enabled`|`true`voor de cluster modus garen en `false` voor de modus garens van de client. |
+    |`spark.security.credentials.hiveserver2.enabled`|`true` voor de cluster modus garen en `false` voor de modus garens van de client. |
     |`spark.hadoop.hive.zookeeper.quorum`| De waarde die u eerder hebt verkregen van **Hive. Zookeeper. quorum**. |
     |`spark.hadoop.hive.llap.daemon.service.hosts`| De waarde die u eerder hebt verkregen vanuit **Hive. llap. daemon. service. hosts**. |
 
@@ -94,7 +94,7 @@ Naast de configuraties die in de vorige sectie worden genoemd, voegt u de volgen
 
 1. Werk de volgende eigenschap bij.
 
-    | Configuration | Waarde |
+    | Configuratie | Waarde |
     |----|----|
     | `spark.sql.hive.hiveserver2.jdbc.url.principal`    | `hive/<llap-headnode>@<AAD-Domain>` |
     

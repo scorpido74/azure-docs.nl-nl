@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 7db9ac0eb624c2732295639d65e0311fcf459f71
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934929"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-postgresql---flexible-server"></a>Concepten met hoge Beschik baarheid in Azure Database for PostgreSQL-flexibele server
@@ -18,7 +18,7 @@ ms.locfileid: "90934929"
 > [!IMPORTANT]
 > Azure Database for PostgreSQL - Flexible Server is als preview-versie beschikbaar
 
-Azure Database for PostgreSQL-flexibele server biedt een configuratie met hoge Beschik baarheid met automatische failover-functionaliteit met **zone-redundante** Server implementatie. Wanneer in een zone redundante configuratie wordt geïmplementeerd, wordt door de flexibele server automatisch een stand-by replica in een andere beschikbaarheids zone ingericht en beheerd. Met PostgreSQL streaming-replicatie worden de gegevens gerepliceerd naar de stand-by replica-server in **synchrone** modus. 
+Azure Database for PostgreSQL-flexibele server biedt een configuratie met hoge Beschik baarheid met automatische failover-functionaliteit met **zone-redundante** Server implementatie. Bij een implementatie in een zone-redundante configuratie wordt door de flexibele server automatisch een stand-byreplica in een andere beschikbaarheidszone ingericht en beheerd. Met PostgreSQL streaming-replicatie worden de gegevens gerepliceerd naar de stand-by replica-server in **synchrone** modus. 
 
 Zone redundante configuratie maakt automatische failover mogelijk met geen gegevens verlies tijdens geplande gebeurtenissen, zoals door de gebruiker geïnitieerde schaal Compute-bewerking, en ook tijdens niet-geplande gebeurtenissen, zoals onderliggende hardware-en software fouten, netwerk fouten en fouten in de beschikbaarheids zone. 
 
@@ -26,7 +26,7 @@ Zone redundante configuratie maakt automatische failover mogelijk met geen gegev
 
 ## <a name="zone-redundant-high-availability-architecture"></a>Architectuur van redundante hoge Beschik baarheid in zone
 
-U kunt de regio en de beschikbaarheids zone kiezen voor het implementeren van uw primaire database server. Een stand-by replica server wordt ingericht in een andere beschikbaarheids zone met dezelfde configuratie als de primaire server, waaronder Compute-laag, reken grootte, opslag grootte en netwerk configuratie. Transactie logboeken worden gerepliceerd in de synchrone modus naar de stand-by replica met behulp van PostgreSQL streaming-replicatie. Automatische back-ups worden periodiek uitgevoerd vanaf de primaire database server, terwijl de transactie logboeken continu worden gearchiveerd naar de back-upopslag van de stand-by replica. 
+U kunt de regio en de beschikbaarheidszone kiezen waarin u de primaire databaseserver wilt implementeren. In een andere beschikbaarheidszone wordt een stand-byreplicaserver ingericht met dezelfde configuratie als de primaire server, waaronder de rekenlaag, rekengrootte, opslaggrootte en netwerkconfiguratie. Transactie logboeken worden gerepliceerd in de synchrone modus naar de stand-by replica met behulp van PostgreSQL streaming-replicatie. Automatische back-ups worden periodiek uitgevoerd vanaf de primaire database server, terwijl de transactie logboeken continu worden gearchiveerd naar de back-upopslag van de stand-by replica. 
 
 De status van de configuratie met hoge Beschik baarheid wordt voortdurend bewaakt en gerapporteerd op de portal. De zone redundante hoge Beschik baarheid wordt hieronder weer gegeven:
 
@@ -43,7 +43,7 @@ De status van de configuratie met hoge Beschik baarheid wordt voortdurend bewaak
 
 PostgreSQL-client toepassingen zijn verbonden met de primaire server met behulp van de naam van de DB-server. Lees bewerkingen van toepassingen worden rechtstreeks vanaf de primaire server bediend, terwijl door voeringen en schrijf bewerkingen alleen worden bevestigd aan de toepassing nadat de gegevens zijn opgeslagen op de primaire server en de stand-by replica. Als gevolg van deze extra round-trip vereiste kunnen toepassingen verhoogde latentie voor schrijf bewerkingen en door voeringen verwachten. U kunt de status van de hoge Beschik baarheid in de portal bewaken.
 
-:::image type="content" source="./media/business-continuity/concepts-high-availability-steady-state.png" alt-text="zone redundante hoge Beschik baarheid-constante status"::: 
+:::image type="content" source="./media/business-continuity/concepts-high-availability-steady-state.png" alt-text="zone redundant hoge Beschik baarheid"::: 
 
 1. Clients maken verbinding met de flexibele server en voeren schrijf bewerkingen uit.
 2. Wijzigingen worden gerepliceerd naar de stand-by-site.
@@ -64,7 +64,7 @@ Voor andere door de gebruiker gestarte bewerkingen, zoals schalen of schalen, wo
 
 Ongeplande uitval omvat software fouten of infrastructuur onderdeel fouten die de beschik baarheid van de data base beïnvloeden. Als de server niet beschik baarheid wordt gedetecteerd door het bewakings systeem, is de replicatie naar de stand-by replica ernstig en is de stand-by replica geactiveerd voor de primaire database server. Clients kunnen opnieuw verbinding maken met de database server met behulp van dezelfde connection string en hun bewerkingen hervatten. De verwachte failover-tijd duurt 60 120s. Afhankelijk van de activiteit op de primaire database server op het moment van de failover, zoals grote trans acties en herstel tijd, kan de failover echter langer duren.
 
-:::image type="content" source="./media/business-continuity/concepts-high-availability-failover-state.png" alt-text="zone redundante hoge Beschik baarheid-failover"::: 
+:::image type="content" source="./media/business-continuity/concepts-high-availability-failover-state.png" alt-text="zone redundant hoge Beschik baarheid"::: 
 
 1. De primaire database server is niet beschikbaar en de clients hebben geen verbinding meer met de data base. 
 2. De stand-by-server wordt geactiveerd om de nieuwe primaire server te worden. De client maakt verbinding met de nieuwe primaire server met behulp van dezelfde connection string. Het hebben van de client toepassing in dezelfde zone als de primaire database server vermindert de latentie en verbetert de prestaties.
@@ -111,7 +111,7 @@ Flexibele servers die zijn geconfigureerd met maximale Beschik baarheid, replice
 
 -   Het configureren van door de klant geïnitieerde beheer taken kan niet worden gepland tijdens het beheerde onderhouds venster.
 
--   Geplande gebeurtenissen, zoals schaal berekening en schaal opslag, worden eerst uitgevoerd in de stand-bymodus en vervolgens op de primaire server. Er is geen failover uitgevoerd voor de service. 
+-   Geplande gebeurtenissen, zoals schaalberekening en schaalopslag, worden eerst uitgevoerd op de stand-byserver en vervolgens op de primaire server. Er wordt geen failover uitgevoerd voor de service. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

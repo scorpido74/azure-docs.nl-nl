@@ -13,10 +13,10 @@ ms.date: 09/28/2020
 ms.author: aahi
 keywords: on-premises, docker, container, sentiment analyse, natuurlijke taal verwerking
 ms.openlocfilehash: 42b22c94f8f2eed0514906422fe9f1d5e7cd12e2
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91461492"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>De Text Analytics-containers installeren en uitvoeren
@@ -29,7 +29,7 @@ ms.locfileid: "91461492"
 
 Containers bieden u de mogelijkheid de Text Analytics-API's in uw eigen omgeving uit te voeren en zijn ideaal voor uw specifieke vereisten voor beveiliging en gegevensbeheer. De Text Analytics-containers bieden geavanceerde verwerking van natuurlijke taal via onbewerkte tekst en bevatten drie belang rijke functies: sentiment analyse, extractie van sleutel zinnen en taal detectie. 
 
-Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/cognitive-services/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/cognitive-services/) aan voordat u begint.
 
 > [!IMPORTANT]
 > Het gratis account is beperkt tot 5.000 trans acties per maand en alleen de <a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">prijs categorieën <span class="docon docon-navigate-external x-hidden-focus"></span> </a> **gratis** en **standaard** zijn geldig voor containers. Zie [gegevens limieten](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits)voor meer informatie over de tarieven voor transactie aanvragen.
@@ -178,5 +178,5 @@ In dit artikel hebt u concepten en werk stromen geleerd om Text Analytics contai
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Containers voor configuratie-instellingen [configureren](../text-analytics-resource-container-config.md) controleren
+* Controleer [Containers configureren](../text-analytics-resource-container-config.md) voor configuratie-instellingen
 * Raadpleeg Veelgestelde [vragen (FAQ)](../text-analytics-resource-faq.md) om problemen met betrekking tot de functionaliteit op te lossen.

@@ -8,18 +8,18 @@ ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 0a5a7ac7d830cb03b1370c31d7e854f3b2a5a2fc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e9fd20fd42e9fe1eb0e98766798e5c759c974c97
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507179"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013896"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Asynchroon vernieuwen met de REST API
 
 Door gebruik te maken van elke programmeer taal die REST-aanroepen ondersteunt, kunt u asynchrone bewerkingen voor het vernieuwen van gegevens uitvoeren op uw Azure Analysis Services modellen in tabel vorm. Dit omvat synchronisatie van alleen-lezen replica's voor het uitbreiden van de query. 
 
-Het vernieuwen van gegevens kan enige tijd in beslag nemen, afhankelijk van een aantal factoren, zoals het gegevens volume, het optimalisatie niveau met behulp van partities, enzovoort. Deze bewerkingen zijn traditioneel aangeroepen met bestaande methoden, zoals het gebruik van [Tom](https://docs.microsoft.com/analysis-services/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) (Tabellair object model), [Power shell](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) -cmdlets of [TMSL](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) (tabellaire model script taal). Deze methoden kunnen echter vaak onbetrouwbare, langlopende HTTP-verbindingen vereisen.
+Het vernieuwen van gegevens kan enige tijd in beslag nemen, afhankelijk van een aantal factoren, zoals het gegevens volume, het optimalisatie niveau met behulp van partities, enzovoort. Deze bewerkingen zijn traditioneel aangeroepen met bestaande methoden, zoals het gebruik van [Tom](/analysis-services/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) (Tabellair object model), [Power shell](/analysis-services/powershell/analysis-services-powershell-reference) -cmdlets of [TMSL](/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) (tabellaire model script taal). Deze methoden kunnen echter vaak onbetrouwbare, langlopende HTTP-verbindingen vereisen.
 
 Met de REST API voor Azure Analysis Services kunnen bewerkingen voor gegevens vernieuwing asynchroon worden uitgevoerd. Met behulp van de REST API kunnen langlopende HTTP-verbindingen van client toepassingen niet nodig zijn. Er zijn ook andere ingebouwde functies voor betrouw baarheid, zoals automatische nieuwe pogingen en batch doorvoer.
 
@@ -100,9 +100,9 @@ Het opgeven van para meters is niet vereist. De standaard waarde wordt toegepast
 
 | Naam             | Type  | Beschrijving  |Standaard  |
 |------------------|-------|--------------|---------|
-| `Type`           | Enum  | Het type verwerking dat moet worden uitgevoerd. De typen zijn afgestemd op de TMSL- [vernieuwings opdracht](https://docs.microsoft.com/analysis-services/tmsl/refresh-command-tmsl) typen: Full, clearValues, Calculate, dataOnly, Automatic en defragmenteren. Het type toevoegen wordt niet ondersteund.      |   automatisch      |
+| `Type`           | Enum  | Het type verwerking dat moet worden uitgevoerd. De typen zijn afgestemd op de TMSL- [vernieuwings opdracht](/analysis-services/tmsl/refresh-command-tmsl) typen: Full, clearValues, Calculate, dataOnly, Automatic en defragmenteren. Het type toevoegen wordt niet ondersteund.      |   automatisch      |
 | `CommitMode`     | Enum  | Bepaalt of objecten worden doorgevoerd in batches of alleen wanneer dit is voltooid. Voor beelden zijn: standaard, transactioneel, partialBatch.  |  transactionele       |
-| `MaxParallelism` | Int   | Deze waarde bepaalt het maximum aantal threads waarop verwerkings opdrachten parallel moeten worden uitgevoerd. Deze waarde is afgestemd op de eigenschap MaxParallelism die kan worden ingesteld in de [opdracht TMSL sequence](https://docs.microsoft.com/analysis-services/tmsl/sequence-command-tmsl) of met behulp van andere methoden.       | 10        |
+| `MaxParallelism` | Int   | Deze waarde bepaalt het maximum aantal threads waarop verwerkings opdrachten parallel moeten worden uitgevoerd. Deze waarde is afgestemd op de eigenschap MaxParallelism die kan worden ingesteld in de [opdracht TMSL sequence](/analysis-services/tmsl/sequence-command-tmsl) of met behulp van andere methoden.       | 10        |
 | `RetryCount`     | Int   | Hiermee wordt het aantal keren aangegeven dat de bewerking opnieuw wordt uitgevoerd voordat er een fout optreedt.      |     0    |
 | `Objects`        | Matrix | Een matrix met objecten die moeten worden verwerkt. Elk object bevat: ' tabel ' bij het verwerken van de volledige tabel of ' tabel ' en ' partitie ' bij het verwerken van een partitie. Als er geen objecten zijn opgegeven, wordt het hele model vernieuwd. |   Het volledige model verwerken      |
 
@@ -223,9 +223,7 @@ Zie [Service-Principal maken-Azure Portal](../active-directory/develop/howto-cre
 3.    Voet het voorbeeld uit.
 
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 [Voor beelden](analysis-services-samples.md)   
-[REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)   
-
-
+[REST API](/rest/api/analysisservices/servers)

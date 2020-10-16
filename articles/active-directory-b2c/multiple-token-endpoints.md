@@ -12,10 +12,10 @@ ms.date: 07/31/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 5528607b0559dad246262748c83c9d359ee2144e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85385736"
 ---
 # <a name="migrate-an-owin-based-web-api-to-b2clogincom"></a>Een op OWIN gebaseerde web-API migreren naar b2clogin.com
@@ -107,7 +107,7 @@ In deze sectie werkt u de code bij om aan te geven dat beide eind punten van de 
     };
     ```
 
-`TokenValidationParameters`wordt verzorgd door MSAL.NET en wordt gebruikt door de OWIN-middleware in de volgende sectie van de code in *Startup.auth.cs*. Als er meerdere geldige verleners zijn opgegeven, wordt de OWIN-toepassings pijplijn op de hoogte gesteld dat beide token-eind punten geldige verleners zijn.
+`TokenValidationParameters` wordt verzorgd door MSAL.NET en wordt gebruikt door de OWIN-middleware in de volgende sectie van de code in *Startup.auth.cs*. Als er meerdere geldige verleners zijn opgegeven, wordt de OWIN-toepassings pijplijn op de hoogte gesteld dat beide token-eind punten geldige verleners zijn.
 
 ```csharp
 app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions

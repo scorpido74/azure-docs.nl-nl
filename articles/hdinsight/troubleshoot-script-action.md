@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.custom: seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: e8585779a263f4ff5dbdd998bbf065c6a4e1acdf
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86079255"
 ---
 # <a name="troubleshoot-script-actions-in-azure-hdinsight"></a>Problemen met script acties in azure HDInsight oplossen
@@ -25,7 +25,7 @@ U kunt de Web-UI van Apache Ambari gebruiken om informatie te bekijken die is va
 
 ### <a name="apache-ambari-web-ui"></a>Apache Ambari-webgebruikersinterface
 
-1. Ga in een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net` , waarbij `CLUSTERNAME` de naam van het cluster is.
+1. Navigeer in een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net`, waarbij `CLUSTERNAME` de naam van uw cluster is.
 
 1. Selecteer de **OPS** -vermelding in de balk boven aan de pagina. Er wordt een lijst weer gegeven met de huidige en vorige bewerkingen die op het cluster zijn uitgevoerd via Ambari.
 
@@ -47,11 +47,11 @@ Als het maken van een cluster mislukt vanwege een script fout, worden de logboek
 
     In deze map worden de logboeken afzonderlijk geordend voor **hoofd knooppunt**, **worker node**en **Zookeeper node**. Zie de volgende voorbeelden:
 
-    * **Hoofd knooppunt**:`<ACTIVE-HEADNODE-NAME>.cloudapp.net`
+    * **Hoofd knooppunt**: `<ACTIVE-HEADNODE-NAME>.cloudapp.net`
 
-    * **Worker-knoop punt**:`<ACTIVE-WORKERNODE-NAME>.cloudapp.net`
+    * **Worker-knoop punt**: `<ACTIVE-WORKERNODE-NAME>.cloudapp.net`
 
-    * **Zookeeper-knoop punt**:`<ACTIVE-ZOOKEEPERNODE-NAME>.cloudapp.net`
+    * **Zookeeper-knoop punt**: `<ACTIVE-ZOOKEEPERNODE-NAME>.cloudapp.net`
 
 * Alle **stdout** en **stderr** van de bijbehorende host worden geüpload naar het opslag account. Er zijn één **uitvoer- \* . txt** en **fouten- \* . txt** voor elke script actie. Het **output-*. txt** -bestand bevat informatie over de URI van het script dat op de host is uitgevoerd. De volgende tekst is een voor beeld van deze informatie:
 

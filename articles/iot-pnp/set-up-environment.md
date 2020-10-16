@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: 3b7c9b51bad45bb348f70c8b0e433404b49b5aac
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91761359"
 ---
 # <a name="set-up-your-environment-for-the-iot-plug-and-play-quickstarts-and-tutorials"></a>Uw omgeving instellen voor de Snelstartgids en zelf studies voor IoT Plug en Play
@@ -83,8 +83,8 @@ Maak vijf omgevings variabelen voor het configureren van de voor beelden in de Q
 
 De service voorbeelden hebben de volgende omgevings variabelen nodig om de hub en het apparaat te identificeren waarmee verbinding moet worden gemaakt:
 
-* **IOTHUB_CONNECTION_STRING**: de IoT hub Connection String u eerder een notitie hebt gemaakt.
-* **IOTHUB_DEVICE_ID**: `my-pnp-device` .
+* **IOTHUB_CONNECTION_STRING**: de verbindingsreeks voor de IoT-hub die u eerder hebt genoteerd.
+* **IOTHUB_DEVICE_ID**: `my-pnp-device`.
 
 Bijvoorbeeld in een Linux bash-shell:
 
@@ -128,7 +128,7 @@ De eerste keer dat u het hulp programma uitvoert, wordt u gevraagd om de IoT hub
 
 Configureer het hulp programma voor het gebruik van de model bestanden die u eerder hebt gedownload. Selecteer op de start pagina van het hulp programma **IoT Plug en Play-instellingen**en vervolgens op **> lokale map toevoegen**. Selecteer de map *modellen* die u eerder hebt gemaakt. Selecteer vervolgens **Opslaan** om de instellingen op te slaan.
 
-Zie [Azure IOT Explorer installeren en gebruiken](howto-use-iot-explorer.md)voor meer informatie.
+Zie [Azure IoT Explorer installeren en gebruiken](howto-use-iot-explorer.md) voor meer informatie.
 
 ## <a name="remove-the-resources"></a>De resources verwijderen
 

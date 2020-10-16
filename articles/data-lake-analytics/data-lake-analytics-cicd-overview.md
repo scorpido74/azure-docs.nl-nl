@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.workload: big-data
 ms.date: 09/14/2018
 ms.openlocfilehash: 3517938ae0e08af62a6fcf0d3d0a43a5eaee48dd
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87496114"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>Een CI/CD-pijp lijn voor Azure Data Lake Analytics instellen  
@@ -355,7 +355,7 @@ Het is momenteel niet mogelijk om test cases toe te voegen voor functies met tab
 
 ## <a name="deploy-u-sql-database-through-azure-pipelines"></a>U-SQL database implementeren via Azure-pijp lijnen
 
-`PackageDeploymentTool.exe`biedt de programmeer-en opdracht regel interfaces die U helpen bij de implementatie van U-SQL database implementatie pakketten, **. usqldbpack**. De SDK is opgenomen in het [U-SQL SDK NuGet-pakket](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/), dat zich bevindt op **build/runtime/PackageDeploymentTool.exe**. Met `PackageDeploymentTool.exe` kunt u u-SQL-data bases implementeren op zowel Azure data Lake Analytics als lokale accounts.
+`PackageDeploymentTool.exe` biedt de programmeer-en opdracht regel interfaces die U helpen bij de implementatie van U-SQL database implementatie pakketten, **. usqldbpack**. De SDK is opgenomen in het [U-SQL SDK NuGet-pakket](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/), dat zich bevindt op **build/runtime/PackageDeploymentTool.exe**. Met `PackageDeploymentTool.exe` kunt u u-SQL-data bases implementeren op zowel Azure data Lake Analytics als lokale accounts.
 
 > [!NOTE]
 >
@@ -425,7 +425,7 @@ Voer de volgende stappen uit om een implementatie taak voor een data base in te 
     copy USQLSDK\build\runtime\*.* $DBDeploymentTool
     ```
 
-2. Voeg een **opdracht regel taak** toe in een build of release-pijp lijn en vul het script in door in te roepen `PackageDeploymentTool.exe` . `PackageDeploymentTool.exe`bevindt zich onder de gedefinieerde map **$DBDeploymentTool** . Het voorbeeld script is als volgt: 
+2. Voeg een **opdracht regel taak** toe in een build of release-pijp lijn en vul het script in door in te roepen `PackageDeploymentTool.exe` . `PackageDeploymentTool.exe` bevindt zich onder de gedefinieerde map **$DBDeploymentTool** . Het voorbeeld script is als volgt: 
 
     * Een U-SQL database lokaal implementeren:
 
@@ -457,31 +457,31 @@ Voer de volgende stappen uit om een implementatie taak voor een data base in te 
 
 | Parameter | Beschrijving | Standaardwaarde | Vereist |
 |---------|-----------|-------------|--------|
-|Pakket|Het pad van het U-SQL database implementatie pakket dat moet worden geïmplementeerd.|null|waar|
+|Pakket|Het pad van het U-SQL database implementatie pakket dat moet worden geïmplementeerd.|null|true|
 |Database|De naam van de data base die moet worden geïmplementeerd of gemaakt.|model|onjuist|
-|Logbestand|Het pad van het bestand voor logboek registratie. Standaard ingesteld op standaard waarde (console).|null|onjuist|
+|Logbestand|Het pad van het bestand voor logboek registratie. Standaard ingesteld op standaard waarde (console).|null|false|
 |Logniveau|Logboek niveau: uitgebreid, normaal, waarschuwing of fout.|LogLevel. Normal|onjuist|
 
 #### <a name="parameter-for-local-deployment"></a>Para meter voor lokale implementatie
 
 |Parameter|Beschrijving|Standaardwaarde|Vereist|
 |---------|-----------|-------------|--------|
-|Data root|Het pad van de lokale hoofdmap van de gegevens.|null|waar|
+|Data root|Het pad van de lokale hoofdmap van de gegevens.|null|true|
 
 #### <a name="parameters-for-azure-data-lake-analytics-deployment"></a>Para meters voor Azure Data Lake Analytics implementatie
 
 |Parameter|Beschrijving|Standaardwaarde|Vereist|
 |---------|-----------|-------------|--------|
-|Account|Hiermee geeft u op met welke Azure Data Lake Analytics-account moet worden geïmplementeerd op basis van de account naam.|null|waar|
-|ResourceGroup|De naam van de Azure-resource groep voor het Azure Data Lake Analytics-account.|null|waar|
-|SubscriptionId|De Azure-abonnements-ID voor het Azure Data Lake Analytics-account.|null|waar|
-|Tenant|De naam van de Tenant is de domein naam van de Azure Active Directory (Azure AD). Zoek het op de pagina abonnements beheer in het Azure Portal.|null|waar|
-|AzureSDKPath|Het pad voor het zoeken naar afhankelijke assembly's in de Azure SDK.|null|waar|
+|Account|Hiermee geeft u op met welke Azure Data Lake Analytics-account moet worden geïmplementeerd op basis van de account naam.|null|true|
+|ResourceGroup|De naam van de Azure-resource groep voor het Azure Data Lake Analytics-account.|null|true|
+|SubscriptionId|De Azure-abonnements-ID voor het Azure Data Lake Analytics-account.|null|true|
+|Tenant|De naam van de Tenant is de domein naam van de Azure Active Directory (Azure AD). Zoek het op de pagina abonnements beheer in het Azure Portal.|null|true|
+|AzureSDKPath|Het pad voor het zoeken naar afhankelijke assembly's in de Azure SDK.|null|true|
 |Interactief|Hiermee wordt aangegeven of interactieve modus moet worden gebruikt voor verificatie.|onjuist|onjuist|
 |ClientId|De Azure AD-toepassings-ID die is vereist voor niet-interactieve verificatie.|null|Vereist voor niet-interactieve verificatie.|
 |Geheim|Het geheim of het wacht woord voor niet-interactieve verificatie. Deze moet alleen worden gebruikt in een vertrouwde en beveiligde omgeving.|null|Vereist voor niet-interactieve verificatie, of gebruik SecreteFile.|
 |SecreteFile|Het bestand slaat het geheim of het wacht woord voor niet-interactieve verificatie op. Zorg ervoor dat het alleen leesbaar is voor de huidige gebruiker.|null|Vereist voor niet-interactieve verificatie, of gebruik geheim.|
-|CERT|Het bestand bespaart X. 509-certificering voor niet-interactieve verificatie. De standaard instelling is het gebruik van verificatie van client geheim.|null|onjuist|
+|CERT|Het bestand bespaart X. 509-certificering voor niet-interactieve verificatie. De standaard instelling is het gebruik van verificatie van client geheim.|null|false|
 | JobPrefix | Het voor voegsel voor de implementatie van de data base van een U-SQL DDL-taak. | Deploy_ + DateTime. nu | onjuist |
 
 ## <a name="next-steps"></a>Volgende stappen

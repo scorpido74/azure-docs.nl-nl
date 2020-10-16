@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 6c88a1eaee50676cfe6bb9589779d7156b805e30
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 77dc64d9660f9a0bf66559c4a5a976362cf1acd0
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920973"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951635"
 ---
 ::: zone target = "docs"
 
@@ -97,11 +97,11 @@ Als u een hostcomputer met Windows Server gebruikt, voert u deze stappen uit om 
 
 1. U moet eerst een verificatie uitvoeren en een sessie starten. Ga naar **Verbinding maken en kopiëren**. Klik op **Referenties ophalen** om de toegangsreferenties te krijgen voor de shares die aan uw opslagaccount zijn gekoppeld.
 
-    ![Sharereferenties 1 ophalen](media/data-box-heavy-deploy-copy-data/get-share-credentials-1.png)
+    ![Sharereferenties ophalen](media/data-box-heavy-deploy-copy-data/get-share-credentials-1.png)
 
 2. Kopieer in het dialoogvenster Verbinding maken met share en gegevens kopiëren de **Gebruikersnaam** en het **Wachtwoord** voor de share. Klik op **OK**.
     
-    ![Sharereferenties 1 ophalen](media/data-box-heavy-deploy-copy-data/get-share-credentials-2.png)
+    ![Sharereferenties 2 ophalen](media/data-box-heavy-deploy-copy-data/get-share-credentials-2.png)
 
 3. Om vanaf uw hostcomputer toegang te krijgen tot de shares die zijn gekoppeld aan uw opslagaccount (*databoxe2etest* in het volgende voorbeeld), opent u een opdrachtvenster. Typ in de opdrachtprompt:
 
@@ -122,7 +122,7 @@ Als u een hostcomputer met Windows Server gebruikt, voert u deze stappen uit om 
 
 4. Druk op Windows-toets+R. Geef in het venster **Uitvoeren** het `\\<device IP address>` op. Klik op **OK** om Verkenner te openen.
     
-    ![Verbinding met de share maken via Verkenner 2](media/data-box-heavy-deploy-copy-data/connect-shares-file-explorer-1.png)
+    ![Verbinding maken met share via Verkenner](media/data-box-heavy-deploy-copy-data/connect-shares-file-explorer-1.png)
 
     Als het goed is, worden de shares nu weergegeven als mappen.
     

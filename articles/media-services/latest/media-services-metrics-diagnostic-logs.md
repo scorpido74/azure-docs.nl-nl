@@ -15,17 +15,17 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: c03950d64c9ead17dfa5c07ef70ab2b7ee0e90bb
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89296648"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-via-azure-monitor"></a>Media Services metrische gegevens en Diagnostische logboeken via Azure Monitor bewaken
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Met [Azure monitor](../../azure-monitor/overview.md) kunt u metrische gegevens en Diagnostische logboeken bewaken die u helpen begrijpen hoe uw apps worden uitgevoerd. Alle gegevens die worden verzameld door Azure Monitor, komen in een van de volgende twee fundamentele typen voor: metrieken en Logboeken. U kunt Media Services Diagnostische logboeken bewaken en waarschuwingen en meldingen maken voor de verzamelde metrische gegevens en Logboeken. U kunt de metrische gegevens visualiseren en analyseren met behulp van [Metrics Explorer](../../azure-monitor/platform/metrics-getting-started.md). U kunt logboeken naar [Azure Storage](https://azure.microsoft.com/services/storage/)verzenden, ze streamen naar [Azure Event hubs](https://azure.microsoft.com/services/event-hubs/), ze exporteren naar [log Analytics](https://azure.microsoft.com/services/log-analytics/)of services van derden gebruiken.
+Met [Azure monitor](../../azure-monitor/overview.md) kunt u metrische gegevens en Diagnostische logboeken bewaken die u helpen begrijpen hoe uw apps worden uitgevoerd. Alle gegevens die worden verzameld door Azure Monitor kunnen in twee fundamentele typen worden ingedeeld: metrische gegevens en logboeken. U kunt Media Services Diagnostische logboeken bewaken en waarschuwingen en meldingen maken voor de verzamelde metrische gegevens en Logboeken. U kunt de metrische gegevens visualiseren en analyseren met behulp van [Metrics Explorer](../../azure-monitor/platform/metrics-getting-started.md). U kunt logboeken naar [Azure Storage](https://azure.microsoft.com/services/storage/)verzenden, ze streamen naar [Azure Event hubs](https://azure.microsoft.com/services/event-hubs/), ze exporteren naar [log Analytics](https://azure.microsoft.com/services/log-analytics/)of services van derden gebruiken.
 
 Zie [Azure monitor metrische gegevens](../../azure-monitor/platform/data-platform.md) en [Azure monitor Diagnostische logboeken](../../azure-monitor/platform/platform-logs-overview.md)voor een gedetailleerd overzicht.
 

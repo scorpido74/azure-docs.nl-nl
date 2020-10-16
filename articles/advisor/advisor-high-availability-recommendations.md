@@ -3,12 +3,12 @@ title: Verbeter de betrouw baarheid van uw toepassing met Advisor
 description: Gebruik Azure Advisor om de betrouw baarheid in uw bedrijfs kritieke Azure-implementaties te garanderen en te verbeteren.
 ms.topic: article
 ms.date: 09/27/2020
-ms.openlocfilehash: 1e256d99f8d78ddff318f963dcb21e9b4537f110
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.openlocfilehash: 0ced690ae735a281fdf8b1c3a020ff8c63ce469b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91405187"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078031"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>Verbeter de betrouw baarheid van uw toepassing met behulp van Azure Advisor
 
@@ -44,7 +44,7 @@ Als een Traffic Manager profiel is geconfigureerd voor geografische route ring, 
 
 ## <a name="use-soft-delete-on-your-azure-storage-account-to-save-and-recover-data-after-accidental-overwrite-or-deletion"></a>Gebruik zacht verwijderen in uw Azure Storage-account om gegevens op te slaan en te herstellen nadat het per ongeluk is overschreven of verwijderd
 
-Schakel de optie [voorlopig verwijderen](../storage/blobs/soft-delete-overview.md) in uw opslag account in, zodat verwijderde blobs overstappen naar een voorlopig verwijderde status in plaats van permanent worden verwijderd. Als gegevens worden overschreven, wordt er een voorlopig verwijderde momentopname gegenereerd waarin de status van de overschreven gegevens wordt opgeslagen. Met de functie voor het gebruik van zacht verwijderen kunt u herstellen van onbedoeld verwijderen of overschrijvingen. Advisor identificeert Azure Storage-accounts waarvoor geen tijdelijke verwijdering is ingeschakeld en raadt u aan om deze in te scha kelen.
+Schakel de optie [voorlopig verwijderen](../storage/blobs/soft-delete-blob-overview.md) in uw opslag account in, zodat verwijderde blobs overstappen naar een voorlopig verwijderde status in plaats van permanent worden verwijderd. Als gegevens worden overschreven, wordt er een voorlopig verwijderde momentopname gegenereerd waarin de status van de overschreven gegevens wordt opgeslagen. Met de functie voor het gebruik van zacht verwijderen kunt u herstellen van onbedoeld verwijderen of overschrijvingen. Advisor identificeert Azure Storage-accounts waarvoor geen tijdelijke verwijdering is ingeschakeld en raadt u aan om deze in te scha kelen.
 
 ## <a name="configure-your-vpn-gateway-to-active-active-for-connection-resiliency"></a>Configureer uw VPN-gateway naar actief-actief voor verbindings tolerantie
 
@@ -80,23 +80,23 @@ Azure Advisor detecteert waarschuwings regels voor logboeken waarvoor ongeldige 
 
 ## <a name="configure-consistent-indexing-mode-on-your-azure-cosmos-db-collection"></a>Consistente indexerings modus configureren voor uw Azure Cosmos DB verzameling
 
-Het configureren van Azure Cosmos DB-containers met de vertraagde indexerings modus kan van invloed zijn op de versheid van de query resultaten. Advisor detecteert containers die op deze manier zijn geconfigureerd en raadt aan om over te scha kelen naar de consistente modus. [Meer informatie over het indexeren van beleid in Azure Cosmos DB.](https://aka.ms/cosmosdb/how-to-manage-indexing-policy)
+Het configureren van Azure Cosmos DB-containers met de vertraagde indexerings modus kan van invloed zijn op de versheid van de query resultaten. Advisor detecteert containers die op deze manier zijn geconfigureerd en raadt aan om over te scha kelen naar de consistente modus. [Meer informatie over het indexeren van beleid in Azure Cosmos DB.](../cosmos-db/how-to-manage-indexing-policy.md)
 
 ## <a name="configure-your-azure-cosmos-db-containers-with-a-partition-key"></a>Uw Azure Cosmos DB-containers met een partitiesleutel configureren
 
-Azure Advisor identificeert Azure Cosmos DB niet-gepartitioneerde verzamelingen die de ingerichte opslag limiet nadert. U wordt aangeraden deze verzamelingen te migreren naar nieuwe verzamelingen met een partitie sleutel definitie zodat deze automatisch kan worden uitgeschaald door de service. [Meer informatie over het kiezen van een partitie sleutel.](https://aka.ms/cosmosdb/choose-partitionkey)
+Azure Advisor identificeert Azure Cosmos DB niet-gepartitioneerde verzamelingen die de ingerichte opslag limiet nadert. U wordt aangeraden deze verzamelingen te migreren naar nieuwe verzamelingen met een partitie sleutel definitie zodat deze automatisch kan worden uitgeschaald door de service. [Meer informatie over het kiezen van een partitie sleutel.](../cosmos-db/partitioning-overview.md)
 
 ## <a name="upgrade-your-azure-cosmos-db-net-sdk-to-the-latest-version-from-nuget"></a>Upgrade uw Azure Cosmos DB .NET SDK naar de nieuwste versie van NuGet
 
-Azure Advisor identificeert Azure Cosmos DB accounts die gebruikmaken van oude versies van de .NET SDK. Het wordt aanbevolen dat u een upgrade uitvoert naar de meest recente versie van NuGet voor de nieuwste oplossingen, prestatie verbeteringen en functie mogelijkheden. [Meer informatie over Azure Cosmos DB .NET SDK.](https://aka.ms/cosmosdb/sql-api-sdk-dotnet)
+Azure Advisor identificeert Azure Cosmos DB accounts die gebruikmaken van oude versies van de .NET SDK. Het wordt aanbevolen dat u een upgrade uitvoert naar de meest recente versie van NuGet voor de nieuwste oplossingen, prestatie verbeteringen en functie mogelijkheden. [Meer informatie over Azure Cosmos DB .NET SDK.](../cosmos-db/sql-api-sdk-dotnet-standard.md)
 
 ## <a name="upgrade-your-azure-cosmos-db-java-sdk-to-the-latest-version-from-maven"></a>Uw Azure Cosmos DB Java SDK bijwerken naar de nieuwste versie van Maven
 
-Azure Advisor identificeert Azure Cosmos DB accounts die gebruikmaken van oude versies van de Java-SDK. Het wordt aanbevolen dat u een upgrade uitvoert naar de meest recente versie van Maven voor de nieuwste oplossingen, prestatie verbeteringen en functie mogelijkheden. [Meer informatie over Azure Cosmos DB Java SDK.](https://aka.ms/cosmosdb/sql-api-sdk-async-java)
+Azure Advisor identificeert Azure Cosmos DB accounts die gebruikmaken van oude versies van de Java-SDK. Het wordt aanbevolen dat u een upgrade uitvoert naar de meest recente versie van Maven voor de nieuwste oplossingen, prestatie verbeteringen en functie mogelijkheden. [Meer informatie over Azure Cosmos DB Java SDK.](../cosmos-db/sql-api-sdk-java-v4.md)
 
 ## <a name="upgrade-your-azure-cosmos-db-spark-connector-to-the-latest-version-from-maven"></a>Voer een upgrade uit van uw Azure Cosmos DB Spark-connector naar de nieuwste versie van Maven
 
-Azure Advisor identificeert Azure Cosmos DB accounts die gebruikmaken van oude versies van de Azure Cosmos DB Spark-connector. Het wordt aanbevolen dat u een upgrade uitvoert naar de meest recente versie van Maven voor de nieuwste oplossingen, prestatie verbeteringen en functie mogelijkheden. [Meer informatie over Azure Cosmos DB Spark-connector.](https://aka.ms/cosmosdb/spark-connector)
+Azure Advisor identificeert Azure Cosmos DB accounts die gebruikmaken van oude versies van de Azure Cosmos DB Spark-connector. Het wordt aanbevolen dat u een upgrade uitvoert naar de meest recente versie van Maven voor de nieuwste oplossingen, prestatie verbeteringen en functie mogelijkheden. [Meer informatie over Azure Cosmos DB Spark-connector.](../cosmos-db/spark-connector.md)
 
 ## <a name="consider-moving-to-kafka-21-on-hdinsight-40"></a>Overweeg om over te stappen op Kafka 2,1 in HDInsight 4,0
 
@@ -110,10 +110,10 @@ Vanaf 1 juli 2020 kunt u geen nieuwe Spark-clusters maken met behulp van Spark 2
 Virtuele machines waarvoor geen replicatie is ingeschakeld voor een andere regio, zijn niet flexibel voor regionale storingen. Het repliceren van virtuele machines vermindert nadelige gevolgen voor het bedrijf tijdens de uitval van Azure-regio's. Advisor detecteert Vm's waarop replicatie niet is ingeschakeld en raadt aan om deze functie in te scha kelen. Wanneer u replicatie inschakelt en er zich een storing voordoet, kunt u uw virtuele machines snel weer geven in een externe Azure-regio. [Meer informatie over replicatie van virtuele machines.](../site-recovery/azure-to-azure-quickstart.md)
 
 ## <a name="upgrade-to-the-latest-version-of-the-azure-connected-machine-agent"></a>Upgraden naar de nieuwste versie van de Azure Connected Machine-agent
-De [agent van de Azure Connected machine](https://docs.microsoft.com/azure/azure-arc/servers/manage-agent) wordt regel matig bijgewerkt met fout oplossingen, verbeteringen in stabiliteit en nieuwe functionaliteit. Er zijn resources geïdentificeerd die niet werken met de meest recente versie van machine agent en deze Advisor-aanbeveling raadt u aan om uw agent bij te werken naar de nieuwste versie voor de beste Azure Arc-ervaring.
+De [agent van de Azure Connected machine](../azure-arc/servers/manage-agent.md) wordt regel matig bijgewerkt met fout oplossingen, verbeteringen in stabiliteit en nieuwe functionaliteit. Er zijn resources geïdentificeerd die niet werken met de meest recente versie van machine agent en deze Advisor-aanbeveling raadt u aan om uw agent bij te werken naar de nieuwste versie voor de beste Azure Arc-ervaring.
 
 ## <a name="do-not-override-hostname-to-ensure-website-integrity"></a>De hostnaam niet overschrijven om de integriteit van de website te garanderen
-Advisor raadt aan om te voor komen dat de hostnaam wordt overschreven bij het configureren van Application Gateway. Als u een ander domein hebt op de front-end van Application Gateway dan de-URL die wordt gebruikt voor toegang tot de back-end, kan dit leiden tot cookies of omleidings-url's die worden verbroken. Houd er rekening mee dat dit in alle gevallen niet het geval is en dat bepaalde soorten back-ends (zoals REST API) in het algemeen minder gevoelig zijn. Controleer of de back-end kan worden verwerkt of werk de Application Gateway configuratie bij, zodat de hostnaam niet op de back-end hoeft te worden overschreven. Bij gebruik in combi natie met App Service koppelt u een aangepaste domein naam aan de web-app en vermijdt u het gebruik van de *azurewebsites.net-hostnaam voor de back-end.* [Meer informatie over een aangepast domein](https://aka.ms/appgw-advisor-usecustomdomain).
+Advisor raadt aan om te voor komen dat de hostnaam wordt overschreven bij het configureren van Application Gateway. Als u een ander domein hebt op de front-end van Application Gateway dan het domein dat wordt gebruikt voor toegang tot de back-end, kan ertoe leiden dat cookies of omleidings-URL's worden verbroken. Houd er rekening mee dat dit niet altijd het geval hoeft te zijn en dat bepaalde categorieën back-ends (zoals REST API's) hiervoor in het algemeen minder gevoelig zijn. Controleer of de back-end hiermee kan omgaan of werk de configuratie van Application Gateway bij, zodat de hostnaam niet op de back-end hoeft te worden overschreven. Bij gebruik in combi natie met App Service koppelt u een aangepaste domein naam aan de web-app en vermijdt u het gebruik van de *azurewebsites.net-hostnaam voor de back-end.* [Meer informatie over een aangepast domein](../application-gateway/troubleshoot-app-service-redirection-app-service-url.md).
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Toegang tot aanbevelingen voor hoge Beschik baarheid in Advisor
 

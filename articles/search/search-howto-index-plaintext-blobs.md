@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.openlocfilehash: 417bdacc3ce8b619d5ec9618e6060ac071882471
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91533922"
 ---
 # <a name="how-to-index-plain-text-blobs-in-azure-cognitive-search"></a>Blobs met tekst zonder opmaak indexeren in azure Cognitive Search
@@ -43,7 +43,7 @@ De `UTF-8` code ring wordt standaard gebruikt. Als u een andere code ring wilt o
     }
 ```
 
-## <a name="request-example"></a>Voor beeld van aanvraag
+## <a name="request-example"></a>Voorbeeld van aanvraag
 
 De parserings modi worden opgegeven in de definitie van de Indexeer functie.
 

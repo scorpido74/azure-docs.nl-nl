@@ -54,6 +54,22 @@
               href: class-type-matlab.md
             - name: SolidWorks computer-aided design (CAD)
               href: class-type-solidworks.md
+        - name: Azure Lab Services gebruiken binnen Teams
+          items:
+            - name: Overzicht
+              href: lab-services-within-teams-overview.md
+            - name: Een lab maken uit Teams
+              href: how-to-get-started-create-lab-within-teams.md
+            - name: Gebruikerslijsten beheren
+              href: how-to-manage-user-lists-within-teams.md
+            - name: VM-pool beheren
+              href: how-to-manage-vm-pool-within-teams.md
+            - name: Labs verwijderen
+              href: how-to-get-started-create-lab-within-teams.md#deleting-classroom-labs
+            - name: Schema's en instellingen
+              href: how-to-create-schedules-within-teams.md
+            - name: Een VM openen (studentweergave)
+              href: how-to-access-vm-for-students-within-teams.md
 - name: Instructiegidsen
   items:
     - name: Beheerdershandleiding

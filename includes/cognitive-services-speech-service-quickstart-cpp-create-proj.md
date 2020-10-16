@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 517b092f933bedae0f254461d9bfee4d4640db8b
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 96a085e3183289d9f2add054128c0faa6b0cdb29
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87375351"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91654425"
 ---
 Als u een Visual Studio-project voor C++-desktopontwikkeling wilt maken, moet u ontwikkelingsopties voor Visual Studio instellen, het project maken, de doelarchitectuur selecteren en de Speech SDK installeren.
 
@@ -19,13 +19,13 @@ Zorg er eerst voor dat Visual Studio correct is ingesteld voor C++-desktopontwik
 
 1. Open Visual Studio 2019 om het**Start**-venster weer te geven.
 
-   ![Startvenster: Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-start-window.png)
+   ![Schermopname van het Start-venster in Visual Studio 2019.](../articles/cognitive-services/Speech-Service/media/sdk/vs-start-window.png)
 
 1. Selecteer **Doorgaan zonder code** om naar de Visual Studio-IDE te gaan.
 
 1. Selecteer in de menubalk van Visual Studio **Hulpprogramma's** > **Hulpprogramma's en functies ophalen** om Visual Studio Installer te openen en het dialoogvenster **Wijzigen** te bekijken.
 
-   ![Tabblad Werkbelastingen, dialoogvenster Wijzigen, Visual Studio Installer](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-cpp-workload.png)
+   ![Schermopname van het tabblad Werkbelastingen van het dialoogvenster Wijzigen voor de Visual Studio Installer.](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-cpp-workload.png)
 
 1. Zoek op het tabblad **Werkbelastingen** onder **Windows** de werkbelasting **Desktopontwikkeling met C++** . Selecteer het selectievakje naast die werkbelasting als dat nog niet is geselecteerd.
 

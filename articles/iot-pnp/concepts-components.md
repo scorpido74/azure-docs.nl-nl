@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: e7b24dd9cdbd11b56545f85ac233665f8fa4adfe
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91574276"
 ---
-# <a name="iot-plug-and-play-components-in-models"></a>IoT Plug en Play-onderdelen in modellen
+# <a name="iot-plug-and-play-components-in-models"></a>IoT Plug en Play-componenten in modellen
 
-In de IoT Plug en Play-conventies is een apparaat een IoT Plug en Play-apparaat als het de DTDL-model-ID (Digital apparaatdubbels Definition Language) weergeeft wanneer deze verbinding maakt met een IoT-hub.
+In de IoT Plug en Play-conventies is een apparaat een IoT Plug en Play-apparaat als het de DTDL-model-ID (Digital Twins Definition Language) weergeeft wanneer het verbinding maakt met een IoT-hub.
 
-Het volgende code fragment toont enkele voor beelden van model-Id's:
+Het volgende codefragment toont enkele voorbeelden van model-ID's:
 
 ```json
  "@id": "dtmi:com:example:TemperatureController;1"

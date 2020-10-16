@@ -12,10 +12,10 @@ ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
 ms.openlocfilehash: d7cd452b6d1107f440d952c7db930281f3d86c11
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91743795"
 ---
 # <a name="train-keras-models-at-scale-with-azure-machine-learning"></a>Keras-modellen op schaal trainen met Azure Machine Learning
@@ -170,7 +170,7 @@ dataset = Dataset.get_by_name(ws, 'mnist-dataset')
 dataset.to_path()
 ```
 
-Maak een ScriptRunConfig-object om de configuratie gegevens van uw trainings taak op te geven, met inbegrip van het trainings script, de omgeving die u wilt gebruiken en het reken doel om uit te voeren.
+Maak een ScriptRunConfig-object om de configuratiegegevens van uw trainingstaak op te geven, inclusief het trainingsscript, de omgeving die u wilt gebruiken en het rekendoel om uit te voeren.
 
 Eventuele argumenten voor uw trainings script worden door gegeven via de opdracht regel indien opgegeven in de `arguments` para meter. De DatasetConsumptionConfig voor onze FileDataset wordt door gegeven als een argument voor het-trainings script, voor het `--data-folder` argument. Met Azure ML wordt deze DatasetConsumptionConfig omgezet naar het koppel punt van de back-upopslag, die vervolgens kan worden geopend vanuit het trainings script.
 

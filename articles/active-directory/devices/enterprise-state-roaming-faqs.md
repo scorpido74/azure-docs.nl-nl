@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d9510bd564ced2f458a9a78ff23200bb32358c3e
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89268533"
 ---
 # <a name="settings-and-data-roaming-faq"></a>Veelgestelde vragen over instellingen en gegevensroaming
@@ -29,7 +29,7 @@ In dit artikel vindt u antwoorden op enkele vragen die beheerders kunnen hebben 
 * *Thema*, met functies zoals het bureaubladthema en taakbalkinstellingen.
 * *Instellingen voor Internet Explorer*, inclusief onlangs geopende tabbladen en favorieten.
 * *Micro soft Edge-browser instellingen*, zoals Favorieten en de Lees lijst.
-* *Wacht woorden*, waaronder Internet wachtwoorden, Wi-Fi-profielen en anderen.
+* *Wacht woorden*, waaronder Internet wachtwoorden, Wi-Fi profielen en anderen.
 * *Taalvoorkeuren*, met onder meer instellingen voor toetsenbordindelingen, systeemtaal en datum en tijd.
 * *Toegankelijkheidsfuncties*, zoals thema met een hoog contrast, Verteller en vergrootglas.
 * *Andere Windows-instellingen*, zoals muisinstellingen.
@@ -66,7 +66,7 @@ Als het on-premises Active Directory domein verbinding maakt met Azure AD, probe
 Als u persoonlijke gegevens op uw bedrijfs apparaat hebt opgeslagen, moet u er rekening mee houden dat Windows-besturings systeem en toepassings gegevens worden gesynchroniseerd met Azure AD. Dit heeft de volgende gevolgen:
 
 * Uw persoonlijke Microsoft-account-instellingen worden van elkaar gescheiden van de instellingen op uw werk-of school-Azure AD-accounts. Dit komt doordat de Microsoft-account-en Azure AD-instellingen synchronisatie nu gebruikmaken van afzonderlijke accounts.
-* Persoonlijke gegevens, zoals Wi-Fi-wacht woorden, Webreferenties en Internet Explorer-favorieten die eerder zijn gesynchroniseerd via een verbonden Microsoft-account, worden gesynchroniseerd via Azure AD.
+* Persoonlijke gegevens, zoals Wi-Fi wacht woorden, Webreferenties en Internet Explorer-favorieten die eerder zijn gesynchroniseerd via een verbonden Microsoft-account, worden gesynchroniseerd via Azure AD.
 
 ## <a name="how-do-microsoft-account-and-azure-ad-enterprise-state-roaming-interoperability-work"></a>Hoe werkt Microsoft-account-en Azure AD Enterprise State Roaming-interoperabiliteit?
 
@@ -77,7 +77,7 @@ In de releases van Windows 10 november 2015 of hoger wordt Enterprise State Roam
 Wanneer meerdere Azure AD-accounts van verschillende Azure AD-tenants zich op hetzelfde apparaat bevinden, moet u het REGI ster van het apparaat bijwerken om te communiceren met de Azure Rights Management-service voor elke Azure AD-Tenant.  
 
 1. Zoek de GUID voor elke Azure AD-Tenant. Open de Azure Portal en selecteer een Azure AD-Tenant. De GUID voor de Tenant bevindt zich op de pagina eigenschappen voor de geselecteerde Tenant ( https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties) , label **Directory-id**). 
-2. Nadat u de GUID hebt, moet u de register sleutel **HKEY_LOCAL_MACHINE \software\microsoft\windows\settingsync\winmsipc \<tenant ID GUID> **toevoegen.
+2. Nadat u de GUID hebt, moet u de register sleutel toevoegen **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<tenant ID GUID> **.
    Maak in de GUID-sleutel van de **Tenant-id** een nieuwe waarde met meerdere teken reeksen (reg-multi-SZ) met de naam **AllowedRMSServerUrls**. Geef voor de gegevens de Url's van het Licensing-distributie punt op van de andere Azure-tenants die het apparaat heeft geopend.
 3. U kunt de Url's van het Licensing-distributie punt vinden door de cmdlet **Get-AadrmConfiguration** uit te voeren vanuit de AADRM-module. Als de waarden voor **LicensingIntranetDistributionPointUrl** en **LicensingExtranetDistributionPointUrl** verschillend zijn, moet u beide waarden opgeven. Als de waarden gelijk zijn, geeft u de waarde slechts eenmaal op.
 

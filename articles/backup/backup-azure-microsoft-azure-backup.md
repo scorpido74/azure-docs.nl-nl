@@ -3,12 +3,12 @@ title: Azure Backup Server gebruiken om een back-up te maken van workloads
 description: In dit artikel leert u hoe u uw omgeving voorbereidt op het beveiligen en maken van een back-up van workloads met behulp van Microsoft Azure Backup Server (MABS).
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 6fe03260cc1759929e7ff9886b1b232a37056866
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 1be2af43f4d923a27fd96c5c0888a234725775a3
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90975526"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056698"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server installeren en upgraden
 
@@ -78,9 +78,9 @@ Of u back-upgegevens naar Azure verzendt of lokaal blijft, Azure Backup Server m
 
 [!INCLUDE [backup-create-rs-vault.md](../../includes/backup-create-rs-vault.md)]
 
-### <a name="set-storage-replication"></a>Opslagreplicatie instellen
+### <a name="set-storage-replication"></a>Opslag replicatie instellen
 
-U kunt met de optie voor opslagreplicatie kiezen tussen geografisch redundante opslag en lokaal redundante opslag. Recovery Services kluizen gebruiken standaard geografisch redundante opslag. Als deze kluis uw primaire kluis is, houdt u de opslag optie ingesteld op geografisch redundante opslag. Kies lokaal redundante opslag als u een goedkopere optie wilt die niet zo duurzaam is. Meer informatie over [geo-redundante](../storage/common/storage-redundancy.md#geo-redundant-storage), [lokaal redundante](../storage/common/storage-redundancy.md#locally-redundant-storage) en [zone redundante](../storage/common/storage-redundancy.md#zone-redundant-storage) opslag opties vindt u in het [overzicht van Azure storage-replicatie](../storage/common/storage-redundancy.md).
+U kunt met de optie voor opslagreplicatie kiezen tussen geografisch redundante opslag en lokaal redundante opslag. Recovery Services kluizen gebruiken standaard geografisch redundante opslag. Als deze kluis uw primaire kluis is, houdt u de opslag optie ingesteld op geografisch redundante opslag. Kies lokaal redundante opslag als u een goedkopere optie wilt die niet zo duurzaam is. Meer informatie over [geo-redundante](../storage/common/storage-redundancy.md#geo-redundant-storage), [lokaal redundante](../storage/common/storage-redundancy.md#locally-redundant-storage)en [zone-redundante](../storage/common/storage-redundancy.md#zone-redundant-storage) opslag opties vindt u in het [overzicht van Azure storage-replicatie](../storage/common/storage-redundancy.md).
 
 De instelling voor opslagreplicatie bewerken:
 
@@ -200,6 +200,9 @@ Zodra het uitpakken is voltooid, schakelt u het selectie vakje in om de volledig
     ![Locatie opgeven voor installatie van bestanden](./media/backup-azure-microsoft-azure-backup/space-screen.png)
 
     De Scratch locatie is een vereiste voor het maken van een back-up naar Azure. Zorg ervoor dat de Scratch locatie ten minste 5% van de gegevens bevindt waarvan een back-up naar de Cloud wordt gepland. Voor schijf beveiliging moeten afzonderlijke schijven worden geconfigureerd zodra de installatie is voltooid. Zie voor meer informatie over opslag groepen voorbereiden van [gegevens opslag](/system-center/dpm/plan-long-and-short-term-data-storage).
+
+    De capaciteits vereisten voor schijf opslag zijn voornamelijk afhankelijk van de grootte van de beveiligde gegevens, de dagelijkse herstel punt grootte, het verwachte groei tempo van de volume gegevens en de Bewaar termijn van het bereik. U wordt aangeraden de schijf opslag twee maal zo groot te maken als de beveiligde gegevens. Hierbij wordt uitgegaan van een dagelijkse herstelpuntgrootte van 10% van de beveiligde gegevensgrootte en een bewaartermijn van tien dagen. Controleer de [DPM-capacity planner](https://www.microsoft.com/download/details.aspx?id=54301)om een goede schatting te krijgen van de grootte. 
+
 5. Geef een sterk wacht woord op voor beperkte lokale gebruikers accounts en selecteer **volgende**.
 
     ![Sterk wacht woord opgeven](./media/backup-azure-microsoft-azure-backup/security-screen.png)
@@ -210,7 +213,7 @@ Zodra het uitpakken is voltooid, schakelt u het selectie vakje in om de volledig
    >
    >
 
-    ![Opt-in Microsoft Update](./media/backup-azure-microsoft-azure-backup/update-opt-screen2.png)
+    ![Microsoft Update Opt-In](./media/backup-azure-microsoft-azure-backup/update-opt-screen2.png)
 7. Bekijk het *samen vatting van instellingen* en selecteer **installeren**.
 
     ![Samen vatting van instellingen](./media/backup-azure-microsoft-azure-backup/summary-screen.png)

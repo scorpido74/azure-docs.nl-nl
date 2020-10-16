@@ -8,10 +8,10 @@ ms.date: 02/20/2020
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: ddf631601510e725d77cc391ad41192a47ab0cf1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84752479"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Maximale grootte van de Web Application firewall-aanvraag en uitsluitings lijsten
@@ -24,9 +24,9 @@ De Azure-toepassing gateway Web Application firewall (WAF) biedt beveiliging voo
 
 Met WAF-uitsluitings lijsten kunt u bepaalde kenmerken van aanvragen van een WAF-evaluatie weglaten. Een gemeen schappelijk voor beeld is Active Directory ingevoegde tokens die worden gebruikt voor verificatie-of wachtwoord velden. Dergelijke kenmerken zijn gevoelig voor speciale tekens die een onjuiste positieve waarde van de WAF-regels kunnen veroorzaken. Zodra een kenmerk is toegevoegd aan de uitsluitings lijst WAF, wordt dit niet door de geconfigureerde en actieve WAF-regel beschouwd. Uitsluitings lijsten zijn globaal binnen het bereik.
 
-De volgende kenmerken kunnen worden toegevoegd aan de uitsluitings lijsten op naam. De waarden van het gekozen veld worden niet geëvalueerd op basis van WAF-regels, maar hun namen zijn nog steeds (Zie voor beeld 1 hieronder wordt de waarde van de header van de gebruiker-Agent uitgesloten van WAF-evaluatie). De uitsluitings lijsten verwijderen de inspectie van de veld waarde.
+De volgende kenmerken kunnen worden toegevoegd aan de uitsluitings lijsten op naam. De waarden van het gekozen veld worden niet geëvalueerd op basis van WAF-regels, maar hun namen zijn nog steeds (Zie voor beeld 1 hieronder wordt de waarde van de User-Agent header uitgesloten van WAF-evaluatie). De uitsluitings lijsten verwijderen de inspectie van de veld waarde.
 
-* Aanvraagheaders
+* Aanvraag headers
 * Cookies aanvragen
 * De naam van het aanvraag kenmerk (args) kan worden toegevoegd als een uitsluitings element, zoals:
 

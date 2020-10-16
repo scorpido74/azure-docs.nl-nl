@@ -10,10 +10,10 @@ ms.date: 10/02/2019
 ms.author: robinsh
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 5b9170e0fcf4bba8b928522cdc881f34968d771f
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89003861"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>Id's van IoT Hub-apparaten bulksgewijs importeren en exporteren
@@ -266,10 +266,10 @@ Gebruik de optionele eigenschap **importMode** in de import-serialisatie-gegeven
 | --- | --- |
 | **createOrUpdate** |Als er geen apparaat met de opgegeven **id**bestaat, wordt het pas geregistreerd. <br/>Als het apparaat al bestaat, wordt de bestaande informatie overschreven met de opgegeven invoer gegevens zonder rekening te houden met de **ETAG** -waarde. <br> De gebruiker kan eventueel dubbele gegevens en de apparaatgegevens opgeven. De dubbele ETAG, indien opgegeven, wordt onafhankelijk van de ETAG van het apparaat verwerkt. Als er niet overeenkomt met de bestaande ' ETAG ', wordt er een fout naar het logboek bestand geschreven. |
 | **creëren** |Als er geen apparaat met de opgegeven **id**bestaat, wordt het pas geregistreerd. <br/>Als het apparaat al bestaat, wordt er een fout naar het logboek bestand geschreven. <br> De gebruiker kan eventueel dubbele gegevens en de apparaatgegevens opgeven. De dubbele ETAG, indien opgegeven, wordt onafhankelijk van de ETAG van het apparaat verwerkt. Als er niet overeenkomt met de bestaande ' ETAG ', wordt er een fout naar het logboek bestand geschreven. |
-| **bijwerk** |Als er al een apparaat met de opgegeven **id**bestaat, wordt de bestaande informatie overschreven met de opgegeven invoer gegevens zonder rekening te houden met de **ETAG** -waarde. <br/>Als het apparaat niet bestaat, wordt er een fout naar het logboek bestand geschreven. |
+| **update** |Als er al een apparaat met de opgegeven **id**bestaat, wordt de bestaande informatie overschreven met de opgegeven invoer gegevens zonder rekening te houden met de **ETAG** -waarde. <br/>Als het apparaat niet bestaat, wordt er een fout naar het logboek bestand geschreven. |
 | **updateIfMatchETag** |Als er al een apparaat met de opgegeven **id**bestaat, wordt de bestaande informatie overschreven met de opgegeven invoer gegevens alleen als er sprake is van een **ETAG** -overeenkomst. <br/>Als het apparaat niet bestaat, wordt er een fout naar het logboek bestand geschreven. <br/>Als er een **ETAG** niet overeenkomt, wordt er een fout naar het logboek bestand geschreven. |
 | **createOrUpdateIfMatchETag** |Als er geen apparaat met de opgegeven **id**bestaat, wordt het pas geregistreerd. <br/>Als het apparaat al bestaat, wordt de bestaande informatie overschreven met de opgegeven invoer gegevens alleen als er sprake is van een **ETAG** -overeenkomst. <br/>Als er een **ETAG** niet overeenkomt, wordt er een fout naar het logboek bestand geschreven. <br> De gebruiker kan eventueel dubbele gegevens en de apparaatgegevens opgeven. De dubbele ETAG, indien opgegeven, wordt onafhankelijk van de ETAG van het apparaat verwerkt. Als er niet overeenkomt met de bestaande ' ETAG ', wordt er een fout naar het logboek bestand geschreven. |
-| **verwijderd** |Als er al een apparaat met de opgegeven **id**bestaat, wordt dit verwijderd zonder rekening te houden met de **ETAG** -waarde. <br/>Als het apparaat niet bestaat, wordt er een fout naar het logboek bestand geschreven. |
+| **verwijderen** |Als er al een apparaat met de opgegeven **id**bestaat, wordt dit verwijderd zonder rekening te houden met de **ETAG** -waarde. <br/>Als het apparaat niet bestaat, wordt er een fout naar het logboek bestand geschreven. |
 | **deleteIfMatchETag** |Als er al een apparaat met de opgegeven **id**bestaat, wordt dit alleen verwijderd als er sprake is van een **ETAG** -overeenkomst. Als het apparaat niet bestaat, wordt er een fout naar het logboek bestand geschreven. <br/>Als er een ETag niet overeenkomt, wordt er een fout naar het logboek bestand geschreven. |
 
 > [!NOTE]

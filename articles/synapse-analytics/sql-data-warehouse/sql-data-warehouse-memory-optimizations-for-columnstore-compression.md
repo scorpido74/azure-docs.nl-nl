@@ -11,11 +11,11 @@ ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 85a9c758f46150c422b55c6ac5cf7e62a429c74f
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 5308599f43788b35dbe278ddbbea2253c2f94cb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88797765"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>Maximale Rijg roep-kwaliteit voor column Store
@@ -46,7 +46,7 @@ Zie [bulksgewijs laden in een geclusterde column store-index](/sql/relational-da
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>Rijg roep-kwaliteit bewaken
 
-De DMV sys. dm_pdw_nodes_db_column_store_row_group_physical_stats ([sys. dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) bevat de weergave definitie die overeenkomt met de SQL-data base). deze geeft nuttige informatie weer, zoals het aantal rijen in Rijg roepen en de reden voor het verkleinen van de gegevens, als deze is bijgesneden.
+De DMV-sys.dm_pdw_nodes_db_column_store_row_group_physical_stats ([sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) bevat de weergave definitie die overeenkomt met de SQL-data base) waarmee nuttige informatie wordt weer gegeven, zoals het aantal rijen in Rijg roepen en de reden voor het verkleinen van de gegevens, als deze is bijgesneden.
 
 U kunt de volgende weer gave maken als een handige manier om een query uit te geven op deze DMV om informatie op te halen over Rijg roep-bijsnijden.
 
@@ -74,9 +74,6 @@ JOIN    sys.[dm_pdw_nodes_db_column_store_row_group_physical_stats] rg      ON  
 select *
 from cte;
 ```
-
->[!TIP]
-> Voor betere prestaties van Synapse SQL kunt u het gebruik van **sys. pdw_permanent_table_mappings** in plaats van **sys. pdw_table_mappings** op permanente gebruikers tabellen. Zie **[sys. pdw_permanent_table_mappings &#40;Transact-SQL&#41;](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=azure-sqldw-latest)** voor meer informatie.
 
 De trim_reason_desc geeft aan of de Rijg roep is bijgesneden (trim_reason_desc = NO_TRIM impliceert dat er geen beperking is en dat de groep een optimale kwaliteit heeft). De volgende redenen voor het verkorten van de Rijg roep zijn:
 

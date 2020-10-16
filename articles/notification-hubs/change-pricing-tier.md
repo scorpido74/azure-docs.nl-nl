@@ -14,10 +14,10 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 01/28/2019
 ms.openlocfilehash: 1455259bc42aea9d506a9a2a19d725cac3d643f8
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87562766"
 ---
 # <a name="change-pricing-tier-of-an-azure-notification-hubs-namespace"></a>De prijs categorie van een Azure notification hubs-naam ruimte wijzigen
@@ -40,7 +40,7 @@ Wanneer u de Azure Portal gebruikt, kunt u de prijs categorie voor een naam ruim
 
 De volgende procedure laat zien hoe u de prijs categorie voor een naam ruimte op de pagina met de naam ruimte kunt wijzigen. Wanneer u de laag voor een naam ruimte wijzigt, geldt dit voor alle hubs in die naam ruimte.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Selecteer **alle services** in het menu links.
 3. Selecteer **Notification hub-naam ruimten** in het gedeelte **Internet of Things** . Als u het sterretje ( `*` ) naast de tekst selecteert, wordt het toegevoegd aan de linkernavigatiebalk onder **Favorieten**. Dit helpt u de volgende keer sneller toegang te krijgen tot de pagina naam ruimten. Nadat u deze aan **Favorieten**hebt toegevoegd, selecteert u **Notification hub-naam ruimten**.
 
@@ -64,7 +64,7 @@ De volgende procedure laat zien hoe u de prijs categorie voor een naam ruimte op
 
 Volg deze stappen om de prijs categorie van een naam ruimte op de hub-pagina te wijzigen. Hoewel u deze stappen vanaf de hub-pagina uitvoert, wijzigt u de prijs categorie voor de naam ruimte en alle hubs in de naam ruimte.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Selecteer **alle services** in het menu links.
 3. Selecteer **Notification hubs** in het gedeelte **Internet of Things** .
 4. Selecteer uw notification **hub**.

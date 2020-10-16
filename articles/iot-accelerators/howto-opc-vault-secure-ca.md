@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 01213cd4d04783d0d877b4565493f06fa3718f8d
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: f54467c03a67797d52ac499ca9ba455c0f75e240
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91399632"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071452"
 ---
 # <a name="run-the-opc-vault-certificate-management-service-securely"></a>De OPC kluis Certificate Management-service veilig uitvoeren
 
 > [!IMPORTANT]
-> Tijdens het bijwerken van dit artikel raadpleegt u [Azure Industrial IOT](https://azure.github.io/Industrial-IoT/) voor de meest recente inhoud.
+> Zie [Azure Industrial IoT](https://azure.github.io/Industrial-IoT/) voor de meest recente inhoud terwijl we dit artikel bijwerken.
 
 In dit artikel wordt uitgelegd hoe u de OPC kluis Certificate Management-service veilig in azure kunt uitvoeren en andere beveiligings richtlijnen kunt bedenken.
 
@@ -97,7 +97,7 @@ Alle systemen moeten voortdurend worden bewaakt en bijgewerkt met de meest recen
 Abonneer u op of implementeer de juiste beveiligings bewaking. Neem bijvoorbeeld een abonnement op een centrale bewakings oplossing (zoals Azure Security Center of Microsoft 365 bewakings oplossing) en configureer deze op de juiste manier om ervoor te zorgen dat beveiligings gebeurtenissen worden verzonden naar de bewakings oplossing.
 
 > [!IMPORTANT]
-> Standaard wordt de OPC-kluis service geïmplementeerd met [Azure-toepassing Insights](https://docs.microsoft.com/azure/azure-monitor/app/devops) als een bewakings oplossing. Het is raadzaam om een beveiligings oplossing toe te voegen, zoals [Azure Security Center](https://azure.microsoft.com/services/security-center/) .
+> Standaard wordt de OPC-kluis service geïmplementeerd met [Azure-toepassing Insights](../azure-monitor/app/devops.md) als een bewakings oplossing. Het is raadzaam om een beveiligings oplossing toe te voegen, zoals [Azure Security Center](https://azure.microsoft.com/services/security-center/) .
 
 ### <a name="assess-the-security-of-open-source-software-components"></a>De beveiliging van open-source software onderdelen evalueren
 
@@ -145,7 +145,7 @@ Geef een volledig aantal certificaten op dat in de afgelopen twaalf maanden is u
 
 ### <a name="document-the-standard-operating-procedure-for-securely-deleting-cryptographic-keys"></a>De standaard-werk procedure voor het veilig verwijderen van cryptografische sleutels documenteren
 
-Tijdens de levens duur van een CA kan de sleutel niet meer worden verwijderd. Daarom heeft geen enkele gebruiker Key Vault certificaat verwijderen recht toegewezen en waarom er geen Api's beschikbaar zijn voor het verwijderen van een certificaat van een certificerings instantie. De hand matige standaard werk wijze voor het veilig verwijderen van cryptografische sleutels van certificerings instanties is alleen beschikbaar door rechtstreeks toegang te krijgen tot Key Vault in de Azure Portal. U kunt ook de certificaat groep in Key Vault verwijderen. Schakel de [Key Vault Soft](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) -functie voor verwijderen uit om ervoor te zorgen dat deze direct wordt verwijderd.
+Tijdens de levens duur van een CA kan de sleutel niet meer worden verwijderd. Daarom heeft geen enkele gebruiker Key Vault certificaat verwijderen recht toegewezen en waarom er geen Api's beschikbaar zijn voor het verwijderen van een certificaat van een certificerings instantie. De hand matige standaard werk wijze voor het veilig verwijderen van cryptografische sleutels van certificerings instanties is alleen beschikbaar door rechtstreeks toegang te krijgen tot Key Vault in de Azure Portal. U kunt ook de certificaat groep in Key Vault verwijderen. Schakel de [Key Vault Soft](../key-vault/general/soft-delete-overview.md) -functie voor verwijderen uit om ervoor te zorgen dat deze direct wordt verwijderd.
 
 ## <a name="certificates"></a>Certificaten
 

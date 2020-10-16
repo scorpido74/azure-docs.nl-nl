@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 278e5feb327c1376b7644050f414f680334d5c50
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 812fb35f404092453ad35b2f70c4a5b1697fbfe0
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91263229"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075702"
 ---
 # <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Vereisten voor het maken van AlwaysOn-beschikbaarheids groepen op SQL Server op Azure Virtual Machines
 
@@ -420,6 +420,10 @@ U kunt nu lid worden van de virtuele machines aan **Corp.contoso.com**. Voer de 
 7. Wanneer het bericht Welkom bij het domein corp.contoso.com wordt weer gegeven, selecteert u **OK**.
 8. Selecteer **sluiten**en selecteer **nu opnieuw opstarten** in het pop-updialoogvenster.
 
+## <a name="add-accounts"></a>Accounts toevoegen
+
+Voeg het installatie account toe als beheerder op elke virtuele machine, Ken machtigingen toe aan het installatie account en lokale accounts in SQL Server en werk het SQL Server-service account bij. 
+
 ### <a name="add-the-corpinstall-user-as-an-administrator-on-each-cluster-vm"></a>De Corp\Install-gebruiker toevoegen als beheerder op elke VM van het cluster
 
 Nadat elke virtuele machine opnieuw is opgestart als lid van het domein, voegt u **CORP\Install** toe als lid van de lokale groep Administrators.
@@ -438,16 +442,6 @@ Nadat elke virtuele machine opnieuw is opgestart als lid van het domein, voegt u
 7. Selecteer **OK** om het dialoog venster met **beheerders eigenschappen** te sluiten.
 8. Herhaal de vorige stappen in **sqlserver-1** en **cluster-FSW**.
 
-### <a name="set-the-sql-server-service-accounts"></a><a name="setServiceAccount"></a>De SQL Server-service accounts instellen
-
-Stel op elke SQL Server-VM de SQL Server-service account in. Gebruik de accounts die u hebt gemaakt tijdens het configureren van de domein accounts.
-
-1. Open **SQL Server Configuration Manager**.
-2. Klik met de rechter muisknop op de SQL Server-service en selecteer **Eigenschappen**.
-3. Stel het account en het wacht woord in.
-4. Herhaal deze stappen op de andere SQL Server VM.  
-
-Voor SQL Server-beschikbaarheids groepen moet elke SQL Server VM als een domein account worden uitgevoerd.
 
 ### <a name="create-a-sign-in-on-each-sql-server-vm-for-the-installation-account"></a>Maak een aanmelding op elke SQL Server virtuele machine voor het installatie account
 
@@ -467,13 +461,54 @@ Gebruik het installatie account (CORP\install) om de beschikbaarheids groep te c
 
 1. Voer de netwerk referenties voor de domein beheerder in.
 
-1. Gebruik het installatie account.
+1. Gebruik het installatie account (CORP\install).
 
 1. Stel de aanmelding in op een lid van de vaste serverrol **sysadmin** .
 
 1. Selecteer **OK**.
 
 Herhaal de voor gaande stappen op de andere SQL Server VM.
+
+### <a name="configure-system-account-permissions"></a>Machtigingen voor systeem accounts configureren
+
+Als u een account voor het systeem account wilt maken en de juiste machtigingen wilt verlenen, voert u de volgende stappen uit op elk SQL Server-exemplaar:
+
+1. Maak een account voor `[NT AUTHORITY\SYSTEM]` elke SQL Server-instantie. Met het volgende script maakt u dit account:
+
+   ```sql
+   USE [master]
+   GO
+   CREATE LOGIN [NT AUTHORITY\SYSTEM] FROM WINDOWS WITH DEFAULT_DATABASE=[master]
+   GO 
+   ```
+
+1. Ken de volgende machtigingen toe aan `[NT AUTHORITY\SYSTEM]` elk SQL Server-exemplaar:
+
+   - `ALTER ANY AVAILABILITY GROUP`
+   - `CONNECT SQL`
+   - `VIEW SERVER STATE`
+
+   Met het volgende script worden deze machtigingen verleend:
+
+   ```sql
+   GRANT ALTER ANY AVAILABILITY GROUP TO [NT AUTHORITY\SYSTEM]
+   GO
+   GRANT CONNECT SQL TO [NT AUTHORITY\SYSTEM]
+   GO
+   GRANT VIEW SERVER STATE TO [NT AUTHORITY\SYSTEM]
+   GO 
+   ```
+
+### <a name="set-the-sql-server-service-accounts"></a><a name="setServiceAccount"></a>De SQL Server-service accounts instellen
+
+Stel op elke SQL Server-VM de SQL Server-service account in. Gebruik de accounts die u hebt gemaakt tijdens het configureren van de domein accounts.
+
+1. Open **SQL Server Configuration Manager**.
+2. Klik met de rechter muisknop op de SQL Server-service en selecteer **Eigenschappen**.
+3. Stel het account en het wacht woord in.
+4. Herhaal deze stappen op de andere SQL Server VM.  
+
+Voor SQL Server-beschikbaarheids groepen moet elke SQL Server VM als een domein account worden uitgevoerd.
 
 ## <a name="add-failover-clustering-features-to-both-sql-server-vms"></a>Functies voor failover clustering toevoegen aan virtuele SQL Server Vm's
 
@@ -524,35 +559,6 @@ De methode voor het openen van de poorten is afhankelijk van de firewall-oplossi
 
 Herhaal deze stappen op de tweede SQL Server VM.
 
-## <a name="configure-system-account-permissions"></a>Machtigingen voor systeem accounts configureren
-
-Als u een account voor het systeem account wilt maken en de juiste machtigingen wilt verlenen, voert u de volgende stappen uit op elk SQL Server-exemplaar:
-
-1. Maak een account voor `[NT AUTHORITY\SYSTEM]` elke SQL Server-instantie. Met het volgende script maakt u dit account:
-
-   ```sql
-   USE [master]
-   GO
-   CREATE LOGIN [NT AUTHORITY\SYSTEM] FROM WINDOWS WITH DEFAULT_DATABASE=[master]
-   GO 
-   ```
-
-1. Ken de volgende machtigingen toe aan `[NT AUTHORITY\SYSTEM]` elk SQL Server-exemplaar:
-
-   - `ALTER ANY AVAILABILITY GROUP`
-   - `CONNECT SQL`
-   - `VIEW SERVER STATE`
-
-   Met het volgende script worden deze machtigingen verleend:
-
-   ```sql
-   GRANT ALTER ANY AVAILABILITY GROUP TO [NT AUTHORITY\SYSTEM]
-   GO
-   GRANT CONNECT SQL TO [NT AUTHORITY\SYSTEM]
-   GO
-   GRANT VIEW SERVER STATE TO [NT AUTHORITY\SYSTEM]
-   GO 
-   ```
 
 ## <a name="next-steps"></a>Volgende stappen
 

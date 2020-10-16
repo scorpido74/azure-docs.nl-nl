@@ -17,10 +17,10 @@ ms.reviewer: japere
 ms.custom: it-pro, has-adal-ref
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a5fc1b84e624828d7feb64bd53e8fe8ffff2a7ff
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88054831"
 ---
 # <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>Een script voor installatie zonder toezicht maken voor de Azure AD-toepassingsproxy-connector
@@ -45,7 +45,7 @@ Er zijn twee stappen voor een installatie zonder toezicht. Installeer eerst de c
 Gebruik de volgende stappen om de connector te installeren zonder deze te registreren:
 
 1. Open een opdrachtprompt.
-2. Voer de volgende opdracht uit, waarbij de/q betekent een stille installatie. Bij een stille installatie wordt u niet gevraagd om de gebruiksrecht overeenkomst te accepteren.
+2. Voer de volgende opdracht uit, waarbij de/q betekent een stille installatie. Bij een stille installatie wordt u niet gevraagd om de gebruiksrecht overeenkomst van End-User te accepteren.
 
    ```
    AADApplicationProxyConnectorInstaller.exe REGISTERCONNECTOR="false" /q

@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 07/28/2020
 ms.author: zarhoads
 ms.openlocfilehash: 0ca2d7ccc863e2208db1212ef3d3f10fa709d069
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87407112"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>Snelstartgids: ontwikkelen op Azure Kubernetes service (AKS) met helm
@@ -57,7 +57,7 @@ De uitvoer lijkt op die in het volgende voorbeeld. Noteer de waarde *login serve
 }
 ```
 
-## <a name="create-an-azure-kubernetes-service-cluster"></a>Een upgrade maken van een Azure Kubernetes Service-cluster
+## <a name="create-an-azure-kubernetes-service-cluster"></a>Een Azure Kubernetes Service-cluster maken
 
 Maak een AKS-cluster. Met de onderstaande opdracht maakt u een AKS-cluster met de naam MyAKS en koppelt u MyHelmACR.
 
@@ -131,8 +131,8 @@ helm create webfrontend
 
 Voer de volgende updates uit op *webfrontend/values. yaml*. Vervang de login server van het REGI ster die u in een eerdere stap hebt genoteerd, zoals *myhelmacr.azurecr.io*:
 
-* Wijzigen `image.repository` in`<loginServer>/webfrontend`
-* Wijzigen `service.type` in`LoadBalancer`
+* Wijzigen `image.repository` in `<loginServer>/webfrontend`
+* Wijzigen `service.type` in `LoadBalancer`
 
 Bijvoorbeeld:
 
@@ -201,7 +201,7 @@ az group delete --name MyResourceGroup --yes --no-wait
 Zie de helm-documentatie voor meer informatie over het gebruik van helm.
 
 > [!div class="nextstepaction"]
-> [Documentatie voor helm][helm-documentation]
+> [Helm-documentatie][helm-documentation]
 
 [az-acr-create]: /cli/azure/acr#az-acr-create
 [az-acr-build]: /cli/azure/acr#az-acr-build

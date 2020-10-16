@@ -4,10 +4,10 @@ description: Zoek en filter ruwe telemetriegegevens die zijn verzonden door uw w
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.openlocfilehash: f88e0fb8fbd7e9605635ede1e8f71b57de84b74e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87324451"
 ---
 # <a name="using-search-in-application-insights"></a>Zoeken in Application Insights gebruiken

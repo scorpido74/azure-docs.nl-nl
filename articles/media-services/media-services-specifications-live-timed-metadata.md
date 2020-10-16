@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/22/2019
 ms.author: johndeu
 ms.openlocfilehash: f826ee9ef3c9fff0b721a9c79d3c12e0adbd5f7f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91336391"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Getimede meta gegevens in live streamen signalering 
@@ -42,7 +42,7 @@ Deze specificatie bevat een overzicht van verschillende modi die worden onderste
 
 ## <a name="11-terms-used"></a>1,1 gebruikte termen
 
-| Term                | Definitie                                                                                                                                                                                                                                    |
+| Termijn                | Definitie                                                                                                                                                                                                                                    |
 | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | AD-afbreek punt            | Een locatie of tijdstip waarop een of meer advertenties mogen worden gepland voor levering; hetzelfde als beschik bare verkoop kansen.                                                                                                                     |
 | AD-besluit service | externe service die bepaalt welke AD ('s) en de duur van de gebruiker worden weer gegeven. De services worden doorgaans door een partner verschaft en zijn buiten het bereik van dit document.                                                                    |
@@ -57,7 +57,7 @@ Deze specificatie bevat een overzicht van verschillende modi die worden onderste
 | LIGGENDE                | Dynamisch adaptief streamen via HTTP                                                                                                                                                                                                          |
 | Werken              | Smooth Streaming-Protocol                                                                                                                                                                                                                     |
 | MPEG2-TS            | MPEG 2-transport stromen                                                                                                                                                                                                                      |
-| RTMP                | Real-time multimedia Protocol                                                                                                                                                                                                                 |
+| RTMP                | Multi Media-Protocol Real-Time                                                                                                                                                                                                                 |
 | uimsbf              | Niet-ondertekend geheel getal, meest significante bit eerst.                                                                                                                                                                                                 |
 
 ---
@@ -84,10 +84,10 @@ De volgende documenten bevatten voorzieningen, die door de verwijzing in deze te
 | [MS-SSTR-opname]  | [Azure Media Services gefragmenteerde MP4 Live opname-specificatie](./media-services-fmp4-live-ingest-overview.md)                                                      |
 | [RFC8216]         | N. Pantos, ed.; W. mei. HTTP Live Streaming. 2017 augustus. Informatief. [https://tools.ietf.org/html/rfc8216](https://tools.ietf.org/html/rfc8216)                                                            |
 | [RFC4648]         | De Base16-, Base32-en base64-gegevens codering- [https://tools.ietf.org/html/rfc4648](https://tools.ietf.org/html/rfc4648)                                                                                     |
-| RTMP            | ["Het real-time Messa ging-Protocol van Adobe", december 21, 2012](https://www.adobe.com/devnet/rtmp.html)                                                                                                            |
+| RTMP            | ["Het Real-Time Messa ging-Protocol van Adobe", december 21, 2012](https://www.adobe.com/devnet/rtmp.html)                                                                                                            |
 | [SCTE-35-2019]    | SCTE 35:2019-cueing-bericht van Digital-invoeg toepassing voor kabel- https://www.scte.org/SCTEDocs/Standards/ANSI_SCTE%2035%202019r1.pdf                                                                       |
-| [SCTE-214-1]      | SCTE 214-1 2016 – MPEG DASH voor op IP gebaseerde kabel Services deel 1: MPD-beperkingen en-extensies                                                                                                                 |
-| [SCTE-214-3]      | SCTE 214-3 2015 MPEG-DASH voor IP-gebaseerde kabel Services deel 3: streepje/FF profile                                                                                                                                  |
+| [SCTE-214-1]      | SCTE 214-1 2016 – MPEG DASH voor IP-Based-kabel Services deel 1: MPD-beperkingen en-extensies                                                                                                                 |
+| [SCTE-214-3]      | SCTE 214-3 2015 MPEG-DASH voor IP-Based-kabel Services deel 3: streepje/FF-profiel                                                                                                                                  |
 | [SCTE-224]        | SCTE 224 2018r1 – gebeurtenis planning en meldings interface                                                                                                                                                  |
 | [SCTE-250]        | API voor gebeurtenis-en signalerings beheer (ESAM)                                                                                                                                                                      |
 
@@ -423,7 +423,7 @@ De sparse track **moet** worden gedeclareerd in het manifest van de live-server 
 | ------------------ | -------------- | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | systemBitrate      | Getal         | Vereist      | **Moet** ' 0 ' zijn, wat een track met een onbekende variabele bitrate aangeeft.                                                                                                                                                          |
 | parentTrackName    | Tekenreeks         | Vereist      | **Moet** de naam zijn van het bovenliggende spoor, waarbij de tijd codes van de sparse track worden uitgelijnd. Het bovenliggende spoor kan geen sparse track zijn.                                                                             |
-| manifestOutput     | Boolean-waarde        | Vereist      | **Moet** ' True ' zijn, om aan te geven dat de sparse track wordt Inge sloten in het Smooth client-manifest.                                                                                                                        |
+| manifestOutput     | Booleaans        | Vereist      | **Moet** ' True ' zijn, om aan te geven dat de sparse track wordt Inge sloten in het Smooth client-manifest.                                                                                                                        |
 | Subtype            | Tekenreeks         | Vereist      | **Moet** de vier teken code ' data ' zijn.                                                                                                                                                                                  |
 | Schema             | Tekenreeks         | Vereist      | **Moet** een urn of URL zijn die het bericht schema aangeeft. Voor [SCTE-35] berichten **moet** dit ' urn: SCTE: scte35:2013: bin ' zijn om berichten te verzenden naar HLS-, Smooth-en dash-clients in overeenstemming met [SCTE-35]. |
 | nummer bijhouden          | Tekenreeks         | Vereist      | **Moet** de naam van de sparse track zijn. De tracknaam kan worden gebruikt om meerdere gebeurtenis stromen te onderscheiden met hetzelfde schema. Elke unieke gebeurtenis stroom **moet** een unieke Track naam hebben.                                |

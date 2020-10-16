@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
 ms.openlocfilehash: b7571b0a064e10faf5f002c9487ecc804ac78665
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90017894"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-azure-ad-user-provisioning"></a>Zelf studie: SAP SuccessFactors configureren voor Azure AD-gebruikers inrichten
@@ -244,7 +244,7 @@ In deze sectie configureert u hoe gebruikers gegevens stromen van SuccessFactors
 
          * **Alleen tijdens het maken** : pas deze toewijzing alleen toe bij het maken van gebruikers acties
 
-1. Klik boven aan de sectie kenmerk toewijzing op **Opslaan** om uw toewijzingen op te slaan.
+1. Als u uw toewijzingen wilt opslaan, klikt u boven aan de sectie Attribute-Mapping op **Opslaan** .
 
 Zodra de configuratie van de kenmerk toewijzing is voltooid, kunt u [de User Provisioning Service nu inschakelen en starten](#enable-and-launch-user-provisioning).
 

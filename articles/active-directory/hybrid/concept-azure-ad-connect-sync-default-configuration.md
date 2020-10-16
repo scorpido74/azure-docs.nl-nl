@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5e55526e0a63a0c603e2b62ccb3ac0efed911cff
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91295223"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Azure AD Connect-synchronisatie: inzicht in de standaardconfiguratie
@@ -186,7 +186,7 @@ De sectie trans formatie definieert alle kenmerk stromen die van toepassing zijn
 
 ![Het tabblad trans formaties in de editor voor synchronisatie regels](./media/concept-azure-ad-connect-sync-default-configuration/syncruletransformations.png)
 
-Als u deze configuratie in context wilt opnemen in een account-resource forest-implementatie, wordt verwacht dat deze een ingeschakeld account in het account forest en een uitgeschakelde account in de bron-forest met de Exchange-en Lync-instellingen heeft gevonden. De synchronisatie regel die u bekijkt bevat de kenmerken die zijn vereist voor aanmelding. deze kenmerken moeten stromen van het forest met een ingeschakeld account. Al deze kenmerk stromen worden samen in één synchronisatie regel opgenomen.
+Als u deze configuratie in de context wilt opnemen in een Account-Resource-forest-implementatie, wordt verwacht dat deze een ingeschakeld account in het account-forest en een uitgeschakelde account in de bron-forest met de Exchange-en Lync-instellingen heeft gevonden. De synchronisatie regel die u bekijkt bevat de kenmerken die zijn vereist voor aanmelding. deze kenmerken moeten stromen van het forest met een ingeschakeld account. Al deze kenmerk stromen worden samen in één synchronisatie regel opgenomen.
 
 Een trans formatie kan verschillende typen hebben: constante, direct en expressie.
 

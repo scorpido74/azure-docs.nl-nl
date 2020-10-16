@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
 ms.openlocfilehash: 95edcee32c1917d23e4808e805f947d18d2fa7f4
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90986235"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Inleiding tot het oplossen van resources in azure Network Watcher
@@ -54,11 +54,11 @@ In de volgende tabellen ziet u de verschillende fout typen (id onder resultaten 
 | PlannedMaintenance |  Het gateway-exemplaar is onderhouds werkzaamheden  |Nee|
 | UserDrivenUpdate | Deze fout treedt op wanneer een gebruikersupdate wordt uitgevoerd. De update kan een wijziging van het formaat zijn. | Nee |
 | VipUnResponsive | Deze fout treedt op wanneer het primaire exemplaar van de gateway niet kan worden bereikt als gevolg van een fout in de statustest. | Nee |
-| PlatformInActive | Er is een probleem met het platform. | No|
-| ServiceNotRunning | De onderliggende service is niet actief. | No|
-| NoConnectionsFoundForGateway | Er zijn geen verbindingen op de gateway. Deze fout is slechts een waarschuwing.| No|
-| ConnectionsNotConnected | Er zijn geen verbindingen met de verbinding. Deze fout is slechts een waarschuwing.| Yes|
-| GatewayCPUUsageExceeded | Het CPU-gebruik van de huidige gateway is > 95%. | Yes |
+| PlatformInActive | Er is een probleem met het platform. | Nee|
+| ServiceNotRunning | De onderliggende service is niet actief. | Nee|
+| NoConnectionsFoundForGateway | Er zijn geen verbindingen op de gateway. Deze fout is slechts een waarschuwing.| Nee|
+| ConnectionsNotConnected | Er zijn geen verbindingen met de verbinding. Deze fout is slechts een waarschuwing.| Ja|
+| GatewayCPUUsageExceeded | Het CPU-gebruik van de huidige gateway is > 95%. | Ja |
 
 ### <a name="connection"></a>Verbinding
 
@@ -68,15 +68,15 @@ In de volgende tabellen ziet u de verschillende fout typen (id onder resultaten 
 | GatewayNotFound | Kan geen gateway of gateway vinden |Nee|
 | PlannedMaintenance | Het gateway-exemplaar is onderhouds werkzaamheden  |Nee|
 | UserDrivenUpdate | Deze fout treedt op wanneer een gebruikersupdate wordt uitgevoerd. De update kan een wijziging van het formaat zijn.  | Nee |
-| VipUnResponsive | Deze fout treedt op wanneer het primaire exemplaar van de gateway niet kan worden bereikt als gevolg van een fout in de statustest. | No |
-| ConnectionEntityNotFound | De configuratie van de verbinding ontbreekt | No |
-| ConnectionIsMarkedDisconnected | De verbinding is gemarkeerd als ' verbinding verbroken ' |No|
-| ConnectionNotConfiguredOnGateway | De onderliggende service is niet geconfigureerd voor de verbinding. | Yes |
-| ConnectionMarkedStandby | De onderliggende service is gemarkeerd als stand-by.| Yes|
-| Verificatie | Vooraf gedeelde sleutel komt niet overeen | Yes|
-| PeerReachability | De peer gateway is niet bereikbaar. | Yes|
-| IkePolicyMismatch | De peer gateway heeft een IKE-beleid dat niet wordt ondersteund door Azure. | Yes|
-| WfpParse-fout | Er is een fout opgetreden bij het parseren van het WFP-logboek. |Yes|
+| VipUnResponsive | Deze fout treedt op wanneer het primaire exemplaar van de gateway niet kan worden bereikt als gevolg van een fout in de statustest. | Nee |
+| ConnectionEntityNotFound | De configuratie van de verbinding ontbreekt | Nee |
+| ConnectionIsMarkedDisconnected | De verbinding is gemarkeerd als ' verbinding verbroken ' |Nee|
+| ConnectionNotConfiguredOnGateway | De onderliggende service is niet geconfigureerd voor de verbinding. | Ja |
+| ConnectionMarkedStandby | De onderliggende service is gemarkeerd als stand-by.| Ja|
+| Verificatie | Vooraf gedeelde sleutel komt niet overeen | Ja|
+| PeerReachability | De peer gateway is niet bereikbaar. | Ja|
+| IkePolicyMismatch | De peer gateway heeft een IKE-beleid dat niet wordt ondersteund door Azure. | Ja|
+| WfpParse-fout | Er is een fout opgetreden bij het parseren van het WFP-logboek. |Ja|
 
 ## <a name="supported-gateway-types"></a>Ondersteunde gateway typen
 

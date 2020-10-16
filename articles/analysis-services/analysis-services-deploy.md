@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: d6b737985bc19aa09b26bb0d4a65696a364a903a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 45ea75b65e75f9bac4d6d4839ffe7fa095e3b25d
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83697588"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018773"
 ---
 # <a name="deploy-a-model-from-visual-studio"></a>Een model implementeren vanuit Visual Studio
 
@@ -23,7 +23,7 @@ Wanneer u een server in uw Azure-abonnement hebt gemaakt, kunt u een tabellaire 
 Om aan de slag te gaan, hebt u het volgende nodig:
 
 * **Analysis Services-server** in Azure. Zie [Create an Azure Analysis Services server in Azure portal](analysis-services-create-server.md) (Een Azure Analysis Services-server maken in Azure Portal) voor meer informatie.
-* **Project tabellair model** in Visual Studio of een bestaand tabellair model op het compatibiliteits niveau 1200 of hoger. Nog nooit zo'n project gemaakt? Raadpleeg de [Adventure Works Internet sales tabular modeling tutorial](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial) (Zelfstudie voor tabellaire modellen bij Adventure Works-internetverkoop).
+* **Project tabellair model** in Visual Studio of een bestaand tabellair model op het compatibiliteits niveau 1200 of hoger. Nog nooit zo'n project gemaakt? Raadpleeg de [Adventure Works Internet sales tabular modeling tutorial](/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial) (Zelfstudie voor tabellaire modellen bij Adventure Works-internetverkoop).
 * **On-premises gateway**: als een of meer gegevensbronnen on-premises zijn opgeslagen in het netwerk van uw organisatie, moet u een [on-premises gegevensgateway](analysis-services-gateway.md) installeren. De gateway is nodig om uw server in de cloud verbinding te laten maken met uw on-premises gegevensbronnen om gegevens in het model te verwerken en te vernieuwen.
 
 > [!TIP]
@@ -63,7 +63,4 @@ Als de implementatie mislukt bij een tabel, komt dat waarschijnlijk omdat de ser
 
 Uw tabellaire model is nu geïmplementeerd op de server en dus kunt u verbinding gaan maken met het model. U kunt er [verbinding mee maken met SQL Server Management Studio (SSMS)](analysis-services-manage.md) om deze te beheren. [Maak verbinding met een clienthulpprogramma](analysis-services-connect.md) zoals Power BI, Power BI Desktop of Excel om rapporten te gaan maken.   
 
-Zie voor meer informatie over geavanceerde implementatie methoden [tabellaire model oplossingen implementeren](https://docs.microsoft.com/analysis-services/deployment/tabular-model-solution-deployment?view=azure-analysis-services-current).
-
-
-
+Zie voor meer informatie over geavanceerde implementatie methoden [tabellaire model oplossingen implementeren](/analysis-services/deployment/tabular-model-solution-deployment?view=azure-analysis-services-current).

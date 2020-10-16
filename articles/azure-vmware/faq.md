@@ -4,12 +4,12 @@ description: Hier vindt u antwoorden op enkele veelgestelde vragen over de Azure
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: fd0c0158106a24ba12fec42e41df69f246e7f3f5
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 8868f86f0cf46ff82e37cd433d7b5bca0d69567d
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91530473"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078932"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Veelgestelde vragen over de Azure VMware-oplossing
 
@@ -65,7 +65,22 @@ Micro soft en Red Hat delen een geïntegreerd ondersteunings team met co-locatie
 
 #### <a name="is-vmware-hcx-enterprise-edition-available-and-if-so-how-much-does-it-cost"></a>Is VMware HCX Enter prise Edition beschikbaar, en zo ja, hoeveel kost het?
 
-VMware HCX Enter prise Edition (EE) is beschikbaar met de Azure VMware-oplossing als een *Preview* -functie/-service. Hoewel VMware HCX EE voor de Azure VMware-oplossing in preview is, is het een gratis functie/service en onderhevig aan de voor waarden van de preview-versie van de service. Zodra de service VMware HCX EE GA wordt weer gegeven, krijgt u een melding van 30 dagen dat facturering wordt overgeschakeld. U hebt ook de mogelijkheid om de service uit te scha kelen of af te melden.
+VMware HCX Enterprise Edition (EE) is beschikbaar met Azure VMware Solution als een *preview*-functie/-service. Hoewel VMware HCX EE voor Azure VMware Solution zich in preview bevindt, is het een gratis functie/service en onderhevig aan de servicevoorwaarden van de preview-versie. Zodra de VMware HCX EE-service algemeen beschikbaar wordt, krijgt u een melding dat de facturering over 30 dagen wordt omgeschakeld. U hebt ook de mogelijkheid om de service uit te schakelen of u ervan af te melden.
+
+#### <a name="can-azure-vmware-solution-vms-be-managed-by-vmrc"></a>Kunnen Vm's van Azure VMware-oplossingen worden beheerd door VMRC?
+Ja, op voor waarde dat het systeem waarop het is geïnstalleerd, toegang heeft tot de vCenter van de privécloud en dat deze open bare DNS gebruikt (zodat ESXi hostnamen kan worden omgezet).
+
+#### <a name="are-there-special-instructions-for-installing-and-using-vmrc-with-azure-vmware-solution-vms"></a>Zijn er speciale instructies voor het installeren en gebruiken van VMRC met virtuele machines met Azure VMware-oplossingen?
+Nee, gebruik de [instructies van VMware](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html) en voer de vereiste VM-vereisten in deze instructies uit. 
+
+#### <a name="is-vmware-hcx-supported-on-vpns"></a>Worden VMware-HCX ondersteund op Vpn's?
+Nee, vanwege de vereisten voor band breedte en latentie.
+
+#### <a name="can-azure-bastion-be-used-for-connecting-to-avs-vms"></a>Kan Azure Bastion worden gebruikt om verbinding te maken met de AVS Vm's?
+Azure Bastion is de aanbevolen service om verbinding te maken met het Jump box om te voor komen dat de Azure VMware-oplossing aan Internet wordt blootgesteld. U kunt Azure Bastion niet gebruiken om verbinding te maken met virtuele machines van Azure VMware-oplossingen omdat ze geen Azure IaaS-objecten zijn.
+
+#### <a name="can-an-existing-expressroute-gateway-be-used-to-connect-to-azure-vmware-solution"></a>Kan een bestaande ExpressRoute-gateway worden gebruikt om verbinding te maken met de Azure VMware-oplossing?
+Ja, u kunt een bestaande ExpressRoute-gateway gebruiken om verbinding te maken met de Azure VMware-oplossing zolang deze de limiet van vier ExpressRoute-circuits per virtueel netwerk niet overschrijdt.  Om toegang te krijgen tot de Azure VMware-oplossing van on-premises via ExpressRoute, moet u echter beschikken over ExpressRoute Global Reach, omdat de ExpressRoute-gateway geen transitieve route ring biedt tussen de verbonden circuits.
 
 ## <a name="compute-network-storage-and-backup"></a>Berekenings-, netwerk-, opslag-en back-ups
 
@@ -100,6 +115,14 @@ Net als we weten, moeten alle back-upoplossingen die gebruikmaken van VMware VAD
 #### <a name="what-about-support-for-isv-backup-solutions"></a>Hoe zit het met ondersteuning voor ISV-back-upoplossingen?
 
 Omdat deze back-upoplossingen worden geïnstalleerd en beheerd door klanten, kunnen ze contact met de desbetreffende ISV vinden voor ondersteuning. 
+
+#### <a name="what-is-the-correct-storage-policy-for-the-dedup-set-up"></a>Wat is het juiste opslag beleid voor het instellen van de ontdubbeling?
+
+Gebruik het *thin_provision* -opslag beleid voor uw VM-sjabloon.  De standaard waarde is *thick_provision*.
+
+#### <a name="are-the-snmp-infrastructure-logs-shared"></a>Worden de logboeken voor de SNMP-infra structuur gedeeld?
+
+Nee.
 
 ## <a name="hosts-clusters-and-private-clouds"></a>Hosts, clusters en privéclouds
 
@@ -174,6 +197,8 @@ Nee. Netwerk verkeer van het Internet rechtstreeks naar persoonlijke Clouds is n
 
 Ja. U moet NSX-T-beheer gebruiken om een firewall te maken waarmee de toegang tot internet wordt beperkt.
 
+
+
 ## <a name="accounts-and-privileges"></a>Accounts en bevoegdheden
 
 #### <a name="what-accounts-and-privileges-will-i-get-with-my-new-azure-vmware-solution-private-cloud"></a>Welke accounts en bevoegdheden krijg ik bij mijn nieuwe Azure VMware-oplossing privécloud?
@@ -211,10 +236,10 @@ U hebt een Azure-account in een Azure-abonnement nodig.
 
 #### <a name="how-do-i-request-a-host-quota-increase-for-azure-vmware-solution"></a>Hoe kan ik een toename voor een quotum van een host voor een Azure VMware-oplossing aanvragen?
 
-* U hebt een [Azure Enterprise Agreement (EA)](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-agreements) met micro soft nodig.
+* U hebt een [Azure Enterprise Agreement (EA)](../cost-management-billing/manage/ea-portal-agreements.md) met micro soft nodig.
 * U hebt een Azure-account in een Azure-abonnement nodig.
 
-Voordat u uw Azure VMware-oplossings resource maakt, moet u een ondersteunings ticket indienen om uw knoop punten toe te wijzen. Zodra het ondersteunings team uw aanvraag heeft ontvangen, duurt het Maxi maal vijf werk dagen om uw aanvraag te bevestigen en uw knoop punten toe te wijzen. Als u een bestaande privécloud van Azure VMware-oplossing hebt en u meer knoop punten wilt toewijzen, gaat u door hetzelfde proces.
+Voordat u uw Azure VMware Solution-resource maakt, moet u een ondersteuningsticket indienen om uw knooppunten te laten toewijzen. Zodra het ondersteuningsteam uw aanvraag heeft ontvangen, duurt het maximaal vijf werkdagen om uw aanvraag te bevestigen en uw knooppunten toe te wijzen. Als u een bestaande privécloud van Azure VMware Solution hebt en u meer knooppunten wilt toewijzen, dan volgt u hetzelfde proces.
 
 
 1. Maak in uw Azure Portal onder **Help en ondersteuning**een **[nieuwe ondersteunings aanvraag](https://rc.portal.azure.com/#create/Microsoft.Support)** en geef de volgende informatie op voor het ticket:

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 06/11/2020
 ms.reviewer: sngun
 ms.openlocfilehash: 24e9087a175385f8e5c347a1d2df3b2785868506
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87327851"
 ---
 # <a name="migrate-your-application-to-use-the-azure-cosmos-db-java-sdk-v4"></a>Uw toepassing migreren om de Azure Cosmos DB Java SDK v4 te gebruiken
@@ -31,7 +31,7 @@ In dit artikel wordt uitgelegd hoe u een upgrade uitvoert van uw bestaande Java-
 
 De volgende tabel geeft een lijst van verschillende Azure Cosmos DB Java-Sdk's, de pakket naam en de release-informatie:
 
-| Java-SDK| Release datum | Gebundelde Api's   | Maven jar  | Naam Java-pakket  |API-referentiemateriaal   | Opmerkingen bij de release  |
+| Java-SDK| Release datum | Gebundelde Api's   | Maven jar  | Naam Java-pakket  |API-verwijzing   | Releaseopmerkingen  |
 |-------|------|-----------|-----------|--------------|-------------|---------------------------|
 | Async 2. x. x  | Juni 2018    | Async (RxJava)  | `com.microsoft.azure::azure-cosmosdb` | `com.microsoft.azure.cosmosdb.rx` | [API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [Release opmerkingen](sql-api-sdk-async-java.md) |
 | Synchronisatie 2. x. x     | Sept 2018    | Synchroniseren   | `com.microsoft.azure::azure-documentdb` | `com.microsoft.azure.cosmosdb` | [API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [Release opmerkingen](sql-api-sdk-java.md)  |
@@ -87,8 +87,8 @@ In de Azure Cosmos DB Java SDK 3. x. x wordt het `CosmosItemProperties` object b
 
 ### <a name="imports"></a>Rusland
 
-* De Azure Cosmos DB Java SDK 4,0-pakketten beginnen met`com.azure.cosmos`
-  * Azure Cosmos DB Java SDK 3. x. x-pakketten beginnen met`com.azure.data.cosmos`
+* De Azure Cosmos DB Java SDK 4,0-pakketten beginnen met `com.azure.cosmos`
+  * Azure Cosmos DB Java SDK 3. x. x-pakketten beginnen met `com.azure.data.cosmos`
 
 * Azure Cosmos DB Java SDK 4,0 worden verschillende klassen in een genest pakket geplaatst `com.azure.cosmos.models` . Enkele van deze pakketten zijn:
 
@@ -100,7 +100,7 @@ In de Azure Cosmos DB Java SDK 3. x. x wordt het `CosmosItemProperties` object b
   * `FeedOptions`
   * `PartitionKey`
   * `IndexingPolicy`
-  * `IndexingMode`... Heap.
+  * `IndexingMode` ... Heap.
 
 ### <a name="accessors"></a>Accessors
 

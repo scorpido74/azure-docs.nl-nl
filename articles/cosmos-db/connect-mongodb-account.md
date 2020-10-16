@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.reviewer: sngun
 ms.openlocfilehash: 0a25301bac125cd95b975a5ba1fc0cce47b56abd
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85954091"
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>Een MongoDB-toepassing verbinden met Azure Cosmos DB
@@ -46,7 +46,7 @@ In deze zelfstudie kunt u op twee manieren gegevens van verbindingsreeksen ophal
 3. Klik in het linkerdeel venster van de Blade account op **verbindings reeks**.
 4. De Blade **verbindings reeks** wordt geopend. Het bevat alle informatie die nodig is om verbinding te maken met het account met behulp van een stuur programma voor MongoDB, inclusief een geconstrueerde connection string.
 
-   :::image type="content" source="./media/connect-mongodb-account/ConnectionStringBlade.png" alt-text="De blade Verbindingsreeks" lightbox= "./media/connect-mongodb-account/ConnectionStringBlade.png" :::
+   :::image type="content" source="./media/connect-mongodb-account/ConnectionStringBlade.png" alt-text="Blade snel starten" lightbox= "./media/connect-mongodb-account/ConnectionStringBlade.png" :::
 
 ## <a name="connection-string-requirements"></a>Vereisten voor de verbindings reeks
 

@@ -5,10 +5,10 @@ ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
 ms.openlocfilehash: e5fc26231cc5d3ad412371c2f8c187b2d0033ee4
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89182034"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup fout oplossen: problemen met de agent of extensie
@@ -249,10 +249,10 @@ Als u uitgebreide logboek registratie voor waagent nodig hebt, voert u de volgen
 2. Wijzig de **Logboeken. uitgebreide** waarde van *n* tot en met *y*.
 3. Sla de wijziging op en start waagent opnieuw door de stappen uit te voeren die eerder in deze sectie zijn beschreven.
 
-### <a name="vm-agent-configuration-options-are-not-set-for-linux-vms"></a>VM-agent configuratie opties zijn niet ingesteld (voor Linux-Vm's)
+### <a name="vm-agent-configuration-options-are-not-set-for-linux-vms"></a>Er zijn geen VM-Agent configuratie opties ingesteld (voor Linux-Vm's)
 
 Een configuratie bestand (/etc/waagent.conf) regelt de acties van waagent. Opties voor configuratie bestand **extensies. enable** moet zijn ingesteld op **y** en **inrichting.** voor het werken moet de agent worden ingesteld op **auto** .
-Zie voor een volledige lijst met opties voor het configuratie bestand van de VM-agent <https://github.com/Azure/WALinuxAgent#configuration-file-options>
+Zie voor een volledige lijst met opties voor VM-Agent configuratie bestand <https://github.com/Azure/WALinuxAgent#configuration-file-options>
 
 ### <a name="application-control-solution-is-blocking-iaasbcdrextensionexe"></a>De oplossing voor toepassings beheer blokkeert IaaSBcdrExtension.exe
 
@@ -309,7 +309,7 @@ Voer de volgende stappen uit om de verzameling met herstel punten hand matig te 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Selecteer **alle resources**in het menu **hub** , selecteer de resource groep met de volgende indeling AzureBackupRG_ `<Geo>` _ `<number>` waar de virtuele machine zich bevindt.
 
-    ![De resource groep selecteren](./media/backup-azure-arm-vms-prepare/resource-group.png)
+    ![De resourcegroep selecteren](./media/backup-azure-arm-vms-prepare/resource-group.png)
 
 3. Selecteer resource groep, het deel venster **overzicht** wordt weer gegeven.
 4. Selecteer de optie **verborgen typen weer geven** om alle verborgen resources weer te geven. Selecteer de herstel punt verzamelingen met de volgende indeling AzureBackupRG_ `<VMName>` _ `<number>` .

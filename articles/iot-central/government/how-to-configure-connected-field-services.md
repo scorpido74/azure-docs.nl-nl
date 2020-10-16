@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 7c708268eaeade1cfb625c73ff8758a1941ff5b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80157446"
 ---
 # <a name="build-end-to-end-solution-with-azure-iot-central-and-dynamics-365-field-service"></a>End-to-end-oplossing bouwen met de veld Service Azure IoT Central en Dynamics 365 
@@ -33,6 +33,6 @@ De onderstaande integratie processen kunnen eenvoudig worden geïmplementeerd op
 
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over [IOT Central government-sjablonen](./overview-iot-central-government.md)
+* Meer informatie over [IoT Central-sjablonen voor de overheid](./overview-iot-central-government.md)
 * Meer informatie over [IOT Central](https://docs.microsoft.com/azure/iot-central/core/overview-iot-central)
 * Meer informatie over [Dynamics 365 Field Services](https://docs.microsoft.com/dynamics365/field-service/cfs-iot-overview)

@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: how-to
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 710f023a64f66e486bb2db9c08807af3431d0016
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 43d5c1ae03c359dcbef21f8e7ba3205bc6ab0004
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87812291"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096110"
 ---
 # <a name="configuring-azure-spatial-anchors-in-a-cwinrt-hololens-project"></a>Ruimtelijke Azure-ankers configureren in een C++/WinRT HoloLens-project
 
@@ -25,7 +25,7 @@ ms.locfileid: "87812291"
 
 De Azure spatiale ankers voor HoloLens en C++/WinRT worden gedistribueerd met het [micro soft. Azure. SpatialAnchors. WinRT](https://www.nuget.org/packages/Microsoft.Azure.SpatialAnchors.WinRT/) NuGet-pakket.
 
-Volg de instructies [hier](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio) om NuGet package manager van Visual Studio te gebruiken om het NuGet-pakket [micro soft. Azure. SpatialAnchors. WinRT](https://www.nuget.org/packages/Microsoft.Azure.SpatialAnchors.WinRT/) in uw project te installeren.
+Volg de instructies [hier](/nuget/consume-packages/install-use-packages-visual-studio) om NuGet package manager van Visual Studio te gebruiken om het NuGet-pakket [micro soft. Azure. SpatialAnchors. WinRT](https://www.nuget.org/packages/Microsoft.Azure.SpatialAnchors.WinRT/) in uw project te installeren.
 
 ## <a name="next-steps"></a>Volgende stappen
 

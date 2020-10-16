@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 3b86ff205981cfe7bb00ecb3ca58804fba3e80b0
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 0e7cd496f031f76320df5127d7e1aa3f2f7b06c7
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89460096"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075073"
 ---
 # <a name="troubleshoot-cloud-service-deployment-problems"></a>Problemen met de implementatie van Cloud Services oplossen
 Wanneer u een Cloud service toepassings pakket implementeert in azure, kunt u informatie over de implementatie verkrijgen via het deel venster **Eigenschappen** in de Azure Portal. U kunt de details in dit deel venster gebruiken om problemen met de Cloud service op te lossen en u kunt deze informatie aan Azure-ondersteuning verstrekken bij het openen van een nieuwe ondersteunings aanvraag.
@@ -49,7 +49,7 @@ Service retoucheert automatisch wanneer Azure probleem knooppunten detecteert en
 2. Bekijk de informatie in het deel venster **Eigenschappen** van de Azure Portal en bepaal of service retoucheert tijdens de tijd dat u de rollen recycling hebt geobserveerd.
 
 Rollen worden ook ongeveer eenmaal per maand herhaald tijdens de updates van het hostbesturingssysteem en het gast besturingssysteem.  
-Zie voor meer informatie de instantie blog post [opnieuw opstarten als gevolg van upgrades van het besturings systeem](https://docs.microsoft.com/archive/blogs/kwill/role-instance-restarts-due-to-os-upgrades)
+Zie voor meer informatie de instantie blog post [opnieuw opstarten als gevolg van upgrades van het besturings systeem](/archive/blogs/kwill/role-instance-restarts-due-to-os-upgrades)
 
 ## <a name="problem-i-cannot-do-a-vip-swap-and-receive-an-error"></a>Probleem: Ik kan geen VIP-swap uitvoeren en er wordt een fout bericht weer gegeven
 Een VIP-swap is niet toegestaan als een implementatie-update wordt uitgevoerd. Implementatie-updates kunnen automatisch worden uitgevoerd wanneer:
@@ -67,14 +67,14 @@ Als u wilt weten of een automatische update verhindert dat u een VIP-wissel uitv
 ## <a name="problem-a-role-instance-is-looping-between-started-initializing-busy-and-stopped"></a>Probleem: een rolinstantie is een lus tussen start, initialiseren, bezet en gestopt
 Dit probleem kan duiden op een probleem met uw programmacode, pakket of configuratiebestand. In dat geval ziet u dat de status elke paar minuten kan worden gewijzigd. de Azure Portal kan bijvoorbeeld worden **gerecycled**, **bezet**of **initialisatie**. Dit geeft aan dat er iets mis is met de toepassing die ervoor zorgt dat de rolinstantie actief blijft.
 
-Voor meer informatie over het oplossen van problemen met dit probleem raadpleegt u het blog bericht [Azure PaaS Compute Diagnostics-gegevens](https://docs.microsoft.com/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data) en [veelvoorkomende problemen waardoor rollen kunnen worden gerecycled](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md).
+Voor meer informatie over het oplossen van problemen met dit probleem raadpleegt u het blog bericht [Azure PaaS Compute Diagnostics-gegevens](/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data) en [veelvoorkomende problemen waardoor rollen kunnen worden gerecycled](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md).
 
 ## <a name="problem-my-application-stopped-working"></a>Probleem: mijn toepassing werkt niet meer
 1. Klik in de Azure Portal op de rolinstantie.
 2. Houd rekening met de volgende voor waarden in het deel venster **Eigenschappen** van de Azure Portal om het probleem op te lossen:
    * Als de rolinstantie onlangs is gestopt (u kunt de waarde van het **aantal afgebroken items**controleren), kan de implementatie worden bijgewerkt. Wacht om te zien of de rolinstantie wordt hervat.
    * Als de rolinstantie **bezet**is, controleert u de toepassings code om te zien of de gebeurtenis [StatusCheck](/previous-versions/azure/reference/ee758135(v=azure.100)) wordt verwerkt. Mogelijk moet u een code toevoegen of herstellen waarmee deze gebeurtenis wordt afgehandeld.
-   * Bespreek de diagnostische gegevens en scenario's voor probleem oplossing in de blog post [Azure PaaS Compute Diagnostics-gegevens](https://docs.microsoft.com/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data).
+   * Bespreek de diagnostische gegevens en scenario's voor probleem oplossing in de blog post [Azure PaaS Compute Diagnostics-gegevens](/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data).
 
 > [!WARNING]
 > Als u de Cloud service opnieuw hebt gerecycled, worden de eigenschappen voor de implementatie opnieuw ingesteld en worden de gegevens voor het oorspronkelijke probleem effectief gewist.
@@ -82,6 +82,6 @@ Voor meer informatie over het oplossen van problemen met dit probleem raadpleegt
 >
 
 ## <a name="next-steps"></a>Volgende stappen
-Bekijk meer [artikelen over probleem oplossing](https://docs.microsoft.com/azure/cloud-services/cloud-services-allocation-failures) voor Cloud Services.
+Bekijk meer [artikelen over probleem oplossing](./cloud-services-allocation-failures.md) voor Cloud Services.
 
-Voor informatie over het oplossen van problemen met Cloud service rollen met behulp van Azure PaaS computer diagnostische gegevens raadpleegt u [de blog serie van Kevin Williamson](https://docs.microsoft.com/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data).
+Voor informatie over het oplossen van problemen met Cloud service rollen met behulp van Azure PaaS computer diagnostische gegevens raadpleegt u [de blog serie van Kevin Williamson](/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data).

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 836e01d3cd8fb25dda1616803d8b6f3e9ff4e06f
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 7b92c84234432320aa08017a15fbf8a5a4630eb3
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89645755"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019729"
 ---
 # <a name="data-encryption-models"></a>Gegevensversleutelingmodellen
 
@@ -27,7 +27,7 @@ Het is belang rijk dat u begrijpt hoe de verschillende versleutelings modellen e
 
 Er zijn drie scenario's voor versleuteling aan server zijde:
 
-- Versleuteling aan de server zijde met door service beheerde sleutels
+- Versleuteling aan de server zijde met Service-Managed sleutels
   - Azure-resource providers voeren de bewerkingen voor versleuteling en ontsleuteling uit
   - Micro soft beheert de sleutels
   - Volledige Cloud functionaliteit
@@ -143,13 +143,13 @@ Wanneer versleuteling aan de server zijde met door service beheerde sleutels in 
 ## <a name="supporting-services"></a>Ondersteunende services
 De Azure-Services die elk versleutelings model ondersteunen:
 
-| Product, functie of service | Server-side met door service beheerde sleutel   | Server-zijde met door de klant beheerde sleutel | Client-side met door client beheerde sleutel  |
+| Product, functie of service | Server-Side Service-Managed sleutel gebruiken   | Server-Side Customer-Managed sleutel gebruiken | Client-Side Client-Managed sleutel gebruiken  |
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
 | **AI en Machine Learning**      |                    |                    |                    |
 | Azure Cognitive Search           | Ja                | Ja                | -                  |
 | Azure Cognitive Services         | Ja                | Ja                | -                  |
 | Azure Machine Learning           | Ja                | Ja                | -                  |
-| Azure Machine Learning Studio    | Yes                | Preview, RSA 2048-bits | -               |
+| Azure Machine Learning Studio (klassiek) | Ja         | Preview, RSA 2048-bits | -               |
 | Content Moderator                | Ja                | Ja                | -                  |
 | Face                             | Ja                | Ja                | -                  |
 | Taalbegrip           | Ja                | Ja                | -                  |
@@ -157,14 +157,14 @@ De Azure-Services die elk versleutelings model ondersteunen:
 | QnA Maker                        | Ja                | Ja                | -                  |
 | Speech Services                  | Ja                | Ja                | -                  |
 | Translator Text                  | Ja                | Ja                | -                  |
-| Power BI                         | Yes                | Ja, RSA 4096-bits  | -                  |
+| Power BI                         | Ja                | Ja, RSA 4096-bits  | -                  |
 | **Analyse**                    |                    |                    |                    |
-| Azure Stream Analytics           | Yes                | n.v.t.\*              | -                  |
+| Azure Stream Analytics           | Ja                | N.v.t.\*              | -                  |
 | Event Hubs                       | Ja                | Ja                | -                  |
 | Functions                        | Ja                | Ja                | -                  |
 | Azure Analysis Services          | Ja                | -                  | -                  |
-| Azure Data Catalog               | Yes                | -                  | -                  |
-| Azure HDInsight                  | Yes                | Alles                | -                  |
+| Azure Data Catalog               | Ja                | -                  | -                  |
+| Azure HDInsight                  | Ja                | Alle                | -                  |
 | Azure Monitor Application Insights | Ja                | Ja                | -                  |
 | Azure Monitor Log Analytics      | Ja                | Ja                | -                  |
 | Azure Data Explorer              | Ja                | Ja                | -                  |
@@ -175,44 +175,44 @@ De Azure-Services die elk versleutelings model ondersteunen:
 | Container Instances              | Ja                | Ja                | -                  |
 | Container Registry               | Ja                | Ja                | -                  |
 | **Compute**                      |                    |                    |                    |
-| Virtuele machines                 | Ja                | Ja                | -                  |
+| Virtual Machines                 | Ja                | Ja                | -                  |
 | Schaalset voor virtuele machines        | Ja                | Ja                | -                  |
 | SAP HANA                         | Ja                | Ja                | -                  |
-| App Service                      | Yes                | Klikt\*\*            | -                  |
-| Automation                       | Yes                | Klikt\*\*            | -                  |
-| Azure Functions                  | Yes                | Klikt\*\*            | -                  |
-| Azure Portal                     | Yes                | Klikt\*\*            | -                  |
+| App Service                      | Ja                | Klikt\*\*            | -                  |
+| Automation                       | Ja                | Klikt\*\*            | -                  |
+| Azure Functions                  | Ja                | Klikt\*\*            | -                  |
+| Azure Portal                     | Ja                | Klikt\*\*            | -                  |
 | Logic Apps                       | Ja                | Ja                | -                  |
-| Door Azure beheerde toepassingen       | Yes                | Klikt\*\*            | -                  |
+| Door Azure beheerde toepassingen       | Ja                | Klikt\*\*            | -                  |
 | Service Bus                      | Ja                | Ja                | -                  |
 | Siteherstel                    | Ja                | Ja                | -                  |
 | **Databases**                    |                    |                    |                    |
 | SQL Server on Virtual Machines   | Ja                | Ja                | Ja                |
-| Azure SQL Database               | Ja                | Ja, RSA 3072-bits  | Yes                |
-| Azure SQL Database voor MariaDB   | Yes                | -                  | -                  |
+| Azure SQL Database               | Ja                | Ja, RSA 3072-bits  | Ja                |
+| Azure SQL Database voor MariaDB   | Ja                | -                  | -                  |
 | Azure SQL Database voor MySQL     | Ja                | Ja                | -                  |
 | Azure SQL Database voor PostgreSQL | Ja               | Ja                | -                  |
-| Azure Synapse Analytics          | Yes                | Ja, RSA 3072-bits  | -                  |
-| SQL Server Stretch Database      | Yes                | Ja, RSA 3072-bits  | Yes                |
+| Azure Synapse Analytics          | Ja                | Ja, RSA 3072-bits  | -                  |
+| SQL Server Stretch Database      | Ja                | Ja, RSA 3072-bits  | Ja                |
 | Table Storage                    | Ja                | Ja                | Ja                |
 | Azure Cosmos DB                  | Ja                | Ja                | -                  |
 | Azure Databricks                 | Ja                | Ja                | -                  |
-| Azure Database Migration Service | Yes                | n.v.t.\*              | -                  |
+| Azure Database Migration Service | Ja                | N.v.t.\*              | -                  |
 | **DevOps**                       |                    |                    |                    |
 | Azure DevOps Services            | Ja                | -                  | Ja                |
 | Azure-opslagplaatsen                      | Ja                | -                  | Ja                |
 | **Identiteit**                     |                    |                    |                    |
-| Azure Active Directory           | Yes                | -                  | -                  |
+| Azure Active Directory           | Ja                | -                  | -                  |
 | Azure Active Directory Domain Services | Ja          | Ja                | -                  |
 | **Integratie**                  |                    |                    |                    |
 | Service Bus                      | Ja                | Ja                | Ja                |
-| Event Grid                       | Yes                | -                  | -                  |
-| API Management                   | Yes                | -                  | -                  |
+| Event Grid                       | Ja                | -                  | -                  |
+| API Management                   | Ja                | -                  | -                  |
 | **IoT-services**                 |                    |                    |                    |
 | IoT Hub                          | Ja                | Ja                | Ja                |
 | IoT Hub Device Provisioning      | Ja                | Ja                | -                  |
 | **Beheer en governance**    |                    |                    |                    |
-| Azure Site Recovery              | Yes                | -                  | -                  |
+| Azure Site Recovery              | Ja                | -                  | -                  |
 | Azure Migrate                    | Ja                | Ja                | -                  |
 | **Media**                        |                    |                    |                    |
 | Media Services                   | Ja                | -                  | Ja                |
@@ -229,8 +229,8 @@ De Azure-Services die elk versleutelings model ondersteunen:
 | Bestands Premium Storage             | Ja                | Ja                | -                  |
 | File Sync                        | Ja                | Ja                | -                  |
 | Queue Storage                    | Ja                | Ja                | Ja                |
-| Avere vFXT                       | Yes                | -                  | -                  |
-| Azure Cache voor Redis            | Yes                | n.v.t.\*              | -                  |
+| Avere vFXT                       | Ja                | -                  | -                  |
+| Azure Cache voor Redis            | Ja                | N.v.t.\*              | -                  |
 | Azure NetApp Files               | Ja                | Ja                | -                  |
 | Archive Storage                  | Ja                | Ja                | -                  |
 | StorSimple                       | Ja                | Ja                | Ja                |
@@ -240,7 +240,7 @@ De Azure-Services die elk versleutelings model ondersteunen:
 
 \* Met deze service worden gegevens niet persistent gemaakt. Tijdelijke caches, indien aanwezig, worden versleuteld met een micro soft-sleutel.
 
-\*\* Deze service biedt ondersteuning voor het opslaan van gegevens in uw eigen Key Vault, opslag account of een andere service voor gegevens persistentie die al ondersteuning biedt voor versleuteling aan de server zijde met door de klant beheerde sleutel.
+\*\* Deze service biedt ondersteuning voor het opslaan van gegevens in uw eigen Key Vault, opslag account of een andere service voor gegevens persistentie die al Server-Side versleuteling met Customer-Managed sleutel ondersteunt.
 
 ## <a name="next-steps"></a>Volgende stappen
 

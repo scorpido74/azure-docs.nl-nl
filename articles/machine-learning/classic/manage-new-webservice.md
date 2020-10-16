@@ -10,15 +10,15 @@ ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
 ms.openlocfilehash: caaf8e25cdf43602fda8fc72caf7d16b7b56c06a
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91361888"
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-studio-classic-web-services-portal"></a>Een webservice beheren via de portal voor webservices van Azure Machine Learning Studio (klassiek)
 
-**van toepassing op:** ![ Van toepassing op. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klassiek) ![ is niet van toepassing op.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**VAN TOEPASSING OP:**  ![Van toepassing op.](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) ![Niet van toepassing op.](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
 
 
 U kunt uw Machine Learning nieuwe en klassieke webservices beheren met behulp van de Microsoft Azure Machine Learning Web Services-portal. Aangezien klassieke webservices en nieuwe webservices zijn gebaseerd op verschillende onderliggende technologieën, hebt u voor elk van deze onderdelen enigszins verschillende beheer mogelijkheden.
@@ -73,8 +73,8 @@ Klik op het tabblad **dash board** .
 Vanuit het dash board kunt u het totale gebruik van uw web-service gedurende een bepaalde periode bekijken. U kunt de periode selecteren die u wilt weer geven in de vervolg keuzelijst periode in de rechter bovenhoek van de gebruiks diagrammen. Het dash board bevat de volgende informatie:
 
 * **Aanvragen in** de loop van de tijd geeft een stap grafiek weer van het aantal aanvragen gedurende de geselecteerde tijds periode. Zo kunt u nagaan of u problemen ondervindt met pieken in het gebruik.
-* **Aanvraag-antwoord aanvragen** geeft het totale aantal aanvraag/antwoord-aanroepen weer dat de service heeft ontvangen over de geselecteerde tijds periode en het aantal mislukte aanvragen.
-* **Gemiddelde reken tijd aanvraag-antwoord** geeft een gemiddelde van de tijd weer die nodig is om de ontvangen aanvragen uit te voeren.
+* **Aanvraag-antwoord aanvragen** hier wordt het totale aantal Request-Response-aanroepen weer gegeven dat de service heeft ontvangen over de geselecteerde tijds periode en hoeveel er is mislukt.
+* **Gemiddelde Request-Response reken tijd** toont een gemiddelde van de tijd die nodig is om de ontvangen aanvragen uit te voeren.
 * Met **batch-aanvragen** wordt het totale aantal batch-aanvragen weer gegeven dat de service heeft ontvangen over de geselecteerde tijds periode en hoeveel er is mislukt.
 * Bij **gemiddelde taak latentie** wordt een gemiddelde weer gegeven van de tijd die nodig is om de ontvangen aanvragen uit te voeren.
 * **Fouten** geeft het totale aantal fouten weer dat is opgetreden bij aanroepen naar de webservice.
@@ -89,7 +89,7 @@ U kunt de volgende eigenschappen bijwerken:
 * Met **titel** kunt u een titel voor de webservice invoeren
 * Met **sleutels** kunt u de primaire en secundaire API-sleutels draaien.
 * Met de sleutel voor het **opslag account** kunt u de sleutel bijwerken voor het opslag account dat is gekoppeld aan de wijzigingen in de webservice. 
-* Door **voorbeeld gegevens in te scha kelen** kunt u voorbeeld gegevens opgeven die u kunt gebruiken om de aanvraag-antwoord service te testen. Als u de webservice in Machine Learning Studio (klassiek) hebt gemaakt, worden de voorbeeld gegevens opgehaald uit de gegevens waarmee u uw model hebt getraind. Als u de service programmatisch hebt gemaakt, worden de gegevens opgehaald uit de voorbeeld gegevens die u hebt ingevoerd als onderdeel van het JSON-pakket.
+* Door **voorbeeld gegevens in te scha kelen** kunt u voorbeeld gegevens opgeven die u kunt gebruiken om de Request-Response-service te testen. Als u de webservice in Machine Learning Studio (klassiek) hebt gemaakt, worden de voorbeeld gegevens opgehaald uit de gegevens waarmee u uw model hebt getraind. Als u de service programmatisch hebt gemaakt, worden de gegevens opgehaald uit de voorbeeld gegevens die u hebt ingevoerd als onderdeel van het JSON-pakket.
 
 ### <a name="managing-billing-plans"></a>Facturerings plannen beheren
 Klik op de menu optie **plannen** op de pagina Quick Start van Web Services. U kunt ook klikken op het plan dat is gekoppeld aan de specifieke webservice om dat plan te beheren.
@@ -140,8 +140,8 @@ Klik op het tabblad **dash board** .
 Vanuit het dash board kunt u het totale gebruik van uw web-service gedurende een bepaalde periode bekijken. U kunt de periode selecteren die u wilt weer geven in de vervolg keuzelijst periode in de rechter bovenhoek van de gebruiks diagrammen. Het dash board bevat de volgende informatie:
 
 * **Aanvragen in** de loop van de tijd geeft een stap grafiek weer van het aantal aanvragen gedurende de geselecteerde tijds periode. Zo kunt u nagaan of u problemen ondervindt met pieken in het gebruik.
-* **Aanvraag-antwoord aanvragen** geeft het totale aantal aanvraag/antwoord-aanroepen weer dat de service heeft ontvangen over de geselecteerde tijds periode en het aantal mislukte aanvragen.
-* **Gemiddelde reken tijd aanvraag-antwoord** geeft een gemiddelde van de tijd weer die nodig is om de ontvangen aanvragen uit te voeren.
+* **Aanvraag-antwoord aanvragen** hier wordt het totale aantal Request-Response-aanroepen weer gegeven dat de service heeft ontvangen over de geselecteerde tijds periode en hoeveel er is mislukt.
+* **Gemiddelde Request-Response reken tijd** toont een gemiddelde van de tijd die nodig is om de ontvangen aanvragen uit te voeren.
 * Met **batch-aanvragen** wordt het totale aantal batch-aanvragen weer gegeven dat de service heeft ontvangen over de geselecteerde tijds periode en hoeveel er is mislukt.
 * Bij **gemiddelde taak latentie** wordt een gemiddelde weer gegeven van de tijd die nodig is om de ontvangen aanvragen uit te voeren.
 * **Fouten** geeft het totale aantal fouten weer dat is opgetreden bij aanroepen naar de webservice.
@@ -154,6 +154,6 @@ U kunt de volgende eigenschappen bijwerken:
 
 * Met **Beschrijving** kunt u een beschrijving invoeren voor de webservice. Beschrijving is een verplicht veld.
 * Met **logboek registratie** kunt u fout logboek registratie op het eind punt in-of uitschakelen. Zie [logboek registratie inschakelen voor machine learning-webservices](web-services-logging.md)voor meer informatie over logboek registratie.
-* Door **voorbeeld gegevens in te scha kelen** kunt u voorbeeld gegevens opgeven die u kunt gebruiken om de aanvraag-antwoord service te testen. Als u de webservice in Machine Learning Studio (klassiek) hebt gemaakt, worden de voorbeeld gegevens opgehaald uit de gegevens waarmee u uw model hebt getraind. Als u de service programmatisch hebt gemaakt, worden de gegevens opgehaald uit de voorbeeld gegevens die u hebt ingevoerd als onderdeel van het JSON-pakket.
+* Door **voorbeeld gegevens in te scha kelen** kunt u voorbeeld gegevens opgeven die u kunt gebruiken om de Request-Response-service te testen. Als u de webservice in Machine Learning Studio (klassiek) hebt gemaakt, worden de voorbeeld gegevens opgehaald uit de gegevens waarmee u uw model hebt getraind. Als u de service programmatisch hebt gemaakt, worden de gegevens opgehaald uit de voorbeeld gegevens die u hebt ingevoerd als onderdeel van het JSON-pakket.
 
 

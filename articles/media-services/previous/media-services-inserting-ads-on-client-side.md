@@ -16,10 +16,10 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 70db1ff63e3c2a7e7806e5ef3c55b4e4af4a5259
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89263566"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>Advertenties invoegen aan de client zijde
@@ -353,7 +353,7 @@ Het **trigger** -element bevat een **startConditions** -element dat aangeeft wan
     </trigger>
 ```
 
-### <a name="using-video-player-ad-interface-definition-vpaid"></a>Video speler gebruiken-AD-interface definitie (VPAID)
+### <a name="using-video-player-ad-interface-definition-vpaid"></a>Video Player-Ad interface definitie (VPAID) gebruiken
 VPAID is een API voor het inschakelen van uitvoer bare ad-eenheden om te communiceren met een video speler. Hierdoor kunnen zeer interactieve AD-ervaringen worden geboden. De gebruiker kan communiceren met de AD en de AD kan reageren op acties die door de viewer worden uitgevoerd. Een AD kan bijvoorbeeld knoppen weer geven waarmee de gebruiker meer informatie of een langere versie van de AD kan weer geven. De video speler moet ondersteuning bieden voor de VPAID-API en de uitvoer bare AD moet de API implementeren. Wanneer een speler een AD-bericht van een ad-server aanvraagt, kan de server reageren met een grote reactie die een VPAID AD bevat.
 
 Een uitvoer bare AD wordt gemaakt in code die moet worden uitgevoerd in een runtime-omgeving zoals Adobe Flash™ of Java script dat in een webbrowser kan worden uitgevoerd. Wanneer een ad-server een VAST antwoord retourneert dat een VPAID AD bevat, moet de waarde van het kenmerk apiFramework in het `<MediaFile>` element ' VPAID ' zijn. Dit kenmerk geeft aan dat de Inge sloten AD een VPAID uitvoerbaar AD-bestand is. Het kenmerk type moet worden ingesteld op het MIME-type van het uitvoer bare bestand, zoals ' Application/x-Shock Wave-Flash ' of ' Application/x-java script '. Het volgende XML-fragment toont het- `<MediaFile>` element van een enorme reactie met een VPAID-uitvoerbaar bestand.

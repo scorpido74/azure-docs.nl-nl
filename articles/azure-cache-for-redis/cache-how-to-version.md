@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.openlocfilehash: ed0f486afe466d31388fa99b4ce5f5754210533f
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91571383"
 ---
 # <a name="set-redis-version-for-azure-cache-for-redis-preview"></a>Redis-versie voor Azure cache instellen voor redis (preview)
@@ -30,7 +30,7 @@ Voer de volgende stappen uit om een cache te maken:
   
 1. Selecteer op de pagina **Nieuw** de optie **Databases** en selecteer vervolgens **Azure Cache voor Redis**.
 
-    :::image type="content" source="media/cache-create/new-cache-menu.png" alt-text="Selecteer Azure-cache voor redis.":::
+    :::image type="content" source="media/cache-create/new-cache-menu.png" alt-text="Selecteer Azure Cache voor Redis.":::
    
 1. Configureer de instellingen voor de nieuwe cache op de pagina **basis beginselen** .
    
@@ -44,11 +44,11 @@ Voer de volgende stappen uit om een cache te maken:
    
 1. Kies op de pagina **Geavanceerd** een redis-versie die u wilt gebruiken.
    
-    :::image type="content" source="media/cache-how-to-version/select-redis-version.png" alt-text="Selecteer Azure-cache voor redis.":::
+    :::image type="content" source="media/cache-how-to-version/select-redis-version.png" alt-text="Selecteer Azure Cache voor Redis.":::
 
-1. Klik op **Create**. 
+1. Klik op **Maken**. 
    
-    Het duurt even voordat de cache is gemaakt. U kunt de voortgang bekijken op de **overzichtspagina** van Azure Cache voor Redis. Als u bij **Status** **Wordt uitgevoerd** ziet staan, kunt u de cache gebruiken.
+    Het duurt even voor de cache is gemaakt. U kunt de voortgang bekijken op de **overzichtspagina** van Azure Cache voor Redis. Als u bij **Status** **Wordt uitgevoerd** ziet staan, kunt u de cache gebruiken.
 
     > [!NOTE]
     > Op dit moment kan de redis-versie niet meer worden gewijzigd nadat een cache is gemaakt.

@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/18/2020
 ms.author: mjbrown
 ms.openlocfilehash: 98210f26072504c129ba32f765cf6bab74fef604
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91570715"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Een Azure Cosmos-account beheren
@@ -31,7 +31,7 @@ Zie [een Azure Cosmos DB-account maken met Azure cli](manage-with-cli.md#create-
 
 Zie [een Azure Cosmos DB-account maken met Power shell](manage-with-powershell.md#create-account)
 
-### <a name="azure-resource-manager-template"></a><a id="create-database-account-via-arm-template"></a>Azure Resource Manager sjabloon
+### <a name="azure-resource-manager-template"></a><a id="create-database-account-via-arm-template"></a>Azure Resource Manager-sjabloon
 
 Zie [Azure Cosmos DB-account maken met Azure Resource Manager sjablonen](manage-sql-with-resource-manager.md)
 
@@ -196,7 +196,7 @@ Zie [prioriteit van failover instellen met Azure cli](manage-with-cli.md#set-fai
 
 Zie [prioriteit van failover instellen met Power shell](manage-with-powershell.md#modify-failover-priority)
 
-## <a name="perform-manual-failover-on-an-azure-cosmos-account"></a><a id="manual-failover"></a>Handmatige failover uitvoeren voor een Azure Cosmos-account
+## <a name="perform-manual-failover-on-an-azure-cosmos-account"></a><a id="manual-failover"></a>Hand matige failover uitvoeren op een Azure Cosmos-account
 
 > [!IMPORTANT]
 > Het Azure Cosmos-account moet worden geconfigureerd voor een hand matige failover zodat deze bewerking kan worden voltooid.

@@ -8,12 +8,12 @@ ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: ab861b3ed265da9060e2367bdfdeeeee7047c584
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 95c4464d1ab8416f609f75f2b59fb85a578ef5b7
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88815858"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91979050"
 ---
 # <a name="use-the-azure-portal-to-restrict-importexport-access-for-managed-disks-with-private-links"></a>Azure Portal gebruiken om de toegang voor importeren/exporteren voor beheerde schijven te beperken met Private Link
 
@@ -30,12 +30,6 @@ U kunt de eigenschap NetworkAccessPolicy instellen op `DenyAll` om te voorkomen 
 ## <a name="regional-availability"></a>Regionale beschikbaarheid
 
 [!INCLUDE [virtual-machines-disks-private-links-regions](../../includes/virtual-machines-disks-private-links-regions.md)]
-
-## <a name="prerequisites"></a>Vereisten
-
-Als u privé-eindpunten wilt gebruiken voor het exporteren en importeren van beheerde schijven, moet u de functie op uw abonnement hebben ingeschakeld. Stuur een e-mail naar mdprivatelinks@microsoft .com met uw abonnement-id's om de functie in te schakelen voor uw abonnementen.
-
-U moet het virtuele netwerk van de VM noteren waaraan uw schijven zijn gekoppeld. Het virtuele netwerk is nodig bij het configureren van het privé-eindpunt.
 
 ## <a name="create-a-disk-access-resource"></a>Een schijftoegang-resource maken
 
@@ -101,4 +95,4 @@ U hebt nu de configuratie van persoonlijke koppelingen voltooid die u kunt gebru
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Veelgestelde vragen over privékoppelingen](./faq-for-disks.md#private-links-for-securely-exporting-and-importing-managed-disks)
-- [Beheerde momentopnamen exporteren/kopiëren als VHD naar een opslagaccount in een andere regio met PowerShell](scripts/virtual-machines-windows-powershell-sample-copy-snapshot-to-storage-account.md)
+- [Beheerde momentopnamen exporteren/kopiëren als VHD naar een opslagaccount in een andere regio met PowerShell](./scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account.md)

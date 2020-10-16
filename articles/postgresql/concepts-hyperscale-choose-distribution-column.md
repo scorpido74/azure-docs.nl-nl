@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: f3c86f4b194e6d3935434b35cae958dfcf772986
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 129eff8c954c0c5469d3607e6ae16ce3202630ed
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91314909"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91929333"
 ---
 # <a name="choose-distribution-columns-in-azure-database-for-postgresql--hyperscale-citus"></a>Kies distributie kolommen in Azure Database for PostgreSQL – grootschalige (Citus)
 
@@ -71,8 +71,6 @@ De meest voorkomende fout in informatie over het model leren van time-series in 
 
 -   **Kies geen tijds tempel als de kolom distributie.** Kies een andere distributie kolom. Gebruik in een app met meerdere tenants de Tenant-ID of in een realtime-app de entiteit-ID gebruiken.
 -   **Gebruik in plaats daarvan PostgreSQL-tabel partitionering voor tijd.** Gebruik tabel partities voor het opsplitsen van een grote tabel tijdgesorteerde gegevens in meerdere overgenomen tabellen met elke tabel die verschillende Peri Oden bevat. Als u een post gres-gepartitioneerde tabel in grootschalige (Citus) distribueert, wordt Shards gemaakt voor de overgenomen tabellen.
-
-Lees de [zelf studie over de time-serie](https://aka.ms/hyperscale-tutorial-timeseries) voor een voor beeld van hoe u dit type toepassing kunt bouwen.
 
 ## <a name="next-steps"></a>Volgende stappen
 - Meer informatie over hoe u met de co- [locatie](concepts-hyperscale-colocation.md) tussen gedistribueerde gegevens query's snel kunt uitvoeren.

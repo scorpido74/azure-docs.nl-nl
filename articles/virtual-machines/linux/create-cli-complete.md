@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 4348d3d71259b5bdf63b1c52af53bff59c650086
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 17d36acfa2de699ff2b22ac16d327ea738519f4a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829013"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975379"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Een volledige virtuele Linux-machine maken met de Azure CLI
 Als u snel een virtuele machine (VM) in azure wilt maken, kunt u één Azure CLI-opdracht gebruiken die standaard waarden gebruikt voor het maken van vereiste ondersteunende resources. Resources, zoals een virtueel netwerk, een openbaar IP-adres en een netwerk beveiligings groep, worden automatisch gemaakt. Als u meer controle hebt over uw omgeving in productie gebruik, kunt u deze resources van tevoren maken en vervolgens uw Vm's toevoegen. Dit artikel helpt u bij het maken van een virtuele machine en elk van de ondersteunende bronnen één voor één.
@@ -434,7 +434,7 @@ Fout domeinen definiëren een groepering van virtuele machines die een gemeen sc
 
 Met update domeinen worden groepen virtuele machines en onderliggende fysieke hardware aangegeven die op hetzelfde moment opnieuw kunnen worden opgestart. Tijdens gepland onderhoud is de volg orde waarin update domeinen opnieuw worden opgestart mogelijk niet sequentieel, maar er wordt slechts één update domein tegelijk opnieuw opgestart.
 
-Azure distribueert automatisch Vm's over de fout-en update domeinen wanneer ze in een beschikbaarheidsset worden geplaatst. Zie [de beschik baarheid van virtuele machines beheren](manage-availability.md)voor meer informatie.
+Azure distribueert automatisch Vm's over de fout-en update domeinen wanneer ze in een beschikbaarheidsset worden geplaatst. Zie [de beschik baarheid van virtuele machines beheren](../manage-availability.md)voor meer informatie.
 
 Maak een beschikbaarheidsset voor uw virtuele machine met [AZ VM Availability-set Create](/cli/azure/vm/availability-set). In het volgende voorbeeld wordt een beschikbaarheidsset met de naam *myAvailabilitySet* gemaakt:
 
@@ -473,7 +473,7 @@ U hebt de netwerk bronnen gemaakt ter ondersteuning van virtuele machines die to
 
 Geef een SSH-sleutel op die moet worden gebruikt voor verificatie. Als u geen open bare SSH-sleutel paar hebt, kunt u [deze maken](mac-create-ssh-keys.md) of de `--generate-ssh-keys` para meter gebruiken om ze voor u te maken. Als u al een sleutel paar hebt, gebruikt deze para meter bestaande sleutels in `~/.ssh` .
 
-Maak de virtuele machine door alle resources en informatie samen met de opdracht [AZ VM Create](/cli/azure/vm) op te halen. In het volgende voor beeld wordt een VM gemaakt met de naam *myVM*:
+Maak de virtuele machine door alle resources en informatie samen met de opdracht [AZ VM Create](/cli/azure/vm) op te halen. In het volgende voorbeeld wordt een VM met de naam *myVM* gemaakt:
 
 ```azurecli
 az vm create \

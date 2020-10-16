@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/12/2020
 ms.author: alkohli
 ms.openlocfilehash: e67b507baf1c3271a7fe32318597722e52fd3890
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90891383"
 ---
 # <a name="certificate-requirements"></a>Certificaatvereisten
@@ -70,7 +70,7 @@ De PFX-certificaten die op uw Azure Stack Edge Pro-apparaat zijn geïnstalleerd,
 
 * Wanneer u een PFX-certificaat exporteert, moet u ervoor zorgen dat u de optie **alle certificaten in de keten toevoegen, indien mogelijk** hebt geselecteerd.
 
-* Gebruik een PFX-certificaat voor eind punt, lokale gebruikers interface, knoop punt, VPN en Wi-Fi als de open bare en persoonlijke sleutels zijn vereist voor Azure Stack Edge Pro. Voor de persoonlijke sleutel moet het sleutel kenmerk van de lokale computer zijn ingesteld.
+* Gebruik een PFX-certificaat voor eind punt, lokale gebruikers interface, knoop punt, VPN en Wi-Fi als de open bare en persoonlijke sleutels vereist zijn voor Azure Stack Edge Pro. Voor de persoonlijke sleutel moet het sleutel kenmerk van de lokale computer zijn ingesteld.
 
 * De PFX-versleuteling van het certificaat moet 3DES zijn. Dit is de standaard versleuteling die wordt gebruikt bij het exporteren van een Windows 10-client of een Windows Server 2016-certificaat archief. Zie [Triple des](https://en.wikipedia.org/wiki/Triple_DES)voor meer informatie over 3DES.
 

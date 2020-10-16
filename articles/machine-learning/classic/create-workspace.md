@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 12/07/2017
 ms.openlocfilehash: 700cc461563f145f58e02f7ed9a09b2899a4eb5b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91343578"
 ---
 # <a name="create-and-share-an-machine-learning-studio-classic-workspace"></a>Een Machine Learning Studio-werk ruimte (klassieke) maken en delen
@@ -44,7 +44,7 @@ Als u een werk ruimte in Machine Learning Studio (klassiek) wilt openen, moet u 
 
      ![Een nieuwe studio-werk ruimte maken](./media/create-workspace/create-new-workspace.png)
 
-5. Klik op **Create**.
+5. Klik op **Maken**.
 
    Machine Learning is momenteel beschikbaar in een beperkt aantal regio's. Als uw abonnement niet een van deze regio's bevat, wordt het fout bericht ' u hebt geen abonnementen in de toegestane regio's ' weer gegeven.  Als u een regio wilt toevoegen aan uw abonnement, maakt u een nieuwe micro soft-ondersteunings aanvraag van de Azure Portal, kiest u **facturering** als het probleem type en volgt u de aanwijzingen om uw aanvraag in te dienen.
 

@@ -3,12 +3,12 @@ title: Overzicht van het CAF Foundation-blauwdrukvoorbeeld
 description: Overzicht en architectuur van het Cloud Adoption Framework (CAF) voor Azure Foundation-blauwdrukvoorbeeld
 ms.date: 09/14/2020
 ms.topic: sample
-ms.openlocfilehash: cce5ea001b32ae92542f38f8f11427e85075cee9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77e8b79ec7cf217161099808cee4364e31c6d6dd
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531692"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950275"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Overzicht van Microsoft Cloud Adoption Framework voor het Azure Foundation-blauwdrukvoorbeeld
 
@@ -26,18 +26,19 @@ Deze implementatie omvat verschillende Azure-services die worden gebruikt om een
 
 - Een [Azure Key Vault](../../../../key-vault/general/overview.md)-exemplaar om de geheimen te bewaren voor de virtuele machines die in de omgeving met gedeelde services worden geïmplementeerd
 - Implementeer [Log Analytics](../../../../azure-monitor/overview.md). Dit wordt geïmplementeerd om te garanderen dat er op een centrale locatie logboeken worden bijgehouden voor alle acties en services zodra u begint met de beveiligde implementatie in [Opslagaccounts](../../../../storage/common/storage-introduction.md) voor diagnostisch logboekregistratie
-- Implementeer [Azure Security Center](../../../../security-center/security-center-intro.md) (standaardversie). Dit biedt bedreigingsbeveiliging voor uw gemigreerde workloads
-- Met de blauwdruk wordt ook [Azure-beleid](../../../policy/overview.md) gedefinieerd en geïmplementeerd, voor 
-  - Taggen (CostCenter) wordt toegepast op resourcegroepen
-  - Resources bijvoegen in resourcegroep met de CostCenter-tag
-  - Toegestane Azure-regio voor resources en resourcegroepen
-  - Toegestane opslagaccount-SKU's (kiezen tijden het implementeren)
-  - Toegestane Azure-VM-SKU's (kiezen tijdens het implementeren)
-  - Vereisen dat Network Watcher wordt geïmplementeerd 
-  - Veilige overdrachtversleuteling voor Azure-opslagaccount vereisen
-  - Resourcetypen weigeren (kiezen tijdens implementeren)  
-- Initiatieven
-  - Bewaking in Azure Security Center inschakelen (meer dan 100 beleidsdefinities)
+- Implementeer [Azure Security Center](../../../../security-center/security-center-introduction.md) (standaardversie). Dit biedt bedreigingsbeveiliging voor uw gemigreerde workloads
+- Met de blauwdruk worden ook [Azure Policy](../../../policy/overview.md)-definities gedefinieerd en geïmplementeerd:
+  - Policy-definities:
+    - Taggen (CostCenter) wordt toegepast op resourcegroepen
+    - Resources bijvoegen in resourcegroep met de CostCenter-tag
+    - Toegestane Azure-regio voor resources en resourcegroepen
+    - Toegestane opslagaccount-SKU's (kiezen tijden het implementeren)
+    - Toegestane Azure-VM-SKU's (kiezen tijdens het implementeren)
+    - Vereisen dat Network Watcher wordt geïmplementeerd 
+    - Veilige overdrachtversleuteling voor Azure-opslagaccount vereisen
+    - Resourcetypen weigeren (kiezen tijdens implementeren)  
+  - Policy-initiatieven:
+    - Bewaking in Azure Security Center inschakelen (meer dan 100 beleidsdefinities)
 
 Al deze elementen voldoen aan de aanbevolen procedures zoals gepubliceerd in [Azure Architecture Center - Referentiearchitecturen](/azure/architecture/reference-architectures/).
 

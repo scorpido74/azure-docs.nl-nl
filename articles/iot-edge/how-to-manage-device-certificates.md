@@ -8,16 +8,16 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9e3925d2c14d51785ed4fe00a508ea353490e1cd
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: 1f07f9d481ca8ede29c8b8443dad81a442962a71
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89669027"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044136"
 ---
 # <a name="manage-certificates-on-an-iot-edge-device"></a>Certificaten op een IoT Edge apparaat beheren
 
-Alle IoT Edge apparaten gebruiken certificaten voor het maken van beveiligde verbindingen tussen de runtime en alle modules die op het apparaat worden uitgevoerd. IoT Edge apparaten als gateways functioneren, gebruiken deze zelfde certificaten ook om verbinding te maken met hun downstream-apparaten.
+Alle IoT Edge-apparaten gebruiken certificaten voor het maken van beveiligde verbindingen tussen de runtime en alle modules die op het apparaat worden uitgevoerd. IoT Edge apparaten als gateways functioneren, gebruiken deze zelfde certificaten ook om verbinding te maken met hun downstream-apparaten.
 
 ## <a name="install-production-certificates"></a>Productiecertificaten installeren
 
@@ -33,10 +33,13 @@ Zie [begrijpen hoe Azure IOT Edge certificaten gebruikt](iot-edge-certs.md)voor 
 
 ### <a name="prerequisites"></a>Vereisten
 
-* Een IoT Edge apparaat, dat wordt uitgevoerd op [Windows](how-to-install-iot-edge-windows.md) of [Linux](how-to-install-iot-edge-linux.md).
+* Een IoT Edge-apparaat.
+
+  Als u geen IoT Edge apparaat hebt ingesteld, kunt u er een maken in een virtuele Azure-machine. Volg de stappen in een van de Quick Start-artikelen voor het [maken van een virtueel Linux-apparaat](quickstart-linux.md) of [het maken van een virtueel Windows-apparaat](quickstart.md).
+
 * Beschikken over een basis certificaat voor een certificerings instantie (CA), ofwel zelf ondertekend of gekocht bij een vertrouwde commerciële certificerings instantie, zoals Baltimore, VeriSign, DigiCert of GlobalSign.
 
-Als u nog geen basis certificerings instantie hebt, maar IoT Edge functies wilt uitproberen waarvoor productie certificaten zijn vereist (zoals de gateway scenario's), kunt u [demo certificaten maken om IOT Edge-apparaatfuncties te testen](how-to-create-test-certificates.md).
+  Als u nog geen basis certificerings instantie hebt, maar IoT Edge functies wilt uitproberen waarvoor productie certificaten zijn vereist (zoals de gateway scenario's), kunt u [demo certificaten maken om IOT Edge-apparaatfuncties te testen](how-to-create-test-certificates.md).
 
 ### <a name="create-production-certificates"></a>Productie certificaten maken
 
@@ -57,7 +60,7 @@ Als u een voor beeld van deze certificaten wilt zien, bekijkt u de scripts die d
 
 Installeer uw certificaat keten op het IoT Edge apparaat en configureer de IoT Edge-runtime om te verwijzen naar de nieuwe certificaten.
 
-Als u bijvoorbeeld de voorbeeld scripts hebt gebruikt om [demo certificaten te maken](how-to-create-test-certificates.md), kopieert u de volgende bestanden naar uw IOT-edge-apparaat:
+Als u bijvoorbeeld de voorbeeld scripts hebt gebruikt om [demo certificaten te maken](how-to-create-test-certificates.md), kopieert u de volgende bestanden naar uw IoT-Edge-apparaat:
 
 * CA-certificaat van apparaat: `<WRKDIR>\certs\iot-edge-device-MyEdgeDeviceCA-full-chain.cert.pem`
 * Persoonlijke sleutel van de apparaat-CA: `<WRKDIR>\private\iot-edge-device-MyEdgeDeviceCA.key.pem`
@@ -65,7 +68,7 @@ Als u bijvoorbeeld de voorbeeld scripts hebt gebruikt om [demo certificaten te m
 
 1. Kopieer de drie certificaat-en sleutel bestanden naar uw IoT Edge-apparaat.
 
-   U kunt een service zoals [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) of een functie zoals [Secure Copy Protocol](https://www.ssh.com/ssh/scp/) gebruiken om de certificaat bestanden te verplaatsen.  Als u de certificaten op het IoT Edge apparaat zelf hebt gegenereerd, kunt u deze stap overs Laan en het pad naar de werkmap gebruiken.
+   U kunt een service zoals [Azure Key Vault](../key-vault/index.yml) of een functie zoals [Secure Copy Protocol](https://www.ssh.com/ssh/scp/) gebruiken om de certificaat bestanden te verplaatsen.  Als u de certificaten op het IoT Edge apparaat zelf hebt gegenereerd, kunt u deze stap overs Laan en het pad naar de werkmap gebruiken.
 
 1. Open het IoT Edge Security daemon config-bestand.
 

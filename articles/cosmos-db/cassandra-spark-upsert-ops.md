@@ -9,10 +9,10 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/24/2018
 ms.openlocfilehash: 5ad2cf5dee43f0345017930377a3ed9d2e4624bf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85257479"
 ---
 # <a name="upsert-data-into-azure-cosmos-db-cassandra-api-from-spark"></a>Gegevens in Azure Cosmos DB Cassandra-API van Spark Upsert
@@ -91,6 +91,6 @@ cdbConnector.withSessionDo(session => session.execute("update books_ks.books set
 
 Ga verder met de volgende artikelen om andere bewerkingen uit te voeren op de gegevens die zijn opgeslagen in Azure Cosmos DB Cassandra-API tabellen:
  
-* [Bewerkingen verwijderen](cassandra-spark-delete-ops.md)
+* [Verwijderbewerkingen](cassandra-spark-delete-ops.md)
 * [Aggregatiebewerkingen](cassandra-spark-aggregation-ops.md)
 * [Tabel Kopieer bewerkingen](cassandra-spark-table-copy-ops.md)

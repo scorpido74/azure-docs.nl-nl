@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: sutalasi
 ms.openlocfilehash: 45921bdf802a649b7b802f44d2842a543e44f02b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84699597"
 ---
-# <a name="configure-and-manage-replication-policies-for-vmware-disaster-recovery"></a>Replicatie beleid configureren en beheren voor VMware-nood herstel
+# <a name="configure-and-manage-replication-policies-for-vmware-disaster-recovery"></a>Replicatiebeleid voor herstel na noodgeval van VMware configureren en beheren 
 
 In dit artikel wordt beschreven hoe u een replicatie beleid configureert wanneer u virtuele VMware-machines naar Azure repliceert met behulp van [Azure site Recovery](site-recovery-overview.md).
 
-## <a name="create-a-policy"></a>Beleid maken
+## <a name="create-a-policy"></a>Een beleid maken
 
 1. Selecteer **Manage**  >  **site Recovery-infra structuur**beheren.
 2. Selecteer in **voor VMware-en fysieke machines**, het **replicatie beleid**.

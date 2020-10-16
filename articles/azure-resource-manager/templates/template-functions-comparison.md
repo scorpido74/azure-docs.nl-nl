@@ -4,18 +4,18 @@ description: Hierin worden de functies beschreven die in een Azure Resource Mana
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 01d66f43cf73dcc9228118db5a9b6149b19ee66d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84677828"
 ---
-# <a name="comparison-functions-for-arm-templates"></a>Vergelijkings functies voor ARM-sjablonen
+# <a name="comparison-functions-for-arm-templates"></a>Vergelijkingsfuncties voor ARM-sjablonen
 
 Resource Manager biedt verschillende functies voor het maken van vergelijkingen in uw Azure Resource Manager-sjablonen (ARM).
 
 * [Voeg](#coalesce)
-* [is gelijk aan](#equals)
+* [gelijk is aan](#equals)
 * [groter](#greater)
 * [greaterOrEquals](#greaterorequals)
 * [less](#less)
@@ -29,10 +29,10 @@ Retourneert de eerste waarde die niet null is van de para meters. Lege teken ree
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| Arg1 |Yes |int, String, array of object |De eerste waarde die moet worden getest op null. |
-| aanvullende argumenten |No |int, String, array of object |Aanvullende waarden om te testen op null. |
+| Arg1 |Ja |int, String, array of object |De eerste waarde die moet worden getest op null. |
+| aanvullende argumenten |Nee |int, String, array of object |Aanvullende waarden om te testen op null. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -104,10 +104,10 @@ Hiermee wordt gecontroleerd of twee waarden gelijk zijn aan elkaar.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| Arg1 |Yes |int, String, array of object |De eerste waarde die moet worden gecontroleerd op gelijkheid. |
-| Arg2 |Yes |int, String, array of object |De tweede waarde om te controleren op gelijkheid. |
+| Arg1 |Ja |int, String, array of object |De eerste waarde die moet worden gecontroleerd op gelijkheid. |
+| Arg2 |Ja |int, String, array of object |De tweede waarde om te controleren op gelijkheid. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -237,10 +237,10 @@ Controleert of de eerste waarde groter is dan de tweede waarde.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| Arg1 |Yes |int of String |De eerste waarde voor de grotere vergelijking. |
-| Arg2 |Yes |int of String |De tweede waarde voor de grotere vergelijking. |
+| Arg1 |Ja |int of String |De eerste waarde voor de grotere vergelijking. |
+| Arg2 |Ja |int of String |De tweede waarde voor de grotere vergelijking. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -302,10 +302,10 @@ Hiermee wordt gecontroleerd of de eerste waarde groter is dan of gelijk is aan d
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| Arg1 |Yes |int of String |De eerste waarde voor de grotere of gelijk zijnde vergelijking. |
-| Arg2 |Yes |int of String |De tweede waarde voor de groter of gelijke vergelijking. |
+| Arg1 |Ja |int of String |De eerste waarde voor de grotere of gelijk zijnde vergelijking. |
+| Arg2 |Ja |int of String |De tweede waarde voor de groter of gelijke vergelijking. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -367,10 +367,10 @@ Controleert of de eerste waarde lager is dan de tweede waarde.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| Arg1 |Yes |int of String |De eerste waarde voor de minder vergelijkingen. |
-| Arg2 |Yes |int of String |De tweede waarde voor de minder vergelijkingen. |
+| Arg1 |Ja |int of String |De eerste waarde voor de minder vergelijkingen. |
+| Arg2 |Ja |int of String |De tweede waarde voor de minder vergelijkingen. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -432,10 +432,10 @@ Hiermee wordt gecontroleerd of de eerste waarde kleiner is dan of gelijk is aan 
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| Arg1 |Yes |int of String |De eerste waarde voor de vergelijking met minder of gelijk aan. |
-| Arg2 |Yes |int of String |De tweede waarde voor de vergelijking met minder of gelijk aan. |
+| Arg1 |Ja |int of String |De eerste waarde voor de vergelijking met minder of gelijk aan. |
+| Arg2 |Ja |int of String |De tweede waarde voor de vergelijking met minder of gelijk aan. |
 
 ### <a name="return-value"></a>Retourwaarde
 

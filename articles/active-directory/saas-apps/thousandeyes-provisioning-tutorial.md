@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: arvinh
 ms.openlocfilehash: 7958ef9195c9dcef65fab70fbf48edf2021ff94b
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91355819"
 ---
 # <a name="tutorial-configure-thousandeyes-for-automatic-user-provisioning"></a>Zelf studie: ThousandEyes configureren voor automatische gebruikers inrichting
@@ -51,7 +51,7 @@ Voordat u de inrichtings service configureert en inschakelt, moet u bepalen welk
 In deze sectie vindt u instructies voor het verbinden van uw Azure AD-ThousandEyes en het configureren van de inrichtings service om toegewezen gebruikers accounts in ThousandEyes te maken, bij te werken en uit te scha kelen op basis van de gebruikers-en groeps toewijzing in azure AD.
 
 > [!TIP]
-> U kunt er ook voor kiezen om eenmalige aanmelding op basis van SAML in te scha kelen voor ThousandEyes, volgens de instructies in [Azure Portal](https://portal.azure.com). Eenmalige aanmelding kan onafhankelijk van automatische inrichting worden geconfigureerd, maar deze twee functies gelden voor elkaar.
+> U kunt er ook voor kiezen om op SAML gebaseerde enkelvoudige Sign-On voor ThousandEyes in te scha kelen, gevolgd door de instructies in [Azure Portal](https://portal.azure.com). Eenmalige aanmelding kan onafhankelijk van automatische inrichting worden geconfigureerd, maar deze twee functies gelden voor elkaar.
 
 ### <a name="configure-automatic-user-account-provisioning-to-thousandeyes-in-azure-ad"></a>Automatische toewijzing van gebruikers accounts configureren voor ThousandEyes in azure AD
 

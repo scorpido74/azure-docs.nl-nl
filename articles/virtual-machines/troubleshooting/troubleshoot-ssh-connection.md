@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 05/30/2017
 ms.author: genli
-ms.openlocfilehash: 678bad67b454ec0930d2cf30df45ba7b2c822e35
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 43e2f1c304a2ede10445fa656dbdd16a4b60ca3c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371453"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978948"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Het oplossen van problemen met SSH-verbindingen naar een virtuele Azure Linux-machine waarop zich fouten voordoen, die afsluit vanwege fouten of die wordt geweigerd
 Dit artikel helpt u bij het vinden en corrigeren van de problemen die zich voordoen als gevolg van SSH-fouten (Secure Shell), SSH-verbindings fouten of SSH worden geweigerd wanneer u verbinding probeert te maken met een virtuele Linux-machine (VM). U kunt de Azure Portal-, Azure CLI-of VM-extensie voor toegang voor Linux gebruiken om verbindings problemen op te lossen
@@ -46,7 +46,7 @@ Blijf lezen voor meer gedetailleerde stappen voor probleem oplossing en uitleg.
 U kunt de referenties of de SSH-configuratie opnieuw instellen met een van de volgende methoden:
 
 * [Azure Portal](#use-the-azure-portal) -geweldig als u de SSH-configuratie of SSH-sleutel snel opnieuw moet instellen en u de Azure-hulpprogram ma's niet hebt geïnstalleerd.
-* [Seriële console van Azure VM](https://aka.ms/serialconsolelinux) : de seriële VM-console werkt onafhankelijk van de SSH-configuratie en geeft u een interactieve console voor uw VM. In het geval van ' niet SSH '-situaties is het specifiek dat de seriële console is ontworpen om te helpen oplossen. Zie hieronder voor meer informatie.
+* [Seriële console van Azure VM](./serial-console-linux.md) : de seriële VM-console werkt onafhankelijk van de SSH-configuratie en geeft u een interactieve console voor uw VM. In het geval van ' niet SSH '-situaties is het specifiek dat de seriële console is ontworpen om te helpen oplossen. Zie hieronder voor meer informatie.
 * [Azure cli](#use-the-azure-cli) : als u zich al op de opdracht regel bevindt, stelt u de SSH-configuratie of-referenties snel opnieuw in. Als u werkt met een klassieke virtuele machine, kunt u de [klassieke Azure-cli](#use-the-azure-classic-cli)gebruiken.
 * [Azure VMAccessForLinux-extensie](#use-the-vmaccess-extension) : Maak en hergebruik JSON-definitie bestanden om de SSH-configuratie of gebruikers referenties opnieuw in te stellen.
 

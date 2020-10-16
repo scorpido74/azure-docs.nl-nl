@@ -7,22 +7,22 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/14/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: eaf99f5e92cbb9277f2d4143e14070f1900cdbef
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 04b03e3857bc5b01c25112f2a0d60c6468ecd42a
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90888483"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093919"
 ---
 # <a name="stream-azure-spring-cloud-app-logs-in-real-time"></a>Azure Spring Cloud-applogboeken in realtime streamen
 
-**Dit artikel is van toepassing op:** ✔️ Java ✔️ C #
+**Dit artikel is van toepassing op:** ✔️ Java ✔️ C#
 
 Met Azure lente-Cloud kunt u logboek streaming in azure CLI inschakelen voor het verkrijgen van real-time toepassings console logboeken voor het oplossen van problemen. U kunt ook [Logboeken en metrische gegevens analyseren met Diagnostische instellingen](./diagnostic-services.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Installeer de [Azure cli-extensie](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli#install-the-azure-cli-extension) voor de lente-Cloud, mini maal versie 0.2.0.
+* Installeer de [Azure cli-extensie](/cli/azure/install-azure-cli) voor de lente-Cloud, mini maal versie 0.2.0.
 * Een exemplaar van **Azure lente Cloud** met een actieve toepassing, bijvoorbeeld [lente-Cloud-app](./spring-cloud-quickstart.md).
 
 > [!NOTE]
@@ -92,10 +92,4 @@ az spring-cloud app logs -h
 ## <a name="next-steps"></a>Volgende stappen
 * [Quickstart: Azure Spring Cloud-apps bewaken met logboeken, metrische gegevens en tracering](spring-cloud-quickstart-logs-metrics-tracing.md)
 * [Logboeken en metrische gegevens analyseren met Diagnostische instellingen](./diagnostic-services.md)
-
- 
-
-
-
-
 

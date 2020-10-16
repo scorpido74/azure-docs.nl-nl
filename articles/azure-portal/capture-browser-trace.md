@@ -10,10 +10,10 @@ ms.topic: troubleshooting
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: dba321d055e64d62ca91f95461c3299bee5f90d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83714216"
 ---
 # <a name="capture-a-browser-trace-for-troubleshooting"></a>Een browsertracering vastleggen om problemen op te lossen
@@ -60,7 +60,7 @@ Google Chrome en micro soft Edge (chroom) zijn beide gebaseerd op het [open-sour
 
 1. Stop stappen opnemen en sla de opname op.
 
-1. Selecteer in het deel venster ontwikkel hulpprogramma's van de browser het tabblad **console** . Klik met de rechter muisknop op een van de berichten en selecteer vervolgens **Opslaan als...** en sla de uitvoer van de console op in een tekst bestand.
+1. Selecteer in het deel venster ontwikkel hulpprogramma's van de browser het tabblad **console** . Klik met de rechter muisknop op een van de berichten, selecteer **Opslaan als...** en sla de uitvoer van de console op in een tekst bestand.
 
     ![Scherm opname van console-uitvoer](media/capture-browser-trace/chromium-console-select.png)
 
@@ -202,7 +202,7 @@ De volgende stappen laten zien hoe u de hulpprogram ma's voor ontwikkel aars in 
 
 1. Stop stappen voor het opnemen van de opname in Windows of het scherm op Mac en sla de opname op.
 
-1. Selecteer in het deel venster ontwikkel hulpprogramma's van de browser het tabblad **console** . Klik met de rechter muisknop op een van de berichten, selecteer **zichtbaar bericht exporteren naar**en sla de console-uitvoer op in een tekst bestand.
+1. Selecteer in het deel venster ontwikkel hulpprogramma's van de browser het tabblad **console** . Klik met de rechter muisknop op een van de berichten, selecteer **zichtbaar bericht exporteren naar**en sla de uitvoer van de console op in een tekst bestand.
 
     ![Scherm opname van console-uitvoer](media/capture-browser-trace/firefox-console-select.png)
 
@@ -210,4 +210,4 @@ De volgende stappen laten zien hoe u de hulpprogram ma's voor ontwikkel aars in 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Overzicht van de Azure Portal](azure-portal-overview.md)
+Overzicht van de Azure Portal

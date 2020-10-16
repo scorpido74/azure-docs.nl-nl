@@ -6,16 +6,16 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0a53e9ae42031203347784b78e162e8f806eb3c5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 16659eafccd4c15e37ef8a6d16a3765d0afdbc3e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320235"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960640"
 ---
 # <a name="linux-support"></a>Linux Support
 
-U hebt toegang tot de virtuele bureau blad-resources van Windows vanaf uw Linux-apparaten met de volgende ondersteunde clients, die door onze thin client-partners van Linux worden geboden. We werken samen met een aantal partners om ondersteunde Windows virtual desktop-clients in te scha kelen op meer Linux-gebaseerde besturings systemen en apparaten. Als u ondersteuning voor het virtuele bureau blad van Windows nodig hebt op een Linux-platform dat hier niet wordt vermeld, laat het ons weten op onze [UserVoice-pagina](https://remotedesktop.uservoice.com/forums/923035-remote-desktop-support-on-linux).
+U hebt toegang tot de virtuele bureau blad-resources van Windows vanaf uw Linux-apparaten met de [webclient](connect-web.md) of de volgende ondersteunde clients, die door onze thin client-partners van Linux worden geboden. We werken samen met een aantal partners om ondersteunde Windows virtual desktop-clients in te scha kelen op meer Linux-gebaseerde besturings systemen en apparaten. Als u ondersteuning voor het virtuele bureau blad van Windows nodig hebt op een Linux-platform dat hier niet wordt vermeld, laat het ons weten op onze [UserVoice-pagina](https://remotedesktop.uservoice.com/forums/923035-remote-desktop-support-on-linux).
 
 ## <a name="connect-with-your-linux-device"></a>Verbinding maken met uw Linux-apparaat
 

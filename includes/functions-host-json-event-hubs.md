@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
 ms.openlocfilehash: 2604a1608f21d7239db755027e15b8198fb3f9f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81791677"
 ---
 ### <a name="functions-2x-and-higher"></a>Functions 2.x en hoger
@@ -28,14 +28,14 @@ ms.locfileid: "81791677"
 }  
 ```
 
-|Eigenschap  |Standaard | Description |
+|Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------|
-|maxBatchSize|10|Het maximum aantal gebeurtenissen dat per receive-lus is ontvangen.|
-|prefetchCount|300|Het standaard aantal voor de vooraf ophalen dat wordt gebruikt door de onderliggende `EventProcessorHost` .|
-|batchCheckpointFrequency|1|Het aantal gebeurtenis batches dat moet worden verwerkt voordat een EventHub-cursor controlepunt wordt gemaakt.|
+|maxBatchSize|10|Het maximale gebeurtenisaantal dat per ontvangstlus wordt ontvangen.|
+|prefetchCount|300|Het standaardaantal voor vooraf ophalen dat wordt gebruikt door de onderliggende `EventProcessorHost`.|
+|batchCheckpointFrequency|1|Het aantal gebeurtenisbatches dat moet worden verwerkt voordat een controlepunt voor een EventHub-cursor wordt gemaakt.|
 
 > [!NOTE]
-> Zie [host.jsop referentie voor Azure functions](../articles/azure-functions/functions-host-json.md)voor een referentie van host.jsin azure functions 2. x en hoger.
+> Zie [Naslaginformatie over host.json voor Azure Functions](../articles/azure-functions/functions-host-json.md) voor naslaginformatie over host.json in Azure Functions 2.x en hoger.
 
 ### <a name="functions-1x"></a>Functions 1.x
 
@@ -49,12 +49,12 @@ ms.locfileid: "81791677"
 }
 ```
 
-|Eigenschap  |Standaard | Description |
+|Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
-|maxBatchSize|64|Het maximum aantal gebeurtenissen dat per receive-lus is ontvangen.|
-|prefetchCount|N.v.t.|De standaard vooraf ophalen die wordt gebruikt door de onderliggende `EventProcessorHost` .| 
-|batchCheckpointFrequency|1|Het aantal gebeurtenis batches dat moet worden verwerkt voordat een EventHub-cursor controlepunt wordt gemaakt.| 
+|maxBatchSize|64|Het maximale gebeurtenisaantal dat per ontvangstlus wordt ontvangen.|
+|prefetchCount|n.v.t.|Het standaardaantal voor vooraf ophalen dat wordt gebruikt door de onderliggende `EventProcessorHost`.| 
+|batchCheckpointFrequency|1|Het aantal gebeurtenisbatches dat moet worden verwerkt voordat een controlepunt voor een EventHub-cursor wordt gemaakt.| 
 
 > [!NOTE]
-> Zie [host.jsbij verwijzing voor Azure functions 1. x](../articles/azure-functions/functions-host-json-v1.md)voor een referentie van host.jsin azure functions 1. x.
+> Zie [Naslaginformatie over host.json voor Azure Functions 1.x](../articles/azure-functions/functions-host-json-v1.md) voor naslaginformatie over host.json voor Azure Functions 1.x.
 

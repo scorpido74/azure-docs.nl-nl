@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 8dc18af933a4570112beb025c1fb9163abafffff
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88935939"
 ---
 #    <a name="named-entity-recognition-cognitive-skill"></a>Herkennings vaardigheid van benoemde entiteiten
@@ -58,7 +58,7 @@ Parameters zijn hoofdlettergevoelig.
 | personen      | Een matrix met teken reeksen waarbij elke teken reeks de naam van een persoon vertegenwoordigt. |
 | locaties  | Een matrix met teken reeksen waarbij elke teken reeks een locatie vertegenwoordigt. |
 | organizations  | Een matrix met teken reeksen waarbij elke teken reeks een organisatie vertegenwoordigt. |
-| Rijg | Een matrix met complexe typen. Elk complex type bevat de volgende velden: <ul><li>categorie ( `"person"` , `"organization"` , of `"location"` )</li> <li>waarde (de werkelijke naam van de entiteit)</li><li>offset (de locatie waar deze zich bevindt in de tekst)</li><li>betrouw baarheid (een waarde tussen 0 en 1 die aangeeft dat het vertrouwen van de waarde een werkelijke entiteit is)</li></ul> |
+| entiteiten | Een matrix met complexe typen. Elk complex type bevat de volgende velden: <ul><li>categorie ( `"person"` , `"organization"` , of `"location"` )</li> <li>waarde (de werkelijke naam van de entiteit)</li><li>offset (de locatie waar deze zich bevindt in de tekst)</li><li>betrouw baarheid (een waarde tussen 0 en 1 die aangeeft dat het vertrouwen van de waarde een werkelijke entiteit is)</li></ul> |
 
 ##  <a name="sample-definition"></a>Voorbeeld definitie
 

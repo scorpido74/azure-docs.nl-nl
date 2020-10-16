@@ -12,10 +12,10 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 83170f4090909e3edcc163312383773d088d8c57
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85212119"
 ---
 # <a name="configure-workload-importance-in-azure-synapse-analytics"></a>Urgentie van werk belasting configureren in azure Synapse Analytics
@@ -24,7 +24,7 @@ Als u de urgentie instelt in Synapse SQL voor Azure Synapse, kunt u de planning 
 
 ## <a name="create-a-workload-classifier-with-importance"></a>Een classificatie van een werk belasting met urgentie maken
 
-Vaak bevat een scenario voor een Data Warehouse gebruikers, in een systeem dat bezet is, die hun query's snel moeten uitvoeren.  De gebruiker kan leidinggevenden zijn van het bedrijf waarvoor rapporten moeten worden uitgevoerd of de gebruiker kan worden uitgevoerd als een adhoc-query. Als u prioriteit wilt toewijzen, maakt u een classificatie van de werk belasting en krijgt u een prioriteits toewijzing.  In de onderstaande voor beelden wordt de [classificatie syntaxis CREATE workload](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) gebruikt om twee classificaties te maken. `Membername`Dit kan één gebruiker of een groep zijn.  Voer de volgende opdracht uit om bestaande Data Warehouse-gebruikers te zoeken:
+Vaak bevat een scenario voor een Data Warehouse gebruikers, in een systeem dat bezet is, die hun query's snel moeten uitvoeren.  De gebruiker kan leidinggevenden zijn van het bedrijf waarvoor rapporten moeten worden uitgevoerd of de gebruiker kan worden uitgevoerd als een adhoc-query. Als u prioriteit wilt toewijzen, maakt u een classificatie van de werk belasting en krijgt u een prioriteits toewijzing.  In de onderstaande voor beelden wordt de  [classificatie syntaxis CREATE workload](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) gebruikt om twee classificaties te maken. `Membername` Dit kan één gebruiker of een groep zijn.  Voer de volgende opdracht uit om bestaande Data Warehouse-gebruikers te zoeken:
 
 ```sql
 Select name from sys.sysusers

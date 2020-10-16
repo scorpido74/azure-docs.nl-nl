@@ -19,10 +19,10 @@ author: billmath
 ms.custom: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 13d56ec321cd257412c2b0abbe0be655c6cb4dbf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85360092"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>AD FS-vertrouwensrelatie met Azure AD beheren met behulp van Azure AD Connect
@@ -48,7 +48,7 @@ Azure AD Connect beheert **alleen** instellingen met betrekking tot de vertrouwe
 | Transformatie regels voor uitgifte | Er zijn een aantal claim regels die nodig zijn voor optimale prestaties van de functies van Azure AD in een federatieve instelling. Azure AD Connect zorgt ervoor dat de vertrouwens relatie van Azure AD altijd is geconfigureerd met de juiste set aanbevolen claim regels. |
 | Alternatief-id | Als synchronisatie is geconfigureerd voor het gebruik van alternatieve-id, Azure AD Connect configureert AD FS om verificatie met behulp van alternatieve-id uit te voeren. |
 | Automatische meta gegevens bijwerken | Trust with Azure AD is geconfigureerd voor automatische updates van meta gegevens. AD FS controleert regel matig de meta gegevens van de Azure AD-vertrouwens relatie en houdt deze up-to-date als de wijzigingen aan de Azure AD-kant worden aangebracht. |
-| Geïntegreerde Windows-verificatie (IWA) | Tijdens de hybride Azure AD-deelname bewerking is IWA ingeschakeld voor apparaatregistratie om hybride Azure AD-deelname te vergemakkelijken voor down level-apparaten |
+| Geïntegreerde Windows-verificatie | Tijdens de hybride Azure AD-deelname bewerking is IWA ingeschakeld voor apparaatregistratie om hybride Azure AD-deelname te vergemakkelijken voor down level-apparaten |
 
 ## <a name="execution-flows-and-federation-settings-configured-by-azure-ad-connect"></a>Uitvoerings stromen en Federatie-instellingen die zijn geconfigureerd door Azure AD Connect
 
@@ -77,7 +77,7 @@ Bij alle bewerkingen, waarbij elke instelling wordt gewijzigd, maakt Azure AD Co
 
 Azure AD Connect zorgt ervoor dat de vertrouwens relatie van Azure AD altijd is geconfigureerd met de juiste set aanbevolen claim regels. Micro soft raadt u aan Azure AD Connect te gebruiken voor het beheren van uw Azure AD-vertrouwens relatie. In deze sectie vindt u de set met regels voor uitgifte transformatie en de bijbehorende beschrijvingen.
 
-| Regelnaam | Description |
+| Regelnaam | Beschrijving |
 | --- | --- |
 | UPN uitgeven | Deze regel voert een query uit op de waarde van userPrincipalName vanaf het kenmerk dat is geconfigureerd in synchronisatie-instellingen voor userPrincipalName.|
 | Query ObjectGUID en msdsconsistencyguid voor aangepaste ImmutableId-claim | Deze regel voegt een tijdelijke waarde toe aan de pijp lijn voor de waarde ObjectGUID en msdsconsistencyguid als deze bestaat. |

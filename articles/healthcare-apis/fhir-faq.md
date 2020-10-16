@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: 35b59fb0583911b5b9faee96276d1bb09a8d6679
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c32ebef16750954f3df1a1d1b379bf42853f2b3
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91269706"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056852"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>Veelgestelde vragen over de Azure API voor FHIR
 
@@ -43,6 +43,10 @@ De Azure API voor FHIR is een gehoste en beheerde versie van de open-source micr
 Wanneer u FHIR server voor Azure gebruikt, hebt u rechtstreeks toegang tot de onderliggende services. Maar u bent ook verantwoordelijk voor het onderhouden en bijwerken van de server en alle vereiste nalevings werkzaamheden als u PHI-gegevens opslaat.
 
 Vanuit een ontwikkelings standpunt wordt elke functie eerst geïmplementeerd op de open-source micro soft FHIR-server voor Azure. Zodra de app is gevalideerd in open source, wordt deze vrijgegeven aan de PaaS Azure API voor de FHIR-oplossing. De tijd tussen de release in open source en PaaS is afhankelijk van de complexiteit van de functie en andere prioriteiten voor het schema. 
+
+### <a name="where-can-i-see-what-is-releasing-into-the-azure-api-for-fhir"></a>Waar kan ik zien wat er wordt vrijgegeven in de Azure API voor FHIR?
+
+Raadpleeg de [release](https://github.com/microsoft/fhir-server/releases) van de open-source FHIR-server om te zien wat er in de Azure API voor FHIR wordt uitgebracht. We hebben met Azure-API-for-FHIR items gelabeld als ze worden vrijgegeven aan de beheerde service en die meestal twee weken na de release pagina in open source zijn. We hebben ook instructies opgenomen over het testen van de build [hier](https://github.com/microsoft/fhir-server/blob/master/docs/Testing-Releases.md) als u wilt testen in uw eigen omgeving. We evalueren hoe u de beste aanvullende beheerde service-updates kunt delen.
 
 ### <a name="what-is-smart-on-fhir"></a>Wat is slim op FHIR?
 

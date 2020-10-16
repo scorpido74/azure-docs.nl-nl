@@ -8,13 +8,13 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
-ms.openlocfilehash: b74621f357613bc60457ab4846b58f6f85009401
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.date: 10/13/2020
+ms.openlocfilehash: 12693fb11556380e62df277be093ce20c02ff372
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91541880"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018029"
 ---
 # <a name="data-storage-and-removal-in-language-understanding-luis-cognitive-services"></a>Gegevens opslag en verwijderen in Language Understanding (LUIS) Cognitive Services
 LUIS slaat gegevens op die zijn versleuteld in een Azure-gegevens opslag die overeenkomt met de regio die is opgegeven door de sleutel. Deze gegevens worden 30 dagen bewaard. 
@@ -50,9 +50,14 @@ Als u [actief leren uitschakelt](luis-how-to-review-endpoint-utterances.md#disab
 <a name="accounts"></a>
 
 ## <a name="delete-an-account"></a>Een account verwijderen
-Als u een account verwijdert, worden alle apps verwijderd, samen met hun voor beeld-uitingen en-Logboeken. De gegevens worden 60 dagen bewaard voordat het account en de gegevens permanent worden verwijderd.
+Als u niet bent gemigreerd, kunt u uw account verwijderen. alle apps worden samen met hun voor beeld-uitingen en-logboeken verwijderd. De gegevens worden 90 dagen bewaard voordat het account en de gegevens permanent worden verwijderd.
 
 Het verwijderen van het account is beschikbaar op de pagina **instellingen** . Selecteer uw account naam in de rechter bovenhoek om naar de pagina **instellingen** te gaan.
+
+## <a name="delete-an-authoring-resource"></a>Een ontwerp bron verwijderen
+Als u hebt [gemigreerd naar een](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-authoring)bewerkings resource, verwijdert u de resource zelf uit het Azure Portal worden alle toepassingen die zijn gekoppeld aan die resource verwijderd, samen met hun voorbeeld uitingen en Logboeken. De gegevens worden 90 dagen bewaard voordat deze permanent worden verwijderd.    
+
+Als u uw resource wilt verwijderen, gaat u naar de [Azure Portal](https://ms.portal.azure.com/#home) en selecteert u uw Luis-ontwerp bron. Ga naar het tabblad **overzicht** en klik op de knop **verwijderen** boven aan de pagina. Bevestig dat uw resource is verwijderd. 
 
 ## <a name="data-inactivity-as-an-expired-subscription"></a>Gegevens inactiviteit als verlopen abonnement
 Voor het bewaren en verwijderen van gegevens kan een inactieve LUIS-app op _micro soft_ worden behandeld als een verlopen abonnement. Een app wordt als inactief beschouwd als deze voldoet aan de volgende criteria voor de afgelopen 90 dagen: 

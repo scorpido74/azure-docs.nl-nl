@@ -7,10 +7,10 @@ ms.assetid: b1584d16-e0d2-4019-ad1f-f04be8c5b430
 ms.topic: conceptual
 ms.date: 03/21/2017
 ms.openlocfilehash: d8f0a5697a128deb75537f3d48a3830dc7ba9df9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132531"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-the-azure-portal"></a>Aan de slag met Azure Data Lake Analytics met het Azure-portal
@@ -31,11 +31,11 @@ Nu gaat u een Data Lake Analytics en een Azure Data Lake Storage Gen1 account te
 3. Selecteer waarden voor de volgende items:
    * **Naam**: geef uw Data Lake Analytics-account een naam (alleen kleine letters en cijfers zijn toegestaan).
    * **Abonnement**: kies het Azure-abonnement dat u gebruikt voor het Analytics-account.
-   * **Resource groep**. Selecteer een bestaande Azure-resourcegroep of maak een nieuwe.
+   * **Resourcegroep**. Selecteer een bestaande Azure-resourcegroep of maak een nieuwe.
    * **Locatie**. Selecteer een Azure-datacenter voor het Data Lake Analytics-account.
    * **Data Lake Storage gen1**: Volg de instructies voor het maken van een nieuwe data Lake Storage gen1-account of selecteer een bestaande. 
 4. U kunt ervoor kiezen om een prijscategorie te selecteren voor uw Data Lake Analytics-account.
-5. Klik op **Create**. 
+5. Klik op **Maken**. 
 
 
 ## <a name="your-first-u-sql-script"></a>Uw eerste U-SQL-script
@@ -63,7 +63,7 @@ OUTPUT @a
 4. Controleer de **status** van de taak en wacht totdat de taak de status **Succeeded** heeft.
 5. Selecteer het tabblad **gegevens** en selecteer vervolgens het tabblad **uitvoer** . Selecteer het uitvoer bestand met de naam `data.csv` en Bekijk de uitvoer gegevens.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 * Zie [U-SQL-scripts ontwikkelen met Data Lake Tools voor Visual Studio](data-lake-analytics-data-lake-tools-get-started.md) om aan de slag te gaan met het ontwikkelen van U-SQL-toepassingen.
 * Zie [Aan de slag met de Azure Data Lake Analytics U-SQL-taal](data-lake-analytics-u-sql-get-started.md) om U-SQL te leren.

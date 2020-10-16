@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0aefe95f3e78afc4b449539fd683ffc1fe525a15
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89280176"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Pass-Through-verificatie Azure Active Directory: Quick Start
@@ -79,7 +79,7 @@ Zorg ervoor dat aan de volgende vereisten is voldaan.
 ### <a name="azure-government-cloud-prerequisite"></a>Azure Government Cloud vereiste
 Voordat u Pass-Through-verificatie inschakelt via Azure AD Connect met stap 2, downloadt u de meest recente versie van de PTA-agent van de Azure Portal.  U moet ervoor zorgen dat de agent versie **1.5.1742.0.** of hoger.  Zie [upgrade-verificatie agenten](how-to-connect-pta-upgrade-preview-authentication-agents.md) om uw agent te controleren
 
-Nadat u de nieuwste versie van de agent hebt gedownload, gaat u verder met de onderstaande instructies voor het configureren van Pass-Through-verificatie via Azure AD Connect.
+Nadat u de nieuwste versie van de agent hebt gedownload, gaat u verder met de onderstaande instructies voor het configureren van Pass-Through verificatie via Azure AD Connect.
 
 ## <a name="step-2-enable-the-feature"></a>Stap 2: de functie inschakelen
 

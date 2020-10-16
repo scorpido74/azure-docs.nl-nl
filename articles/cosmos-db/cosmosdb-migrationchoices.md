@@ -6,18 +6,18 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/01/2020
-ms.openlocfilehash: 4de6d4ba019af75b0f6179b2794ddb6c1e35e0c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38129c920b422babfedf5d40bb362c7552f6f712
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90030069"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951958"
 ---
 # <a name="options-to-migrate-your-on-premises-or-cloud-data-to-azure-cosmos-db"></a>Opties voor het migreren van uw on-premises of Cloud gegevens naar Azure Cosmos DB
 
 U kunt gegevens uit verschillende gegevens bronnen laden naar Azure Cosmos DB. Omdat Azure Cosmos DB meerdere Api's ondersteunt, kunnen de doelen een van de bestaande Api's zijn. Hier volgen enkele scenario's waarin u gegevens migreert naar Azure Cosmos DB:
 
-* Gegevens verplaatsen van een Azure Cosmos-container naar een andere container in dezelfde data base of een andere data base. s
+* Verplaats gegevens van een Azure Cosmos-container naar een andere container in dezelfde data base of in een andere data base.
 * Gegevens verplaatsen tussen toegewezen containers naar gedeelde data base-containers.
 * Verplaats gegevens van een Azure Cosmos-account die zich in region1 bevindt, naar een ander Azure Cosmos-account in dezelfde of een andere regio.
 * Verplaats gegevens van een bron, zoals Azure Blob Storage, een JSON-bestand, Oracle data base, Couch Base, DynamoDB naar Azure Cosmos DB.

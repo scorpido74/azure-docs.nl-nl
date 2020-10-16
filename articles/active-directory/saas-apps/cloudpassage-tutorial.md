@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 34e36be8ee9444b5612901439aa5dca4771f2dda
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8fdb59db7e11e3c8b946be940a2f98bd42810b88
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551656"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758326"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cloudpassage"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met CloudPassage
 
@@ -85,7 +85,7 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
     b. In het tekstvak **Antwoord-URL** typt u een URL en gebruikt u het volgende patroon: `https://portal.cloudpassage.com/saml/consume/accountid`. U kunt de waarde voor dit kenmerk opvragen door te klikken op **SSO Setup documentation** in het gedeelte **Single Sign-on Settings** van de CloudPassage-portal.
 
-    ![Eenmalige aanmelding configureren](./media/cloudpassage-tutorial/tutorial_cloudpassage_05.png)
+    ![Schermopname toont de CloudPassage-Portal met de koppeling S S O Setup Documentation opgeroepen.](./media/cloudpassage-tutorial/tutorial_cloudpassage_05.png)
 
     > [!NOTE]
     > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en antwoord-URL. Neem contact op met het [klantondersteuningsteam van CloudPassage](https://www.cloudpassage.com/company/contact/) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
@@ -146,15 +146,15 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Klik in de menubalk bovenaan op **Settings** en klik vervolgens op **Site Administration**. 
    
-    ![Eenmalige aanmelding configureren][12]
+    ![Schermopname toont de CloudPassage-site waarop Sitebeheer is geselecteerd.][12]
 
 1. Klik op het tabblad **Authentication Settings**. 
    
-    ![Eenmalige aanmelding configureren][13]
+    ![Schermopname toont de CloudPassage-site waarop Verificatie-instellingen is geselecteerd.][13]
 
 1. Voer de volgende stappen uit in het gedeelte **Single Sign-on Settings**: 
    
-    ![Eenmalige aanmelding configureren][14]
+    ![Schermopname toont de sectie 'Instellingen voor eenmalige aanmelding', waarin u de informatie kunt invoeren die in deze stap is beschreven.][14]
 
     a. Schakel het selectievakje **Enable Single Sign-on (SSO) (SSO Setup Documentation)** in.
     
@@ -178,15 +178,15 @@ Het doel van deze sectie is het maken van een gebruiker met de naam B.Simon in C
 
 1. Klik in de werkbalk bovenaan op **Settings** en klik vervolgens op **Site Administration**. 
    
-    ![Een testgebruiker voor CloudPassage maken][22] 
+    ![Schermopname toont CloudPassage waarop Sitebeheer is geselecteerd.][22] 
 
 1. Klik op het tabblad **Users** en klik vervolgens op **Add New User**. 
    
-    ![Een testgebruiker voor CloudPassage maken][23]
+    ![Schermopname toont CloudPassage Sitebeheer met het tabblad Gebruikers geselecteerd. Hier is de optie om nieuwe gebruiker toe te voegen te zien.][23]
 
 1. Voer in het gedeelte **Add New User** de volgende stappen uit: 
    
-    ![Een testgebruiker voor CloudPassage maken][24]
+    ![Schermopname toont de sectie 'Nieuwe gebruikers toevoegen' waarin u gebruikersgegevens kunt invoeren.][24]
     
     a. Typ Britta in het tekstvak **First Name**. 
   

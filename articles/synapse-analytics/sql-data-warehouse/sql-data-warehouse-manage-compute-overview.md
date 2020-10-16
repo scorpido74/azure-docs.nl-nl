@@ -12,10 +12,10 @@ ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 90815d52e6884efe6cff9a7860c093b4b5c1bc94
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85204538"
 ---
 # <a name="manage-compute-in-azure-synapse-analytics-data-warehouse"></a>Reken kracht beheren in azure Synapse Analytics Data Warehouse
@@ -36,7 +36,7 @@ Als u een schaal bewerking wilt uitvoeren, worden alle binnenkomende query's eer
 
 De volgende tabel laat zien hoe het aantal distributies per Compute-knoop punt verandert naarmate de Data Warehouse-eenheden worden gewijzigd.  DW30000c biedt 60 Compute-knoop punten en behaalt veel hogere query prestaties dan DW100c.
 
-| Datawarehouse-eenheden  | \#van reken knooppunten | \#distributies per knoop punt |
+| Datawarehouse-eenheden  | \# van reken knooppunten | \# distributies per knoop punt |
 | -------- | ---------------- | -------------------------- |
 | DW100c   | 1                | 60                         |
 | DW200c   | 1                | 60                         |

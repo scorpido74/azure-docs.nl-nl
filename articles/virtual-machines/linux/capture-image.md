@@ -9,10 +9,10 @@ ms.date: 10/08/2018
 ms.author: cynthn
 ms.custom: legacy, devx-track-azurecli
 ms.openlocfilehash: 376d9d76633060f504454f85841b9c15bafc6685
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87503035"
 ---
 # <a name="how-to-create-a-managed-image-of-a-virtual-machine-or-vhd"></a>Een beheerde installatie kopie van een virtuele machine of VHD maken
@@ -39,7 +39,7 @@ Zie [een aangepaste installatie kopie van een virtuele Azure-machine maken met b
 
 
 ## <a name="step-1-deprovision-the-vm"></a>Stap 1: de inrichting van de virtuele machine ongedaan maken
-Eerst moet u de inrichting van de virtuele machine ongedaan maken met behulp van de Azure VM-agent om computerspecifieke bestanden en gegevens te verwijderen. Gebruik de `waagent` opdracht met de `-deprovision+user` para meter op uw bron-Linux-virtuele machine. Zie de [Gebruikershandleiding voor Azure Linux Agent](../extensions/agent-linux.md) voor meer informatie.
+Eerst moet u de inrichting van de virtuele machine ongedaan maken met behulp van de Azure VM-agent om computerspecifieke bestanden en gegevens te verwijderen. Gebruik de `waagent`-opdracht met de parameter `-deprovision+user` op uw virtuele Linux-machine. Zie de [Gebruikershandleiding voor Azure Linux Agent](../extensions/agent-linux.md) voor meer informatie.
 
 1. Maak verbinding met uw virtuele Linux-machine met een SSH-client.
 2. Voer in het SSH-venster de volgende opdracht in:
@@ -48,10 +48,10 @@ Eerst moet u de inrichting van de virtuele machine ongedaan maken met behulp van
     sudo waagent -deprovision+user
     ```
    > [!NOTE]
-   > Voer deze opdracht alleen uit op een virtuele machine die u vastlegt als een installatie kopie. Met deze opdracht wordt niet gegarandeerd dat de installatie kopie van alle gevoelige informatie wordt gewist of geschikt is voor herdistributie. Met de `+user` para meter wordt ook het laatste ingerichte gebruikers account verwijderd. Gebruik alleen als u de referenties van het gebruikers account in de virtuele machine wilt blijven gebruiken `-deprovision` .
+   > Voer deze opdracht alleen uit op een virtuele machine die u vastlegt als een installatiekopie. Met deze opdracht wordt niet gegarandeerd dat de installatiekopie van alle gevoelige informatie wordt gewist of geschikt is voor herdistributie. Met de parameter `+user` wordt ook het laatste ingerichte gebruikersaccount verwijderd. Gebruik alleen `-deprovision` om de referenties van het gebruikersaccount in de virtuele machine te blijven gebruiken.
  
-3. Voer **y** in om door te gaan. U kunt de `-force` para meter toevoegen om deze bevestigings stap te voor komen.
-4. Nadat de opdracht is voltooid, voert u **Afsluiten** in om de SSH-client te sluiten.  De virtuele machine wordt nog steeds uitgevoerd.
+3. Voer **y** in om door te gaan. U kunt de parameter `-force` toevoegen om deze bevestigings stap te voorkomen.
+4. Nadat de opdracht is voltooid, voert u **afsluiten** in om de SSH-client te sluiten.  De virtuele machine wordt nog steeds uitgevoerd.
 
 ## <a name="step-2-create-vm-image"></a>Stap 2: VM-installatie kopie maken
 Gebruik de Azure CLI om de virtuele machine als gegeneraliseerd te markeren en de installatie kopie vast te leggen. Vervang in de volgende voor beelden voorbeeld parameter namen door uw eigen waarden. Voor beelden van parameter namen zijn *myResourceGroup*, *myVnet*en *myVM*.

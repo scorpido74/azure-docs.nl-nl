@@ -11,15 +11,15 @@ ms.subservice: studio
 ms.topic: how-to
 ms.date: 06/15/2017
 ms.openlocfilehash: b30cd926f6908c26c6f71c1513a8c68c8a46bf43
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91359746"
 ---
 # <a name="enable-logging-for-azure-machine-learning-studio-classic-web-services"></a>Logboek registratie inschakelen voor Azure Machine Learning Studio (klassieke) webservices
 
-**van toepassing op:** ![ Van toepassing op. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klassiek) ![ is niet van toepassing op.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**VAN TOEPASSING OP:**  ![Van toepassing op.](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) ![Niet van toepassing op.](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
 
 
 Dit document bevat informatie over de logboek registratie van Machine Learning Studio (klassieke) webservices. Logboek registratie biedt aanvullende informatie, behalve een fout nummer en een bericht, waarmee u uw aanroepen naar de Machine Learning Studio (klassieke) Api's kunt oplossen.  
@@ -71,9 +71,9 @@ De logboeken kunnen worden weer gegeven met een van de verschillende hulpprogram
 ## <a name="log-blob-detail-information"></a>Informatie over logboek-blobs
 Elke Blob in de container bevat de diagnostische gegevens voor precies één van de volgende acties:
 
-* Een uitvoering van de methode voor het uitvoeren van batch  
-* Een uitvoering van de aanvraag-antwoord methode  
-* Initialisatie van een aanvraag-antwoord container
+* Een uitvoering van de Batch-Execution methode  
+* Een uitvoering van de Request-Response methode  
+* Initialisatie van een Request-Response-container
 
 De naam van elke BLOB heeft een voor voegsel van de volgende vorm: 
 

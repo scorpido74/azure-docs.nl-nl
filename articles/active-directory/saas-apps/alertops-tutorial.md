@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: d820a3fc9b12a36a76e2eb887b32d27acc156c76
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a278204da556b41bd663b8b5c9ff5152e16017cc
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522333"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715863"
 ---
 # <a name="tutorial-integrate-alertops-with-azure-active-directory"></a>Zelfstudie: AlertOps integreren met Azure Active Directory
 
@@ -108,11 +108,11 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 4. Klik in het linkernavigatievenster op **Account Settings**.
 
-    ![AlertOps-configuratie](./media/alertops-tutorial/configure1.png)
+    ![Schermopname die het menu AlertOps toont met Accountinstellingen gemarkeerd.](./media/alertops-tutorial/configure1.png)
 
 5. Selecteer **SSO** op de pagina **Subscription Settings** en voer de volgende stappen uit:
 
-    ![AlertOps-configuratie](./media/alertops-tutorial/configure2.png)
+    ![Schermopname die het venster met abonnementsinstellingen toont voor ingevoerde waarden voor eenmalige aanmelding, zoals beschreven in deze stap.](./media/alertops-tutorial/configure2.png)
 
     a. Schakel het selectievakje **Use Single Sign-On(SSO)** in.
 
@@ -164,15 +164,15 @@ In deze sectie stelt u Britta Simon in staat gebruik te maken van eenmalige aanm
 
 2. Klik op **Users** in het linkernavigatievenster.
 
-    ![AlertOps-configuratie](./media/alertops-tutorial/user1.png)
+    ![Schermopname die het menu AlertOps toont met Gebruikers gemarkeerd.](./media/alertops-tutorial/user1.png)
 
 3. Selecteer **Add User**.
 
-    ![AlertOps-configuratie](./media/alertops-tutorial/user2.png)
+    ![Schermopname die het venster Gebruikers toont met de knop Gebruiker toevoegen.](./media/alertops-tutorial/user2.png)
 
 4. Voer in het dialoogvenster **Add User** de volgende stappen uit:
 
-    ![AlertOps-configuratie](./media/alertops-tutorial/user3.png)
+    ![Schermopname die het deelvenster Gebruikers toevoegen toont met waarden die zijn ingevoerd zoals beschreven in deze stap.](./media/alertops-tutorial/user3.png)
 
     a. Voer in het tekstvak **Login User Name** de gebruikersnaam van de gebruiker in, bijvoorbeeld **Brittasimon**.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
 ms.date: 10/02/2020
-ms.openlocfilehash: 17d887f0834733fdc833bbbad66c957b057a588a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a49a51886f921c9d37a33229b6db78479d7198bc
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91857806"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938318"
 ---
 # <a name="cognitive-services-docs-whats-new-for-september-1-2020---september-30-2020"></a>Cognitive Services documenten: wat is er nieuw voor 1 september 2020-30 september 2020
 
@@ -42,51 +42,51 @@ Welkom bij wat er nieuw is in de Cognitive Services docs van 1 september 2020 to
 
 ### <a name="new-articles"></a>Nieuwe artikelen
 
-- [De container voor ruimtelijke analyse installeren en uitvoeren (preview-versie)](/azure/cognitive-services/computer-vision/spatial-analysis-container.md)
+- [De container voor ruimtelijke analyse installeren en uitvoeren (preview-versie)](https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-container?tabs=azure-stack-edge)
 
 ### <a name="updated-articles"></a>Bijgewerkte artikelen
 
-- [Tags voor Azure Cognitive Services container installatie kopieën](/azure/cognitive-services/containers/container-image-tags.md)
+- [Tags voor Azure Cognitive Services container installatie kopieën](https://docs.microsoft.com/azure/cognitive-services/containers/container-image-tags)
 
 ## <a name="form-recognizer"></a>Form Recognizer
 
 ### <a name="updated-articles"></a>Bijgewerkte artikelen
 
-- [Taalondersteuning voor Form Recognizer](/azure/cognitive-services/form-recognizer/language-support.md)
-- [Een trainings gegevensverzameling voor een aangepast model bouwen](/azure/cognitive-services/form-recognizer/build-training-data-set.md)
-- [Concepten van ontvangsten](/azure/cognitive-services/form-recognizer/concept-receipts.md)
-- [Versleuteling van de gegevens in de rest van de formulier herkenning](/azure/cognitive-services/form-recognizer/form-recognizer-encryption-of-data-at-rest.md)
-- [Wat is er nieuw in Form Recognizer?](/azure/cognitive-services/form-recognizer/whats-new.md)
-- [Concepten van visitekaartjes](/azure/cognitive-services/form-recognizer/concept-business-cards.md)
-- [Wat is Form Recognizer?](/azure/cognitive-services/form-recognizer/overview.md)
-- [Quickstart: De clientbibliotheek van Form Recognizer gebruiken](/azure/cognitive-services/form-recognizer/quickstarts/client-library.md)
+- [Taalondersteuning voor Form Recognizer](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/language-support)
+- [Een trainings gegevensverzameling voor een aangepast model bouwen](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/build-training-data-set)
+- [Concepten van ontvangsten](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/concept-receipts)
+- [Versleuteling van de gegevens in de rest van de formulier herkenning](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/form-recognizer-encryption-of-data-at-rest)
+- [Wat is er nieuw in Form Recognizer?](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/whats-new)
+- [Concepten van visitekaartjes](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/concept-business-cards)
+- [Wat is Form Recognizer?](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/overview)
+- [Quickstart: De clientbibliotheek van Form Recognizer gebruiken](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/client-library)
 
 ## <a name="immersive-reader"></a>Immersive Reader
 
 ### <a name="updated-articles"></a>Bijgewerkte artikelen
 
-- [Taalondersteuning voor Insluitende lezer](/azure/cognitive-services/immersive-reader/language-support.md)
-- [Naslag informatie voor de Inge sloten Reader java script SDK (v 1.1)](/azure/cognitive-services/immersive-reader/reference.md)
-- [Quickstart: Aan de slag met Insluitende lezer](/azure/cognitive-services/immersive-reader/quickstarts/client-libraries.md)
-- [Zelfstudie: De Insluitende lezer starten met behulp van het Python-voorbeeldproject](/azure/cognitive-services/immersive-reader/tutorial-python.md)
-- [Een resource voor insluitende lezer maken en Azure Active Directory authenticatie configureren](/azure/cognitive-services/immersive-reader/how-to-create-immersive-reader.md)
+- [Taalondersteuning voor Insluitende lezer](https://docs.microsoft.com/azure/cognitive-services/immersive-reader/language-support)
+- [Naslag informatie voor de Inge sloten Reader java script SDK (v 1.1)](https://docs.microsoft.com/azure/cognitive-services/immersive-reader/reference)
+- [Quickstart: Aan de slag met Insluitende lezer](https://docs.microsoft.com/azure/cognitive-services/immersive-reader/quickstarts/client-libraries)
+- [Zelfstudie: De Insluitende lezer starten met behulp van het Python-voorbeeldproject](https://docs.microsoft.com/azure/cognitive-services/immersive-reader/tutorial-python)
+- [Een resource voor insluitende lezer maken en Azure Active Directory authenticatie configureren](https://docs.microsoft.com/azure/cognitive-services/immersive-reader/how-to-create-immersive-reader)
 
 ## <a name="metrics-advisor"></a>Metrics Advisor
 
 ### <a name="new-articles"></a>Nieuwe artikelen
 
-- [Informatie over het configureren van metrische gegevens en het afstemmen van de configuratie van detectie](/azure/cognitive-services/metrics-advisor/how-tos/configure-metrics.md)
-- [Gegevensfeeds van verschillende gegevens bronnen toevoegen aan Metrics Advisor](/azure/cognitive-services/metrics-advisor/data-feeds-from-different-sources.md)
-- [Quickstart: De REST API's gebruiken om uw oplossing aan te passen](/azure/cognitive-services/metrics-advisor/quickstarts/rest-api.md)
-- [Instructies: waarschuwingen configureren en meldingen ontvangen met behulp van een hook](/azure/cognitive-services/metrics-advisor/how-tos/alerts.md)
+- [Informatie over het configureren van metrische gegevens en het afstemmen van de configuratie van detectie](https://docs.microsoft.com/azure/cognitive-services/metrics-advisor/how-tos/configure-metrics)
+- [Gegevensfeeds van verschillende gegevens bronnen toevoegen aan Metrics Advisor](/azure/cognitive-services/metrics-advisor/data-feeds-from-different-sources)
+- [Quickstart: De REST API's gebruiken om uw oplossing aan te passen](https://docs.microsoft.com/azure/cognitive-services/metrics-advisor/quickstarts/rest-api)
+- [Instructies: waarschuwingen configureren en meldingen ontvangen met behulp van een hook](https://docs.microsoft.com/azure/cognitive-services/metrics-advisor/how-tos/alerts)
 
-## <a name="text-analytics"></a>Tekstanalyse
+## <a name="text-analytics"></a>Text Analytics
 
 ### <a name="updated-articles"></a>Bijgewerkte artikelen
 
-- [Benoemde entiteits herkenning gebruiken in Text Analytics](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking.md)
-- [Model versie beheer in de Text Analytics-API](/azure/cognitive-services/text-analytics/concepts/model-versioning.md)
-- [Quickstart: De Text Analytics-clientbibliotheek gebruiken](/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk.md)
+- [Benoemde entiteits herkenning gebruiken in Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking)
+- [Model versie beheer in de Text Analytics-API](https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/model-versioning)
+- [Quickstart: De Text Analytics-clientbibliotheek gebruiken](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk)
 
 ## <a name="community-contributors"></a>Community-inzenders
 

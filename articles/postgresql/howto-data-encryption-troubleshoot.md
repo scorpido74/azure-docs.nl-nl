@@ -7,17 +7,17 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 02/13/2020
 ms.openlocfilehash: ee0a1ebe483dd4719fd1a84fec37906329116eba
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86117896"
 ---
 # <a name="troubleshoot-data-encryption-in-azure-database-for-postgresql---single-server"></a>Problemen met gegevens versleuteling oplossen in Azure Database for PostgreSQL-één server
 
 Dit artikel helpt u bij het identificeren en oplossen van veelvoorkomende problemen die zich kunnen voordoen in de implementatie met één server van Azure Database for PostgreSQL wanneer deze is geconfigureerd met een door de klant beheerde sleutel.
 
-## <a name="introduction"></a>Introductie
+## <a name="introduction"></a>Inleiding
 
 Wanneer u gegevens versleuteling configureert voor het gebruik van een door de klant beheerde sleutel in Azure Key Vault, moet de server voortdurende toegang tot de sleutel hebben. Als de server de toegang tot de door de klant beheerde sleutel in Azure Key Vault kwijtraakt, worden alle verbindingen geweigerd, wordt het juiste fout bericht weer gegeven en wordt de status gewijzigd in niet ***toegankelijk*** in de Azure Portal.
 

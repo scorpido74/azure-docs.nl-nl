@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 02/18/2019
 ms.author: cshoe
 ms.openlocfilehash: e00fd3d1dac0a18ac7f7377e08ae8d20ae132c56
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91652608"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Concepten van Azure Functions-triggers en -bindingen
@@ -18,7 +18,7 @@ In dit artikel vindt u informatie over de concepten van het hoge niveau rond fun
 
 Triggers zijn de oorzaak dat een functie wordt uitgevoerd. Een trigger definieert hoe een functie wordt aangeroepen en een functie moet precies één trigger hebben. Aan triggers zijn gegevens gekoppeld. Meestal is dit de nettolading waarmee de functie is geactiveerd. 
 
-Een binding met een functie is een manier om een andere resource declaratief aan de functie te koppelen. bindingen kunnen worden verbonden als *invoer bindingen*, *uitvoer bindingen*of beide. Gegevens van bindingen worden als parameters aan de functie geleverd.
+Een binding met een functie is een manier om een andere resource declaratief aan de functie te koppelen. bindingen kunnen worden verbonden als *invoer bindingen*, *uitvoer bindingen*of beide. Gegevens van bindingen worden als parameters doorgegeven aan de functie.
 
 U kunt verschillende bindingen mixen en matchen om aan uw behoeften te voldoen. Bindingen zijn optioneel en een functie kan een of meerdere invoer- en/of uitvoerbindingen hebben.
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 3281642134e7a6a2531f43ad4b3f80cff34d03b6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6bea4ee4452675a50ef9144da300c3e15652a81f
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90890923"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952162"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge-pro"></a>Zelfstudie: Gegevens transformeren met Azure Stack Edge Pro
 
@@ -61,15 +61,15 @@ Als u de rekenproces wilt configureren voor uw Azure Stack Edge Pro, maakt u een
     |IoT Hub     | Kies uit **Nieuwe** of **Bestaande**. <br> Standaard wordt er een standaard-laag (S1) gebruikt voor het maken van een IoT-resource. Als u een IoT-resource in een gratis laag wilt gebruiken, maakt u er een en selecteert u vervolgens de bestaande resource. <br> In elk geval gebruikt de IoT Hub-resource hetzelfde abonnement en dezelfde resourcegroep die wordt gebruikt door de resource Azure Stack Edge.     |
     |Naam     |Voer een naam in voor uw IoT Hub-resource.         |
 
-    ![Aan de slag met rekenproces](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-3.png)
+    ![Aan de slag met rekenproces 2](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-3.png)
 
 4. Selecteer **Maken**. Het maken van de IoT Hub-resource duurt enkele minuten. Nadat de IoT Hub-resource is gemaakt, wordt de tegel **Rekenproces configureren** bijgewerkt om de configuratie van het rekenproces weer te geven. 
 
-    ![Aan de slag met rekenproces](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-4.png)
+    ![Aan de slag met rekenproces 3](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-4.png)
 
 5. Als u wilt bevestigen dat de Edge-rekenprocesrol is geconfigureerd, selecteert u **Rekenproces weergeven** op de tegel **Rekenproces configureren**.
     
-    ![Aan de slag met rekenproces](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-5.png)
+    ![Aan de slag met rekenproces 4](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-5.png)
 
     > [!NOTE]
     > Als het dialoogvenster **Rekenproces configureren** wordt gesloten voordat de IoT Hub aan het Azure Stack Edge Pro-apparaat is gekoppeld, wordt de IoT Hub gemaakt, maar wordt deze niet weergegeven in de rekenprocesconfiguratie. 

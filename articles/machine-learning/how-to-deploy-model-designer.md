@@ -8,15 +8,15 @@ ms.subservice: core
 ms.author: keli19
 author: likebupt
 ms.reviewer: peterlu
-ms.date: 09/04/2020
+ms.date: 10/12/2020
 ms.topic: conceptual
-ms.custom: how-to
-ms.openlocfilehash: 95b41723d3cb398caad3a0cf388b7810deda78dc
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.custom: how-to, deploy, studio
+ms.openlocfilehash: e2f3e0b596847000af62aa6e23da5b137ee9de33
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935725"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999001"
 ---
 # <a name="use-the-studio-to-deploy-models-trained-in-the-designer"></a>De Studio gebruiken voor het implementeren van modellen die zijn getraind in de ontwerp functie
 
@@ -26,6 +26,7 @@ De implementatie in Studio bestaat uit de volgende stappen:
 
 1. Registreer het getrainde model.
 1. Down load het item script en Conda afhankelijkheden voor het model.
+1. Beschrijving Het invoer script configureren.
 1. Implementeer het model op een compute-doel.
 
 U kunt modellen ook rechtstreeks in de ontwerp functie implementeren om model registratie en download stappen voor bestanden over te slaan. Dit kan handig zijn voor snelle implementatie. Zie [een model implementeren met de ontwerp functie](tutorial-designer-automobile-price-deploy.md)voor meer informatie.
@@ -36,7 +37,14 @@ Modellen die zijn getraind in de Designer kunnen ook worden geïmplementeerd via
 
 * [Een Azure Machine Learning-werkruimte](how-to-manage-workspace.md)
 
-* Een voltooide trainings pijplijn met een [Train model module](./algorithm-module-reference/train-model.md)
+* Een voltooide trainings pijplijn met een van de volgende modules:
+    - [Train model-module](./algorithm-module-reference/train-model.md)
+    - [Model module voor detectie van anomalieën trainen](./algorithm-module-reference/train-anomaly-detection-model.md)
+    - [Module clustering model trainen](./algorithm-module-reference/train-clustering-model.md)
+    - [Pytorch-model module trainen](./algorithm-module-reference/train-pytorch-model.md)
+    - [SVD-advies module trainen](./algorithm-module-reference/train-svd-recommender.md)
+    - [Vowpal Wabbit model module trainen](./algorithm-module-reference/train-vowpal-wabbit-model.md)
+    - [Uitgebreide model module voor Train &](./algorithm-module-reference/train-wide-and-deep-recommender.md)
 
 ## <a name="register-the-model"></a>Het model registreren
 
@@ -136,9 +144,67 @@ score_result = service.run(json.dumps(sample_data))
 print(f'Inference result = {score_result}')
 ```
 
+### <a name="consume-computer-vision-related-real-time-endpoints"></a>Computer vision-gerelateerde realtime-eind punten gebruiken
+
+Wanneer u met computer vision gerelateerde realtime-eind punten gebruikt, moet u afbeeldingen naar bytes converteren, omdat de webservice alleen teken reeksen kan accepteren als invoer. Hieronder ziet u de voorbeeld code:
+
+```python
+import base64
+import json
+from copy import deepcopy
+from pathlib import Path
+from azureml.studio.core.io.image_directory import (IMG_EXTS, image_from_file, image_to_bytes)
+from azureml.studio.core.io.transformation_directory import ImageTransformationDirectory
+
+# image path
+image_path = Path('YOUR_IMAGE_FILE_PATH')
+
+# provide the same parameter setting as in the training pipeline. Just an example here.
+image_transform = [
+    # format: (op, args). {} means using default parameter values of torchvision.transforms.
+    # See https://pytorch.org/docs/stable/torchvision/transforms.html
+    ('Resize', 256),
+    ('CenterCrop', 224),
+    # ('Pad', 0),
+    # ('ColorJitter', {}),
+    # ('Grayscale', {}),
+    # ('RandomResizedCrop', 256),
+    # ('RandomCrop', 224),
+    # ('RandomHorizontalFlip', {}),
+    # ('RandomVerticalFlip', {}),
+    # ('RandomRotation', 0),
+    # ('RandomAffine', 0),
+    # ('RandomGrayscale', {}),
+    # ('RandomPerspective', {}),
+]
+transform = ImageTransformationDirectory.create(transforms=image_transform).torch_transform
+
+# download _samples.json file under Outputs+logs tab in the right pane of Train Pytorch Model module
+sample_file_path = '_samples.json'
+with open(sample_file_path, 'r') as f:
+    sample_data = json.load(f)
+
+# use first sample item as the default value
+default_data = sample_data[0]
+data_list = []
+for p in image_path.iterdir():
+    if p.suffix.lower() in IMG_EXTS:
+        data = deepcopy(default_data)
+        # convert image to bytes
+        data['image'] = base64.b64encode(image_to_bytes(transform(image_from_file(p)))).decode()
+        data_list.append(data)
+
+# use data.json as input of consuming the endpoint
+data_file_path = 'data.json'
+with open(data_file_path, 'w') as f:
+    json.dump(data_list, f)
+```
+
 ## <a name="configure-the-entry-script"></a>Het invoer script configureren
 
-Sommige modules in de Designer zoals [Score SVD aanbevelen](./algorithm-module-reference/score-svd-recommender.md), [Score breed en diep aanbevolen](./algorithm-module-reference/score-wide-and-deep-recommender.md)en [Score Vowpal Wabbit model](./algorithm-module-reference/score-vowpal-wabbit-model.md) hebben para meters voor verschillende Score modi. In deze sectie leert u hoe u deze para meters in het vermelding script bestand kunt bijwerken.
+Sommige modules in de Designer zoals [Score SVD aanbevelen](./algorithm-module-reference/score-svd-recommender.md), [Score breed en diep aanbevolen](./algorithm-module-reference/score-wide-and-deep-recommender.md)en [Score Vowpal Wabbit model](./algorithm-module-reference/score-vowpal-wabbit-model.md) hebben para meters voor verschillende Score modi. 
+
+In deze sectie leert u hoe u deze para meters in het vermelding script bestand kunt bijwerken.
 
 In het volgende voor beeld wordt het standaard gedrag voor een getraind **breed & diep aanbevolen** model bijgewerkt. Het `score.py` bestand vertelt de webservice standaard om classificaties tussen gebruikers en items te voors pellen. 
 

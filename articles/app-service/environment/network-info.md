@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/27/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 0dfcf74ef07ff2bde7921860c6e13a59b0ccf023
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 7c5fa5ae54c7aea520a2346cba8feca294585b0d
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962533"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91875730"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Netwerkoverwegingen voor een App Service-omgeving #
 
@@ -110,7 +110,7 @@ Naast de functionele afhankelijkheden van ASE zijn er enkele extra items die bet
 
 -   WebJobs
 -   Functies
--   Logboek streaming
+-   Logboekstreaming
 -   Kudu
 -   Extensies
 -   Proces Verkenner
@@ -122,7 +122,7 @@ Als uw ILB ASE de domein naam *contoso.appserviceenvironment.net* is en de naam 
 
 ## <a name="ase-ip-addresses"></a>IP-adressen van ASE ##
 
-Een ASE heeft enkele IP-adressen waarvan u op de hoogte moet zijn. Dat zijn:
+Een ASE heeft enkele IP-adressen waarvan u op de hoogte moet zijn. Dit zijn:
 
 - **Openbaar binnenkomend IP-adres**: wordt gebruikt voor app-verkeer in een extern ASE en beheer verkeer in zowel een externe ASE als een ILB-ASE.
 - **Uitgaand openbaar IP-adres**dat wordt gebruikt als het ' van ' IP-adres voor uitgaande verbindingen van de ASE die het VNet verlaten, dat niet wordt gerouteerd naar een VPN-verbinding.
@@ -161,7 +161,7 @@ De vereiste vermeldingen in een NSG om een ASE te kunnen gebruiken, zijn verkeer
 * UDP naar alle IP-adressen op poort 53
 * UDP naar alle IP-adressen op poort 123
 * TCP naar alle IP-adressen op poort 80, 443
-* TCP naar het IP-service label SQL op poort 1433
+* TCP naar het IP-service label `Sql` op poort 1433
 * TCP naar alle IP-adressen op poort 12000
 * naar het ASE-subnet op alle poorten
 

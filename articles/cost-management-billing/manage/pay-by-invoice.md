@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 30fa6e0489c1f2c33e02286280e7508239c1c1d2
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 0667e253d50ecc34acef822a928a95e49f13282e
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89567908"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439779"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Per factuur betalen voor uw Azure-abonnement
 
@@ -85,7 +85,7 @@ Volg de onderstaande stappen om uw Azure-abonnement te wijzigen in betalen via f
 
 1. Ga naar de [Azure-portal](https://portal.azure.com) om u aan te melden als de accountbeheerder. Zoek en selecteer **Kostenbeheer en facturering**.
 
-    ![Zoeken naar Kostenbeheer en facturering, Microsoft Azure-portal](./media/pay-by-invoice/search.png)
+    ![Schermopname van de zoekopdracht naar kostenbeheer en facturering in Azure Portal.](./media/pay-by-invoice/search.png)
 
 1. Selecteer het abonnement dat u wilt overzetten naar betalen via factuur.
 1. Selecteer **Betalingswijzen**.

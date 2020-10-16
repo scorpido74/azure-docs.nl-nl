@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: arvinh
 ms.openlocfilehash: e908c8d19a4640995c536580b6584558212ada3e
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91361566"
 ---
 # <a name="tutorial-configure-linkedin-sales-navigator-for-automatic-user-provisioning"></a>Zelf studie: LinkedIn Sales Navigator configureren voor automatische gebruikers inrichting
@@ -51,7 +51,7 @@ Voordat u de inrichtings service configureert en inschakelt, moet u bepalen welk
 In deze sectie wordt u begeleid bij het verbinden van de inrichtings-API voor de SCIM-gebruikers account van Azure AD naar LinkedIn en het configureren van de inrichtings service om toegewezen gebruikers accounts te maken, bij te werken en uit te scha kelen in LinkedIn Sales Navigator op basis van de gebruikers-en groeps toewijzing in azure AD.
 
 > [!TIP]
-> U kunt er ook voor kiezen om op SAML gebaseerde eenmalige aanmelding voor LinkedIn Sales navigator in te scha kelen, volgens de instructies in [Azure Portal](https://portal.azure.com). Eenmalige aanmelding kan onafhankelijk van automatische inrichting worden geconfigureerd, hoewel deze twee functies elkaar aanvullen.
+> U kunt er ook voor kiezen om op SAML gebaseerde single Sign-On voor LinkedIn Sales navigator in te scha kelen, volgens de instructies in [Azure Portal](https://portal.azure.com). Eenmalige aanmelding kan onafhankelijk van automatische inrichting worden geconfigureerd, hoewel deze twee functies elkaar aanvullen.
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-linkedin-sales-navigator-in-azure-ad"></a>Automatische toewijzing van gebruikers accounts configureren voor LinkedIn Sales navigator in azure AD:
 

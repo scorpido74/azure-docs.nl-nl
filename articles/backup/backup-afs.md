@@ -4,10 +4,10 @@ description: Meer informatie over het gebruik van de Azure Portal voor het maken
 ms.topic: conceptual
 ms.date: 01/20/2020
 ms.openlocfilehash: ca49f1ad48ab0534b27b91ad6a5a50b393cda782
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88890345"
 ---
 # <a name="back-up-azure-file-shares"></a>Een back-up maken van Azure-bestandsshares
@@ -154,7 +154,7 @@ In de volgende stappen wordt uitgelegd hoe u een back-up kunt configureren voor 
 
 1. Selecteer **back-up inschakelen** om te beginnen met het beveiligen van de bestands share.
 
-   ![Selecteer back-up inschakelen](./media/backup-afs/select-enable-backup.png)
+   ![Selecteer Back-up inschakelen](./media/backup-afs/select-enable-backup.png)
 
 1. U kunt de voortgang van de configuratie in de portal meldingen volgen of door de back-uptaken te controleren onder de kluis die u gebruikt om de bestands share te beveiligen.
 

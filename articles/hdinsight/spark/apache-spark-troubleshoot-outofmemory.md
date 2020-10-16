@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/15/2019
 ms.openlocfilehash: 31cdef281b1cb26d01a4690c815e3d3621e2c053
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84709042"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>OutOfMemoryError-uitzonde ringen voor Apache Spark in azure HDInsight
@@ -194,7 +194,7 @@ Exception in thread "main" java.lang.OutOfMemoryError: unable to create new nati
 
 ### <a name="cause"></a>Oorzaak
 
-`java.lang.OutOfMemoryError: unable to create new native thread`highlight besturings systeem kan niet meer systeem eigen threads toewijzen aan JVMs. Bevestigd dat deze uitzonde ring wordt veroorzaakt door een overschrijding van de limiet van het aantal threads per proces.
+`java.lang.OutOfMemoryError: unable to create new native thread` highlight besturings systeem kan niet meer systeem eigen threads toewijzen aan JVMs. Bevestigd dat deze uitzonde ring wordt veroorzaakt door een overschrijding van de limiet van het aantal threads per proces.
 
 Wanneer de livy-server onverwacht wordt beëindigd, worden alle verbindingen met Spark-clusters ook beëindigd, wat betekent dat alle taken en gerelateerde gegevens verloren gaan. In het HDP 2,6-sessie herstel mechanisme is geïntroduceerd, worden de sessie gegevens in Zookeeper opgeslagen om te worden hersteld nadat de livy-server weer is.
 
@@ -239,7 +239,7 @@ Verwijder alle vermeldingen met behulp van de stappen die hieronder worden besch
 1. Wacht tot de bovenstaande opdracht is voltooid en de cursor de prompt retour neren en start de livy-service vervolgens opnieuw vanaf Ambari. deze moet slagen.
 
 > [!NOTE]
-> `DELETE`de livy-sessie zodra de uitvoering is voltooid. De livy-batch sessies worden niet automatisch verwijderd zodra de Spark-app is voltooid. Dit is een ontwerp. Een livy-sessie is een entiteit die is gemaakt met een POST-aanvraag voor livy rest server. Er `DELETE` is een aanroep nodig om die entiteit te verwijderen. Of we moeten wachten tot de GC is gestart.
+> `DELETE` de livy-sessie zodra de uitvoering is voltooid. De livy-batch sessies worden niet automatisch verwijderd zodra de Spark-app is voltooid. Dit is een ontwerp. Een livy-sessie is een entiteit die is gemaakt met een POST-aanvraag voor livy rest server. Er `DELETE` is een aanroep nodig om die entiteit te verwijderen. Of we moeten wachten tot de GC is gestart.
 
 ---
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: surmb
 ms.openlocfilehash: ebd06b0b78ee511dce535ff4220df03087fb6906
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88723313"
 ---
 # <a name="application-gateway-components"></a>Application Gateway-onderdelen
@@ -77,7 +77,7 @@ Er zijn twee soorten listeners:
 
 Nadat u een listener hebt gemaakt, koppelt u deze aan een routerings regel voor aanvragen. Deze regel bepaalt hoe de ontvangen aanvraag op de listener moet worden doorgestuurd naar de back-end. De regel voor aanvraag routering bevat ook de back-end-groep waarnaar moet worden doorgestuurd en de HTTP-instelling waarin de back-end-poort, het protocol enzovoort worden genoemd.
 
-## <a name="request-routing-rules"></a>Routerings regels voor aanvragen
+## <a name="request-routing-rules"></a>Routeringsregels aanvragen
 
 Een regel voor het routeren van aanvragen is een belang rijk onderdeel van een toepassings gateway, omdat deze bepaalt hoe verkeer moet worden gerouteerd op de listener. De regel verbindt de listener, de back-end-server groep en de back-end-HTTP-instellingen.
 

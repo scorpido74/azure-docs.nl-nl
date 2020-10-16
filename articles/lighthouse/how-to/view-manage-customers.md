@@ -4,10 +4,10 @@ description: Als service provider of onderneming die Azure Lighthouse gebruikt, 
 ms.date: 08/12/2020
 ms.topic: how-to
 ms.openlocfilehash: 165110556282e90bbacf4ce3b3c59e34b203a528
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88167195"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>Klanten en gedelegeerde resources weergeven en beheren
@@ -59,7 +59,7 @@ Als u gebruikers met de functie voor het verwijderen van de [registratie toewijz
 
 ## <a name="work-in-the-context-of-a-delegated-subscription"></a>Werken in de context van een gedelegeerd abonnement
 
-U kunt rechtstreeks in de context van een gedelegeerd abonnement in de Azure Portal werken zonder de directory waarin u werkt te scha kelen. Dit doet u als volgt:
+U kunt rechtstreeks in de context van een gedelegeerd abonnement in de Azure Portal werken zonder de directory waarin u werkt te scha kelen. Hiervoor doet u het volgende:
 
 1. Selecteer het pictogram voor het adres van de **map en het abonnement** boven aan de Azure Portal.
 2. Zorg ervoor dat in het **globale abonnements** filter alleen het vak voor dat gedelegeerd abonnement is geselecteerd. U kunt de vervolg keuzelijst **huidige en gedelegeerde directory's** gebruiken om alleen abonnementen in een specifieke map weer te geven. (Gebruik niet de optie **Directory overschakelen** , want Hiermee wijzigt u de map waarin u bent aangemeld.)

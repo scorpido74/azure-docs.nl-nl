@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 8/04/2017
 ms.author: cawa
 ms.openlocfilehash: d4d6b781d97d481793e69cf2ca97cca5b93ce432
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86256090"
 ---
 # <a name="configure-secure-connections-to-a-service-fabric-cluster-from-visual-studio"></a>Beveiligde verbindingen met een Service Fabric-cluster configureren vanuit Visual Studio
@@ -31,7 +31,7 @@ In het dialoog venster **service Fabric toepassing publiceren** wordt de cluster
 
 ### <a name="to-connect-to-a-secure-cluster"></a>Verbinding maken met een beveiligd cluster
 1. Zorg ervoor dat u toegang hebt tot een van de client certificaten die door het doel cluster worden vertrouwd. Het certificaat wordt meestal gedeeld als een pfx-bestand (Personal Information Exchange). Zie [een service Fabric cluster instellen van de Azure Portal](service-fabric-cluster-creation-via-portal.md) voor het configureren van de server om toegang te verlenen aan een client.
-2. Installeer het vertrouwde certificaat. Hiervoor dubbelklikt u op het pfx-bestand of gebruikt u het Power shell-script import-pfx om de certificaten te importeren. Installeer het certificaat op **certificaat: \ LocalMachine\My**. Het is OK om alle standaard instellingen te accepteren tijdens het importeren van het certificaat.
+2. Installeer het vertrouwde certificaat. Om dit te doen, dubbelklikt u op het pfx-bestand of gebruikt u het Power shell-script Import-PfxCertificate om de certificaten te importeren. Installeer het certificaat op **certificaat: \ LocalMachine\My**. Het is OK om alle standaard instellingen te accepteren tijdens het importeren van het certificaat.
 3. Kies in het snelmenu van het project de opdracht **publiceren...** om het dialoog venster **publiceren Azure-toepassing** te openen en selecteer vervolgens het doel cluster. Het hulp programma lost de verbinding automatisch op en slaat de para meters voor de beveiligde verbinding op in het publicatie profiel.
 4. Optioneel: u kunt het publicatie profiel bewerken om een beveiligde cluster verbinding op te geven.
    

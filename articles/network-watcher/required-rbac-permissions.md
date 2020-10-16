@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 05/10/2018
 ms.author: damendo
 ms.openlocfilehash: de345578b2cade18d126a113937f2eede8e8157e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87497304"
 ---
 # <a name="role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>Op rollen gebaseerde toegangs beheer machtigingen die zijn vereist voor het gebruik van Network Watcher mogelijkheden
@@ -102,7 +102,7 @@ Met op rollen gebaseerd toegangs beheer (Azure RBAC) van Azure kunt u alleen de 
 
 Voor Network Watcher mogelijkheden zijn ook de volgende acties vereist:
 
-| Actie (s)                                                           | Description                                                    |
+| Actie (s)                                                           | Beschrijving                                                    |
 | ---------                                                           | -------------                                                  |
 | Micro soft. Authorization/ \* /Read                                     | Wordt gebruikt voor het ophalen van Azure-Roltoewijzingen en beleids definities          |
 | Micro soft. resources/abonnementen/resourceGroups/lezen               | Gebruikt voor het inventariseren van alle resource groepen in een abonnement    |

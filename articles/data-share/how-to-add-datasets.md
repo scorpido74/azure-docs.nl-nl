@@ -7,10 +7,10 @@ ms.service: data-share
 ms.topic: how-to
 ms.date: 07/30/2020
 ms.openlocfilehash: 540cdc2948cbcd97bf7c8872f3aace2862280434
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87513486"
 ---
 # <a name="how-to-add-datasets-to-an-existing-share-in-azure-data-share"></a>Gegevens sets toevoegen aan een bestaande share in een Azure-gegevens share
@@ -23,11 +23,11 @@ Voor informatie over het toevoegen van gegevens sets wanneer u een share maakt, 
 
 In azure data share gaat u naar de verzonden share en selecteert u het tabblad **gegevens sets** . Klik op de knop **gegevens sets toevoegen** om meer gegevens sets toe te voegen.
 
-![Gegevens sets toevoegen](./media/how-to/how-to-add-datasets/add-datasets.png)
+![Gegevenssets toevoegen](./media/how-to/how-to-add-datasets/add-datasets.png)
 
 Selecteer in het deel venster aan de rechter kant het type gegevensset dat u wilt toevoegen en klik vervolgens op **volgende**. Selecteer het abonnement en de resource groep van de gegevens die u wilt toevoegen. Zoek met de vervolg keuzelijst pijlen het selectie vakje naast de gegevens die u wilt toevoegen.
 
-![Gegevens sets toevoegen](./media/how-to/how-to-add-datasets/add-datasets-side.png)
+![Gegevenssets toevoegen](./media/how-to/how-to-add-datasets/add-datasets-side.png)
 
 Nadat u op **gegevens sets toevoegen**hebt geklikt, worden de gegevens sets toegevoegd aan uw share. Opmerking: een moment opname moet worden geactiveerd door uw consumenten zodat ze de nieuwe gegevens sets kunnen zien. Als er moment opname-instellingen zijn geconfigureerd, zien consumenten de nieuwe gegevens sets zodra de volgende geplande moment opname is voltooid. Zonder dat de moment opname-instellingen zijn geconfigureerd, moet de gebruiker hand matig een volledige of incrementele kopie van de gegevens activeren om de updates te ontvangen. Zie [moment opnamen](terminology.md)voor meer informatie over moment opnamen.
 

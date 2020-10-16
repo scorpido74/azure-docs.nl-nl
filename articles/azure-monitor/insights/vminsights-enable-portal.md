@@ -1,5 +1,5 @@
 ---
-title: Schakel Azure Monitor in voor de schaalset van één virtuele machine of virtuele machine in het Azure Portal
+title: Azure Monitor inschakelen voor een enkele virtuele-machine of een virtuele-machineschaalset in Azure Portal
 description: Meer informatie over het inschakelen van Azure Monitor voor VM's op één virtuele machine of virtuele-machine schaalset met behulp van de Azure Portal.
 ms.subservice: ''
 ms.topic: conceptual
@@ -7,13 +7,13 @@ author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
 ms.openlocfilehash: ba6ae9262fb0e55c53e1b1421c075e555fae8d98
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87328235"
 ---
-# <a name="enable-azure-monitor-for-single-virtual-machine-or-virtual-machine-scale-set-in-the-azure-portal"></a>Schakel Azure Monitor in voor de schaalset van één virtuele machine of virtuele machine in het Azure Portal
+# <a name="enable-azure-monitor-for-single-virtual-machine-or-virtual-machine-scale-set-in-the-azure-portal"></a>Azure Monitor inschakelen voor een enkele virtuele-machine of een virtuele-machineschaalset in Azure Portal
 In dit artikel wordt beschreven hoe u Azure Monitor voor VM's inschakelt voor een virtuele machine of virtuele-machine schaalset met behulp van de Azure Portal. Deze procedure kan worden gebruikt voor het volgende:
 
 - Azure virtuele machine

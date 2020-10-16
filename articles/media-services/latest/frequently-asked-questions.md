@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: d34b5aaaa12a3d296f92e0d7be34ae76931d8506
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: aa33319f146ac57ab4d253696c94308a43b5db2e
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268482"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019610"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Veelgestelde vragen over Media Services v3
 
@@ -28,7 +28,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Media Servic
 
 ### <a name="what-are-the-azure-portal-limitations-for-media-services-v3"></a>Wat zijn de Azure Portal beperkingen voor Media Services v3?
 
-U kunt de [Azure Portal](https://portal.azure.com/) gebruiken om v3 Live-gebeurtenissen te beheren, v3-assets en-taken weer te geven, informatie over het openen van api's te verkrijgen, inhoud te versleutelen. <br/>Voor alle andere beheer taken (bijvoorbeeld het beheren van trans formaties en taken of het analyseren van v3-inhoud), gebruikt u de [rest API](https://aka.ms/ams-v3-rest-ref), [cli](https://aka.ms/ams-v3-cli-ref)of een van de ondersteunde [sdk's](media-services-apis-overview.md#sdks).
+U kunt de [Azure Portal](https://portal.azure.com/) gebruiken om v3 Live-gebeurtenissen te beheren, v3-assets en-taken weer te geven, informatie over het openen van api's te verkrijgen, inhoud te versleutelen. <br/>Voor alle andere beheer taken (bijvoorbeeld het beheren van trans formaties en taken of het analyseren van v3-inhoud), gebruikt u de [rest API](/rest/api/media/accountfilters), [cli](/cli/azure/ams)of een van de ondersteunde [sdk's](media-services-apis-overview.md#sdks).
 
 Als uw video eerder is geüpload naar het Media Services-account met behulp van de Media Services v3-API of als de inhoud is gegenereerd op basis van live-uitvoer, zijn de knoppen **Coderen**, **Analyseren** of **Versleutelen** niet zichtbaar in Azure Portal. Gebruik de Media Services v3-API's om deze taken uit te voeren.  
 
@@ -163,7 +163,7 @@ Op dit moment kunt u het [Azure Portal](https://portal.azure.com/) gebruiken voo
 * V3- [assets](assets-concept.md)weer geven (niet beheren). 
 * [Krijg informatie over het openen van api's](./access-api-howto.md). 
 
-Gebruik voor alle andere beheer taken (bijvoorbeeld [trans formaties en taken](transforms-jobs-concept.md) en [inhouds beveiliging](content-protection-overview.md)) de [rest API](/rest/api/media/), de [Azure cli](https://aka.ms/ams-v3-cli-ref)of een van de ondersteunde [sdk's](media-services-apis-overview.md#sdks).
+Gebruik voor alle andere beheer taken (bijvoorbeeld [trans formaties en taken](transforms-jobs-concept.md) en [inhouds beveiliging](content-protection-overview.md)) de [rest API](/rest/api/media/), de [Azure cli](/cli/azure/ams)of een van de ondersteunde [sdk's](media-services-apis-overview.md#sdks).
 
 ### <a name="is-there-an-assetfile-concept-in-v3"></a>Is er een AssetFile-concept in v3?
 

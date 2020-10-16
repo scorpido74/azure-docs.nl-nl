@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.openlocfilehash: 332d6da35af0eaae9d9d15258a152734f0a9eba6
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88033628"
 ---
 # <a name="how-to-use-blob-storage-from-c"></a>Blob Storage gebruiken vanuit C++
@@ -31,8 +31,8 @@ Hiervoor moet u de Azure-opslagclientbibliotheek voor C++ installeren en een Azu
 
 Voor het installeren van de Azure-opslagclientbibliotheek voor C++ kunt u de volgende methoden gebruiken:
 
-- **Linux:** Volg de instructies in de [Azure Storage-client bibliotheek voor C++ Leesmij: aan de slag op de Linux](https://github.com/Azure/azure-storage-cpp#getting-started-on-linux) -pagina.
-- **Windows:** Gebruik [vcpkg](https://github.com/microsoft/vcpkg) in Windows als afhankelijkheids beheer. Volg de [Quick](https://github.com/microsoft/vcpkg#quick-start) start om vcpkg te initialiseren. Gebruik vervolgens de volgende opdracht om de bibliotheek te installeren:
+- **Linux:** Volg de instructies op de pagina met het [Leesmij-bestand voor de Azure Storage-clientbibliotheek voor C++: Aan de slag met de Linux](https://github.com/Azure/azure-storage-cpp#getting-started-on-linux).
+- **Windows:** In Windows gebruikt u [vcpkg](https://github.com/microsoft/vcpkg) als afhankelijkheidsbeheerder. Volg de [Quick](https://github.com/microsoft/vcpkg#quick-start) start om vcpkg te initialiseren. Voer vervolgens de volgende opdracht uit om de bibliotheek te installeren:
 
 ```powershell
 .\vcpkg.exe install azure-storage-cpp
@@ -157,7 +157,7 @@ blob3.upload_text(U("other text"));
 U kunt ook de methode **upload_from_file** gebruiken om een bestand te uploaden naar een blok-blob.
 
 ## <a name="how-to-list-the-blobs-in-a-container"></a>Procedure: de blobs in een container weer geven
-Als u een lijst van de blobs in een container wilt weergeven, moet u eerst een containerverwijzing ophalen. Vervolgens kunt u de **list_blobs** methode van de container gebruiken om de blobs en/of de mappen erin op te halen. Om toegang te krijgen tot de uitgebreide set eigenschappen en methoden voor een geretourneerde **list_blob_item**, moet u de methode **list_blob_item. as_blob** aanroepen om een **cloud_blob** object op te halen, of de methode **list_blob. as_directory** om een cloud_blob_directory-object op te halen. De volgende code laat zien hoe u de URI van elk item in de container **My-steek-container** kunt ophalen en uitvoeren:
+Als u een lijst van de blobs in een container wilt weergeven, moet u eerst een containerverwijzing ophalen. Vervolgens kunt u de **list_blobs** methode van de container gebruiken om de blobs en/of de mappen erin op te halen. Voor toegang tot de uitgebreide set eigenschappen en methoden voor een geretourneerde **list_blob_item**moet u de methode **list_blob_item. as _blob** aanroepen om een  **cloud_blob** -object op te halen, of de methode **list_blob. as _directory** om een cloud_blob_directory-object op te halen. De volgende code laat zien hoe u de URI van elk item in de container **My-steek-container** kunt ophalen en uitvoeren:
 
 ```cpp
 // Retrieve storage account from connection string.

@@ -5,14 +5,14 @@ author: djpmsft
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/05/2020
+ms.date: 10/13/2020
 ms.author: daperlov
-ms.openlocfilehash: 483e26cf4044b909c8d7923cfd74bd6fcf871e2a
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 5e846ed02d1a0ac22c9c9479f3367800d1dc9dd2
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905274"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042589"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Gemeen schappelijke gegevens model indeling in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -37,7 +37,7 @@ De onderstaande tabel geeft een lijst van de eigenschappen die worden ondersteun
 
 | Naam | Beschrijving | Vereist | Toegestane waarden | Eigenschap gegevens stroom script |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Indeling | Indeling moet`cdm` | ja | `cdm` | indeling |
+| Indeling | Indeling moet `cdm` | ja | `cdm` | indeling |
 | Meta gegevens indeling | Waar de entiteits verwijzing naar de gegevens zich bevindt. Als u CDM versie 1,0 gebruikt, kiest u Manifest. Als u vóór 1,0 een CDM-versie gebruikt, kiest u model.jsop. | Ja | `'manifest'` of `'model'` | manifestType |
 | Hoofd locatie: container | Container naam van de map CDM | ja | Tekenreeks | System |
 | Hoofd locatie: mappad | Locatie van de hoofdmap van de map CDM | ja | Tekenreeks | folderPath |
@@ -51,6 +51,8 @@ De onderstaande tabel geeft een lijst van de eigenschappen die worden ondersteun
 | Map verzameling | de hoofd locatie van de verzameling | Ja, als u een manifest gebruikt | Tekenreeks | corpusPath |
 | Verzameling entiteit | Pad naar entiteits verwijzing | ja | Tekenreeks | vennootschap |
 | Geen bestanden gevonden | Als deze eigenschap waar is, wordt er geen fout gegenereerd als er geen bestanden worden gevonden | nee | `true` of `false` | ignoreNoFilesFound |
+
+Als de definitie van de entiteit die u wilt gebruiken in uw bron transformatie zich in dezelfde map bevindt als de map Data, kunt u de selectie van entiteit gebruiken uit verzameling opheffen en eenvoudigweg typen in de entiteit van de entiteit die u wilt gebruiken als entiteits verwijzing.
 
 ### <a name="sink-settings"></a>Sink-instellingen
 
@@ -114,7 +116,7 @@ De onderstaande tabel geeft een lijst van de eigenschappen die worden ondersteun
 
 | Naam | Beschrijving | Vereist | Toegestane waarden | Eigenschap gegevens stroom script |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Indeling | Indeling moet`cdm` | ja | `cdm` | indeling |
+| Indeling | Indeling moet `cdm` | ja | `cdm` | indeling |
 | Hoofd locatie: container | Container naam van de map CDM | ja | Tekenreeks | System |
 | Hoofd locatie: mappad | Locatie van de hoofdmap van de map CDM | ja | Tekenreeks | folderPath |
 | Manifest bestand: pad naar entiteit | Mappad van de entiteit binnen de hoofdmap | nee | Tekenreeks | entityPath |
@@ -127,7 +129,7 @@ De onderstaande tabel geeft een lijst van de eigenschappen die worden ondersteun
 | Verzameling entiteit | Pad naar entiteits verwijzing | ja | Tekenreeks | vennootschap |
 | Pad partitioneren | Locatie waar de partitie wordt geschreven | nee | Tekenreeks | partitionPath |
 | De map wissen | Als de doelmap vóór het schrijven is gewist | nee | `true` of `false` | afkappen |
-| Type indeling | Kiezen om de Parquet-indeling op te geven | nee | `parquet`Indien opgegeven | subformat |
+| Type indeling | Kiezen om de Parquet-indeling op te geven | nee | `parquet` Indien opgegeven | subformat |
 | Kolom scheidings teken | Als u naar DelimitedText schrijft, kolommen beperken | Ja, als u naar DelimitedText schrijft | Tekenreeks | columnDelimiter |
 | Eerste rij als koptekst | Als u DelimitedText gebruikt, of de kolom namen worden toegevoegd als koptekst | nee | `true` of `false` | columnNamesAsHeader |
 

@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 10/06/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 9b7af755c7f0903787bb3798ea1f6877cae180f1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 20926988d554d562f36587734bd99c34b4731e69
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90908308"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92088717"
 ---
 # <a name="bind-an-azure-cosmos-db-database-to-your-azure-spring-cloud-application"></a>Een Azure Cosmos DB verbinden met uw Azure Spring Cloud-toepassing
 
-**Dit artikel is van toepassing op:** ✔️ java
+**Dit artikel is van toepassing op:** ✔️ Java
 
 In plaats van uw Spring Boot-toepassingen handmatig te configureren, kunt u de geselecteerde Azure-services automatisch met uw toepassingen verbinden met behulp van Azure Spring Cloud. In dit artikel wordt beschreven hoe u uw toepassing verbindt met een Azure Cosmos DB-database.
 
@@ -29,7 +29,7 @@ Vereisten:
 
 Azure Cosmos DB heeft vijf verschillende typen API's die ondersteuning bieden voor binding. De volgende procedure laat zien hoe u deze gebruikt:
 
-1. Hiermee maakt u een Azure Cosmos DB-database. Raadpleeg de quickstart over [het maken van een database](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal) voor hulp. 
+1. Hiermee maakt u een Azure Cosmos DB-database. Raadpleeg de quickstart over [het maken van een database](../cosmos-db/create-cosmosdb-resources-portal.md) voor hulp. 
 
 1. Noteer de naam van uw database. Voor deze procedure is de databasenaam **testdb**.
 

@@ -9,15 +9,15 @@ ms.date: 03/15/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 4c232e1ce183c6935d625b5bc9987a4981865ae4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67175915"
 ---
-Als u werkt met het Resource Manager-implementatie model, kunt u overschakelen naar de nieuwe gateway-Sku's. Wanneer u overstapt van een verouderde gateway-SKU naar een nieuwe SKU, verwijdert u de bestaande VPN-gateway en maakt u een nieuwe VPN-gateway.
+Als u werkt met het Resource Manager-implementatiemodel, kunt u overschakelen naar de nieuwe gateway-SKU's. Wanneer u overstapt van een verouderde gateway-SKU naar een nieuwe SKU, verwijdert u de bestaande VPN-gateway en maakt u een nieuwe VPN-gateway.
 
-Workflowconfiguraties
+Workflow:
 
 1. Verwijder verbindingen van de gateway voor het virtuele netwerk.
 2. Verwijder de oude VPN-gateway.
@@ -29,7 +29,7 @@ Workflowconfiguraties
 
 Overwegingen:
 
-* Als u wilt overstappen op de nieuwe Sku's, moet uw VPN-gateway zich in het Resource Manager-implementatie model bevindt.
-* Als u een klassieke VPN-gateway hebt, moet u de oudere oudere Sku's voor die gateway blijven gebruiken, maar u kunt het formaat van de oudere Sku's echter aanpassen. U kunt niet overschakelen naar de nieuwe Sku's.
-* U krijgt connectiviteits downtime wanneer u overschakelt van een verouderde SKU naar een nieuwe SKU.
-* Wanneer u overstapt naar een nieuwe gateway-SKU, wordt het open bare IP-adres voor uw VPN-gateway gewijzigd. Dit gebeurt ook als u hetzelfde open bare IP-adres object opgeeft dat u eerder hebt gebruikt.
+* Als u wilt overstappen op de nieuwe SKU's, moet uw VPN-gateway zich in het Resource Manager-implementatiemodel bevinden.
+* Als u een klassieke VPN-gateway hebt, moet u de veroudere SKU's voor die gateway blijven gebruiken, maar u kunt het formaat van de veroudere SKU's echter aanpassen. U kunt niet overschakelen naar de nieuwe SKU's.
+* Er zal connectiviteitsdowntime optreden wanneer u overschakelt van een verouderde SKU naar een nieuwe SKU.
+* Wanneer u overstapt naar een nieuwe gateway-SKU, wordt het openbare IP-adres voor uw VPN-gateway gewijzigd. Dit gebeurt ook als u hetzelfde openbare IP-adresobject opgeeft dat u eerder hebt gebruikt.

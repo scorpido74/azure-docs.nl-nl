@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: tagore
 ms.custom: devx-track-js
-ms.openlocfilehash: a3f661aa31511c5f1cf35d2e3c0429af6ab0c997
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ef7325b53f7d6450acdff4664f3e338c31be9612
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91327524"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077215"
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>Een Node.js Chat-toepassing bouwen met Socket.IO in een Azure-Cloud service
 
@@ -124,7 +124,7 @@ Nadat u de wijzigingen in **server.js**hebt opgeslagen, voert u de volgende stap
     ```
 
    > [!NOTE]
-   > Als u problemen ondervindt met het starten van de emulator, bijvoorbeeld: start-AzureEmulator: er is een onverwachte fout opgetreden.  Details: er is een onverwachte fout opgetreden. het communicatie object, System. service model. channels. ServiceChannel, kan niet worden gebruikt voor communicatie omdat het de status faulted heeft.
+   > Als u problemen ondervindt met het starten van de emulator, bijvoorbeeld: Start-AzureEmulator: er is een onverwachte fout opgetreden.  Details: er is een onverwachte fout opgetreden. het communicatie object, System. service model. channels. ServiceChannel, kan niet worden gebruikt voor communicatie omdat het de status faulted heeft.
    >
    > Installeer AzureAuthoringTools v 2.7.1 en AzureComputeEmulator v 2,7 opnieuw, Controleer of de versie overeenkomt.
 
@@ -169,9 +169,9 @@ Uw toepassing wordt nu uitgevoerd op Azure en kan Chat berichten tussen verschil
 ## <a name="next-steps"></a>Volgende stappen
 In deze zelf studie hebt u geleerd hoe u een eenvoudige Chat toepassing maakt die wordt gehost in een Azure-Cloud service. Zie [een Node.js-Chat toepassing bouwen met socket.io op een Azure][chatwebsite]-website voor meer informatie over het hosten van deze toepassing in een Azure-website.
 
-Zie ook het [Node.js Developer Center](https://docs.microsoft.com/azure/developer/javascript/)voor meer informatie.
+Zie ook het [Node.js Developer Center](/azure/developer/javascript/)voor meer informatie.
 
-[chatwebsite]: https://docs.microsoft.com/azure/cloud-services/cloud-services-nodejs-develop-deploy-app
+[chatwebsite]: ./cloud-services-nodejs-develop-deploy-app.md
 
 [Azure SLA]: https://www.windowsazure.com/support/sla/
 [Azure SDK for Node.js GitHub repository]: https://github.com/WindowsAzure/azure-sdk-for-node
@@ -191,8 +191,3 @@ Zie ook het [Node.js Developer Center](https://docs.microsoft.com/azure/develope
 [chat-contents]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-5.png
 [The-output-of-the-npm-install-command]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-7.png
 [The output of the Publish-AzureService command]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-9.png
-
-
-
-
-

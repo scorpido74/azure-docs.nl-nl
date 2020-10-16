@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
 ms.openlocfilehash: 0c6fc36be101679cea3a770f311005f63c3f0d66
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84737373"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>Een persoonlijk eind punt maken met Azure PowerShell
@@ -208,11 +208,11 @@ mstsc /v:<publicIpAddress>
 
     | Instelling | Waarde |
     | --- | --- |
-    | Servertype | Data base-engine |
+    | Servertype | Database-engine |
     | Servernaam | myserver.database.windows.net |
     | Gebruikersnaam | Voer de gebruikers naam in die tijdens het maken is opgegeven |
     | Wachtwoord | Voer het wacht woord in dat u hebt opgegeven tijdens het maken |
-    | Wacht woord onthouden | Yes |
+    | Wacht woord onthouden | Ja |
     
 5. Selecteer **Verbinding maken**.
 6. Blader door **data bases** in het menu links. 

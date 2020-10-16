@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 7ec61bf4db949649c993fad4a3255b55626cb259
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 23ca4be9387754c84dc256dd72b131bd5b76b458
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056224"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876461"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>Zelfstudie: IoT Edge-modules ontwikkelen voor Linux-apparaten
 
@@ -177,19 +177,19 @@ De oplossingssjabloon die u hebt gemaakt, bevat voorbeeldcode voor een IoT Edge-
 
 Elke module kan meerdere *invoer*- en *uitvoer*wachtrijen hebben die in hun code zijn gedeclareerd. Met de IoT Edge-hub die op het apparaat wordt uitgevoerd, worden berichten van de uitvoer van een module naar de invoer van een of meer modules gerouteerd. De specifieke code voor het declareren van invoer en uitvoer verschilt per taal, maar het concept is voor alle modules hetzelfde. Zie [Routes declareren](module-composition.md#declare-routes) voor meer informatie over routering tussen modules.
 
-De C#-voorbeeldcode die bij de projectsjabloon hoort, maakt gebruik van de [ModuleClient-klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet) van de IoT Hub SDK voor .NET.
+De C#-voorbeeldcode die bij de projectsjabloon hoort, maakt gebruik van de [ModuleClient-klasse](/dotnet/api/microsoft.azure.devices.client.moduleclient) van de IoT Hub SDK voor .NET.
 
 1. Open het bestand **Program.cs**, dat zich in de map **modules/SampleModule/** bevindt.
 
 2. Zoek in program.cs de methode **SetInputMessageHandlerAsync**.
 
-3. Met de methode [SetInputMessageHandlerAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient.setinputmessagehandlerasync?view=azure-dotnet) wordt een invoerwachtrij ingesteld voor het ontvangen van inkomende berichten. Bekijk deze methode en zie hoe hiermee een invoerwachtrij met de naam **input1** wordt geïnitialiseerd.
+3. Met de methode [SetInputMessageHandlerAsync](/dotnet/api/microsoft.azure.devices.client.moduleclient.setinputmessagehandlerasync) wordt een invoerwachtrij ingesteld voor het ontvangen van inkomende berichten. Bekijk deze methode en zie hoe hiermee een invoerwachtrij met de naam **input1** wordt geïnitialiseerd.
 
    ![De invoernaam zoeken in de SetInputMessageCallback-constructor](./media/tutorial-develop-for-linux/declare-input-queue.png)
 
 4. Zoek vervolgens de methode **SendEventAsync**.
 
-5. Met de methode [SendEventAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient.sendeventasync?view=azure-dotnet) worden ontvangen berichten verwerkt en wordt een uitvoerwachtrij ingesteld om de berichten door te geven. Bekijk deze methode en controleer of er een uitvoerwachtrij met de naam **output1** wordt geïnitialiseerd.
+5. Met de methode [SendEventAsync](/dotnet/api/microsoft.azure.devices.client.moduleclient.sendeventasync) worden ontvangen berichten verwerkt en wordt een uitvoerwachtrij ingesteld om de berichten door te geven. Bekijk deze methode en controleer of er een uitvoerwachtrij met de naam **output1** wordt geïnitialiseerd.
 
    ![De uitvoernaam zoeken in SendEventToOutputAsync](./media/tutorial-develop-for-linux/declare-output-queue.png)
 

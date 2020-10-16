@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 06/18/2020
 ms.author: caya
 ms.openlocfilehash: 0fdfa6265b81140fa6536082fe7ad4c5fa687fc4
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86207156"
 ---
 # <a name="troubleshoot-common-questions-or-issues-with-ingress-controller"></a>Veelvoorkomende vragen of problemen met de ingangs controller oplossen
@@ -95,7 +95,7 @@ De lijst met ingresses ophalen: `kubectl get ingress` . Er wordt verwacht dat ee
 
 ![gehele](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-ingress.png)
 
-Een van de peulen is AGIC. `kubectl get pods`Er wordt een lijst weer gegeven met een van de peulen waarvan een van deze begint met ' Inkomend-Azure '. Ontvang alle logboeken van die pod `kubectl logs <name-of-ingress-controller-pod>` om te controleren of de implementatie is geslaagd. Bij een geslaagde implementatie zijn de volgende regels aan het logboek toegevoegd:
+Een van de peulen is AGIC. `kubectl get pods` Er wordt een lijst weer gegeven met een van de peulen waarvan een van deze begint met ' Inkomend-Azure '. Ontvang alle logboeken van die pod `kubectl logs <name-of-ingress-controller-pod>` om te controleren of de implementatie is geslaagd. Bij een geslaagde implementatie zijn de volgende regels aan het logboek toegevoegd:
 ```
 I0927 22:34:51.281437       1 process.go:156] Applied Application Gateway config in 20.461335266s
 I0927 22:34:51.281585       1 process.go:165] cache: Updated with latest applied config.
@@ -142,7 +142,7 @@ Het volgende moet worden uitgevoerd om AGIC te laten werken zoals verwacht:
      ```
 
   2. Een of meer **Services**, die verwijzen naar de bovenstaande treffers via overeenkomende `selector` labels.
-     Controleer dit in [Cloud shell](https://shell.azure.com/) met`kubectl get services -o wide`
+     Controleer dit in [Cloud shell](https://shell.azure.com/) met `kubectl get services -o wide`
      ```bash
      delyan@Azure:~$ kubectl get services -o wide --show-labels
 
@@ -199,9 +199,9 @@ Het volgende moet worden uitgevoerd om AGIC te laten werken zoals verwacht:
 
 
 * Als de AGIC pod niet in orde is (de `STATUS` kolom van de bovenstaande opdracht is niet `Running` ):
-  - Logboeken ophalen om te begrijpen waarom:`kubectl logs <pod-name>`
-  - voor het vorige exemplaar van de Pod:`kubectl logs <pod-name> --previous`
-  - Beschrijf de pod om meer context te krijgen:`kubectl describe pod <pod-name>`
+  - Logboeken ophalen om te begrijpen waarom: `kubectl logs <pod-name>`
+  - voor het vorige exemplaar van de Pod: `kubectl logs <pod-name> --previous`
+  - Beschrijf de pod om meer context te krijgen: `kubectl describe pod <pod-name>`
 
 
 * Hebt u een Kubernetes- [service](https://kubernetes.io/docs/concepts/services-networking/service/) en [zijn](https://kubernetes.io/docs/concepts/services-networking/ingress/) er bronnen voor binnenkomend verkeer?
@@ -224,7 +224,7 @@ Het volgende moet worden uitgevoerd om AGIC te laten werken zoals verwacht:
 
 
 * AGIC verzendt Kubernetes-gebeurtenissen voor bepaalde kritieke fouten. U kunt deze bekijken:
-  - in uw terminal via`kubectl get events --sort-by=.metadata.creationTimestamp`
+  - in uw terminal via `kubectl get events --sort-by=.metadata.creationTimestamp`
   - in uw browser met behulp van de [Kubernetes-webgebruikersinterface (dash board)](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)
 
 
@@ -245,7 +245,7 @@ De Kubernetes-Community heeft negen niveaus voor logboek registratie vastgesteld
 
 De uitbreidings niveaus zijn aanpasbaar via de `verbosityLevel` variabele in het bestand [helm-config. yaml](#sample-helm-config-file) . Verhoog het niveau uitgebreid tot `5` om de JSON-configuratie te verkrijgen die wordt verzonden naar [arm](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview):
   - `verbosityLevel: 5`op een regel zelfstandig toevoegen in [helm-config. yaml](#sample-helm-config-file) en opnieuw installeren
-  - Logboeken ophalen met`kubectl logs <pod-name>`
+  - Logboeken ophalen met `kubectl logs <pod-name>`
 
 ### <a name="sample-helm-config-file"></a>Voor beeld van helm-configuratie bestand
 ```yaml

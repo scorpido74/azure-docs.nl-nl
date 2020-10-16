@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.author: ramamill
 ms.date: 04/03/2020
 ms.openlocfilehash: 8ee6449f357a578b30809bb03723ac1556e4f459
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88816162"
 ---
 # <a name="troubleshoot-mobility-service-push-installation"></a>Problemen met push-installatie van Mobility service oplossen
@@ -50,7 +50,7 @@ Voor Windows (**fout 95107**) controleert u of het gebruikers account beheerders
 
 Voor Linux (**fout 95108**), moet u het **hoofd** account kiezen voor een geslaagde installatie van de Mobility Service-agent. Daarnaast moeten SSH-File Transfer Protocol (SFTP)-services worden uitgevoerd. Het SFTP-subsysteem en de wachtwoord verificatie inschakelen in het _sshd_config_ bestand:
 
-1. Meld u aan als **rootgebruiker**.
+1. Meld u aan als **root**.
 1. Ga naar _/etc/ssh/sshd_config-bestand_, zoek de regel die begint met `PasswordAuthentication` .
 1. Verwijder de opmerking bij de regel en wijzig de waarde in `yes` .
 1. Zoek de regel die begint met `Subsystem` en verwijder de opmerking over de regel.
@@ -117,7 +117,7 @@ Om de fout op te lossen:
   * Controleer en of Secure Shell (SSH) is ingeschakeld en wordt uitgevoerd op poort 22.
   * SFTP-services moeten worden uitgevoerd. SFTP-subsysteem en-wachtwoord verificatie inschakelen in het _sshd_config_ -bestand:
 
-    1. Meld u aan als **rootgebruiker**.
+    1. Meld u aan als **root**.
     1. Ga naar _/etc/ssh/sshd_config_ -bestand, zoek de regel die begint met `PasswordAuthentication` .
     1. Verwijder de opmerking bij de regel en wijzig de waarde in `yes` .
     1. Zoek de regel die begint met en `Subsystem` Verwijder de opmerking bij de regel

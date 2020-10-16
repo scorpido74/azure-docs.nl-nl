@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 10/02/2019
 ms.openlocfilehash: 0b5e255d7d108eb063ece4e5489a8762261a0bed
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88207257"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Azure Functions gebruiken om verbinding te maken met een Azure SQL Database
@@ -30,7 +30,7 @@ Als dit uw eerste ervaring voor het werken met C#-functies is, moet u de [Azure 
 
 U moet de connection string ophalen voor de data base die u hebt gemaakt tijdens het [maken van een data base in Azure SQL database met behulp van de Azure Portal](../azure-sql/database/single-database-create-quickstart.md).
 
-1. Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. Selecteer **SQL-data bases** in het menu aan de linkerkant en selecteer uw Data Base op de pagina **SQL-data bases** .
 

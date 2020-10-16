@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
 ms.date: 08/26/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50e202d26574c0fc8adfeb7f73eb150ebb1781af
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 94b8d744c964b07c1ed6a4d7e8b89bca2258c1bc
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89663859"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963955"
 ---
 # <a name="troubleshoot-self-service-password-reset-writeback-in-azure-active-directory"></a>Problemen met het terugschrijven van wacht woord opnieuw instellen in Azure Active Directory
 
@@ -104,29 +104,29 @@ Azure AD Connect moet AD DS machtiging **wacht woord opnieuw instellen** zijn ve
 1. Meld u aan bij de Azure AD Connect-server en start de **Synchronization Service Manager** door **Start**  >  **synchronisatie service**starten te selecteren.
 1. Selecteer op het tabblad **connectors** de on-premises **Active Directory Domain Services** -connector en selecteer vervolgens **Eigenschappen**.
 
-    :::image type="content" source="./media/troubleshoot-sspr-writeback/synchronization-service-manager.png" alt-text="Synchronization Service Manager waarin wordt weer gegeven hoe u eigenschappen kunt bewerken" border="false":::
+    :::image type="content" source="./media/troubleshoot-sspr-writeback/synchronization-service-manager.png" alt-text="De Azure AD Sync-service opnieuw starten met de gebruikers interface" border="false":::
   
 1. In het pop-upvenster selecteert **u verbinding maken met Active Directory forest** en noteert u de eigenschap **gebruikers naam** . Deze eigenschap is het AD DS account dat door Azure AD Connect wordt gebruikt voor het uitvoeren van Directory synchronisatie.
 
     Als Azure AD Connect wacht woord terugschrijven wilt uitvoeren, moet de AD DS-account de machtiging wacht woord opnieuw instellen hebben. U controleert de machtigingen voor dit gebruikers account in de volgende stappen.
 
-    :::image type="content" source="./media/troubleshoot-sspr-writeback/synchronization-service-manager-properties.png" alt-text="Het Active Directory gebruikers account van de synchronisatie service zoeken" border="false":::
+    :::image type="content" source="./media/troubleshoot-sspr-writeback/synchronization-service-manager-properties.png" alt-text="De Azure AD Sync-service opnieuw starten met de gebruikers interface" border="false":::
   
 1. Meld u aan bij een on-premises domein controller en start de toepassing **Active Directory gebruikers en computers** .
 1. Selecteer **weer gave** en zorg ervoor dat de optie **geavanceerde functies** is ingeschakeld.  
 
-    :::image type="content" source="./media/troubleshoot-sspr-writeback/view-advanced-features.png" alt-text="Active Directory gebruikers en computers geavanceerde functies weer geven" border="false":::
+    :::image type="content" source="./media/troubleshoot-sspr-writeback/view-advanced-features.png" alt-text="De Azure AD Sync-service opnieuw starten met de gebruikers interface" border="false":::
   
 1. Zoek het AD DS gebruikers account dat u wilt controleren. Klik met de rechter muisknop op de account naam en selecteer **Eigenschappen**.  
 1. In het pop-upvenster gaat u naar het tabblad **beveiliging** en selecteert u **Geavanceerd**.  
 1. Ga in het pop-upvenster **Geavanceerde beveiligings instellingen voor beheerder** naar het tabblad **effectief toegang** .
 1. Kies **een gebruiker selecteren**, selecteer het AD DS account dat wordt gebruikt door Azure AD Connect en selecteer vervolgens **actieve toegang weer geven**.
 
-    :::image type="content" source="./media/troubleshoot-sspr-writeback/view-effective-access.png" alt-text="Tabblad effectief toegang met het synchronisatie account" border="false":::
+    :::image type="content" source="./media/troubleshoot-sspr-writeback/view-effective-access.png" alt-text="De Azure AD Sync-service opnieuw starten met de gebruikers interface" border="false":::
   
 1. Schuif naar beneden en zoek naar **wacht woord opnieuw instellen**. Als de vermelding een vinkje heeft, is het AD DS-account gemachtigd om het wacht woord van de geselecteerde Active Directory gebruikers account opnieuw in te stellen.  
 
-    :::image type="content" source="./media/troubleshoot-sspr-writeback/check-permissions.png" alt-text="Controleren of de synchronisatie account de machtiging wacht woord opnieuw instellen heeft" border="false":::
+    :::image type="content" source="./media/troubleshoot-sspr-writeback/check-permissions.png" alt-text="De Azure AD Sync-service opnieuw starten met de gebruikers interface" border="false":::
 
 ## <a name="common-password-writeback-errors"></a>Veelvoorkomende fouten bij het terugschrijven van wacht woorden
 
@@ -217,7 +217,7 @@ Om u op de juiste wijze te helpen, vragen we u zoveel mogelijk details te verstr
 * **Ondersteunings code**: wat is de ondersteunings code die werd gegenereerd toen de gebruiker de fout zagte?
    * U kunt deze code vinden door de fout te reproduceren en vervolgens de koppeling **ondersteunings code** te selecteren onder aan het scherm en de ondersteunings technicus de GUID te sturen die het resultaat is.
 
-    :::image type="content" source="./media/troubleshoot-sspr-writeback/view-support-code.png" alt-text="De ondersteunings code bevindt zich in de rechter benedenhoek van het browser venster.":::
+    :::image type="content" source="./media/troubleshoot-sspr-writeback/view-support-code.png" alt-text="De Azure AD Sync-service opnieuw starten met de gebruikers interface":::
 
   * Als u zich onder een pagina bevindt zonder een ondersteunings code, selecteert u F12 en zoekt u naar de SID en CID en verzendt u deze twee resultaten naar de ondersteunings technicus.
 * **Datum, tijd en tijd zone**: bevatten de exacte datum en tijd *met de tijd zone* waarin de fout is opgetreden.

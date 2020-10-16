@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 04/24/2020
 ms.custom: devx-track-csharp, mvc
 ms.openlocfilehash: 9c635b01bcd04bd03191fca2590b0189bad0f544
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90982018"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Berichten aan een Azure Storage-wachtrij toevoegen met behulp van Functions
@@ -38,7 +38,7 @@ In deze sectie gebruikt u de gebruikersinterface van de portal om een Queue Stor
 
 1. Selecteer het bindings type van **Azure Queue Storage** en voeg de instellingen toe zoals opgegeven in de tabel die volgt op deze scherm afbeelding: 
 
-    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-create-output-binding-details.png" alt-text="Voeg een Queue Storage-uitvoerbinding toe aan een functie in Azure Portal." border="true":::
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-create-output-binding-details.png" alt-text="Maak een uitvoer binding voor uw functie." border="true":::
     
     | Instelling      |  Voorgestelde waarde   | Beschrijving                              |
     | ------------ |  ------- | -------------------------------------------------- |
@@ -94,7 +94,7 @@ In deze sectie voegt u code toe waarmee een bericht wordt geschreven naar de uit
 1. Nadat de code wijzigingen zijn opgeslagen, selecteert u **testen**.
 1. Bevestig dat uw test overeenkomt met de onderstaande installatie kopie en selecteer **uitvoeren**. 
 
-    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/functions-test-run-function.png" alt-text="Test de binding van de wachtrij opslag in de Azure Portal." border="true":::
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/functions-test-run-function.png" alt-text="Maak een uitvoer binding voor uw functie." border="true":::
 
     U ziet dat de **Aanvraagtekst** de waarde `name`*Azure* bevat. Deze waarde ziet u in het wachtrijbericht dat wordt gemaakt wanneer de functie wordt aangeroepen.
     
@@ -111,11 +111,11 @@ Er wordt een nieuwe wachtrij met de naam **outqueue** in uw opslag account gemaa
 
 1. Onder **Toepassings instellingen**selecteert u **AzureWebJobsStorage**.
 
-    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-find-storage-account.png" alt-text="Scherm afbeelding toont de configuratie pagina waarvoor AzureWebJobsStorage is geselecteerd." border="true":::
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-find-storage-account.png" alt-text="Maak een uitvoer binding voor uw functie." border="true":::
 
 1. Zoek de naam van het account en noteer deze.
 
-    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-storage-account-name.png" alt-text="Zoek het opslag account dat is verbonden met AzureWebJobsStorage." border="true":::
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-storage-account-name.png" alt-text="Maak een uitvoer binding voor uw functie." border="true":::
 
 ### <a name="examine-the-output-queue"></a>De uitvoerwachtrij controleren
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 306a4773563b829ecad09a021f6763192e8246f5
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: adac0d460753f24d06bffc72f9b2b38c2a3306d7
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91445852"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078099"
 ---
 # <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>De set normen aanpassen in uw nalevings dashboard voor regelgeving
 
@@ -43,7 +43,7 @@ U kunt standaarden toevoegen zoals NIST SP 800-53 R4, SWIFT CSP CSCF-v2020, UK O
 
 Daarnaast kunt u **Azure Security Bench Mark**, de door micro soft ontworpen, specifieke Azure-richt lijnen voor beveiliging en naleving aanbevolen procedures toevoegen op basis van algemene nalevings kaders. (Meer[informatie over Azure Security Bench Mark](https://docs.microsoft.com/azure/security/benchmarks/introduction).)
 
-Er worden extra standaarden ondersteund in het dash board, zodra deze beschikbaar komen. 
+Er worden extra standaarden ondersteund in het dashboard zodra deze beschikbaar komen. 
 
 
 ## <a name="add-a-regulatory-standard-to-your-dashboard"></a>Een regelgevings norm toevoegen aan uw dash board
@@ -84,6 +84,31 @@ In de volgende stappen wordt uitgelegd hoe u een pakket kunt toevoegen om te con
     > Het kan enkele uren duren voordat een nieuw toegevoegde standaard wordt weer gegeven in het dash board voor compatibiliteit.
 
     [![Dash board nalevings regelgeving met oude en nieuwe Azure CIS](media/update-regulatory-compliance-packages/regulatory-compliance-dashboard-with-benchmark-small.png)](media/update-regulatory-compliance-packages/regulatory-compliance-dashboard-with-benchmark.png#lightbox)
+
+
+## <a name="removing-a-standard-from-your-dashboard"></a>Een standaard van uw dash board verwijderen
+
+Als een van de opgegeven regelgevings normen niet relevant is voor uw organisatie, is het een eenvoudig proces om ze simpelweg te verwijderen uit de gebruikers interface. Zo kunt u het nalevings Dashboard van de regelgeving verder aanpassen en zich richten op de standaarden die van toepassing zijn op u.
+
+Een standaard verwijderen:
+
+1. Selecteer in het menu van Security Center het **beveiligings beleid**.
+
+1. Selecteer het relevante abonnement waarvan u een standaard wilt verwijderen.
+
+    > [!NOTE]
+    > U kunt een standaard van een abonnement verwijderen, maar niet uit een beheer groep. 
+
+    De pagina beveiligings beleid wordt geopend. Voor het geselecteerde abonnement worden het standaard beleid, de industrie-en regelgevings normen en eventuele aangepaste initiatieven weer gegeven die u hebt gemaakt.
+
+    :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard.png" alt-text="Het verwijderen van een regelgevings standaard van uw regelgevings dashboard voor naleving in Azure Security Center":::
+
+1. Selecteer **uitschakelen**voor de standaard die u wilt verwijderen. Er wordt een bevestigings venster weer gegeven.
+
+    :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard-confirm.png" alt-text="Het verwijderen van een regelgevings standaard van uw regelgevings dashboard voor naleving in Azure Security Center":::
+
+1. Selecteer **Ja**. De standaard wordt verwijderd. 
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

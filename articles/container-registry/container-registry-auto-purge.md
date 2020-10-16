@@ -4,10 +4,10 @@ description: Gebruik een opschoon opdracht om meerdere tags en manifesten uit ee
 ms.topic: article
 ms.date: 05/14/2020
 ms.openlocfilehash: ab6794648babd2bd491ded5788455b75c10d675a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83652633"
 ---
 # <a name="automatically-purge-images-from-an-azure-container-registry"></a>Afbeeldingen automatisch uit een Azure container Registry verwijderen
@@ -31,23 +31,23 @@ Zie [container installatie kopieën in azure container Registry verwijderen](con
 De `acr purge` container opdracht verwijdert afbeeldingen op label in een opslag plaats die overeenkomen met een naam filter en die ouder zijn dan een opgegeven duur. Standaard worden alleen label verwijzingen verwijderd, niet de onderliggende [manifesten](container-registry-concepts.md#manifest) en laag gegevens. De opdracht heeft een optie om ook manifesten te verwijderen. 
 
 > [!NOTE]
-> `acr purge`verwijdert geen afbeeldings code of opslag plaats waar het `write-enabled` kenmerk is ingesteld `false` . Zie [een container installatie kopie vergren delen in een Azure container Registry](container-registry-image-lock.md)voor meer informatie.
+> `acr purge` verwijdert geen afbeeldings code of opslag plaats waar het `write-enabled` kenmerk is ingesteld `false` . Zie [een container installatie kopie vergren delen in een Azure container Registry](container-registry-image-lock.md)voor meer informatie.
 
-`acr purge`is ontworpen om te worden uitgevoerd als een container opdracht in een [ACR-taak](container-registry-tasks-overview.md), zodat deze automatisch wordt geverifieerd met het REGI ster waarin de taak wordt uitgevoerd en er vervolgens acties worden uitgevoerd. In de taak voorbeelden in dit artikel wordt de `acr purge` opdracht [alias](container-registry-tasks-reference-yaml.md#aliases) gebruikt in plaats van een volledig gekwalificeerde container installatie kopie opdracht.
+`acr purge` is ontworpen om te worden uitgevoerd als een container opdracht in een [ACR-taak](container-registry-tasks-overview.md), zodat deze automatisch wordt geverifieerd met het REGI ster waarin de taak wordt uitgevoerd en er vervolgens acties worden uitgevoerd. In de taak voorbeelden in dit artikel wordt de `acr purge` opdracht [alias](container-registry-tasks-reference-yaml.md#aliases) gebruikt in plaats van een volledig gekwalificeerde container installatie kopie opdracht.
 
 Geef ten minste het volgende op wanneer u uitvoert `acr purge` :
 
-* `--filter`-Een opslag plaats en een *reguliere expressie* voor het filteren van labels in de opslag plaats. Voor beelden: `--filter "hello-world:.*"` komt overeen met alle tags in de `hello-world` opslag plaats en `--filter "hello-world:^1.*"` komt overeen met de labels die beginnen met `1` . Meerdere `--filter` para meters door geven om meerdere opslag plaatsen te verwijderen.
-* `--ago`-Een [teken reeks](https://golang.org/pkg/time/) met de duur van het type Go om een duur aan te geven waarboven de afbeeldingen worden verwijderd. De duur bestaat uit een reeks van een of meer decimale getallen, elk met een achtervoegsel van een eenheid. Geldige tijds eenheden zijn "d" voor dagen, "h" voor uren en "m" voor minuten. Zo selecteert u bijvoorbeeld `--ago 2d3h6m` alle gefilterde afbeeldingen die meer dan 2 dagen, 3 uur en 6 minuten geleden zijn gewijzigd, en selecteert u de afbeeldingen die voor het `--ago 1.5h` laatst zijn gewijzigd, meer dan 1,5 uur geleden.
+* `--filter` -Een opslag plaats en een *reguliere expressie* voor het filteren van labels in de opslag plaats. Voor beelden: `--filter "hello-world:.*"` komt overeen met alle tags in de `hello-world` opslag plaats en `--filter "hello-world:^1.*"` komt overeen met de labels die beginnen met `1` . Meerdere `--filter` para meters door geven om meerdere opslag plaatsen te verwijderen.
+* `--ago` -Een [teken reeks](https://golang.org/pkg/time/) met de duur van het type Go om een duur aan te geven waarboven de afbeeldingen worden verwijderd. De duur bestaat uit een reeks van een of meer decimale getallen, elk met een achtervoegsel van een eenheid. Geldige tijds eenheden zijn "d" voor dagen, "h" voor uren en "m" voor minuten. Zo selecteert u bijvoorbeeld `--ago 2d3h6m` alle gefilterde afbeeldingen die meer dan 2 dagen, 3 uur en 6 minuten geleden zijn gewijzigd, en selecteert u de afbeeldingen die voor het `--ago 1.5h` laatst zijn gewijzigd, meer dan 1,5 uur geleden.
 
-`acr purge`ondersteunt verschillende optionele para meters. De volgende twee worden in voor beelden in dit artikel gebruikt:
+`acr purge` ondersteunt verschillende optionele para meters. De volgende twee worden in voor beelden in dit artikel gebruikt:
 
-* `--untagged`-Geeft aan dat manifesten zonder gekoppelde labels (niet-*gecodeerde manifesten*) worden verwijderd.
-* `--dry-run`-Geeft aan dat er geen gegevens worden verwijderd, maar de uitvoer is hetzelfde als als de opdracht wordt uitgevoerd zonder deze vlag. Deze para meter is handig voor het testen van een opschoon opdracht om er zeker van te zijn dat de gegevens die u wilt behouden, niet per ongeluk worden verwijderd.
+* `--untagged` -Geeft aan dat manifesten zonder gekoppelde labels (niet-*gecodeerde manifesten*) worden verwijderd.
+* `--dry-run` -Geeft aan dat er geen gegevens worden verwijderd, maar de uitvoer is hetzelfde als als de opdracht wordt uitgevoerd zonder deze vlag. Deze para meter is handig voor het testen van een opschoon opdracht om er zeker van te zijn dat de gegevens die u wilt behouden, niet per ongeluk worden verwijderd.
 
 Voer uit voor aanvullende para meters `acr purge --help` . 
 
-`acr purge`ondersteunt andere functies van ACR-taken, zoals het [uitvoeren van variabelen](container-registry-tasks-reference-yaml.md#run-variables) en [taak uitvoer logboeken](container-registry-tasks-logs.md) die zijn gestreamd en ook worden opgeslagen voor later ophalen.
+`acr purge` ondersteunt andere functies van ACR-taken, zoals het [uitvoeren van variabelen](container-registry-tasks-reference-yaml.md#run-variables) en [taak uitvoer logboeken](container-registry-tasks-logs.md) die zijn gestreamd en ook worden opgeslagen voor later ophalen.
 
 ### <a name="run-in-an-on-demand-task"></a>Uitvoeren in een taak op aanvraag
 

@@ -15,10 +15,10 @@ ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: cli,portal
 ms.openlocfilehash: 8924b77cddc9efc4d2b1b8451df38de77b37c09c
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89267357"
 ---
 # <a name="find-your-azure-subscription"></a>Uw Azure-abonnement vinden
@@ -29,9 +29,9 @@ ms.locfileid: "89267357"
 
 ## <a name="portal"></a>[Portal](#tab/portal/)
 
-## <a name="use-the-azure-portal"></a>De Azure-portal gebruiken
+## <a name="use-the-azure-portal"></a>Azure Portal gebruiken
 
-1. Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Onder de kop Azure-Services selecteert u abonnementen. (Als er geen abonnementen worden weer gegeven, moet u mogelijk de Azure AD-tenants wijzigen.) Uw abonnement-Id's worden weer gegeven in de tweede kolom.
 1. Kopieer de abonnements-ID en plak deze in een tekst-document van uw keuze voor later gebruik.
 

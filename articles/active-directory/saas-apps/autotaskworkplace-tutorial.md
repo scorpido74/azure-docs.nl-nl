@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 8c7e5699930b633d900b2b31b0fe29fbd8505944
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d75f18d0d3ea1b093639cabe22567fb6e664bcc5
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550188"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713850"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-autotask-workplace"></a>Zelfstudie: Azure Active Directory-integratie met Autotask Workplace
 
@@ -103,7 +103,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met Autotask Workplace, 
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
 
-    ![Domein- en URL-informatie voor eenmalige aanmelding bij Autotask Workplace](common/idp-intiated.png)
+    ![Schermopname die de Standaard SAML-configuratie toont, waar u de id en URL kunt invoeren en vervolgens Opslaan selecteert.](common/idp-intiated.png)
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://<subdomain>.awp.autotask.net/singlesignon/saml/metadata`
 
@@ -111,7 +111,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met Autotask Workplace, 
 
 5. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    ![Domein- en URL-informatie voor eenmalige aanmelding bij Autotask Workplace](common/metadata-upload-additional-signon.png)
+    ![Schermopname die Extra URL's instellen toont, waar u een aanmeldings-URL kunt invoeren.](common/metadata-upload-additional-signon.png)
 
     In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<subdomain>.awp.autotask.net/loginsso`
 

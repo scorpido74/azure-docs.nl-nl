@@ -9,10 +9,10 @@ ms.devlang: php
 ms.date: 9/21/2020
 ms.custom: mvc
 ms.openlocfilehash: 1bad9a7da6f0604f910ce1095b734043be8cf3c3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90929394"
 ---
 # <a name="tutorial-build-a-php-laravel-and-mysql-flexible-server-preview-app-in-azure-app-service"></a>Zelfstudie: Een PHP-app (Laravel) en een MySQL Flexible Server-app (preview) bouwen in Azure App Service
@@ -134,7 +134,7 @@ php artisan serve
 
 Ga naar `http://localhost:8000` in een browser. Voeg een paar taken op de pagina toe.
 
-:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="PHP maakt verbinding met MySQL":::
+:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="PHP-web-app in Azure met Flexible Server":::
 
 Typ `Ctrl + C` in de terminal om PHP te stoppen.
 
@@ -257,7 +257,7 @@ Navigeer naar `http://localhost:8000`. Als de pagina zonder fouten wordt geladen
 
 Voeg een paar taken op de pagina toe.
 
-:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="PHP maakt verbinding met Azure Database for MySQL":::
+:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="PHP-web-app in Azure met Flexible Server":::
 
 Typ `Ctrl + C` in de terminal om PHP te stoppen.
 
@@ -414,7 +414,7 @@ remote: Running deployment command...
 
 Blader naar `http://<app-name>.azurewebsites.net` en voeg een paar taken toe aan de lijst.
 
-:::image type="content" source="media/tutorial-php-database-app/php-mysql-in-azure.png" alt-text="PHP-web-app in Azure":::
+:::image type="content" source="media/tutorial-php-database-app/php-mysql-in-azure.png" alt-text="PHP-web-app in Azure met Flexible Server":::
 
 U voert nu een gegevensgestuurde PHP-app uit in Azure App Service.
 
@@ -534,7 +534,7 @@ php artisan serve
 
 Om de status van de taak te zien wijzigen, gaat u naar `http://localhost:8000` en selecteert u het selectievakje.
 
-:::image type="content" source="media/tutorial-php-database-app/complete-checkbox.png" alt-text="Selectievakje toegevoegd aan de taak":::
+:::image type="content" source="media/tutorial-php-database-app/complete-checkbox.png" alt-text="PHP-web-app in Azure met Flexible Server":::
 
 Typ `Ctrl + C` in de terminal om PHP te stoppen.
 
@@ -556,7 +556,7 @@ git push azure master
 
 Zodra `git push` is voltooid, gaat u naar de Azure-app en probeert u de nieuwe functionaliteit uit.
 
-:::image type="content" source="media/tutorial-php-database-app/complete-checkbox-published.png" alt-text="In Azure gepubliceerde model- en databasewijzigingen":::
+:::image type="content" source="media/tutorial-php-database-app/complete-checkbox-published.png" alt-text="PHP-web-app in Azure met Flexible Server":::
 
 Als u taken hebt toegevoegd, worden deze in de database bewaard. Updates van het gegevensschema laten bestaande gegevens intact.
 

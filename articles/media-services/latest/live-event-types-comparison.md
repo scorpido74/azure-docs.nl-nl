@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: c79d45cfac22f41f05071b619c444e7b7ab7956a
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89397301"
 ---
 # <a name="live-event-types-comparison"></a>Vergelijking van live gebeurtenis typen
@@ -61,9 +61,9 @@ In de volgende tabel worden de functies van de live-gebeurtenis typen vergeleken
 | Ondersteuning voor AD-Signa lering via API| Nee|Nee|
 | Ondersteuning voor AD-Signa lering via SCTE-35 in-band-berichten|Ja|Ja|
 | Mogelijkheid om te herstellen van korte hokjes in een bijdrager|Ja|Gedeeltelijk|
-| Ondersteuning voor niet-uniforme invoer GOPs|Yes|Nee: de duur van de invoer moet een vaste GOP terug hebben|
-| Ondersteuning voor variabele frame-rate invoer|Yes|Nee – invoer moet een vaste frame frequentie zijn. Kleine variaties zijn toegestaan, bijvoorbeeld tijdens hoge bewegende scènes. Maar de bijdrage feed kan de frame frequentie niet verwijderen (bijvoorbeeld op 15 frames per seconde).|
-| Automatische shutoff van live gebeurtenis wanneer invoer toevoer verloren gaat|No|Na 12 uur, als er geen LiveOutput wordt uitgevoerd|
+| Ondersteuning voor niet-uniforme invoer GOPs|Ja|Nee: de duur van de invoer moet een vaste GOP terug hebben|
+| Ondersteuning voor variabele frame-rate invoer|Ja|Nee – invoer moet een vaste frame frequentie zijn. Kleine variaties zijn toegestaan, bijvoorbeeld tijdens hoge bewegende scènes. Maar de bijdrage feed kan de frame frequentie niet verwijderen (bijvoorbeeld op 15 frames per seconde).|
+| Automatische shutoff van live gebeurtenis wanneer invoer toevoer verloren gaat|Nee|Na 12 uur, als er geen LiveOutput wordt uitgevoerd|
 
 ## <a name="system-presets"></a>Systeem instellingen
 

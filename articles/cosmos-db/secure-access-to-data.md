@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 30444523bfc26fc0f4eb410957bcc9ee46aff725
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91760866"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Beveiligde toegang tot gegevens in Azure Cosmos DB
@@ -108,7 +108,7 @@ Het genereren en beheren van bron tokens worden verwerkt door de systeem eigen C
 
 Zie de [resource token Broker-app](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers)voor een voor beeld van een middle-tier service die wordt gebruikt om resource tokens te genereren of Broker.
 
-## <a name="users"></a>Bezoekers<a id="users"></a>
+## <a name="users"></a>Gebruikers<a id="users"></a>
 
 Azure Cosmos DB gebruikers zijn gekoppeld aan een Cosmos-data base.  Elke Data Base kan nul of meer Cosmos DB gebruikers bevatten. In het volgende code voorbeeld ziet u hoe u een Cosmos DB gebruiker maakt met behulp van de [Azure Cosmos db .NET SDK v3](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/UserManagement).
 

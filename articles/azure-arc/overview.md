@@ -3,12 +3,12 @@ title: Overzicht van Azure Arc
 description: Lees meer over wat Azure Arc is en hoe het klanten helpt om het beheer en de governance van hun hybride resources met andere Azure-services en -functies mogelijk te maken.
 ms.date: 09/23/2020
 ms.topic: overview
-ms.openlocfilehash: e6dc052655bffae949399f77a26d7b76c5b0d13c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8e48378e5032768b3f56a5d99c1189e282ff37f8
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335395"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714147"
 ---
 # <a name="azure-arc-overview"></a>Overzicht van Azure Arc
 
@@ -56,7 +56,7 @@ De functionaliteit van het beheerpaneel van Azure Arc wordt gratis aangeboden.Di
 
 * Zoeken en indexeren via Azure Resource Graph.
 
-* Toegang en beveiliging via RBAC en abonnementen.
+* Toegang en beveiliging via Azure RBAC en abonnementen.
 
 * Omgevingen en automatisering via sjablonen en uitbreidingen.
 

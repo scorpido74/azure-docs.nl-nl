@@ -1,5 +1,5 @@
 ---
-title: Versleuteling aan client zijde met .NET voor Microsoft Azure Storage | Microsoft Docs
+title: Versleuteling Client-Side met .NET voor Microsoft Azure Storage | Microsoft Docs
 description: De Azure Storage-client bibliotheek voor .NET ondersteunt versleuteling en integratie van client zijde met Azure Key Vault voor een maximale beveiliging van uw Azure Storage toepassingen.
 services: storage
 author: tamram
@@ -10,18 +10,18 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f54b91ab1ea4521c17a3b40c88214f5637ab47a3
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 2cf137eae9e026f4854034efe1565dc8f7f0b35d
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021609"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091658"
 ---
-# <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Versleuteling aan client zijde en Azure Key Vault voor Microsoft Azure Storage
+# <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Client-Side versleuteling en Azure Key Vault voor Microsoft Azure Storage
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
 
 ## <a name="overview"></a>Overzicht
-De [Azure Storage-client bibliotheek voor .net](/dotnet/api/overview/azure/storage?view=azure-dotnet) biedt ondersteuning voor het versleutelen van gegevens in client toepassingen voordat u ze uploadt naar Azure Storage en gegevens ontsleutelt tijdens het downloaden van de client. De bibliotheek ondersteunt ook integratie met [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) voor sleutel beheer van het opslag account.
+De [Azure Storage-client bibliotheek voor .net](/dotnet/api/overview/azure/storage) biedt ondersteuning voor het versleutelen van gegevens in client toepassingen voordat u ze uploadt naar Azure Storage en gegevens ontsleutelt tijdens het downloaden van de client. De bibliotheek ondersteunt ook integratie met [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) voor sleutel beheer van het opslag account.
 
 Zie [Microsoft Azure Storage blobs versleutelen en ontsleutelen met behulp van Azure Key Vault](../blobs/storage-encrypt-decrypt-blobs-key-vault.md)voor een stapsgewijze zelf studie die u helpt bij het versleutelen van blobs met versleuteling aan client zijde en Azure Key Vault.
 

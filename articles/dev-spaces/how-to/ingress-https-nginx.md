@@ -6,14 +6,16 @@ ms.topic: conceptual
 description: Meer informatie over het configureren van Azure dev Spaces voor het gebruik van een aangepaste NGINX ingress-controller en het configureren van HTTPS met deze ingangs controller
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, servicemesh, servicemeshroutering, kubectl, k8s
 ms.custom: devx-track-js
-ms.openlocfilehash: 23bad8d7def12f4454986fb005158c3a65acd33e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1ef462171199ce818b6146efbe705cca30b24564
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91276261"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973084"
 ---
 # <a name="use-a-custom-nginx-ingress-controller-and-configure-https"></a>Een aangepaste NGINX ingangs controller gebruiken en HTTPS configureren
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 In dit artikel leest u hoe u Azure dev Spaces configureert voor het gebruik van een aangepaste NGINX ingress-controller. In dit artikel leest u ook hoe u die aangepaste ingangs controller configureert voor het gebruik van HTTPS.
 

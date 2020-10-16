@@ -4,16 +4,16 @@ description: Volg afspraken met Azure-klanten door een partner-id aan het gebrui
 author: dhirajgandhi
 ms.reviewer: dhgandhi
 ms.author: banders
-ms.date: 07/24/2020
+ms.date: 10/05/2020
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.openlocfilehash: dc4d319e0e6b55af8af460fa8a56b9ef24a53341
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: f030a9e75507063e104e0bae0ca5654bd3528bac
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89487348"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91772716"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Een partner-id aan uw Azure-accounts koppelen
 
@@ -43,7 +43,7 @@ Wanneer u toegang hebt tot de resources van de klant, gebruikt u Azure Portal, P
 
 2. Meld u aan bij Azure Portal.
 
-3. Voer de Microsoft partner-id in. De partner-id is de [Microsoft Partner Network-id](https://partner.microsoft.com/) voor uw organisatie.
+3. Voer de Microsoft partner-id in. De partner-id is de [Microsoft Partner Network-id](https://partner.microsoft.com/) voor uw organisatie. Zorg ervoor dat u de **bijbehorende MPN-id** gebruikt die op uw partnerprofiel wordt weergegeven.
 
    ![Schermopname met Koppelen met een partner-id](./media/link-partner-id/link-partner-id01.png)
 
@@ -61,7 +61,8 @@ Wanneer u toegang hebt tot de resources van de klant, gebruikt u Azure Portal, P
     C:\> Connect-AzAccount -TenantId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
    ```
 
-3. Maak een koppeling met de nieuwe partner-id. De partner-id is de [Microsoft Partner Network-id](https://partner.microsoft.com/) voor uw organisatie.
+3. Maak een koppeling met de nieuwe partner-id. De partner-id is de [Microsoft Partner Network-id](https://partner.microsoft.com/) voor uw organisatie. Zorg ervoor dat u de **bijbehorende MPN-id** gebruikt die op uw partnerprofiel wordt weergegeven.
+
 
     ```azurepowershell-interactive
     C:\> new-AzManagementPartner -PartnerId 12345
@@ -141,7 +142,7 @@ De koppeling is op gebruikersaccountniveau gekoppeld. Alleen u kunt de koppeling
 
 **Welke MPN ID moet ik gebruikers als mijn bedrijf meerdere id's heeft?**
 
-Partnerlocatieaccounts en de bijbehorende MPN id's moeten worden gebruikt voor het koppelen van partner-id's.  Meer informatie over [partneraccounts](https://docs.microsoft.com/partner-center/account-structure)
+Zorg ervoor dat u de **bijbehorende MPN-id** gebruikt die in uw partnerprofiel wordt weergegeven.
 
 **Waar kan ik de beïnvloede omzetrapporten voor gekoppelde partner-id's vinden?**
 
@@ -151,9 +152,9 @@ Rapporten over de prestaties van cloudproducten zijn voor partners beschikbaar v
 
 Wanneer u de klant niet in de rapporten ziet, kan dit de volgende redenen hebben
 
-1. Het gekoppelde gebruikersaccount biedt geen [op rollen gebaseerde toegang](https://docs.microsoft.com/azure/role-based-access-control/overview) op welk Azure-abonnement of welke Azure-resource van die klant ook.
+1. Het gekoppelde gebruikersaccount biedt geen [op rollen gebaseerd toegangsbeheer van Azure (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) op welk Azure-abonnement of welke Azure-resource van die klant ook.
 
-2. Het Azure-abonnement waarbij de gebruiker [op rollen gebaseerde toegang](https://docs.microsoft.com/azure/role-based-access-control/overview) heeft, heeft geen gebruik.
+2. Het Azure-abonnement waarbij de gebruiker [op rollen gebaseerd toegangsbeheer (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) heeft, heeft geen gebruik.
 
 **Werken gekoppelde partner-id's met Azure Stack?**
 

@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/21/2020
 ms.author: batrived
 ms.openlocfilehash: 5eb40d464fb718f0bd6dffe0d00f6420f4ea4995
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86119001"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-grid"></a>Verbindings problemen oplossen-Azure Event Grid
@@ -61,7 +61,7 @@ Als uw toepassing binnen een subnet wordt uitgevoerd en als er een gekoppelde ne
 
 Controleer of het open bare IP-adres van de computer waarop de toepassing wordt uitgevoerd, niet wordt geblokkeerd door de EventGrid-onderwerp/domein-IP-firewall.
 
-Event Grid onderwerpen/-domeinen zijn standaard toegankelijk vanuit Internet zolang de aanvraag een geldige verificatie en autorisatie heeft. Met IP-firewall kunt u dit nog verder beperken tot een aantal IPv4-adressen of IPv4-adresbereiken in CIDR-notatie [(Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .
+Event Grid onderwerpen/-domeinen zijn standaard toegankelijk vanuit Internet zolang de aanvraag een geldige verificatie en autorisatie heeft. Met IP-firewall kunt u dit nog verder beperken tot een aantal IPv4-adressen of IPv4-adresbereiken in CIDR-notatie [(klasseloze Inter-Domain route ring)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .
 
 De IP-firewall regels worden toegepast op het Event Grid onderwerp/domein niveau. Daarom gelden de regels voor alle verbindingen van clients die gebruikmaken van elk ondersteund protocol. Een verbindings poging van een IP-adres dat niet overeenkomt met een toegestane IP-regel op het Event Grid onderwerp of het domein, wordt geweigerd als verboden. De IP-regel wordt niet vermeld in het antwoord.
 

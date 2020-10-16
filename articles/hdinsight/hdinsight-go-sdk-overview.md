@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 01/03/2020
 ms.openlocfilehash: 292496c4d458621213fe62105149ac845d78891e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79479583"
 ---
 # <a name="hdinsight-sdk-for-go-preview"></a>HDInsight-SDK voor Go (preview-versie)
@@ -32,7 +32,7 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 
 ## <a name="sdk-installation"></a>SDK-installatie
 
-Voer vanuit uw GOPATH-locatie`go get github.com/Azure/azure-sdk-for-go/tree/master/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight`
+Voer vanuit uw GOPATH-locatie `go get github.com/Azure/azure-sdk-for-go/tree/master/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight`
 
 ## <a name="authentication"></a>Verificatie
 
@@ -281,7 +281,7 @@ De uitvoer moet er als volgt uitzien:
 /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/<Resource Group Name>/providers/Microsoft.HDInsight/clusters/<Cluster Name>
 ```
 
-### <a name="list-clusters"></a>Clusters weer geven
+### <a name="list-clusters"></a>Clusters weergeven
 
 #### <a name="list-clusters-under-the-subscription"></a>Clusters weer geven onder het abonnement
 

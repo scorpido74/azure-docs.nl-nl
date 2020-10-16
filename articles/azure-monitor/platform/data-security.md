@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/04/2019
 ms.openlocfilehash: ef34dbfd3af326dbf2d82e09a4c5c8c8e4a91a84
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87319793"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics gegevens beveiliging
@@ -69,7 +69,7 @@ De volgende tabel bevat voor beelden van gegevens typen:
 | **Gegevenstype** | **Fields** |
 | --- | --- |
 | Waarschuwing |Naam van waarschuwing, beschrijving van waarschuwing, BaseManagedEntityId, probleem-ID, IsMonitorAlert, RuleId, ResolutionState, prioriteit, Ernst, categorie, eigenaar, ResolvedBy, TimeRaised, TimeAdded, LastModified, LastModifiedBy, LastModifiedExceptRepeatCount, TimeResolved, TimeResolutionStateLastModified, TimeResolutionStateLastModifiedInDB, RepeatCount |
-| Configuration |KlantId, AgentID, EntityID, ManagedTypeID, ManagedTypePropertyID, CurrentValue, Change date |
+| Configuratie |KlantId, AgentID, EntityID, ManagedTypeID, ManagedTypePropertyID, CurrentValue, Change date |
 | Gebeurtenis |Gebeurtenis-instantie, EventOriginalID, BaseManagedEntityInternalId, RuleId, PublisherId, Uitgevernaam, FullNumber, Number, Category, ChannelLevel, LoggingComputer, Event Data, EventParameters, TimeGenerated, TimeAdded <br>**Opmerking:** Wanneer u gebeurtenissen met aangepaste velden in het Windows-gebeurtenis logboek schrijft, worden deze door Log Analytics verzameld. |
 | Metagegevens |BaseManagedEntityId, object status, OrganizationalUnit, ActiveDirectoryObjectSid, PhysicalProcessors, netwerkwerknaam, IPAddress, ForestDNSName, NetbiosComputerName, VirtualMachineName, LastInventoryDate, HostServerNameIsVirtualMachine, IP-adres, NetbiosDomainName, LogicalProcessors, DNSName, DisplayName, DomainDnsName, ActiveDirectorySite, principalnaam, OffsetInMinuteFromGreenwichTime |
 | Prestaties |ObjectName, CounterName, PerfmonInstanceName, PerformanceDataId, PerformanceSourceInternalID, SampleValue, TimeSampled, TimeAdded |

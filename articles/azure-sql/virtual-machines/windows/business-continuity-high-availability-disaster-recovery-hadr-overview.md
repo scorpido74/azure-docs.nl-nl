@@ -14,10 +14,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/27/2020
 ms.author: mathoma
 ms.openlocfilehash: 8459ab364fc0af15dd1a1b0035e4ce27d192f7a9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91293455"
 ---
 # <a name="business-continuity-and-hadr-for-sql-server-on-azure-virtual-machines"></a>Bedrijfs continuïteit en HADR voor SQL Server op Azure Virtual Machines
@@ -150,7 +150,7 @@ Zie voor meer informatie over client connectiviteit:
 * [Clients verbinden met een sessie voor het spie gelen van data bases (SQL Server)](https://technet.microsoft.com/library/ms175484.aspx)
 * [Verbinding maken met de beschikbaarheids groep-listener in hybride IT](https://docs.microsoft.com/archive/blogs/sqlalwayson/connecting-to-availability-group-listener-in-hybrid-it)
 * [Listeners voor beschikbaarheids groep, client connectiviteit en failover van toepassing (SQL Server)](https://technet.microsoft.com/library/hh213417.aspx)
-* [Verbindings reeksen voor database spiegeling gebruiken met beschikbaarheids groepen](https://technet.microsoft.com/library/hh213417.aspx)
+* [Database-Mirroring verbindings reeksen gebruiken met beschikbaarheids groepen](https://technet.microsoft.com/library/hh213417.aspx)
 
 ### <a name="network-latency-in-hybrid-it"></a>Netwerk latentie in hybride IT
 Implementeer uw HADR-oplossing met de veronderstelling dat er Peri Oden met een hoge netwerk latentie tussen uw on-premises netwerk en Azure mogelijk zijn. Wanneer u replica's naar Azure implementeert, gebruikt u asynchrone door Voer in plaats van synchrone door Voer voor de synchronisatie modus. Wanneer u data base mirroring servers zowel on-premises als in azure implementeert, moet u de modus voor hoge prestaties gebruiken in plaats van de modus met hoge beveiliging.

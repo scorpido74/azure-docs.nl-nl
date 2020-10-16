@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.openlocfilehash: 81180cc0d9cc7754e5a3e935c09441995f16c56a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90907571"
 ---
 # <a name="prepay-for-azure-database-for-postgresql---single-server-compute-resources-with-reserved-capacity"></a>Vooruitbetalen voor Azure Database for PostgreSQL-reken resources met één server met gereserveerde capaciteit
@@ -58,7 +58,7 @@ In de volgende tabel worden de vereiste velden beschreven.
 | Regio | De Azure-regio die wordt gedekt door de Azure Database for PostgreSQL gereserveerde capaciteits reservering.
 | Implementatie type | Het resource type Azure Database for PostgreSQL waarvoor u de reserve ring wilt kopen.
 | Prestatie niveau | De servicelaag voor de Azure Database for PostgreSQL-servers.
-| Term | Één jaar
+| Termijn | Één jaar
 | Hoeveelheid | De hoeveelheid reken resources die worden aangeschaft in de Azure Database for PostgreSQL gereserveerde capaciteits reservering. De hoeveelheid is een aantal vCores in de geselecteerde Azure-regio en-prestatie-laag die worden gereserveerd en de facturerings korting krijgt. Als u bijvoorbeeld werkt met of plant om een Azure Database for PostgreSQL servers uit te voeren met de totale reken capaciteit van GEN5 16 vCores in de regio VS-Oost, zou u de hoeveelheid instellen op 16 om het voor deel van alle servers te maximaliseren.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Reserveringen annuleren, ruilen of terugbetalen

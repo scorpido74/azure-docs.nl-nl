@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: jingwang
 ms.openlocfilehash: 182e04625f829304168bfdefe000bb8797646c75
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87926889"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Gegevens van Teradata-Vantage kopiëren met behulp van Azure Data Factory
@@ -63,7 +63,7 @@ De gekoppelde Teradata-service ondersteunt de volgende eigenschappen:
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type moet worden ingesteld op **Teradata**. | Ja |
-| Verbindings | Hiermee geeft u de gegevens op die nodig zijn om verbinding te maken met het Teradata-exemplaar. Raadpleeg de volgende voor beelden.<br/>U kunt ook een wacht woord in Azure Key Vault plaatsen en de `password` configuratie uit de Connection String halen. Raadpleeg [referenties opslaan in azure Key Vault](store-credentials-in-key-vault.md) met meer informatie. | Ja |
+| connectionString | Hiermee geeft u de gegevens op die nodig zijn om verbinding te maken met het Teradata-exemplaar. Raadpleeg de volgende voor beelden.<br/>U kunt ook een wacht woord in Azure Key Vault plaatsen en de `password` configuratie uit de Connection String halen. Raadpleeg [referenties opslaan in azure Key Vault](store-credentials-in-key-vault.md) met meer informatie. | Ja |
 | gebruikersnaam | Geef een gebruikers naam op om verbinding te maken met Teradata. Van toepassing wanneer u Windows-verificatie gebruikt. | Nee |
 | wachtwoord | Geef een wacht woord op voor het gebruikers account dat u hebt opgegeven voor de gebruikers naam. U kunt er ook voor kiezen om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). <br>Is van toepassing wanneer u Windows-verificatie gebruikt of een verwijzing naar een wacht woord in Key Vault voor basis verificatie. | Nee |
 | connectVia | Het [Integration runtime](concepts-integration-runtime.md) dat moet worden gebruikt om verbinding te maken met het gegevens archief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. |Nee |
@@ -73,8 +73,8 @@ Meer verbindings eigenschappen die u in connection string per case kunt instelle
 | Eigenschap | Beschrijving | Standaardwaarde |
 |:--- |:--- |:--- |
 | UseDataEncryption | Hiermee geeft u op of alle communicatie met de Teradata-data base moet worden versleuteld. Toegestane waarden zijn 0 of 1.<br><br/>- **0 (uitgeschakeld, standaard instelling)**: alleen verificatie-informatie wordt versleuteld.<br/>- **1 (ingeschakeld)**: versleutelt alle gegevens die tussen het stuur programma en de Data Base worden door gegeven. | Nee |
-| CharacterSet | De tekenset die moet worden gebruikt voor de sessie. Bijvoorbeeld, `CharacterSet=UTF16` .<br><br/>Deze waarde kan een door de gebruiker gedefinieerde tekenset of een van de volgende vooraf gedefinieerde teken sets zijn: <br/>-ASCII<br/>-UTF8<br/>-UTF16<br/>-LATIN1252_0A<br/>-LATIN9_0A<br/>-LATIN1_0A<br/>-Shift-JIS (Windows, DOS-compatibel, KANJISJIS_0S)<br/>-EUC (compatibel met UNIX, KANJIEC_0U)<br/>-IBM mainframe (KANJIEBCDIC5035_0I)<br/>-KANJI932_1S0<br/>-BIG5 (TCHBIG5_1R0)<br/>-GB (SCHGB2312_1T0)<br/>-SCHINESE936_6R0<br/>-TCHINESE950_8R0<br/>-NetworkKorean (HANGULKSC5601_2R4)<br/>-HANGUL949_7R0<br/>-ARABIC1256_6A0<br/>-CYRILLIC1251_2A0<br/>-HEBREW1255_5A0<br/>-LATIN1250_1A0<br/>-LATIN1254_7A0<br/>-LATIN1258_8A0<br/>-THAI874_4A0 | De standaard waarde is `ASCII` . |
-| MaxRespSize |De maximale grootte van de antwoord buffer voor SQL-aanvragen, in kilo bytes (Kb's). Bijvoorbeeld, `MaxRespSize=‭10485760‬` .<br/><br/>Voor de Teradata-Data Base versie 16,00 of hoger is de maximum waarde 7361536. De maximum waarde is 1048576 voor verbindingen die gebruikmaken van eerdere versies. | De standaard waarde is `65536` . |
+| CharacterSet | De tekenset die moet worden gebruikt voor de sessie. Bijvoorbeeld, `CharacterSet=UTF16` .<br><br/>Deze waarde kan een door de gebruiker gedefinieerde tekenset of een van de volgende vooraf gedefinieerde teken sets zijn: <br/>-ASCII<br/>-UTF8<br/>-UTF16<br/>-LATIN1252_0A<br/>-LATIN9_0A<br/>-LATIN1_0A<br/>-Shift-JIS (Windows, DOS-compatibel, KANJISJIS_0S)<br/>-EUC (compatibel met UNIX, KANJIEC_0U)<br/>-IBM mainframe (KANJIEBCDIC5035_0I)<br/>-KANJI932_1S0<br/>-BIG5 (TCHBIG5_1R0)<br/>-GB (SCHGB2312_1T0)<br/>-SCHINESE936_6R0<br/>-TCHINESE950_8R0<br/>-NetworkKorean (HANGULKSC5601_2R4)<br/>-HANGUL949_7R0<br/>-ARABIC1256_6A0<br/>-CYRILLIC1251_2A0<br/>-HEBREW1255_5A0<br/>-LATIN1250_1A0<br/>-LATIN1254_7A0<br/>-LATIN1258_8A0<br/>-THAI874_4A0 | De standaardwaarde is `ASCII`. |
+| MaxRespSize |De maximale grootte van de antwoord buffer voor SQL-aanvragen, in kilo bytes (Kb's). Bijvoorbeeld, `MaxRespSize=‭10485760‬` .<br/><br/>Voor de Teradata-Data Base versie 16,00 of hoger is de maximum waarde 7361536. De maximum waarde is 1048576 voor verbindingen die gebruikmaken van eerdere versies. | De standaardwaarde is `65536`. |
 
 **Voor beeld van basis verificatie**
 
@@ -173,7 +173,7 @@ Als u gegevens wilt kopiëren uit Teradata, worden de volgende eigenschappen ond
 
 > [!NOTE]
 >
-> `RelationalTable`type gegevensset wordt nog steeds ondersteund. We raden u echter aan de nieuwe gegevensset te gebruiken.
+> `RelationalTable` type gegevensset wordt nog steeds ondersteund. We raden u echter aan de nieuwe gegevensset te gebruiken.
 
 **Vorige nettolading:**
 
@@ -208,13 +208,13 @@ Als u gegevens wilt kopiëren uit Teradata, worden de volgende eigenschappen ond
 | query | Gebruik de aangepaste SQL-query om gegevens te lezen. Een voorbeeld is `"SELECT * FROM MyTable"`.<br>Wanneer u gepartitioneerde belasting inschakelt, moet u alle bijbehorende ingebouwde partitie parameters in uw query koppelen. Zie de sectie [parallelle kopie van Teradata](#parallel-copy-from-teradata) voor voor beelden. | Nee (als de tabel in de gegevensset is opgegeven) |
 | partitionOptions | Hiermee geeft u de opties voor gegevens partities op die worden gebruikt voor het laden van gegevens uit Teradata. <br>Toegestane waarden zijn: **geen** (standaard), **hash** -en **DynamicRange**.<br>Wanneer een partitie optie is ingeschakeld (dat wil zeggen, niet `None` ), is de mate van parallelle uitvoering om gegevens uit de Teradata gelijktijdig te laden, bepaald door de [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) instelling van de Kopieer activiteit. | Nee |
 | partitionSettings | Geef de groep van de instellingen voor het partitioneren van gegevens op. <br>Toep assen als de partitie optie niet is `None` . | Nee |
-| partitionColumnName | Geef de naam op van de bron kolom die wordt gebruikt door de bereik partitie of hash-partitie voor parallelle kopieën. Als u niets opgeeft, wordt de primaire index van de tabel automatisch gedetecteerd en gebruikt als de kolom partitie. <br>Toep assen wanneer de partitie optie is `Hash` of `DynamicRange` . Als u een query gebruikt om de bron gegevens, de Hook `?AdfHashPartitionCondition` of de `?AdfRangePartitionColumnName` component WHERE op te halen. Zie voor beeld in [parallelle kopie van](#parallel-copy-from-teradata) de sectie Teradata. | Nee |
+| partitionColumnName | Geef de naam op van de bron kolom die wordt gebruikt door de bereik partitie of hash-partitie voor parallelle kopieën. Als u niets opgeeft, wordt de primaire index van de tabel automatisch gedetecteerd en gebruikt als de kolom partitie. <br>Toep assen wanneer de partitie optie is `Hash` of `DynamicRange` . Als u een query gebruikt om de bron gegevens, de Hook `?AdfHashPartitionCondition` of de  `?AdfRangePartitionColumnName` component WHERE op te halen. Zie voor beeld in [parallelle kopie van](#parallel-copy-from-teradata) de sectie Teradata. | Nee |
 | partitionUpperBound | De maximum waarde van de partitie kolom waaruit de gegevens moeten worden gekopieerd. <br>Toep assen wanneer partitie optie is `DynamicRange` . Als u query gebruikt om bron gegevens op te halen, Hook `?AdfRangePartitionUpbound` in de component WHERE. Zie de sectie [parallelle kopie van Teradata](#parallel-copy-from-teradata) voor een voor beeld. | Nee |
 | partitionLowerBound | De minimum waarde van de partitie kolom waaruit de gegevens moeten worden gekopieerd. <br>Toep assen wanneer de partitie optie is `DynamicRange` . Als u een query gebruikt om de bron gegevens op te halen, Hook `?AdfRangePartitionLowbound` in de component WHERE. Zie de sectie [parallelle kopie van Teradata](#parallel-copy-from-teradata) voor een voor beeld. | Nee |
 
 > [!NOTE]
 >
-> `RelationalSource`type Copy source wordt nog steeds ondersteund, maar biedt geen ondersteuning voor de nieuwe ingebouwde parallelle belasting vanuit Teradata (partitie opties). We raden u echter aan de nieuwe gegevensset te gebruiken.
+> `RelationalSource` type Copy source wordt nog steeds ondersteund, maar biedt geen ondersteuning voor de nieuwe ingebouwde parallelle belasting vanuit Teradata (partitie opties). We raden u echter aan de nieuwe gegevensset te gebruiken.
 
 **Voor beeld: gegevens kopiëren met behulp van een basis query zonder partitie**
 
@@ -305,7 +305,7 @@ Wanneer u gegevens uit Teradata kopieert, zijn de volgende toewijzingen van toep
 | Char |Tekenreeks |
 | CLOB |Tekenreeks |
 | Date |DateTime |
-| Decimal |Decimal |
+| Decimaal |Decimaal |
 | Dubbel |Dubbel |
 | Afbeelding |Niet ondersteund. Expliciete cast Toep assen in bron query. |
 | Geheel getal |Int32 |

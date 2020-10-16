@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: c15724643fb3c8c74d3afe58509822c56d2d17f3
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91821946"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Naslag Gids voor schema's voor trigger-en actie typen in Azure Logic Apps
@@ -149,7 +149,7 @@ Deze trigger *controleert of* doorstuurt een eind punt met behulp van door [micr
 | <*bewerking-optie*> | Tekenreeks | U kunt het standaard gedrag wijzigen door de eigenschap in te stellen `operationOptions` . Zie [bewerkings opties](#operation-options)voor meer informatie. |
 ||||
 
-*Uitvoer*
+*Uitvoerwaarden*
  
 | Element | Type | Beschrijving |
 |---------|------|-------------|
@@ -324,7 +324,7 @@ Deze trigger verzendt een aanvraag naar het opgegeven HTTP-of HTTPS-eind punt op
 | `operationOptions` | <*bewerking-optie*> | Tekenreeks | U kunt het standaard gedrag wijzigen door de eigenschap in te stellen `operationOptions` . Zie [bewerkings opties](#operation-options)voor meer informatie. |
 |||||
 
-*Uitvoer*
+*Uitvoerwaarden*
 
 | Element | Type | Beschrijving |
 |---------|------|-------------|
@@ -418,7 +418,7 @@ Sommige waarden, zoals <*methode-type*>, zijn beschikbaar voor zowel de- `"subsc
 | <*bewerking-optie*> | Tekenreeks | U kunt het standaard gedrag wijzigen door de eigenschap in te stellen `operationOptions` . Zie [bewerkings opties](#operation-options)voor meer informatie. | 
 |||| 
 
-*Uitvoer* 
+*Uitvoerwaarden* 
 
 | Element | Type | Beschrijving |
 |---------|------|-------------| 
@@ -1909,7 +1909,7 @@ De Logic Apps-Engine controleert de toegang tot de trigger die u wilt aanroepen,
 | <*hoofd tekst: inhoud*> | JSON-object | Bericht inhoud die met de aanroep moet worden verzonden | 
 ||||
 
-*Uitvoer*
+*Uitvoerwaarden*
 
 De uitvoer van deze actie verschilt op basis van de reactie actie van de geneste logische app. Als de geneste logische app geen reactie actie bevat, zijn de uitvoer leeg.
 

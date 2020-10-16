@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/21/2020
+ms.date: 10/13/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 37df1a052a58271c239b8b3bcaa4808ab7c355f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 20480a252d7aedfd48a59bc05166f645e02e37e9
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204360"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91998441"
 ---
 # <a name="json-claims-transformations"></a>JSON-claim transformaties
 
@@ -28,11 +28,13 @@ In dit artikel vindt u voor beelden voor het gebruik van de JSON-claim transform
 
 Gebruik claim waarden of constanten voor het genereren van een JSON-teken reeks. De padtekenreeks volgende punt notatie wordt gebruikt om aan te geven waar de gegevens moeten worden ingevoegd in een JSON-teken reeks. Na splitsing per punt worden alle gehele getallen geïnterpreteerd als de index van een JSON-matrix en worden niet-gehele getallen geïnterpreteerd als de index van een JSON-object.
 
-| Item | TransformationClaimType | Gegevenstype | Notities |
+| Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
 | Input claim | Wille keurige teken reeks na de punt notatie | tekenreeks | De JsonPath van de JSON waar de claim waarde wordt ingevoegd. |
 | Parameter | Wille keurige teken reeks na de punt notatie | tekenreeks | De JsonPath van de JSON waar de constante teken reeks waarde wordt ingevoegd. |
 | Output claim | Output claim | tekenreeks | De gegenereerde JSON-teken reeks. |
+
+### <a name="example-1"></a>Voorbeeld 1
 
 In het volgende voor beeld wordt een JSON-teken reeks gegenereerd op basis van de claim waarde "email" en "otp" en ook constante teken reeksen.
 
@@ -53,13 +55,11 @@ In het volgende voor beeld wordt een JSON-teken reeks gegenereerd op basis van d
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>Voorbeeld
-
 De volgende claim transformatie voert een JSON-teken reeks claim uit die de hoofd tekst van de aanvraag is die wordt verzonden naar SendGrid (een e-mail provider van derden). De structuur van het JSON-object wordt gedefinieerd door de Id's in punt notatie van de invoer parameters en de TransformationClaimTypes van de InputClaims. Getallen in de punt notatie impliceren matrices. De waarden zijn afkomstig van de waarden van de InputClaims en de waarde van de eigenschap input parameters.
 
 - Invoer claims:
   - **e-mail**, persoonlijke instellingen van het transformatie claim type **. 0. tot. 0. e-mail adres**: someone@example.com
-  - persoonlijke instellingen voor **otp**, transformatie claim type **. 0. dynamic_template_data. otp** "346349"
+  - **otp**, transformatie claim type **Personalizations.0.dynamic_template_data. otp** "346349"
 - Invoer parameter:
   - **template_id**: "d-4c56ffb40fa648b1aa6822283df94f60"
   - **van. e-mail adres**: service@contoso.com
@@ -90,17 +90,67 @@ De volgende claim transformatie voert een JSON-teken reeks claim uit die de hoof
 }
 ```
 
+### <a name="example-2"></a>Voorbeeld 2
+
+In het volgende voor beeld wordt een JSON-teken reeks gegenereerd op basis van de claim waarden en constante teken reeksen.
+
+```xml
+<ClaimsTransformation Id="GenerateRequestBody" TransformationMethod="GenerateJson">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="customerEntity.email" />
+    <InputClaim ClaimTypeReferenceId="objectId" TransformationClaimType="customerEntity.userObjectId" />
+    <InputClaim ClaimTypeReferenceId="givenName" TransformationClaimType="customerEntity.firstName" />
+    <InputClaim ClaimTypeReferenceId="surname" TransformationClaimType="customerEntity.lastName" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="customerEntity.role.name" DataType="string" Value="Administrator"/>
+    <InputParameter Id="customerEntity.role.id" DataType="long" Value="1"/>
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="requestBody" TransformationClaimType="outputClaim"/>
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+De volgende claim transformatie voert een JSON-teken reeks claim uit die de hoofd tekst van de aanvraag is die naar een REST API wordt verzonden. De structuur van het JSON-object wordt gedefinieerd door de Id's in punt notatie van de invoer parameters en de TransformationClaimTypes van de InputClaims. De waarden zijn afkomstig van de waarden van de InputClaims en de waarde van de eigenschap input parameters.
+
+- Invoer claims:
+  - **e-mail**, transformatie claim type **customerEntity. email**: john.s@contoso.com
+  - **objectId**, transformatie claim type **customerEntity. userObjectId** "01234567-89ab-cdef-0123-456789abcdef"
+  - **objectId**, transformatie claim type **customerEntity. FirstName** "John"
+  - **objectId**, transformatie claim type **customerEntity. lastName** "Smit"
+- Invoer parameter:
+  - **customerEntity.Role.name**: beheerder
+  - **customerEntity.Role.id** 1
+- Uitvoer claim:
+  - **requestBody**: JSON-waarde
+
+```json
+{
+   "customerEntity":{
+      "email":"john.s@contoso.com",
+      "userObjectId":"01234567-89ab-cdef-0123-456789abcdef",
+      "firstName":"John",
+      "lastName":"Smith",
+      "role":{
+         "name":"Administrator",
+         "id": 1
+      }
+   }
+}
+```
+
 ## <a name="getclaimfromjson"></a>GetClaimFromJson
 
 Een opgegeven element ophalen uit een JSON-gegevens.
 
-| Item | TransformationClaimType | Gegevenstype | Notities |
+| Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
 | Input claim | inputJson | tekenreeks | De ClaimTypes die worden gebruikt door de claim transformatie om het item op te halen. |
 | Parameter | claimToExtract | tekenreeks | de naam van het JSON-element dat moet worden geëxtraheerd. |
 | Output claim | extractedClaim | tekenreeks | Het claim type dat is geproduceerd nadat deze claim transformatie is aangeroepen, is de element waarde die is opgegeven in de invoer parameter _claimToExtract_ . |
 
-In het volgende voor beeld heeft de claim transformatie het `emailAddress` element opgehaald uit de JSON-gegevens:`{"emailAddress": "someone@example.com", "displayName": "Someone"}`
+In het volgende voor beeld heeft de claim transformatie het `emailAddress` element opgehaald uit de JSON-gegevens: `{"emailAddress": "someone@example.com", "displayName": "Someone"}`
 
 ```xml
 <ClaimsTransformation Id="GetEmailClaimFromJson" TransformationMethod="GetClaimFromJson">
@@ -123,14 +173,14 @@ In het volgende voor beeld heeft de claim transformatie het `emailAddress` eleme
 - Invoer parameter:
     - **claimToExtract**: emailAddress
 - Uitvoer claims:
-  - **extractedClaim**:someone@example.com
+  - **extractedClaim**: someone@example.com
 
 
 ## <a name="getclaimsfromjsonarray"></a>GetClaimsFromJsonArray
 
 Een lijst met opgegeven elementen uit de JSON-gegevens ophalen.
 
-| Item | TransformationClaimType | Gegevenstype | Notities |
+| Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
 | Input claim | jsonSourceClaim | tekenreeks | De ClaimTypes die worden gebruikt door de claim transformatie om de claims op te halen. |
 | Parameter | errorOnMissingClaims | booleaans | Hiermee geeft u op of er een fout moet worden gegenereerd als een van de claims ontbreekt. |
@@ -184,7 +234,7 @@ In het volgende voor beeld worden met de claim transformatie de volgende claims 
 
 Hiermee wordt een opgegeven numeriek (lang)-element opgehaald uit een JSON-gegevens.
 
-| Item | TransformationClaimType | Gegevenstype | Notities |
+| Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
 | Input claim | inputJson | tekenreeks | De ClaimTypes die door de claim transformatie worden gebruikt om de claim op te halen. |
 | Parameter | claimToExtract | tekenreeks | De naam van het JSON-element dat moet worden uitgepakt. |
@@ -227,7 +277,7 @@ In het volgende voor beeld haalt de claim transformatie het `id` element uit de 
 
 Hiermee wordt het eerste element opgehaald uit een JSON-gegevens.
 
-| Item | TransformationClaimType | Gegevenstype | Notities |
+| Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
 | Input claim | inputJson | tekenreeks | De ClaimTypes die door de claim transformatie worden gebruikt voor het ophalen van het item uit de JSON-gegevens. |
 | Output claim | sleutel | tekenreeks | De eerste element sleutel in de JSON. |
@@ -260,12 +310,12 @@ In het volgende voor beeld haalt de claim transformatie het eerste element (de o
 
 Hiermee wordt het eerste element opgehaald uit een JSON-gegevens matrix.
 
-| Item | TransformationClaimType | Gegevenstype | Notities |
+| Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
 | Input claim | inputJsonClaim | tekenreeks | De ClaimTypes die door de claim transformatie worden gebruikt om het item uit de JSON-matrix op te halen. |
 | Output claim | extractedClaim | tekenreeks | Het claim type dat is geproduceerd nadat deze ClaimsTransformation is aangeroepen, het eerste element in de JSON-matrix. |
 
-In het volgende voor beeld haalt de claim transformatie het eerste element (e-mail adres) uit de JSON-matrix `["someone@example.com", "Someone", 6353399]` .
+In het volgende voor beeld haalt de claim transformatie het eerste element (e-mail adres) uit de JSON-matrix  `["someone@example.com", "Someone", 6353399]` .
 
 ```xml
 <ClaimsTransformation Id="GetEmailFromJson" TransformationMethod="GetSingleValueFromJsonArray">
@@ -283,13 +333,13 @@ In het volgende voor beeld haalt de claim transformatie het eerste element (e-ma
 - Invoer claims:
   - **inputJsonClaim**: [" someone@example.com ", "iemand", 6353399]
 - Uitvoer claims:
-  - **extractedClaim**:someone@example.com
+  - **extractedClaim**: someone@example.com
 
 ## <a name="xmlstringtojsonstring"></a>XmlStringToJsonString
 
 XML-gegevens worden geconverteerd naar de JSON-indeling.
 
-| Item | TransformationClaimType | Gegevenstype | Notities |
+| Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
 | Input claim | xml | tekenreeks | De ClaimTypes die worden gebruikt door de claim transformatie voor het converteren van de gegevens van XML naar de JSON-indeling. |
 | Output claim | json | tekenreeks | Het claim type dat is geproduceerd nadat deze ClaimsTransformation is aangeroepen, is de gegevens in JSON-indeling. |

@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4c57ec2edf43bf0a710f3c15f30836f751c4d52b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a96c0f7c6fb767b96be273a615149143043e8bc1
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500160"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975124"
 ---
 # <a name="open-ports-and-endpoints-to-a-vm-with-the-azure-cli"></a>Poorten en eind punten openen voor een virtuele machine met Azure CLI
 
@@ -89,4 +89,4 @@ Voor Maxi maal beschik bare webtoepassingen moet u uw virtuele machines achter e
 In dit voor beeld hebt u een eenvoudige regel gemaakt om HTTP-verkeer toe te staan. In de volgende artikelen vindt u informatie over het maken van meer gedetailleerde omgevingen:
 
 * [Overzicht van Azure Resource Manager](../../azure-resource-manager/management/overview.md)
-* [Wat is een netwerkbeveiligingsgroep (NSG)?](../../virtual-network/security-overview.md)
+* [Wat is een netwerkbeveiligingsgroep (NSG)?](../../virtual-network/network-security-groups-overview.md)

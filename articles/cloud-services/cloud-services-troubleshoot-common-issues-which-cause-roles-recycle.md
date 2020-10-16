@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 4bf33db28d68b600d860a132027e5be440377b34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0484eb919a9de11b64dcc3334c5a9a942d875ca6
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89460283"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075124"
 ---
 # <a name="common-issues-that-cause-roles-to-recycle"></a>Algemene problemen waardoor rollen worden herhaald
 In dit artikel worden enkele veelvoorkomende oorzaken van implementatie problemen beschreven en tips voor het oplossen van problemen die u kunnen helpen bij het oplossen van deze problemen. Een indicatie dat er een probleem is met een toepassing is wanneer de rolinstantie niet kan worden gestart, of wordt gerecycled tussen de status initialisatie, bezet en gestopt.
@@ -63,11 +63,11 @@ DefaultEndpointsProtocol=https;AccountName=MyAccountName;AccountKey=MyAccountKey
 Als u een webrole onder TLS wilt uitvoeren, moet u ervoor zorgen dat het geëxporteerde beheer certificaat de persoonlijke sleutel bevat. Als u *Windows certificaat beheer* gebruikt om het certificaat te exporteren, moet u **Ja** selecteren voor de optie **de persoonlijke sleutel exporteren** . Het certificaat moet worden geëxporteerd in de PFX-indeling. Dit is de enige indeling die momenteel wordt ondersteund.
 
 ## <a name="next-steps"></a>Volgende stappen
-Bekijk meer [artikelen over probleem oplossing](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) voor Cloud Services.
+Bekijk meer [artikelen over probleem oplossing](../index.yml?product=cloud-services&tag=top-support-issue) voor Cloud Services.
 
-Bekijk meer scenario's voor het recyclen van rollen in [de blog serie van Kevin Williamson](https://docs.microsoft.com/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data).
+Bekijk meer scenario's voor het recyclen van rollen in [de blog serie van Kevin Williamson](/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data).
 
-[RoleEntryPoint]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx
-[OnStart]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx
-[OnStop]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstop.aspx
-[Uitvoeren]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx
+[RoleEntryPoint]: /previous-versions/azure/reference/ee758619(v=azure.100)
+[OnStart]: /previous-versions/azure/reference/ee772851(v=azure.100)
+[OnStop]: /previous-versions/azure/reference/ee772844(v=azure.100)
+[Uitvoeren]: /previous-versions/azure/reference/ee772746(v=azure.100)

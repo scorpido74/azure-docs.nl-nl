@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.openlocfilehash: ec0cc88122521a5f59da45107956b4f25156b02f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0c32dbdafe8d2681d341cb7f2ee6f0ce45123cab
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545247"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826387"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-image-relay"></a>Zelfstudie: Azure Active Directory-integratie met Image Relay
 
@@ -128,27 +128,27 @@ Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding wilt configurer
 
 2. Klik in de werkbalk bovenaan op de workload **Users & Permissions**.
 
-    ![Eenmalige aanmelding configureren](./media/imagerelay-tutorial/tutorial_imagerelay_06.png) 
+    ![Schermopname toont 'Gebruikers en machtigingen' die zijn geselecteerd op de werkbalk.](./media/imagerelay-tutorial/tutorial_imagerelay_06.png) 
 
 3. Klik op **Nieuwe machtiging maken**.
 
-    ![Eenmalige aanmelding configureren](./media/imagerelay-tutorial/tutorial_imagerelay_08.png)
+    ![Schermopname toont een tekstvak waarin de machtigingstitel moet worden ingevoerd en een optie om het machtigingstype te kiezen.](./media/imagerelay-tutorial/tutorial_imagerelay_08.png)
 
 4. Schakel in de workload **Single Sign On Settings** (Instellingen voor eenmalige aanmelding) het selectievakje **This Group can only sign-in via Single Sign On** (Deze groep kan alleen aanmelden met eenmalige aanmelding) in en klik op **Save** (Opslaan).
 
-    ![Eenmalige aanmelding configureren](./media/imagerelay-tutorial/tutorial_imagerelay_09.png) 
+    ![Schermopname toont de instellingen van eenmalige aanmelding waar u de optie kunt selecteren.](./media/imagerelay-tutorial/tutorial_imagerelay_09.png) 
 
 5. Ga naar **Account Settings**.
 
-    ![Eenmalige aanmelding configureren](./media/imagerelay-tutorial/tutorial_imagerelay_10.png) 
+    ![Schermopname toont de optie 'Accountinstellingen' op de werkbalk.](./media/imagerelay-tutorial/tutorial_imagerelay_10.png) 
 
 6. Ga naar de workload **Single Sign On Settings** (Instellingen voor eenmalige aanmelding).
 
-    ![Eenmalige aanmelding configureren](./media/imagerelay-tutorial/tutorial_imagerelay_11.png)
+    ![Schermopname toont de menuoptie 'Instellingen van enkele aanmelding'.](./media/imagerelay-tutorial/tutorial_imagerelay_11.png)
 
 7. Voer in het dialoogvenster **SAML-instellingen** de volgende stappen uit:
 
-    ![Eenmalige aanmelding configureren](./media/imagerelay-tutorial/tutorial_imagerelay_12.png)
+    ![Schermopname toont het dialoogvenster 'SAML-instellingen' waar u de informatie kunt invoeren.](./media/imagerelay-tutorial/tutorial_imagerelay_12.png)
 
     a. Plak in het tekstvak **Login URL** de waarde van **Aanmeldings-URL** die u hebt gekopieerd uit de Azure-portal.
 
@@ -160,19 +160,19 @@ Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding wilt configurer
 
     e. Klik onder **x.509 Certificate** op **Update Certificate**.
 
-    ![Eenmalige aanmelding configureren](./media/imagerelay-tutorial/tutorial_imagerelay_17.png)
+    ![Schermopname toont de optie voor het bijwerken van het certificaat.](./media/imagerelay-tutorial/tutorial_imagerelay_17.png)
 
     f. Open in Kladblok het certificaat dat u hebt gedownload, kopieer de inhoud en plak deze in het tekstvak **X.509-certificaat**.
 
-    ![Eenmalige aanmelding configureren](./media/imagerelay-tutorial/tutorial_imagerelay_18.png)
+    ![Schermopname toont het certificaat 'x dot 509'.](./media/imagerelay-tutorial/tutorial_imagerelay_18.png)
 
     g. Selecteer in de sectie **Just-In-Time inrichten van gebruikers** de optie **Just-In-Time inrichten van gebruikers inschakelen**.
 
-    ![Eenmalige aanmelding configureren](./media/imagerelay-tutorial/tutorial_imagerelay_19.png)
+    ![Schermopname toont de sectie 'Just-In-Time-gebruikersinrichting' waarin het besturingselement 'Inschakelen' is geselecteerd.](./media/imagerelay-tutorial/tutorial_imagerelay_19.png)
 
     h. Selecteer de machtigingsgroep (bijvoorbeeld **SSO Basic**) die zich alleen via eenmalige aanmelding mag aanmelden.
 
-    ![Eenmalige aanmelding configureren](./media/imagerelay-tutorial/tutorial_imagerelay_20.png)
+    ![Schermopname toont de sectie 'Just-In-Time-gebruikersinrichting' waarin 'S S O Basic' is geselecteerd.](./media/imagerelay-tutorial/tutorial_imagerelay_20.png)
 
     i. Klik op **Opslaan**.
 
@@ -237,11 +237,11 @@ Het doel van deze sectie is om in Image Relay een gebruiker te maken met de naam
 
 2. Ga naar **Users & Permissions** en selecteer **Create SSO User**.
 
-    ![Eenmalige aanmelding configureren](./media/imagerelay-tutorial/tutorial_imagerelay_21.png) 
+    ![Schermopname waarin 'Maak S S O gebruiker' in het menu is geselecteerd.](./media/imagerelay-tutorial/tutorial_imagerelay_21.png) 
 
 3. Voer het **e-mailadres**, de **voornaam**, **achternaam** en het **bedrijf** in van de gebruiker die u wilt inrichten en selecteer een machtigingsgroep (bijvoorbeeld SSO Basic). Dit is de groep die zich alleen via eenmalige aanmelding kan aanmelden.
 
-    ![Eenmalige aanmelding configureren](./media/imagerelay-tutorial/tutorial_imagerelay_22.png)
+    ![Schermopname toont 'Maak een S S O-gebruikerspagina' waar u de vereiste gegevens kunt invoeren.](./media/imagerelay-tutorial/tutorial_imagerelay_22.png)
 
 4. Klik op **Create**.
 

@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: c7efedadbba196223db2ad5700035e27d37fb414
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88008454"
 ---
 # <a name="connect-to-windows-virtual-desktop-classic-with-the-ios-client"></a>Verbinding maken met het virtuele bureau blad van Windows (klassiek) met de iOS-client
@@ -18,7 +18,7 @@ ms.locfileid: "88008454"
 > Van toepassing op: iOS 13,0 of hoger. Compatibel met iPhone, iPad en iPod Touch.
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op Windows Virtual Desktop (classic), dat geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../connect-ios.md) als u probeert Azure Resource Manager Windows Virtual Desktop-objecten te beheren.
+>Deze inhoud is van toepassing op Windows Virtual Desktop (klassiek), dat geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../connect-ios.md) als u Azure Resource Manager Windows Virtual Desktop-objecten probeert te beheren.
 
 U kunt toegang krijgen tot virtuele bureau blad-resources van Windows vanaf uw iOS-apparaat met onze Download bare client. In deze hand leiding wordt uitgelegd hoe u de iOS-client kunt instellen.
 
@@ -37,7 +37,7 @@ Abonneren op een feed:
    - Als u een URL gebruikt, gebruikt u de beheerder die u hebt ontvangen. Normaal gesp roken is de URL <https://rdweb.wvd.microsoft.com> .
    - Als u e-mail wilt gebruiken, voert u uw e-mail adres in. Dit geeft de client de opdracht om te zoeken naar een URL die is gekoppeld aan uw e-mail adres als uw beheerder de server op die manier heeft geconfigureerd.
 3. Tik op **Volgende**.
-4. Geef uw referenties op wanneer u hierom wordt gevraagd.
+4. Voer uw referenties in wanneer hierom wordt gevraagd.
    - Geef voor de **gebruikers naam**de gebruikers naam op met machtigingen voor toegang tot resources.
    - Geef bij **wacht woord**het wacht woord op dat is gekoppeld aan de gebruikers naam.
    - U wordt mogelijk ook gevraagd extra factoren op te geven als uw beheerder de verificatie op die manier heeft geconfigureerd.

@@ -1,6 +1,6 @@
 ---
-title: Tabel met limieten voor Azure signalerings service
-description: Beschrijft systeem limieten voor de Azure signalerings service.
+title: Tabel met Azure SignalR Service-limieten
+description: Beschrijft systeemlimieten voor de Azure SignalR Service.
 services: signalr
 documentationcenter: signalr
 author: sffamily
@@ -14,24 +14,24 @@ ms.workload: TBD
 ms.date: 05/11/2020
 ms.author: zhshang
 ms.openlocfilehash: 496d98c5faebfcef511152476b58dd6257dbbedc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83673540"
 ---
 | Resource | Standaardlimiet | Maximumaantal | 
 | --- | --- | --- |
-| Service-eenheden van Azure signalering per instantie voor de gratis laag |1 |1 |
-| Service-eenheden van Azure signalering per instantie voor de Standard-laag |100 |100 |
-| Azure signalerings service-eenheden per abonnement per regio voor de gratis laag|5 |5 |
-| Totaal aantal Azure Signalr-service-eenheden per abonnement per regio |150 |Onbeperkt |
-| Verbindingen per eenheid per dag voor gratis laag |20 |20 |
+| Azure SignalR Service-eenheden per instantie voor de gratis laag |1 |1 |
+| Azure SignalR Service-eenheden per instantie voor de Standard-laag |100 |100 |
+| Azure SignalR Service-eenheden per abonnement per regio voor de gratis laag|5 |5 |
+| Totaalaantal Azure SignalR Service-eenheden per abonnement per regio |150 |Onbeperkt |
+| Verbindingen per eenheid per dag voor de gratis laag |20 |20 |
 | Verbindingen per eenheid per dag voor de Standard-laag |1000 |1000|
-| Inbegrepen berichten per eenheid per dag voor gratis laag|20.000 |20.000 |
-| Extra berichten per eenheid per dag voor gratis laag|0 |0 |
+| Inbegrepen berichten per eenheid per dag voor de gratis laag|20.000 |20.000 |
+| Aanvullende berichten per eenheid per dag voor de gratis laag|0 |0 |
 | Inbegrepen berichten per eenheid per dag voor de Standard-laag|1.000.000 |1.000.000 |
-| Extra berichten per eenheid per dag voor de Standard-laag|Onbeperkt |Onbeperkt |
+| Aanvullende berichten per eenheid per dag voor de Standard-laag|Onbeperkt |Onbeperkt |
 
-Als u een update wilt aanvragen voor de standaard limieten van uw abonnement, opent u een ondersteunings ticket.
+Als u een update wilt aanvragen voor de standaardlimieten voor uw abonnement, opent u een ondersteuningsticket.
 

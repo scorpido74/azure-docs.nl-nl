@@ -11,12 +11,12 @@ ms.date: 07/20/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 375c97179351e1dbf90ce4488114cb232d6dd450
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 8b4e9aa73a959bcaac18df38f975331ecbf6b034
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121320"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876002"
 ---
 # <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>IDENTITEIT gebruiken voor het maken van surrogaat sleutels in de SQL-groep Synapse
 
@@ -26,7 +26,8 @@ In dit artikel vindt u aanbevelingen en voor beelden voor het gebruik van de IDE
 
 Een surrogaat sleutel in een tabel is een kolom met een unieke id voor elke rij. De sleutel wordt niet gegenereerd op basis van de tabel gegevens. Gegevens modelers zoals het maken van surrogaat sleutels in hun tabellen wanneer ze data warehouse modellen ontwerpen. U kunt met behulp van de IDENTITEITs eigenschap dit doel eenvoudig en effectief belasten zonder de belasting prestaties te beïnvloeden.
 > [!NOTE]
-> De IDENTITEITs waarde in Synapse SQL is niet gegarandeerd uniek als de gebruiker expliciet een dubbele waarde invoegt met de SET IDENTITY_INSERT ON of een Seed-identiteit. Zie [Create Table (Transact-SQL) Identity (eigenschap)](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest)voor meer informatie. 
+> In azure Synapse Analytics neemt de IDENTITEITs waarde toe in elke distributie en overlapt deze niet met IDENTITEITs waarden in andere distributies.  De IDENTITEITs waarde in Synapse is niet gegarandeerd uniek als de gebruiker expliciet een dubbele waarde invoegt met de SET IDENTITY_INSERT ON of seeding-identiteit. Zie [Create Table (Transact-SQL) Identity (eigenschap)](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest)voor meer informatie. 
+
 
 ## <a name="creating-a-table-with-an-identity-column"></a>Een tabel maken met een IDENTITEITs kolom
 
@@ -163,13 +164,13 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 > Het is niet mogelijk om momenteel te gebruiken `CREATE TABLE AS SELECT` bij het laden van gegevens in een tabel met een identiteits kolom.
 >
 
-Zie voor meer informatie over het laden van gegevens [ontwerpen extra heren, laden en transformeren (ELT) voor Synapse SQL pool](design-elt-data-loading.md) en [Aanbevolen procedures laden](guidance-for-loading-data.md).
+Zie voor meer informatie over het laden van gegevens [ontwerpen extra heren, laden en transformeren (ELT) voor Synapse SQL pool](design-elt-data-loading.md) en  [Aanbevolen procedures laden](guidance-for-loading-data.md).
 
 ## <a name="system-views"></a>Systeemweergaven
 
-U kunt de catalogus weergave [sys. identity_columns](/sql/relational-databases/system-catalog-views/sys-identity-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) gebruiken om een kolom te identificeren die de eigenschap Identity heeft.
+U kunt de catalogus weergave [sys.identity_columns](/sql/relational-databases/system-catalog-views/sys-identity-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) gebruiken om een kolom te identificeren die de eigenschap Identity heeft.
 
-Dit voor beeld laat zien hoe u sys. identity_column integreert met andere systeem catalogus weergaven, zodat u meer inzicht krijgt in het database schema:
+Dit voor beeld laat zien hoe u sys.identity_column kunt integreren met andere systeem catalogus weergaven, zodat u beter inzicht krijgt in het database schema:
 
 ```sql
 SELECT  sm.name

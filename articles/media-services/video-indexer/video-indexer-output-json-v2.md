@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 08/27/2020
 ms.author: juliako
 ms.openlocfilehash: 6eecaaff836d3253d382fdf0280f9a15c3a7b00b
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89050859"
 ---
 # <a name="examine-the-video-indexer-output"></a>De Video Indexer uitvoer controleren
@@ -58,7 +58,7 @@ Zie [video Insights weer geven en bewerken](video-indexer-view-edit.md)voor meer
 |accountId|De VI-account-ID van de afspeel lijst.|
 |id|De ID van de afspeel lijst.|
 |naam|De naam van de afspeel lijst.|
-|beschrijving|De beschrijving van de afspeel lijst.|
+|description|De beschrijving van de afspeel lijst.|
 |userName|De naam van de gebruiker die de afspeel lijst heeft gemaakt.|
 |toegevoegd|De aanmaak tijd van de afspeel lijst.|
 |privacyMode|De privacy-modus van de afspeel lijst (privé/openbaar).|
@@ -331,7 +331,7 @@ Als gezichten (zonder animatie tekens) aanwezig zijn, gebruikt Video Indexer Fac
 |id|De face-ID.|
 |naam|De naam van het gezicht. Dit kan ' onbekend #0, een geïdentificeerde beroemdheden of een door de klant getrainde persoon zijn.|
 |betrouwbaarheid|De gezichts-id-betrouw baarheid.|
-|beschrijving|Een beschrijving van de beroemdheden. |
+|description|Een beschrijving van de beroemdheden. |
 |thumbnailId|De ID van de miniatuur van het gezicht.|
 |knownPersonId|De interne ID van een bekende persoon.|
 |referenceId|Als het een Bing-beroemdheden is, is dit de Bing-ID.|
@@ -519,7 +519,7 @@ Merk namen van bedrijven en producten die worden herkend in de spraak naar tekst
 |naam|De naam van het merk.|
 |referenceId | Het achtervoegsel van de brand Wikipedia-URL. "Target_Corporation" is bijvoorbeeld het achtervoegsel van [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation) .
 |referenceUrl | De Wikipedia-URL van het merk, indien aanwezig. Bijvoorbeeld [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation) .
-|beschrijving|De beschrijving van de Brands.|
+|description|De beschrijving van de Brands.|
 |tags|Een lijst met vooraf gedefinieerde labels die aan dit merk zijn gekoppeld.|
 |betrouwbaarheid|De betrouw bare waarde van de Video Indexer merk detector (0-1).|
 |vaak|Een lijst met tijds bereiken van dit merk. Elk exemplaar heeft een brandType, waarmee wordt aangegeven of dit merk zich in het transcript of in de OCR bevindt.|

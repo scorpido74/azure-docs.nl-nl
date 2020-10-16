@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/23/2019
 ms.openlocfilehash: a696ba4f7bab85f2353e80d028220688531b3b69
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89021762"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>Een niet-interactieve verificatie-app voor .NET HDInsight maken
@@ -27,7 +27,7 @@ Vanuit uw niet-interactieve .NET-toepassing hebt u het volgende nodig:
 
 ## <a name="prerequisites"></a>Vereisten
 
-An HDInsight cluster. Zie de [zelf studie aan de slag](hadoop/apache-hadoop-linux-tutorial-get-started.md).
+Een HDInsight-cluster. Zie de [zelf studie aan de slag](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
 ## <a name="assign-a-role-to-the-azure-ad-application"></a>Een rol toewijzen aan de Azure AD-toepassing
 
@@ -39,7 +39,7 @@ Wijs uw Azure AD-toepassing een [rol](../role-based-access-control/built-in-role
 1. Ga naar de resource groep met het HDInsight-cluster waarop u de Hive-query wilt uitvoeren, verderop in dit artikel. Als u een groot aantal resource groepen hebt, kunt u het filter gebruiken om het gewenste item te vinden.
 1. Selecteer **toegangs beheer (IAM)** in het menu resource groep.
 1. Selecteer het **tabblad roltoewijzingen om de huidige** roltoewijzingen weer te geven.
-1. Selecteer boven aan de pagina **+ toevoegen**.
+1. Selecteer **+ Toevoegen** bovenaan de pagina.
 1. Volg de instructies om de rol van eigenaar toe te voegen aan uw Azure AD-toepassing. Nadat u de rol hebt toegevoegd, wordt de toepassing vermeld onder de rol eigenaar.
 
 ## <a name="develop-an-hdinsight-client-application"></a>Een HDInsight-client toepassing ontwikkelen

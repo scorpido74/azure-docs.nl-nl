@@ -7,14 +7,14 @@ author: TheovanKraay
 ms.author: thvankra
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 05/18/2020
+ms.date: 10/01/2020
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: d24116701347c7d4b60494219b56877e0b121ea3
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 46826319cdd2ba55d469704a09656b61c96ce798
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017463"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743138"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-core-and-azure-cosmos-db"></a>Quickstart: Een Cassandra-app bouwen met .NET Core en Azure Cosmos DB
 
@@ -156,6 +156,12 @@ Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en ko
 
     `private const string Password = "2Ggkr662ifxz2Mg...==";`
 
+1. Ga terug naar de portal en kopieer de CONTACT POINT-waarde. Plak de CONTACT POINT-waarde uit de portal over `<PROVIDE>` op regel 16 heen.
+
+    Regel 16 van Program.cs moet er nu als volgt uitzien 
+
+    `private const string CASSANDRACONTACTPOINT = "quickstart-cassandra-api.cassandra.cosmos.azure.com";`
+
 1. Sla het bestand Program.cs op.
     
 ## <a name="run-the-net-core-app"></a>De .NET Core-app uitvoeren
@@ -169,13 +175,13 @@ Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en ko
     ```
 3. Druk op Ctrl+F5 om de toepassing uit te voeren. Uw app wordt in het consolevenster weergegeven. 
 
-    :::image type="content" source="./media/create-cassandra-dotnet/output.png" alt-text="De uitvoer weergeven en controleren":::
+    :::image type="content" source="./media/create-cassandra-dotnet/output.png" alt-text="Een toegangssleutel in Azure Portal bekijken en kopiëren op de pagina Verbindingsreeks":::
 
     Druk op Ctrl+C om de uitvoering van het programma te stoppen en het consolevenster te sluiten. 
     
 4. Open **Data Explorer** in de Azure-portal om deze nieuwe gegevens te bekijken, te wijzigen, een query erop uit te voeren of er iets anders mee te doen.
 
-    :::image type="content" source="./media/create-cassandra-dotnet/data-explorer.png" alt-text="De gegevens weergeven in Data Explorer":::
+    :::image type="content" source="./media/create-cassandra-dotnet/data-explorer.png" alt-text="Een toegangssleutel in Azure Portal bekijken en kopiëren op de pagina Verbindingsreeks":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>SLA’s bekijken in Azure Portal
 

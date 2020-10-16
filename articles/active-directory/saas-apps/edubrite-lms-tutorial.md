@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
-ms.openlocfilehash: b206d5e8721ee87b699765c0fc2a7df6177fc8cf
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d753aef3c7cd855b1ab137e85a233a1bca27c25a
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544399"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826776"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-edubrite-lms"></a>Zelfstudie: Integratie van Azure Active Directory met EduBrite LMS
 
@@ -101,7 +101,7 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD te configurere
 
 4. In het gedeelte **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
 
-    ![Gegevens voor domein en URL's voor eenmalige aanmelding bij EduBrite LMS](common/idp-intiated.png)
+    ![Schermopname toont de 'Basic SAML-configuratie' waarin de knoppen 'Id', 'Antwoord-URL' en 'Opslaan ' zijn gemarkeerd.](common/idp-intiated.png)
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://<customer-specific>.edubrite.com`
 

@@ -10,10 +10,10 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
 ms.openlocfilehash: b05007e2ea7815afbba2a7a71368686cf7c049fb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87325607"
 ---
 # <a name="metrics-in-azure-monitor"></a>Metrische gegevens in Azure Monitor
@@ -36,7 +36,7 @@ De volgende tabel geeft een lijst van de verschillende manieren waarop u metrisc
 | **Waarschuwing** | Configureer een [waarschuwings regel voor metrische gegevens](alerts-metric.md) die een melding verzendt of [geautomatiseerd actie](action-groups.md) onderneemt wanneer de metrische waarde een drempel overschrijdt. |
 | **Automatiseren** |  Gebruik [automatisch schalen](autoscale-overview.md) om resources te verg Roten of te verkleinen op basis van een metrische waarde die een drempel overschrijdt. |
 | **Exporteren** | U [kunt metrische gegevens naar Logboeken routeren](./resource-logs.md#send-to-azure-storage) voor het analyseren van informatie in azure monitor metrieken samen met gegevens in azure monitor-logboeken en om meet waarden langer dan 93 dagen op te slaan.<br>Meet gegevens streamen naar een [Event hub](stream-monitoring-data-event-hubs.md) om ze naar externe systemen te routeren. |
-| **Ophalen** | Toegang krijgen tot metrische waarden van een opdracht regel met behulp van [Power shell-cmdlets](/powershell/module/az.applicationinsights)<br>Toegang krijgen tot meet waarden van aangepaste toepassing met behulp van [rest API](rest-api-walkthrough.md).<br>Toegang krijgen tot meet waarden van een opdracht regel met behulp van [cli](/cli/azure/monitor/metrics). |
+| **Ophalen** | Toegang krijgen tot metrische waarden van een opdracht regel met behulp van  [Power shell-cmdlets](/powershell/module/az.applicationinsights)<br>Toegang krijgen tot meet waarden van aangepaste toepassing met behulp van [rest API](rest-api-walkthrough.md).<br>Toegang krijgen tot meet waarden van een opdracht regel met behulp van  [cli](/cli/azure/monitor/metrics). |
 | **Archiveren** | [Archiveer](./platform-logs-overview.md) de prestaties of de status geschiedenis van uw resource voor naleving, controle of offline rapportage. |
 
 ## <a name="how-is-data-in-azure-monitor-metrics-structured"></a>Hoe worden gegevens in Azure Monitor meet waarden gestructureerd?
@@ -56,7 +56,7 @@ In het onderstaande voor beeld ziet u twee gegevens sets voor een hypothetische 
 
 ### <a name="network-throughput"></a>Netwerk doorvoer
 
-| Timestamp     | Metrische waarde |
+| Tijdstempel     | Metrische waarde |
 | ------------- |:-------------|
 | 8/9/2017 8:14 | 1.331,8 kbps |
 | 8/9/2017 8:15 | 1.141,4 kbps |
@@ -66,7 +66,7 @@ Deze niet-dimensionale metriek kan alleen een basis vraag beantwoorden zoals ' w
 
 ### <a name="network-throughput--two-dimensions-ip-and-direction"></a>Netwerk doorvoer + twee dimensies ("IP" en "richting")
 
-| Timestamp     | Dimensie ' IP '   | Dimensie "richting" | Metrische waarde|
+| Tijdstempel     | Dimensie ' IP '   | Dimensie "richting" | Metrische waarde|
 | ------------- |:-----------------|:------------------- |:-----------|
 | 8/9/2017 8:14 | IP = "192.168.5.2" | Direction = "verzenden"    | 646,5 kbps |
 | 8/9/2017 8:14 | IP = "192.168.5.2" | Direction = "ontvangen" | 420,1 kbps |

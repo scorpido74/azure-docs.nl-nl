@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 09/29/2020
 ms.author: kumud
 ms.openlocfilehash: 791a248c8fb10bc4db483451971d452a359c8a07
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91569244"
 ---
 # <a name="azure-networking-services-overview"></a>Overzicht van Azure-netwerkservices
@@ -131,7 +131,7 @@ Raadpleeg de [Azure firewall documentatie](../firewall/overview.md)voor meer inf
 
 :::image type="content" source="./media/networking-overview/firewall-threat.png" alt-text="Azure ExpressRoute":::
 
-### <a name="network-security-groups"></a><a name="nsg"></a>Netwerkbeveiligingsgroepen
+### <a name="network-security-groups"></a><a name="nsg"></a>Netwerk beveiligings groepen
 U kunt netwerkverkeer naar en van Azure-resources in een virtueel Azure-netwerk filteren met een netwerkbeveiligingsgroep. Zie [Security Overview](../virtual-network/security-overview.md)(Engelstalig) voor meer informatie.
 
 ### <a name="service-endpoints"></a><a name="serviceendpoints"></a>Service-eind punten

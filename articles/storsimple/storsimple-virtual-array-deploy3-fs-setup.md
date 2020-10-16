@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4e544d135883d0c936b3f23b3e50e385268c992c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 05447db97311fb78707079528e0570b3fd42df59
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006293"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977575"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>StorSimple Virtual array implementeren: ingesteld als bestands server via Azure Portal
 ![Diagram met de stappen die nodig zijn voor het implementeren van een virtuele matrix. Het eerste deel van de derde stap is ingesteld als bestands server en is gemarkeerd.](./media/storsimple-virtual-array-deploy3-fs-setup/fileserver4.png)
@@ -118,18 +118,18 @@ Gebruik de volgende stapsgewijze instructies voor het instellen en configureren 
     ![Scherm afbeelding van de pagina alle resources van de Azure Portal. Een Apparaatbeheer-service is gemarkeerd.](./media/storsimple-virtual-array-deploy3-fs-setup/searchdevicemanagerservice1.png) 
 13. Selecteer uw StorSimple-Apparaatbeheer service in de gefilterde lijst en navigeer vervolgens naar **beheer > apparaten**. Controleer op de Blade **apparaten** of het apparaat is verbonden met de service en of de status **gereed is om in te stellen**.
     
-    ![Een bestands server configureren](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs2m.png)
+    ![Implementeren](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs2m.png)
 
 ## <a name="step-2-configure-the-device-as-file-server"></a>Stap 2: het apparaat configureren als bestands server
 Voer de volgende stappen uit in de [Azure Portal](https://portal.azure.com/) om de vereiste apparaatinstellingen te volt ooien.
 
 #### <a name="to-configure-the-device-as-file-server"></a>Het apparaat als bestands server configureren
-1. Ga naar de StorSimple-Apparaatbeheer service en ga vervolgens naar **beheer > apparaten**. Selecteer op de Blade **apparaten** het apparaat dat u zojuist hebt gemaakt. Dit apparaat wordt weer gegeven als **gereed voor configuratie**.
+1. Ga naar de StorSimple-Apparaatbeheer service en ga vervolgens naar  **beheer > apparaten**. Selecteer op de Blade **apparaten** het apparaat dat u zojuist hebt gemaakt. Dit apparaat wordt weer gegeven als **gereed voor configuratie**.
    
    ![Een bestands server configureren](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs2m.png) 
 2. Klik op het apparaat. er wordt een banner bericht weer gegeven dat aangeeft dat het apparaat gereed is voor installatie.
    
-    ![Een bestands server configureren](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs3m.png)
+    ![Een bestands Server 2 configureren](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs3m.png)
 3. Klik op **configureren** op de opdracht balk. Hiermee opent u de Blade **configureren** . Ga als volgt te werk op de Blade **configureren** :
    
    1. De naam van de bestands server wordt automatisch ingevuld.
@@ -140,7 +140,7 @@ Voer de volgende stappen uit in de [Azure Portal](https://portal.azure.com/) om 
     
    4. Klik op **vereiste instellingen configureren** om referenties voor het opslag account op te geven die u met uw apparaat wilt gebruiken. Klik op **nieuwe toevoegen** als er geen referenties voor het opslag account zijn geconfigureerd. **Zorg ervoor dat het opslag account dat u gebruikt, blok-blobs ondersteunt. Pagina-blobs worden niet ondersteund.** Meer informatie over het blok keren van [blobs en pagina-blobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).
    
-      ![Een bestands server configureren](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs6m.png) 
+      ![Een bestands Server 3 configureren](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs6m.png) 
 4. Ga als volgt te werk op de Blade **een opslag account referenties toevoegen** : 
 
     1. Kies het huidige abonnement als het opslag account zich in hetzelfde abonnement bevindt als de service. Andere opgeven is het opslag account valt buiten het service abonnement. 
@@ -153,19 +153,19 @@ Voer de volgende stappen uit in de [Azure Portal](https://portal.azure.com/) om 
     
     5. Klik op **toevoegen** om deze opslag account referentie toe te voegen. 
    
-        ![Een bestands server configureren](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs8m.png)
+        ![Een bestands Server 4 configureren](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs8m.png)
 
-5. Zodra de referenties van het opslag account zijn gemaakt, wordt de Blade **configureren** bijgewerkt om de opgegeven referenties voor het opslag account weer te geven. Klik op **configureren**.
+5. Zodra de referenties van het opslag account zijn gemaakt, wordt de Blade **configureren** bijgewerkt om de opgegeven referenties voor het opslag account weer te geven. Klik op **Configureren**
    
-   ![Een bestands server configureren](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs11m.png)
+   ![Een bestands server configureren 5](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs11m.png)
    
    U ziet dat een bestands server wordt gemaakt. Zodra de bestands server is gemaakt, wordt u hiervan op de hoogte gebracht.
    
-   ![Een bestands server configureren](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs13m.png)
+   ![Een bestands server 5b configureren](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs13m.png)
    
    De apparaatstatus wordt ook gewijzigd in **online**.
    
-   ![Een bestands server configureren](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs14m.png)
+   ![Een file server 5c configureren](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs14m.png)
    
    U kunt door gaan met het toevoegen van een share.
 
@@ -189,15 +189,15 @@ Voer in de [Azure-portal](https://portal.azure.com/) de volgende stappen uit om 
    
    5. Klik op **toevoegen** om de share te maken. 
     
-       ![Een share toevoegen](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs18m.png)
+       ![Een share toevoegen 1](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs18m.png)
    
        U ontvangt een melding als wordt begonnen met het maken van de share.
    
-       ![Een share toevoegen](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs19m.png)
+       ![Een share toevoegen 2](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs19m.png)
    
       Nadat de share is gemaakt met de opgegeven instellingen, wordt de Blade **shares** bijgewerkt met de nieuwe share. Bewaking en back-up zijn standaard ingeschakeld voor de share.
    
-      ![Een share toevoegen](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs22m.png)
+      ![Een share 3 toevoegen](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs22m.png)
 
 ## <a name="step-4-connect-to-the-share"></a>Stap 4: verbinding maken met de share
 U moet nu verbinding maken met een of meer shares die u in de vorige stap hebt gemaakt. Voer de volgende stappen uit op de Windows Server-host die is verbonden met uw virtuele StorSimple-matrix.

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 9/21/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 7fe0e91f30930b9aaf0fb484b3b1e74d707d8c21
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91307803"
 ---
 # <a name="create-and-manage-azure-database-for-mysql---flexible-server-firewall-rules-using-the-azure-cli"></a>Azure Database for MySQL-flexibele server firewall regels maken en beheren met de Azure CLI
@@ -88,7 +88,7 @@ Raadpleeg de [naslag documentatie](/cli/azure/mysql/flexible-server) van Azure C
 ## <a name="create-and-manage-firewall-rule-after-server-create"></a>Een firewall regel maken en beheren nadat de server is gemaakt
 De opdracht **AZ mysql Flexible-Server firewall-Rule** wordt gebruikt vanuit de Azure CLI om firewall regels te maken, verwijderen, weer geven en bijwerken.
 
-Opdrachten
+Opdrachten:
 - **maken**: een flexibele server firewall regel maken.
 - **lijst**: de flexibele server firewall regels weer geven.
 - **Update**: een flexibele server firewall regel bijwerken.

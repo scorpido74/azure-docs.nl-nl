@@ -12,10 +12,10 @@ ms.date: 08/05/2020
 ms.author: chmutali
 ms.reviewer: celested
 ms.openlocfilehash: ef2da377c7720cfb7b431d1ce0fed56656a2b8c7
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87808504"
 ---
 # <a name="sap-successfactors-attribute-reference"></a>Naslag informatie over SAP SuccessFactors-kenmerken
@@ -70,7 +70,7 @@ Raadpleeg de [Naslag informatie over SAP SuccessFactors-integratie](./sap-succes
 | 32 | Gebruiker                                   | homePhone                    | Lezen           |
 | 33 | Gebruiker                                   | jobFamily                    | Lezen           |
 | 34 | Gebruiker                                   | bijnaam                     | Lezen           |
-| 35 | Gebruiker                                   | state                        | Lezen           |
+| 35 | Gebruiker                                   | staat                        | Lezen           |
 | 36 | Gebruiker                                   | timeZone                     | Lezen           |
 | 37 | Gebruiker                                   | gebruikersnaam                     | Lezen           |
 | 38 | Gebruiker                                   | zipCode                      | Lezen           |
@@ -103,7 +103,7 @@ Raadpleeg de [Naslag informatie over SAP SuccessFactors-integratie](./sap-succes
 | 64 | EmpJob \. CostCenter                     | costCenterDescription        | Lezen           |
 | 65 | EmpJob \. afdeling                     | department                   | Lezen           |
 | 66 | EmpJob \. afdeling                     | departmentId                 | Lezen           |
-| 67 | EmpJob- \. deling                       | daarvan                     | Lezen           |
+| 67 | EmpJob- \. deling                       | division                     | Lezen           |
 | 68 | EmpJob- \. deling                       | divisionId                   | Lezen           |
 | 69 | EmpJob \. JobCode                        | jobCode                      | Lezen           |
 | 70 | EmpJob \. JobCode                        | jobCodeId                    | Lezen           |
@@ -130,15 +130,15 @@ De volgende tabel bevat de standaard kenmerk toewijzing tussen de hierboven verm
 | 6  | Gebruiker                                   | addressLine1             | streetAddress                           | NA                                                                                           |
 | 7  | Gebruiker                                   | city                     | l                                       | NA                                                                                           |
 | 8  | Gebruiker                                   | country                  | co                                      | NA                                                                                           |
-| 9  | Gebruiker                                   | state                    | st                                      | NA                                                                                           |
+| 9  | Gebruiker                                   | staat                    | st                                      | NA                                                                                           |
 | 10 | Gebruiker                                   | gebruikersnaam                 | samAccountName                          | NA                                                                                           |
-| 11 | Gebruiker                                   | zipCode                  | Code                              | NA                                                                                           |
+| 11 | Gebruiker                                   | zipCode                  | postalCode                              | NA                                                                                           |
 | 12 | PerEmail                               | emailAddress             | mail                                    | NA                                                                                           |
 | 13 | EmpJob                                 | jobTitle                 | titel                                   | NA                                                                                           |
 | 14 | EmpJob                                 | managerId                | manager                                 | NA                                                                                           |
 | 15 | EmpJob \. Company \. CountryOfRegistration | twoCharCountryCode       | c                                       | NA                                                                                           |
 | 16 | EmpJob \. afdeling                     | department               | department                              | NA                                                                                           |
-| 17 | EmpJob- \. deling                       | daarvan                 | bedrijf                                 | NA                                                                                           |
+| 17 | EmpJob- \. deling                       | division                 | bedrijf                                 | NA                                                                                           |
 | 18 | Locatie van EmpJob \.                       | officeLocationAddress    | streetAddress                           | NA                                                                                           |
-| 19 | Locatie van EmpJob \.                       | officeLocationZipCode    | Code                              | NA                                                                                           |
+| 19 | Locatie van EmpJob \.                       | officeLocationZipCode    | postalCode                              | NA                                                                                           |
 | 20 | EmpEmploymentTermination               | activeEmploymentsCount   | accountEnabled                          | Als activeEmploymentsCount = 0, schakelt u de account\. uit                                           |

@@ -3,12 +3,12 @@ title: Overzicht van het blauwdrukvoorbeeld voor ISO 27001 conforme ASE-/SQL-wor
 description: Overzicht en architectuur van het blauwdrukvoorbeeld voor ISO 27001 conforme App Service Environment-/SQL Database-workloads.
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 76177efcac8b32907c60cecac41404a3834d0fb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6f6cb50450e461d87fdbb3c71fe6273c43c3122e
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "87926090"
+ms.locfileid: "91930404"
 ---
 # <a name="overview-of-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Overzicht van het blauwdrukvoorbeeld voor ISO 27001 conforme App Service Environment-/SQL Database-workloads
 
@@ -29,7 +29,7 @@ Het blauwdrukvoorbeeld voor ISO 27001 conforme App Service Environment-/SQL Data
 Deze omgeving bestaat uit diverse Azure-services die samen een veilige, volledig bewaakte en direct inzetbare workloadinfrastructuur bieden op basis van de ISO 27001-standaarden. De omgeving bestaat uit de volgende elementen:
 
 - [Azure-rol](../../../../role-based-access-control/overview.md), DevOps genoemd, met rechten om resources te implementeren en te beheren in de [Azure App Service Environment](../../../../app-service/environment/intro.md) die door het blauwdrukvoorbeeld wordt geïmplementeerd
-- [Azure-beleid](../../../policy/overview.md) om vast te leggen welke services in de omgeving mogen worden geïmplementeerd en om te voorkomen dat er resources op basis van een openbaar IP-adres worden gemaakt
+- [Azure Policy](../../../policy/overview.md)-definities om vast te leggen welke services in de omgeving mogen worden geïmplementeerd en om te voorkomen dat er resources op basis van een openbaar IP-adres worden gemaakt
 - Een virtueel netwerk met één subnet en een koppeling met een al bestaande omgeving met [gedeelde services](../iso27001-shared/index.md), waarbij al het verkeer wordt gedwongen de firewall voor [gedeelde services](../iso27001-shared/index.md) te passeren. Het virtuele netwerk hosts de volgende resources:
   - Een [Azure App Service Environment](../../../../app-service/environment/intro.md) die kan worden gebruikt voor het hosten van een of meer web-apps, web-API's of functies
   - Een [Azure Key Vault](../../../../key-vault/general/overview.md)-exemplaar met een VNet-service-eindpunt, voor het opslaan van geheimen die worden gebruikt door in de workloadomgeving uitgevoerde toepassingen

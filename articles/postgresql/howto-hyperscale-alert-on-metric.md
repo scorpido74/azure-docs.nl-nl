@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 3/16/2020
 ms.openlocfilehash: b5ccd1281e50ca10b8edd7d7567a000b97107901
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90907429"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---hyperscale-citus"></a>Gebruik de Azure Portal om waarschuwingen in te stellen voor de Azure Database for PostgreSQL-grootschalige (Citus)
@@ -41,13 +41,13 @@ U kunt informatie over waarschuwings regels configureren en ophalen met behulp v
 
 4. De pagina **regel maken** wordt geopend, zoals hieronder wordt weer gegeven. Vul de vereiste gegevens in:
 
-   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/4-add-rule-form.png" alt-text="Formulier voor metrische waarschuwing toevoegen":::
+   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/4-add-rule-form.png" alt-text="Waarschuwings regels selecteren":::
 
 5. Selecteer in de sectie **voor waarde** de optie **toevoegen**.
 
 6. Selecteer een waarde in de lijst met signalen waarop u wilt worden gewaarschuwd. In dit voor beeld selecteert u ' opslag percentage '.
    
-   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/6-configure-signal-logic.png" alt-text="Metrische waarde selecteren":::
+   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/6-configure-signal-logic.png" alt-text="Waarschuwings regels selecteren":::
 
 7. De waarschuwings logica configureren:
 
@@ -58,13 +58,13 @@ U kunt informatie over waarschuwings regels configureren en ophalen met behulp v
    
    Selecteer **gereed** wanneer u klaar bent.
 
-   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/7-set-threshold-time.png" alt-text="Metrische waarde selecteren":::
+   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/7-set-threshold-time.png" alt-text="Waarschuwings regels selecteren":::
 
 8. Selecteer in de sectie **actie groepen** de optie **nieuwe maken** om een nieuwe groep te maken voor het ontvangen van meldingen over de waarschuwing.
 
 9. Vul het formulier actie groep toevoegen in met een naam, korte naam, abonnement en resource groep.
 
-    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/9-add-action-group.png" alt-text="Actiegroep":::
+    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/9-add-action-group.png" alt-text="Waarschuwings regels selecteren":::
 
 10. Een actie type voor **e-mail/SMS/push/Voice** configureren.
     
@@ -72,11 +72,11 @@ U kunt informatie over waarschuwings regels configureren en ophalen met behulp v
    
     Selecteer **OK** wanneer u klaar bent.
 
-    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/10-action-group-type.png" alt-text="Actiegroep":::
+    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/10-action-group-type.png" alt-text="Waarschuwings regels selecteren":::
 
 11. Geef een naam, beschrijving en ernst voor de waarschuwings regel op.
 
-    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/11-name-description-severity.png" alt-text="Actiegroep"::: 
+    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/11-name-description-severity.png" alt-text="Waarschuwings regels selecteren"::: 
 
 12. Selecteer **waarschuwings regel maken** om de waarschuwing te maken.
 

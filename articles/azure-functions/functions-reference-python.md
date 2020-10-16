@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 12/13/2019
 ms.custom: devx-track-python
 ms.openlocfilehash: f9b81a7263dc9a1bdae9fd881519ac734da2c6bc
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88642194"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Ontwikkelaarshandleiding voor Azure Functions Python
@@ -398,7 +398,7 @@ Azure Functions ondersteunt de volgende python-versies:
 
 | Functie versie | Python- <sup>*</sup> versies |
 | ----- | ----- |
-| controleert | 3,8<br/>3.7<br/>3,6 |
+| 3.x | 3.8<br/>3.7<br/>3,6 |
 | 2.x | 3.7<br/>3,6 |
 
 <sup>*</sup>Officiële CPython-distributies
@@ -471,7 +471,7 @@ U kunt ook basis verificatie referenties gebruiken met de extra pakket index-Url
 
 #### <a name="install-local-packages"></a>Lokale pakketten installeren
 
-Als uw project pakketten gebruikt die niet openbaar beschikbaar zijn voor onze tools, kunt u ze beschikbaar maken voor uw app door ze te plaatsen in de \_ \_ \_ \_ map app/. python_packages. Voordat u publiceert, voert u de volgende opdracht uit om de afhankelijkheden lokaal te installeren:
+Als uw project pakketten gebruikt die niet openbaar beschikbaar zijn voor onze tools, kunt u ze beschikbaar maken voor uw app door ze in de \_ \_ \_ \_ map app/.python_packages te plaatsen. Voordat u publiceert, voert u de volgende opdracht uit om de afhankelijkheden lokaal te installeren:
 
 ```command
 pip install  --target="<PROJECT_DIR>/.python_packages/lib/site-packages"  -r requirements.txt

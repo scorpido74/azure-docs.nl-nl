@@ -1,5 +1,5 @@
 ---
-title: Meer informatie over IoT Plug en Play Digital apparaatdubbels
+title: Meer informatie over IoT Plug en Play digitale apparaatdubbels
 description: Meer informatie over hoe IoT Plug en Play gebruikmaakt van digitale apparaatdubbels
 author: prashmo
 ms.author: prashmo
@@ -7,14 +7,14 @@ ms.date: 07/17/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 5d5ffe4e7d92530f18e278382ab3637c3326e57c
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: ea523045875e0abc9e14924c7bb388ea2cfcc2db
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91578050"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046465"
 ---
-# <a name="understand-iot-plug-and-play-digital-twins"></a>Meer informatie over IoT Plug en Play Digital apparaatdubbels
+# <a name="understand-iot-plug-and-play-digital-twins"></a>Meer informatie over IoT Plug en Play digitale apparaatdubbels
 
 Een IoT Plug en Play-apparaat implementeert een model dat wordt beschreven door het [DTDL-schema (Digital Apparaatdubbels Definition Language)](https://github.com/Azure/opendigitaltwins-dtdl) . Een model beschrijft de set onderdelen, eigenschappen, opdrachten en telemetriegegevens die een bepaald apparaat kan hebben. De eerste keer dat een IoT-Plug en Play apparaat verbinding maakt met een IoT-hub, wordt een apparaat met een dubbele en een digitale dubbele initialisatie.
 
@@ -22,7 +22,7 @@ IoT Plug en Play maakt gebruik van DTDL versie 2. Zie [Digital Apparaatdubbels D
 
 DTDL is niet exclusief voor IoT-Plug en Play. Andere IoT-Services, zoals [Azure Digital apparaatdubbels](../digital-twins/overview.md), gebruiken deze om hele omgevingen, zoals gebouwen en energie netwerken, weer te geven. Zie voor meer informatie over [dubbele modellen in azure Digital apparaatdubbels](../digital-twins/concepts-models.md).
 
-In dit artikel wordt beschreven hoe onderdelen en eigenschappen worden weer gegeven in de *gewenste* en *gerapporteerde* secties van een bepaald apparaat. Ook wordt beschreven hoe deze concepten worden toegewezen aan de bijbehorende digitale twee.
+In dit artikel wordt beschreven hoe onderdelen en eigenschappen worden weer gegeven in de *gewenste* en *gerapporteerde* secties van een bepaald apparaat. Ook wordt beschreven hoe deze concepten worden toegewezen aan de bijbehorende digitale dubbel.
 
 Het IoT-Plug en Play-apparaat in dit artikel dat het [temperatuur controller model](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) implementeert met het onderdeel [Thermo](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) staat.
 
@@ -131,7 +131,7 @@ Eigenschappen zijn gegevens velden die de status van een entiteit vertegenwoordi
 
 #### <a name="read-only-property"></a>Alleen-lezen eigenschap
 
-Schema:
+Schema
 
 ```json
 {
@@ -307,11 +307,11 @@ De volgende fragmenten tonen de side-by-side JSON-weer gave van het `thermostat1
 
 ## <a name="digital-twin-apis"></a>Digitale dubbele Api's
 
-Azure Digital Apparaatdubbels is uitgerust met het **ophalen van digitale dubbele**, **update digitale dubbele**, **onderdeel opdracht aanroepen** en **opdracht aanroepen** voor het digitaal beheren van apparaten. U kunt de rest- [api's](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin) rechtstreeks of via een [Service-SDK](../iot-pnp/libraries-sdks.md)gebruiken.
+Azure Digital Apparaatdubbels is uitgerust met het **ophalen van digitale dubbele**, **update digitale dubbele**, **onderdeel opdracht aanroepen** en **opdracht aanroepen** voor het digitaal beheren van apparaten. U kunt de rest- [api's](/rest/api/iothub/service/digitaltwin) rechtstreeks of via een [Service-SDK](../iot-pnp/libraries-sdks.md)gebruiken.
 
-## <a name="digital-twin-change-events"></a>Digitale dubbele wijzigings gebeurtenissen
+## <a name="digital-twin-change-events"></a>Gebeurtenissen met wijziging van dubbel
 
-Wanneer digitale dubbele wijzigings gebeurtenissen zijn ingeschakeld, wordt een gebeurtenis geactiveerd wanneer de huidige of gewenste waarde van het onderdeel of de eigenschap wordt gewijzigd. Gebeurtenissen met een digitale dubbele wijziging worden gegenereerd in de indeling [JSON-patch](http://jsonpatch.com/) . De bijbehorende gebeurtenissen worden gegenereerd in de dubbele bestands indeling voor het apparaat als dubbele wijzigings gebeurtenissen zijn ingeschakeld.
+Wanneer digitale gebeurtenissen met wijziging in een dubbel zijn ingeschakeld, wordt een gebeurtenis geactiveerd wanneer de huidige of gewenste waarde van het onderdeel of de eigenschap wordt gewijzigd. Gebeurtenissen met een digitale dubbele wijziging worden gegenereerd in de indeling [JSON-patch](http://jsonpatch.com/) . De bijbehorende gebeurtenissen worden gegenereerd in de dubbele bestands indeling voor het apparaat als dubbele wijzigings gebeurtenissen zijn ingeschakeld.
 
 Zie [IOT hub bericht routering gebruiken om apparaat-naar-Cloud-berichten te verzenden naar verschillende eind punten](../iot-hub/iot-hub-devguide-messages-d2c.md#non-telemetry-events)voor meer informatie over het inschakelen van route ring voor apparaat-en digitale dubbele gebeurtenissen. Zie [IOT hub berichten maken en lezen voor meer](../iot-hub/iot-hub-devguide-messages-construct.md)informatie over de bericht indeling.
 
@@ -383,5 +383,5 @@ Nu u over digitale apparaatdubbels hebt geleerd, zijn hier enkele aanvullende br
 
 - [IoT Plug en Play digitale dubbele Api's gebruiken](howto-manage-digital-twin.md)
 - [Interactie met een apparaat vanuit uw oplossing](quickstart-service-node.md)
-- [IoT digitale dubbele REST API](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin)
+- [IoT digitale dubbele REST API](/rest/api/iothub/service/digitaltwin)
 - [Azure IoT Explorer](howto-use-iot-explorer.md)

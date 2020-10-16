@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 03/31/2017
 ms.subservice: alerts
 ms.openlocfilehash: 018bf7ac9c24669df798e9ba05c667dcb72d94a6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87321833"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Webhooks voor Azure-activiteiten logboek waarschuwingen
@@ -260,16 +260,16 @@ Zie [service Health Notifications](../../service-health/service-notifications.md
 | context |De context van de gebeurtenis. |
 | resourceProviderName |De resource provider van de betrokken resource. |
 | conditionType |Altijd ' gebeurtenis '. |
-| name |De naam van de waarschuwings regel. |
+| naam |De naam van de waarschuwings regel. |
 | id |De resource-ID van de waarschuwing. |
-| beschrijving |De beschrijving van de waarschuwing wordt ingesteld wanneer de waarschuwing wordt gemaakt. |
+| description |De beschrijving van de waarschuwing wordt ingesteld wanneer de waarschuwing wordt gemaakt. |
 | subscriptionId |Azure-abonnements-ID. |
 | tijdstempel |Tijdstip waarop de gebeurtenis is gegenereerd door de Azure-service die de aanvraag heeft verwerkt. |
 | resourceId |De resource-ID van de betrokken resource. |
 | resourceGroupName |De naam van de resource groep voor de betrokken resource. |
 | properties |Set `<Key, Value>` paren (dat wil zeggen `Dictionary<String, String>` ) met details over de gebeurtenis. |
 | gebeurtenislog |Element dat meta gegevens bevat over de gebeurtenis. |
-| autorisatie |De op rollen gebaseerde Access Control eigenschappen van de gebeurtenis. Deze eigenschappen omvatten doorgaans de actie, de rol en het bereik. |
+| autorisatie |De Role-Based Access Control eigenschappen van de gebeurtenis. Deze eigenschappen omvatten doorgaans de actie, de rol en het bereik. |
 | category |De categorie van de gebeurtenis. Ondersteunde waarden zijn onder andere: beheer, waarschuwing, beveiliging, ServiceHealth en aanbeveling. |
 | aanroeper |Het e-mail adres van de gebruiker die de bewerking, UPN-claim of SPN-claim heeft uitgevoerd op basis van Beschik baarheid. Kan null zijn voor bepaalde systeem aanroepen. |
 | correlationId |Meestal een GUID in een teken reeks indeling. Gebeurtenissen met correlationId horen bij dezelfde grotere actie en delen meestal een correlationId. |

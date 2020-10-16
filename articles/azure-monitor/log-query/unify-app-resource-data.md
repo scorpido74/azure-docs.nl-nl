@@ -8,10 +8,10 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/02/2020
 ms.openlocfilehash: 360578a36b92711c55b1fc65befa1b3df7927aad
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91330890"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Meerdere Azure Monitor Application Insights resources samen voegen 
@@ -73,7 +73,7 @@ In de volgende tabel ziet u de schema verschillen tussen Log Analytics en Applic
 | AvailabilityMessage | message |
 | AvailabilityRunLocation | location |
 | AvailabilityTestId | id |
-| AvailabilityTestName | name |
+| AvailabilityTestName | naam |
 | AvailabilityTimestamp | tijdstempel |
 | Browser | client_browser |
 | Plaats | client_city |
@@ -82,7 +82,7 @@ In de volgende tabel ziet u de schema verschillen tussen Log Analytics en Applic
 | Land/regio | client_CountryOrRegion | 
 | CustomEventCount | itemCount | 
 | CustomEventDimensions | customDimensions |
-| CustomEventName | name | 
+| CustomEventName | naam | 
 | DeviceModel | client_Model | 
 | DeviceType | client_Type | 
 | ExceptionCount | itemCount | 
@@ -94,12 +94,12 @@ In de volgende tabel ziet u de schema verschillen tussen Log Analytics en Applic
 | OS | client_OS | 
 | PageViewCount | itemCount |
 | PageViewDuration | duur | 
-| PageViewName | name | 
+| PageViewName | naam | 
 | ParentOperationID | operation_Id | 
 | RequestCount | itemCount | 
 | RequestDuration | duur | 
 | RequestID | id | 
-| Aanvraagnaam | name | 
+| Aanvraagnaam | naam | 
 | RequestSuccess | voltooid | 
 | ResponseCode | resultCode | 
 | Rol | cloud_RoleName |

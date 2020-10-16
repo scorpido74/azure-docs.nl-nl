@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/17/2020
+ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bb5383ee7930cb3d54593f71a709c033d3850889
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f52111fbbbd90f3d2f39f538c4bf1a2672cd504b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88521209"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961235"
 ---
 # <a name="define-a-technical-profile-for-a-saml-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Een technisch profiel voor een SAML-token Uitgever definiëren in een Azure Active Directory B2C aangepast beleid
 
@@ -37,6 +37,7 @@ In het volgende voor beeld ziet u een technisch profiel voor `Saml2AssertionIssu
   <OutputTokenFormat>SAML2</OutputTokenFormat>
   <Metadata>
     <Item Key="IssuerUri">https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/B2C_1A_signup_signin_SAML</Item>
+    <Item Key="TokenNotBeforeSkewInSeconds">600</Item>
   </Metadata>
   <CryptographicKeys>
     <Key Id="MetadataSigning" StorageReferenceId="B2C_1A_SamlIdpCert"/>
@@ -58,6 +59,7 @@ De **InputClaims**-, **OutputClaims**-en **PersistClaims** -elementen zijn leeg 
 | --------- | -------- | ----------- |
 | IssuerUri | Nee | De naam van de verlener die wordt weer gegeven in het SAML-antwoord. De waarde moet overeenkomen met de naam die is geconfigureerd in de Relying Party-toepassing. |
 | XmlSignatureAlgorithm | Nee | De methode die Azure AD B2C gebruikt om de SAML-bevestigingen te ondertekenen. Mogelijke waarden: `Sha256` , `Sha384` , `Sha512` of `Sha1` . Zorg ervoor dat u het handtekening algoritme aan beide zijden met dezelfde waarde configureert. Gebruik alleen de algoritme die door uw certificaat wordt ondersteund. Zie [SAML-meta gegevens voor relying](relyingparty.md#metadata) Party voor informatie over het configureren van het SAML-antwoord|
+|TokenNotBeforeSkewInSeconds| Nee| Geeft het verschil aan, als een geheel getal, voor het tijds tempel dat het begin van de geldigheids periode aangeeft. Hoe hoger dit getal is, hoe meer tijd de geldigheids periode begint ten opzichte van de tijd dat de claims worden uitgegeven voor de Relying Party. Als de TokenNotBeforeSkewInSeconds bijvoorbeeld is ingesteld op 60 seconden en het token is uitgegeven om 13:05:10 UTC, is het token geldig van 13:04:10 UTC. De standaardwaarde is 0. De maximum waarde is 3600 (één uur). |
 
 ## <a name="cryptographic-keys"></a>Cryptografische sleutels
 

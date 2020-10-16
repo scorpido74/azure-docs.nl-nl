@@ -13,19 +13,16 @@ ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: c6e59ab0432ad2b7bdccb5ce9916e85eb6d95048
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 8f6170de65ae5e1ca8ecb5f7cc8a78f4f194ac41
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116390"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055287"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Waarom bijwerken naar Microsoft Identity Platform (v2.0)?
 
 Wanneer u een nieuwe toepassing ontwikkelt, is het belang rijk dat u weet wat de verschillen zijn tussen de micro soft Identity platform (v 2.0) en de Azure Active Directory (v 1.0)-eind punten. In dit artikel worden de belangrijkste verschillen beschreven tussen de eind punten en enkele bestaande beperkingen van micro soft Identity platform.
-
-> [!NOTE]
-> Het micro soft Identity platform-eind punt biedt geen ondersteuning voor alle Azure AD-scenario's en-functies. Lees over [micro soft Identity platform-beperkingen](#limitations)om te bepalen of u het micro soft Identity platform-eind punt moet gebruiken.
 
 ## <a name="who-can-sign-in"></a>Wie kan zich aanmelden
 
@@ -35,7 +32,7 @@ Wanneer u een nieuwe toepassing ontwikkelt, is het belang rijk dat u weet wat de
 * Met het micro soft Identity platform-eind punt kunnen werk-en school accounts van Azure AD en persoonlijke micro soft-accounts (MSA), zoals hotmail.com, outlook.com en msn.com, worden aangemeld.
 * Beide eind punten accepteren ook aanmeldingen van *[gast gebruikers](../external-identities/what-is-b2b.md)* van een Azure AD-Directory voor toepassingen die zijn geconfigureerd als *[single tenant](../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)* of voor *multi tenant* -toepassingen die zijn geconfigureerd om naar het Tenant-specifieke eind punt () te verwijzen `https://login.microsoftonline.com/{TenantId_or_Name}` .
 
-Met het micro soft Identity platform-eind punt kunt u apps schrijven die aanmeldingen accepteren van persoonlijke micro soft-accounts en werk-en school accounts. Dit biedt u de mogelijkheid om uw app volledig account-neutraal te schrijven. Als uw app bijvoorbeeld de [Microsoft Graph](https://graph.microsoft.io)aanroept, zijn er extra functies en gegevens beschikbaar voor werk accounts, zoals hun share point-sites of Directory gegevens. Maar voor veel acties, zoals het [lezen van de e-mail van een gebruiker](/graph/api/user-list-messages?view=graph-rest-1.0), heeft dezelfde code toegang tot het e-mail bericht voor zowel privé-als werk-en school accounts.
+Met het micro soft Identity platform-eind punt kunt u apps schrijven die aanmeldingen accepteren van persoonlijke micro soft-accounts en werk-en school accounts. Dit biedt u de mogelijkheid om uw app volledig account-neutraal te schrijven. Als uw app bijvoorbeeld de [Microsoft Graph](https://graph.microsoft.io)aanroept, zijn er extra functies en gegevens beschikbaar voor werk accounts, zoals hun share point-sites of Directory gegevens. Maar voor veel acties, zoals het [lezen van de e-mail van een gebruiker](/graph/api/user-list-messages), heeft dezelfde code toegang tot het e-mail bericht voor zowel privé-als werk-en school accounts.
 
 Voor het micro soft Identity platform-eind punt kunt u de micro soft Authentication Library (MSAL) gebruiken om toegang te krijgen tot de consument, het onderwijs en de zakelijke wereld. Het Azure AD v 1.0-eind punt accepteert alleen aanmeldingen van werk-en school accounts.
 
@@ -61,7 +58,7 @@ Toestemming van de beheerder die namens een organisatie wordt uitgevoerd, vereis
 
 Voor apps die gebruikmaken van het v 1.0-eind punt kan een app zich gedragen als een **resource**of een ontvanger van tokens. Een resource kan een aantal **bereiken** of **oAuth2Permissions** definiëren die het begrijpt, zodat client-apps tokens van die bron kunnen aanvragen voor een bepaalde reeks bereiken. Denk eens aan de Microsoft Graph-API als voor beeld van een resource:
 
-* Resource-id of `AppID URI` :`https://graph.microsoft.com/`
+* Resource-id of `AppID URI` : `https://graph.microsoft.com/`
 * Bereiken, of `oAuth2Permissions` : `Directory.Read` ,, enzovoort `Directory.Write` .
 
 Dit geldt voor het micro soft Identity platform-eind punt. Een app kan zich nog steeds gedragen als een resource, scopes definiëren en worden geïdentificeerd met een URI. Client-apps kunnen nog steeds toegang tot deze bereiken aanvragen. De manier waarop een client die machtigingen aanvraagt, is echter gewijzigd.
@@ -114,7 +111,7 @@ Deze bereiken bieden u de mogelijkheid om uw app in een minimale verschaffings m
 Met het micro soft Identity platform-eind punt wordt standaard een kleinere set claims in de tokens uitgegeven om payloads klein te blijven. Als u beschikt over apps en services die afhankelijk zijn van een bepaalde claim in een v 1.0-token dat niet meer standaard wordt geleverd in een micro soft Identity platform-token, kunt u overwegen de [optionele claim](../develop/active-directory-optional-claims.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) functie te gebruiken om die claim op te nemen.
 
 > [!IMPORTANT]
-> v 1.0 en v 2.0-tokens kunnen worden uitgegeven door de eind punten v 1.0 en v 2.0. id_tokens komen *altijd* overeen met het eind punt waarvoor ze zijn aangevraagd, en toegangs tokens komen *altijd* overeen met de indeling die wordt verwacht door de Web-API die door de client wordt gebruikt.  Dus als uw app het v 2.0-eind punt gebruikt om een token op te halen voor het aanroepen van Microsoft Graph, waarbij de toegangs tokens voor de indeling van v 1.0 worden verwacht, ontvangt uw app een token in de indeling v 1.0.  
+> v 1.0 en v 2.0-tokens kunnen worden uitgegeven door de eind punten v 1.0 en v 2.0. id_tokens komen *altijd* overeen met het eind punt waarvoor ze zijn aangevraagd, en toegangs tokens komen *altijd* overeen met de indeling die wordt verwacht door de Web-API die door de client wordt gebruikt.  Dus als uw app het v 2.0-eind punt gebruikt om een token op te halen voor het aanroepen van Microsoft Graph, waarbij de toegangs tokens voor de indeling van v 1.0 worden verwacht, ontvangt uw app een token in de indeling v 1.0.
 
 ## <a name="limitations"></a>Beperkingen
 
@@ -153,18 +150,22 @@ Momenteel is de ondersteuning van tape wisselaars voor het micro soft Identity p
 * Als u een desktop-of mobiele toepassing bouwt, kunt u een van de micro soft-verificatie bibliotheken (MSAL) gebruiken. Deze bibliotheken zijn algemeen beschikbaar of worden ondersteund in een preview-versie, zodat u ze veilig kunt gebruiken in productie toepassingen. U vindt meer informatie over de voor waarden van de preview-versie en de beschik bare bibliotheken in [verificatie bibliotheken](../develop/reference-v2-libraries.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).
 * Voor platforms die niet onder micro soft-bibliotheken vallen, kunt u integreren met het micro soft Identity platform-eind punt door rechtstreeks protocol berichten te verzenden en ontvangen in de code van uw toepassing. De OpenID Connect Connect-en OAuth-protocollen [zijn expliciet gedocumenteerd](../develop/active-directory-v2-protocols.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) om u een dergelijke integratie te bieden.
 * Ten slotte kunt u open-source OpenID Connect Connect en OAuth-bibliotheken gebruiken om te integreren met het micro soft Identity platform-eind punt. Het micro soft Identity platform-eind punt moet compatibel zijn met veel open-source protocol bibliotheken zonder wijzigingen. De beschik baarheid van dit soort bibliotheken is afhankelijk van de taal en het platform. De [OpenID Connect Connect](https://openid.net/connect/) -en [OAuth 2,0](https://oauth.net/2/) -websites onderhouden een lijst met populaire implementaties. Zie voor meer informatie [micro soft Identity-platform en verificatie bibliotheken](../develop/reference-v2-libraries.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)en de lijst met open source-client bibliotheken en-voor beelden die zijn getest met het micro soft Identity platform-eind punt.
-* Ter referentie: het `.well-known` eind punt voor het micro soft Identity platform common-eind punt is `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration` . Vervang door `common` uw Tenant-id om gegevens op te halen die specifiek zijn voor uw Tenant.  
+* Ter referentie: het `.well-known` eind punt voor het micro soft Identity platform common-eind punt is `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration` . Vervang door `common` uw Tenant-id om gegevens op te halen die specifiek zijn voor uw Tenant.
 
 ### <a name="protocol-changes"></a>Protocol wijzigingen
 
-Het micro soft Identity platform-eind punt biedt geen ondersteuning voor SAML of WS-Federation. OpenID Connect Connect en OAuth 2,0 worden alleen ondersteund.  De belangrijkste wijzigingen in de OAuth 2,0-protocollen van het eind punt van de v 1.0 zijn: 
+Het micro soft Identity platform-eind punt biedt geen ondersteuning voor SAML of WS-Federation. OpenID Connect Connect en OAuth 2,0 worden alleen ondersteund.  De belangrijkste wijzigingen in de OAuth 2,0-protocollen van het eind punt van de v 1.0 zijn:
 
-* De `email` claim wordt geretourneerd als een optionele claim is geconfigureerd **of** Scope = e-mail is opgegeven in de aanvraag. 
-* De `scope` para meter wordt nu ondersteund in plaats van de `resource` para meter.  
-* Veel reacties zijn gewijzigd om ze beter te laten voldoen aan de OAuth 2,0-specificatie, bijvoorbeeld correct retourneert `expires_in` als een int in plaats van een teken reeks.  
+* De `email` claim wordt geretourneerd als een optionele claim is geconfigureerd **of** Scope = e-mail is opgegeven in de aanvraag.
+* De `scope` para meter wordt nu ondersteund in plaats van de `resource` para meter.
+* Veel reacties zijn gewijzigd om ze beter te laten voldoen aan de OAuth 2,0-specificatie, bijvoorbeeld correct retourneert `expires_in` als een int in plaats van een teken reeks.
 
 Zie [OpenID Connect Connect and OAuth 2,0 protocol Reference](../develop/active-directory-v2-protocols.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)(Engelstalig) voor meer informatie over het bereik van de protocol functionaliteit die wordt ondersteund in het micro soft Identity platform-eind punt.
 
-#### <a name="saml-restrictions"></a>SAML-beperkingen
+#### <a name="saml-usage"></a>SAML-gebruik
 
-Als u Active Directory Authentication Library (ADAL) in Windows-toepassingen hebt gebruikt, hebt u mogelijk geprofiteerd van geïntegreerde Windows-authenticatie, die gebruikmaakt van de toekenning van de Security Assertion Markup Language (SAML). Met deze toekenning kunnen gebruikers van federatieve Azure AD-tenants zich op de achtergrond verifiëren met hun lokale Active Directory exemplaar zonder referenties in te voeren. De toekenning van SAML-verklaringen wordt niet ondersteund op het micro soft Identity platform-eind punt.
+Als u Active Directory Authentication Library (ADAL) in Windows-toepassingen hebt gebruikt, hebt u mogelijk geprofiteerd van geïntegreerde Windows-authenticatie, die gebruikmaakt van de toekenning van de Security Assertion Markup Language (SAML). Met deze toekenning kunnen gebruikers van federatieve Azure AD-tenants zich op de achtergrond verifiëren met hun lokale Active Directory exemplaar zonder referenties in te voeren. Hoewel [SAML nog steeds wordt ondersteund](../develop/active-directory-saml-protocol-reference.md) voor gebruik met zakelijke gebruikers, is het v 2.0-eind punt alleen voor gebruik met OAuth 2,0-toepassingen.
+
+## <a name="next-steps"></a>Volgende stappen
+
+Meer informatie vindt u in de [documentatie voor micro soft Identity platform](../develop/index.yml).

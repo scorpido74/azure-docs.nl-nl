@@ -12,10 +12,10 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 1d631c47225fac7d8a95541313593333a1399e07
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87115967"
 ---
 # <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>Aangepaste kenmerken definiëren in Azure Active Directory B2C
@@ -40,7 +40,7 @@ ms.locfileid: "87115967"
 5. Geef een **naam** op voor het aangepaste kenmerk (bijvoorbeeld ' ShoeSize ')
 6. Kies een **gegevens type**. Alleen **String**, **Boolean**en **int** zijn beschikbaar.
 7. Voer desgewenst een **Beschrijving** in voor informatieve doel einden.
-8. Klik op **Create**.
+8. Klik op **Maken**.
 
 Het aangepaste kenmerk is nu beschikbaar in de lijst met **gebruikers kenmerken** en voor gebruik in uw gebruikers stromen. Een aangepast kenmerk wordt alleen gemaakt wanneer het voor de eerste keer wordt gebruikt in een gebruikers stroom en niet wanneer u het toevoegt aan de lijst met **gebruikers kenmerken**.
 

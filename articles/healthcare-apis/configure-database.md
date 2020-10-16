@@ -7,14 +7,14 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 11/15/2019
 ms.author: matjazl
-ms.openlocfilehash: be3cf7d946e7502147942fa8954ade70dd47bedf
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: 2850f831100533908d55c4aab372338e07b3807f
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91839925"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042487"
 ---
-# <a name="configure-database-settings"></a>Data base-instellingen configureren 
+# <a name="configure-database-settings"></a>Database-instellingen configureren 
 
 De Azure-API voor FHIR gebruikt data base om de gegevens op te slaan. De prestaties van de onderliggende Data Base zijn afhankelijk van het aantal aanvraag eenheden (RU) dat is geselecteerd tijdens het inrichten van services of in de data base-instellingen nadat de service is ingericht.
 
@@ -41,7 +41,7 @@ Als de doorvoer capaciteit van de data base groter is dan 10.000 RU/s of als de 
 In dit artikel hebt u geleerd hoe u de RUs voor Azure API voor FHIR bijwerkt. Meer informatie over het configureren van door de klant beheerde sleutels als een database instelling:
 
 >[!div class="nextstepaction"]
->[Door klant beheerde sleutels configureren](bring-your-own-key.md)
+>[Door de klant beheerde sleutels configureren](customer-managed-key.md)
 
 U kunt ook een volledig beheerde Azure API implementeren voor FHIR:
  

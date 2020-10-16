@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/28/2020
 ms.author: aahi
 keywords: on-premises, docker, container, Kubernetes
-ms.openlocfilehash: ed61760312ad8bada0241b0338c36ab3557e2caa
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: cf0ea6339de1ba6aca93a1a71990515d296f2e3a
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91665409"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999687"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure Cognitive Services-containers
 
@@ -72,7 +72,7 @@ Azure Cognitive Services-containers bieden de volgende set docker-containers, di
 | [Tekstanalyse][ta-containers-language] | F0, S | **Taaldetectie** ([afbeelding](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)) | Voor Maxi maal 120 talen detecteert u in welke taal de invoer tekst wordt geschreven en rapporteert u één taal code voor elk document dat voor de aanvraag wordt verzonden. De taalcode is gekoppeld aan een score die de sterkte van de score aangeeft. |
 | [Tekstanalyse][ta-containers-sentiment] | F0, S | **Sentimentanalyse v3** ([installatie kopie](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)) | Analyseer onbewerkte tekst voor aanwijzingen over positieve of negatieve sentiment. Deze versie van sentiment analyse retourneert sentiment-labels (bijvoorbeeld *positief* of *negatief*) voor elk document en elke zin daarin. |
 | [Tekstanalyse][ta-containers-health] | F0, S | **Text Analytics voor de status** | Medische gegevens uit ongestructureerde klinische tekst extra heren en labelen. |
-| [Ruimtelijke analyse][spa-containers] | S0 | **Ruimtelijke analyse** | Medische gegevens uit ongestructureerde klinische tekst extra heren en labelen. |
+| [Ruimtelijke analyse][spa-containers] | S0 | **Ruimtelijke analyse** | Analyseer realtime streaming video om ruimtelijke relaties tussen personen, hun beweging en interacties met objecten in fysieke omgevingen te begrijpen. |
 
 <!--
 |[Personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409) |F0, S0|**Personalizer** ([image](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409))|Azure Personalizer is a cloud-based API service that allows you to choose the best experience to show to your users, learning from their real-time behavior.|

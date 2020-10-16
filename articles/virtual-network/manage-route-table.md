@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: kumud
 ms.openlocfilehash: 664e3851370be812cd7a0e58cf9beb1fddb5d991
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87291002"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Een route tabel maken, wijzigen of verwijderen
@@ -190,7 +190,7 @@ Er is een limiet voor het aantal routes per route tabel dat per Azure-locatie en
 
 1. Voer een unieke **route naam** in voor de route in de route tabel.
 
-1. Geef het **adres voorvoegsel**op in de CIDR-notatie (Classless Inter-Domain Routing) waarnaar u verkeer wilt door sturen. Het voor voegsel kan niet worden gedupliceerd in meer dan één route in de route tabel, maar het voor voegsel kan zich in een ander voor voegsel bevindt. Als u bijvoorbeeld *10.0.0.0/16* als voor voegsel in één route hebt gedefinieerd, kunt u nog steeds een andere route definiëren met het adres voorvoegsel *10.0.0.0/22* . Azure selecteert een route voor verkeer op basis van het voor voegsel van de voor voegsels. Zie [hoe Azure een route selecteert](virtual-networks-udr-overview.md#how-azure-selects-a-route)voor meer informatie.
+1. Geef het **adres voorvoegsel**op in de CIDR-notatie (Classless Inter-Domain route ring) waarnaar u verkeer wilt door sturen. Het voor voegsel kan niet worden gedupliceerd in meer dan één route in de route tabel, maar het voor voegsel kan zich in een ander voor voegsel bevindt. Als u bijvoorbeeld *10.0.0.0/16* als voor voegsel in één route hebt gedefinieerd, kunt u nog steeds een andere route definiëren met het adres voorvoegsel *10.0.0.0/22* . Azure selecteert een route voor verkeer op basis van het voor voegsel van de voor voegsels. Zie [hoe Azure een route selecteert](virtual-networks-udr-overview.md#how-azure-selects-a-route)voor meer informatie.
 
 1. Kies een **type van de volgende hop**. Zie [virtueel netwerk verkeer routeren](virtual-networks-udr-overview.md)voor meer informatie over de volgende typen hops.
 
@@ -333,7 +333,7 @@ Na een korte wacht tijd geeft Azure u het type van de volgende hop en de ID van 
 
 Om taken uit te voeren op route tabellen en routes, moet uw account worden toegewezen aan de [rol netwerk bijdrager](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) of aan een [aangepaste rol](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) waaraan de juiste acties in de volgende tabel worden toegewezen:
 
-| Bewerking                                                          |   Naam                                                  |
+| Bewerking                                                          |   Name                                                  |
 |--------------------------------------------------------------   |   -------------------------------------------           |
 | Micro soft. Network/routeTables/lezen                              |   Een route tabel lezen                                    |
 | Micro soft. Network/routeTables/schrijven                             |   Een route tabel maken of bijwerken                        |

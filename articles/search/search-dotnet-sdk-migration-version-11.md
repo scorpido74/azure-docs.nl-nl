@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 08/20/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: f6953f145621e11506a009fa59d67a5f40508a13
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91539568"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>Upgrade uitvoeren naar Azure Cognitive Search .NET SDK versie 11
@@ -135,7 +135,7 @@ Versie 11,1 voegt het volgende toe:
 De volgende versie 10-functies zijn nog niet beschikbaar in versie 11. Als u deze functies nodig hebt, moet u de migratie uitschakelen totdat deze worden ondersteund.
 
 + georuimtelijke typen
-+ [Knowledge Store](knowledge-store-concept-intro.md)
++ [Kennisarchief](knowledge-store-concept-intro.md)
 
 <a name="UpgradeSteps"></a>
 

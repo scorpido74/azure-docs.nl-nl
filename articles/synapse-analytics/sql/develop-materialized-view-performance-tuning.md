@@ -11,10 +11,10 @@ ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.openlocfilehash: 1f04f8b447f07f62561f56722df3b9502ad58d41
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91289035"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Prestaties afstemmen met gerealiseerde weergaven
@@ -35,7 +35,7 @@ De meeste standaard weergave vereisten zijn nog steeds van toepassing op een ger
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------|
 |Definitie weergeven                 | Opgeslagen in azure Data Warehouse.              | Opgeslagen in azure Data Warehouse.
 |Inhoud weergeven                    | Elke keer dat de weer gave wordt gebruikt, gegenereerd.   | Vooraf verwerkt en opgeslagen in azure Data Warehouse tijdens het maken van de weer gave. Bijgewerkt wanneer gegevens worden toegevoegd aan de onderliggende tabellen.
-|Gegevensvernieuwing                    | Altijd bijgewerkt                               | Altijd bijgewerkt
+|Gegevens vernieuwen                    | Altijd bijgewerkt                               | Altijd bijgewerkt
 |Snelheid om weergave gegevens op te halen uit complexe query's     | Langzaam                                         | Snel  
 |Extra opslag ruimte                   | Nee                                           | Ja
 |Syntax                          | WEER GAVE MAKEN                                  | GEREALISEERDE WEER GAVE MAKEN ALS SELECTEREN

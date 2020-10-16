@@ -9,10 +9,10 @@ ms.author: justipat
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 07bfaabf051a016ca9617245ba8628ef6c7e80c0
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91566615"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>Door het systeem toegewezen beheerde identiteiten gebruiken om toegang te krijgen tot Azure Cosmos DB gegevens
@@ -41,7 +41,7 @@ In deze stap wijst u een door het systeem toegewezen beheerde identiteit toe aan
 
 In deze stap wijst u een rol toe aan de door het systeem toegewezen beheerde identiteit van de functie-app. Azure Cosmos DB heeft meerdere ingebouwde rollen die u aan de beheerde identiteit kunt toewijzen. Voor deze oplossing gebruikt u de volgende twee rollen:
 
-|Ingebouwde rol  |Description  |
+|Ingebouwde rol  |Beschrijving  |
 |---------|---------|
 |[Inzender voor DocumentDB-accounts](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|Kan Azure Cosmos DB accounts beheren. Het ophalen van sleutels voor lezen/schrijven is toegestaan. |
 |[Rol van Cosmos DB-account lezer](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Kan gegevens van Azure Cosmos DB-account lezen. Kan Lees sleutels ophalen. |

@@ -2,26 +2,27 @@
 title: bestand opnemen
 description: bestand opnemen
 services: redis-cache
-author: wesmc7777
+author: curib
 ms.service: cache
 ms.topic: include
-ms.date: 11/05/2019
-ms.author: wesmc
+ms.date: 10/06/2020
+ms.author: cauribeg
 ms.custom: include file
-ms.openlocfilehash: e0557f8eb2fd120baeebee96acb4ef539344e3e7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ae9526a47a77118503274fc824538980ebcd50de
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87528821"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91828868"
 ---
-1. Als u een cache wilt maken, meldt u zich aan bij de [Azure-portal](https://portal.azure.com) en selecteert u **Een resource maken**. 
-   
-   ![Selecteer Een resource maken](media/redis-cache-create/create-a-resource.png)
+1. Als u een cache wilt maken, meldt u zich aan bij de [Azure-portal](https://portal.azure.com) en selecteert u **Een resource maken**.
+
+    :::image type="content" source="media/redis-cache-create/create-resource.png" alt-text="Selecteer Azure Cache voor Redis.":::
+
    
 1. Selecteer op de pagina **Nieuw** de optie **Databases** en selecteer vervolgens **Azure Cache voor Redis**.
-   
-   ![Azure Cache voor Redis selecteren](media/redis-cache-create/redis-cache-new-cache-menu.png)
+
+    :::image type="content" source="media/redis-cache-create/select-cache.png" alt-text="Selecteer Azure Cache voor Redis.":::
    
 1. Configureer op de pagina **Nieuwe Redis-cache** de instellingen voor de nieuwe cache.
    
@@ -32,15 +33,23 @@ ms.locfileid: "87528821"
    | **Resourcegroep** | Open de vervolgkeuzelijst en selecteer een resourcegroep of kies **Nieuwe maken** en geef een naam voor de nieuwe resourcegroep op. | Naam voor de resourcegroep waarin de cache en andere resources moeten worden gemaakt. Door al uw app-resources in één resourcegroep te plaatsen, kunt u ze eenvoudig beheren of verwijderen. | 
    | **Locatie** | Open de vervolgkeuzelijst en selecteer een locatie. | Selecteer een [regio](https://azure.microsoft.com/regions/) in de buurt van andere services die gaan gebruikmaken van de cache. |
    | **Prijscategorie** | Open de vervolgkeuzelijst en selecteer een [Prijscategorie](https://azure.microsoft.com/pricing/details/cache/). |  De prijscategorie bepaalt de grootte, prestaties en functies die beschikbaar zijn voor de cache. Zie het [Azure Cache voor Redis-overzicht](../articles/azure-cache-for-redis/cache-overview.md) voor meer informatie. |
-   
-1. Selecteer **Maken**. 
-   
-   ![Een Azure-cache voor Redis maken](media/redis-cache-create/redis-cache-cache-create.png) 
-   
-   > [!NOTE]
-   > U kunt verwachten dat het inrichten van de cache ongeveer 15 tot 20 minuten duurt.   
-   
-   U kunt de voortgang bekijken op de **overzichtspagina** van Azure Cache voor Redis. Als u bij **Status** **Wordt uitgevoerd** ziet staan, kunt u de cache gebruiken.
-   
-   ![Azure Cache voor Redis gemaakt](media/redis-cache-create/redis-cache-cache-created.png)
 
+1. Selecteer het tabblad **Netwerken** of klik op de knop **Netwerken** onderaan de pagina.
+
+1. Selecteer uw verbindingsmethode op het tabblad **Netwerk**.
+
+1. Selecteer het tabblad **Volgende: Geavanceerd** of klik op de knop **Volgende: Geavanceerd** onderaan de pagina.
+
+1. Selecteer in het tabblad **Geavanceerd** voor een basic of standard cache-exemplaar de schakeloptie inschakelen als u een niet-TLS-poort wilt inschakelen.
+
+1. Configureer in het tabblad **Geavanceerd** voor premium cache-exemplaar de instellingen voor een niet-TLS-poort, clustering en gegevenspersistentie.
+
+1. Selecteer het tabblad **Volgende: Tags** of klik op de knop **Volgende: Tags** onderaan de pagina.
+
+1. Voer desgewenst in het tabblad **Tags** de naam en waarde in om de resource te categoriseren. 
+
+1. Selecteer  **Beoordelen + maken**. Het tabblad Beoordelen + maken wordt weergegeven, waar uw configuratie wordt gevalideerd in Azure.
+
+1. Selecteer **Maken** nadat het groene bericht Validatie geslaagd verschijnt.
+
+Het duurt even voor de cache is gemaakt. U kunt de voortgang bekijken op de  **overzichtspagina**  van Azure Cache voor Redis. Wanneer  **Status** wordt weergegeven als  **Wordt uitgevoerd**, is de cache klaar voor gebruik. 

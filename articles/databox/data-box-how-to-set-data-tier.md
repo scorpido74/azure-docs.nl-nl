@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 05/24/2019
 ms.author: alkohli
 ms.openlocfilehash: a68793d893d8eb8de681eb438de39afc212370c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84608703"
 ---
 # <a name="use-azure-data-box-or-azure-data-box-heavy-to-send-data-to-appropriate-azure-storage-blob-tier"></a>Azure Data Box of Azure Data Box Heavy gebruiken om gegevens te verzenden naar de juiste Azure Storage BLOB-laag
@@ -83,7 +83,7 @@ In de volgende stappen wordt beschreven hoe u de BLOB-laag kunt instellen op arc
     }
     ```
 
-    Hieronder ziet u een voor beeld van uitvoer:
+    Hieronder ziet u een voorbeeld van de uitvoer:
 
     ```
     Windows PowerShell

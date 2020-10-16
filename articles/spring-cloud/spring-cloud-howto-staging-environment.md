@@ -7,22 +7,22 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: d36c185272b7b67ffb8a21a77cc3a64f22d0df5a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 72cf5553bec5985ba0310b4a347b0d2c60da6924
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90888473"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090706"
 ---
 # <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>Een faserings omgeving instellen in azure lente-Cloud
 
-**Dit artikel is van toepassing op:** ✔️ java
+**Dit artikel is van toepassing op:** ✔️ Java
 
 In dit artikel wordt beschreven hoe u een faserings implementatie instelt met behulp van het patroon voor blauw-groen-implementatie in azure lente-Cloud. Blauw/groen-implementatie is een Azure DevOps-patroon voor continue levering dat erop vertrouwt een bestaande (blauwe) versie live te houden terwijl een nieuwe (groene) wordt geïmplementeerd. In dit artikel wordt beschreven hoe u die fase ring implementeert in productie zonder de productie-implementatie rechtstreeks te wijzigen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-In dit artikel wordt ervan uitgegaan dat u de PiggyMetrics-toepassing al hebt geïmplementeerd vanuit onze [zelf studie over het starten van een Azure lente-Cloud toepassing](spring-cloud-quickstart-launch-app-portal.md). PiggyMetrics bestaat uit drie toepassingen: "gateway," "account-service" en "auth-service".  
+In dit artikel wordt ervan uitgegaan dat u de PiggyMetrics-toepassing al hebt geïmplementeerd vanuit onze [zelf studie over het starten van een Azure lente-Cloud toepassing](./spring-cloud-quickstart.md). PiggyMetrics bestaat uit drie toepassingen: "gateway," "account-service" en "auth-service".  
 
 Als u een andere toepassing voor dit voor beeld wilt gebruiken, moet u een eenvoudige wijziging aanbrengen in een openbaar gedeelte van de toepassing.  Deze wijziging is van invloed op uw staging-implementatie van productie.
 

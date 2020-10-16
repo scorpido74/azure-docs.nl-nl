@@ -1,19 +1,19 @@
 ---
 title: Wat zijn Azure-reserveringen?
-description: Meer informatie over Azure-reserveringen en prijzen om geld te besparen op uw virtuele machines, SQL-databases, Azure Cosmos DB en andere resourcekosten.
+description: Meer informatie over Azure-reserveringen en prijzen om geld te besparen op uw gereserveerde instanties voor virtuele machines, SQL-databases, Azure Cosmos DB en andere resourcekosten.
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: overview
-ms.date: 08/04/2020
+ms.date: 10/01/2020
 ms.author: banders
-ms.openlocfilehash: a5ab489e995506deb806fe5f0cee4a147ae42ac2
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: d8c9f35ec7a8db3a777e48a629e4af1f15090a89
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682583"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652360"
 ---
 # <a name="what-are-azure-reservations"></a>Wat zijn Azure-reserveringen?
 
@@ -50,9 +50,9 @@ Zie  [Bepalen welke reservering u moet aanschaffen](determine-reservation-purc
 
 U kunt reserveringen aanschaffen in de Azure-portal, via API's, PowerShell en CLI. 
 
-Voor het doen van een aankoop, gaat u naar de Azure-portal (https://ms.portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Docs) 
+Ga naar de [Azure-portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Docs) om een aankoop te doen.
 
-Zie  [Een reservering kopen](prepare-buy-reservation.md) voor meer informatie 
+Zie  [Een reservering kopen](prepare-buy-reservation.md) voor meer informatie
 
 ## <a name="how-is-a-reservation-billed"></a>Op welke manier wordt een reservering gefactureerd? 
 
@@ -106,7 +106,7 @@ Softwareabonnementen:
 
 - **SUSE Linux**: onder een reservering vallen de kosten voor softwareabonnementen. De kortingen zijn alleen van toepassing op SUSE-meters, en niet op het gebruik van virtuele machines.
 - **Red Hat-abonnementen**: onder een reservering vallen de kosten voor softwareabonnementen. De kortingen zijn alleen van toepassing op RedHat-meters, en niet op het gebruik van virtuele machines.
-- **Azure VMware-oplossing van CloudSimple**: onder een reservering vallen de VMWare CloudSimple-knooppunten. Er kunnen nog steeds aanvullende softwarekosten van toepassing zijn.
+- **Azure VMware Solution by CloudSimple**: onder een reservering vallen de VMware CloudSimple-knooppunten. Er kunnen nog steeds aanvullende softwarekosten van toepassing zijn.
 - **Azure Red Hat OpenShift**: een reservering is van toepassing op de OpenShift-kosten, niet op de kosten voor de Azure-infrastructuur.
 
 Voor virtuele Windows-machines en SQL Database is de reserveringskorting niet van toepassing op de softwarekosten. U kunt de licentiekosten dekken via [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/).

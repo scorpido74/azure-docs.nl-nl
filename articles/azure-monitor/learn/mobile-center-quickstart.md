@@ -8,12 +8,12 @@ ms.author: mbullwin
 ms.date: 06/26/2019
 ms.reviewer: daviste
 ms.custom: mvc
-ms.openlocfilehash: 0539dcecbbbfe28817122e0f47e813182a9abd9d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 27b74f99d926bf72bc22f153a8d76deb56646987
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87322139"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993888"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>Mobiele app analyseren met App Center en Application Insights
 
@@ -124,7 +124,7 @@ Met Application Insights kunt u de telemetriegegevens voor aangepaste gebeurteni
    1. Selecteer de query door ergens in de teksteditor op de query te klikken.
    2. Klik vervolgens op **Go** om de query uit te voeren. 
 
-   Lees hier meer over [Application Insights Analytics](../log-query/log-query-overview.md) en de [querytaal Log Analytics](https://aka.ms/LogAnalyticsLanguageReference).
+   Lees hier meer over [Application Insights Analytics](../log-query/log-query-overview.md) en de [querytaal Log Analytics](/azure/data-explorer/kusto/query/).
 
 
 2. **Segmenteer en filter de telemetrie van uw aangepaste gebeurtenissen.** Kies op de pagina **Overzicht** van Application Insights de optie **Gebruikers** in de inhoudsopgave.
@@ -168,4 +168,3 @@ De Application Insights-resource verwijderen:
 
 > [!div class="nextstepaction"]
 > [Inzicht krijgen in hoe klanten uw app gebruiken](../app/usage-overview.md)
-

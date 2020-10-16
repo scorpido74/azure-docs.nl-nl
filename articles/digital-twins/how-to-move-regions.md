@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
-ms.openlocfilehash: 1725c3ff162e4f6b7ac3a5ea1ede6976c827b510
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3c7f9ed9558adc9d129d1df767a05aff1fa4c66c
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328492"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047383"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>Een Azure Digital Apparaatdubbels-exemplaar verplaatsen naar een andere Azure-regio
 
@@ -49,18 +49,18 @@ Hier volgen enkele vragen die u kunt overwegen:
     - Device Provisioning Service (DPS)
 * Wat andere **persoonlijke apps of bedrijfs toepassingen** heb ik die verbinding maken met mijn exemplaar?
 
-U kunt deze informatie verzamelen met behulp van de [Azure Portal](https://portal.azure.com), [Azure Digital Apparaatdubbels api's en Sdk's](how-to-use-apis-sdks.md), [Azure Digital apparaatdubbels cli-opdrachten](how-to-use-cli.md)of het [Azure Digital apparaatdubbels (ADT) Explorer-](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) voor beeld.
+U kunt deze informatie verzamelen met behulp van de [Azure Portal](https://portal.azure.com), [Azure Digital Apparaatdubbels api's en Sdk's](how-to-use-apis-sdks.md), [Azure Digital apparaatdubbels cli-opdrachten](how-to-use-cli.md)of het [Azure Digital apparaatdubbels (ADT) Explorer-](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) voor beeld.
 
 ## <a name="prepare"></a>Voorbereiden
 
-In deze sectie gaat u voorbereiden om uw exemplaar opnieuw te maken door **uw oorspronkelijke modellen, apparaatdubbels en grafiek te downloaden** van uw oorspronkelijke exemplaar. In dit artikel wordt het voor beeld van de [Azure Digital apparaatdubbels (ADT) Explorer](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) gebruikt.
+In deze sectie gaat u voorbereiden om uw exemplaar opnieuw te maken door **uw oorspronkelijke modellen, apparaatdubbels en grafiek te downloaden** van uw oorspronkelijke exemplaar. In dit artikel wordt het voor beeld van de [Azure Digital apparaatdubbels (ADT) Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) gebruikt.
 
 >[!NOTE]
 >Mogelijk hebt u al bestanden met de modellen en/of de grafiek in uw exemplaar. Als dat het geval is, hoeft u niet opnieuw alles te downloaden: alleen de onderdelen die u mist of de items die mogelijk zijn gewijzigd sinds u deze bestanden oorspronkelijk hebt geüpload (zoals apparaatdubbels die mogelijk zijn bijgewerkt met nieuwe gegevens).
 
 ### <a name="limitations-of-adt-explorer"></a>Beperkingen van ADT Explorer
 
-Het voor beeld van de [Azure Digital apparaatdubbels (ADT) Explorer](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) is een client-app-voor beeld dat een visuele weer gave van uw grafiek ondersteunt en die een visuele interactie met uw exemplaar biedt. In dit artikel wordt uitgelegd hoe u dit kunt gebruiken om uw modellen, apparaatdubbels en grafieken te downloaden en later opnieuw te uploaden.
+Het voor beeld van de [Azure Digital apparaatdubbels (ADT) Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) is een client-app-voor beeld dat een visuele weer gave van uw grafiek ondersteunt en die een visuele interactie met uw exemplaar biedt. In dit artikel wordt uitgelegd hoe u dit kunt gebruiken om uw modellen, apparaatdubbels en grafieken te downloaden en later opnieuw te uploaden.
 
 Let echter op dat dit een voor **beeld** is en niet een volledig hulp programma. Het is niet zwaar getest en is niet gebouwd om grafieken van een grote grootte te verwerken. Houd daarom de volgende beperkingen met betrekking tot het gebruik van voor beelden in acht:
 * Het voor beeld is momenteel alleen getest op de grootte van grafieken tot 1000 knoop punten en 2000 relaties
@@ -76,7 +76,7 @@ Als het voor beeld de grootte van uw grafiek niet kan verwerken, kunt u de grafi
 
 Als u wilt door gaan met ADT Explorer, downloadt u eerst de code van de voorbeeld toepassing en stelt u deze in op de computer. 
 
-Ga hier naar het voor beeld: [Azure Digital apparaatdubbels (ADT) Explorer](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Klik op de knop *Download ZIP* om een *.zip*-bestand met deze voorbeeldcode naar uw machine te downloaden als _**ADT_Explorer.zip**_. Pak het bestand uit.
+Ga hier naar het voor beeld: [Azure Digital apparaatdubbels (ADT) Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Klik op de knop *Download ZIP* om een *.zip*-bestand met deze voorbeeldcode naar uw machine te downloaden als _**ADT_Explorer.zip**_. Pak het bestand uit.
 
 Stel vervolgens de machtigingen in om ADT Explorer op uw computer uit te voeren. Volg hiervoor de stappen in de sectie Machtigingen voor [*ADT Explorer instellen*](quickstart-adt-explorer.md#set-adt-explorer-permissions) van de Snelstartgids voor Azure Digital apparaatdubbels.
 
@@ -88,7 +88,7 @@ U moet nu de voorbeeld toepassing ADT Explorer in een browser op uw computer lat
 
 Als u de verbinding wilt controleren, kunt u op de knop *query uitvoeren* klikken om de standaard query uit te voeren waarin alle apparaatdubbels en relaties worden weer gegeven in de grafiek in het vak *Explorer Verkenner* .
 
-:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="Een knop met de tekst 'Run query' (Query uitvoeren) bovenaan het venster is gemarkeerd" lightbox="media/how-to-move-regions/run-query.png":::
+:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="Browservenster met een app die wordt uitgevoerd op localhost:3000. De app heet ADT Explorer en bevat de vakken Query Explorer, Model View, Graph View en Property Explorer. Er zijn nog geen gegevens op het scherm." lightbox="media/how-to-move-regions/run-query.png":::
 
 U kunt de uitvoering van ADT Explorer verlaten, omdat u deze later in dit artikel opnieuw gaat gebruiken om deze items opnieuw te uploaden naar uw nieuwe exemplaar in de doel regio.
 
@@ -100,7 +100,7 @@ Als u al deze tegelijk wilt downloaden, moet u eerst controleren of de volledige
  
 Klik vervolgens op het pictogram *grafiek exporteren* in het vak *grafiek weergave* .
 
-:::image type="content" source="media/how-to-move-regions/export-graph.png" alt-text="In het vak grafiek weergave wordt een pictogram gemarkeerd. Er wordt een pijl naar beneden in een Cloud weer gegeven." lightbox="media/how-to-move-regions/export-graph.png":::
+:::image type="content" source="media/how-to-move-regions/export-graph.png" alt-text="Browservenster met een app die wordt uitgevoerd op localhost:3000. De app heet ADT Explorer en bevat de vakken Query Explorer, Model View, Graph View en Property Explorer. Er zijn nog geen gegevens op het scherm." lightbox="media/how-to-move-regions/export-graph.png":::
 
 Hiermee wordt een *Download* koppeling in de *weer gave grafiek*ingeschakeld. Selecteer deze optie om een op JSON gebaseerde weer gave van het query resultaat te downloaden, inclusief uw modellen, apparaatdubbels en relaties. Hiermee wordt een *JSON* -bestand gedownload naar uw computer.
 
@@ -136,7 +136,7 @@ Als u wilt door gaan, gaat u terug naar het browser venster waarop **ADT Explore
 
 Op dit moment is ADT Explorer verbonden met uw oorspronkelijke Azure Digital Apparaatdubbels-exemplaar. Als u de verbinding wilt verbreken, gaat u naar het nieuwe exemplaar door te klikken op de knop *Aanmelden* boven aan het venster. 
 
-:::image type="content" source="media/how-to-move-regions/sign-in.png" alt-text="ADT Explorer met het pictogram Sign In (Aanmelden) gemarkeerd bovenaan het venster. Het pictogram toont een eenvoudige omtrek van een persoon met de omtrek van een sleutel erop." lightbox="media/how-to-move-regions/sign-in.png":::
+:::image type="content" source="media/how-to-move-regions/sign-in.png" alt-text="Browservenster met een app die wordt uitgevoerd op localhost:3000. De app heet ADT Explorer en bevat de vakken Query Explorer, Model View, Graph View en Property Explorer. Er zijn nog geen gegevens op het scherm." lightbox="media/how-to-move-regions/sign-in.png":::
 
 Omdat u de app-registratie opnieuw gebruikt, hoeft u alleen de ADT- *URL*te vervangen. Wijzig deze waarde in dat de *https://{New Instance hostname}* wordt gelezen.
 
@@ -148,7 +148,7 @@ Upload vervolgens de oplossings onderdelen die u eerder hebt gedownload naar uw 
 
 Als u uw **modellen, apparaatdubbels en grafiek**wilt uploaden, klikt u op het pictogram voor het *importeren* van de grafiek in het vak *diagram* . Met deze optie worden alle drie deze onderdelen tegelijk geüpload (zelfs modellen die momenteel niet worden gebruikt in de grafiek).
 
-:::image type="content" source="media/how-to-move-regions/import-graph.png" alt-text="In het vak Graph View (Grafiekweergave) is een pictogram gemarkeerd. Het laat een pijl zien die naar een wolk (de cloud) wijst." lightbox="media/how-to-move-regions/import-graph.png":::
+:::image type="content" source="media/how-to-move-regions/import-graph.png" alt-text="Browservenster met een app die wordt uitgevoerd op localhost:3000. De app heet ADT Explorer en bevat de vakken Query Explorer, Model View, Graph View en Property Explorer. Er zijn nog geen gegevens op het scherm." lightbox="media/how-to-move-regions/import-graph.png":::
 
 In het vak bestands kiezer gaat u naar de gedownloade grafiek. Selecteer het bestand Graph *. json* en klik op *Open*.
 
@@ -158,7 +158,7 @@ Als u het uploaden van de graaf wilt bevestigen, klikt u op het pictogram *Save*
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-move-regions/graph-preview-save.png" alt-text="Het pictogram Save (Opslaan) gemarkeerd in het deelvenster Graph Preview (Graafvoorbeeld)" lightbox="media/how-to-move-regions/graph-preview-save.png":::
+        :::image type="content" source="media/how-to-move-regions/graph-preview-save.png" alt-text="Browservenster met een app die wordt uitgevoerd op localhost:3000. De app heet ADT Explorer en bevat de vakken Query Explorer, Model View, Graph View en Property Explorer. Er zijn nog geen gegevens op het scherm." lightbox="media/how-to-move-regions/graph-preview-save.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -168,7 +168,7 @@ ADT Explorer uploadt nu uw modellen en grafiek (inclusief de apparaatdubbels en 
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-move-regions/import-success.png" alt-text="Dialoog venster waarin wordt aangegeven dat het importeren van de grafiek is voltooid. Er wordt ' importeren geslaagd ' gelezen. 2 modellen geïmporteerd. vier apparaatdubbels geïmporteerd. twee geïmporteerde relaties. '" lightbox="media/how-to-move-regions/import-success.png":::
+        :::image type="content" source="media/how-to-move-regions/import-success.png" alt-text="Browservenster met een app die wordt uitgevoerd op localhost:3000. De app heet ADT Explorer en bevat de vakken Query Explorer, Model View, Graph View en Property Explorer. Er zijn nog geen gegevens op het scherm." lightbox="media/how-to-move-regions/import-success.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -178,11 +178,11 @@ ADT Explorer uploadt nu uw modellen en grafiek (inclusief de apparaatdubbels en 
 
 Als u wilt controleren of alles is geüpload, klikt u op de knop *query uitvoeren* in het vak *Graph Explorer* om de standaard query uit te voeren waarin alle apparaatdubbels en relaties in de grafiek worden weer gegeven. Hiermee wordt ook de lijst met modellen in de *model weergave*vernieuwd.
 
-:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="Markeren rond de knop Query uitvoeren vanaf eerdere, boven aan het venster" lightbox="media/how-to-move-regions/run-query.png":::
+:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="Browservenster met een app die wordt uitgevoerd op localhost:3000. De app heet ADT Explorer en bevat de vakken Query Explorer, Model View, Graph View en Property Explorer. Er zijn nog geen gegevens op het scherm." lightbox="media/how-to-move-regions/run-query.png":::
 
 U ziet uw grafiek met alle apparaatdubbels en relaties die worden weer gegeven in het vak *EXPLORER Verkenner* . U ziet ook de modellen die worden vermeld in het vak *model weergave* .
 
-:::image type="content" source="media/how-to-move-regions/post-upload.png" alt-text="Een weer gave van ADT Explorer met twee modellen, gemarkeerd in het vak model weergave en een grafiek die is gemarkeerd in het vak ' Graph Explorer '" lightbox="media/how-to-move-regions/post-upload.png":::
+:::image type="content" source="media/how-to-move-regions/post-upload.png" alt-text="Browservenster met een app die wordt uitgevoerd op localhost:3000. De app heet ADT Explorer en bevat de vakken Query Explorer, Model View, Graph View en Property Explorer. Er zijn nog geen gegevens op het scherm." lightbox="media/how-to-move-regions/post-upload.png":::
 
 Hiermee wordt bevestigd dat uw modellen, apparaatdubbels en grafiek opnieuw zijn geüpload naar het nieuwe exemplaar in de doel regio.
 
@@ -219,7 +219,7 @@ Nadat deze stap is voltooid, moet het nieuwe exemplaar in de doel regio een kopi
 U kunt de volgende hulpprogram ma's gebruiken om te controleren of het nieuwe exemplaar correct is ingesteld:
 * De [**Azure Portal**](https://portal.azure.com) (goed om te controleren of het nieuwe exemplaar bestaat en zich in de juiste doel regio bevindt, is ook geschikt voor het controleren van eind punten en routes en verbindingen met andere Azure-Services)
 * De [Azure Digital Apparaatdubbels **cli-opdrachten** ](how-to-use-cli.md) (goed om te controleren of het nieuwe exemplaar bestaat en zich in de juiste doel regio bevindt, kan ook worden gebruikt voor het controleren van exemplaar gegevens)
-* [**ADT Explorer**](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) (geschikt voor het controleren van exemplaar gegevens, zoals modellen, apparaatdubbels en Graph)
+* [**ADT Explorer**](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) (geschikt voor het controleren van exemplaar gegevens, zoals modellen, apparaatdubbels en Graph)
 * De [Azure Digital Apparaatdubbels api's en sdk's](how-to-use-apis-sdks.md) (geschikt voor het controleren van exemplaar gegevens, zoals modellen, apparaatdubbels en Graph, zijn ook geschikt voor het controleren van eind punten en routes)
 
 U kunt ook proberen aangepaste apps of end-to-end-stromen uit te voeren die u met uw oorspronkelijke exemplaar hebt uitgevoerd, zodat u kunt controleren of ze met het nieuwe exemplaar goed werken.
@@ -234,4 +234,4 @@ Als u het exemplaar met behulp van de Azure Portal wilt verwijderen, [opent u de
 
 Klik op de knop *verwijderen* en volg de aanwijzingen om het verwijderen te volt ooien.
 
-:::image type="content" source="media/how-to-move-regions/delete-instance.png" alt-text="Bekijk de details van het Azure Digital Apparaatdubbels-exemplaar in het Azure Portal op het tabblad Overzicht. De knop verwijderen is gemarkeerd":::
+:::image type="content" source="media/how-to-move-regions/delete-instance.png" alt-text="Browservenster met een app die wordt uitgevoerd op localhost:3000. De app heet ADT Explorer en bevat de vakken Query Explorer, Model View, Graph View en Property Explorer. Er zijn nog geen gegevens op het scherm.":::

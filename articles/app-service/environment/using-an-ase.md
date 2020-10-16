@@ -8,10 +8,10 @@ ms.date: 5/10/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: ca333115b8a0588f781b93e0d8a9279ab9c7928c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91255159"
 ---
 # <a name="use-an-app-service-environment"></a>Een App Service-omgeving gebruiken
@@ -122,7 +122,7 @@ De SCM-URL wordt gebruikt voor toegang tot de kudu-console of voor het publicere
 
 ### <a name="dns-configuration"></a>DNS-configuratie 
 
-Wanneer u een externe ASE gebruikt, worden apps die in uw ASE zijn gemaakt, geregistreerd bij Azure DNS. Er zijn geen extra stappen in een externe ASE voor uw apps die openbaar beschikbaar moeten zijn. Met een ILB-ASE moet u uw eigen DNS beheren. U kunt dit doen in uw eigen DNS-server of met Azure DNS particuliere zones.
+Wanneer u een externe ASE gebruikt, worden apps die in uw ASE zijn gemaakt, geregistreerd bij Azure DNS. Er zijn geen extra stappen in een externe ASE voor uw apps die openbaar beschikbaar moeten zijn. In een ILB ASE-omgeving moet u uw eigen DNS beheren. U kunt dit doen in uw eigen DNS-server of met Azure DNS privézones.
 
 DNS configureren in uw eigen DNS-server met uw ILB-ASE:
 
@@ -137,11 +137,11 @@ DNS configureren in Azure DNS particuliere zones:
 1. Maak een Azure DNS particuliere zone met de naam &lt; ASE name &gt; . appserviceenvironment.net
 1. Maak in die zone een A-record die * verwijst naar het IP-adres van de ILB
 1. Maak in die zone een A-record die @ verwijst naar het IP-adres van de ILB
-1. een A-record in die zone maken die verwijst naar *. scm naar het IP-adres van de ILB
+1. Maak in die zone een A-record die *.scm verwijst naar het IP-adres van de ILB
 
-De DNS-instellingen voor uw ASE-standaard domein achtervoegsel beperken u niet dat uw apps toegankelijk zijn voor die namen. U kunt een aangepaste domein naam instellen zonder validatie voor uw apps in een ILB-ASE. Als u vervolgens een zone met de naam *contoso.net*wilt maken, kunt u dit doen en deze naar het IP-adres van de ILB wijzen. De aangepaste domein naam werkt voor app-aanvragen, maar niet voor de SCM-site. De SCM-site is alleen beschikbaar op * &lt; AppName &gt; . scm. &lt; asename &gt; . appserviceenvironment.net*. 
+De DNS-instellingen voor uw ASE-standaard domeinachtervoegsel beperken u niet dat uw apps toegankelijk zijn voor die namen. U kunt een aangepaste domeinnaam instellen zonder validatie voor uw apps in een ILB-ASE. Als u vervolgens een zone met de naam *contoso.net*wilt maken, kunt u dit doen en deze naar het IP-adres van de ILB wijzen. De aangepaste domein naam werkt voor app-aanvragen, maar niet voor de SCM-site. De SCM-site is alleen beschikbaar op * &lt; AppName &gt; . scm. &lt; asename &gt; . appserviceenvironment.net*. 
 
-De zone met de naam *. &lt; asename &gt; . appserviceenvironment.net* is wereld wijd uniek. Voordat 2019, kunnen klanten het achtervoegsel van het domein van de ILB ASE opgeven. Als u *. contoso.com* wilt gebruiken voor het domein achtervoegsel, kunt u dit doen en dat zou de SCM-site zouden kunnen bevatten. Er zijn problemen met dat model, waaronder; het standaard SSL-certificaat, het ontbreken van eenmalige aanmelding met de SCM-site en de vereiste voor het gebruik van een certificaat met Joker tekens beheren. Het ILB ASE standaard certificaat upgrade proces is ook verstoord en de oorzaak van het opnieuw opstarten van de toepassing. Om deze problemen op te lossen, is het ILB ASE-gedrag gewijzigd om een domein achtervoegsel te gebruiken op basis van de naam van de ASE en met een achtervoegsel dat eigendom is van micro soft. De wijziging van het ILB ASE-gedrag heeft alleen invloed op ILB as gemaakt na mei 2019. Bestaande ILB as moeten nog steeds het standaard certificaat van de ASE en de bijbehorende DNS-configuratie beheren.
+De zone met de naam *. &lt; asename &gt; . appserviceenvironment.net* is wereld wijd uniek. Voor 2019 konden klanten het achtervoegsel van het domein van de ILB ASE opgeven. Als u *. contoso.com* wilt gebruiken voor het domein achtervoegsel, kunt u dit doen en dat zou de SCM-site zouden kunnen bevatten. Er waren problemen met dat model, waaronder; het beheren van het standaard SSL-certificaat, het ontbreken van eenmalige aanmelding met de SCM-site en de vereiste om een wildcard certificaat te gebruiken. Het upgradeproces van het ILB ASE-standaard certificaat was tevens verstoord en veroorzaakte het opnieuw opstarten van de toepassing. Om deze problemen op te lossen, is het ILB ASE-gedrag gewijzigd om een domeinachtervoegsel te gebruiken op basis van de naam van de ASE en met een achtervoegsel dat eigendom is van Microsoft. De wijziging van het ILB ASE-gedrag heeft alleen invloed op ILB ASE's gemaakt na mei 2019. Bestaande ILB ASE's as moeten nog steeds het standaard certificaat van de ASE en de bijbehorende DNS-configuratie beheren.
 
 ## <a name="publishing"></a>Publiceren
 

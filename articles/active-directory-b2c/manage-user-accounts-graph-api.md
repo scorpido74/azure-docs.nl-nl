@@ -13,10 +13,10 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 8132eb72b3e448d7ae830b29ccb7dc51528c1250
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87921398"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>Azure AD B2C gebruikers accounts beheren met Microsoft Graph
@@ -62,9 +62,9 @@ In de Microsoft Graph-API worden lokale en federatieve identiteiten opgeslagen i
 
 | Eigenschap   | Type |Beschrijving|
 |:---------------|:--------|:----------|
-|signInType|tekenreeks| Hiermee geeft u de aanmeldings typen voor gebruikers in uw Directory. Voor een lokaal account:,,,, `emailAddress` `emailAddress1` `emailAddress2` `emailAddress3` `userName` of een ander type dat u wilt. Er moet een sociaal account worden ingesteld op `federated` .|
-|uitgever|tekenreeks|Hiermee geeft u de uitgever van de identiteit. Voor lokale accounts (waarbij **signInType** niet is `federated` ), is deze eigenschap de lokale standaard domein naam van de B2C-Tenant, bijvoorbeeld `contoso.onmicrosoft.com` . Voor sociale identiteit (waarbij **signInType** is `federated` ), is de waarde de naam van de verlener, bijvoorbeeld`facebook.com`|
-|issuerAssignedId|tekenreeks|Hiermee geeft u de unieke id op die door de uitgever aan de gebruiker is toegewezen. De combi natie van **verlener** en **issuerAssignedId** moet uniek zijn binnen uw Tenant. Als **signInType** is ingesteld op `emailAddress` of, vertegenwoordigt het lokale account `userName` de aanmeldings naam voor de gebruiker.<br>Wanneer **signInType** is ingesteld op: <ul><li>`emailAddress`(of begint met `emailAddress` like `emailAddress1` ) **issuerAssignedId** moet een geldig e-mail adres zijn</li><li>`userName`(of een andere waarde), **issuerAssignedId** moet een geldig [lokaal deel zijn van een e-mail adres](https://tools.ietf.org/html/rfc3696#section-3)</li><li>`federated`, **issuerAssignedId** staat voor de unieke id van het federatieve account</li></ul>|
+|signInType|tekenreeks| Hiermee geeft u de aanmeldings typen voor gebruikers in uw Directory. Voor een lokaal account:,,,,  `emailAddress` `emailAddress1` `emailAddress2` `emailAddress3`  `userName` of een ander type dat u wilt. Er moet een sociaal account worden ingesteld op  `federated` .|
+|uitgever|tekenreeks|Hiermee geeft u de uitgever van de identiteit. Voor lokale accounts (waarbij **signInType** niet is `federated` ), is deze eigenschap de lokale standaard domein naam van de B2C-Tenant, bijvoorbeeld `contoso.onmicrosoft.com` . Voor sociale identiteit (waarbij **signInType** is  `federated` ), is de waarde de naam van de verlener, bijvoorbeeld `facebook.com`|
+|issuerAssignedId|tekenreeks|Hiermee geeft u de unieke id op die door de uitgever aan de gebruiker is toegewezen. De combi natie van **verlener** en **issuerAssignedId** moet uniek zijn binnen uw Tenant. Als **signInType** is ingesteld op `emailAddress` of, vertegenwoordigt het lokale account `userName` de aanmeldings naam voor de gebruiker.<br>Wanneer **signInType** is ingesteld op: <ul><li>`emailAddress` (of begint met `emailAddress` like `emailAddress1` ) **issuerAssignedId** moet een geldig e-mail adres zijn</li><li>`userName` (of een andere waarde), **issuerAssignedId** moet een geldig [lokaal deel zijn van een e-mail adres](https://tools.ietf.org/html/rfc3696#section-3)</li><li>`federated`, **issuerAssignedId** staat voor de unieke id van het federatieve account</li></ul>|
 
 De volgende **Identities** -eigenschappen, met een lokale account identiteit met een aanmeldings naam, een e-mail adres als aanmelding en een sociale identiteit. 
 

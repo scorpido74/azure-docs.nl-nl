@@ -12,7 +12,7 @@ ms.openlocfilehash: 7e05e89cae8688162c6ac6ded5ad56c85394dc8c
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91858755"
 ---
 # <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>Data Lake Storage Gen1 gebruiken met Azure HDInsight-clusters
@@ -40,7 +40,7 @@ HDInsight-clusters kunnen Data Lake Storage Gen1 op twee manieren gebruiken:
 
 Op dit moment worden slechts enkele typen HDInsight-clusters ondersteund met Data Lake Storage Gen1 als standaard opslag en extra opslag accounts:
 
-| HDInsight-clustertype | Data Lake Storage Gen1 als standaard opslag | Data Lake Storage Gen1 als extra opslag ruimte| Opmerkingen |
+| HDInsight-clustertype | Data Lake Storage Gen1 als standaard opslag | Data Lake Storage Gen1 als extra opslag ruimte| Notities |
 |------------------------|------------------------------------|---------------------------------------|------|
 | HDInsight-versie 4,0 | Nee | Nee |ADLS Gen1 wordt niet ondersteund met HDInsight 4,0 |
 | HDInsight-versie 3.6 | Ja | Ja | Behalve HBase|

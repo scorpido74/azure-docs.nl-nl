@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 09/29/2020
 ms.author: enewman
 ms.openlocfilehash: 4bbf4c9d4bc83b48b8ecc62946fa9bffa8af50bc
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91533517"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Stel een lab in om data Science te leren met python-en Jupyter-notebooks
@@ -20,7 +20,7 @@ Jupyter-notebooks is een open-source project waarmee u eenvoudig uitgebreide tek
 ## <a name="set-up-the-lab"></a>Het lab instellen
 
 ### <a name="lab-configuration"></a>Lab-configuratie
-Als u dit Lab wilt instellen, moet u toegang hebben tot een Azure-abonnement en een Lab-account. Neem contact op met de beheerder van uw organisatie om te controleren of u toegang kunt krijgen tot een bestaand Azure-abonnement. Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u dit Lab wilt instellen, moet u toegang hebben tot een Azure-abonnement en een Lab-account. Neem contact op met de beheerder van uw organisatie om te controleren of u toegang kunt krijgen tot een bestaand Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 Zodra u een Azure-abonnement hebt, maakt u een nieuw Lab-account in Azure Lab Services door de volgende instructies in de zelf studie te volgen: [een Lab-account instellen](tutorial-setup-lab-account.md). U kunt ook een bestaand Lab-account gebruiken.
 

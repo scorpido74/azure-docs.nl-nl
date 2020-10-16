@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/02/2020
 ms.author: apimpm
-ms.openlocfilehash: 86ed7f3941965bcac525a2ba71786d20a4753489
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6a53cc2b2ec6d46b4bde54af58b4e5542ff6cf79
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335497"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91932631"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API-importbeperkingen en bekende problemen
 
@@ -42,6 +42,7 @@ Als u fouten ontvangt bij het importeren van uw OpenAPI-document, moet u ervoor 
 -   Beveiligings definities worden genegeerd.
 -   Inline schema definities voor API-bewerkingen worden niet ondersteund. Schema definities worden gedefinieerd in het API-bereik en waarnaar kan worden verwezen in API-bewerkings aanvragen of-antwoord bereiken.
 -   Een gedefinieerde URL-para meter moet deel uitmaken van de URL-sjabloon.
+-   `server` het object wordt niet ondersteund op het API-bewerkings niveau.
 -   `Produces` het sleutel woord, waarmee MIME-typen worden beschreven die worden geretourneerd door een API, worden niet ondersteund. 
 
 ### <a name="openapi-version-2"></a><a name="open-api-v2"> </a>OpenAPI versie 2

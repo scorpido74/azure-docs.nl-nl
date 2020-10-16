@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: zoeken naar afbeeldingen met behulp van de Bing Image Search REST API en PHP'
+title: 'Snelstart: Afbeeldingen zoeken met de REST API voor Bing Image Search en PHP'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze snelstartgids om aanvragen voor het zoeken van afbeeldingen naar de REST API voor Bing Image Search te verzenden met PHP en JSON-antwoorden te ontvangen.
 services: cognitive-services
@@ -13,35 +13,35 @@ ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: aad804179739a77010446a146d32cd51ac6e6757
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
-ms.translationtype: MT
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85603363"
 ---
-# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-php"></a>Snelstartgids: zoeken naar afbeeldingen met behulp van de Bing Image Search REST API en PHP
+# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-php"></a>Snelstart: Afbeeldingen zoeken met de REST API voor Bing Image Search en PHP
 
 Gebruik deze snelstart om voor het eerst de Bing Afbeeldingen zoeken-API aan te roepen en een JSON-antwoord te ontvangen. De eenvoudige toepassing in dit artikel stuurt een zoekquery en toont de onbewerkte resultaten.
 
-Hoewel deze toepassing wordt geschreven in PHP, is de API een REST-webservice die compatibel is met elke programmeer taal die HTTP-aanvragen kan maken en JSON kan parseren.
+Hoewel deze toepassing in PHP is geschreven, is de API een RESTful-webservice die compatibel is met elke programmeertaal die HTTP-aanvragen kan doen en JSON kan parseren.
 
-De bron code voor dit voor beeld is beschikbaar [op github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/php/Search/BingWebSearchv7.php).
+De broncode voor dit voorbeeld is beschikbaar [op GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/php/Search/BingWebSearchv7.php).
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [PHP 5.6. x of hoger](https://php.net/downloads.php)
+* [PHP 5.6.x of later](https://php.net/downloads.php)
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
-Zie [Cognitive Services prijzen-Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)voor meer informatie.
+Zie [Prijzen van Cognitive Services - Bing Search-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) voor meer informatie.
 
 ## <a name="create-and-initialize-the-application"></a>De toepassing maken en initialiseren
 
 Volg deze stappen voor het uitvoeren van deze toepassing:
 
-1. Zorg ervoor dat beveiligde HTTP-ondersteuning is ingeschakeld in uw `php.ini`-bestand. Dit bestand bevindt zich in Windows *C:\Windows*.
+1. Zorg ervoor dat beveiligde HTTP-ondersteuning is ingeschakeld in uw `php.ini`-bestand. Voor Windows bevindt dit bestand zich in *C:\windows*.
 2. Maak een nieuw PHP-project in uw favoriete IDE of editor.
-3. Definieer het API-eind punt, uw abonnements sleutel en zoek term. Het eind punt kan het globale eind punt in de volgende code zijn of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
+3. Definieer het API-eindpunt, de abonnementssleutel en de zoekterm. Het eindpunt kan het globale eindpunt in de volgende code zijn of het eindpunt voor een [aangepast subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md), dat voor uw resource wordt weergegeven in Azure Portal.
 
     ```php
     $endpoint = 'https://api.cognitive.microsoft.com/bing/v7.0/images/search';
@@ -138,8 +138,8 @@ Antwoorden die afkomstig zijn van de Bing Afbeeldingen zoeken-API, worden gereto
 
 ## <a name="see-also"></a>Zie ook
 
-* [Wat is de Bing Afbeeldingen zoeken-API?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [Wat is de Bing Image Search-API?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
 * [Online interactieve demo proberen](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/) 
-* [Prijs informatie voor de Bing Zoeken-API's](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) 
+* [Prijsinformatie voor Bing Search-API's](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) 
 * [Documentatie voor Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
 * [Naslag voor Bing Afbeeldingen zoeken-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.openlocfilehash: 9db013d13098fc6aa4552459a2189e0ad8fc3ea6
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89378794"
 ---
 # <a name="build-the-landing-page-for-your-transactable-saas-offer-in-the-commercial-marketplace"></a>Bouw de landings pagina voor uw voor transactable SaaS-aanbieding in de commerciële Marketplace
@@ -84,7 +84,7 @@ Wanneer de koper naar de landings pagina wordt verzonden, wordt een token toegev
 > [!NOTE]
 > In de meeste gevallen is het raadzaam om deze aanroep van een tweede, single-tenant toepassing te maken. Zie [twee Azure AD-apps gebruiken om de beveiliging in de productie](#use-two-azure-ad-apps-to-improve-security-in-production) eerder in dit artikel te verbeteren.
 
-### <a name="request-an-access-token"></a>Een toegangs token aanvragen
+### <a name="request-an-access-token"></a>Een toegangstoken aanvragen
 
 Als u uw toepassing wilt verifiëren met de SaaS-fulfillment-Api's, hebt u een toegangs token nodig dat kan worden gegenereerd door het Azure AD OAuth-eind punt aan te roepen. Zie [het autorisatie token van de uitgever ophalen](./partner-center-portal/pc-saas-registration.md#how-to-get-the-publishers-authorization-token).
 

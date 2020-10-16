@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.openlocfilehash: 9c1dd6f628e87792808d14db2c7bcc7f050923a3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91713205"
 ---
 # <a name="connectivity-modes-and-requirements"></a>Connectiviteits modi en vereisten
@@ -28,7 +28,7 @@ Met Azure Arc enabled Data Services hebt u de mogelijkheid om verbinding te make
 
 Belang rijk: als de Azure Arc-gegevens services rechtstreeks zijn verbonden met Azure, kunnen gebruikers [Azure Resource Manager api's](/rest/api/resources/), de Azure CLI en de Azure Portal gebruiken om de Azure Arc-gegevens Services uit te voeren. De ervaring in de direct verbonden modus is net als de manier waarop u een andere Azure-service gebruikt bij het inrichten/ongedaan maken van de inrichting, het schalen, configureren, enzovoort op alle in de Azure Portal.  Als de Azure-Arc ingeschakelde gegevens Services indirect zijn verbonden met Azure, is de Azure Portal een alleen-lezen-weer gave. U kunt de inventaris van SQL Managed instances en post gres grootschalige-instanties die u hebt geïmplementeerd en de details ervan bekijken, maar u kunt geen actie ondernemen in de Azure Portal.  In de indirect verbonden modus moeten alle acties lokaal worden uitgevoerd met Azure Data Studio, de Azure data CLI of Kubernetes systeem eigen hulpprogram ma's zoals kubectl.
 
-Daarnaast kunnen Azure Active Directory-en Azure Role-Access Control worden gebruikt in de direct verbonden modus, omdat er afhankelijk is van een continue en directe verbinding met Azure om deze functionaliteit te bieden.
+Daarnaast kunnen Azure Active Directory-en Azure Role-Based Access Control worden gebruikt in de direct verbonden modus, omdat er afhankelijk is van een continue en directe verbinding met Azure om deze functionaliteit te bieden.
 
 Ten slotte zijn sommige services die zijn gekoppeld aan Azure alleen beschikbaar wanneer ze rechtstreeks kunnen worden bereikt, zoals de Azure Defender-beveiligings Services, container inzichten en Azure Backup/Blob-opslag.
 

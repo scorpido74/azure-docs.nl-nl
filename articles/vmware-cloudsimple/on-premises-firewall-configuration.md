@@ -10,10 +10,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 6ff057d99e29c7c6fe30e77f38a0bff265dbe7bf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86998885"
 ---
 # <a name="accessing-your-cloudsimple-private-cloud-environment-and-applications-from-on-premises"></a>Toegang tot uw persoonlijke cloud omgeving en-toepassingen van CloudSimple vanuit on-premises
@@ -28,10 +28,10 @@ Om toegang te krijgen tot uw Privécloud en NSX-T-beheer, moeten de poorten die 
 |------------|----------------------------------|----------------------------------|------------------------------------------------------------------------------------------------------------------------|
 | 53 (UDP)   | On-premises DNS-servers          | DNS-servers in privécloud        | Vereist voor het door sturen van de DNS-zoek opdracht van *AZ.cloudsimple.io* naar DNS-servers in de privécloud vanuit het on-premises netwerk.       |
 | 53 (UDP)   | DNS-servers in privécloud        | On-premises DNS-servers          | Vereist voor het door sturen van DNS-zoek acties van on-premises domein namen van de Privécloud naar on-premises DNS-servers. |
-| 80 (TCP)   | On-premises netwerk              | Particulier Cloud beheer netwerk | Vereist voor het omleiden van de vCenter *-* URL van http naar *https*.                                                           |
-| 443 (TCP)  | On-premises netwerk              | Particulier Cloud beheer netwerk | Vereist voor toegang tot vCenter en NSX-T-beheer vanuit een on-premises netwerk.                                             |
-| 8000 (TCP) | On-premises netwerk              | Particulier Cloud beheer netwerk | Vereist voor vMotion van virtuele machines van on-premises naar een Privécloud.                                            |
-| 8000 (TCP) | Particulier Cloud beheer netwerk | On-premises netwerk              | Vereist voor vMotion van virtuele machines van de Privécloud naar on-premises.                                            |
+| 80 (TCP)   | On-premises netwerk              | Netwerk voor privécloudbeheer | Vereist voor het omleiden van de vCenter *-* URL van http naar *https*.                                                           |
+| 443 (TCP)  | On-premises netwerk              | Netwerk voor privécloudbeheer | Vereist voor toegang tot vCenter en NSX-T-beheer vanuit een on-premises netwerk.                                             |
+| 8000 (TCP) | On-premises netwerk              | Netwerk voor privécloudbeheer | Vereist voor vMotion van virtuele machines van on-premises naar een Privécloud.                                            |
+| 8000 (TCP) | Netwerk voor privécloudbeheer | On-premises netwerk              | Vereist voor vMotion van virtuele machines van de Privécloud naar on-premises.                                            |
 
 ## <a name="ports-required-for-using-on-premises-active-directory-as-an-identity-source"></a>Poorten die vereist zijn voor het gebruik van on-premises Active Directory als een identiteits bron
 
@@ -40,10 +40,10 @@ Als u een on-premises Active Directory als een identiteits bron wilt configurere
 | Poort         | Bron                           | Doel                                         | Doel                                                                                                                                          |
 |--------------|----------------------------------|-----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
 | 53 (UDP)      | DNS-servers in privécloud        | On-premises DNS-servers                             | Vereist voor het door sturen van DNS-zoek acties van on-premises Active Directory-domein namen van Privécloud naar on-premises DNS-servers.          |
-| 389 (TCP/UDP) | Particulier Cloud beheer netwerk | On-premises Active Directory-domein controllers     | Vereist voor LDAP-communicatie van particuliere cloud vCenter-Server naar Active Directory-domein controllers voor gebruikers verificatie.                |
-| 636 (TCP)     | Particulier Cloud beheer netwerk | On-premises Active Directory-domein controllers     | Vereist voor secure LDAP-communicatie (LDAPS) van de Privécloud-server naar Active Directory-domein controllers voor gebruikers verificatie. |
-| 3268 (TCP)    | Particulier Cloud beheer netwerk | On-premises Active Directory Global Catalog-servers | Vereist voor LDAP-communicatie in een implementatie van meerdere domein controllers.                                                                        |
-| 3269 (TCP)    | Particulier Cloud beheer netwerk | On-premises Active Directory Global Catalog-servers | Vereist voor LDAPS-communicatie in een implementatie van meerdere domein controllers.                                                                       |                                           |
+| 389 (TCP/UDP) | Netwerk voor privécloudbeheer | On-premises Active Directory-domein controllers     | Vereist voor LDAP-communicatie van particuliere cloud vCenter-Server naar Active Directory-domein controllers voor gebruikers verificatie.                |
+| 636 (TCP)     | Netwerk voor privécloudbeheer | On-premises Active Directory-domein controllers     | Vereist voor secure LDAP-communicatie (LDAPS) van de Privécloud-server naar Active Directory-domein controllers voor gebruikers verificatie. |
+| 3268 (TCP)    | Netwerk voor privécloudbeheer | On-premises Active Directory Global Catalog-servers | Vereist voor LDAP-communicatie in een implementatie van meerdere domein controllers.                                                                        |
+| 3269 (TCP)    | Netwerk voor privécloudbeheer | On-premises Active Directory Global Catalog-servers | Vereist voor LDAPS-communicatie in een implementatie van meerdere domein controllers.                                                                       |                                           |
 
 ## <a name="common-ports-required-for-accessing-workload-virtual-machines"></a>Algemene poorten die vereist zijn voor toegang tot virtuele workload-machines
 

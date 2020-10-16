@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/27/2020
 ms.author: azfuncdf
 ms.openlocfilehash: 01c400f51cce85ef39e9d39bcad1221253c6942d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89071207"
 ---
 # <a name="disaster-recovery-and-geo-distribution-in-azure-durable-functions"></a>Herstel na nood gevallen en geo-distributie in azure Durable Functions
@@ -20,10 +20,10 @@ In Durable Functions is alle status standaard persistent in Azure Storage. Een [
 
 Orchestrations en entiteiten kunnen worden geactiveerd met behulp van [client functies](durable-functions-types-features-overview.md#client-functions) die zelf worden geactiveerd via http of een van de andere ondersteunde Azure functions trigger typen. Ze kunnen ook worden geactiveerd met behulp [van ingebouwde http-api's](durable-functions-http-features.md#built-in-http-apis). Ter vereenvoudiging van dit artikel wordt de nadruk gelegd op scenario's met Azure Storage en HTTP-functie Triggers en opties om de beschik baarheid te verhogen en de downtime te minimaliseren tijdens nood herstel activiteiten. Andere trigger typen, zoals Service Bus of Cosmos DB triggers, worden niet expliciet behandeld.
 
-De volgende scenario's zijn gebaseerd op actieve, passieve configuraties, omdat ze worden begeleid door het gebruik van Azure Storage. Dit patroon bestaat uit het implementeren van een back-uptoepassing (passieve) functie naar een andere regio. Traffic Manager bewaakt de primaire (actieve) functie-app voor HTTP-Beschik baarheid. Er wordt een failover naar de back-upfunctie-app uitgevoerd als de primaire fout is opgetreden. Zie de [routerings methode](../../traffic-manager/traffic-manager-routing-methods.md#priority-traffic-routing-method) van de prioriteit van [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/)voor meer informatie.
+De volgende scenario's zijn gebaseerd op Active-Passive configuraties, omdat ze worden begeleid door het gebruik van Azure Storage. Dit patroon bestaat uit het implementeren van een back-uptoepassing (passieve) functie naar een andere regio. Traffic Manager bewaakt de primaire (actieve) functie-app voor HTTP-Beschik baarheid. Er wordt een failover naar de back-upfunctie-app uitgevoerd als de primaire fout is opgetreden. Zie de methode van [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) [Priority Traffic-Routing](../../traffic-manager/traffic-manager-routing-methods.md#priority-traffic-routing-method) voor meer informatie.
 
 > [!NOTE]
-> - De voorgestelde Active-passieve configuratie zorgt ervoor dat een client altijd nieuwe integraties via HTTP kan activeren. Als er echter twee functie-apps zijn die dezelfde taak-hub in de opslag delen, worden sommige opslag transacties van de achtergrond gedistribueerd. Deze configuratie brengt daarom enkele extra uitstaande kosten in rekening voor de secundaire functie-app.
+> - De voorgestelde Active-Passive configuratie zorgt ervoor dat een client altijd nieuwe integraties kan activeren via HTTP. Als er echter twee functie-apps zijn die dezelfde taak-hub in de opslag delen, worden sommige opslag transacties van de achtergrond gedistribueerd. Deze configuratie brengt daarom enkele extra uitstaande kosten in rekening voor de secundaire functie-app.
 > - Het onderliggende opslag account en de taak-hub worden gemaakt in de primaire regio en worden gedeeld door beide functie-apps.
 > - Alle functie-apps die redundant worden geïmplementeerd, moeten dezelfde functie toegangs toetsen delen in het geval van activering via HTTP. Met de functions-runtime wordt een [beheer-API](https://github.com/Azure/azure-functions-host/wiki/Key-management-API) beschikbaar gemaakt waarmee gebruikers functie sleutels programmatisch kunnen toevoegen, verwijderen en bijwerken. Sleutel beheer is ook mogelijk met behulp van [Azure Resource Manager-api's](https://www.markheath.net/post/managing-azure-functions-keys-2).
 

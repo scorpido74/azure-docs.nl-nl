@@ -12,10 +12,10 @@ ms.date: 09/15/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: eca75ac4fefcf7164c247c4da4b58ccf7c03334c
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90564839"
 ---
 # <a name="define-an-id-token-hint-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een technisch profiel voor ID-token hints definiëren in een Azure Active Directory B2C aangepast beleid
@@ -84,16 +84,16 @@ De volgende meta gegevens zijn relevant voor het gebruik van symmetrische sleute
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| uitgever | Yes | Identificeert de beveiligings token service (token uitgever). Deze waarde moet gelijk zijn aan de `iss` claim binnen de claim van de JWT-token. | 
-| IdTokenAudience | Yes | Identificeert de beoogde ontvanger van het token. Moet gelijk zijn aan de `aud` claim met de JWT-token claim. | 
+| uitgever | Ja | Identificeert de beveiligings token service (token uitgever). Deze waarde moet gelijk zijn aan de `iss` claim binnen de claim van de JWT-token. | 
+| IdTokenAudience | Ja | Identificeert de beoogde ontvanger van het token. Moet gelijk zijn aan de `aud` claim met de JWT-token claim. | 
 
 De volgende meta gegevens zijn relevant voor het gebruik van een symmetrische sleutel. 
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| METAGEGEVENSARCHIEFMETHODE| Yes | Een URL die verwijst naar een configuratie document voor de certificaat Uitgever, dat ook wel een OpenID Connect goed bekend configuratie-eind punt wordt genoemd.   |
-| uitgever | No | Identificeert de beveiligings token service (token uitgever). Deze waarde kan worden gebruikt om de waarde die is geconfigureerd in de meta gegevens te overschrijven en moet identiek zijn aan de `iss` claim binnen de JWT-token claim. |  
-| IdTokenAudience | No | Identificeert de beoogde ontvanger van het token. Deze waarde kan worden gebruikt om de waarde die is geconfigureerd in de meta gegevens te overschrijven en moet identiek zijn aan de `aud` claim binnen de JWT-token claim. |  
+| METAGEGEVENSARCHIEFMETHODE| Ja | Een URL die verwijst naar een configuratie document voor de certificaat Uitgever, dat ook wel een OpenID Connect goed bekend configuratie-eind punt wordt genoemd.   |
+| uitgever | Nee | Identificeert de beveiligings token service (token uitgever). Deze waarde kan worden gebruikt om de waarde die is geconfigureerd in de meta gegevens te overschrijven en moet identiek zijn aan de `iss` claim binnen de JWT-token claim. |  
+| IdTokenAudience | Nee | Identificeert de beoogde ontvanger van het token. Deze waarde kan worden gebruikt om de waarde die is geconfigureerd in de meta gegevens te overschrijven en moet identiek zijn aan de `aud` claim binnen de JWT-token claim. |  
 
 ## <a name="cryptographic-keys"></a>Cryptografische sleutels
 
@@ -101,7 +101,7 @@ Wanneer u een symmetrische sleutel gebruikt, bevat het element **CryptographicKe
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| client_secret | Yes | De cryptografische sleutel die wordt gebruikt om de JWT-token handtekening te valideren.|
+| client_secret | Ja | De cryptografische sleutel die wordt gebruikt om de JWT-token handtekening te valideren.|
 
 
 ## <a name="how-to-guide"></a>Instructiegids

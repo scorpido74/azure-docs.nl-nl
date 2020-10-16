@@ -14,10 +14,10 @@ ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d27cd30d6543d967cca2648597854a06f8ea4eb7
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90053970"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>LinkedIn-account verbindingen integreren in Azure Active Directory
@@ -94,7 +94,7 @@ Als u de groep uit stap 2 wilt gebruiken als de geselecteerde groep in de instel
 1. Maak een Groepsbeleid-object met de volgende instelling: **gebruikers configuratie**  >  **Beheersjablonen**  >  **Microsoft Office 2016**  >  **diverse**  >  **LinkedIn-functies weer geven in Office-toepassingen**.
 1. Selecteer **ingeschakeld** of **uitgeschakeld**.
   
-   Staat | Effect
+   Status | Effect
    ------ | ------
    **Ingeschakeld** | De instelling **LinkedIn-functies in Office-toepassingen weer geven** in Office 2016 opties is ingeschakeld. Gebruikers in uw organisatie kunnen LinkedIn-functies gebruiken in hun Office 2016-toepassingen.
    **Uitgeschakeld** | De instelling **LinkedIn-functies in Office-toepassingen weer geven** in Office 2016 opties is uitgeschakeld en eind gebruikers kunnen deze instelling niet wijzigen. Gebruikers in uw organisatie kunnen LinkedIn-functies niet gebruiken in hun Office 2016-toepassingen.

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 06/10/2020
 ms.author: jingwang
 ms.openlocfilehash: ac9dff4b16d8ba1b346a2827f3b5487dbf97392e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84669831"
 ---
 # <a name="copy-data-from-sybase-using-azure-data-factory"></a>Gegevens van Sybase kopiëren met behulp van Azure Data Factory
@@ -31,7 +31,7 @@ In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factor
 Deze Sybase-connector wordt ondersteund voor de volgende activiteiten:
 
 - [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
-- [Opzoek activiteit](control-flow-lookup-activity.md)
+- [Activiteit Lookup](control-flow-lookup-activity.md)
 
 U kunt gegevens van Sybase-data base kopiëren naar elk ondersteund Sink-gegevens archief. Zie de tabel [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevens archieven die worden ondersteund als bron/sinks door de Kopieer activiteit.
 
@@ -61,13 +61,13 @@ De volgende eigenschappen worden ondersteund voor Sybase-gekoppelde service:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type moet worden ingesteld op: **Sybase** | Yes |
-| server | De naam van de Sybase-server. |Yes |
-| database | De naam van de Sybase-data base. |Yes |
-| authenticationType | Type verificatie dat wordt gebruikt om verbinding te maken met de Sybase-data base.<br/>Toegestane waarden zijn: **Basic**en **Windows**. |Yes |
-| gebruikersnaam | Geef de gebruikers naam op om verbinding te maken met de Sybase-data base. |Yes |
-| wachtwoord | Geef het wacht woord op voor het gebruikers account dat u hebt opgegeven voor de gebruikers naam. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). |Yes |
-| connectVia | Het [Integration runtime](concepts-integration-runtime.md) dat moet worden gebruikt om verbinding te maken met het gegevens archief. Een zelf-hostende Integration Runtime is vereist zoals vermeld in de [vereisten](#prerequisites). |Yes |
+| type | De eigenschap type moet worden ingesteld op: **Sybase** | Ja |
+| server | De naam van de Sybase-server. |Ja |
+| database | De naam van de Sybase-data base. |Ja |
+| authenticationType | Type verificatie dat wordt gebruikt om verbinding te maken met de Sybase-data base.<br/>Toegestane waarden zijn: **Basic**en **Windows**. |Ja |
+| gebruikersnaam | Geef de gebruikers naam op om verbinding te maken met de Sybase-data base. |Ja |
+| wachtwoord | Geef het wacht woord op voor het gebruikers account dat u hebt opgegeven voor de gebruikers naam. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). |Ja |
+| connectVia | Het [Integration runtime](concepts-integration-runtime.md) dat moet worden gebruikt om verbinding te maken met het gegevens archief. Een zelf-hostende Integration Runtime is vereist zoals vermeld in de [vereisten](#prerequisites). |Ja |
 
 **Voorbeeld:**
 
@@ -102,7 +102,7 @@ Als u gegevens wilt kopiëren vanuit Sybase, worden de volgende eigenschappen on
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de gegevensset moet worden ingesteld op: **SybaseTable** | Yes |
+| type | De eigenschap type van de gegevensset moet worden ingesteld op: **SybaseTable** | Ja |
 | tableName | De naam van de tabel in de Sybase-data base. | Nee (als "query" in activiteit bron is opgegeven) |
 
 **Voorbeeld**
@@ -134,7 +134,7 @@ Als u gegevens wilt kopiëren van Sybase, worden de volgende eigenschappen onder
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **SybaseSource** | Yes |
+| type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **SybaseSource** | Ja |
 | query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM MyTable"`. | Nee (als ' Tablename ' in gegevensset is opgegeven) |
 
 **Voorbeeld:**

@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 05/16/2017
 ms.author: kenwith
 ms.openlocfilehash: d9dd03ec349daf2312b7d803e16e3c5fb41ecf0c
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90604101"
 ---
 # <a name="managing-access-to-apps"></a>Toegang tot apps beheren
 
-Doorlopend toegangs beheer, evaluatie van het gebruik en rapportage blijven een uitdaging nadat een app is geïntegreerd in het identiteits systeem van uw organisatie. In veel gevallen moeten IT-beheerders of Help Desk een voortdurende actieve rol nemen bij het beheren van de toegang tot uw apps. Soms wordt de toewijzing uitgevoerd door een algemeen of divisie IT-team. De toewijzings beslissing is vaak bedoeld om te worden gedelegeerd aan de bedrijfs beslissings Maker, waardoor de goed keuring wordt vereist voordat de toewijzing wordt gemaakt.  Andere organisaties investeren in integratie met een bestaand geautomatiseerd systeem voor identiteits-en toegangs beheer, zoals op rollen gebaseerde Access Control (RBAC) of op kenmerken gebaseerde Access Control (ABAC). Zowel de integratie-als regel ontwikkeling is vaak gespecialiseerd en kostbaar. Bewaking of rapportage over beide beheer methoden is een eigen afzonderlijke, dure en complexe investering.
+Doorlopend toegangs beheer, evaluatie van het gebruik en rapportage blijven een uitdaging nadat een app is geïntegreerd in het identiteits systeem van uw organisatie. In veel gevallen moeten IT-beheerders of Help Desk een voortdurende actieve rol nemen bij het beheren van de toegang tot uw apps. Soms wordt de toewijzing uitgevoerd door een algemeen of divisie IT-team. De toewijzings beslissing is vaak bedoeld om te worden gedelegeerd aan de bedrijfs beslissings Maker, waardoor de goed keuring wordt vereist voordat de toewijzing wordt gemaakt.  Andere organisaties investeren in integratie met een bestaand geautomatiseerd systeem voor identiteits-en toegangs beheer, zoals Role-Based Access Control (RBAC) of Attribute-Based Access Control (ABAC). Zowel de integratie-als regel ontwikkeling is vaak gespecialiseerd en kostbaar. Bewaking of rapportage over beide beheer methoden is een eigen afzonderlijke, dure en complexe investering.
 
 ## <a name="how-does-azure-active-directory-help"></a>Hoe helpt Azure Active Directory?
 

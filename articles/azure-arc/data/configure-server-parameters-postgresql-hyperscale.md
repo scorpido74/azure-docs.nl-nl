@@ -11,15 +11,15 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 4e8813647211e0adbfe43a45ae0d19dc12a4a165
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936098"
 ---
-# <a name="set-the-database-engine-settings-for-azure-arc-enabled-postgresql-hyperscale"></a>De instellingen van de data base-engine instellen voor Azure Arc enabled PostgreSQL grootschalige
+# <a name="set-the-database-engine-settings-for-azure-arc-enabled-postgresql-hyperscale"></a>De database-engine-instellingen voor PostgreSQL Hyperscale met Azure Arc instellen
 
-In dit document worden de stappen beschreven voor het instellen van de instellingen van de data base-engine van uw PostgreSQL grootschalige-Server groep op aangepaste (niet-standaard) waarden. Raadpleeg de PostgreSQL [-documentatie voor](https://www.postgresql.org/docs/current/runtime-config.html)meer informatie over welke para meters voor de data base-engine kunnen worden ingesteld en wat de standaard waarde is.
+In dit document worden de stappen beschreven voor het instellen van de instellingen van de database-engine van uw PostgreSQL Hyperscale-servergroep op aangepaste (niet-standaard) waarden. Raadpleeg de PostgreSQL [-documentatie voor](https://www.postgresql.org/docs/current/runtime-config.html)meer informatie over welke para meters voor de data base-engine kunnen worden ingesteld en wat de standaard waarde is.
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 

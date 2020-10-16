@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 98b7f9b1ed5e09a1f731e45f8ca2d148a4084986
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c5346858aa119f11ef34916b24c70c966286ab86
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336153"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089040"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Veelvoorkomende problemen met Azure lente-Cloud oplossen
 
@@ -68,7 +68,7 @@ Wanneer u fouten opspoort in de toepassing, moet u eerst de status en detectie s
 
 
 
-Zie aan de [slag met log Analytics in azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)voor meer informatie over Azure log Analytics.
+Zie aan de [slag met log Analytics in azure monitor](../azure-monitor/log-query/get-started-portal.md)voor meer informatie over Azure log Analytics.
 ::: zone-end
 
 ### <a name="my-application-experiences-high-cpu-usage-or-high-memory-usage"></a>Mijn toepassing heeft een hoog CPU-gebruik of een hoog geheugengebruik
@@ -91,7 +91,7 @@ Zie [metrische gegevens voor Azure lente-Cloud](spring-cloud-concept-metrics.md)
 
 Als alle exemplaren actief zijn, gaat u naar Azure Log Analytics om een query uit te voeren op uw toepassings logboeken en de code logica te controleren. Dit helpt u te zien of een van deze van invloed kan zijn op de schaal partitionering. Zie [Logboeken en metrische gegevens analyseren met Diagnostische instellingen](diagnostic-services.md)voor meer informatie.
 
-Zie aan de [slag met log Analytics in azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)voor meer informatie over Azure log Analytics. Query's uitvoeren op de logboeken met behulp van de [Kusto-query taal](https://docs.microsoft.com/azure/kusto/query/).
+Zie aan de [slag met log Analytics in azure monitor](../azure-monitor/log-query/get-started-portal.md)voor meer informatie over Azure log Analytics. Query's uitvoeren op de logboeken met behulp van de [Kusto-query taal](/azure/kusto/query/).
 
 ::: zone pivot="programming-language-java"
 ### <a name="checklist-for-deploying-your-spring-application-to-azure-spring-cloud"></a>Controle lijst voor het implementeren van uw lente toepassing in azure veer Cloud
@@ -113,14 +113,14 @@ Voordat u de toepassing uitschakelt, moet u controleren of deze voldoet aan de v
 
 Wanneer u een Azure lente-Cloud service-exemplaar instelt met behulp van de Azure Portal, voert Azure lente Cloud de validatie voor u uit.
 
-Maar als u probeert het Azure lente-Cloud service-exemplaar in te stellen met behulp van de [Azure cli](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) of de [Azure Resource Manager-sjabloon](https://docs.microsoft.com/azure/azure-resource-manager/), controleert u het volgende:
+Maar als u probeert het Azure lente-Cloud service-exemplaar in te stellen met behulp van de [Azure cli](/cli/azure/get-started-with-azure-cli) of de [Azure Resource Manager-sjabloon](../azure-resource-manager/index.yml), controleert u het volgende:
 
 * Het abonnement is actief.
 * De locatie wordt [ondersteund](spring-cloud-faq.md) door de Azure lente-Cloud.
 * De resource groep voor het exemplaar is al gemaakt.
 * De resource naam voldoet aan de naamgevings regel. De naam mag alleen kleine letters, cijfers en afbreek streepjes bevatten. Het eerste teken moet een letter zijn. Het eerste teken moet een letter of cijfer zijn. De waarde moet tussen 2 en 32 tekens bevatten.
 
-Als u het Azure lente-Cloud service-exemplaar wilt instellen met behulp van de Resource Manager-sjabloon, raadpleegt u eerst [de structuur en de syntaxis van Azure Resource Manager sjablonen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates).
+Als u het Azure lente-Cloud service-exemplaar wilt instellen met behulp van de Resource Manager-sjabloon, raadpleegt u eerst [de structuur en de syntaxis van Azure Resource Manager sjablonen](../azure-resource-manager/templates/template-syntax.md).
 
 De naam van het Azure lente-Cloud service-exemplaar wordt gebruikt voor het aanvragen van een subdomeinnaam onder `azureapps.io` , zodat de installatie mislukt als de naam in conflict is met een bestaande. Mogelijk vindt u meer informatie in de activiteiten Logboeken.
 
@@ -129,7 +129,7 @@ De naam van het Azure lente-Cloud service-exemplaar wordt gebruikt voor het aanv
 
 U kunt een *zip* -bestand voor een .net core Steeltoe-app niet uploaden met behulp van de Azure portal of de Resource Manager-sjabloon.
 
-Wanneer u uw toepassings pakket implementeert met behulp van de [Azure cli](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli), pollt de Azure cli regel matig de voortgang van de implementatie en wordt het resultaat weer gegeven in het einde.
+Wanneer u uw toepassings pakket implementeert met behulp van de [Azure cli](/cli/azure/get-started-with-azure-cli), pollt de Azure cli regel matig de voortgang van de implementatie en wordt het resultaat weer gegeven in het einde.
 
 Zorg ervoor dat uw toepassing is ingepakt in de juiste *. zip* -bestands indeling. Als de app niet goed is verpakt, reageert het proces niet meer of ontvangt u een fout melding.
 ::: zone-end
@@ -139,7 +139,7 @@ Zorg ervoor dat uw toepassing is ingepakt in de juiste *. zip* -bestands indelin
 
 U kunt het/source-pakket van Java Archive File (JAR) niet uploaden met behulp van de Azure Portal of de Resource Manager-sjabloon.
 
-Wanneer u uw toepassings pakket implementeert met behulp van de [Azure cli](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli), pollt de Azure cli regel matig de voortgang van de implementatie en wordt het resultaat weer gegeven in het einde.
+Wanneer u uw toepassings pakket implementeert met behulp van de [Azure cli](/cli/azure/get-started-with-azure-cli), pollt de Azure cli regel matig de voortgang van de implementatie en wordt het resultaat weer gegeven in het einde.
 
 Als de controles worden onderbroken, kunt u nog steeds de volgende opdrachten gebruiken om de implementatielogboeken op te halen:
 
@@ -153,7 +153,7 @@ Zorg ervoor dat uw toepassing is verpakt in de juiste [uitvoer bare jar-indeling
 
 U kunt het JAR/Bron pakket niet uploaden met behulp van de Azure Portal of de Resource Manager-sjabloon.
 
-Wanneer u uw toepassings pakket implementeert met behulp van de [Azure cli](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli), pollt de Azure cli regel matig de voortgang van de implementatie en wordt het resultaat weer gegeven in het einde.
+Wanneer u uw toepassings pakket implementeert met behulp van de [Azure cli](/cli/azure/get-started-with-azure-cli), pollt de Azure cli regel matig de voortgang van de implementatie en wordt het resultaat weer gegeven in het einde.
 
 Als de controles worden onderbroken, kunt u nog steeds de volgende opdrachten gebruiken om de compilatie- en implementatielogboeken op te halen:
 
@@ -171,7 +171,7 @@ Als u een bestaande tot een cloud gebaseerde oplossing naar Azure migreert, moet
 
 U kunt ook de logboeken van de _service register_ -client in azure log Analytics controleren. Zie [Logboeken en metrische gegevens analyseren met Diagnostische instellingen](diagnostic-services.md) voor meer informatie.
 
-Zie aan de [slag met log Analytics in azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)voor meer informatie over Azure log Analytics. Query's uitvoeren op de logboeken met behulp van de [Kusto-query taal](https://docs.microsoft.com/azure/kusto/query/).
+Zie aan de [slag met log Analytics in azure monitor](../azure-monitor/log-query/get-started-portal.md)voor meer informatie over Azure log Analytics. Query's uitvoeren op de logboeken met behulp van de [Kusto-query taal](/azure/kusto/query/).
 
 ### <a name="i-want-to-inspect-my-applications-environment-variables"></a>Ik wil de omgevings variabelen van mijn toepassing controleren
 
@@ -231,7 +231,7 @@ Controleer of de `spring-boot-actuator` afhankelijkheid is ingeschakeld in uw to
 </dependency>
 ```
 
-Als uw toepassings logboeken kunnen worden gearchiveerd in een opslag account, maar niet naar Azure Log Analytics worden verzonden, controleert u of u [uw werk ruimte op de juiste wijze hebt ingesteld](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace). Als u een gratis laag van Azure Log Analytics gebruikt, moet u er rekening mee houden dat [de gratis laag geen Sla (Service Level Agreement) biedt](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_3/).
+Als uw toepassings logboeken kunnen worden gearchiveerd in een opslag account, maar niet naar Azure Log Analytics worden verzonden, controleert u of u [uw werk ruimte op de juiste wijze hebt ingesteld](../azure-monitor/learn/quick-create-workspace.md). Als u een gratis laag van Azure Log Analytics gebruikt, moet u er rekening mee houden dat [de gratis laag geen Sla (Service Level Agreement) biedt](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_3/).
 ::: zone-end
 
 ## <a name="next-steps"></a>Volgende stappen

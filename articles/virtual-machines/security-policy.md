@@ -8,14 +8,14 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: 1c2156975eb8d8dcb3580603dfbe1f5d1390b79a
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 06d71713075b401c876edd87f0ec884bcb252589
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88852486"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977745"
 ---
-# <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Beleid op virtuele machines in azure beveiligen en gebruiken
+# <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Beveiligen en beleidsregels gebruiken op virtuele machines in Azure
 
 Het is belang rijk om uw virtuele machine (VM) te beveiligen voor de toepassingen die u uitvoert. Het beveiligen van uw Vm's kan bestaan uit een of meer Azure-Services en-functies die beveiligde toegang bieden tot uw Vm's en beveiligde opslag van uw gegevens. In dit artikel vindt u informatie waarmee u uw virtuele machines en toepassingen kunt beveiligen.
 
@@ -25,7 +25,7 @@ Het moderne risico landschap voor Cloud omgevingen is dynamisch, waardoor de dru
 
 ## <a name="azure-security-center"></a>Azure Security Center
 
-[Azure Security Center](../security-center/security-center-intro.md) helpt u bij het voor komen, detecteren en reageren op bedreigingen voor uw virtuele machines. Security Center biedt geïntegreerde beveiligings bewaking en beleids beheer voor uw Azure-abonnementen, helpt bedreigingen te detecteren die anders niet kunnen worden opgemerkt en werkt met een uitgebreid ecosysteem van beveiligings oplossingen.
+[Azure Security Center](../security-center/security-center-introduction.md) helpt u bij het voor komen, detecteren en reageren op bedreigingen voor uw virtuele machines. Security Center biedt geïntegreerde beveiligings bewaking en beleids beheer voor uw Azure-abonnementen, helpt bedreigingen te detecteren die anders niet kunnen worden opgemerkt en werkt met een uitgebreid ecosysteem van beveiligings oplossingen.
 
 De just-in-time-toegang van Security Center kan worden toegepast op uw VM-implementatie om inkomend verkeer naar uw Azure-Vm's te vergren delen, waardoor de bloot stelling aan aanvallen wordt verkleind en zo snel mogelijk verbinding met Vm's wordt gemaakt. Wanneer just-in-time is ingeschakeld en een gebruiker toegang tot een virtuele machine vraagt, controleert Security Center welke machtigingen de gebruiker heeft voor de virtuele machine. Als ze over de juiste machtigingen beschikken, wordt de aanvraag goedgekeurd en Security Center wordt automatisch de netwerk beveiligings groepen (Nsg's) geconfigureerd om binnenkomend verkeer voor de geselecteerde poorten gedurende een beperkte periode toe te staan. Nadat de tijd is verstreken, wordt de Nsg's door Security Center teruggezet naar de vorige status. 
 
@@ -69,9 +69,8 @@ Dit probleem wordt opgelost met de functie Beheerde identiteiten voor Azure-reso
 
 ## <a name="role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer
 
-Met [op rollen gebaseerd toegangs beheer (Azure RBAC) van Azure](../role-based-access-control/overview.md)kunt u taken in uw team scheiden en alleen de hoeveelheid toegang verlenen aan gebruikers op uw virtuele machine die ze nodig hebben om hun taken uit te voeren. In plaats van iedereen onbeperkte machtigingen voor de virtuele machine te geven, kunt u alleen bepaalde acties toestaan. U kunt toegangs beheer voor de virtuele machine configureren in het [Azure Portal](../role-based-access-control/role-assignments-portal.md), met behulp van de [Azure cli](https://docs.microsoft.com/cli/azure/role)of[Azure PowerShell](../role-based-access-control/role-assignments-powershell.md).
+Met [op rollen gebaseerd toegangs beheer (Azure RBAC) van Azure](../role-based-access-control/overview.md)kunt u taken in uw team scheiden en alleen de hoeveelheid toegang verlenen aan gebruikers op uw virtuele machine die ze nodig hebben om hun taken uit te voeren. In plaats van iedereen onbeperkte machtigingen voor de virtuele machine te geven, kunt u alleen bepaalde acties toestaan. U kunt toegangs beheer voor de virtuele machine configureren in het [Azure Portal](../role-based-access-control/role-assignments-portal.md), met behulp van de [Azure cli](/cli/azure/role)of[Azure PowerShell](../role-based-access-control/role-assignments-powershell.md).
 
 
 ## <a name="next-steps"></a>Volgende stappen
 - Door loop de stappen voor het bewaken van de beveiliging van virtuele machines met behulp van Azure Security Center voor [Linux](../security/fundamentals/overview.md) of [Windows](windows/tutorial-azure-security.md).
-

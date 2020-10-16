@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: duau
 ms.openlocfilehash: 86758c355566fb67ebd8a606068e2044e0b8bd64
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89400174"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Veelgestelde vragen over Traffic Manager
@@ -112,7 +112,7 @@ Nee, Traffic Manager kan niet garanderen dat de geografische regio die we afleid
 
 ###  <a name="does-an-endpoint-need-to-be-physically-located-in-the-same-region-as-the-one-it-is-configured-with-for-geographic-routing"></a>Moet een eind punt zich fysiek bevinden in dezelfde regio als de versie die is geconfigureerd met voor geografische route ring?
 
-Nee, de locatie van het eind punt legt geen beperkingen op waaraan regio's kunnen worden toegewezen. Zo kan een eind punt in de Azure-regio VS-centraal bijvoorbeeld alle gebruikers van India naar de computer sturen.
+Nee, de locatie van het eind punt legt geen beperkingen op waaraan regio's kunnen worden toegewezen. Bijvoorbeeld: een eind punt in US-Central Azure-regio kan alle gebruikers van India naar dit werk item sturen.
 
 ### <a name="can-i-assign-geographic-regions-to-endpoints-in-a-profile-that-is-not-configured-to-do-geographic-routing"></a>Kan ik geografische regio's toewijzen aan eind punten in een profiel dat niet is geconfigureerd voor geografische route ring?
 

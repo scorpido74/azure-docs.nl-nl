@@ -61,9 +61,13 @@
     - name: Herstel na noodgevallen implementeren voor VM's
       href: disaster-recovery-for-virtual-machines.md
     - name: VM implementeren via inhoudsbibliotheek
-      href: tutorial-deploy-vm-content-library.md
+      href: ./deploy-vm-content-library.md
     - name: GitHub Enterprise Server instellen
       href: github-enterprise-server.md
+    - name: Openbaar IP-gebruik
+      href: public-ip-usage.md
+    - name: IPSec-tunnel maken
+      href: create-ipsec-tunnel.md
     - name: Systeemeigen Azure-integratie
       items:
         - name: API Management
@@ -82,8 +86,6 @@
           href: protect-azure-vmware-solution-with-application-gateway.md
         - name: Traffic Manager
           href: deploy-traffic-manager-balance-workloads.md
-        - name: Openbaar IP-gebruik
-          href: public-ip-usage.md
     - name: VMware-oplossingen
       items:
         - name: vRealize-bewerkingen instellen

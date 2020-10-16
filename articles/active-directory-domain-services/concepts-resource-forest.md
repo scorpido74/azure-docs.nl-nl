@@ -2,20 +2,20 @@
 title: Concepten van resource-forests voor Azure AD Domain Services | Microsoft Docs
 description: Meer informatie over wat een resource-forest is in Azure Active Directory Domain Services en hoe ze uw organisatie in hybride omgevingen voor delen met beperkte gebruikers verificatie opties of beveiligings problemen.
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 88069c6ac90fce7e33cac6ed3c30accb18ded8bf
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.author: joflore
+ms.openlocfilehash: 1f8c09e7e260d22aa6864327d6a890ef3beaa039
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91396396"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962510"
 ---
 # <a name="resource-forest-concepts-and-features-for-azure-active-directory-domain-services"></a>Concepten en functies van het resource-forest voor Azure Active Directory Domain Services
 

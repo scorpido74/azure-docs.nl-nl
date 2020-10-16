@@ -1,29 +1,29 @@
 ---
 title: Uw factuur beheren en converteren van het gratis prijs plan in azure IoT Central toepassing | Microsoft Docs
 description: Als beheerder leert u hoe u uw factuur kunt beheren en hoe u het gratis prijs plan kunt verplaatsen naar een Standard-prijs plan in uw Azure IoT Central-toepassing
-author: v-krghan
-ms.author: v-krghan
+author: dominicbetts
+ms.author: dobett
 ms.date: 12/09/2019
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 888b9f31b8082ac124a773cc489293b335d7d255
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 515f5f665e947ff9594cce6dbbaea9b5e0c50ebf
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80157495"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999715"
 ---
 # <a name="manage-your-bill-in-an-iot-central-application"></a>Uw factuur beheren in een IoT Central-toepassing
 
-In dit artikel wordt beschreven hoe u, als beheerder, uw factuur kunt beheren in azure IoT Central-toepassing in de sectie beheer. U leert hoe u uw toepassing kunt verplaatsen van het gratis prijs plan naar een Standard-prijs plan en hoe u uw prijs plan bijwerkt of downgradet.
+In dit artikel wordt beschreven hoe u, als beheerder, uw Azure IoT Central-facturering kunt beheren. U kunt uw toepassing verplaatsen van het prijs plan gratis naar een Standard-prijs plan en u hebt ook een upgrade of downgrade voor uw prijs plan.
 
-Als u de sectie **beheer** wilt openen en gebruiken, moet u de rol *beheerder* hebben of een *aangepaste* gebruikersrol hebben waarmee u factuur kunt bekijken voor een Azure IOT Central-toepassing. Als u een Azure IoT Central-toepassing maakt, wordt u automatisch toegewezen aan **de beheerdersrol** voor die toepassing.
+Als u toegang wilt krijgen tot de sectie **beheer** , moet u de rol *beheerder* hebben of een *aangepaste* gebruikersrol hebben waarmee u de facturering kunt weer geven. Als u een Azure IoT Central-toepassing maakt, wordt u automatisch toegewezen aan de rol **beheerder** .
 
 ## <a name="move-from-free-to-standard-pricing-plan"></a>Verplaatsen van gratis naar Standard-prijs plan
 
-- Toepassingen die gebruikmaken van het gratis prijs plan zijn zeven dagen beschikbaar voordat ze verlopen. Om verlies van gegevens te voor komen, kunt u ze op elk gewenst moment naar een Standard-prijs plan verplaatsen voordat ze verlopen.
+- Toepassingen die gebruikmaken van het gratis prijs plan zijn zeven dagen beschikbaar voordat ze verlopen. Om te voor komen dat gegevens verloren gaan, kunt u ze op elk gewenst moment naar een Standard-prijs plan verplaatsen voordat ze verlopen.
 - Toepassingen die gebruikmaken van een Standard-prijs plan worden per apparaat in rekening gebracht, met de eerste twee gratis apparaten per toepassing.
 
 Lees meer over prijzen op de [prijzenpagina van IoT Central](https://azure.microsoft.com/pricing/details/iot-central/).
@@ -55,9 +55,9 @@ In het gedeelte prijzen kunt u uw Azure IoT-prijs plan op elk gewenst moment bij
 
 1. Ga naar de pagina met **prijzen** in de sectie **beheer** .
 
-    ![Status van de proef versie](media/howto-view-bill/pricing.png)
+    ![Prcing-abonnement upgraden](media/howto-view-bill/pricing.png)
 
-1. Selecteer het **plan** en klik op **Opslaan** om te upgraden of Down graden.
+1. Selecteer het **plan** en selecteer vervolgens **Opslaan** om te upgraden of Down graden.
 
 ## <a name="view-your-bill"></a>Uw factuur weergeven
 

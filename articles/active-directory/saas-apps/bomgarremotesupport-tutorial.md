@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: jeedes
-ms.openlocfilehash: ecaeea625bc4891c95614292a44d31b616d39eb2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a70216286e6f19f565d189c1c16f8862494e3aef
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549285"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743077"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-beyondtrust-remote-support"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met BeyondTrust Remote Support
 
@@ -155,7 +155,7 @@ In deze sectie geeft u B. Simon toestemming om eenmalige aanmelding van Azure te
 
 1. Klik op het menu **STATUS** en kopieer de **id**, **antwoord-URL** en **aanmeldings-URL** en gebruik deze waarden in de sectie **Standaard-SAML-configuratie** in Azure Portal.
 
-    ![BeyondTrust Remote Support configureren](./media/bomgarremotesupport-tutorial/config-url-values.png)
+    ![Schermopname van het menu 'Status' in BeyondTrust Remote Support, waar u deze informatie kunt verzamelen.](./media/bomgarremotesupport-tutorial/config-url-values.png)
 
 1. Ga naar de BeyondTrust Remote Support-/aanmeldingsinterface op `https://support.example.com/login`, waarbij **support.example.com** de primaire hostnaam van uw apparaat is en voer verificatie uit met uw beheerdersreferenties.
 
@@ -165,20 +165,20 @@ In deze sectie geeft u B. Simon toestemming om eenmalige aanmelding van Azure te
 
 1. Onder de sectie Identity Provider Settings ziet u een optie voor het uploaden van de metagegevens van de identiteitsprovider. Zoek het XML-bestand met metagegevens dat u hebt gedownload uit Azure Portal en klik op **Upload**. **Entity ID**, **Single Sign-On Service URL** en het certificaat worden automatisch geüpload en **Protocol Binding** moet worden gewijzigd in **HTTP POST**. Zie de onderstaande schermafbeelding:
 
-    ![BeyondTrust Remote Support configureren](./media/bomgarremotesupport-tutorial/config-uploadfile.png)
+    ![Schermopname van de sectie 'Instellingen van identiteitsprovider' waarin u deze acties uitvoert.](./media/bomgarremotesupport-tutorial/config-uploadfile.png)
 
 ### <a name="create-beyondtrust-remote-support-test-user"></a>BeyondTrust Remote Support-testgebruiker maken
 
 De instellingen voor het inrichten van gebruikers worden hier geconfigureerd. Voor de waarden die in deze sectie worden gebruikt, wordt verwezen vanuit de sectie **Gebruikerskenmerken en claims** sectie in Azure Portal. De waarden zijn geconfigureerd als de standaardwaarden die al worden geïmporteerd op het moment dat ze worden gemaakt, maar de waarde kan indien nodig worden aangepast.
 
-![Gebruiker maken](./media/bomgarremotesupport-tutorial/config-user1.png)
+![Schermopname van de instellingen voor het inrichten van de gebruiker, waar u gebruikerswaarden kunt configureren.](./media/bomgarremotesupport-tutorial/config-user1.png)
 
 > [!NOTE]
 > Het groeps- en e-mailkenmerk zijn voor deze implementatie niet nodig. Als u Azure AD-groepen gebruikt en toewijst aan BeyondTrust Remote Support-groepsbeleid voor machtigingen, moet naar de object-id van de groep worden verwezen via de eigenschappen in Azure Portal. Vervolgens moeten ze in de sectie Beschikbare groepen worden geplaatst. Zodra dit is voltooid, kan de object-id/AD-groep nu aan een groepsbeleid voor machtigingen worden toegewezen.
 
-![Gebruiker maken](./media/bomgarremotesupport-tutorial/config-user2.png)
+![Schermopname van de sectie 'IT' met het type lidmaatschap, de bron, het type en object-id.](./media/bomgarremotesupport-tutorial/config-user2.png)
 
-![Gebruiker maken](./media/bomgarremotesupport-tutorial/config-user3.png)
+![Schermopname van de pagina 'Basisinstellingen' voor een groepsbeleid.](./media/bomgarremotesupport-tutorial/config-user3.png)
 
 > [!NOTE]
 > U kunt ook een standaardgroepsbeleid instellen voor de SAML2-beveiligingsprovider. Als u deze optie definieert, worden aan alle gebruikers die zijn geverifieerd via SAML, de machtigingen toegewezen die zijn opgegeven in het groepsbeleid. Het beleid General Members is in BeyondTrust Remote Support/Privileged Remote Access met beperkte machtigingen opgenomen. Dit kan worden gebruikt om de verificatie te testen en gebruikers toe te wijzen aan het juiste beleid. Gebruikers worden pas via /login > Users & Security in de SAML2-gebruikerslijst vermeld na de eerste geslaagde verificatiepoging. Voor meer informatie over groepsbeleid klikt u op de volgende koppeling: `https://www.beyondtrust.com/docs/remote-support/getting-started/admin/group-policies.htm`

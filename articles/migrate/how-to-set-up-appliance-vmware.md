@@ -4,10 +4,10 @@ description: Meer informatie over het instellen van een Azure Migrate apparaat o
 ms.topic: article
 ms.date: 04/16/2020
 ms.openlocfilehash: 9a4e652180b236262ea57ae49d35410ebfbdc927
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448647"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>Een apparaat instellen voor VMware-Vm's
@@ -26,11 +26,11 @@ Nadat u het apparaat hebt gemaakt, controleert u of er verbinding kan worden gem
 
 ## <a name="appliance-deployment-ova"></a>Implementatie van het apparaat (eicellen)
 
-Als u het apparaat wilt instellen met behulp van een eicellen-sjabloon, doet u het volgende:
-- Geef een naam op voor het apparaat en Genereer een Azure Migrate project sleutel in de portal
-- Down load een bestand met een eicellen-sjabloon en importeer het naar vCenter Server.
-- Maak het apparaat en controleer of het verbinding kan maken met Azure Migrate server beoordeling.
-- Configureer het apparaat voor de eerste keer en registreer het met het Azure Migrate project met behulp van de Azure Migrate-project sleutel.
+Als u het apparaat wilt instellen met behulp van een OVA-sjabloon, doet u het volgende:
+- Geef een naam op voor het apparaat en genereer een Azure Migrate-projectsleutel in de portal
+- Download een OVA-sjabloonbestand en importeer het naar vCenter Server.
+- Maak het apparaat en controleer of het verbinding kan maken met Azure Migrate-serverevaluatie.
+- Configureer het apparaat voor het eerst en registreer het bij het Azure Migrate-project met behulp van de Azure Migrate-projectsleutel.
 
 ### <a name="generate-the-azure-migrate-project-key"></a>Azure Migrate-projectsleutel genereren
 
@@ -66,7 +66,7 @@ Controleer of het bestand van de eicellen veilig is voordat u het implementeert.
 
 Importeer het gedownloade bestand en maak een virtuele machine.
 
-1. Klik in de vSphere-client console op **bestand**  >  **implementeren OVF sjabloon**.
+1. Klik in de Client vSphere-console op **Bestand** > **OVF-sjabloon implementeren**.
 ![Menuopdracht voor het implementeren van een OVF-sjabloon](./media/tutorial-assess-vmware/deploy-ovf.png)
 
 2. Geef in de wizard OVF-sjabloon implementeren > **Bron** de locatie van het OVA-bestand op.
@@ -74,7 +74,7 @@ Importeer het gedownloade bestand en maak een virtuele machine.
 5. Geef bij **Host/Cluster** de host of het cluster op waarop de VM wordt uitgevoerd.
 6. Geef bij **Opslag** de opslaglocatie voor de VM op.
 7. Geef in **Schijfindeling** het schijftype en de schijfgrootte op.
-8. Geef bij **netwerk toewijzing**het netwerk op waarmee de virtuele machine verbinding maakt. Het netwerk heeft Internet connectiviteit nodig om meta gegevens te verzenden naar Azure Migrate server-evaluatie.
+8. Geef onder **Netwerktoewijzing** het netwerk op waarmee de virtuele machine verbinding maakt. Het netwerk heeft internetconnectiviteit nodig om metagegevens naar Azure Migrate-serverevaluatie te verzenden.
 9. Controleer en bevestig de instellingen en klik op **Voltooien**.
 
 

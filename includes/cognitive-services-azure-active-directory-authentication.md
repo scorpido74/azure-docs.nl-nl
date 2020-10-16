@@ -5,13 +5,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/11/2020
 ms.openlocfilehash: 235b7946fbcfc2322878428cce72e77ecceb9cfc
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88010927"
 ---
-## <a name="authenticate-with-azure-active-directory"></a>Verifiëren met Azure Active Directory
+## <a name="authenticate-with-azure-active-directory"></a>Verifiëren bij Azure Active Directory
 
 > [!IMPORTANT]
 > 1. Momenteel worden **alleen** de Computer Vision-API, Face-API, Text Analytics-API, insluitende lezer, formulier herkenning, afwijkings detectie en alle Bing-services ondersteund, met uitzonde ring van Bing aangepaste zoekopdrachten ondersteuning voor verificatie met behulp van Azure Active Directory (Aad).

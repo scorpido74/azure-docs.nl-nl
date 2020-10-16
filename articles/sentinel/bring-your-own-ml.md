@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: yelevin
 ms.openlocfilehash: 17c0ba7306ab4cc51fe8bbe3709d5b6bc85fa487
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91344649"
 ---
 # <a name="bring-your-own-machine-learning-ml-into-azure-sentinel"></a>Breng uw eigen Machine Learning (ML) over naar Azure Sentinel
@@ -159,13 +159,13 @@ Zodra u het Score item hebt gepland, kunt u de module in het Score notitieblok g
 
 Ga terug naar uw Azure-Sentinel-Portal om uw gescoorde resultaten te bekijken met gerelateerde logboek gegevens. In **logboeken** > aangepaste logboeken ziet u de resultaten in de **AnomalousResourceAccessResult_CL** tabel (of uw eigen aangepaste tabel naam). U kunt deze resultaten gebruiken om uw onderzoek en jacht te verbeteren.
 
-:::image type="content" source="./media/bring-your-own-ml/anomalous-resource-access-logs.png" alt-text="afwijkende bron toegangs logboeken":::
+:::image type="content" source="./media/bring-your-own-ml/anomalous-resource-access-logs.png" alt-text="machine learning Framework":::
 
 ### <a name="build-custom-analytics-rule-with-ml-results"></a>Aangepaste analyse regel bouwen met ML-resultaten
 
 Zodra u de resultaten van de ML hebt bevestigd in de tabel met aangepaste logboeken en u tevreden bent met de betrouw baarheid van de scores, kunt u een detectie maken op basis van de resultaten. Ga naar **Analytics** vanuit de Azure-Sentinel-Portal en [Maak een nieuwe detectie regel](tutorial-detect-threats-custom.md). Hieronder ziet u een voor beeld waarin de query wordt gebruikt om de detectie te maken.
 
-:::image type="content" source="./media/bring-your-own-ml/create-byo-ml-analytics-rule.png" alt-text="aangepaste analyse regel maken voor B-O M L detecties":::
+:::image type="content" source="./media/bring-your-own-ml/create-byo-ml-analytics-rule.png" alt-text="machine learning Framework":::
 
 ### <a name="view-and-respond-to-incidents"></a>Incidenten weer geven en erop reageren
 Zodra u de analyse regel hebt ingesteld op basis van de MILLILITERs resultaten, wordt er een incident gegenereerd en weer gegeven op de pagina **incidenten** in azure Sentinel als er resultaten boven de drempel waarde vallen die u hebt ingesteld in de query. 

@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.workload: big-data
 ms.date: 07/03/2018
 ms.openlocfilehash: ee35385b88bf4fbd5f899fde032b11b99a20d050
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87130032"
 ---
 # <a name="use-a-u-sql-database-project-to-develop-a-u-sql-database-for-azure-data-lake"></a>Gebruik een U-SQL database project om een U-SQL database te ontwikkelen voor Azure Data Lake
@@ -50,7 +50,7 @@ Voor een assembly-object biedt het hulp programma een gebruiks vriendelijke UI-e
 
 3.  Voeg **beheerde afhankelijkheden** en **extra bestanden** toe, indien aanwezig. Wanneer u extra bestanden toevoegt, gebruikt het hulp programma het relatieve pad om ervoor te zorgen dat de assembly's op uw lokale computer en op de build-machine later kunnen worden gevonden. 
 
-@_DeployTempDirectoryis een vooraf gedefinieerde variabele die het hulp programma naar de map build uitvoermap wijst. In de map build-uitvoer heeft elke assembly een submap met de naam van de assembly. Alle Dll's en extra bestanden bevinden zich in die submap. 
+@_DeployTempDirectory is een vooraf gedefinieerde variabele die het hulp programma naar de map build uitvoermap wijst. In de map build-uitvoer heeft elke assembly een submap met de naam van de assembly. Alle Dll's en extra bestanden bevinden zich in die submap. 
  
 ## <a name="build-a-u-sql-database-project"></a>Een U-SQL database-project bouwen
 
@@ -91,7 +91,7 @@ U kunt een U-SQL database implementeren via een U-SQL database-project of een. u
   
 ### <a name="deploy-u-sql-database-by-using-the-sdk"></a>U-SQL database implementeren met behulp van de SDK
 
-`PackageDeploymentTool.exe`biedt de programmeer-en opdracht regel interfaces die U helpen bij het implementeren van U-SQL-data bases. De SDK is opgenomen in het [U-SQL SDK Nuget-pakket](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/), dat zich bevindt in `build/runtime/PackageDeploymentTool.exe` .
+`PackageDeploymentTool.exe` biedt de programmeer-en opdracht regel interfaces die U helpen bij het implementeren van U-SQL-data bases. De SDK is opgenomen in het [U-SQL SDK Nuget-pakket](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/), dat zich bevindt in `build/runtime/PackageDeploymentTool.exe` .
 
 Meer [informatie over de SDK en het instellen van CI/cd-pijp lijn voor U-SQL database-implementatie](data-lake-analytics-cicd-overview.md).
 

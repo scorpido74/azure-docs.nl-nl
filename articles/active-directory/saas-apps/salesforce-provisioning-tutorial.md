@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 08/01/2019
 ms.author: jeedes
 ms.openlocfilehash: a77fa5702b8ab5728f387eae02cc97f997a406a5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91273293"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Zelf studie: Sales Force configureren voor het automatisch inrichten van gebruikers
@@ -53,7 +53,7 @@ Voordat u de inrichtings service configureert en inschakelt, moet u bepalen welk
 In deze sectie wordt u begeleid bij het koppelen [van de API-V40 van uw Azure ad-account voor Sales Force](https://developer.salesforce.com/docs/atlas.en-us.208.0.api.meta/api/implementation_considerations.htm)en het configureren van de inrichtings service om toegewezen gebruikers accounts in Sales Force te maken, bij te werken en uit te scha kelen op basis van de gebruikers-en groeps toewijzing in azure AD.
 
 > [!Tip]
-> U kunt er ook voor kiezen om op SAML gebaseerde eenmalige aanmelding voor Sales Force in te scha kelen, gevolgd door de instructies in [Azure Portal](https://portal.azure.com). Eenmalige aanmelding kan onafhankelijk van automatische inrichting worden geconfigureerd, maar deze twee functies gelden voor elkaar.
+> U kunt er ook voor kiezen om op SAML gebaseerde single Sign-On voor Sales Force in te scha kelen, gevolgd door de instructies in [Azure Portal](https://portal.azure.com). Eenmalige aanmelding kan onafhankelijk van automatische inrichting worden geconfigureerd, maar deze twee functies gelden voor elkaar.
 
 ### <a name="configure-automatic-user-account-provisioning"></a>Automatisch inrichten van gebruikers accounts configureren
 

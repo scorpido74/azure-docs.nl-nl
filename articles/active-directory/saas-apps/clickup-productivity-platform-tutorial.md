@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 794a952ba719faa16e3584afaf8f2f292deb6c03
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8a8a9587fd50b63dc862f8b74bc99548699fa6e2
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551809"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760662"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clickup-productivity-platform"></a>Zelfstudie: Azure Active Directory-integratie met ClickUp Productivity Platform
 
@@ -118,17 +118,17 @@ Voer deze stappen uit om eenmalige aanmelding van Azure AD bij ClickUp Productiv
 
 2. Klik op het **Gebruikersprofiel** en selecteer **Instellingen**.
 
-    ![Configuratie van ClickUp Productivity](./media/clickup-productivity-platform-tutorial/configure0.png)
+    ![Schermopname toont de ClickUp Productivity-tenant met het pictogram Instellingen geselecteerd.](./media/clickup-productivity-platform-tutorial/configure0.png)
 
-    ![Configuratie van ClickUp Productivity](./media/clickup-productivity-platform-tutorial/configure1.png)
+    ![Schermopname toont de instellingen.](./media/clickup-productivity-platform-tutorial/configure1.png)
 
 3. Selecteer **Microsoft** onder Single Sign-On (SSO) Provider (Provider voor eenmalige aanmelding).
 
-    ![Configuratie van ClickUp Productivity](./media/clickup-productivity-platform-tutorial/configure2.png)
+    ![Schermopname toont het deelvenster Verificatie waarin Microsoft is geselecteerd.](./media/clickup-productivity-platform-tutorial/configure2.png)
 
 4. Op de pagina **Configure Microsoft Single Sign On** (Eenmalige aanmelding via Microsoft configureren) voert u de volgende stappen uit:
 
-    ![Configuratie van ClickUp Productivity](./media/clickup-productivity-platform-tutorial/configure3.png)
+    ![Schermopname toont de pagina 'Eenmalige aanmelding bij Microsoft configureren', waar u de entiteit-id kunt kopiëren en de Azure Federation metagegevens-URL opslaat.](./media/clickup-productivity-platform-tutorial/configure3.png)
 
     a. Klik op **Kopiëren** om de waarde van de entiteits-ID te kopiëren en plak deze in het tekstvak voor de **id (entiteits-ID)** in het gedeelte **Standaard SAML-configuratie** in de Azure-portal.
     
@@ -136,7 +136,7 @@ Voer deze stappen uit om eenmalige aanmelding van Azure AD bij ClickUp Productiv
 
 5. U voltooit de installatie door op **Authenticate With Microsoft to complete setup** (Verifiëren met Microsoft om de installatie te voltooien) te klikken en te verifiëren met een Microsoft-account.
 
-    ![Configuratie van ClickUp Productivity](./media/clickup-productivity-platform-tutorial/configure4.png)
+    ![Schermopname toont de knop 'Verifiëren met Microsoft om de installatie te voltooien'.](./media/clickup-productivity-platform-tutorial/configure4.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
@@ -195,13 +195,13 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
 2. Klik op het **Gebruikersprofiel** en selecteer vervolgens **Personen**.
    
-    ![Configuratie van ClickUp Productivity](./media/clickup-productivity-platform-tutorial/configure0.png)
+    ![Schermopname toont de ClickUp-productiviteitstenant.](./media/clickup-productivity-platform-tutorial/configure0.png)
 
-    ![Configuratie van ClickUp Productivity](./media/clickup-productivity-platform-tutorial/user1.png)
+    ![Schermopname toont de geselecteerde link 'Mensen'.](./media/clickup-productivity-platform-tutorial/user1.png)
 
 3. Voer het e-mailadres van de gebruiker in het tekstvak in en klik op **Uitnodigen**.
 
-    ![Configuratie van ClickUp Productivity](./media/clickup-productivity-platform-tutorial/user2.png)
+    ![Schermopname toont 'Instellingen voor teamgebruikers' waar u personen kunt uitnodigen per e-mail.](./media/clickup-productivity-platform-tutorial/user2.png)
 
     > [!NOTE]
     > De gebruiker zal de melding ontvangen en moet de uitnodiging accepteren om het account te activeren.

@@ -2,19 +2,16 @@
 title: Toegangs beheer voor werkmappen Azure Monitor
 description: Vereenvoudig complexe rapportage met vooraf ontwikkelde en aangepaste werkmappen met op rollen gebaseerd toegangs beheer
 services: azure-monitor
-author: mrbullwinkle
-manager: carmonm
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.author: mbullwin
-ms.openlocfilehash: dc6e1d738bf255fe7baa244556bad4519979b1df
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9c0b5dd72cf82649e7f659d23606d23aea62ac82
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539292"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91932546"
 ---
 # <a name="access-control"></a>Toegangsbeheer
 

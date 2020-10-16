@@ -1,5 +1,5 @@
 ---
-title: 'Quick Start: een zoek opdracht voor nieuws uitvoeren met Ruby en het Bing News Search REST API'
+title: 'Snelstart: Nieuws zoeken met Ruby en de REST API van Bing News Search'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze snelstartgids om een aanvraag naar de REST API van Bing News Search te verzenden via Ruby en een JSON-antwoord te ontvangen.
 services: cognitive-services
@@ -12,29 +12,29 @@ ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: ad52116e11f9d89bf55a23692ae4e27f53b51319
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: MT
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "83873407"
 ---
-# <a name="quickstart-perform-a-news-search-using-ruby-and-the-bing-news-search-rest-api"></a>Quick Start: een zoek opdracht voor nieuws uitvoeren met Ruby en het Bing News Search REST API
+# <a name="quickstart-perform-a-news-search-using-ruby-and-the-bing-news-search-rest-api"></a>Snelstart: Nieuws zoeken met Ruby en de REST API van Bing News Search
 
-Gebruik deze Quick Start om uw eerste oproep naar de Bing Nieuws zoeken-API te maken. Met deze eenvoudige ruby-toepassing wordt een zoek query naar de API verzonden en wordt het JSON-antwoord verwerkt.
+Gebruik deze quickstart om uw eerste aanroep naar de Bing Nieuws zoeken-API te maken. Met deze eenvoudige Ruby-toepassing wordt een zoekquery naar de API verzonden en wordt het JSON-antwoord verwerkt.
 
-Hoewel deze toepassing wordt geschreven in Ruby, is de API een REST-webservice die compatibel is met de meeste programmeer talen. 
+Ondanks dat deze toepassing in Ruby is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. 
 
-De bron code voor dit voor beeld is beschikbaar op [github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingNewsSearchv7.rb).
+De broncode voor dit voorbeeld is beschikbaar op [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingNewsSearchv7.rb).
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Ruby [2,4 of hoger](https://www.ruby-lang.org/en/downloads/)
+* Ruby [2.4 of later](https://www.ruby-lang.org/en/downloads/)
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-the-application"></a>De toepassing maken en initialiseren
 
-1. Importeer de volgende pakketten in het code bestand:
+1. Importeer de volgende pakketten in uw codebestand:
 
     ```ruby
     require 'net/https'
@@ -42,7 +42,7 @@ De bron code voor dit voor beeld is beschikbaar op [github](https://github.com/A
     require 'json'
     ```
 
-2. Maak variabelen voor het API-eind punt, de zoek-URL voor nieuws, uw abonnements sleutel en zoek term. U kunt het globale eind punt in de volgende code gebruiken of het [aangepaste subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) eindpunt gebruiken dat wordt weer gegeven in de Azure portal voor uw resource.
+2. Maak variabelen voor het API-eindpunt, de Nieuws zoeken-URL, uw abonnementssleutel en de zoekterm. U kunt het globale eindpunt in de volgende code gebruiken of het eindpunt voor een [aangepast subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) gebruiken dat wordt weergegeven in de Azure-portal voor uw resource.
 
     ```ruby
     accessKey = "enter key here"
@@ -53,7 +53,7 @@ De bron code voor dit voor beeld is beschikbaar op [github](https://github.com/A
 
 ## <a name="format-and-make-an-api-request"></a>Een API-aanvraag opmaken en maken
 
-Gebruik de variabelen uit de vorige stap om een zoek-URL voor de API-aanvraag op te maken. Verzend vervolgens de aanvraag.
+Gebruik de variabelen uit de vorige stap om een zoek-URL voor de API-aanvraag te formatteren. Verzend vervolgens de aanvraag.
 
 ```ruby
 uri = URI(uri + path + "?q=" + URI.escape(term))
@@ -66,7 +66,7 @@ end
 
 ## <a name="process-and-print-the-json-response"></a>Het JSON-antwoord verwerken en afdrukken
 
-Nadat het antwoord is ontvangen, parseert u de JSON en drukt u vervolgens zowel de hoofd tekst als de bijbehorende headers af.
+Nadat het antwoord is ontvangen, kunt u de JSON parseren en vervolgens zowel de hoofdtekst van het antwoord afdrukken, als de headers.
 
 ```ruby
 puts "\nRelevant Headers:\n\n"

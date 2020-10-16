@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: chenyl
 ms.openlocfilehash: c3e317a87ba888fac3c069cc5327bd89c859e9de
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89514234"
 ---
 # <a name="upstream-settings"></a>Upstream-instellingen
@@ -82,7 +82,7 @@ Wanneer u selecteert `ManagedIdentity` , moet u een beheerde identiteit in de Az
 3. Voeg Url's toe onder het URL-patroon van de **upstream**. Vervolgens wordt de standaard waarde weer gegeven in de instellingen van de **hub** .
 4. Als u instellingen wilt instellen voor **regels**voor de hub, **gebeurtenis regels**, **categorie regels**en **upstream-verificatie**, selecteert u de waarde hub- **regels**. Er wordt een pagina weer gegeven waarin u de instellingen kunt bewerken:
 
-    :::image type="content" source="media/concept-upstream/upstream-detail-portal.png" alt-text="Details van de upstream-instelling":::
+    :::image type="content" source="media/concept-upstream/upstream-detail-portal.png" alt-text="Upstream-instellingen":::
 
 5. Als u een **upstream-verificatie**wilt instellen, moet u ervoor zorgen dat u eerst een beheerde identiteit hebt ingeschakeld. Selecteer vervolgens **beheerde identiteit gebruiken**. Afhankelijk van uw behoeften kunt u opties selecteren onder **verificatie resource-id**. Zie [beheerde identiteiten voor de Azure signalerings service](howto-use-managed-identity.md) voor meer informatie.
 

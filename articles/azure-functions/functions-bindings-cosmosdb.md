@@ -6,12 +6,12 @@ ms.author: cshoe
 ms.topic: reference
 ms.date: 11/21/2017
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 9ae3ef133fa1b246c09fe0a9aa4ec27b0f75fd19
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 524df7805207ce517c7ae805fb17de1b041a2248
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531573"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876036"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>Azure Cosmos DB bindingen voor Azure Functions 1. x
 
@@ -76,7 +76,7 @@ namespace CosmosDBSamplesV1
 }
 ```
 
-# <a name="c-script"></a>[C#-script](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
 In het volgende voor beeld ziet u een Cosmos DB trigger binding in een *function.jsin* bestand en een [C#-script functie](functions-reference-csharp.md) die gebruikmaakt van de binding. De functie schrijft logboek berichten wanneer Cosmos DB records worden gewijzigd.
 
@@ -95,7 +95,7 @@ Hier vindt u de bindings gegevens in de *function.js* in het bestand:
 }
 ```
 
-Dit is de C#-script code:
+Dit is de C# Script-code:
 
 ```cs
     #r "Microsoft.Azure.Documents.Client"
@@ -131,7 +131,7 @@ Hier vindt u de bindings gegevens in de *function.js* in het bestand:
 }
 ```
 
-Dit is de Java script-code:
+Dit is de JavaScript-code:
 
 ```javascript
     module.exports = function (context, documents) {
@@ -162,26 +162,26 @@ De constructor van het kenmerk neemt de naam van de data base en de verzameling.
     }
 ```
 
-Zie voor een volledig voor beeld [trigger-C#-voor beeld](#trigger).
+Zie [Trigger: C#-voorbeeld](#trigger)voor een volledig voorbeeld.
 
-# <a name="c-script"></a>[C#-script](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
-Kenmerken worden niet ondersteund door een C#-script.
+Kenmerken worden niet ondersteund door C# Script.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Kenmerken worden niet ondersteund door Java script.
+Kenmerken worden niet ondersteund door JavaScript.
 
 ---
 
 ## <a name="trigger---configuration"></a>Trigger-configuratie
 
-De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `CosmosDBTrigger` kenmerk.
+De volgende tabel bevat informatie over de bindingsconfiguratie-eigenschappen die u instelt in het bestand *function.json* en het kenmerk `CosmosDBTrigger`.
 
-|function.jsbij eigenschap | Kenmerk eigenschap |Beschrijving|
+|function.json-eigenschap | Kenmerkeigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**type** | N.v.t. | Moet worden ingesteld op `cosmosDBTrigger` . |
-|**direction** | N.v.t. | Moet worden ingesteld op `in` . Deze para meter wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal. |
+|**type** | N.v.t. | Moet worden ingesteld op `cosmosDBTrigger`. |
+|**direction** | N.v.t. | Moet worden ingesteld op `in`. Deze para meter wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal. |
 |**name** | N.v.t. | De naam van de variabele die wordt gebruikt in de functie code die de lijst met documenten met wijzigingen vertegenwoordigt. |
 |**connectionStringSetting**|**ConnectionStringSetting** | De naam van een app-instelling die de connection string bevat die wordt gebruikt om verbinding te maken met het Azure Cosmos DB account dat wordt bewaakt. |
 |**databaseName**|**DatabaseName**  | De naam van de Azure Cosmos DB-Data Base met de verzameling die wordt bewaakt. |
@@ -214,6 +214,8 @@ De trigger geeft niet aan of een document is bijgewerkt of ingevoegd, maar het d
 ## <a name="input"></a>Invoer
 
 Bij een Azure Cosmos DB-invoerbinding wordt de SQL-API gebruikt voor het ophalen van een of meer Azure Cosmos DB-documenten en het doorgeven daarvan aan de invoerparameter van de functie. De document-id of queryparameters kunnen worden bepaald op basis van de trigger waarmee de functie wordt geactiveerd.
+
+## <a name="input---example"></a>Invoer-voor beeld
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -523,7 +525,7 @@ namespace CosmosDBSamplesV1
 }
 ```
 
-# <a name="c-script"></a>[C#-script](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
 Deze sectie bevat de volgende voor beelden:
 
@@ -570,7 +572,7 @@ Hier vindt u de bindings gegevens in de *function.js* in het bestand:
 
 In de [configuratie](#input---configuration) sectie worden deze eigenschappen uitgelegd.
 
-Dit is de C#-script code:
+Dit is de C# Script-code:
 
 ```cs
     using System;
@@ -606,7 +608,7 @@ Hier vindt u de bindings gegevens in de *function.js* in het bestand:
 
 In de [configuratie](#input---configuration) sectie worden deze eigenschappen uitgelegd.
 
-Dit is de C#-script code:
+Dit is de C# Script-code:
 
 ```csharp
     public static void Run(QueuePayload myQueueItem, IEnumerable<dynamic> documents)
@@ -663,7 +665,7 @@ Dit is de *function.jsvoor* het volgende bestand:
 }
 ```
 
-Dit is de C#-script code:
+Dit is de C# Script-code:
 
 ```cs
 using System.Net;
@@ -725,7 +727,7 @@ Dit is de *function.jsvoor* het volgende bestand:
 }
 ```
 
-Dit is de C#-script code:
+Dit is de C# Script-code:
 
 ```cs
 using System.Net;
@@ -786,7 +788,7 @@ Dit is de *function.jsvoor* het volgende bestand:
 }
 ```
 
-Dit is de C#-script code:
+Dit is de C# Script-code:
 
 ```cs
 using System.Net;
@@ -842,7 +844,7 @@ Dit is de *function.jsvoor* het volgende bestand:
 }
 ```
 
-Dit is de C#-script code:
+Dit is de C# Script-code:
 
 ```cs
 #r "Microsoft.Azure.Documents.Client"
@@ -924,7 +926,7 @@ Hier vindt u de bindings gegevens in de *function.js* in het bestand:
 
 In de [configuratie](#input---configuration) sectie worden deze eigenschappen uitgelegd.
 
-Dit is de Java script-code:
+Dit is de JavaScript-code:
 
 ```javascript
     // Change input document contents using Azure Cosmos DB input binding, using context.bindings.inputDocumentOut
@@ -975,7 +977,7 @@ Dit is de *function.jsvoor* het volgende bestand:
 }
 ```
 
-Dit is de Java script-code:
+Dit is de JavaScript-code:
 
 ```javascript
 module.exports = function (context, req, toDoItem) {
@@ -1034,7 +1036,7 @@ Dit is de *function.jsvoor* het volgende bestand:
 }
 ```
 
-Dit is de Java script-code:
+Dit is de JavaScript-code:
 
 ```javascript
 module.exports = function (context, req, toDoItem) {
@@ -1076,7 +1078,7 @@ Hier vindt u de bindings gegevens in de *function.js* in het bestand:
 
 In de [configuratie](#input---configuration) sectie worden deze eigenschappen uitgelegd.
 
-Dit is de Java script-code:
+Dit is de JavaScript-code:
 
 ```javascript
     module.exports = function (context, input) {
@@ -1099,30 +1101,30 @@ Gebruik in [C# class libraries](functions-dotnet-class-library.md)het kenmerk [D
 
 De constructor van het kenmerk neemt de naam van de data base en de verzameling. Zie [de volgende configuratie sectie](#input---configuration)voor informatie over de instellingen en andere eigenschappen die u kunt configureren.
 
-# <a name="c-script"></a>[C#-script](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
-Kenmerken worden niet ondersteund door een C#-script.
+Kenmerken worden niet ondersteund door C# Script.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Kenmerken worden niet ondersteund door Java script.
+Kenmerken worden niet ondersteund door JavaScript.
 
 ---
 
 ## <a name="input---configuration"></a>Invoer-configuratie
 
-De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `DocumentDB` kenmerk.
+De volgende tabel bevat informatie over de bindingsconfiguratie-eigenschappen die u instelt in het bestand *function.json* en het kenmerk `DocumentDB`.
 
-|function.jsbij eigenschap | Kenmerk eigenschap |Beschrijving|
+|function.json-eigenschap | Kenmerkeigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**type**     | N.v.t. | Moet worden ingesteld op `documentdb` .        |
-|**direction**     | N.v.t. | Moet worden ingesteld op `in` .         |
+|**type**     | N.v.t. | Moet worden ingesteld op `documentdb`.        |
+|**direction**     | N.v.t. | Moet worden ingesteld op `in`.         |
 |**name**     | N.v.t. | De naam van de bindings parameter die het document in de functie vertegenwoordigt.  |
 |**databaseName** |**DatabaseName** |De data base met het document.        |
 |**collectionName** |**NaamVerzameling** | De naam van de verzameling die het document bevat. |
 |**id**    | **Id** | De ID van het document dat moet worden opgehaald. Deze eigenschap ondersteunt [bindings expressies](./functions-bindings-expressions-patterns.md). Stel de eigenschappen **id** en **sqlQuery** niet in. Als u er niet een hebt ingesteld, wordt de volledige verzameling opgehaald. |
 |**sqlQuery**  |**SqlQuery**  | Een Azure Cosmos DB SQL-query die wordt gebruikt om meerdere documenten op te halen. De eigenschap ondersteunt runtime bindingen, zoals in dit voor beeld: `SELECT * FROM c where c.departmentId = {departmentId}` . Stel de eigenschappen **id** en **sqlQuery** niet in. Als u er niet een hebt ingesteld, wordt de volledige verzameling opgehaald.|
-|**Combi**     |**ConnectionStringSetting**|De naam van de app-instelling met uw Azure Cosmos DB connection string.        |
+|**connection**     |**ConnectionStringSetting**|De naam van de app-instelling met uw Azure Cosmos DB connection string.        |
 |**partitionKey**|**PartitionKey**|Hiermee geeft u de partitie sleutel waarde voor de zoek opdracht op. Kan bindende para meters bevatten.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -1133,7 +1135,7 @@ De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u 
 
 Wanneer de functie is afgesloten, worden alle wijzigingen die zijn aangebracht in het invoer document via benoemde invoer parameters automatisch behouden.
 
-# <a name="c-script"></a>[C#-script](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
 Wanneer de functie is afgesloten, worden alle wijzigingen die zijn aangebracht in het invoer document via benoemde invoer parameters automatisch behouden.
 
@@ -1146,6 +1148,8 @@ Updates worden niet automatisch doorgevoerd bij het afsluiten van de functie. Ge
 ## <a name="output"></a>Uitvoer
 
 Met de Azure Cosmos DB uitvoer binding kunt u een nieuw document naar een Azure Cosmos DB-Data Base schrijven met behulp van de SQL-API.
+
+## <a name="output---example"></a>Uitvoer-voor beeld
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -1233,7 +1237,7 @@ namespace CosmosDBSamplesV1
 }
 ```
 
-# <a name="c-script"></a>[C#-script](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
 Deze sectie bevat de volgende voor beelden:
 
@@ -1279,7 +1283,7 @@ Hier vindt u de bindings gegevens in de *function.js* in het bestand:
 
 In de [configuratie](#output---configuration) sectie worden deze eigenschappen uitgelegd.
 
-Dit is de C#-script code:
+Dit is de C# Script-code:
 
 ```cs
     #r "Newtonsoft.Json"
@@ -1344,7 +1348,7 @@ Dit is de function.jsvoor het volgende bestand:
 }
 ```
 
-Dit is de C#-script code:
+Dit is de C# Script-code:
 
 ```cs
 using System;
@@ -1400,7 +1404,7 @@ Hier vindt u de bindings gegevens in de *function.js* in het bestand:
 
 In de [configuratie](#output---configuration) sectie worden deze eigenschappen uitgelegd.
 
-Dit is de Java script-code:
+Dit is de JavaScript-code:
 
 ```javascript
     module.exports = function (context) {
@@ -1438,31 +1442,31 @@ De constructor van het kenmerk neemt de naam van de data base en de verzameling.
 
 Zie [output](#output)voor een volledig voor beeld.
 
-# <a name="c-script"></a>[C#-script](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
-Kenmerken worden niet ondersteund door een C#-script.
+Kenmerken worden niet ondersteund door C# Script.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Kenmerken worden niet ondersteund door Java script.
+Kenmerken worden niet ondersteund door JavaScript.
 
 ---
 
 ## <a name="output---configuration"></a>Uitvoer-configuratie
 
-De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `DocumentDB` kenmerk.
+De volgende tabel bevat informatie over de bindingsconfiguratie-eigenschappen die u instelt in het bestand *function.json* en het kenmerk `DocumentDB`.
 
-|function.jsbij eigenschap | Kenmerk eigenschap |Beschrijving|
+|function.json-eigenschap | Kenmerkeigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**type**     | N.v.t. | Moet worden ingesteld op `documentdb` .        |
-|**direction**     | N.v.t. | Moet worden ingesteld op `out` .         |
+|**type**     | N.v.t. | Moet worden ingesteld op `documentdb`.        |
+|**direction**     | N.v.t. | Moet worden ingesteld op `out`.         |
 |**name**     | N.v.t. | De naam van de bindings parameter die het document in de functie vertegenwoordigt.  |
 |**databaseName** | **DatabaseName**|De data base met de verzameling waarin het document is gemaakt.     |
 |**collectionName** |**NaamVerzameling**  | De naam van de verzameling waar het document wordt gemaakt. |
-|**createIfNotExists**  |**CreateIfNotExists**    | Een Booleaanse waarde die aangeeft of de verzameling wordt gemaakt wanneer deze niet bestaat. De standaard waarde is *False* omdat nieuwe verzamelingen worden gemaakt met gereserveerde door Voer, wat gevolgen heeft voor de kosten. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/documentdb/)voor meer informatie.  |
+|**createIfNotExists**  |**CreateIfNotExists**    | Een Booleaanse waarde die aangeeft of de verzameling wordt gemaakt wanneer deze niet bestaat. De standaard waarde is *False* omdat nieuwe verzamelingen worden gemaakt met gereserveerde door Voer, wat gevolgen heeft voor de kosten. Zie de pagina [prijzen](https://azure.microsoft.com/pricing/details/documentdb/) voor meer informatie.  |
 |**partitionKey**|**PartitionKey** |Wanneer `CreateIfNotExists` is ingesteld op True, wordt hiermee het pad van de partitie sleutel voor de gemaakte verzameling gedefinieerd.|
 |**collectionThroughput**|**CollectionThroughput**| Wanneer `CreateIfNotExists` is ingesteld op True, wordt hiermee de [door Voer](../cosmos-db/set-throughput.md) van de gemaakte verzameling gedefinieerd.|
-|**Combi**    |**ConnectionStringSetting** |De naam van de app-instelling met uw Azure Cosmos DB connection string.        |
+|**connection**    |**ConnectionStringSetting** |De naam van de app-instelling met uw Azure Cosmos DB connection string.        |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

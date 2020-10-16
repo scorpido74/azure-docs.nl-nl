@@ -4,10 +4,10 @@ description: In dit onderwerp wordt het module dubbele JSON-schema van live vide
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 8bd86bdc2c8de9ee586e785db2074fa772100420
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87053071"
 ---
 # <a name="module-twin-json-schema"></a>Module dubbele JSON-schema
@@ -25,21 +25,21 @@ Met live video Analytics op IoT Edge worden de volgende twee eigenschappen van d
 
 |Eigenschap |Vereist |Dynamisch |Beschrijving |
 |---|---|---|---|
-|applicationDataDirectory |Yes |No |Pad naar een gekoppeld volume voor permanente configuratie. |
-|azureMediaServicesArmId |Yes |No |Unieke id voor het beheer van Azure-resources voor het Media Services-account.|
-|aadTenantId |Yes |No |Azure AD-Tenant-ID van klant.|
+|applicationDataDirectory |Ja |Nee |Pad naar een gekoppeld volume voor permanente configuratie. |
+|azureMediaServicesArmId |Ja |Nee |Unieke id voor het beheer van Azure-resources voor het Media Services-account.|
+|aadTenantId |Ja |Nee |Azure AD-Tenant-ID van klant.|
 |aadServicePrincipalAppId |Ja |Ja |Klant heeft Azure AD AppId gemaakt.|
-|aadServicePrincipalCertificate |Klikt<sup>*</sup>  |Yes |Klant heeft Azure AD AppId-certificaat gemaakt.|
-|aadServicePrincipalPassword |Klikt<sup>*</sup>  |Yes |Klant heeft het Azure AD-toepassings-id-wacht woord gemaakt.|
-|aadEndpoint |Nee |Nee |Cloud-specifiek Azure AD-eind punt. <br/>Prijs`https://login.microsoftonline.com` |
-|aadResourceId |Nee |Nee |Cloud-specifieke Azure AD-doel groep/Resource-ID <br/>Prijs`https://management.core.windows.net/` |
-|armEndpoint |Nee |Nee |Cloud-specifiek Azure resource Manage-eind punt. <br/>Prijs`https://management.azure.com/` |
-|diagnosticsLevel |No |Yes |Uitgebreidere gebeurtenissen: <br/>Informatie & # x02758; Waarschuwing & # x02758; Fout & # x02758; Kritiek & # x02758; Geen |
-|diagnosticsEventsOutputName |No |Yes |Hub-uitvoer voor diagnostische gebeurtenissen. <br/>(Leeg betekent dat er geen diagnostische gegevens worden gepubliceerd)|
-|operationalEventsOutputName|No|Yes|Hub-uitvoer voor operationele gebeurtenissen.<br/>(Leeg betekent dat operationele gebeurtenissen niet worden gepubliceerd)
-|logLevel|No|Yes|Een van de volgende producten: <br/>& # x000B7; Uitgebreide<br/>& # x000B7; Gegevens (standaard)<br/>& # x000B7; Waarschuwing<br/>& # x000B7; Optreedt<br/>& # x000B7; Geen|
-|logCategories|No|Yes|Een door komma's gescheiden lijst met de volgende items: toepassing, MediaPipeline, gebeurtenissen <br/>Standaard: toepassing, gebeurtenissen|
-|debugLogsDirectory|No|Yes|Map voor logboeken voor fout opsporing. Als er logboeken worden gegenereerd als er geen logboeken voor fout opsporing aanwezig zijn, worden deze uitgeschakeld.
+|aadServicePrincipalCertificate |Klikt<sup>*</sup>  |Ja |Klant heeft Azure AD AppId-certificaat gemaakt.|
+|aadServicePrincipalPassword |Klikt<sup>*</sup>  |Ja |Klant heeft het Azure AD-toepassings-id-wacht woord gemaakt.|
+|aadEndpoint |Nee |Nee |Cloud-specifiek Azure AD-eind punt. <br/>Prijs `https://login.microsoftonline.com` |
+|aadResourceId |Nee |Nee |Cloud-specifieke Azure AD-doel groep/Resource-ID <br/>Prijs `https://management.core.windows.net/` |
+|armEndpoint |Nee |Nee |Cloud-specifiek Azure resource Manage-eind punt. <br/>Prijs `https://management.azure.com/` |
+|diagnosticsLevel |Nee |Ja |Uitgebreidere gebeurtenissen: <br/>Informatie & # x02758; Waarschuwing & # x02758; Fout & # x02758; Kritiek & # x02758; Geen |
+|diagnosticsEventsOutputName |Nee |Ja |Hub-uitvoer voor diagnostische gebeurtenissen. <br/>(Leeg betekent dat er geen diagnostische gegevens worden gepubliceerd)|
+|operationalEventsOutputName|Nee|Ja|Hub-uitvoer voor operationele gebeurtenissen.<br/>(Leeg betekent dat operationele gebeurtenissen niet worden gepubliceerd)
+|logLevel|Nee|Ja|Een van de volgende producten: <br/>& # x000B7; Uitgebreide<br/>& # x000B7; Gegevens (standaard)<br/>& # x000B7; Waarschuwing<br/>& # x000B7; Optreedt<br/>& # x000B7; Geen|
+|logCategories|Nee|Ja|Een door komma's gescheiden lijst met de volgende items: toepassing, MediaPipeline, gebeurtenissen <br/>Standaard: toepassing, gebeurtenissen|
+|debugLogsDirectory|Nee|Ja|Map voor logboeken voor fout opsporing. Als er logboeken worden gegenereerd als er geen logboeken voor fout opsporing aanwezig zijn, worden deze uitgeschakeld.
 
 <sup>*</sup>U moet een Service-Principal-certificaat of-wacht woord opgeven. 
 

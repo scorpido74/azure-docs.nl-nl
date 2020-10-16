@@ -4,7 +4,7 @@
   items:
     - name: Wat is ExpressRoute?
       href: expressroute-introduction.md
-- name: Snelstart
+- name: Snelstartgidsen
   items:
     - name: Een ExpressRoute-circuit maken - Portal
       href: expressroute-howto-circuit-portal-resource-manager.md

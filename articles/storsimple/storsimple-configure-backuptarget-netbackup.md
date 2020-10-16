@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/15/2017
 ms.author: matd
 ms.openlocfilehash: 23afa82ffda5341242c01cbe024fb71f482345d5
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91710920"
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>StorSimple als back-updoel met NetBackup
@@ -292,7 +292,7 @@ Maak op basis van de voor gaande hypo theses een gelaagd volume van 26 TiB StorS
 > [!NOTE]
 > Gegevens die worden teruggezet vanuit een back-up die is getiert in de Cloud, treden op in de Cloud.
 
-In de volgende afbeelding ziet u de toewijzing van een typisch volume aan een back-uptaak. In dit geval worden alle wekelijkse back-ups met de volledige zaterdag-schijf en de incrementele back-ups toegewezen aan incrementele schijven van maandag t/m vrijdag. Alle back-ups en herstel bewerkingen zijn afkomstig uit een StorSimple gelaagd volume.
+In de volgende afbeelding ziet u de toewijzing van een typisch volume aan een back-uptaak. In dit geval worden alle wekelijkse back-ups met de volledige zaterdag-schijf en de incrementele back-ups toegewezen aan Monday-Friday incrementele schijven. Alle back-ups en herstel bewerkingen zijn afkomstig uit een StorSimple gelaagd volume.
 
 ![Logisch diagram van configuratie van primaire back-updoel](./media/storsimple-configure-backup-target-using-netbackup/primarybackuptargetdiagram.png)
 
@@ -302,7 +302,7 @@ Hier volgt een voor beeld van een GFS-rotatie schema voor vier weken, maandelijk
 
 | Type frequentie/back-up | Volledig | Incrementeel (dagen 1-5)  |   
 |---|---|---|
-| Wekelijks (weken 1-4) | Saturday | Maandag t/m vrijdag |
+| Wekelijks (weken 1-4) | Saturday | Monday-Friday |
 | Maandelijks  | Saturday  |   |
 | Jaarlijks | Saturday  |   |
 
@@ -535,7 +535,7 @@ Een nood geval kan worden veroorzaakt door diverse factoren. De volgende tabel g
 | NetBackup-server fout | Back-up-en herstel bewerkingen worden onderbroken. | Maak de back-upserver opnieuw en herstel de data base. | U moet de NetBackup-server opnieuw bouwen of herstellen op de site voor nood herstel. Zet de data base terug naar het meest recente punt. Als de herstelde NetBackup-data base niet is gesynchroniseerd met uw meest recente back-uptaken, is indexeren en catalogiseren vereist. Dit proces voor het opnieuw scannen van index en catalogus kan ertoe leiden dat alle back-upsets worden gescand en van de Cloud laag worden opgehaald naar de laag van het lokale apparaat. Hierdoor is het veel tijdrovender. |
 | Site fout die leidt tot verlies van zowel de back-upserver als de StorSimple | Back-up-en herstel bewerkingen worden onderbroken. | Herstel StorSimple eerst en herstel vervolgens NetBackup. | Herstel StorSimple eerst en herstel vervolgens NetBackup. Als u na het herstel van het apparaat een herstel bewerking moet uitvoeren, worden de volledige gegevens sets van de Cloud naar het nieuwe apparaat opgehaald. Alle bewerkingen bevinden zich in de Cloud snelheid. |
 
-## <a name="references"></a>Verwijzingen
+## <a name="references"></a>Referenties
 
 In dit artikel wordt verwezen naar de volgende documenten:
 

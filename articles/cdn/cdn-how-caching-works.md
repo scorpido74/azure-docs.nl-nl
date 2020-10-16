@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: allensu
 ms.openlocfilehash: aa3c190912c0fbd62b08182018c99b985354811b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86201809"
 ---
 # <a name="how-caching-works"></a>Hoe caching werkt
@@ -60,7 +60,7 @@ Caching is integraal naar de manier waarop een CDN kan worden geleverd om de lev
 
 Net als in de manier waarop caching wordt geïmplementeerd in een webbrowser, kunt u bepalen hoe caching in een CDN wordt uitgevoerd door cache-instructie headers te verzenden. Cache-instructie headers zijn HTTP-headers, die meestal worden toegevoegd door de oorspronkelijke server. Hoewel de meeste van deze headers oorspronkelijk zijn ontworpen om caching in client browsers aan te pakken, worden ze nu ook gebruikt door alle tussenliggende caches, zoals Cdn's. 
 
-Twee kopteksten kunnen worden gebruikt voor het definiëren van cache versheid: `Cache-Control` en `Expires` . `Cache-Control`is meer actueel en heeft voor rang op `Expires` , als beide bestaan. Er worden ook twee typen kopteksten gebruikt voor validatie (met de naam Validators): `ETag` en `Last-Modified` . `ETag`is recurrent en heeft voor rang op `Last-Modified` , als beide zijn gedefinieerd.  
+Twee kopteksten kunnen worden gebruikt voor het definiëren van cache versheid: `Cache-Control` en `Expires` . `Cache-Control` is meer actueel en heeft voor rang op `Expires` , als beide bestaan. Er worden ook twee typen kopteksten gebruikt voor validatie (met de naam Validators): `ETag` en `Last-Modified` . `ETag` is recurrent en heeft voor rang op `Last-Modified` , als beide zijn gedefinieerd.  
 
 ## <a name="cache-directive-headers"></a>Cache-instructie headers
 
@@ -90,7 +90,7 @@ Azure CDN ondersteunt de volgende HTTP-cache-instructie headers, waarmee de cach
    - Standaard niet gehonoreerd door Azure CDN.
    - Verouderde header geïntroduceerd in HTTP 1,0; ondersteund voor achterwaartse compatibiliteit.
    - Wordt gebruikt als een aanvraag header van de client met de volgende instructie: `no-cache` . Met deze instructie wordt de server geïnstrueerd een nieuwe versie van de resource te leveren.
-   - `Pragma: no-cache`is gelijk aan `Cache-Control: no-cache` .
+   - `Pragma: no-cache` is het equivalent van `Cache-Control: no-cache`.
 
 ## <a name="validators"></a>Controles
 
@@ -98,7 +98,7 @@ Wanneer de cache verouderd is, worden validaties van de HTTP-cache gebruikt voor
 
 **ETAG**
 - **Azure CDN Standard/Premium van Verizon** ondersteunt `ETag` standaard, terwijl **Azure CDN standaard van micro soft** en **Azure CDN Standard van Akamai** niet.
-- `ETag`Hiermee wordt een teken reeks gedefinieerd die uniek is voor elk bestand en elke versie van een bestand. Bijvoorbeeld `ETag: "17f0ddd99ed5bbe4edffdd6496d7131f"`.
+- `ETag` Hiermee wordt een teken reeks gedefinieerd die uniek is voor elk bestand en elke versie van een bestand. Bijvoorbeeld `ETag: "17f0ddd99ed5bbe4edffdd6496d7131f"`.
 - Is geïntroduceerd in HTTP 1,1 en is meer actueel dan `Last-Modified` . Handig wanneer de datum van laatste wijziging moeilijk te bepalen is.
 - Ondersteunt zowel sterke validatie als zwakke validatie; Azure CDN ondersteunt echter alleen sterke validatie. Voor een sterke validatie moeten de twee resource representaties byte-voor-byte identiek zijn. 
 - Een cache valideert een bestand dat wordt gebruikt `ETag` door een `If-None-Match` header met een of meer `ETag` validatie functies in de aanvraag te verzenden. Bijvoorbeeld `If-None-Match: "17f0ddd99ed5bbe4edffdd6496d7131f"`. Als de versie van de server overeenkomt met een `ETag` validatie functie in de lijst, verzendt deze de status code 304 (niet gewijzigd) in de reactie. Als de versie anders is, reageert de server met de status code 200 (OK) en de bijgewerkte resource.

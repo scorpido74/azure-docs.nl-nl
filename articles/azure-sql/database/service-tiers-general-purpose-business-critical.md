@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 01/30/2020
 ms.openlocfilehash: c1f60888a3d1fda50e63c7d11ea5d871f7c1e9fc
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91321336"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-service-tiers"></a>Service lagen van Azure SQL Database en Azure SQL Managed instance
@@ -44,7 +44,7 @@ In de volgende tabel worden de belangrijkste verschillen tussen service lagen vo
 | **Reken grootte**| SQL Database | 1 tot 80 vCores | 1 tot 80 vCores | 1 tot 80 vCores |
 | | SQL Managed Instance | 4, 8, 16, 24, 32, 40, 64, 80 vCores | N.v.t. | 4, 8, 16, 24, 32, 40, 64, 80 vCores |
 | | Door SQL beheerde exemplaar groepen | 2, 4, 8, 16, 24, 32, 40, 64, 80 vCores | N.v.t. | N.v.t. |
-| **Opslagtype** | Alles | Premium externe opslag (per instantie) | Niet-gekoppelde opslag met lokale SSD-cache (per instantie) | Super snelle lokale SSD-opslag (per instantie) |
+| **Opslag type** | Alles | Premium externe opslag (per instantie) | Niet-gekoppelde opslag met lokale SSD-cache (per instantie) | Super snelle lokale SSD-opslag (per instantie) |
 | **Databasegrootte** | SQL Database | 5 GB – 4 TB | Tot 100 TB | 5 GB – 4 TB |
 | | SQL Managed Instance  | 32 GB – 8 TB | N.v.t. | 32 GB – 4 TB |
 | **Opslag grootte** | SQL Database | 5 GB – 4 TB | Tot 100 TB | 5 GB – 4 TB |
@@ -84,7 +84,7 @@ De volgende factoren zijn van invloed op de hoeveelheid opslag die wordt gebruik
 > [!IMPORTANT]
 > Er worden kosten in rekening gebracht voor de totale opslag ruimte die is toegewezen voor MDF-en LDF-bestanden.
 
-Gebruik [sp_spaceused](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-spaceused-transact-sql)om de huidige totale grootte van uw MDF-en LDF-bestanden te bewaken. Als u de huidige grootte van de afzonderlijke MDF-en LDF-bestanden wilt bewaken, gebruikt u [sys. database_files](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-files-transact-sql).
+Gebruik [sp_spaceused](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-spaceused-transact-sql)om de huidige totale grootte van uw MDF-en LDF-bestanden te bewaken. Gebruik [sys.database_files](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-files-transact-sql)om de huidige grootte van de afzonderlijke MDF-en LDF-bestanden te bewaken.
 
 > [!IMPORTANT]
 > In sommige gevallen moet u mogelijk een Data Base verkleinen om ongebruikte ruimte te claimen. Zie [Bestands ruimte beheren in Azure SQL database](file-space-manage.md)voor meer informatie.

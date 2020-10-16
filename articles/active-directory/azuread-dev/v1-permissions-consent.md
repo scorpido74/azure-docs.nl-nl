@@ -15,10 +15,10 @@ ms.reviewer: jesakowi
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: c600e1fddc0089a508ff0cfebbbb3476f3a90008
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88117614"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Machtigingen en toestemming in het Azure Active Directory v 1.0-eind punt
@@ -98,9 +98,9 @@ Toepassingen in Azure AD zijn afhankelijk van toestemming om toegang te krijgen 
 - Resources moeten `Read`- en `ReadWrite`-machtigingen expliciet en afzonderlijk definiëren.
 - Resources moeten alle machtigingen die toegang tot gegevens buiten de grenzen van gebruikers toestaan markeren als `Admin`-machtigingen.
 - Resources moeten het naamgevingspatroon `Subject.Permission[.Modifier]` volgen, waarbij:
-  - `Subject`komt overeen met het type gegevens dat beschikbaar is
-  - `Permission`komt overeen met de actie die een gebruiker kan uitvoeren op die gegevens
-  - `Modifier`wordt optioneel gebruikt voor het beschrijven van specialisaties van een andere machtiging
+  - `Subject` komt overeen met het type gegevens dat beschikbaar is
+  - `Permission` komt overeen met de actie die een gebruiker kan uitvoeren op die gegevens
+  - `Modifier` wordt optioneel gebruikt voor het beschrijven van specialisaties van een andere machtiging
     
     Bijvoorbeeld:
   - Mail.Read - Staat gebruikers toe om e-mail te lezen.

@@ -14,10 +14,10 @@ ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.openlocfilehash: dfccc274ef920c59d39c160055ab27a6900c839c
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88141275"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>Een Token ophalen voor een mobiele app die web-Api's aanroept
@@ -207,9 +207,9 @@ catch(MsalUiRequiredException)
 
 #### <a name="mandatory-parameters-in-msalnet"></a>Verplichte para meters in MSAL.NET
 
-`AcquireTokenInteractive`heeft slechts één verplichte para meter: `scopes` . `scopes`Met de para meter worden teken reeksen opgesomd die de bereiken definiëren waarvoor een token is vereist. Als het token voor Microsoft Graph is, kunt u de vereiste bereiken vinden in de API-verwijzing van elke Microsoft Graph-API. Ga in de verwijzing naar de sectie ' machtigingen '.
+`AcquireTokenInteractive` heeft slechts één verplichte para meter: `scopes` . `scopes`Met de para meter worden teken reeksen opgesomd die de bereiken definiëren waarvoor een token is vereist. Als het token voor Microsoft Graph is, kunt u de vereiste bereiken vinden in de API-verwijzing van elke Microsoft Graph-API. Ga in de verwijzing naar de sectie ' machtigingen '.
 
-Als u bijvoorbeeld [de contact personen van de gebruiker wilt weer geven](/graph/api/user-list-contacts), gebruikt u de scope ' gebruiker. read ', ' Contacts. read '. Zie [Microsoft Graph permissions Reference](/graph/permissions-reference)(Engelstalig) voor meer informatie.
+Als u bijvoorbeeld [de contact personen van de gebruiker wilt weer geven](/graph/api/user-list-contacts), gebruikt u de scope ' gebruiker. read ', ' Contacts. read '. Raadpleeg [Microsoft Graph-machtigingen](/graph/permissions-reference) voor meer informatie.
 
 Op Android kunt u de bovenliggende activiteit opgeven wanneer u de app maakt met behulp van `PublicClientApplicationBuilder` . Als u de bovenliggende activiteit op dat moment niet opgeeft, kunt u deze later opgeven met behulp `.WithParentActivityOrWindow` van zoals in de volgende sectie. Als u bovenliggende activiteit opgeeft, wordt het token na de interactie teruggestuurd naar die bovenliggende activiteit. Als u deze niet opgeeft, genereert de `.ExecuteAsync()` aanroep een uitzonde ring.
 
@@ -225,19 +225,19 @@ De `WithPrompt()` para meter bepaalt de interactiviteit met de gebruiker door ee
 
 De klasse definieert de volgende constanten:
 
-- `SelectAccount`Hiermee wordt de Security Token Service (STS) gedwongen om het dialoog venster voor het selecteren van accounts weer te geven. Het dialoog venster bevat de accounts waarvoor de gebruiker een sessie heeft. U kunt deze optie gebruiken als u wilt dat de gebruiker uit verschillende identiteiten kan kiezen. Deze optie verstuurt MSAL om `prompt=select_account` naar de ID-provider te verzenden.
+- `SelectAccount` Hiermee wordt de Security Token Service (STS) gedwongen om het dialoog venster voor het selecteren van accounts weer te geven. Het dialoog venster bevat de accounts waarvoor de gebruiker een sessie heeft. U kunt deze optie gebruiken als u wilt dat de gebruiker uit verschillende identiteiten kan kiezen. Deze optie verstuurt MSAL om `prompt=select_account` naar de ID-provider te verzenden.
 
     De `SelectAccount` constante is de standaard waarde en levert de best mogelijke ervaring op basis van de beschik bare informatie. De beschik bare informatie kan bestaan uit account, aanwezigheid van een sessie voor de gebruiker, enzovoort. Wijzig deze standaard instelling alleen als u er een goede reden voor hebt.
-- `Consent`Hiermee kunt u de gebruiker om toestemming vragen, zelfs als toestemming is verleend. In dit geval verzendt MSAL `prompt=consent` naar de ID-provider.
+- `Consent` Hiermee kunt u de gebruiker om toestemming vragen, zelfs als toestemming is verleend. In dit geval verzendt MSAL `prompt=consent` naar de ID-provider.
 
     U kunt de `Consent` constante gebruiken in toepassingen met een eigen beveiliging waarbij het beheer van de organisatie vereist dat gebruikers het dialoog venster voor toestemming zien telkens wanneer ze de toepassing gebruiken.
-- `ForceLogin`Hiermee kan de service de gebruiker om referenties vragen, zelfs als de prompt niet nodig is.
+- `ForceLogin` Hiermee kan de service de gebruiker om referenties vragen, zelfs als de prompt niet nodig is.
 
     Deze optie kan nuttig zijn als het ophalen van het token mislukt en u de gebruiker opnieuw wilt aanmelden. In dit geval verzendt MSAL `prompt=login` naar de ID-provider. U kunt deze optie gebruiken in toepassingen met een eigen beveiliging waarbij de gebruiker zich bij het beheer van de organisatie moet aanmelden elke keer dat ze toegang hebben tot specifieke delen van de toepassing.
-- `Never`is alleen voor .NET 4,5 en Windows Runtime (WinRT). Met deze constante wordt de gebruiker niet gevraagd, maar wordt geprobeerd de cookie te gebruiken die is opgeslagen in de verborgen Inge sloten webweergave. Zie [Using Web browsers with MSAL.net](./msal-net-web-browsers.md)(Engelstalig) voor meer informatie.
+- `Never` is alleen voor .NET 4,5 en Windows Runtime (WinRT). Met deze constante wordt de gebruiker niet gevraagd, maar wordt geprobeerd de cookie te gebruiken die is opgeslagen in de verborgen Inge sloten webweergave. Zie [Using Web browsers with MSAL.net](./msal-net-web-browsers.md)(Engelstalig) voor meer informatie.
 
     Als deze optie mislukt, wordt `AcquireTokenInteractive` een uitzonde ring gegenereerd om u te waarschuwen dat er een UI-interactie nodig is. Vervolgens moet u een andere `Prompt` para meter gebruiken.
-- `NoPrompt`Er wordt geen prompt verzonden naar de ID-provider.
+- `NoPrompt` Er wordt geen prompt verzonden naar de ID-provider.
 
     Deze optie is alleen nuttig voor beleid voor het bewerken van profielen in Azure Active Directory B2C. Zie [B2C-specifiek](https://aka.ms/msal-net-b2c-specificities)voor meer informatie.
 

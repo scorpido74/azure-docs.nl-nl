@@ -13,10 +13,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 41f570f93e95e9801b08c06cacc0423b1bf3b8e5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91252780"
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Gegevens transformeren met behulp van Hive-activiteit in Azure Data Factory 
@@ -74,15 +74,15 @@ De HDInsight Hive-activiteit in een Data Factory [pijp lijn](data-factory-create
 ## <a name="syntax-details"></a>Syntaxis Details
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| name |Naam van de activiteit |Yes |
-| description |Tekst waarin wordt beschreven waarvoor de activiteit wordt gebruikt |No |
-| type |HDinsightHive |Yes |
-| invoer |Invoer die wordt gebruikt door de Hive-activiteit |No |
-| uitvoer |Uitvoer geproduceerd door de Hive-activiteit |Yes |
-| linkedServiceName |Verwijzing naar het HDInsight-cluster dat is geregistreerd als een gekoppelde service in Data Factory |Yes |
-| script |Het Hive-script inline opgeven |No |
-| scriptPath |Sla het Hive-script op in een Azure Blob-opslag en geef het pad naar het bestand op. Gebruik de eigenschap script of scriptPath. Beide kunnen niet tegelijk worden gebruikt. De bestands naam is hoofdletter gevoelig. |No |
-| compliant |Geef para meters op als sleutel/waarde-paren voor het verwijzen in het Hive-script met behulp van ' hiveconf ' |No |
+| naam |Naam van de activiteit |Ja |
+| description |Tekst waarin wordt beschreven waarvoor de activiteit wordt gebruikt |Nee |
+| type |HDinsightHive |Ja |
+| invoer |Invoer die wordt gebruikt door de Hive-activiteit |Nee |
+| uitvoer |Uitvoer geproduceerd door de Hive-activiteit |Ja |
+| linkedServiceName |Verwijzing naar het HDInsight-cluster dat is geregistreerd als een gekoppelde service in Data Factory |Ja |
+| script |Het Hive-script inline opgeven |Nee |
+| scriptPath |Sla het Hive-script op in een Azure Blob-opslag en geef het pad naar het bestand op. Gebruik de eigenschap script of scriptPath. Beide kunnen niet tegelijk worden gebruikt. De bestands naam is hoofdletter gevoelig. |Nee |
+| compliant |Geef para meters op als sleutel/waarde-paren voor het verwijzen in het Hive-script met behulp van ' hiveconf ' |Nee |
 
 ## <a name="example"></a>Voorbeeld
 Laten we eens kijken naar een voor beeld van een spel logboek analyse waarin u de tijd wilt identificeren die gebruikers spelen die door uw bedrijf worden gestart. 

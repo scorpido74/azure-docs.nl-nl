@@ -9,12 +9,12 @@ ms.date: 09/08/2020
 ms.topic: how-to
 ms.author: a-sakand
 author: skandil
-ms.openlocfilehash: 22f5ab332c52a3b567b37089def6e4a494a15d29
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d801971ca62c416c66608b40aab3e8052fe941a1
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91309469"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91931407"
 ---
 # <a name="sign-in-to-luis-portal"></a>Aanmelden bij de LUIS-portal
 
@@ -36,7 +36,7 @@ Een account, dat niet aan een Azure-abonnement is gekoppeld, heeft het Azure-pic
 
 Met een account dat is gekoppeld aan een Azure-abonnement kunt u het te gebruiken abonnement en de resource selecteren.
 
-:::image type="content" source="media/sign-in/resource-selection.png" alt-text="Gedeeltelijke scherm opname van de selectie vakjes van de LUIS-Portal met resource selectie.":::
+:::image type="content" source="media/sign-in/resource-selection.png" alt-text="Gedeeltelijk scherm: opname van de LUIS-navigatie balk met het pictogram van Azure.":::
 
 ## <a name="sign-in-with-account-associated-with-an-azure-subscription"></a>Aanmelden met een account dat is gekoppeld aan een Azure-abonnement
 
@@ -50,11 +50,11 @@ Met een account dat is gekoppeld aan een Azure-abonnement kunt u het te gebruike
 
     [Meer informatie over ontwerpen en starter Keys](luis-how-to-azure-subscription.md#luis-resources). Beide resources bieden u 1.000.000 gratis ontwerp transacties en 1000 gratis Voorspellings eindpunt transacties.
 
-    :::image type="content" source="media/sign-in/signup-landing-page.png" alt-text="Gedeeltelijk scherm: afbeelding om een type Language Understanding-ontwerp bron te kiezen.":::
+    :::image type="content" source="media/sign-in/signup-landing-page.png" alt-text="Gedeeltelijk scherm: opname van de LUIS-navigatie balk met het pictogram van Azure.":::
 
 1. Een bestaande ontwerp bron gebruiken
 
-    :::image type="content" source="media/sign-in/signup-choose-resource.png" alt-text="Resource voor ontwerpen kiezen":::
+    :::image type="content" source="media/sign-in/signup-choose-resource.png" alt-text="Gedeeltelijk scherm: opname van de LUIS-navigatie balk met het pictogram van Azure.":::
 
     Als u al LUIS hebt in uw abonnement en u deze hebt gekoppeld aan uw LUIS-account tijdens het aanmelden, kiest u de optie **bestaande ontwerp bron gebruiken** en geeft u de volgende informatie op:
 
@@ -67,7 +67,7 @@ Met een account dat is gekoppeld aan een Azure-abonnement kunt u het te gebruike
 
 1. Een nieuwe ontwerp bron maken
 
-    :::image type="content" source="media/sign-in/signup-create-resource.png" alt-text="Ontwerpresource maken":::
+    :::image type="content" source="media/sign-in/signup-create-resource.png" alt-text="Gedeeltelijk scherm: opname van de LUIS-navigatie balk met het pictogram van Azure.":::
 
     Geef bij het **maken van een nieuwe ontwerpresource** de volgende informatie op:
 
@@ -78,7 +78,7 @@ Met een account dat is gekoppeld aan een Azure-abonnement kunt u het te gebruike
 
 1. Nadat u het pad hebt gekozen, kan het enkele seconden duren voordat een teken met de tekst ' uw account is gemigreerd ' wordt weer gegeven. Voltooi door **door gaan**te selecteren.
 
-    :::image type="content" source="media/sign-in/signup-confirm-2.png" alt-text="Ontwerp bron bevestigen":::
+    :::image type="content" source="media/sign-in/signup-confirm-2.png" alt-text="Gedeeltelijk scherm: opname van de LUIS-navigatie balk met het pictogram van Azure.":::
 
     > [!Note]
     > Als u een abonnement hebt en ten minste één bewerkings resource in de regio hetzelfde is als degene waarbij u zich aanmeldt in de portal, kunt u zich automatisch aanmelden bij LUIS gemigreerd en gekoppeld aan een resource zonder dat u moet kiezen welk pad moet worden gekozen.
@@ -90,7 +90,7 @@ Met een account dat is gekoppeld aan een Azure-abonnement kunt u het te gebruike
 
 1. Voltooi door **door gaan**te selecteren. U wordt automatisch aangemeld met een proef-of-start sleutel. Dit betekent dat u uiteindelijk [uw account moet migreren](luis-migration-authoring.md#migration-steps) en uw toepassingen kunt koppelen aan een ontwerp bron. Als u het migratie proces wilt uitvoeren, moet u zich aanmelden voor een [gratis proef versie van Azure](https://azure.microsoft.com/free/).
 
-    :::image type="content" source="media/sign-in/signup-no-subscription.png" alt-text="Geen abonnements scenario":::
+    :::image type="content" source="media/sign-in/signup-no-subscription.png" alt-text="Gedeeltelijk scherm: opname van de LUIS-navigatie balk met het pictogram van Azure.":::
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 

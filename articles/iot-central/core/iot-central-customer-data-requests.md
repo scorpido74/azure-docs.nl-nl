@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: timlt
 ms.openlocfilehash: dabcadea96f4ced5bdf73a35ef533e6d290595c2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87001873"
 ---
 # <a name="azure-iot-central-customer-data-request-features"></a>Azure IoT Central-functies voor klant gegevens aanvragen
@@ -23,7 +23,7 @@ Azure IoT Central is een software-as-a-service-oplossing met volledige beheerde 
 
 ## <a name="identifying-customer-data"></a>Klant gegevens identificeren
 
-Azure Active Directory-object-Id's worden gebruikt om gebruikers te identificeren en rollen toe te wijzen. De Azure IoT Central-portal geeft gebruikers-e-mail adressen weer voor roltoewijzingen, maar alleen de Azure Active Directory object-ID wordt opgeslagen, het e-mail adres wordt dynamisch opgehaald uit Azure Active Directory. Azure IoT Central-beheerders kunnen toepassings gebruikers weer geven, exporteren en verwijderen in het gedeelte gebruikers beheer van een Azure IoT Central-toepassing.
+Azure Active Directory Object-IDs worden gebruikt om gebruikers te identificeren en rollen toe te wijzen. De Azure IoT Central-portal geeft gebruikers-e-mail adressen weer voor roltoewijzingen, maar alleen de Azure Active Directory object-ID wordt opgeslagen, het e-mail adres wordt dynamisch opgehaald uit Azure Active Directory. Azure IoT Central-beheerders kunnen toepassings gebruikers weer geven, exporteren en verwijderen in het gedeelte gebruikers beheer van een Azure IoT Central-toepassing.
 
 Binnen de toepassing kunnen e-mail adressen worden geconfigureerd voor het ontvangen van waarschuwingen. In dit geval worden e-mail adressen opgeslagen in IoT Central en moeten ze worden beheerd via de beheer pagina voor de account van de app.
 

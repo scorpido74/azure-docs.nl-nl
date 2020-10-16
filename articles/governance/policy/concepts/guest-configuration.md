@@ -1,14 +1,14 @@
 ---
 title: Meer informatie over het controleren van de inhoud van virtuele machines
 description: Meer informatie over hoe Azure Policy de gast configuratie agent gebruikt om instellingen in virtuele machines te controleren.
-ms.date: 08/07/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 951960793ebda50fdb87d266c4dc8561f2fcd70f
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: e941938fce09e8729856322a5b6572b46a3714be
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88756687"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075481"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Gastconfiguratie van Azure Policy begrijpen
 
@@ -18,8 +18,7 @@ Azure Policy kunt instellingen in een computer controleren, zowel voor machines 
 - Configuratie of aanwezigheid van toepassingen
 - Omgevingsinstellingen
 
-Op dit moment controleren het beleid voor gastconfiguratie van Azure Policy alleen instellingen van de machine.
-U kunt ze niet om configuraties toepassen. De uitzonde ring hierop is één ingebouwd beleid [waarnaar hieronder wordt verwezen](#applying-configurations-using-guest-configuration).
+Op dit moment worden in de meeste Azure Policy beleids definities voor gast configuratie alleen de instellingen van de computer gecontroleerd. U kunt ze niet om configuraties toepassen. De uitzonde ring hierop is één ingebouwd beleid [waarnaar hieronder wordt verwezen](#applying-configurations-using-guest-configuration).
 
 ## <a name="enable-guest-configuration"></a>Gast configuratie inschakelen
 
@@ -48,7 +47,7 @@ In de computer gebruikt de gast configuratie-client lokale hulpprogram ma's om d
 
 De volgende tabel bevat een lijst met de lokale hulpprogram ma's die op elk ondersteund besturings systeem worden gebruikt. Voor ingebouwde inhoud verwerkt gast configuratie automatisch het laden van deze hulpprogram ma's.
 
-|Besturingssysteem|Validatie programma|Opmerkingen|
+|Besturingssysteem|Validatie programma|Notities|
 |-|-|-|
 |Windows|[Power shell desired state Configuration](/powershell/scripting/dsc/overview/overview) v2| Een kant geladen naar een map die alleen door Azure Policy wordt gebruikt. Er is geen conflict met Windows Power shell DSC. Power shell Core is niet toegevoegd aan het systeempad.|
 |Linux|[Chef-specificatie](https://www.chef.io/inspec/)| Installeert chef Inspec-versie 2.2.61 op de standaard locatie en wordt toegevoegd aan het systeempad. Afhankelijkheden voor het INSPEC-pakket, waaronder Ruby en Python, worden ook geïnstalleerd. |
@@ -59,20 +58,19 @@ De gast configuratie client controleert elke vijf minuten op nieuwe inhoud. Zodr
 
 ## <a name="supported-client-types"></a>Ondersteunde client typen
 
-Gast configuratie beleidsregels zijn inclusief nieuwe versies. Oudere versies van besturings systemen die beschikbaar zijn in azure Marketplace, worden uitgesloten als de gast configuratie agent niet compatibel is.
-In de volgende tabel ziet u een lijst met ondersteunde besturings systemen in azure-installatie kopieën:
+Beleids definities voor gast configuratie zijn inclusief nieuwe versies. Oudere versies van besturings systemen die beschikbaar zijn in azure Marketplace, worden uitgesloten als de gast configuratie agent niet compatibel is. In de volgende tabel ziet u een lijst met ondersteunde besturings systemen in azure-installatie kopieën:
 
 |Publisher|Naam|Versies|
 |-|-|-|
 |Canonical|Ubuntu Server|14,04 en hoger|
 |Credativ|Debian|8 en hoger|
-|Microsoft-peering|Windows Server|2012 en hoger|
-|Microsoft-peering|Windows-client|Windows 10|
+|Microsoft|Windows Server|2012 en hoger|
+|Microsoft|Windows-client|Windows 10|
 |OpenLogic|CentOS|7,3 en hoger|
 |Red Hat|Red Hat Enterprise Linux|7,4-7,8|
 |SuSE|SLES|12 SP3-SP5|
 
-Aangepaste installatie kopieën van virtuele machines worden ondersteund door gast configuratie beleidsregels, zolang ze een van de besturings systemen in de bovenstaande tabel zijn.
+Aangepaste installatie kopieën van virtuele machines worden ondersteund door beleids definities voor gast configuraties zolang ze een van de besturings systemen in de bovenstaande tabel zijn.
 
 ## <a name="network-requirements"></a>Netwerkvereisten
 
@@ -86,7 +84,7 @@ Voor virtuele machines die gebruikmaken van virtuele netwerken voor communicatie
 
 ### <a name="communicate-over-private-link-in-azure"></a>Communiceren via een persoonlijke koppeling in azure
 
-Virtuele machines kunnen een [persoonlijke koppeling](../../../private-link/private-link-overview.md) gebruiken voor communicatie met de gast configuratie service. Pas tag toe met de naam `EnablePrivateNeworkGC` en waarde `TRUE` om deze functie in te scha kelen. De tag kan worden toegepast vóór of nadat het gast configuratie beleid is toegepast op de computer.
+Virtuele machines kunnen een [persoonlijke koppeling](../../../private-link/private-link-overview.md) gebruiken voor communicatie met de gast configuratie service. Pas tag toe met de naam `EnablePrivateNeworkGC` en waarde `TRUE` om deze functie in te scha kelen. De tag kan worden toegepast vóór of na het Toep assen van beleids definities voor gast configuratie op de computer.
 
 Verkeer wordt gerouteerd met behulp van het [virtuele openbaar IP-adres](../../../virtual-network/what-is-ip-address-168-63-129-16.md) van Azure om een beveiligd, geverifieerd kanaal met Azure-platform bronnen te maken.
 
@@ -111,14 +109,12 @@ Als de computer momenteel een door de gebruiker toegewezen systeem identiteit he
 
 ## <a name="guest-configuration-definition-requirements"></a>Vereisten voor gast configuratie definitie
 
-Gast configuratie beleidsregels gebruiken het **AuditIfNotExists** -effect. Wanneer de definitie wordt toegewezen, wordt de levens cyclus van alle vereisten in de Azure-resource provider automatisch door een back-end-service afgehandeld `Microsoft.GuestConfiguration` .
+Beleids definities voor gast configuraties gebruiken het **AuditIfNotExists** -effect. Wanneer de definitie wordt toegewezen, wordt de levens cyclus van alle vereisten in de Azure-resource provider automatisch door een back-end-service afgehandeld `Microsoft.GuestConfiguration` .
 
-Het **AuditIfNotExists** -beleid retourneert geen compliantie resultaten totdat aan alle vereisten wordt voldaan op de computer. De requirments worden beschreven in de sectie [vereisten voor Azure virtual machines implementeren](#deploy-requirements-for-azure-virtual-machines)
+De **AuditIfNotExists** -beleids definities retour neren geen compliantie resultaten totdat aan alle vereisten wordt voldaan op de computer. De vereisten worden beschreven in de sectie [vereisten voor Azure virtual machines implementeren](#deploy-requirements-for-azure-virtual-machines)
 
 > [!IMPORTANT]
-> In een eerdere versie van de gast configuratie was een initiatief vereist om **DeployIfNoteExists** -en **AuditIfNotExists** -definities te combi neren. **DeployIfNotExists** -definities zijn niet meer vereist. De definities en intiaitives hebben een label, `[Deprecated]` maar bestaande toewijzingen blijven functioneren.
->
-> Er is een hand matige stap vereist. Als u de beleids initiatieven in categorie eerder hebt toegewezen `Guest Configuration` , verwijdert u de beleids toewijzing en wijst u de nieuwe definitie toe. Gast configuratie beleidsregels hebben als volgt een naam patroon: `Audit <Windows/Linux> machines that <non-compliant condition>`
+> In een eerdere versie van de gast configuratie was een initiatief vereist om **DeployIfNoteExists** -en **AuditIfNotExists** -definities te combi neren. **DeployIfNotExists** -definities zijn niet meer vereist. De definities en intiaitives hebben een label, `[Deprecated]` maar bestaande toewijzingen blijven functioneren. Zie voor meer informatie het blog bericht: [belang rijke wijziging vrijgegeven voor controle beleid gast configuratie](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316)
 
 Azure Policy maakt gebruik van de eigenschap **complianceStatus** van de gast configuratie resource provider om naleving te rapporteren in het knoop punt **naleving** . Zie [nalevings gegevens ophalen](../how-to/get-compliance-data.md)voor meer informatie.
 
@@ -140,15 +136,15 @@ Alleen de definitie _configureren van de tijd zone op Windows-machines_ wijzigt 
 Bij het toewijzen van definities die beginnen met _configureren_, moet u ook de _vereisten voor definitie-implementatie toewijzen om gast configuratie beleid in te scha kelen op Windows-vm's_. U kunt deze definities in een initiatief combi neren, indien gewenst.
 
 > [!NOTE]
-> Het ingebouwde tijd zone beleid is de enige definitie die het configureren van instellingen binnen machines en aangepaste beleids regels ondersteunt, waardoor het configureren van instellingen binnen machines niet wordt ondersteund.
+> Het ingebouwde tijd zone beleid is de enige definitie die het configureren van instellingen binnen machines ondersteunt en aangepaste beleids definities waarmee instellingen worden geconfigureerd binnen machines worden niet ondersteund.
 
 #### <a name="assigning-policies-to-machines-outside-of-azure"></a>Beleids regels toewijzen aan computers buiten Azure
 
-Het beschik bare controle beleid voor gast configuratie omvat het resource type **micro soft. HybridCompute/machines** . Computers die worden uitgevoerd op [Azure Arc voor servers](../../../azure-arc/servers/overview.md) die zich binnen het bereik van de beleids toewijzing bevinden, worden automatisch opgenomen.
+De controle beleids definities die beschikbaar zijn voor gast configuratie zijn onder andere het resource type **micro soft. HybridCompute/machines** . Computers die worden uitgevoerd op [Azure Arc voor servers](../../../azure-arc/servers/overview.md) die zich binnen het bereik van de beleids toewijzing bevinden, worden automatisch opgenomen.
 
 ### <a name="multiple-assignments"></a>Meerdere toewijzingen
 
-Gast configuratie beleid biedt momenteel alleen ondersteuning voor het toewijzen van dezelfde gast toewijzing per computer, zelfs als de beleids toewijzing gebruikmaakt van verschillende para meters.
+Beleids definities voor gast configuraties bieden momenteel alleen ondersteuning voor het toewijzen van dezelfde gast toewijzing per computer, zelfs als de beleids toewijzing gebruikmaakt van verschillende para meters.
 
 ## <a name="client-log-files"></a>Client logboek bestanden
 

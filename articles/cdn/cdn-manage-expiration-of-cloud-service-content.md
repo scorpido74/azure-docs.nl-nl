@@ -16,10 +16,10 @@ ms.topic: how-to
 ms.date: 02/15/2018
 ms.author: allensu
 ms.openlocfilehash: 562d5010458fc938d9d62fed5d0d2c8284f2055d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88936942"
 ---
 # <a name="manage-expiration-of-web-content-in-azure-cdn"></a>Verlooptijd van webinhoud in Azure CDN beheren
@@ -38,11 +38,11 @@ U kunt ook de cache-instellingen van de Azure Portal beheren door de [regels voo
 > Zie [overzicht van de Azure-Content Delivery Network](cdn-overview.md)voor meer informatie over de werking van Azure CDN om de toegang tot bestanden en andere bronnen te versnellen.
 > 
 
-## <a name="setting-cache-control-headers-by-using-cdn-caching-rules"></a>Cache-control-headers instellen met behulp van CDN-cache regels
+## <a name="setting-cache-control-headers-by-using-cdn-caching-rules"></a>Cache-Control headers instellen met behulp van CDN-cache regels
 De voorkeurs methode voor het instellen van de koptekst van een webserver `Cache-Control` is het gebruik van cache regels in de Azure Portal. Zie [beheer van Azure CDN caching met cache regels](cdn-caching-rules.md)voor meer informatie over de regels voor CDN-caching.
 
 > [!NOTE] 
-> Cache regels zijn alleen beschikbaar voor **Azure CDN Standard van Verizon** en **Azure CDN Standard van Akamai** -profielen. Voor **Azure CDN Premium van Verizon** -profielen moet u de [engine Azure CDN Rules](cdn-rules-engine.md) in de portal **beheren** gebruiken voor vergelijk bare functionaliteit.
+> Regels voorcaching zijn alleen beschikbaar voor de profielen **Azure CDN Standard van Verizon** en **Azure CDN Standard van Akamai**. Voor **Azure CDN Premium van Verizon** -profielen moet u de [engine Azure CDN Rules](cdn-rules-engine.md) in de portal **beheren** gebruiken voor vergelijk bare functionaliteit.
 
 **Ga naar de pagina regels voor CDN-caching**:
 
@@ -57,7 +57,7 @@ De voorkeurs methode voor het instellen van de koptekst van een webserver `Cache
    ![Pagina voor CDN-caching](./media/cdn-manage-expiration-of-cloud-service-content/cdn-caching-page.png)
 
 
-**De cache-control-headers van een webserver instellen met behulp van algemene regels voor opslaan in cache:**
+**De Cache-Control headers van een webserver instellen met behulp van algemene regels voor opslaan in cache:**
 
 1. Stel onder **algemene regels voor caching**het **in cache geheugen opslaan van de query reeks** in op het negeren van **query reeksen** en instellen dat **cache gedrag** wordt **overschreven**.
       
@@ -69,7 +69,7 @@ De voorkeurs methode voor het instellen van de koptekst van een webserver `Cache
 
 1. Selecteer **Opslaan**.
 
-**De cache-control-headers van een webserver bestand instellen met behulp van aangepaste regels voor opslaan in cache:**
+**De Cache-Control teksten van een webserver bestand instellen met behulp van aangepaste regels voor opslaan in cache:**
 
 1. Maak onder **regels voor aangepaste caching**twee match-voor waarden:
 
@@ -84,7 +84,7 @@ De voorkeurs methode voor het instellen van de koptekst van een webserver `Cache
 1. Selecteer **Opslaan**.
 
 
-## <a name="setting-cache-control-headers-by-using-configuration-files"></a>Cache-control-headers instellen met behulp van configuratie bestanden
+## <a name="setting-cache-control-headers-by-using-configuration-files"></a>Cache-Control headers instellen met behulp van configuratie bestanden
 Voor statische inhoud, zoals afbeeldingen en stijl pagina's, kunt u de update frequentie beheren door de **applicationHost.config** -of **Web.config** configuratie bestanden voor uw webtoepassing te wijzigen. Als u de `Cache-Control` koptekst voor uw inhoud wilt instellen, gebruikt u het `<system.webServer>/<staticContent>/<clientCache>` element in een van beide bestanden.
 
 ### <a name="using-applicationhostconfig-files"></a>ApplicationHost.config-bestanden gebruiken
@@ -109,7 +109,7 @@ In het volgende voor beeld van een XML-configuratie bestand ziet u hoe u het `<c
 
 Als u het kenmerk **cacheControlMaxAge** wilt gebruiken, moet u de waarde van het kenmerk **cacheControlMode** instellen op `UseMaxAge` . Deze instelling heeft tot gevolg dat de HTTP-header en de instructie `Cache-Control: max-age=<nnn>` worden toegevoegd aan het antwoord. De notatie van de time span-waarde voor het kenmerk **cacheControlMaxAge** is `<days>.<hours>:<min>:<sec>` . De waarde wordt geconverteerd naar seconden en wordt gebruikt als de waarde van de `Cache-Control` `max-age` instructie. `<clientCache>`Zie [client cache \<clientCache> ](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)voor meer informatie over het-element.  
 
-## <a name="setting-cache-control-headers-programmatically"></a>Cache-control headers programmatisch instellen
+## <a name="setting-cache-control-headers-programmatically"></a>Cache-Control headers programmatisch instellen
 Voor ASP.NET-toepassingen beheert u het gedrag van de CDN-caching via een programma door de eigenschap **HttpResponse. cache** van de .net API in te stellen. Voor informatie over de eigenschap **HttpResponse. cache** , Zie [HttpResponse. cache-eigenschap](/dotnet/api/system.web.httpresponse.cache#System_Web_HttpResponse_Cache) en [HttpCachePolicy-klasse](/dotnet/api/system.web.httpcachepolicy).  
 
 Voer de volgende stappen uit om de toepassings inhoud in ASP.NET op te slaan in de cache:
@@ -128,7 +128,7 @@ Response.Cache.SetCacheability(HttpCacheability.Public);
 Response.Cache.SetLastModified(DateTime.Now);
 ```
 
-## <a name="testing-the-cache-control-header"></a>De cache-Control-header testen
+## <a name="testing-the-cache-control-header"></a>De Cache-Control-header testen
 U kunt de TTL-instellingen van uw webinhoud eenvoudig controleren. Controleer in de [ontwikkel hulpprogramma's](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)van uw browser of uw webinhoud de `Cache-Control` reactie header bevat. U kunt ook een hulp programma zoals **wget**, [postman](https://www.getpostman.com/)of [Fiddler](https://www.telerik.com/fiddler) gebruiken om de antwoord headers te onderzoeken.
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/12/2018
 ms.topic: conceptual
-ms.openlocfilehash: c192ba73da0cfaf1832b6a1e572bd71b250a976b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2776b18dc3faded103b49e8ff58a8a0a6dccf144
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74168359"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074461"
 ---
 # <a name="add-an-email-action"></a>Een e-mailactie maken
 
@@ -166,7 +166,7 @@ De volgende stappen laten zien hoe u de HTML-e-mail sjabloon kunt bewerken. U ku
 
 ## <a name="throttling"></a>Beperking
 
-De oplossings versneller voor externe controle gebruikt Outlook voor het verzenden van e-mail meldingen. Outlook beperkt het aantal e-mails dat wordt verzonden naar [30 e-mails per 1 minuut](https://docs.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits#receiving-and-sending-limits). E-mailclients die de e-mail berichten ontvangen, kunnen ook het aantal e-mails dat per minuut wordt ontvangen, beperken. Neem contact op met uw specifieke e-mailclient voor beperkingen. Wanneer u een e-mail melding voor een regel instelt, moet de regel gemiddelde waarden berekenen gedurende een periode van ten minste één minuut, en geen directe waarden gebruiken:
+De oplossings versneller voor externe controle gebruikt Outlook voor het verzenden van e-mail meldingen. Outlook beperkt het aantal e-mails dat wordt verzonden naar [30 e-mails per 1 minuut](/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits#receiving-and-sending-limits). E-mailclients die de e-mail berichten ontvangen, kunnen ook het aantal e-mails dat per minuut wordt ontvangen, beperken. Neem contact op met uw specifieke e-mailclient voor beperkingen. Wanneer u een e-mail melding voor een regel instelt, moet de regel gemiddelde waarden berekenen gedurende een periode van ten minste één minuut, en geen directe waarden gebruiken:
 
 ![Gemiddelde berekening](./media/iot-accelerators-remote-monitoring-email-actions/calculation-email.png)
 

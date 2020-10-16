@@ -2,19 +2,17 @@
 title: Tekst parameters van Azure Monitor werkmappen
 description: Vereenvoudig complexe rapportage met vooraf samengestelde en aangepaste werkmappen met para meters. Meer informatie over para meters voor werkmap tekst.
 services: azure-monitor
-author: mrbullwinkle
 manager: carmonm
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.author: mbullwin
-ms.openlocfilehash: c804cc8942a40e2f30c980636194daa82e0fb0e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7241777c0b94ce7ccadbd273c5c305c679bfe30a
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81687329"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91932308"
 ---
 # <a name="workbook-text-parameters"></a>Werkmap tekst parameters
 
@@ -27,10 +25,10 @@ Een veelvoorkomend gebruik van tekst vakken is de interne variabelen die worden 
 2. Kies _para meters toevoegen_ uit de koppelingen in de werkmap.
 3. Klik op de knop Blue _para meter toevoegen_ .
 4. Typ in het deel venster nieuwe para meters dat verschijnt:
-    1. Parameter naam:`SlowRequestThreshold`
-    2. Parameter type:`Text`
-    3. Vereist:`checked`
-    4. Standaard waarde ophalen uit query:`unchecked`
+    1. Parameter naam: `SlowRequestThreshold`
+    2. Parameter type: `Text`
+    3. Vereist: `checked`
+    4. Standaard waarde ophalen uit query: `unchecked`
 5. Kies opslaan op de werk balk om de para meter te maken.
 
     ![Afbeelding van het maken van een tekst parameter](./media/workbooks-text/text-create.png)
@@ -67,10 +65,10 @@ Zo ziet de werkmap eruit als Lees modus.
 2. Kies _para meters toevoegen_ uit de koppelingen in de werkmap.
 3. Klik op de knop Blue _para meter toevoegen_ .
 4. Typ in het deel venster nieuwe para meters dat verschijnt:
-    1. Parameter naam:`SlowRequestThreshold`
-    2. Parameter type:`Text`
-    3. Vereist:`checked`
-    4. Standaard waarde ophalen uit query:`checked`
+    1. Parameter naam: `SlowRequestThreshold`
+    2. Parameter type: `Text`
+    3. Vereist: `checked`
+    4. Standaard waarde ophalen uit query: `checked`
 5. Voeg in het vak KQL dit fragment toe:
     ```kusto
     requests

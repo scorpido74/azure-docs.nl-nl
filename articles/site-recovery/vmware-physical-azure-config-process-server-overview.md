@@ -4,10 +4,10 @@ description: Dit artikel bevat een overzicht van de configuratie, het proces en 
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.openlocfilehash: cd5ded18d1a8f1f5fd96212d37725bb5db13002f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80062094"
 ---
 # <a name="about-site-recovery-components-configuration-process-master-target"></a>Over Site Recovery-onderdelen (configuratie, proces, hoofd doel)
@@ -27,7 +27,7 @@ Voor herstel na nood gevallen van on-premises virtuele VMware-machines en fysiek
 **Vereisten voor fysieke servers** | Voor herstel na nood gevallen op fysieke servers op locatie, implementeert u de configuratie server hand matig. | [Meer informatie over](physical-azure-set-up-source.md#prerequisites) de vereisten.
 **Fysieke server implementatie** | Als deze niet kan worden geïnstalleerd als een virtuele VMware-machine, kunt u deze installeren op een fysieke server. | [Implementeer](physical-azure-set-up-source.md#set-up-the-source-environment) de configuratie server hand matig.
 
-## <a name="process-server"></a>Processerver
+## <a name="process-server"></a>Proces server
 
 Een proces server verwerkt replicatie gegevens tijdens failover en failback, en installeert de Mobility-service voor on-premises virtuele VMware-machines en fysieke servers.
 

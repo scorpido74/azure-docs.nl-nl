@@ -4,10 +4,10 @@ description: Lees hoe Azure Service Bus Advanced Message Queueing Protocol (AMQP
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: c91c7965b94216f3f3bcb47e0cb652ce22a0217a
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88066335"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>Ondersteuning voor AMQP 1,0 in Service Bus
@@ -65,7 +65,7 @@ Op dit moment zijn de volgende client bibliotheken bekend om samen te werken met
 | Java |JMS-client (Apache Qpid Java Message Service)<br/>IIT software SwiftMQ Java-client |
 | C |Apache Qpid Proton-C |
 | PHP |Apache Qpid Proton-PHP |
-| Python |Apache Qpid Proton-python |
+| Python |Apache Qpid Proton-Python |
 | C# |AMQP .NET Lite |
 
 **Afbeelding 2: tabel met AMQP 1,0-client bibliotheken**

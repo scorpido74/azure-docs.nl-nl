@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2020
 ms.author: Zhchia
-ms.openlocfilehash: 5cfd355941a7fae211f3abb9b5dd31e86ba1d14b
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: ff017671496816f0142bd3b71c3df1a3769b274b
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91757484"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91941089"
 ---
 # <a name="tutorial-configure-apple-business-manager-for-automatic-user-provisioning"></a>Zelf studie: Apple Business Manager configureren voor automatische gebruikers inrichting
 
@@ -160,7 +160,7 @@ Nadat u het inrichten hebt geconfigureerd, gebruikt u de volgende resources om u
 * [Bestaande SCIM-token en-verbindingen beheren in Apple Business Manager](https://support.apple.com/guide/apple-business-manager/apdc9a823611)
 * [De SCIM-verbinding verbreken in Apple Business Manager](https://support.apple.com/guide/apple-business-manager/apd609be3a61)
 * [Bestaande SCIM-token en-verbindingen beheren in Apple Business Manager](https://support.apple.com/guide/apple-business-manager/apdc9a8236e9)
-* [Problemen met de SCIM-verbinding in Apple Business Manager oplossen](URL=https://support.apple.com/guide/apple-business-manager/apd403a0f3bd)
+* [Problemen met de SCIM-verbinding in Apple Business Manager oplossen](https://support.apple.com/guide/apple-business-manager/apd403a0f3bd/web)
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 7/27/2020
+ms.date: 10/2/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: e5fe8e751077bc04850879d27827c197767a81c2
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 89a4c62044e3be849650de703d2daa9ca3e2a975
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87759067"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91932580"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Micro soft Identity platform en de OAuth 2,0-client referenties stroom
 
@@ -52,8 +52,11 @@ Een veelvoorkomende use-case is het gebruik van een ACL voor het uitvoeren van t
 
 Dit type autorisatie is gebruikelijk voor daemons en service accounts die toegang nodig hebben tot gegevens die eigendom zijn van consumenten gebruikers met persoonlijke micro soft-accounts. Voor gegevens die eigendom zijn van organisaties, raden we u aan de vereiste autorisatie te verkrijgen via toepassings machtigingen.
 
-> [!NOTE]
-> Als u dit verificatie patroon op basis van toegangs beheer lijst wilt inschakelen, is voor Azure AD niet vereist dat toepassingen worden gemachtigd om tokens voor een andere toepassing op te halen, zodat alleen app-tokens kunnen worden uitgegeven zonder een `roles` claim. Toepassingen die Api's beschikbaar stellen, moeten controle van machtigingen implementeren om tokens te accepteren.
+#### <a name="controlling-tokens-without-the-roles-claim"></a>Tokens beheren zonder de `roles` claim
+
+Om dit autorisatie patroon op basis van een toegangs beheer lijst in te scha kelen, is voor Azure AD niet vereist dat toepassingen worden gemachtigd om tokens voor een andere toepassing op te halen. Daarom kunnen alleen app-tokens worden uitgegeven zonder een `roles` claim. Toepassingen die Api's beschikbaar stellen, moeten controle van machtigingen implementeren om tokens te accepteren.
+
+Als u wilt voor komen dat toepassingen alleen voor de app verstuurde toegangs tokens voor uw toepassing worden ontvangen, moet u [ervoor zorgen dat de vereisten voor de gebruikers toewijzing zijn ingeschakeld voor uw app](../manage-apps/assign-user-or-group-access-portal.md#configure-an-application-to-require-user-assignment). Hiermee kunnen gebruikers en toepassingen zonder toegewezen rollen een token voor deze toepassing ophalen. 
 
 ### <a name="application-permissions"></a>Toepassings machtigingen
 
@@ -98,7 +101,7 @@ Pro-Tip: Probeer de volgende aanvraag in een browser te plakken.
 https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&state=12345&redirect_uri=http://localhost/myapp/permissions
 ```
 
-| Parameter | Voorwaarde | Beschrijving |
+| Parameter | Conditie | Beschrijving |
 | --- | --- | --- |
 | `tenant` | Vereist | De Directory-Tenant waarvan u toestemming wilt aanvragen. Dit kan een GUID of beschrijvende naam zijn. Als u niet weet op welke Tenant de gebruiker zich bevindt en u zich wilt aanmelden met een Tenant, gebruikt u `common` . |
 | `client_id` | Vereist | De **client-id** van de toepassing die de [Azure Portal – app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) ervaring die aan uw app is toegewezen. |
@@ -161,13 +164,13 @@ client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=535fb089-9ff3-47b6-9bfb-4f1264799865&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default&client_secret=qWgdYAmab0YSkuL1qKv5bPX&grant_type=client_credentials' 'https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token'
 ```
 
-| Parameter | Voorwaarde | Beschrijving |
+| Parameter | Conditie | Beschrijving |
 | --- | --- | --- |
 | `tenant` | Vereist | De Directory-Tenant waarmee de toepassing moet worden uitgevoerd, in GUID of domeinnaam indeling. |
 | `client_id` | Vereist | De toepassings-ID die is toegewezen aan uw app. U kunt deze informatie vinden in de portal waar u uw app hebt geregistreerd. |
 | `scope` | Vereist | De waarde die is door gegeven voor de `scope` para meter in deze aanvraag moet de resource-id (id van de toepassings-URI) zijn van de resource die u wilt, met het `.default` achtervoegsel. Voor het Microsoft Graph-voor beeld is de waarde `https://graph.microsoft.com/.default` . <br/>Deze waarde vertelt het micro soft Identity platform-eind punt van alle directe toepassings machtigingen die u hebt geconfigureerd voor uw app. het eind punt moet een token uitgeven voor de resources die zijn gekoppeld aan de resource die u wilt gebruiken. `/.default`Zie de documentatie van de [toestemming](v2-permissions-and-consent.md#the-default-scope)voor meer informatie over het bereik. |
 | `client_secret` | Vereist | Het client geheim dat u hebt gegenereerd voor uw app in de app-registratie Portal. Het client geheim moet URL-gecodeerd zijn voordat het wordt verzonden. |
-| `grant_type` | Vereist | Moet worden ingesteld op `client_credentials` . |
+| `grant_type` | Vereist | Moet worden ingesteld op `client_credentials`. |
 
 ### <a name="second-case-access-token-request-with-a-certificate"></a>Tweede geval: toegangs token aanvraag met een certificaat
 
@@ -183,14 +186,14 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 &grant_type=client_credentials
 ```
 
-| Parameter | Voorwaarde | Beschrijving |
+| Parameter | Conditie | Beschrijving |
 | --- | --- | --- |
 | `tenant` | Vereist | De Directory-Tenant waarmee de toepassing moet worden uitgevoerd, in GUID of domeinnaam indeling. |
 | `client_id` | Vereist |De client-ID van de toepassing die is toegewezen aan uw app. |
 | `scope` | Vereist | De waarde die is door gegeven voor de `scope` para meter in deze aanvraag moet de resource-id (id van de toepassings-URI) zijn van de resource die u wilt, met het `.default` achtervoegsel. Voor het Microsoft Graph-voor beeld is de waarde `https://graph.microsoft.com/.default` . <br/>Met deze waarde wordt het micro soft Identity platform-eind punt geïnformeerd over alle directe toepassings machtigingen die u hebt geconfigureerd voor uw app. het moet een token uitgeven voor de resources die zijn gekoppeld aan de resource die u wilt gebruiken. `/.default`Zie de documentatie van de [toestemming](v2-permissions-and-consent.md#the-default-scope)voor meer informatie over het bereik. |
 | `client_assertion_type` | Vereist | De waarde moet worden ingesteld op `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` . |
 | `client_assertion` | Vereist | Een verklaring (een JSON-webtoken) die u moet maken en ondertekenen met het certificaat dat u hebt geregistreerd als referenties voor uw toepassing. Lees de informatie over [certificaat referenties](active-directory-certificate-credentials.md) voor meer informatie over het registreren van uw certificaat en de indeling van de verklaring.|
-| `grant_type` | Vereist | Moet worden ingesteld op `client_credentials` . |
+| `grant_type` | Vereist | Moet worden ingesteld op `client_credentials`. |
 
 U ziet dat de para meters bijna hetzelfde zijn als in het geval van de aanvraag van het gedeelde geheim, behalve dat de para meter client_secret wordt vervangen door twee para meters: een client_assertion_type en client_assertion.
 

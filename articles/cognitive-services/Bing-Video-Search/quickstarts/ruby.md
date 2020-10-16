@@ -1,5 +1,5 @@
 ---
-title: "Snelstartgids: zoeken naar Video's met behulp van de REST API en Ruby-Bing Video Search"
+title: "Snelstart: Video's zoeken met de REST API en Ruby - Bing Video Search"
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze quickstart om zoekaanvragen voor video's met Ruby naar de REST-API van Bing Video's zoeken te verzenden.
 services: cognitive-services
@@ -11,15 +11,15 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
 ms.openlocfilehash: cd02a0ea51faa7dae14e0f9d61c446aae55dcbe1
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: MT
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "83849566"
 ---
-# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-ruby"></a>Snelstartgids: zoeken naar Video's met behulp van de Bing Video Search REST API en ruby
+# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-ruby"></a>Snelstart: Video's zoeken met de REST-API van Bing Video's zoeken en Ruby
 
-Gebruik deze Quick Start om uw eerste oproep naar de Bing Video's zoeken-API te maken. Met deze eenvoudige ruby-toepassing wordt een HTTP-Zoek query naar de API verzonden en wordt het JSON-antwoord weer gegeven. Hoewel deze toepassing is geschreven in Python, is de API een REST-webservice die compatibel is met de meeste programmeer talen. 
+Gebruik deze quickstart om uw eerste aanroep naar de Bing Video’s zoeken-API te maken. Deze eenvoudige Ruby-toepassing stuurt een HTTP-videozoekquery naar de API en geeft het JSON-antwoord weer. Hoewel deze toepassing in Python is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. 
 
 De broncode voor dit voorbeeld is beschikbaar [op GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingVideoSearchv7.rb) met extra foutafhandeling en codeaantekeningen.
 
@@ -31,7 +31,7 @@ De broncode voor dit voorbeeld is beschikbaar [op GitHub](https://github.com/Azu
 
 ## <a name="create-and-initialize-the-application"></a>De toepassing maken en initialiseren
 
-1. Importeer de volgende pakketten in het code bestand:
+1. Importeer de volgende pakketten in uw codebestand:
 
     ```ruby
     require 'net/https'
@@ -39,7 +39,7 @@ De broncode voor dit voorbeeld is beschikbaar [op GitHub](https://github.com/Azu
     require 'json'
     ```
 
-2. Maak variabelen voor het API-eindpunt, het zoekpad voor de video-API, uw abonnementssleutel en de zoekterm. Voor de `url` waarde kunt u het globale eind punt in de volgende code gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) eindpunt gebruiken dat wordt weer gegeven in de Azure portal voor uw resource.
+2. Maak variabelen voor het API-eindpunt, het zoekpad voor de video-API, uw abonnementssleutel en de zoekterm. Voor de `url`-waarde kunt u het globale eindpunt in de volgende code gebruiken of het eindpunt voor het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) gebruiken dat voor uw resource wordt weergegeven in de Azure-portal.
 
     ```ruby
     uri  = "https://api.cognitive.microsoft.com"
@@ -50,20 +50,20 @@ De broncode voor dit voorbeeld is beschikbaar [op GitHub](https://github.com/Azu
 
 ## <a name="create-and-send-an-api-request"></a>Een API-aanvraag maken en verzenden
 
-1. Gebruik de variabelen uit de vorige stap om een zoek-URL voor de aanvraag op te maken. Combi neer uw URI en pad en voer vervolgens een URL-code uit voor uw zoek term voordat u deze toevoegt aan de `?q=` para meter.
+1. Gebruik de variabelen uit de vorige stap om een zoek-URL voor de aanvraag op te maken. Combineer uw URI en het pad, en pas daarna URL-codering toe op de zoekterm voordat u deze toevoegt aan de parameter `?q=`.
 
     ```ruby
     uri = URI(uri + path + "?q=" + URI.escape(term))
     ```
 
-2. Voeg de volledige zoek-URL toe aan de aanvraag en voeg uw abonnements sleutel toe aan de `Ocp-Apim-Subscription-Key` koptekst.
+2. Voeg de volledige zoek-URL toe aan de aanvraag en voeg uw abonnementssleutel toe aan de `Ocp-Apim-Subscription-Key`-header.
     
     ``` ruby
     request = Net::HTTP::Get.new(uri)
     request['Ocp-Apim-Subscription-Key'] = accessKey
     ```
 
-3. Verzend de aanvraag en sla de reactie op.
+3. Verzend de aanvraag en sla daarna het antwoord op.
     
     ```ruby
     response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|

@@ -5,14 +5,16 @@ ms.date: 07/08/2019
 ms.topic: conceptual
 description: Meer informatie over hoe u met Visual Studio code en Azure dev Spaces fouten oplost en snel uw Kubernetes-toepassingen kunt herhalen
 keywords: Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers
-ms.openlocfilehash: decf61bd55ed15182f030bb02a2fe9c959749556
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: edfcb8107280bb86144b798da2d5b1c16371528e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88209879"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960742"
 ---
 # <a name="how-visual-studio-code-works-with-azure-dev-spaces"></a>Hoe Visual Studio code werkt met Azure dev Spaces
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../includes/dev-spaces-deprecation.md)]
 
 U kunt Visual Studio code en de [Azure dev Spaces-extensie][azds-extension] gebruiken om uw services voor te bereiden, uit te voeren en fouten op te sporen met Azure dev Spaces. Met Visual Studio code en de Azure dev Spaces-extensie kunt u het volgende doen:
 
@@ -45,7 +47,7 @@ Nadat u uw project hebt gestart, kunt u fouten opsporen in uw Java-, Node.js-en 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de werking van Azure dev Spaces.
+Meer informatie over hoe Azure Dev Spaces werkt.
 
 > [!div class="nextstepaction"]
 > [Hoe Azure Dev Spaces werkt](how-dev-spaces-works.md)

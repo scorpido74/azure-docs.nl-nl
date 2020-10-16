@@ -8,12 +8,12 @@ ms.date: 08/20/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 88255e60593403951db5b984bb9c69b1060a93c2
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: db9ba3efe60af830c0e15310b6127c18130f00b9
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540571"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076246"
 ---
 # <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>Time Series Insights gebruiken om telemetrie te visualiseren die wordt verzonden vanuit de apparaat simulatie oplossings versneller
 
@@ -21,7 +21,7 @@ Met de Device simulatie Solution Accelerator kunt u telemetrie genereren op basi
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u de stappen in deze hand leiding wilt volgen, hebt u een actief Azure-abonnement nodig. Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u de stappen in deze hand leiding wilt volgen, hebt u een actief Azure-abonnement nodig. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 In de stappen in deze hand leiding wordt ervan uitgegaan dat u de apparaat simulatie oplossings versneller hebt geïmplementeerd in uw Azure-abonnement. Als u de oplossings versneller nog niet hebt geïmplementeerd, volgt u de stappen in de Snelstartgids [een simulatie van een Cloud oplossing implementeren en uitvoeren](quickstart-device-simulation-deploy.md) .
 
@@ -55,7 +55,7 @@ In de volgende stappen wordt de Azure CLI in de Azure Cloud Shell gebruikt voor 
 
 [Azure time series Insights](../../articles/time-series-insights/time-series-insights-overview.md) is een volledig beheerde analyse-, opslag-en visualisatie service voor het beheren van gegevens in de Cloud voor de tijd reeks van IOT-schaal. Een nieuwe Time Series Insights omgeving maken:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. Selecteer **een resource maken**  >  **Internet of Things**  >  **Time Series Insights**:
 
@@ -77,7 +77,7 @@ In de volgende stappen wordt de Azure CLI in de Azure Cloud Shell gebruikt voor 
     > [!NOTE]
     > Als u de Time Series Insights-omgeving toevoegt aan dezelfde resource groep als de oplossings versneller, wordt deze verwijderd wanneer u de oplossings versneller verwijdert.
 
-1. Klik op **Maken**. Het kan enkele minuten duren voordat de omgeving is gemaakt.
+1. Klik op **Create**. Het kan enkele minuten duren voordat de omgeving is gemaakt.
 
 ## <a name="create-event-source"></a>Gebeurtenisbron maken
 
@@ -110,10 +110,10 @@ Maak een nieuwe gebeurtenis bron om verbinding te maken met uw IoT-hub. Gebruik 
 
     ![Gebeurtenis bron maken](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-event-source-create.png)
 
-1. Klik op **Maken**.
+1. Klik op **Create**.
 
 > [!NOTE]
-> U kunt [aanvullende gebruikers toegang verlenen](../../articles/time-series-insights/time-series-insights-data-access.md#grant-data-access) tot de time series Insights Explorer.
+> U kunt [aanvullende gebruikers toegang verlenen](../time-series-insights/concepts-access-policies.md#grant-data-access) tot de time series Insights Explorer.
 
 ## <a name="start-a-simulation"></a>Een simulatie starten
 

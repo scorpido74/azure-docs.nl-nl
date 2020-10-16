@@ -4,10 +4,10 @@ description: Meer informatie over het verwijderen en exporteren van persoonlijke
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 2c44b2f3aa6f2dfad18ed53804842a5dad8bd94a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85483513"
 ---
 # <a name="export-or-delete-personal-data-from-azure-devtest-labs"></a>Persoonlijke gegevens exporteren of verwijderen uit Azure DevTest Labs
@@ -137,7 +137,7 @@ else
 
 De belangrijkste onderdelen in het bovenstaande voor beeld zijn:
 
-- De opdracht invoke-AzureRmResourceAction.
+- De Invoke-AzureRmResourceAction opdracht.
    
     ```
     Invoke-AzureRmResourceAction -Action 'exportLabResourceUsage' -ResourceId $resourceId -Parameters $actionParameters -Force
@@ -151,7 +151,7 @@ Laten we nu eens kijken naar de geëxporteerde gegevens. Zoals eerder is vermeld
 
 De **virtualmachines.csv** bevat de volgende gegevens kolommen:
 
-| Kolomnaam | Description |
+| Kolomnaam | Beschrijving |
 | ----------- | ----------- | 
 | SubscriptionId | De abonnements-id waarin het lab zich bevindt. |
 | LabUId | De unieke GUID-id voor het lab. |
@@ -179,7 +179,7 @@ De **virtualmachines.csv** bevat de volgende gegevens kolommen:
 
 De gegevens kolommen in **disks.csv** worden hieronder weer gegeven:
 
-| Kolomnaam | Description | 
+| Kolomnaam | Beschrijving | 
 | ----------- | ----------- | 
 | SubscriptionId | ID van het abonnement dat het Lab bevat |
 | LabUId | GUID voor het lab |

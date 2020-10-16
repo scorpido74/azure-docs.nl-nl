@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 08/13/2020
 ms.openlocfilehash: 926b79e672c14249ec7c2b053dba7eb3a31443a7
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91536037"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migreren naar een Azure-resource bewerkings sleutel
@@ -77,7 +77,7 @@ Migratie moet worden uitgevoerd vanuit de LUIS-Portal. Als u de ontwerp sleutels
    > [!div class="mx-imgBorder"]
    > ![Eerste pop-upvenster in het migratie proces, waar u nu migreren selecteert](./media/migrate-authoring-key/prompt-when-migrating-2.png)
 
-3. Als uw apps deel nemers hebben, wordt u gevraagd om hen een e-mail te sturen waarmee ze over de migratie kunnen weten. Dit is een optionele stap.
+3. Als uw apps deel nemers hebben, wordt u gevraagd om hen een e-mail te sturen waarmee ze over de migratie kunnen weten. Dit is een optionele taak.
 
    Voor elke samen werker en app wordt de standaard e-mail toepassing geopend met een e-mail met een lichte opmaak. U kunt de e-mail bewerken voordat u deze verzendt. De e-mail sjabloon bevat de exacte App-ID en app-naam.
 
@@ -95,7 +95,7 @@ Migratie moet worden uitgevoerd vanuit de LUIS-Portal. Als u de ontwerp sleutels
    > [!Note]
    > Nadat u uw account naar Azure hebt gemigreerd, zijn uw apps niet langer beschikbaar voor deel nemers.
 
-4. Als u voor elke toepassing een samen werker bent, wordt u gevraagd een kopie van de apps te exporteren door deze optie te selecteren tijdens de migratie stroom. Dit is een optionele stap.
+4. Als u voor elke toepassing een samen werker bent, wordt u gevraagd een kopie van de apps te exporteren door deze optie te selecteren tijdens de migratie stroom. Dit is een optionele taak.
 
    Als u de optie selecteert, wordt de volgende pagina weer gegeven. Selecteer de Download knoppen aan de linkerkant om de gewenste apps te exporteren. U kunt deze apps weer importeren nadat u bent gemigreerd, omdat ze niet automatisch met u worden gemigreerd.
 

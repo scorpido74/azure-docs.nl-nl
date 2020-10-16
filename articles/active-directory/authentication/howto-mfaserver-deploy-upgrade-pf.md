@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/11/2018
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23e485c55ab591bcccdc32818839a8d484a6c3af
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 3e7c0399cce45b36a96bedb14d225490d48ee049
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919536"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966879"
 ---
 # <a name="upgrade-the-phonefactor-agent-to-azure-multi-factor-authentication-server"></a>De PhoneFactor-agent upgraden naar Azure Multi-Factor Authentication-server
 
@@ -70,7 +70,7 @@ Het installatiepad wordt opgehaald uit het register van de vorige installatie va
 
    2. Als u de gebruikersportal op de webserver wilt installeren, opent u als beheerder een opdrachtprompt en voert u MultiFactorAuthenticationUserPortalSetupXX.msi uit.
 
-      De standaard naam van de virtuele map is nu **MultiFactorAuth** in plaats van **Phone factor**. Als u de oude naam wilt gebruiken, moet u de naam van de virtuele map tijdens de installatie wijzigen. Als u de nieuwe standaard naam wilt gebruiken, klikt u op het pictogram gebruikers Portal in het Multi-Factor Authentication-server en werkt u de URL van de gebruikers portal bij op het tabblad instellingen. bestaande gebruikers moeten op de hoogte zijn van de nieuwe URL.
+      De standaard naam van de virtuele map is nu **MultiFactorAuth** in plaats van **Phone factor**. Als u de oude naam wilt gebruiken, moet u de naam van de virtuele map tijdens de installatie wijzigen. Als u de nieuwe standaard naam wilt gebruiken, klikt u op het pictogram gebruikers Portal in het Multi-Factor Authentication-server en werkt u de URL van de gebruikers portal bij op het tabblad instellingen. Bestaande gebruikers moeten op de hoogte worden gesteld van de nieuwe URL.
 
    3. Ga naar de installatielocatie van de gebruikersportal (bijvoorbeeld C:\inetpub\wwwroot\MultiFactorAuth) en bewerk het bestand web.config. Kopieer de waarden in de secties appSettings en applicationSettings van het oorspronkelijke bestand web.config, waarvan u vóór de upgrade een back-up hebt gemaakt, naar het nieuwe bestand web.config. Als tijdens de installatie van de webservice-SDK de nieuwe standaardnaam van de virtuele map is aangehouden, wijzigt u de URL in de sectie applicationSettings om naar de juiste locatie te verwijzen. Als in het vorige bestand web.config nog andere standaardinstellingen zijn gewijzigd, past u dezelfde wijzigingen ook toe op het nieuwe bestand web.config.
 

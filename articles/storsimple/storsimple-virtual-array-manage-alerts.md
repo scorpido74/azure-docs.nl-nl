@@ -16,10 +16,10 @@ ms.date: 01/12/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5f32ec82c2b4c6d8b902195782b286cca82befb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85507633"
 ---
 # <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>StorSimple-Apparaatbeheer gebruiken voor het beheren van waarschuwingen voor de virtuele StorSimple-matrix
@@ -32,7 +32,7 @@ In deze zelf studie wordt beschreven hoe u waarschuwings meldingen, veelvoorkome
 
 ![Pagina waarschuwingen](./media/storsimple-virtual-array-manage-alerts/alerts1.png)
 
-## <a name="configure-alert-settings"></a>Instellingen voor waarschuwingen configureren
+## <a name="configure-alert-settings"></a>Waarschuwingsinstellingen configureren
 
 U kunt kiezen of u per e-mail op de hoogte wilt worden gesteld van de waarschuwings voorwaarden voor elk van uw virtuele StorSimple-matrices. Daarnaast kunt u andere ontvangers van waarschuwings meldingen identificeren door hun e-mail adressen in te voeren in het vak **extra e-mail ontvangers** , gescheiden door punt komma's.
 

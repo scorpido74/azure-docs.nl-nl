@@ -7,16 +7,16 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 9d9cc377ead0c297e8334d34255bd2c7c7cd39fc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86499406"
 ---
 # <a name="configure-application-insights-profiler"></a>Application Insights Profiler configureren
 
 ## <a name="updated-profiler-agent"></a>Profilerings agent bijgewerkt
-De trigger functies werken alleen met versie 2,6 of hoger van de Profiler-agent. Als u een Azure App Service uitvoert, wordt uw agent automatisch bijgewerkt. U kunt zien welke versie van de agent u uitvoert als u naar de kudu-URL voor uw website gaat en \DiagnosticServices aan het eind ervan toevoegt, bijvoorbeeld: `https://yourwebsite.scm.azurewebsites.net/diagnosticservices` . De Application Insights Profiler Webtaak moet versie 2,6 of nieuwer hebben. U kunt een upgrade afdwingen door de web-app opnieuw te starten. 
+De trigger functies werken alleen met versie 2,6 of hoger van de Profiler-agent. Als u een Azure App Service uitvoert, wordt uw agent automatisch bijgewerkt. U kunt zien welke versie van de agent u uitvoert als u naar de kudu-URL voor uw website gaat en \DiagnosticServices aan het eind ervan toevoegt, bijvoorbeeld:  `https://yourwebsite.scm.azurewebsites.net/diagnosticservices` . De Application Insights Profiler Webtaak moet versie 2,6 of nieuwer hebben. U kunt een upgrade afdwingen door de web-app opnieuw te starten. 
 
 Als u de Profiler uitvoert op een VM of Cloud service, moet u 16.0.4 of hoger van de WAD-extensie (Windows Azure Diagnostics) hebben geïnstalleerd. U kunt de versie van WAD controleren door u aan te melden bij uw virtuele machine en deze map te zoeken: C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.16.0.4. De naam van de map is de versie van WAD die is geïnstalleerd. De Azure VM-agent werkt WAD automatisch bij wanneer er nieuwe versies beschikbaar zijn.
 
@@ -63,12 +63,12 @@ Deze sectie van de pagina bevat informatie over recente profilerings sessies. Ee
 Geactiveerd door | Hoe de sessie is gestart, hetzij door een trigger, profiel nu of standaard steekproef. 
 App-naam | De naam van de toepassing die is profileeerd.
 Machine-exemplaar | Naam van de computer waarop de Profiler-agent is uitgevoerd.
-Timestamp | Tijdstip waarop het profiel is vastgelegd.
+Tijdstempel | Tijdstip waarop het profiel is vastgelegd.
 Traceren | Het aantal traceringen dat aan afzonderlijke aanvragen is gekoppeld.
 CPU-percentage | Percentage van de CPU dat werd gebruikt tijdens het uitvoeren van de Profiler.
 Geheugenmetabase | Percentage van het geheugen dat werd gebruikt tijdens het uitvoeren van de Profiler.
 
-## <a name="use-web-performance-tests-to-generate-traffic-to-your-application"></a><a id="profileondemand"></a>Gebruik web performance-tests om verkeer naar uw toepassing te genereren
+## <a name="use-web-performance-tests-to-generate-traffic-to-your-application"></a><a id="profileondemand"></a> Gebruik web performance-tests om verkeer naar uw toepassing te genereren
 
 U kunt Profiler hand matig activeren met één klik. Stel dat u een webprestatiess test uitvoert. U hebt traceringen nodig om inzicht te krijgen in de werking van uw web-app onder belasting. Het is essentieel om te controleren wanneer traceringen worden vastgelegd, omdat u weet wanneer de belasting test wordt uitgevoerd. Maar het interval voor wille keurige steek proeven kan dit missen.
 

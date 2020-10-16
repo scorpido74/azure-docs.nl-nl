@@ -7,16 +7,16 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 61c31b24b01b40da4d73a308a4f304f6ff242e41
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88691408"
 ---
 # <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>Het Windows-hulp programma voor virtueel bureau blad (klassiek) implementeren
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op Windows Virtual Desktop (classic), dat geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten.
+>Deze inhoud is van toepassing op Windows Virtual Desktop (klassiek), dat geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten.
 
 >[!IMPORTANT]
 >Vanaf 16 maart 2020 hebben we de diagnostische query's die van invloed zijn op de gebruikers ervaring tijdelijk uitgeschakeld vanwege een verhoogde vraag naar de service. Dit zorgt ervoor dat het hulp programma niet meer werkt omdat het afhankelijk is van deze query's. Dit artikel wordt bijgewerkt wanneer diagnostische query's weer beschikbaar zijn.
@@ -168,11 +168,11 @@ Als u de status van virtuele machines wilt kunnen bekijken, moet u de Log Analyt
 
 Voor het implementeren van de Azure resource management-sjabloon voor het diagnostische hulp programma:
 
-1.  Ga naar de [pagina github Azure RDS-sjablonen](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy).
+1.  Ga naar de [github Azure RDS-Templates-pagina](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy).
 2.  Implementeer de sjabloon in Azure en volg de instructies in de sjabloon. Zorg ervoor dat u over de volgende informatie beschikt:
 
-    -   Client-id
-    -   Client-geheim
+    -   Client-Id
+    -   Client-Secret
     -   Log Analytics-werkruimte-id
 
 3.  Zodra de invoer parameters zijn opgegeven, accepteert u de voor waarden en selecteert u vervolgens **aanschaffen**.

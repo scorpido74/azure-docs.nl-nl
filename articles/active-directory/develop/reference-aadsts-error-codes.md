@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: b00d4be72aaed980e2604291d8c67c9fec0fb25b
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88115098"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Verificatie- en autorisatiefoutcodes in Azure AD
@@ -135,7 +135,7 @@ Zoek naar het numerieke deel van de geretourneerde fout code.  Als u bijvoorbeel
 | AADSTS50079 | UserStrongAuthEnrollmentRequired: als gevolg van een configuratie wijziging die door de beheerder is aangebracht, of omdat de gebruiker is verplaatst naar een nieuwe locatie, is de gebruiker verplicht om multi-factor Authentication te gebruiken. |
 | AADSTS50085 | Vernieuwingstoken vereist een sociale IDP-aanmelding. Laat gebruikers proberen zich opnieuw aan te melden met gebruikersnaam en wachtwoord |
 | AADSTS50086 | SasNonRetryableError |
-| AADSTS50087 | SasRetryableError-de service is tijdelijk niet beschikbaar. &Opnieuw. |
+| AADSTS50087 | SasRetryableError-de service is tijdelijk niet beschikbaar. Probeer het opnieuw. |
 | AADSTS50089 | Stroomtoken verlopen, verificatie is mislukt. Laat de gebruiker opnieuw proberen zich aan te melden met gebruikers naam en wacht woord. |
 | AADSTS50097 | DeviceAuthenticationRequired: de verificatie van het apparaat is vereist. |
 | AADSTS50099 | PKeyAuthInvalidJwtUnauthorized-de JWT-hand tekening is ongeldig. |
@@ -188,7 +188,7 @@ Zoek naar het numerieke deel van de geretourneerde fout code.  Als u bijvoorbeel
 | AADSTS54000 | MinorUserBlockedLegalAgeGroupRule |
 | AADSTS65001 | DelegationDoesNotExist-de gebruiker of beheerder heeft niet ingestemd met het gebruik van de toepassing met ID X. Verzend een interactieve autorisatie aanvraag voor deze gebruiker en resource. |
 | AADSTS65004 | UserDeclinedConsent: de gebruiker heeft geen toestemming gegeven om toegang te krijgen tot de app. Laat de gebruiker zich opnieuw aanmelden en toestemming geven voor de app|
-| AADSTS65005 | MisconfiguredApplication-de vereiste resource toegangs lijst van de app bevat geen apps die kunnen worden gedetecteerd door de resource of de client-app heeft toegang aangevraagd tot de resource, die niet is opgegeven in de vereiste resource toegangs lijst of de grafiek service heeft een ongeldige aanvraag of bron niet gevonden. Als de app SAML ondersteunt, is het mogelijk dat u de app met de verkeerde id (entiteit) hebt geconfigureerd. Probeer de oplossing die wordt vermeld voor SAML uit met behulp van de onderstaande koppeling:[https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#no-resource-in-requiredresourceaccess-list](../manage-apps/application-sign-in-problem-federated-sso-gallery.md?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav) |
+| AADSTS65005 | MisconfiguredApplication-de vereiste resource toegangs lijst van de app bevat geen apps die kunnen worden gedetecteerd door de resource of de client-app heeft toegang aangevraagd tot de resource, die niet is opgegeven in de vereiste resource toegangs lijst of de grafiek service heeft een ongeldige aanvraag of bron niet gevonden. Als de app SAML ondersteunt, is het mogelijk dat u de app met de verkeerde id (entiteit) hebt geconfigureerd. Probeer de oplossing die wordt vermeld voor SAML uit met behulp van de onderstaande koppeling: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#no-resource-in-requiredresourceaccess-list](../manage-apps/application-sign-in-problem-federated-sso-gallery.md?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav) |
 | AADSTS650052 | De app heeft toegang nodig tot een service `(\"{name}\")` waarvoor uw organisatie `\"{organization}\"` geen abonnement heeft of is ingeschakeld. Neem contact op met uw IT-beheerder om de configuratie van uw service abonnementen te controleren. |
 | AADSTS67003 | ActorNotValidServiceIdentity |
 | AADSTS70000 | InvalidGrant-verificatie is mislukt. Het vernieuwings token is niet geldig. De fout kan de volgende oorzaken hebben:<ul><li>De header voor token binding is leeg</li><li>Hash van token binding komt niet overeen</li></ul> |
@@ -200,7 +200,7 @@ Zoek naar het numerieke deel van de geretourneerde fout code.  Als u bijvoorbeel
 | AADSTS70007 | UnsupportedResponseMode: de app heeft een niet-ondersteunde waarde geretourneerd `response_mode` bij het aanvragen van een token.  |
 | AADSTS70008 | ExpiredOrRevokedGrant-het vernieuwings token is verlopen vanwege inactiviteit. Het token is uitgegeven op XXX en is gedurende een bepaalde periode inactief. |
 | AADSTS70011 | InvalidScope-het bereik dat door de app is aangevraagd, is ongeldig. |
-| AADSTS70012 | MsaServerError: er is een server fout opgetreden tijdens het verifiëren van een MSA-gebruiker (Consumer). &Opnieuw. Als het probleem blijft optreden, [opent u een ondersteunings ticket](../fundamentals/active-directory-troubleshooting-support-howto.md) |
+| AADSTS70012 | MsaServerError: er is een server fout opgetreden tijdens het verifiëren van een MSA-gebruiker (Consumer). Probeer het opnieuw. Als het probleem blijft optreden, [opent u een ondersteunings ticket](../fundamentals/active-directory-troubleshooting-support-howto.md) |
 | AADSTS70016 | Fout met AuthorizationPending-OAuth 2,0-apparaat stroom. Autorisatie is in behandeling. Het apparaat probeert de aanvraag opnieuw te pollen. |
 | AADSTS70018 | BadVerificationCode-ongeldige verificatie code omdat gebruikers de verkeerde gebruikers code hebben getypt voor de code stroom van het apparaat. Autorisatie is niet goedgekeurd. |
 | AADSTS70019 | CodeExpired-verificatie code verlopen. Laat de gebruiker de aanmelding opnieuw proberen. |
@@ -243,7 +243,7 @@ Zoek naar het numerieke deel van de geretourneerde fout code.  Als u bijvoorbeel
 | AADSTS90022 | AuthenticatedInvalidPrincipalNameFormat: de indeling van de principal-naam is ongeldig of voldoet niet aan de verwachte `name[/host][@realm]` indeling. De principal-naam is vereist, host en realm zijn optioneel en kunnen worden ingesteld op null. |
 | AADSTS90023 | InvalidRequest-de aanvraag voor de verificatie service is niet geldig. |
 | AADSTS9002313 | InvalidRequest-aanvraag heeft een onjuiste indeling of is ongeldig. -Het probleem doet zich voor omdat er iets mis is met de aanvraag voor een bepaald eind punt. De suggestie voor dit probleem is het verkrijgen van een Fiddler tracering van de fout die zich voordoet en om te zien of de aanvraag daad werkelijk op de juiste wijze is ingedeeld of niet. |
-| AADSTS90024 | RequestBudgetExceededError: er is een tijdelijke fout opgetreden. &Opnieuw. |
+| AADSTS90024 | RequestBudgetExceededError: er is een tijdelijke fout opgetreden. Probeer het opnieuw. |
 | AADSTS90033 | MsodsServiceUnavailable: de micro soft online directory service (MSODS) is niet beschikbaar. |
 | AADSTS90036 | MsodsServiceUnretryableFailure: er is een onverwachte, niet-herstel bare fout opgetreden in de WCF-service die door MSODS wordt gehost. [Open een ondersteuningsticket](../fundamentals/active-directory-troubleshooting-support-howto.md) om meer informatie te krijgen over de fout. |
 | AADSTS90038 | NationalCloudTenantRedirection-de opgegeven Tenant Y behoort tot de nationale Cloud X. Het huidige Cloud exemplaar ' Z ' heeft geen relatie met X. Er wordt een fout in de Cloud omleiding geretourneerd. |
@@ -252,12 +252,12 @@ Zoek naar het numerieke deel van de geretourneerde fout code.  Als u bijvoorbeel
 | AADSTS90055 | TenantThrottlingError: er zijn te veel binnenkomende aanvragen. Deze uitzonde ring wordt gegenereerd voor geblokkeerde tenants. |
 | AADSTS90056 | BadResourceRequest: als u de code voor een toegangs token wilt inwisselen, moet de app een POST-aanvraag verzenden naar het `/token` eind punt. Voordat u dit doet, moet u ook een autorisatie code opgeven en deze verzenden in de POST-aanvraag naar het `/token` eind punt. Raadpleeg dit artikel voor een overzicht van de OAuth 2,0-autorisatie code stroom: [.. /azuread-dev/v1-protocols-OAuth-code.MD](../azuread-dev/v1-protocols-oauth-code.md). De gebruiker naar het `/authorize` eind punt sturen, waardoor een authorization_code wordt geretourneerd. Door een aanvraag naar het `/token` eind punt te posten, krijgt de gebruiker het toegangs token. Meld u aan bij de Azure Portal en controleer **App-registraties >-eind punten** om te bevestigen dat de twee eind punten correct zijn geconfigureerd. |
 | AADSTS90072 | PassThroughUserMfaError: het externe account waarmee de gebruiker zich aanmeldt, bestaat niet op de Tenant waarin ze zijn aangemeld; de gebruiker kan dus niet voldoen aan de MFA-vereisten voor de Tenant. Het account moet eerst worden toegevoegd als een externe gebruiker in de Tenant. Meld u af en meld u aan met een ander Azure AD-gebruikers account. |
-| AADSTS90081 | OrgIdWsFederationMessageInvalid: er is een fout opgetreden tijdens het verwerken van een WS-Federation-bericht door de service. Het bericht is ongeldig. |
+| AADSTS90081 | OrgIdWsFederationMessageInvalid: er is een fout opgetreden toen de service probeerde een WS-Federation bericht te verwerken. Het bericht is ongeldig. |
 | AADSTS90082 | OrgIdWsFederationNotSupported: het geselecteerde verificatie beleid voor de aanvraag wordt momenteel niet ondersteund. |
 | AADSTS90084 | OrgIdWsFederationGuestNotAllowed-gast accounts zijn niet toegestaan voor deze site. |
 | AADSTS90085 | OrgIdWsFederationSltRedemptionFailed: de service kan geen token verlenen omdat het bedrijfs object nog niet is ingericht. |
 | AADSTS90086 | OrgIdWsTrustDaTokenExpired-het gebruikers DA-token is verlopen. |
-| AADSTS90087 | OrgIdWsFederationMessageCreationFromUriFailed: er is een fout opgetreden tijdens het maken van het WS-Federation-bericht van de URI. |
+| AADSTS90087 | OrgIdWsFederationMessageCreationFromUriFailed: er is een fout opgetreden tijdens het maken van het WS-Federation bericht van de URI. |
 | AADSTS90090 | GraphRetryableError-de service is tijdelijk niet beschikbaar. |
 | AADSTS90091 | GraphServiceUnreachable |
 | AADSTS90092 | GraphNonRetryableError |
@@ -315,7 +315,7 @@ Zoek naar het numerieke deel van de geretourneerde fout code.  Als u bijvoorbeel
 | AADSTS700022 | InvalidMultipleResourcesScope: de opgegeven waarde voor het bereik van de invoer parameter is niet geldig omdat deze meer dan één resource bevat. |
 | AADSTS700023 | InvalidResourcelessScope: de opgegeven waarde voor het bereik van de invoer parameter is niet geldig bij het aanvragen van een toegangs token. |
 | AADSTS7000215 | Er is een ongeldig client geheim gegeven. Ontwikkelaars fout: de app probeert zich aan te melden zonder de vereiste of juiste verificatie parameters.|
-| AADSTS7000222 | InvalidClientSecretExpiredKeysProvided-de aangestuurde geheime sleutels van de client zijn verlopen. Ga naar de Azure Portal om nieuwe sleutels voor uw app te maken of overweeg de certificaat referenties te gebruiken voor extra beveiliging:[https://aka.ms/certCreds](https://aka.ms/certCreds) |
+| AADSTS7000222 | InvalidClientSecretExpiredKeysProvided-de aangestuurde geheime sleutels van de client zijn verlopen. Ga naar de Azure Portal om nieuwe sleutels voor uw app te maken of overweeg de certificaat referenties te gebruiken voor extra beveiliging: [https://aka.ms/certCreds](https://aka.ms/certCreds) |
 | AADSTS700005 | De InvalidGrantRedeemAgainstWrongTenant-meegeleverde autorisatie code is bedoeld voor gebruik met andere tenants en daarom afgewezen. De OAuth2-autorisatie code moet worden ingewisseld voor dezelfde Tenant die is verkregen voor (/veelvoorkomende of/{tenant-ID} indien van toepassing) |
 | AADSTS1000000 | UserNotBoundError-voor de BIND-API moet de Azure AD-gebruiker ook worden geverifieerd met een externe IDP, die nog niet heeft plaatsgevonden. |
 | AADSTS1000002 | BindCompleteInterruptError: de binding is voltooid, maar de gebruiker moet hiervan op de hoogte zijn. |

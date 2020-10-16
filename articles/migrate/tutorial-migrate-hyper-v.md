@@ -6,12 +6,12 @@ ms.date: 06/08/2020
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 842513536bf4dbfc0a3e3bd82905b397da9fa6c4
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: fbf436f501ef2d21dcd3394e61a40d354376efb9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91439075"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91979084"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Virtuele Hyper-V-machines naar Azure migreren 
 
@@ -25,7 +25,7 @@ Deze zelfstudie is de derde in een reeks die laat zien hoe u machines kunt evalu
  In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Het hulpprogramma Azure Migrate: Server Migration toevoegen.
+> * Voeg het Azure Migrate: Server Migration-hulpprogramma toe.
 > * Ontdekken welke VM's u wilt migreren.
 > * Beginnen met repliceren van VM's.
 > * Voer een testmigratie uit om te controleren of alles goed werkt.

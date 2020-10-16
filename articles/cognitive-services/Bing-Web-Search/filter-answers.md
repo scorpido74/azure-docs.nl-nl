@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: scottwhi
 ms.openlocfilehash: 6fa022f181e2061c6a7f3e08d1f2f501ddd9cac3
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84696708"
 ---
 # <a name="filtering-the-answers-that-the-search-response-includes"></a>De antwoorden filteren die het zoek antwoord bevat  
@@ -115,9 +115,9 @@ https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies+site:con
 
 Als u de resultaten van webantwoorden wilt beperken tot webpagina's die Bing hebben gedetecteerd tijdens een bepaalde periode, stelt u de query parameter voor [vernieuwen](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#freshness) in op een van de volgende niet-hoofdletter gevoelige waarden:
 
-* `Day`— Webpagina's retour neren die zijn gedetecteerd in de afgelopen 24 uur
-* `Week`— Webpagina's retour neren die zijn gedetecteerd in de afgelopen 7 dagen
-* `Month`— Webpagina's retour neren die in de afgelopen 30 dagen zijn gedetecteerd
+* `Day` — Webpagina's retour neren die zijn gedetecteerd in de afgelopen 24 uur
+* `Week` — Webpagina's retour neren die zijn gedetecteerd in de afgelopen 7 dagen
+* `Month` — Webpagina's retour neren die in de afgelopen 30 dagen zijn gedetecteerd
 
 U kunt deze para meter ook instellen op een aangepast datum bereik in het formulier `YYYY-MM-DD..YYYY-MM-DD` . 
 

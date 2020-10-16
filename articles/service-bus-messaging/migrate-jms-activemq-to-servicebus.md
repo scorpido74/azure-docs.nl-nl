@@ -15,10 +15,10 @@ ms.date: 07/07/2020
 ms.author: aschhab
 ms.custom: devx-track-java
 ms.openlocfilehash: 1b07faa5b2540aafafc27a51192d824d4445ce35
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88067151"
 ---
 # <a name="migrate-existing-java-message-service-jms-20-applications-from-apache-activemq-to-azure-service-bus"></a>Bestaande JMS-toepassingen (Java Message Service 2,0) migreren van Apache ActiveMQ naar Azure Service Bus
@@ -116,7 +116,7 @@ U kunt correleren welke metrische gegevens in de ActiveMQ worden toegewezen aan 
 |Connection|`CurrentConnectionsCount`|`activeConnections`|
 |Connection|`EstablishedConnectionsCount`|`activeConnections` + `connectionsClosed`|
 |Connection|`InactiveDurableTopicSubscribersCount`|Metrische gegevens van abonnement gebruiken|
-|Connection|`TotalMessageCount`|Wachtrij/onderwerp/abonnements niveau gebruiken`activeMessages`|
+|Connection|`TotalMessageCount`|Wachtrij/onderwerp/abonnements niveau gebruiken `activeMessages`|
 |Wachtrij/onderwerp|`EnqueueCount`|`incomingMessages`|
 |Wachtrij/onderwerp|`DequeueCount`|`outgoingMessages`|
 |Wachtrij|`QueueSize`|`sizeBytes`|
@@ -232,7 +232,7 @@ Voeg vervolgens de Service Bus-specifieke eigenschappen toe aan het `application
 azure.servicebus.connection-string=Endpoint=myEndpoint;SharedAccessKeyName=mySharedAccessKeyName;SharedAccessKey=mySharedAccessKey
 ```
 
-##### <a name="replace-activemqconnectionfactory-with-servicebusjmsconnectionfactory"></a>Vervangen `ActiveMQConnectionFactory` door`ServiceBusJmsConnectionFactory`
+##### <a name="replace-activemqconnectionfactory-with-servicebusjmsconnectionfactory"></a>Vervangen `ActiveMQConnectionFactory` door `ServiceBusJmsConnectionFactory`
 
 De volgende stap is het vervangen van de instantie van `ActiveMQConnectionFactory` met `ServiceBusJmsConnectionFactory` .
 

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 05/14/2020
 ms.openlocfilehash: 0bf5559590b66400fc4fc4dc27ea88c3522effb1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83646616"
 ---
 # <a name="what-are-the-default-and-recommended-node-configurations-for-azure-hdinsight"></a>Wat zijn de standaard en aanbevolen knooppunt configuraties voor Azure HDInsight?
@@ -53,7 +53,7 @@ Zie de volgende documenten voor meer informatie over de specificaties van elk VM
 > [!Note]
 > Als u de SKU-id wilt ophalen voor gebruik in Power shell en andere scripts, voegt `Standard_` u aan het begin van alle VM-sku's in de onderstaande tabellen toe. Dit wordt bijvoorbeeld `D12_v2` `Standard_D12_v2` .
 
-| Cluster type | Hadoop | HBase | Interactive Query | Storm | Spark | ML Server | Kafka |
+| Clustertype | Hadoop | HBase | Interactive Query | Storm | Spark | ML Server | Kafka |
 |---|---|---|---|---|---|---|---|
 | Head: standaard VM-grootte | D12_v2 | D12_v2 | D13_v2 | A4_v2 | D12_v2, <br/>D13_v2 * | D12_v2 | D3_v2 |
 | Kop: Mini maal aanbevolen VM-grootten | D5_v2 | D3_v2 | D13_v2 | A4_v2 | D12_v2, <br/>D13_v2 * | D12_v2 | D3_v2 |
@@ -64,11 +64,11 @@ Zie de volgende documenten voor meer informatie over de specificaties van elk VM
 | ML Services: standaard VM-grootte |  |  |  |  |  | D4_v2 |  |
 | ML Services: Mini maal aanbevolen VM-grootte |  |  |  |  |  | D4_v2 |  |
 
-\*= VM-grootten voor Spark-Enterprise Security Package (ESP)-clusters
+\* = VM-grootten voor Spark-Enterprise Security Package (ESP)-clusters
 
 ### <a name="brazil-south-and-japan-west-only"></a>Alleen Brazilië-Zuid en Japan-West
 
-| Cluster type | Hadoop | HBase | Interactive Query | Storm | Spark | ML Services |
+| Clustertype | Hadoop | HBase | Interactive Query | Storm | Spark | ML Services |
 |---|---|---|---|---|---|---|
 | Head: standaard VM-grootte | D12 | D12 | D13 | A4_v2 | D12 | D12 |
 | Kop: Mini maal aanbevolen VM-grootten | D5_v2 | D3_v2 | D13_v2 | A4_v2 | D12_v2 | D12_v2 |

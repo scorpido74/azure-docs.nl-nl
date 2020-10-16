@@ -10,15 +10,15 @@ services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
 ms.openlocfilehash: 6d0cb0c6a9cc3080ec4b2fbd2c4b707a52a88319
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91285108"
 ---
 # <a name="clustering-point-data"></a>Clustering Point-gegevens
 
-Bij het visualiseren van veel gegevens punten op de kaart kunnen gegevens punten van elkaar overlappen. De overlap ping kan ertoe leiden dat de kaart onleesbaar wordt en moeilijk te gebruiken is. Clustering Point-gegevens zijn het proces van het samen voegen van punt gegevens die zich in de buurt van elkaar bevinden en als één geclusterd gegevens punt vertegenwoordigen. Als de gebruiker inzoomt op de kaart, vallen de clusters uiteen in de afzonderlijke gegevenspunten. Wanneer u met een groot aantal gegevens punten werkt, gebruikt u de cluster processen om uw gebruikers ervaring te verbeteren.
+Bij het visualiseren van veel gegevens punten op de kaart kunnen gegevens punten van elkaar overlappen. De overlap ping kan ertoe leiden dat de kaart onleesbaar wordt en moeilijk te gebruiken is. Het clusteren van puntgegevens is het proces van het combineren van puntgegevens die zich dicht bij elkaar bevinden en deze als één geclusterd gegevenspunt weer te geven op de kaart. Als de gebruiker inzoomt op de kaart, vallen de clusters uiteen in de afzonderlijke gegevenspunten. Wanneer u met een groot aantal gegevens punten werkt, gebruikt u de cluster processen om uw gebruikers ervaring te verbeteren.
 
 <br/>
 
@@ -143,10 +143,10 @@ Meer informatie over de klassen en methoden die in dit artikel worden gebruikt:
 Zie code voorbeelden om functionaliteit toe te voegen aan uw app:
 
 > [!div class="nextstepaction"]
-> [Een bubbellaag toevoegen](map-add-bubble-layer.md)
+> [Een Bubble laag toevoegen](map-add-bubble-layer.md)
 
 > [!div class="nextstepaction"]
-> [Een symboollaag toevoegen](map-add-pin.md)
+> [Een symbool laag toevoegen](map-add-pin.md)
 
 > [!div class="nextstepaction"]
 > [Een heatmap-laag toevoegen](map-add-heat-map-layer.md)

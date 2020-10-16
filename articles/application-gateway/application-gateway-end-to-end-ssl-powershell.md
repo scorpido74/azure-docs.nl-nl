@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: victorh
 ms.openlocfilehash: e35569a1dc5ce7c1cb2889ac3e2ca8f60f8ccd42
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84808200"
 ---
 # <a name="configure-end-to-end-tls-by-using-application-gateway-with-powershell"></a>End-to-end TLS configureren met behulp van Application Gateway met Power shell
@@ -25,7 +25,7 @@ Application Gateway biedt ondersteuning voor het definiëren van aangepaste TLS-
 > [!NOTE]
 > SSL 2,0 en SSL 3,0 zijn standaard uitgeschakeld en kunnen niet worden ingeschakeld. Ze worden beschouwd als onveilig en kunnen niet worden gebruikt met Application Gateway.
 
-![scenario afbeelding][scenario]
+![afbeelding van het scenario][scenario]
 
 ## <a name="scenario"></a>Scenario
 

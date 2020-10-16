@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 08/05/2019
 ms.author: joelpell
 ms.openlocfilehash: 650164556223a73a722bc91ecb31491ee98cb8a5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91307098"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-linux-virtual-machines"></a>Optimaliseer de prestaties van de virtuele machines uit de Lsv2-serie Linux
@@ -97,7 +97,7 @@ Zie [back-up en herstel na nood gevallen voor Azure IaaS-schijven](../backup-and
    De instelling rq_affinity is een kleine aanpassing bij het gebruik van de absolute maximum invoer/uitvoer-bewerkingen per seconde (IOPS). Als alles goed werkt, probeert u rq_affinity in te stellen op 0 om te zien of het een verschil is.
 
 * **Moet ik de blk_mq instellingen wijzigen?**  
-   RHEL/CentOS 7. x maakt automatisch gebruik van BLK-MQ voor de NVMe-apparaten. Er zijn geen configuratie wijzigingen of-instellingen nodig. De instelling scsi_mod. use_blk_mq is alleen voor SCSI en is gebruikt tijdens de preview-versie van Lsv2, omdat de NVMe-apparaten op de gast-Vm's werden weer gegeven als SCSI-apparaten. Op dit moment zijn de NVMe-apparaten zichtbaar als NVMe-apparaten, zodat de BLK-MQ-instelling voor SCSI niet van belang is.
+   RHEL/CentOS 7. x maakt automatisch gebruik van BLK-MQ voor de NVMe-apparaten. Er zijn geen configuratie wijzigingen of-instellingen nodig. De instelling scsi_mod. use _blk_mq is alleen van toepassing op SCSI en is gebruikt tijdens de preview-versie van Lsv2, omdat de NVMe-apparaten op de gast-Vm's werden weer gegeven als SCSI-apparaten. Op dit moment zijn de NVMe-apparaten zichtbaar als NVMe-apparaten, zodat de BLK-MQ-instelling voor SCSI niet van belang is.
 
 * **Moet ik "fio" wijzigen?**  
    Als u maximum aantal IOPS wilt bereiken met een hulp programma voor prestatie meting zoals ' fio ' in de VM-grootten L64v2 en L80v2, stelt u ' rq_affinity ' in op 0 op elk NVMe-apparaat.  Met deze opdracht regel wordt bijvoorbeeld ' rq_affinity ' ingesteld op nul voor alle 10 NVMe-apparaten in een L80v2-VM:

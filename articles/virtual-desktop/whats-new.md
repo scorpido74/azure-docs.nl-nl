@@ -3,17 +3,17 @@ title: Nieuwe functies in Windows Virtual Desktop - Azure
 description: Nieuwe functies en productupdates voor Windows Virtual Desktop.
 author: Heidilohr
 ms.topic: overview
-ms.date: 09/02/2020
+ms.date: 10/01/2020
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: d698470f450f6fe903ab68334764e0918d659d7f
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 0191d6ad74a9b6349f5d1724f9483607dce2d926
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319811"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91630011"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Nieuwe functies in Windows Virtual Desktop
 
@@ -25,6 +25,29 @@ Windows Virtual Desktop wordt regelmatig bijgewerkt. In dit artikel vindt u meer
 - Opgeloste fouten
 
 Dit artikel wordt maandelijks bijgewerkt. Controleer hier regelmatig of er nieuwe updates beschikbaar zijn.
+
+## <a name="september-2020"></a>September 2020
+
+Dit is gewijzigd in september 2020:
+
+- De prestaties zijn geoptimaliseerd door de latentie van de verbinding in de volgende Azure-geografieën te verlagen:
+    - Duitsland
+    - Zuid-Afrika (alleen voor validatie-omgevingen)
+
+U kunt nu de [Experience Estimator](https://azure.microsoft.com/services/virtual-desktop/assessment/) gebruiken om de kwaliteit van de gebruikerservaring in deze gebieden te schatten.
+
+- Versie 1.2.1364 van de Windows Desktop-client voor Windows Virtual Desktop is uitgebracht. In deze update hebben we de volgende wijzigingen aangebracht:
+    - Er is een probleem opgelost waarbij eenmalige aanmelding (SSO) niet werkte in Windows 7.
+    - Er is een probleem opgelost waarbij de verbinding met de client werd verbroken wanneer een gebruiker die mediaoptimalisatie voor Teams had ingeschakeld, wilde bellen of wilde deelnemen aan een Teamsvergadering terwijl in een andere app een audiostream was geopend in de exclusieve modus.
+    - Er is een probleem opgelost waarbij in Teams geen audio- of videoapparaten werden opgesomd, wanneer mediaoptimalisatie voor Teams was ingeschakeld.
+    - De koppeling naar Hulp nodig bij het instellen van waarschuwingen? is toegevoegd op de pagina Bureaubladinstellingen.
+    - Er is een probleem opgelost met de knop Abonneren. Dit probleem vond plaats wanneer donkere thema’s met hoog contrast werden gebruikt.
+    
+- Dankzij de enorme hulp van onze gebruikers hebben we twee kritieke problemen opgelost voor de Extern bureaublad-client van Microsoft Store. We blijven feedback beoordelen en problemen oplossen terwijl we de gefaseerde release van onze client wereldwijd beschikbaar maken voor meer gebruikers.
+    
+- We hebben een nieuwe functie toegevoegd waarmee u de VM-locatie, installatiekopie, resourcegroep, voorvoegselnaam, en netwerkconfiguratie kunt wijzigen als onderdeel van de werkstroom voor het toevoegen van een VM aan de implementatie in de Azure-portal.
+
+- IT-professionals kunnen nu hybride, aan Azure Active Directory gekoppelde Windows 10 Enterprise-VM's beheren met Microsoft Endpoint Manager. Lees [onze blogpost](https://techcommunity.microsoft.com/t5/microsoft-endpoint-manager-blog/microsoft-endpoint-manager-announces-support-for-windows-virtual/ba-p/1681048) voor meer informatie.
 
 ## <a name="august-2020"></a>Augustus 2020
 
@@ -144,4 +167,3 @@ Bekijk deze artikelen voor meer informatie over updates voor onze clients voor W
 ## <a name="next-steps"></a>Volgende stappen
 
 Lees meer over toekomstige plannen in de [roadmap voor Microsoft 365 Windows Virtual Desktop](https://www.microsoft.com/microsoft-365/roadmap?filters=Windows%20Virtual%20Desktop).
-

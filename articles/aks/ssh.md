@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 07/31/2019
 ms.openlocfilehash: 50a52584618e505aa2ae7bd9ed7e0a9f6bc330a9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87015609"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>Via SSH verbinding maken met AKS-clusterknooppunten (Azure Kubernetes Service) voor onderhoud of probleemoplossing
@@ -25,7 +25,7 @@ Standaard worden SSH-sleutels verkregen of gegenereerd en vervolgens toegevoegd 
 
 In dit artikel wordt ook ervan uitgegaan dat u een SSH-sleutel hebt. U kunt een SSH-sleutel maken met [macOS of Linux][ssh-nix] of [Windows][ssh-windows]. Als u PuTTy gen gebruikt om het sleutel paar te maken, slaat u het sleutel paar op in een OpenSSH in plaats van de standaard persoonlijke sleutel indeling PuTTy (. ppk-bestand).
 
-Ook moet de Azure CLI-versie 2.0.64 of hoger zijn geïnstalleerd en geconfigureerd. Voer  `az --version` uit om de versie te bekijken. Als u de Azure CLI wilt installeren of upgraden, raadpleegt u  [Azure CLI installeren][install-azure-cli].
+Ook moet de Azure CLI-versie 2.0.64 of hoger zijn geïnstalleerd en geconfigureerd. Voer  `az --version` uit om de versie te bekijken. Als u wilt installeren of upgraden, raadpleegt u [Azure cli installeren][install-azure-cli].
 
 ## <a name="configure-virtual-machine-scale-set-based-aks-clusters-for-ssh-access"></a>AKS-clusters van virtuele-machine schaal sets configureren voor SSH-toegang
 

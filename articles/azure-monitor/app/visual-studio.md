@@ -2,17 +2,14 @@
 title: Fout opsporing in Visual Studio met Azure-toepassing Insights
 description: Analyse van web-app-prestaties en diagnostische gegevens tijdens foutopsporing en algemeen gebruik.
 ms.topic: conceptual
-author: NumberByColors
-ms.author: daviste
-ms.date: 07/07/2017
-ms.reviewer: mbullwin
+ms.date: 03/17/2017
 ms.custom: vs-azure
-ms.openlocfilehash: 1bb18cc43ef306a208500ff49ec41dbfb74b788e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a3937719fd47ba988cf1e0a93f4c06fcc8112d3e
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323465"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91932206"
 ---
 # <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>Fouten opsporen in uw toepassingen met Azure-toepassing Insights in Visual Studio
 In Visual Studio (2015 en hoger) kunt u de prestaties analyseren en problemen in uw ASP.NET web-app identificeren tijdens de foutopsporing en algemeen gebruik. Dit gebeurt aan de hand van telemetrie uit [Azure Application Insights](./app-insights-overview.md).
@@ -94,8 +91,6 @@ Ook als u beschikt over [aangepaste telemetrie](./api-custom-events-metrics.md) 
 
 
 ## <a name="next-steps"></a>Volgende stappen
-|  |  |
-| --- | --- |
-| **[Meer gegevens toevoegen](./asp-net-more.md)**<br/>Bewaak het gebruik, de beschikbaarheid, de afhankelijkheden en de uitzonderingen. Integreer bijgehouden informatie uit frameworks voor logboekregistratie. Schrijf aangepaste telemetrie. |![Visual Studio](./media/visual-studio/64.png) |
-| **[Werken met de Application Insights-portal](./overview-dashboard.md)**<br/>Bekijk Dash boards, krachtige hulpprogram ma's voor diagnose en analyse, waarschuwingen, een live afhankelijkheids kaart van uw toepassing en geëxporteerde telemetriegegevens. |![Visual Studio](./media/visual-studio/62.png) |
+
+ * **[Werken met de Application Insights Portal](./overview-dashboard.md)**. Bekijk Dash boards, krachtige hulpprogram ma's voor diagnose en analyse, waarschuwingen, een live afhankelijkheids kaart van uw toepassing en geëxporteerde telemetriegegevens. 
 

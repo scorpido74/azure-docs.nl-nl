@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: fd04e92804a1d37afd8ee2cefb159c1e686748d4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 43d593a65fd08542eb2829fcebcea81ea0c99986
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496176"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995441"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Schaalbaarheids- en prestatiedoelen in Azure Files
 
@@ -87,10 +87,19 @@ Om u te helpen bij het plannen van uw implementatie voor elk van de fasen, zijn 
 | Aantal objecten | 25.000.000-objecten |
 | Grootte van gegevensset| ~ 4,7 TiB |
 | Gemiddelde bestands grootte | ~ 200 KiB (grootste bestand: 100 GiB) |
+| Initiële inventarisatie van wijzigingen in de Cloud | 7 objecten per seconde  |
 | Upload doorvoer | 20 objecten per seconde per synchronisatie groep |
-| Door Voer van naam ruimte downloaden * | 400 objecten per seconde |
+| Door Voer van naam ruimte downloaden | 400 objecten per seconde |
 
-* Wanneer een nieuw server eindpunt wordt gemaakt, wordt de bestands inhoud niet gedownload door de Azure File Sync-agent. Eerst wordt de volledige naam ruimte gesynchroniseerd en vervolgens wordt de achtergrond terugroepen geactiveerd om de bestanden te downloaden, in hun geheel of, als Cloud lagen zijn ingeschakeld, naar het beleid voor Cloud lagen dat is ingesteld op het server eindpunt.
+### <a name="initial-one-time-provisioning"></a>Eerste eenmalige inrichting
+
+**Initiële inventarisatie van de Cloud wijziging**: wanneer er een nieuwe synchronisatie groep wordt gemaakt, is de eerste stap in de inventarisatie voor het wijzigen van de Cloud. In dit proces worden alle items in de Azure-bestands share geïnventariseerd. Tijdens dit proces zijn er geen synchronisatie-activiteiten, dat wil zeggen dat er geen items worden gedownload van het Cloud-eind punt naar het server eindpunt en dat er geen items worden geüpload van het server eindpunt naar het eind punt in de Cloud. De synchronisatie activiteit wordt hervat zodra de oorspronkelijke inventarisatie van wijzigingen in de Cloud is voltooid.
+De snelheid van prestaties is 7 objecten per seconde. Klanten kunnen een schatting maken van de tijd die nodig is om de initiële inventarisatie van de Cloud wijziging te volt ooien door het aantal items in de Cloud share te bepalen en de volgende formule te gebruiken om de tijd in dagen te berekenen. 
+
+   **Tijd (in dagen) voor initiële Cloud inventarisatie = (aantal objecten in het Cloud eindpunt)/(7 * 60 * 60 * 24)**
+
+**Door Voer van naam ruimte downloaden** Wanneer een nieuw server eindpunt wordt toegevoegd aan een bestaande synchronisatie groep, downloadt de Azure File Sync-agent geen bestands inhoud van het eind punt in de Cloud. Eerst wordt de volledige naam ruimte gesynchroniseerd en vervolgens wordt de achtergrond terugroepen geactiveerd om de bestanden te downloaden, in hun geheel of, als Cloud lagen zijn ingeschakeld, naar het beleid voor Cloud lagen dat is ingesteld op het server eindpunt.
+
 
 | Voortdurende synchronisatie  | Details  |
 |-|--|
@@ -110,7 +119,7 @@ Als algemene hand leiding voor uw implementatie moet u een aantal zaken in acht 
 - De object doorvoer wordt ongeveer proportioneel geschaald naar rato van het aantal synchronisatie groepen op de server. Het splitsen van gegevens in meerdere synchronisatie groepen op een server levert een betere door Voer, die ook wordt beperkt door de server en het netwerk.
 - De object doorvoer is omgekeerd evenredig met de MiB per tweede door voer. Voor kleinere bestanden krijgt u een hogere door Voer in termen van het aantal verwerkte objecten per seconde, maar lagere MiB per seconde door voer. Voor grotere bestanden krijgt u echter minder objecten die per seconde worden verwerkt, maar een hogere MiB per seconde door voer. De MiB per tweede door Voer wordt beperkt door de Azure Files schaal doelen.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
-- [Een Azure Files-implementatie plannen](storage-files-planning.md)
-- [Een Azure File Sync-implementatie plannen](storage-sync-files-planning.md)
+- [Implementatie van Azure Files plannen](storage-files-planning.md)
+- [Planning voor een Azure Files Sync-implementatie](storage-sync-files-planning.md)

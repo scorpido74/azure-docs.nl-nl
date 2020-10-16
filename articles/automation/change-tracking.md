@@ -6,10 +6,10 @@ ms.subservice: change-inventory-management
 ms.date: 08/17/2020
 ms.topic: conceptual
 ms.openlocfilehash: 2fe92942e263cf53b9827ccbcb13a2d7bafc367c
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88511045"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Overzicht Wijzigingen bijhouden en Inventaris
@@ -164,7 +164,7 @@ De volgende tabel bevat de limieten voor bijgehouden items per computer voor Wij
 
 | **Resource** | **Limiet** |
 |---|---|---|
-|Bestand|500|
+|File|500|
 |Register|250|
 |Windows-software (exclusief hotfixes) |250|
 |Linux-pakketten|1250|

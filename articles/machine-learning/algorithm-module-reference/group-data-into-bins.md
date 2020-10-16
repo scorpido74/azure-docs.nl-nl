@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 05/19/2020
-ms.openlocfilehash: de9f4517d134b4a42603291110c6b19f69403412
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/13/2020
+ms.openlocfilehash: 392cb9b4c2ded1b98b79ce8dcd780ac59e96b78a
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907036"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91998476"
 ---
 # <a name="group-data-into-bins-module"></a>Gegevens groeperen in module opslag locaties
 
@@ -44,7 +44,8 @@ De module gegevens groeperen in opslag locaties ondersteunt meerdere opties voor
 
 Het volgende diagram toont de distributie van numerieke waarden voor en na binning met de methode *quantiles* . In vergelijking met de onbewerkte gegevens zijn de gegevens binning en omgezet naar een eenheid-normale schaal.  
 
-U vindt een [voor beeld van het resultaat van deze pijplijn uitvoering](https://ml.azure.com/visualinterface/authoring/Normal/87270db9-4651-448e-bd28-8ef7428084dc?wsid=%2Fsubscriptions%2Fe9b2ec51-5c94-4fa8-809a-dc1e695e4896%2Fresourcegroups%2Fmodule-ws-rg%2Fworkspaces%2Fmodule-prerelease-119&flight=cm&tid=72f988bf-86f1-41af-91ab-2d7cd011db47&smtendpoint=https%3A%2F%2Fsmt-test1.azureml-test.net).
+> [!div class="mx-imgBorder"]
+> ![Visualisatie van resultaten](media/module/group-data-into-bins-result-example.png)
 
 Omdat er zoveel manieren zijn om gegevens te groeperen, is het raadzaam om te experimenteren met verschillende methoden en waarden. 
 
@@ -65,6 +66,9 @@ Omdat er zoveel manieren zijn om gegevens te groeperen, is het raadzaam om te ex
     - **Aangepaste randen**: u kunt de waarden opgeven die elke opslag locatie beginnen. De rand waarde is altijd de ondergrens van de lade. 
     
       Stel dat u waarden wilt groeperen in twee opslag locaties. Een waarde die groter is dan 0 en een waarde die kleiner is dan of gelijk is aan 0. In dit geval typt u **0** in een **door komma's gescheiden lijst met bin-** randen. De uitvoer van de module zal 1 en 2 zijn, waarmee de bin-index voor elke Rijwaarde wordt aangegeven. De lijst met door komma's gescheiden waarden moet een oplopende volg orde hebben, zoals 1, 3, 5, 7.
+    
+    > [!Note]
+    > De modus *ENTROPIE MDL* is gedefinieerd in Studio (klassiek) en er is geen bijbehorend open-source pakket dat kan worden gebruikt voor ondersteuning in Designer.        
 
 4. Als u de **Quantiles** -en binning-modus met **gelijke breedte** gebruikt, gebruikt u de optie **aantal bakken** om op te geven hoeveel bakken of *Quantiles*u wilt maken.
 

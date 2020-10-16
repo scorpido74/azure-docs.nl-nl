@@ -10,10 +10,10 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/17/2020
 ms.openlocfilehash: d8268ebf89bed6b67919e77576118343b58edb6c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88516619"
 ---
 # <a name="azure-active-directory-service-principal-with-azure-sql"></a>Azure Active Directory-service-principal met Azure SQL
@@ -69,7 +69,7 @@ Als u het maken van een Azure AD-object in SQL Database en Azure Synapse namens 
 
     Zie de opdracht [Set-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserver) voor meer informatie.
 
-    - Als u wilt controleren of de server identiteit is toegewezen aan de server, voert u de opdracht Get-AzSqlServer uit.
+    - Als u wilt controleren of de server identiteit is toegewezen aan de server, voert u de Get-AzSqlServer opdracht uit.
 
     > [!NOTE]
     > U kunt ook de server identiteit toewijzen met behulp van CLI-opdrachten. Zie [AZ SQL Server Create](https://docs.microsoft.com/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create) en [AZ SQL Server Update](https://docs.microsoft.com/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-update)(Engelstalig) voor meer informatie.
@@ -81,7 +81,7 @@ Als u het maken van een Azure AD-object in SQL Database en Azure Synapse namens 
 > [!IMPORTANT]
 > Stap 1 en 2 moeten in de bovenstaande volg orde worden uitgevoerd. Eerst moet u de server identiteit maken of toewijzen, gevolgd door de machtiging voor het verlenen van de [**Directory lezers**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) . Als een van deze stappen wordt wegge laten, of beide een uitvoerings fout veroorzaken tijdens het maken van een Azure AD-object in Azure SQL namens een Azure AD-toepassing. Zie [zelf studie: Azure AD-gebruikers maken met Azure AD-toepassingen](authentication-aad-service-principal-tutorial.md)voor stapsgewijze instructies voor het maken van een Azure AD-gebruiker namens een Azure AD-toepassing.
 >
-> In de **open bare preview**kunt u de rol van de **Directory lezers** toewijzen aan een groep in azure AD. De groeps eigenaren kunnen vervolgens de beheerde identiteit toevoegen als lid van deze groep, waardoor de beheerder van een **globale beheerder** of **bevoorrechte** rol niet nodig is om de functie **Directory lezers** te verlenen. Zie voor meer informatie over deze functie [Directory lezers Role in azure Active Directory voor Azure SQL](authentication-aad-directory-readers-role.md).
+> In de **open bare preview**kunt u de rol van de **Directory lezers** toewijzen aan een groep in azure AD. De groeps eigenaren kunnen vervolgens de beheerde identiteit toevoegen als lid van deze groep, waardoor de beheerder van een **globale beheerder** of **bevoorrechte** rol niet nodig is om de functie **Directory lezers** te verlenen. Zie [Rol Directory Readers in Azure Active Directory voor Azure SQL](authentication-aad-directory-readers-role.md) voor meer informatie over deze functie.
 
 ## <a name="troubleshooting-and-limitations-for-public-preview"></a>Problemen oplossen en beperkingen voor open bare preview-versie
 

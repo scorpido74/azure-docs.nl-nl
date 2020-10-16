@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
 ms.openlocfilehash: 9106e00fe2146978f97b480e3afd3b7ed58c9130
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90935294"
 ---
 # <a name="configure-and-customize-security-module-for-azure-rtos-preview"></a>Beveiligings module voor Azure RTO'S configureren en aanpassen (preview-versie)
@@ -52,7 +52,7 @@ Als u de configuratie van de Collector netwerk activiteit wilt aanpassen, gebrui
 | ASC_COLLECTOR_NETWORK_ACTIVITY_TCP_DISABLED | Boolean-waarde | onjuist | `TCP`Netwerk activiteit filteren |
 | ASC_COLLECTOR_NETWORK_ACTIVITY_UDP_DISABLED | Boolean-waarde | onjuist | `UDP`Gebeurtenissen voor netwerk activiteit filteren |
 | ASC_COLLECTOR_NETWORK_ACTIVITY_ICMP_DISABLED | Boolean-waarde | onjuist | `ICMP`Gebeurtenissen voor netwerk activiteit filteren |
-| ASC_COLLECTOR_NETWORK_ACTIVITY_CAPTURE_UNICAST_ONLY | Boolean-waarde | true | Alleen unicast-binnenkomende pakketten vastleggen, wanneer deze zijn ingesteld op ONWAAR, ook broadcast en multi cast |
+| ASC_COLLECTOR_NETWORK_ACTIVITY_CAPTURE_UNICAST_ONLY | Booleaans | true | Alleen unicast-binnenkomende pakketten vastleggen, wanneer deze zijn ingesteld op ONWAAR, ook broadcast en multi cast |
 | ASC_COLLECTOR_NETWORK_ACTIVITY_MAX_IPV4_OBJECTS_IN_CACHE | Getal | 64 | Maximum aantal IPv4-netwerk gebeurtenissen dat in het geheugen moet worden opgeslagen |
 | ASC_COLLECTOR_NETWORK_ACTIVITY_MAX_IPV6_OBJECTS_IN_CACHE | Getal | 64  | Maximum aantal IPv6-netwerk gebeurtenissen dat in het geheugen moet worden opgeslagen |
 
@@ -63,9 +63,9 @@ Met Compileer vlaggen kunt u de vooraf gedefinieerde configuraties onderdrukken.
 ### <a name="collectors"></a>Verzamelaars
 | Naam | Type | Standaard | Details |
 | - | - | - | - |
-| collector_heartbeat_enabled | Boolean-waarde | AAN | De heartbeat-Collector inschakelen |
-| collector_network_activity_enabled | Boolean-waarde | AAN | De netwerk activiteit verzamelaar inschakelen |
-| collector_system_information_enabled | Boolean-waarde | AAN | De systeem informatie verzamelaar inschakelen |
+| collector_heartbeat_enabled | Booleaans | AAN | De heartbeat-Collector inschakelen |
+| collector_network_activity_enabled | Booleaans | AAN | De netwerk activiteit verzamelaar inschakelen |
+| collector_system_information_enabled | Booleaans | AAN | De systeem informatie verzamelaar inschakelen |
 
 ## <a name="supported-security-alerts-and-recommendations"></a>Ondersteunde beveiligings waarschuwingen en aanbevelingen
 

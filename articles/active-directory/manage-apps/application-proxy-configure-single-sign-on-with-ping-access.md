@@ -17,27 +17,27 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 512aed93906968b14f7c6a13e08f74bbeb2f5f31
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87431090"
 ---
-# <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Verificatie op basis van een header voor eenmalige aanmelding met toepassings proxy en PingAccess
+# <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Op headers gebaseerde verificatie voor eenmalige aanmelding met de toepassingsproxy en PingAccess
 
 Azure Active Directory-toepassings proxy (Azure AD) is gekoppeld aan PingAccess, zodat uw Azure AD-klanten meer toegang hebben tot uw toepassingen. PingAccess breidt de [bestaande aanbiedingen van de toepassings proxy](application-proxy.md) uit om toegang te bieden tot eenmalige aanmelding voor toepassingen die headers gebruiken voor verificatie.
 
 ## <a name="whats-pingaccess-for-azure-ad"></a>Wat is PingAccess voor Azure AD?
 
-Met PingAccess voor Azure AD kunt u gebruikers toegang en eenmalige aanmelding (SSO) geven aan toepassingen die headers gebruiken voor verificatie. Toepassings proxy behandelt deze toepassingen, zoals andere, met behulp van Azure AD om toegang te verifiëren en vervolgens verkeer door te geven via de connector service. PingAccess bevindt zich voor de toepassingen en vertaalt het toegangs token van Azure AD in een header. De toepassing ontvangt vervolgens de verificatie in de indeling die kan worden gelezen.
+Met PingAccess voor Azure AD kunt u gebruikers toegang en eenmalige aanmelding (SSO) geven aan toepassingen die headers gebruiken voor verificatie. Application Proxy behandelt deze toepassingen hetzelfde als andere, waarbij Azure AD wordt gebruikt om de toegang te verifiëren en vervolgens het verkeer door te geven via de connectorservice. PingAccess bevindt zich voor de toepassingen en vertaalt het toegangs token van Azure AD in een header. De toepassing ontvangt vervolgens de verificatie in de indeling die kan worden gelezen.
 
-Uw gebruikers zien niets anders wanneer ze zich aanmelden om uw bedrijfs toepassingen te gebruiken. Ze kunnen nog steeds vanaf elke locatie op elk apparaat werken. De connectors van de toepassings proxy sturen extern verkeer naar alle apps, zonder rekening te houden met het verificatie type, zodat ze nog steeds automatisch worden geladen.
+De gebruikers merken hier niets van wanneer ze zich aanmelden om uw bedrijfstoepassingen te gebruiken. Ze kunnen nog steeds vanaf elke locatie op elk apparaat werken. De connectors van de toepassings proxy sturen extern verkeer naar alle apps, zonder rekening te houden met het verificatie type, zodat ze nog steeds automatisch worden geladen.
 
 ## <a name="how-do-i-get-access"></a>Hoe kan ik toegang krijgen?
 
 Aangezien dit scenario afkomstig is van een partnership tussen Azure Active Directory en PingAccess, hebt u licenties nodig voor beide services. Azure Active Directory Premium-abonnementen omvatten echter een eenvoudige PingAccess-licentie die betrekking heeft op Maxi maal 20 toepassingen. Als u meer dan 20 toepassingen op basis van headers wilt publiceren, kunt u een extra licentie aanschaffen bij PingAccess.
 
-Zie [Azure Active Directory-edities](../fundamentals/active-directory-whatis.md)voor meer informatie.
+Zie [Azure Active Directory-edities](../fundamentals/active-directory-whatis.md) voor meer informatie.
 
 ## <a name="publish-your-application-in-azure"></a>Uw toepassing publiceren in azure
 
@@ -144,7 +144,7 @@ U moet deze drie stukjes informatie (alle GUID'S) verzamelen om uw toepassing in
 
 | Naam van het Azure AD-veld | De naam van het veld PingAccess | Gegevensindeling |
 | --- | --- | --- |
-| **(Client-)id van de app** | **Client-id** | GUID |
+| **(Client-)id van de app** | **Client ID** | GUID |
 | **(Tenant-)id van de map** | **Verlener** | GUID |
 | `PingAccess key` | **Clientgeheim** | Wille keurige teken reeks |
 

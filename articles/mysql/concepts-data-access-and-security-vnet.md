@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/17/2020
 ms.openlocfilehash: f114dd4d4f0a9a26a8aab1f8aeecd4d29678a8d2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90896297"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>Service-eindpunten en -regels voor virtuele netwerken gebruiken voor Azure Database for MySQL
@@ -135,7 +135,7 @@ Als u alleen een VNet-firewall regel instelt, kunt u de server niet beveiligen m
 U kunt de vlag **IgnoreMissingServiceEndpoint** instellen met behulp van de Azure CLI of portal.
 
 ## <a name="related-articles"></a>Verwante artikelen:
-- [Virtuele netwerken van Azure][vm-virtual-network-overview]
+- [Virtuele netwerken van Azure.][vm-virtual-network-overview]
 - [Service-eindpunten voor een virtueel Azure-netwerk][vm-virtual-network-service-endpoints-overview-649d]
 
 ## <a name="next-steps"></a>Volgende stappen

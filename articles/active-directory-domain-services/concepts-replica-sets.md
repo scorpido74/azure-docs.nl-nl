@@ -2,35 +2,35 @@
 title: Replica sets-concepten voor Azure AD Domain Services | Microsoft Docs
 description: Meer informatie over de replica sets in Azure Active Directory Domain Services en hoe ze redundantie bieden voor toepassingen waarvoor identiteits Services zijn vereist.
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/16/2020
-ms.author: iainfou
-ms.openlocfilehash: 698009ee8a57ed5d30e01376b4f2c63b0a27ead8
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.author: joflore
+ms.openlocfilehash: 499f4df303993d97ebb4eb38de98828b085aff00
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87505729"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961065"
 ---
 # <a name="replica-sets-concepts-and-features-for-azure-active-directory-domain-services-preview"></a>Replica sets-concepten en functies voor Azure Active Directory Domain Services (preview-versie)
 
-Wanneer u een beheerd domein van Azure Active Directory Domain Services (Azure AD DS) maakt, definieert u een unieke naam ruimte. Deze naam ruimte is de domein naam, zoals *aaddscontoso.com*, en er worden twee domein controllers (dc's) geïmplementeerd in uw geselecteerde Azure-regio. Deze implementatie van Dc's wordt een replicaset genoemd.
+Wanneer u een beheerd domein van Azure Active Directory Domain Services (Azure AD DS) maakt, definieert u een unieke naam ruimte. Deze naamruimte bestaat uit de domeinnaam, zoals *aaddscontoso.com*, en er worden twee domeincontrollers (DC's) geïmplementeerd in uw geselecteerde Azure-regio. Deze implementatie van DC's wordt een replicaset genoemd.
 
-U kunt een beheerd domein uitbreiden voor meer dan één replicaset per Azure AD-Tenant. Replica sets kunnen worden toegevoegd aan elk gekoppeld virtueel netwerk in elke Azure-regio die Azure AD DS ondersteunt. Extra replica sets in verschillende Azure-regio's bieden een geografische nood herstel voor oudere toepassingen als een Azure-regio offline gaat.
+U kunt een beheerd domein uitbreiden als u meer dan één replicaset per Azure AD-tenant wilt hebben. Replicasets kunnen worden toegevoegd aan elk gekoppeld virtueel netwerk in een Azure-regio die Azure AD DS ondersteunt. Extra replica sets in verschillende Azure-regio's bieden geografisch herstel na noodgeval voor oudere toepassingen als een Azure-regio offline gaat.
 
-Replica sets zijn momenteel beschikbaar als preview-versie.
+Replicasets zijn momenteel beschikbaar in preview.
 
 > [!NOTE]
 > Met replica sets kunt u geen meerdere unieke beheerde domeinen implementeren in één Azure-Tenant. Elke replicaset bevat dezelfde gegevens.
 
 ## <a name="how-replica-sets-work"></a>Hoe replica sets werken
 
-Wanneer u een beheerd domein maakt, zoals *aaddscontoso.com*, wordt er een eerste replicaset gemaakt. Extra replica sets delen dezelfde naam ruimte en configuratie. Wijzigingen in azure AD DS, waaronder configuratie, gebruikers-id en referenties, groepen, groeps beleidsobjecten, computer objecten en andere wijzigingen worden toegepast op alle replica sets in het beheerde domein met behulp van AD DS-replicatie.
+Wanneer u een beheerd domein maakt, zoals *aaddscontoso.com*, wordt er een eerste replicaset gemaakt. Extra replicasets hebben dezelfde naamruimte en configuratie. Wijzigingen in Azure AD DS, waaronder voor configuratie, gebruikers-id en -referenties, groepen, groepsbeleidsobjecten en computerobjecten, worden toegepast op alle replicasets in het beheerde domein met behulp van AD DS-replicatie.
 
 U maakt elke replicaset in een virtueel netwerk. Elk virtueel netwerk moet worden gekoppeld aan elk ander virtueel netwerk dat als host fungeert voor de replicaset van een beheerd domein. Deze configuratie maakt een netwerk topologie die Directory replicatie ondersteunt. Een virtueel netwerk kan meerdere replica sets ondersteunen, op voor waarde dat elke replicaset zich in een ander virtueel subnet bevindt.
 
@@ -64,7 +64,7 @@ Facturering voor elke replicaset is gebaseerd op de domein configuratie-SKU. Als
 
 ### <a name="can-i-use-my-production-managed-domain-with-this-preview"></a>Kan ik mijn productie-beheerde domein gebruiken met deze preview?
 
-Replica sets zijn een open bare preview-functie in Azure AD Domain Services. U kunt een beheerd productie domein gebruiken, maar u moet rekening houden met de ondersteunings verschillen voor functies die nog in de preview-versie zijn opgenomen. [Azure Active Directory preview-Sla](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over Previews.
+Replicasets zijn een openbare preview-functie in Azure AD Domain Services. U kunt een beheerd productie domein gebruiken, maar u moet rekening houden met de ondersteunings verschillen voor functies die nog in de preview-versie zijn opgenomen. Raadpleeg de [Azure Active Directory Preview SLA](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie over de previews.
 
 ### <a name="can-i-create-a-replica-set-in-subscription-different-from-my-managed-domain"></a>Kan ik een replicaset maken in een ander abonnement dan mijn beheerde domein?
 

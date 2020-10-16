@@ -14,10 +14,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7acbb9aa443cde8df7016d3f2a38d58002b98dcd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317392"
 ---
 # <a name="troubleshooting-roles-assigned-to-cloud-groups"></a>Problemen met rollen die zijn toegewezen aan cloudgroepen oplossen
@@ -53,8 +53,8 @@ Hier volgen enkele veelgestelde vragen en tips voor probleem oplossing voor het 
 
 Azure AD-adreslijst functie | Rol van rechten beheer | Kan beveiligings groep toevoegen\* | Kan Microsoft 365 groep toevoegen\* | Kan app toevoegen | Kan de share point online-site toevoegen
 ----------------------- | --------------------------- | ----------------------- | ------------------------- | ----------- |  -----------------------------
-Globale beheerder | N.v.t. | ✔️ | ✔️ | ✔️  | ✔️
-Gebruikersbeheerder  | N.v.t.  | ✔️  | ✔️  | ✔️
+Globale beheerder | n.v.t. | ✔️ | ✔️ | ✔️  | ✔️
+Gebruikersbeheerder  | n.v.t.  | ✔️  | ✔️  | ✔️
 Intune-beheerder | Catalogus eigenaar | ✔️  | ✔️  | &nbsp;  | &nbsp;
 Exchange-beheerder  | Catalogus eigenaar  | &nbsp; | ✔️  | &nbsp;  | &nbsp;
 Teams service-beheerder | Catalogus eigenaar  | &nbsp; | ✔️  | &nbsp;  | &nbsp;

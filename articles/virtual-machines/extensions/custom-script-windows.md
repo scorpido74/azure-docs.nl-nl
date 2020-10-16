@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/31/2020
 ms.author: robreed
-ms.openlocfilehash: e50c0b0fcb883b43650a5d99cea5aa39bae1cd94
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: 0bb1e4cb9b24c9b46f623e1604930367b82a47eb
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89426262"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973815"
 ---
 # <a name="custom-script-extension-for-windows"></a>Aangepaste scriptextensie voor Windows
 
@@ -26,7 +26,7 @@ In dit document wordt beschreven hoe u de aangepaste script extensie gebruikt me
 ## <a name="prerequisites"></a>Vereisten
 
 > [!NOTE]  
-> Gebruik geen aangepaste script extensie om update-AzVM uit te voeren met dezelfde VM als de para meter, omdat deze wordt gewacht op zichzelf.  
+> Gebruik de aangepaste script extensie niet om Update-AzVM uit te voeren met dezelfde VM als de para meter, omdat deze wordt gewacht op zichzelf.  
 
 ### <a name="operating-system"></a>Besturingssysteem
 
@@ -48,7 +48,7 @@ U kunt de extensie configureren voor het gebruik van uw Azure Blob Storage-refer
 
 ### <a name="internet-connectivity"></a>Internet verbinding
 
-Als u een script extern moet downloaden, zoals van GitHub of Azure Storage, moeten er extra firewall-en netwerk beveiligings groep poorten worden geopend. Als uw script zich bijvoorbeeld in Azure Storage bevindt, kunt u toegang toestaan met de Azure NSG-service tags voor [opslag](../../virtual-network/security-overview.md#service-tags).
+Als u een script extern moet downloaden, zoals van GitHub of Azure Storage, moeten er extra firewall-en netwerk beveiligings groep poorten worden geopend. Als uw script zich bijvoorbeeld in Azure Storage bevindt, kunt u toegang toestaan met de Azure NSG-service tags voor [opslag](../../virtual-network/network-security-groups-overview.md#service-tags).
 
 Als uw script zich op een lokale server bevindt, moet u mogelijk nog steeds extra firewall-en netwerk beveiligings groep poorten openen.
 
@@ -124,11 +124,11 @@ Deze items moeten worden behandeld als gevoelige gegevens en worden opgegeven in
 
 | Naam | Waarde/voor beeld | Gegevenstype |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | datum |
+| apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.Compute | tekenreeks |
 | type | CustomScriptExtension | tekenreeks |
 | typeHandlerVersion | 1,10 | int |
-| fileUris (bijvoorbeeld) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | array |
+| fileUris (bijvoorbeeld) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | matrix |
 | tijds tempel (bijvoorbeeld) | 123456789 | 32-bits geheel getal |
 | commandToExecute (bijvoorbeeld) | Power shell-ExecutionPolicy unrestricted-file configure-music-app.ps1 | tekenreeks |
 | storageAccountName (bijvoorbeeld) | examplestorageacct | tekenreeks |
@@ -282,7 +282,7 @@ Als u [invoke-WebRequest](/powershell/module/microsoft.powershell.utility/invoke
 ```error
 The response content cannot be parsed because the Internet Explorer engine is not available, or Internet Explorer's first-launch configuration is not complete. Specify the UseBasicParsing parameter and try again.
 ```
-## <a name="virtual-machine-scale-sets"></a>Virtual Machine Scale Sets
+## <a name="virtual-machine-scale-sets"></a>Virtuele-machineschaalsets
 
 Zie [add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension?view=azps-3.3.0) voor meer informatie over het implementeren van de aangepaste script extensie voor een schaalset.
 

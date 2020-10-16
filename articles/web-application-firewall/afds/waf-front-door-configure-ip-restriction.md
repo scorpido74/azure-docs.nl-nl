@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 03/26/2020
 ms.author: tyao
 ms.openlocfilehash: f41dc688996b2431060a3cde209ca1ed4a21fe8c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87005613"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door"></a>Een IP-beperkings regel configureren met een Web Application Firewall voor Azure front deur
 
 In dit artikel wordt beschreven hoe u IP-beperkings regels configureert in een Web Application firewall (WAF) voor Azure front deur door gebruik te maken van de Azure Portal, Azure CLI, Azure PowerShell of een Azure Resource Manager sjabloon.
 
-Een op IP-adres gebaseerde toegangs beheer regel is een aangepaste WAF-regel waarmee u de toegang tot uw webtoepassingen kunt beheren. Dit doet u door een lijst met IP-adressen of IP-adresbereiken op te geven in de CIDR-notatie (Classless Inter-Domain Routing).
+Een op IP-adres gebaseerde toegangs beheer regel is een aangepaste WAF-regel waarmee u de toegang tot uw webtoepassingen kunt beheren. Dit doet u door een lijst met IP-adressen of IP-adresbereiken op te geven in CIDR-indeling (Classable Inter-Domain Routing).
 
 Uw webtoepassing is standaard toegankelijk via internet. Als u de toegang tot clients wilt beperken in een lijst met bekende IP-adressen of IP-adresbereiken, kunt u een IP-overeenkomende regel maken die de lijst met IP-adressen als overeenkomende waarden bevat en de operator is ingesteld op ' not ' (negatie is True) en de actie die moet worden **geblokkeerd**. Nadat een IP-beperkings regel is toegepast, ontvangen aanvragen die afkomstig zijn van adressen buiten deze lijst met toegestane antwoorden een 403 verboden antwoord.
 
@@ -30,7 +30,7 @@ Maak een Azure front deur-profiel door de instructies te volgen die worden besch
 
 ### <a name="create-a-waf-policy"></a>Een WAF-beleid maken
 
-1. Selecteer op de Azure Portal **een resource maken**, typ **Web Application firewall** in het zoekvak en selecteer **Web Application firewall (WAF)**.
+1. Selecteer op de Azure Portal **een resource maken**, typ  **Web Application firewall** in het zoekvak en selecteer **Web Application firewall (WAF)**.
 2. Selecteer **Maken**.
 3. Gebruik op de pagina **een WAF-beleid maken** de volgende waarden om het tabblad **basis beginselen** te volt ooien:
    
@@ -76,7 +76,7 @@ Maak een Azure front deur-profiel door de instructies te volgen die worden besch
 1. Nadat de implementatie van het WAF-beleid is voltooid, bladert u naar de front-deur frontend-hostnaam.
 2. Uw aangepaste blok bericht wordt weer gegeven.
 
-   :::image type="content" source="../media/waf-front-door-configure-ip-restriction/waf-rule-test.png" alt-text="WAF-regel test":::
+   :::image type="content" source="../media/waf-front-door-configure-ip-restriction/waf-rule-test.png" alt-text="Aangepaste regel":::
 
    > [!NOTE]
    > Een privé-IP-adres is opzettelijk in de aangepaste regel gebruikt om te garanderen dat de regel wordt geactiveerd. Maak in een daad werkelijke implementatie regels voor *toestaan* en *weigeren* met behulp van IP-adressen voor uw specifieke situatie.

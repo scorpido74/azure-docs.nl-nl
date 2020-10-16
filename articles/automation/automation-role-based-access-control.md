@@ -7,15 +7,15 @@ ms.subservice: shared-capabilities
 ms.date: 07/21/2020
 ms.topic: conceptual
 ms.openlocfilehash: efdb195ad41b036f7f470884b3a441de1db7f7f4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91716160"
 ---
 # <a name="manage-role-permissions-and-security"></a>Rolmachtigingen en beveiliging beheren
 
-Toegangs beheer op basis van rollen (Azure RBAC) van Azure biedt toegang tot Azure-resources. Met behulp van [Azure RBAC](../role-based-access-control/overview.md)kunt u taken binnen uw team scheiden en alleen de hoeveelheid toegang verlenen aan gebruikers, groepen en toepassingen die ze nodig hebben om hun taken uit te voeren. U kunt op rollen gebaseerde toegang verlenen aan gebruikers met behulp van de Azure Portal, Azure-opdracht regel Programma's of Azure Management-Api's.
+Toegangs beheer op basis van rollen (Azure RBAC) van Azure biedt toegang tot Azure-resources. Met behulp van [Azure RBAC](../role-based-access-control/overview.md)kunt u taken binnen uw team scheiden en alleen de hoeveelheid toegang verlenen aan gebruikers, groepen en toepassingen die ze nodig hebben om hun taken uit te voeren. U kunt op rollen gebaseerde toegang verlenen aan gebruikers met behulp van de Azure Portal, Azure Command-Line-hulpprogram ma's of Azure Management-Api's.
 
 ## <a name="roles-in-automation-accounts"></a>Rollen in Automation-accounts
 

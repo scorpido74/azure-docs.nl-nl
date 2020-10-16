@@ -12,10 +12,10 @@ ms.date: 07/10/2020
 ms.topic: conceptual
 ms.custom: how-to
 ms.openlocfilehash: 47df04a0195c4cfcc4e40db5bf21387a284f682c
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362245"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Automatische machine learning modellen maken, controleren en implementeren met Azure Machine Learning
@@ -151,7 +151,7 @@ In het formulier **parametrisatie** kunt u automatische parametrisatie in-en uit
 
 De volgende tabel bevat een overzicht van de aanpassingen die momenteel beschikbaar zijn via Studio. 
 
-Kolom| Aanpassing
+Kolom| Aanpassen
 ---|---
 Inbegrepen | Hiermee geeft u op welke kolommen moeten worden toegevoegd voor de training.
 Onderdeel type| Wijzig het waardetype voor de geselecteerde kolom.

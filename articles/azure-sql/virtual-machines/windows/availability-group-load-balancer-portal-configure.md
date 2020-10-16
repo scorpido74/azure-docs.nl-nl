@@ -14,10 +14,10 @@ ms.date: 02/16/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
 ms.openlocfilehash: b3f2e8b56af41d1729b9786adda3abdcc4eb0b02
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91325025"
 ---
 # <a name="configure-a-load-balancer-for-a-sql-server-always-on-availability-group-in-azure-virtual-machines"></a>Een load balancer configureren voor een SQL Server AlwaysOn-beschikbaarheids groep in azure Virtual Machines
@@ -127,7 +127,7 @@ De test definieert hoe Azure verifieert welke van de SQL Server-exemplaren momen
 4.  Selecteer **OK**. 
 
 > [!NOTE]
-> Zorg ervoor dat de poort die u opgeeft, is geopend op de firewall van beide exemplaren van SQL Server. Voor beide exemplaren is een binnenkomende regel vereist voor de TCP-poort die u gebruikt. Zie [firewall regel toevoegen of bewerken](https://technet.microsoft.com/library/cc753558.aspx)voor meer informatie. 
+> Zorg ervoor dat de poort die u opgeeft, is geopend op de firewall van beide exemplaren van SQL Server. Voor beide exemplaren is een binnenkomende regel vereist voor de TCP-poort die u gebruikt. Zie [Add or Edit Firewall Rule](https://technet.microsoft.com/library/cc753558.aspx) (Firewallregel toevoegen of bewerken) voor meer informatie. 
 > 
 
 In Azure wordt de test gemaakt en vervolgens gebruikt om te testen welk SQL Server-exemplaar de listener voor beschikbaarheidsgroep heeft.
@@ -203,7 +203,7 @@ Test de verbinding door de volgende stappen uit te voeren:
 
 1. Gebruik RDP (Remote Desktop Protocol) om verbinding te maken met een SQL Server-exemplaar dat zich in hetzelfde virtuele netwerk bevindt, maar geen eigenaar is van de replica. Deze server kan het andere SQL Server-exemplaar in het cluster zijn.
 
-2. Gebruik het **Sqlcmd** -hulp programma om de verbinding te testen. Met het volgende script wordt bijvoorbeeld een **Sqlcmd** -verbinding met de primaire replica tot stand gebracht via de listener met Windows-verificatie:
+2. Gebruik het **Sqlcmd** -hulp programma om de verbinding te testen. Met het volgende script wordt bijvoorbeeld met Windows-verificatie een **sqlcmd**-verbinding met de primaire replica tot stand gebracht via de listener:
 
     ```console
     sqlcmd -S <listenerName> -E

@@ -11,10 +11,10 @@ ms.date: 03/31/2020
 ms.author: erhopf
 ms.custom: seodec18
 ms.openlocfilehash: dba43c9e9b214a1ad077a2a15bdf014e057bb04e
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88869878"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Ondersteuning voor natuurlijke taal voor Azure Cognitive Services
@@ -23,7 +23,7 @@ Met Azure Cognitive Services kunt u toepassingen ontwikkelen die uw gebruikers z
 
 Deze Cognitive Services zijn taal neutraal en hebben geen beperkingen op basis van de menselijke taal.
 
-* [Anomaly Detector (preview)](./anomaly-detector/index.yml)
+* [Anomalie detectie (preview-versie)](./anomaly-detector/index.yml)
 * [Custom Vision](./Custom-Vision-Service/index.yml)
 * [Face](./face/index.yml)
 * [Personalizer](./personalizer/index.yml)
@@ -31,7 +31,7 @@ Deze Cognitive Services zijn taal neutraal en hebben geen beperkingen op basis v
 ## <a name="vision"></a>Vision
 
 * [Computer Vision](./computer-vision/language-support.md)
-* [Form Recognizer (preview)](./form-recognizer/language-support.md)
+* [Formulier herkenning (preview-versie)](./form-recognizer/language-support.md)
 * [Ink Recognizer (preview)](./ink-recognizer/language-support.md)
 * [Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/language-identification-model#guidelines-and-limitations)
 

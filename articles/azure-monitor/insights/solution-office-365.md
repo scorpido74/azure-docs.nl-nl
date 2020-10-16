@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: 14f7b5546d30d98adf4a14408882c972687a2d71
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: eb20bf4164cb2153f6786dbec04f79453554fa25
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498794"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999741"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Office 365-beheer oplossing in azure (preview-versie)
 
@@ -104,9 +104,9 @@ ms.locfileid: "86498794"
 > 
 > ###    <a name="q-what-will-happen-on-october-31-do-i-need-to-offboard-beforehand"></a>V: wat gebeurt er dan 31 oktober? Moet ik het vooraf niet meer vrijgeven?
 > 
-> - U kunt geen gegevens ontvangen van de **Office365** -oplossing. De oplossing is niet meer beschikbaar op Marketplace
+> - U kunt geen gegevens ontvangen van de **Office365** -oplossing. De oplossing wordt verwijderd uit uw werk ruimte en is niet meer beschikbaar in de Marketplace.
 > - Voor Azure Sentinel-klanten wordt de Log Analytics werkruimte oplossing **Office365** opgenomen in de Azure Sentinel **SecurityInsights** -oplossing.
-> - Als u uw oplossing niet hand matig niet meer vrijgeven, worden uw gegevens automatisch op 31 oktober losgekoppeld.
+> - Als u uw oplossing niet hand matig niet meer vrijgeven op 31 oktober, worden uw gegevens automatisch losgekoppeld en wordt de **OfficeActivity** -tabel verwijderd. U kunt de tabel zelfs herstellen als u de Office 365-connector inschakelt in azure Sentinel, zoals hieronder wordt uitgelegd.
 > 
 > ### <a name="q-will-my-data-transfer-to-the-new-solution"></a>V: zullen mijn gegevens worden overgedragen naar de nieuwe oplossing?
 > Ja. Wanneer u de **Office 365** -oplossing uit uw werk ruimte verwijdert, worden de bijbehorende gegevens tijdelijk niet beschikbaar omdat het schema wordt verwijderd. Wanneer u de nieuwe **Office 365** -connector inschakelt in Sentinel, wordt het schema teruggezet naar de werk ruimte en worden alle gegevens die al zijn verzameld, beschikbaar. 
@@ -245,8 +245,8 @@ Het dashboard bevat de kolommen in de volgende tabel. Elke kolom bevat de bovens
 
 | Kolom | Beschrijving |
 |:--|:--|
-| Bewerkingen | Bevat informatie over de actieve gebruikers uit uw alle bewaakte Office 365-abonnementen. U kunt ook het aantal activiteiten zien dat na verloop van tijd plaatsvindt.
-| Exchange | Toont de uitsplitsing van Exchange Server-activiteiten, zoals de machtiging toevoegen-postvak of set-mailbox. |
+| Operations | Bevat informatie over de actieve gebruikers uit uw alle bewaakte Office 365-abonnementen. U kunt ook het aantal activiteiten zien dat na verloop van tijd plaatsvindt.
+| Exchange | Toont de uitsplitsing van Exchange Server-activiteiten, zoals Add-Mailbox machtiging of set-mailbox. |
 | SharePoint | Toont de belangrijkste activiteiten die gebruikers uitvoeren op share point-documenten. Wanneer u inzoomt op deze tegel, worden in de zoek pagina de details van deze activiteiten weer gegeven, zoals het doel document en de locatie van deze activiteit. Voor een gebeurtenis die toegang heeft tot een bestand kunt u bijvoorbeeld het document zien dat wordt geopend, de bijbehorende account naam en het IP-adres. |
 | Azure Active Directory | Bevat de belangrijkste gebruikers activiteiten, zoals het opnieuw instellen van gebruikers wachtwoorden en aanmeldings pogingen. Wanneer u inzoomt, kunt u de details van deze activiteiten zien, zoals de status van het resultaat. Dit is vooral nuttig als u verdachte activiteiten op uw Azure Active Directory wilt bewaken. |
 

@@ -4,10 +4,10 @@ description: U gaat als volgt te werk om een extensie van een virtuele-machine s
 ms.topic: article
 ms.date: 09/28/2020
 ms.openlocfilehash: 10487bad4fce41c68b4e2cb90c311b986d709eee
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91410304"
 ---
 # <a name="add-a-virtual-machine-scale-set-extension-to-a-service-fabric-managed-cluster-node-type-preview"></a>Een extensie voor virtuele-machine schaal sets toevoegen aan een Service Fabric beheerd cluster knooppunt type (preview)
@@ -55,7 +55,7 @@ Zie voor meer informatie over het configureren van Service Fabric beheerde clust
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over Service Fabric beheerde clusters:
+Voor meer informatie over beheerde Service Fabric-clusters, zie:
 
 > [!div class="nextstepaction"]
-> [Veelgestelde vragen over het Service Fabric van beheerde clusters](./faq-managed-cluster.md)
+> [Veelgesteld vragen over beheerde Service Fabric-clusters](./faq-managed-cluster.md)

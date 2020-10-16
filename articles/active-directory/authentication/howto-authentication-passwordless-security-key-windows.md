@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 66283e4965aea9e24da6041133e2d88e95df6755
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90526983"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>Aanmeldings wachtwoord zonder wacht woord inschakelen voor Windows 10-apparaten met Azure Active Directory (preview-versie)
@@ -78,7 +78,7 @@ Organisaties kunnen ervoor kiezen om een of meer van de volgende methoden te geb
 
 Voer de volgende stappen uit om het gebruik van beveiligings sleutels met intune in te scha kelen:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Blader naar **Microsoft intune**  >  **Device enrollment**  >  **registratie**  >  **van Windows hello voor bedrijven**-inschrijving voor het apparaat  >  **Properties**.
 1. Stel onder **instellingen** **beveiligings sleutels gebruiken voor aanmelden in** op **ingeschakeld**.
 
@@ -88,15 +88,15 @@ Configuratie van beveiligings sleutels voor aanmelden is niet afhankelijk van he
 
 Als u specifieke apparaatgroepen wilt instellen om de referentie provider in te scha kelen, gebruikt u de volgende aangepaste instellingen via intune:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Ga naar **Microsoft intune**  >  **apparaatconfiguratie**  >  **profielen**  >  **profiel maken**.
 1. Configureer het nieuwe profiel met de volgende instellingen:
-   - Naam: beveiligings sleutels voor Windows-aanmelding
+   - Naam: beveiligings sleutels voor Windows Sign-In
    - Beschrijving: Hiermee kunt u FIDO-beveiligings sleutels gebruiken tijdens het aanmelden bij Windows
    - Platform: Windows 10 en hoger
    - Profiel type: aangepast
    - Aangepaste OMA-URI-instellingen:
-      - Naam: Schakel FIDO-beveiligings sleutels voor Windows-aanmelding in
+      - Naam: Schakel FIDO-beveiligings sleutels in voor Windows Sign-In
       - OMA-URI:./Device/Vendor/MSFT/PassportForWork/SecurityKey/UseSecurityKeyForSignin
       - Gegevens type: geheel getal
       - Waarde: 1

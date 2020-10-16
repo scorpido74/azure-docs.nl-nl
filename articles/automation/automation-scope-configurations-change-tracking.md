@@ -6,10 +6,10 @@ ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
 ms.openlocfilehash: 353f29d9b4c6599226619d40e4378e21618bcad4
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86185905"
 ---
 # <a name="limit-change-tracking-and-inventory-deployment-scope"></a>Het implementatie bereik voor Wijzigingen bijhouden en inventarisatie beperken
@@ -30,11 +30,11 @@ Het bereik voor uw Wijzigingen bijhouden-en inventaris implementatie beperken:
 
 3. Selecteer **Scope configuraties (preview)** onder **gegevens bronnen van de werk ruimte**.
 
-4. Selecteer het beletsel teken rechts van de `MicrosoftDefaultScopeConfig-ChangeTracking` Scope configuratie en klik op **bewerken**. 
+4. Selecteer het beletsel teken rechts van de  `MicrosoftDefaultScopeConfig-ChangeTracking` Scope configuratie en klik op **bewerken**. 
 
 5. Selecteer in het deel venster bewerken de optie **computer groepen selecteren**. In het deel venster computer groepen worden de opgeslagen Zoek opdrachten weer gegeven die worden gebruikt voor het maken van de scope configuratie. De opgeslagen zoek opdracht die wordt gebruikt door Wijzigingen bijhouden en inventaris is:
 
-    |Naam     |Categorie  |Alias  |
+    |Name     |Categorie  |Alias  |
     |---------|---------|---------|
     |MicrosoftDefaultComputerGroup     |  Change tracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 

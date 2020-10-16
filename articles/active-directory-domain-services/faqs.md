@@ -2,7 +2,7 @@
 title: Veelgestelde vragen over Azure AD Domain Services | Microsoft Docs
 description: Enkele veelgestelde vragen over configuratie, beheer en beschik baarheid voor Azure Active Directory Domain Services lezen en begrijpen
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 48731820-9e8c-4ec2-95e8-83dba1e58775
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 09/30/2020
-ms.author: iainfou
-ms.openlocfilehash: 6e2daa60e99eb7aab34b11f240a2e2fb03c98582
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.author: joflore
+ms.openlocfilehash: 07d2d71c13cd054dec46b6eaa9f07079c8cec63b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91612401"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962289"
 ---
 # <a name="frequently-asked-questions-faqs-about-azure-active-directory-ad-domain-services"></a>Veelgestelde vragen over Azure Active Directory (AD) Domain Services
 
@@ -143,7 +143,7 @@ Op domein controllers in een beheerd domein worden automatisch de vereiste Windo
 * [In welke Azure-regio's is de service beschikbaar?](#can-i-get-azure-ad-domain-services-as-part-of-enterprise-mobility-suite-ems-do-i-need-azure-ad-premium-to-use-azure-ad-domain-services)
 
 ### <a name="is-azure-ad-domain-services-a-paid-service"></a>Is er Azure AD Domain Services een betaalde service?
-Ja. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/active-directory-ds/)voor meer informatie.
+Ja. Zie de pagina [prijzen](https://azure.microsoft.com/pricing/details/active-directory-ds/) voor meer informatie.
 
 ### <a name="is-there-a-free-trial-for-the-service"></a>Is er een gratis proef versie voor de service?
 Azure AD Domain Services is opgenomen in de gratis proef versie voor Azure. U kunt zich registreren voor een [gratis proef versie van Azure voor één maand](https://azure.microsoft.com/pricing/free-trial/).

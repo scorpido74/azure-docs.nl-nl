@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 7714ec29b3cbe17c7700b48111ea2b455aa18b7e
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 0df3c6b1851767616111308ad0bacce227ba1a83
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91532224"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948898"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Nieuwe functies in Azure Cognitive Search
 
@@ -26,11 +26,11 @@ Maak een identiteit voor een zoekservice in Azure Active Directory en gebruik ve
 
 |Functie&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Categorie | Beschrijving | Beschikbaarheid  |
 |------------------------------|----------|-------------|---------------|
-| [Beheerde service-identiteit](search-howto-managed-identities-data-sources.md) | Indexeerfuncties, beveiliging | Maak een identiteit voor een zoekservice in Azure Active Directory en gebruik vervolgens RBAC-machtigingen om toegang tot Azure-gegevensbronnen toe te kennen. Deze aanpak elimineert de noodzaak van referenties op de verbindingsreeks. <br><br>Een andere manier om een beheerde service-identiteit te gebruiken als IP-regels geen optie zijn, is via een [Vertrouwde service-uitzondering](search-indexer-howto-access-trusted-service-exception.md). | Algemeen verkrijgbaar. Gebruik deze mogelijkheid wanneer u de portal of [Gegevensbron maken (REST)](https://docs.microsoft.com/rest/api/searchservice/create-data-source) met api-version=2020-06-30 gebruikt. |
-| [Uitgaande aanvragen met behulp van een privélink](search-indexer-howto-access-private.md) | Indexeerfuncties, beveiliging | Maak een gedeelde privélinkresource die gebruikt kan worden door indexeerfuncties om toegang te krijgen tot Azure-resources die zijn beveiligd met Azure Private Link. Voor meer informatie over alle manieren waarop u indexeerfuncties kunt beveiligen, kunt u [Resources van indexeerfunctie beveiligen met Azure-netwerkbeveiligingsvoorzieningen](search-indexer-securing-resources.md) raadplegen. | Algemeen verkrijgbaar. Gebruik deze mogelijkheid wanneer u de portal of [Gedeelde privélink (REST)](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources) met api-version=2020-08-01 gebruikt. |
-| [Beheer van REST API (2020-08-01)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) | REST | Nieuwe stabiele REST API voegt ondersteuning toe bij het maken van gedeelde privélinkresources. | Algemeen verkrijgbaar. |
-| [Beheer van REST API (2020-08-01-Preview)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) | REST | Hiermee wordt een gedeelde privélinkresource toegevoegd voor Azure Functions en Azure SQL voor MySQL-databases. | Openbare preview. |
-| [Beheer van .NET SDK 4.0](https://docs.microsoft.com/dotnet/api/overview/azure/search/management) | .NET SDK | Azure SDK-update voor het beheer van SDK, gericht op REST API versie 2020-08-01. | Algemeen verkrijgbaar. |
+| [Beheerde service-identiteit](search-howto-managed-identities-data-sources.md) | Indexeerfuncties, beveiliging | Maak een identiteit voor een zoekservice in Azure Active Directory en gebruik vervolgens RBAC-machtigingen om toegang tot Azure-gegevensbronnen toe te kennen. Deze aanpak elimineert de noodzaak van referenties op de verbindingsreeks. <br><br>Een andere manier om een beheerde service-identiteit te gebruiken als IP-regels geen optie zijn, is via een [Vertrouwde service-uitzondering](search-indexer-howto-access-trusted-service-exception.md). | Algemeen verkrijgbaar. Gebruik deze mogelijkheid wanneer u de portal of [Gegevensbron maken (REST)](/rest/api/searchservice/create-data-source) met api-version=2020-06-30 gebruikt. |
+| [Uitgaande aanvragen met behulp van een privélink](search-indexer-howto-access-private.md) | Indexeerfuncties, beveiliging | Maak een gedeelde privélinkresource die gebruikt kan worden door indexeerfuncties om toegang te krijgen tot Azure-resources die zijn beveiligd met Azure Private Link. Voor meer informatie over alle manieren waarop u indexeerfuncties kunt beveiligen, kunt u [Resources van indexeerfunctie beveiligen met Azure-netwerkbeveiligingsvoorzieningen](search-indexer-securing-resources.md) raadplegen. | Algemeen verkrijgbaar. Gebruik deze mogelijkheid wanneer u de portal of [Gedeelde privélink (REST)](/rest/api/searchmanagement/sharedprivatelinkresources) met api-version=2020-08-01 gebruikt. |
+| [Beheer van REST API (2020-08-01)](/rest/api/searchmanagement/management-api-versions) | REST | Nieuwe stabiele REST API voegt ondersteuning toe bij het maken van gedeelde privélinkresources. | Algemeen verkrijgbaar. |
+| [Beheer van REST API (2020-08-01-Preview)](/rest/api/searchmanagement/management-api-versions) | REST | Hiermee wordt een gedeelde privélinkresource toegevoegd voor Azure Functions en Azure SQL voor MySQL-databases. | Openbare preview. |
+| [Beheer van .NET SDK 4.0](/dotnet/api/overview/azure/search/management) | .NET SDK | Azure SDK-update voor het beheer van SDK, gericht op REST API versie 2020-08-01. | Algemeen verkrijgbaar. |
 
 ## <a name="august-2020"></a>Augustus 2020
 

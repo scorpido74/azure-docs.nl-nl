@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.date: 02/21/2020
 ms.author: rdhillon
 ms.openlocfilehash: 14ecb30af11bf750c90e45c3fb6b443d861a1445
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89400752"
 ---
-# <a name="virtual-network-service-endpoint-policies-for-azure-storage"></a>Beleid voor service-eind punten voor virtuele netwerken voor Azure Storage
+# <a name="virtual-network-service-endpoint-policies-for-azure-storage"></a>Service-eindpuntbeleid voor virtueel netwerk voor Azure Storage
 
 Met Virtual Network (VNet)-service-eindpunt beleid kunt u het uitgaande virtuele netwerk verkeer filteren op Azure Storage-accounts via een service-eind punt en alleen gegevens exfiltration alleen specifieke Azure Storage accounts toestaan. Endpoint-beleids regels bieden gedetailleerd toegangs beheer voor virtueel netwerk verkeer naar Azure Storage bij het maken van verbinding via service-eind punten.
 

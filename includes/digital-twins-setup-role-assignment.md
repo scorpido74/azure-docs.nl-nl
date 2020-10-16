@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 7/17/2020
 ms.author: baanders
 ms.openlocfilehash: 6f43a55b3a409a84e3baf99dae24af7616ea4385
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87408300"
 ---
 Azure Digital Apparaatdubbels maakt gebruik van [Azure Active Directory (Azure AD)](../articles/active-directory/fundamentals/active-directory-whatis.md) voor op rollen gebaseerd toegangs beheer (RBAC). Dit betekent dat voordat een gebruiker gegevens vlak kan aanroepen naar uw Azure Digital Apparaatdubbels-exemplaar, aan die gebruiker een rol met de juiste machtigingen moet worden toegewezen.

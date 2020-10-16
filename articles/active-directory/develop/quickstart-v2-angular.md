@@ -1,7 +1,7 @@
 ---
-title: Gebruikers aanmelden in Angular-apps met één pagina - Azure
+title: 'Snelstart: Gebruikers aanmelden in Angular-apps met één pagina - Azure'
 titleSuffix: Microsoft identity platform
-description: Meer informatie over hoe u met een Angular-app een API kunt aanroepen waarvoor toegangstokens zijn vereist, met behulp van het Microsoft-identiteitsplatform.
+description: In deze quickstart vindt u meer informatie over hoe u met een Angular-app een API kunt aanroepen waarvoor toegangstokens zijn vereist die zijn verstrekt door het Microsoft-identiteitsplatform.
 services: active-directory
 author: jasonnutter
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: 23b25340906ddb4501492b048740f590c13654c4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4179807b349504d1ac0932f8d0816603f83afae4
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258027"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91613421"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>Quickstart: Gebruikers aanmelden en een toegangstoken verkrijgen in een Angular-toepassing met één pagina
 

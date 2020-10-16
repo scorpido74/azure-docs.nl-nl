@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: bb38a76de41885b6f39a1c6dce7c44bcb52a4d60
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86027440"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>Met operationeel maken Spark ontwikkelde machine learning modellen
@@ -34,18 +34,18 @@ Als u de Jupyter-notebook voor Spark 1,6 wilt wijzigen voor gebruik met een HDIn
 
 ## <a name="prerequisites"></a>Vereisten
 
-1. U hebt een Azure-account en een HDInsight-cluster met Spark 1,6 (of Spark 2,0) nodig om deze procedure te volt ooien. Bekijk het [overzicht van data Science met behulp van Spark in azure HDInsight](spark-overview.md) voor instructies over het voldoen aan deze vereisten. Dit onderwerp bevat ook een beschrijving van de NYC 2013-taxi gegevens die hier worden gebruikt en instructies voor het uitvoeren van code uit een Jupyter-notebook op het Spark-cluster. 
+1. U hebt een Azure-account en een HDInsight-cluster met Spark 1.6 (of Spark 2.0) nodig om deze procedure te voltooien. Raadpleeg [Overview of data science using Spark on Azure HDInsight](spark-overview.md) (Overzicht van gegevenswetenschap met Spark in Azure HDInsight) voor instructies om te voldoen aan deze vereisten. Dat onderwerp bevat ook een beschrijving van de taxigegevens over 2013 voor New York die hier worden gebruikt en instructies voor het uitvoeren van code vanuit een Jupyter-notebook in het Spark-cluster. 
 2. Maak de machine learning modellen die u hier kunt beoordeelt door de [gegevens te verkennen en te model leren met het Spark](spark-data-exploration-modeling.md) -onderwerp voor het Spark 1,6-cluster of de Spark 2,0-notebooks. 
-3. De Spark 2,0-notebooks gebruiken een extra gegevensset voor de classificatie taak, de bekende luchtvaart maatschappij op tijd van 2011 en 2012. Er wordt een beschrijving van de notitie blokken en koppelingen naar deze notebooks gegeven in de [README.MD](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) voor de GitHub-opslag plaats waarin deze zijn opgenomen. Bovendien zijn de code hier en in de gekoppelde notitie blokken Gene riek en moeten ze werken op een Spark-cluster. Als u geen gebruik maakt van HDInsight Spark, kunnen de stappen voor het instellen en beheren van het cluster enigszins afwijken van wat hier wordt weer gegeven. 
+3. De Spark 2,0-notebooks gebruiken een extra gegevensset voor de classificatie taak, de bekende luchtvaart maatschappij op tijd van 2011 en 2012. Ga naar de [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) voor de GitHub-opslagplaats met de notebooks voor een beschrijving van de notebooks en koppelingen ernaartoe. De code in dit overzicht en in de gekoppelde notebooks is bovendien generiek en moet op ieder Spark-cluster werken. Als u geen gebruikmaakt van HDInsight Spark, kunnen de stappen voor het instellen en beheren van het cluster enigszins afwijken van wat hier wordt beschreven. 
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
 ## <a name="setup-storage-locations-libraries-and-the-preset-spark-context"></a>Setup: opslag locaties, Bibliotheken en de vooraf ingestelde Spark-context
-Spark kan lezen van en schrijven naar een Azure Storage Blob (WASB). Een van de bestaande opgeslagen gegevens kan worden verwerkt met behulp van Spark en de resultaten die opnieuw worden opgeslagen in WASB.
+Spark kan lezen van en schrijven naar een Azure Storage Blob (WASB). Bestaande gegevens die daar zijn opgeslagen, kunnen dus worden verwerkt met behulp van Spark en de resultaten kunnen opnieuw worden opgeslagen in WASB.
 
-Om modellen of bestanden in WASB op te slaan, moet het pad correct worden opgegeven. Er kan naar de standaard container die aan het Spark-cluster is gekoppeld, een pad worden gebruikt dat begint met: *' wasb///'*. In het volgende code voorbeeld geeft u de locatie op van de gegevens die moeten worden gelezen en het pad voor de map voor het model opslag waarnaar de model uitvoer wordt opgeslagen. 
+Om modellen of bestanden op te slaan in WASB, moet het pad correct worden opgegeven. Er kan naar de standaard container die aan het Spark-cluster is gekoppeld, een pad worden gebruikt dat begint met: *' wasb///'*. In het volgende code voorbeeld geeft u de locatie op van de gegevens die moeten worden gelezen en het pad voor de map voor het model opslag waarnaar de model uitvoer wordt opgeslagen. 
 
-### <a name="set-directory-paths-for-storage-locations-in-wasb"></a>Mappaden instellen voor opslag locaties in WASB
+### <a name="set-directory-paths-for-storage-locations-in-wasb"></a>Mappaden instellen voor opslaglocaties in WASB
 Modellen worden opgeslagen in: "wasb:///user/remoteuser/NYCTaxi/Models". Als dit pad niet juist is ingesteld, worden modellen niet geladen voor scores.
 
 De gescoorde resultaten zijn opgeslagen in: "wasb:///user/remoteuser/NYCTaxi/ScoredResults". Als het pad naar de map onjuist is, worden de resultaten niet opgeslagen in die map.   
@@ -82,7 +82,7 @@ import datetime
 datetime.datetime.now()
 ```
 
-**UITVOER**
+**UITVOER:**
 
 DateTime. datetime (2016, 4, 25, 23, 56, 19, 229403)
 
@@ -106,16 +106,16 @@ import numpy as np
 import datetime
 ```
 
-### <a name="preset-spark-context-and-pyspark-magics"></a>Vooraf ingestelde Spark-context en PySpark magics
+### <a name="preset-spark-context-and-pyspark-magics"></a>Vooraf ingestelde Spark-context en PySpark-magics
 De PySpark-kernels die worden meegeleverd met Jupyter-notebooks hebben een vooraf ingestelde context. Daarom hoeft u de Spark-of Hive-contexten expliciet niet in te stellen voordat u begint te werken met de toepassing die u ontwikkelt. Deze contexten zijn standaard beschikbaar:
 
-* SC-voor Spark 
-* sqlContext-voor-Hive
+* sc - voor Spark 
+* sqlContext - voor Hive
 
-De PySpark-kernel biedt enkele vooraf gedefinieerde ' magics '. Dit zijn speciale opdrachten die u kunt aanroepen met%%. Er zijn twee opdrachten die worden gebruikt in deze code voorbeelden.
+De PySpark-kernel biedt enkele vooraf gedefinieerde 'magics'. Dit zijn speciale opdrachten die u kunt aanroepen met behulp van %%. Er zijn twee van dergelijke opdrachten die worden gebruikt in deze codevoorbeelden.
 
-* **%% Local** Opgegeven dat de code in volgende regels lokaal wordt uitgevoerd. Code moet geldige python-code zijn.
-* **%% SQL-o\<variable name>** 
+* **%% Local** Opgegeven dat de code in volgende regels lokaal wordt uitgevoerd. Code moet geldige Python-code zijn.
+* **%% SQL-o \<variable name>** 
 * Voert een Hive-query uit op basis van de sqlContext. Als de-o-para meter wordt door gegeven, wordt het resultaat van de query persistent gemaakt in de lokale python-context%% als een Panda data frame.
 
 Zie [kernels die beschikbaar zijn voor Jupyter-notebooks met Hdinsight Spark Linux-clusters in hdinsight](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md)voor meer informatie over de kernels voor Jupyter-notebooks en de vooraf gedefinieerde ' magics ' die ze bieden.
@@ -185,7 +185,7 @@ timedelta = round((timeend-timestart).total_seconds(), 2)
 print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 ```
 
-**UITVOER**
+**UITVOER:**
 
 Benodigde tijd voor het uitvoeren van de cel: 46,37 seconden
 
@@ -259,14 +259,14 @@ timedelta = round((timeend-timestart).total_seconds(), 2)
 print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 ```
 
-**UITVOER**
+**UITVOER:**
 
 Benodigde tijd voor het uitvoeren van de cel: 5,37 seconden
 
 ### <a name="create-rdd-objects-with-feature-arrays-for-input-into-models"></a>RDD-objecten maken met functie matrices voor invoer in modellen
 Deze sectie bevat code die laat zien hoe u categorische tekst gegevens indexeert als een RDD-object en een-hot-code ring zodat deze kan worden gebruikt voor het trainen en testen van MLlib logistiek-regressie en structuur modellen. De geïndexeerde gegevens worden opgeslagen in [rdd-objecten (robuuste gedistribueerde gegevensset)](https://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html) . De Rdd's zijn de basis abstractie in Spark. Een RDD-object vertegenwoordigt een onveranderbare, gepartitioneerde verzameling elementen die parallel met Spark kan worden uitgevoerd.
 
-Het bevat ook code die laat zien hoe u gegevens kunt schalen met de `StandardScalar` MLlib voor gebruik in lineaire regressie met stochastische Gradient Daal (SGD), een populair algoritme voor het trainen van een breed scala aan machine learning modellen. De [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) wordt gebruikt om de functies te schalen op eenheids afwijking. Het schalen van functies, ook wel bekend als gegevens normalisatie, verzekert dat onderdelen met veel uitbetaalde waarden geen buitensporige weging van de functie doel hebben. 
+Het bevat ook code die laat zien hoe u gegevens kunt schalen met de `StandardScalar` MLlib voor gebruik in lineaire regressie met stochastische Gradient Daal (SGD), een populair algoritme voor het trainen van een breed scala aan machine learning modellen. De [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) wordt gebruikt om de functies te schalen op eenheids afwijking. Het schalen van functies, ook wel bekend als gegevensnormalisatie, zorgt ervoor dat functies met weid verspreide waarden geen buitensporige weging krijgen toegewezen in de doelfunctie. 
 
 ```python
 # CREATE RDD OBJECTS WITH FEATURE ARRAYS FOR INPUT INTO MODELS
@@ -335,7 +335,7 @@ timedelta = round((timeend-timestart).total_seconds(), 2)
 print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 ```
 
-**UITVOER**
+**UITVOER:**
 
 Benodigde tijd voor het uitvoeren van de cel: 11,72 seconden
 
@@ -368,7 +368,7 @@ timedelta = round((timeend-timestart).total_seconds(), 2)
 print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 ```
 
-**UITVOER**
+**UITVOER:**
 
 Benodigde tijd voor het uitvoeren van de cel: 19,22 seconden
 
@@ -402,7 +402,7 @@ timedelta = round((timeend-timestart).total_seconds(), 2)
 print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 ```
 
-**UITVOER**
+**UITVOER:**
 
 Benodigde tijd voor het uitvoeren van de cel: 16,63 Seconden
 
@@ -450,7 +450,7 @@ timedelta = round((timeend-timestart).total_seconds(), 2)
 print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 ```
 
-**UITVOER**
+**UITVOER:**
 
 Benodigde tijd voor het uitvoeren van de cel: 31,07 seconden
 
@@ -502,7 +502,7 @@ timedelta = round((timeend-timestart).total_seconds(), 2)
 print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 ```
 
-**UITVOER**
+**UITVOER:**
 
 Benodigde tijd voor het uitvoeren van de cel: 14,6 seconden
 
@@ -527,7 +527,7 @@ print "BoostedTreeClassificationFileLoc: " + btclassificationfilename;
 print "BoostedTreeRegressionFileLoc: " + btregressionfilename;
 ```
 
-**UITVOER**
+**UITVOER:**
 
 logisticRegFileLoc: LogisticRegressionWithLBFGS_2016-05-0317_22_38.953814.txt
 

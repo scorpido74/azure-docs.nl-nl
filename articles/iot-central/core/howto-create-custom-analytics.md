@@ -10,10 +10,10 @@ services: iot-central
 ms.custom: mvc
 manager: philmea
 ms.openlocfilehash: e04da10d71eed3706b87fc728a13927aeae82826
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84660127"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Azure IoT Central uitbreiden met aangepaste analyses met behulp van Azure Databricks
@@ -136,7 +136,7 @@ Gebruik de informatie in de volgende tabel om uw cluster te maken:
 | Cluster modus | Standard |
 | Databricks Runtime versie | 5,5 LTS (scala 2,11, Spark 2.4.3) |
 | Python-versie | 3 |
-| Automatisch schalen inschakelen | No |
+| Automatisch schalen inschakelen | Nee |
 | Beëindigen na minuten van inactiviteit | 30 |
 | Type werk nemer | Standard_DS3_v2 |
 | IT | 1 |
@@ -158,7 +158,7 @@ De volgende stappen laten zien hoe u de bibliotheek kunt importeren die nodig is
 
 1. Kies op de pagina **bibliotheek installeren** de optie **maven** als de bron van de bibliotheek.
 
-1. Voer in het tekstvak **coördinaten** de volgende waarde in:`com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.10`
+1. Voer in het tekstvak **coördinaten** de volgende waarde in: `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.10`
 
 1. Kies **installeren** om de bibliotheek op het cluster te installeren.
 
@@ -172,7 +172,7 @@ Gebruik de volgende stappen om een Databricks-notebook te importeren dat de pyth
 
 1. Navigeer naar de pagina **werk ruimte** in uw Databricks-omgeving. Selecteer de vervolg keuzelijst naast de naam van uw account en kies vervolgens **importeren**.
 
-1. Kies uit een URL om te importeren en voer het volgende adres in:[https://github.com/Azure-Samples/iot-central-docs-samples/blob/master/databricks/IoT%20Central%20Analysis.dbc?raw=true](https://github.com/Azure-Samples/iot-central-docs-samples/blob/master/databricks/IoT%20Central%20Analysis.dbc?raw=true)
+1. Kies uit een URL om te importeren en voer het volgende adres in: [https://github.com/Azure-Samples/iot-central-docs-samples/blob/master/databricks/IoT%20Central%20Analysis.dbc?raw=true](https://github.com/Azure-Samples/iot-central-docs-samples/blob/master/databricks/IoT%20Central%20Analysis.dbc?raw=true)
 
 1. Kies **importeren**om het notitie blok te importeren.
 

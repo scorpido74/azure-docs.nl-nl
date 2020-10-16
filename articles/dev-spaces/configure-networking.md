@@ -5,14 +5,16 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 description: Hierin worden de netwerk vereisten beschreven voor het uitvoeren van Azure-ontwikkel ruimten in azure Kubernetes Services
 keywords: Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, CNI, kubenet, SDN, netwerk
-ms.openlocfilehash: 0d9ebbec3e3c07a466acb58e88b67e6a32a20edb
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 09114ab13555cbf9ef42b37c86ffb76a8fe3ab3f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214169"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970335"
 ---
 # <a name="configure-networking-for-azure-dev-spaces-in-different-network-topologies"></a>Netwerken configureren voor Azure-ontwikkel ruimten in verschillende netwerk topologieën
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../includes/dev-spaces-deprecation.md)]
 
 Azure dev Spaces worden uitgevoerd op Azure Kubernetes service (AKS)-clusters met de standaard-netwerk configuratie. Als u de netwerk configuratie van uw AKS-cluster wilt wijzigen, bijvoorbeeld door het cluster achter een firewall te plaatsen, netwerk beveiligings groepen te gebruiken of netwerk beleid te gebruiken, moet u aanvullende overwegingen nemen voor het uitvoeren van Azure dev Spaces.
 
@@ -87,7 +89,7 @@ Azure dev Spaces maakt gebruik van Program ma's aan de client zijde, zoals de Az
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de werking van Azure dev Spaces.
+Meer informatie over hoe Azure Dev Spaces werkt.
 
 > [!div class="nextstepaction"]
 > [Hoe Azure Dev Spaces werkt](how-dev-spaces-works.md)

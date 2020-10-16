@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: b-juche
-ms.openlocfilehash: 54c85fb778d1794f9aeba2eba5ed459292636e35
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: 61978566eba792a1d5b1db45ea4a9e8d6e84a543
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513618"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91931033"
 ---
 # <a name="azure-netapp-files-sdks-and-cli-tools"></a>SDK's en CLI-hulpprogramma's voor Azure NetApp Files
 
@@ -33,7 +33,7 @@ De volgende tabel bevat de ondersteunde Sdk's.  Meer informatie over de onderste
 |------------------|--------------------------------------------------------------|
 |    .NET  |    [Azure/Azure-SDK-voor-net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/netapp)    |
 |    Python  |  [Azure/Azure-SDK-voor-python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/netapp)    |
-|    Aan de slag    |    [Azure/Azure-SDK-voor-Go](https://github.com/Azure/azure-sdk-for-go/tree/master/services/netapp)       |
+|    Go    |    [Azure/Azure-SDK-voor-Go](https://github.com/Azure/azure-sdk-for-go/tree/master/services/netapp)       |
 |    Java |     [Azure/Azure-SDK-voor-Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/netapp) |
 |    Javascript    |    [Azure/Azure-SDK-voor-JS](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/netapp/arm-netapp)    |
 |    Ruby   |    [Azure/Azure-SDK-voor-ruby](https://github.com/Azure/azure-sdk-for-ruby/tree/master/management/azure_mgmt_netapp)    |
@@ -44,12 +44,12 @@ De volgende tabel bevat de ondersteunde CLI-hulpprogram ma's en de bijbehorende 
 
 |    Hulpprogramma    |    Opdracht verwijzing    |
 |------------------|--------------------------------------------|
-|    Azure CLI  |    [AZ netappfiles](https://docs.microsoft.com/cli/azure/netappfiles?view=azure-cli-latest)    |
-|    PowerShell   |    [Azure PowerShell voor Azure NetApp Files](https://docs.microsoft.com/powershell/module/az.netappfiles/?view=azps-2.5.0#netapp_files)    |
+|    Azure CLI  |    [AZ netappfiles](/cli/azure/netappfiles?view=azure-cli-latest)    |
+|    PowerShell   |    [Azure PowerShell voor Azure NetApp Files](/powershell/module/az.netappfiles/?view=azps-2.5.0#netapp_files)    |
 
 ## <a name="code-samples"></a>Codevoorbeelden
 
-Zie [code voorbeelden voor Azure NetApp files](https://docs.microsoft.com/samples/browse/?filter-products=netapp&products=azure-netapp-files).
+Zie [code voorbeelden voor Azure NetApp files](/samples/browse/?filter-products=netapp&products=azure-netapp-files).
 
 ## <a name="next-steps"></a>Volgende stappen   
  [Azure-Sdk's downloaden](https://azure.microsoft.com/downloads/)

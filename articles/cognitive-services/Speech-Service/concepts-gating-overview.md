@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: shlo
 ms.openlocfilehash: 73e6e4e69a245485ca473f048bbeafef21dbbf37
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73836789"
 ---
 # <a name="custom-neural-voice-gating-overview"></a>Overzicht van Custom Neural Voice beperking
@@ -43,7 +43,7 @@ De toegang tot de aangepaste Neural Voice-service is onderhevig aan de enige keu
 
 Als onderdeel van het toepassings proces moet u de uitdrukkelijke schriftelijke toestemming van Voice-talen verkrijgen voordat u een spraak lettertype maakt, zoals het delen [van de openbaar making voor Voice-talen](https://aka.ms/disclosure-voice-talent). U moet er ook voor zorgen dat bij het implementeren van het spraak lettertype, uw implementatie [de synthetische aard](concepts-disclosure-guidelines.md) van de service aan gebruikers vermeldt, toewijzing aan de micro soft synthetische spraak service in uw service voorwaarden biedt en een feedback kanaal kan ondersteunen waarmee gebruikers van de service problemen kunnen rapporteren en gegevens met micro soft mogen delen. Meer informatie over onze gebruiks voorwaarden [vindt u hier](https://aka.ms/custom-neural-code-of-conduct).
 
-## <a name="reference-docs"></a>Referentie documenten
+## <a name="reference-docs"></a>Naslagdocumentatie
 
 * [Openbaarmaking voor spraaktalent](https://aka.ms/disclosure-voice-talent)
 * [Richt lijnen voor de verantwoordelijke implementatie van synthetische spraak technologie](concepts-guidelines-responsible-deployment-synthetic.md)

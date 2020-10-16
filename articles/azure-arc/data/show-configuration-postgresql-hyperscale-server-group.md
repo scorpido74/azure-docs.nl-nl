@@ -11,10 +11,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: ceab9af7e6556b2d957fafce8cd89d4a0daf9508
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936791"
 ---
 # <a name="show-the-configuration-of-an-arc-enabled-postgresql-hyperscale-server-group"></a>De configuratie van een PostgreSQL grootschalige-Server groep met Arc-functionaliteit weer geven
@@ -369,4 +369,4 @@ Retourneert de onderstaande uitvoer in een indeling en inhoud die veel lijkt op 
 - [Meer informatie over opslag configuratie](storage-configuration.md)
 - [Meer informatie over het bewaken van een Data Base-exemplaar](monitor-grafana-kibana.md)
 - [PostgreSQL-extensies gebruiken in uw Azure-PostgreSQL grootschalige-Server groep](using-extensions-in-postgresql-hyperscale-server-group.md)
-- [Beveiliging configureren voor uw PostgreSQL grootschalige-Server groep voor Azure Arc ingeschakeld](configure-security-postgres-hyperscale.md)
+- [Beveiliging configureren voor uw PostgreSQL Hyperscale-servergroep met Azure Arc](configure-security-postgres-hyperscale.md)

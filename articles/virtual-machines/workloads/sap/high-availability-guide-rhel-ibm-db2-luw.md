@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 02/13/2020
 ms.author: juergent
 ms.openlocfilehash: 527d9e2e43a4003dd5300c26fc58b1e456186351
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87077388"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-red-hat-enterprise-linux-server"></a>Hoge beschikbaarheid van IBM Db2 LUW in Azure-VM's in Red Hat Enterprise Linux Server
@@ -41,7 +41,7 @@ Raadpleeg de volgende SAP-opmerkingen en-documentatie voordat u met de installat
 | [2191498] | SAP op Linux met Azure: uitgebreide bewaking |
 | [2243692] | Linux op Azure (IaaS) VM: SAP-licentie problemen |
 | [2002167] | Red Hat Enterprise Linux 7. x: installatie en upgrade |
-| [2694118] | Red Hat Enterprise Linux HA-invoeg toepassing op Azure |
+| [2694118] | Red Hat Enterprise Linux HA Add-On op Azure |
 | [1999351] | Problemen met verbeterde Azure-bewaking voor SAP oplossen |
 | [2233094] | DB6: SAP-toepassingen op Azure die gebruikmaken van IBM Db2 voor Linux, UNIX en Windows-aanvullende informatie |
 | [1612105] | DB6: veelgestelde vragen over Db2 met HADR |
@@ -54,11 +54,11 @@ Raadpleeg de volgende SAP-opmerkingen en-documentatie voordat u met de installat
 | [Azure virtual machines-implementatie voor SAP op Linux][deployment-guide] (dit artikel) |
 | [Azure Virtual Machines Database Management System (DBMS) implementatie voor SAP in Linux-][dbms-guide] hand leiding |
 | [SAP-werk belasting op de Azure-planning en implementatie Controlelijst][azr-sap-plancheck] |
-| [Overzicht van de invoeg toepassing met hoge Beschik baarheid voor Red Hat Enterprise Linux 7][rhel-ha-addon] |
-| [Beheer van Maxi maal beschik bare invoeg toepassingen][rhel-ha-admin] |
-| [Naslag informatie voor de invoeg toepassing met hoge Beschik baarheid][rhel-ha-ref] |
+| [Overzicht van de Add-On met hoge Beschik baarheid voor Red Hat Enterprise Linux 7][rhel-ha-addon] |
+| [Add-On beheer met hoge Beschik baarheid][rhel-ha-admin] |
+| [Referentie voor Add-On met hoge Beschik baarheid][rhel-ha-ref] |
 | [Ondersteunings beleid voor RHEL-clusters met hoge Beschik baarheid-Microsoft Azure Virtual Machines als cluster leden][rhel-azr-supp]
-| [Installeren en configureren van een cluster met hoge Beschik baarheid van Red Hat Enterprise Linux 7,4 (en hoger) op Microsoft Azure][rhel-azr-inst]
+| [Installeren en configureren van een Red Hat Enterprise Linux 7,4 (en hoger) High-Availability cluster op Microsoft Azure][rhel-azr-inst]
 | [DBMS-implementatie voor SAP-werkbelasting in virtuele Azure-machines voor IBM Db2][dbms-db2] |
 | [IBM Db2 HADR 11,1][db2-hadr-11.1] |
 | [IBM Db2 HADR 10,5][db2-hadr-10.5] |

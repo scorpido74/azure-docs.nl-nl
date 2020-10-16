@@ -4,10 +4,10 @@ description: In dit artikel wordt beschreven hoe u de Azure Portal gebruikt om m
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 518d34d39e6fbecc408fe9a44d899fe4745d60d0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86114880"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>Bezorging van Event Grid bericht bewaken 
@@ -43,53 +43,53 @@ Als u een aangepast onderwerp hebt gepubliceerd, kunt u de metrische gegevens we
     :::image type="content" source="./media/custom-event-quickstart-portal/select-event-grid-topics.png" alt-text="Event Grid-onderwerpen zoeken en selecteren":::
 3. Selecteer uw aangepaste onderwerp in de lijst met onderwerpen. 
 
-    :::image type="content" source="./media/monitor-event-delivery/select-custom-topic.png" alt-text="Uw aangepaste onderwerp selecteren":::
+    :::image type="content" source="./media/monitor-event-delivery/select-custom-topic.png" alt-text="Event Grid-onderwerpen zoeken en selecteren":::
 4. Bekijk de metrische gegevens voor het onderwerp van de aangepaste gebeurtenis op de pagina met het **Event grid onderwerp** . In de volgende afbeelding is de sectie **Essentials** waarin de resource groep, het abonnement etc. wordt weer gegeven, geminimaliseerd. 
 
-    :::image type="content" source="./media/monitor-event-delivery/custom-topic-metrics.png" alt-text="Metrische gebeurtenis gegevens weer geven":::
+    :::image type="content" source="./media/monitor-event-delivery/custom-topic-metrics.png" alt-text="Event Grid-onderwerpen zoeken en selecteren":::
 
 U kunt grafieken met ondersteunde metrische gegevens maken met behulp van het tabblad **metrische gegevens** van de pagina met het **Event grid onderwerp** .
 
-:::image type="content" source="./media/monitor-event-delivery/topics-metrics-page.png" alt-text="Pagina met metrische gegevens over het onderwerp":::
+:::image type="content" source="./media/monitor-event-delivery/topics-metrics-page.png" alt-text="Event Grid-onderwerpen zoeken en selecteren":::
 
 Zie [metrische gegevens in azure monitor](../azure-monitor/platform/data-platform-metrics.md) voor meer informatie over metrische gegevens.
 
 Zie bijvoorbeeld het grafiek met metrische gegevens voor de metrische gegevens van **gepubliceerde gebeurtenissen** .
 
-:::image type="content" source="./media/monitor-event-delivery/custom-topic-metrics-example.png" alt-text="Metrische gegevens van gepubliceerde gebeurtenissen":::
+:::image type="content" source="./media/monitor-event-delivery/custom-topic-metrics-example.png" alt-text="Event Grid-onderwerpen zoeken en selecteren":::
 
 
 ## <a name="view-subscription-metrics"></a>Metrische gegevens van abonnement weer geven
 1. Ga naar de pagina met het **Event grid-onderwerp** door de stappen uit de vorige sectie te volgen. 
 2. Selecteer het abonnement in het onderste deel venster, zoals in het volgende voor beeld wordt weer gegeven. 
 
-    :::image type="content" source="./media/monitor-event-delivery/select-event-subscription.png" alt-text="Selecteer gebeurtenisabonnement":::    
+    :::image type="content" source="./media/monitor-event-delivery/select-event-subscription.png" alt-text="Event Grid-onderwerpen zoeken en selecteren":::    
 
     U kunt ook zoeken naar **Event grid-abonnementen** in de zoek balk van de Azure Portal, **het type onderwerp**, het **abonnement**en de **locatie** selecteren om een gebeurtenis abonnement te zien. 
 
-    :::image type="content" source="./media/monitor-event-delivery/event-subscriptions-page.png" alt-text="Selecteer een gebeurtenis abonnement op de pagina Event Grid abonnementen":::        
+    :::image type="content" source="./media/monitor-event-delivery/event-subscriptions-page.png" alt-text="Event Grid-onderwerpen zoeken en selecteren":::        
 
     Voor aangepaste onderwerpen selecteert u **Event grid onderwerpen** als **onderwerps type**. Selecteer voor systeem onderwerpen het type van de Azure-resource, bijvoorbeeld **opslag accounts (BLOB, GPv2)**. 
 3. Bekijk de metrische gegevens voor het abonnement op de start pagina van het abonnement in een grafiek. U kunt **algemene**, **fout**-, **latentie**-en **onbestelbare** metrische gegevens weer geven voor afgelopen 1 uur, 6 uur, 12 uur, 1 dag, 7 dagen of 30 dagen. 
 
-    :::image type="content" source="./media/monitor-event-delivery/subscription-home-page-metrics.png" alt-text="Metrische gegevens op de start pagina van het abonnement":::    
+    :::image type="content" source="./media/monitor-event-delivery/subscription-home-page-metrics.png" alt-text="Event Grid-onderwerpen zoeken en selecteren":::    
 
 ## <a name="view-system-topic-metrics"></a>Metrische gegevens over het systeem onderwerp weer geven
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Typ in de zoek balk van het onderwerp **Event grid systeem onderwerpen**en selecteer vervolgens **Event grid systeem onderwerpen** in de vervolg keuzelijst. 
 
-    :::image type="content" source="./media/monitor-event-delivery/search-system-topics.png" alt-text="Event Grid systeem onderwerpen zoeken en selecteren":::
+    :::image type="content" source="./media/monitor-event-delivery/search-system-topics.png" alt-text="Event Grid-onderwerpen zoeken en selecteren":::
 3. Selecteer uw systeem onderwerp in de lijst met onderwerpen. 
 
-    :::image type="content" source="./media/monitor-event-delivery/select-system-topic.png" alt-text="Selecteer uw systeem onderwerp":::
+    :::image type="content" source="./media/monitor-event-delivery/select-system-topic.png" alt-text="Event Grid-onderwerpen zoeken en selecteren":::
 4. Bekijk de metrische gegevens voor het onderwerp systeem op de pagina **Event grid systeem onderwerp** . In de volgende afbeelding is de sectie **Essentials** waarin de resource groep, het abonnement etc. wordt weer gegeven, geminimaliseerd. 
 
-    :::image type="content" source="./media/monitor-event-delivery/system-topic-overview-metrics.png" alt-text="Metrische gegevens over het systeem onderwerp weer geven op de pagina overzicht":::
+    :::image type="content" source="./media/monitor-event-delivery/system-topic-overview-metrics.png" alt-text="Event Grid-onderwerpen zoeken en selecteren":::
 
 U kunt grafieken met ondersteunde metrische gegevens maken met behulp van het tabblad **metrische gegevens** van de pagina met het **Event grid onderwerp** .
 
-:::image type="content" source="./media/monitor-event-delivery/system-topic-metrics-page.png" alt-text="Systeem onderwerp-metrische gegevens pagina":::
+:::image type="content" source="./media/monitor-event-delivery/system-topic-metrics-page.png" alt-text="Event Grid-onderwerpen zoeken en selecteren":::
 
 Zie [metrische gegevens in azure monitor](../azure-monitor/platform/data-platform-metrics.md) voor meer informatie over metrische gegevens.
 

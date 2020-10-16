@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: a96a62d7bb93f0ede6b16008dc844ad7f1a8c8d2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86517294"
 ---
 # <a name="implement-dynamic-styling-for-creator-indoor-maps"></a>Dynamische stijlen voor het maken van kaarten in de maker implementeren
@@ -22,13 +22,13 @@ Azure Maps- [functie status service](https://docs.microsoft.com/rest/api/maps/fe
 ## <a name="prerequisites"></a>Vereisten
 
 1. [Een Azure Maps-account maken](quick-demo-map-app.md#create-an-azure-maps-account)
-2. [Verkrijg een primaire abonnements sleutel](quick-demo-map-app.md#get-the-primary-key-for-your-account), ook wel de primaire sleutel of de abonnements sleutel genoemd.
+2. [Een primaire sleutel voor een abonnement verkrijgen](quick-demo-map-app.md#get-the-primary-key-for-your-account), ook wel bekend als de primaire sleutel of de abonnementssleutel.
 3. [Een Creator-resource maken](how-to-manage-creator.md)
 4. Down load het [voorbeeld teken pakket](https://github.com/Azure-Samples/am-creator-indoor-data-examples).
 5. [Maak een kaart voor binnenste](tutorial-creator-indoor-maps.md) om een en te verkrijgen `tilesetId` `statesetId` .
 6. Bouw een webtoepassing met behulp van de stappen in [de module voor de binnenste kaart gebruiken](how-to-use-indoor-module.md).
 
-In deze zelf studie wordt gebruikgemaakt van de toepassing [postman](https://www.postman.com/) , maar u kunt een andere API-ontwikkel omgeving kiezen.
+In deze zelfstudie wordt gebruikgemaakt van de [Postman](https://www.postman.com/)-toepassing, maar u kunt ook een andere API-ontwikkelomgeving kiezen.
 
 ## <a name="implement-dynamic-styling"></a>Dynamische opmaak implementeren
 
@@ -66,7 +66,7 @@ In de volgende sectie wordt de bezettings *status* van Office ingesteld `UNIT26`
 
  We gaan nu de status van de twee kant oren bijwerken `UNIT26` en `UNIT27` :
 
-1. Selecteer in de toepassing postman de optie **Nieuw**. Selecteer **aanvraag**in het venster **Nieuw maken** . Voer de **naam** van een aanvraag in en selecteer een verzameling. Klik op **Opslaan**.
+1. Selecteer in de Postman-toepassing de optie **New**. Selecteer **Request** (Aanvraag) in het venster **Create New** (Nieuwe maken). Voer een **aanvraagnaam** in en selecteer een verzameling. Klik op **Opslaan**.
 
 2. Gebruik de [API voor de functie-update status](https://docs.microsoft.com/rest/api/maps/featurestate/updatestatespreview) om de status bij te werken. Geef de statusset-ID en `UNIT26` een van de twee eenheden door. Voeg uw Azure Maps-abonnements sleutel toe. Dit is de URL van een **post** -aanvraag om de status bij te werken:
 
@@ -74,7 +74,7 @@ In de volgende sectie wordt de bezettings *status* van Office ingesteld `UNIT26`
     https://atlas.microsoft.com/featureState/state?api-version=1.0&statesetID={statesetId}&featureID=UNIT26&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-3. Stel in de **kopteksten** van de **post** -aanvraag in `Content-Type` op `application/json` . In de **hoofd tekst** van de **post** -aanvraag schrijft u de volgende JSON met de functie-updates. De update wordt alleen opgeslagen als de tijds tempel na het tijds tempel dat is gebruikt in de vorige functie status update aanvragen voor dezelfde functie is `ID` . Geef de ' bezette ' door `keyName` om de waarde bij te werken.
+3. Stel in de **headers** van de **POST**-aanvraag `Content-Type` in op `application/json`. In de **hoofd tekst** van de **post** -aanvraag schrijft u de volgende JSON met de functie-updates. De update wordt alleen opgeslagen als de tijds tempel na het tijds tempel dat is gebruikt in de vorige functie status update aanvragen voor dezelfde functie is `ID` . Geef de ' bezette ' door `keyName` om de waarde bij te werken.
 
     ```json
     {

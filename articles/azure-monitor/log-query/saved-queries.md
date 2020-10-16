@@ -7,10 +7,10 @@ author: rboucher
 ms.author: robb
 ms.date: 06/16/2020
 ms.openlocfilehash: 462358ab967d4ba26a265d7b5f401b995223815e
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85959839"
 ---
 # <a name="saved-queries-in-azure-monitor-log-analytics"></a>Opgeslagen query's in Azure Monitor Log Analytics
@@ -86,7 +86,7 @@ Het dialoog venster ondersteunt groeperen op:
 
 De groeperings waarden fungeren ook als een actieve inhouds opgave. Als u op een van de waarden aan de linkerkant van het scherm klikt, wordt de weer gave query's rechts naar het item geklikt.
 
-### <a name="filter"></a>Filteren
+### <a name="filter"></a>Filter
 
 U kunt de query's ook filteren op basis van de bovenstaande GroupBy-waarden. In het dialoog venster voor beeld query worden de filters bovenaan gevonden.
 
@@ -104,7 +104,7 @@ Als u een KQL Pro bent en liever rechtstreeks naar de query-editor wilt gaan, ku
 
 U hebt altijd toegang tot de pop-upfunctie voor voorbeeld query's via de knop *voor beeld query's* in de bovenste balk van log Analytics.
 
-## <a name="query-explorer"></a>Query Verkenner
+## <a name="query-explorer"></a>Queryverkenner
 
 De query Explorer-ervaring voor het opslaan en delen van door gebruikers gegenereerde query's blijft ongewijzigd gedurende de tijd.
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: e04f6120f7d9a5646a3b30553b5083c5259acae2
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4b3817bd33c72ce6d1c3426aa8379101c84f5bc5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499633"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961507"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-the-azure-cli"></a>Zelfstudie: Virtuele machines met hoge beschikbaarheid maken en implementeren met de Azure CLI
 
@@ -116,5 +116,5 @@ Ga naar de volgende zelfstudie voor meer informatie over virtuele-machineschaals
 > [Een virtuele-machineschaalset maken](tutorial-create-vmss.md)
 
 * Ga naar de [documentatie over beschikbaarheidszones](../../availability-zones/az-overview.md) voor meer informatie over beschikbaarheidszones.
-* Meer documentatie over zowel beschikbaarheidssets als beschikbaarheidszones is ook [hier](./manage-availability.md) beschikbaar.
+* Meer documentatie over zowel beschikbaarheidssets als beschikbaarheidszones is ook [hier](../manage-availability.md) beschikbaar.
 * Als u beschikbaarheidszones wilt uitproberen, gaat u naar [Create a Linux virtual machine in an availability zone with the Azure CLI](./create-cli-availability-zone.md) (Een virtuele Linux-machine maken in een beschikbaarheidszone met de Azure CLI)

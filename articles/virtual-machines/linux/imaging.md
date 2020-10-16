@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 781cc10895f3a77afe71d508c1194b425010ec41
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 61c21aed76cfaac5621b234b32c90877ef6faa9f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89319539"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966318"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>Eigen inux-installatiekopieën gebruiken en maken in Azure
 
@@ -46,7 +46,7 @@ Azure biedt twee hoofdafbeeldingstypen, gegeneraliseerd en gespecialiseerd. De t
 
 ### <a name="generalized-images"></a>Gegeneraliseerde installatiekopieën
 
-Een gegeneraliseerde installatiekopie is een installatiekopie waarvoor de installatie moet worden voltooid bij de eerste keer dat de computer wordt opgestart. Bij de eerste keer dat de computer wordt opgestart, kunt u bijvoorbeeld de hostnaam, beheergebruiker en andere VM-specifieke configuraties instellen. Dit is handig als u wilt dat de installatiekopie meerdere keren opnieuw wordt gebruikt en wanneer u parameters wilt doorgeven tijdens het maken. Als de gegeneraliseerde installatiekopie de Azure-agent bevat, worden de parameters door de agent verwerkt en krijgt platform een seintje dat de eerste configuratie is voltooid. Dit proces wordt [inrichting](https://docs.microsoft.com/azure/virtual-machines/linux/provisioning) genoemd. 
+Een gegeneraliseerde installatiekopie is een installatiekopie waarvoor de installatie moet worden voltooid bij de eerste keer dat de computer wordt opgestart. Bij de eerste keer dat de computer wordt opgestart, kunt u bijvoorbeeld de hostnaam, beheergebruiker en andere VM-specifieke configuraties instellen. Dit is handig als u wilt dat de installatiekopie meerdere keren opnieuw wordt gebruikt en wanneer u parameters wilt doorgeven tijdens het maken. Als de gegeneraliseerde installatiekopie de Azure-agent bevat, worden de parameters door de agent verwerkt en krijgt platform een seintje dat de eerste configuratie is voltooid. Dit proces wordt [inrichting](./provisioning.md) genoemd. 
 
 Voor het inrichten is vereist dat een inrichtingsprogramma is opgenomen in de installatiekopie. Er zijn twee inrichtingsprogramma’s:
 - [Azure Linux Agent](../extensions/agent-linux.md)
@@ -94,7 +94,7 @@ Op hoog niveau maakt u een SIG en bestaat deze uit:
 
 ## <a name="hyper-v-generation"></a>Hyper-V generatie
 
-Azure biedt ondersteuning voor Hyper-V generatie 1 (gen1) en generatie 2 (Gen2), Gen2 is de nieuwste generatie en biedt extra functionaliteit die Gen1 niet heeft. Bijvoorbeeld: groter geheugen, Intel-software Guard Extensions (Intel SGX) en gevirtualiseerd permanent geheugen (vPMEM). Virtuele machines van generatie 2 kunnen on-premises worden uitgevoerd, hebben enkele functies die nog niet worden ondersteund in Azure. Zie de sectie Functies en mogelijkheden voor meer informatie. Raadpleeg [dit artikel](../windows/generation-2.md) voor meer informatie. Maak Gen2-installatiekopieën als u de extra functionaliteit nodig hebt.
+Azure biedt ondersteuning voor Hyper-V generatie 1 (gen1) en generatie 2 (Gen2), Gen2 is de nieuwste generatie en biedt extra functionaliteit die Gen1 niet heeft. Bijvoorbeeld: groter geheugen, Intel-software Guard Extensions (Intel SGX) en gevirtualiseerd permanent geheugen (vPMEM). Virtuele machines van generatie 2 kunnen on-premises worden uitgevoerd, hebben enkele functies die nog niet worden ondersteund in Azure. Zie de sectie Functies en mogelijkheden voor meer informatie. Raadpleeg [dit artikel](../generation-2.md) voor meer informatie. Maak Gen2-installatiekopieën als u de extra functionaliteit nodig hebt.
 
 Als u nog een eigen installatiekopie moet maken, controleert u of deze voldoet aan de [vereisten voor installatiekopieën](./create-upload-generic.md) en uploadt u deze naar Azure. Distributiespecifieke vereisten:
 

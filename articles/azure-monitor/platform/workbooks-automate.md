@@ -2,19 +2,16 @@
 title: Azure Monitor werkmappen en Azure Resource Manager sjablonen
 description: Vereenvoudig complexe rapportage met vooraf opgebouwde en aangepaste werkmappen met para meters Azure Monitor die via Azure Resource Manager sjablonen zijn geïmplementeerd
 services: azure-monitor
-author: mrbullwinkle
-manager: carmonm
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.author: mbullwin
-ms.openlocfilehash: e2463c2ea4044af0b20a1dee91b30870639dc7ce
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 77190b85da08d09cf05a02dcc5787f0c24229948
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86504917"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91929724"
 ---
 # <a name="programmatically-manage-workbooks"></a>Werkmappen programmatisch beheren
 
@@ -201,7 +198,7 @@ In deze sjabloon ziet u hoe u een eenvoudige werkmap implementeert waarin een ' 
 | `serializedData` | Bevat de inhoud of Payload die in de werkmap moet worden gebruikt. De Resource Manager-sjabloon uit de werkmappen-gebruikers interface gebruiken om de waarde op te halen |
 
 ### <a name="workbook-types"></a>Werkmap typen
-Met werkmap typen geeft u op in welke werkmap galerie het nieuwe exemplaar van de werkmap wordt weer gegeven onder. Een aantal opties:
+Met werkmap typen geeft u op in welke werkmap galerie het nieuwe exemplaar van de werkmap wordt weer gegeven onder. Opties zijn onder andere:
 
 | Type | Galerie locatie |
 | :------------- |:-------------|

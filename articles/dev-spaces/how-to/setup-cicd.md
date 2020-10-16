@@ -8,14 +8,16 @@ ms.topic: conceptual
 manager: gwallace
 description: Meer informatie over het instellen van continue integratie/continue implementatie met Azure DevOps met Azure dev Spaces
 keywords: Docker, Kubernetes, azure, AKS, Azure Container Service, containers
-ms.openlocfilehash: c7b3eba0bea85082dbb4e39d108af9471d5dc45e
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: de409aa060034c9ba0faaaa56ce21f904b02cdac
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080263"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960385"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>CI/CD gebruiken met Azure Dev Spaces
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 In dit artikel vindt u instructies voor het instellen van continue integratie/continue implementatie (CI/CD) naar Azure Kubernetes service (AKS) met ontwikkel ruimten ingeschakeld. Met CI/CD naar AKS kunnen app-updates automatisch worden geïmplementeerd wanneer toegezegde code naar uw bron opslagplaats wordt gepusht. Het gebruik van CI/CD in combi natie met een cluster met ontwikkel ruimten is nuttig omdat het een basis lijn van de toepassing kan houden zodat het team kan werken met.
 
@@ -70,7 +72,7 @@ De optie om uit te scha kelen:
 
 In de _azds_updates_ Branch hebben we een eenvoudige [Azure pipeline-yaml](/azure/devops/pipelines/yaml-schema?view=vsts&tabs=schema) opgenomen waarmee de build-stappen worden gedefinieerd die vereist zijn voor *mywebapi* en *webfrontend*.
 
-Afhankelijk van de taal die u hebt gekozen, is de pijplijn YAML ingecheckt in een pad dat lijkt op het volgende:`samples/dotnetcore/getting-started/azure-pipelines.dotnetcore.yml`
+Afhankelijk van de taal die u hebt gekozen, is de pijplijn YAML ingecheckt in een pad dat lijkt op het volgende: `samples/dotnetcore/getting-started/azure-pipelines.dotnetcore.yml`
 
 Een pijp lijn maken op basis van dit bestand:
 1. Navigeer op de hoofd pagina van uw DevOps-project naar pijp lijnen > builds.
@@ -160,7 +162,7 @@ De release wordt uitgevoerd wanneer alle taken zijn voltooid.
 
 In de fase _Prod_ van de CI/cd-pijp lijn wordt gebruikgemaakt van een Load Balancer in plaats van de controller voor de ingang van ontwikkel aars om toegang te bieden tot _productie_ Services. Services die in de fase _Prod_ zijn geïmplementeerd, zijn toegankelijk als IP-adressen in plaats van DNS-namen. In een productie omgeving kunt u ervoor kiezen om uw eigen inslag controller te maken om uw services te hosten op basis van uw eigen DNS-configuratie.
 
-Als u het IP-adres van de Webfront-end-service wilt bepalen, klikt u op de stap **afdrukken webfrontend openbaar IP-adres** om de logboek uitvoer uit te vouwen. Gebruik het IP-adres dat wordt weer gegeven in de logboek uitvoer voor toegang tot de Webfront- **End** -toepassing.
+Als u het IP-adres van de Webfront-end-service wilt bepalen, klikt u op de stap  **afdrukken webfrontend openbaar IP-adres** om de logboek uitvoer uit te vouwen. Gebruik het IP-adres dat wordt weer gegeven in de logboek uitvoer voor toegang tot de Webfront- **End** -toepassing.
 
 ```cmd
 ...
@@ -185,7 +187,7 @@ Hier volgt een voor beeld van een naam ruimte structuur die ondersteuning biedt 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de werking van Azure dev Spaces.
+Meer informatie over hoe Azure Dev Spaces werkt.
 
 > [!div class="nextstepaction"]
 > [Hoe Azure Dev Spaces werkt](../how-dev-spaces-works.md)

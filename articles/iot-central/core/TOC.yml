@@ -10,6 +10,8 @@
       href: overview-iot-central-developer.md
     - name: Recente updates
       items:
+        - name: Nieuwe en bijgewerkte functies van september 2020
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-september-2020/'
         - name: Nieuwe en bijgewerkte functies van augustus 2020
           href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-august-2020/'
         - name: Nieuwe en bijgewerkte functies van juli 2020
@@ -170,9 +172,11 @@
             - name: Live chat in-/uitschakelen
               href: howto-show-hide-chat.md
     - name: Problemen oplossen
-      items: null
-      '-name': Device connections
-      href: troubleshoot-connection.md
+      items:
+        - name: Apparaatverbindingen
+          href: troubleshoot-connection.md
+    - name: Veelgestelde vragen
+      href: howto-faq.md
 - name: Naslaginformatie
   items:
     - name: Azure CLI

@@ -1,17 +1,16 @@
 ---
 title: Azure Cosmos DB met Azure Monitor bewaken voor Cosmos DB | Microsoft Docs
 description: In dit artikel wordt de Azure Monitor voor Cosmos DB functie beschreven waarmee Cosmos DB-eigen aars een duidelijk beeld krijgen van de prestaties en het gebruik van problemen met hun CosmosDB-accounts.
-ms.subservice: ''
-ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
+ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 8043dfb7fdda972d4ede6798d07355936b23bf93
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dcd64cf779b931dbf3b4f743844071835e0b8c91
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498913"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91932053"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db"></a>Azure Monitor verkennen voor Azure Cosmos DB
 
@@ -38,7 +37,7 @@ Voor deze functie hoeft u niets in te scha kelen of te configureren. deze Azure 
 
 Voer de volgende stappen uit om het gebruik en de prestaties van uw opslag accounts in al uw abonnementen weer te geven.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 2. Zoek naar **monitor** en selecteer **monitor**.
 
@@ -88,7 +87,7 @@ Selecteer de optie **capaciteit** boven aan de pagina en het gedeelte **capacite
 
 Net als bij de overzichts werkmap selecteert de vervolg keuzelijst naast een Azure Cosmos DB resource in de kolom **abonnement** een uitsplitsing van de afzonderlijke containers waaruit de data base is opgebouwd.
 
-### <a name="operations"></a>Bewerkingen 
+### <a name="operations"></a>Operations 
 
 Selecteer **bewerkingen** boven aan de pagina en het gedeelte **bewerkingen** van de werkmap sjabloon wordt geopend. Het biedt u de mogelijkheid om uw aanvragen weer te geven die zijn gesplitst op basis van het type aanvragen. 
 

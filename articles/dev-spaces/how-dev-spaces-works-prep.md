@@ -5,14 +5,16 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Hierin wordt beschreven hoe u uw project voorbereidt met Azure dev Spaces werkt
 keywords: azds. yaml, Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers
-ms.openlocfilehash: 61351072494b51d02a1d6c31399208b9e9b54fce
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: d2da69dd8a8c2683ff584dfd0ffc61cb023f2ece
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213418"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968154"
 ---
 # <a name="how-preparing-a-project-for-azure-dev-spaces-works"></a>Hoe u een project voorbereidt voor Azure dev Spaces werkt
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../includes/dev-spaces-deprecation.md)]
 
 Met Azure dev Spaces kunt u op verschillende manieren snel en probleem oplossing voor Kubernetes-toepassingen en samen werken met uw team op een AKS-cluster (Azure Kubernetes service). Ontwikkel ruimten kunnen Dockerfiles-en helm-grafieken voor uw project genereren. Dev Spaces maakt en gebruikt ook een configuratie bestand voor het implementeren, uitvoeren en opsporen van fouten in uw Kubernetes-toepassingen in AKS. Al deze bestanden bevinden zich in de code van uw toepassing en kunnen worden toegevoegd aan uw versie beheersysteem.
 

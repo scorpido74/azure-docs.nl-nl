@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/13/2020
 ms.openlocfilehash: 370ac9528b023f01aaff5e5a7ec62785a02bb4bd
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86085341"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>Azure-toolkit voor IntelliJ gebruiken om Apache Spark-toepassingen voor een HDInsight-cluster te maken
@@ -37,7 +37,7 @@ In dit artikel leert u het volgende:
 
 * [Oracle Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).  In dit artikel wordt gebruikgemaakt van Java versie 8.0.202.
 
-* IntelliJ-idee. In dit artikel wordt gebruikgemaakt van [IntelliJ-idee Community ver.  2018.3.4](https://www.jetbrains.com/idea/download/).
+* IntelliJ-idee. In dit artikel wordt [IntelliJ IDEA Community versie  2018.3.4](https://www.jetbrains.com/idea/download/).
 
 * Azure-toolkit voor IntelliJ.  Zie [Installing the Azure Toolkit for IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation?view=azure-java-stable) (De Azure Toolkit voor IntelliJ installeren).
 
@@ -47,7 +47,7 @@ Stappen voor het installeren van de scala-invoeg toepassing:
 
 1. Open IntelliJ IDEA.
 
-2. Navigeer in het scherm Welkom naar **Configure**  >  **invoeg toepassingen** configureren om het venster **plugins** te openen.
+2. Ga op het welkomstscherm naar **Configure** > **Plugins** om het venster **Plugins** te openen.
 
     ![IntelliJ-idee maakt scala-invoeg toepassing mogelijk](./media/apache-spark-intellij-tool-plugin/enable-scala-plugin1.png)
 
@@ -78,7 +78,7 @@ Stappen voor het installeren van de scala-invoeg toepassing:
     |  Eigenschap   | Beschrijving   |  
     | ----- | ----- |  
     |Projectnaam| Voer een naam in.  In dit artikel wordt gebruikgemaakt van `myApp` .|  
-    |Project&nbsp;location| Geef de locatie op waar u het project wilt opslaan.|
+    |Project&nbsp;location| Voer de locatie in om uw project in op te slaan.|
     |Project SDK| Dit veld is mogelijk leeg in het eerste gebruik van het idee.  Selecteer **New...** en ga naar uw JDK.|
     |Spark-versie|De wizard voor het maken van het project integreert de juiste versie voor Spark SDK en Scala SDK. Selecteer **Spark 1.x** als de Spark-clusterversie ouder is dan 2.0. Selecteer anders **Spark 2.x**. In dit voorbeeld wordt **Spark 2.3.0 (Scala 2.11.8)** gebruikt.|
 
@@ -92,7 +92,7 @@ Stappen voor het installeren van de scala-invoeg toepassing:
 
    b. Selecteer in het venster **Projectstructuur** de optie **Artefacten**.  
 
-   c. Selecteer **Annuleren** nadat u het artefact hebt weer gegeven.
+   c. Selecteer **Annuleren**  nadat u het artefact hebt weer gegeven.
 
       ![Artefactgegevens in het dialoogvenster](./media/apache-spark-intellij-tool-plugin/default-artifact-dialog.png)
 

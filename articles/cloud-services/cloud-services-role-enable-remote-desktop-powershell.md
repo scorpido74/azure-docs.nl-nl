@@ -9,12 +9,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: 13d5be5b1e0bcdf84001f21a45364296d67a5da4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7742267f5ce199f3a5bffc52200374d2323f0622
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87013894"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072455"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-powershell"></a>Verbinding met extern bureaublad inschakelen voor een rol in azure Cloud Services met behulp van Power shell
 
@@ -30,7 +30,7 @@ In dit artikel wordt beschreven hoe u extern bureau blad kunt inschakelen voor u
 ## <a name="configure-remote-desktop-from-powershell"></a>Extern bureaublad configureren vanuit Power shell
 Met de cmdlet [set-AzureServiceRemoteDesktopExtension](/powershell/module/servicemanagement/azure.service/set-azureserviceremotedesktopextension?view=azuresmps-3.7.0) kunt u extern bureaublad inschakelen voor opgegeven rollen of voor alle rollen van de implementatie van de Cloud service. Met de cmdlet kunt u de gebruikers naam en het wacht woord voor de gebruiker van het externe bureau blad opgeven via de para meter *Credential* waarmee een PSCredential-object wordt geaccepteerd.
 
-Als u Power shell interactief gebruikt, kunt u het PSCredential-object eenvoudig instellen door de cmdlet [Get-credentials aan](https://technet.microsoft.com/library/hh849815.aspx) te roepen.
+Als u Power shell interactief gebruikt, kunt u het PSCredential-object eenvoudig instellen door de cmdlet [Get-credentials aan](/powershell/module/microsoft.powershell.security/get-credential) te roepen.
 
 ```powershell
 $remoteusercredentials = Get-Credential
@@ -38,7 +38,7 @@ $remoteusercredentials = Get-Credential
 
 Met deze opdracht wordt een dialoog venster weer gegeven waarin u de gebruikers naam en het wacht woord voor de externe gebruiker op een veilige manier kunt opgeven.
 
-Omdat Power shell in automatiserings scenario's helpt, kunt u het **PSCredential** -object ook zo instellen dat er geen gebruikers interactie is vereist. Eerst moet u een veilig wacht woord instellen. U begint met het opgeven van een wacht woord voor tekst zonder opmaak, converteer het naar een veilige teken reeks met behulp van [ConvertTo-SecureString](https://technet.microsoft.com/library/hh849818.aspx). Vervolgens moet u deze beveiligde teken reeks converteren naar een versleutelde standaard teken reeks met behulp van [ConvertFrom-SecureString](https://technet.microsoft.com/library/hh849814.aspx). Nu kunt u deze versleutelde standaard teken reeks opslaan in een bestand met behulp van [set-content](https://technet.microsoft.com/library/ee176959.aspx).
+Omdat Power shell in automatiserings scenario's helpt, kunt u het **PSCredential** -object ook zo instellen dat er geen gebruikers interactie is vereist. Eerst moet u een veilig wacht woord instellen. U begint met het opgeven van een wacht woord voor tekst zonder opmaak, converteer het naar een veilige teken reeks met behulp van [ConvertTo-SecureString](/powershell/module/microsoft.powershell.security/convertto-securestring). Vervolgens moet u deze beveiligde teken reeks converteren naar een versleutelde standaard teken reeks met behulp van [ConvertFrom-SecureString](/powershell/module/microsoft.powershell.security/convertfrom-securestring). Nu kunt u deze versleutelde standaard teken reeks opslaan in een bestand met behulp van [set-content](/previous-versions/windows/it-pro/windows-powershell-1.0/ee176959(v=technet.10)).
 
 U kunt ook een beveiligd wachtwoord bestand maken, zodat u niet elke keer het wacht woord hoeft in te voeren. Een beveiligd wachtwoord bestand is ook beter dan een bestand met tekst zonder opmaak. Gebruik de volgende Power shell om een beveiligd wachtwoord bestand te maken:
 
@@ -47,9 +47,9 @@ ConvertTo-SecureString -String "Password123" -AsPlainText -Force | ConvertFrom-S
 ```
 
 > [!IMPORTANT]
-> Zorg er bij het instellen van het wacht woord voor dat u voldoet aan de [complexiteits vereisten](https://technet.microsoft.com/library/cc786468.aspx).
+> Zorg er bij het instellen van het wacht woord voor dat u voldoet aan de [complexiteits vereisten](/previous-versions/windows/it-pro/windows-server-2003/cc786468(v=ws.10)).
 
-Als u het referentie object wilt maken vanuit het beveiligde wachtwoord bestand, moet u de inhoud van het bestand lezen en terugconverteren naar een veilige teken reeks met behulp van [ConvertTo-SecureString](https://technet.microsoft.com/library/hh849818.aspx).
+Als u het referentie object wilt maken vanuit het beveiligde wachtwoord bestand, moet u de inhoud van het bestand lezen en terugconverteren naar een veilige teken reeks met behulp van [ConvertTo-SecureString](/powershell/module/microsoft.powershell.security/convertto-securestring).
 
 De cmdlet [set-AzureServiceRemoteDesktopExtension](/powershell/module/servicemanagement/azure.service/set-azureserviceremotedesktopextension?view=azuresmps-3.7.0) accepteert ook een *verval* parameter, waarmee een **datum/tijd** wordt opgegeven waarop het gebruikers account verloopt. U kunt bijvoorbeeld instellen dat het account een paar dagen vanaf de huidige datum en tijd verloopt.
 
@@ -98,8 +98,6 @@ Remove-AzureServiceRemoteDesktopExtension -ServiceName $servicename -UninstallCo
 >
 > Met de para meter **UninstallConfiguration** verwijdert u de extensie configuratie die wordt toegepast op de service. Elke extensie configuratie is gekoppeld aan de service configuratie. Het aanroepen van de *Remove* cmdlet zonder **UninstallConfiguration** koppelt de <mark>implementatie</mark> van de extensie configuratie, waardoor de uitbrei ding daarom effectief wordt verwijderd. De extensie configuratie blijft echter gekoppeld aan de service.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 [Cloud Services configureren](cloud-services-how-to-configure-portal.md)
-
-

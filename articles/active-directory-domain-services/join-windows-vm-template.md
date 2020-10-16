@@ -2,7 +2,7 @@
 title: Een sjabloon gebruiken om een virtuele Windows-machine toe te voegen aan Azure AD DS | Microsoft Docs
 description: Meer informatie over het gebruik van Azure Resource Manager sjablonen om een nieuwe of bestaande virtuele Windows Server-machine toe te voegen aan een Azure Active Directory Domain Services beheerd domein.
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 4eabfd8e-5509-4acd-86b5-1318147fddb5
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
-ms.author: iainfou
-ms.openlocfilehash: fdef11fec93d4ba6254957ad14e0612e2fd05580
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.author: joflore
+ms.openlocfilehash: 988f009527f26a9f2be965b635d57f0bc38913c2
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221354"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960691"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>Een virtuele machine met Windows Server toevoegen aan een Azure Active Directory Domain Services beheerd domein met behulp van een resource manager-sjabloon
 
@@ -91,7 +91,7 @@ Als u een Windows Server-VM wilt maken, voegt u deze toe aan een beheerd domein,
     | Locatie                  | Selecteer de locatie van voor uw VM. |
     | Bestaande VNET-naam        | De naam van het bestaande virtuele netwerk waarmee de virtuele machine moet worden verbonden, zoals *myVnet*. |
     | Bestaande Subnetnaam      | De naam van het bestaande subnet van het virtuele netwerk, zoals *werk belastingen*. |
-    | DNS-label voorvoegsel          | Voer een DNS-naam in om te gebruiken voor de virtuele machine, zoals *myvm*. |
+    | Voorvoegsel van DNS-label          | Voer een DNS-naam in om te gebruiken voor de virtuele machine, zoals *myvm*. |
     | VM-grootte                   | Geef een VM-grootte op, bijvoorbeeld *Standard_DS2_v2*. |
     | Domein om lid te worden            | De DNS-naam van het beheerde domein, zoals *aaddscontoso.com*. |
     | Domein gebruikers naam           | Het gebruikers account in het beheerde domein dat moet worden gebruikt om de virtuele machine toe te voegen aan het beheerde domein, zoals `contosoadmin@aaddscontoso.com` . Dit account moet deel uitmaken van het beheerde domein. |

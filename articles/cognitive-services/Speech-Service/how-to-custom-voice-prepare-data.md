@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
 ms.openlocfilehash: 5427e9f996fb77d455aa8064fc7cb1c65e1fcf7e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74805974"
 ---
 # <a name="prepare-data-to-create-a-custom-voice"></a>Gegevens voorbereiden voor het maken van een aangepaste spraak
@@ -53,15 +53,15 @@ Als u een goed gesp roken letter type wilt maken, maakt u de opnamen in een stil
 
 ### <a name="audio-files"></a>Audio bestanden
 
-Elk audio bestand moet één utterance bevatten (één zin of één draai van een dialoog systeem), kleiner dan 15 seconden lang. Alle bestanden moeten zich in dezelfde gesp roken taal behoeven. Aangepaste tekst-naar-spraak-stemmen met meerdere talen worden niet ondersteund, met uitzonde ring van het Chinese Engelse bi-taal. Elk audio bestand moet een unieke numerieke bestands naam hebben met de bestandsnaam extensie. WAV.
+Elk audio bestand moet één utterance bevatten (één zin of één draai van een dialoog systeem), kleiner dan 15 seconden lang. Alle bestanden moeten zich in dezelfde gesp roken taal behoeven. Aangepaste tekst-naar-spraak-stemmen met meerdere talen worden niet ondersteund, met uitzonde ring van de Chinese-English bi. Elk audio bestand moet een unieke numerieke bestands naam hebben met de bestandsnaam extensie. WAV.
 
 Volg deze richt lijnen bij het voorbereiden van audio.
 
 | Eigenschap | Waarde |
 | -------- | ----- |
-| Bestands indeling | RIFF (. wav), gegroepeerd in een zip-bestand |
+| Bestandsindeling | RIFF (. wav), gegroepeerd in een zip-bestand |
 | Sampling frequentie | Ten minste 16.000 Hz |
-| Voorbeeld indeling | PCM, 16-bits |
+| Sample-indeling | PCM, 16-bits |
 | Bestandsnaam | Numeric, met de extensie. WAV. Er zijn geen dubbele bestands namen toegestaan. |
 | Audio lengte | Korter dan 15 seconden |
 | Archief indeling | .zip |
@@ -76,7 +76,7 @@ Het transcriptie-bestand is een bestand met tekst zonder opmaak. Gebruik deze ri
 
 | Eigenschap | Waarde |
 | -------- | ----- |
-| Bestands indeling | Tekst zonder opmaak (. txt) |
+| Bestandsindeling | Tekst zonder opmaak (. txt) |
 | Coderings indeling | ANSI/ASCII, UTF-8, UTF-8-BOM, UTF-16-LE of UTF-16-to. Voor zh-CN, ANSI/ASCII en UTF-8-code ringen worden niet ondersteund. |
 | Aantal utterances per regel | **Eén** -elke regel van het transcriptie-bestand moet de naam bevatten van een van de audio bestanden, gevolgd door de bijbehorende transcriptie. De bestandsnaam en transcriptie moeten worden gescheiden door een tab (\t). |
 | Maximale bestandsgrootte | 2048 MB |
@@ -106,13 +106,13 @@ Volg deze richt lijnen bij het voorbereiden van de audio voor segmentering.
 
 | Eigenschap | Waarde |
 | -------- | ----- |
-| Bestands indeling | RIFF (. wav) met een sampling frequentie van ten minste 16 kHz-16-bits in PCM of. mp3 met een bitsnelheid van ten minste 256 KBps, gegroepeerd in een zip-bestand |
+| Bestandsindeling | RIFF (. wav) met een sampling frequentie van ten minste 16 kHz-16-bits in PCM of. mp3 met een bitsnelheid van ten minste 256 KBps, gegroepeerd in een zip-bestand |
 | Bestandsnaam | ASCII-en Unicode-tekens worden ondersteund. Er zijn geen dubbele namen toegestaan. |
 | Audio lengte | Langer dan 20 seconden |
 | Archief indeling | .zip |
 | Maximale archief grootte | 2048 MB |
 
-Alle audio bestanden moeten worden gegroepeerd in een zip-bestand. U kunt WAV-bestanden en MP3-bestanden opslaan in één audio-zip. U kunt bijvoorbeeld een zip-bestand uploaden met een audio bestand met de naam ' kingstory. wav ', 45-Second-Long en een ander audio met de naam ' queenstory. mp3 ', 200-Second-Long. Alle MP3-bestanden worden na verwerking getransformeerd in de. WAV-indeling.
+Alle audio bestanden moeten worden gegroepeerd in een zip-bestand. U kunt WAV-bestanden en MP3-bestanden opslaan in één audio-zip. U kunt bijvoorbeeld een zip-bestand met de naam ' kingstory. wav ', 45-Second-Long en een ander audio bestand met de naam ' queenstory.mp3 ', 200-Second-Long uploaden. Alle MP3-bestanden worden na verwerking getransformeerd in de. WAV-indeling.
 
 ### <a name="transcripts"></a>Transcripten
 
@@ -120,13 +120,13 @@ Transcripten moeten worden voor bereid op de specificaties die in deze tabel wor
 
 | Eigenschap | Waarde |
 | -------- | ----- |
-| Bestands indeling | Tekst zonder opmaak (. txt), gegroepeerd in een. zip |
+| Bestandsindeling | Tekst zonder opmaak (. txt), gegroepeerd in een. zip |
 | Bestandsnaam | Dezelfde naam gebruiken als het overeenkomende audio bestand |
 | Coderings indeling | Alleen UTF-8-stuk lijst |
 | Aantal utterances per regel | Geen limiet |
 | Maximale bestandsgrootte | 2048 MB |
 
-Alle transcripten-bestanden in dit gegevens type moeten worden gegroepeerd in een zip-bestand. U hebt bijvoorbeeld een zip-bestand met een audio bestand met de naam ' kingstory. wav ', 45 seconden lang, en een andere met de naam ' queenstory. mp3 ', 200 seconden lang. U moet een ander zip-bestand uploaden dat twee transcripten bevat: een met de naam ' kingstory. txt ', de andere ' queenstory. txt '. In elk bestand met tekst zonder opmaak geeft u de volledige juiste transcriptie op voor de overeenkomende audio.
+Alle transcripten-bestanden in dit gegevens type moeten worden gegroepeerd in een zip-bestand. U hebt bijvoorbeeld een zip-bestand met een audio bestand met de naam ' kingstory. wav ', 45 seconden lang, en een andere met de naam ' queenstory.mp3 ', 200 seconden lang. U moet een ander zip-bestand met twee transcripten uploaden, met de naam ' kingstory.txt ', de andere ' queenstory.txt '. In elk bestand met tekst zonder opmaak geeft u de volledige juiste transcriptie op voor de overeenkomende audio.
 
 Nadat uw gegevensset is geüpload, kunt u het audio bestand in uitingen segmenteren op basis van het gegeven transcript. U kunt de gesegmenteerde uitingen en de overeenkomende transcripten controleren door de gegevensset te downloaden. Unieke Id's worden automatisch toegewezen aan de gesegmenteerde uitingen. Het is belang rijk dat u ervoor zorgt dat de transcripten die u opgeeft, 100% nauw keurig zijn. Fouten in de transcripten kunnen de nauw keurigheid van de audio segmentering verminderen en het kwaliteits verlies in de trainings fase verder verbeteren.
 
@@ -141,7 +141,7 @@ Volg deze richt lijnen bij het voorbereiden van audio.
 
 | Eigenschap | Waarde |
 | -------- | ----- |
-| Bestands indeling | RIFF (. wav) met een sampling frequentie van ten minste 16 kHz-16-bits in PCM of. mp3 met een bitsnelheid van ten minste 256 KBps, gegroepeerd in een zip-bestand |
+| Bestandsindeling | RIFF (. wav) met een sampling frequentie van ten minste 16 kHz-16-bits in PCM of. mp3 met een bitsnelheid van ten minste 256 KBps, gegroepeerd in een zip-bestand |
 | Bestandsnaam | ASCII-en Unicode-tekens worden ondersteund. Er is geen dubbele naam toegestaan. |
 | Audio lengte | Langer dan 20 seconden |
 | Archief indeling | .zip |
@@ -151,5 +151,5 @@ Alle audio bestanden moeten worden gegroepeerd in een zip-bestand. Zodra uw gege
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een aangepaste stem maken](how-to-custom-voice-create-voice.md)
+- [Een Custom Voice maken](how-to-custom-voice-create-voice.md)
 - [Hand leiding: uw stem voorbeelden vastleggen](record-custom-voice-samples.md)

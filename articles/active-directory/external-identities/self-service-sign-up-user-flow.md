@@ -12,10 +12,10 @@ manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ffb1d5eb756c7bc316a6d8e1de30a95eb1ac5194
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91287046"
 ---
 # <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>Een self-service-aanmeldings stroom voor gebruikers toevoegen aan een app (preview)
@@ -95,7 +95,7 @@ U kunt nu toepassingen koppelen aan de gebruikers stroom.
 4. Selecteer **gebruikers stromen (preview)** onder **self-service registreren**.
 5. Selecteer de self-service voor het registreren van de gebruikers stroom in de lijst.
 6. Selecteer in het menu links onder **gebruiken**de optie **toepassingen**.
-7. Selecteer **toepassing toevoegen**.
+7. Selecteer **Toepassing toevoegen**.
 
    ![Een toepassing toewijzen aan de gebruikers stroom](media/self-service-sign-up-user-flow/assign-app-to-user-flow.png)
 

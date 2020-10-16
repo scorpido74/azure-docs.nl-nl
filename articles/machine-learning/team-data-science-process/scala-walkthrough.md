@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 56f266eaba76bb990a4d2bc3d902f4c5911d9c47
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86026182"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>Gegevenswetenschap met Scala en Spark op Azure
@@ -77,14 +77,14 @@ val beginningTime = Calendar.getInstance().getTime()
 
 De Spark-kernels die worden meegeleverd met Jupyter-notebooks bevatten vooraf ingestelde contexten. U hoeft de Spark-of Hive-contexten niet expliciet in te stellen voordat u aan de slag gaat met de toepassing die u ontwikkelt. De vooraf ingestelde contexten zijn:
 
-* `sc`voor SparkContext
-* `sqlContext`voor HiveContext
+* `sc` voor SparkContext
+* `sqlContext` voor HiveContext
 
 ### <a name="spark-magics"></a>Spark-magics
 De Spark-kernel biedt enkele vooraf gedefinieerde ' magics '. Dit zijn speciale opdrachten waarmee u kunt aanroepen `%%` . Twee van deze opdrachten worden gebruikt in de volgende code voorbeelden.
 
-* `%%local`geeft aan dat de code in de volgende regels lokaal wordt uitgevoerd. De code moet een geldige scala-code zijn.
-* `%%sql -o <variable name>`voert een Hive-query uit op basis van `sqlContext` . Als de `-o` para meter wordt door gegeven, wordt het resultaat van de query persistent gemaakt in de `%%local` scala-context als een Spark-gegevens frame.
+* `%%local` geeft aan dat de code in de volgende regels lokaal wordt uitgevoerd. De code moet een geldige scala-code zijn.
+* `%%sql -o <variable name>` voert een Hive-query uit op basis van `sqlContext` . Als de `-o` para meter wordt door gegeven, wordt het resultaat van de query persistent gemaakt in de `%%local` scala-context als een Spark-gegevens frame.
 
 Voor meer informatie over de kernels voor Jupyter-notebooks en hun vooraf gedefinieerde ' magics ' die u aanroept `%%` (bijvoorbeeld `%%local` ), raadpleegt u de [kernels die beschikbaar zijn voor Jupyter-notebooks met hdinsight Spark Linux-clusters in hdinsight](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
 
@@ -303,8 +303,8 @@ sqlResults
 * Tabel
 * Cirkeldiagram
 * Lijn
-* Onderwerp
-* Staafdiagram
+* Gebied
+* Staaf
 
 Hier volgt de code voor het uitzetten van de gegevens:
 
@@ -343,9 +343,9 @@ plt.show()
 
 ![Histogram met fooien](./media/scala-walkthrough/plot-tip-amount-histogram.png)
 
-![Aantal fooien per passagier](./media/scala-walkthrough/plot-tip-amount-by-passenger-count.png)
+![Hoogte van fooi per aantal passagiers](./media/scala-walkthrough/plot-tip-amount-by-passenger-count.png)
 
-![Aantal fooien per tarief](./media/scala-walkthrough/plot-tip-amount-by-fare-amount.png)
+![Hoogte van fooi per ritbedrag](./media/scala-walkthrough/plot-tip-amount-by-fare-amount.png)
 
 ## <a name="create-features-and-transform-features-and-then-prep-data-for-input-into-modeling-functions"></a>Functies maken en functies transformeren en vervolgens gegevens voor invoer in model functies voorbereiden
 Voor modellen die zijn gebaseerd op een structuur van Spark ML en MLlib, moet u het doel en de functies voorbereiden met behulp van verschillende technieken, zoals binning, indexering, One-Hot encoding en vectorization. Dit zijn de procedures die in deze sectie moeten worden gevolgd:
@@ -356,7 +356,7 @@ Voor modellen die zijn gebaseerd op een structuur van Spark ML en MLlib, moet u 
 4. **Geef de variabele en functies**voor de training op en maak een geïndexeerde of een hot-rdd's code ring en test invoer met de naam flexibel gedistribueerde gegevens sets () of gegevens frames.
 5. **Categoriseer en vectorize functies en doelen** automatisch om te gebruiken als invoer voor machine learning modellen.
 
-### <a name="create-a-new-feature-by-binning-hours-into-traffic-time-buckets"></a>Een nieuwe functie door binning uur maken in tijds verzamelingen voor verkeer
+### <a name="create-a-new-feature-by-binning-hours-into-traffic-time-buckets"></a>Een nieuwe functie maken door tijdstippen van ophalen toe te wijzen aan tariefperioden
 Deze code laat zien hoe u een nieuwe functie van binning uur maakt in tijds verzamelingen voor verkeer en hoe het resulterende gegevens frame in het geheugen moet worden opgeslagen. Wanneer Rdd's-en data-frames herhaaldelijk worden gebruikt, wordt het in de cache plaatsen van prestaties tot betere uitvoerings tijden. Daarom kunt u Rdd's en gegevens frames in verschillende fasen in de volgende procedures in de cache opslaan.
 
 ```scala
@@ -379,13 +379,13 @@ taxi_df_train_with_newFeatures.count()
 ```
 
 ### <a name="indexing-and-one-hot-encoding-of-categorical-features"></a>Indexeren en één Hot code ring van categorische-functies
-Voor het model leren en voors pellen van MLlib zijn functies met categorische-invoer gegevens vereist die moeten worden geïndexeerd of gecodeerd voordat ze kunnen worden gebruikt. In deze sectie wordt beschreven hoe u categorische-functies indexeert of versleutelt voor invoer in de modelleer functies.
+De functies van MLlib voor modelleren en voorspellen, vereisen dat functies met categorische invoergegevens worden geïndexeerd of gecodeerd voordat ze worden gebruikt. In deze sectie wordt beschreven hoe u categorische-functies indexeert of versleutelt voor invoer in de modelleer functies.
 
 U moet uw modellen op verschillende manieren indexeren of coderen, afhankelijk van het model. Voor logistiek-en lineaire regressie modellen is bijvoorbeeld één Hot encoding vereist. Zo kan een functie met drie categorieën worden uitgebreid in drie functie kolommen. Elke kolom zou 0 of 1 moeten bevatten, afhankelijk van de categorie van een waarneming. MLlib biedt de functie [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) voor code ring met één Hot-codering. Met dit coderings programma wordt een kolom met label indexen toegewezen aan een kolom met binaire vectoren met Maxi maal één waarde. Met deze code ring kunnen algoritmen die numerieke functies verwachten, zoals logistiek regressie, worden toegepast op categorische-functies.
 
 Hier kunt u slechts vier variabelen transformeren om voor beelden weer te geven. Dit zijn teken reeksen. U kunt ook andere variabelen indexeren, zoals de weekdag, vertegenwoordigd door numerieke waarden, als Categorische-variabelen.
 
-`StringIndexer()`Gebruik functies van MLlib voor het indexeren, gebruiken en voor het gebruik van één Hot encoding `OneHotEncoder()` . Hier volgt de code voor het indexeren en coderen van categorische-functies:
+`StringIndexer()`Gebruik functies van MLlib voor het indexeren, gebruiken en voor het gebruik van één Hot encoding `OneHotEncoder()` . Dit is de code voor het indexeren en coderen van categorische-functies:
 
 ```scala
 # CREATE INDEXES AND ONE-HOT ENCODED VECTORS FOR SEVERAL CATEGORICAL FEATURES
@@ -468,7 +468,7 @@ println("Time taken to run the above cell: " + elapsedtime + " seconds.");
 Tijd voor het uitvoeren van de cel: 2 seconden.
 
 ### <a name="specify-training-variable-and-features-and-then-create-indexed-or-one-hot-encoded-training-and-testing-input-labeled-point-rdds-or-data-frames"></a>Geef de variabelen en functies van de training op en maak een geïndexeerde of een hot-rdd's code ring en test invoer met het label punt of gegevens frames
-Deze sectie bevat code waarmee u kunt zien hoe u categorische tekst gegevens indexeert als een gelabeld punt-gegevens type, en deze te coderen, zodat u er MLlib logistiek-regressie en andere classificatie modellen mee kan trainen en testen. Gelabelde punt objecten zijn Rdd's die zijn ingedeeld op een manier die is vereist als invoer gegevens door de meeste machine learning-algoritmen in MLlib. Een [gelabeld punt](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) is een lokale vector, een compacte of een sparse, die is gekoppeld aan een label/antwoord.
+Deze sectie bevat code waarmee u kunt zien hoe u categorische tekst gegevens indexeert als een gelabeld punt-gegevens type, en deze te coderen, zodat u er MLlib logistiek-regressie en andere classificatie modellen mee kan trainen en testen. Gelabelde punt objecten zijn Rdd's die zijn ingedeeld op een manier die is vereist als invoer gegevens door de meeste machine learning-algoritmen in MLlib. Een [gelabeld punt](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) is een lokale vector, hetzij dense of sparse, die is gekoppeld aan een label/respons.
 
 In deze code geeft u de doel variabele (afhankelijke) en de functies op die moeten worden gebruikt voor het trainen van modellen. Vervolgens maakt u een geïndexeerde of een hot-rdd's code ring en voert u invoer met het label punt of gegevens frames.
 
@@ -556,7 +556,7 @@ In deze sectie maakt u drie soorten binaire classificatie modellen om te voors p
 * Een **wille keurig forest-classificatie model** met behulp van de Spark ml- `RandomForestClassifier()` functie
 * Een **kleur overgang** voor het verhogen van de boom structuur met behulp van de `GradientBoostedTrees()` functie MLlib
 
-### <a name="create-a-logistic-regression-model"></a>Een logistiek regressie model maken
+### <a name="create-a-logistic-regression-model"></a>Een logistiek regressiemodel maken
 Maak vervolgens een logistiek regressie model met behulp van de Spark ML- `LogisticRegression()` functie. U maakt de code voor het maken van het model in een reeks stappen:
 
 1. **Train de model** gegevens met één parameterset.

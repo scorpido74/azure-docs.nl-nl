@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 9/30/2020
 ms.subservice: alerts
 ms.openlocfilehash: 96f0cda9bdf6a17adb4d8d50b63ef5588e52f700
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91578101"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Ondersteunde resources voor metrische waarschuwingen in Azure Monitor
@@ -32,7 +32,7 @@ Hier volgt de volledige lijst met metrische gegevens bronnen van Azure monitor d
 |---------|---------|-----|----------|
 |Micro soft. Aadiam/azureADMetrics | Ja | Nee | |
 |Microsoft.ApiManagement/service | Ja | Nee | [API Management](./metrics-supported.md#microsoftapimanagementservice) |
-|Micro soft. AppConfiguration/configurationStores |Ja | Nee | [App Configuration](./metrics-supported.md#microsoftappconfigurationconfigurationstores) |
+|Micro soft. AppConfiguration/configurationStores |Ja | Nee | [App-configuratie](./metrics-supported.md#microsoftappconfigurationconfigurationstores) |
 |Micro soft. AppPlatform/lente | Ja | Nee | [Azure Spring Cloud](./metrics-supported.md#microsoftappplatformspring) |
 |Micro soft. Automation/automationAccounts | Ja| Nee | [Automation-accounts](./metrics-supported.md#microsoftautomationautomationaccounts) |
 |Micro soft. AVS/privateClouds | Nee | Nee | |
@@ -85,7 +85,7 @@ Hier volgt de volledige lijst met metrische gegevens bronnen van Azure monitor d
 |Micro soft. Network/applicationGateways | Ja | Nee | [Toepassings gateways](./metrics-supported.md#microsoftnetworkapplicationgateways) |
 |Micro soft. Network/azurefirewalls | Ja | Nee | [Firewalls](./metrics-supported.md#microsoftnetworkazurefirewalls) |
 |Microsoft.Network/dnsZones | Nee | Nee | [DNS-zones](./metrics-supported.md#microsoftnetworkdnszones) |
-|Microsoft.Network/expressRouteCircuits | N.v.t. | No |[Express Route-circuits](./metrics-supported.md#microsoftnetworkexpressroutecircuits) |
+|Microsoft.Network/expressRouteCircuits | N.v.t. | Nee |[Express Route-circuits](./metrics-supported.md#microsoftnetworkexpressroutecircuits) |
 |Micro soft. Network/loadBalancers (alleen voor standaard-Sku's)| Ja| Nee | [Load balancers](./metrics-supported.md#microsoftnetworkloadbalancers) |
 |Micro soft. Network/natGateways| Nee | Nee | |
 |Micro soft. Network/privateEndpoints| Nee | Nee | |

@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
 ms.openlocfilehash: b428ffc0122f13ef15f870ce734b54fe6707f582
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90983957"
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>Zelf studie: een NetSuite configureren voor het automatisch inrichten van gebruikers
@@ -48,7 +48,7 @@ Voordat u de inrichtings service configureert en inschakelt, moet u bepalen welk
 In deze sectie wordt u begeleid bij het koppelen van de API voor het inrichten van de gebruikers account van Azure AD naar het internet en het configureren van de inrichtings service om toegewezen gebruikers accounts in NetSuite te maken, bij te werken en uit te scha kelen in azure AD.
 
 > [!TIP] 
-> U kunt er ook voor kiezen om op SAML gebaseerde eenmalige aanmelding voor NetSuite in te scha kelen, gevolgd door de instructies in [Azure Portal](https://portal.azure.com). Eenmalige aanmelding kan onafhankelijk van automatische inrichting worden geconfigureerd, maar deze twee functies gelden voor elkaar.
+> U kunt er ook voor kiezen om op SAML gebaseerde single Sign-On voor NetSuite in te scha kelen, gevolgd door de instructies in [Azure Portal](https://portal.azure.com). Eenmalige aanmelding kan onafhankelijk van automatische inrichting worden geconfigureerd, maar deze twee functies gelden voor elkaar.
 
 ### <a name="to-configure-user-account-provisioning"></a>Het inrichten van een gebruikers account configureren:
 

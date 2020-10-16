@@ -4,10 +4,10 @@ description: Meer informatie over statische en dynamische para meters en hoe u d
 ms.date: 08/27/2020
 ms.topic: conceptual
 ms.openlocfilehash: b6cefe7ec75ec622cb341d8f12edfd9c0cfa66e6
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89651947"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Dynamische blauw drukken via para meters maken
@@ -43,7 +43,7 @@ Als de blauw druk toewijzing gebruikmaakt van een door de **gebruiker toegewezen
 
 Zie [Key Vault Overview](../../../key-vault/general/overview.md)voor meer informatie over Azure Key Vault.
 
-## <a name="parameter-types"></a>Parameter typen
+## <a name="parameter-types"></a>Parametertypen
 
 ### <a name="static-parameters"></a>Statische para meters
 
@@ -65,7 +65,7 @@ Een parameter waarde die in de definitie van een blauw druk is gedefinieerd, wor
 
 1. Op de pagina **artefact bewerken** worden de opties weer gegeven die geschikt zijn voor het geselecteerde artefact. Elke para meter op het artefact heeft een titel, een waarde box en een selectie vakje. Stel het selectie vakje in op uitgeschakeld om er een **statische para meter**van te maken. In het onderstaande voor beeld is alleen _locatie_ een **statische para meter** als deze is uitgeschakeld en de _naam van de resource groep_ is ingeschakeld.
 
-   :::image type="content" source="../media/parameters/static-parameter.png" alt-text="Scherm opname van statische para meters op een blauw druk artefact." border="false":::
+   :::image type="content" source="../media/parameters/static-parameter.png" alt-text="Scherm afbeelding van de definitie van een blauw druk en de ' X van Y-para meters ingevuld ' gemarkeerd." border="false":::
 
 #### <a name="setting-static-parameters-from-rest-api"></a>Statische para meters instellen van REST API
 
@@ -176,7 +176,7 @@ Het tegenovergestelde van een statische para meter is een **dynamische para mete
 
 1. Zoek de sectie **artefact parameters** op de pagina **blauw** drukken. Elk artefact met ten minste één **dynamische para meter** geeft het artefact en de configuratie opties weer. Geef de vereiste waarden voor de para meters op voordat u de blauw druk toewijst. In het onderstaande voor beeld is _name_ een **dynamische para meter** die moet worden gedefinieerd voor het volt ooien van de blauw druk-toewijzing.
 
-   :::image type="content" source="../media/parameters/dynamic-parameter.png" alt-text="Scherm afbeelding van het instellen van dynamische para meters tijdens de toewijzing van blauw drukken." border="false":::
+   :::image type="content" source="../media/parameters/dynamic-parameter.png" alt-text="Scherm afbeelding van de definitie van een blauw druk en de ' X van Y-para meters ingevuld ' gemarkeerd." border="false":::
 
 #### <a name="setting-dynamic-parameters-from-rest-api"></a>Dynamische para meters instellen van REST API
 

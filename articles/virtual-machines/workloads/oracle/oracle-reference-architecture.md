@@ -1,23 +1,18 @@
 ---
 title: Referentie architecturen voor Oracle-data bases op Azure | Microsoft Docs
 description: Verwijst naar architecturen voor het uitvoeren van Oracle Database Enterprise Edition-data bases op Microsoft Azure Virtual Machines.
-services: virtual-machines-linux
 author: dbakevlar
-manager: ''
-tags: ''
-ms.service: virtual-machines
+ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 12/13/2019
 ms.author: kegorman
-ms.custom: ''
-ms.openlocfilehash: 2bbc78f9a5569c8446743980cdea153883c19d4d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.reviewer: cynthn
+ms.openlocfilehash: f9765f4ce47e6e698daf1680aecf059241c58382
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91274432"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993580"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Referentie architecturen voor Oracle Database Enterprise Edition op Azure
 
@@ -33,7 +28,7 @@ Zie [architect a Oracle DB](oracle-design.md)als u meer wilt weten over het maxi
 
 ## <a name="high-availability-for-oracle-databases"></a>Hoge Beschik baarheid voor Oracle-data bases
 
-Het bereiken van hoge Beschik baarheid in de Cloud is een belang rijk onderdeel van de planning en het ontwerp van elke organisatie. Microsoft Azure biedt [beschikbaarheids zones](../../../availability-zones/az-overview.md) en beschikbaarheids sets (worden gebruikt in regio's waar beschikbaarheids zones niet beschikbaar zijn). Lees meer over het [beheren van de beschik baarheid van uw virtuele machines](../../../virtual-machines/linux/manage-availability.md) om te ontwerpen voor de Cloud.
+Het bereiken van hoge Beschik baarheid in de Cloud is een belang rijk onderdeel van de planning en het ontwerp van elke organisatie. Microsoft Azure biedt [beschikbaarheids zones](../../../availability-zones/az-overview.md) en beschikbaarheids sets (worden gebruikt in regio's waar beschikbaarheids zones niet beschikbaar zijn). Lees meer over het [beheren van de beschik baarheid van uw virtuele machines](../../manage-availability.md) om te ontwerpen voor de Cloud.
 
 Naast de Cloud-systeem eigen hulpprogram ma's en aanbiedingen biedt Oracle oplossingen voor hoge Beschik baarheid, zoals [Oracle Data Guard](https://docs.oracle.com/en/database/oracle/oracle-database/18/sbydb/introduction-to-oracle-data-guard-concepts.html#GUID-5E73667D-4A56-445E-911F-1E99092DD8D7), [Data Guard met FSFO](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/index.html), [sharding](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/admin/sharding-overview.html)en [Golden Gate](https://www.oracle.com/middleware/technologies/goldengate.html) die op Azure kunnen worden ingesteld. Deze hand leiding bevat referentie architecturen voor elk van deze oplossingen.
 
@@ -43,7 +38,7 @@ Ten slotte is het belang rijk dat u bij het migreren of maken van toepassingen v
 
 Oracle Real Application Cluster (RAC) is een oplossing van Oracle waarmee klanten hoge door Voer kunnen bereiken door veel instanties die toegang hebben tot één database opslag (gedeeld patroon van alle architectuur). Hoewel Oracle RAC ook on-premises kan worden gebruikt voor hoge Beschik baarheid, kan Oracle RAC alleen worden gebruikt voor hoge Beschik baarheid in de Cloud omdat het alleen bescherming biedt tegen storingen op exemplaar niveau en niet tegen storingen op het niveau van het rek of het Data Center. Daarom raadt Oracle aan Oracle Data Guard te gebruiken met uw data base (of één exemplaar of RAC) voor hoge Beschik baarheid. Klanten hebben doorgaans een hoge SLA nodig voor het uitvoeren van hun essentiële toepassingen. Oracle RAC is momenteel niet gecertificeerd of wordt niet ondersteund door Oracle in Azure. Azure biedt echter functies als Azure biedt Beschikbaarheidszones en geplande onderhouds Vensters om te helpen beschermen tegen storingen op exemplaar niveau. Klanten kunnen daarnaast gebruikmaken van technologieën als Oracle Data Guard, Oracle Golden Gate en Oracle sharding voor hoge prestaties en meer flexibiliteit door hun data bases te beschermen tegen rack niveau en op datacenter niveau en geo-politieke fouten.
 
-Bij het uitvoeren van Oracle-data bases in meerdere [beschikbaarheids zones](../../../availability-zones/az-overview.md) in combi natie met Oracle Data Guard of Golden Gate, kunnen klanten een sla voor de uptime van 99,99% ophalen. In azure-regio's waar beschikbaarheids zones nog niet aanwezig zijn, kunnen klanten [beschikbaarheids sets](../../linux/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) gebruiken en een sla voor de uptime van 99,95% verzorgen.
+Bij het uitvoeren van Oracle-data bases in meerdere [beschikbaarheids zones](../../../availability-zones/az-overview.md) in combi natie met Oracle Data Guard of Golden Gate, kunnen klanten een sla voor de uptime van 99,99% ophalen. In azure-regio's waar beschikbaarheids zones nog niet aanwezig zijn, kunnen klanten [beschikbaarheids sets](../../manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) gebruiken en een sla voor de uptime van 99,95% verzorgen.
 
 >Opmerking: u kunt een doel voor de uptime hebben die veel hoger is dan de SLA voor de uptime van micro soft.
 
@@ -71,7 +66,7 @@ Wanneer u Oracle Data Guard gebruikt, kunt u de secundaire data base ook openen 
 > Actieve Data Guard vereist extra licenties. Deze licentie is ook vereist voor het gebruik van de Far Sync-functie. Neem contact op met uw Oracle-vertegenwoordiger om de implicaties van de licenties te bespreken.
 
 #### <a name="oracle-data-guard-with-fsfo"></a>Oracle Data Guard met FSFO
-Oracle Data Guard met Fast-Start failover (FSFO) kan extra tolerantie bieden door de broker in te stellen op een afzonderlijke machine. De Data Guard Broker en de secundaire data base voeren de waarnemer uit en bekijken de primaire Data Base voor uitval tijd. Hierdoor kunt u ook de installatie van uw Data Guard observeren. 
+Oracle Data Guard met Fast-Start failover (FSFO) kan extra flexibiliteit bieden door de broker in te stellen op een afzonderlijke machine. De Data Guard Broker en de secundaire data base voeren de waarnemer uit en bekijken de primaire Data Base voor uitval tijd. Hierdoor kunt u ook de installatie van uw Data Guard observeren. 
 
 Met Oracle Database versie 12,2 en hoger is het ook mogelijk meerdere waarnemers te configureren met één Oracle Data Guard Broker-configuratie. Deze installatie biedt extra Beschik baarheid, in het geval van één waarnemer en de secundaire data base Ervaar tijd. Data Guard Broker is licht gewicht en kan worden gehost op een relatief kleine virtuele machine. Raadpleeg de [Oracle-documentatie](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/oracle-data-guard-broker-concepts.html) in dit onderwerp voor meer informatie over Data Guard Broker en de voor delen ervan.
 
@@ -152,7 +147,7 @@ Oracle sharding bestaat voornamelijk uit de volgende onderdelen. Meer informatie
 
 - **Globale service** : de wereld wijde service is vergelijkbaar met de normale database service. Naast alle eigenschappen van een database service heeft een globale service eigenschappen voor Shard-data bases, zoals regio affiniteit tussen clients en Shard en tolerantie voor replicatie vertraging. Er moet slechts één globale service worden gemaakt om gegevens van/naar een Shard-data base te lezen/schrijven. Bij het gebruik van Active Data Guard en het instellen van alleen-lezen replica's van de Shards, kunt u een andere gGobal-service maken voor alleen-lezen workloads. De client kan deze globale Services gebruiken om verbinding te maken met de data base.
 
-- **Shard-data** bases-Shard-data bases zijn uw Oracle-data bases. Elke Data Base wordt met behulp van Oracle Data Guard gerepliceerd in een Broker-configuratie met snelle start failover (FSFO) ingeschakeld. U hoeft geen Data Guard-failover en replicatie in te stellen op elke Shard. Dit wordt automatisch geconfigureerd en geïmplementeerd wanneer de gedeelde data base wordt gemaakt. Als een bepaalde Shard mislukt, wordt het delen van Oracle automatisch uitgevoerd via database verbindingen van de primaire naar de stand-by.
+- **Shard-data** bases-Shard-data bases zijn uw Oracle-data bases. Elke Data Base wordt met behulp van Oracle Data Guard gerepliceerd in een Broker-configuratie waarvoor Fast-Start failover (FSFO) is ingeschakeld. U hoeft geen Data Guard-failover en replicatie in te stellen op elke Shard. Dit wordt automatisch geconfigureerd en geïmplementeerd wanneer de gedeelde data base wordt gemaakt. Als een bepaalde Shard mislukt, wordt het delen van Oracle automatisch uitgevoerd via database verbindingen van de primaire naar de stand-by.
 
 U kunt Oracle Shard-data bases met twee interfaces implementeren en beheren: Oracle Enter prise Manager-interface voor Cloud beheer en/of het `GDSCTL` opdracht regel programma. U kunt de verschillende Shards zelfs controleren op Beschik baarheid en prestaties met behulp van Cloud beheer. `GDSCTL DEPLOY`Met deze opdracht worden automatisch de Shards en hun respectieve listeners gemaakt. Bovendien implementeert deze opdracht automatisch de replicatie Configuratie die wordt gebruikt voor Shard hoge Beschik baarheid die is opgegeven door de beheerder.
 
@@ -209,7 +204,7 @@ Tijdens de eerste aanvraag verbindt de toepassings server met de Shard Director 
 
 ## <a name="patching-and-maintenance"></a>Patches en onderhoud
 
-Wanneer u uw Oracle-workloads op Azure implementeert, zorgt micro soft voor alle patches op het niveau van de host-OS. Elk gepland onderhoud op besturingssysteem niveau wordt vooraf aan klanten meegedeeld om de klant in staat te stellen voor dit geplande onderhoud. Twee servers van twee verschillende Beschikbaarheidszones worden nooit tegelijkertijd patches uitgevoerd. Zie [de beschik baarheid van virtuele machines beheren](../../../virtual-machines/linux/manage-availability.md) voor meer informatie over het onderhoud en de reparatie van de VM. 
+Wanneer u uw Oracle-workloads op Azure implementeert, zorgt micro soft voor alle patches op het niveau van de host-OS. Elk gepland onderhoud op besturingssysteem niveau wordt vooraf aan klanten meegedeeld om de klant in staat te stellen voor dit geplande onderhoud. Twee servers van twee verschillende Beschikbaarheidszones worden nooit tegelijkertijd patches uitgevoerd. Zie [de beschik baarheid van virtuele machines beheren](../../manage-availability.md) voor meer informatie over het onderhoud en de reparatie van de VM. 
 
 Het patchen van het besturings systeem van de virtuele machine kan worden geautomatiseerd met behulp van [Azure Automation updatebeheer](../../../automation/update-management/update-mgmt-overview.md). Het patchen en onderhouden van uw Oracle-data base kan worden geautomatiseerd en gepland met behulp van [Azure-pijp lijnen](/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) of [Azure Automation updatebeheer](../../../automation/update-management/update-mgmt-overview.md) om de downtime te minimaliseren. Zie [continue levering en Blue/groen-implementaties](/azure/devops/learn/what-is-continuous-delivery) om te begrijpen hoe deze kunnen worden gebruikt in de context van uw Oracle-data bases.
 
@@ -232,6 +227,6 @@ Bekijk de volgende Oracle-referentie artikelen die van toepassing zijn op uw sce
 
 - [Inleiding tot Oracle Data Guard](https://docs.oracle.com/en/database/oracle/oracle-database/18/sbydb/introduction-to-oracle-data-guard-concepts.html#GUID-5E73667D-4A56-445E-911F-1E99092DD8D7)
 - [Concepten van Oracle Data Guard Broker](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/oracle-data-guard-broker-concepts.html)
-- [Oracle-Golden Gate configureren voor een actieve en actieve hoge Beschik baarheid](https://docs.oracle.com/goldengate/1212/gg-winux/GWUAD/wu_bidirectional.htm#GWUAD282)
+- [Oracle Golden Gate configureren voor Active-Active hoge Beschik baarheid](https://docs.oracle.com/goldengate/1212/gg-winux/GWUAD/wu_bidirectional.htm#GWUAD282)
 - [Overzicht van Oracle sharding](https://docs.oracle.com/en/database/oracle/oracle-database/19/shard/sharding-overview.html)
 - [Far Sync van Oracle Active Data Guard heeft geen gegevens verlies op elke afstand](https://www.oracle.com/technetwork/database/availability/farsync-2267608.pdf)

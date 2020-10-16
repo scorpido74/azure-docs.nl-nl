@@ -7,10 +7,10 @@ ms.date: 08/21/2020
 ms.author: jpalma
 author: palma21
 ms.openlocfilehash: 4dfaa329dd0472b52de2d3306e6a3b61f660e666
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89443055"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Gebruik Gpu's voor computerintensieve werk belastingen op Azure Kubernetes service (AKS)
@@ -26,7 +26,7 @@ Momenteel is het gebruik van knooppunt Pools met GPU ingeschakeld alleen beschik
 
 In dit artikel wordt ervan uitgegaan dat u beschikt over een bestaand AKS-cluster met knoop punten die Gpu's ondersteunen. Uw AKS-cluster moet Kubernetes 1,10 of hoger uitvoeren. Als u een AKS-cluster nodig hebt dat aan deze vereisten voldoet, raadpleegt u de eerste sectie van dit artikel om [een AKS-cluster te maken](#create-an-aks-cluster).
 
-Ook moet de Azure CLI-versie 2.0.64 of hoger zijn geïnstalleerd en geconfigureerd. Voer  `az --version` uit om de versie te bekijken. Als u de Azure CLI wilt installeren of upgraden, raadpleegt u  [Azure CLI installeren][install-azure-cli].
+Ook moet de Azure CLI-versie 2.0.64 of hoger zijn geïnstalleerd en geconfigureerd. Voer  `az --version` uit om de versie te bekijken. Als u wilt installeren of upgraden, raadpleegt u [Azure cli installeren][install-azure-cli].
 
 ## <a name="create-an-aks-cluster"></a>Een AKS-cluster maken
 
@@ -134,7 +134,7 @@ De `GPUDedicatedVHDPreview` functie registreren:
 az feature register --name GPUDedicatedVHDPreview --namespace Microsoft.ContainerService
 ```
 
-Het kan enkele minuten duren voordat de status als **geregistreerd**wordt weer gegeven. U kunt de registratie status controleren met behulp van de opdracht [AZ Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list) :
+Het kan enkele minuten duren voordat de status als **geregistreerd**wordt weer gegeven. U kunt de registratiestatus controleren met behulp van de opdracht [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list):
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/GPUDedicatedVHDPreview')].{Name:name,State:properties.state}"
@@ -152,7 +152,7 @@ Als u de AKS-preview CLI-extensie wilt installeren, gebruikt u de volgende Azure
 az extension add --name aks-preview
 ```
 
-Als u de AKS-preview CLI-extensie wilt bijwerken, gebruikt u de volgende Azure CLI-opdrachten:
+Gebruik de volgende Azure CLI-opdrachten om de CLI-extensie AKS-preview te installeren:
 
 ```azurecli
 az extension update --name aks-preview

@@ -8,10 +8,10 @@ ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
 ms.openlocfilehash: 4223e3bc572a689472dce136b60599034566b274
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88654256"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Migreren naar Azure-bestandsshares
@@ -152,5 +152,5 @@ De geteste versie van het hulp programma is versie 4.4.1. Het is compatibel met 
 Hier vindt u meer informatie over de Azure Files technologieën die in dit artikel worden vermeld:
 
 * [Overzicht van de Azure-bestands share](storage-files-introduction.md)
-* [Een Azure File Sync-implementatie plannen](storage-sync-files-planning.md)
+* [Planning voor een Azure Files Sync-implementatie](storage-sync-files-planning.md)
 * [Azure File Sync: Cloud lagen](storage-sync-cloud-tiering.md)

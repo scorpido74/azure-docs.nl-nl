@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 223779dfba5faa77e38221d6f6f4e26dbc44b0cc
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: f8b2454bb0e39f5923af00502367f7b16bb040a4
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268380"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018981"
 ---
 # <a name="get-started-with-delivering-content-on-demand-by-using-the-azure-portal"></a>Aan de slag met het leveren van inhoud op aanvraag via Azure Portal
 
@@ -53,7 +53,7 @@ Bij het werken met Azure Media Services wordt video meestal via Adaptive Bitrate
 
 Het streaming-eindpunt starten:
 
-1. Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Selecteer **instellingen**  >  **streaming-eind punten**. 
 3. Selecteert het standaardstreaming-eindpunt. Het venster **standaard gegevens van het streaming-eind punt** wordt weer gegeven.
 4. Selecteer het pictogram **Start**.
@@ -63,7 +63,7 @@ Het streaming-eindpunt starten:
 Als u video's wilt streamen met Media Services, moet u de bronvideo's uploaden, ze coderen in meerdere bitsnelheden en vervolgens het resultaat publiceren. De eerste stap wordt in deze sectie beschreven. 
 
 1. Selecteer uw Azure Media Services-account in [Azure Portal](https://portal.azure.com/).
-2. Selecteer **instellingen**  >  **assets**. Selecteer de knop **Uploaden**.
+2. Selecteer **Instellingen** > **Assets**. Selecteer de knop **Uploaden**.
    
     ![Bestanden uploaden](./media/media-services-portal-vod-get-started/media-services-upload.png)
    
@@ -86,7 +86,7 @@ U moet het bronbestand coderen in een set multi-bitrate MP4-bestanden om van dyn
 Uw inhoud coderen met behulp van Media Encoder Standard in Azure Portal:
 
 1. Selecteer uw Azure Media Services-account in [Azure Portal](https://portal.azure.com/).
-2. Selecteer **instellingen**  >  **assets**. Selecteer de asset die u wilt coderen.
+2. Selecteer **Instellingen** > **Assets**. Selecteer de asset die u wilt coderen.
 3. Selecteer de knop **Coderen**.
 4. Selecteer in het deelvenster **Een asset coderen** de processor **Media Encoder Standard** en een standaardinstelling. Zie [automatisch een bitrate ladder genereren](media-services-autogen-bitrate-ladder-with-mes.md) en [Standaardinstellingen voor taken in Media Encoder Standard](media-services-mes-presets-overview.md) voor informatie over standaardinstellingen. Het is belangrijk om de standaardinstelling te kiezen die het meest geschikt is voor uw invoervideo. Als u bijvoorbeeld weet dat uw invoervideo een resolutie van 1920 x 1080 pixels heeft, kunt u de standaardinstelling **H264 Multiple Bitrate 1080p** gebruiken. Als u een video met lage resolutie hebt (640 x 360), kunt u beter niet de standaardinstelling **H264 Multiple Bitrate 1080p** gebruiken.
    
@@ -127,14 +127,14 @@ Een Shared Access Signature-URL heeft de volgende indeling:
 > 
 > 
 
-Als u een vervaldatum van een locator wilt bijwerken, kunt u een [REST API](/rest/api/media/operations/locator#update_a_locator) of een [.NET API](https://go.microsoft.com/fwlink/?LinkID=533259) gebruiken. 
+Als u een vervaldatum van een locator wilt bijwerken, kunt u een [REST API](/rest/api/media/operations/locator#update_a_locator) of een [.NET API](/dotnet/api/microsoft.windowsazure.mediaservices.client.ilocator) gebruiken. 
 
 > [!NOTE]
 > Wanneer u de vervaldatum van een Shared Access Signature-locator bijwerkt, wordt de URL gewijzigd.
 
 ### <a name="to-use-the-portal-to-publish-an-asset"></a>De portal gebruiken om een asset te publiceren
 1. Selecteer uw Azure Media Services-account in [Azure Portal](https://portal.azure.com/).
-2. Selecteer **instellingen**  >  **assets**. Selecteer de asset die u wilt publiceren.
+2. Selecteer **Instellingen** > **Assets**. Selecteer de asset die u wilt publiceren.
 3. Selecteer de knop **Publiceren**.
 4. Selecteer het type locator.
 5. Selecteer **Toevoegen**.

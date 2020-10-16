@@ -13,10 +13,10 @@ ms.author: urmilano
 ms.reviewer: sstein, bonova, MashaMSFT
 ms.date: 09/03/2020
 ms.openlocfilehash: bdb021bc0247972fa29975c62bc9214e3b474e2c
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90995355"
 ---
 # <a name="monitoring-azure-sql-managed-instance-management-operations"></a>Azure SQL Managed instance Management-bewerkingen bewaken
@@ -46,7 +46,7 @@ De volgende tabel vergelijkt de bewakings opties voor beheer bewerkingen:
 | Optie | Bewaartermijn | Ondersteunt annuleren | Maken | Bijwerken | Verwijderen | Annuleren | Stappen |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Implementaties van resource groepen | Oneindig<sup>1</sup> | Geen<sup>2</sup> | Zichtbaar | Zichtbaar | Niet zichtbaar | Zichtbaar | Niet zichtbaar |
-| Activiteitenlogboek | 90 dagen | No | Zichtbaar | Zichtbaar | Zichtbaar | Zichtbaar |  Niet zichtbaar |
+| Activiteitenlogboek | 90 dagen | Nee | Zichtbaar | Zichtbaar | Zichtbaar | Zichtbaar |  Niet zichtbaar |
 | Managed instance Operations API | 24 uur | [Ja](management-operations-cancel.md) | Zichtbaar | Zichtbaar | Zichtbaar | Zichtbaar | Zichtbaar |
 |  |  |  |  |  |  |  | |
 
@@ -114,8 +114,8 @@ Zie [AZ SQL mi op](https://docs.microsoft.com/cli/azure/sql/mi/op)voor gedetaill
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Quick Start Guide (Engelstalig](instance-create-quickstart.md)) voor meer informatie over het maken van uw eerste beheerde exemplaar.
+- Zie de [Quickstart-gids](instance-create-quickstart.md) voor meer informatie over het maken van uw eerste beheerde exemplaar.
 - Zie [algemene SQL-functies](../database/features-comparison.md)voor een lijst met functies en vergelijkingen.
-- Zie [vnet-configuratie voor SQL Managed instance](connectivity-architecture-overview.md)voor meer informatie over vnet-configuraties.
-- Zie [een beheerd exemplaar maken](instance-create-quickstart.md)voor een Snelstartgids die een beheerd exemplaar maakt en een Data Base herstelt vanuit een back-upbestand.
-- Voor een zelf studie over het gebruik van Azure Database Migration Service voor migratie raadpleegt u [migratie van SQL-beheerde exemplaren met behulp van database Migration service](../../dms/tutorial-sql-server-to-managed-instance.md).
+- Zie [VNet-configuratie van SQL Managed Instance](connectivity-architecture-overview.md) voor meer informatie over VNet-configuratie.
+- Zie [Beheerd exemplaar maken](instance-create-quickstart.md) voor een quickstart waarmee u een beheerd exemplaar kunt maken en een database vanuit een back-upbestand kunt herstellen.
+- Zie [Migratie van SQL Managed Instance met behulp van Database Migration Service](../../dms/tutorial-sql-server-to-managed-instance.md) voor een zelfstudie over Azure Database Migration Service voor migratie.

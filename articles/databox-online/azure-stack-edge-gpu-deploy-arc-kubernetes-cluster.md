@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: alkohli
-ms.openlocfilehash: 423345739ca5c078fbff4f267e1e8a118abf107c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c38b0b1d3a2e71502ac86bf46771ecfb637ba15d
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903202"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952213"
 ---
 # <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Arc op Kubernetes-cluster op uw Azure Stack Edge Pro GPU-apparaat inschakelen
 
@@ -68,11 +68,11 @@ Voordat u Azure Arc op het Kubernetes-cluster inschakelt, moet u uw abonnement i
 
 1. Selecteer een resource provider en selecteer aan de bovenkant van de opdracht balk de optie **registreren**. De registratie duurt enkele minuten. 
 
-    ![Kubernetes-resource providers registreren](media/azure-stack-edge-gpu-connect-powershell-interface/register-k8-resource-providers-2.png)
+    ![Kubernetes-resource providers registreren 2](media/azure-stack-edge-gpu-connect-powershell-interface/register-k8-resource-providers-2.png)
 
 1. Vernieuw de gebruikers interface totdat u ziet dat de resource provider is geregistreerd. Herhaal dit proces voor beide resource providers.
     
-    ![Kubernetes-resource providers registreren](media/azure-stack-edge-gpu-connect-powershell-interface/register-k8-resource-providers-4.png)
+    ![Kubernetes-resource providers registreren 3](media/azure-stack-edge-gpu-connect-powershell-interface/register-k8-resource-providers-4.png)
 
 U kunt resource providers ook registreren via de `az cli` . Zie voor meer informatie [registreren van de twee providers voor Azure Arc enabled Kubernetes](../azure-arc/kubernetes/connect-cluster.md#register-the-two-providers-for-azure-arc-enabled-kubernetes)
 

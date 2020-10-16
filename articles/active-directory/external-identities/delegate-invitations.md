@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bb0147af559d9de4a8589344d61b06368086dd20
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91278784"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>Externe B2B-samenwerking inschakelen en beheren wie gasten kan uitnodigen
@@ -61,7 +61,7 @@ Standaard kunnen alle gebruikers, inclusief gasten, gast gebruikers uitnodigen.
 
    - **Gasten kunnen uitnodigen**: als u gasten wilt toestaan andere gasten uit te nodigen, stelt u dit beleid in op **Ja**.
 
-   - **Eenmalige e-mail wachtwoord voor gasten inschakelen (preview-versie)**: Zie [eenmalige verificatie per e-mail (preview)](one-time-passcode.md)voor meer informatie over de functie voor eenmalige wachtwoord code.
+   - **E-mail One-Time wachtwoord code voor gasten inschakelen (preview-versie)**: Zie [eenmalige verificatie van de e-mail (preview)](one-time-passcode.md)voor meer informatie over de functie voor eenmalige wachtwoord code.
 
    - **Aanmelden via self-service voor gasten inschakelen via de gebruikers stromen (preview)**: Zie [een self-service voor het registreren van een selfservice gebruiker toevoegen aan een app (preview)](self-service-sign-up-user-flow.md)voor meer informatie over deze instelling.
 

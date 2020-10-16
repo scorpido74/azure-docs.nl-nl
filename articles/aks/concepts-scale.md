@@ -5,10 +5,10 @@ services: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.openlocfilehash: 1a14615e96d5be4fbc8994073d66677997281131
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86499882"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Schaalopties voor toepassingen in Azure Kubernetes Service (AKS)
@@ -30,7 +30,7 @@ Bij het omlaag schalen van knoop punten roept de Kubernetes-API de relevante Azu
 
 Zie [toepassingen schalen in AKS][aks-scale]om aan de slag te gaan met het hand matig schalen van peulen en knoop punten.
 
-## <a name="horizontal-pod-autoscaler"></a>Pod voor horizontale automatische schaal baarheid
+## <a name="horizontal-pod-autoscaler"></a>Horizontale automatische schaalaanpassing van pods
 
 Kubernetes maakt gebruik van de horizontale pod autoscaleer (HPA) voor het bewaken van de vraag van de resource en het automatisch schalen van het aantal replica's. Standaard controleert de pod automatisch schalen de metrische gegevens van de API elke 30 seconden voor eventuele vereiste wijzigingen in het aantal replica's. Als er wijzigingen zijn vereist, wordt het aantal replica's verhoogd of verlaagd. De pod-functie voor Horizon taal automatisch schalen werkt met AKS-clusters die de metrische server voor Kubernetes 1.8 + hebben geïmplementeerd.
 

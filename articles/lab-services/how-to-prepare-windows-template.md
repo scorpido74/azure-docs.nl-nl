@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
 ms.openlocfilehash: cf1b9db8de2c0f2c852a41d1e30343c5cef1b20b
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91396685"
 ---
 # <a name="guide-to-setting-up-a-windows-template-machine-in-azure-lab-services"></a>Hand leiding voor het instellen van een Windows-sjabloon machine in Azure Lab Services
@@ -216,7 +216,7 @@ Windows 10 wordt geleverd met veel ingebouwde toepassingen die mogelijk niet nod
 Get-AppxPackage | Where {$_.NonRemovable -eq $false} | select Name
 ```
 
-Als u een toepassing wilt verwijderen, gebruikt u de cmdlet Remove-appx.  In het onderstaande voor beeld ziet u hoe u alle XBox-gerelateerde kunt verwijderen.
+Als u een toepassing wilt verwijderen, gebruikt u de cmdlet Remove-Appx.  In het onderstaande voor beeld ziet u hoe u alle XBox-gerelateerde kunt verwijderen.
 
 ```powershell
 Get-AppxPackage -Name *xbox* | foreach { if (-not $_.NonRemovable) { Remove-AppxPackage $_} }

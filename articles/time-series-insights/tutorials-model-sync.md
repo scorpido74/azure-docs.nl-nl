@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: dpalled
 ms.openlocfilehash: c3948a5bdfce583384992fb87bf40e9e7251974d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91344008"
 ---
-# <a name="model-synchronization-between-azure-digital-twins-and-time-series-insights-gen2"></a>Model synchronisatie tussen Azure Digital Apparaatdubbels en Time Series Insights Gen2
+# <a name="model-synchronization-between-azure-digital-twins-and-time-series-insights-gen2"></a>Modelsynchronisatie tussen Azure Digital Twins en Time Series Insights Gen2
 
 In dit artikel worden aanbevolen procedures en hulpprogram ma's beschreven die worden gebruikt voor het vertalen van het activa model in azure Digital Apparaatdubbels (ADT) naar activa model in Azure Time Series Insights (TSI).  Dit artikel is het tweede deel van een tweedelige zelf studie met uitleg over de integratie van Azure Digital Apparaatdubbels met Azure Time Series Insights. Integratie van Azure Digital Apparaatdubbels met Time Series Insights maakt archivering mogelijk en traceert de geschiedenis van teleelementen en berekende eigenschappen van digitale Apparaatdubbels. In deze reeks zelf studies zijn ontwikkel aars gericht op het integreren van Time Series Insights met Azure Digital Apparaatdubbels. In deel 1 wordt uitgelegd hoe  [u gegevens pijplijn gaat maken die in de actuele tijd reeks gegevens van Azure Digital apparaatdubbels naar Time Series Insights](https://docs.microsoft.com/azure/digital-twins/how-to-integrate-time-series-insights) . in dat tweede deel van de reeks zelf studies wordt de synchronisatie van Asset model tussen Azure Digital apparaatdubbels en time series Insights uitgelegd. In deze zelf studie worden de aanbevolen procedures beschreven voor het kiezen en het vaststellen van naamgevings regels voor de tijd reeks-ID (TS-ID) en het hand matig instellen van hiërarchieën in time series model (TSM).
 

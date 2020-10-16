@@ -7,17 +7,17 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 9/1/2020
 ms.author: tagore
-ms.openlocfilehash: ea25695ddc36571bef3ff61df7de3e71f6f939ca
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: f99dd8131df9f8bc5d3e4013d4438faa8c25e53b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90056048"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072710"
 ---
 # <a name="resource-health-check-rhc-support-for-azure-cloud-services-classic"></a>Resource Health Check-ondersteuning (RHC) voor Azure Cloud Services (klassiek)
 Dit artikel spreekt over Resource Health Check-ondersteuning (RHC) voor [Microsoft Azure Cloud Services (klassiek)](https://azure.microsoft.com/services/cloud-services)
 
-[Azure resource Health](https://docs.microsoft.com/azure/service-health/resource-health-overview) voor Cloud Services helpt u bij het vaststellen en verkrijgen van ondersteuning voor service problemen die van invloed zijn op de implementatie van uw Cloud service, rollen & rolinstanties. Het rapporteert over de huidige en eerdere status van uw Cloud Services tijdens de implementatie, Role & Role-instantie niveau.
+[Azure resource Health](../service-health/resource-health-overview.md) voor Cloud Services helpt u bij het vaststellen en verkrijgen van ondersteuning voor service problemen die van invloed zijn op de implementatie van uw Cloud service, rollen & rolinstanties. Het rapporteert over de huidige en eerdere status van uw Cloud Services tijdens de implementatie, Role & Role-instantie niveau.
 
 Azure-status rapporten over problemen die van invloed zijn op een groot aantal Azure-klanten. Resource Health geeft u een aangepast dash board van de status van uw resources. Resource Health toont de tijden dat uw resources niet beschikbaar zijn vanwege Azure-Service problemen. Met deze gegevens kunt u eenvoudig zien of een SLA is geschonden.
 
@@ -30,7 +30,7 @@ De resource status wordt gerapporteerd op het niveau van een implementatie of ro
 Status controles van resources werken alleen voor implementatie van productie site. Implementatie van staging-sleuf wordt nog niet ondersteund. 
 
 ## <a name="does-resource-health-check-also-check-the-health-of-the-application"></a>Controleert Resource Health controle ook de status van de toepassing?
-Nee, de status controle is alleen van toepassing op rolinstanties en de status van toepassingen wordt niet bewaakt. Bijvoorbeeld Zelfs als 1 van de drie rolinstanties beschadigd is, kan de toepassing nog steeds beschikbaar zijn. RHC maakt geen gebruik van [Load Balancer tests](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview) of de test van de gast agent. Daarom moeten klanten load balancer tests blijven gebruiken om de status van hun toepassing te bewaken. 
+Nee, de status controle is alleen van toepassing op rolinstanties en de status van toepassingen wordt niet bewaakt. Bijvoorbeeld Zelfs als 1 van de drie rolinstanties beschadigd is, kan de toepassing nog steeds beschikbaar zijn. RHC maakt geen gebruik van [Load Balancer tests](../load-balancer/load-balancer-custom-probe-overview.md) of de test van de gast agent. Daarom moeten klanten load balancer tests blijven gebruiken om de status van hun toepassing te bewaken. 
 
 ## <a name="what-are-the-annotations-for-cloud-services"></a>Wat zijn de aantekeningen voor Cloud Services?
 Annotaties zijn de integriteits status van de implementatie of rollen. Er zijn verschillende aantekeningen op basis van de status, de reden voor de status wijziging enzovoort. 

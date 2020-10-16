@@ -5,10 +5,10 @@ ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
 ms.openlocfilehash: 9a3c0643f4fc965ff64106758320aeb445aaf9ae
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85921729"
 ---
 # <a name="azure-functions-developer-guide"></a>Ontwikkelaarshandleiding voor Azure Functions
@@ -65,7 +65,7 @@ Functie-apps kunnen worden gemaakt en gepubliceerd met behulp van verschillende 
 
 <!--NOTE: I've removed documentation on FTP, because it does not sync triggers on the consumption plan --glenga -->
 
-## <a name="how-to-edit-functions-in-the-azure-portal"></a><a id="fileupdate"></a>Functies bewerken in de Azure Portal
+## <a name="how-to-edit-functions-in-the-azure-portal"></a><a id="fileupdate"></a> Functies bewerken in de Azure Portal
 Met de functions-editor die in de Azure Portal is ingebouwd, kunt u uw code en uw *function.jsop* bestand direct inline bijwerken. Dit wordt alleen aanbevolen voor kleine wijzigingen of de controle van concepten best practice het gebruik van een lokaal ontwikkelings programma zoals VS code.
 
 ## <a name="parallel-execution"></a>Parallelle uitvoering

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/30/2020
 ms.author: alkohli
 ms.openlocfilehash: 337c0c4434eb768ee45429d9b2d23536db4c3fc7
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91575449"
 ---
 # <a name="update-your-azure-data-box-gateway"></a>Uw Azure Data Box Gateway bijwerken
@@ -26,7 +26,7 @@ In dit artikel worden de stappen beschreven die nodig zijn voor het installeren 
 
 Deze stappen worden afzonderlijk beschreven in de volgende gedeelten.
 
-## <a name="use-the-azure-portal"></a>De Azure-portal gebruiken
+## <a name="use-the-azure-portal"></a>Azure Portal gebruiken
 
 U wordt aangeraden updates te installeren via de Azure Portal. Op het apparaat wordt eenmaal per dag automatisch gescand op updates. Zodra de updates beschikbaar zijn, ziet u een melding in de portal. U kunt vervolgens de updates downloaden en installeren.
 

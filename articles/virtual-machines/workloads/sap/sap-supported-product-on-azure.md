@@ -17,10 +17,10 @@ ms.date: 04/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 217d5b060ca1b7d32cd334049db9b7c68b7949a0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87065090"
 ---
 # <a name="what-sap-software-is-supported-for-azure-deployments"></a>Welke SAP-software wordt ondersteund voor Azure-implementaties
@@ -117,7 +117,7 @@ Voor Azure-Vm's worden deze SAP'S-doorvoer nummers gedocumenteerd in de [SAP-ond
 
 In de [SAP-ondersteunings opmerking #1928533](https://launchpad.support.sap.com/#/notes/1928533), worden de volgende opmerkingen toegepast:
 
-- **Voor virtuele machines uit de M-serie en Azure-vm's uit de Mv2-serie gelden verschillende minimale OS-Releases dan voor andere Azure VM-typen**. De vereiste voor recentere versies van het besturings systeem is gebaseerd op wijzigingen in de versies van het besturings systeem van het bedrijf om hun besturings systemen in te scha kelen die worden uitgevoerd op de specifieke VM-typen van Azure, of om de prestaties en door Voer van SAP-workloads op deze typen VM'S te optimaliseren
+- **Voor Azure-vm's uit de M-serie en Mv2-Series Azure-vm's zijn verschillende minimale OS-releases van toepassing dan voor andere Azure VM-typen**. De vereiste voor recentere versies van het besturings systeem is gebaseerd op wijzigingen in de versies van het besturings systeem van het bedrijf om hun besturings systemen in te scha kelen die worden uitgevoerd op de specifieke VM-typen van Azure, of om de prestaties en door Voer van SAP-workloads op deze typen VM'S te optimaliseren
 - Er zijn twee tabellen die verschillende VM-typen opgeven. De tweede tabel specificeert de SAP'S-door Voer voor Azure VM-typen die alleen ondersteuning bieden voor Azure Standard-opslag. De DBMS-implementatie voor de eenheden die in de tweede tabel van de opmerking zijn opgegeven, wordt niet ondersteund
 
 

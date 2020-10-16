@@ -6,17 +6,17 @@ ms.topic: conceptual
 hide_comments: true
 hideEdit: true
 ms.openlocfilehash: 467018e57a0783839cb9495fcc6df89aad9daa8c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91280604"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric releases
 
 - <a href="https://github.com/Azure/Service-Fabric-Troubleshooting-Guides" target="blank">Richt lijnen voor probleem oplossing</a> 
 - <a href="https://github.com/Azure/service-fabric-issues" target="blank">Bijhouden van problemen</a> 
-- <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-support" target="blank">Ondersteunings opties</a> 
+- <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-support" target="blank">Ondersteuningsopties</a> 
 - <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-versions" target="blank">Ondersteunde versies</a> 
 - <a href="https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0" target="blank">Code voorbeelden</a>
 

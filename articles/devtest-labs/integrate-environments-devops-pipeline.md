@@ -4,10 +4,10 @@ description: Meer informatie over het integreren van Azure DevTest Labs omgeving
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: be726b2a3f67fd3dada4fdc3cf794922a3c18d06
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85483020"
 ---
 # <a name="integrate-environments-into-your-azure-devops-cicd-pipelines"></a>Omgevingen integreren in uw Azure DevOps CI/CD-pijp lijnen
@@ -53,8 +53,8 @@ De volgende fase van de implementatie is het maken van de omgeving die moet word
 4. Voor **sjabloon naam**selecteert u de naam van de omgeving die u hebt opgeslagen in de opslag plaats van de bron code *. 
 5. De naam van het **Lab**, de naam van de **opslag plaats**en de **sjabloon naam** zijn de beschrijvende representaties van de Azure-resource-id's. Als u de beschrijvende naam hand matig invoert, worden er fouten weer gegeven, gebruikt u de vervolg keuzelijsten om de gegevens te selecteren.
 6. Voer bij **omgevings naam**een naam in om het omgevings exemplaar in het lab uniek te identificeren.  Het moet uniek zijn binnen het lab.
-7. Het **parameter bestand** en de **para meters**, toestaan dat aangepaste para meters worden door gegeven aan de omgeving. Een van beide of beide kunnen worden gebruikt om de parameter waarden in te stellen. Voor dit voor beeld wordt de sectie para meters gebruikt. Gebruik de namen van de variabelen die u hebt gedefinieerd in de omgeving, bijvoorbeeld:`-administratorLogin "$(administratorLogin)" -administratorLoginPassword "$(administratorLoginPassword)" -databaseName "$(databaseName)" -cacheSKUCapacity 1`
-8. Gegevens in de omgevings sjabloon kunnen worden door gegeven in de sectie uitvoer van de sjabloon. Controleer **uitvoer variabelen maken op basis van de uitvoer van de omgevings sjabloon** , zodat andere taken de gegevens kunnen gebruiken. `$(Reference name.Output Name)`is het patroon dat moet worden gevolgd. Als de naam van de referentie bijvoorbeeld DTL is en de naam van de uitvoer in de sjabloon de locatie van de variabele zou zijn `$(DTL.location)` .
+7. Het **parameter bestand** en de **para meters**, toestaan dat aangepaste para meters worden door gegeven aan de omgeving. Een van beide of beide kunnen worden gebruikt om de parameter waarden in te stellen. Voor dit voor beeld wordt de sectie para meters gebruikt. Gebruik de namen van de variabelen die u hebt gedefinieerd in de omgeving, bijvoorbeeld: `-administratorLogin "$(administratorLogin)" -administratorLoginPassword "$(administratorLoginPassword)" -databaseName "$(databaseName)" -cacheSKUCapacity 1`
+8. Gegevens in de omgevings sjabloon kunnen worden door gegeven in de sectie uitvoer van de sjabloon. Controleer **uitvoer variabelen maken op basis van de uitvoer van de omgevings sjabloon** , zodat andere taken de gegevens kunnen gebruiken. `$(Reference name.Output Name)` is het patroon dat moet worden gevolgd. Als de naam van de referentie bijvoorbeeld DTL is en de naam van de uitvoer in de sjabloon de locatie van de variabele zou zijn `$(DTL.location)` .
 
 ## <a name="delete-the-environment"></a>De omgeving verwijderen
 In de laatste fase verwijdert u de omgeving die u in uw Azure DevTest Labs-exemplaar hebt geïmplementeerd. Normaal gesp roken verwijdert u de omgeving nadat u de ontwikkel taken hebt uitgevoerd of voert u de tests uit die u nodig hebt op de geïmplementeerde resources.

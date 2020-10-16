@@ -12,13 +12,13 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 05/29/2020
-ms.openlocfilehash: f1fad6554a347acb1de72bfe1e5c3413e6f74d9f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/28/2020
+ms.openlocfilehash: 60977b9388af3a93d0ebbbc6aad50628b79e0e44
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87004151"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91598273"
 ---
 # <a name="quickstart-use-ssms-to-connect-to-and-query-azure-sql-database-or-azure-sql-managed-instance"></a>Quickstart: Verbinding maken met en query uitvoeren in Azure SQL Database of Azure SQL Managed Instance met behulp van SSMS
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -64,6 +64,8 @@ Haal de verbindingsgegevens op die u nodig hebt om verbinding te maken met uw da
 
 ## <a name="connect-to-your-database"></a>Verbinding maken met uw database
 
+[!INCLUDE[ssms-connect-azure-ad](../includes/ssms-connect-azure-ad.md)]
+
 Maak een verbinding met de server in SSMS.
 
 > [!IMPORTANT]
@@ -83,6 +85,9 @@ Maak een verbinding met de server in SSMS.
    ||||
 
    ![verbinding maken met server](./media/connect-query-ssms/connect.png)  
+
+> [!NOTE]
+> In deze zelfstudie wordt gebruikgemaakt van SQL Server-verificatie.
 
 3. Selecteer **Opties** in het dialoogvenster **Verbinding maken met server**. In de vervolgkeuzelijst **Verbinding maken met database** selecteert u **mySampleDatabase**. Het voltooien van de quickstart in het [gedeelte Vereisten](#prerequisites) maakt een AdventureWorksLT-database met de naam mySampleDatabase. Als uw werkende kopie van de AdventureWorks-database een andere naam heeft dan mySampleDatabase, selecteert u deze in plaats daarvan.
 
@@ -155,7 +160,7 @@ Voer deze Transact-SQL [INSERT](/sql/t-sql/statements/insert-transact-sql/)-code
 
 ### <a name="update-data"></a>Gegevens bijwerken
 
-Voer deze Transact-SQL [UPDATE](/sql/t-sql/queries/update-transact-sql?view=sql-server-ver15)-code uit om uw nieuwe product te wijzigen.
+Voer deze Transact-SQL [UPDATE](/sql/t-sql/queries/update-transact-sql)-code uit om uw nieuwe product te wijzigen.
 
 1. Vervang de vorige query door deze die de nieuwe record retourneert die u eerder hebt gemaakt:
 

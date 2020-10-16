@@ -10,13 +10,13 @@ ms.topic: reference
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
-ms.date: 05/25/2020
-ms.openlocfilehash: fc1532fab23ec520722ea71d814496e786b91651
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.date: 10/12/2020
+ms.openlocfilehash: 7b95ddfdb75dd5e5951a9c95442798692582fe6a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91617912"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978353"
 ---
 # <a name="time-zones-in-azure-sql-managed-instance"></a>Tijd zones in Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -34,7 +34,7 @@ Een set ondersteunde tijd zones wordt overgenomen van het onderliggende besturin
 
 Met het [beleid voor zomer tijd/tijd zone wijzigingen](https://aka.ms/time) wordt de historische nauw keurigheid van 2010 voorwaarts gegarandeerd.
 
-Een lijst met namen van de ondersteunde tijd zones wordt weer gegeven via de systeem weergave [sys. time_zone_info](/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) .
+Een lijst met namen van de ondersteunde tijd zones wordt weer gegeven via de [sys.time_zone_info](/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) systeem weergave.
 
 ## <a name="set-a-time-zone"></a>Een tijd zone instellen
 
@@ -95,7 +95,7 @@ Het gebruik van dezelfde tijd zone in een primair en secundair exemplaar in een 
 
 ## <a name="limitations"></a>Beperkingen
 
-- De tijd zone van het bestaande beheerde exemplaar kan niet worden gewijzigd.
+- De tijd zone van het bestaande beheerde exemplaar kan niet worden gewijzigd. Als tijdelijke oplossing maakt u een nieuw beheerd exemplaar met de juiste tijd zone en voert u vervolgens hand matig een back-up-en herstel bewerking uit. u kunt ook het beste een [herstel punt voor meerdere exemplaren](https://docs.microsoft.com/azure/azure-sql/managed-instance/point-in-time-restore?tabs=azure-portal#restore-an-existing-database)uitvoeren.
 - Externe processen die vanuit de SQL Server Agent taken worden gestart, hebben geen tijd zone van het exemplaar.
 
 ## <a name="list-of-supported-time-zones"></a>Lijst met ondersteunde tijd zones
@@ -144,7 +144,7 @@ Het gebruik van dezelfde tijd zone in een primair en secundair exemplaar in een 
 | Saint-Pierre (standaard tijd) | (UTC-03:00) Saint-Pierre en Miquelon |
 | Bahia standaard tijd) | (UTC-03:00) Salvador |
 | UTC-02 | (UTC-02:00) Coordinated Universal Time-02 |
-| Mid-Atlantic (standaard tijd) | (UTC-02:00) Mid-Atlantic-oud |
+| Mid-Atlantic standaard tijd | (UTC-02:00) Mid-Atlantic-oud |
 | Azoren (standaard tijd) | (UTC-01:00) Der |
 | Cabo Verde (standaard tijd) | (UTC-01:00) Cabo Verde |
 | UTC | (UTC) Coordinated Universal Time |
@@ -199,7 +199,7 @@ Het gebruik van dezelfde tijd zone in een primair en secundair exemplaar in een 
 | Omsk standaard tijd) | (UTC + 06:00) Omsk |
 | Myanmar (standaard tijd) | (UTC + 06:30) Rangoon (Yangon) |
 | Zuidoost-Azië (standaard tijd) | (UTC + 07:00) Bangkok, Hanoi, Jakarta |
-| Altaj (standaard tijd) | (UTC + 07:00) Barnaoel, Gorno-Altajsk |
+| Altaj (standaard tijd) | (UTC + 07:00) Barnaoel, Gorno-Altaysk |
 | G. Mongolië (standaard tijd) | (UTC + 07:00) Hovd |
 | North Asia (standaard tijd) | (UTC + 07:00) Krasnoyarsk |
 | Nvt. Centraal-Azië (standaard tijd) | (UTC + 07:00) Novosibirsk |
@@ -230,11 +230,11 @@ Het gebruik van dezelfde tijd zone in een primair en secundair exemplaar in een 
 | Norfolk (standaard tijd) | (UTC + 11:00) Norfolk eiland |
 | Sakhalin standaard tijd) | (UTC + 11:00) Sakhalin |
 | Central Pacific (standaard tijd) | (UTC + 11:00) Salomons eilanden, Nieuw-Caledonië |
-| Rusland-tijd zone 11 | (UTC + 12:00) Anadyr, Petropavlovsk-Kamtsjatski |
+| Rusland-tijd zone 11 | (UTC + 12:00) Anadyr, Petropavlovsk-Kamchatsky |
 | Nieuw-Zeeland (standaard tijd) | (UTC + 12:00) Auckland, Wellington |
 | UTC + 12 | (UTC + 12:00) Coordinated Universal Time + 12 |
 | Fiji (standaard tijd) | (UTC + 12:00) Fiji |
-| Kamtsjatka (standaard tijd) | (UTC + 12:00) Petropavlovsk-Kamtsjatski-oud |
+| Kamtsjatka (standaard tijd) | (UTC + 12:00) Petropavlovsk-Kamchatsky-oud |
 | Chatham Eilanden (standaard tijd) | (UTC + 12:45) Chathamman eilanden |
 | UTC + 13 | (UTC + 13:00) Coordinated Universal Time + 13 |
 | Tonga (standaard tijd) | (UTC + 13:00) Nuku'alofa |
@@ -246,4 +246,4 @@ Het gebruik van dezelfde tijd zone in een primair en secundair exemplaar in een 
 - [CURRENT_TIMEZONE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-transact-sql)
 - [CURRENT_TIMEZONE_ID (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-id-transact-sql)
 - [OP tijd ZONE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/at-time-zone-transact-sql)
-- [sys. time_zone_info (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql)
+- [sys.time_zone_info (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql)

@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
 ms.openlocfilehash: dde2c3e4cf496bb15ca91c72d9a41936af7051c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83743760"
 ---
 # <a name="enable-startstop-vms-during-off-hours"></a>VM's buiten bedrijfsuren starten/stoppen inschakelen
@@ -22,7 +22,7 @@ Voer de stappen in dit onderwerp uit om de VM's buiten bedrijfsuren starten/stop
 
 ## <a name="create-resources-for-the-feature"></a>Resources voor de functie maken
 
-1. Meld u aan bij Azure [Portal](https://portal.azure.com).
+1. Meld u aan bij de Azure [Portal](https://portal.azure.com).
 2. Zoek en selecteer **Automation-accounts**.
 3. Selecteer op de pagina Automation-accounts uw Automation-account in de lijst.
 4. Selecteer in het Automation-account de optie **VM starten/stoppen** onder **gerelateerde resources**. Hier kunt u op meer **informatie klikken en de oplossing inschakelen**. Als u de functie al hebt geïmplementeerd, kunt u klikken op **de oplossing beheren** en deze zoeken in de lijst.
@@ -82,7 +82,7 @@ Nadat u op **OK**hebt geklikt, worden de configuratie opties gevalideerd en word
   
 4. Gebruik het veld **planning** om een planning te selecteren voor het beheer van vm's door de functie. Selecteer een begin datum en-tijd voor uw planning om een terugkerend dagelijks schema te maken, beginnend bij het gekozen tijdstip. Het selecteren van een andere regio is niet beschikbaar. Als u de planning wilt configureren voor uw specifieke tijd zone nadat u de functie hebt geconfigureerd, raadpleegt u [de planningen voor opstarten en afsluiten wijzigen](automation-solution-vm-management-config.md#modify-the-startup-and-shutdown-schedules).
 
-5. Als u e-mail meldingen van een [actie groep](../azure-monitor/platform/action-groups.md)wilt ontvangen, accepteert u de standaard waarde **Ja** in het veld **e-mail meldingen** en geeft u een geldig e-mail adres op. Als u **Nee** selecteert maar besluit op een later tijdstip dat u e-mail meldingen wilt ontvangen, kunt u de actie groep bijwerken die is gemaakt met geldige e-mail adressen gescheiden door komma's. 
+5. Als u e-mail meldingen van een [actie groep](../azure-monitor/platform/action-groups.md)wilt ontvangen, accepteert u de standaard waarde **Ja** in het veld  **e-mail meldingen** en geeft u een geldig e-mail adres op. Als u **Nee** selecteert maar besluit op een later tijdstip dat u e-mail meldingen wilt ontvangen, kunt u de actie groep bijwerken die is gemaakt met geldige e-mail adressen gescheiden door komma's. 
 
 6. De volgende waarschuwings regels inschakelen:
 
@@ -98,7 +98,7 @@ VM's buiten bedrijfsuren starten/stoppen bevat geen vooraf gedefinieerde set met
 
 1. Nadat u de aanvankelijk vereiste instellingen voor de functie hebt geconfigureerd, klikt u op **OK** om de pagina para meters te sluiten.
 
-2. Klik op **Create**. Nadat alle instellingen zijn gevalideerd, wordt de functie geïmplementeerd voor uw abonnement. Het kan enkele seconden duren voordat dit proces is voltooid en u kunt de voortgang bijhouden onder **meldingen** in het menu.
+2. Klik op **Maken**. Nadat alle instellingen zijn gevalideerd, wordt de functie geïmplementeerd voor uw abonnement. Het kan enkele seconden duren voordat dit proces is voltooid en u kunt de voortgang bijhouden onder **meldingen** in het menu.
 
     > [!NOTE]
     > Als u een abonnement voor Azure Cloud Solution Provider (Azure CSP) hebt nadat de implementatie is voltooid, gaat u in uw Automation-account naar **variabelen** onder **gedeelde resources** en stelt u de [External_EnableClassicVMs](automation-solution-vm-management.md#variables) variabele in op **Onwaar**. Zo stopt de oplossing met het zoeken naar klassieke VM-resources.

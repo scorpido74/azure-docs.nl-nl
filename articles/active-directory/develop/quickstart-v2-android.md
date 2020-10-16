@@ -1,6 +1,7 @@
 ---
-title: 'Quickstart: Microsoft identity platform voor Android | Azure'
-description: Meer informatie over hoe Android-toepassingen een API kunnen aanroepen die toegangstokens vereist van het Microsoft identity platform-eindpunt.
+title: 'Quickstart: Aanmelding met Microsoft toevoegen aan een Android-app | Azure'
+titleSuffix: Microsoft identity platform
+description: In deze quickstart leert u hoe u met Android-toepassingen een API kunt aanroepen waarvoor toegangstokens zijn vereist die zijn verstrekt door het Microsoft-identiteitsplatform.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 10/15/2019
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
-ms.openlocfilehash: a46cd1b916edeae8a24fb997db46e5a0651567cb
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: e8f60a3f39e770c1b09668a6d76e025b07ebbd6d
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115268"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893506"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Snelstart: Gebruikers aanmelden en de Microsoft Graph API aanroepen vanuit een Android-app
 
@@ -24,17 +25,14 @@ Deze quickstart maakt gebruik van een codevoorbeeld die laat zien hoe een Androi
 
 Toepassingen moeten worden voorgesteld door een app-object in Azure Active Directory, zodat het Microsoft identity platform uw toepassing van tokens kan voorzien.
 
-> [!div renderon="docs"]
-> Voor het gemak bevat het codevoorbeeld een standaard `redirect_uri` die vooraf in het `AndroidManifest.xml`-bestand is geconfigureerd, zodat u niet eerst uw app-object hoeft te registreren. Een `redirect_uri` is gedeeltelijk gebaseerd op de ondertekeningssleutel van de app. Het voorbeeldproject is vooraf geconfigureerd met een ondertekeningssleutel, zodat de beschikbare `redirect_uri` werkt. Voor meer informatie over het registreren van een app-object en het integreren ervan met uw toepassing, raadpleegt u de zelfstudie [Gebruikers aanmelden en Microsoft Graph aanroepen vanuit een Android-app](tutorial-v2-android.md).
+## <a name="prerequisites"></a>Vereisten
 
-
-> [!NOTE]
-> **Vereisten**
-> * Android Studio 
-> * Android 16+
+* Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Android Studio
+* Android 16+
 
 > [!div class="sxs-lookup" renderon="portal"]
-> ### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Stap 1: uw toepassing configureren in Azure Portal 
+> ### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Stap 1: uw toepassing configureren in Azure Portal
 >  Voor een juiste werking van het codevoorbeeld uit deze quickstart moet u een omleidings-URI toevoegen die compatibel is met de verificatiebroker.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Breng deze wijzigingen voor mij aan]()
@@ -42,15 +40,15 @@ Toepassingen moeten worden voorgesteld door een app-object in Azure Active Direc
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Al geconfigureerd](media/quickstart-v2-android/green-check.png) Uw toepassing is al geconfigureerd met deze kenmerken
 >
-> ### <a name="step-2-download-the-project"></a>Stap 2: Het project downloaden 
+> ### <a name="step-2-download-the-project"></a>Stap 2: Het project downloaden
 > [!div class="sxs-lookup" renderon="portal"]
 > Voer het project uit met Android Studio.
-> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [!div class="sxs-lookup" renderon="portal" id="autoupdate" class="nextstepaction"]
 > [Het codevoorbeeld downloaden](https://github.com/Azure-Samples/ms-identity-android-java/archive/master.zip)
 >
 > [!div class="sxs-lookup" renderon="portal"]
 > ### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Stap 3: Uw app is geconfigureerd en klaar om te worden uitgevoerd
-> Uw project is geconfigureerd met waarden van de eigenschappen van uw app en is klaar om te worden uitgevoerd. 
+> Uw project is geconfigureerd met waarden van de eigenschappen van uw app en is klaar om te worden uitgevoerd.
 > De voorbeeld-app wordt gestart op het scherm **Modus voor één account**. Er wordt standaard een standaardbereik **user.read** verstrekt. Dit wordt gebruikt tijdens het lezen van uw eigen profielgegevens tijdens de aanroep van de Microsoft Graph API. De URL voor de aanroep van de Microsoft Graph API wordt standaard verstrekt. U kunt ze allebei desgewenst wijzigen.
 >
 > ![Gebruik van MSAL-voorbeeld-app met één account of meerdere accounts](./media/quickstart-v2-android/quickstart-sample-app.png)
@@ -112,8 +110,8 @@ Deze bestanden worden nu in meer detail bekeken, met name de voor MSAL specifiek
 
 MSAL ([com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal)) is de bibliotheek die wordt gebruikt voor het aanmelden van gebruikers en het aanvragen van tokens die worden gebruikt voor toegang tot een API die wordt beveiligd door het Microsoft identity platform. De bibliotheek wordt door Gradle 3.0+ geïnstalleerd wanneer u het volgende aan **Gradle Scripts** > **build.gradle (Module: app)** onder **afhankelijkheden** toevoegt:
 
-```gradle  
-implementation 'com.microsoft.identity.client:msal:1.+'
+```gradle
+implementation 'com.microsoft.identity.client:msal:2.+'
 ```
 
 U kunt dit zien in het voorbeeldproject in build.gradle (Module: app):
@@ -121,7 +119,7 @@ U kunt dit zien in het voorbeeldproject in build.gradle (Module: app):
 ```java
 dependencies {
     ...
-    implementation 'com.microsoft.identity.client:msal:1.+'
+    implementation 'com.microsoft.identity.client:msal:2.+'
     ...
 }
 ```
@@ -384,9 +382,9 @@ private void loadAccounts() {
 Bepaalde situaties waarin de gebruiker kan worden gevraagd een account te selecteren, referenties in te voeren of toestemming te geven voor de machtigingen die uw app heeft aangevraagd, zijn:
 
 * De eerste keer dat gebruikers zich aanmelden bij de toepassing
-* Als gebruiker hun wachtwoord opnieuw instellen, moeten ze hun referenties invoeren 
-* Als de toestemming is ingetrokken 
-* Als uw app expliciet toestemming vereist 
+* Als gebruiker hun wachtwoord opnieuw instellen, moeten ze hun referenties invoeren
+* Als de toestemming is ingetrokken
+* Als uw app expliciet toestemming vereist
 * Wanneer via de toepassing voor het eerst toegang wordt aangevraagd tot een resource
 * Wanneer MFA of ander beleid voor voorwaardelijke toegang is vereist
 
@@ -476,20 +474,11 @@ In tegenstelling tot het [auth_config_single_account.json](#auth_config_single_a
 }
 ```
 
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
 ## <a name="next-steps"></a>Volgende stappen
 
-### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>Leer wat de stappen zijn voor het maken van de toepassing die wordt gebruikt in deze snelstart
-
-U kunt de zelfstudie [Gebruikers aanmelden en Microsoft Graph aanroepen met een Android-app](tutorial-v2-android.md) proberen voor een stapsgewijze handleiding om een Android-app te bouwen waarmee een toegangstoken wordt opgehaald dat wordt gebruikt om de Microsoft Graph API aan te roepen.
+Ga naar de Android-zelfstudie waarin u een Android-app bouwt die een toegangstoken van het Microsoft-identiteitsplatform ontvangt en dit gebruikt om de Microsoft Graph API aan te roepen.
 
 > [!div class="nextstepaction"]
-> [Android-zelfstudie voor Graph API-aanroepen](./tutorial-v2-android.md)
-
-### <a name="msal-for-android-library-wiki"></a>MSAL voor Android-bibliotheek wiki
-
-Meer informatie over MSAL-bibliotheek voor Android:
-
-> [!div class="nextstepaction"]
-> [MSAL voor Android-bibliotheek wiki](https://github.com/AzureAD/microsoft-authentication-library-for-android/wiki)
-
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+> [Zelfstudie: Gebruikers aanmelden en de Microsoft Graph aanroepen vanaf een Android-toepassing](tutorial-v2-android.md)

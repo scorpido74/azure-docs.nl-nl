@@ -4,10 +4,10 @@ description: In dit artikel wordt beschreven hoe een Lab-account beheerder Lab-m
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 3b6c2d83414b1abc763755fbf15402b122c2186b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85444196"
 ---
 # <a name="allow-lab-creator-to-pick-location-for-the-lab-in-azure-lab-services"></a>Lab Creator toestaan locatie voor het lab in Azure Lab Services te kiezen
@@ -57,7 +57,7 @@ Als een locatie beperkt is, wordt deze niet standaard weer gegeven in de lijst. 
 
 ![Niet-beschik bare locaties weer geven](./media/allow-lab-creator-pick-lab-location/show-unavailable-locations.png)
 
-## <a name="cost"></a>Kosten
+## <a name="cost"></a>Cost
 Eerdere prijzen zijn gebaseerd op de grootte van de virtuele machine die u kiest voor het lab. Nu is de prijs gebaseerd op de combi natie van besturings systeem (OS), grootte en locatie. 
 
 ## <a name="next-steps"></a>Volgende stappen

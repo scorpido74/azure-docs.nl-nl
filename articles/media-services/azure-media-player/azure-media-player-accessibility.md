@@ -1,41 +1,41 @@
 ---
-title: Azure Media Player toegankelijkheid
-description: Meer informatie over de toegankelijkheids instellingen van de Azure Media Player.
+title: Toegankelijkheid van Azure Media Player
+description: Meer informatie over de toegankelijkheidsinstellingen van Azure Media Player.
 author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
 ms.openlocfilehash: 2231c2969bbfce1668002ad4f5f719e0b8e13de5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "81726555"
 ---
 # <a name="accessibility"></a>Toegankelijkheid #
 
-Azure Media Player werkt met mogelijkheden voor scherm lezers, zoals Windows Verteller en Apple OSX/iOS Voice. Alternatieve tags zijn beschikbaar voor de UI-knoppen en de scherm lezer kan deze alternatieve tags lezen wanneer de gebruiker ernaar navigeert. Aanvullende configuraties kunnen worden ingesteld op het niveau van het besturings systeem.
+Azure Media Player werkt met mogelijkheden voor schermlezers, zoals Verteller in Windows en VoiceOver in Apple OSX/iOS. Er zijn alternatieve tags beschikbaar voor de gebruikersinterfaceknoppen en de schermlezer kan deze alternatieve tags lezen wanneer de gebruiker ernaar navigeert. Aanvullende configuraties kunnen worden ingesteld op het niveau van het besturingssysteem.
 
 ## <a name="captions-and-subtitles"></a>Bijschriften en ondertitels ##
 
-Op dit moment ondersteunt Azure Media Player momenteel alleen bijschriften voor gebeurtenissen op aanvraag met WebVTT-indeling en live-gebeurtenissen met behulp van CEA 708. De TTML-indeling wordt momenteel niet ondersteund. Met ondertitels en bijschriften kan de speler een breder publiek te bereiken, waaronder mensen met een gehoorbeperking of personen die de video in een andere taal willen volgen. Ondertiteling verhoogt ook de betrokkenheid bij de video, verbetert het begrip ervan en maakt het mogelijk om de video te bekijken op plekken waar geluid niet kan worden afgespeeld, zoals een werkplek.  
+Op dit moment ondersteunt Azure Media Player ondertiteling voor gebeurtenissen op aanvraag met de WebVTT-indeling en voor live gebeurtenissen met behulp van CEA-708. De TTML-indeling wordt momenteel niet ondersteund. Met ondertitels en bijschriften kan de speler een breder publiek te bereiken, waaronder mensen met een gehoorbeperking of personen die de video in een andere taal willen volgen. Ondertiteling verhoogt ook de betrokkenheid bij de video, verbetert het begrip ervan en maakt het mogelijk om de video te bekijken op plekken waar geluid niet kan worden afgespeeld, zoals een werkplek.  
 
-## <a name="high-contrast-mode"></a>Modus Hoog contrast ##
+## <a name="high-contrast-mode"></a>De modus Hoog contrast ##
 
-De standaard GEBRUIKERSINTERFACE in Azure Media Player is compatibel met de meeste weergave modi apparaat/browser hoog contrast. Configuraties kunnen worden ingesteld op het niveau van het besturings systeem.
+De standaardgebruikersinterface in Azure Media Player is compatibel met de weergavemodi voor hoog contrast van de meeste apparaten/browsers. Configuraties kunnen worden ingesteld op het niveau van het besturingssysteem.
 
-## <a name="mobility-options"></a>Mobiliteits opties ##
+## <a name="mobility-options"></a>Opties voor mobiliteit ##
 
-### <a name="tabbing-focus"></a>Focus op tab ###
+### <a name="tabbing-focus"></a>Focus voor tabbladen ###
 
-De focus van de tabbladen, die door algemene HTML-standaarden wordt verschaft, is beschikbaar in Azure Media Player. Als u de focus van het tabblad wilt inschakelen, `tabindex=0` moet u (of een andere waarde als u begrijpt hoe de volg orde van het tabblad wordt `<video>` beïnvloed in HTML `<video ... tabindex=0>...</video>`) worden toegevoegd aan de HTML zoals:. Op sommige platforms is de focus voor de besturings elementen alleen aanwezig als de besturings elementen zichtbaar zijn en als het platform deze mogelijkheden ondersteunt.
+Focus voor tabbladen, die door algemene HTML-standaarden wordt verschaft, is beschikbaar in Azure Media Player. Als u focus voor tabbladen wilt inschakelen, moet u `tabindex=0` (of een andere waarde als u begrijpt hoe de volgorde op het tabblad wordt beïnvloed in HTML) toevoegen aan de HTML `<video>`, en wel als volgt: `<video ... tabindex=0>...</video>`. Op sommige platforms is de focus voor de besturingselementen alleen aanwezig als de besturingselementen zichtbaar zijn en als het platform deze mogelijkheden ondersteunt.
 
-Zodra de focus is ingeschakeld, kan de eind gebruiker de video speler effectief navigeren en beheren zonder dat dit afhankelijk is van de muis. U kunt aan elk context menu of aan te geven element navigeren door te klikken op de knop met het tabblad en op ENTER of de spatie balk hebt geselecteerd. Wanneer u op ENTER of de spatie balk op een context menu klikt, wordt deze uitvouwen zodat de eind gebruiker door kan gaan met de tab-toets om een menu opdracht te selecteren. Zodra u de context hebt van het item dat u wilt selecteren, drukt u opnieuw op Enter of de spatiebalk om de selectie te voltooien.
+Zodra focus voor tabbladen is ingeschakeld, kan de eindgebruiker de videospeler effectief bedienen en erin navigeren zonder de muis. U kunt naar elk contextmenu of besturingselement navigeren met behulp van de tabtoets en vervolgens op Enter of de spatiebalk drukken om de optie te gebruiken. Wanneer u in een contextmenu op Enter of de spatiebalk drukt, wordt het menu uitgevouwen zodat de eindgebruiker door kan gaan met de tabtoets om een menuopdracht te selecteren. Zodra u de context hebt van het item dat u wilt selecteren, drukt u opnieuw op Enter of de spatiebalk om de selectie te voltooien.
 
 ### <a name="hotkeys"></a>Sneltoetsen ###
 
-Azure Media Player ondersteunt de besturing via toetsenbord snel toetsen. In een webbrowser is de enige manier om het onderliggende video-element te beheren door de focus op de speler te hebben. Zodra er zich de focus op de speler bevindt, kan de functie van de speler door de sneltoets worden beheerd.  De volgende tabel beschrijft de verschillende sneltoetsen en het bijbehorende werking:
+Azure Media Player ondersteunt besturing via sneltoetsen. In een webbrowser kan het onderliggende video-element alleen worden bestuurd als de focus zich bevindt op de speler. Zodra de focus zich op de speler bevindt, kunnen de functies van de speler worden beheerd met sneltoetsen.  De volgende tabel beschrijft de verschillende sneltoetsen en het bijbehorende werking:
 
 | Sneltoets              | Gedrag                                                                |
 |----------------------|-------------------------------------------------------------------------|
@@ -43,10 +43,10 @@ Azure Media Player ondersteunt de besturing via toetsenbord snel toetsen. In een
 | M/m                  | Volume van de speler dempen/dempen opheffen                                          |
 | Pijl omhoog en omlaag    | Volume van de speler verhogen/verlagen                                    |
 | Pijl naar links en rechts | Voortgang van de video versnellen/vertragen                                  |
-| 0,1,2,3,4,5,6,7,8,9  | De voortgang van de video wordt gewijzigd in\- 0% 90%, afhankelijk van de toets die wordt ingedrukt |
-| Klik op actie         | Video wordt afgespeeld/onderbroken                                                   |
+| 0,1,2,3,4,5,6,7,8,9  | De voortgang van de video wordt 0%\-90%, afhankelijk van de ingedrukte toets |
+| Actie bij klikken         | Video wordt afgespeeld/onderbroken                                                   |
 
 ## <a name="next-steps"></a>Volgende stappen
 
 <!---Some context for the following links goes here--->
-- [Snelstartgids Azure Media Player](azure-media-player-quickstart.md)
+- [Quickstart voor Azure Media Player](azure-media-player-quickstart.md)

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/26/2019
 ms.openlocfilehash: ea7aa7758b5ccf7be02fa8d450ce710dcbef86a4
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86087381"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>Apache Kafka op HDInsight gebruiken met Azure IoT Hub
@@ -79,7 +79,7 @@ Zorg ervoor dat uw SSH-verbinding actief is voor de resterende stappen.
 
 Gebruik vanuit uw SSH-verbinding met het Edge-knoop punt de volgende stappen om Kafka te configureren om de connector uit te voeren in de zelfstandige modus:
 
-1. Wachtwoord variabele instellen. Vervang het wacht woord door het wacht woord voor het cluster en voer de volgende opdracht in:
+1. wachtwoordvariabele instellen. Vervang het wacht woord door het wacht woord voor het cluster en voer de volgende opdracht in:
 
     ```bash
     export password='PASSWORD'
@@ -123,7 +123,7 @@ Gebruik vanuit uw SSH-verbinding met het Edge-knoop punt de volgende stappen om 
     |`bootstrap.servers=localhost:9092`|Vervang de `localhost:9092` waarde door de Broker-hosts uit de vorige stap|Hiermee configureert u de zelfstandige configuratie voor het Edge-knoop punt om de Kafka-Brokers te vinden.|
     |`key.converter=org.apache.kafka.connect.json.JsonConverter`|`key.converter=org.apache.kafka.connect.storage.StringConverter`|Met deze wijziging kunt u testen met behulp van de console producent die is opgenomen in Kafka. U hebt mogelijk verschillende conversie Programma's nodig voor andere producenten en consumenten. Zie voor meer informatie over het gebruik van andere converter waarden [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md) .|
     |`value.converter=org.apache.kafka.connect.json.JsonConverter`|`value.converter=org.apache.kafka.connect.storage.StringConverter`|Hetzelfde als hierboven.|
-    |N.v.t.|`consumer.max.poll.records=10`|Toevoegen aan het einde van het bestand. Deze wijziging is het voor komen van time-outs in de Sink-connector door deze te beperken tot 10 records tegelijk. Zie voor meer informatie [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md) .|
+    |N.v.t.|`consumer.max.poll.records=10`|Toevoegen aan het einde van het bestand. Deze wijziging is het voor komen van time-outs in de Sink-connector door deze te beperken tot 10 records tegelijk. Zie [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md) voor meer informatie.|
 
 1. Als u het bestand wilt opslaan, gebruikt u __CTRL + X__, __Y__en __voert__u in.
 

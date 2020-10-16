@@ -19,10 +19,10 @@ ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 4353ed5413f76b13425a59d31bb6108542e3bd23
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89231126"
 ---
 # <a name="azure-ad-powershell-cmdlets-for-reporting"></a>Azure AD PowerShell-cmdlets voor rapportage
@@ -51,10 +51,10 @@ U krijgt toegang tot de audit logboeken met behulp van de cmdlet Get-AzureADAudi
 
 | Scenario                      | PowerShell-opdracht |
 | :--                           | :--                |
-| Weergave naam van toepassing      | Get-AzureADAuditDirectoryLogs: filter "initiatedBy/app/displayName EQ" Azure AD Cloud Sync "" |
-| Categorie                      | Get-AzureADAuditDirectoryLogs-filter "Category EQ" ApplicationManagement "" |
-| Datum en tijd van activiteit            | Get-AzureADAuditDirectoryLogs-filter "activityDateTime gt 2019-04-18" |
-| Alle hierboven genoemde antwoorden              | Get-AzureADAuditDirectoryLogs: filter "initiatedBy/app/displayName EQ" Azure AD Cloud Sync "en Category EQ" ApplicationManagement "en activityDateTime gt 2019-04-18"|
+| Weergave naam van toepassing      | Get-AzureADAuditDirectoryLogs-filter "initiatedBy/app/displayName EQ" Azure AD Cloud Sync "" |
+| Categorie                      | Get-AzureADAuditDirectoryLogs-filter "Category EQ ' ApplicationManagement '" |
+| Datum en tijd van activiteit            | Get-AzureADAuditDirectoryLogs-filter ' activityDateTime gt 2019-04-18 ' |
+| Alle hierboven genoemde antwoorden              | Get-AzureADAuditDirectoryLogs-filter ' initiatedBy/app/displayName EQ ' Azure AD Cloud Sync ' en Category EQ ' ApplicationManagement ' en activityDateTime gt 2019-04-18 '|
 
 
 In de volgende afbeelding ziet u een voor beeld van deze opdracht. 
@@ -72,10 +72,10 @@ U krijgt toegang tot de aanmeld logboeken met behulp van de cmdlet Get-AzureADAu
 
 | Scenario                      | PowerShell-opdracht |
 | :--                           | :--                |
-| Weergave naam van gebruiker             | Get-AzureADAuditSignInLogs-filter "userDisplayName EQ" Timothy Perkins ' " |
+| Weergave naam van gebruiker             | Get-AzureADAuditSignInLogs-filter ' userDisplayName EQ ' Timothy Perkins ' " |
 | Datum en tijd maken              | Get-AzureADAuditSignInLogs-filter "createdDateTime gt 2019-04-18T17:30:00.0 Z" (alles sinds 5:30 uur op 4/18) |
-| Status                        | Get-AzureADAuditSignInLogs-filter "status/error code EQ 50105" |
-| Weergave naam van toepassing      | Get-AzureADAuditSignInLogs-filter "appDisplayName EQ" StoreFrontStudio [wsfed ingeschakeld] "" |
+| Status                        | Get-AzureADAuditSignInLogs-filter status/error code EQ 50105 |
+| Weergave naam van toepassing      | Get-AzureADAuditSignInLogs-filter ' appDisplayName EQ ' StoreFrontStudio [wsfed enabled] ' ' |
 | Alle hierboven genoemde antwoorden              | Get-AzureADAuditSignInLogs-filter "userDisplayName EQ ' Timothy Perkins ' en status/error code ne 0 en appDisplayName EQ ' StoreFrontStudio [wsfed enabled] '" |
 
 

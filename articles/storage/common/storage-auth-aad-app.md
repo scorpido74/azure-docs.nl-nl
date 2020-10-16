@@ -10,18 +10,18 @@ ms.date: 09/21/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: df0bc6a07444070a0f14e632e81ad0bb787569c8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a0ce2c17586e5437047ff27cb67577b0480a83af
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91714766"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939338"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>Een token van Azure AD verkrijgen voor het machtigen van aanvragen van een client toepassing
 
 Een belang rijk voor deel van het gebruik van Azure Active Directory (Azure AD) met Azure Blob Storage of de wachtrij opslag is dat uw referenties niet meer in uw code hoeven te worden opgeslagen. In plaats daarvan kunt u een OAuth 2,0-toegangs token aanvragen bij het micro soft Identity-platform. Azure AD verifieert de beveiligingsprincipal (een gebruiker, groep of Service-Principal) die de toepassing uitvoert. Als de verificatie slaagt, retourneert Azure AD het toegangs token voor de toepassing en kan de toepassing vervolgens het toegangs token gebruiken om aanvragen voor Azure Blob Storage of de wachtrij opslag te autoriseren.
 
-In dit artikel wordt beschreven hoe u uw systeem eigen toepassing of webtoepassing configureert voor verificatie met micro soft Identity platform 2,0 met behulp van een voorbeeld toepassing die beschikbaar is voor downloaden. De voorbeeld toepassing bevat .NET, maar andere talen gebruiken een vergelijk bare methode. Zie [overzicht van micro soft Identity platform (v 2.0)](../../active-directory/develop/v2-overview.md)voor meer informatie over micro soft identity platform 2,0.
+In dit artikel wordt beschreven hoe u uw systeem eigen toepassing of webtoepassing configureert voor verificatie met het micro soft Identity-platform met behulp van een voorbeeld toepassing die beschikbaar is voor downloaden. De voorbeeld toepassing bevat .NET, maar andere talen gebruiken een vergelijk bare methode. Zie [overzicht van micro soft Identity platform](../../active-directory/develop/v2-overview.md)voor meer informatie over het micro soft-identiteits platform.
 
 Zie [toegang tot Azure Active Directory webtoepassingen verlenen met behulp van de oauth 2,0 code Grant flow](../../active-directory/develop/v2-oauth2-auth-code-flow.md)voor een overzicht van de OAuth 2,0-code subsidie stroom.
 
@@ -247,7 +247,7 @@ public async Task<IActionResult> Blob()
 }
 ```
 
-Toestemming is het proces van een gebruiker die toestemming verleent voor toegang tot beveiligde resources voor hun naam. Het micro soft Identity-platform 2,0 ondersteunt incrementele toestemming, wat inhoudt dat een beveiligingsprincipal in eerste instantie een minimale set machtigingen kan aanvragen en zo nodig machtigingen kan toevoegen in de loop van de tijd. Wanneer uw code een toegangs token aanvraagt, geeft u het bereik van machtigingen op dat uw app nodig heeft. Zie [incrementele en dynamische toestemming](../../active-directory/azuread-dev/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent)voor meer informatie over incrementele toestemming.
+Toestemming is het proces van een gebruiker die toestemming verleent voor toegang tot beveiligde resources voor hun naam. Het micro soft Identity-platform biedt ondersteuning voor incrementele toestemming, wat inhoudt dat een beveiligingsprincipal in eerste instantie een minimale set machtigingen kan aanvragen en zo nodig machtigingen voor de tijd kan toevoegen. Wanneer uw code een toegangs token aanvraagt, geeft u het bereik van machtigingen op dat uw app nodig heeft. Zie [incrementele en dynamische toestemming](../../active-directory/azuread-dev/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent)voor meer informatie over incrementele toestemming.
 
 ## <a name="view-and-run-the-completed-sample"></a>Het voltooide voor beeld weer geven en uitvoeren
 

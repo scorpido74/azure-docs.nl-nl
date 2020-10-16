@@ -8,26 +8,26 @@ ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-js
-ms.openlocfilehash: 1ccbe6cb332f357eeef02dff22b8a4be328b8de0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 53887b7487c3f0bb70c9f8cc7cd61246fabc0b37
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324226"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970126"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>Aangepaste Sdk's voor Azure Digital Apparaatdubbels maken met auto rest
 
 Op dit moment is het enige gepubliceerde gegevenslaag-Sdk's voor interactie met de Azure Digital Apparaatdubbels Api's voor .NET (C#), java script en Java. Meer informatie over deze Sdk's en de Api's in het algemeen vindt u in de [*instructies: gebruik de Azure Digital Apparaatdubbels api's en sdk's*](how-to-use-apis-sdks.md). Als u in een andere taal werkt, leert u in dit artikel hoe u uw eigen gegevenslaag SDK kunt genereren in de taal van uw keuze, met behulp van auto rest.
 
 >[!NOTE]
-> U kunt auto rest ook gebruiken om een Control vlak-SDK te genereren als u dat wilt. U doet dit door de stappen in dit artikel uit te voeren met behulp van het [OpenAPI-bestand (Control best Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/preview/2020-03-01-preview) in plaats van het gegevens vlak One.
+> U kunt auto rest ook gebruiken om een Control vlak-SDK te genereren als u dat wilt. U doet dit door de stappen in dit artikel uit te voeren met behulp van het meest recente OpenAPI-bestand ( **Control plan Swagger** ) van de [Control vlak Swagger Folder]] ( https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/) in plaats van het gegevens vlak One.
 
 ## <a name="set-up-your-machine"></a>Uw machine instellen
 
 Als u een SDK wilt genereren, hebt u het volgende nodig:
 * Auto [rest](https://github.com/Azure/autorest), version 2.0.4413 (versie 3 wordt momenteel niet ondersteund)
 * [Node.js](https://nodejs.org) als een vereiste voor auto rest
-* Het Azure Digital Apparaatdubbels [Data plan Swagger (OpenAPI)-bestand](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins/preview/2020-05-31-preview) met de recht *digitaltwins.jsop*, en de bijbehorende map met voor beelden. Down load het Swagger-bestand en de bijbehorende map met voor beelden naar uw lokale computer.
+* Het meest recente Azure Digital Apparaatdubbelse **Swagger** -bestand (OpenAPI) van de [Data vlak Swagger-map](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins)en de bijbehorende map met voor beelden.  Down load het Swagger-bestand *digitaltwins.jsop* en de map met voor beelden naar uw lokale computer.
 
 Zodra de computer is uitgerust met alles uit de bovenstaande lijst, kunt u auto rest gebruiken om de SDK te maken.
 

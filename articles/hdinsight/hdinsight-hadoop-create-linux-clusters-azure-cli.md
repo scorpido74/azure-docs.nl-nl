@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/03/2020
 ms.openlocfilehash: 04def98108bf996a8f8cabe0ad36c022011aa533
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86080683"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>HDInsight-clusters maken met behulp van Azure CLI
@@ -33,7 +33,7 @@ Azure CLI. Als u de Azure CLI nog niet hebt geïnstalleerd, raadpleegt u [Azure 
 
 ## <a name="create-a-cluster"></a>Een cluster maken
 
-1. Meld u aan bij uw Azure-abonnement. Als u Azure Cloud Shell wilt gebruiken, selecteert u **deze** in de rechter bovenhoek van het code blok. Anders voert u de onderstaande opdracht in:
+1. Aanmelden bij uw Azure-abonnement. Als u Azure Cloud Shell wilt gebruiken, selecteert u **Probeer het** in de rechterbovenhoek van het codeblok. Anders voert u de onderstaande opdracht in:
 
     ```azurecli-interactive
     az login
@@ -42,7 +42,7 @@ Azure CLI. Als u de Azure CLI nog niet hebt geïnstalleerd, raadpleegt u [Azure 
     # az account set --subscription "SUBSCRIPTIONID"
     ```
 
-2. Omgevings variabelen instellen. Het gebruik van variabelen in dit artikel is gebaseerd op bash. Er zijn kleine variaties nodig voor andere omgevingen. Zie [AZ-hdinsight-Create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) voor een volledige lijst met mogelijke para meters voor het maken van een cluster.
+2. Stel omgevingsvariabelen in. Het gebruik van variabelen in dit artikel is gebaseerd op bash. Er zijn kleine variaties nodig voor andere omgevingen. Zie [AZ-hdinsight-Create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) voor een volledige lijst met mogelijke para meters voor het maken van een cluster.
 
     |Parameter | Beschrijving |
     |---|---|
@@ -68,7 +68,7 @@ Azure CLI. Als u de Azure CLI nog niet hebt geïnstalleerd, raadpleegt u [Azure 
     export componentVersion=Hadoop=2.7
     ```
 
-3. [Maak de resource groep](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) door de volgende opdracht in te voeren:
+3. [Maak de resourcegroep](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) door de onderstaande opdracht in te voeren:
 
     ```azurecli-interactive
     az group create \
@@ -100,7 +100,7 @@ Azure CLI. Als u de Azure CLI nog niet hebt geïnstalleerd, raadpleegt u [Azure 
         --query [0].value -o tsv)
     ```
 
-6. [Maak een Azure storage-container](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create) door de volgende opdracht in te voeren:
+6. [Maak een Azure Storage-container](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create) door de onderstaande opdracht in te voeren:
 
     ```azurecli-interactive
     az storage container create \
@@ -132,11 +132,11 @@ Azure CLI. Als u de Azure CLI nog niet hebt geïnstalleerd, raadpleegt u [Azure 
     > [!IMPORTANT]  
     > HDInsight-clusters worden geleverd in verschillende typen, die overeenkomen met de werk belasting of technologie waarvoor het cluster is afgestemd. Er is geen ondersteunde methode voor het maken van een cluster dat meerdere typen combineert, zoals Storm en HBase op één cluster.
 
-    Het kan enkele minuten duren voordat het proces voor het maken van het cluster is voltooid. Meestal ongeveer 15.
+    Het kan enkele minuten duren voordat het cluster is gemaakt. Meestal ongeveer 15.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Nadat u het artikel hebt voltooid, kunt u het cluster verwijderen. Met HDInsight worden uw gegevens opgeslagen in Azure Storage zodat u een cluster veilig kunt verwijderen wanneer deze niet wordt gebruikt. U betaalt ook voor een HDInsight-cluster, zelfs wanneer het niet in gebruik is. Aangezien de kosten voor het cluster vaak zoveel hoger zijn dan de kosten voor opslag, is het financieel gezien logischer clusters te verwijderen wanneer ze niet worden gebruikt.
+Nadat u het artikel hebt voltooid, kunt u het cluster verwijderen. Met HDInsight worden uw gegevens opgeslagen in Azure Storage zodat u een cluster veilig kunt verwijderen wanneer deze niet wordt gebruikt. Voor een HDInsight-cluster worden ook kosten in rekening gebracht, zelfs wanneer het niet wordt gebruikt. Aangezien de kosten voor het cluster vaak zoveel hoger zijn dan de kosten voor opslag, is het financieel gezien logischer clusters te verwijderen wanneer ze niet worden gebruikt.
 
 Voer alle of enkele van de volgende opdrachten in om resources te verwijderen:
 

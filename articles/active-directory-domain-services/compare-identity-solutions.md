@@ -2,20 +2,20 @@
 title: Op Active Directory gebaseerde services in Azure vergelijken | Microsoft Docs
 description: In dit overzicht kunt u de verschillende identiteitsaanbiedingen voor Active Directory Domain Services, Azure Active Directory en Azure Active Directory Domain Services vergelijken.
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
 ms.date: 06/08/2020
-ms.author: iainfou
-ms.openlocfilehash: 1ed1305939f4f8a9de62de85a2f09c323a2636b1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.author: joflore
+ms.openlocfilehash: 0576fdaa9bdcc90636c3cd2bc90ba2818f1e69e7
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489585"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962663"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>Zelfbeheerde Active Directory Domain Services, Azure Active Directory en beheerde Azure Active Directory Domain Services vergelijken
 
@@ -26,7 +26,7 @@ Hoewel de drie op Active Directory gebaseerde identiteitsoplossingen een gemeens
 * **Active Directory Domain Services (AD DS)** - LDAP-server (Lightweight Directory Access Protocol) voor zakelijk gebruik die belangrijke functies biedt, zoals identiteit en verificatie, computerobjectbeheer, groepsbeleid en vertrouwensrelaties.
     * AD DS is een centraal onderdeel in veel organisaties met een on-premises IT-omgeving en biedt kernverificatie van gebruikersaccounts en computerbeheerfuncties.
     * Zie [Overzicht van Active Directory Domain Services in de documentatie van Windows Server][overview-adds] voor meer informatie.
-* **Azure Active Directory (Azure AD)** - cloudidentiteit en Mobile Device Management waarmee gebruikersaccount- en verificatieservices worden geboden voor resources zoals Office 365, Azure Portal of SaaS-toepassingen.
+* **Azure Active Directory (Azure AD)** - cloudidentiteit en Mobile Device Management waarmee gebruikersaccount- en verificatieservices worden geboden voor resources zoals Microsoft 365, Azure Portal of SaaS-toepassingen.
     * Azure AD kan worden gesynchroniseerd met een on-premises AD DS-omgeving om één identiteit te bieden aan gebruikers die standaard in de cloud werken.
     * Zie [Wat is Azure Active Directory?][whatis-azuread] voor meer informatie over Azure AD.
 * **Azure Active Directory Domain Services (Azure AD DS)** - biedt beheerde domeinservices met een subset van volledig compatibele traditionele AD DS-functies zoals domeindeelname, groepsbeleid, LDAP en Kerberos-/NTLM-verificatie.

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
 ms.openlocfilehash: 1a32e485dfc9cd465f6dd6d50abdb166737dc3aa
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87387979"
 ---
 # <a name="device-roobo-smart-audio-dev-kit"></a>Apparaat: roobo Smart audio dev kit
@@ -52,7 +52,7 @@ Dit artikel bevat apparaatspecifieke informatie voor de roobo Smart audio dev ki
    ```
 
     > [!NOTE]
-    > Deze opdrachten maken gebruik van de Android debug Bridge, `adb.exe` die deel uitmaakt van de Android Studio-installatie. Dit hulp programma bevindt zich in de C:\Users- \[ gebruikers naam] \AppData\Local\Android\Sdk\platform-tools. U kunt deze map toevoegen aan het pad om het gemakkelijker te kunnen aanroepen `adb` . Anders moet u het volledige pad naar uw installatie van adb.exe opgeven in elke opdracht die aanroept `adb` .
+    > Deze opdrachten maken gebruik van de Android debug Bridge, `adb.exe` die deel uitmaakt van de Android Studio-installatie. Dit hulpprogramma bevindt zich in C:\Users\[gebruikersnaam] \AppData\Local\Android\Sdk\platform-tools. U kunt deze map toevoegen aan uw pad om het gemakkelijker te maken om `adb` aan te roepen. Anders moet u het volledige pad naar uw installatie van adb.exe opgeven in elke opdracht waarin `adb` wordt aangeroepen.
     >
     > Als er een fout optreedt `no devices/emulators found` , controleer dan of de USB-kabel is aangesloten en de kabel van een hoge kwaliteit is. U kunt gebruiken `adb devices` om te controleren of uw computer kan communiceren met de Development Kit, omdat er een lijst met apparaten wordt geretourneerd.
     >
@@ -69,7 +69,7 @@ Zie de [roobo Development Guide (Engelstalig](http://dwn.roo.bo/server_upload/dd
 
 ## <a name="audio"></a>Audio
 
-Roobo biedt een hulp programma waarmee alle audio wordt vastgelegd in Flash-geheugen. Het kan handig zijn om geluids problemen op te lossen. Er wordt een versie van het hulp programma gegeven voor elke Development Kit-configuratie. Selecteer uw apparaat op de [roobo-site](http://ddk.roobo.com/)en selecteer vervolgens de koppeling **roobo extra** onder aan de pagina.
+Roobo biedt een hulp programma waarmee alle audio wordt vastgelegd in Flash-geheugen. Het kan handig zijn om geluids problemen op te lossen. Er wordt een versie van het hulp programma gegeven voor elke Development Kit-configuratie. Selecteer uw apparaat op de  [roobo-site](http://ddk.roobo.com/)en selecteer vervolgens de koppeling **roobo extra** onder aan de pagina.
 
 ## <a name="next-steps"></a>Volgende stappen
 

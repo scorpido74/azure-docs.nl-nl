@@ -10,10 +10,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 8f0a8903f90b134c35d9adb35a493d989d414b56
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87294335"
 ---
 # <a name="azcopy-load-clfs"></a>azcopy load clfs
@@ -46,7 +46,7 @@ azcopy load clfs [local dir] [container URL] [flags]
 
 - [Aan de slag met AzCopy](storage-use-azcopy-v10.md)
 - [Gegevens overdragen met AzCopy en Blob Storage](storage-use-azcopy-blobs.md)
-- [Gegevens overdragen met AzCopy en bestandopslag](storage-use-azcopy-files.md)
+- [Gegevens overdragen met AzCopy en bestandsopslag](storage-use-azcopy-files.md)
 - [Configureren, optimaliseren en problemen oplossen in AzCopy](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>Voorbeelden
@@ -61,7 +61,7 @@ azcopy load clfs "/path/to/dir" "https://[account].blob.core.windows.net/[contai
 
 **--compressie-type** teken reeks Geef het compressie type op dat moet worden gebruikt voor de overdrachten. Beschik bare waarden zijn: `DISABLED` , `LZ4` . (standaard `LZ4` )
 
-**--Help** voor de `azcopy load clfs` opdracht.
+**--Help**    voor de `azcopy load clfs` opdracht.
 
 **--** teken reeks op logboek niveau definiëren de logboek uitgebreidheids voor het logboek bestand, beschik bare niveaus: `DEBUG` ,, `INFO` `WARNING` , `ERROR` . (standaard `INFO` )
 

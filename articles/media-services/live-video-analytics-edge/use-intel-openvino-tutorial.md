@@ -4,12 +4,12 @@ description: In deze zelfstudie gebruikt u een AI-modelserver van Intel om de li
 ms.topic: tutorial
 ms.date: 09/08/2020
 titleSuffix: Azure
-ms.openlocfilehash: e620da1a4f0b7f782d478314fb0e2e83ab9a124a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d03737f43ee719b72860e7ffeff076e3f156cade
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906604"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776337"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>Zelfstudie: Live video analyseren met OpenVINO™ Model Server – AI Extension van Intel 
 
@@ -141,33 +141,15 @@ Klik met de rechtermuisknop op het Live Video Analytics-apparaat en selecteer **
 ### <a name="run-the-sample-program-to-detect-vehicles"></a>Het voorbeeldprogramma uitvoeren om voertuigen te detecteren
 Als u de [grafiektopologie](https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtensionOpenVINO/topology.json) voor deze zelfstudie in een browser opent, ziet u dat de waarde van `inferencingUrl` is ingesteld op `http://openvino:4000/vehicleDetection`, wat betekent dat de deductieserver resultaten in de live video weergeeft na het detecteren van voertuigen, indien aanwezig.
 
-1. Selecteer de toets F5 om een foutopsporingssessie te starten. U ziet de berichten die worden afgedrukt in het venster **TERMINAL**.
-1. De code *operations.json* wordt gestart met aanroepen naar de directe methoden `GraphTopologyList` en `GraphInstanceList`. Als u na het voltooien van vorige quickstarts resources hebt opgeschoond, worden er lege lijsten geretourneerd en wordt het proces gepauzeerd. Selecteer de Enter-toets om door te gaan.
+1. Open in Visual Studio Code het tabblad **Extensies** (of druk op Ctrl+Shift+X) en zoek naar Azure IoT Hub.
+1. Klik met de rechtermuisknop en selecteer **Extensie-instellingen**.
 
-    In het **TERMINAL**-venster wordt de volgende set aanroepen van directe methoden weergegeven:
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Overzicht":::
+1. Zoek 'Uitgebreid bericht tonen' en schakel deze optie in.
 
-     * Een aanroep van `GraphTopologySet` waarin gebruik wordt gemaakt van de voorgaande `topologyUrl`
-     * Een aanroep van `GraphInstanceSet` waarin gebruik wordt gemaakt van de volgende hoofdtekst:
-
-         ```
-         {
-           "@apiVersion": "1.0",
-           "name": "Sample-Graph-1",
-           "properties": {
-             "topologyName": "InferencingWithOpenVINO",
-             "description": "Sample graph description",
-             "parameters": [
-               {
-                 "name": "rtspUrl",
-                 "value": "rtsp://rtspsim:554/media/lots_015.mkv"
-               },
-               {
-                 "name": "rtspUserName",
-                 "value": "testuser"
-               },
-               {
-                 "name": "rtspPassword",
-                 "value": "testpassword"
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Overzicht"
                }
              ]
            }

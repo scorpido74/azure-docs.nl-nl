@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: c331334df64ea1bea45949152a34241a73fa5bb9
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: c5ae0e0d312aa9a959b114d576f887bfa5072f49
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91666157"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91965502"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Welke authenticatie- en verificatiemethoden zijn er beschikbaar in Azure Active Directory?
 
@@ -43,7 +43,7 @@ De volgende tabel bevat een overzicht van de beveiligings overwegingen voor de b
 | FIDO2-beveiligings sleutel (preview-versie)   | Hoog     | Hoog      | Hoog         |
 | OATH-hardware-tokens (preview-versie) | Gemiddeld   | Gemiddeld    | Hoog         |
 | OATH-software tokens           | Gemiddeld   | Gemiddeld    | Hoog         |
-| Sms                            | Normaal   | Hoog      | Gemiddeld       |
+| Sms                            | Middelgroot   | Hoog      | Gemiddeld       |
 | Spraak                          | Gemiddeld   | Gemiddeld    | Gemiddeld       |
 | Wachtwoord                       | Laag      | Hoog      | Hoog         |
 
@@ -60,20 +60,20 @@ De volgende tabel geeft een overzicht van de wijze waarop een verificatie method
 
 | Methode                         | Primaire authenticatie | Secundaire verificatie  |
 |--------------------------------|:----------------------:|:-------------------------:|
-| Windows Hello voor Bedrijven     | Yes                    | MFA                       |
+| Windows Hello voor Bedrijven     | Ja                    | MFA                       |
 | Microsoft Authenticator-app    | Ja (preview-versie)          | MFA en SSPR              |
-| FIDO2-beveiligings sleutel (preview-versie)   | Yes                    | MFA                       |
-| OATH-hardware-tokens (preview-versie) | No                     | MFA                       |
-| OATH-software tokens           | No                     | MFA                       |
+| FIDO2-beveiligings sleutel (preview-versie)   | Ja                    | MFA                       |
+| OATH-hardware-tokens (preview-versie) | Nee                     | MFA                       |
+| OATH-software tokens           | Nee                     | MFA                       |
 | Sms                            | Ja (preview-versie)          | MFA en SSPR              |
-| Spraakoproep                     | No                     | MFA en SSPR              |
-| Wachtwoord                       | Yes                    |                           |
+| Spraakoproep                     | Nee                     | MFA en SSPR              |
+| Wachtwoord                       | Ja                    |                           |
 
 Al deze verificatie methoden kunnen worden geconfigureerd in de Azure Portal en het gebruik van de [Microsoft Graph rest API bèta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)wordt steeds vaker gebruikt.
 
 Raadpleeg de volgende afzonderlijke conceptuele artikelen voor meer informatie over de werking van elke verificatie methode:
 
-* [Windows Hello voor Bedrijven](/windows/security/identity-protection/hello-for-business/hello-overview)
+* [Windows hello voor bedrijven](/windows/security/identity-protection/hello-for-business/hello-overview)
 * [Microsoft Authenticator-app](concept-authentication-authenticator-app.md)
 * [FIDO2-beveiligings sleutel (preview-versie)](concept-authentication-passwordless.md#fido2-security-keys)
 * [OATH-hardware-tokens (preview-versie)](concept-authentication-oath-tokens.md#oath-hardware-tokens-preview)

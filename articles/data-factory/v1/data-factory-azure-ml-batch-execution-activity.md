@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.openlocfilehash: 9b773eee27cd72562999e468f90dd87907cf9677
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91776184"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-studio-classic-and-azure-data-factory"></a>Maak voorspellende pijp lijnen met behulp van Azure Machine Learning Studio (klassiek) en Azure Data Factory
@@ -132,7 +132,7 @@ In dit scenario maakt de Azure Machine Learning Studio (klassieke) webservice vo
 >
 >
 
-### <a name="example"></a>Voorbeeld:
+### <a name="example"></a>Voorbeeld
 In dit voor beeld wordt Azure Storage gebruikt om zowel de invoer-als uitvoer gegevens te bewaren.
 
 We raden u aan om door te gaan [met het bouwen van uw eerste pijp lijn met Data Factory][adf-build-1st-pipeline] zelf studie voordat u dit voor beeld gaat volgen. Gebruik de Data Factory editor om Data Factory artefacten (gekoppelde services, gegevens sets, pijp lijn) in dit voor beeld te maken.
@@ -351,7 +351,7 @@ Wanneer u de module lezer in een Azure Machine Learning Studio (klassiek) experi
 
 ![Eigenschappen van Azure Blob](./media/data-factory-create-predictive-pipelines/azure-blob-properties.png)
 
-### <a name="example"></a>Voorbeeld:
+### <a name="example"></a>Voorbeeld
 #### <a name="pipeline-with-azuremlbatchexecution-activity-with-web-service-parameters"></a>Pijp lijn met AzureMLBatchExecution-activiteit met para meters van webservice
 
 ```JSON

@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: damendo
 ms.openlocfilehash: fa1ed25e8c9a80dda2bf0e4625d28a3befaa49c9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87479843"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Veelgestelde vragen over Traffic Analytics
@@ -56,7 +56,7 @@ Rollen controleren die aan een gebruiker zijn toegewezen voor een abonnement:
 
 2. Selecteer het vereiste abonnement met **Select-AzSubscription**. 
 
-3. Gebruik **Get-AzRoleAssignment-SignInName [e-mail adres van gebruiker]-IncludeClassicAdministrators**om alle rollen weer te geven die aan een opgegeven gebruiker zijn toegewezen. 
+3. Gebruik  **Get-AzRoleAssignment-SignInName [e-mail adres van gebruiker]-IncludeClassicAdministrators**om alle rollen weer te geven die aan een opgegeven gebruiker zijn toegewezen. 
 
 Als er geen uitvoer wordt weer gegeven, neemt u contact op met de beheerder van de desbetreffende abonnementen om de opdrachten uit te voeren. Zie [toegangs beheer op basis van rollen beheren met Azure PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)voor meer informatie.
 
@@ -69,12 +69,12 @@ U kunt Traffic Analytics voor Nsg's gebruiken in een van de volgende ondersteund
 - VS - oost
 - VS - oost 2
 - VS - noord-centraal
-- VS - zuid-centraal
+- South Central US
 - Central US
 - VS - west
 - VS - west 2
 - Frankrijk - centraal
-- Europa - west
+- Europa -west
 - Europa - noord
 - Brazil South
 - Verenigd Koninkrijk West
@@ -89,7 +89,7 @@ U kunt Traffic Analytics voor Nsg's gebruiken in een van de volgende ondersteund
 - Japan - oost
 - Japan - west
 - VS (overheid) - Virginia
-- China-oost 2
+- China - oost 2
 
 De Log Analytics-werk ruimte moet in de volgende regio's bestaan:
 - Canada - midden
@@ -97,12 +97,12 @@ De Log Analytics-werk ruimte moet in de volgende regio's bestaan:
 - VS - oost
 - VS - oost 2
 - VS - noord-centraal
-- VS - zuid-centraal
+- South Central US
 - Central US
 - VS - west
 - VS - west 2
 - Frankrijk - centraal
-- Europa - west
+- Europa -west
 - Europa - noord
 - Verenigd Koninkrijk West
 - Verenigd Koninkrijk Zuid
@@ -114,7 +114,7 @@ De Log Analytics-werk ruimte moet in de volgende regio's bestaan:
 - India - centraal
 - Japan East
 - VS (overheid) - Virginia
-- China-oost 2
+- China - oost 2
 
 ## <a name="can-the-nsgs-i-enable-flow-logs-for-be-in-different-regions-than-my-workspace"></a>Kan de Nsg's ik stroom logboeken inschakelen voor andere regio's dan mijn werk ruimte?
 
@@ -355,7 +355,7 @@ De pagina GeoMap bevat twee hoofd secties:
         
 ### <a name="keyboard-navigation-at-any-stage"></a>Toetsenbord navigatie in elk stadium
     
-- `Esc`Hiermee wordt de uitgevouwen selectie samengevouwen.
+- `Esc` Hiermee wordt de uitgevouwen selectie samengevouwen.
 - De `Up-arrow` sleutel voert dezelfde actie uit als `Esc` . De `Down arrow` sleutel voert dezelfde actie uit als `Enter` .
 - Gebruiken `Shift+Plus` om in te zoomen en `Shift+Minus` uit te zoomen.
 

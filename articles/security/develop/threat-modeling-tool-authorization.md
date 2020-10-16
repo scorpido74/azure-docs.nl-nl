@@ -17,10 +17,10 @@ ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 51d8b740ba1275b23bc17a58284141dce0d48fe0
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89299997"
 ---
 # <a name="security-frame-authorization--mitigations"></a>Beveiligings frame: autorisatie | Oplossingen 
@@ -36,7 +36,7 @@ ms.locfileid: "89299997"
 | **Grens van Service Fabric vertrouwen** | <ul><li>[De toegang van clients tot cluster bewerkingen beperken met RBAC](#cluster-rbac)</li></ul> |
 | **Dynamics CRM** | <ul><li>[Beveiligings modellering uitvoeren en beveiliging op veld niveau gebruiken indien vereist](#modeling-field)</li></ul> |
 | **Dynamics CRM-Portal** | <ul><li>[Beveiligings modellen van portal-accounts uitvoeren, zodat het beveiligings model voor de portal verschilt van de rest van CRM](#portal-security)</li></ul> |
-| **Azure Storage** | <ul><li>[Verleen verfijnde machtigingen voor een bereik van entiteiten in azure Table Storage](#permission-entities)</li><li>[Op rollen gebaseerde Access Control (RBAC) inschakelen voor een Azure-opslag account met behulp van Azure Resource Manager](#rbac-azure-manager)</li></ul> |
+| **Azure Storage** | <ul><li>[Verleen verfijnde machtigingen voor een bereik van entiteiten in azure Table Storage](#permission-entities)</li><li>[Role-Based Access Control (RBAC) naar Azure Storage-account inschakelen met behulp van Azure Resource Manager](#rbac-azure-manager)</li></ul> |
 | **Mobiele client** | <ul><li>[Impliciete detectie van jailbreak of DFS implementeren](#rooting-detection)</li></ul> |
 | **WCF** | <ul><li>[Zwakke klasse-verwijzing in WCF](#weak-class-wcf)</li><li>[WCF-autorisatie beheer implementeren](#wcf-authz)</li></ul> |
 | **Web-API** | <ul><li>[Het juiste autorisatie mechanisme implementeren in ASP.NET Web-API](#authz-aspnet)</li></ul> |
@@ -107,7 +107,7 @@ ms.locfileid: "89299997"
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | N.v.t.  |
-| **Stappen** | <p>Het principe betekent dat een gebruikers account alleen de bevoegdheden geeft die essentieel zijn voor de werking van die gebruikers. Een back-upgebruiker hoeft bijvoorbeeld geen software te installeren: daarom heeft de back-upgebruiker alleen rechten voor het uitvoeren van back-up-en back-uptoepassingen. Alle andere bevoegdheden, zoals het installeren van nieuwe software, worden geblokkeerd. Het principe geldt ook voor een personal computer gebruiker die meestal in een normaal gebruikers account werkt en een Privileged, met een wacht woord beveiligd account (dat wil zeggen, een super gebruiker) wordt geopend wanneer de situatie dit absoluut vereist. </p><p>Dit principe kan ook worden toegepast op uw webtoepassingen. In plaats van alleen afhankelijk te zijn van op rollen gebaseerde verificatie methoden met behulp van sessies, willen we in plaats daarvan machtigingen toewijzen aan gebruikers met behulp van een verificatie systeem op basis van een Data Base. We gebruiken nog steeds sessies om te bepalen of de gebruiker correct is aangemeld, maar nu alleen in plaats van de gebruiker met een specifieke rol toe te wijzen om te controleren welke acties hij of zij privileged heeft om uit te voeren op het systeem. Ook een Big Pro van deze methode is, wanneer een gebruiker aan minder privileges moet worden toegewezen, de wijzigingen worden toegepast op het moment dat de toewijzing niet afhankelijk is van de sessie die u eerst zou moeten verlopen.</p>|
+| **Stappen** | <p>Het principe betekent dat een gebruikers account alleen de bevoegdheden geeft die essentieel zijn voor de werking van die gebruikers. Een back-upgebruiker hoeft bijvoorbeeld geen software te installeren: daarom heeft de back-upgebruiker alleen rechten voor het uitvoeren van back-up-en back-uptoepassingen. Alle andere bevoegdheden, zoals het installeren van nieuwe software, worden geblokkeerd. Het principe geldt ook voor een personal computer gebruiker die meestal in een normaal gebruikers account werkt en een Privileged, met een wacht woord beveiligd account (dat wil zeggen, een super gebruiker) wordt geopend wanneer de situatie dit absoluut vereist. </p><p>Dit principe kan ook worden toegepast op uw webtoepassingen. In plaats van alleen afhankelijk te zijn van op rollen gebaseerde verificatie methoden met behulp van sessies, willen we in plaats daarvan machtigingen toewijzen aan gebruikers met behulp van een Database-Based-verificatie systeem. We gebruiken nog steeds sessies om te bepalen of de gebruiker correct is aangemeld, maar nu alleen in plaats van de gebruiker met een specifieke rol toe te wijzen om te controleren welke acties hij of zij privileged heeft om uit te voeren op het systeem. Ook een Big Pro van deze methode is, wanneer een gebruiker aan minder privileges moet worden toegewezen, de wijzigingen worden toegepast op het moment dat de toewijzing niet afhankelijk is van de sessie die u eerst zou moeten verlopen.</p>|
 
 ## <a name="business-logic-and-resource-access-authorization-decisions-should-not-be-based-on-incoming-request-parameters"></a><a id="logic-request-parameters"></a>Beslissingen met betrekking tot bedrijfs logica en bron toegang mogen niet worden gebaseerd op de para meters voor de inkomende aanvraag
 
@@ -158,8 +158,8 @@ Een mogelijke aanvaller kan nu niet knoeien en de bewerking van de toepassing wi
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | SQL Azure, premises |
 | **Kenmerken**              | SQL-versie-V12, SQL-versie-MsSQL2016 |
-| **Referenties**              | [Beveiliging op RIJNIVEAU SQL Server](https://msdn.microsoft.com/library/azure/dn765131.aspx) |
-| **Stappen** | <p>Met beveiliging op rijniveau kunnen klanten de toegang tot rijen in een databasetabel beheren op basis van de kenmerken van de gebruiker die een query uitvoert (bijvoorbeeld groepslidmaatschap of uitvoeringscontext).</p><p>Beveiliging op RIJNIVEAU vereenvoudigt het ontwerp en de code ring van beveiliging in uw toepassing. Met RLS kunt u beperkingen instellen voor de toegang tot gegevens in rijen. U kunt bijvoorbeeld bepalen dat werkrollen alleen toegang hebben tot de rijen met gegevens die relevant zijn voor hun afdeling, of de toegang van klanten beperken tot de gegevens die relevant zijn voor hun bedrijf.</p><p>De logica van de toegangs beperking bevindt zich in de database laag, in plaats van dat de gegevens in een andere toepassingslaag worden verwijderd. Het database systeem past de toegangs beperkingen telkens toe wanneer de toegang tot gegevens vanuit een wille keurige laag wordt gestart. Dit maakt het beveiligings systeem betrouwbaarder en betrouwbaarder door de surface area van het beveiligings systeem te verminderen.</p><p>|
+| **Referenties**              | [SQL Server Row-Level Security (beveiliging op RIJNIVEAU)](https://msdn.microsoft.com/library/azure/dn765131.aspx) |
+| **Stappen** | <p>Met beveiliging op rijniveau kunnen klanten de toegang tot rijen in een databasetabel beheren op basis van de kenmerken van de gebruiker die een query uitvoert (bijvoorbeeld groepslidmaatschap of uitvoeringscontext).</p><p>Row-Level Security (beveiliging op RIJNIVEAU) vereenvoudigt het ontwerp en de code ring van beveiliging in uw toepassing. Met RLS kunt u beperkingen instellen voor de toegang tot gegevens in rijen. U kunt bijvoorbeeld bepalen dat werkrollen alleen toegang hebben tot de rijen met gegevens die relevant zijn voor hun afdeling, of de toegang van klanten beperken tot de gegevens die relevant zijn voor hun bedrijf.</p><p>De logica van de toegangs beperking bevindt zich in de database laag, in plaats van dat de gegevens in een andere toepassingslaag worden verwijderd. Het database systeem past de toegangs beperkingen telkens toe wanneer de toegang tot gegevens vanuit een wille keurige laag wordt gestart. Dit maakt het beveiligings systeem betrouwbaarder en betrouwbaarder door de surface area van het beveiligings systeem te verminderen.</p><p>|
 
 Houd er rekening mee dat beveiliging op rijniveau als een out-of-the-box-database functie alleen van toepassing is op SQL Server begin 2016, Azure SQL Database en SQL Managed instance. Als de out-of-Box-functie voor beveiliging op rijniveau niet is geïmplementeerd, moet worden gegarandeerd dat gegevens toegang is beperkt met behulp van weer gaven en procedures
 
@@ -284,7 +284,7 @@ Houd er rekening mee dat beveiliging op rijniveau als een out-of-the-box-databas
 | **Referenties**              | [Toegang tot objecten in uw Azure Storage-account delegeren met SAS](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_data-plane-security) |
 | **Stappen** | In bepaalde bedrijfs scenario's kan Azure Table Storage vereist zijn om gevoelige gegevens op te slaan die aan verschillende partijen zijn opgelegd. Bijvoorbeeld gevoelige gegevens die betrekking hebben op verschillende landen/regio's. In dergelijke gevallen kunnen SAS-hand tekeningen worden samengesteld door de partitie-en rijlabels op te geven, zodat een gebruiker toegang heeft tot gegevens die specifiek zijn voor een bepaald land of bepaalde regio.| 
 
-## <a name="enable-role-based-access-control-rbac-to-azure-storage-account-using-azure-resource-manager"></a><a id="rbac-azure-manager"></a>Op rollen gebaseerde Access Control (RBAC) inschakelen voor een Azure-opslag account met behulp van Azure Resource Manager
+## <a name="enable-role-based-access-control-rbac-to-azure-storage-account-using-azure-resource-manager"></a><a id="rbac-azure-manager"></a>Role-Based Access Control (RBAC) naar Azure Storage-account inschakelen met behulp van Azure Resource Manager
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
@@ -292,7 +292,7 @@ Houd er rekening mee dat beveiliging op rijniveau als een out-of-the-box-databas
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Referenties**              | [Uw opslag account beveiligen met Access Control op basis van rollen (RBAC)](https://azure.microsoft.com/documentation/articles/storage-security-guide/#management-plane-security) |
+| **Referenties**              | [Uw opslag account beveiligen met Role-Based Access Control (RBAC)](https://azure.microsoft.com/documentation/articles/storage-security-guide/#management-plane-security) |
 | **Stappen** | <p>Wanneer u een nieuw opslag account maakt, selecteert u een implementatie model van klassiek of Azure Resource Manager. Het klassieke model voor het maken van resources in azure staat alleen de toegang tot het abonnement toe, en is op zijn beurt het opslag account.</p><p>Met het Azure Resource Manager model plaatst u het opslag account in een resource groep en beheert u de toegang tot het beheer vlak van het betreffende opslag account met behulp van Azure Active Directory. U kunt bijvoorbeeld specifieke gebruikers de mogelijkheid geven om toegang te krijgen tot de sleutels van het opslag account, terwijl andere gebruikers informatie over het opslag account kunnen bekijken, maar geen toegang hebben tot de sleutel van het opslag account.</p>|
 
 ## <a name="implement-implicit-jailbreak-or-rooting-detection"></a><a id="rooting-detection"></a>Impliciete detectie van jailbreak of DFS implementeren

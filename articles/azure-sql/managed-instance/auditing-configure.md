@@ -14,10 +14,10 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 05/26/2020
 ms.openlocfilehash: d8a6ead23e080b5e1e17403873e2dbaedc0ce177
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91620355"
 ---
 # <a name="get-started-with-azure-sql-managed-instance-auditing"></a>Aan de slag met controle van Azure SQL Managed instance
@@ -32,7 +32,7 @@ Met controle van [Azure SQL Managed instance](sql-managed-instance-paas-overview
 
 In de volgende sectie wordt de configuratie van de controle op uw beheerde exemplaar beschreven.
 
-1. Ga naar [Azure Portal](https://portal.azure.com).
+1. Ga naar de [Azure Portal](https://portal.azure.com).
 2. Een Azure Storage- **container** maken waar audit logboeken worden opgeslagen.
 
    1. Ga naar het Azure Storage-account waar u de audit logboeken wilt opslaan.
@@ -209,7 +209,7 @@ Audit logboeken van een beheerd exemplaar kunnen worden verzonden naar Azure Eve
 
 Er zijn verschillende methoden die u kunt gebruiken om de controle logboeken van blobs weer te geven.
 
-- Gebruik de systeem functie `sys.fn_get_audit_file` (T-SQL) om de controle logboek gegevens in tabel vorm te retour neren. Zie de [documentatie voor sys. fn_get_audit_file](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql)voor meer informatie over het gebruik van deze functie.
+- Gebruik de systeem functie `sys.fn_get_audit_file` (T-SQL) om de controle logboek gegevens in tabel vorm te retour neren. Zie de [sys.fn_get_audit_file-documentatie](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql)voor meer informatie over het gebruik van deze functie.
 
 - U kunt audit logboeken verkennen met behulp van een hulp programma zoals [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/). In Azure Storage worden controle Logboeken opgeslagen als een verzameling BLOB-bestanden binnen een container die is gedefinieerd voor het opslaan van de audit Logboeken. Zie voor meer informatie over de hiërarchie van de opslagmap, de naam conventies en de logboek indeling de [verwijzing naar de indeling van het BLOB-controle logboek](https://go.microsoft.com/fwlink/?linkid=829599).
 

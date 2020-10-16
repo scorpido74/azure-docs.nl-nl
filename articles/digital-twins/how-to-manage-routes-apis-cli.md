@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 7365e4904bb8e1920e7d4c57c165e489f2ff302e
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 65e7a425fdf8ee1b253bcb696792b569b7195d4c
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540588"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047366"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Eind punten en routes beheren in azure Digital Apparaatdubbels (Api's en CLI)
 
@@ -44,7 +44,7 @@ Als u een eind punt wilt koppelen aan Azure Digital Apparaatdubbels, moet u het 
 
 ### <a name="create-an-event-grid-endpoint"></a>Een Event Grid-eind punt maken
 
-In het volgende voor beeld ziet u hoe u een event grid-type-eind punt maakt met behulp van de Azure CLI. U kunt [Azure Cloud shell](https://shell.azure.com)gebruiken of [de CLI lokaal installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
+In het volgende voor beeld ziet u hoe u een event grid-type-eind punt maakt met behulp van de Azure CLI. U kunt [Azure Cloud shell](https://shell.azure.com)gebruiken of [de CLI lokaal installeren](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest).
 
 Eerst maakt u een event grid-onderwerp. U kunt de volgende opdracht gebruiken of de stappen in meer detail weer geven door naar [de sectie *een aangepast onderwerp maken* ](../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic) van de Snelstartgids Event grid *aangepaste gebeurtenissen* te gaan.
 

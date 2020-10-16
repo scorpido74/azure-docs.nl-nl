@@ -3,19 +3,17 @@ title: Azure Monitor werkmappen-gegevens bronnen | Micro soft docs
 description: Vereenvoudig complexe rapportage met vooraf opgebouwde en aangepaste werkmappen met para meters Azure Monitor gebaseerd op meerdere gegevens bronnen
 services: azure-monitor
 documentationcenter: ''
-author: mrbullwinkle
 manager: carmonm
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/29/2020
-ms.author: mbullwin
-ms.openlocfilehash: bbd231ca527b4c01509230e839b97187de29febd
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 049a7348b803d12b66974bb9a9b50c12059171a2
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825737"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91931118"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Gegevens bronnen Azure Monitor werkmappen
 

@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: allensu
 ms.openlocfilehash: edc17b9636792ce00458716e3461077fa689b3ed
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87001570"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>Een open bare load balancer met IPv6 maken met behulp van Azure CLI
@@ -157,7 +157,7 @@ In dit voorbeeld worden de volgende items gemaakt:
 * Een NAT-regel om al het binnenkomende verkeer op poort 3391 te vertalen naar poort 3389 voor Remote Desktop Protocol (RDP).\*
 * Een load balancer regel waarmee al het binnenkomende verkeer op poort 80 wordt gebalanceerd naar poort 80 op de adressen in de back-end-pool.
 
-\*NAT-regels zijn gekoppeld aan een specifiek exemplaar van een virtuele machine achter de load balancer. Het netwerk verkeer dat binnenkomt op poort 3389 wordt verzonden naar de specifieke virtuele machine en poort die is gekoppeld aan de NAT-regel. U moet een protocol (UDP of TCP) voor een NAT-regel opgeven. U kunt beide protocollen niet toewijzen aan dezelfde poort.
+\* NAT-regels zijn gekoppeld aan een specifiek exemplaar van een virtuele machine achter de load balancer. Het netwerk verkeer dat binnenkomt op poort 3389 wordt verzonden naar de specifieke virtuele machine en poort die is gekoppeld aan de NAT-regel. U moet een protocol (UDP of TCP) voor een NAT-regel opgeven. U kunt beide protocollen niet toewijzen aan dezelfde poort.
 
 1. De Power shell-variabelen instellen:
 

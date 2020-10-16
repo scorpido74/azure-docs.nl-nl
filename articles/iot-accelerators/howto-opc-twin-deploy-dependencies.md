@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: ae0e18a2dfbce52e50b4a8b58d478a46dff12922
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 42024fc506de7befed7c44ebcc410756b6f43a35
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91282099"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078983"
 ---
 # <a name="deploying-dependencies-for-local-development"></a>Afhankelijkheden implementeren voor lokale ontwikkeling
 
 > [!IMPORTANT]
-> Tijdens het bijwerken van dit artikel raadpleegt u [Azure Industrial IOT](https://azure.github.io/Industrial-IoT/) voor de meest recente inhoud.
+> Zie [Azure Industrial IoT](https://azure.github.io/Industrial-IoT/) voor de meest recente inhoud terwijl we dit artikel bijwerken.
 
 In dit artikel wordt uitgelegd hoe u alleen de services van het Azure-platform implementeert die nodig zijn om lokale ontwikkeling en fout opsporing uit te voeren.   Aan het einde hebt u een resource groep geïmplementeerd die alles bevat wat u nodig hebt voor lokale ontwikkeling en fout opsporing.
 
 ## <a name="deploy-azure-platform-services"></a>Azure-platform services implementeren
 
-1. Zorg ervoor dat Power shell-en [AzureRM Power](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) shell-extensies zijn geïnstalleerd.  Open een opdracht prompt of Terminal en voer het volgende uit:
+1. Zorg ervoor dat Power shell-en [AzureRM Power](/powershell/azure/azurerm/install-azurerm-ps) shell-extensies zijn geïnstalleerd.  Open een opdracht prompt of Terminal en voer het volgende uit:
 
    ```bash
    git clone https://github.com/Azure/azure-iiot-components

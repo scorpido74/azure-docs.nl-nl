@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 05/13/2019
 ms.author: allensu
 ms.openlocfilehash: 90fc35249daea51a08cb83143c6be024e78964a7
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91804007"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>Een voorvoegsel van een openbaar IP-adres maken, wijzigen of verwijderen
@@ -51,7 +51,7 @@ Voor voegsels voor open bare IP-adressen gelden kosten. Zie [prijzen](https://az
    |Abonnement|Ja|Moet zich in hetzelfde [abonnement](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) bevinden als de resource waaraan u het open bare IP-adres wilt koppelen.|
    |Resourcegroep|Ja|Kan zich in dezelfde of verschillende [resource groepen](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) bevinden als de resource waaraan u het open bare IP-adres wilt koppelen.|
    |Naam|Ja|De naam moet uniek zijn binnen de resource groep die u selecteert.|
-   |Region|Ja|Moet zich in dezelfde [regio](https://azure.microsoft.com/regions)bevinden als de open bare IP-adressen waaraan u adressen uit het bereik toewijst.|
+   |Regio|Ja|Moet zich in dezelfde [regio](https://azure.microsoft.com/regions)bevinden als de open bare IP-adressen waaraan u adressen uit het bereik toewijst.|
    |Voorvoegsel grootte|Ja| De grootte van het voor voegsel dat u nodig hebt. A/28 of 16 IP-adressen is de standaard waarde.
 
 **Opdrachten**

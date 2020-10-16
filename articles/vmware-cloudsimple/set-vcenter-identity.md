@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: f6f3b10219775adb02d47a91da2573ea99f30ac0
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88212264"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>VCenter-identiteits bronnen instellen voor het gebruik van Active Directory
@@ -45,9 +45,9 @@ Voordat u [een identiteits bron toevoegt](#add-an-identity-source-on-vcenter), m
 > [!IMPORTANT]
 > **Active Directory (geïntegreerde Windows-verificatie) wordt niet ondersteund.** Alleen Active Directory over LDAP-optie wordt ondersteund als een identiteits bron.
 
-## <a name="add-on-premises-active-directory-as-a-single-sign-on-identity-source"></a>On-premises Active Directory toevoegen als identiteits bron met eenmalige aanmelding
+## <a name="add-on-premises-active-directory-as-a-single-sign-on-identity-source"></a>On-premises Active Directory toevoegen als één Sign-On identiteits bron
 
-U hebt het volgende nodig om uw on-premises Active Directory in te stellen als id-bron voor eenmalige aanmelding:
+Als u uw on-premises Active Directory wilt instellen als één Sign-On identiteits bron, hebt u het volgende nodig:
 
 * [Site-naar-site-VPN-verbinding](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway) van uw on-premises Data Center naar uw privécloud.
 * IP-adres van on-premises DNS-server is toegevoegd aan vCenter-en platform Services controller (PSC).
@@ -67,10 +67,10 @@ Gebruik de informatie in de volgende tabel bij het instellen van uw Active Direc
 | **Gebruikersnaam** | ID van een gebruiker in het domein met mini maal alleen-lezen toegang tot de basis-DN voor gebruikers en groepen. |
 | **Wachtwoord** | Het wacht woord van de gebruiker die is opgegeven door de gebruikers naam. |
 
-Wanneer u de gegevens in de vorige tabel hebt, kunt u uw on-premises Active Directory toevoegen als id-bron voor eenmalige aanmelding op vCenter.
+Wanneer u de gegevens in de vorige tabel hebt, kunt u uw on-premises Active Directory toevoegen als één Sign-On identiteits bron op vCenter.
 
 > [!TIP]
-> U vindt meer informatie over identiteits bronnen voor eenmalige aanmelding op de [documentatie pagina van VMware](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.psc.doc/GUID-B23B1360-8838-4FF2-B074-71643C4CB040.html).
+> Op de [pagina VMware-documentatie](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.psc.doc/GUID-B23B1360-8838-4FF2-B074-71643C4CB040.html)vindt u meer informatie over de identiteits bronnen van één Sign-On.
 
 ## <a name="set-up-new-active-directory-on-a-private-cloud"></a>Nieuwe Active Directory in een Privécloud instellen
 
@@ -103,9 +103,9 @@ Nadat u het Active Directory domein hebt ingesteld, kunt u [een id-bron toevoege
 
 ## <a name="set-up-active-directory-on-azure"></a>Active Directory instellen op Azure
 
-Active Directory op Azure wordt uitgevoerd, is vergelijkbaar met Active Directory die on-premises worden uitgevoerd.  Als u Active Directory die op Azure wordt uitgevoerd als id-bron voor eenmalige aanmelding op vCenter wilt instellen, moet de vCenter-Server en de PSC netwerk verbinding hebben met de Azure-Virtual Network waar Active Directory Services worden uitgevoerd.  U kunt deze verbinding tot stand brengen met behulp van [azure Virtual Network verbinding met ExpressRoute](azure-expressroute-connection.md) van het virtuele Azure-netwerk waar Active Directory Services worden uitgevoerd op CloudSimple-privécloud.
+Active Directory op Azure wordt uitgevoerd, is vergelijkbaar met Active Directory die on-premises worden uitgevoerd.  Voor het instellen van Active Directory die op Azure wordt uitgevoerd als een single Sign-On id-bron in vCenter, moet de vCenter-Server en de PSC netwerk verbinding hebben met de Azure-Virtual Network waar Active Directory Services worden uitgevoerd.  U kunt deze verbinding tot stand brengen met behulp van [azure Virtual Network verbinding met ExpressRoute](azure-expressroute-connection.md) van het virtuele Azure-netwerk waar Active Directory Services worden uitgevoerd op CloudSimple-privécloud.
 
-Nadat de netwerk verbinding tot stand is gebracht, volgt u de stappen in [on-premises Active Directory toevoegen als id-bron voor eenmalige aanmelding](#add-on-premises-active-directory-as-a-single-sign-on-identity-source) om deze als een identiteits bron toe te voegen.  
+Nadat de netwerk verbinding tot stand is gebracht, volgt u de stappen in [on-premises Active Directory toevoegen als één Sign-On identiteits bron](#add-on-premises-active-directory-as-a-single-sign-on-identity-source) om deze als een identiteits bron toe te voegen.  
 
 ## <a name="add-an-identity-source-on-vcenter"></a>Een identiteits bron toevoegen aan vCenter
 

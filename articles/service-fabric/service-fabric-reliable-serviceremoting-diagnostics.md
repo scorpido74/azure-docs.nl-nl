@@ -6,14 +6,14 @@ ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: pepogors
 ms.openlocfilehash: 89a7a545dd334f892ee27b97995de40d7b6416dc
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86245922"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Diagnose en prestatie bewaking voor betrouw bare service voor externe communicatie
-De betrouw bare ServiceRemoting-runtime verzendt [prestatie meter items](/dotnet/api/system.diagnostics.performancecounter?view=dotnet-plat-ext-3.1). Deze bieden inzicht in de manier waarop de ServiceRemoting werkt en helpt bij het oplossen van problemen en het controleren van de prestaties.
+De betrouw bare ServiceRemoting-runtime verzendt  [prestatie meter items](/dotnet/api/system.diagnostics.performancecounter?view=dotnet-plat-ext-3.1). Deze bieden inzicht in de manier waarop de ServiceRemoting werkt en helpt bij het oplossen van problemen en het controleren van de prestaties.
 
 
 ## <a name="performance-counters"></a>Prestatiemeteritems
@@ -91,5 +91,5 @@ Wanneer een client een methode aanroept via een Service proxy-object, resulteert
 | Service Fabric-service |Gemiddeld aantal milliseconden voor het serialiseren van antwoorden |Gebruikte tijd (in milliseconden) voor het serialiseren van het service-antwoord bericht bij de service voordat het antwoord naar de client wordt verzonden |
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Voorbeeldcode](https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0)
+* [Voorbeeld code](https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0)
 * [Event source-providers in PerfView](/archive/blogs/vancem/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource)

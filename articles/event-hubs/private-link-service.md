@@ -4,10 +4,10 @@ description: Meer informatie over het integreren van Azure Event Hubs met de per
 ms.date: 08/22/2020
 ms.topic: article
 ms.openlocfilehash: 59167635cfc0d8c1123a47410c87d6b9151f6f62
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91334239"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-via-private-endpoints"></a>Toegang tot Azure Event Hubs-naam ruimten toestaan via persoonlijke eind punten 
@@ -49,7 +49,7 @@ Uw privé-eindpunt maakt gebruik van een privé IP-adres in uw virtueel netwerk.
 ### <a name="steps"></a>Stappen
 Als u al een Event Hubs naam ruimte hebt, kunt u een koppeling voor een particuliere verbinding maken door de volgende stappen uit te voeren:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
 2. Typ in de zoek balk in **Event hubs**.
 3. Selecteer de **naam ruimte** in de lijst waaraan u een persoonlijk eind punt wilt toevoegen.
 4. Selecteer **netwerken** onder **instellingen** in het menu links.
@@ -64,7 +64,7 @@ Als u al een Event Hubs naam ruimte hebt, kunt u een koppeling voor een particul
 1. Selecteer het tabblad **verbindingen met privé-eind punten** boven aan de pagina. 
 1. Selecteer de knop **+ privé-eind punt** boven aan de pagina.
 
-    :::image type="content" source="./media/private-link-service/private-link-service-3.png" alt-text="Pagina netwerken-tabblad verbindingen met privé-eind punten-koppeling persoonlijke eind punt toevoegen":::
+    :::image type="content" source="./media/private-link-service/private-link-service-3.png" alt-text="Tabblad netwerken-opties voor geselecteerde netwerken":::
 7. Voer de volgende stappen uit op de pagina **basis beginselen** : 
     1. Selecteer het **Azure-abonnement** waarin u het persoonlijke eind punt wilt maken. 
     2. Selecteer de **resource groep** voor de persoonlijke eindpunt resource.

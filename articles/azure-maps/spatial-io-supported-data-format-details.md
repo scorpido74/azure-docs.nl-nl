@@ -9,21 +9,21 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 7227813f607ca18ee50f503a30b290414f333e21
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91310166"
 ---
 # <a name="supported-data-format-details"></a>Details van ondersteunde gegevensindeling
 
-In dit artikel vindt u specifieke informatie over de ondersteuning voor lezen en schrijven voor alle XML-labels en bekende tekst Geometry-typen. Ook wordt beschreven hoe de gescheiden ruimtelijke gegevens worden geparseerd in de ruimtelijke IO-module.
+In dit artikel vindt u specifieke informatie over de ondersteuning voor lezen en schrijven voor alle XML-labels en Well-Known tekst Geometry-typen. Ook wordt beschreven hoe de gescheiden ruimtelijke gegevens worden geparseerd in de ruimtelijke IO-module.
 
 ## <a name="supported-xml-namespaces"></a>Ondersteunde XML-naam ruimten
 
 De ruimtelijke IO-module ondersteunt XML-labels van de volgende naam ruimten.
 
-| Naam ruimte voorvoegsel | Naam ruimte-URI   | Opmerkingen                                                                    |
+| Naam ruimte voorvoegsel | Naam ruimte-URI   | Notities                                                                    |
 |:------------------|:-----------------|:----------------------------------------|
 | `atom`           | `http://www.w3.org/2005/Atom`   |                                         |
 | `geo`            | `http://www.w3.org/2003/01/geo/wgs84_pos#`  | Alleen-lezen ondersteuning in GeoRSS-bestanden.           |
@@ -45,7 +45,7 @@ De ruimtelijke IO-module ondersteunt de volgende XML-elementen. Alle XML-tags di
 
 De ruimtelijke IO-module ondersteunt de volgende KML-elementen.
 
-| Naam van element         | Lezen    | Schrijven   | Opmerkingen                                                                                                                      |
+| Naam van element         | Lezen    | Schrijven   | Notities                                                                                                                      |
 |----------------------|---------|---------|----------------------------------------------------------------------------------------------------------------------------|
 | `address`            | gedeeltelijke | ja     | Het object wordt geparseerd maar wordt niet gebruikt voor het positioneren van de vorm.                                                                    |
 | `AddressDetails`     | gedeeltelijke | nee      | Het object wordt geparseerd maar wordt niet gebruikt voor het positioneren van de vorm.                                                                    |
@@ -131,7 +131,7 @@ De ruimtelijke IO-module ondersteunt de volgende KML-elementen.
 
 De ruimtelijke IO-module ondersteunt de volgende GeoRSS-elementen.
 
-| Naam van element             | Lezen    | Schrijven | Opmerkingen                                                                                          |
+| Naam van element             | Lezen    | Schrijven | Notities                                                                                          |
 |--------------------------|---------|-------|------------------------------------------------------------------------------------------------|
 | `atom:author`            | ja     | ja   |                                                                                                |
 | `atom:category`          | ja     | ja   |                                                                                                |
@@ -203,7 +203,7 @@ De ruimtelijke IO-module ondersteunt de volgende GeoRSS-elementen.
 
 De ruimtelijke IO-module ondersteunt de volgende GML-elementen. 
 
-| Naam van element            | Lezen | Schrijven | Opmerkingen                                                                                  |
+| Naam van element            | Lezen | Schrijven | Notities                                                                                  |
 |-------------------------|------|-------|----------------------------------------------------------------------------------------|
 | `gml:coordinates`       | ja  | nee    | Geschreven als `gml:posList` .                                                              |
 | `gml:curveMember`       | ja  | nee    |                                                                                        |
@@ -254,7 +254,7 @@ De ruimtelijke IO-module ondersteunt de volgende GML-elementen.
 
 De ruimtelijke IO-module ondersteunt de volgende GPX-elementen.
 
-| Naam van element             | Lezen    | Schrijven   | Opmerkingen                                                                                       |
+| Naam van element             | Lezen    | Schrijven   | Notities                                                                                       |
 |--------------------------|---------|---------|---------------------------------------------------------------------------------------------|
 | `gpx:ageofdgpsdata`      | ja     | ja     |                                                                                             |
 | `gpx:author`             | ja     | ja     |                                                                                             |
@@ -304,7 +304,7 @@ Bij het schrijven;
 - Multipointers worden opgedeeld in afzonderlijke waypoints.
 - Veelhoeken en multiveelhoeken worden geschreven als sporen. 
   
-## <a name="supported-well-known-text-geometry-types"></a>Ondersteund type bekende tekst geometrie typen
+## <a name="supported-well-known-text-geometry-types"></a>Ondersteunde Well-Known tekst Geometry-typen
 
 | Type geometrie | Lezen | Schrijven |
 |--------------|:----:|:-----:|
@@ -343,7 +343,7 @@ Bij het schrijven;
 
 ## <a name="delimited-spatial-data-support"></a>Ondersteuning voor ruimtelijke gegevens met scheidings tekens
 
-Gescheiden ruimtelijke gegevens, zoals CSV (bestand met door komma's gescheiden waarden), bevatten vaak kolommen met ruimtelijke gegevens. Er kunnen bijvoorbeeld kolommen zijn met informatie over breedte graad en lengte graad. In een bekende tekst indeling kan er sprake zijn van een kolom die ruimtelijke geometrie gegevens bevat.
+Gescheiden ruimtelijke gegevens, zoals CSV (bestand met door komma's gescheiden waarden), bevatten vaak kolommen met ruimtelijke gegevens. Er kunnen bijvoorbeeld kolommen zijn met informatie over breedte graad en lengte graad. In Well-Known tekst indeling kan er sprake zijn van een kolom die ruimtelijke geometrie gegevens bevat.
 
 ### <a name="spatial-data-column-detection"></a>Detectie van ruimtelijke gegevens kolom
 
@@ -385,13 +385,13 @@ Bij het lezen van een bestand met scheidings tekens dat ruimtelijke gegevens bev
 
 #### <a name="geography"></a>Geografie
 
-De eerste rij met gegevens wordt gescand op teken reeksen met een bekende tekst indeling. 
+De eerste rij met gegevens wordt gescand op teken reeksen in Well-Known tekst indeling. 
 
 ### <a name="delimited-data-column-types"></a>Gegevens kolom typen met scheidings tekens
 
 Bij het scannen van de rij met koppen, worden alle typen gegevens die in de kolom naam staan, geëxtraheerd en gebruikt om de cellen in die kolom te casten. Hier volgt een voor beeld van een kolom naam die een type waarde heeft: ' columnName (typeName) '. De volgende niet-hoofdletter gevoelige type namen worden ondersteund:
 
-#### <a name="numbers"></a>Cijfers
+#### <a name="numbers"></a>Nummers
 
 - EDM. int64
 - int
@@ -405,7 +405,7 @@ Bij het scannen van de rij met koppen, worden alle typen gegevens die in de kolo
 
 - EDM. Boolean
 - booleaans
-- boolean
+- booleaans
 
 #### <a name="dates"></a>Datums
 

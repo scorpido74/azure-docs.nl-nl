@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/28/2020
+ms.date: 10/12/2020
 ms.author: alkohli
-ms.openlocfilehash: e542480db4ed82cf84c6ce04c62e2a07b6193f4a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d835507a17417f8b500c0fc13d0a662e606a37ff
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320724"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996410"
 ---
 # <a name="system-requirements-for-azure-stack-edge-pro-with-gpu"></a>Systeem vereisten voor Azure Stack Edge Pro met GPU 
 
@@ -32,21 +32,29 @@ De systeem vereisten voor de Azure Stack Edge Pro zijn onder andere:
 
 [!INCLUDE [Supported protocols for clients accessing device](../../includes/azure-stack-edge-gateway-supported-client-protocols.md)]
 
-## <a name="supported-storage-accounts"></a>Ondersteunde opslagaccounts
+## <a name="supported-azure-storage-accounts"></a>Ondersteunde Azure Storage accounts
 
 [!INCLUDE [Supported storage accounts](../../includes/azure-stack-edge-gateway-supported-storage-accounts.md)]
 
-## <a name="supported-tiered-storage-accounts"></a>Ondersteunde gelaagde opslag accounts
+## <a name="supported-edge-storage-accounts"></a>Ondersteunde Edge-opslag accounts
 
-Bij het beheer van Azure Stack worden de volgende gelaagde opslag accounts ondersteund met SMB/NFS/REST-interfaces.
+De volgende Edge-opslag accounts worden ondersteund met de REST-interface van het apparaat. De Edge-opslag accounts worden op het apparaat gemaakt. Zie [Edge Storage accounts](azure-stack-edge-j-series-manage-storage-accounts.md#about-edge-storage-accounts)voor meer informatie.
 
 |Type  |Storage-account  |Opmerkingen  |
 |---------|---------|---------|
 |Standard     |GPv1: blok-BLOB         |         |
-|    |  Blob-opslag: blok-BLOB       | Alleen ondersteund voor NAS     |
 
-* Pagina-blobs en-Azure Files worden momenteel niet ondersteund in Azure Stack.
-* * Er bestaat geen warme en koude laag in Azure Stack. Gebruik de Azure PowerShell om de gegevens naar de laag van het archief te verplaatsen zodra de gegevens zijn geüpload. Voor stapsgewijze instructies gaat u naar [Azure PowerShell gebruiken om de BLOB-laag in te stellen]()
+* Pagina-blobs en-Azure Files worden momenteel niet ondersteund.
+
+## <a name="supported-local-azure-resource-manager-storage-accounts"></a>Ondersteunde lokale Azure Resource Manager Storage-accounts
+
+Deze opslag accounts worden gemaakt via de lokale Api's van het apparaat wanneer u verbinding maakt met de lokale Azure Resource Manager. De volgende opslag accounts worden ondersteund:
+
+|Type  |Storage-account  |Opmerkingen  |
+|---------|---------|---------|
+|Standard     |GPv1: blok-blob, pagina-BLOB        | Het SKU-type is Standard_LRS       |
+|Premium     |GPv1: blok-blob, pagina-BLOB        | Het SKU-type is Premium_LRS        |
+
 
 ## <a name="supported-storage-types"></a>Ondersteunde opslagtypen
 
@@ -73,7 +81,7 @@ Gebruik de volgende tabel voor poort configuratie voor de servers die als host f
 
 | Poort nummer | In of uit | Poort bereik | Vereist | Hulp |
 |----------|-----------|------------|----------|----------|
-| TCP 443 (HTTPS)| Uit       | WAN        | Yes      | Uitgaand openen voor IoT Edge inrichting. Deze configuratie is vereist wanneer u hand matige scripts of een Azure IoT Device Provisioning Service (DPS) gebruikt.|
+| TCP 443 (HTTPS)| Uit       | WAN        | Ja      | Uitgaand openen voor IoT Edge inrichting. Deze configuratie is vereist wanneer u hand matige scripts of een Azure IoT Device Provisioning Service (DPS) gebruikt.|
 
 Voor volledige informatie gaat u naar de [firewall-en poort configuratie regels voor IOT Edge-implementatie](https://docs.microsoft.com/azure/iot-edge/troubleshoot).
 

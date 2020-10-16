@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 4/11/2019
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 271730e57a2d7ef8324420744b4bcd088b9809cc
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90530082"
 ---
 # <a name="azure-functions-networking-options"></a>Netwerkopties van Azure Functions
@@ -74,7 +74,7 @@ Zie [vereisten voor opslag accounts](./functions-create-function-app-portal.md#s
 
 ## <a name="use-key-vault-references"></a>Key Vault-referenties gebruiken
 
-U kunt Azure Key Vault verwijzingen gebruiken om geheimen van Azure Key Vault in uw Azure Functions toepassing te gebruiken zonder dat u code wijzigingen hoeft aan te brengen. Azure Key Vault is een service die gecentraliseerd geheimen beheer biedt, met volledige controle over het toegangs beleid en de controle geschiedenis.
+U kunt Azure Key Vault verwijzingen gebruiken om geheimen van Azure Key Vault in uw Azure Functions toepassing te gebruiken zonder dat u code wijzigingen hoeft aan te brengen. Azure Key Vault is een service die gecentraliseerd geheimenbeheer biedt, met volledige controle over het toegangsbeleid en de auditgeschiedenis.
 
 [Key Vault verwijzingen](../app-service/app-service-key-vault-references.md) werken momenteel niet als uw sleutel kluis is beveiligd met Service-eind punten. Als u verbinding wilt maken met een sleutel kluis met behulp van virtuele netwerk integratie, moet u Key Vault aanroepen in de code van uw toepassing.
 

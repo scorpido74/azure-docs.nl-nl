@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.author: johndeu
 ms.openlocfilehash: 6454bc863cb5fd628d581fff380c5ab61354f762
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87053048"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>Wijziging van het Smooth Streaming Protocol (MS-SSTR) voor HEVC 
@@ -40,11 +40,11 @@ De volgende termen worden gedefinieerd in *[MS-Glos]*:
 
 De volgende termen zijn specifiek voor dit document:
 
->  **samenstellings tijd:** Het tijdstip waarop een steek proef wordt weer gegeven op de client, zoals gedefinieerd in [[ISO/IEC-14496-12]](https://go.microsoft.com/fwlink/?LinkId=183695).
+>  **samenstellings tijd:** Het tijdstip waarop een steek proef wordt weer gegeven op de client, zoals gedefinieerd in   [[ISO/IEC-14496-12]](https://go.microsoft.com/fwlink/?LinkId=183695).
 > 
 >   **CENC**: common Encryption, zoals gedefinieerd in [ISO/IEC 23001-7] Tweede editie.
 > 
->   **decoderings tijd:** Het tijdstip waarop een steek proef moet worden gedecodeerd op de client, zoals gedefinieerd in [[ISO/IEC 14496-12:2008]](https://go.microsoft.com/fwlink/?LinkId=183695).
+>   **decoderings tijd:** Het tijdstip waarop een steek proef moet worden gedecodeerd op de client, zoals gedefinieerd in   [[ISO/IEC 14496-12:2008]](https://go.microsoft.com/fwlink/?LinkId=183695).
 
 **fragment:** Een afzonderlijk Download bare **Media** -eenheid met een of meer voor **beelden**.
 
@@ -56,7 +56,7 @@ De volgende termen zijn specifiek voor dit document:
 > 
 >   voor **Beeld:** De kleinste basis eenheid (zoals een frame) waarin **Media** worden opgeslagen en verwerkt.
 > 
->   **mag,** moet dit niet, moet: Deze voor waarden (in hoofd letters) worden gebruikt zoals beschreven in [[RFC2119]](https://go.microsoft.com/fwlink/?LinkId=90317) alle instructies voor het gebruik van een optioneel gedrag, of dat kan.
+>   **mag,** moet dit niet, moet: Deze voor waarden (in hoofd letters) worden gebruikt zoals beschreven in   [[RFC2119]](https://go.microsoft.com/fwlink/?LinkId=90317) alle instructies voor het gebruik van een optioneel gedrag, of dat kan.
 
 ## <a name="12-references"></a>1,2 verwijzingen
 
@@ -72,23 +72,23 @@ De volgende termen zijn specifiek voor dit document:
 >   [ISO/IEC 14496-15] International Organization for Standardization, ' informatie technologie: code ring van audiovisuele objecten--deel 15: Trans Port van de NAL-video in de ISO-basis media bestands indeling ', ISO 14496-15:2015, editie 3.
 >   <https://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=65216>
 > 
->   [ISO/IEC 23008-2] Informatie technologie: hoge efficiëntie code ring en media levering in heterogene omgevingen--deel 2: video codering met hoge efficiëntie: 2013 of nieuwste versie<https://standards.iso.org/ittf/PubliclyAvailableStandards/c035424_ISO_IEC_23008-2_2013.zip>
+>   [ISO/IEC 23008-2] Informatie technologie: hoge efficiëntie code ring en media levering in heterogene omgevingen--deel 2: video codering met hoge efficiëntie: 2013 of nieuwste versie   <https://standards.iso.org/ittf/PubliclyAvailableStandards/c035424_ISO_IEC_23008-2_2013.zip>
 > 
->   [ISO/IEC 23001-7] Informatie technologie — MPEG Systems technologieën — deel 7: algemene versleuteling in ISO base Media File Format-bestanden, CENC Edition 2:2015<https://www.iso.org/iso/catalogue_detail.htm?csnumber=65271>
+>   [ISO/IEC 23001-7] Informatie technologie — MPEG Systems technologieën — deel 7: algemene versleuteling in ISO base Media File Format-bestanden, CENC Edition 2:2015 <https://www.iso.org/iso/catalogue_detail.htm?csnumber=65271>
 > 
->   [RFC-6381] IETF RFC-6381, ' codecs ' en ' Profiles ' para meters voor ' Bucket-media typen '<https://tools.ietf.org/html/rfc6381>
+>   [RFC-6381] IETF RFC-6381, ' codecs ' en ' Profiles ' para meters voor ' Bucket-media typen ' <https://tools.ietf.org/html/rfc6381>
 > 
->   [MPEG4-RA] De MP4-registratie-instantie, ' MP4REG ',[http://www.mp4ra.org](https://go.microsoft.com/fwlink/?LinkId=327787)
+>   [MPEG4-RA] De MP4-registratie-instantie, ' MP4REG ', [http://www.mp4ra.org](https://go.microsoft.com/fwlink/?LinkId=327787)
 > 
->   [RFC2119] Bradner, S., "sleutel woorden voor gebruik in Rfc's voor het aanduiden van vereisten niveaus", BCP 14, RFC 2119, maart 1997,[https://www.rfc-editor.org/rfc/rfc2119.txt](https://go.microsoft.com/fwlink/?LinkId=90317)
+>   [RFC2119] Bradner, S., "sleutel woorden voor gebruik in Rfc's voor het aanduiden van vereisten niveaus", BCP 14, RFC 2119, maart 1997,   [https://www.rfc-editor.org/rfc/rfc2119.txt](https://go.microsoft.com/fwlink/?LinkId=90317)
 
 ### <a name="122-informative-references"></a>1.2.2 informatieve verwijzingen 
 
 >   [MS-GLOS] Micro soft Corporation, '*verklarende woorden lijst voor Windows-protocols*'.
 > 
->   [RFC3548] Josefsson, S., ed., "de Base16-, Base32-en base64-gegevens codering", RFC 3548, juli 2003,[https://www.ietf.org/rfc/rfc3548.txt](https://go.microsoft.com/fwlink/?LinkId=90432)
+>   [RFC3548] Josefsson, S., ed., "de Base16-, Base32-en base64-gegevens codering", RFC 3548, juli 2003, [https://www.ietf.org/rfc/rfc3548.txt](https://go.microsoft.com/fwlink/?LinkId=90432)
 > 
->   [RFC5234] Crocker, D., ed. en Overell, P., "uitgebreid BNF voor de syntaxis specificaties: ABNF", STD 68, RFC 5234, januari 2008,[https://www.rfc-editor.org/rfc/rfc5234.txt](https://go.microsoft.com/fwlink/?LinkId=123096)
+>   [RFC5234] Crocker, D., ed. en Overell, P., "uitgebreid BNF voor de syntaxis specificaties: ABNF", STD 68, RFC 5234, januari 2008,   [https://www.rfc-editor.org/rfc/rfc5234.txt](https://go.microsoft.com/fwlink/?LinkId=123096)
 
 
 ## <a name="13-overview"></a>overzicht van 1,3 
@@ -211,11 +211,11 @@ Het ProtectionElement moet aanwezig zijn als Common Encryption (CENC) is toegepa
 > 
 >   **SampleCompositionTimeOffset (4 bytes):** De verschuiving van het voor beeld van de compositie tijd van elk voor beeld is aangepast, zodat de presentatie tijd van de eerste gepresenteerde steek proef in het fragment gelijk is aan de decoderings tijd van het eerste gedecodeerde voor beeld. Er worden negatieve verschuivingen van de samen stelling van de video monsters gebruikt,
 > 
->   zoals gedefinieerd in [[ISO/IEC-14496-12].](https://go.microsoft.com/fwlink/?LinkId=183695)
+>   zoals gedefinieerd in   [[ISO/IEC-14496-12].](https://go.microsoft.com/fwlink/?LinkId=183695)
 > 
 >   Opmerking: hiermee voor komt u dat er een video synchronisatie fout wordt veroorzaakt door video die geluid vertoont die gelijk is aan de grootste gedecodeerde vertraging bij het verwijderen van de afbeeldings buffer en wordt er een presentatie tijd in rekening gebracht tussen alternatieve fragmenten die verschillende verwijderings vertragingen kunnen hebben.
 > 
->   De syntaxis van de velden die in deze sectie zijn gedefinieerd, opgegeven in ABNF [[RFC5234],](https://go.microsoft.com/fwlink/?LinkId=123096) blijft hetzelfde, met uitzonde ring van de volgende opties:
+>   De syntaxis van de velden die in deze sectie zijn gedefinieerd, opgegeven in ABNF   [[RFC5234],](https://go.microsoft.com/fwlink/?LinkId=123096) blijft hetzelfde, met uitzonde ring van de volgende opties:
 > 
 >   SampleCompositionTimeOffset = SIGNED_INT32
 
@@ -240,7 +240,7 @@ Het ProtectionElement moet aanwezig zijn als Common Encryption (CENC) is toegepa
 >   **CompatibleBrands (variabele):** Hiermee geeft u de ondersteunde merken van MPEG-4 op.
 >   MOET ' ccff ' en ' iso8 ' bevatten.
 > 
->   De syntaxis van de velden die in deze sectie zijn gedefinieerd, opgegeven in ABNF [[RFC5234],](https://go.microsoft.com/fwlink/?LinkId=123096) is als volgt:
+>   De syntaxis van de velden die in deze sectie zijn gedefinieerd, opgegeven in ABNF   [[RFC5234],](https://go.microsoft.com/fwlink/?LinkId=123096) is als volgt:
 
 ```properties
 FileType = MajorBrand MinorVersion CompatibleBrands
@@ -324,7 +324,7 @@ TimeScale = 90000
 
 ##### <a name="3113-fragment-reference-description"></a>Beschrijving van 3.1.1.3-fragment verwijzing 
 
-###### <a name="31131-track-specific-fragment-reference-description"></a>Beschrijving van de 3.1.1.3.1-specifieke fragment verwijzing 
+###### <a name="31131-track-specific-fragment-reference-description"></a>Beschrijving van de 3.1.1.3.1-Track-Specific fragment 
 
 #### <a name="3112-fragment-description"></a>Beschrijving van 3.1.1.2-fragment 
 
@@ -334,7 +334,7 @@ TimeScale = 90000
 
 ### <a name="313-initialization"></a>3.1.3-initialisatie 
 
-### <a name="314-higher-layer-triggered-events"></a>Geactiveerde gebeurtenissen met een hogere laag 3.1.4 
+### <a name="314-higher-layer-triggered-events"></a>3.1.4 Higher-Layer geactiveerde gebeurtenissen 
 
 #### <a name="3141-open-presentation"></a>3.1.4.1 open presentatie 
 

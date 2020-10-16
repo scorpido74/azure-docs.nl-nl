@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: e5d2c6b0460c3a7566adb17601aceb57e57f4d0b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74931790"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Gegevens van DB2 verplaatsen met behulp van Azure Data Factory Kopieer activiteit
@@ -56,7 +56,7 @@ De Data Factory DB2-connector ondersteunt de volgende IBM DB2-platforms en-versi
 
 > [!TIP]
 > Als u het fout bericht ' kan het pakket dat overeenkomt met een SQL-instructie, is niet gevonden. SQLSTATE = 51002 SQLCODE =-805, ' de reden is dat er geen vereist pakket is gemaakt voor de normale gebruiker van het besturings systeem. Volg deze instructies voor het type DB2-Server om dit probleem op te lossen:
-> - DB2 for i (AS400): laat een hoofd gebruiker de verzameling voor de normale gebruiker maken voordat de Kopieer activiteit wordt uitgevoerd. Als u de verzameling wilt maken, gebruikt u de opdracht:`create collection <username>`
+> - DB2 for i (AS400): laat een hoofd gebruiker de verzameling voor de normale gebruiker maken voordat de Kopieer activiteit wordt uitgevoerd. Als u de verzameling wilt maken, gebruikt u de opdracht: `create collection <username>`
 > - DB2 voor z/O'S of LUW: gebruik een account met hoge bevoegdheden--een hoofd gebruiker of beheerder met pakket instanties en binding, BINDADD, toestemming geven voor open bare machtigingen--om de kopie één keer uit te voeren. Het benodigde pakket wordt automatisch gemaakt tijdens de kopie. Daarna kunt u teruggaan naar de normale gebruiker voor de volgende Kopieer uitvoeringen.
 
 ## <a name="getting-started"></a>Aan de slag
@@ -80,14 +80,14 @@ De volgende tabel geeft een lijst van de JSON-eigenschappen die specifiek zijn v
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| **type** |Deze eigenschap moet worden ingesteld op **OnPremisesDb2**. |Yes |
-| **naam** |De naam van de DB2-Server. |Yes |
-| **enddatabase** |De naam van de DB2-Data Base. |Yes |
-| **schema** |De naam van het schema in de DB2-Data Base. Deze eigenschap is hoofdletter gevoelig. |No |
-| **authenticationType** |Het type verificatie dat wordt gebruikt om verbinding te maken met de DB2-Data Base. De mogelijke waarden zijn: anoniem, basis en Windows. |Yes |
-| **gebruikers** |De naam voor het gebruikers account als u basis-of Windows-verificatie gebruikt. |No |
-| **wachtwoord** |Het wacht woord voor het gebruikers account. |No |
-| **gatewayName** |De naam van de gateway die de Data Factory-service moet gebruiken om verbinding te maken met de on-premises DB2-Data Base. |Yes |
+| **type** |Deze eigenschap moet worden ingesteld op **OnPremisesDb2**. |Ja |
+| **naam** |De naam van de DB2-Server. |Ja |
+| **enddatabase** |De naam van de DB2-Data Base. |Ja |
+| **schema** |De naam van het schema in de DB2-Data Base. Deze eigenschap is hoofdletter gevoelig. |Nee |
+| **authenticationType** |Het type verificatie dat wordt gebruikt om verbinding te maken met de DB2-Data Base. De mogelijke waarden zijn: anoniem, basis en Windows. |Ja |
+| **gebruikers** |De naam voor het gebruikers account als u basis-of Windows-verificatie gebruikt. |Nee |
+| **password** |Het wacht woord voor het gebruikers account. |Nee |
+| **gatewayName** |De naam van de gateway die de Data Factory-service moet gebruiken om verbinding te maken met de on-premises DB2-Data Base. |Ja |
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 Zie het artikel [gegevens sets maken](data-factory-create-datasets.md) voor een lijst met de secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Secties, zoals **structuur**, **Beschik baarheid**en het **beleid** voor een gegevensset-JSON, zijn vergelijkbaar voor alle typen gegevens sets (Azure SQL, Azure Blob Storage, Azure-tabel opslag, enzovoort).
@@ -313,9 +313,9 @@ De volgende toewijzingen worden gebruikt wanneer Kopieer activiteit de gegevens 
 | Realistische |Enkelvoudig |
 | Dubbel |Dubbel |
 | Float |Dubbel |
-| Decimal |Decimal |
-| DecimalFloat |Decimal |
-| Numeriek |Decimal |
+| Decimaal |Decimaal |
+| DecimalFloat |Decimaal |
+| Numeriek |Decimaal |
 | Date |DateTime |
 | Tijd |TimeSpan |
 | Tijdstempel |DateTime |
@@ -339,9 +339,9 @@ De volgende toewijzingen worden gebruikt wanneer Kopieer activiteit de gegevens 
 | Realistische |Enkelvoudig |
 | Dubbel |Dubbel |
 | Float |Dubbel |
-| Decimal |Decimal |
-| DecimalFloat |Decimal |
-| Numeriek |Decimal |
+| Decimaal |Decimaal |
+| DecimalFloat |Decimaal |
+| Numeriek |Decimaal |
 | Date |DateTime |
 | Tijd |TimeSpan |
 | Tijdstempel |DateTime |

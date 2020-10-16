@@ -4,16 +4,16 @@ description: Meer informatie over wat er nieuw is in azure Block Chain Service, 
 ms.date: 06/30/2020
 ms.topic: conceptual
 ms.reviewer: ravastra
-ms.openlocfilehash: 80ece6cb6bb81b7ce168da997603e17d1238171b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47e0da5a729519f2af3c5b2a2fd3e0f7485624cf
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85921896"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948456"
 ---
 # <a name="whats-new-in-azure-blockchain-service"></a>Wat is er nieuw in de Azure Block Chain-Service?
 
-> Ontvang een melding over wanneer u deze pagina voor updates opnieuw moet bezoeken door deze URL te kopiëren en te plakken: `https://docs.microsoft.com/api/search/rss?search=%22Release+notes+-+Azure+Blockchain+Service%22&locale=en-us` in uw RSS feed reader- [ ![ pictogram voor RSS](./media/whats-new/feed-icon-16x16.png)](https://docs.microsoft.com/api/search/rss?search=%22Release+notes+-+Azure+Blockchain+Service%22&locale=en-us)-feed.
+> Ontvang een melding over wanneer u deze pagina voor updates opnieuw moet bezoeken door deze URL te kopiëren en te plakken: `https://docs.microsoft.com/api/search/rss?search=%22Release+notes+-+Azure+Blockchain+Service%22&locale=en-us` in uw RSS feed reader- [ ![ pictogram voor RSS](./media/whats-new/feed-icon-16x16.png)](/api/search/rss?locale=en-us&search=%2522Release%2bnotes%2b-%2bAzure%2bBlockchain%2bService%2522)-feed.
 
 De Azure Block Chain-service ontvangt verbeteringen doorlopend. Om u op de hoogte te houden van de nieuwste ontwikkelingen, biedt dit artikel u informatie over:
 

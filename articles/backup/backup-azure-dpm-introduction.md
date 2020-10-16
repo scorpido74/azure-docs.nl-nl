@@ -4,10 +4,10 @@ description: In dit artikel wordt beschreven hoe u back-ups van System Center-Da
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.openlocfilehash: 0089c3d86eb36b82287570ecdfd6e8c782e6fb8a
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90975464"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>Voorbereiden op back-ups van workloads naar Azure met System Center DPM
@@ -44,7 +44,7 @@ DPM op een Hyper-V-VM | System Center 2012 SP1 of hoger; System Center 2012 R2.
 DPM op een virtuele VMware-machine | System Center 2012 R2 met update pakket 5 of hoger.
 Onderdelen | Op de DPM-server moet Windows Power shell en .NET Framework 4,5 zijn geïnstalleerd.
 Ondersteunde apps | [Ontdek](/system-center/dpm/dpm-protection-matrix) waar DPM een back-up van kan maken.
-Ondersteunde bestandstypen | U kunt een back-up van deze bestands typen maken met Azure Backup:<br> <li>Versleuteld (alleen volledige back-ups)<li> Gecomprimeerd (incrementele back-ups worden ondersteund) <li> Sparse (incrementele back-ups worden ondersteund)<li> Gecomprimeerd en verspreid (behandeld als sparse)
+Ondersteunde bestands typen | U kunt een back-up van deze bestands typen maken met Azure Backup:<br> <li>Versleuteld (alleen volledige back-ups)<li> Gecomprimeerd (incrementele back-ups worden ondersteund) <li> Sparse (incrementele back-ups worden ondersteund)<li> Gecomprimeerd en verspreid (behandeld als sparse)
 Niet-ondersteunde bestands typen | <li>Servers op hoofdletter gevoelige bestands systemen<li> vaste koppelingen (overgeslagen)<li> reparsepunten (overgeslagen)<li> versleuteld en gecomprimeerd (overgeslagen)<li> versleuteld en verspreid (overgeslagen)<li> Gecomprimeerde stroom<li> stroom parseren
 Lokale opslag | Elke machine waarvan u een back-up wilt maken, moet lokale vrije opslag hebben die ten minste 5% van de grootte van de gegevens is waarvan een back-up wordt gemaakt. Voor het maken van een back-up van 100 GB aan gegevens is bijvoorbeeld mini maal 5 GB beschik bare ruimte op de Scratch locatie vereist.
 Kluis opslag | Er is geen limiet voor de hoeveelheid gegevens waarvan u een back-up kunt maken naar een Azure Backup kluis, maar de grootte van een gegevens bron (bijvoorbeeld een virtuele machine of data base) mag niet groter zijn dan 54.400 GB.
@@ -97,7 +97,7 @@ Down load het kluis referentie bestand via een beveiligd kanaal van de Azure Por
 
 Down load het kluis referentie bestand als volgt naar een lokale computer:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Open de kluis waarin u de DPM-server wilt registreren.
 3. Selecteer in **instellingen**de optie **Eigenschappen**.
 

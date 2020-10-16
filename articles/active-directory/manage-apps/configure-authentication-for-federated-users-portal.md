@@ -16,10 +16,10 @@ ms.author: kenwith
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 16af484e77787ee1d729ce97eec8c666bf925837
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84763581"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Azure Active Directory aanmeldings gedrag configureren voor een toepassing met behulp van een beleid voor het detecteren van een thuis domein
@@ -57,7 +57,7 @@ Er zijn twee manieren om automatische versnelling naar een federatieve IdP te be
 - Configureer een beleid voor het detecteren van basis-Realms om automatische versnelling in te scha kelen.
 
 ### <a name="domain-hints"></a>Domein hints    
-Domein hints zijn richt lijnen die zijn opgenomen in de verificatie aanvraag van een toepassing. Ze kunnen worden gebruikt om de gebruiker te versnellen tot hun federatieve IdP-aanmeldings pagina. Of ze kunnen worden gebruikt door een toepassing met meerdere tenants om de gebruiker rechtstreeks naar de aanmeldings pagina van Azure AD te versnellen voor hun Tenant.  
+Domeinhints zijn instructies die zijn opgenomen in de verificatieaanvraag van een toepassing. Ze kunnen worden gebruikt om de gebruiker versneld naar hun federatieve IdP-aanmeldingspagina te sturen. Ze kunnen ook door een toepassing met meerdere tenants worden gebruikt om de gebruiker rechtstreeks en versneld naar de gemerkte Azure AD-aanmeldingspagina voor hun tenant te sturen.  
 
 De toepassing ' largeapp.com ' kan bijvoorbeeld de klanten in staat stellen om toegang te krijgen tot de toepassing op een aangepaste URL ' contoso.largeapp.com '. De app kan ook een domein Hint bevatten voor contoso.com in de verificatie aanvraag. 
 

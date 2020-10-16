@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 11/16/2019
 ms.author: amsriva
 ms.openlocfilehash: 1b0abe998540c4fcc0a9b83f6d1175e18a560871
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84808161"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Fouten met ongeldige gateway oplossen in Application Gateway
@@ -108,7 +108,7 @@ De volgende aanvullende eigenschappen worden toegevoegd:
 
 | Probe-eigenschap | Beschrijving |
 | --- | --- |
-| Naam |De naam van de test. Deze naam wordt gebruikt om te verwijzen naar de test in back-end-HTTP-instellingen. |
+| Name |De naam van de test. Deze naam wordt gebruikt om te verwijzen naar de test in back-end-HTTP-instellingen. |
 | Protocol |Het protocol dat wordt gebruikt om de test te verzenden. De test gebruikt het protocol dat is gedefinieerd in de back-end-HTTP-instellingen |
 | Host |De hostnaam voor het verzenden van de test. Alleen van toepassing wanneer meerdere locaties op de toepassings gateway zijn geconfigureerd. Dit wijkt af van de naam van de VM-host. |
 | Pad |Het relatieve pad van de test. Het geldige pad wordt gestart vanaf/. De test wordt verzonden naar \<protocol\> :// \<host\> :\<port\>\<path\> |

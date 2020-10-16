@@ -4,13 +4,13 @@ description: Meer informatie over het maken en aanpassen van herstel plannen voo
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.openlocfilehash: 0dcde98e8dcaef12896c18c25429f0ba7b1b27d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84485326"
 ---
-# <a name="create-and-customize-recovery-plans"></a>Herstel plannen maken en aanpassen
+# <a name="create-and-customize-recovery-plans"></a>Herstelplannen maken en aanpassen
 
 In dit artikel wordt beschreven hoe u een herstel plan voor failover kunt maken en aanpassen in [Azure site Recovery](site-recovery-overview.md). Voordat u begint, kunt u [meer te weten komen](recovery-plan-overview.md) over herstel plannen.
 
@@ -20,7 +20,7 @@ In dit artikel wordt beschreven hoe u een herstel plan voor failover kunt maken 
 2. In **herstel plan maken**geeft u een naam op voor het plan.
 3. Kies een bron en doel op basis van de computers in het plan en selecteer **Resource Manager** voor het implementatie model. De bron locatie moet machines hebben die zijn ingeschakeld voor failover en herstel. 
 
-    **Failover** | **Bron** | **Doel** 
+    **Cluster** | **Bron** | **Doel** 
    --- | --- | ---
    Azure naar Azure | De Azure-regio selecteren | De Azure-regio selecteren
    VMware naar Azure | De configuratie server selecteren | Azure selecteren
@@ -60,7 +60,7 @@ U kunt een herstel plan aanpassen door een script of hand matige actie toe te vo
 - Volg de instructies in [dit artikel](hyper-v-vmm-recovery-script.md)om een script te maken op de VMM-server.
 - Scripts kunnen worden toegepast tijdens de failover naar de secundaire site en tijdens het failback van de secundaire site naar de primaire locatie. Ondersteuning is afhankelijk van uw replicatie scenario:
     
-    **Scenario** | **Failover** | **Herstel**
+    **Scenario** | **Cluster** | **Herstel**
     --- | --- | --- 
     Azure naar Azure  | Runbook | Runbook
     VMware naar Azure | Runbook | NA 

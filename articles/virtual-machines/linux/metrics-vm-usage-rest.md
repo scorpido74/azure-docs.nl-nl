@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 06/13/2018
 ms.author: routlaw
 ms.openlocfilehash: 925246eb2adae59ca74e363c4d4a6952f11c3744
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87292322"
 ---
 # <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>Metrische gegevens over het gebruik van virtuele machines ophalen met behulp van de REST API
@@ -45,7 +45,7 @@ De volgende headers zijn vereist:
 | subscriptionId | De abonnements-ID waarmee een Azure-abonnement wordt geïdentificeerd. Als u meerdere abonnementen hebt, raadpleegt u [werken met meerdere abonnementen](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). |
 | resourceGroupName | De naam van de Azure-resource groep die is gekoppeld aan de resource. U kunt deze waarde ophalen uit de Azure Resource Manager-API, CLI of de portal. |
 | vmname | De naam van de virtuele machine van Azure. |
-| metricnames | Een door komma's gescheiden lijst met geldige [Load Balancer metrische gegevens](../../load-balancer/load-balancer-standard-diagnostics.md). |
+| metricnames | Een door komma's gescheiden lijst met geldige  [Load Balancer metrische gegevens](../../load-balancer/load-balancer-standard-diagnostics.md). |
 | api-versie | De API-versie die voor de aanvraag moet worden gebruikt.<br /><br /> In dit document wordt de API-versie beschreven `2018-01-01` die is opgenomen in de bovenstaande URL.  |
 | tijdsbestek | Teken reeks met de volgende indeling `startDateTime_ISO/endDateTime_ISO` die het tijds bereik van de geretourneerde metrische gegevens definieert. Deze optionele para meter is zo ingesteld dat de gegevens van een dag in het voor beeld worden geretourneerd. |
 | &nbsp; | &nbsp; |

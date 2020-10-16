@@ -4,10 +4,10 @@ description: Wanneer een resource niet-compatibel is, zijn er veel mogelijke red
 ms.date: 09/30/2020
 ms.topic: how-to
 ms.openlocfilehash: df1eefec782835838add0beb8939bf4ff1a8a194
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91541268"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Oorzaken van niet-naleving bepalen
@@ -30,7 +30,7 @@ Wanneer een bron niet compatibel is, zijn de compatibiliteits Details voor die b
 
 Voer de volgende stappen uit om de compatibiliteits gegevens weer te geven:
 
-1. Start de Azure Policy-service in de Azure Portal door **alle services**te selecteren en vervolgens naar **beleid**te zoeken en te selecteren.
+1. Start de Azure Policy-service in Azure Portal door **Alle services** te selecteren en dan **Beleid** te zoeken en te selecteren.
 
 1. Selecteer op de pagina **overzicht** of **naleving** een beleids regel in een **nalevings status** die _niet compatibel_is.
 
@@ -197,7 +197,7 @@ Audit that an application is installed inside Windows VMs                 NonCom
 
 Als onderdeel van een nieuwe **open bare preview**zijn de laatste 14 dagen aan wijzigings geschiedenis beschikbaar voor alle Azure-resources die de verwijdering van de [volledige modus](../../../azure-resource-manager/templates/complete-mode-deletion.md)ondersteunen. Wijzigings overzicht bevat details over wanneer een wijziging is gedetecteerd en een _visueel verschil_ voor elke wijziging. Een wijzigings detectie wordt geactiveerd wanneer de Azure Resource Manager eigenschappen worden toegevoegd, verwijderd of gewijzigd.
 
-1. Start de Azure Policy-service in de Azure Portal door **alle services**te selecteren en vervolgens naar **beleid**te zoeken en te selecteren.
+1. Start de Azure Policy-service in Azure Portal door **Alle services** te selecteren en dan **Beleid** te zoeken en te selecteren.
 
 1. Selecteer op de pagina **overzicht** of **naleving** een beleids regel in elke **compatibiliteits status**.
 

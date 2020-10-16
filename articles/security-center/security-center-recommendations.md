@@ -13,71 +13,65 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 7f6c0f2a311590219fb59bfe1ec63831c03e8af2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0efb2c26a63418835dd2b7561a1fb9d3a9d5fee8
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91314433"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945551"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Aanbevelingen voor beveiliging in Azure Security Center 
 In dit onderwerp wordt uitgelegd hoe u de aanbevelingen in Azure Security Center kunt bekijken en begrijpen om u te helpen uw Azure-resources te beveiligen.
 
-> [!NOTE]
-> In dit document wordt de service geïntroduceerd aan de hand van een voorbeeldimplementatie.  Dit document is geen stapsgewijze hand leiding.
->
 
 ## <a name="what-are-security-recommendations"></a>Wat zijn beveiligings aanbevelingen?
 
 Aanbevelingen zijn acties die u kunt uitvoeren om uw resources te beveiligen.
 
-Security Center regel matig de beveiligings status van uw Azure-resources analyseren om mogelijke beveiligings problemen te identificeren. Vervolgens krijgt u aanbevelingen voor het oplossen van deze beveiligings problemen.
+Security Center analyseert periodiek de beveiligingsstatus van uw Azure-resources om mogelijke beveiligingsproblemen op te sporen. Vervolgens krijgt u aanbevelingen voor het oplossen van deze beveiligingsproblemen.
 
 Elke aanbeveling biedt u het volgende:
 
-- Een korte beschrijving van het probleem.
-- De herstels tappen die u moet uitvoeren om de aanbeveling te implementeren.
-- De betrokken resources.
+- Een korte beschrijving van het probleem
+- De herstel stappen die moeten worden uitgevoerd om de aanbeveling te implementeren
+- De betrokken resources
 
 ## <a name="monitor-recommendations"></a>Aanbevelingen controleren <a name="monitor-recommendations"></a>
 
-Security Center analyseert de beveiligings status van uw resources om mogelijke beveiligings problemen te identificeren. De tegel **aanbevelingen** onder **overzicht** toont het totale aantal aanbevelingen dat is geïdentificeerd door Security Center.
+Security Center analyseert de beveiligings status van uw resources om mogelijke beveiligings problemen te identificeren. 
 
-![Overzicht van Security Center](./media/security-center-recommendations/asc-overview.png)
-
-1. Selecteer de **tegel aanbevelingen** onder **overzicht**. De lijst met **aanbevelingen** wordt geopend.
-
-1. Aanbevelingen zijn onderverdeeld in beveiligings controles.
+1. Open in het menu van Security Center de pagina **aanbevelingen** om de aanbevelingen te zien die van toepassing zijn op uw omgeving. Aanbevelingen zijn onderverdeeld in beveiligings controles.
 
       ![Aanbevelingen gegroepeerd op beveiligings beheer](./media/security-center-recommendations/view-recommendations.png)
 
-1. Vouw een besturings element uit en selecteer een specifieke aanbeveling om de pagina aanbeveling weer te geven.
+1. Vouw een besturings element uit en selecteer een specifieke aanbeveling om de pagina met aanbevelings details weer te geven.
 
     :::image type="content" source="./media/security-center-recommendations/recommendation-details-page.png" alt-text="Pagina aanbevelings Details." lightbox="./media/security-center-recommendations/recommendation-details-page.png":::
 
     De pagina bevat:
 
-    - Knoppen op ondersteunde aanbevelingen **afdwingen** en **weigeren** (Zie [geen onjuiste configuraties met afdwingen/weigeren](prevent-misconfigurations.md))
-    - **Ernst indicator**
-    - **Interval voor versheid**  (indien van toepassing) 
-    - **Beschrijving** : een korte beschrijving van het probleem
-    - Herstels **tappen** : een beschrijving van de hand matige stappen die nodig zijn om het beveiligings probleem op de betrokken resources op te lossen. Voor aanbevelingen met snelle oplossing kunt u **herstel logica weer geven** selecteren voordat u de voorgestelde oplossing toepast op uw resources. 
-    - **Betrokken resources** : uw resources worden in tabbladen gegroepeerd.
+    1. Knoppen op ondersteunde aanbevelingen **afdwingen** en **weigeren** (Zie [geen onjuiste configuraties met afdwingen/weigeren](prevent-misconfigurations.md))
+    1. **Ernst indicator**
+    1. **Interval voor versheid**  (indien van toepassing) 
+    1. **Beschrijving** : een korte beschrijving van het probleem
+    1. Herstels **tappen** : een beschrijving van de hand matige stappen die nodig zijn om het beveiligings probleem op de betrokken resources op te lossen. Voor aanbevelingen met snelle oplossing kunt u **herstel logica weer geven** selecteren voordat u de voorgestelde oplossing toepast op uw resources. 
+    1. **Betrokken resources** : uw resources worden in tabbladen gegroepeerd.
         - **Goede resources** : relevante bronnen die niet van invloed zijn op of waarop u het probleem al hebt opgelost.
         - **Slechte bronnen** : bronnen die nog steeds worden beïnvloed door het geïdentificeerde probleem.
         - **Niet-toepasselijke resources** : resources waarvoor de aanbeveling geen definitief antwoord kan geven. Het tabblad niet van toepassing bevat ook de redenen voor elke resource. 
 
-            :::image type="content" source="./media/security-center-recommendations/recommendations-not-applicable-reasons.png" alt-text="Er zijn geen toepasselijke resources om redenen.":::
+            :::image type="content" source="./media/security-center-recommendations/recommendations-not-applicable-reasons.png" alt-text="Pagina aanbevelings Details.":::
+    1. Actie knoppen om de aanbeveling te herstellen of een logische app te activeren.
 
 ## <a name="preview-recommendations"></a>Preview-aanbevelingen
 
 Aanbevelingen die als **Preview** zijn gemarkeerd, zijn niet opgenomen in de berekeningen van uw beveiligde Score.
 
-Ze moeten, waar mogelijk, nog steeds worden hersteld, zodat wanneer de preview-periode afloopt dat ze bijdragen aan uw score.
+Ze moeten, waar mogelijk, nog steeds worden hersteld. Wanneer de preview-periode is afgelopen, worden ze dus meegerekend in uw score.
 
-Een voor beeld van een voor beeld van een preview-aanbeveling:
+Een voorbeeld van een preview-aanbeveling:
 
-:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Aanbeveling met de vlag preview":::
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Pagina aanbevelings Details.":::
  
 ## <a name="next-steps"></a>Volgende stappen
 

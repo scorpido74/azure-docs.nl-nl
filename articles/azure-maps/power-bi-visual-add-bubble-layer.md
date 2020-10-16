@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: 4443b0f479079a4722a5d62fea40afcb4a58632d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86261753"
 ---
 # <a name="add-a-bubble-layer"></a>Een bubbellaag toevoegen
@@ -49,7 +49,7 @@ Als een veld wordt door gegeven aan de Bucket **grootte** van het deel venster *
 |---------------------|--------------|
 | Minimale grootte            | Minimale belgrootte bij het schalen van de gegevens.|
 | Maximale grootte            | De maximale belgrootte bij het schalen van de gegevens.|
-| Schaal methode voor grootte | Schaal algoritme dat wordt gebruikt om de relatieve belgrootte te bepalen.<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;• Lineair bereik van invoer gegevens die lineair zijn toegewezen aan de minimum-en maximum grootte. (standaard)<br/>&nbsp;&nbsp;&nbsp;&nbsp;• Het logboek bereik van invoer gegevens logarithmically toegewezen aan de minimum-en maximum grootte.<br/>&nbsp;&nbsp;&nbsp;&nbsp;• Kubiek-Bézier: Geef x1, y1, x2, y2-waarden van een kubieke Bézier-curve op om een aangepaste schaal methode te maken. |
+| Schaal methode voor grootte | Schaal algoritme dat wordt gebruikt om de relatieve belgrootte te bepalen.<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;• Lineair bereik van invoer gegevens die lineair zijn toegewezen aan de minimum-en maximum grootte. (standaard)<br/>&nbsp;&nbsp;&nbsp;&nbsp;• Het logboek bereik van invoer gegevens logarithmically toegewezen aan de minimum-en maximum grootte.<br/>&nbsp;&nbsp;&nbsp;&nbsp;• Cubic-Bezier: Geef de waarden x1, y1, x2, y2 van een Cubic-Bezier curve op om een aangepaste schaal methode te maken. |
 
 Wanneer de **methode** voor het schalen van de grootte is ingesteld op **logboek**, worden de volgende opties beschikbaar gesteld.
 
@@ -67,14 +67,14 @@ Wanneer de **methode** voor het schalen van de grootte is ingesteld op **kubieke
 | Y2      | Y2-para meter van een kubieke Bézier-curve. |
 
 > [!TIP]
-> [https://cubic-bezier.com/](https://cubic-bezier.com/)beschikt over een handig hulp middel voor het maken van de para meters voor kubieke Bézier-curven.
+> [https://cubic-bezier.com/](https://cubic-bezier.com/) beschikt over een handig hulp middel voor het maken van de para meters voor Cubic-Bezier curven.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Wijzigen hoe uw gegevens op de kaart worden weer gegeven:
 
 > [!div class="nextstepaction"]
-> [Een laag met een staaf diagram toevoegen](power-bi-visual-add-bar-chart-layer.md)
+> [Een laag met een staafdiagram toevoegen](power-bi-visual-add-bar-chart-layer.md)
 
 Meer context toevoegen aan de kaart:
 
@@ -85,7 +85,7 @@ Meer context toevoegen aan de kaart:
 > [Een titellaag toevoegen](power-bi-visual-add-tile-layer.md)
 
 > [!div class="nextstepaction"]
-> [Realtime verkeer weer geven](power-bi-visual-show-real-time-traffic.md)
+> [Realtime verkeer weergeven](power-bi-visual-show-real-time-traffic.md)
 
 De Visual aanpassen:
 

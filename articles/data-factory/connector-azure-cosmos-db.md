@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/11/2019
 ms.openlocfilehash: be6dbb74883f12498c5c011e35fa955509ff627c
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88042765"
 ---
 # <a name="copy-and-transform-data-in-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Gegevens in Azure Cosmos DB (SQL API) kopiëren en transformeren met behulp van Azure Data Factory
@@ -65,7 +65,7 @@ De volgende eigenschappen worden ondersteund voor de gekoppelde service Azure Co
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap **type** moet worden ingesteld op **CosmosDb**. | Ja |
-| Verbindings |Geef de gegevens op die nodig zijn om verbinding te maken met de Azure Cosmos DB-Data Base.<br />**Opmerking**: u moet database gegevens opgeven in de Connection String, zoals wordt weer gegeven in de volgende voor beelden. <br/> U kunt ook account sleutel in Azure Key Vault plaatsen en de `accountKey` configuratie uit de Connection String halen. Raadpleeg de volgende voor beelden en [Sla referenties op in azure Key Vault](store-credentials-in-key-vault.md) artikel met meer informatie. |Ja |
+| connectionString |Geef de gegevens op die nodig zijn om verbinding te maken met de Azure Cosmos DB-Data Base.<br />**Opmerking**: u moet database gegevens opgeven in de Connection String, zoals wordt weer gegeven in de volgende voor beelden. <br/> U kunt ook account sleutel in Azure Key Vault plaatsen en de `accountKey` configuratie uit de Connection String halen. Raadpleeg de volgende voor beelden en [Sla referenties op in azure Key Vault](store-credentials-in-key-vault.md) artikel met meer informatie. |Ja |
 | connectVia | De [Integration runtime](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevens archief. U kunt de Azure Integration Runtime of een zelf-hostende Integration runtime gebruiken (als uw gegevens archief zich in een particulier netwerk bevindt). Als deze eigenschap niet is opgegeven, wordt de standaard Azure Integration Runtime gebruikt. |Nee |
 
 **Voorbeeld**
@@ -157,7 +157,7 @@ De volgende eigenschappen worden ondersteund in de sectie **bron** van de Kopiee
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap **type** van de bron van de Kopieer activiteit moet zijn ingesteld op **CosmosDbSqlApiSource**. |Ja |
-| query |Geef de Azure Cosmos DB query op om gegevens te lezen.<br/><br/>Voorbeeld:<br /> `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |Nee <br/><br/>Als deze SQL-instructie niet wordt opgegeven, wordt deze uitgevoerd:`select <columns defined in structure> from mycollection` |
+| query |Geef de Azure Cosmos DB query op om gegevens te lezen.<br/><br/>Voorbeeld:<br /> `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |Nee <br/><br/>Als deze SQL-instructie niet wordt opgegeven, wordt deze uitgevoerd: `select <columns defined in structure> from mycollection` |
 | preferredRegions | De voorkeurs lijst met regio's waarmee verbinding moet worden gemaakt bij het ophalen van gegevens uit Cosmos DB. | Nee |
 | pageSize | Het aantal documenten per pagina van het query resultaat. De standaard waarde is '-1 ', wat betekent dat de dynamische pagina grootte aan de kant van de service wordt gebruikt tot 1000. | Nee |
 

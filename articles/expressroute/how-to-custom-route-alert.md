@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: duau
 ms.openlocfilehash: 67591e9227ff32e81b973c181da2c1374f0ded47
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91766662"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>Aangepaste waarschuwingen configureren voor het bewaken van aangekondigde routes
@@ -393,7 +393,7 @@ Zodra de JSON is geparseerd, wordt de inhoud in *de uitvoer van de* **geparseerd
 
    :::image type="content" source="./media/custom-route-alert-portal/condition-control.png" alt-text="Automation-account toevoegen":::
 
-5. Selecteer in de lijst **acties** de optie **voor waarde-besturings element**. De voor waarde-Control is een controle structuur die de gegevens in uw werk stroom vergelijkt met specifieke waarden of velden. U kunt vervolgens verschillende acties opgeven die worden uitgevoerd op basis van het feit of de gegevens voldoen aan de voor waarde.
+5. Selecteer in de lijst **acties** de optie **voor waarde-besturings element**. De Condition-Control is een controle structuur die de gegevens in uw werk stroom vergelijkt met specifieke waarden of velden. U kunt vervolgens verschillende acties opgeven die worden uitgevoerd op basis van het feit of de gegevens voldoen aan de voor waarde.
 
    :::image type="content" source="./media/custom-route-alert-portal/condition.png" alt-text="Automation-account toevoegen":::
 

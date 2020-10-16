@@ -12,20 +12,20 @@ ms.author: jrasnick
 ms.reviewer: genemi
 ms.date: 01/25/2019
 ms.openlocfilehash: 2134cf1fda5f0f1699feb46582813d198304f92e
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91616377"
 ---
-# <a name="monitor-in-memory-oltp-storage-in-azure-sql-database-and-azure-sql-managed-instance"></a>OLTP-opslag in het geheugen bewaken in Azure SQL Database en Azure SQL Managed instance
+# <a name="monitor-in-memory-oltp-storage-in-azure-sql-database-and-azure-sql-managed-instance"></a>In-Memory OLTP-opslag bewaken in Azure SQL Database en Azure SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
-Bij gebruik [van in-Memory OLTP](in-memory-oltp-overview.md)worden gegevens in tabellen die zijn geoptimaliseerd voor geheugen en tabel variabelen bevinden zich in de OLTP-opslag in het geheugen.
+Bij gebruik [van in-Memory OLTP](in-memory-oltp-overview.md)worden gegevens in tabellen die zijn geoptimaliseerd voor geheugen en tabel variabelen bevinden zich in In-Memory OLTP-opslag.
 
-## <a name="determine-whether-data-fits-within-the-in-memory-oltp-storage-cap"></a>Bepalen of gegevens binnen de OLTP-opslag limiet van het geheugen passen
+## <a name="determine-whether-data-fits-within-the-in-memory-oltp-storage-cap"></a>Bepalen of gegevens binnen de In-Memory OLTP-opslag limiet passen
 
-Bepaal de opslag limieten van de verschillende service lagen. Elke Premium-en Bedrijfskritiek-servicelaag heeft een maximale in-Memory OLTP-opslag grootte.
+Bepaal de opslag limieten van de verschillende service lagen. Elke Premium-en Bedrijfskritiek-servicelaag heeft een maximale In-Memory OLTP-opslag grootte.
 
 - [Op DTU gebaseerde resource limieten-één data base](database/resource-limits-dtu-single-databases.md)
 - [Op DTU gebaseerde resource limieten-elastische Pools](database/resource-limits-dtu-elastic-pools.md)
@@ -55,9 +55,9 @@ U kunt ook de volgende query gebruiken om het gebruik van de opslag in het geheu
 
 ## <a name="correct-out-of-in-memory-oltp-storage-situations---errors-41823-and-41840"></a>Problemen met OLTP-opslag in het geheugen corrigeren-fouten 41823 en 41840
 
-Zoek naar de OLTP-opslag limiet in het geheugen in uw data base resulteert in INSERT-, UPDATE-, ALTER-en CREATE-bewerkingen die mislukken met het fout bericht 41823 (voor afzonderlijke data bases) of fout 41840 (voor elastische Pools). Beide fouten zorgen ervoor dat de actieve trans actie wordt afgebroken.
+Zoek de In-Memory OLTP-opslag limiet in uw data base resulteert in INSERT-, UPDATE-, ALTER-en CREATE-bewerkingen die mislukken met het fout bericht 41823 (voor afzonderlijke data bases) of fout 41840 (voor elastische Pools). Beide fouten zorgen ervoor dat de actieve trans actie wordt afgebroken.
 
-Fout berichten 41823 en 41840 geven aan dat de door het geheugen geoptimaliseerde tabellen en tabel variabelen in de data base of pool de maximale OLTP-opslag grootte in het geheugen hebben bereikt.
+Fout berichten 41823 en 41840 geven aan dat de door het geheugen geoptimaliseerde tabellen en tabel variabelen in de data base of pool de maximale In-Memory OLTP-opslag grootte hebben bereikt.
 
 Om deze fout op te lossen, kunt u het volgende doen:
 
@@ -65,7 +65,7 @@ Om deze fout op te lossen, kunt u het volgende doen:
 - Voer een upgrade uit van de servicelaag met voldoende in-Memory opslag voor de gegevens die u nodig hebt om in geheugen geoptimaliseerde tabellen te bewaren.
 
 > [!NOTE]
-> In zeldzame gevallen kunnen fouten 41823 en 41840 tijdelijk zijn, wat betekent dat er voldoende beschik bare OLTP-opslag in het geheugen beschikbaar is en dat de bewerking opnieuw wordt uitgevoerd. Daarom raden we u aan om de algemeen beschik bare OLTP-opslag in het geheugen te bewaken en opnieuw te proberen wanneer de fout 41823 of 41840 voor het eerst optreedt. Zie [conflict detectie en poging logica met in-Memory OLTP](https://docs.microsoft.com/sql/relational-databases/In-memory-oltp/transactions-with-memory-optimized-tables#conflict-detection-and-retry-logic)voor meer informatie over de logica voor opnieuw proberen.
+> In zeldzame gevallen kunnen fouten 41823 en 41840 tijdelijk zijn, wat betekent dat er voldoende beschik bare In-Memory OLTP-opslag is en dat de bewerking opnieuw wordt uitgevoerd. Daarom wordt u aangeraden de totale beschik bare In-Memory OLTP-opslag te controleren en opnieuw te proberen wanneer de fout 41823 of 41840 voor het eerst optreedt. Zie [conflict detectie en pogings logica met In-Memory OLTP](https://docs.microsoft.com/sql/relational-databases/In-memory-oltp/transactions-with-memory-optimized-tables#conflict-detection-and-retry-logic)voor meer informatie over de logica voor opnieuw proberen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

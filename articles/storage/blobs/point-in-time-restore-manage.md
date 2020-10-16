@@ -10,10 +10,10 @@ ms.date: 09/23/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 828b5c34aaccf2a53aa197f921a8ef02d46821ae
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91280467"
 ---
 # <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>Herstel naar een bepaald tijdstip uitvoeren op blok-BLOB-gegevens
@@ -52,7 +52,7 @@ In de volgende afbeelding ziet u een opslag account dat is geconfigureerd voor h
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Als u herstel naar een bepaald tijdstip wilt configureren met Power shell, installeert u eerst de [AZ. Storage](https://www.powershellgallery.com/packages/Az.Storage) -module versie 2.6.0 of hoger. Roep vervolgens de opdracht Enable-AzStorageBlobRestorePolicy aan om herstel naar een bepaald tijdstip voor het opslag account in te scha kelen.
+Als u herstel naar een bepaald tijdstip wilt configureren met Power shell, installeert u eerst de [AZ. Storage](https://www.powershellgallery.com/packages/Az.Storage) -module versie 2.6.0 of hoger. Roep vervolgens de Enable-AzStorageBlobRestorePolicy opdracht om herstel naar een bepaald tijdstip voor het opslag account in te scha kelen.
 
 In het volgende voor beeld wordt zacht verwijderen ingeschakeld en wordt de Bewaar periode voor de tijdelijke verwijdering ingesteld, wordt feed en versie beheer ingeschakeld en wordt vervolgens herstel naar een bepaald tijdstip mogelijk.    Wanneer u het voor beeld uitvoert, moet u de waarden tussen punt haken vervangen door uw eigen waarden:
 
@@ -122,7 +122,7 @@ Voer de volgende stappen uit om alle containers en blobs in het opslag account t
 1. Bevestig dat u wilt door gaan door het selectie vakje in te scha kelen.
 1. Selecteer **herstellen** om de herstel bewerking te starten.
 
-    :::image type="content" source="media/point-in-time-restore-manage/restore-all-containers-portal.png" alt-text="Scherm afbeelding die laat zien hoe u alle containers herstelt naar een opgegeven herstel punt":::
+    :::image type="content" source="media/point-in-time-restore-manage/restore-all-containers-portal.png" alt-text="Scherm afbeelding die laat zien hoe u herstel naar een bepaald tijdstip in de Azure Portal kunt configureren":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -169,14 +169,14 @@ Voer de volgende stappen uit om een reeks blobs in een of meer containers te her
 1. Geef de bereiken op die u wilt herstellen. Gebruik een slash (/) om de container naam te afbakenen vanuit het voor voegsel van de blob.
 1. Standaard bevat het deel venster **geselecteerde containers herstellen** een bereik dat alle blobs in de container bevat. Verwijder dit bereik als u de volledige container niet wilt herstellen. Het standaard bereik wordt weer gegeven in de volgende afbeelding.
 
-    :::image type="content" source="media/point-in-time-restore-manage/delete-default-blob-range.png" alt-text="Scherm afbeelding met het standaard-BLOB-bereik dat moet worden verwijderd voordat het aangepaste bereik wordt opgegeven":::
+    :::image type="content" source="media/point-in-time-restore-manage/delete-default-blob-range.png" alt-text="Scherm afbeelding die laat zien hoe u herstel naar een bepaald tijdstip in de Azure Portal kunt configureren":::
 
 1. Bevestig dat u wilt door gaan door het selectie vakje in te scha kelen.
 1. Selecteer **herstellen** om de herstel bewerking te starten.
 
 In de volgende afbeelding ziet u een herstel bewerking voor een set bereiken.
 
-:::image type="content" source="media/point-in-time-restore-manage/restore-multiple-container-ranges-portal.png" alt-text="Scherm afbeelding die laat zien hoe u de bereiken van blobs in een of meer containers kunt herstellen":::
+:::image type="content" source="media/point-in-time-restore-manage/restore-multiple-container-ranges-portal.png" alt-text="Scherm afbeelding die laat zien hoe u herstel naar een bepaald tijdstip in de Azure Portal kunt configureren":::
 
 De herstel bewerking die wordt weer gegeven in de afbeelding, voert de volgende acties uit:
 

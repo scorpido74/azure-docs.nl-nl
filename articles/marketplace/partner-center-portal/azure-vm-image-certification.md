@@ -8,10 +8,10 @@ author: github-2407
 ms.author: krsh
 ms.date: 08/14/2020
 ms.openlocfilehash: 83fc141a658fb3f5f639d56794c77fe7a3ff28bf
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91821318"
 ---
 # <a name="test-a-virtual-machine-image-for-azure-marketplace"></a>Een installatie kopie van een virtuele machine voor Azure Marketplace testen
@@ -31,7 +31,7 @@ In deze sectie wordt beschreven hoe u een gegeneraliseerde virtuele harde schijf
 
 In deze sectie wordt beschreven hoe u een installatie kopie van een door de gebruiker gedefinieerde virtuele machine (VM) maakt en implementeert. U kunt dit doen door VHD-installatie kopieën van besturings systeem en gegevens schijven te voorzien van een door Azure geïmplementeerde virtuele harde schijf. Met deze stappen implementeert u de virtuele machine met gegeneraliseerde VHD.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Upload uw gegeneraliseerde virtuele harde schijf van het besturings systeem en de Vhd's met gegevens schijven naar uw Azure Storage-account.
 3. Op de start pagina selecteert u **een resource maken**, zoekt u naar "sjabloon implementatie" en selecteert u **maken**.
 4. Kies **uw eigen sjabloon bouwen in de editor**.
@@ -1000,13 +1000,13 @@ Selecteer ten slotte rapport genereren om de test resultaten en logboek bestande
 > [!Note]
 > Enkele uitgevers hebben scenario's waarbij Vm's moeten worden vergrendeld omdat ze software hebben, zoals firewalls die zijn geïnstalleerd op de virtuele machine. In dit geval kunnen uitgevers het [gecertificeerde test programma](https://aka.ms/AzureCertificationTestTool) hier downloaden en het rapport op Marketplace- [Uitgever ondersteuning](https://aka.ms/marketplacepublishersupport) bieden.
 
-## <a name="how-to-use-powershell-to-consume-the-self-test-api"></a>Power shell gebruiken voor het verbruiken van de zelf test-API
+## <a name="how-to-use-powershell-to-consume-the-self-test-api"></a>Power shell gebruiken voor het gebruik van de Self-Test-API
 
 ### <a name="on-linux-os"></a>Op Linux-besturings systeem
 
 De API aanroepen in Power shell:
 
-1. Gebruik de opdracht invoke-WebRequest om de API aan te roepen.
+1. Gebruik de Invoke-WebRequest opdracht om de API aan te roepen.
 2. De methode is post en het inhouds type is JSON, zoals wordt weer gegeven in het volgende code voorbeeld en scherm opname.
 3. Geef de hoofd tekst parameters op in JSON-indeling.
 
@@ -1077,7 +1077,7 @@ For ($i = 0; $i -lt $actualresult.Tests.Length; $i++) {
 
 De API aanroepen in Power shell:
 
-1. Gebruik de opdracht invoke-WebRequest om de API aan te roepen.
+1. Gebruik de Invoke-WebRequest opdracht om de API aan te roepen.
 2. De methode is post en het inhouds type is JSON, zoals wordt weer gegeven in het volgende code voorbeeld en voor beeld scherm.
 3. Maak de hoofd tekst-para meters in JSON-indeling.
 
@@ -1735,7 +1735,7 @@ For ($i = 0; $i -lt $actualresult.Tests.Length; $i++) {
 
 ![Test resultaten in een online JSON-viewer.](media/vm/test-results-json-viewer-2.png)
 
-## <a name="how-to-use-curl-to-consume-the-self-test-api-on-linux-os"></a>KRUL gebruiken om de zelf test-API in Linux-besturings systeem te verbruiken
+## <a name="how-to-use-curl-to-consume-the-self-test-api-on-linux-os"></a>KRUL gebruiken om de Self-Test-API in Linux-besturings systeem te verbruiken
 
 De API in krul aanroepen:
 

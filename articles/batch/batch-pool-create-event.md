@@ -4,10 +4,10 @@ description: Verwijzing voor de gebeurtenis batch-pool Create die wordt verzonde
 ms.topic: reference
 ms.date: 10/08/2020
 ms.openlocfilehash: dea0e04fa506274e645ba7a578039a0d6f021043
-ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91850945"
 ---
 # <a name="pool-create-event"></a>Gebeurtenis pool maken
@@ -49,7 +49,7 @@ ms.locfileid: "91850945"
 }
 ```
 
-|Element|Type|Opmerkingen|
+|Element|Type|Notities|
 |-------------|----------|-----------|
 |`id`|Tekenreeks|De ID van de pool.|
 |`displayName`|Tekenreeks|De weergave naam van de pool.|
@@ -69,14 +69,14 @@ ms.locfileid: "91850945"
 
 ###  <a name="cloudserviceconfiguration"></a><a name="bk_csconf"></a> cloudServiceConfiguration
 
-|Elementnaam|Type|Opmerkingen|
+|Elementnaam|Type|Notities|
 |------------------|----------|-----------|
 |`osFamily`|Tekenreeks|De Azure-gast besturingssysteem familie moet worden geïnstalleerd op de virtuele machines in de groep.<br /><br /> Mogelijke waarden zijn:<br /><br /> **2** : OS-familie 2, gelijk aan Windows Server 2008 R2 SP1.<br /><br /> **3** : OS-familie 3, gelijk aan Windows Server 2012.<br /><br /> **4** : OS-familie 4, gelijk aan Windows Server 2012 R2.<br /><br /> Zie [versies van Azure Guest OS](../cloud-services/cloud-services-guestos-update-matrix.md#releases)voor meer informatie.|
 |`targetOSVersion`|Tekenreeks|De versie van het Azure-gast besturingssysteem die moet worden geïnstalleerd op de virtuele machines in de groep.<br /><br /> De standaard waarde is **\*** de meest recente versie van het besturings systeem voor de opgegeven familie.<br /><br /> Zie [versies van Azure Guest OS](../cloud-services/cloud-services-guestos-update-matrix.md#releases)voor andere toegestane waarden.|
 
 ###  <a name="virtualmachineconfiguration"></a><a name="bk_vmconf"></a> virtualMachineConfiguration
 
-|Elementnaam|Type|Opmerkingen|
+|Elementnaam|Type|Notities|
 |------------------|----------|-----------|
 |[`imageReference`](#bk_imgref)|Complex type|Hiermee geeft u informatie op over het platform of de Marketplace-installatie kopie die moet worden gebruikt.|
 |`nodeAgentId`|Tekenreeks|De SKU van de batch-knooppunt agent die is ingericht op het reken knooppunt.|
@@ -84,7 +84,7 @@ ms.locfileid: "91850945"
 
 ###  <a name="imagereference"></a><a name="bk_imgref"></a> imageReference
 
-|Elementnaam|Type|Opmerkingen|
+|Elementnaam|Type|Notities|
 |------------------|----------|-----------|
 |`publisher`|Tekenreeks|De uitgever van de installatie kopie.|
 |`offer`|Tekenreeks|De aanbieding van de installatie kopie.|
@@ -93,12 +93,12 @@ ms.locfileid: "91850945"
 
 ###  <a name="windowsconfiguration"></a><a name="bk_winconf"></a> windowsConfiguration
 
-|Elementnaam|Type|Opmerkingen|
+|Elementnaam|Type|Notities|
 |------------------|----------|-----------|
 |`enableAutomaticUpdates`|Booleaans|Hiermee wordt aangegeven of de virtuele machine is ingeschakeld voor automatische updates. Als deze eigenschap niet is opgegeven, is de standaard waarde True.|
 
 ###  <a name="networkconfiguration"></a><a name="bk_netconf"></a> networkConfiguration
 
-|Elementnaam|Type|Opmerkingen|
+|Elementnaam|Type|Notities|
 |------------------|--------------|----------|
 |`subnetId`|Tekenreeks|Hiermee geeft u de resource-id op van het subnet waarin de reken knooppunten van de pool worden gemaakt.|

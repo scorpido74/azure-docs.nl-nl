@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/25/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 2c642b2441d1f30c31e707a237732e028f548ac5
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 118e137f06a49f2c125b1ca156877514d65af86f
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89298178"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047060"
 ---
 # <a name="use-the-azure-digital-twins-cli"></a>De Azure Digital Twins-CLI gebruiken
 
@@ -35,13 +35,13 @@ Naast het algemeen beheer van uw exemplaar, is de CLI ook een handig hulp middel
 
 ## <a name="get-the-extension"></a>De uitbrei ding ophalen
 
-De Azure Digital Apparaatdubbels-opdrachten maken deel uit van de [Azure IOT-extensie voor Azure cli](https://github.com/Azure/azure-iot-cli-extension). U kunt de referentie documentatie voor deze opdrachten weer geven als onderdeel van de `az iot` opdracht set: [AZ DT](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest).
+De Azure Digital Apparaatdubbels-opdrachten maken deel uit van de [Azure IOT-extensie voor Azure cli](https://github.com/Azure/azure-iot-cli-extension). U kunt de volledige lijst met opdrachten en hun gebruik weer geven als onderdeel van de referentie documentatie voor de `az iot` opdrachtset: [ *AZ DT* opdracht verwijzing](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest).
 
-Met deze stappen kunt u ervoor zorgen dat u de meest recente versie van de uitbrei ding hebt. U kunt deze opdrachten uitvoeren in de [Azure Cloud shell](../cloud-shell/overview.md) of een [lokale Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Met deze stappen kunt u ervoor zorgen dat u de meest recente versie van de uitbrei ding hebt. U kunt deze opdrachten uitvoeren in de [Azure Cloud shell](../cloud-shell/overview.md) of een [lokale Azure cli](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest).
 
 [!INCLUDE [digital-twins-cloud-shell-extensions.md](../../includes/digital-twins-cloud-shell-extensions.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie een Azure Digital Apparaatdubbels-exemplaar beheren met Api's en Sdk's voor een alternatief voor CLI-opdrachten:
-* [*Instructies: de Azure Digital Apparaatdubbels-Api's en Sdk's gebruiken*](how-to-use-apis-sdks.md)
+Verken de CLI en de volledige set opdrachten via de referentie documenten:
+* [*AZ DT* -opdracht verwijzing](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest)

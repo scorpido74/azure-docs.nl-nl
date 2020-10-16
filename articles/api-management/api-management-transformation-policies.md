@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 0182c3aa9095ad6f7bf3d8d86f115517e9efb020
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 3097f7b0b6b69dc470877d4951efbcbd3c7482b1
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249600"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078490"
 ---
 # <a name="api-management-transformation-policies"></a>Transformatiebeleid API Management
-In dit onderwerp vindt u een verwijzing naar de volgende API Management-beleids regels. Zie [beleid in API Management](https://go.microsoft.com/fwlink/?LinkID=398186)voor meer informatie over het toevoegen en configureren van beleid.
+In dit onderwerp vindt u een verwijzing naar de volgende API Management-beleids regels. Zie [beleid in API Management](./api-management-policies.md)voor meer informatie over het toevoegen en configureren van beleid.
 
-##  <a name="transformation-policies"></a><a name="TransformationPolicies"></a>Transformatie beleid
+##  <a name="transformation-policies"></a><a name="TransformationPolicies"></a> Transformatie beleid
 
 -   [JSON converteren naar XML](api-management-transformation-policies.md#ConvertJSONtoXML) : Hiermee wordt de aanvraag of antwoord tekst van JSON naar XML geconverteerd.
 
@@ -44,7 +44,7 @@ In dit onderwerp vindt u een verwijzing naar de volgende API Management-beleids 
 
 -   [XML transformeren met behulp van een XSLT](api-management-transformation-policies.md#XSLTransform) : past een XSL-trans formatie toe op XML in de hoofd tekst van de aanvraag of het antwoord.
 
-##  <a name="convert-json-to-xml"></a><a name="ConvertJSONtoXML"></a>JSON naar XML converteren
+##  <a name="convert-json-to-xml"></a><a name="ConvertJSONtoXML"></a> JSON naar XML converteren
  `json-to-xml`Met het beleid wordt een aanvraag of antwoord tekst van JSON naar XML geconverteerd.
 
 ### <a name="policy-statement"></a>Beleids verklaring
@@ -88,7 +88,7 @@ In dit onderwerp vindt u een verwijzing naar de volgende API Management-beleids 
 
 -   **Beleids bereik:** alle bereiken
 
-##  <a name="convert-xml-to-json"></a><a name="ConvertXMLtoJSON"></a>XML converteren naar JSON
+##  <a name="convert-xml-to-json"></a><a name="ConvertXMLtoJSON"></a> XML converteren naar JSON
  Met het `xml-to-json` beleid wordt een aanvraag of antwoord tekst van XML geconverteerd naar JSON. Dit beleid kan worden gebruikt om Api's te moderniseren op basis van webservices met alleen XML-back-end.
 
 ### <a name="policy-statement"></a>Beleids verklaring
@@ -132,7 +132,7 @@ In dit onderwerp vindt u een verwijzing naar de volgende API Management-beleids 
 
 -   **Beleids bereik:** alle bereiken
 
-##  <a name="find-and-replace-string-in-body"></a><a name="Findandreplacestringinbody"></a>Teken reeks in hoofd tekst zoeken en vervangen
+##  <a name="find-and-replace-string-in-body"></a><a name="Findandreplacestringinbody"></a> Teken reeks in hoofd tekst zoeken en vervangen
  Het `find-and-replace` beleid vindt een subtekenreeks van het verzoek of de reactie en vervangt deze door een andere subtekenreeks.
 
 ### <a name="policy-statement"></a>Beleids verklaring
@@ -158,7 +158,7 @@ In dit onderwerp vindt u een verwijzing naar de volgende API Management-beleids 
 |Naam|Beschrijving|Vereist|Standaard|
 |----------|-----------------|--------------|-------------|
 |from|De tekenreeks waarnaar moet worden gezocht.|Ja|N.v.t.|
-|tot|De vervangende tekenreeks. Een teken reeks met een lengte van nul opgeven om de zoek teken reeks te verwijderen.|Ja|N.v.t.|
+|in op|De vervangende tekenreeks. Een teken reeks met een lengte van nul opgeven om de zoek teken reeks te verwijderen.|Ja|N.v.t.|
 
 ### <a name="usage"></a>Gebruik
  Dit beleid kan worden gebruikt in de volgende beleids [secties](./api-management-howto-policies.md#sections) en [bereiken](./api-management-howto-policies.md#scopes).
@@ -167,7 +167,7 @@ In dit onderwerp vindt u een verwijzing naar de volgende API Management-beleids 
 
 -   **Beleids bereik:** alle bereiken
 
-##  <a name="mask-urls-in-content"></a><a name="MaskURLSContent"></a>Url's in inhoud maskeren
+##  <a name="mask-urls-in-content"></a><a name="MaskURLSContent"></a> Url's in inhoud maskeren
  Met het `redirect-content-urls` beleid worden koppelingen (maskers) opnieuw geschreven in de hoofd tekst van het antwoord, zodat ze verwijzen naar de equivalente koppeling via de gateway. Gebruik in de sectie uitgaand om de koppelingen naar de tekst van een antwoord opnieuw te schrijven om ze te laten verwijzen naar de gateway. Gebruik in de sectie binnenkomend voor een tegenovergesteld effect.
 
 > [!NOTE]
@@ -198,7 +198,7 @@ In dit onderwerp vindt u een verwijzing naar de volgende API Management-beleids 
 
 -   **Beleids bereik:** alle bereiken
 
-##  <a name="set-backend-service"></a><a name="SetBackendService"></a>Backend-service instellen
+##  <a name="set-backend-service"></a><a name="SetBackendService"></a> Backend-service instellen
  Gebruik het `set-backend-service` beleid om een binnenkomende aanvraag om te leiden naar een andere backend dan de back-end die is opgegeven in de API-instellingen voor die bewerking. Dit beleid wijzigt de back-end-service basis-URL van de inkomende aanvraag naar de waarde die is opgegeven in het beleid.
 
 ### <a name="policy-statement"></a>Beleids verklaring
@@ -242,7 +242,7 @@ De basis-URL van de back-end-service wordt aanvankelijk afgeleid van de API-inst
 
 Wanneer de [<beleids \> instructie kiezen](api-management-advanced-policies.md#choose) wordt toegepast, wordt de basis-URL van de back-end-service mogelijk opnieuw ingesteld op `http://contoso.com/api/8.2` of `http://contoso.com/api/9.1` , afhankelijk van de waarde van de query parameter van de versie aanvraag. Als de waarde bijvoorbeeld `"2013-15"` de uiteindelijke aanvraag-URL is `http://contoso.com/api/8.2/partners/15?version=2013-05&subscription-key=abcdef` .
 
-Als verdere trans formatie van de aanvraag gewenst is, kan er een ander [transformatie beleid](api-management-transformation-policies.md#TransformationPolicies) worden gebruikt. Als u bijvoorbeeld de para meter voor de versie query wilt verwijderen en de aanvraag wordt doorgestuurd naar een specifieke versie van de back-end, kunt u het beleid voor het instellen van de [query reeks parameter](api-management-transformation-policies.md#SetQueryStringParameter) gebruiken om het kenmerk voor de nu redundante versie te verwijderen.
+Als verdere trans formatie van de aanvraag gewenst is, kan er een ander [transformatie beleid](api-management-transformation-policies.md#TransformationPolicies) worden gebruikt. Als u bijvoorbeeld de para meter voor de versie query wilt verwijderen en de aanvraag wordt doorgestuurd naar een specifieke versie van de back-end, kunt u het beleid voor het instellen van de  [query reeks parameter](api-management-transformation-policies.md#SetQueryStringParameter) gebruiken om het kenmerk voor de nu redundante versie te verwijderen.
 
 ### <a name="example"></a>Voorbeeld
 
@@ -283,7 +283,7 @@ In dit voor beeld stuurt het beleid de aanvraag naar een service Fabric-back-end
 
 -   **Beleids bereik:** alle bereiken
 
-##  <a name="set-body"></a><a name="SetBody"></a>Hoofd tekst instellen
+##  <a name="set-body"></a><a name="SetBody"></a> Hoofd tekst instellen
  Gebruik het `set-body` beleid om de bericht tekst voor binnenkomende en uitgaande aanvragen in te stellen. Voor toegang tot de bericht tekst kunt u de `context.Request.Body` eigenschap of de gebruiken `context.Response.Body` , afhankelijk van het feit of het beleid zich in de sectie binnenkomend of uitgaand bevindt.
 
 > [!IMPORTANT]
@@ -453,7 +453,7 @@ OriginalUrl.
 
 -   **Beleids bereik:** alle bereiken
 
-##  <a name="set-http-header"></a><a name="SetHTTPheader"></a>HTTP-header instellen
+##  <a name="set-http-header"></a><a name="SetHTTPheader"></a> HTTP-header instellen
  Het `set-header` beleid wijst een waarde toe aan een bestaande reactie en/of aanvraag header of voegt een nieuwe reactie en/of een aanvraag header toe.
 
  Hiermee wordt een lijst met HTTP-headers in een HTTP-bericht ingevoegd. Wanneer dit beleid in een inkomende pijp lijn wordt geplaatst, worden de HTTP-headers ingesteld voor de aanvraag die wordt door gegeven aan de doel service. Wanneer dit beleid in een uitgaande pijp lijn wordt geplaatst, worden de HTTP-headers voor het antwoord dat wordt verzonden naar de client van de gateway ingesteld.
@@ -497,14 +497,14 @@ OriginalUrl.
  Zie [beleids expressies](api-management-policy-expressions.md) en [context variabelen](api-management-policy-expressions.md#ContextVariables)voor meer informatie.
 
 > [!NOTE]
-> Meerdere waarden van een header worden samengevoegd met een CSV-teken reeks, bijvoorbeeld:`headerName: value1,value2,value3`
+> Meerdere waarden van een header worden samengevoegd met een CSV-teken reeks, bijvoorbeeld: `headerName: value1,value2,value3`
 >
 > Uitzonde ringen bevatten gestandaardiseerde headers, die waarden:
 > - bevat mogelijk komma's ( `User-Agent` , `WWW-Authenticate` , `Proxy-Authenticate` ),
 > - kan date ( `Cookie` , `Set-Cookie` , `Warning` ) bevatten
 > - datum ( `Date` ,, `Expires` , `If-Modified-Since` , `If-Unmodified-Since` `Last-Modified` ,) bevatten `Retry-After` .
 >
-> In het geval van deze uitzonde ringen worden meerdere header-waarden niet samengevoegd tot één teken reeks en worden ze door gegeven als afzonderlijke headers, bijvoorbeeld:`User-Agent: value1`
+> In het geval van deze uitzonde ringen worden meerdere header-waarden niet samengevoegd tot één teken reeks en worden ze door gegeven als afzonderlijke headers, bijvoorbeeld: `User-Agent: value1`
 >`User-Agent: value2`
 >`User-Agent: value3`
 
@@ -529,7 +529,7 @@ OriginalUrl.
 
 -   **Beleids bereik:** alle bereiken
 
-##  <a name="set-query-string-parameter"></a><a name="SetQueryStringParameter"></a>Query teken reeks parameter instellen
+##  <a name="set-query-string-parameter"></a><a name="SetQueryStringParameter"></a> Query teken reeks parameter instellen
  Het `set-query-parameter` beleid voegt, vervangt de waarde of verwijdert een query teken reeks parameter van een aanvraag. Kan worden gebruikt om query parameters door te geven die worden verwacht door de back-end-service, die optioneel zijn of nooit aanwezig zijn in de aanvraag.
 
 ### <a name="policy-statement"></a>Beleids verklaring
@@ -584,12 +584,12 @@ OriginalUrl.
 
 -   **Beleids bereik:** alle bereiken
 
-##  <a name="rewrite-url"></a><a name="RewriteURL"></a>URL opnieuw schrijven
+##  <a name="rewrite-url"></a><a name="RewriteURL"></a> URL opnieuw schrijven
  `rewrite-uri`Met het beleid wordt een aanvraag-URL van het open bare formulier geconverteerd naar het formulier dat wordt verwacht door de webservice, zoals wordt weer gegeven in het volgende voor beeld.
 
-- Open bare URL-`http://api.example.com/storenumber/ordernumber`
+- Open bare URL- `http://api.example.com/storenumber/ordernumber`
 
-- Aanvraag-URL-`http://api.example.com/v2/US/hardware/storenumber&ordernumber?City&State`
+- Aanvraag-URL- `http://api.example.com/v2/US/hardware/storenumber&ordernumber?City&State`
 
   Dit beleid kan worden gebruikt wanneer een menselijke en/of browser vriendelijke URL moet worden omgezet in de URL-indeling die wordt verwacht door de webservice. Dit beleid hoeft alleen te worden toegepast wanneer een alternatieve URL-indeling wordt weer gegeven, zoals schone Url's, doorgebonden url's, gebruikers vriendelijke Url's of SEO vriendelijke url's die louter structurele Url's zijn die geen query teken reeks bevatten en in plaats daarvan alleen het pad van de bron (na het schema en de instantie) bevatten. Dit wordt vaak gedaan voor vormgeving, bruikbaarheid of optimalisatie van zoek machines (SEO).
 
@@ -662,7 +662,7 @@ OriginalUrl.
 
 -   **Beleids bereik:** alle bereiken
 
-##  <a name="transform-xml-using-an-xslt"></a><a name="XSLTransform"></a>XML transformeren met behulp van een XSLT
+##  <a name="transform-xml-using-an-xslt"></a><a name="XSLTransform"></a> XML transformeren met behulp van een XSLT
  Het `Transform XML using an XSLT` beleid past een XSL-trans formatie toe op XML in de aanvraag of antwoord tekst.
 
 ### <a name="policy-statement"></a>Beleids verklaring
@@ -732,4 +732,4 @@ Zie de volgende onderwerpen voor meer informatie:
 
 + [Beleid in API Management](api-management-howto-policies.md)
 + [Beleids verwijzing](./api-management-policies.md) voor een volledige lijst met beleids instructies en hun instellingen
-+ [Voor beelden van beleid](policy-samples.md)
++ [Voor beelden van beleid](./policy-reference.md)

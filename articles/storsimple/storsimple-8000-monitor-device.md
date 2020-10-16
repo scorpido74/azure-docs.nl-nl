@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 10/17/2017
 ms.author: alkohli
-ms.openlocfilehash: 1c2df017a9af47bfa330c8e0fa7561bf5b2d5bae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ffb13912780edcf3d92093e672d1dae983e50a8
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514690"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977405"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-your-storsimple-device"></a>De StorSimple Apparaatbeheer-service gebruiken om uw StorSimple-apparaat te bewaken
 
@@ -77,7 +77,7 @@ Als u update 3 of hoger uitvoert, kunt u het gebruik van de primaire opslag capa
 
 U kunt verder klikken op elk van de volumes in de lijst en het bijbehorende gebruik bekijken.
 
-![Primair capaciteits gebruik voor alle lokaal vastgemaakte volumes](./media/storsimple-8000-monitor-device/device-primary-storage-usage-by-volume.png)
+![Primair capaciteits gebruik voor alle lokaal vastgemaakte volumes 2](./media/storsimple-8000-monitor-device/device-primary-storage-usage-by-volume.png)
 
 ### <a name="cloud-storage-usage"></a>Gebruik van Cloud opslag
 Deze grafieken tonen de hoeveelheid gebruikte Cloud opslag. Deze gegevens worden ontdubbeld en gecomprimeerd. Dit bedrag omvat Cloud momentopnamen die gegevens kunnen bevatten die niet worden weer gegeven op een primair volume en die worden bewaard voor verouderde of vereiste Bewaar doeleinden. U kunt de gegevens voor het gebruik van de primaire en de Cloud opslag vergelijken om een idee te krijgen van het verkleinings tempo, hoewel het getal niet exact is.

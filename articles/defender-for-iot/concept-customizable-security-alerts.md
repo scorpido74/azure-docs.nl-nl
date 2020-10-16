@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 03/04/2020
 ms.author: mlottner
 ms.openlocfilehash: 5a5b9182081e267f8e20cb0818202b9cb5ecd904
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936295"
 ---
 # <a name="defender-for-iot-customizable-security-alerts"></a>Aangepaste beveiligings waarschuwingen voor Defender voor IoT
@@ -30,7 +30,7 @@ De volgende lijst met Defender voor IoT-waarschuwingen kunt u definiëren op bas
 
 ## <a name="iot-hub-alerts-available-for-customization"></a>IoT Hub waarschuwingen beschikbaar voor aanpassing
 
-| Ernst | Naam waarschuwing | Gegevensbron | Description | Voorgestelde herstel|
+| Ernst | Naam waarschuwing | Gegevensbron | Beschrijving | Voorgestelde herstel|
 |---|---|---|---|---|
 | Beperkt      | Aangepaste waarschuwing: aantal berichten van de Cloud naar het apparaat in het AMQP-protocol valt buiten het toegestane bereik          | IoT Hub     | Het aantal Cloud-naar-apparaat-berichten (AMQP-Protocol) binnen een bepaald tijd venster ligt buiten het huidige geconfigureerde en toegestane bereik.||
 | Beperkt      | Aangepaste waarschuwing: aantal afgewezen Cloud-naar-apparaat-berichten in het AMQP-protocol valt buiten het toegestane bereik | IoT Hub     | Het aantal Cloud-naar-apparaat-berichten (AMQP-Protocol) dat door het apparaat is afgewezen, binnen een bepaald tijd venster valt buiten het huidige geconfigureerde en toegestane bereik.||
@@ -50,7 +50,7 @@ De volgende lijst met Defender voor IoT-waarschuwingen kunt u definiëren op bas
 
 ## <a name="agent-alerts-available-for-customization"></a>Agent waarschuwingen beschikbaar voor aanpassing
 
-| Ernst | Naam waarschuwing | Gegevensbron | Description | Voorgestelde herstel|
+| Ernst | Naam waarschuwing | Gegevensbron | Beschrijving | Voorgestelde herstel|
 |---|---|---|---|---|
 | Beperkt      | Aangepaste waarschuwing: aantal actieve verbindingen valt buiten het toegestane bereik  | Agent       | Het aantal actieve verbindingen binnen een bepaald tijd venster ligt buiten het huidige geconfigureerde en toegestane bereik.|  De logboeken van het apparaat onderzoeken. Ontdek waar de verbinding vandaan komt en bepaal of het goed is of kwaad aardig is. Als dat schadelijk is, verwijdert u mogelijke malware en begrijpt u de bron. Voeg, indien goed aardig, de bron toe aan de lijst met toegestane verbindingen.  |
 | Beperkt      | Aangepaste waarschuwing: uitgaande verbinding die is gemaakt met een IP-adres dat niet is toegestaan                             | Agent       | Er is een uitgaande verbinding gemaakt met een IP-adres buiten de lijst met toegestane IP-adressen. |De logboeken van het apparaat onderzoeken. Ontdek waar de verbinding vandaan komt en bepaal of het goed is of kwaad aardig is. Als dat schadelijk is, verwijdert u mogelijke malware en begrijpt u de bron. Voeg, indien goed aardig, de bron toe aan de lijst met toegestane IP-adressen.                        |

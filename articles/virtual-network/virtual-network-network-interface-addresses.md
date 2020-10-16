@@ -17,10 +17,10 @@ ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: allensu
 ms.openlocfilehash: 265ed0f4cb58a321bde78714f36123bf197d42f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84710997"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>IP-adressen voor Azure-netwerkinterfaces toevoegen, wijzigen en verwijderen
@@ -54,10 +54,10 @@ U kunt zo nodig zoveel [persoonlijke](#private) en [open bare](#public) [IPv4](#
 
    |Instelling|Vereist?|Details|
    |---|---|---|
-   |Name|Yes|Moet uniek zijn voor de netwerk interface|
-   |Type|Yes|Omdat u een IP-configuratie toevoegt aan een bestaande netwerk interface en elke netwerk interface moet een [primaire](#primary) IP-configuratie hebben, is de enige optie **secundair**.|
-   |Toewijzings methode voor privé-IP-adres|Yes|[**Dynamisch**](#dynamic): Azure wijst het volgende beschik bare adres toe voor het adres bereik van het subnet waarin de netwerk interface is geïmplementeerd. [**Statisch**](#static): u wijst een ongebruikt adres toe voor het adres bereik van het subnet waarin de netwerk interface is geïmplementeerd.|
-   |Openbaar IP-adres|No|**Uitgeschakeld:** Er is momenteel geen open bare IP-adres resource gekoppeld aan de IP-configuratie. **Ingeschakeld:** Selecteer een bestaand openbaar IP-adres voor IPv4 of maak een nieuwe. Lees het artikel [open bare IP-adressen](virtual-network-public-ip-address.md#create-a-public-ip-address) voor meer informatie over het maken van een openbaar IP-adres.|
+   |Name|Ja|Moet uniek zijn voor de netwerk interface|
+   |Type|Ja|Omdat u een IP-configuratie toevoegt aan een bestaande netwerk interface en elke netwerk interface moet een [primaire](#primary) IP-configuratie hebben, is de enige optie **secundair**.|
+   |Toewijzings methode voor privé-IP-adres|Ja|[**Dynamisch**](#dynamic): Azure wijst het volgende beschik bare adres toe voor het adres bereik van het subnet waarin de netwerk interface is geïmplementeerd. [**Statisch**](#static): u wijst een ongebruikt adres toe voor het adres bereik van het subnet waarin de netwerk interface is geïmplementeerd.|
+   |Openbaar IP-adres|Nee|**Uitgeschakeld:** Er is momenteel geen open bare IP-adres resource gekoppeld aan de IP-configuratie. **Ingeschakeld:** Selecteer een bestaand openbaar IP-adres voor IPv4 of maak een nieuwe. Lees het artikel [open bare IP-adressen](virtual-network-public-ip-address.md#create-a-public-ip-address) voor meer informatie over het maken van een openbaar IP-adres.|
 6. Voeg hand matig secundaire privé-IP-adressen toe aan het besturings systeem van de virtuele machine door de instructies in het artikel [meerdere IP-adressen toewijzen aan virtuele machines te](virtual-network-multiple-ip-addresses-portal.md#os-config) volt ooien. Zie [privé](#private) -IP-adressen voor speciale overwegingen voordat u IP-adressen hand matig toevoegt aan een besturings systeem van een virtuele machine. Voeg geen open bare IP-adressen toe aan het besturings systeem van de virtuele machine.
 
 **Opdrachten**
@@ -130,7 +130,7 @@ Naast een primaire IP-configuratie kan er aan een netwerk interface geen of meer
 
 U kunt de volgende typen IP-adressen toewijzen aan een [IP-configuratie](#ip-configurations):
 
-### <a name="private"></a>Privé
+### <a name="private"></a>Persoonlijk
 
 Met een particulier [IPv4](#ipv4) -of IPv6-adres kunnen virtuele machines communiceren met andere resources in een virtueel netwerk of andere verbonden netwerken. 
 
@@ -151,7 +151,7 @@ Door de vorige stappen te volgen, blijven het privé-IP-adres dat is toegewezen 
 
 Naast het inschakelen van een virtuele machine om te communiceren met andere resources binnen dezelfde of verbonden virtuele netwerken, kan een persoonlijk IP-adres ook een virtuele machine in staat stellen om uitgaande berichten te verzenden naar het internet. Uitgaande verbindingen zijn bron netwerk adres vertaald door Azure naar een onvoorspelbaar openbaar IP-adres. Lees het artikel [Azure uitgaande internet connectiviteit](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) voor meer informatie over uitgaande internet connectiviteit van Azure. U kunt geen inkomende communicatie met het privé-IP-adres van een virtuele machine via internet. Als voor uw uitgaande verbindingen een voorspelbaar openbaar IP-adres is vereist, koppelt u een open bare IP-adres resource aan een netwerk interface.
 
-### <a name="public"></a>Public
+### <a name="public"></a>Openbaar
 
 Open bare IP-adressen die zijn toegewezen via een open bare IP-adres resource, kunnen binnenkomende verbindingen met een virtuele machine via internet. Uitgaande verbindingen met internet maken gebruik van een voorspelbaar IP-adres. Zie informatie [over uitgaande verbindingen in azure](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) voor meer informatie. U kunt een openbaar IP-adres toewijzen aan een IP-configuratie, maar dit is niet vereist voor. Als u geen openbaar IP-adres toewijst aan een virtuele machine door een open bare IP-adres resource te koppelen, kan de virtuele machine nog steeds uitgaande berichten verzenden naar het internet. In dit geval is het particuliere IP-adres het bron netwerk adres dat door Azure is vertaald naar een onvoorspelbaar openbaar IP-adres. Zie [open bare IP-adres](virtual-network-public-ip-address.md)bronnen voor meer informatie over open bare IP-adressen.
 

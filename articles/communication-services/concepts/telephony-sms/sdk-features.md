@@ -6,19 +6,19 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2020
+ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 4077bbe0a98f6b7788af9b6c44f73abbc936c6aa
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d40637b05a5d398124ee52dbca49d55b3112ec95
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332235"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758401"
 ---
 # <a name="sms-client-library-overview"></a>Overzicht van de sms-clientbibliotheek
 
-[!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 Sms-clientbibliotheken van Azure Communication Services kunnen worden gebruikt om functionaliteit voor sms-berichten aan uw toepassingen toe te voegen.
 
@@ -37,7 +37,7 @@ De volgende lijst bevat de set functies die momenteel beschikbaar zijn in onze c
 | Telefoonnummer      | Gratis nummers                                                                     | ✔️   | ✔️    | ✔️    | ✔️      |
 | Regelgeving        | Afhandeling van uitschrijving                                                                      | ✔️   | ✔️    | ✔️    | ✔️      |
 | Bewaking        | Gebruik bewaken voor verzonden en ontvangen berichten                                          | ✔️   | ✔️    | ✔️    | ✔️      |
-| Bellen via PSTN      | PSTN-aanroepen toevoegen aan uw gratis nummer met SMS-functionaliteit (persoonlijke preview)                    | ✔️   | ✔️    | ✔️    | ✔️      |
+| Bellen via PSTN      | Mogelijkheden voor bellen via PSTN toevoegen aan uw gratis nummer met sms-functionaliteit                    | ✔️   | ✔️    | ✔️    | ✔️      |
 
 ## <a name="next-steps"></a>Volgende stappen
 

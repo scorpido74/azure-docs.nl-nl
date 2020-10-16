@@ -10,13 +10,13 @@ ms.workload: identity
 ms.date: 09/30/2020
 ms.author: rolyon
 ms.openlocfilehash: badf10da8af0ed3829deb2498b51b5d5c8ce6a93
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91604317"
 ---
-# <a name="steps-to-add-a-role-assignment"></a>Stappen voor het toevoegen van een roltoewijzing
+# <a name="steps-to-add-a-role-assignment"></a>Stappen om een roltoewijzing toe te voegen
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] In dit artikel worden de stappen op hoog niveau beschreven voor het toevoegen van een roltoewijzing met behulp van de [Azure Portal](role-assignments-portal.md), [Azure POWERSHELL](role-assignments-powershell.md), [Azure cli](role-assignments-cli.md)of de [rest API](role-assignments-rest.md).
 
@@ -58,7 +58,7 @@ Met de overige ingebouwde rollen kunnen specifieke Azure-resources worden beheer
 
 ## <a name="step-3-identify-the-needed-scope"></a>Stap 3: het benodigde bereik identificeren
 
-*Bereik* is de set resources waarop de toegang van toepassing is. In azure kunt u een bereik op vier niveaus opgeven: [beheer groep](../governance/management-groups/overview.md), abonnement, [resource groep](../azure-resource-manager/management/overview.md#resource-groups)en resource. Bereiken zijn gestructureerd in een bovenliggende/onderliggende relatie. Met elk hiërarchie niveau wordt het bereik specifiek gemaakt. U kunt rollen toewijzen aan elk van deze bereik niveaus. Het niveau dat u selecteert, bepaalt hoe breed de rol wordt toegepast. Lagere niveaus nemen rolmachtigingen over van hogere niveaus. 
+*Bereik* is de set resources waarop de toegang van toepassing is. In azure kunt u een bereik op vier niveaus opgeven: [beheer groep](../governance/management-groups/overview.md), abonnement, [resource groep](../azure-resource-manager/management/overview.md#resource-groups)en resource. Bereiken zijn gestructureerd in een bovenliggende/onderliggende relatie. Met elk hiërarchie niveau wordt het bereik specifiek gemaakt. U kunt rollen toewijzen aan elk van deze bereikniveaus. Het niveau dat u selecteert, bepaalt hoe breed de rol wordt toegepast. Lagere niveaus nemen rolmachtigingen over van hogere niveaus. 
 
 ![Bereik voor een roltoewijzing](./media/shared/rbac-scope.png)
 

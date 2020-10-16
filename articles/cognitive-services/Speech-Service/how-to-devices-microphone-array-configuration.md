@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 05/01/2020
 ms.author: wellsi
 ms.openlocfilehash: a2652bed6c8e7dec0a6fe8f9471793c3873646bf
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82781755"
 ---
-# <a name="how-to-configure-a-microphone-array"></a>Een microfoon matrix configureren
+# <a name="how-to-configure-a-microphone-array"></a>Een microfoonmatrix configureren
 
 In dit artikel leert u hoe u een [microfoon matrix](https://aka.ms/sdsdk-microphone)kunt configureren. Het bevat het instellen van de werk hoek en het selecteren van de microfoon die wordt gebruikt voor de speech-apparaten SDK.
 
@@ -36,20 +36,20 @@ De SDK voor spraak apparaten van v 1.11.0 ondersteunt ook de configuratie van ee
 
 
 ## <a name="windows"></a>Windows
-In Windows wordt de geometrie gegevens van de microfoon matrix automatisch opgehaald uit het audio stuur programma. Dit betekent dat de `DeviceGeometry`eigenschappen `SelectedGeometry`, en `MicArrayGeometryConfigFile` optioneel zijn. We gebruiken het [JSON file](https://aka.ms/sdsdk-micarray-json) door `MicArrayGeometryConfigFile` gegeven JSON-bestand alleen voor het ophalen van het beamforming-bereik.
+In Windows wordt de geometrie gegevens van de microfoon matrix automatisch opgehaald uit het audio stuur programma. Dit betekent dat de eigenschappen `DeviceGeometry` ,  `SelectedGeometry` en `MicArrayGeometryConfigFile` optioneel zijn. We gebruiken het door gegeven [JSON-bestand](https://aka.ms/sdsdk-micarray-json) `MicArrayGeometryConfigFile` alleen voor het ophalen van het beamforming-bereik.
 
-Als er een microfoon matrix wordt opgegeven `AudioConfig::FromMicrophoneInput`met, gebruiken we de opgegeven microfoon. Als een microfoon niet is opgegeven of `AudioConfig::FromDefaultMicrophoneInput` wordt aangeroepen, gebruiken we de standaard microfoon, die is opgegeven in geluids instellingen in Windows.
+Als er een microfoon matrix wordt opgegeven met `AudioConfig::FromMicrophoneInput` , gebruiken we de opgegeven microfoon. Als een microfoon niet is opgegeven of `AudioConfig::FromDefaultMicrophoneInput` wordt aangeroepen, gebruiken we de standaard microfoon, die is opgegeven in geluids instellingen in Windows.
 De micro soft audio-stack in de speech-apparaten SDK ondersteunt alleen de sampling voor voorbeeld frequenties die integraal veelvouden van 16 KHz zijn.
 
 ## <a name="linux"></a>Linux
-In Linux moet de informatie over de geometrie van de microfoon worden verstrekt. Het gebruik van `DeviceGeometry` en `SelectedGeometry` blijft ondersteund. Het kan ook worden verschaft via het JSON-bestand met `MicArrayGeometryConfigFile` behulp van de eigenschap. Net als bij Windows kan het beamforming-bereik worden verstrekt door het JSON-bestand.
+In Linux moet de informatie over de geometrie van de microfoon worden verstrekt. Het gebruik van `DeviceGeometry` en `SelectedGeometry` blijft ondersteund. Het kan ook worden verschaft via het JSON-bestand met behulp van de `MicArrayGeometryConfigFile` eigenschap. Net als bij Windows kan het beamforming-bereik worden verstrekt door het JSON-bestand.
 
-Als er een microfoon matrix wordt opgegeven `AudioConfig::FromMicrophoneInput`met, gebruiken we de opgegeven microfoon. Als een microfoon niet is opgegeven of `AudioConfig::FromDefaultMicrophoneInput` wordt aangeroepen, neemt u een record op van het alsa-apparaat met de naam *standaard*. Standaard verwijst *standaard* altijd naar kaart 0 apparaat 0, maar gebruikers kunnen dit wijzigen in het `asound.conf` bestand. 
+Als er een microfoon matrix wordt opgegeven met `AudioConfig::FromMicrophoneInput` , gebruiken we de opgegeven microfoon. Als een microfoon niet is opgegeven of `AudioConfig::FromDefaultMicrophoneInput` wordt aangeroepen, neemt u een record op van het alsa-apparaat met de naam *standaard*. Standaard verwijst *standaard* altijd naar kaart 0 apparaat 0, maar gebruikers kunnen dit wijzigen in het `asound.conf` bestand. 
 
 De micro soft audio-stack in de speech-apparaten SDK ondersteunt alleen downsamplen voor voorbeeld frequenties die integraal veelvouden van 16 KHz zijn. Daarnaast worden de volgende indelingen ondersteund: 32-bits IEEE little endian float, 32-bits little endian ondertekende int, 24-bits little endian ondertekende int, 16-bits little endian ondertekende int en 8-bits ondertekende int.
 
 ## <a name="android"></a>Android
-Momenteel wordt alleen [roobo v1](speech-devices-sdk-android-quickstart.md) ondersteund door de speech-apparaten SDK. Gedrag is hetzelfde als eerdere versies, met uitzonde ring van de eigenschap now `MicArrayGeometryConfigFile` kan worden gebruikt om een JSON-bestand met beamforming-bereik op te geven.
+Momenteel wordt alleen [roobo v1](speech-devices-sdk-android-quickstart.md) ondersteund door de speech-apparaten SDK. Gedrag is hetzelfde als eerdere versies, met uitzonde ring van de `MicArrayGeometryConfigFile` eigenschap now kan worden gebruikt om een JSON-bestand met beamforming-bereik op te geven.
 
 ## <a name="microphone-array-configuration-json"></a>Configuratie van de microfoon matrix JSON
 

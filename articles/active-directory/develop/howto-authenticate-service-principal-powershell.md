@@ -14,10 +14,10 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.openlocfilehash: e034149372ba061ec958e0c1e22187d33009080c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91265830"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Procedure: Azure PowerShell gebruiken om een service-principal te maken met een certificaat
@@ -52,7 +52,7 @@ U kunt het bereik instellen op het niveau van het abonnement, de resource groep 
 In het volgende voorbeeld wordt een eenvoudig scenario behandeld. Maakt gebruik van [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) voor het maken van een service-principal met een zelfondertekend certificaat en maakt gebruik van [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) om de rol van [lezer](../../role-based-access-control/built-in-roles.md#reader) toe te wijzen aan de Service-Principal. De roltoewijzing is afgestemd op uw huidige, geselecteerde Azure-abonnement. Als u een ander abonnement wilt selecteren, gebruikt u [set-AzContext](/powershell/module/Az.Accounts/Set-AzContext).
 
 > [!NOTE]
-> De cmdlet New-SelfSignedCertificate en de PKI-module worden momenteel niet ondersteund in Power shell core. 
+> De New-SelfSignedCertificate-cmdlet en de PKI-module worden momenteel niet ondersteund in Power shell core. 
 
 ```powershell
 $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" `

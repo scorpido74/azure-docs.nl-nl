@@ -16,10 +16,10 @@ search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c16882f35c9ca79644cd2b51ce4cd88bba516ed2
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89652070"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Wachtwoord-hashsynchronisatie implementeren met Azure AD Connect-synchronisatie
@@ -113,7 +113,7 @@ Als deze functie is ingeschakeld, gaat Azure AD niet naar elke gesynchroniseerde
 
 Het is raadzaam om EnforceCloudPasswordPolicyForPasswordSyncedUsers in te scha kelen voordat u wachtwoord-hash-synchronisatie inschakelt, zodat de eerste synchronisatie van wacht woord-hashes de waarde niet toevoegt `DisablePasswordExpiration` aan het kenmerk PasswordPolicies voor de gebruikers.
 
-Het standaard wachtwoord beleid voor Azure AD vereist dat gebruikers elke 90 dagen hun wacht woord wijzigen. Als uw beleid in AD ook 90 dagen is, moeten de twee beleids regels overeenkomen. Als het AD-beleid echter niet 90 dagen is, kunt u het Azure AD-wachtwoord beleid bijwerken zodat dit overeenkomt met behulp van de set-MsolPasswordPolicy Power shell-opdracht.
+Het standaard wachtwoord beleid voor Azure AD vereist dat gebruikers elke 90 dagen hun wacht woord wijzigen. Als uw beleid in AD ook 90 dagen is, moeten de twee beleids regels overeenkomen. Als het AD-beleid echter niet 90 dagen is, kunt u het Azure AD-wachtwoord beleid bijwerken zodat dit overeenkomt met de Set-MsolPasswordPolicy Power shell-opdracht.
 
 Azure AD biedt ondersteuning voor een afzonderlijk beleid voor wachtwoord verloop per geregistreerd domein.
 
@@ -122,7 +122,7 @@ Voor behoud: als er gesynchroniseerde accounts zijn die niet-verlopende wacht wo
 `Set-AzureADUser -ObjectID <User Object ID> -PasswordPolicies "DisablePasswordExpiration"`
 
 > [!NOTE]
-> De Power shell-opdracht set-MsolPasswordPolicy werkt niet op federatieve domeinen. 
+> De Set-MsolPasswordPolicy Power shell-opdracht werkt niet op federatieve domeinen. 
 
 #### <a name="synchronizing-temporary-passwords-and-force-password-change-on-next-logon"></a>Tijdelijke wacht woorden synchroniseren en wacht woord wijzigen bij volgende aanmelding afdwingen
 
@@ -214,7 +214,7 @@ Als uw server is vergrendeld volgens de Federal Information Processing Standard 
 2. Open miiserver.exe.config.
 3. Ga naar het knoop punt configuratie/runtime aan het einde van het bestand.
 4. Voeg het volgende knoop punt toe: `<enforceFIPSPolicy enabled="false"/>`
-5. Sla de wijzigingen op.
+5. Sla uw wijzigingen op.
 
 Ter referentie is dit fragment er als volgt uit te zien:
 

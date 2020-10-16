@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: e2c071ff9cf020f99e990e670cfb29cca3c1ebbc
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91838650"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-public-preview"></a>Azure-cache voor redis met persoonlijke Azure-koppeling (open bare preview)
@@ -82,7 +82,7 @@ Volg deze stappen om een cache-exemplaar te maken.
    | **Locatie** | Open de vervolgkeuzelijst en selecteer een locatie. | Selecteer een [regio](https://azure.microsoft.com/regions/) in de buurt van andere services die gaan gebruikmaken van de cache. |
    | **Prijscategorie** | Open de vervolgkeuzelijst en selecteer een [Prijscategorie](https://azure.microsoft.com/pricing/details/cache/). |  De prijscategorie bepaalt de grootte, prestaties en functies die beschikbaar zijn voor de cache. Zie het [Azure Cache voor Redis-overzicht](cache-overview.md) voor meer informatie. |
 
-1. Selecteer het tabblad **netwerken** of Klik onder aan de pagina op de knop **netwerk** .
+1. Selecteer het tabblad **Netwerken** of klik op de knop **Netwerken** onderaan de pagina.
 
 1. Selecteer op het tabblad **netwerken** het **persoonlijke eind punt** voor de verbindings methode.
 
@@ -92,22 +92,22 @@ Volg deze stappen om een cache-exemplaar te maken.
 
 1. Configureer op de pagina **een persoonlijk eind punt maken** de instellingen voor uw persoonlijke eind punt met het virtuele netwerk en het subnet dat u hebt gemaakt in de laatste sectie en selecteer **OK**. 
 
-1. Selecteer het tabblad **volgende: Geavanceerd** of klik op de knop **volgende: Geavanceerd** aan de onderkant van de pagina.
+1. Selecteer het tabblad **Volgende: Geavanceerd** of klik op de knop **Volgende: Geavanceerd** onderaan de pagina.
 
-1. Selecteer op het tabblad **Geavanceerd** voor een basis-of Standard-cache-exemplaar de schakel optie inschakelen als u een niet-TLS-poort wilt inschakelen.
+1. Selecteer in het tabblad **Geavanceerd** voor een basic of standard cache-exemplaar de schakeloptie inschakelen als u een niet-TLS-poort wilt inschakelen.
 
-1. Configureer op het tabblad **Geavanceerd** voor het Premium-cache-exemplaar de instellingen voor niet-TLS-poort, clustering en gegevens persistentie.
+1. Configureer in het tabblad **Geavanceerd** voor premium cache-exemplaar de instellingen voor een niet-TLS-poort, clustering en gegevenspersistentie.
 
 
-1. Selecteer het tabblad **volgende: Labels** of klik op de knop **volgende: Labels** onder aan de pagina.
+1. Selecteer het tabblad **Volgende: Tags** of klik op de knop **Volgende: Tags** onderaan de pagina.
 
-1. Geef desgewenst de naam en waarde op op het tabblad **Tags** als u de resource wilt categoriseren. 
+1. Voer desgewenst in het tabblad **Tags** de naam en waarde in om de resource te categoriseren. 
 
-1. Selecteer **controleren + maken**. U gaat naar het tabblad controleren + maken, waar Azure uw configuratie valideert.
+1. Selecteer  **Beoordelen + maken**. Het tabblad Beoordelen + maken wordt weergegeven, waar uw configuratie wordt gevalideerd in Azure.
 
-1. Wanneer het bericht groene validatie is voltooid wordt weer gegeven, selecteert u **maken**.
+1. Selecteer **Maken** nadat het groene bericht Validatie geslaagd verschijnt.
 
-Het duurt even voordat de cache is gemaakt. U kunt de voortgang controleren op de **overzichts**pagina van de Azure-cache voor redis   . Wanneer de **status**   wordt weer gegeven als **actief**, is de cache klaar voor gebruik. 
+Het duurt even voor de cache is gemaakt. U kunt de voortgang bekijken op de  **overzichtspagina**  van Azure Cache voor Redis. Wanneer  **Status** wordt weergegeven als  **Wordt uitgevoerd**, is de cache klaar voor gebruik. 
     
 
 ## <a name="create-a-private-endpoint-with-an-existing-azure-cache-for-redis-instance"></a>Een persoonlijk eind punt maken met een bestaand Azure-cache geheugen voor redis-exemplaar 
@@ -181,9 +181,9 @@ Volg deze stappen om een persoonlijk eind punt te maken.
 
 10. Klik op de knop **volgende: Labels** onder aan de pagina.
 
-11. Geef desgewenst de naam en waarde op op het tabblad **Tags** als u de resource wilt categoriseren.
+11. Voer desgewenst in het tabblad **Tags** de naam en waarde in om de resource te categoriseren.
 
-12. Selecteer **controleren + maken**. U gaat naar het tabblad **controleren + maken**,   waar Azure uw configuratie valideert.
+12. Selecteer  **Beoordelen + maken**. U gaat naar het tabblad **controleren + maken**,   waar Azure uw configuratie valideert.
 
 13. Wanneer het bericht groene **validatie is voltooid** wordt weer gegeven, selecteert u **maken**.
 

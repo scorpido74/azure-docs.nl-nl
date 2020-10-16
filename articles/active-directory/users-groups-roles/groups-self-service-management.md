@@ -16,10 +16,10 @@ ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9a32874cebcd8335967eaf8a07a56346e8ad6460
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88213630"
 ---
 # <a name="set-up-self-service-group-management-in-azure-active-directory"></a>Self-service groeps beheer instellen in Azure Active Directory 
@@ -33,8 +33,8 @@ Wanneer beveiligings groepen worden gemaakt in de Azure Portal of Azure AD Power
 Groepen die zijn gemaakt in | Standaard gedrag van beveiligings groep | Standaard gedrag van Microsoft 365-groep
 ------------------ | ------------------------------- | ---------------------------------
 [Azure AD PowerShell](groups-settings-cmdlets.md) | Alleen eigen aars kunnen leden toevoegen<br>Zichtbaar, maar niet beschikbaar voor deelname in het toegangs venster | Openen om lid te worden van alle gebruikers
-[Azure Portal](https://portal.azure.com) | Alleen eigen aars kunnen leden toevoegen<br>Zichtbaar, maar niet beschikbaar voor deelname in het toegangs venster<br>De eigenaar wordt niet automatisch toegewezen bij het maken van een groep | Openen om lid te worden van alle gebruikers
-[Toegangsvenster](https://account.activedirectory.windowsazure.com/r#/joinGroups) | Openen om lid te worden van alle gebruikers<br>Lidmaatschaps opties kunnen worden gewijzigd wanneer de groep wordt gemaakt | Openen om lid te worden van alle gebruikers<br>Lidmaatschaps opties kunnen worden gewijzigd wanneer de groep wordt gemaakt
+[Azure-portal](https://portal.azure.com) | Alleen eigen aars kunnen leden toevoegen<br>Zichtbaar, maar niet beschikbaar voor deelname in het toegangs venster<br>De eigenaar wordt niet automatisch toegewezen bij het maken van een groep | Openen om lid te worden van alle gebruikers
+[Toegangs venster](https://account.activedirectory.windowsazure.com/r#/joinGroups) | Openen om lid te worden van alle gebruikers<br>Lidmaatschaps opties kunnen worden gewijzigd wanneer de groep wordt gemaakt | Openen om lid te worden van alle gebruikers<br>Lidmaatschaps opties kunnen worden gewijzigd wanneer de groep wordt gemaakt
 
 ## <a name="self-service-group-management-scenarios"></a>Scenario's voor Self-service voor groeps beheer
 
@@ -66,5 +66,5 @@ Deze artikelen bevatten aanvullende informatie over Azure Active Directory.
 * [Toegang tot resources beheren met Azure Active Directory-groepen](../fundamentals/active-directory-manage-groups.md)
 * [Azure Active Directory cmdlets voor het configureren van groepsinstellingen](groups-settings-cmdlets.md)
 * [Application Management in Azure Active Directory](../manage-apps/what-is-application-management.md) (Toepassingsbeheer in Azure Active Directory)
-* [What is Azure Active Directory? (Engelstalig)](../fundamentals/active-directory-whatis.md)
+* [Wat is Azure Active Directory?](../fundamentals/active-directory-whatis.md)
 * [Uw on-premises identiteiten integreren met Azure Active Directory](../hybrid/whatis-hybrid-identity.md)

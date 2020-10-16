@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/02/2018
 ms.author: jeedes
-ms.openlocfilehash: 24350c63df04e55107ed32c2d61d1026aa27bdb9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6c75103f74ee648c46b805df9495bc668ef4f5bd
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547627"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761563"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-canvas"></a>Zelfstudie: Azure Active Directory-integratie met Canvas
 
@@ -223,11 +223,11 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Canvas, moeten ze w
 
 3. Klik op **Users**.
 
-   ![Gebruikers](./media/canvas-lms-tutorial/ic775995.png "Gebruikers")
+   ![Schermopname met het menu Canvas met Users geselecteerd.](./media/canvas-lms-tutorial/ic775995.png "Gebruikers")
 
 4. Klik op **Add New User**.
 
-   ![Gebruikers](./media/canvas-lms-tutorial/ic775996.png "Gebruikers")
+   ![Schermopname met de knop Add New User.](./media/canvas-lms-tutorial/ic775996.png "Gebruikers")
 
 5. Voer de volgende stappen uit in het dialoogvenster Een nieuwe gebruiker toevoegen:
 

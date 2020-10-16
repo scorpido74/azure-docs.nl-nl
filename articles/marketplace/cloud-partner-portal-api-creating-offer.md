@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/29/2020
 ms.openlocfilehash: dba47073a6676b17c091af048f583ca3e7712999
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87420223"
 ---
 # <a name="create-or-modify-an-offer"></a>Een aanbieding toevoegen of veranderen
@@ -27,12 +27,12 @@ Met deze oproep wordt een specifieke aanbieding binnen de naam ruimte van de uit
 
 |  **Naam**         |  **Beschrijving**                      |  **Gegevenstype**  |
 |  --------         |  ----------------                     |  -------------  |
-| publisherId       |  Uitgevers-id, bijvoorbeeld`contoso` |   Tekenreeks |
+| publisherId       |  Uitgevers-id, bijvoorbeeld `contoso` |   Tekenreeks |
 | offerId           |  Aanbiedings-id                     |   Tekenreeks        |
 | api-versie       |  Nieuwste versie van de API            |   Date           |
 |  |  |  |
 
-## <a name="header"></a>Header
+## <a name="header"></a>Koptekst
 
 |  **Naam**        |  **Waarde**               |
 |  ---------       |  ----------              | 
@@ -138,7 +138,7 @@ In het volgende voor beeld wordt een aanbieding met offerID van gemaakt `contoso
   }
 ```
 
-### <a name="response"></a>Reactie
+### <a name="response"></a>Antwoord
 
 ``` json
  {
@@ -289,12 +289,12 @@ Deze categorieën en de bijbehorende sleutels zijn van toepassing op Azure-apps,
 | --- | --- | --- | --- |
 | ***Analyse*** | ***analyse*** | ***Analytics-Azure-apps*** | ***analyse-amp*** |
 | Gegevens inzichten | gegevens-inzichten | gegevens-inzichten | gegevens-inzichten |
-| Gegevensanalyse | gegevens analyse | gegevens analyse | gegevens analyse |
+| Data Analytics | gegevens analyse | gegevens analyse | gegevens analyse |
 | Big data | Big Data | bigData | Big Data |
 | Predictive analytics | voorspellende analyse | voorspellende analyse | voorspellende analyse |
 | Analyse in realtime/streamen | Realtime-Streaming-analyses | Realtime-Streaming-analyses | Realtime-Streaming-analyses |
-| Overig | andere | overige-analyses | andere |
-| ***AI + Machine Learning*** | ***ArtificialIntelligence*** | ***AI-plus-machine-learning*** | ***AI-plus-machine-learning*** |
+| Anders | other | overige-analyses | other |
+| ***AI en Machine Learning*** | ***ArtificialIntelligence*** | ***AI-plus-machine-learning*** | ***AI-plus-machine-learning*** |
 | Bot-Services | bot-Services | bot-Services | bot-Services |
 | Cognitive Services | cognitieve Services | cognitieve Services | cognitieve Services |
 | ML-service | ml-service | ml-service | ml-service |
@@ -304,90 +304,90 @@ Deze categorieën en de bijbehorende sleutels zijn van toepassing op Azure-apps,
 | Gegevensvoorbereiding | gegevens voorbereiding | gegevens voorbereiding | gegevens voorbereiding |
 | Kennis analyse | kennis-analyse | kennis-analyse | kennis-analyse |
 | ML-bewerkingen | ml-bewerkingen | ml-bewerkingen | ml-bewerkingen |
-| Overig | overige-AI-plus-machine-learning | andere | andere |
+| Anders | overige-AI-plus-machine-learning | other | other |
 | ***Blockchain*** | ***Block Chain*** | ***Block Chain*** | ***Block Chain*** |
 | App-Accelerators | app-Accelerators | app-Accelerators | app-Accelerators |
 | Groot boek met één knoop punt | Eén knoop punt-groot boek | Eén knoop punt-groot boek | Eén knoop punt-groot boek |
 | Meerdere knoop punten in het groot boek | meerdere knoop punten-groot boek | meerdere knoop punten-groot boek | meerdere knoop punten-groot boek |
 | Hulpprogramma's | tools | tools | tools |
-| Overig | andere | andere | andere |
+| Anders | other | other | other |
 | ***Compute*** | ***compute-SaaS*** | ***compute-Azure-apps*** | ***bepalen*** |
 | Toepassings infrastructuur | appInfra | appInfrastructure | toepassings infrastructuur |
 | Besturingssystemen | clientOS | clientOS | besturings systemen |
 | Cache | cache | cache | cache |
-| Overig | andere compute | andere compute | andere |
+| Anders | andere compute | andere compute | other |
 | ***Containers*** | ***containers*** | ***containers*** | ***containers*** |
 | Container-apps | container-apps | container-apps | container-apps |
 | Container installatie kopieën | container-installatie kopieën | container-installatie kopieën | container-installatie kopieën |
 | Aan de slag met containers | Get-Started-with-containers | Get-Started-with-containers | Get-Started-with-containers |
-| Overig | andere | andere | andere |
+| Anders | other | other | other |
 | ***Databases*** | ***data bases-SaaS*** | ***enddatabase*** | ***vinden*** |
 | NoSQL-data bases | nosql-data bases | nosql-data bases | nosql-data bases |
 | Relationele databases | relationele data bases | relationele data bases | relationele data bases |
 | Groot boek-Block chain data bases | groot boek-Block chain-data bases | groot boek-Block chain-data bases | groot boek-Block chain-data bases |
 | Data meren | Data-meren | Data-meren | Data-meren |
 | Data Warehouse | Data Warehouse | Data Warehouse | Data Warehouse |
-| Overig | andere-data bases | andere-data bases | andere |
+| Anders | andere-data bases | andere-data bases | other |
 | ***Hulpprogramma's voor ontwikkelaars*** | ***Ontwikkel aars-hulp middelen-SaaS*** | ***Ontwikkel aars-hulpprogram ma's-Azure-apps*** | ***Ontwikkel aars-hulpprogram ma's*** |
 | Hulpprogramma's | hulpprogram ma's-hulpprogram ma's voor ontwikkel aars | hulpprogram ma's-hulpprogram ma's voor ontwikkel aars | hulpprogram ma's-hulpprogram ma's voor ontwikkel aars |
 | Scripts | scriptmap | scriptmap | scriptmap |
 | Ontwikkelaars service | devService | devService | Developer-Service |
-| Overig | overige-ontwikkel hulpprogramma's | overige-ontwikkel hulpprogramma's | andere |
+| Anders | overige-ontwikkel hulpprogramma's | overige-ontwikkel hulpprogramma's | other |
 | ***DevOps*** | ***devops*** | ***devops*** | ***devops*** |
-| Overig | andere | andere | andere |
+| Anders | other | other | other |
 | ***Identiteit*** | ***identity*** | ***identity*** | ***identity*** |
 | Toegangsbeheer | Toegangs beheer | Toegangs beheer | Toegangs beheer |
-| Overig | andere | andere | andere |
+| Anders | other | other | other |
 | ***Integratie*** | ***opneming*** | ***opneming*** | ***opneming*** |
 | Berichten | mede | mede | mede |
-| Overig | andere | andere | andere |
+| Anders | other | other | other |
 | ***Internet of Things*** | ***IoT*** | ***Internet-der-dingen-Azure-apps*** | ***Internet-der-dingen*** |
 | IoT-kern Services | N.v.t. | IOT-Core-Services | IOT-Core-Services |
 | IoT Edge modules | N.v.t. | IOT-Edge-modules | IOT-Edge-modules |
 | IoT-oplossingen | IOT-oplossingen | IOT-oplossingen | IOT-oplossingen |
 | Visualisatie van gegevens analyse & | gegevens analyse-en-visualisatie | gegevens analyse-en-visualisatie | gegevens analyse-en-visualisatie |
 | IoT-connectiviteit | IOT-connectiviteit | IOT-connectiviteit | IOT-connectiviteit |
-| Overig | overige-Internet-van-dingen | overige-Internet-van-dingen | andere |
+| Anders | overige-Internet-van-dingen | overige-Internet-van-dingen | other |
 | ***&-beheer Hulpprogramma's*** | ***ITandAdministration*** | ***IT-en-management-tools-Azure-apps*** | ***IT-en-beheer-hulpprogram ma's*** |
 | Beheeroplossingen | beheer-oplossingen | beheer-oplossingen | beheer-oplossingen |
 | Zakelijke toepassingen | businessApplication | businessApplication | zakelijke toepassingen |
-| Overig | andere hulpprogram ma's voor IT-beheer | andere hulpprogram ma's voor IT-beheer | andere |
+| Anders | andere hulpprogram ma's voor IT-beheer | andere hulpprogram ma's voor IT-beheer | other |
 | ***& diagnostische gegevens controleren*** | ***bewaking en diagnostische gegevens*** | ***bewaking en diagnostische gegevens*** | ***bewaking en diagnostische gegevens*** |
-| Overig | andere | andere | andere |
+| Anders | other | other | other |
 | ***Media*** | ***tussenliggend*** | ***tussenliggend*** | ***tussenliggend*** |
 | Media Services | media-services | media-services | media-services |
-| Content Protection | beveiliging van inhoud | beveiliging van inhoud | beveiliging van inhoud |
+| Inhoudsbeveiliging | beveiliging van inhoud | beveiliging van inhoud | beveiliging van inhoud |
 | Live & on-demand streaming | Live-and-on-demand-streaming | Live-and-on-demand-streaming | Live-and-on-demand-streaming |
-| Overig | andere | andere | andere |
+| Anders | other | other | other |
 | ***Migratie*** | ***virtuelemachinemigratie*** | ***virtuelemachinemigratie*** | ***virtuelemachinemigratie*** |
 | Gegevensmigratie | gegevens migratie | gegevens migratie | gegevens migratie |
-| Overig | andere | andere | andere |
+| Anders | other | other | other |
 | ***Mixed Reality*** | ***Mixed-Reality*** | ***Mixed-Reality*** | ***Mixed-Reality*** |
-| Overig | andere | andere | andere |
+| Anders | other | other | other |
 | ***Netwerken*** | ***inbel*** | ***inbel*** | ***inbel*** |
 | Toestel beheerders | apparaat-managers | apparaat-managers | apparaat-managers |
 | Connectiviteit | connectiviteit | connectiviteit | connectiviteit |
 | Firewalls | brand | brand | brand |
 | Load balancers | load balancers | load balancers | load balancers |
-| Overig | andere | andere | andere |
+| Anders | other | other | other |
 | ***Beveiliging*** | ***beveiligingsprincipal*** | ***beveiligingsprincipal*** | ***beveiligingsprincipal*** |
 | Toegangs beheer voor identiteits & | identiteits-en toegangs beheer | identiteits-en toegangs beheer | identiteits-en toegangs beheer |
 | Bedreigingsbeveiliging | bedreiging beveiliging | bedreiging beveiliging | bedreiging beveiliging |
 | Information Protection | gegevens beveiliging | gegevens beveiliging | gegevens beveiliging |
-| Overig | andere | andere | andere |
+| Anders | other | other | other |
 | ***Storage*** | ***opslag-SaaS*** | ***opslag-Azure-apps*** | ***opslagpad*** |
 | Back-up & herstellen | Back-up | Back-up | back-up en herstel |
 | Hybride opslag voor ondernemingen | Enter prise-Hybrid-Storage | Enter prise-Hybrid-Storage | Enter prise-Hybrid-Storage |
 | Bestanden delen | bestanden delen | bestanden delen | bestanden delen |
 | Beheer van gegevens levenscyclus | gegevens levenscyclus beheer | gegevens levenscyclus beheer | gegevens levenscyclus beheer |
-| Overig | andere opslag | andere opslag | andere |
+| Anders | andere opslag | andere opslag | other |
 | ***Web*** | ***instellingen*** | ***instellingen*** | ***instellingen*** |
 | Blogs & CMSs | blogs-en-CMSS | blogs-en-CMSS | blogs-en-CMSS |
 | Starter Web Apps | Starter-web-apps | Starter-web-apps | Starter-web-apps |
 | Commerce | Commerce | Commerce | Commerce |
 | Web Apps Frameworks | Web-apps-Frameworks | Web-apps-Frameworks | Web-apps-Frameworks |
 | Web Apps | Web-apps | Web-apps | Web-apps |
-| Overig | andere | andere | andere |
+| Anders | other | other | other |
 ||||
 
 ### <a name="microsoft-appsource-categories"></a>Microsoft AppSource Categorieën
@@ -399,44 +399,44 @@ Deze categorieën en de bijbehorende sleutels zijn van toepassing op SaaS-, Powe
 | ***Analyse*** | ***analyse*** | ***Analyse*** | ***Analyse*** |
 | Geavanceerde analyse | Geavanceerd-analyse | Geavanceerd-analyse | Geavanceerd-analyse |
 | Visualisatie & rapportage | visualisatie-rapportage | visualisatie-rapportage | visualisatie-rapportage |
-| Overig | andere | overige-analyses | overige-analyses |
-| ***AI + Machine Learning*** | ***ArtificialIntelligence*** | ***AI-plus-machine learning-Dynamics*** | ***AI-plus-machine learning-appsource*** |
+| Anders | other | overige-analyses | overige-analyses |
+| ***AI en Machine Learning*** | ***ArtificialIntelligence*** | ***AI-plus-machine learning-Dynamics*** | ***AI-plus-machine learning-appsource*** |
 | AI voor bedrijven | AI-for-Business | AI-for-Business | AI-for-Business |
 | Bot-apps | bot-apps | bot-apps | bot-apps |
-| Overig | overige-AI-plus-machine-learning | overige-AI-plus-machine-learning | overige-AI-plus-machine-learning |
+| Anders | overige-AI-plus-machine-learning | overige-AI-plus-machine-learning | overige-AI-plus-machine-learning |
 | ***Samenwerking*** | ***Samenwerking*** | ***Samenwerking*** | ***werking*** |
 | Contact opnemen met & personen | contact persoon-personen | contact persoon-personen | contact persoon-en-personen |
 | Beheer van vergaderingen | vergadering-beheer | vergadering-beheer | vergadering-beheer |
 | Beheer van site ontwerp & | site-ontwerp-beheer | site-ontwerp-beheer | site-ontwerp-en-beheer |
 | Taak & project beheer | taak-Project-beheer | taak-Project-beheer | taak-en project beheer |
 | Video vergaderingen met spraak & | spraak-video vergaderingen | spraak-video vergaderingen | spraak-en video vergaderingen |
-| Overig | overige samen werking | overige samen werking | andere |
+| Anders | overige samen werking | overige samen werking | other |
 | ***Naleving & juridisch*** | ***acht*** | ***acht*** | ***naleving-en-juridisch*** |
 | Controle van belasting & | belasting controle | belasting controle | belasting en controle |
 | Juridisch | Juridisch | Juridisch | rechtmatig |
 | Gegevens, het governance & privacy | Data-Governance-privacy | Data-Governance-privacy | Data-Governance-en-privacy |
 | Gezondheids & veiligheid | gezondheids veiligheid | gezondheids veiligheid | status en veiligheid |
-| Overig | overige-naleving-juridisch | overige-naleving-juridisch | andere |
+| Anders | overige-naleving-juridisch | overige-naleving-juridisch | other |
 | ***Customer Service*** | ***CustomerService*** | ***CustomerService*** | ***klant-service*** |
 | Contact centrum | contact persoon-centrum | contact persoon-centrum | contact persoon-centrum |
 | Gezicht to face-service | face-to-face-service | face-to-face-service | face-to-face-service |
 | Back-up van Office & werknemers service | Back-Office-werk nemer-service | Back-Office-werk nemer-service | Back-Office-and-employee-service |
 | Case beheer kennis & | kennis-Case-beheer | kennis-Case-beheer | kennis-en case beheer |
 | Omnichannel-betrokkenheid van sociale media & | sociale media-omnichannel-engagement | sociale media-omnichannel-engagement | sociale media-en-omnichannel-betrokkenheid |
-| Overig | overige-klanten service | overige-klanten service | andere |
+| Anders | overige-klanten service | overige-klanten service | other |
 | ***Financieel*** | ***Financieel*** | ***Financieel*** | ***projectfinancierings*** |
 | Boekhouding | boekhouder | boekhouder | boekhouder |
 | Asset-management | Asset-Management | Asset-Management | Asset-Management |
 | Analyse, consolidatie & rapportage | Analytics-consolidatie-rapportage | Analytics-consolidatie-rapportage | analyse-consolidatie en rapportage |
 | Tegoed & verzamelingen | Credit verzamelingen | Credit verzamelingen | tegoeden en verzamelingen |
 | Nalevings & risico beheer | naleving-risico beheer | naleving-risico beheer | naleving en risico beheer |
-| Overig | overige Financiën | overige Financiën | andere |
+| Anders | overige Financiën | overige Financiën | other |
 | ***Human Resources*** | ***Human*** | ***Human*** | ***Human resources*** |
 | Verwerving van talen | talen aan de verwerving | talen aan de verwerving | talen aan de verwerving |
 | Talen beheer | talen beheer | talen beheer | talen beheer |
 | HR-bewerkingen | HR-bewerkingen | HR-bewerkingen | HR-bewerkingen |
 | Personeel planning & Analytics | personeel-planning-Analytics | personeel-planning-Analytics | personeel-planning en analyse |
-| Overig | overige-human resources | overige-human resources | andere |
+| Anders | overige-human resources | overige-human resources | other |
 | ***Internet of Things*** | ***IoT*** | ***Internet-van-dingen-Dynamics*** | ***Internet-der-dingen-appsource*** |
 | & bewerkingen voor beheer van bedrijfs middelen | Asset-Management-Operations | Asset-Management-Operations | Asset-Management-and-Operations |
 | Verbonden producten | verbonden-producten | verbonden-producten | verbonden-producten |
@@ -446,11 +446,11 @@ Deze categorieën en de bijbehorende sleutels zijn van toepassing op SaaS-, Powe
 | Veiligheids & beveiliging | veiligheid: beveiliging | veiligheid: beveiliging | veiligheid-en-beveiliging |
 | Slimme infrastructuur resources & | slimme infra structuur-bronnen | slimme infra structuur-bronnen | slimme infra structuur en bronnen |
 | Mobiele & mobiliteit | Voer tuigen-mobiliteit | Voer tuigen-mobiliteit | Voer tuigen en mobiliteit |
-| Overig | overige-Internet-van-dingen | overige-Internet-van-dingen | andere |
+| Anders | overige-Internet-van-dingen | overige-Internet-van-dingen | other |
 | ***&-beheer Hulpprogramma's*** | ***ITandAdministration*** | ***ITandAdministration*** | ***IT-en-beheer-hulpprogram ma's*** |
 | Beheeroplossingen | beheer-oplossingen | beheer-oplossingen | beheer-oplossingen |
 | Zakelijke toepassingen | businessApplication | businessApplication | zakelijke toepassingen |
-| Overig | andere hulpprogram ma's voor IT-beheer | andere hulpprogram ma's voor IT-beheer | andere |
+| Anders | andere hulpprogram ma's voor IT-beheer | andere hulpprogram ma's voor IT-beheer | other |
 | ***Marketing*** | ***Marketing*** | ***Marketing*** | ***Marketing*** |
 | Bekendmaking | bekendmaking | bekendmaking | bekendmaking |
 | Analyse | analyse-marketing | analyse-marketing | analyse-marketing |
@@ -459,7 +459,7 @@ Deze categorieën en de bijbehorende sleutels zijn van toepassing op SaaS-, Powe
 | L2-gebeurtenissen & resource beheer | gebeurtenissen-bron beheer | gebeurtenissen-bron beheer | gebeurtenissen-en-bron beheer |
 | Onderzoek & analyse | onderzoek-analyse | onderzoek-analyse | onderzoek-en-analyse |
 | Sociale media | sociale media | sociale media | sociale media |
-| Overig | overige marketing | overige marketing | andere |
+| Anders | overige marketing | overige marketing | other |
 | ***Toeleverings keten van operations-&*** | ***OperationsSupplyChain*** | ***OperationsSupplyChain*** | ***Operations-and-supply-keten*** |
 | Activum & productie beheer | activa-productie-beheer | activa-productie-beheer | activa en productie-beheer |
 | Vraagprognose | vraag-prognose | vraag-prognose | vraag-prognose |
@@ -468,14 +468,14 @@ Deze categorieën en de bijbehorende sleutels zijn van toepassing op SaaS-, Powe
 | Quality &-Service beheer | Quality-Service-beheer | Quality-Service-beheer | kwaliteits-en Service beheer |
 | Order beheer voor verkoop & | verkoop order-beheer | verkoop order-beheer | verkoop-en bestel beheer |
 | Trans Port-& magazijn beheer | Trans Port-Warehouse-Management | Trans Port-Warehouse-Management | Trans Port-en-Warehouse-beheer |
-| Overig | overige-bewerkingen-toeleverings keten | overige-bewerkingen-toeleverings keten | andere |
+| Anders | overige-bewerkingen-toeleverings keten | overige-bewerkingen-toeleverings keten | other |
 | ***Productiviteit*** | ***Productiviteit*** | ***Productiviteit*** | ***productiviteit*** |
 | & beheer voor het maken van inhoud | content-Creating-Management | content-Creating-Management | inhoud maken en beheren |
 | Vertaling van taal & | taal omzetting | taal omzetting | taal en vertaling |
 | Documentbeheer | document beheer | document beheer | document beheer |
 | E-mail beheer | e-mail beheer | e-mail beheer | e-mail beheer |
 | Naslag informatie over & zoeken | Zoek verwijzing | Zoek verwijzing | zoeken en naslag informatie |
-| Overig | overige-productiviteit | overige-productiviteit | andere |
+| Anders | overige-productiviteit | overige-productiviteit | other |
 | Gamificatie | Gamificatie | Gamificatie | gamificatietoepassing |
 | ***Sales*** | ***Sales*** | ***Sales*** | ***Sales*** |
 | Televerkoop | televerkoop | televerkoop | televerkoop |
@@ -485,11 +485,11 @@ Deze categorieën en de bijbehorende sleutels zijn van toepassing op SaaS-, Powe
 | E-commerce | e-commerce | e-commerce | e-commerce |
 | Verrijking van zakelijke gegevens | Business-Data-verrijking | Business-Data-verrijking | Business-Data-verrijking |
 | Verkoop activering | verkoop-activering | verkoop-activering | verkoop-activering |
-| Overig | overige-verkoop | overige-verkoop | overige-verkoop |
+| Anders | overige-verkoop | overige-verkoop | overige-verkoop |
 | ***Geolocatie*** | ***geolocatie*** | ***geolocatie*** | ***geolocatie*** |
-| Kaarten | maps | maps | maps |
+| Maps | maps | maps | maps |
 | Nieuws & weer | Nieuws-en-weer | Nieuws-en-weer | Nieuws-en-weer |
-| Overig | andere geolocatie | andere geolocatie | andere geolocatie |
+| Anders | andere geolocatie | andere geolocatie | andere geolocatie |
 ||||
 
 ### <a name="microsoft-appsource-industries"></a>Microsoft AppSource branches

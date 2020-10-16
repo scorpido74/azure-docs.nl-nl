@@ -9,10 +9,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 12/10/2019
 ms.openlocfilehash: c0e35b94b4322d9273e5793c85792eb2bbd34d05
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91536066"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>Enterprise Security Package clusters maken en configureren in azure HDInsight
@@ -289,7 +289,7 @@ Gebruik de volgende stappen om uw Azure AD DS virtuele netwerk (**HDIFabrikam-AA
 1. Configureer **HDIFabrikam-AADDSVNET** om aangepaste IP-adressen 10.0.0.4 en 10.0.0.5 te gebruiken.
 
     1. Selecteer bij **instellingen**de optie **DNS-servers**.
-    1. selecteer **Aangepast**.
+    1. Selecteer **aangepast**.
     1. Voer in het tekstvak het eerste IP-adres (*10.0.0.4*) in.
     1. Selecteer **Opslaan**.
     1. Herhaal de stappen om het andere IP-adres (*10.0.0.5*) toe te voegen.
@@ -353,7 +353,7 @@ Controleer of het certificaat is geïnstalleerd in het **persoonlijke** archief 
         |---|---|
         | Bron | Elk |
         | Poortbereiken van bron | * |
-        | Doel | Elk |
+        | Doel | Alle |
         | Poortbereik van doel | 636 |
         | Protocol | Elk |
         | Actie | Toestaan |

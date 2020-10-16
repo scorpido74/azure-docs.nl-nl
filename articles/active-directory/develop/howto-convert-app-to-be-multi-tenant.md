@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
 ms.openlocfilehash: 3578562839069eb4b9c99b16d938efe48821fcec
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91631304"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Procedure: Een Azure Active Directory-gebruiker aanmelden met behulp van het patroon voor multitenant-toepassingen
@@ -190,7 +190,7 @@ Toepassingen met meerdere tenants kunnen ook toegangs tokens krijgen om Api's aa
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u een toepassing bouwt die kan worden aangemeld bij een gebruiker vanuit een Azure AD-Tenant. Nadat u eenmalige aanmelding (SSO) tussen uw app en Azure AD hebt ingeschakeld, kunt u uw toepassing ook bijwerken om toegang te krijgen tot Api's die door micro soft-resources zoals Microsoft 365 worden weer gegeven. Zo kunt u een persoonlijke ervaring bieden in uw toepassing, zoals het weer geven van contextuele informatie aan de gebruikers, zoals de profiel afbeelding of de volgende agenda-afspraak. Ga voor meer informatie over het maken van API-aanroepen naar Azure AD en Microsoft 365 services zoals Exchange, share point, OneDrive, OneNote en meer naar [Microsoft Graph-API][MSFT-Graph-overview].
+In dit artikel hebt u geleerd hoe u een toepassing bouwt die kan worden aangemeld bij een gebruiker vanuit een Azure AD-Tenant. Nadat u eenmalige Sign-On (SSO) tussen uw app en Azure AD hebt ingeschakeld, kunt u uw toepassing ook bijwerken om toegang te krijgen tot Api's die beschikbaar worden gesteld door micro soft-resources, zoals Microsoft 365. Zo kunt u een persoonlijke ervaring bieden in uw toepassing, zoals het weer geven van contextuele informatie aan de gebruikers, zoals de profiel afbeelding of de volgende agenda-afspraak. Ga voor meer informatie over het maken van API-aanroepen naar Azure AD en Microsoft 365 services zoals Exchange, share point, OneDrive, OneNote en meer naar [Microsoft Graph-API][MSFT-Graph-overview].
 
 <!--Reference style links IN USE -->
 [AAD-Access-Panel]:  https://myapps.microsoft.com

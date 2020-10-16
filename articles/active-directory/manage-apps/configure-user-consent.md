@@ -12,10 +12,10 @@ ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.openlocfilehash: cff2af745e9b79f573aba02e0a9baefe4a5e45a3
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91819264"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>Configureren hoe eindgebruikers toestemming geven voor toepassingen
@@ -177,7 +177,7 @@ U kunt de Azure AD Power shell preview-module, [AzureADPreview](https://docs.mic
 Zie voor meer informatie:
 
 * [Instellingen voor gebruikers toestemming configureren](configure-user-consent.md)
-* [Toestemming beleid voor apps beheren](manage-app-consent-policies.md)
+* [Beleid voor app-toestemming beheren](manage-app-consent-policies.md)
 * [De beheerder toestemming werk stroom configureren](configure-admin-consent-workflow.md)
 * [Meer informatie over het beheren van toestemming voor toepassingen en het evalueren van toestemming aanvragen](manage-consent-requests.md)
 * [Een toepassing beheerderstoestemming verlenen voor de hele tenant](grant-admin-consent.md)

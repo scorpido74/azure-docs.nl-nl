@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4d335affa5a06bdb8e5c733c871654cf58947581
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: bd4f50365ced61e35ae6d10a9763a0f9815098d7
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91652955"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014100"
 ---
 # <a name="azure-media-services-release-notes"></a>Opmerkingen bij de release Azure Media Services
 
@@ -53,8 +53,8 @@ Zie de [referentie Azure Media Services rest API]voor informatie over de versie 
 
 De volgende v2-eigenschappen worden niet meer gevuld met historische taak voortgangs gegevens:
 
-* [HistoricalEvents](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.itask.historicalevents)
-* [PerfMessage](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.itask.perfmessage)
+* [HistoricalEvents](/dotnet/api/microsoft.windowsazure.mediaservices.client.itask.historicalevents)
+* [PerfMessage](/dotnet/api/microsoft.windowsazure.mediaservices.client.itask.perfmessage)
 
 Als u de taak geschiedenis wilt ophalen, moet u de v2-taak meldingen via webhooks of wachtrij berichten gebruiken met behulp van meldings eindpunten. Zie voor meer informatie:
 
@@ -81,7 +81,7 @@ Zie ook [migreren van Azure media indexer en Azure media indexer 2 naar Azure Me
 
 Er wordt een afschaffing van de media processors van *Windows Azure Media Encoder* (WAME) en *Azure Media Encoder* (AAM) aangekondigd. Voor de pensioen datums raadpleegt u dit onderwerp over [oudere onderdelen](legacy-components.md) .
 
-Zie [WAME migreren naar Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101334) en [aam migreren naar Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101335)voor meer informatie.
+Zie [WAME migreren naar Media Encoder Standard](./migrate-windows-azure-media-encoder.md) en [aam migreren naar Media Encoder Standard](./migrate-azure-media-encoder.md)voor meer informatie.
 
 ## <a name="march-2019"></a>Maart 2019
 
@@ -198,7 +198,7 @@ Sommige clients kunnen een herhaald label probleem hebben in het Smooth Streamin
 
 ## <a name="april-2016-release"></a><a id="apr_changes16"></a>Release van april 2016
 ### <a name="media-analytics"></a>Media Analytics
- Media Services geïntroduceerde Media Analytics voor krachtige video-informatie. Zie [Media Services Analytics Overview](media-services-analytics-overview.md)(Engelstalig) voor meer informatie.
+ Media Services geïntroduceerde Media Analytics voor krachtige video-informatie. Zie [Media Services Analytics Overview](./legacy-components.md)(Engelstalig) voor meer informatie.
 
 ### <a name="apple-fairplay-preview"></a>Apple FairPlay (preview-versie)
 U kunt Media Services nu gebruiken om uw HTTP Live Streaming-inhoud (HLS) dynamisch te versleutelen met Apple FairPlay. U kunt ook de Media Services License delivery service gebruiken om FairPlay-licenties te leveren aan clients. Zie ' Azure Media Services gebruiken om uw HLS-inhoud te streamen die is beveiligd met Apple FairPlay ' voor meer informatie.
@@ -275,7 +275,7 @@ Lees [deze blog](https://azure.microsoft.com/blog/azure-media-services-release-d
 ## <a name="july-2015-release"></a><a id="july_changes_15"></a>Release van juli 2015
 * De algemene Beschik baarheid van Media Encoder Standard is aangekondigd. Lees [dit blogbericht](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/) voor meer informatie.
   
-    Media Encoder Standard maakt gebruik van voor instellingen, zoals beschreven in [deze sectie](https://go.microsoft.com/fwlink/?LinkId=618336). Wanneer u een vooraf ingestelde voor 4 KB-code ring gebruikt, haalt u het gereserveerde type voor de Premium-eenheid op. Zie [schaal codering](media-services-scale-media-processing-overview.md)voor meer informatie.
+    Media Encoder Standard maakt gebruik van voor instellingen, zoals beschreven in [deze sectie](./media-services-mes-presets-overview.md). Wanneer u een vooraf ingestelde voor 4 KB-code ring gebruikt, haalt u het gereserveerde type voor de Premium-eenheid op. Zie [schaal codering](media-services-scale-media-processing-overview.md)voor meer informatie.
 * Er zijn live real-time bijschriften gebruikt met Media Services en de Media Player. Lees [dit blogbericht](https://azure.microsoft.com/blog/2015/07/08/live-real-time-captions-with-azure-media-services-and-player/) voor meer informatie.
 
 ### <a name="media-services-net-sdk-updates"></a>Media Services .NET SDK-updates
@@ -307,7 +307,7 @@ De volgende nieuwe functies zijn aangekondigd:
 ## <a name="april-2015-release"></a><a id="april_changes_15"></a>Release van april 2015
 ### <a name="general-media-services-updates"></a>Algemene Media Services updates
 * [Media Player](https://azure.microsoft.com/blog/2015/04/15/announcing-azure-media-player/) is aangekondigd.
-* Met ingang van de Media Services REST 2,10 worden kanalen die zijn geconfigureerd voor het opnemen van een real-time Messa ging Protocol (RTMP) gemaakt met primaire en secundaire opname-Url's. Zie voor meer informatie [kanaal opname configuraties](media-services-live-streaming-with-onprem-encoders.md#channel_input).
+* Met ingang van de Media Services REST 2,10 worden kanalen die zijn geconfigureerd om een Real-Time Messa ging Protocol (RTMP) op te nemen, gemaakt met primaire en secundaire opname-Url's. Zie voor meer informatie [kanaal opname configuraties](media-services-live-streaming-with-onprem-encoders.md#channel_input).
 * Azure Media Indexer is bijgewerkt.
 * Ondersteuning voor Spaanse taal is toegevoegd.
 * Er is een nieuwe configuratie voor de XML-indeling toegevoegd.

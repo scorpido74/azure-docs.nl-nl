@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 03/31/2020
 ms.author: sunasing
 ms.openlocfilehash: 35acf4e9bd338a0e67b046a59d8884df0626e516
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87429271"
 ---
 # <a name="get-weather-data-from-weather-partners"></a>Weer gegevens ophalen van weer partners
@@ -226,8 +226,8 @@ In het vorige voor beeld toont het antwoord gegevens voor twee tijds tempels. He
 |    DockerDetails - azureBatchVMDetails - nodeAgentSKUID          |    SKU-ID van Azure Batch node-agent. Op dit moment wordt alleen de batch-knooppunt agent batch. node. Ubuntu 18,04 ondersteund.    |
 | DockerDetails - partnerCredentials | Referenties voor het aanroepen van de partner-API in docker. De partner verstrekt deze informatie op basis van het ondersteunde autorisatie mechanisme; bijvoorbeeld gebruikers naam en wacht woord, of API-sleutels. |
 | partnerType | "Weer". Andere partner typen in FarmBeats zijn "sensor" en "installatie kopie".  |
-|  name   |   Gewenste naam van de partner in het FarmBeats systeem.   |
-|  beschrijving |  Beschrijving   |
+|  naam   |   Gewenste naam van de partner in het FarmBeats systeem.   |
+|  description |  Beschrijving   |
 
 ## <a name="next-steps"></a>Volgende stappen
 

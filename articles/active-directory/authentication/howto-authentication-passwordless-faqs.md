@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
 ms.date: 08/19/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16e232cedb13dc246bf7a568adfad401c1fe3eb8
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: c5cc6847332765419001eadc5944905f55a425ef
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89236653"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964788"
 ---
 # <a name="deployment-frequently-asked-questions-faqs-for-hybrid-fido2-security-keys-in-azure-ad-preview"></a>Veelgestelde vragen over de implementatie van hybride FIDO2 in azure AD (preview)
 
@@ -160,7 +160,7 @@ Controleer op een Windows Server 2016-of 2019-domein controller of de volgende p
 
 Nee, deze functie wordt niet ondersteund voor on-premises apparaten. De FIDO2-referentie provider wordt niet weer gegeven.
 
-### <a name="fido2-security-key-sign-in-isnt-working-for-my-domain-admin-or-other-high-privilege-accounts-why"></a>Het aanmelden van de FIDO2-beveiligings sleutel werkt niet voor mijn domein beheerder of andere accounts met een hoge bevoegdheid. Waarom?
+### <a name="fido2-security-key-sign-in-isnt-working-for-my-domain-admin-or-other-high-privilege-accounts-why"></a>Het aanmelden van de FIDO2-beveiligings sleutel werkt niet voor mijn domein beheerder of andere accounts met een hoge bevoegdheid. Hoe komt dat?
 
 Het standaard beveiligings beleid verleent geen Azure AD-machtiging voor het ondertekenen van accounts met hoge bevoegdheden voor on-premises resources.
 
@@ -185,7 +185,7 @@ De Azure AD Kerberos-server wordt weer gegeven in een on-premises AD DS omgeving
 
 * *CN = AzureADKerberos, OE = domein controllers,\<domain-DN>*
     
-    Een *computer* object dat een alleen-lezen domein controller (RODC) vertegenwoordigt in AD DS. Er is geen computer gekoppeld aan dit object. In plaats daarvan is het een logische weer gave van een domein controller.
+    Een *computer* object dat een Read-Only domein controller (RODC) vertegenwoordigt in AD DS. Er is geen computer gekoppeld aan dit object. In plaats daarvan is het een logische weer gave van een domein controller.
 
 * *CN = krbtgt_AzureAD, CN = Users,\<domain-DN>*
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 606ee409a241db7b4deb9d15db86b034b8fbffd3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: bbd39c85385d6690a80f540c9e0cd23a321e7e84
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550976"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91821222"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-front"></a>Zelfstudie: Azure Active Directory-integratie met Front
 
@@ -128,23 +128,23 @@ Voer de volgende stappen uit als u eenmalige aanmelding voor Azure Active Direct
 
 2. Ga naar **Instellingen (tandwielpictogram aan de onderkant van de linkerzijbalk) > Voorkeuren**.
    
-    ![Eenmalige aanmelding in de app configureren](./media/front-tutorial/tutorial_front_000.png)
+    ![Schermopname die 'Instellingen (tandwielpictogram)' toont met 'Voorkeuren' gemarkeerd.](./media/front-tutorial/tutorial_front_000.png)
 
 3. Klik op de link voor **Eenmalige aanmelding**.
    
-    ![Eenmalige aanmelding in de app configureren](./media/front-tutorial/tutorial_front_001.png)
+    ![Schermopname die de sectie 'Bedrijfsvoorkeuren' toont met de koppeling 'Eenmalige aanmelding' geselecteerd.](./media/front-tutorial/tutorial_front_001.png)
 
 4. Selecteer **SAML** in de vervolgkeuzelijst van **Eenmalige aanmelding**.
    
-    ![Eenmalige aanmelding in de app configureren](./media/front-tutorial/tutorial_front_002.png)
+    ![Schermopname die de vervolgkeuzelijst 'Eenmalige aanmelding' toont met 'SAML' geselecteerd.](./media/front-tutorial/tutorial_front_002.png)
 
 5. In het tekstvak **Toegangspunt** plaatst u de waarde van de **Aanmeldings-URL** van de wizard voor het configureren van de Azure Active Directory-toepassing.
     
-    ![Eenmalige aanmelding in de app configureren](./media/front-tutorial/tutorial_front_003.png)
+    ![Schermopname die het tekstvak 'Ingangspunt' toont.](./media/front-tutorial/tutorial_front_003.png)
 
 6. Open het gedownloade bestand **Certificate(Base64)** in kladblok, kopieer de inhoud ervan naar het klembord, en plak deze vervolgens in het tekstvak **Handtekeningcertificaat**.
     
-    ![Eenmalige aanmelding in de app configureren](./media/front-tutorial/tutorial_front_004.png)
+    ![Schermopname die 'Certificaat ondertekenen' toont, met het tekstvak grijs weergegeven.](./media/front-tutorial/tutorial_front_004.png)
 
 7. Voer in de sectie **Serviceprovider-instellingen** de volgende stappen uit:
 

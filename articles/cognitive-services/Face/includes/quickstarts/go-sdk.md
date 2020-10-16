@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 09/17/2020
 ms.author: pafarley
-ms.openlocfilehash: 382a04021053bef0b5d3378231e38453885b0ef2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1154bf3ddde67ba5074517ab4f96ed6764edf6a5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322949"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91859712"
 ---
 Ga aan de slag met gezichtsherkenning met behulp van de Face-clientbibliotheek voor Go. Volg deze stappen om het pakket te installeren en de voorbeeldcode voor basistaken uit te proberen. De Face-service biedt u toegang tot geavanceerde algoritmen voor het detecteren en herkennen van menselijke gezichten in afbeeldingen.
 
@@ -24,7 +24,6 @@ Gebruik de clientbibliotheek van de Face-service voor Go voor het volgende:
 * [Vergelijkbare gezichten zoeken](#find-similar-faces)
 * [Een persoonsgroep maken en trainen](#create-and-train-a-person-group)
 * [Een gezicht identificeren](#identify-a-face)
-* [Een momentopname maken voor gegevensmigratie](#take-a-snapshot-for-data-migration)
 
 [Referentiedocumentatie](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face) | [Broncode bibliotheek](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/face) | [SDK download](https://github.com/Azure/azure-sdk-for-go)
 
@@ -109,7 +108,6 @@ Deze codevoorbeelden laten zien hoe u basistaken kunt uitvoeren met de Face-serv
 * [Vergelijkbare gezichten zoeken](#find-similar-faces)
 * [Een persoonsgroep maken en trainen](#create-and-train-a-person-group)
 * [Een gezicht identificeren](#identify-a-face)
-* [Een momentopname maken voor gegevensmigratie](#take-a-snapshot-for-data-migration)
 
 ## <a name="authenticate-the-client"></a>De client verifiëren
 
@@ -246,53 +244,6 @@ De volgende code vergelijkt elk van de bronafbeeldingen met de doelafbeelding en
 
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_ver)]
 
-
-## <a name="take-a-snapshot-for-data-migration"></a>Een momentopname maken voor gegevensmigratie
-
-Met de functie Momentopnamen kunt u opgeslagen gezichtsgegevens, zoals een getrainde **PersonGroup**, verplaatsen naar een ander Azure Cognitive Services Face-abonnement. U kunt deze functie gebruiken als u bijvoorbeeld een **PersonGroup**-object hebt gemaakt met behulp van een gratis abonnement en wilt migreren naar een betaald abonnement. Zie [Uw gezichtsgegevens migreren](../../Face-API-How-to-Topics/how-to-migrate-face-data.md) voor een overzicht van de functie momentopnamen.
-
-In dit voorbeeld migreert u de **PersonGroup** die u hebt gemaakt in [Een groep personen maken en trainen](#create-and-train-a-person-group). U kunt deze sectie eerst voltooien of uw eigen Face-gegevensconstructies gebruiken.
-
-### <a name="set-up-target-subscription"></a>Doelabonnement instellen
-
-Eerst moet u een tweede Azure-abonnement hebben met een Face-resource. U kunt dit doen door de stappen te herhalen in het gedeelte [Instellen](#setting-up). 
-
-Maak vervolgens de volgende variabelen bovenaan uw **Main**-methode. U moet nieuwe omgevingsvariabelen maken voor de abonnements-id van uw Azure-account, evenals de sleutel-, eindpunt- en abonnements-id van uw nieuwe (doel)account.
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_target_client)]
-
-Plaats vervolgens uw abonnements-id-waarde in een matrix voor de volgende stappen.
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_target_id)]
-
-### <a name="authenticate-target-client"></a>Doelclient verifiëren
-
-Sla later in uw script uw oorspronkelijke clientobject op als bronclient en verifieer vervolgens een nieuw clientobject voor uw doelabonnement. 
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_target_auth)]
-
-### <a name="take-a-snapshot"></a>Een momentopname maken
-
-De volgende stap is het nemen van de momentopname met **[Nemen](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#SnapshotClient.Take)** , waarmee de gezichtsgegevens van uw oorspronkelijke abonnement worden opgeslagen op een tijdelijke locatie van de cloud. Deze methode retourneert een id die u gebruikt om de status van de bewerking op te vragen.
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_take)]
-
-Vervolgens moet u een query uitvoeren op de id totdat de bewerking is voltooid.
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_query)]
-
-### <a name="apply-the-snapshot"></a>De momentopname toepassen
-
-Gebruik vervolgens de bewerking **[Toepassen](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#SnapshotClient.Apply)** om uw nieuw geladen gezichtsgegevens te schrijven naar uw doelabonnement. Met deze methode wordt ook een id geretourneerd.
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_apply)]
-
-Vervolgens moet u een query uitvoeren op de id totdat de bewerking is voltooid.
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_apply_query)]
-
-Zodra u deze stappen hebt voltooid, hebt u toegang tot uw gezichtsgegevens van uw nieuwe (doel)abonnement.
-
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
 Voer uw gezichtsherkennings-app uit vanuit de toepassingsmap met de opdracht `go run <app-name>`.
@@ -308,7 +259,7 @@ Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de
 * [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure-CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-Als u in deze quickstart een **PersonGroup** hebt gemaakt en u deze wilt verwijderen, roept u de volgende methode voor **[Verwijderen](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupClient.Delete)** aan. Als u gegevens hebt gemigreerd met behulp van de momentopnamefunctie in deze quickstart, moet u ook de **PersonGroup** verwijderen die is opgeslagen in het doelabonnement.
+Als u in deze quickstart een **PersonGroup** hebt gemaakt en u deze wilt verwijderen, roept u de volgende methode voor **[Verwijderen](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupClient.Delete)** aan.
 
 ## <a name="next-steps"></a>Volgende stappen
 

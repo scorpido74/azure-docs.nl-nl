@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 12/04/2018
 ms.topic: conceptual
 ms.openlocfilehash: e4be7934002730253b77b1c129165ad9f19f23b7
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86185973"
 ---
 # <a name="monitor-runbook-output"></a>Runbook-uitvoer bewaken
@@ -18,13 +18,13 @@ De meeste Azure Automation runbooks hebben een vorm van uitvoer. Deze uitvoer ka
 
 De volgende tabel geeft een korte beschrijving van elke stroom met het gedrag ervan in de Azure Portal voor gepubliceerde runbooks en tijdens [het testen van een runbook](./manage-runbooks.md). De uitvoer stroom is de hoofd stroom die wordt gebruikt voor de communicatie tussen runbooks. De andere stromen worden geclassificeerd als berichten stromen, bedoeld om informatie naar de gebruiker te communiceren. 
 
-| Streamen | Beschrijving | Gepubliceerd | Test |
+| Streamen | Beschrijving | Gepubliceerd | Testen |
 |:--- |:--- |:--- |:--- |
 | Fout |Foutbericht bedoeld voor de gebruiker. In tegens telling tot een uitzonde ring, wordt het runbook na een fout bericht standaard voortgezet. |Naar taak geschiedenis geschreven |Weer gegeven in het deel venster test uitvoer |
 | Fouten opsporen |Berichten die zijn bedoeld voor een interactieve gebruiker. Mag niet worden gebruikt in runbooks. |Niet naar taak geschiedenis geschreven |Niet weer gegeven in het deel venster test uitvoer |
 | Uitvoer |Objecten die zijn bedoeld om te worden verbruikt door andere runbooks. |Naar taak geschiedenis geschreven |Weer gegeven in het deel venster test uitvoer |
 | Voortgang |Records die automatisch worden gegenereerd voor en na elke activiteit in het runbook. Het runbook mag geen eigen voortgangs records maken, omdat deze zijn bedoeld voor een interactieve gebruiker. |Wordt alleen naar de taak geschiedenis geschreven als de voortgang van de logboek registratie is ingeschakeld voor het runbook |Niet weer gegeven in het deel venster test uitvoer |
-| Verbose |Berichten die algemene informatie of fout opsporingsgegevens geven. |Wordt alleen naar de taak geschiedenis geschreven als uitgebreide logboek registratie is ingeschakeld voor het runbook |Wordt alleen weer gegeven in het deel venster test uitvoer als er een `VerbosePreference` variabele is ingesteld om door te gaan in het runbook |
+| Uitgebreid |Berichten die algemene informatie of fout opsporingsgegevens geven. |Wordt alleen naar de taak geschiedenis geschreven als uitgebreide logboek registratie is ingeschakeld voor het runbook |Wordt alleen weer gegeven in het deel venster test uitvoer als er een `VerbosePreference` variabele is ingesteld om door te gaan in het runbook |
 | Waarschuwing |Waarschuwingsbericht bedoeld voor de gebruiker. |Naar taak geschiedenis geschreven |Weer gegeven in het deel venster test uitvoer |
 
 ## <a name="use-the-output-stream"></a>De uitvoer stroom gebruiken

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/13/2020
 ms.openlocfilehash: 407db727f521ea7731f0cbdbdd05c4338c9f452e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86207719"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>MapReduce-taken uitvoeren met Apache Hadoop op HDInsight met behulp van REST
@@ -24,9 +24,9 @@ Meer informatie over het gebruik van de Apache Hive WebHCat REST API om MapReduc
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Apache Hadoop cluster in HDInsight. Zie [Apache Hadoop clusters maken met behulp van de Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md).
+* Een Apache Hadoop cluster in HDInsight. Zie [Apache Hadoop-clusters maken met behulp van Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md).
 
-Er zijn verschillende opties:
+Ofwel:
   * Windows Power shell of,
   * [Krul](https://curl.haxx.se/) met [JQ](https://stedolan.github.io/jq/)
 
@@ -77,7 +77,7 @@ Er zijn verschillende opties:
 
     Het einde van de URI (/MapReduce/jar) vertelt WebHCat dat deze aanvraag een MapReduce-taak start vanuit een klasse in een jar-bestand. In deze opdracht worden de volgende parameters gebruikt:
 
-   * **-d**: wordt `-G` niet gebruikt, dus de aanvraag wordt standaard ingesteld op de methode post. `-d`Hiermee geeft u de gegevens waarden op die met de aanvraag worden verzonden.
+   * **-d**: wordt `-G` niet gebruikt, dus de aanvraag wordt standaard ingesteld op de methode post. `-d` Hiermee geeft u de gegevens waarden op die met de aanvraag worden verzonden.
      * **User.name**: de gebruiker die de opdracht uitvoert
      * **jar**: de locatie van het jar-bestand met de klasse die moet worden uitgevoerd
      * **klasse**: de klasse die de MapReduce Logic bevat

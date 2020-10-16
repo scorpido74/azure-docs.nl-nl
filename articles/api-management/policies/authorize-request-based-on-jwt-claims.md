@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 1b84854688fbdcc017b16698dfebfe54a7210110
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b5b0c2feb31eab5e39bbebd7108b3ec8504769d4
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75422183"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076280"
 ---
 # <a name="authorize-access-based-on-jwt-claims"></a>Toegang verlenen op basis van JWT-claims 
 
-Dit artikel bevat een voor beeld van een Azure API management-beleid dat laat zien hoe u toegang tot specifieke HTTP-methoden voor een API op basis van JWT-claims kunt autoriseren. Volg de stappen die worden beschreven in [een beleid instellen of bewerken](../set-edit-policies.md)om een beleids code in te stellen of te bewerken. Zie voor andere voor beelden [beleids voorbeelden](../policy-samples.md).
+Dit artikel bevat een voor beeld van een Azure API management-beleid dat laat zien hoe u toegang tot specifieke HTTP-methoden voor een API op basis van JWT-claims kunt autoriseren. Volg de stappen die worden beschreven in [een beleid instellen of bewerken](../set-edit-policies.md)om een beleids code in te stellen of te bewerken. Zie voor andere voor beelden [beleids voorbeelden](../policy-reference.md).
 
 ## <a name="policy"></a>Beleid
 
@@ -35,5 +35,4 @@ Plak de code in het **binnenkomende** blok.
 Meer informatie over APIM-beleid:
 
 + [Transformatiebeleid](../api-management-transformation-policies.md)
-+ [Voor beelden van beleid](../policy-samples.md)
-
++ [Voor beelden van beleid](../policy-reference.md)

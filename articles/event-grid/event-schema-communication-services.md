@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: mikben
 ms.openlocfilehash: fb37dfe9927c02711f4ab1b01cd89247059b27f6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91344690"
 ---
 # <a name="azure-communication-services-as-an-event-grid-source"></a>Azure Communication Services als een Event Grid bron
@@ -31,9 +31,9 @@ Azure Communication Services verzendt de volgende gebeurtenistypen:
 | ----------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
 | Microsoft.Communication.SMSReceived                         | Gepubliceerd wanneer een SMS wordt ontvangen door een telefoonnummer dat is gekoppeld aan de Communication Service. |
 | Microsoft.Communication.SMSDeliveryReportReceived           | Gepubliceerd wanneer een leveringsrapport wordt ontvangen voor een SMS die door de Communication Service wordt verzonden.     |
-| Micro soft. Communication. ChatMessageReceived *                | Gepubliceerd wanneer een bericht wordt ontvangen voor een gebruiker in een chat-thread waarvan deze lid is.        |
-| Micro soft. Communication. ChatMessageEdited *                   | Gepubliceerd wanneer een bericht wordt bewerkt in een chat-thread waarvan de gebruiker lid is.                |
-| Micro soft. Communication. ChatMessageDeleted *                  | Gepubliceerd wanneer een bericht wordt verwijderd in een chat-thread waarvan de gebruiker lid is.               |
+| Microsoft.Communication.ChatMessageReceived*                | Gepubliceerd wanneer een bericht wordt ontvangen voor een gebruiker in een chat-thread waarvan deze lid is.        |
+| Microsoft.Communication.ChatMessageEdited*                   | Gepubliceerd wanneer een bericht wordt bewerkt in een chat-thread waarvan de gebruiker lid is.                |
+| Microsoft.Communication.ChatMessageDeleted*                  | Gepubliceerd wanneer een bericht wordt verwijderd in een chat-thread waarvan de gebruiker lid is.               |
 | Microsoft.Communication.ChatThreadCreatedWithUser           | Gepubliceerd wanneer de gebruiker wordt toegevoegd als lid op het moment dat een chat-thread wordt gemaakt.           |
 | Microsoft.Communication.ChatThreadWithUserDeleted           | Gepubliceerd wanneer een chat-thread wordt verwijderd waarvan de gebruiker lid is.                           |
 | Microsoft.Communication.ChatThreadPropertiesUpdatedPerUser  | Gepubliceerd wanneer de eigenschappen van een chat-thread worden bijgewerkt waarvan de gebruiker lid is.              |
@@ -41,7 +41,7 @@ Azure Communication Services verzendt de volgende gebeurtenistypen:
 | Microsoft.Communication.ChatMemberRemovedFromThreadWithUser | Gepubliceerd wanneer de gebruiker wordt verwijderd uit een chat-thread.                                         |
 
 
-* Geef ' afzender naam ' op in de API-aanroepen ' bericht verzenden ' om deze gebeurtenissen te activeren.
+*Geef 'afzendernaam' op in de API-aanroepen 'bericht verzenden' om deze gebeurtenissen te activeren.
 
 ## <a name="event-subjects"></a>Gebeurtenisonderwerpen
 

@@ -2,14 +2,14 @@
 title: Artefacten overdragen
 description: Verzamelingen van installatie kopieën of andere artefacten overdragen van een container register naar een ander REGI ster door een overdrachts pijplijn te maken met Azure Storage-accounts
 ms.topic: article
-ms.date: 05/08/2020
+ms.date: 10/07/2020
 ms.custom: ''
-ms.openlocfilehash: ed848380457862fee506bf5111789e5d44545bdd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fd2cee972ef173853572b871bc80b92b28c505cd
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91253408"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91932597"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>Artefacten overdragen naar een ander REGI ster
 
@@ -21,7 +21,7 @@ Als u artefacten wilt overdragen, maakt u een *overdrachts pijplijn* waarmee art
 * De BLOB wordt gekopieerd van het bron opslag account naar een doel opslag account
 * De BLOB in het doel-opslag account wordt geïmporteerd als artefacten in het doel register. U kunt de import pijplijn zo instellen dat deze wordt geactiveerd wanneer de artefact-BLOB wordt bijgewerkt in de doel opslag.
 
-Overdracht is ideaal voor het kopiëren van inhoud tussen twee Azure-container registers in fysiek losgekoppelde Clouds, doorgevoerd door opslag accounts in elke Cloud. Voor het kopiëren van installatie kopieën uit container registers in verbonden Clouds, waaronder docker hub en andere Cloud leveranciers, wordt het [importeren van afbeeldingen](container-registry-import-images.md) in plaats daarvan aanbevolen.
+Overdracht is ideaal voor het kopiëren van inhoud tussen twee Azure-container registers in fysiek losgekoppelde Clouds, doorgevoerd door opslag accounts in elke Cloud. Als u in plaats daarvan installatie kopieën wilt kopiëren uit container registers in verbonden Clouds, waaronder docker hub en andere Cloud leveranciers, wordt het [importeren van afbeeldingen](container-registry-import-images.md) aanbevolen.
 
 In dit artikel gebruikt u Azure Resource Manager sjabloon implementaties om de overdrachts pijplijn te maken en uit te voeren. De Azure CLI wordt gebruikt om de gekoppelde resources in te richten, zoals opslag geheimen. Azure CLI-versie 2.2.0 of hoger wordt aanbevolen. Als u de CLI wilt installeren of upgraden, raadpleegt u [Azure CLI installeren][azure-cli].
 
@@ -32,11 +32,18 @@ Deze functie is beschikbaar in de service tier van het **Premium** -container re
 
 ## <a name="prerequisites"></a>Vereisten
 
-* **Container registers** : u hebt een bestaand bron register nodig met artefacten die moeten worden overgedragen en een doel register. ACR-overdracht is bedoeld voor beweging in fysiek losgekoppelde Clouds. Voor het testen kunnen de bron-en doel registers zich in hetzelfde of een ander Azure-abonnement, Active Directory-Tenant of Cloud bevindt. Als u een REGI ster moet maken, raadpleegt u [Quick Start: een persoonlijk container register maken met behulp van de Azure cli](container-registry-get-started-azure-cli.md). 
-* **Opslag accounts** : Maak bron-en doel opslag accounts in een abonnement en locatie van uw keuze. Voor test doeleinden kunt u hetzelfde abonnement of dezelfde abonnementen gebruiken als voor de bron-en doel registers. Voor scenario's met meerdere clouds maakt u doorgaans een afzonderlijk opslag account in elke Cloud. Maak, indien nodig, de opslag accounts met de [Azure cli](../storage/common/storage-account-create.md?tabs=azure-cli) of andere hulpprogram ma's. 
+* **Container registers** : u hebt een bestaand bron register nodig met artefacten die moeten worden overgedragen en een doel register. ACR-overdracht is bedoeld voor beweging in fysiek losgekoppelde Clouds. Voor het testen kunnen de bron-en doel registers zich in hetzelfde of een ander Azure-abonnement, Active Directory-Tenant of Cloud bevindt. 
+
+   Als u een REGI ster moet maken, raadpleegt u [Quick Start: een persoonlijk container register maken met behulp van de Azure cli](container-registry-get-started-azure-cli.md). 
+* **Opslag accounts** : Maak bron-en doel opslag accounts in een abonnement en locatie van uw keuze. Voor test doeleinden kunt u hetzelfde abonnement of dezelfde abonnementen gebruiken als voor de bron-en doel registers. Voor scenario's met meerdere clouds maakt u doorgaans een afzonderlijk opslag account in elke Cloud. 
+
+  Maak, indien nodig, de opslag accounts met de [Azure cli](../storage/common/storage-account-create.md?tabs=azure-cli) of andere hulpprogram ma's. 
 
   Maak een BLOB-container voor artefact overdracht in elk account. Maak bijvoorbeeld een container met de naam *overdracht*. Twee of meer overdrachts pijplijnen kunnen hetzelfde opslag account delen, maar moeten verschillende opslag container bereiken gebruiken.
-* **Sleutel kluizen** : sleutel kluizen zijn vereist voor het opslaan van SAS-token geheimen die worden gebruikt voor toegang tot de bron-en doel opslag accounts. Maak de bron-en doel sleutel kluizen in hetzelfde Azure-abonnement of op abonnementen als uw bron-en doel registers. Maak, indien nodig, sleutel kluizen met de [Azure cli](../key-vault/secrets/quick-create-cli.md) of andere hulpprogram ma's.
+* **Sleutel kluizen** : sleutel kluizen zijn vereist voor het opslaan van SAS-token geheimen die worden gebruikt voor toegang tot de bron-en doel opslag accounts. Maak de bron-en doel sleutel kluizen in hetzelfde Azure-abonnement of op abonnementen als uw bron-en doel registers. Voor demonstratie doeleinden nemen de sjablonen en opdrachten die in dit artikel worden gebruikt ook aan dat de bron-en doel sleutel kluizen zich in dezelfde resource groepen bevinden als de bron-en doel registers. Dit gebruik van algemene resource groepen is niet vereist, maar het vereenvoudigt de sjablonen en opdrachten die in dit artikel worden gebruikt.
+
+   Maak, indien nodig, sleutel kluizen met de [Azure cli](../key-vault/secrets/quick-create-cli.md) of andere hulpprogram ma's.
+
 * **Omgevings variabelen** : voor de opdrachten in dit artikel stelt u de volgende omgevings variabelen in voor de bron-en doel omgeving. Alle voor beelden zijn opgemaakt voor de bash-shell.
   ```console
   SOURCE_RG="<source-resource-group>"
@@ -62,7 +69,7 @@ Opslag verificatie maakt gebruik van SAS-tokens die worden beheerd als geheimen 
 
 ### <a name="things-to-know"></a>Dingen die u moet weten
 * De ExportPipeline en ImportPipeline bevinden zich doorgaans in verschillende Active Directory tenants die zijn gekoppeld aan de bron-en doel-Clouds. Voor dit scenario zijn afzonderlijke beheerde identiteiten en sleutel kluizen vereist voor de export-en import resources. Voor test doeleinden kunnen deze resources in dezelfde Cloud worden geplaatst, waarbij identiteiten worden gedeeld.
-* De pijp lijn-voor beelden maken beheerde identiteiten die door het systeem worden toegewezen voor toegang tot sleutel kluis geheimen. ExportPipelines en ImportPipelines ondersteunen ook door de gebruiker toegewezen identiteiten. In dit geval moet u de sleutel kluizen configureren met toegangs beleid voor de identiteiten. 
+* Standaard kunnen de ExportPipeline-en ImportPipeline-sjablonen elk een door het systeem toegewezen beheerde identiteit inschakelen om toegang te krijgen tot sleutel kluis geheimen. De ExportPipeline-en ImportPipeline-sjablonen bieden ook ondersteuning voor een door de gebruiker toegewezen identiteit die u opgeeft. 
 
 ## <a name="create-and-store-sas-keys"></a>SAS-sleutels maken en opslaan
 
@@ -152,7 +159,13 @@ De `options` eigenschap voor de export pijplijnen ondersteunt optionele Booleaan
 
 ### <a name="create-the-resource"></a>De resource maken
 
-Voer [AZ Deployment Group Create][az-deployment-group-create] uit om de resource te maken. In het volgende voor beeld worden de implementatie- *exportPipeline*.
+Voer [AZ Deployment Group Create][az-deployment-group-create] uit om een resource te maken met de naam *exportPipeline* , zoals wordt weer gegeven in de volgende voor beelden. Met de eerste optie maakt de voorbeeld sjabloon standaard een door het systeem toegewezen identiteit in de ExportPipeline-resource. 
+
+Met de tweede optie kunt u de resource voorzien van een door de gebruiker toegewezen identiteit. (Het maken van de door de gebruiker toegewezen identiteit wordt niet weer gegeven.)
+
+Met beide opties configureert de sjabloon de identiteit voor toegang tot het SAS-token in de sleutel kluis exporteren. 
+
+#### <a name="option-1-create-resource-and-enable-system-assigned-identity"></a>Optie 1: resource maken en door het systeem toegewezen identiteit inschakelen
 
 ```azurecli
 az deployment group create \
@@ -162,10 +175,23 @@ az deployment group create \
   --parameters azuredeploy.parameters.json
 ```
 
+#### <a name="option-2-create-resource-and-provide-user-assigned-identity"></a>Optie 2: een resource maken en een door de gebruiker toegewezen identiteit geven
+
+In deze opdracht geeft u de resource-ID van de door de gebruiker toegewezen identiteit op als een extra para meter.
+
+```azurecli
+az deployment group create \
+  --resource-group $SOURCE_RG \
+  --template-file azuredeploy.json \
+  --name exportPipeline \
+  --parameters azuredeploy.parameters.json \
+  --parameters userAssignedIdentity="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUserAssignedIdentity"
+```
+
 In de uitvoer van de opdracht noteert u de resource-ID ( `id` ) van de pijp lijn. U kunt deze waarde in een omgevings variabele opslaan voor later gebruik door de [AZ-implementatie groep weer geven][az-deployment-group-show]uit te voeren. Bijvoorbeeld:
 
 ```azurecli
-EXPORT_RES_ID=$(az group deployment show \
+EXPORT_RES_ID=$(az deployment group show \
   --resource-group $SOURCE_RG \
   --name exportPipeline \
   --query 'properties.outputResources[1].id' \
@@ -198,20 +224,39 @@ De `options` eigenschap voor de import pijplijn ondersteunt optionele Booleaanse
 
 ### <a name="create-the-resource"></a>De resource maken
 
-Voer [AZ Deployment Group Create][az-deployment-group-create] uit om de resource te maken.
+Voer [AZ Deployment Group Create][az-deployment-group-create] uit om een resource te maken met de naam *importPipeline* , zoals wordt weer gegeven in de volgende voor beelden. Met de eerste optie maakt de voorbeeld sjabloon standaard een door het systeem toegewezen identiteit in de ImportPipeline-resource. 
+
+Met de tweede optie kunt u de resource voorzien van een door de gebruiker toegewezen identiteit. (Het maken van de door de gebruiker toegewezen identiteit wordt niet weer gegeven.)
+
+Met een van beide opties configureert de sjabloon de identiteit voor toegang tot het SAS-token in de sleutel kluis importeren. 
+
+#### <a name="option-1-create-resource-and-enable-system-assigned-identity"></a>Optie 1: resource maken en door het systeem toegewezen identiteit inschakelen
 
 ```azurecli
 az deployment group create \
   --resource-group $TARGET_RG \
   --template-file azuredeploy.json \
-  --parameters azuredeploy.parameters.json \
-  --name importPipeline
+  --name importPipeline \
+  --parameters azuredeploy.parameters.json 
 ```
 
-Als u van plan bent om de import hand matig uit te voeren, noteert u de resource-ID ( `id` ) van de pijp lijn. U kunt deze waarde in een omgevings variabele opslaan voor later gebruik door de [AZ-implementatie groep weer geven][az-deployment-group-show]uit te voeren. Bijvoorbeeld:
+#### <a name="option-2-create-resource-and-provide-user-assigned-identity"></a>Optie 2: een resource maken en een door de gebruiker toegewezen identiteit geven
+
+In deze opdracht geeft u de resource-ID van de door de gebruiker toegewezen identiteit op als een extra para meter.
 
 ```azurecli
-IMPORT_RES_ID=$(az group deployment show \
+az deployment group create \
+  --resource-group $TARGET_RG \
+  --template-file azuredeploy.json \
+  --name importPipeline \
+  --parameters azuredeploy.parameters.json \
+  --parameters userAssignedIdentity="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUserAssignedIdentity"
+```
+
+Als u van plan bent om de import hand matig uit te voeren, noteert u de resource-ID ( `id` ) van de pijp lijn. U kunt deze waarde in een omgevings variabele opslaan voor later gebruik door de opdracht [AZ Deployment Group show][az-deployment-group-show] uit te voeren. Bijvoorbeeld:
+
+```azurecli
+IMPORT_RES_ID=$(az deployment group show \
   --resource-group $TARGET_RG \
   --name importPipeline \
   --query 'properties.outputResources[1].id' \
@@ -246,12 +291,22 @@ az deployment group create \
   --parameters azuredeploy.parameters.json
 ```
 
+Voor later gebruik slaat u de resource-ID van de pijplijn uitvoering op in een omgevings variabele:
+
+```azurecli
+EXPORT_RUN_RES_ID=$(az deployment group show \
+  --resource-group $SOURCE_RG \
+  --name exportPipelineRun \
+  --query 'properties.outputResources[0].id' \
+  --output tsv)
+```
+
 Het kan enkele minuten duren voordat artefacten worden geëxporteerd. Wanneer de implementatie is voltooid, controleert u de export van artefacten door de geëxporteerde Blob in de container *overdracht* van het bron-opslag account te vermelden. Voer bijvoorbeeld de opdracht [AZ Storage BLOB List][az-storage-blob-list] uit:
 
 ```azurecli
 az storage blob list \
-  --account-name $SOURCE_SA
-  --container transfer
+  --account-name $SOURCE_SA \
+  --container transfer \
   --output table
 ```
 
@@ -300,11 +355,21 @@ Voer [AZ Deployment Group Create][az-deployment-group-create] uit om de resource
 ```azurecli
 az deployment group create \
   --resource-group $TARGET_RG \
+  --name importPipelineRun \
   --template-file azuredeploy.json \
   --parameters azuredeploy.parameters.json
 ```
 
-Wanneer de implementatie is voltooid, controleert u het importeren van artefacten door de opslag plaatsen in het doel container register weer te geven. Voer bijvoorbeeld [AZ ACR Repository List][az-acr-repository-list]uit:
+Voor later gebruik slaat u de resource-ID van de pijplijn uitvoering op in een omgevings variabele:
+
+```azurecli
+IMPORT_RUN_RES_ID=$(az deployment group show \
+  --resource-group $TARGET_RG \
+  --name importPipelineRun \
+  --query 'properties.outputResources[0].id' \
+  --output tsv)
+
+When deployment completes successfully, verify artifact import by listing the repositories in the target container registry. For example, run [az acr repository list][az-acr-repository-list]:
 
 ```azurecli
 az acr repository list --name <target-registry-name>
@@ -329,20 +394,20 @@ az deployment group create \
 
 ## <a name="delete-pipeline-resources"></a>Pijplijn resources verwijderen
 
-Als u een pijplijn resource wilt verwijderen, verwijdert u de Resource Manager-implementatie met behulp van de opdracht [AZ Deployment Group delete][az-deployment-group-delete] . In de volgende voor beelden worden de pijplijn resources die in dit artikel zijn gemaakt, verwijderd:
+De volgende voorbeeld opdrachten gebruiken [AZ resource delete][az-resource-delete] om de pijplijn resources te verwijderen die in dit artikel zijn gemaakt. De resource-Id's zijn eerder opgeslagen in omgevings variabelen.
 
-```azurecli
-az deployment group delete \
-  --resource-group $SOURCE_RG \
-  --name exportPipeline
+```
+# Delete export resources
+az resource delete \
+--resource-group $SOURCE_RG \
+--ids $EXPORT_RES_ID $EXPORT_RUN_RES_ID \
+--api-version 2019-12-01-preview
 
-az deployment group delete \
-  --resource-group $SOURCE_RG \
-  --name exportPipelineRun
-
-az deployment group delete \
-  --resource-group $TARGET_RG \
-  --name importPipeline  
+# Delete import resources
+az resource delete \
+--resource-group $TARGET_RG \
+--ids $IMPORT_RES_ID $IMPORT_RUN_RES_ID \
+--api-version 2019-12-01-preview
 ```
 
 ## <a name="troubleshooting"></a>Problemen oplossen
@@ -374,8 +439,6 @@ Als u één container installatie kopie wilt importeren in een Azure container R
 
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli
-[az-identity-create]: /cli/azure/identity#az-identity-create
-[az-identity-show]: /cli/azure/identity#az-identity-show
 [az-login]: /cli/azure/reference-index#az-login
 [az-keyvault-secret-set]: /cli/azure/keyvault/secret#az-keyvault-secret-set
 [az-keyvault-secret-show]: /cli/azure/keyvault/secret#az-keyvault-secret-show
@@ -387,3 +450,4 @@ Als u één container installatie kopie wilt importeren in een Azure container R
 [az-deployment-group-show]: /cli/azure/deployment/group#az-deployment-group-show
 [az-acr-repository-list]: /cli/azure/acr/repository#az-acr-repository-list
 [az-acr-import]: /cli/azure/acr#az-acr-import
+[az-resource-delete]: /cli/azure/resource#az-resource-delete

@@ -6,12 +6,12 @@ ms.date: 07/10/2019
 ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 52a74593fcfbdc2c1e464077e4ae460f6a5a9c39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6509425f11b09a2fa5229f9dd68a508241391925
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "87852392"
+ms.locfileid: "91875917"
 ---
 # <a name="understand-migration-options-to-newer-alerts"></a>Meer informatie over migratie opties voor nieuwere waarschuwingen
 
@@ -254,10 +254,12 @@ Als onderdeel van de migratie worden nieuwe metrische waarschuwingen en nieuwe a
 
 ### <a name="policy-with-deny-effect-preventing-us-from-migrating-your-rules"></a>Beleid met een ' deny '-effect waardoor we uw regels niet kunnen migreren
 
-Als onderdeel van de migratie worden nieuwe metrische waarschuwingen en nieuwe actie groepen gemaakt en vervolgens worden klassieke waarschuwings regels verwijderd. Een beleid kan er echter voor zorgen dat we geen resources kunnen maken. Afhankelijk van het beleid kunnen sommige of alle regels niet worden gemigreerd. De beleids regels die het proces blok keren, worden weer gegeven in het [hulp programma voor migratie](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel). Los dit probleem op door een van de volgende:
+Als onderdeel van de migratie worden nieuwe metrische waarschuwingen en nieuwe actie groepen gemaakt en vervolgens worden klassieke waarschuwings regels verwijderd. Een [Azure Policy](../../governance/policy/index.yml) toewijzing kan er echter voor zorgen dat we geen resources kunnen maken. Afhankelijk van de beleids toewijzing kunnen sommige of alle regels niet worden gemigreerd. De beleids toewijzingen die het proces blok keren, worden weer gegeven in het [hulp programma voor migratie](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel). Los dit probleem op door een van de volgende:
 
-- Het uitsluiten van de abonnementen of resource groepen voor de duur van het migratie proces van de beleids toewijzing. Meer [informatie over het beheren van het uitsluitings bereik van beleid](../../governance/policy/tutorials/create-and-manage.md#exempt-a-non-compliant-or-denied-resource-using-exclusion).
-- Het verwijderen of wijzigen van het effect op ' audit ' of ' append ' (die bijvoorbeeld problemen met ontbrekende labels kan oplossen). Meer [informatie over het beheren van het beleid-effect](../../governance/policy/concepts/definition-structure.md#policy-rule).
+- Met uitzonde ring van de abonnementen, resource groepen of afzonderlijke resources voor de duur van het migratie proces van de beleids toewijzing. Meer [informatie over het beheren van beleids regels voor uitsluiting](../../governance/policy/tutorials/create-and-manage.md#remove-a-non-compliant-or-denied-resource-from-the-scope-with-an-exclusion).
+- Stel de afdwingings modus in op **uitgeschakeld** op de beleids toewijzing. Meer [informatie over de eigenschap enforcementMode van de beleids toewijzing](../../governance/policy/concepts/assignment-structure.md#enforcement-mode).
+- Stel een Azure Policy-uitzonde ring (preview) in voor de abonnementen, resource groepen of afzonderlijke resources aan de beleids toewijzing. Meer [informatie over de Azure Policy](../../governance/policy/concepts/exemption-structure.md)-uitzonderings structuur.
+- Het verwijderen of wijzigen van het effect op ' disabled ', ' audit ', ' append ' of ' Modify ' (dat kan bijvoorbeeld problemen met betrekking tot ontbrekende labels oplossen). Meer [informatie over het beheren van beleids effecten](../../governance/policy/concepts/definition-structure.md#policy-rule).
 
 ## <a name="next-steps"></a>Volgende stappen
 

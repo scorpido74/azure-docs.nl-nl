@@ -15,10 +15,10 @@ ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 48f924cef12db974faae8fb8ed73f01ff8c9a3f8
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90056248"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Aangepaste domein namen in uw Azure Active Directory beheren
@@ -49,7 +49,7 @@ U kunt Maxi maal 900 beheerde domein namen toevoegen. Als u al uw domeinen confi
 
 Als u een domein naam van een derde niveau, zoals ' europe.contoso.com ', aan uw Directory wilt toevoegen, moet u eerst het domein van het tweede niveau toevoegen en controleren, zoals contoso.com. Het subdomein wordt automatisch gecontroleerd door Azure AD. Vernieuw de lijst met domeinen in de browser om te zien dat het subdomein dat u hebt toegevoegd, is geverifieerd.
 
-Notitie
+Opmerking
 
 Als u al een contoso.com-domein aan een Azure AD-Tenant hebt toegevoegd, kunt u ook het subdomein europe.contoso.com toevoegen aan een tweede Azure AD-Tenant. Wanneer u het subdomein toevoegt, wordt u gevraagd een TXT-record toe te voegen aan de DNS-hosting provider.
 
@@ -73,7 +73,7 @@ U moet deze resource in uw Azure AD-adres lijst wijzigen of verwijderen voordat 
 
 U kunt een domein naam in het [Azure AD-beheer centrum](https://aad.portal.azure.com) **ForceDelete** of gebruikmaken van [Microsoft Graph-API](/graph/api/domain-forcedelete?view=graph-rest-beta). Deze opties gebruiken een asynchrone bewerking en werken alle verwijzingen van de aangepaste domein naam zoals " user@contoso.com " bij naar de oorspronkelijke standaard domein naam, zoals " user@contoso.onmicrosoft.com ." 
 
-Als u **ForceDelete** wilt aanroepen in de Azure Portal, moet u ervoor zorgen dat er minder dan 1000 verwijzingen naar de domein naam zijn en alle verwijzingen waarbij Exchange de inrichtings service is, moeten worden bijgewerkt of verwijderd in het [Exchange-beheer centrum](https://outlook.office365.com/ecp/). Dit geldt ook voor Exchange mail-beveiligings groepen en gedistribueerde lijsten. Zie [beveiligings groepen met e-mail beveiliging verwijderen](/Exchange/recipients/mail-enabled-security-groups?view=exchserver-2019#Remove%20mail-enabled%20security%20groups)voor meer informatie. De **ForceDelete** -bewerking kan ook niet worden uitgevoerd als aan een van de volgende voor waarden wordt voldaan:
+Als u **ForceDelete** wilt aanroepen in de Azure Portal, moet u ervoor zorgen dat er minder dan 1000 verwijzingen naar de domein naam zijn en alle verwijzingen waarbij Exchange de inrichtings service is, moeten worden bijgewerkt of verwijderd in het [Exchange-beheer centrum](https://outlook.office365.com/ecp/). Dit omvat Exchange Mail-Enabled-beveiligings groepen en gedistribueerde lijsten. Zie [beveiligings groepen met e-mail beveiliging verwijderen](/Exchange/recipients/mail-enabled-security-groups?view=exchserver-2019#Remove%20mail-enabled%20security%20groups)voor meer informatie. De **ForceDelete** -bewerking kan ook niet worden uitgevoerd als aan een van de volgende voor waarden wordt voldaan:
 
 * U hebt een domein aangeschaft via Microsoft 365-abonnements services van het domein
 * U bent een partner die u beheert namens een andere klant organisatie
@@ -92,7 +92,7 @@ Er wordt een fout geretourneerd wanneer:
 ### <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
 **V: waarom mislukt het verwijderen van het domein met een fout die aangeeft dat ik Gemastered groups heb op deze domein naam?** <br>
-**A:** Momenteel worden bepaalde groepen, zoals beveiligings groepen met e-mail functionaliteit en gedistribueerde lijsten, door Exchange ingericht en moeten ze hand matig worden opgeschoond in [Exchange-beheer centrum (SBV)](https://outlook.office365.com/ecp/). Er is mogelijk een achtergebleven ProxyAddresses die afhankelijk is van de aangepaste domein naam en moet hand matig worden bijgewerkt naar een andere domein naam. 
+**A:** Tegenwoordig worden bepaalde groepen, zoals Mail-Enabled-beveiligings groepen en gedistribueerde lijsten, door Exchange ingericht en moeten ze hand matig worden opgeschoond in het [Exchange-beheer centrum (SBV)](https://outlook.office365.com/ecp/). Er is mogelijk een achtergebleven ProxyAddresses die afhankelijk is van de aangepaste domein naam en moet hand matig worden bijgewerkt naar een andere domein naam. 
 
 **V: Ik ben aangemeld als beheerder \@ contoso.com, maar ik kan de domein naam ' contoso.com ' niet verwijderen?**<br>
 **A:** U kunt niet verwijzen naar de aangepaste domein naam die u probeert te verwijderen in de naam van uw gebruikers account. Zorg ervoor dat het account van de globale beheerder de oorspronkelijke standaard domein naam (. onmicrosoft.com) gebruikt, zoals admin@contoso.onmicrosoft.com . Meld u aan met een ander account voor globale beheerders, zoals een admin@contoso.onmicrosoft.com andere aangepaste domein naam, zoals ' fabrikam.com ', waarbij het account is admin@fabrikam.com .

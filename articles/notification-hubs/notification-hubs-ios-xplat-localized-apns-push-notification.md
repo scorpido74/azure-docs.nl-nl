@@ -17,16 +17,16 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 4bc392cb6d499d967656358e920f46e261af2906
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87030331"
 ---
 # <a name="tutorial-send-localized-push-notifications-to-ios-using-azure-notification-hubs"></a>Zelf studie: gelokaliseerde push meldingen verzenden naar iOS met Azure Notification Hubs
 
 > [!div class="op_single_selector"]
-> * [Windows Store C #](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
+> * [Windows Store C#](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
 > * [iOS](notification-hubs-ios-xplat-localized-apns-push-notification.md)
 
 In deze zelf studie leert u hoe u de [sjabloon](notification-hubs-templates-cross-platform-push-messages.md) functie van Azure notification hubs gebruikt voor het uitzenden van verbroken Nieuws meldingen die zijn gelokaliseerd per taal en apparaat. In deze zelf studie begint u met de iOS-app die u hebt gemaakt in [gebruik notification hubs om het laatste nieuws te verzenden]. Wanneer u klaar bent, kunt u zich registreren voor de categorieën waarin u bent geïnteresseerd, een taal opgeven waarin de meldingen moeten worden ontvangen en alleen push meldingen ontvangen voor de geselecteerde categorieën in die taal.

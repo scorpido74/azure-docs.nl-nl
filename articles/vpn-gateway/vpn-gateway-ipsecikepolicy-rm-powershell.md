@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
 ms.openlocfilehash: 6039eeed2e1bcb348920be986e72089164c614ae
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89392647"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>IPsec/IKE-beleid configureren voor S2S VPN-verbindingen of VNet-naar-VNet-verbindingen
@@ -83,8 +83,8 @@ De volgende tabel bevat de ondersteunde cryptografische algoritmen en sleutel st
 > 3. In de bovenstaande tabel:
 >    * IKEv2 komt overeen met de hoofd modus of fase 1
 >    * IPsec komt overeen met snelle modus of fase 2
->    * DH-groep specificeert de Diffie-Hellmen-groep die wordt gebruikt in de hoofd modus of fase 1
->    * PFS-groep opgegeven de Diffie-Hellmen-groep die wordt gebruikt in de snelle modus of fase 2
+>    * DH-groep Hiermee geeft u de Diffie-Hellmen groep op die in de hoofd modus of fase 1 wordt gebruikt
+>    * PFS-groep opgegeven de Diffie-Hellmen groep die wordt gebruikt in de snelle modus of fase 2
 > 4. SA-levensduur voor IKEv2 Main Mode staat vastgesteld op 28.800 seconden op de Azure VPN-gateways
 > 5. Als u ' UsePolicyBasedTrafficSelectors ' instelt op $True voor een verbinding, wordt de Azure VPN-gateway geconfigureerd om verbinding te maken met op beleid gebaseerde VPN-Firewall on-premises. Als u PolicyBasedTrafficSelectors inschakelt, moet u ervoor zorgen dat op uw VPN-apparaat de overeenkomende verkeers selectie is gedefinieerd met alle combi Naties van de voor voegsels van uw on-premises netwerk (lokale netwerk gateway) naar/van de voor voegsels van het virtuele Azure-netwerk (in plaats van any). Als uw lokale netwerkvoorvoegsels bijvoorbeeld 10.1.0.0/16 en 10.2.0.0/16 zijn, en de voorvoegsels van uw virtuele netwerk 192.168.0.0/16 en 172.16.0.0/16, moet u de volgende verkeersselectoren opgeven:
 >    * 10.1.0.0/16 <====> 192.168.0.0/16
@@ -94,7 +94,7 @@ De volgende tabel bevat de ondersteunde cryptografische algoritmen en sleutel st
 
 Zie voor meer informatie over op beleid gebaseerde verkeers selecties [verbinding maken met meerdere on-premises op beleid gebaseerde VPN-apparaten](vpn-gateway-connect-multiple-policybased-rm-ps.md).
 
-De volgende tabel geeft een lijst van de bijbehorende Diffie-Hellman-groepen die worden ondersteund door het aangepaste beleid:
+De volgende tabel bevat de overeenkomende Diffie-Hellman groepen die worden ondersteund door het aangepaste beleid:
 
 | **Diffie-Hellman-groep**  | **DHGroup**              | **PFSGroup** | **Sleutellengte** |
 | --- | --- | --- | --- |

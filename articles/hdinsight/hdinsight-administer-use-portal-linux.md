@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/24/2020
 ms.openlocfilehash: 05d057be76a1b468f892b3123080e32a948153ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82598495"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Apache Hadoop clusters in HDInsight beheren door gebruik te maken van de Azure Portal
@@ -29,13 +29,13 @@ Een bestaande Apache Hadoop cluster in HDInsight.  Zie [op Linux gebaseerde clus
 
 Meld u aan bij [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="list-and-show-clusters"></a><a name="showClusters"></a>Clusters vermelden en weer geven
+## <a name="list-and-show-clusters"></a><a name="showClusters"></a> Clusters vermelden en weer geven
 
 Op de pagina **HDInsight-clusters** worden uw bestaande clusters weer geven.  Vanuit de portal:
 1. Selecteer **alle services** in het menu links.
 2. Selecteer **HDInsight-clusters** onder **Analytics**.
 
-## <a name="cluster-home-page"></a><a name="homePage"></a>Start pagina van cluster
+## <a name="cluster-home-page"></a><a name="homePage"></a> Start pagina van cluster
 
 Selecteer de naam van uw cluster op de pagina [**HDInsight-clusters**](#showClusters) .  Hiermee opent u de **overzichts** weergave, die er ongeveer als volgt uitziet:
 
@@ -69,7 +69,7 @@ Selecteer de naam van uw cluster op de pagina [**HDInsight-clusters**](#showClus
     |---|---|
     |Grootte van cluster|Controleer, verhoog en verklein het aantal cluster worker-knoop punten. Zie [clusters schalen](hdinsight-administer-use-portal-linux.md#scale-clusters).|
     |Quotum limieten|De gebruikte en beschik bare kernen voor uw abonnement weer geven.|
-    |Aanmelden bij SSH en cluster|Toont de instructies voor het maken van verbinding met het cluster met behulp van SSH-verbinding (Secure Shell). Zie [SSH gebruiken met HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)voor meer informatie.|
+    |Aanmelden bij SSH en cluster|Toont de instructies voor het maken van verbinding met het cluster met behulp van SSH-verbinding (Secure Shell). Zie [SSH gebruiken met HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md) voor meer informatie.|
     |Data Lake Storage Gen1|Configureer de toegangs Data Lake Storage Gen1.  Zie [Quick Start: clusters instellen in HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).|
     |Opslagaccounts|Bekijk de opslag accounts en de sleutels. De opslag accounts worden geconfigureerd tijdens het proces voor het maken van het cluster.|
     |Toepassingen|HDInsight-toepassingen toevoegen/verwijderen.  Zie [aangepaste HDInsight-toepassingen installeren](hdinsight-apps-install-custom-applications.md).|
@@ -96,7 +96,7 @@ Selecteer de naam van uw cluster op de pagina [**HDInsight-clusters**](#showClus
     |Status van resources|Zie [overzicht van Azure resource Health](../service-health/resource-health-overview.md).|
     |Nieuwe ondersteuningsaanvraag|Hiermee kunt u een ondersteunings ticket maken met micro soft ondersteuning.|
 
-## <a name="cluster-properties"></a><a name="properties"></a>Cluster eigenschappen
+## <a name="cluster-properties"></a><a name="properties"></a> Cluster eigenschappen
 
 Ga naar de [Start pagina](#homePage)van het cluster en selecteer Eigenschappen in het **dialoog**venster **instellingen** .
 
@@ -227,8 +227,8 @@ Het wacht woord wordt gewijzigd op alle knoop punten in het cluster.
 
    | Veld | Waarde |
    | --- | --- |
-   | Script type | Selecteer **-aangepast** in de vervolg keuzelijst.|
-   | Naam |"SSH-referenties wijzigen" |
+   | Scripttype | Selecteer **-aangepast** in de vervolg keuzelijst.|
+   | Name |"SSH-referenties wijzigen" |
    | Bash-script-URI |De URI naar het changecredentials.sh-bestand |
    | Knooppunt type (n): (Head, worker, Nimbus, supervisor of Zookeeper.) |✓ voor alle weer gegeven knooppunt typen |
    | Parameters |Voer de SSH-gebruikers naam en vervolgens het nieuwe wacht woord in. Er moet één spatie tussen de gebruikers naam en het wacht woord zijn. |
@@ -266,7 +266,7 @@ Op de tegel **cluster grootte** van de [Start pagina](#homePage) van het cluster
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u enkele eenvoudige beheer functies geleerd. Raadpleeg de volgende artikelen voor meer informatie:
+In dit artikel hebt u enkele eenvoudige beheer functies geleerd. Lees de volgende artikelen voor meer informatie:
 
 - [HDInsight beheren met Azure PowerShell](hdinsight-administer-use-powershell.md)
 - [HDInsight beheren met Azure CLI](hdinsight-administer-use-command-line.md)

@@ -11,12 +11,12 @@ ms.custom:
 ms.author: dobett
 author: dominicbetts
 ms.date: 11/12/2019
-ms.openlocfilehash: 6062e8a74af4bb0a19d02ccf9a4c50da0cc4a7c5
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: f00448f19cc0a2118477a9527005548fea25537e
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "81000103"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651442"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>Zelfstudie: Gegevens exporteren uit Azure IoT Central en inzichten visualiseren in Power BI
 
@@ -409,7 +409,7 @@ Als u de logica wilt toevoegen aan het ontwerp van de logische app, selecteert u
     * Selecteer het veld **Tijdstempel** en selecteer vervolgens **x-opt-enqueuedtime** in de lijst **Dynamische inhoud**.
     * Selecteer het veld **Dwell Time 1** en selecteer vervolgens **Meer weergeven** naast **Telemetrie parseren**. Selecteer vervolgens **DwellTime1**.
     * Selecteer het veld **Dwell Time 2** en selecteer vervolgens **Meer weergeven** naast **Telemetrie parseren**. Selecteer vervolgens **DwellTime2**.
-    * Selecteer **Opslaan** om uw wijzigingen op te slaan. De actie **Dwell Time interface** ziet eruit als in de volgende schermopname: ![Actie Occupancy](./media/tutorial-in-store-analytics-visualize-insights/occupancy-action-1.png)
+    * Selecteer **Opslaan** om uw wijzigingen op te slaan. De actie **Dwell Time interface** ziet eruit als in de volgende schermopname: ![Schermopname met de actie "Dwell Time interface".](./media/tutorial-in-store-analytics-visualize-insights/occupancy-action-1.png)
 1. Selecteer de actie **People Count interface** en selecteer **Een actie toevoegen**.
 1. Typ **Power BI**in **Connectors en acties doorzoeken** en druk op **Enter**.
 1. Selecteer de actie **Add rows to a dataset (preview)** .
@@ -484,7 +484,7 @@ Voeg vier kaarttegels toe om de lengte van de rij aan te geven en de wachttijd v
 
 Wijzig de grootte van de tegels in het dashboard en rangschik ze zodat ze eruitzien zoals in de volgende schermopname:
 
-![Power BI-dashboard](./media/tutorial-in-store-analytics-visualize-insights/pbi-dashboard.png)
+![Schermopname van het Power B I-dashboard met tegels waarvan het formaat en de positie is gewijzigd.](./media/tutorial-in-store-analytics-visualize-insights/pbi-dashboard.png)
 
 U kunt een aantal grafische afbeeldingen toevoegen om het dashboard verder aan te passen:
 

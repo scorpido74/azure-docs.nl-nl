@@ -7,16 +7,16 @@ ms.service: web-application-firewall
 ms.date: 02/25/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 6ed382e88700e4ecd7f8de20a2c8da7ed3c13566
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 43565e812abcf0b7dbb992ac4d25a62a4d08df2b
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77925928"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018641"
 ---
 # <a name="web-application-firewall-waf-with-front-door-service-exclusion-lists"></a>Web Application firewall (WAF) met uitsluitings lijsten voor de front-deur service 
 
-Soms kan Web Application firewall (WAF) een aanvraag blok keren die u wilt toestaan voor uw toepassing. Active Directory voegt bijvoorbeeld tokens in die worden gebruikt voor verificatie. Deze tokens kunnen speciale tekens bevatten die een onjuiste positieve waarde van de WAF-regels kunnen activeren. Met WAF-uitsluitings lijsten kunt u bepaalde kenmerken van aanvragen van een WAF-evaluatie weglaten.  Een uitsluitings lijst kan worden geconfigureerd met behulp van [PowserShell](https://docs.microsoft.com/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject?view=azps-3.5.0), [Azure cli](https://docs.microsoft.com/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/exclusion?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-managed-rules-exclusion-add), [rest API](https://docs.microsoft.com/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate)of de Azure Portal. In het volgende voor beeld ziet u de Azure Portal configuratie. 
+Soms kan Web Application firewall (WAF) een aanvraag blok keren die u wilt toestaan voor uw toepassing. Active Directory voegt bijvoorbeeld tokens in die worden gebruikt voor verificatie. Deze tokens kunnen speciale tekens bevatten die een onjuiste positieve waarde van de WAF-regels kunnen activeren. Met WAF-uitsluitings lijsten kunt u bepaalde kenmerken van aanvragen van een WAF-evaluatie weglaten.  Een uitsluitings lijst kan worden geconfigureerd met behulp van  [PowserShell](https://docs.microsoft.com/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject?view=azps-3.5.0), [Azure cli](https://docs.microsoft.com/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/exclusion?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-managed-rules-exclusion-add), [rest API](https://docs.microsoft.com/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate)of de Azure Portal. In het volgende voor beeld ziet u de Azure Portal configuratie. 
 ## <a name="configure-exclusion-lists-using-the-azure-portal"></a>Uitsluitings lijsten configureren met behulp van de Azure Portal
 **Uitsluitingen beheren** is toegankelijk vanuit de WAF-portal onder **beheerde regels**
 
@@ -45,6 +45,17 @@ U kunt een exacte overeenkomst voor de aanvraag header, hoofd tekst, cookie of q
 Namen van kopteksten en cookies zijn niet hoofdletter gevoelig.
 
 U kunt de uitsluitings lijst Toep assen op alle regels in de set met beheerde regels, op regels voor een specifieke regel groep of op een enkele regel zoals weer gegeven in het vorige voor beeld. 
+
+## <a name="define-exclusion-based-on-web-application-firewall-logs"></a>Uitsluiting definiëren op basis van Firewall logboeken van Web Application
+ De [firewall bewaking en logboek registratie van Azure Web Application](waf-front-door-monitor.md) toont overeenkomende details van een geblokkeerde aanvraag. Als de waarde van een header, cookie waarde, post argument of query argument een fout-positieve waarde voor sommige regels retourneert, kunt u dat deel van de aanvraag uitsluiten van de regel. In de volgende tabel ziet u voor beelden van waarden uit WAF-logboeken en de bijbehorende uitsluitings voorwaarden.
+
+|matchVariableName uit WAF-logboeken    |Regel uitsluiting in Portal|
+|--------|------|
+|CookieValue: SOME_NAME  |De naam van de aanvraag cookie is gelijk aan SOME_NAME|
+|HeaderValue: SOME_NAME  |De naam van de aanvraag header is gelijk aan SOME_NAME|
+|PostParamValue: SOME_NAME|  De naam van de post-argument tekst van de aanvraag is gelijk aan SOME_NAME|
+|QueryParamValue: SOME_NAME| De naam van de argumenten van de query reeks is gelijk aan SOME_NAME|
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -14,10 +14,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f45b5709369dfc2025b55bc3acec69e9328ce403
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87513414"
 ---
 # <a name="assign-a-role-to-a-cloud-group-in-azure-active-directory"></a>Een rol toewijzen aan een Cloud groep in Azure Active Directory
@@ -102,4 +102,4 @@ POST https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Cloud groepen gebruiken om roltoewijzingen te beheren](roles-groups-concept.md)
-- [Problemen met rollen die zijn toegewezen aan Cloud groepen oplossen](roles-groups-faq-troubleshooting.md)
+- [Problemen met rollen die zijn toegewezen aan cloudgroepen oplossen](roles-groups-faq-troubleshooting.md)

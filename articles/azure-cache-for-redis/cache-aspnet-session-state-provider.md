@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 05/01/2017
 ms.openlocfilehash: 7692bfda16ac1b8789ee49469c46ef8276c97f8a
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88213298"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>ASP.NET-sessiestatusprovider voor Azure Cache voor Redis
@@ -125,7 +125,7 @@ Zodra deze stappen zijn uitgevoerd, wordt uw toepassing geconfigureerd voor het 
 * SQL Server-sessie status provider: deze provider slaat de sessie status op in SQL Server. Gebruik deze provider als u de sessie status wilt opslaan in permanente opslag. U kunt uw web-app schalen, maar het gebruik van SQL Server voor de sessie heeft invloed op de prestaties van uw web-app. U kunt deze provider ook gebruiken met een [OLTP-configuratie in het geheugen](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2017/11/28/asp-net-session-state-with-sql-server-in-memory-oltp/) om de prestaties te verbeteren.
 * Gedistribueerd in de geheugen sessie status provider, zoals Azure cache voor redis-sessie status provider-deze provider biedt u het beste van beide werelden. Uw web-app kan een eenvoudige, snelle en schaal bare sessie status provider hebben. Omdat deze provider de sessie status opslaat in een cache, moet uw app rekening houden met alle kenmerken die zijn gekoppeld aan een gedistribueerd in de geheugen cache, zoals tijdelijke netwerk storingen. Zie voor aanbevolen procedures voor het gebruik van cache de [richt lijnen voor caching](../best-practices-caching.md) van micro soft patronen & procedures [Azure Cloud Application Design and implementation guidance](https://github.com/mspnp/azure-guidance)(Engelstalig).
 
-Zie voor meer informatie over de sessie status en andere aanbevolen procedures [webontwikkeling best practices (buil ding Real-World Cloud apps with Azure)](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices).
+Zie [Aanbevolen procedures voor webontwikkeling (buil ding Real-World Cloud-apps met Azure)](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices)voor meer informatie over de sessie status en andere aanbevolen procedures.
 
 ## <a name="third-party-session-state-providers"></a>Sessie status providers van derden
 

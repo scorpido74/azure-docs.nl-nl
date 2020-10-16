@@ -4,16 +4,16 @@ description: Meer informatie over het maken van een Azure Red Hat open Shift pri
 ms.service: container-service
 ms.topic: article
 ms.date: 03/12/2020
-author: ms-jasondel
-ms.author: jasondel
+author: georgewallace
+ms.author: gwallace
 keywords: Aro, open Shift, AZ Aro, Red Hat, cli
 ms.custom: mvc
-ms.openlocfilehash: 11343ba668a4b74c436313f0abd4daed577c36d4
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.openlocfilehash: eedd796e3223c6cbcd0844cc4e814a35172d6c7e
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89505346"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078524"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-private-cluster"></a>Een persoonlijk Azure Red Hat open Shift 4-cluster maken
 
@@ -27,27 +27,27 @@ Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u Azure
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-### <a name="register-the-resource-providers"></a>De resource providers registreren
+### <a name="register-the-resource-providers"></a>De resourceproviders registreren
 
-1. Als u meerdere Azure-abonnementen hebt, geeft u de relevante abonnements-ID op:
+1. Als u meerdere Azure-abonnementen hebt, geeft u de relevante abonnements-id op:
 
     ```azurecli-interactive
     az account set --subscription <SUBSCRIPTION ID>
     ```
 
-1. Registreer de `Microsoft.RedHatOpenShift` resource provider:
+1. Registreer de resourceprovider `Microsoft.RedHatOpenShift`:
 
     ```azurecli-interactive
     az provider register -n Microsoft.RedHatOpenShift --wait
     ```
 
-1. Registreer de `Microsoft.Compute` resource provider:
+1. Registreer de resourceprovider `Microsoft.Compute`:
 
     ```azurecli-interactive
     az provider register -n Microsoft.Compute --wait
     ```
 
-1. Registreer de `Microsoft.Storage` resource provider:
+1. Registreer de resourceprovider `Microsoft.Storage`:
 
     ```azurecli-interactive
     az provider register -n Microsoft.Storage --wait

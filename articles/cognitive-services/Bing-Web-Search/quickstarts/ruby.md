@@ -1,5 +1,5 @@
 ---
-title: 'Quick Start: een webzoekopdracht uitvoeren met Ruby-Bing Webzoekopdrachten-API'
+title: 'Snelstart: Een zoekopdracht op internet uitvoeren met Ruby - Bing Webzoekopdrachten-API'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze snelstartgids om aanvragen naar de REST API van Bing Web Search te verzenden via Ruby en een JSON-antwoord te ontvangen
 services: cognitive-services
@@ -12,15 +12,15 @@ ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 9400558f8ea26199a2f7ac406fd6d94647243e11
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: MT
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "83873806"
 ---
 # <a name="quickstart-use-ruby-to-call-the-bing-web-search-api"></a>Snelstartgids: Ruby gebruiken voor het aanroepen van de Bing Webzoekopdrachten-API  
 
-Gebruik deze Quick Start om uw eerste oproep naar de Bing Webzoekopdrachten-API te maken. Met deze ruby-toepassing wordt een zoek opdracht naar de API verzonden en wordt het JSON-antwoord weer gegeven. Hoewel deze toepassing wordt geschreven in Ruby, is de API een REST-webservice die compatibel is met de meeste programmeer talen.
+Gebruik deze quickstart om de Bing Web Search API voor de eerste keer aan te roepen. Deze Ruby-toepassing verzendt een zoekaanvraag naar de API en geeft het JSON-antwoord weer. Ondanks dat deze toepassing in Ruby is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -33,7 +33,7 @@ Voordat u verdergaat met deze snelstart moet u beschikken over:
 
 ## <a name="create-a-project-and-declare-required-modules"></a>Een project maken en de vereiste modules declareren
 
-Maak een nieuw Ruby-project in uw favoriete IDE of editor. Vraag vervolgens naar `net/https` aanvragen voor `uri` URI-verwerking en `json` het parseren van het antwoord.
+Maak een nieuw Ruby-project in uw favoriete IDE of editor. Stel vervolgens `net/https` als vereiste voor aanvragen, `uri` voor de verwerking van URI's en `json` voor het parseren van het antwoord.
 
 ```ruby
 require 'net/https'
@@ -43,13 +43,13 @@ require 'json'
 
 ## <a name="define-variables"></a>Variabelen definiëren
 
-U moet een paar variabelen instellen voordat u kunt door gaan:
+Er moet een aantal variabelen worden ingesteld voordat we verder kunnen gaan:
 
-1. Voor de `uri` waarde kunt u het globale eind punt in de volgende code gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) eindpunt gebruiken dat wordt weer gegeven in de Azure portal voor uw resource. 
+1. Voor de `uri`-waarde kunt u het globale eindpunt in de volgende code gebruiken of het eindpunt voor het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) gebruiken dat voor uw resource wordt weergegeven in de Azure-portal. 
 
-2. Controleer of de `uri` `path` waarden en geldig zijn en vervang de `accessKey` waarde door een abonnements sleutel van uw Azure-account. 
+2. Controleer of de waarden voor `uri` en `path` geldig zijn en vervang de waarde `accessKey` door een abonnementssleutel uit uw Azure-account. 
 
-3. U kunt de zoek query eventueel aanpassen door de waarde voor te vervangen `term` .
+3. U kunt de zoekquery eventueel aanpassen door de waarde voor `term` te vervangen.
 
 ```ruby
 accessKey = "YOUR_SUBSCRIPTION_KEY"
@@ -66,7 +66,7 @@ end
 
 ## <a name="make-a-request"></a>Een aanvraag maken
 
-Gebruik deze code om een aanvraag uit te voeren en het antwoord te verwerken:
+Gebruik de volgende code om een aanvraag te maken en het antwoord te verwerken:
 
 ```ruby
 # Construct the endpoint uri.
@@ -102,7 +102,7 @@ puts JSON::pretty_generate(JSON(response.body))
 
 ## <a name="put-it-all-together"></a>Alles samenvoegen
 
-De laatste stap is om de code te valideren en uit te voeren. Als u uw code wilt vergelijken met die van ons, volgt hier het volledige programma:
+In de laatste stap valideert u de code en voert u deze uit. Als u uw code wilt vergelijken met die van ons, volgt hier het volledige programma:
 
 ```ruby
 require 'net/https'
@@ -270,6 +270,6 @@ Antwoorden afkomstig van de Bing Webzoekopdrachten-API worden geretourneerd in d
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Bing Webzoekopdrachten-API zelf studie voor een app met één pagina](../tutorial-bing-web-search-single-page-app.md)
+> [Zelfstudie voor de app met één pagina voor de Bing Web Search API](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

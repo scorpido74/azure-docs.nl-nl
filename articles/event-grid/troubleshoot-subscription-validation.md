@@ -4,10 +4,10 @@ description: In dit artikel wordt beschreven hoe u de validatie van abonnementen
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 48844859013507ab684ef8879b7b85dd6b6fe8cd
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86118984"
 ---
 # <a name="troubleshoot-azure-event-grid-subscription-validations"></a>Problemen met de validatie van Azure Event Grid-abonnementen oplossen
@@ -72,7 +72,7 @@ Als uw webhook 403 (verboden) in het antwoord retourneert, controleert u of uw w
   - 942430 (beperkte SQL-teken anomalie detectie (argumenten): aantal speciale tekens is overschreden (12))
   - 920230 (meerdere URL-code ring gedetecteerd)
   - 942130 (SQL-injectie aanval: SQL-Tautology gedetecteerd.)
-  - 931130 (mogelijke RFI-aanval (Remote File Include) = off-domein verwijzing/koppeling)
+  - 931130 (mogelijke RFI-aanval (Remote File Include) = Off-Domain referentie/koppeling)
 
 ## <a name="next-steps"></a>Volgende stappen
 Als u meer hulp nodig hebt, kunt u uw probleem in het [stack overflow forum](https://stackoverflow.com/questions/tagged/azure-eventgrid) plaatsen of een [ondersteunings ticket](https://azure.microsoft.com/support/options/)openen. 

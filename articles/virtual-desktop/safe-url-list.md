@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f9f68d3734cd7de83a2ddd376caefa410c619d61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90db861a4ef4fc951844d3ae82a51d20cf9dc8c5
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "89291106"
+ms.locfileid: "91875101"
 ---
 # <a name="safe-url-list"></a>Lijst met veilige URL's
 
@@ -19,17 +19,19 @@ U moet bepaalde Url's blok keren zodat uw Windows Virtual Desktop-implementatie 
 
 ## <a name="virtual-machines"></a>Virtuele machines
 
-De virtuele Azure-machine die u maakt voor Windows Virtual Desktop moet toegang hebben tot de volgende URL's:
+De virtuele machines van Azure die u voor virtuele Windows-Bureau bladen maakt, moeten toegang hebben tot de volgende Url's in de commerciële cloud van Azure:
 
 |Adres|Uitgaande TCP-poort|Doel|Servicetag|
 |---|---|---|---|
 |*.wvd.microsoft.com|443|Serviceverkeer|WindowsVirtualDesktop|
-|mrsglobalsteus2prod.blob.core.windows.net|443|Updates van Agent- en SXS-stack|AzureCloud|
-|*.core.windows.net|443|Agent-verkeer|AzureCloud|
-|*.servicebus.windows.net|443|Agent-verkeer|AzureCloud|
 |gcs.prod.monitoring.core.windows.net|443|Agent-verkeer|AzureCloud|
+|production.diagnostics.monitoring.core.windows.net|443|Agent-verkeer|AzureCloud|
+|* xt.blob.core.windows.net|443|Agent-verkeer|AzureCloud|
+|* eh.servicebus.windows.net|443|Agent-verkeer|AzureCloud|
+|* xt.table.core.windows.net|443|Agent-verkeer|AzureCloud|
 |catalogartifact.azureedge.net|443|Azure Marketplace|AzureCloud|
 |kms.core.windows.net|1688|Windows-activering|Internet|
+|mrsglobalsteus2prod.blob.core.windows.net|443|Updates van Agent- en SXS-stack|AzureCloud|
 |wvdportalstorageblob.blob.core.windows.net|443|Ondersteuning Azure-portal|AzureCloud|
 | 169.254.169.254 | 80 | [Azure instance meta data service-eind punt](../virtual-machines/windows/instance-metadata-service.md) | N.v.t. |
 | 168.63.129.16 | 80 | [Status controle van sessie-host](../virtual-network/security-overview.md#azure-platform-considerations) | N.v.t. |
@@ -39,16 +41,33 @@ De virtuele Azure-machine die u maakt voor Windows Virtual Desktop moet toegang 
 >
 >We raden u aan om FQDN-tags of servicetags te gebruiken in de plaats van URL's om serviceproblemen te vermijden. De vermelde URL's en tags komen enkel overeen met Windows Virtual Desktop-sites en -resources. Ze bevatten geen URL's voor andere services zoals Azure Active Directory.
 
-In de volgende tabel vindt u optionele URL's waar uw virtuele Azure-machines toegang tot kunnen hebben.
+De virtuele machines van Azure die u voor virtuele Windows-Bureau bladen maakt, moeten toegang hebben tot de volgende Url's in de Azure Government Cloud:
 
 |Adres|Uitgaande TCP-poort|Doel|Servicetag|
 |---|---|---|---|
-|*.microsoftonline.com|443|Verificatie voor Microsoft Online Services|Geen|
+|*. wvd.microsoft.us|443|Serviceverkeer|WindowsVirtualDesktop|
+|gcs.monitoring.core.usgovcloudapi.net|443|Agent-verkeer|AzureCloud|
+|monitoring.core.usgovcloudapi.net|443|Agent-verkeer|AzureCloud|
+|fairfax.warmpath.usgovcloudapi.net|443|Agent-verkeer|AzureCloud|
+|* xt.blob.core.usgovcloudapi.net|443|Agent-verkeer|AzureCloud|
+|*. servicebus.usgovcloudapi.net|443|Agent-verkeer|AzureCloud|
+|* xt.table.core.usgovcloudapi.net|443|Agent-verkeer|AzureCloud|
+|Kms.core.usgovcloudapi.net|1688|Windows-activering|Internet|
+|mrsglobalstugviffx.core.usgovcloudapi.net|443|Updates van Agent- en SXS-stack|AzureCloud|
+|wvdportalstorageblob.blob.core.usgovcloudapi.net|443|Ondersteuning Azure-portal|AzureCloud|
+| 169.254.169.254 | 80 | [Azure instance meta data service-eind punt](../virtual-machines/windows/instance-metadata-service.md) | N.v.t. |
+| 168.63.129.16 | 80 | [Status controle van sessie-host](../virtual-network/security-overview.md#azure-platform-considerations) | N.v.t. |
+
+In de volgende tabel vindt u optionele URL's waar uw virtuele Azure-machines toegang tot kunnen hebben.
+
+|Adres|Uitgaande TCP-poort|Doel|Azure-gov|
+|---|---|---|---|
+|*.microsoftonline.com|443|Verificatie voor Microsoft Online Services|login.microsoftonline.us|
 |*.events.data.microsoft.com|443|Telemetrieservice|Geen|
 |www.msftconnecttest.com|443|Detecteert of het besturingssysteem een verbinding heeft met het internet|Geen|
 |*.prod.do.dsp.mp.microsoft.com|443|Windows Update|Geen|
-|login.windows.net|443|Aanmelden bij Microsoft Online Services, Microsoft 365|Geen|
-|*.sfx.ms|443|Updates voor OneDrive-clientsoftware|Geen|
+|login.windows.net|443|Aanmelden bij Microsoft Online Services, Microsoft 365|login.microsoftonline.us|
+|*.sfx.ms|443|Updates voor OneDrive-clientsoftware|oneclient.sfx.ms|
 |*.digicert.com|443|Controle van certificaatintrekking|Geen|
 
 >[!NOTE]
@@ -66,15 +85,15 @@ In de volgende tabel vindt u optionele URL's waar uw virtuele Azure-machines toe
 
 Alle Extern bureaublad-clients die u gebruikt, moeten toegang hebben tot de volgende Url's:
 
-|Adres|Uitgaande TCP-poort|Doel|Client(s)|
-|---|---|---|---|
-|*.wvd.microsoft.com|443|Serviceverkeer|Alle|
-|*.servicebus.windows.net|443|Probleemoplossingsgegevens|Alle|
-|go.microsoft.com|443|Microsoft FWLinks|Alle|
-|aka.ms|443|Microsoft URL-verkorter|Alle|
-|docs.microsoft.com|443|Documentatie|Alle|
-|privacy.microsoft.com|443|Privacyverklaring|Alle|
-|query.prod.cms.rt.microsoft.com|443|Clientupdates|Windows-pc|
+|Adres|Uitgaande TCP-poort|Doel|Client(s)|Azure-gov|
+|---|---|---|---|---|
+|*.wvd.microsoft.com|443|Serviceverkeer|Alle|*. wvd.microsoft.us|
+|*.servicebus.windows.net|443|Probleemoplossingsgegevens|Alle|*. servicebus.usgovcloudapi.net|
+|go.microsoft.com|443|Microsoft FWLinks|Alle|Geen|
+|aka.ms|443|Microsoft URL-verkorter|Alle|Geen|
+|docs.microsoft.com|443|Documentatie|Alle|Geen|
+|privacy.microsoft.com|443|Privacyverklaring|Alle|Geen|
+|query.prod.cms.rt.microsoft.com|443|Clientupdates|Windows-pc|Geen|
 
 >[!IMPORTANT]
 >Het openen van deze URL's is essentieel voor een betrouwbare clientervaring. Toegang blokkeren tot deze URL's wordt niet ondersteund en heeft gevolgen voor de functionaliteit van de service.

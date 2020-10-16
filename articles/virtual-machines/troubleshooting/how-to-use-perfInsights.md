@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: f49ae5139dc92ec1448e5dea05be8c8c216ef91e
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91361344"
 ---
 # <a name="how-to-use-perfinsights-in-azure"></a>PerfInsights gebruiken in azure
@@ -118,12 +118,12 @@ Informatie over Windows VM, schijven of opslag groepen configuratie, prestatie m
 | SQL Server-configuratie          | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
 | Traceringen van prestatie diagnostiek *  | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
 | Tracering van prestatie meter items * *      |                            |                                    | Ja                      |                      | Ja                  |
-| Tracering SMB-teller * *              |                            |                                    |                          | Yes                  |                      |
+| Tracering SMB-teller * *              |                            |                                    |                          | Ja                  |                      |
 | Teller tracering SQL Server * *       |                            |                                    | Ja                      |                      | Ja                  |
-| Xperf tracering                       |                            |                                    |                          |                      | Yes                  |
-| StorPort-tracering                    |                            |                                    |                          |                      | Yes                  |
+| Xperf tracering                       |                            |                                    |                          |                      | Ja                  |
+| StorPort-tracering                    |                            |                                    |                          |                      | Ja                  |
 | Netwerk tracering                     |                            |                                    |                          | Ja                  | Ja                  |
-| Diskspd-Bench Mark-tracering * * *       |                            | Yes                                |                          |                      |                      |
+| Diskspd-Bench Mark-tracering * * *       |                            | Ja                                |                          |                      |                      |
 |       |                            |                         |                                                   |                      |                      |
 
 ### <a name="performance-diagnostics-trace-"></a>Prestatie diagnostiek tracering (*)

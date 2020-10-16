@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
 ms.openlocfilehash: e2922d19dbcad7da2808a86896e39d21420e73d5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90904740"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Handleiding voor het oplossen van problemen met Azure Security Center
@@ -64,7 +64,7 @@ Als u de Services Management Console (Services. msc) opent, ziet u ook de Log An
 
 Als u wilt zien welke versie van de agent u hebt, opent u **taak beheer**, gaat u naar het tabblad **processen** en gaat u naar de **log Analytics Agent-service**, klikt u erop met de rechter muisknop en klikt u op **Eigenschappen**. Op het tabblad **Details** kunt u de bestandsversie vinden, zoals hieronder wordt weergegeven:
 
-![Bestand](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig6.png)
+![File](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig6.png)
 
 ## <a name="log-analytics-agent-installation-scenarios"></a>Installatie scenario's voor Log Analytics agent
 
@@ -81,7 +81,7 @@ Er zijn twee installatie scenario's die verschillende resultaten kunnen oplevere
 
 **Bewakingsstatus** toont de reden waarom Security Center VM's en computers die zijn geïnitialiseerd voor automatische inrichting niet afdoende kan bewaken. In de volgende tabel ziet u de waarden, beschrijvingen en oplossingen voor **Bewakingsstatus**.
 
-| Bewakingsstatus | Description | Stappen om het probleem op te lossen |
+| Bewakingsstatus | Beschrijving | Stappen om het probleem op te lossen |
 |---|---|---|
 | Agent wacht op installatie | De installatie van de Log Analytics-agent is nog actief.  De installatie kan enkele uren duren. | Wacht totdat de automatische installatie is voltooid. |
 | Energiestatus uitgeschakeld | De virtuele machine is gestopt.  De Log Analytics-agent kan alleen worden geïnstalleerd op een virtuele machine waarop wordt uitgevoerd. | Start de VM opnieuw op. |
@@ -105,10 +105,10 @@ De volgende tabel bevat de resources die nodig zijn voor communicatie.
 
 | Agentresource | Poorten | HTTPS-controle overslaan |
 |---|---|---|
-| *.ods.opinsights.azure.com | 443 | Yes |
-| *.oms.opinsights.azure.com | 443 | Yes |
-| *.blob.core.windows.net | 443 | Yes |
-| *.azure-automation.net | 443 | Yes |
+| *.ods.opinsights.azure.com | 443 | Ja |
+| *.oms.opinsights.azure.com | 443 | Ja |
+| *.blob.core.windows.net | 443 | Ja |
+| *.azure-automation.net | 443 | Ja |
 
 Als er problemen zijn tijdens het onboarden van de agent, leest u het artikel [Onboarding-problemen van Operations Management Suite oplossen](https://support.microsoft.com/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues).
 
@@ -140,15 +140,15 @@ Sommige problemen kunnen worden geïdentificeerd aan de hand van de richt lijnen
 
 In dit document hebt u kunnen lezen hoe u het beveiligingsbeleid configureert in Azure Security Center. Zie de volgende onderwerpen voor meer informatie over Azure Security Center:
 
-* [Azure Security Center plannings-en bedienings handleiding](security-center-planning-and-operations-guide.md) : informatie over het plannen en begrijpen van de ontwerp overwegingen bij het aannemen van Azure Security Center.
-* [Beveiligings status controleren in azure Security Center](security-center-monitoring.md) : informatie over het controleren van de status van uw Azure-resources
-* [Beveiligings waarschuwingen beheren en erop reageren in azure Security Center](security-center-managing-and-responding-alerts.md) : meer informatie over het beheren en reageren op beveiligings waarschuwingen
+* [Plannings- en bedieningsgids voor het Azure Beveiligingscentrum](security-center-planning-and-operations-guide.md): leer de ontwerpoverwegingen kennen en plan hiervoor bij de overstap naar Azure Security Center.
+* [Security health monitoring in Azure Security Center](security-center-monitoring.md) (Beveiligingsstatus controleren in Azure Security Center): meer informatie over het controleren van de status van uw Azure-resources
+* [Beveiligingswaarschuwingen beheren en erop reageren in Azure Security Center](security-center-managing-and-responding-alerts.md): leer hoe u beveiligingswaarschuwingen kunt beheren en erop kunt reageren
 * [Beveiligingswaarschuwingen in Azure Security Center](security-center-alerts-type.md)
 * [Zelfstudie: Reageren op beveiligingsincidenten](tutorial-security-incident.md)
 * [Validatie van waarschuwingen in Azure Security Center](security-center-alert-validation.md)
 * [E-mailmeldingen in Azure Security Center](security-center-provide-security-contact-details.md)
 * [Beveiligingsincidenten afhandelen in Azure Security Center](security-center-incident.md)
-* [Detectie mogelijkheden Azure Security Center](security-center-detection-capabilities.md)
+* [Detectiemogelijkheden van Azure Security Center](security-center-detection-capabilities.md)
 * [Partneroplossingen bewaken met Azure Security Center](security-center-partner-solutions.md): leer hoe u de integriteitsstatus van uw partneroplossingen kunt bewaken.
 * [Veelgestelde](faq-general.md) vragen over Azure Security Center: vind een veelgestelde vraag over het gebruik van de service
-* [Azure-beveiligings blog](https://docs.microsoft.com/archive/blogs/azuresecurity/) : vind blog berichten over de beveiliging en naleving van Azure
+* [Azure-beveiligingsblog](https://docs.microsoft.com/archive/blogs/azuresecurity/): lees blogberichten over de beveiliging en naleving van Azure

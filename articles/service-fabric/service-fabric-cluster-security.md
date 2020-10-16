@@ -4,12 +4,12 @@ description: Meer informatie over beveiligings scenario's voor een Azure Service
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
-ms.openlocfilehash: 258a6dd141ccc31516e37dac9f265328f981bbf5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 8d6f3e94a735a6a8880d726890f1eb7ac346c755
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261075"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946192"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Beveiligings scenario's voor Service Fabric cluster
 
@@ -110,7 +110,7 @@ Deze certificaten (één primair en optioneel een secundair) zijn vereist voor h
 
 Met cluster verificatie wordt de communicatie tussen knoop punten voor de cluster Federatie geverifieerd. Alleen knoop punten die hun identiteit kunnen bewijzen met dit certificaat kunnen lid worden van het cluster. Server verificatie verifieert de Cluster beheer-eind punten aan een Management-client, zodat de Management-client weet dat deze is praten met het echte cluster en niet een ' man in het midden '. Dit certificaat biedt ook een TLS voor de HTTPS-beheer-API en voor Service Fabric Explorer via HTTPS. Wanneer een client of knoop punt een knoop punt verifieert, is een van de eerste controles de waarde van de algemene naam in het veld **onderwerp** . Deze algemene naam of een van de alternatieve namen voor de certificaat houder (San's) moet aanwezig zijn in de lijst met toegestane algemene namen.
 
-Het certificaat moet voldoen aan de volgende vereisten:
+Het certificaat moet aan de volgende vereisten voldoen:
 
 * Het certificaat moet een persoonlijke sleutel bevatten. Deze certificaten hebben doorgaans extensies. pfx of. pem  
 * Het certificaat moet worden gemaakt voor sleutel uitwisseling, dat kan worden geëxporteerd naar een pfx-bestand (Personal Information Exchange).
@@ -134,7 +134,7 @@ Het concept van het maken van beveiligde clusters is hetzelfde, of het nu gaat o
 
 ### <a name="client-authentication-certificates-optional"></a>Client verificatie certificaten (optioneel)
 
-U kunt een wille keurig aantal extra certificaten opgeven voor beheer-of gebruikers-client bewerkingen. De client kan dit certificaat gebruiken wanneer wederzijdse verificatie is vereist. Client certificaten worden meestal niet uitgegeven door een certificerings instantie van derden. In plaats daarvan bevat het persoonlijke archief van de huidige gebruikers locatie meestal client certificaten die daar zijn geplaatst door een basis instantie. Het certificaat moet een waarde hebben **die bedoeld** is voor **client verificatie**.  
+U kunt een wille keurig aantal extra certificaten opgeven voor beheer-of gebruikers-client bewerkingen. De client kan deze certificaten gebruiken wanneer wederzijdse verificatie is vereist. Client certificaten worden meestal niet uitgegeven door een certificerings instantie van derden. In plaats daarvan bevat het persoonlijke archief van de huidige gebruikers locatie meestal client certificaten die daar zijn geplaatst door een basis instantie. Het certificaat moet een waarde hebben **die bedoeld** is voor **client verificatie**.  
 
 Het cluster certificaat heeft standaard beheerders machtigingen voor de beheerder. Deze aanvullende client certificaten mogen niet worden geïnstalleerd in het cluster, maar zijn wel opgegeven als toegestaan in de cluster configuratie.  De client certificaten moeten echter worden geïnstalleerd op de client computers om verbinding te maken met het cluster en bewerkingen uit te voeren.
 

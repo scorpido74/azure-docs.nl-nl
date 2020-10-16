@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: erhopf
 ms.openlocfilehash: c7dd916b27cd8005162c09f7e6a090293e336719
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83590635"
 ---
 # <a name="custom-subdomain-names-for-cognitive-services"></a>Aangepaste subdomein namen voor Cognitive Services
@@ -68,9 +68,9 @@ Ja. Dit is een lijst met regionale eind punten die u kunt gebruiken met Azure Co
 > [!NOTE]
 > De Translator-service en Bing Zoeken-API's globale eind punten gebruiken.
 
-| Type eind punt | Regio | Eindpunt |
+| Eindpunttype | Regio | Eindpunt |
 |---------------|--------|----------|
-| Public | Global (Translator & Bing) | `https://api.cognitive.microsoft.com` |
+| Openbaar | Global (Translator & Bing) | `https://api.cognitive.microsoft.com` |
 | | Australië - oost | `https://australiaeast.api.cognitive.microsoft.com` |
 | | Brazilië - zuid | `https://brazilsouth.api.cognitive.microsoft.com` |
 | | Canada - midden | `https://canadacentral.api.cognitive.microsoft.com` |
@@ -80,12 +80,12 @@ Ja. Dit is een lijst met regionale eind punten die u kunt gebruiken met Azure Co
 | | VS - oost 2 | `https://eastus2.api.cognitive.microsoft.com` |
 | | Frankrijk - centraal | `https://francecentral.api.cognitive.microsoft.com` |
 | | India - centraal | `https://centralindia.api.cognitive.microsoft.com` |
-| | Japan - oost | `https://japaneast.api.cognitive.microsoft.com` |
+| | Japan East | `https://japaneast.api.cognitive.microsoft.com` |
 | | Korea - centraal | `https://koreacentral.api.cognitive.microsoft.com` |
 | | VS - noord-centraal | `https://northcentralus.api.cognitive.microsoft.com` |
 | | Europa - noord | `https://northeurope.api.cognitive.microsoft.com` |
 | | Zuid-Afrika - noord | `https://southafricanorth.api.cognitive.microsoft.com` |
-| | VS - zuid-centraal | `https://southcentralus.api.cognitive.microsoft.com` |
+| | South Central US | `https://southcentralus.api.cognitive.microsoft.com` |
 | | Azië - zuidoost | `https://southeastasia.api.cognitive.microsoft.com` |
 | | Verenigd Koninkrijk Zuid | `https://uksouth.api.cognitive.microsoft.com` |
 | | VS - west-centraal | `https://westcentralus.api.cognitive.microsoft.com` |
@@ -93,7 +93,7 @@ Ja. Dit is een lijst met regionale eind punten die u kunt gebruiken met Azure Co
 | | VS - west | `https://westus.api.cognitive.microsoft.com` |
 | | VS - west 2 | `https://westus2.api.cognitive.microsoft.com` |
 | US Gov | VS (overheid) - Virginia | `https://virginia.api.cognitive.microsoft.us` |
-| China | China-oost 2 | `https://chinaeast2.api.cognitive.azure.cn` |
+| China | China - oost 2 | `https://chinaeast2.api.cognitive.azure.cn` |
 | | China - noord | `https://chinanorth.api.cognitive.azure.cn` |
 
 ## <a name="see-also"></a>Zie ook

@@ -4,10 +4,10 @@ description: Richt lijnen en aanbevelingen voor het gebruik van Service Fabric b
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: 63e6de436bdaceed7f1d2a78e8385dd14bfc0ed6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86260923"
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Richt lijnen en aanbevelingen voor betrouw bare verzamelingen in azure Service Fabric
@@ -40,17 +40,17 @@ Hier volgen enkele dingen die u moet onthouden:
   Dit betekent dat een versie van gegevens die is gelezen uit één secundair mogelijk onwaar is voor de voortgang.
   Lees bewerkingen van de primaire zijn altijd stabiel: kan nooit ONWAAR worden uitgevoerd.
 * De beveiliging/privacy van de gegevens die door uw toepassing worden bewaard in een betrouw bare verzameling is uw beslissing en is onderworpen aan de beveiligingen van uw opslag beheer. dat wil zeggen. Versleuteling van de schijf van het besturings systeem kan worden gebruikt om uw gegevens in rust te beveiligen.
-* `ReliableDictionary`opsomming maakt gebruik van een gesorteerde gegevens structuur, gesorteerd op sleutel. Om opsommings efficiënt te maken, worden door voeren toegevoegd aan een tijdelijke hashtabel en later verplaatst naar het hoofd controlepunt van de primaire gesorteerde gegevens structuur. Toevoegingen/updates/verwijderen hebben de best mogelijke runtime van O (1) en het ergste geval van een runtime van O (log n), in het geval van validatie controles op de aanwezigheid van de sleutel. Kan worden opgehaald als O (1) of O (logboek n), afhankelijk van het feit of u een recente door Voer of een oudere commit-bewerking leest.
+* `ReliableDictionary` opsomming maakt gebruik van een gesorteerde gegevens structuur, gesorteerd op sleutel. Om opsommings efficiënt te maken, worden door voeren toegevoegd aan een tijdelijke hashtabel en later verplaatst naar het hoofd controlepunt van de primaire gesorteerde gegevens structuur. Toevoegingen/updates/verwijderen hebben de best mogelijke runtime van O (1) en het ergste geval van een runtime van O (log n), in het geval van validatie controles op de aanwezigheid van de sleutel. Kan worden opgehaald als O (1) of O (logboek n), afhankelijk van het feit of u een recente door Voer of een oudere commit-bewerking leest.
 
 ## <a name="volatile-reliable-collections"></a>Vluchtige betrouw bare verzamelingen
 Houd rekening met het volgende als u wilt bepalen of u vluchtige betrouw bare verzamelingen wilt gebruiken:
 
-* ```ReliableDictionary```heeft vluchtige ondersteuning
-* ```ReliableQueue```heeft vluchtige ondersteuning
-* ```ReliableConcurrentQueue```heeft geen vluchtige ondersteuning
+* ```ReliableDictionary``` heeft vluchtige ondersteuning
+* ```ReliableQueue``` heeft vluchtige ondersteuning
+* ```ReliableConcurrentQueue``` heeft geen vluchtige ondersteuning
 * Blijvende Services kunnen niet vluchtig worden gemaakt. ```HasPersistedState```Als u de markering wilt wijzigen, ```false``` moet u de volledige service helemaal opnieuw maken
 * Tijdelijke Services kunnen niet blijvend worden gemaakt. ```HasPersistedState```Als u de markering wilt wijzigen, ```true``` moet u de volledige service helemaal opnieuw maken
-* ```HasPersistedState```is een serviceniveau configuratie. Dit betekent dat **alle** verzamelingen persistent of vluchtig zijn. U kunt geen vluchtige en permanente verzamelingen combi neren
+* ```HasPersistedState``` is een serviceniveau configuratie. Dit betekent dat **alle** verzamelingen persistent of vluchtig zijn. U kunt geen vluchtige en permanente verzamelingen combi neren
 * Quorum verlies van een vluchtige partitie resulteert in volledig verlies van gegevens
 * Backup en Restore is niet beschikbaar voor vluchtige Services
 

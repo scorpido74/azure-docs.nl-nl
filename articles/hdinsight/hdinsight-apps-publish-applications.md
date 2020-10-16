@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 05/14/2018
 ms.author: hrasheed
 ms.openlocfilehash: 2cee60a71f6f19e09194dc689f95999bb11faad3
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86086463"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Een HDInsight-toepassing publiceren in azure Marketplace
@@ -76,7 +76,7 @@ Het installatie script moet de volgende kenmerken hebben:
 ## <a name="package-the-application"></a>De toepassing inpakken
 Maak een zip-bestand dat alle bestanden bevat die nodig zijn voor het installeren van uw HDInsight-toepassing. U gebruikt het zip-bestand om de toepassing te publiceren. Het zip-bestand bevat de volgende bestanden:
 
-* createUiDefinition.jsop
+* createUiDefinition.json
 * mainTemplate.jsop (Zie [aangepaste HDInsight-toepassingen installeren](hdinsight-apps-install-custom-applications.md)voor een voor beeld.)
 * Alle vereiste scripts
 

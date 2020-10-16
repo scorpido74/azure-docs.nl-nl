@@ -7,10 +7,10 @@ ms.date: 08/18/2017
 ms.author: masnider
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3cb22bc2cd032e51dcdb7429e2c0684c578b0870
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89005646"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Resource gebruik beheren en laden in Service Fabric met metrische gegevens
@@ -19,7 +19,7 @@ ms.locfileid: "89005646"
 Dingen zoals geheugen, schijf en CPU-gebruik zijn voor beelden van metrische gegevens. Deze metrische gegevens zijn fysieke metrische gegevens, resources die overeenkomen met fysieke resources op het knoop punt dat moet worden beheerd. Metrische gegevens kunnen ook worden (en meestal) logische metrische gegevens. Logische metrische gegevens zijn dingen zoals "MyWorkQueueDepth" of "MessagesToProcess" of "TotalRecords". Logische metrische gegevens worden door de toepassing gedefinieerd en komen indirect overeen met een fysiek Resource verbruik. Logische metrische gegevens zijn gebruikelijk omdat het lastig is om het verbruik van fysieke resources per service te meten en te rapporteren. De complexiteit van het meten en rapporteren van uw eigen fysieke metrische gegevens is ook waarom Service Fabric een aantal standaard metrische gegevens biedt.
 
 ## <a name="default-metrics"></a>Standaard waarden
-Stel dat u aan de slag wilt gaan met het schrijven en implementeren van uw service. Op dit moment weet u niet welke fysieke of logische resources er worden gebruikt. Dat is prima. De Service Fabric cluster resource manager maakt gebruik van enkele standaard waarden wanneer er geen andere metrieken zijn opgegeven. Dat zijn:
+Stel dat u aan de slag wilt gaan met het schrijven en implementeren van uw service. Op dit moment weet u niet welke fysieke of logische resources er worden gebruikt. Dat is prima. De Service Fabric cluster resource manager maakt gebruik van enkele standaard waarden wanneer er geen andere metrieken zijn opgegeven. Dit zijn:
 
   - PrimaryCount: aantal primaire replica's op het knoop punt 
   - ReplicaCount-telling van de totale stateful replica's op het knoop punt
@@ -28,8 +28,8 @@ Stel dat u aan de slag wilt gaan met het schrijven en implementeren van uw servi
 | Gegevens | Stateless instantie laden | Stateful secundaire belasting | Stateful primaire belasting | Gewicht |
 | --- | --- | --- | --- | --- |
 | PrimaryCount |0 |0 |1 |Hoog |
-| ReplicaCount |0 |1 |1 |Middelgroot |
-| Aantal |1 |1 |1 |Laag |
+| ReplicaCount |0 |1 |1 |Normaal |
+| Aantal |1 |1 |1 |Beperkt |
 
 
 Voor basis werkbelastingen bieden de standaard metrische gegevens een goede verdeling van het werk in het cluster. In het volgende voor beeld zien we wat er gebeurt wanneer we twee services maken en afhankelijk zijn van de standaard waarden voor de taak verdeling. De eerste service is een stateful service met drie partities en de grootte van de doel replica is ingesteld op drie. De tweede service is een stateless service met één partitie en een aantal exemplaren van drie.

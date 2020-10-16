@@ -8,19 +8,19 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a04435b1e2feb537231bb80d2777b9ea2599c241
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: 6bdf008c13a1466ec47134c303902a1f9d19545b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91812400"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072761"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Gids voor Azure Key Vault-ontwikkelaars
 
 Met Key Vault kunt u veilig toegang krijgen tot gevoelige informatie in uw toepassingen:
 
 - Sleutels, geheimen en certificaten zijn beveiligd zonder dat u zelf de code hoeft te schrijven en u kunt deze eenvoudig gebruiken vanuit uw toepassingen.
-- U kunt ervoor zorgen dat klanten hun eigen sleutels, geheimen en certificaten kunnen beheren, zodat u zich op de kern functies van de software kan concentreren. Op deze manier zijn uw toepassingen niet verantwoordelijk voor de verantwoordelijkheid of de mogelijke aansprakelijkheid voor de Tenant sleutels, geheimen en certificaten van uw klanten.
+- U kunt klanten toestaan hun eigen sleutels, geheimen en certificaten te beheren, zodat u zich op de basis van de functies voor de software van de kern kan concentreren. Op deze manier zijn uw toepassingen niet verantwoordelijk voor de verantwoordelijkheid of de mogelijke aansprakelijkheid voor de Tenant sleutels, geheimen en certificaten van uw klanten.
 - Uw toepassing kan gebruikmaken van sleutels voor ondertekening en versleuteling, maar blijft het sleutel beheer extern vanuit uw toepassing. Zie [about Keys](../keys/about-keys.md) (Engelstalig) voor meer informatie over sleutels
 - U kunt referenties, zoals wacht woorden, toegangs sleutels en SAS-tokens die deze opslaan in Key Vault als geheimen beheren, Zie [over geheimen](../secrets/about-secrets.md)
 - Certificaten beheren. Zie [over certificaten](../certificates/about-certificates.md) voor meer informatie.
@@ -52,17 +52,27 @@ Zie [Key Vault-beheer vlak](https://docs.microsoft.com/azure/key-vault/general/s
 Key Vault maakt gebruik van Azure AD-verificatie waarvoor Azure AD security principal toegang moet verlenen. Een beveiligings-principal voor Azure AD kan een gebruiker, een service-principal van de toepassing, een [beheerde identiteit voor Azure-resources](../../active-directory/managed-identities-azure-resources/overview.md)of een groep van elk type beveiligings-principals zijn.
 
 ### <a name="authentication-best-practices"></a>Aanbevolen procedures voor verificatie
+
 Het is raadzaam beheerde identiteit te gebruiken voor toepassingen die zijn geïmplementeerd in Azure. Als u Azure-Services gebruikt die geen beheerde identiteit ondersteunen of als toepassingen op locatie worden geïmplementeerd, is de [Service-Principal met een certificaat](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) een mogelijk alternatief. In dat scenario moet het certificaat worden opgeslagen in Key Vault en vaak worden gedraaid. Service-principals met geheim kunnen worden gebruikt voor ontwikkel-en test omgevingen, en lokaal of in Cloud Shell het gebruik van User Principal wordt aanbevolen.
 
-De bovenstaande verificaties scenario's worden ondersteund door de Azure Identity client-bibliotheek en geïntegreerd met Key Vault Sdk's. Azure Identity Library kan worden gebruikt in verschillende omgevingen en platformen zonder uw code te wijzigen. Met Azure-identiteit wordt ook automatisch een verificatie token opgehaald van aangemeld bij Azure-gebruiker met Azure CLI, Visual Studio, Visual Studio code en anderen. 
+Aanbevolen beveiligings-principals per omgeving:
+- **Productie omgeving**:
+  - Beheerde identiteit of Service-Principal met een certificaat
+- **Test-en ontwikkelings omgevingen**:
+  - Beheerde identiteit, Service-Principal met certificaat of Service-Principal met geheim
+- **Lokale ontwikkeling**:
+  - Gebruikers principal of Service-Principal met geheim
 
-Zie voor meer informatie: 
+De bovenstaande verificaties scenario's worden ondersteund door de **Azure Identity client-bibliotheek** en geïntegreerd met Key Vault sdk's. Azure Identity Library kan worden gebruikt in verschillende omgevingen en platformen zonder uw code te wijzigen. Met Azure-identiteit wordt ook automatisch een verificatie token opgehaald van aangemeld bij Azure-gebruiker met Azure CLI, Visual Studio, Visual Studio code en anderen. 
 
+Voor meer informatie over Azure Identity client libarary raadpleegt u:
+
+### <a name="azure-identity-client-libraries"></a>Azure Identity client-bibliotheken
 | .NET | Python | Java | Javascript |
 |--|--|--|--|
 |[Azure Identity SDK .NET](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme)|[Azure Identity SDK python](https://docs.microsoft.com/python/api/overview/azure/identity-readme)|[Azure Identity SDK java](https://docs.microsoft.com/java/api/overview/azure/identity-readme)|[Azure Identity SDK java script](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme)|     
 
-Verifiëren bij Key Vault in toepassingen:
+Voor zelf studies over het verifiëren van Key Vault in toepassingen raadpleegt u:
 - [Verifiëren bij Key Vault in de toepassing die in de virtuele machine wordt gehost in .NET](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-virtual-machine)
 - [Verifiëren bij Key Vault in de toepassing die in de virtuele machine wordt gehost in python](https://docs.microsoft.com/azure/key-vault/general/tutorial-python-virtual-machine)
 - [Verifiëren bij Key Vault met App Service](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-create-vault-azure-web-app)

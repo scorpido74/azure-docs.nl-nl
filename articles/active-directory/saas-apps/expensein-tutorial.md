@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/17/2020
 ms.author: jeedes
-ms.openlocfilehash: 7d0b0a6c935182737a7f207b7c7831fefcd491ea
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ccdfddd3ea76eddea2ab672fe07a092c9b1f1b62
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555294"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817055"
 ---
 # <a name="tutorial-integrate-expensein-with-azure-active-directory"></a>Zelfstudie: ExpenseIn integreren met Azure Active Directory
 
@@ -135,11 +135,11 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Klik op **Beheer** bovenaan de pagina, navigeer naar **Eenmalige aanmelding** en klik op **Provider toevoegen**.
 
-     ![ExpenseIn-configuratie](./media/expenseIn-tutorial/config01.png)
+     ![Schermopname met het tabblad "Admin" en de pagina "Single Sign-On - Providers" en "Add Provider" geselecteerd.](./media/expenseIn-tutorial/config01.png)
 
 1. Voer de volgende stappen uit in het pop-upvenster **Nieuwe identiteitsprovider**:
 
-    ![ExpenseIn-configuratie](./media/expenseIn-tutorial/config02.png)
+    ![Schermopname met het pop-upvenster Edit Identity Provider met ingevoerde waarden.](./media/expenseIn-tutorial/config02.png)
 
     a. Typ in het tekstvak **Providernaam** de naam, bijvoorbeeld Azure.
 
@@ -163,7 +163,7 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij ExpenseIn, moeten z
 
 2. Klik op **Beheer** bovenaan de pagina, navigeer naar **Gebruikers** en klik op **Nieuwe gebruiker**.
 
-     ![ExpenseIn-configuratie](./media/expenseIn-tutorial/config03.png)
+     ![Schermopname met het tabblad "Admin" en de pagina "Manage Users" met "New User" geselecteerd.](./media/expenseIn-tutorial/config03.png)
 
 3. Voer in het pop-upvenster **Details** de volgende stappen uit:
 

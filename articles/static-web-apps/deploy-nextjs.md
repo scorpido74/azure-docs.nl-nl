@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: chnwamba
 ms.custom: devx-track-js
-ms.openlocfilehash: 554a7504e4e72eb2b2921c56e535343398cfa8b6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 835ee926de776b7a25295485d18ce25f883a2c5f
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333644"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951159"
 ---
 # <a name="deploy-server-rendered-nextjs-websites-on-azure-static-web-apps-preview"></a>Met de server weergegeven Next.js-websites implementeren in Azure Static Web Apps Preview
 
@@ -73,7 +73,7 @@ Wanneer u een Next.js-site bouwt met behulp van `npm run build`, wordt de app ge
 
     ```javascript
     module.exports = {
-      exportTrailingSlash: true,
+      trailingSlash: true,
       exportPathMap: function() {
         return {
           '/': { page: '/' }
@@ -207,7 +207,7 @@ De reden voor deze fout is dat met Next.js de startpagina alleen is gegenereerd 
    const data = require('./utils/projectsData');
 
    module.exports = {
-     exportTrailingSlash: true,
+     trailingSlash: true,
      exportPathMap: async function () {
        const { projects } = data;
        const paths = {

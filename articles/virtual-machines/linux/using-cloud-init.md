@@ -6,14 +6,14 @@ ms.service: virtual-machines-linux
 ms.subservice: extensions
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 06/15/2020
+ms.date: 10/14/2020
 ms.author: danis
-ms.openlocfilehash: 7ddbb48f3598780988feb25a11729a5086d31fde
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 87cb4a233470fadc9cde616790aff0d5cd7b151b
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869266"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096654"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Cloud-init-ondersteuning voor virtuele machines in azure
 In dit artikel wordt de ondersteuning beschreven die bestaat voor [Cloud-init](https://cloudinit.readthedocs.io) voor het configureren van een virtuele machine (VM) of schaal sets voor virtuele machines bij het inrichten van de tijd in Azure. Deze Cloud-init-configuraties worden uitgevoerd bij de eerste keer opstarten zodra de resources zijn ingericht door Azure.  
@@ -45,7 +45,7 @@ Er zijn twee fasen om Cloud-init beschikbaar te maken voor het geviseerde bestur
 ### <a name="rhel"></a>RHEL
 | Uitgever/versie | Aanbieding | SKU | Versie | afbeelding Cloud-init gereed | Cloud-init-pakket ondersteuning op Azure|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|RedHat 7.6 |RHEL |7-RAW-CI |7.6.2019072418 |ja | Ja, ondersteuning van pakket versie: *18.2-1. el7_6.2*|
+|RedHat 7.6 |RHEL |7-RAW-CI |7.6.2019072418 |ja | Ja, ondersteuning van pakket versie: *18.2-1.el7_6.2*|
 |RedHat 7.7 |RHEL |7-RAW-CI |7.7.2019081601 | Ja (Opmerking: dit is een voorbeeld afbeelding en **mag** niet meer worden gebruikt. dit wordt 1e september 2020) | N.v.t. |
 |RedHat 7,7 (gen1)|RHEL |7,7 | 7.7.2020051912 | ja | Ja, ondersteuning van pakket versie: *18.5 -6. EL7*|
 |RedHat 7,7 (Gen2)|RHEL | 77-Gen2 | 7.7.2020051913 | ja | Ja, ondersteuning van pakket versie: *18.5 -6. EL7*|
@@ -97,10 +97,10 @@ Deze SLES-installatie kopieën zijn bijgewerkt met het inrichten van Cloud-init,
 ### <a name="debian"></a>Debian
 | Uitgever/versie | Aanbieding | SKU | Versie | afbeelding Cloud-init gereed | Cloud-init-pakket ondersteuning op Azure|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| Debian (gen1) |Debian-10 | 10-cloudinit |Cloud-init-preview| Ja (alleen preview-versie) | Nee, in de preview-versie. |
-| Debian (Gen2) |Debian-10 | 10-cloudinit-Gen2 |Cloud-init-preview| Ja (alleen preview-versie) | Nee, in de preview-versie. |
-
-
+| Debian (gen1) |Debian-10 | 10-cloudinit |Cloud-init-preview| Ja (Opmerking: dit is een voorbeeld afbeelding die niet meer **mag** worden gebruikt. dit wordt 1e januari 2021 verwijderd) | Nee, in de preview-versie. |
+| Debian (Gen2) |Debian-10 | 10-cloudinit-Gen2 |Cloud-init-preview| Ja (Opmerking: dit is een voorbeeld afbeelding die niet meer **mag** worden gebruikt. dit wordt 1e januari 2021 verwijderd) | Nee, in de preview-versie. |
+| Debian (gen1) |Debian-10 | 10-cloudinit |10:0.20201013.422| ja | Ja, ondersteuning van pakket versie: `20.2-2~deb10u1` |
+| Debian (Gen2) |Debian-10 | 10-cloudinit-Gen2 |0.20201013.422| ja | Ja, ondersteuning van pakket versie: `20.2-2~deb10u1` |
 
 
 Momenteel biedt Azure Stack ondersteuning voor het inrichten van installatie kopieën die zijn ingeschakeld voor Cloud-init.
@@ -152,7 +152,7 @@ az vm create \
 
 Wanneer de virtuele machine is gemaakt, toont de Azure CLI informatie die specifiek is voor uw implementatie. Noteer het `publicIpAddress`. Dit adres wordt gebruikt voor toegang tot de virtuele machine.  Het duurt enige tijd voordat de virtuele machine is gemaakt, de pakketten die moeten worden geïnstalleerd en de app worden gestart. Er zijn achtergrondtaken die nog worden uitgevoerd nadat u door de Azure CLI bent teruggeleid naar de prompt. U kunt een SSH-verbinding met de virtuele machine uitvoeren en de stappen volgen die worden beschreven in de sectie probleem oplossing om de Cloud-init-logboeken te bekijken. 
 
-U kunt ook een virtuele machine die is ingeschakeld voor Cloud initialisatie implementeren door de [para meters in arm-sjabloon](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli#inline-parameters)door te geven.
+U kunt ook een virtuele machine die is ingeschakeld voor Cloud initialisatie implementeren door de [para meters in arm-sjabloon](../../azure-resource-manager/templates/deploy-cli.md#inline-parameters)door te geven.
 
 ## <a name="troubleshooting-cloud-init"></a>Problemen met Cloud-init oplossen
 Zodra de VM is ingericht, wordt de Cloud-init uitgevoerd via alle modules en het script dat is gedefinieerd in om `--custom-data` de virtuele machine te configureren.  Als u fouten of omissies van de configuratie moet oplossen, moet u zoeken naar de module naam ( `disk_setup` of `runcmd` bijvoorbeeld) in het Cloud-init-logboek dat zich bevindt in **/var/log/Cloud-init.log**.
@@ -173,4 +173,3 @@ Raadpleeg de volgende documenten voor voor beelden van configuratie wijzigingen 
 - [Een pakket beheer programma uitvoeren om bestaande pakketten bij de eerste keer opstarten bij te werken](cloudinit-update-vm.md)
 - [Lokale hostnaam van VM wijzigen](cloudinit-update-vm-hostname.md) 
 - [Een toepassings pakket installeren, configuratie bestanden bijwerken en sleutels invoeren](tutorial-automate-vm-deployment.md)
- 

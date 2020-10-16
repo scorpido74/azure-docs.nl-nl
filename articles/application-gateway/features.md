@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: victorh
 ms.openlocfilehash: ba9f42bc932a37e1052f17db2ae00413e0769d59
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91355734"
 ---
 # <a name="azure-application-gateway-features"></a>Azure-toepassing gateway functies
@@ -24,7 +24,7 @@ Application Gateway bevat de volgende functies:
 
 - [Beëindiging van Secure Sockets Layer (SSL/TLS)](#secure-sockets-layer-ssltls-termination)
 - [Automatisch schalen](#autoscaling)
-- [Zone redundantie](#zone-redundancy)
+- [Zoneredundantie](#zone-redundancy)
 - [Statisch VIP](#static-vip)
 - [Web Application Firewall](#web-application-firewall)
 - [Controller van inkomend verkeer voor AKS](#ingress-controller-for-aks)

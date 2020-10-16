@@ -3,12 +3,12 @@ title: Hoge beschikbaarheid en herstel na noodgevallen
 description: Meer informatie over het ontwerpen van uw batch-toepassing voor een regionale storing.
 ms.topic: how-to
 ms.date: 01/29/2019
-ms.openlocfilehash: 1e22cb19aba1dcedc4ece7ddc2d1de0ab3233238
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c77e6fa672d26545af47b262a982a7d0d7303eec
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83725734"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058009"
 ---
 # <a name="design-your-application-for-high-availability"></a>Een toepassing voor hoge beschikbaarheid ontwerpen
 
@@ -39,5 +39,5 @@ Houd rekening met de volgende punten bij het ontwerpen van een oplossing die fai
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het maken van batch-accounts met de [Azure Portal](batch-account-create-portal.md), de [Azure cli](cli-samples.md), [Power shell](batch-powershell-cmdlets-get-started.md)of de [batch-beheer-API](batch-management-dotnet.md).
+- Meer informatie over het maken van batch-accounts met de [Azure Portal](batch-account-create-portal.md), de [Azure cli](./scripts/batch-cli-sample-create-account.md), [Power shell](batch-powershell-cmdlets-get-started.md)of de [batch-beheer-API](batch-management-dotnet.md).
 - Standaard quota's zijn gekoppeld aan een batch-account. in [dit artikel](batch-quota-limit.md) worden de standaard quotum waarden beschreven en wordt uitgelegd hoe de quota's kunnen worden verhoogd.

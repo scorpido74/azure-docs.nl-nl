@@ -4,10 +4,10 @@ description: Meer informatie over het integreren van Azure DevTest Labs in uw Az
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 96f99d41d0a7ea07bf3854292f9c3bd6245414b3
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87288930"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-azure-pipelines-cicd-pipeline"></a>Azure DevTest Labs integreren in uw CI/CD-pijp lijn van Azure pipelines
@@ -109,11 +109,11 @@ Variabelen toevoegen voor de waarden:
    
 1. Selecteer voor elke variabele **toevoegen** en voer de naam en waarde in:
    
-   |Naam|Waarde|
+   |Name|Waarde|
    |---|---|
    |*vmName*|De naam van de virtuele machine die u hebt toegewezen in de Resource Manager-sjabloon|
    |*userName*|Gebruikers naam voor toegang tot de virtuele machine|
-   |*wachtwoord*|Wacht woord voor de gebruikers naam. Selecteer het vergrendelings pictogram om het wacht woord te verbergen en te beveiligen.
+   |*password*|Wacht woord voor de gebruikers naam. Selecteer het vergrendelings pictogram om het wacht woord te verbergen en te beveiligen.
 
 ### <a name="create-a-devtest-labs-vm"></a>Een DevTest Labs-VM maken
 

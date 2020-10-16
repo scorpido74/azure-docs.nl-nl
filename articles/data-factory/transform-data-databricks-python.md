@@ -13,10 +13,10 @@ ms.reviewer: maghan
 manager: anandsub
 ms.custom: devx-track-python
 ms.openlocfilehash: a42c7d911793e1b4ef4183c5d1f02f8be7d4ded3
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87872290"
 ---
 # <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>Gegevens transformeren door een python-activiteit uit te voeren in Azure Databricks
@@ -67,7 +67,7 @@ In de volgende tabel worden de JSON-eigenschappen beschreven die in de JSON-defi
 |Eigenschap|Beschrijving|Vereist|
 |---|---|---|
 |naam|De naam van de activiteit in de pijp lijn.|Ja|
-|beschrijving|Tekst die beschrijft wat de activiteit doet.|Nee|
+|description|Tekst die beschrijft wat de activiteit doet.|Nee|
 |type|Voor Databricks python-activiteit is het type activiteit DatabricksSparkPython.|Ja|
 |linkedServiceName|De naam van de gekoppelde Databricks-service waarop de python-activiteit wordt uitgevoerd. Zie het artikel [Compute linked Services](compute-linked-services.md)(Engelstalig) voor meer informatie over deze gekoppelde service   .|Ja|
 |pythonFile|De URI van het python-bestand dat moet worden uitgevoerd. Alleen DBFS-paden worden ondersteund.|Ja|

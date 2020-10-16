@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/08/2019
 ms.author: cawa
 ms.openlocfilehash: 9922601d67393d103b95da7286d8db71d913434a
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88235242"
 ---
 # <a name="get-started-with-storage-explorer"></a>Aan de slag met Storage Explorer
@@ -123,7 +123,7 @@ Er zijn verschillende manieren om te koppelen aan een resource in Storage Explor
 
 1. Selecteer **een resource toevoegen via Azure Active Directory (Azure AD)** en selecteer vervolgens **volgende**.
 
-1. Selecteer een Azure-account en-Tenant. Deze waarden moeten toegang hebben tot de opslag resource die u wilt koppelen. Selecteer **Volgende**.
+1. Selecteer een Azure-account en-Tenant. Deze waarden moeten toegang hebben tot de opslag resource die u wilt koppelen. Selecteer **Next**.
 
 1. Kies het resource type dat u wilt koppelen. Geef de gegevens op die nodig zijn om verbinding te maken. 
 
@@ -155,7 +155,7 @@ Nadat de verbinding is toegevoegd, gaat de resource structuur naar het knoop pun
 
 1. Selecteer **een SAS-URI (Shared Access Signature) gebruiken**en selecteer **volgende**.
 
-1. Kies een weergave naam voor de verbinding en voer de URL voor de Shared Access-hand tekening in. Het service-eind punt voor het type resource dat u wilt koppelen, moet automatisch door voeren worden. Als u een aangepast eind punt gebruikt, is dit mogelijk niet het geval. Selecteer **Volgende**.
+1. Kies een weergave naam voor de verbinding en voer de URL voor de Shared Access-hand tekening in. Het service-eind punt voor het type resource dat u wilt koppelen, moet automatisch door voeren worden. Als u een aangepast eind punt gebruikt, is dit mogelijk niet het geval. Selecteer **Next**.
 
 1. Bekijk de **samen vatting** van de verbinding om te controleren of alle gegevens correct zijn. Als dat het geval is, selecteert u **verbinding maken**. Selecteer anders **terug** om terug te keren naar de vorige pagina's om eventuele onjuiste gegevens op te lossen.
 

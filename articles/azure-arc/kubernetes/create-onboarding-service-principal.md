@@ -9,10 +9,10 @@ ms.author: mlearned
 description: 'Een onboarding-service-principal voor Azure-Arc maken '
 keywords: Kubernetes, Arc, Azure, containers
 ms.openlocfilehash: 02689dba32c8cc91e4a4a4de4dee98bc990b4dd6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87050078"
 ---
 # <a name="create-an-azure-arc-enabled-onboarding-service-principal-preview"></a>Een onboarding-service-principal voor Azure-Arc maken (preview)
@@ -54,7 +54,7 @@ Machtigingen kunnen verder worden beperkt door het door geven van het desbetreff
 | Resource  | Argument voor `scope`| Effect |
 | ------------- | ------------- | ------------- |
 | Abonnement | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333` | Service-Principal kan elk cluster in een bestaande resource groep in het opgegeven abonnement registreren |
-| Resourcegroep | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`  | Service-Principal kan clusters __alleen__ registreren in de resource groep`myGroup` |
+| Resource Group | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`  | Service-Principal kan clusters __alleen__ registreren in de resource groep `myGroup` |
 
 ```console
 az role assignment create \

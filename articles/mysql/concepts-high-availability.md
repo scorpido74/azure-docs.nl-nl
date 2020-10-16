@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/7/2020
 ms.openlocfilehash: 668243f66deff67a923097c116c4b150d0256992
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90882550"
 ---
 # <a name="high-availability-in-azure-database-for-mysql"></a>Hoge Beschik baarheid in Azure Database for MySQL
@@ -46,7 +46,7 @@ Hier volgen enkele geplande onderhouds scenario's:
 Ongeplande uitval tijd kan optreden als gevolg van onvoorziene storingen, waaronder onderliggende hardwarestoringen, netwerk problemen en software fouten. Als de database server onverwacht uitvalt, wordt er in een paar seconden automatisch een nieuwe database server ingericht. De externe opslag wordt automatisch gekoppeld aan de nieuwe database server. MySQL-engine voert de herstel bewerking uit met WAL en database bestanden, en opent de database server om clients toe te staan verbinding te maken. Niet-doorgevoerde trans acties gaan verloren en moeten opnieuw worden geprobeerd door de toepassing. Hoewel een ongeplande uitval tijd niet kan worden vermeden, Azure Database for MySQL de uitval tijd verminderen door automatisch herstel bewerkingen uit te voeren op de database server en opslag lagen zonder menselijke tussen komst. 
 
 
-:::image type="content" source="./media/concepts-high-availability/availability-for-mysql-server.png" alt-text="weer gave van hoge Beschik baarheid in azure MySQL":::
+:::image type="content" source="./media/concepts-high-availability/availability-for-mysql-server.png" alt-text="weer gave van elastisch schalen in azure MySQL":::
 
 ### <a name="unplanned-downtime-failure-scenarios-and-service-recovery"></a>Ongeplande downtime: fout scenario's en service herstel
 Hier volgen enkele fout scenario's en hoe Azure Database for MySQL automatisch herstelt:

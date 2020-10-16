@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: contperfq1
 ms.date: 10/2/2020
 ms.openlocfilehash: 5f109ad719ada9728938f6e37d4ec854d3950a24
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91708432"
 ---
 # <a name="outputs-from-azure-stream-analytics"></a>Uitvoer van Azure Stream Analytics
@@ -25,17 +25,17 @@ Sommige typen uitvoer ondersteunen [partitionering](#partitioning)en [uitvoer ba
 
 | Uitvoertype | Partitionering | Beveiliging | 
 |-------------|--------------|----------|
-|[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|Yes|Azure Active Directory gebruiker </br> MSI|
+|[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|Ja|Azure Active Directory gebruiker </br> MSI|
 |[Azure SQL Database](sql-database-output.md)|Ja, optioneel.|SQL-gebruikers authenticatie </br> MSI (preview-versie)|
-|[Azure Synapse Analytics](azure-synapse-analytics-output.md)|Yes|SQL-gebruikers authenticatie|
-|[Blob-opslag en Azure Data Lake gen 2](blob-storage-azure-data-lake-gen2-output.md)|Yes|MSI </br> Toegangssleutel|
+|[Azure Synapse Analytics](azure-synapse-analytics-output.md)|Ja|SQL-gebruikers authenticatie|
+|[Blob-opslag en Azure Data Lake gen 2](blob-storage-azure-data-lake-gen2-output.md)|Ja|MSI </br> Toegangssleutel|
 |[Azure Event Hubs](event-hubs-output.md)|Ja, de partitie sleutel kolom moet worden ingesteld in de uitvoer configuratie.|Toegangssleutel|
-|[Power BI](power-bi-output.md)|No|Azure Active Directory gebruiker </br> MSI|
-|[Azure Table storage](table-storage-output.md)|Yes|Accountsleutel|
-|[Azure Service Bus-wachtrijen](service-bus-queues-output.md)|Yes|Toegangssleutel|
-|[Azure Service Bus onderwerpen](service-bus-topics-output.md)|Yes|Toegangssleutel|
-|[Azure Cosmos DB](azure-cosmos-db-output.md)|Yes|Toegangssleutel|
-|[Azure Functions](azure-functions-output.md)|Yes|Toegangssleutel|
+|[Power BI](power-bi-output.md)|Nee|Azure Active Directory gebruiker </br> MSI|
+|[Azure Table storage](table-storage-output.md)|Ja|Accountsleutel|
+|[Azure Service Bus-wachtrijen](service-bus-queues-output.md)|Ja|Toegangssleutel|
+|[Azure Service Bus onderwerpen](service-bus-topics-output.md)|Ja|Toegangssleutel|
+|[Azure Cosmos DB](azure-cosmos-db-output.md)|Ja|Toegangssleutel|
+|[Azure Functions](azure-functions-output.md)|Ja|Toegangssleutel|
 
 ## <a name="partitioning"></a>Partitionering
 

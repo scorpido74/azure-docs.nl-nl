@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0498ee1c57cfa661884fe3209d4e089b54996fae
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89231058"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory reporting latencies (Rapportagevertraging in Azure Active Directory)
@@ -59,7 +59,7 @@ Er zijn twee typen beveiligingsrapporten:
 
 De volgende tabel bevat de latentie-informatie voor beveiligings rapporten.
 
-| Rapport | Minimum | Gemiddeld | Maximum |
+| Rapport | Minimum | Average | Maximum |
 | :-- | --- | --- | --- |
 | Gebruikers die risico lopen          | 5 minuten   | 15 minuten  | 2 uur  |
 | Riskante aanmeldingen         | 5 minuten   | 15 minuten  | 2 uur  |
@@ -70,7 +70,7 @@ Azure AD gebruikt adaptieve machine learning algoritmen en heuristiek om verdach
 
 De volgende tabel bevat de latentie-informatie voor risico detectie.
 
-| Rapport | Minimum | Gemiddeld | Maximum |
+| Rapport | Minimum | Average | Maximum |
 | :-- | --- | --- | --- |
 | Aanmeldingen vanaf anonieme IP-adressen |5 minuten |15 minuten |2 uur |
 | Aanmeldingen vanaf onbekende locaties |5 minuten |15 minuten |2 uur |

@@ -1,5 +1,5 @@
 ---
-title: Hardop voor lezen configureren
+title: Hardop voorlezen configureren
 titleSuffix: Azure Cognitive Services
 description: In dit artikel wordt uitgelegd hoe u de verschillende opties configureert voor hardop voor lezen.
 author: metanMSFT
@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: metan
 ms.openlocfilehash: 0705977c04afe742718a96aebbac31e78dc5815f
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85486915"
 ---
 # <a name="how-to-configure-read-aloud"></a>Hardop voor lezen configureren
@@ -63,4 +63,4 @@ const options = {
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* De referentie voor de [insluitende lezer-SDK](./reference.md) verkennen
+* Lees de [naslagdocumentatie voor de Immersive Reader-SDK](./reference.md).

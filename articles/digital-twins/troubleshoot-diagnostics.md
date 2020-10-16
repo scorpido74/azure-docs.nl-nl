@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/28/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: fc397b6d6beb719e11dc3959bbcf4d75c08a8dda
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: f4abf78c153bd3d61068e4b7607794d6ccf1ed04
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723925"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047672"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Problemen oplossen met Azure Digital Apparaatdubbels: logboek registratie van diagnostische gegevens
 
@@ -49,7 +49,7 @@ Hier vindt u informatie over het inschakelen van diagnostische instellingen voor
     
 4. Sla de nieuwe instellingen op. 
 
-    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings-details.png" alt-text="Scherm afbeelding van de pagina met Diagnostische instellingen waarop de gebruiker de naam van de diagnostische instelling heeft ingevuld en enkele selectie vakjes hebt geselecteerd voor categorie Details en doel gegevens. De knop Opslaan is gemarkeerd.":::
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings-details.png" alt-text="Scherm opname van de pagina met Diagnostische instellingen en de knop die u wilt toevoegen":::
 
 Nieuwe instellingen worden in ongeveer 10 minuten van kracht. Daarna worden logboeken weer gegeven in de geconfigureerde doel weer op de pagina **Diagnostische instellingen** voor uw exemplaar. 
 
@@ -73,7 +73,7 @@ Elke logboek categorie bestaat uit bewerkingen van schrijven, lezen, verwijderen
 | Verwijderen | DELETE |
 | Bewerking | POST |
 
-Hier volgt een uitgebreide lijst met de bewerkingen en bijbehorende [Azure Digital apparaatdubbels rest API-aanroepen](https://docs.microsoft.com/rest/api/azure-digitaltwins/) die in elke categorie zijn geregistreerd. 
+Hier volgt een uitgebreide lijst met de bewerkingen en bijbehorende [Azure Digital apparaatdubbels rest API-aanroepen](/rest/api/azure-digitaltwins/) die in elke categorie zijn geregistreerd. 
 
 >[!NOTE]
 > Elke logboek categorie bevat verschillende bewerkingen/REST API-aanroepen. In de onderstaande tabel wordt elke logboek categorie toegewezen aan alle bewerkingen/REST API-aanroepen, totdat de volgende logboek categorie wordt weer gegeven. 
@@ -121,7 +121,7 @@ Dit zijn de omschrijvingen van velden en eigenschappen voor API-Logboeken.
 | `CorrelationId` | Guid | Door de klant ingevoerde unieke id voor de gebeurtenis |
 | `Level` | Tekenreeks | De ernst van de logboek registratie van de gebeurtenis |
 | `Location` | Tekenreeks | De regio waar het evenement plaatsvond |
-| `RequestUri` | Uri | Het eind punt dat wordt gebruikt tijdens de gebeurtenis |
+| `RequestUri` | URI | Het eind punt dat wordt gebruikt tijdens de gebeurtenis |
 
 Hieronder ziet u voor beelden van JSON-instanties voor deze typen logboeken.
 

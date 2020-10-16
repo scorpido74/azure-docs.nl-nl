@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 07/31/2020
 ms.author: cynthn
 ms.openlocfilehash: 34a84ed333172ea0931c529d2dbeee1b774ae8c5
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87513181"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>Gedetailleerde stappen: SSH-sleutels voor verificatie voor een virtuele Linux-machine maken en beheren in azure
@@ -33,7 +33,7 @@ Als u geen SSH-sleutels wilt gebruiken, kunt u uw virtuele Linux-machine instell
 
 ## <a name="generate-keys-with-ssh-keygen"></a>Sleutels genereren met ssh-keygen
 
-Voor het maken van de sleutels is een voorkeurs opdracht `ssh-keygen` , die beschikbaar is met OpenSSH-hulpprogram ma's in de Azure Cloud shell, een macOS-of Linux-host en Windows 10. `ssh-keygen`vraagt een reeks vragen en schrijft een persoonlijke sleutel en een overeenkomende open bare sleutel. 
+Voor het maken van de sleutels is een voorkeurs opdracht `ssh-keygen` , die beschikbaar is met OpenSSH-hulpprogram ma's in de Azure Cloud shell, een macOS-of Linux-host en Windows 10. `ssh-keygen` vraagt een reeks vragen en schrijft een persoonlijke sleutel en een overeenkomende open bare sleutel. 
 
 SSH-sleutels worden standaard opgeslagen in de `~/.ssh`-directory.  Als u niet beschikt over de map `~/.ssh`, wordt deze door de opdracht `ssh-keygen` voor u gemaakt met de juiste machtigingen.
 
@@ -62,17 +62,17 @@ ssh-keygen \
 
 `ssh-keygen` = het programma dat wordt gebruikt voor het maken van de sleutels
 
-`-m PEM`= de sleutel opmaken als PEM
+`-m PEM` = de sleutel opmaken als PEM
 
-`-t rsa`= type sleutel dat moet worden gemaakt, in dit geval in de RSA-indeling
+`-t rsa` = type sleutel dat moet worden gemaakt, in dit geval in de RSA-indeling
 
-`-b 4096`= het aantal bits in de sleutel, in dit geval 4096
+`-b 4096` = het aantal bits in de sleutel, in dit geval 4096
 
 `-C "azureuser@myserver"` = een opmerking die wordt toegevoegd aan het einde van het openbare sleutelbestand om het gemakkelijk te identificeren. Normaal gesp roken wordt een e-mail adres gebruikt als opmerking, maar u kunt ook het beste gebruikmaken van uw infra structuur.
 
-`-f ~/.ssh/mykeys/myprivatekey`= de bestands naam van het bestand met de persoonlijke sleutel als u ervoor kiest om de standaard naam niet te gebruiken. Een bijbehorende open bare-sleutel bestand dat `.pub` is toegevoegd aan, wordt gegenereerd in dezelfde map. De map moet bestaan.
+`-f ~/.ssh/mykeys/myprivatekey` = de bestands naam van het bestand met de persoonlijke sleutel als u ervoor kiest om de standaard naam niet te gebruiken. Een bijbehorende open bare-sleutel bestand dat `.pub` is toegevoegd aan, wordt gegenereerd in dezelfde map. De map moet bestaan.
 
-`-N mypassphrase`= een extra wachtwoordzin die wordt gebruikt voor toegang tot het bestand met de persoonlijke sleutel. 
+`-N mypassphrase` = een extra wachtwoordzin die wordt gebruikt voor toegang tot het bestand met de persoonlijke sleutel. 
 
 ### <a name="example-of-ssh-keygen"></a>Voorbeeld van ssh-keygen
 

@@ -14,10 +14,10 @@ ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: ed3e9da628ab779ab47673fa2ce728c5c25539be
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88166430"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>MSAL.NET gebruiken om gebruikers aan te melden met sociale identiteiten
@@ -31,11 +31,11 @@ Dit artikel is van toepassing op MSAL.NET 3. x. Zie [Azure AD B2C specifieke inf
 
 ## <a name="authority-for-an-azure-ad-b2c-tenant-and-policy"></a>Instantie voor een Azure AD B2C Tenant en beleid
 
-De indeling van de instantie voor Azure AD B2C is:`https://{azureADB2CHostname}/tfp/{tenant}/{policyName}`
+De indeling van de instantie voor Azure AD B2C is: `https://{azureADB2CHostname}/tfp/{tenant}/{policyName}`
 
-- `azureADB2CHostname`-De naam van de Azure AD B2C Tenant plus de host. Bijvoorbeeld *contosob2c.b2clogin.com*.
-- `tenant`-De domein naam of de Directory-ID (Tenant) van de Azure AD B2C Tenant. Bijvoorbeeld *contosob2c.onmicrosoft.com* of een GUID.
-- `policyName`-De naam van de gebruikers stroom of het aangepaste beleid dat moet worden toegepast. Bijvoorbeeld een aanmeldings-of aanmeldings beleid zoals *b2c_1_susi*.
+- `azureADB2CHostname` -De naam van de Azure AD B2C Tenant plus de host. Bijvoorbeeld *contosob2c.b2clogin.com*.
+- `tenant` -De domein naam of de Directory-ID (Tenant) van de Azure AD B2C Tenant. Bijvoorbeeld *contosob2c.onmicrosoft.com* of een GUID.
+- `policyName` -De naam van de gebruikers stroom of het aangepaste beleid dat moet worden toegepast. Bijvoorbeeld een aanmeldings-of aanmeldings beleid zoals *b2c_1_susi*.
 
 Zie [omleidings-Url's instellen op b2clogin.com](../../active-directory-b2c/b2clogin.md)voor meer informatie over Azure AD B2C-instanties.
 
@@ -76,9 +76,9 @@ AuthenticationResult ar = await application.AcquireTokenInteractive(scopes)
 
 In het voor gaande code fragment:
 
-- `policy`is een teken reeks met de naam van uw Azure AD B2C gebruikers stroom of aangepast beleid (bijvoorbeeld `PolicySignUpSignIn` ).
-- `ParentActivityOrWindow`is vereist voor Android (de activiteit) en is optioneel voor andere platforms die ondersteuning bieden voor een bovenliggende UI zoals Windows in micro soft Windows en UIViewController in iOS. Zie [WithParentActivityOrWindow](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively#withparentactivityorwindow) op de MSAL-wiki voor meer informatie over het dialoog venster voor de gebruikers interface.
-- `GetAccountByPolicy(IEnumerable<IAccount>, string)`is een methode die een account voor een bepaald beleid zoekt. Bijvoorbeeld:
+- `policy` is een teken reeks met de naam van uw Azure AD B2C gebruikers stroom of aangepast beleid (bijvoorbeeld `PolicySignUpSignIn` ).
+- `ParentActivityOrWindow` is vereist voor Android (de activiteit) en is optioneel voor andere platforms die ondersteuning bieden voor een bovenliggende UI zoals Windows in micro soft Windows en UIViewController in iOS. Zie [WithParentActivityOrWindow](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively#withparentactivityorwindow) op de MSAL-wiki voor meer informatie over het dialoog venster voor de gebruikers interface.
+- `GetAccountByPolicy(IEnumerable<IAccount>, string)` is een methode die een account voor een bepaald beleid zoekt. Bijvoorbeeld:
 
   ```csharp
   private IAccount GetAccountByPolicy(IEnumerable<IAccount> accounts, string policy)
@@ -136,7 +136,7 @@ Door gebruikers naam/wacht woord te gebruiken in een ROPC-stroom, worden er dive
 
 Maak in uw Azure AD B2C-Tenant een nieuwe gebruikers stroom en selecteer **Aanmelden met ROPC** om ROPC in te scha kelen voor de gebruikers stroom. Zie [Configure the resource owner password data flow](../../active-directory-b2c/configure-ropc.md)voor meer informatie.
 
-`IPublicClientApplication`bevat de- `AcquireTokenByUsernamePassword` methode:
+`IPublicClientApplication` bevat de- `AcquireTokenByUsernamePassword` methode:
 
 ```csharp
 AcquireTokenByUsernamePassword(
@@ -169,7 +169,7 @@ MSAL.NET ondersteunt een [token cache](/dotnet/api/microsoft.identity.client.tok
 
 Momenteel heeft MSAL.NET twee claims nodig om een token cache sleutel te bouwen:
 
-- `tid`(de Azure AD-Tenant-ID)
+- `tid` (de Azure AD-Tenant-ID)
 - `preferred_username`
 
 Beide claims ontbreken mogelijk in Azure AD B2C scenario's, omdat niet alle leveranciers van sociale identiteiten (Facebook, Google en anderen) ze retour neren in de tokens die ze retour neren naar Azure AD B2C.

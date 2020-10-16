@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 07/15/2019
 ms.author: raynew
 ms.openlocfilehash: bcc6f41d7cc08764266ffb6705d1b8937d355199
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86109719"
 ---
 # <a name="customize-an-assessment"></a>Een beoordeling aanpassen
@@ -25,28 +25,28 @@ U kunt het hulp programma voor het evalueren van Azure Migrate-server gebruiken 
 
 Beoordelingen die u maakt met server evaluatie zijn een tijdgebonden moment opname van gegevens. Er zijn twee soorten evaluaties die u kunt maken met behulp van Azure Migrate: Server-evaluatie.
 
-**Beoordelings type** | **Details**
+**Evaluatietype** | **Details**
 --- | --- 
-**Azure VM** | Beoordelingen voor het migreren van uw on-premises servers naar Azure virtual machines. <br/><br/> U kunt uw on-premises [virtuele VMware-machines](how-to-set-up-appliance-vmware.md), [virtuele Hyper-V-machines](how-to-set-up-appliance-hyper-v.md)en [fysieke servers](how-to-set-up-appliance-physical.md) voor migratie naar Azure evalueren met dit beoordelings type. (concepts-assessment-calculation.md)
-**Azure VMware Solution (AVS)** | Beoordelingen voor het migreren van uw on-premises servers naar de [Azure VMware-oplossing (AVS)](../azure-vmware/introduction.md). <br/><br/> U kunt uw on-premises [virtuele VMware-machines](how-to-set-up-appliance-vmware.md) evalueren voor migratie naar Azure VMware-oplossing (AVS) met dit beoordelings type. [Meer informatie](concepts-azure-vmware-solution-assessment-calculation.md)
+**Azure VM** | Evaluaties om uw on-premises servers te migreren naar virtuele Azure-machine. <br/><br/> U kunt uw on-premises [VMware-VM's](how-to-set-up-appliance-vmware.md), [Hyper-V-VM's](how-to-set-up-appliance-hyper-v.md) en [fysieke servers](how-to-set-up-appliance-physical.md) evalueren voor migratie naar Azure met dit evaluatietype. (concepts-assessment-calculation.md)
+**Azure VMware Solution (AVS)** | Evaluaties om uw on-premises servers te migreren naar [Azure VMware Solution (AVS)](../azure-vmware/introduction.md). <br/><br/> U kunt uw on-premises [VMware-VM’s](how-to-set-up-appliance-vmware.md) evalueren voor migratie naar Azure VMware Solution (AVS) met dit evaluatietype. [Meer informatie](concepts-azure-vmware-solution-assessment-calculation.md)
 
 Een evaluatie van de Azure-VM in Server beoordeling biedt twee opties voor het instellen van de grootte:
 
-**Grootte criteria** | **Details** | **Gegevens**
+**Criteria voor het aanpassen van de grootte** | **Details** | **Gegevens**
 --- | --- | ---
-**Op basis van prestaties** | Beoordelingen die aanbevelingen doen op basis van verzamelde prestatie gegevens | **Evaluatie**van de Azure-VM: aanbeveling van de VM-grootte is gebaseerd op de gegevens van het CPU-en geheugen gebruik.<br/><br/> De aanbeveling van het schijf type (standaard HDD/SSD of Premium-Managed disks) is gebaseerd op de IOPS en door Voer van de on-premises schijven.<br/><br/> **Evaluatie van de Azure VMware-oplossing (AVS)**: de aanbeveling voor AVS-knoop punten is gebaseerd op de CPU-en geheugen gebruiks gegevens.
-**As-is on-premises** | Evaluaties die geen gebruik maken van prestatie gegevens voor aanbevelingen. | **Azure VM-evaluatie**: aanbeveling van de VM-grootte is gebaseerd op de on-PREMISes VM-grootte<br/><br> Het aanbevolen schijf type is gebaseerd op wat u selecteert in de instelling opslag type voor de evaluatie.<br/><br/> **Evaluatie van de Azure VMware-oplossing (AVS)**: de aanbeveling voor AVS-knoop punten is gebaseerd op de on-PREMISes VM-grootte.
+**Op basis van prestaties** | Evaluaties die aanbevelingen doen op basis van verzamelde prestatiegegevens | **Azure-VM-evaluatie**: Aanbeveling voor VM-grootte is gebaseerd op verbruiksgegevens voor CPU en geheugen.<br/><br/> Aanbeveling voor schijftype (standaard HDD/SSD of premium-beheerde schijven) is gebaseerd op de IOPS en doorvoer van de on-premises schijven.<br/><br/> **AVS-evaluatie (Azure VMware Solution)** : Aanbeveling voor AVS-knooppunten is gebaseerd op verbruiksgegevens voor CPU en geheugen.
+**As-is on-premises** | Evaluaties die geen gebruik maken van prestatiegegevens voor aanbevelingen. | **Azure-VM-evaluatie**: Aanbeveling voor VM-grootte is gebaseerd op de on-premises VM-grootte<br/><br> De aanbeveling voor het schijftype is gebaseerd op de instelling die u selecteert bij het opslagtype voor de evaluatie.<br/><br/> **AVS-evaluatie (Azure VMware Solution)**: Aanbeveling voor AVS-knooppunten is gebaseerd op de on-premises VM-grootte.
 
 
 ## <a name="how-is-an-assessment-done"></a>Hoe wordt een evaluatie uitgevoerd?
 
-Een beoordeling die in Azure Migrate server beoordeling is uitgevoerd, heeft drie fasen. De evaluatie begint met een geschiktheids analyse, gevolgd door het aanpassen van de grootte, en ten slotte een maandelijkse schatting van de kosten. Een machine wordt alleen verplaatst naar een latere fase als deze de voor gaande wordt door gegeven. Als een machine bijvoorbeeld de Azure-geschiktheids controle niet kan uitvoeren, wordt deze gemarkeerd als ongeschikt voor Azure en wordt de grootte en de kosten voor de berekening niet gewijzigd. [Meer informatie.](./concepts-assessment-calculation.md)
+Een beoordeling die in Azure Migrate server beoordeling is uitgevoerd, heeft drie fasen. De evaluatie begint met een geschiktheids analyse, gevolgd door het aanpassen van de grootte, en ten slotte een maandelijkse schatting van de kosten. Een machine gaat alleen door naar een latere fase als deze door de voorgaande fase is gekomen. Als een machine bijvoorbeeld de Azure-geschiktheids controle niet kan uitvoeren, wordt deze gemarkeerd als ongeschikt voor Azure en wordt de grootte en de kosten voor de berekening niet gewijzigd. [Meer informatie.](./concepts-assessment-calculation.md)
 
 ## <a name="whats-in-an-azure-vm-assessment"></a>Wat is een Azure VM-evaluatie?
 
 **Eigenschap** | **Details**
 --- | ---
-**Doel locatie** | De Azure-locatie waarnaar u wilt migreren.<br/> Server analyse biedt momenteel ondersteuning voor deze doel regio's: Australië-oost, Australië-zuidoost, Brazilië-zuid, Canada-centraal, Canada-oost, Centraal-India, centraal VS, China-oost, China-noord, Azië-oost, VS-Oost, Oost-VS2, Duitsland-centraal, Duitsland-noordoost, Japan-Oost, Japan-West, Korea-centraal, Korea-Zuid, Noord-Centraal VS, Europa-Noord, Zuid-Centraal VS, Zuidoost-Azië, India-zuid, UK-zuid, UK-west US Gov-Arizona , US Gov-Texas, US Gov-Virginia, VS-West-Centraal, Europa-west, West-India, VS-West en West-VS2.
+**Doellocatie** | De Azure-locatie waarnaar u wilt migreren.<br/> Server analyse biedt momenteel ondersteuning voor deze doel regio's: Australië-oost, Australië-zuidoost, Brazilië-zuid, Canada-centraal, Canada-oost, Centraal-India, centraal VS, China-oost, China-noord, Azië-oost, VS-Oost, Oost-VS2, Duitsland-centraal, Duitsland-noordoost, Japan-Oost, Japan-West, Korea-centraal, Korea-Zuid, Noord-Centraal VS, Europa-Noord, Zuid-Centraal VS, Zuidoost-Azië, India-zuid, UK-zuid, UK-west US Gov-Arizona , US Gov-Texas, US Gov-Virginia, VS-West-Centraal, Europa-west, West-India, VS-West en West-VS2.
 **Opslag type** | U kunt deze eigenschap gebruiken om het type schijven op te geven dat u wilt verplaatsen in Azure.<br/><br/> Voor de optie voor on-premises grootte kunt u het type doel opslag opgeven als Premium-beheerde schijven, Standard-SSD-beheerde schijven of Standard-HDD-beheerde schijven. Voor een schaal op basis van prestaties kunt u het type doel schijf opgeven als automatische, Premium beheerde schijven, Standard-HDD-beheerde schijven of Standard-SSD-beheerde schijven.<br/><br/> Wanneer u het opslag type opgeeft als automatisch, wordt de aanbevolen schijf uitgevoerd op basis van de prestatie gegevens van de schijven (IOPS en door Voer). Als u het opslag type opgeeft als Premium/standaard, wordt een schijf-SKU aanbevolen binnen het geselecteerde opslag type. Als u een VM-SLA met één exemplaar van 99,9% wilt uitvoeren, kunt u het opslag type opgeven als Premium-beheerde schijven. Dit zorgt ervoor dat alle schijven in de evaluatie worden aanbevolen als Premium-beheerde schijven. Azure
 **Gereserveerde instanties (RI)** | Met deze eigenschap kunt u opgeven of u [gereserveerde instanties](https://azure.microsoft.com/pricing/reserved-vm-instances/) in azure hebt, kosten ramingen in de beoordeling worden uitgevoerd in RI-kortingen. Gereserveerde instanties worden momenteel alleen ondersteund voor de aanbieding betalen naar gebruik in Azure Migrate.
 **Criterium voor het aanpassen van de grootte** | Het criterium dat moet worden gebruikt om virtuele machines met een juiste grootte te gebruiken voor Azure. U kunt de grootte van de virtuele machines aanpassen op *basis van de prestaties* , zonder rekening te *houden*met de prestatie geschiedenis.
@@ -67,7 +67,7 @@ Dit is what's opgenomen in een AVS-evaluatie in Server evaluatie:
 
 | **Eigenschap** | **Details** |
 | - | - |
-| **Doel locatie** | Hiermee geeft u de automatische AVS-Cloud locatie op waarnaar u wilt migreren.<br/><br/> AVS-evaluatie in Server evaluatie ondersteunt momenteel deze doel regio's: VS-Oost, Europa-west, VS-West. |
+| **Doellocatie** | Hiermee geeft u de automatische AVS-Cloud locatie op waarnaar u wilt migreren.<br/><br/> AVS-evaluatie in Server evaluatie ondersteunt momenteel deze doel regio's: VS-Oost, Europa-west, VS-West. |
 | **Opslag type** | Hiermee geeft u de opslag engine moet worden gebruikt in AVS.<br/><br/> AVS-evaluaties bieden alleen ondersteuning voor vSAN als een standaard type opslag. |
 **Gereserveerde instanties (RIs)** | Met deze eigenschap kunt u gereserveerde instanties in AVS opgeven. RIs wordt momenteel niet ondersteund voor AVS-knoop punten. |
 **Knooppunt type** | Hiermee geeft u het [AVS-knooppunt type](../azure-vmware/concepts-private-clouds-clusters.md) op dat wordt gebruikt om de on-premises vm's toe te wijzen. Houd er rekening mee dat het standaard knooppunt type AV36 is. <br/><br/> Azure Migrate wordt een vereist aantal knoop punten aanbevolen voor de virtuele machines die moeten worden gemigreerd naar AVS. |

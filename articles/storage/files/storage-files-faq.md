@@ -8,10 +8,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
 ms.openlocfilehash: 9bb228c81ee180ec337ce52e3c87a4a9684e158a
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90563689"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Lees de veelgestelde vragen (FAQ) over Azure Files
@@ -277,7 +277,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
 * <a id="ad-aad-smb-files"></a>
 **Is er een verschil in het maken van een computer account of een service-aanmeldings account voor het weer geven van mijn opslag account in AD?**
 
-    Het maken van een [computer account](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (standaard) of een [service aanmeldings account](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) heeft geen verschil op de manier waarop de verificatie met Azure files zou werken. U kunt uw eigen keuze maken voor het weer geven van een opslag account als identiteit in uw AD-omgeving. De standaard DomainAccountType die in de cmdlet voor samen voegen AzStorageAccountForAuth is ingesteld, is het computer account. De leeftijd van het wacht woord die in uw AD-omgeving is geconfigureerd, kan echter verschillen voor de computer-of service-aanmeldings account en u moet rekening houden om [het wacht woord van de identiteit van uw opslag account in AD bij te werken](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#5-update-ad-account-password).
+    Het maken van een [computer account](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (standaard) of een [service aanmeldings account](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) heeft geen verschil op de manier waarop de verificatie met Azure files zou werken. U kunt uw eigen keuze maken voor het weer geven van een opslag account als identiteit in uw AD-omgeving. De standaard DomainAccountType die in Join-AzStorageAccountForAuth-cmdlet is ingesteld, is computer account. De leeftijd van het wacht woord die in uw AD-omgeving is geconfigureerd, kan echter verschillen voor de computer-of service-aanmeldings account en u moet rekening houden om [het wacht woord van de identiteit van uw opslag account in AD bij te werken](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#5-update-ad-account-password).
  
 * <a id="ad-support-rest-apis"></a>
 **Zijn er REST-Api's ter ondersteuning van Get/set/Copy-Windows-Acl's voor mappen/bestanden?**

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/31/2017
 ms.author: akjosh
 ms.openlocfilehash: a89ec99af02b32d452fba1dffb0387ae6013a7c8
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87292422"
 ---
 # <a name="how-to-install-and-configure-symantec-endpoint-protection-on-a-windows-vm"></a>Symantec-Endpoint Protection installeren en configureren op een Windows-VM
@@ -59,7 +59,7 @@ U kunt als volgt controleren of de Symantec-beveiligings uitbreiding is geïnsta
 2. Klik voor Windows Server 2008 R2 op **Start > Symantec Endpoint Protection**. Voor Windows Server 2012 of Windows Server 2012 R2 typt u **Symantec**in het Start scherm en klikt u vervolgens op **Symantec Endpoint Protection**.
 3. Op het tabblad **status** van het venster **status-Symantec Endpoint Protection** past u updates of opnieuw opstarten toe, indien nodig.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 [Aanmelden bij een virtuele machine met Windows Server][Logon]
 
 [Azure VM-extensies en-functies][Ext]

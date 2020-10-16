@@ -12,10 +12,10 @@ ms.subservice: app-provisioning
 ms.author: kenwith
 ms.reviewer: celested
 ms.openlocfilehash: 9e05d1a85f17800ddf4d77e4e4acba6396a8da47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84781562"
 ---
 # <a name="azure-ad-connect-provisioning-agent-version-release-history"></a>Azure AD Connect-inrichtings agent: release geschiedenis van versie
@@ -46,7 +46,7 @@ Micro soft biedt direct ondersteuning voor de nieuwste versie van de agent en é
 * Mogelijkheid om extra tracering en logboek registratie te configureren voor problemen met het inrichten van inrichtings agent
 * De mogelijkheid om alleen de Azure AD-kenmerken op te halen die zijn geconfigureerd in de toewijzing om de prestaties van synchronisatie te verbeteren
 
-### <a name="fixed-issues"></a>Problemen opgelost
+### <a name="fixed-issues"></a>Opgeloste problemen
 
 * Er is een fout opgelost waarbij de agent niet meer reageert als er problemen zijn met Azure AD-verbindings fouten
 * Er is een fout opgelost die problemen heeft veroorzaakt tijdens het lezen van binaire gegevens uit Azure Active Directory

@@ -9,10 +9,10 @@ ms.date: 03/17/2020
 ms.author: memildin
 ms.custom: include file
 ms.openlocfilehash: 7d81799f7fbdb2b41db421daa1a85ec8cde511eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79538829"
 ---
 ### <a name="the-data-model-of-the-schema"></a>Het gegevens model van het schema
@@ -41,7 +41,7 @@ ms.locfileid: "79538829"
 |**SourceSystem**|vrij|
 |**StartTime**|De begin tijd van de waarschuwing (het tijdstip van de eerste gebeurtenis die bijdragen aan de waarschuwing)|
 |**SystemAlertId**|Unieke id van dit beveiligings waarschuwings exemplaar|
-|**TenantId**|de id van de bovenliggende Azure Active Directory-Tenant van het abonnement waaronder de gescande bron zich bevindt|
+|**Tenant-ID**|de id van de bovenliggende Azure Active Directory-Tenant van het abonnement waaronder de gescande bron zich bevindt|
 |**TimeGenerated**|UTC-tijds tempel waarop de beoordeling plaatsvond (Security Center de scan tijd) (gelijk aan DiscoveredTimeUTC)|
 |**Type**|constante (' SecurityAlert ')|
 |**Leveranciers naam**|De naam van de leverancier die de waarschuwing heeft gegeven (bijvoorbeeld ' micro soft ')|

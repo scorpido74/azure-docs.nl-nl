@@ -11,12 +11,12 @@ metadata:
   ms.author: kgremban
   manager: philmea
   ms.date: 08/05/2019
-  ms.openlocfilehash: d3a71cd919660686c77b866b9e7fab461678da96
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 63c36cf0f602c7c19e3ec1eb0b38b84a2e3a6e15
+  ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "89300354"
+  ms.lasthandoff: 10/14/2020
+  ms.locfileid: "92048335"
 landingContent:
 - title: Ontwikkelen voor Linux-apparaten
   linkLists:
@@ -46,18 +46,16 @@ landingContent:
     links:
     - text: Visual Studio 2017 gebruiken om modules te ontwikkelen en er fouten in op te sporen
       url: how-to-visual-studio-develop-module.md
-- title: IoT Edge-apparaten inrichten
+- title: Een IoT Edge-apparaat maken
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: IoT Edge installeren in Linux
-      url: how-to-install-iot-edge-linux.md
-    - text: IoT Edge installeren in Windows
-      url: how-to-install-iot-edge-windows.md
-    - text: Automatisch Linux-apparaten inrichten
-      url: how-to-auto-provision-simulated-device-linux.md
-    - text: Automatisch Windows-apparaten inrichten
-      url: how-to-auto-provision-simulated-device-windows.md
+    - text: De IoT Edge-runtime installeren
+      url: how-to-install-iot-edge.md
+    - text: Een enkel apparaat registreren en inrichten
+      url: how-to-manual-provision-symmetric-key.md
+    - text: Apparaten op schaal registreren en inrichten
+      url: how-to-auto-provision-symmetric-keys.md
 - title: Contact opnemen met de opensource-community
   linkLists:
   - linkListType: get-started
@@ -105,7 +103,7 @@ landingContent:
   - linkListType: deploy
     links:
     - text: REST API voor IoT Hub
-      url: https://docs.microsoft.com/rest/api/iothub/
+      url: /rest/api/iothub/
 - title: AI implementeren naar de edge
   linkLists:
   - linkListType: tutorial

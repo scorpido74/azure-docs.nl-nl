@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
 ms.openlocfilehash: 42582c9474647c4c203bd0cafae0be664398ba41
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87533900"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Isolatie in de open bare Azure-Cloud
@@ -54,7 +54,7 @@ Gebruikers, groepen en toepassingen van die Directory kunnen resources in het Az
 
 - Azure AD-gebruikers hebben geen toegang tot fysieke assets of locaties en daarom is het niet mogelijk om de logische RBAC-beleids controles die hieronder worden vermeld, te omzeilen.
 
-Voor diagnostische en onderhouds behoeften is een operationeel model dat gebruikmaakt van een just-in-time-uitbrei ding van bevoegdheden vereist en wordt gebruikt. Azure AD Privileged Identity Management (PIM) introduceert het concept van een in aanmerking komende beheerder. [In aanmerking komende beheerders](../../active-directory/privileged-identity-management/pim-configure.md) moeten gebruikers zijn die nu uitgebreide toegang nodig hebben en vervolgens, maar niet elke dag. De rol is inactief totdat gebruikers toegang nodig hebben. Op dat moment voeren ze een activeringsproces uit en zijn ze gedurende een vooraf bepaalde hoeveelheid tijd een actieve beheerder.
+Voor diagnostische en onderhouds behoeften is een operationeel model dat gebruikmaakt van een just-in-time-uitbrei ding van bevoegdheden vereist en wordt gebruikt. Azure AD Privileged Identity Management (PIM) introduceert het concept van een in aanmerking komende beheerder. [in aanmerking komende beheerders](../../active-directory/privileged-identity-management/pim-configure.md) moeten gebruikers zijn die nu uitgebreide toegang nodig hebben en vervolgens, maar niet elke dag. De rol is inactief totdat gebruikers toegang nodig hebben. Op dat moment voeren ze een activeringsproces uit en zijn ze gedurende een vooraf bepaalde hoeveelheid tijd een actieve beheerder.
 
 ![Azure AD Privileged Identity Management](./media/isolation-choices/azure-isolation-fig2.png)
 
@@ -64,7 +64,7 @@ Het concept van Tenant containers is diep gekorreld in de Directory service op a
 
 Zelfs wanneer meta gegevens van meerdere Azure Active Directory tenants op dezelfde fysieke schijf worden opgeslagen, is er geen relatie tussen de containers die zijn gedefinieerd door de Directory service, die op zijn beurt door de Tenant beheerder wordt bepaald.
 
-### <a name="azure-role-based-access-control-azure-rbac"></a>Op rollen gebaseerd toegangs beheer op basis van Azure (Azure RBAC)
+### <a name="azure-role-based-access-control-azure-rbac"></a>Azure RBAC (op rollen gebaseerd toegangsbeheer van Azure)
 
 Met op [rollen gebaseerd toegangs beheer (Azure RBAC) van Azure](../../role-based-access-control/overview.md) kunt u verschillende onderdelen delen die beschikbaar zijn binnen een Azure-abonnement door nauw keurig toegang te bieden voor Azure. Met Azure RBAC kunt u taken binnen uw organisatie scheiden en toegang verlenen op basis van wat gebruikers nodig hebben om hun taken uit te voeren. In plaats van iedereen onbeperkte machtigingen in een Azure-abonnement of-resources te geven, kunt u alleen bepaalde acties toestaan.
 
@@ -76,7 +76,7 @@ Azure RBAC heeft drie basis rollen die van toepassing zijn op alle resource type
 
 - **Lezer** kan bestaande Azure-resources weer geven.
 
-![Op rollen gebaseerd toegangs beheer op basis van Azure (Azure RBAC)](./media/isolation-choices/azure-isolation-fig3.png)
+![Azure RBAC (op rollen gebaseerd toegangsbeheer van Azure)](./media/isolation-choices/azure-isolation-fig3.png)
 
 Met de rest van de Azure-rollen in azure kunt u specifieke Azure-resources beheren. Met de rol Inzender voor virtuele machines kan een gebruiker bijvoorbeeld virtuele machines maken en beheren. Deze geeft geen toegang tot de Azure-Virtual Network of het subnet waarmee de virtuele machine verbinding maakt.
 

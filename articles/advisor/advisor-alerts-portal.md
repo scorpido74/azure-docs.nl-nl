@@ -4,10 +4,10 @@ description: Azure Advisor-waarschuwingen maken voor nieuwe aanbeveling
 ms.topic: article
 ms.date: 09/09/2019
 ms.openlocfilehash: 837f12a12e532902ee76e345afa430f758f79c10
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90973656"
 ---
 # <a name="create-azure-advisor-alerts-on-new-recommendations-using-the-azure-portal"></a>Maak Azure Advisor waarschuwingen met betrekking tot nieuwe aanbevelingen met behulp van de Azure Portal 
@@ -187,11 +187,11 @@ Vanuit Azure Advisor kunt u waarschuwingen voor uw aanbevelingen bewerken, verwi
 
 1. Selecteer in de **portal** **Azure Advisor**.
 
-    :::image type="content" source="./media/advisor-alerts/create1.png" alt-text="Scherm opname van het Azure Portal menu waarin Azure Advisor is geselecteerd.":::
+    :::image type="content" source="./media/advisor-alerts/create1.png" alt-text="Scherm afbeelding van de sectie waarschuwings Details.":::
 
 2. Selecteer in de sectie **bewaking** van het linkermenu **waarschuwingen**.
 
-    :::image type="content" source="./media/advisor-alerts/create2.png" alt-text="Scherm opname van het menu Azure Portal waarin de geselecteerde waarschuwingen worden weer gegeven.":::
+    :::image type="content" source="./media/advisor-alerts/create2.png" alt-text="Scherm afbeelding van de sectie waarschuwings Details.":::
 
 3. Als u een waarschuwing wilt bewerken, klikt u op de naam van de waarschuwing om de waarschuwing te openen en bewerkt u de velden die u wilt bewerken.
 

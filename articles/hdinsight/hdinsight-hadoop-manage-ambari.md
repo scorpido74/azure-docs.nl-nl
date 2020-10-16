@@ -9,17 +9,17 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/16/2020
 ms.openlocfilehash: ce078a3dad645f592bb33ed55ce508f68ce8f30a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87281380"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>HDInsight-clusters beheren met behulp van de Apache Ambari-webinterface
 
 [!INCLUDE [ambari-selector](../../includes/hdinsight-ambari-selector.md)]
 
-Apache Ambari vereenvoudigt het beheer en de bewaking van een Apache Hadoop cluster. Deze vereenvoudiging wordt uitgevoerd door een gebruiks vriendelijke webgebruikersinterface en REST API te bieden. Ambari is opgenomen in HDInsight-clusters en wordt gebruikt om het cluster te controleren en configuratie wijzigingen aan te brengen.
+Apache Ambari vereenvoudigt het beheer en de bewaking van een Apache Hadoop cluster. Deze vereenvoudiging wordt uitgevoerd door een gebruiks vriendelijke webgebruikersinterface en REST API te bieden. Ambari is opgenomen in HDInsight-clusters en wordt gebruikt om het cluster te bewaken en configuratiewijzigingen aan te brengen.
 
 In dit document leert u hoe u de Ambari-webgebruikersinterface kunt gebruiken met een HDInsight-cluster.
 
@@ -163,7 +163,7 @@ Op de pagina **hosts** worden alle hosts in het cluster weer gegeven. Voer de vo
     |Onderhouds modus uitschakelen|Retourneert de host naar normale waarschuwingen.|
     |Stoppen|Stopt DataNode of NodeManagers op de host.|
     |Starten|Start DataNode of NodeManagers op de host.|
-    |Opnieuw opstarten|Stopt en start DataNode of NodeManagers op de host.|
+    |Opnieuw starten|Stopt en start DataNode of NodeManagers op de host.|
     |Uit bedrijf nemen|Hiermee verwijdert u een host uit het cluster. **Gebruik deze actie niet op HDInsight-clusters.**|
     |Opnieuw provisie|Voegt een eerder buiten gebruik gestelde host toe aan het cluster. **Gebruik deze actie niet op HDInsight-clusters.**|
 

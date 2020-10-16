@@ -4,10 +4,10 @@ description: Biedt een samen vatting van de ondersteuning voor het Azure Migrate
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: ac3c90f1c09d290d5112a0e0d7abc5218788caf7
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91450039"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-apparaat
@@ -85,7 +85,7 @@ De volgende tabel bevat een overzicht van de Azure Migrate vereisten voor VMware
 **Project ondersteuning** |  Een apparaat kan worden gekoppeld aan een enkel project. <br/> Een wille keurig aantal apparaten kan aan één project worden gekoppeld.<br/> 
 **Detectie limieten** | Een apparaat kan Maxi maal 1000 fysieke servers detecteren.
 **PowerShell-script** | Down load het script (AzureMigrateInstaller.ps1) in een gezipte map vanuit de portal of [hier](https://go.microsoft.com/fwlink/?linkid=2140334). [Meer informatie](tutorial-discover-physical.md).<br/><br/> De download grootte is 85,8 MB.
-**Software/hardware** |  Het apparaat moet worden uitgevoerd op de computer met Windows Server 2016, 16 GB RAM, 8 Vcpu's, ongeveer 80 GB aan schijf opslag.<br/> Het apparaat heeft een statisch of dynamisch IP-adres nodig en vereist Internet toegang, hetzij rechtstreeks hetzij via een proxy.<br/><br/> Als u het apparaat op een fysieke computer uitvoert, moet u ervoor zorgen dat Windows Server 2016 wordt uitgevoerd en voldoet aan de hardwarevereisten.<br/>_(Momenteel wordt de implementatie van apparaat alleen ondersteund op Windows Server 2016.)_
+**Software/hardware** |  Het apparaat moet worden uitgevoerd op de computer met Windows Server 2016, 16 GB RAM, 8 Vcpu's, ongeveer 80 GB aan schijf opslag.<br/> Het apparaat heeft een statisch of dynamisch IP-adres nodig en vereist Internet toegang, hetzij rechtstreeks hetzij via een proxy.<br/><br/> Als u het apparaat op een fysieke computer uitvoert, moet u ervoor zorgen dat Windows Server 2016 wordt uitgevoerd en voldoet aan de hardwarevereisten.<br/>_(Momenteel wordt de implementatie van apparaten alleen ondersteund voor Windows Server 2016.)_
 **Hash-waarde** | [Controleer](tutorial-discover-physical.md#verify-security) de hash-waarden van het Power shell-script.
 
 ## <a name="url-access"></a>URL-toegang
@@ -312,8 +312,8 @@ Extern IP-adres | netstat
 TCP-verbindings status | netstat 
 Aantal actieve verbindingen | netstat
 Proces-id  | netstat 
-Procesnaam | PCL
-Proces argumenten | PCL
+Procesnaam | ps
+Proces argumenten | ps
 De naam van de toepassing | met dpkg of rpm
 
 
@@ -454,7 +454,7 @@ Het apparaat wordt bijgewerkt wanneer de Azure Migrate agents die op het apparaa
 ### <a name="turn-off-auto-update"></a>Automatisch bijwerken uitschakelen
 
 1. Open de REGI ster-editor op de computer waarop het apparaat wordt uitgevoerd.
-2. Ga naar **HKEY_LOCAL_MACHINE \software\microsoft\azureappliance**.
+2. Navigeer naar **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance**.
 3. Als u automatisch bijwerken wilt uitschakelen, maakt u een register sleutel auto **Update** -sleutel met DWORD-waarde 0.
 
     ![Register sleutel instellen](./media/migrate-appliance/registry-key.png)
@@ -464,13 +464,13 @@ Het apparaat wordt bijgewerkt wanneer de Azure Migrate agents die op het apparaa
 
 U kunt automatisch bijwerken inschakelen met een van de volgende methoden:
 
-- Door de register sleutel AutoUpdate van HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureAppliance. te verwijderen
+- Door de register sleutel AutoUpdate van HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance te verwijderen.
 - Klik op **apparaat-services weer geven** van de laatste update controles in het paneel **vereisten instellen** om automatisch bijwerken in te scha kelen.
 
 De register sleutel verwijderen:
 
 1. Open de REGI ster-editor op de computer waarop het apparaat wordt uitgevoerd.
-2. Ga naar **HKEY_LOCAL_MACHINE \software\microsoft\azureappliance**.
+2. Navigeer naar **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance**.
 3. Verwijder de register sleutel auto **Update**die eerder is gemaakt om automatisch bijwerken uit te scha kelen.
 
 Als u van apparaat Configuration Manager wilt inschakelen, nadat de detectie is voltooid:

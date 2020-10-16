@@ -4,12 +4,12 @@ description: Meer informatie over het continu bouwen, testen en implementeren va
 ms.date: 08/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: c793c8bcbc01cbef99de13ef6dd2f6ce61a50773
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 433811cb632aae0d7370fc8e401c01fe36621a5b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892674"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333234"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Zelfstudie: Continue integratie van Azure Resource Manager-sjablonen met Azure-pijplijnen
 
@@ -180,7 +180,7 @@ Een pijplijn maken met een stap voor het implementeren van een sjabloon:
     * **Implementatiemodus**: Selecteer **Incrementeel**.
     * **Naam van implementatie**: Voer **DeployPipelineTemplate** in. U moet **Geavanceerd** selecteren om **Naam van implementatie** weer te geven.
 
-    ![Azure Resource Manager - Azure DevOps - Azure Pipelines - stap](./media/deployment-tutorial-pipeline/resource-manager-template-pipeline-configure.png)
+    ![Schermopname van de ARM-sjabloonimplementatiepagina waarop de vereiste waarden zijn ingevoerd.](./media/deployment-tutorial-pipeline/resource-manager-template-pipeline-configure.png)
 
 1. Selecteer **Toevoegen**.
 
@@ -188,7 +188,7 @@ Een pijplijn maken met een stap voor het implementeren van een sjabloon:
 
     Het YML-bestand ziet er ongeveer als volgt uit:
 
-    ![Azure Resource Manager - Azure DevOps - Azure Pipelines - yaml](./media/deployment-tutorial-pipeline/azure-resource-manager-devops-pipelines-yml.png)
+    ![Schermopname van de controlepagina met de nieuwe pijplijn met de naam Review your pipeline YAML (YAML voor uw pijplijn controleren).](./media/deployment-tutorial-pipeline/azure-resource-manager-devops-pipelines-yml.png)
 
 1. Selecteer **Opslaan en uitvoeren**.
 1. Selecteer in het deelvenster **Opslaan en uitvoeren** nogmaals **Opslaan en uitvoeren**. Er wordt een kopie van het YAML-bestand opgeslagen in de verbonden opslagplaats. U kunt het YAML-bestand weergeven door naar uw opslagplaats te bladeren.

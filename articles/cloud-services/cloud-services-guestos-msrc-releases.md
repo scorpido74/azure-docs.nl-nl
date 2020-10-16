@@ -10,47 +10,44 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 9/29/2020
+ms.date: 10/12/2020
 ms.author: yohaddad
-ms.openlocfilehash: bdcf9417aca6ece24e5ef577620734eeb48d9362
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 6ceba8e81c4700963e0d147c10085760b9308319
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91531153"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076654"
 ---
 # <a name="azure-guest-os"></a>Azure-gast besturingssysteem
 In de volgende tabellen ziet u de micro soft Security Response Center-updates (MSRC) die zijn toegepast op het Azure-gast besturingssysteem. Zoek in dit artikel om te bepalen of een bepaalde update van toepassing is op het gast besturingssysteem dat u gebruikt. Updates worden altijd uitgevoerd voor de desbetreffende [familie][family-explain] waarin ze zijn geïntroduceerd.
 
 ## <a name="september-2020-guest-os"></a>September 2020-gast besturingssysteem
->[!NOTE]
->Het besturings systeem september gast wordt momenteel geïmplementeerd naar Cloud service-Vm's die zijn geconfigureerd voor automatische updates. Wanneer de implementatie is voltooid, wordt deze versie beschikbaar gesteld voor hand matige updates via de Azure Portal-en configuratie bestanden. De volgende patches zijn opgenomen in het besturings systeem september gast. Deze lijst is onderhevig aan wijzigingen.
-
 
 | Productcategorie | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-|  Rel 20-09 |  [4577010]  |  Internet Explorer | 2,102, 3,89, 4,82 | 8 sep 2020 |
-|  Rel 20-09 |  [4561600]  |  Flash-Update | 3,89, 4,82, 5,47, 6,23 | 8 sep 2020 |
-|  Rel 20-09 |  [4577015]  |  Meest recente cumulatieve update (LCU) | 5,47 | 8 sep 2020 |
-|  Rel 20-09 |  [4570333]  |  Meest recente cumulatieve update (LCU) | 6,23 | 8 sep 2020 |
-|  Rel 20-09 |  [4570673]  |  Onderhouds stack-update | 2,102 | 8 sep 2020 |
-|  Rel 20-09 |  [4577051]  |  Maandelijks samen vouwen | 2,102 | 8 sep 2020 |
-|  Rel 20-09 |  [4569767]  |  .NET Framework 3,5-beveiliging en-kwaliteit samen vouwen | 2,102 | 8 sep 2020 |
-|  Rel 20-09 |  [4569780]  |  .NET Framework 4.5.2 beveiliging en kwaliteit samen vouwen | 2,102 | 8 sep 2020 |
-|  Rel 20-09 |  [4566426]  |  Onderhouds stack-update | 3,89 | 8 sep 2020 |
-|  Rel 20-09 |  [4577038]  |  Maandelijks samen vouwen | 3,89 | 8 sep 2020 |
-|  Rel 20-09 |  [4569765]  |  .NET Framework 3,5-beveiliging en-kwaliteit samen vouwen | 3,89 | 8 sep 2020 |
-|  Rel 20-09 |  [4569779]  |  .NET Framework 4.5.2 beveiliging en kwaliteit samen vouwen | 3,89 | 8 sep 2020 |
-|  Rel 20-09 |  [4566425]  |  Onderhouds stack-update | 2,102 | 8 sep 2020 |
-|  Rel 20-09 |  [4577066]  |  Maandelijks samen vouwen | 2,102 | 8 sep 2020 |
-|  Rel 20-09 |  [4569768]  |  .NET Framework 3,5-beveiliging en-kwaliteit samen vouwen | 2,102 | 8 sep 2020 |
-|  Rel 20-09 |  [4569778]  |  NET Framework 4.5.2 Security en Quality totalisatie | 2,102 | 8 sep 2020 |
-|  Rel 20-09 |  [4578013]  |  Beveiligings update | 2,102 | 8 sep 2020 |
-|  Rel 20-09 |  [4576750]  |  Onderhouds stack-update | 5,47 | 8 sep 2020 |
-|  Rel 20-09 |  [4494175]  |  Micro | 5,47 | 8 sep 2020 |
-|  Rel 20-09 |  [4570332]  |  Onderhouds stack-update | 6,23 | 8 sep 2020 |
-|  Rel 20-09 |  [4570720]  |  Cumulatieve update van .NET Framework 3,5 en 4.7.2 | 6,23 | 8 sep 2020 |
-|  Rel 20-09 |  [4494174]  |  Micro | 6,23 | 8 sep 2020 |
+|  Rel 20-09 |  [4577010]  |  Internet Explorer | [2,102], [3,89], [4,82] | 8 sep 2020 |
+|  Rel 20-09 |  [4561600]  |  Flash-Update | [3,89], [4,82], [5,47], [6,23] | 8 sep 2020 |
+|  Rel 20-09 |  [4577015]  |  Meest recente cumulatieve update (LCU) | [5,47] | 8 sep 2020 |
+|  Rel 20-09 |  [4570333]  |  Meest recente cumulatieve update (LCU) | [6,23] | 8 sep 2020 |
+|  Rel 20-09 |  [4570673]  |  Onderhouds stack-update | [2,102] | 8 sep 2020 |
+|  Rel 20-09 |  [4577051]  |  Maandelijks samen vouwen | [2,102] | 8 sep 2020 |
+|  Rel 20-09 |  [4569767]  |  .NET Framework 3,5-beveiliging en-kwaliteit samen vouwen | [2,102] | 8 sep 2020 |
+|  Rel 20-09 |  [4569780]  |  .NET Framework 4.5.2 beveiliging en kwaliteit samen vouwen | [2,102] | 8 sep 2020 |
+|  Rel 20-09 |  [4566426]  |  Onderhouds stack-update | [3,89] | 8 sep 2020 |
+|  Rel 20-09 |  [4577038]  |  Maandelijks samen vouwen | [3,89] | 8 sep 2020 |
+|  Rel 20-09 |  [4569765]  |  .NET Framework 3,5-beveiliging en-kwaliteit samen vouwen | [3,89] | 8 sep 2020 |
+|  Rel 20-09 |  [4569779]  |  .NET Framework 4.5.2 beveiliging en kwaliteit samen vouwen | [3,89] | 8 sep 2020 |
+|  Rel 20-09 |  [4566425]  |  Onderhouds stack-update | [2,102] | 8 sep 2020 |
+|  Rel 20-09 |  [4577066]  |  Maandelijks samen vouwen | [2,102] | 8 sep 2020 |
+|  Rel 20-09 |  [4569768]  |  .NET Framework 3,5-beveiliging en-kwaliteit samen vouwen | [2,102] | 8 sep 2020 |
+|  Rel 20-09 |  [4569778]  |  NET Framework 4.5.2 Security en Quality totalisatie | [2,102] | 8 sep 2020 |
+|  Rel 20-09 |  [4578013]  |  Beveiligings update | [2,102] | 8 sep 2020 |
+|  Rel 20-09 |  [4576750]  |  Onderhouds stack-update | [5,47] | 8 sep 2020 |
+|  Rel 20-09 |  [4494175]  |  Micro | [5,47] | 8 sep 2020 |
+|  Rel 20-09 |  [4570332]  |  Onderhouds stack-update | [6,23] | 8 sep 2020 |
+|  Rel 20-09 |  [4570720]  |  Cumulatieve update van .NET Framework 3,5 en 4.7.2 | [6,23] | 8 sep 2020 |
+|  Rel 20-09 |  [4494174]  |  Micro | [6,23] | 8 sep 2020 |
 
 [4577010]: https://support.microsoft.com/kb/4577010
 [4561600]: https://support.microsoft.com/kb/4561600
@@ -74,6 +71,11 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 [4570332]: https://support.microsoft.com/kb/4570332
 [4570720]: https://support.microsoft.com/kb/4570720
 [4494174]: https://support.microsoft.com/kb/4494174
+[2,102]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[3,89]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[4,82]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[5,47]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[6,23]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
 
 ## <a name="august-2020-guest-os"></a>Augustus 2020-gast besturingssysteem
 
@@ -122,11 +124,11 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 [4565912]: https://support.microsoft.com/kb/4565912
 [4569776]: https://support.microsoft.com/kb/4569776
 [4566424]: https://support.microsoft.com/kb/4566424
-[2,101]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
-[3,88]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[4,81]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[5,46]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[6,22]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[2,101]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+[3,88]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[4,81]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[5,46]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[6,22]: ./cloud-services-guestos-update-matrix.md#family-6-releases
 
 
 ## <a name="july-2020-guest-os"></a>2020 juli-gast besturingssysteem
@@ -177,11 +179,11 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 [4565632]: https://support.microsoft.com/kb/4565632
 [4558997]: https://support.microsoft.com/kb/4558997
 [4494174]: https://support.microsoft.com/kb/4494174
-[2,100]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
-[3,87]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[4,80]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[5,45]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[6,21]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[2,100]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+[3,87]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[4,80]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[5,45]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[6,21]: ./cloud-services-guestos-update-matrix.md#family-6-releases
 
 
 ## <a name="june-2020-guest-os"></a>Juni 2020-gast besturingssysteem
@@ -216,11 +218,11 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 [4561666]: https://support.microsoft.com/kb/4561666
 [4562561]: https://support.microsoft.com/kb/4562561
 [4562562]: https://support.microsoft.com/kb/4562562
-[2,99]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
-[3,86]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[4,79]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[5,44]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[6,20]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[2,99]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+[3,86]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[4,79]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[5,44]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[6,20]: ./cloud-services-guestos-update-matrix.md#family-6-releases
 
 
 ## <a name="may-2020-guest-os"></a>Mei 2020-gast besturingssysteem
@@ -262,11 +264,11 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 [4550994]: https://support.microsoft.com/kb/4550994
 [4552924]: https://support.microsoft.com/kb/4552924
 [4549947]: https://support.microsoft.com/kb/4549947
-[2,98]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
-[3,85]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[4,78]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[5,43]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[6,19]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[2,98]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+[3,85]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[4,78]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[5,43]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[6,19]: ./cloud-services-guestos-update-matrix.md#family-6-releases
 
 
 ## <a name="april-2020-guest-os"></a>April 2020-gast besturingssysteem
@@ -304,11 +306,11 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 [4540725]: https://support.microsoft.com/kb/4540725
 [4540723]: https://support.microsoft.com/kb/4540723
 [4539571]: https://support.microsoft.com/kb/4539571
-[2,97]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
-[3,84]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[4,77]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[5,42]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[6,18]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[2,97]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+[3,84]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[4,77]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[5,42]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[6,18]: ./cloud-services-guestos-update-matrix.md#family-6-releases
 
 
 ## <a name="march-2020-guest-os"></a>Maart 2020-gast besturingssysteem
@@ -335,11 +337,11 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 [4537814]: https://support.microsoft.com/kb/4537814 
 [4537821]: https://support.microsoft.com/kb/4537821 
 
-[6,17]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
-[5,41]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[4,76]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[3,83]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[2,96]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[6,17]: ./cloud-services-guestos-update-matrix.md#family-6-releases
+[5,41]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[4,76]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[3,83]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[2,96]: ./cloud-services-guestos-update-matrix.md#family-2-releases
 
 
 ## <a name="february-2020-guest-os"></a>Februari 2020-gast besturingssysteem
@@ -378,11 +380,11 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 [4532920]: https://support.microsoft.com/kb/4532920
 [4534297]: https://support.microsoft.com/kb/4534297
 
-[6,16]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
-[5,40]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[4,75]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[3,82]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[2,95]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[6,16]: ./cloud-services-guestos-update-matrix.md#family-6-releases
+[5,40]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[4,75]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[3,82]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[2,95]: ./cloud-services-guestos-update-matrix.md#family-2-releases
 
 
 ## <a name="january-2020-guest-os"></a>Januari 2020-gast besturingssysteem
@@ -428,11 +430,11 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 [4530734]: https://support.microsoft.com/kb/4530734
 [4530691]: https://support.microsoft.com/kb/4530691
 [4530702]: https://support.microsoft.com/kb/4530702
-[6,15]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
-[5,39]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[4,74]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[3,81]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[2,94]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[6,15]: ./cloud-services-guestos-update-matrix.md#family-6-releases
+[5,39]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[4,74]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[3,81]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[2,94]: ./cloud-services-guestos-update-matrix.md#family-2-releases
 
 
 ## <a name="december-2019-guest-os"></a>December 2019-gast besturingssysteem
@@ -472,11 +474,11 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 [4524445]: https://support.microsoft.com/kb/4524445
 [4520724]: https://support.microsoft.com/kb/4520724
 [4523204]: https://support.microsoft.com/kb/4523204
-[6,14]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
-[5,38]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[4,73]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[3,80]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[2,93]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[6,14]: ./cloud-services-guestos-update-matrix.md#family-6-releases
+[5,38]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[4,73]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[3,80]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[2,93]: ./cloud-services-guestos-update-matrix.md#family-2-releases
 
 
 
@@ -515,11 +517,11 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 [4521864]: https://support.microsoft.com/kb/4521864
 [4521858]: https://support.microsoft.com/kb/4521858
 [4521862]: https://support.microsoft.com/kb/4521862
-[6,13]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
-[5,37]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[4,72]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[3,79]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[2,92]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[6,13]: ./cloud-services-guestos-update-matrix.md#family-6-releases
+[5,37]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[4,72]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[3,79]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[2,92]: ./cloud-services-guestos-update-matrix.md#family-2-releases
 
 
 ## <a name="october-2019-guest-os"></a>2019-gast besturingssysteem van oktober
@@ -564,11 +566,11 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 [4512574]: https://support.microsoft.com/kb/4512574
 [4512577]: https://support.microsoft.com/kb/4512577
 
-[6,12]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
-[5,36]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[4,71]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[3,78]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[2,91]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[6,12]: ./cloud-services-guestos-update-matrix.md#family-6-releases
+[5,36]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[4,71]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[3,78]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[2,91]: ./cloud-services-guestos-update-matrix.md#family-2-releases
 
 
 ## <a name="september-2019-guest-os"></a>September 2019-gast besturingssysteem
@@ -606,11 +608,11 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 [4512488]: https://support.microsoft.com/kb/4512488
 [4512518]: https://support.microsoft.com/kb/4512518
 [4512506]: https://support.microsoft.com/kb/4512506
-[6,11]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
-[5.35]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[4,70]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[3,77]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[2,90]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[6,11]: ./cloud-services-guestos-update-matrix.md#family-6-releases
+[5.35]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[4,70]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[3,77]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[2,90]: ./cloud-services-guestos-update-matrix.md#family-2-releases
 
 
 ## <a name="august-2019-guest-os"></a>Augustus 2019-gast besturingssysteem
@@ -663,11 +665,11 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 [4507001]: https://support.microsoft.com/kb/4507001
 [4507704]: https://support.microsoft.com/kb/4507704
 
-[6.1]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
-[5,34]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[4,69]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[3,76]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[2,89]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[6.1]: ./cloud-services-guestos-update-matrix.md#family-6-releases
+[5,34]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[4,69]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[3,76]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[2,89]: ./cloud-services-guestos-update-matrix.md#family-2-releases
 
 
 ## <a name="july-2019-guest-os"></a>2019 juli-gast besturingssysteem
@@ -1438,7 +1440,7 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | MS16-147 |[3204063]   |Beveiligings update voor micro soft Uniscribe|2,58, 3,46, 4,39, 5,4 |13 december 2016 |
 | MS16-149 |[3205655]   |Beveiligings update voor micro soft Windows|2,58, 3,46, 4,39, 5,4 |13 december 2016 |
 | MS16-150 |[3205642]   |Beveiligings update voor beveiligde kernelmodus |5.4 |13 december 2016 |
-| MS16-151 |[3205651]   |Beveiligings update voor Stuur Programma's in kernelmodus|2,58, 3,46, 4,39, 5,4 |13 december 2016 |
+| MS16-151 |[3205651]   |Beveiligings update voor Kernel-Mode Stuur Programma's|2,58, 3,46, 4,39, 5,4 |13 december 2016 |
 | MS16-152 |[3199709]   |Beveiligings update voor Windows-kernel |5.4 |13 december 2016 |
 | MS16-153 |[3207328] |Beveiligings update voor algemeen systeem stuur programma voor het logboek bestand|2,58, 3,46, 4,39, 5,4 |13 december 2016 |
 | MS16-155 |[3205640]   |Beveiligings update voor .NET Framework |5.4 |13 december 2016 |
@@ -1454,7 +1456,7 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | MS16-131 |[3199151]   |Beveiligings update voor micro soft video Control |5,3, 4,38, 3,45, 2,57 |8 november 2016 |
 | MS16-132 |[3199120] |Beveiligings update voor micro soft-onderdeel |5,3, 4,38, 3,45, 2,57 |8 november 2016 |
 | MS16-134 |[3193706] |Beveiligings update voor algemeen systeem stuur programma voor het logboek bestand |5,3, 4,38, 3,45, 2,57 |8 november 2016 |
-| MS16-135 |[3199135] |Beveiligings update voor Stuur Programma's in kernelmodus |5,3, 4,38, 3,45, 2,57 |8 november 2016 |
+| MS16-135 |[3199135] |Beveiligings update voor Kernel-Mode Stuur Programma's |5,3, 4,38, 3,45, 2,57 |8 november 2016 |
 | MS16-137 |[3199173]   |Beveiligings update voor Windows-verificatie methoden |5,3, 4,38, 3,45, 2,57 |8 november 2016 |
 | MS16-138 |[3199647] |Beveiligings update voor de virtuele harde schijf van micro soft |5,3, 4,38, 3,45 |8 november 2016 |
 | MS16-139 |[3199720] |Beveiligings update voor Windows-kernel |2,57 |Nov 8,2016 |
@@ -1476,7 +1478,7 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | --- | --- | --- | --- | --- |
 | MS16-118 |[3192887] |Cumulatieve beveiligings update voor Internet Explorer |4,37, 3,44, 2,56 |11 oktober 2016 |
 | MS16-120 |[3192884] |Beveiligings update voor micro soft graphics-onderdeel |4,37, 3,44, 2,56 |11 oktober 2016 |
-| MS16-123 |[3192892] |Beveiligings update voor Stuur Programma's in kernelmodus |4,37, 3,44, 2,56 |11 oktober 2016 |
+| MS16-123 |[3192892] |Beveiligings update voor Kernel-Mode Stuur Programma's |4,37, 3,44, 2,56 |11 oktober 2016 |
 | MS16-124 |[3193227] |Beveiligings update voor Windows-REGI ster |4,37, 3,44, 2,56 |11 oktober 2016 |
 | MS16-126 |[3196067] |Beveiligings update voor micro soft Internet Messa ging API |2,56 |11 oktober 2016 |
 | MS16-101 |[3178465] |Beveiligings update voor Windows-verificatie methoden |4,37, 3,44, 2,56 |11 oktober 2016 |
@@ -1497,7 +1499,7 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | MS16-114 |[3185879] |Beveiligings update voor Windows SMB server |4,36, 3,43, 2,55 |Sept 13, 2016 |
 | MS16-115 |[3188733] |Beveiligings update voor PDF |4,35, 3,43 |Sept 13, 2016 |
 | MS16-116 |[3188724] |Beveiligings update in OLE Automation voor VBScript Scripting Engine |4,36, 3,43, 2,55 |Sept 13, 2016 |
-| N.v.t. |[3174644] |Ondersteuning voor Diffie-Hellman-sleutel uitwisseling is bijgewerkt |4,36, 3,43, 2,55 |Sept 13, 2016 |
+| N.v.t. |[3174644] |Ondersteuning voor Diffie-Hellman sleutel uitwisseling is bijgewerkt |4,36, 3,43, 2,55 |Sept 13, 2016 |
 | N.v.t. |[3177723] |Update van tijd zone-Egypte annuleert zomer tijd |4,36, 3,43, 2,55 |Sept 13, 2016 |
 | N.v.t. |[3179573] |Update pakket van augustus 2016 voor Windows 7 SP1 en Windows Server 2008 R2 SP1 |2.55 |Sept 13, 2016 |
 | N.v.t. |[3179575] |Update pakket van augustus 2016 voor Windows Server 2012 |3,43 |Sept 13, 2016 |
@@ -1508,11 +1510,11 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | --- | --- | --- | --- | --- |
 | MS16-095 |[3177356] |Cumulatieve beveiligings update voor Internet Explorer |4,35, 3,42, 2,54 |9 augustus 2016 |
 | MS16-097 |[3177393] |Beveiligings update voor micro soft graphics-onderdeel |4,35, 3,42, 2,54 |9 augustus 2016 |
-| MS16-098 |[3178466] |Beveiligings update voor Windows-kernelmodus-Stuur Programma's |4,35, 3,42, 2,54 |9 augustus 2016 |
+| MS16-098 |[3178466] |Beveiligings update voor Windows Kernel-Mode-Stuur Programma's |4,35, 3,42, 2,54 |9 augustus 2016 |
 | MS16-100 |[3179577] |Beveiligings update voor beveiligd opstarten |4,35, 3,42 |9 augustus 2016 |
 | MS16-101 |[3178465] |Beveiligings update voor Windows-verificatie methoden |4,35, 3,42, 2,54 |9 augustus 2016 |
 | MS16-102 |[3182248] |Beveiligings update voor micro soft Windows PDF-bibliotheek |4,35, 3,42 |9 augustus 2016 |
-| MS16-077 opnieuw uitgeven |[3165191] |Beveiligings update voor Web Proxy AutoDiscovery (WPAD) |4,35, 3,42, 2,54 |9 augustus 2016 |
+| MS16-077 Re-Release |[3165191] |Beveiligings update voor Web Proxy AutoDiscovery (WPAD) |4,35, 3,42, 2,54 |9 augustus 2016 |
 | N.v.t. |[3172605] |Update pakket van juli 2016 voor Windows 7 SP1 en Windows Server 2008 R2 SP1 |2,54 |9 augustus 2016 |
 | N.v.t. |[3172615] |Update pakket van juli 2016 voor Windows Server 2012 |3,42 |9 augustus 2016 |
 | N.v.t. |[3172614] |Update pakket van juli 2016 voor Windows RT 8,1, Windows 8,1 en Windows Server 2012 R2 |4,35 |9 augustus 2016 |
@@ -1600,7 +1602,7 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | MS16-031 |[3140410] |Beveiligings update voor micro soft Windows om het uitbrei ding van bevoegdheden te verhelpen |2,49 |8 maart 2016 |
 | MS16-032 |[3143141] |Beveiligings update voor secundaire aanmelding om uitbrei ding van bevoegdheden te verhelpen |4,30, 3,37, 2,49 |8 maart 2016 |
 | MS16-033 |[3143142] |Beveiligings update voor USB-klassestuurprogramma voor massa opslag om uitbrei ding van bevoegdheden te verhelpen |4,30, 3,37, 2,49 |8 maart 2016 |
-| MS16-034 |[3143145] |Beveiligings updates voor het kernelmodus-stuur programma om de uitbrei ding van bevoegdheden te verhelpen |4,30, 3,37, 2,49 |8 maart 2016 |
+| MS16-034 |[3143145] |Beveiligings updates voor Kernel-Mode stuur programma om de uitbrei ding van bevoegdheden te verhelpen |4,30, 3,37, 2,49 |8 maart 2016 |
 
 ## <a name="february-2016-guest-os"></a>Februari 2016-gast besturingssysteem
 | Bulletin-ID | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
@@ -1609,20 +1611,20 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | MS16-013 |[3134811] |Beveiligings update voor Windows Journal om uitvoering van externe code te verhelpen |4,29, 3,36, 2,48 |9 februari 2016 |
 | MS16-014 |[3134228] |Beveiligings update voor micro soft Windows om het uitvoeren van externe code te verhelpen |4,29, 3,36, 2,48 |9 februari 2016 |
 | MS16-016 |[3136041] |Beveiligings update naar WebDAV om misbruik van bevoegdheden te verhelpen |4,29, 3,36, 2,48 |9 februari 2016 |
-| MS16-018 |[3136082] |Beveiligings update voor Windows-kernelmodus-stuur programma voor het uitpakken van bevoegdheden |4,29, 3,36, 2,48 |9 februari 2016 |
+| MS16-018 |[3136082] |Beveiligings update voor Windows Kernel-Mode-stuur programma om uitbrei ding van bevoegdheden te verhelpen |4,29, 3,36, 2,48 |9 februari 2016 |
 | MS16-019 |[3137893] |Beveiligings update voor .NET Framework om het uitvoeren van externe code te verhelpen |4,29, 3,36, 2,48 |9 februari 2016 |
 | MS16-021 |[3133043] |Beveiligings update voor NPS RADIUS-server voor denial-of-service |4,29, 3,36, 2,48 |9 februari 2016 |
 | Micro soft-beveiligings advies |[3109853] |Update voor het verbeteren van TLS-interoperabiliteit |4,29, 3,36 |9 februari 2016 |
-| Nieuwe release-MS15-101 |[3089662] |Beveiligings problemen in .NET Framework kunnen leiden tot uitbrei ding van bevoegdheden |4,29, 3,36, 2,48 |9 februari 2016 |
-| Nieuwe versie-MS15-118 |[3104507] |Beveiligings updates voor .NET Framework om uitbrei ding van bevoegdheden te verhelpen |4,29, 3,36, 2,48 |9 februari 2016 |
-| Nieuwe versie-MS15-128 |[3104503] |Beveiligings updates voor micro soft graphics component voor het uitvoeren van externe uitvoering van code |4,29, 3,36, 2,48 |9 februari 2016 |
+| Re-Release-MS15-101 |[3089662] |Beveiligings problemen in .NET Framework kunnen leiden tot uitbrei ding van bevoegdheden |4,29, 3,36, 2,48 |9 februari 2016 |
+| Re-Release-MS15-118 |[3104507] |Beveiligings updates voor .NET Framework om uitbrei ding van bevoegdheden te verhelpen |4,29, 3,36, 2,48 |9 februari 2016 |
+| Re-Release-MS15-128 |[3104503] |Beveiligings updates voor micro soft graphics component voor het uitvoeren van externe uitvoering van code |4,29, 3,36, 2,48 |9 februari 2016 |
 
 ## <a name="january-2016-guest-os"></a>Januari 2016-gast besturingssysteem
 | Bulletin-ID | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
 | MS16-001 |[3124903] |Cumulatieve beveiligings update voor Internet Explorer |4,28, 3,35, 2,47 |12 januari 2016 |
 | MS16-003 |[3125540] |Cumulatieve beveiligings update voor JScript en VBScript |2,47 |12 januari 2016 |
-| MS16-005 |[3124584] |Beveiligings update voor Windows-kernelmodus-Stuur Programma's voor het uitvoeren van externe code-uitvoering |4,28, 3,35, 2,47 |12 januari 2016 |
+| MS16-005 |[3124584] |Beveiligings update voor Windows Kernel-Mode-Stuur Programma's om het uitvoeren van externe code te verhelpen |4,28, 3,35, 2,47 |12 januari 2016 |
 | MS16-007 |[3124901] |Beveiligings update voor micro soft Windows om het uitvoeren van externe code te verhelpen |4,28, 3,35, 2,47 |12 januari 2016 |
 | MS16-008 |[3124605] |Beveiligings update voor kernel om uitbrei ding van bevoegdheden te verhelpen |4,28, 3,35, 2,47 |12 januari 2016 |
 | Revisie van micro soft-beveiligings advies |[2755801] |Update voor beveiligings problemen in Adobe Flash Player in Internet Explorer (pakket KB: TBD)-Aanbevelings aanduiding |4,28, 3,35 |12 januari 2016 |
@@ -1699,12 +1701,12 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | MS15-069 |[3072631] |Beveiligings problemen in Windows kunnen leiden tot uitvoering van externe code |4,22, 3,29, 2,41 |14 juli 2015 |
 | MS15-071 |[3068457] |Beveiligings probleem in NETLOGON kan leiden tot spoofing |4,22, 3,29, 2,41 |14 juli 2015 |
 | MS15-072 |[3069392] |Beveiligings probleem in grafisch stuur programma kan leiden tot uitbrei ding van bevoegdheden |4,22, 3,29, 2,41 |14 juli 2015 |
-| MS15-073 |[3070102] |Beveiligings problemen in het kernelmodusstuurprogramma kunnen leiden tot uitbrei ding van bevoegdheden |4,22, 3,29, 2,41 |14 juli 2015 |
+| MS15-073 |[3070102] |Beveiligings problemen in Kernel-Mode stuur programma kunnen leiden tot uitbrei ding van bevoegdheden |4,22, 3,29, 2,41 |14 juli 2015 |
 | MS15-074 |[3072630] |Beveiligings probleem in Windows Installer service kan leiden tot uitbrei ding van bevoegdheden |4,22, 3,29, 2,41 |14 juli 2015 |
 | MS15-075 |[3072633] |Beveiligings problemen in OLE kunnen leiden tot uitbrei ding van bevoegdheden |4,22, 3,29, 2,41 |14 juli 2015 |
 | MS15-076 |[3067505] |Beveiligings probleem in Windows Remote Procedure Call kan leiden tot uitbrei ding van bevoegdheden |4,22, 3,29, 2,41 |14 juli 2015 |
 | MS15-077 |[3077657] |Beveiligings probleem in het ATM-letter type-stuur programma kan leiden tot uitbrei ding van bevoegdheden |4,22, 3,29, 2,41 |14 juli 2015 |
-| NA |[3057154] |Bijwerken om het gebruik van DES-versleuteling te beperken |4,22, 3,29, 2,41 |14 juli 2015 |
+| N.v.t. |[3057154] |Bijwerken om het gebruik van DES-versleuteling te beperken |4,22, 3,29, 2,41 |14 juli 2015 |
 
 ## <a name="june-2015-guest-os"></a>Juni 2015-gast besturingssysteem
 | Bulletin-ID | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
@@ -1712,7 +1714,7 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | MS15-056 |[3058515] |Cumulatieve beveiligings update voor Internet Explorer |4,21, 3,28, 2,40 |9 juni 2015 |
 | MS15-057 |[3033890] |Beveiligings probleem in Windows Media Player kan leiden tot uitvoering van externe code |4,21, 3,28, 2,40 |9 juni 2015 |
 | MS15-060 |[3059317] |Beveiligings probleem in micro soft common controls kan leiden tot uitvoering van externe code |4,21, 3,28, 2,40 |9 juni 2015 |
-| MS15-061 |[3057839] |Beveiligings problemen in Windows-kernelmodus-Stuur Programma's kunnen leiden tot uitbrei ding van bevoegdheden |4,21, 3,28, 2,40 |9 juni 2015 |
+| MS15-061 |[3057839] |Beveiligings problemen in Windows-Kernel-Mode Stuur Programma's kunnen leiden tot uitbrei ding van bevoegdheden |4,21, 3,28, 2,40 |9 juni 2015 |
 | MS15-062 |[3062577] |Beveiligings probleem in Active Directory Federation Services kan leiden tot uitbrei ding van bevoegdheden |4,21, 3,28, 2,40 |9 juni 2015 |
 | MS15-063 |[3063858] |Beveiligings probleem in Windows-kernel kan leiden tot uitbrei ding van bevoegdheden |4,21, 3,28, 2,40 |9 juni 2015 |
 
@@ -1724,7 +1726,7 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | MS15-045 |[3046002] |Beveiligings probleem in Windows Journal kan leiden tot uitvoering van externe code |4,20, 3,27, 2,39 |12 mei 2015 |
 | MS15-048 |[3057134] |Beveiligings problemen in .NET Framework kunnen leiden tot uitbrei ding van bevoegdheden |4,20, 3,27, 2,39 |12 mei 2015 |
 | MS15-050 |[3055642] |Beveiligings probleem in service besturings beheer kan leiden tot uitbrei ding van bevoegdheden |4,20, 3,27, 2,39 |12 mei 2015 |
-| MS15-051 |[3057191] |Beveiligings problemen in Windows-kernelmodus-Stuur Programma's kunnen leiden tot uitbrei ding van bevoegdheden |4,20, 3,27, 2,39 |12 mei 2015 |
+| MS15-051 |[3057191] |Beveiligings problemen in Windows-Kernel-Mode Stuur Programma's kunnen leiden tot uitbrei ding van bevoegdheden |4,20, 3,27, 2,39 |12 mei 2015 |
 | MS15-052 |[3050514] |Beveiligings probleem in Windows-kernel kan leiden tot het omzeilen van functies |4,20, 3,27, 2,39 |12 mei 2015 |
 | MS15-053 |[3057263] |Beveiligings problemen in JScript en VBScript Scripting Engine kunnen leiden tot het omzeilen van beveiligings functies |4,20, 3,27, 2,39 |12 mei 2015 |
 | MS15-054 |[3051768] |Beveiligings probleem in micro soft Management Console-bestands indeling kan denial-of-service tot gevolg hebben |4,20, 3,27, 2,39 |12 mei 2015 |
@@ -1737,7 +1739,7 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | MS15-040 |[3045711] |Beveiligings probleem in ADFS kan leiden tot vrijgeven van informatie |4,20, 3,27, 2,39 |Apr 17, 2015 |
 | MS15-041 |[3048010] |Beveiligings probleem in .NET Framework kan leiden tot vrijgeven van informatie |4,20, 3,27, 2,39 |Apr 17, 2015 |
 | MS15-042 |[3047234] |Beveiligings probleem in Windows Hyper-V kan denial of service toestaan |4,20, 3,27, 2,39 |Apr 17, 2015 |
-| NA |[3045755] |Bijwerken om PKU2U-verificatie te verbeteren |4,20, 3,27, 2,39 |Apr 17, 2015 |
+| N.v.t. |[3045755] |Bijwerken om PKU2U-verificatie te verbeteren |4,20, 3,27, 2,39 |Apr 17, 2015 |
 
 ## <a name="april-2015-guest-os"></a>April 2015-gast besturingssysteem
 | Bulletin-ID | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
@@ -2132,9 +2134,9 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 [4014567]: https://support.microsoft.com/kb/4014567
 [4015550]: https://support.microsoft.com/kb/4015550
 [4013418]: https://support.microsoft.com/kb/4013418
-[4022345]: https://technet.microsoft.com/library/security/4022345.aspx
-[4022344]: https://technet.microsoft.com/library/security/4022344.aspx
-[4021279]: https://technet.microsoft.com/library/security/4021279.aspx
+[4022345]: /security-updates/SecurityAdvisories/2017/4022345
+[4022344]: /security-updates/SecurityAdvisories/2017/4022344
+[4021279]: /security-updates/SecurityAdvisories/2017/4021279
 
 
 [4015217]: https://support.microsoft.com/kb/4015217
@@ -2173,7 +2175,7 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 [3211320]: https://support.microsoft.com/kb/3211320
 
 
-[3216771]: https://technet.microsoft.com/library/security/MS17-004
+[3216771]: /security-updates/SecurityBulletins/2017/ms17-004
 
 [3204059]: https://support.microsoft.com/kb/3204059
 [3204062]: https://support.microsoft.com/kb/3204062
@@ -2302,7 +2304,7 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 [3133977]: https://support.microsoft.com/kb/3133977
 [3133681]: https://support.microsoft.com/kb/3133681
 [3123245]: https://support.microsoft.com/kb/3123245
-[RC4 uitschakelen]: https://blogs.msdn.microsoft.com/azuresecurity/2016/04/12/azure-cipher-suite-change-removes-rc4-support/
+[RC4 uitschakelen]: /archive/blogs/azuresecurity/azure-cipher-suite-change-removes-rc4-support
 
 
 [3148531]: https://support.microsoft.com/kb/3148531
@@ -2407,7 +2409,7 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 [3077657]: https://support.microsoft.com/kb/3077657
 [3057154]: https://support.microsoft.com/kb/3057154
 
-[MS15-034]: https://technet.microsoft.com/library/security/MS15-034
+[MS15-034]: /security-updates/SecurityBulletins/2015/ms15-034
 
 [3042553]: https://support.microsoft.com/en-us/kb/3042553/
 
@@ -2484,5 +2486,5 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 [3063858]:https://support.microsoft.com/kb/3063858
 
 
-[archive]: https://msdn.microsoft.com/library/azure/dn391773.aspx
+[archive]: /previous-versions/azure/
 [family-explain]: cloud-services-guestos-update-matrix.md#guest-os-family-version-explanation

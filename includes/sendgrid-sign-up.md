@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: gwallace
 ms.openlocfilehash: 4eb1a6f351cdf129611949049f762fe51cac4b16
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91377395"
 ---
 Azure-klanten kunnen iedere maand 25.000 gratis e-mails ontgrendelen. Met deze 25.000 gratis maandelijkse e-mails krijgt u toegang tot geavanceerde rapportage en analyse en [alle api's][all APIs] (Web, SMTP, event, parse en meer). Voor informatie over extra diensten die door SendGrid worden aangeboden, gaat u naar de pagina met [SendGrid-oplossingen][SendGrid Solutions].
 
 ### <a name="to-sign-up-for-a-sendgrid-account"></a>Aanmelden voor een SendGrid-account
-1. Meld u aan bij de [Azure-portal][Azure portal].
+1. Meld u aan bij [Azure Portal][Azure portal].
 2. Selecteer in het menu Azure Portal of de start pagina de optie **een resource maken**.
 
     ![Scherm afbeelding van het menu Azure Portal waarvoor de optie een resource maken is geselecteerd.][command-bar-new]

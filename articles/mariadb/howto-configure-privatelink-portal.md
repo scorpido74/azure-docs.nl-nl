@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.openlocfilehash: 6c96c4803293db9d9bacfc43f0de2f7803e6c41c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87836476"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-portal"></a>Een persoonlijke koppeling voor Azure Database for MariaDB maken en beheren met behulp van portal
@@ -38,12 +38,12 @@ In deze sectie maakt u een virtueel netwerk en het subnet om de VM te hosten die
     | Instelling | Waarde |
     | ------- | ----- |
     | Naam | Voer *MyVirtualNetwork*in. |
-    | Adresruimte | Voer *10.1.0.0/16* in. |
+    | Adresruimte | Voer *10.1.0.0/16*in. |
     | Abonnement | Selecteer uw abonnement.|
     | Resourcegroep | Selecteer **Nieuwe maken**, voer *myResourceGroup* in en selecteer vervolgens **OK**. |
     | Locatie | Selecteer **Europa - west**.|
     | Subnet - Naam | Voer *mySubnet*in. |
-    | Subnet - adresbereik | Voer *10.1.0.0/24* in. |
+    | Subnet - adresbereik | Voer *10.1.0.0/24*in. |
     |||
 3. Laat voor de rest de standaardwaarden staan en selecteer **Maken**.
 

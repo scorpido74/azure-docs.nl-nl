@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 089cc8f22248a2b7152afaf951f6028a05682648
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91443330"
 ---
 # <a name="get-started-with-cross-database-queries-vertical-partitioning-preview"></a>Aan de slag met query's voor meerdere data bases (verticaal partitioneren) (preview)
@@ -29,7 +29,7 @@ Zie  [Azure SQL database overzicht van Elastic data base](elastic-query-overview
 
 ## <a name="prerequisites"></a>Vereisten
 
-U moet een machtiging voor externe gegevens bronnen wijzigen. Deze machtiging is opgenomen in de machtiging ALTER data base. Machtigingen voor externe gegevens bronnen wijzigen is nodig om te verwijzen naar de onderliggende gegevens bron.
+U moet een machtiging voor externe gegevens bronnen wijzigen. Deze machtiging is opgenomen in de machtiging ALTER DATABASE. Machtigingen voor ALTER ANY EXTERNAL DATA SOURCE zijn nodig om te verwijzen naar de onderliggende gegevensbron.
 
 ## <a name="create-the-sample-databases"></a>De voorbeeld databases maken
 
@@ -78,7 +78,7 @@ INSERT INTO [dbo].[CustomerInformation] ([CustomerID], [CustomerName], [Company]
     ```
 
     De gebruikers naam en het wacht woord moeten de gebruikers naam en het wacht woord zijn die worden gebruikt om u aan te melden bij de klanten database.
-    Verificatie met behulp van Azure Active Directory met elastische query's wordt momenteel niet ondersteund.
+    Verificatie via Azure Active Directory met elastische query's wordt momenteel niet ondersteund.
 
 ### <a name="external-data-sources"></a>Externe gegevensbronnen
 
@@ -126,7 +126,7 @@ Zie [SQL database prijzen](https://azure.microsoft.com/pricing/details/sql-datab
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [overzicht van elastische query's](elastic-query-overview.md)voor een overzicht van elastische query's.
-* Zie query's [uitvoeren op verticaal gepartitioneerde gegevens](elastic-query-vertical-partitioning.md) voor syntaxis-en voorbeeld query's voor verticaal gepartitioneerde gegevens)
-* Zie aan de slag [met elastische query's voor horizontale partitionering (sharding)](elastic-query-getting-started.md)voor een zelf studie over horizontale partitionering (sharding).
-* Zie query's [uitvoeren in horizon taal gepartitioneerde gegevens](elastic-query-horizontal-partitioning.md) voor syntaxis-en voorbeeld query's voor Horizon taal gepartitioneerde gegevens)
-* Zie [ \_ \_ extern uitvoeren van SP](https://msdn.microsoft.com/library/mt703714) voor een opgeslagen procedure waarmee een Transact-SQL-instructie wordt uitgevoerd op één externe Azure SQL database of een set met data bases die fungeren als Shards in een horizon taal partitie schema.
+* Zie [Query's uitvoeren op verticaal gepartitioneerde gegevens](elastic-query-vertical-partitioning.md) voor de syntaxis van en voorbeeldquery's voor verticaal gepartitioneerde gegevens
+* Zie [Aan de slag met elastische query's voor horizontale partitionering (sharding)](elastic-query-getting-started.md) voor een zelfstudie over horizontale partitionering (sharding).
+* Zie [Query's uitvoeren op horizontaal gepartitioneerde gegevens](elastic-query-horizontal-partitioning.md) voor de syntaxis van en voorbeeldquery's voor horizontaal gepartitioneerde gegevens
+* Zie [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714) voor een opgeslagen procedure waarmee een Transact-SQL-instructie wordt uitgevoerd op één externe Azure SQL-database of een aantal databases die als shards fungeren in een schema voor horizontale partitionering.

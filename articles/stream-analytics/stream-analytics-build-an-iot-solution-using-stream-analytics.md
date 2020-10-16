@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 12/06/2018
 ms.custom: seodec18
 ms.openlocfilehash: e0e2244d8c70ca2e6d379e741d543d9cd260b7f8
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86044580"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Een IoT-oplossing bouwen met behulp van Stream Analytics
@@ -43,7 +43,7 @@ Deze oplossing werkt met twee gegevens stromen. Sens oren die zijn geïnstalleer
 ### <a name="entry-data-stream"></a>Gegevens stroom van vermelding
 De gegevens stroom van de vermelding bevat informatie over auto's wanneer deze niet-gratis stations binnenkomt. De gebeurtenissen voor het afsluiten van gegevens worden live gestreamd naar een event hub-wachtrij vanuit een web-app die is opgenomen in de voor beeld-app.
 
-| TollID | EntryTime | LicensePlate | Status | Merk | Model | VehicleType | VehicleWeight | Gratis | Label |
+| TollID | EntryTime | LicensePlate | Status | Merk | Modelleren | VehicleType | VehicleWeight | Gratis | Label |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 |2014-09-10 12:01:00.000 |JNB 7001 |NY |Honda |CRV |1 |0 |7 | |
 | 1 |2014-09-10 12:02:00.000 |YXZ 1001 |NY |Toyota |Camry |1 |0 |4 |123456789 |
@@ -54,14 +54,14 @@ De gegevens stroom van de vermelding bevat informatie over auto's wanneer deze n
 
 Hier volgt een korte beschrijving van de kolommen:
 
-| Kolom | Description |
+| Kolom | Beschrijving |
 | --- | --- |
 | TollID |De ID van het telefoon nummer waarmee een telefoon stand wordt aangeduid |
 | EntryTime |De datum en tijd van binnenkomst van het Voer tuig in UTC |
 | LicensePlate |Het nummer van de licentie plaat van het Voer tuig |
 | Status |Een status in Verenigde Staten |
 | Merk |De fabrikant van de auto |
-| Model |Het model nummer van de auto |
+| Modelleren |Het model nummer van de auto |
 | VehicleType |1 voor passagiers voertuigen of 2 voor commerciële Voer tuigen |
 | WeightType |Gewicht van het Voer tuig in tonnen; 0 voor reizigers voertuigen |
 | Gratis |De niet-gratis waarde in USD |
@@ -81,7 +81,7 @@ De gegevens stroom voor afsluiten bevat informatie over auto's die het bewerking
 
 Hier volgt een korte beschrijving van de kolommen:
 
-| Kolom | Description |
+| Kolom | Beschrijving |
 | --- | --- |
 | TollID |De ID van het telefoon nummer waarmee een telefoon stand wordt aangeduid |
 | ExitTime |De datum en tijd van het verlaten van het Voer tuig in UTC |
@@ -101,7 +101,7 @@ De oplossing maakt gebruik van een statische moment opname van een registratie d
 
 Hier volgt een korte beschrijving van de kolommen:
 
-| Kolom | Description |
+| Kolom | Beschrijving |
 | --- | --- |
 | LicensePlate |Het nummer van de licentie plaat van het Voer tuig |
 | Registratie |De registratie-ID van het Voer tuig |
@@ -299,7 +299,7 @@ De streaming-taak omhoog schalen naar meer streaming-eenheden:
 
 1. De huidige taak **stoppen** .
 
-2. Werk de query syntaxis op de **query pagina< > ** en sla de wijzigingen op.
+2. Werk de query syntaxis op de ** query pagina< > ** en sla de wijzigingen op.
 
 3. Selecteer onder de kop CONFIGURe op de streaming-taak **schalen**.
 

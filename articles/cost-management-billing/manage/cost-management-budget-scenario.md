@@ -9,12 +9,12 @@ ms.subservice: cost-management
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 7bed8cc55e0880d88df22ca32bc5886e22022cbc
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 50451acdbd1c88b6ae703ed25de9cee1f3e48216
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690184"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446462"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Kosten beheren met Azure Budgets
 
@@ -152,7 +152,7 @@ Gebruikt een voorwaardelijke instructie om te controleren of de drempelwaarde 80
 1. Selecteer **Ok** om de expressie in te stellen.
 1. Select **is groter dan of gelijk aan** in de vervolgkeuzelijst van de **Voorwaarde**.
 1. Voer in het vak **Een waarde kiezen** de voorwaarde `.8` in.  
-    ![Azure - Logische app - Floatexpressie met een waarde](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-12.png)
+    ![Schermopname van het dialoogvenster Voorwaarde met geselecteerde waarden.](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-12.png)
 1. Selecteer **Toevoegen** > **Rij toevoegen** binnen het voorwaardevak om een aanvullend deel van de voorwaarde toe te voegen.
 1. Selecteer in het vak **Voorwaarde** het tekstvak met `Choose a value`.
 1. Selecteer boven aan de lijst **Expressie** en voer de volgende expressies in Expressie bewerken in: `float()`
@@ -160,7 +160,7 @@ Gebruikt een voorwaardelijke instructie om te controleren of de drempelwaarde 80
 1. Selecteer **Ok** om de expressie in te stellen.
 1. Selecteer **is kleiner dan** in de vervolgkeuzelijst van **Voorwaarde**.
 1. Voer in het vak **Een waarde kiezen** de voorwaarde `1` in.  
-    ![Azure - Logische app - Floatexpressie met een waarde](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-13.png)
+    ![Schermopname van het dialoogvenster Voorwaarde met twee voorwaarden.](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-13.png)
 1. In het vak **Indien waar** selecteert u **Een actie toevoegen**. U voegt een HTTP POST-actie toe die de optionele VM's afsluit.  
     ![Azure - Logische app - Een actie toevoegen](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-14.png)
 1. Voer **HTTP** in om te zoeken naar de HTTP-actie en selecteer vervolgens de actie **HTTP – HTTP**.  
@@ -183,7 +183,7 @@ Gebruikt een voorwaardelijke instructie om te controleren of de drempelwaarde 80
 Gebruik een voorwaardelijke instructie om te controleren of de drempelwaarde 100% van de budgetwaarde heeft bereikt of overschreden. Als de drempelwaarde is bereikt, stuurt u een HTTP POST met de webhook met de naam **Volledig**. Met deze actie worden alle resterende VM's afgesloten.
 
 1. Selecteer **Nieuwe stap** > **Een voorwaarde toevoegen**.  
-    ![Azure - Logische app - Actie toevoegen](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-20.png)
+    ![Schermopname van het dialoogvenster Indien waar met Een actie toevoegen gemarkeerd.](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-20.png)
 1. Selecteer in het vak **Voorwaarde** het tekstvak met `Choose a value` om een lijst beschikbare waarden weer te geven.
 1. Selecteer boven aan de lijst **Expressie** en voer de volgende expressies in Expressie bewerken in: `float()`
 1. Selecteer **Dynamische inhoud**, plaats de cursor tussen de haakjes () en selecteer **NotificationThresholdAmount** uit de lijst om de volledige expressie in te vullen.
@@ -194,11 +194,11 @@ Gebruik een voorwaardelijke instructie om te controleren of de drempelwaarde 100
 1. Voer in het vak **Een waarde kiezen** voor de voorwaarde `1` in.  
     ![Azure - Logische app - Waarde van voorwaarde instellen](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-21.png)
 1. In het vak **Indien waar** selecteert u **Een actie toevoegen**. U voegt een HTTP POST-actie waarmee alle resterende VM's worden afgesloten.  
-    ![Azure - Logische app - Een actie toevoegen](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-22.png)
+    ![Schermopname toon het dialoogvenster Indien waar met de plaats waar u een H T T P POST-actie kunt toevoegen.](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-22.png)
 1. Voer **HTTP** in om te zoeken naar de HTTP-actie en selecteer vervolgens de actie **HTTP – HTTP**.
 1. Selecteer **Posten** voor de waarde **Methode**.
 1. Voer voor de waarde **URI** de URL in van de webhook met de naam **Volledig** die u eerder in deze zelfstudie hebt gemaakt.  
-    ![Azure - Logische app - Een actie toevoegen](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-23.png)
+    ![Schermopname van het H T T P-dialoogvenster waar u de U R L-waarde kunt invoeren.](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-23.png)
 1. Selecteer **Een actie toevoegen** in het vak **Indien waar**. U voegt een e-mailactie toe waarmee een e-mail worden verzonden naar de ontvanger met de melding dat de resterende VM's zijn afgesloten.
 1. Zoek naar 'E-mail verzenden' en selecteer de actie *E-mail verzenden* op basis van de e-mailservice waarvan u gebruikmaakt.
 1. Voeg de tekst **Aan**, **Onderwerp** en **Tekst** toe aan de e-mail die de ontvanger op de hoogte stelt dat de optionele VM is afgesloten. Gebruik de dynamische inhoud **BudgetName** en **NotificationThresholdAmount** om het onderwerp- en tekstveld in te vullen.  

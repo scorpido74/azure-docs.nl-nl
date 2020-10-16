@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: ead1a324d342f818551ac05ac385ba4fa5b8b877
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89439081"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Ondersteunde gegevens bronnen in Azure Data Catalog
@@ -451,7 +451,7 @@ Als u een specifieke gegevens bron wilt weer geven, kunt u deze Voorst Ellen (of
     <tr>
        <td><b>Brontype</b></td>
        <td><b>Activa type</b></td>
-       <td><b>Object typen</b></td>
+       <td><b>Objecttypen</b></td>
        <td><b>DSL-structuur<b></td>
     </tr>
     <tr>

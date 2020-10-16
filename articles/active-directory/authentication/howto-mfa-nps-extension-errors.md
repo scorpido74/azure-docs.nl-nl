@@ -6,18 +6,18 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
 ms.date: 11/21/2019
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: f991e38c184fe44f63af63809deb14eda22f8f4c
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 406b53f833edabafe620b05ccb6acfadffabf5ae
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716721"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964363"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Resolve error messages from the NPS extension for Azure Multi-Factor Authentication (Foutberichten van de NPS-extensie voor Azure Multi-Factor Authentication oplossen)
 
@@ -33,7 +33,7 @@ Als u problemen ondervindt met de NPS-extensie voor Azure Multi-Factor Authentic
 | **HTTPS_COMMUNICATION_ERROR** | De NPS-server kan geen reacties ontvangen van Azure MFA. Controleer of de firewalls zijn geopend in twee richtingen voor verkeer naar en van https://adnotifications.windowsazure.com |
 | **HTTP_CONNECT_ERROR** | Op de server waarop de NPS-extensie wordt uitgevoerd, controleert u of u kunt bereiken  `https://adnotifications.windowsazure.com` en `https://login.microsoftonline.com/` . Als deze sites niet worden geladen, kunt u problemen met de connectiviteit op die server oplossen. |
 | **NPS-extensie voor Azure MFA:** <br> De NPS-extensie voor Azure MFA voert alleen secundaire verificatie voor RADIUS-aanvragen uit in de AccessAccept-status. Er is een aanvraag ontvangen voor de gebruikers naam van de gebruiker met de reactie status AccessReject, aanvraag wordt genegeerd. | Deze fout weerspiegelt meestal een verificatie fout in AD of de NPS-server kan geen reacties ontvangen van Azure AD. Controleer of de firewalls zijn geopend voor verkeer naar en van `https://adnotifications.windowsazure.com` en `https://login.microsoftonline.com` met behulp van de poorten 80 en 443. Het is ook belang rijk om te controleren of op het tabblad inbel netwerk toegangs machtigingen de instelling is ingesteld op toegang beheren via NPS-netwerk beleid. Deze fout kan ook worden geactiveerd als aan de gebruiker geen licentie is toegewezen. |
-| **REGISTRY_CONFIG_ERROR** | Er ontbreekt een sleutel in het REGI ster voor de toepassing. Dit kan zijn omdat het [Power shell-script](howto-mfa-nps-extension.md#install-the-nps-extension) niet is uitgevoerd na de installatie. Het fout bericht moet de ontbrekende sleutel bevatten. Zorg ervoor dat u de sleutel onder HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureMfa. |
+| **REGISTRY_CONFIG_ERROR** | Er ontbreekt een sleutel in het REGI ster voor de toepassing. Dit kan zijn omdat het [Power shell-script](howto-mfa-nps-extension.md#install-the-nps-extension) niet is uitgevoerd na de installatie. Het fout bericht moet de ontbrekende sleutel bevatten. Zorg ervoor dat u beschikt over de sleutel onder HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa. |
 | **REQUEST_FORMAT_ERROR** <br> Er ontbreekt een verplicht userName\Identifier kenmerk van de RADIUS-aanvraag. Controleren of NPS RADIUS-aanvragen ontvangt | Deze fout weerspiegelt meestal een installatie probleem. De NPS-extensie moet worden geïnstalleerd in NPS-servers die RADIUS-aanvragen kunnen ontvangen. NPS-servers die zijn geïnstalleerd als afhankelijkheden voor services als RDG en RRAS ontvangen geen RADIUS-aanvragen. De NPS-extensie werkt niet wanneer deze wordt geïnstalleerd via dergelijke installaties en er zijn fouten opgetreden omdat de gegevens van de verificatie aanvraag niet kunnen worden gelezen. |
 | **REQUEST_MISSING_CODE** | Zorg ervoor dat het protocol voor wachtwoord versleuteling tussen de NPS-en NAS-servers de secundaire verificatie methode ondersteunt die u gebruikt. **Pap** ondersteunt alle verificatie methoden van Azure MFA in de Cloud: telefoon oproep, tekst bericht in één richting, melding van mobiele app en verificatie code voor mobiele apps. Ondersteuning voor telefonische en **EAP** -telefoon **gesprekken en mobiele** app-meldingen. |
 | **USERNAME_CANONICALIZATION_ERROR** | Controleer of de gebruiker aanwezig is in uw on-premises Active Directory-exemplaar en of de NPS-service machtigingen heeft voor toegang tot de Directory. Als u vertrouwens relaties tussen forests gebruikt, [neemt u contact op met de ondersteuning](#contact-microsoft-support) voor verdere hulp. |
@@ -107,7 +107,7 @@ Als u meer hulp nodig hebt, neemt u contact op met een ondersteunings medewerker
 
 Als u Logboeken voor fout opsporing wilt verzamelen voor ondersteunings diagnostiek, gebruikt u de volgende stappen op de NPS-server:
 
-1. Open de REGI ster-editor en blader naar HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureMfa Stel **VERBOSE_LOG** in op **waar**
+1. Open de REGI ster-editor en blader naar HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa Stel **VERBOSE_LOG** in op **waar**
 2. Open een beheerders opdracht prompt en voer deze opdrachten uit:
 
    ```
@@ -131,5 +131,5 @@ Als u Logboeken voor fout opsporing wilt verzamelen voor ondersteunings diagnost
    Start .
    ```
 
-5. Open de REGI ster-editor en blader naar HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureMfa Stel **VERBOSE_LOG** in op **Onwaar**
+5. Open de REGI ster-editor en blader naar HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa Stel **VERBOSE_LOG** in op **Onwaar**
 6. De inhoud van de map C:\NPS en het gezipte bestand koppelen aan de ondersteunings aanvraag.

@@ -4,10 +4,10 @@ description: Meer informatie over het maken van artefacten voor gebruik met Azur
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 85acfcc3811e671e58fadab08a23951778e1323d
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88270679"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>Aangepaste artefacten maken voor uw virtuele machine van DevTest Labs
@@ -48,7 +48,7 @@ In het volgende voor beeld ziet u de secties waaruit de basis structuur van een 
 | --- | --- | --- |
 | $schema |Nee |Locatie van het JSON-schema bestand. Het JSON-schema bestand kan u helpen de geldigheid van het definitie bestand te testen. |
 | titel |Ja |De naam van het artefact dat wordt weer gegeven in het lab. |
-| beschrijving |Ja |Beschrijving van het artefact dat wordt weer gegeven in het lab. |
+| description |Ja |Beschrijving van het artefact dat wordt weer gegeven in het lab. |
 | iconUri |Nee |De URI van het pictogram dat wordt weer gegeven in het lab. |
 | targetOsType |Ja |Het besturings systeem van de virtuele machine waarop het artefact is geïnstalleerd. Ondersteunde opties zijn Windows en Linux. |
 | parameters |Nee |Waarden die worden gegeven wanneer de opdracht voor artefact installatie wordt uitgevoerd op een computer. Zo kunt u uw artefact aanpassen. |
@@ -73,7 +73,7 @@ Gebruik de volgende structuur om para meters te definiëren:
 | --- | --- | --- |
 | type |Ja |Type parameter waarde. Zie de volgende lijst voor de toegestane typen. |
 | displayName |Ja |De naam van de para meter die wordt weer gegeven voor een gebruiker in het lab. |
-| beschrijving |Ja |Beschrijving van de para meter die wordt weer gegeven in het lab. |
+| description |Ja |Beschrijving van de para meter die wordt weer gegeven in het lab. |
 
 Toegestane typen zijn:
 
@@ -95,7 +95,7 @@ Geheimen declareren als beveiligde teken reeksen. Hier volgt de syntaxis voor he
     },
 ```
 
-Voer voor de installatie opdracht voor artefacten het Power shell-script uit dat de beveiligde teken reeks gebruikt die is gemaakt met behulp van de ConvertTo-SecureString opdracht. 
+Voer voor de installatie opdracht voor artefacten het Power shell-script uit met de beveiligde teken reeks die is gemaakt met behulp van de ConvertTo-SecureString opdracht. 
 
 ```json
   "runCommand": {

@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c69f2ce964d9171197771d783358dcef2ca60726
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 7473da6289d4b871ae77f18fab4c00cebcb55d98
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319522"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977011"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>Licenties toewijzen of verwijderen in de Azure Active Directory Portal
 
@@ -102,11 +102,11 @@ Zorg ervoor dat iedereen die een gelicentieerde Azure AD-service moet gebruiken,
 
 1. Selecteer op de pagina **toewijzen** de optie **gebruikers en groepen**en zoek vervolgens naar de groep waaraan u de licentie wilt toewijzen en selecteer deze.
 
-    ![Pagina licentie toewijzen, met gemarkeerde zoek opdracht en opties selecteren](media/license-users-groups/assign-group-license-blade-with-highlight.png)
+    ![Wijs de pagina licentie toe, met gemarkeerde zoek opdracht en selecteer opties 2](media/license-users-groups/assign-group-license-blade-with-highlight.png)
 
 1. Selecteer **toewijzings opties**, Controleer of u de juiste licentie opties hebt ingeschakeld en selecteer vervolgens **OK**.
 
-    ![Pagina licentie opties, met alle beschik bare opties in het licentie plan](media/license-users-groups/license-option-blade-group-assignments.png)
+    ![Pagina licentie opties, met alle beschik bare opties in het licentie abonnement 2](media/license-users-groups/license-option-blade-group-assignments.png)
 
     De pagina **licentie toewijzen** wordt bijgewerkt om aan te geven dat een gebruiker is geselecteerd en dat de toewijzingen zijn geconfigureerd.
 
@@ -135,7 +135,7 @@ U kunt een licentie verwijderen van de Azure AD-gebruikers pagina van een gebrui
 
 1. Selecteer **licentie verwijderen**.
 
-    ![De pagina gelicentieerde groepen met de optie voor het verwijderen van een licentie gemarkeerd](media/license-users-groups/license-products-group-blade-with-remove-option-highlight.png)
+    ![De pagina gelicentieerde groepen met de optie voor het verwijderen van een licentie is 2](media/license-users-groups/license-products-group-blade-with-remove-option-highlight.png)
     
     > [!NOTE]
     > Wanneer een on-premises gebruikers account dat is gesynchroniseerd met Azure AD buiten het bereik valt voor de synchronisatie of wanneer de synchronisatie wordt verwijderd, wordt de gebruiker zacht verwijderd in azure AD. Als dit gebeurt, worden licenties die zijn toegewezen aan de gebruiker rechtstreeks of via groeps licenties, gemarkeerd als **opgeschort** in plaats van **verwijderd**.

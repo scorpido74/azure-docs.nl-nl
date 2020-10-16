@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 6ac3457a22128f313084ab070a5a61c2d26d4b85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01d50f6228d63801f62ae933a8367f842d89ef97
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87851678"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071367"
 ---
 # <a name="api-management-advanced-policies"></a>API Management advanced policies (Geavanceerde beleidsregels API Management)
 
-In dit onderwerp vindt u een verwijzing naar de volgende API Management-beleids regels. Zie [beleid in API Management](https://go.microsoft.com/fwlink/?LinkID=398186)voor meer informatie over het toevoegen en configureren van beleid.
+In dit onderwerp vindt u een verwijzing naar de volgende API Management-beleids regels. Zie [beleid in API Management](./api-management-policies.md)voor meer informatie over het toevoegen en configureren van beleid.
 
 ## <a name="advanced-policies"></a><a name="AdvancedPolicies"></a> Geavanceerde beleids regels
 
@@ -1041,4 +1041,4 @@ Zie voor meer informatie over het gebruik van beleid:
 -   [Beleid in API Management](api-management-howto-policies.md)
 -   [Beleidsexpressies](api-management-policy-expressions.md)
 -   [Beleids verwijzing](./api-management-policies.md) voor een volledige lijst met beleids instructies en hun instellingen
--   [Voor beelden van beleid](policy-samples.md)
+-   [Voor beelden van beleid](./policy-reference.md)

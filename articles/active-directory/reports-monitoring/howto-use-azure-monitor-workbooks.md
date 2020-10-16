@@ -15,10 +15,10 @@ ms.date: 10/30/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.openlocfilehash: 510991c1afba9a5ffbfd77e855ee25d8b641bdd0
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89226978"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Azure Monitor werkmappen gebruiken voor Azure Active Directory rapporten
@@ -186,7 +186,7 @@ Werkmappen bevatten aanmeld logboek query's waarmee IT-beheerders de impact van 
 ### <a name="instructions"></a>Instructies 
 Als u toegang wilt krijgen tot de werkmap voor inzichten voor voorwaardelijke toegang, selecteert u de Insights-werkmap voor **voorwaardelijke toegang** in de sectie voorwaardelijke toegang. Deze werkmap toont de verwachte impact van elk beleid voor voorwaardelijke toegang in uw Tenant. Selecteer een of meer beleids regels voor voorwaardelijke toegang in de vervolg keuzelijst en Verfijn het bereik van de werkmap door de volgende filters toe te passen: 
 
-- **Tijdsbereik**
+- **Tijds bereik**
 
 - **Gebruiker**
 

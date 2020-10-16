@@ -7,10 +7,10 @@ ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python
 ms.openlocfilehash: 6bd4d5d82af213063b2000693e46d22744604480
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88214118"
 ---
 # <a name="azure-event-grid-output-binding-for-azure-functions"></a>Azure Event Grid uitvoer binding voor Azure Functions
@@ -57,7 +57,7 @@ public static async Task Run(
 }
 ```
 
-# <a name="c-script"></a>[C#-script](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
 In het volgende voor beeld ziet u de Event Grid uitvoer bindings gegevens in de *function.jsvoor* het bestand.
 
@@ -222,7 +222,7 @@ De Event Grid uitvoer binding is niet beschikbaar voor Java.
 
 Gebruik voor [C# class-bibliotheken](functions-dotnet-class-library.md)het kenmerk [EventGridAttribute](https://github.com/Azure/azure-functions-eventgrid-extension/blob/dev/src/EventGridExtension/OutputBinding/EventGridAttribute.cs) .
 
-De constructor van het kenmerk maakt de naam van een app-instelling die de naam van het aangepaste onderwerp bevat en de naam van een app-instelling die de sleutel van het onderwerp bevat. Zie [output-Configuration (](#configuration)Engelstalig) voor meer informatie over deze instellingen. Hier volgt een `EventGrid` voor beeld van een kenmerk:
+De constructor van het kenmerk maakt de naam van een app-instelling die de naam van het aangepaste onderwerp bevat en de naam van een app-instelling die de sleutel van het onderwerp bevat. Zie [output-Configuration (](#configuration)Engelstalig) voor meer informatie over deze instellingen. Hier volgt een voorbeeld van een `EventGrid`-kenmerk:
 
 ```csharp
 [FunctionName("EventGridOutput")]
@@ -235,13 +235,13 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 
 Zie voor een volledig [voor beeld.](#example)
 
-# <a name="c-script"></a>[C#-script](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
-Kenmerken worden niet ondersteund door een C#-script.
+Kenmerken worden niet ondersteund door C# Script.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Kenmerken worden niet ondersteund door Java script.
+Kenmerken worden niet ondersteund door JavaScript.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -255,9 +255,9 @@ De Event Grid uitvoer binding is niet beschikbaar voor Java.
 
 ## <a name="configuration"></a>Configuratie
 
-De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `EventGrid` kenmerk.
+De volgende tabel bevat informatie over de bindingsconfiguratie-eigenschappen die u instelt in het bestand *function.json* en het kenmerk `EventGrid`.
 
-|function.jsbij eigenschap | Kenmerk eigenschap |Beschrijving|
+|function.json-eigenschap | Kenmerkeigenschap |Beschrijving|
 |---------|---------|----------------------|
 |**type** | N.v.t. | Moet worden ingesteld op ' eventGrid '. |
 |**direction** | N.v.t. | Moet worden ingesteld op out. Deze para meter wordt automatisch ingesteld wanneer u de binding maakt in de Azure Portal. |
@@ -276,7 +276,7 @@ De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u 
 
 Berichten verzenden met behulp van een methode parameter, zoals `out EventGridEvent paramName` . Als u meerdere berichten wilt schrijven, kunt u `ICollector<EventGridEvent>` of gebruiken `IAsyncCollector<EventGridEvent>` in plaats van `out EventGridEvent` .
 
-# <a name="c-script"></a>[C#-script](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
 Berichten verzenden met behulp van een methode parameter, zoals `out EventGridEvent paramName` . In C#-script `paramName` is de waarde die is opgegeven in de `name` eigenschap van *function.jsop*. Als u meerdere berichten wilt schrijven, kunt u `ICollector<EventGridEvent>` of gebruiken `IAsyncCollector<EventGridEvent>` in plaats van `out EventGridEvent` .
 

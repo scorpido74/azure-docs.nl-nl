@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.openlocfilehash: 155675d6d0f6026c528be66f9a67a21fe65d00ba
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f41312521202f406c3826880f345e0bbe7600bd3
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555146"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817219"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-filecloud"></a>Zelfstudie: Azure Active Directory-integratie met FileCloud
 
@@ -130,19 +130,19 @@ Voer de volgende stappen uit als u eenmalige aanmelding bij Azure Active Directo
 
 2. Klik in het linkernavigatiedeelvenster op **Instellingen**. 
    
-    ![Eenmalige aanmelding in de app configureren](./media/filecloud-tutorial/tutorial_filecloud_000.png)
+    ![Schermopname met 'Instellingen' gemarkeerd in het navigatiedeelvenster aan de linkerkant.](./media/filecloud-tutorial/tutorial_filecloud_000.png)
 
 3. Klik op het tabblad **Eenmalige aanmelding** in de sectie Instellingen. 
    
-    ![Eenmalige aanmelding in de app configureren](./media/filecloud-tutorial/tutorial_filecloud_001.png)
+    ![Schermopname met de sectie 'Instellingen' met het tabblad 'Eenmalige aanmelding' geselecteerd.](./media/filecloud-tutorial/tutorial_filecloud_001.png)
 
 4. Selecteer **SAML** als **Standaardtype eenmalige aanmelding** in het deelvenster **Instellingen voor eenmalige aanmelding**.
    
-    ![Eenmalige aanmelding in de app configureren](./media/filecloud-tutorial/tutorial_filecloud_002.png)
+    ![Schermopname met het deelvenster 'Instellingen voor eenmalige aanmelding' met 'SAML' geselecteerd.](./media/filecloud-tutorial/tutorial_filecloud_002.png)
 
 5. Plak in het tekstvak **URL van IdP-eindpunt** de waarde van **Azure Active Directory-id** die u hebt gekopieerd uit de Azure-portal.
 
-    ![Eenmalige aanmelding in de app configureren](./media/filecloud-tutorial/tutorial_filecloud_003.png)
+    ![Schermopname met de sectie 'SAML-instellingen' met 'URL van IdP-eindpunt' gemarkeerd.](./media/filecloud-tutorial/tutorial_filecloud_003.png)
 
 6. Open het gedownloade metagegevensbestand in Kladblok, kopieer de inhoud ervan naar het klembord en plak deze in het tekstvak **IdP-metagegevens** in het deelvenster **SAML-instellingen**.
 

@@ -1,5 +1,5 @@
 ---
-title: Machine Learning-eind punten gebruiken in Azure Stream Analytics
+title: Azure Machine Learning Studio (klassieke) eind punten gebruiken in Azure Stream Analytics
 description: In dit artikel wordt beschreven hoe u door gebruiker gedefinieerde functies voor computer taal gebruikt in Azure Stream Analytics.
 author: jseb225
 ms.author: jeanb
@@ -7,31 +7,31 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/11/2019
-ms.openlocfilehash: f54245013b6a57c02120c0e97ecf5f39094148b0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4bcff14f655385aa467878f21927ac091095c91f
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317732"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015512"
 ---
 # <a name="azure-machine-learning-studio-classic-integration-in-stream-analytics-preview"></a>Integratie van Azure Machine Learning Studio (klassiek) in Stream Analytics (preview-versie)
 Stream Analytics ondersteunt door de gebruiker gedefinieerde functies die naar Azure Machine Learning Studio (klassieke) eind punten aanroepen. REST API ondersteuning voor deze functie wordt beschreven in de [Stream Analytics rest API-bibliotheek](https://msdn.microsoft.com/library/azure/dn835031.aspx). Dit artikel bevat aanvullende informatie die nodig is voor een succes volle implementatie van deze functie in Stream Analytics. Er is ook een zelf studie gepubliceerd en deze is [hier](stream-analytics-machine-learning-integration-tutorial.md)beschikbaar.
 
 ## <a name="overview-azure-machine-learning-studio-classic-terminology"></a>Overzicht: Azure Machine Learning Studio (klassiek) terminologie
-Microsoft Azure Machine Learning Studio (klassiek) biedt een hulp programma dat u kunt gebruiken om predictive analytics oplossingen voor uw gegevens te bouwen, te testen en te implementeren. Dit hulp programma wordt de *Azure machine learning Studio (klassiek)* genoemd. De Studio wordt gebruikt om te communiceren met de Machine Learning resources en kan eenvoudig uw ontwerp ontwikkelen, testen en herhalen. Deze resources en de bijbehorende definities staan hieronder.
+Microsoft Azure Machine Learning Studio (klassiek) biedt een hulp programma dat u kunt gebruiken om predictive analytics oplossingen voor uw gegevens te bouwen, te testen en te implementeren. Dit hulp programma wordt *Azure machine learning Studio (klassiek)* genoemd. Studio (klassiek) wordt gebruikt om te communiceren met de machine learning resources en kan eenvoudig uw ontwerp ontwikkelen, testen en herhalen. Deze resources en de bijbehorende definities staan hieronder.
 
 * **Werk ruimte**: de *werk ruimte* is een container met alle andere machine learning resources samen in een container voor beheer en controle.
 * **Experiment**: *experimenten* worden gemaakt door data wetenschappers om gegevens sets te gebruiken en een machine learning model te trainen.
-* **Eind punt**: *eind punten* zijn het Azure machine learning Studio (klassiek)-object dat wordt gebruikt om functies als invoer te gebruiken, een opgegeven machine learning model toe te passen en de gescoorde uitvoer te retour neren.
+* **Eind**punt: *eind punten* zijn het Studio-object (klassiek) dat wordt gebruikt om functies als invoer te gebruiken, een opgegeven machine learning model toe te passen en de gescoorde uitvoer te retour neren.
 * **Score-webservice**: een *Score-webservice* is een verzameling eind punten zoals hierboven wordt vermeld.
 
 Elk eind punt heeft api's voor batch uitvoering en synchrone uitvoering. Stream Analytics maakt gebruik van synchrone uitvoering. De specifieke service heet een [aanvraag/antwoord service](../machine-learning/classic/consume-web-services.md) in azure machine learning Studio (klassiek).
 
-## <a name="machine-learning-resources-needed-for-stream-analytics-jobs"></a>Machine Learning resources die nodig zijn voor Stream Analytics taken
+## <a name="studio-classic-resources-needed-for-stream-analytics-jobs"></a>Studio-bronnen (klassiek) die nodig zijn voor Stream Analytics taken
 Voor het uitvoeren van Stream Analytics taak verwerking, zijn een aanvraag/antwoord-eind punt, een [apikey](https://docs.microsoft.com/azure/machine-learning/studio/consume-web-services)en een Swagger-definitie nood zakelijk voor een geslaagde uitvoering. Stream Analytics heeft een extra eind punt dat de URL voor het Swagger-eind punt bouwt, de interface opzoekt en een standaard UDF-definitie voor de gebruiker retourneert.
 
-## <a name="configure-a-stream-analytics-and-machine-learning-udf-via-rest-api"></a>Een Stream Analytics en Machine Learning UDF configureren via REST API
-Door REST Api's te gebruiken, kunt u uw taak zo configureren dat deze Azure machine language-functies aanroept. De stappen zijn als volgt:
+## <a name="configure-a-stream-analytics-and-studio-classic-udf-via-rest-api"></a>Een Stream Analytics en Studio (klassiek) UDF configureren via REST API
+Door REST Api's te gebruiken, kunt u uw taak zo configureren dat de functies Studio (klassiek) worden aangeroepen. De stappen zijn als volgt:
 
 1. Een Stream Analytics-taak maken
 2. Een invoer definiëren
@@ -68,7 +68,7 @@ Voor beeld van aanvraag tekst:
 ```
 
 ## <a name="call-retrievedefaultdefinition-endpoint-for-default-udf"></a>RetrieveDefaultDefinition-eind punt aanroepen voor standaard-UDF
-Zodra het skelet UDF is gemaakt, is de volledige definitie van de UDF nodig. Het RetrieveDefaultDefinition-eind punt helpt u de standaard definitie te verkrijgen voor een scalaire functie die is gebonden aan een Azure Machine Learning Studio (klassiek)-eind punt. De onderstaande nettolading vereist dat u de standaard UDF-definitie voor een scalaire functie die is gebonden aan een Azure Machine Learning eind punt krijgt. Het werkelijke eind punt wordt niet opgegeven omdat het al is opgegeven tijdens de PUT-aanvraag. Stream Analytics roept het eind punt aan dat in de aanvraag is gegeven als dit expliciet wordt gegeven. Anders wordt de oorspronkelijke verwijzing gebruikt. Hier wordt een enkele teken reeks parameter (een zin) gebruikt en wordt één uitvoer van het type teken reeks geretourneerd waarmee het label "sentiment" voor die zin wordt aangegeven.
+Zodra het skelet UDF is gemaakt, is de volledige definitie van de UDF nodig. Het RetrieveDefaultDefinition-eind punt helpt u de standaard definitie te verkrijgen voor een scalaire functie die is gebonden aan een Azure Machine Learning Studio (klassiek)-eind punt. De onderstaande nettolading vereist dat u de standaard UDF-definitie voor een scalaire functie die is gebonden aan een studio-eind punt (klassiek) krijgt. Het werkelijke eind punt wordt niet opgegeven omdat het al is opgegeven tijdens de PUT-aanvraag. Stream Analytics roept het eind punt aan dat in de aanvraag is gegeven als dit expliciet wordt gegeven. Anders wordt de oorspronkelijke verwijzing gebruikt. Hier wordt een enkele teken reeks parameter (een zin) gebruikt en wordt één uitvoer van het type teken reeks geretourneerd waarmee het label "sentiment" voor die zin wordt aangegeven.
 
 ```
 POST : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>/RetrieveDefaultDefinition?api-version=<apiVersion>

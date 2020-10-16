@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 2c8c094efdfa9f46c6e6c42e34fd4010e43fa972
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84051197"
 ---
 # <a name="the-wingtip-tickets-saas-application"></a>De SaaS-toepassing Wingtip tickets
@@ -32,17 +32,17 @@ Er zijn drie versies van de app beschikbaar; elke verkennen een ander data base-
 
  Elk voor beeld bevat de toepassings code plus beheer scripts en zelf studies die een bereik van ontwerp-en beheer patronen verkennen.  Elk voor beeld implementeert in minder dan vijf minuten.  Alle drie kunnen naast elkaar worden geïmplementeerd, zodat u de verschillen in het ontwerp en het beheer kunt vergelijken.
 
-## <a name="standalone-application-per-tenant-pattern"></a>Zelfstandige toepassing per Tenant patroon
+## <a name="standalone-application-per-tenant-pattern"></a>Patroon voor een zelfstandige toepassing per tenant
 
 De zelfstandige app per Tenant patroon gebruikt één Tenant toepassing met een Data Base voor elke Tenant. De app van elke Tenant, met inbegrip van de bijbehorende data base, wordt geïmplementeerd in een afzonderlijke Azure-resource groep. De resource groep kan worden geïmplementeerd in het abonnement van de service provider of het abonnement van de Tenant en worden beheerd door de provider namens de tenants. De zelfstandige app per Tenant patroon biedt de grootste isolatie van tenants, maar is doorgaans de duur van het delen van resources tussen meerdere tenants.  Dit patroon is zeer geschikt voor toepassingen die ingewik kelder zijn en die worden geïmplementeerd op kleinere aantallen tenants.  Met zelfstandige implementaties kan de app gemakkelijker worden aangepast voor elke Tenant dan bij andere patronen.  
 
-Bekijk de [zelf studies][docs-tutorials-for-wingtip-sa] en code op github [. ../Microsoft/WingtipTicketsSaaS-StandaloneApp][github-code-for-wingtip-sa].
+Bekijk de [zelf studies][docs-tutorials-for-wingtip-sa] en code op github  [. ../Microsoft/WingtipTicketsSaaS-StandaloneApp][github-code-for-wingtip-sa].
 
 ## <a name="database-per-tenant-pattern"></a>Data base per Tenant patroon
 
 De data base per Tenant patroon is van kracht voor service providers die zich bij Tenant isolatie bevinden en willen een gecentraliseerde service uitvoeren die de kosten efficiënt gebruik van gedeelde resources mogelijk maakt. Er wordt een Data Base gemaakt voor elke locatie of Tenant, en alle data bases worden centraal beheerd. Data bases kunnen worden gehost in elastische Pools om rendabel en eenvoudig beheer van prestaties te bieden, die gebruikmaken van de onvoorspelbare werkbelasting patronen van de tenants. Een catalogus database bevat de toewijzing tussen tenants en hun data bases. Deze toewijzing wordt beheerd met behulp van de Shard-kaart beheer functies van de [Elastic database-client bibliotheek](elastic-database-client-library.md), die efficiënt verbindings beheer biedt voor de toepassing.
 
-Bekijk de [zelf studies][docs-tutorials-for-wingtip-dpt] en code op github [. ../Microsoft/WingtipTicketsSaaS-DbPerTenant][github-code-for-wingtip-dpt].
+Bekijk de [zelf studies][docs-tutorials-for-wingtip-dpt] en code op github  [. ../Microsoft/WingtipTicketsSaaS-DbPerTenant][github-code-for-wingtip-dpt].
 
 ## <a name="sharded-multi-tenant-database-pattern"></a>Patroon van Shard multi tenant-data base
 
@@ -50,7 +50,7 @@ Multi tenant-data bases zijn effectief voor service providers die op zoek zijn n
 
 Dit patroon biedt ook een *hybride* model waarin u kunt optimaliseren voor kosten met meerdere tenants in een Data Base, of om te optimaliseren voor isolatie met één Tenant in hun eigen data base. De keuze kan per Tenant worden gemaakt, hetzij wanneer de Tenant is ingericht of op een later tijdstip, zonder dat dit van invloed is op de toepassing.  Dit model kan effectief worden gebruikt wanneer groepen tenants anders moeten worden behandeld. Er kunnen bijvoorbeeld goedkope tenants worden toegewezen aan gedeelde data bases, terwijl Premium-tenants kunnen worden toegewezen aan hun eigen data bases. 
 
-Bekijk de [zelf studies][docs-tutorials-for-wingtip-mt] en code op github [. ../Microsoft/WingtipTicketsSaaS-MultiTenantDb][github-code-for-wingtip-mt].
+Bekijk de [zelf studies][docs-tutorials-for-wingtip-mt] en code op github  [. ../Microsoft/WingtipTicketsSaaS-MultiTenantDb][github-code-for-wingtip-mt].
 
 ## <a name="next-steps"></a>Volgende stappen
 

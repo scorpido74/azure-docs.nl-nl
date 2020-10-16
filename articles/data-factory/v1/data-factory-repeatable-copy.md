@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 10476544e513b52567eb0ca0182039f2c5f482c3
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89441626"
 ---
 # <a name="repeatable-copy-in-azure-data-factory"></a>Herhaal bare kopie in Azure Data Factory
@@ -92,7 +92,7 @@ ID    Product        Quantity    ModifiedDate
 7     Down Tube    4            2015-05-01 00:00:00
 ```
 
-Stel dat de record voor een vlakke ring is verwijderd uit de oorspronkelijke CSV. Vervolgens wordt het volgende resultaat gegenereerd: 
+Stel dat de record Flat Washer is verwijderd uit het oorspronkelijke csv-bestand. Vervolgens wordt het volgende resultaat gegenereerd: 
 
 ```
 ID    Product        Quantity    ModifiedDate
@@ -100,17 +100,17 @@ ID    Product        Quantity    ModifiedDate
 7     Down Tube    4            2015-05-01 00:00:00
 ```
 
-De Kopieer activiteit heeft het opschoon script uitgevoerd om de bijbehorende gegevens voor dat segment te verwijderen. Vervolgens wordt de invoer gelezen uit het CSV-bestand (dat vervolgens slechts één record bevat) en ingevoegd in de tabel. 
+De kopieeractiviteit heeft het opschoningsscript uitgevoerd om de bijbehorende gegevens voor dat segment te verwijderen. Vervolgens wordt de invoer gelezen uit het CSV-bestand (dat vervolgens slechts één record bevat) en ingevoegd in de tabel. 
 
 ### <a name="mechanism-2-using-sliceidentifiercolumnname"></a>Mechanisme 2: sliceIdentifierColumnName gebruiken
 > [!IMPORTANT]
 > SliceIdentifierColumnName wordt momenteel niet ondersteund voor Azure Synapse Analytics (voorheen SQL Data Warehouse). 
 
-Het tweede mechanisme om Herhaal baarheid te bereiken, is door een toegewezen kolom (sliceIdentifierColumnName) te hebben in de doel tabel. Deze kolom wordt gebruikt door Azure Data Factory om ervoor te zorgen dat de bron en het doel gesynchroniseerd blijven. Deze aanpak werkt als er flexibiliteit is bij het wijzigen of definiëren van het doel-SQL-tabel schema. 
+Het tweede mechanisme om Herhaal baarheid te bereiken, is door een toegewezen kolom (sliceIdentifierColumnName) te hebben in de doel tabel. Deze kolom wordt gebruikt door Azure Data Factory om ervoor te zorgen dat de bron en bestemming gesynchroniseerd blijven. Deze benadering werkt wanneer er flexibiliteit is in het wijzigen of definiëren van het doelschema van de SQL-tabel. 
 
 Deze kolom wordt door Azure Data Factory gebruikt voor Herhaal bare doel einden en in het proces Azure Data Factory worden geen schema wijzigingen aangebracht in de tabel. Manier om deze aanpak te gebruiken:
 
-1. Een kolom van het type **binary (32)** in de doel-SQL-tabel definiëren. Er mogen zich geen beperkingen voor deze kolom voordoen. We noemen deze kolom als AdfSliceIdentifier voor dit voor beeld.
+1. Een kolom van het type **binary (32)** in de doel-SQL-tabel definiëren. Er mogen geen beperkingen zijn voor deze kolom. We noemen deze kolom als AdfSliceIdentifier voor dit voor beeld.
 
 
     Bron tabel:
@@ -132,7 +132,7 @@ Deze kolom wordt door Azure Data Factory gebruikt voor Herhaal bare doel einden 
     )
     ```
 
-1. Gebruik het in de Kopieer activiteit als volgt:
+1. Gebruik die als volgt in de kopieeractiviteit:
    
     ```json
     "sink":  

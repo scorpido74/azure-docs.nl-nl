@@ -4,18 +4,18 @@ ms.topic: include
 ms.custom: include file
 ms.date: 5/17/2020
 ms.openlocfilehash: 79a45825be66b44d869ef741917436de87a1f5d0
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83653202"
 ---
-Leer [concepten](../luis-concept-utterance.md#utterance-normalization-for-diacritics-and-punctuation) van normalisatie en hoe u [versie](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) -api's kunt gebruiken om deze instellingen bij te werken of door de sectie **instellingen** **van de Luis** -portal te gebruiken.
+Meer informatie over [concepten](../luis-concept-utterance.md#utterance-normalization-for-diacritics-and-punctuation) van normalisering en hoe u [versie](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings)-API's kunt gebruiken om deze instellingen bij te werken of hoe u de sectie **Beheren** op de pagina **Instellingen** op de LUIS-portal kunt gebruiken.
 
 
-|Gebruikers interface-instelling|API-instelling|Informatie|
+|Gebruikersinterface-instelling|API-instelling|Informatie|
 |--|--|--|
-|Niet-deterministische training gebruiken|`UseAllTrainingData`|Training maakt gebruik van een klein percentage van negatieve steek proeven. Als u alle gegevens wilt gebruiken in plaats van de kleine negatieve steek proef, stelt u in op `true` . |
-|Diakritische tekens normaliseren|`NormalizeDiacritics`|Als diakritische tekens worden genormaliseerd, worden de tekens vervangen door accenten in uitingen. Deze instelling is alleen beschikbaar voor [talen](../luis-reference-application-settings.md#diacritics-normalization) die diakritische tekens ondersteunen.|
-|Interpunctie normaliseren|`NormalizePunctuation`|Het normaliseren van interpunctie betekent dat voordat uw modellen worden getraind en voordat uw eindpunt query's worden voor speld, wordt interpunctie verwijderd uit de uitingen.|
-|Woord vormen normaliseren|`NormalizeWordForm`|Word-formulieren buiten het hoofd woord negeren.|
+|Niet-deterministische training gebruiken|`UseAllTrainingData`|Voor de training wordt een klein percentage negatieve steekproeven gebruikt. Als u alle gegevens wilt gebruiken in plaats van de kleine negatieve steekproef, moet u de instelling `true` gebruiken. |
+|Diakritische tekens normaliseren|`NormalizeDiacritics`|Als diakritische tekens worden genormaliseerd, worden de uitingen in de vorm van tekens met diakritische tekens vervangen door normale tekens. Deze instelling is alleen beschikbaar voor [talen](../luis-reference-application-settings.md#diacritics-normalization) die ondersteuning bieden voor diakritische tekens.|
+|Interpunctie normaliseren|`NormalizePunctuation`|Het normaliseren van interpunctie betekent dat, voordat uw modellen worden getraind en voordat uw eindpuntquery's worden voorspeld, interpunctie uit uitingen worden verwijderd.|
+|Woordvormen normaliseren|`NormalizeWordForm`|Andere woordvormen dan de stam negeren.|

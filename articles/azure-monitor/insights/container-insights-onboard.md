@@ -3,12 +3,12 @@ title: Azure Monitor inschakelen voor containers | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u Azure Monitor voor containers inschakelt en configureert, zodat u kunt zien hoe uw container presteert en welke problemen met betrekking tot de prestaties zijn geïdentificeerd.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 1cb393faded714593ce635669f585d5979ee69b8
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 69022643e3346444eee95f4487eeed292c4ef139
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320303"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994074"
 ---
 # <a name="enable-azure-monitor-for-containers"></a>Azure Monitor inschakelen voor containers
 
@@ -43,7 +43,7 @@ Voordat u begint, moet u ervoor zorgen dat u aan de volgende vereisten voldoet:
    U kunt een werk ruimte maken wanneer u controle inschakelt voor uw nieuwe AKS-cluster, of u kunt de voorbereidings ervaring laten maken van een standaardwerk ruimte in de standaard resource groep van het AKS-cluster abonnement. 
    
    Als u ervoor kiest om de werk ruimte zelf te maken, kunt u deze maken via: 
-   - [Azure Resource Manager](../platform/template-workspace-configuration.md)
+   - [Azure Resource Manager](../samples/resource-manager-workspace.md)
    - [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)
    - [Azure Portal](../learn/quick-create-workspace.md) 
    
@@ -131,4 +131,3 @@ Als u Azure Monitor voor containers wilt inschakelen, gebruikt u een van de meth
 ## <a name="next-steps"></a>Volgende stappen
 
 Nu u bewaking hebt ingeschakeld, kunt u beginnen met het analyseren van de prestaties van uw Kubernetes-clusters die worden gehost op Azure Kubernetes service (AKS), Azure Stack of een andere omgeving. Zie [Kubernetes-cluster prestaties weer geven](container-insights-analyze.md)voor meer informatie over het gebruik van Azure monitor voor containers.
-

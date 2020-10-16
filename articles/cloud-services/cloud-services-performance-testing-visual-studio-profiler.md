@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/18/2016
 ms.author: mikejo
-ms.openlocfilehash: 503b1ca8c8f1ff06bbdd54316611d886fb1e9d87
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 6b5707405879c462a1d919e04730d368332ba68c
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462306"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077152"
 ---
 # <a name="testing-the-performance-of-a-cloud-service-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>De prestaties van een Cloud service lokaal in de Azure Compute-emulator testen met behulp van de Visual Studio Profiler
 Er zijn verschillende hulpprogram ma's en technieken beschikbaar voor het testen van de prestaties van Cloud Services.
@@ -153,7 +153,7 @@ De rapporten markeren de verschillen tussen de twee uitvoeringen.
 
 ![Vergelijkend rapport][16]
 
-Gefeliciteerd U bent klaar met de Profiler.
+Gefeliciteerd! U bent klaar met de Profiler.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 * Zorg ervoor dat u een release-build profileert en start zonder fouten opsporen.
@@ -166,9 +166,9 @@ Gefeliciteerd U bent klaar met de Profiler.
 ## <a name="next-steps"></a>Volgende stappen
 Het instrumenteren van Azure binaire bestanden in de emulator wordt niet ondersteund in de Visual Studio Profiler, maar als u geheugen toewijzing wilt testen, kunt u die optie kiezen tijdens het profileren. U kunt ook gelijktijdigheids profilering kiezen, waarmee u kunt bepalen of de duur van threads wordt verspild op vergren delingen of laag interactie Profiler, waarmee u prestatie problemen kunt volgen wanneer interactie tussen lagen van een toepassing, het vaakst tussen de gegevenslaag en een werk rollen.  U kunt de database query's weer geven die door uw app worden gegenereerd en gebruikmaken van de profilerings gegevens voor het verbeteren van het gebruik van de data base. Zie het blog bericht [scenario: using the tier interactie Profiler in Visual Studio Team System 2010][3]voor informatie over de profile ring van lagen.
 
-[1]: https://docs.microsoft.com/azure/application-insights/app-insights-profiler
-[2]: https://msdn.microsoft.com/library/azure/hh411542.aspx
-[3]: https://docs.microsoft.com/archive/blogs/habibh/walkthrough-using-the-tier-interaction-profiler-in-visual-studio-team-system-2010
+[1]: ../azure-monitor/app/profiler.md
+[2]: /previous-versions/azure/hh411542(v=azure.100)
+[3]: /archive/blogs/habibh/walkthrough-using-the-tier-interaction-profiler-in-visual-studio-team-system-2010
 [4]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally09.png
 [5]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally10.png
 [6]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally02.png

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/30/2020
 ms.author: radeltch
-ms.openlocfilehash: 3a5238ec9e9bc30da330be206eb559acc3c2ec07
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: ce24bf541c5a71c50bb34f5e42aa3452f01b871c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91598075"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978166"
 ---
 # <a name="high-availability-of-sap-hana-scale-up-with-azure-netapp-files-on-red-hat-enterprise-linux"></a>Hoge Beschik baarheid van SAP HANA omhoog schalen met Azure NetApp Files op Red Hat Enterprise Linux
 
@@ -80,22 +80,22 @@ Lees eerst de volgende SAP-opmerkingen en-documenten:
 - [Azure Virtual Machines DBMS-implementatie voor SAP op Linux][dbms-guide]
 - [SAP HANA systeem replicatie in pacemaker-cluster.](https://access.redhat.com/articles/3004101)
 - Algemene documentatie voor RHEL
-    - [Overzicht van Maxi maal beschik bare invoeg toepassingen](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
-    - [Beheer van Maxi maal beschik bare invoeg toepassingen.](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
-    - [Naslag informatie voor de invoeg toepassing met hoge Beschik baarheid.](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
-    - [SAP HANA systeem replicatie in een pacemaker-cluster configureren wanneer de HANA-bestands systemen zich op NFS-shares bevinden](https://access.redhat.com/solutions/5156571)
+    - [Overzicht van Add-On met hoge Beschik baarheid](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
+    - [Add-On beheer met hoge Beschik baarheid.](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
+    - [Referentie voor maximale Beschik baarheid Add-On.](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
+    - [SAP HANA systeem replicatie configureren in Scale-Up in een pacemaker-cluster wanneer de HANA-bestands systemen zich op NFS-shares bevinden](https://access.redhat.com/solutions/5156571)
 - Documentatie voor Azure-specifieke RHEL:
     - [Ondersteunings beleid voor RHEL-clusters met hoge Beschik baarheid-Microsoft Azure Virtual Machines als cluster leden.](https://access.redhat.com/articles/3131341)
-    - [Het installeren en configureren van een cluster met hoge Beschik baarheid van Red Hat Enterprise Linux 7,4 (en hoger) op Microsoft Azure.](https://access.redhat.com/articles/3252491)
+    - [Het installeren en configureren van een Red Hat Enterprise Linux 7,4 (en hoger) High-Availability cluster op Microsoft Azure.](https://access.redhat.com/articles/3252491)
     - [Installeer SAP HANA op Red Hat Enterprise Linux voor gebruik in Microsoft Azure.](https://access.redhat.com/solutions/3193782)
     - [SAP HANA scale-up systeem replicatie configureren pacemaker-cluster wanneer de HANA-bestands systemen zich op NFS-shares bevinden](https://access.redhat.com/solutions/5156571)
 - [NetApp SAP-toepassingen op Microsoft Azure met behulp van Azure NetApp Files](https://www.netapp.com/us/media/tr-4746.pdf)
 
 ## <a name="overview"></a>Overzicht
 
-Traditioneel in scale-up omgeving alle bestands systemen voor SAP HANA worden gekoppeld vanuit lokale opslag. Het instellen van een hoge Beschik baarheid van SAP HANA systeem replicatie op Red Hat Enterprise Linux wordt gepubliceerd in de hand leiding [SAP Hana systeem replicatie op RHEL instellen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel) .
+Traditioneel in scale-up omgeving alle bestands systemen voor SAP HANA worden gekoppeld vanuit lokale opslag. Het instellen van een hoge Beschik baarheid van SAP HANA systeem replicatie op Red Hat Enterprise Linux wordt gepubliceerd in de hand leiding [SAP Hana systeem replicatie op RHEL instellen](./sap-hana-high-availability-rhel.md) .
 
-We hebben een extra resource configuratie in het cluster nodig om te kunnen profiteren van SAP HANA hoge Beschik baarheid van het scale-up systeem op [Azure NetApp files](https://docs.microsoft.com/azure/azure-netapp-files/) NFS-shares, zodat de Hana-bronnen kunnen worden hersteld, wanneer een knoop punt de toegang tot de NFS-shares op ANF verliest.  Het cluster beheert de NFS-koppelingen, zodat het de status van de bronnen kan bewaken. De afhankelijkheden tussen de bestandssysteem koppeling en de SAP HANA bronnen worden afgedwongen.  
+We hebben een extra resource configuratie in het cluster nodig om te kunnen profiteren van SAP HANA hoge Beschik baarheid van het scale-up systeem op [Azure NetApp files](../../../azure-netapp-files/index.yml) NFS-shares, zodat de Hana-bronnen kunnen worden hersteld, wanneer een knoop punt de toegang tot de NFS-shares op ANF verliest.  Het cluster beheert de NFS-koppelingen, zodat het de status van de bronnen kan bewaken. De afhankelijkheden tussen de bestandssysteem koppeling en de SAP HANA bronnen worden afgedwongen.  
 
 ![Schaal van SAP HANA HA op ANF](./media/sap-hana-high-availability-rhel/sap-hana-scale-up-netapp-files-red-hat.png)
 
@@ -125,29 +125,29 @@ De configuratie van de SAP HANA systeem replicatie maakt gebruik van een specifi
 
 ## <a name="set-up-the-azure-netapp-file-infrastructure"></a>De Azure NetApp-bestands infrastructuur instellen
 
-Voordat u verdergaat met de configuratie voor Azure NetApp Files-infra structuur, moet u vertrouwd raken met de [documentatie over Azure NetApp-bestanden](https://docs.microsoft.com/azure/azure-netapp-files/).
+Voordat u verdergaat met de configuratie voor Azure NetApp Files-infra structuur, moet u vertrouwd raken met de [documentatie over Azure NetApp-bestanden](../../../azure-netapp-files/index.yml).
 
 Azure NetApp Files is beschikbaar in verschillende [Azure-regio's](https://azure.microsoft.com/global-infrastructure/services/?products=netapp). Controleer of de geselecteerde Azure-regio Azure NetApp Files bevat.
 
 Zie [Azure NetApp files Beschik baarheid per Azure](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all)-regio voor meer informatie over de beschik baarheid van Azure NetApp files per Azure-regio.
 
-Voordat u Azure NetApp Files implementeert, vraagt u om onboarding naar Azure NetApp Files door te gaan met de [registratie voor Azure NetApp files instructies](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register).
+Voordat u Azure NetApp Files implementeert, vraagt u om onboarding naar Azure NetApp Files door te gaan met de [registratie voor Azure NetApp files instructies](../../../azure-netapp-files/azure-netapp-files-register.md).
 
 ### <a name="deploy-azure-netapp-files-resources"></a>Azure NetApp Files-resources implementeren
 
-Bij de volgende instructies wordt ervan uitgegaan dat u uw [virtuele Azure-netwerk](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)al hebt geïmplementeerd. De Azure NetApp Files resources en virtuele machines, waarbij de Azure NetApp Files resources worden gekoppeld, moeten worden geïmplementeerd in hetzelfde virtuele Azure-netwerk of in peered virtuele netwerken van Azure.
+Bij de volgende instructies wordt ervan uitgegaan dat u uw [virtuele Azure-netwerk](../../../virtual-network/virtual-networks-overview.md)al hebt geïmplementeerd. De Azure NetApp Files resources en virtuele machines, waarbij de Azure NetApp Files resources worden gekoppeld, moeten worden geïmplementeerd in hetzelfde virtuele Azure-netwerk of in peered virtuele netwerken van Azure.
 
-1. Als u de resources nog niet hebt geïmplementeerd, vraagt u [om onboarding naar Azure NetApp files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register).
+1. Als u de resources nog niet hebt geïmplementeerd, vraagt u [om onboarding naar Azure NetApp files](../../../azure-netapp-files/azure-netapp-files-register.md).
 
-2. Maak een NetApp-account in uw geselecteerde Azure-regio door de instructies in [een NetApp-account maken](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-netapp-account)te volgen.
+2. Maak een NetApp-account in uw geselecteerde Azure-regio door de instructies in [een NetApp-account maken](../../../azure-netapp-files/azure-netapp-files-create-netapp-account.md)te volgen.
 
-3.  Stel een Azure NetApp Files capaciteits groep in door de instructies in [een Azure NetApp files-capaciteits groep instellen](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool)te volgen.
+3.  Stel een Azure NetApp Files capaciteits groep in door de instructies in [een Azure NetApp files-capaciteits groep instellen](../../../azure-netapp-files/azure-netapp-files-set-up-capacity-pool.md)te volgen.
 
-    De HANA-architectuur die in dit artikel wordt gepresenteerd, maakt gebruik van één Azure NetApp Files capaciteits groep op het *Ultra* service-niveau. Voor HANA-workloads in azure kunt u het beste een Azure NetApp Files *Ultra* -of *Premium* - [service niveau](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)gebruiken.
+    De HANA-architectuur die in dit artikel wordt gepresenteerd, maakt gebruik van één Azure NetApp Files capaciteits groep op het *Ultra* service-niveau. Voor HANA-workloads in azure kunt u het beste een Azure NetApp Files *Ultra* -of *Premium* - [service niveau](../../../azure-netapp-files/azure-netapp-files-service-levels.md)gebruiken.
 
-4.  Delegeer een subnet aan Azure NetApp Files, zoals beschreven in de instructies in [een subnet overdragen aan Azure NetApp files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet).
+4.  Delegeer een subnet aan Azure NetApp Files, zoals beschreven in de instructies in [een subnet overdragen aan Azure NetApp files](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md).
 
-5.  Implementeer Azure NetApp Files volumes door de instructies in [een NFS-volume maken voor Azure NetApp files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)te volgen.
+5.  Implementeer Azure NetApp Files volumes door de instructies in [een NFS-volume maken voor Azure NetApp files](../../../azure-netapp-files/azure-netapp-files-create-volumes.md)te volgen.
 
     Wanneer u de volumes implementeert, moet u ervoor zorgen dat u de NFSv 4.1-versie selecteert. Implementeer de volumes in het aangewezen Azure NetApp Files subnet. De IP-adressen van de Azure NetApp-volumes worden automatisch toegewezen.
 
@@ -171,10 +171,10 @@ Houd bij het maken van uw Azure NetApp Files voor SAP HANA scale-up-systemen rek
 
 - De minimale capaciteits pool is 4 tebibytes (TiB).
 - De minimale volume grootte is 100 gibibytes (GiB).
-- Azure NetApp Files en alle virtuele machines waar de Azure NetApp Files volumes worden gekoppeld, moeten zich in hetzelfde virtuele Azure-netwerk of in gekoppelde [virtuele netwerken](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) in dezelfde regio bevinden.
+- Azure NetApp Files en alle virtuele machines waar de Azure NetApp Files volumes worden gekoppeld, moeten zich in hetzelfde virtuele Azure-netwerk of in gekoppelde [virtuele netwerken](../../../virtual-network/virtual-network-peering-overview.md) in dezelfde regio bevinden.
 - Het geselecteerde virtuele netwerk moet een subnet hebben dat is overgedragen aan Azure NetApp Files.
-- De door Voer van een Azure NetApp Files volume is een functie van volume quota en service niveau, zoals beschreven in [service niveau voor Azure NetApp files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels). Wanneer u de grootte van de HANA Azure NetApp-volumes wijzigt, moet u ervoor zorgen dat de resulterende door voer voldoet aan de HANA-systeem vereisten.
-- Met de Azure NetApp Files [export beleid](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy)kunt u de toegestane clients, het toegangs type (lezen-schrijven, alleen-lezen, enzovoort) beheren.
+- De door Voer van een Azure NetApp Files volume is een functie van volume quota en service niveau, zoals beschreven in [service niveau voor Azure NetApp files](../../../azure-netapp-files/azure-netapp-files-service-levels.md). Wanneer u de grootte van de HANA Azure NetApp-volumes wijzigt, moet u ervoor zorgen dat de resulterende door voer voldoet aan de HANA-systeem vereisten.
+- Met de Azure NetApp Files [export beleid](../../../azure-netapp-files/azure-netapp-files-configure-export-policy.md)kunt u de toegestane clients, het toegangs type (lezen-schrijven, alleen-lezen, enzovoort) beheren.
 - De functie Azure NetApp Files is nog geen zone-bewust. Op dit moment wordt de functie niet geïmplementeerd in alle beschikbaarheids zones in een Azure-regio. Houd rekening met de mogelijke latentie implicaties in sommige Azure-regio's.
 
 > [!IMPORTANT]
@@ -182,7 +182,7 @@ Houd bij het maken van uw Azure NetApp Files voor SAP HANA scale-up-systemen rek
 
 ### <a name="sizing-of-hana-database-on-azure-netapp-files"></a>Grootte van HANA-Data Base op Azure NetApp Files
 
-De door Voer van een Azure NetApp Files volume is een functie van de volume grootte en het service niveau, zoals beschreven in [service niveau voor Azure NetApp files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels).
+De door Voer van een Azure NetApp Files volume is een functie van de volume grootte en het service niveau, zoals beschreven in [service niveau voor Azure NetApp files](../../../azure-netapp-files/azure-netapp-files-service-levels.md).
 
 Bij het ontwerpen van de infra structuur voor SAP in azure, moet u rekening houden met een minimum aan vereisten voor opslag door SAP, dat wordt omgezet in kenmerken met minimale door Voer:
 
@@ -190,7 +190,7 @@ Bij het ontwerpen van de infra structuur voor SAP in azure, moet u rekening houd
 - Lees de activiteit van ten minste 400 MB/s voor/Hana/data voor de I/O-grootte van 16 MB en 64 MB.
 - Schrijf activiteit van ten minste 250 MB/s voor/Hana/data met 16 MB en 64-MB I/O-grootten.
 
-De [Azure NetApp files doorvoer limieten](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels) per 1 TIB volume quota zijn:
+De [Azure NetApp files doorvoer limieten](../../../azure-netapp-files/azure-netapp-files-service-levels.md) per 1 TIB volume quota zijn:
 
 - Premium Storage-laag-64-MiB/s.
 - Ultra Storage-laag-128 MiB/s.
@@ -219,7 +219,7 @@ Om te voldoen aan de SAP-vereisten voor minimale door Voer voor/Hana/data en/Han
 
 Eerst moet u de Azure NetApp Files volumes maken. Voer vervolgens de volgende stappen uit:
 
-1.  Een resourcegroep maken.
+1.  Maak een resourcegroep.
 2.  Maak een virtueel netwerk.
 3.  Maak een beschikbaarheidsset. Stel het maximale update domein in.
 4.  Maak een load balancer (intern). Standaard load balancer worden aanbevolen.
@@ -256,7 +256,7 @@ Eerst moet u de Azure NetApp Files volumes maken. Voer vervolgens de volgende st
         1.  Selecteer **OK**.
 
 > [!NOTE] 
-> Wanneer Vm's zonder open bare IP-adressen in de back-endadresgroep van intern (geen openbaar IP-adres load balancer) worden geplaatst, is er geen uitgaande Internet verbinding, tenzij er aanvullende configuratie wordt uitgevoerd om route ring naar open bare eind punten toe te staan. Zie [connectiviteit van open bare eind punten voor virtual machines met behulp van Azure Standard Load Balancer in scenario's met hoge Beschik baarheid voor SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)voor meer informatie over het bezorgen van uitgaande verbindingen.
+> Wanneer Vm's zonder open bare IP-adressen in de back-endadresgroep van intern (geen openbaar IP-adres load balancer) worden geplaatst, is er geen uitgaande Internet verbinding, tenzij er aanvullende configuratie wordt uitgevoerd om route ring naar open bare eind punten toe te staan. Zie [connectiviteit van open bare eind punten voor virtual machines met behulp van Azure Standard Load Balancer in scenario's met hoge Beschik baarheid voor SAP](./high-availability-guide-standard-load-balancer-outbound-connections.md)voor meer informatie over het bezorgen van uitgaande verbindingen.
 
 9. Als uw scenario gebruikmaakt van basis load balancer, volgt u deze configuratie stappen:
     1.  Configureer de load balancer. Maak eerst een front-end-IP-adres groep:
@@ -308,7 +308,7 @@ Eerst moet u de Azure NetApp Files volumes maken. Voer vervolgens de volgende st
 Lees voor meer informatie over de vereiste poorten voor SAP HANA de hoofdstuk [verbindingen met Tenant databases](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) in de hand leiding voor [SAP Hana Tenant-data bases](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) of SAP Note [2388694](https://launchpad.support.sap.com/#/notes/2388694).
 
 > [!IMPORTANT]
-> Schakel TCP-tijds tempels niet in op virtuele Azure-machines die achter Azure Load Balancer worden geplaatst. Door TCP-tijds tempels in te scha kelen, mislukken de status controles. Stel para meter **net. IPv4. tcp_timestamps** in op **0**. Zie [Load Balancer Health probe](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)(Engelstalig) voor meer informatie. Zie ook SAP-opmerking [2382421](https://launchpad.support.sap.com/#/notes/2382421).
+> Schakel TCP-tijds tempels niet in op virtuele Azure-machines die achter Azure Load Balancer worden geplaatst. Door TCP-tijds tempels in te scha kelen, mislukken de status controles. Stel para meter **net.IPv4.tcp_timestamps** in op **0**. Zie [Load Balancer Health probe](../../../load-balancer/load-balancer-custom-probe-overview.md)(Engelstalig) voor meer informatie. Zie ook SAP-opmerking [2382421](https://launchpad.support.sap.com/#/notes/2382421).
 
 ## <a name="mount-the-azure-netapp-files-volume"></a>Het Azure NetApp Files volume koppelen
 
@@ -457,7 +457,7 @@ Lees voor meer informatie over de vereiste poorten voor SAP HANA de hoofdstuk [v
 
 ## <a name="configure-sap-hana-system-replication"></a>SAP HANA systeem replicatie configureren
 
-Volg de stappen in [SAP Hana systeem replicatie](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel#configure-sap-hana-20-system-replication) instellen om SAP Hana systeem replicatie te configureren. 
+Volg de stappen in [SAP Hana systeem replicatie](./sap-hana-high-availability-rhel.md#configure-sap-hana-20-system-replication) instellen om SAP Hana systeem replicatie te configureren. 
 
 ## <a name="cluster-configuration"></a>Clusterconfiguratie
 
@@ -465,7 +465,7 @@ In deze sectie worden de vereiste stappen beschreven die nodig zijn om het clust
 
 ### <a name="create-a-pacemaker-cluster"></a>Een Pacemaker-cluster maken
 
-Volg de stappen bij het [instellen van pacemaker op Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) in azure om een basis pacemaker-cluster voor deze Hana-server te maken.
+Volg de stappen bij het [instellen van pacemaker op Red Hat Enterprise Linux](./high-availability-guide-rhel-pacemaker.md) in azure om een basis pacemaker-cluster voor deze Hana-server te maken.
 
 ### <a name="configure-filesystem-resources"></a>Bestandssysteem bronnen configureren
 
@@ -536,11 +536,11 @@ In dit voor beeld heeft elk cluster knooppunt een eigen HANA NFS-bestands systee
     ```
 
    > [!TIP]
-   > Als uw configuratie bestands systemen bevat, buiten groep `hanadb1_nfs` of `hanadb2_nfs` , neemt u de `sequential=false` optie op, zodat er geen volg orde van afhankelijkheden tussen de bestands systemen bestaat. Alle bestands systemen moeten vóór `hana_nfs1_active` worden gestart, maar ze hoeven niet in een wille keurige volg orde ten opzichte van elkaar te beginnen. Zie [Hoe kan ik SAP Hana systeem replicatie in scale-up in een pacemaker-cluster configureren wanneer de Hana-bestands systemen zich op NFS-shares bevinden](https://access.redhat.com/solutions/5156571) voor meer informatie.
+   > Als uw configuratie bestands systemen bevat, buiten groep `hanadb1_nfs` of `hanadb2_nfs` , neemt u de `sequential=false` optie op, zodat er geen volg orde van afhankelijkheden tussen de bestands systemen bestaat. Alle bestands systemen moeten vóór `hana_nfs1_active` worden gestart, maar ze hoeven niet in een wille keurige volg orde ten opzichte van elkaar te beginnen. Zie [Hoe kan ik SAP Hana systeem replicatie in Scale-Up configureren in een pacemaker-cluster wanneer de Hana-bestands systemen zich op NFS-shares bevinden](https://access.redhat.com/solutions/5156571) voor meer informatie.
 
 ### <a name="configure-sap-hana-cluster-resources"></a>SAP HANA cluster resources configureren
 
-1. Volg de stappen in [Create SAP Hana cluster resources](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel#create-sap-hana-cluster-resources) om de SAP Hana resources in het cluster te maken. Zodra SAP HANA resources zijn gemaakt, moet er een beperking voor de locatie regel worden gemaakt tussen SAP HANA resources en bestands systemen (NFS-koppelingen)
+1. Volg de stappen in [Create SAP Hana cluster resources](./sap-hana-high-availability-rhel.md#create-sap-hana-cluster-resources) om de SAP Hana resources in het cluster te maken. Zodra SAP HANA resources zijn gemaakt, moet er een beperking voor de locatie regel worden gemaakt tussen SAP HANA resources en bestands systemen (NFS-koppelingen)
 
 2. **[1]** beperkingen configureren tussen de SAP Hana resources en de NFS-koppelingen
 
@@ -687,4 +687,4 @@ In deze sectie wordt beschreven hoe u de installatie kunt testen.
          vip_HN1_03 (ocf::heartbeat:IPaddr2):       Started hanadb2
     ```
 
-   We raden u aan om de SAP HANA-cluster configuratie grondig te testen door ook de tests uit te voeren die worden beschreven in [Setup SAP Hana systeem replicatie op RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel#test-the-cluster-setup).   
+   We raden u aan om de SAP HANA-cluster configuratie grondig te testen door ook de tests uit te voeren die worden beschreven in [Setup SAP Hana systeem replicatie op RHEL](./sap-hana-high-availability-rhel.md#test-the-cluster-setup).

@@ -14,10 +14,10 @@ ms.date: 08/24/2020
 ms.author: kumud
 ms.reviewer: kumud
 ms.openlocfilehash: e60cdfb00d0dc9d446bd52a72e9fd15676acd285
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89458192"
 ---
 # <a name="how-network-security-groups-filter-network-traffic"></a>Hoe netwerk beveiligings groepen netwerk verkeer filteren
@@ -52,7 +52,7 @@ Voor uitgaand verkeer worden eerst de regels verwerkt in een netwerkbeveiligings
 - **VM4**: al het netwerkverkeer naar *VM4* is toegestaan omdat er geen netwerkbeveiligingsgroep is gekoppeld aan de netwerkinterface die met de virtuele machine is verbonden, of aan *Subnet3*.
 
 
-## <a name="intra-subnet-traffic"></a>Verkeer binnen het subnet
+## <a name="intra-subnet-traffic"></a>Intra-Subnet verkeer
 
 Het is belang rijk te weten dat beveiligings regels in een NSG die aan een subnet zijn gekoppeld, de connectiviteit van de virtuele machine van de VM kunnen beïnvloeden. Als er bijvoorbeeld een regel wordt toegevoegd aan *NSG1* die al het binnenkomende en uitgaande verkeer weigert, kunnen *VM1* en *VM2* niet meer met elkaar communiceren. Een andere regel moet specifiek worden toegevoegd om dit toe te staan. 
 

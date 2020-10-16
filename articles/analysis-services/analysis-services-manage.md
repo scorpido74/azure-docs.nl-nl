@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a5dce5b53df817bd365d4ce9670ffd556ce365f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 697e5484c007c095201344fb4829a92eb642a6e3
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84015499"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014848"
 ---
 # <a name="manage-analysis-services"></a>Analysis Services beheren
 Zodra u een Analysis Services server hebt gemaakt in azure, zijn er mogelijk een aantal beheer-en beheer taken die u direct moet uitvoeren, of ergens anders in de weg. U kunt bijvoorbeeld de verwerking uitvoeren op de gegevens vernieuwen, bepalen wie toegang heeft tot de modellen op uw server of de status van uw server controleren. Sommige beheer taken kunnen alleen worden uitgevoerd in Azure Portal, andere in SQL Server Management Studio (SSMS) en sommige taken kunnen worden uitgevoerd in een van beide.
@@ -30,7 +30,7 @@ U kunt verbinding maken met uw server in azure, net als bij het maken van verbin
 ### <a name="download-and-install-ssms"></a>SSMS downloaden en installeren
 Zorg ervoor dat u de nieuwste versie van SSMS gebruikt om alle nieuwste functies en de meest vloeiende ervaring te krijgen bij het maken van verbinding met uw Azure Analysis Services-server. 
 
-[Down load SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).
+[Down load SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms).
 
 
 ### <a name="to-connect-with-ssms"></a>Verbinding maken met SSMS
@@ -66,4 +66,3 @@ Als u verbinding maakt met behulp van SSMS en u problemen ondervindt, moet u mog
 Als u nog geen tabellair model op uw nieuwe server hebt geïmplementeerd, is nu een goed moment. Zie [Implementeren naar Azure Analysis Services](analysis-services-deploy.md) voor meer informatie.
 
 Als u een model op uw server hebt geïmplementeerd, kunt u er verbinding mee maken met behulp van een client of browser. Zie [gegevens ophalen van Azure Analysis Services-server](analysis-services-connect.md)voor meer informatie.
-

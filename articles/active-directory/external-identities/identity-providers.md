@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a61eca3340985886ef782b28a59a1283c5f473ce
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91265708"
 ---
 # <a name="identity-providers-for-external-identities"></a>Id-providers voor externe identiteiten
@@ -30,7 +30,7 @@ U kunt gebruikers echter in staat stellen zich aan te melden met verschillende i
 
 - **Facebook**: wanneer u een app bouwt, kunt u self-service registratie configureren en Facebook-Federatie inschakelen zodat gebruikers zich kunnen aanmelden voor uw app met hun eigen Facebook-accounts. Facebook kan alleen worden gebruikt voor Self-service-aanmeld gebruikers stromen en is niet beschikbaar als aanmeldings optie wanneer gebruikers uitnodigingen van u inwisselen.
 
-- **Directe Federatie**: u kunt ook directe Federatie instellen met een externe ID-provider die ondersteuning biedt voor de SAML-of WS-voeder-protocollen. Met directe Federatie kunnen externe gebruikers uitnodigingen van u inwisselen door zich aan te melden bij uw apps met hun bestaande sociale of zakelijke accounts. 
+- **Directe Federatie**: u kunt ook directe Federatie instellen met een externe ID-provider die de SAML-of WS-Fed protocollen ondersteunt. Met directe Federatie kunnen externe gebruikers uitnodigingen van u inwisselen door zich aan te melden bij uw apps met hun bestaande sociale of zakelijke accounts. 
    > [!NOTE]
    > Directe Federatie-id-providers kunnen niet worden gebruikt in uw Self-service registratie gebruikers stromen.
 
@@ -59,4 +59,4 @@ Raadpleeg de volgende artikelen voor meer informatie over het toevoegen van id-p
 
 - [Google toevoegen](google-federation.md) aan uw lijst met sociale id-providers
 - [Facebook toevoegen](facebook-federation.md) aan uw lijst met sociale id-providers
-- [Stel directe Federatie](direct-federation.md) in met een wille keurige organisatie waarvan de ID-provider ondersteuning biedt voor het SAML 2,0-of WS-voeder protocol. Houd er rekening mee dat directe Federatie geen optie is voor Self-service registratie gebruikers stromen.
+- [Stel directe Federatie](direct-federation.md) in met een wille keurige organisatie waarvan de ID-provider ondersteuning biedt voor het SAML 2,0-of WS-Fed-protocol. Houd er rekening mee dat directe Federatie geen optie is voor Self-service registratie gebruikers stromen.

@@ -13,10 +13,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fccbb84647ae9e47afc7bb36eeca97bb41a0d1d8
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90604067"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: release geschiedenis van versie
@@ -32,7 +32,7 @@ Onderwerp |  Details
 --------- | --------- |
 Stappen om een upgrade uit te voeren van Azure AD Connect | Verschillende methoden voor [het uitvoeren van een upgrade van een eerdere versie naar de nieuwste](how-to-upgrade-previous-version.md) Azure AD Connect versie.
 Vereiste machtigingen | Zie [accounts en machtigingen](reference-connect-accounts-permissions.md#upgrade)voor machtigingen die vereist zijn om een update toe te passen.
-Download| [Down load Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771).
+Downloaden| [Down load Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771).
 
 >[!NOTE]
 >Het uitgeven van een nieuwe versie van Azure AD Connect is een proces waarbij verschillende kwaliteitscontrole stappen nodig zijn om de werking van de service te waarborgen, terwijl we dit proces door lopen, het versie nummer van een nieuwe release en de release status wordt bijgewerkt op basis van de meest recente status.
@@ -142,10 +142,10 @@ Met deze hotfix-build wordt een probleem in Build 1.5.20.0 opgelost als u de in 
 - Het kenmerk mS-DS-ConsistencyGuid wordt automatisch ingesteld op alle gesynchroniseerde groepen en u hoeft niets te doen om deze functie in te scha kelen. 
 - De Get-ADSyncRunProfile is verwijderd omdat deze niet meer in gebruik is. 
 - De waarschuwing die wordt weer gegeven wanneer u probeert een ondernemings beheerder of een domein beheerders account te gebruiken voor de AD DS Connector-account, is gewijzigd om meer context te bieden. 
-- Er is een nieuwe cmdlet toegevoegd om objecten uit de connector ruimte te verwijderen het oude CSDelete.exe-hulp programma wordt verwijderd en wordt vervangen door de nieuwe cmdlet Remove-ADSyncCSObject. De cmdlet Remove-ADSyncCSObject neemt een CsObject als invoer. Dit object kan worden opgehaald met behulp van de cmdlet Get-ADSyncCSObject.
+- Er is een nieuwe cmdlet toegevoegd om objecten uit de connector ruimte te verwijderen het oude CSDelete.exe-hulp programma wordt verwijderd en wordt vervangen door de nieuwe Remove-ADSyncCSObject-cmdlet. De Remove-ADSyncCSObject-cmdlet neemt een CsObject als invoer. Dit object kan worden opgehaald met behulp van de cmdlet Get-ADSyncCSObject.
 
 >[!NOTE]
->Het oude CSDelete.exe hulp programma is verwijderd en vervangen door de nieuwe cmdlet Remove-ADSyncCSObject 
+>Het oude CSDelete.exe-hulp programma is verwijderd en vervangen door de nieuwe Remove-ADSyncCSObject-cmdlet 
 
 ### <a name="fixed-issues"></a>Opgeloste problemen
 

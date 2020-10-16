@@ -1,131 +1,131 @@
 ---
-title: Een SaaS-app met Shard multi tenant-data base implementeren
-description: Implementeer en verken de Shard Wingtip tickets SaaS multi tenant-database toepassing, die SaaS-patronen demonstreert met behulp van Azure SQL Database.
+title: Een SaaS-app voor een shard-database met meerdere tenants implementeren
+description: Implementeer en verken de Wingtip Tickets SaaS-databasetoepassing met meerdere tenants, waarmee SaaS-patronen worden gedemonstreerd met behulp van Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/16/2018
-ms.openlocfilehash: 59a7fbbd6f948ec5207522814a1375b806536810
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 5363a1b7321bfcbb53b4494b51ee2ea2e7217782
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84310084"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91619641"
 ---
-# <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Een Shard multi tenant-toepassing implementeren en verkennen
+# <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Een shard-toepassing met meerdere tenants implementeren en verkennen
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-In deze zelf studie implementeert en bekijkt u een voor beeld van een multi tenant SaaS-toepassing met de naam Wingtip tickets. De Wingtip tickets-app is ontworpen om functies van Azure SQL Database te demonstreren waarmee de implementatie van SaaS-scenario's wordt vereenvoudigd.
+In deze zelfstudie implementeert en bekijkt u een voorbeeld van een SaaS-toepassing met meerdere tenants met de naam Wingtip Tickets. De Wingtip Tickets-app is ontworpen om functies van Azure SQL Database weer te geven die de implementatie van SaaS-scenario's vereenvoudigen.
 
-Deze implementatie van de Wingtip tickets-app maakt gebruik van een Shard-database patroon met meerdere tenants. De sharding is op basis van de Tenant-id. Tenant gegevens worden naar een bepaalde data base gedistribueerd op basis van de Tenant-id-waarden. 
+Deze implementatie van de Wingtip Tickets-app maakt gebruik van een shard-databasepatroon voor meerdere tenants. De sharding is op basis van tenant-id. Tenantgegevens worden naar een bepaalde database gedistribueerd op basis van de waarden van de tenant-id. 
 
-Met dit database patroon kunt u een of meer tenants in elke Shard of data base opslaan. U kunt optimaliseren voor de laagste kosten door elke Data Base te delen met meerdere tenants. U kunt ook optimaliseren voor isolatie door elke Data Base slechts één Tenant op te slaan. Uw optimalisatie keuze kan onafhankelijk worden gemaakt voor elke specifieke Tenant. Uw keuze kan worden gemaakt wanneer de Tenant voor het eerst wordt opgeslagen of u kunt later van gedachten veranderen. De toepassing is zo ontworpen dat ze goed werkt.
+Met dit databasepatroon kunt u een of meer tenants in elke shard of database opslaan. U kunt een optimalisering uitvoeren om zoveel mogelijk kosten te besparen door elke database met meerdere tenants te delen. U kunt ook voor isolatie optimaliseren door in elke database slechts één tenant op te slaan. Uw optimalisatiekeuze kan onafhankelijk voor elke specifieke tenant worden gemaakt. Uw keuze kan worden gemaakt wanneer de tenant voor het eerst wordt opgeslagen. U kunt eventueel later van gedachten veranderen. De toepassing is zo ontworpen dat deze in beide gevallen goed werkt.
 
-## <a name="app-deploys-quickly"></a>App kan snel worden geïmplementeerd
+## <a name="app-deploys-quickly"></a>Snel apps implementeren
 
-De app wordt uitgevoerd in de Azure-Cloud en maakt gebruik van Azure SQL Database. De sectie implementatie bevat de knop Blue **implementeren naar Azure** . Wanneer op de knop wordt geklikt, wordt de app binnen vijf minuten volledig geïmplementeerd in uw Azure-abonnement. U hebt volledige toegang tot het gebruik van de afzonderlijke toepassings onderdelen.
+De app wordt uitgevoerd in de Azure-cloud en maakt gebruik van Azure SQL Database. In de implementatiesectie die volgt, ziet u de blauwe knop **Implementeren naar Azure**. Wanneer u op de knop drukt, wordt de app binnen vijf minuten volledig in uw Azure-abonnement geïmplementeerd. U hebt volledige toegang om met de afzonderlijke app-onderdelen te werken.
 
-De toepassing wordt geïmplementeerd met gegevens voor drie voorbeeld tenants. De tenants worden samen in één data base met meerdere tenants opgeslagen.
+De toepassing wordt geïmplementeerd met gegevens voor drie voorbeeldtenants. De tenants worden samen in één database voor meerdere tenants opgeslagen.
 
-Iedereen kan de C#-en Power shell-bron code voor Wingtip-tickets downloaden uit [de GitHub-opslag plaats][link-github-wingtip-multitenantdb-55g].
+Iedereen kan de C#- en PowerShell-broncode voor Wingtip Tickets downloaden van [de GitHub-opslagplaats][link-github-wingtip-multitenantdb-55g].
 
-## <a name="learn-in-this-tutorial"></a>Meer informatie over deze zelf studie
+## <a name="learn-in-this-tutorial"></a>Wat u in deze zelfstudie leert
 
 > [!div class="checklist"]
-> - De SaaS-toepassing Wingtip tickets implementeren.
-> - Waar de bron code van de toepassing en beheer scripts worden opgehaald.
-> - Over de servers en data bases die de app vormen.
-> - Hoe tenants worden toegewezen aan hun gegevens met de *catalogus*.
-> - Hoe u een nieuwe Tenant inricht.
-> - De Tenant activiteiten in de app bewaken.
+> - Wingtip Tickets SaaS-toepassing implementeren.
+> - De broncode en beheerscripts voor de toepassing ophalen.
+> - Informatie over de servers en databases die deel uitmaken van de app.
+> - Tenants via de *catalogus* toewijzen aan de bijbehorende gegevens.
+> - Een nieuwe tenant inrichten.
+> - Tenantactiviteiten in de app bewaken.
 
-Er is een reeks gerelateerde zelf studies beschikbaar die op deze eerste implementatie is gebaseerd. De zelf studies verkennen een reeks SaaS-ontwerp-en-beheer patronen. Wanneer u de zelf studies doorloopt, wordt u aangeraden de meegeleverde scripts stapsgewijs te door lopen om te zien hoe de verschillende SaaS-patronen worden geïmplementeerd.
+Er is een reeks verwante zelfstudies beschikbaar die op deze eerste implementatie voortbouwen. In de zelfstudies wordt een reeks SaaS-ontwerp- en beheerpatronen beschreven. Wanneer u de zelfstudies doorloopt, wordt u aangeraden de meegeleverde scripts door te nemen om te zien hoe de verschillende SaaS-patronen worden geïmplementeerd.
 
 ## <a name="prerequisites"></a>Vereisten
 
 U kunt deze zelfstudie alleen voltooien als aan de volgende vereisten wordt voldaan:
 
-- De nieuwste Azure PowerShell is geïnstalleerd. Zie [aan de slag met Azure PowerShell][link-azure-get-started-powershell-41q]voor meer informatie.
+- Meest recente Azure PowerShell is geïnstalleerd. Zie [Aan de slag met Azure PowerShell][link-azure-get-started-powershell-41q] voor meer informatie.
 
-## <a name="deploy-the-wingtip-tickets-app"></a>De Wingtip tickets-app implementeren
+## <a name="deploy-the-wingtip-tickets-app"></a>De Wingtip Tickets-app implementeren
 
 ### <a name="plan-the-names"></a>De namen plannen
 
-In de stappen van deze sectie geeft u een *gebruikers* waarde op die wordt gebruikt om ervoor te zorgen dat resource namen wereld wijd uniek zijn, en een naam voor de *resource groep* die alle resources bevat die zijn gemaakt door een implementatie van de app. Voor een persoon met de naam *Anne Finley*raden we het volgende aan:
-- *Gebruiker:* **AF1**  *(hun initialen, plus een cijfer. Gebruik een andere waarde (bijvoorbeeld AF2) als u de app een tweede keer implementeert.)*
-- *Resource groep:* **Wingtip-MT-AF1** *(Wingtip-MT geeft aan dat dit de Shard-app voor meerdere tenants is. het toevoegen van de gebruikers naam AF1 correleert de naam van de resource groep met de namen van de resources die deze bevat.)*
+In de stappen van deze sectie geeft u waarde aan een *gebruiker*. Deze waarde wordt gebruikt om te controleren of resourcenamen globaal uniek zijn. U geeft ook een naam aan de *resourcegroep* die alle resources bevat die tijdens een implementatie van de app zijn gemaakt. Voor een persoon met de naam *Fenna Plant* wordt het volgende voorgesteld:
+- *Gebruiker:* **fp1**  *(De initialen plus een cijfer. Gebruik een andere waarde (bijvoorbeeld fp2) als u de app een tweede keer implementeert.)*
+- *Resourcegroep:* **wingtip-mt-af1** *(wingtip-mt geeft aan dat dit de shard-app voor meerdere tenants is. Het toevoegen van de gebruikersnaam fp1 correleert de naam van de resourcegroep met de namen van de resources die deze bevat.)*
 
-Kies uw namen nu en noteer deze. 
+Kies uw namen nu en noteer ze. 
 
 ### <a name="steps"></a>Stappen
 
-1. Klik op de volgende knop Blue **implementeren naar Azure** .
-   - De Azure Portal met de SaaS-implementatie sjabloon Wingtip tickets wordt geopend.
+1. Klik op de volgende blauwe knop: **Implementeren in Azure**.
+   - U komt terecht in Azure Portal met de Wingtip Ticket SaaS-implementatiesjabloon.
 
-     [![Om te implementeren naar Azure.][image-deploy-to-azure-blue-48d]][link-aka-ms-deploywtp-mtapp-52k]
+     [![Knop voor implementeren in Azure.][image-deploy-to-azure-blue-48d]][link-aka-ms-deploywtp-mtapp-52k]
 
-1. Voer de vereiste parameter waarden in voor de implementatie.
+1. Voer de vereiste parameterwaarden voor de implementatie in.
 
     > [!IMPORTANT]
-    > Gebruik voor deze demonstratie geen vooraf bestaande resource groepen,-servers of-groepen. Kies in plaats daarvan **een nieuwe resource groep maken**. Verwijder deze resourcegroep wanneer u klaar bent om gerelateerde facturering te stoppen.
-    > Gebruik deze toepassing of resources die worden gemaakt, niet voor productie. Sommige aspecten van verificatie en de firewall-instellingen van de server zijn opzettelijk onveilig in de app om de demonstratie te vergemakkelijken.
+    > Voor deze demonstratie mag u geen reeds bestaande resourcegroepen, servers of pools gebruiken. Kies in plaats daarvan **Een nieuwe resourcegroep maken**. Verwijder deze resourcegroep wanneer u klaar bent om gerelateerde facturering te stoppen.
+    > Gebruik deze app of de resources die hiermee worden gemaakt, niet in een productieomgeving. Sommige aspecten van de verificatie alsmede de firewallinstellingen voor de server zijn opzettelijk onveilig in de app om de demonstratie te vergemakkelijken.
 
-    - Voor **resource groep** : Selecteer **nieuwe maken**en geef een **naam** op voor de resource groep (hoofdletter gevoelig).
-        - Selecteer een **locatie** in de vervolg keuzelijst.
-    - Voor de **gebruiker** is het raadzaam om een korte **gebruikers** waarde te kiezen.
+    - Selecteer voor **Resourcegroep** de optie **Nieuwe maken** en geef een **naam** in kleine letters voor de resourcegroep op (hoofdlettergevoelig).
+        - Selecteer een **locatie** in de vervolgkeuzelijst.
+    - Voor **Gebruiker** wordt u aangeraden een korte waarde **** te gebruiken.
 
 1. **Implementeer de toepassing**.
 
-    - Klik om akkoord te gaan met de voor waarden.
+    - Klik om akkoord te gaan met de voorwaarden.
     - Klik op **Kopen**.
 
-1. Bewaak de implementatie status door te klikken op **meldingen**, het klok pictogram rechts van het zoekvak. De implementatie van de Wingtip-app duurt ongeveer vijf minuten.
+1. Controleer de voortgang van de implementatie door op **Meldingen** te klikken (het belpictogram rechts van het zoekvak). Het implementeren van de Wingtip-app duurt ongeveer vijf minuten.
 
    ![implementatie gelukt](./media/saas-multitenantdb-get-started-deploy/succeeded.png)
 
-## <a name="download-and-unblock-the-management-scripts"></a>De beheer scripts downloaden en deblokkeren
+## <a name="download-and-unblock-the-management-scripts"></a>De beheerscripts downloaden en deblokkeren
 
-Wanneer de toepassing wordt geïmplementeerd, downloadt u de bron code-en beheer scripts van de toepassing.
+Terwijl de toepassing wordt geïmplementeerd, downloadt u de broncode en beheerscripts voor de toepassing.
 
 > [!NOTE]
-> Uitvoer bare inhoud (scripts, Dll's) wordt mogelijk door Windows geblokkeerd wanneer zip-bestanden worden gedownload vanaf een externe bron en geëxtraheerd. Wanneer u de scripts uit een zip-bestand uitpakt, gebruikt u de volgende stappen om het zip-bestand te deblokkeren voordat het wordt geëxtraheerd. Door de blok kering van het zip-bestand ontoegankelijk te maken, zorgt u ervoor dat de scripts mogen worden uitgevoerd.
+> Uitvoerbare inhoud (scripts, DLL's) wordt mogelijk door Windows geblokkeerd wanneer zip-bestanden vanaf een externe bron worden gedownload en uitgepakt. Wanneer u de scripts uit een zip-bestand uitpakt, gebruikt u de volgende stappen om het zip-bestand te deblokkeren voordat u het uitpakt. Als u het zip-bestand deblokkeert, kunnen de scripts worden uitgevoerd.
 
-1. Blader naar [de WingtipTicketsSaaS-MultiTenantDb github opslag plaats](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb).
-2. Klik op **klonen of downloaden**.
-3. Klik op **zip downloaden** en sla het bestand op.
-4. Klik met de rechter muisknop op het **WingtipTicketsSaaS-MultiTenantDb-master.zip** -bestand en selecteer **Eigenschappen**.
-5. Selecteer op het tabblad **Algemeen** de optie **blok kering opheffen**en klik op **Toep assen**.
+1. Ga naar de opslagplaats voor [ WingtipTicketsSaaS-MultiTenantDb GitHub](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb).
+2. Klik **Klonen of downloaden**.
+3. Klik op **Zip-bestand downloaden** en sla het bestand op.
+4. Klik met de rechtermuisknop op het bestand **WingtipTicketsSaaS-MultiTenantDb-master.zip** en selecteer **Eigenschappen**.
+5. Op het tabblad **Algemeen** selecteert u **Deblokkeren** en klikt u op **Toepassen**.
 6. Klik op **OK**.
 7. Pak de bestanden uit.
 
-De scripts bevinden zich in de *.. \\ WingtipTicketsSaaS-MultiTenantDb-master \\ learning modules \\ -* map.
+De scripts bevinden zich in de map *..\\WingtipTicketsSaaS-MultiTenantDb-master\\Learning Modules\\* .
 
-## <a name="update-the-configuration-file-for-this-deployment"></a>Het configuratie bestand voor deze implementatie bijwerken
+## <a name="update-the-configuration-file-for-this-deployment"></a>Het configuratiebestand voor deze implementatie bijwerken
 
-Voordat u scripts uitvoert, stelt u de *resource groep* en *gebruikers* waarden in **userconfig. psm1**in. Stel deze variabelen in op dezelfde waarden die u tijdens de implementatie hebt ingesteld.
+Voordat u scripts gaat uitvoeren, stelt u de waarden voor *resourcegroup* en *user* in op **UserConfig.psm1**. Stel deze variabelen in op dezelfde waarden die u tijdens de implementatie hebt ingesteld.
 
-1. Openen... \\ Learning modules \\ *userconfig. psm1* in de *Power shell ISE*.
-2. *ResourceGroupName* en *naam* bijwerken met de specifieke waarden voor uw implementatie (alleen op regels 10 en 11).
+1. Open ...\\Learning Modules\\*UserConfig.psm1* in *PowerShell ISE*.
+2. Werk *ResourceGroupName* en *Name* bij met de specifieke waarden voor uw implementatie (alleen in regels 10 en 11).
 3. Sla de wijzigingen op.
 
-De waarden die in dit bestand zijn ingesteld, worden gebruikt door alle scripts. het is dus belang rijk dat ze nauw keurig zijn. Als u de app opnieuw implementeert, moet u verschillende waarden kiezen voor de gebruiker en de resource groep. Werk vervolgens het bestand UserConfig. psm1 opnieuw bij met de nieuwe waarden.
+De waarden die in dit bestand zijn ingesteld, worden in alle scripts gebruikt. Het is dus belangrijk dat ze kloppen. Als u de app opnieuw implementeert, moet u verschillende waarden kiezen voor User en Resourcegroup. Werk vervolgens het bestand UserConfig.psm1 opnieuw bij met de nieuwe waarden.
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-In de Wingtip-app zijn de tenants locaties. Een locatie kan een concert zaal, een sport club of andere locaties zijn die gebeurtenissen hosten. De locaties registreren zich in Wingtip als klanten en er wordt een Tenant-id gegenereerd voor elke locatie. Elke locatie bevat een lijst met de aanstaande gebeurtenissen in Wingtip, zodat het publiek tickets kan kopen voor de gebeurtenissen.
+In de Wingtip-app zijn de tenants locaties. Een locatie kan een concertzaal, een sportclub of een andere locatie zijn waar een evenement plaatsvindt. De locaties registreren zich in Wingtip als klanten en voor elke locatie wordt een tenant-id gegenereerd. Elke locatie bevat een lijst met de aanstaande evenementen in Wingtip, zodat het publiek er tickets voor kan kopen.
 
-Elke locatie haalt een gepersonaliseerde web-app op om hun evenementen weer te geven en kaarten te verkopen. Elke web-app is onafhankelijk en geïsoleerd van andere tenants. In Azure SQL Database worden de gegevens voor elke Tenant intern opgeslagen in een Shard multi tenant-data base. Alle gegevens worden gelabeld met de Tenant-id.
+Elke locatie krijgt een gepersonaliseerde web-app waarop de evenementen voor die locatie worden vermeld en kaartjes worden verkocht. Elke web-app is onafhankelijk en geïsoleerd van andere tenants. In Azure SQL Database worden de gegevens voor elke tenant intern opgeslagen in een shard-database voor meerdere tenants. Alle gegevens worden getagd met de tenant-id.
 
-Op de webpagina centrale **gebeurtenissen hub** vindt u een lijst met koppelingen naar de tenants in uw specifieke implementatie. Gebruik de volgende stappen om de webpagina van de **evenementen hub** en een afzonderlijke web-app te ervaren:
+Een centrale **Events Hub**-webpagina bevat een lijst met koppelingen naar de tenants in uw specifieke implementatie. Gebruik de volgende stappen om kennis te maken met de **Events Hub**-webpagina en een afzonderlijke web-app:
 
-1. Open de **evenementen hub** in uw webbrowser:
-   - http://events.wingtip-mt.&lt; User &gt; . trafficmanager.net (Vervang de gebruiker door &nbsp; * &lt; &gt; de gebruikers waarde van uw implementatie.)*
+1. Open **Events Hub** in uw webbrowser:
+   - http://events.wingtip-mt.&lt;user&gt;.trafficmanager.net &nbsp; *(Vervang &lt; user&gt; door uw gebruikerswaarde van de implementatie.)*
 
      ![events hub](./media/saas-multitenantdb-get-started-deploy/events-hub.png)
 
@@ -135,122 +135,122 @@ Op de webpagina centrale **gebeurtenissen hub** vindt u een lijst met koppelinge
 
 ### <a name="azure-traffic-manager"></a>Azure Traffic Manager
 
-De Wingtip-app maakt gebruik van [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md)om de distributie van binnenkomende aanvragen te beheren. De pagina gebeurtenissen voor elke Tenant bevat de Tenant naam in de URL. Elke URL bevat ook uw specifieke gebruikers waarde. Elke URL voldoet aan de weer gegeven indeling met behulp van de volgende stappen:
+De Wingtip-app maakt gebruik van [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) om de distributie van inkomende aanvragen te regelen. De pagina met evenementen voor elke tenant bevat de tenantnaam in de desbetreffende URL. Elke URL bevat ook uw specifieke gebruikerswaarde. Elke URL voldoet aan de weergegeven indeling door de volgende stappen te volgen:
 
-- http://events.wingtip-mt.&lt; User &gt; . trafficmanager.net/*fabrikamjazzclub*
+- http://events.wingtip-mt.&lt;user&gt;.trafficmanager.net/*fabrikamjazzclub*
 
-1. De app Events parseert de Tenant naam van de URL. De naam van de Tenant is *fabrikamjazzclub* in de voor gaande voorbeeld-URL.
-2. De app hasht vervolgens de Tenant naam om een sleutel te maken voor toegang tot een catalogus met behulp van [Shard-toewijzings beheer](elastic-scale-shard-map-management.md).
-3. De app zoekt de sleutel in de catalogus en haalt de bijbehorende locatie op van de data base van de Tenant.
-4. De app gebruikt de locatie-informatie voor het zoeken en openen van de ene data base die alle gegevens voor de Tenant bevat.
+1. De evenementen-app parseert de tenantnaam van de URL. In de voorgaande voorbeeld-URL is *fabrikamjazzclub* de naam van de tenant.
+2. De app past een hashfunctie toe op de tenantnaam om een sleutel te maken en via [Shard-toewijzingsbeheer](elastic-scale-shard-map-management.md) toegang te krijgen tot een catalogus.
+3. De app zoekt de sleutel in de catalogus en haalt de bijbehorende locatie op uit de database van de tenant.
+4. De app gebruikt de locatiegegevens voor het zoeken en openen van de database die alle gegevens voor de tenant bevat.
 
-### <a name="events-hub"></a>Events hub
+### <a name="events-hub"></a>Events Hub
 
-1. De **Events hub** vermeldt alle tenants die in de catalogus zijn geregistreerd en hun locaties.
-2. De **Events hub** gebruikt uitgebreide meta gegevens in de catalogus om de naam van de Tenant die is gekoppeld aan elke toewijzing, op te halen om de url's te maken.
+1. **Events Hub** bevat uitgebreide metagegevens die met de bijbehorende locaties in de catalogus worden geregistreerd.
+2. **Events Hub** maakt gebruik van uitgebreide metagegevens in de catalogus om de naam op te halen van de tenant die aan elke toewijzing is gekoppeld. Zodoende kunnen de URL's worden geconstrueerd.
 
-In een productie omgeving maakt u doorgaans een CNAME DNS-record om het [Internet domein van een bedrijf](../../traffic-manager/traffic-manager-point-internet-domain.md) te laten verwijzen naar het Traffic Manager-profiel.
+In een productieomgeving wordt er meestal een CNAME DNS-record gemaakt om [het internetdomein van uw bedrijf te laten verwijzen](../../traffic-manager/traffic-manager-point-internet-domain.md) naar het profiel van Traffic Manager.
 
 ## <a name="start-generating-load-on-the-tenant-databases"></a>Workloads genereren voor de tenant-databases
 
-Nu de app is geïmplementeerd, kunt u het beste aan de slag. Het Power shell *-script demo-LoadGenerator* start een werk belasting die wordt uitgevoerd voor elke Tenant. De werkelijke belasting van veel SaaS-apps is doorgaans sporadisch en onvoorspelbaar. Voor het simuleren van dit type belasting, produceert de generator een taak die wordt gedistribueerd over alle tenants. De belasting bevat wille keurige bursts op elke Tenant die wordt uitgevoerd met wille keurige intervallen. Het duurt enkele minuten voordat het laad patroon wordt weer geven. u kunt de generator het beste gedurende ten minste drie of vier minuten uitvoeren voordat u de belasting bewaken.
+Nu de app is geïmplementeerd, kunt u ermee aan de slag. Met het PowerShell-script *Demo-LoadGenerator* wordt een workload voor elke tenant gestart. De werkelijke belasting voor veel SaaS-apps is doorgaans sporadisch en onvoorspelbaar. Om dit type belasting te simuleren, produceert de generator een belasting die over alle tenants wordt verdeeld. De belasting bevat willekeurige bursts op elke tenant die zich met willekeurige intervallen voordoen. Het duurt enkele minuten voordat het laadpatroon wordt weergegeven. U kunt de generator het beste gedurende ten minste drie of vier minuten uitvoeren voordat u de belasting gaat bewaken.
 
-1. Open in de *Power shell-ISE*de.. \\ . Hulpprogram ma's voor leer modules \\ \\ *Demo-LoadGenerator.ps1* script.
+1. In *PowerShell ISE* opent u het script ...\\Learning Modules\\Utilities\\*Demo-LoadGenerator.ps1*.
 2. Druk op **F5** om het script uit te voeren en de load-generator te starten (gebruik voorlopig de standaardwaarden van het script).
 
-Het *Demo-LoadGenerator.ps1* script opent een nieuwe Power shell-sessie waarin de load generator wordt uitgevoerd. De load generator wordt in deze sessie uitgevoerd als een voorgrond taak waarmee taken voor het genereren van de achtergrond worden gestart, één voor elke Tenant.
+Met het script *Demo-LoadGenerator.ps1* wordt een nieuwe PowerShell-sessie geopend waarin de generator wordt uitgevoerd. De generator wordt in deze sessie als een voorgrondtaak uitgevoerd die voor elke tenant op de achtergrond een belasting genereert.
 
-Nadat de voorgrond taak is gestart, blijft deze in een status voor het aanroepen van taken. Met de taak worden extra achtergrond taken gestart voor nieuwe tenants die daarna worden ingericht.
+Nadat de voorgrondtaak is gestart, blijft deze in de status voor het aanroepen van taken. Met de taak worden extra achtergrondtaken gestart voor nieuwe tenants die vervolgens worden ingericht.
 
-Het sluiten van de Power shell-sessie stopt alle taken.
+Als de PowerShell-sessie wordt afgesloten, worden alle taken gestopt.
 
-Mogelijk wilt u de load Generator-sessie opnieuw starten om andere parameter waarden te gebruiken. Als dit het geval is, sluit u de sessie van de Power shell-generatie en voert u de *Demo-LoadGenerator.ps1*opnieuw uit.
+Als u andere parameterwaarden wilt gebruiken, kunt u de sessie met de belastinggenerator opnieuw starten. Als u dit wilt, sluit u de sessie van de PowerShell-generatie en voert u *Demo-LoadGenerator.ps1* opnieuw uit.
 
-## <a name="provision-a-new-tenant-into-the-sharded-database"></a>Een nieuwe Tenant inrichten in de Shard-data base
+## <a name="provision-a-new-tenant-into-the-sharded-database"></a>Een nieuwe tenant inrichten in de shard-database
 
-De eerste implementatie omvat drie voor beelden van tenants in de *Tenants1* -data base. We gaan een andere Tenant maken en de gevolgen ervan voor de geïmplementeerde toepassing naleven. In deze stap drukt u op één toets om een nieuwe Tenant te maken:
+De initiële implementatie bevat drie voorbeelden van tenants in de database *Tenants1*. U gaat een andere tenant maken en kijken wat de gevolgen ervan zijn voor de geïmplementeerde toepassing. In deze stap drukt u op één knop om een nieuwe tenant te maken:
 
-1. Openen... \\ Leer modules \\ inrichten en Catalog \\ *Demo-ProvisionTenants.ps1* in *Power shell ISE*.
-2. Druk op **F5** (niet **F8**) om het script uit te voeren (behoud de standaard waarden voor nu).
+1. Open ...\\Learning Modules\\Provision and Catalog\\*Demo-ProvisionTenants.ps1* in *PowerShell ISE*.
+2. Druk op **F5** (niet op **F8**) om het script uit te voeren (laat de standaardwaarden voorlopig staan).
 
    > [!NOTE]
-   > U moet de Power shell-scripts alleen uitvoeren door op de toets **F5** te drukken, niet door op **F8** te drukken om een geselecteerd deel van het script uit te voeren. Het probleem met **F8** is dat de *$PSScriptRoot* variabele niet wordt geëvalueerd. Deze variabele is nodig voor veel scripts om mappen te navigeren, andere scripts aan te roepen of modules te importeren.
+   > U moet de PowerShell-scripts alleen uitvoeren met toets **F5**, niet met toets **F8** als u een bepaald deel van het script wilt uitvoeren. Het probleem met **F8** is dat de variabele *$PSScriptRoot* niet wordt geëvalueerd. Deze variabele is voor veel scripts nodig om door mappen te navigeren, andere scripts aan te roepen of modules te importeren.
 
-De nieuwe rode esdoorn race-Tenant wordt toegevoegd aan de *Tenants1* -data base en geregistreerd in de catalogus. De site met het ticket-verkoop **evenementen** van de nieuwe Tenant wordt geopend in uw browser:
+De nieuwe Red Maple Racing-tenant wordt toegevoegd aan de database *Tenants1* en in de catalogus geregistreerd. De nieuwe site voor de ticketverkoop van de tenant, **Evenementen**, wordt in de browser geopend:
 
 ![Nieuwe tenant](./media/saas-multitenantdb-get-started-deploy/red-maple-racing.png)
 
-Vernieuw de **Events hub**en de nieuwe Tenant wordt nu weer gegeven in de lijst.
+Vernieuw **Events Hub**. De nieuwe tenant wordt nu in de lijst weergegeven.
 
-## <a name="provision-a-new-tenant-in-its-own-database"></a>Een nieuwe Tenant inrichten in een eigen data base
+## <a name="provision-a-new-tenant-in-its-own-database"></a>Een nieuwe tenant in de eigen database inrichten
 
-Met het Shard multi tenant-model kunt u kiezen of u een nieuwe Tenant wilt inrichten in een Data Base met andere tenants of in een eigen data base. Een Tenant die is geïsoleerd in een eigen data base, geniet van de volgende voor delen:
+Met het shard-model voor meerdere tenants kunt u kiezen of u een nieuwe tenant wilt inrichten in een database met andere tenants of in een eigen database. Een tenant die in een eigen database is geïsoleerd, heeft de volgende voordelen:
 
-- De prestaties van de data base van de Tenant kunnen worden beheerd zonder dat er moet worden geknoeid met de behoeften van andere tenants.
-- De data base kan, indien nodig, worden hersteld naar een eerder tijdstip, omdat er geen andere tenants worden beïnvloed.
+- De prestaties van de database van de tenant kunnen worden beheerd zonder dat er rekening hoeft te worden gehouden met de behoeften van andere tenants.
+- De database kan, indien nodig, worden hersteld naar een eerder tijdstip, omdat er geen andere tenants worden beïnvloed.
 
-U kunt ervoor kiezen om klanten met een gratis proef versie of economie te plaatsen in data bases met meerdere tenants. U kunt elke Premium-Tenant in een eigen speciale data base plaatsen. Als u veel data bases maakt die slechts één Tenant bevatten, kunt u deze allemaal gezamenlijk beheren in een elastische pool om de resource kosten te optimaliseren.
+U kunt ervoor kiezen om klanten met een gratis proefversie of een goedkope versie in databases voor meerdere tenants te plaatsen. Elke Premium-tenant kan in een eigen, toegewezen database worden geplaatst. Als u veel databases maakt die slechts één tenant bevatten, kunt u ze allemaal gezamenlijk beheren in een elastische pool om de resourcekosten te optimaliseren.
 
-Daarna inrichten we een andere Tenant, deze tijd in een eigen Data Base:
+Vervolgens gaat u een andere tenant inrichten, deze keer in een eigen database:
 
-1. In... \\ Leer modules \\ inrichten en Catalog \\ *Demo-ProvisionTenants.ps1*, *$TenantName* wijzigen in **Salix Salsa**, *$VenueType* op **dans** en *$scenario* tot **2**.
+1. In ...\\Learning Modules\\Provision and Catalog\\*Demo-ProvisionTenants.ps1* wijzigt u *$TenantName* in **Salix Salsa**,  *$VenueType* in **dance** en *$Scenario* in **2**.
 
-2. Druk op **F5** om het script opnieuw uit te voeren.
-    - Op **F5** drukken wordt de nieuwe Tenant in een afzonderlijke data base ingericht. De data base en de Tenant zijn geregistreerd in de catalogus. Vervolgens wordt de browser geopend op de pagina gebeurtenissen van de Tenant.
+2. Druk op **F5** om het script nogmaals uit te voeren.
+    - Met **F5** wordt de nieuwe tenant in een afzonderlijke database ingericht. De database en de tenant worden in de catalogus geregistreerd. Vervolgens wordt de browser geopend op de evenementenpagina van de tenant.
 
-   ![Pagina Salix Salsa-gebeurtenissen](./media/saas-multitenantdb-get-started-deploy/salix-salsa.png)
+   ![Evenementenpagina Salix Salsa](./media/saas-multitenantdb-get-started-deploy/salix-salsa.png)
 
-   - Schuif naar de onderkant van de pagina. In de banner ziet u de naam van de Data Base waarin de Tenant gegevens zijn opgeslagen.
+   - Scrol naar de onderkant van de pagina. In de banner ziet u de naam van de database waarin de tenantgegevens zijn opgeslagen.
 
-3. Vernieuw de **Events hub** en de twee nieuwe tenants worden nu weer gegeven in de lijst.
+3. Vernieuw **Events Hub**. De twee nieuwe tenants worden nu in de lijst weergegeven.
 
-## <a name="explore-the-servers-and-tenant-databases"></a>De servers en Tenant databases verkennen
+## <a name="explore-the-servers-and-tenant-databases"></a>De servers en tenantdatabases verkennen
 
-We kijken nu naar een aantal van de resources die zijn geïmplementeerd:
+U gaat nu enkele resources bekijken die zijn geïmplementeerd:
 
-1. Blader in het [Azure Portal](https://portal.azure.com)naar de lijst met resource groepen. Open de resource groep die u hebt gemaakt tijdens het implementeren van de toepassing.
+1. Blader in [Azure Portal](https://portal.azure.com) naar de lijst met resourcegroepen. Open de resource groep die u hebt gemaakt bij het implementeren van de toepassing.
 
    ![resourcegroep](./media/saas-multitenantdb-get-started-deploy/resource-group.png)
 
-2. Klik op **catalogus-MT- &lt; gebruikers &gt; ** server. De catalogus server bevat twee data bases met de naam *tenantcatalog* en *basetenantdb*. De *basetenantdb* -data base is een lege sjabloon database. Het wordt gekopieerd om een nieuwe Tenant database te maken, ongeacht of deze wordt gebruikt voor veel tenants of slechts één Tenant.
+2. Klik op de server **catalog-mt&lt;user&gt;** . De catalogusserver bevat twee databases: *tenantcatalog* en *basetenantdb*. Database *basetenantdb* is een lege sjabloondatabase. Deze wordt gekopieerd om een nieuwe tenantdatabase te maken, ongeacht of deze voor veel tenants of slechts een wordt gebruikt.
 
    ![catalogusserver](./media/saas-multitenantdb-get-started-deploy/catalog-server.png)
 
-3. Ga terug naar de resource groep en selecteer de *tenants1-MT-* server die de Tenant databases bevat.
-    - De tenants1-data base is een multi tenant-Data Base waarin de oorspronkelijke drie tenants, plus de eerste Tenant die u hebt toegevoegd, worden opgeslagen. Het is geconfigureerd als een 50 DTU-standaard database.
-    - De **salixsalsa** -Data Base bevat de Salix Salsa dans-platform als enige Tenant. Het is standaard geconfigureerd als een Standard Edition-data base met 50 Dtu's.
+3. Ga terug naar de resourcegroep en selecteer server *tenants1-mt*, die de tenantdatabases bevat.
+    - Database tenants1 is een database voor meerdere tenants, waarin de oorspronkelijke drie tenants, plus de eerste tenant die u hebt toegevoegd, zijn opgeslagen. De database is geconfigureerd als een standaarddatabase van 50 DTU's.
+    - Database **salixsalsa** bevat danslocatie Salix Salsa als enige tenant. Deze is geconfigureerd als een Standard Edition-database van 50 DTU's.
 
-   ![Tenant servers](./media/saas-multitenantdb-get-started-deploy/tenants-server.png)
+   ![tenantsserver](./media/saas-multitenantdb-get-started-deploy/tenants-server.png)
 
-## <a name="monitor-the-performance-of-the-database"></a>De prestaties van de data base bewaken
+## <a name="monitor-the-performance-of-the-database"></a>De prestaties van de database bewaken
 
-Als de load-Generator enkele minuten actief is, is er voldoende telemetrie beschikbaar om te kijken naar de database bewakings functies die zijn ingebouwd in de Azure Portal.
+Als de belastinggenerator enkele minuten actief is, moeten er voldoende telemetrische gegevens beschikbaar zijn om eens naar de bewakingsfuncties van de database te kijken die in Azure Portal zijn ingebouwd.
 
-1. Blader naar de **tenants1-MT &lt; - &gt; gebruikers** server en klik op **tenants1** om het resource gebruik weer te geven voor de data base die vier tenants bevat. Elke Tenant is onderhevig aan een zware belasting van de load Generator:
+1. Ga naar de server **tenants1-mt&lt;user&gt;** en klik op **tenants1** om het resourcegebruik voor de database met vier tenants te bekijken. Elke tenant ondervindt af en toe een zware belasting van de belastinggenerator:
 
    ![tenants1 bewaken](./media/saas-multitenantdb-get-started-deploy/monitor-tenants1.png)
 
-   Het DTU-gebruiks diagram illustreert hoe een Data Base met meerdere tenants een onvoorspelbare werk belasting kan ondersteunen in veel tenants. In dit geval wordt de load-generator een sporadische belasting van ongeveer 30 Dtu's toegepast op elke Tenant. Deze belasting is gelijk aan 60% gebruik van een 50 DTU-data base. Pieken die 60% overschrijden, zijn het resultaat van de belasting die op hetzelfde moment wordt toegepast op meer dan één Tenant.
+   De grafiek met het gebruik in DTU's laat zien hoe een database voor meerdere tenants een onvoorspelbare workload voor veel tenants kan verdragen. In dit geval legt de belastinggenerator sporadisch een belasting op van ongeveer 30 DTU's per tenant. Deze belasting komt overeen met een database van 50 DTU's die voor 60% wordt gebruikt. Pieken die de 60% overschrijden, zijn het gevolg van het feit dat de belasting op hetzelfde moment op meer dan één tenant wordt toegepast.
 
-2. Blader naar de **tenants1-MT &lt; - &gt; gebruikers** server en klik op de **salixsalsa** -data base. U kunt het resource gebruik in deze data base zien die slechts één Tenant bevat.
+2. Ga naar de server **tenants1-mt&lt;user&gt;** en klik op de **salixsalsa**-database. U kunt het resourcegebruik van deze database zien die slechts één tenant bevat.
 
-   ![salixsalsa-data base](./media/saas-multitenantdb-get-started-deploy/monitor-salix.png)
+   ![database salixsalsa](./media/saas-multitenantdb-get-started-deploy/monitor-salix.png)
 
-De load generator past een soort gelijke belasting toe op elke Tenant, ongeacht in welke data base elke Tenant zich bevindt. Met slechts één Tenant in de **salixsalsa** -Data Base kunt u zien dat de Data Base een veel hogere belasting zou kunnen ondervangen dan de data base met meerdere tenants. 
+De belastinggenerator past een soortgelijke belasting toe op elke tenant, ongeacht in welke database de tenants zich bevinden. Nu de **salixsalsa**-database slechts één tenant bevat, ziet u dat de database een veel hogere belasting kan verdragen dan de database met meerdere tenants. 
 
-### <a name="resource-allocations-vary-by-workload"></a>Resource toewijzingen variëren per werk belasting
+### <a name="resource-allocations-vary-by-workload"></a>Resourcetoewijzingen variëren per workload
 
-Soms vereist een multi tenant-data base meer bronnen voor goede prestaties dan een Data Base met één Tenant, maar niet altijd. De optimale toewijzing van resources is afhankelijk van de specifieke eigenschappen van de werk belasting voor de tenants in uw systeem.
+Soms zijn voor een database voor meerdere tenants meer resources nodig om goed te kunnen presteren dan voor een database voor één tenant, maar niet altijd. De optimale toewijzing van resources is afhankelijk van de specifieke eigenschappen van de workload voor de tenants in uw systeem.
 
-De werk belastingen die door het load Generator-script worden gegenereerd, zijn alleen bedoeld ter illustratie.
+De workloads die door het belastinggeneratorscript worden gegenereerd, zijn alleen bedoeld ter illustratie.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- Zie [ontwerp patronen voor SaaS-toepassingen met meerdere](saas-tenancy-app-design-patterns.md)tenants voor meer informatie over SaaS-toepassingen met meerdere tenants.
+- Informatie over SaaS-toepassingen voor meerdere tenants vindt u in [Ontwerppatronen voor SaaS-toepassingen voor meerdere tenants](saas-tenancy-app-design-patterns.md).
 
-- Zie voor meer informatie over elastische Pools:
+- Voor informatie over elastische pools raadpleegt u:
 
-  - [Elastische Pools helpen u bij het beheren en schalen van meerdere data bases in Azure SQL Database](elastic-pool-overview.md)
+  - [Meerdere databases in Azure SQL Database beheren en schalen met elastische pools](elastic-pool-overview.md)
   - [Uitbreiden met Azure SQL Database](elastic-scale-introduction.md)
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -258,14 +258,14 @@ De werk belastingen die door het load Generator-script worden gegenereerd, zijn 
 In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
-> - De Wingtip tickets SaaS multi-tenant database toepassing implementeren.
-> - Over de servers en data bases die de app vormen.
-> - Tenants worden toegewezen aan hun gegevens met de *catalogus*.
-> - Nieuwe tenants inrichten in een multi tenant-data base en een Data Base met één Tenant.
-> - Pool gebruik weer geven voor het bewaken van Tenant activiteit.
-> - Voorbeeld resources verwijderen om gerelateerde facturering te stoppen.
+> - De toepassing Wingtip Tickets SaaS-database voor meerdere tenants implementeren.
+> - Informatie over de servers en databases die deel uitmaken van de app.
+> - Tenants worden via de *catalogus* toegewezen aan hun gegevens.
+> - Nieuwe tenants inrichten in een database voor meerdere tenants en in een database voor één tenant.
+> - Poolgebruik bekijken om de activiteit van een tenant te bewaken.
+> - Voorbeeldresources verwijderen om gerelateerde facturering te stoppen.
 
-Probeer nu de [zelf studie voor het inrichten en de catalogus](saas-multitenantdb-provision-and-catalog.md).
+U kunt nu [de zelfstudie over het inrichten en catalogiseren van tenants](saas-multitenantdb-provision-and-catalog.md) volgen.
 
 
 <!--  Link references.
@@ -289,5 +289,5 @@ A [series of related tutorials] is available that build upon this initial deploy
 [image-deploy-to-azure-blue-48d]: https://aka.ms/deploywtp-mtapp "Button for Deploy to Azure."
 -->
 
-[image-deploy-to-azure-blue-48d]: media/saas-multitenantdb-get-started-deploy/deploy.png "Om te implementeren in Azure."
+[image-deploy-to-azure-blue-48d]: media/saas-multitenantdb-get-started-deploy/deploy.png "Knop voor het implementeren in Azure."
 

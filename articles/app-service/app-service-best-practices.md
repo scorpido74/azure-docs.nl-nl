@@ -8,10 +8,10 @@ ms.date: 07/01/2016
 ms.author: dariac
 ms.custom: seodec18
 ms.openlocfilehash: 0a25ae41a5f4ed73148f629799ca4865d756a769
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88962448"
 ---
 # <a name="best-practices-for-azure-app-service"></a>Aanbevolen procedures voor Azure App Service
@@ -34,10 +34,10 @@ Wanneer u merkt dat een app meer CPU verbruikt dan verwacht of een herhaalde CPU
 Voor meer informatie over stateful en stateless toepassingen kunt u deze video bekijken: [een schaal bare end-to-end toepassing met meerdere lagen plannen op Azure app service](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid). Zie [een web-app schalen in azure app service](manage-scale-up.md)voor meer informatie over opties voor app service schalen en automatisch schalen.  
 
 ## <a name="when-socket-resources-are-exhausted"></a><a name="socketresources"></a>Wanneer socket bronnen worden uitgeput
-Een veelvoorkomende reden voor het uitvallen van uitgaande TCP-verbindingen is het gebruik van client bibliotheken die niet zijn geïmplementeerd voor het opnieuw gebruiken van TCP-verbindingen, of wanneer een protocol op een hoger niveau, zoals HTTP-Keep-Alive, niet wordt gebruikt. Raadpleeg de documentatie voor elk van de bibliotheken waarnaar wordt verwezen door de apps in uw App Service-abonnement om te controleren of deze in uw code zijn geconfigureerd of geopend, zodat uitgaande verbindingen efficiënt kunnen worden hergebruikt. Volg ook de richt lijnen voor bibliotheek documentatie voor het maken en vrijgeven of opschonen om lekkende verbindingen te voor komen. Hoewel dergelijke client bibliotheken onderzoeken worden uitgevoerd, kan de impact worden verkleind door naar meerdere instanties te schalen.
+Een veelvoorkomende reden voor het uitvallen van uitgaande TCP-verbindingen is het gebruik van client bibliotheken die niet zijn geïmplementeerd voor het hergebruik van TCP-verbindingen, of wanneer een protocol op een hoger niveau, zoals HTTP-Keep-Alive, niet wordt gebruikt. Raadpleeg de documentatie voor elk van de bibliotheken waarnaar wordt verwezen door de apps in uw App Service-abonnement om te controleren of deze in uw code zijn geconfigureerd of geopend, zodat uitgaande verbindingen efficiënt kunnen worden hergebruikt. Volg ook de richt lijnen voor bibliotheek documentatie voor het maken en vrijgeven of opschonen om lekkende verbindingen te voor komen. Hoewel dergelijke client bibliotheken onderzoeken worden uitgevoerd, kan de impact worden verkleind door naar meerdere instanties te schalen.
 
 ### <a name="nodejs-and-outgoing-http-requests"></a>Node.js en uitgaande HTTP-aanvragen
-Wanneer u werkt met Node.js en vele uitgaande HTTP-aanvragen, is het belang rijk om HTTP-Keep-Alive te verwerken. U kunt het [agentkeepalive](https://www.npmjs.com/package/agentkeepalive) - `npm` pakket gebruiken om uw code gemakkelijker te maken.
+Wanneer u werkt met Node.js en vele uitgaande HTTP-aanvragen, is het belang rijk om HTTP-Keep-Alive te gebruiken. U kunt het [agentkeepalive](https://www.npmjs.com/package/agentkeepalive) - `npm` pakket gebruiken om uw code gemakkelijker te maken.
 
 Het antwoord altijd afhandelen `http` , zelfs als u niets in de handler doet. Als u het antwoord niet op de juiste manier afhandelt, wordt uw toepassing uiteindelijk vastgelopen omdat er geen sockets meer beschikbaar zijn.
 
