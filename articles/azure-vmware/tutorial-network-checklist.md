@@ -3,12 +3,12 @@ title: 'Zelfstudie: checklist voor netwerkplanning'
 description: Lees hier alles over de netwerkvereisten en informatie over netwerkconnectiviteit en netwerkpoorten voor Azure VMware Solution.
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: 5538f9c5d6543ca312835f4ef6437e413dea231b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ee70b8a297e1b8418049ff229b3c1869819145b
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576674"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948201"
 ---
 # <a name="networking-planning-checklist-for-azure-vmware-solution"></a>Checklist voor netwerkplanning voor Azure VMware Solution 
 
@@ -36,6 +36,9 @@ Het logisch netwerk van de privécloud wordt geleverd met vooraf ingerichte NSX-
 De AVS-privécloud is verbonden met uw virtuele Azure-netwerk met behulp van een Azure ExpressRoute-verbinding. Via deze verbinding met hoge bandbreedte en lage latentie kunt u toegang krijgen tot services die worden uitgevoerd in uw Azure-abonnement vanuit uw privécloud. De routering is op basis van Border Gateway Protocol (BGP) en automatisch ingericht en ingeschakeld voor elke implementatie van een privécloud. 
 
 Voor AVS-privéclouds is minimaal een `/22` CIDR-netwerkadresblok vereist voor subnetten, zoals hieronder wordt weergegeven. Dit netwerk vormt een aanvulling op uw on-premises netwerken. Het adresblok mag geen overlap vertonen met de in andere virtuele netwerken gebruikte adresblokken die zich in uw abonnement en on-premises netwerken bevinden. Beheer, inrichting en vMotion-netwerken worden automatisch ingericht in dit adresblok.
+
+>[!NOTE]
+>Toegestane bereiken voor uw adresblok zijn de RFC 1918-privéadresruimten (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16), met uitzondering van 172.17.0.0/16.
 
 Voorbeeld `/22` CIDR-netwerkadresblok:  `10.10.0.0/22`
 

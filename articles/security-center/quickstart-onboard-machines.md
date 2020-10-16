@@ -7,23 +7,26 @@ ms.date: 10/01/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: df780e4e55bb5c119320d4b33502d50a95da1eaf
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+zone_pivot_groups: non-azure-machines
+ms.openlocfilehash: bf31c2d4a90abeec62d785d0294a9c50f3b675ab
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91612214"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993616"
 ---
 #  <a name="connect-your-non-azure-machines-to-security-center"></a>Uw niet-Azure-machines verbinden met Security Center
 
-Security Center kan de beveiligingsstatus van uw niet-Azure-computers controleren, maar u moet deze resources dan eerst onboarden. 
+Security Center kan de beveiligingsstatus van uw niet-Azure-computers controleren, maar u moet deze resources dan eerst verbinden met Azure. 
 
-U kunt andere computers dan Azure-computers op een van de volgende manieren toevoegen:
+U kunt uw niet-Azure-computers verbinden op een van de volgende manieren:
 
 - Met Azure Arc (**aanbevolen**)
 - Via de pagina's van Azure Security Center in Azure Portal (**Aan de slag** en **Voorraad**)
 
-Deze methoden worden beide hieronder beschreven.
+Deze methoden worden beide op deze pagina beschreven.
+
+::: zone pivot="azure-arc"
 
 ## <a name="add-non-azure-machines-with-azure-arc"></a>Andere computers dan Azure-computers toevoegen met Azure Arc
 
@@ -43,7 +46,11 @@ Meer informatie over [Azure Arc](../azure-arc/servers/overview.md).
 > [!TIP]
 > Als u AWS-computers in gebruik neemt, handelt de connector voor AWS van Azure Security Center de implementatie van Azure Arc op transparante wijze af. In [Uw AWS-accounts verbinden met Azure Security Center](quickstart-onboard-aws.md) vindt u hierover meer informatie.
 
-## <a name="add-non-azure-machines-from-security-centers-portal-pages"></a>Andere computers dan Azure-computers toevoegen vanaf de portalpagina's van Azure Security Center
+::: zone-end
+
+::: zone pivot="azure-portal"
+
+## <a name="add-non-azure-machines-from-the-azure-portal"></a>Niet-Azure-machines toevoegen vanuit de Azure-portal
 
 1. Open in het menu van Security Center de pagina **Aan de slag**.
 1. Selecteer het tabblad **Aan de slag**.
@@ -114,6 +121,7 @@ Als u klaar bent wordt de **Log Analytics-agent** in het **Configuratiescherm** 
 
 Zie [Windows-computers verbinden](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard) voor meer informatie over het installeren en configureren van de agent.
 
+::: zone-end
 
 ## <a name="verifying"></a>Controleren
 Gefeliciteerd! Nu worden uw Azure- en niet-Azure-machines op één plek weergegeven. Open de pagina [Assetvoorraad](asset-inventory.md) en filter de relevante resourcetypen. Met de volgende pictogrammen worden de typen onderscheiden:

@@ -7,12 +7,12 @@ ms.date: 9/12/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: cc52610eacc3916b7a8978cba17a1db3f3d50686
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 899fddf08a817126ce775733da38ffd10ab3ab23
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447675"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952111"
 ---
 # <a name="azure-security-centers-overview-page"></a>Overzichtspagina van Azure Security Center
 
@@ -38,7 +38,7 @@ De **bovenste menubalk** biedt het volgende:
 
 Midden op de pagina bevinden zich **vier centrale tegels**, die elk gekoppeld zijn aan een speciaal dashboard voor meer informatie:
 - **Veiligheidsscore**: het Security Center controleert uw resources, abonnementen en organisatie doorlopend op beveiligingsproblemen. Vervolgens worden alle bevindingen tot één enkele score samengevoegd, zodat u in een oogopslag uw huidige beveiligingssituatie kunt zien: hoe hoger de score, hoe lager het geïdentificeerde risiconiveau is. [Meer informatie](secure-score-security-controls.md).
-- **Naleving**: Security Center biedt inzicht in uw nalevingspostuur op basis van continue evaluatie van uw Azure-omgeving. Security Center analyseert risicofactoren in uw hybride cloudomgeving overeenkomstig best practices voor beveiliging. Deze evaluaties worden vanuit een ondersteunde set standaarden toegewezen aan nalevingscontroles.[Meer informatie](security-center-compliance-dashboard.md).
+- **Naleving**: Security Center biedt inzicht in uw nalevingspostuur op basis van continue evaluatie van uw Azure-omgeving. Security Center analyseert risicofactoren in uw hybride cloudomgeving overeenkomstig best practices voor beveiliging. Deze evaluaties worden vanuit een ondersteunde set standaarden toegewezen aan nalevingscontroles. [Meer informatie](security-center-compliance-dashboard.md).
 - **Azure Defender**: dit is het Cloud Workload Protection Platform (CWPP) dat geïntegreerd is in Security Center voor geavanceerde, intelligente beveiliging van uw Azure- en hybride workloads. De tegel toont de dekking van uw verbonden resources (voor de momenteel geselecteerde abonnementen) en de recente waarschuwingen, met een kleurcode voor de mate van ernst. [Meer informatie](azure-defender.md).
 - **Voorraad**: de tegel toont het aantal niet-bewaakte VM's en een eenvoudige barometer van uw resources die worden bewaakt door Security Center. [Meer informatie](asset-inventory.md).
 

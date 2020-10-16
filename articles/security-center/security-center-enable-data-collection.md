@@ -6,34 +6,39 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: quickstart
-ms.date: 04/27/2020
+ms.date: 10/08/2020
 ms.author: memildin
-ms.openlocfilehash: 92c73fed84910e525378aa18e02456960acf9911
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5c9540bed34de3cad5c74c7041c8d7e06aef9ca
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447235"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946056"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Gegevensverzameling in Azure Security Center
 Security Center verzamelt gegevens van uw virtuele Azure-machines (VM's), virtuele-machineschaalsets, IaaS-containers en niet-Azure-computers (waaronder on-premises computers) om deze te bewaken op beveiligingsproblemen en bedreigingen. De gegevens worden verzameld met behulp van de Log Analytics-agent, die verschillende configuraties en gebeurtenislogboeken met betrekking tot beveiliging van de machine leest en de gegevens kopieert naar uw werkruimte voor analyse. Voorbeelden van dergelijke gegevens zijn: besturingssysteemtype en -versie, besturingssysteemlogboeken (Windows-gebeurtenislogboeken), actieve processen, computernaam, IP-adressen en aangemelde gebruiker.
 
-Het verzamelen van gegevens is vereist om inzicht te krijgen in ontbrekende updates, onjuist geconfigureerde beveiligingsinstellingen voor het besturingssysteem, eindpuntbeveiligingsstatus, beveiliging van de status en beveiliging tegen bedreigingen. 
+Het verzamelen van gegevens is vereist om inzicht te krijgen in ontbrekende updates, onjuist geconfigureerde beveiligingsinstellingen voor het besturingssysteem, eindpuntbeveiligingsstatus, beveiliging van de status en beveiliging tegen bedreigingen. Het verzamelen van gegevens is alleen nodig voor rekenresources (VM's, virtuele-machineschaalsets, IaaS-containers en niet-Azure-computers). U kunt profiteren van Azure Security Center, zelfs als u geen agents inricht. U hebt echter beperkte beveiliging en de mogelijkheden die hierboven worden vermeld, worden niet ondersteund.  
 
-In dit artikel wordt beschreven hoe u een Log Analytics-agent installeert en hoe u een Log Analytics-werkruimte instelt waarin de verzamelde gegevens worden opgeslagen. Beide bewerkingen zijn vereist om gegevensverzameling mogelijk te maken. 
+In dit artikel wordt beschreven hoe u een Log Analytics-agent installeert en hoe u een Log Analytics-werkruimte instelt waarin de verzamelde gegevens worden opgeslagen. Beide bewerkingen zijn vereist om gegevensverzameling mogelijk te maken. Wanneer u gegevens opslaat in Log Analytics, ongeacht of u een nieuwe of bestaande werkruimte gebruikt, kunnen er extra kosten in rekening worden gebracht voor gegevensopslag. Zie de pagina [prijzen](https://azure.microsoft.com/pricing/details/security-center/) voor meer informatie.
 
-> [!NOTE]
-> - Het verzamelen van gegevens is alleen nodig voor compute-bronnen (VM's, virtuele-machineschaalsets, IaaS-containers en niet-Azure-computers). U kunt profiteren van Azure Security Center, zelfs als u geen agents inricht. U hebt echter beperkte beveiliging en de mogelijkheden die hierboven worden vermeld, worden niet ondersteund.  
-> - Zie [Ondersteunde platforms in Azure Security Center](security-center-os-coverage.md) voor een lijst met ondersteunde platforms.
-> - Wanneer u gegevens opslaat in Log Analytics, ongeacht of u een nieuwe of bestaande werkruimte gebruikt, kunnen er extra kosten in rekening worden gebracht voor gegevensopslag. Zie de pagina [prijzen](https://azure.microsoft.com/pricing/details/security-center/) voor meer informatie.
+> [!TIP]
+> Zie [Ondersteunde platforms in Azure Security Center](security-center-os-coverage.md) voor een lijst met ondersteunde platforms.
 
 ## <a name="enable-automatic-provisioning-of-the-log-analytics-agent"></a>Automatische inrichting van de Log Analytics-agent inschakelen <a name="auto-provision-mma"></a>
+
+> [!NOTE]
+> Gebruikers van Azure Sentinel: houd er rekening mee dat de verzameling van beveiligingsgebeurtenissen binnen de context van één werkruimte kan worden geconfigureerd vanuit Azure Security Center of Azure Sentinel, maar niet beide. Als u van plan bent om Azure Sentinel toe te voegen aan een werkruimte die al Azure Defender-waarschuwingen van Azure Security Center ontvangt en is ingesteld op het verzamelen van beveiligingsgebeurtenissen, hebt u twee opties:
+> - Laat de verzameling van beveiligingsgebeurtenissen in Azure Security Center ongewijzigd. U kunt deze gebeurtenissen in Azure Sentinel en in Azure Defender doorzoeken en analyseren. U kunt echter niet de verbindingsstatus van de connector controleren of de configuratie ervan wijzigen in Azure Sentinel. Als dit belangrijk voor u is, kunt u de tweede optie overwegen.
+>
+> - [Schakel de verzameling van beveiligingsgebeurtenissen uit](#data-collection-tier) in Azure Security Center en voeg vervolgens de connector voor beveiligingsgebeurtenissen toe aan Azure-Sentinel. Net zoals bij de eerste optie, kunt u gebeurtenissen in Azure Sentinel en Azure Defender/ASC opvragen en analyseren, maar u kunt nu de verbindingsstatus van de connector bewaken of de configuratie ervan wijzigen in (en alleen in) Azure Sentinel.
+
 
 Als u de gegevens van de machines wilt verzamelen, moet de Log Analytics-agent zijn geïnstalleerd. Installatie van de agent kan automatisch worden uitgevoerd (aanbevolen) of u kunt de agent handmatig installeren. Automatische inrichting is standaard uitgeschakeld.
 
 Als automatisch inrichten aan staat, implementeert Security Center de Log Analytics-agent op alle ondersteunde Azure-VM's en op nieuwe VM's. Automatische inrichting wordt aanbevolen, maar u kunt de agent handmatig installeren als dat nodig is (Zie [Handmatige installatie van de Log Analytics-agent](#manual-agent)).
 
-
+Als de agent is geïmplementeerd op uw machines, kan Security Center extra aanbevelingen doen met betrekking tot de updatestatus van het systeem, de beveiligingsconfiguraties van het besturingssysteem en de eindpuntbeveiliging. Ook kan Security Center aanvullende beveiligingswaarschuwingen genereren.
 
 Automatische inrichting van de Log Analytics-agent inschakelen:
 
@@ -44,20 +49,9 @@ Automatische inrichting van de Log Analytics-agent inschakelen:
 
     :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="Automatische inrichting van de Log Analytics-agent inschakelen":::
 
->[!TIP]
-> Als een werkruimte moet worden ingericht, kan de installatie van de agent tot wel 25 minuten duren.
+    >[!TIP]
+    > Als een werkruimte moet worden ingericht, kan de installatie van de agent tot wel 25 minuten duren.
 
-Als de agent is geïmplementeerd op uw machines, kan Security Center extra aanbevelingen doen met betrekking tot de updatestatus van het systeem, de beveiligingsconfiguraties van het besturingssysteem en de eindpuntbeveiliging. Ook kan Security Center aanvullende beveiligingswaarschuwingen genereren.
-
->[!NOTE]
-> Wanneer u automatische inrichting instelt op **Uit**, wordt de Log Analytics-agent niet verwijderd van Azure-VM's waarop de agent al is ingericht. Door automatische inrichting uit te schakelen, wordt de beveiligingsbewaking voor uw resources beperkt.
-
->[!NOTE]
-> - Zie [Automatische inrichting in het geval van een reeds bestaande agentinstallatie](#preexisting).
-> - Zie [De Log Analytics-agentextensie handmatig installeren](#manual-agent) voor instructies voor handmatig inrichten.
-> - Zie [Automatische inrichting uitschakelen](#offprovisioning) voor instructies over het uitschakelen van automatisch inrichten.
-> - Voor instructies over het onboarden van Security Center met behulp van PowerShell raadpleegt u [Het onboarden van Azure Security Center automatiseren met PowerShell](security-center-powershell-onboarding.md).
->
 
 ## <a name="workspace-configuration"></a>Werkruimteconfiguratie
 Gegevens die worden verzameld door Security Center worden opgeslagen in een of meer werkruimten van Log Analytics. Uw gegevens kunnen worden verzameld van Azure-VM's die zijn opgeslagen in werkruimten die zijn gemaakt door Security Center of in een bestaande werkruimte die u hebt gemaakt. 
@@ -147,20 +141,16 @@ Wanneer u een werkruimte selecteert voor het opslaan van uw gegevens, kunt u kie
 Het selecteren van een laag voor gegevensverzameling in Azure Security Center heeft alleen invloed op de opslag van beveiligingsgebeurtenissen in de Log Analytics-werkruimte. De Log Analytics-agent blijft de beveiligingsgebeurtenissen verzamelen en analyseren die Azure Security Center nodig heeft om u te beschermen tegen bedreigingen, ongeacht welke laag van beveiligingsgebeurtenissen u opslaat in uw Log Analytics-werkruimte. Als u ervoor kiest om beveiligingsgebeurtenissen op te slaan in uw werkruimte, kunt u gebeurtenissen vanuit die werkruimte onderzoeken, zoeken en controleren. 
 > [!NOTE]
 > Voor het opslaan van gegevens in Log Analytics worden mogelijk extra kosten voor gegevensopslag in rekening gebracht. Zie de pagina [prijzen](https://azure.microsoft.com/pricing/details/security-center/) voor meer informatie.
-> 
-> U kunt het juiste filterbeleid voor uw abonnementen en werkruimten kiezen uit vier sets gebeurtenissen die in uw werkruimte kunnen worden opgeslagen: 
 
+U kunt het juiste filterbeleid voor uw abonnementen en werkruimten kiezen uit vier sets gebeurtenissen die in uw werkruimte kunnen worden opgeslagen: 
 - **Geen** : opslag voor beveiligingsgebeurtenissen uitschakelen. Dit is de standaardinstelling.
 - **Minimaal**: een kleine set gebeurtenissen voor klanten die het gebeurtenisvolume willen minimaliseren.
 - **Algemeen**: dit is een set gebeurtenissen die voldoet voor de meeste klanten en waarmee ze over een volledig auditlogboek beschikken.
 - **Alle gebeurtenissen**: voor klanten die willen controleren of alle gebeurtenissen zijn opgeslagen.
 
+Deze beveiligingsgebeurtenissensets zijn alleen beschikbaar met Azure Defender. Bekijk de pagina [Prijzen](security-center-pricing.md) voor meer informatie over de tariefopties van Security Center.
 
-> [!NOTE]
-> Deze beveiligingsgebeurtenissensets zijn alleen beschikbaar met Azure Defender. Bekijk de pagina [Prijzen](security-center-pricing.md) voor meer informatie over de tariefopties van Security Center.
 Deze sets zijn ontworpen om typische scenario's te ondersteunen. Controleer welke set aan uw behoeften voldoet voordat u deze implementeert.
->
->
 
 Bij het bepalen van de gebeurtenissen die worden opgenomen in de gebeurtenissets **Algemeen** en **Minimaal** hebben we samengewerkt met klanten en industriestandaards gebruikt om de ongefilterde frequentie van elke gebeurtenis en het gebruik ervan te weten te komen. Bij dit proces hebben we de volgende richtlijnen gebruikt:
 
@@ -264,9 +254,8 @@ U kunt de Log Analytics-agent handmatig installeren, zodat Security Center bevei
 
 1. Als u de agents op nieuwe VM's wilt implementeren met behulp van een Resource Manager-sjabloon, installeert u de Log Analytics agent:
 
-   a.  [De Log Analytics-agent voor Windows installeren](../virtual-machines/extensions/oms-windows.md)
-    
-   b.  [De Log Analytics-agent voor Linux installeren](../virtual-machines/extensions/oms-linux.md)
+   - [De Log Analytics-agent voor Windows installeren](../virtual-machines/extensions/oms-windows.md)
+   - [De Log Analytics-agent voor Linux installeren](../virtual-machines/extensions/oms-linux.md)
 
 1. Als u de extensies op bestaande VM's wilt implementeren, volgt u de instructies in [Gegevens over Azure Virtual Machines verzamelen](../azure-monitor/learn/quick-collect-azurevm.md).
 
@@ -277,7 +266,6 @@ U kunt de Log Analytics-agent handmatig installeren, zodat Security Center bevei
 1. Als u PowerShell wilt gebruiken om de extensie te implementeren, gebruikt u de instructies in de documentatie voor virtual machines:
 
     - [Voor Windows-machines](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-windows?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#powershell-deployment)
-
     - [Voor Linux-machines](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-linux?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#azure-cli-deployment)
 
 
@@ -302,8 +290,8 @@ U kunt de Log Analytics-agent handmatig installeren, zodat Security Center bevei
 ## <a name="next-steps"></a>Volgende stappen
 In dit artikel werd uitgelegd hoe het verzamelen van gegevens en automatisch inrichten in Security Center werkt. Zie de volgende pagina's voor meer informatie over het Security Center:
 
-* [Azure Security Center FAQ](faq-general.md): raadpleeg veelgestelde vragen over het gebruik van de service.
-* [Beveiligingsstatus bewaken in Azure Security Center](security-center-monitoring.md): meer informatie over het bewaken van de status van uw Azure-resources.
+- [Azure Security Center FAQ](faq-general.md): raadpleeg veelgestelde vragen over het gebruik van de service.
+- [Beveiligingsstatus bewaken in Azure Security Center](security-center-monitoring.md): meer informatie over het bewaken van de status van uw Azure-resources.
 
 
 
