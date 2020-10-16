@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: has-adal-ref
-ms.openlocfilehash: 0dd5d1da41c5fcc596e4c70f797e75c30997ce0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5272f7d580a3f8a68afda9150a1e95c1807eba6
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578543"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103778"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Verificatie door eind gebruikers met Azure Data Lake Storage Gen1 met behulp van Azure Active Directory
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ Azure Data Lake Storage Gen1 gebruikt Azure Active Directory voor verificatie. V
 
 Beide opties hebben als resultaat dat uw toepassing wordt geleverd met een OAuth 2,0-token dat wordt gekoppeld aan elke aanvraag die wordt gedaan aan Data Lake Storage Gen1 of Azure Data Lake Analytics.
 
-In dit artikel wordt uitgelegd hoe u een **systeem eigen Azure AD-toepassing maakt voor verificatie door eind gebruikers**. Zie [service-to-service-verificatie met data Lake Storage gen1 met behulp van Azure Active Directory](data-lake-store-authenticate-using-active-directory.md)voor instructies over de configuratie van de Azure AD-toepassing voor service-naar-service-verificatie.
+In dit artikel wordt uitgelegd hoe u een **systeem eigen Azure AD-toepassing maakt voor verificatie door eind gebruikers**. Zie [service-to-service-verificatie met data Lake Storage gen1 met behulp van Azure Active Directory](./data-lake-store-service-to-service-authenticate-using-active-directory.md)voor instructies over de configuratie van de Azure AD-toepassing voor service-naar-service-verificatie.
 
 ## <a name="prerequisites"></a>Vereisten
 * Een Azure-abonnement. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/pricing/free-trial/).

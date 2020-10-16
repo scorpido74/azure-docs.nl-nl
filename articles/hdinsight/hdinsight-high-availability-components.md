@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: ac63846e2679e9b4a51cb26b32415eb81a4b76ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26c7029e710479b8785e06b1d65ff7b5270aeab0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842577"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102928"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Services met hoge Beschik baarheid die worden ondersteund door Azure HDInsight
 
@@ -62,7 +62,7 @@ Micro soft biedt ondersteuning voor de vier Apache-Services in de volgende tabel
 | Apache Livy | Actieve hoofd knooppunt | Spark | Maakt eenvoudige interactie met een Spark-cluster mogelijk via een REST-interface |
 
 >[!Note]
-> HDInsight-clusters (ESP-Enterprise Security Package) bieden momenteel alleen de hoge Beschik baarheid van de Ambari-server.
+> HDInsight-clusters (ESP-Enterprise Security Package) bieden momenteel alleen de hoge Beschik baarheid van de Ambari-server. De server van de toepassings tijdlijn, de taak geschiedenis server en livy worden allemaal alleen op headnode0 uitgevoerd en er worden geen failover naar headnode1 wanneer Ambari failsover. De data base van de toepassings tijdlijn bevindt zich ook in headnode0 en niet op Ambari SQL Server.
 
 ### <a name="architecture"></a>Architectuur
 

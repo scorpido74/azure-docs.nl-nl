@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: f87c3665f558b3185e95b0ad0aa18a883439a221
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc90389e9f600f1411699700989e38c78bee99cc
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87006514"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103336"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>Uitgaand netwerk verkeer voor Azure HDInsight-clusters configureren met behulp van Firewall
 
@@ -23,11 +23,11 @@ In dit artikel worden de stappen beschreven voor het beveiligen van uitgaand ver
 
 HDInsight-clusters worden normaal gesp roken geïmplementeerd in een virtueel netwerk. Het cluster heeft afhankelijkheden voor services buiten dat virtuele netwerk.
 
-Er zijn verschillende afhankelijkheden waarvoor binnenkomend verkeer is vereist. Het inkomende beheer verkeer kan niet via een firewall apparaat worden verzonden. De bron adressen voor dit verkeer zijn bekend en worden [hier](hdinsight-management-ip-addresses.md)gepubliceerd. U kunt ook regels voor netwerk beveiligings groepen (NSG) met deze informatie maken om inkomend verkeer naar de clusters te beveiligen.
+Het inkomende beheer verkeer kan niet via een firewall worden verzonden. U kunt NSG-service tags gebruiken voor het inkomende verkeer zoals [hier](https://docs.microsoft.com/azure/hdinsight/hdinsight-service-tags)wordt beschreven. 
 
-De afhankelijkheden voor uitgaand verkeer van HDInsight zijn bijna volledig gedefinieerd met FQDN-verwijzingen. Er zijn geen statische IP-adressen achter. Het ontbreken van statische adressen betekent dat netwerk beveiligings groepen (Nsg's) uitgaand verkeer van een cluster niet kunnen vergren delen. De adressen worden vaak voldoende gewijzigd, omdat er geen regels kunnen worden ingesteld op basis van de huidige naam omzetting en het gebruik.
+De afhankelijkheden voor uitgaand verkeer van HDInsight zijn bijna volledig gedefinieerd met FQDN-verwijzingen. Er zijn geen statische IP-adressen achter. Het ontbreken van statische adressen betekent dat netwerk beveiligings groepen (Nsg's) uitgaand verkeer van een cluster niet kunnen vergren delen. De IP-adressen die vaak voldoende worden gewijzigd, kunnen geen regels instellen op basis van de huidige naam omzetting en het gebruik.
 
-Beveilig uitgaande adressen met een firewall waarmee het uitgaande verkeer op basis van domein namen kan worden beheerd. Azure Firewall beperkt het uitgaande verkeer op basis van de FQDN van de doel-of [FQDN-Tags](../firewall/fqdn-tags.md).
+Beveilig uitgaande adressen met een firewall waarmee het uitgaande verkeer op basis van FQDN-namen kan worden beheerd. Azure Firewall beperkt het uitgaande verkeer op basis van de FQDN van de doel-of [FQDN-Tags](../firewall/fqdn-tags.md).
 
 ## <a name="configuring-azure-firewall-with-hdinsight"></a>Azure Firewall configureren met HDInsight
 
@@ -79,7 +79,7 @@ Maak een toepassings regel verzameling waarmee het cluster belang rijke communic
     | --- | --- | --- | --- | --- |
     | Rule_2 | * | https: 443 | login.windows.net | Windows-aanmeldings activiteit toestaan |
     | Rule_3 | * | https: 443 | login.microsoftonline.com | Windows-aanmeldings activiteit toestaan |
-    | Rule_4 | * | https: 443, http: 80 | storage_account_name. blob. core. Windows. net | Vervang door `storage_account_name` de werkelijke naam van het opslag account. Als uw cluster wordt ondersteund door WASB, voegt u een regel toe voor WASB. Als u alleen HTTPS-verbindingen wilt gebruiken, moet u ervoor zorgen dat ["beveiligde overdracht vereist"](../storage/common/storage-require-secure-transfer.md) is ingeschakeld op het opslag account. |
+    | Rule_4 | * | https: 443, http: 80 | storage_account_name. blob. core. Windows. net | Vervang door `storage_account_name` de werkelijke naam van het opslag account. Als u alleen HTTPS-verbindingen wilt gebruiken, moet u ervoor zorgen dat ["beveiligde overdracht vereist"](../storage/common/storage-require-secure-transfer.md) is ingeschakeld op het opslag account. Als u een privé-eind punt gebruikt voor toegang tot opslag accounts, is deze stap niet nodig en wordt het opslag verkeer niet doorgestuurd naar de firewall.|
 
    ![Titel: Details van toepassings regel verzameling invoeren](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
 
@@ -101,21 +101,12 @@ Maak de netwerk regels om uw HDInsight-cluster correct te configureren.
     |Prioriteit|200|
     |Bewerking|Toestaan|
 
-    **Sectie IP-adressen**
-
-    | Name | Protocol | Bron adressen | Doel adressen | Doelpoorten | Notities |
-    | --- | --- | --- | --- | --- | --- |
-    | Rule_1 | UDP | * | * | 123 | Time-service |
-    | Rule_2 | Alle | * | DC_IP_Address_1, DC_IP_Address_2 | * | Als u Enterprise Security Package (ESP) gebruikt, voegt u een netwerk regel toe aan de sectie IP-adressen die communicatie met AAD-DS voor ESP-clusters mogelijk maakt. U kunt de IP-adressen van de domein controllers vinden in de sectie AAD-DS in de portal |
-    | Rule_3 | TCP | * | IP-adres van uw Data Lake Storage-account | * | Als u Azure Data Lake Storage gebruikt, kunt u een netwerk regel toevoegen in de sectie IP-adressen om een SNI-probleem op te lossen met ADLS Gen1 en Gen2. Met deze optie wordt het verkeer naar de firewall doorgestuurd. Wat kan leiden tot hogere kosten voor het laden van grote gegevens, maar het verkeer wordt geregistreerd en gecontroleerd in Firewall Logboeken. Bepaal het IP-adres voor uw Data Lake Storage-account. U kunt een Power shell-opdracht gebruiken, bijvoorbeeld `[System.Net.DNS]::GetHostAddresses("STORAGEACCOUNTNAME.blob.core.windows.net")` om de FQDN om te zetten in een IP-adres.|
-    | Rule_4 | TCP | * | * | 12000 | Beschrijving Als u Log Analytics gebruikt, maakt u een netwerk regel in de sectie IP-adressen om communicatie met uw Log Analytics-werk ruimte in te scha kelen. |
-
     **Sectie Service Tags**
 
     | Name | Protocol | Bron adressen | Servicetags | Doel poorten | Notities |
     | --- | --- | --- | --- | --- | --- |
-    | Rule_7 | TCP | * | SQL | 1433 | Configureer een netwerk regel in het gedeelte service tags voor SQL waarmee u SQL-verkeer kunt registreren en controleren. Tenzij u service-eind punten voor SQL Server op het HDInsight-subnet hebt geconfigureerd, waardoor de firewall wordt overgeslagen. |
-    | Rule_8 | TCP | * | Azure Monitor | * | Beschrijving Klanten die de functie voor automatisch schalen willen gebruiken, moeten deze regel toevoegen. |
+    | Rule_5 | TCP | * | SQL | 1433 | Als u de standaard SQL-servers gebruikt die door HDInsight worden meegeleverd, configureert u een netwerk regel in het gedeelte service tags voor SQL waarmee u SQL-verkeer kunt registreren en controleren. Tenzij u service-eind punten voor SQL Server op het HDInsight-subnet hebt geconfigureerd, waardoor de firewall wordt overgeslagen. Als u een aangepaste SQL Server gebruikt voor Ambari, Oozie, zwerver en Hive metastroes, hoeft u alleen het verkeer naar uw eigen aangepaste SQL-servers toe te staan.|
+    | Rule_6 | TCP | * | Azure Monitor | * | Beschrijving Klanten die de functie voor automatisch schalen willen gebruiken, moeten deze regel toevoegen. |
     
    ![Titel: toepassings regel verzameling invoeren](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
 
@@ -125,9 +116,7 @@ Maak de netwerk regels om uw HDInsight-cluster correct te configureren.
 
 Maak een route tabel met de volgende vermeldingen:
 
-* Alle IP-adressen van de [status-en beheer Services: alle regio's](../hdinsight/hdinsight-management-ip-addresses.md#health-and-management-services-all-regions) met het volgende hop-type **Internet**.
-
-* Twee IP-adressen voor de regio waarin het cluster is gemaakt op basis van de [status-en beheer Services: specifieke regio's](../hdinsight/hdinsight-management-ip-addresses.md#health-and-management-services-specific-regions) met het volgende hop-type **Internet**.
+* Alle IP-adressen van [status-en beheer Services](../hdinsight/hdinsight-management-ip-addresses.md#health-and-management-services-all-regions) met het volgende hop-type **Internet**. Het moet 4 Ip's van de algemene regio's en 2 Ip's bevatten voor uw specifieke regio. Deze regel is alleen nodig als de ResourceProviderConnection is ingesteld op *binnenkomend*. Als de ResourceProviderConnection is ingesteld op *outbound* , zijn deze IP-adressen niet nodig in de UDR. 
 
 * Eén virtuele-toestel route voor IP-adres 0.0.0.0/0 met de volgende hop wordt uw Azure Firewall privé-IP-adres.
 
@@ -141,12 +130,12 @@ Gebruik bijvoorbeeld de volgende stappen om de route tabel te configureren voor 
 
 | Routenaam | Adresvoorvoegsel | Volgend hoptype | Adres van de volgende hop |
 |---|---|---|---|
-| 168.61.49.99 | 168.61.49.99/32 | Internet | NA |
-| 23.99.5.239 | 23.99.5.239/32 | Internet | NA |
-| 168.61.48.131 | 168.61.48.131/32 | Internet | NA |
-| 138.91.141.162 | 138.91.141.162/32 | Internet | NA |
-| 13.82.225.233 | 13.82.225.233/32 | Internet | NA |
-| 40.71.175.99 | 40.71.175.99/32 | Internet | NA |
+| 168.61.49.99 | 168.61.49.99/32 | Internet | N.v.t. |
+| 23.99.5.239 | 23.99.5.239/32 | Internet | N.v.t. |
+| 168.61.48.131 | 168.61.48.131/32 | Internet | N.v.t. |
+| 138.91.141.162 | 138.91.141.162/32 | Internet | N.v.t. |
+| 13.82.225.233 | 13.82.225.233/32 | Internet | N.v.t. |
+| 40.71.175.99 | 40.71.175.99/32 | Internet | N.v.t. |
 | 0.0.0.0 | 0.0.0.0/0 | Virtueel apparaat | 10.0.2.4 |
 
 De configuratie van de route tabel volt ooien:

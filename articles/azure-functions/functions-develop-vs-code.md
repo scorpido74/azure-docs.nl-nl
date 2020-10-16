@@ -4,12 +4,12 @@ description: Meer informatie over het ontwikkelen en testen van Azure Functions 
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/21/2019
-ms.openlocfilehash: 610c80dc5552eae4f2ad8442fa11b85f2eab35eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1614ac0711c6a83d7e303b5a4b6ebbdf23ba2e03
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88206737"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104067"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Azure Functions ontwikkelen met Visual Studio Code
 
@@ -245,7 +245,7 @@ Met de volgende stappen publiceert u uw project naar een nieuwe functie-app die 
 
     ![Instellingen voor functie-app](./media/functions-develop-vs-code/function-app-publish-project.png)
 
-1. Als u niet bent aangemeld, wordt u gevraagd u **aan te melden bij Azure**. U kunt ook **een gratis Azure-account maken**. Nadat u zich hebt aangemeld vanuit de browser, gaat u terug naar Visual Studio code.
+1. Als u niet bent aangemeld, wordt u gevraagd om u **aan te melden bij Azure**. U kunt ook **een gratis Azure-account maken**. Nadat u zich hebt aangemeld vanuit de browser, gaat u terug naar Visual Studio code.
 
 1. Als u meerdere abonnementen hebt, **selecteert u een abonnement** voor de functie-app en selecteert u **+ nieuwe functie-app maken in Azure... _Geavanceerd_**. Met deze _Geavanceerde_ optie hebt u meer controle over de resources die u in azure maakt. 
 
@@ -297,7 +297,7 @@ Als u uw functions-project lokaal wilt uitvoeren, moet u aan deze aanvullende ve
     | Taal | Vereiste |
     | -------- | --------- |
     | **C#** | [C#-extensie](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)<br/>[.NET Core CLI-hulpprogramma's](/dotnet/core/tools/?tabs=netcore2x)   |
-    | **Java** | [Fout opsporing voor Java-extensie](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](https://aka.ms/azure-jdks)<br/>[Maven 3 of hoger](https://maven.apache.org/) |
+    | **Java** | [Fout opsporing voor Java-extensie](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)<br/>[Maven 3 of hoger](https://maven.apache.org/) |
     | **JavaScript** | [Node.js](https://nodejs.org/)<sup>*</sup> |  
     | **Python** | [Python-extensie](https://marketplace.visualstudio.com/items?itemName=ms-python.python)<br/>[Python 3.6.8](https://www.python.org/downloads/) aanbevolen|
 
@@ -337,7 +337,7 @@ Waarden in **Connections Tring** worden nooit gepubliceerd.
 
 De waarden van de functie-toepassings instellingen kunnen ook in uw code worden gelezen als omgevings variabelen. Zie de secties omgevings variabelen van deze taalspecifieke referentie-artikelen voor meer informatie:
 
-* [Vooraf gecompileerde C#](functions-dotnet-class-library.md#environment-variables)
+* [C# vooraf gecompileerd](functions-dotnet-class-library.md#environment-variables)
 * [C#-script (.csx)](functions-reference-csharp.md#environment-variables)
 * [Java](functions-reference-java.md#environment-variables)
 * [JavaScript](functions-reference-node.md#environment-variables)
@@ -410,7 +410,7 @@ Nadat u deze stappen hebt voltooid, bevatten de aanroepen van de onderliggende k
 
 De uitbrei ding Azure Functions biedt een handige grafische interface in het gebied voor interactie met uw functie-apps in Azure. Dezelfde functionaliteit is ook beschikbaar als opdrachten in het opdracht palet (F1). Deze Azure Functions-opdrachten zijn beschikbaar:
 
-|Azure Functions opdracht  | Beschrijving  |
+|Azure Functions opdracht  | Description  |
 |---------|---------|
 |**Nieuwe instellingen toevoegen**  |  Hiermee maakt u een nieuwe toepassings instelling in Azure. Zie [Toepassings instellingen publiceren](#publish-application-settings)voor meer informatie. Mogelijk moet u [deze instelling ook downloaden naar de lokale instellingen](#download-settings-from-azure). |
 | **Implementatie bron configureren** | Verbindt uw functie-app in azure met een lokale Git-opslag plaats. Zie [continue implementatie voor Azure functions voor](functions-continuous-deployment.md)meer informatie. |

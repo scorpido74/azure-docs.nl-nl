@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: c468ecb390a3ad321f9fe0619204994dfbf3fbb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d04dd0ec7c6d3166e2170001d6ff341d203c0d6b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91256753"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103149"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Toepassings typen voor micro soft Identity platform
 
@@ -46,7 +46,7 @@ Veel moderne apps hebben een front-end van de app met één pagina, voornamelijk
 
 In het onderstaande diagram ziet u de OAuth 2,0-autorisatie code toekenning (met details over PKCE wegge laten), waarbij de app een code van het micro soft Identity platform- `authorize` eind punt ontvangt en deze opnieuw gebruikt voor tokens en tokens vernieuwt met behulp van cross-site webaanvragen. Het vernieuwings token verloopt elke 24 uur en de app moet een andere code aanvragen. Naast het toegangs token wordt een van `id_token` de aangemelde gebruiker voor de client toepassing doorgaans ook aangevraagd via dezelfde stroom en/of een afzonderlijke OpenID Connect-verbindings aanvraag (hier niet weer gegeven).
 
-![Code stroom voor SPA-apps](media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.png)
+:::image type="content" source="media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.svg" alt-text="Diagram van de OAuth 2-autorisatie code stroom tussen een app met één pagina en het eind punt van het beveiligings token service." border="false":::
 
 Als u dit scenario in actie wilt zien, raadpleegt u de [zelf studie: Meld u aan bij gebruikers en roep de Microsoft Graph-API aan vanuit een Java script Spa met behulp van auth code flow](tutorial-v2-javascript-auth-code.md).
 

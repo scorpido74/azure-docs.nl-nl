@@ -4,12 +4,12 @@ description: Meer informatie over hoe u de cluster-automatische schaal functie k
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: 9f1dcc64569e9822e3703312740450e2528479dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7368745d3b6bf9731f987d6f4fc36b81d354fed8
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88257511"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103863"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Een cluster automatisch schalen om te voldoen aan de toepassingsvraag op Azure Kubernetes Service (AKS)
 
@@ -129,24 +129,14 @@ U kunt ook gedetailleerdere Details van de cluster automatisch schalen configure
 | omlaag schalen-omlaag-na-mislukt   | Hoe lang na uitval van de omlaag geschaalde fout dat het omlaag schalen van evaluatie versies wordt hervat                     | 3 minuten     |
 | omlaag schalen-overbodige tijdstippen         | Hoe lang een knoop punt niet nodig moet zijn voordat deze in aanmerking komt voor omlaag omlaag schalen                  | 10 minuten    |
 | omlaag schalen-niet-lees bare tijd          | Hoe lang een ongelezeny-knoop punt niet nodig moet zijn voordat het in aanmerking komt voor omlaag schalen         | 20 minuten    |
-| schaal-down-gebruik-drempel waarde | Het niveau van het knooppunt gebruik, gedefinieerd als de som van aangevraagde resources gedeeld door capaciteit, waaronder een knoop punt kan worden overwogen voor omlaag schalen | 0,5 |
+| schaal-down-gebruik-drempel waarde | Het niveau van het knooppunt gebruik, gedefinieerd als de som van aangevraagde resources gedeeld door capaciteit, waaronder een knoop punt kan worden overwogen voor omlaag schalen | 0.5 |
 | Max-correct beëindigen-SEC     | Het maximum aantal seconden dat de automatische schaal functie van het cluster wacht op beëindiging van pod wanneer u een knoop punt omlaag wilt schalen. | 600 seconden   |
-| saldo-vergelijkbaar-node-groups | Vergelijk bare knooppunt groepen detecteren en het aantal knoop punten ertussen verdelen | onjuist |
+| saldo-vergelijkbaar-node-groups | Vergelijk bare knooppunt groepen detecteren en het aantal knoop punten ertussen verdelen | false |
 
 > [!IMPORTANT]
 > Het profiel van de cluster automatisch schalen is van invloed op alle knooppunt groepen die gebruikmaken van de automatische cluster schaal. U kunt geen profiel voor automatische schaal aanpassing instellen per knooppunt groep.
-
-### <a name="install-aks-preview-cli-extension"></a>De CLI-extensie aks-preview installeren
-
-Als u het profiel voor de instellingen van de cluster voor automatisch schalen wilt instellen, hebt u de *AKS-preview cli-* extensie versie 0.4.30 of hoger nodig. Installeer de Azure CLI *-extensie AKS-preview* met behulp van de opdracht [AZ extension add][az-extension-add] en controleer vervolgens of er beschik bare updates zijn met behulp van de opdracht [AZ extension update][az-extension-update] :
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
+>
+> Voor het profiel voor automatisch schalen van cluster is versie *2.11.1* of hoger van de Azure-cli vereist. Zie [Azure CLI installeren][azure-cli-install] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ### <a name="set-the-cluster-autoscaler-profile-on-an-existing-aks-cluster"></a>Het profiel van de cluster automatisch schalen instellen op een bestaand AKS-cluster
 

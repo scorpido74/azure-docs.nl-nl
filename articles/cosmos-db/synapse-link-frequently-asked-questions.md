@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: 6f34b36d495a2ef326727629d090a0da5260ce10
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: ebd3893f6443edda276bfb3b1e39ae0fe093acb2
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014559"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104101"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Veelgestelde vragen over Azure Synapse Link voor Azure Cosmos DB
 
@@ -97,6 +97,10 @@ De gegevens in analytische opslag zijn gepartitioneerd op basis van de horizonta
 ### <a name="can-i-customize-or-override-the-way-transactional-data-is-transformed-into-columnar-format-in-the-analytical-store"></a>Kan ik de manier aanpassen of negeren waarop transactionele gegevens worden omgezet in de kolom indeling in de analytische opslag?
 
 Op dit moment kunt u de gegevens items niet transformeren wanneer ze automatisch worden door gegeven vanuit het transactionele archief naar de analytische opslag. Als u scenario's hebt geblokkeerd door deze beperking, moet u een e-mail sturen naar het [Azure Cosmos DB team](mailto:cosmosdbsynapselink@microsoft.com).
+
+### <a name="is-analytical-store-supported-by-terraform"></a>Wordt het analytische archief ondersteund door terraform?
+
+Momenteel terraform biedt geen ondersteuning voor analytische-opslag containers. Raadpleeg [terraform github-problemen](https://github.com/hashicorp/terraform/issues) voor meer informatie.
 
 ## <a name="analytical-time-to-live-ttl"></a>Analytische time to Live (TTL)
 

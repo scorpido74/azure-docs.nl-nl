@@ -1,32 +1,37 @@
 ---
-title: Indexeer functies die beveiligde bronnen openen via persoonlijke eind punten
+title: Indexeer verbindingen via een persoonlijk eind punt
 titleSuffix: Azure Cognitive Search
-description: Instructies voor het instellen van persoonlijke eind punten voor Indexeer functies om te communiceren met beveiligde bronnen
+description: Indexeer verbindingen configureren voor toegang tot inhoud van andere Azure-resources die zijn beveiligd via een persoonlijk eind punt.
 manager: nitinme
 author: arv100kri
 ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/07/2020
-ms.openlocfilehash: 9ffd7d2513e87f818001d7ccf96212a4dbef7ac2
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.date: 10/14/2020
+ms.openlocfilehash: ef8b3865b0914c0d06ff69d20396f1ff368642bc
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950139"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102724"
 ---
-# <a name="accessing-secure-resources-via-private-endpoints"></a>Toegang tot beveiligde resources via persoonlijke eind punten
+# <a name="indexer-connections-through-a-private-endpoint-azure-cognitive-search"></a>Indexeer verbindingen via een persoonlijk eind punt (Azure Cognitive Search)
 
-Azure-resources (zoals opslag accounts die worden gebruikt als gegevens bronnen) kunnen zodanig worden geconfigureerd dat ze alleen kunnen worden geopend vanuit een specifieke lijst met virtuele netwerken. Ze kunnen ook worden geconfigureerd om toegang tot het ' open bare netwerk ' niet toe te staan.
-Klanten kunnen Azure Cognitive Search aanvragen voor het maken van een VPN-verbinding (uitgaand) voor een [privé-eind punt](../private-link/private-endpoint-overview.md) om veilig toegang te krijgen tot gegevens van dergelijke gegevens bronnen via Indexeer functies.
+Veel Azure-resources (zoals Azure Storage-accounts) kunnen worden geconfigureerd om verbindingen te accepteren van een specifieke lijst met virtuele netwerken en externe verbindingen te weigeren die afkomstig zijn van een openbaar netwerk. Als u een Indexeer functie gebruikt om gegevens in azure Cognitive Search te indexeren en uw gegevens bron zich op een particulier netwerk bevindt, kunt u een (uitgaand) [persoonlijk eind punt verbinding](../private-link/private-endpoint-overview.md) maken om de gegevens te bereiken.
+
+Voor het gebruik van deze indexer-verbindings methode zijn er twee vereisten:
+
++ De Azure-resource die inhoud of code levert, moet eerder zijn geregistreerd bij de [Azure Private Link-service](https://azure.microsoft.com/services/private-link/).
+
++ Azure Cognitive Search-service moet Basic of hoger zijn (niet beschikbaar in de gratis laag). Voor Indexeer functies met een vaardig heden moet de zoek service bovendien S2 of hoger zijn. Zie [service limieten](search-limits-quotas-capacity.md#shared-private-link-resource-limits)voor meer informatie.
 
 ## <a name="shared-private-link-resources-management-apis"></a>Beheer-Api's voor gedeelde persoonlijke koppelings bronnen
 
-Persoonlijke eind punten die worden gemaakt door Azure Cognitive Search op verzoek van de klant, om toegang te krijgen tot "beveiligde" bronnen worden *gedeelde persoonlijke koppelings bronnen*genoemd. De klant is toegang tot een resource (zoals een opslag account) die op de [Azure Private Link-service](https://azure.microsoft.com/services/private-link/)is ingeschakeld.
+Privé-eind punten van beveiligde resources die zijn gemaakt via Azure Cognitive Search Api's worden *gedeelde persoonlijke koppelings resources* genoemd omdat u toegang hebt tot een resource (zoals een opslag account) die aan de [Azure Private Link-service](https://azure.microsoft.com/services/private-link/)is ingeschakeld.
 
-Azure Cognitive Search biedt via de API voor zoek beheer, de mogelijkheid om [gedeelde persoonlijke koppelings bronnen te maken of](/rest/api/searchmanagement/sharedprivatelinkresources/createorupdate)bij te werken. U gebruikt deze API samen met andere beheer-Api's voor *gedeelde persoonlijke koppelings bronnen* voor het configureren van toegang tot een beveiligde resource vanuit een Azure Cognitive Search indexer.
+Azure Cognitive Search biedt via de beheer REST API een [CreateOrUpdate](/rest/api/searchmanagement/sharedprivatelinkresources/createorupdate) bewerking die u kunt gebruiken om toegang te configureren vanaf een Azure Cognitive Search indexer.
 
-Privé-eindpunt verbindingen met een aantal resources kunnen alleen worden gemaakt via de preview-versie van de API voor zoek beheer ( `2020-08-01-Preview` ), aangeduid met de tag preview in de volgende tabel. Resources zonder de tag preview kunnen worden gemaakt via zowel de preview-API als de GA-API ( `2020-08-01` )
+Privé-eindpunt verbindingen met sommige resources kunnen alleen worden gemaakt met de preview-versie van de API voor zoek beheer ( `2020-08-01-Preview` of hoger), aangeduid met de tag preview in de volgende tabel. Resources zonder de tag preview kunnen worden gemaakt met behulp van de preview-versie of de algemeen beschik bare API ( `2020-08-01` of hoger).
 
 Hieronder ziet u de lijst met Azure-resources waarmee uitgaande privé-eind punten kunnen worden gemaakt op basis van Azure Cognitive Search. `groupId` in de onderstaande tabel moet exact worden gebruikt (hoofdletter gevoelig) in de API om een gedeelde persoonlijke koppelings bron te maken.
 
@@ -40,23 +45,23 @@ Hieronder ziet u de lijst met Azure-resources waarmee uitgaande privé-eind punt
 | Azure Key Vault | `vault` |
 | Azure Functions (preview-versie) | `sites` |
 
-De lijst met Azure-resources waarvoor uitgaande particuliere endpoint-verbindingen worden ondersteund, kan ook worden opgevraagd via de [API List ondersteunde](/rest/api/searchmanagement/privatelinkresources/listsupported).
+De lijst met Azure-resources waarvoor uitgaande particuliere endpoint-verbindingen worden ondersteund, kan ook worden opgevraagd met de [API List ondersteunde](/rest/api/searchmanagement/privatelinkresources/listsupported).
 
-Voor de doel einden van deze hand leiding worden een combi natie van [ARMClient](https://github.com/projectkudu/ARMClient) en [postman](https://www.postman.com/) gebruikt om de rest API-aanroepen te demonstreren.
+In dit artikel wordt een combi natie van [ARMClient](https://github.com/projectkudu/ARMClient) en [postman](https://www.postman.com/) gebruikt om de rest API-aanroepen te demonstreren.
 
 > [!NOTE]
-> In deze hand leiding wordt ervan uitgegaan dat de naam van de zoek service __Contoso-Search__ is die bestaat in de resource groep __Contoso__ van een abonnement met abonnements-id __00000000-0000-0000-0000-000000000000__. De resource-ID van deze zoek service wordt `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search`
+> In dit artikel wordt ervan uitgegaan dat de naam van de zoek service __Contoso-Search__ is die bestaat in de resource groep __Contoso__ van een abonnement met abonnements-id __00000000-0000-0000-0000-000000000000__. De resource-ID van deze zoek service wordt `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search`
 
-De rest van de hand leiding laat zien hoe de service __Contoso-Search__ kan worden geconfigureerd zodat de bijbehorende Indexeer functies toegang hebben tot gegevens uit het beveiligde-opslag account `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Storage/storageAccounts/contoso-storage`
+In de rest van de voor beelden ziet u hoe de service __Contoso-Search__ kan worden geconfigureerd zodat de bijbehorende Indexeer functies toegang hebben tot gegevens uit het beveiligde-opslag account `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Storage/storageAccounts/contoso-storage`
 
 ## <a name="securing-your-storage-account"></a>Uw opslag account beveiligen
 
-Configureer het opslag account zodanig [dat alleen toegang is toegestaan vanuit specifieke subnetten](../storage/common/storage-network-security.md#grant-access-from-a-virtual-network). Als u via de Azure Portal deze optie inschakelt en de set leeg laat, betekent dit dat er geen verkeer van een virtueel netwerk is toegestaan.
+Configureer het opslag account zodanig [dat alleen toegang is toegestaan vanuit specifieke subnetten](../storage/common/storage-network-security.md#grant-access-from-a-virtual-network). Als u in het Azure Portal deze optie inschakelt en de set leeg laat, betekent dit dat er geen verkeer van een virtueel netwerk is toegestaan.
 
    ![Toegang tot virtueel netwerk](media\search-indexer-howto-secure-access\storage-firewall-noaccess.png "Toegang tot virtueel netwerk")
 
 > [!NOTE]
-> De [aanpak van de vertrouwde micro soft-service](../storage/common/storage-network-security.md#trusted-microsoft-services) kan worden gebruikt om virtuele netwerk-of IP-beperkingen voor een dergelijk opslag account over te slaan en kan de zoek service gebruiken om toegang te krijgen tot gegevens in het opslag account zoals beschreven in de [hand leiding](search-indexer-howto-access-trusted-service-exception.md). Wanneer u deze benadering echter gebruikt voor de communicatie tussen Azure Cognitive Search en het opslag account wordt uitgevoerd via het open bare IP-adres van het opslag account, via het beveiligde micro soft backbone-netwerk.
+> De [aanpak van de vertrouwde micro soft-service](../storage/common/storage-network-security.md#trusted-microsoft-services) kan worden gebruikt om virtuele netwerk-of IP-beperkingen voor een dergelijk opslag account over te slaan en de zoek service toegang te geven tot gegevens in het opslag account, zoals beschreven in de [Indexeer functie toegang tot Azure Storage met behulp van de uitzonde ring voor vertrouwde services ](search-indexer-howto-access-trusted-service-exception.md). Wanneer u deze benadering echter gebruikt voor de communicatie tussen Azure Cognitive Search en het opslag account wordt uitgevoerd via het open bare IP-adres van het opslag account, via het beveiligde micro soft backbone-netwerk.
 
 ## <a name="step-1-create-a-shared-private-link-resource-to-the-storage-account"></a>Stap 1: een gedeelde persoonlijke koppelings bron maken naar het opslag account
 
@@ -117,7 +122,7 @@ Nadat de verbindings aanvraag van het particuliere eind punt is goedgekeurd, bet
 
 ## <a name="step-2b-query-the-status-of-the-shared-private-link-resource"></a>Stap 2b: de status van de gedeelde persoonlijke koppelings resource opvragen
 
- Als u wilt controleren of de resource van de gedeelde persoonlijke koppeling na goed keuring is bijgewerkt, haalt u de status op via de [Get-API](/rest/api/searchmanagement/sharedprivatelinkresources/get).
+ Als u wilt controleren of de resource van de gedeelde persoonlijke koppeling na goed keuring is bijgewerkt, haalt u de status op met behulp van de [Get-API](/rest/api/searchmanagement/sharedprivatelinkresources/get).
 
 `armclient GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search/sharedPrivateLinkResources/blob-pe?api-version=2020-08-01`
 
@@ -143,15 +148,15 @@ Als de `properties.provisioningState` resource is `Succeeded` en `properties.sta
 > [!NOTE]
 > Deze stap kan worden uitgevoerd, zelfs voordat de verbinding met een particulier eind punt wordt goedgekeurd. Totdat de verbinding met een particulier eind punt is goedgekeurd, wordt een Indexeer functie die probeert te communiceren met een beveiligde bron (zoals het opslag account), beëindigd in een tijdelijke fout status. Nieuwe Indexeer functies kunnen niet worden gemaakt. Zodra de verbinding met een particulier eind punt is goedgekeurd, hebben Indexeer functies toegang tot het privé-opslag account.
 
-1. [Een gegevens bron maken](/rest/api/searchservice/create-data-source) die verwijst naar het beveiligde-opslag account en een geschikte container in het opslag account. Hieronder wordt deze aanvraag weer gegeven via postman.
+1. [Een gegevens bron maken](/rest/api/searchservice/create-data-source) die verwijst naar het beveiligde-opslag account en een geschikte container in het opslag account. Hieronder ziet u deze aanvraag in postman.
 ![Gegevens bron maken](media\search-indexer-howto-secure-access\create-ds.png "Gegevens bron maken")
 
-2. Maak op dezelfde manier [een index](/rest/api/searchservice/create-index) en [Maak optioneel een vaardig heden](/rest/api/searchservice/create-skillset) met behulp van de rest API.
+1. Maak op dezelfde manier [een index](/rest/api/searchservice/create-index) en [Maak optioneel een vaardig heden](/rest/api/searchservice/create-skillset) met behulp van de rest API.
 
-3. [Een Indexeer functie maken](/rest/api/searchservice/create-indexer) die verwijst naar de hierboven gemaakte gegevens bron, index en vaardig heden. Daarnaast dwingt u de Indexeer functie uit in de persoonlijke uitvoerings omgeving door de configuratie-eigenschap van de Indexeer functie in `executionEnvironment` te stellen op `"Private"` .
+1. [Een Indexeer functie maken](/rest/api/searchservice/create-indexer) die verwijst naar de hierboven gemaakte gegevens bron, index en vaardig heden. Daarnaast dwingt u de Indexeer functie uit in de persoonlijke uitvoerings omgeving door de configuratie-eigenschap van de Indexeer functie in `executionEnvironment` te stellen op `"Private"` .
 ![Indexeer functie maken](media\search-indexer-howto-secure-access\create-idr.png "Indexeer functie maken")
 
-De Indexeer functie moet worden gemaakt en moet de voortgang indexeren vanuit het opslag account via de verbinding met het persoonlijke eind punt. De status van de Indexeer functie kan worden bewaakt via de [API voor de Indexeer functie](/rest/api/searchservice/get-indexer-status).
+De Indexeer functie moet worden gemaakt en moet de voortgang indexeren vanuit het opslag account via de verbinding met het persoonlijke eind punt. De status van de Indexeer functie kan worden bewaakt met behulp van de API voor de [Indexeer functie](/rest/api/searchservice/get-indexer-status).
 
 > [!NOTE]
 > Als u al bestaande Indexeer functies hebt, kunt u deze gewoon bijwerken via de [put-API](/rest/api/searchservice/create-indexer) om de `executionEnvironment` in te stellen op `"Private"` .

@@ -6,15 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/09/2020
-ms.openlocfilehash: 01c0b6f280b8179760c6ecc55fd7feca3ddf2080
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 695b0b0ac06e63912ca0a471be3d96c148458c29
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90039057"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104237"
 ---
 # <a name="standard-columns-in-azure-monitor-logs"></a>Standaard kolommen in Azure Monitor-logboeken
-Gegevens in Azure Monitor logboeken worden [opgeslagen als een set records in een log Analytics werk ruimte of Application Insights toepassing](../log-query/logs-structure.md), elk met een bepaald gegevens type met een unieke set kolommen. Veel gegevens typen hebben standaard kolommen die gemeen schappelijk zijn voor meerdere typen. In dit artikel worden deze kolommen beschreven en vindt u voor beelden van hoe u deze kunt gebruiken in query's.
+Gegevens in Azure Monitor logboeken worden [opgeslagen als een set records in een log Analytics werk ruimte of Application Insights toepassing](./data-platform-logs.md), elk met een bepaald gegevens type met een unieke set kolommen. Veel gegevens typen hebben standaard kolommen die gemeen schappelijk zijn voor meerdere typen. In dit artikel worden deze kolommen beschreven en vindt u voor beelden van hoe u deze kunt gebruiken in query's.
 
 Op werk ruimte gebaseerde toepassingen in Application Insights slaan hun gegevens op in een Log Analytics-werk ruimte en gebruiken dezelfde standaard kolommen als andere tabellen in de werk ruimte. Klassieke toepassingen slaan hun gegevens afzonderlijk op en hebben verschillende standaard kolommen zoals beschreven in dit artikel.
 
@@ -212,4 +212,3 @@ union withsource = tt *
 - Lees meer over hoe [Azure monitor logboek gegevens worden opgeslagen](../log-query/log-query-overview.md).
 - Lees een les over het [schrijven van logboek query's](../log-query/get-started-queries.md).
 - Maak een les over het [koppelen van tabellen in logboek query's](../log-query/joins.md).
-

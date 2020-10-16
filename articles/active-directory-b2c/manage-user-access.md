@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/24/2018
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 084284037b02ce02d1e46a61a69d6e60cc89a36b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51a66d74750afa6c46dba7fa442477e85effb2d6
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85387725"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102048"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Gebruikers toegang beheren in Azure Active Directory B2C
 
@@ -114,7 +114,7 @@ In de volgende afbeelding ziet u de aanbevolen gebruikers stroom:
 
 ![Diagram van een stroom diagram met de aanbevolen stroom voor acceptatie gebruikers](./media/manage-user-access/user-flow.png)
 
-Hier volgt een voor beeld van een datum/tijd op basis van het gebruik van een toestemming in een claim:
+Hier volgt een voor beeld van een gebruiks instemming op basis van datum in een claim. Als de `extension_termsOfUseConsentDateTime` claim ouder is dan `2025-01-15T00:00:00` , dwingt u een nieuwe acceptatie af door de `termsOfUseConsentRequired` Booleaanse claim te controleren en een zelfbevestigend scherm weer te geven. 
 
 ```xml
 <ClaimsTransformations>
@@ -128,7 +128,7 @@ Hier volgt een voor beeld van een datum/tijd op basis van het gebruik van een to
       <InputClaim ClaimTypeReferenceId="extension_termsOfUseConsentDateTime" TransformationClaimType="termsOfUseConsentDateTime" />
     </InputClaims>
     <InputParameters>
-      <InputParameter Id="termsOfUseTextUpdateDateTime" DataType="dateTime" Value="2098-01-30T23:03:45" />
+      <InputParameter Id="termsOfUseTextUpdateDateTime" DataType="dateTime" Value="2025-01-15T00:00:00" />
     </InputParameters>
     <OutputClaims>
       <OutputClaim ClaimTypeReferenceId="termsOfUseConsentRequired" TransformationClaimType="result" />
@@ -137,7 +137,7 @@ Hier volgt een voor beeld van een datum/tijd op basis van het gebruik van een to
 </ClaimsTransformations>
 ```
 
-Hier volgt een voor beeld van een gebruiksrecht overeenkomst in een claim:
+Hier volgt een voor beeld van een op versies gebaseerde gebruiksrecht overeenkomst in een claim. Als de `extension_termsOfUseConsentVersion` claim niet gelijk is aan `V1` , dwingt u een nieuwe acceptatie af door de `termsOfUseConsentRequired` Booleaanse claim te controleren en een zelfbevestigend scherm weer te geven.
 
 ```xml
 <ClaimsTransformations>

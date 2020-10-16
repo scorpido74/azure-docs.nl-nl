@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 92fd681d05b8e5bd7cf07ecd735acd87698935ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de98e25cf5703a43282e551a0eda20d7767c6ce8
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85985786"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103625"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-cli"></a>Aan de slag met Azure Data Lake Storage Gen1 met behulp van Azure CLI
 
@@ -26,7 +26,7 @@ ms.locfileid: "85985786"
 
 Informatie over het gebruik van de Azure CLI om een Azure Data Lake Storage Gen1 account te maken en basis bewerkingen uit te voeren, zoals het maken van mappen, uploaden en downloaden van gegevens bestanden, verwijderen van uw account enzovoort. Zie [overzicht van data Lake Storage gen1](data-lake-store-overview.md)voor meer informatie over data Lake Storage gen1.
 
-Azure CLI is de nieuwe opdrachtregel van Azure voor het beheren van Azure-resources. Deze kan worden gebruikt in Mac OS, Linux en Windows. Zie [overzicht van Azure cli](https://docs.microsoft.com/cli/azure)voor meer informatie. U kunt ook de [Naslag informatie over Azure data Lake Storage GEN1 cli](https://docs.microsoft.com/cli/azure/dls) bekijken voor een volledige lijst met opdrachten en syntaxis.
+Azure CLI is de nieuwe opdrachtregel van Azure voor het beheren van Azure-resources. Deze kan worden gebruikt in Mac OS, Linux en Windows. Zie [overzicht van Azure cli](/cli/azure)voor meer informatie. U kunt ook de [Naslag informatie over Azure data Lake Storage GEN1 cli](/cli/azure/dls) bekijken voor een volledige lijst met opdrachten en syntaxis.
 
 
 ## <a name="prerequisites"></a>Vereisten
@@ -34,11 +34,11 @@ Voordat u dit artikel gaat lezen, moet u beschikken over het volgende:
 
 * **Een Azure-abonnement**. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Azure cli** : Zie [Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli) voor instructies.
+* **Azure cli** : Zie [Azure cli installeren](/cli/azure/install-azure-cli) voor instructies.
 
 ## <a name="authentication"></a>Verificatie
 
-In dit artikel wordt gebruikgemaakt van een eenvoudigere verificatie methode met Data Lake Storage Gen1 waarbij u zich aanmeldt als gebruiker van een eind gebruiker. Het toegangs niveau voor het Data Lake Storage Gen1-account en het bestands systeem wordt vervolgens bepaald door het toegangs niveau van de aangemelde gebruiker. Er zijn echter ook andere benaderingen om te verifiëren bij Data Lake Storage Gen1, die verificatie door **eind gebruikers** of **service-naar-service-verificatie**zijn. Zie [Verificatie door eindgebruikers](data-lake-store-end-user-authenticate-using-active-directory.md) of [Service-to-serviceverificatie](data-lake-store-authenticate-using-active-directory.md) voor instructies en meer informatie over verificatie.
+In dit artikel wordt gebruikgemaakt van een eenvoudigere verificatie methode met Data Lake Storage Gen1 waarbij u zich aanmeldt als gebruiker van een eind gebruiker. Het toegangs niveau voor het Data Lake Storage Gen1-account en het bestands systeem wordt vervolgens bepaald door het toegangs niveau van de aangemelde gebruiker. Er zijn echter ook andere benaderingen om te verifiëren bij Data Lake Storage Gen1, die verificatie door **eind gebruikers** of **service-naar-service-verificatie**zijn. Zie [Verificatie door eindgebruikers](data-lake-store-end-user-authenticate-using-active-directory.md) of [Service-to-serviceverificatie](./data-lake-store-service-to-service-authenticate-using-active-directory.md) voor instructies en meer informatie over verificatie.
 
 
 ## <a name="log-in-to-your-azure-subscription"></a>Aanmelden bij uw Azure-abonnement

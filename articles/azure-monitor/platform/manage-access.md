@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: cff2e918c7b67f6d3bccb9b56366cbf034ed1bb5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7acd287964d25cc7e98c11ec1986c73d8ae265da
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89300099"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104135"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Toegang tot logboekgegevens en werkruimten beheren in Azure Monitor
 
@@ -243,7 +243,7 @@ Zie [definiëren per-tabel toegangs beheer](#table-level-rbac) hieronder als u e
 
 Met **RBAC op tabel niveau** kunt u naast de andere machtigingen nauw keurigere controle definiëren voor gegevens in een log Analytics-werk ruimte. Met dit besturings element kunt u specifieke gegevens typen definiëren die alleen toegankelijk zijn voor een specifieke groep gebruikers.
 
-U implementeert Table Access Control met [aangepaste Azure-rollen](../../role-based-access-control/custom-roles.md) om toegang te verlenen tot specifieke [tabellen](../log-query/logs-structure.md) in de werk ruimte. Deze rollen worden toegepast op werk ruimten met [toegangs beheer modi](design-logs-deployment.md#access-control-mode) werk ruimte-context of resource-context, ongeacht de [toegangs modus](design-logs-deployment.md#access-mode)van de gebruiker.
+U implementeert Table Access Control met [aangepaste Azure-rollen](../../role-based-access-control/custom-roles.md) om toegang te verlenen tot specifieke [tabellen](./data-platform-logs.md) in de werk ruimte. Deze rollen worden toegepast op werk ruimten met [toegangs beheer modi](design-logs-deployment.md#access-control-mode) werk ruimte-context of resource-context, ongeacht de [toegangs modus](design-logs-deployment.md#access-mode)van de gebruiker.
 
 Maak een [aangepaste rol](../../role-based-access-control/custom-roles.md) met de volgende acties om toegang te definiëren tot Table Access Control.
 

@@ -1,5 +1,5 @@
 ---
-title: API-connectors toevoegen aan gebruikers stromen
+title: API-connectors toevoegen aan gebruikers stromen (preview-versie)
 description: Een API-connector configureren voor gebruik in een gebruikers stroom.
 services: active-directory-b2c
 ms.service: active-directory
@@ -10,20 +10,20 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
-ms.openlocfilehash: 824b8f386e6bf822444450305e603e6068a34c5e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9e300a0e6f1b847c49ced7ded94db8e24016b32
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91854355"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102269"
 ---
-# <a name="add-an-api-connector-to-a-sign-up-user-flow"></a>Een API-connector toevoegen aan een registratie gebruikers stroom
+# <a name="add-an-api-connector-to-a-sign-up-user-flow-preview"></a>Een API-connector toevoegen aan een registratie gebruikers stroom (preview-versie)
 
 Als u een [API-connector](api-connectors-overview.md)wilt gebruiken, maakt u eerst de API-connector en schakelt u deze in in een gebruikers stroom.
 
 ## <a name="create-an-api-connector"></a>Een API-connector maken
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Onder **Azure-Services**selecteert u **Azure AD B2C**.
 4. Selecteer **API-connectors (preview)** en selecteer vervolgens **nieuwe API-connector**.
 
@@ -86,7 +86,7 @@ Daarnaast wordt de **gebruikers interface land instellingen (' ui_locales ')** s
 
 Volg deze stappen om een API-connector toe te voegen aan een registratie gebruikers stroom.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Onder **Azure-Services**selecteert u **Azure AD B2C**.
 4. Selecteer **gebruikers stromen**en selecteer vervolgens de gebruikers stroom waaraan u de API-connector wilt toevoegen.
 5. Selecteer **API-connectors**en selecteer vervolgens de API-eind punten die u wilt aanroepen met de volgende stappen in de gebruikers stroom:
@@ -238,8 +238,8 @@ Content-type: application/json
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | versie                                            | Tekenreeks            | Ja      | De versie van de API.                                                                                                                                                                                                                                                                |
 | actie                                             | Tekenreeks            | Ja      | Waarde moet zijn `Continue` .                                                                                                                                                                                                                                                              |
-| \<builtInUserAttribute>                            | \<attribute-type> | Nee       | Waarden kunnen worden opgeslagen in de map als ze zijn geselecteerd als een **claim om te ontvangen** in de API-connector configuratie en **gebruikers kenmerken** voor een gebruikers stroom. Waarden kunnen worden geretourneerd in het token als deze zijn geselecteerd als een **toepassings claim**.                                              |
-| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Nee       | De geretourneerde claim hoeft niet te bevatten `_<extensions-app-id>_` . Waarden worden opgeslagen in de map als deze zijn geselecteerd als een **claim om te ontvangen** in de API-connector configuratie en het **gebruikers kenmerk** voor een gebruikers stroom. Aangepaste kenmerken kunnen niet terug worden verzonden in het token. |
+| \<builtInUserAttribute>                            | \<attribute-type> | No       | Geretourneerde waarden kunnen waarden overschrijven die zijn verzameld van een gebruiker. Ze kunnen ook worden geretourneerd in het token als deze als een **toepassings claim**wordt geselecteerd.                                              |
+| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | No       | De claim hoeft niet te bevatten `_<extensions-app-id>_` . Geretourneerde waarden kunnen waarden overschrijven die zijn verzameld van een gebruiker. Ze kunnen ook worden geretourneerd in het token als deze als een **toepassings claim**wordt geselecteerd.  |
 
 ### <a name="example-of-a-blocking-response"></a>Voor beeld van een blokkerend antwoord
 
@@ -267,6 +267,8 @@ Content-type: application/json
 
 ### <a name="example-of-a-validation-error-response"></a>Voor beeld van een validatie-fout bericht
 
+
+
 ```http
 HTTP/1.1 400 Bad Request
 Content-type: application/json
@@ -283,8 +285,10 @@ Content-type: application/json
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
 | versie     | Tekenreeks  | Ja      | De versie van de API.                                                    |
 | actie      | Tekenreeks  | Ja      | Waarde moet zijn `ValidationError` .                                           |
-| status      | Geheel getal | Ja      | Dit moet een waarde zijn `400` voor een ValidationError-antwoord.                        |
+| status      | Geheel getal | Yes      | Dit moet een waarde zijn `400` voor een ValidationError-antwoord.                        |
 | userMessage | Tekenreeks  | Ja      | Bericht dat wordt weergegeven aan de gebruiker.                                            |
+
+*Opmerking:* De HTTP-status code moet naast de status waarde in de hoofd tekst van het antwoord ' 400 ' zijn.
 
 **Eind gebruikers ervaring met validatie-fout bericht**
 

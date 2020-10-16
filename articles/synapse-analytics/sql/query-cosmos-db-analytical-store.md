@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0cc2c04208c4800a883848896a0f1659e8bf72e9
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: d0f8fa313687b3bd45bd95f1c9ea864567821775
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097249"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102354"
 ---
 # <a name="query-azure-cosmos-db-data-using-sql-serverless-in-azure-synapse-link-preview"></a>Query's uitvoeren op Azure Cosmos DB gegevens met behulp van SQL serverloze koppeling in azure Synapse (preview)
 
@@ -266,8 +266,10 @@ In de volgende tabel vindt u een lijst met mogelijke fouten en acties voor het o
 | --- | --- |
 | Syntaxis fouten:<br/> -Onjuiste syntaxis bij OPENROWSET<br/> - `...` is geen herkende optie voor BULKSGEWIJZE OPENROWSET-provider.<br/> -Onjuiste syntaxis bij `...` | Mogelijke hoofd oorzaken<br/> -Niet ' CosmosDB ' gebruiken als eerste para meter,<br/> -Letterlijke teken reeks gebruiken in plaats van id in derde para meter,<br/> -Niet opgeven derde para meter (container naam) |
 | Er is een fout opgetreden in de CosmosDB-connection string | -Account, Data Base, sleutel is niet opgegeven <br/> -Er is een optie in connection string die niet wordt herkend.<br/> -Punt komma `;` wordt toegevoegd aan het einde van Connection String |
-| Het omzetten van het CosmosDB-pad is mislukt met de fout ' onjuiste account/database naam ' | De opgegeven account naam of database naam kan niet worden gevonden. |
-| Het omzetten van het pad naar de CosmosDB is mislukt met de fout ' het geheim ' onjuiste geheime waarde ' is null of leeg ' | De account sleutel is ongeldig of ontbreekt. |
+| Het omzetten van het CosmosDB-pad is mislukt met de fout ' onjuiste account naam ' of ' onjuiste database naam ' | De opgegeven account naam, database naam of container kan niet worden gevonden of de analyse opslag heeft geen o de opgegeven verzameling ingeschakeld|
+| Het omzetten van het CosmosDB-pad is mislukt met de fout ' onjuiste geheime waarde ' of ' geheim is null of leeg ' | De account sleutel is ongeldig of ontbreekt. |
+| Kolom `column name` van het type `type name` is niet compatibel met het externe gegevens type `type name` | Het opgegeven kolom Type in de `WITH` component komt niet overeen met het type in Cosmos DB container. Probeer het kolom type te wijzigen, omdat dit wordt beschreven in de sectie [Azure Cosmos DB aan de SQL-type toewijzingen](#azure-cosmos-db-to-sql-type-mappings) of het `VARCHAR` type gebruik. |
+| Kolom bevat `NULL` waarden in alle cellen. | Mogelijk verkeerde kolom naam of pad-expressie in `WITH` component. De kolom naam (of padexpressie na de kolom Type) in- `WITH` component moet overeenkomen met een eigenschaps naam in Cosmos DB verzameling. Vergelijking is **hoofdletter gevoelig**  (bijvoorbeeld `productCode` en `ProductCode` andere eigenschappen). |
 
 U kunt suggesties en problemen melden op de [pagina met feedback over Azure Synapse](https://feedback.azure.com/forums/307516-azure-synapse-analytics?category_id=387862).
 

@@ -3,12 +3,12 @@ title: Toegang tot een virtuele machine (weer gave student) in Azure Lab vanuit 
 description: Meer informatie over het openen van een virtuele machine (studenten weergave) in Azure Lab vanuit teams.
 ms.topic: article
 ms.date: 10/07/2020
-ms.openlocfilehash: 346f4bcd75356b0466b1eea46e1da74aa2c63784
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: c786a8b3fcee57cefb551a61087d4b49ee5e93c0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043442"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102405"
 ---
 # <a name="access-a-vm-student-view-in-azure-lab-from-teams"></a>Toegang tot een virtuele machine (weer gave student) in Azure Lab vanuit teams
 
@@ -16,7 +16,7 @@ Wanneer een lab in teams wordt gemaakt, kunnen gebruikers alle Vm's bekijken en 
 
 ## <a name="view-labs"></a>Labs weer geven
 
-Als het lab nog moet worden gepubliceerd of als een synchronisatie nog moet worden geactiveerd nadat deze aan het team zijn toegevoegd, wordt er een soort gelijke berichten weer gegeven voor de studenten. Als het lab nog moet worden gepubliceerd of als een synchronisatie nog moet worden geactiveerd nadat deze aan het team zijn toegevoegd, wordt er een soort gelijke berichten weer gegeven voor de team leden.
+Als het lab nog moet worden gepubliceerd of als een synchronisatie nog moet worden geactiveerd nadat deze aan het team zijn toegevoegd, wordt soort gelijke berichten weer gegeven voor de team leden.
 
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/how-to-access-vm-for-students-within-teams/lab.png" alt-text="Azure Lab Services Lab":::

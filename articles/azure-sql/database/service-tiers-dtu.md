@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.date: 10/07/2020
+ms.date: 10/15/2020
 ms.reviewer: ''
-ms.openlocfilehash: 8ed4edb8739758af057276bd21c4ad62bf9ab974
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ae5d5e488a7bbe0e80f5a8960be27fd3de8489a
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91848854"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102996"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Service-lagen in het op DTU gebaseerde aankoopmodel
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,7 +40,7 @@ Het kiezen van een servicelaag is voornamelijk afhankelijk van de bedrijfs conti
 |**SLA voor uptime**|99,99%|99,99%|99,99%|
 |**Maximale retentie van back-ups**|7 dagen|35 dagen|35 dagen|
 |**CPU**|Beperkt|Laag, gemiddeld, hoog|Gemiddeld, hoog|
-|**IOPS (benadering)**\* |1-5 IOPS per DTU| 1-5 IOPS per DTU | 25 IOPS per DTU|
+|**IOPS (benadering)**\* |1-4 IOPS per DTU| 1-4 IOPS per DTU | 25 IOPS per DTU|
 |**I/o-latentie (bij benadering)**|5 ms (lezen), 10 MS (schrijven)|5 ms (lezen), 10 MS (schrijven)|2 ms (lezen/schrijven)|
 |**Column Store-indexering** |N.v.t.|S3 en hoger|Ondersteund|
 |**OLTP in het geheugen**|N.v.t.|N.v.t.|Ondersteund|
@@ -73,7 +73,7 @@ Reken grootten worden uitgedrukt in termen van Dtu's (data base Trans Action uni
 
 ## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>EDTU-, opslag-en gegroepeerde database limieten voor elastische Pools
 
-|| **Basic** | **Standaard** | **Premium** |
+|| **Basic** | **Standard** | **Premium** |
 | :-- | --: | --: | --: |
 | **Maximale opslag grootte per data base**  | 2 GB | 1 TB | 1 TB |
 | **Maximale opslag grootte per groep** | 156 GB | 4 TB | 4 TB |
@@ -114,7 +114,7 @@ De grootte van de data base is gebaseerd op een ' schaal factor '. De schaal fac
 
 De werk belasting bestaat uit negen transactie typen, zoals wordt weer gegeven in de volgende tabel. Elke trans actie is ontworpen om een bepaalde set systeem kenmerken te markeren in de data base-engine en systeemhardware, met een hoog contrast van de andere trans acties. Deze aanpak maakt het gemakkelijker om de impact van verschillende onderdelen te beoordelen op de algehele prestaties. De trans actie ' read Heavy ' produceert bijvoorbeeld een groot aantal lees bewerkingen van de schijf.
 
-| Transactietype | Beschrijving |
+| Transactietype | Description |
 | --- | --- |
 | Lite lezen |UITGESCHAKELD in-Memory; alleen-lezen |
 | Medium lezen |UITGESCHAKELD voornamelijk in-Memory; alleen-lezen |
