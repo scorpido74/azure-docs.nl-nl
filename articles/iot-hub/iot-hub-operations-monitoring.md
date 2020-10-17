@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: nberdy
 ms.custom: amqp, devx-track-csharp
-ms.openlocfilehash: 9d9824be536ca657d9213a47898ad19b0c39d8b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 956a676709322860da7f08d032d370ed66f55b3f
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89022017"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92139327"
 ---
 # <a name="iot-hub-operations-monitoring-deprecated"></a>Bewaking van IoT Hub bewerkingen (afgeschaft)
 
@@ -191,7 +191,7 @@ In de categorie bericht routering worden fouten bijgehouden die optreden tijdens
 
 ## <a name="connect-to-the-monitoring-endpoint"></a>Verbinding maken met het bewakings eindpunt
 
-Het bewakings eindpunt van uw IoT-hub is een event hub-compatibel eind punt. U kunt elk mechanisme gebruiken dat werkt met Event Hubs om bewakings berichten te lezen van dit eind punt. In het volgende voor beeld wordt een eenvoudige lezer gemaakt die niet geschikt is voor een implementatie met hoge door voer. Zie voor meer informatie over het verwerken van Event Hubs-berichten de zelfstudie [Aan de slag met Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md).
+Het bewakings eindpunt van uw IoT-hub is een event hub-compatibel eind punt. U kunt elk mechanisme gebruiken dat werkt met Event Hubs om bewakings berichten te lezen van dit eind punt. In het volgende voor beeld wordt een eenvoudige lezer gemaakt die niet geschikt is voor een implementatie met hoge door voer. Zie voor meer informatie over het verwerken van Event Hubs-berichten de zelfstudie [Aan de slag met Event Hubs](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md).
 
 Als u verbinding wilt maken met het bewakings eindpunt, hebt u een connection string en de naam van het eind punt nodig. De volgende stappen laten zien hoe u de vereiste waarden kunt vinden in de portal:
 
@@ -271,4 +271,4 @@ Zie voor meer informatie over de mogelijkheden van IoT Hub:
 
 * [Ontwikkelaars handleiding IoT Hub](iot-hub-devguide.md)
 
-* [AI implementeren op Edge-apparaten met Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [AI implementeren op Edge-apparaten met Azure IoT Edge](../iot-edge/quickstart-linux.md)

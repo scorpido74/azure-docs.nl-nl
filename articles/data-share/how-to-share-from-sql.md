@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 10/02/2020
-ms.openlocfilehash: 3f243a1a8d4f4b3ee4688ac3942debee5282a9a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/15/2020
+ms.openlocfilehash: 1bf5966ab3e4bb62c2be302a7791cadad9761a70
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761920"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150382"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>Gegevens delen en ontvangen van Azure SQL Database en Azure Synapse Analytics
 
@@ -250,7 +250,7 @@ Wanneer u gegevens uit de SQL-bron deelt, wordt de volgende toewijzing gebruikt 
 | Date time offset |Date time offset |
 | Decimaal |Decimaal |
 | FILESTREAM-kenmerk (varbinary (max)) |Byte [] |
-| Float |Dubbel |
+| Drijvendekommagetal |Dubbel |
 | image |Byte [] |
 | int |Int32 |
 | money |Decimaal |
@@ -277,7 +277,23 @@ Wanneer u gegevens uit de SQL-bron deelt, wordt de volgende toewijzing gebruikt 
 > 1. Voor gegevens typen die worden toegewezen aan het type van de decimale waarde, wordt de moment opname met de precisie Maxi maal 28 ondersteund. Als u gegevens hebt die een grotere nauw keurigheid dan 28 vereisen, kunt u overwegen om te converteren naar een teken reeks. 
 > 1.  Als u gegevens deelt van Azure SQL database naar Azure Synapse Analytics, worden niet alle gegevens typen ondersteund. Raadpleeg de [tabel gegevens typen in Synapse SQL pool](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types) voor meer informatie. 
 
+## <a name="sql-always-encrypted-or-dynamic-data-masking"></a>SQL Always Encrypted of dynamische gegevens maskering
+Azure-gegevens share biedt momenteel geen ondersteuning voor Azure SQL-data bases met Always Encrypted geconfigureerd. 
+
+Voor SQL-bron tabellen met dynamische gegevens maskering worden gegevens gemaskeerd weer gegeven aan de kant van de ontvanger.
+
+## <a name="sql-snapshot-performance"></a>SQL-momentopname prestaties
+De prestaties van SQL-moment opnamen worden beïnvloed door een aantal factoren. Het wordt altijd aanbevolen uw eigen prestatie tests uit te voeren. Hieronder ziet u enkele voor beelden van factoren die invloed hebben op de prestaties.
+
+* Hardwareconfiguratie (bijvoorbeeld vCores, geheugen, DWU) van de bron-en doel-SQL-gegevens opslag. 
+* Gelijktijdige toegang tot de bron-en doel gegevens archieven. Als u meerdere tabellen en weer gaven uit hetzelfde SQL-gegevens archief deelt of meerdere tabellen en weer gaven in hetzelfde SQL-gegevens archief ontvangt, worden de prestaties beïnvloed.   
+* Locatie van bron-en doel gegevens archieven. 
+
+## <a name="troubleshoot-sql-snapshot-failure"></a>Problemen met SQL-momentopname fout oplossen
+De meest voorkomende oorzaak van het mislukken van de moment opname is dat de gegevens share geen machtiging heeft voor het bron-of doel gegevens archief. Als u de machtiging gegevens share wilt verlenen aan de bron-of doel-SQL-gegevens opslag, moet u het meegeleverde SQL-script uitvoeren wanneer u verbinding maakt met de SQL database met behulp van Azure Active Directory-verificatie. Raadpleeg [problemen met de moment opname oplossen](data-share-troubleshoot.md#snapshot-failed)voor het oplossen van een extra SQL-momentopname fout.
 
 ## <a name="next-steps"></a>Volgende stappen
-U hebt geleerd hoe u gegevens kunt delen en ontvangen van een opslag account met behulp van de Azure data share-service. Voor meer informatie over het delen van andere gegevens bronnen gaat u verder met [ondersteunde gegevens archieven](supported-data-stores.md).
+U hebt geleerd hoe u gegevens kunt delen en ontvangen van SQL-bronnen met behulp van de Azure data share-service. Voor meer informatie over het delen van andere gegevens bronnen gaat u verder met [ondersteunde gegevens archieven](supported-data-stores.md).
+
+
 

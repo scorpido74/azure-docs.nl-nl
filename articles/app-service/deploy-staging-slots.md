@@ -5,17 +5,17 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b12b85a2248d7709066ba3218327e0a5d52a0192
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef90603e8c8cdd66d43b9f88f6d128d8a472fd8a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962159"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150328"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Faseringsomgevingen in Azure App Service instellen
 <a name="Overview"></a>
 
-Wanneer u uw web-app, Web-app op Linux, mobiele back-end of API-app voor [Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714)implementeert, kunt u een afzonderlijke implementatie sleuf gebruiken in plaats van de standaard productie sleuf wanneer u in de laag **Standard**, **Premium**of **geïsoleerd** app service plan werkt. Implementatie sites zijn live apps met hun eigen hostnamen. Elementen voor app-inhoud en-configuraties kunnen worden omgewisseld tussen twee implementatie sleuven, met inbegrip van de productie site. 
+Wanneer u uw web-app, Web-app op Linux, mobiele back-end of API-app voor [Azure app service](./overview.md)implementeert, kunt u een afzonderlijke implementatie sleuf gebruiken in plaats van de standaard productie sleuf wanneer u in de laag **Standard**, **Premium**of **geïsoleerd** app service plan werkt. Implementatie sites zijn live apps met hun eigen hostnamen. Elementen voor app-inhoud en-configuraties kunnen worden omgewisseld tussen twee implementatie sleuven, met inbegrip van de productie site. 
 
 Het implementeren van uw toepassing in een niet-productie sleuf biedt de volgende voor delen:
 

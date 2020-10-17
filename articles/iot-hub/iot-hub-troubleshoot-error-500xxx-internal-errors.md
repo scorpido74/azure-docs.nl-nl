@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
-ms.openlocfilehash: 7f3f5177e084693c45bed1088a4e1d091be100ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f83ec4d09389d91c2dd427c9840885c0b829eafb
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84688905"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150305"
 ---
 # <a name="500xxx-internal-errors"></a>500xxx Internal errors
 
@@ -37,4 +37,4 @@ Er kunnen een aantal oorzaken zijn voor een 500xxx-fout melding. In alle gevalle
 
 ## <a name="solution"></a>Oplossing
 
-Als u 500xxx-fouten wilt verhelpen, geeft u een nieuwe poging vanaf het apparaat. Als u [nieuwe pogingen automatisch wilt beheren](./iot-hub-reliability-features-in-sdks.md#connection-and-retry), moet u ervoor zorgen dat u de meest recente versie van de [Azure IOT sdk's](./iot-hub-devguide-sdks.md)gebruikt. Zie [tijdelijke fout afhandeling](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults)voor Best Practice van tijdelijke fout afhandeling en nieuwe pogingen.  Als het probleem zich blijft voordoen, controleert u [resource Health](./iot-hub-monitor-resource-health.md#use-azure-resource-health) en de [status van Azure](https://status.azure.com/) om na te gaan of IOT hub een bekend probleem heeft. U kunt ook de [functie hand matige failover](./tutorial-manual-failover.md)gebruiken. Als er geen bekende problemen zijn en het probleem blijft bestaan, [neemt u contact op met de ondersteuning](https://azure.microsoft.com/support/options/) voor verdere onderzoek.
+Als u 500xxx-fouten wilt verhelpen, geeft u een nieuwe poging vanaf het apparaat. Als u [nieuwe pogingen automatisch wilt beheren](./iot-hub-reliability-features-in-sdks.md#connection-and-retry), moet u ervoor zorgen dat u de meest recente versie van de [Azure IOT sdk's](./iot-hub-devguide-sdks.md)gebruikt. Zie [tijdelijke fout afhandeling](/azure/architecture/best-practices/transient-faults)voor Best Practice van tijdelijke fout afhandeling en nieuwe pogingen.  Als het probleem zich blijft voordoen, controleert u [resource Health](./iot-hub-monitor-resource-health.md#use-azure-resource-health) en de [status van Azure](https://status.azure.com/) om na te gaan of IOT hub een bekend probleem heeft. U kunt ook de [functie hand matige failover](./tutorial-manual-failover.md)gebruiken. Als er geen bekende problemen zijn en het probleem blijft bestaan, [neemt u contact op met de ondersteuning](https://azure.microsoft.com/support/options/) voor verdere onderzoek.

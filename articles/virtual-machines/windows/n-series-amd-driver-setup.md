@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 74827e78017ad3540709fa0e671762a985976cda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ebae7359c7bd593cb2b63bbd69919330c6aa24f9
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86999000"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150754"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>AMD GPU-Stuur Programma's installeren op Vm's met N-serie waarop Windows wordt uitgevoerd
 
@@ -29,9 +29,9 @@ Zie [GPU Windows VM-grootten](../sizes-gpu.md?toc=/azure/virtual-machines/window
 
 ## <a name="supported-operating-systems-and-drivers"></a>Ondersteunde besturingssystemen en stuurprogramma’s
 
-| OS | Stuurprogramma |
+| Besturingssysteem | Stuurprogramma |
 | -------- |------------- |
-| Windows 10 Enter prise multi-session-build 1903 <br/><br/>Windows 10-build 1809<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [20. q 1.1](https://download.microsoft.com/download/3/8/9/3893407b-e8aa-4079-8592-735d7dd1c19a/Radeon-Pro-Software-for-Enterprise-GA.exe) (. exe) |
+| Windows 10 Enter prise multi-session-build 1903 <br/><br/>Windows 10-build 1809<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [20. K1. Hotfix](https://download.microsoft.com/download/d/e/f/def0fb44-15ab-4b83-959a-8094eb9d0dfe/AMD-Azure-NVv4-Driver-20Q1-Hotfix3.exe) (. exe) |
 
 
 ## <a name="driver-installation"></a>Installatie van Stuur Programma's
@@ -48,11 +48,11 @@ Zie [GPU Windows VM-grootten](../sizes-gpu.md?toc=/azure/virtual-machines/window
 
 U kunt de installatie van Stuur Programma's controleren in Apparaatbeheer. In het volgende voor beeld ziet u een geslaagde configuratie van de Radeon instinct MI25-kaart op een Azure NVv4-VM.
 <br />
-![Eigenschappen van GPU-stuur programma](./media/n-series-amd-driver-setup/device-manager.png)
+![Status GPU-apparaat](./media/n-series-amd-driver-setup/device-manager.png)
 
 U kunt Dxdiag gebruiken om de eigenschappen van de GPU-weer gave te controleren, inclusief de video-RAM. In het volgende voor beeld ziet u een 1/2-partitie van de Radeon instinct MI25-kaart op een Azure NVv4-VM.
 <br />
-![Eigenschappen van GPU-stuur programma](./media/n-series-amd-driver-setup/dxdiag-output-new.png)
+![GPU-eigenschappen](./media/n-series-amd-driver-setup/dxdiag-output-new.png)
 
 Als u Windows 10 build 1903 of hoger gebruikt, wordt in Dxdiag geen informatie weer gegeven op het tabblad weer geven. Gebruik de optie ' alle gegevens opslaan ' onderaan en in het uitvoer bestand worden de gegevens weer gegeven die betrekking hebben op AMD MI25 GPU.
 

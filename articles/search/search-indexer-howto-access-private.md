@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: ef8b3865b0914c0d06ff69d20396f1ff368642bc
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: bcacd6c2e1353c71d8e4e25c95ee2b563e7b3fba
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102724"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150422"
 ---
 # <a name="indexer-connections-through-a-private-endpoint-azure-cognitive-search"></a>Indexeer verbindingen via een persoonlijk eind punt (Azure Cognitive Search)
 
@@ -33,7 +33,7 @@ Azure Cognitive Search biedt via de beheer REST API een [CreateOrUpdate](/rest/a
 
 Privé-eindpunt verbindingen met sommige resources kunnen alleen worden gemaakt met de preview-versie van de API voor zoek beheer ( `2020-08-01-Preview` of hoger), aangeduid met de tag preview in de volgende tabel. Resources zonder de tag preview kunnen worden gemaakt met behulp van de preview-versie of de algemeen beschik bare API ( `2020-08-01` of hoger).
 
-Hieronder ziet u de lijst met Azure-resources waarmee uitgaande privé-eind punten kunnen worden gemaakt op basis van Azure Cognitive Search. `groupId` in de onderstaande tabel moet exact worden gebruikt (hoofdletter gevoelig) in de API om een gedeelde persoonlijke koppelings bron te maken.
+Hieronder ziet u de lijst met Azure-resources waarmee uitgaande privé-eind punten kunnen worden gemaakt op basis van Azure Cognitive Search. De `groupId` waarden in de onderstaande tabel moeten exact worden gebruikt als geschreven (hoofdletter gevoelig) in de API om een gedeelde persoonlijke koppelings bron te maken.
 
 | Azure-resource | Groeps-id |
 | --- | --- |
@@ -47,7 +47,7 @@ Hieronder ziet u de lijst met Azure-resources waarmee uitgaande privé-eind punt
 
 De lijst met Azure-resources waarvoor uitgaande particuliere endpoint-verbindingen worden ondersteund, kan ook worden opgevraagd met de [API List ondersteunde](/rest/api/searchmanagement/privatelinkresources/listsupported).
 
-In dit artikel wordt een combi natie van [ARMClient](https://github.com/projectkudu/ARMClient) en [postman](https://www.postman.com/) gebruikt om de rest API-aanroepen te demonstreren.
+In de rest van dit artikel wordt een combi natie van [ARMClient](https://github.com/projectkudu/ARMClient) en [postman](https://www.postman.com/) gebruikt om de rest API-aanroepen te demonstreren.
 
 > [!NOTE]
 > In dit artikel wordt ervan uitgegaan dat de naam van de zoek service __Contoso-Search__ is die bestaat in de resource groep __Contoso__ van een abonnement met abonnements-id __00000000-0000-0000-0000-000000000000__. De resource-ID van deze zoek service wordt `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search`

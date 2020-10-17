@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: d6c813dec3922334f7462b1226ea22371fd5f43b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e636a039302d2ea61c7135bff1fceb4763f25df
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68736290"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151450"
 ---
 # <a name="azure-data-catalog-terminology"></a>Azure Data Catalog terminologie
 
@@ -39,7 +39,7 @@ Structured meta data is de meta gegevens die worden geëxtraheerd uit een gegeve
 
 ## <a name="descriptive-metadata"></a>Beschrijvende meta gegevens
 
-Beschrijvende meta gegevens zijn meta gegevens waarmee het doel of de bedoeling van een gegevensasset wordt beschreven. Meestal worden beschrijvende meta gegevens toegevoegd door catalogus gebruikers met behulp van de Azure Data Catalog Portal, maar ze kunnen ook worden geëxtraheerd uit de gegevens bron tijdens de registratie. Het hulp programma voor het registreren van Azure Data Catalog haalt bijvoorbeeld beschrijvingen op uit de eigenschap Description in SQL Server Analysis Services en SQL Server Reporting Services, en van de [uitgebreide eigenschap ms_description](https://technet.microsoft.com/library/ms190243.aspx) in SQL server data bases, als deze eigenschappen zijn gevuld met waarden.
+Beschrijvende meta gegevens zijn meta gegevens waarmee het doel of de bedoeling van een gegevensasset wordt beschreven. Meestal worden beschrijvende meta gegevens toegevoegd door catalogus gebruikers met behulp van de Azure Data Catalog Portal, maar ze kunnen ook worden geëxtraheerd uit de gegevens bron tijdens de registratie. Het hulp programma voor het registreren van Azure Data Catalog haalt bijvoorbeeld beschrijvingen op uit de eigenschap Description in SQL Server Analysis Services en SQL Server Reporting Services, en van de [uitgebreide eigenschap ms_description](/previous-versions/sql/sql-server-2008-r2/ms190243(v=sql.105)) in SQL server data bases, als deze eigenschappen zijn gevuld met waarden.
 
 ## <a name="request-access"></a>Toegang aanvragen
 
@@ -86,4 +86,4 @@ Registratie is de handeling van het ophalen van meta gegevens van gegevensassets
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Quickstart: Een Azure Data Catalog maken](data-catalog-get-started.md) 
+[Quickstart: Een Azure Data Catalog maken](data-catalog-get-started.md)

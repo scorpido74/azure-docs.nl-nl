@@ -5,15 +5,15 @@ ms.topic: article
 ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 50b3cae00110a64e4d95171822bf1d2a282d2cc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 653110b953b6947254d5063a9e389505d45ea4cb
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715405"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149014"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Implementatie referenties voor Azure App Service configureren
-[Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714) ondersteunt twee typen referenties voor [lokale Git-implementatie](deploy-local-git.md) en [FTP/S-implementatie](deploy-ftp.md). Deze referenties zijn niet hetzelfde als de referenties van uw Azure-abonnement.
+[Azure app service](./overview.md) ondersteunt twee typen referenties voor [lokale Git-implementatie](deploy-local-git.md) en [FTP/S-implementatie](deploy-ftp.md). Deze referenties zijn niet hetzelfde als de referenties van uw Azure-abonnement.
 
 [!INCLUDE [app-service-deploy-credentials](../../includes/app-service-deploy-credentials.md)]
 
@@ -23,7 +23,7 @@ U kunt uw referenties op gebruikers niveau configureren op de [resource pagina](
 
 ### <a name="in-the-cloud-shell"></a>In de Cloud Shell
 
-Als u de implementatie gebruiker wilt configureren in de [Cloud shell](https://shell.azure.com), voert u de opdracht [AZ webapp Deployment User set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) uit. Vervang \<username> en \<password> door een gebruikers naam en wacht woord voor de implementatie gebruiker. 
+Als u de implementatie gebruiker wilt configureren in de [Cloud shell](https://shell.azure.com), voert u de opdracht [AZ webapp Deployment User set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) uit. Vervang \<username> en \<password> door de gebruikersnaam en het wachtwoord van de gebruiker van de implementatie. 
 
 - De gebruikersnaam moet uniek zijn binnen Azure en voor lokale Git-pushes en mag het symbool @ niet bevatten. 
 - Het wachtwoord moet ten minste acht tekens lang zijn en minimaal twee van de volgende drie typen elementen bevatten: letters, cijfers en symbolen. 
@@ -96,11 +96,11 @@ Voer de volgende CLI-opdracht uit om basis verificatie toegang tot de Web Deploy
 az resource update --resource-group <resource-group> --name scm --namespace Microsoft.Web --resource-type basicPublishingCredentialsPolicies --parent sites/<site-name> --set properties.allow=false
 ```
 
-Als u wilt controleren of de referenties van het publicatie profiel zijn geblokkeerd voor webimplementatie, kunt u [een web-app publiceren met Visual Studio 2019](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019).
+Als u wilt controleren of de referenties van het publicatie profiel zijn geblokkeerd voor webimplementatie, kunt u [een web-app publiceren met Visual Studio 2019](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019).
 
 ### <a name="disable-access-to-the-api"></a>Toegang tot de API uitschakelen
 
-De API in de vorige sectie is een back-up van Azure op rollen gebaseerd toegangs beheer (Azure RBAC). Dit betekent dat u [een aangepaste rol kunt maken](https://docs.microsoft.com/azure/role-based-access-control/custom-roles#steps-to-create-a-custom-role) en gebruikers met een lagere priveldged aan de rol kan toewijzen, zodat de basis verificatie op geen enkele site kan worden ingeschakeld. [Volg deze instructies](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#create-a-custom-rbac-role)voor het configureren van de aangepaste rol.
+De API in de vorige sectie is een back-up van Azure op rollen gebaseerd toegangs beheer (Azure RBAC). Dit betekent dat u [een aangepaste rol kunt maken](../role-based-access-control/custom-roles.md#steps-to-create-a-custom-role) en gebruikers met een lagere priveldged aan de rol kan toewijzen, zodat de basis verificatie op geen enkele site kan worden ingeschakeld. [Volg deze instructies](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#create-a-custom-rbac-role)voor het configureren van de aangepaste rol.
 
 U kunt [Azure monitor](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#audit-with-azure-monitor) ook gebruiken om de geslaagde verificatie aanvragen te controleren en [Azure Policy](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#enforce-compliance-with-azure-policy) te gebruiken om deze configuratie af te dwingen voor alle sites in uw abonnement.
 

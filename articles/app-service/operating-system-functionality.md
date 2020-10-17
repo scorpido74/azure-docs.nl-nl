@@ -5,15 +5,15 @@ ms.assetid: 39d5514f-0139-453a-b52e-4a1c06d8d914
 ms.topic: article
 ms.date: 10/30/2018
 ms.custom: seodec18
-ms.openlocfilehash: 11798db483f0ba370f73340489c17f38c87ede41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 949e408544e25cb55622cf2a1b1d2dddb92350a6
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88080195"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150162"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Functionaliteit van het besturings systeem op Azure App Service
-In dit artikel wordt de algemene besturingssysteem functionaliteit beschreven die beschikbaar is voor alle Windows-apps die worden uitgevoerd op [Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714). Deze functionaliteit omvat bestands-, netwerk-en register toegang, en Diagnostische logboeken en-gebeurtenissen. 
+In dit artikel wordt de algemene besturingssysteem functionaliteit beschreven die beschikbaar is voor alle Windows-apps die worden uitgevoerd op [Azure app service](./overview.md). Deze functionaliteit omvat bestands-, netwerk-en register toegang, en Diagnostische logboeken en-gebeurtenissen. 
 
 > [!NOTE] 
 > [Linux-apps](overview.md#app-service-on-linux) in app service worden uitgevoerd in hun eigen containers. Geen toegang tot het besturings systeem van de host is toegestaan. u hebt toegang tot de hoofd database. Voor [apps die in Windows-containers worden uitgevoerd](quickstart-custom-container.md?pivots=container-windows), hebt u ook beheerders toegang tot de container, maar geen toegang tot het hostbesturingssysteem. 
@@ -126,4 +126,3 @@ App Service biedt geen extern bureau blad toegang tot de VM-exemplaren.
 ## <a name="more-information"></a>Meer informatie
 
 [Azure app Service sandbox](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox) : de meest actuele informatie over de uitvoerings omgeving van app service. Deze pagina wordt rechtstreeks onderhouden door het App Service Development team.
-

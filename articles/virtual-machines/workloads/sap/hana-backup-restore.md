@@ -10,15 +10,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/16/2019
+ms.date: 10/16/2020
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 79ef279423c524f0d409815e7ae163aa699f5428
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c2b606059f92cafc44e383c2aced0d6bed467c2
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87082202"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149629"
 ---
 # <a name="backup-and-restore-on-sap-hana-on-azure"></a>Back-ups maken en herstellen op SAP HANA in azure
 
@@ -399,6 +399,540 @@ Als u wilt herstellen vanuit een back-up van moment opnamen, raadpleegt u [hand 
 
 ### <a name="recover-to-another-point-in-time"></a>Herstellen naar een ander tijdstip
 Als u naar een bepaald tijdstip wilt herstellen, raadpleegt u ' de data base herstellen naar het volgende tijdstip ' in [hand matige herstel handleiding voor SAP Hana op Azure vanuit een moment opname van de opslag](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md). 
+
+
+
+
+
+## <a name="snapcenter-integration-in-sap-hana-large-instances"></a>SnapCenter-integratie in SAP HANA grote instanties
+
+In deze sectie wordt beschreven hoe klanten NetApp SnapCenter-software kunnen gebruiken om een moment opname, back-up en herstel te maken SAP HANA data bases die worden gehost op Microsoft Azure HANA grote instanties (HLI). 
+
+SnapCenter biedt oplossingen voor scenario's zoals back-up/herstel, herstel na nood gevallen (DR) met asynchrone opslag replicatie, systeem replicatie en klonen van het systeem. Klanten die zijn geïntegreerd met SAP HANA Large Instances op Azure, kunnen nu gebruikmaken van SnapCenter voor back-up-en herstel bewerkingen.
+
+Zie NetApp TR-4614 en TR-4646 op SnapCenter voor aanvullende informatie.
+
+- [SAP HANA back-up/herstel met SnapCenter (TR-4614)](https://www.netapp.com/us/media/tr-4614.pdf)
+- [SAP HANA herstel na nood gevallen met opslag replicatie (TR-4646)](https://www.netapp.com/us/media/tr-4646.pdf)
+- [SAP HANA HSR met SnapCenter (TR-4719)](https://www.netapp.com/us/media/tr-4719.pdf)
+- [SAP klonen vanuit SnapCenter (TR-4667)](https://www.netapp.com/us/media/tr-4667.pdf)
+
+### <a name="system-requirements-and-prerequisites"></a>Systeem vereisten en-vereisten
+
+Voor het uitvoeren van SnapCenter op Azure HLI, zijn de systeem vereisten:
+* SnapCenter-server op Azure Windows 2016 of nieuwer met 4-vCPU, 16 GB RAM en mini maal 650 GB Managed Premium SSD-opslag.
+* SAP HANA Large Instances systeem met 1,5 TB – 24 TB RAM-geheugen. Het is raadzaam om twee SAP HANA grote instantie systemen te gebruiken voor het klonen van bewerkingen en tests.
+
+De stappen voor het integreren van SnapCenter in SAP HANA zijn: 
+
+1. Verhoog een ondersteunings ticket aanvraag om de door de gebruiker gegenereerde open bare sleutel te communiceren met het micro soft ops-team. Dit is vereist om de SnapCenter-gebruiker in te stellen voor toegang tot het opslag systeem.
+1. Maak een virtuele machine in uw VNET die toegang heeft tot HLI; deze VM wordt gebruikt voor SnapCenter. 
+1. Down load en installeer SnapCenter. 
+1. Back-up-en herstel bewerkingen. 
+
+### <a name="create-a-support-ticket-for-user-role-storage-setup"></a>Een ondersteunings ticket maken voor het instellen van de opslag van gebruikers rollen
+
+1. Open de Azure Portal en navigeer naar de pagina **abonnementen** . Selecteer uw SAP HANA-abonnement op de pagina Abonnementen, zoals hieronder rood wordt beschreven.
+
+   :::image type="content" source="./media/snapcenter/create-support-case-for-user-role-storage-setup.png" alt-text="Ondersteunings Case voor het instellen van gebruikers opslag maken":::
+
+1. Selecteer op de pagina SAP HANA abonnement de pagina **resource groepen** .
+
+   :::image type="content" source="./media/snapcenter/solution-lab-subscription-resource-groups.png" alt-text="Ondersteunings Case voor het instellen van gebruikers opslag maken" lightbox="./media/snapcenter/solution-lab-subscription-resource-groups.png":::
+
+1. Selecteer een geschikte resource groep in een regio.
+
+   :::image type="content" source="./media/snapcenter/select-appropriate-resource-group-in-region.png" alt-text="Ondersteunings Case voor het instellen van gebruikers opslag maken" lightbox="./media/snapcenter/select-appropriate-resource-group-in-region.png":::
+
+1. Selecteer een SKU-vermelding die overeenkomt met SAP HANA in azure Storage.
+
+   :::image type="content" source="./media/snapcenter/select-sku-entry-corresponding-to-sap-hana.png" alt-text="Ondersteunings Case voor het instellen van gebruikers opslag maken" lightbox="./media/snapcenter/select-sku-entry-corresponding-to-sap-hana.png":::
+
+1. Open een nieuwe aanvraag voor een **ondersteunings ticket** , in rood beschreven.
+
+   :::image type="content" source="./media/snapcenter/open-new-support-ticket-request.png" alt-text="Ondersteunings Case voor het instellen van gebruikers opslag maken":::
+
+1. Geef op het tabblad **basis beginselen** de volgende informatie op voor het ticket:
+
+   * **Type probleem:** Documentatie
+   * **Abonnement:** Uw abonnement
+   * **Service:** SAP HANA grote instantie
+   * **Resource:** De resource groep
+   * **Samen vatting:** De door de gebruiker gegenereerde open bare sleutel opgeven
+   * **Probleem type:** Configuratie en installatie
+   * **Subtype van probleem:** SnapCenter instellen voor HLI
+
+
+1. Geef in de **Beschrijving** van het ondersteunings ticket op het tabblad **Details** het volgende op: 
+   
+   * SnapCenter instellen voor HLI
+   * Uw open bare sleutel voor SnapCenter gebruiker (SnapCenter. pem): Zie het volgende voor beeld van een open bare sleutel maken
+
+     :::image type="content" source="./media/snapcenter/new-support-request-details.png" alt-text="Ondersteunings Case voor het instellen van gebruikers opslag maken" lightbox="./media/snapcenter/new-support-request-details.png":::
+
+1. Selecteer **controleren + maken** om uw ondersteunings ticket te controleren. 
+
+1. Genereer een certificaat voor de SnapCenter-gebruikers naam op de HANA grote instantie of een Linux-server.
+
+   SnapCenter vereist een gebruikers naam en wacht woord voor toegang tot de virtuele opslag machine (SVM) en om moment opnamen van de HANA-data base te maken. Micro soft gebruikt de open bare sleutel om u (de klant) toe te staan om het wacht woord voor toegang tot het opslag systeem in te stellen.
+
+   ```bash
+   openssl req -x509 -nodes -days 1095 -newkey rsa:2048 -keyout snapcenter.key -out snapcenter.pem -subj "/C=US/ST=WA/L=BEL/O=NetApp/CN=snapcenter"
+   Generating a 2048 bit RSA private key
+   ................................................................................................................................................+++++
+   ...............................+++++
+   writing new private key to 'snapcenter.key'
+   -----
+
+   sollabsjct31:~ # ls -l cl25*
+   -rw-r--r-- 1 root root 1704 Jul 22 09:59 snapcenter.key
+   -rw-r--r-- 1 root root 1253 Jul 22 09:59 snapcenter.pem
+
+   ```
+
+1. Koppel het bestand snapcenter. pem aan het ondersteunings ticket en selecteer vervolgens **maken**
+
+   Zodra het certificaat van de open bare sleutel is verzonden, stelt micro soft de SnapCenter-gebruikers naam in voor uw Tenant samen met het IP-adres van SVM.   
+
+1. Nadat u het SVM IP-adres hebt ontvangen, moet u een wacht woord instellen voor toegang tot SVM, die u beheert.
+
+   Hier volgt een voor beeld van de REST-AANROEP (documentatie) van HANA grote instantie of VM in het virtuele netwerk, die toegang heeft tot de HANA-omgeving voor grote instanties en die wordt gebruikt om het wacht woord in te stellen.
+
+   ```bash
+   curl --cert snapcenter.pem --key snapcenter.key -X POST -k "https://10.0.40.11/api/security/authentication/password" -d '{"name":"snapcenter","password":"test1234"}'
+   ```
+
+   Zorg ervoor dat er geen proxy variabele actief is op het HANA DB-systeem.
+
+   ```bash
+   sollabsjct31:/tmp # unset http_proxy
+   sollabsjct31:/tmp # unset https_proxy
+   ```
+
+### <a name="download-and-install-snapcenter"></a>SnapCenter downloaden en installeren
+Nu de gebruikers naam is ingesteld voor SnapCenter toegang tot het opslag systeem, gebruikt u de gebruikers naam van SnapCenter om de SnapCenter te configureren zodra deze is geïnstalleerd. 
+
+Controleer [SAP Hana back-up/herstel met SnapCenter](https://www.netapp.com/us/media/tr-4614.pdf) om uw back-upstrategie te definiëren voordat u SnapCenter installeert. 
+
+1. Meld u aan bij [NetApp](https://mysupport.netapp.com) om de meest recente versie van SnapCenter te [downloaden](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fmysupport.netapp.com%2Fsite%2Fproducts%2Fall%2Fdetails%2Fsnapcenter%2Fdownloads-tab&data=02%7C01%7Cmadhukan%40microsoft.com%7Ca53f5e2f245a4e36933008d816efbb54%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637284566603265503&sdata=TOANWNYoAr1q5z1opu70%2FUDPHjluvovqR9AKplYpcpk%3D&reserved=0) .
+
+1. Installeer SnapCenter op de virtuele Windows Azure-machine.
+
+   Het installatie programma controleert de vereisten van de virtuele machine. 
+
+   >[!IMPORTANT]
+   >Let op de grootte van de virtuele machine, met name in grotere omgevingen.
+
+1. Configureer de gebruikers referenties voor de SnapCenter. Standaard worden de Windows-gebruikers referenties ingevuld die worden gebruikt voor het installeren van de toepassing. 
+
+   :::image type="content" source="media/snapcenter/installation-user-inputs-dialog.png" alt-text="Ondersteunings Case voor het instellen van gebruikers opslag maken"::: 
+
+1. Wanneer u de sessie start, slaat u de beveiligings uitzondering op en wordt de gebruikers interface gestart.
+
+1. Meld u aan bij SnapCenter op de virtuele machine ( https://snapcenter-vm:8146) met behulp van de Windows-referenties voor het configureren van de omgeving.
+
+
+### <a name="set-up-the-storage-system"></a>Het opslag systeem instellen
+
+1. Selecteer in SnapCenter **opslag systeem**en selecteer **+ Nieuw**. 
+
+   :::image type="content" source="./media/snapcenter/snapcenter-storage-connections-window.png" alt-text="Ondersteunings Case voor het instellen van gebruikers opslag maken" lightbox="./media/snapcenter/snapcenter-storage-connections-window.png":::
+
+   De standaard waarde is één SVM per Tenant. Als een klant meerdere tenants of HLIs in meerdere regio's heeft, is het aanbeveling om alle SVMs te configureren in SnapCenter
+
+1. Geef in opslag systeem toevoegen de informatie op voor het opslag systeem dat u wilt toevoegen, de SnapCenter gebruikers naam en het wacht woord en selecteer vervolgens **verzenden**.
+
+   :::image type="content" source="./media/snapcenter/new-storage-connection.png" alt-text="Ondersteunings Case voor het instellen van gebruikers opslag maken":::
+
+   >[!NOTE]
+   >De standaard waarde is één SVM per Tenant.  Als er meerdere tenants zijn, is het aanbeveling om alle SVMs hier in SnapCenter te configureren. 
+
+1. Selecteer in SnapCenter de optie **hosts** en selecteer **+ toevoegen** om de Hana-INVOEG toepassing en de Hana DB-hosts in te stellen.  De meest recente versie van SnapCenter detecteert de HANA-data base automatisch op de host.
+
+   :::image type="content" source="media/snapcenter/managed-hosts-new-host.png" alt-text="Ondersteunings Case voor het instellen van gebruikers opslag maken" lightbox="media/snapcenter/managed-hosts-new-host.png":::
+
+1. Geef de gegevens voor de nieuwe host op:
+   1. Selecteer het besturings systeem voor het type host.
+   1. Voer de hostnaam van de SnapCenter-VM in.
+   1. Geef de referenties op die u wilt gebruiken.
+   1. Selecteer de opties **micro soft Windows** en **SAP Hana** en selecteer vervolgens **verzenden**.
+
+   :::image type="content" source="media/snapcenter/add-new-host-operating-system-credentials.png" alt-text="Ondersteunings Case voor het instellen van gebruikers opslag maken":::
+
+   >[!IMPORTANT]
+   >Voordat u het eerste knoop punt kunt installeren, kan een niet-hoofd gebruiker SnapCenter invoeg toepassingen op de data base installeren.  Zie [een niet-hoofd gebruiker toevoegen en sudo-bevoegdheden configureren](https://library.netapp.com/ecmdocs/ECMLP2590889/html/GUID-A3EEB5FC-242B-4C2C-B407-510E48A8F131.html)voor meer informatie over het inschakelen van een niet-hoofd gebruiker.
+
+1. Controleer de details van de host en selecteer **verzenden** om de invoeg toepassing op de SnapCenter-server te installeren.
+
+1. Nadat de invoeg toepassing is geïnstalleerd, selecteert u in SnapCenter de optie **hosts** en selecteert u vervolgens **+ toevoegen** om een Hana-knoop punt toe te voegen.
+
+   :::image type="content" source="media/snapcenter/add-hana-node.png" alt-text="Ondersteunings Case voor het instellen van gebruikers opslag maken" lightbox="media/snapcenter/add-hana-node.png":::
+
+1. Geef de informatie op voor het HANA-knoop punt:
+   1. Selecteer het besturings systeem voor het type host.
+   1. Voer de hostnaam of het IP-adres van de HANA-data base in.
+   1. Selecteer **+** deze optie om de referenties toe te voegen die zijn geconfigureerd op het besturings systeem Hana db-host en selecteer vervolgens **OK**.
+   1. Selecteer **SAP Hana** en selecteer vervolgens **verzenden**.
+
+   :::image type="content" source="media/snapcenter/add-hana-node-details.png" alt-text="Ondersteunings Case voor het instellen van gebruikers opslag maken":::
+
+1. Bevestig de vinger afdruk en selecteer **bevestigen en verzenden**.
+
+   :::image type="content" source="media/snapcenter/confirm-submit-fingerprint.png" alt-text="Ondersteunings Case voor het instellen van gebruikers opslag maken":::
+
+1. Selecteer op het Hana-knoop punt, onder de systeem database, de optie **beveiligings**  >  **gebruikers**  >  **SNAPCENTER** om de SNAPCENTER-gebruiker te maken.
+
+   :::image type="content" source="media/snapcenter/create-snapcenter-user-hana-system-db.png" alt-text="Ondersteunings Case voor het instellen van gebruikers opslag maken":::
+
+
+
+### <a name="auto-discovery"></a>Automatische detectie
+Met SnapCenter 4,3 wordt de functie Automatische detectie standaard ingeschakeld.  Automatische detectie wordt niet ondersteund voor HANA-instanties met HANA System Replication (HSR) geconfigureerd. U moet het exemplaar hand matig toevoegen aan de SnapCenter-server.
+
+
+### <a name="hana-setup-manual"></a>HANA-instellingen (hand matig)
+Als u HSR hebt geconfigureerd, moet u het systeem hand matig configureren.  
+
+1. Selecteer in SnapCenter **resources** en **San Hana** (bovenaan) en selecteer vervolgens **+ SAP Hana data base toevoegen** (aan de rechter kant).
+
+   :::image type="content" source="media/snapcenter/manual-hana-setup.png" alt-text="Ondersteunings Case voor het instellen van gebruikers opslag maken" lightbox="media/snapcenter/manual-hana-setup.png":::
+
+1. Geef de resource details op van de HANA-beheerder die door de gebruiker is geconfigureerd op de Linux-host of op de host waarop de invoeg toepassingen zijn geïnstalleerd. De back-up wordt beheerd vanuit de invoeg toepassing op het Linux-systeem.
+
+   :::image type="content" source="media/snapcenter/provide-resource-details-sap-hana-database.png" alt-text="Ondersteunings Case voor het instellen van gebruikers opslag maken":::
+
+1. Selecteer het gegevens volume waarvoor u moment opnamen wilt maken, selecteer **Opslaan** en selecteer vervolgens **volt ooien**.
+
+   :::image type="content" source="media/snapcenter/provide-storage-footprint.png" alt-text="Ondersteunings Case voor het instellen van gebruikers opslag maken":::
+
+### <a name="create-a-snapshot-policy"></a>Een momentopname beleid maken
+
+Voordat u SnapCenter gebruikt om een back-up van SAP HANA database resources te maken, moet u een back-upbeleid voor de resource of resource groep die u wilt back-ups. Tijdens het proces van het maken van een snap shot-beleid krijgt u de optie om pre/post-opdrachten en speciale SSL-sleutels te configureren. Zie [back-upbeleid maken voor SAP Hana-data bases](http://docs.netapp.com/ocsc-43/index.jsp?topic=%2Fcom.netapp.doc.ocsc-dpg-sap-hana%2FGUID-246C0810-4F0B-4BF7-9A35-B729AD69954A.html)voor meer informatie over het maken van een momentopname beleid.
+
+1. Selecteer in SnapCenter **resources** en selecteer vervolgens een Data Base.
+
+   :::image type="content" source="media/snapcenter/select-database-create-policy.png" alt-text="Ondersteunings Case voor het instellen van gebruikers opslag maken":::
+
+1. Volg de werk stroom van de configuratie wizard om de snap shot scheduler te configureren.
+
+   :::image type="content" source="media/snapcenter/follow-workflow-configuration-wizard.png" alt-text="Ondersteunings Case voor het instellen van gebruikers opslag maken" lightbox="media/snapcenter/follow-workflow-configuration-wizard.png":::
+
+1. Geef de opties op voor het configureren van pre/post-opdrachten en speciale SSL-sleutels.  In dit voor beeld gebruiken we geen speciale instellingen.
+
+   :::image type="content" source="media/snapcenter/configuration-options-pre-post-commands.png" alt-text="Ondersteunings Case voor het instellen van gebruikers opslag maken" lightbox="media/snapcenter/configuration-options-pre-post-commands.png":::
+
+1. Selecteer **toevoegen** om een momentopname beleid te maken, dat ook kan worden gebruikt voor andere Hana-data bases. 
+
+   :::image type="content" source="media/snapcenter/select-one-or-more-policies.png" alt-text="Ondersteunings Case voor het instellen van gebruikers opslag maken":::
+
+1. Voer de naam van het beleid en een beschrijving in.
+
+   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy.png" alt-text="Ondersteunings Case voor het instellen van gebruikers opslag maken":::
+
+
+1. Selecteer het type en de frequentie van de back-up.
+
+   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-settings.png" alt-text="Ondersteunings Case voor het instellen van gebruikers opslag maken":::
+
+1. Configureer de **instellingen voor het bewaren van back-ups op aanvraag**.  In ons voor beeld stellen we de Bewaar periode in op drie momentopname kopieën die moeten worden bewaard.
+
+   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-retention-settings.png" alt-text="Ondersteunings Case voor het instellen van gebruikers opslag maken":::
+
+1. Configureer de instellingen voor het bewaren van het **hele uur**. 
+
+   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-hourly-retention-settings.png" alt-text="Ondersteunings Case voor het instellen van gebruikers opslag maken":::
+
+1. Als een SnapMirror-installatie is geconfigureerd, selecteert u **SnapMirror bijwerken na het maken van een kopie van een lokale moment opname**.
+
+   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-snapmirror.png" alt-text="Ondersteunings Case voor het instellen van gebruikers opslag maken":::
+
+1. Selecteer **volt ooien** om de samen vatting van het nieuwe back-upbeleid te bekijken. 
+1. Selecteer onder **schema configureren**de optie **toevoegen**.
+
+   :::image type="content" source="media/snapcenter/configure-schedules-for-selected-policies.png" alt-text="Ondersteunings Case voor het instellen van gebruikers opslag maken":::
+
+1. Selecteer de **begin datum**, **verloopt op** datum en de frequentie.
+
+   :::image type="content" source="media/snapcenter/add-schedules-for-policy.png" alt-text="Ondersteunings Case voor het instellen van gebruikers opslag maken":::
+
+1. Geef de e-mail gegevens voor meldingen op.
+
+   :::image type="content" source="media/snapcenter/backup-policy-notification-settings.png" alt-text="Ondersteunings Case voor het instellen van gebruikers opslag maken":::
+
+1.  Selecteer **volt ooien** om het back-upbeleid te maken.
+
+### <a name="disable-ems-message-to-netapp-autosupport"></a>EMS-bericht uitschakelen voor NetApp-ondersteuning
+EMS-gegevens verzameling is standaard ingeschakeld en wordt elke zeven dagen na de installatie datum uitgevoerd.  U kunt gegevens verzameling uitschakelen met de Power shell-cmdlet `Disable-SmDataCollectionEms` .
+
+1. Maak in Power shell een sessie met SnapCenter.
+
+   ```powershell
+   Open-SmConnection
+   ```
+
+1. Meld u aan met uw referenties.
+1. Schakel de verzameling EMS-berichten uit.
+
+   ```powershell
+   Disable-SmCollectionEms
+   ```
+
+### <a name="restore-database-after-crash"></a>Data base herstellen na crash
+U kunt SnapCenter gebruiken om de data base te herstellen.  In deze sectie worden de stappen op hoog niveau behandeld, maar Zie [SAP Hana back-up/herstel met SnapCenter](https://www.netapp.com/us/media/tr-4614.pdf)voor meer informatie.
+
+
+1. De data base stoppen en alle database bestanden verwijderen.
+
+   ```
+   su - h31adm
+   > sapcontrol -nr 00 -function StopSystem
+   StopSystem
+   OK
+   > sapcontrol -nr 00 -function GetProcessList
+   OK
+   name, description, dispstatus, textstatus, starttime, elapsedtime, pid
+   hdbdaemon, HDB Daemon, GRAY, Stopped, , , 35902
+ 
+   ```
+
+1. Ontkoppel het database volume.
+
+   ```bash
+   unmount /hana/data/H31/mnt00001
+   ```
+
+
+1. Herstel de database bestanden via SnapCenter.  Selecteer de data base en selecteer vervolgens **herstellen**.  
+
+   :::image type="content" source="media/snapcenter/restore-database-via-snapcenter.png" alt-text="Ondersteunings Case voor het instellen van gebruikers opslag maken" lightbox="media/snapcenter/restore-database-via-snapcenter.png":::
+
+1. Selecteer het type herstel.  In ons voor beeld herstellen we de volledige resource. 
+
+   :::image type="content" source="media/snapcenter/restore-database-select-restore-type.png" alt-text="Ondersteunings Case voor het instellen van gebruikers opslag maken":::
+
+   >[!NOTE]
+   >Met een standaard instelling hoeft u geen opdrachten op te geven om een lokale herstel bewerking uit te voeren vanaf de moment opname op de schijf. 
+
+   >[!TIP]
+   >Als u een bepaald LUN in het volume wilt herstellen, selecteert u **bestands niveau**.
+
+1. Volg de werk stroom met behulp van de configuratie wizard.
+   
+   SnapCenter herstelt de oorspronkelijke locatie van de gegevens, zodat u het herstel proces in HANA kunt starten. Omdat SnapCenter de back-upcatalogus niet kan wijzigen (Data Base is niet beschikbaar), wordt er een waarschuwing weer gegeven.
+
+   :::image type="content" source="media/snapcenter/restore-database-job-details-warning.png" alt-text="Ondersteunings Case voor het instellen van gebruikers opslag maken":::
+
+1. Omdat alle database bestanden zijn hersteld, start u het herstel proces in HANA. Klik in Hana studio onder **systemen**met de rechter muisknop op de systeem database en selecteer **back-up en herstel**  >  **systeem database herstellen**.
+
+   :::image type="content" source="media/snapcenter/hana-studio-backup-recovery.png" alt-text="Ondersteunings Case voor het instellen van gebruikers opslag maken":::
+
+1. Selecteer een herstel type.
+
+   :::image type="content" source="media/snapcenter/restore-database-select-recovery-type.png" alt-text="Ondersteunings Case voor het instellen van gebruikers opslag maken":::
+
+1. Selecteer de locatie van de back-upcatalogus.
+
+   :::image type="content" source="media/snapcenter/restore-database-select-location-backup-catalog.png" alt-text="Ondersteunings Case voor het instellen van gebruikers opslag maken":::
+
+1. Selecteer een back-up om de SAP HANA-data base te herstellen.
+
+   :::image type="content" source="media/snapcenter/restore-database-select-backup.png" alt-text="Ondersteunings Case voor het instellen van gebruikers opslag maken":::
+
+   Zodra de data base is hersteld, wordt een bericht weer gegeven met een **hersteld naar tijd** en **teruggezet naar de logboek positie** stempel.
+
+1. Onder **systemen**klikt u met de rechter muisknop op de systeem database en selecteert u **back-up en herstel**  >  **Tenant database herstellen**.
+1. Volg de werk stroom van de wizard om het herstel van de Tenant database te volt ooien. 
+
+Zie [SAP Hana backup/rerecovery with SnapCenter](https://www.netapp.com/us/media/tr-4614.pdf)(Engelstalig) voor meer informatie over het herstellen van een Data Base.
+
+
+### <a name="non-database-backups"></a>Back-ups zonder data base
+U kunt niet-gegevens volumes herstellen, bijvoorbeeld een netwerk bestands share (/Hana/Shared) of een back-up van een besturings systeem.  Zie [SAP Hana backup/rerecovery with SnapCenter](https://www.netapp.com/us/media/tr-4614.pdf)(Engelstalig) voor meer informatie over het herstellen van een niet-gegevens volume.
+
+### <a name="sap-hana-system-cloning"></a>SAP HANA systeem klonen
+
+Voordat u kunt klonen, moet dezelfde HANA-versie zijn geïnstalleerd als de bron database. De SID en ID kunnen verschillen. 
+
+:::image type="content" source="media/snapcenter/system-cloning-diagram.png" alt-text="Ondersteunings Case voor het instellen van gebruikers opslag maken" lightbox="media/snapcenter/system-cloning-diagram.png" border="false":::
+
+1. Een HANA-database gebruikers archief maken voor de H34-data base van/usr/sap/H34/HDB40.
+
+   ```
+   hdbuserstore set H34KEY sollabsjct34:34013 system manager
+   ```
+ 
+1. Schakel de firewall uit.
+
+   ```bash
+   systemctl disable SuSEfirewall2
+   systemctl stop  SuSEfirewall2
+   ```
+
+1. Installeer de Java-SDK.
+
+   ```bash
+   zypper in java-1_8_0-openjdk
+   ```
+
+1. Voeg in SnapCenter de doelhost toe waarop de kloon wordt gekoppeld. Zie [hosts toevoegen en invoeg toepassings pakketten installeren op externe hosts](http://docs.netapp.com/ocsc-43/index.jsp?topic=%2Fcom.netapp.doc.ocsc-dpg-sap-hana%2FGUID-246C0810-4F0B-4BF7-9A35-B729AD69954A.html)voor meer informatie.
+   1. Geef de gegevens voor de run as-referenties op die u wilt toevoegen. 
+   1. Selecteer het besturings systeem van de host en voer de gegevens van de host in.
+   1. Onder **invoeg toepassingen die u wilt installeren**, selecteert u de versie, voert u het installatiepad in en selecteert u **SAP Hana**.
+   1. Selecteer **valideren** om de controles voorafgaand aan de installatie uit te voeren.
+
+1. Stop HANA en ontkoppel het oude gegevens volume.  U koppelt de kloon vanuit SnapCenter.  
+
+   ```bash
+   sapcontrol -nr 40 -function StopSystem
+   umount /hana/data/H34/mnt00001
+
+   ```
+ 1. Maak de configuratie-en shell script bestanden voor het doel.
+ 
+    ```bash
+    mkdir /NetApp
+    chmod 777 /NetApp
+    cd NetApp
+    chmod 777 sc-system-refresh-H34.cfg
+    chmod 777 sc-system-refresh.sh
+
+    ```
+
+    >[!TIP]
+    >U kunt de scripts van [SAP klonen kopiëren vanuit SnapCenter](https://www.netapp.com/us/media/tr-4667.pdf).
+
+1. Wijzig het configuratie bestand. 
+
+   ```bash
+   vi sc-system-refresh-H34.cfg
+   ```
+
+   * HANA_ARCHITECTURE = "MDC_single_tenant"
+   * KEY = "H34KEY"
+   * TIME_OUT_START = 18
+   * TIME_OUT_STOP = 18
+   * INSTANCENO = "40"
+   * OPSLAG = "10.250.101.33"
+
+1. Wijzig het shell script bestand.
+
+   ```bash
+   vi sc-system-refresh.sh
+   ```  
+
+   * UITGEBREID = Nee
+   * MY_NAME = " `basename $0` "
+   * BASE_SCRIPT_DIR = " `dirname $0` "
+   * MOUNT_OPTIONS = "RW, vers = 4, hard, Timeo = 600, rsize = 1048576, wsize = 1048576, intr, noatime, NOLOCK"
+
+1. Start de kloon vanuit een back-upproces. Selecteer de host om de kloon te maken. 
+
+   >[!NOTE]
+   >Zie [klonen vanuit een back-up](https://docs.netapp.com/ocsc-43/index.jsp?topic=%2Fcom.netapp.doc.ocsc-dpg-cpi%2FGUID-F6E7FF73-0183-4B9F-8156-8D7DA17A8555.html)voor meer informatie.
+
+1. Onder **scripts**, geeft u het volgende op:
+
+   * **Mount-opdracht:** /NetApp/SC-System-refresh.sh Mount H34% hana_data_h31_mnt00001_t250_vol_Clone
+   * **Post-kloon opdracht:** /NetApp/SC-System-refresh.sh herstellen H34
+
+1. De automatische koppeling in de bestand/etc/fstab uitschakelen (vergren delen) omdat het gegevens volume van de vooraf geïnstalleerde data base niet nodig is. 
+
+   ```bash
+   vi /etc/fstab
+   ```
+
+### <a name="delete-a-clone"></a>Een kloon verwijderen
+
+U kunt een kloon verwijderen als deze niet langer nodig is. Zie [klonen verwijderen](https://docs.netapp.com/ocsc-43/index.jsp?topic=%2Fcom.netapp.doc.ocsc-dpg-cpi%2FGUID-F6E7FF73-0183-4B9F-8156-8D7DA17A8555.html)voor meer informatie.
+
+De opdrachten die worden gebruikt voor het uitvoeren van een kloon, zijn:
+* **Verwijdering vooraf klonen:** /NetApp/SC-System-refresh.sh H34 afsluiten
+* **Ontkoppelen:** /NetApp/SC-System-refresh.sh umount H34
+
+Met deze opdrachten staat u SnapCenter toe om de data base te Showdown, het volume te ontkoppelen en de fstab-vermelding te verwijderen.  Daarna wordt de FlexClone verwijderd. 
+
+### <a name="cloning-database-logfile"></a>Database logboek klonen
+
+```   
+20190502025323###sollabsjct34###sc-system-refresh.sh: Adding entry in /etc/fstab.
+20190502025323###sollabsjct34###sc-system-refresh.sh: 10.250.101.31:/Sc21186309-ee57-41a3-8584-8210297f791d /hana/data/H34/mnt00001 nfs rw,vers=4,hard,timeo=600,rsize=1048576,wsize=1048576,intr,noatime,lock 0 0
+20190502025323###sollabsjct34###sc-system-refresh.sh: Mounting data volume.
+20190502025323###sollabsjct34###sc-system-refresh.sh: mount /hana/data/H34/mnt00001
+20190502025323###sollabsjct34###sc-system-refresh.sh: Data volume mounted successfully.
+20190502025323###sollabsjct34###sc-system-refresh.sh: chown -R h34adm:sapsys /hana/data/H34/mnt00001
+20190502025333###sollabsjct34###sc-system-refresh.sh: Recover system database.
+20190502025333###sollabsjct34###sc-system-refresh.sh: /usr/sap/H34/HDB40/exe/Python/bin/python /usr/sap/H34/HDB40/exe/python_support/recoverSys.py --command "RECOVER DATA USING SNAPSHOT CLEAR LOG"
+[140278542735104, 0.005] >> starting recoverSys (at Thu May  2 02:53:33 2019)
+[140278542735104, 0.005] args: ()
+[140278542735104, 0.005] keys: {'command': 'RECOVER DATA USING SNAPSHOT CLEAR LOG'}
+recoverSys started: ============2019-05-02 02:53:33 ============
+testing master: sollabsjct34
+sollabsjct34 is master
+shutdown database, timeout is 120
+stop system
+stop system: sollabsjct34
+stopping system: 2019-05-02 02:53:33
+stopped system: 2019-05-02 02:53:33
+creating file recoverInstance.sql
+restart database
+restart master nameserver: 2019-05-02 02:53:38
+start system: sollabsjct34
+2019-05-02T02:53:59-07:00  P010976      16a77f6c8a2 INFO    RECOVERY state of service: nameserver, sollabsjct34:34001, volume: 1, RecoveryPrepared
+recoverSys finished successfully: 2019-05-02 02:54:00
+[140278542735104, 26.490] 0
+[140278542735104, 26.490] << ending recoverSys, rc = 0 (RC_TEST_OK), after 26.485 secs
+20190502025400###sollabsjct34###sc-system-refresh.sh: Wait until SAP HANA database is started ....
+20190502025400###sollabsjct34###sc-system-refresh.sh: Status:  YELLOW
+20190502025410###sollabsjct34###sc-system-refresh.sh: Status:  YELLOW
+20190502025420###sollabsjct34###sc-system-refresh.sh: Status:  YELLOW
+20190502025430###sollabsjct34###sc-system-refresh.sh: Status:  YELLOW
+20190502025440###sollabsjct34###sc-system-refresh.sh: Status:  YELLOW
+20190502025451###sollabsjct34###sc-system-refresh.sh: Status:  GREEN
+20190502025451###sollabsjct34###sc-system-refresh.sh: SAP HANA database is started.
+20190502025451###sollabsjct34###sc-system-refresh.sh: Recover tenant database H34.
+20190502025451###sollabsjct34###sc-system-refresh.sh: /usr/sap/H34/SYS/exe/hdb/hdbsql -U H34KEY RECOVER DATA FOR H34 USING SNAPSHOT CLEAR LOG
+0 rows affected (overall time 69.584135 sec; server time 69.582835 sec)
+20190502025600###sollabsjct34###sc-system-refresh.sh: Checking availability of Indexserver for tenant H34.
+20190502025601###sollabsjct34###sc-system-refresh.sh: Recovery of tenant database H34 succesfully finished.
+20190502025601###sollabsjct34###sc-system-refresh.sh: Status: GREEN
+Deleting the DB Clone – Logfile
+20190502030312###sollabsjct34###sc-system-refresh.sh: Stopping HANA database.
+20190502030312###sollabsjct34###sc-system-refresh.sh: sapcontrol -nr 40 -function StopSystem HDB
+
+02.05.2019 03:03:12
+StopSystem
+OK
+20190502030312###sollabsjct34###sc-system-refresh.sh: Wait until SAP HANA database is stopped ....
+20190502030312###sollabsjct34###sc-system-refresh.sh: Status:  GREEN
+20190502030322###sollabsjct34###sc-system-refresh.sh: Status:  GREEN
+20190502030332###sollabsjct34###sc-system-refresh.sh: Status:  GREEN
+20190502030342###sollabsjct34###sc-system-refresh.sh: Status:  GRAY
+20190502030342###sollabsjct34###sc-system-refresh.sh: SAP HANA database is stopped.
+20190502030347###sollabsjct34###sc-system-refresh.sh: Unmounting data volume.
+20190502030347###sollabsjct34###sc-system-refresh.sh: Junction path: Sc21186309-ee57-41a3-8584-8210297f791d
+20190502030347###sollabsjct34###sc-system-refresh.sh: umount /hana/data/H34/mnt00001
+20190502030347###sollabsjct34###sc-system-refresh.sh: Deleting /etc/fstab entry.
+20190502030347###sollabsjct34###sc-system-refresh.sh: Data volume unmounted successfully.
+
+```
+
+### <a name="uninstall-snapcenter-plug-ins-package-for-linux"></a>Pakket met SnapCenter-invoeg toepassingen voor Linux verwijderen
+
+U kunt het pakket voor Linux-invoeg toepassingen verwijderen vanaf de opdracht regel. Omdat de automatische implementatie een nieuw systeem verwacht, is het eenvoudig om de invoeg toepassing te verwijderen.  
+
+>[!NOTE]
+>Mogelijk moet u een oudere versie van de invoeg toepassing hand matig verwijderen. 
+
+Verwijder de invoeg toepassingen.
+
+```bash
+cd /opt/NetApp/snapcenter/spl/installation/plugins
+./uninstall
+```
+
+U kunt nu de nieuwste HANA-invoeg toepassing installeren op het nieuwe knoop punt door **verzenden** te selecteren in SnapCenter. 
+
+
 
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -8,20 +8,20 @@ ms.reviewer: zhshang
 ms.date: 11/13/2019
 ms.topic: conceptual
 ms.service: signalr
-ms.openlocfilehash: 105b40da2a612d2a2e9958eff52bfb786c500bc1
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 77c8887ac19c6ce4c7d83734bdd2b44d9213914d
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876070"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151104"
 ---
 # <a name="reacting-to-azure-signalr-service-events"></a>Reageren op Azure SignalR Service-gebeurtenissen
 
 Met de service gebeurtenissen van Azure signalering kunnen toepassingen reageren op client verbindingen die zijn verbonden of losgekoppeld met moderne serverloze architecturen. Dit gebeurt zonder dat er complexe code of dure en inefficiënte polling services nodig zijn.  In plaats daarvan worden gebeurtenissen gepusht via [Azure Event grid](https://azure.microsoft.com/services/event-grid/) naar abonnees zoals [Azure functions](https://azure.microsoft.com/services/functions/), [Azure Logic apps](https://azure.microsoft.com/services/logic-apps/)of zelfs naar uw eigen aangepaste HTTP-listener. Met Azure-Signa lering betaalt u alleen voor wat u verbruikt.
 
-Gebeurtenissen van de Azure signalerings service worden betrouwbaar verzonden naar de Event Grid-Service. Dit biedt betrouw bare leverings Services voor uw toepassingen via een uitgebreid beleid voor opnieuw proberen en levering van onbestelbare berichten. Zie [Event grid aflevering van berichten en probeer het opnieuw](https://docs.microsoft.com/azure/event-grid/delivery-and-retry).
+Gebeurtenissen van de Azure signalerings service worden betrouwbaar verzonden naar de Event Grid-Service. Dit biedt betrouw bare leverings Services voor uw toepassingen via een uitgebreid beleid voor opnieuw proberen en levering van onbestelbare berichten. Zie [Event grid aflevering van berichten en probeer het opnieuw](../event-grid/delivery-and-retry.md).
 
-![Event Grid model](https://docs.microsoft.com/azure/event-grid/media/overview/functional-model.png)
+![Event Grid model](/azure/event-grid/media/overview/functional-model.png)
 
 ## <a name="serverless-state"></a>Serverloze status
 Gebeurtenissen van de Azure signalerings service zijn alleen actief wanneer client verbindingen een serverloze status hebben. Als een client niet wordt doorgestuurd naar een hub-server, wordt de status zonder server gebruikt. De klassieke modus werkt alleen wanneer de hub waarmee client verbindingen verbinding maken, geen hub-server heeft. Serverloze modus wordt aanbevolen als best practice. Zie [Service modus kiezen](https://github.com/Azure/azure-signalr/blob/dev/docs/faq.md#what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose)voor meer informatie over de service modus.

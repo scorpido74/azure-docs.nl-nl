@@ -7,12 +7,12 @@ ms.date: 10/03/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: github-actions-azure
-ms.openlocfilehash: 3a5e319115c124551c05f2ac5aa393ba19596d0d
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: d6f66993b0fb7f97c551f4fbcb305111cfb2097e
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893353"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150276"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>Een aangepaste container implementeren op App Service met behulp van GitHub-acties
 
@@ -33,7 +33,7 @@ Voor een Azure App Service container werk stroom heeft het bestand drie secties:
 - Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 - Een GitHub-account. Als u er nog geen hebt, kunt u zich [gratis](https://github.com/join)aanmelden.  
 - Een werk container register en Azure App Service-app voor containers. In dit voor beeld wordt Azure Container Registry gebruikt. 
-    - [Meer informatie over het maken van een container Node.js toepassing met behulp van docker, het pushen van de container installatie kopie naar een REGI ster en het implementeren van de installatie kopie naar Azure App Service](https://docs.microsoft.com/azure/developer/javascript/tutorial-vscode-docker-node-01)
+    - [Meer informatie over het maken van een container Node.js toepassing met behulp van docker, het pushen van de container installatie kopie naar een REGI ster en het implementeren van de installatie kopie naar Azure App Service](/azure/developer/javascript/tutorial-vscode-docker-node-01)
 
 ## <a name="generate-deployment-credentials"></a>Implementatie referenties genereren
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: allensu
-ms.openlocfilehash: cc09c35ba5499c6e911ebd7dd23482ef30f931da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e90086be18e344e3061b9e683780f4427b3c15a1
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88192545"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148995"
 ---
 # <a name="purge-an-azure-cdn-endpoint"></a>Een Azure CDN-eind punt verwijderen
 ## <a name="overview"></a>Overzicht
@@ -69,7 +69,7 @@ In deze zelf studie wordt u begeleid bij het opschonen van assets van alle Edge-
     ![Knop leegmaken](./media/cdn-purge-endpoint/cdn-purge-button.png)
 
 > [!IMPORTANT]
-> Opschoon aanvragen nemen ongeveer 10 minuten in beslag bij **Azure CDN van micro soft**, ongeveer 2 minuten met **Azure CDN van Verizon** (Standard en Premium) en ongeveer 10 seconden met **Azure CDN van Akamai**.  Azure CDN heeft op een bepaald moment een limiet van 50 gelijktijdige opschoon aanvragen op profiel niveau. 
+> Opschoon aanvragen nemen ongeveer 10 minuten in beslag bij **Azure CDN van micro soft**, ongeveer 2 minuten met **Azure CDN van Verizon** (Standard en Premium) en ongeveer 10 seconden met **Azure CDN van Akamai**.  Azure CDN heeft op een bepaald moment een limiet van 100 gelijktijdige opschoon aanvragen op profiel niveau. 
 > 
 > 
 

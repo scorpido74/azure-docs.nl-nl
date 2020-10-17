@@ -80,6 +80,10 @@
       href: concepts/event-handling.md
     - name: Meldingen
       href: concepts/notifications.md
+    - name: Logboekregistratie en diagnostische gegevens
+      href: concepts/logging-and-diagnostics.md
+    - name: Metrische gegevens
+      href: concepts/metrics.md
 - name: Voorbeelden
   items:
     - name: Hero-voorbeeld van groepsgesprek

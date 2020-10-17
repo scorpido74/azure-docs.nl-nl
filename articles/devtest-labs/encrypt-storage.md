@@ -3,12 +3,12 @@ title: Een Azure-opslag account dat wordt gebruikt door een lab in Azure DevTest
 description: Meer informatie over het configureren van versleuteling van een Azure-opslag die wordt gebruikt door een lab in Azure DevTest Labs
 ms.topic: how-to
 ms.date: 07/29/2020
-ms.openlocfilehash: 3c1d1531084deeabbe9a8d261e93554a2c691eb6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dcede89fb23c532742e41121688bcb51a5a73833
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87433561"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149309"
 ---
 # <a name="encrypt-azure-storage-used-by-a-lab-in-azure-devtest-labs"></a>Azure-opslag die wordt gebruikt door een lab in Azure DevTest Labs versleutelen
 Elk lab dat is gemaakt in Azure DevTest Labs wordt gemaakt met een gekoppeld Azure Storage-account. Het opslag account wordt gebruikt voor de volgende doel einden: 
@@ -36,13 +36,13 @@ Elk lab dat is gemaakt in Azure DevTest Labs wordt gemaakt met een gekoppeld Azu
 ## <a name="encrypt-the-lab-storage-account"></a>Het opslag account Lab versleutelen
 Met Azure Storage worden uw gegevens automatisch versleuteld wanneer deze in de cloud worden bewaard. Azure Storage versleuteling beschermt uw gegevens en helpt u om te voldoen aan de beveiligings-en nalevings verplichtingen van uw organisatie. Zie [Azure Storage versleuteling voor Data-at-rest](../storage/common/storage-service-encryption.md)voor meer informatie.
 
-Gegevens in het lab-opslag account zijn versleuteld met een door **micro soft beheerde sleutel**. U kunt gebruikmaken van door micro soft beheerde sleutels voor het versleutelen van uw gegevens, maar u kunt ook versleuteling beheren met uw eigen sleutels. Als u ervoor kiest om versleuteling te beheren met uw eigen sleutels voor het opslag account van de test omgeving, kunt u een door de **klant beheerde sleutel** opgeven met Azure Key Vault voor het versleutelen/ontsleutelen van gegevens in Blob Storage en in azure files. Zie door de klant [beheerde sleutels gebruiken met Azure Key Vault voor het beheren van Azure Storage versleuteling](../storage/common/encryption-customer-managed-keys.md)voor meer informatie over door de klant beheerde sleutels.
+Gegevens in het lab-opslag account zijn versleuteld met een door **micro soft beheerde sleutel**. U kunt gebruikmaken van door micro soft beheerde sleutels voor het versleutelen van uw gegevens, maar u kunt ook versleuteling beheren met uw eigen sleutels. Als u ervoor kiest om versleuteling te beheren met uw eigen sleutels voor het opslag account van de test omgeving, kunt u een door de **klant beheerde sleutel** opgeven met Azure Key Vault voor het versleutelen/ontsleutelen van gegevens in Blob Storage en in azure files. Zie door de klant [beheerde sleutels gebruiken met Azure Key Vault voor het beheren van Azure Storage versleuteling](../storage/common/customer-managed-keys-overview.md)voor meer informatie over door de klant beheerde sleutels.
 
 Raadpleeg de volgende artikelen voor meer informatie over het configureren van door de klant beheerde sleutels voor Azure Storage versleuteling: 
 
-- [Azure-portal](../storage/common/storage-encryption-keys-portal.md)
-- [Azure PowerShell](../storage/common/storage-encryption-keys-powershell.md)
-- [Azure-CLI](../storage/common/storage-encryption-keys-cli.md)
+- [Azure-portal](../storage/common/customer-managed-keys-configure-key-vault.md)
+- [Azure PowerShell](../storage/common/customer-managed-keys-configure-key-vault.md)
+- [Azure-CLI](../storage/common/customer-managed-keys-configure-key-vault.md)
 
 
 ## <a name="manage-the-azure-blob-storage-life-cycle"></a>De levens cyclus van Azure Blob-opslag beheren
@@ -101,8 +101,6 @@ De volgende regel wordt bijvoorbeeld gebruikt voor het instellen van een verval 
 ## <a name="next-steps"></a>Volgende stappen
 Raadpleeg de volgende artikelen voor meer informatie over het configureren van door de klant beheerde sleutels voor Azure Storage versleuteling: 
 
-- [Azure-portal](../storage/common/storage-encryption-keys-portal.md)
-- [Azure PowerShell](../storage/common/storage-encryption-keys-powershell.md)
-- [Azure-CLI](../storage/common/storage-encryption-keys-cli.md)
-
-
+- [Azure-portal](../storage/common/customer-managed-keys-configure-key-vault.md)
+- [Azure PowerShell](../storage/common/customer-managed-keys-configure-key-vault.md)
+- [Azure-CLI](../storage/common/customer-managed-keys-configure-key-vault.md)

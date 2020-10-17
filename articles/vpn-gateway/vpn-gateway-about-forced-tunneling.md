@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 10/08/2020
+ms.date: 10/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: 94a5459ade634f6a1de029808aa6bad4d16b9a5d
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: af4359efb48898c12bb8ee7ffb882448b5012d19
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874626"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151342"
 ---
 # <a name="configure-forced-tunneling-using-the-classic-deployment-model"></a>Geforceerde tunneling met het klassieke implementatiemodel configureren
 
@@ -23,12 +23,12 @@ Met geforceerde tunneling kunt u alle voor internet bestemde verkeer geforceerd 
 Dit artikel begeleidt u bij het configureren van geforceerde tunneling voor virtuele netwerken die zijn gemaakt met het klassieke implementatie model. Geforceerde tunneling kan worden geconfigureerd met behulp van Power shell, niet via de portal. Als u geforceerde tunneling wilt configureren voor het Resource Manager-implementatie model, selecteert u Resource Manager-artikel in de volgende vervolg keuzelijst:
 
 > [!div class="op_single_selector"]
-> * [Power shell-klassiek](vpn-gateway-about-forced-tunneling.md)
-> * [PowerShell - Resource Manager](vpn-gateway-forced-tunneling-rm.md)
-> 
+> * [Klassiek](vpn-gateway-about-forced-tunneling.md)
+> * [Resource Manager](vpn-gateway-forced-tunneling-rm.md)
 > 
 
 ## <a name="requirements-and-considerations"></a>Vereisten en overwegingen
+
 Geforceerde Tunneling in azure wordt geconfigureerd via door de gebruiker gedefinieerde routes van het virtuele netwerk (UDR). Het omleiden van verkeer naar een on-premises site wordt uitgedrukt als een standaard route naar de Azure VPN-gateway. In de volgende sectie worden de huidige beperkingen van de routerings tabel en routes voor een Azure-Virtual Network vermeld:
 
 * Elk subnet van het virtuele netwerk heeft een ingebouwde systeem routerings tabel. De systeem routerings tabel heeft de volgende drie groepen routes:
@@ -39,32 +39,28 @@ Geforceerde Tunneling in azure wordt geconfigureerd via door de gebruiker gedefi
 * Met de release van door de gebruiker gedefinieerde routes kunt u een routerings tabel maken om een standaard route toe te voegen en vervolgens de routerings tabel koppelen aan uw VNet-subnet ('s) om geforceerde Tunneling in te scha kelen voor deze subnetten.
 * U moet een "standaard site" instellen tussen de cross-premises lokale sites die zijn verbonden met het virtuele netwerk.
 * Geforceerde tunneling moet worden gekoppeld aan een VNet dat een VPN-gateway voor dynamische route ring (geen statische gateway) heeft.
-* ExpressRoute geforceerde tunneling is niet geconfigureerd via dit mechanisme, maar wordt in plaats daarvan ingeschakeld door een standaard route te adverteren via de BGP-peering-sessies van ExpressRoute. Raadpleeg de [ExpressRoute-documentatie](https://azure.microsoft.com/documentation/services/expressroute/) voor meer informatie.
+* ExpressRoute geforceerde tunneling is niet geconfigureerd via dit mechanisme, maar wordt in plaats daarvan ingeschakeld door een standaard route te adverteren via de BGP-peering-sessies van ExpressRoute. Zie [Wat is ExpressRoute?](../expressroute/expressroute-introduction.md)voor meer informatie.
 
 ## <a name="configuration-overview"></a>Configuratieoverzicht
+
 In het volgende voor beeld wordt het frontend-subnet niet geforceerd getunneld. De werk belastingen in het frontend-subnet kunnen rechtstreeks blijven accepteren en reageren op aanvragen van de klant via internet. De subnetten van de middelste laag en de back-end worden geforceerd getunneld. Uitgaande verbindingen van deze twee subnetten met Internet worden via een van de S2S VPN-tunnels geforceerd of teruggeleid naar een on-premises site.
 
 Hierdoor kunt u Internet toegang beperken en inspecteren vanuit uw virtuele machines of Cloud Services in azure, terwijl u doorgaat met het inschakelen van de service architectuur met meerdere lagen. U kunt geforceerde tunneling ook Toep assen op de volledige virtuele netwerken als er geen Internet werk belastingen aanwezig zijn in uw virtuele netwerken.
 
 ![Geforceerde tunneling](./media/vpn-gateway-about-forced-tunneling/forced-tunnel.png)
 
-## <a name="before-you-begin"></a>Voordat u begint
+## <a name="prerequisites"></a>Vereisten
+
 Controleer of u beschikt over de volgende items voordat u begint met de configuratie:
 
 * Een Azure-abonnement. Als u nog geen Azure-abonnement hebt, kunt u [uw voordelen als MSDN-abonnee activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) of [u aanmelden voor een gratis account](https://azure.microsoft.com/pricing/free-trial/).
 * Een geconfigureerd virtueel netwerk. 
 * [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
-### <a name="to-sign-in"></a>Aanmelden
-
-1. Open de Power shell-console met verhoogde bevoegdheden. Maak verbinding met uw account met behulp van het volgende voor beeld:
-
-   ```powershell
-   Add-AzureAccount
-   ```
-
 ## <a name="configure-forced-tunneling"></a>Geforceerde tunneling configureren
-De volgende procedure helpt u bij het opgeven van geforceerde tunneling voor een virtueel netwerk. De configuratie stappen komen overeen met het VNet-netwerk configuratie bestand.
+
+De volgende procedure helpt u bij het opgeven van geforceerde tunneling voor een virtueel netwerk. De configuratie stappen komen overeen met het VNet-netwerk configuratie bestand.  In dit voor beeld heeft het virtuele netwerk ' Multi laag-VNet ' drie subnetten: ' front-end ', ' het midtier ' en ' back-end '-subnetten, met vier cross-premises verbindingen: ' DefaultSiteHQ ' en drie vertakkingen.
+
 
 ```xml
 <VirtualNetworkSite name="MultiTier-VNet" Location="North Europe">
@@ -104,9 +100,13 @@ De volgende procedure helpt u bij het opgeven van geforceerde tunneling voor een
     </VirtualNetworkSite>
 ```
 
-In dit voor beeld heeft het virtuele netwerk ' Multi laag-VNet ' drie subnetten: ' front-end ', ' het midtier ' en ' back-end '-subnetten, met vier cross-premises verbindingen: ' DefaultSiteHQ ' en drie vertakkingen. 
+Met de volgende stappen wordt de ' DefaultSiteHQ ' ingesteld als de standaard site verbinding voor geforceerde tunneling en worden de het midtier-en back-end-subnetten geconfigureerd voor het gebruik van geforceerde tunneling.
 
-De stappen stellen de ' DefaultSiteHQ ' in als de standaard site verbinding voor geforceerde tunneling en configureren de het midtier-en back-end-subnetten om geforceerde tunneling te gebruiken.
+1. Open de Power shell-console met verhoogde bevoegdheden. Maak verbinding met uw account met behulp van het volgende voor beeld:
+
+   ```powershell
+   Add-AzureAccount
+   ```
 
 1. Een routerings tabel maken. Gebruik de volgende cmdlet om uw route tabel te maken.
 
@@ -114,7 +114,7 @@ De stappen stellen de ' DefaultSiteHQ ' in als de standaard site verbinding voor
    New-AzureRouteTable –Name "MyRouteTable" –Label "Routing Table for Forced Tunneling" –Location "North Europe"
    ```
 
-2. Een standaard route toevoegen aan de routerings tabel. 
+1. Een standaard route toevoegen aan de routerings tabel. 
 
    In het volgende voor beeld wordt een standaard route toegevoegd aan de routerings tabel die u in stap 1 hebt gemaakt. Houd er rekening mee dat de enige route die wordt ondersteund het doel voorvoegsel van ' 0.0.0.0/0 ' is voor de NextHop ' VPNGateway '.
 
@@ -122,7 +122,7 @@ De stappen stellen de ' DefaultSiteHQ ' in als de standaard site verbinding voor
    Get-AzureRouteTable -Name "MyRouteTable" | Set-AzureRoute –RouteTable "MyRouteTable" –RouteName "DefaultRoute" –AddressPrefix "0.0.0.0/0" –NextHopType VPNGateway
    ```
 
-3. Koppel de routerings tabel aan de subnetten. 
+1. Koppel de routerings tabel aan de subnetten. 
 
    Nadat een routerings tabel is gemaakt en een route is toegevoegd, gebruikt u het volgende voor beeld om de route tabel toe te voegen aan of te koppelen aan een VNet-subnet. In het voor beeld wordt de route tabel ' MyRouteTable ' toegevoegd aan de het midtier-en back-end-subnetten van VNet meerdere lagen-VNet.
 
@@ -131,7 +131,7 @@ De stappen stellen de ' DefaultSiteHQ ' in als de standaard site verbinding voor
    Set-AzureSubnetRouteTable -VirtualNetworkName "MultiTier-VNet" -SubnetName "Backend" -RouteTableName "MyRouteTable"
    ```
 
-4. Wijs een standaard site toe voor geforceerde tunneling. 
+1. Wijs een standaard site toe voor geforceerde tunneling. 
 
    In de vorige stap hebben de voor beeld-cmdlet scripts de routerings tabel gemaakt en de route tabel gekoppeld aan twee van de VNet-subnetten. De resterende stap bestaat uit het selecteren van een lokale site tussen de multi-site-verbindingen van het virtuele netwerk als de standaard site of-tunnel.
 
@@ -141,6 +141,7 @@ De stappen stellen de ' DefaultSiteHQ ' in als de standaard site verbinding voor
    ```
 
 ## <a name="additional-powershell-cmdlets"></a>Extra Power shell-cmdlets
+
 ### <a name="to-delete-a-route-table"></a>Een route tabel verwijderen
 
 ```powershell

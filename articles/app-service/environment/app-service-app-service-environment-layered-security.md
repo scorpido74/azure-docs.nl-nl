@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/30/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: e9a776aad966bb74e22f6d7fb8d66530e4b4db92
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab26ad08947a4a9929ae0d41b669160b3d159224
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91255193"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150234"
 ---
 # <a name="implementing-a-layered-security-architecture-with-app-service-environments"></a>Een gelaagde beveiligings architectuur implementeren met App Service omgevingen
 Omdat App Service omgevingen een geïsoleerde runtime-omgeving bieden die is geïmplementeerd in een virtueel netwerk, kunnen ontwikkel aars een gelaagde beveiligings architectuur maken die verschillende niveaus van netwerk toegang biedt voor elke fysieke toepassingslaag.
@@ -115,7 +115,7 @@ Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecur
 Met de NSG die wordt toegepast op het subnet, mogen alleen de drie upstream-App Service omgevingen en de App Service Environment met de API-back-end worden aangeroepen in de omgeving ' apiase '.
 
 ## <a name="additional-links-and-information"></a>Aanvullende koppelingen en informatie
-Informatie over [netwerk beveiligings groepen](../../virtual-network/security-overview.md).
+Informatie over [netwerk beveiligings groepen](../../virtual-network/network-security-groups-overview.md).
 
 Informatie over [uitgaande IP-adressen][NetworkArchitecture] en app service omgevingen.
 

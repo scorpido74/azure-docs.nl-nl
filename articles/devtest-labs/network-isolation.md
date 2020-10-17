@@ -3,12 +3,12 @@ title: Netwerk isolatie in Azure DevTest Labs
 description: Meer informatie over netwerk isolatie in Azure DevTest Labs.
 ms.topic: article
 ms.date: 08/25/2020
-ms.openlocfilehash: fbd2725cd3677e03cadbe0ae1f060b141f5d212b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aafa6bf94c7963d69bfb67a28a520b811c4fbacf
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88875768"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149159"
 ---
 # <a name="network-isolation-in-devtest-labs"></a>Netwerk isolatie in DevTest Labs
 
@@ -57,7 +57,7 @@ Lees ook de volgende artikelen:
  
    > [!div class="mx-imgBorder"]
    > ![Contoso-test](./media/network-isolation/contoso-test.png)
-1. Ga op het opslag account naar firewalls en virtuele netwerken en zorg ervoor dat het selectie vakje vertrouwde micro soft-Services toegang geven tot dit opslag account is ingeschakeld. Omdat [DevTest Labs een vertrouwde micro soft-service is](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services), kan de test omgeving normaal worden uitgevoerd in een geïsoleerde netwerk modus. 
+1. Ga op het opslag account naar firewalls en virtuele netwerken en zorg ervoor dat het selectie vakje vertrouwde micro soft-Services toegang geven tot dit opslag account is ingeschakeld. Omdat [DevTest Labs een vertrouwde micro soft-service is](../storage/common/storage-network-security.md#trusted-microsoft-services), kan de test omgeving normaal worden uitgevoerd in een geïsoleerde netwerk modus. 
 
    > [!div class="mx-imgBorder"]
    > ![Contoso Lab-firewalls](./media/network-isolation/contoso-lab-firewalls-vnets.png)
@@ -74,7 +74,7 @@ Met deze optie worden door Azure Storage binnenkomende verbindingen van het toeg
 
 U kunt er ook voor kiezen om deze stappen te automatiseren voor het configureren van deze instelling voor meerdere lessen. 
 
-[Meer informatie over het beheren van standaard regels voor netwerk toegang voor Azure Storage met behulp van Power shell en CLI](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=/azure/virtual-network/toc.json#powershell)
+[Meer informatie over het beheren van standaard regels voor netwerk toegang voor Azure Storage met behulp van Power shell en CLI](../storage/common/storage-network-security.md?toc=%252fazure%252fvirtual-network%252ftoc.json#powershell)
 
 ## <a name="things-to-remember-while-using-a-lab-in-a-network-isolated-mode"></a>Wat u moet onthouden tijdens het gebruik van een lab in een geïsoleerd netwerk modus
 
@@ -82,7 +82,7 @@ U kunt er ook voor kiezen om deze stappen te automatiseren voor het configureren
 
 In een geïsoleerd netwerk moeten voor acties zoals het uploaden van een VHD naar het opslag account van de Lab, voor het maken van aangepaste installatie kopieën van de Lab-eigenaar expliciet toegang tot het opslag account via een toegestaan eind punt worden ingeschakeld. U kunt dit doen door een virtuele machine te maken en veilig toegang te krijgen tot het opslag account van die virtuele machine. 
 
-[Meer informatie over het privé verkrijgen van toegang tot een opslag account vanuit een virtuele machine](../private-link/create-private-endpoint-storage-portal.md)
+[Meer informatie over het privé verkrijgen van toegang tot een opslag account vanuit een virtuele machine](../private-link/tutorial-private-endpoint-storage-portal.md)
 
 ### <a name="exporting-usage-data-from-the-lab"></a>Gebruiks gegevens uit het lab exporteren 
 

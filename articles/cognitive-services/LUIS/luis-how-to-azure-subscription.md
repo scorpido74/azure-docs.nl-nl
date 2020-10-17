@@ -7,12 +7,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 949ad4176cc7bf65e07e40323fc72a0a144b53b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: adc0c253648ed7ae869a20b92c42e7f6478501b7
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327218"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151590"
 ---
 # <a name="create-luis-resources"></a>LUIS-resources maken
 
@@ -31,7 +31,7 @@ Met LUIS kunt u drie typen Azure-resources en één niet-Azure-resource maken:
 |--|--|--|--|
 |Resource ontwerpen|Met kunt u uw toepassingen maken, beheren, trainen, testen en publiceren. [Maak een Luis-ontwerp bron](luis-how-to-azure-subscription.md#create-luis-resources-in-azure-portal) als u Luis-apps programtically of vanuit de Luis-Portal wilt ontwerpen. U moet eerst [uw Luis-account migreren](luis-migration-authoring.md#what-is-migration) zodat u uw Azure authroring-resources kunt koppelen aan uw toepassing. U kunt machtigingen voor de ontwerp bron beheren door personen toe te wijzen aan [de rol Inzender](#contributions-from-other-authors). <br><br> Er is één laag avialable voor de LUIS-ontwerp Bron:<br> * **Gratis F0-ontwerp bron** , waarmee u maandelijks gratis bewerkings transacties en gratis eindpunt aanvragen van 1000 kunt testen. |`LUIS.Authoring`|`Cognitive Services`|
 |Voorspellings bron| Nadat u uw LUIS-toepassing hebt gepubliceerd, gebruikt u de Voorspellings resource/sleutel om te vragen om een query voor voor spelling-eindpunt aanvragen. Maak een LUIS-Voorspellings bron voordat u de voor spellingen van de client-app voorspelde aanvragen 1.000 overschrijdt die zijn opgegeven door de auteur of de eerste resource. <br><br> Er zijn twee lagen avialble voor de Voorspellings resource:<br> * **Gratis F0-Voorspellings resource** waarmee u 10.000 gratis eindpunt aanvragen voor voor spellingen ontvangt<br> * **Standaard S0-Voorspellings resource** die de betaalde laag is. [Meer informatie over de prijs informatie](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)|`LUIS`|`Cognitive Services`|
-|Resource voor starter/proef versie|Met kunt u uw toepassingen maken, beheren, trainen, testen en publiceren. Dit wordt gemaakt door standaard als u de optie starter resource hebt gekozen tijdens de eerste aanmelding TP LUIS. De start sleutel wordt uiteindelijk echter afgeschaft en alle LUIS-gebruikers moeten [hun accounts migreren](luis-migration-authoring.md#what-is-migration) en hun Luis-toepassingen koppelen aan een ontwerp bron. Deze resource biedt u geen machtigingen voor toegangs beheer op basis van rollen zoals de ontwerp bron. <br><br> Net zoals de resource voor schrijven, biedt de eerste resource u gratis ontwerp transacties en 1000 gratis test eindpunt aanvragen voor voor spellingen.|-|Geen Azure-resource|
+|Resource voor starter/proef versie|Met kunt u uw toepassingen maken, beheren, trainen, testen en publiceren. Dit wordt gemaakt door standaard als u de optie starter resource hebt gekozen tijdens de eerste aanmelding TP LUIS. De start sleutel wordt uiteindelijk echter afgeschaft en alle LUIS-gebruikers moeten [hun accounts migreren](luis-migration-authoring.md#what-is-migration) en hun Luis-toepassingen koppelen aan een ontwerp bron. Deze resource biedt geen machtigingen voor toegangs beheer op basis van rollen, zoals de ontwerp bron. <br><br> Net zoals de resource voor schrijven, biedt de eerste resource u gratis ontwerp transacties en 1000 gratis test eindpunt aanvragen voor voor spellingen.|-|Geen Azure-resource|
 |[Bron sleutel voor de cognitieve service met meerdere services](../cognitive-services-apis-create-account-cli.md?tabs=windows#create-a-cognitive-services-resource)|Query Voorspellings eindpunt aanvragen gedeeld met LUIS en andere ondersteunde Cognitive Services.|`CognitiveServices`|`Cognitive Services`|
 
 
@@ -109,7 +109,7 @@ Toegang tot de app vanuit de [Luis](luis-reference-regions.md#luis-website) -por
 
 De eigenaar en alle mede werkers hebben toegang tot het schrijven van de app.
 
-|Ontwerp toegang bevat|Notities|
+|Ontwerp toegang bevat|Opmerkingen|
 |--|--|
 |Eindpunt sleutels toevoegen of verwijderen||
 |Versie exporteren||

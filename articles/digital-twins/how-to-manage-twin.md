@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3f9064c25581523167918b84a2d0027747e32bd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c522ac9e1aedbcdfdb4564d17b506b1b490da0c3
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282371"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150392"
 ---
 # <a name="manage-digital-twins"></a>Digitale tweelingen beheren
 
@@ -54,21 +54,7 @@ U kunt een parameter object hand matig of via een beschik bare helper-klasse mak
 
 Als u geen aangepaste helper-klassen wilt gebruiken, kunt u de eigenschappen van een twee voor `Dictionary<string, object>` waarden in een, waarbij de de `string` naam van de eigenschap is en de `object` is een-object dat de eigenschap en de waarde vertegenwoordigt.
 
-```csharp
-// Define the model type for the twin to be created
-Dictionary<string, object> meta = new Dictionary<string, object>()
-{
-    { "$model", "dtmi:com:contoso:Room;1" }
-};
-// Initialize the twin properties
-Dictionary<string, object> twin = new Dictionary<string, object>()
-{
-    { "$metadata", meta },
-    { "Temperature", temperature},
-    { "Humidity", humidity},
-};
-client.CreateDigitalTwin("myNewRoomID", JsonSerializer.Serialize<Dictionary<string, object>>(twin));
-```
+[!INCLUDE [Azure Digital Twins code: create twin](../../includes/digital-twins-code-create-twin.md)]
 
 #### <a name="create-twins-with-the-helper-class"></a>Apparaatdubbels maken met de helper-klasse
 

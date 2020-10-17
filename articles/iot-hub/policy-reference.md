@@ -7,16 +7,16 @@ author: robinsh
 ms.author: robinsh
 ms.service: iot-hub
 ms.custom: subject-policy-reference
-ms.openlocfilehash: bcb7a8e040a8e32a8513e5e0e73d6c124e04563a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66b74fd8fe326666d3c34b59acba383fd4205e17
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91816280"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151339"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-iot-hub"></a>Ingebouwde Azure Policy-definities voor Azure IoT Hub
 
-Als u wilt zien hoe u algemene IoT-scenario's kunt implementeren, kunt u IoT Hub-voorbeeldcode bekijken in de [IoT Hub quickstarts](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-cli). Er zijn quickstarts voor meerdere computertalen, zoals C, node.js en Python.
+Als u wilt zien hoe u algemene IoT-scenario's kunt implementeren, kunt u IoT Hub-voorbeeldcode bekijken in de [IoT Hub quickstarts](./quickstart-send-telemetry-cli.md). Er zijn quickstarts voor meerdere computertalen, zoals C, node.js en Python.
 
 Deze pagina is een index van ingebouwde [Azure Policy](../governance/policy/overview.md)-beleidsdefinities voor Azure IoT Hub. Zie [Ingebouwde Azure Policy-definities](../governance/policy/samples/built-in-policies.md) voor aanvullende ingebouwde modules voor Azure Policy voor andere services.
 

@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: wanl
-ms.openlocfilehash: 55482457058d01162116494b637661db40010a50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b0c1a91df30ee6a88f055dc47cfdef339e2ee2b2
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85132009"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151063"
 ---
 # <a name="resource-logs-for-azure-signalr-service"></a>Resource logboeken voor de Azure signalerings service
 
@@ -20,8 +20,8 @@ In deze zelf studie wordt beschreven welke resource logboeken voor de Azure sign
 ## <a name="prerequisites"></a>Vereisten
 Als u resource logboeken wilt inschakelen, moet u uw logboek gegevens ergens opslaan. In deze zelf studie wordt gebruikgemaakt van Azure Storage en Log Analytics.
 
-* [Azure Storage](../azure-monitor/platform/resource-logs-collect-storage.md) : Hiermee behoudt u de bron logboeken voor beleids controle, statische analyses of back-up.
-* [Log Analytics](../azure-monitor/platform/resource-logs-collect-workspace.md) : een flexibel hulp programma voor logboek zoeken en analyse waarmee onbewerkte logboeken kunnen worden geanalyseerd die door een Azure-resource zijn gegenereerd.
+* [Azure Storage](../azure-monitor/platform/resource-logs.md#send-to-azure-storage) : Hiermee behoudt u de bron logboeken voor beleids controle, statische analyses of back-up.
+* [Log Analytics](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace) : een flexibel hulp programma voor logboek zoeken en analyse waarmee onbewerkte logboeken kunnen worden geanalyseerd die door een Azure-resource zijn gegenereerd.
 
 ## <a name="set-up-resource-logs-for-an-azure-signalr-service"></a>Resource logboeken instellen voor een Azure signalerings service
 

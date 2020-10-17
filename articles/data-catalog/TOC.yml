@@ -68,7 +68,7 @@
     - name: Sneltoetsen voor Azure Data Catalog
       href: data-catalog-keyboard-shortcuts.md
     - name: Microsoft Q&A-vragenpagina
-      href: 'https://docs.microsoft.com/answers/topics/azure-data-catalog.html'
+      href: /answers/topics/azure-data-catalog.html
     - name: Prijzen
       href: 'https://azure.microsoft.com/pricing/details/data-catalog/'
     - name: Prijscalculator
