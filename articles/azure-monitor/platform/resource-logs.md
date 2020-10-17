@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: ccf470abadb28919e4fca3c4862b71946a5bb204
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9423069b917c37e77b70a4466e489918cd330c4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87800497"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143930"
 ---
 # <a name="azure-resource-logs"></a>Azure-resourcelogboeken
 Azure-resource logboeken zijn [platform logboeken](platform-logs-overview.md) die inzicht bieden in bewerkingen die zijn uitgevoerd in een Azure-resource. De inhoud van bron Logboeken is afhankelijk van de Azure-service en het resource type. Bron logboeken worden niet standaard verzameld. U moet een diagnostische instelling maken voor elke Azure-resource om de resource logboeken te verzenden naar een Log Analytics-werk ruimte die u wilt gebruiken met [Azure monitor-logboeken](data-platform-logs.md), Azure Event hubs om buiten Azure door te sturen of om te Azure Storage voor archivering.
@@ -27,7 +27,7 @@ Zie [Diagnostische instellingen maken om platform logboeken en metrische gegeven
 - Gebruik logboek query's om complexe analyses uit te voeren en grondige inzichten op logboek gegevens te verkrijgen.
 - Gebruik logboek waarschuwingen met complexe logica voor waarschuwingen.
 
-[Een diagnostische instelling maken](diagnostic-settings.md) om bron logboeken te verzenden naar een log Analytics-werk ruimte. Deze gegevens worden opgeslagen in tabellen zoals beschreven in de [structuur van Azure monitor logboeken](../log-query/logs-structure.md). De tabellen die door resource logboeken worden gebruikt, zijn afhankelijk van het type verzameling dat de resource gebruikt:
+[Een diagnostische instelling maken](diagnostic-settings.md) om bron logboeken te verzenden naar een log Analytics-werk ruimte. Deze gegevens worden opgeslagen in tabellen zoals beschreven in de [structuur van Azure monitor logboeken](./data-platform-logs.md). De tabellen die door resource logboeken worden gebruikt, zijn afhankelijk van het type verzameling dat de resource gebruikt:
 
 - Azure Diagnostics-alle gegevens die zijn geschreven, worden naar de tabel _AzureDiagnostics_ .
 - Resource-specifiek: gegevens worden naar afzonderlijke tabellen geschreven voor elke categorie van de resource.

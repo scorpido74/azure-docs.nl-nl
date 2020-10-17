@@ -7,12 +7,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/20/2020
-ms.openlocfilehash: ee71082b96d41f9bad7fb54a70d308c24dec5b57
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: daedef3410e32b97f8cf753bcbad6c2bc11bbc41
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932036"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143647"
 ---
 # <a name="interactive-workbooks"></a>Interactieve workbooks
 
@@ -134,7 +134,7 @@ Met werkmap kunnen gebruikers bepaalde besturings elementen weer geven of verber
 
 1. Volg de stappen in de [rij een interactiviteit instellen op raster klikken](#setting-up-interactivity-on-grid-row-click) om twee interactieve besturings elementen in te stellen.
 2. Voeg aan de bovenkant een nieuwe para meter toe:
-    1. Name: `ShowDetails`
+    1. Naam: `ShowDetails`
     2. Parameter type: `Drop down`
     3. Vereist: `checked`
     4. Gegevens ophalen uit: `JSON`
@@ -188,5 +188,5 @@ Hoewel het standaard gedrag bestaat uit het exporteren van een para meter als te
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Ga](workbooks-visualizations.md) voor meer informatie over werkmappen veel uitgebreide visualisaties opties.
+* [Ga](./workbooks-overview.md#visualizations) voor meer informatie over werkmappen veel uitgebreide visualisaties opties.
 * De toegang tot uw werkmap resources [beheren](workbooks-access-control.md) en delen.

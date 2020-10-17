@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: robinsh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5b9170e0fcf4bba8b928522cdc881f34968d771f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d53e0cb92ead0d60ae335e95903cd69ae2700140
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89003861"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142819"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>Id's van IoT Hub-apparaten bulksgewijs importeren en exporteren
 
@@ -27,7 +27,7 @@ Import-en export bewerkingen worden uitgevoerd in de context van *taken* waarmee
 
 De **RegistryManager** -klasse bevat de methoden **ExportDevicesAsync** en **ImportDevicesAsync** die gebruikmaken van het **project** Framework. Met deze methoden kunt u het geheel van een IoT hub-identiteits register exporteren, importeren en synchroniseren.
 
-In dit onderwerp wordt beschreven hoe u de **RegistryManager** -klasse en het **taak** systeem gebruikt voor het uitvoeren van bulksgewijs importeren en exporteren van apparaten naar en van het identiteits register van een IOT-hub. U kunt ook de Azure IoT Hub Device Provisioning Service gebruiken voor het inschakelen van Zero-Touch, just-in-time inrichting naar een of meer IoT-hubs zonder menselijke tussen komst. Zie de documentatie van de [inrichtings service](/azure/iot-dps)voor meer informatie.
+In dit onderwerp wordt beschreven hoe u de **RegistryManager** -klasse en het **taak** systeem gebruikt voor het uitvoeren van bulksgewijs importeren en exporteren van apparaten naar en van het identiteits register van een IOT-hub. U kunt ook de Azure IoT Hub Device Provisioning Service gebruiken voor het inschakelen van Zero-Touch, just-in-time inrichting naar een of meer IoT-hubs zonder menselijke tussen komst. Zie de documentatie van de [inrichtings service](../iot-dps/index.yml)voor meer informatie.
 
 ## <a name="what-are-jobs"></a>Wat zijn taken?
 
@@ -399,7 +399,7 @@ while(true)
 
 ## <a name="get-the-container-sas-uri"></a>De SAS-URI van de container ophalen
 
-In het volgende code voorbeeld ziet u hoe u een [SAS-URI](../storage/common/storage-dotnet-shared-access-signature-part-1.md) kunt genereren met de machtigingen lezen, schrijven en verwijderen voor een BLOB-container:
+In het volgende code voorbeeld ziet u hoe u een [SAS-URI](../storage/common/storage-sas-overview.md) kunt genereren met de machtigingen lezen, schrijven en verwijderen voor een BLOB-container:
 
 ```csharp
 static string GetContainerSasUri(CloudBlobContainer container)
@@ -438,8 +438,8 @@ Raadpleeg de volgende artikelen voor meer informatie over het beheren van Azure 
 Zie voor meer informatie over de mogelijkheden van IoT Hub:
 
 * [Ontwikkelaars handleiding IoT Hub](iot-hub-devguide.md)
-* [AI implementeren op Edge-apparaten met Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [AI implementeren op Edge-apparaten met Azure IoT Edge](../iot-edge/quickstart-linux.md)
 
 Zie voor meer informatie over het gebruik van de IoT Hub Device Provisioning Service om Zero-Touch, just-in-time inrichten in te scha kelen: 
 
-* [Azure IoT Hub Device Provisioning Service](/azure/iot-dps)
+* [Azure IoT Hub Device Provisioning Service](../iot-dps/index.yml)

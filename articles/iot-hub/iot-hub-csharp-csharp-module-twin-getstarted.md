@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: menchi
 ms.custom: amqp, devx-track-csharp
-ms.openlocfilehash: 3d683ada6401c4ba4f2e232948e9712643339fd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: daba400b9daadf464c4c125ad266745237e71367
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91533465"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142506"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-net"></a>Aan de slag met IoT Hub module-identiteit en-module twee (.NET)
 
@@ -54,7 +54,7 @@ Aan het eind van deze zelfstudie beschikt u over twee .NET-consoletoepassingen:
 
 In deze sectie maakt u een .NET-consoletoepassing op het gesimuleerde apparaat waarmee de gerapporteerde eigenschappen van de moduledubbel worden bijgewerkt.
 
-Voordat u begint, moet u uw module connection string ophalen. Meld u aan bij [Azure Portal](https://portal.azure.com/). Navigeer naar uw hub en selecteer **IOT-apparaten**. **MyFirstDevice**zoeken. Selecteer **myFirstDevice** om deze te openen en selecteer vervolgens **myFirstModule** om het te openen. Kopieer in **module-identiteits Details**de **verbindings reeks (primaire sleutel)** wanneer dit nodig is in de volgende procedure.
+Voordat u begint, moet u uw module connection string ophalen. Meld u aan bij de [Azure-portal](https://portal.azure.com/). Navigeer naar uw hub en selecteer **IOT-apparaten**. **MyFirstDevice**zoeken. Selecteer **myFirstDevice** om deze te openen en selecteer vervolgens **myFirstModule** om het te openen. Kopieer in **module-identiteits Details**de **verbindings reeks (primaire sleutel)** wanneer dit nodig is in de volgende procedure.
 
    ![Details van de Azure Portal-module](./media/iot-hub-csharp-csharp-module-twin-getstarted/module-identity-detail.png)
 
@@ -181,4 +181,4 @@ Als u aan de slag wilt gaan met IoT Hub en andere IoT-scenario's wilt verkennen,
 
 * [Aan de slag met apparaatbeheer](iot-hub-node-node-device-management-get-started.md)
 
-* [Aan de slag met IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [Aan de slag met IoT Edge](../iot-edge/quickstart-linux.md)

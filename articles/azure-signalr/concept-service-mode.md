@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: kenchen
-ms.openlocfilehash: 2cdce64b0ff03521a5848e2b4fd6e01431b5cc16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60f1ab0440120cb9a96e6c05a4fc1987ead29188
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89514811"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143252"
 ---
 # <a name="service-mode-in-azure-signalr-service"></a>Service modus in azure signalerings service
 
@@ -51,11 +51,11 @@ Er is in deze modus geen server verbinding (als u probeert de Service-SDK te geb
 > [!NOTE]
 > Zowel de REST API als de WebSocket-methode worden ondersteund in de service [Management SDK](https://github.com/Azure/azure-signalr/blob/dev/docs/management-sdk-guide.md)van signalering. Als u een andere taal dan .NET gebruikt, kunt u ook hand matig de REST-Api's aanroepen volgens deze [specificatie](https://github.com/Azure/azure-signalr/blob/dev/docs/rest-api.md).
 >
-> Als u gebruikmaakt van Azure Functions, kunt u de [service bindingen van de signalering voor Azure functions](https://docs.microsoft.com/azure/azure-functions/functions-bindings-signalr-service) (hierna functie bindingen genoemd) gebruiken om berichten te verzenden als een uitvoer binding.
+> Als u gebruikmaakt van Azure Functions, kunt u de [service bindingen van de signalering voor Azure functions](../azure-functions/functions-bindings-signalr-service.md) (hierna functie bindingen genoemd) gebruiken om berichten te verzenden als een uitvoer binding.
 
 Het is ook mogelijk dat uw server toepassing berichten en verbindings gebeurtenissen van clients ontvangt. De service levert berichten en verbindings gebeurtenissen aan vooraf geconfigureerde eind punten (upstream genoemd) met behulp van webhooks. Vergelijken met de standaard modus is het mogelijk dat persistentie en HTTP-aanvragen minder efficiënt zijn dan WebSocket-verbindingen.
 
-Zie dit [document](https://docs.microsoft.com/azure/azure-signalr/concept-upstream)voor meer informatie over het configureren van upstream.
+Zie dit [document](./concept-upstream.md)voor meer informatie over het configureren van upstream.
 
 Hieronder ziet u een diagram dat laat zien hoe de serverloze modus werkt:
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/06/2019
-ms.openlocfilehash: 2e96ac5052221475d9aec11d4ed96e8f9c308d70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 024fa2f86890c6e8e791b5cf66a4e67328f62f63
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710104"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143889"
 ---
 # <a name="troubleshooting-the-log-analytics-vm-extension-in-azure-monitor"></a>Problemen met de Log Analytics VM-extensie in Azure Monitor oplossen
 Dit artikel biedt hulp bij het oplossen van problemen die u mogelijk ondervindt met de Log Analytics VM-extensie voor virtuele Windows-en Linux-machines die worden uitgevoerd op Microsoft Azure, en stelt mogelijke oplossingen voor om deze op te lossen.
@@ -52,7 +52,7 @@ Als de *log Analytics agent voor Linux* VM-extensie niet wordt geïnstalleerd of
 
 1. Als de extensie status *onbekend* is, controleert u of de Azure VM-agent is geïnstalleerd en goed werkt door het logboek bestand van de VM-agent te controleren `/var/log/waagent.log`
    * Als het logboek niet bestaat, is de VM-agent niet geïnstalleerd.
-   * [De Azure VM-agent installeren op virtuele Linux-machines](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux#installation)
+   * [De Azure VM-agent installeren op virtuele Linux-machines](../../virtual-machines/extensions/agent-linux.md#installation)
 2. Raadpleeg voor andere slechte statussen de Log Analytics agent voor Linux VM extension logboek bestanden in `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/extension.log` en `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/CommandExecution.log`
 3. Als de status van de extensie in orde is, maar de gegevens niet worden geüpload, controleert u de Log Analytics agent voor Linux-logboek bestanden in `/var/opt/microsoft/omsagent/log/omsagent.log`
 
@@ -60,5 +60,4 @@ Zie [Troubleshooting Linux Extensions](../../virtual-machines/extensions/oms-lin
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [problemen met azure log Analytics Linux-agent oplossen](agent-linux-troubleshoot.md)voor aanvullende richt lijnen voor probleem oplossing met betrekking tot de log Analytics-agent voor Linux gehost op computers buiten Azure.  
-
+Zie [problemen met azure log Analytics Linux-agent oplossen](agent-linux-troubleshoot.md)voor aanvullende richt lijnen voor probleem oplossing met betrekking tot de log Analytics-agent voor Linux gehost op computers buiten Azure.

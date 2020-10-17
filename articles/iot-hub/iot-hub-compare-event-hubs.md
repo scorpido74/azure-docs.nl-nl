@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: System Architecture'
-ms.openlocfilehash: 1b51e2338dabd34ec69d311a9eb1a5c4a644f628
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56bb179c50862f09f1b789c359db97976017bbb5
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87322751"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142760"
 ---
 # <a name="connecting-iot-devices-to-azure-iot-hub-and-event-hubs"></a>IoT-apparaten verbinden met Azure: IoT Hub en Event Hubs
 
@@ -26,7 +26,7 @@ Azure biedt services die specifiek zijn ontwikkeld voor diverse soorten connecti
 
 Azure IoT Hub is de Cloud gateway die IoT-apparaten verbindt met het verzamelen van gegevens en het maken van zakelijke inzichten en automatisering. Daarnaast bevat IoT Hub functies die de relatie tussen uw apparaten en uw back-end-systemen verrijkt. Bidirectionele communicatie mogelijkheden betekenen dat wanneer u gegevens van apparaten ontvangt, ook opdrachten en beleids regels terug naar apparaten kunnen worden verzonden. Gebruik bijvoorbeeld Cloud-naar-apparaat-berichten om eigenschappen bij te werken of acties voor Apparaatbeheer aan te roepen. Met Cloud-naar-apparaat-communicatie kunt u ook Cloud Intelligence naar uw edge-apparaten verzenden met Azure IoT Edge. De unieke identiteit op apparaatniveau die wordt verschaft door IoT Hub helpt uw IoT-oplossing beter te beveiligen tegen mogelijke aanvallen. 
 
-[Azure Event hubs](../event-hubs/event-hubs-what-is-event-hubs.md) is de Big data streaming service van Azure. Het is ontworpen voor scenario's voor gegevensstromen met een hoge doorvoer waarbij klanten miljarden aanvragen per dag kunnen verzenden. Event Hubs maakt gebruik van een gepartitioneerd verbruikersmodel om uw stroom uit te breiden, en is geïntegreerd in de big data- en analyseservices van Azure, met inbegrip van Databricks, Stream Analytics, ADLS en HDInsight. Met functies als Event Hubs vastleggen en automatisch verg Roten, is deze service ontworpen ter ondersteuning van uw big data apps en oplossingen. Daarnaast gebruikt IoT Hub Event Hubs voor het pad van de telemetrie stroom, zodat uw IoT-oplossing ook profiteert van de enorme kracht van Event Hubs.
+[Azure Event hubs](../event-hubs/event-hubs-about.md) is de Big data streaming service van Azure. Het is ontworpen voor scenario's voor gegevensstromen met een hoge doorvoer waarbij klanten miljarden aanvragen per dag kunnen verzenden. Event Hubs maakt gebruik van een gepartitioneerd verbruikersmodel om uw stroom uit te breiden, en is geïntegreerd in de big data- en analyseservices van Azure, met inbegrip van Databricks, Stream Analytics, ADLS en HDInsight. Met functies als Event Hubs vastleggen en automatisch verg Roten, is deze service ontworpen ter ondersteuning van uw big data apps en oplossingen. Daarnaast gebruikt IoT Hub Event Hubs voor het pad van de telemetrie stroom, zodat uw IoT-oplossing ook profiteert van de enorme kracht van Event Hubs.
 
 Om samen te vatten zijn beide oplossingen ontworpen voor gegevens opname op grote schaal. Alleen IoT Hub biedt de uitgebreide IoT-specifieke mogelijkheden die zijn ontworpen voor u om de bedrijfs waarde van uw IoT-apparaten met de Azure-Cloud te maximaliseren.  Als uw IoT-traject gewoon begint, kunt u vanaf IoT Hub ter ondersteuning van uw scenario's voor gegevens opname zorgen dat u direct toegang hebt tot de volledige IoT-mogelijkheden, zodra uw zakelijke en technische behoeften hiervoor zijn vereist.
 

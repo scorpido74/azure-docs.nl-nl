@@ -4,12 +4,12 @@ description: Meer informatie over de ondersteunde services en het gebeurtenis sc
 ms.subservice: logs
 ms.topic: reference
 ms.date: 09/01/2020
-ms.openlocfilehash: 17b4b161e76f018d8f669ee7e9b5dd578bb3e035
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9d3dafdf62bda2d07eb7f9d7c357f61ec913d44
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91278393"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144010"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Algemeen en specifiek service schema voor Azure-resource logboeken
 
@@ -64,7 +64,7 @@ Het schema voor resource logboeken varieert afhankelijk van de categorie resourc
 | Azure Data Explorer | [Azure Data Explorer-logboeken](/azure/data-explorer/using-diagnostic-logs) |
 | Azure Database for MySQL | [Diagnostische logboeken Azure Database for MySQL](../../mysql/concepts-server-logs.md#diagnostic-logs) |
 | Azure Database for PostgreSQL | [Azure Database for PostgreSQL logboeken](../../postgresql/concepts-server-logs.md#resource-logs) |
-| Azure Databricks | [Registratie in diagnoselogboek in Azure Databricks](https://docs.microsoft.com/azure/databricks/administration-guide/account-settings/azure-diagnostic-logs) |
+| Azure Databricks | [Registratie in diagnoselogboek in Azure Databricks](/azure/databricks/administration-guide/account-settings/azure-diagnostic-logs) |
 | Azure Digital Twins | [Diagnostische gegevens over Azure Digital Apparaatdubbels instellen](../../digital-twins/troubleshoot-diagnostics.md#log-schemas)
 | Event Hubs |[Azure Event Hubs-logboeken](../../event-hubs/event-hubs-diagnostic-logs.md) |
 | ExpressRoute | Het schema is niet beschikbaar. |
@@ -96,4 +96,3 @@ Het schema voor resource logboeken varieert afhankelijk van de categorie resourc
 * [Resource bron logboeken streamen naar **Event hubs**](./resource-logs.md#send-to-azure-event-hubs)
 * [Diagnostische instellingen voor bron logboek wijzigen met behulp van de Azure Monitor REST API](/rest/api/monitor/diagnosticsettings)
 * [Logboeken analyseren vanuit Azure Storage met Log Analytics](./resource-logs.md#send-to-log-analytics-workspace)
-
