@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: System Architecture'
-ms.openlocfilehash: 9ae21b2a6d470b959f5e869e8a9edda9c56bec73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a58e141c6232db08b125b265e3d4ad74c784ba24
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90019560"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152191"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Referentie-IoT Hub-eind punten
 
@@ -95,7 +95,7 @@ Zie [quota's en beperken](iot-hub-devguide-quotas-throttling.md)voor de limieten
 
 In een IoT-oplossing zit een *veld Gateway* tussen uw apparaten en uw IOT hub-eind punten. Het bevindt zich doorgaans dicht bij uw apparaten. Uw apparaten communiceren rechtstreeks met de veld Gateway met behulp van een protocol dat door de apparaten wordt ondersteund. De veld Gateway maakt verbinding met een IoT Hub-eind punt met behulp van een protocol dat wordt ondersteund door IoT Hub. Een veld Gateway kan een specifiek hardwareapparaat zijn of een computer met een laag energie verbruik aangepaste gateway software.
 
-U kunt [Azure IOT Edge](/azure/iot-edge/) gebruiken om een veld Gateway te implementeren. IoT Edge biedt functionaliteit zoals multiplex communicatie van meerdere apparaten op dezelfde IoT Hub verbinding.
+U kunt [Azure IOT Edge](../iot-edge/index.yml) gebruiken om een veld Gateway te implementeren. IoT Edge biedt functionaliteit zoals multiplex communicatie van meerdere apparaten op dezelfde IoT Hub verbinding.
 
 ## <a name="next-steps"></a>Volgende stappen
 

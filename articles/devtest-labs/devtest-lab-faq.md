@@ -3,12 +3,12 @@ title: Azure DevTest Labs Veelgestelde vragen | Microsoft Docs
 description: In dit artikel vindt u antwoorden op enkele veelgestelde vragen over Azure DevTest Labs.
 ms.topic: article
 ms.date: 07/17/2020
-ms.openlocfilehash: 3f36b8238ccb69b3b1f14166b522e47d5debe54e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6f4c0e34242677eca6a32af4731817085be12436
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87289371"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144578"
 ---
 # <a name="azure-devtest-labs-faq"></a>Veelgestelde vragen over Azure DevTest Labs
 Krijg antwoorden op enkele van de meest voorkomende vragen over Azure DevTest Labs.
@@ -145,7 +145,7 @@ Scenario voor afzonderlijke resource groep:
 -   DevTest Labs maakt een resource groep voor gedeelde IP-computers die tot dezelfde grootte behoren.
 
 Scenario voor een gemeen schappelijke resource groep:
--   Alle virtuele machines zijn in de gemeen schappelijke resource groep die u opgeeft. Meer informatie over [de toewijzing van resource groepen voor het lab](https://aka.ms/RGControl).
+-   Alle virtuele machines zijn in de gemeen schappelijke resource groep die u opgeeft. Meer informatie over [de toewijzing van resource groepen voor het lab](./resource-group-control.md).
 
 ### <a name="how-do-i-maintain-a-naming-convention-across-my-devtest-labs-environment"></a>Hoe kan ik een naamgevings Conventie in mijn DevTest Labs-omgeving behouden?
 U kunt de huidige ondernemings naamgevings conventies uitbreiden naar Azure-bewerkingen en ze consistent maken in de DevTest Labs-omgeving. Wanneer u DevTest Labs implementeert, is het raadzaam om specifiek start beleid te gebruiken. U implementeert dit beleid door een centraal script en JSON-sjabloon om consistentie af te dwingen. Naamgevings beleid kan worden geïmplementeerd via Azure-beleid dat wordt toegepast op het abonnements niveau. Zie Azure Policy-voor [beelden](../governance/policy/samples/index.md)voor json-voor beelden voor Azure Policy.
@@ -200,7 +200,7 @@ Uw bestaande Vm's kopiëren naar DevTest Labs:
 Ja, u kunt meerdere schijven koppelen aan uw Vm's.
 
 ### <a name="are-gen-2-images-supported-by-devtest-labs"></a>Worden gen 2-afbeeldingen ondersteund door DevTest Labs?
-Ja. De DevTest Labs-service ondersteunt [gen 2-installatie kopieën](../virtual-machines/windows/generation-2.md). Als zowel de versies van 1 en Diversen 2 beschikbaar zijn voor een installatie kopie, wordt in DevTest Labs echter alleen de versie 1 van de installatie kopie weer gegeven bij het maken van een virtuele machine. U ziet de installatie kopie als er slechts een versie van gen 2 beschikbaar is. 
+Ja. De DevTest Labs-service ondersteunt [gen 2-installatie kopieën](../virtual-machines/generation-2.md). Als zowel de versies van 1 en Diversen 2 beschikbaar zijn voor een installatie kopie, wordt in DevTest Labs echter alleen de versie 1 van de installatie kopie weer gegeven bij het maken van een virtuele machine. U ziet de installatie kopie als er slechts een versie van gen 2 beschikbaar is. 
 
 ### <a name="if-i-want-to-use-a-windows-os-image-for-my-testing-do-i-have-to-purchase-an-msdn-subscription"></a>Als ik een installatie kopie van een Windows-besturings systeem wil gebruiken voor mijn tests, moet ik dan een MSDN-abonnement aanschaffen?
 Voer een van de volgende stappen uit om Windows-client installatie kopieën (Windows 7 of een hogere versie) te gebruiken voor het ontwikkelen of testen in Azure:
@@ -277,7 +277,7 @@ Als u het uploaden van VHD-bestanden voor het maken van aangepaste installatie k
 
 Zoeken naar het doel-opslag account dat is gekoppeld aan uw Lab:
 
-1.  Meld u aan bij [Azure Portal](https://portal.azure.com).
+1.  Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2.  Selecteer **resource groepen**in het menu links.
 3.  Zoek en selecteer de resource groep die is gekoppeld aan uw Lab.
 4.  Selecteer een van de opslag accounts onder **overzicht**.

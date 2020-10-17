@@ -3,12 +3,12 @@ title: Een lab configureren om Extern bureaublad-gateway te gebruiken in Azure D
 description: Informatie over het configureren van een lab in Azure DevTest Labs met een extern bureau blad-gateway om beveiligde toegang tot de Lab-Vm's te garanderen zonder dat de RDP-poort moet worden weer gegeven.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: bc45a0c2953f8f84289fa01d4af72bf98544bd7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b48a0709deb21ca0f8a27d1cf953c7d8d4ba2cc8
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87288073"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144707"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>Uw Lab in Azure DevTest Labs configureren voor het gebruik van een extern bureau blad-gateway
 In Azure DevTest Labs kunt u een extern bureau blad-gateway voor uw lab configureren om te zorgen voor veilige toegang tot de virtuele lab-machines (Vm's) zonder dat de RDP-poort moet worden weer gegeven. Het Lab biedt een centrale locatie voor uw Lab-gebruikers om te zien en verbinding te maken met alle virtuele machines waartoe ze toegang hebben. De knop **verbinding maken** op de pagina **virtuele machine** maakt een apparaat-specifiek RDP-bestand dat u kunt openen om verbinding te maken met de computer. U kunt de RDP-verbinding verder aanpassen en beveiligen door uw Lab te koppelen aan een extern bureau blad-gateway. 
@@ -65,7 +65,7 @@ az resource show --name {lab-name} --resource-type 'Microsoft.DevTestLab/labs' -
 
 Configureer het lab voor het gebruik van de token verificatie met behulp van de volgende stappen:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer **alle services**en selecteer vervolgens **DevTest Labs** in de lijst.
 1. Selecteer in de lijst met Labs uw **Lab**.
 1. Selecteer op de pagina Lab de optie **configuratie en beleid**.
@@ -79,7 +79,7 @@ Configureer het lab voor het gebruik van de token verificatie met behulp van de 
 1. **Opslaan** Gewijzigde.
 
     > [!NOTE] 
-    > Als u op **Opslaan**klikt, gaat u akkoord met [de licentie voorwaarden van extern bureaublad-gateway](https://www.microsoft.com/licensing/product-licensing/products). Zie voor meer informatie over de externe gateway [Welkom bij extern bureaublad-services](https://aka.ms/rds) en [Implementeer uw extern bureau blad-omgeving](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure).
+    > Als u op **Opslaan**klikt, gaat u akkoord met [de licentie voorwaarden van extern bureaublad-gateway](https://www.microsoft.com/licensing/product-licensing/products). Zie voor meer informatie over de externe gateway [Welkom bij extern bureaublad-services](/windows-server/remote/remote-desktop-services/Welcome-to-rds) en [Implementeer uw extern bureau blad-omgeving](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure).
 
 
 Zie [Set-DevTestLabGateway.ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Set-DevTestLabGateway.ps1) voor een Power shell-voorbeeld script voor het instellen van de **Gateway-hostnaam** en de geheime instellingen van het **Gateway token** als u de test omgeving via Automation wilt configureren. De [github-opslag plaats van Azure DevTest Labs](https://github.com/Azure/azure-devtestlab) biedt ook een Azure Resource Manager sjabloon waarmee een lab wordt gemaakt of bijgewerkt met de instellingen van de **Gateway-hostnaam** en het **Gateway token geheim** .
@@ -94,7 +94,7 @@ Hier volgt een voor beeld van een NSG die verkeer alleen toestaat die de gateway
 ## <a name="sample-to-create-a-remote-desktop-gateway"></a>Voor beeld voor het maken van een extern bureau blad-gateway
 
 > [!NOTE] 
-> Met behulp van de voorbeeld sjablonen gaat u akkoord met de [licentie voorwaarden van extern bureaublad-gateway](https://www.microsoft.com/licensing/product-licensing/products). Zie voor meer informatie over de externe gateway [Welkom bij extern bureaublad-services](https://aka.ms/rds) en [Implementeer uw extern bureau blad-omgeving](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure).
+> Met behulp van de voorbeeld sjablonen gaat u akkoord met de [licentie voorwaarden van extern bureaublad-gateway](https://www.microsoft.com/licensing/product-licensing/products). Zie voor meer informatie over de externe gateway [Welkom bij extern bureaublad-services](/windows-server/remote/remote-desktop-services/Welcome-to-rds) en [Implementeer uw extern bureau blad-omgeving](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure).
 
 De [github-opslag plaats van Azure DevTest Labs](https://github.com/Azure/azure-devtestlab) biedt enkele voor beelden voor het instellen van de bronnen die nodig zijn voor het gebruik van token verificatie en extern bureau blad-gateway met DevTest Labs. Deze voor beelden bevatten Azure Resource Manager sjablonen voor gateway machines, Lab-instellingen en functie-apps.
 

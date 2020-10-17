@@ -3,12 +3,12 @@ title: Toegangs regels voor Firewall
 description: Configureer regels voor toegang tot een Azure container Registry van achter een firewall, door toegang toe te staan (' white list ') REST API en domein namen van gegevens eindpunten of servicespecifieke IP-adresbereiken.
 ms.topic: article
 ms.date: 05/18/2020
-ms.openlocfilehash: 679dbcaf30653b855d35825f94e93f87ac68c322
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9ecd5f802176cdc6881294f5dedefd3dd467244
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86246976"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148512"
 ---
 # <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>Regels configureren voor toegang tot een Azure container Registry achter een firewall
 
@@ -113,7 +113,7 @@ Zoek naar de specifieke regio, zoals **Storage. AustraliaCentral**.
 
 ## <a name="allow-access-by-service-tag"></a>Toegang per service-tag toestaan
 
-Gebruik in een virtueel Azure-netwerk netwerk beveiligings regels voor het filteren van verkeer van een bron, zoals een virtuele machine, naar een container register. Gebruik het **AzureContainerRegistry** - [service label](../virtual-network/security-overview.md#service-tags)om het maken van de regels van het Azure-netwerk te vereenvoudigen. Een servicetag vertegenwoordigt een groep IP-adres voorvoegsels voor de toegang tot een Azure-service wereld wijd of per Azure-regio. Het label wordt automatisch bijgewerkt wanneer adressen worden gewijzigd. 
+Gebruik in een virtueel Azure-netwerk netwerk beveiligings regels voor het filteren van verkeer van een bron, zoals een virtuele machine, naar een container register. Gebruik het **AzureContainerRegistry** - [service label](../virtual-network/network-security-groups-overview.md#service-tags)om het maken van de regels van het Azure-netwerk te vereenvoudigen. Een servicetag vertegenwoordigt een groep IP-adres voorvoegsels voor de toegang tot een Azure-service wereld wijd of per Azure-regio. Het label wordt automatisch bijgewerkt wanneer adressen worden gewijzigd. 
 
 Maak bijvoorbeeld een regel voor een uitgaande netwerk beveiligings groep met het doel **AzureContainerRegistry** om verkeer naar een Azure container Registry toe te staan. Als u alleen toegang tot de servicetag wilt toestaan in een specifieke regio, geeft u de regio op in de volgende indeling: **AzureContainerRegistry**. [*regio naam*].
 
@@ -183,7 +183,7 @@ Zie de richt lijnen voor het configureren van [MCR-firewall regels](https://gith
 
 * Meer informatie over [Aanbevolen procedures voor Azure voor netwerk beveiliging](../security/fundamentals/network-best-practices.md)
 
-* Meer informatie over [beveiligings groepen](../virtual-network/security-overview.md) in een virtueel Azure-netwerk
+* Meer informatie over [beveiligings groepen](../virtual-network/network-security-groups-overview.md) in een virtueel Azure-netwerk
 
 * Meer informatie over het instellen van een [persoonlijke koppeling](container-registry-private-link.md) voor een container register
 

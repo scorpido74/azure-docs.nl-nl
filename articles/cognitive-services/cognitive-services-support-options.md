@@ -1,28 +1,25 @@
 ---
-title: Opties voor ondersteuning en hulp
-titleSuffix: Azure Cognitive Services
+title: Ondersteunings-en Help-opties voor Azure Cognitive Services
 description: Help en ondersteuning verkrijgen voor vragen en problemen bij het maken van toepassingen die worden geïntegreerd met Azure Cognitive Services.
 services: cognitive-services
-author: IEvangelist
+author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 11/22/2019
-ms.author: dapine
-ms.openlocfilehash: 0bf4750d5db5961ff8c572c3aa52cc06faf697c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/11/2020
+ms.author: erhopf
+ms.openlocfilehash: d99cfc8b50155eb4cb2aecb3cb770f71b927ce1d
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83590533"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148692"
 ---
-# <a name="azure-cognitive-services-support-and-feedback-options"></a>Ondersteuning en feedback opties voor Azure Cognitive Services
+# <a name="azure-cognitive-services-support-and-help-options"></a>Ondersteunings-en Help-opties voor Azure Cognitive Services
 
 Gaat u gewoon door met het verkennen van de functionaliteit van Azure Cognitive Services? Misschien implementeert u een nieuwe functie in uw toepassing. Of nadat u de service hebt gebruikt, hebt u suggesties over hoe u deze kunt verbeteren? Hier vindt u opties voor het verkrijgen van ondersteuning, het actueel blijven, het geven van feedback en het rapporteren van fouten voor Cognitive Services.
 
-## <a name="get-support"></a>Ondersteuning krijgen
-
-### <a name="create-an-azure-support-request"></a>Een Azure-ondersteuningsaanvraag maken
+## <a name="create-an-azure-support-request"></a>Een Azure-ondersteuningsaanvraag maken
 
 <div class='icon is-large'>
     <img alt='Azure support' src='https://docs.microsoft.com/media/logos/logo_azure.svg'>
@@ -33,78 +30,82 @@ Verken het aanbod aan [ondersteuningsopties voor Azure en kies het abonnement](h
 * [Azure-portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 * [Azure-portal voor de overheid van de Verenigde Staten](https://portal.azure.us)
 
-### <a name="search"></a>Zoeken
+## <a name="post-a-question-on-microsoft-qa"></a>Een vraag stellen op Microsoft Q&A
 
-<div class='icon is-large'>
-    <img alt='Search' src='https://docs.microsoft.com/media/common/i_search.svg'>
-</div>
+Voor snelle en betrouw bare antwoorden op uw technische product vragen van micro soft-technici, Azure Most Valuable Professionals (Mvp's) of onze expert Community, kunt u contact met ons opnemen op [micro soft Q&A](https://docs.microsoft.com/answers/products/azure?product=all), het voorkeurs doel van Azure voor ondersteuning van de community.
 
-Voor snellere resultaten kunt u een zoek opdracht uitvoeren naar relevante sites, zoals [stack overflow](https://stackoverflow.com/), [micro soft docs](https://docs.microsoft.com/azure/cognitive-services/)of [github code samples](https://github.com/azure-samples). Gebruik de `site:` query notatie in uw [favoriete zoek machine](https://bing.com), bijvoorbeeld:
+Als u via zoeken geen antwoord op uw probleem kunt vinden, dient u een nieuwe vraag in bij Microsoft Q&A. Gebruik een van de volgende tags wanneer u uw vraag stelt:
 
-```
-{search keywords} site:stackoverflow.com
-```
+* [Cognitive Services](https://docs.microsoft.com/answers/topics/azure-cognitive-services.html)
 
-Waar `{search keywords}` is de context van uw zoek opdracht. U kunt deze Zoek opdrachten op de juiste manier gebruiken:
+**Vision**
 
- - Stack Overflow: `site:stackoverflow.com`
- - Microsoft Docs: `site:docs.microsoft.com`
- - Voor beelden van GitHub: `site:github.com/azure-samples`
+* [Computer Vision](https://docs.microsoft.com/answers/topics/azure-computer-vision.html)
+* [Custom Vision](https://docs.microsoft.com/answers/topics/azure-custom-vision.html)
+* [Face](https://docs.microsoft.com/answers/topics/azure-face.html)
+* [Form Recognizer](https://docs.microsoft.com/answers/topics/azure-form-recognizer.html)
+* [Video Indexer](https://docs.microsoft.com/answers/topics/azure-media-services.html)
 
-### <a name="post-a-question-on-stack-overflow"></a>Een vraag stellen op Stack Overflow
+**Taal**
+
+* [Immersive Reader](https://docs.microsoft.com/answers/topics/azure-immersive-reader.html)
+* [Language Understanding (LUIS)](https://docs.microsoft.com/answers/topics/azure-language-understanding.html)
+* [QnA Maker](https://docs.microsoft.com/answers/topics/azure-qna-maker.html)
+* [Tekstanalyse](https://docs.microsoft.com/answers/topics/azure-text-analytics.html)
+* [Translator](https://docs.microsoft.com/answers/topics/azure-translator.html)
+
+**Speech**
+
+* [Speech Service](https://docs.microsoft.com/answers/topics/azure-speech.html)
+
+
+**Besluit**
+
+* [Anomaliedetectie](https://docs.microsoft.com/answers/topics/azure-anomaly-detector.html) 
+* [Content Moderator](https://docs.microsoft.com/answers/topics/azure-content-moderator.html)
+* [Metrics Advisor (preview)]()
+* [Personalizer](https://docs.microsoft.com/answers/topics/azure-personalizer.html)
+
+## <a name="post-a-question-to-stack-overflow"></a>Een vraag stellen aan Stack Overflow
 
 <div class='icon is-large'>
     <img alt='Stack Overflow' src='https://docs.microsoft.com/media/logos/logo_stackoverflow.svg'>
 </div>
 
-Als u geen antwoord op uw probleem kunt vinden met het zoekvak op Stack Overflow, dient u een nieuwe vraag te verzenden. Stack Overflow is het voorkeurskanaal voor vragen over ontwikkeling. Het is waar leden van de Stack Overflow Community en micro soft-team leden rechtstreeks betrokken zijn bij het helpen oplossen van uw problemen.
+Voor antwoorden op uw ontwikkelaarsvragen in het grootste communityecosysteem voor ontwikkelaars kunt u uw vraag stellen op Stack Overflow.
 
-[Hier](https://go.microsoft.com/fwlink/?linkid=2126464)kunt u een vraag plaatsen. Gebruik de juiste tag voor uw vraag, zodat u zeker weet dat u de vraag ziet.
+Als u een nieuwe vraag indient bij Stack Overflow, moet u een of meer van de volgende tags gebruiken wanneer u de vraag opstelt:
 
-> [!TIP]
-> De volgende berichten van Stack Overflow bevatten tips voor het maken van vragen en het toevoegen van de bron code. Als u deze richt lijnen volgt, kunt u de kans verg Roten dat leden van de Community uw vraag snel beoordelen en erop reageren:
-> * [Hoe kan ik een goede vraag stellen?](https://stackoverflow.com/help/how-to-ask)
-> * [Hoe kan ik een mini maal reproduceerbaar voor beeld maken?](https://stackoverflow.com/help/minimal-reproducible-example)
+* [Cognitive Services](https://stackoverflow.com/questions/tagged/azure-cognitive-services)
 
-## <a name="stay-informed"></a>Op de hoogte blijven
+**Vision**
 
-U kunt op de hoogte blijven van de functies in een nieuwe release of nieuws over de Azure-blog, zodat u het verschil tussen een programmeer fout, een service-fout of een functie die nog niet beschikbaar is in Cognitive Services.
+* [Computer Vision](https://stackoverflow.com/search?q=azure+computer+vision)
+* [Custom Vision](https://stackoverflow.com/search?q=azure+custom+vision)
+* [Face](https://stackoverflow.com/search?q=azure+face)
+* [Form Recognizer](https://stackoverflow.com/search?q=azure+form+recognizer)
+* [Video Indexer](https://stackoverflow.com/search?q=azure+video+indexer)
 
-### <a name="release-notes"></a>Releaseopmerkingen
+**Taal**
 
-<div class='icon is-large'>
-    <img alt='Release notes' src='https://docs.microsoft.com/media/common/i_learn-about.svg'>
-</div>
+* [Immersive Reader](https://stackoverflow.com/search?q=azure+immersive+reader)
+* [Language Understanding (LUIS)](https://stackoverflow.com/search?q=azure+luis+language+understanding)
+* [QnA Maker](https://stackoverflow.com/search?q=azure+qna+maker)
+* [Tekstanalyse](https://stackoverflow.com/search?q=azure+text+analytics)
+* [Translator](https://stackoverflow.com/search?q=azure+translator+text)
 
-De opmerkingen bij de Cognitive Services-release worden bijgewerkt wanneer er nieuwe releases beschikbaar worden gesteld. De opmerkingen bevatten informatie over nieuwe functies, verbeteringen en oplossingen voor problemen.
+**Speech**
 
- - [Custom Vision](custom-vision-service/release-notes.md)
- - [Face](face/releasenotes.md)
- - [Language Understanding (LUIS)](LUIS/whats-new.md)
- - [Spraak Services](speech-service/releasenotes.md)
- - [SDK voor speech Services](speech-service/devices-sdk-release-notes.md)
- - [Tekstanalyse](text-analytics/whats-new.md)
- - [Video Indexer](../media-services/video-indexer/release-notes.md)
+* [Speech Service](https://stackoverflow.com/search?q=azure+speech)
 
-### <a name="azure-blog"></a>Azure Blog
+**Besluit**
 
-<div class='icon is-large'>
-    <img alt='Stay informed' src='https://docs.microsoft.com/media/common/i_blog.svg'>
-</div>
+* [Anomaliedetectie](https://stackoverflow.com/search?q=azure+anomaly+detector) 
+* [Content Moderator](https://stackoverflow.com/search?q=azure+content+moderator)
+* [Metrics Advisor (preview)](https://stackoverflow.com/search?q=azure+metrics+advisor)
+* [Personalizer](https://stackoverflow.com/search?q=azure+personalizer)
 
-Nieuws over Cognitive Services wordt gedeeld in de [Azure-blog](https://azure.microsoft.com/blog/topics/cognitive-services/).
-
-### <a name="reddit"></a>Reddit
-
-<div class='icon is-large'>
-    <img alt='Reddit' src='https://docs.microsoft.com/media/logos/logo_reddit.svg'>
-</div>
-
-Reddit is een door de Community gestuurde discussie website met de meest recente gesp rekken over [Azure Cognitive Services](https://www.reddit.com/r/AZURE/search/?q=Cognitive%20Services&restrict_sr=1) News, Help, info, tips en trucs. Geregistreerde leden kunnen inhoud verzenden en anderen kunnen hieraan stemmen, waardoor de meest relevante inhoud op biologische wijze wordt verhoogd naar de bovenkant van hun feeds.
-
-## <a name="give-feedback"></a>Feedback geven
-
-### <a name="uservoice-forum"></a>UserVoice-forum
+## <a name="submit-feedback-on-user-voice"></a>Feedback verzenden over gebruikers spraak
 
 <div class='icon is-large'>
     <img alt='UserVoice' src='https://docs.microsoft.com/media/logos/logo-uservoice.svg'>
@@ -112,14 +113,9 @@ Reddit is een door de Community gestuurde discussie website met de meest recente
 
 Als u nieuwe functies wilt aanvragen, plaatst u deze op UserVoice. Deel uw ideeën voor het maken van Cognitive Services en de bijbehorende Api's beter voor de toepassingen die u ontwikkelt. 
 
-> [!NOTE]
-> Hoewel dit een openbaar forum is, wordt hier geen ondersteuning van micro soft verwacht, maar profiteert u van nieuwe functies die u graag in aanstaande Cognitive Services releases zou willen zien.
-
-
 | Service                       | Cognitive Services UserVoice-URL |
 |-------------------------------|---------------|
 | Anomaly Detector              | https://cognitive.uservoice.com/forums/912196-anomaly-detector |
-| Bing-services                 | https://cognitive.uservoice.com/forums/555907-bing-search |
 | Computer Vision               | https://cognitive.uservoice.com/forums/430309-computer-vision |
 | Content Moderator             | https://cognitive.uservoice.com/forums/559960-content-moderator |
 | Custom Vision                 | https://cognitive.uservoice.com/forums/598141-custom-vision-service |
@@ -135,47 +131,14 @@ Als u nieuwe functies wilt aanvragen, plaatst u deze op UserVoice. Deel uw idee�
 | Vertaler               | https://cognitive.uservoice.com/forums/558796-translator |
 | Video Indexer                 | https://cognitive.uservoice.com/forums/598144-video-indexer |
 
-## <a name="report-bugs"></a>Fouten rapporteren
+## <a name="stay-informed"></a>Op de hoogte blijven
 
-### <a name="create-a-github-issue-or-pull-request"></a>Een GitHub-probleem of een pull-aanvraag maken
+U kunt op de hoogte blijven van de functies in een nieuwe release of nieuws over de Azure-blog, zodat u het verschil tussen een programmeer fout, een service-fout of een functie die nog niet beschikbaar is in Cognitive Services.
 
-<div class='icon is-large'>
-    <img alt='GitHub' src='https://docs.microsoft.com/media/logos/logo_octokitty.svg'>
-</div>
-
-Hieronder vindt u drie soorten opslag plaatsen waar een ontwikkelaar een probleem kan posten of een pull-aanvraag kan maken. Als u een probleem wilt maken, gebruikt u het tabblad *problemen* in de respectieve github-opslag plaats en selecteert u *nieuw probleem*. Als u een correctie wilt Voorst Ellen, verzendt u een pull-aanvraag door rechtstreeks een bestand te bewerken. De pull-aanvraag bevindt zich vervolgens op het tabblad *pull-aanvragen* tot de eigenaar van de opslag plaats deze kan bekijken.
-
-#### <a name="cognitive-services-samples"></a>Cognitive Services-voor beelden
-
-Voor beelden zijn vaak beschikbaar in open bare opslag plaatsen als open source. De Quick start-voor beelden hebben hun eigen opslag plaats en waarnaar wordt verwezen in de micro soft-documentatie. Als er fouten in de code worden gevonden, maakt u een probleem of een pull-aanvraag.
-
-Hier volgt een lijst met de Cognitive Services Snelstartgids en voorbeeld code:
-
-* [Azure-voor beelden-Cognitive Services](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=cognitive&type=&language=)
-* [Cognitive Services Quick starts](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
-* [Cognitive Services: dotnet](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)
-* [Cognitive Services: go](https://github.com/Azure-Samples/azure-sdk-for-go-samples)
-* [Cognitive Services: Java](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
-* [Cognitive Services: Node.js](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
-* [Cognitive Services: python](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
-
-#### <a name="cognitive-services-sdk-source-code"></a>Cognitive Services SDK-bron code
-
-De bron code van de Sdk's toont enkele van de uitkomsten van de SDK voor elke service. Als u een bug hebt gevonden of een correctie wilt Voorst Ellen, kunt u een probleem oplossen of een pull-aanvraag maken.
-
-Hier volgt een lijst met de Cognitive Services SDK-bron code per taal:
-
-* [Azure SDK voor .net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices)
-* [Azure SDK voor Go](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices)<br>
-* [Azure SDK voor Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices)
-* [Azure-SDK voor JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices)
-* [Azure-SDK voor Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices)
-
-#### <a name="azure-cognitive-services-documentation"></a>Documentatie voor Azure Cognitive Services
-
-In de documentatie voor Cognitive Services wordt uitgelegd hoe u de service gebruikt en vindt u voor beelden en bronnen voor de ontwikkelaar. Als u een bug hebt gevonden of een correctie wilt Voorst Ellen, kunt u een probleem oplossen of een pull-aanvraag maken.
-
-[MicrosoftDocs](https://github.com/MicrosoftDocs/azure-docs/tree/master/articles/cognitive-services)
+* Meer informatie over product updates, het plannen en aankondigingen in [Azure-updates](https://azure.microsoft.com/updates/?category=ai-machine-learning&query=Azure%20Cognitive%20Services).
+* Zie wat Cognitive Servicese artikelen onlangs zijn toegevoegd of bijgewerkt in [Wat is er nieuw in docs?](whats-new-docs.md)
+* Nieuws over Cognitive Services wordt gedeeld in de [Azure-blog](https://azure.microsoft.com/blog/topics/cognitive-services/).
+* [Meld u aan bij de conversatie op Reddit](https://www.reddit.com/r/AZURE/search/?q=Cognitive%20Services&restrict_sr=1) over Cognitive Services.
 
 ## <a name="next-steps"></a>Volgende stappen
 

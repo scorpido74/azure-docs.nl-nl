@@ -7,16 +7,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: robinsh
-ms.openlocfilehash: a06583e9aab4b082517d47c1022f7bec5184b9bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d824c94a2c5751013b78c69ed5abd048c50856b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78673384"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151721"
 ---
 # <a name="develop-for-android-things-platform-using-azure-iot-sdks"></a>Ontwikkelen voor Android-platformen met behulp van Azure IoT Sdk's
 
-[Azure IOT hub sdk's](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) bieden ondersteuning voor de eerste laag voor populaire platforms, zoals Windows, Linux, OSX, MBED en mobiele platformen zoals Android en IOS.  Als onderdeel van onze toezeg ging om meer keuze en flexibiliteit in IoT-implementaties mogelijk te maken, ondersteunt de Java SDK ook [Android](https://developer.android.com/things/) -platformen.  Ontwikkel aars kunnen gebruikmaken van de voor delen van Android-besturings systeem aan de kant van het apparaat, terwijl [Azure IOT hub](about-iot-hub.md) als de Central Message hub wordt geschaald naar miljoenen apparaten die met elkaar verbonden zijn.
+[Azure IOT hub sdk's](./iot-hub-devguide-sdks.md) bieden ondersteuning voor de eerste laag voor populaire platforms, zoals Windows, Linux, OSX, MBED en mobiele platformen zoals Android en IOS.  Als onderdeel van onze toezeg ging om meer keuze en flexibiliteit in IoT-implementaties mogelijk te maken, ondersteunt de Java SDK ook [Android](https://developer.android.com/things/) -platformen.  Ontwikkel aars kunnen gebruikmaken van de voor delen van Android-besturings systeem aan de kant van het apparaat, terwijl [Azure IOT hub](about-iot-hub.md) als de Central Message hub wordt geschaald naar miljoenen apparaten die met elkaar verbonden zijn.
 
 Deze zelf studie bevat een overzicht van de stappen voor het bouwen van een toepassing op Android-zaken met behulp van de Azure IoT Java SDK.
 

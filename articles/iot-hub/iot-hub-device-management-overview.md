@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: System Architecture'
-ms.openlocfilehash: 63497553f7cec2edf3c77ba8690dda2b15d104be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ff8ebeaf7c4a219bc403c81dfea62f4657a1fd8
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87324723"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148348"
 ---
 # <a name="overview-of-device-management-with-iot-hub"></a>Overzicht van apparaatbeheer met IoT Hub
 
@@ -78,7 +78,7 @@ Binnen elk van deze vijf fasen zijn er verschillende vereisten voor de apparaato
   
     *Meer lezen*:
     * [De dubbele eigenschappen van een apparaat gebruiken](tutorial-device-twins.md)
-    * [IoT-apparaten op schaal configureren en controleren](iot-hub-auto-device-config.md)
+    * [IoT-apparaten op schaal configureren en controleren](./iot-hub-automatic-device-management.md)
     * [Aanbevolen procedures voor het configureren van apparaten binnen een IoT-oplossing](iot-hub-configuration-best-practices.md)
 
 * **Bewaken**: de verzamelde status van alle apparaten bewaken, de status van lopende bewerkingen bewaken en operators attenderen op problemen die mogelijk hun aandacht vereisen.  Pas de apparaatdubbel toe, zodat apparaten in realtime bewerkingsvoorwaarden en de status van de update-bewerkingen kunnen rapporteren. Bouw krachtige dashboardrapporten die de meeste directe problemen melden via apparaatdubbel-query's.
@@ -86,7 +86,7 @@ Binnen elk van deze vijf fasen zijn er verschillende vereisten voor de apparaato
     *Meer lezen*: 
     * [De dubbele eigenschappen van een apparaat gebruiken](tutorial-device-twins.md)
     * [IoT Hub query taal voor apparaatdubbels, Jobs en bericht routering](iot-hub-devguide-query-language.md)
-    * [IoT-apparaten op schaal configureren en controleren](iot-hub-auto-device-config.md)
+    * [IoT-apparaten op schaal configureren en controleren](./iot-hub-automatic-device-management.md)
     * [Aanbevolen procedures voor het configureren van apparaten binnen een IoT-oplossing](iot-hub-configuration-best-practices.md)
 
 * **Buiten gebruik stellen**: apparaten vervangen of uit bedrijf nemen na een storing, upgrade cyclus of aan het einde van de levens duur van de service.  Gebruik de apparaatdubbel om apparaatgegevens te onderhouden als het fysieke apparaat wordt vervangen, of te archiveren als het apparaat buiten gebruik wordt gesteld. Gebruik het id-register van IoT Hub voor het veilig intrekken van apparaat-id's en -referenties.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: d3fd553e6903951de64c301df94ea9f2fc3eb471
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 68e47fe3cc674542a807ecbabd37cc6b624d5c03
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132088"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145582"
 ---
 # <a name="understand-how-provisioning-integrates-with-azure-monitor-logs"></a>Meer informatie over het inrichten van inrichtingen met Azure Monitor-logboeken
 
@@ -26,7 +26,7 @@ Inrichtings integratie met Azure Monitor logboeken en Log Analytics. Met Azure m
 
 U moet al bekend zijn met Azure monitoring en Log Analytics. Als dat niet het geval is, gaat u naar meer informatie en gaat u terug naar meer informatie over het inrichtings logboek van de toepassing. Zie [Azure monitor Overview](../../azure-monitor/overview.md)voor meer informatie over Azure-bewaking. Zie [overzicht van logboek query's in azure monitor](../../azure-monitor/log-query/log-query-overview.md)voor meer informatie over Azure monitor logboeken en log Analytics.
 
-Zodra u hebt geconfigureerd voor Azure-bewaking, kunt u Logboeken inschakelen voor het inrichten van toepassingen. De optie bevindt zich op de pagina **Diagnostische instellingen** .
+Zodra u Azure monitoring hebt geconfigureerd, kunt u Logboeken inschakelen voor het inrichten van toepassingen. De optie bevindt zich op de pagina **Diagnostische instellingen** .
 
 :::image type="content" source="media/application-provisioning-log-analytics/diagnostic-settings.png" alt-text="Diagnostische instellingen openen" lightbox="media/application-provisioning-log-analytics/diagnostic-settings.png":::
 

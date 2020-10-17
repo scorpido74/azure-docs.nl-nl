@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 06/24/2020
+ms.date: 10/16/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: f7d56ecc7fc6bd850fced33c2c1cf20902bb2df4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 280e5012f7c41a906b5b2e266840ea3c0cc315ba
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85361836"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151683"
 ---
 # <a name="list-azure-role-assignments-using-the-azure-portal"></a>Azure-roltoewijzingen weer geven met behulp van de Azure Portal
 
@@ -140,14 +140,9 @@ Als u het maximum aantal krijgt en u probeert meer roltoewijzingen toe te voegen
 
 ![Toegangs beheer-waarschuwing functie toewijzing toevoegen](./media/role-assignments-list-portal/add-role-assignment-warning.png)
 
-## <a name="download-role-assignments-preview"></a>Roltoewijzingen downloaden (preview-versie)
+## <a name="download-role-assignments"></a>Roltoewijzingen downloaden
 
 U kunt roltoewijzingen in een bereik downloaden in CSV-of JSON-indelingen. Dit kan handig zijn als u de lijst in een werk blad wilt inspecteren of een inventarisatie wilt uitvoeren wanneer u een abonnement migreert.
-
-> [!IMPORTANT]
-> Het downloaden van roltoewijzingen is momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 Bij het downloaden van roltoewijzingen moet u rekening gehouden met de volgende criteria:
 
@@ -163,7 +158,7 @@ Volg deze stappen om roltoewijzingen in een bereik te downloaden.
 
 1. Klik op **Toegangsbeheer (IAM)** .
 
-1. Klik op Roltoewijzingen **downloaden (preview)** om het deel venster roltoewijzingen downloaden te openen.
+1. Klik op Roltoewijzingen **downloaden** om het deel venster roltoewijzingen downloaden te openen.
 
     ![Toegangs beheer-roltoewijzingen downloaden](./media/role-assignments-list-portal/download-role-assignments.png)
 

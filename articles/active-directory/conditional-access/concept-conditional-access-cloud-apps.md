@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f65a43cf5730f56b43d79388a0e73ea93e3225b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 658d18ed3c9eefeedffd82bbccedbde0621fe748
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91801984"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145526"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Voorwaardelijke toegang: Cloud-apps of-acties
 
@@ -122,7 +122,6 @@ Naast de micro soft-apps kunnen beheerders een door Azure AD geregistreerde toep
 
 > [!NOTE]
 > Omdat met het beleid voor voorwaardelijke toegang de vereisten voor het openen van een service worden ingesteld, kunt u dit niet Toep assen op een client toepassing (Public/native). Andere woorden: het beleid wordt niet rechtstreeks ingesteld op een client toepassing (Public/native), maar wordt toegepast wanneer een client een service aanroept. Een beleid dat is ingesteld op share point service is bijvoorbeeld van toepassing op de clients die share point aanroept. Een beleid dat is ingesteld op Exchange, is van toepassing op de poging toegang te krijgen tot het e-mail bericht met de Outlook-client Dat is de reden waarom client-(open bare/systeem eigen) toepassingen niet beschikbaar zijn voor selectie in de optie Cloud-apps kiezen en voorwaardelijke toegang is niet beschikbaar in de toepassings instellingen voor de toepassing client (openbaar/systeem eigen) die is geregistreerd in uw Tenant. 
-
 
 ## <a name="user-actions"></a>Gebruikersacties
 

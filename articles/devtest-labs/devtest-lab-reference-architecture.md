@@ -4,12 +4,12 @@ description: In dit artikel vindt u Naslag informatie voor architectuur voor Azu
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: e0791fb6c4de3da8108ffbd296c681f993c6b6cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b9652009a4e3c7bfdea029f204429a86562a552
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91367747"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144546"
 ---
 # <a name="azure-devtest-labs-reference-architecture-for-enterprises"></a>Azure DevTest Labs referentie architectuur voor ondernemingen
 Dit artikel bevat referentie architectuur om u te helpen bij het implementeren van een oplossing op basis van Azure DevTest Labs in een onderneming. Het bevat het volgende:
@@ -30,7 +30,7 @@ Dit zijn de belangrijkste elementen van de referentie architectuur:
     - U beschikt over on-premises gegevens die niet naar de Cloud kunnen worden verplaatst.
     - U wilt de virtuele machines van het lab toevoegen aan het on-premises domein.
     - U wilt alle netwerk verkeer in en uit de cloud omgeving afdwingen via een on-premises Firewall voor beveiliging/naleving.
-- **Netwerk beveiligings groepen**: een gemeen schappelijke manier om het verkeer naar de cloud omgeving (of binnen de cloud omgeving) te beperken op basis van bron-en doel-IP-adressen is het gebruik van een [netwerk beveiligings groep](../virtual-network/security-overview.md). Bijvoorbeeld: u wilt alleen verkeer toestaan dat afkomstig is van het bedrijfs netwerk naar de netwerken van het lab.
+- **Netwerk beveiligings groepen**: een gemeen schappelijke manier om het verkeer naar de cloud omgeving (of binnen de cloud omgeving) te beperken op basis van bron-en doel-IP-adressen is het gebruik van een [netwerk beveiligings groep](../virtual-network/network-security-groups-overview.md). Bijvoorbeeld: u wilt alleen verkeer toestaan dat afkomstig is van het bedrijfs netwerk naar de netwerken van het lab.
 - **Extern bureau blad-gateway**: ondernemingen blok keren doorgaans uitgaande extern bureau blad-verbindingen op de firewall van het bedrijf. Er zijn verschillende opties voor het inschakelen van connectiviteit met de cloud omgeving in DevTest Labs, waaronder:
   - Gebruik een [extern bureau blad-gateway](/windows-server/remote/remote-desktop-services/desktop-hosting-logical-architecture)en sta het statische IP-adres van de gateway Load Balancer toe.
   - [Direct alle binnenkomende RDP-verkeer](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) via de ExpressRoute/site-naar-site-VPN-verbinding. Deze functionaliteit is een gemeen schappelijke overweging wanneer ondernemingen een DevTest Labs-implementatie plannen.

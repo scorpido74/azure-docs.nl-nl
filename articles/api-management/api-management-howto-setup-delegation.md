@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/30/2020
+ms.date: 10/15/2020
 ms.author: apimpm
-ms.openlocfilehash: e7f2fb966aa323063220bc798706c8401745ba20
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76b82d3c008ede99e69f3a19a56911fbfecd5642
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87460997"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148762"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>Gebruikers registratie en product abonnement delegeren
 
@@ -61,21 +61,19 @@ U moet nu het **eind punt voor delegering**maken. Het moet een aantal acties uit
    * Een HMAC-SHA512 gebruikt-hash van een teken reeks berekenen op basis van de **returnUrl** -en **Salt** -query parameters ([voorbeeld code hieronder]):
      
      > HMAC (**Salt** + ' \n ' + **returnUrl**)
-     > 
-     > 
+
    * Vergelijk de bovenstaande berekende hash met de waarde van de para meter **sig** -query. Als de twee hashes overeenkomen, gaat u verder met de volgende stap en weigert u de aanvraag.
 3. Controleer of u een aanvraag voor aanmelden/aanmelden ontvangt: de **bewerking** query parameter wordt ingesteld op '**Aanmelden**'.
 4. De gebruiker met de gebruikers interface weer geven om zich aan te melden of zich aan te melden
 5. Als de gebruiker zich aanmeldt, moet u in API Management een bijbehorend account maken. [Maak een gebruiker] met de API Management rest API. Als u dit doet, moet u ervoor zorgen dat u de gebruikers-ID instelt op dezelfde waarde als in uw gebruikers archief of op een ID die u kunt bijhouden.
 6. Als de gebruiker is geverifieerd:
    
-   * [een SSO-token (single sign-on) aanvragen] via de API Management rest API
+   * [Een gedeeld toegangs token aanvragen] via de API Management rest API
    * Voeg een returnUrl-query parameter toe aan de SSO-URL die u hebt ontvangen van de bovenstaande API-aanroep:
      
-     > bijvoorbeeld: `https://customer.portal.azure-api.net/signin-sso?token&returnUrl=/return/url` 
-     > 
-     > 
-   * de gebruiker omleiden naar de bovenstaande geproduceerde URL
+     > bijvoorbeeld: `https://customer.portal.azure-api.net/signin-sso?token=<URL-encoded token>&returnUrl=<URL-encoded URL, for example: %2Freturn%2Furl>` 
+     
+   * De gebruiker omleiden naar de bovenstaande geproduceerde URL
 
 Naast de **aanmeldings** bewerking kunt u ook account beheer uitvoeren door de vorige stappen te volgen en een van de volgende bewerkingen uit te voeren:
 
@@ -186,7 +184,7 @@ Zie de volgende video voor meer informatie over delegering:
 
 [Delegating developer sign in and sign up]: #delegate-signin-up
 [Delegating product subscription]: #delegate-product-subscription
-[een SSO-token (single sign-on) aanvragen]: /rest/api/apimanagement/2019-12-01/user/generatessourl
+[Een gedeeld toegangs token aanvragen]: /rest/api/apimanagement/2019-12-01/user/getsharedaccesstoken
 [een gebruiker maken]: /rest/api/apimanagement/2019-12-01/user/createorupdate
 [de REST API voor abonnementen aanroepen]: /rest/api/apimanagement/2019-12-01/subscription/createorupdate
 [Next steps]: #next-steps

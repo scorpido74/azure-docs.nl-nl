@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 6f0e688f3d483536e0d82186dd8e498cdadf97da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6862fa6c9dfa3e8ba26d6f07dc1d9096cf16f092
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87563548"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151916"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Data Factory bewaken en waarschuwen door gebruik te maken van Azure Monitor
 
@@ -40,7 +40,7 @@ Data Factory Stores-pijp lijn-gegevens slechts 45 dagen worden uitgevoerd. Gebru
   * U wilt complexe query's schrijven naar een uitgebreide set metrische gegevens die worden gepubliceerd door Data Factory om te bewaken. U kunt met behulp van monitor aangepaste waarschuwingen maken voor deze query's.
   * U wilt controleren op gegevens fabrieken. U kunt gegevens van meerdere gegevens fabrieken naar een enkele werk ruimte van de monitor routeren.
 
-U kunt ook een opslag account of een event hub-naam ruimte gebruiken die niet voor komt in het abonnement van de resource die logboeken meenemen. De gebruiker die de instelling configureert, moet de juiste RBAC-toegang (op rollen gebaseerd toegangs beheer) hebben voor beide abonnementen.
+U kunt ook een opslag account of een event hub-naam ruimte gebruiken die niet voor komt in het abonnement van de resource die logboeken meenemen. De gebruiker die de instelling configureert, moet beschikken over het juiste toegangs beheer (Azure RBAC) voor op rollen gebaseerde toegang tot beide abonnementen.
 
 ## <a name="configure-diagnostic-settings-and-workspace"></a>Diagnostische instellingen en werk ruimte configureren
 

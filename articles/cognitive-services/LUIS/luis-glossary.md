@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 05/08/2020
-ms.openlocfilehash: 0f17e489cabb047ca2e9f0ad7406c34cd292e556
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc7dac3767ca5c9e2429f4691a458f88ad1af707
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91309486"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151979"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Taal informatie over woorden lijst met veelgestelde woorden en concepten
 In de woorden lijst Language Understanding (LUIS) worden de termen beschreven die u kunt tegen komen tijdens het werken met de LUIS-service.
@@ -96,7 +96,7 @@ Een [intentie](#intent) is een voor beeld van een classificatie.
 
 ## <a name="collaborator"></a>Samenwerker
 
-Een samen werker is conceptueel hetzelfde als een [mede werker](#contributor). Aan een samen werker wordt toegang verleend wanneer een eigenaar het e-mail adres van de mede werker toevoegt aan een app die niet wordt beheerd met Azure op rollen gebaseerd toegangs beheer (Azure RBAC). Als u nog steeds deel nemers gebruikt, moet u uw LUIS-account migreren en LUIS-ontwerp resources gebruiken om inzenders te beheren met RBAC.
+Een samen werker is conceptueel hetzelfde als een [mede werker](#contributor). Aan een samen werker wordt toegang verleend wanneer een eigenaar het e-mail adres van de mede werker toevoegt aan een app die niet wordt beheerd met Azure op rollen gebaseerd toegangs beheer (Azure RBAC). Als u nog steeds deel nemers gebruikt, moet u uw LUIS-account migreren en LUIS-ontwerp resources gebruiken om inzenders te beheren met Azure RBAC.
 
 ## <a name="contributor"></a>Inzender
 
@@ -292,7 +292,7 @@ In LUIS [lijst entiteiten](reference-entity-list.md)kunt u een genormaliseerde w
 
 Het model retourneert de genormaliseerde waarde voor de entiteit wanneer er synoniemen worden weer gegeven in de invoer.
 
-## <a name="test"></a>Testen
+## <a name="test"></a>Test
 
 Als u een LUIS-app [test](luis-concept-test.md) , worden de voor spellingen van modellen weer gegeven.
 

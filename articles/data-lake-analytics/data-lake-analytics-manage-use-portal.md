@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: how-to
 ms.date: 12/05/2016
-ms.openlocfilehash: cbce903bc7463cd917d48e341614afbe18536262
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f47e201f0fe6f44eb33916b2b3ed71ef963d5a1
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87531206"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148129"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Azure Data Lake Analytics beheren met de Azure-portal
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -27,7 +27,7 @@ In dit artikel wordt beschreven hoe u Azure Data Lake Analytics accounts, gegeve
 
 ### <a name="create-an-account"></a>Een account maken
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Klik op **een resource**  >  **Intelligence + Analytics**-  >  **Data Lake Analytics**maken.
 3. Selecteer waarden voor de volgende items: 
    1. **Naam**: de naam van het data Lake Analytics-account.
@@ -91,9 +91,9 @@ U kunt de **wizard gebruiker toevoegen** gebruiken om eenvoudig nieuwe data Lake
 7. Controleer alle geselecteerde wijzigingen en klik vervolgens op **uitvoeren**.
 8. Wanneer de wizard is voltooid, klikt u op **gereed**.
 
-## <a name="manage-role-based-access-control"></a>Role-Based Access Control beheren
+## <a name="manage-azure-role-based-access-control"></a>Toegangs beheer op basis van rollen beheren in azure
 
-Net als andere Azure-Services kunt u Role-Based Access Control (RBAC) gebruiken om te bepalen hoe gebruikers met de service communiceren.
+Net als andere Azure-Services kunt u Azure RBAC (op rollen gebaseerd toegangs beheer) gebruiken om te bepalen hoe gebruikers met de service communiceren.
 
 De standaard functies van Azure hebben de volgende mogelijkheden:
 * **Eigenaar**: kan taken verzenden, taken bewaken, taken van een gebruiker annuleren en het account configureren.

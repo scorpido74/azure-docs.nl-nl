@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/24/2020
 ms.author: damaerte
-ms.openlocfilehash: 16345ae479be70ffb1eaae95196a43ec99ca1586
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1846c126e81ca5851cfbb1d782e5315ae10a82a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89470133"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152270"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Bestanden in Azure Cloud Shell persistent maken
 Cloud Shell maakt gebruik van Azure File Storage om bestanden in verschillende sessies op te slaan. Bij de eerste keer starten Cloud Shell u gevraagd om een nieuwe of bestaande bestands share te koppelen om bestanden in verschillende sessies te behouden.
@@ -55,7 +55,7 @@ Wanneer de prompt voor het instellen van de opslag wordt weer gegeven, selecteer
 ![De instelling van de resource groep](media/persisting-shell-storage/advanced-storage.png)
 
 ## <a name="securing-storage-access"></a>Toegang tot opslag beveiligen
-Voor beveiliging moet elke gebruiker hun eigen opslag account inrichten.  Voor op rollen gebaseerd toegangs beheer (RBAC) moeten gebruikers Inzender toegang of hoger hebben op het niveau van het opslag account.
+Voor beveiliging moet elke gebruiker hun eigen opslag account inrichten.  Voor op rollen gebaseerd toegangs beheer (Azure RBAC) van Azure moeten gebruikers Inzender toegang of hoger hebben op het niveau van het opslag account.
 
 Cloud Shell gebruikt een Azure-bestands share in een opslag account binnen een opgegeven abonnement. Als gevolg van overgenomen machtigingen, hebben gebruikers met voldoende toegangs rechten voor het abonnement toegang tot alle opslag accounts en bestands shares in het abonnement.
 

@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - fasttrack-edit
 - iot
-ms.openlocfilehash: 3e3dd49c622c1a35571fdb53af470789dc9a26bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99a58cdbed10703c64b980af8571bce2d2638e72
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462033"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152152"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Azure IoT-apparaat-naar-Cloud-berichten traceren met gedistribueerde tracering (voor beeld)
 
@@ -93,7 +93,7 @@ Deze instructies zijn voor het bouwen van het voor beeld in Windows. Zie voor an
 
 ### <a name="clone-the-source-code-and-initialize"></a>De bron code klonen en initialiseren
 
-1. Installeer [' Desktop Development with C++ ' workload](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2019) voor Visual Studio 2019. Visual Studio 2017 en 2015 worden ook ondersteund.
+1. Installeer [' Desktop Development with C++ ' workload](/cpp/build/vscpp-step-0-installation?view=vs-2019) voor Visual Studio 2019. Visual Studio 2017 en 2015 worden ook ondersteund.
 
 1. Installeer [cmake](https://cmake.org/). Zorg ervoor dat deze in uw `PATH` typt door te typen `cmake -version` vanaf een opdracht prompt.
 
@@ -115,7 +115,7 @@ Deze instructies zijn voor het bouwen van het voor beeld in Windows. Zie voor an
     cmake ..
     ```
 
-    Als `cmake` u uw C++-compiler niet kunt vinden, kunt u tijdens het uitvoeren van de bovenstaande opdracht build-fouten krijgen. Als dit gebeurt, voert u deze opdracht uit bij de [Visual Studio-opdrachtprompt](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs). 
+    Als `cmake` u uw C++-compiler niet kunt vinden, kunt u tijdens het uitvoeren van de bovenstaande opdracht build-fouten krijgen. Als dit gebeurt, voert u deze opdracht uit bij de [Visual Studio-opdrachtprompt](/dotnet/framework/tools/developer-command-prompt-for-vs). 
 
     Zodra het bouwen is voltooid, zijn de laatste paar uitvoerregels vergelijkbaar met de volgende uitvoer:
 
@@ -234,7 +234,7 @@ Als u het percentage berichten wilt wijzigen dat moet worden getraceerd vanuit d
 
 ### <a name="bulk-update-for-multiple-devices"></a>Bulksgewijs bijwerken voor meerdere apparaten
 
-Voor het bijwerken van de configuratie van de gedistribueerde tracerings sampling voor meerdere apparaten, gebruikt u [automatische apparaatconfiguratie](iot-hub-auto-device-config.md). Zorg ervoor dat u dit dubbele schema volgt:
+Voor het bijwerken van de configuratie van de gedistribueerde tracerings sampling voor meerdere apparaten, gebruikt u [automatische apparaatconfiguratie](./iot-hub-automatic-device-management.md). Zorg ervoor dat u dit dubbele schema volgt:
 
 ```json
 {
@@ -260,7 +260,7 @@ Als u alle traceringen wilt weer geven die door een IoT Hub zijn geregistreerd, 
 
 ### <a name="query-using-log-analytics"></a>Query's uitvoeren met Log Analytics
 
-Als u [log Analytics met Diagnostische logboeken](../azure-monitor/platform/resource-logs-collect-storage.md)hebt ingesteld, kunt u in de categorie zoeken naar Logboeken `DistributedTracing` . Deze query bevat bijvoorbeeld alle traceer logboeken die zijn vastgelegd:
+Als u [log Analytics met Diagnostische logboeken](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)hebt ingesteld, kunt u in de categorie zoeken naar Logboeken `DistributedTracing` . Deze query bevat bijvoorbeeld alle traceer logboeken die zijn vastgelegd:
 
 ```Kusto
 // All distributed traces 
@@ -282,7 +282,7 @@ Zie [Azure IOT hub Diagnostische logboeken](iot-hub-monitor-resource-health.md#d
 
 ### <a name="application-map"></a>Toepassingskaart
 
-Als u de stroom van IoT-berichten wilt visualiseren, stelt u de voor beeld-app voor de toepassings toewijzing in. De voor beeld-app verzendt de gedistribueerde tracerings logboeken naar de [toepassings toewijzing](../application-insights/app-insights-app-map.md) met behulp van een Azure-functie en een event hub.
+Als u de stroom van IoT-berichten wilt visualiseren, stelt u de voor beeld-app voor de toepassings toewijzing in. De voor beeld-app verzendt de gedistribueerde tracerings logboeken naar de [toepassings toewijzing](../azure-monitor/app/app-map.md) met behulp van een Azure-functie en een event hub.
 
 > [!div class="button"]
 > <a href="https://github.com/Azure-Samples/e2e-diagnostic-provision-cli" target="_blank">Het voor beeld op GitHub ophalen</a>
@@ -295,11 +295,11 @@ In onderstaande afbeelding ziet u gedistribueerde tracering in de app-toewijzing
 
 ### <a name="context"></a>Context
 
-Veel IoT-oplossingen, waaronder onze eigen [referentie architectuur](https://aka.ms/iotrefarchitecture) (alleen Engels), volgen doorgaans een variant van de [micro service-architectuur](https://docs.microsoft.com/azure/architecture/microservices/). Naarmate een IoT-oplossing complexer wordt, kunt u een dozijn of meer micro Services gebruiken. Deze micro Services kunnen al dan niet afkomstig zijn van Azure. Het herkennen van IoT-berichten die worden verwijderd of vertraagd, kan lastig worden. U hebt bijvoorbeeld een IoT-oplossing die gebruikmaakt van vijf verschillende Azure-Services en 1500 actieve apparaten. Elk apparaat verzendt 10 apparaat-naar-Cloud-berichten per seconde (voor een totaal van 15.000 berichten/seconde), maar u ziet dat uw web-app alleen 10.000 berichten per seconde ziet. Waar is het probleem? Hoe vindt u de culprit?
+Veel IoT-oplossingen, waaronder onze eigen [referentie architectuur](https://aka.ms/iotrefarchitecture) (alleen Engels), volgen doorgaans een variant van de [micro service-architectuur](/azure/architecture/microservices/). Naarmate een IoT-oplossing complexer wordt, kunt u een dozijn of meer micro Services gebruiken. Deze micro Services kunnen al dan niet afkomstig zijn van Azure. Het herkennen van IoT-berichten die worden verwijderd of vertraagd, kan lastig worden. U hebt bijvoorbeeld een IoT-oplossing die gebruikmaakt van vijf verschillende Azure-Services en 1500 actieve apparaten. Elk apparaat verzendt 10 apparaat-naar-Cloud-berichten per seconde (voor een totaal van 15.000 berichten/seconde), maar u ziet dat uw web-app alleen 10.000 berichten per seconde ziet. Waar is het probleem? Hoe vindt u de culprit?
 
 ### <a name="distributed-tracing-pattern-in-microservice-architecture"></a>Gedistribueerd tracerings patroon in micro service-architectuur
 
-Voor het opnieuw samen stellen van de stroom van een IoT-bericht over verschillende services moet elke service een *correlatie-id* door geven waarmee het bericht uniek wordt geïdentificeerd. Nadat de correlatie-Id's in een gecentraliseerd systeem zijn verzameld, kunt u de berichten stroom zien. Deze methode wordt het [gedistribueerde tracerings patroon](https://docs.microsoft.com/azure/architecture/microservices/logging-monitoring#distributed-tracing)genoemd.
+Voor het opnieuw samen stellen van de stroom van een IoT-bericht over verschillende services moet elke service een *correlatie-id* door geven waarmee het bericht uniek wordt geïdentificeerd. Nadat de correlatie-Id's in een gecentraliseerd systeem zijn verzameld, kunt u de berichten stroom zien. Deze methode wordt het [gedistribueerde tracerings patroon](/azure/architecture/microservices/logging-monitoring#distributed-tracing)genoemd.
 
 Micro soft draagt bij aan het gebruik van het standaard W3C-voor deel [voor gedistribueerde tracering](https://w3c.github.io/trace-context/)om de uitgebreide acceptatie van gedistribueerde tracering te ondersteunen.
 
@@ -328,5 +328,5 @@ Als de functie voor gedistribueerde tracering voor IoT Hub is ingeschakeld, volg
 ## <a name="next-steps"></a>Volgende stappen
 
 - Zie voor meer informatie over het algemene gedistribueerde tracerings patroon in micro Services, het [volgende: gedistribueerde tracering-architectuur patroon](https://microservices.io/patterns/observability/distributed-tracing.html)
-- Zie [IOT-apparaten op schaal configureren en controleren](iot-hub-auto-device-config.md)om configuratie in te stellen voor het Toep assen van gedistribueerde tracerings instellingen op een groot aantal apparaten.
+- Zie [IOT-apparaten op schaal configureren en controleren](./iot-hub-automatic-device-management.md)om configuratie in te stellen voor het Toep assen van gedistribueerde tracerings instellingen op een groot aantal apparaten.
 - Zie [Wat is Azure monitor?](../azure-monitor/overview.md)voor meer informatie over Azure monitor.

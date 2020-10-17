@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: article
 ms.date: 06/8/2020
 ms.author: chenyl
-ms.openlocfilehash: cc7082744bc43baad2e26d09a83907540cf6a1df
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 9b6141e6009cb868d63429836f8c8f050c792ee5
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094072"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152302"
 ---
 # <a name="managed-identities-for-azure-signalr-service"></a>Beheerde identiteiten voor de Azure signalerings service
 
@@ -62,20 +62,20 @@ De Azure signalerings service is een volledig beheerde service. u kunt dus geen 
     - Leeg
     - Toepassings-ID (client) van de Service-Principal
     - De URI van de toepassings-ID van de Service-Principal
-    - [Resource-ID van een Azure-service](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities#azure-services-that-support-azure-ad-authentication)
+    - [Resource-ID van een Azure-service](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)
 
     > [!NOTE]
     > Als u een toegangs token door uzelf in uw service valideert, kunt u een van de resource-indelingen kiezen. Zorg ervoor dat de **bron** waarde in **verificatie** -instellingen en de validatie consistent zijn. Als u Azure RBAC (op rollen gebaseerd toegangs beheer) gebruikt voor een gegevenslaag, moet u de resource gebruiken die door de service provider wordt aangevraagd.
 
 ### <a name="validate-access-tokens"></a>Toegangs tokens valideren
 
-Het token in de `Authorization` header is een [toegangs token van micro soft Identity platform](https://docs.microsoft.com/azure/active-directory/develop/access-tokens#validating-tokens).
+Het token in de `Authorization` header is een [toegangs token van micro soft Identity platform](../active-directory/develop/access-tokens.md#validating-tokens).
 
 Als u toegangs tokens wilt valideren, moet uw app ook de doel groep en de handtekening tokens valideren. Deze moeten worden gevalideerd aan de hand van de waarden in het detectie document voor OpenID Connect. Zie bijvoorbeeld de [Tenant-onafhankelijke versie van het document](https://login.microsoftonline.com/common/.well-known/openid-configuration).
 
-De Azure Active Directory (Azure AD) middleware heeft ingebouwde mogelijkheden voor het valideren van toegangs tokens. U kunt door onze voor [beelden](https://docs.microsoft.com/azure/active-directory/develop/sample-v2-code) bladeren om er een te vinden in de taal van uw keuze.
+De Azure Active Directory (Azure AD) middleware heeft ingebouwde mogelijkheden voor het valideren van toegangs tokens. U kunt door onze voor [beelden](../active-directory/develop/sample-v2-code.md) bladeren om er een te vinden in de taal van uw keuze.
 
-We bieden bibliotheken en code voorbeelden die laten zien hoe u de token validatie kunt afhandelen. Er zijn ook verschillende open source-partner bibliotheken beschikbaar voor de validatie van de JSON Web Token (JWT). Er is ten minste één optie voor bijna elk platform en de taal. Zie [verificatie bibliotheken voor micro soft-identiteits platform](https://docs.microsoft.com/azure/active-directory/develop/reference-v2-libraries)voor meer informatie over Azure AD-verificatie bibliotheken en code voorbeelden.
+We bieden bibliotheken en code voorbeelden die laten zien hoe u de token validatie kunt afhandelen. Er zijn ook verschillende open source-partner bibliotheken beschikbaar voor de validatie van de JSON Web Token (JWT). Er is ten minste één optie voor bijna elk platform en de taal. Zie [verificatie bibliotheken voor micro soft-identiteits platform](../active-directory/develop/reference-v2-libraries.md)voor meer informatie over Azure AD-verificatie bibliotheken en code voorbeelden.
 
 ## <a name="next-steps"></a>Volgende stappen
 

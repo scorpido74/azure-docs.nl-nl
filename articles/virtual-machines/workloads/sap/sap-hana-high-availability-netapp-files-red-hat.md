@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/30/2020
+ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: ce24bf541c5a71c50bb34f5e42aa3452f01b871c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8800adae73de2672dd89678a6346fe6b0df755ba
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978166"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144198"
 ---
 # <a name="high-availability-of-sap-hana-scale-up-with-azure-netapp-files-on-red-hat-enterprise-linux"></a>Hoge Beschik baarheid van SAP HANA omhoog schalen met Azure NetApp Files op Red Hat Enterprise Linux
 
@@ -227,6 +227,13 @@ Eerst moet u de Azure NetApp Files volumes maken. Voer vervolgens de volgende st
 5.  Maak een virtuele machine 1 (**hanadb1**). 
 6.  Maak de virtuele machine 2 (**hanadb2**).  
 7.  Tijdens het maken van een virtuele machine wordt er geen schijf toegevoegd, omdat al onze koppel punten zich op NFS-shares van Azure NetApp Files bevindt. 
+
+> [!IMPORTANT]
+> Zwevend IP wordt niet ondersteund voor een secundaire IP-configuratie in een NIC in scenario's voor taak verdeling. Zie beperkingen voor [Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations)voor meer informatie. Als u een extra IP-adres voor de virtuele machine nodig hebt, implementeert u een tweede NIC.    
+
+> [!NOTE] 
+> Wanneer Vm's zonder open bare IP-adressen in de back-endadresgroep van intern (geen openbaar IP-adres load balancer) worden geplaatst, is er geen uitgaande Internet verbinding, tenzij er aanvullende configuratie wordt uitgevoerd om route ring naar open bare eind punten toe te staan. Zie [connectiviteit van open bare eind punten voor virtual machines met behulp van Azure Standard Load Balancer in scenario's met hoge Beschik baarheid voor SAP](./high-availability-guide-standard-load-balancer-outbound-connections.md)voor meer informatie over het bezorgen van uitgaande verbindingen.
+
 8.  Als u standaard load balancer gebruikt, volgt u deze configuratie stappen:
     1.  Maak eerst een front-end-IP-adres groep:
         1.  Open de load balancer, selecteer de **frontend-IP-adres groep**en selecteer **toevoegen**.
@@ -255,8 +262,6 @@ Eerst moet u de Azure NetApp Files volumes maken. Voer vervolgens de volgende st
         1.  Zorg ervoor dat u **zwevende IP-adressen inschakelt**.
         1.  Selecteer **OK**.
 
-> [!NOTE] 
-> Wanneer Vm's zonder open bare IP-adressen in de back-endadresgroep van intern (geen openbaar IP-adres load balancer) worden geplaatst, is er geen uitgaande Internet verbinding, tenzij er aanvullende configuratie wordt uitgevoerd om route ring naar open bare eind punten toe te staan. Zie [connectiviteit van open bare eind punten voor virtual machines met behulp van Azure Standard Load Balancer in scenario's met hoge Beschik baarheid voor SAP](./high-availability-guide-standard-load-balancer-outbound-connections.md)voor meer informatie over het bezorgen van uitgaande verbindingen.
 
 9. Als uw scenario gebruikmaakt van basis load balancer, volgt u deze configuratie stappen:
     1.  Configureer de load balancer. Maak eerst een front-end-IP-adres groep:

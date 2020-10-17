@@ -5,22 +5,39 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: troubleshooting
-ms.date: 08/07/2020
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6778b556795f4e079100f1a7bcbb8b9465e9e315
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12f722977329bd5d79d4d0e410a29c730faf00c5
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88032965"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145096"
 ---
 # <a name="troubleshooting-sign-in-problems-with-conditional-access"></a>Problemen met aanmelden met behulp van voorwaardelijke toegang oplossen
 
 De informatie in dit artikel kan worden gebruikt om problemen met onverwachte aanmeldings resultaten te verhelpen die betrekking hebben op voorwaardelijke toegang met behulp van fout berichten en logboeken van Azure AD-aanmeldingen.
+
+## <a name="select-all-consequences"></a>Selecteer alle gevolgen
+
+Het Framework voor voorwaardelijke toegang biedt een uitstekende configuratie flexibiliteit. Een fantastische flexibiliteit betekent echter ook dat u elk configuratie beleid zorgvuldig moet door nemen voordat het wordt vrijgegeven om ongewenste resultaten te voor komen. In deze context moet u speciale aandacht schenken aan toewijzingen die van invloed zijn op volledige sets, zoals **alle gebruikers/groepen/Cloud-apps**.
+
+Organisaties moeten de volgende configuraties voor komen:
+
+**Voor alle gebruikers alle Cloud-apps:**
+
+- **Toegang blok keren** : deze configuratie blokkeert uw hele organisatie.
+- **Vereisen dat het apparaat wordt gemarkeerd als compatibel** : voor gebruikers die hun apparaten nog niet hebben Inge schreven, blokkeert dit beleid alle toegang, inclusief toegang tot de intune-Portal. Als u een beheerder bent zonder een Inge schreven apparaat, blokkeert dit beleid u om weer toegang te krijgen tot de Azure Portal om het beleid te wijzigen.
+- **Vereist hybride Azure AD-domein toegevoegd apparaat** : dit beleid blok keren toegang biedt ook de mogelijkheid om toegang te blok keren voor alle gebruikers in uw organisatie als ze geen hybride Azure AD-apparaat hebben.
+- **Beleid voor app-beveiliging vereisen** : dit beleid blokkeert heeft ook de mogelijkheid om toegang te blok keren voor alle gebruikers in uw organisatie als u niet beschikt over een intune-beleid. Als u een beheerder bent zonder een client toepassing die een intune-beleid voor app-beveiliging heeft, blokkeert dit beleid u om weer toegang te krijgen tot portals zoals intune en Azure.
+
+**Voor alle gebruikers alle Cloud-apps, alle platformen:**
+
+- **Toegang blok keren** : deze configuratie blokkeert uw hele organisatie.
 
 ## <a name="conditional-access-sign-in-interrupt"></a>Aanmeldings interrupt voor voorwaardelijke toegang
 
@@ -82,8 +99,14 @@ Wanneer u het incident verzendt, geeft u de aanvraag-ID en het tijdstip en de da
 | 53003 | BlockedByConditionalAccess |
 | 53004 | ProofUpBlockedDueToRisk |
 
+## <a name="what-to-do-if-you-are-locked-out-of-the-azure-portal"></a>Wat moet ik doen als ik de Azure Portal vergrendeld?
+
+Als u de Azure Portal hebt vergrendeld vanwege een onjuiste instelling in een beleid voor voorwaardelijke toegang:
+
+- Controleren of er andere beheerders in uw organisatie zijn die nog niet zijn geblokkeerd. Een beheerder met toegang tot de Azure Portal kan het beleid dat van invloed is op uw aanmelding, uitschakelen. 
+- Indien geen van de beheerders in uw organisatie het beleid kan bijwerken, dient u een ondersteunings aanvraag in. Micro soft-ondersteuning kan controleren en na bevestiging het beleid voor voorwaardelijke toegang bijwerken dat de toegang verhindert.
+
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Aanmeldactiviteitenrapporten in de Azure Active Directory-portal](../reports-monitoring/concept-sign-ins.md)
 - [Problemen met voorwaardelijke toegang oplossen met het What If-hulp programma](troubleshoot-conditional-access-what-if.md)
-- Aanbevolen procedures voor [voorwaardelijke toegang in azure Active Directory](best-practices.md)

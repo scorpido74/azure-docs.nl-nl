@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
-ms.openlocfilehash: 4081fe8ba97ba2dd27680cf5f0fa60abd59e44a9
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 5df36cdb3c02fd4c813625c4869c21581f009b02
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072268"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152221"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Ondersteuning voor Azure IoT Device Sdk's-platform
 
@@ -44,7 +44,7 @@ Voor elk van de vermelde Sdk's, micro soft:
 
 De [Azure IOT hub C Device SDK](https://github.com/Azure/azure-iot-sdk-c) is getest met en ondersteunt de volgende configuraties.
 
-| OS                  | TLS-bibliotheek                  | Aanvullende vereisten                                                                     |
+| Besturingssysteem                  | TLS-bibliotheek                  | Aanvullende vereisten                                                                     |
 |---------------------|------------------------------|---------------------------------------------------------------------------------------------|
 | Linux               | OpenSSL, WolfSSL of BearSSL | Berkeley-Sockets</br></br>De Portable Operating System Interface (POSIX)                       |
 | iOS 12,2            | OpenSSL                      | XCode geëmuleerd in OSX 10.13.4                                                               |
@@ -57,7 +57,7 @@ De [Azure IOT hub C Device SDK](https://github.com/Azure/azure-iot-sdk-c) is get
 
 De [Azure IOT hub python Device SDK](https://github.com/Azure/azure-iot-sdk-python) wordt getest met en ondersteunt de volgende configuraties.
 
-| OS                  | Programma's                          |
+| Besturingssysteem                  | Programma's                          |
 |---------------------|-----------------------------------|
 | Linux               | Python 2,7. *, 3,5 of hoger |
 | macOS High Sierra   | Python 2,7. *, 3,5 of hoger |
@@ -69,18 +69,18 @@ Alleen python-versie 3.5.3 of hoger ondersteunen de asynchrone Api's. we raden u
 
 De [SDK voor de Azure IOT hub .net (C#)-apparaat](https://github.com/Azure/azure-iot-sdk-csharp) wordt getest met en ondersteunt de volgende configuraties.
 
-| OS                                   | Standard                                                   |
+| Besturingssysteem                                   | Standard                                                   |
 |--------------------------------------|------------------------------------------------------------|
 | Linux                                | .NET Core 2.1                                              |
 | Windows 10 Desktop-en server-Sku's   | .NET Core 2,1, .NET Framework 4.5.1 of .NET Framework 4,7 |
 
-De .NET SDK kan ook worden gebruikt met Windows IoT core met de [Azure Device agent](https://github.com/ms-iot/azure-client-tools/blob/master/docs/device-agent/device-agent.md) of [een aangepaste NTService waarmee RPC kan worden gebruikt om te communiceren met UWP-toepassingen](https://docs.microsoft.com/samples/microsoft/windows-iotcore-samples/ntservice-rpc/).
+De .NET SDK kan ook worden gebruikt met Windows IoT core met de [Azure Device agent](https://github.com/ms-iot/azure-client-tools/blob/master/docs/device-agent/device-agent.md) of [een aangepaste NTService waarmee RPC kan worden gebruikt om te communiceren met UWP-toepassingen](/samples/microsoft/windows-iotcore-samples/ntservice-rpc/).
 
 ### <a name="nodejs-sdk"></a>Node.js SDK
 
 De [SDK van het Azure IoT Hub Node.js-apparaat](https://github.com/Azure/azure-iot-sdk-node) wordt getest met en ondersteunt de volgende configuraties.
 
-| OS                  | Knooppunt versie    |
+| Besturingssysteem                  | Knooppunt versie    |
 |---------------------|-----------------|
 | Linux               | LTS en actueel |
 | Windows 10-serie   | LTS en actueel |
@@ -89,7 +89,7 @@ De [SDK van het Azure IoT Hub Node.js-apparaat](https://github.com/Azure/azure-i
 
 De [Azure IOT hub Java-apparaat-SDK](https://github.com/Azure/azure-iot-sdk-java) wordt getest met en ondersteunt de volgende configuraties.
 
-| OS                     | Java-versie |
+| Besturingssysteem                     | Java-versie |
 |------------------------|--------------|
 | Android API 28         | Java 8       |
 | Linux x64             | Java 8       |
@@ -124,7 +124,7 @@ Als u een van de IoT Hub apparaat-Sdk's niet kunt gebruiken, kunt u rechtstreeks
 
 ## <a name="support-and-other-resources"></a>Ondersteuning en andere bronnen
 
-Als u problemen ondervindt bij het gebruik van de Azure IoT-apparaat-Sdk's, zijn er verschillende manieren om de hieronder beschreven ondersteuning te zoeken. Zie [Azure IOT-ondersteuning en Help-opties](https://aka.ms/iothelp)voor volledige informatie over al uw ondersteunings opties. 
+Als u problemen ondervindt bij het gebruik van de Azure IoT-apparaat-Sdk's, zijn er verschillende manieren om de hieronder beschreven ondersteuning te zoeken. Zie [Azure IOT-ondersteuning en Help-opties](../iot-fundamentals/iot-support-help.md)voor volledige informatie over al uw ondersteunings opties. 
 
 **Fouten rapporteren** : fouten in de sdk's van het apparaat kunnen worden gerapporteerd op de pagina kwesties van het relevante github-project. Oplossingen maken snel hun eigen werk van het project in op product updates.
 
@@ -138,7 +138,7 @@ Als u problemen ondervindt bij het gebruik van de Azure IoT-apparaat-Sdk's, zijn
 
 * [Problemen met Azure IoT Hub python SDK](https://github.com/Azure/azure-iot-sdk-python/issues)
 
-**Technische vragen** : u kunt technische vragen stellen over [micro soft Q&A](https://docs.microsoft.com/answers/topics/azure-iot-sdk.html) en [stack overflow](https://stackoverflow.com/questions/tagged/azure-iot-sdk) met behulp van de tag *Azure-IOT-SDK*.
+**Technische vragen** : u kunt technische vragen stellen over [micro soft Q&A](/answers/topics/azure-iot-sdk.html) en [stack overflow](https://stackoverflow.com/questions/tagged/azure-iot-sdk) met behulp van de tag *Azure-IOT-SDK*.
 
 **Klanten ondersteuning van micro soft** : gebruikers met een [ondersteunings plan](https://azure.microsoft.com/support/plans/) kunnen het team van micro soft-klanten ondersteuning betrekken door rechtstreeks vanuit het [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)een nieuwe ondersteunings aanvraag te maken.
 

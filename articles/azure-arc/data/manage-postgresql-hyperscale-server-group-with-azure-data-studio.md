@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: fc0ad45f575f9190f15b61acdf476c716b7f1638
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a073df78adbf0104d81a96eb92ea427f60e53b01
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936797"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151840"
 ---
 # <a name="use-azure-data-studio-to-manage-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Data Studio gebruiken voor het beheren van uw PostgreSQL grootschalige-Server groep voor Azure-Arc
 
@@ -61,9 +61,8 @@ De PostgreSQL-dashboard weergave:
 
 Deze bevat een aantal Dash boards die aan de linkerkant van het deel venster worden weer gegeven:
 
-- **Overzicht:** Geeft samenvattings informatie weer over uw exemplaar zoals naam, Azure-abonnement-ID, configuratie, versie van de data base-engine, eind punten voor Grafana en Kibana...
+- **Overzicht:** Geeft samenvattings informatie weer over uw exemplaar zoals naam, PostgreSQL admin-gebruikers naam, ID van het Azure-abonnement, configuratie, versie van de data base-engine, eind punten voor Grafana en Kibana...
 - **Verbindings reeksen:** Geeft verschillende verbindings reeksen weer die u mogelijk nodig hebt om verbinding te maken met uw PostgreSQL-instantie zoals psql, Node.js, PHP, Ruby...
-- **Eigenschappen:** Hier worden verschillende eigenschappen weer gegeven, zoals PostgreSQL admin-gebruikers naam, de groep gekoppelde resources voor de schaduw bron...
 - **Problemen vaststellen en oplossen:** Is de landings pagina waar u verschillende bronnen vindt die u kunnen helpen bij het oplossen van uw exemplaar bij het uitpakken van de notitie blokken voor probleem oplossing
 - **Nieuwe ondersteunings aanvraag:** Is de landings pagina van waaruit u hulp kunt aanvragen via onze ondersteunings services die open bare preview-aankondiging starten.
 

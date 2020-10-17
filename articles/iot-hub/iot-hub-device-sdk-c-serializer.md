@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/06/2016
 ms.author: robinsh
 ms.custom: amqp
-ms.openlocfilehash: d4916d651638f0d1dbb4f10e0e0732f5c330d300
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f52d1d1c5f264550076688d5e25e110de230eff4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81767023"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152231"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>Azure IoT Device SDK voor C: meer informatie over serialisatiefunctie
 
@@ -28,7 +28,7 @@ Ten slotte worden in het artikel enkele onderwerpen die in eerdere artikelen wor
 
 Alles wat in dit artikel wordt beschreven, is gebaseerd op de voor beelden van de **serialisatiefunctie** -SDK. Als u de volg orde wilt volgen, raadpleegt u de ** \_ http-** toepassingen **simple sample \_ AMQP** en simple sample die zijn opgenomen in de Azure IOT Device SDK voor C.
 
-U vindt de [**Azure IOT Device SDK voor c**](https://github.com/Azure/azure-iot-sdk-c) github-opslag plaats en Raadpleeg de details van de API in de [C API-referentie](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/).
+U vindt de [**Azure IOT Device SDK voor c**](https://github.com/Azure/azure-iot-sdk-c) github-opslag plaats en Raadpleeg de details van de API in de [C API-referentie](/azure/iot-hub/iot-c-sdk-ref/).
 
 ## <a name="the-modeling-language"></a>De modelleer taal
 
@@ -670,4 +670,4 @@ Hiermee wordt ook de reeks met drie gedeelten afgesloten voor het ontwikkelen va
 
 Zie de [Azure IOT sdk's](iot-hub-devguide-sdks.md)voor meer informatie over het ontwikkelen van IOT hub.
 
-Zie [AI implementeren op edge-apparaten met Azure IOT Edge](../iot-edge/tutorial-simulate-device-linux.md)om de mogelijkheden van IOT hub verder te verkennen.
+Zie [AI implementeren op edge-apparaten met Azure IOT Edge](../iot-edge/quickstart-linux.md)om de mogelijkheden van IOT hub verder te verkennen.

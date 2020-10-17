@@ -3,12 +3,12 @@ title: Azure-beveiligings basislijn voor Azure DevTest Labs
 description: Azure-beveiligings basislijn voor Azure DevTest Labs
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 49b07242068df5d7c46c602140c8b3e1f778e90c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 838501bf4195c99c4d4ef7805fb8f4cba79e05d2
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89398319"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151869"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure-beveiligings basislijn voor Azure DevTest Labs
 
@@ -258,13 +258,13 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure Activ
 
 **Verantwoordelijkheid:** Gebruikers
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 *Zie [beveiligings beheer: gegevens beveiliging](../security/benchmarks/security-control-data-protection.md)voor meer informatie.*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: een inventaris van gevoelige informatie onderhouden
 **Hulp:** Gebruik Tags om Azure-resources te helpen bij het bijhouden of verwerken van gevoelige informatie.
 
-- [Tags maken en gebruiken](../azure-resource-manager/resource-group-using-tags.md)
+- [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center bewaking:** Niet van toepassing
 
@@ -273,10 +273,10 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure Activ
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: systemen isoleren die gevoelige informatie opslaan of verwerken
 **Hulp:** Implementeer afzonderlijke abonnementen of beheer groepen voor ontwikkeling, testen en productie. Azure DevTest Labs exemplaren moeten worden gescheiden door het virtuele netwerk/subnet en op de juiste wijze worden gelabeld. 
 
-- [Aanvullende Azure-abonnementen maken](../billing/billing-create-subscription.md)
-- [Beheer groepen maken](../governance/management-groups/create.md)
+- [Aanvullende Azure-abonnementen maken](../cost-management-billing/manage/create-subscription.md)
+- [Beheer groepen maken](../governance/management-groups/create-management-group-portal.md)
 - [Een virtueel netwerk configureren voor DevTest Labs](devtest-lab-configure-vnet.md)
-- [Tags maken en gebruiken](../azure-resource-manager/resource-group-using-tags.md)
+- [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 - [Tags maken en gebruiken voor DevTest Labs](devtest-lab-add-tag.md)
 
 **Azure Security Center bewaking:** Momenteel niet beschikbaar
@@ -380,7 +380,7 @@ Micro soft voert beveiligings beheer uit op de onderliggende resources die Azure
 **Hulp:** Gebruik Azure Updatebeheer om ervoor te zorgen dat de meest recente beveiligings updates worden geïnstalleerd op uw Windows-en Linux-Vm's die worden gehost in DevTest Labs. Zorg ervoor dat Windows Update is ingeschakeld en is ingesteld om automatisch te worden bijgewerkt voor virtuele Windows-machines. Deze instelling is momenteel niet beschikbaar voor configuratie via DevTest Labs, maar de beheerder van de Lab-beheerder/abonnement kan deze instelling ook configureren op de onderliggende Compute-Vm's in hun abonnement. 
 
 - [Updatebeheer configureren voor virtuele machines in azure](../automation/update-management/update-mgmt-overview.md)
-- [Meer informatie over Azure-beveiligings beleid bewaakt door Security Center](../security-center/security-center-policy-definitions.md)
+- [Meer informatie over Azure-beveiligings beleid bewaakt door Security Center](../security-center/policy-reference.md)
 
 **Azure Security Center bewaking:** Niet van toepassing
 
@@ -444,7 +444,7 @@ Als abonnements beheerder kunt u ook de Azure Updatebeheer-oplossing gebruiken o
 **Hulp:** Gebruik Tags, beheer groepen en afzonderlijke abonnementen, en indien nodig, afzonderlijke Labs om Labs-en Lab-gerelateerde resources te organiseren en bij te houden. U kunt de inventaris regel matig afstemmen en ervoor zorgen dat niet-geautoriseerde resources snel worden verwijderd uit het abonnement.
 
 - [Aanvullende Azure-abonnementen maken](../cost-management-billing/manage/create-subscription.md)
-- [Beheergroepen maken](../governance/management-groups/create.md)
+- [Beheergroepen maken](../governance/management-groups/create-management-group-portal.md)
 - [Een lab maken met behulp van DevTest Labs](devtest-lab-create-lab.md)
 - [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 - [Tags voor een lab configureren](devtest-lab-add-tag.md)
@@ -517,7 +517,7 @@ Naast het gebruik van Wijzigingen bijhouden voor het bewaken van software toepas
 
 Zie de volgende artikelen: 
 - [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
-- [Een specifiek resource type weigeren met Azure Policy](../governance/policy/samples/not-allowed-resource-types.md)
+- [Een specifiek resource type weigeren met Azure Policy](../governance/policy/samples/index.md)
 
 **Azure Security Center bewaking:** Klikt
 
@@ -559,7 +559,7 @@ Zie de volgende artikelen:
 - [Virtueel netwerk voor DevTest Labs configureren](devtest-lab-configure-vnet.md)
 - [Overzicht van Azure Firewall](../firewall/overview.md)
 - [Overzicht van Web Application firewall](../web-application-firewall/overview.md)
-- [Overzicht van netwerkbeveiliging](../virtual-network/security-overview.md)
+- [Overzicht van netwerkbeveiliging](../virtual-network/network-security-groups-overview.md)
 - [Overzicht van Azure Virtual Network]()
 - [Uw resources organiseren met Azure-beheergroepen](../governance/management-groups/overview.md)
 - [Handleiding voor beslissingen over abonnementen](/azure/cloud-adoption-framework/decision-guides/subscriptions/)
@@ -617,7 +617,7 @@ U kunt ook aanbevelingen van Azure Security Center gebruiken als een veilige con
 
 Azure Marketplace-installatie kopieën voor virtuele machines die zijn gepubliceerd door micro soft worden ook beheerd en onderhouden door micro soft.
 
-- [Aanbevelingen voor de evaluatie van Azure Security Center-beveiligings problemen implementeren](../security-center/security-center-vulnerability-assessment-recommendations.md)
+- [Aanbevelingen voor de evaluatie van Azure Security Center-beveiligings problemen implementeren](../security-center/deploy-vulnerability-assessment-vm.md)
 - [Overzicht van Azure Automation status configuratie](../automation/automation-dsc-overview.md)
 - [Voorbeeld van een script voor het uploaden van een VHD naar Azure om een nieuwe VM te maken](../virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script.md)
 - [Een image Factory maken in DevTest Labs](image-factory-create.md)
@@ -629,8 +629,8 @@ Azure Marketplace-installatie kopieën voor virtuele machines die zijn gepublice
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: de configuratie van Azure-resources veilig opslaan
 **Hulp:** Gebruik Azure DevOps om uw code veilig op te slaan en te beheren, zoals aangepaste Azure-beleids regels, Azure Resource Manager sjablonen en desired state Configuration-scripts. Als u toegang wilt krijgen tot de resources die u beheert in azure DevOps, kunt u machtigingen verlenen of weigeren aan specifieke gebruikers, ingebouwde beveiligings groepen of groepen die zijn gedefinieerd in Azure Active Directory (Azure AD) als deze zijn geïntegreerd met Azure DevOps.
 
-- [Azure opslag plaatsen Git-zelf studie](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow)
-- [Over machtigingen en groepen](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions?view=azure-devops&tabs=preview-page)
+- [Azure opslag plaatsen Git-zelf studie](/azure/devops/repos/git/gitworkflow)
+- [Over machtigingen en groepen](/azure/devops/organizations/security/about-permissions?tabs=preview-page&view=azure-devops)
 - [Integratie tussen Azure DevTest Labs en de Azure DevOps-werk stroom](devtest-lab-dev-ops.md)
 
 **Azure Security Center bewaking:** Niet van toepassing
@@ -681,7 +681,7 @@ Azure Marketplace-installatie kopieën voor virtuele machines die zijn gepublice
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7,10: geautomatiseerde configuratie bewaking voor besturings systemen implementeren
 **Hulp:** Gebruik Azure Security Center voor het uitvoeren van basislijn scans voor OS-en docker-instellingen voor containers.
 
-- [Aanbevelingen van Azure Security Center voor containers](../security-center/security-center-container-recommendations.md)
+- [Aanbevelingen van Azure Security Center voor containers](../security-center/container-security.md)
 
 **Azure Security Center bewaking:** Niet van toepassing
 
@@ -692,7 +692,7 @@ Azure Marketplace-installatie kopieën voor virtuele machines die zijn gepublice
 
 - [Configureer beheerde identiteit voor de implementatie van Azure Resource Manager omgevingen in DevTest Labs](use-managed-identities-environments.md)
 - [Beheerde identiteit configureren voor het implementeren van virtuele machines in DevTest Labs](enable-managed-identities-lab-vms.md)
-- [Een sleutel kluis maken](../key-vault/quick-create-portal.md)
+- [Een sleutel kluis maken](../key-vault/secrets/quick-create-portal.md)
 - [Verifiëren bij Key Vault](../key-vault/general/authentication.md)
 - [Toegangs beleid voor Key Vault toewijzen](../key-vault/general/assign-access-policy-portal.md)
 

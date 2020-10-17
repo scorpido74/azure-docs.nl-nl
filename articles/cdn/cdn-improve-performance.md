@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/28/2018
 ms.author: allensu
-ms.openlocfilehash: 3b8ce5b82b7d2022fd7feea1cd9efe8d524ee6a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ceed62d466627d6a23554229bd6f4b96c674c7e9
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91358284"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148757"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>De prestaties verbeteren door bestanden in Azure CDN te comprimeren
 Bestands compressie is een eenvoudige en efficiënte methode om de snelheid van de bestands overdracht te verbeteren en de prestaties van de pagina belasting te verhogen door de grootte van een bestand te verkleinen voordat het wordt verzonden vanaf de-server. Bestands compressie kan de bandbreedte kosten verlagen en biedt uw gebruikers een meer reactie tijd.
@@ -113,6 +113,8 @@ Als de aanvraag meer dan één compressie type ondersteunt, heeft brotli-compres
 
 Wanneer een aanvraag voor een activum gzip-compressie specificeert en de aanvraag resulteert in een Missing in een cache, voert Azure CDN gzip-compressie van het element rechtstreeks op de POP-server uit. Daarna wordt het gecomprimeerde bestand vanuit de cache verwerkt.
 
+Als de oorsprong gebruikmaakt van een CTE (gesegmenteerde overdrachts codering) voor het verzenden van gecomprimeerde gegevens naar de CDN-POP, worden de antwoord groottes die groter zijn dan 8 MB, niet ondersteund. 
+
 ### <a name="azure-cdn-from-verizon-profiles"></a>Azure CDN van Verizon-profielen
 
 Voor **Azure CDN standaard van Verizon** en **Azure CDN Premium van Verizon** -profielen, worden alleen de bestanden gecomprimeerd die in aanmerking komen. Om in aanmerking te komen voor compressie, moet een bestand:
@@ -149,7 +151,7 @@ In de volgende tabellen wordt Azure CDN compressie gedrag voor elk scenario besc
 | Gecomprimeerde |Niet in cache |Gecomprimeerde | |
 
 ### <a name="compression-is-enabled-and-file-is-eligible-for-compression"></a>Compressie is ingeschakeld en het bestand komt in aanmerking voor compressie
-| Door de client aangevraagde indeling (via Accept-Encoding header) | Cache-bestands indeling | CDN-antwoord naar de client | Notities |
+| Door de client aangevraagde indeling (via Accept-Encoding header) | Cache-bestands indeling | CDN-antwoord naar de client | Opmerkingen |
 | --- | --- | --- | --- |
 | Gecomprimeerd |Gecomprimeerd |Gecomprimeerd |CDN transcodeert tussen ondersteunde indelingen. |
 | Gecomprimeerd |Gecomprimeerde |Gecomprimeerd |CDN voert een compressie uit. |
