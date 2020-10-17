@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
-ms.openlocfilehash: d4f77cec793e13ff943c173d88948eb5b5de0957
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3649ac786c07459695a1e6ca6ad52620e23d59f
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91356244"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148800"
 ---
 # <a name="door-monitor----using-azure-functions-and-sendgrid-send-email-when-a-door-is-opened"></a>Monitor voor deuren: e-mail met Azure Functions en SendGrid verzenden wanneer een deur wordt geopend           
 
@@ -197,4 +197,4 @@ Als u problemen ondervindt, raadpleegt u de [Veelgestelde vragen over IOT DevKit
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt geleerd hoe u een DevKit-apparaat verbindt met uw oplossings versneller van Azure IoT voor externe controle en de SendGrid-service gebruikt om een e-mail te verzenden. Hier volgt de voorgestelde volgende stap:[overzicht van de Azure IOT-oplossing voor externe controle](https://docs.microsoft.com/azure/iot-suite/)
+U hebt geleerd hoe u een DevKit-apparaat verbindt met uw oplossings versneller van Azure IoT voor externe controle en de SendGrid-service gebruikt om een e-mail te verzenden. Hier volgt de voorgestelde volgende stap:[overzicht van de Azure IOT-oplossing voor externe controle](/azure/iot-suite/)

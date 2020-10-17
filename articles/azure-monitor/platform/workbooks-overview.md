@@ -6,12 +6,12 @@ services: azure-monitor
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: dd0c08fa968f9d029f1b89be1183ab374f1b5348
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 5dd553f0a41f82991c467ab256a87beabbff25ee
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932393"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143633"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure Monitor werkmappen
 
@@ -42,7 +42,7 @@ Werkmappen zijn momenteel compatibel met de volgende gegevensbronnen:
 Werkmappen bieden een uitgebreide set mogelijkheden voor het visualiseren van uw gegevens. Raadpleeg de onderstaande voorbeeld koppelingen voor gedetailleerde voor beelden van elk type visualisatie:
 
 * [Tekst](workbooks-text-visualizations.md)
-* [Grafieken](workbooks-chart-visualizations.md)
+* [Diagrammen](workbooks-chart-visualizations.md)
 * [Rasters](workbooks-grid-visualizations.md)
 * [Pagina's](workbooks-tile-visualizations.md)
 * [Mapstructuren](workbooks-tree-visualizations.md)
@@ -97,7 +97,7 @@ Als we de knop bewerken direct onder het raster van aanvraag gegevens selecteren
 
 ![Scherm opname van onderliggende Kusto-query](./media/workbooks-overview/kusto.png)
 
-Als u op de andere **bewerkings** knoppen aan de rechter kant klikt, wordt een aantal van de belangrijkste onderdelen voor werkmappen, zoals op [prijs op basis](workbooks-visualizations.md#text)van korting, UI-elementen voor [parameter selectie](workbooks-parameters.md) en andere [grafiek/visualisatie typen](workbooks-visualizations.md)weer geven. 
+Als u op de andere **bewerkings** knoppen aan de rechter kant klikt, wordt een aantal van de belangrijkste onderdelen voor werkmappen, zoals op [prijs op basis](workbooks-text-visualizations.md)van korting, UI-elementen voor [parameter selectie](workbooks-parameters.md) en andere [grafiek/visualisatie typen](#visualizations)weer geven. 
 
 Het verkennen van de vooraf gemaakte sjablonen in de Bewerk modus en deze vervolgens aanpassen aan uw behoeften en uw eigen aangepaste werkmap opslaan is een uitstekende manier om te leren wat er mogelijk is met Azure Monitor-werkmappen.
 
@@ -129,5 +129,5 @@ Wanneer u begint met het maken van uw eigen werkmap sjablonen, wilt u deze mogel
 
 ## <a name="next-step"></a>Volgende stap
 
-* [Ga](workbooks-visualizations.md) voor meer informatie over werkmappen veel uitgebreide visualisaties opties.
+* [Ga](#visualizations) voor meer informatie over werkmappen veel uitgebreide visualisaties opties.
 * De toegang tot uw werkmap resources [beheren](workbooks-access-control.md) en delen.

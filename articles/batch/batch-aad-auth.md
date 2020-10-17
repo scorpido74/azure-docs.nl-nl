@@ -4,12 +4,12 @@ description: Batch ondersteunt Azure AD voor verificatie vanuit de batch-service
 ms.topic: how-to
 ms.date: 01/28/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: 19042b4bb0998d104792d7511ab2972299b4f58d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d84086e3fa59c1e04df5b2717738da44f5c14b2
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87533509"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144819"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Batch-service oplossingen verifiëren met Active Directory
 
@@ -103,7 +103,7 @@ De sectie **API-machtigingen** geeft nu aan dat uw Azure AD-toepassing toegang h
 Als u een toepassing wilt verifiëren die zonder toezicht wordt uitgevoerd, gebruikt u een service-principal. Nadat u uw toepassing hebt geregistreerd, voert u de volgende stappen uit in de Azure Portal om een service-principal te configureren:
 
 1. Vraag een geheim aan uw toepassing.
-1. Wijs op rollen gebaseerd toegangs beheer (RBAC) toe aan uw toepassing.
+1. Toegangs beheer op basis van rollen (Azure RBAC) toewijzen aan uw toepassing.
 
 ### <a name="request-a-secret-for-your-application"></a>Een geheim aanvragen voor uw toepassing
 
@@ -119,15 +119,15 @@ Volg deze stappen in Azure Portal:
 
     ![Een geheime sleutel maken](./media/batch-aad-auth/secret-key.png)
 
-### <a name="assign-rbac-to-your-application"></a>RBAC toewijzen aan uw toepassing
+### <a name="assign-azure-rbac-to-your-application"></a>Azure RBAC toewijzen aan uw toepassing
 
-Als u een Service-Principal wilt verifiëren, moet u RBAC toewijzen aan uw toepassing. Volg deze stappen:
+Als u een Service-Principal wilt verifiëren, moet u Azure RBAC toewijzen aan uw toepassing. Volg deze stappen:
 
 1. Navigeer in het Azure Portal naar het batch-account dat door uw toepassing wordt gebruikt.
 1. Selecteer **Access Control (IAM)** in het gedeelte **instellingen** van het batch-account.
 1. Selecteer het tabblad **roltoewijzingen** .
 1. Selecteer **Roltoewijzing toevoegen**.
-1. Kies in de vervolg keuzelijst **functie** de rol *Inzender* of *lezer* voor uw toepassing. Zie [aan de slag met Role-Based Access Control in de Azure Portal](../role-based-access-control/overview.md)voor meer informatie over deze rollen.
+1. Kies in de vervolg keuzelijst **functie** de rol *Inzender* of *lezer* voor uw toepassing. Zie [aan de slag met op rollen gebaseerd toegangs beheer van Azure in de Azure Portal](../role-based-access-control/overview.md)voor meer informatie over deze rollen.
 1. Voer in het veld **selecteren** de naam van uw toepassing in. Selecteer uw toepassing in de lijst en selecteer vervolgens **Opslaan**.
 
 Uw toepassing moet nu worden weer gegeven in de instellingen voor toegangs beheer waaraan een Azure-rol is toegewezen.
@@ -138,7 +138,7 @@ Uw toepassing moet nu worden weer gegeven in de instellingen voor toegangs behee
 
 Een aangepaste rol geeft een gedetailleerde machtiging voor een gebruiker voor het verzenden van taken, taken en meer. Dit biedt de mogelijkheid om te voor komen dat gebruikers bewerkingen uitvoeren die van invloed zijn op kosten, zoals het maken van Pools of het wijzigen van knoop punten.
 
-U kunt een aangepaste rol gebruiken om machtigingen te verlenen aan een Azure AD-gebruiker,-groep of-service-principal voor de volgende RBAC-bewerkingen:
+U kunt een aangepaste rol gebruiken om machtigingen te verlenen aan een Azure AD-gebruiker,-groep of-service-principal voor de volgende Azure RBAC-bewerkingen:
 
 - Microsoft.BatCH/batchAccounts/Pools/schrijven
 - Microsoft.BatCH/batchAccounts/Pools/verwijderen

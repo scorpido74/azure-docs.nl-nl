@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: robinsh
-ms.openlocfilehash: df3c8d2abf59de6c9f685ad8d93e6689738df8e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 830e72a8de047b0219cfa0be264fad2e1f83beb2
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78302522"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142606"
 ---
 # <a name="configure-iot-hub-file-uploads-using-azure-cli"></a>Uploads van IoT Hub-bestanden configureren met behulp van Azure CLI
 
@@ -21,21 +21,21 @@ ms.locfileid: "78302522"
 
 Als u [bestanden van een apparaat wilt uploaden](iot-hub-devguide-file-upload.md), moet u eerst een Azure Storage-account koppelen aan uw IOT-hub. U kunt een bestaand opslag account gebruiken of een nieuwe maken.
 
-Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
+U hebt het volgende nodig om deze zelfstudie af te ronden:
 
 * Een actief Azure-account. Als u geen account hebt, kunt u in slechts een paar minuten een [gratis account](https://azure.microsoft.com/pricing/free-trial/) maken.
 
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-* Een Azure IoT hub. Als u geen IoT-hub hebt, kunt u de [ `az iot hub create` opdracht](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-create) gebruiken om een IOT-hub te maken of [met behulp van de portal](iot-hub-create-through-portal.md).
+* Een Azure IoT hub. Als u geen IoT-hub hebt, kunt u de [ `az iot hub create` opdracht](/cli/azure/iot/hub#az-iot-hub-create) gebruiken om een IOT-hub te maken of [met behulp van de portal](iot-hub-create-through-portal.md).
 
-* Een Azure Storage-account. Als u geen Azure Storage account hebt, kunt u de Azure CLI gebruiken om er een te maken. Zie [Een opslagaccount maken](../storage/common/storage-create-storage-account.md) voor meer informatie.
+* Een Azure Storage-account. Als u geen Azure Storage account hebt, kunt u de Azure CLI gebruiken om er een te maken. Zie [Een opslagaccount maken](../storage/common/storage-account-create.md) voor meer informatie.
 
 ## <a name="sign-in-and-set-your-azure-account"></a>Meld u aan en stel uw Azure-account in
 
 Meld u aan bij uw Azure-account en selecteer uw abonnement.
 
-1. Voer bij de opdrachtprompt deze [aanmeldingsopdracht](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) uit:
+1. Voer bij de opdrachtprompt deze [aanmeldingsopdracht](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) uit:
 
     ```azurecli
     az login
@@ -43,7 +43,7 @@ Meld u aan bij uw Azure-account en selecteer uw abonnement.
 
     Volg de instructies om te verifiëren met de code en meld u aan bij uw Azure-account via een webbrowser.
 
-2. Als u meerdere Azure-abonnementen hebt en u zich aanmeldt bij Azure, hebt u toegang tot alle Azure accounts die zijn gekoppeld aan uw referenties. Gebruik de volgende [opdracht om de Azure-accounts weer te geven](https://docs.microsoft.com/cli/azure/account) die u kunt gebruiken:
+2. Als u meerdere Azure-abonnementen hebt en u zich aanmeldt bij Azure, hebt u toegang tot alle Azure accounts die zijn gekoppeld aan uw referenties. Gebruik de volgende [opdracht om de Azure-accounts weer te geven](/cli/azure/account) die u kunt gebruiken:
 
     ```azurecli
     az account list
@@ -144,5 +144,5 @@ Volg deze koppelingen voor meer informatie over het beheren van Azure IoT Hub:
 Zie voor meer informatie over de mogelijkheden van IoT Hub:
 
 * [Ontwikkelaars handleiding IoT Hub](iot-hub-devguide.md)
-* [AI implementeren op Edge-apparaten met Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [AI implementeren op Edge-apparaten met Azure IoT Edge](../iot-edge/quickstart-linux.md)
 * [Beveilig uw IoT-oplossing vanaf de grond](../iot-fundamentals/iot-security-ground-up.md)

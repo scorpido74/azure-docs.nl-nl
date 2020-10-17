@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: dcabe4b1520c66b8d5bfa398dc1248972587cd32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cacef205b614170df210e03ddf3978a64a90ea22
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936806"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151921"
 ---
 # <a name="delete-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Een Azure-PostgreSQL grootschalige-Server groep verwijderen
 
@@ -57,7 +57,7 @@ Als u de Pvc's wilt weer geven, voert u deze opdracht uit:
 kubectl get pvc [-n <namespace name>]
 ```
 
-Hiermee wordt de lijst met PVSs geretourneerd, met name de Pvc's voor de Server groep die u hebt verwijderd. Bijvoorbeeld:
+Hiermee wordt de lijst met Pvc's geretourneerd, met name de Pvc's voor de Server groep die u hebt verwijderd. Bijvoorbeeld:
 ```console
 kubectl get pvc
 NAME                STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE

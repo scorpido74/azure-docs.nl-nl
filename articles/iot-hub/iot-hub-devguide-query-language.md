@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: robinsh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 77becbf4777d0668991adcd74b722cd28ac36f03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dbdc1c079f7ef2a06ece553e9fec542cbc05ea54
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90031174"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147665"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>IoT Hub-querytaal voor apparaat- en moduledubbels, taken en-berichtroutering
 
@@ -234,7 +234,7 @@ In het object query worden meerdere **volgende** waarden weer gegeven, afhankeli
 ### <a name="limitations"></a>Beperkingen
 
 > [!IMPORTANT]
-> De query resultaten kunnen een paar minuten vertraging hebben ten opzichte van de laatste waarden in het apparaatdubbels van het apparaat. Als u een query wilt uitvoeren op een afzonderlijk apparaat apparaatdubbels op ID, gebruikt u de [Get dubbele rest API](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.devicetwin?view=azure-java-stable). Deze API retourneert altijd de nieuwste waarden en heeft een hogere beperkings limiet. U kunt de REST API rechtstreeks uitgeven of de equivalente functionaliteit gebruiken in een van de [Azure IOT hub service-sdk's](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks).
+> De query resultaten kunnen een paar minuten vertraging hebben ten opzichte van de laatste waarden in het apparaatdubbels van het apparaat. Als u een query wilt uitvoeren op een afzonderlijk apparaat apparaatdubbels op ID, gebruikt u de [Get dubbele rest API](/java/api/com.microsoft.azure.sdk.iot.device.devicetwin?view=azure-java-stable). Deze API retourneert altijd de nieuwste waarden en heeft een hogere beperkings limiet. U kunt de REST API rechtstreeks uitgeven of de equivalente functionaliteit gebruiken in een van de [Azure IOT hub service-sdk's](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks).
 
 Op dit moment worden vergelijkingen alleen ondersteund tussen primitieve typen (geen objecten), bijvoorbeeld `... WHERE properties.desired.config = properties.reported.config` wordt alleen ondersteund als deze eigenschappen primitieve waarden hebben.
 
@@ -366,7 +366,7 @@ SELECT [TOP <max number>] <projection list>
 
 Momenteel zijn selectie componenten anders dan **Select*** worden alleen ondersteund in statistische query's op apparaatdubbels van het apparaat.
 
-## <a name="group-by-clause"></a>GROUP BY-component
+## <a name="group-by-clause"></a>Clausule GROUP BY
 
 De component **GROUP BY <group_specification>** is een optionele stap die wordt uitgevoerd na het filter dat is opgegeven in de component WHERE en voordat de projectie is opgegeven in de SELECT. Er worden documenten gegroepeerd op basis van de waarde van een kenmerk. Deze groepen worden gebruikt voor het genereren van geaggregeerde waarden zoals opgegeven in de component SELECT.
 

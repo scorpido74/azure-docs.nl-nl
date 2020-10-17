@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e2ded81c3525de6f9c49d774594c73f9da2b5696
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66c8f72c82e04bafe9582c4a5dc6967e5470d3ea
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84430658"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147884"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>Democertificaten maken om IoT Edge-apparaatfuncties te testen
 
@@ -32,9 +32,9 @@ Volg deze stappen om demo certificaten te maken voor het testen van uw IoT Edge 
 1. [Stel scripts](#set-up-scripts) in voor het genereren van certificaten op het apparaat.
 2. [Maak het basis-CA-certificaat](#create-root-ca-certificate) dat u gebruikt om alle andere certificaten voor uw scenario te ondertekenen.
 3. Genereer de certificaten die u nodig hebt voor het scenario dat u wilt testen:
-   * [Maak IOT Edge certificaten voor apparaat-id's](#create-iot-edge-device-identity-certificates) om automatische inrichting met de IOT hub Device Provisioning Service te testen.
-   * [Maak IOT Edge CA-certificaten](#create-iot-edge-device-ca-certificates) voor het testen van productie scenario's of gateway scenario's.
-   * U kunt [downstream-Apparaatstuurprogramma's maken](#create-downstream-device-certificates) om de verificatie van downstream-apparaten te testen op IOT hub in een gateway scenario.
+   * [IOT Edge certificaten voor apparaat-Id's maken](#create-iot-edge-device-identity-certificates) voor automatische inrichting met de IOT hub Device Provisioning Service.
+   * [Maak IOT Edge CA-certificaten](#create-iot-edge-device-ca-certificates) voor IOT edge apparaten in Gateway scenario's.
+   * [Stroomafwaartse certificaten maken](#create-downstream-device-certificates) voor het verifiëren van downstream-apparaten in een gateway scenario.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -53,7 +53,7 @@ Als u demo certificaten wilt maken op een Windows-apparaat, moet u OpenSSL insta
 #### <a name="install-openssl"></a>OpenSSL installeren
 
 Installeer OpenSSL voor Windows op de computer die u gebruikt om de certificaten te genereren.
-Als OpenSSL al op uw Windows-apparaat is geïnstalleerd, kunt u deze stap overs Laan, maar moet openssl.exe beschikbaar zijn in uw omgevings variabele PATH.
+Als OpenSSL al op uw Windows-apparaat is geïnstalleerd, zorg er dan voor dat openssl.exe beschikbaar is in uw omgevings variabele PATH.
 
 Er zijn verschillende manieren om OpenSSL te installeren, met inbegrip van de volgende opties:
 
@@ -183,7 +183,7 @@ Voordat u verdergaat met de stappen in deze sectie, volgt u de stappen in de sec
 
 ## <a name="create-iot-edge-device-identity-certificates"></a>Certificaten voor de identiteit van IoT Edge-apparaten maken
 
-Certificaten voor apparaat-id's worden gebruikt om IoT Edge-apparaten in te richten via de [Azure IOT hub Device Provisioning Service (DPS)](../iot-dps/index.yml).
+Certificaten voor apparaat-id's worden gebruikt om IoT Edge-apparaten in te richten via de Azure IoT Hub Device Provisioning Service (DPS).
 
 Certificaten voor identiteiten van apparaten gaan in de **inrichtings** sectie van het bestand config. yaml op het IOT edge-apparaat.
 
@@ -247,8 +247,6 @@ Volg de stappen in de secties [scripts instellen](#set-up-scripts) en [basis-CA-
    * `<WRKDIR>\private\iot-edge-device-<CA cert name>.key.pem`
 
 De naam die is door gegeven aan de opdracht **New-CACertsEdgeDevice** , mag niet hetzelfde zijn als de para meter hostname in config. yaml, of de id van het apparaat in IOT hub.
-Het script helpt u bij het voor komen van problemen door een '. ca ' teken reeks toe te voegen aan de naam van het certificaat om te voor komen dat de naam wordt gebruikt voor het geval een gebruiker IoT Edge met dezelfde naam op beide locaties instelt.
-Het is echter verstandig om dezelfde naam te gebruiken.
 
 ### <a name="linux"></a>Linux
 
@@ -266,8 +264,6 @@ Het is echter verstandig om dezelfde naam te gebruiken.
    * `<WRKDIR>/private/iot-edge-device-<CA cert name>.key.pem`
 
 De naam die is door gegeven aan de **create_edge_device_certificate** opdracht mag niet hetzelfde zijn als de para meter hostname in config. yaml of de id van het apparaat in IOT hub.
-Het script helpt u bij het voor komen van problemen door een '. ca ' teken reeks toe te voegen aan de naam van het certificaat om te voor komen dat de naam wordt gebruikt voor het geval een gebruiker IoT Edge met dezelfde naam op beide locaties instelt.
-Het is echter verstandig om dezelfde naam te gebruiken.
 
 ## <a name="create-downstream-device-certificates"></a>Stroomafwaartse certificaten van het apparaat maken
 
