@@ -4,15 +4,15 @@ description: Stel hoge Beschik baarheid in van IBM Db2 LUW op Azure virtual mach
 author: msjuergent
 ms.service: virtual-machines
 ms.topic: article
-ms.date: 03/06/2020
+ms.date: 10/16/2020
 ms.author: juergent
 ms.reviewer: cynthn
-ms.openlocfilehash: 17df60cd039601d3f8036125c5c0098a8000667c
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 88a84cd90efb42ea096cad647d75f1c3736426f4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993302"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146438"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-suse-linux-enterprise-server-with-pacemaker"></a>Hoge Beschik baarheid van IBM Db2 LUW op Azure Vm's op SUSE Linux Enterprise Server met pacemaker
 
@@ -393,6 +393,9 @@ Als u Azure Load Balancer wilt configureren, is het raadzaam om de [Azure Standa
 
 > [!NOTE]
 > De Standard Load Balancer SKU heeft beperkingen voor het openen van open bare IP-adressen van de knoop punten onder de Load Balancer. De connectiviteit van het [open bare eind punt van het artikel voor virtual machines het gebruik van Azure Standard Load Balancer in scenario's met hoge Beschik baarheid van SAP](./high-availability-guide-standard-load-balancer-outbound-connections.md) beschrijft manieren om deze knoop punten in te scha kelen voor toegang tot open bare IP-adressen
+
+> [!IMPORTANT]
+> Zwevend IP wordt niet ondersteund voor een secundaire IP-configuratie in een NIC in scenario's voor taak verdeling. Zie beperkingen voor [Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations)voor meer informatie. Als u een extra IP-adres voor de virtuele machine nodig hebt, implementeert u een tweede NIC.  
 
 1. Een front-end-IP-adres groep maken:
 

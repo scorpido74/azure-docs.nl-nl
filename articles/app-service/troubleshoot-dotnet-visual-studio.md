@@ -6,16 +6,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 72df946ed35dfdfd2811089a51ab9403d2e0567c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 346b1f83a9c18e35b009e88ae82d6984274fd4e4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90982997"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147747"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Problemen met een app in Azure App Service oplossen met Visual Studio
 ## <a name="overview"></a>Overzicht
-Deze zelf studie laat zien hoe u met behulp van Visual Studio-hulpprogram ma's fouten opspoort in [app service](https://go.microsoft.com/fwlink/?LinkId=529714), door [op afstand de foutopsporingsmodus uit](/visualstudio/debugger/) te voeren of door toepassings logboeken en webserver logboeken te bekijken.
+Deze zelf studie laat zien hoe u met behulp van Visual Studio-hulpprogram ma's fouten opspoort in [app service](./overview.md), door [op afstand de foutopsporingsmodus uit](/visualstudio/debugger/) te voeren of door toepassings logboeken en webserver logboeken te bekijken.
 
 U leert het volgende:
 
@@ -49,7 +49,7 @@ Visual Studio biedt toegang tot een subset van de app-beheer functies en configu
    >
    >
 
-    Zie [accounts, abonnementen en beheerders rollen beheren](https://go.microsoft.com/fwlink/?LinkId=324796#BKMK_AccountVCert)voor meer informatie over het maken van verbinding met Azure-resources vanuit Visual Studio.
+    Zie [accounts, abonnementen en beheerders rollen beheren](../role-based-access-control/role-assignments-portal.md)voor meer informatie over het maken van verbinding met Azure-resources vanuit Visual Studio.
 2. In **Server Explorer**vouwt u **Azure** uit en vouwt u **app service**uit.
 3. Vouw de resource groep uit met de app die u hebt gemaakt in [een ASP.net-app maken in azure app service](quickstart-dotnet-framework.md), klik met de rechter muisknop op het app-knoop punt en klik op **instellingen weer geven**.
 
@@ -125,7 +125,7 @@ In deze sectie wordt uitgelegd hoe u op afstand fouten oplost met het project da
     }
     ```
 
-1. [Stel een onderbrekings punt](https://docs.microsoft.com/visualstudio/debugger/) in op de `ViewBag.Message` regel.
+1. [Stel een onderbrekings punt](/visualstudio/debugger/) in op de `ViewBag.Message` regel.
 
 1. Klik in **Solution Explorer**met de rechter muisknop op het project en klik op **publiceren**.
 
@@ -176,7 +176,7 @@ Externe fout opsporing werkt alleen met doorlopende webjobs. Geplande en on-dema
 
 2. Open *functions.cs*in het project ContosoAdsWebJob.
 
-3. [Stel een onderbrekings punt](https://docs.microsoft.com/visualstudio/debugger/) in op de eerste instructie in de `GnerateThumbnail` methode.
+3. [Stel een onderbrekings punt](/visualstudio/debugger/) in op de eerste instructie in de `GnerateThumbnail` methode.
 
     ![Onderbrekings punt instellen](./media/web-sites-dotnet-troubleshoot-visual-studio/wjbreakpoint.png)
 
@@ -241,7 +241,7 @@ Als uw functie [Logboeken heeft geschreven](https://github.com/Azure/azure-webjo
       <httpRuntime targetFramework="4.5" />
     </system.web>
     ```
-* Als u merkt dat het fout opsporingsprogramma de code die u wilt opsporen niet Step Into, moet u mogelijk de Just My Code instelling wijzigen.  Zie voor meer informatie [opgeven of u alleen fouten wilt opsporen in gebruikers code met behulp van Just my code in Visual Studio](https://docs.microsoft.com/visualstudio/debugger/just-my-code).
+* Als u merkt dat het fout opsporingsprogramma de code die u wilt opsporen niet Step Into, moet u mogelijk de Just My Code instelling wijzigen.  Zie voor meer informatie [opgeven of u alleen fouten wilt opsporen in gebruikers code met behulp van Just my code in Visual Studio](/visualstudio/debugger/just-my-code).
 * Een timer wordt gestart op de server wanneer u de functie voor fout opsporing op afstand inschakelt en na 48 uur wordt de functie automatisch uitgeschakeld. Deze limiet van 48 uur wordt uitgevoerd om veiligheids-en prestatie redenen. U kunt de functie zo vaak als u wilt weer inschakelen. U wordt aangeraden de functie uitgeschakeld te laten wanneer u niet actief fouten opspoort.
 * U kunt het fout opsporingsprogramma hand matig koppelen aan elk proces, niet alleen het app-proces (w3wp.exe). Zie [fout opsporing in Visual Studio](/visualstudio/debugger/debugging-in-visual-studio)voor meer informatie over het gebruik van de foutopsporingsmodus in Visual Studio.
 
@@ -330,7 +330,7 @@ Voor informatie over het maken van toepassings Logboeken in webjobs, raadpleegt 
     ```
 
 `WebPageTraceListener`Met de kunt u tracerings uitvoer weer geven door te bladeren naar `/trace.axd` .
-1. Voeg een <a href="https://msdn.microsoft.com/library/vstudio/6915t83k(v=vs.100).aspx">tracerings element</a> toe onder `<system.web>` in het Web.config-bestand, zoals in het volgende voor beeld:
+1. Voeg een <a href="/previous-versions/dotnet/netframework-4.0/6915t83k(v=vs.100)">tracerings element</a> toe onder `<system.web>` in het Web.config-bestand, zoals in het volgende voor beeld:
 
     ``` xml
     <trace enabled="true" writeToDiagnosticsTrace="true" mostRecent="true" pageOutput="false" />
@@ -505,7 +505,7 @@ Storage accounts offer more storage and longer-lasting retention for logs compar
     This setting specifies which Azure datacenter will host your storage account. For this tutorial your choice won't make a noticeable difference, but for a production web app you want your web server and your storage account to be in the same region to minimize latency and data egress charges. The web app (which you'll create later) should run in a region as close as possible to the browsers accessing your web app in order to minimize latency.
 3. Set the **Replication** drop-down list to **Locally redundant**.
    
-    When geo-replication is enabled for a storage account, the stored content is replicated to a secondary datacenter to enable failover to that location in case of a major disaster in the primary location. Geo-replication can incur additional costs. For test and development accounts, you generally don't want to pay for geo-replication. For more information, see [Create, manage, or delete a storage account](../storage/common/storage-create-storage-account.md).
+    When geo-replication is enabled for a storage account, the stored content is replicated to a secondary datacenter to enable failover to that location in case of a major disaster in the primary location. Geo-replication can incur additional costs. For test and development accounts, you generally don't want to pay for geo-replication. For more information, see [Create, manage, or delete a storage account](../storage/common/storage-account-create.md).
 4. Click **Create**.
 
     ![New storage account](./media/web-sites-dotnet-troubleshoot-visual-studio/newstorage.png)    
@@ -624,7 +624,7 @@ Raadpleeg de volgende bronnen voor meer informatie over het oplossen van problem
 Start een thread in een van de volgende forums voor hulp bij een specifieke vraag om problemen op te lossen:
 
 * [Het Azure-forum op de ASP.net-site](https://forums.asp.net/1247.aspx/1?Azure+and+ASP+NET).
-* [Het Azure-forum op micro soft Q&A](https://docs.microsoft.com/answers/topics/azure-webapps.html).
+* [Het Azure-forum op micro soft Q&A](/answers/topics/azure-webapps.html).
 * [Stackoverflow.com](https://www.stackoverflow.com).
 
 ### <a name="debugging-in-visual-studio"></a>Fout opsporing in Visual Studio

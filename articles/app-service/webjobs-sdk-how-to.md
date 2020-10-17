@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 4a3bff9854e8e316bf368b2222d2244ab9ee6346
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b97ae5d4ba4295ebbb51c960e4cbb76c53dc88a8
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962006"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148067"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>De Azure WebJobs SDK gebruiken voor gebeurtenisgestuurde verwerking op de achtergrond
 
@@ -986,7 +986,7 @@ private class CustomTelemetryClientFactory : DefaultTelemetryClientFactory
 }
 ```
 
-Met het `SamplingPercentageEstimatorSettings` object worden [adaptieve steek proeven](https://docs.microsoft.com/azure/application-insights/app-insights-sampling)geconfigureerd. Dit betekent dat in bepaalde scenario's met grote volumes, toepassingen Insights een geselecteerde subset van telemetriegegevens naar de server verzendt.
+Met het `SamplingPercentageEstimatorSettings` object worden [adaptieve steek proeven](../azure-monitor/app/sampling.md)geconfigureerd. Dit betekent dat in bepaalde scenario's met grote volumes, toepassingen Insights een geselecteerde subset van telemetriegegevens naar de server verzendt.
 
 Nadat u de telemetrie-Factory hebt gemaakt, geeft u deze door aan de Application Insights logging provider:
 

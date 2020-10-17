@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: c51b99ed04357cdebaabbde2b2bd0400adcfef30
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: d0ee9680a6b1b7c3e145137c73dda84d1a755b06
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92134152"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147920"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>Azure HDInsight-clusters beveiligen en isoleren met een persoonlijke koppeling (preview-versie)
 
@@ -56,7 +56,7 @@ Een persoonlijke koppeling, die standaard is uitgeschakeld, vereist uitgebreide 
 
 Wanneer `privateLink` is ingesteld op *inschakelen*, worden interne [standaard load balancers](../load-balancer/load-balancer-overview.md) (SLB) gemaakt en wordt een Azure Private Link-service voor elke SLB ingericht. Met de persoonlijke koppelings service kunt u toegang krijgen tot het HDInsight-cluster vanuit privé-eind punten.
 
-Standaard load balancers bieden niet automatisch de open bare uitgaande NAT, zoals Basic load balancers. U moet uw eigen NAT-oplossing opgeven, zoals [Virtual Network NAT](../virtual-network/nat-overview.md) of een [firewall](./hdinsight-restrict-outbound-traffic.md), voor uitgaande afhankelijkheden. Uw HDInsight-cluster moet nog steeds toegang hebben tot de uitgaande afhankelijkheden. Als deze uitgaande afhankelijkheden niet zijn toegestaan, kan het maken van het cluster mislukken.
+Standaard load balancers bieden niet automatisch de [open bare uitgaande NAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) , zoals Basic load balancers. U moet uw eigen NAT-oplossing opgeven, zoals [Virtual Network NAT](../virtual-network/nat-overview.md) of een [firewall](./hdinsight-restrict-outbound-traffic.md), voor uitgaande afhankelijkheden. Uw HDInsight-cluster moet nog steeds toegang hebben tot de uitgaande afhankelijkheden. Als deze uitgaande afhankelijkheden niet zijn toegestaan, kan het maken van het cluster mislukken.
 
 ### <a name="prepare-your-environment"></a>Uw omgeving voorbereiden
 

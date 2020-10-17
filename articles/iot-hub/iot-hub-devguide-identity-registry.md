@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 2f811c504f8871b06805d5578ed2d70c651be25d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 709ebacc66382d75b79cd41edf88cad962dfd7c2
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90029831"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147710"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Inzicht in het identiteits register in uw IoT-hub
 
@@ -84,7 +84,7 @@ Gebruik asynchrone bewerkingen op het [eind punt](iot-hub-devguide-endpoints.md)
 
 Zie voor meer informatie over de import-en export-Api's [IOT hub rest-api's van de resource provider](/rest/api/iothub/iothubresource). Zie [Bulk beheer van IOT hub apparaat-id's](iot-hub-bulk-identity-mgmt.md)voor meer informatie over het uitvoeren van import-en export taken.
 
-Apparaat-id's kunnen ook vanuit een IoT Hub via de service-API worden geëxporteerd en geïmporteerd via de [rest API](/rest/api/iothub/service/jobs/createimportexportjob) of een van de IOT hub [service-sdk's](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-service-sdks).
+Apparaat-id's kunnen ook vanuit een IoT Hub via de service-API worden geëxporteerd en geïmporteerd via de [rest API](/rest/api/iothub/service/jobs/createimportexportjob) of een van de IOT hub [service-sdk's](./iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks).
 
 ## <a name="device-provisioning"></a>Apparaat inrichten
 

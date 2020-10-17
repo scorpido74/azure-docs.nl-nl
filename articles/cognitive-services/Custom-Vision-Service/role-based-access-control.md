@@ -1,5 +1,5 @@
 ---
-title: Op rollen gebaseerd toegangs beheer-Custom Vision
+title: Op rollen gebaseerd toegangs beheer van Azure-Custom Vision
 titleSuffix: Azure Cognitive Services
 description: In dit artikel wordt uitgelegd hoe u toegangs beheer op basis van rollen voor uw Custom Vision-projecten kunt configureren.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: 4eea87d7b5ef543551b789ddc6b045358fa98631
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 096946a1a63c0826381875cd3ce4eaf0129a85df
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826929"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146373"
 ---
-# <a name="role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer
+# <a name="azure-role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer voor Azure
 
-Custom Vision biedt ondersteuning voor op rollen gebaseerd toegangsbeheer voor Azure (Azure RBAC), een autorisatiesysteem voor het beheren van afzonderlijke toegang tot Azure-resources. Met RBAC kunt u verschillende team leden verschillende machtigings niveaus voor uw Custom Vision projecten toewijzen. Zie de [documentatie van Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/)voor meer informatie over RBAC.
+Custom Vision biedt ondersteuning voor op rollen gebaseerd toegangsbeheer voor Azure (Azure RBAC), een autorisatiesysteem voor het beheren van afzonderlijke toegang tot Azure-resources. Met behulp van Azure RBAC kunt u verschillende team leden verschillende machtigings niveaus voor uw Custom Vision projecten toewijzen. Zie de [documentatie van Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/)voor meer informatie over Azure RBAC.
 
 ## <a name="add-role-assignment-to-custom-vision-resource"></a>Roltoewijzing toevoegen aan Custom Vision resource
 
@@ -27,7 +27,7 @@ U kunt Azure RBAC toewijzen aan een Custom Vision bron. Als u toegang wilt verle
 1. Selecteer in [Azure Portal](https://ms.portal.azure.com/) de optie **Alle services**. 
 1. Selecteer vervolgens de **Cognitive Services**en navigeer naar uw specifieke Custom Vision training-resource.
    > [!NOTE]
-   > U kunt RBAC ook instellen voor hele resource groepen, abonnementen of beheer groepen. Hiertoe selecteert u het gewenste bereik niveau en gaat u vervolgens naar het gewenste item (bijvoorbeeld **resource groepen** selecteren en klikt u vervolgens op de gewenste resource groep).
+   > U kunt ook Azure RBAC instellen voor volledige resource groepen, abonnementen of beheer groepen. Hiertoe selecteert u het gewenste bereik niveau en gaat u vervolgens naar het gewenste item (bijvoorbeeld **resource groepen** selecteren en klikt u vervolgens op de gewenste resource groep).
 1. Selecteer **toegangs beheer (IAM)** in het navigatie deel venster aan de linkerkant.
 1. Selecteer het **tabblad roltoewijzingen om de roltoewijzingen** voor dit bereik weer te geven.
 1. Selecteer **Add**  ->  **functie toewijzing**toevoegen toevoegen.

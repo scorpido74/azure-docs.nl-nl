@@ -11,12 +11,12 @@ ms.date: 06/01/2020
 ms.custom:
 - amqp
 - 'Role: Cloud Development'
-ms.openlocfilehash: 941953c75c516a9eceff526a0ced0ec0910f1f1e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4bb33721625f4fc752745ce2b43051c90b3aaa74
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327698"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147672"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Apparaat-naar-cloud-berichten lezen van het geïntegreerde eindpunt
 
@@ -53,7 +53,7 @@ Wanneer u Event Hubs Sdk's of product integraties gebruikt die niet op de hoogte
 
 In de portal bevat het veld met de Event hub-compatibel eind punt een volledig Event Hubs connection string dat er als volgt uitziet: **eind punt = SB://abcd1234namespace.servicebus.Windows.net/; SharedAccessKeyName = iothubowner; SharedAccessKey = keykeykeykeykeykey =; EntityPath = iothub-eHub-ABCD-1234-123456**. Als de SDK die u gebruikt andere waarden vereist, dan zou het volgende zijn:
 
-| Name | Waarde |
+| Naam | Waarde |
 | ---- | ----- |
 | Eindpunt | sb://abcd1234namespace.servicebus.windows.net/ |
 | Hostnaam | abcd1234namespace.servicebus.windows.net |
@@ -72,12 +72,12 @@ De Sdk's die u kunt gebruiken om verbinding te maken met het ingebouwde Event hu
 
 De product integraties die u kunt gebruiken met het ingebouwde Event hub-compatibele eind punt dat IoT Hub beschikbaar zijn, zijn:
 
-* [Azure functions](https://docs.microsoft.com/azure/azure-functions/). Zie [gegevens verwerken van IOT hub met Azure functions](https://azure.microsoft.com/resources/samples/functions-js-iot-hub-processing/).
-* [Azure stream Analytics](https://docs.microsoft.com/azure/stream-analytics/). Bekijk [gegevens als invoer in stream Analytics](../stream-analytics/stream-analytics-define-inputs.md#stream-data-from-iot-hub).
-* [Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/). Zie [een logboek bron van een IOT hub toevoegen aan uw time series Insights-omgeving](../time-series-insights/time-series-insights-how-to-add-an-event-source-iothub.md).
+* [Azure functions](../azure-functions/index.yml). Zie [gegevens verwerken van IOT hub met Azure functions](https://azure.microsoft.com/resources/samples/functions-js-iot-hub-processing/).
+* [Azure stream Analytics](../stream-analytics/index.yml). Bekijk [gegevens als invoer in stream Analytics](../stream-analytics/stream-analytics-define-inputs.md#stream-data-from-iot-hub).
+* [Time Series Insights](../time-series-insights/index.yml). Zie [een logboek bron van een IOT hub toevoegen aan uw time series Insights-omgeving](../time-series-insights/how-to-ingest-data-iot-hub.md).
 * [Apache Storm Spout](../hdinsight/storm/apache-storm-develop-csharp-event-hub-topology.md). U kunt de [Spout-bron](https://github.com/apache/storm/tree/master/external/storm-eventhubs) weer geven op github.
-* [Integratie van Apache Spark](../hdinsight/spark/apache-spark-eventhub-streaming.md).
-* [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/).
+* [Integratie van Apache Spark](../hdinsight/spark/apache-spark-ipython-notebook-machine-learning.md).
+* [Azure Databricks](/azure/azure-databricks/).
 
 ## <a name="next-steps"></a>Volgende stappen
 

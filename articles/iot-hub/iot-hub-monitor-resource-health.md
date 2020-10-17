@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Technical Support'
 - devx-track-csharp
-ms.openlocfilehash: 100f87b8a13fb424706c3b5ec13268cd3ba42bbe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fec74938adea4058041766a5c28c5a5200aa189e
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89438395"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146553"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>De status van Azure IoT Hub bewaken en snel problemen vaststellen
 
@@ -36,7 +36,7 @@ IoT Hub biedt ook een eigen metrische gegevens die u kunt gebruiken om de status
 
 Azure Monitor voorziet in diagnostische gegevens voor Azure-resources, wat betekent dat u bewerkingen kunt bewaken die plaatsvinden in uw IoT-hub.
 
-Zie [ondersteunde metrische gegevens met Azure monitor](../azure-monitor/platform/metrics-supported.md) en [ondersteunde services, schema's en categorieën voor Diagnostische logboeken van Azure voor](../azure-monitor/platform/diagnostic-logs-schema.md)meer informatie over de specifieke metrische gegevens en gebeurtenissen die Azure monitor Watches.
+Zie [ondersteunde metrische gegevens met Azure monitor](../azure-monitor/platform/metrics-supported.md) en [ondersteunde services, schema's en categorieën voor Diagnostische logboeken van Azure voor](../azure-monitor/platform/resource-logs-schema.md)meer informatie over de specifieke metrische gegevens en gebeurtenissen die Azure monitor Watches.
 
 [!INCLUDE [iot-hub-diagnostics-settings](../../includes/iot-hub-diagnostics-settings.md)]
 
@@ -122,7 +122,7 @@ De categorie apparaat-id bewerkingen houdt fouten bij die optreden wanneer u pro
 
 #### <a name="routes"></a>Routes
 
-In de categorie [bericht routering](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c) worden fouten bijgehouden die optreden tijdens de bericht route-evaluatie en de eindpunt status, zoals wordt waargenomen door IOT hub. Deze categorie bevat gebeurtenissen zoals:
+In de categorie [bericht routering](./iot-hub-devguide-messages-d2c.md) worden fouten bijgehouden die optreden tijdens de bericht route-evaluatie en de eindpunt status, zoals wordt waargenomen door IOT hub. Deze categorie bevat gebeurtenissen zoals:
 
 * Een regel resulteert in "niet-gedefinieerd",
 * IoT Hub markeert een eind punt als Dead of
@@ -585,7 +585,7 @@ Met Azure IoT Hub wordt de status op een regionaal niveau aangegeven. Als een re
 
 Voer de volgende stappen uit om de status van uw IoT-hubs te controleren:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Navigeer naar **service Health**  >  **resource Health**.
 

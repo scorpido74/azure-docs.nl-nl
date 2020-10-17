@@ -3,12 +3,12 @@ title: Uw toepassings bron op rest versleutelen
 description: Meer informatie over het versleutelen van uw toepassings gegevens in Azure Storage en het implementeren ervan als een pakket bestand.
 ms.topic: article
 ms.date: 03/06/2020
-ms.openlocfilehash: 62bb1e51bada155b98fe46740662b86b753d44fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5524b749b1e15342dd0133920d7190e33ced18ad
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90978482"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146042"
 ---
 # <a name="encryption-at-rest-using-customer-managed-keys"></a>Versleuteling in rust met door de klant beheerde sleutels
 
@@ -22,7 +22,7 @@ Voor het versleutelen van de toepassings gegevens van uw web-app in rust zijn ee
 
 ### <a name="create-an-azure-storage-account"></a>Een Azure Storage-account maken
 
-Maak eerst [een Azure Storage-account](../storage/common/storage-account-create.md) en [Versleutel het met door de klant beheerde sleutels](../storage/common/encryption-customer-managed-keys.md). Zodra het opslag account is gemaakt, gebruikt u de [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) om pakket bestanden te uploaden.
+Maak eerst [een Azure Storage-account](../storage/common/storage-account-create.md) en [Versleutel het met door de klant beheerde sleutels](../storage/common/customer-managed-keys-overview.md). Zodra het opslag account is gemaakt, gebruikt u de [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) om pakket bestanden te uploaden.
 
 Gebruik vervolgens de Storage Explorer om [een SAS te genereren](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#generate-a-sas-in-storage-explorer). 
 

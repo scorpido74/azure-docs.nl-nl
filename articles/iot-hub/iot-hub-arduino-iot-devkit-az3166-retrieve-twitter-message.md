@@ -10,12 +10,12 @@ ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 187e44a40228adb62a1d97f4e0df8a7ad3a7e2d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af1685f6455c0642800cba7dd604fcc836bcd7a4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91356064"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147895"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>Schud, schud voor een Tweet--een Twitter-bericht ophalen met Azure Functions
 
@@ -23,7 +23,7 @@ In dit project leert u hoe u de bewegings sensor kunt gebruiken om een gebeurten
 
 ## <a name="what-you-need"></a>Wat u nodig hebt
 
-De aan de slag- [hand leiding](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) volt ooien om:
+De aan de slag- [hand leiding](./iot-hub-arduino-iot-devkit-az3166-get-started.md) volt ooien om:
 
 * Laat uw DevKit verbonden met Wi-Fi.
 * Bereid de ontwikkel omgeving voor.
@@ -207,4 +207,4 @@ Als u andere problemen ondervindt, raadpleegt u de [Veelgestelde vragen over IOT
 
 Nu u hebt geleerd hoe u een DevKit-apparaat verbindt met uw oplossings versneller voor externe controle van Azure IoT en een Tweet ophaalt, zijn dit de voorgestelde volgende stappen:
 
-* [Overzicht van de oplossing voor externe controle van Azure IoT](https://docs.microsoft.com/azure/iot-suite/)
+* [Overzicht van de oplossing voor externe controle van Azure IoT](/azure/iot-suite/)

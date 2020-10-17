@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: aahi
-ms.openlocfilehash: ed2a5b4688965f790567018bc11051b77c494e7a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 4a4058cc6317e863fa20406449e64aa877810a54
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977728"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147473"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Ondersteuning voor Text Analytics-API v3-taal 
 
@@ -119,13 +119,108 @@ ms.locfileid: "91977728"
 
 #### <a name="language-detection"></a>[Taaldetectie](#tab/language-detection)
 
-Het Text Analytics-API kan een breed scala aan talen, varianten, dialecten en bepaalde regionale/culturele talen detecteren.  Taaldetectie retourneert het ' script ' van een taal. Bijvoorbeeld, voor de woord groep ' Ik heb een hond ', wordt geretourneerd  `en` in plaats van  `en-US` . Het enige speciale geval is Chinees, waarbij de mogelijkheid om de taal te detecteren wordt geretourneerd `zh_CHS` of waarmee `zh_CHT` het script kan worden bepaald op basis van de opgegeven tekst. In situaties waarin een specifiek script niet kan worden geïdentificeerd voor een Chinees document, wordt dit gewoon geretourneerd `zh` .
-
-De exacte lijst met talen voor deze functie wordt niet gepubliceerd, maar het kan een breed scala aan talen, varianten, dialecten en enkele regionale/culturele talen detecteren. 
+De Text Analytics-API kan een breed scala aan talen, varianten, dialecten en bepaalde regionale/culturele talen detecteren en detecteerde talen retour neren met hun naam en code. Text Analytics Taaldetectie taal code parameters voldoen aan de [bcp-47](https://tools.ietf.org/html/bcp47) -standaard, met het meren deel van de [ISO-639-1-](https://www.iso.org/iso-639-language-codes.html) id's. 
 
 Als er inhoud in een minder vaak gebruikte taal wordt weer gegeven, kunt u Taaldetectie proberen om te zien of er een code wordt geretourneerd. Het antwoord op talen dat niet kan worden gedetecteerd is `unknown` .
 
+| Taal | Taalcode |  v3-ondersteuning | Beschikbaar vanaf versie van v3-model: |
+|:---------|:-------------:|:----------:|:-----------------------------------------:|
+|Afrikaans|`af`|✓|    |
+|Albanees|`sq`|✓|    |
+|Arabisch|`ar`|✓|    |
+|Armeens|`hy`|✓|    |
+|Baskisch|`eu`|✓|    |
+|Wit-Russisch|`be`|✓|    |
+|Bengaals|`bn`|✓|    |
+|Bosnisch|`bs`|✓|2020-09-01|
+|Bulgaars|`bg`|✓|    |
+|Birmaans|`my`|✓|    |
+|Catalaans, Valenciaans|`ca`|✓|    |
+|Centraal-Khmer|`km`|✓|    |
+|Chinees|`zh`|✓|    |
+|Chinees (vereenvoudigd)|`zh_chs`|✓|    |
+|Chinees (traditioneel)|`zh_cht`|✓|    |
+|Kroatisch|`hr`|✓|    |
+|Tsjechisch|`cs`|✓|    |
+|Deens|`da`|✓|    |
+|Dari|`prs`|✓|2020-09-01|
+|Divehi, Dhivehi, Maldivian|`dv`|✓|    |
+|Nederlands, Vlaams|`nl`|✓|    |
+|Engels|`en`|✓|    |
+|Esperanto|`eo`|✓|    |
+|Ests|`et`|✓|    |
+|Fijisch|`fj`|✓|2020-09-01|
+|Fins|`fi`|✓|    |
+|Frans|`fr`|✓|    |
+|Galicisch|`gl`|✓|    |
+|Georgisch|`ka`|✓|    |
+|Duits|`de`|✓|    |
+|Grieks|`el`|✓|    |
+|Gujarati|`gu`|✓|    |
+|Haitian, Haitian Creole|`ht`|✓|    |
+|Hebreeuws|`he`|✓|    |
+|Hindi|`hi`|✓|    |
+|Hmong Daw|`mww`|✓|2020-09-01|
+|Hongaars|`hu`|✓|    |
+|IJslands|`is`|✓|    |
+|Indonesisch|`id`|✓|    |
+|Inuktitut|`iu`|✓|    |
+|Iers|`ga`|✓|    |
+|Italiaans|`it`|✓|    |
+|Japans|`ja`|✓|    |
+|Kannada|`kn`|✓|    |
+|Kazachs|`kk`|✓|2020-09-01|
+|Koreaans|`ko`|✓|    |
+|Koerdisch|`ku`|✓|    |
+|Democratische|`lo`|✓|    |
+|Latijnse|`la`|✓|    |
+|Lets|`lv`|✓|    |
+|Litouws|`lt`|✓|    |
+|Macedonisch|`mk`|✓|    |
+|Malagassisch|`mg`|✓|2020-09-01|
+|Maleisisch|`ms`|✓|    |
+|Malayalam|`ml`|✓|    |
+|Maltees|`mt`|✓|    |
+|Maori|`mi`|✓|2020-09-01|
+|Mahrati|`mr`|✓|2020-09-01|
+|Noors|`no`|✓|    |
+|Noors (Nynorsk)|`nn`|✓|    |
+|Odia|`or`|✓|    |
+|Pashto, Pushto|`ps`|✓|    |
+|Perzisch|`fa`|✓|    |
+|Pools|`pl`|✓|    |
+|Portugees|`pt`|✓|    |
+|Punjabi, Panjabi|`pa`|✓|    |
+|Queretaro Otomi|`otq`|✓|2020-09-01|
+|Roemeens, Moldavian, Moldavië|`ro`|✓|    |
+|Russisch|`ru`|✓|    |
+|Samoaans|`sm`|✓|2020-09-01|
+|Servisch|`sr`|✓|    |
+|Sinhala, Sinhalese|`si`|✓|    |
+|Slowaaks|`sk`|✓|    |
+|Sloveens|`sl`|✓|    |
+|Somalisch|`so`|✓|    |
+|Spaans, Castilië|`es`|✓|    |
+|Swahili|`sw`|✓|    |
+|Zweeds|`sv`|✓|    |
+|Tagalog|`tl`|✓|    |
+|Tahitiaans|`ty`|✓|2020-09-01|
+|Tamil|`ta`|✓|    |
+|Telugu|`te`|✓|    |
+|Thai|`th`|✓|    |
+|Tongaans|`to`|✓|2020-09-01|
+|Turks|`tr`|✓|    |
+|Oekraïens|`uk`|✓|    |
+|Urdu|`ur`|✓|    |
+|Oezbeeks|`uz`|✓|    |
+|Vietnamees|`vi`|✓|    |
+|Welsh|`cy`|✓|    |
+|Jiddisch|`yi`|✓|    |
+|Yucateeks Maya|`yua`|✓|    |
+
+
 ---
+
 
 ## <a name="see-also"></a>Zie ook
 

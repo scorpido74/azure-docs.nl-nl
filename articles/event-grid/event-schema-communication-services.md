@@ -4,12 +4,12 @@ description: In dit artikel wordt beschreven hoe u Azure Communication Services 
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: mikben
-ms.openlocfilehash: fb37dfe9927c02711f4ab1b01cd89247059b27f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f84146a0513d02484f8f84560e04a977fb3ef373
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91344690"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145828"
 ---
 # <a name="azure-communication-services-as-an-event-grid-source"></a>Azure Communication Services als een Event Grid bron
 
@@ -23,7 +23,7 @@ In dit artikel vindt u de eigenschappen en het schema voor Azure Communication S
 
 ### <a name="available-event-types"></a>Beschik bare gebeurtenis typen
 
-Gebeurtenisraster maakt gebruik van [gebeurtenisabonnementen](https://docs.microsoft.com/azure/event-grid/concepts#event-subscriptions) om gebeurtenisberichten te routen naar abonnees. 
+Gebeurtenisraster maakt gebruik van [gebeurtenisabonnementen](./concepts.md#event-subscriptions) om gebeurtenisberichten te routen naar abonnees. 
 
 Azure Communication Services verzendt de volgende gebeurtenistypen:
 
@@ -45,7 +45,7 @@ Azure Communication Services verzendt de volgende gebeurtenistypen:
 
 ## <a name="event-subjects"></a>Gebeurtenisonderwerpen
 
-Het veld `subject` van alle Communication Services-gebeurtenissen identificeert de gebruiker, het telefoonnummer of de entiteit waarop de gebeurtenis is gericht. Veelgebruikte voorvoegsels worden gebruikt om eenvoudige [Event Grid-filtering](https://docs.microsoft.com/azure/event-grid/event-filtering)toe te staan.
+Het veld `subject` van alle Communication Services-gebeurtenissen identificeert de gebruiker, het telefoonnummer of de entiteit waarop de gebeurtenis is gericht. Veelgebruikte voorvoegsels worden gebruikt om eenvoudige [Event Grid-filtering](./event-filtering.md)toe te staan.
 
 | Onderwerp voorvoegsel                              | Communication Service-entiteit |
 | ------------------------------------------- | ---------------------------- |
@@ -345,6 +345,6 @@ Deze sectie bevat een voorbeeld van hoe de gegevens voor elke gebeurtenis eruitz
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Wat is Event Grid?](https://docs.microsoft.com/azure/event-grid/overview) voor een inleiding tot Azure Event Grid.
-* Zie voor een inleiding tot Azure Event Grid concepten, de [Concepten in Event Grid?](https://docs.microsoft.com/azure/event-grid/concepts)
-* Voor een inleiding tot Azure Event Grid SystemTopics raadpleegt u [Systeem onderwerpen in Azure Event Grid?](https://docs.microsoft.com/azure/event-grid/system-topics)
+* Zie [Wat is Event Grid?](./overview.md) voor een inleiding tot Azure Event Grid.
+* Zie voor een inleiding tot Azure Event Grid concepten, de [Concepten in Event Grid?](./concepts.md)
+* Voor een inleiding tot Azure Event Grid SystemTopics raadpleegt u [Systeem onderwerpen in Azure Event Grid?](./system-topics.md)

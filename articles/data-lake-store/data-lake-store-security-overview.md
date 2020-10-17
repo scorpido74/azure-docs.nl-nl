@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: twooley
-ms.openlocfilehash: 0e10afa9293bbebbb68a6fc3eae4bc3f75813ad0
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 240018381a3139a6378141d78514e43ae469de5d
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92106821"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146304"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Beveiliging in Azure Data Lake Storage Gen1
 
@@ -42,7 +42,7 @@ Nadat Azure Active Directory een gebruiker verifieert, zodat de gebruiker toegan
 * [Op rollen gebaseerd toegangs beheer voor Azure (Azure RBAC)](../role-based-access-control/overview.md) voor account beheer
 * POSIX-ACL voor toegang tot gegevens in de Store
 
-### <a name="rbac-for-account-management"></a>RBAC voor account beheer
+### <a name="azure-rbac-for-account-management"></a>Azure RBAC voor account beheer
 
 Standaard worden vier basis rollen gedefinieerd voor Data Lake Storage Gen1. Met de functies kunnen verschillende bewerkingen worden uitgevoerd op een Data Lake Storage Gen1 account via de Azure Portal, Power shell-cmdlets en REST-Api's. De rollen eigenaar en Inzender kunnen diverse beheer functies op het account uitvoeren. U kunt de rol van lezer toewijzen aan gebruikers die alleen account beheer gegevens weer geven.
 

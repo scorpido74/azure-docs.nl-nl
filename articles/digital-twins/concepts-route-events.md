@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: Meer informatie over het routeren van gebeurtenissen in azure Digital Apparaatdubbels en naar andere Azure-Services.
 author: baanders
 ms.author: baanders
-ms.date: 3/12/2020
+ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 02b977a7b6abdb77deec3973bd94b82fae9c2af5
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: b49e6fc45a84f600131f571d1305c8160ddb1d21
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044289"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145972"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Gebeurtenissen binnen en buiten Azure Digital Apparaatdubbels routeren
 
@@ -91,6 +91,20 @@ await client.CreateEventRoute("routeName", er);
 > Alle SDK-functies zijn beschikbaar in synchrone en asynchrone versies.
 
 Routes kunnen ook worden gemaakt met behulp van de [Azure Digital APPARAATDUBBELS cli](how-to-use-cli.md).
+
+## <a name="dead-letter-events"></a>Onbestelbare gebeurtenissen
+Wanneer een eind punt een gebeurtenis binnen een bepaalde tijds periode niet kan leveren of nadat de gebeurtenis een bepaald aantal keren is geprobeerd, kan de gebeurtenis worden verzonden naar een opslag account. Dit proces wordt **onbestelbare berichten**genoemd. Azure Digital Apparaatdubbels stuurt een gebeurtenis onbestelbaar wanneer aan **een van de volgende** voor waarden wordt voldaan. 
+
+- De gebeurtenis wordt niet binnen de time-to-Live-periode bezorgd
+- Het aantal pogingen om de gebeurtenis te leveren overschrijdt de limiet
+
+Als aan een van de voor waarden wordt voldaan, wordt de gebeurtenis verwijderd of onbestelbaar.  Standaard schakelt elk eind punt **geen** onbestelbare berichten in. Als u deze functie wilt inschakelen, moet u een opslag account opgeven om niet-bezorgde gebeurtenissen op te slaan bij het maken van het eind punt. U haalt gebeurtenissen uit dit opslag account op om leveringen op te lossen.
+
+Voordat u de locatie van de onbestelbare letter instelt, moet u een opslag account hebben met een container. U geeft de URL voor deze container op wanneer u het eind punt maakt. De onbestelbare letter wordt gegeven als container-URL met een SAS-token. Dit token heeft alleen `write` machtigingen nodig voor de doel container in het opslag account. De volledig opgemaakte URL heeft de volgende indeling: `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`
+
+Zie voor meer informatie over SAS-tokens: [ *beperkte toegang verlenen tot Azure storage resources met behulp van Shared Access signatures (SAS)*](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)
+
+Zie voor meer informatie over het instellen van een onbestelbare letter [*: eind punten en routes beheren in azure Digital apparaatdubbels (api's en CLI)*](./how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering).
 
 ### <a name="types-of-event-messages"></a>Typen gebeurtenis berichten
 

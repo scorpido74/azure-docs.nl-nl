@@ -1,81 +1,81 @@
 ---
 title: IP-verbindings filters van Azure IoT Hub | Microsoft Docs
-description: IP-filtering gebruiken om verbindingen van specifieke IP-adressen voor uw Azure IoT-hub te blok keren. U kunt verbindingen van afzonderlijke IP-adressen of bereiken blok keren.
+description: IP-filtering gebruiken om verbindingen van specifieke IP-adressen voor uw Azure IoT-hub te blok keren. U kunt verbindingen van afzonderlijke IP-adressen of reeksen IP-adressen blokkeren.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 05/25/2020
 ms.author: robinsh
-ms.openlocfilehash: 1ba3c89ea4f964f9e6fd5f902aab29a83a058f25
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9a95c0151ed6dd3a2ad4a9d548723cdff0bcfb8
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87074733"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147088"
 ---
 # <a name="use-ip-filters"></a>IP-filters gebruiken
 
-Beveiliging is een belang rijk aspect van elke IoT-oplossing op basis van Azure IoT Hub. Soms moet u expliciet de IP-adressen opgeven waarvan apparaten verbinding kunnen maken als onderdeel van uw beveiligings configuratie. Met de *IP-filter* functie kunt u regels configureren voor het afwijzen of accepteren van verkeer van specifieke IPv4-adressen.
+Beveiliging is een belang rijk aspect van elke IoT-oplossing op basis van Azure IoT Hub. Soms moet u expliciet de IP-adressen opgeven waarvan apparaten verbinding kunnen maken als onderdeel van uw beveiligingsconfiguratie. Met de *IP-filter* functie kunt u regels configureren voor het afwijzen of accepteren van verkeer van specifieke IPv4-adressen.
 
 ## <a name="when-to-use"></a>Wanneer gebruikt u dit?
 
 Er zijn twee specifieke use-cases wanneer het handig is om de IoT Hub-eind punten voor bepaalde IP-adressen te blok keren:
 
-* Uw IoT-hub mag alleen verkeer ontvangen van een opgegeven bereik van IP-adressen en alle andere gegevens weigeren. U gebruikt bijvoorbeeld uw IoT-hub met [Azure Express route](https://azure.microsoft.com/documentation/articles/expressroute-faqs/#supported-services) om particuliere verbindingen te maken tussen een IOT-hub en uw on-premises infra structuur.
+* Uw IoT-hub mag alleen verkeer ontvangen van een opgegeven bereik van IP-adressen en alle andere gegevens weigeren. U gebruikt bijvoorbeeld uw IoT-hub met [Azure Express route](../expressroute/expressroute-faqs.md#supported-services) om particuliere verbindingen te maken tussen een IOT-hub en uw on-premises infra structuur.
 
 * U moet het verkeer afwijzen van IP-adressen die zijn geïdentificeerd als verdacht door de IoT hub-beheerder.
 
-## <a name="how-filter-rules-are-applied"></a>Hoe filter regels worden toegepast
+## <a name="how-filter-rules-are-applied"></a>Hoe filterregels worden toegepast
 
 De IP-filter regels worden toegepast op het IoT Hub service niveau. Daarom zijn de IP-filter regels van toepassing op alle verbindingen van apparaten en back-end-apps met behulp van elk ondersteund protocol. Clients die rechtstreeks vanuit het [ingebouwde Event hub-compatibele eind punt](iot-hub-devguide-messages-read-builtin.md) lezen (niet via de IOT hub Connection String), zijn echter niet gebonden aan de IP-filter regels. 
 
-Elke verbindings poging van een IP-adres dat overeenkomt met een afwijzings-IP-regel in uw IoT-hub ontvangt een niet-geautoriseerde 401-status code en een beschrijving. De IP-regel wordt niet vermeld in het antwoord bericht. Het afwijzen van IP-adressen kan ertoe leiden dat andere Azure-Services, zoals Azure Stream Analytics, Azure Virtual Machines of het Device Explorer in Azure Portal, niet werken met de IoT-hub.
+Elke verbindings poging van een IP-adres dat overeenkomt met een afwijzings-IP-regel in uw IoT-hub ontvangt een niet-geautoriseerde 401-status code en een beschrijving. De IP-regel wordt niet vermeld in het antwoordbericht. Het afwijzen van IP-adressen kan ertoe leiden dat andere Azure-Services, zoals Azure Stream Analytics, Azure Virtual Machines of het Device Explorer in Azure Portal, niet werken met de IoT-hub.
 
 > [!NOTE]
 > Als u Azure Stream Analytics (ASA) moet gebruiken om berichten te lezen van een IoT hub waarvoor IP-filter is ingeschakeld, gebruikt u de Event Hub compatibele naam en het eind punt van uw IoT-hub om hand matig een [Event hubs stream-invoer](../stream-analytics/stream-analytics-define-inputs.md#stream-data-from-event-hubs) toe te voegen aan de ASA.
 
 ## <a name="default-setting"></a>Standaardinstelling
 
-Het **IP-filter** raster in de portal voor een IOT-hub is standaard leeg. Deze standaard instelling betekent dat uw hub verbindingen van elk IP-adres accepteert. Deze standaard instelling komt overeen met een regel die het IP-adres bereik 0.0.0.0/0 accepteert.
+Het **IP-filter** raster in de portal voor een IOT-hub is standaard leeg. Deze standaard instelling betekent dat uw hub verbindingen van elk IP-adres accepteert. Deze standaardinstelling komt overeen met een regel die het IP-adresbereik 0.0.0.0/0 accepteert.
 
 Als u de pagina IP-filter instellingen wilt weer geven, selecteert u **netwerken**, **open bare toegang**en kiest u **geselecteerde IP-bereiken**:
 
 :::image type="content" source="media/iot-hub-ip-filtering/ip-filter-default.png" alt-text="IoT Hub standaard instellingen voor IP-filter":::
 
-## <a name="add-or-edit-an-ip-filter-rule"></a>Een IP-filter regel toevoegen of bewerken
+## <a name="add-or-edit-an-ip-filter-rule"></a>Een IP-filterregel toevoegen of bewerken
 
-Als u een IP-filter regel wilt toevoegen, selecteert u **+ IP-filter regel toevoegen**.
+Als u een IP-filterregel wilt toevoegen, selecteert u **+ IP-filterregel toevoegen**.
 
 :::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-add-rule.png" alt-text="IoT Hub standaard instellingen voor IP-filter":::
 
-Wanneer u **IP-filter regel toevoegen**selecteert, vult u de velden in.
+Vul de velden in nadat u **IP-filterregel toevoegen** hebt geselecteerd.
 
 :::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-after-selecting-add.png" alt-text="IoT Hub standaard instellingen voor IP-filter":::
 
-* Geef een **naam** op voor de IP-filter regel. Dit moet een unieke, hoofdletter gevoelige, alfanumerieke teken reeks van Maxi maal 128 tekens lang zijn. Alleen de ASCII 7-bits alfanumerieke tekens plus `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` worden geaccepteerd.
+* Geef een **naam** op voor de IP-filterregel. Dit moet een unieke, niet-hoofdlettergevoelige tekenreeks van maximaal 128 tekens zijn. Alleen de ASCII 7-bits alfanumerieke tekens plus `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` worden geaccepteerd.
 
-* Geef één IPv4-adres of een blok met IP-adressen in CIDR-notatie op. Bijvoorbeeld in CIDR-notatie 192.168.100.0/22 staat voor de IPv4-adressen van 1024 van 192.168.100.0 naar 192.168.103.255.
+* Geef één IPv4-adres op of een blok met IP-adressen in CIDR-notatie. Bijvoorbeeld in CIDR-notatie staat 192.168.100.0/22 voor de 1024 IPv4-adressen van 192.168.100.0 tot en met 192.168.103.255.
 
-* Selecteer **toestaan** of **blok keren** als de **actie** voor de IP-filter regel.
+* Selecteer **Toestaan** of **Blokkeren** als de **actie** voor de IP-filterregel.
 
 Nadat u de velden hebt ingevuld, selecteert u **Opslaan** om de regel op te slaan. U ziet een waarschuwing dat de update wordt uitgevoerd.
 
 :::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-save-new-rule.png" alt-text="IoT Hub standaard instellingen voor IP-filter":::
 
-De optie **toevoegen** is uitgeschakeld wanneer u het maximum van 10 IP-filter regels bereikt.
+De optie **Toevoegen** wordt uitgeschakeld wanneer u het maximum van 10 IP-filterregels bereikt.
 
 Als u een bestaande regel wilt bewerken, selecteert u de gegevens die u wilt wijzigen, brengt u de wijziging aan en selecteert u **Opslaan** om uw bewerking op te slaan.
 
-## <a name="delete-an-ip-filter-rule"></a>Een IP-filter regel verwijderen
+## <a name="delete-an-ip-filter-rule"></a>Een IP-filterregel verwijderen
 
-Als u een IP-filter regel wilt verwijderen, selecteert u het prullenbak pictogram op die rij en selecteert u vervolgens **Opslaan**. De regel wordt verwijderd en de wijziging wordt opgeslagen.
+Als u een IP-filterregel wilt verwijderen, selecteert u het prullenbakpictogram op die rij en selecteert u **Opslaan**. De regel wordt verwijderd en de wijziging wordt opgeslagen.
 
 :::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-delete-rule.png" alt-text="IoT Hub standaard instellingen voor IP-filter":::
 
 ## <a name="retrieve-and-update-ip-filters-using-azure-cli"></a>IP-filters ophalen en bijwerken met behulp van Azure CLI
 
-De IP-filters van uw IoT Hub kunnen worden opgehaald en bijgewerkt via [Azure cli](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
+De IP-filters van uw IoT Hub kunnen worden opgehaald en bijgewerkt via [Azure cli](/cli/azure/?view=azure-cli-latest).
 
 Als u de huidige IP-filters van uw IoT Hub wilt ophalen, voert u de volgende handelingen uit:
 
@@ -149,17 +149,17 @@ $iothubResource | Set-AzResource -Force
 
 ## <a name="update-ip-filter-rules-using-rest"></a>IP-filter regels bijwerken met REST
 
-U kunt ook het IP-filter van uw IoT Hub ophalen en wijzigen met behulp van het REST-eind punt van de Azure-resource provider. Zie `properties.ipFilterRules` de [methode createorupdate](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate).
+U kunt ook het IP-filter van uw IoT Hub ophalen en wijzigen met behulp van het REST-eind punt van de Azure-resource provider. Zie `properties.ipFilterRules` in de [createorupdate-methode](/rest/api/iothub/iothubresource/createorupdate).
 
-## <a name="ip-filter-rule-evaluation"></a>Evaluatie van IP-filter regel
+## <a name="ip-filter-rule-evaluation"></a>Evaluatie van IP-filterregel
 
-IP-filter regels worden in volg orde toegepast en de eerste regel die overeenkomt met het IP-adres, bepaalt de accepteren of afwijzen.
+IP-filterregels worden op volgorde toegepast en de eerste regel die overeenkomt met het IP-adres bepaalt de actie accepteren of afwijzen.
 
-Als u bijvoorbeeld adressen in het bereik 192.168.100.0/22 wilt accepteren en alle andere gegevens wilt afwijzen, moet de eerste regel in het raster het adres bereik 192.168.100.0/22 accepteren. De volgende regel moet alle adressen afwijzen met behulp van het bereik 0.0.0.0/0.
+Als u bijvoorbeeld adressen in het bereik 192.168.100.0/22 wilt accepteren en de rest wilt afwijzen, moet de eerste regel in het raster het adresbereik 192.168.100.0/22 accepteren. De volgende regel moet alle adressen afwijzen met behulp van het bereik 0.0.0.0/0.
 
-U kunt de volg orde van de IP-filter regels in het raster wijzigen door te klikken op de drie verticale puntjes aan het begin van een rij en met slepen en neerzetten.
+U kunt de volgorde van de IP-filterregels in het raster wijzigen door te klikken op de drie verticale puntjes aan het begin van een rij en met slepen en neerzetten.
 
-Klik op **Opslaan**als u de nieuwe IP-filter regel wilt opslaan.
+Als u de nieuwe IP-filterregel wilt opslaan, klikt u op **Opslaan**.
 
 :::image type="content" source="media/iot-hub-ip-filtering/ip-filter-rule-order.png" alt-text="IoT Hub standaard instellingen voor IP-filter":::
 
