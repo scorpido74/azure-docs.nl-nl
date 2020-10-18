@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: e4922d8855173ab2539c3960aacf54c89aaf1b7b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: aa65508c4f8df2c11bab74cd34f3311b21c63d9c
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148251"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164598"
 ---
 # <a name="create-an-external-app-service-environment"></a>Een externe App Service omgeving maken
 
@@ -61,7 +61,7 @@ Een ASE maken tijdens het maken van een App Service-abonnement:
 
 1. Selecteer in de [Azure Portal](https://portal.azure.com/) **een resource maken**  >  **Web en mobiel**  >  **Web-app**.
 
-    ![Web-app maken][1]
+    ![Scherm opname van de Azure Portal weer geven Web en mobiel geselecteerd in de Azure Marketplace en het scherm voor het maken van een nieuwe web-app aan de rechter kant.][1]
 
 2. Selecteer uw abonnement. De app en de ASE worden gemaakt in dezelfde abonnementen.
 
@@ -71,7 +71,7 @@ Een ASE maken tijdens het maken van een App Service-abonnement:
 
 5. Selecteer het App Service plan en selecteer vervolgens **nieuwe maken**. Linux-web-apps en Windows Web apps kunnen zich niet in hetzelfde App Service plan bevindt, maar kunnen zich in dezelfde App Service Environment. 
 
-    ![Nieuw App Service plan][2]
+    ![Scherm opname van de Azure Portal het deel venster Web-app, het deel venster app service-plan weer te geven en het deel venster Nieuw App Service plan wordt geopend.][2]
 
 6. Selecteer in de vervolg keuzelijst **locatie** de regio waar u de ASE wilt maken. Als u een bestaande ASE selecteert, wordt er geen nieuwe ASE gemaakt. Het App Service plan wordt gemaakt in de ASE die u hebt geselecteerd. 
 
@@ -99,7 +99,7 @@ Een ASE maken tijdens het maken van een App Service-abonnement:
 
 1. Maak in [Azure portal](https://portal.azure.com/)de Azure Portal **een resource**  >  **Web en mobiel**  >  **Web App for containers.** 
 
-    ![Web-app maken][7]
+    ![Scherm afbeelding van de Azure Portal weer geven Web en mobiel geselecteerd in de Azure Marketplace en het Web App for Containers deel venster aan de rechter kant geopend.][7]
 
 1. Selecteer uw abonnement. De app en de ASE worden gemaakt in dezelfde abonnementen.
 
@@ -107,7 +107,7 @@ Een ASE maken tijdens het maken van een App Service-abonnement:
 
 1. Selecteer het App Service plan en selecteer vervolgens **nieuwe maken**. Linux-web-apps en Windows Web apps kunnen zich niet in hetzelfde App Service plan bevindt, maar kunnen zich in dezelfde App Service Environment. 
 
-    ![Nieuw App Service plan][8]
+    ![Scherm opname van de Azure Portal het deel venster Web App for Containers, het deel venster app service-plan, en het deel venster Nieuw App Service plan worden geopend.][8]
 
 1. Selecteer in de vervolg keuzelijst **locatie** de regio waar u de ASE wilt maken. Als u een bestaande ASE selecteert, wordt er geen nieuwe ASE gemaakt. Het App Service plan wordt gemaakt in de ASE die u hebt geselecteerd. 
 

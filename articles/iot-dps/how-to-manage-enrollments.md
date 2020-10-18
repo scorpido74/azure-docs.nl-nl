@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 8bd896573dbd0b24df11c0d66009098de19654ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2fbcacd7f2094f9b0b9dcea3fea4d804fd96923e
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74974935"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165312"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-portal"></a>Registratie van apparaten beheren met Azure Portal
 
@@ -24,7 +24,7 @@ Een *apparaatregistratie* maakt een record van één apparaat of een groep appar
 
 Er zijn twee manieren waarop u uw apparaten kunt inschrijven bij de inrichtings service:
 
-* Een **registratie groep** is een vermelding voor een groep apparaten die een gemeen schappelijk Attestation-mechanisme van X. 509-certificaten delen, ondertekend door hetzelfde handtekening certificaat, dat het [basis certificaat](https://docs.microsoft.com/azure/iot-dps/concepts-security#root-certificate) of het [tussenliggende certificaat](https://docs.microsoft.com/azure/iot-dps/concepts-security#intermediate-certificate)kan zijn, dat wordt gebruikt voor het produceren van een apparaat certificaat op een fysiek apparaat. U kunt het beste een registratie groep gebruiken voor een groot aantal apparaten die een gewenste initiële configuratie delen, of voor apparaten die allemaal naar dezelfde Tenant gaan. Houd er rekening mee dat u alleen apparaten kunt inschrijven die gebruikmaken van het 509 Attestation-mechanisme van *X.* 
+* Een **registratie groep** is een vermelding voor een groep apparaten die een gemeen schappelijk Attestation-mechanisme van X. 509-certificaten delen, ondertekend door hetzelfde handtekening certificaat, dat het [basis certificaat](https://docs.microsoft.com/azure/iot-dps/concepts-security#root-certificate) of het [tussenliggende certificaat](https://docs.microsoft.com/azure/iot-dps/concepts-security#intermediate-certificate)kan zijn, dat wordt gebruikt voor het produceren van een apparaat certificaat op een fysiek apparaat. U kunt het beste een registratie groep gebruiken voor een groot aantal apparaten die een gewenste initiële configuratie delen, of voor apparaten die allemaal naar dezelfde Tenant gaan. 
 
     U kunt met behulp van de volgende stappen een inschrijvings groep maken in de portal voor een groep apparaten:
 

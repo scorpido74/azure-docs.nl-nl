@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 06/06/2020
+ms.date: 10/16/2020
 tags: connectors
-ms.openlocfilehash: a50a171536d7f81de42da415960398d31ec64827
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a2fb2180acfe8fed5701ae4320ea0d1424ed9e0
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326776"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166281"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>Werk stromen automatiseren voor een SQL database met behulp van Azure Logic Apps
 
@@ -67,6 +67,9 @@ Ga nu verder met de volgende stappen:
 
 ### <a name="connect-to-azure-sql-database-or-managed-instance"></a>Verbinding maken met Azure SQL Database of een beheerd exemplaar
 
+Voor toegang tot een Azure SQL Managed instance zonder gebruik te maken van de on-premises gegevens gateway of integratie service omgeving moet u [het open bare eind punt instellen op het door Azure SQL beheerde exemplaar](../azure-sql/managed-instance/public-endpoint-configure.md). Het open bare eind punt gebruikt poort 3342, dus zorg ervoor dat u dit poort nummer opgeeft wanneer u de verbinding maakt vanuit uw logische app.
+
+
 De eerste keer dat u een SQL- [trigger](#add-sql-trigger) of [SQL-actie](#add-sql-action)toevoegt en u nog geen verbinding hebt gemaakt met uw data base, wordt u gevraagd om de volgende stappen uit te voeren:
 
 1. Selecteer bij **verificatie type**de verificatie die vereist is en is ingeschakeld in uw data base in Azure SQL database of Azure SQL Managed instance:
@@ -89,7 +92,7 @@ De eerste keer dat u een SQL- [trigger](#add-sql-trigger) of [SQL-actie](#add-sq
    |----------|----------|-------------|
    | **Servernaam** | Ja | Het adres voor uw SQL Server, bijvoorbeeld `Fabrikam-Azure-SQL.database.windows.net` |
    | **Databasenaam** | Ja | De naam voor uw SQL database, bijvoorbeeld `Fabrikam-Azure-SQL-DB` |
-   | **Tabelnaam** | Ja | De tabel die u wilt gebruiken, bijvoorbeeld `SalesLT.Customer` |
+   | **Tabel naam** | Ja | De tabel die u wilt gebruiken, bijvoorbeeld `SalesLT.Customer` |
    ||||
 
    > [!TIP]
@@ -203,7 +206,7 @@ In dit voor beeld wordt de logische app gestart met de [terugkeer patroon](../co
 
    Met deze actie wordt slechts één rij uit de geselecteerde tabel geretourneerd, niets anders. Om de gegevens in deze rij weer te geven, kunt u dus ook andere acties toevoegen die een bestand maken dat de velden uit de geretourneerde rij bevat, en dat bestand opslaan in een opslag account in de Cloud. Zie de [referentie pagina van de connector](/connectors/sql/)voor meer informatie over andere beschik bare acties voor deze connector.
 
-1. Wanneer u klaar bent, selecteert u op de werk balk ontwerpen de optie **Opslaan**.
+1. Selecteer **Opslaan** op de werkbalk van de ontwerper wanneer u klaar bent.
 
    Met deze stap wordt uw logische app Live in azure automatisch ingeschakeld en gepubliceerd.
 
@@ -248,6 +251,18 @@ Wanneer u een opgeslagen procedure aanroept met behulp van de SQL Server-connect
 
 1. Als u wilt verwijzen naar de eigenschappen van de JSON-inhoud, klikt u in de bewerkings vakken waar u naar deze eigenschappen wilt verwijzen, zodat de lijst met dynamische inhoud wordt weer gegeven. Selecteer in de lijst onder de kop [**JSON parseren**](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) de gegevens tokens voor de gewenste eigenschappen van de JSON-inhoud.
 
+## <a name="troubleshoot-problems"></a>Problemen oplossen
+
+Het is zeer gebruikelijk om connectiviteits problemen te ondervinden. Hier volgt een voor beeld van een fout bericht:
+
+> `A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections.`
+>
+> `(provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) (Microsoft SQL Server, Error: 53)`
+>
+> `(provider: TCP Provider, error: 0 - No such host is known.) (Microsoft SQL Server, Error: 11001)`
+
+Volg de stappen [voor het oplossen van connectiviteits fouten naar SQL Server](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server) om het probleem op te lossen.
+
 ## <a name="connector-specific-details"></a>Connector-specifieke Details
 
 Zie de [referentie pagina van de connector](/connectors/sql/)die wordt gegenereerd op basis van de Swagger-beschrijving voor technische informatie over de triggers, acties en limieten van deze connector.
@@ -255,4 +270,3 @@ Zie de [referentie pagina van de connector](/connectors/sql/)die wordt gegeneree
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over andere [connectors voor Azure Logic apps](../connectors/apis-list.md)
-

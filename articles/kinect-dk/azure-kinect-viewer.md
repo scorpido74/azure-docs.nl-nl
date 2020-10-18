@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Azure, kinect, sensor, viewer, visualisatie, diepte, RGB, kleur, IMU, audio, microfoon, punt-Cloud
-ms.openlocfilehash: 57cf7df831e97da4143a7f196b69a3a10609a017
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f411de5854d516586dc64701cca729c692ce40e0
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85277282"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166102"
 ---
 # <a name="azure-kinect-viewer"></a>Azure Kinect viewer
 
@@ -36,7 +36,7 @@ De Viewer kan in twee modi worden gebruikt: met Live gegevens van de sensor of v
 
 Start de toepassing door uit te voeren `k4aviewer.exe` .
 
-![De firmware versie van een apparaat controleren met behulp van viewer](./media/how-to-guides/open-viewer.png)
+![Scherm opname van de gestarte Viewer-toepassing.](./media/how-to-guides/open-viewer.png)
 
 ### <a name="use-the-viewer-with-live-data"></a>De viewer gebruiken met Live gegevens
 

@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 6/12/2020
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: a93c127d0b04667b0f28949f4b384f22769bace4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41fb34055b9992b83a11bc3e4d47e3a389147860
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90018591"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164224"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problemen met Azure Files Sync oplossen
 Gebruik Azure File Sync om de bestands shares van uw organisatie in Azure Files te centraliseren, terwijl u de flexibiliteit, prestaties en compatibiliteit van een on-premises Bestands server bijhoudt. Door Azure File Sync wordt Windows Server getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is in Windows Server, inclusief SMB, NFS en FTPS, gebruiken voor lokale toegang tot uw gegevens. U kunt zoveel caches hebben als u nodig hebt in de hele wereld.
@@ -734,7 +734,7 @@ Deze fout treedt op omdat het Cloud eindpunt is gemaakt met inhoud die al aanwez
 | **Fouttekenreeks** | ECS_E_TOO_MANY_PER_ITEM_ERRORS |
 | **Herstel vereist** | Ja |
 
-Als er veel per bestands synchronisatie fouten zijn, kunnen synchronisatie sessies mislukken. <!-- To troubleshoot this state, see [Troubleshooting per file/directory sync errors]().-->
+Synchronisatie sessies mislukken met een van deze fouten wanneer er veel bestanden zijn die niet kunnen worden gesynchroniseerd met fouten per item. Voer de stappen uit die worden beschreven in de [Hoe kan ik controleren of er specifieke bestanden of mappen zijn die niet worden gesynchroniseerd?](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing) sectie voor het oplossen van fouten per item. Open een ondersteunings aanvraag voor een synchronisatie fout ECS_E_SYNC_METADATA_KNOWLEDGE_LIMIT_REACHED.
 
 > [!NOTE]
 > Azure File Sync maakt een tijdelijke VSS-moment opname eenmaal per dag op de server om bestanden met geopende ingangen te synchroniseren.

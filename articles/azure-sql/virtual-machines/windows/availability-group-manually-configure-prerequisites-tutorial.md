@@ -14,18 +14,20 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 812fb35f404092453ad35b2f70c4a5b1697fbfe0
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: ea9c8b91237f4590d1999c99fbb356d78994390d
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075702"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166893"
 ---
-# <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Vereisten voor het maken van AlwaysOn-beschikbaarheids groepen op SQL Server op Azure Virtual Machines
+# <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Zelf studie: vereisten voor het maken van beschikbaarheids groepen op SQL Server op Azure Virtual Machines
 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 In deze zelf studie ziet u hoe u de vereisten voor het maken van een SQL Server AlwaysOn [-beschikbaarheids groep op Azure virtual machines (vm's)](availability-group-manually-configure-tutorial.md)kunt volt ooien. Wanneer u de vereisten hebt voltooid, hebt u een domein controller, twee SQL Server Vm's en een Witness-server in één resource groep.
+
+Hoewel in dit artikel hand matig de omgeving van de beschikbaarheids groep wordt geconfigureerd, is het ook mogelijk de sjablonen voor [Azure Portal](availability-group-azure-portal-configure.md), [Power shell of Azure cli](availability-group-az-commandline-configure.md)of [Azure Quick](availability-group-quickstart-template-configure.md) start te gebruiken. 
 
 **Geschatte tijd**: het kan enkele uren duren om de vereisten te volt ooien. Veel van deze tijd wordt besteed aan het maken van virtuele machines.
 
@@ -60,7 +62,7 @@ U hebt een Azure-account nodig. U kunt [een gratis Azure-account openen of de](h
 8. Selecteer een locatie. De locatie is de Azure-regio waar u de beschikbaarheids groep wilt maken. In dit artikel worden alle resources op één Azure-locatie gebouwd.
 9. Controleer of het selectie vakje **vastmaken aan dash board** is ingeschakeld. Deze optionele instelling plaatst een snelkoppeling voor de resource groep op het Azure Portal dash board.
 
-   ![Resourcegroep](./media/availability-group-manually-configure-prerequisites-tutorial-/01-resourcegroup.png)
+   ![De snelkoppeling naar de resource groep voor de Azure Portal](./media/availability-group-manually-configure-prerequisites-tutorial-/01-resourcegroup.png)
 
 10. Selecteer **maken** om de resource groep te maken.
 
@@ -118,13 +120,13 @@ Het nieuwe virtuele netwerk heeft één subnet met de naam **admin**. De domein 
 
     Noteer het subnet dat u al hebt gemaakt.
 
-   ![Het virtuele netwerk configureren](./media/availability-group-manually-configure-prerequisites-tutorial-/07-addsubnet.png)
+   ![Noteer het subnet dat u al hebt gemaakt](./media/availability-group-manually-configure-prerequisites-tutorial-/07-addsubnet.png)
 
 5. Selecteer **+ subnet**om een tweede subnet te maken.
 6. Configureer het subnet in **subnet toevoegen**door **sqlsubnet** onder **naam**te typen. Azure geeft automatisch een geldig **adres bereik**op. Controleer of dit adres bereik ten minste 10 adressen bevat. In een productie omgeving hebt u mogelijk meer adressen nodig.
 7. Selecteer **OK**.
 
-    ![Het virtuele netwerk configureren](./media/availability-group-manually-configure-prerequisites-tutorial-/08-configuresubnet.png)
+    ![Subnet configureren](./media/availability-group-manually-configure-prerequisites-tutorial-/08-configuresubnet.png)
 
 De volgende tabel geeft een overzicht van de netwerk configuratie-instellingen:
 

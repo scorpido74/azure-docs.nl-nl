@@ -11,12 +11,12 @@ ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: tagore
-ms.openlocfilehash: e4598cb1d54fbbeb09e3bc5f58f0cce949b3c848
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 404fc887cf40ee5d88b2824e8d2324d103226973
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073798"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164360"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Aan de slag met Azure Cloud Services en ASP.NET
 
@@ -64,7 +64,7 @@ De app slaat de advertenties met behulp van Entity Framework Code First op in ee
 
 Wanneer een gebruiker een afbeelding uploadt, slaat de front-end (die wordt uitgevoerd in een webrol) de afbeelding op in een [Azure-blob](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage). De advertentiegegevens worden opgeslagen in de database, samen met een URL die naar de blob verwijst. Tegelijkertijd schrijft de front-end een bericht naar een Azure-wachtrij. Een back-end-proces dat wordt uitgevoerd in een werkrol, peilt de wachtrij periodiek op nieuwe berichten. Wanneer er een nieuw bericht binnenkomt, maakt de werkrol een miniatuur voor de betreffende afbeelding en werkt deze het databaseveld met de miniatuur-URL voor de advertentie bij. Het volgende diagram toont de wisselwerking tussen de onderdelen van de toepassing.
 
-![Architectuur van Contoso Ads](./media/cloud-services-dotnet-get-started/apparchitecture.png)
+![Diagram dat laat zien hoe de onderdelen van de toepassing communiceren.](./media/cloud-services-dotnet-get-started/apparchitecture.png)
 
 [!INCLUDE [install-sdk](../../includes/install-sdk-2017-2015-2013.md)]
 
@@ -125,7 +125,7 @@ Een Azure-cloudservice is de omgeving waarin de toepassing wordt uitgevoerd.
 5. Kies de regio waarin u de toepassing wilt implementeren.
 
     Dit veld geeft aan in welk datacenter uw cloudservice zal worden gehost. Voor een productietoepassing kiest u de regio die het dichtst bij uw klanten ligt. Voor deze zelfstudie kiest u de regio die het dichtst bij u ligt.
-5. Klik op **Create**.
+5. Klik op **Maken**.
 
     Op de volgende afbeelding ziet u een cloudservice met de URL CSvccontosoads.cloudapp.net.
 
@@ -154,7 +154,7 @@ Wanneer de app wordt uitgevoerd in de cloud, gebruikt deze een cloudgebaseerde d
 9. Klik op **Selecteren** voor de nieuwe server.
 
     ![Nieuwe server](./media/cloud-services-dotnet-get-started/newdbserver.png)
-10. Klik op **Create**.
+10. Klik op **Maken**.
 
 ### <a name="create-an-azure-storage-account"></a>Een Azure-opslagaccount maken
 Een Azure-opslagaccount biedt resources voor het opslaan van wachtrij- en blobgegevens in de cloud.
@@ -177,7 +177,7 @@ In een echte toepassing maakt u meestal afzonderlijke accounts voor toepassingsg
     Wanneer de cloudservice en het opslagaccount zich in verschillende datacenters (verschillende regio's) bevinden, neemt de latentie toe en wordt de bandbreedte buiten het datacenter aan u in rekening gebracht. Bandbreedte binnen een datacenter is gratis.
 
     Azure-affiniteitsgroepen bieden een mechanisme om de afstand tussen resources in een datacenter te minimaliseren, waardoor ze de latentie kunnen verminderen. In deze zelfstudie worden geen affiniteitsgroepen gebruikt. Zie [Een affiniteitsgroep maken in Azure](/previous-versions/azure/reference/gg715317(v=azure.100)) voor meer informatie.
-7. Klik op **Create**.
+7. Klik op **Maken**.
 
     ![Nieuw opslagaccount](./media/cloud-services-dotnet-get-started/newstorage.png)
 
@@ -217,7 +217,7 @@ U gebruikt een [Web.config-transformatie](https://www.asp.net/mvc/tutorials/depl
 6. Selecteer en kopieer de verbindingsreeks (zonder de aanhalingstekens) voor gebruik in de volgende stappen, waarin de projectwerkrol wordt geconfigureerd.
 7. Klik in **Solution Explorer** onder **Roles** in het cloudserviceproject met de rechtermuisknop op **ContosoAdsWorker**. Klik vervolgens op **Properties**.
 
-    ![Roleigenschappen](./media/cloud-services-dotnet-get-started/rolepropertiesworker.png)
+    ![Scherm afbeelding die de menu optie Eigenschappen markeert.](./media/cloud-services-dotnet-get-started/rolepropertiesworker.png)
 8. Klik op het tabblad **Settings**.
 9. Wijzig **Service Configuration** in **Cloud**.
 10. Selecteer het veld **Value** voor de `ContosoAdsDbConnectionString`-instelling en plak de verbindingsreeks die u hebt gekopieerd uit de vorige sectie van de zelfstudie.
@@ -378,7 +378,7 @@ In deze sectie configureert u Azure Storage- en SQL-verbindingsreeksen om lokaal
 2. Sla uw wijzigingen op.
 3. Klik in het project ContosoAdsCloudService met de rechtermuisknop op ContosoAdsWeb (onder **Roles**) en klik vervolgens op **Properties**.
 
-    ![Roleigenschappen](./media/cloud-services-dotnet-get-started/roleproperties.png)
+    ![Scherm opname van de menu optie Eigenschappen onder rollen.](./media/cloud-services-dotnet-get-started/roleproperties.png)
 4. Klik in het eigenschappenvenster van **ContosoAdsCommon [rol]** op het tabblad **Settings** en vervolgens op **Add Setting**.
 
     Laat **Service Configuration** ingesteld op **All Configurations**.

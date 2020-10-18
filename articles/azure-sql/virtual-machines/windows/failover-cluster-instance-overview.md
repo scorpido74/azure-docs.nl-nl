@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: a8bfa91ac9b70c0ff4f461bd9e10899d1170b24d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29ab7def6209483ee891dc0d26bf8163cdc39a23
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91272509"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165230"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Exemplaren van failoverclusters met SQL Server op virtuele Azure-machines (VM's).
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -140,7 +140,7 @@ In het geval van oplossingen van Microsoft-partners voor gedeelde opslag en gege
 
 ## <a name="connectivity"></a>Connectiviteit
 
-Exemplaren van failoverclusters met SQL Server op virtuele Azure-machines gebruiken een [DNN (naam van gedistribueerd netwerk)](hadr-distributed-network-name-dnn-configure.md) of een [VNN (naam van een virtueel netwerk) met Azure Load Balancer](hadr-vnn-azure-load-balancer-configure.md) om verkeer door te sturen naar het SQL Server exemplaar, ongeacht welk knooppunt momenteel eigenaar is van de geclusterde resources. Er zijn aanvullende overwegingen bij het gebruik van bepaalde functies en de DNN met een FCI met SQL Server. Zie [Feature interoperability with SQL Server FCI & DNN](failover-cluster-instance-dnn-interoperability.md) (Interoperabiliteit van functies met FCI met SQL Server en DNN) voor meer informatie. 
+Exemplaren van failoverclusters met SQL Server op virtuele Azure-machines gebruiken een [DNN (naam van gedistribueerd netwerk)](failover-cluster-instance-distributed-network-name-dnn-configure.md) of een [VNN (naam van een virtueel netwerk) met Azure Load Balancer](failover-cluster-instance-vnn-azure-load-balancer-configure.md) om verkeer door te sturen naar het SQL Server exemplaar, ongeacht welk knooppunt momenteel eigenaar is van de geclusterde resources. Er zijn aanvullende overwegingen bij het gebruik van bepaalde functies en de DNN met een FCI met SQL Server. Zie [Feature interoperability with SQL Server FCI & DNN](failover-cluster-instance-dnn-interoperability.md) (Interoperabiliteit van functies met FCI met SQL Server en DNN) voor meer informatie. 
 
 Raadpleeg [HADR-verbindingen routeren naar SQL Server in Azure-VM's](hadr-cluster-best-practices.md#connectivity) voor meer informatie over opties voor clusterconnectiviteit. 
 

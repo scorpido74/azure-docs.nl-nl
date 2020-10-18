@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 1b10489ef74e681eab59694d24c4babc3ce69163
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b6e33f32c6adcea12952474e3f09b45834b85c1e
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91298708"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164394"
 ---
 # <a name="create-an-fci-with-a-premium-file-share-sql-server-on-azure-vms"></a>Een FCI maken met een Premium-bestands share (SQL Server op Azure Vm's)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -37,11 +37,11 @@ Voordat u de instructies in dit artikel hebt voltooid, hebt u het volgende nodig
 - Een account met machtigingen voor het maken van objecten op zowel virtuele Azure-machines als in Active Directory.
 - [Twee of meer voor bereide virtuele Windows Azure-machines](failover-cluster-instance-prepare-vm.md) in een [beschikbaarheidsset](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set) of verschillende [beschikbaarheids zones](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address).
 - Een [Premium-bestands share](../../../storage/files/storage-how-to-create-premium-fileshare.md) die moet worden gebruikt als het geclusterde station, op basis van de opslag quota van uw Data Base voor uw gegevens bestanden.
-- De meest recente versie van [Power shell](/powershell/azure/install-az-ps?view=azps-4.2.0). 
+- De meest recente versie van [Power shell](/powershell/azure/install-az-ps). 
 
 ## <a name="mount-premium-file-share"></a>Premium-bestands share koppelen
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). en ga naar uw opslag account.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). en ga naar uw opslag account.
 1. Ga naar **Bestands shares** onder **File Service**en selecteer vervolgens de Premium-bestands share die u wilt gebruiken voor uw SQL-opslag.
 1. Selecteer **verbinding** om de Connection String voor uw bestands share weer te geven.
 1. Selecteer in de vervolg keuzelijst de stationsletter die u wilt gebruiken en Kopieer beide code blokken naar Klad blok.
@@ -194,7 +194,7 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="configure-connectivity"></a>Connectiviteit configureren 
 
-Als u verkeer op de juiste manier wilt door sturen naar het huidige primaire knoop punt, configureert u de connectiviteits optie die geschikt is voor uw omgeving. U kunt een [Azure-Load Balancer](hadr-vnn-azure-load-balancer-configure.md) maken of u kunt in plaats daarvan een voor beeld bekijken van de functie voor [gedistribueerde netwerk naam](hadr-distributed-network-name-dnn-configure.md) als u SQL Server 2019 en Windows Server 2016 (of hoger) gebruikt. 
+Als u verkeer op de juiste manier wilt door sturen naar het huidige primaire knoop punt, configureert u de connectiviteits optie die geschikt is voor uw omgeving. U kunt een [Azure Load Balancer](failover-cluster-instance-vnn-azure-load-balancer-configure.md) maken of als u SQL Server 2019 Cu2 (of hoger) en Windows Server 2016 (of hoger) gebruikt, kunt u in plaats daarvan de functie [gedistribueerde netwerk naam](failover-cluster-instance-distributed-network-name-dnn-configure.md) gebruiken. 
 
 ## <a name="limitations"></a>Beperkingen
 
@@ -204,12 +204,13 @@ Als u verkeer op de juiste manier wilt door sturen naar het huidige primaire kno
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u dit nog niet hebt gedaan, configureert u de connectiviteit met uw FCI met de naam van een [virtueel netwerk en een Azure Load Balancer](hadr-vnn-azure-load-balancer-configure.md) of [gedistribueerde netwerk naam (DNN)](hadr-distributed-network-name-dnn-configure.md). 
+Als u dit nog niet hebt gedaan, configureert u de connectiviteit met uw FCI met de naam van een [virtueel netwerk en een Azure Load Balancer](failover-cluster-instance-vnn-azure-load-balancer-configure.md) of [gedistribueerde netwerk naam (DNN)](failover-cluster-instance-distributed-network-name-dnn-configure.md). 
+
 
 Als Premium-bestands shares niet de juiste FCI-opslag oplossing voor u zijn, kunt u overwegen om uw FCI te maken met behulp van [gedeelde Azure-schijven](failover-cluster-instance-azure-shared-disks-manually-configure.md) of [opslagruimten direct](failover-cluster-instance-storage-spaces-direct-manually-configure.md) in plaats daarvan. 
 
 Zie voor meer informatie een overzicht van [FCI met SQL Server op Azure vm's](failover-cluster-instance-overview.md) en [Aanbevolen procedures voor cluster configuratie](hadr-cluster-best-practices.md). 
 
 Zie voor meer informatie: 
-- [Windows-cluster technologieën](/windows-server/failover-clustering/failover-clustering-overview)   
-- [Failover-cluster exemplaren SQL Server](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [Windows-clustertechnologieën](/windows-server/failover-clustering/failover-clustering-overview)   
+- [Instanties van een SQL Server-failovercluster](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

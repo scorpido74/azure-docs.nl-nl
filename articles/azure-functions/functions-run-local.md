@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: 094449ddcbfc2baf41657d00de030ef3c1cddbb5
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 17daef18d87c4b5c906694ab1394694b32b6b130
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108487"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164857"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Werken met Azure Functions Core Tools
 
@@ -309,7 +309,7 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 
 U kunt deze opties ook opgeven in de opdracht met behulp van de volgende argumenten:
 
-| Argument     | Description                            |
+| Argument     | Beschrijving                            |
 | ------------------------------------------ | -------------------------------------- |
 | **`--csx`** | (Versie 2. x en hoger.) Genereert dezelfde C# script-sjablonen (. CSX) die worden gebruikt in versie 1. x en in de portal. |
 | **`--language`**, **`-l`**| De programmeer taal van de sjabloon, zoals C#, F # of Java script. Deze optie is vereist in versie 1. x. In versie 2. x en hoger gebruikt u deze optie niet of kiest u een taal die overeenkomt met de runtime van de werk nemer. |
@@ -574,15 +574,11 @@ De aanbevolen manier om de uitvoering van uw functies te controleren is door te 
 
 ### <a name="application-insights-integration"></a>Integratie van Application Insights
 
-Application Insights integratie moet worden ingeschakeld wanneer u de functie-app in azure maakt. Als uw functie-app om een bepaalde reden niet is verbonden met een Application Insights-exemplaar, is het eenvoudig om deze integratie uit te voeren in de Azure Portal. 
-
-[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
+Application Insights integratie moet worden ingeschakeld wanneer u de functie-app in azure maakt. Als uw functie-app om een bepaalde reden niet is verbonden met een Application Insights-exemplaar, is het eenvoudig om deze integratie uit te voeren in de Azure Portal. Zie [Application Insights-integratie inschakelen](configure-monitoring.md#enable-application-insights-integration)voor meer informatie.
 
 ### <a name="enable-streaming-logs"></a>Streaming-logboeken inschakelen
 
 U kunt een stroom weer geven van de logboek bestanden die worden gegenereerd door uw functies in een opdracht regel sessie op uw lokale computer. 
-
-#### <a name="native-streaming-logs"></a>Systeem eigen streaming-logboeken
 
 [!INCLUDE [functions-streaming-logs-core-tools](../../includes/functions-streaming-logs-core-tools.md)]
 
@@ -597,7 +593,7 @@ Meer informatie over het ontwikkelen, testen en publiceren van Azure Functions m
 <!-- LINKS -->
 
 [Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
-[Azure Portal]: https://portal.azure.com 
+[Azure-portal]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 [`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
 ['AzureWebJobsStorage']: functions-app-settings.md#azurewebjobsstorage

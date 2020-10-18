@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 12/12/2017
 ms.author: cshoe
-ms.openlocfilehash: 4d5388f850f47323f6ad79f9f91e617e506546bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48614640660da6d85face5ea416d267fa9f59515
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88205435"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164836"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Naslag informatie voor ontwikkel aars van Azure Functions C#-script (. CSX)
 
@@ -249,7 +249,17 @@ public static void Run(string myBlob, ILogger log)
 ```
 
 > [!NOTE]
-> Voor informatie over een recentere logboek registratie raamwerk dat u kunt gebruiken in plaats van `TraceWriter` , raadpleegt u [Logboeken schrijven in C#-functies](functions-monitoring.md#write-logs-in-c-functions) in het artikel **monitor Azure functions** .
+> `TraceWriter`Zie de [ILogger](functions-dotnet-class-library.md#ilogger) -documentatie in de .net Class Library-ontwikkelaars handleiding voor meer informatie over een nieuwer Framework voor logboek registratie dat u kunt gebruiken in plaats van.
+
+### <a name="custom-metrics-logging"></a>Logboek registratie voor aangepaste metrische gegevens
+
+U kunt de `LogMetric` uitbreidings methode gebruiken `ILogger` om aangepaste metrische gegevens te maken in Application Insights. Dit is een voor beeld van een methode aanroep:
+
+```csharp
+logger.LogMetric("TestMetric", 1234);
+```
+
+Deze code is een alternatief voor het aanroepen `TrackMetric` van met behulp van de Application Insights-API voor .net.
 
 ## <a name="async"></a>Async
 

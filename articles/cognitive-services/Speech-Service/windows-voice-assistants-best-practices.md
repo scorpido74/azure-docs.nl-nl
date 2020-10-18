@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/1/2020
 ms.author: adamwa
-ms.openlocfilehash: 948fbcd57514f4ef77483b05c60324e867e0e3ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76a29af80891142fcf7f56f93f5c7acc5c58ab04
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89293639"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165142"
 ---
 # <a name="design-assistant-experiences-for-windows-10"></a>Ontwerp assistent-ervaring voor Windows 10
 
@@ -69,8 +69,8 @@ Zelfs als statussen snel veranderen, is het een goed idee om UX voor staten te b
 
 Wanneer de assistent-app de focus heeft, is de klant intentie duidelijk te communiceren met de app, zodat alle spraak activeringen worden afgehandeld door de weer gave van de hoofd toepassing. Het formaat van deze weer gave kan worden gewijzigd door de klant. De rest van dit document maakt gebruik van het concrete voor beeld van een financiële service-assistent met de naam contoso om assistent-shell interacties te verklaren. In deze en volgende diagrammen wordt de klant aangegeven dat deze wordt weer gegeven in de TTS-spraak bellen aan de linkerkant met de assistent-antwoorden in de bolletjes bellen aan de rechter kant.
 
-**Weer gave in de app. Initiële status wanneer de activering van de telefoon begint:** 
- ![ scherm opname van de Voice Assistant op Windows vóór activering](media/voice-assistants/windows_voice_assistant/initial_state.png)
+**Weer gave in de app. Begin status wanneer de activering van de telefoon begint:** 
+ ![ scherm opname met de app contoso Financiën Assistant open op de standaard canvas. Een tekststrip-spraak ballon aan de rechter kant geeft ' Contoso ' aan.](media/voice-assistants/windows_voice_assistant/initial_state.png)
 
 **Weer gave in de app. Na een geslaagde spraak activering begint de luister ervaring:** ![ scherm opname van de Voice Assistant in Windows terwijl de Voice Assistant luistert](media/voice-assistants/windows_voice_assistant/listening.png)
 
@@ -108,9 +108,9 @@ De-assistent moet de instructies voor het afwijzen van de app in deze sectie imp
 - Als de app wordt &quot; gebruikt &quot; , kan deze boven de vergren deling worden voortgezet. &quot;in gebruik is &quot; een wille keurige invoer of uitvoer. Bijvoorbeeld: wanneer u muziek of video stroomsgewijst, kan de app de vergren deling boven slot voortzetten. &quot;Volg &quot; de stappen in en andere dialoog vensters voor multidraaien om de app boven slot te houden.
 - **Implementatie Details over het negeren van de toepassing** vindt u [in de bovenstaande implementatie handleiding voor vergren delen](windows-voice-assistants-implementation-guide.md#closing-the-application).
 
-![Scherm opname van de Voice Assistant in Windows vóór activering](media/voice-assistants/windows_voice_assistant/above_lock_response.png)
+![Scherm afbeelding met de bovenstaande vergrendelings weergave van de app contoso Finance Assistant.](media/voice-assistants/windows_voice_assistant/above_lock_response.png)
 
-![Scherm opname van de Voice Assistant in Windows vóór activering](media/voice-assistants/windows_voice_assistant/lock_screen2.png)
+![Scherm afbeelding van een bureau blad met het vergrendelings scherm van Windows.](media/voice-assistants/windows_voice_assistant/lock_screen2.png)
 
 ### <a name="privacy-amp-security-considerations-above-lock"></a>&amp;Beveiligings overwegingen voor privacy boven vergren deling
 

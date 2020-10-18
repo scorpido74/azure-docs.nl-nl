@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 31c9f9d94acab7322cf11d084e4010f2defd6f3c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69a8f44831f1af13158261bedb19a254c6a565a6
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85261695"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165295"
 ---
 # <a name="how-to-configure-and-read-the-logs-when-using-azure-functions-trigger-for-cosmos-db"></a>De logboeken configureren en lezen bij het gebruik van Azure Functions trigger voor Cosmos DB
 
@@ -25,7 +25,7 @@ De status logboeken beschrijven hoe de Azure Functions trigger voor Cosmos DB zi
 
 ## <a name="enabling-logging"></a>Logboek registratie inschakelen
 
-Als u logboek registratie wilt inschakelen wanneer u Azure Functions trigger voor Cosmos DB gebruikt, zoekt u het `host.json` bestand in uw Azure functions project of Azure functions app en [configureert u het niveau van de vereiste logboek registratie](../azure-functions/functions-monitoring.md#log-configuration-in-hostjson). U moet de traceringen inschakelen  `Host.Triggers.CosmosDB` , zoals wordt weer gegeven in het volgende voor beeld:
+Als u logboek registratie wilt inschakelen wanneer u Azure Functions trigger voor Cosmos DB gebruikt, zoekt u het `host.json` bestand in uw Azure functions project of Azure functions app en [configureert u het niveau van de vereiste logboek registratie](../azure-functions/configure-monitoring.md#configure-log-levels). U moet de traceringen inschakelen  `Host.Triggers.CosmosDB` , zoals wordt weer gegeven in het volgende voor beeld:
 
 ```js
 {

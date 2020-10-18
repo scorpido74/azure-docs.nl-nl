@@ -13,12 +13,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 03/23/2020
-ms.openlocfilehash: 7be78a0c05942aebb9e3154a79035d71f87becd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca458bebf75f8e77774236166704794b817b7c3f
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334903"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167127"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Database toegang tot SQL Database, SQL Managed instance en Azure Synapse Analytics autoriseren
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -65,7 +65,7 @@ Als u de beheerders accounts voor een Data Base wilt identificeren, opent u de A
 
 ![SQL Server-beheerders](./media/logins-create-manage/sql-admins.png)
 
-![SQL Server-beheerders](./media/logins-create-manage/sql-admins2.png)
+![Scherm afbeelding die de menu optie Eigenschappen markeert.](./media/logins-create-manage/sql-admins2.png)
 
 > [!IMPORTANT]
 > De aanmeldings naam van de beheerder kan niet worden gewijzigd nadat deze is gemaakt. Als u het wacht woord voor de server beheerder opnieuw wilt instellen, gaat u naar de [Azure Portal](https://portal.azure.com), klikt u op **SQL-servers**, selecteert u de server in de lijst en klikt u vervolgens op **wacht woord opnieuw instellen**. Als u het wacht woord voor het beheerde exemplaar van SQL wilt herstellen, gaat u naar de Azure Portal, klikt u op het exemplaar en klikt u op **wacht woord opnieuw instellen**. U kunt ook Power shell of de Azure CLI gebruiken.

@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/08/2020
 ms.author: juliako
-ms.openlocfilehash: 405533aad8247350d45cc53009abe6b58a511264
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e97dc6ad4c6591a470e19050d79230f9ea7fd43
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83005932"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164791"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Een Video Indexer-account maken dat is verbonden met Azure
 
@@ -47,7 +47,7 @@ Als u van een *proef versie* overgaat naar een *betaalde* video indexer account,
 
     U gebruikt dit lid wanneer u uw Video Indexer-account verbindt met Azure.
 
-    Deze gebruiker moet lid zijn van uw Azure-abonnement met ofwel een rol van **eigenaar** , ofwel beheerder rollen voor **Inzender** en **gebruikers toegang** . Een gebruiker kan twee maal worden toegevoegd met twee rollen. Eenmaal met Inzender en eenmaal met beheerder voor gebruikers toegang.
+    Deze gebruiker moet lid zijn van uw Azure-abonnement met ofwel een rol van **eigenaar** , ofwel beheerder rollen voor **Inzender** en **gebruikers toegang** . Een gebruiker kan twee maal worden toegevoegd met twee rollen. Eenmaal met Inzender en eenmaal met beheerder voor gebruikers toegang. Zie [de toegang tot een gebruiker tot Azure-resources weer geven](https://docs.microsoft.com/azure/role-based-access-control/check-access)voor meer informatie.
 
     ![Toegangs beheer](./media/create-account/access-control-iam.png)
 

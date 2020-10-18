@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
-ms.openlocfilehash: b42c693943c41176936ac796f4586463e9af917c
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 66938975784f1de2abdc0ac22e62aaca82279f86
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076688"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164161"
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>Een Cloud service maken en implementeren
 De Azure Portal biedt twee manieren om een Cloud service te maken en te implementeren: *snel maken* en *aangepast maken*.
@@ -56,7 +56,7 @@ Als u een Cloud service wilt maken met implementaties van webrollen of werk roll
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Klik op **een resource maken > Compute**en schuif omlaag naar en klik vervolgens op **Cloud service**.
 
-    ![Uw Cloud service publiceren](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
+    ![Scherm afbeelding van de optie Cloud service onder Create a resource > compute.](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
 3. Voer in het deel venster nieuwe **Cloud service** een waarde in voor de **DNS-naam**.
 4. Maak een nieuwe **resource groep** of selecteer een bestaande.
 5. Selecteer een **locatie**.
@@ -74,7 +74,7 @@ Als uw implementatie pakket is [geconfigureerd voor het gebruik van certificaten
 2. Klik op **certificaat koppelen**en klik vervolgens op **OK** in het deel venster **certificaten toevoegen** .
 3. Klik op **maken** in het deel venster **Cloud service** . Wanneer de implementatie de status **gereed** heeft bereikt, kunt u door gaan met de volgende stappen.
 
-    ![Uw Cloud service publiceren](media/cloud-services-how-to-create-deploy-portal/attach-cert.png)
+    ![Scherm afbeelding die het proces voor het uploaden van een certificaat markeert.](media/cloud-services-how-to-create-deploy-portal/attach-cert.png)
 
 ## <a name="verify-your-deployment-completed-successfully"></a>Controleren of uw implementatie is voltooid
 1. Klik op het Cloud service-exemplaar.

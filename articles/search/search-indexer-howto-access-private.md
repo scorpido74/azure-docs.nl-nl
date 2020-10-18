@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: bcacd6c2e1353c71d8e4e25c95ee2b563e7b3fba
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: b81d3f74c20f42620ceeae08bec5d484909377a7
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150422"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167471"
 ---
 # <a name="indexer-connections-through-a-private-endpoint-azure-cognitive-search"></a>Indexeer verbindingen via een persoonlijk eind punt (Azure Cognitive Search)
 
@@ -23,7 +23,7 @@ Voor het gebruik van deze indexer-verbindings methode zijn er twee vereisten:
 
 + De Azure-resource die inhoud of code levert, moet eerder zijn geregistreerd bij de [Azure Private Link-service](https://azure.microsoft.com/services/private-link/).
 
-+ Azure Cognitive Search-service moet Basic of hoger zijn (niet beschikbaar in de gratis laag). Voor Indexeer functies met een vaardig heden moet de zoek service bovendien S2 of hoger zijn. Zie [service limieten](search-limits-quotas-capacity.md#shared-private-link-resource-limits)voor meer informatie.
++ Azure Cognitive Search-service moet Basic of hoger zijn (niet beschikbaar in de gratis laag). Als uw Indexeer functie bovendien een vaardig heden heeft, moet de laag standaard 2 (S2) of hoger zijn. Zie [service limieten](search-limits-quotas-capacity.md#shared-private-link-resource-limits)voor meer informatie.
 
 ## <a name="shared-private-link-resources-management-apis"></a>Beheer-Api's voor gedeelde persoonlijke koppelings bronnen
 

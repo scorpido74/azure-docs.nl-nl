@@ -3,12 +3,12 @@ title: host.jsbij verwijzing voor Azure Functions 2. x
 description: Referentie documentatie voor de Azure Functions host.jsin het bestand met v2 runtime.
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 400ff6f9db421552b2b2736ea48265deefe676ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f58eefd636b2bd59d6b3656bf162f7d601f7ff85
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321846"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167645"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Referentie naar host.json voor Azure Functions 2.x en hoger 
 
@@ -138,7 +138,7 @@ In de volgende secties van dit artikel wordt elke eigenschap op het hoogste nive
 
 Deze instelling is een onderliggend item van [logboek registratie](#logging).
 
-Opties voor de Application Insights, met inbegrip van [bemonsterings opties](./functions-monitoring.md#configure-sampling).
+Opties voor de Application Insights, met inbegrip van [bemonsterings opties](./configure-monitoring.md#configure-sampling).
 
 Zie voor de volledige JSON-structuur het vorige [voor beeld host.jsop bestand](#sample-hostjson-file).
 
@@ -159,7 +159,7 @@ Zie voor de volledige JSON-structuur het vorige [voor beeld host.jsop bestand](#
 
 |Eigenschap | Standaard | Beschrijving |
 | --------- | --------- | --------- | 
-| isEnabled | true | Hiermee worden steek proeven in-of uitgeschakeld. | 
+| isEnabled | true | Hiermee worden steekproeven in- of uitgeschakeld. | 
 | maxTelemetryItemsPerSecond | 20 | Het doel aantal telemetriegegevens dat per seconde op elke server host is geregistreerd. Als uw app op meerdere hosts wordt uitgevoerd, vermindert u deze waarde zodat deze binnen het totale doel tempo van het verkeer blijft. | 
 | evaluationInterval | 01:00:00 | Het interval waarmee de huidige frequentie van de telemetrie opnieuw wordt geëvalueerd. De evaluatie wordt uitgevoerd als een zwevend gemiddelde. Mogelijk wilt u dit interval verkorten als uw telemetrie op plotselinge bursts is. |
 | initialSamplingPercentage| 100,0 | Het eerste bemonsterings percentage dat aan het begin van het bemonsterings proces wordt toegepast om het percentage dynamisch te variëren. Verminder de waarde niet tijdens het opsporen van fouten. |
@@ -186,13 +186,13 @@ Voor meer informatie over moment opnamen raadpleegt u [debug-moment opnamen op u
 |Eigenschap | Standaard | Beschrijving |
 | --------- | --------- | --------- | 
 | agentEndpoint | null | Het eind punt dat wordt gebruikt om verbinding te maken met de Application Insights Snapshot Debugger-service. Als de waarde Null is, wordt een standaard eindpunt gebruikt. |
-| captureSnapshotMemoryWeight | 0,5 | Het gewicht dat aan de huidige geheugen grootte van het proces is gegeven om te controleren of er voldoende geheugen beschikbaar is om een moment opname te maken. De verwachte waarde is een groter dan 0 juiste fractie (0 < CaptureSnapshotMemoryWeight < 1). |
+| captureSnapshotMemoryWeight | 0.5 | Het gewicht dat aan de huidige geheugen grootte van het proces is gegeven om te controleren of er voldoende geheugen beschikbaar is om een moment opname te maken. De verwachte waarde is een groter dan 0 juiste fractie (0 < CaptureSnapshotMemoryWeight < 1). |
 | failedRequestLimit | 3 | De limiet voor het aantal mislukte aanvragen voor het aanvragen van moment opnamen voordat de telemetrie-processor wordt uitgeschakeld.|
 | handleUntrackedExceptions | true | Hiermee wordt het bijhouden van uitzonde ringen die niet worden bijgehouden door Application Insights telemetrie, in-of uitgeschakeld. |
 | isEnabled | true | Hiermee wordt de momentopname verzameling in-of uitgeschakeld | 
-| isEnabledInDeveloperMode | onjuist | Hiermee wordt de momentopname verzameling ingeschakeld of uitgeschakeld in de ontwikkelaars modus. |
+| isEnabledInDeveloperMode | false | Hiermee wordt de momentopname verzameling ingeschakeld of uitgeschakeld in de ontwikkelaars modus. |
 | isEnabledWhenProfiling | true | Hiermee wordt het maken van een moment opname in-of uitgeschakeld, zelfs als er een gedetailleerde profilerings sessie wordt verzameld door de Application Insights Profiler. |
-| isExceptionSnappointsEnabled | onjuist | Hiermee wordt het filteren van uitzonde ringen in-of uitgeschakeld. |
+| isExceptionSnappointsEnabled | false | Hiermee wordt het filteren van uitzonde ringen in-of uitgeschakeld. |
 | isLowPrioritySnapshotUploader | true | Hiermee wordt bepaald of het SnapshotUploader-proces op de normale prioriteit moet worden uitgevoerd. |
 | maximumCollectionPlanSize | 50 | Het maximum aantal problemen dat kan worden gevolgd op elk gewenst moment in een bereik van 1 tot en met 9999. |
 | maximumSnapshotsRequired | 3 | Het maximum aantal moment opnamen dat voor één probleem wordt verzameld, in een bereik van 1 tot 999. Een probleem kan worden beschouwd als een afzonderlijke instructie throw in uw toepassing. Zodra het aantal moment opnamen dat voor een probleem is verzameld deze waarde bereikt, worden er geen moment opnamen meer verzameld voor dat probleem totdat de probleem tellers opnieuw zijn ingesteld (Zie `problemCounterResetInterval` ) en de `thresholdForSnapshotting` limiet opnieuw wordt bereikt. |
@@ -310,7 +310,7 @@ Hiermee bepaalt u het gedrag van logboek registratie van de functie-app, met inb
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|Hiermee wordt gedefinieerd welk niveau van bestands logboek registratie is ingeschakeld.  Opties zijn `never` , `always` , `debugOnly` . |
-|logLevel|n.v.t.|Object dat de logboek categorie filtering definieert voor functies in de app. Versie 2. x en hoger volgen de ASP.NET Core indeling voor het filteren van de logboek categorie. Met deze instelling kunt u logboek registratie voor specifieke functies filteren. Zie [logboek filtering](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) in de ASP.net core-documentatie voor meer informatie. |
+|logLevel|n.v.t.|Object dat de logboek categorie filtering definieert voor functies in de app. Versie 2. x en hoger volgen de ASP.NET Core indeling voor het filteren van de logboek categorie. Met deze instelling kunt u logboek registratie voor specifieke functies filteren. Zie [logboek filtering](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1&preserve-view=true#log-filtering) in de ASP.net core-documentatie voor meer informatie. |
 |console|n.v.t.| De instelling voor de logboek registratie van de [console](#console) . |
 |applicationInsights|n.v.t.| De instelling [applicationInsights](#applicationinsights) . |
 
@@ -332,7 +332,7 @@ Deze instelling is een onderliggend item van [logboek registratie](#logging). He
 
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
-|isEnabled|onjuist|Hiermee wordt de logboek registratie van de console in-of uitgeschakeld.| 
+|isEnabled|false|Hiermee wordt de logboek registratie van de console in-of uitgeschakeld.| 
 
 ## <a name="manageddependency"></a>managedDependency
 
