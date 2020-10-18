@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: e98bfbf58c179fe9df0d99e0522e5747d220ae52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a2c4364337083be005c550a8859079cd3bb1218
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317018"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167947"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>Aanbevolen procedures voor clusterconfiguratie (SQL Server op virtuele machines van Azure)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -47,8 +47,6 @@ De volgende tabel bevat de beschik bare quorum opties in de volg orde die wordt 
 |**Ondersteund besturings systeem**| Alles |Windows Server 2016 +| Alles|
 
 
-
-
 ### <a name="disk-witness"></a>Schijfwitness
 
 Een schijfwitness is een kleine geclusterde schijf in het cluster beschik bare opslag groep. Deze schijf is Maxi maal beschikbaar en kan een failover tussen knoop punten uitvoeren. Het bevat een kopie van de cluster database, met een standaard grootte van meestal minder dan 1 GB. De schijfwitness is de voorkeurs quorum optie voor elk cluster dat gebruikmaakt van gedeelde Azure-schijven (of een oplossing voor gedeelde schijven, zoals gedeeld SCSI-, iSCSI-of Fibre Channel-SAN).  Een geclusterd gedeeld volume kan niet worden gebruikt als schijfwitness.
@@ -58,7 +56,7 @@ Een gedeelde Azure-schijf configureren als de schijfwitness.
 Zie [een schijfwitness configureren](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)om aan de slag te gaan.
 
 
-**Ondersteund besturings systeem**: alle   
+**Ondersteund besturingssysteem**: Alle   
 
 
 ### <a name="cloud-witness"></a>Cloudwitness
@@ -68,7 +66,7 @@ Een cloudwitness is een type quorum-Witness van het failovercluster dat gebruikm
 Zie [een Cloudwitness configureren](/windows-server/failover-clustering/deploy-cloud-witness#CloudWitnessSetUp)om aan de slag te gaan.
 
 
-**Ondersteund besturings systeem**: Windows Server 2016 en hoger   
+**Ondersteund besturingssysteem**: Windows Server 2016 en hoger   
 
 
 ### <a name="file-share-witness"></a>Bestandsshare-witness
@@ -80,54 +78,55 @@ Als u een Azure-bestands share wilt gebruiken, kunt u deze koppelen aan hetzelfd
 Zie [Configure a file share Witness](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)om aan de slag te gaan.
 
 
-**Ondersteund besturings systeem**: Windows Server 2012 en hoger   
+**Ondersteund besturingssysteem**: Windows Server 2012 en hoger   
 
 ## <a name="connectivity"></a>Connectiviteit
 
-In een traditionele on-premises netwerk omgeving lijkt een SQL Server failover-cluster exemplaar één exemplaar van SQL Server uitgevoerd op één computer. Omdat het failover-cluster exemplaar van het knoop punt naar het knoop punt wordt gefailovert, biedt de virtuele netwerk naam (VNN) voor de instantie een uniform verbindings punt en kunnen toepassingen verbinding maken met het SQL Server exemplaar zonder te weten welk knoop punt momenteel actief is. Wanneer een failover optreedt, wordt de naam van het virtuele netwerk geregistreerd bij het nieuwe actieve knoop punt nadat het is gestart. Dit proces is transparant voor de client of toepassing die verbinding maakt met SQL Server, waardoor de uitval tijd van de client of toepassing tijdens een storing wordt geminimaliseerd. 
+In een traditionele on-premises netwerk omgeving lijkt een SQL Server failover-cluster exemplaar één exemplaar van SQL Server uitgevoerd op één computer. Omdat het failover-cluster exemplaar van het knoop punt naar het knoop punt wordt gefailovert, biedt de virtuele netwerk naam (VNN) voor de instantie een uniform verbindings punt en kunnen toepassingen verbinding maken met het SQL Server exemplaar zonder te weten welk knoop punt momenteel actief is. Wanneer een failover optreedt, wordt de naam van het virtuele netwerk geregistreerd bij het nieuwe actieve knoop punt nadat het is gestart. Dit proces is transparant voor de client of toepassing die verbinding maakt met SQL Server, waardoor de uitval tijd van de client of toepassing tijdens een storing wordt geminimaliseerd. Op dezelfde manier gebruikt de listener van de beschikbaarheids groep een VNN om verkeer door te sturen naar de juiste replica. 
 
-Gebruik een VNN met Azure Load Balancer of een gedistribueerde netwerk naam (DNN) om verkeer door te sturen naar de VNN van het failovercluster met SQL Server op virtuele machines van Azure. De functie DNN is momenteel alleen beschikbaar voor SQL Server 2019 CU2 en hoger op een virtuele machine met Windows Server 2016 (of hoger). 
+Gebruik een VNN met Azure Load Balancer of een gedistribueerde netwerk naam (DNN) om verkeer door te sturen naar de VNN van het failovercluster met SQL Server op virtuele machines van Azure of om de bestaande VNN-listener in een beschikbaarheids groep te vervangen. 
+
 
 De volgende tabel vergelijkt de HADR-verbindings ondersteuning: 
 
 | |**Naam van virtueel netwerk (VNN)**  |**Gedistribueerde netwerknaam (DNN)**  |
 |---------|---------|---------|
-|**Minimale versie van het besturingssysteem**| Alles | Alles |
-|**Minimale SQL Server versie** |Alles |SQL Server 2019 CU2|
-|**Ondersteunde HADR-oplossing** | Failover-clusterexemplaar <br/> Beschikbaarheidsgroep | Failover-clusterexemplaar|
+|**Minimale versie van het besturingssysteem**| Alles | Windows Server 2016 |
+|**Minimale versie van SQL Server** |Alles |SQL Server 2019 CU2 (voor FCI)<br/> SQL Server 2019 CU8 (voor AG)|
+|**Ondersteunde HADR-oplossing** | Failover-clusterexemplaar <br/> Beschikbaarheidsgroep | Failover-clusterexemplaar <br/> Beschikbaarheidsgroep|
 
 
 ### <a name="virtual-network-name-vnn"></a>Naam van virtueel netwerk (VNN)
 
-Omdat het virtuele IP-toegangs punt anders werkt in azure, moet u [Azure Load Balancer](../../../load-balancer/index.yml) zodanig configureren dat verkeer wordt gerouteerd naar het IP-adres van de FCI-knoop punten. In virtuele machines van Azure bevat een load balancer het IP-adres voor de VNN waarop de geclusterde SQL Server resources zijn gebaseerd. De load balancer distribueert inkomende stromen die aan de front-end arriveren en routert dat verkeer vervolgens naar de instanties die zijn gedefinieerd door de back-end-pool. U configureert de verkeers stroom met behulp van regels voor taak verdeling en status controles. Met SQL Server FCI zijn de exemplaren van de back-end-pool de virtuele machines van Azure waarop SQL Server worden uitgevoerd. 
+Omdat het virtuele IP-toegangs punt anders werkt in azure, moet u [Azure Load Balancer](../../../load-balancer/index.yml) zodanig configureren dat verkeer wordt gerouteerd naar het IP-adres van de FCI-knoop punten of de listener voor de beschikbaarheids groep. In virtuele machines van Azure bevat een load balancer het IP-adres voor de VNN waarop de geclusterde SQL Server resources zijn gebaseerd. De load balancer distribueert inkomende stromen die aan de front-end arriveren en routert dat verkeer vervolgens naar de instanties die zijn gedefinieerd door de back-end-pool. U configureert de verkeers stroom met behulp van regels voor taak verdeling en status controles. Met SQL Server FCI zijn de exemplaren van de back-end-pool de virtuele machines van Azure waarop SQL Server worden uitgevoerd. 
 
 Er is een lichte vertraging bij de failover wanneer u de load balancer gebruikt, omdat de status test altijd om de 10 seconden wordt gecontroleerd. 
 
-Leer hoe u [Azure Load Balancer kunt configureren voor een FCI](hadr-vnn-azure-load-balancer-configure.md)om aan de slag te gaan. 
+Meer informatie over het configureren van Azure Load Balancer voor het [failover-cluster exemplaar](failover-cluster-instance-vnn-azure-load-balancer-configure.md) of een [beschikbaarheids groep](availability-group-vnn-azure-load-balancer-configure.md)
 
-**Ondersteund besturings systeem**: alle   
-**Ondersteunde SQL-versie**: alle   
+**Ondersteund besturingssysteem**: Alle   
+**Ondersteunde SQL-versie**: Alle   
 **Ondersteunde HADR-oplossing**: failover-cluster exemplaar en beschikbaarheids groep   
 
 
 ### <a name="distributed-network-name-dnn"></a>Gedistribueerde netwerknaam (DNN)
 
-De naam van een gedistribueerde netwerk is een nieuwe Azure-functie voor SQL Server 2019 CU2. De DNN biedt een andere manier om clients te SQL Server verbinding maken met het SQL Server failover cluster-exemplaar zonder een load balancer te gebruiken. 
+De naam van een gedistribueerde netwerk is een nieuwe Azure-functie voor SQL Server 2019. De DNN biedt een andere manier om clients te SQL Server verbinding maken met het SQL Server failovercluster-exemplaar of de beschikbaarheids groep zonder een load balancer te gebruiken. 
 
-Wanneer er een DNN-resource wordt gemaakt, wordt de DNS-naam met de IP-adressen van alle knoop punten in het cluster gebonden aan het cluster. De SQL-client probeert verbinding te maken met elk IP-adres in deze lijst om het knoop punt te vinden waarop het failovercluster momenteel wordt uitgevoerd. U kunt dit proces versnellen door `MultiSubnetFailover=True` in de Connection String op te geven. Met deze instelling geeft u aan dat de provider alle IP-adressen parallel moet proberen, zodat de client direct verbinding kan maken met de FCI. 
+Wanneer er een DNN-resource wordt gemaakt, wordt de DNS-naam met de IP-adressen van alle knoop punten in het cluster gebonden aan het cluster. De SQL-client probeert verbinding te maken met elk IP-adres in deze lijst om te zoeken naar de bron waarmee verbinding moet worden gemaakt.  U kunt dit proces versnellen door `MultiSubnetFailover=True` in de Connection String op te geven. Met deze instelling geeft u aan dat de provider alle IP-adressen parallel moet proberen, zodat de client direct verbinding kan maken met de FCI of listener. 
 
 Als dat mogelijk is, wordt een gedistribueerde netwerk naam aanbevolen voor een load balancer omdat: 
 - De end-to-end-oplossing is betrouwbaarder omdat u de load balancer resource niet meer hoeft te onderhouden. 
 - Als u de load balancer Probe, wordt de duur van de failover geminimaliseerd. 
-- De DNN vereenvoudigt het inrichten en beheren van het failovercluster met SQL Server op Azure-Vm's. 
+- De DNN vereenvoudigt het inrichten en beheren van het failovercluster of de beschikbaarheids groep-listener met SQL Server op Azure-Vm's. 
 
-De meeste SQL Server-functies werken op transparante wijze met FCI. In dergelijke gevallen kunt u de bestaande VNN DNS-naam vervangen door de DNS-naam van de DNN of de DNN-waarde instellen met de bestaande VNN DNS-naam. Voor sommige Server onderdelen is echter een netwerk alias vereist waarmee de naam van de VNN wordt toegewezen aan de naam van de DNN. In bepaalde gevallen kan het expliciete gebruik van de DNS-naam van DNN vereist zijn, bijvoorbeeld wanneer u bepaalde Url's in een configuratie aan server zijde definieert. 
+De meeste SQL Server functies werken op transparante wijze met FCI-en beschikbaarheids groepen wanneer u de DNN gebruikt, maar er zijn bepaalde functies waarvoor speciale aandacht vereist is. Zie [FCI-en DNN-interoperabiliteit](failover-cluster-instance-dnn-interoperability.md) en [AG-en DNN-interoperabiliteit](availability-group-dnn-interoperability.md) voor meer informatie. 
 
-Als u aan de slag wilt gaan, leert u hoe u [een DNN-resource kunt configureren voor een FCI](hadr-distributed-network-name-dnn-configure.md). 
+Als u aan de slag wilt gaan, leert u hoe u een gedistribueerde netwerk naam bron kunt configureren voor [een failovercluster](failover-cluster-instance-distributed-network-name-dnn-configure.md) of een [beschikbaarheids groep](availability-group-distributed-network-name-dnn-listener-configure.md)
 
-**Ondersteund besturings systeem**: Windows Server 2016 en hoger   
-**Ondersteunde SQL-versie**: SQL Server 2019 en hoger   
-**Ondersteunde HADR-oplossing**: alleen het exemplaar van het failovercluster
+**Ondersteund besturingssysteem**: Windows Server 2016 en hoger   
+**Ondersteunde SQL-versie**: SQL Server 2019 Cu2 (FCI) en SQL Server 2019 CU8 (AG)   
+**Ondersteunde HADR-oplossing**: failover-cluster exemplaar en beschikbaarheids groep   
 
 
 ## <a name="limitations"></a>Beperkingen
@@ -136,15 +135,15 @@ Houd rekening met de volgende beperkingen wanneer u werkt met FCI-of beschikbaar
 
 ### <a name="msdtc"></a>MSDTC 
 
-Azure Virtual Machines ondersteunt micro soft Distributed Transaction Coordinator (MSDTC) op Windows Server 2019 met opslag op geclusterde gedeelde volumes (CSV) en [Azure Standard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md) of op SQL Server-vm's die gebruikmaken van gedeelde Azure-schijven. 
+Virtuele Azure-machines bieden ondersteuning voor MSDTC (Microsoft Distributed Transaction Coordinator) in Windows Server 2019 met opslag op geclusterde gedeelde volumes (CSV) en [Azure Standard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md) of op VM's met SQL Server die gebruikmaken van gedeelde Azure-schijven. 
 
-In azure Virtual Machines wordt MSDTC niet ondersteund voor Windows Server 2016 of eerder met geclusterde gedeelde volumes, omdat:
+MSDTC wordt vanwege deze redenen niet ondersteund op virtuele Azure-machines voor Windows Server 2016 of eerder met geclusterde gedeelde volumes:
 
-- De geclusterde MSDTC-bron kan niet worden geconfigureerd voor het gebruik van gedeelde opslag. Als u in Windows Server 2016 een MSDTC-bron maakt, wordt er geen gedeelde opslag weer gegeven die beschikbaar is voor gebruik, zelfs als de opslag ruimte beschikbaar is. Dit probleem is opgelost in Windows Server 2019.
-- Met de basis load balancer worden geen RPC-poorten afgehandeld.
+- De geclusterde MSDTC-resource kan niet worden geconfigureerd voor het gebruik van gedeelde opslag. Als u in Windows Server 2016 een MSDTC-resource maakt, wordt er geen gedeelde opslag weergegeven die beschikbaar is voor gebruik, zelfs als dat wel het geval is. Dit probleem is opgelost in Windows Server 2019.
+- De standaard load balancer biedt geen ondersteuning voor RPC-poorten.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u de juiste aanbevolen procedures voor uw oplossing hebt vastgesteld, kunt u aan de slag gaan door [uw SQL Server-VM voor te bereiden voor FCI](failover-cluster-instance-prepare-vm.md). U kunt ook uw beschikbaarheids groep maken met behulp van de [Azure cli](availability-group-az-cli-configure.md)-of [Azure Quick](availability-group-quickstart-template-configure.md)start-sjablonen. 
+Nadat u de juiste aanbevolen procedures voor uw oplossing hebt vastgesteld, kunt u aan de slag met het [voorbereiden van uw SQL Server VM voor FCI](failover-cluster-instance-prepare-vm.md) of door de beschikbaarheids groep te maken met behulp van de [Azure Portal](availability-group-azure-portal-configure.md), de [Azure cli/Power shell](availability-group-az-cli-configure.md)of de [Azure Quick](availability-group-quickstart-template-configure.md)start-sjablonen. 
 

@@ -14,12 +14,12 @@ ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 207ee67c207f028b5f4bd45d99a7ef431429debb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf5c3f7d854081c7306a038cc452b620d1af00d0
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293564"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167985"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>Gebruik sjablonen van Azure Quick Start om een beschikbaarheids groep te configureren voor SQL Server op Azure VM
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -33,6 +33,8 @@ In dit artikel wordt beschreven hoe u de Azure Quick Start-sjablonen gebruikt vo
    | &nbsp; | &nbsp; |
 
 Andere onderdelen van de configuratie van de beschikbaarheids groep moeten hand matig worden uitgevoerd, zoals het maken van de beschikbaarheids groep en het maken van de interne load balancer. Dit artikel bevat de volg orde van automatische en hand matige stappen.
+
+Hoewel in dit artikel de Azure Quick Start-sjablonen worden gebruikt om de omgeving voor de beschikbaarheids groep te configureren, is het ook mogelijk de [Azure Portal](availability-group-azure-portal-configure.md), [Power shell of de Azure cli](availability-group-az-commandline-configure.md)of ook [hand matig](availability-group-manually-configure-tutorial.md) te gebruiken. 
  
 
 ## <a name="prerequisites"></a>Vereisten 
@@ -102,6 +104,9 @@ Maak de beschikbaarheids groep hand matig zoals u dat gewoonlijk zou doen met be
 > Maak op dit moment *geen* listener, omdat de sjabloon **101-SQL-VM-aglistener-Setup**  Quick Start in stap 4 automatisch wordt uitgevoerd. 
 
 ## <a name="create-load-balancer"></a>Load balancer maken
+
+[!INCLUDE [sql-ag-use-dnn-listener](../../includes/sql-ag-use-dnn-listener.md)]
+
 Voor de always on-beschikbaarheids groep-listener is een intern exemplaar van Azure Load Balancer vereist. De interne load balancer biedt een ' zwevend ' IP-adres voor de beschikbaarheids groep-listener die snellere failover en opnieuw verbinden mogelijk maakt. Als de SQL Server Vm's in een beschikbaarheids groep deel uitmaken van dezelfde beschikbaarheidsset, kunt u een basis load balancer gebruiken. Anders moet u een standaard load balancer gebruiken. 
 
 > [!IMPORTANT]

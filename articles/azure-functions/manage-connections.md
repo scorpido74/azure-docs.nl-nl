@@ -4,12 +4,12 @@ description: Meer informatie over hoe u prestatie problemen in Azure Functions k
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 02/25/2018
-ms.openlocfilehash: a305c692c63f278c4edc4240f7adf9de22b22c56
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 6a426aff1721ac3565b53cf2eef7c5aa094dd7e2
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92106090"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168304"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Verbindingen in Azure Functions beheren
 
@@ -21,11 +21,11 @@ Het aantal beschik bare verbindingen is deels beperkt omdat een functie-app in e
 
 Deze limiet is per instantie. Wanneer de [schaal controller functie-app-exemplaren toevoegt](functions-scale.md#how-the-consumption-and-premium-plans-work) om meer aanvragen te verwerken, heeft elk exemplaar een onafhankelijke verbindings limiet. Dit betekent dat er geen algemene verbindings limiet is en dat u veel meer dan 600 actieve verbindingen voor alle actieve instanties kunt hebben.
 
-Als u problemen wilt oplossen, moet u ervoor zorgen dat u Application Insights hebt ingeschakeld voor uw functie-app. Met Application Insights kunt u metrische gegevens weer geven voor uw functie-apps, zoals uitvoeringen. Zie [telemetrie in Application Insights weer geven](functions-monitoring.md#view-telemetry-in-application-insights)voor meer informatie.  
+Als u problemen wilt oplossen, moet u ervoor zorgen dat u Application Insights hebt ingeschakeld voor uw functie-app. Met Application Insights kunt u metrische gegevens weer geven voor uw functie-apps, zoals uitvoeringen. Zie [telemetrie in Application Insights weer geven](analyze-telemetry-data.md#view-telemetry-in-application-insights)voor meer informatie.  
 
 ## <a name="static-clients"></a>Statische clients
 
-Om te voor komen dat u meer verbindingen dan nodig hebt, moet u client exemplaren opnieuw gebruiken in plaats van nieuwe te maken met elke functie aanroep. We raden u aan om client verbindingen opnieuw te gebruiken voor elke taal waarin u uw functie kunt schrijven. Zo kunnen bijvoorbeeld .NET-clients zoals de [httpclient maakt](/dotnet/api/system.net.http.httpclient?view=netcore-3.1)-, [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient)-en Azure Storage-clients verbindingen beheren als u één statische client gebruikt.
+Om te voor komen dat u meer verbindingen dan nodig hebt, moet u client exemplaren opnieuw gebruiken in plaats van nieuwe te maken met elke functie aanroep. We raden u aan om client verbindingen opnieuw te gebruiken voor elke taal waarin u uw functie kunt schrijven. Zo kunnen bijvoorbeeld .NET-clients zoals de [httpclient maakt](/dotnet/api/system.net.http.httpclient?view=netcore-3.1&preserve-view=true)-, [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient)-en Azure Storage-clients verbindingen beheren als u één statische client gebruikt.
 
 Hieronder vindt u enkele richt lijnen die u moet volgen wanneer u een service-specifieke client in een Azure Functions-toepassing gebruikt:
 
@@ -39,7 +39,7 @@ In deze sectie worden de aanbevolen procedures voor het maken en gebruiken van-c
 
 ### <a name="httpclient-example-c"></a>Httpclient maakt-voor beeld (C#)
 
-Hier volgt een voor beeld van een C#-functie code waarmee een statisch [httpclient maakt](/dotnet/api/system.net.http.httpclient?view=netcore-3.1) -exemplaar wordt gemaakt:
+Hier volgt een voor beeld van een C#-functie code waarmee een statisch [httpclient maakt](/dotnet/api/system.net.http.httpclient?view=netcore-3.1&preserve-view=true) -exemplaar wordt gemaakt:
 
 ```cs
 // Create a single, static HttpClient
@@ -52,7 +52,7 @@ public static async Task Run(string input)
 }
 ```
 
-Een veelgestelde vraag over [httpclient maakt](/dotnet/api/system.net.http.httpclient?view=netcore-3.1) in .net is ' moet ik mijn client verwijderen? ' Over het algemeen kunt u objecten verwijderen die worden geïmplementeerd `IDisposable` Wanneer u klaar bent met het gebruik ervan. Maar u kunt een statische client niet verwijderen omdat u deze niet hebt gebruikt wanneer de functie eindigt. U wilt dat de statische client Live voor de duur van uw toepassing.
+Een veelgestelde vraag over [httpclient maakt](/dotnet/api/system.net.http.httpclient?view=netcore-3.1&preserve-view=true) in .net is ' moet ik mijn client verwijderen? ' Over het algemeen kunt u objecten verwijderen die worden geïmplementeerd `IDisposable` Wanneer u klaar bent met het gebruik ervan. Maar u kunt een statische client niet verwijderen omdat u deze niet hebt gebruikt wanneer de functie eindigt. U wilt dat de statische client Live voor de duur van uw toepassing.
 
 ### <a name="http-agent-examples-javascript"></a>Voor beelden van HTTP-agents (Java script)
 
@@ -143,10 +143,10 @@ module.exports = async function (context) {
 
 ## <a name="sqlclient-connections"></a>SqlClient-verbindingen
 
-Uw functie code kan gebruikmaken van de .NET Framework Data Provider voor SQL Server ([SqlClient](/dotnet/api/system.data.sqlclient?view=dotnet-plat-ext-3.1)) om verbindingen te maken met een relationele SQL-data base. Dit is ook de onderliggende provider voor gegevens raamwerken die afhankelijk zijn van ADO.NET, zoals [Entity Framework](/ef/ef6/). In tegens telling tot [httpclient maakt](/dotnet/api/system.net.http.httpclient?view=netcore-3.1) -en [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient) -verbindingen implementeert ADO.net standaard verbindings groepen. Maar omdat u nog steeds verbinding kunt maken, moet u de verbindingen met de data base optimaliseren. Zie [SQL Server Connection Pooling (ADO.net) (Engelstalig)](/dotnet/framework/data/adonet/sql-server-connection-pooling)voor meer informatie.
+Uw functie code kan gebruikmaken van de .NET Framework Data Provider voor SQL Server ([SqlClient](/dotnet/api/system.data.sqlclient)) om verbindingen te maken met een relationele SQL-data base. Dit is ook de onderliggende provider voor gegevens raamwerken die afhankelijk zijn van ADO.NET, zoals [Entity Framework](/ef/ef6/). In tegens telling tot [httpclient maakt](/dotnet/api/system.net.http.httpclient) -en [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient) -verbindingen implementeert ADO.net standaard verbindings groepen. Maar omdat u nog steeds verbinding kunt maken, moet u de verbindingen met de data base optimaliseren. Zie [SQL Server Connection Pooling (ADO.net) (Engelstalig)](/dotnet/framework/data/adonet/sql-server-connection-pooling)voor meer informatie.
 
 > [!TIP]
-> Sommige gegevens raamwerken, zoals Entity Framework, krijgen meestal verbindings reeksen uit de sectie **Connections Tring** van een configuratie bestand. In dit geval moet u SQL database verbindings reeksen expliciet toevoegen aan de **verbindingsteken reeks** verzameling van de instellingen van de functie-app en in de [local.settings.jsvoor het bestand](functions-run-local.md#local-settings-file) in uw lokale project. Als u een instantie van [SqlConnection](/dotnet/api/system.data.sqlclient.sqlconnection?view=dotnet-plat-ext-3.1) in uw functie code maakt, moet u de Connection String waarde in **Toepassings instellingen** opslaan met uw andere verbindingen.
+> Sommige gegevens raamwerken, zoals Entity Framework, krijgen meestal verbindings reeksen uit de sectie **Connections Tring** van een configuratie bestand. In dit geval moet u SQL database verbindings reeksen expliciet toevoegen aan de **verbindingsteken reeks** verzameling van de instellingen van de functie-app en in de [local.settings.jsvoor het bestand](functions-run-local.md#local-settings-file) in uw lokale project. Als u een instantie van [SqlConnection](/dotnet/api/system.data.sqlclient.sqlconnection) in uw functie code maakt, moet u de Connection String waarde in **Toepassings instellingen** opslaan met uw andere verbindingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

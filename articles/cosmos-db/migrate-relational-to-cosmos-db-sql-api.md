@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: thvankra
-ms.openlocfilehash: 860b78df8df0d3c6946785a94e40141689278cd0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aaff5adf358c31d99df7a51305c4e3554c3259c1
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86023139"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166247"
 ---
 # <a name="migrate-one-to-few-relational-data-into-azure-cosmos-db-sql-api-account"></a>Een-op-weinig relationele gegevens migreren naar Azure Cosmos DB SQL-API-account
 
@@ -25,7 +25,7 @@ Een veelvoorkomende trans formatie is het denormaliseren van gegevens door het i
 We gaan ervan uit dat we de volgende twee tabellen hebben in onze SQL database, orders en OrderDetails.
 
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/orders.png" alt-text="Bestellingsgegevens" border="false" :::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/orders.png" alt-text="Scherm opname waarin de tabellen Orders en OrderDetails in de SQL database worden weer gegeven." border="false" :::
 
 We willen deze een-op-een-relatie combi neren in één JSON-document tijdens de migratie. Hiervoor kunnen we een T-SQL-query maken met behulp van ' voor JSON ', zoals hieronder wordt beschreven:
 
@@ -48,7 +48,7 @@ FROM Orders o;
 
 De resultaten van deze query zien er als volgt uit: 
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/for-json-query-result.png" alt-text="Bestellingsgegevens" lightbox="./media/migrate-relational-to-cosmos-sql-api/for-json-query-result.png":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/for-json-query-result.png" alt-text="Scherm opname waarin de tabellen Orders en OrderDetails in de SQL database worden weer gegeven." lightbox="./media/migrate-relational-to-cosmos-sql-api/for-json-query-result.png":::
 
 IDEA liter wilt u een Kopieer activiteit met één Azure Data Factory (ADF) gebruiken om SQL-gegevens als bron op te vragen en de uitvoer rechtstreeks naar Azure Cosmos DB sink te schrijven als juiste JSON-objecten. Het is momenteel niet mogelijk om de benodigde JSON-trans formatie uit te voeren in één Kopieer activiteit. Als we proberen de resultaten van de bovenstaande query te kopiëren naar een Azure Cosmos DB SQL API-container, zien we het veld OrderDetails als een teken reeks eigenschap van het document, in plaats van de verwachte JSON-matrix.
 
@@ -90,27 +90,27 @@ SELECT [value] FROM OPENJSON(
 )
 ```
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf1.png" alt-text="Bestellingsgegevens" is en we niet wilt dat het wordt geparseerd in afzonderlijke kolommen met komma's en u de dubbele aanhalings tekens (") wilt behouden, stellen we ' kolom scheidings teken ' in op een tab (' \t '), of een ander teken dat niet in het gegevens-en aanhalings tekens wordt gebruikt voor geen aanhalings teken.
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf1.png" alt-text="Scherm opname waarin de tabellen Orders en OrderDetails in de SQL database worden weer gegeven." is en we niet wilt dat het wordt geparseerd in afzonderlijke kolommen met komma's en u de dubbele aanhalings tekens (") wilt behouden, stellen we ' kolom scheidings teken ' in op een tab (' \t '), of een ander teken dat niet in het gegevens-en aanhalings tekens wordt gebruikt voor geen aanhalings teken.
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf2.png" alt-text="Bestellingsgegevens":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf2.png" alt-text="Scherm opname waarin de tabellen Orders en OrderDetails in de SQL database worden weer gegeven.":::
 
 ### <a name="copy-activity-2-blobjsontocosmos"></a>#2 van de Kopieer activiteit: BlobJsonToCosmos
 
 Vervolgens wijzigen we onze ADF-pijp lijn door de tweede Kopieer activiteit toe te voegen die in Azure Blob Storage zoekt naar het tekst bestand dat door de eerste activiteit is gemaakt. Het wordt als ' JSON '-bron verwerkt om Cosmos DB Sink als één document per JSON-rij gevonden in het tekst bestand.
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf3.png" alt-text="Bestellingsgegevens":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf3.png" alt-text="Scherm opname waarin de tabellen Orders en OrderDetails in de SQL database worden weer gegeven.":::
 
 U kunt eventueel ook een ' delete '-activiteit toevoegen aan de pijp lijn, zodat alle vorige bestanden in de map/orders/vóór elke uitvoering worden verwijderd. Onze ADF-pijp lijn ziet er nu ongeveer als volgt uit:
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf4.png" alt-text="Bestellingsgegevens":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf4.png" alt-text="Scherm opname waarin de tabellen Orders en OrderDetails in de SQL database worden weer gegeven.":::
 
 Nadat we de pijp lijn hierboven hebben geactiveerd, zien we een bestand dat is gemaakt op onze intermediaire Azure-Blob Storage locatie met één JSON-object per rij:
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf5.png" alt-text="Bestellingsgegevens":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf5.png" alt-text="Scherm opname waarin de tabellen Orders en OrderDetails in de SQL database worden weer gegeven.":::
 
 We zien ook bestellingen van documenten met correct Inge sloten OrderDetails die zijn ingevoegd in onze Cosmos DB verzameling:
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf6.png" alt-text="Bestellingsgegevens":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf6.png" alt-text="Scherm opname waarin de tabellen Orders en OrderDetails in de SQL database worden weer gegeven.":::
 
 
 ## <a name="azure-databricks"></a>Azure Databricks
@@ -123,7 +123,7 @@ We kunnen ook Spark in [Azure Databricks](https://azure.microsoft.com/services/d
 
 Eerst maken en koppelen we de vereiste [SQL-connector](https://docs.databricks.com/data/data-sources/sql-databases-azure.html) en [Azure Cosmos DB connector](https://docs.databricks.com/data/data-sources/azure/cosmosdb-connector.html) bibliotheken aan ons Azure Databricks-cluster. Start het cluster opnieuw op om ervoor te zorgen dat de tape wisselaars worden geladen.
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks1.png" alt-text="Bestellingsgegevens":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks1.png" alt-text="Scherm opname waarin de tabellen Orders en OrderDetails in de SQL database worden weer gegeven.":::
 
 We presen teren nu twee voor beelden, voor scala en python. 
 
@@ -146,7 +146,7 @@ val orders = sqlContext.read.sqlDB(configSql)
 display(orders)
 ```
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks2.png" alt-text="Bestellingsgegevens":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks2.png" alt-text="Scherm opname waarin de tabellen Orders en OrderDetails in de SQL database worden weer gegeven.":::
 
 We gaan nu verbinding maken met onze Cosmos DB-Data Base en-verzameling:
 
@@ -203,7 +203,7 @@ display(ordersWithSchema)
 CosmosDBSpark.save(ordersWithSchema, configCosmos)
 ```
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks3.png" alt-text="Bestellingsgegevens":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks3.png" alt-text="Scherm opname waarin de tabellen Orders en OrderDetails in de SQL database worden weer gegeven.":::
 
 
 ### <a name="python"></a>Python
@@ -333,7 +333,7 @@ pool.map(writeOrder, orderids)
 ```
 In beide gevallen moeten we aan het eind het op de juiste manier opgeslagen Inge sloten OrderDetails binnen elk Bestel document in Cosmos DB verzameling ophalen:
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks4.png" alt-text="Bestellingsgegevens":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks4.png" alt-text="Scherm opname waarin de tabellen Orders en OrderDetails in de SQL database worden weer gegeven.":::
 
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over [gegevens modellering in azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/modeling-data)

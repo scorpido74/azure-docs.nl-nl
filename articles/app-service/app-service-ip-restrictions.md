@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: ce5882f2621dc5b8c48bcf5be6d4ea3a2f723bfe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 782fa75cee5ffb5f9c86082a86e2b3552914c274
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962958"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168219"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Toegangs beperkingen Azure App Service
 
@@ -36,7 +36,7 @@ Als u een toegangs beperkings regel wilt toevoegen aan uw app, gebruikt u het me
 
 U kunt de lijst met toegangs beperkings regels die voor uw app zijn gedefinieerd, bekijken in de gebruikers interface voor toegangs beperkingen.
 
-![toegangs beperkingen weer geven](media/app-service-ip-restrictions/access-restrictions-browse.png)
+![Scherm afbeelding van de toegangs beperkingen in Azure Portal de lijst met toegangs beperkings regels die voor de geselecteerde app zijn gedefinieerd.](media/app-service-ip-restrictions/access-restrictions-browse.png)
 
 In de lijst worden alle huidige beperkingen voor uw app weer gegeven. Als u een VNet-beperking hebt voor uw app, wordt in de tabel weer gegeven of service-eind punten zijn ingeschakeld voor micro soft. Web. Als er geen beperkingen zijn gedefinieerd voor uw app, is uw app vanaf elke locatie toegankelijk.  
 
@@ -68,11 +68,11 @@ Met Service-eind punten kunt u uw app configureren met toepassings gateways of a
 
 U kunt op elke rij klikken om een bestaande toegangs beperkings regel te bewerken. Bewerkingen zijn direct van kracht, inclusief wijzigingen in de volg orde van prioriteit.
 
-![een toegangs beperkings regel bewerken](media/app-service-ip-restrictions/access-restrictions-ip-edit.png)
+![Scherm afbeelding van het dialoog venster IP-beperking bewerken in Azure Portal de velden voor een bestaande toegangs beperkings regel worden weer gegeven.](media/app-service-ip-restrictions/access-restrictions-ip-edit.png)
 
 Wanneer u een regel bewerkt, kunt u het type niet wijzigen tussen een IP-adres regel en een Virtual Network regel. 
 
-![een toegangs beperkings regel bewerken](media/app-service-ip-restrictions/access-restrictions-vnet-edit.png)
+![Scherm afbeelding van het dialoog venster IP-beperking bewerken in Azure Portal de instellingen voor een Virtual Network regel worden weer gegeven.](media/app-service-ip-restrictions/access-restrictions-vnet-edit.png)
 
 Als u een regel wilt verwijderen, klikt u op de **..** . op de regel en klikt u vervolgens op **verwijderen**.
 
@@ -90,7 +90,7 @@ Voor het scenario waarin gebruikers een enkel IP-adres of IP-adres blok explicie
 
 Naast het beheren van de toegang tot uw app, kunt u ook de toegang beperken tot de SCM-site die wordt gebruikt door uw app. De SCM-site is het Web Deploy-eind punt en ook de kudu-console. U kunt de toegangs beperkingen afzonderlijk toewijzen aan de SCM-site vanuit de app of dezelfde set gebruiken voor zowel de app als de SCM-site. Wanneer u het selectie vakje inschakelt om dezelfde beperkingen als uw app te hebben, is alles leeg. Als u het selectie vakje uitschakelt, worden alle instellingen die u eerder op de SCM-site had, toegepast. 
 
-![toegangs beperkingen weer geven](media/app-service-ip-restrictions/access-restrictions-scm-browse.png)
+![Scherm opname van de toegangs beperkingen in Azure Portal tonen dat er geen toegangs beperkingen zijn ingesteld voor de SCM-site of de app.](media/app-service-ip-restrictions/access-restrictions-scm-browse.png)
 
 ## <a name="programmatic-manipulation-of-access-restriction-rules"></a>Programmatische manipulatie van toegangs beperkings regels ##
 

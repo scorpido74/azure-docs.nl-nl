@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 8942e9180e87552ec64e0e848751f492778c9993
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83afdf7e9dc50e50d747db99cd8439d75e6f7804
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86131652"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167811"
 ---
 # <a name="troubleshooting-failed-to-delete-a-virtual-network-in-azure"></a>Problemen oplossen: verwijderen van een virtueel netwerk in Azure is mislukt
 
@@ -48,7 +48,7 @@ Voor klassieke virtuele netwerken gaat u naar de **overzichts** pagina van het k
 
 Voor virtuele netwerken gaat u naar de **overzichts** pagina van het virtuele netwerk. Controleer de **verbonden apparaten** voor de gateway van het virtuele netwerk.
 
-![Het verbonden apparaat controleren](media/virtual-network-troubleshoot-cannot-delete-vnet/vnet-gateway.png)
+![Scherm opname van de lijst met verbonden apparaten voor een virtueel netwerk in Azure Portal. De gateway van het virtuele netwerk is gemarkeerd in de lijst.](media/virtual-network-troubleshoot-cannot-delete-vnet/vnet-gateway.png)
 
 Voordat u de gateway kunt verwijderen, moet u eerst alle **verbindings** objecten in de gateway verwijderen. 
 
@@ -56,7 +56,7 @@ Voordat u de gateway kunt verwijderen, moet u eerst alle **verbindings** objecte
 
 Ga naar de **overzichts** pagina van het virtuele netwerk. Controleer de **verbonden apparaten** voor de toepassings gateway.
 
-![Het verbonden apparaat controleren](media/virtual-network-troubleshoot-cannot-delete-vnet/app-gateway.png)
+![Scherm opname van de lijst met verbonden apparaten voor een virtueel netwerk in Azure Portal. De toepassings gateway is gemarkeerd in de lijst.](media/virtual-network-troubleshoot-cannot-delete-vnet/app-gateway.png)
 
 Als er een toepassings gateway is, moet u deze verwijderen voordat u het virtuele netwerk kunt verwijderen.
 
@@ -64,7 +64,7 @@ Als er een toepassings gateway is, moet u deze verwijderen voordat u het virtuel
 
 Als de Active Directory-domein-service is ingeschakeld en verbonden met het virtuele netwerk, kunt u dit virtuele netwerk niet verwijderen. 
 
-![Het verbonden apparaat controleren](media/virtual-network-troubleshoot-cannot-delete-vnet/enable-domain-services.png)
+![Scherm afbeelding van het venster Azure AD Domain Services in Azure Portal. Het veld beschikbaar in Virtual Network/subnet is gemarkeerd.](media/virtual-network-troubleshoot-cannot-delete-vnet/enable-domain-services.png)
 
 Zie [Azure Active Directory Domain Services uitschakelen met behulp van de Azure Portal](../active-directory-domain-services/delete-aadds.md)om de service uit te scha kelen.
 

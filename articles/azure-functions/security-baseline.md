@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 423fdcdf48d90b4c428497f22cb6924900de8931
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: f22473d4a865e2925ecbfe74d68811c12f7c26d7
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107518"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168083"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>Azure-beveiligings basislijn voor Azure Functions
 
@@ -315,7 +315,7 @@ Optioneel kunt u gegevens in-en inschakelen voor Azure Sentinel of een SIEM van 
 
 - [Diagnostische instellingen inschakelen voor Azure Functions](./functions-monitor-log-analytics.md)
 
-- [Application Insights inschakelen voor Azure Functions](./functions-monitoring.md#enable-application-insights-integration)
+- [Application Insights inschakelen voor Azure Functions](./configure-monitoring.md#enable-application-insights-integration)
 
 - [Waarschuwingen maken in azure](../azure-monitor/learn/tutorial-response.md)
 
@@ -369,7 +369,7 @@ Optioneel kunt u gegevens in-en inschakelen voor Azure Sentinel of een SIEM van 
 
 **Hulp**: de toegang tot Azure functions beheren wordt geregeld via Azure Active Directory (AD). Azure AD heeft niet het concept van standaard wachtwoorden.
 
-Toegang tot het gegevens vlak kan op verschillende manieren worden beheerd, waaronder autorisatie sleutels, netwerk beperkingen en het valideren van een AAD-identiteit. Autorisatie sleutels worden gebruikt door de clients die verbinding maken met uw Azure Functions HTTP-eind punten en kunnen op elk gewenst moment opnieuw worden gegenereerd. Deze sleutels worden standaard voor nieuwe HTTP-eind punten gegenereerd.
+Toegang tot het gegevens vlak kan op verschillende manieren worden beheerd, waaronder autorisatie sleutels, netwerk beperkingen en het valideren van een Azure AD-identiteit. Autorisatie sleutels worden gebruikt door de clients die verbinding maken met uw Azure Functions HTTP-eind punten en kunnen op elk gewenst moment opnieuw worden gegenereerd. Deze sleutels worden standaard voor nieuwe HTTP-eind punten gegenereerd.
 
 Er zijn meerdere implementatie methoden beschikbaar voor het gebruik van apps, waarvan sommige een set van gegenereerde referenties kunnen gebruiken. Controleer de implementatie methoden die voor uw toepassing worden gebruikt.
 
@@ -463,7 +463,7 @@ Daarnaast kunt u met Azure AD-risico detectie waarschuwingen en rapporten bekijk
 
 - [Uw Azure Functions-app configureren voor het gebruik van Azure AD-aanmelding](../app-service/configure-authentication-provider-aad.md)
 
-- [Een AAD-exemplaar maken en configureren](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+- [Een Azure AD-exemplaar maken en configureren](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure Security Center bewaking**: Ja
 

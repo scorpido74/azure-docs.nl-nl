@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/18/2020
 ms.author: caya
-ms.openlocfilehash: 0fdfa6265b81140fa6536082fe7ad4c5fa687fc4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cbb62509472d6f86ba30e13c95ce2c2bfd343765
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86207156"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168185"
 ---
 # <a name="troubleshoot-common-questions-or-issues-with-ingress-controller"></a>Veelvoorkomende vragen of problemen met de ingangs controller oplossen
 
@@ -85,15 +85,15 @@ Nadat een geslaagde implementatie van de app boven uw AKS-cluster een nieuwe Pod
 De lijst met peulen ophalen met [Cloud shell](https://shell.azure.com/): `kubectl get pods -o wide` .
 Er wordt verwacht dat er een pod met de naam ' test-agic-app-pod ' is gemaakt. Het heeft een IP-adres. Dit adres moet zich binnen het VNET van de Application Gateway bevindt, dat wordt gebruikt met AKS.
 
-![gehele](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-pods.png)
+![Scherm opname van het bash-venster in Azure Cloud Shell met een lijst met de namen van de test-agic-app-pod in de lijst.](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-pods.png)
 
 De lijst met services ophalen: `kubectl get services -o wide` . Verwacht wordt dat er een service met de naam ' test-agic-app-service ' wordt weer geven.
 
-![gehele](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-services.png)
+![Scherm opname van het bash-venster in Azure Cloud Shell een lijst met Services met een test-agic-app-pod in de lijst weer gegeven.](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-services.png)
 
 De lijst met ingresses ophalen: `kubectl get ingress` . Er wordt verwacht dat een ingangs bron met de naam ' test-agic-app-ingang ' is gemaakt. De resource heeft de hostnaam ' test.agic.contoso.com '.
 
-![gehele](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-ingress.png)
+![Scherm opname van het bash-venster in Azure Cloud Shell waarin een lijst met ingresses wordt weer gegeven met test-agic-app-ingang in de lijst.](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-ingress.png)
 
 Een van de peulen is AGIC. `kubectl get pods` Er wordt een lijst weer gegeven met een van de peulen waarvan een van deze begint met ' Inkomend-Azure '. Ontvang alle logboeken van die pod `kubectl logs <name-of-ingress-controller-pod>` om te controleren of de implementatie is geslaagd. Bij een geslaagde implementatie zijn de volgende regels aan het logboek toegevoegd:
 ```
@@ -120,7 +120,7 @@ Ten slotte kunt u de `cURL` opdracht vanuit [Cloud shell](https://shell.azure.co
 1. Gebruik `kubectl get ingress` om het open bare IP-adres van Application Gateway op te halen
 2. `curl -I -H 'test.agic.contoso.com' <publitc-ip-address-from-previous-command>` gebruiken
 
-![gehele](./media/application-gateway-ingress-controller-troubleshooting/tsg--curl.png)
+![Scherm opname van het bash-venster in Azure Cloud Shell waarin een krul opdracht is ingesteld, wordt een HTTP-verbinding met de test-app tot stand gebracht.](./media/application-gateway-ingress-controller-troubleshooting/tsg--curl.png)
 
 Als gevolg hiervan wordt `HTTP/1.1 200 OK` aangegeven dat Application Gateway het AKS + AGIC-systeem werkt zoals verwacht.
 

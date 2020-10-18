@@ -4,12 +4,12 @@ description: Meer informatie over het ontwikkelen en testen van Azure Functions 
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/21/2019
-ms.openlocfilehash: 1614ac0711c6a83d7e303b5a4b6ebbdf23ba2e03
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: c851f5284b87f224932b027fd10ce720327639c2
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104067"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167896"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Azure Functions ontwikkelen met Visual Studio Code
 
@@ -187,7 +187,7 @@ Met Visual Studio code kunt u bindingen toevoegen aan uw function.jsop bestand d
 
 Hieronder volgen enkele voor beelden van prompts voor het definiëren van een nieuwe opslag-uitvoer binding:
 
-| Vraag | Waarde | Beschrijving |
+| Prompt | Waarde | Beschrijving |
 | -------- | ----- | ----------- |
 | **Bindingsrichting selecteren** | `out` | De binding is een uitvoerbinding. |
 | **Binding met richting selecteren** | `Azure Queue Storage` | De binding is een Azure Storage-wachtrijbinding. |
@@ -251,7 +251,7 @@ Met de volgende stappen publiceert u uw project naar een nieuwe functie-app die 
 
 1. Voer de volgende gegevens in om deze informatie op te geven:
 
-    | Vraag | Waarde | Beschrijving |
+    | Prompt | Waarde | Beschrijving |
     | ------ | ----- | ----------- |
     | Functie-app in azure selecteren | Nieuwe functie-app in azure maken | Typ bij de volgende prompt een wereld wijd unieke naam die uw nieuwe functie-app identificeert en selecteer vervolgens ENTER. Geldige tekens voor de naam van en functie-app zijn `a-z`, `0-9` en `-`. |
     | Selecteer een besturings systeem | Windows | De functie-app wordt uitgevoerd in Windows. |
@@ -384,15 +384,13 @@ Zie [streaming-logboeken](functions-monitoring.md#streaming-logs)voor meer infor
 [!INCLUDE [functions-enable-log-stream-vs-code](../../includes/functions-enable-log-stream-vs-code.md)]
 
 > [!NOTE]
-> Streaming-logboeken bieden ondersteuning voor slechts één exemplaar van de functions-host. Wanneer de functie is geschaald naar meerdere instanties, worden gegevens uit andere instanties niet weer gegeven in de logboek stroom. [Live Metrics stream](../azure-monitor/app/live-stream.md) in Application Insights ondersteunt meerdere instanties. Daarnaast is streaming Analytics in vrijwel real time gebaseerd op de [voorbeeld gegevens](functions-monitoring.md#configure-sampling).
+> Streaming-logboeken bieden ondersteuning voor slechts één exemplaar van de functions-host. Wanneer de functie is geschaald naar meerdere instanties, worden gegevens uit andere instanties niet weer gegeven in de logboek stroom. [Live Metrics stream](../azure-monitor/app/live-stream.md) in Application Insights ondersteunt meerdere instanties. Daarnaast is streaming Analytics in vrijwel real time gebaseerd op de [voorbeeld gegevens](configure-monitoring.md#configure-sampling).
 
 ### <a name="application-insights"></a>Application Insights
 
-We raden u aan de uitvoering van uw functies te bewaken door uw functie-app te integreren met Application Insights. Wanneer u een functie-app maakt in de Azure Portal, wordt deze integratie standaard uitgevoerd. Wanneer u de functie-app tijdens het publiceren van Visual Studio maakt, moet u Application Insights zelf integreren.
+We raden u aan de uitvoering van uw functies te bewaken door uw functie-app te integreren met Application Insights. Wanneer u een functie-app maakt in de Azure Portal, wordt deze integratie standaard uitgevoerd. Wanneer u de functie-app tijdens het publiceren van Visual Studio maakt, moet u Application Insights zelf integreren. Zie [Application Insights-integratie inschakelen](configure-monitoring.md#enable-application-insights-integration)voor meer informatie.
 
-[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
-
-Zie [Azure functions bewaken](functions-monitoring.md)voor meer informatie.
+Zie [Azure functions bewaken](functions-monitoring.md)voor meer informatie over het bewaken van Application Insights.
 
 ## <a name="c-script-projects"></a>C- \# script projecten
 
@@ -410,7 +408,7 @@ Nadat u deze stappen hebt voltooid, bevatten de aanroepen van de onderliggende k
 
 De uitbrei ding Azure Functions biedt een handige grafische interface in het gebied voor interactie met uw functie-apps in Azure. Dezelfde functionaliteit is ook beschikbaar als opdrachten in het opdracht palet (F1). Deze Azure Functions-opdrachten zijn beschikbaar:
 
-|Azure Functions opdracht  | Description  |
+|Azure Functions opdracht  | Beschrijving  |
 |---------|---------|
 |**Nieuwe instellingen toevoegen**  |  Hiermee maakt u een nieuwe toepassings instelling in Azure. Zie [Toepassings instellingen publiceren](#publish-application-settings)voor meer informatie. Mogelijk moet u [deze instelling ook downloaden naar de lokale instellingen](#download-settings-from-azure). |
 | **Implementatie bron configureren** | Verbindt uw functie-app in azure met een lokale Git-opslag plaats. Zie [continue implementatie voor Azure functions voor](functions-continuous-deployment.md)meer informatie. |

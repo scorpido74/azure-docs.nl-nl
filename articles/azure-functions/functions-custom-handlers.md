@@ -5,12 +5,12 @@ author: anthonychu
 ms.author: antchu
 ms.date: 8/18/2020
 ms.topic: article
-ms.openlocfilehash: f3106553def982eb90ccc90822206e75a11ce354
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 402ce1e9e92ab87689abe9c18a503a479d7421f9
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89294591"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164547"
 ---
 # <a name="azure-functions-custom-handlers-preview"></a>Aangepaste handlers Azure Functions (preview-versie)
 
@@ -566,7 +566,7 @@ Met de functions-host worden extra logboek berichten uitgevoerd, inclusief infor
 
 Lokaal worden logboeken afgedrukt op de-console.
 
-Zoek in azure [Application Insights traceringen](functions-monitoring.md#query-telemetry-data) om de logboek berichten weer te geven. Als uw app een groot aantal logboeken produceert, worden er alleen een subset van logboek berichten verzonden naar Application Insights. [Schakel steek proeven uit](functions-monitoring.md#configure-sampling) om ervoor te zorgen dat alle berichten worden geregistreerd.
+Zoek in azure [Application Insights traceringen](analyze-telemetry-data.md#query-telemetry-data) om de logboek berichten weer te geven. Als uw app een groot aantal logboeken produceert, worden er alleen een subset van logboek berichten verzonden naar Application Insights. [Schakel steek proeven uit](configure-monitoring.md#configure-sampling) om ervoor te zorgen dat alle berichten worden geregistreerd.
 
 ### <a name="test-custom-handler-in-isolation"></a>Aangepaste handler in isolatie testen
 

@@ -2,28 +2,26 @@
 title: Uw ontwikkel omgeving instellen in Linux
 description: Installeer de runtime en SDK en maak een lokaal ontwikkelcluster in Linux. Zodra u dit hebt gedaan, kunt u toepassingen bouwen.
 ms.topic: conceptual
-ms.date: 2/23/2018
+ms.date: 10/16/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 211c2c80d0f701176dfcff02872d9f1e30635d94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8639287ea65347319cb438a5ff6e8c96c8279e1
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91249991"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168406"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Uw ontwikkelomgeving voorbereiden in Linux
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-get-started.md)
 > * [Linux](service-fabric-get-started-linux.md)
-> * [OSX](service-fabric-get-started-mac.md)
->
->  
+> * [Mac OS X](service-fabric-get-started-mac.md)
 
-Als u [Azure Service Fabric-toepassingen](service-fabric-application-model.md) op uw Linux-ontwikkelmachine wilt implementeren en uitvoeren, moet u de runtime en algemene SDK installeren. U kunt ook optionele SDK's voor Java en .NET Core-ontwikkeling installeren. 
+Als u Azure Service Fabric-toepassingen (Service-Fabric-Application-model.md] op uw Linux-ontwikkel machine wilt implementeren en uitvoeren, installeert u de runtime en de gemeen schappelijke SDK. U kunt ook optionele SDK's voor Java en .NET Core-ontwikkeling installeren. 
 
-Bij de stappen in dit artikel wordt ervan uitgegaan dat u in het eigen systeem installeert op Linux of gebruikmaakt van de Service Fabric OneBox-containerinstallatiekopie, `mcr.microsoft.com/service-fabric/onebox:latest`.
+Bij de stappen in dit artikel wordt ervan uitgegaan dat u systeem eigen op Linux installeert of dat u de (Service Fabric OneBox-container installatie kopie) gebruikt [ https://hub.docker.com/_/microsoft-service-fabric-onebox ], dat wil zeggen `mcr.microsoft.com/service-fabric/onebox:u18` .
 
-Het installeren van de Service Fabric-runtime en -SDK op Windows Subsystem voor Linux wordt niet ondersteund. U kunt Service Fabric-entiteiten beheren die elders in de cloud of on-premises worden gehost met de Azure Service Fabric-opdrachtregelinterface (CLI), die wordt ondersteund. Zie [De Service Fabric-CLI instellen](./service-fabric-cli.md) voor meer informatie over het installeren van de CLI.
+U kunt Service Fabric entiteiten die worden gehost in de Cloud of on-premises beheren met de Azure Service Fabric opdracht regel interface (CLI). Zie [De Service Fabric-CLI instellen](./service-fabric-cli.md) voor meer informatie over het installeren van de CLI.
 
 
 ## <a name="prerequisites"></a>Vereisten
@@ -42,9 +40,17 @@ Deze besturingssysteemversies worden ondersteund voor ontwikkeling.
 
 ## <a name="installation-methods"></a>Installatiemethoden
 
-### <a name="script-installation-ubuntu"></a>Installatie van script (Ubuntu)
+<!-- markdownlint-disable MD025 -->
+<!-- markdownlint-disable MD024 -->
 
-Voor uw gemak is er een script beschikbaar om u te helpen bij het installeren van de Service Fabric-runtime en de algemene Service Fabric SDK samen met de **SFCTL** CLI. Voer de handmatige installatiestappen in de volgende sectie uit. U ziet wat er wordt geïnstalleerd en de bijbehorende licenties. Als u het script uitvoert, wordt ervan uitgegaan dat u akkoord gaat met de licenties voor alle software die wordt geïnstalleerd.
+# <a name="ubuntu"></a>[Ubuntu](#tab/sdksetupubuntu)
+
+## <a name="update-your-apt-sources"></a>Uw APT-bronnen bijwerken
+Voor het installeren van de SDK en het bijbehorende runtimepakket via het apt-get-opdrachtregelprogramma, moet u eerst uw APT-bronnen (Advanced Packaging Tool) bijwerken.
+
+## <a name="script-installation"></a>Installatie van script
+
+Voor het gemak wordt een script gegeven om de Service Fabric runtime en de Service Fabric algemene SDK samen met de [ **sfctl** cli](service-fabric-cli.md)te installeren. Als u het script uitvoert, wordt ervan uitgegaan dat u akkoord gaat met de licenties voor alle software die wordt geïnstalleerd. U kunt ook de [hand matige installatie](#manual-installation) stappen in de volgende sectie uitvoeren, zodat hieraan gekoppelde licenties worden gepresenteerd, evenals de onderdelen die worden geïnstalleerd.
 
 Nadat het script is uitgevoerd, kunt u verdergaan met [Een lokaal cluster instellen](#set-up-a-local-cluster).
 
@@ -52,13 +58,8 @@ Nadat het script is uitgevoerd, kunt u verdergaan met [Een lokaal cluster instel
 sudo curl -s https://raw.githubusercontent.com/Azure/service-fabric-scripts-and-templates/master/scripts/SetupServiceFabric/SetupServiceFabric.sh | sudo bash
 ```
 
-### <a name="manual-installation"></a>Handmatige installatie
+## <a name="manual-installation"></a>Handmatige installatie
 Volg de rest van deze handleiding voor handmatige installatie van de Service Fabric-runtime en de algemene SDK.
-
-## <a name="update-your-apt-sources-or-yum-repositories"></a>APT-bronnen of Yum-opslagplaatsen bijwerken
-Voor het installeren van de SDK en het bijbehorende runtimepakket via het apt-get-opdrachtregelprogramma, moet u eerst uw APT-bronnen (Advanced Packaging Tool) bijwerken.
-
-### <a name="ubuntu"></a>Ubuntu
 
 1. Open een terminal.
 
@@ -100,8 +101,30 @@ Voor het installeren van de SDK en het bijbehorende runtimepakket via het apt-ge
     sudo apt-get update
     ```
 
+## <a name="install-and-set-up-the-service-fabric-sdk-for-a-local-cluster"></a>De Service Fabric SDK installeren en instellen voor een lokaal cluster
 
-### <a name="red-hat-enterprise-linux-74-service-fabric-preview-support"></a>Red Hat Enterprise Linux 7.4 (ondersteuning voor Service Fabric-preview)
+Wanneer u uw bronnen hebt bijgewerkt, kunt u de SDK installeren. Installeer het Service Fabric SDK-pakket, bevestig de installatie en accepteer de gebruiksrechtovereenkomst.
+
+### <a name="ubuntu"></a>Ubuntu
+
+```bash
+sudo apt-get install servicefabricsdkcommon
+```
+
+> [!TIP]
+>   Met de volgende opdrachten kunt u het accepteren van de licentie voor Service Fabric-pakketten automatiseren:
+>   ```bash
+>   echo "servicefabric servicefabric/accepted-eula-ga select true" | sudo debconf-set-selections
+>   echo "servicefabricsdkcommon servicefabricsdkcommon/accepted-eula-ga select true" | sudo debconf-set-selections
+>   ```
+
+# <a name="red-hat-enterprise-linux-74"></a>[Red Hat Enterprise Linux 7.4](#tab/sdksetuprhel74)
+
+## <a name="update-your-yum-repositories"></a>Uw yum-opslag plaatsen bijwerken
+Als u de SDK en het bijbehorende runtime pakket via het yum-opdracht regel programma wilt installeren, moet u eerst uw pakket bronnen bijwerken.
+
+## <a name="manual-installation-rhel"></a>Hand matige installatie (RHEL)
+Volg de rest van deze handleiding voor handmatige installatie van de Service Fabric-runtime en de algemene SDK.
 
 1. Open een terminal.
 2. Download en installeer extra pakketten voor Enterprise Linux (EPEL).
@@ -129,50 +152,69 @@ Voor het installeren van de SDK en het bijbehorende runtimepakket via het apt-ge
     sudo cp ./microsoft-prod.repo /etc/yum.repos.d/
     ```
 
-6. Installeer de .NET SDK.
-
-    ```bash
-    yum install rh-dotnet20 -y
-    ```
-
-## <a name="install-and-set-up-the-service-fabric-sdk-for-a-local-cluster"></a>De Service Fabric SDK installeren en instellen voor een lokaal cluster
+## <a name="install-and-set-up-the-service-fabric-sdk-for-a-local-cluster-rhel"></a>De Service Fabric SDK installeren en instellen voor een lokaal cluster (RHEL)
 
 Wanneer u uw bronnen hebt bijgewerkt, kunt u de SDK installeren. Installeer het Service Fabric SDK-pakket, bevestig de installatie en accepteer de gebruiksrechtovereenkomst.
-
-### <a name="ubuntu"></a>Ubuntu
-
-```bash
-sudo apt-get install servicefabricsdkcommon
-```
-
-> [!TIP]
->   Met de volgende opdrachten kunt u het accepteren van de licentie voor Service Fabric-pakketten automatiseren:
->   ```bash
->   echo "servicefabric servicefabric/accepted-eula-ga select true" | sudo debconf-set-selections
->   echo "servicefabricsdkcommon servicefabricsdkcommon/accepted-eula-ga select true" | sudo debconf-set-selections
->   ```
-
-### <a name="red-hat-enterprise-linux-74-service-fabric-preview-support"></a>Red Hat Enterprise Linux 7.4 (ondersteuning voor Service Fabric-preview)
 
 ```bash
 sudo yum install servicefabricsdkcommon
 ```
 
+---
+
+## <a name="included-packages"></a>Inbegrepen pakketten
 De Service Fabric-runtime die wordt geleverd met de installatie omvat de pakketten in de volgende tabel. 
 
  | | DotNetCore | Java | Python | Node.js | 
 --- | --- | --- | --- |---
-**Ubuntu** | 2.0.0 | AzulJDK 1,8 | Implicit van npm | meest recente |
+**Ubuntu** | 2.0.7 | AzulJDK 1,8 | Implicit van npm | meest recente |
 **RHEL** | - | OpenJDK 1.8 | Implicit van npm | meest recente |
 
 ## <a name="set-up-a-local-cluster"></a>Een lokaal cluster instellen
-Start een lokaal cluster nadat de installatie is voltooid.
+1. Een lokaal Service Fabric cluster starten voor ontwikkeling.
+
+# <a name="container-based-local-cluster"></a>[Lokaal cluster op basis van containers](#tab/localclusteroneboxcontainer)
+
+Start een op een container gebaseerd [vak service Fabric cluster](https://hub.docker.com/r/microsoft/service-fabric-onebox/).
+
+1. Installeer Moby om docker-containers te kunnen implementeren.
+    ```bash
+    sudo apt-get install moby-engine moby-cli -y
+    ```
+2. Werk de configuratie van de docker-daemon op uw host bij met de volgende instellingen en start de docker-daemon opnieuw. Details: [IPv6-ondersteuning inschakelen](https://docs.docker.com/config/daemon/ipv6/)
+
+    ```json
+    {
+        "ipv6": true,
+        "fixed-cidr-v6": "fd00::/64"
+    }
+    ```
+
+3. Start het cluster.<br/>
+    <b>Ubuntu 18,04 LTS:</b>
+    ```bash
+    docker run --name sftestcluster -d -v /var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mcr.microsoft.com/service-fabric/onebox:u18
+    ```
+
+    <b>Ubuntu 16,04 LTS:</b>
+    ```bash
+    docker run --name sftestcluster -d -v /var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mcr.microsoft.com/service-fabric/onebox:u16
+    ```
+
+    >[!TIP]
+    > Standaard wordt hierdoor de installatiekopie met de nieuwste versie van Service Fabric opgehaald. Ga naar de [Docker Hub](https://hub.docker.com/r/microsoft/service-fabric-onebox/)-pagina als u een bepaalde revisie wilt ophalen.
+
+# <a name="local-cluster"></a>[Lokaal cluster](#tab/localcluster)
+
+Nadat u de SDK hebt geïnstalleerd met behulp van de bovenstaande stappen, start u een lokaal cluster.
 
 1. Voer het installatiescript van het cluster uit.
 
     ```bash
     sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
     ```
+
+---
 
 2. Open een webbrowser en ga naar **service Fabric Explorer** ( `http://localhost:19080/Explorer` ). Wanneer het cluster is gestart, ziet u het Service Fabric Explorer-dashboard. Het kan enkele minuten duren voordat het cluster volledig is ingesteld. Als het openen van de browser is mislukt of als in Service Fabric Explorer niet wordt aangegeven dat het systeem gereed is, wacht u enkele minuten en probeert u het opnieuw.
 
@@ -217,9 +259,9 @@ Service Fabric biedt hulpprogramma's waarmee u vanuit een terminal Service Fabri
 
 Nadat u de generatoren hebt geïnstalleerd, kunt u uitvoerbare gastbestanden of containerservices maken door respectievelijk `yo azuresfguest` of `yo azuresfcontainer` uit te voeren.
 
-## <a name="set-up-net-core-20-development"></a>.NET Core 2.0-ontwikkeling instellen
+## <a name="set-up-net-core-31-development"></a>.NET Core 3,1-ontwikkeling instellen
 
-Installeer de [.NET Core 2.0 SDK voor Ubuntu](https://www.microsoft.com/net/core#linuxubuntu) om [C# Service Fabric-toepassingen te maken](service-fabric-create-your-first-linux-application-with-csharp.md). NuGet.org host pakketten voor .NET Core 2.0 Service Fabric-toepassingen, momenteel in preview.
+Installeer de [.net Core 3,1 SDK voor Ubuntu](https://www.microsoft.com/net/core#linuxubuntu) om [C# service Fabric-toepassingen te maken](service-fabric-create-your-first-linux-application-with-csharp.md). Pakketten voor .NET Core Service Fabric-toepassingen worden gehost op NuGet.org.
 
 ## <a name="set-up-java-development"></a>Java-ontwikkeling instellen
 

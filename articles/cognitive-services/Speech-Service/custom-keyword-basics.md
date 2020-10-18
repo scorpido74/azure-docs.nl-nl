@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/02/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f2f333cd01057ff5f6f904924880f88b0685c72f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ed5c554e6307b08c412de16d1bb92b458c5f15f
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667690"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166451"
 ---
 # <a name="get-started-with-custom-keyword"></a>Aan de slag met Aangepast sleutelwoord
 
@@ -54,7 +54,7 @@ Voordat u een aangepast tref woord kunt gebruiken, moet u een tref woord maken m
 
 1. De portal maakt de uitspraak van kandidaten voor uw tref woord. Luister naar elke kandidaat door te klikken op de afspeel knoppen en de controles te verwijderen naast eventuele uitstaande uitspraaken. Als er alleen goede uitspraaken zijn ingeschakeld, klikt u op **trainen** om het trefwoord model te genereren. 
 
-    ![Je tref woord controleren](media/custom-keyword/custom-kws-portal-choose-prons.png)
+    ![Scherm afbeelding die laat zien waar u de juiste pronounciations kiest.](media/custom-keyword/custom-kws-portal-choose-prons.png)
 
 1. Het kan tot dertig minuten duren voordat het model is gegenereerd. De lijst met tref woorden wordt gewijzigd van de **verwerking** naar **geslaagd** wanneer het model is voltooid. Vervolgens kunt u het bestand downloaden.
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: vikancha
-ms.openlocfilehash: 02fbe721f1bf5737ad1d10d656ea75ed1372b484
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0f05bd9ebd100956cfb7b2b6188e18616368dd0
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87284877"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168474"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>NVIDIA GPU-Stuur Programma's installeren op Vm's met N-serie waarop Linux wordt uitgevoerd
 
@@ -310,7 +310,7 @@ Als u de status van het GPU-apparaat wilt opvragen, SSH naar de virtuele machine
 
 Als het stuur programma is geïnstalleerd, ziet u uitvoer die vergelijkbaar is met de volgende. Met **GPU-util** wordt 0% weer gegeven, tenzij u momenteel een GPU-werk belasting op de VM uitvoert. De versie-en GPU-Details van uw stuur programma kunnen afwijken van de gegevens die worden weer gegeven.
 
-![Status van NVIDIA-apparaten](./media/n-series-driver-setup/smi-nv.png)
+![Scherm opname waarin de uitvoer wordt weer gegeven wanneer de status van het GPU-apparaat wordt opgevraagd.](./media/n-series-driver-setup/smi-nv.png)
  
 
 ### <a name="x11-server"></a>X11-server

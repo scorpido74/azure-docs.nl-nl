@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: 6a5df4f6a20a9f7061f56dac507a474f7bda6100
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: ed29bfc099ce401288c07db863207a1d989a5e0d
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91992885"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168270"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Toepassings wijzigings analyse (preview) gebruiken in Azure Monitor
 
@@ -187,7 +187,9 @@ Als dit de eerste keer is dat u het wijzigings overzicht bekijkt na de integrati
 - **Dit duurt langer dan verwacht**. Dit bericht geeft aan dat de registratie langer dan twee minuten duurt. Dit is ongebruikelijk, maar dit betekent niet noodzakelijkerwijs dat er iets verkeerd is gegaan. U kunt naar **Abonnementen gaan | Resource provider** die moet worden gecontroleerd op de registratie status van de **micro soft. ChangeAnalysis** -resource provider. U kunt proberen de gebruikers interface te gebruiken voor het opheffen van de registratie, opnieuw registreren of vernieuwen om te zien of het helpt. Neem contact op met de ondersteuning als het probleem zich blijft voordoen changeanalysishelp@microsoft.com .
     ![Problemen met de RP-registratie oplossen](./media/change-analysis/troubleshoot-registration-taking-too-long.png)
 
+![Scherm afbeelding van het hulp programma problemen vaststellen en oplossen voor een virtuele machine waarop hulpprogram ma's voor probleem oplossing is geselecteerd.](./media/change-analysis/vm-dnsp-troubleshootingtools.png)
 
+![Scherm afbeelding van de tegel voor het hulp programma probleem oplossing voor het analyseren van recente wijzigingen voor een virtuele machine.](./media/change-analysis/analyze-recent-changes.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

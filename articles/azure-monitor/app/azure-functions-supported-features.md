@@ -6,16 +6,16 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 333bba2b1d3cd83457196e38b827daa78199f235
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36c5fc93886327c0e3261418343d900ee66cb4eb
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87033510"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168576"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Application Insights voor Azure Functions ondersteunde functies
 
-Azure Functions biedt [ingebouwde integratie](../../azure-functions/functions-monitoring.md) met Application Insights, die beschikbaar is via de ILogger-interface. Hieronder ziet u de lijst met momenteel ondersteunde functies. Raadpleeg de hand leiding van Azure Functions om [aan](../../azure-functions/functions-monitoring.md#enable-application-insights-integration)de slag te gaan.
+Azure Functions biedt [ingebouwde integratie](../../azure-functions/functions-monitoring.md) met Application Insights, die beschikbaar is via de ILogger-interface. Hieronder ziet u de lijst met momenteel ondersteunde functies. Raadpleeg de hand leiding van Azure Functions om [aan](../../azure-functions/configure-monitoring.md#enable-application-insights-integration)de slag te gaan.
 
 Zie [hier](../../azure-functions/functions-versions.md)voor meer informatie over runtime versies van functies.
 
@@ -61,7 +61,7 @@ De criteria voor aangepaste filters die u opgeeft, worden teruggestuurd naar het
 
 ## <a name="sampling"></a>Steekproeven
 
-Met Azure Functions worden steek proeven standaard in hun configuratie ingeschakeld. Zie [sampling configureren](../../azure-functions/functions-monitoring.md#configure-sampling)voor meer informatie.
+Met Azure Functions worden steek proeven standaard in hun configuratie ingeschakeld. Zie [sampling configureren](../../azure-functions/configure-monitoring.md#configure-sampling)voor meer informatie.
 
 Als uw project afhankelijk is van de Application Insights SDK om hand matige telemetrie-tracering uit te voeren, kunnen er vreemde problemen optreden als uw sampling configuratie verschilt van de sampling configuratie van de functies. 
 

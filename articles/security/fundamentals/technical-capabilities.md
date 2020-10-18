@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2020
 ms.author: terrylan
-ms.openlocfilehash: 3dd209d90947ebef7eb7b074992a55305005e7bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ac044666b8f723e3cc26fd7a30f5dd8a8f77d90
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399530"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168032"
 ---
 # <a name="azure-security-technical-capabilities"></a>Technische mogelijkheden van Azure-beveiliging
 Dit artikel bevat een inleiding tot beveiligings Services in azure waarmee u uw gegevens, resources en toepassingen in de cloud kunt beveiligen en voldoen aan de beveiligings behoeften van uw bedrijf.
@@ -68,7 +68,7 @@ Hier volgen de belangrijkste mogelijkheden van Azure Identity Management:
 
 - Eenmalige aanmelding
 
-- Meervoudige verificatie
+- Multi-Factor Authentication
 
 - Beveiligings bewaking, waarschuwingen en rapporten op basis van machine learning
 
@@ -90,7 +90,7 @@ Veel organisaties zijn afhankelijk van SaaS-toepassingen (Software as a Service)
 
 Gebruikers hoeven niet alleen meerdere sets met gebruikers namen en wacht woorden te beheren, toepassings toegang kan automatisch worden ingericht of ongedaan gemaakt op basis van organisatie groepen en hun status als werk nemer. [Azure AD introduceert beveiligings-en toegangs beheer functies](../../active-directory/active-directory-enterprise-apps-manage-sso.md) waarmee u de toegang van gebruikers tot de SaaS-toepassingen centraal kunt beheren.
 
-#### <a name="multi-factor-authentication"></a>Meervoudige verificatie
+#### <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
 [Azure multi-factor Authentication (MFA)](../../active-directory/authentication/multi-factor-authentication.md) is een verificatie methode waarvoor het gebruik van meer dan één verificatie methode is vereist en waarmee een kritieke tweede beveiligingslaag wordt toegevoegd aan gebruikers aanmeldingen en trans acties. [MFA helpt](../../active-directory/authentication/concept-mfa-howitworks.md) de toegang tot gegevens en toepassingen te beschermen terwijl de vraag naar gebruikers wordt gevergaderd voor een eenvoudig aanmeldings proces. Het biedt sterke authenticatie via verschillende verificatie opties: telefonische oproep, tekst bericht of mobiele app-melding of verificatie code en OAuth-tokens van derden.
 
@@ -367,7 +367,8 @@ Security Center verzamelt, analyseert en integreert automatisch logboekgegevens 
 
 Cloud toepassingen zijn complex met veel bewegende onderdelen. Bewaking biedt gegevens om ervoor te zorgen dat uw toepassing in een goede staat actief blijft. Het helpt u ook om mogelijke problemen op te lossen of om Stave te oplossen.
 
-![Azure Monitor ](./media/technical-capabilities/azure-security-technical-capabilities-fig10.png) Daarnaast kunt u bewakings gegevens gebruiken om grondige inzichten over uw toepassing te krijgen. Deze kennis kan u helpen bij het verbeteren van de prestaties of het onderhoud van toepassingen, of het automatiseren van acties waarvoor anders hand matige interventie nodig zou zijn.
+![Diagram waarin wordt weer gegeven dat u bewakings gegevens kunt gebruiken om grondige inzichten over uw toepassing te krijgen.](./media/technical-capabilities/azure-security-technical-capabilities-fig10.png)
+Daarnaast kunt u bewakings gegevens gebruiken om grondige inzichten over uw toepassing te krijgen. Deze kennis kan u helpen bij het verbeteren van de prestaties of het onderhoud van toepassingen, of het automatiseren van acties waarvoor anders hand matige interventie nodig zou zijn.
 
 Het controleren van de netwerk beveiliging is essentieel voor het detecteren van problemen met het netwerk en het controleren van de naleving van uw IT-beveiligings beleid en het regulerende governance model. Met de weer gave beveiligings groep kunt u de geconfigureerde netwerk beveiligings groep en beveiligings regels, evenals de juiste beveiligings regels, ophalen. Met de lijst met toegepaste regels kunt u bepalen welke poorten het beveiligings risico van open en SS hebben.
 

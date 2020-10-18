@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
 ms.author: alkohli
-ms.openlocfilehash: 0c54b4e3015e255a6948202a6c3ea7a83362032f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30a5f92e0092d3e20db25b519fec46e6018dd543
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514912"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168015"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>Geautomatiseerde oplossing voor herstel na nood gevallen met Azure Site Recovery voor bestands shares die worden gehost op StorSimple
 
@@ -294,7 +294,7 @@ Raadpleeg de Active Directory hand leiding voor de [oplossing van Dr-oplossingen
 1. Selecteer in de Azure Portal **Recovery Services** -kluis &gt; **herstel plannen (site Recovery)** &gt; **recoveryplan_name** gemaakt voor de bestands Server-VM.
 1. Klik op de Blade herstel plan op **meer** &gt; **geplande failover**.  
 
-   ![Herstelplan](./media/storsimple-disaster-recovery-using-azure-site-recovery/image9.png)
+   ![Scherm opname van de opties voor de geplande failover en failover.](./media/storsimple-disaster-recovery-using-azure-site-recovery/image9.png)
 1. Kies op de Blade **geplande failover bevestigen** de bron-en doel locaties en selecteer doelnet werk en klik op het selectie pictogram ✓ om het failoverproces te starten.
 1. Nadat de virtuele machines van de replica zijn gemaakt, hebben ze de status in behandeling. Klik op **door voeren** om de failover door te voeren.
 1. Nadat de replicatie is voltooid, worden de virtuele machines op de secundaire locatie gestart.

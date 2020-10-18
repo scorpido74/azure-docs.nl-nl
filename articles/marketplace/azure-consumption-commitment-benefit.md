@@ -4,15 +4,15 @@ description: Een aantal micro soft-aanbiedingen voor commerciële Marketplace dr
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: anbene
+author: emuench
 ms.author: mingshen
-ms.date: 07/21/2020
-ms.openlocfilehash: 8a8b64bc0ed2702066a1ba280f1b40aabbcdb11b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/15/2020
+ms.openlocfilehash: e5f1a70182d4b31a1bcd0a811be32bdfc55129d9
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87097056"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168431"
 ---
 # <a name="azure-consumption-commitment-benefit"></a>Voordeel van Azure-verbruikstoezegging
 
@@ -27,3 +27,33 @@ Als u gebruik wilt maken van dit voor deel, koopt u gewoon een in aanmerking kom
 
 > [!IMPORTANT]
 > Uitsluitingen kunnen van toepassing zijn op CtC-overeenkomsten die zijn ondertekend vóór dit Marketplace-voor deel. Als u vragen hebt over de geschiktheid, neemt u contact op met uw Microsoft-account-executive.
+
+## <a name="determine-if-your-organization-has-an-azure-consumption-commitment-maccctc"></a>Bepalen of uw organisatie een Azure-verbruiks toezeg ging heeft (MACC/CtC)
+
+Als u niet zeker weet of uw organisatie een kwalificerende overeenkomst heeft, meldt u zich aan bij de Marketplace-ervaring binnen het [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Marketplace/MarketplaceOffersBlade/selectedMenuItemId/home) onder een Tenant die is gekoppeld aan uw organisatie. Als u de optie **voor delen in aanmerking van Azure** ziet binnen het prijs filter, hebt u een in aanmerking komend Azure-verbruiks toezeg ging. Het kwalificeren van Azure Marketplace-aankopen draagt bij aan de Azure-toezeg ging van uw organisatie als deze rechtstreeks via de Azure Marketplace wordt aangeschaft.
+
+[![In aanmerking komende menu optie voor Azure.](media/azure-benefit/azure-benefit-eligible.png)](media/azure-benefit/azure-benefit-eligible.png#lightbox)
+
+## <a name="determine-which-offers-are-eligible-for-azure-consumption-commitments-maccctc"></a>Bepalen welke aanbiedingen in aanmerking komen voor Azure-verbruiks verplichtingen (MACC/CtC)
+
+1. Meld u aan bij de Marketplace-ervaring binnen het [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Marketplace/MarketplaceOffersBlade/selectedMenuItemId/home) onder een Tenant die is gekoppeld aan uw organisatie.
+2. Pas het filter voor **delen in aanmerking voor Azure** toe (afbeelding hierboven) om aanbiedingen te ontdekken die in aanmerking komen voor de Azure-toezeg ging van uw organisatie.
+
+   > [!NOTE]
+   > Als u dit filter niet hebt, heeft uw organisatie geen kwalificerende toezeg ging. Neem contact op met uw Microsoft-account executive als u denkt dat dit onjuist is.
+ 
+3. Aanbiedingen worden gebadged met **Azure-voor delen die in aanmerking komen** om aan te geven dat de kosten van de software/IP die zijn gekoppeld aan deze aanbieding, bijdragen aan de Azure-consumptie-toezeg ging van uw organisatie op alle Azure-Services die aan uw organisatie worden gefactureerd.
+
+    :::image type="content" source="media/azure-benefit/azure-benefit-eligible-badge.png" alt-text="Voor delen van Azure in aanmerking komend badge.":::
+
+   > [!NOTE]
+   > Microsoft Azure Services die aan uw organisatie worden gefactureerd via een implementatie van Azure Marketplace, worden inherent bijgedragen aan de toezeg ging van uw organisatie. Het toegevoegde voor deel van de aanbiedingen ' Azure-voor delen in aanmerking ' is dat de kosten voor software/IP die door de leverancier van derden zijn door gegeven, ook bijdragen aan 100% van uw Azure Marketplace-factuur.
+
+4. Koop of maak de aanbieding rechtstreeks via de Azure Marketplace. Micro soft draagt 100% in aanmerking voor de aanbiedings aankopen in de Azure-toezeg ging van uw organisatie op elke factuur periode, inclusief de kosten voor software/IP.
+
+> [!IMPORTANT]
+> Aanbiedingen moeten rechtstreeks via Azure Marketplace worden aangeschaft met een inschrijving die betrekking heeft op de Azure-toezeg ging van uw organisatie voor de aankoop om bij te dragen aan uw toezeg ging. Aanbiedingen die zijn gekocht via de Cloud Solution Provider (CSP), elk ander wederverkoper-kanaal of buiten Marketplace, leveren geen bijdrage over uw toezeg ging.
+
+## <a name="next-steps"></a>Volgende stappen
+
+- Voor meer informatie over hoe uw organisatie gebruikmaakt van Azure Marketplace, kunt u onze Microsoft Learn-module volt ooien: [aanschaf en beheer van de Cloud vereenvoudigen met Azure Marketplace](https://aka.ms/cm.marketplaceprocurement).

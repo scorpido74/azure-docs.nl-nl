@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: e554fe48c3cbf8b744bf2f435f7b51e424d28808
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1150cdb64c5fe7d1b2241cdc0ad1a6eb0a36f47f
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87079550"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168559"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Geavanceerde functies van Azure Metrics Explorer
 
@@ -77,15 +77,15 @@ U kunt filters toep assen op de grafieken waarin metrische gegevens met dimensie
 
 2. Selecteer welke dimensie (eigenschap) u wilt filteren
 
-   ![afbeelding van metrische gegevens](./media/metrics-charts/00006.png)
+   ![Scherm opname van de afmetingen (eigenschappen) die u kunt filteren.](./media/metrics-charts/00006.png)
 
 3. Selecteer welke dimensie waarden u wilt gebruiken bij het tekenen van de grafiek (in dit voor beeld ziet u hoe de geslaagde opslag transacties worden gefilterd):
 
-   ![afbeelding van metrische gegevens](./media/metrics-charts/00007.png)
+   ![Scherm opname van het filteren van de geslaagde opslag transacties.](./media/metrics-charts/00007.png)
 
 4. Nadat u de filter waarden hebt geselecteerd, klikt u op een van de filter selectie vakjes om deze te sluiten. De grafiek toont nu hoeveel opslag transacties zijn mislukt:
 
-   ![afbeelding van metrische gegevens](./media/metrics-charts/00008.png)
+   ![Scherm afbeelding die laat zien hoeveel opslag transacties zijn mislukt](./media/metrics-charts/00008.png)
 
 5. U kunt stap 1-4 herhalen om meerdere filters op dezelfde grafieken toe te passen.
 
@@ -104,11 +104,11 @@ U kunt een metriek per dimensie splitsen om te visualiseren hoe verschillende se
 
 2. Kies een dimensie waarop u de grafiek wilt segmenteren:
 
-   ![afbeelding van metrische gegevens](./media/metrics-charts/00010.png)
+   ![Scherm afbeelding met de geselecteerde dimensie waarop u de grafiek wilt segmenteren.](./media/metrics-charts/00010.png)
 
    Nu toont de grafiek nu meerdere regels, één voor elk segment van de dimensie:
 
-   ![afbeelding van metrische gegevens](./media/metrics-charts/00012.png)
+   ![Scherm opname waarin meerdere lijnen worden weer gegeven, één voor elk segment van de dimensie.](./media/metrics-charts/00012.png)
 
 3. Klik ergens buiten de **groeperings kiezer** om het venster te sluiten.
 
@@ -125,7 +125,7 @@ Een ander voor beeld is een schommeling in het beschik bare geheugen, waarbij de
 
 Als u het bereik van de y-as wilt beheren, gebruikt u de '... ' menu grafiek en selecteer **grafiek bewerken** om toegang te krijgen tot geavanceerde grafiek instellingen. Wijzig de waarden in de sectie bereik van de Y-as of gebruik de knop **automatisch** om de standaard waarden te herstellen.
 
-![afbeelding van metrische gegevens](./media/metrics-charts/00014-manually-set-granularity.png)
+![Scherm afbeelding die de optie grafiek bewerken markeert.](./media/metrics-charts/00014-manually-set-granularity.png)
 
 > [!WARNING]
 > Het vergren delen van de grenzen van de y-as voor de grafieken die verschillende aantallen of sommen gedurende een bepaalde periode bijhouden (en dus gebruik van Count, Sum, minimum of maximum aggregaties), is het meestal nodig om een vaste tijd granulatie op te geven in plaats van de automatische standaard waarden te gebruiken. Dit is nodig omdat de waarden in grafieken worden gewijzigd wanneer de granulatie van de tijd automatisch wordt gewijzigd door het browser venster van de gebruiker opnieuw te wijzigen of door de ene scherm resolutie naar de andere te gaan. De resulterende wijziging van de tijd granulatie heeft gevolgen voor het uiterlijk van de grafiek, waarbij de huidige selectie van het bereik van de y-as ongeldig is.
@@ -138,7 +138,7 @@ Als u de kleur van een grafiek lijn wilt wijzigen, klikt u op de gekleurde balk 
 
 Nadat de grafiek kleuren zijn geconfigureerd, blijven ze die manier behouden wanneer u de grafiek vastmaakt aan een dash board. In de volgende sectie ziet u hoe u een grafiek vastmaakt.
 
-![afbeelding van metrische gegevens](./media/metrics-charts/018.png)
+![Scherm afbeelding die laat zien hoe u een grafiek vastmaakt.](./media/metrics-charts/018.png)
 
 ## <a name="pin-charts-to-dashboards"></a>Grafieken vastmaken aan dash boards
 

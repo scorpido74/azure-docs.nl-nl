@@ -3,12 +3,12 @@ title: De kosten van het verbruiks abonnement in Azure Functions schatten
 description: Meer informatie over hoe u de kosten die u kunt doen bij het uitvoeren van uw functie-app in een verbruiks abonnement in azure, beter kunt schatten.
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 33c892bd7904d2921039a4b2afb9c775d6a4926a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58082e03c1416848e9aa1e97308bed1ceaa67295
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88207761"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168105"
 ---
 # <a name="estimating-consumption-plan-costs"></a>Kosten schatten voor verbruiksplan
 
@@ -50,7 +50,7 @@ Gebruik de [Azure-prijs calculator](https://azure.microsoft.com/pricing/calculat
 | Gerelateerde kosten | Beschrijving |
 | ------------ | ----------- |
 | **Opslagaccount** | Voor elke functie-app moet u een gekoppeld Algemeen [Azure Storage account](../storage/common/storage-introduction.md#types-of-storage-accounts)hebben, dat [afzonderlijk wordt gefactureerd](https://azure.microsoft.com/pricing/details/storage/). Dit account wordt intern gebruikt door de functions-runtime, maar u kunt het ook gebruiken voor opslag triggers en bindingen. Als u geen opslag account hebt, wordt er één voor u gemaakt wanneer de functie-app wordt gemaakt. Zie [vereisten voor opslag accounts](storage-considerations.md#storage-account-requirements)voor meer informatie.|
-| **Application Insights** | Functies zijn afhankelijk van [Application Insights](../azure-monitor/app/app-insights-overview.md) om een krachtige bewakings ervaring te bieden voor uw functie-apps. Hoewel dit niet vereist is, moet u [Application Insights-integratie inschakelen](functions-monitoring.md#enable-application-insights-integration). Er wordt elke maand een gratis toekenning van telemetriegegevens opgenomen. Zie [de pagina met prijzen voor Azure monitor](https://azure.microsoft.com/pricing/details/monitor/)voor meer informatie. |
+| **Application Insights** | Functies zijn afhankelijk van [Application Insights](../azure-monitor/app/app-insights-overview.md) om een krachtige bewakings ervaring te bieden voor uw functie-apps. Hoewel dit niet vereist is, moet u [Application Insights-integratie inschakelen](configure-monitoring.md#enable-application-insights-integration). Er wordt elke maand een gratis toekenning van telemetriegegevens opgenomen. Zie [de pagina met prijzen voor Azure monitor](https://azure.microsoft.com/pricing/details/monitor/)voor meer informatie. |
 | **Netwerkbandbreedte** | U betaalt niet voor gegevens overdracht tussen Azure-Services in dezelfde regio. U kunt echter kosten in rekening brengen voor uitgaande gegevens overdracht naar een andere regio of buiten Azure. Zie [prijs informatie voor band breedte](https://azure.microsoft.com/pricing/details/bandwidth/)voor meer informatie. |
 
 ## <a name="behaviors-affecting-execution-time"></a>Gedrag van invloed op uitvoerings tijd
@@ -61,13 +61,15 @@ Het volgende gedrag van uw functies kan de uitvoerings tijd beïnvloeden:
 
 + **Asynchrone uitvoering**: de tijd die uw functie wacht op de resultaten van een async-aanvraag ( `await` in C#) als uitvoerings tijd. De berekening van de GB-seconde is gebaseerd op de begin-en eind tijd van de functie en het geheugen gebruik in die periode. Wat er gebeurt over die tijd in termen van CPU-activiteit wordt niet in de berekening gefactoreerd. U kunt kosten besparen tijdens asynchrone bewerkingen door gebruik te maken van [Durable functions](durable/durable-functions-overview.md). Er worden geen kosten in rekening gebracht voor de tijd die in de Orchestrator-functies wordt gebruikt om te wachten.
 
-## <a name="view-execution-data"></a>Uitvoerings gegevens weer geven
+## <a name="viewing-cost-related-data"></a>Kosten-gerelateerde gegevens bekijken
 
 In [uw factuur](../cost-management-billing/understand/download-azure-invoice.md)kunt u de kosten gerelateerde gegevens van het **totale aantal uitvoeringen** bekijken-functies en **uitvoerings tijd-functies**, samen met de werkelijke gefactureerde kosten. Deze factuur gegevens zijn echter een maandelijkse statistische functie voor een eerdere factuur periode. 
 
+### <a name="function-app-level-metrics"></a>Metrische gegevens op app-niveau functie
+
 Voor een beter begrip van de kosten impact van uw functies kunt u Azure Monitor gebruiken om de metrische gegevens weer te geven die momenteel worden gegenereerd door uw functie-apps. U kunt in de [Azure Portal] -of rest-api's een [Azure monitor Metrics Explorer](../azure-monitor/platform/metrics-getting-started.md) gebruiken om deze gegevens op te halen.
 
-### <a name="monitor-metrics-explorer"></a>Metrics Explorer bewaken
+#### <a name="monitor-metrics-explorer"></a>Metrics Explorer bewaken
 
 Gebruik [Azure monitor Metrics Explorer](../azure-monitor/platform/metrics-getting-started.md) om kostengerelateerde gegevens weer te geven voor de functie-apps van uw verbruiks plan in een grafische indeling. 
 
@@ -101,7 +103,7 @@ Naarmate het aantal uitvoerings eenheden zoveel groter is dan het aantal uitvoer
 
 Dit diagram toont een totaal van 1.110.000.000 `Function Execution Units` verbruikt in een periode van twee uur, gemeten in MB milliseconden. Als u wilt converteren naar GB-seconden, deelt u door 1024000. In dit voor beeld verbruikt de functie `1110000000 / 1024000 = 1083.98` -app GB seconden. U kunt deze waarde nemen en vermenigvuldigen met de huidige prijs van de uitvoerings tijd op de pagina met prijs informatie voor de [pagina met prijzen][, waarmee]u rekening moet houden met de kosten van deze twee uur, ervan uitgaande dat u al een gratis toekenning van de uitvoerings tijd hebt gebruikt. 
 
-### <a name="azure-cli"></a>Azure CLI
+#### <a name="azure-cli"></a>Azure CLI
 
 De [Azure cli](/cli/azure/) bevat opdrachten voor het ophalen van metrische gegevens. U kunt de CLI vanuit een lokale opdracht omgeving of rechtstreeks vanuit de portal gebruiken met behulp van [Azure Cloud shell](../cloud-shell/overview.md). De volgende opdracht [AZ monitor Metrics List](/cli/azure/monitor/metrics#az-monitor-metrics-list) retourneert bijvoorbeeld elk uur gegevens over dezelfde tijds periode die eerder is gebruikt.
 
@@ -192,47 +194,13 @@ Met deze opdracht wordt een JSON-nettolading geretourneerd die eruitziet als in 
 ```
 Dit specifieke antwoord laat zien dat van `2019-09-11T21:46` tot `2019-09-11T23:18` , dat de app 1110000000 MB milliseconden (1083,98 GB-seconden) verbruikt.
 
-## <a name="determine-memory-usage"></a>Geheugen gebruik bepalen
+### <a name="function-level-metrics"></a>Metrische functie niveaus
 
 Eenheden voor het uitvoeren van functies zijn een combi natie van uitvoerings tijd en het geheugen gebruik. Dit maakt het een lastige meet waarde voor het geheugen gebruik. Geheugen gegevens zijn momenteel niet beschikbaar via Azure Monitor. Als u echter het geheugen gebruik van uw app wilt optimaliseren, kunt u de gegevens van de prestatie meter items die worden verzameld door Application Insights gebruiken.  
 
-Als u dit nog niet hebt gedaan, [schakelt u Application Insights in uw functie-app in](functions-monitoring.md#enable-application-insights-integration). Als deze integratie is ingeschakeld, kunt u [een query uitvoeren op deze telemetriegegevens in de portal](functions-monitoring.md#query-telemetry-data).  
+Als u dit nog niet hebt gedaan, [schakelt u Application Insights in uw functie-app in](configure-monitoring.md#enable-application-insights-integration). Als deze integratie is ingeschakeld, kunt u [een query uitvoeren op deze telemetriegegevens in de portal](analyze-telemetry-data.md#query-telemetry-data). 
 
-Onder **bewaking**selecteert u **Logboeken (analyse)**, kopieert u de volgende telemetrie-query en plakt u deze in het query venster en selecteert u **uitvoeren**. Met deze query wordt het totale geheugen gebruik voor elke steekproef periode geretourneerd.
-
-```
-performanceCounters
-| where name == "Private Bytes"
-| project timestamp, name, value
-```
-
-De resultaten zien eruit als in het volgende voor beeld:
-
-| UTC-tijds tempel \[\]          | naam          | waarde       |
-|----------------------------|---------------|-------------|
-| 9/12/2019, 1:05:14 \. 947 uur | Privé-bytes | 209.932.288 |
-| 9/12/2019, 1:06:14 \. 994 uur | Privé-bytes | 212.189.184 |
-| 9/12/2019, 1:06:30 \. 010 | Privé-bytes | 231.714.816 |
-| 9/12/2019, 1:07:15 \. 040 uur | Privé-bytes | 210.591.744 |
-| 9/12/2019, 1:12:16 \. 285 uur | Privé-bytes | 216.285.184 |
-| 9/12/2019, 1:12:31 \. 376 uur | Privé-bytes | 235.806.720 |
-
-## <a name="function-level-metrics"></a>Metrische functie niveaus
-
-Azure Monitor worden metrische gegevens op het niveau van de resource bijgehouden, wat voor functies de functie-app is. Application Insights-integratie verzendt metrische gegevens per functie. Hier volgt een voor beeld van een analyse query om de gemiddelde duur van een functie op te halen:
-
-```
-customMetrics
-| where name contains "Duration"
-| extend averageDuration = valueSum / valueCount
-| summarize averageDurationMilliseconds=avg(averageDuration) by name
-```
-
-| naam                       | averageDurationMilliseconds |
-|----------------------------|-----------------------------|
-| Queue trigger AvgDurationMs | 16 \. 087                     |
-| Queue trigger MaxDurationMs | 90 \. 249                     |
-| Queue trigger MinDurationMs | 8 \. 522                      |
+[!INCLUDE [functions-consumption-metrics-queries](../../includes/functions-consumption-metrics-queries.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 

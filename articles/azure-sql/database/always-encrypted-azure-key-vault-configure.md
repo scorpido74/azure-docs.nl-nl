@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 ms.date: 04/23/2020
-ms.openlocfilehash: 98ba8c54b1754d6384dfcedb86e6c4889e52cb4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26bac8115a64d78ce64bc400f98fb26cb929ba4d
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444833"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164496"
 ---
 # <a name="configure-always-encrypted-by-using-azure-key-vault"></a>Always Encrypted configureren met behulp van Azure Key Vault 
 
@@ -149,7 +149,7 @@ SSMS biedt een wizard waarmee u Always Encrypted eenvoudig kunt configureren doo
 1. Vouw **data bases**  >  **Clinic**-  >  **tabellen**uit.
 2. Klik met de rechter muisknop op de tabel **patiënten** en selecteer **kolommen versleutelen** om de wizard always encrypted te openen:
 
-    ![Kolommen versleutelen](./media/always-encrypted-azure-key-vault-configure/encrypt-columns.png)
+    ![Scherm afbeelding die de versleutelings kolommen markeert... menu optie.](./media/always-encrypted-azure-key-vault-configure/encrypt-columns.png)
 
 De wizard Always Encrypted bevat de volgende secties: **kolom selectie**, **configuratie van hoofd sleutel**, **validatie**en **samen vatting**.
 
@@ -574,7 +574,7 @@ SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
 
 U kunt zien dat de versleutelde kolommen geen lees bare gegevens bevatten.
 
-   ![Nieuwe console toepassing](./media/always-encrypted-azure-key-vault-configure/ssms-encrypted.png)
+   ![Scherm opname die laat zien dat de versleutelde kolommen geen lees bare gegevens bevatten.](./media/always-encrypted-azure-key-vault-configure/ssms-encrypted.png)
 
 Als u SSMS wilt gebruiken om toegang te krijgen tot de Lees bare gegevens, moet u eerst controleren of de gebruiker de juiste machtigingen heeft voor de Azure Key Vault: *Get*, *sleutel uitpakken*en *verify*. Zie [Column Master-sleutels maken en opslaan (always encrypted)](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted)voor meer informatie.
 
@@ -584,7 +584,7 @@ Voeg vervolgens de para meter voor de *kolom versleutelings instelling = ingesch
 2. Klik **op**  >  **Data base-engine** verbinden om het venster **verbinding maken met server** te openen en klik op **Opties**.
 3. Klik op **extra verbindings parameters** en type **kolom versleutelings instelling = ingeschakeld**.
 
-    ![Nieuwe console toepassing](./media/always-encrypted-azure-key-vault-configure/ssms-connection-parameter.png)
+    ![Scherm opname van het tabblad Extra correctie parameters.](./media/always-encrypted-azure-key-vault-configure/ssms-connection-parameter.png)
 
 4. Voer de volgende query uit op de Clinic-data base.
 
