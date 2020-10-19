@@ -4,15 +4,15 @@ description: bestand opnemen
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/08/2020
-ms.author: akjosh
+ms.date: 10/14/2020
+ms.author: olayemio
 ms.custom: include file
-ms.openlocfilehash: 662afb902c97e164cc24bc664b854db118904210
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d5b57330775af60341cd65fddc65c10645f2573
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89494270"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92116815"
 ---
 Shared Image Gallery is een service waarmee u structuur en organisatie kunt bouwen rond uw installatiekopieën. Galerieën met gedeelde installatiekopieën bieden:
 
@@ -56,19 +56,36 @@ Er zijn drie parameters voor elke definitie van de installatiekopie. Deze worden
 
 Deze hebben alle drie een unieke reeks waarden. De indeling is vergelijkbaar met de manier waarop u momenteel uitgever, aanbieding en SKU kunt opgeven voor [Azure Marketplace-installatiekopieën](../articles/virtual-machines/windows/cli-ps-findimage.md) in Azure PowerShell om de meest recente versie van een Marketplace-installatiekopie te verkrijgen. Elke definitie van een installatiekopie moet een unieke reeks van deze waarden bevatten.
 
+De volgende parameters bepalen welke soorten installatiekopieversies ze kunnen bevatten:
+
+- Status van het besturingssysteem: u kunt de status van het besturingssysteem instellen op [gegeneraliseerd of gespecialiseerd](#generalized-and-specialized-images). Dit veld is vereist.
+- Besturingssysteem : dit kan Windows of Linux zijn. Dit veld is vereist.
+-   Hyper-V-generatie: geef op of de installatiekopie is gemaakt op basis van een Hyper-V-VHD van generatie 1 of [generatie 2](../articles/virtual-machines/generation-2.md). De standaardinstelling is generatie 1.
+
+
 Hieronder ziet u andere parameters die voor de definitie van uw installatiekopie kunnen worden ingesteld, zodat u uw resources gemakkelijker kunt bijhouden:
 
-* Status van het besturingssysteem: u kunt de status van het besturingssysteem instellen op [gegeneraliseerd of gespecialiseerd](#generalized-and-specialized-images).
-* Besturingssysteem : dit kan Windows of Linux zijn.
-* Beschrijving: gebruik een beschrijving om meer gedetailleerde informatie te geven over waarom er een definitie van de installatiekopie is. U kunt bijvoorbeeld een definitie van een installatiekopie hebben voor de front-endserver waarop de toepassing vooraf is geïnstalleerd.
-* EULA: deze kan worden gebruikt om te verwijzen naar een gebruiksrechtovereenkomst die specifiek is voor de definitie van de installatiekopie.
-* Privacyverklaring en opmerkingen bij de release: sla release opmerkingen bij de release en privacyverklaringen op in Azure Storage en geef bij de definitie een URI op om ze te kunnen openen.
-* Datum einde levensduur: koppel een datum voor het einde van de levensduur aan de definitie van uw installatiekopie, zodat oude definities automatisch kunnen worden verwijderd.
-* Tag: u kunt tags toevoegen wanneer u de definitie van de installatiekopie maakt. Zie [Tags gebruiken om uw esources te organiseren](../articles/azure-resource-manager/management/tag-resources.md) voor meer informatie over tags
-* Aanbevelingen voor minimum- en maximumwaarden voor vCPU en geheugen: als uw installatiekopie aanbevelingen voor vCPU en geheugen bevat, kunt u die gegevens koppelen aan de definitie van uw installatiekopie.
-* Niet-toegestane schijftypen: u kunt informatie opgeven over de opslagbehoeften voor uw VM. Als de installatiekopie bijvoorbeeld niet geschikt is voor standaard-HDD-schijven, voegt u deze toe aan de lijst met niet-toegestane schijftypen.
-* Hyper-V-generatie: u kunt opgeven of de installatiekopie is gemaakt op basis van een Hyper-V-VHD van generatie 1 of 2.
-* Aankoopplaninformatie voor Marketplace-installatiekopieën: `-PurchasePlanPublisher `, `-PurchasePlanName` en `-PurchasePlanProduct`. Zie [Installatiekopieën zoeken in Azure Marketplace](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage) en [Aankoopplaninformatie van Marketplace leveren bij het maken van installatiekopieën](../articles/virtual-machines/marketplace-images.md) voor meer informatie over het aankoopplan.
+- Beschrijving: gebruik een beschrijving om meer gedetailleerde informatie te geven over waarom er een definitie van de installatiekopie is. U kunt bijvoorbeeld een definitie van een installatiekopie hebben voor de front-endserver waarop de toepassing vooraf is geïnstalleerd.
+- EULA: deze kan worden gebruikt om te verwijzen naar een gebruiksrechtovereenkomst die specifiek is voor de definitie van de installatiekopie.
+- Privacyverklaring en opmerkingen bij de release: sla release opmerkingen bij de release en privacyverklaringen op in Azure Storage en geef bij de definitie een URI op om ze te kunnen openen.
+- Datum einde levensduur: koppel een datum voor het einde van de levensduur aan de definitie van uw installatiekopie, zodat oude definities automatisch kunnen worden verwijderd.
+- Tag: u kunt tags toevoegen wanneer u de definitie van de installatiekopie maakt. Zie [Tags gebruiken om uw esources te organiseren](../articles/azure-resource-manager/management/tag-resources.md) voor meer informatie over tags
+- Aanbevelingen voor minimum- en maximumwaarden voor vCPU en geheugen: als uw installatiekopie aanbevelingen voor vCPU en geheugen bevat, kunt u die gegevens koppelen aan de definitie van uw installatiekopie.
+- Niet-toegestane schijftypen: u kunt informatie opgeven over de opslagbehoeften voor uw VM. Als de installatiekopie bijvoorbeeld niet geschikt is voor standaard-HDD-schijven, voegt u deze toe aan de lijst met niet-toegestane schijftypen.
+- Aankoopplaninformatie voor Marketplace-installatiekopieën: `-PurchasePlanPublisher`, `-PurchasePlanName` en `-PurchasePlanProduct`. Zie [Installatiekopieën zoeken in Azure Marketplace](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage) en [Aankoopplaninformatie van Marketplace leveren bij het maken van installatiekopieën](../articles/virtual-machines/marketplace-images.md) voor meer informatie over het aankoopplan.
+
+
+## <a name="image-versions"></a>Installatiekopieversies
+
+U gebruikt een **installatiekopieversie** om een VM te maken. U kunt net zo veel versies van een installatiekopie voor uw omgeving gebruiken als u nodig hebt. Wanneer u een **installatiekopieversie** gebruikt om een VM te maken, wordt de installatiekopieversie gebruikt voor het maken van nieuwe schijven voor de VM. Versies van installatiekopieën kunnen meerdere keren worden gebruikt.
+
+De eigenschappen van een installatiekopieversie zijn:
+
+- Versienummer. Dit wordt gebruikt als de naam van de installatiekopieversie. Het heeft altijd deze indeling: MajorVersion.MinorVersion.Patch. Als u **nieuwste** opgeeft wanneer u een VM maakt, wordt de nieuwste installatiekopie gekozen op basis van de hoogste MajorVersion, gevolgd door MinorVersion, gevolgd door Patch. 
+- Bron. De bron kan een VM, beheerde schijf, momentopname, beheerde installatiekopie of andere installatiekopieversie zijn. 
+- Uitsluiten vanaf de nieuwste. U kunt voorkomen dat een versie als de nieuwste installatiekopieversie wordt gebruikt. 
+- Datum einde levensduur. De datum waarna er geen VM's meer kunnen worden gemaakt van deze installatiekopie.
+
 
 ## <a name="generalized-and-specialized-images"></a>Gegeneraliseerde en gespecialiseerde installatiekopieën
 

@@ -6,10 +6,8 @@
       href: introduction.md
 - name: Snel starten
   items:
-    - name: Pre-implementatieproces
+    - name: 0 - De implementatie plannen
       href: production-ready-deployment-steps.md
-    - name: Controlelijst voorafgaande aan de implementatie
-      href: pre-deployment-checklist.md
     - name: 1 - Azure VMware Solution implementeren
       href: deploy-azure-vmware-solution.md
     - name: 2 - Verbinding maken met on-premises gegevens
@@ -104,3 +102,7 @@
           href: fix-deployment-provisioning-failures.md
     - name: Veelgestelde vragen
       href: faq.md
+- name: Naslaginformatie
+  items:
+    - name: Azure PowerShell
+      href: /powershell/module/az.vmware

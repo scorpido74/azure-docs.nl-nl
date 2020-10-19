@@ -5,15 +5,15 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: include
-ms.date: 05/05/2019
+ms.date: 10/13/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 95c553d26a3e79b53106b933c629c5884c3e004c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47eae616ffc62e42448da23fb02152dae17aa548
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84466876"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92116781"
 ---
 | Resource | Doel | Harde limiet |
 |----------|--------------|------------|
@@ -27,7 +27,7 @@ ms.locfileid: "84466876"
 | Maximumaantal bestandssysteemobjecten (mappen en bestanden) in een map | 5 miljoen objecten | Ja |
 | Maximumgrootte beveiligingsbeschrijving (mappen en bestanden) van objecten | 64 KiB | Ja |
 | Bestandsgrootte | 100 GiB | Nee |
-| Minimale bestandsgrootte om een bestand gelaagd te maken | V9: Op basis van de grootte van het bestandssysteemcluster (dubbele bestandssysteemclustergrootte). Als de bestandssysteemclustergrootte bijvoorbeeld 4 kb is, is de minimale bestandsgrootte 8 kb.<br> V8 en ouder: 64 KiB  | Ja |
+| Minimale bestandsgrootte om een bestand gelaagd te maken | V9 en nieuwer: Op basis van de grootte van het bestandssysteemcluster (dubbele bestandssysteemclustergrootte). Als de bestandssysteemclustergrootte bijvoorbeeld 4 kb is, is de minimale bestandsgrootte 8 kb.<br> V8 en ouder: 64 KiB  | Ja |
 
 > [!Note]  
 > Een Azure File Sync-eindpunt kan tot de grootte van een Azure-bestandsshare worden opgeschaald. Als de limiet van de Azure-bestandsshare, kan er niet meer worden gesynchroniseerd.

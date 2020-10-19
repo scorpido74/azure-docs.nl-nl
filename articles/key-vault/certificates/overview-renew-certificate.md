@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 3809fa9e1ce17a5a0c3cf333ac20ef543db4b5a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2477bab244b8864fa9c82b52d5577d42fa47a7e0
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88588800"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124148"
 ---
 # <a name="renew-your-azure-key-vault-certificates"></a>Azure Key Vault-certificaten verlengen
 
@@ -25,12 +25,20 @@ Door gebruik te maken van kortlevende certificaten of door de frequentie van de 
 
 In dit artikel wordt beschreven hoe u Azure Key Vault-certificaten kunt verlengen.
 
-## <a name="get-notified-about-certificate-expirations"></a>Meldingen ontvangen over verlopen certificaten
-Ga als volgt te werk als u een melding wilt ontvangen wanneer uw certificaten bijna zijn verlopen:
+## <a name="get-notified-about-certificate-expiration"></a>Meldingen ontvangen over verlopen certificaten
+Als u een melding wilt ontvangen over levensgebeurtenissen van een certificaat, moet u een contactpersoon voor dit certificaat toevoegen. Certificaatcontactpersonen bevatten contactgegevens om meldingen te verzenden die worden geactiveerd door de levensduurgebeurtenissen van het certificaat. De contactpersoongegevens worden gedeeld door alle certificaten in de sleutelkluis. Alle opgegeven contactpersonen krijgen een melding bij een gebeurtenis met betrekking tot een certificaat in de sleutelkluis.
 
-Voeg eerst een certificaatcontactpersoon aan uw sleutelkluis toen met behulp van de PowerShell-cmdlet [Add-AzureKeyVaultCertificateContact](https://docs.microsoft.com/powershell/module/azurerm.keyvault/add-azurekeyvaultcertificatecontact?view=azurermps-6.13.0).
+### <a name="steps-to-set-certificate-notifications"></a>Stappen voor het instellen van certificaatmeldingen:
+Voeg eerst een contactpersoon voor het certificaat toe aan uw sleutelkluis. U kunt toevoegen met behulp van de Azure-portal of PowerShell-cmdlet [`Add-AzureKeyVaultCertificateContact`](https://docs.microsoft.com/powershell/module/azurerm.keyvault/add-azurekeyvaultcertificatecontact?view=azurermps-6.13.0).
 
 Stel vervolgens het tijdstip in wanneer u wilt worden gewaarschuwd over het verlopen van het certificaat. Zie [Automatisch roteren van certificaatconfiguratie in Key Vault](https://docs.microsoft.com/azure/key-vault/certificates/tutorial-rotate-certificates#update-lifecycle-attributes-of-a-stored-certificate) voor informatie over het configureren van de levenscycluskenmerken van het certificaat.
+
+Als het beleid van een certificaat is ingesteld op automatisch verlengen, wordt er een melding verzonden bij de volgende gebeurtenissen.
+
+- Vóór verlenging van het certificaat
+- Na verlenging van het certificaat, met de mededeling dat het certificaat is verlengd of dat er een fout is opgetreden, waarna het certificaat handmatig moet worden vernieuwd.  
+
+  Wanneer een certificaatbeleid dat is ingesteld om handmatig te worden verlengd (alleen e-mail), wordt er een melding verzonden van het tijdstip waarop het certificaat moet worden verlengd.  
 
 Key Vault kent drie categorieën certificaten:
 -   Certificaten die zijn gemaakt met een geïntegreerde certificeringsinstantie (CA), zoals DigiCert of GlobalSign

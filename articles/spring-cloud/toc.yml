@@ -92,6 +92,8 @@
     - name: Problemen zelf vaststellen en oplossen
       href: spring-cloud-howto-self-diagnose-solve.md
     - name: Controleren
+    - name: Rollen en machtigingen maken
+      href: spring-cloud-howto-permissions.md
       items:
         - name: Gedistribueerde tracering en App Insights
           href: spring-cloud-tutorial-distributed-tracing.md

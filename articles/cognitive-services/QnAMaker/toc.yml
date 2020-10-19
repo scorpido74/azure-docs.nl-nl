@@ -24,26 +24,14 @@
       href: Tutorials/integrate-with-power-virtual-assistant-fallback-topic.md
     - name: Een FAQ-bot maken met Azure Bot Service
       href: Tutorials/create-faq-bot-with-azure-bot-service.md
-    - name: Testen met batchbestand
-      href: Quickstarts/batch-testing.md
 - name: Concepten
   items:
     - name: Uw kennisdatabase plannen
       href: Concepts/plan.md
     - name: QnA Maker-resources plannen
       href: Concepts/azure-resources.md
-    - name: Een kennisdatabase ontwerpen
-      items:
-        - name: Voor talen
-          href: Concepts/design-language-culture.md
-        - name: Voor clienttoepassingen
-          href: Concepts/integration-with-other-applications.md
     - name: Gegevensbronnen en inhoud
-      items:
-        - name: Importeren uit gegevensbronnen
-          href: Concepts/knowledge-base.md
-        - name: Geïmporteerde inhoudstypen
-          href: Concepts/content-types.md
+      href: Concepts/data-sources-and-content.md
     - name: Rangschikkingsproces
       displayName: 'DefaultAnswer, Default answer'
       href: Concepts/query-knowledge-base.md
@@ -58,22 +46,14 @@
 - name: Instructiegidsen
   items:
     - name: Azure-resources beheren
-      items:
-        - name: Resources beheren
-          href: How-To/set-up-qnamaker-service-azure.md
-          displayName: 'azure, resource, key, upgrade, pricing, tier,'
-        - name: Samenwerken
-          href: How-To/collaborate-knowledge-base.md
-        - name: Actief leren inschakelen
-          href: How-To/use-active-learning.md
-        - name: Standaardantwoord wijzigen
-          href: How-To/change-default-answer.md
+      href: How-To/set-up-qnamaker-service-azure.md
+      displayName: 'azure, resource, key, upgrade, pricing, tier,'
+    - name: QnA Maker-app beheren
+      href: How-To/manage-qna-maker-app.md
     - name: Knowledge base beheren
       items:
         - name: Een knowledge base maken
           href: How-To/manage-knowledge-bases.md
-        - name: Taal selecteren
-          href: How-To/language-knowledge-base.md
         - name: Chit-chat toevoegen
           href: How-to/chit-chat-knowledge-base.md
         - name: Migreren naar een nieuwe knowledge base
@@ -102,7 +82,7 @@
       href: Overview/language-support.md
     - name: Limieten
       href: limits.md
-    - name: Toegangsbeheer op basis van rollen (RBAC)
+    - name: Azure RBAC (op rollen gebaseerd toegangsbeheer van Azure)
       href: Concepts/role-based-access-control.md
     - name: Actief leren
       href: Concepts/active-learning-suggestions.md
@@ -115,6 +95,8 @@
     - name: Beveiligde SharePoint-bestanden toevoegen
       href: How-To/add-sharepoint-datasources.md
       displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'
+    - name: Standaardantwoord wijzigen
+      href: How-To/change-default-answer.md
     - name: Serviceconfiguratie
       href: reference-app-service.md
     - name: Content- en gegevensformaten

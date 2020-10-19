@@ -1,4 +1,4 @@
-- name: Documentatie over Azure Private Link
+- name: Documentatie over Private Link
   href: index.yml
 - name: Overzicht
   items:
@@ -24,6 +24,7 @@
     - name: Een Private Link-service maken - ARM-sjabloon
       displayName: Resource Manager
       href: create-private-link-service-template.md
+  expanded: true
 - name: Zelfstudies
   items:
     - name: Verbinding maken met een opslagaccount
@@ -42,7 +43,7 @@
       items:
         - name: Beveiligingsbasislijn
           href: security-baseline.md
-- name: Procedures
+- name: Uitleg
   items:
     - name: Privéverbinding maken met een web-app
       href: create-private-endpoint-webapp-portal.md

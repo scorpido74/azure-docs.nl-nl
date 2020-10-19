@@ -34,7 +34,11 @@
     - name: Concepten
       items:
         - name: Vereisten beoordelen
-          href: azure-stack-edge-gpu-system-requirements.md
+          items:
+            - name: Voor Azure Stack Edge
+              href: azure-stack-edge-gpu-system-requirements.md
+            - name: Voor blobopslag voor Azure Stack Edge
+              href: azure-stack-edge-gpu-system-requirements-rest.md
         - name: Limieten begrijpen
           href: azure-stack-edge-limits.md
         - name: Beveiligingsoverzicht

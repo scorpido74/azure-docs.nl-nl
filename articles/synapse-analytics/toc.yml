@@ -482,7 +482,11 @@
               href: ../cosmos-db/configure-synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Verbinding maken met Azure Synapse Link voor Cosmos DB
               href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
-            - name: Een query uitvoeren op analytische opslag in Azure Cosmos DB met Apache Spark voor Azure Synapse Analytics
+            - name: Power BI en serverloze SQL-pool gebruiken om Azure Cosmos DB te analyseren
+              href: ../cosmos-db/synapse-link-power-bi.mdtoc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Query uitvoeren op Azure Cosmos DB-gegevens met serverloze SQL-pool
+              href: ./sql/query-cosmos-db-analytical-store.md
+            - name: Query's uitvoeren op de analytische opslag van Azure Cosmos DB met Apache Spark
               href: ./synapse-link/how-to-query-analytical-store-spark.md
             - name: Gegevens kopiëren van Synapse Link naar een SQL-pool met Apache Spark
               href: ./synapse-link/how-to-copy-to-sql-pool.md

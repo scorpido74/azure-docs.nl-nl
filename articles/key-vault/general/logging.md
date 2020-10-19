@@ -10,18 +10,16 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: a51e9a628f67269357d42bd1d3af10c1d86f301a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 162e40555e11dff716b58eec4b1168728257693e
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91739779"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131170"
 ---
 # <a name="azure-key-vault-logging"></a>Logboekregistratie voor Azure Key Vault
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
-Nadat u een of meer sleutelkluizen hebt gemaakt, wilt u wellicht controleren hoe en wanneer uw sleutelkluizen toegankelijk zijn en voor wie. U kunt dit doen door logboekregistratie voor Azure Key Vault in te schakelen. Hierbij wordt de informatie opgeslagen in een Azure-opslagaccount dat u opgeeft. Er wordt automatisch een nieuwe container genaamd **insights-logs-auditevent** gemaakt voor uw opgegeven opslagaccount. U kunt ditzelfde opslagaccount gebruiken om logboeken voor meerdere sleutelkluizen te verzamelen.
+Nadat u een of meer sleutelkluizen hebt gemaakt, wilt u wellicht controleren hoe en wanneer uw sleutelkluizen toegankelijk zijn en voor wie. U kunt dit doen door logboekregistratie voor Azure Key Vault in te schakelen. Hierbij wordt de informatie opgeslagen in een Azure-opslagaccount dat u opgeeft. Zie [Key Vault-logboekregistratie inschakelen](howto-logging.md) voor stapsgewijze instructies voor het instellen hiervan.
 
 U kunt uw logboekgegevens (maximaal) tien minuten nadat de sleutelkluisbewerking is uitgevoerd, bekijken. In de meeste gevallen gaat het echter veel sneller.  Het is aan u om uw logboeken in uw opslagaccount te beheren:
 
@@ -31,6 +29,8 @@ U kunt uw logboekgegevens (maximaal) tien minuten nadat de sleutelkluisbewerking
 Zie [Wat is Azure Key Vault?](overview.md) voor algemene informatie over Key Vault. Bekijk de [pagina met prijzen](https://azure.microsoft.com/pricing/details/key-vault/) voor informatie over waar Key Vault beschikbaar is. Zie [Azure Monitor voor Key Vault](https://docs.microsoft.com/azure/azure-monitor/insights/key-vault-insights-overview) voor informatie over het gebruik ervan.
 
 ## <a name="interpret-your-key-vault-logs"></a>Uw Key Vault-logboeken interpreteren
+
+Wanneer u logboekregistratie inschakelt, wordt automatisch een nieuwe container, genaamd **insights-logs-auditevent**, gemaakt voor uw opgegeven opslagaccount. U kunt ditzelfde opslagaccount gebruiken om logboeken voor meerdere sleutelkluizen te verzamelen.
 
 Afzonderlijke blobs worden opgeslagen als tekst, die is opgemaakt als een JSON-blob. Laten we eens naar een voorbeeld van een logboekvermelding kijken. 
 
@@ -122,16 +122,15 @@ De volgende tabel bevat de **operationName**-waarden en de bijbehorende REST-API
 | **CertificateNearExpiryEventGridNotification** |Gebeurtenis gepubliceerd voor bijna verlopen van certificaat |
 | **CertificateExpiredEventGridNotification** |Gebeurtenis gepubliceerd voor verlopen van certificaat |
 
-## <a name="use-azure-monitor-logs"></a><a id="loganalytics"></a>Azure Monitor-logboeken gebruiken
+## <a name="use-azure-monitor-logs"></a>Azure Monitor-logboeken gebruiken
 
 Met de Key Vault-oplossing in Azure Monitor-logboeken kunt u de `AuditEvent`-logboeken van Key Vault controleren. In Azure Monitor-logboeken kunt u logboekquery’s gebruiken om gegevens te analyseren en de informatie op te halen die u nodig hebt. 
 
 Zie [Azure Key Vault in Azure Monitor](../../azure-monitor/insights/key-vault-insights-overview.md) voor meer informatie.
 
-## <a name="next-steps"></a><a id="next"></a>Volgende stappen
+## <a name="next-steps"></a>Volgende stappen
 
-Zie [Azure Key Vault in een webtoepassing gebruiken](tutorial-net-create-vault-azure-web-app.md) voor een zelfstudie over het gebruik van Azure Key Vault in een .NET-webtoepassing.
-
-Zie de [Ontwikkelaarshandleiding voor Azure Key Vault](developers-guide.md) voor het programmeren van verwijzingen.
-
-Zie [Cmdlets voor Azure Key Vault](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault) voor een lijst met Azure PowerShell 1.0-cmdlets voor Azure Key Vault.
+- [Key Vault-logboekregistratie inschakelen](howto-logging.md)
+- Zie [Azure Key Vault in een webtoepassing gebruiken](tutorial-net-create-vault-azure-web-app.md) voor een zelfstudie over het gebruik van Azure Key Vault in een .NET-webtoepassing.
+- Zie de [Ontwikkelaarshandleiding voor Azure Key Vault](developers-guide.md) voor het programmeren van verwijzingen.
+- Zie [Cmdlets voor Azure Key Vault](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault) voor een lijst met Azure PowerShell 1.0-cmdlets voor Azure Key Vault.
