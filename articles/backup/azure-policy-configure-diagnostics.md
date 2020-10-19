@@ -3,12 +3,12 @@ title: Diagnostische instellingen voor de kluis op schaal configureren
 description: Log Analytics Diagnostische instellingen configureren voor alle kluizen in een bepaald bereik met behulp van Azure Policy
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 33956fe7ce2e162d58ef3aa09feaea2882dccb36
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55461937381f7551c42714c835d4755ab65f175b
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293081"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171529"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>Diagnostische instellingen voor de kluis op schaal configureren
 
@@ -27,6 +27,8 @@ Azure Backup biedt een ingebouwde [Azure Policy](../governance/policy/index.yml)
 * Het bereik van de beheer groep wordt momenteel niet ondersteund.
 
 * Het ingebouwde beleid is momenteel niet beschikbaar in nationale Clouds.
+
+[!INCLUDE [backup-center.md](../../includes/backup-center.md)]
 
 ## <a name="assigning-the-built-in-policy-to-a-scope"></a>Het ingebouwde beleid toewijzen aan een bereik
 

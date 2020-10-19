@@ -4,12 +4,12 @@ description: Instructies voor het verplaatsen van een Recovery Services kluis ov
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: 55c906585e6f6d4a2ae3f2279b2c3ffbaaccb025
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: bd1870e803f5051e2a65a6cddbb72406421d4fc3
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056426"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171618"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Een Recovery Services kluis verplaatsen over Azure-abonnementen en-resource groepen
 
@@ -178,7 +178,7 @@ Als u de huidige beveiligde gegevens in de oude kluis wilt behouden en de beveil
   - U kunt de back-upgegevens alleen herstellen voor niet-verlopen herstel punten in de oude kluis.
   - Er moet een nieuwe eerste replica van de gegevens worden gemaakt op de nieuwe kluis.
 
-- Voor een Azure-VM kunt u de [beveiliging stoppen met het bewaren van gegevens](backup-azure-manage-vms.md#stop-protecting-a-vm) voor de virtuele machine in de oude kluis, de VM verplaatsen naar een andere resource groep en de virtuele machine vervolgens beveiligen in de nieuwe kluis. Zie de [richt lijnen en beperkingen](https://docs.microsoft.com/azure/azure-resource-manager/management/move-limitations/virtual-machines-move-limitations) voor het verplaatsen van een virtuele machine naar een andere resource groep.
+- Voor een Azure-VM kunt u de [beveiliging stoppen met het bewaren van gegevens](backup-azure-manage-vms.md#stop-protecting-a-vm) voor de virtuele machine in de oude kluis, de VM verplaatsen naar een andere resource groep en de virtuele machine vervolgens beveiligen in de nieuwe kluis. Zie de [richt lijnen en beperkingen](../azure-resource-manager/management/move-limitations/virtual-machines-move-limitations.md) voor het verplaatsen van een virtuele machine naar een andere resource groep.
 
   Een virtuele machine kan in slechts één kluis tegelijk worden beveiligd. De virtuele machine in de nieuwe resource groep kan echter worden beveiligd op de nieuwe kluis, aangezien deze wordt beschouwd als een andere virtuele machine.
 

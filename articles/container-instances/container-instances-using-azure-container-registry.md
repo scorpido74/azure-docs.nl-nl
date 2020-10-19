@@ -5,12 +5,12 @@ services: container-instances
 ms.topic: article
 ms.date: 07/02/2020
 ms.custom: mvc
-ms.openlocfilehash: eeafc58a1f61ed0439fb29fb08e4ce8c5dd4350c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5ba56271950c2d14c7fbf0b9154afb371bcbabc
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89656992"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173657"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Azure Container Instances implementeren vanuit Azure Container Registry
 
@@ -22,19 +22,18 @@ ms.locfileid: "89656992"
 
 **Azure cli**: de opdracht regel voorbeelden in dit artikel maken gebruik van de [Azure cli](/cli/azure/) en zijn geformatteerd voor de bash-shell. U kunt [de Azure cli lokaal installeren](/cli/azure/install-azure-cli) of de [Azure Cloud shell][cloud-shell-bash]gebruiken.
 
+## <a name="limitations"></a>Beperkingen
+
+* U kunt niet verifiëren bij Azure Container Registry om installatie kopieën tijdens de implementatie van de container groep te halen met behulp van een [beheerde identiteit](container-instances-managed-identity.md) die is geconfigureerd in dezelfde container groep.
+* U kunt op dit moment geen installatie kopieën ophalen van [Azure container Registry](../container-registry/container-registry-vnet.md) geïmplementeerd in een Azure-Virtual Network.
+
 ## <a name="configure-registry-authentication"></a>Registerverificatie configureren
 
 In een productie scenario waarbij u toegang krijgt tot ' headless ' Services en toepassingen, is het raadzaam om register toegang te configureren met behulp van een [Service-Principal](../container-registry/container-registry-auth-service-principal.md). Met een Service-Principal kunt u op [rollen gebaseerd toegangs beheer (Azure RBAC) van Azure](../container-registry/container-registry-roles.md) bieden voor uw container installatie kopieën. U kunt bijvoorbeeld een service-principal configureren met alleen pull-toegang tot een register.
 
 Azure Container Registry biedt aanvullende [verificatie opties](../container-registry/container-registry-authentication.md).
 
-> [!NOTE]
-> U kunt niet verifiëren bij Azure Container Registry om installatie kopieën tijdens de implementatie van de container groep te halen met behulp van een [beheerde identiteit](container-instances-managed-identity.md) die is geconfigureerd in dezelfde container groep.
-
-> [!NOTE]
-> U kunt op dit moment geen installatie kopieën ophalen van [Azure container Registry](../container-registry/container-registry-vnet.md) geïmplementeerd in een Azure-Virtual Network.
-
-In de volgende sectie maakt u een Azure-sleutel kluis en een Service-Principal en slaat u de referenties van de Service-Principal op in de kluis. 
+In de volgende sectie maakt u een Azure-sleutel kluis en een Service-Principal en slaat u de referenties van de Service-Principal op in de kluis.
 
 ### <a name="create-key-vault"></a>Sleutelkluis maken
 

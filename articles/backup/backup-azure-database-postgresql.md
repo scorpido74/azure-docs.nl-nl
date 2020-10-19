@@ -4,12 +4,12 @@ description: Meer informatie over Azure Database for PostgreSQL back-up met lang
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: a30f822db134ce82e772602cb2430d7e8d0db23e
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 3c326ff197f18333812438719908daced2b268bb
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093885"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173585"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>Azure Database for PostgreSQL back-up met lange termijn retentie (preview-versie)
 
@@ -244,7 +244,7 @@ In deze sectie vindt u informatie over het oplossen van back-ups van Azure Postg
 
 **Lees** toegang tot de back-Upkluis-MSI op de PG-server waarvan u een back-up wilt maken of die u wilt herstellen:
 
-Azure Backup maakt gebruik van het verificatie model [Managed Service Identity (MSI)](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) om een beveiligde verbinding met de postgresql-data base tot stand te brengen. Dit betekent dat de back-upkluis alleen toegang heeft tot de resources die expliciet toestemming hebben gekregen van de gebruiker.
+Azure Backup maakt gebruik van het verificatie model [Managed Service Identity (MSI)](../active-directory/managed-identities-azure-resources/overview.md) om een beveiligde verbinding met de postgresql-data base tot stand te brengen. Dit betekent dat de back-upkluis alleen toegang heeft tot de resources die expliciet toestemming hebben gekregen van de gebruiker.
 
 Er wordt automatisch een systeem-MSI toegewezen aan de kluis op het moment dat deze wordt gemaakt. U moet deze kluis MSI gebruiken om toegang te krijgen tot de PostgreSQL-servers waarvan u een back-up van data bases wilt maken.
 
@@ -308,7 +308,7 @@ Stel de netwerk regel in door de vlag **toegang tot Azure-Services toestaan** in
 
     ![Rol Inzender gegevens voor BLOB toewijzen](./media/backup-azure-database-postgresql/assign-storage-blog-data-contributor-role.png)
 
-1. U kunt ook gedetailleerde machtigingen geven voor de specifieke container waarnaar u wilt herstellen met behulp van de opdracht Azure CLI [AZ Role Assignment maken](https://docs.microsoft.com/cli/azure/role/assignment) .
+1. U kunt ook gedetailleerde machtigingen geven voor de specifieke container waarnaar u wilt herstellen met behulp van de opdracht Azure CLI [AZ Role Assignment maken](/cli/azure/role/assignment) .
 
     ```azurecli
     az role assignment create --assignee $VaultMSI_AppId  --role "Storage Blob Data Contributor"   --scope $id

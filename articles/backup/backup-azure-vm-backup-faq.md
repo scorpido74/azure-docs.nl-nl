@@ -4,12 +4,12 @@ description: In dit artikel vindt u antwoorden op veelgestelde vragen over het m
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 51c54aa732259180a5393488891b21956553f581
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: f318d785fdfa5b72050bdd805ecfe801d307b9a7
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056715"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172831"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Veelgestelde vragen: back-ups maken van virtuele Azure-machines
 
@@ -24,7 +24,7 @@ Wanneer u een virtuele machine maakt, kunt u back-ups inschakelen voor Vm's met 
 ### <a name="why-initial-backup-is-taking-lot-of-time-to-complete"></a>Waarom duurt het lang om een eerste back-up te maken?
 
 De eerste back-up is altijd een volledige back-up en is afhankelijk van de grootte van de gegevens en wanneer de back-up wordt verwerkt. <br>
-Zie [Aanbevolen procedures voor back-](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#best-practices)ups om de back-upprestaties te verbeteren. [Overwegingen voor back-ups](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#backup-and-restore-considerations) en [back-upprestaties](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#backup-performance)<br>
+Zie [Aanbevolen procedures voor back-](./backup-azure-vms-introduction.md#best-practices)ups om de back-upprestaties te verbeteren. [Overwegingen voor back-ups](./backup-azure-vms-introduction.md#backup-and-restore-considerations) en [back-upprestaties](./backup-azure-vms-introduction.md#backup-performance)<br>
 Hoewel de totale back-uptijd voor incrementele back-ups minder dan 24 uur is, is dit mogelijk niet het geval voor de eerste back-up.
 
 ### <a name="is-the-backup-cost-included-in-the-vm-cost"></a>Worden de kosten voor back-ups opgenomen in de VM-kosten?
@@ -109,7 +109,7 @@ Azure Backup ondersteunt nu selectieve back-up en herstel met behulp van de back
 
 ### <a name="are-managed-identities-preserved-if-a-tenant-change-occurs-during-backup"></a>Worden beheerde identiteiten behouden als er een Tenant wijziging optreedt tijdens het maken van een back-up?
 
-Als er wijzigingen in de [Tenant](https://docs.microsoft.com/azure/devops/organizations/accounts/change-azure-ad-connection) optreden, moet u [beheerde identiteiten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) uitschakelen en opnieuw inschakelen om back-ups opnieuw te laten werken.
+Als er wijzigingen in de [Tenant](/azure/devops/organizations/accounts/change-azure-ad-connection) optreden, moet u [beheerde identiteiten](../active-directory/managed-identities-azure-resources/overview.md) uitschakelen en opnieuw inschakelen om back-ups opnieuw te laten werken.
 
 ## <a name="restore"></a>Herstellen
 
@@ -207,6 +207,6 @@ Ja, er is een limiet van 100 Vm's die kunnen worden gekoppeld aan hetzelfde back
 
 Op dit moment kunt u de Bewaar instellingen weer geven op het niveau van het back-upitem (VM) op basis van het back-upbeleid dat is toegewezen aan de virtuele machine.
 
-Een van de manieren om de Bewaar instellingen voor uw back-ups weer te geven, is door te navigeren naar het [dash board](https://docs.microsoft.com/azure/backup/backup-azure-manage-vms#view-vms-on-the-dashboard) back-upitem voor uw virtuele machine in de Azure Portal. Als u de koppeling naar het back-upbeleid selecteert, kunt u de Bewaar periode van alle dagelijkse, wekelijkse, maandelijkse en jaarlijkse Bewaar punten bekijken die zijn gekoppeld aan de virtuele machine.
+Een van de manieren om de Bewaar instellingen voor uw back-ups weer te geven, is door te navigeren naar het [dash board](./backup-azure-manage-vms.md#view-vms-on-the-dashboard) back-upitem voor uw virtuele machine in de Azure Portal. Als u de koppeling naar het back-upbeleid selecteert, kunt u de Bewaar periode van alle dagelijkse, wekelijkse, maandelijkse en jaarlijkse Bewaar punten bekijken die zijn gekoppeld aan de virtuele machine.
 
-U kunt ook [Backup Explorer](https://docs.microsoft.com/azure/backup/monitor-azure-backup-with-backup-explorer) gebruiken om de Bewaar instellingen voor al uw virtuele machines te bekijken binnen één deel venster. Ga vanuit een Recovery Services kluis naar back-up Verkenner, ga naar het tabblad **Back-upitems** en selecteer de geavanceerde weer gave om gedetailleerde informatie over de Bewaar periode voor elke VM weer te geven.
+U kunt ook [Backup Explorer](./monitor-azure-backup-with-backup-explorer.md) gebruiken om de Bewaar instellingen voor al uw virtuele machines te bekijken binnen één deel venster. Ga vanuit een Recovery Services kluis naar back-up Verkenner, ga naar het tabblad **Back-upitems** en selecteer de geavanceerde weer gave om gedetailleerde informatie over de Bewaar periode voor elke VM weer te geven.

@@ -3,12 +3,12 @@ title: SQL Server data bases herstellen op een virtuele Azure-machine
 description: In dit artikel wordt beschreven hoe u SQL Server-data bases herstelt die worden uitgevoerd op een virtuele Azure-machine en waarvan een back-up is gemaakt met Azure Backup. U kunt ook meerdere regio's herstellen gebruiken om uw data bases terug te zetten naar een secundaire regio.
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: 0d6feb512ab4ebcc5b5eaffafe607602fc552984
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bbafd179f4b2f4e91a4bf19da41ffc14e4775e5c
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90985442"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172170"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>SQL Server-databases herstellen in Azure-VM's
 
@@ -30,7 +30,7 @@ Let op het volgende voordat u een Data Base herstelt:
 - U kunt de database herstellen naar een exemplaar van SQL Server in dezelfde Azure-regio.
 - De doel server moet zijn geregistreerd bij dezelfde kluis als de bron.
 - Als u een met TDE versleutelde data base wilt herstellen naar een andere SQL Server, moet u [het certificaat eerst herstellen naar de doel server](/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server).
-- [CDC](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server) ingeschakelde data bases moeten worden hersteld met de optie [herstellen als bestanden](#restore-as-files) .
+- [CDC](/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server) ingeschakelde data bases moeten worden hersteld met de optie [herstellen als bestanden](#restore-as-files) .
 - Voordat u de data base ' Master ' herstelt, start u het SQL Server-exemplaar in de modus voor één gebruiker met behulp van de opstart optie **-m AzureWorkloadBackup**.
   - De waarde voor **-m** is de naam van de client.
   - Alleen de opgegeven client naam kan de verbinding openen.

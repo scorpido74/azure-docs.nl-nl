@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/02/2020
+ms.date: 10/19/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6b0a90eee4a1bd309a04cf355eb8d8c0564830aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6978afc802bddd536c56fcb4e06a40ccc58867fe
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89418905"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172660"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Een eenmalige wachtwoord technische profiel definiëren in een Azure AD B2C aangepast beleid
 
@@ -73,13 +73,15 @@ De volgende instellingen kunnen worden gebruikt voor het configureren van de mod
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| CodeExpirationInSeconds | Nee | Tijd in seconden totdat de code verloopt. Minimum: `60` ; Maximum: `1200` ; Standaard: `600` . |
+| CodeExpirationInSeconds | Nee | Tijd in seconden totdat de code verloopt. Minimum: `60` ; Maximum: `1200` ; Standaard: `600` . Telkens wanneer er een code wordt gegeven (zelfde code met `ReuseSameCode` of een nieuwe code), wordt het verloop van de code verlengd.  |
 | CodeLength | Nee | Lengte van de code. De standaardwaarde is `6`. |
 | CharacterSet | Nee | De tekenset voor de code, opgemaakt voor gebruik in een reguliere expressie. Bijvoorbeeld `a-z0-9A-Z`. De standaardwaarde is `0-9`. De tekenset moet mini maal tien verschillende tekens bevatten in de opgegeven set. |
 | NumRetryAttempts | Nee | Het aantal verificatie pogingen voordat de code als ongeldig wordt beschouwd. De standaardwaarde is `5`. |
 | NumCodeGenerationAttempts | Nee | Het aantal pogingen voor het genereren van maximum code per id. De standaard waarde is 10 als niet is opgegeven. |
 | Bewerking | Ja | De bewerking die moet worden uitgevoerd. Mogelijke waarde: `GenerateCode` . |
-| ReuseSameCode | Nee | Of er een dubbele code moet worden gegeven in plaats van een nieuwe code te genereren wanneer de gegeven code niet is verlopen en nog geldig is. De standaardwaarde is `false`. |
+| ReuseSameCode | Nee | Of dezelfde code moet worden opgegeven in plaats van een nieuwe code te genereren wanneer de gegeven code niet is verlopen en nog geldig is. De standaardwaarde is `false`.  |
+
+
 
 ### <a name="example"></a>Voorbeeld
 

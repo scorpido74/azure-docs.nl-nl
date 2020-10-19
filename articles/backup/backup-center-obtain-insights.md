@@ -3,16 +3,16 @@ title: Inzichten verkrijgen met behulp van Back-upcentrum
 description: Meer informatie over het analyseren van historische trends en het verkrijgen van meer inzicht in uw back-ups met Back-upcentrum.
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 5964f285089feea721a0b452efed884e905b89cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0f687ee123abe2f95ad0d23a6fe302f4a5c22e1
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90994972"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173747"
 ---
 # <a name="obtain-insights-using-backup-center"></a>Inzichten verkrijgen met behulp van Back-upcentrum
 
-Voor het analyseren van historische trends en het verkrijgen van diepere inzichten op uw back-ups biedt Back-upcentrum een interface voor het [maken van back-uprapporten](configure-reports.md), die gebruikmaakt van [Azure monitor-logboeken](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs) en [Azure-werkmappen](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview). Back-uprapporten bieden de volgende mogelijkheden:
+Voor het analyseren van historische trends en het verkrijgen van diepere inzichten op uw back-ups biedt Back-upcentrum een interface voor het [maken van back-uprapporten](configure-reports.md), die gebruikmaakt van [Azure monitor-logboeken](../azure-monitor/platform/data-platform-logs.md) en [Azure-werkmappen](../azure-monitor/platform/workbooks-overview.md). Back-uprapporten bieden de volgende mogelijkheden:
 
 - Het toewijzen en voors pellen van verbruikte Cloud opslag.
 
@@ -32,7 +32,7 @@ Voor het analyseren van historische trends en het verkrijgen van diepere inzicht
 
 ### <a name="configure-your-vaults-to-send-data-to-a-log-analytics-workspace"></a>Uw kluizen configureren voor het verzenden van gegevens naar een Log Analytics-werk ruimte
 
-[Meer informatie over het configureren van diagnostische instellingen op schaal voor uw kluizen](https://docs.microsoft.com/azure/backup/configure-reports#get-started)
+[Meer informatie over het configureren van diagnostische instellingen op schaal voor uw kluizen](./configure-reports.md#get-started)
 
 ### <a name="view-backup-reports-in-the-backup-center-portal"></a>Back-uprapporten weer geven in de portal van het Back-upcentrum
 
@@ -42,17 +42,17 @@ Als u het menu **-item back-uprapporten** selecteert in Back-upcentrum, worden d
 
 Hieronder ziet u de beschik bare weer gaven:
 
-1. **Samen vatting** : gebruik dit tabblad om een overzicht te krijgen van uw back-ups op hoog niveau. [Meer informatie](https://docs.microsoft.com/azure/backup/configure-reports#summary)
+1. **Samen vatting** : gebruik dit tabblad om een overzicht te krijgen van uw back-ups op hoog niveau. [Meer informatie](./configure-reports.md#summary)
 
-1. **Back-** upitems: gebruik dit tabblad om informatie en trends in Cloud opslag te bekijken die worden gebruikt op een back-upitemniveau. [Meer informatie](https://docs.microsoft.com/azure/backup/configure-reports#backup-items)
+1. **Back-** upitems: gebruik dit tabblad om informatie en trends in Cloud opslag te bekijken die worden gebruikt op een back-upitemniveau. [Meer informatie](./configure-reports.md#backup-items)
 
-1. **Gebruik** : gebruik dit tabblad om de para meters voor de sleutel facturering voor uw back-ups weer te geven. [Meer informatie](https://docs.microsoft.com/azure/backup/configure-reports#usage)
+1. **Gebruik** : gebruik dit tabblad om de para meters voor de sleutel facturering voor uw back-ups weer te geven. [Meer informatie](./configure-reports.md#usage)
 
-1. **Taken** : gebruik dit tabblad om langlopende trends voor taken weer te geven, zoals het aantal mislukte taken per dag en de belangrijkste oorzaken van een mislukte taak. [Meer informatie](https://docs.microsoft.com/azure/backup/configure-reports#jobs)
+1. **Taken** : gebruik dit tabblad om langlopende trends voor taken weer te geven, zoals het aantal mislukte taken per dag en de belangrijkste oorzaken van een mislukte taak. [Meer informatie](./configure-reports.md#jobs)
 
-1. **Beleid** : gebruik dit tabblad om informatie weer te geven over al uw actieve beleids regels, zoals het aantal gekoppelde items en de totale Cloud opslag die wordt gebruikt door items waarvan een back-up is gemaakt onder een bepaald beleid. [Meer informatie](https://docs.microsoft.com/azure/backup/configure-reports#policies)
+1. **Beleid** : gebruik dit tabblad om informatie weer te geven over al uw actieve beleids regels, zoals het aantal gekoppelde items en de totale Cloud opslag die wordt gebruikt door items waarvan een back-up is gemaakt onder een bepaald beleid. [Meer informatie](./configure-reports.md#policies)
 
-1. **Optimaliseer** : gebruik dit tabblad om inzicht te krijgen in potentiële mogelijkheden voor kosten optimalisatie voor uw back-ups. [Meer informatie](https://docs.microsoft.com/azure/backup/configure-reports#optimize)
+1. **Optimaliseer** : gebruik dit tabblad om inzicht te krijgen in potentiële mogelijkheden voor kosten optimalisatie voor uw back-ups. [Meer informatie](./configure-reports.md#optimize)
 
 ## <a name="next-steps"></a>Volgende stappen
 

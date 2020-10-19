@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 61ec96a35fac6a033fe6c8b65cff156ba63e5e58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 578860883a108bba4b4bcd8cd04e8c08f484d474
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87563344"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173687"
 ---
 # <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>Een aangepast domein instellen in de preview-versie van Azure Static Web Apps
 
@@ -29,11 +29,11 @@ Bij het configureren van domein namen worden A-records gebruikt om hoofd domeine
 
 Er zijn een aantal verschillende typen DNS-configuraties beschikbaar voor een toepassing.
 
-| Als u wilt                                 | Kies                                                |
-| -----------------------------------------------| --------------------------------------------------- |
-| Ondersteuning `www.example.com` of `blog.example.net`| [Een CNAME-record toewijzen](#map-a-cname-record)           |
-| Voor `example.com`                          | [Een hoofd domein configureren](#configure-a-root-domain) |
-| Alle subdomeinen naar `www.example.com`      | [Een Joker teken toewijzen](#map-a-wildcard-domain)            |
+| Als u wilt | Kies |
+|--|--|
+| Ondersteuning `www.example.com` of `blog.example.net` | [Een CNAME-record toewijzen](#map-a-cname-record) |
+| Voor `example.com` | [Een hoofd domein configureren](#configure-a-root-domain) |
+| Alle subdomeinen naar `www.example.com` | [Een Joker teken toewijzen](#map-a-wildcard-domain) |
 
 ## <a name="map-a-cname-record"></a>Een CNAME-record toewijzen
 
@@ -46,6 +46,8 @@ Een CNAME-record wijst één domein aan een andere toe. U kunt een CNAME-record 
 1. Selecteer op de pagina _statische web apps_ de naam van uw app.
 
 1. Klik op **aangepaste domeinen** in het menu.
+
+1. Klik op de knop **toevoegen**
 
 1. In het venster _aangepaste domeinen_ kopieert u de URL in het veld **waarde** .
 

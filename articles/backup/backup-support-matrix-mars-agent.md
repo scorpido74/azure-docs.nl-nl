@@ -3,12 +3,12 @@ title: Ondersteunings matrix voor de MARS-agent
 description: Dit artikel bevat een overzicht van Azure Backup ondersteuning bij het maken van een back-up van computers waarop de Microsoft Azure Recovery Services-agent (MARS) wordt uitgevoerd.
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: b11a2e3ec2fdf3a46b324dcc0f95d4666a84c179
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 53034d058e0cd2e1623acc6629da0a694b35e60b
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332675"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173527"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Ondersteunings matrix voor back-up met de Microsoft Azure Recovery Services-agent (MARS)
 
@@ -67,14 +67,14 @@ En naar deze IP-adressen:
 
 De toegang tot alle hierboven vermelde Url's en IP-adressen maakt gebruik van het HTTPS-protocol op poort 443.
 
-Bij het maken van back-ups van bestanden en mappen vanaf Azure Vm's met behulp van de MARS-agent moet het virtuele netwerk van Azure ook worden geconfigureerd om toegang toe te staan. Als u netwerkbeveiligingsgroepen (NSG's) gebruikt, gebruikt u de servicetag *AzureBackup* om uitgaande toegang tot Azure Backup toe te staan. Naast de Azure Backup-tag moet u ook connectiviteit voor verificatie en gegevensoverdracht toestaan met behulp van [NSG-regels](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview#service-tags) voor Azure AD (*AzureActiveDirectory*) en Azure Storage (*Storage*). In de volgende stappen wordt het proces voor het maken van een regel voor de Azure Backup-tag beschreven:
+Bij het maken van back-ups van bestanden en mappen vanaf Azure Vm's met behulp van de MARS-agent moet het virtuele netwerk van Azure ook worden geconfigureerd om toegang toe te staan. Als u netwerkbeveiligingsgroepen (NSG's) gebruikt, gebruikt u de servicetag *AzureBackup* om uitgaande toegang tot Azure Backup toe te staan. Naast de Azure Backup-tag moet u ook connectiviteit voor verificatie en gegevensoverdracht toestaan met behulp van [NSG-regels](../virtual-network/network-security-groups-overview.md#service-tags) voor Azure AD (*AzureActiveDirectory*) en Azure Storage (*Storage*). In de volgende stappen wordt het proces voor het maken van een regel voor de Azure Backup-tag beschreven:
 
 1. In **Alle services** gaat u naar **Netwerkbeveiligingsgroepen** en selecteert u de netwerkbeveiligingsgroep.
 2. Selecteer de optie **Uitgaande beveiligingsregels** onder **Instellingen**.
-3. Selecteer **Toevoegen**. Voer alle vereiste details in voor het maken van een nieuwe regel, zoals beschreven in de [instellingen voor beveiligingsregels](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings). Controleer of de optie **Doel** is ingesteld op *Servicetag* en **Doelservicetag** is ingesteld op *AzureBackup*.
+3. Selecteer **Toevoegen**. Voer alle vereiste details in voor het maken van een nieuwe regel, zoals beschreven in de [instellingen voor beveiligingsregels](../virtual-network/manage-network-security-group.md#security-rule-settings). Controleer of de optie **Doel** is ingesteld op *Servicetag* en **Doelservicetag** is ingesteld op *AzureBackup*.
 4. Selecteer **toevoegen** om de zojuist gemaakte uitgaande beveiligings regel op te slaan.
 
-U kunt op vergelijkbare wijze ook uitgaande NSG-beveiligingsregels maken voor Azure Storage en Azure AD. Zie [dit artikel](https://docs.microsoft.com/azure/virtual-network/service-tags-overview) voor meer informatie over servicetags.
+U kunt op vergelijkbare wijze ook uitgaande NSG-beveiligingsregels maken voor Azure Storage en Azure AD. Zie [dit artikel](../virtual-network/service-tags-overview.md) voor meer informatie over servicetags.
 
 ### <a name="azure-expressroute-support"></a>Ondersteuning voor Azure ExpressRoute
 

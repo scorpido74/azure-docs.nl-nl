@@ -4,16 +4,18 @@ description: In dit artikel vindt u informatie over de bewakings-en meldings mog
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: d04f57c19e31b946f7c360edb796bc4f0f5fcf71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 978e98bc623cecd768b1f2dda0a129e0459521da
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89377400"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92174003"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Bewaking Azure Backup werk belastingen
 
 Azure Backup biedt meerdere back-upoplossingen op basis van de back-upvereisten en infrastructuur topologie (on-premises versus Azure). Elke back-upgebruiker of beheerder moet zien wat er gebeurt met alle oplossingen en kan worden geïnformeerd over belang rijke scenario's. In dit artikel vindt u meer informatie over de bewakings-en meldings mogelijkheden van Azure Backup service.
+
+[!INCLUDE [backup-center.md](../../includes/backup-center.md)]
 
 ## <a name="backup-jobs-in-recovery-services-vault"></a>Back-uptaken in Recovery Services kluis
 
@@ -36,6 +38,9 @@ Taken van System Center Data Protection Manager (SC-DPM), Microsoft Azure Backup
 > Azure-werk belastingen, zoals SQL en SAP HANA back-ups in azure Vm's, hebben een groot aantal back-uptaken. Logboek back-ups kunnen bijvoorbeeld elke 15 minuten worden uitgevoerd. Voor dergelijke DB-workloads worden alleen door de gebruiker geactiveerde bewerkingen weer gegeven. Geplande back-upbewerkingen worden niet weer gegeven.
 
 ## <a name="backup-alerts-in-recovery-services-vault"></a>Back-upwaarschuwingen in Recovery Services kluis
+
+> [!NOTE]
+> Het weer geven van waarschuwingen over kluizen wordt momenteel niet ondersteund in Back-upcentrum. U moet naar een afzonderlijke kluis navigeren om waarschuwingen voor die kluis weer te geven.
 
 Waarschuwingen zijn voornamelijk scenario's waarin gebruikers een melding ontvangen dat ze relevante actie kunnen ondernemen. In het gedeelte **back-upwaarschuwingen** worden waarschuwingen weer gegeven die zijn gegenereerd door Azure backup service. Deze waarschuwingen worden gedefinieerd door de service en de gebruiker kan geen aangepaste waarschuwingen maken.
 

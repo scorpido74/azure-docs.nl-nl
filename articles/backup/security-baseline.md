@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 24bdb192ddfe1759cb1d70fff9936979f5e28143
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 09066d9e51f12923772758b3aebcebd347a59380
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093358"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92174121"
 ---
 # <a name="azure-security-baseline-for-backup"></a>Azure-beveiligings basislijn voor back-up
 
@@ -436,7 +436,7 @@ Ondersteunende documentatie:
 
 - [Aanvullende Azure-abonnementen maken](../cost-management-billing/manage/create-subscription.md)
 
-- [Beheergroepen maken](../governance/management-groups/create.md)
+- [Beheergroepen maken](../governance/management-groups/create-management-group-portal.md)
 
 - [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
@@ -612,7 +612,7 @@ Gebruik Azure Policy bovendien om beperkingen te leggen voor het type resources 
 
 - [Aanvullende Azure-abonnementen maken](../cost-management-billing/manage/create-subscription.md)
 
-- [Beheergroepen maken](../governance/management-groups/create.md)
+- [Beheergroepen maken](../governance/management-groups/create-management-group-portal.md)
 
 - [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
@@ -818,9 +818,9 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen h
 
 - [Een Key Vault maken](../key-vault/secrets/quick-create-portal.md)
 
-* [Verifiëren bij Key Vault](https://docs.microsoft.com/azure/key-vault/general/authentication)
+* [Verifiëren bij Key Vault](../key-vault/general/authentication.md)
 
-* [Toegangs beleid voor Key Vault toewijzen](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
+* [Toegangs beleid voor Key Vault toewijzen](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -868,7 +868,7 @@ Gebruik Azure Security Center bedreigings detectie voor gegevens Services om mal
 
 - [Micro soft antimalware voor Azure Cloud Services en Virtual Machines begrijpen](../security/fundamentals/antimalware.md)
 
-- [Meer informatie over de detectie van bedreigingen van Azure Security Center voor gegevens Services](../security-center/threat-protection.md)
+- [Meer informatie over de detectie van bedreigingen van Azure Security Center voor gegevens Services](../security-center/azure-defender.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -924,7 +924,7 @@ Back-ups van door de klant beheerde sleutels binnen Azure Key Vault.
 
 **Richt lijnen**: voor on-premises back-ups wordt versleuteling op rest verstrekt met behulp van de wachtwoordzin die u opgeeft wanneer u een back-up maakt naar Azure. Voot Azure-VM’s worden gegevens in rust versleuteld met behulp van SSE (Storage Service Encryption). U kunt zacht verwijderen inschakelen in Key Vault om sleutels te beschermen tegen onbedoelde of schadelijke verwijdering.
 
-- [Zacht verwijderen inschakelen in Key Vault](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
+- [Zacht verwijderen inschakelen in Key Vault](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure Security Center bewaking**: Ja
 

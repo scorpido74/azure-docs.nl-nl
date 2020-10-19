@@ -3,12 +3,12 @@ title: Back-upcentrum-Veelgestelde vragen
 description: In dit artikel vindt u antwoorden op veelgestelde vragen over Back-upcentrum
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: 7e227eb6a14d06791e52ec33e090afdcb01bab61
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: c5b23a32b60f651cd3ff91819155d83a7465491a
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094038"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173812"
 ---
 # <a name="backup-center---frequently-asked-questions"></a>Back-upcentrum: veelgestelde vragen
 
@@ -16,11 +16,11 @@ ms.locfileid: "92094038"
 
 ### <a name="can-backup-center-be-used-across-tenants"></a>Kan backup Center worden gebruikt in meerdere tenants?
 
-Ja, als u [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview) gebruikt en toegang hebt gedelegeerd voor abonnementen over verschillende tenants, kunt u Back-upcentrum gebruiken als een enkel glas venster voor het beheren van back-ups tussen tenants.
+Ja, als u [Azure Lighthouse](../lighthouse/overview.md) gebruikt en toegang hebt gedelegeerd voor abonnementen over verschillende tenants, kunt u Back-upcentrum gebruiken als een enkel glas venster voor het beheren van back-ups tussen tenants.
 
 ### <a name="can-backup-center-be-used-to-manage-both-recovery-services-vaults-and-backup-vaults"></a>Kan backup Center worden gebruikt voor het beheren van zowel Recovery Services kluizen als back-upkluizen?
 
-Ja, het Back-upcentrum kan zowel [Recovery Services kluizen](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview) als [back-upkluizen](backup-vault-overview.md)beheren.
+Ja, het Back-upcentrum kan zowel [Recovery Services kluizen](./backup-azure-recovery-services-vault-overview.md) als [back-upkluizen](backup-vault-overview.md)beheren.
 
 ### <a name="is-there-a-delay-before-data-surfaces-in-backup-center"></a>Is er een vertraging voor gegevens Opper vlakken in Back-upcentrum?
 
@@ -30,21 +30,21 @@ Back-upcentrum is gericht op het bieden van real-time informatie. Er kan een paa
 
 ### <a name="do-i-need-to-configure-anything-to-see-data-in-backup-center"></a>Moet ik iets configureren om gegevens in Back-upcentrum te bekijken?
 
-Nee. Het Back-upcentrum is klaar voor de doos. Als u echter [back-uprapporten](https://docs.microsoft.com/azure/backup/configure-reports) wilt weer geven onder Back-upcentrum, moet u de rapportage voor uw kluizen configureren.
+Nee. Het Back-upcentrum is klaar voor de doos. Als u echter [back-uprapporten](./configure-reports.md) wilt weer geven onder Back-upcentrum, moet u de rapportage voor uw kluizen configureren.
 
 ### <a name="do-i-need-to-have-any-special-permissions-to-use-backup-center"></a>Heb ik speciale machtigingen nodig om het Back-upcentrum te gebruiken?
 
-Het Back-upcentrum als zodanig heeft geen nieuwe machtigingen nodig. Als u het juiste niveau van Azure RBAC-toegang hebt voor de resources die u beheert, kunt u Back-upcentrum voor deze bronnen gebruiken. Als u bijvoorbeeld informatie over uw back-ups wilt weer geven, hebt u **Lees** toegang tot uw kluizen nodig. Als u een back-up wilt configureren en andere back-upbewerkingen wilt uitvoeren, moet u de rollen **back-upinzender** of **back-upoperator** hebben. Meer informatie over [Azure-rollen voor Azure backup](https://docs.microsoft.com/azure/backup/backup-rbac-rs-vault).
+Het Back-upcentrum als zodanig heeft geen nieuwe machtigingen nodig. Als u het juiste niveau van Azure RBAC-toegang hebt voor de resources die u beheert, kunt u Back-upcentrum voor deze bronnen gebruiken. Als u bijvoorbeeld informatie over uw back-ups wilt weer geven, hebt u **Lees** toegang tot uw kluizen nodig. Als u een back-up wilt configureren en andere back-upbewerkingen wilt uitvoeren, moet u de rollen **back-upinzender** of **back-upoperator** hebben. Meer informatie over [Azure-rollen voor Azure backup](./backup-rbac-rs-vault.md).
 
 ## <a name="pricing"></a>Prijzen
 
 ### <a name="do-i-need-to-pay-anything-extra-to-use-backup-explorer"></a>Moet ik extra betalen om back-upverkenner te gebruiken?
 
-Op dit moment zijn er geen extra kosten (afgezien van de back-upkosten) voor het gebruik van Back-upcentrum. Als u echter [back-uprapporten](https://docs.microsoft.com/azure/backup/configure-reports) gebruikt in Back-upcentrum, [zijn er kosten verbonden](https://azure.microsoft.com/pricing/details/monitor/) aan het gebruik van Azure monitor logboeken voor back-uprapporten.
+Op dit moment zijn er geen extra kosten (afgezien van de back-upkosten) voor het gebruik van Back-upcentrum. Als u echter [back-uprapporten](./configure-reports.md) gebruikt in Back-upcentrum, [zijn er kosten verbonden](https://azure.microsoft.com/pricing/details/monitor/) aan het gebruik van Azure monitor logboeken voor back-uprapporten.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Lees de andere veelgestelde vragen:
 
-* [Veelgestelde vragen over Recovery Services kluizen](https://docs.microsoft.com/azure/backup/backup-azure-backup-faq)
-* [Veelgestelde vragen over back-ups van Azure-VM'S](https://docs.microsoft.com/azure/backup/backup-azure-vm-backup-faq)
+* [Veelgestelde vragen over Recovery Services kluizen](./backup-azure-backup-faq.md)
+* [Veelgestelde vragen over back-ups van Azure-VM'S](./backup-azure-vm-backup-faq.md)

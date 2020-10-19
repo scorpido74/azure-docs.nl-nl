@@ -3,12 +3,12 @@ title: Azure Backup-rapporten configureren
 description: Rapporten voor Azure Backup configureren en weer geven met behulp van Log Analytics en Azure-werkmappen
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: d40da1ebd87ef7d7a43d0be9ae0d34911e854d0e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 11893488c59781bb78cf913a30069e920c66bc71
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91567431"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172467"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-rapporten configureren
 
@@ -30,6 +30,8 @@ Momenteel biedt Azure Backup een rapportage oplossing die gebruikmaakt van [Azur
 - Als u een [Azure Lighthouse](../lighthouse/index.yml) -gebruiker bent met gedelegeerde toegang tot de abonnementen van uw klanten, kunt u deze rapporten gebruiken met Azure Lighthouse om rapporten weer te geven over al uw tenants.
 - Op dit moment kunnen gegevens worden weer gegeven in back-uprapporten over Maxi maal 100 Log Analytics werk ruimten (tussen tenants).
 - Gegevens voor logboek back-uptaken worden momenteel niet weer gegeven in de rapporten.
+
+[!INCLUDE [backup-center.md](../../includes/backup-center.md)]
 
 ## <a name="get-started"></a>Aan de slag
 

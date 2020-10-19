@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 3b449913c9d1abbbec84f0ff77f7a1c1bc5321bf
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 7d5dd7d2d0aa3d10f439b5cf3604e2d595456f86
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048454"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172250"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Taal-en spraak ondersteuning voor de spraak service
 
@@ -170,7 +170,7 @@ Zie [regio's](regions.md#standard-and-neural-voices)voor meer informatie over re
 | `fr-CH` <sup>Nieuw</sup> | Frans (Zwitserland) | Vrouw | `fr-CH-ArianeNeural` | Algemeen |
 | `fr-FR` | Frans (Frank rijk) | Vrouw | `fr-FR-DeniseNeural` | Algemeen |
 | `fr-FR` <sup>Nieuw</sup> | Frans (Frankrijk) | Man | `fr-FR-HenriNeural` | Algemeen |
-| `he-IL` <sup>Nieuw</sup> | Hebreeuws (Isareal) | Vrouw | `he-IL-HilaNeural` | Algemeen |
+| `he-IL` <sup>Nieuw</sup> | Hebreeuws (Israël) | Vrouw | `he-IL-HilaNeural` | Algemeen |
 | `hi-IN` | Hindi (India) | Vrouw | `hi-IN-SwaraNeural` | Algemeen |
 | `hr-HR` <sup>Nieuw</sup> | Kroatisch (Kroatië) | Vrouw | `hr-HR-GabrijelaNeural` | Algemeen |
 | `hu-HU` <sup>Nieuw</sup> | Hongaars (Hongarije) | Vrouw | `hu-HU-NoemiNeural` | Algemeen |

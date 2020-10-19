@@ -4,12 +4,12 @@ description: Azure direct Restore-mogelijkheid en veelgestelde vragen over VM-ba
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 69348a9902224f9f73f80d5b1900143c885d20ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95de22d8493181f098e480afc4f319c44c633e42
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89000376"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173916"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Profiteer van verbeterde prestaties voor back-up en herstel met Azure Backup functie voor direct terugzetten
 
@@ -60,6 +60,8 @@ De incrementele moment opnamen worden opgeslagen in het opslag account van de vi
 ## <a name="configure-snapshot-retention"></a>De retentie van de moment opname configureren
 
 ### <a name="using-azure-portal"></a>Azure Portal gebruiken
+
+[!INCLUDE [backup-center.md](../../includes/backup-center.md)]
 
 In de Azure Portal ziet u een veld dat is toegevoegd in het deel venster **VM-back-upbeleid** in de sectie **direct terugzetten** . U kunt de Bewaar duur van de moment opname wijzigen via het deel venster **back-upbeleid** voor vm's voor alle virtuele machines die aan het specifieke back-upbeleid zijn gekoppeld.
 

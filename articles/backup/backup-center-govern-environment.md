@@ -3,12 +3,12 @@ title: Uw back-upstructuur regelen via het Backup-centrum
 description: Meer informatie over het beheren van uw Azure-omgeving om ervoor te zorgen dat al uw resources compatibel zijn met een Back-upcentrum met backup Center.
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 8a16769be827bf34e5be82409d5b8eb014cdcf1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ebb4d72c3a3377072e185251bd642762f6876c03
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91614317"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173802"
 ---
 # <a name="govern-your-backup-estate-using-backup-center"></a>Uw back-upstructuur regelen via het Backup-centrum
 
@@ -26,15 +26,15 @@ Back-upcentrum helpt u bij het beheren van uw Azure-omgeving om ervoor te zorgen
 
 ## <a name="azure-policies-for-backup"></a>Azure-beleid voor back-up
 
-Als u alle beschik bare [Azure-beleids regels](https://docs.microsoft.com/azure/governance/policy/overview) voor back-ups wilt weer geven, selecteert u het menu **-item Azure-beleids regels voor back-up** . Hiermee worden alle ingebouwde en aangepaste [Azure-beleids definities weer gegeven voor back-ups](policy-reference.md) die beschikbaar zijn voor toewijzing aan uw abonnementen en resource groepen.
+Als u alle beschik bare [Azure-beleids regels](../governance/policy/overview.md) voor back-ups wilt weer geven, selecteert u het menu **-item Azure-beleids regels voor back-up** . Hiermee worden alle ingebouwde en aangepaste [Azure-beleids definities weer gegeven voor back-ups](policy-reference.md) die beschikbaar zijn voor toewijzing aan uw abonnementen en resource groepen.
 
-Als u een van de definities selecteert, kunt u [het beleid toewijzen](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage#assign-a-policy) aan een bereik.
+Als u een van de definities selecteert, kunt u [het beleid toewijzen](../governance/policy/tutorials/create-and-manage.md#assign-a-policy) aan een bereik.
 
 ![Azure Policy definities selecteren](./media/backup-center-govern-environment/azure-policy-definitions.png)
 
 ## <a name="backup-compliance"></a>Naleving van back-ups
 
-Door te klikken op het menu-item voor het maken van een back-up kunt u de [compatibiliteit](https://docs.microsoft.com/azure/governance/policy/how-to/get-compliance-data) van uw resources bekijken op basis van de verschillende ingebouwde beleids regels die u hebt toegewezen aan uw Azure-omgeving. U kunt het percentage van de resources weer geven die compatibel zijn met alle beleids regels en de beleids regels met een of meer niet-compatibele resources.
+Door te klikken op het menu-item voor het maken van een back-up kunt u de [compatibiliteit](../governance/policy/how-to/get-compliance-data.md) van uw resources bekijken op basis van de verschillende ingebouwde beleids regels die u hebt toegewezen aan uw Azure-omgeving. U kunt het percentage van de resources weer geven die compatibel zijn met alle beleids regels en de beleids regels met een of meer niet-compatibele resources.
 
 ![Naleving van back-ups weer geven](./media/backup-center-govern-environment/azure-policy-compliance.png)
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: 5d17fb9bee77aae9945c12d45a5ffff316f9d639
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 94c67be39ddd9f52087fa4632e239a8e85930886
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144242"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171467"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Hoe u Jupyter-notebooks uitvoert in uw werkruimte
 
@@ -224,7 +224,7 @@ Het notitie blok vindt automatisch alle Jupyter-kernels die zijn geïnstalleerd 
     ```
 
 > [!NOTE]
-> Voor pakket beheer binnen een notebook gebruikt u **% PIP** of **% Conda** Magic functions installeert pakketten automatisch in de kernel die op **dat moment wordt uitgevoerd** in plaats van **! PIP** of **! Conda** die verwijst naar alle pakketten (inclusief pakketten buiten de actieve kernel)
+> Voor pakket beheer binnen een notebook gebruikt u **% PIP** of **% Conda** Magic functions om pakketten automatisch te installeren in de **kernel die momenteel wordt uitgevoerd**, in plaats van **! PIP** of **! Conda** die verwijst naar alle pakketten (inclusief pakketten buiten de actieve kernel)
 
 Een van de [beschik bare Jupyter-kernels](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels) kan worden geïnstalleerd.
 

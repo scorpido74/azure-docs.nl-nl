@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over selectieve back-ups en herst
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: ce7e53bc740882a819e8a21e3ac95ab47d3b876a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 21e4ead8b3302ceef4cc53c126b9eab5784544b4
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91271372"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92174113"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Back-up en herstel van selectieve schijven voor virtuele Azure-machines
 
@@ -240,6 +240,8 @@ Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "
 ```
 
 ## <a name="using-the-azure-portal"></a>Azure Portal gebruiken
+
+[!INCLUDE [backup-center.md](../../includes/backup-center.md)]
 
 Met behulp van de Azure Portal kunt u de opgenomen en uitgesloten schijven bekijken in het deel venster Details van de VM-back-up en het detail venster met de back-uptaak.  Wanneer u tijdens het herstellen het herstel punt selecteert waaruit u wilt herstellen, kunt u de back-upschijven in dat herstel punt bekijken.
 

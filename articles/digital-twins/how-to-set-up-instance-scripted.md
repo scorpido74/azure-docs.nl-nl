@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8157517c0df942c40d93853c8d18ae31e9909d21
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: fd48ff8dd0f4fa44206f6636f869d4ea3f959ae5
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132513"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92174175"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Een Azure Digital Apparaatdubbels-exemplaar en-verificatie instellen (met een script)
 
@@ -57,10 +57,10 @@ Hier volgen de stappen voor het uitvoeren van het implementatie script in Cloud 
 
     Ga naar het _**deploy.ps1**_ bestand op uw computer (in _Azure_Digital_Twins_end_to_end_samples > scripts > **deploy.ps1** _) en klik op openen. Hiermee wordt het bestand geüpload naar Cloud Shell, zodat u het kunt uitvoeren in het Cloud Shell-venster.
 
-4. Voer het script uit door de `./deploy.ps1` opdracht in het venster Cloud shell te verzenden. (Als u wilt plakken in Cloud Shell, kunt u **CTRL + SHIFT + v** op Windows en Linux gebruiken of **Cmd + Shift + v** op macOS. U kunt ook het snelmenu gebruiken.)
+4. Voer het script uit door de `./deploy.ps1` opdracht in het venster Cloud shell te verzenden met de switch die de installatie van app-registratie bevat. U kunt de onderstaande opdracht kopiëren (intrekken om te plakken in Cloud Shell, u kunt **CTRL + SHIFT + v** op Windows en Linux gebruiken of **Cmd + Shift + v** op macOS. U kunt ook het menu met de rechter muisknop gebruiken).
 
     ```azurecli
-    ./deploy.ps1
+    ./deploy.ps1 -RegisterAadApp
     ```
 
     Wanneer het script wordt uitgevoerd via de automatische installatie stappen, wordt u gevraagd de volgende waarden door te geven:

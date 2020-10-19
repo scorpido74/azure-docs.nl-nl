@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e27c6661c34ab6d177feec11f8e9ec891987ab48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbfec218c1bf1d018157fc6d78c700991f332a13
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89005748"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172805"
 ---
 # <a name="placement-policies-for-service-fabric-services"></a>Plaatsings beleid voor service Fabric-Services
 Plaatsings beleid is extra regels die kunnen worden gebruikt voor het bepalen van de service plaatsing in enkele specifieke, minder algemene scenario's. Enkele voor beelden van deze scenario's zijn:
@@ -20,6 +20,7 @@ Plaatsings beleid is extra regels die kunnen worden gebruikt voor het bepalen va
 - Uw omgeving bevat meerdere gebieden van geopolitieke of juridische controle, of een andere situatie waarbij u beleids grenzen hebt die u moet afdwingen
 - Er zijn communicatie prestaties of latentie overwegingen door grote afstanden of het gebruik van tragere of minder betrouw bare netwerk koppelingen
 - U moet bepaalde werk belastingen co als Best effort, hetzij met andere workloads of nabijheid van klanten
+- U hebt meerdere stateless instanties van een partitie op één knoop punt nodig
 
 De meeste van deze vereisten worden uitgelijnd met de fysieke indeling van het cluster, weer gegeven als de fout domeinen van het cluster. 
 
@@ -29,6 +30,7 @@ De geavanceerde beleids regels voor plaatsing die helpen bij het oplossen van de
 2. Vereiste domeinen
 3. Voorkeurs domeinen
 4. Replica pakketing niet toestaan
+5. Meerdere stateless instanties op het knoop punt toestaan
 
 De meeste van de volgende besturings elementen kunnen worden geconfigureerd via knooppunt eigenschappen en plaatsings beperkingen, maar sommige gecompliceerdere. Om het eenvoudiger te maken, biedt de Service Fabric cluster resource manager de volgende extra plaatsings beleidsregels. Plaatsings beleid wordt geconfigureerd op basis van een service-exemplaar per naam. Ze kunnen ook dynamisch worden bijgewerkt.
 
@@ -122,6 +124,42 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 ```
 
 Het is nu mogelijk om deze configuraties te gebruiken voor services in een cluster dat niet geografisch is verspreid? Dat kan, maar er is ook geen goede reden. De vereiste, ongeldige en voorkeurs domein configuraties moeten worden vermeden tenzij de scenario's deze vereisen. Het is niet verstandig om een bepaalde workload af te dwingen om in één rek te worden uitgevoerd, of om de voor keur te geven aan een segment van uw lokale cluster ten opzichte van een andere. Verschillende hardwareconfiguraties moeten worden verdeeld over fout domeinen en worden afgehandeld via normale plaatsings beperkingen en eigenschappen van knoop punten.
+
+## <a name="placement-of-multiple-stateless-instances-of-a-partition-on-single-node"></a>Plaatsing van meerdere stateless instanties van een partitie op één knoop punt
+Het **AllowMultipleStatelessInstancesOnNode** -plaatsings beleid staat het plaatsen van meerdere stateless instanties van een partitie op één knoop punt toe. Standaard kunnen meerdere exemplaren van één partitie niet op een knoop punt worden geplaatst. Zelfs met een-1-service is het niet mogelijk om het aantal exemplaren te schalen dat groter is dan het aantal knoop punten in het cluster, voor een bepaalde benoemde service. Met dit plaatsings beleid wordt deze beperking verwijderd en kan InstanceCount hoger worden opgegeven dan het aantal knoop punten.
+
+Als u ooit een status bericht hebt gezien als ' `The Load Balancer has detected a Constraint Violation for this Replica:fabric:/<some service name> Secondary Partition <some partition ID> is violating the Constraint: ReplicaExclusion` ', hebt u deze voor waarde bereikt of iets dergelijks. 
+
+Door het `AllowMultipleStatelessInstancesOnNode` beleid op te geven voor de service, kan InstanceCount worden ingesteld buiten het aantal knoop punten in het cluster.
+
+Code:
+
+```csharp
+ServicePlacementAllowMultipleStatelessInstancesOnNodePolicyDescription allowMultipleInstances = new ServicePlacementAllowMultipleStatelessInstancesOnNodePolicyDescription();
+serviceDescription.PlacementPolicies.Add(allowMultipleInstances);
+```
+
+PowerShell:
+
+```posh
+New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName -Stateless –PartitionSchemeSingleton –PlacementPolicy @(“AllowMultipleStatelessInstancesOnNode”) -InstanceCount 10 -ServicePackageActivationMode ExclusiveProcess 
+```
+
+> [!NOTE]
+> Het plaatsings beleid bevindt zich momenteel in de preview-versie en achter de `EnableUnsupportedPreviewFeatures` cluster instelling. Aangezien dit nu een preview-functie is, kan het instellen van de preview-configuratie voor komen dat het cluster wordt bijgewerkt naar/van. Met andere woorden, u moet een nieuw cluster maken om de functie uit te proberen.
+>
+
+> [!NOTE]
+> Momenteel wordt het beleid alleen ondersteund voor stateless Services met de [activerings modus](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicepackageactivationmode?view=azure-dotnet)voor het ExclusiveProcess-service pakket.
+>
+
+> [!WARNING]
+> Het beleid wordt niet ondersteund wanneer het wordt gebruikt met statische poort eindpunten. Het gebruik van beide in combi natie kan leiden tot een slechte cluster als meerdere exemplaren op hetzelfde knoop punt verbinding met dezelfde poort proberen te maken en niet actief kunnen zijn. 
+>
+
+> [!NOTE]
+> Het gebruik van een hoge waarde van [MinInstanceCount](https://docs.microsoft.com/dotnet/api/system.fabric.description.statelessservicedescription.mininstancecount?view=azure-dotnet) met dit plaatsings beleid kan leiden tot vastgelopen toepassings upgrades. Als u bijvoorbeeld een cluster met vijf knoop punten hebt en InstanceCount = 10 hebt ingesteld, hebt u twee exemplaren per knoop punt. Als u MinInstanceCount = 9 instelt, kan een upgrade van de app worden vastgelopen. met MinInstanceCount = 8 kan dit worden vermeden.
+>
 
 ## <a name="next-steps"></a>Volgende stappen
 - Meer informatie over het configureren van Services vindt u op het [configureren van services](service-fabric-cluster-resource-manager-configure-services.md)

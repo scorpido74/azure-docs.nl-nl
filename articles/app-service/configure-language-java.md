@@ -10,12 +10,12 @@ ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: ed511f25132ea6bb766736804a5257ad7f6eff0a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 65b31bd39c85ea9073bb9415b9829df12b7d9e35
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149062"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171580"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Een Java-app voor Azure App Service configureren
 
@@ -692,11 +692,15 @@ Met App Service kunnen gebruikers de primaire versie van de JVM kiezen, zoals Ja
 
 Als u ervoor kiest om de secundaire versie vast te maken, moet u de secundaire versie van JVM regel matig bijwerken op de site. Om ervoor te zorgen dat uw toepassing wordt uitgevoerd op de nieuwere secundaire versie, maakt u een faserings sleuf en verhoogt u de secundaire versie op de staging-site. Nadat u hebt gecontroleerd of de toepassing correct wordt uitgevoerd op de nieuwe secundaire versie, kunt u de fase ring en productie-sleuven wisselen.
 
+## <a name="jboss-eap-hardware-options"></a>Opties voor JBoss EAP-hardware
+
+JBoss EAP is alleen beschikbaar op de opties Premium en geïsoleerd. Klanten die een JBoss EAP-site hebben gemaakt in een gratis, gedeeld, basis of Standard-laag tijdens de open bare preview, moeten omhoog schalen naar de laag voor Premium of geïsoleerd om onverwacht gedrag te voor komen.
+
 ## <a name="java-runtime-statement-of-support"></a>Java runtime-instructie van ondersteuning
 
 ### <a name="jdk-versions-and-maintenance"></a>JDK-versies en onderhoud
 
-De ondersteunde Java Development Kit (JDK) van Azure wordt [Zulu](https://www.azul.com/downloads/azure-only/zulu/) geboden via [Azul-systemen](https://www.azul.com/). Azul Zulu Enter prise builds van OpenJDK zijn een gratis, op productie gebaseerde distributie van de OpenJDK voor Azure en Azure Stack ondersteund door micro soft en Azul Systems. Ze bevatten alle onderdelen voor het maken en uitvoeren van Java SE-toepassingen. U kunt de JDK installeren vanuit de [Java JDK-installatie](/azure/developer/java/fundamentals/java-jdk-long-term-support).
+De ondersteunde Java Development Kit (JDK) van Azure wordt [Zulu](https://www.azul.com/downloads/azure-only/zulu/) geboden via [Azul-systemen](https://www.azul.com/). Azul Zulu Enter prise builds van OpenJDK zijn een gratis, op productie gebaseerde distributie van de OpenJDK voor Azure en Azure Stack ondersteund door micro soft en Azul Systems. Ze bevatten alle onderdelen voor het maken en uitvoeren van Java SE-toepassingen. U kunt de JDK installeren vanuit de [Java JDK-installatie](https://aka.ms/azure-jdks).
 
 Primaire versie-updates worden via nieuwe runtime-opties in Azure App Service verschaft. Klanten werken bij naar deze nieuwere versies van Java door hun App Service-implementatie te configureren en verantwoordelijk te zijn voor het testen en ervoor te zorgen dat de belang rijke update aan hun behoeften voldoet.
 

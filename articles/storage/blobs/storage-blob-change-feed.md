@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: c3348356561ea74bb5e0b5bc46fccee1ada82755
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 105978daeb93a2e5646222ff10055ba20a1dc481
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89568231"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172900"
 ---
 # <a name="change-feed-support-in-azure-blob-storage"></a>Ondersteuning voor feed wijzigen in Azure Blob Storage
 
@@ -139,7 +139,7 @@ Gebruik een Azure Resource Manager sjabloon om feed voor wijzigingen in uw besta
 De wijzigings feed produceert verschillende meta gegevens en logboek bestanden. Deze bestanden bevinden zich in de **$blobchangefeed** container van het opslag account. 
 
 > [!NOTE]
-> In de huidige release is de **$blobchangefeed** -container niet zichtbaar in azure Storage Explorer of de Azure Portal. U kunt de $blobchangefeed-container momenteel niet zien wanneer u de ListContainers-API aanroept, maar u kunt de ListBlobs-API rechtstreeks aan de container aanroepen om de blobs te bekijken.
+> In de huidige release is de $blobchangefeed-container alleen zichtbaar in Azure Portal, maar niet zichtbaar in Azure Storage Explorer. U kunt de $blobchangefeed-container momenteel niet zien wanneer u de ListContainers-API aanroept, maar u kunt de ListBlobs-API rechtstreeks aan de container aanroepen om de blobs te zien
 
 Uw client toepassingen kunnen de wijzigings feed gebruiken met behulp van de processor bibliotheek voor de invoer van de BLOB-wijziging die wordt meegeleverd met de SDK voor de wijzigings feed processor. 
 
