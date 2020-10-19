@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het oplossen van fouten die 
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 908c7e4bc0ca15d952ef1d4d969c5bf686e0bdc3
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: da650453006b77490769d1cef57fc3d4f4447e40
+ms.sourcegitcommit: a75ca63da5c0cc2aff5fb131308853b9edb41552
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058111"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92169367"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Back-upfouten op virtuele machines van Azure oplossen
 
@@ -324,6 +324,16 @@ Als u na het terugzetten de schijven offline hebt gezet, kunt u het volgende doe
 * Controleer of de computer waarop het script wordt uitgevoerd, voldoet aan de vereisten van het besturings systeem. [Meer informatie](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#system-requirements).  
 * Zorg ervoor dat u niet naar dezelfde bron herstelt. u [vindt hier meer informatie](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#original-backed-up-machine-versus-another-machine).
 
+### <a name="usererrorinstantrpnotfound---restore-failed-because-the-snapshot-of-the-vm-was-not-found"></a>UserErrorInstantRpNotFound-herstel is mislukt omdat de moment opname van de virtuele machine niet is gevonden
+
+Fout code: UserErrorInstantRpNotFound <br>
+Fout bericht: het herstellen is mislukt omdat de moment opname van de virtuele machine niet is gevonden. De moment opname is verwijderd, controleer.<br>
+
+Deze fout treedt op wanneer u probeert te herstellen vanaf een herstel punt dat niet naar de kluis is overgebracht en is verwijderd in de momentopname fase. 
+<br>
+U kunt dit probleem oplossen door de virtuele machine te herstellen vanaf een ander herstel punt.<br>
+
+#### <a name="common-errors"></a>Algemene fouten 
 | Foutdetails | Tijdelijke oplossing |
 | --- | --- |
 | Het herstellen is mislukt vanwege een interne cloud fout. |<ol><li>De Cloud service waarnaar u wilt herstellen, is geconfigureerd met DNS-instellingen. U kunt het volgende controleren: <br>**$Deployment = Get-AzureDeployment-servicenaam "servicenaam"-sleuf "productie" Get-AzureDns-DnsSettings $Deployment. DnsSettings**.<br>Als het **adres** is geconfigureerd, worden de DNS-instellingen geconfigureerd.<br> <li>De Cloud service waarnaar u wilt herstellen, is geconfigureerd met **ReservedIP**, en bestaande vm's in de Cloud service hebben de status gestopt. U kunt controleren of een Cloud service een IP-adres heeft gereserveerd met behulp van de volgende Power shell-cmdlets: **$Deployment = Get-AzureDeployment-ServiceName "servicenaam"-sleuf "Production" $DEP. ReservedIPName**. <br><li>U probeert een virtuele machine met de volgende speciale netwerk configuraties te herstellen in dezelfde Cloud service: <ul><li>Virtuele machines onder load balancer configuratie, intern en extern.<li>Virtuele machines met meerdere gereserveerde Ip's. <li>Virtuele machines met meerdere Nic's. </ul><li>Selecteer een nieuwe Cloud service in de gebruikers interface of Zie [herstel overwegingen](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations) voor vm's met speciale netwerk configuraties.</ol> |

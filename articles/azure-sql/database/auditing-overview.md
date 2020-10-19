@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 7ae7e20c32836d595d6e0fb4162a895407beeb5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02ea65748928fda7142ce17532999e1a069f6eb0
+ms.sourcegitcommit: a75ca63da5c0cc2aff5fb131308853b9edb41552
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91828042"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92169405"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Controleren op Azure SQL Database en Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -82,7 +82,7 @@ In de volgende sectie wordt de configuratie van de controle met behulp van de Az
   > [!NOTE]
   > Het is niet mogelijk om controle in te scha kelen op een onderbroken Synapse SQL-groep. Als u de controle wilt inschakelen, moet u de Synapse-SQL-groep verwijderen. Meer informatie over de [SQL-groep Synapse](https://docs.microsoft.com/azure/synapse-analytics/sql/best-practices-sql-pool).
 
-1. Ga naar de [Azure Portal](https://portal.azure.com).
+1. Ga naar [Azure Portal](https://portal.azure.com).
 2. Navigeer naar **controle** onder de kop beveiliging in het deel venster **SQL database** of **SQL Server** .
 3. Als u liever een server controle beleid instelt, kunt u de koppeling **Server instellingen weer geven** op de pagina database controle selecteren. U kunt vervolgens de instellingen voor de controle van de server weer geven of wijzigen. Het controle beleid voor servers is van toepassing op alle bestaande en nieuw gemaakte data bases op deze server.
 
@@ -93,6 +93,17 @@ In de volgende sectie wordt de configuratie van de controle met behulp van de Az
 5. U hebt meerdere opties voor het configureren van de locatie waar audit logboeken worden geschreven. U kunt Logboeken schrijven naar een Azure-opslag account, naar een Log Analytics-werk ruimte voor het gebruik van Azure Monitor-Logboeken (preview) of Event Hub voor het gebruik van Event Hub (preview). U kunt een wille keurige combi natie van deze opties configureren en er worden controle logboeken naar elke optie geschreven.
   
    ![opslag opties](./media/auditing-overview/auditing-select-destination.png)
+
+### <a name="auditing-of-microsoft-support-operations-preview"></a><a id="auditing-of-microsoft-support-operations"></a>Controle van Microsoft Ondersteuning bewerkingen (preview-versie)
+
+Door de controle van Microsoft Ondersteuning-bewerkingen (preview) voor Azure SQL Server kunt u bewerkingen van micro soft-ondersteunings medewerkers controleren wanneer ze toegang nodig hebben tot uw server tijdens een ondersteunings aanvraag. Het gebruik van deze mogelijkheid, samen met uw controle, zorgt voor meer transparantie in uw werk nemers en maakt anomalie detectie, trend visualisatie en preventie van gegevens verlies mogelijk.
+
+Als u de controle van Microsoft Ondersteuning bewerkingen (preview) wilt inschakelen, navigeert u naar **controle** onder de kop beveiliging in het deel venster van de **Azure SQL-Server** en schakelt u de **controle van micro soft-ondersteunings bewerkingen (preview)** in **op aan**.
+
+  > [!IMPORTANT]
+  > Controle van micro soft-ondersteunings bewerkingen (preview) biedt geen ondersteuning voor opslag account bestemming. Als u de mogelijkheid wilt inschakelen, moet een Log Analytics-werk ruimte of een event hub-doel worden geconfigureerd.
+
+![Scherm opname van Microsoft Ondersteuning bewerkingen](./media/auditing-overview/support-operations.png)
 
 ### <a name="audit-to-storage-destination"></a><a id="audit-storage-destination"></a>Controleren op opslag bestemming
 
@@ -111,7 +122,7 @@ Als u het schrijven van audit logboeken naar een opslag account wilt configurere
 - U kunt audit logboeken schrijven naar een Azure Storage-account achter een VNet of firewall. Zie voor specifieke instructies [audit schrijven naar een opslag account achter VNet en firewall](audit-write-storage-account-behind-vnet-firewall.md).
 - Nadat u de controle-instellingen hebt geconfigureerd, kunt u de nieuwe functie voor het detecteren van bedreigingen inschakelen en e-mail berichten configureren voor het ontvangen van beveiligings waarschuwingen. Wanneer u detectie van dreigingen gebruikt, ontvangt u proactieve waarschuwingen over afwijkende database activiteiten die kunnen wijzen op mogelijke beveiligings dreigingen. Zie aan de slag [met detectie van bedreigingen](threat-detection-overview.md)voor meer informatie.
 - Zie de naslag informatie over de [indeling van BLOB-controle logboeken](https://go.microsoft.com/fwlink/?linkid=829599)voor meer informatie over de logboek indeling, de hiërarchie van de opslag map en naam conventies.
-- Wanneer u AAD-verificatie gebruikt, worden records met mislukte aanmeldingen *niet* weer gegeven in het SQL-controle logboek. Als u mislukte aanmeldings controle records wilt weer geven, gaat u naar de [Azure Active Directory-Portal](../../active-directory/reports-monitoring/reference-sign-ins-error-codes.md), waarin de details van deze gebeurtenissen worden vastgelegd.
+- Wanneer u Azure AD-verificatie gebruikt, worden records met mislukte aanmeldingen *niet* weer gegeven in het SQL-controle logboek. Als u mislukte aanmeldings controle records wilt weer geven, gaat u naar de [Azure Active Directory-Portal](../../active-directory/reports-monitoring/reference-sign-ins-error-codes.md), waarin de details van deze gebeurtenissen worden vastgelegd.
 - Controle op [alleen-lezen replica's](read-scale-out.md) wordt automatisch ingeschakeld. Voor meer informatie over de hiërarchie van de opslag mappen, naam conventies en logboek indeling raadpleegt u de [SQL database controle logboek indeling](audit-log-format.md).
 
 ### <a name="audit-to-log-analytics-destination"></a><a id="audit-log-analytics-destination"></a>Controleren op Log Analytics bestemming
@@ -215,7 +226,7 @@ Bij geo-gerepliceerde data bases, wanneer u controle inschakelt voor de hoofd da
 
 ### <a name="storage-key-regeneration"></a>Opnieuw genereren van de opslag sleutel
 
-In productie zult u uw opslag sleutels waarschijnlijk periodiek vernieuwen. Wanneer u audit logboeken naar Azure Storage schrijft, moet u uw controle beleid opnieuw opslaan bij het vernieuwen van uw sleutels. Het proces is als volgt:
+In productie zult u uw opslag sleutels waarschijnlijk periodiek vernieuwen. Wanneer u audit logboeken naar Azure Storage schrijft, moet u uw controle beleid opnieuw opslaan bij het vernieuwen van uw sleutels. Het proces verloopt als volgt:
 
 1. **Opslag Details**openen. Selecteer in het vak **toegangs sleutel voor opslag** de optie **secundair**en klik op **OK**. Klik vervolgens boven aan de pagina controle configuratie op **Opslaan** .
 

@@ -7,12 +7,12 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 10/16/2020
 tags: connectors
-ms.openlocfilehash: 3a2fb2180acfe8fed5701ae4320ea0d1424ed9e0
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 534b9fedc6649d3174ea65caf51b28004de7bda2
+ms.sourcegitcommit: a75ca63da5c0cc2aff5fb131308853b9edb41552
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166281"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92169384"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>Werk stromen automatiseren voor een SQL database met behulp van Azure Logic Apps
 
@@ -253,15 +253,13 @@ Wanneer u een opgeslagen procedure aanroept met behulp van de SQL Server-connect
 
 ## <a name="troubleshoot-problems"></a>Problemen oplossen
 
-Het is zeer gebruikelijk om connectiviteits problemen te ondervinden. Hier volgt een voor beeld van een fout bericht:
+Problemen met de verbinding kunnen zich doorgaans voordoen, zodat u het probleem kunt oplossen door [verbindings fouten te SQL Server](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server). Enkele voorbeelden:
 
-> `A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections.`
->
-> `(provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) (Microsoft SQL Server, Error: 53)`
->
-> `(provider: TCP Provider, error: 0 - No such host is known.) (Microsoft SQL Server, Error: 11001)`
+* `A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections.`
 
-Volg de stappen [voor het oplossen van connectiviteits fouten naar SQL Server](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server) om het probleem op te lossen.
+* `(provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) (Microsoft SQL Server, Error: 53)`
+
+* `(provider: TCP Provider, error: 0 - No such host is known.) (Microsoft SQL Server, Error: 11001)`
 
 ## <a name="connector-specific-details"></a>Connector-specifieke Details
 
