@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: 5f9f8be81c5b90ff5e7172b2aba41a108afc64bd
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 3fc10c9601deb66c8fb6182d5943011f1ef185ce
+ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126838"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92170048"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Verbinding maken met Azure IoT Central
 
@@ -113,7 +113,7 @@ Als u een inbreuk op de beveiliging hebt of als uw primaire certificaat is inges
 
 ### <a name="register-and-connect-devices"></a>Apparaten registreren en verbinden
 
-Als u apparaten bulksgewijs wilt verbinden met X. 509-certificaten, moet u eerst de apparaten in uw toepassing registreren met behulp van een CSV-bestand om [de apparaat-id's en apparaatnamen te importeren](howto-manage-devices.md#import-devices). De apparaat-Id's moeten in kleine letters worden gereduceerd.
+Als u apparaten bulksgewijs wilt verbinden met X. 509-certificaten, moet u eerst de apparaten in uw toepassing registreren met behulp van een CSV-bestand om [de apparaat-id's en apparaatnamen te importeren](howto-manage-devices.md#import-devices). Een apparaat-ID mag letters, cijfers en het `-` teken bevatten.
 
 Genereer X. 509-blad certificaten voor uw apparaten met behulp van het basis-of tussenliggende certificaat dat u hebt geüpload naar de registratie groep X. 509. Gebruik de **apparaat-id** als de `CNAME` waarde in de blad certificaten. De apparaatcode heeft de waarde voor **id-bereik** nodig voor uw toepassing, de **apparaat-id**en het bijbehorende certificaat van het apparaat.
 
@@ -149,7 +149,7 @@ De stroom wijkt enigszins af van de vraag of de apparaten SAS-tokens of X. 509-c
 
     :::image type="content" source="media/concepts-get-connected/group-primary-key.png" alt-text="Een scherm opname van een X. 509-registratie groep toevoegen":::
 
-1. Gebruik de `az iot central device compute-device-key` opdracht voor het genereren van de SAS-sleutels van het apparaat. Gebruik de primaire sleutel van de groep uit de vorige stap. De apparaat-Id's moeten kleine letters zijn:
+1. Gebruik de `az iot central device compute-device-key` opdracht voor het genereren van de SAS-sleutels van het apparaat. Gebruik de primaire sleutel van de groep uit de vorige stap. De apparaat-ID mag letters, cijfers en het `-` teken bevatten:
 
     ```azurecli
     az iot central device compute-device-key --primary-key <enrollment group primary key> --device-id <device ID>
@@ -170,7 +170,7 @@ De stroom wijkt enigszins af van de vraag of de apparaten SAS-tokens of X. 509-c
 
 1. [Maak een registratie groep](#create-an-enrollment-group) en [Voeg en controleer vervolgens een basis-of tussenliggend X. 509-certificaat](#add-and-verify-a-root-or-intermediate-x509-certificate) aan uw IOT Central-toepassing.
 
-1. Genereer de blad certificaten voor uw apparaten met behulp van het basis-of tussenliggende certificaat dat u aan uw IoT Central-toepassing hebt toegevoegd. Gebruik kleine-case apparaat-Id's als de `CNAME` in de Blade certificaten.
+1. Genereer de blad certificaten voor uw apparaten met behulp van het basis-of tussenliggende certificaat dat u aan uw IoT Central-toepassing hebt toegevoegd. Gebruik de apparaat-Id's als de `CNAME` in de Blade certificaten. Een apparaat-ID mag letters, cijfers en het `-` teken bevatten.
 
 1. De OEM knippert elk apparaat met een apparaat-ID, een gegenereerde Leaf X. 509-certificaat en de waarde voor het bereik van de toepassings **-id** .
 
@@ -185,7 +185,7 @@ De stroom wijkt enigszins af van de vraag of de apparaten SAS-tokens of X. 509-c
 
 ## <a name="individual-enrollment-based-device-connectivity"></a>Afzonderlijke op registratie gebaseerde connectiviteit van apparaten
 
-Gebruik individuele inschrijvingen voor klanten die elk hun eigen verificatie referenties verbinden. Een afzonderlijke inschrijving is een vermelding voor één apparaat dat verbinding mag maken. Afzonderlijke inschrijvingen kunnen X. 509 Leaf-certificaten of SAS-tokens (van een fysieke of virtuele Trusted Platform Module) gebruiken als Attestation-mechanismen. De apparaat-ID (ook wel registratie-ID genoemd) in een afzonderlijke inschrijving is alfanumerieke tekens en kan afbreek streepjes bevatten. Zie voor meer informatie [DPS individuele inschrijving](../../iot-dps/concepts-service.md#individual-enrollment).
+Gebruik individuele inschrijvingen voor klanten die elk hun eigen verificatie referenties verbinden. Een afzonderlijke inschrijving is een vermelding voor één apparaat dat verbinding mag maken. Afzonderlijke inschrijvingen kunnen X. 509 Leaf-certificaten of SAS-tokens (van een fysieke of virtuele Trusted Platform Module) gebruiken als Attestation-mechanismen. De apparaat-ID (ook wel registratie-ID genoemd) in een afzonderlijke inschrijving een apparaat-ID mag letters, cijfers en het `-` teken bevatten. Zie voor meer informatie [DPS individuele inschrijving](../../iot-dps/concepts-service.md#individual-enrollment).
 
 > [!NOTE]
 > Wanneer u een afzonderlijke inschrijving voor een apparaat maakt, heeft dit voor rang op de standaard opties voor het inschrijven van groepen in uw IoT Central-toepassing.

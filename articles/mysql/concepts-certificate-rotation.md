@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: d36fe791e34544a4d6132a49fc5ec3f2aa334654
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: cc32a67ab681341fd8320b9445f4e00013f2aa51
+ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127281"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92170274"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mysql"></a>Informatie over de wijzigingen in de basis-CA-wijziging voor Azure Database for MySQL
 
@@ -104,7 +104,7 @@ Als u het basis certificaat niet vóór 15 februari 2021 (02/15/2021) bijwerkt, 
 ### <a name="4-what-is-the-impact-if-using-app-service-with-azure-database-for-mysql"></a>4. Wat is de impact van het gebruik van App Service met Azure Database for MySQL?
 Voor Azure app Services, het maken van verbinding met Azure Database for MySQL, kunnen we twee mogelijke scenario's hebben. Dit is afhankelijk van hoe u SSL met uw toepassing gebruikt.
 *   Dit nieuwe certificaat is toegevoegd aan App Service op platform niveau. Als u de SSL-certificaten gebruikt die zijn opgenomen in App Service platform in uw toepassing, is er geen actie vereist.
-*   Als u expliciet het pad naar het SSL-certificaat bestand in uw code opneemt, moet u het nieuwe certificaat downloaden en de code bijwerken om het nieuwe certificaat te gebruiken.
+*   Als u expliciet het pad naar het SSL-certificaat bestand in uw code opneemt, moet u het nieuwe certificaat downloaden en de code bijwerken om het nieuwe certificaat te gebruiken. Een goed voor beeld van dit scenario is wanneer u aangepaste containers in App Service gebruikt zoals gedeeld in de [app service documentatie](/app-service/tutorial-multi-container-app#configure-database-variables-in-wordpress.md)
 
 ### <a name="5-what-is-the-impact-if-using-azure-kubernetes-services-aks-with-azure-database-for-mysql"></a>5. Wat is de impact van het gebruik van Azure Kubernetes Services (AKS) met Azure Database for MySQL?
 Als u probeert verbinding te maken met de Azure Database for MySQL met behulp van Azure Kubernetes Services (AKS), is dit vergelijkbaar met de toegang vanuit een specifieke host-omgeving van klanten. Raadpleeg de stappen [hier](../aks/ingress-own-tls.md).
