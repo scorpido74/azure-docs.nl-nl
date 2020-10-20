@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/16/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 52bfd76a12f431576d4fc3cc7a51c6e58c7551ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43cb891ad63a23353437082f7cb1b1e45f146e5b
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89442748"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204215"
 ---
 # <a name="configure-a-mobile-app-that-calls-web-apis"></a>Een mobiele app configureren die web-Api's aanroept
 
@@ -160,7 +160,7 @@ Volg de stappen in de [sectie Xamarin. IOS](#enable-brokered-authentication-for-
 
 ### <a name="enable-the-broker-for-msal-for-android"></a>De Broker inschakelen voor MSAL voor Android
 
-Zie [brokered Authentication on Android](brokered-auth.md)voor meer informatie over het inschakelen van een Broker op Android.
+Zie [brokered Authentication on Android](msal-android-single-sign-on.md)voor meer informatie over het inschakelen van een Broker op Android.
 
 ### <a name="enable-the-broker-for-msal-for-ios-and-macos"></a>De Broker inschakelen voor MSAL voor iOS en macOS
 

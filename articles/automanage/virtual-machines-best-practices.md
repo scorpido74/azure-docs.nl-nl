@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
-ms.openlocfilehash: df03fc3049deaf5ce57fda74ca98c748ace1fbbc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dce076da08a7c31d7e2637dd5b8b29c9202ea10e
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90935245"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206404"
 ---
 # <a name="azure-automanage-for-virtual-machines-best-practices"></a>Aanbevolen procedures voor Azure automanage voor virtuele machines
 
@@ -32,7 +32,7 @@ Voor al deze services worden automatisch de voor bereid, automatisch geconfigure
 |Azure Security Center    |Azure Security Center is een systeem voor geïntegreerde infrastructuur beveiliging dat de beveiligings postuur van uw data centers versterkt en geavanceerde bedreigings beveiliging biedt voor uw hybride werk belastingen in de Cloud. [Meer](../security-center/security-center-intro.md)informatie.  Met automatisch beheer configureert u het abonnement waar uw VM zich bevindt in de gratis laag van Azure Security Center. Als uw abonnement al is gestart naar Azure Security Center, wordt dit niet opnieuw geconfigureerd door automatisch beheer.    |Aanbevolen procedures voor Azure VM – productie, aanbevolen procedures voor Azure-VM'S – dev/test    |Nee    |
 |Microsoft Antimalware    |Micro soft antimalware voor Azure is een gratis real-time beveiliging waarmee virussen, spyware en andere schadelijke software kunnen worden geïdentificeerd en verwijderd. Er worden waarschuwingen gegenereerd wanneer bekende schadelijke of ongewenste software probeert zichzelf te installeren of uit te voeren op uw Azure-systemen. [Meer](../security/fundamentals/antimalware.md)informatie. |Aanbevolen procedures voor Azure VM – productie, aanbevolen procedures voor Azure-VM'S – dev/test    |Ja    |
 |Updatebeheer    |U kunt Updatebeheer in Azure Automation gebruiken om updates van het besturings systeem voor uw virtuele machines te beheren. U kunt snel de status van beschik bare updates op alle agent computers beoordelen en het proces voor het installeren van vereiste updates voor servers beheren. [Meer](../automation/update-management/update-mgmt-overview.md)informatie.    |Aanbevolen procedures voor Azure VM – productie, aanbevolen procedures voor Azure-VM'S – dev/test    |Nee    |
-|Wijzigingen bijhouden &-inventarisatie    |Wijzigingen bijhouden en Inventaris combineren functies voor het bijhouden van wijzigingen en inventaris, zodat u wijzigingen in de infrastructuur van virtuele machines en servers kunt bijhouden. De service biedt ondersteuning voor het bijhouden van wijzigingen in Services, daemons software, REGI ster en bestanden in uw omgeving om u te helpen bij het vaststellen van ongewenste wijzigingen en het activeren van waarschuwingen. Met inventarisondersteuning kunt u in-guest resources opvragen voor zichtbaarheid van de geïnstalleerde toepassingen en andere configuratie-items.  [Meer](../automation/change-tracking.md)informatie.    |Aanbevolen procedures voor Azure VM – productie, aanbevolen procedures voor Azure-VM'S – dev/test    |Nee    |
+|Wijzigingen bijhouden &-inventarisatie    |Wijzigingen bijhouden en Inventaris combineren functies voor het bijhouden van wijzigingen en inventaris, zodat u wijzigingen in de infrastructuur van virtuele machines en servers kunt bijhouden. De service biedt ondersteuning voor het bijhouden van wijzigingen in Services, daemons software, REGI ster en bestanden in uw omgeving om u te helpen bij het vaststellen van ongewenste wijzigingen en het activeren van waarschuwingen. Met inventarisondersteuning kunt u in-guest resources opvragen voor zichtbaarheid van de geïnstalleerde toepassingen en andere configuratie-items.  [Meer](../automation/change-tracking/overview.md)informatie.    |Aanbevolen procedures voor Azure VM – productie, aanbevolen procedures voor Azure-VM'S – dev/test    |Nee    |
 |Azure Automation Account    |Azure Automation ondersteunt beheer gedurende de gehele levenscyclus van uw infrastructuur en toepassingen. [Meer](../automation/automation-intro.md)informatie.    |Aanbevolen procedures voor Azure VM – productie, aanbevolen procedures voor Azure-VM'S – dev/test    |Nee    |
 |Log Analytics-werkruimte    |Azure Monitor worden logboek gegevens opgeslagen in een Log Analytics-werk ruimte, een Azure-resource en een container waarin gegevens worden verzameld, geaggregeerd en fungeert als een administratieve grens. [Meer](../azure-monitor/platform/design-logs-deployment.md)informatie.    |Aanbevolen procedures voor Azure VM – productie, aanbevolen procedures voor Azure-VM'S – dev/test    |Nee    |
 

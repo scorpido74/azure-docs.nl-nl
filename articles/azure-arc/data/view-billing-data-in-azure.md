@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 5335442c7ffcdca950ba0e9c5f3b6bc9e4be9f63
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 9da725c433ad5d6233fd164d256692ca407714fc
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108147"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206449"
 ---
 # <a name="upload-billing-data-to-azure-and-view-it-in-the-azure-portal"></a>Upload facturerings gegevens naar Azure en Bekijk deze in de Azure Portal
 
@@ -117,7 +117,7 @@ Volg deze stappen om facturerings gegevens weer te geven in de Azure Portal:
 1. Klik op de knop **kosten per resource** aan de bovenkant van de weer gave.
 1. Zorg ervoor dat uw bereik is ingesteld op het abonnement waarin uw gegevens service resources zijn gemaakt.
 1. Selecteer **kosten per resource** in de vervolg keuzelijst weer geven naast de scope selector aan de bovenkant van de weer gave.
-1. Zorg ervoor dat het datum filter is ingesteld op **deze maand** of een ander tijds bereik dat duidelijk is op basis van de timing van de gegevens service resources die u hebt gemaakt.
+1. Zorg ervoor dat het datum filter is ingesteld op **deze maand** of een ander tijds bereik dat duidelijk wordt gezien de timing van het moment waarop u uw gegevens service bronnen hebt gemaakt.
 1. Klik op **filter toevoegen** om een filter toe te voegen op **resource type**  =  `microsoft.azuredata/<data service type>` Als u wilt filteren op slechts één type gegevens service van Azure Arc ingeschakeld.
 1. Er wordt nu een lijst weer geven met alle resources die zijn gemaakt en geüpload naar Azure. Omdat de facturerings meter $0 is, zult u zien dat de kosten altijd $0 zijn.
 
@@ -135,11 +135,11 @@ U kunt ook regel matig **gedetailleerde** gebruiks-en facturerings gegevens expo
 
 Volg deze stappen om een export taak voor facturering in te stellen:
 
-1. Klik op exporteren aan de linkerkant.
-1. Klik op Toevoegen.
+1. Klik op **exporteren** aan de linkerkant.
+1. Klik op **Add**.
 1. Voer een naam en een export frequentie in en klik op volgende.
-1. Kies of u een nieuw opslag account wilt maken of een nieuwe wilt maken en vul het formulier in om het opslag account, de container en het mappad op te geven waarnaar u de facturerings gegevens bestanden wilt exporteren en klik op volgende.
-1. Klik op Maken.
+1. Kies of u een nieuw opslag account wilt maken of een bestaand wilt gebruiken en vul het formulier in om het opslag account, de container en het mappad op te geven waarnaar u de facturerings gegevens bestanden wilt exporteren en klik op volgende.
+1. Klik op **Maken**.
 
 De export bestanden van de facturerings gegevens zijn ongeveer 4 uur beschikbaar en worden geëxporteerd volgens het schema dat u hebt opgegeven bij het maken van de export taak voor facturering.
 
@@ -156,7 +156,7 @@ U kunt de facturerings gegevens bestanden in de Azure Portal valideren.
 5. Klik op de container die u hebt opgegeven bij het maken van de export taak voor facturering hierboven.
 6. Klik op de map die u hebt opgegeven bij het maken van de export taak voor facturering hierboven.
 7. Zoom in op de gegenereerde mappen en bestanden en klik op een van de gegenereerde CSV-bestanden.
-8. Klik op de knop downloaden, waarmee het bestand wordt opgeslagen in de lokale map met Down loads.
+8. Klik op de knop **downloaden** , waarmee het bestand wordt opgeslagen in de lokale map met Down loads.
 9. Open het bestand met behulp van een CSV-bestands viewer zoals Excel.
 10. De resultaten filteren om alleen de rijen met het **resource type**weer te geven  =  `Microsoft.AzureData/<data service resource type` .
 11. U ziet het aantal uren dat het exemplaar is gebruikt in de huidige periode van 24 uur in de kolom UsageQuantity.
