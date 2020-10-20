@@ -6,17 +6,17 @@ ms.suite: integration
 ms.reviewer: deli, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 1826b17a971b49fdfe8d5df02d71eb682b15db6f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b3b40b5958df52dabf92155a1de809578f1d374
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91269723"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201117"
 ---
 # <a name="manage-azure-resources-and-monitor-costs-by-creating-automation-tasks-preview"></a>Azure-resources beheren en kosten bewaken door automatiserings taken te maken (preview)
 
 > [!IMPORTANT]
-> Deze mogelijkheid is beschikbaar als open bare preview, wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+> Deze functie is in openbare preview en wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 Om [Azure-resources](../azure-resource-manager/management/overview.md#terminology) gemakkelijker te kunnen beheren, kunt u geautomatiseerde beheer taken voor een specifieke resource of resource groep maken met behulp van Automation-taak sjablonen, die in Beschik baarheid variëren op basis van het resource type. Voor een [Azure-opslag account](../storage/common/storage-account-overview.md)kunt u bijvoorbeeld een Automation-taak instellen waarmee u de maandelijkse kosten voor dat opslag account ontvangt. U kunt voor een [virtuele machine van Azure](https://azure.microsoft.com/services/virtual-machines/)een Automation-taak maken waarmee de virtuele machine op een vooraf gedefinieerd schema wordt ingeschakeld of uitgeschakeld.
 
@@ -47,7 +47,7 @@ In dit artikel wordt beschreven hoe u de volgende taken kunt uitvoeren:
 
 Op dit moment kunt u een Automation-taak alleen op resource niveau maken, de uitvoerings geschiedenis van de taak bekijken en de werk stroom van de onderliggende logische app van de taak bewerken, die wordt ingeschakeld door de [Azure Logic apps](../logic-apps/logic-apps-overview.md) -service. Automatiserings taken zijn meer basis en licht gewicht dan [Azure Automation](../automation/automation-intro.md).
 
-Azure Automation is een op de cloud gebaseerde automatiserings-en configuratie service die consistent beheer in uw Azure-en niet-Azure-omgevingen ondersteunt. De service omvat [proces automatisering voor](../automation/automation-intro.md#process-automation) het indelen van processen door gebruik te maken van [runbooks](../automation/automation-runbook-execution.md), configuratie beheer met [Wijzigingen bijhouden en inventaris](../automation/change-tracking.md), update beheer, gedeelde mogelijkheden en heterogene functies. Automatisering geeft u volledige controle tijdens de implementatie, bewerkingen en het buiten gebruik stellen van workloads en bronnen.
+Azure Automation is een op de cloud gebaseerde automatiserings-en configuratie service die consistent beheer in uw Azure-en niet-Azure-omgevingen ondersteunt. De service omvat [proces automatisering voor](../automation/automation-intro.md#process-automation) het indelen van processen door gebruik te maken van [runbooks](../automation/automation-runbook-execution.md), configuratie beheer met [Wijzigingen bijhouden en inventaris](../automation/change-tracking/overview.md), update beheer, gedeelde mogelijkheden en heterogene functies. Automatisering geeft u volledige controle tijdens de implementatie, bewerkingen en het buiten gebruik stellen van workloads en bronnen.
 
 ## <a name="prerequisites"></a>Vereisten
 
