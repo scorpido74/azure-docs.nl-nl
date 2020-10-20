@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 9db53e36dee318d39d34d26a548d1d32cbbec3b2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fe0f2b0efa3f089398493cf30012e34097e065ec
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91266034"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944274"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Zelfstudie: Integratie van eenmalige aanmelding via Azure Active Directory met F5
 
@@ -72,15 +72,15 @@ U hebt het volgende nodig om aan de slag te gaan:
 
 2. Klik op de pagina **Guided Configuration** op **Upgrade Guided Configuration** in de linkerbovenhoek.
 
-    ![Configuratie van F5 (Kerberos)](./media/kerbf5-tutorial/configure14.png) 
+    ![Schermopname van de pagina Guided Configuration met de actie Upgrade Guided Configuration geselecteerd.](./media/kerbf5-tutorial/configure14.png) 
 
 3. Selecteer in het pop-upvenster Upgrade Guide Configuration op de optie **Choose File** om het gedownloade gebruiksscenariopakket te uploaden en klik op de knop **Upload and Install**.
 
-    ![Configuratie van F5 (Kerberos)](./media/kerbf5-tutorial/configure15.png) 
+    ![Schermopname van het pop-upvenster Upgrade Guided Configuration met Choose File en Upload and Install geselecteerd.](./media/kerbf5-tutorial/configure15.png) 
 
 4. Wanneer de upgrade is voltooid, klikt u op de knop **Continue**.
 
-    ![Configuratie van F5 (Kerberos)](./media/kerbf5-tutorial/configure16.png)
+    ![Schermopname van het dialoogvenster Guided Configuration update is complete met de knop Continue geselecteerd.](./media/kerbf5-tutorial/configure16.png)
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
@@ -213,60 +213,60 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Navigeer naar **System > Certificate Management > Traffic Certificate Management > SSL Certificate List**. Selecteer **Import** in de rechterhoek. Geef een **certificaatnaam op** (verderop in de configuratie wordt hiernaar verwezen). Selecteer bij **Certificate Source** de optie Upload File en geef het certificaat op dat u van Azure hebt gedownload tijdens het configureren van eenmalige aanmelding met SAML. Klik op **Import**.
 
-    ![Configuratie van F5 (Kerberos)](./media/kerbf5-tutorial/configure01.png) 
+    ![Schermopname van de pagina SSL Certificate/Key Source met Certificate Name en Upload File gemarkeerd en de knop Import geselecteerd.](./media/kerbf5-tutorial/configure01.png) 
 
 1. Daarnaast hebt u het **SSL-certificaat voor de hostnaam van de toepassing nodig. Navigeer naar System > Certificate Management > Traffic Certificate Management > SSL Certificate List**. Selecteer **Import** in de rechterhoek. Het **Import Type** wordt **PKCS 12 (IIS)** . Geef een **Key Name** op (verderop in de configuratie wordt hiernaar verwezen) en geef het PFX-bestand op. Geef het **Password** voor de PFX op. Klik op **Import**.
 
     >[!NOTE]
     >In het voorbeeld is `Kerbapp.superdemo.live` de naam van onze app. We gebruiken een wildcardcertificaat en onze keyname is `WildCard-SuperDemo.live`
 
-    ![Configuratie van F5 (Kerberos)](./media/kerbf5-tutorial/configure02.png) 
+    ![Schermopname van de pagina SSL Certificate/Key Source met ingevoerde waarden en de knop Import geselecteerd.](./media/kerbf5-tutorial/configure02.png) 
  
 1. We gebruiken de begeleide ervaring voor het instellen van de Azure AD-federatie en -toepassingstoegang. Ga naar F5 BIG-IP **Main** en selecteer **Access > Guided Configuration > Federation > SAML Service Provider**. Klik op **Next** klik vervolgens op **Next** om de configuratie te starten.
 
-    ![Configuratie van F5 (Kerberos)](./media/kerbf5-tutorial/configure03.png) 
+    ![Schermopname van de pagina Guided Configuration met het pictogram Federation gemarkeerd en SAML Service Provider geselecteerd.](./media/kerbf5-tutorial/configure03.png) 
 
-    ![Configuratie van F5 (Kerberos)](./media/kerbf5-tutorial/configure04.png)
+    ![Schermopname van de pagina Guided Configuration - SAML Service Provider met de knop Next geselecteerd.](./media/kerbf5-tutorial/configure04.png)
 
 1. Geef een **Configuration Name** op. Geef de **Entity ID** op (dezelfde als die u hebt geconfigureerd in de configuratie van de Azure AD-toepassing). Geef de **Host name** op. Voeg een **Description** toe ter referentie. Accepteer de overige standaardgegevens en selecteer en klik op **Save & Next**.
 
-    ![Configuratie van F5 (Kerberos)](./media/kerbf5-tutorial/configure05.png) 
+    ![Schermopname van Service Provider Properties met de tekstvakken Host name en Description gemarkeerd en de knop Save & Next geselecteerd.](./media/kerbf5-tutorial/configure05.png) 
 
 1. In dit voorbeeld maken we een nieuwe virtuele server als 192.168.30.200 met poort 443. Geef het IP-adres van de virtuele server op bij **Destination Address**. Selecteer het **SSL Profile** van de client en selecteer Create new. Geef het eerder geüploade toepassingscertificaat (het wildcardcertificaat in dit voorbeeld) en de bijbehorende sleutel op en klik op **Save & Next**.
 
     >[!NOTE]
     >In dit voorbeeld wordt onze interne webserver uitgevoerd op poort 80 en willen we deze publiceren met 443.
 
-    ![Configuratie van F5 (Kerberos)](./media/kerbf5-tutorial/configure06.png)
+    ![Schermopname van de pagina Virtual Server Properties met het tekstvak Destination Address gemarkeerd en de knop Save & Next geselecteerd.](./media/kerbf5-tutorial/configure06.png)
 
 1. Geef bij **Select method to configure your IdP connector** de optie Metadata op, klik op Choose File en upload het XML-bestand met metagegevens dat u eerder hebt gedownload van Azure AD. Geef een unieke **naam** op voor de SAML IDP-connector. Kies het **Metadata Signing Certificate** dat eerder is geüpload. Klik op **Save & Next**.
 
-    ![Configuratie van F5 (Kerberos)](./media/kerbf5-tutorial/configure07.png)  
+    ![Schermopname van de pagina External Identity Provider Connector Settings met het tekstvak Name gemarkeerd en de knop Save & Next geselecteerd.](./media/kerbf5-tutorial/configure07.png)  
 
 1. Selecteer onder **Select a Pool** de optie **Create New** (u kunt ook een pool selecteren die al bestaat). Laat andere waarden op de standaardwaarde ingesteld.    Typ onder Pool Servers het IP-adres onder **IP Address/Node Name**. Geef de **Port** op. Klik op **Save & Next**.
  
-    ![Configuratie van F5 (Kerberos)](./media/kerbf5-tutorial/configure08.png)
+    ![Schermopname van de pagina Pool Properties met de tekstvakken IP Address/Node Name en Port gemarkeerd en de knop Save & Next geselecteerd.](./media/kerbf5-tutorial/configure08.png)
 
 1. Selecteer in het scherm Single Sign-On Settings de optie **Enable Single Sign-On**. Onder **Selected Single Sign-On Type** kiest u **Kerberos**. Vervang **session.saml.last.Identity** door **session.saml.last.attr.name.Identity** onder **Username Source** (deze variabele is ingesteld met behulp van claimtoewijzing in Azure AD). Selecteer **Show Advanced Setting**. Typ onder **Kerberos Realm** de domeinnaam. Geef onder **Account Name/ Account Password** de accountnaam en het wachtwoord voor APM-delegatie op. Geef het IP-adres van de domeincontroller op in het veld **KDC**. Klik op **Save & Next**.
 
-    ![Configuratie van F5 (Kerberos)](./media/kerbf5-tutorial/configure09.png)   
+    ![Schermopname van Single Sign-On Settings met de tekstvakken gemarkeerd en de knop Save & Next geselecteerd.](./media/kerbf5-tutorial/configure09.png)   
 
 1. In het kader van deze richtlijnen slaan we eindpuntcontroles over.  Raadpleeg de documentatie van F5 voor meer informatie.  Selecteer **Save & Next** op het scherm.
 
-    ![Configuratie van F5 (Kerberos)](./media/kerbf5-tutorial/configure10.png) 
+    ![Schermopname van de pagina Endpoint Checks Properties met de knop Save & Next geselecteerd.](./media/kerbf5-tutorial/configure10.png) 
 
 1. Accepteer de standaardwaarden voor schijven en klik op **Save & Next**. Raadpleeg de documentatie van F5 voor meer informatie over de instellingen voor het beheer van SAML-sessies.
 
 
-    ![Configuratie van F5 (Kerberos)](./media/kerbf5-tutorial/configure11.png) 
+    ![Schermopname van de pagina Timeout Settings met de knop Save & Next geselecteerd.](./media/kerbf5-tutorial/configure11.png) 
  
 1. Bekijk het overzichtsscherm en selecteer **Deploy** om de BIG-IP te configureren.
  
-    ![Configuratie van F5 (Kerberos)](./media/kerbf5-tutorial/configure12.png)
+    ![Schermopname van de pagina 'Your application is ready to be deployed' (Uw toepassing is klaar voor implementatie) met de sectie 'Summary' (Samenvatting) gemarkeerd en de knop 'Deploy' (Implementeren) geselecteerd.](./media/kerbf5-tutorial/configure12.png)
 
 1. Zodra de toepassing is geconfigureerd, klikt u op **Finish**.
 
-    ![Configuratie van F5 (Kerberos)](./media/kerbf5-tutorial/configure13.png)
+    ![Schermopname van de pagina Your application is deployed met de knop Finish geselecteerd.](./media/kerbf5-tutorial/configure13.png)
 
 ## <a name="advanced-configuration"></a>Geavanceerde configuratie
 
@@ -317,27 +317,27 @@ U configureert een Active Directory AAA-server in Access Policy Manager (APM) om
 
 15. Klik op **Finished**. De nieuwe server wordt weergegeven in de lijst. Hiermee voegt u de nieuwe Active Directory-server toe aan de lijst met Active Directory-servers.
 
-    ![Configuratie van F5 (Kerberos)](./media/kerbf5-tutorial/configure17.png)
+    ![Schermopname van de secties General Properties en Configuration.](./media/kerbf5-tutorial/configure17.png)
 
 ### <a name="saml-configuration"></a>SAML-configuratie
 
 1. U moet het metagegevenscertificaat importeren in F5. Dit wordt later gebruikt in het installatieproces. Navigeer naar **System > Certificate Management > Traffic Certificate Management > SSL Certificate List**. Selecteer **Import** in de rechterhoek.
 
-    ![Configuratie van F5 (Kerberos)](./media/kerbf5-tutorial/configure18.png)
+    ![Schermopname van de pagina Import SSL Certificate/Key Source met de knop Import geselecteerd.](./media/kerbf5-tutorial/configure18.png)
 
 2. Voor het instellen van de SAML-IDP **navigeert u naar Access > Federation > SAML: Service Provider > External Idp Connectors** en klikt u op **Create > From Metadata**.
 
-    ![Configuratie van F5 (Kerberos)](./media/kerbf5-tutorial/configure19.png)
+    ![Schermopname van de pagina SAML Service Provider met From Metadata geselecteerd in de vervolgkeuzelijst Create.](./media/kerbf5-tutorial/configure19.png)
 
-    ![Configuratie van F5 (Kerberos)](./media/kerbf5-tutorial/configure20.png)
+    ![Schermopname van het dialoogvenster Create New SAML IdP Connector.](./media/kerbf5-tutorial/configure20.png)
 
-    ![Configuratie van F5 (Kerberos)](./media/kerbf5-tutorial/configure21.png)
+    ![Schermopname van het venster Edit SAML IdP Connector met General Settings geselecteerd.](./media/kerbf5-tutorial/configure21.png)
 
-    ![Configuratie van F5 (Kerberos)](./media/kerbf5-tutorial/configure22.png)
+    ![Schermopname van het venster Edit SAML IdP Connector met Single Sign On Service Settings geselecteerd.](./media/kerbf5-tutorial/configure22.png)
 
-    ![Configuratie van F5 (Kerberos)](./media/kerbf5-tutorial/configure23.png)
+    ![Schermopname van het venster Edit SAML IdP Connector met Security Settings geselecteerd.](./media/kerbf5-tutorial/configure23.png)
 
-    ![Configuratie van F5 (Kerberos)](./media/kerbf5-tutorial/configure24.png)
+    ![Schermopname van het venster Edit SAML IdP Connector met SLO Service Settings geselecteerd.](./media/kerbf5-tutorial/configure24.png)
 
 1. Voor het instellen van het SAML-SP navigeert u naar **Access > Federation > SAML Service Provider > Local SP Services** en klikt u op **Create**. Voer de volgende informatie in en klik op **OK**.
 
@@ -348,17 +348,17 @@ U configureert een Active Directory AAA-server in Access Policy Manager (APM) om
     * Host: kerbapp200.superdemo.live
     * Description: kerbapp200.superdemo.live
 
-     ![Configuratie van F5 (Kerberos)](./media/kerbf5-tutorial/configure25.png)
+     ![Schermopname van het venster Edit SAML SP Service met General Settings geselecteerd.](./media/kerbf5-tutorial/configure25.png)
 
      b. Selecteer de SP-configuratie, KerbApp200SAML, en klik op **Bind/UnBind IdP Connectors**.
 
-     ![Configuratie van F5 (Kerberos)](./media/kerbf5-tutorial/configure26.png)
+     ![Schermopname van de pagina SAML Service Provider - Local SP Services met KerbAPP200 SAML geselecteerd.](./media/kerbf5-tutorial/configure26.png)
 
-     ![Configuratie van F5 (Kerberos)](./media/kerbf5-tutorial/configure27.png)
+     ![Schermopname met de knop Bind/Unbind IdP Connectors geselecteerd.](./media/kerbf5-tutorial/configure27.png)
 
      c. Klik op **Add New Row** en selecteer de **External IdP connector** die u in de vorige stap hebt gemaakt, klik op **Update** en klik op **OK**.
 
-     ![Configuratie van F5 (Kerberos)](./media/kerbf5-tutorial/configure28.png)
+     ![Schermopname van het venster 'Edit SAML IdPs that use this SP' (SAML IdP's bewerken die deze SP gebruiken) met de knop 'Add New Row' (Nieuwe rij toevoegen) geselecteerd.](./media/kerbf5-tutorial/configure28.png)
 
 1. Voor het configureren van eenmalige aanmelding met Kerberos navigeert u naar **Access > Single Sign-on > Kerberos**, vult u de gegevens in en klikt u op **Finished**.
 
@@ -369,7 +369,7 @@ U configureert een Active Directory AAA-server in Access Policy Manager (APM) om
 
     * **User Realm Source**: session.logon.last.domain
 
-        ![Configuratie van F5 (Kerberos)](./media/kerbf5-tutorial/configure29.png)
+        ![Schermopname van de pagina Single Sign-On - Properties met de tekstvakken Username Source en User Realm Source geselecteerd.](./media/kerbf5-tutorial/configure29.png)
 
 1. Voor het configureren van het toegangsprofiel navigeert u naar **Access > Profile/Policies > Access Profile (per session policies)** , klikt u op **Create**, vult u de volgende informatie in en klikt u op **Finished**.
 
@@ -378,38 +378,38 @@ U configureert een Active Directory AAA-server in Access Policy Manager (APM) om
     * Profile Scope: Profiel
     * Languages: Engels
 
-        ![Configuratie van F5 (Kerberos)](./media/kerbf5-tutorial/configure30.png)
+        ![Schermopname van de pagina Profiles/Policies - Properties met de tekstvakken Name, Profile Type en Langauges gemarkeerd.](./media/kerbf5-tutorial/configure30.png)
 
 1. Klik op de naam, KerbApp200, voer de volgende informatie in en klik op **Update**.
 
     * Domain Cookie: superdemo.live
     * SSO Configuration: KerAppSSO_sso
 
-        ![Configuratie van F5 (Kerberos)](./media/kerbf5-tutorial/configure31.png)
+        ![Schermopname van de pagina SSD/Auth Domains met het tekstvak Domain Cookie en de vervolgkeuzelijst SSO Configuration gemarkeerd en de knop Update geselecteerd.](./media/kerbf5-tutorial/configure31.png)
 
 1. Klik op **Access Policy** en klik vervolgens op **Edit Access Policy** voor het profiel 'KerbApp200'.
 
-    ![Configuratie van F5 (Kerberos)](./media/kerbf5-tutorial/configure32.png)
+    ![Schermopnane van de pagina Access Policy met de actie Edit Access Policy for Profile KerbApp200 geselecteerd.](./media/kerbf5-tutorial/configure32.png)
 
-    ![Configuratie van F5 (Kerberos)](./media/kerbf5-tutorial/configure33.png)
+    ![Schermopname van de pagina 'Access Policy' (Toegangsbeleid) en het dialoogvenster 'SAML Authentication SP' (SAML-verificatie SP).](./media/kerbf5-tutorial/configure33.png)
 
-    ![Configuratie van F5 (Kerberos)](./media/kerbf5-tutorial/configure34.png)
+    ![Schermopname van de pagina Access Policy en het dialoogvenster Variable Assign met de Assignment-tekstvakken gemarkeerd.](./media/kerbf5-tutorial/configure34.png)
 
     * **session.logon.last.usernameUPN   expr {[mcget {session.saml.last.identity}]}**
 
     * **session.ad.lastactualdomain  TEXT superdemo.live**
 
-        ![Configuratie van F5 (Kerberos)](./media/kerbf5-tutorial/configure35.png)
+        ![Schermopname van de pagina Access Policy en het dialoogvenster Active Directory met het tekstvak SearchFilter gemarkeerd.](./media/kerbf5-tutorial/configure35.png)
 
     * **(userPrincipalName=%{session.logon.last.usernameUPN})**
 
-        ![Configuratie van F5 (Kerberos)](./media/kerbf5-tutorial/configure36.png)
+        ![Schermopname van de pagina Access Policy en het dialoogvenster AD Query - Branch Rules.](./media/kerbf5-tutorial/configure36.png)
 
-        ![Configuratie van F5 (Kerberos)](./media/kerbf5-tutorial/configure37.png)
+        ![Schermopname met de tekstvakken Custom Variable en Custom Expression gemarkeerd.](./media/kerbf5-tutorial/configure37.png)
 
     * **session.logon.last.username  expr { "[mcget {session.ad.last.attr.sAMAccountName}]" }**
 
-        ![Configuratie van F5 (Kerberos)](./media/kerbf5-tutorial/configure38.png)
+        ![Schermopname met de tekst Username from Logon Page gemarkeerd.](./media/kerbf5-tutorial/configure38.png)
 
     * **mcget {session.logon.last.username}**
     * **mcget {session.logon.last.password**
@@ -420,7 +420,7 @@ U configureert een Active Directory AAA-server in Access Policy Manager (APM) om
     * Beschrijving: KerbApp200
     * Address: 192.168.20.200
 
-        ![Configuratie van F5 (Kerberos)](./media/kerbf5-tutorial/configure39.png)
+        ![Schermopname van de pagina New Node met de tekstvakken Name, Description en Address gemarkeerd en de knop Finished geselecteerd.](./media/kerbf5-tutorial/configure39.png)
 
 1. Voor het maken van een nieuwe pool navigeert u naar **Local Traffic > Pools > Pool List, klikt u op Create**, voert u de volgende gegevens in en klikt u op **Finished**.
 
@@ -430,7 +430,7 @@ U configureert een Active Directory AAA-server in Access Policy Manager (APM) om
     * Address: 192.168.20.200
     * Service Port: 81
 
-        ![Configuratie van F5 (Kerberos)](./media/kerbf5-tutorial/configure40.png)
+        ![Schermopname van de pagina New Pool met ingevoerde waarden, en met de knop Finished geselecteerd.](./media/kerbf5-tutorial/configure40.png)
 
 1. Voor het maken van een virtuele server navigeert u naar **Local Traffic > Virtual Servers > Virtual Server List > +** , voert u de volgende gegevens in en klikt u op **Finished**.
 
@@ -440,9 +440,9 @@ U configureert een Active Directory AAA-server in Access Policy Manager (APM) om
     * Access Profile: KerbApp200
     * Geef het toegangsprofiel op dat in de vorige stap is gemaakt
 
-        ![Configuratie van F5 (Kerberos)](./media/kerbf5-tutorial/configure41.png)
+        ![Schermopname van de pagina Virtual Server List met de tekstvakken Name, Destination Address/Mask en Service Port gemarkeerd.](./media/kerbf5-tutorial/configure41.png)
 
-        ![Configuratie van F5 (Kerberos)](./media/kerbf5-tutorial/configure42.png)
+        ![Schermopname van de pagina Virtual Server List met de vervolgkeuzelijst Access Profile gemarkeerd.](./media/kerbf5-tutorial/configure42.png)
 
 ### <a name="setting-up-kerberos-delegation"></a>Kerberos-delegatie instellen 
 

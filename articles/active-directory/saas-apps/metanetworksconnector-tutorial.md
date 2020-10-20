@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 71aaaeec174611a86b037b693187cc4f49fe1a0c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 941218f9a35a0a242612ae1d6230c642129c8259
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88528842"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856883"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-meta-networks-connector"></a>Zelfstudie: Azure Active Directory-integratie met Meta Networks Connector
 
@@ -101,7 +101,7 @@ Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding wilt configurer
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
 
-    ![Gegevens van domein en URL's voor eenmalige aanmelding van Meta Networks Connector](common/idp-intiated.png)
+    ![Schermopname die de Standaard SAML-configuratie toont, waar u de id en URL kunt invoeren en vervolgens Opslaan selecteert.](common/idp-intiated.png)
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://login.nsof.io/v1/<ORGANIZATION-SHORT-NAME>/saml/metadata`
 
@@ -109,7 +109,7 @@ Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding wilt configurer
 
 5. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    ![Gegevens van domein en URL's voor eenmalige aanmelding van Meta Networks Connector](common/both-advanced-urls.png)
+    ![Schermopname die Extra URL's instellen toont, waar u een aanmeldings-URL kunt invoeren.](common/both-advanced-urls.png)
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://<ORGANIZATION-SHORT-NAME>.metanetworks.com/login`
 
@@ -120,7 +120,7 @@ Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding wilt configurer
 
 6. De toepassing Meta Networks Connector verwacht de SAML-asserties in een specifieke indeling. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van uw SAML-tokenkenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven. Klik op het pictogram **Bewerken** om het dialoogvenster **Gebruikerskenmerken** te openen.
 
-    ![image](common/edit-attribute.png)
+    ![Schermopname die Gebruikerskenmerken toont met het pictogram Bewerken geselecteerd.](common/edit-attribute.png)
     
 7. Bovendien verwacht de toepassing Meta Networks Connector nog enkele kenmerken die als SAML-antwoord moeten worden doorgestuurd. In de sectie **Gebruikersclaims** in het dialoogvenster **Gebruikerskenmerken** voert u de volgende stappen uit om het kenmerk van het SAML-token toe te voegen zoals wordt weergegeven in de onderstaande tabel:
     
@@ -134,9 +134,9 @@ Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding wilt configurer
 
     a. Klik op **Nieuwe claim toevoegen** om het dialoogvenster **Gebruikersclaims beheren** te openen.
 
-    ![image](common/new-save-attribute.png)
+    ![Schermopname die Gebruikersclaims toont met de optie om een nieuwe claim toe te voegen.](common/new-save-attribute.png)
 
-    ![image](common/new-attribute-details.png)
+    ![Schermopname die het dialoogvenster Gebruikersclaims beheren toont, waarin u de beschreven waarden kunt invoeren.](common/new-attribute-details.png)
 
     b. In het tekstvak **Naam** typt u de naam van het kenmerk die voor die rij wordt weergegeven.
 
@@ -173,19 +173,19 @@ Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding wilt configurer
     
 2. Ga naar **Administrator** en selecteer **Settings**.
     
-    ![Eenmalige aanmelding configureren](./media/metanetworksconnector-tutorial/configure3.png)
+    ![Schermopname met Instellingen geselecteerd in het menu Beheer.](./media/metanetworksconnector-tutorial/configure3.png)
     
 3. Controleer of **Log Internet Traffic** en **Force VPN MFA** zijn uitgeschakeld.
     
-    ![Eenmalige aanmelding configureren](./media/metanetworksconnector-tutorial/configure1.png)
+    ![Schermopname die laat zien hoe u deze instellingen uitschakelt.](./media/metanetworksconnector-tutorial/configure1.png)
     
 4. Ga naar **Administrator** en selecteer **SAML**.
     
-    ![Eenmalige aanmelding configureren](./media/metanetworksconnector-tutorial/configure4.png)
+    ![Schermopname met SAML geselecteerd in het menu Beheer.](./media/metanetworksconnector-tutorial/configure4.png)
     
 5. Voer de volgende stappen uit op de pagina **DETAILS**:
     
-    ![Eenmalige aanmelding configureren](./media/metanetworksconnector-tutorial/configure2.png)
+    ![Schermopname van de pagina DETAILS waarin u de beschreven waarden kunt invoeren.](./media/metanetworksconnector-tutorial/configure2.png)
     
     a. Kopieer de waarde van **SSO URL** en plak deze in het tekstvak **Aanmeldings-URL** van de sectie **Domein en URL's van Meta Networks Connector**.
     
@@ -197,7 +197,7 @@ Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding wilt configurer
     
 6. Voer op het tabblad **Algemeen** de volgende stappen uit:
 
-    ![Eenmalige aanmelding configureren](./media/metanetworksconnector-tutorial/configure5.png)
+    ![Schermopname van de pagina ALGEMEEN waarin u de beschreven waarden kunt invoeren.](./media/metanetworksconnector-tutorial/configure5.png)
 
     a. Plak in het tekstvak **Identity Provider Single Sign-On URL** de **aanmeldings-URL** die u hebt gekopieerd uit de Microsoft Azure-portal.
 

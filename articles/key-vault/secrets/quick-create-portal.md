@@ -11,18 +11,22 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 33842707f04e55b311aeeabe2f1bbc83204ec0c9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 126df6e7f4d227c20c2173a1e2d4c0d7361b043f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "83652276"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962442"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>Quickstart: Een geheim uit Azure Key Vault instellen en ophalen met behulp van de Azure Portal
 
 Azure Key Vault is een cloudservice die werkt als een beveiligd archief voor geheimen. U kunt veilig sleutels, wachtwoorden, certificaten en andere geheime informatie opslaan. Azure-sleutelkluizen kunnen worden gemaakt en beheerd via Azure Portal. In deze snelstart kunt u een sleutelkluis maken en daarin een geheim opslaan. Raadpleeg het [Overzicht](../general/overview.md) voor meer informatie over Key Vault.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Zie Over geheimen (about-secrets.md) voor meer informatie over geheimen.
+
+## <a name="prerequisites"></a>Vereisten
+
+- Een Azure-abonnement (u kunt [een gratis abonnement maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)).
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -46,6 +50,9 @@ Let op de onderstaande twee eigenschappen:
 
 * **Kluisnaam**: in het voorbeeld is dat **Contoso-Vault2**. U gebruikt deze naam voor andere stappen.
 * **Kluis-URI**: in het voorbeeld is dat https://contoso-vault2.vault.azure.net/. Toepassingen die via de REST API gebruikmaken van uw kluis, moeten deze URI gebruiken.
+
+U kunt ook een sleutelkluis maken met Azure CLI en PowerShell: [Sleutelkluis maken met PowerShell](../general/quick-create-powershell.md)
+[Sleutelkluis maken met Azure CLI](../general/quick-create-cli.md)
 
 Vanaf dit punt is uw Azure-account nu als enige gemachtigd om bewerkingen op deze nieuwe kluis uit te voeren.
 
@@ -90,5 +97,8 @@ Als u die niet meer nodig hebt, verwijdert u de resourcegroep. Hierdoor worden o
 In deze quickstart hebt u een Key Vault gemaakt en daar een geheim in opgeslagen. Voor meer informatie over Key Vault en hoe u Key Vault integreert met uw toepassingen gaat u verder naar de artikelen hieronder.
 
 - Lees een [Overzicht van Azure Key Vault](../general/overview.md)
+- Lees [Veilige toegang tot een sleutelkluis](../general/secure-your-key-vault.md)
+- Zie [Key Vault gebruiken met App Service-web-app](../general/tutorial-net-create-vault-azure-web-app.md)
+- Zie [Key Vault gebruiken met toepassing die is geïmplementeerd op VM](../general/tutorial-net-virtual-machine.md)
 - Zie de [Gids voor Azure Key Vault-ontwikkelaars](../general/developers-guide.md)
 - Bekijk de [best practices voor Azure Key Vault](../general/best-practices.md)

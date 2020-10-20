@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: ba3c504819eb30da8d21aa47aafc313d16eec51d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5271dbc5e571fdc624c6861c8919e11950320507
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550351"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850639"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-instavr-viewer"></a>Zelfstudie: Azure Active Directory-integratie met InstaVR Viewer
 
@@ -132,11 +132,11 @@ Voor het configureren van Azure AD-eenmalige aanmelding met InstaVR Viewer voert
 
 2. Klik op het **gebruikerspictogram** en selecteer **Account**.
 
-    ![Configuratie van InstaVR Viewer](media/instavr-viewer-tutorial/tutorial-instavr-viewer-account.png)
+    ![Schermopname van uw InstaVR Viewer-site met een geselecteerde gebruiker.](media/instavr-viewer-tutorial/tutorial-instavr-viewer-account.png)
 
 3. Schuif omlaag naar de **SAML-verificatie** en voer de volgende stappen uit:
 
-    ![Configuratie van InstaVR Viewer](media/instavr-viewer-tutorial/tutorial-instavr-viewer-configure.png)
+    ![Schermopname van de SAML Auth-pagina waarop u de waarden kunt invoeren die in deze stap worden beschreven.](media/instavr-viewer-tutorial/tutorial-instavr-viewer-configure.png)
 
     a. Plak in het tekstvak voor de **URL voor eenmalige aanmelding** de waarde van de **aanmeldings-URL** die u uit Azure Portal hebt gekopieerd.
 
@@ -211,15 +211,15 @@ In deze sectie wordt een gebruiker met de naam Britta Simon gemaakt in InstaVR V
 
 2. Selecteer **Package** (Pakket) in het linkernavigatievenster en selecteer **Make package for Web** (Pakket voor Web maken).
 
-    ![Configuratie van InstaVR Viewer](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing1.png)
+    ![Schermopname van de bedrijfssite van de InstaVR-viewer met Pakket selecteren en Pakket maken voor web geselecteerd.](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing1.png)
 
 3. Selecteer **Downloaden**.
 
-    ![Configuratie van InstaVR Viewer](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing2.png)
+    ![Schermopname met het Download-pictogram geselecteerd.](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing2.png)
 
 4. Selecteer **Open Hosted Page** (Gehoste pagina openen). Vervolgens wordt u omgeleid naar Azure AD voor de aanmelding.
 
-    ![Configuratie van InstaVR Viewer](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing3.png)
+    ![Schermopname van de geopende gehoste pagina.](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing3.png)
 
 5. Voer uw Azure AD-referenties in om u aan te melden bij Azure AD via eenmalige aanmelding.
 

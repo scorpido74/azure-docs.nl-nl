@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/15/2020
 ms.author: jeedes
-ms.openlocfilehash: 5956623876646d976c2c93b4953adab33e8231b2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 429820f41025eda262742ac9aec1de3b646b141f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88535574"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850542"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-intelligencebank"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met IntelligenceBank
 
@@ -137,11 +137,11 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Klik op **Verificator** en klik op **Nieuwe toevoegen**
 
-    ![IntelligenceBank-configuratie](./media/intelligencebank-tutorial/authenticator.PNG)
+    ![Schermopname met het tabblad Beheerder geselecteerd en het pictogram Nieuwe toevoegen.](./media/intelligencebank-tutorial/authenticator.PNG)
 
 1. Voer de volgende stappen uit:
 
-    ![IntelligenceBank-configuratie](./media/intelligencebank-tutorial/urls.PNG)
+    ![Schermopname die de velden toont waarin u de informatie van deze stap kunt invoeren.](./media/intelligencebank-tutorial/urls.PNG)
 
     a. Voer in het tekstvak **Naam** de naam in zoals `azureadsso`.
 
@@ -165,11 +165,11 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Ga naar **Beheerder** -> **Gebruikers** en selecteer **Pictogram nieuwe gebruiker toevoegen** om de **Gebruiker** toe te voegen.
 
-    ![IntelligenceBank-configuratie](./media/intelligencebank-tutorial/creating-user.PNG)
+    ![Schermopname met het pictogram Gebruikers dat is geselecteerd op het tabblad Gebruikers.](./media/intelligencebank-tutorial/creating-user.PNG)
 
 1. Vul de vereiste velden in volgens de vereisten van uw organisatie en klik op **Opslaan**.
 
-    ![IntelligenceBank-configuratie](./media/intelligencebank-tutorial/creating-user-1.PNG)
+    ![Schermopname met de pagina Nieuwe gebruiker toevoegen waar u gegevens van een gebruikers kunt invoeren.](./media/intelligencebank-tutorial/creating-user-1.PNG)
 
 ## <a name="test-sso"></a>Eenmalige aanmelding testen 
 

@@ -6,18 +6,18 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 06/11/2020
+ms.date: 10/13/2020
 ms.author: banders
-ms.openlocfilehash: 1df60eedfb776164be7e78f2994027b8d111828b
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 054641d8136d121e611182c8d8b104aefcbc6481
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88681954"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057872"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-sql-database"></a>Hoe reserveringskorting wordt toegepast op Azure SQL Database
 
-Wanneer u gereserveerde capaciteit voor Azure SQL Database hebt gekocht, wordt de reserveringskorting automatisch toegepast op SQL-databases die overeenkomen met de kenmerken en hoeveelheid van de reservering. Een reservering dekt de rekenkosten van uw SQL Database-instantie. Er worden tegen de normale tarieven software-, opslag- en netwerkkosten in rekening gebracht. U kunt de licentiekosten voor SQL Database dekken via [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/).
+Wanneer u gereserveerde capaciteit voor Azure SQL Database hebt gekocht, wordt de reserveringskorting automatisch toegepast op SQL-databases die overeenkomen met de kenmerken en hoeveelheid van de reservering. Een reservering is van toepassing op de rekenkosten van uw SQL Database, met inbegrip van de primaire replica en alle factureerbare secundaire replica's. Er worden tegen de normale tarieven software-, opslag- en netwerkkosten in rekening gebracht. U kunt de licentiekosten voor SQL Database dekken via [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
 Houd er rekening mee dat reserveringskortingen niet van toepassing zijn op serverloze modellen van Azure SQL Database.
 
@@ -31,7 +31,7 @@ Wanneer u een resource afsluit, wordt de reserveringskorting automatisch toegepa
 
 ## <a name="discount-applied-to-running-sql-databases"></a>Korting toegepast op actieve SQL-databases
 
- De korting voor reservecapaciteit voor SQL Database wordt op uurbasis toegepast op actieve SQL-databases. De reservering die u aanschaft, wordt vergeleken met het rekengebruik dat wordt gegenereerd door de actieve SQL-databases. Voor SQL-databases die geen vol uur worden uitgevoerd, wordt de reservering automatisch toegepast op andere SQL-databases die aan de reserveringskenmerken voldoen. De korting kan ook worden toegepast op SQL-databases die gelijktijdig worden uitgevoerd. Als u geen SQL-databases hebt die voldoen aan de reserveringsvoorwaarden en het hele uur worden uitgevoerd, profiteert u mogelijk niet optimaal van de korting voor de reserveringscapaciteit voor dat uur.
+De korting voor reservecapaciteit voor SQL Database wordt op uurbasis toegepast op actieve SQL-databases. De reservering die u aanschaft, wordt vergeleken met het rekengebruik dat wordt gegenereerd door de actieve SQL-databases. Voor SQL-databases die geen vol uur worden uitgevoerd, wordt de reservering automatisch toegepast op andere SQL-databases die aan de reserveringskenmerken voldoen. De korting kan ook worden toegepast op SQL-databases die gelijktijdig worden uitgevoerd. Als u geen SQL-databases hebt die voldoen aan de reserveringsvoorwaarden en het hele uur worden uitgevoerd, profiteert u mogelijk niet optimaal van de korting voor de reserveringscapaciteit voor dat uur.
 
 In de volgende voorbeelden ziet u hoe de korting voor de gereserveerde capaciteit voor SQL Database wordt toegepast, afhankelijk van het aantal kernen dat u hebt aangeschaft en wanneer ze worden uitgevoerd.
 
@@ -42,6 +42,7 @@ Voor de rest van deze voorbeelden wordt ervan uitgegaan dat u gereserveerde capa
 - Scenario 2: U voert een uur lang twee SQL-databases met elk 8 kernen uit. De reserveringskorting voor 16 cores wordt toegepast op het rekengebruik van beide SQL-databases met 8 kernen.
 - Scenario 3: U voert één SQL Database-instantie met 16 cores uit van 13:00 tot 13:30 uur. U voert nog een SQL Database-instantie met 16 cores uit van 13:30 tot 14:00 uur. Beide worden gedekt door de reserveringskorting.
 - Scenario 4: U voert een SQL Database-instantie met 16 cores uit van 13:00 tot 13:45 uur. U voert nog een SQL Database-instantie met 16 cores uit van 13:30 tot 14:00 uur. Voor de overlapping van 15 minuten wordt de prijs voor betalen per gebruik in rekening gebracht. De reserveringskorting geldt voor het rekengebruik voor de rest van de tijd.
+- Scenario 5: U voert een SQL Hyperscale-database met vier kernen uit met drie secundaire replica's, met elk vier kernen. De reservering is van toepassing op het rekengebruik voor de primaire replica en voor alle secundaire replica's.
 
 Raadpleeg [Meer informatie over Azure-reserveringsgebruik](understand-reserved-instance-usage-ea.md) voor meer informatie over en inzicht in hoe uw Azure-reserveringen worden toegepast in uw gebruiksrapporten voor facturering.
 

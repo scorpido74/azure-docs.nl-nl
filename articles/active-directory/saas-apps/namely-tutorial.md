@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 00ddd61209af6e0d16b7f7579a6e8729cde0cdf0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: be48e4bb4f8364e9fafff69e2dc9eb6aa8db223c
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552465"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940980"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-namely"></a>Zelfstudie: Azure Active Directory-integratie met Namely
 
@@ -128,19 +128,19 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure AD wilt config
 
 2. Klik in de werkbalk bovenaan op **Bedrijf**.
    
-    ![Eenmalige aanmelding configureren](./media/namely-tutorial/tutorial_namely_06.png) 
+    ![Schermopname met de geselecteerde waarde Bedrijf.](./media/namely-tutorial/tutorial_namely_06.png) 
 
 3. Klik op het tabblad **Settings**.
    
-    ![Eenmalige aanmelding configureren](./media/namely-tutorial/tutorial_namely_07.png) 
+    ![Schermopname met het tabblad Bedrijfsinstellingen geselecteerd.](./media/namely-tutorial/tutorial_namely_07.png) 
 
 4. Klik op **SAML**.
    
-    ![Eenmalige aanmelding configureren](./media/namely-tutorial/tutorial_namely_08.png) 
+    ![Schermopname met SAML geselecteerd.](./media/namely-tutorial/tutorial_namely_08.png) 
 
 5. Voer in het dialoogvenster **SAML Settings** de volgende stappen uit:
    
-    ![Eenmalige aanmelding configureren](./media/namely-tutorial/tutorial_namely_09.png)
+    ![Schermopname van SAML-instellingen, waarin u de beschreven waarden kunt invoeren.](./media/namely-tutorial/tutorial_namely_09.png)
  
     a. Klik op **Enable SAML**. 
 
@@ -211,15 +211,15 @@ Het doel van dit gedeelte is het maken van een gebruiker met de naam Britta Simo
 
 2. Klik in de werkbalk bovenaan op **Personen**.
    
-    ![Eenmalige aanmelding configureren](./media/namely-tutorial/tutorial_namely_10.png) 
+    ![Schermopname met de waarde Mensen geselecteerd.](./media/namely-tutorial/tutorial_namely_10.png) 
 
 3. Klik op het tabblad **Map**.
    
-    ![Eenmalige aanmelding configureren](./media/namely-tutorial/tutorial_namely_11.png) 
+    ![Schermopname met het tabblad Personenlijst geselecteerd.](./media/namely-tutorial/tutorial_namely_11.png) 
 
 4. Klik op **Nieuwe persoon toevoegen**.
 
-    ![Eenmalige aanmelding configureren](./media/namely-tutorial/tutorial_namely_12.png)
+    ![Schermopname met de optie Nieuwe persoon toevoegen.](./media/namely-tutorial/tutorial_namely_12.png)
 
 5. Voer de volgende stappen uit in het dialoogvenster **Nieuwe persoon toevoegen**:
 

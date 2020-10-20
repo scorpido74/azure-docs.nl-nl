@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 507298f323fe14e3b114afebed5f2f258145a76e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: bc820eb282d08c248b588aa926eb3fd837fe51c3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549933"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91858112"
 ---
 # <a name="tutorial-integrate-knowledge-anywhere-lms-with-azure-active-directory"></a>Zelfstudie: Knowledge Anywhere LMS integreren met Azure Active Directory
 
@@ -111,19 +111,19 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 4. Selecteer het tabblad **Site**.
 
-    ![Configuratie van Knowledge Anywhere LMS](./media/knowledge-anywhere-lms-tutorial/configure1.png)
+    ![Schermopname met het tabblad Site.](./media/knowledge-anywhere-lms-tutorial/configure1.png)
 
 5. Selecteer het tabblad **SAML Settings** (SAML-instellingen).
 
-    ![Configuratie van Knowledge Anywhere LMS](./media/knowledge-anywhere-lms-tutorial/configure2.png)
+    ![Schermopname met de pagina Knowledge anywhere waarvoor SAML-instellingen zijn geselecteerd.](./media/knowledge-anywhere-lms-tutorial/configure2.png)
 
 6. Klik op **Add New** (Nieuwe toevoegen).
 
-    ![Configuratie van Knowledge Anywhere LMS](./media/knowledge-anywhere-lms-tutorial/configure3.png)
+    ![Schermopname met de knop Nieuwe toevoegen in de instellingen van de serviceprovider.](./media/knowledge-anywhere-lms-tutorial/configure3.png)
 
 7. Voer de volgende stappen uit op de pagina **Add/Update SAML Settings** (SAML-instellingen toevoegen/bijwerken):
 
-    ![Configuratie van Knowledge Anywhere LMS](./media/knowledge-anywhere-lms-tutorial/configure4.png)
+    ![Schermopname met de pagina SAML-instellingen toevoegen/bijwerken waar u de hier beschreven wijzigingen kunt aanbrengen.](./media/knowledge-anywhere-lms-tutorial/configure4.png)
 
     a. Voer de naam van de id-provider voor uw organisatie in. Bijvoorbeeld: `Azure`.
 
