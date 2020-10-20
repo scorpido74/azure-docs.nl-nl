@@ -11,20 +11,20 @@ ms.date: 02/19/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 157f01008636c61d95d479c396cf82d833b3b44d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ae5632f2495ac5916ac8c86666e973c34d1b789
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259659"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215226"
 ---
 # <a name="oauth-20-authorization-code-flow-in-azure-active-directory-b2c"></a>OAuth 2,0-autorisatie code stroom in Azure Active Directory B2C
 
-U kunt de OAuth 2,0-autorisatie code toekenning gebruiken in apps die op een apparaat zijn geïnstalleerd om toegang te krijgen tot beveiligde bronnen, zoals web-Api's. Met de Azure Active Directory B2C (Azure AD B2C)-implementatie van OAuth 2,0 kunt u registratie, aanmelding en andere identiteits beheer taken toevoegen aan uw mobiele en desktop-apps. Dit artikel is taal onafhankelijk. In het artikel wordt beschreven hoe u HTTP-berichten verzendt en ontvangt zonder gebruik te maken van open-source bibliotheken.
+U kunt de OAuth 2,0-autorisatie code toekenning gebruiken in apps die op een apparaat zijn geïnstalleerd om toegang te krijgen tot beveiligde bronnen, zoals web-Api's. Met de Azure Active Directory B2C (Azure AD B2C)-implementatie van OAuth 2,0 kunt u registratie, aanmelding en andere identiteits beheer taken toevoegen aan uw apps met één pagina, mobiel en bureau blad. Dit artikel is taal onafhankelijk. In het artikel wordt beschreven hoe u HTTP-berichten verzendt en ontvangt zonder gebruik te maken van open-source bibliotheken. Als dat mogelijk is, wordt u aangeraden de ondersteunde micro soft Authentication libraries (MSAL) te gebruiken. Bekijk de voor beeld- [apps die gebruikmaken van MSAL](code-samples.md).
 
-De OAuth 2,0-autorisatie code stroom wordt beschreven in [sectie 4,1 van de oauth 2,0-specificatie](https://tools.ietf.org/html/rfc6749). U kunt deze gebruiken voor verificatie en autorisatie in de meeste [toepassings typen](application-types.md), waaronder webtoepassingen en systeem eigen geïnstalleerde toepassingen. U kunt de OAuth 2,0-autorisatie code stroom gebruiken om veilig toegangs tokens te verkrijgen en tokens te vernieuwen voor uw toepassingen, die kunnen worden gebruikt voor toegang tot bronnen die worden beveiligd door een [autorisatie server](protocols-overview.md).  Met het vernieuwings token kan de client nieuwe toegangs-en vernieuwings tokens verkrijgen zodra het toegangs token is verlopen, doorgaans na een uur.
+De OAuth 2,0-autorisatie code stroom wordt beschreven in [sectie 4,1 van de oauth 2,0-specificatie](https://tools.ietf.org/html/rfc6749). U kunt deze gebruiken voor verificatie en autorisatie in de meeste [toepassings typen](application-types.md), waaronder webtoepassingen, toepassingen met één pagina en systeem eigen geïnstalleerde toepassingen. U kunt de OAuth 2,0-autorisatie code stroom gebruiken om veilig toegangs tokens te verkrijgen en tokens te vernieuwen voor uw toepassingen, die kunnen worden gebruikt voor toegang tot bronnen die worden beveiligd door een [autorisatie server](protocols-overview.md).  Met het vernieuwings token kan de client nieuwe toegangs-en vernieuwings tokens verkrijgen zodra het toegangs token is verlopen, doorgaans na een uur.
 
-Dit artikel is gericht op de OAuth 2,0-autorisatie code stroom voor **open bare clients** . Een open bare client is een client toepassing die niet vertrouwd kan worden om de integriteit van een geheim wachtwoord veilig te houden. Dit omvat mobiele apps, bureaublad toepassingen en alle toepassingen die op een apparaat worden uitgevoerd en die toegang moeten krijgen tot tokens.
+<!-- This article focuses on the **public clients** OAuth 2.0 authorization code flow. A public client is any client application that cannot be trusted to securely maintain the integrity of a secret password. This includes single-page applications, mobile apps, desktop applications, and essentially any application that runs on a device and needs to get access tokens. -->
 
 > [!NOTE]
 > Als u identiteits beheer wilt toevoegen aan een web-app met behulp van Azure AD B2C, gebruikt u [OpenID Connect Connect](openid-connect.md) in plaats van OAuth 2,0.
@@ -36,6 +36,18 @@ De HTTP-aanvragen in dit artikel proberen:
 1. Vervang `{tenant}` door de naam van uw Azure AD B2C-tenant.
 1. Vervang door `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` de app-id van een toepassing die u eerder hebt geregistreerd in uw Azure AD B2C-Tenant.
 1. Vervang door `{policy}` de naam van een beleid dat u hebt gemaakt in uw Tenant, bijvoorbeeld `b2c_1_sign_in` .
+
+## <a name="redirect-uri-setup-required-for-single-page-apps"></a>Omleidings-URI-installatie vereist voor apps met één pagina
+
+De autorisatie code stroom voor toepassingen met één pagina vereist enkele aanvullende instellingen.  Volg de instructies voor [het maken van uw toepassing met één pagina](tutorial-register-spa.md) om de omleidings-URI correct te markeren als ingeschakeld voor CORS. Als u een bestaande omleidings-URI wilt bijwerken om CORS in te scha kelen, opent u de manifest editor en stelt `type` u het veld voor de omleidings-URI `spa` in in de `replyUrlsWithType` sectie. U kunt ook klikken op de omleidings-URI in het gedeelte Web van het tabblad Verificatie en de Uri's selecteren waarnaar u wilt migreren met behulp van de autorisatie code stroom.
+
+Het `spa` omleidings type is achterwaarts compatibel met de impliciete stroom. Apps die momenteel gebruikmaken van de impliciete stroom om tokens op te halen `spa` , kunnen zonder problemen naar het omleidings-URI-type worden verplaatst en blijven de impliciete stroom gebruiken.
+
+Als u probeert de autorisatie code stroom te gebruiken en deze fout te zien:
+
+`access to XMLHttpRequest at 'https://login.microsoftonline.com/common/v2.0/oauth2/token' from origin 'yourApp.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.`
+
+Vervolgens moet u uw app-registratie bezoeken en de omleidings-URI voor uw app bijwerken zodat deze kan worden getypt `spa` .
 
 ## <a name="1-get-an-authorization-code"></a>1. een autorisatie code ophalen
 De autorisatie code stroom begint met de client die de gebruiker omleidt naar het `/authorize` eind punt. Dit is het interactieve deel van de stroom, waar de gebruiker actie onderneemt. In deze aanvraag geeft de client in de `scope` para meter de machtigingen op die nodig zijn voor het verkrijgen van de gebruiker. De volgende drie voor beelden (met regel einden voor de Lees baarheid) gebruiken elk een andere gebruikers stroom.
@@ -49,8 +61,9 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &response_mode=query
 &scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6%20offline_access
 &state=arbitrary_data_you_can_receive_in_the_response
+&code_challenge=YTFjNjI1OWYzMzA3MTI4ZDY2Njg5M2RkNmVjNDE5YmEyZGRhOGYyM2IzNjdmZWFhMTQ1ODg3NDcxY2Nl
+&code_challenge_method=S256
 ```
-
 
 | Parameter | Vereist? | Beschrijving |
 | --- | --- | --- |
@@ -63,8 +76,8 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | response_mode |Aanbevolen |De methode die u gebruikt om de resulterende autorisatie code terug te sturen naar uw app. Dit kan `query` , `form_post` , of `fragment` . |
 | staat |Aanbevolen |Een waarde die in de aanvraag is opgenomen en die een teken reeks kan zijn van alle inhoud die u wilt gebruiken. Normaal gesp roken wordt een wille keurig gegenereerde unieke waarde gebruikt om vervalsing van aanvragen op meerdere sites te voor komen. De status wordt ook gebruikt om informatie over de status van de gebruiker in de app te coderen voordat de verificatie aanvraag is opgetreden. Bijvoorbeeld de pagina waarop de gebruiker zich bevond of de gebruikers stroom die werd uitgevoerd. |
 | verschijnt |Optioneel |Het type gebruikers interactie dat is vereist. Op dit moment is de enige geldige waarde `login` die de gebruiker in staat stelt hun referenties in te voeren voor deze aanvraag. Eenmalige aanmelding wordt niet van kracht. |
-| code_challenge  | Optioneel | Wordt gebruikt voor het beveiligen van autorisatie code subsidies via de bewijs code voor code Exchange (PKCE). Vereist als `code_challenge_method` is opgenomen. Zie [PKCE RFC](https://tools.ietf.org/html/rfc7636)(Engelstalig) voor meer informatie. |
-| code_challenge_method | Optioneel | De methode die wordt gebruikt voor het coderen `code_verifier` van de voor de `code_challenge` para meter. Dit kan een van de volgende waarden zijn:<br/><br/>- `plain` <br/>- `S256`<br/><br/>Als deze is uitgesloten, `code_challenge` wordt ervan uitgegaan dat de tekst zonder opmaak wordt gebruikt `code_challenge` . Azure AD B2C ondersteunt zowel `plain` als `S256` . Zie [PKCE RFC](https://tools.ietf.org/html/rfc7636)(Engelstalig) voor meer informatie. |
+| code_challenge  | Aanbevolen/vereist | Wordt gebruikt voor het beveiligen van autorisatie code subsidies via de bewijs code voor code Exchange (PKCE). Vereist als `code_challenge_method` is opgenomen. Zie [PKCE RFC](https://tools.ietf.org/html/rfc7636)(Engelstalig) voor meer informatie. Dit wordt nu aanbevolen voor alle toepassings typen: systeem eigen apps, SPAs en vertrouwelijke clients, zoals web-apps. | 
+| `code_challenge_method` | Aanbevolen/vereist | De methode die wordt gebruikt voor het coderen `code_verifier` van de voor de `code_challenge` para meter. Dit *moet* zijn `S256` , maar de spec staat het gebruik van toe `plain` als de client om de een of andere reden sha256 niet kan ondersteunen. <br/><br/>Als deze is uitgesloten, `code_challenge` wordt ervan uitgegaan dat de tekst zonder opmaak wordt gebruikt `code_challenge` . Micro soft Identity platform ondersteunt zowel `plain` als `S256` . Zie [PKCE RFC](https://tools.ietf.org/html/rfc7636)(Engelstalig) voor meer informatie. Dit is vereist voor [apps van één pagina die gebruikmaken van de autorisatie code stroom](tutorial-register-spa.md).|
 
 Op dit moment wordt de gebruiker gevraagd om de werk stroom van de gebruikers stroom te volt ooien. Dit kan betekenen dat de gebruiker die de gebruikers naam en het wacht woord invoert, zich aanmeldt met een sociale identiteit, zich aanmeldt voor de Directory of een ander aantal stappen uitvoert. Gebruikers acties zijn afhankelijk van de manier waarop de gebruikers stroom is gedefinieerd.
 
@@ -98,7 +111,7 @@ error=access_denied
 | error_description |Een specifiek fout bericht die u kan helpen bij het identificeren van de hoofd oorzaak van een verificatie fout. |
 | staat |Zie de volledige beschrijving in de voor gaande tabel. Als een `state` para meter in de aanvraag is opgenomen, moet dezelfde waarde in het antwoord worden weer gegeven. De app moet controleren of de `state` waarden in de aanvraag en het antwoord identiek zijn. |
 
-## <a name="2-get-a-token"></a>2. een Token ophalen
+## <a name="2-get-an-access-token"></a>2. een toegangs Token ophalen
 Nu u een autorisatie code hebt aangeschaft, kunt u de voor een-token inwisselen voor `code` de beoogde resource door een post-aanvraag naar het `/token` eind punt te verzenden. In Azure AD B2C kunt u [toegangs tokens aanvragen voor andere api's](access-tokens.md#request-a-token) zoals gebruikelijk door hun bereik (en) op te geven in de aanvraag.
 
 U kunt ook een toegangs token aanvragen voor de eigen back-end web-API van uw app door middel van het gebruik van de client-ID van de app als het aangevraagde bereik (wat resulteert in een toegangs token met die client-ID als ' doel groep '):
@@ -108,8 +121,7 @@ POST https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0
 
 Content-Type: application/x-www-form-urlencoded
 
-grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob
-
+grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob&code_verifier=ThisIsntRandomButItNeedsToBe43CharactersLong 
 ```
 
 | Parameter | Vereist? | Beschrijving |
@@ -122,7 +134,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 | scope |Aanbevolen |Een lijst met door spaties gescheiden bereiken. Een enkele Scope waarde geeft aan dat er voor Azure AD beide machtigingen worden aangevraagd. Het gebruik van de client-ID als het bereik geeft aan dat uw app een toegangs token nodig heeft dat kan worden gebruikt voor uw eigen service of Web-API, die wordt vertegenwoordigd door dezelfde client-ID.  Het `offline_access` bereik geeft aan dat uw app een vernieuwings token nodig heeft voor lange levens toegang tot bronnen.  U kunt ook de `openid` scope gebruiken om een ID-token aan te vragen bij Azure AD B2C. |
 | code |Vereist |De autorisatie code die u hebt verkregen in het eerste gedeelte van de stroom. |
 | redirect_uri |Vereist |De omleidings-URI van de toepassing waarvoor u de autorisatie code hebt ontvangen. |
-| code_verifier | Optioneel | Hetzelfde code_verifier dat is gebruikt om de authorization_code op te halen. Vereist als PKCE is gebruikt in de aanvraag voor autorisatie code toekenning. Zie [PKCE RFC](https://tools.ietf.org/html/rfc7636)(Engelstalig) voor meer informatie. |
+| code_verifier | aanbevelingen | Hetzelfde code_verifier dat is gebruikt om de authorization_code op te halen. Vereist als PKCE is gebruikt in de aanvraag voor autorisatie code toekenning. Zie [PKCE RFC](https://tools.ietf.org/html/rfc7636)(Engelstalig) voor meer informatie. |
 
 Een geslaagd token antwoord ziet er als volgt uit:
 

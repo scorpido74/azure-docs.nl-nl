@@ -94,25 +94,24 @@
     - name: Controleren
     - name: Rollen en machtigingen maken
       href: spring-cloud-howto-permissions.md
-      items:
-        - name: Gedistribueerde tracering en App Insights
-          href: spring-cloud-tutorial-distributed-tracing.md
-        - name: Logboeken en metrische gegevens analyseren
-          href: diagnostic-services.md
-        - name: Streamt logboeken in real-time
-          href: spring-cloud-howto-log-streaming.md
-    - name: DevOps-implementatie
-      items:
-        - name: CI/CD met Azure DevOps
-          href: spring-cloud-howto-cicd.md
-        - name: CI/CD met GitHub Actions
-          href: spring-cloud-howto-github-actions.md
-        - name: Autorisatie met Key Vault in GitHub Actions
-          href: spring-cloud-github-actions-key-vault.md
-    - name: Problemen oplossen
-      items:
-        - name: Handleiding voor het oplossen van problemen
-          href: spring-cloud-troubleshoot.md
+    - name: Gedistribueerde tracering en App Insights
+      href: spring-cloud-tutorial-distributed-tracing.md
+    - name: Logboeken en metrische gegevens analyseren
+      href: diagnostic-services.md
+    - name: Streamt logboeken in real-time
+      href: spring-cloud-howto-log-streaming.md
+- name: DevOps-implementatie
+  items:
+    - name: CI/CD met Azure DevOps
+      href: spring-cloud-howto-cicd.md
+    - name: CI/CD met GitHub Actions
+      href: spring-cloud-howto-github-actions.md
+    - name: Autorisatie met Key Vault in GitHub Actions
+      href: spring-cloud-github-actions-key-vault.md
+- name: Problemen oplossen
+  items:
+    - name: Handleiding voor het oplossen van problemen
+      href: spring-cloud-troubleshoot.md
 - name: Naslaginformatie
   items:
     - name: Azure CLI-invoegtoepassing

@@ -1,17 +1,15 @@
 ---
 title: Azure Data Lake Analytics beheren met Azure CLI
 description: In dit artikel wordt beschreven hoe u de Azure CLI gebruikt om Data Lake Analytics-taken, gegevens bronnen & gebruikers te beheren.
-services: data-lake-analytics
-ms.assetid: 4e5a3a0a-6d7f-43ed-aeb5-c3b3979a1e0a
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 01/29/2018
-ms.openlocfilehash: f91619860b577981d9717904a3d4a3074c2eaf0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19b471d85a52fe38b72ad55847d022fb56b3c4f0
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320843"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220921"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-command-line-interface-cli"></a>Azure Data Lake Analytics beheren met de Azure-opdracht regel interface (CLI)
 
@@ -19,18 +17,17 @@ ms.locfileid: "91320843"
 
 Meer informatie over het beheren van Azure Data Lake Analytics accounts, gegevens bronnen, gebruikers en taken met behulp van de Azure CLI. Klik op het tabblad selecteren hierboven voor een overzicht van de beheer onderwerpen met andere hulpprogram ma's.
 
-
 ## <a name="prerequisites"></a>Vereisten
 
 Voordat u met deze zelf studie begint, moet u beschikken over de volgende resources:
 
-* Een Azure-abonnement. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/pricing/free-trial/).
+- Een Azure-abonnement. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/pricing/free-trial/).
 
-* Azure CLI. Zie [Azure CLI installeren en configureren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+- Azure CLI. Zie [Azure CLI installeren en configureren](/cli/azure/install-azure-cli).
 
-  * Download en installeer de **pre-release** [Azure CLI-hulpprogramma’s](https://github.com/MicrosoftBigData/AzureDataLake/releases) om deze demo te voltooien.
+  - Download en installeer de **pre-release** [Azure CLI-hulpprogramma’s](https://github.com/MicrosoftBigData/AzureDataLake/releases) om deze demo te voltooien.
 
-* Verificatie met behulp van de `az login` opdracht en selecteer het abonnement dat u wilt gebruiken. Zie [Verbinding maken met een Azure-abonnement met Azure CLI](/cli/azure/authenticate-azure-cli) voor meer informatie over verificatie met een werk- of schoolaccount.
+- Verificatie met behulp van de `az login` opdracht en selecteer het abonnement dat u wilt gebruiken. Zie [Verbinding maken met een Azure-abonnement met Azure CLI](/cli/azure/authenticate-azure-cli) voor meer informatie over verificatie met een werk- of schoolaccount.
 
    ```azurecli
    az login
@@ -46,11 +43,11 @@ Voordat u met deze zelf studie begint, moet u beschikken over de volgende resour
 
 ## <a name="manage-accounts"></a>Accounts beheren
 
-Voordat u een Data Lake Analytics-taak uitvoert, moet u een Data Lake Analytics-account hebben. In tegens telling tot Azure HDInsight betaalt u niet voor een Analytics-account wanneer er geen taak wordt uitgevoerd. U betaalt alleen voor de tijd waarop een taak wordt uitgevoerd.  Zie [Azure data Lake Analytics Overview](data-lake-analytics-overview.md)voor meer informatie.  
+Voordat u een Data Lake Analytics-taak uitvoert, moet u een Data Lake Analytics-account hebben. In tegens telling tot Azure HDInsight betaalt u niet voor een Analytics-account wanneer er geen taak wordt uitgevoerd. U betaalt alleen voor de tijd waarop een taak wordt uitgevoerd.  Zie [Azure data Lake Analytics Overview](data-lake-analytics-overview.md)voor meer informatie.
 
 ### <a name="create-accounts"></a>Accounts maken
 
-Voer de volgende opdracht uit om een Data Lake-account te maken. 
+Voer de volgende opdracht uit om een Data Lake-account te maken.
 
    ```azurecli
    az dla account create --account "<Data Lake Analytics account name>" --location "<Location Name>" --resource-group "<Resource Group Name>" --default-data-lake-store "<Data Lake Store account name>"
@@ -88,10 +85,10 @@ Data Lake Analytics accounts in een specifieke resource groep weer geven
 
 Data Lake Analytics ondersteunt momenteel de volgende twee gegevens bronnen:
 
-* [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)
-* [Azure Storage](../storage/common/storage-introduction.md)
+- [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)
+- [Azure Storage](../storage/common/storage-introduction.md)
 
-Wanneer u een Analytics-account maakt, moet u een Azure Data Lake Storage-account aanwijzen als het standaard opslag account. De standaard Data Lake Storage-account wordt gebruikt voor het opslaan van meta gegevens van taken en taak controle Logboeken. Nadat u een Analytics-account hebt gemaakt, kunt u aanvullende Data Lake Storage accounts en/of Azure Storage account toevoegen. 
+Wanneer u een Analytics-account maakt, moet u een Azure Data Lake Storage-account aanwijzen als het standaard opslag account. De standaard Data Lake Storage-account wordt gebruikt voor het opslaan van meta gegevens van taken en taak controle Logboeken. Nadat u een Analytics-account hebt gemaakt, kunt u aanvullende Data Lake Storage accounts en/of Azure Storage account toevoegen.
 
 ### <a name="find-the-default-data-lake-store-account"></a>De standaard Data Lake Store account zoeken
 
@@ -127,7 +124,7 @@ Een bestaande sleutel voor het Blob-opslag account bijwerken:
    az dla account blob-storage update --access-key "<New Blob Storage Account Key>" --account "<Data Lake Analytics account name>" --storage-account-name "<Data Lake Store account name>"
    ```
 
-### <a name="list-data-sources"></a>Gegevens bronnen weer geven:
+### <a name="list-data-sources"></a>Gegevens bronnen weer geven
 
 De Data Lake Store-accounts weer geven:
 
@@ -143,7 +140,7 @@ Het Blob Storage-account weer geven:
 
 ![Scherm opname van Azure C L I met de informatie ' dataLakeStoreAccounts: ' gemarkeerd.](./media/data-lake-analytics-manage-use-cli/data-lake-analytics-list-data-source.png)
 
-### <a name="delete-data-sources"></a>Gegevens bronnen verwijderen:
+### <a name="delete-data-sources"></a>Gegevens bronnen verwijderen
 
 Een Data Lake Store account verwijderen:
 
@@ -185,6 +182,7 @@ U moet een Data Lake Analytics-account hebben voordat u een taak kunt maken.  Zi
 >    ```
 
 ### <a name="cancel-jobs"></a>Taken annuleren
+
 Gebruik de opdracht list om de taak-ID te vinden en gebruik vervolgens annuleren om de taak te annuleren.
 
    ```azurecli
@@ -212,7 +210,8 @@ az dla job recurrence show --account "<Data Lake Analytics Account Name>" --recu
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Overzicht van Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
-* [Aan de slag met Data Lake Analytics met Azure Portal](data-lake-analytics-get-started-portal.md)
-* [Azure Data Lake Analytics beheren met Azure Portal](data-lake-analytics-manage-use-portal.md)
-* [Azure Data Lake Analytics-taken bewaken en problemen oplossen met Azure Portal](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+
+- [Overzicht van Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
+- [Aan de slag met Data Lake Analytics met Azure Portal](data-lake-analytics-get-started-portal.md)
+- [Azure Data Lake Analytics beheren met Azure Portal](data-lake-analytics-manage-use-portal.md)
+- [Azure Data Lake Analytics-taken bewaken en problemen oplossen met Azure Portal](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)

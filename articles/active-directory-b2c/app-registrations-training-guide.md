@@ -11,12 +11,12 @@ ms.date: 05/25/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: eed0527b69dcaacd3a8cd0cf7cd178aa2aca3468
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e1d76c5ef1f003fe9e01b866343ef7de7ab4166
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89433905"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92214920"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>De nieuwe App-registraties ervaring voor Azure Active Directory B2C
 
@@ -53,13 +53,13 @@ De Azure AD B2C App-registraties-ervaring is gebaseerd op de [ervaring](https://
 ## <a name="new-supported-account-types"></a>Nieuwe ondersteunde account typen
 
 In de nieuwe ervaring selecteert u een type ondersteunings account uit de volgende opties:
-- Accounts in deze organisatie-Directory alleen.
-- Accounts in elke organisatie Directory (een Azure AD-Directory – multi tenant).
-- Accounts in een organisatorische Directory of een id-provider. Voor het verifiëren van gebruikers met Azure AD B2C.
+- Alleen accounts in deze organisatiemap
+- Accounts in elke organisatie Directory (een Azure AD-Directory – multi tenant)
+- Accounts in een id-provider of organisatie Directory (voor het verifiëren van gebruikers met gebruikers stromen)
 
 Als u meer wilt weten over de verschillende typen accounts, selecteert u **Help mij kiezen** tijdens het maken.
 
-In de verouderde ervaring werden apps altijd gemaakt als klant gerichte toepassingen. Voor deze apps wordt het account type ingesteld op **accounts in een organisatorische Directory of een id-provider. Voor het verifiëren van gebruikers met Azure AD B2C**.
+In de verouderde ervaring werden apps altijd gemaakt als klant gerichte toepassingen. Voor deze apps wordt het account type ingesteld op **accounts in een id-provider of organisatie Directory (voor verificatie van gebruikers met gebruikers stromen)**.
 > [!NOTE]
 > Deze optie is vereist om Azure AD B2C gebruikers stromen te kunnen uitvoeren om gebruikers voor deze toepassing te verifiëren. Meer informatie [over het registreren van een toepassing voor gebruik met gebruikers stromen.](tutorial-register-applications.md)
 
@@ -96,13 +96,12 @@ In de nieuwe ervaring, in plaats van **sleutels**, gebruikt u de Blade **certifi
 
 ## <a name="features-not-applicable-in-azure-ad-b2c-tenants"></a>Functies die niet van toepassing zijn in Azure AD B2C tenants
 De volgende Azure AD-App-registratie mogelijkheden zijn niet van toepassing op of beschikbaar in Azure AD B2C tenants:
-- **Rollen en beheerders** : hiervoor is een Azure AD Premium P1-of P2-licentie vereist die momenteel niet beschikbaar is voor Azure AD B2C.
+- **Rollen en beheerders** : momenteel niet beschikbaar voor Azure AD B2C.
 - **Branding** -gebruikers interface/UX-aanpassing is geconfigureerd in de **huis stijl** van het bedrijf of als onderdeel van een gebruikers stroom. Meer informatie over [het aanpassen van de gebruikers interface in azure Active Directory B2C](customize-ui-overview.md).
 - **Verificatie** van de uitgever van het domein-uw app is geregistreerd op *. onmicrosoft.com*, dat geen geverifieerd domein is. Daarnaast wordt het domein van de uitgever voornamelijk gebruikt voor het verlenen van toestemming van de gebruiker, wat niet van toepassing is op Azure AD B2C-apps voor gebruikers verificatie. [Meer informatie over het Publisher-domein](https://docs.microsoft.com/azure/active-directory/develop/howto-configure-publisher-domain).
 - **Token configuratie** -het token is geconfigureerd als onderdeel van een gebruikers stroom in plaats van een app.
 - De **Quick** starts zijn momenteel niet beschikbaar voor Azure AD B2C-tenants.
-- De Blade **integratie-assistent** is momenteel niet beschikbaar voor Azure AD B2C-tenants.
-
+<!-- - The **Integration assistant** blade is currently not available for Azure AD B2C tenants. -->
 
 ## <a name="limitations"></a>Beperkingen
 De nieuwe ervaring heeft de volgende beperkingen:

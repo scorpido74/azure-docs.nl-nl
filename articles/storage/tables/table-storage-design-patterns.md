@@ -9,12 +9,12 @@ ms.date: 04/08/2019
 ms.author: tamram
 ms.subservice: tables
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b200782d10ae3637fcade63feab1e638d40acddb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41e07087574989935e89ba2c1f4c09a3c12b192d
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89006343"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215600"
 ---
 # <a name="table-design-patterns"></a>Tabelontwerppatronen
 In dit artikel worden enkele patronen beschreven die geschikt zijn voor gebruik met Table service oplossingen. U zult ook zien hoe u een aantal van de problemen en commerciële benadert die worden besproken in andere ontwerp artikelen van Table-opslag. In het volgende diagram ziet u een overzicht van de relaties tussen de verschillende patronen:  
@@ -294,7 +294,7 @@ In een relationele data base is het natuurlijk om samen voegingen in query's te 
 
 Stel dat u werknemers entiteiten opslaat in de Table service met behulp van de volgende structuur:  
 
-![Entiteits structuur werk nemer](media/storage-table-design-guide/storage-table-design-IMAGE18.png)
+![Scherm afbeelding die laat zien hoe u werknemers entiteiten kunt opslaan in de Table service.](media/storage-table-design-guide/storage-table-design-IMAGE18.png)
 
 U moet ook historische gegevens over beoordelingen en prestaties opslaan voor elk jaar dat de werk nemer heeft gewerkt aan uw organisatie en u deze gegevens per jaar moet kunnen openen. U kunt ook een andere tabel maken waarin entiteiten worden opgeslagen met de volgende structuur:  
 
@@ -743,7 +743,7 @@ De Table service is een tabel archief met *schema-minder* . Dit betekent dat een
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -763,7 +763,7 @@ De Table service is een tabel archief met *schema-minder* . Dit betekent dat een
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -800,7 +800,7 @@ De Table service is een tabel archief met *schema-minder* . Dit betekent dat een
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -836,7 +836,7 @@ Elke entiteit moet nog steeds waarden voor **PartitionKey**, **RowKey**en **Time
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Werknemer</td>
@@ -858,7 +858,7 @@ Elke entiteit moet nog steeds waarden voor **PartitionKey**, **RowKey**en **Time
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Werknemer</td>
@@ -899,7 +899,7 @@ Elke entiteit moet nog steeds waarden voor **PartitionKey**, **RowKey**en **Time
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Werknemer</td>
