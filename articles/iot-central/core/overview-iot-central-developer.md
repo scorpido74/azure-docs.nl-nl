@@ -1,6 +1,6 @@
 ---
 title: Ontwikkeling van apparaten voor Azure IoT Central | Microsoft Docs
-description: Azure IoT Central is een IoT-toepassingsplatform waarmee het eenvoudiger is om IoT-oplossingen te maken. Dit artikel bevat een overzicht van het ontwikkelen van apparaten om verbinding te maken met uw IoT Central-toepassing.
+description: Azure IoT Central is een IoT-toepassingsplatform waarmee het eenvoudiger is om IoT-oplossingen te maken. Dit artikel bevat een overzicht van het ontwikkelen van apparaten om verbinding te maken met uw IoT Central-toepassing. Apparaten gebruiken telemetrie om streaminggegevens en -eigenschappen te verzenden over de status van het apparaat. IOT Central kan de apparaatstatus instellen met behulp van schrijfbare eigenschappen en opdrachten aanroepen op een apparaat.
 author: dominicbetts
 ms.author: dobett
 ms.date: 05/05/2020
@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: 6fabd7d8cf5c19f05bd31c2d0b12863fd6e25382
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 39ce436cd59447b2b6f8d9f88deaab80b00dd639
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90017520"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812349"
 ---
 # <a name="iot-central-device-development-overview"></a>Overzicht van het ontwikkelen van IoT Central-apparaten
 
@@ -26,7 +26,7 @@ Met een IoT Central-toepassing kunt u miljoenen apparaten tijdens hun levenscycl
 Apparaten communiceren met een IoT Central-toepassing met behulp van de volgende primitieven:
 
 - _Telemetrie_ zijn de gegevens die een apparaat naar IoT Central verzendt. Bijvoorbeeld een stroom van de temperatuurwaarden van een ingebouwde sensor.
-- _Eigenschappen_ zijn statuswaarden die een apparaat rapporteert aan IoT Central. Bijvoorbeeld de huidige firmwareversie van het apparaat. U kunt ook schrijfbare eigenschappen hebben die door IoT Central op het apparaat kunnen worden bijgewerkt.
+- _Eigenschappen_ zijn statuswaarden die een apparaat rapporteert aan IoT Central. Bijvoorbeeld de huidige firmwareversie van het apparaat. U kunt ook schrijfbare eigenschappen hebben die door IoT Central op het apparaat kunnen worden bijgewerkt, zoals een doeltemperatuur.
 - _Opdrachten_ worden aangeroepen vanuit IoT Central om het gedrag van een apparaat te bepalen. Uw IoT Central-toepassing kan bijvoorbeeld een opdracht aanroepen om een apparaat opnieuw op te starten.
 
 Een oplossingsbouwer is verantwoordelijk voor de configuratie van dashboards en weergaven in de webgebruikersinterface van IoT Central om telemetrie te visualiseren, eigenschappen te beheren en opdrachten aan te roepen.

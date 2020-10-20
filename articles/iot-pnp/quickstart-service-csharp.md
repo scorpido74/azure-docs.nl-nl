@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: b35268cd8d36901f750225713407c5392e5c429e
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: ec38e0849b7f4c1a0ca98d75d4c6c82908c1e16e
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91759166"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945373"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-c"></a>Quickstart: werken met een IoT Plug en Play-apparaat dat is verbonden met uw oplossing (C#)
 
@@ -34,7 +34,7 @@ Als u deze quickstart in Windows wilt uitvoeren, moet de volgende software op uw
 
 Als u klaar bent met [Quickstart: Verbind een voorbeeld van een IoT Plug en Play-apparaat-app die in Windows wordt uitgevoerd met IoT Hub (C#)](quickstart-connect-device-csharp.md). U hebt de opslagplaats al gekloond.
 
-Kloon de voorbeelden uit de GitHub-opslagplaats van de Microsoft Azure IoT-SDK voor .NET. Open een opdrachtprompt in de map van uw keuze. Voer de volgende opdracht uit om de GitHub-opslagplaats voor de [Microsoft Azure IoT-voorbeelden voor .NET](https://github.com/Azure-Samples/azure-iot-samples-csharp) te klonen:
+Kloon de voorbeelden uit de GitHub-opslagplaats met Azure IoT-voorbeelden voor C#. Open een opdrachtprompt in de map van uw keuze. Voer de volgende opdracht uit om de GitHub-opslagplaats voor de [Microsoft Azure IoT-voorbeelden voor .NET](https://github.com/Azure-Samples/azure-iot-samples-csharp) te klonen:
 
 ```cmd
 git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
@@ -55,7 +55,6 @@ In deze quickstart gebruikt u als voorbeeld een thermostaat die in C# is geschre
     | IOTHUB_DEVICE_DPS_ID_SCOPE | De waarde die u hebt genoteerd toen u [Uw omgeving instellen](set-up-environment.md) hebt uitgevoerd |
     | IOTHUB_DEVICE_DPS_DEVICE_ID | my-pnp-device |
     | IOTHUB_DEVICE_DPS_DEVICE_KEY | De waarde die u hebt genoteerd toen u [Uw omgeving instellen](set-up-environment.md) hebt uitgevoerd |
-
 
 1. U kunt het voorbeeld nu in Visual Studio bouwen en uitvoeren in foutopsporingsmodus.
 
@@ -81,9 +80,9 @@ In deze quickstart gebruikt u een IoT-voorbeeldoplossing in C# om te werken met 
 
 1. U kunt het voorbeeld nu in Visual Studio bouwen en uitvoeren in foutopsporingsmodus.
 
-### <a name="get-digital-twin"></a>Digital twin opvragen
+### <a name="get-device-twin"></a>Apparaatdubbel ophalen
 
-Het volgende codefragment laat zien hoe de service-app de digitale dubbel ophaalt:
+Het volgende codefragment laat zien hoe de service-app de apparaatdubbel ophaalt:
 
 ```C#
 // Get a Twin and retrieves model Id set by Device client
@@ -92,7 +91,7 @@ s_logger.LogDebug($"Model Id of this Twin is: {twin.ModelId}");
 ```
 
 > [!NOTE]
-> In dit voorbeeld wordt gebruikgemaakt van de naamruimte **Microsoft.Azure.Devices.Client;** van de **IoT Hub-serviceclient**. Zie de [handleiding voor ontwikkelaars](concepts-developer-guide-service.md) voor meer informatie over het ophalen van de model-id.
+> In dit voorbeeld wordt gebruikgemaakt van de naamruimte **Microsoft.Azure.Devices.Client** van de **IoT Hub-serviceclient**. Zie de [handleiding voor serviceontwikkelaars](concepts-developer-guide-service.md) voor meer informatie over de API's, waaronder de API's voor digitale dubbels.
 
 Met deze code wordt de volgende uitvoer gegenereerd:
 
@@ -101,7 +100,7 @@ Met deze code wordt de volgende uitvoer gegenereerd:
       Model Id of this Twin is: dtmi:com:example:Thermostat;1
 ```
 
-Het volgende codefragment laat zien hoe u een *patch* gebruikt om eigenschappen bij te werken via de digitale dubbel:
+Het volgende codefragment laat zien hoe u een *patch* gebruikt om eigenschappen bij te werken via de apparaatdubbel:
 
 ```C#
 // Update the twin

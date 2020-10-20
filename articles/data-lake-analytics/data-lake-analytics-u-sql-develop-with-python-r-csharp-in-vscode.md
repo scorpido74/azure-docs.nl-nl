@@ -1,18 +1,17 @@
 ---
 title: U-SQL-taken uitvoeren in Python, R en C#-Azure Data Lake Analytics
 description: Meer informatie over het gebruik van code achter met python, R en C# voor het verzenden van een taak in Azure Data Lake.
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 11/22/2017
 ms.custom: devx-track-python
-ms.openlocfilehash: 673c8db0b7c6d3d8658d2d3b6cfd7e00f3d7d986
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6066bd6ec2a4c986ae17ad0cce3e7f6f73b21e7
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87876203"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219969"
 ---
 # <a name="develop-u-sql-with-python-r-and-c-for-azure-data-lake-analytics-in-visual-studio-code"></a>U-SQL ontwikkelen met python, R en C# voor Azure Data Lake Analytics in Visual Studio code
 Meer informatie over het gebruik van Visual Studio code (VSCode) voor het schrijven van python-, R-en C#-code achter met U-SQL en het verzenden van taken naar Azure Data Lake service. Zie [de Azure data Lake-Hulpprogram ma's voor Visual Studio gebruiken](data-lake-analytics-data-lake-tools-for-vscode.md)voor meer informatie over Azure data Lake-hulpprogram Ma's voor VSCode.
@@ -183,4 +182,4 @@ Een code-behind bestand is een C#-bestand dat is gekoppeld aan één U-SQL-scrip
 * [Aan de slag met Data Lake Analytics met behulp van Power shell](data-lake-analytics-get-started-powershell.md)
 * [Aan de slag met Data Lake Analytics met behulp van de Azure Portal](data-lake-analytics-get-started-portal.md)
 * [Data Lake-Hulpprogram Ma's voor Visual Studio gebruiken voor het ontwikkelen van U-SQL-toepassingen](data-lake-analytics-data-lake-tools-get-started.md)
-* [Data Lake Analytics-catalogus (U-SQL) gebruiken](data-lake-analytics-use-u-sql-catalog.md)
+* [Data Lake Analytics-catalogus (U-SQL) gebruiken](./data-lake-analytics-u-sql-get-started.md)

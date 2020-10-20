@@ -8,21 +8,21 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: overview
-ms.date: 09/11/2020
+ms.date: 09/12/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aac8713affd56d011e5e1f5e9326de501fb3ce67
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8a57f340710144d9c92063d7a181181c3bd7237e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90975562"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971231"
 ---
 # <a name="custom-administrator-roles-in-azure-active-directory-preview"></a>Aangepaste beheerdersrollen in Azure Active Directory (preview)
 
-In dit artikel wordt uitleg gegeven over aangepaste Azure AD-rollen in Azure AD (Active Directory) met op rollen gebaseerd toegangsbeheer en resourcebereiken. Aangepaste Azure AD-rollen brengen de onderliggende machtigingen van de [ingebouwde rollen](directory-assign-admin-roles.md) naar boven, zodat u uw eigen aangepaste rollen kunt maken en organiseren. Met deze benadering kunt u op een meer verfijnde manier toegang verlenen dan via ingebouwde rollen, wanneer dit nodig is. Deze eerste release van aangepaste Azure AD-rollen omvat de mogelijkheid om een rol te maken om machtigingen toe te wijzen voor het beheer van app-registraties. In de loop van de tijd worden extra machtigingen voor organisatieresources toegevoegd, zoals bedrijfstoepassingen, gebruikers en apparaten.  
+In dit artikel wordt uitleg gegeven over aangepaste Azure AD-rollen in Azure AD (Active Directory) met op rollen gebaseerd toegangsbeheer en resourcebereiken. Aangepaste Azure AD-rollen brengen de onderliggende machtigingen van de [ingebouwde rollen](directory-assign-admin-roles.md) naar boven, zodat u uw eigen aangepaste rollen kunt maken en organiseren. Met deze benadering kunt u op een meer verfijnde manier toegang verlenen dan via ingebouwde rollen, wanneer dit nodig is. Deze eerste release van aangepaste Azure AD-rollen bevat machtigingen voor het beheren van app-registraties en Enterprise-apps. Na verloop van tijd worden er extra machtigingen voor andere organisatie-resources toegevoegd.  
 
 Daarnaast bieden aangepaste Azure AD-rollen ook toewijzingen per resource, naast de meer traditionele toewijzingen in de hele organisatie. Deze benadering biedt u de mogelijkheid om toegang te verlenen voor het beheren van bepaalde resources (bijvoorbeeld één app-registratie), zonder dat u toegang verleent tot alle resources (alle app-registraties).
 
@@ -34,7 +34,7 @@ Het verlenen van machtigingen met behulp van aangepaste Azure AD-rollen is een p
 
 Zodra u de roldefinitie hebt gemaakt, kunt u deze toewijzen aan een gebruiker door een roltoewijzing te maken. Met een roltoewijzing worden machtigingen in een roldefinitie aan de gebruiker verleend voor een opgegeven bereik. Met dit proces in twee stappen kunt u één roldefinitie maken en deze meerdere keren toewijzen voor verschillende bereiken. Met een bereik wordt de set Azure AD-resources gedefinieerd waartoe het rollid toegang heeft. Het meest voorkomende bereik is het bereik voor de hele organisatie (organisatiebreed). Een aangepaste rol kan worden toegewezen voor het organisatiebrede bereik. Dit betekent dat de rolmachtigingen van het rollid gelden voor alle resources in de organisatie. Een aangepaste rol kan ook worden toegewezen voor een objectbereik. Een voorbeeld van een objectbereik is één toepassing. Dezelfde rol kan aan de ene gebruiker worden toegewezen voor alle toepassingen in de organisatie, en vervolgens aan een andere gebruiker met een bereik van alleen de Contoso Expense Reports-app.  
 
-De werking van ingebouwde Azure AD-rollen en aangepaste rollen is vergelijkbaar met [Azure RBAC (op rollen gebaseerd toegangsbeheer)](../../role-based-access-control/overview.md). Het [verschil tussen deze twee systemen voor op rollen gebaseerd toegangsbeheer](../../role-based-access-control/rbac-and-directory-admin-roles.md) is dat met Azure RBAC de toegang tot Azure-resources, zoals virtuele machines of opslag, wordt beheerd met Azure Resource Management, en dat met aangepaste Azure AD-rollen de toegang tot Azure AD-resources wordt beheerd met behulp van Graph API. Beide systemen maken gebruik van het concept van roldefinities en roltoewijzingen.
+De werking van ingebouwde Azure AD-rollen en aangepaste rollen is vergelijkbaar met [Azure RBAC (op rollen gebaseerd toegangsbeheer)](../../role-based-access-control/overview.md). Het [verschil tussen deze twee systemen voor op rollen gebaseerd toegangsbeheer](../../role-based-access-control/rbac-and-directory-admin-roles.md) is dat met Azure RBAC de toegang tot Azure-resources, zoals virtuele machines of opslag, wordt beheerd met Azure Resource Management, en dat met aangepaste Azure AD-rollen de toegang tot Azure AD-resources wordt beheerd met behulp van Graph API. Beide systemen maken gebruik van het concept van roldefinities en roltoewijzingen. U kunt geen Azure AD RBAC-machtigingen opnemen in Azure RBAC-rollen en vice versa.
 
 ### <a name="how-azure-ad-determines-if-a-user-has-access-to-a-resource"></a>Hoe Azure AD bepaalt of een gebruiker toegang tot een resource heeft
 

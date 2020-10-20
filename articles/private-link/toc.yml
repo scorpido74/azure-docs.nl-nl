@@ -31,6 +31,8 @@
       href: tutorial-private-endpoint-storage-portal.md
     - name: Verbinding maken met een Cosmos DB-account
       href: tutorial-private-endpoint-cosmosdb-portal.md
+    - name: Verbinding maken met een web-app
+      href: tutorial-private-endpoint-webapp-portal.md
 - name: Concepten
   items:
     - name: Privé-eindpunt

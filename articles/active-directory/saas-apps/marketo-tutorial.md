@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.openlocfilehash: c1b8874d8813d6200c915778841c26e77b02e434
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 764f01fa5966a6620612405b4df37fc5ff44f33a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554851"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91857908"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-marketo"></a>Zelfstudie: Azure Active Directory-integratie met Marketo
 
@@ -130,15 +130,15 @@ Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding wilt configurer
    
     b. Klik in het bovenste navigatievenster op de knop **Admin**.
    
-    ![Eenmalige aanmelding configureren](./media/marketo-tutorial/tutorial_marketo_06.png) 
+    ![Schermopname met Beheerder geselecteerd in het navigatievenster.](./media/marketo-tutorial/tutorial_marketo_06.png) 
    
     c. Navigeer naar het menu Integration en klik op de **Munchkin-koppeling**.
    
-    ![Eenmalige aanmelding configureren](./media/marketo-tutorial/tutorial_marketo_11.png)
+    ![Schermopname met Munchkin geselecteerd vanuit Integratie.](./media/marketo-tutorial/tutorial_marketo_11.png)
    
     d. Kopieer de Munchkin-id die wordt weergegeven in het scherm en vul uw antwoord-URL in de wizard Azure AD-configuratie in.
    
-    ![Eenmalige aanmelding configureren](./media/marketo-tutorial/tutorial_marketo_12.png) 
+    ![Schermopname van de Munchkin-pagina waar u het account-id kunt kopiëren.](./media/marketo-tutorial/tutorial_marketo_12.png) 
 
 2. Voer onderstaande stappen uit om eenmalige aanmelding te configureren in de toepassing:
    
@@ -146,15 +146,15 @@ Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding wilt configurer
    
     b. Klik in het bovenste navigatievenster op de knop **Admin**.
    
-    ![Eenmalige aanmelding configureren](./media/marketo-tutorial/tutorial_marketo_06.png) 
+    ![Schermopname met Beheerder geselecteerd in het navigatievenster.](./media/marketo-tutorial/tutorial_marketo_06.png) 
    
     c. Navigeer naar het menu Integration en klik op **Single Sign On**.
    
-    ![Eenmalige aanmelding configureren](./media/marketo-tutorial/tutorial_marketo_07.png) 
+    ![Schermopname van Eenmalige aanmelding geselecteerd vanuit Integratie.](./media/marketo-tutorial/tutorial_marketo_07.png) 
    
     d. Klik op de knop **Edit** om de SAML-instellingen in te schakelen.
    
-    ![Eenmalige aanmelding configureren](./media/marketo-tutorial/tutorial_marketo_08.png) 
+    ![Schermopname van de instellingen voor SSO waar BEWERKEN kunt selecteren.](./media/marketo-tutorial/tutorial_marketo_08.png) 
    
     e. SSO-instellingen **ingeschakeld**.
    
@@ -164,7 +164,7 @@ Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding wilt configurer
    
     h. Selecteer de User ID Location **Name Identifier element**.
    
-    ![Eenmalige aanmelding configureren](./media/marketo-tutorial/tutorial_marketo_09.png)
+    ![Schermopname van het Bewerken van SAML-instellingen, waarin u de beschreven waarden kunt invoeren.](./media/marketo-tutorial/tutorial_marketo_09.png)
    
     > [!NOTE]
     > Als uw gebruikers-id geen UPN-waarde is, wijzig de waarde dan op het tabblad Attribute.
@@ -179,7 +179,7 @@ Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding wilt configurer
    
     m. Plak in het tekstvak **Error URL****de URL van uw Marketo-exemplaar** en klik op **Save** om de instellingen op te slaan.
    
-    ![Eenmalige aanmelding configureren](./media/marketo-tutorial/tutorial_marketo_10.png)
+    ![Schermopname van het dialoogvenster Omleidingspagina's bewerken waarin u de beschreven waarden kunt invoeren.](./media/marketo-tutorial/tutorial_marketo_10.png)
 
 3. Voer de volgende acties uit om SSO in te schakelen voor gebruikers:
    
@@ -187,15 +187,15 @@ Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding wilt configurer
    
     b. Klik in het bovenste navigatievenster op de knop **Admin**.
    
-    ![Eenmalige aanmelding configureren](./media/marketo-tutorial/tutorial_marketo_06.png) 
+    ![Schermopname met Beheerder geselecteerd in het navigatievenster.](./media/marketo-tutorial/tutorial_marketo_06.png) 
    
     c. Navigeer naar het menu **Security** en klik op **Login Settings**.
    
-    ![Eenmalige aanmelding configureren](./media/marketo-tutorial/tutorial_marketo_13.png)
+    ![Schermopname met de Aanmeldingsinstellingen geselecteerd vanuit Beveiliging.](./media/marketo-tutorial/tutorial_marketo_13.png)
    
     d. Vink de optie **Require SSO** in en **sla de instellingen op**.
    
-    ![Eenmalige aanmelding configureren](./media/marketo-tutorial/tutorial_marketo_14.png)
+    ![Schermopname van de Instellingen voor wachtwoordsterkte, waar u SSO vereisen kunt selecteren.](./media/marketo-tutorial/tutorial_marketo_14.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
@@ -256,21 +256,21 @@ In deze sectie gaat u in Marketo een gebruiker maken met de naam Britta Simon. V
 
 2. Klik in het bovenste navigatievenster op de knop **Admin**.
    
-    ![Eenmalige aanmelding configureren](./media/marketo-tutorial/tutorial_marketo_06.png) 
+    ![Schermopname met Beheerder geselecteerd in het navigatievenster.](./media/marketo-tutorial/tutorial_marketo_06.png) 
 
 3. Navigeer naar het menu **Security** en klik op **User & Roles**
    
-    ![Eenmalige aanmelding configureren](./media/marketo-tutorial/tutorial_marketo_19.png)  
+    ![Schermopname met Gebruikers & rollen geselecteerd vanuit Beveiliging.](./media/marketo-tutorial/tutorial_marketo_19.png)  
 
 4. Klik op het tabblad Users op de koppeling **Invite New User**
    
-    ![Eenmalige aanmelding configureren](./media/marketo-tutorial/tutorial_marketo_15.png) 
+    ![Schermopname van Nieuwe gebruiker uitnodigen op het tabblad Gebruikers.](./media/marketo-tutorial/tutorial_marketo_15.png) 
 
 5. Vul in de wizard Invite New User de volgende informatie in
    
     a. Voer het **e-mailadres** van de gebruiker in het tekstvak in
    
-    ![Eenmalige aanmelding configureren](./media/marketo-tutorial/tutorial_marketo_16.png)
+    ![Schermopname van de eerste stap van de wizard Nieuwe gebruiker uitnodigen waar u gebruikersgegevens invoert.](./media/marketo-tutorial/tutorial_marketo_16.png)
    
     b. Voer de **voornaam** in het tekstvak in
    
@@ -280,10 +280,10 @@ In deze sectie gaat u in Marketo een gebruiker maken met de naam Britta Simon. V
 
 6. Selecteer op het tabblad **Permissions** de optie **userRoles** en klik op **Next**
    
-    ![Eenmalige aanmelding configureren](./media/marketo-tutorial/tutorial_marketo_17.png)
+    ![Schermopname van de eerste stap van de wizard Nieuwe gebruiker uitnodigen waar u machtigingen invoert.](./media/marketo-tutorial/tutorial_marketo_17.png)
 7. Klik op de knop **Send** om de gebruikersuitnodiging te verzenden
    
-    ![Eenmalige aanmelding configureren](./media/marketo-tutorial/tutorial_marketo_18.png)
+    ![Schermopname van de eerste stap van de wizard Nieuwe gebruiker uitnodigen waar u uw bericht invoert.](./media/marketo-tutorial/tutorial_marketo_18.png)
 
 8. De gebruiker ontvangt de e-mailmelding en moet op de koppeling klikken en het wachtwoord wijzigen om het account te activeren. 
 

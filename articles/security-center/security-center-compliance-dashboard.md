@@ -11,25 +11,24 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/12/2019
+ms.date: 10/11/2020
 ms.author: memildin
-ms.openlocfilehash: 7f235f9255df49c096e224e1754ad2bbdf664423
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 3108dd32b9d7338e418a1d10684115ad7265702e
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90895820"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951193"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>Zelfstudie: Uw regelnaleving verbeteren
----
 
-Met Azure Security Center kunt u ervoor zorgen dat het proces voldoet aan de wettelijke vereisten met behulp van het dashboard **Naleving van regelgeving**. In het dashboard biedt Azure Security Center inzicht in uw nalevingspostuur op basis van continue evaluatie van uw Azure-omgeving. Security Center analyseert risicofactoren in uw hybride cloudomgeving overeenkomstig best practices voor beveiliging. Deze evaluaties worden vanuit een ondersteunde set standaarden toegewezen aan nalevingscontroles. In het dashboard Naleving van regelgeving ziet u in de context van een bepaalde regelgevingsstandaard een overzicht van de status van deze evaluaties binnen uw omgeving. Terwijl u reageert op de aanbevelingen en u de risicofactoren in uw omgeving verkleint, wordt uw nalevingspostuur verbeterd.
+Met Azure Security Center kunt u ervoor zorgen dat het proces voldoet aan de wettelijke vereisten met behulp van het dashboard **Naleving van regelgeving**. In het dashboard biedt Azure Security Center inzicht in uw nalevingspostuur op basis van continue evaluatie van uw Azure-omgeving. Security Center analyseert risicofactoren in uw hybride cloudomgeving overeenkomstig best practices voor beveiliging. Deze evaluaties worden vanuit een ondersteunde set standaarden toegewezen aan nalevingscontroles. In het dashboard naleving van regelgeving ziet u in de context van een bepaalde regelgevingsstandaard een overzicht van de status van deze evaluaties binnen uw omgeving. Terwijl u reageert op de aanbevelingen en u de risicofactoren in uw omgeving verkleint, wordt uw nalevingspostuur verbeterd.
 
 In deze zelfstudie leert u het volgende:
 
--   De naleving van uw regelgeving evalueren met het dashboard Naleving van regelgeving
-
--   Uw nalevingspostuur verbeteren door op aanbevelingen te reageren
+> [!div class="checklist"]
+> * De naleving van uw regelgeving evalueren met het dashboard naleving van regelgeving
+> * Uw nalevingspostuur verbeteren door op aanbevelingen te reageren
 
 Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
@@ -39,7 +38,7 @@ Om de functies in deze zelfstudie te doorlopen, moet [Azure Defender](azure-defe
 
 ##  <a name="assess-your-regulatory-compliance"></a>Naleving van uw regelgeving beoordelen
 
-In Azure Security Center wordt de configuratie van uw resources voortdurend beoordeeld om beveiligingsproblemen en kwetsbaarheden te identificeren. Deze beoordelingen worden gepresenteerd als aanbevelingen, die zich richten op het verbeteren van uw beveiligingscontrole. In het dashboard Naleving van regelgeving kunt u een set nalevingsstandaarden met alle bijbehorende vereisten bekijken, waar ondersteunde vereisten worden toegewezen aan van toepassing zijnde beveiligingsbeoordelingen. Hierdoor kunt u uw nalevingspostuur bekijken met betrekking tot de standaard, op basis van de status van deze beoordelingen.
+In Azure Security Center wordt de configuratie van uw resources voortdurend beoordeeld om beveiligingsproblemen en kwetsbaarheden te identificeren. Deze beoordelingen worden gepresenteerd als aanbevelingen, die zich richten op het verbeteren van uw beveiligingscontrole. In het dashboard naleving van regelgeving kunt u een set nalevingsstandaarden met alle bijbehorende vereisten bekijken, waar ondersteunde vereisten worden toegewezen aan van toepassing zijnde beveiligingsbeoordelingen. Hierdoor kunt u uw nalevingspostuur bekijken met betrekking tot de standaard, op basis van de status van deze beoordelingen.
 
 Dankzij de weergave in het dashboard Naleving van regelgeving kunt u uw aandacht richten op de hiaten in de naleving aan de hand van een standaard of regelgeving die belangrijk voor u is. Met deze gerichte weergave kunt u ook voortdurend de score van uw naleving bewaken in dynamische cloud- en hybride omgevingen.
 
@@ -48,58 +47,54 @@ Dankzij de weergave in het dashboard Naleving van regelgeving kunt u uw aandacht
 >
 > Met de functie [dynamische nalevingspakketten (preview)](update-regulatory-compliance-packages.md) kunt u de standaarden in uw nalevingsdashboard upgraden naar de nieuwe *dynamische* pakketten. U kunt dezelfde preview-functie ook gebruiken om nieuwe nalevingspakketten toe te voegen en uw naleving met aanvullende standaarden te bewaken. 
 
-1.  Ga naar het hoofdmenu van Azure Security Center en selecteer onder **BELEID EN NALEVING** de optie **Naleving van regelgeving**. <br>
+1. Selecteer **Naleving van regelgeving** in het menu van Security Center. <br>
 Boven aan het scherm ziet u een dashboard met een overzicht van de nalevingsstatus in combinatie met de set ondersteunde richtlijnen voor naleving. U ziet de totale nalevingsscore en het aantal positieve en negatieve beoordelingen die op elke standaard van toepassing zijn.
 
-    ![computerbeschrijving met hoge betrouwbaarheid](./media/security-center-compliance-dashboard/compliance-dashboard.png)
+    :::image type="content" source="./media/security-center-compliance-dashboard/compliance-dashboard.png" alt-text="Dashboard voor naleving van regelgeving":::
 
-2.  Selecteer een tabblad voor een nalevingsstandaard die voor u relevant is. U krijgt een lijst met alle besturingselementen voor die standaard te zien. Voor de van toepassing zijnde besturingselementen kunt u de details bekijken van positieve en negatieve beoordelingen met betrekking tot dat besturingselement. Sommige besturingselementen zijn grijs weergegeven. Op deze besturingselementen zijn geen beoordelingen van het Azure Security Center van toepassing. Controleer de vereisten hiervoor en ze zelf in uw omgeving te beoordelen. Sommige hiervan kunnen procesgerelateerd zijn in plaats van technisch.
+1. Selecteer een tabblad voor een nalevingsstandaard die voor u relevant is (1). U ziet op welke abonnementen de standaard wordt toegepast (2) en de lijst met alle besturingselementen voor die standaard (3). Voor de van toepassing zijnde besturingselementen kunt u de details bekijken van positieve en negatieve beoordelingen met betrekking tot dat besturingselement (4), evenals de aantallen betrokken resources (5). Sommige besturingselementen zijn grijs weergegeven. Op deze besturingselementen zijn geen beoordelingen van het Azure Security Center van toepassing. Controleer de vereisten hiervoor en ze zelf in uw omgeving te beoordelen. Sommige hiervan kunnen procesgerelateerd zijn in plaats van technisch.
 
-    ![Tabblad Naleving](./media/security-center-compliance-dashboard/compliance-pci.png)
+    :::image type="content" source="./media/security-center-compliance-dashboard/compliance-drilldown.png" alt-text="Dashboard voor naleving van regelgeving":::
 
 1. Als u een samenvattend PDF-rapport van uw nalevingsstatus voor een bepaalde norm wilt genereren en downloaden, klikt u op **Rapport downloaden**.
 
     Het rapport biedt een samenvatting op hoog niveau van uw nalevingsstatus voor de geselecteerde standaard op basis van uw Security Center-beoordelingsgegevens en is geordend overeenkomstig de controles van die bepaalde standaard. Het rapport kan worden gedeeld met relevante belanghebbenden en dient mogelijk als bewijs voor interne en externe auditeurs.
 
-    ![downloadenen](./media/security-center-compliance-dashboard/download-report.png)
+    :::image type="content" source="./media/security-center-compliance-dashboard/download-report.png" alt-text="Dashboard voor naleving van regelgeving":::
 
 ## <a name="improve-your-compliance-posture"></a>De nalevingspostuur verbeteren
 
-Met de informatie in het dashboard Naleving van regelgeving kunt u uw nalevingspostuur verbeteren door aanbevelingen rechtstreeks vanuit het dashboard op te lossen.
+Met de informatie in het dashboard naleving van regelgeving kunt u uw nalevingspostuur verbeteren door aanbevelingen rechtstreeks vanuit het dashboard op te lossen.
 
 1.  Klik op de negatieve beoordelingen die in het dashboard worden weergegeven om de details ervan te bekijken. Elke aanbeveling bevat een serie herstelstappen die dienen te worden gevolgd om het probleem op te lossen.
 
-1.  U kunt een bepaalde resource selecteren om meer details te zien en de aanbeveling voor die resource op te lossen. <br>Op bijvoorbeeld het tabblad **Azure CIS standard** kunt u op de aanbeveling **Require secure transfer to storage account** klikken.
+1.  U kunt een bepaalde resource selecteren om meer details te zien en de aanbeveling voor die resource op te lossen. <br>In de **Azure CIS 1.1.0 (nieuw) standaard** kunt u bijvoorbeeld de aanbeveling **Schijfversleuteling moet worden toegepast op virtuele machines** selecteren.
 
-    ![De aanbeveling **Veilige overdracht naar het opslagaccount vereisen** selecteren](./media/security-center-compliance-dashboard/compliance-recommendation.png)
+    :::image type="content" source="./media/security-center-compliance-dashboard/sample-recommendation.png" alt-text="Dashboard voor naleving van regelgeving":::
 
-1. Als u op de informatie in de aanbevelingen klikt en een resource selecteert die niet in orde is, wordt u in de Azure-portal rechtstreeks doorgestuurd naar een plaats waar u **overdracht van beveiligde opslag** kunt inschakelen.
+1. In dit voorbeeld selecteert u **Actie ondernemen** van de pagina aanbevelingsgegevens, dan komt u bij de pagina's van de virtuele Azure-machine van de Azure-portal, waar u het tabblad **Beveiliging** kunt openen en encryptie kunt inschakelen:
+
+    :::image type="content" source="./media/security-center-compliance-dashboard/encrypting-vm-disks.png" alt-text="Dashboard voor naleving van regelgeving":::
 
     Zie [Beveiligingsaanbevelingen implementeren in Azure Security Center](security-center-recommendations.md) voor meer informatie over het toepassen van aanbevelingen.
-
-    ![Opslagaccountconfiguratie](./media/security-center-compliance-dashboard/compliance-remediate-recommendation.png)
 
 1.  Nadat u actie hebt ondernomen om aanbevelingen op te lossen, ziet u de impact ervan in het dashboardrapport over de naleving omdat de nalevingsscore is verbeterd.
 
     > [!NOTE]
-    > Beoordelingen worden ongeveer elke 12 uur uitgevoerd, dus u ziet de impact ervan op uw nalevingsgegevens pas nadat de beoordelingen worden uitgevoerd.
+    > Beoordelingen worden ongeveer elke 12 uur uitgevoerd, dus u ziet de impact ervan op uw nalevingsgegevens pas na de volgende uitvoering van de relevante beoordeling.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u geleerd hoe u het dashboard Naleving van regelgeving van het Azure Security Center kunt gebruiken om:
+In deze zelfstudie hebt u geleerd hoe u het dashboard naleving van regelgeving van het Azure Security Center kunt gebruiken om:
 
 -   Uw nalevingspostuur te bekijken en bewaken met betrekking tot de standaarden en richtlijnen die voor u van belang zijn.
-
 -   De nalevingsstatus te verbeteren door relevante beoordelingen op te lossen en te zien hoe de nalevingsscore verbetert.
 
-Met het dashboard Naleving van regelgeving kunt u het nalevingsproces fors vereenvoudigen en de benodigde tijd voor het verzamelen van bewijzen van naleving voor uw Azure- en hybride omgeving aanzienlijk verkorten.
+Met het dashboard naleving van regelgeving kunt u het nalevingsproces fors vereenvoudigen en de benodigde tijd voor het verzamelen van bewijzen van naleving voor uw Azure- en hybride omgeving aanzienlijk verkorten.
 
-Raadpleeg voor meer informatie:
+Zie voor meer informatie deze gerelateerde artikelen:
 
 -   [Bijwerken naar dynamische nalevingspakketten in uw nalevingsdashboard (preview)](update-regulatory-compliance-packages.md): meer informatie over deze preview-functie waarmee u de standaarden die worden weergegeven in het nalevingsdashboard kunt bijwerken naar de nieuwe *dynamische* pakketten. U kunt dezelfde preview-functie ook gebruiken om nieuwe nalevingspakketten toe te voegen en uw naleving met aanvullende standaarden te bewaken. 
-
 -   [Beveiligingsstatus controleren in Azure Security Center](security-center-monitoring.md): meer informatie over het controleren van de status van uw Azure-resources.
-
 -   [Aanbevelingen voor beveiliging in Azure Security Center beheren](security-center-recommendations.md): leer hoe u aanbevelingen in Azure Security Center kunt gebruiken om uw Azure-resources te beveiligen.
-
 -   [Uw beveiligingsscore in Azure Security Center verbeteren](secure-score-security-controls.md): leer hoe u prioriteit kunt geven aan kwetsbaarheden en aanbevelingen over beveiliging om uw beveiligingspostuur zo goed mogelijk te verbeteren.

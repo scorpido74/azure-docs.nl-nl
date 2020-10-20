@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 08/28/2020
-ms.openlocfilehash: a54a9d4c50852fe78fd245723dd29f487d58f4b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da1683ec48fcae10ff74163a7db089c30ddd7aad
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89270120"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219901"
 ---
 # <a name="share-and-receive-data-from-azure-blob-storage-and-azure-data-lake-storage"></a>Gegevens delen en ontvangen van Azure Blob Storage en Azure Data Lake Storage
 
@@ -33,7 +33,7 @@ Wanneer bestands systemen, containers of mappen worden gedeeld in delen op basis
 
 ### <a name="prerequisites-for-source-storage-account"></a>Vereisten voor het bron-opslag account
 
-* Een Azure Storage-account: U kunt een gratis [Azure Storage-account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) aanmaken als u nog niet een hebt
+* Een Azure Storage-account: U kunt een gratis [Azure Storage-account](../storage/common/storage-account-create.md) aanmaken als u nog niet een hebt
 * Machtiging om naar het opslagaccount te schrijven, aanwezig in *Microsoft.Storage/storageAccounts/write*. Deze machtiging maakt onderdeel uit van de rol Inzender.
 * Machtiging om roltoewijzing toe te voegen aan het opslagaccount, aanwezig in *Microsoft.Authorization/role assignments/write*. Deze machtiging maakt onderdeel uit van de rol Eigenaar. 
 
@@ -124,7 +124,7 @@ Zorg ervoor dat alle vereisten zijn voltooid voordat u een uitnodiging voor gege
 
 ### <a name="prerequisites-for-target-storage-account"></a>Vereisten voor het doel-opslag account
 
-* Een Azure Storage-account: Hier kunt u een [Azure Storage-account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) maken als u nog geen account hebt. 
+* Een Azure Storage-account: Hier kunt u een [Azure Storage-account](../storage/common/storage-account-create.md) maken als u nog geen account hebt. 
 * Machtiging om naar het opslagaccount te schrijven, aanwezig in *Microsoft.Storage/storageAccounts/write*. Deze machtiging maakt onderdeel uit van de rol Inzender. 
 * Machtiging om roltoewijzing toe te voegen aan het opslagaccount, aanwezig in *Microsoft.Authorization/role assignments/write*. Deze machtiging maakt onderdeel uit van de rol Eigenaar.  
 
@@ -194,4 +194,3 @@ Deze stap geldt alleen voor delen op basis van momentopnamen. Selecteer het tabb
 
 ## <a name="next-steps"></a>Volgende stappen
 U hebt geleerd hoe u gegevens kunt delen en ontvangen van een opslag account met behulp van de Azure data share-service. Voor meer informatie over het delen van andere gegevens bronnen gaat u verder met [ondersteunde gegevens archieven](supported-data-stores.md).
-

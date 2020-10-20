@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: e859ac13c72ed07d3f57da6e61fd6d9f827f0fca
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bceffe5c53b9cbc863fd9c923ffa4718ebd50436
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88854887"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893812"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>Meer informatie over de basisbeginselen van de Speech CLI
 
@@ -69,6 +69,51 @@ In deze opdracht geeft u zowel de brontaal (taal om **vanaf** om te zetten) op a
 
 > [!NOTE]
 > Zie het artikel [Taal en landinstelling](language-support.md) voor een lijst met alle ondersteunde talen met de bijbehorende landinstellingcodes.
+
+### <a name="configuration-files-in-the-datastore"></a>Configuratiebestanden in het gegevensarchief
+
+De Spraak-CLI kan meerdere instellingen lezen en schrijven in configuratiebestanden, die zijn opgeslagen in het lokale gegevensarchief voor Spraak-CLI en die worden genoemd in Spraak-CLI-aanroepen met behulp van een @-teken. De Spraak-CLI probeert een nieuwe instelling op te slaan in een nieuwe `./spx/data`-submap die wordt gemaakt in de huidige werkmap.
+Bij het zoeken naar een configuratiewaarde zoekt de Spraak-CLI in uw huidige werkmap en vervolgens in het pad `./spx/data`.
+U hebt eerder het gegevensarchief gebruikt om uw `@key` en `@region`-waarden op te slaan, zodat u deze niet hoeft op te geven bij elke opdrachtregelaanroep.
+U kunt ook configuratiebestanden gebruiken om uw eigen configuratie-instellingen op te slaan, of zelfs gebruiken voor het doorgeven van URL's of andere dynamische inhoud die tijdens CLR is gegenereerd.
+
+In deze sectie wordt het gebruik van een configuratiebestand in het lokale gegevensarchief weergegeven voor het opslaan en ophalen van de opdrachtinstellingen met behulp van `spx config`, en wordt de uitvoer van Spraak-CLI opgeslagen met behulp van de optie `--output`.
+
+In het volgende voorbeeld wordt het configuratiebestand `@my.defaults` gewist, worden sleutelwaardeparen toegevoegd voor **sleutel** en **regio** in het bestand, en wordt de configuratie gebruikt in een aanroep van `spx recognize`.
+
+```shell
+spx config @my.defaults --clear
+spx config @my.defaults --add key 000072626F6E20697320636F6F6C0000
+spx config @my.defaults --add region westus
+
+spx config @my.defaults
+
+spx recognize --nodefaults @my.defaults --file hello.wav
+```
+
+U kunt ook dynamische inhoud naar een configuratiebestand schrijven. Met de volgende opdracht maakt u bijvoorbeeld een aangepast spraakmodel en slaat u de URL van het nieuwe model op in een configuratiebestand. De volgende opdracht wacht tot het model op die URL gereed is voor gebruik voordat het wordt geretourneerd.
+
+```shell
+spx csr model create --name "Example 4" --datasets @my.datasets.txt --output url @my.model.txt
+spx csr model status --model @my.model.txt --wait
+```
+
+In het volgende voorbeeld worden twee URL's naar het configuratiebestand `@my.datasets.txt` geschreven.
+In dit scenario kan `--output` een optioneel **toevoegen**-trefwoord bevatten om een configuratiebestand te maken of toe te voegen aan de bestaande.
+
+
+```shell
+spx csr dataset create --name "LM" --kind Language --content https://crbn.us/data.txt --output url @my.datasets.txt
+spx csr dataset create --name "AM" --kind Acoustic --content https://crbn.us/audio.zip --output add url @my.datasets.txt
+
+spx config @my.datasets.txt
+```
+
+Voer de volgende opdracht in voor meer informatie over gegevensarchiefbestanden, inclusief het gebruik van standaard configuratiebestanden (`@spx.default`, `@default.config`en `@*.default.config` voor opdracht-specifieke standaardinstellingen):
+
+```shell
+spx help advanced setup
+```
 
 ## <a name="batch-operations"></a>Batchbewerkingen
 

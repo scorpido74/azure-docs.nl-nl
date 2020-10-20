@@ -8,13 +8,14 @@ ms.assetid: d5750b3e-bfbd-4fa0-b888-ebfab7d9c9ae
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
-ms.date: 04/27/2020
-ms.openlocfilehash: e9d7c99a123bd92bf55a33c8d1faaf7da55d3e36
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/14/2020
+ms.custom: references_regions
+ms.openlocfilehash: da1f3154d492a36a196d87eec98af462fd659cd2
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90889027"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057515"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Quickstart: Azure Sentinel onboarden
 
@@ -26,7 +27,6 @@ Nadat u verbinding hebt gemaakt met uw gegevensbronnen, kiest u uit een galerie 
 
 >[!IMPORTANT] 
 > Zie [Prijzen voor Azure Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel/)voor meer informatie over de kosten voor het gebruik van Azure Sentinel.
-  
 
 ## <a name="global-prerequisites"></a>Globale vereisten
 
@@ -38,7 +38,24 @@ Nadat u verbinding hebt gemaakt met uw gegevensbronnen, kiest u uit een galerie 
 - Om Azure Sentinel te gebruiken, hebt u inzenders- of lezersmachtigingen nodig voor de resourcegroep waartoe de werkruimte behoort.
 - Er zijn mogelijk extra machtigingen nodig om verbinding te maken met specifieke gegevensbronnen.
 - Azure Sentinel is een betaalde service. Zie [Prijzen voor Azure Sentinel](https://go.microsoft.com/fwlink/?linkid=2104058) voor prijsinformatie.
- 
+
+### <a name="geographical-availability-and-data-residency"></a>Geografische beschikbaarheid en gegevenslocatie
+
+- Azure Sentinel kan worden uitgevoerd op werkruimten in elke [GA-regio van Log Analytics](https://azure.microsoft.com/global-infrastructure/services/?products=monitor), behalve de regio's China en Duitsland (soevereine regio's). 
+
+- Gegevens die worden gegenereerd door Azure Sentinel, zoals incidenten, bladwijzers en analytics-regels, bevatten mogelijk wat klantgegevens die afkomstig zijn uit de Log Analytics-werkruimten van de klant. Deze door Azure Sentinel gegenereerde gegevens worden opgeslagen in de geografie die wordt vermeld in de volgende tabel, op basis van de geografie waar de werkruimte zich bevindt:
+
+    | Geografie van werkruimte | Gegevensgeografie gegenereerd door Azure Sentinel |
+    | --- | --- |
+    | Verenigde Staten<br>India<br>Brazilië<br>Afrika<br>Korea | Verenigde Staten |
+    | Europa<br>Frankrijk<br>Zwitserland | Europa |
+    | Australië | Australië |
+    | Verenigd Koninkrijk | Verenigd Koninkrijk |
+    | Canada | Canada |
+    | Azië en Stille Oceaan | Azië en Stille Oceaan (Singapore) |
+    | Japan | Japan |
+    |
+
 ## <a name="enable-azure-sentinel"></a>Azure Sentinel inschakelen <a name="enable"></a>
 
 1. Meld u aan bij Azure Portal. Zorg ervoor dat het abonnement waarin Azure Sentinel wordt gemaakt, is geselecteerd.
@@ -55,7 +72,7 @@ Nadat u verbinding hebt gemaakt met uw gegevensbronnen, kiest u uit een galerie 
 
    >[!NOTE] 
    > - Door Azure Security Center gemaakte standaardwerkruimten worden niet weergegeven in de lijst; u kunt Azure Sentinel er niet op installeren.
-   > - Azure Sentinel kan worden uitgevoerd op werkruimten in elke [GA-regio van Log Analytics](https://azure.microsoft.com/global-infrastructure/services/?products=monitor), behalve de regio's China en Duitsland (soevereine regio's). Door Azure Sentinel gegenereerde gegevens (zoals incidenten, bladwijzers en waarschuwingsregels die klantgegevens uit deze werkruimten kunnen bevatten) worden opgeslagen in Europa (voor werkruimten in Europa) of in US - oost (voor werkruimten in andere regio's).
+   >
 
    >[!IMPORTANT]
    >
@@ -67,19 +84,21 @@ Nadat u verbinding hebt gemaakt met uw gegevensbronnen, kiest u uit een galerie 
 
 ## <a name="connect-data-sources"></a>Verbinding maken met gegevensbronnen
 
-Azure Sentinel maakt de verbinding met services en apps door verbinding te maken met de service en de gebeurtenissen en logboeken door te sturen naar Azure Sentinel. Voor computers en virtuele machines kunt u de Azure Sentinel-agent installeren waarmee de logboeken worden verzameld en doorgestuurd naar Azure Sentinel. Voor firewalls en proxy's maakt Azure Sentinel gebruik van een Linux Syslog-server. De agent wordt daarop geïnstalleerd en verzamelt daar de logboekbestanden en stuurt ze door naar Azure Sentinel. 
+Azure Sentinel neemt gegevens van services en apps op door verbinding te maken met de service en de gebeurtenissen en logboeken door te sturen naar Azure Sentinel. Voor fysieke en virtuele machines kunt u de Log Analytics-agent installeren waarmee de logboeken worden verzameld en doorgestuurd naar Azure Sentinel. Voor firewalls en proxy's installeert Azure Sentinel de Log Analytics-agent op een Linux Syslog-server, waarvandaan de agent de logboekbestanden verzamelt en naar Azure Sentinel doorstuurt. 
  
-1. Klik op **Gegevensconnectors**.
-1. Er is een tegel voor elke gegevensbron waarmee u verbinding kunt maken.<br>
-Klik bijvoorbeeld op **Azure Active Directory**. Als u deze gegevensbron verbindt, streamt u alle logboeken van Azure AD naar Azure Sentinel. U kunt selecteren welk type logboeken u wilt hebben: aanmeldingslogboeken en/of controlelogboeken. <br>
-Aan de onderkant doet Azure Sentinel aanbevelingen voor de werkmappen die u voor elke connector moet installeren, zodat u direct interessante inzichten kunt krijgen in uw gegevens. <br> Volg de installatie-instructies of [raadpleeg de relevante verbindingshandleiding](connect-data-sources.md) voor meer informatie. Zie [Connect Microsoft services](connect-data-sources.md) (Microsoft-services verbinden) voor meer informatie over gegevensconnectors.
+1. Selecteer **Gegevensconnectors** in het hoofdmenu. Hiermee opent u de galerie met gegevensconnectors.
 
-Nadat uw gegevensbronnen zijn verbonden, worden uw gegevens gestreamd naar Azure Sentinel en kunt u ermee aan de slag gaan. U kunt de logboeken in de [ingebouwde dashboards](quickstart-get-visibility.md) weergeven en beginnen met het bouwen van query's in Log Analytics om [de gegevens te onderzoeken](tutorial-investigate-cases.md).
+1. De galerie is een lijst met alle gegevensbronnen waarmee u verbinding kunt maken. Selecteer een gegevensbron en klik vervolgens op de knop **Connectorpagina openen**.
 
+1. De connectorpagina bevat instructies voor het configureren van de connector en eventuele aanvullende instructies die nodig kunnen zijn.<br>
+Als u bijvoorbeeld de **Azure Active Directory**-gegevensbron selecteert, waarmee u logboeken van Azure AD kunt streamen naar Azure Sentinel, kunt u selecteren welk type logboeken u wilt ontvangen, aanmeldingslogboeken en/of auditlogboeken. <br> Volg de installatie-instructies of [raadpleeg de relevante verbindingshandleiding](connect-data-sources.md) voor meer informatie. Zie [Connect Microsoft services](connect-data-sources.md) (Microsoft-services verbinden) voor meer informatie over gegevensconnectors.
 
+1. In het tabblad **Volgende stappen** op de connectorpagina ziet u relevante ingebouwde werkmappen, voorbeeldquery's en sjablonen van analytics-regels die bij de gegevensconnector horen. U kunt deze ongewijzigd gebruiken of wijzigen. In ieder geval kunt u onmiddellijk interessante inzichten krijgen over uw gegevens. <br>
+
+Nadat uw gegevensbronnen zijn verbonden, worden uw gegevens gestreamd naar Azure Sentinel en kunt u ermee aan de slag gaan. U kunt de logboeken in de [ingebouwde werkmappen](quickstart-get-visibility.md) weergeven en beginnen met het bouwen van query's in Log Analytics om [de gegevens te onderzoeken](tutorial-investigate-cases.md).
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit document hebt u geleerd hoe u gegevensbronnen verbindt met Azure Sentinel. Zie de volgende artikelen voor meer informatie over Azure Sentinel:
+In dit document hebt u geleerd over onboarden en hoe u gegevensbronnen verbindt met Azure Sentinel. Zie de volgende artikelen voor meer informatie over Azure Sentinel:
 - Meer informatie over het [verkrijgen van inzicht in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
 - Ga aan de slag met [het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
 - Gegevens streamen van [Common Event Format-apparaten](connect-common-event-format.md) naar Azure Sentinel.

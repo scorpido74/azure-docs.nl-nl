@@ -4,14 +4,14 @@ description: Download de Azure PowerShell-voorbeelden voor het uitvoeren van ver
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 07/30/2020
+ms.date: 10/07/2020
 ms.author: mjbrown
-ms.openlocfilehash: 678e9490fe52a329365174e1a2283a475f3312e5
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 0c2d13ef49676917bc48dd5a2e682471558567f3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87505012"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842968"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db"></a>Voorbeelden van Azure PowerShell voor Azure Cosmos DB
 
@@ -37,8 +37,7 @@ De volgende tabel bevat koppelingen naar veelgebruikte Azure PowerShell-scripts 
 |[Een container maken met een grote partitiesleutel](scripts/powershell/sql/create-large-partition-key.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Maak een container met een grote partitiesleutel. |
 |[Een container maken zonder indexbeleid](scripts/powershell/sql/create-index-none.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Maak een Azure Cosmos DB-container met uitgeschakeld indexbeleid.|
 |[Databases of containers in een lijst weergeven of ophalen](scripts/powershell/sql/list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Geef de database of container in een lijst weer of haal deze op. |
-|[Doorvoer bepalen](scripts/powershell/sql/throughput-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| De doorvoer bepalen voor een database of container. |
-|[Doorvoer bijwerken](scripts/powershell/sql/throughput-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| De doorvoer voor een database of container bijwerken. |
+|[Doorvoerbewerkingen](scripts/powershell/sql/throughput.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Doorvoerbewerkingen voor een database of container, waaronder ophalen, bijwerken en migreren tussen doorvoer met automatische schaalaanpassing en standaarddoorvoer. |
 |[Resources vergrendelen tegen verwijdering](scripts/powershell/sql/lock.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Voorkomen dat resources worden verwijderd met een resourcevergrendeling. |
 |||
 
@@ -49,8 +48,7 @@ De volgende tabel bevat koppelingen naar veelgebruikte Azure PowerShell-scripts 
 |[Een account, keyspace en een tabel maken](scripts/powershell/cassandra/create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Hiermee wordt een Azure Cosmos-account, -keyspace en -tabel gemaakt. |
 |[Een account, keyspace en tabel maken met automatische schaalaanpassing](scripts/powershell/cassandra/autoscale.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Maak een account, keyspace en tabel van Azure Cosmos met automatische schaalaanpassing. |
 |[Keyspaces of tabellen weergeven of ophalen](scripts/powershell/cassandra/list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Geef keyspaces of tabellen weer of haal deze op. |
-|[Doorvoer bepalen](scripts/powershell/cassandra/throughput-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| De doorvoer bepalen voor een keyspace of tabel. |
-|[Doorvoer bijwerken](scripts/powershell/cassandra/throughput-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| De doorvoer voor een keyspace of tabel bijwerken. |
+|[Doorvoerbewerkingen](scripts/powershell/cassandra/throughput.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Doorvoerbewerkingen voor een keyspace of tabel, waaronder ophalen, bijwerken en migreren tussen doorvoer met automatische schaalaanpassing en standaarddoorvoer. |
 |[Resources vergrendelen tegen verwijdering](scripts/powershell/cassandra/lock.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Voorkomen dat resources worden verwijderd met een resourcevergrendeling. |
 |||
 
@@ -61,8 +59,7 @@ De volgende tabel bevat koppelingen naar veelgebruikte Azure PowerShell-scripts 
 |[Een account, database en verzameling maken](scripts/powershell/mongodb/create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Hiermee maakt u een Azure Cosmos-account, -database en -verzameling. |
 |[Een account, database en verzameling maken met automatische schaalaanpassing](scripts/powershell/mongodb/autoscale.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Maak een account, database en verzameling maken met automatische schaalaanpassing. |
 |[Databases of verzamelingen in een lijst weergeven of ophalen](scripts/powershell/mongodb/list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Geef de database of verzameling in een lijst weer of haal deze op. |
-|[Doorvoer bepalen](scripts/powershell/mongodb/throughput-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| De doorvoer bepalen voor een database of verzameling. |
-|[Doorvoer bijwerken](scripts/powershell/mongodb/throughput-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| De doorvoer voor een database of verzameling bijwerken. |
+|[Doorvoerbewerkingen](scripts/powershell/mongodb/throughput.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Doorvoerbewerkingen voor een database of verzameling, waaronder ophalen, bijwerken en migreren tussen doorvoer met automatische schaalaanpassing en standaarddoorvoer. |
 |[Resources vergrendelen tegen verwijdering](scripts/powershell/mongodb/lock.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Voorkomen dat resources worden verwijderd met een resourcevergrendeling. |
 |||
 
@@ -73,8 +70,7 @@ De volgende tabel bevat koppelingen naar veelgebruikte Azure PowerShell-scripts 
 |[Een account, database en grafiek maken](scripts/powershell/gremlin/create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Hiermee maakt u een Azure Cosmos-account, -database en -grafiek. |
 |[Een account, database en grafiek maken met automatische schaalaanpassing](scripts/powershell/gremlin/autoscale.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Hiermee maakt u een account, database en grafiek met automatische schaalaanpassing. |
 |[Databases of grafieken in een lijst weergeven of ophalen](scripts/powershell/gremlin/list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Geef de databases of grafiek in een lijst weer of haal deze op. |
-|[Doorvoer bepalen](scripts/powershell/gremlin/throughput-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| De doorvoer bepalen voor een database of grafiek. |
-|[Doorvoer bijwerken](scripts/powershell/gremlin/throughput-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| De doorvoer voor een database of grafiek bijwerken. |
+|[Doorvoerbewerkingen](scripts/powershell/gremlin/throughput.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Doorvoerbewerkingen voor een database of grafiek, waaronder ophalen, bijwerken en migreren tussen doorvoer met automatische schaalaanpassing en standaarddoorvoer. |
 |[Resources vergrendelen tegen verwijdering](scripts/powershell/gremlin/lock.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Voorkomen dat resources worden verwijderd met een resourcevergrendeling. |
 |||
 
@@ -85,7 +81,6 @@ De volgende tabel bevat koppelingen naar veelgebruikte Azure PowerShell-scripts 
 |[Een account en een tabel maken](scripts/powershell/table/create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Hiermee wordt een Azure Cosmos-account en -tabel gemaakt. |
 |[Een account en tabel maken met automatische schaalaanpassing](scripts/powershell/table/autoscale.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Hiermee maakt u een Azure Cosmos-account en -tabel met automatische schaalaanpassing. |
 |[Tabellen weergeven of ophalen](scripts/powershell/table/list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Geef tabellen weer of haal deze op. |
-|[Doorvoer bepalen](scripts/powershell/table/throughput-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| De doorvoer voor een tabel bepalen. |
-|[Doorvoer bijwerken](scripts/powershell/table/throughput-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| De doorvoer voor een tabel bijwerken. |
+|[Doorvoerbewerkingen](scripts/powershell/table/throughput.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Doorvoerbewerkingen voor een tabel, waaronder ophalen, bijwerken en migreren tussen doorvoer met automatische schaalaanpassing en standaarddoorvoer. |
 |[Resources vergrendelen tegen verwijdering](scripts/powershell/table/lock.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Voorkomen dat resources worden verwijderd met een resourcevergrendeling. |
 |||

@@ -977,7 +977,7 @@
                   href: virtual-machines/windows/backup-restore.md
                 - name: Azure Storage voor back-up
                   href: virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md
-                - name: AlwaysOn-beschikbaarheidsgroep
+                - name: Beschikbaarheidsgroep (AG)
                   href: virtual-machines/windows/availability-group-overview.md
                 - name: Failover-clusterexemplaar
                   href: virtual-machines/windows/failover-cluster-instance-overview.md
@@ -1054,33 +1054,45 @@
                       href: virtual-machines/windows/automated-backup.md
                     - name: Automatische back-up (SQL 2014)
                       href: virtual-machines/windows/automated-backup-sql-2014.md
-                - name: AlwaysOn-beschikbaarheidsgroep
+                - name: Beschikbaarheidsgroep (AG)
                   items:
-                    - name: Azure Portal
-                      href: virtual-machines/windows/availability-group-azure-portal-configure.md
-                    - name: PowerShell of Az CLI
-                      href: virtual-machines/windows/availability-group-az-commandline-configure.md
-                    - name: Azure-quickstartsjablonen
-                      href: virtual-machines/windows/availability-group-quickstart-template-configure.md
-                    - name: Meerdere regio's
-                      href: virtual-machines/windows/availability-group-manually-configure-multiple-regions.md
-                    - name: Domeinonafhankelijk (werkgroep)
-                      href: virtual-machines/windows/availability-group-clusterless-workgroup-configure.md
-                    - name: Handmatig configureren
+                    - name: AG maken
                       items:
-                        - name: Vereisten
-                          href: virtual-machines/windows/availability-group-manually-configure-prerequisites-tutorial.md
-                        - name: Zelfstudie
-                          href: virtual-machines/windows/availability-group-manually-configure-tutorial.md
-                        - name: Load balancer - Azure-portal
-                          href: virtual-machines/windows/availability-group-load-balancer-portal-configure.md
-                        - name: Load balancer - Azure PowerShell
-                          href: virtual-machines/windows/availability-group-listener-powershell-configure.md
+                        - name: Azure Portal
+                          href: virtual-machines/windows/availability-group-azure-portal-configure.md
+                        - name: PowerShell of Az CLI
+                          href: virtual-machines/windows/availability-group-az-commandline-configure.md
+                        - name: Azure-quickstartsjablonen
+                          href: virtual-machines/windows/availability-group-quickstart-template-configure.md
+                        - name: Meerdere regio's
+                          href: virtual-machines/windows/availability-group-manually-configure-multiple-regions.md
+                        - name: Domeinonafhankelijk (werkgroep)
+                          href: virtual-machines/windows/availability-group-clusterless-workgroup-configure.md
+                        - name: Handmatig configureren
+                          items:
+                            - name: Vereisten
+                              href: virtual-machines/windows/availability-group-manually-configure-prerequisites-tutorial.md
+                            - name: Zelfstudie
+                              href: virtual-machines/windows/availability-group-manually-configure-tutorial.md
+                            - name: Load balancer - Azure-portal
+                              href: virtual-machines/windows/availability-group-load-balancer-portal-configure.md
+                            - name: Load balancer - Azure PowerShell
+                              href: virtual-machines/windows/availability-group-listener-powershell-configure.md
+                    - name: Connectiviteit configureren
+                      items:
+                        - name: VNN-listener
+                          displayName: virtual network name
+                          href: virtual-machines/windows/availability-group-vnn-azure-load-balancer-configure.md
+                        - name: DNN-listener
+                          displayName: distributed network name
+                          href: virtual-machines/windows/availability-group-distributed-network-name-dnn-listener-configure.md
+                        - name: DNN-interoperabiliteit
+                          href: virtual-machines/windows/availability-group-dnn-interoperability.md
                 - name: Failover-clusterexemplaar (FCI)
                   items:
                     - name: De virtuele machine voorbereiden voor FCI
                       href: virtual-machines/windows/failover-cluster-instance-prepare-vm.md
-                    - name: FCI maken met
+                    - name: FCI maken
                       items:
                         - name: Gedeelde Azure-schijven
                           href: virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure.md
@@ -1088,16 +1100,14 @@
                           href: virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md
                         - name: Premium-bestandsshare (Win2012+)
                           href: virtual-machines/windows/failover-cluster-instance-premium-file-share-manually-configure.md
-                    - name: Gedistribueerde netwerknaam (DNN)
+                    - name: Connectiviteit configureren
                       items:
-                        - name: DNN maken voor FCI
-                          href: virtual-machines/windows/hadr-distributed-network-name-dnn-configure.md
-                        - name: FCI DNN en SQL Server-functies
+                        - name: Naam van virtueel netwerk (VNN)
+                          href: virtual-machines/windows/failover-cluster-instance-vnn-azure-load-balancer-configure.md
+                        - name: Gedistribueerde netwerknaam (DNN)
+                          href: virtual-machines/windows/failover-cluster-instance-distributed-network-name-dnn-configure.md
+                        - name: DNN-interoperabiliteit
                           href: virtual-machines/windows/failover-cluster-instance-dnn-interoperability.md
-                - name: Connectiviteit configureren
-                  items:
-                    - name: Naam van virtueel netwerk (VNN)
-                      href: virtual-machines/windows/hadr-vnn-azure-load-balancer-configure.md
         - name: Naslaginformatie
           items:
             - name: Azure PowerShell

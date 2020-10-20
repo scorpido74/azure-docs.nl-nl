@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 230613cc103cc851d1173f867b551af028ea898b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3b22bb16c583c0385b31bde89f30763cd4fb478a
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546845"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945903"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-jira"></a>Zelfstudie: Integratie van Azure Active Directory met Kantega SSO voor JIRA
 
@@ -99,7 +99,7 @@ Als u eenmalige aanmelding van Azure AD wilt configureren voor Kantega SSO voor 
 
 4. In het gedeelte **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
 
-    ![Domein- en URL-gegevens voor eenmalige aanmelding bij Kantega SSO voor JIRA](common/idp-intiated.png)
+    ![Schermopname van 'Standaard SAML-configuratie' met de tekstvakken 'Id' en 'Antwoord-URL' gemarkeerd en de knop 'Opslaan' geselecteerd.](common/idp-intiated.png)
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
@@ -134,39 +134,39 @@ Als u eenmalige aanmelding van Azure AD wilt configureren voor Kantega SSO voor 
 
 1. Wijs het tandwiel aan met de muisaanwijzer en klik op **Add-ons**.
 
-    ![Eenmalige aanmelding configureren](./media/kantegassoforjira-tutorial/addon1.png)
+    ![Schermopname met het pictogram 'Tandwiel' geselecteerd en 'Invoegtoepassingen' geselecteerd in de vervolgkeuzelijst.](./media/kantegassoforjira-tutorial/addon1.png)
 
 1. Klik onder de tabbladsectie Invoegtoepassingen op **Nieuwe invoegtoepassingen zoeken**. Zoek **Kantega SSO voor JIRA (SAML en Kerberos)** en klik op de knop **Installeren** om de nieuwe SAML-invoegtoepassing te installeren.
 
-    ![Eenmalige aanmelding configureren](./media/kantegassoforjira-tutorial/addon2.png)
+    ![Schermopname waarin de sectie 'Nieuwe invoegtoepassingen zoeken' wordt weergegeven met 'Kantego SSO voor JIRA (SAML & Kerberos)' in het zoekvak en de knop 'Installeren' geselecteerd.](./media/kantegassoforjira-tutorial/addon2.png)
 
 1. De installatie van de invoegtoepassing wordt gestart.
 
-    ![Eenmalige aanmelding configureren](./media/kantegassoforjira-tutorial/addon3.png)
+    ![Schermopname van het dialoogvenster 'Installeren' van de invoegtoepassing.](./media/kantegassoforjira-tutorial/addon3.png)
 
 1. Nadat de installatie is voltooid. Klik op **Sluiten**.
 
-    ![Eenmalige aanmelding configureren](./media/kantegassoforjira-tutorial/addon33.png)
+    ![Schermopname van het dialoogvenster 'Geïnstalleerd en klaar voor gebruik!' met de actie 'Sluiten' geselecteerd.](./media/kantegassoforjira-tutorial/addon33.png)
 
 1.  Klik op **Beheren**.
 
-    ![Eenmalige aanmelding configureren](./media/kantegassoforjira-tutorial/addon34.png)
+    ![Schermopname van de app-pagina 'Kantega SSO' met de knop 'Beheren' geselecteerd.](./media/kantegassoforjira-tutorial/addon34.png)
     
 1. Nieuwe invoegtoepassing wordt vermeld onder **INTEGRATIES**. Klik op **Configure** om de nieuwe invoegtoepassing te configureren.
 
-    ![Eenmalige aanmelding configureren](./media/kantegassoforjira-tutorial/addon35.png)
+    ![Schermopname van 'INTEGRATIES' in het navigatiemenu aan de linkerkant en de knop 'Configureren' geselecteerd in de sectie 'Invoegtoepassingen' beheren.](./media/kantegassoforjira-tutorial/addon35.png)
 
 1. In het gedeelte **SAML**. Selecteer **Azure Active Directory (Azure AD)** in de vervolgkeuzelijst **Id-provider toevoegen**.
 
-    ![Eenmalige aanmelding configureren](./media/kantegassoforjira-tutorial/addon4.png)
+    ![Schermopname van de vervolgkeuzelijst 'Id-provider toevoegen' met Azure Active Directory (Azure AD) geselecteerd.](./media/kantegassoforjira-tutorial/addon4.png)
 
 1. Selecteer als abonnementsniveau de optie **Basic**.
 
-    ![Eenmalige aanmelding configureren](./media/kantegassoforjira-tutorial/addon5.png)       
+    ![Schermopname van de sectie 'Azure AD voorbereiden' met 'Basic' geselecteerd.](./media/kantegassoforjira-tutorial/addon5.png)     
 
 1. Voer de volgende stappen uit in het gedeelte **App-eigenschappen**: 
 
-    ![Eenmalige aanmelding configureren](./media/kantegassoforjira-tutorial/addon6.png)
+    ![Schermopname van de sectie 'App-eigenschappen' met het tekstvak 'App ID URL' en Kopiëren gemarkeerd en de knop 'Volgende' geselecteerd.](./media/kantegassoforjira-tutorial/addon6.png)
 
     a. Kopieer de waarde voor de **app-id-URI** en gebruik deze als **id, antwoord-URL en aanmeldings-URL** in het gedeelte **Standaard SAML-configuratie** in Azure Portal.
 
@@ -174,7 +174,7 @@ Als u eenmalige aanmelding van Azure AD wilt configureren voor Kantega SSO voor 
 
 1. Voer de volgende stappen uit in het gedeelte **Metagegevens importeren**: 
 
-    ![Eenmalige aanmelding configureren](./media/kantegassoforjira-tutorial/addon7.png)
+    ![Schermopname van de sectie 'Importeren metagegevens' met 'Metagegevensbestand op mijn computer' geselecteerd.](./media/kantegassoforjira-tutorial/addon7.png)
 
     a. Selecteer **Metadata file on my computer** en upload het metagegevensbestand dat u vanuit Azure Portal hebt gedownload.
 
@@ -182,7 +182,7 @@ Als u eenmalige aanmelding van Azure AD wilt configureren voor Kantega SSO voor 
 
 1. Voer de volgende stappen uit op in het gedeelte **Name and SSO location**:
 
-    ![Eenmalige aanmelding configureren](./media/kantegassoforjira-tutorial/addon8.png)
+    ![Schermopname van de 'Naam en SSO-locatie', waarbij het tekstvak 'Naam van de id-provider' is gemarkeerd en de knop 'Volgende' is geselecteerd.](./media/kantegassoforjira-tutorial/addon8.png)
 
     a. In het tekstvak **Identity provider name** (bijvoorbeeld Azure AD) voegt u de naam van de id-provider toe.
 
@@ -190,11 +190,11 @@ Als u eenmalige aanmelding van Azure AD wilt configureren voor Kantega SSO voor 
 
 1. Controleer het handtekeningcertificaat en klik op **Volgende**.
 
-    ![Eenmalige aanmelding configureren](./media/kantegassoforjira-tutorial/addon9.png)
+    ![Schermopname van de sectie 'Handtekeningverificatie' met de knop 'Volgende' geselecteerd.](./media/kantegassoforjira-tutorial/addon9.png)
 
 1. Voer de volgende stappen uit in de sectie **JIRA user accounts**:
 
-    ![Eenmalige aanmelding configureren](./media/kantegassoforjira-tutorial/addon10.png)
+    ![Schermopname van 'JIRA-gebruikersaccounts' met de optie 'Gebruikers in de interne map van JIRA maken indien nodig' gemarkeerd en de knop 'Volgende' geselecteerd.](./media/kantegassoforjira-tutorial/addon10.png)
 
     a. Selecteer **Create users in JIRA's internal Directory if needed** en voer de juiste naam van de groep voor gebruikers in (dit kunnen meerdere aantallen groepen zijn, gescheiden door komma's).
 
@@ -202,7 +202,7 @@ Als u eenmalige aanmelding van Azure AD wilt configureren voor Kantega SSO voor 
 
 1. Klik op **Voltooien**.
 
-    ![Eenmalige aanmelding configureren](./media/kantegassoforjira-tutorial/addon11.png)
+    ![Schermopname van de sectie 'Samenvatting' met de knop 'Voltooien' geselecteerd.](./media/kantegassoforjira-tutorial/addon11.png)
 
 1. Voer in het gedeelte **Known domains for Azure AD** de volgende stappen uit:
 
@@ -274,11 +274,11 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij JIRA, moeten ze wor
 
 1. Wijs het tandwiel aan met de muisaanwijzer en klik op **User management**.
 
-    ![Werknemer toevoegen](./media/kantegassoforjira-tutorial/user1.png) 
+    ![Schermopname met het pictogram 'Tandwiel' geselecteerd en 'Gebruikersbeheer' geselecteerd in de vervolgkeuzelijst.](./media/kantegassoforjira-tutorial/user1.png) 
 
 1. Klik in de tabbladsectie **Gebruikersbeheer** op **Gebruiker maken**.
 
-    ![Werknemer toevoegen](./media/kantegassoforjira-tutorial/user2.png) 
+    ![Schermopname toont de sectie 'Gebruikersbeheer' met 'Gebruiker maken' geselecteerd.](./media/kantegassoforjira-tutorial/user2.png) 
 
 1. Op de pagina **Nieuwe gebruiker maken** voert u de volgende stappen uit:
 

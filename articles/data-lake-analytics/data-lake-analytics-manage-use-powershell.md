@@ -1,20 +1,19 @@
 ---
 title: Azure Data Lake Analytics beheren met Azure PowerShell
 description: In dit artikel wordt beschreven hoe u Azure PowerShell kunt gebruiken om Data Lake Analytics accounts, gegevens bronnen, gebruikers & taken te beheren.
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: ad14d53c-fed4-478d-ab4b-6d2e14ff2097
 ms.topic: how-to
 ms.date: 06/29/2018
-ms.openlocfilehash: 70a251db6c08f353f9c50512c41551e7a909a059
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: afa21e6aae769e69e8bc83b9fa0d4f9b76396f7e
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87125646"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220309"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>Azure Data Lake Analytics beheren met Azure PowerShell
+
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
 In dit artikel wordt beschreven hoe u Azure Data Lake Analytics accounts, gegevens bronnen, gebruikers en taken beheert met behulp van Azure PowerShell.
@@ -23,7 +22,7 @@ In dit artikel wordt beschreven hoe u Azure Data Lake Analytics accounts, gegeve
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Als u Power shell met Data Lake Analytics wilt gebruiken, verzamelt u de volgende informatie: 
+Als u Power shell met Data Lake Analytics wilt gebruiken, verzamelt u de volgende informatie:
 
 * **Abonnements-id**: de id van het Azure-abonnement met uw data Lake Analytics-account.
 * **Resource groep**: de naam van de Azure-resource groep die uw data Lake Analytics-account bevat.
@@ -52,7 +51,7 @@ Meld u aan met een abonnements-ID of abonnements naam
 Connect-AzAccount -SubscriptionId $subId
 
 # Using subscription name
-Connect-AzAccount -SubscriptionName $subname 
+Connect-AzAccount -SubscriptionName $subname
 ```
 
 ## <a name="saving-authentication-context"></a>Verificatie context opslaan
@@ -64,23 +63,22 @@ De `Connect-AzAccount` cmdlet vraagt altijd om referenties. U kunt voor komen da
 Save-AzAccounts -Path D:\profile.json  
 
 # Load login session information
-Select-AzAccounts -Path D:\profile.json 
+Select-AzAccounts -Path D:\profile.json
 ```
 
 ### <a name="log-in-using-a-service-principal-identity-spi"></a>Aanmelden met behulp van een Service-Principal-identiteit (SPI)
 
 ```powershell
 $tenantid = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"  
-$spi_appname = "appname" 
-$spi_appid = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX" 
-$spi_secret = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" 
+$spi_appname = "appname"
+$spi_appid = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+$spi_secret = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 
 $pscredential = New-Object System.Management.Automation.PSCredential ($spi_appid, (ConvertTo-SecureString $spi_secret -AsPlainText -Force))
 Login-AzAccount -ServicePrincipal -TenantId $tenantid -Credential $pscredential -Subscription $subid
 ```
 
 ## <a name="manage-accounts"></a>Accounts beheren
-
 
 ### <a name="list-accounts"></a>Lijst van accounts
 
@@ -94,7 +92,7 @@ Get-AdlAnalyticsAccount -ResourceGroupName $rg
 
 ### <a name="create-an-account"></a>Een account maken
 
-Elke Data Lake Analytics-account vereist een Data Lake Store-standaardaccount dat wordt gebruikt voor het opslaan van logboeken. U kunt een bestaand account opnieuw gebruiken of een account maken. 
+Elke Data Lake Analytics-account vereist een Data Lake Store-standaardaccount dat wordt gebruikt voor het opslaan van logboeken. U kunt een bestaand account opnieuw gebruiken of een account maken.
 
 ```powershell
 # Create a data lake store if needed, or you can re-use an existing one
@@ -117,12 +115,13 @@ Test-AdlAnalyticsAccount -Name $adla
 ```
 
 ## <a name="manage-data-sources"></a>Gegevensbronnen beheren
+
 Azure Data Lake Analytics ondersteunt momenteel de volgende gegevens bronnen:
 
 * [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)
 * [Azure Storage](../storage/common/storage-introduction.md)
 
-Elk Data Lake Analytics-account heeft een standaard Data Lake Store-account. De standaard Data Lake Store-account wordt gebruikt voor het opslaan van meta gegevens van taken en taak controle Logboeken. 
+Elk Data Lake Analytics-account heeft een standaard Data Lake Store-account. De standaard Data Lake Store-account wordt gebruikt voor het opslaan van meta gegevens van taken en taak controle Logboeken.
 
 ### <a name="find-the-default-data-lake-store-account"></a>De standaard Data Lake Store account zoeken
 
@@ -134,7 +133,7 @@ $dataLakeStoreName = $adla_acct.DefaultDataLakeAccount
 U kunt het standaard Data Lake Store-account vinden door de lijst met gegevens bronnen te filteren op de `IsDefault` eigenschap:
 
 ```powershell
-Get-AdlAnalyticsDataSource -Account $adla  | ? { $_.IsDefault } 
+Get-AdlAnalyticsDataSource -Account $adla  | ? { $_.IsDefault }
 ```
 
 ### <a name="add-a-data-source"></a>Een gegevensbron toevoegen
@@ -148,7 +147,7 @@ Add-AdlAnalyticsDataSource -Account $adla -Blob $AzureStorageAccountName -Access
 
 # Add an additional Data Lake Store account.
 $AzureDataLakeStoreName = "<AzureDataLakeStoreAccountName"
-Add-AdlAnalyticsDataSource -Account $adla -DataLakeStore $AzureDataLakeStoreName 
+Add-AdlAnalyticsDataSource -Account $adla -DataLakeStore $AzureDataLakeStoreName
 ```
 
 ### <a name="list-data-sources"></a>Gegevens bronnen weer geven
@@ -170,8 +169,8 @@ Get-AdlAnalyticsDataSource -Account $adla | where -Property Type -EQ "Blob"
 
 ```powershell
 $script = @"
-@a  = 
-    SELECT * FROM 
+@a  =
+    SELECT * FROM
         (VALUES
             ("Contoso", 1500.0),
             ("Woodgrove", 2700.0)
@@ -182,7 +181,7 @@ OUTPUT @a
 "@
 
 $scriptpath = "d:\test.usql"
-$script | Out-File $scriptpath 
+$script | Out-File $scriptpath
 
 Submit-AdlJob -AccountName $adla -Script $script -Name "Demo"
 ```
@@ -191,7 +190,7 @@ Submit-AdlJob -AccountName $adla -Script $script -Name "Demo"
 
 ```powershell
 $scriptpath = "d:\test.usql"
-$script | Out-File $scriptpath 
+$script | Out-File $scriptpath
 Submit-AdlJob -AccountName $adla –ScriptPath $scriptpath -Name "Demo"
 ```
 
@@ -265,7 +264,6 @@ Get-AdlJob -Account $adla -Submitter "joe@contoso.com"
 
 De `-SubmittedAfter` is handig voor het filteren op een tijds bereik.
 
-
 ```powershell
 # List  jobs submitted in the last day.
 $d = [DateTime]::Now.AddDays(-1)
@@ -283,7 +281,6 @@ Haal de status van een bepaalde taak op.
 ```powershell
 Get-AdlJob -AccountName $adla -JobId $job.JobId
 ```
-
 
 ### <a name="cancel-a-job"></a>Een taak annuleren
 
@@ -320,7 +317,6 @@ $recurrences = Get-AdlJobRecurrence -Account $adla
 $recurrence = Get-AdlJobRecurrence -Account $adla -RecurrenceId "<recurrence ID>"
 ```
 
-
 ## <a name="manage-compute-policies"></a>Reken beleid beheren
 
 ### <a name="list-existing-compute-policies"></a>Bestaande Compute-beleids regels weer geven
@@ -340,9 +336,10 @@ $userObjectId = (Get-AzAdUser -SearchString "garymcdaniel@contoso.com").Id
 
 New-AdlAnalyticsComputePolicy -Account $adla -Name "GaryMcDaniel" -ObjectId $objectId -ObjectType User -MaxDegreeOfParallelismPerJob 50 -MinPriorityPerJob 250
 ```
+
 ## <a name="manage-files"></a>Bestanden beheren
 
-### <a name="check-for-the-existence-of-a-file"></a>Controleer op de aanwezigheid van een bestand.
+### <a name="check-for-the-existence-of-a-file"></a>Controleren op aanwezigheid van een bestand
 
 ```powershell
 Test-AdlStoreItem -Account $adls -Path "/data.csv"
@@ -353,7 +350,7 @@ Test-AdlStoreItem -Account $adls -Path "/data.csv"
 Upload een bestand.
 
 ```powershell
-Import-AdlStoreItem -AccountName $adls -Path "c:\data.tsv" -Destination "/data_copy.csv" 
+Import-AdlStoreItem -AccountName $adls -Path "c:\data.tsv" -Destination "/data_copy.csv"
 ```
 
 Upload een hele map recursief.
@@ -379,13 +376,13 @@ Export-AdlStoreItem -AccountName $adls -Path "/" -Destination "c:\myData\" -Recu
 
 ## <a name="manage-the-u-sql-catalog"></a>De U-SQL-Catalogus beheren
 
-De U-SQL-catalogus wordt gebruikt om gegevens en code te structureren zodat ze kunnen worden gedeeld door U-SQL-scripts. De catalogus maakt de hoogst mogelijke prestaties mogelijk met gegevens in Azure Data Lake. Zie [U-SQL-catalogus gebruiken](data-lake-analytics-use-u-sql-catalog.md) voor meer informatie.
+De U-SQL-catalogus wordt gebruikt om gegevens en code te structureren zodat ze kunnen worden gedeeld door U-SQL-scripts. De catalogus maakt de hoogst mogelijke prestaties mogelijk met gegevens in Azure Data Lake. Zie [U-SQL-catalogus gebruiken](./data-lake-analytics-u-sql-get-started.md) voor meer informatie.
 
 ### <a name="list-items-in-the-u-sql-catalog"></a>Items in de U-SQL-catalogus weer geven
 
 ```powershell
 # List U-SQL databases
-Get-AdlCatalogItem -Account $adla -ItemType Database 
+Get-AdlCatalogItem -Account $adla -ItemType Database
 
 # List tables within a database
 Get-AdlCatalogItem -Account $adla -ItemType Table -Path "database"
@@ -478,7 +475,6 @@ Set-AdlAnalyticsAccount -Name $adla -FirewallState Enabled
 Set-AdlAnalyticsAccount -Name $adla -FirewallState Disabled
 ```
 
-
 ## <a name="working-with-azure"></a>Werken met Azure
 
 ### <a name="get-error-details"></a>Fout Details ophalen
@@ -556,4 +552,4 @@ U kunt ook een Azure Resource Group-sjabloon gebruiken met behulp van het volgen
 ## <a name="next-steps"></a>Volgende stappen
 * [Overzicht van Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
 * Aan de slag met data Lake Analytics met behulp van de [Azure Portal](data-lake-analytics-get-started-portal.md)  |  [Azure PowerShell](data-lake-analytics-get-started-powershell.md)  |  [Azure cli](data-lake-analytics-get-started-cli.md)
-* Azure data Lake Analytics beheren met [Azure Portal](data-lake-analytics-manage-use-portal.md)  |  [Azure PowerShell](data-lake-analytics-manage-use-powershell.md)  |  [cli](data-lake-analytics-manage-use-cli.md) 
+* Azure data Lake Analytics beheren met [Azure Portal](data-lake-analytics-manage-use-portal.md)  |  [Azure PowerShell](data-lake-analytics-manage-use-powershell.md)  |  [cli](data-lake-analytics-manage-use-cli.md)

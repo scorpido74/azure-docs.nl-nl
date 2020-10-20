@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 1743908652a70667a368dced18b2e808ce590a1b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 746f60374a4e8f01af119d6e9c604b941e7c4950
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549990"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944233"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-saba-talentspace"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met Saba TalentSpace
 
@@ -131,15 +131,15 @@ In deze sectie stelt u B.Simon in staat gebruik te maken van eenmalige aanmeldin
 
 2. Klik op het tabblad **Options**.
   
-    ![Wat is Azure AD Connect?](./media/halogen-software-tutorial/tutorial-halogen-12.png)
+    ![Schermopname van de startpagina van Saba TalentSpace met het tabblad Options geselecteerd.](./media/halogen-software-tutorial/tutorial-halogen-12.png)
 
 3. Klik in het linkernavigatiedeelvenster op **SAML Configuration**.
   
-    ![Wat is Azure AD Connect?](./media/halogen-software-tutorial/tutorial-halogen-13.png)
+    ![Schermopname van het linkernavigatievenster User Interface (Gebruikersinterface) met SAML Configuration (SAML-configuratie) geselecteerd.](./media/halogen-software-tutorial/tutorial-halogen-13.png)
 
 4. Voer de volgende stappen uit op de pagina **SAML Configuration**:
 
-    ![Wat is Azure AD Connect?](./media/halogen-software-tutorial/tutorial-halogen-14.png)
+    ![Schermopname van de pagina SAML Configuration met de optie Settings gemarkeerd.](./media/halogen-software-tutorial/tutorial-halogen-14.png)
 
     a. Selecteer bij **Unique Identifier** de waarde **NameID**.
 
@@ -166,7 +166,7 @@ Het doel van deze sectie is om in Saba TalentSpace een gebruiker met de naam Bri
 
 2. Klik op het tabblad **User Center** tabblad en klik vervolgens op **Create User**.
 
-    ![Wat is Azure AD Connect?](./media/halogen-software-tutorial/tutorial-halogen-300.png)  
+    ![Schermopname van het tabblad User Center met Create User geselecteerd.](./media/halogen-software-tutorial/tutorial-halogen-300.png)  
 
 3. Voer de volgende stappen uit in het dialoogvenster **New User**:
 

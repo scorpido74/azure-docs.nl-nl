@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/28/2020
 ms.author: jeedes
-ms.openlocfilehash: c5be6ef39a3e980852aa3373dbc54da63aa3983e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f1845a8371c3b64174b83ce640f91e4ce9221b8e
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554512"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940783"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met NetSuite
 
@@ -96,7 +96,7 @@ Ga als volgt te werk om eenmalige aanmelding van Azure AD in te schakelen in de 
 
     * U krijgt de waarde voor **<`Instance ID`>** in de configuratiesectie van Netsuite, die verderop in de zelfstudie wordt beschreven in stap 8 onder Netsuite-configuratie. U krijgt het exacte domein (zoals in dit geval system.na0.netsuite.com).
 
-        ![Eenmalige aanmelding configureren](./media/NetSuite-tutorial/domain-value.png)
+        ![Schermopname van de pagina SAML-installatie waar u het domein kunt ophalen.](./media/NetSuite-tutorial/domain-value.png)
 
         > [!NOTE]
         > De waarden in de voorgaande URL's zijn niet echt. Werk de waarden bij met de werkelijke antwoord-URL. Neem contact op met het [ondersteuningsteam van NetSuite](http://www.netsuite.com/portal/services/support-services/suitesupport.shtml) om de waarde te verkrijgen. U kunt ook de indelingen raadplegen in de sectie **Standaard SAML-configuratie** van de Azure-portal.
@@ -164,31 +164,31 @@ In deze sectie geeft u de gebruiker B.Simon toestemming om eenmalige aanmelding 
 
 2. Selecteer in de bovenste navigatiebalk de optie **Setup** en selecteer vervolgens **Company** > **Enable Features**.
 
-    ![Eenmalige aanmelding configureren](./media/NetSuite-tutorial/ns-setupsaml.png)
+    ![Schermopname van Functies inschakelen geselecteerd vanuit Bedrijf.](./media/NetSuite-tutorial/ns-setupsaml.png)
 
 3. Selecteer op de werkbalk in het midden van de pagina **SuiteCloud**.
 
-    ![Eenmalige aanmelding configureren](./media/NetSuite-tutorial/ns-suitecloud.png)
+    ![Schermopname met SuiteCloud geselecteerd.](./media/NetSuite-tutorial/ns-suitecloud.png)
 
 4. Selecteer onder **Manage Authentication** het selectievakje**SAML Single Sign-on** om de optie voor eenmalige aanmelding met SAML in te schakelen in NetSuite.
 
-    ![Eenmalige aanmelding configureren](./media/NetSuite-tutorial/ns-ticksaml.png)
+    ![Schermopname van Verificatie beheren waar u Eenmalige aanmelding voor SAML kunt selecteren.](./media/NetSuite-tutorial/ns-ticksaml.png)
 
 5. Selecteer in de bovenste navigatiebalk de optie **Setup**.
 
-    ![Eenmalige aanmelding configureren](./media/NetSuite-tutorial/ns-setup.png)
+    ![Schermopname van Installatie geselecteerd vanuit de navigatiebalk van NETSUITE.](./media/NetSuite-tutorial/ns-setup.png)
 
 6. Selecteer in de lijst **Setup Tasks** de optie **Integration**.
 
-    ![Eenmalige aanmelding configureren](./media/NetSuite-tutorial/ns-integration.png)
+    ![Schermopname van Integratie die is geselecteerd vanuit TAKEN INSTALLEREN.](./media/NetSuite-tutorial/ns-integration.png)
 
 7. Selecteer onder **Manage Authentication** de optie **SAML Single Sign-on**.
 
-    ![Eenmalige aanmelding configureren](./media/NetSuite-tutorial/ns-saml.png)
+    ![Schermopname van Eenmalige aanmelding voor SAML geselecteerd vanuit het Integratie-item in TAKEN INSTALLEREN.](./media/NetSuite-tutorial/ns-saml.png)
 
 8. Voer in het deelvenster **SAML Setup**, onder **NetSuite Configuration**, de volgende stappen uit:
 
-    ![Eenmalige aanmelding configureren](./media/NetSuite-tutorial/ns-saml-setup.png)
+    ![Schermopname van de SAML-installatie waarin u de beschreven waarden kunt invoeren.](./media/NetSuite-tutorial/ns-saml-setup.png)
   
     a. Schakel het selectievakje **Primary Authentication Method** in.
 
@@ -198,9 +198,9 @@ In deze sectie geeft u de gebruiker B.Simon toestemming om eenmalige aanmelding 
 
 9. Selecteer in de bovenste navigatiebalk in NetSuite de optie **Setup** en selecteer vervolgens **Company** > **Company Information**.
 
-    ![Eenmalige aanmelding configureren](./media/NetSuite-tutorial/ns-com.png)
+    ![Schermopname van Bedrijfsgegevens geselecteerd vanuit Bedrijf.](./media/NetSuite-tutorial/ns-com.png)
 
-    ![Eenmalige aanmelding configureren](./media/NetSuite-tutorial/ns-account-id.png)
+    ![Schermopname van het deelvenster waarin u de beschreven waarden kunt invoeren.](./media/NetSuite-tutorial/ns-account-id.png)
 
     b. Kopieer de waarde van **Account ID** in de rechterkolom in het deelvenster **Company Information**.
 
@@ -210,23 +210,23 @@ In deze sectie geeft u de gebruiker B.Simon toestemming om eenmalige aanmelding 
 
     a. Selecteer in de bovenste navigatiebalk de optie **Setup**.
 
-    ![Eenmalige aanmelding configureren](./media/NetSuite-tutorial/ns-setup.png)
+    ![Schermopname van Installatie geselecteerd vanuit de navigatiebalk van NETSUITE.](./media/NetSuite-tutorial/ns-setup.png)
 
     b. Selecteer in het linkerdeelvenster de optie **Users/Roles** en selecteer vervolgens **Manage Roles**.
 
-    ![Eenmalige aanmelding configureren](./media/NetSuite-tutorial/ns-manage-roles.png)
+    ![Schermopname van het deelvenster Rollen beheren waar u een Nieuwe rol kunt selecteren.](./media/NetSuite-tutorial/ns-manage-roles.png)
 
     c. Selecteer **New Role**.
 
     d. Voer een **naam** in voor de nieuwe rol.
 
-    ![Eenmalige aanmelding configureren](./media/NetSuite-tutorial/ns-new-role.png)
+    ![Schermopname van de Installatiebeheerder waarin u een naam voor de rol kunt invoeren.](./media/NetSuite-tutorial/ns-new-role.png)
 
     e. Selecteer **Opslaan**.
 
     f. Selecteer in de bovenste navigatiebalk de optie **Permissions**. Selecteer vervolgens **Setup**.
 
-    ![Eenmalige aanmelding configureren](./media/NetSuite-tutorial/ns-sso.png)
+    ![Schermopname van het tabblad Installeren waarin u de beschreven waarden kunt invoeren.](./media/NetSuite-tutorial/ns-sso.png)
 
     g. Selecteer **SAML Single Sign-on** en selecteer vervolgens **Add**.
 
@@ -234,19 +234,19 @@ In deze sectie geeft u de gebruiker B.Simon toestemming om eenmalige aanmelding 
 
     i. Selecteer in de bovenste navigatiebalk de optie **Setup** en selecteer vervolgens **Setup Manager**.
 
-    ![Eenmalige aanmelding configureren](./media/NetSuite-tutorial/ns-setup.png)
+    ![Schermopname van Installatie geselecteerd vanuit de navigatiebalk van NETSUITE.](./media/NetSuite-tutorial/ns-setup.png)
 
     j. Selecteer in het linkerdeelvenster de optie **Users/Roles** en selecteer vervolgens **Manage Users**.
 
-    ![Eenmalige aanmelding configureren](./media/NetSuite-tutorial/ns-manage-users.png)
+    ![Schermopname van het deelvenster Gebruikers beheren waar u Suite Demo Team kunt selecteren.](./media/NetSuite-tutorial/ns-manage-users.png)
 
     k. Selecteer een testgebruiker, selecteer **Edit** en selecteer vervolgens het tabblad **Access**.
 
-    ![Eenmalige aanmelding configureren](./media/NetSuite-tutorial/ns-edit-user.png)
+    ![Schermopname van het deelvenster Gebruikers beheren waar u Bewerken kunt selecteren.](./media/NetSuite-tutorial/ns-edit-user.png)
 
     l. Wijs in het deelvenster **Roles** de juiste rol toe die u hebt gemaakt.
 
-    ![Eenmalige aanmelding configureren](./media/NetSuite-tutorial/ns-add-role.png)
+    ![Schermopname van de Beheerder die is geselecteerd vanuit Werknemer.](./media/NetSuite-tutorial/ns-add-role.png)
 
     m. Selecteer **Opslaan**.
 

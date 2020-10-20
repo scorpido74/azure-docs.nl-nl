@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: b8bf8ef1affc42027ef0bec149f8e7c9eb9b2b90
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5b1034454bbdee32b33222321ded2421b83bfd0d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546932"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850775"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bamboo"></a>Zelfstudie: Integratie van Azure Active Directory met Kantega SSO voor Bamboo
 
@@ -99,7 +99,7 @@ Als u eenmalige aanmelding van Azure AD wilt configureren voor Kantega SSO voor 
 
 4. In het gedeelte **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
 
-    ![Domein- en URL-gegevens voor eenmalige aanmelding bij Kantega SSO voor Bamboo](common/idp-intiated.png)
+    ![Schermopname die de Standaard SAML-configuratie toont, waar u de id en URL kunt invoeren en vervolgens Opslaan selecteert.](common/idp-intiated.png)
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
@@ -107,7 +107,7 @@ Als u eenmalige aanmelding van Azure AD wilt configureren voor Kantega SSO voor 
 
 5. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    ![Domein- en URL-gegevens voor eenmalige aanmelding bij Kantega SSO voor Bamboo](common/metadata-upload-additional-signon.png)
+    ![Schermopname die Extra URL's instellen toont, waar u een aanmeldings-URL kunt invoeren.](common/metadata-upload-additional-signon.png)
 
     In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
@@ -134,39 +134,39 @@ Als u eenmalige aanmelding van Azure AD wilt configureren voor Kantega SSO voor 
 
 1. Wijs het tandwiel aan met de muisaanwijzer en klik op **Add-ons**.
 
-    ![Eenmalige aanmelding configureren](./media/kantegassoforbamboo-tutorial/addon1.png)
+    ![Schermopname met Add-ons (Invoegtoepassingen) geselecteerd in het menu Instellingen.](./media/kantegassoforbamboo-tutorial/addon1.png)
 
 1. Klik onder de tabbladsectie Invoegtoepassingen op **Nieuwe invoegtoepassingen zoeken**. Zoek **Kantega SSO for Bamboo (SAML & Kerberos)** en klik op de knop **Install** om de nieuwe SAML-invoegtoepassing te installeren.
 
-    ![Eenmalige aanmelding configureren](./media/kantegassoforbamboo-tutorial/addon2.png)
+    ![Schermopname van Bamboo Administration met Kantega SSO for Bamboo geselecteerd.](./media/kantegassoforbamboo-tutorial/addon2.png)
 
 1. De installatie van de invoegtoepassing wordt gestart.
 
-    ![Eenmalige aanmelding configureren](./media/kantegassoforbamboo-tutorial/addon21.png)
+    ![Schermopname met de voortgang van de installatie van Kantega SSO for Bamboo.](./media/kantegassoforbamboo-tutorial/addon21.png)
 
 1. Als de installatie is voltooid. Klik op **Sluiten**.
 
-    ![Eenmalige aanmelding configureren](./media/kantegassoforbamboo-tutorial/addon33.png)
+    ![Schermopname van de knop Sluiten.](./media/kantegassoforbamboo-tutorial/addon33.png)
 
 1. Klik op **Beheren**.
 
-    ![Eenmalige aanmelding configureren](./media/kantegassoforbamboo-tutorial/addon34.png)
+    ![Schermopname van de knop Beheren.](./media/kantegassoforbamboo-tutorial/addon34.png)
 
 1. Klik op **Configure** om de nieuwe invoegtoepassing te configureren.
 
-    ![Eenmalige aanmelding configureren](./media/kantegassoforbamboo-tutorial/addon3.png)
+    ![Schermopname van 'User-installed add-ons' (Door de gebruiker geïnstalleerde invoegtoepassingen) met 'Configure' (Configureren) geselecteerd.](./media/kantegassoforbamboo-tutorial/addon3.png)
 
 1. In de sectie **SAML**. Selecteer **Azure Active Directory (Azure AD)** in de vervolgkeuzelijst **Add identity provider**.
 
-    ![Eenmalige aanmelding configureren](./media/kantegassoforbamboo-tutorial/addon4.png)
+    ![Schermopname van de Eenmalige aanmelding van Kantega met Azure AD als id-provider geselecteerd.](./media/kantegassoforbamboo-tutorial/addon4.png)
 
 1. Selecteer **Basic** als abonnementsniveau.
 
-    ![Eenmalige aanmelding configureren](./media/kantegassoforbamboo-tutorial/addon5.png)
+    ![Schermopname van 'Azure AD voorbereiden' met 'Basic' geselecteerd.](./media/kantegassoforbamboo-tutorial/addon5.png)
 
 1. Voer de volgende stappen uit in de sectie **App properties**:
 
-    ![Eenmalige aanmelding configureren](./media/kantegassoforbamboo-tutorial/addon6.png)
+    ![Schermopname van de sectie 'App properties' (App-eigenschappen) waar u de informatie voor deze stap kunt opgeven.](./media/kantegassoforbamboo-tutorial/addon6.png)
 
     a. Kopieer de waarde voor **App ID URI** en gebruik deze als **id, antwoord-URL en aanmeldings-URL** in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
@@ -174,7 +174,7 @@ Als u eenmalige aanmelding van Azure AD wilt configureren voor Kantega SSO voor 
 
 1. Voer de volgende stappen uit in de sectie **Metadata import**:
 
-    ![Eenmalige aanmelding configureren](./media/kantegassoforbamboo-tutorial/addon7.png)
+    ![Schermopname van de sectie 'Metadata import' (Metagegevens importeren), waar u naar een metagegevensbestand kunt bladeren.](./media/kantegassoforbamboo-tutorial/addon7.png)
 
     a. Selecteer **Metadata file on my computer** en upload het metagegevensbestand dat u vanuit de Azure-portal hebt gedownload.
 
@@ -182,7 +182,7 @@ Als u eenmalige aanmelding van Azure AD wilt configureren voor Kantega SSO voor 
 
 1. Voer de volgende stappen uit in de sectie **Name and SSO location**:
 
-    ![Eenmalige aanmelding configureren](./media/kantegassoforbamboo-tutorial/addon8.png)
+    ![Schermopname met de naam en SSO-locatie waarbij Azure AD de naam van de id-provider is.](./media/kantegassoforbamboo-tutorial/addon8.png)
 
     a. Geef de naam van de id-provider op in het tekstvak **Identity provider name** (bijvoorbeeld Azure AD).
 
@@ -190,11 +190,11 @@ Als u eenmalige aanmelding van Azure AD wilt configureren voor Kantega SSO voor 
 
 1. Controleer het handtekeningcertificaat en klik op **Next**.
 
-    ![Eenmalige aanmelding configureren](./media/kantegassoforbamboo-tutorial/addon9.png)
+    ![Schermopname van de handtekeningverificatie.](./media/kantegassoforbamboo-tutorial/addon9.png)
 
 1. Voer de volgende stappen uit in de sectie **Bamboo user accounts**:
 
-    ![Eenmalige aanmelding configureren](./media/kantegassoforbamboo-tutorial/addon10.png)
+    ![Schermopname van Bamboo-gebruikersaccounts waarvoor u de mogelijkheid hebt om gebruikers te maken.](./media/kantegassoforbamboo-tutorial/addon10.png)
 
     a. Selecteer **Create users in Bamboo's Internal Directory if needed** en voer de juiste naam van de groep voor gebruikers in (dit kunnen meerdere groepen zijn, gescheiden door komma's).
 
@@ -202,11 +202,11 @@ Als u eenmalige aanmelding van Azure AD wilt configureren voor Kantega SSO voor 
 
 1. Klik op **Voltooien**.
 
-    ![Eenmalige aanmelding configureren](./media/kantegassoforbamboo-tutorial/addon11.png)
+    ![Schermopname van de samenvattingspagina.](./media/kantegassoforbamboo-tutorial/addon11.png)
 
 1. Voer in de sectie **Known domains for Azure AD** de volgende stappen uit:
 
-    ![Eenmalige aanmelding configureren](./media/kantegassoforbamboo-tutorial/addon12.png)
+    ![Schermopname van de Bekende domeinen voor Azure AD waar u deze stappen kunt uitvoeren.](./media/kantegassoforbamboo-tutorial/addon12.png)
 
     a. Selecteer **Known domains** in het linkerdeelvenster van de pagina.
 
@@ -275,11 +275,11 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Kantega SSO for Bam
 
 1. Wijs het tandwiel aan met de muisaanwijzer en klik op **User management**.
 
-    ![Werknemer toevoegen](./media/kantegassoforbamboo-tutorial/user1.png)
+    ![Schermopname met 'User management' (Gebruikersbeheer) geselecteerd in het menu 'Settings' (Instellingen).](./media/kantegassoforbamboo-tutorial/user1.png)
 
 1. Klik op **Users**. Voer in de sectie **Add User** de volgende stappen uit:
 
-    ![Werknemer toevoegen](./media/kantegassoforbamboo-tutorial/user2.png)
+    ![Schermopname van het deelvenster Add user (Gebruiker toevoegen) waarin u deze stappen kunt uitvoeren.](./media/kantegassoforbamboo-tutorial/user2.png)
 
     a. In het tekstvak **Gebruikersnaam** typt u het e-mailadres van de gebruiker, bijvoorbeeld Brittasimon@contoso.com.
 

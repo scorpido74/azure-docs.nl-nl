@@ -9,12 +9,12 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: ebcec3907e40a8ba58aab841cd788c58ec7a94fe
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: f03f98a1a1f36900d65e132a3420ac037214aaff
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90017911"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893537"
 ---
 # <a name="analyze-with-apache-spark"></a>Analyseren met behulp van Apache Spark
 
@@ -22,7 +22,7 @@ ms.locfileid: "90017911"
 
 In deze zelfstudie leert u de basisstappen voor het laden en analyseren van gegevens met Apache Spark voor Azure Synapse.
 
-1. Klik in de hub **Data** onder **Gekoppeld** met de rechter muisknop op **Azure Blob Storage > Voorbeeldgegevenssets > nyc_tlc_yellow** en selecteer **Nieuw notebook SELECTEREN**
+1. Klik in de hub **Gegevens** op **Een nieuwe resource toevoegen**(plusteken boven **Gekoppeld**) >> **Bladeren in samples**. Zoek **NYC Taxi & Limousine Commission - records van Yellow Taxi-ritten** en klik erop. Druk onderaan de pagina op **Doorgaan** en daarna op **Gegevensset toevoegen**. Klik nu in de hub **Data** onder **Gekoppeld** met de rechtermuisknop op **Azure Blob Storage >> Voorbeeldgegevenssets >> nyc_tlc_yellow** en selecteer **Nieuw notebook**
 1. Hiermee maakt u een nieuw notebook met de volgende code:
     ```
     from azureml.opendatasets import NycTlcYellow
@@ -119,6 +119,6 @@ df.write.sqlanalytics("SQLDB1.dbo.PassengerCountStats", Constants.INTERNAL )
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Gegevens analyseren in Storage](get-started-analyze-storage.md)
+> [Analyseren met behulp van SQL on demand](get-started-analyze-sql-on-demand.md)
 
 

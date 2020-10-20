@@ -1,134 +1,105 @@
 ---
-title: 'Quickstart: automatische VM-implementatie met Azure App Configuration'
-description: In deze quickstart ziet u hoe u de Azure PowerShell-module en Azure Resource Manager-sjablonen kunt gebruiken om een Azure App Configuration-archief te implementeren. Gebruik vervolgens de waarden in het archief om een VM te implementeren.
-author: lisaguthrie
-ms.author: lcozzens
-ms.date: 08/11/2020
+title: Een Azure App Configuration-archief maken met behulp van een Azure Resource Manager-sjabloon (ARM-sjabloon)
+titleSuffix: Azure App Configuration
+description: Meer informatie over het maken van een Azure App Configuration-archief met behulp van een Azure Resource Manager-sjabloon (ARM-sjabloon).
+author: ZhijunZhao
+ms.author: zhijzhao
+ms.date: 09/21/2020
+ms.service: azure-resource-manager
 ms.topic: quickstart
-ms.service: azure-app-configuration
-ms.custom:
-- mvc
-- subject-armqs
-ms.openlocfilehash: 7b7dd00d3495c24733ecdc213e0e25f8bc9640eb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: subject-armqs
+ms.openlocfilehash: 840f907015e9673caba46998493b5cb705de5fb7
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88661466"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91824189"
 ---
-# <a name="quickstart-automated-vm-deployment-with-app-configuration-and-resource-manager-template-arm-template"></a>Quickstart: Geautomatiseerde VM-implementatie met App Configuration en Resource Manager-sjabloon (ARM-sjabloon)
+# <a name="quickstart-create-an-azure-app-configuration-store-by-using-an-arm-template"></a>Quickstart: Een Azure App Configuration-archief maken met behulp van een ARM-sjabloon
 
-Meer informatie over het gebruik van Azure Resource Manager-sjablonen en Azure PowerShell voor het implementeren van een Azure App Configuration-archief, het toevoegen van sleutelwaarden aan het archief en het gebruik van de sleutelwaarden in het archief voor het implementeren van een Azure-resource, zoals een virtuele machine van Azure in dit voorbeeld.
+In deze quickstart wordt beschreven hoe u:
+
+- Een App Configuration-archief kunt implementeren met behulp van een ARM-sjabloon
+- Sleutelwaarden kunt maken in een App Configuration-archief met behulp van een ARM-sjabloon
+- Sleutelwaarden kunt lezen in een App Configuration-archief met behulp van een ARM-sjabloon
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure**. De sjabloon wordt in Azure Portal geopend.
 
-[![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-configuration-store%2Fazuredeploy.json)
+[![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-configuration-store-kv%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Vereisten
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
-## <a name="review-the-templates"></a>De sjablonen controleren
+## <a name="review-the-template"></a>De sjabloon controleren
 
-De sjablonen die in deze snelstart worden gebruikt, komen uit [Azure-snelstartsjablonen](https://azure.microsoft.com/resources/templates/). Met de [eerste sjabloon](https://azure.microsoft.com/resources/templates/101-app-configuration-store/) maakt u een App Configuration-archief:
+De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure-snelstartsjablonen](https://azure.microsoft.com/en-us/resources/templates/101-app-configuration-store-kv/). Er wordt een nieuw App Configuration-archief gemaakt met twee sleutelwaarden erin. Vervolgens wordt de functie `reference` gebruikt voor het uitvoeren van de waarden van de twee resources voor sleutelwaarden. Als u de waarde van de sleutel op deze manier leest, kan deze worden gebruikt op andere plaatsen in de sjabloon.
 
-:::code language="json" source="~/quickstart-templates/101-app-configuration-store/azuredeploy.json" range="1-37" highlight="27-35":::
+De quickstart maakt gebruik van het element `copy` voor het maken van meerdere exemplaren van de sleutelwaarde-resource. Zie [Resource-iteratie in ARM-sjablonen](../azure-resource-manager/templates/copy-resources.md)voor meer informatie over het element `copy`.
 
-Er is één Azure-resource gedefinieerd in de sjabloon:
+> [!IMPORTANT]
+> Voor deze sjabloon is versie `2020-07-01-preview` of hoger van de resourceprovider van App Configuration vereist. Deze versie maakt gebruik van de functie `reference` om sleutelwaarden te lezen. De functie `listKeyValue` die is gebruikt voor het lezen van sleutelwaarden in de vorige versie is niet meer beschikbaar vanaf versie `2020-07-01-preview`.
 
-- [Microsoft.AppConfiguration/configurationStores](/azure/templates/microsoft.appconfiguration/2019-10-01/configurationstores): een App Configuration-archief maken.
+:::code language="json" source="~/quickstart-templates/101-app-configuration-store-kv/azuredeploy.json" range="1-88" highlight="52-58,61-75,80,84":::
 
-Met de [tweede sjabloon](https://azure.microsoft.com/resources/templates/101-app-configuration/) wordt een virtuele machine gemaakt met behulp van de sleutelwaarden in het archief. Voor deze stap moet u sleutelwaarden toevoegen met behulp van de portal of Azure CLI.
+Er worden twee Azure-resources gedefinieerd in de sjabloon:
 
-:::code language="json" source="~/quickstart-templates/101-app-configuration/azuredeploy.json" range="1-217" highlight="77, 181,189":::
+- [Microsoft.AppConfiguration/configurationStores](/azure/templates/microsoft.appconfiguration/2020-06-01/configurationstores): een App Configuration-archief maken.
+- Microsoft.AppConfiguration/configurationStores/keyValues: maak een sleutelwaarde in het App Configuration-archief.
 
-## <a name="deploy-the-templates"></a>De sjablonen implementeren
+> [!NOTE]
+> De naam van de `keyValues`-resource is een combinatie van sleutel en label. De sleutel en het label worden samengevoegd met het scheidingsteken `$`. Het label is optioneel. In het bovenstaande voorbeeld maakt de `keyValues`-resource met de naam `myKey` een sleutelwaarde zonder label.
+>
+> Met procentcodering, ook wel URL-codering genoemd, kunnen sleutels of labels tekens bevatten die niet zijn toegestaan in de resourcenamen van ARM-sjablonen. `%` is ook geen toegestaan teken, dus `~` wordt gebruikt in plaats daarvan. Voer de volgende stappen uit om een naam correct te coderen:
+>
+> 1. URL-codering toepassen
+> 2. Vervang `~` door `~7E`
+> 3. Vervang `%` door `~`
+>
+> Als u bijvoorbeeld een sleutelwaardepaar met sleutelnaam `AppName:DbEndpoint` en labelnaam `Test` wilt maken, moet de resourcenaam `AppName~3ADbEndpoint$Test` zijn.
 
-### <a name="create-an-app-configuration-store"></a>Een App Configuration-archief maken
+## <a name="deploy-the-template"></a>De sjabloon implementeren
 
-1. Selecteer de volgende afbeelding om u aan te melden bij Azure en een sjabloon te openen. Met de sjabloon wordt een resource voor een App Configuration-archief gemaakt.
+Selecteer de volgende afbeelding om u aan te melden bij Azure en een sjabloon te openen. De sjabloon maakt een nieuw App Configuration-archief met twee sleutelwaarden erin.
 
-    [![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-configuration-store%2Fazuredeploy.json)
+[![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-configuration-store-kv%2Fazuredeploy.json)
 
-1. Typ of selecteer de volgende waarden.
+U kunt de sjabloon ook implementeren met behulp van de volgende PowerShell-cmdlet. De sleutelwaarden vindt u in de uitvoer van de PowerShell-console.
 
-    - **abonnement**: selecteer het Azure-abonnement dat u hebt gebruikt om het App Configuration-archief te maken.
-    - **Resourcegroep**: selecteer **Nieuwe maken** om een nieuwe resourcegroep te maken, tenzij u een bestaande resourcegroep wilt gebruiken.
-    - **Regio**: selecteer een locatie voor de resourcegroep.  Bijvoorbeeld **VS - Oost**.
-    - **Naam van het Configuration-archief**: voer een nieuwe naam in voor het App Configuration-archief.
-    - **Locatie**: geef de locatie op van het App Configuration-archief.  Gebruik de standaardwaarde.
-    - **SKU-naam**: geef de SKU-naam op van het App Configuration-archief. Gebruik de standaardwaarde.
+```azurepowershell-interactive
+$projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
+$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+$templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-app-configuration-store-kv/azuredeploy.json"
 
-1. Selecteer **Controleren + maken**.
-1. Controleer of **Validatie is geslaagd** wordt weergegeven op de pagina en selecteer vervolgens **Maken**.
+$resourceGroupName = "${projectName}rg"
 
-Noteer de naam van de resourcegroep en de naam van het App Configuration-archief.  U hebt deze waarden nodig wanneer u de virtuele machine gaat implementeren
-### <a name="add-vm-configuration-key-values"></a>Sleutelwaarden voor de VM-configuratie toevoegen
+New-AzResourceGroup -Name $resourceGroupName -Location "$location"
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri
 
-Nadat u een App Configuration-archief hebt gemaakt, kunt u Azure Portal of Azure CLI gebruiken om sleutelwaarden toe te voegen aan het archief.
-
-1. Meld u aan bij [Azure Portal](https://portal.azure.com) en navigeer vervolgens naar het zojuist gemaakte App Configuration-archief.
-1. Selecteer **Configuratieverkenner** in het menu links.
-1. Selecteer **Maken** om de volgende sleutel-waardeparen toe te voegen:
-
-   |Sleutel|Waarde|Label|
-   |-|-|-|
-   |windowsOsVersion|2019-Datacenter|sjabloon|
-   |diskSizeGB|1023|sjabloon|
-
-   Laat **Inhoudstype** leeg.
-
-Raadpleeg [Werken met sleutelwaarden in een Azure App Configuration-archief](./scripts/cli-work-with-keys.md) voor meer informatie over Azure CLI.
-
-### <a name="deploy-vm-using-stored-key-values"></a>Een VM implementeren met behulp van gearchiveerde sleutelwaarden
-
-Nu u sleutelwaarden aan het archief hebt toegevoegd, kunt u een VM implementeren met behulp van een Azure Resource Manager-sjabloon. De sjabloon verwijst naar de sleutels **windowsOsVersion** en **diskSizeGB** die u hebt gemaakt.
-
-> [!WARNING]
-> ARM-sjablonen kunnen niet verwijzen naar sleutels in een App Configuration-archief waarvoor Private Link is ingeschakeld.
-
-1. Selecteer de volgende afbeelding om u aan te melden bij Azure en een sjabloon te openen. Met de sjabloon maakt u een virtuele machine met behulp van opgeslagen sleutelwaarden in het App Configuration-archief.
-
-    [![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-configuration%2Fazuredeploy.json)
-
-1. Typ of selecteer de volgende waarden.
-
-    - **abonnement**: selecteer het Azure-abonnement dat u hebt gebruikt om de virtuele machine te maken.
-    - **Resourcegroep**: geef dezelfde resourcegroep op als het App Configuration-archief of selecteer **Nieuwe maken** om een nieuwe resourcegroep te maken.
-    - **Regio**: selecteer een locatie voor de resourcegroep.  Bijvoorbeeld **VS - Oost**.
-    - **Locatie**: geef de locatie van de virtuele machine op. gebruik de standaardwaarde.
-    - **Gebruikersnaam van beheerder**: geef een gebruikersnaam op voor de beheerder van de virtuele machine.
-    - **Beheerderswachtwoord**: geef een beheerderswachtwoord op voor de virtuele machine.
-    - **Label domeinnaam**: geef een unieke domeinnaam op.
-    - **Naam van het opslagaccount**: geef een unieke naam op voor een opslagaccount dat is gekoppeld aan de virtuele machine.
-    - **Resourcegroep van het App Configuration-archief**: geef de resourcegroep op die het App Configuration-archief bevat.
-    - **Naam van het App Configuration-archief**: geef de naam op van het Azure App Configuration-archief.
-    - **VM SKU-sleutel**: geef **windowsOsVersion** op.  Dit is de naam van de sleutelwaarde die u hebt toegevoegd aan het archief.
-    - **Sleutel schijfgrootte**: geef **diskSizeGB** op. Dit is de naam van de sleutelwaarde die u hebt toegevoegd aan het archief.
-
-1. Selecteer **Controleren + maken**.
-1. Controleer of **Validatie is geslaagd** wordt weergegeven op de pagina en selecteer vervolgens **Maken**.
+Read-Host -Prompt "Press [ENTER] to continue ..."
+```
 
 ## <a name="review-deployed-resources"></a>Geïmplementeerde resources bekijken
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com) en navigeer vervolgens naar de zojuist gemaakte virtuele machine.
-1. Selecteer **Overzicht** in het menu links en controleer of de **SKU** **2019-Datacenter** is.
-1. Selecteer **Schijven** in het menu links en controleer of de grootte van de gegevensschijf **2013** is.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com)
+1. Typ **App Configuration** in het zoekvak van de Azure-portal. Selecteer **App Configuration** uit de lijst.
+1. Selecteer de zojuist gemaakte resource van de App Configuration.
+1. Klik onder **Bewerkingen** op **Configuratieverkenner.**
+1. Controleer of er twee sleutelwaarden bestaan.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u een resourcegroep niet meer nodig hebt, verwijdert u de resourcegroep, het App Configuration-archief en alle gerelateerde resources. Als u van plan bent om het App Configuration-archief of de virtuele machine in de toekomst te gebruiken, kunt u het verwijderen overslaan. Als u deze taak niet meer gaat gebruiken, verwijdert u alle resources die in deze quickstart zijn gemaakt door de volgende cmdlet uit te voeren:
+Wanneer u een resourcegroep niet meer nodig hebt, verwijdert u de resourcegroep, het App Configuration-archief en alle gerelateerde resources. Als u van plan bent om het App Configuration-archief in de toekomst te gebruiken, kunt u het verwijderen overslaan. Als u dit archief niet meer gaat gebruiken, verwijdert u alle resources die in deze quickstart zijn gemaakt door de volgende cmdlet uit te voeren:
 
 ```azurepowershell-interactive
-Remove-AzResourceGroup `
-  -Name $resourceGroup
+$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+Remove-AzResourceGroup -Name $resourceGroupName
+Write-Host "Press [ENTER] to continue..."
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-
-In deze snelstart hebt u een virtuele machine geïmplementeerd met behulp van een Azure Resource Manager-sjabloon en de sleutelwaarden van Azure App Configuration.
 
 Ga door naar het volgende artikel voor meer informatie over het maken van andere toepassingen met Azure App Configuration:
 
