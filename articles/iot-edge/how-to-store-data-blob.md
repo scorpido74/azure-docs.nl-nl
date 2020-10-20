@@ -8,12 +8,12 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6de96b9913b70dd1b2d423e00c58b95ccb8dcb07
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 22cef5919e597d4cd83ad80f5758a0427c52e2bb
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048148"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219731"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>Gegevens opslaan aan de rand met Azure Blob Storage op IoT Edge
 
@@ -92,7 +92,7 @@ De naam van deze instelling is `deviceAutoDeleteProperties` . Als u de IoT Edge 
 | Eigenschap | Mogelijke waarden | Uitleg |
 | ----- | ----- | ---- |
 | deleteOn | de waarde True, false | Standaard ingesteld op `false` . Als u de functie wilt inschakelen, stelt u dit veld in op `true` . <br><br> Omgevings variabele: `deviceAutoDeleteProperties__deleteOn={false,true}` |
-| deleteAfterMinutes | `<minutes>` | Geef de tijd in minuten op. De module verwijdert automatisch uw blobs uit de lokale opslag wanneer deze waarde verloopt. <br><br> Omgevings variabele: `deviceAutoDeleteProperties__ deleteAfterMinutes=<minutes>` |
+| deleteAfterMinutes | `<minutes>` | Geef de tijd in minuten op. De module verwijdert automatisch uw blobs uit de lokale opslag wanneer deze waarde verloopt. Het huidige maximum aantal minuten dat is toegestaan, is 35791. <br><br> Omgevings variabele: `deviceAutoDeleteProperties__ deleteAfterMinutes=<minutes>` |
 | retainWhileUploading | de waarde True, false | De standaard instelling is ingesteld op `true` , en de BLOB wordt bewaard tijdens het uploaden naar de Cloud opslag als deleteAfterMinutes verloopt. U kunt deze instellen op `false` en de gegevens worden verwijderd zodra deleteAfterMinutes verloopt. Opmerking: voor deze eigenschap werkt uploadOn moet worden ingesteld op True.  <br><br> **Let**op: als u toevoeg-blobs gebruikt, wordt met deze instelling toevoeg-blobs uit de lokale opslag verwijderd wanneer de waarde verloopt en eventuele toekomstige toevoeg bewerkingen voor het blok keren van deze blobs mislukken. U kunt ervoor zorgen dat de verloop waarde groot genoeg is voor de verwachte frequentie van toevoeg bewerkingen die door uw toepassing worden uitgevoerd.<br><br> Omgevings variabele: `deviceAutoDeleteProperties__retainWhileUploading={false,true}`|
 
 ## <a name="using-smb-share-as-your-local-storage"></a>SMB-share gebruiken als lokale opslag
@@ -195,7 +195,7 @@ De volgende Quick start-voor beelden gebruiken talen die ook door IoT Edge worde
 
 ## <a name="connect-to-your-local-storage-with-azure-storage-explorer"></a>Verbinding maken met uw lokale opslag met Azure Storage Explorer
 
-U kunt [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) gebruiken om verbinding te maken met uw lokale opslag account.
+U kunt [Azure Storage Explorer](https://github.com/microsoft/AzureStorageExplorer/releases/tag/v1.14.2) gebruiken om verbinding te maken met uw lokale opslag account.
 
 1. Azure Storage Explorer downloaden en installeren
 

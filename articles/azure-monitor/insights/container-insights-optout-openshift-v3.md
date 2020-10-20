@@ -3,16 +3,25 @@ title: Stoppen met het bewaken van uw Azure Red Hat open Shift v3-cluster | Micr
 description: In dit artikel wordt beschreven hoe u de bewaking van uw Azure Red Hat open Shift-cluster kunt stoppen met Azure Monitor voor containers.
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 6ed92cd4cda1f3b5d43cc605d7224236528b94bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c21b17fd9faed7b133cd8ecad767ae7bd4aa868
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88815433"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216524"
 ---
-# <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-v3-cluster"></a>Het bewaken van uw Azure Red Hat open Shift v3-cluster stoppen 
+# <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-v3-cluster"></a>Het bewaken van uw Azure Red Hat open Shift v3-cluster stoppen
 
-Nadat u de bewaking van uw Azure Red Hat open Shift versie 3. x-cluster hebt ingeschakeld, kunt u stoppen met het bewaken van het cluster met Azure Monitor voor containers als u besluit dat u het niet meer wilt controleren. In dit artikel wordt beschreven hoe u dit kunt doen met behulp van de Azure Resource Manager sjabloon. 
+>[!IMPORTANT]
+> Azure Red Hat open Shift 3,11 wordt in juni 2022.
+>
+> Vanaf oktober 2020 kunt u geen nieuwe 3,11-clusters meer maken.
+> Bestaande 3,11-clusters blijven actief tot juni 2022, maar worden na die datum niet meer ondersteund.
+>
+> Volg deze hand leiding voor het [maken van een Azure Red Hat open Shift 4-cluster](../../openshift/tutorial-create-cluster.md).
+> Als u specifieke vragen hebt, [kunt u contact met ons](mailto:aro-feedback@microsoft.com)opnemen.
+
+Nadat u de bewaking van uw Azure Red Hat open Shift versie 3. x-cluster hebt ingeschakeld, kunt u stoppen met het bewaken van het cluster met Azure Monitor voor containers als u besluit dat u het niet meer wilt controleren. In dit artikel wordt beschreven hoe u dit kunt doen met behulp van de Azure Resource Manager sjabloon.  
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager-sjabloon
 

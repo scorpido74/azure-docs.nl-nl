@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 10/15/2020
-ms.openlocfilehash: 1bf5966ab3e4bb62c2be302a7791cadad9761a70
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 85ddda4bbb6702ed8c82a40d603c8ca87ffb7053
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150382"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217538"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>Gegevens delen en ontvangen van Azure SQL Database en Azure Synapse Analytics
 
@@ -39,7 +39,7 @@ Hieronder ziet u de lijst met vereisten voor het delen van gegevens uit de SQL-b
 * Machtiging om naar de databases op de SQL-server te schrijven, aanwezig in *Microsoft.Sql/servers/databases/write*. Deze machtiging maakt onderdeel uit van de rol Inzender.
 * Machtiging voor de gegevensshare om toegang te krijgen tot de datawarehouse. U kunt dit doen via de volgende stappen: 
     1. Ga in Azure Portal naar de SQL-Server en stel uzelf in als de Azure Active Directory-beheerder.
-    1. Maak verbinding met de Azure SQL Database/data warehouse met behulp van de [query-editor](https://docs.microsoft.com/azure/azure-sql/database/connect-query-portal#connect-using-azure-active-directory) of SQL Server Management Studio met Azure Active Directory-verificatie. 
+    1. Maak verbinding met de Azure SQL Database/data warehouse met behulp van de [query-editor](../azure-sql/database/connect-query-portal.md#connect-using-azure-active-directory) of SQL Server Management Studio met Azure Active Directory-verificatie. 
     1. Voer het volgende script uit om de beheerde identiteit van de gegevens share bron toe te voegen als een db_datareader. U moet verbinding maken met behulp van Active Directory en niet via SQL Server-verificatie. 
     
         ```sql
@@ -144,7 +144,7 @@ Zorg ervoor dat alle vereisten zijn voltooid voordat u een uitnodiging voor gege
 ### <a name="prerequisites-for-target-storage-account"></a>Vereisten voor het doel-opslag account
 Als u ervoor kiest om gegevens te ontvangen in Azure Storage, hieronder volgt de lijst met vereisten.
 
-* Een Azure Storage-account: Hier kunt u een [Azure Storage-account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) maken als u nog geen account hebt. 
+* Een Azure Storage-account: Hier kunt u een [Azure Storage-account](../storage/common/storage-account-create.md) maken als u nog geen account hebt. 
 * Machtiging om naar het opslagaccount te schrijven, aanwezig in *Microsoft.Storage/storageAccounts/write*. Deze machtiging maakt onderdeel uit van de rol Inzender. 
 * Machtiging om roltoewijzing toe te voegen aan het opslagaccount, aanwezig in *Microsoft.Authorization/role assignments/write*. Deze machtiging maakt onderdeel uit van de rol Eigenaar.  
 
@@ -154,7 +154,7 @@ Als u ervoor kiest om gegevens te ontvangen in Azure SQL Database, wordt in azur
 * Machtiging om naar databases op de SQL-server te schrijven, aanwezig in *Microsoft.Sql/servers/databases/write*. Deze machtiging maakt onderdeel uit van de rol Inzender. 
 * Machtiging voor de beheerde identiteit van de Data Share-resource voor toegang tot Azure SQL Database of Azure Synapse Analytics. U kunt dit doen via de volgende stappen: 
     1. Ga in Azure Portal naar de SQL-Server en stel uzelf in als de Azure Active Directory-beheerder.
-    1. Maak verbinding met de Azure SQL Database/data warehouse met behulp van de [query-editor](https://docs.microsoft.com/azure/azure-sql/database/connect-query-portal#connect-using-azure-active-directory) of SQL Server Management Studio met Azure Active Directory-verificatie. 
+    1. Maak verbinding met de Azure SQL Database/data warehouse met behulp van de [query-editor](../azure-sql/database/connect-query-portal.md#connect-using-azure-active-directory) of SQL Server Management Studio met Azure Active Directory-verificatie. 
     1. Voer het volgende script uit om de door de gegevens share beheerde identiteit toe te voegen als een db_datareader, db_datawriter, db_ddladmin. U moet verbinding maken met behulp van Active Directory en niet via SQL Server-verificatie. 
 
         ```sql
@@ -275,7 +275,7 @@ Wanneer u gegevens uit de SQL-bron deelt, wordt de volgende toewijzing gebruikt 
 
 >[!NOTE]
 > 1. Voor gegevens typen die worden toegewezen aan het type van de decimale waarde, wordt de moment opname met de precisie Maxi maal 28 ondersteund. Als u gegevens hebt die een grotere nauw keurigheid dan 28 vereisen, kunt u overwegen om te converteren naar een teken reeks. 
-> 1.  Als u gegevens deelt van Azure SQL database naar Azure Synapse Analytics, worden niet alle gegevens typen ondersteund. Raadpleeg de [tabel gegevens typen in Synapse SQL pool](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types) voor meer informatie. 
+> 1.  Als u gegevens deelt van Azure SQL database naar Azure Synapse Analytics, worden niet alle gegevens typen ondersteund. Raadpleeg de [tabel gegevens typen in Synapse SQL pool](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types.md) voor meer informatie. 
 
 ## <a name="sql-always-encrypted-or-dynamic-data-masking"></a>SQL Always Encrypted of dynamische gegevens maskering
 Azure-gegevens share biedt momenteel geen ondersteuning voor Azure SQL-data bases met Always Encrypted geconfigureerd. 
@@ -294,6 +294,3 @@ De meest voorkomende oorzaak van het mislukken van de moment opname is dat de ge
 
 ## <a name="next-steps"></a>Volgende stappen
 U hebt geleerd hoe u gegevens kunt delen en ontvangen van SQL-bronnen met behulp van de Azure data share-service. Voor meer informatie over het delen van andere gegevens bronnen gaat u verder met [ondersteunde gegevens archieven](supported-data-stores.md).
-
-
-

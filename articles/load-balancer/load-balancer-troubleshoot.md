@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: 1cfe27fd5c63bc4c1436982212b91e07f54aedb5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4dba170c750a61ea08e4116dc6f2b13ef14c87ed
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85801917"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217385"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Problemen met Azure Load Balancer oplossen
 
@@ -30,6 +30,12 @@ Wanneer de Load Balancer verbinding niet beschikbaar is, zijn de meest voorkomen
 - Vm's achter de Load Balancer reageren niet op het verkeer op de geconfigureerde poort
 
 Wanneer de externe clients naar de back-end-Vm's via de load balancer gaan, wordt het IP-adres van de clients voor de communicatie gebruikt. Zorg ervoor dat het IP-adres van de clients wordt toegevoegd aan de acceptatie lijst NSG. 
+
+## <a name="symptom-no-outbound-connectivity-from-standard-internal-load-balancers-ilb"></a>Symptoom: geen uitgaande verbinding van standaard interne load balancers (ILB)
+
+**Validatie en oplossing**
+
+Standaard ILBs zijn **standaard veilig**. Basis-ILBs die verbinding maken met Internet via een *verborgen* openbaar IP-adres. Dit is niet kunt voor productie werkbelastingen omdat het IP-adres niet statisch of vergrendeld is via Nsg's waarvan u de eigenaar bent. Als u onlangs van een Basic-ILB hebt overgezet naar een standaard-ILB, moet u een openbaar IP-adres maken via een [uitgaande alleen](egress-only.md) -configuratie die het IP-adres vergrendelt via nsg's. 
 
 ## <a name="symptom-vms-behind-the-load-balancer-are-not-responding-to-health-probes"></a>Symptoom: Vm's achter de Load Balancer reageren niet op status controles
 Voor de back-endservers die deel uitmaken van de load balancerset, moeten ze de controle van de test door geven. Zie [informatie over Load Balancer probe](load-balancer-custom-probe-overview.md)(Engelstalig) voor meer informatie over status controles. 

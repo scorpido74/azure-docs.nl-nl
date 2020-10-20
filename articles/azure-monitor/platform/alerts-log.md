@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.subservice: alerts
-ms.openlocfilehash: 40cf46746587cbd221bd958ccb528c9e40cf18bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0842efe304faa9a0d94fbf71075f1bc16ff34014
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91299386"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217555"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Logboek waarschuwingen maken, weer geven en beheren met behulp van Azure Monitor
 
@@ -201,7 +201,7 @@ Hier volgen de stappen om aan de slag te gaan met het schrijven van query's voor
     > [!NOTE]
     > Waarschuwings regels voor logboeken zijn momenteel [stateless en kunnen niet worden opgelost](alerts-unified-log.md#state-and-resolving-alerts).
 
-1. Selecteer de knop **regels beheren** op de bovenste balk om regels te bewerken:
+1. Selecteer de knop **waarschuwings regels beheren** op de bovenste balk om de regels te bewerken:
 
     ![ waarschuwings regels beheren](media/alerts-log/manage-alert-rules.png)
 

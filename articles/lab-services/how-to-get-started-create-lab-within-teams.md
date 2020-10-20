@@ -3,12 +3,12 @@ title: Aan de slag en een Azure Lab Services Lab maken in teams
 description: Meer informatie over hoe u aan de slag kunt gaan en een Azure Lab Services Lab maakt in teams.
 ms.topic: article
 ms.date: 10/08/2020
-ms.openlocfilehash: 4f8c0e2c5f7b75990460b0a1812d4fec3a758259
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: e17b0be223a1630402fc4f32c692d7ecfe184783
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92092134"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217079"
 ---
 # <a name="get-started-and-create-a-lab-services-lab-within-teams"></a>Aan de slag en een Lab-service Lab maken in teams
 
@@ -24,6 +24,9 @@ Dit is de gebruikelijke werk stroom voor het gebruik van Azure Lab Services in t
 1. Een [Lab-account Maker voegt andere gebruikers](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role) toe aan de rol **Lab Creator** . De labaccountmaker/beheerder voegt bijvoorbeeld onderwijzers toe aan de rol **Labmaker**, zodat ze labels voor hun klassen kunnen maken.
 1. De docenten maken vervolgens Labs, configureren de VM van de sjabloon vooraf en publiceert het lab om de virtuele machine in te richten op iedereen in het team.
 1. Zodra het lab is gepubliceerd, wordt er een virtuele machine aan iedereen in de team lidmaatschaps lijst van de eerste aanmelding bij Azure Lab Services, door te klikken op het tabblad met **Azure Lab Services** app binnen teams (SSO) of door toegang tot de [website van Labs](https://labs.azure.com). Gebruikers kunnen de virtuele machine vervolgens gebruiken voor het werk en het huis voer van de klasse.
+
+> [!IMPORTANT]
+> Azure Lab Services kunnen alleen worden gebruikt in teams als de Lab-accounts in dezelfde Tenant zijn gemaakt als teams.
 
 ## <a name="add-azure-lab-services-app-as-a-tab-to-a-team"></a>Azure Lab Services-app toevoegen als een tabblad aan een team
 
@@ -60,7 +63,7 @@ Wanneer een lab in teams wordt gemaakt, wordt de gebruikers lijst in de test omg
 
 [Gebruikers lijsten van Lab-Services beheren in teams](how-to-manage-user-lists-within-teams.md)
 
-### <a name="see-also"></a>Zie ook
+### <a name="see-also"></a>Zie tevens
 
 Zie ook de volgende artikelen:
 

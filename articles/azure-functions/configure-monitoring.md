@@ -3,12 +3,13 @@ title: Bewaking configureren voor Azure Functions
 description: Leer hoe u uw functie-app kunt verbinden met Application Insights voor bewaking en het configureren van gegevens verzameling.
 ms.date: 8/31/2020
 ms.topic: how-to
-ms.openlocfilehash: 4b2c4e23bf54dc87325af7068b287fad2f9314a0
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.custom: contperfq2
+ms.openlocfilehash: 50705eeedf9c985a053600a8c0b27c823231e9a3
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168886"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217181"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>Bewaking voor Azure Functions configureren
 

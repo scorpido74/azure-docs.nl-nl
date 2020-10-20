@@ -1,22 +1,20 @@
 ---
 title: Fouten opsporen in terugkerende taken in Azure Data Lake Analytics
 description: Meer informatie over het gebruik van Azure Data Lake-Hulpprogram Ma's voor Visual Studio voor het opsporen van fouten in een abnormale terugkerende taak.
-services: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 05/20/2018
-ms.openlocfilehash: 86d5134e257d2dae642eceb933a78047773b25a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b95d4b0a082e8eac191d610c9516e5ce72180b4c
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87129947"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219170"
 ---
 # <a name="troubleshoot-an-abnormal-recurring-job"></a>Problemen met een abnormale terugkerende taak oplossen
 
-In dit artikel wordt beschreven hoe u [Azure data Lake-Hulpprogram ma's voor Visual Studio](https://aka.ms/adltoolsvs) kunt gebruiken om problemen met terugkerende taken op te lossen. Meer informatie over pijp lijn en terugkerende taken van de [Azure data Lake en Azure HDInsight-blog](https://blogs.msdn.microsoft.com/azuredatalake/2017/09/19/managing-pipeline-recurring-jobs-in-azure-data-lake-analytics-made-easy/).
+In dit artikel wordt beschreven hoe u [Azure data Lake-Hulpprogram ma's voor Visual Studio](https://aka.ms/adltoolsvs) kunt gebruiken om problemen met terugkerende taken op te lossen. Meer informatie over pijp lijn en terugkerende taken van de [Azure data Lake en Azure HDInsight-blog](/archive/blogs/azuredatalake/managing-pipeline-recurring-jobs-in-azure-data-lake-analytics-made-easy).
 
 Terugkerende taken delen meestal dezelfde query logica en vergelijk bare invoer gegevens. Stel bijvoorbeeld dat u een terugkerende taak hebt die elke maandag ochtend om 8:00 uur wordt uitgevoerd. de wekelijkse actieve gebruiker van de afgelopen week tellen. De scripts voor deze taken delen één script sjabloon die de query logica bevat. De invoer voor deze taken zijn de gebruiks gegevens voor de afgelopen week. Het delen van dezelfde query logica en soort gelijke invoer betekent meestal dat de prestaties van deze taken vergelijkbaar en stabiel zijn. Als een van uw terugkerende taken plotseling abnormaal werkt, mislukt of een hoop vertraging oploopt, wilt u mogelijk het volgende doen:
 
