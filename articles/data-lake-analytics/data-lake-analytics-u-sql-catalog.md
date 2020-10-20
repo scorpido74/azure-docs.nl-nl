@@ -1,18 +1,16 @@
 ---
 title: De U-SQL-catalogus gebruiken in Azure Data Lake Analytics
 description: Meer informatie over het gebruik van de U-SQL-catalogus voor het delen van code en gegevens. Maak functies voor tabel waarden, maak weer gaven, maak tabellen en zoek ze op.
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
 ms.topic: how-to
 ms.date: 05/09/2017
-ms.openlocfilehash: 0ef1bff996589d09326e80b770953bd6b34966c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f92aadc8ccf18dd91b5dd4b35285f60b174e4cf7
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87132429"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220071"
 ---
 # <a name="get-started-with-the-u-sql-catalog-in-azure-data-lake-analytics"></a>Aan de slag met de U-SQL-catalogus in Azure Data Lake Analytics
 

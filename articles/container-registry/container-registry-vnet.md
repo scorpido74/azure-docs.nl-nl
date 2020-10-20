@@ -3,12 +3,12 @@ title: Toegang beperken met behulp van een service-eind punt
 description: Beperk de toegang tot een Azure container Registry met behulp van een service-eind punt in een virtueel Azure-netwerk. Toegang tot het service-eind punt is een functie van de laag Premium-Service.
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 1fc8d54d677112a9c934f9079e953a7389939bde
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3472549827781c6ed2f6be0417866747c81edd93
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89488661"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215498"
 ---
 # <a name="restrict-access-to-a-container-registry-using-a-service-endpoint-in-an-azure-virtual-network"></a>Toegang tot een container register beperken met behulp van een service-eind punt in een virtueel Azure-netwerk
 
@@ -49,13 +49,11 @@ Het configureren van een Registry-service-eind punt is beschikbaar in de service
 
 ## <a name="configure-network-access-for-registry"></a>Netwerk toegang voor het REGI ster configureren
 
-In deze sectie configureert u het container register zodanig dat toegang is toegestaan vanuit een subnet in een virtueel Azure-netwerk. Vergelijk bare stappen die gebruikmaken van de Azure CLI en Azure Portal worden meegeleverd.
+In deze sectie configureert u het container register zodanig dat toegang is toegestaan vanuit een subnet in een virtueel Azure-netwerk. De stappen worden beschreven met behulp van de Azure CLI.
 
-### <a name="allow-access-from-a-virtual-network---cli"></a>Toegang vanaf een virtueel netwerk-CLI toestaan
+### <a name="add-a-service-endpoint-to-a-subnet"></a>Een service-eind punt toevoegen aan een subnet
 
-#### <a name="add-a-service-endpoint-to-a-subnet"></a>Een service-eind punt toevoegen aan een subnet
-
-Wanneer u een virtuele machine maakt, maakt Azure standaard een virtueel netwerk in dezelfde resource groep. De naam van het virtuele netwerk is gebaseerd op de naam van de virtuele machine. Als u bijvoorbeeld een *myDockerVM*naam voor de virtuele machine hebt, is de standaard naam van het virtuele netwerk *myDockerVMVNET*, met een subnet met de naam *myDockerVMSubnet*. Controleer dit in de Azure Portal of met behulp van de opdracht [AZ Network vnet List][az-network-vnet-list] :
+Wanneer u een virtuele machine maakt, maakt Azure standaard een virtueel netwerk in dezelfde resource groep. De naam van het virtuele netwerk is gebaseerd op de naam van de virtuele machine. Als u bijvoorbeeld een *myDockerVM*naam voor de virtuele machine hebt, is de standaard naam van het virtuele netwerk *myDockerVMVNET*, met een subnet met de naam *myDockerVMSubnet*. Controleer dit met behulp van de opdracht [AZ Network vnet List][az-network-vnet-list] :
 
 ```azurecli
 az network vnet list \
@@ -101,7 +99,7 @@ Uitvoer:
 /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myDockerVMVNET/subnets/myDockerVMSubnet
 ```
 
-#### <a name="change-default-network-access-to-registry"></a>De standaard netwerk toegang wijzigen in het REGI ster
+### <a name="change-default-network-access-to-registry"></a>De standaard netwerk toegang wijzigen in het REGI ster
 
 Een Azure container Registry staat standaard verbindingen toe van hosts op elk netwerk. Als u de toegang tot een geselecteerd netwerk wilt beperken, wijzigt u de standaard actie om de toegang te weigeren. Vervang de naam van het REGI ster in de volgende [AZ ACR update][az-acr-update] -opdracht:
 
@@ -109,7 +107,7 @@ Een Azure container Registry staat standaard verbindingen toe van hosts op elk n
 az acr update --name myContainerRegistry --default-action Deny
 ```
 
-#### <a name="add-network-rule-to-registry"></a>Netwerk regel toevoegen aan REGI ster
+### <a name="add-network-rule-to-registry"></a>Netwerk regel toevoegen aan REGI ster
 
 Gebruik de opdracht [AZ ACR Network-Rule add][az-acr-network-rule-add] om een netwerk regel toe te voegen aan het REGI ster waarmee toegang vanuit het subnet van de virtuele machine wordt toegestaan. Vervang de naam van het container register en de bron-ID van het subnet in de volgende opdracht: 
 
@@ -143,11 +141,9 @@ Error response from daemon: login attempt to https://xxxxxxx.azurecr.io/v2/ fail
 
 ## <a name="restore-default-registry-access"></a>Standaard toegang tot het REGI ster herstellen
 
-Als u het REGI ster wilt herstellen om standaard toegang toe te staan, verwijdert u de netwerk regels die zijn geconfigureerd. Stel vervolgens de standaard actie in om toegang toe te staan. Vergelijk bare stappen die gebruikmaken van de Azure CLI en Azure Portal worden meegeleverd.
+Als u het REGI ster wilt herstellen om standaard toegang toe te staan, verwijdert u de netwerk regels die zijn geconfigureerd. Stel vervolgens de standaard actie in om toegang toe te staan. 
 
-### <a name="restore-default-registry-access---cli"></a>Standaard toegang tot het REGI ster herstellen-CLI
-
-#### <a name="remove-network-rules"></a>Netwerk regels verwijderen
+### <a name="remove-network-rules"></a>Netwerk regels verwijderen
 
 Als u een lijst wilt weer geven met netwerk regels die voor het REGI ster zijn geconfigureerd, voert u de volgende opdracht [AZ ACR Network-Rule List][az-acr-network-rule-list] uit:
 
@@ -166,7 +162,7 @@ az acr network-rule remove \
   xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myDockerVMVNET/subnets/myDockerVMSubnet
 ```
 
-#### <a name="allow-access"></a>Toegang toestaan
+### <a name="allow-access"></a>Toegang toestaan
 
 Vervang de naam van het REGI ster in de volgende [AZ ACR update][az-acr-update] -opdracht:
 ```azurecli
@@ -180,8 +176,6 @@ Als u alle Azure-resources in dezelfde resource groep hebt gemaakt en deze niet 
 ```azurecli
 az group delete --name myResourceGroup
 ```
-
-Als u uw resources in de portal wilt opschonen, gaat u naar de resource groep myResourceGroup. Zodra de resource groep is geladen, klikt u op **resource groep verwijderen** om de resource groep en de resources die daar zijn opgeslagen, te verwijderen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

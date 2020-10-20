@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 23e443a542ed22906abb237e402834b707e623a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7788d45a9cc30cb688d33a629fbb6e53f5ca16cb
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88852038"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92214903"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Opmerkingen voor ontwikkel aars voor aangepast beleid in Azure Active Directory B2C
 
@@ -66,7 +66,7 @@ Mogelijkheden voor aangepast beleid/identiteits ervaring zijn onder constante en
 | Functie | Ontwikkeling | Preview | Algemene beschikbaarheid | Notities |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | [OAuth2-autorisatie code](authorization-code-flow.md) |  |  | X |  |
-| OAuth2-verificatie code met PKCE |  |  | X | Alleen mobiele toepassingen  |
+| OAuth2-verificatie code met PKCE |  |  | X | [Open bare clients en toepassingen met één pagina](authorization-code-flow.md)  |
 | [OAuth2 impliciete stroom](implicit-flow-single-page-application.md) |  |  | X |  |
 | [Referenties voor wacht woord van OAuth2-resource-eigenaar](ropc-custom.md) |  | X |  |  |
 | [OIDC verbinding maken](openid-connect.md) |  |  | X |  |

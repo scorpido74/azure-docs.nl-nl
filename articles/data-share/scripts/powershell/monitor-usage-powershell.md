@@ -1,20 +1,17 @@
 ---
-title: 'Power shell-script: gebruik van een Azure-gegevens share bewaken | Microsoft Docs'
+title: 'Power shell-script: gebruik van een Azure-gegevens share bewaken'
 description: Met dit Power shell-script worden de metrische gegevens over het gebruik van een gezonden data-share opgehaald.
-services: data-share
 author: joannapea
 ms.service: data-share
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
-ms.openlocfilehash: 0a4084d309dd0160970f1c03540705b310eb8e75
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9ff7a29cba9b8e9ca058bfe742f484c5b495cd7
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "70307194"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221312"
 ---
 # <a name="use-powershell-to-monitor-the-usage-of-a-sent-data-share"></a>Power shell gebruiken voor het bewaken van het gebruik van een verzonden gegevens share
 
@@ -44,12 +41,12 @@ In dit script worden de volgende opdrachten gebruikt:
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [Get-AzDataShareSynchronization](/powershell/module/az.datashare/get-azdatasharesynchronization?view=azps-2.6.0) | Synchronisaties op een share weer geven. |
-| [Get-AzDataShareSynchronizationDetails](/powershell/module/az.datashare/get-azdatasharesynchronizationdetail?view=azps-2.6.0) | Hiermee worden de synchronisatie gegevens van een synchronisatie van shares opgehaald. |
+| [Get-AzDataShareSynchronization](/powershell/module/az.datashare/get-azdatasharesynchronization) | Synchronisaties op een share weer geven. |
+| [Get-AzDataShareSynchronizationDetails](/powershell/module/az.datashare/get-azdatasharesynchronizationdetail) | Hiermee worden de synchronisatie gegevens van een synchronisatie van shares opgehaald. |
 |||
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Documentatie over Azure PowerShell](https://docs.microsoft.com/powershell/) voor meer informatie over Azure PowerShell.
+Zie [Documentatie over Azure PowerShell](/powershell/) voor meer informatie over Azure PowerShell.
 
 Aanvullende voor beelden van Power shell-scripts voor Azure data share vindt u in de [Azure data share Power shell](../../samples-powershell.md)-voor beelden.

@@ -1,18 +1,16 @@
 ---
 title: Problemen met de Azure Data Lake Analytics U-SQL runtime-fouten oplossen
 description: Meer informatie over het oplossen van fouten in U-SQL-runtime.
-services: data-lake-analytics
 ms.reviewer: jasonh
 ms.service: data-lake-analytics
 ms.topic: troubleshooting
-ms.workload: big-data
 ms.date: 10/10/2019
-ms.openlocfilehash: 39b4a3bc5e5f70a5699f4fd84ec86dc61cf21483
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c20333c83275edb90a266afec3ec3756ae1e0e7e
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87475257"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216263"
 ---
 # <a name="learn-how-to-troubleshoot-u-sql-runtime-failures-due-to-runtime-changes"></a>Meer informatie over het oplossen van problemen met U-SQL-runtime als gevolg van runtime wijzigingen
 
@@ -55,7 +53,7 @@ Er zijn twee mogelijke runtime-versie problemen die kunnen optreden:
 
 2. U hebt een niet-standaard runtime gebruikt, hetzij expliciet, impliciet als deze is vastgemaakt aan uw account en deze runtime is na enige tijd verwijderd. Als er ontbrekende Runtimes optreden, moet u uw scripts bijwerken om uit te voeren met de huidige standaard runtime. Als u meer tijd nodig hebt, neemt u contact op met Microsoft Ondersteuning
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 - [Overzicht van Azure Data Lake Analytics](data-lake-analytics-overview.md)
 - [Azure Data Lake Analytics beheren met Azure Portal](data-lake-analytics-manage-use-portal.md)

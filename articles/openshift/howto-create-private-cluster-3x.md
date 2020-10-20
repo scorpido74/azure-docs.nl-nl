@@ -7,14 +7,20 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/02/2020
 keywords: Aro, open Shift, persoonlijk cluster, Red Hat
-ms.openlocfilehash: f4ce6c79fa9fe6d05fdea4b877a8aa7faf404a9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 37e9dc996fddf2b592ea6bf7fff1e1f4825f3ca8
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83727646"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220625"
 ---
 # <a name="create-a-private-cluster-with-azure-red-hat-openshift-311"></a>Een persoonlijk cluster maken met Azure Red Hat open Shift 3,11
+
+> [!IMPORTANT]
+> Azure Red Hat open Shift 3,11 wordt 30 juni 2022 buiten gebruik gesteld. Ondersteuning voor het maken van nieuwe Azure Red Hat open Shift 3,11-clusters loopt voort tot en met 30 november 2020. Na de buiten gebruiks telling worden de resterende Azure Red Hat open Shift 3,11-clusters afgesloten om beveiligings problemen te voor komen.
+> 
+> Volg deze hand leiding voor het [maken van een Azure Red Hat open Shift 4-cluster](tutorial-create-cluster.md).
+> Als u specifieke vragen hebt, [kunt u contact met ons](mailto:arofeedback@microsoft.com)opnemen.
 
 Particuliere clusters bieden de volgende voor delen:
 

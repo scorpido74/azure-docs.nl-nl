@@ -1,19 +1,16 @@
 ---
 title: Azure Data Lake Analytics U-SQL-taken plannen met SSIS
 description: Meer informatie over het gebruik van SQL Server Integration Services om U-SQL-taken te plannen met inline-script of van U-SQL-query bestanden.
-services: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
 ms.topic: how-to
-ms.workload: big-data
 ms.date: 07/17/2018
-ms.openlocfilehash: a5c7b9fb6a3431534d743f1ebd0b21f1da9fab7b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b080b433f5af49e970faba02003fb68e21a08365
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318701"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221448"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>U-SQL-taken plannen met behulp van SQL Server Integration Services (SSIS)
 
@@ -21,16 +18,16 @@ In dit document leert u hoe u-SQL-taken kunt organiseren en maken met behulp van
 
 ## <a name="prerequisites"></a>Vereisten
 
-[Azure Feature Pack voor integratie Services](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-2017#scenario-managing-data-in-the-cloud) bevat de [Azure data Lake Analytics taak](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017) en de [Azure data Lake Analytics verbindings beheer](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-analytics-connection-manager?view=sql-server-2017) waarmee u verbinding kunt maken met Azure data Lake Analytics service. Als u deze taak wilt gebruiken, zorg er dan voor dat u:
+[Azure Feature Pack voor integratie Services](/sql/integration-services/azure-feature-pack-for-integration-services-ssis#scenario-managing-data-in-the-cloud) bevat de [Azure data Lake Analytics taak](/sql/integration-services/control-flow/azure-data-lake-analytics-task) en de [Azure data Lake Analytics verbindings beheer](/sql/integration-services/connection-manager/azure-data-lake-analytics-connection-manager) waarmee u verbinding kunt maken met Azure data Lake Analytics service. Als u deze taak wilt gebruiken, zorg er dan voor dat u:
 
-- [Down load en Installeer SQL Server Data Tools (SSDT) voor Visual Studio](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017)
-- [Azure Feature Pack voor Integration Services (SSIS) installeren](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-2017)
+- [Down load en Installeer SQL Server Data Tools (SSDT) voor Visual Studio](/sql/ssdt/download-sql-server-data-tools-ssdt)
+- [Azure Feature Pack voor Integration Services (SSIS) installeren](/sql/integration-services/azure-feature-pack-for-integration-services-ssis)
 
 ## <a name="azure-data-lake-analytics-task"></a>Azure Data Lake Analytics taak
 
 Met de Azure Data Lake Analytics taak kunnen gebruikers U-SQL-taken naar het Azure Data Lake Analytics-account verzenden. 
 
-[Meer informatie over het configureren van Azure data Lake Analytics taak](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017).
+[Meer informatie over het configureren van Azure data Lake Analytics taak](/sql/integration-services/control-flow/azure-data-lake-analytics-task).
 
 ![Azure Data Lake Analytics taak in SSIS](./media/data-lake-analytics-schedule-jobs-ssis/data-lake-analytics-azure-data-lake-analytics-task-in-ssis.png)
 
@@ -61,13 +58,13 @@ Voeg in de ontwerp weergave SSIS-pakket een **Azure data Lake Store-bestandsbehe
 ### <a name="configure-azure-data-lake-store-file-system-task"></a>Azure Data Lake Store-bestandsbeheer taak configureren
 
 1. Stel de **bewerking** in op **CopyFromADLS**.
-2. **AzureDataLakeConnection**instellen, meer informatie over [Azure data Lake Store verbindings beheer](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager?view=sql-server-2017).
+2. **AzureDataLakeConnection**instellen, meer informatie over [Azure data Lake Store verbindings beheer](/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager).
 3. Stel **AzureDataLakeDirectory**in. Ga naar de map waarin U uw U-SQL-scripts opslaat. Gebruik relatief pad dat relatief is ten opzichte van de hoofdmap van het Azure Data Lake Store-account.
 4. Stel **doel** in op een map die de gedownloade U-SQL-scripts in de cache opslaat. Dit mappad wordt gebruikt in de foreach-lus-container voor U-SQL-taak verzending. 
 
 ![Azure Data Lake Store-bestandsbeheer taak configureren](./media/data-lake-analytics-schedule-jobs-ssis/configure-azure-data-lake-store-file-system-task.png)
 
-[Meer informatie over Azure data Lake Store-bestandsbeheer taak](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-store-file-system-task?view=sql-server-2017).
+[Meer informatie over Azure data Lake Store-bestandsbeheer taak](/sql/integration-services/control-flow/azure-data-lake-store-file-system-task).
 
 ### <a name="configure-foreach-loop-container"></a>Foreach-lus-container configureren
 
@@ -102,9 +99,9 @@ Voeg in de ontwerp weergave SSIS-pakket een **Azure data Lake Store-bestandsbehe
 
        ![Foreach-lus-container configureren](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-property-for-foreach-loop-container.png)
 
-3. Stel **AzureDataLakeAnalyticsConnection** in op het Azure data Lake Analytics-account waarnaar u taken wilt verzenden. Meer informatie over [Azure data Lake Analytics verbindings beheer](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-analytics-connection-manager?view=sql-server-2017).
+3. Stel **AzureDataLakeAnalyticsConnection** in op het Azure data Lake Analytics-account waarnaar u taken wilt verzenden. Meer informatie over [Azure data Lake Analytics verbindings beheer](/sql/integration-services/connection-manager/azure-data-lake-analytics-connection-manager).
 
-4. Andere taak configuraties instellen. [Meer informatie](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017).
+4. Andere taak configuraties instellen. [Meer informatie](/sql/integration-services/control-flow/azure-data-lake-analytics-task).
 
 5. **Expressies** gebruiken om u-SQL-taak naam dynamisch in te stellen:
 
@@ -117,7 +114,7 @@ Voeg in de ontwerp weergave SSIS-pakket een **Azure data Lake Store-bestandsbehe
 
 U kunt u-SQL-bestanden in Azure Blob Storage gebruiken met behulp van de **Azure Blob-Download taak** in azure Feature Pack. Met deze aanpak kunt u de scripts in de Cloud gebruiken.
 
-De stappen zijn vergelijkbaar met [scenario 2: u-SQL-bestanden gebruiken in azure data Lake Store](#scenario-2-use-u-sql-files-in-azure-data-lake-store). Wijzig de Download taak voor de Azure Data Lake Store-bestands systeem in Azure Blob. Meer [informatie over de Download taak voor Azure Blob](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task?view=sql-server-2017).
+De stappen zijn vergelijkbaar met [scenario 2: u-SQL-bestanden gebruiken in azure data Lake Store](#scenario-2-use-u-sql-files-in-azure-data-lake-store). Wijzig de Download taak voor de Azure Data Lake Store-bestands systeem in Azure Blob. Meer [informatie over de Download taak voor Azure Blob](/sql/integration-services/control-flow/azure-blob-download-task).
 
 De controle stroom ziet er als volgt uit.
 
@@ -162,10 +159,10 @@ In sommige gevallen wilt u de waarde voor de U-SQL-variabele dynamisch instellen
 - Stel de variabelen voor het invoer-en uitvoer bestand dynamisch in op basis van de huidige datum en tijd.
 - Stel de para meter in voor opgeslagen procedures.
 
-Meer [informatie over het instellen van para meters voor het U-SQL-script](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017#parameter-mapping-page-configuration).
+Meer [informatie over het instellen van para meters voor het U-SQL-script](/sql/integration-services/control-flow/azure-data-lake-analytics-task#parameter-mapping-page-configuration).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [SSIS-pakketten uitvoeren in Azure](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)
-- [Azure Feature Pack voor Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-2017#scenario-managing-data-in-the-cloud)
-- [U-SQL-taken plannen met behulp van Azure Data Factory](https://docs.microsoft.com/azure/data-factory/transform-data-using-data-lake-analytics)
+- [SSIS-pakketten uitvoeren in Azure](../data-factory/how-to-invoke-ssis-package-ssis-activity.md)
+- [Azure Feature Pack voor Integration Services (SSIS)](/sql/integration-services/azure-feature-pack-for-integration-services-ssis#scenario-managing-data-in-the-cloud)
+- [U-SQL-taken plannen met behulp van Azure Data Factory](../data-factory/transform-data-using-data-lake-analytics.md)

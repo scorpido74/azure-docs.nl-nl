@@ -3,12 +3,12 @@ title: Java-toepassingen bewaken op elke omgeving-Azure Monitor Application Insi
 description: Bewaking van toepassings prestaties voor Java-toepassingen die worden uitgevoerd in een wille keurige omgeving zonder de app te instrumenteren. Gedistribueerde tracering en toepassings toewijzing.
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 08e5b68ea5e5ec63531bb4f9c6b4483e9afbb9bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1182813c0b79d43c2c264482629ad97f23683a49
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91370031"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215277"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Bewaking van Java-toepassingen Azure Monitor Application Insights-open bare preview-versie
 
@@ -114,8 +114,8 @@ Bekijk de Details voor de [open bare preview van 3,0: configuratie opties](./jav
 ### <a name="logs"></a>Logboeken
 
 * Java. util. Logging
-* Log4j
-* SLF4J/logback
+* Log4j (inclusief MDC-eigenschappen)
+* SLF4J/logback (inclusief MDC-eigenschappen)
 
 ### <a name="metrics"></a>Metrische gegevens
 

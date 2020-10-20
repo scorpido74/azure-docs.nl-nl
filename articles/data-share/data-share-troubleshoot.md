@@ -7,12 +7,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: troubleshooting
 ms.date: 10/15/2020
-ms.openlocfilehash: 1b61b643ea4b195878a1d12fc1ac4bb7fef23027
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a323dec66a3077784ff85deadd4f12086648fb3a
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151369"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220455"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share"></a>Veelvoorkomende problemen in Azure Data Share oplossen 
 
@@ -34,7 +34,7 @@ Dit kan een van de volgende oorzaken hebben:
     1. Zoek naar **Microsoft.DataShare**
     1. Klik op **Registreren** 
 
-    U moet de [rol Azure Inzender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) hebben voor het Azure-abonnement om deze stappen uit te voeren. 
+    U moet de [rol Azure Inzender](../role-based-access-control/built-in-roles.md#contributor) hebben voor het Azure-abonnement om deze stappen uit te voeren. 
 
 * **Er wordt een uitnodiging verzonden naar uw e-mailalias in plaats van uw e-mailadres voor aanmelding bij Azure.** Als u de Azure Data Share-service hebt geregistreerd of al een Data Share-resource hebt gemaakt in de Azure-tenant, maar de uitnodiging nog steeds niet ziet, kan het zijn dat de provider uw e-mailalias heeft ingevoerd als ontvanger in plaats van uw e-mailadres voor aanmelding bij Azure. Neem contact op met uw gegevensprovider en vraag na of de uitnodiging is verzonden naar uw e-mailadres voor aanmelding bij Azure en niet uw e-mailalias.
 
@@ -81,4 +81,3 @@ Voor SQL-bronnen zijn de volgende extra oorzaken van momentopname fouten.
 Voor meer informatie over hoe u gegevens kunt beginnen delen, gaat u verder naar de zelfstudie [uw gegevens delen](share-your-data.md). 
 
 Ga door naar de zelf studie [gegevens accepteren en ontvangen](subscribe-to-data-share.md) voor meer informatie over het ontvangen van gegevens.
-

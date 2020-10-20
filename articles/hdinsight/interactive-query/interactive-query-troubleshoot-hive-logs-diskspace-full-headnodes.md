@@ -6,13 +6,13 @@ ms.topic: troubleshooting
 author: nisgoel
 ms.author: nisgoel
 ms.reviewer: jasonh
-ms.date: 03/05/2020
-ms.openlocfilehash: d843b942702d335065a5f3798572e34c71b4cd0e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/05/2020
+ms.openlocfilehash: a102c9f375b37579cf6f92b08d67f762d3dfd26a
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78943973"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220887"
 ---
 # <a name="scenario-apache-hive-logs-are-filling-up-the-disk-space-on-the-head-nodes-in-azure-hdinsight"></a>Scenario: Apache Hive-logboeken worden de schijf ruimte op de hoofd knooppunten in azure HDInsight gevuld
 
@@ -24,6 +24,7 @@ Op een Apache Hive-LLAP-cluster nemen ongewenste Logboeken de volledige schijf r
 
 1. SSH-toegang mislukt omdat er geen ruimte meer is op het hoofd knooppunt.
 2. Ambari geeft *HTTP-fout: de 503-Service is niet beschikbaar*.
+3. HiveServer2 Interactive kan niet opnieuw worden opgestart.
 
 In de `ambari-agent` Logboeken ziet u het volgende wanneer het probleem optreedt.
 ```
@@ -35,7 +36,7 @@ ambari_agent - HostCheckReportFileHandler.py - [54697] - ambari_agent.HostCheckR
 
 ## <a name="cause"></a>Oorzaak
 
-In geavanceerde configuraties van Hive-log4j wordt de para meter *log4j. appender. rfa. MaxBackupIndex* wegge laten. Het leidt ertoe dat logboek bestanden oneindig worden gegenereerd.
+In geavanceerde configuraties van Hive-log4j wordt het huidige standaard schema voor verwijdering ingesteld op bestanden die ouder zijn dan 30 dagen, op basis van de datum van laatste wijziging.
 
 ## <a name="resolution"></a>Oplossing
 
@@ -43,30 +44,28 @@ In geavanceerde configuraties van Hive-log4j wordt de para meter *log4j. appende
 
 2. Ga naar de `Advanced hive-log4j` sectie in geavanceerde instellingen.
 
-3. Stel `log4j.appender.RFA` para meter in als RollingFileAppender. 
+3. Stel `appender.RFA.strategy.action.condition.age` de para meter in op een leeftijd van uw keuze. Voor beeld 14 dagen: `appender.RFA.strategy.action.condition.age = 14D`
 
-4. Instellen `log4j.appender.RFA.MaxFileSize` en `log4j.appender.RFA.MaxBackupIndex` als volgt.
+4. Als u geen gerelateerde instellingen ziet, moet u de volgende instellingen toevoegen.
+    ```
+    # automatically delete hive log
+    appender.RFA.strategy.action.type = Delete
+    appender.RFA.strategy.action.basePath = ${sys:hive.log.dir}
+    appender.RFA.strategy.action.condition.type = IfLastModified
+    appender.RFA.strategy.action.condition.age = 30D
+    appender.RFA.strategy.action.PathConditions.type = IfFileName
+    appender.RFA.strategy.action.PathConditions.regex = hive*.*log.*
+    ```
 
-```
-log4jhive.log.maxfilesize=1024MB
-log4jhive.log.maxbackupindex=10
-
-log4j.appender.RFA=org.apache.log4j.RollingFileAppender
-log4j.appender.RFA.File=${hive.log.dir}/${hive.log.file}
-log4j.appender.RFA.MaxFileSize=${log4jhive.log.maxfilesize}
-log4j.appender.RFA.MaxBackupIndex=${log4jhive.log.maxbackupindex}
-log4j.appender.RFA.layout=org.apache.log4j.PatternLayout
-log4j.appender.RFA.layout.ConversionPattern=%d{ISO8601} %-5p [%t] %c{2}: %m%n
-```
 5. Stel `hive.root.logger` `INFO,RFA` als volgt in. De standaard instelling is DEBUG, waardoor logboeken erg groot worden.
 
-```
-# Define some default values that can be overridden by system properties
-hive.log.threshold=ALL
-hive.root.logger=INFO,RFA
-hive.log.dir=${java.io.tmpdir}/${user.name}
-hive.log.file=hive.log
-```
+    ```
+    # Define some default values that can be overridden by system properties
+    hive.log.threshold=ALL
+    hive.root.logger=INFO,RFA
+    hive.log.dir=${java.io.tmpdir}/${user.name}
+    hive.log.file=hive.log
+    ```
 
 6. Sla de configuraties op en start de vereiste onderdelen opnieuw.
 

@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 09/23/2020
 ms.author: damendo
-ms.openlocfilehash: e367c348364d03cec6914c99e7ff112803fc58f6
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 640b148dc22aa87592a6adcfca99c8ed35731934
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132428"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220584"
 ---
 # <a name="update-the-network-watcher-extension-to-the-latest-version"></a>De Network Watcher-extensie bijwerken naar de nieuwste versie
 
@@ -52,20 +52,22 @@ U kunt de extensie versie controleren met behulp van de Azure Portal, de Azure C
 Voer de volgende opdracht uit vanaf een Azure CLI-prompt:
 
 ```azurecli
-az vm extension list --resource-group  <ResourceGroupName> --vm-name <VMName>
+az vm get-instance-view --resource-group  "SampleRG" --name "Sample-VM"
 ```
+Zoek **' AzureNetworkWatcherExtension '** in de uitvoer op en Identificeer het versie nummer in het veld *' TypeHandlerVersion '* in de uitvoer.  Opmerking: informatie over de uitbrei ding wordt meerdere keren weer gegeven in de JSON-uitvoer. Bekijk het blok ' uitbrei dingen ' en controleer het volledige versie nummer van de uitbrei ding. 
 
-Zoek de AzureNetworkWatcher-extensie in de uitvoer. Bepaal het versie nummer in het veld ' TypeHandlerVersion ' in de uitvoer.  
+U ziet iets zoals hieronder: ![ Azure cli-scherm afbeelding](./media/network-watcher/azure-cli-screenshot.png)
 
 #### <a name="usepowershell"></a>Power shell gebruiken
 
 Voer de volgende opdrachten uit vanuit een Power shell-prompt:
 
 ```powershell
-Get-AzVMExtension -ResourceGroupName <ResourceGroupName> -VMName <VMName>  
+Get-AzVM -ResourceGroupName "SampleRG" -Name "Sample-VM" -Status
 ```
+Zoek naar de Azure Network Watcher-extensie in de uitvoer en zoek het versie nummer op uit het veld *' TypeHandlerVersion '* in de uitvoer.   
 
-Zoek de AzureNetworkWatcher-extensie in de uitvoer. Bepaal het versie nummer in het veld ' TypeHandlerVersion ' in de uitvoer.
+U ziet iets zoals hieronder: ![ Power shell-scherm afbeelding](./media/network-watcher/powershell-screenshot.png)
 
 ### <a name="update-your-extension"></a>Uw extensie bijwerken
 
@@ -81,6 +83,25 @@ Set-AzVMExtension `  -ResourceGroupName "myResourceGroup1" `  -Location "WestUS"
 
 #Windows command
 Set-AzVMExtension `  -ResourceGroupName "myResourceGroup1" `  -Location "WestUS" `  -VMName "myVM1" `  -Name "AzureNetworkWatcherExtension" `  -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentWindows"   
+```
+
+Als dat niet werkt. Verwijder de uitbrei ding en installeer deze opnieuw met behulp van de onderstaande stappen. Hiermee wordt automatisch de meest recente versie toegevoegd.
+
+De uitbrei ding verwijderen 
+
+```powershell
+#Same command for Linux and Windows
+Remove-AzVMExtension -ResourceGroupName "SampleRG" -VMName "Sample-VM" -Name "AzureNetworkWatcherExtension"
+``` 
+
+De extensie opnieuw installeren
+
+```powershell
+#Linux command
+Set-AzVMExtension -ResourceGroupName "SampleRG" -Location "centralus" -VMName "Sample-VM" -Name "AzureNetworkWatcherExtension" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentLinux" -typeHandlerVersion "1.4"
+
+#Windows command
+Set-AzVMExtension -ResourceGroupName "SampleRG" -Location "centralus" -VMName "Sample-VM" -Name "AzureNetworkWatcherExtension" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentWindows" -typeHandlerVersion "1.4"
 ```
 
 #### <a name="option-2-use-the-azure-cli"></a>Optie 2: de Azure CLI gebruiken

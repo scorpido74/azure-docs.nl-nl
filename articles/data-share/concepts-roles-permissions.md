@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: ac528d1cfb74221a7398e390cedda08df4ea4508
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: efb86dbcbe7619ff6727c5e7374835dc3fc7d731
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151403"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220496"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Rollen en vereisten voor Azure Data Share 
 
@@ -63,7 +63,7 @@ Volg de onderstaande stappen voor het maken van een roltoewijzing voor de beheer
 1. Typ onder *selecteren*de naam van uw Azure-gegevens share-resource.
 1. Klik op *Opslaan*.
 
-Zie [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de Azure Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment)voor meer informatie over de toewijzing van rollen. Als u gegevens deelt met behulp van REST-Api's, kunt u een roltoewijzing maken met behulp van API door te verwijzen naar [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de rest API](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest). 
+Zie [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de Azure Portal](../role-based-access-control/role-assignments-portal.md#add-a-role-assignment)voor meer informatie over de toewijzing van rollen. Als u gegevens deelt met behulp van REST-Api's, kunt u een roltoewijzing maken met behulp van API door te verwijzen naar [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de rest API](../role-based-access-control/role-assignments-rest.md). 
 
 Voor SQL-bronnen moet een SQL-gebruiker worden gemaakt op basis van een externe provider in SQL Database met dezelfde naam als de Azure-gegevens share bron tijdens het verbinden met SQL database met behulp van Azure Active Directory-verificatie. Aan deze gebruiker moet *db_datareader* machtiging worden verleend. Een voorbeeld script samen met andere vereisten voor het delen van SQL-bestanden vindt u in de [share van Azure SQL database of Synapse Analytics](how-to-share-from-sql.md) zelf studie. 
 
@@ -83,7 +83,7 @@ Volg de onderstaande stappen voor het maken van een roltoewijzing voor de beheer
 1. Typ onder *selecteren*de naam van uw Azure-gegevens share-resource.
 1. Klik op *Opslaan*.
 
-Zie [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de Azure Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment)voor meer informatie over de toewijzing van rollen. Als u gegevens ontvangt met behulp van REST-Api's, kunt u een roltoewijzing maken met behulp van API door te verwijzen naar [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de rest API](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest). 
+Zie [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de Azure Portal](../role-based-access-control/role-assignments-portal.md#add-a-role-assignment)voor meer informatie over de toewijzing van rollen. Als u gegevens ontvangt met behulp van REST-Api's, kunt u een roltoewijzing maken met behulp van API door te verwijzen naar [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de rest API](../role-based-access-control/role-assignments-rest.md). 
 
 Voor een op SQL gebaseerd doel moet een SQL-gebruiker worden gemaakt van een externe provider in SQL Database met dezelfde naam als de Azure-gegevens share bron tijdens het verbinden met SQL database met behulp van Azure Active Directory-verificatie. Deze gebruiker moet worden toegekend *db_datareader, db_datawriter db_ddladmin* machtiging. Een voorbeeld script samen met andere vereisten voor het delen van SQL-bestanden vindt u in de [share van Azure SQL database of Synapse Analytics](how-to-share-from-sql.md) zelf studie. 
 
@@ -103,7 +103,7 @@ Volg deze stappen om de resource provider micro soft. DataShare te registreren b
 1. Zoek naar micro soft. DataShare.
 1. Klik op **Registreren**.
  
-Zie [Azure-resource providers en-typen](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)voor meer informatie over de resource provider.
+Zie [Azure-resource providers en-typen](../azure-resource-manager/management/resource-providers-and-types.md)voor meer informatie over de resource provider.
 
 ## <a name="next-steps"></a>Volgende stappen
 
