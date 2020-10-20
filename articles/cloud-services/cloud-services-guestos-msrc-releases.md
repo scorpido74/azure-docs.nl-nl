@@ -10,17 +10,72 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/12/2020
+ms.date: 10/19/2020
 ms.author: yohaddad
-ms.openlocfilehash: 6ceba8e81c4700963e0d147c10085760b9308319
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 3f088d248037ecf552bf7130e3fe4c86d7430695
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076654"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207985"
 ---
 # <a name="azure-guest-os"></a>Azure-gast besturingssysteem
 In de volgende tabellen ziet u de micro soft Security Response Center-updates (MSRC) die zijn toegepast op het Azure-gast besturingssysteem. Zoek in dit artikel om te bepalen of een bepaalde update van toepassing is op het gast besturingssysteem dat u gebruikt. Updates worden altijd uitgevoerd voor de desbetreffende [familie][family-explain] waarin ze zijn geïntroduceerd.
+
+## <a name="october-2020-guest-os"></a>2020-gast besturingssysteem van oktober
+>[!NOTE] 
+
+>Het besturings systeem van oktober gast wordt momenteel geïmplementeerd naar Cloud service-Vm's die zijn geconfigureerd voor automatische updates. Wanneer de implementatie is voltooid, wordt deze versie beschikbaar gesteld voor hand matige updates via de Azure Portal-en configuratie bestanden. De volgende patches zijn opgenomen in het gast besturingssysteem van oktober. Deze lijst is onderhevig aan wijzigingen. 
+
+| Productcategorie | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
+| --- | --- | --- | --- | --- |
+|  Rel 20-10 |  [4577010]  |  Cumulatieve update voor IE | 2,103, 3,90, 4,83 | 8 sep 2020 |
+|  Rel 20-10 |  [4580325]  |  Flash-Update | 3,90, 4,83, 5,48, 6,24 | 13 oktober 2020 |
+|  Rel 20-10 |  [4577668]  |  Meest recente cumulatieve update | 6,24 | 13 oktober 2020 |
+|  Rel 20-10 |  [4580346]  |  Meest recente cumulatieve update | 5,48 | 13 oktober 2020 |
+|  Rel 20-10 |  [4580970]  |  Onderhouds stack-update | 2,103 | 13 oktober 2020 |
+|  Rel 20-10 |  [4580345]  |  Maandelijks samen vouwen | 2,103 | 13 oktober 2020 |
+|  Rel 20-10 |  [4578952]  |  .NET Framework 3.5.1-beveiliging en-kwaliteit samen vouwen | 2,103 | 13 oktober 2020 |
+|  Rel 20-10 |  [4578955]  |  .NET Framework 4.5.2 beveiliging en kwaliteit samen vouwen | 2,103 | 13 oktober 2020 |
+|  Rel 20-10 |  [4566426]  |  Onderhouds stack-update | 3,90 | Jul 14, 2020 |
+|  Rel 20-10 |  [4580382]  |  Maandelijks samen vouwen | 3,90 | 13 oktober 2020 |
+|  Rel 20-10 |  [4578950]  |  .NET Framework 3,5-beveiliging en-kwaliteit samen vouwen | 3,90 | 13 oktober 2020 |
+|  Rel 20-10 |  [4578954]  |  .NET Framework 4.5.2 beveiliging en kwaliteit samen vouwen | 3,90 | 13 oktober 2020 |
+|  Rel 20-10 |  [4566425]  |  Onderhouds stack-update | 4,83 | Jul 14, 2020 |
+|  Rel 20-10 |  [4580347]  |  Maandelijks samen vouwen | 4,83 | 13 oktober 2020 |
+|  Rel 20-10 |  [4578953]  |  .NET Framework 3,5-beveiliging en-kwaliteit samen vouwen | 4,83 | 13 oktober 2020 |
+|  Rel 20-10 |  [4578956]  |  .NET Framework 4.5.2 beveiliging en kwaliteit samen vouwen | 4,83 | 13 oktober 2020 |
+|  Rel 20-10 |  [4578013]  |  Zelfstandige beveiligings update | 4,83 | 19 augustus 2020 |
+|  Rel 20-10 |  [4576750]  |  Onderhouds stack-update | 5,48 | 8 sep 2020 |
+|  Rel 20-10 |  [4494175]  |  Micro | 5,48 | 1 sep, 2020 |
+|  Rel 20-10 |  [4577667]  |  Onderhouds stack-update | 6,24 | 13 oktober 2020 |
+|  Rel 20-10 |  [4578966]  |  Cumulatieve update van .NET Framework 3,5 en 4.7.2 | 6,24 | 13 oktober 2020 |
+|  Rel 20-10 |  [4494174]  |  Micro | 6,24 | 3 sep, 2020 |
+
+
+[4577010]: https://support.microsoft.com/kb/4577010
+[4580325]: https://support.microsoft.com/kb/4580325
+[4577668]: https://support.microsoft.com/kb/4577668
+[4580346]: https://support.microsoft.com/kb/4580346
+[4580970]: https://support.microsoft.com/kb/4580970
+[4580345]: https://support.microsoft.com/kb/4580345
+[4578952]: https://support.microsoft.com/kb/4578952
+[4578955]: https://support.microsoft.com/kb/4578955
+[4566426]: https://support.microsoft.com/kb/4566426
+[4580382]: https://support.microsoft.com/kb/4580382
+[4578950]: https://support.microsoft.com/kb/4578950
+[4578954]: https://support.microsoft.com/kb/4578954
+[4566425]: https://support.microsoft.com/kb/4566425
+[4580347]: https://support.microsoft.com/kb/4580347
+[4578953]: https://support.microsoft.com/kb/4578953
+[4578956]: https://support.microsoft.com/kb/4578956
+[4578013]: https://support.microsoft.com/kb/4578013
+[4576750]: https://support.microsoft.com/kb/4576750
+[4494175]: https://support.microsoft.com/kb/4494175
+[4577667]: https://support.microsoft.com/kb/4577667
+[4578966]: https://support.microsoft.com/kb/4578966
+[4494174]: https://support.microsoft.com/kb/4494174
+
 
 ## <a name="september-2020-guest-os"></a>September 2020-gast besturingssysteem
 

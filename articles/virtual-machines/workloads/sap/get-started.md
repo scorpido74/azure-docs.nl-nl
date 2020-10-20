@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 10/05/2020
+ms.date: 10/19/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d4a21300872e98a35ea27835385b4045921f4657
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ea5d291f372485da714104eaa7df19ed3a153423
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969565"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206183"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure gebruiken om SAP-werkbelasting scenario's te hosten en uit te voeren
 
@@ -82,6 +82,8 @@ In deze sectie vindt u informatie over het configureren van SSO met de meeste SA
 
 ## <a name="change-log"></a>Wijzigingen logboek
 
+- 10/16/2020: wijziging in [ha van IBM DB2 LUW op Azure vm's op SLES met pacemaker](./dbms-guide-ha-ibm.md), [ha voor SAP NW op Azure vm's op RHEL voor SAP-toepassingen](./high-availability-guide-rhel.md), [ha van IBM Db2 LUW op Azure vm's op RHEL](./high-availability-guide-rhel-ibm-db2-luw.md), [ha voor SAP NW op Azure vm's op RHEL multi-sid guide](./high-availability-guide-rhel-multi-sid.md), [ha voor SAP NW](./high-availability-guide-rhel-netapp-files.md)op [Azure](./sap-hana-high-availability-netapp-files-red-hat.md) Vm's op RHEL met ANF, ha [voor SAP NW op Azure vm's op SLES voor SAP-toepassingen,](./high-availability-guide-suse.md)ha [voor SAP NnW op Azure Vm's op SLES multi-sid Guide,](./high-availability-guide-suse-multi-sid.md)ha [voor SAP NW op Azure vm's op SLES met ANF voor SAP-toepassingen,](./high-availability-guide-suse-netapp-files.md)ha [voor NFS op Azure vm's op](./high-availability-guide-suse-nfs.md)SLES, ha van [SAP Hana op Azure vm's op](./sap-hana-high-availability.md)SLES SAP Hana , [Ha van SAP Hana op Azure-vm's op RHEL](./sap-hana-high-availability-rhel.md), [SAP Hana scale-out HSR met pacemaker op virtuele machines van Azure op RHEL](./sap-hana-high-availability-scale-out-hsr-rhel.md), de [Azure-infra structuur voor SAP ASCS/SCS met de wsfc-en gedeelde schijf](./sap-high-availability-infrastructure-wsfc-shared-disk.md), de [multi-sid ha-hand leiding voor SAP ASCS/SCS met wsfc-en Azure Shared Disk](./sap-ascs-ha-multi-sid-wsfc-azure-shared-disk.md) en de [multi-sid ha-hand leiding voor SAP ASCS/SCS met wsfc-en gedeelde schijf](./sap-ascs-ha-multi-sid-wsfc-shared-disk.md)  
+- 10/15/2020: release van het SAP BusinessObjects BI-platform op de Azure-documentatie, [SAP BUSINESSOBJECTS BI platform planning and Deployment Guide (Engelstalig) in azure](businessobjects-deployment-guide.md) en [SAP BusinessObjects BI platform Deployment Guide voor Linux op Azure](businessobjects-deployment-guide-linux.md)
 - 10/05/2020: release van [SAP Hana scale-out-HSR met pacemaker op Azure vm's](./sap-hana-high-availability-scale-out-hsr-rhel.md) in de configuratie handleiding voor RHEL
 - 09/30/2020: wijziging in [hoge Beschik baarheid van SAP Hana op virtuele machines van Azure op RHEL](./sap-hana-high-availability-rhel.md), [ha voor SAP Hana scale-up met ANF op RHEL](./sap-hana-high-availability-netapp-files-red-hat.md) en [instellen pacemaker op RHEL in azure](./high-availability-guide-rhel-pacemaker.md) om de instructies voor RHEL 8,1 aan te passen
 - 09/29/2020: beperkingen en aanbevelingen voor het gebruik van PPG duidelijker maken in het artikel [Azure proximity placement groups voor optimale netwerk latentie met SAP-toepassingen](./sap-proximity-placement-scenarios.md) 

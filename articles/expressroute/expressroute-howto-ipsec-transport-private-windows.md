@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/17/2018
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 026b7ee6cf8061c7cff25b4f9f8d46b6ec3e6a8d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2dcb8489d94b9afc3ae4df829b37dd9785383d85
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89396485"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92208240"
 ---
 # <a name="configure-ipsec-transport-mode-for-expressroute-private-peering"></a>IPsec-transport modus configureren voor persoonlijke ExpressRoute-peering
 
@@ -65,13 +65,13 @@ Bij het configureren van het IPsec-beleid is het belang rijk om inzicht te krijg
 
 Zorg ervoor dat u aan de volgende vereisten voldoet:
 
-* U moet een werkende Active Directory configuratie hebben die u kunt gebruiken om groepsbeleid-instellingen te implementeren. Zie [Groepsbeleid-objecten](https://msdn.microsoft.com/library/windows/desktop/aa374162(v=vs.85).aspx)voor meer informatie over groeps beleidsobjecten.
+* U moet een werkende Active Directory configuratie hebben die u kunt gebruiken om groepsbeleid-instellingen te implementeren. Zie [Groepsbeleid-objecten](/previous-versions/windows/desktop/Policy/group-policy-objects)voor meer informatie over groeps beleidsobjecten.
 
 * U moet een actief ExpressRoute-circuit hebben.
   * Zie [een ExpressRoute-circuit maken](expressroute-howto-circuit-arm.md)voor meer informatie over het maken van een ExpressRoute-circuit. 
   * Controleer of het circuit is ingeschakeld door de connectiviteits provider. 
-  * Controleer of u persoonlijke Azure-peering voor uw circuit hebt geconfigureerd. Zie het artikel [route ring configureren](expressroute-howto-routing-arm.md) voor instructies voor route ring. 
-  * Controleer of u een VNet en een virtuele netwerk gateway hebt gemaakt en volledig hebt ingericht. Volg de instructies voor het [maken van een virtuele netwerk gateway voor ExpressRoute](expressroute-howto-add-gateway-resource-manager.md). Een virtuele netwerk gateway voor ExpressRoute maakt gebruik van de gateway type ' ExpressRoute ', niet VPN.
+  * Controleer of u persoonlijke Azure-peering voor uw circuit hebt geconfigureerd. In het artikel [Routering configureren](expressroute-howto-routing-arm.md) vindt u instructies voor routering. 
+  * Controleer of u een VNet en een virtuele netwerk gateway hebt gemaakt en volledig hebt ingericht. Volg de instructies om [een virtuele netwerkgateway voor ExpressRoute te maken](expressroute-howto-add-gateway-resource-manager.md). Een virtuele netwerkgateway voor ExpressRoute maakt gebruik van het GatewayType 'ExpressRoute', niet VPN.
 
 * De gateway van het virtuele ExpressRoute-netwerk moet zijn verbonden met het ExpressRoute-circuit. Zie [een VNet verbinden met een ExpressRoute-circuit](expressroute-howto-linkvnet-arm.md)voor meer informatie.
 

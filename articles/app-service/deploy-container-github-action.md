@@ -7,12 +7,12 @@ ms.date: 10/03/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: github-actions-azure
-ms.openlocfilehash: d6f66993b0fb7f97c551f4fbcb305111cfb2097e
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: f3bc407791b25e4dc1dddd61b60b3cefe0195919
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150276"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203191"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>Een aangepaste container implementeren op App Service met behulp van GitHub-acties
 
@@ -25,7 +25,7 @@ Voor een Azure App Service container werk stroom heeft het bestand drie secties:
 |Sectie  |Taken  |
 |---------|---------|
 |**Verificatie** | 1. Haal een service-principal of een publicatie profiel op. <br /> 2. Maak een GitHub-geheim. |
-|**PE** | 1. Maak de omgeving. <br /> 2. bouw de container installatie kopie. |
+|**Build** | 1. Maak de omgeving. <br /> 2. bouw de container installatie kopie. |
 |**Implementeren** | 1. Implementeer de container installatie kopie. |
 
 ## <a name="prerequisites"></a>Vereisten
@@ -190,15 +190,17 @@ jobs:
 
 ## <a name="deploy-to-an-app-service-container"></a>Implementeren in een App Service-container
 
-Gebruik de actie om uw installatie kopie te implementeren in een aangepaste container in App Service `azure/webapps-deploy@v2` . Deze actie heeft vijf para meters:
+Gebruik de actie om uw installatie kopie te implementeren in een aangepaste container in App Service `azure/webapps-deploy@v2` . Deze actie heeft zeven para meters:
 
 | **Parameter**  | **Uitleg**  |
 |---------|---------|
 | **app-naam** | Lang De naam van de App Service-app | 
-| **publicatie profiel** | Beschrijving Inhoud van profiel bestand publiceren met Web Deploy-geheimen |
-| **installatie kopieën** | Volledig gekwalificeerde naam van container installatie kopie (n). Bijvoorbeeld ' myregistry.azurecr.io/nginx:latest ' of ' python: 3.7.2-Alpine/'. Voor scenario met meerdere containers kunnen namen van verschillende container installatie kopieën worden gegeven (meerdere regels gescheiden) |
+| **publicatie profiel** | Beschrijving Is van toepassing op Web Apps (Windows en Linux) en web app-containers (Linux). Het scenario met meerdere containers wordt niet ondersteund. Inhoud van het profiel publiceren ( \* . publishsettings) met Web Deploy-geheimen | 
 | **sleuf naam** | Beschrijving Voer een bestaande sleuf in, behalve de productie sleuf |
-| **configuratie-bestand** | Beschrijving Pad naar het Docker-Compose bestand |
+| **package** | Beschrijving Is alleen van toepassing op de web-app: het pad naar het pakket of de map. \*. zip, \* . War, \* . jar of een map die moet worden geïmplementeerd |
+| **installatie kopieën** | Lang Is alleen van toepassing op Web app-containers: Geef de naam op van de volledig gekwalificeerde container installatie kopie (n). Bijvoorbeeld ' myregistry.azurecr.io/nginx:latest ' of ' python: 3.7.2-Alpine/'. Voor een app met meerdere containers kunnen namen van meerdere container installatie kopieën worden gegeven (gescheiden door meerdere regels) |
+| **configuratie-bestand** | Beschrijving Is alleen van toepassing op Web app-containers: pad naar het Docker-Compose-bestand. Moet een volledig gekwalificeerd pad of relatief ten opzichte van de standaard werkmap zijn. Vereist voor apps met meerdere containers. |
+| **opstart opdracht** | Beschrijving Voer de opstart opdracht in. Voor ex. DotNet-run-of DotNet-filename.dll |
 
 # <a name="publish-profile"></a>[Profiel publiceren](#tab/publish-profile)
 

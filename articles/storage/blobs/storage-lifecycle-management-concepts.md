@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: 49e82467cd5e9cef8100aa56016f778df3445f12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 264f0e59e2c43ca92fc5209b8613282a0b0fca37
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91822398"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203769"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>De levenscyclus van Azure Blob-opslag beheren
 
@@ -22,8 +22,9 @@ Gegevens sets hebben een unieke levens cyclus. In de loop van de levens cyclus h
 
 Met het levenscyclus beheer beleid kunt u:
 
-- Overgangs-blobs naar een koele opslaglaag (warm naar koud, Hot-to-Archive of koud naar archief) om te optimaliseren voor prestaties en kosten
-- Blobs verwijderen aan het einde van de levens cycli
+- Overgangs-blobs van koud naar warm onmiddellijk als dit wordt geopend voor optimale prestaties 
+- Overgangs-blobs, Blob-versies en BLOB-moment opnamen naar een koele opslaglaag (warm naar koud, Hot-to-Archive of koud om te archiveren) als ze gedurende een bepaalde tijd niet worden geopend of gewijzigd om de kosten te optimaliseren
+- Blobs, Blob-versies en BLOB-moment opnamen aan het einde van hun levens duur verwijderen
 - Regels definiëren die één keer per dag moeten worden uitgevoerd op het niveau van het opslag account
 - Regels Toep assen op containers of een subset van blobs (met behulp van naam voorvoegsels of [BLOB-index Tags](storage-manage-find-blobs.md) als filters)
 
@@ -33,7 +34,7 @@ Houd rekening met een scenario waarbij gegevens veelvuldig toegankelijk zijn tij
 
 ## <a name="availability-and-pricing"></a>Beschik baarheid en prijzen
 
-De functie levenscyclus beheer is beschikbaar in alle Azure-regio's voor Algemeen v2-accounts (GPv2), Blob Storage-accounts en Premium Block Blob Storage-accounts. In de Azure Portal kunt u een bestaand Algemeen-account (GPv1) upgraden naar een GPv2-account. Zie [overzicht van Azure Storage-account](../common/storage-account-overview.md)voor meer informatie over opslag accounts.
+De functie levenscyclus beheer is beschikbaar in alle Azure-regio's voor Algemeen v2-accounts (GPv2), Blob Storage-accounts, Premium Block Blob Storage-accounts en Azure Data Lake Storage Gen2 accounts. In de Azure Portal kunt u een bestaand Algemeen-account (GPv1) upgraden naar een GPv2-account. Zie [overzicht van Azure Storage-account](../common/storage-account-overview.md)voor meer informatie over opslag accounts.
 
 De functie levenscyclus beheer is gratis. Klanten betalen de normale bewerkings kosten voor de API-aanroepen van de [BLOB-laag](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) . De verwijderings bewerking is gratis. Zie [prijzen voor blok-BLOB](https://azure.microsoft.com/pricing/details/storage/blobs/)voor meer informatie over prijzen.
 
@@ -62,7 +63,7 @@ Er zijn twee manieren om een beleid toe te voegen via de Azure Portal.
 
 #### <a name="azure-portal-list-view"></a>Lijst weergave Azure Portal
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Zoek en selecteer uw opslag account in de Azure Portal. 
 
@@ -96,7 +97,7 @@ Er zijn twee manieren om een beleid toe te voegen via de Azure Portal.
 1. Selecteer **toevoegen** om het nieuwe beleid toe te voegen.
 
 #### <a name="azure-portal-code-view"></a>Code weergave Azure Portal
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Zoek en selecteer uw opslag account in de Azure Portal.
 
@@ -243,10 +244,10 @@ Elke regel in het beleid heeft verschillende para meters:
 
 | Parameternaam | Parameter type | Notities | Vereist |
 |----------------|----------------|-------|----------|
-| `name`         | Tekenreeks |De naam van een regel kan Maxi maal 256 alfanumerieke tekens bevatten. De regel naam is hoofdletter gevoelig. Het moet uniek zijn binnen een beleid. | True |
-| `enabled`      | Booleaans | Een optionele Booleaanse waarde waarmee een regel tijdelijk kan worden uitgeschakeld. De standaard waarde is True als deze niet is ingesteld. | False | 
-| `type`         | Een Enum-waarde | Het huidige geldige type is `Lifecycle` . | True |
-| `definition`   | Een object dat de levenscyclus regel definieert | Elke definitie bestaat uit een set filters en een Actieset. | True |
+| `name`         | Tekenreeks |De naam van een regel kan Maxi maal 256 alfanumerieke tekens bevatten. De regel naam is hoofdletter gevoelig. Het moet uniek zijn binnen een beleid. | Waar |
+| `enabled`      | Booleaans | Een optionele Booleaanse waarde waarmee een regel tijdelijk kan worden uitgeschakeld. De standaard waarde is True als deze niet is ingesteld. | Niet waar | 
+| `type`         | Een Enum-waarde | Het huidige geldige type is `Lifecycle` . | Waar |
+| `definition`   | Een object dat de levenscyclus regel definieert | Elke definitie bestaat uit een set filters en een Actieset. | Waar |
 
 ## <a name="rules"></a>Regels
 
@@ -263,29 +264,41 @@ Met de volgende voorbeeld regel filtert u het account om de acties uit te voeren
 - Laag-BLOB naar cool laag 30 dagen na laatste wijziging
 - Laag-BLOB naar archief laag 90 dagen na laatste wijziging
 - BLOB 2.555 dagen verwijderen (zeven jaar) na laatste wijziging
-- BLOB-moment opnamen 90 dagen na het maken van de moment opname verwijderen
+- Vorige BLOB-versies 90 dagen na het maken verwijderen
 
 ```json
 {
   "rules": [
     {
-      "name": "ruleFoo",
       "enabled": true,
+      "name": "rulefoo",
       "type": "Lifecycle",
       "definition": {
-        "filters": {
-          "blobTypes": [ "blockBlob" ],
-          "prefixMatch": [ "container1/foo" ]
-        },
         "actions": {
-          "baseBlob": {
-            "tierToCool": { "daysAfterModificationGreaterThan": 30 },
-            "tierToArchive": { "daysAfterModificationGreaterThan": 90 },
-            "delete": { "daysAfterModificationGreaterThan": 2555 }
+          "version": {
+            "delete": {
+              "daysAfterCreationGreaterThan": 90
+            }
           },
-          "snapshot": {
-            "delete": { "daysAfterCreationGreaterThan": 90 }
+          "baseBlob": {
+            "tierToCool": {
+              "daysAfterModificationGreaterThan": 30
+            },
+            "tierToArchive": {
+              "daysAfterModificationGreaterThan": 90
+            },
+            "delete": {
+              "daysAfterModificationGreaterThan": 2555
+            }
           }
+        },
+        "filters": {
+          "blobTypes": [
+            "blockBlob"
+          ],
+          "prefixMatch": [
+            "container1/foo"
+          ]
         }
       }
     }
@@ -312,24 +325,24 @@ Filters omvatten:
 
 Acties worden toegepast op de gefilterde blobs wanneer wordt voldaan aan de voor waarde run.
 
-Levenscyclus beheer ondersteunt het trapsgewijs en verwijderen van blobs en het verwijderen van BLOB-moment opnamen. Definieer ten minste één actie voor elke regel op blobs of BLOB-moment opnamen.
+Levenscyclus beheer ondersteunt het trapsgewijs maken en verwijderen van blobs, eerdere BLOB-versies en BLOB-moment opnamen. Definieer ten minste één actie voor elke regel op basis-blobs, eerdere BLOB-versies of BLOB-moment opnamen.
 
-| Bewerking                      | Basis-BLOB                                   | Momentopname      |
-|-----------------------------|---------------------------------------------|---------------|
-| tierToCool                  | Ondersteuning voor blobs momenteel op warme laag         | Niet ondersteund |
-| enableAutoTierToHotFromCool | Ondersteuning voor blobs op dit moment in de cool-laag        | Niet ondersteund |
-| tierToArchive               | Ondersteuning voor blobs momenteel op warme of koud niveau | Niet ondersteund |
-| delete                      | Ondersteund voor `blockBlob` en `appendBlob`  | Ondersteund     |
+| Bewerking                      | Basis-BLOB                                  | Momentopname      | Versie
+|-----------------------------|--------------------------------------------|---------------|---------------|
+| tierToCool                  | Ondersteund voor `blockBlob`                  | Ondersteund     | Ondersteund     |
+| enableAutoTierToHotFromCool | Ondersteund voor `blockBlob`                  | Niet ondersteund | Niet ondersteund |
+| tierToArchive               | Ondersteund voor `blockBlob`                  | Ondersteund     | Ondersteund     |
+| delete                      | Ondersteund voor `blockBlob` en `appendBlob` | Ondersteund     | Ondersteund     |
 
 >[!NOTE]
 >Als u meer dan één actie op dezelfde BLOB definieert, past levenscyclus beheer de minst dure actie toe op de blob. Actie `delete` is bijvoorbeeld goed koper dan actie `tierToArchive` . Actie `tierToArchive` is goed koper dan actie `tierToCool` .
 
-De uitvoerings voorwaarden zijn gebaseerd op leeftijd. Basis-blobs gebruiken het tijdstip waarop het laatst is gewijzigd voor het bijhouden van leeftijd en de BLOB-moment opnamen maken gebruik van de moment opname voor het bijhouden van leeftijd.
+De uitvoerings voorwaarden zijn gebaseerd op leeftijd. Basis-blobs maken gebruik van de laatst gewijzigd tijd, Blob-versies gebruiken de aanmaak tijd van de versie en de BLOB-moment opnamen maken gebruik van de moment opname voor het bijhouden van leeftijd.
 
 | Voor waarde voor actie uitvoeren               | Waarde voor waarde                          | Beschrijving                                                                      |
 |------------------------------------|------------------------------------------|----------------------------------------------------------------------------------|
 | daysAfterModificationGreaterThan   | Geheel getal dat de leeftijd in dagen aangeeft | De voor waarde voor basis-BLOB-acties                                              |
-| daysAfterCreationGreaterThan       | Geheel getal dat de leeftijd in dagen aangeeft | De voor waarde voor BLOB-momentopname acties                                          |
+| daysAfterCreationGreaterThan       | Geheel getal dat de leeftijd in dagen aangeeft | De voor waarde voor de acties voor BLOB-versie-en BLOB-moment opnamen                         |
 | daysAfterLastAccessTimeGreaterThan | Geheel getal dat de leeftijd in dagen aangeeft | evaluatie De voor waarde voor basis-BLOB-acties wanneer tijd van laatste toegang is ingeschakeld |
 
 ## <a name="examples"></a>Voorbeelden
@@ -522,26 +535,35 @@ Sommige gegevens mogen alleen worden verlopen als deze expliciet zijn gemarkeerd
 }
 ```
 
-### <a name="delete-old-snapshots"></a>Oude moment opnamen verwijderen
+### <a name="manage-versions"></a>Versies beheren
 
-Voor gegevens die regel matig worden gewijzigd en geopend gedurende de levens duur, worden moment opnamen vaak gebruikt voor het bijhouden van oudere versies van de gegevens. U kunt een beleid maken waarmee oude moment opnamen worden verwijderd op basis van de leeftijd van de moment opname. De leeftijd van de moment opname wordt bepaald door de aanmaak tijd van de moment opname te evalueren. Met deze beleids regel worden blok-BLOB-moment opnamen binnen een container verwijderd `activedata` die 90 dagen of ouder zijn nadat het maken van een moment opname is gemaakt.
+Voor gegevens die regel matig worden gewijzigd en geopend gedurende de levens duur, kunt u versie beheer van Blob Storage inschakelen om automatisch eerdere versies van een object te onderhouden. U kunt een beleid maken om eerdere versies uit te lagen of te verwijderen. De versie leeftijd wordt bepaald door de aanmaak tijd van de versie te evalueren. Met deze beleids regel maakt u een aantal eerdere versies van de container `activedata` die 90 dagen of ouder zijn nadat het maken van de versie is gemaakt naar cool laag en verwijdert u eerdere versies die 365 dagen of ouder zijn.
 
 ```json
 {
   "rules": [
     {
-      "name": "snapshotRule",
       "enabled": true,
+      "name": "versionrule",
       "type": "Lifecycle",
-    "definition": {
-        "filters": {
-          "blobTypes": [ "blockBlob" ],
-          "prefixMatch": [ "activedata" ]
-        },
+      "definition": {
         "actions": {
-          "snapshot": {
-            "delete": { "daysAfterCreationGreaterThan": 90 }
+          "version": {
+            "tierToCool": {
+              "daysAfterCreationGreaterThan": 90
+            },
+            "delete": {
+              "daysAfterCreationGreaterThan": 365
+            }
           }
+        },
+        "filters": {
+          "blobTypes": [
+            "blockBlob"
+          ],
+          "prefixMatch": [
+            "activedata"
+          ]
         }
       }
     }

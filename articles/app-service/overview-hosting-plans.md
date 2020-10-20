@@ -6,12 +6,12 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4c3003a5cbb55464f3a089c3045ac28f3786cb6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f96b48b8fec07ab207ea3962a201bbff68a5339
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91742970"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92200845"
 ---
 # <a name="azure-app-service-plan-overview"></a>Overzicht van Azure App Service-plan
 
@@ -37,7 +37,7 @@ Elke laag biedt ook een specifieke subset van App Service-functies. Deze functie
 <a name="new-pricing-tier-premiumv3"></a>
 
 > [!NOTE]
-> De nieuwe **PremiumV3** -prijs categorie garandeert [Dv3-serie vm's](../virtual-machines/dv3-dsv3-series.md) met snellere processors, SSD-opslag en vierdubbele geheugen-naar-core-verhouding ten opzichte van de **Standard** -laag. **PremiumV3** biedt ook ondersteuning voor een hogere schaal via een verhoogd aantal instanties en biedt nog steeds alle geavanceerde mogelijkheden die in de laag **standaard** worden gevonden. Alle beschik bare functies in de bestaande **PremiumV2** -laag zijn opgenomen in **PremiumV3**.
+> De nieuwe **PremiumV3** -prijs categorie garandeert computers met snellere processors (mini maal 195 [ACU](https://docs.microsoft.com/azure/virtual-machines/acu) per virtuele CPU), SSD-opslag en vierdubbele geheugen-naar-core-verhouding ten opzichte van de **Standard** -laag. **PremiumV3** biedt ook ondersteuning voor een hogere schaal via een verhoogd aantal instanties en biedt nog steeds alle geavanceerde mogelijkheden die in de laag **standaard** worden gevonden. Alle beschik bare functies in de bestaande **PremiumV2** -laag zijn opgenomen in **PremiumV3**.
 >
 > Net als bij andere toegewezen lagen zijn er drie VM-grootten beschikbaar voor deze laag:
 >
@@ -80,7 +80,7 @@ Er worden geen kosten in rekening gebracht voor het gebruik van de App Service f
 > [!NOTE]
 > Als u App Service integreert met een andere Azure-service, moet u mogelijk rekening houden met de kosten van deze andere services. Als u bijvoorbeeld Azure Traffic Manager gebruikt om uw app geografisch te schalen, worden er door Azure Traffic Manager ook kosten in rekening gebracht op basis van uw gebruik. Zie [prijs calculator](https://azure.microsoft.com/pricing/calculator/)voor informatie over het schatten van de kosten voor meerdere services in Azure. 
 
-Wilt u optimaliseren en op uw cloudverbruik besparen?
+Wilt u uw clouduitgaven optimaliseren en geld besparen?
 
 [!INCLUDE [cost-management-horizontal](../../includes/cost-management-horizontal.md)]
 

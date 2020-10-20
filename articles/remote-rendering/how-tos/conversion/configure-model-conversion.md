@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: 2134dde0fa0b92bec4519c0d6a24dcaad3792baa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1cb5312e164bac09930497c377f1590b6a77ca05
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91575177"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205316"
 ---
 # <a name="configure-the-model-conversion"></a>De modelconversie configureren
 
@@ -258,7 +258,7 @@ Zoals beschreven in de sectie [Aanbevolen procedures voor het wijzigen van onder
 ### <a name="texture-sizes"></a>Patroon grootten
 
 Afhankelijk van het type scenario, kan de hoeveelheid textuur gegevens zwaarder zijn dan het geheugen dat wordt gebruikt voor netgegevens. Photogrammetry-modellen zijn kandidaten.
-De conversie configuratie biedt geen manier om bitmappatronen automatisch te schalen. Als dat nodig is, moet het schalen van het patroon worden uitgevoerd als een vooraf verwerkings stap aan de client zijde. Tijdens de conversie wordt echter een geschikte [patroon compressie-indeling](https://docs.microsoft.com/windows/win32/direct3d11/texture-block-compression-in-direct3d-11)gekozen:
+De conversie configuratie biedt geen manier om bitmappatronen automatisch te schalen. Als dat nodig is, moet het schalen van het patroon worden uitgevoerd als een vooraf verwerkings stap aan de client zijde. Tijdens de conversie wordt echter een geschikte [patroon compressie-indeling](/windows/win32/direct3d11/texture-block-compression-in-direct3d-11)gekozen:
 
 * `BC1` voor ondoorzichtige kleur structuren
 * `BC7` voor Bronk leur patronen met alfa kanaal

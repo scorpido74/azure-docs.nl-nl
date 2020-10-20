@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
-ms.openlocfilehash: a862b978d7737d3d1c301d090012576f64a3ddda
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 70acacb9bacddaf403b79e11b460333c67641aae
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150735"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202205"
 ---
 # <a name="expressroute-faq"></a>Veelgestelde vragen ExpressRoute
 
@@ -80,12 +80,12 @@ ExpressRoute ondersteunt [drie routerings domeinen](expressroute-circuit-peering
 
 ### <a name="microsoft-peering"></a>Microsoft-peering
 
-Als uw ExpressRoute-circuit is ingeschakeld voor Azure micro soft-peering, kunt u toegang krijgen tot de [open bare IP-](../virtual-network/virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) adresbereiken die worden gebruikt in azure via het circuit. Azure micro soft-peering biedt toegang tot services die momenteel worden gehost op Azure (met geografische beperkingen, afhankelijk van de SKU van uw circuit). Als u de beschik baarheid voor een specifieke service wilt valideren, kunt u de documentatie voor die service controleren om te zien of er een gereserveerd bereik voor die service is gepubliceerd. Zoek vervolgens de IP-bereiken van de doel service op en vergelijk met de bereiken die worden vermeld in het [Azure IP-bereik en de service Tags – open bare Cloud XML-bestand](https://www.microsoft.com/download/details.aspx?id=56519). U kunt ook een ondersteunings ticket voor de betreffende service openen ter verduidelijking.
+Als uw ExpressRoute-circuit is ingeschakeld voor Azure micro soft-peering, kunt u toegang krijgen tot de [open bare IP-](../virtual-network/public-ip-addresses.md#public-ip-addresses) adresbereiken die worden gebruikt in azure via het circuit. Azure micro soft-peering biedt toegang tot services die momenteel worden gehost op Azure (met geografische beperkingen, afhankelijk van de SKU van uw circuit). Als u de beschik baarheid voor een specifieke service wilt valideren, kunt u de documentatie voor die service controleren om te zien of er een gereserveerd bereik voor die service is gepubliceerd. Zoek vervolgens de IP-bereiken van de doel service op en vergelijk met de bereiken die worden vermeld in het [Azure IP-bereik en de service Tags – open bare Cloud XML-bestand](https://www.microsoft.com/download/details.aspx?id=56519). U kunt ook een ondersteunings ticket voor de betreffende service openen ter verduidelijking.
 
 **Geboden**
 
 * [Microsoft 365](/microsoft-365/enterprise/azure-expressroute)
-* Power BI-beschikbaar via een regionale community van Azure, Zie [hier](https://docs.microsoft.com/power-bi/service-admin-where-is-my-tenant-located) voor meer informatie over de regio van uw Power bi Tenant.
+* Power BI-beschikbaar via een regionale community van Azure, Zie [hier](/power-bi/service-admin-where-is-my-tenant-located) voor meer informatie over de regio van uw Power bi Tenant.
 * Azure Active Directory
 * [Azure-DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (Azure Global Services Community)
 * Open bare IP-adressen van Azure voor IaaS (Virtual Machines, Virtual Network gateways, load balancers, enz.)  
@@ -118,7 +118,7 @@ Als u het bericht validatie vereist ziet, verzamelt u de documenten die de open 
 De omgevingen Dynamics 365 en Common Data Service (CDS) worden gehost op Azure en daarom kunnen klanten profiteren van de onderliggende ExpressRoute-ondersteuning voor Azure-resources. U kunt verbinding maken met de service-eind punten als uw router filter de Azure-regio's bevat waarin uw Dynamics 365/CDS-omgevingen worden gehost.
 
 > [!NOTE]
-> [ExpressRoute Premium](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#expressroute-premium) is **niet** vereist voor Dynamics 365-connectiviteit via Azure ExpressRoute als het ExpressRoute-circuit in dezelfde [geopolitieke regio](https://docs.microsoft.com/azure/expressroute/expressroute-locations-providers#expressroute-locations)wordt geïmplementeerd.
+> [ExpressRoute Premium](#expressroute-premium) is **niet** vereist voor Dynamics 365-connectiviteit via Azure ExpressRoute als het ExpressRoute-circuit in dezelfde [geopolitieke regio](./expressroute-locations-providers.md#expressroute-locations)wordt geïmplementeerd.
 
 ## <a name="data-and-connections"></a>Gegevens en verbindingen
 
@@ -152,15 +152,15 @@ Als een van de cross Connections mislukt, wordt de verbinding niet verbroken. Er
 
 ### <a name="how-do-i-implement-redundancy-on-private-peering"></a>Hoe kan ik de redundantie voor privé-peering implementeren?
 
-Meerdere ExpressRoute-circuits van verschillende peering locaties of Maxi maal vier verbindingen vanaf dezelfde peering-locatie kunnen worden aangesloten op hetzelfde virtuele netwerk om hoge Beschik baarheid te bieden in het geval dat één circuit niet beschikbaar is. U kunt vervolgens [hogere gewichten toewijzen](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-assign-a-high-weight-to-local-connection) aan een van de lokale verbindingen om de voor keur aan een specifiek circuit te geven. Het wordt ten zeerste aanbevolen om ten minste twee ExpressRoute-circuits in te stellen om afzonderlijke storings punten te voor komen. 
+Meerdere ExpressRoute-circuits van verschillende peering locaties of Maxi maal vier verbindingen vanaf dezelfde peering-locatie kunnen worden aangesloten op hetzelfde virtuele netwerk om hoge Beschik baarheid te bieden in het geval dat één circuit niet beschikbaar is. U kunt vervolgens [hogere gewichten toewijzen](./expressroute-optimize-routing.md#solution-assign-a-high-weight-to-local-connection) aan een van de lokale verbindingen om de voor keur aan een specifiek circuit te geven. Het wordt ten zeerste aanbevolen om ten minste twee ExpressRoute-circuits in te stellen om afzonderlijke storings punten te voor komen. 
 
-Bekijk [hier](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute) wat u kunt ontwerpen voor hoge Beschik baarheid en dat u [hier](https://docs.microsoft.com/azure/expressroute/designing-for-disaster-recovery-with-expressroute-privatepeering) kunt ontwerpen voor herstel na nood gevallen.  
+Bekijk [hier](./designing-for-high-availability-with-expressroute.md) wat u kunt ontwerpen voor hoge Beschik baarheid en dat u [hier](./designing-for-disaster-recovery-with-expressroute-privatepeering.md) kunt ontwerpen voor herstel na nood gevallen.  
 
 ### <a name="how-i-do-implement-redundancy-on-microsoft-peering"></a>Hoe kan ik redundantie implementeren op micro soft-peering?
 
-Het wordt ten zeerste aanbevolen wanneer klanten micro soft-peering gebruiken om toegang te krijgen tot open bare Azure-Services, zoals Azure Storage of Azure SQL, en klanten die gebruikmaken van micro soft-peering voor Microsoft 365 dat ze meerdere circuits op verschillende peering-locaties implementeren om afzonderlijke storings punten te voor komen. Klanten kunnen hetzelfde voor voegsel op beide circuits adverteren en in [afwachting](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-use-as-path-prepending) van het pad gebruiken, of verschillende voor voegsels adverteren om het pad van on-premises te bepalen.
+Het wordt ten zeerste aanbevolen wanneer klanten micro soft-peering gebruiken om toegang te krijgen tot open bare Azure-Services, zoals Azure Storage of Azure SQL, en klanten die gebruikmaken van micro soft-peering voor Microsoft 365 dat ze meerdere circuits op verschillende peering-locaties implementeren om afzonderlijke storings punten te voor komen. Klanten kunnen hetzelfde voor voegsel op beide circuits adverteren en in [afwachting](./expressroute-optimize-routing.md#solution-use-as-path-prepending) van het pad gebruiken, of verschillende voor voegsels adverteren om het pad van on-premises te bepalen.
 
-Bekijk [hier](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute) wat u kunt ontwerpen voor hoge Beschik baarheid.
+Bekijk [hier](./designing-for-high-availability-with-expressroute.md) wat u kunt ontwerpen voor hoge Beschik baarheid.
 
 ### <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>Hoe kan ik zorgen voor hoge Beschik baarheid in een virtueel netwerk dat is verbonden met ExpressRoute?
 
@@ -170,7 +170,7 @@ U kunt hoge Beschik baarheid bezorgen door Maxi maal vier ExpressRoute-circuits 
 
 U moet het *lokale voorkeurs* kenmerk op uw router (s) implementeren om ervoor te zorgen dat het pad van on-premises naar Azure altijd de voor keur heeft voor uw ExpressRoute-circuit (s).
 
-Zie [hier](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#path-selection-on-microsoft-and-public-peerings) voor meer informatie over het selecteren van BGP-paden en algemene router configuraties. 
+Zie [hier](./expressroute-optimize-routing.md#path-selection-on-microsoft-and-public-peerings) voor meer informatie over het selecteren van BGP-paden en algemene router configuraties. 
 
 ### <a name="if-im-not-co-located-at-a-cloud-exchange-and-my-service-provider-offers-point-to-point-connection-do-i-need-to-order-two-physical-connections-between-my-on-premises-network-and-microsoft"></a><a name="onep2plink"></a>Als ik niet op de kant ben van een Cloud uitwisseling en mijn service provider een Point-to-point-verbinding biedt, moet ik dan twee fysieke verbindingen tussen mijn on-premises netwerk en micro soft best Ellen?
 
@@ -384,7 +384,7 @@ Zie [ExpressRoute-partners en-locaties](expressroute-locations.md) voor informat
 Ja. Microsoft 365 service-eind punten zijn bereikbaar via internet, zelfs als ExpressRoute is geconfigureerd voor uw netwerk. Neem contact op met het netwerk team van uw organisatie als het netwerk op uw locatie is geconfigureerd om verbinding te maken met Microsoft 365 Services via ExpressRoute.
 
 ### <a name="how-can-i-plan-for-high-availability-for-microsoft-365-network-traffic-on-azure-expressroute"></a>Hoe kan ik een hoge Beschik baarheid plannen voor Microsoft 365 netwerk verkeer in azure ExpressRoute?
-Raadpleeg de aanbeveling voor [hoge Beschik baarheid en failover met Azure ExpressRoute](https://aka.ms/erhighavailability)
+Raadpleeg de aanbeveling voor [hoge Beschik baarheid en failover met Azure ExpressRoute](/microsoft-365/enterprise/network-planning-with-expressroute)
 
 ### <a name="can-i-access-office-365-us-government-community-gcc-services-over-an-azure-us-government-expressroute-circuit"></a>Heb ik toegang tot Office 365-Services voor de Amerikaanse overheid (GCC) via een Azure Amerikaanse overheid ExpressRoute-circuit?
 
@@ -410,7 +410,7 @@ Uw bestaande circuit gaat verder met het adverteren van de voor voegsels voor Mi
 
 * Microsoft-peering van ExpressRoute-circuits die zijn geconfigureerd op of na 1 augustus 2017, heeft geen voorvoegsels die worden geadverteerd totdat een routefilter aan het circuit is gekoppeld. Er worden standaard geen voor voegsels weer geven.
 
-## <a name="expressroute-direct"></a><a name="expressRouteDirect"></a>ExpressRoute Direct
+## <a name="expressroute-direct"></a><a name="expressRouteDirect"></a>ExpressRoute direct
 
 [!INCLUDE [ExpressRoute Direct](../../includes/expressroute-direct-faq-include.md)]
 
@@ -422,5 +422,4 @@ Uw bestaande circuit gaat verder met het adverteren van de voor voegsels voor Mi
 
 ### <a name="does-the-expressroute-service-store-customer-data"></a>Worden klant gegevens opgeslagen in de ExpressRoute-service?
 
-Nee. 
-
+Nee.

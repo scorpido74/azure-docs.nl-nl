@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 831e72610690753a62c04b51e277110653e0d2c9
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 3cc8974be9adb81391134790d85336016a7d9f1c
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107671"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204330"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Azure-beveiligings basislijn voor Azure Machine Learning
 
@@ -721,7 +721,7 @@ Verwijder Azure-resources wanneer ze niet meer nodig zijn.
 
 - [Bestands integriteit controleren gebruiken](../security-center/security-center-file-integrity-monitoring.md)
 
-- [Meer informatie over Azure Automation Wijzigingen bijhouden en inventaris](../automation/change-tracking.md)
+- [Meer informatie over Azure Automation Wijzigingen bijhouden en inventaris](../automation/change-tracking/overview.md)
 
 - [Inventarisatie van virtuele Azure-machines inschakelen](../automation/automation-tutorial-installed-software.md)
 
@@ -1129,7 +1129,7 @@ Markeer bovendien abonnementen met tags en maak een naamgevings systeem voor het
 
 - [Beveiligingswaarschuwingen in Azure Security Center](../security-center/security-center-alerts-overview.md)
 
-- [Labels gebruiken om uw Azure-resources te organiseren](/azure/azure-resource-manager/resource-group-using-tags)
+- [Tags gebruiken om Azure-resources te organiseren](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure Security Center bewaking**: Ja
 

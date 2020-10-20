@@ -7,18 +7,18 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: duau
-ms.openlocfilehash: 0cc07f9647c4f7836438adbe2b4cf9fa24a1c890
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0365fd8d0d04b7d144ca6826d3d5eff976558eb3
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89566395"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202146"
 ---
 # <a name="about-expressroute-direct"></a>Over ExpressRoute Direct
 
 ExpressRoute direct biedt u de mogelijkheid om rechtstreeks verbinding te maken met het wereld wijde netwerk van micro soft op locatie van peering strategisch gedistribueerd over de hele wereld. ExpressRoute direct biedt een Dual 100 Gbps-of 10 Gbps-connectiviteit, die ondersteuning biedt voor actieve/actieve connectiviteit op schaal.
 
-De belangrijkste functies die ExpressRoute direct biedt, zijn inclusief, maar zijn niet beperkt tot:
+Belangrijke functies die ExpressRoute Direct biedt, zijn onder andere de volgende:
 
 * Massale gegevensopname in services als Storage en Cosmos DB
 * Fysieke isolatie voor branches die worden gereguleerd en die speciale en geïsoleerde connectiviteit vereisen, zoals bankieren, overheids instellingen en handels versie
@@ -73,7 +73,7 @@ ExpressRoute direct ondersteunt massale gegevens opname scenario's in azure Stor
     * Moet de buiten-VLAN-tag (STAG) toevoegen op basis van de VLAN-ID die door micro soft is opgegeven, *alleen van toepassing op QinQ*
     * Moet ondersteuning bieden voor meerdere BGP-sessies (VLAN'S) per poort en apparaat
     * IPv4-en IPv6-connectiviteit. *Voor IPv6 wordt geen extra subinterface gemaakt. Het IPv6-adres wordt toegevoegd aan de bestaande subinterface*. 
-    * Optioneel: ondersteuning voor [bidirectionele forwarding-detectie (Bfd)](https://docs.microsoft.com/azure/expressroute/expressroute-bfd) , die standaard wordt geconfigureerd voor alle particuliere peerings op ExpressRoute-circuits
+    * Optioneel: ondersteuning voor [bidirectionele forwarding-detectie (Bfd)](./expressroute-bfd.md) , die standaard wordt geconfigureerd voor alle particuliere peerings op ExpressRoute-circuits
 
 ## <a name="vlan-tagging"></a>VLAN-tagging
 

@@ -8,12 +8,12 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: cbd8c91391cc1e3afe930094f34e5015ea3c3450
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 21e72e63dae2c52d04aca0cd11971fe5cd23fb47
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097521"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207543"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>Integreren met Logic Apps met behulp van een aangepaste connector
 
@@ -40,16 +40,15 @@ U moet ook de volgende items uitvoeren als onderdeel van de vereiste configurati
 
 Als u een Azure Digital Apparaatdubbels-exemplaar wilt verbinden met Logic Apps in dit artikel, moet u de **Azure Digital apparaatdubbels-instantie** al hebben ingesteld. 
 
-Stel eerst een Azure Digital Twins-instantie in en de vereiste verificatie, zodat u ermee kunt werken. Volg hiervoor de instructies in [*Instructies: een exemplaar en verificatie instellen*](how-to-set-up-instance-portal.md). Afhankelijk van uw favoriete ervaring wordt het configuratie-artikel aangeboden voor de [Azure Portal](how-to-set-up-instance-portal.md), [CLI](how-to-set-up-instance-cli.md)of [geautomatiseerd voorbeeld van een Cloud Shell-implementatiescript](how-to-set-up-instance-scripted.md). Alle versies van de instructies bevatten ook stappen om te controleren of u elke stap hebt voltooid en gereed bent om door te gaan met het nieuwe exemplaar.
+Stel eerst **een Azure Digital apparaatdubbels-exemplaar** in en de vereiste verificatie zodat u ermee kunt werken. Volg hiervoor de instructies in [*Instructies: een exemplaar en verificatie instellen*](how-to-set-up-instance-portal.md). Afhankelijk van uw favoriete ervaring wordt het configuratie-artikel aangeboden voor de [Azure Portal](how-to-set-up-instance-portal.md), [CLI](how-to-set-up-instance-cli.md)of [geautomatiseerd voorbeeld van een Cloud Shell-implementatiescript](how-to-set-up-instance-scripted.md). Alle versies van de instructies bevatten ook stappen om te controleren of u elke stap hebt voltooid en gereed bent om door te gaan met het nieuwe exemplaar.
+* Nadat u uw Azure Digital Apparaatdubbels-exemplaar hebt ingesteld, hebt u de **_hostnaam_** van het exemplaar ([zoek in de Azure Portal](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)) nodig.
 
-In deze zelf studie hebt u verschillende waarden nodig bij het instellen van uw exemplaar. Als u deze waarden opnieuw wilt opzoeken, gebruikt u de koppelingen naar de bijbehorende secties in het artikel over installeren om ze te vinden in de [Azure-portal](https://portal.azure.com).
-* Azure Digital Twins-exemplaar **_hostnaam_** ([beschikbaar in de portal](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
-* Azure AD-app-registratie **_Toepassings-id (client)_** ([beschikbaar in de portal](how-to-set-up-instance-portal.md#collect-important-values))
-* Azure AD-app-registratie **_Map-id (tenant)_** ([beschikbaar in de portal](how-to-set-up-instance-portal.md#collect-important-values))
+Als u de ADT Explorer-toepassing wilt verifiëren, moet u ook een **app-registratie**instellen. Volg de instructies in [*procedure: een app-registratie maken*](how-to-create-app-registration.md) om dit in te stellen. 
+* Zodra u een app hebt geregistreerd, hebt u de toepassings-ID van de registratie **_(client)-ID_** en de **_map (Tenant)_** nodig ([Zoek in de Azure Portal](how-to-create-app-registration.md#collect-client-id-and-tenant-id)).
 
 ### <a name="get-app-registration-client-secret"></a>Client geheim voor registratie van apps ophalen
 
-U moet ook een **_client geheim_** maken voor de registratie van uw Azure AD-app. Als u dit wilt doen, gaat u naar de pagina [app-registraties](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) in het Azure Portal (u kunt deze koppeling gebruiken of ernaar zoeken in de zoek balk van de portal). Selecteer uw registratie in de lijst om de details ervan te openen. 
+U moet ook een **_client geheim_** maken voor de registratie van uw Azure AD-app. Als u dit wilt doen, gaat u naar de pagina [app-registraties](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) in het Azure Portal (u kunt deze koppeling gebruiken of ernaar zoeken in de zoek balk van de portal). Selecteer in de lijst de registratie die u hebt gemaakt in de vorige sectie, zodat u de details ervan kunt openen. 
 
 Klik op *certificaten en geheimen* in het menu van de registratie en selecteer *+ Nieuw client geheim*.
 

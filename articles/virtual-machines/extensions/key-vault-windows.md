@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2595c79c024ea7583f6c6a263dcf4f6034ba6df9
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 741f1ba60a5824654737558d9d977333d3911f45
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072285"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201678"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Extensie van de virtuele machine Key Vault voor Windows
 
@@ -87,13 +87,13 @@ De volgende JSON toont het schema voor de extensie van de Key Vault-VM. Voor de 
 
 | Naam | Waarde/voor beeld | Gegevenstype |
 | ---- | ---- | ---- |
-| apiVersion | 2019-07-01 | date |
+| apiVersion | 2019-07-01 | datum |
 | publisher | Microsoft.Azure.KeyVault | tekenreeks |
 | type | KeyVaultForWindows | tekenreeks |
 | typeHandlerVersion | 1.0 | int |
 | pollingIntervalInS | 3600 | tekenreeks |
 | Naam certificaat archief | MY | tekenreeks |
-| linkOnRenewal | onjuist | booleaans |
+| linkOnRenewal | false | booleaans |
 | certificateStoreLocation  | LocalMachine of CurrentUser (hoofdletter gevoelig) | tekenreeks |
 | requiredInitialSync | true | booleaans |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | teken reeks matrix
@@ -222,6 +222,11 @@ Houd rekening met de volgende beperkingen/vereisten:
 ### <a name="troubleshoot"></a>Problemen oplossen
 
 Gegevens over de status van uitbreidings implementaties kunnen worden opgehaald uit de Azure Portal en met behulp van de Azure PowerShell. Als u de implementatie status van extensies voor een bepaalde virtuele machine wilt bekijken, voert u de volgende opdracht uit met behulp van de Azure PowerShell.
+
+### <a name="frequently-asked-questions"></a>Veelgestelde vragen
+
+* Is er een limiet voor het aantal observedCertificates dat u kunt instellen?
+  Nee, Key Vault VM-extensie heeft geen limiet voor het aantal observedCertificates.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 ```powershell

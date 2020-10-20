@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: duau
-ms.openlocfilehash: a5829399b70871903c8eb433b95e0cb09e5d2c60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 477145619e1b4d8b41c422389b57a46615597478
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89398083"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202545"
 ---
 # <a name="create-and-manage-expressroute-public-peering"></a>Open bare ExpressRoute-peering maken en beheren
 
@@ -30,7 +30,7 @@ Dit artikel helpt u bij het maken en beheren van een configuratie voor een open 
 
 ## <a name="connectivity"></a>Connectiviteit
 
-Connectiviteit wordt altijd geïnitieerd vanuit uw WAN naar Microsoft Azure Services. Microsoft Azure Services kunnen geen verbindingen met uw netwerk initiëren via dit routerings domein. Als uw ExpressRoute-circuit is ingeschakeld voor open bare Azure-peering, kunt u toegang krijgen tot de [open bare IP-bereiken die in Azure worden gebruikt](../virtual-network/virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) via het circuit.
+Connectiviteit wordt altijd geïnitieerd vanuit uw WAN naar Microsoft Azure Services. Microsoft Azure Services kunnen geen verbindingen met uw netwerk initiëren via dit routerings domein. Als uw ExpressRoute-circuit is ingeschakeld voor open bare Azure-peering, kunt u toegang krijgen tot de [open bare IP-bereiken die in Azure worden gebruikt](../virtual-network/public-ip-addresses.md#public-ip-addresses) via het circuit.
 
 Zodra open bare peering is ingeschakeld, kunt u verbinding maken met de meeste Azure-Services. U kunt niet selectief Services picken waarvoor we routes aankondigen.
 
@@ -38,7 +38,7 @@ Zodra open bare peering is ingeschakeld, kunt u verbinding maken met de meeste A
 * Via het routerings domein voor open bare peering kunt u privé verbinding maken met services die worden gehost op open bare IP-adressen, inclusief Vip's van uw Cloud Services.
 * U kunt het open bare peering domein koppelen aan uw DMZ en verbinding maken met alle Azure-Services op hun open bare IP-adres van uw WAN zonder dat u verbinding hoeft te maken via internet.
 
-## <a name="services"></a><a name="services"></a>Services
+## <a name="services"></a><a name="services"></a>Onderzoeksservices
 
 In deze sectie worden de services weer gegeven die beschikbaar zijn via open bare peering. Omdat open bare peering is afgeschaft, is er geen plan om nieuwe of extra services aan open bare peering toe te voegen. Als u open bare peering gebruikt en de service die u wilt gebruiken alleen wordt ondersteund voor micro soft-peering, moet u overschakelen naar micro soft-peering. Zie [micro soft-peering](expressroute-faqs.md#microsoft-peering) voor een lijst met ondersteunde services.
 
@@ -60,7 +60,7 @@ Als u de beschik baarheid voor een specifieke service wilt valideren, kunt u de 
 [!INCLUDE [peering comparison](../../includes/expressroute-peering-comparison.md)]
 
 > [!NOTE]
-> Open bare Azure-peering heeft één NAT IP-adres dat is gekoppeld aan elke BGP-sessie. Voor meer dan 2 NAT IP-adressen, gaat u naar micro soft-peering. Met micro soft-peering kunt u uw eigen NAT-toewijzingen configureren, maar ook route filters gebruiken voor selectieve voor voegsels van advertenties. Zie [verplaatsen naar micro soft-peering](https://docs.microsoft.com/azure/expressroute/how-to-move-peering)voor meer informatie.
+> Open bare Azure-peering heeft één NAT IP-adres dat is gekoppeld aan elke BGP-sessie. Voor meer dan 2 NAT IP-adressen, gaat u naar micro soft-peering. Met micro soft-peering kunt u uw eigen NAT-toewijzingen configureren, maar ook route filters gebruiken voor selectieve voor voegsels van advertenties. Zie [verplaatsen naar micro soft-peering](./how-to-move-peering.md)voor meer informatie.
 >
 
 ## <a name="custom-route-filters"></a>Aangepaste route filters
@@ -122,7 +122,7 @@ Omdat open bare peering is afgeschaft, kunt u open bare peering niet configurere
    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    ```
 
-   Als u een MD5-hash wilt gebruiken, gebruikt u het volgende voor beeld:
+   Als u een MD5-hash wilt gebruiken, gebruikt u het volgende voorbeeld:
 
    ```azurepowershell-interactive
    Add-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt -PeeringType AzurePublicPeering -PeerASN 100 -PrimaryPeerAddressPrefix "12.0.0.0/30" -SecondaryPeerAddressPrefix "12.0.0.4/30" -VlanId 100  -SharedKey "A1B2C3D4"
@@ -147,7 +147,7 @@ U kunt Configuratie Details ophalen met behulp van de volgende cmdlet:
 
 ### <a name="to-update-azure-public-peering-configuration"></a><a name="updatepublic"></a>De configuratie van openbare Azure-peering bijwerken
 
-U kunt elk deel van de configuratie bijwerken met behulp van het volgende voor beeld. In dit voor beeld wordt de VLAN-ID van het circuit bijgewerkt van 200 naar 600.
+U kunt elk deel van de configuratie bijwerken met het volgende voorbeeld. In dit voor beeld wordt de VLAN-ID van het circuit bijgewerkt van 200 naar 600.
 
 ```azurepowershell-interactive
 Set-AzExpressRouteCircuitPeeringConfig  -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt -PeeringType AzurePublicPeering -PeerASN 100 -PrimaryPeerAddressPrefix "123.0.0.0/30" -SecondaryPeerAddressPrefix "123.0.0.4/30" -VlanId 600
@@ -157,7 +157,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 
 ### <a name="to-delete-azure-public-peering"></a><a name="deletepublic"></a>Openbare Azure-peering verwijderen
 
-U kunt de peering-configuratie verwijderen door het volgende voor beeld uit te voeren:
+U kunt een peeringconfiguratie verwijderen door het volgende voorbeeld uit te voeren:
 
 ```azurepowershell-interactive
 Remove-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt
@@ -212,7 +212,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    * Een /30-subnet voor de secundaire koppeling. Dit moet een geldig openbaar IPv4-voorvoegsel zijn.
    * Een geldige VLAN-id waarop u deze peering wilt instellen. Controleer of er geen andere peering in het circuit is die dezelfde VLAN-id gebruikt.
    * AS-nummer voor peering. U kunt 2-bytes en 4-bytes AS-nummers gebruiken.
-   * **Optioneel-** Een MD5-hash als u ervoor kiest om er een te gebruiken.
+   * **Optioneel -** Een MD5-hash, als u er een wilt gebruiken.
 
    Voer het volgende voor beeld uit om open bare Azure-peering voor uw circuit te configureren:
 
@@ -220,7 +220,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    az network express-route peering create --circuit-name MyCircuit --peer-asn 100 --primary-peer-subnet 12.0.0.0/30 -g ExpressRouteResourceGroup --secondary-peer-subnet 12.0.0.4/30 --vlan-id 200 --peering-type AzurePublicPeering
    ```
 
-   Als u een MD5-hash wilt gebruiken, gebruikt u het volgende voor beeld:
+   Als u een MD5-hash wilt gebruiken, gebruikt u het volgende voorbeeld:
 
    ```azurecli-interactive
    az network express-route peering create --circuit-name MyCircuit --peer-asn 100 --primary-peer-subnet 12.0.0.0/30 -g ExpressRouteResourceGroup --secondary-peer-subnet 12.0.0.4/30 --vlan-id 200 --peering-type AzurePublicPeering --SharedKey "A1B2C3D4"
@@ -231,7 +231,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 
 ### <a name="to-view-azure-public-peering-details"></a><a name="getpublic"></a>De details van openbare Azure-peering weergeven
 
-U kunt Configuratie Details ophalen met behulp van het volgende voor beeld:
+Gebruik het volgende voorbeeld als u de configuratiegegevens wilt weergeven:
 
 ```azurecli
 az network express-route peering show -g ExpressRouteResourceGroup --circuit-name MyCircuit --name AzurePublicPeering
@@ -266,7 +266,7 @@ De uitvoer lijkt op die in het volgende voorbeeld:
 
 ### <a name="to-update-azure-public-peering-configuration"></a><a name="updatepublic"></a>De configuratie van openbare Azure-peering bijwerken
 
-U kunt elk deel van de configuratie bijwerken met behulp van het volgende voor beeld. In dit voor beeld wordt de VLAN-ID van het circuit bijgewerkt van 200 naar 600.
+U kunt elk deel van de configuratie bijwerken met het volgende voorbeeld. In dit voor beeld wordt de VLAN-ID van het circuit bijgewerkt van 200 naar 600.
 
 ```azurecli-interactive
 az network express-route peering update --vlan-id 600 -g ExpressRouteResourceGroup --circuit-name MyCircuit --name AzurePublicPeering
@@ -274,7 +274,7 @@ az network express-route peering update --vlan-id 600 -g ExpressRouteResourceGro
 
 ### <a name="to-delete-azure-public-peering"></a><a name="deletepublic"></a>Openbare Azure-peering verwijderen
 
-U kunt de peering-configuratie verwijderen door het volgende voor beeld uit te voeren:
+U kunt een peeringconfiguratie verwijderen door het volgende voorbeeld uit te voeren:
 
 ```azurecli-interactive
 az network express-route peering delete -g ExpressRouteResourceGroup --circuit-name MyCircuit --name AzurePublicPeering

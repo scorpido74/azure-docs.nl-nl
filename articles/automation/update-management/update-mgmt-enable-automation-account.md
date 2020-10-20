@@ -2,15 +2,15 @@
 title: Azure Automation Updatebeheer inschakelen vanuit het Automation-account
 description: In dit artikel leest u hoe u Updatebeheer kunt inschakelen vanuit een Automation-account.
 services: automation
-ms.date: 09/09/2020
+ms.date: 10/15/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 787338be06c2e30aabb6421a42e7cb3aaabf8a2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 81b46bd1e30efff81748389ef62c46410479fb4b
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89669510"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206625"
 ---
 # <a name="enable-update-management-from-an-automation-account"></a>Updatebeheer inschakelen vanaf een Automation-account
 
@@ -65,14 +65,14 @@ Hand matig geïnstalleerde computers of machines die al aan uw werk ruimte rappo
 
     ![Opgeslagen Zoek opdrachten](media/update-mgmt-enable-automation-account/managemachines.png)
 
-3. Als u Updatebeheer wilt inschakelen voor alle beschik bare computers die rapporteren aan de werk ruimte, selecteert u **inschakelen op alle beschik bare computers** op de pagina machines beheren. Met deze actie wordt het besturings element uitgeschakeld om computers afzonderlijk toe te voegen. Met deze taak worden alle namen van de computers die rapporteren aan de werk ruimte toegevoegd aan de computer groep opgeslagen Zoek query `MicrosoftDefaultComputerGroup` . Als u deze actie selecteert, wordt de knop **machines beheren** uitgeschakeld.
+3. Als u Updatebeheer wilt inschakelen voor alle beschik bare computers die rapporteren aan de werk ruimte, selecteert u **inschakelen op alle beschik bare computers** op de pagina machines beheren. Met deze actie wordt het besturings element uitgeschakeld om computers afzonderlijk toe te voegen en worden alle machines die aan de werk ruimte rapporteren worden toegevoegd aan de computer groep opgeslagen Zoek query `MicrosoftDefaultComputerGroup` . Wanneer dit selectie vakje is ingeschakeld, wordt de optie **machines beheren** door deze actie uitgeschakeld.
 
-4. Als u de functie wilt inschakelen voor alle beschik bare machines en toekomstige computers, selecteert u **inschakelen op alle beschik bare en toekomstige computers**. Met deze optie wordt de opgeslagen Zoek-en Scope configuratie verwijderd uit de werk ruimte en kan de functie alle Azure-en niet-Azure-machines die momenteel of in de toekomst zijn opgenomen, rapporteren aan de werk ruimte. Als u deze actie selecteert, wordt de knop **machines beheren** permanent uitgeschakeld, omdat er geen scope configuratie beschikbaar is.
+4. Als u de functie wilt inschakelen voor alle beschik bare machines en toekomstige computers, selecteert u **inschakelen op alle beschik bare en toekomstige computers**. Met deze optie wordt de opgeslagen Zoek-en Scope configuratie verwijderd uit de werk ruimte en kan de functie alle Azure-en niet-Azure-machines die momenteel of in de toekomst zijn opgenomen, rapporteren aan de werk ruimte. Wanneer dit selectie vakje is ingeschakeld, wordt de optie voor het **beheren van computers** permanent uitgeschakeld, omdat er geen scope configuratie beschikbaar is.
 
     > [!NOTE]
-    > Omdat met deze optie de opgeslagen Zoek opdrachten en Scope configuraties worden verwijderd binnen Log Analytics, is het belang rijk dat verwijderings vergrendelingen worden verwijderd uit de werk ruimte Log Analytics voordat u deze optie selecteert. Als dat niet het geval is, kan de optie de configuraties niet verwijderen en moet u ze hand matig verwijderen.
+    > Omdat met deze optie de opgeslagen Zoek-en Scope configuratie in Log Analytics wordt verwijderd, is het belang rijk dat u verwijderings vergrendelingen verwijdert uit de werk ruimte Log Analytics voordat u deze optie selecteert. Als dat niet het geval is, kan de optie de configuraties niet verwijderen en moet u ze hand matig verwijderen.
 
-5. Indien nodig kunt u de scope configuraties weer toevoegen door de oorspronkelijke opgeslagen Zoek query opnieuw toe te voegen. Zie [limiet updatebeheer-implementatie bereik](update-mgmt-scope-configuration.md)voor meer informatie.
+5. Als dat nodig is, kunt u de scope configuratie weer toevoegen door de oorspronkelijke opgeslagen Zoek query opnieuw toe te voegen. Zie [limiet updatebeheer-implementatie bereik](update-mgmt-scope-configuration.md)voor meer informatie.
 
 6. Als u de functie wilt inschakelen voor een of meer computers, selecteert u **inschakelen op geselecteerde computers** en selecteert u naast elke machine **toevoegen** . Met deze taak worden de geselecteerde computer namen toegevoegd aan de computer groep opgeslagen Zoek query voor de functie.
 

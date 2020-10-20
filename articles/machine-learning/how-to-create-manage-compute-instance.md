@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 3b5698c782b691dd8ae91913115db184fc83a2eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca4ed58de030e372f97ebda87d12340a57a584d5
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91756616"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207084"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Een Azure Machine Learning Compute-exemplaar maken en beheren
 
@@ -256,6 +256,7 @@ U kunt pakketten rechtstreeks installeren in Jupyter Notebook of RStudio:
 * Python: Voeg een installatie code toe en voer deze uit in een Jupyter Notebook-cel.
 
 U kunt ook installeren vanuit een Terminal venster. Installeer Python-pakketten in de **Python 3,6-AzureML-** omgeving.  R-pakketten installeren in de **R** -omgeving.
+% PIP en% Conda Magic functions installeert pakketten automatisch in de kernel die momenteel wordt uitgevoerd in de Jupyter-notebook sessie.
 
 ## <a name="add-new-kernels"></a>Nieuwe kernels toevoegen
 

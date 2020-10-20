@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: 35b39ceb7ef54b0e00eaa53dad821c9336ea88ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 462ecb1fb3f44f3caac8c58bfca169e4eac2a6da
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91302618"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207934"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Enter prise Security voor Azure Machine Learning
 
@@ -90,7 +90,7 @@ Zie [beheerde identiteiten voor Azure-resources](https://docs.microsoft.com/azur
 | Resource | Machtigingen |
 | ----- | ----- |
 | Werkruimte | Inzender |
-| Storage-account | Inzender voor Storage Blob-gegevens |
+| Opslagaccount | Inzender voor Storage Blob-gegevens |
 | Key Vault | Toegang tot alle sleutels, geheimen, certificaten |
 | Azure Container Registry | Inzender |
 | Resource groep die de werk ruimte bevat | Inzender |
@@ -178,7 +178,7 @@ Als u uw eigen (door de klant beheerde) sleutels wilt gebruiken om uw Azure Cont
 > [!IMPORTANT]
 > Voor Azure Machine Learning moet het beheerders account zijn ingeschakeld op uw Azure Container Registry. Deze instelling is standaard uitgeschakeld wanneer u een container register maakt. Zie [beheerders account](/azure/container-registry/container-registry-authentication#admin-account)voor meer informatie over het inschakelen van het beheerders account.
 >
-> Als er een Azure Container Registry is gemaakt voor een werk ruimte, moet u dit niet verwijderen. Als u dit doet, wordt uw Azure Machine Learning-werk ruimte verbroken.
+> Als er een Azure Container Registry voor een werkruimte is gemaakt, moet u deze niet verwijderen. Als u dat doet, werkt de Azure Machine Learning-werkruimte niet meer.
 
 Raadpleeg de volgende artikelen voor een voor beeld van het maken van een werk ruimte met behulp van een bestaande Azure Container Registry:
 
@@ -291,7 +291,7 @@ Details van Score aanvragen worden opgeslagen in Application Insights. Applicati
 >
 > Sommige van deze acties worden weer gegeven in het gebied **activiteiten** van uw werk ruimte, maar deze meldingen geven niet aan wie de activiteit heeft gestart.
 
-### <a name="vulnerability-scanning"></a>Scannen van beveiligings problemen
+### <a name="vulnerability-scanning"></a>Scannen op beveiligingsproblemen
 
 Azure Security Center biedt geïntegreerd beveiligingsbeheer en geavanceerde bedreigingsbeveiliging voor verschillende hybride cloudworkloads. Voor Azure machine learning moet u het scannen van uw Azure Container Registry resource en Azure Kubernetes-service resources inschakelen. Zie [Azure container Registry Image scanning door Security Center](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration) en [Azure Kubernetes Services-integratie met Security Center](https://docs.microsoft.com/azure/security-center/azure-kubernetes-service-integration).
 
@@ -376,6 +376,10 @@ Dit zijn de details:
 Raadpleeg de [Azure Policy documentatie](/azure/governance/policy/overview)voor meer informatie over Azure Policy.
 
 Zie [naleving controleren en beheren met Azure Policy](how-to-integrate-azure-policy.md)voor meer informatie over het beleid dat specifiek is voor Azure machine learning.
+
+## <a name="resource-locks"></a>Resourcevergrendelingen
+
+[!INCLUDE [resource locks](../../includes/machine-learning-resource-lock.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
