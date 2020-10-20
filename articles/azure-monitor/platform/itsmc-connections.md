@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: 9d037fa0faa1419e4cd1b600eea1b3b3eb0a29c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b2b8bed9233073e629ee3bce2630fd373c87663b
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90058764"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215872"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM-producten/-services verbinden met IT-servicebeheerconnector
 Dit artikel bevat informatie over het configureren van de verbinding tussen uw ITSM-product/-service en de IT Service Management-connector (ITSMC) in Log Analytics om uw werk items centraal te beheren. Zie [overzicht](./itsmc-overview.md)voor meer informatie over ITSMC.
@@ -44,7 +44,8 @@ Zorg ervoor dat aan de volgende vereisten wordt voldaan:
 
 > [!NOTE]
 > 
-> ITSM-connector kan alleen verbinding maken met ServiceNow-exemplaren op basis van de Cloud. On-premises ServiceNow-instanties worden momenteel niet ondersteund.
+> - ITSM-connector kan alleen verbinding maken met ServiceNow-exemplaren op basis van de Cloud. On-premises ServiceNow-instanties worden momenteel niet ondersteund.
+> - Als u aangepaste sjablonen wilt gebruiken als onderdeel van de acties, moet de para meter ' ProjectionType ' in de SCSM worden toegewezen aan ' IncidentManagement! System. WorkItem. incident. ProjectionType "
 
 ### <a name="connection-procedure"></a>Verbindings procedure
 

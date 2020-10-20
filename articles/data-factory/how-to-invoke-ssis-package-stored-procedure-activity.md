@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: sawinark
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 05ec19fd2351b3a9ac1f383ce4747404eeead936
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b2bad99a836da7aab64e8cc0d454423fd56ffce1
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89067821"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217776"
 ---
 # <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>Een SSIS-pakket uitvoeren met de activiteit Opgeslagen procedure in Azure Data Factory
 
@@ -95,7 +95,7 @@ In deze stap gebruikt u de Data Factory-gebruikers interface om een pijp lijn te
     7. Test de verbinding met de data base door te klikken op de knop **verbinding testen** .
     8. Sla de gekoppelde service op door te klikken op de knop **Opslaan** . 
 
-        ![Een gekoppelde Azure SQL Database-service](./media/how-to-invoke-ssis-package-stored-procedure-activity/azure-sql-database-linked-service-settings.png)
+        ![Scherm opname van het proces voor het toevoegen van een nieuwe gekoppelde service.](./media/how-to-invoke-ssis-package-stored-procedure-activity/azure-sql-database-linked-service-settings.png)
 5. Ga in het venster Eigenschappen naar het tabblad **opgeslagen procedure** van het tabblad **SQL-account** en voer de volgende stappen uit: 
 
     1. Selecteer **Bewerken**. 

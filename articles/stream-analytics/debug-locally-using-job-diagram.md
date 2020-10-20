@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/23/2020
-ms.openlocfilehash: 86367f1dce3cc8040555827935e9ca2f9f9fb4c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9d6bbdf325c0da96b81c1f2146da284ea744def
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86045396"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218252"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio"></a>Fouten opsporen Azure Stream Analytics query's lokaal met behulp van taak diagram in Visual Studio
 
@@ -87,7 +87,7 @@ In deze sectie bekijkt u de metrische gegevens die beschikbaar zijn voor elk dee
   
 #### <a name="output-sinks-live-output"></a>Uitvoer-Sinks (live uitvoer)
 
-![Taak diagram lokale uitvoer-sinks](./media/debug-locally-using-job-diagram/live-output.png)
+![Taak diagram waarin de lokale uitvoer-sinks worden weer gegeven.](./media/debug-locally-using-job-diagram/live-output.png)
 
 |Gegevens|Beschrijving|
 |-|-|

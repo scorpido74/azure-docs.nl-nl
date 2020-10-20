@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 438d2fec9efc6a1ad3fcdaa2829573e7205820ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5473730484240f2c813c9ae279e1516ed93a45c5
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85385957"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92214954"
 ---
 # <a name="add-a-web-api-application-to-your-azure-active-directory-b2c-tenant"></a>Een web-API-toepassing toevoegen aan uw Azure Active Directory B2C-Tenant
 
@@ -34,7 +34,7 @@ Als u een toepassing wilt registreren in de Azure AD B2C-tenant, kunt u de nieuw
 1. Selecteer **Registreren**.
 1. Noteer de **id van de toepassing (client)** voor gebruik in de code van uw web-API.
 
-Als u een toepassing hebt die de impliciete toekennings stroom implementeert, bijvoorbeeld een toepassing met één pagina op basis van Java script, kunt u de stroom inschakelen door de volgende stappen uit te voeren:
+Als u een toepassing hebt die de impliciete toekennings stroom implementeert, bijvoorbeeld een [toepassing met één pagina op basis van Java script](tutorial-register-spa.md), kunt u de stroom inschakelen door de volgende stappen uit te voeren:
 
 1. Selecteer **Verificatie** onder **Beheren**.
 1. Schakel onder **Impliciete toekenning** de selectievakjes **Toegangstokens** en **Id-tokens** in.

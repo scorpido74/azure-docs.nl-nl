@@ -7,14 +7,20 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/05/2019
 keywords: Aro, open Shift, aquasec, twistlock, Red Hat
-ms.openlocfilehash: e1c1dd9f27a207f78dd22e271f6b070c7f92f622
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 914b29410a0f30e5c3d3a893c2e278ecbb83b648
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78271365"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218864"
 ---
 # <a name="run-privileged-containers-in-an-azure-red-hat-openshift-cluster"></a>Bevoorrechte containers uitvoeren in een Azure Red Hat OpenShift-cluster
+
+> [!IMPORTANT]
+> Azure Red Hat open Shift 3,11 wordt 30 juni 2022 buiten gebruik gesteld. Ondersteuning voor het maken van nieuwe Azure Red Hat open Shift 3,11-clusters loopt voort tot en met 30 november 2020. Na de buiten gebruiks telling worden de resterende Azure Red Hat open Shift 3,11-clusters afgesloten om beveiligings problemen te voor komen.
+> 
+> Volg deze hand leiding voor het [maken van een Azure Red Hat open Shift 4-cluster](tutorial-create-cluster.md).
+> Als u specifieke vragen hebt, [kunt u contact met ons](mailto:arofeedback@microsoft.com)opnemen.
 
 U kunt geen wille keurige, geprivilegieerde containers uitvoeren op Azure Red Hat open Shift-clusters.
 Twee beveiligings-en compatibiliteits oplossingen mogen worden uitgevoerd op ARO-clusters.

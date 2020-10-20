@@ -5,26 +5,23 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 010/17/2018
+ms.date: 10/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 26e48d1af8e29c7d00a80910dcca62811da14822
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0694003e2eb5005186f5c7ad450533437955d82
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67673296"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217923"
 ---
 U kunt de verbindingsstatus voor een klassieke VNet-VPN-gateway weergeven door in Azure Portal naar de verbinding te navigeren. De volgende stappen tonen één manier om te navigeren naar uw verbinding en deze te controleren.
 
-1. Klik in [Azure Portal](https://portal.azure.com) op **Alle resources** en navigeer naar uw klassieke virtuele netwerk.
-2. Klik op de blade Virtueel netwerk op **Overzicht** voor toegang tot het gedeelte **VPN-verbindingen** van de blade.
-3. Klik in de afbeelding VPN-verbindingen op de site.
+1. Klik in de [Azure Portal](https://portal.azure.com)op **alle resources** en navigeer naar het klassieke virtuele netwerk (VNet).
+1. Selecteer op de pagina virtueel netwerk het type verbinding dat u wilt weer geven. Bijvoorbeeld **site-naar-site-verbindingen**.
 
-    ![Lokale site](./media/vpn-gateway-verify-connection-azureportal-classic/localsitename.png "lokale site")
-4. Bekijk de informatie over uw site op de blade **Site-naar-site-VPN-verbindingen**.
+   :::image type="content" source="./media/vpn-gateway-verify-connection-azureportal-classic/site-to-site.png" alt-text="Lokale site" lightbox="./media/vpn-gateway-verify-connection-azureportal-classic/site-to-site.png":::
+1. Selecteer op de pagina **site-naar-site-verbindingen** onder **naam**de site verbinding die u wilt weer geven.
 
-    ![Verbindingsstatus](./media/vpn-gateway-verify-connection-azureportal-classic/siteconnectstatus.png "Verbindingsstatus")
-5. Klik op de naam van de verbinding om de blade **Site-naar-site-VPN-verbinding** te openen voor meer informatie over de verbinding.
-
-    ![Status van verbinding meer](./media/vpn-gateway-verify-connection-azureportal-classic/connections4.png "Verbindings status meer informatie")
+   :::image type="content" source="./media/vpn-gateway-verify-connection-azureportal-classic/name.png" alt-text="Lokale site":::
+1. Bekijk de informatie over de verbinding op de pagina **Eigenschappen** .

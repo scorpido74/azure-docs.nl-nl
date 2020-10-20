@@ -2,7 +2,6 @@
 title: Schema's voor de Azure Security Center waarschuwingen
 description: In dit artikel worden de verschillende schema's beschreven die worden gebruikt door Azure Security Center voor beveiligings waarschuwingen.
 services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
 ms.service: security-center
@@ -12,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2020
 ms.author: memildin
-ms.openlocfilehash: 894fc4066ad408f0749e7a982011d82b205e6fec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 264cab08fa967af783b758ed1030826d2a179e8a
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90901344"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220666"
 ---
 # <a name="security-alerts-schemas"></a>Schema's voor beveiligings waarschuwingen
 
@@ -173,7 +172,7 @@ U kunt de gebeurtenissen voor beveiligings waarschuwingen in het activiteiten lo
 
 Microsoft Graph is de gateway naar gegevens en intelligentie in Microsoft 365. Het biedt een uniform programmeerbaar model dat u kunt gebruiken voor toegang tot de enorme hoeveelheid gegevens in Microsoft 365, Windows 10 en Enterprise Mobility + Security. Gebruik de schat aan gegevens in Microsoft Graph om apps te bouwen voor organisaties en consumenten die met miljoenen gebruikers communiceren.
 
-Het schema en een JSON-weer gave voor beveiligings waarschuwingen die naar MS Graph worden verzonden, zijn beschikbaar in [de Microsoft Graph documentatie](https://docs.microsoft.com/graph/api/resources/alert?view=graph-rest-1.0).
+Het schema en een JSON-weer gave voor beveiligings waarschuwingen die naar MS Graph worden verzonden, zijn beschikbaar in [de Microsoft Graph documentatie](https://docs.microsoft.com/graph/api/resources/alert?view=graph-rest-1.0&preserve-view=true).
 
 ---
 

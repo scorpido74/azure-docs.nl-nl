@@ -1,19 +1,17 @@
 ---
 title: Azure Data Lake Analytics beheren met Azure Java SDK
 description: In dit artikel wordt beschreven hoe u de Azure Java SDK gebruikt om apps te schrijven die Data Lake Analytics taken, gegevens bronnen & gebruikers beheren.
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: 07830b36-2fe3-4809-a846-129cf67b6a9e
 ms.topic: how-to
 ms.date: 08/20/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: bac13f187c99166bc868112792d80833387a84dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86e84d825bd1dd3774cfd2774e0b96e540bb3cd2
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87373773"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218473"
 ---
 # <a name="manage-azure-data-lake-analytics-using-a-java-app"></a>Azure Data Lake Analytics beheren met een Java-app
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -318,6 +316,6 @@ Geef de waarden op voor para meters die worden genoemd in het code fragment:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Aan de slag met de Azure Data Lake Analytics U-SQL-taal](data-lake-analytics-u-sql-get-started.md) en [Naslaginformatie voor de U-SQL-taal](https://docs.microsoft.com/u-sql/) om U-SQL te leren.
+* Zie [Aan de slag met de Azure Data Lake Analytics U-SQL-taal](data-lake-analytics-u-sql-get-started.md) en [Naslaginformatie voor de U-SQL-taal](/u-sql/) om U-SQL te leren.
 * Zie [Azure data Lake Analytics beheren met Azure Portal](data-lake-analytics-manage-use-portal.md)voor beheer taken.
 * Zie [Overzicht van Azure Data Lake Analytics](data-lake-analytics-overview.md) voor een overzicht van Data Lake Analytics.
