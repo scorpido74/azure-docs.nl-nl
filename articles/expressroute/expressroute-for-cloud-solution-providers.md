@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 18ee64e6866764e250cfa08a1d4721674bb66e5a
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 31660d13fe69d393a19167eaea8a69bfb6260467
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097334"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202069"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>ExpressRoute voor Cloud Solution Providers (CSP)
 Microsoft biedt grootschalige services waarmee traditionele leveranciers en distributeurs (CSP) snel nieuwe services en oplossingen voor uw klanten kunnen inrichten, zonder dat ze hoeven te investeren in de ontwikkeling van deze nieuwe services. Microsoft biedt programma's en API's waarmee de Cloud Solution Provider (CSP) Microsoft Azure-resources kan beheren namens uw klanten. Zo kan de Cloud Solution Provider (CSP) deze nieuwe services rechtstreeks beheren. Een van deze resources is ExpressRoute. Met ExpressRoute kan de CSP verbinding maken tussen de bestaande resources van de klant en de Azure-services. ExpressRoute is een snelle, persoonlijke communicatie koppeling naar Services in Azure. 
@@ -28,7 +28,7 @@ ExpressRoute bestaat uit een paar circuits voor hoge Beschik baarheid die zijn g
 Microsoft Azure biedt een toenemend aantal services dat u aan uw klanten kunt aanbieden. ExpressRoute helpt u en uw klanten profiteren van deze services door snelle toegang tot de Microsoft Azure omgeving te bieden.
 
 ## <a name="microsoft-azure-management"></a>Microsoft Azure-beheer
-Micro soft biedt Csp's met Api's voor het beheren van de Azure-klanten abonnementen door middel van programmatische integratie met uw eigen service beheersystemen. U vindt de ondersteunde beheermogelijkheden [hier](https://msdn.microsoft.com/library/partnercenter/dn974944.aspx).
+Micro soft biedt Csp's met Api's voor het beheren van de Azure-klanten abonnementen door middel van programmatische integratie met uw eigen service beheersystemen. U vindt de ondersteunde beheermogelijkheden [hier](/previous-versions/windows/mt844538(v=win.10)).
 
 ## <a name="microsoft-azure-resource-management"></a>Beheer van Microsoft Azure-resources
 Het contract dat u met uw klant hebt, bepaalt hoe het abonnement wordt beheerd. De CSP kan het maken en het onderhouden van resources rechtstreeks beheren, maar de klant kan ook zelf de controle behouden over het Microsoft Azure-abonnement en de Azure-resources naar behoefte maken. Als uw klant het maken van resources in hun Microsoft Azure-abonnement beheert, zullen ze een van de twee modellen gebruiken: '*connect-through*' model of '*direct-to '-* model. Deze modellen worden gedetailleerd beschreven in de volgende gedeelten.  
@@ -129,6 +129,6 @@ De Cloud Solution Provider-service biedt een manier om uw waarde voor uw klanten
 
 Voor meer informatie klikt u op de volgende koppelingen:
 
-[Azure in Cloud Solution Provider-programma](https://docs.microsoft.com/azure/cloud-solution-provider).  
+[Azure in Cloud Solution Provider-programma](/azure/cloud-solution-provider).  
 [Bereid u voor om zaken te doen als een Cloud Solution Provider](https://partner.microsoft.com/solutions/cloud-reseller-pre-launch).  
 [Microsoft Cloud Solution Provider-resources](https://partner.microsoft.com/solutions/cloud-reseller-resources).

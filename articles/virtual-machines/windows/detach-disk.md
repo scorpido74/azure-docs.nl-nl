@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 01/08/2020
 ms.author: cynthn
-ms.openlocfilehash: 361ed04a6448bec18fac94ad90a33fe01a49e595
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: f3c1e305024eb255a85aa470105d99edd3c26982
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974155"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201304"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-windows-virtual-machine"></a>Een gegevensschijf loskoppelen van een virtuele Windows-machine
 
@@ -53,8 +53,7 @@ U kunt een gegevens schijf *dynamisch* verwijderen, maar u moet er wel voor zorg
 1. Selecteer in het linkermenu **virtual machines**.
 1. Selecteer de virtuele machine met de gegevens schijf die u wilt loskoppelen.
 1. Selecteer **Schijven** onder **Instellingen**.
-1. Selecteer boven in het deel venster **schijven** de optie **bewerken**.
-1. Selecteer **loskoppelen**in het deel venster **schijven** helemaal rechts van de gegevens schijf die u wilt loskoppelen.
+1. Klik in het deel venster **schijven** helemaal rechts van de gegevens schijf die u wilt loskoppelen op de knop **X** verwijderen.
 1. Selecteer boven aan de pagina **Opslaan** om uw wijzigingen op te slaan.
 
 De schijf blijft in de opslag, maar is niet meer gekoppeld aan een virtuele machine.

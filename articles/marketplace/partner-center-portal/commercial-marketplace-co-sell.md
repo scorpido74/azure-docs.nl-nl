@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
-ms.date: 05/12/2020
-ms.openlocfilehash: 6088569efed56d4453e4f1b0806af68f206cd2e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/19/2020
+ms.openlocfilehash: ec076567d06a8237db2a708a5276a358f64a8388
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90033248"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204908"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Optie voor collectieve verkoop in Partnercentrum
 
@@ -36,7 +36,7 @@ De optie voor co-selling in Partner Center is momenteel beschikbaar voor sommige
 
 ## <a name="listing"></a>Vermelding
 
-Met de functie voor het samen verkopen van gegevens kunnen micro soft-verkoop teams uw oplossing in een breder publiek zetten.
+Met de functie voor het samen verkopen van gegevens kunnen micro soft-verkoop teams uw oplossing in een breder publiek zetten. *(Alle velden zijn vereist.)*
 
 - Kies de micro soft-platforms waarop uw aanbieding is gebouwd, wordt uitgebreid of geïntegreerd met.
 - Selecteer de markt segmenten waarvoor uw aanbieding bestemd is.
@@ -58,26 +58,26 @@ Met typen oplossingen kunt u de scenario's definiëren die voor uw aanbieding zi
 
 Oplossings gebieden helpen u bij het verder bepalen van uw oplossing.
 
-U kunt Maxi maal drie oplossings gebieden toevoegen voor uw aanbieding. Voor elk oplossings gebied kunt u Maxi maal twee subgebieden voor de oplossing kiezen. Als u meerdere subcategorieën wilt selecteren, gebruikt u de `Ctrl` sleutel (op Windows) of de opdracht toets (op Mac OS).
+U kunt Maxi maal drie oplossings gebieden toevoegen voor uw aanbieding. Voor elk oplossings gebied kunt u Maxi maal twee subgebieden voor de oplossing kiezen. Als u meerdere subcategorieën wilt selecteren, gebruikt u de `Ctrl` sleutel (op Windows) of de opdracht sleutel (in macOS).
 
 ## <a name="documents"></a>Documenten
 
-U hebt de mogelijkheid om liquide documenten op te geven die micro soft gebruikt om meer te weten te komen over uw aanbieding en de geschiktheid voor uw klant behoeften te evalueren. Alle documenten die in de onderstaande tabel staan, zijn optioneel.
+U hebt de mogelijkheid om liquide documenten op te geven die micro soft gebruikt om meer te weten te komen over uw aanbieding en de geschiktheid voor uw klant behoeften te evalueren.
 
 | **Documenten**    | **Beschrijving**  |
 | :------------------- | :-------------------|
-| *Klant met één pager* | Voor de klant geschikte beschrijving van uw aanbieding. Micro soft verkoop teams kunnen deze informatie delen met klanten om te helpen bepalen of uw aanbieding goed kan worden aangepast en om ervoor te zorgen dat de klant klaar is. <br> <br> Gebruik een van de relevante sjablonen die beschikbaar zijn in Partner Center: <br> <ul> <li> Microsoft Azure sjabloon met één pager </li> <li> Micro soft Dynamics 365 1-pager sjabloon </li> <li> Micro soft 365 1-pager sjabloon </li> <li> Windows 10 1-pager sjabloon </li> </ul> |
-| *Presentatie van de klant* | Schuif in het diamodel om uw oplossing te verkopen en de toegevoegde waarde. Nadat u hebt gecontroleerd of uw aanbieding klaar is voor de klant, delen micro soft verkoop teams de presentatie mogelijk met klanten om de waarde te geleeren die beide bedrijven meebrengen bij het implementeren van een gemeen schappelijke oplossing. De presentatie moet betrekking hebben op de werking van uw oplossing, hoe deze kan helpen klanten, welke branches de oplossing is voor en hoe deze worden vergeleken met concurrerende oplossingen. <br> <br> Gebruik de sjabloon die beschikbaar is in Partner Center.|
+| *Klant one-pager (vereist)* | Voor de klant geschikte beschrijving van uw aanbieding. Micro soft verkoop teams kunnen deze informatie delen met klanten om te helpen bepalen of uw aanbieding goed kan worden aangepast en om ervoor te zorgen dat de klant klaar is. <br> <br> Gebruik een van de relevante sjablonen die beschikbaar zijn in Partner Center: <br> <ul> <li> Microsoft Azure sjabloon met één pager </li> <li> Micro soft Dynamics 365 1-pager sjabloon </li> <li> Micro soft 365 1-pager sjabloon </li> <li> Windows 10 1-pager sjabloon </li> </ul> |
+| *Presentatie van de klant (vereist)* | Schuif in het diamodel om uw oplossing te verkopen en de toegevoegde waarde. Nadat u hebt gecontroleerd of uw aanbieding klaar is voor de klant, delen micro soft verkoop teams de presentatie mogelijk met klanten om de waarde te geleeren die beide bedrijven meebrengen bij het implementeren van een gemeen schappelijke oplossing. De presentatie moet betrekking hebben op de werking van uw oplossing, hoe deze kan helpen klanten, welke branches de oplossing is voor en hoe deze worden vergeleken met concurrerende oplossingen. <br> <br> Gebruik de sjabloon die beschikbaar is in Partner Center.|
 | *Casestudy van de klant* | Deze informatie toont een mogelijke klant hoe u en micro soft deze oplossing in eerdere gevallen hebben geïmplementeerd. <br> <br> Gebruik de sjabloon die beschikbaar is in Partner Center. |
-| *Verifieer bare klant-WINS (optioneel)* | Specifieke voor beelden van klant successen nadat uw oplossing is geïmplementeerd. |
-| *Channel pitch-dek (optioneel)* | Een diapresentatie met informatie waarmee de wederverkopers van het kanaal kunnen leren om meer te weten te komen over uw oplossing en om de verkoop teams gereed te stellen om uw aanbieding te verkopen. Dit omvat doorgaans een lift, informatie over doel klanten, vragen om klanten, pratende punten en koppelingen naar Video's, documentatie en ondersteunings informatie te vragen. |
+| *Geverifieerde klant-WINS* | Specifieke voor beelden van klant successen nadat uw oplossing is geïmplementeerd. |
+| *Channel pitch-deck* | Een diapresentatie met informatie waarmee de wederverkopers van het kanaal kunnen leren om meer te weten te komen over uw oplossing en om de verkoop teams gereed te stellen om uw aanbieding te verkopen. Dit omvat doorgaans een lift, informatie over doel klanten, vragen om klanten, pratende punten en koppelingen naar Video's, documentatie en ondersteunings informatie te vragen. |
 | *Diagrammen voor referentie architectuur* | Een document waarin het model wordt weer gegeven dat staat voor het IP-adres dat is gemaakt door de partner, samen met de relatie met micro soft-Cloud Services, en hoe het kan voldoen aan de technische vereisten van het programma voor het Program meren van de IP. |
 | *Andere documenten* | U kunt eventueel Maxi maal vijf extra documenten of Video's uploaden om micro soft verkoop teams en-wederverkopers te helpen om meer te weten te komen over uw oplossing, organisatie en/of verschillen. |
 | *URL van externe verwijzing* | De koppeling naar de site van uw product, waar micro soft Sales teams en Channel wederverkopers meer informatie over uw oplossing hebben. |
 
 ## <a name="contacts"></a>Contactpersonen
 
-Met uw contact gegevens kunnen micro soft verkoop teams en Channel wederverkopers vragen om aanvullende informatie van de juiste resource in uw organisatie. Contact gegevens zijn beschikbaar voor alle verkoop teams van micro soft. Als u ervoor kiest om uw aanbieding beschikbaar te stellen in het CSP-programma, is deze contact informatie ook beschikbaar voor Channel-wederverkopers.
+Met uw contact gegevens kunnen micro soft verkoop teams en Channel wederverkopers vragen om aanvullende informatie van de juiste resource in uw organisatie. Contact gegevens zijn beschikbaar voor alle verkoop teams van micro soft. *(Een contact persoon voor elke geografie waarvoor uw aanbieding beschikbaar is, is vereist voor het programma voor co-sell.)* Als u ervoor kiest om uw aanbieding beschikbaar te stellen in het CSP-programma, is deze contact informatie ook beschikbaar voor Channel-wederverkopers.
 
 U kunt uw contact personen opgeven door de CSV-sjabloon te downloaden van het partner centrum, elke rij in te vullen met informatie over de contact persoon en dit CSV-bestand te importeren. Als u een CSV-bestand importeert, worden de bestaande contact personen overschreven.
 

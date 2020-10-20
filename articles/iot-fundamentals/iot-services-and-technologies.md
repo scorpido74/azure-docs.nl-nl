@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: dobett
-ms.openlocfilehash: ad0712de85a08ed581ba89d7e01d8ba1244006b2
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 0678b2c36d341b2bc2bd9be755b9a6213acdd462
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977558"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206081"
 ---
 # <a name="what-azure-technologies-and-services-can-you-use-to-create-iot-solutions"></a>Welke Azure-technologieën en -services kunt u gebruiken om IoT-oplossingen te maken?
 
@@ -61,7 +61,7 @@ U kunt de manier waarop u de invoegcode voor uw apparaten maakt verder vereenvou
 
 Met [Azure IoT Edge](../iot-edge/about-iot-edge.md) kunt u delen van uw IoT-werkbelasting overzetten van uw Azure-cloudservices naar uw apparaten. IoT Edge kan de latentie in uw oplossing verminderen, de hoeveelheid gegevens die door uw apparaten worden uitgewisseld met de cloud verminderen en offline-scenario's inschakelen. U kunt IoT Edge-apparaten beheren vanuit IoT Central en enkele oplossingsverbeteringen.
 
-[Azure Sphere](https://docs.microsoft.com/azure-sphere/product-overview/what-is-azure-sphere) is een beveiligd toepassingsplatform op hoog niveau met ingebouwde communicatie- en beveiligingsfuncties voor apparaten die zijn verbonden met internet. Het bevat een beveiligde microcontroller-eenheid, een aangepast Linux-besturingssysteem en een beveiligingsservice in de cloud die continue, hernieuwbare beveiliging biedt.
+[Azure Sphere](/azure-sphere/product-overview/what-is-azure-sphere) is een beveiligd toepassingsplatform op hoog niveau met ingebouwde communicatie- en beveiligingsfuncties voor apparaten die zijn verbonden met internet. Het bevat een beveiligde microcontroller-eenheid, een aangepast Linux-besturingssysteem en een beveiligingsservice in de cloud die continue, hernieuwbare beveiliging biedt.
 
 ### <a name="cloud-connectivity"></a>Cloudconnectiviteit
 
@@ -76,7 +76,7 @@ IoT Hub is een kernonderdeel van de oplossingsverbeteringen en u kunt het gebrui
 
 ### <a name="bridging-the-gap-between-the-physical-and-digital-worlds"></a>Het overbruggen van de ruimte tussen de fysieke en de digitale wereld
 
-[Azure Digital Twins](../digital-twins/about-digital-twins.md) is een IoT-service waarmee u een model van een fysieke omgeving kunt maken. Het maakt gebruik van een grafiek op basis van ruimtelijke intelligentie om de relaties tussen mensen, ruimten en apparaten te modelleren. Door gegevens uit de digitale en fysieke wereld te correleren, kunt u contextbewuste oplossingen maken.
+[Azure Digital Twins](../digital-twins/overview.md) is een IoT-service waarmee u een model van een fysieke omgeving kunt maken. Het maakt gebruik van een grafiek op basis van ruimtelijke intelligentie om de relaties tussen mensen, ruimten en apparaten te modelleren. Door gegevens uit de digitale en fysieke wereld te correleren, kunt u contextbewuste oplossingen maken.
 
 IoT Central maakt gebruik van digitale dubbelen om apparaten en gegevens in de echte wereld te synchroniseren met de digitale modellen waarmee gebruikers deze aangesloten apparaten kunnen bewaken en beheren.
 
@@ -84,7 +84,7 @@ IoT Central maakt gebruik van digitale dubbelen om apparaten en gegevens in de e
 
 IoT-apparaten genereren doorgaans grote hoeveelheden tijdreeksgegevens, zoals temperatuurmetingen van sensoren. [Azure Time Series Insights](../time-series-insights/time-series-insights-overview.md) kan verbinding maken met een IoT-hub, de telemetriegegevensstroom van uw apparaten lezen, die gegevens opslaan en u in staat stellen om hier query's op uit te voeren en het te visualiseren.
 
-[Azure Maps](/azure/azure-maps) is een verzameling georuimtelijke services die nieuwe kaartgegevens gebruiken om webtoepassingen en mobiele toepassingen te voorzien van een nauwkeurige geografische context. U kunt een REST API, een JavaScript-besturingselement op het web of een Android-SDK gebruiken om uw toepassingen te bouwen.
+[Azure Maps](../azure-maps/index.yml) is een verzameling georuimtelijke services die nieuwe kaartgegevens gebruiken om webtoepassingen en mobiele toepassingen te voorzien van een nauwkeurige geografische context. U kunt een REST API, een JavaScript-besturingselement op het web of een Android-SDK gebruiken om uw toepassingen te bouwen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

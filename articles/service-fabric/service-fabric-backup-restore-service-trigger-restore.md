@@ -5,12 +5,12 @@ author: aagup
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: f98bf4f4518abd5f1b1a826e355c851acc055852
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d881033b8dde6cc55a9720ec94084bd876116f1
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86246687"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207390"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>Back-up herstellen in azure Service Fabric
 
@@ -190,6 +190,10 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
 U kunt de voortgang van een herstel met TrackRestoreProgress volgen.
 
+> [!NOTE]
+> Wanneer u Power shell gebruikt om een partitie te herstellen, als sleutel backuplocation ' $ ' heeft, kunt u deze gebruiken met ' ~ '
+>
+
 ### <a name="using-service-fabric-explorer"></a>Service Fabric Explorer gebruiken
 U kunt een terugzet bewerking activeren vanuit Service Fabric Explorer. Zorg ervoor dat de geavanceerde modus is ingeschakeld in Service Fabric Explorer instellingen.
 1. Selecteer de gewenste partities en klik op acties. 
@@ -250,6 +254,10 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 ```
 
 U kunt de voortgang van het terugzetten volgen met behulp van TrackRestoreProgress.
+
+> [!NOTE]
+> Wanneer u Power shell gebruikt om een partitie te herstellen, als sleutel backuplocation ' $ ' heeft, kunt u deze gebruiken met ' ~ '
+>
 
 ## <a name="track-restore-progress"></a>Voortgang van herstellen bijhouden
 

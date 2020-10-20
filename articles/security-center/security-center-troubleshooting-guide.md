@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: e2922d19dbcad7da2808a86896e39d21420e73d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9afc827d1cef4ae1f0ed304b3c1d3cfbfe89b82e
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904740"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201797"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Handleiding voor het oplossen van problemen met Azure Security Center
 
@@ -64,7 +64,7 @@ Als u de Services Management Console (Services. msc) opent, ziet u ook de Log An
 
 Als u wilt zien welke versie van de agent u hebt, opent u **taak beheer**, gaat u naar het tabblad **processen** en gaat u naar de **log Analytics Agent-service**, klikt u erop met de rechter muisknop en klikt u op **Eigenschappen**. Op het tabblad **Details** kunt u de bestandsversie vinden, zoals hieronder wordt weergegeven:
 
-![File](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig6.png)
+![Bestand](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig6.png)
 
 ## <a name="log-analytics-agent-installation-scenarios"></a>Installatie scenario's voor Log Analytics agent
 
@@ -91,7 +91,7 @@ Er zijn twee installatie scenario's die verschillende resultaten kunnen oplevere
 | Installatie is mislukt: lokale agent is al geïnstalleerd | De installatie van Log Analytics agent is mislukt. Security Center heeft vastgesteld dat er al een lokale agent (Log Analytics of System Center Operations Manager) is geïnstalleerd op de VM. Om te voor komen dat de multi-multihoming-configuratie, waarbij de VM wordt gerapporteerd aan twee afzonderlijke werk ruimten, de installatie van de Log Analytics-agent is gestopt. | U kunt dit op twee manieren oplossen: [de extensie handmatig installeren](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) en verbinden met de gewenste werkruimte. Of, de gewenste werkruimte instellen als uw standaardwerkruimte en automatische inrichting van de agent inschakelen.  Zie [Automatische inrichting inschakelen](security-center-enable-data-collection.md). |
 | Kan geen verbinding maken tussen agent en werkruimte | Log Analytics-agent is geïnstalleerd, maar is mislukt vanwege een netwerk verbinding.  Controleer of er internettoegang is. En anders moet er een geldige HTTP-proxy voor de agent zijn geconfigureerd. | Zie Netwerkvereisten voor Monitoring Agent. |
 | Agent verbonden met ontbrekende of onbekende werkruimte | Security Center geïdentificeerd dat de Log Analytics-agent die op de virtuele machine is geïnstalleerd, is verbonden met een werk ruimte waartoe hij geen toegang heeft. | Dit kan gebeuren in twee gevallen. De werkruimte is verwijderd en bestaat niet meer. Installeer de agent opnieuw met de juiste werkruimte of verwijder de agent en laat Security Center de automatische inrichtingsinstallatie voltooien. In het tweede geval behoort de werkruimte tot een abonnement waarvoor Security Center geen machtigingen heeft. Security Center verleent de Microsoft Security Resource Provider toegang op basis van een abonnement. Als u toegang wilt inschakelen, registreert u het abonnement op Microsoft Security Resource Provider. U kunt dit doen via API, PowerShell, portal of gewoon door in het dashboard **Overzicht** van het Security Center te filteren op abonnement. Zie [Resourceproviders en -typen](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) voor meer informatie. |
-| Agent reageert niet of ID ontbreekt | Security Center kan de beveiligingsgegevens die zijn gescand van de virtuele machine niet ophalen, zelfs niet als de agent is geïnstalleerd. | De agent rapporteert geen gegevens, ook de heartbeat niet. De agent is mogelijk beschadigd of het verkeer wordt geblokkeerd. Het is ook mogelijk dat de agent gegevens rapporteert, maar er ontbreekt een Azure-Resource-ID zodat de gegevens niet overeenkomen met de Azure-VM. Zie [probleemoplossings handleiding voor log Analytics-agent voor Linux](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#im-not-seeing-any-linux-data-in-the-oms-portal)voor meer informatie over het oplossen van problemen met Linux. Zie [Troubleshooting Windows Virtual Machines](https://github.com/MicrosoftDocs/azure-docs/blob/8c53ac4371d482eda3d85819a4fb8dac09996a89/articles/log-analytics/log-analytics-azure-vm-extension.md#troubleshooting-windows-virtual-machines) (Problemen met virtuele Windows-machines oplossen) voor het oplossen van problemen in Windows. |
+| Agent reageert niet of ID ontbreekt | Security Center kan de beveiligingsgegevens die zijn gescand van de virtuele machine niet ophalen, zelfs niet als de agent is geïnstalleerd. | De agent rapporteert geen gegevens, ook de heartbeat niet. De agent is mogelijk beschadigd of het verkeer wordt geblokkeerd. Het is ook mogelijk dat de agent gegevens rapporteert, maar er ontbreekt een Azure-Resource-ID zodat de gegevens niet overeenkomen met de Azure-VM. Zie [probleemoplossings handleiding voor log Analytics-agent voor Linux](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#im-not-seeing-any-linux-data-in-the-oms-portal)voor meer informatie over het oplossen van problemen met Linux. Zie [Troubleshooting Windows Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-windows#troubleshoot-and-support) (Problemen met virtuele Windows-machines oplossen) voor het oplossen van problemen in Windows. |
 | Agent niet geïnstalleerd | Gegevensverzameling is uitgeschakeld. | Schakel het verzamelen van gegevens in het beveiligings beleid in of installeer de Log Analytics agent hand matig. |
 
 ## <a name="troubleshooting-monitoring-agent-network-requirements"></a>Problemen oplossen met de netwerkvereisten voor de Monitoring Agent <a name="mon-network-req"></a>

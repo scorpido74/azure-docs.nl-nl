@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: 31b1ff3324c610c385ad793f124735be30cab9f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba9f2b10258f19504e3fd37723eceff7b8c37f6a
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327711"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203480"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Logboek query's in Azure Monitor optimaliseren
 Azure Monitor logboeken maakt gebruik van [Azure Data Explorer (ADX)](/azure/data-explorer/) om logboek gegevens op te slaan en query's uit te voeren voor het analyseren van die gegevens. Het maakt, beheert en onderhoudt de ADX-clusters en optimaliseert deze voor de werk belasting van uw logboek analyse. Wanneer u een query uitvoert, wordt deze geoptimaliseerd en doorgestuurd naar het juiste ADX-cluster waarin de werkruimte gegevens worden opgeslagen. Zowel Azure Monitor-Logboeken als Azure Data Explorer maakt gebruik van veel automatische optimalisatie mechanismen voor query's. Automatische optimalisaties bieden een aanzienlijke Boost, maar in sommige gevallen kunt u de query prestaties aanzienlijk verbeteren. In dit artikel worden de prestatie overwegingen en verschillende technieken uitgelegd om ze op te lossen.
@@ -110,7 +110,7 @@ Syslog
 | count 
 ```
 
-In sommige gevallen wordt de geëvalueerde kolom impliciet gemaakt door de query verwerking enine omdat het filteren niet alleen op het veld wordt uitgevoerd:
+In sommige gevallen wordt de geëvalueerde kolom impliciet gemaakt door de engine voor query verwerking omdat het filteren niet alleen op het veld wordt uitgevoerd:
 ```Kusto
 //less efficient
 SecurityEvent

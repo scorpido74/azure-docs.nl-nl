@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/02/2020
-ms.openlocfilehash: 8ca6794024d3a6327b918eb1c369a627837e0bd0
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: ec7b776f7d573ea07f010eeab81d98222102be41
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131017"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202001"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Overzicht van Azure Monitor agents
 
@@ -81,8 +81,8 @@ Gebruik de Log Analytics agent als u het volgende moet doen:
 * Logboeken en prestatie gegevens verzamelen van virtuele of fysieke machines binnen of buiten Azure. 
 * Gegevens verzenden naar een Log Analytics-werk ruimte om te profiteren van de functies die worden ondersteund door [Azure monitor-logboeken](data-platform-logs.md) , zoals [logboek query's](../log-query/log-query-overview.md).
 * Gebruik [Azure monitor voor VM's](../insights/vminsights-overview.md) waarmee u uw virtuele machines op schaal kunt bewaken en de processen en afhankelijkheden van andere bronnen en externe processen bewaakt.  
-* Beheer de beveiliging van uw virtuele machines met behulp van [Azure Security Center](../../security-center/security-center-introduction.md)  of [Azure Sentinel](../../sentinel/overview.md).
-* Gebruik [Azure Automation update beheer](../../automation/update-management/update-mgmt-overview.md), [Azure Automation status configuratie](../../automation/automation-dsc-overview.md)of [Azure Automation wijzigingen bijhouden en inventaris](../../automation/change-tracking.md) om een uitgebreid beheer van uw Azure-vm's te leveren
+* Beheer de beveiliging van uw virtuele machines met behulp van [Azure Security Center](../../security-center/security-center-intro.md)  of [Azure Sentinel](../../sentinel/overview.md).
+* Gebruik [Azure Automation update beheer](../../automation/update-management/update-mgmt-overview.md), [Azure Automation status configuratie](../../automation/automation-dsc-overview.md)of [Azure Automation wijzigingen bijhouden en inventaris](../../automation/change-tracking/overview.md) om een uitgebreid beheer van uw Azure-vm's te leveren
 * Gebruik verschillende [oplossingen](../monitor-reference.md#insights-and-core-solutions) voor het bewaken van een bepaalde service of toepassing.
 
 De beperkingen van de Log Analytics-agent zijn:

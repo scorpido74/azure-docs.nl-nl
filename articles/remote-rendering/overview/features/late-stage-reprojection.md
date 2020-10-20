@@ -5,12 +5,12 @@ author: sebastianpick
 ms.author: sepick
 ms.date: 02/04/2020
 ms.topic: article
-ms.openlocfilehash: ad9d135df428c79df745ad24d9e7382e06599168
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: f0951415bba22a226dadb7f2a115cede451399bc
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893200"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205639"
 ---
 # <a name="late-stage-reprojection"></a>Vertraagde fase van het project
 
@@ -46,7 +46,7 @@ Bij vlakke LSR worden deze objecten het beste opnieuw geprojecteerd die dicht bi
 
 ### <a name="configure-planar-lsr-in-unity"></a>Vlakke LSR in unit configureren
 
-De para meters voor het vlak worden afgeleid van een zodanige *focus punt*, dat u elk frame via moet opgeven `UnityEngine.XR.WSA.HolographicSettings.SetFocusPointForFrame` . Zie de [API van het unit-focus punt](https://docs.microsoft.com/windows/mixed-reality/focus-point-in-unity) voor meer informatie. Als u geen focus punt instelt, wordt er een terugval gekozen. Automatische terugval leidt echter vaak tot het afleiden van de beste resultaten.
+De para meters voor het vlak worden afgeleid van een zodanige *focus punt*, dat u elk frame via moet opgeven `UnityEngine.XR.WSA.HolographicSettings.SetFocusPointForFrame` . Zie de [API van het unit-focus punt](/windows/mixed-reality/focus-point-in-unity) voor meer informatie. Als u geen focus punt instelt, wordt er een terugval gekozen. Automatische terugval leidt echter vaak tot het afleiden van de beste resultaten.
 
 U kunt het focus punt zelf berekenen, hoewel het zinvol is om het te baseren op het bedrag dat wordt berekend door de externe rendering-host. Aanroep `RemoteManagerUnity.CurrentSession.GraphicsBinding.GetRemoteFocusPoint` om die te verkrijgen. U wordt gevraagd een coördinaten frame op te geven waarin het focus punt wordt uitdrukt. In de meeste gevallen kunt u het beste het resultaat `UnityEngine.XR.WSA.WorldManager.GetNativeISpatialCoordinateSystemPtr` hier opgeven.
 

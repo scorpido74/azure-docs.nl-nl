@@ -11,12 +11,12 @@ ms.author: nigup
 ms.date: 10/13/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4, contperfq2
-ms.openlocfilehash: a81af14992c8557c245ab3a1073f031a6c505084
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 93cf29651110356023752f2377c9a0fc358982a7
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019389"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203042"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>& quota voor resources met Azure Machine Learning beheren
 
@@ -178,11 +178,13 @@ Als u een limiet wilt aanvragen voor deze scenario's, gebruikt u de volgende sta
     | Type probleem | Technisch |
     | Service | Mijn services. Selecteer __machine learning__ in de vervolg keuzelijst. |
     | Probleem type | Werk ruimte instellen, SDK en CLI |
-    | Subtype van probleem | Probleem bij het inrichten of beheren van een werkruimte |
+    | Subtype van probleem | Aanvraag voor het privé-eind punt en de Privé-DNS zone |
 
 2. Gebruik in de sectie __Details__ het veld __Beschrijving__ om de Azure-regio op te geven die u wilt gebruiken en het scenario dat u wilt gebruiken. Als u quotum verhogingen moet aanvragen voor meerdere abonnementen, vermeldt u ook de abonnement-Id's in dit veld.
 
 3. Selecteer __maken__ om de aanvraag te maken.
+
+:::image type="content" source="media/how-to-manage-quotas/quota-increase-private-endpoint.png" alt-text="Scherm opname van een persoonlijk eind punt en een verzoek om een privé-DNS-quotum te verhogen":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

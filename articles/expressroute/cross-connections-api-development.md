@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: duau
-ms.openlocfilehash: 25c8288e1804e6a08ae2b5b128ab6fbc699563f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b80392231dba26a10141dcd8247b092e8171894c
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89397845"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202477"
 ---
 # <a name="expressroute-crossconnnections-api-development-and-integration"></a>ExpressRoute CrossConnnections API-ontwikkeling en-integratie
 
@@ -30,7 +30,7 @@ Voor delen van verplaatsen naar de expressRouteCrossConnections-resource:
 
 * Toekomstige verbeteringen voor ExpressRoute-partners worden beschikbaar gesteld op de ExpressRouteCrossConnection-resource.
 
-* Partners kunnen [Azure RBAC (op rollen gebaseerd toegangs beheer)](https://docs.microsoft.com/azure/role-based-access-control/overview) Toep assen op de expressRouteCrossConnection-resource. Met deze besturings elementen kunt u machtigingen definiëren waarvoor gebruikers accounts de expressRouteCrossConnection-resource kunnen wijzigen en peering-configuraties toevoegen/bijwerken/verwijderen.
+* Partners kunnen [Azure RBAC (op rollen gebaseerd toegangs beheer)](../role-based-access-control/overview.md) Toep assen op de expressRouteCrossConnection-resource. Met deze besturings elementen kunt u machtigingen definiëren waarvoor gebruikers accounts de expressRouteCrossConnection-resource kunnen wijzigen en peering-configuraties toevoegen/bijwerken/verwijderen.
 
 * De expressRouteCrossConnection-resource beschrijft Api's die handig kunnen zijn bij het oplossen van problemen met ExpressRoute-verbindingen. Dit omvat de ARP-tabel, het samen vatting BGP-route tabel en de details van BGP-route tabellen. Deze functie wordt niet ondersteund door de klassieke implementatie-Api's.
 
@@ -51,7 +51,7 @@ De test peering locaties: Dummy apparaten en poorten worden standaard niet aan p
 
 ### <a name="2-register-the-dev_provider-subscription-to-access-the-expressroutecrossconnections-api"></a>2. Registreer het Dev_Provider-abonnement om toegang te krijgen tot de expressRouteCrossConnections-API
 
-Voor toegang tot de expressRouteCrossConnections-API moet het partner abonnement worden inge schreven bij de **resource provider micro soft. Network**. Volg de stappen in het artikel [Azure-resource providers en-typen](/azure/azure-resource-manager/management/resource-providers-and-types#azure-portal) om het registratie proces te volt ooien.
+Voor toegang tot de expressRouteCrossConnections-API moet het partner abonnement worden inge schreven bij de **resource provider micro soft. Network**. Volg de stappen in het artikel [Azure-resource providers en-typen](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) om het registratie proces te volt ooien.
 
 ### <a name="3-set-up-authentication-for-azure-resource-manager-rest-api-calls"></a>3. authenticatie voor Azure Resource Manager-REST API-aanroepen instellen
 
@@ -59,8 +59,8 @@ De meeste Azure-Services vereisen client code voor verificatie bij Resource Mana
 
 Het verificatie proces bestaat uit twee belang rijke stappen:
 
-1. [Registreer de client](https://docs.microsoft.com/rest/api/azure/#register-your-client-application-with-azure-ad).
-2. [Maak de toegangs aanvraag](https://docs.microsoft.com/rest/api/azure/#create-the-request).
+1. [Registreer de client](/rest/api/azure/#register-your-client-application-with-azure-ad).
+2. [Maak de toegangs aanvraag](/rest/api/azure/#create-the-request).
 
 ### <a name="4-provide-network-contributor-permission-to-the-client-application"></a>4. de machtiging netwerk Inzender opgeven voor de client toepassing
 
@@ -76,12 +76,12 @@ Zodra de verificatie is geconfigureerd, moet u de netwerkinzender toegang verlen
 
 ### <a name="5-develop"></a>5. Ontwikkel
 
-Ontwikkel de [expressRouteCrossConnections-API](https://docs.microsoft.com/rest/api/expressroute/expressroutecrossconnections).
+Ontwikkel de [expressRouteCrossConnections-API](/rest/api/expressroute/expressroutecrossconnections).
 
 ## <a name="rest-api"></a>REST-API
 
-Zie [ExpressRoute CrossConnections rest API](https://docs.microsoft.com/rest/api/expressroute/expressroutecrossconnections) voor rest API-documentatie.
+Zie [ExpressRoute CrossConnections rest API](/rest/api/expressroute/expressroutecrossconnections) voor rest API-documentatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [EXPRESSROUTE rest api's](https://docs.microsoft.com/rest/api/expressroute/)(Engelstalig) voor meer informatie over alle ExpressRoute rest-api's.
+Zie [EXPRESSROUTE rest api's](/rest/api/expressroute/)(Engelstalig) voor meer informatie over alle ExpressRoute rest-api's.

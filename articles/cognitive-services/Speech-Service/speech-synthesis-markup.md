@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: baa8b1f302c0d8a7355f74b686ffedfb45ac22d3
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 2c60d2e874e861eebac54e24ba0cb949bfb9a57b
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096042"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207679"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>De synthese verbeteren met Markup Language voor spraak synthese (SSML)
 
@@ -148,7 +148,7 @@ speech_config.set_property_by_name(
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-<a href="https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#setproperty-string--string-" target="_blank"> `setProperty` Zie <span class="docon docon-navigate-external x-hidden-focus"></span> </a>voor meer informatie.
+<a href="https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest&preserve-view=true#setproperty-string--string-" target="_blank"> `setProperty` Zie <span class="docon docon-navigate-external x-hidden-focus"></span> </a>voor meer informatie.
 
 ```javascript
 speechConfig.setProperty(
@@ -222,7 +222,7 @@ Voor Chinees spraak XiaoxiaoNeural kan de intensiteit van de stijl van de spraak
 
 Gebruik deze tabel om te bepalen welke spraak stijlen worden ondersteund voor elke Neural-stem.
 
-| Spraak                   | Stijl                     | Description                                                 |
+| Spraak                   | Stijl                     | Beschrijving                                                 |
 |-------------------------|---------------------------|-------------------------------------------------------------|
 | `en-US-AriaNeural`      | `style="newscast-formal"` | Een formele, vertrouwende en bindende Toon voor nieuws levering |
 |                         | `style="newscast-casual"` | Een veelzijdige en informe Toon voor algemene nieuws levering        |
@@ -298,7 +298,7 @@ Gebruik het `break` element om pauzes (of onderbrekingen) tussen woorden in te v
 | `strength` | Hiermee geeft u de relatieve duur van een onderbreking op met een van de volgende waarden:<ul><li>geen</li><li>x-zwak</li><li>Schakel</li><li>gemiddeld (standaard)</li><li>strakk</li><li>x-Strong</li></ul> | Optioneel |
 | `time` | Hiermee geeft u de absolute duur van een onderbreking in seconden of milliseconden. Voor beelden van geldige waarden zijn `2s` en `500` | Optioneel |
 
-| Hoger                      | Description |
+| Hoger                      | Beschrijving |
 |-------------------------------|-------------|
 | Geen, of als er geen waarde wordt gegeven | 0 MS        |
 | x-zwak                        | 250 MS      |

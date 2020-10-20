@@ -8,12 +8,12 @@ keywords: Hadoop hoge Beschik baarheid
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 9eb0cd3fd327a53dd0761779916caa096153a010
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2c5e5d0dc90f8f41882f6a63497a197cd74f0ce
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856429"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207577"
 ---
 # <a name="azure-hdinsight-business-continuity-architectures"></a>Azure HDInsight-architectuur voor bedrijfs continuïteit
 
@@ -24,7 +24,7 @@ Dit artikel bevat enkele voor beelden van bedrijfs continuïteits architecturen 
 
 ## <a name="apache-hive-and-interactive-query"></a>Apache Hive en interactieve query
 
-[Hive-replicatie v2](https://cwiki.apache.org/confluence/display/Hive/HiveReplicationv2Development#HiveReplicationv2Development-REPLSTATUS) is de aanbevolen voor bedrijfs continuïteit in HDInsight Hive-en interactieve query clusters. De permanente secties van een zelfstandige Hive-cluster die moeten worden gerepliceerd, zijn de opslaglaag en de Hive-metastore. Hive-clusters in een scenario met meerdere gebruikers met Enterprise Security Package Azure Active Directory Domain Services en zwerver meta Store nodig hebben.
+[Hive-replicatie v2](https://cwiki.apache.org/confluence/display/Hive/HiveReplicationv2Development#HiveReplicationv2Development-REPLSTATUS) wordt aanbevolen voor bedrijfs continuïteit in HDInsight-Hive-en interactieve query clusters. De permanente secties van een zelfstandige Hive-cluster die moeten worden gerepliceerd, zijn de opslaglaag en de Hive-metastore. Hive-clusters in een scenario met meerdere gebruikers met Enterprise Security Package Azure Active Directory Domain Services en zwerver meta Store nodig hebben.
 
 :::image type="content" source="./media/hdinsight-business-continuity-architecture/hive-interactive-query.png" alt-text="Architectuur van Hive-en interactieve query's":::
 
@@ -57,6 +57,8 @@ In een *actieve primaire, met secundaire architectuur op aanvraag* , schrijven t
 In een *actief primair met stand-by secundair*, schrijven toepassingen naar de actieve primaire regio terwijl een stand-by omlaag geschaald secundair cluster in de modus alleen-lezen wordt uitgevoerd tijdens normale bewerkingen. Tijdens normale bewerkingen kunt u ervoor kiezen om regio-specifieke Lees bewerkingen te offloaden naar een secundaire.
 
 :::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-standby-secondary.png" alt-text="Architectuur van Hive-en interactieve query's":::
+
+Zie [Apache Hive replicatie in azure HDInsight-clusters](https://docs.microsoft.com/azure/hdinsight/interactive-query/apache-hive-replication) voor meer informatie over Hive-replicatie en code voorbeelden.
 
 ## <a name="apache-spark"></a>Apache Spark
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 08/15/2020
-ms.openlocfilehash: 1841c4eb8975c865c5f15a0e8fe3a6b5f0522820
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8c4eea10b0c2230e50b5ded710b3455539f6493
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89435402"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206030"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Wat wordt er bewaakt door Azure Monitor?:
 In dit artikel worden de verschillende toepassingen en services beschreven die door Azure Monitor worden bewaakt. 
@@ -77,7 +77,7 @@ De volgende tabel geeft een lijst van Azure-Services en de gegevens die ze in Az
 |Bastion | Nee | Nee | Nee |  |
 |Batch | Ja | Ja | Nee |  |
 |Batch AI | Nee | Nee | Nee |  |
-|Blockchain-service | Nee | Ja | Nee |  |
+|Blockchain Service | Nee | Ja | Nee |  |
 |Blueprints | Nee | Nee | Nee |  |
 |Bot-service | Nee | Nee | Nee |  |
 |Cloud Services | Ja | Ja | Nee | De agent die is vereist om het gast besturingssysteem en de werk stromen te bewaken.  |
@@ -111,7 +111,7 @@ De volgende tabel geeft een lijst van Azure-Services en de gegevens die ze in Az
 |ExpressRoute | Ja | Ja | Nee |  |
 |Firewall | Ja | Ja | Nee |  |
 |Front Door | Ja | Ja | Nee |  |
-|Functies | Ja | Ja | Nee |  |
+|Functions | Ja | Ja | Nee |  |
 |HDInsight | Nee | Ja | Nee |  |
 |HPC Cache | Nee | Nee | Nee |  |
 |Information Protection | Nee | Ja | Nee |  |
@@ -131,11 +131,11 @@ De volgende tabel geeft een lijst van Azure-Services en de gegevens die ze in Az
 |Microsoft PowerApps | Nee | Nee | Nee |  |
 |Microsoft Social Engagement | Nee | Nee | Nee |  |
 |Microsoft Stream | Ja | Ja | Nee |  |
-|Migrate | Nee | Nee | Nee |  |
+|Migreren | Nee | Nee | Nee |  |
 |Multi-Factor Authentication | Nee | Ja | Nee |  |
 |Network Watcher | Ja | Ja | Nee |  |
 |Notification Hubs | Ja | Nee | Nee |  |
-|Open Datasets | Nee | Nee | Nee |  |
+|Open gegevenssets | Nee | Nee | Nee |  |
 |Beleid | Nee | Nee | Nee |  |
 |Power BI Embedded | Ja | Ja | Nee |  |
 |Private Link | Nee | Nee | Nee |  |
@@ -145,11 +145,11 @@ De volgende tabel geeft een lijst van Azure-Services en de gegevens die ze in Az
 |Resource Graph | Nee | Nee | Nee |  |
 |Resource Manager | Nee | Nee | Nee |  |
 |Retail-zoek opdracht: door Bing | Nee | Nee | Nee |  |
-|Zoeken | Ja | Ja | Nee |  |
+|Search | Ja | Ja | Nee |  |
 |Service Bus | Ja | Ja | Nee |  |
 |Service Fabric | Nee | Ja | Nee | De agent die is vereist om het gast besturingssysteem en de werk stromen te bewaken.  |
 |Aanmeldings Portal | Nee | Nee | Nee |  |
-|Siteherstel | Nee | Ja | Nee |  |
+|Site Recovery | Nee | Ja | Nee |  |
 |Lente-Cloud service | Nee | Nee | Nee |  |
 |Azure Synapse Analytics | Ja | Ja | Nee |  |
 |SQL Database | Ja | Ja | Nee |  |
@@ -164,7 +164,7 @@ De volgende tabel geeft een lijst van Azure-Services en de gegevens die ze in Az
 |Traffic Manager | Ja | Ja | Nee |  |
 |Universeel afdrukken | Nee | Nee | Nee |  |
 |Virtuele-machineschaalsets | Nee | Ja | [Ja](insights/vminsights-overview.md) | De agent die is vereist om het gast besturingssysteem en de werk stromen te bewaken. |
-|Virtual Machines | Ja | Ja | [Ja](insights/vminsights-overview.md) | De agent die is vereist om het gast besturingssysteem en de werk stromen te bewaken. |
+|Virtuele machines | Ja | Ja | [Ja](insights/vminsights-overview.md) | De agent die is vereist om het gast besturingssysteem en de werk stromen te bewaken. |
 |Virtual Network | Ja | Ja | [Ja](insights/network-insights-overview.md) |  |
 |Virtual Network-NSG-stroom logboeken | Nee | Ja | Nee |  |
 |VPN Gateway | Ja | Ja | Nee |  |
@@ -176,7 +176,7 @@ De services en oplossingen in de volgende tabel slaan hun gegevens op in een Log
 
 | Product/service | Beschrijving |
 |:---|:---|
-| [Azure Automation](../automation/index.yml) | Updates van het besturings systeem beheren en wijzigingen bijhouden op Windows-en Linux-computers. Zie [Wijzigingen bijhouden](../automation/change-tracking.md) en [updatebeheer](../automation/update-management/update-mgmt-overview.md). |
+| [Azure Automation](../automation/index.yml) | Updates van het besturings systeem beheren en wijzigingen bijhouden op Windows-en Linux-computers. Zie [Wijzigingen bijhouden](../automation/change-tracking/overview.md) en [updatebeheer](../automation/update-management/update-mgmt-overview.md). |
 | [Azure Information Protection ](/azure/information-protection/) | U kunt documenten en e-mail berichten classificeren en optioneel beveiligen. Zie [centrale rapportage voor Azure Information Protection](/azure/information-protection/reports-aip#configure-a-log-analytics-workspace-for-the-reports). |
 | [Azure Security Center](../security-center/index.yml) | Verzamelen en analyseren van beveiligings gebeurtenissen en het uitvoeren van bedreigings analyses. [Gegevens verzameling in azure Security Center](../security-center/security-center-enable-data-collection.md) weer geven |
 | [Azure Sentinel](../sentinel/index.yml) | Maakt verbinding met verschillende bronnen, waaronder Office 365 en Amazon Web Services Cloud Trail. Zie [verbinding maken met gegevens bronnen](../sentinel/connect-data-sources.md). |

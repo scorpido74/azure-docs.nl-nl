@@ -1,16 +1,16 @@
 ---
 title: Ondersteunde regio's voor gekoppelde Log Analytics-werkruimte
 description: In dit artikel worden de ondersteunde regio toewijzingen beschreven tussen een Automation-account en een Log Analytics-werk ruimte, aangezien deze betrekking hebben op bepaalde functies van Azure Automation.
-ms.date: 09/03/2020
+ms.date: 10/19/2020
 services: automation
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: dd831789d5f09ca6a20cce13659d6c479845f74e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bffd1cc0ce2a6a827c0bc708321a6bd2839aae2d
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440657"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207322"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>Ondersteunde regio's voor gekoppelde Log Analytics-werkruimte
 
@@ -32,6 +32,7 @@ De volgende tabel bevat de ondersteunde toewijzingen:
 |**VS**||
 |Oost,<sup>1</sup>|EastUS2|
 |WestUS2|WestUS2|
+|SouthCentralUS|SouthCentralUS|
 |WestCentralUS|WestCentralUS|
 |**Canada**||
 |CanadaCentral|CanadaCentral|
@@ -44,6 +45,7 @@ De volgende tabel bevat de ondersteunde toewijzingen:
 |**Europa**||
 |UKSouth|UKSouth|
 |West-Europa|West-Europa|
+|SwitzerlandNorth|SwitzerlandNorth|
 |**US Gov**||
 |USGovVirginia|USGovVirginia|
 |USGovArizona<sup>2</sup>|USGovArizona|
@@ -86,5 +88,5 @@ U kunt de werk ruimte ook ontkoppelen van uw Automation-account in de werk ruimt
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over Updatebeheer in [updatebeheer Overview](../update-management/update-mgmt-overview.md).
-* Meer informatie over Wijzigingen bijhouden en inventaris in [Wijzigingen bijhouden en inventaris overzicht](../change-tracking.md).
+* Meer informatie over Wijzigingen bijhouden en inventaris in [Wijzigingen bijhouden en inventaris overzicht](../change-tracking/overview.md).
 * Meer informatie over VM's buiten bedrijfsuren starten/stoppen in [VM's buiten bedrijfsuren starten/stoppen Overview](../automation-solution-vm-management.md).

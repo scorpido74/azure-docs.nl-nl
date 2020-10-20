@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c67add18dc653cc033d0cf4990f9c44f07633ac2
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: e874e7107af0eac60f16f5494c04905da56f785a
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047400"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205479"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Een Azure Digital Apparaatdubbels-exemplaar en-verificatie (Portal) instellen
 
@@ -24,7 +24,8 @@ Deze versie van dit artikel doorloopt deze stappen hand matig, één voor één,
 * Als u deze stappen hand matig wilt door lopen met de CLI, raadpleegt u de CLI-versie van dit artikel: [*instructies: een exemplaar en authenticatie instellen (CLI)*](how-to-set-up-instance-cli.md).
 * Als u via een automatische installatie wilt uitvoeren met behulp van een voor beeld van een implementatie script, raadpleegt u de script versie van dit artikel: [*instructies: een exemplaar en authenticatie instellen (script)*](how-to-set-up-instance-scripted.md).
 
-[!INCLUDE [digital-twins-setup-steps-prereq.md](../../includes/digital-twins-setup-steps-prereq.md)]
+[!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
+[!INCLUDE [digital-twins-setup-permissions.md](../../includes/digital-twins-setup-permissions.md)]
 
 ## <a name="create-the-azure-digital-twins-instance"></a>Het Azure Digital Apparaatdubbels-exemplaar maken
 
@@ -94,72 +95,7 @@ U kunt de roltoewijzing weer geven die u hebt ingesteld onder *toegangs beheer (
 
 :::image type="content" source="media/how-to-set-up-instance/portal/verify-role-assignment.png" alt-text="Selecteren van ' een resource maken ' op de start pagina van de Azure Portal":::
 
-U hebt nu een Azure Digital Apparaatdubbels-exemplaar klaar om te gaan, en u hebt machtigingen toegewezen om het te beheren. Vervolgens stelt u de machtigingen voor een client-app in om deze te openen.
-
-## <a name="set-up-access-permissions-for-client-applications"></a>Toegangs machtigingen voor client toepassingen instellen
-
-[!INCLUDE [digital-twins-setup-app-registration.md](../../includes/digital-twins-setup-app-registration.md)]
-
-Begin met het navigeren naar [Azure Active Directory](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) in het Azure Portal (u kunt deze koppeling gebruiken of zoeken naar de portal-zoek balk). Selecteer *app-registraties* in het menu service en klik vervolgens op *+ nieuwe registratie*.
-
-:::image type="content" source="media/how-to-set-up-instance/portal/new-registration.png" alt-text="Selecteren van ' een resource maken ' op de start pagina van de Azure Portal":::
-
-Vul op de pagina *een toepassing registreren* de gevraagde waarden in:
-* **Naam**: een weergave naam voor de Azure AD-toepassing die u aan de registratie wilt koppelen
-* **Ondersteunde account typen**: Selecteer *accounts in deze organisatie-Directory alleen (alleen standaard mappen-één Tenant)*
-* **Omleidings-URI**: een antwoord-URL voor de *Azure AD-toepassing* voor de Azure AD-toepassing. Voeg een URI voor de *open bare client/systeem eigen (mobile & Desktop)* toe voor `http://localhost` .
-
-Wanneer u klaar bent, klikt u op de knop *registreren* .
-
-:::image type="content" source="media/how-to-set-up-instance/portal/register-an-application.png" alt-text="Selecteren van ' een resource maken ' op de start pagina van de Azure Portal":::
-
-Wanneer de registratie is voltooid, wordt u doorgestuurd naar de pagina met details van de portal.
-
-### <a name="provide-azure-digital-twins-api-permission"></a>Azure Digital Apparaatdubbels API-machtiging bieden
-
-Vervolgens configureert u de app-registratie die u hebt gemaakt met basislijn machtigingen voor de Azure Digital Apparaatdubbels-Api's.
-
-Selecteer vanuit de portal pagina voor de registratie van uw app *API-machtigingen* in het menu. Op de volgende machtigingen pagina, klikt u op de knop *+ een machtiging toevoegen* .
-
-:::image type="content" source="media/how-to-set-up-instance/portal/add-permission.png" alt-text="Selecteren van ' een resource maken ' op de start pagina van de Azure Portal":::
-
-Schakel op de pagina *API-machtigingen voor aanvragen* de volgende opdracht uit naar de api's die *Mijn organisatie gebruikt* en zoek naar *Azure Digital apparaatdubbels*. Selecteer _**Azure Digital apparaatdubbels**_ in de zoek resultaten om machtigingen toe te wijzen voor de Azure Digital Apparaatdubbels-api's.
-
-:::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-1.png" alt-text="Selecteren van ' een resource maken ' op de start pagina van de Azure Portal":::
-
->[!NOTE]
-> Als uw abonnement nog steeds een bestaand exemplaar van Azure Digital Apparaatdubbels uit de vorige open bare preview van de service heeft (vóór 2020 juli), moet u in plaats daarvan de _**Azure Smart Spaces-service**_ zoeken en selecteren. Dit is een oudere naam voor dezelfde set Api's (Let op: de *client-id* is hetzelfde als in de bovenstaande scherm afbeelding) en uw ervaring wordt niet meer gewijzigd dan in deze stap.
-> :::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-1-smart-spaces.png" alt-text="Selecteren van ' een resource maken ' op de start pagina van de Azure Portal":::
-
-Vervolgens selecteert u de machtigingen die u voor deze Api's wilt verlenen. Vouw de machtiging **Read (1)** uit en schakel het selectie vakje *lezen. schrijven* in om deze app-registratie lezer en schrijf machtigingen te verlenen.
-
-:::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-2.png" alt-text="Selecteren van ' een resource maken ' op de start pagina van de Azure Portal":::
-
-Klik op *machtigingen toevoegen* wanneer u klaar bent.
-
-### <a name="verify-success"></a>Controleren geslaagd
-
-Ga terug naar de pagina *API-machtigingen* en controleer of er nu een vermelding voor de machtigingen voor lezen/schrijven wordt weer gegeven in azure Digital apparaatdubbels:
-
-:::image type="content" source="media/how-to-set-up-instance/portal/verify-api-permissions.png" alt-text="Selecteren van ' een resource maken ' op de start pagina van de Azure Portal":::
-
-U kunt ook de verbinding met Azure Digital Apparaatdubbels in de *manifest.jsvan*de app-registratie controleren, die automatisch is bijgewerkt met de gegevens van de Azure Digital apparaatdubbels wanneer u de API-machtigingen hebt toegevoegd.
-
-Als u dit wilt doen, selecteert u *manifest* in het menu om de manifest code van de app-registratie weer te geven. Ga naar de onderkant van het code venster en zoek deze velden onder `requiredResourceAccess` . De waarden moeten overeenkomen met die in de onderstaande scherm afbeelding:
-
-:::image type="content" source="media/how-to-set-up-instance/portal/verify-manifest.png" alt-text="Selecteren van ' een resource maken ' op de start pagina van de Azure Portal":::
-
-### <a name="collect-important-values"></a>Belang rijke waarden verzamelen
-
-Selecteer vervolgens *overzicht* in de menu balk om de details van de app-registratie te bekijken:
-
-:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="Selecteren van ' een resource maken ' op de start pagina van de Azure Portal":::
-
-Noteer de ID van de *toepassings* -id en de *Directory (Tenant)* die op **de** pagina wordt weer gegeven. Deze waarden zijn later nodig om [een client-app te verifiëren tegen de Azure Digital apparaatdubbels-api's](how-to-authenticate-client.md). Als u niet de persoon bent die code gaat schrijven voor dergelijke toepassingen, moet u deze waarden delen met de persoon die u wilt.
-
-### <a name="other-possible-steps-for-your-organization"></a>Andere mogelijke stappen voor uw organisatie
-
-[!INCLUDE [digital-twins-setup-additional-requirements.md](../../includes/digital-twins-setup-additional-requirements.md)]
+U hebt nu een Azure Digital Apparaatdubbels-exemplaar klaar om te gaan, en u hebt machtigingen toegewezen om het te beheren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -167,5 +103,5 @@ Test afzonderlijke REST API-aanroepen voor uw exemplaar met behulp van de Azure 
 * [AZ DT-referentie](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest)
 * [*Instructies: De Azure Digital Twins-CLI gebruiken*](how-to-use-cli.md)
 
-U kunt ook zien hoe u uw client toepassing verbindt met uw instantie door de verificatie code van de client-app te schrijven:
+U kunt ook zien hoe u een client toepassing verbindt met uw exemplaar met verificatie code:
 * [*Instructies: app-verificatie code schrijven*](how-to-authenticate-client.md)

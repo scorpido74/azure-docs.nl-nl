@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: duau
-ms.openlocfilehash: 6f502b8ad8ac268cc937150f4effdf9edf8eef15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d92b5685722b8a37de3945caa1305a76b3cabb8a
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91252626"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206234"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>Bewaking, metrische gegevens en waarschuwingen voor ExpressRoute
 
@@ -42,8 +42,8 @@ Zodra een metriek is geselecteerd, wordt de standaard aggregatie toegepast. U ku
 |GlobalReachBitsOutPerSecond|Verkeer|<ui><li>Skey van gekoppeld circuit (Service sleutel)</ui></li>|Global Reach|
 |AdminState|Fysieke connectiviteit|Koppeling|ExpressRoute Direct|
 |LineProtocol|Fysieke connectiviteit|Koppeling|ExpressRoute Direct|
-|RxLightLevel|Fysieke connectiviteit|<ui><li>Gekoppeld</ui></li><ui><li>Straat</ui></li>|ExpressRoute Direct|
-|TxLightLevel|Fysieke connectiviteit|<ui><li>Gekoppeld</ui></li><ui><li>Straat</ui></li>|ExpressRoute Direct|
+|RxLightLevel|Fysieke connectiviteit|<ui><li>Koppeling</ui></li><ui><li>Straat</ui></li>|ExpressRoute Direct|
+|TxLightLevel|Fysieke connectiviteit|<ui><li>Koppeling</ui></li><ui><li>Straat</ui></li>|ExpressRoute Direct|
 >[!NOTE]
 >Het gebruik van *GlobalGlobalReachBitsInPerSecond* en *GlobalGlobalReachBitsOutPerSecond* wordt alleen weer gegeven als er ten minste één Global Reach verbinding tot stand is gebracht.
 >
@@ -70,7 +70,7 @@ U kunt bijna de real-time Beschik baarheid van BGP over Peerings en peers (prima
 
 ### <a name="arp-availability---split-by-peering"></a>Beschik baarheid van ARP-splitsen door peering  
 
-U kunt bijna de real-time Beschik baarheid van [ARP](https://docs.microsoft.com/azure/expressroute/expressroute-troubleshooting-arp-resource-manager) over Peerings en peers (primaire en secundaire ExpressRoute-routers) bekijken. Dit dash board toont de sessie van de privé-peering-ARP voor beide peers, maar is voltooid voor micro soft-peering tussen peerings. De standaard aggregatie (Average) is gebruikt voor beide peers.  
+U kunt bijna de real-time Beschik baarheid van [ARP](./expressroute-troubleshooting-arp-resource-manager.md) over Peerings en peers (primaire en secundaire ExpressRoute-routers) bekijken. Dit dash board toont de sessie van de privé-peering-ARP voor beide peers, maar is voltooid voor micro soft-peering tussen peerings. De standaard aggregatie (Average) is gebruikt voor beide peers.  
 
 :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/erArpAvailabilityMetrics.jpg" alt-text="metrische gegevens van circuit":::
 

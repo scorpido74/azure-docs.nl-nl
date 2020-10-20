@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: jawilley
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: f8e610531eaf3e7e5dbee9c40c88683a05029303
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 432d9656bf56b87798d6563cfd545b34c20001b6
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91802987"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204024"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Tips voor betere prestaties van Azure Cosmos DB en .NET
 
@@ -163,7 +163,7 @@ Wanneer u aan Azure Functions werkt, moeten instanties ook de bestaande [richt l
 Voor workloads met zware nettoladingen maken stelt `EnableContentResponseOnWrite` u de aanvraag optie in op `false` . De service zal de gemaakte of bijgewerkte resource niet langer naar de SDK retour neren. Normaal gesp roken is het niet nodig om de service te retour neren, omdat de toepassing het object heeft dat wordt gemaakt. De header waarden zijn nog steeds toegankelijk, zoals aanvragen in rekening gebracht. Het uitschakelen van het inhouds antwoord kan helpen de prestaties te verbeteren, omdat de SDK niet langer geheugen hoeft toe te wijzen of de hoofd tekst van de reactie te serialiseren. Het vermindert ook het gebruik van de netwerk bandbreedte om de prestaties te verbeteren.  
 
 ```csharp
-ItemRequestOption requestOptions = new ItemRequestOptions() { EnableContentResponseOnWrite = false };
+ItemRequestOptions requestOptions = new ItemRequestOptions() { EnableContentResponseOnWrite = false };
 ItemResponse<Book> itemResponse = await this.container.CreateItemAsync<Book>(book, new PartitionKey(book.pk), requestOptions);
 // Resource will be null
 itemResponse.Resource

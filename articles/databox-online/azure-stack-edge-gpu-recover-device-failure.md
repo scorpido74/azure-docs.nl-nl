@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: alkohli
-ms.openlocfilehash: ef99ff874376e0d76e45e4b0b2c36a78d938130b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91efdac9d17e679226f10012bbff9b5b6676ff0e
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843875"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205575"
 ---
 # <a name="recover-from-a-failed-azure-stack-edge-pro-gpu-device"></a>Herstellen van een mislukt Azure Stack Edge Pro GPU-apparaat 
 
@@ -62,7 +62,8 @@ Als u een potentiële apparaatfout wilt voorbereiden, hebt u mogelijk een van de
 | Software van derden           | Verwijzing naar de oplossing                               |
 |--------------------------------|---------------------------------------------------------|
 | Cohesity                       | [https://www.cohesity.com/solution/cloud/azure/](https://www.cohesity.com/solution/cloud/azure/) <br> Neem contact op met Cohesity voor meer informatie.          |
-| Veritas                        | Neem contact op met Veritas voor meer informatie.   |
+| CommVault                      | https://www.commvault.com/azure <br> Neem contact op met CommVault voor meer informatie. |
+| Veritas                        | http://veritas.com/azure <br> Neem contact op met Veritas voor meer informatie.   |
 
 Nadat het vervangende apparaat volledig is geconfigureerd, schakelt u het apparaat in voor lokale opslag. 
 
@@ -82,7 +83,8 @@ Als u een potentiële apparaatfout wilt voorbereiden, hebt u mogelijk een van de
 |-------------------------|----------------|--------------------------------------------------------------------------|
 | Microsoft Azure Recovery Services-agent (MARS) voor Azure Backup | Windows        | [Informatie over de MARS-agent](/azure/backup/backup-azure-about-mars)    |
 | Cohesity                | Windows, Linux | [Korte Microsoft Azure-integratie, oplossing voor back-up en herstel](https://www.cohesity.com/solution/cloud/azure) <br>Neem contact op met Cohesity voor meer informatie.                          |
-| Veritas                 | Windows, Linux | Neem contact op met Veritas voor meer informatie.                    |
+| CommVault               | Windows, Linux | https://www.commvault.com/azure <br> Neem contact op met CommVault voor meer informatie.
+| Veritas                 | Windows, Linux | http://veritas.com/azure <br> Neem contact op met Veritas voor meer informatie.                    |
 
 Nadat het vervangende apparaat volledig is geconfigureerd, kunt u de virtuele machines opnieuw implementeren met de VM-installatie kopie die eerder is gebruikt. 
 

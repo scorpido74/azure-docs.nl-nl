@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
-ms.date: 10/14/2020
-ms.openlocfilehash: 1a8dbbb42a548a8c4e9a1117166aa621e8734208
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.date: 10/16/2020
+ms.openlocfilehash: 48a044e53602b330e43b35ce2425b4b7a90582bf
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044493"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206574"
 ---
 # <a name="common-issues-when-certifying-virtual-machine-images-for-azure-marketplace"></a>Veelvoorkomende problemen bij het certificeren van installatie kopieën van virtuele machines voor Azure Marketplace
 
@@ -35,7 +35,7 @@ U kunt dit probleem oplossen door de installatie kopie op te halen uit Azure Mar
 - [Windows-installatie kopieën](create-azure-vm-technical-asset.md#create-a-vm-image-using-an-approved-base)
 
 > [!Note]
-> Als u een Linux-basis installatie kopie gebruikt die niet is gemaakt op Marketplace, kunt u de eerste partitie met 2048 KB verrekenen. Op deze manier kan de niet-opgemaakte ruimte worden gebruikt voor het toevoegen van nieuwe facturerings gegevens en kan Azure door gaan met het publiceren van uw VM naar Marketplace.  
+> Als u een Linux-basis installatie kopie gebruikt die niet afkomstig is van Azure Marketplace, kunt u de eerste partitie met 2048 KB verrekenen. Hierdoor kan de niet-opgemaakte ruimte worden gebruikt voor het toevoegen van nieuwe facturerings gegevens. Hierdoor kan Azure verdergaan met het publiceren van uw VM naar Azure Marketplace.  
 
 ## <a name="vm-extension-failure"></a>VM-extensie fout
 
@@ -87,7 +87,7 @@ Neem contact op met het ondersteunings team voor een eerdere goed keuring als u 
 
 Zie [technische assets van uw virtuele Azure-machines maken](create-azure-vm-technical-asset.md#create-a-vm-image-using-an-approved-base)voor meer informatie over het selecteren van een goedgekeurde basis.
 
-## <a name="tool-kit-test-case-execution-failed"></a>Uitvoering van test case van Tool Kit is mislukt 
+## <a name="tool-kit-test-case-execution-failed"></a>Uitvoering van test case van Tool Kit is mislukt
 
 Met de micro soft-certificerings Toolkit kunt u test cases uitvoeren en controleren of uw VHD of installatie kopie compatibel is met de Azure-omgeving.
 
@@ -145,7 +145,7 @@ De volgende tabel geeft een lijst van de Windows-test cases die de Toolkit moet 
 |16|Windows Internet Name Service|Windows Internet Name Service. Deze server functie wordt nog niet ondersteund. De toepassing mag niet afhankelijk zijn van deze functie.|
 |17|WLAN-service (Wireless LAN)|Draadloze LAN-service. Deze server functie wordt nog niet ondersteund. De toepassing mag niet afhankelijk zijn van deze functie.|
 
-Als u problemen ondervindt met de voor gaande test cases, raadpleegt u de kolom **Beschrijving** in de tabel voor de oplossing. Als u meer informatie nodig hebt, neemt u contact op met het ondersteunings team. 
+Als u problemen ondervindt met de voor gaande test cases, raadpleegt u de kolom **Beschrijving** in de tabel voor de oplossing. Als u meer informatie nodig hebt, neemt u contact op met het ondersteunings team.
 
 ## <a name="data-disk-size-verification"></a>Verificatie van de grootte van de gegevens schijf
 
@@ -157,7 +157,7 @@ Verzend de aanvraag opnieuw met een grootte die kleiner is dan of gelijk is aan 
 
 Raadpleeg de volgende regels voor beperkingen op de schijf grootte van het besturings systeem. Wanneer u een aanvraag indient, controleert u of de grootte van de besturingssysteem schijf binnen de limiet voor Linux of Windows valt.
 
-|OS|Aanbevolen grootte voor VHD|
+|Besturingssysteem|Aanbevolen grootte voor VHD|
 |---|---|
 |Linux|30 GB tot 1023 GB|
 |Windows|30 GB tot 250 GB|
@@ -183,13 +183,13 @@ De versie van het installatie kopie bestand kan worden gecontroleerd vanuit `C:\
 > [!NOTE]
 > Windows Server 2019 heeft geen verplichte versie vereisten.
 
-|OS|Versie|
+|Besturingssysteem|Versie|
 |---|---|
 |Windows met 2008 R2|6.1.7601.23689|
 |Windows Server 2012|6.2.9200.22099|
 |Windows Server 2012 R2|6.3.9600.18604|
 |Windows Server 2016|10.0.14393.953|
-|Windows Server 2019|NA|
+|Windows Server 2019|N.v.t.|
 
 ## <a name="sack-vulnerability-patch-verification"></a>Verificatie van beveiligings patch voor de Opzakken
 
@@ -199,8 +199,8 @@ Werk de kernel bij met een goedgekeurde versie en verzend de aanvraag opnieuw. U
 
 Als uw installatie kopie niet is geïnstalleerd met een van de volgende kernel-versies, werkt u deze bij met de juiste patches. De benodigde goed keuring van het ondersteunings team aanvragen nadat de installatie kopie is bijgewerkt met de volgende vereiste patches:
 
-- CVE-2019-11477 
-- CVE-2019-11478 
+- CVE-2019-11477
+- CVE-2019-11478
 - CVE-2019-11479
 
 |BESTURINGSSYSTEEM familie|Versie|Kernel|
@@ -217,7 +217,7 @@ Als uw installatie kopie niet is geïnstalleerd met een van de volgende kernel-v
 ||7.2|3.10.0-327.79.2|
 ||7.3|3.10.0-514.66.2|
 ||7.4|3.10.0-693.50.3|
-||7,5|3.10.0-862.34.2|
+||7.5|3.10.0-862.34.2|
 ||7.6|3.10.0-957.21.3|
 ||7,7|3.10.0-1062.1.1|
 ||8.0|4.18.0-80.4.2|
@@ -261,12 +261,12 @@ Als u tijdens het uitvoeren van de test cases op de VM problemen ondervindt bij 
 Controleer of de juiste toegang is ingeschakeld voor het account waarop de self-test cases worden uitgevoerd. Als de toegang niet is ingeschakeld, schakelt u deze in om de test cases uit te voeren. Als u geen toegang wilt inschakelen, kunt u de test resultaten met het ondersteunings team delen.
 
 ## <a name="download-failure"></a>Fout bij het downloaden
-    
+
 Raadpleeg de volgende tabel voor eventuele problemen bij het downloaden van de VM-installatie kopie met behulp van een SAS-URL (Shared Access Signature).
 
 |Scenario|Fout|Reden|Oplossing|
 |---|---|---|---|
-|1|De blob is niet gevonden|De VHD kan worden verwijderd of verplaatst van de opgegeven locatie.|| 
+|1|De blob is niet gevonden|De VHD kan worden verwijderd of verplaatst van de opgegeven locatie.||
 |2|BLOB in gebruik|De VHD wordt gebruikt door een ander intern proces.|De VHD moet een gebruikte status hebben wanneer u deze downloadt met behulp van een SAS-URL.|
 |3|Ongeldige SAS-URL|De bijbehorende SAS-URL voor de VHD is onjuist.|Haal de juiste SAS-URL op.|
 |4|Ongeldige hand tekening|De bijbehorende SAS-URL voor de VHD is onjuist.|Haal de juiste SAS-URL op.|
@@ -317,7 +317,7 @@ Gebruik de volgende tabel voor oplossingen voor fouten die betrekking hebben op 
 
 ## <a name="remote-access-issue"></a>Probleem met externe toegang
 
-Als de optie Remote Desktop Protocol (RDP) niet is ingeschakeld voor de Windows-installatie kopie, wordt deze fout weer gegeven. 
+Als de optie Remote Desktop Protocol (RDP) niet is ingeschakeld voor de Windows-installatie kopie, wordt deze fout weer gegeven.
 
 Schakel RDP-toegang voor Windows-installatie kopieën in voordat u deze verzendt.
 
@@ -334,11 +334,11 @@ Stap 2. Selecteer eerste optie ' RunShellScript ' en voer de onderstaande opdrac
 
 Opdracht: "kat/dev/null > ~/.bash_history && geschiedenis-c" ![ bash-geschiedenis opdracht op Azure Portal](./media/vm-certification-issues-solutions-4.png)
 
-Stap 3. Nadat de opdracht is uitgevoerd, start u de VM opnieuw op.
+Stap 3. Start de VM opnieuw op nadat de opdracht is uitgevoerd.
 
-Stap 4. Generaliseer de virtuele machine, maak de VHD met installatie kopieën en stop de virtuele machine.
+Stap 4. generaliseer de virtuele machine, zet de VHD van de installatie kopie en stopt de virtuele machine.
 
-Stap 5.     Re-Submit de gegeneraliseerde installatie kopie.
+Stap 5. Re-Submit de gegeneraliseerde installatie kopie.
 
 ## <a name="requesting-exceptions-custom-templates-on-vm-images-for-selective-tests"></a>Uitzonde ringen aanvragen (aangepaste sjablonen) op VM-installatie kopieën voor selectieve tests
 
@@ -349,7 +349,7 @@ In de volgende secties wordt gecommuniceerd over belang rijke scenario's waarin 
 
 Scenario's voor uitzonde ring
 
-Er zijn drie scenario's/gevallen waarin uitgevers deze uitzonde ringen doorgaans aanvragen. 
+Er zijn drie scenario's/gevallen waarin uitgevers deze uitzonde ringen doorgaans aanvragen.
 
 * **Uitzonde ring voor een of meer test cases:** Uitgevers kunnen contact uitzonde ringen voor [ondersteunings](https://aka.ms/marketplacepublishersupport) aanvragen voor de Marketplace vinden voor test cases. 
 
@@ -357,20 +357,22 @@ Er zijn drie scenario's/gevallen waarin uitgevers deze uitzonde ringen doorgaans
        In dit geval kunnen uitgevers het [gecertificeerde test programma](https://aka.ms/AzureCertificationTestTool) hier downloaden en het rapport op Marketplace- [Uitgever ondersteuning](https://aka.ms/marketplacepublishersupport) bieden.
 
 
-* **Aangepaste sjablonen:** Sommige uitgevers publiceren VM-installatie kopieën waarvoor een aangepaste ARM-sjabloon is vereist voor het implementeren van de Vm's. In dit geval worden uitgevers gevraagd om de aangepaste sjablonen te bieden op [Marketplace-Uitgever ondersteuning](https://aka.ms/marketplacepublishersupport) , zodat dezelfde kan worden gebruikt door het certificerings team voor validatie. 
+* **Aangepaste sjablonen:** Sommige uitgevers publiceren VM-installatie kopieën waarvoor een aangepaste ARM-sjabloon is vereist voor het implementeren van de Vm's.
+
+In dit geval worden uitgevers gevraagd om de aangepaste sjablonen te bieden op [Marketplace-Uitgever ondersteuning](https://aka.ms/marketplacepublishersupport) , zodat dezelfde kan worden gebruikt door het certificerings team voor validatie.
 
 ### <a name="information-to-provide-for-exception-scenarios"></a>Informatie over uitzonderings scenario's
 
 Uitgevers moeten toegang krijgen tot de ondersteuning op [Marketplace-Uitgever ondersteuning](https://aka.ms/marketplacepublishersupport) voor het aanvragen van uitzonde ringen voor het bovenstaande scenario met de volgende informatie:
 
-   1.   Uitgevers-ID: de uitgevers-ID in het partner centrum-Portal
-   2.   Aanbiedings-ID/naam: de aanbiedings-ID/naam waarvoor een uitzonde ring is aangevraagd 
-   3.   SKU/plan-ID: de plan-ID/SKU van de VM-aanbieding waarvoor een uitzonde ring is aangevraagd
-   4.    Versie: de versie van de VM-aanbieding waarvoor een uitzonde ring is aangevraagd
-   5.   Uitzonderings type: tests, vergrendelde virtuele machine, aangepaste sjablonen
-   6.   Reden van aanvraag: reden voor deze uitzonde ring en informatie over de tests die moeten worden uitgesloten 
-   7. Tijd lijn: de datum waarop deze uitzonde ring is aangevraagd 
-   8.   Bijlage: Voeg documenten met een belang rijk bewijs toe. Voor vergrendelde Vm's koppelt u het test rapport en aangepaste sjablonen, geeft u de aangepaste ARM-sjabloon op als bijlage. Fout bij het koppelen van het rapport voor de vergrendelde Vm's en de aangepaste ARM-sjabloon voor aangepaste sjablonen, resulteert in een weigering van de aanvraag
+   1. Uitgevers-ID: de uitgevers-ID in het partner centrum-Portal
+   1. Aanbiedings-ID/naam: de aanbiedings-ID/naam waarvoor een uitzonde ring is aangevraagd 
+   1. SKU/plan-ID: de plan-ID/SKU van de VM-aanbieding waarvoor een uitzonde ring is aangevraagd
+   1. Versie: de versie van de VM-aanbieding waarvoor een uitzonde ring is aangevraagd
+   1. Uitzonderings type: tests, vergrendelde virtuele machine, aangepaste sjablonen
+   1. Reden van aanvraag: reden voor deze uitzonde ring en informatie over de tests die moeten worden uitgesloten 
+   1. Tijd lijn: de datum waarop deze uitzonde ring is aangevraagd 
+   1. Bijlage: Voeg documenten met een belang rijk bewijs toe. Voor vergrendelde Vm's koppelt u het test rapport en aangepaste sjablonen, geeft u de aangepaste ARM-sjabloon op als bijlage. Fout bij het koppelen van het rapport voor de vergrendelde Vm's en de aangepaste ARM-sjabloon voor aangepaste sjablonen, resulteert in een weigering van de aanvraag
 
 ## <a name="how-to-address-a-vulnerability-or-exploit-in-a-vm-offer"></a>Een beveiligingslek aanpakken of misbruik maken in een VM-aanbieding
 
@@ -403,7 +405,7 @@ Als u deze stappen wilt uitvoeren, moet u het technische activum voorbereiden vo
 1. Selecteer op het tabblad **plan overzicht** , in de kolom **naam** , het plan waaraan u de virtuele machine wilt toevoegen.
 1. Selecteer op het tabblad **technische configuratie** onder **VM-installatie kopieën** **+ installatie kopie van virtuele machine toevoegen**.
    > [!NOTE]
-   > U kunt slechts één VM-installatie kopie toevoegen aan een plan per keer. Als u meerdere VM-installatie kopieën wilt toevoegen, publiceert u de eerste en wacht u totdat de _Publisher aftekening_ -fase is bereikt voordat u de volgende VM-installatie kopie toevoegt.
+   > U kunt slechts één VM-installatie kopie toevoegen aan een plan per keer. Als u meerdere VM-installatie kopieën wilt toevoegen, moet u deze eerst publiceren voordat u de volgende VM-installatie kopie toevoegt.
 1. Geef in de weer gegeven vakken een nieuwe schijf versie en de installatie kopie van de virtuele machine op.
 1. Selecteer **Concept opslaan**.
 1. Ga door naar de volgende sectie om de VM-installatie kopie te verwijderen met het beveiligings probleem.
@@ -425,6 +427,7 @@ Nadat u de VM-installatie kopie hebt verwijderd of vervangen, moet u de aanbiedi
 1. Selecteer **controleren en publiceren**.
 1. Als u informatie moet verstrekken aan het certificerings team, voegt u deze toe aan het vak **notities voor certificering** .
 1. Selecteer **Publiceren**.
+1. Wanneer de publicatie status de publicatie fase bereikt, selecteert u **Live gaan**.
 
 Zie [een aanbieding bekijken en publiceren naar de commerciële Marketplace](../review-publish-offer.md)voor meer informatie over het publicatie proces.
 

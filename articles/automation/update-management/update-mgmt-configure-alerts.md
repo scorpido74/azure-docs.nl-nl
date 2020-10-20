@@ -3,14 +3,14 @@ title: Waarschuwingen maken voor Azure Automation Updatebeheer
 description: In dit artikel leest u hoe u Azure-waarschuwingen kunt configureren om een melding te ontvangen over de status van update-evaluaties of implementaties.
 services: automation
 ms.subservice: update-management
-ms.date: 07/28/2020
+ms.date: 10/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1a46b5bf6c4be4953e6cde9972aa143be71406a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8f832f0359bd8f9caf13008939f482b440faa1a
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90977010"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203174"
 ---
 # <a name="how-to-create-alerts-for-update-management"></a>Waarschuwingen voor Updatebeheer maken
 
@@ -86,3 +86,8 @@ Zodra u uw waarschuwingen hebt geconfigureerd, kunt u een actie groep instellen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
+* Meer informatie over [waarschuwingen vindt u in azure monitor](../../azure-monitor/platform/alerts-overview.md).
+
+* Meer informatie over [logboek query's](../../azure-monitor/log-query/log-query-overview.md) voor het ophalen en analyseren van gegevens uit een log Analytics-werk ruimte.
+
+* [Gebruik en kosten beheren met Azure monitor logboeken](../../azure-monitor/platform/manage-cost-storage.md) beschrijft hoe u uw kosten kunt bepalen door de Bewaar periode van uw gegevens te wijzigen en hoe u uw gegevens gebruik kunt analyseren en waarschuwen.
