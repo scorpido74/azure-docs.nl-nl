@@ -5,7 +5,7 @@
     - name: Wat is Azure Policy?
       displayName: 'rbac, assign, initiative, parameters, count'
       href: overview.md
-- name: Quickstarts
+- name: Snelstartgidsen
   expanded: true
   items:
     - name: Een beleid toewijzen - Portal
@@ -43,6 +43,12 @@
     - name: Tag governance beheren
       displayName: 'modify, append, effects'
       href: ./tutorials/govern-tags.md
+    - name: Azure Policy implementeren als code met GitHub
+      displayName: 'devops, infrastructure as code, iac, release, continuous, delivery, deploy'
+      href: ./tutorials/policy-as-code-github.md
+    - name: 'Meer informatie: Uw resources beheren en controleren met behulp van Azure Policy'
+      displayName: 'governance, module'
+      href: /learn/modules/build-cloud-governance-strategy-azure/8-control-audit-resources-azure-policy
 - name: Voorbeelden
   items:
     - name: Index
@@ -113,7 +119,7 @@
     - name: Naleving van regelgeving
       displayName: 'standards, domains, controls'
       href: ./concepts/regulatory-compliance.md
-    - name: Beleid ontwerpen als codewerkstromen
+    - name: Azure Policy ontwerpen als code-werkstromen
       displayName: 'devops, infrastructure as code, iac, release, continuous, delivery, deploy'
       href: ./concepts/policy-as-code.md
     - name: Kubernetes-integratie

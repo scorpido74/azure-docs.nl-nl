@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 07/27/2020
-ms.openlocfilehash: 252ea54cf6be9dd381648d67e56a7a5ff2c7acc6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: a86c0b115ef866453e457ad528dd694ed7b49b48
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542285"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330390"
 ---
 # <a name="execute-r-script-module"></a>R-script module uitvoeren
 
@@ -194,11 +194,11 @@ Gegevens sets die zijn opgeslagen in de ontwerp functie worden automatisch gecon
     > [!NOTE]
     > Voor bestaande R-code zijn mogelijk kleine wijzigingen nodig om te worden uitgevoerd in een designer-pijp lijn. Invoer gegevens die u in CSV-indeling opgeeft, moeten bijvoorbeeld expliciet worden geconverteerd naar een gegevensset voordat u deze in uw code kunt gebruiken. Gegevens-en kolom typen die in de R-taal worden gebruikt, verschillen ook op een aantal manieren van de gegevens-en kolom typen die in de ontwerp functie worden gebruikt.
 
-    Als uw script groter is dan 16 KB, gebruikt u de **script bundel** poort om fouten te voor komen, zoals *commandline de limiet van 16597 tekens overschrijdt*. 
+1. Als uw script groter is dan 16 KB, gebruikt u de **script bundel** poort om fouten te voor komen, zoals *commandline de limiet van 16597 tekens overschrijdt*. 
     
     1. Het script en andere aangepaste resources bundelen naar een zip-bestand.
     1. Upload het zip-bestand als een **bestand gegevensset** naar de Studio. 
-    1. Sleep de module gegevensset van de lijst *mijn gegevens sets* in het deel venster met de linker module op de ontwerp pagina voor ontwerpen. 
+    1. Sleep de module gegevensset van de lijst *gegevens sets* in het deel venster met de linker module op de ontwerp pagina voor ontwerpen. 
     1. Verbind de module gegevensset met de **script bundel** poort van de **script module Execute R** .
     
     Hieronder ziet u de voorbeeld code voor het gebruik van het script in de script bundel:

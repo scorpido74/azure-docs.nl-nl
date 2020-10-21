@@ -4,12 +4,12 @@ description: Laat zien hoe u grote sets met onderwerpen beheert in Azure Event G
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9016d26384827279a5a89afecff59f572d7ce273
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 277db97211b196c9853470c2d12cc2246a4005b2
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87502032"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330074"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>Onderwerpen beheren en gebeurtenissen publiceren met behulp van gebeurtenis domeinen
 
@@ -79,7 +79,7 @@ Let `endpoint` op de en de vereisten die `id` nodig zijn voor het beheren van he
 
 ## <a name="manage-access-to-topics"></a>Toegang tot onderwerpen beheren
 
-Het beheren van toegang tot onderwerpen geschiedt via [roltoewijzing](../role-based-access-control/role-assignments-cli.md). De roltoewijzing maakt gebruik van op rollen gebaseerd toegangs beheer om bewerkingen op Azure-resources te beperken tot geautoriseerde gebruikers binnen een bepaald bereik.
+Het beheren van toegang tot onderwerpen geschiedt via [roltoewijzing](../role-based-access-control/role-assignments-cli.md). De roltoewijzing maakt gebruik van Azure op rollen gebaseerd toegangs beheer om bewerkingen op Azure-resources te beperken tot geautoriseerde gebruikers binnen een bepaald bereik.
 
 Event Grid heeft twee ingebouwde rollen, die u kunt gebruiken om bepaalde gebruikers toegang te verlenen voor verschillende onderwerpen binnen een domein. Deze rollen zijn `EventGrid EventSubscription Contributor (Preview)` , waarmee u abonnementen kunt maken en verwijderen, en `EventGrid EventSubscription Reader (Preview)` waarmee u alleen gebeurtenis abonnementen kunt weer geven.
 

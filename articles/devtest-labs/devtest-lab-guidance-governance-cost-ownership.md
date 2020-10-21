@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het optimaliseren van kosten
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: dbf0bb9cae87a51eb6e0a4fb25c700ec6f423ff1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dfac69a055c9b0c75032622caf7fb8502fad3406
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85476254"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328263"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---manage-cost-and-ownership"></a>Governance van Azure DevTest Labs-infra structuur-kosten en eigendom beheren
 Kosten en eigendom zijn primair als u overweegt om uw ontwikkel-en test omgevingen te bouwen. In deze sectie vindt u informatie die u helpt bij het optimaliseren van kosten en het aanpassen van het eigendom in uw omgeving.
@@ -34,9 +34,9 @@ Alleen actieve Visual Studio-abonnees (standaard abonnementen, jaarlijkse Cloud 
 
 Als u besluit de DevTest-aanbieding te gebruiken, moet u er rekening mee houden dat dit voor deel uitsluitend is voor het ontwikkelen en testen van uw toepassingen. Voor gebruik binnen het abonnement geldt geen SLA met financiële garantie, met uitzonde ring van het gebruik van Azure DevOps en HockeyApp.
 
-## <a name="define-a-role-based-access-across-your-organization"></a>Een op rollen gebaseerde toegang in uw organisatie definiëren
+## <a name="define-role-based-access-across-your-organization"></a>Op rollen gebaseerde toegang in uw organisatie definiëren
 ### <a name="question"></a>Vraag
-Hoe kan ik op rollen gebaseerd toegangs beheer definiëren voor mijn DevTest Labs-omgevingen om ervoor te zorgen dat IT kan bepalen wanneer ontwikkel aars/test hun werk kunnen doen? 
+Hoe kan ik op rollen gebaseerd toegangs beheer voor mijn DevTest Labs definiëren om ervoor te zorgen dat IT kan bepalen terwijl ontwikkel aars/tests hun werk kunnen doen? 
 
 ### <a name="answer"></a>Antwoord
 Er is een breed patroon, maar de details zijn afhankelijk van uw organisatie.

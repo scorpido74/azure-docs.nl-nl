@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 2/20/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 16b9342f0374377349f338db7ce5c8389c77ea18
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80e04ec06edc7169f0a4318c2c94de34dda9d96a
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87424961"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331077"
 ---
 In deze stap evalueert u hoeveel Azure-bestands shares u nodig hebt. Eén Windows Server-exemplaar (of-cluster) kan Maxi maal 30 Azure-bestands shares synchroniseren.
 
@@ -28,11 +28,15 @@ Als uw HR-afdeling (bijvoorbeeld) een totaal van 15 shares heeft, kunt u overweg
 
 Azure File Sync ondersteunt het synchroniseren van de hoofdmap van een volume naar een Azure-bestands share. Als u de hoofdmap synchroniseert, worden alle submappen en bestanden naar dezelfde Azure-bestands share.
 
-Het synchroniseren van de hoofdmap van het volume is niet altijd het beste antwoord. Er zijn voor delen in het synchroniseren van meerdere locaties. Zo kunt u bijvoorbeeld het aantal items verlagen per synchronisatie bereik. Het instellen van Azure File Sync met een lager aantal items is niet alleen nuttig voor bestands synchronisatie. Een lager aantal items is ook voor delen van scenario's als deze:
+Het synchroniseren van de hoofdmap van het volume is niet altijd het beste antwoord. Er zijn voor delen in het synchroniseren van meerdere locaties. Zo kunt u bijvoorbeeld het aantal items verlagen per synchronisatie bereik. We testen Azure-bestands shares en Azure File Sync met 100.000.000 items (bestanden en mappen) per share, een best practice om het aantal te proberen onder 20 of 30.000.000 in één share. Het instellen van Azure File Sync met een lager aantal items is niet alleen nuttig voor bestands synchronisatie. Een lager aantal items is ook voor delen van scenario's als deze:
 
-* Herstel aan de Cloud zijde vanuit een Azure file share-moment opname kan worden gemaakt als back-up.
+* De eerste scan van de Cloud inhoud voordat de naam ruimte op een Azure File Sync ingeschakelde server kan worden weer gegeven, kan sneller worden uitgevoerd.
+* Herstel aan de Cloud zijde vanuit een Azure file share-moment opname is sneller.
 * Herstel na nood gevallen van een on-premises server kan aanzienlijk versnellen.
 * Wijzigingen die rechtstreeks in een Azure-bestands share (externe synchronisatie) zijn aangebracht, kunnen sneller worden gedetecteerd en gesynchroniseerd.
+
+> [!TIP]
+> Als u niet zeker weet hoeveel bestanden en mappen u hebt, kunt u het hulp programma TreeSize van een VASTGELOPEN software GmbH bekijken.
 
 #### <a name="a-structured-approach-to-a-deployment-map"></a>Een gestructureerde benadering van een implementatie toewijzing
 
@@ -53,14 +57,12 @@ Bekijk de volgende limieten en aanbevolen procedures om de beslissing te nemen o
 >
 > Deze groepering onder een gemeen schappelijke hoofdmap heeft geen invloed op de toegang tot uw gegevens. Uw Acl's blijven ongewijzigd. U hoeft alleen share paden (zoals SMB-of NFS-shares) aan te passen die u mogelijk hebt op de Server mappen die u nu hebt gewijzigd in een algemene hoofdmap. Niets else wijzigt.
 
-Een ander belang rijk aspect van Azure File Sync en een evenwichtige prestaties en ervaring is de schaal factoren voor Azure File Sync prestaties te weten. Wanneer bestanden worden gesynchroniseerd via internet, nemen grotere bestanden uiteraard meer tijd en band breedte in beslag om te synchroniseren.
-
 > [!IMPORTANT]
 > De belangrijkste schaal vector voor Azure File Sync is het aantal items (bestanden en mappen) dat moet worden gesynchroniseerd.
 
 Azure File Sync ondersteunt het synchroniseren van Maxi maal 100.000.000 items naar één Azure-bestands share. Deze limiet kan worden overschreden en geeft alleen aan wat het Azure File Sync team regel matig test.
 
-Het is een best practice om te voor komen dat het aantal items per synchronisatie bereik laag is. Dit is een belang rijke factor voor het nemen van uw toewijzing van mappen aan Azure-bestands shares.
+Het is een best practice om te voor komen dat het aantal items per synchronisatie bereik laag is. Dit is een belang rijke factor voor het nemen van uw toewijzing van mappen aan Azure-bestands shares. We testen Azure-bestands shares en Azure File Sync met 100.000.000 items (bestanden en mappen) per share, een best practice om het aantal te proberen onder 20 of 30.000.000 in één share. Splits uw naam ruimte in meerdere shares als u begint met het overschrijden van deze getallen. U kunt meerdere on-premises shares in dezelfde Azure-bestands share blijven groeperen, zolang u ongeveer deze cijfers blijft. Hiermee krijgt u ruimte om te groeien.
 
 In uw situatie is het mogelijk dat een set mappen logisch kan worden gesynchroniseerd met dezelfde Azure-bestands share (met behulp van de nieuwe benadering van de algemene hoofdmap eerder beschreven). Het kan echter nog steeds beter zijn om mappen zodanig te groeperen dat ze worden gesynchroniseerd met twee in plaats van een Azure-bestands share. U kunt deze methode gebruiken om het aantal bestanden en mappen per bestands share op de server te houden.
 
@@ -73,7 +75,7 @@ In uw situatie is het mogelijk dat een set mappen logisch kan worden gesynchroni
     :::column:::
         Gebruik een combi natie van de voor gaande concepten om te bepalen hoeveel Azure-bestands shares u nodig hebt, en welke onderdelen van uw bestaande gegevens in de Azure-bestands share moeten eindigen.
         
-        Maak een tabel waarin uw ideeën worden vastgelegd, zodat u deze in de volgende stap kunt raadplegen. Georganiseerd is belang rijk, omdat het eenvoudig kan zijn om gegevens van uw toewijzings plan te verliezen wanneer u een groot aantal Azure-resources tegelijk inricht. Om u te helpen bij het maken van een volledige toewijzing, kunt u een micro soft Excel-bestand downloaden als een sjabloon.
+        Maak een tabel waarin uw ideeën worden vastgelegd, zodat u deze kunt raadplegen wanneer dat nodig is. Georganiseerd is belang rijk, omdat het eenvoudig kan zijn om gegevens van uw toewijzings plan te verliezen wanneer u een groot aantal Azure-resources tegelijk inricht. Om u te helpen bij het maken van een volledige toewijzing, kunt u een micro soft Excel-bestand downloaden als een sjabloon.
 
 [//]: # (HTML wordt weer gegeven als de enige manier om een geneste tabel met twee kolommen toe te voegen met het parseren van de werk installatie kopie en tekst/Hyper link op dezelfde regel.)
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: 4dba170c750a61ea08e4116dc6f2b13ef14c87ed
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 231b6ffa3730721d4e44ecb15c2fc58591b80178
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217385"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314818"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Problemen met Azure Load Balancer oplossen
 
@@ -157,6 +157,17 @@ Als u besluit een ondersteunings aanvraag te openen, verzamelt u de volgende inf
 - Gebruik Psping van een van de back-end-Vm's binnen het VNet om de test poort reactie te testen (bijvoorbeeld: Psping 10.0.0.4:3389) en de resultaten op te nemen. 
 - Als er geen antwoord wordt ontvangen in deze ping-tests, voert u een gelijktijdige Netsh-tracering uit op de back-end-VM en de VNet-test-VM terwijl u PsPing uitvoert en stopt u de Netsh-tracering. 
  
+## <a name="symptom-load-balancer-in-failed-state"></a>Symptoom: Load Balancer met de status mislukt 
+
+**Oplossing**
+
+- Wanneer u de resource met de status mislukt hebt geïdentificeerd, gaat u naar [Azure resource Explorer](https://resources.azure.com/) en identificeert u de resource in deze status. 
+- Werk de wissel knop in de rechter bovenhoek bij om te lezen/schrijven.
+- Klik op bewerken voor de resource met de status mislukt.
+- Klik op PUT gevolgd door GET om ervoor te zorgen dat de inrichtings status is bijgewerkt naar geslaagd.
+- U kunt vervolgens door gaan met andere acties als de resource de status Mislukt heeft.
+
+
 ## <a name="next-steps"></a>Volgende stappen
 
 Als de voor gaande stappen het probleem niet oplossen, opent u een [ondersteunings ticket](https://azure.microsoft.com/support/options/).

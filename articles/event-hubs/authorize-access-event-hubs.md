@@ -4,12 +4,12 @@ description: Dit artikel bevat informatie over verschillende opties voor het mac
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 18b8bd80eaec316fbaefadad0dd7a19418bfa838
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5fc35387f4ac28ad4dd28bea0013bcdf1e1e9f02
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85323171"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332379"
 ---
 # <a name="authorize-access-to-azure-event-hubs"></a>Toegang tot Azure Event Hubs autoriseren
 Elke keer dat u gebeurtenissen/gegevens van een Event Hub publiceert of gebruikt, probeert de client toegang tot Event Hubs resources te krijgen. Elke aanvraag voor een beveiligde resource moet worden geautoriseerd zodat de service kan controleren of de client over de vereiste machtigingen beschikt om de gegevens te publiceren/te gebruiken. 
@@ -23,7 +23,7 @@ Azure Event Hubs biedt de volgende opties voor het machtigen van toegang tot bev
 > Dit artikel is van toepassing op zowel Event Hubs als [Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md) scenario's. 
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
-Azure Active Directory-integratie (Azure AD) voor Event Hubs bronnen biedt op rollen gebaseerd toegangs beheer (RBAC) voor nauw keurige controle over de toegang van een client tot resources. U kunt op rollen gebaseerd toegangs beheer (RBAC) gebruiken om machtigingen te verlenen aan de beveiligingsprincipal, die een gebruiker, een groep of een Application Service-Principal kan zijn. De beveiligingsprincipal wordt door Azure AD geverifieerd om een OAuth 2,0-token te retour neren. Het token kan worden gebruikt voor het autoriseren van een aanvraag voor toegang tot een Event Hubs bron.
+Azure Active Directory-integratie (Azure AD) voor Event Hubs resources biedt op rollen gebaseerd toegangs beheer op basis van Azure (Azure RBAC) voor een nauw keurige controle over de toegang van een client tot resources. U kunt Azure RBAC gebruiken om machtigingen te verlenen aan de beveiligingsprincipal, die een gebruiker, een groep of een Application Service-Principal kan zijn. De beveiligingsprincipal wordt door Azure AD geverifieerd om een OAuth 2,0-token te retour neren. Het token kan worden gebruikt voor het autoriseren van een aanvraag voor toegang tot een Event Hubs bron.
 
 Raadpleeg de volgende artikelen voor meer informatie over verificatie met Azure AD:
 
@@ -40,7 +40,7 @@ Standaard worden alle Event Hubs-resources beveiligd en zijn ze alleen beschikba
 Zie voor meer informatie over autorisatie met behulp van SAS [toegang verlenen tot Event hubs-resources met behulp van hand tekeningen voor gedeelde toegang](authorize-access-shared-access-signature.md).
 
 ## <a name="next-steps"></a>Volgende stappen
-- Bekijk de RBAC-voor [beelden](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac) die zijn gepubliceerd in onze github-opslag plaats. 
+- Bekijk de voor [beelden van Azure RBAC](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac) die zijn gepubliceerd in onze github-opslag plaats. 
 - Zie de volgende artikelen:
     - [Aanvragen voor Azure Event Hubs verifiëren vanuit een toepassing met behulp van Azure Active Directory](authenticate-application.md)
     - [Een beheerde identiteit verifiëren met Azure Active Directory om toegang te krijgen tot Event Hubs bronnen](authenticate-managed-identity.md)

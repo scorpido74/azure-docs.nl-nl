@@ -9,19 +9,21 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: jingwang
-ms.openlocfilehash: dad1f9f232cb9d713af81f6aea57a4ffe651da19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 65dc9f556a9b7c257273349c056cf997973e942f
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331961"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328280"
 ---
 # <a name="excel-format-in-azure-data-factory"></a>Excel-indeling in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Volg dit artikel als u **de Excel-bestanden wilt parseren**. Azure Data Factory ondersteunt zowel ". xls" als ". xlsx".
 
-Excel-indeling wordt ondersteund voor de volgende connectors: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), [Bestands systeem](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [http](connector-http.md)en [SFTP](connector-sftp.md). Het wordt ondersteund als bron, maar niet op sink.
+Excel-indeling wordt ondersteund voor de volgende connectors: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), [Bestands systeem](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [http](connector-http.md)en [SFTP](connector-sftp.md). Het wordt ondersteund als bron, maar niet op sink. 
+
+**Opmerking**: de indeling ". xls" wordt niet ondersteund bij het gebruik van [http](connector-http.md). 
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
@@ -71,7 +73,7 @@ Zie het artikel [pijp lijnen](concepts-pipelines-activities.md) voor een volledi
 
 ### <a name="excel-as-source"></a>Excel als bron 
 
-De volgende eigenschappen worden ondersteund in de sectie *** \* bron \* *** van de Kopieer activiteit.
+De volgende eigenschappen worden ondersteund in de sectie Kopieer **activiteit \_ _ \* bron***.
 
 | Eigenschap      | Beschrijving                                                  | Vereist |
 | ------------- | ------------------------------------------------------------ | -------- |

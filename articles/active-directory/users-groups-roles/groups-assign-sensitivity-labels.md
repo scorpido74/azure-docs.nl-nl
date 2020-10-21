@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3179bb294678ee030218e67dafa1c69dcf5d77a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ab257cee199050dcc444e9e3acf43370bd062e5
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90056265"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92313166"
 ---
 # <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>Gevoeligheids labels toewijzen aan Microsoft 365 groepen in Azure Active Directory
 
@@ -68,7 +68,7 @@ Als u gepubliceerde labels op groepen wilt Toep assen, moet u eerst de functie i
     Set-AzureADDirectorySetting -Id $Setting.Id -DirectorySetting $Setting
     ```
 
-U moet ook uw gevoeligheids labels synchroniseren met Azure AD. Zie voor instructies [het inschakelen van gevoeligheids labels voor containers en het synchroniseren van labels](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide#how-to-enable-sensitivity-labels-for-containers-and-synchronize-labels).
+U moet ook uw gevoeligheids labels synchroniseren met Azure AD. Zie voor instructies [het inschakelen van gevoeligheids labels voor containers en het synchroniseren van labels](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide#how-to-enable-sensitivity-labels-for-containers-and-synchronize-labels).
 
 ## <a name="assign-a-label-to-a-new-group-in-azure-portal"></a>Een label toewijzen aan een nieuwe groep in Azure Portal
 
@@ -99,7 +99,7 @@ De groep wordt gemaakt en de site-en groeps instellingen die zijn gekoppeld aan 
 1. Selecteer **Groepen**.
 1. Selecteer op de pagina **alle groepen** de groep waarvan u het label wilt verwijderen.
 1. Selecteer op de pagina **groep** **Eigenschappen**.
-1. Selecteer **verwijderen**.
+1. Selecteer **Verwijderen**.
 1. Klik op **Opslaan** om uw wijzigingen toe te passen.
 
 ## <a name="using-classic-azure-ad-classifications"></a>Klassieke Azure AD-classificaties gebruiken

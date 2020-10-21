@@ -6,15 +6,16 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.openlocfilehash: 76016da2ec542091aa57d5081e275a1f9f6671cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 45303a8aaaa348d310d7f8b5e7cd98f8d465a282
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85114262"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280817"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Gebruikelijke Azure Cosmos DB use cases
-In dit artikel vindt u een overzicht van een aantal algemene gebruiks voorbeelden voor Azure Cosmos DB.  De aanbevelingen in dit artikel dienen als uitgangs punt bij het ontwikkelen van uw toepassing met Cosmos DB.   
+
+In dit artikel vindt u een overzicht van een aantal algemene gebruiks voorbeelden voor Azure Cosmos DB.  De aanbevelingen in dit artikel dienen als uitgangs punt bij het ontwikkelen van uw toepassing met Cosmos DB.
 
 Na het lezen van dit artikel kunt u de volgende vragen beantwoorden: 
 
@@ -24,7 +25,8 @@ Na het lezen van dit artikel kunt u de volgende vragen beantwoorden:
 * Wat zijn de voor delen van het gebruik van Azure Cosmos DB voor web-en mobiele toepassingen?
 
 ## <a name="introduction"></a>Inleiding
-[Azure Cosmos DB](../cosmos-db/introduction.md) is de wereld wijd gedistribueerde database service van micro soft. De service is zo ontworpen dat klanten hun door Voer en opslag voor een wille keurig aantal geografische regio's elastisch (en onafhankelijk) kunnen schalen. Azure Cosmos DB is momenteel de eerste wereld wijd gedistribueerde database service in de markt om uitgebreide [service overeenkomsten](https://azure.microsoft.com/support/legal/sla/cosmos-db/) te bieden die de door Voer, latentie, Beschik baarheid en consistentie omvatten. 
+
+[Azure Cosmos DB](../cosmos-db/introduction.md) is de snelle NoSQL-data base van micro soft met open-api's voor elke schaal. De service is zo ontworpen dat klanten hun door Voer en opslag voor een wille keurig aantal geografische regio's elastisch (en onafhankelijk) kunnen schalen. Azure Cosmos DB is momenteel de eerste wereld wijd gedistribueerde database service in de markt om uitgebreide [service overeenkomsten](https://azure.microsoft.com/support/legal/sla/cosmos-db/) te bieden die de door Voer, latentie, Beschik baarheid en consistentie omvatten.
 
 Azure Cosmos DB is een wereld wijd gedistribueerde, multi-model database die wordt gebruikt in een breed scala aan toepassingen en use cases. Het is een goede keuze voor elke [serverloze](https://azure.com/serverless) toepassing die een lage reactie tijd van milliseconden nodig heeft en snel en wereld wijd moet schalen. Het ondersteunt meerdere gegevens modellen (sleutel-waarde, documenten, grafieken en kolommen) en veel Api's voor gegevens toegang, waaronder [de API van Azure Cosmos DB voor MongoDb](mongodb-introduction.md), [SQL API](documentdb-introduction.md), [Gremlin API](graph-introduction.md)en [Table API](table-introduction.md) native en op een uitbreid bare manier. 
 
@@ -40,6 +42,7 @@ Hier volgen enkele kenmerken van Azure Cosmos DB die het geschikt maken voor toe
 Deze kenmerken zijn nuttig in web-, mobiele, gaming-en IoT-toepassingen die weinig reactie tijden nodig hebben en een enorme hoeveelheid Lees-en schrijf bewerkingen moeten afhandelen.
 
 ## <a name="iot-and-telematics"></a>IoT en telematica
+
 IoT use cases delen meestal enkele patronen in de manier waarop ze gegevens opnemen, verwerken en opslaan.  Ten eerste moeten deze systemen bursts van gegevens opnemen uit Sens oren van verschillende land instellingen. Vervolgens verwerken en analyseren deze systemen streaminggegevens om real-time inzichten te verkrijgen. De gegevens worden vervolgens gearchiveerd naar koude opslag voor batch analyse. Microsoft Azure biedt uitgebreide services die kunnen worden toegepast voor IoT-use cases, waaronder Azure Cosmos DB, Azure Event Hubs, Azure Stream Analytics, Azure notification hub, Azure Machine Learning, Azure HDInsight en Power BI. 
 
 :::image type="content" source="./media/use-cases/iot.png" alt-text="IoT-referentie architectuur Azure Cosmos DB" border="false":::

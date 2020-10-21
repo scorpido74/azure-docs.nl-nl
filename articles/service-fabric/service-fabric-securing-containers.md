@@ -4,17 +4,17 @@ description: Meer informatie over het importeren van certificaat bestanden in ee
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 426aa2ebbfb87fe2c80e0d1aff3eeecbe0e2472d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 219882a3f7f6db665f1ec311098ef53464773b71
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89050740"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92313685"
 ---
 # <a name="import-a-certificate-file-into-a-container-running-on-service-fabric"></a>Een certificaat bestand importeren in een container die wordt uitgevoerd op Service Fabric
 
 > [!NOTE]
-> Voor Service Fabric-clusters die worden uitgevoerd op Azure, wordt aangeraden om de [beheerde identiteit](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity) van de toepassing te service Fabric gebruiken om toepassings certificaten vanuit een container in te richten. Beheerde identiteit biedt isolatie van geheimen en certificaten op het niveau van de service, en maakt het mogelijk dat het inrichten van toepassings certificaten deel uitmaakt van de werk stroom van de toepassing, in plaats van de werk stroom van de infra structuur. Het CertificateRef-mechanisme zal in een toekomstige release worden afgeschaft.
+> Voor Service Fabric-clusters die worden uitgevoerd op Azure, wordt aangeraden om de [beheerde identiteit](./concepts-managed-identity.md) van de toepassing te service Fabric gebruiken om toepassings certificaten vanuit een container in te richten. Beheerde identiteit biedt isolatie van geheimen en certificaten op het niveau van de service, en maakt het mogelijk dat het inrichten van toepassings certificaten deel uitmaakt van de werk stroom van de toepassing, in plaats van de werk stroom van de infra structuur. Het CertificateRef-mechanisme zal in een toekomstige release worden afgeschaft.
 
 U kunt uw container Services beveiligen door een certificaat op te geven. Service Fabric biedt een mechanisme voor services binnen een container om toegang te krijgen tot een certificaat dat op de knoop punten in een Windows-of Linux-cluster (versie 5,7 of hoger) is geïnstalleerd. Het certificaat moet worden geïnstalleerd in een certificaat archief onder LocalMachine op alle knoop punten van het cluster. De persoonlijke sleutel die overeenkomt met het certificaat moet beschikbaar, toegankelijk en in Windows-exporteerbaar zijn. De certificaat informatie wordt verstrekt in het manifest van de toepassing onder de- `ContainerHostPolicies` tag als in het volgende code fragment wordt weer gegeven:
 

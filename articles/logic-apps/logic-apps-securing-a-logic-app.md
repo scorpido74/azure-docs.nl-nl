@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 10/16/2020
-ms.openlocfilehash: b25cac502a4e9a0cc5582134cb9601b75672ffd1
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 159f4b2ea0cafb0b2c883cde76ddce7ddd3f1fc6
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168491"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317569"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Beveiligde toegang en gegevens in Azure Logic Apps
 
@@ -1065,7 +1065,7 @@ U kunt Azure Logic Apps gebruiken in [Azure Government](../azure-government/docu
 
   * [Azure App Service plannen](../app-service/overview-hosting-plans.md)
   * [Netwerkopties van Azure Functions](../azure-functions/functions-networking-options.md)
-  * [Voor Azure toegewezen hosts voor virtuele machines](../virtual-machines/windows/dedicated-hosts.md)
+  * [Voor Azure toegewezen hosts voor virtuele machines](../virtual-machines/dedicated-hosts.md)
   * [Isolatie van virtuele machines in azure](../virtual-machines/isolation.md)
   * [Speciale Azure-Services implementeren in virtuele netwerken](../virtual-network/virtual-network-for-azure-services.md)
 

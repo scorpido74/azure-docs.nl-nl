@@ -7,24 +7,26 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: sagopal
 author: saachigopal
-ms.date: 09/28/2020
+ms.date: 10/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 8c971168add1aa63599a22f81a3b517d6cc561a1
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 6ce0885cce1861b27d6230c3807350831603684b
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281295"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329114"
 ---
 # <a name="train-a-model-by-using-a-custom-docker-image"></a>Een model trainen met behulp van een aangepaste docker-installatie kopie
 
 In dit artikel leert u hoe u een aangepaste docker-installatie kopie gebruikt wanneer u een model met Azure Machine Learning maakt. U gebruikt de voorbeeld scripts in dit artikel om huisdier installatie kopieën te classificeren door een convolutional Neural-netwerk te maken. 
 
-Azure Machine Learning biedt een standaard installatie kopie van docker-basis. U kunt ook Azure Machine Learning omgevingen gebruiken om een andere basis installatie kopie op te geven, zoals een van de onderhanden [Azure machine learning basis installatie kopieën](https://github.com/Azure/AzureML-Containers) of uw eigen [aangepaste installatie kopie](how-to-deploy-custom-docker-image.md#create-a-custom-base-image). Aangepaste basis installatie kopieën bieden u de mogelijkheid om uw afhankelijkheden nauw keurig te beheren en de controle over onderdeel versies nauw keuriger te houden wanneer u trainings taken uitvoert. 
+Azure Machine Learning biedt een standaard installatie kopie van docker-basis. U kunt ook Azure Machine Learning omgevingen gebruiken om een andere basis installatie kopie op te geven, zoals een van de onderhanden [Azure machine learning basis installatie kopieën](https://github.com/Azure/AzureML-Containers) of uw eigen [aangepaste installatie kopie](how-to-deploy-custom-docker-image.md#create-a-custom-base-image). Aangepaste basis installatie kopieën bieden u de mogelijkheid om uw afhankelijkheden nauw keurig te beheren en de controle over onderdeel versies nauw keuriger te houden wanneer u trainings taken uitvoert.
 
-## <a name="prerequisites"></a>Vereisten 
+## <a name="prerequisites"></a>Vereisten
+
 Voer de code uit in een van de volgende omgevingen:
+
 * Azure Machine Learning Compute-instantie (geen down loads of installatie vereist):
   * Voltooi de zelf studie [omgeving en werk ruimte instellen](tutorial-1st-experiment-sdk-setup.md) om een toegewezen notebook server te maken die vooraf is geladen met de SDK en de voor beeld-opslag plaats.
   * Zoek in het Azure machine learning- [voor beeld-opslag plaats](https://github.com/Azure/azureml-examples)een voltooid notitie blok door naar de fastai-map **notebooks**  >  **fastai**  >  **-resnet34. ipynb** te gaan. 
@@ -33,10 +35,12 @@ Voer de code uit in een van de volgende omgevingen:
   * Installeer de [Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true). 
   * Een [Azure container Registry](/azure/container-registry) of een ander docker-REGI ster maken dat op internet beschikbaar is.
 
-## <a name="set-up-the-experiment"></a>Het experiment instellen 
-In deze sectie kunt u het trainings experiment instellen door een werk ruimte te initialiseren, een experiment te maken en de trainings gegevens en trainings scripts te uploaden.
+## <a name="set-up-a-training-experiment"></a>Een trainings experiment instellen
+
+In deze sectie kunt u uw trainings experiment instellen door een werk ruimte te initialiseren, uw omgeving te definiëren en een compute-doel te configureren.
 
 ### <a name="initialize-a-workspace"></a>Een werk ruimte initialiseren
+
 De [Azure machine learning werk ruimte](concept-workspace.md) is de resource op het hoogste niveau voor de service. Het biedt u een centrale locatie voor het werken met alle artefacten die u maakt. In de python-SDK hebt u toegang tot de werkruimte artefacten door een [`Workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true) object te maken.
 
 Maak een `Workspace` object op basis van de config.jsvoor het bestand dat u hebt gemaakt als een [vereiste](#prerequisites).
@@ -47,11 +51,9 @@ from azureml.core import Workspace
 ws = Workspace.from_config()
 ```
 
-### <a name="prepare-scripts"></a>Scripts voorbereiden
-Voor deze zelf studie gebruikt u het trainings script *Train.py* in [github](https://github.com/Azure/azureml-examples/blob/main/code/models/fastai/pets-resnet34/train.py). In de praktijk kunt u een aangepast trainings script maken en dit uitvoeren, net als bij Azure Machine Learning.
-
 ### <a name="define-your-environment"></a>Uw omgeving definiëren
-Maak een `Environment` object en schakel docker in. 
+
+Maak een `Environment` object en schakel docker in.
 
 ```python
 from azureml.core import Environment
@@ -69,6 +71,8 @@ fastai_env.docker.base_image = "fastdotai/fastai2:latest"
 fastai_env.python.user_managed_dependencies = True
 ```
 
+#### <a name="use-a-private-container-registry-optional"></a>Een persoonlijk container register gebruiken (optioneel)
+
 Als u een installatie kopie wilt gebruiken uit een persoonlijk container register dat zich niet in uw werk ruimte bevindt, gebruikt `docker.base_image_registry` u om het adres van de opslag plaats en een gebruikers naam en wacht woord op te geven:
 
 ```python
@@ -77,6 +81,8 @@ fastai_env.docker.base_image_registry.address = "myregistry.azurecr.io"
 fastai_env.docker.base_image_registry.username = "username"
 fastai_env.docker.base_image_registry.password = "password"
 ```
+
+#### <a name="use-a-custom-dockerfile-optional"></a>Een aangepaste Dockerfile gebruiken (optioneel)
 
 Het is ook mogelijk om een aangepaste Dockerfile te gebruiken. Gebruik deze methode als u niet-python-pakketten als afhankelijkheden moet installeren. Vergeet niet om de basis installatie kopie in te stellen op `None` .
 
@@ -98,12 +104,13 @@ fastai_env.docker.base_dockerfile = "./Dockerfile"
 
 Zie [software omgevingen maken en gebruiken](how-to-use-environments.md)voor meer informatie over het maken en beheren van Azure machine learning omgevingen. 
 
-### <a name="create-or-attach-an-amlcompute-resource"></a>Een AmlCompute-resource maken of koppelen
+### <a name="create-or-attach-a-compute-target"></a>Een compute-doel maken of koppelen
+
 U moet een [reken doel](concept-azure-machine-learning-architecture.md#compute-targets) maken voor het trainen van uw model. In deze zelf studie maakt u `AmlCompute` als uw trainings berekenings bron.
 
-Het `AmlCompute` duurt ongeveer vijf minuten. Als de `AmlCompute` resource zich al in uw werk ruimte bevindt, slaat deze code het aanmaak proces over.
+Het maken van `AmlCompute` een paar minuten duurt. Als de `AmlCompute` resource zich al in uw werk ruimte bevindt, slaat deze code het aanmaak proces over.
 
-Net als bij andere Azure-Services gelden er limieten voor bepaalde bronnen (bijvoorbeeld `AmlCompute` ) die aan de Azure machine learning-service zijn gekoppeld. Zie [standaard limieten en een hoger quotum aanvragen](how-to-manage-quotas.md)voor meer informatie. 
+Net als bij andere Azure-Services gelden er limieten voor bepaalde bronnen (bijvoorbeeld `AmlCompute` ) die aan de Azure machine learning-service zijn gekoppeld. Zie [standaard limieten en een hoger quotum aanvragen](how-to-manage-quotas.md)voor meer informatie.
 
 ```python
 from azureml.core.compute import ComputeTarget, AmlCompute
@@ -129,7 +136,10 @@ except ComputeTargetException:
 print(compute_target.get_status().serialize())
 ```
 
-### <a name="create-a-scriptrunconfig-resource"></a>Een ScriptRunConfig-resource maken
+## <a name="configure-your-training-job"></a>Uw trainings taak configureren
+
+Voor deze zelf studie gebruikt u het trainings script *Train.py* in [github](https://github.com/Azure/azureml-examples/blob/main/code/models/fastai/pets-resnet34/train.py). In de praktijk kunt u een aangepast trainings script maken en dit uitvoeren, net als bij Azure Machine Learning.
+
 Maak een `ScriptRunConfig` resource om uw taak te configureren voor uitvoering op het gewenste [Compute-doel](how-to-set-up-training-targets.md).
 
 ```python
@@ -141,7 +151,8 @@ src = ScriptRunConfig(source_directory='fastai-example',
                       environment=fastai_env)
 ```
 
-### <a name="submit-your-run"></a>Uw uitvoering verzenden
+## <a name="submit-your-training-job"></a>Uw trainings taak verzenden
+
 Wanneer u een trainings uitvoering verzendt met behulp van een- `ScriptRunConfig` object, `submit` retourneert de methode een object van het type `ScriptRun` . Het geretourneerde `ScriptRun` object biedt u programmatische toegang tot informatie over de uitvoering van de training. 
 
 ```python

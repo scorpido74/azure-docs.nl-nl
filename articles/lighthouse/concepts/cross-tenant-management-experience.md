@@ -1,14 +1,14 @@
 ---
 title: Beheerervaring in meerdere tenants
 description: Azure delegated Resource Management maakt een cross-Tenant beheer mogelijk.
-ms.date: 10/12/2020
+ms.date: 10/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7b2476d58cdfe057a94c52b40af7694abc7b263f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b033e141d176db839e897ac4add738a4a799de99
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970636"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315934"
 ---
 # <a name="cross-tenant-management-experiences"></a>Beheerervaring in meerdere tenants
 
@@ -69,6 +69,10 @@ De meeste taken en services kunnen worden uitgevoerd op gedelegeerde resources i
 - Back-ups maken van klant gegevens en deze herstellen [van on-premises workloads, Azure-vm's, Azure-bestands shares en meer](../..//backup/backup-overview.md#what-can-i-back-up)
 - Gebruik de [back-upverkenner](../../backup/monitor-azure-backup-with-backup-explorer.md) voor het weer geven van operationele gegevens van back-upitems (inclusief Azure-resources die nog niet zijn geconfigureerd voor back-up) en controle-informatie (taken en waarschuwingen) voor gedelegeerde abonnementen. Backup Explorer is momenteel alleen beschikbaar voor Azure VM-gegevens.
 - Gebruik [back-uprapporten](../../backup/configure-reports.md) over gedelegeerde abonnementen om historische trends bij te houden, het verbruik van back-ups te analyseren en back-ups te controleren en te herstellen.
+
+[Azure-blauw drukken](../../governance/blueprints/index.yml):
+
+- Azure-blauw drukken gebruiken om de implementatie van resource sjablonen en andere artefacten te organiseren (hiervoor is [extra toegang](https://www.wesleyhaakman.org/preparing-azure-lighthouse-customer-subscriptions-for-azure-blueprints/) vereist om het abonnement van de klant voor te bereiden)
 
 [Azure Cost Management en facturering](../../cost-management-billing/index.yml):
 

@@ -1,16 +1,16 @@
 ---
 title: Bridge migreren naar Kubernetes
 services: azure-dev-spaces
-ms.date: 10/12/2020
+ms.date: 10/21/2020
 ms.topic: conceptual
 description: Beschrijft het migratie proces van Azure dev Spaces om te Bridgepen naar Kubernetes
 keywords: Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, Bridge to Kubernetes
-ms.openlocfilehash: 008cb90c172d8106115e4424956d82d026dbcee0
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 6a6fe2367fca3d2068bb7d9a8e1a157fd2e5ca9b
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044697"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329795"
 ---
 # <a name="migrating-to-bridge-to-kubernetes"></a>Bridge migreren naar Kubernetes
 
@@ -50,10 +50,10 @@ Azure dev Spaces en Bridge to Kubernetes hebben vergelijk bare functies, maar ze
 | **Betrouwbaarheid** |
 | Onafhankelijk van Kubernetes en docker-artefacten  | Nee  | Ja   |
 | Automatisch terugdraaien van wijzigingen, na fout opsporing  | Nee  | Ja   |
-| **Omgevingen** |
+| **Ondersteunde client Hulpprogramma's** |
 | Werkt met Visual Studio 2019  | Ja  | Ja   |
 | Werkt met Visual Studio code  | Ja  | Ja   |
-| Werkt met de CLI  | Ja  | Nee   |
+| Werkt met een CLI  | Ja  | Nee   |
 | **Compatibiliteit van besturings systeem** |
 | Werkt op Windows 10  | Ja  | Ja  |
 | Werkt op Linux  | Ja  | Ja  |

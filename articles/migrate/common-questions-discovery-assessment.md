@@ -3,12 +3,12 @@ title: Vragen over detectie, evaluatie en afhankelijkheids analyse in Azure Migr
 description: Krijg antwoorden op veelgestelde vragen over detectie, evaluatie en afhankelijkheids analyse in Azure Migrate.
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 074f58a2f6c24f106de6b2b5003ce2dfd428f356
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb1696c521f436280177f0263abd66aa2bfed7dc
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91577268"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92312919"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Detectie, beoordeling en afhankelijkheids analyse-Veelgestelde vragen
 
@@ -50,7 +50,7 @@ Opmerking: als een van de prestatiemeteritems ontbreekt, gebeurt het volgende in
 
 ## <a name="why-is-the-confidence-rating-of-my-assessment-low"></a>Waarom is de betrouwbaarheidsclassificatie van mijn evaluatie laag?
 
-De betrouwbaarheidsclassificatie wordt berekend voor evaluaties Op basis van prestaties, op basis van het percentage [beschikbare gegevenspunten](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#ratings) dat nodig is om de evaluatie te berekenen. Hieronder ziet u de redenen waarom een evaluatie een lage betrouwbaarheidsclassificatie kan krijgen:
+De betrouwbaarheidsclassificatie wordt berekend voor evaluaties Op basis van prestaties, op basis van het percentage [beschikbare gegevenspunten](./concepts-assessment-calculation.md#ratings) dat nodig is om de evaluatie te berekenen. Hieronder ziet u de redenen waarom een evaluatie een lage betrouwbaarheidsclassificatie kan krijgen:
 
 - U hebt uw omgeving niet geprofileerd gedurende de periode waarvoor u de evaluatie maakt. Als u bijvoorbeeld een evaluatie maakt waarbij de duur van de prestaties is ingesteld op één week, moet u na het starten van de detectie minstens een week wachten voordat alle gegevenspunten zijn verzameld. Als u niet kunt wachten op de duur, wijzigt u de duur van de prestaties in een kortere periode en berekent u de evaluatie opnieuw.
  
@@ -58,7 +58,7 @@ De betrouwbaarheidsclassificatie wordt berekend voor evaluaties Op basis van pre
 
 - Er zijn enkele VM’s gemaakt nadat detectie in Server-evaluatie al was gestart. Als u bijvoorbeeld een evaluatie maakt voor de prestatiegeschiedenis van de laatste maand, maar er een week geleden enkele VM's in de omgeving zijn gemaakt. In dit geval zijn er voor de hele periode geen prestatiegegevens van de nieuwe VM’s beschikbaar, waardoor de betrouwbaarheidsclassificatie laag is.
 
-[Meer informatie](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#confidence-ratings-performance-based) over betrouwbaarheidsclassificaties.
+[Meer informatie](./concepts-assessment-calculation.md#confidence-ratings-performance-based) over betrouwbaarheidsclassificaties.
 
 ## <a name="i-cant-see-some-groups-when-i-am-creating-an-azure-vmware-solution-avs-assessment"></a>Ik zie sommige groepen niet bij het maken van een evaluatie van een Azure VMware-oplossing (AVS)
 
