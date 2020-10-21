@@ -9,13 +9,13 @@ metadata:
   ms.collection: collection
   author: DCtheGeek
   ms.author: dacoulte
-  ms.date: 09/30/2020
-  ms.openlocfilehash: fce9674e9ad21f51344b3ea249849e1474c40ee4
-  ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+  ms.date: 10/16/2020
+  ms.openlocfilehash: 28011d2f3bbbb838f0de9a66c98845d968620fb1
+  ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 10/14/2020
-  ms.locfileid: "92054828"
+  ms.lasthandoff: 10/21/2020
+  ms.locfileid: "92314186"
 landingContent:
 - title: Over Azure Policy
   linkLists:
@@ -63,8 +63,10 @@ landingContent:
       url: ./tutorials/create-and-manage.md
     - text: VS Code-extensie gebruiken
       url: ./how-to/extension-for-vscode.md
-    - text: Beleid ontwerpen als codewerkstromen
+    - text: Azure Policy ontwerpen als code-werkstromen
       url: ./concepts/policy-as-code.md
+    - text: Azure Policy implementeren als code met GitHub
+      url: ./tutorials/policy-as-code-github.md
   - linkListType: deploy
     links:
     - text: Index van beleidsvoorbeelden
@@ -89,9 +91,9 @@ landingContent:
     links:
     - text: Naleving van regelgeving
       url: ./concepts/regulatory-compliance.md
-    - text: Policy voor Kubernetes
+    - text: Azure Policy voor Kubernetes
       url: ./concepts/policy-for-kubernetes.md
-    - text: Beleid voor VM's
+    - text: Azure Policy voor VM's
       url: ./concepts/guest-configuration.md
 - title: Resources beoordelen en herstellen
   linkLists:

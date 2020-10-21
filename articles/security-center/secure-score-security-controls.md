@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 3aab1329dc7bbcc70621684b3f1ac2362f4bc458
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4897c1b54eff5eb06e0ef49f0c74e261f5a9687e
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91268261"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281288"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Beveiligingsscore in Azure Security Center
 
@@ -57,7 +57,7 @@ Security Center wordt uw score prominent weer gegeven in de portal: het is het e
 
 ### <a name="get-your-secure-score-from-the-rest-api"></a>Uw beveiligde Score ophalen uit de REST API
 
-U krijgt toegang tot uw score via de [API voor beveiligde scores](https://docs.microsoft.com/rest/api/securitycenter/securescores/) (momenteel in preview-versie). De API-methoden bieden de flexibiliteit om query's uit te voeren op de gegevens en uw eigen rapportagemechanisme te bouwen van uw beveiligingsscores in de loop van de tijd. U kunt bijvoorbeeld de **Beveiligingsscore**-API gebruiken om de score voor een specifiek abonnement op te halen. Daarnaast kunt u de API voor **besturingselementen van de beveiligingsscore** gebruiken om de besturingselementen voor beveiliging en de huidige score van uw abonnementen weer te geven.
+U krijgt toegang tot uw score via de API voor beveiligde scores (momenteel in preview-versie). De API-methoden bieden de flexibiliteit om query's uit te voeren op de gegevens en uw eigen rapportagemechanisme te bouwen van uw beveiligingsscores in de loop van de tijd. U kunt bijvoorbeeld de [API beveiligde scores](https://docs.microsoft.com/rest/api/securitycenter/securescores) gebruiken om de score voor een specifiek abonnement op te halen. Daarnaast kunt u de [API besturings elementen voor beveiligde scores](https://docs.microsoft.com/rest/api/securitycenter/securescorecontrols) gebruiken om de beveiligings controles en de huidige Score van uw abonnementen weer te geven.
 
 ![Het ophalen van een enkele beveiligde Score via de API](media/secure-score-security-controls/single-secure-score-via-api.png)
 
@@ -156,7 +156,7 @@ De volgende tabel bevat de beveiligings opties in Azure Security Center. Voor el
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Onbevoegde netwerk toegang beperken (maximale score 4)</p></strong>Eind punten in een organisatie bieden een directe verbinding van uw virtuele netwerk naar ondersteunde Azure-Services. Virtuele machines in een subnet kunnen communiceren met alle resources. Als u de communicatie van en naar resources binnen een subnet wilt beperken, maakt u een netwerk beveiligings groep en koppelt u deze aan het subnet. Organisaties kunnen het aantal niet-geautoriseerde verkeer beperken en beveiligen door binnenkomende en uitgaande regels te maken.</td>
-    <td class="tg-lboi"; width=55%>- Door sturen via IP op uw virtuele machine moet worden uitgeschakeld<br>- Geautoriseerde IP-bereiken moeten worden gedefinieerd in Kubernetes Services (preview)<br>- KEUR Toegang tot App Services moet worden beperkt (preview-versie)<br>- KEUR De regels voor webtoepassingen op IaaS Nsg's moeten worden gehard<br>- Virtuele machines moeten worden gekoppeld aan een netwerk beveiligings groep<br>- CORS mag niet alle bronnen toestaan om toegang te krijgen tot uw API-app<br>- CORS mag niet alle bronnen toestaan om toegang te krijgen tot uw functie-app<br>- CORS mag niet alle bronnen toestaan om toegang te krijgen tot uw webtoepassing<br>- Fout opsporing op afstand moet worden uitgeschakeld voor de API-app<br>- Fout opsporing op afstand moet worden uitgeschakeld voor functie-app<br>- Externe fout opsporing moet worden uitgeschakeld voor webtoepassing<br>- Toegang moet worden beperkt voor strikte netwerk beveiligings groepen met Internet gerichte Vm's<br>- De regels voor de netwerk beveiligings groep voor virtuele machines die zijn gericht op internet, moeten worden gehard<br>- Azure Policy-invoeg toepassing voor Kubernetes moet zijn geïnstalleerd en ingeschakeld in uw clusters (preview)<br>- Containers moeten worden geluisterd op toegestane poorten (preview-versie)<br>- Services mogen alleen op toegestane poorten Luis teren (preview)<br>- Het gebruik van hostnetwerkadapters en poorten moet worden beperkt (preview-versie)</td>
+    <td class="tg-lboi"; width=55%>- Door sturen via IP op uw virtuele machine moet worden uitgeschakeld<br>- Geautoriseerde IP-bereiken moeten worden gedefinieerd in Kubernetes Services (preview)<br>- KEUR Toegang tot App Services moet worden beperkt (preview-versie)<br>- KEUR De regels voor webtoepassingen op IaaS Nsg's moeten worden gehard<br>- Virtuele machines moeten worden gekoppeld aan een netwerk beveiligings groep<br>- CORS mag niet alle bronnen toestaan om toegang te krijgen tot uw API-app<br>- CORS mag niet alle bronnen toestaan om toegang te krijgen tot uw functie-app<br>- CORS mag niet alle bronnen toestaan om toegang te krijgen tot uw webtoepassing<br>- Fout opsporing op afstand moet worden uitgeschakeld voor de API-app<br>- Fout opsporing op afstand moet worden uitgeschakeld voor functie-app<br>- Externe fout opsporing moet worden uitgeschakeld voor webtoepassing<br>- Toegang moet worden beperkt voor strikte netwerk beveiligings groepen met Internet gerichte Vm's<br>- De regels voor de netwerk beveiligings groep voor virtuele machines die zijn gericht op internet, moeten worden gehard<br>- Azure Policy-invoeg toepassing voor Kubernetes moet zijn geïnstalleerd en ingeschakeld in uw clusters (preview)<br>- Containers moeten worden geluisterd op toegestane poorten (preview-versie)<br>- Services mogen alleen op toegestane poorten Luis teren (preview)<br>- Het gebruik van hostnetwerkadapters en poorten moet worden beperkt (preview-versie)<br>- Virtuele netwerken moeten worden beveiligd door Azure Firewall (preview-versie)</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Adaptief toepassings beheer Toep assen (maximum score 3)</p></strong>Adaptief toepassings beheer (AAC) is een intelligente, geautomatiseerde, end-to-end oplossing, waarmee u kunt bepalen welke toepassingen kunnen worden uitgevoerd op uw Azure-en niet-Azure-machines. Het helpt ook om uw computers te beschermen tegen schadelijke software.<br>Security Center gebruikt machine learning om een lijst met bekende veilige toepassingen voor een groep machines te maken.<br>Deze innovatieve benadering van de lijst met goedgekeurde toepassingen biedt de beveiligings voordelen zonder de beheer complexiteit.<br>AAC is met name relevant voor speciaal ontwikkelde servers die een specifieke set toepassingen moeten uitvoeren.</td>
