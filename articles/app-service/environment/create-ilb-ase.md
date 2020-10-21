@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 09/16/2020
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 1bda52227737b082927dd1449fa6469cf849ff15
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: baf528e1b4ab7e323b69574729669d09692741cc
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91273259"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148160"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>Een App Service-omgeving voor een interne load balancer maken en gebruiken 
 
@@ -158,7 +158,7 @@ Voor ILB AS-omgevingen die werden gemaakt vóór 2019, moest u het domeinachterv
 [ASENetwork]: ./network-info.md
 [UsingASE]: ./using-an-ase.md
 [UDRs]: ../../virtual-network/virtual-networks-udr-overview.md
-[NSGs]: ../../virtual-network/security-overview.md
+[NSGs]: ../../virtual-network/network-security-groups-overview.md
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [webapps]: ../overview.md

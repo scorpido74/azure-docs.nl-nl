@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
-ms.openlocfilehash: 7700e151a49dbfbad452927ba4a308651a0b584a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68338341d47b8fa15d0bd88ea23e951210105fc4
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84782809"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340781"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>Beheer van meerdere tenants in Security Center
 
@@ -57,4 +57,4 @@ In dit artikel wordt uitgelegd hoe cross-Tenant beheer werkt in Security Center.
 
 * [Breid uw beveiligings postuur uit met Azure Security Center](security-center-monitoring.md) -Leer hoe u de status van uw Azure-resources kunt bewaken.
 * [Veelgestelde](faq-general.md) vragen over Azure Security Center: vind een veelgestelde vraag over het gebruik van de service.
-* [Meer informatie over Azure Lighthouse in Enter prise-scenario's](https://docs.microsoft.com/azure/lighthouse/concepts/enterprise) : Ontdek hoe Azure Lighthouse het beheer van meerdere tenants in een onderneming kan vereenvoudigen. Dit maakt gebruik van verschillende Azure AD-tenants.
+* [Meer informatie over Azure Lighthouse in Enter prise-scenario's](../lighthouse/concepts/enterprise.md) : Ontdek hoe Azure Lighthouse het beheer van meerdere tenants in een onderneming kan vereenvoudigen. Dit maakt gebruik van verschillende Azure AD-tenants.

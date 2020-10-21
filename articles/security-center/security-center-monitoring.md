@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: memildin
-ms.openlocfilehash: 893b2eefc2c4c81e66bf86a1c999a3c4198a3c71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d7ecf4751e9f3fe2051feb64a94e828e00bf106
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90883828"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92339489"
 ---
 # <a name="strengthen-your-security-posture-with-azure-security-center"></a>U beveiligingsstatus versterken met Azure Security Center
 Dit artikel helpt u bij het versterken van uw beveiligings postuur. Gebruik de bewakings mogelijkheden in Azure Security Center om ervoor te zorgen dat uw resource beveiliging zo nauw keurig mogelijk is en de naleving van het beleid kan bewaken.
@@ -38,4 +38,4 @@ In dit artikel hebt u kunnen lezen hoe u de bewakingsmogelijkheden in Azure Secu
 
 * [Beveiligingsbeleid instellen in Azure Security Center](tutorial-security-policy.md): leer hoe u beveiligingsinstellingen configureert in Azure Security Center.
 * [Beveiligingswaarschuwingen beheren en erop reageren in Azure Security Center](security-center-managing-and-responding-alerts.md): ontdek hoe u beveiligingswaarschuwingen kunt beheren en erop kunt reageren.
-* [Partneroplossingen controleren met Azure Security Center](security-center-partner-solutions.md): leer hoe u de integriteitsstatus van uw partneroplossingen kunt controleren.
+* [Partneroplossingen controleren met Azure Security Center](./security-center-partner-integration.md): leer hoe u de integriteitsstatus van uw partneroplossingen kunt controleren.

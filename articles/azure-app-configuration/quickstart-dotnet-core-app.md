@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: lcozzens
-ms.openlocfilehash: f133572b0c3163f5c5fe0a5c2e48ce5e6d53adcc
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: bb12224fd29d50765bc56a531787b7a0849cd06e
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767745"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075787"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Quickstart: Een .NET Core-app maken met App Configuration
 
@@ -40,7 +40,7 @@ In deze quickstart neemt u Azure App Configuration op in een .NET Core-console-a
 
 ## <a name="create-a-net-core-console-app"></a>Een .NET Core-console-app maken
 
-U gebruikt de [opdrachtregelinterface (CLI) van .NET Core](https://docs.microsoft.com/dotnet/core/tools/) om een nieuw web-app-project van .NET Core Console te maken. Het voordeel van de CLI van .NET Core ten opzichte van Visual Studio is dat de interface beschikbaar is voor Windows, macOS en Linux.  U kunt ook de vooraf geïnstalleerde hulpprogramma's gebruiken die beschikbaar zijn in de [Azure Cloud Shell](https://shell.azure.com).
+U gebruikt de [opdrachtregelinterface (CLI) van .NET Core](/dotnet/core/tools/) om een nieuw web-app-project van .NET Core Console te maken. Het voordeel van de CLI van .NET Core ten opzichte van Visual Studio is dat de interface beschikbaar is voor Windows, macOS en Linux.  U kunt ook de vooraf geïnstalleerde hulpprogramma's gebruiken die beschikbaar zijn in de [Azure Cloud Shell](https://shell.azure.com).
 
 1. Maak een nieuwe map voor uw project.
 
@@ -124,7 +124,7 @@ U gebruikt de [opdrachtregelinterface (CLI) van .NET Core](https://docs.microsof
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze quickstart hebt u een nieuw App Configuration-archief gemaakt en via de [App Configuration-provider](https://go.microsoft.com/fwlink/?linkid=2074664) gebruikt met een .NET Core-console-app. Ga door naar de volgende zelfstudie voor meer informatie over het configureren van uw .NET Core-app om configuratie-instellingen dynamisch te vernieuwen.
+In deze quickstart hebt u een nieuw App Configuration-archief gemaakt en via de [App Configuration-provider](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration) gebruikt met een .NET Core-console-app. Ga door naar de volgende zelfstudie voor meer informatie over het configureren van uw .NET Core-app om configuratie-instellingen dynamisch te vernieuwen.
 
 > [!div class="nextstepaction"]
 > [Dynamische configuratie inschakelen](./enable-dynamic-configuration-dotnet-core.md)

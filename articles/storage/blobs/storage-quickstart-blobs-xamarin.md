@@ -3,17 +3,17 @@ title: 'Quickstart: Azure Blob-opslagbibliotheek v12 - Xamarin'
 description: In deze quickstart leert u hoe u de Azure Blob Storage-clientbibliotheek versie 12 met Xamarin kunt gebruiken om een container te maken en een blob-in-blob-opslag (object). Hierna leert u hoe u de blob naar uw mobiele apparaat downloadt en hoe u alle blobs in een container kunt weergeven.
 author: codemillmatt
 ms.author: masoucou
-ms.date: 05/08/2020
+ms.date: 10/09/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4fa7ebc71f2bbe6abe6956ad36daaf983e011a94
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 434f112e78938c94d887423316fccea270059b6b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89001324"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109014"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-with-xamarin"></a>Quickstart: Azure Blob Storage-clientbibliotheek v12 met Xamarin
 
@@ -157,7 +157,7 @@ protected async override void OnAppearing()
 Het volgende codefragment:
 
 1. Maakt een `MemoryStream` met tekst.
-1. Uploadt de tekst naar een Blob door de functie [UploadAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.uploadblobasync?view=azure-dotnet#Azure_Storage_Blobs_BlobContainerClient_UploadBlobAsync_System_String_System_IO_Stream_System_Threading_CancellationToken_) van de klasse [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient) aan te roepen, en deze zowel in de bestandsnaam als de `MemoryStream` met tekst door te geven. Met deze methode wordt de blob gemaakt als deze nog niet bestaat, of overschreven als dat wel het geval is.
+1. Uploadt de tekst naar een Blob door de functie [UploadAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.uploadblobasync#Azure_Storage_Blobs_BlobContainerClient_UploadBlobAsync_System_String_System_IO_Stream_System_Threading_CancellationToken_) van de klasse [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient) aan te roepen, en deze zowel in de bestandsnaam als de `MemoryStream` met tekst door te geven. Met deze methode wordt de blob gemaakt als deze nog niet bestaat, of overschreven als dat wel het geval is.
 
 Voeg deze code toe aan het bestand *MainPage.xaml.cs*:
 

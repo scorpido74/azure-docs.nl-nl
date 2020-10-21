@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: e6bb3389fe035b1ccfbefaca788a40530581ac7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2b17e15c5548b4c9b93a62a7d4dfe62ff44404c
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91851044"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341750"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Adaptieve netwerk beveiliging in Azure Security Center
 Meer informatie over het configureren van adaptieve netwerk beveiliging in Security Center.
@@ -33,7 +33,7 @@ Meer informatie over het configureren van adaptieve netwerk beveiliging in Secur
 |||
 
 ## <a name="what-is-adaptive-network-hardening"></a>Wat is adaptieve netwerk beveiliging?
-Het Toep assen van [netwerk beveiligings groepen (NSG)](https://docs.microsoft.com/azure/virtual-network/security-overview) voor het filteren van verkeer naar en van resources verbetert uw netwerk beveiligings postuur. Maar er kunnen toch nog enkele gevallen zijn waarin het werkelijke verkeer dat via de NSG stroomt een subset is van de gedefinieerde NSG-regels. In dergelijke gevallen kunt u het beveiligingspostuur verder verbeteren door de NSG-regels te versterken op basis van de werkelijke verkeerspatronen.
+Het Toep assen van [netwerk beveiligings groepen (NSG)](../virtual-network/network-security-groups-overview.md) voor het filteren van verkeer naar en van resources verbetert uw netwerk beveiligings postuur. Maar er kunnen toch nog enkele gevallen zijn waarin het werkelijke verkeer dat via de NSG stroomt een subset is van de gedefinieerde NSG-regels. In dergelijke gevallen kunt u het beveiligingspostuur verder verbeteren door de NSG-regels te versterken op basis van de werkelijke verkeerspatronen.
 
 Adaptieve netwerk beveiliging biedt aanbevelingen voor verdere beveiliging van de NSG-regels. Het maakt gebruik van een machine learning-algoritme dat rekening houdt met werkelijk verkeer, bekende vertrouwde configuratie, bedreigingsinformatie en andere aanwijzingen voor aantasting, en geeft vervolgens aanbevelingen om alleen verkeer van bepaalde IP-/poort-tuples toe te staan.
 
@@ -93,7 +93,7 @@ Enkele belang rijke richt lijnen voor het wijzigen van een adaptieve netwerk bep
 * U kunt regels voor ' toestaan ' niet wijzigen zodat regels worden ' deny '. 
 
   > [!NOTE]
-  > Het maken en wijzigen van regels voor weigeren wordt rechtstreeks uitgevoerd op het NSG. Zie [een netwerk beveiligings groep maken, wijzigen of verwijderen](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)voor meer informatie.
+  > Het maken en wijzigen van regels voor weigeren wordt rechtstreeks uitgevoerd op het NSG. Zie [een netwerk beveiligings groep maken, wijzigen of verwijderen](../virtual-network/manage-network-security-group.md)voor meer informatie.
 
 * Een regel voor het **weigeren van alle verkeer** is het enige type ' deny ' dat hier wordt vermeld en kan niet worden gewijzigd. U kunt het echter wel verwijderen (Zie [een regel verwijderen](#delete-rule)).
   > [!NOTE]
@@ -121,7 +121,7 @@ Enkele belang rijke richt lijnen voor het wijzigen van een adaptieve netwerk bep
 U kunt een regel ' toestaan ' toevoegen die niet wordt aanbevolen door Security Center.
 
 > [!NOTE]
-> U kunt hier alleen regels voor ' toestaan ' toevoegen. Als u regels voor weigeren wilt toevoegen, kunt u dit rechtstreeks doen op het NSG. Zie [een netwerk beveiligings groep maken, wijzigen of verwijderen](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)voor meer informatie.
+> U kunt hier alleen regels voor ' toestaan ' toevoegen. Als u regels voor weigeren wilt toevoegen, kunt u dit rechtstreeks doen op het NSG. Zie [een netwerk beveiligings groep maken, wijzigen of verwijderen](../virtual-network/manage-network-security-group.md)voor meer informatie.
 
 *Een regel voor adaptieve netwerk beveiliging toevoegen:*
 

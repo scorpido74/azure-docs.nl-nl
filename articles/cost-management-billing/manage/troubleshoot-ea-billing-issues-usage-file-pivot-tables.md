@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: troubleshooting
 ms.date: 10/09/2020
 ms.author: banders
-ms.openlocfilehash: a30f85ae1b65321a25ee93239374d2a8aae26769
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: b32bb979176af8a8a3751db8edf9c129caf1002e
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92026297"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131986"
 ---
 # <a name="troubleshoot-ea-billing-issues-with-usage-file-pivot-tables"></a>Problemen met EA-facturering oplossen met de draaitabellen van het gebruiksbestand
 
@@ -33,7 +33,7 @@ Alleen EA-beheerders, accounteigenaren en afdelingsbeheerders hebben toegang tot
 
 Omdat Azure-gebruiksbestanden een CSV-indeling hebben, moet u de gegevens voorbereiden voor gebruik in Excel. Gebruik de volgende stappen om de gegevens als tabel op te maken.
 
-1. Download de gebruiksgegevensversie 2 met Alle kosten-bestand (gebruik en aankoop) met behulp van de instructies in [Gebruik voor EA-klanten downloaden](https://docs.microsoft.com/azure/cost-management-billing/manage/download-azure-invoice-daily-usage-date#download-usage-for-ea-customers).
+1. Download de gebruiksgegevensversie 2 met Alle kosten-bestand (gebruik en aankoop) met behulp van de instructies in [Gebruik voor EA-klanten downloaden](./download-azure-invoice-daily-usage-date.md#download-usage-for-ea-customers).
 1. Open het bestand in Excel.
 1. De niet-opgemaakte gegevens lijken op het volgende voorbeeld.  
     :::image type="content" source="./media/troubleshoot-ea-billing-issues-usage-file-pivot-tables/raw-csv-data-ea.png" alt-text="Voorbeeld met niet-opgemaakte gegevens in Excel" lightbox="./media/troubleshoot-ea-billing-issues-usage-file-pivot-tables/raw-csv-data-ea.png" :::

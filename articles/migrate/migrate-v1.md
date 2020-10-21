@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 71fbd56c2566f008a096482755abbcdb174a987e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 53a10123bf3304ab9c949146d7cad6b904c8323d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89001634"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317211"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Werken met de vorige versie van Azure Migrate
 
@@ -121,7 +121,7 @@ Windows Server 2012 R2 en alle SP's | Azure biedt volledige ondersteuning. | Ger
 Windows Server 2012 en alle SP's | Azure biedt volledige ondersteuning. | Gereed voor Azure
 Windows Server 2008 R2 en alle SP's | Azure biedt volledige ondersteuning.| Gereed voor Azure
 Windows Server 2008 (32-bits en 64-bits) | Azure biedt volledige ondersteuning. | Gereed voor Azure
-Windows Server 2003, 2003 R2 | Niet meer ondersteund, en vereist een [aangepaste ondersteuningsovereenkomst (CSA)](https://aka.ms/WSosstatement) voor ondersteuning in Azure. | Voorwaardelijk gereed voor Azure. Overweeg het besturingssysteem te upgraden voordat u naar Azure migreert.
+Windows Server 2003, 2003 R2 | Niet meer ondersteund, en vereist een [aangepaste ondersteuningsovereenkomst (CSA)](/troubleshoot/azure/virtual-machines/server-software-support) voor ondersteuning in Azure. | Voorwaardelijk gereed voor Azure. Overweeg het besturingssysteem te upgraden voordat u naar Azure migreert.
 Windows 2000, 98, 95, NT, 3,1, MS-DOS | Niet meer ondersteund. De machine kan mogelijk worden opgestart in Azure, maar Azure biedt geen ondersteuning voor het besturingssysteem. | Voorwaardelijk gereed voor Azure. Wij raden aan het besturingssysteem te upgraden voordat u naar Azure migreert.
 Windows-client 7, 8 en 10 | Azure biedt alleen ondersteuning met een [Visual Studio-abonnement.](../virtual-machines/windows/client-images.md) | Voorwaardelijk gereed voor Azure
 Windows 10 Pro Desktop | Azure biedt ondersteuning met [multitenant-hostingrechten.](../virtual-machines/windows/windows-desktop-multitenant-hosting-deployment.md) | Voorwaardelijk gereed voor Azure

@@ -7,16 +7,16 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: yegu
-ms.openlocfilehash: 10fedaf5680976ae93984c9b2c607882f650019d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 4b5f77742d3b2611fd7baf5880b9f8fed047aa86
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213269"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147323"
 ---
 # <a name="how-the-reservation-discount-is-applied-to-azure-cache-for-redis"></a>Het toepassen van de reserveringskorting op Azure Cache for Redis
 
-Nadat u gereserveerde capaciteit voor Azure Cache for Redis hebt gekocht, wordt de reserveringskorting automatisch toegepast op cache-exemplaren die overeenkomen met de kenmerken en hoeveelheid van de reservering. Een reservering dekt alleen de rekenkosten van uw Azure Cache for Redis. Er worden tegen de normale tarieven opslag- en netwerkkosten in rekening gebracht. Gereserveerde capaciteit is alleen beschikbaar voor caches in de [Premium-laag](/https://docs.microsoft.com/azure/azure-cache-for-redis/quickstart-create-redis).
+Nadat u gereserveerde capaciteit voor Azure Cache for Redis hebt gekocht, wordt de reserveringskorting automatisch toegepast op cache-exemplaren die overeenkomen met de kenmerken en hoeveelheid van de reservering. Een reservering dekt alleen de rekenkosten van uw Azure Cache for Redis. Er worden tegen de normale tarieven opslag- en netwerkkosten in rekening gebracht. Gereserveerde capaciteit is alleen beschikbaar voor caches in de [Premium-laag](//azure/azure-cache-for-redis/quickstart-create-redis).
 
 ## <a name="how-reservation-discount-is-applied"></a>De manier waarop reserveringskorting wordt toegepast
 
@@ -30,7 +30,7 @@ De korting op gereserveerde capaciteit voor Azure Cache for Redis wordt op uurba
 
 In de volgende voorbeelden ziet u hoe de korting op de gereserveerde capaciteit voor Azure Cache voor Redis wordt toegepast, afhankelijk van het aantal caches dat u hebt aangeschaft en wanneer deze worden uitgevoerd.
 
-* **Voorbeeld 1**: U koopt een gereserveerde capaciteit voor Azure Cache for Redis voor een cache van 6 GB. Als u een cache van 13 GB uitvoert die overeenkomt met de rest van de reserveringskenmerken, betaalt u de prijs per gebruik voor 7 GB van uw Azure Cache voor Redis-rekengebruik, en krijgt u de reserveringskorting voor één uur cacherekengebruik van 6 GB.
+**Voorbeeld 1**: U koopt een gereserveerde capaciteit voor Azure Cache for Redis voor een cache van 6 GB. Als u een cache van 13 GB uitvoert die overeenkomt met de rest van de reserveringskenmerken, betaalt u de prijs per gebruik voor 7 GB van uw Azure Cache voor Redis-rekengebruik, en krijgt u de reserveringskorting voor één uur cacherekengebruik van 6 GB.
 
 In de rest van deze voorbeelden wordt ervan uitgegaan dat de gereserveerde capaciteit voor Azure Cache voor Redis die u koopt voor een cache van 26 GB is, en dat de rest van de reserveringskenmerken overeenkomen met de actieve cache.
 
@@ -40,7 +40,7 @@ In de rest van deze voorbeelden wordt ervan uitgegaan dat de gereserveerde capac
 
 * **Voorbeeld 4**: Eén cache van 26 GB voert u uit van 01:00 tot 01:45. Een andere cache van 26 GB voert u uit van 01:30 tot 02:00. Voor de overlapping van 15 minuten wordt de prijs voor betalen per gebruik in rekening gebracht. De reserveringskorting geldt voor het rekengebruik voor de rest van de tijd.
 
-Raadpleeg [Meer informatie over Azure-reserveringsgebruik](/azure/billing/billing-understand-reserved-instance-usage-ea) voor meer informatie over en inzicht in hoe uw Azure-reserveringen worden toegepast in uw gebruiksrapporten voor facturering.
+Raadpleeg [Meer informatie over Azure-reserveringsgebruik](./understand-reserved-instance-usage-ea.md) voor meer informatie over en inzicht in hoe uw Azure-reserveringen worden toegepast in uw gebruiksrapporten voor facturering.
 
 ## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Contact opnemen
 Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).

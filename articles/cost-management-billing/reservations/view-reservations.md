@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: ec91d0997717d536c3b47ce7b276f75b21d1baa1
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 926e0c8bc0fdff580b4d1e84be5940e0945d52ae
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88681648"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146275"
 ---
 # <a name="view-azure-reservations"></a>Azure-reserveringen weergeven
 
@@ -55,7 +55,7 @@ Er zijn twee opties voor Power BI-gebruikers
 - [Azure-reserveringen beheren](manage-reserved-vm-instance.md).
 - [Inzicht in het gebruik van reserveringen voor uw abonnement met betalen per gebruik](understand-reserved-instance-usage.md)
 - [Inzicht in het gebruik van reserveringen voor Enterprise-inschrijvingen](understand-reserved-instance-usage-ea.md)
-- [Inzicht in het gebruik van reserveringen voor CSP-abonnementen](https://docs.microsoft.com/partner-center/azure-reservations)
+- [Inzicht in het gebruik van reserveringen voor CSP-abonnementen](/partner-center/azure-reservations)
 
 ## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Contact opnemen
 

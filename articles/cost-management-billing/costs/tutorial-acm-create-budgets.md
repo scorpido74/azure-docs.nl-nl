@@ -9,18 +9,18 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 32aad7bc350c2ee8ca55d340623c3c3e44820d43
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 48cf5aea60f66fa8b24fd09e7304be0077f2fdcf
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527136"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132802"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Zelfstudie: Azure-budgetten maken en beheren
 
 Met budgetten in Cost Management kunt u de verantwoordelijkheid in de organisatie beter plannen en stimuleren. Met budgetten kunt u de Azure-services die u gebruikt of waarop u zich abonneert voor een specifieke periode bijhouden. Ze helpen u anderen te informeren over hun uitgaven om kosten proactief te beheren en uitgaven in de loop van de tijd bij te houden. Wanneer de budgetdrempels die u hebt gemaakt, worden overschreden, worden alleen meldingen geactiveerd. Dit heeft geen gevolgen voor uw resources en uw gebruik wordt niet gestopt. U kunt budgetten gebruiken om bestedingen te vergelijken en bij te houden bij het analyseren van kosten.
 
-Kosten- en gebruiksgegevens zijn doorgaans binnen 8 tot 24 uur beschikbaar en budgetten worden elke 12 tot 14 uur geëvalueerd op basis van deze kosten. Zorg ervoor dat u bekend bent met specifieke [updates voor kosten- en gebruiksgegevens](https://docs.microsoft.com/azure/cost-management-billing/costs/understand-cost-mgt-data#cost-and-usage-data-updates-and-retention). Wanneer een budgetdrempelwaarde wordt bereikt, worden de e-mailmeldingen doorgaans binnen een uur na de evaluatie verzonden.
+Kosten- en gebruiksgegevens zijn doorgaans binnen 8 tot 24 uur beschikbaar en budgetten worden elke 12 tot 14 uur geëvalueerd op basis van deze kosten. Zorg ervoor dat u bekend bent met specifieke [updates voor kosten- en gebruiksgegevens](./understand-cost-mgt-data.md#cost-and-usage-data-updates-and-retention). Wanneer een budgetdrempelwaarde wordt bereikt, worden de e-mailmeldingen doorgaans binnen een uur na de evaluatie verzonden.
 
 Wanneer u een vervaldatum in de toekomst selecteert, worden budgetten bovendien aan het einde van een periode (maand, kwartaal of jaar) automatisch opnieuw ingesteld op hetzelfde bedrag. Omdat ze opnieuw worden ingesteld met hetzelfde budgetbedrag, moet u afzonderlijke budgetten maken wanneer de gebudgetteerde valutabedragen voor toekomstige perioden verschillen.
 
@@ -72,7 +72,7 @@ In abonnementen worden de volgende Azure-machtigingen, of bereiken, ondersteund 
 - Inzender en Inzender Cost Management: inzenders kunnen hun eigen budgetten instellen, wijzigen en verwijderen. Inzenders kunnen ook de budgetbedragen aanpassen voor budgetten die zijn gemaakt door anderen.
 - Lezer en Lezer Cost Management: lezers kunnen budgetten inzien waarvoor ze zijn gemachtigd.
 
-Zie [Toegang tot gegevens van Cost Management toewijzen](../../cost-management/assign-access-acm-data.md) voor meer informatie over het toewijzen van toegang tot de gegevens van Cost Management.
+Zie [Toegang tot gegevens van Cost Management toewijzen](./assign-access-acm-data.md) voor meer informatie over het toewijzen van toegang tot de gegevens van Cost Management.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -104,7 +104,7 @@ Op basis van de velden die tot dusver in het budget zijn gekozen, wordt een graf
 
 Nadat u het budgetbedrag hebt geconfigureerd, selecteert u **Volgende** om budgetwaarschuwingen te configureren. Voor budgetten is ten minste één kostendrempel (% van budget) en een bijbehorend e-mailadres vereist. U kunt maximaal vijf drempels en vijf e-mailadressen in één budget opnemen. Wanneer een budgetdrempelwaarde wordt bereikt, worden de e-mailmeldingen doorgaans binnen een uur na de evaluatie verzonden.
 
-Als u e-mailberichten wilt ontvangen, voegt u azure-noreply@microsoft.com toe aan uw lijst met goedgekeurde afzenders zodat e-mails niet naar uw map voor ongewenste e-mail worden verzonden. Zie [Use cost alerts](../../cost-management/cost-mgt-alerts-monitor-usage-spending.md) (Kostenwaarschuwingen gebruiken) voor meer informatie over meldingen.
+Als u e-mailberichten wilt ontvangen, voegt u azure-noreply@microsoft.com toe aan uw lijst met goedgekeurde afzenders zodat e-mails niet naar uw map voor ongewenste e-mail worden verzonden. Zie [Use cost alerts](./cost-mgt-alerts-monitor-usage-spending.md) (Kostenwaarschuwingen gebruiken) voor meer informatie over meldingen.
 
 In het onderstaande voorbeeld wordt er een e-mailwaarschuwing gegenereerd wanneer 90% van het budget is besteed. Als u een budget maakt met de budget-API, kunt u ook rollen aan personen toewijzen voor het ontvangen van waarschuwingen. Het toewijzen van rollen aan personen wordt niet ondersteund in de Azure-portal. Zie [Budgets API ](/rest/api/consumption/budgets) voor meer informatie over de budget-API van Azure. Raadpleeg [Ondersteunde talen voor e-mails voor budgetwaarschuwingen](manage-automation.md#supported-locales-for-budget-alert-emails) als je een e-mailwaarschuwing wilt verzenden in een andere taal.
 
@@ -112,7 +112,7 @@ Waarschuwingslimieten bieden ondersteuning voor een bereik van 0,01 tot 1000% va
 
 ![Voorbeeld van waarschuwingsvoorwaarden](./media/tutorial-acm-create-budgets/monthly-budget-alert.png)
 
-Nadat u een budget hebt gemaakt, wordt het weergegeven in de kostenanalyse. Het weergeven van uw budget ten opzichte van uw uitgaventrend is een van de eerste stappen wanneer u begint met het [analyseren van uw kosten en uitgaven](../../cost-management/quick-acm-cost-analysis.md).
+Nadat u een budget hebt gemaakt, wordt het weergegeven in de kostenanalyse. Het weergeven van uw budget ten opzichte van uw uitgaventrend is een van de eerste stappen wanneer u begint met het [analyseren van uw kosten en uitgaven](./quick-acm-cost-analysis.md).
 
 ![Voorbeeld van budget en uitgaven in kostenanalyse](./media/tutorial-acm-create-budgets/cost-analysis.png)
 

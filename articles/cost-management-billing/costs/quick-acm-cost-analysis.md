@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 89a12be047a3571c1d85febc246a1ed8a3c8b720
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 62651f611654fa601752308ac2fa7f4c388297d6
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91297858"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132836"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Quickstart: Kosten verkennen en analyseren met kostenanalyse
 
@@ -32,7 +32,7 @@ In deze snelstart leert u de volgende zaken:
 
 Kostenanalyse biedt ondersteuning voor verschillende typen Azure-accounts. Zie voor de volledige lijst met ondersteunde accounttypen [Gegevens van Azure Cost Management begrijpen](understand-cost-mgt-data.md). Als u kostengegevens wilt weergeven, hebt u minimaal leestoegang voor uw Azure-account nodig.
 
-Zie [Toegang tot gegevens toewijzen](../../cost-management/assign-access-acm-data.md) voor meer informatie over het toewijzen van toegang tot de gegevens in Azure Cost Management.
+Zie [Toegang tot gegevens toewijzen](./assign-access-acm-data.md) voor meer informatie over het toewijzen van toegang tot de gegevens in Azure Cost Management.
 
 Als u een nieuw abonnement hebt, kunt u de Cost Management-functies niet meteen gebruiken. Het kan tot 48 uur duren voordat u alle Cost Management-functies kunt gebruiken.
 
@@ -108,7 +108,7 @@ Als u bestedingsprognose uitschakelt, ziet u geen geschatte uitgaven voor datums
 
 Over het algemeen zijn binnen acht tot twaalf uur gegevens of meldingen te zien over de verbruikte resources.
 
-**Groeperen op** algemene eigenschappen om de kosten te specificeren en de belangrijkste kostenfactoren te identificeren. Als u bijvoorbeeld op resourcetag wilt groeperen, selecteert u de tagcode waarop u wilt groeperen. De kosten worden per tagwaarde weergegeven, met een extra segment voor resources waarop die tag niet is toegepast.  Zie [Groeps- en filteropties](https://docs.microsoft.com/azure/cost-management-billing/costs/group-filter) voor meer informatie over opties voor groeperen en filteren.
+**Groeperen op** algemene eigenschappen om de kosten te specificeren en de belangrijkste kostenfactoren te identificeren. Als u bijvoorbeeld op resourcetag wilt groeperen, selecteert u de tagcode waarop u wilt groeperen. De kosten worden per tagwaarde weergegeven, met een extra segment voor resources waarop die tag niet is toegepast.  Zie [Groeps- en filteropties](./group-filter.md) voor meer informatie over opties voor groeperen en filteren.
 
 De meeste [Azure-resources bieden ondersteuning voor het gebruik van tags](../../azure-resource-manager/management/tag-support.md). Maar sommige tags zijn niet beschikbaar in Cost Management en facturering. Bovendien worden resourcegroeptags niet ondersteund. Ondersteuning voor labels is van toepassing op het gebruik dat is gerapporteerd *nadat* de tag is toegepast op de resource. Tags worden niet met terugwerkende kracht toegepast voor samengetelde kosten.
 

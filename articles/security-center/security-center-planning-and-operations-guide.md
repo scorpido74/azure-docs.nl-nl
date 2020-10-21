@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: tutorial
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 0de41941fa5907b7d33e24de331571015510e7bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de6a416666866a4089d22f2fa047dc860c922d3c
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91713786"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341240"
 ---
 # <a name="planning-and-operations-guide"></a>Handleiding voor planning en bewerking
 Deze gids is bedoeld voor IT-specialisten, IT-architecten, gegevensbeveiligingsanalisten en cloudbeheerders die willen gaan werken met Azure Security Center.
@@ -135,7 +135,7 @@ Azure Security Center maakt gebruik van de Log Analytics-agent. Dit is dezelfde 
 
 ### <a name="agent"></a>Agent
 
-Als automatisch inrichten is ingeschakeld in het beveiligingsbeleid, wordt de Log Analytics-agent (voor [Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents) of [Linux](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents)) geïnstalleerd op alle ondersteunde virtuele machines van Azure en op nieuwe virtuele machines die worden gemaakt. Als de Log Analytics-agent al op de virtuele machine of computer is geïnstalleerd, maakt Azure Security Center gebruik van de huidige geïnstalleerde agent. Het proces van de agent is ontworpen om niet-invasief te zijn en minimale invloed te hebben op de prestaties van de virtuele machine.
+Als automatisch inrichten is ingeschakeld in het beveiligingsbeleid, wordt de Log Analytics-agent (voor [Windows](../azure-monitor/platform/agent-windows.md) of [Linux](../azure-monitor/learn/quick-collect-linux-computer.md)) geïnstalleerd op alle ondersteunde virtuele machines van Azure en op nieuwe virtuele machines die worden gemaakt. Als de Log Analytics-agent al op de virtuele machine of computer is geïnstalleerd, maakt Azure Security Center gebruik van de huidige geïnstalleerde agent. Het proces van de agent is ontworpen om niet-invasief te zijn en minimale invloed te hebben op de prestaties van de virtuele machine.
 
 De Log Analytics-agent voor Windows vereist TCP-poort 443. Zie de [Handleiding voor het oplossen van problemen met Azure Security Center](security-center-troubleshooting-guide.md) voor meer informatie.
 
@@ -217,7 +217,7 @@ Het volgende voorbeeld betreft een verdachte RDP-activiteit die op dat moment pl
 
 ![Verdachte activiteit](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig5-ga.png)
 
-Deze pagina bevat informatie over het tijdstip waarop de aanval plaatsvond, de hostnaam van de bron, de VM die het doelwit was en aanbevolen maatregelen. Onder bepaalde omstandigheden kunnen de brongegevens van de aanval leeg zijn. Lees [Missing Source Information in Azure Security Center Alerts](https://blogs.msdn.microsoft.com/azuresecurity/2016/03/25/missing-source-information-in-azure-security-center-alerts/) voor meer informatie over dit type gedrag.
+Deze pagina bevat informatie over het tijdstip waarop de aanval plaatsvond, de hostnaam van de bron, de VM die het doelwit was en aanbevolen maatregelen. Onder bepaalde omstandigheden kunnen de brongegevens van de aanval leeg zijn. Lees [Missing Source Information in Azure Security Center Alerts](/archive/blogs/azuresecurity/missing-source-information-in-azure-security-center-alerts) voor meer informatie over dit type gedrag.
 
 Wanneer u het geïnfecteerde systeem hebt geïdentificeerd, kunt u een [Workflowautomatisering ](workflow-automation.md) uitvoeren die eerder is gemaakt. Dit is een verzameling procedures die na activering door een waarschuwing vanuit Security Center kunnen worden uitgevoerd.
 
@@ -233,6 +233,6 @@ In dit document hebt u kunnen lezen hoe u een planning kunt maken voor het overs
 
 * [Beveiligingswaarschuwingen beheren en erop reageren in Azure Security Center](security-center-managing-and-responding-alerts.md)
 * [Beveiligingsstatus bewaken in Azure Security Center](security-center-monitoring.md): meer informatie over het bewaken van de status van uw Azure-resources.
-* [Partneroplossingen bewaken met Azure Security Center](security-center-partner-solutions.md): leer hoe u de integriteitsstatus van uw partneroplossingen kunt bewaken.
+* [Partneroplossingen bewaken met Azure Security Center](./security-center-partner-integration.md): leer hoe u de integriteitsstatus van uw partneroplossingen kunt bewaken.
 * [Azure Security Center FAQ](faq-general.md): raadpleeg veelgestelde vragen over het gebruik van de service.
-* [Azure-beveiligingsblog](https://docs.microsoft.com/archive/blogs/azuresecurity/): lees blogberichten over de beveiliging en naleving van Azure.
+* [Azure-beveiligingsblog](/archive/blogs/azuresecurity/): lees blogberichten over de beveiliging en naleving van Azure.
