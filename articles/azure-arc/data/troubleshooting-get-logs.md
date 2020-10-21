@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 71c84b35c001be7fafdc2df53014050ae21dec63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 625092e0557d40051e1ffd538a496c20edc0222f
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936044"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320206"
 ---
 # <a name="get-azure-arc-enabled-data-services-logs"></a>Logboeken van Azure Arc ingeschakelde data services ophalen
 
@@ -22,48 +22,60 @@ ms.locfileid: "90936044"
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt het Azure data CLI-hulp programma nodig om de logboeken van Azure Arc ingeschakelde Data Services op te halen. [Installatie-instructies](./install-client-tools.md)
+Voordat u doorgaat, hebt u het volgende nodig:
 
-U moet zich kunnen aanmelden bij de service Azure Arc enabled Data Services controller als beheerder.
+* [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]. [Installatie-instructies](./install-client-tools.md).
+* Een beheerders account om u aan te melden bij de Azure Arc enabled Data Services-controller.
 
 ## <a name="get-azure-arc-enabled-data-services-logs"></a>Logboeken van Azure Arc ingeschakelde data services ophalen
 
-U kunt de logboeken van Azure Arc enabled Data Services voor alle doel einden of specifieken ophalen voor het oplossen van problemen.  U kunt dit doen met behulp van de standaard Kubernetes-hulpprogram ma's, zoals de `kubectl logs` opdracht of in dit artikel, met behulp van het Azure data cli-hulp programma, waarmee u eenvoudig alle logboeken tegelijk kunt ophalen.
+U kunt de logboeken van Azure Arc enabled Data Services voor alle doel einden of specifieken ophalen voor het oplossen van problemen. U kunt dit doen met behulp van standaard Kubernetes-hulpprogram ma's, zoals de `kubectl logs` opdracht of in dit artikel [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] , waarmee u het hulp programma gebruikt, waardoor het eenvoudiger wordt om alle logboeken tegelijk op te halen.
 
-Zorg er eerst voor dat u bent aangemeld bij de gegevens controller.
+1. Meld u aan bij de gegevens controller met een Administrator-account.
 
-```console
-azdata login
-```
+   ```console
+   azdata login
+   ```
 
-Voer vervolgens de volgende opdracht uit om de logboeken te dumpen:
-```console
-azdata arc dc debug copy-logs --namespace <namespace name> --exclude-dumps --skip-compress
+2. Voer de volgende opdracht uit om de logboeken te dumpen:
 
-#Example:
-#azdata arc dc debug copy-logs --namespace arc --exclude-dumps --skip-compress
-```
+   ```console
+   azdata arc dc debug copy-logs --namespace <namespace name> --exclude-dumps --skip-compress
+   ```
 
-De logboek bestanden worden standaard in de huidige werkmap gemaakt in een submap met de naam logs.  U kunt de logboek bestanden met behulp van de para meter naar een andere map uitvoeren `--target-folder` .
+   Bijvoorbeeld:
 
-U kunt ervoor kiezen om de bestanden te comprimeren door de `--skip-compress` para meter te weglaten.
+   ```console
+   #azdata arc dc debug copy-logs --namespace arc --exclude-dumps --skip-compress
+   ```
 
-U kunt geheugen dumps activeren en toevoegen door de te weglaten `--exclude-dumps` , maar dit wordt niet aanbevolen, tenzij Microsoft ondersteuning de geheugen dumps heeft aangevraagd.  Voor het maken van een geheugen dump moet de gegevens controller instelling worden `allowDumps` ingesteld op `true` het moment dat de gegevens controller wordt gemaakt.
+De gegevens controller maakt de logboek bestanden in de huidige werkmap in een submap met de naam `logs` . 
 
-U kunt er ook voor kiezen om te filteren op het verzamelen van Logboeken voor een specifieke pod ( `--pod` ) of container ( `--container` ) op naam.
+## <a name="options"></a>Opties
 
-U kunt er ook voor kiezen om te filteren op Logboeken voor een specifieke aangepaste resource door de `--resource-kind` en para meter door te geven `--resource-name` .  De `resource-kind` parameter waarde moet een van de aangepaste resource definitie namen zijn die kunnen worden opgehaald met de opdracht `kubectl get customresourcedefinition` .
+`azdata arc dc debug copy-logs` biedt de volgende opties voor het beheren van de uitvoer.
+
+* Uitvoer de logboek bestanden naar een andere map met behulp van de `--target-folder` para meter.
+* Comprimeer de bestanden door de para meter te weglaten `--skip-compress` .
+* Activeer en voeg geheugen dumps toe door de te weglaten `--exclude-dumps` . Deze methode wordt niet aanbevolen, tenzij Microsoft Ondersteuning de geheugen dumps heeft aangevraagd. Voor het maken van een geheugen dump moet de gegevens controller instelling worden `allowDumps` ingesteld op `true` het moment dat de gegevens controller wordt gemaakt.
+* Filter voor het verzamelen van Logboeken voor alleen een specifieke pod ( `--pod` ) of container ( `--container` ) op naam.
+* Filter voor het verzamelen van Logboeken voor een specifieke aangepaste resource door de `--resource-kind` para meter en te geven `--resource-name` . De `resource-kind` parameter waarde moet een van de aangepaste resource definitie namen zijn, die kan worden opgehaald met de opdracht `kubectl get customresourcedefinition` .
+
+Met deze para meters kunt u de `<parameters>` in het volgende voor beeld vervangen. 
 
 ```console
 azdata arc dc debug copy-logs --target-folder <desired folder> --exclude-dumps --skip-compress -resource-kind <custom resource definition name> --resource-name <resource name> --namespace <namespace name>
+```
 
-#Example
+Bijvoorbeeld
+
+```console
 #azdata arc dc debug copy-logs --target-folder C:\temp\logs --exclude-dumps --skip-compress --resource-kind postgresql-12 --resource-name pg1 --namespace arc
 ```
 
-Voor beeld van maphiërarchie.  Houd er rekening mee dat mappen hiërarchie is ingedeeld op pod naam naam en vervolgens op container en vervolgens op Directory hiërarchie in de container.
+Voor beeld van maphiërarchie. De maphiërarchie is ingedeeld op pod name, then container en then by Directory-hiërarchie in de container.
 
-```console
+```output
 <export directory>
 ├───debuglogs-arc-20200827-180403
 │   ├───bootstrapper-vl8j2
@@ -181,3 +193,7 @@ Voor beeld van maphiërarchie.  Houd er rekening mee dat mappen hiërarchie is i
             ├───journal
             └───openvpn
 ```
+
+## <a name="next-steps"></a>Volgende stappen
+
+[azdata Arc DC-fout opsporing kopiëren-logboeken](/sql/azdata/reference/reference-azdata-arc-dc-debug#azdata-arc-dc-debug-copy-logs?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json)

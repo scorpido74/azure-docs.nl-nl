@@ -3,12 +3,12 @@ title: Service Fabric volgende stappen voor het maken van een project
 description: Meer informatie over het toepassings project dat u zojuist hebt gemaakt in Visual Studio.  Meer informatie over het bouwen van services met zelf studies en meer informatie over het ontwikkelen van services voor Service Fabric.
 ms.topic: conceptual
 ms.date: 12/07/2017
-ms.openlocfilehash: e8fc105657bda6114851f4819be4658926ad621c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01a69016e0c299fba0365fab5332b572fd2ca87a
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75349401"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314477"
 ---
 # <a name="your-service-fabric-application-and-next-steps"></a>Uw Service Fabric-toepassing en de volgende stappen
 Uw Azure Service Fabric-toepassing is gemaakt. In dit artikel worden enkele zelf studies beschreven voor het uitproberen, het Makeup van uw project, een aantal meer informatie die u mogelijk interesseert en mogelijke volgende stappen.
@@ -24,7 +24,7 @@ Of probeer een van de volgende instructies uit en maak uw eerste...
 - [Uitvoer bare gast-service in Windows](quickstart-guest-app.md) 
 - [Windows-containertoepassing](service-fabric-get-started-containers.md) 
 
-Misschien bent u ook geïnteresseerd in het uitproberen van de [voorbeeld toepassingen](https://aka.ms/servicefabricsamples).
+Misschien bent u ook geïnteresseerd in het uitproberen van de [voorbeeld toepassingen](/samples/browse/?products=azure).
 
 ## <a name="have-questions-or-feedback--need-to-report-an-issue"></a>Vragen of feedback?  Wilt u een probleem melden?
 Lees de [Veelgestelde vragen](service-fabric-common-questions.md) en vind antwoorden op wat service Fabric kan doen en hoe dit moet worden gebruikt.
@@ -62,5 +62,3 @@ Net als bij andere platforms gaat een Service Fabric-toepassing doorgaans door d
 - [Maak een Windows-cluster in azure](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
 - Visualiseer uw cluster, inclusief geïmplementeerde toepassingen en fysieke indeling, met [service Fabric Explorer](service-fabric-visualizing-your-cluster.md).
 - [Versie en upgrade van uw services](service-fabric-application-upgrade-tutorial.md)
-
-

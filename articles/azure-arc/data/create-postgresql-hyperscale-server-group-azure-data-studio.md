@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 1b1cf90efa14345fa8395f5f62fd80934b922352
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2007d8f0c558d35c0507b6e12bce6d6777fad52
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273004"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310903"
 ---
 # <a name="create-azure-arc-enabled-postgresql-hyperscale-using-azure-data-studio"></a>Azure Arc enabled PostgreSQL grootschalige maken met behulp van Azure Data Studio
 
@@ -62,7 +62,7 @@ U kunt nu de volgende stap implementeren.
 1. Klik op het tabblad verbindingen op de drie puntjes linksboven en kies nieuwe implementatie
 1. Selecteer in de implementatie opties de optie **postgresql grootschalige-Server groep-Azure-boog**
     >[!NOTE]
-    > U wordt mogelijk gevraagd om de `azdata` cli hier te installeren als deze nog niet is geïnstalleerd.
+    > U wordt mogelijk gevraagd om het hier te installeren [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] als dit nog niet is gebeurd.
 1. Accepteer de privacy-en licentie voorwaarden en klik onderaan op **selecteren** .
 1. Voer de volgende gegevens in op de Blade PostgreSQL grootschalige-Server groep implementeren-Azure arctangens:
    - Voer een naam in voor de Server groep

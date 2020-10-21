@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ea638124ed81a494231c814962345c028fc12c9
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 00d60d803fb73a0f299b00179e5f598f3189e03e
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940851"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309655"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>Scoped rollen toewijzen aan een beheer eenheid
 
@@ -60,7 +60,7 @@ Selecteer de rol die u wilt toewijzen en selecteer vervolgens **toewijzingen toe
 
 > [!Note]
 >
-> Volg [de stappen om](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-add-role-to-user?tabs=new#assign-a-role-with-restricted-scope)een rol toe te wijzen aan een administratieve eenheid met behulp van Pim.
+> Volg [de stappen om](../privileged-identity-management/pim-how-to-add-role-to-user.md?tabs=new#assign-a-role-with-restricted-scope)een rol toe te wijzen aan een administratieve eenheid met behulp van Pim.
 
 ### <a name="powershell"></a>PowerShell
 

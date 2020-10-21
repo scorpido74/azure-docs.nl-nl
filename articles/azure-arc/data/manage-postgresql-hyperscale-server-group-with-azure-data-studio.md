@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: a073df78adbf0104d81a96eb92ea427f60e53b01
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 7dcc0f916a15598060e034dcf62536ee13e2672e
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151840"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320240"
 ---
 # <a name="use-azure-data-studio-to-manage-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Data Studio gebruiken voor het beheren van uw PostgreSQL grootschalige-Server groep voor Azure-Arc
 
@@ -28,7 +28,7 @@ In dit artikel wordt beschreven hoe u:
 ## <a name="prerequisites"></a>Vereisten
 
 - [Azdata, Azure Data Studio en Azure CLI installeren](install-client-tools.md)
-- Installeren in Azure Data Studio de **Azure data cli** -en **Azure Arc** -en **postgresql** -extensies
+- Installeren in Azure Data Studio de- **[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]** en **Azure Arc** -en **postgresql** -extensies
 - De [Azure Arc-gegevens controller](create-data-controller-using-azdata.md) maken
 - Azure Data Studio starten
 

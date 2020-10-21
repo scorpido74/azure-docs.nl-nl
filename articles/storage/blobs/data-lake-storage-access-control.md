@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 188c30a79074b819c5785cf5560f5843a3fcf6b4
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 80c27613ad3956d565b858b02ed32ac13af3a62c
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131612"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320478"
 ---
 # <a name="access-control-lists-acls-in-azure-data-lake-storage-gen2"></a>Toegangs beheer lijsten (Acl's) in Azure Data Lake Storage Gen2
 
@@ -203,7 +203,7 @@ Voor een nieuwe Data Lake Storage Gen2-container wordt het masker voor de toegan
 |--|--|--|
 |Gebruiker die eigenaar is|`rwx`|`r-w`|
 |Groep die eigenaar is|`r-x`|`r--`|
-|Anders|`---`|`---`|
+|Overige|`---`|`---`|
 
 Bestanden ontvangen niet de X-bit omdat deze niet van toepassing is op bestanden in een alleen-opslag systeem. 
 
@@ -326,6 +326,11 @@ OID wordt weer gegeven.
 
 Wanneer u de juiste OID voor de Service-Principal hebt, gaat u naar de Storage Explorer Access-pagina **beheren** om het OID toe te voegen en de juiste machtigingen voor de OID toe te wijzen. Zorg ervoor dat u **Opslaan** selecteert.
 
+### <a name="can-i-set-the-acl-of-a-container"></a>Kan ik de ACL van een container instellen?
+
+Nee. Een container heeft geen ACL. U kunt echter de ACL van de hoofdmap van de container instellen. Elke container heeft een hoofdmap en deelt dezelfde naam als de container. Als de naam van de container bijvoorbeeld heet `my-container` , heet de hoofdmap `myContainer/` . 
+
+Het Azure Storage REST API bevat een bewerking met de naam [set-container-ACL](https://docs.microsoft.com/rest/api/storageservices/set-container-acl), maar deze bewerking kan niet worden gebruikt om de ACL van een container of de hoofdmap van een container in te stellen. In plaats daarvan wordt deze bewerking gebruikt om aan te geven of blobs in een container [openbaar mogen worden geopend](anonymous-read-access-configure.md). 
 
 ### <a name="where-can-i-learn-more-about-posix-access-control-model"></a>Waar kan ik meer informatie over het POSIX-model voor toegangsbeheer?
 
@@ -338,6 +343,6 @@ Wanneer u de juiste OID voor de Service-Principal hebt, gaat u naar de Storage E
 * [POSIX ACL in Ubuntu](https://help.ubuntu.com/community/FilePermissionsACLs)
 * [ACL met behulp van toegangs beheer lijsten op Linux](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 - [Access Control model in Azure Data Lake Storage Gen2](data-lake-storage-access-control-model.md)

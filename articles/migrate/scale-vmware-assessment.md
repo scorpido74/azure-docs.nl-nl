@@ -3,12 +3,12 @@ title: Een groot aantal virtuele VMware-machines evalueren voor migratie naar Az
 description: Hierin wordt beschreven hoe u een groot aantal virtuele VMware-machines kunt beoordelen voor migratie naar Azure met behulp van de Azure Migrate-service. e
 ms.topic: how-to
 ms.date: 03/23/2020
-ms.openlocfilehash: 6490a5448bb68dcccd61784d149e9765107400c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a5a29ffc8abe0e8ec4fe85a41b4b67c2e655d2b
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87171913"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314121"
 ---
 # <a name="assess-large-numbers-of-vmware-vms-for-migration-to-azure"></a>Een groot aantal virtuele VMware-machines beoordelen voor migratie naar Azure
 
@@ -26,7 +26,7 @@ In dit artikel leert u het volgende:
 
 
 > [!NOTE]
-> Als u een haalbaarheids test wilt uitproberen om een aantal Vm's te beoordelen voordat u op schaal controleert, volgt u de [reeks zelf](tutorial-prepare-vmware.md) studies
+> Als u een haalbaarheids test wilt uitproberen om een aantal Vm's te beoordelen voordat u op schaal controleert, volgt u de [reeks zelf](./tutorial-discover-vmware.md) studies
 
 ## <a name="plan-for-assessment"></a>Beoordeling plannen
 
@@ -78,7 +78,7 @@ Azure en VMware voorbereiden voor Server evaluatie.
 2. Stel machtigingen in voor uw Azure-account om te communiceren met Azure Migrate.
 3. VMware voorbereiden voor evaluatie.
 
-Volg de instructies in [deze zelf studie](tutorial-prepare-vmware.md) om deze instellingen te configureren.
+Volg de instructies in [deze zelf studie](./tutorial-discover-vmware.md) om deze instellingen te configureren.
 
 
 ## <a name="create-a-project"></a>Een project maken
@@ -96,7 +96,7 @@ In overeenstemming met uw plannings vereisten gaat u als volgt te werk:
 1. Bekijk de evaluaties in de voor bereiding op de migratie planning.
 
 
-Volg de instructies in [deze zelf studie](tutorial-assess-vmware.md) om deze instellingen te configureren.
+Volg de instructies in [deze zelf studie](./tutorial-assess-vmware-azure-vm.md) om deze instellingen te configureren.
     
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -2,18 +2,18 @@
 title: Azure Batch Services verifiëren met Azure Active Directory
 description: Batch ondersteunt Azure AD voor verificatie vanuit de batch-service. Lees hoe u zich op een van de volgende twee manieren kunt verifiëren.
 ms.topic: how-to
-ms.date: 01/28/2020
+ms.date: 10/20/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: 8d84086e3fa59c1e04df5b2717738da44f5c14b2
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: cb8306da4022ea1819e2da32a2f513c83bed309f
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144819"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309377"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Batch-service oplossingen verifiëren met Active Directory
 
-Azure Batch ondersteunt verificatie met [Azure Active Directory][aad_about] (Azure AD). Azure AD is de multi tenant-Cloud service van micro soft voor het beheren van Directory-en identiteits beheer. Azure zelf gebruikt Azure AD voor de verificatie van klanten, service beheerders en gebruikers van de organisatie.
+Azure Batch ondersteunt verificatie met [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD). Azure AD is de multi tenant-Cloud service van micro soft voor het beheren van Directory-en identiteits beheer. Azure zelf gebruikt Azure AD voor de verificatie van klanten, service beheerders en gebruikers van de organisatie.
 
 Wanneer u Azure AD-verificatie gebruikt met Azure Batch, kunt u op een van de volgende twee manieren verifiëren:
 
@@ -40,10 +40,8 @@ Voor verificatie met Azure AD gebruikt u dit eind punt samen met de Tenant-ID (D
 > Het Tenant-specifieke eind punt is vereist wanneer u verifieert met behulp van een service-principal.
 >
 > Het Tenant-specifieke eind punt is optioneel wanneer u verifieert met behulp van geïntegreerde verificatie, maar wordt aanbevolen. U kunt echter ook het gemeen schappelijke eind punt van Azure AD gebruiken. Het algemene eind punt biedt een algemene interface voor het verzamelen van referenties wanneer er geen specifieke Tenant is opgegeven. Het algemene eind punt is `https://login.microsoftonline.com/common` .
->
->
 
-Zie [verificatie scenario's voor Azure AD][aad_auth_scenarios]voor meer informatie over Azure AD-eind punten.
+Zie [Verificatie versus autorisatie]()voor meer informatie over Azure AD-eind punten. /active-directory/develop/authentication-vs-authorization.md).
 
 ### <a name="batch-resource-endpoint"></a>Batch-resource-eind punt
 
@@ -53,17 +51,15 @@ Gebruik het **Azure batch resource-eind punt** om een token te verkrijgen voor h
 
 ## <a name="register-your-application-with-a-tenant"></a>Uw toepassing registreren bij een Tenant
 
-De eerste stap bij het gebruik van Azure AD voor verificatie is het registreren van uw toepassing in een Azure AD-Tenant. Als u uw toepassing registreert, kunt u de Azure [Active Directory Authentication Library][aad_adal] (ADAL) aanroepen vanuit uw code. De ADAL biedt een API voor verificatie met Azure AD vanuit uw toepassing. Het registreren van uw toepassing is vereist, ongeacht of u een geïntegreerde verificatie of een Service-Principal wilt gebruiken.
+De eerste stap bij het gebruik van Azure AD voor verificatie is het registreren van uw toepassing in een Azure AD-Tenant. Als u uw toepassing registreert, kunt u de Azure [Active Directory Authentication Library](../active-directory/azuread-dev/active-directory-authentication-libraries.md) (ADAL) aanroepen vanuit uw code. De ADAL biedt een API voor verificatie met Azure AD vanuit uw toepassing. Het registreren van uw toepassing is vereist, ongeacht of u een geïntegreerde verificatie of een Service-Principal wilt gebruiken.
 
 Wanneer u uw toepassing registreert, geeft u informatie over uw toepassing op in azure AD. Azure AD biedt vervolgens een toepassings-ID (ook wel een *client-id*genoemd) die u gebruikt om uw toepassing te koppelen aan Azure ad tijdens runtime. Zie voor meer informatie over de toepassings-ID [toepassings-en Service-Principal-objecten in azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md).
 
-Volg de stappen in de sectie [een toepassing toevoegen](../active-directory/develop/quickstart-register-app.md) in [toepassingen integreren met Azure Active Directory][aad_integrate]om uw batch-toepassing te registreren. Als u uw toepassing registreert als een systeem eigen toepassing, kunt u een geldige URI voor de **omleidings-URI**opgeven. Het hoeft geen echt eind punt te zijn.
+Als u uw batch-toepassing wilt registreren, volgt u de stappen in de sectie **een toepassing registreren** in [Quick Start: een toepassing registreren bij het micro soft Identity-platform](../active-directory/develop/quickstart-register-app.md). Als u uw toepassing registreert als een systeem eigen toepassing, kunt u een geldige URI voor de **omleidings-URI**opgeven. Het hoeft geen echt eind punt te zijn.
 
 Nadat u uw toepassing hebt geregistreerd, ziet u de toepassings-ID:
 
-![Uw batch-toepassing registreren bij Azure AD](./media/batch-aad-auth/app-registration-data-plane.png)
-
-Zie [verificatie scenario's voor Azure AD](../active-directory/develop/authentication-vs-authorization.md)voor meer informatie over het registreren van een toepassing met Azure AD.
+![Scherm afbeelding van de toepassings-ID die wordt weer gegeven in de Azure Portal.](./media/batch-aad-auth/app-registration-data-plane.png)
 
 ## <a name="get-the-tenant-id-for-your-active-directory"></a>De Tenant-ID voor uw Active Directory ophalen
 
@@ -73,7 +69,7 @@ Met de Tenant-ID wordt de Azure AD-Tenant geïdentificeerd waarmee verificatie s
 1. Selecteer **Eigenschappen**.
 1. Kopieer de GUID-waarde die is gegeven voor de **map-id**. Deze waarde wordt ook wel de Tenant-ID genoemd.
 
-![De map-ID kopiëren](./media/batch-aad-auth/aad-directory-id.png)
+![Scherm opname van de map-ID in de Azure Portal.](./media/batch-aad-auth/aad-directory-id.png)
 
 ## <a name="use-integrated-authentication"></a>Geïntegreerde verificatie gebruiken
 
@@ -81,22 +77,17 @@ Als u verificatie met geïntegreerde verificatie wilt uitvoeren, moet u de toepa
 
 Nadat u uw toepassing hebt geregistreerd, voert u de volgende stappen uit in de Azure Portal om deze toegang tot de batch-service te verlenen:
 
-1. Kies in het navigatie deel venster aan de linkerkant van de Azure Portal **alle services**. Selecteer **app-registraties**.
-1. Zoek de naam van uw toepassing in de lijst met app-registraties:
-
-    ![Zoek naar de naam van uw toepassing](./media/batch-aad-auth/search-app-registration.png)
-
+1. Kies in het Azure Portal **alle services**en selecteer vervolgens **app-registraties**.
+1. Zoek de naam van uw toepassing in de lijst met app-registraties.
 1. Selecteer de toepassing en selecteer **API-machtigingen**.
 1. Selecteer in de sectie **API-machtigingen** de optie **een machtiging toevoegen**.
 1. In **een API selecteren zoekt u**naar de batch-API. Zoek deze tekenreeksen totdat u de API hebt gevonden:
     1. **Microsoft Azure Batch**
     1. **ddbf3205-c6bd-46ae-8127-60eb93363864** is de id voor de Batch-API.
-1. Wanneer u de batch-API hebt gevonden, selecteert u deze en selecteert u **selecteren**.
+1. Wanneer u de batch-API hebt gevonden, selecteert u deze en kiest u **selecteren**.
 1. In **machtigingen selecteren**selecteert u het selectie vakje naast **toegang tot Azure batch service** en selecteert u vervolgens **machtigingen toevoegen**.
 
 De sectie **API-machtigingen** geeft nu aan dat uw Azure AD-toepassing toegang heeft tot zowel Microsoft Graph als de API van de batch-service. Er worden automatisch machtigingen verleend aan Microsoft Graph wanneer u uw app voor het eerst registreert bij Azure AD.
-
-![API-machtigingen verlenen](./media/batch-aad-auth/required-permissions-data-plane.png)
 
 ## <a name="use-a-service-principal"></a>Een service-principal gebruiken
 
@@ -111,13 +102,11 @@ Wanneer uw toepassing wordt geverifieerd met een Service-Principal, verzendt dez
 
 Volg deze stappen in Azure Portal:
 
-1. Kies in het navigatie deel venster aan de linkerkant van de Azure Portal **alle services**. Selecteer **app-registraties**.
+1. Kies in het Azure Portal **alle services**. Selecteer **app-registraties**.
 1. Selecteer uw toepassing in de lijst met app-registraties.
 1. Selecteer de toepassing en selecteer vervolgens **certificaten & geheimen**. Selecteer in de sectie **client geheimen** de optie **Nieuw client geheim**.
-1. Als u een geheim wilt maken, voert u een beschrijving in voor het geheim. Selecteer vervolgens een verloop voor het geheim van één jaar, twee jaar of geen verval datum.
+1. Als u een geheim wilt maken, voert u een beschrijving in voor het geheim. Selecteer vervolgens een verloop tijd voor het geheim van één jaar, twee jaar of geen verval datum.
 1. Selecteer **toevoegen** om het geheim te maken en weer te geven. Kopieer de geheime waarde naar een veilige locatie, omdat u deze niet meer kunt openen nadat u de pagina verlaat.
-
-    ![Een geheime sleutel maken](./media/batch-aad-auth/secret-key.png)
 
 ### <a name="assign-azure-rbac-to-your-application"></a>Azure RBAC toewijzen aan uw toepassing
 
@@ -157,6 +146,9 @@ U kunt een aangepaste rol gebruiken om machtigingen te verlenen aan een Azure AD
 
 Aangepaste rollen zijn voor gebruikers die zijn geverifieerd door Azure AD, niet met de referenties van het batch-account (gedeelde sleutel). Houd er rekening mee dat de referenties van het batch-account volledige machtiging bieden voor het batch-account. Houd er ook rekening mee dat taken die gebruikmaken van de groeps beleidsniveau machtigingen vereisen.
 
+> [!NOTE]
+> Bepaalde roltoewijzingen moeten worden opgegeven in het actie veld, terwijl anderen moeten worden opgegeven in het veld DataAction. Zie bewerkingen voor Azure- [resource providers](../role-based-access-control/resource-provider-operations.md#microsoftbatch)voor meer informatie.
+
 Hier volgt een voor beeld van een aangepaste roldefinitie:
 
 ```json
@@ -193,7 +185,7 @@ Hier volgt een voor beeld van een aangepaste roldefinitie:
 }
 ```
 
-Zie [aangepaste rollen in azure](../role-based-access-control/custom-roles.md)voor meer algemene informatie over het maken van een aangepaste rol.
+Zie [aangepaste rollen in azure](../role-based-access-control/custom-roles.md)voor meer informatie over het maken van een aangepaste rol.
 
 ### <a name="get-the-tenant-id-for-your-azure-active-directory"></a>De Tenant-ID voor uw Azure Active Directory ophalen
 
@@ -212,10 +204,7 @@ De code voorbeelden in deze sectie laten zien hoe u met Azure AD verifieert met 
 > [!NOTE]
 > Een Azure AD-verificatie token verloopt na één uur. Wanneer u een lang bewaard **BatchClient** -object gebruikt, wordt u aangeraden een token op te halen uit ADAL op elke aanvraag om ervoor te zorgen dat u altijd een geldig token hebt.
 >
->
-> Als u dit wilt doen in .NET, schrijft u een methode die het token uit Azure AD ophaalt en geeft u deze methode door aan een **BatchTokenCredentials** -object als gemachtigde. De gemachtigde methode wordt aangeroepen voor elke aanvraag bij de batch-service om ervoor te zorgen dat er een geldig token wordt gegeven. ADAL-tokens worden standaard in de cache opgeslagen, zodat een nieuw token alleen wordt opgehaald uit Azure AD als dat nodig is. Zie [verificatie scenario's voor Azure AD][aad_auth_scenarios]voor meer informatie over tokens in azure AD.
->
->
+> Als u dit wilt doen in .NET, schrijft u een methode die het token uit Azure AD ophaalt en geeft u deze methode door aan een **BatchTokenCredentials** -object als gemachtigde. De gemachtigde methode wordt aangeroepen voor elke aanvraag bij de batch-service om ervoor te zorgen dat er een geldig token wordt gegeven. ADAL-tokens worden standaard in de cache opgeslagen, zodat een nieuw token alleen wordt opgehaald uit Azure AD als dat nodig is. Zie voor meer informatie over tokens in azure AD [beveiligings tokens](../active-directory/develop/security-tokens.md).
 
 ### <a name="code-example-using-azure-ad-integrated-authentication-with-batch-net"></a>Code voorbeeld: Azure AD Integrated-verificatie gebruiken met batch .NET
 
@@ -419,16 +408,8 @@ Gebruik de referenties van de Service-Principal om een **BatchServiceClient** -o
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie de [Azure Active Directory-documentatie](../active-directory/index.yml)voor meer informatie over Azure AD. Gedetailleerde voor beelden waarin wordt getoond hoe u ADAL kunt gebruiken, zijn beschikbaar in de [Azure code samples](https://azure.microsoft.com/resources/samples/?service=active-directory) -bibliotheek.
-
-- Zie [toepassings-en Service-Principal-objecten in azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md)voor meer informatie over service-principals. Als u een Service-Principal wilt maken met behulp van de Azure Portal, raadpleegt u [Portal gebruiken om Active Directory toepassing en Service-Principal te maken die toegang hebben tot resources](../active-directory/develop/howto-create-service-principal-portal.md). U kunt ook een service-principal maken met Power shell of Azure CLI.
-
-- Zie [oplossingen voor Batch Management verifiëren met Active Directory](batch-aad-auth-management.md)voor het verifiëren van toepassingen voor batch beheer met Azure AD.
-
+- Raadpleeg de [Azure Active Directory-documentatie](../active-directory/index.yml). Gedetailleerde voor beelden waarin wordt getoond hoe u ADAL kunt gebruiken, zijn beschikbaar in de [Azure code samples](https://azure.microsoft.com/resources/samples/?service=active-directory) -bibliotheek.
+- Meer informatie over [toepassings-en Service-Principal-objecten in azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md) en [hoe u een Azure AD-toepassing en Service-Principal maakt die toegang hebben tot resources](../active-directory/develop/howto-create-service-principal-portal.md).
+- Meer informatie over het [verifiëren van oplossingen voor batch beheer met Active Directory](batch-aad-auth-management.md).
 - Voor een python-voor beeld van het maken van een batch-client die is geverifieerd met behulp van een Azure AD-token, zie de [implementatie Azure batch aangepaste installatie kopie met een python](https://github.com/azurebigcompute/recipes/blob/master/Azure%20Batch/CustomImages/CustomImagePython.md) -voorbeeld script.
 
-[aad_about]: ../active-directory/fundamentals/active-directory-whatis.md "Wat is Azure Active Directory?"
-[aad_adal]: ../active-directory/azuread-dev/active-directory-authentication-libraries.md
-[aad_auth_scenarios]: ../active-directory/develop/authentication-vs-authorization.md "Verificatie Scenario's voor Azure AD"
-[aad_integrate]: ../active-directory/develop/quickstart-register-app.md "Toepassingen integreren met Azure Active Directory"
-[azure_portal]: https://portal.azure.com

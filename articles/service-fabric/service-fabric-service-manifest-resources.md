@@ -4,12 +4,12 @@ description: Eindpunt resources beschrijven in een service manifest, inclusief h
 ms.topic: conceptual
 ms.date: 09/16/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 775e554128b9828915ce7dafaf4bccf597911912
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 5e8f39fe25011d02b989614fdc6538cd92c12d4e
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017587"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92313569"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Resources opgeven in een service manifest
 ## <a name="overview"></a>Overzicht
@@ -158,7 +158,7 @@ Hier volgt een voor beeld van een ApplicationManifest die de configuratie demons
 
 Voor Linux-clusters wordt **mijn** winkel standaard ingesteld op de map **/var/lib/sfcerts**.
 
-Zie [een HTTPS-eind punt toevoegen aan een ASP.net core web API-front-end-service met Kestrel](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-dotnet-app-enable-https-endpoint#define-an-https-endpoint-in-the-service-manifest)voor een voor beeld van een volledige toepassing die gebruikmaakt van een HTTPS-eind punt.
+Zie [een HTTPS-eind punt toevoegen aan een ASP.net core web API-front-end-service met Kestrel](./service-fabric-tutorial-dotnet-app-enable-https-endpoint.md#define-an-https-endpoint-in-the-service-manifest)voor een voor beeld van een volledige toepassing die gebruikmaakt van een HTTPS-eind punt.
 
 ## <a name="port-acling-for-http-endpoints"></a>Poort Acl's voor voor HTTP-eind punten
 Service Fabric worden automatisch de door de HTTP (S) standaard-eind punten die zijn opgegeven, ACL'S. Er wordt **geen** automatische acl's voor uitgevoerd als aan een eind punt geen [SecurityAccessPolicy](service-fabric-assign-policy-to-endpoint.md) is gekoppeld en service Fabric is geconfigureerd om te worden uitgevoerd met een account met Administrator bevoegdheden.

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
 ms.author: harshacs
-ms.openlocfilehash: 622f0d66f2c8a9f7cf0539d14499897acf7b68e6
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 525ab34bb9edff737686a88d7a8e664500282555
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096331"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320531"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>Over netwerken in nood herstel voor Azure VM
 
@@ -41,8 +41,8 @@ Normaal gesp roken worden netwerken beveiligd met firewalls en netwerk beveiligi
 > Het gebruik van een geverifieerde proxy voor het beheren van de netwerk verbinding wordt niet ondersteund door Site Recovery en de replicatie kan niet worden ingeschakeld.
 
 >[!NOTE]
-> Filteren op basis van IP-adressen mag niet worden uitgevoerd om de uitgaande verbinding te beheren.
-> Azure Site Recovery IP-adressen mogen niet worden toegevoegd aan de Azure-routerings tabel om de uitgaande verbinding te beheren.
+>- Filteren op basis van IP-adressen mag niet worden uitgevoerd om de uitgaande verbinding te beheren.
+>- Azure Site Recovery IP-adressen mogen niet worden toegevoegd aan de Azure-routerings tabel om de uitgaande verbinding te beheren.
 
 ## <a name="outbound-connectivity-for-urls"></a>Uitgaande connectiviteit voor URL's
 
