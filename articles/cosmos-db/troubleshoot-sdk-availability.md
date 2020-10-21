@@ -3,17 +3,17 @@ title: De beschik baarheid van Azure Cosmos-Sdk's in multiregionale omgevingen v
 description: Meer informatie over de beschik baarheid van Azure Cosmos SDK als u in meerdere regionale omgevingen werkt.
 author: ealsur
 ms.service: cosmos-db
-ms.date: 10/05/2020
+ms.date: 10/20/2020
 ms.author: maquaran
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 400795d20b6e7ad919f5cbbfa6078987bb65297e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d43305040e7896a9d3a58929537f19c2bd1f526c
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743961"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319369"
 ---
 # <a name="diagnose-and-troubleshoot-the-availability-of-azure-cosmos-sdks-in-multiregional-environments"></a>De beschik baarheid van Azure Cosmos-Sdk's in multiregionale omgevingen vaststellen en oplossen
 
@@ -34,7 +34,7 @@ Wanneer u de regionale voor keur instelt, zal de client verbinding maken met een
 | Enkele schrijf regio | Voorkeursregio | Primaire regio  |
 | Meerdere schrijf regio's | Voorkeursregio | Voorkeursregio  |
 
-Als u geen voorkeurs regio instelt:
+Als u **geen voorkeurs regio instelt**, wordt de SDK-client standaard ingesteld op de primaire regio:
 
 |Accounttype |Leesbewerkingen |Schrijfbewerkingen |
 |------------------------|--|--|
@@ -44,7 +44,9 @@ Als u geen voorkeurs regio instelt:
 > [!NOTE]
 > Primaire regio verwijst naar de eerste regio in de [lijst met Azure Cosmos-account regio's](distribute-data-globally.md)
 
-Wanneer een van de volgende scenario's optreedt, worden logboeken door de client met behulp van de Azure Cosmos SDK beschikbaar gemaakt en worden de gegevens voor nieuwe pogingen opgenomen als onderdeel van de **Diagnostische gegevens**van de bewerking:
+Onder normale omstandigheden zal de SDK-client verbinding maken met de voorkeurs regio (als een regionale voor keur is ingesteld) of aan de primaire regio (als er geen voor keur is ingesteld), en de bewerkingen worden beperkt tot die regio, tenzij een van de onderstaande scenario's zich voordoet.
+
+In dergelijke gevallen worden logboeken door de client met de Azure Cosmos SDK beschikbaar gemaakt en worden de gegevens voor nieuwe pogingen opgenomen als onderdeel van de **Diagnostische gegevens**van de bewerking:
 
 * De eigenschap *RequestDiagnosticsString* op antwoorden in de .NET v2-SDK.
 * De *Diagnostische* eigenschap voor antwoorden en uitzonde ringen in de .net v3 SDK.
@@ -66,7 +68,7 @@ Als u een regio verwijdert en later weer toevoegt aan het account en de toegevoe
 
 Als u de client zo configureert dat bij voor keur verbinding wordt gemaakt met een regio die het Azure Cosmos-account niet heeft, wordt de voorkeurs regio genegeerd. Als u die regio later toevoegt, detecteert de client deze en gaat deze over naar die regio.
 
-## <a name="failover-the-write-region-in-a-single-write-region-account"></a><a id="manual-failover-single-region"></a>Een failover voor de schrijf regio in één schrijf regio-account
+## <a name="fail-over-the-write-region-in-a-single-write-region-account"></a><a id="manual-failover-single-region"></a>Failover uitvoeren voor de schrijf regio in één schrijf regio account
 
 Als u een failover van de huidige schrijf regio initieert, mislukt de volgende schrijf aanvraag met een bekend back-end-antwoord. Wanneer dit antwoord wordt gedetecteerd, voert de client een query uit op het account om te zien wat de nieuwe schrijf regio is en gaat het om de huidige bewerking opnieuw uit te voeren en alle toekomstige schrijf bewerkingen permanent naar de nieuwe regio te routeren.
 
@@ -76,7 +78,7 @@ Als het account een enkele schrijf regio is en de regionale storing optreedt tij
 
 ## <a name="session-consistency-guarantees"></a>Garantie voor sessie consistentie
 
-Bij het gebruik van [sessie consistentie](consistency-levels.md#guarantees-associated-with-consistency-levels)moet de client garanderen dat het eigen schrijf bewerkingen kan lezen. In accounts met een enkele schrijf regio waarbij de voor keur voor de Lees regio afwijkt van de schrijf regio, kunnen er gevallen zijn waarin de gebruiker een schrijf actie uitvoert en wanneer een lees bewerking wordt uitgevoerd vanuit een lokale regio, de lokale regio de gegevens replicatie nog niet heeft ontvangen (snelheid van de Light beperking). In dergelijke gevallen detecteert de SDK de specifieke fout voor de Lees bewerking en wordt de Lees actie in de regio hub opnieuw geprobeerd om de consistentie van de sessie te garanderen.
+Bij het gebruik van [sessie consistentie](consistency-levels.md#guarantees-associated-with-consistency-levels)moet de client garanderen dat het eigen schrijf bewerkingen kan lezen. In accounts met een enkele schrijf regio waarbij de voor keur voor de Lees regio afwijkt van de schrijf regio, kunnen er gevallen zijn waarin de gebruiker een schrijf actie uitvoert en wanneer een lees bewerking wordt uitgevoerd vanuit een lokale regio, de lokale regio de gegevens replicatie nog niet heeft ontvangen (snelheid van de Light beperking). In dergelijke gevallen detecteert de SDK de specifieke fout voor de Lees bewerking en wordt opnieuw geprobeerd het lezen op de primaire regio uit te proberen om consistentie van de sessie te garanderen.
 
 ## <a name="transient-connectivity-issues-on-tcp-protocol"></a>Problemen met de tijdelijke verbinding met het TCP-protocol
 

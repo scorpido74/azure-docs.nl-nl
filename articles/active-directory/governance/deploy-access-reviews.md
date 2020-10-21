@@ -16,12 +16,12 @@ ms.date: 08/14/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51983e52643d587fc497a1a67fcb0cd29dbb7f17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b218f4c94e33d4a91b3981c66d3ac052c6caf7e2
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91306562"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318135"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Implementatie van Azure Active Directory Access beoordelingen plannen
 
@@ -87,7 +87,7 @@ Bedenk wat uw organisatie nodig heeft om de strategie voor het implementeren van
 
 ### <a name="engage-the-right-stakeholders"></a>De juiste belanghebbenden benaderen
 
-Wanneer technologie projecten mislukken, worden ze doorgaans als gevolg van niet-overeenkomende verwachtingen voor impact, resultaten en verantwoordelijkheden. Als u deze problemen wilt voor komen, moet [u ervoor zorgen dat u de juiste belanghebbenden gebruikt](https://aka.ms/deploymentplans) en dat de project rollen duidelijk zijn.
+Wanneer technologie projecten mislukken, worden ze doorgaans als gevolg van niet-overeenkomende verwachtingen voor impact, resultaten en verantwoordelijkheden. Als u deze problemen wilt voor komen, moet [u ervoor zorgen dat u de juiste belanghebbenden gebruikt](../fundamentals/active-directory-deployment-plans.md) en dat de project rollen duidelijk zijn.
 
 Voor toegangs beoordelingen neemt u waarschijnlijk vertegenwoordigers uit de volgende teams binnen uw organisatie:
 
@@ -182,7 +182,7 @@ Typische doelen voor controle zijn onder andere:
 
 * Groepslid [maatschap](../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) (gesynchroniseerd met Azure AD of gemaakt in azure ad of Microsoft 365, inclusief micro soft teams).
 
-* [Toegangs pakket](/azure/active-directory/governance/entitlement-management-overview) waarmee resources (groepen, apps en sites) in één pakket worden gegroepeerd om de toegang te beheren.
+* [Toegangs pakket](./entitlement-management-overview.md) waarmee resources (groepen, apps en sites) in één pakket worden gegroepeerd om de toegang te beheren.
 
 * [Azure AD-rollen en Azure-resource rollen](../privileged-identity-management/pim-resource-roles-assign-roles.md) zoals gedefinieerd in privileged Identity Management.
 
@@ -448,7 +448,7 @@ Om het risico te verminderen dat is gekoppeld aan verouderde roltoewijzingen, mo
 
 ![Scherm opname van de lijst ' lidmaatschap controleren ' van Azure A D-rollen.](./media/deploy-access-review/8-review-azure-ad-roles-picker.png)
 
-Volg de instructies in de onderstaande koppelingen:
+Volg de instructies via de onderstaande links:
 
 | Artikelen met procedures | Beschrijving |
 | - | - |
@@ -463,7 +463,7 @@ Om het risico te verminderen dat is gekoppeld aan verouderde roltoewijzingen, mo
 
 ![Azure AD-rollen controleren](./media/deploy-access-review/9-review-azure-roles-picker.png)
 
-Volg de instructies in de onderstaande koppelingen:
+Volg de instructies via de onderstaande links:
 
 | Artikelen met procedures| Beschrijving |
 | - | -|
@@ -518,4 +518,3 @@ Meer informatie over de onderstaande verwante technologieën.
 * [Wat is het beheer van rechten van Azure AD?](entitlement-management-overview.md)
 
 * [Wat is Azure AD Privileged Identity Management?](../privileged-identity-management/pim-configure.md)
-

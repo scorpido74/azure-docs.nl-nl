@@ -6,12 +6,12 @@ ms.manager: bsiva
 ms.author: anvar
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: 6318f426e42612f21da7a43c9857894ae610f68e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b653a0abbe89686c764a6a0885720cc746975c8
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88871174"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314732"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>Problemen met replicatie oplossen in VMware VM-migratie zonder agent
 
@@ -90,7 +90,7 @@ Het onderdeel dat gegevens probeert te repliceren naar Azure, is niet actief of 
     
     **Stappen voor het uitvoeren van de Bench Mark-test voor de prestaties:**
     
-      1. Azcopy [downloaden](https://go.microsoft.com/fwlink/?linkid=2138966)
+      1. Azcopy [downloaden](../storage/common/storage-use-azcopy-v10.md)
         
       2. Zoek naar het opslag account voor het apparaat in de resource groep. Het opslag account heeft een naam die lijkt op migrategwsa \* \* \* \* \* \* \* \* \* \* . Dit is de waarde van para meter [account] in de bovenstaande opdracht.
         
@@ -170,7 +170,7 @@ De mogelijke oorzaken zijn:
     
     **Stappen voor het uitvoeren van de Bench Mark-test voor de prestaties:**
     
-      1. Azcopy [downloaden](https://go.microsoft.com/fwlink/?linkid=2138966)
+      1. Azcopy [downloaden](../storage/common/storage-use-azcopy-v10.md)
         
       2. Zoek naar het opslag account voor het apparaat in de resource groep. Het opslag account heeft een naam die lijkt op migratelsa \* \* \* \* \* \* \* \* \* \* . Dit is de waarde van para meter [account] in de bovenstaande opdracht.
         
@@ -295,4 +295,4 @@ Dit gebeurt wanneer de NFC-host buffer onvoldoende geheugen heeft. Om dit proble
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga door met VM-replicatie en voer [test migratie](https://go.microsoft.com/fwlink/?linkid=2139333)uit.
+Ga door met VM-replicatie en voer [test migratie](./tutorial-migrate-vmware.md#run-a-test-migration)uit.

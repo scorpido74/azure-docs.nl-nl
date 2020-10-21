@@ -16,12 +16,12 @@ ms.date: 09/15/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8d9740e05bf4236f1b2b722c9a91b3644533fce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a3c5274a1b63d486bb7eb48b89560d5684db2e2
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90707897"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317013"
 ---
 # <a name="powershell-for-azure-ad-roles-in-privileged-identity-management"></a>Power shell voor Azure AD-rollen in Privileged Identity Management
 
@@ -54,7 +54,7 @@ Dit artikel bevat instructies voor het gebruik van Azure Active Directory (Azure
     ![De organisatie-ID in de eigenschappen voor de Azure AD-organisatie zoeken](./media/powershell-for-azure-ad-roles/tenant-id-for-Azure-ad-org.png)
 
 > [!Note]
-> De volgende secties bieden eenvoudige voor beelden waarmee u aan de slag kunt. Meer gedetailleerde documentatie over de volgende cmdlets vindt u op [https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management&preserve-view=true](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management&preserve-view=true) . U moet echter "kunt" in de para meter providerID vervangen door "aadRoles". U moet ook de Tenant-ID voor uw Azure AD-organisatie gebruiken als de para meter resourceId.
+> De volgende secties bieden eenvoudige voor beelden waarmee u aan de slag kunt. Meer gedetailleerde documentatie over de volgende cmdlets vindt u op [https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management&preserve-view=true](/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management&preserve-view=true) . U moet echter "kunt" in de para meter providerID vervangen door "aadRoles". U moet ook de Tenant-ID voor uw Azure AD-organisatie gebruiken als de para meter resourceId.
 
 ## <a name="retrieving-role-definitions"></a>Roldefinities ophalen
 

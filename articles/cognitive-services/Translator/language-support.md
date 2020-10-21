@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: a913756c0348622ec0d885c50b55d5cecf6dd91d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5da707d02d867ea35382b09612a89144f0a6527f
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91568094"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282306"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Ondersteuning van talen en regio's voor tekst-en spraak omzetting
 
@@ -57,6 +57,7 @@ Translator ondersteunt de volgende talen voor tekst vertaling.
 |Filipino|  `fil`   |
 |Fins|   `fi`    |
 |Frans|    `fr`    |
+|Frans (Canada)|   `fr-ca` |
 |Duits|    `de`    |
 |Grieks| `el`    |
 |Gujarati|  `gu`    |
@@ -279,7 +280,7 @@ U kunt een lijst met ondersteunde talen voor Translator ophalen met behulp van d
 
 [Documentatie voor het bewerkings overzicht van talen weer geven](reference/v3-0-languages.md)
 
-## <a name="customization"></a>Aanpassen
+## <a name="customization"></a>Aanpassing
 
 De volgende talen zijn beschikbaar voor aanpassing in of vanuit het Engels met [aangepaste vertaler](https://aka.ms/CustomTranslator).
 
@@ -364,6 +365,7 @@ Converteer spraak naar tekst om om te zetten naar de tekst taal van uw keuze. Sp
 |Engels|
 |Fins|
 |Frans|
+|Frans (Canada)|
 |Duits|
 |Gujarati|
 |Hindi|
@@ -401,6 +403,7 @@ Zet tekst om in spraak. Tekst-naar-spraak wordt gebruikt om hoorbare uitvoer van
 |Engels|
 |Fins|
 |Frans|
+|Frans (Canada)|
 |Duits|
 |Grieks|
 |Hebreeuws|

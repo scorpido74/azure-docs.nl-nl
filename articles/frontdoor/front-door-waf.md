@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/01/2020
 ms.author: duau
-ms.openlocfilehash: 7c5e938f985296e0534ca6e2438cf3acedb0fb65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5d51a77b1da0ae44c76d0187113105c4e53c9b4
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91626476"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279212"
 ---
 # <a name="tutorial-quickly-scale-and-protect-a-web-application-by-using-azure-front-door-and-azure-web-application-firewall-waf"></a>Zelfstudie: een webtoepassing snel schalen en beveiligen met Azure Front Door en Azure Web Application Firewall (WAF)
 
@@ -36,10 +36,10 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-- In de instructies in deze zelfstudie wordt de Azure CLI gebruikt. [Raadpleeg deze handleiding](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest&preserve-view=true) om aan de slag te gaan met de Azure CLI.
+- In de instructies in deze zelfstudie wordt de Azure CLI gebruikt. [Raadpleeg deze handleiding](/cli/azure/get-started-with-azure-cli?preserve-view=true&view=azure-cli-latest) om aan de slag te gaan met de Azure CLI.
 
   > [!TIP] 
-  > Een eenvoudige en snelle manier om aan de slag te gaan met de Azure CLI is met [Bash in Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart).
+  > Een eenvoudige en snelle manier om aan de slag te gaan met de Azure CLI is met [Bash in Azure Cloud Shell](../cloud-shell/quickstart.md).
 
 - Zorg ervoor dat de extensie `front-door` is toegevoegd aan de Azure CLI:
 
@@ -48,7 +48,7 @@ In deze zelfstudie leert u het volgende:
    ```
 
 > [!NOTE] 
-> Raadpleeg de [Azure CLI-naslag voor front-door](https://docs.microsoft.com/cli/azure/ext/front-door/?view=azure-cli-latest&preserve-view=true) voor meer informatie over de opdrachten die in deze zelfstudie worden gebruikt.
+> Raadpleeg de [Azure CLI-naslag voor front-door](/cli/azure/ext/front-door/?preserve-view=true&view=azure-cli-latest) voor meer informatie over de opdrachten die in deze zelfstudie worden gebruikt.
 
 ## <a name="create-an-azure-front-door-resource"></a>Een Azure Front Door-resource maken
 
@@ -62,7 +62,7 @@ az network front-door create --backend-address <>  --accepted-protocols <> --nam
 
 `--name`: De naam van uw Azure Front Door-resource.
 
-`--resource-group`: De resourcegroep waarin u deze Azure Front Door-resource wilt plaatsen. Zie [Resourcegroepen beheren in Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal) voor meer informatie over resourcegroepen.
+`--resource-group`: De resourcegroep waarin u deze Azure Front Door-resource wilt plaatsen. Zie [Resourcegroepen beheren in Azure](../azure-resource-manager/management/manage-resource-groups-portal.md) voor meer informatie over resourcegroepen.
 
 In de respons die u krijgt wanneer u deze opdracht uitvoert, zoekt u naar de sleutel `hostName`. U hebt deze waarde in een latere stap nodig. De `hostName` is de DNS-naam van de Azure Front Door-resource die u hebt gemaakt.
 
@@ -130,21 +130,21 @@ az network front-door update --name <> --resource-group <> --set frontendEndpoin
 
 De naam van het aangepaste domein van uw webtoepassing is de naam die klanten gebruiken om naar uw toepassing te verwijzen, bijvoorbeeld www.contoso.com. In eerste instantie was de naam van dit aangepaste domein gekoppeld aan de locatie waar het domein zich bevond voordat u Azure Front Door introduceerde. Nadat u Azure Front Door en WAF hebt toegevoegd om de toepassing te beveiligen, moet de DNS-vermelding die overeenkomt met dat aangepaste domein verwijzen naar de Azure Front Door-resource. U kunt deze wijziging aanbrengen door de vermelding in uw DNS-server te koppelen aan de `hostName` van Azure Front Door die u hebt genoteerd tijdens het maken van de Azure Front Door-resource.
 
-De specifieke stappen voor het bijwerken van uw DNS-records zijn afhankelijk van uw DNS-serviceprovider. Als u Azure DNS gebruikt voor het hosten van uw DNS-naam, raadpleegt u de informatie over [het bijwerken van een DNS-record](https://docs.microsoft.com/azure/dns/dns-operations-recordsets-cli) en verwijst u naar de `hostName` van Azure Front Door. 
+De specifieke stappen voor het bijwerken van uw DNS-records zijn afhankelijk van uw DNS-serviceprovider. Als u Azure DNS gebruikt voor het hosten van uw DNS-naam, raadpleegt u de informatie over [het bijwerken van een DNS-record](../dns/dns-operations-recordsets-cli.md) en verwijst u naar de `hostName` van Azure Front Door. 
 
-Er is iets belangrijks dat u moet weten als uw klanten via de zone-apex (zoals contoso.com) toegang moeten krijgen tot uw website. In dit geval moet u Azure DNS en het bijbehorende [aliasrecordtype](https://docs.microsoft.com/azure/dns/dns-alias) gebruiken om uw DNS-naam te hosten. 
+Er is iets belangrijks dat u moet weten als uw klanten via de zone-apex (zoals contoso.com) toegang moeten krijgen tot uw website. In dit geval moet u Azure DNS en het bijbehorende [aliasrecordtype](../dns/dns-alias.md) gebruiken om uw DNS-naam te hosten. 
 
-Bovendien moet u de configuratie van Azure Front Door bijwerken door [het aangepaste domein toe te voegen](https://docs.microsoft.com/azure/frontdoor/front-door-custom-domain), zodat Front Door op de hoogte is van de toewijzing.
+Bovendien moet u de configuratie van Azure Front Door bijwerken door [het aangepaste domein toe te voegen](./front-door-custom-domain.md), zodat Front Door op de hoogte is van de toewijzing.
 
-Ten slotte, als u een aangepast domein gebruikt om uw webtoepassing te bereiken, en het HTTPS-protocol wilt inschakelen. U moet [de certificaten voor uw aangepast domein instellen in Azure Front Door](https://docs.microsoft.com/azure/frontdoor/front-door-custom-domain-https). 
+Ten slotte, als u een aangepast domein gebruikt om uw webtoepassing te bereiken, en het HTTPS-protocol wilt inschakelen. U moet [de certificaten voor uw aangepast domein instellen in Azure Front Door](./front-door-custom-domain-https.md). 
 
 ## <a name="lock-down-your-web-application"></a>Uw webtoepassing vergrendelen
 
-We adviseren u ervoor te zorgen dat alleen apparaten in de periferie van Azure Front Door kunnen communiceren met uw webtoepassing. U weet dan zeker dat niemand de beveiliging van Azure Front Door kan omzeilen en rechtstreeks toegang heeft tot uw toepassing. Als u deze vergrendeling wilt instellen, raadpleegt u [How do I lock down the access to my backend to only Azure Front Door?](https://docs.microsoft.com/azure/frontdoor/front-door-faq#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door) (Hoe kan ik de toegang tot mijn back-end beperken tot alleen Azure Front Door?).
+We adviseren u ervoor te zorgen dat alleen apparaten in de periferie van Azure Front Door kunnen communiceren met uw webtoepassing. U weet dan zeker dat niemand de beveiliging van Azure Front Door kan omzeilen en rechtstreeks toegang heeft tot uw toepassing. Als u deze vergrendeling wilt instellen, raadpleegt u [How do I lock down the access to my backend to only Azure Front Door?](./front-door-faq.md#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door) (Hoe kan ik de toegang tot mijn back-end beperken tot alleen Azure Front Door?).
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u de resources in deze zelfstudie niet langer nodig hebt, gebruikt u de opdracht [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true) om de resourcegroep, Front Door en het WAF-beleid te verwijderen:
+Wanneer u de resources in deze zelfstudie niet langer nodig hebt, gebruikt u de opdracht [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true) om de resourcegroep, Front Door en het WAF-beleid te verwijderen:
 
 ```azurecli-interactive
   az group delete \

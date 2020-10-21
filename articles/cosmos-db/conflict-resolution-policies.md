@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 49400ad0da86eddf7bbbd51dd92101084cdf1ee1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69bc58e7d217bbd902a82a15333eee6df40a21c9
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570105"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276336"
 ---
 # <a name="conflict-types-and-resolution-policies-when-using-multiple-write-regions"></a>Conflict typen en oplossings beleid wanneer meerdere schrijf regio's worden gebruikt
 
@@ -32,7 +32,7 @@ Azure Cosmos DB biedt een flexibel mechanisme op basis van beleid om schrijf con
 
 * **Laatste write-WINS (LWW)**: dit verwerkings beleid maakt standaard gebruik van een door het systeem gedefinieerde tijds tempel eigenschap. Het is gebaseerd op het klok protocol met tijd synchronisatie. Als u de SQL-API gebruikt, kunt u een andere aangepaste numerieke eigenschap (bijvoorbeeld uw eigen begrip van een tijds tempel) opgeven die moet worden gebruikt voor het oplossen van conflicten. Een aangepaste numerieke eigenschap wordt ook wel het pad voor *conflict oplossing*genoemd. 
 
-  Als er twee of meer items conflicteren bij het invoegen of vervangen van bewerkingen, wordt het item met de hoogste waarde voor het pad naar het oplossen van conflicten de winnaar. Het systeem bepaalt de winnaar als meerdere items dezelfde numerieke waarde hebben voor het pad van de conflict oplossing. Alle regio's zijn gegarandeerd een enkele winnaar te convergeren en eindigen op dezelfde versie van het doorgevoerde item. Wanneer er sprake is van conflicterende verwijderingen, wint de verwijderde versie altijd WINS over het invoegen of vervangen van conflicten. Dit resultaat is, ongeacht de waarde van het pad voor het oplossen van conflicten.
+  Als er twee of meer items conflicteren bij het invoegen of vervangen van bewerkingen, wordt het item met de hoogste waarde voor het pad naar het oplossen van conflicten de winnaar. Het systeem bepaalt de winnaar als meerdere items dezelfde numerieke waarde hebben voor het pad van de conflict oplossing. Alle regio's convergeren samen met één winnaar en eindigen op dezelfde versie van het doorgevoerde item. Wanneer er sprake is van conflicterende verwijderingen, wint de verwijderde versie altijd WINS over het invoegen of vervangen van conflicten. Dit resultaat is, ongeacht de waarde van het pad voor het oplossen van conflicten.
 
   > [!NOTE]
   > De laatste schrijf-WINS is het standaard beleid voor conflict oplossing en gebruikt tijds tempel `_ts` voor de volgende api's: SQL, MongoDb, Cassandra, Gremlin en Table. De aangepaste numerieke eigenschap is alleen beschikbaar voor SQL-API.

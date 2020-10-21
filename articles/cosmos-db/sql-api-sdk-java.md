@@ -9,32 +9,32 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 6db0965c0b5e28ac1e70da2cbeea276728f29822
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1061cd7a37cbe9ce5ea360de22594d6eb4c0c2f5
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569932"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275298"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK voor SQL API: release opmerkingen en bronnen
 > [!div class="op_single_selector"]
 > * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
 > * [.NET SDK v2](sql-api-sdk-dotnet.md)
 > * [.NET Core-SDK v2](sql-api-sdk-dotnet-core.md)
-> * [.NET Change feed SDK v2](sql-api-sdk-dotnet-changefeed.md)
+> * [.NET wijzigingenfeed-SDK v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java-SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java-SDK v2](sql-api-sdk-java.md)
-> * [Lente gegevens v2](sql-api-sdk-java-spring-v2.md)
+> * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
 > * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark-connector](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [REST-resourceprovider](/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [Bulk-uitvoerder-.NET v2](sql-api-sdk-bulk-executor-dot-net.md)
-> * [Bulk-uitvoerder-java](sql-api-sdk-bulk-executor-java.md)
+> * [Bulkuitvoerprogramma - .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Bulkuitvoerprogramma - Java](sql-api-sdk-bulk-executor-java.md)
 
 Dit is de oorspronkelijke Azure Cosmos DB Java SDK v2 voor de SQL-API die synchrone bewerkingen ondersteunt.
 
@@ -232,7 +232,7 @@ Dit is de oorspronkelijke Azure Cosmos DB Java SDK v2 voor de SQL-API die synchr
 * Toegevoegde time-to-Live (TTL)-ondersteuning voor documenten.
 
 ### <a name="160"></a><a name="1.6.0"></a>1.6.0
-* Geïmplementeerde [gepartitioneerde verzamelingen](partition-data.md) en door de [gebruiker gedefinieerde prestatie niveaus](performance-levels.md).
+* Geïmplementeerde [gepartitioneerde verzamelingen](partitioning-overview.md) en door de [gebruiker gedefinieerde prestatie niveaus](performance-levels.md).
 
 ### <a name="151"></a><a name="1.5.1"></a>1.5.1
 * Er is een fout opgelost in HashPartitionResolver om hash-waarden in Little-Endian te genereren zodat deze consistent zijn met andere Sdk's.
@@ -260,15 +260,15 @@ Dit is de oorspronkelijke Azure Cosmos DB Java SDK v2 voor de SQL-API die synchr
 
 ## <a name="release-and-retirement-dates"></a>Release-en pensioen datums
 
-Micro soft zal ten minste **twaalf maanden** vóór het buiten gebruik stellen van een SDK een melding ontvangen om de overgang naar een nieuwere/ondersteunde versie te versoepelen. Nieuwe functies en functionaliteiten en optimalisaties worden alleen toegevoegd aan de huidige SDK, omdat het raadzaam is om altijd zo snel mogelijk een upgrade naar de nieuwste SDK-versie uit te voeren.
+Microsoft zal ten minste **12 maanden** vóór de buitengebruikstelling van een SDK een melding doen, om de overgang naar een nieuwere/ondersteunde versie te versoepelen. Nieuwe functies en functionaliteiten en optimalisaties worden alleen toegevoegd aan de huidige SDK, omdat het raadzaam is om altijd zo snel mogelijk een upgrade naar de nieuwste SDK-versie uit te voeren.
 
 > [!WARNING]
-> Na 30 mei 2020 worden er bij Azure Cosmos DB geen problemen meer opgelost, worden nieuwe functies toegevoegd en wordt ondersteuning geboden voor versie 1. x van de Azure Cosmos DB Java SDK voor SQL API. Als u liever geen upgrade uitvoert, worden aanvragen die zijn verzonden vanaf versie 1. x van de SDK blijven geleverd door de Azure Cosmos DB-service.
+> Na 30 mei 2020 worden er bij Azure Cosmos DB geen problemen meer opgelost, worden nieuwe functies toegevoegd en wordt ondersteuning geboden voor versie 1. x van de Azure Cosmos DB Java SDK voor SQL API. Als u liever geen upgrade uitvoert, worden aanvragen die zijn verzonden vanaf versie 1.x van de SDK nog steeds behandeld door de Azure Cosmos DB-service.
 >
 > Na 29 februari 2016 worden er bij Azure Cosmos DB geen problemen meer opgelost, worden nieuwe functies toegevoegd en wordt ondersteuning geboden voor versie 0. x van de Azure Cosmos DB Java SDK voor SQL API. Als u liever geen upgrade uitvoert, worden aanvragen die zijn verzonden vanaf versie 0. x van de SDK blijven geleverd door de Azure Cosmos DB-service.
 
 
-| Versie | Release datum | Buitengebruikstellingsdatum |
+| Versie | Releasedatum | Buitengebruikstellingsdatum |
 | --- | --- | --- |
 | [2.5.1](#2.5.1) |03 juni 2020 |--- |
 | [2.5.0](#2.5.0) |12 mei 2020 |--- |
@@ -330,5 +330,5 @@ Micro soft zal ten minste **twaalf maanden** vóór het buiten gebruik stellen v
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Zie ook
-Zie [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) service-pagina voor meer informatie over Cosmos db.
+Zie de servicepagina [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) voor meer informatie over Cosmos DB.
 

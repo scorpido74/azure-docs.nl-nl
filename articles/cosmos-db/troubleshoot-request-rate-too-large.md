@@ -7,12 +7,12 @@ ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: f8b1129c94ecf80efb60a13a0b80b1cc1817ff3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 905560094afa9338d44ba73120d316b3c81b5580
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88871085"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277149"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-request-rate-too-large-exceptions"></a>Problemen vaststellen en oplossen Azure Cosmos DB aanvraag frequentie te grote uitzonde ringen
 Een ' aanvraag snelheid te groot '-bericht of fout code 429 geeft aan dat uw aanvragen worden beperkt.
@@ -24,7 +24,7 @@ De volgende sectie bevat bekende oorzaken en oplossingen voor te veel aanvragen.
 Controleer [Azure Cosmos DB bewaking](monitor-cosmos-db.md) om het aantal uitzonde ringen van 429 weer te geven.
 
 #### <a name="cause"></a>Oorzaak:
-De verbruikte door Voer (aanvraag eenheden per seconde) heeft de [ingerichte door Voer](set-throughput.md)overschreden. De SDK probeert automatisch aanvragen opnieuw uit te voeren op basis van het opgegeven beleid voor opnieuw proberen. Als deze fout vaak optreedt, kunt u overwegen de door Voer van de verzameling te verhogen. Controleer de metrische gegevens van de portal om te zien of er 429 fouten worden weer gegeven. Controleer uw partitie sleutel om ervoor te zorgen dat deze een [gelijkmatige verdeling van de opslag en het aanvraag volume](partition-data.md)levert.
+De verbruikte door Voer (aanvraag eenheden per seconde) heeft de [ingerichte door Voer](set-throughput.md)overschreden. De SDK probeert automatisch aanvragen opnieuw uit te voeren op basis van het opgegeven beleid voor opnieuw proberen. Als deze fout vaak optreedt, kunt u overwegen de door Voer van de verzameling te verhogen. Controleer de metrische gegevens van de portal om te zien of er 429 fouten worden weer gegeven. Controleer uw partitie sleutel om ervoor te zorgen dat deze een [gelijkmatige verdeling van de opslag en het aanvraag volume](partitioning-overview.md)levert.
 
 #### <a name="solution"></a>Oplossing:
 1. Gebruik de [Portal of de SDK](set-throughput.md) om de ingerichte door voer te verg Roten.

@@ -3,12 +3,12 @@ title: Cluster knooppunten upgraden om Azure Managed disks te gebruiken
 description: U kunt als volgt een upgrade uitvoeren van een bestaand Service Fabric cluster om Azure Managed disks te gebruiken met weinig of geen uitval tijd van uw cluster.
 ms.topic: how-to
 ms.date: 4/07/2020
-ms.openlocfilehash: 152bdaea121e65de8332fcde8543b8158ff11714
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36896a6cf471ff0c9312ab454465419471bb164d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88717520"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316163"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>Cluster knooppunten upgraden om Azure Managed disks te gebruiken
 
@@ -25,7 +25,7 @@ De algemene strategie voor het upgraden van een Service Fabric cluster knooppunt
 Dit artikel begeleidt u stapsgewijs door de stappen voor het upgraden van het primaire knooppunt type van een voorbeeld cluster om beheerde schijven te gebruiken, terwijl u geen uitval tijd van het cluster kunt vermijden (zie opmerking hieronder). De aanvankelijke status van het test cluster bestaat uit één knooppunt type van [Silver duurzaamheid](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster), dat wordt ondersteund door een enkele schaalset met vijf knoop punten.
 
 > [!NOTE]
-> De beperkingen van een basis-SKU load balancer voor komen dat een extra schaalset wordt toegevoegd. Het is raadzaam om in plaats daarvan de standaard SKU-load balancer te gebruiken. Zie [een vergelijking van de twee sku's](/azure/load-balancer/skus)voor meer informatie.
+> De beperkingen van een basis-SKU load balancer voor komen dat een extra schaalset wordt toegevoegd. Het is raadzaam om in plaats daarvan de standaard SKU-load balancer te gebruiken. Zie [een vergelijking van de twee sku's](../load-balancer/skus.md)voor meer informatie.
 
 > [!CAUTION]
 > U ondervindt alleen een onderbreking met deze procedure als u afhankelijkheden hebt op de cluster-DNS (bijvoorbeeld wanneer u [service Fabric Explorer](service-fabric-visualizing-your-cluster.md)opent). [Best Practice van de front-end-services](/azure/architecture/microservices/design/gateway) van de architectuur heeft een soort [Load Balancer](/azure/architecture/guide/technology-choices/load-balancing-overview) voor de knooppunt typen om het wisselen van knoop punten mogelijk te maken zonder storingen.

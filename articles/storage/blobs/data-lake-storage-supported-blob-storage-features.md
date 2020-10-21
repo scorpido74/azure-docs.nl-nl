@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: a0cba1c3a7a3b713fa5f0603ad9e116068d8df66
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2c7953ea7b85eca3628329b427f960f9466fd6b
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618468"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316029"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Blob-opslag functies die beschikbaar zijn in Azure Data Lake Storage Gen2
 
@@ -28,7 +28,7 @@ Deze tabel geeft een lijst van de functies voor Blob-opslag die u kunt gebruiken
 >
 > [Premium-performance BlockBlobStorage-accounts](storage-blob-create-account-block-blob.md) voor data Lake Storage Gen2 zijn momenteel beschikbaar als open bare preview. Ondersteunings niveaus voor deze typen accounts worden weer gegeven in de kolom **BlockBlobStorage (Premium)** .
 
-|Blob Storage functie |Voor algemeen gebruik v2 |BlockBlobStorage (Premium) |Verwante artikelen: |
+|Blob Storage functie |Algemeen v2 |BlockBlobStorage (Premium) |Verwante artikelen: |
 |---------------|-------------------|---|
 |Dynamische-toegangslaag|Algemeen beschikbaar|Niet ondersteund|[Azure Blob-opslag: dynamische en statische toegangslagen, en archieftoegangslaag](storage-blob-storage-tiers.md)|
 |Statische-toegangslaag|Algemeen beschikbaar|Niet ondersteund|[Azure Blob-opslag: dynamische en statische toegangslagen, en archieftoegangslaag](storage-blob-storage-tiers.md)|
@@ -49,7 +49,7 @@ Deze tabel geeft een lijst van de functies voor Blob-opslag die u kunt gebruiken
 |BLOB zacht verwijderen|Nog niet ondersteund|Nog niet ondersteund|[Blobs voorlopig verwijderen](storage-blob-soft-delete.md)|
 |Blobfuse|Preview|Nog niet ondersteund|[Blob-opslag koppelen als een bestands systeem met blobfuse](storage-how-to-mount-container-linux.md)|
 |Account-failover|Nog niet ondersteund|Nog niet ondersteund|[Herstel na nood gevallen en failover van accounts](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
-|BLOB-container-ACL|Nog niet ondersteund<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|Nog niet ondersteund<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|[Container-ACL instellen](https://docs.microsoft.com/rest/api/storageservices/set-container-acl)|
+|BLOB-container-ACL|Niet ondersteund<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|Niet ondersteund<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|Zie de verwante opmerking onder deze tabel.|
 |Door de klant verschafte sleutels|Nog niet ondersteund|Nog niet ondersteund|[Geef een versleutelings sleutel op voor een aanvraag voor Blob-opslag](encryption-customer-provided-keys.md)|
 |Aangepaste domeinen|Nog niet ondersteund|Nog niet ondersteund|[Een aangepast domein toewijzen aan een Azure Blob Storage-eind punt](storage-custom-domain-name.md)|
 |Versleutelingsbereiken|Nog niet ondersteund|Nog niet ondersteund|[Versleutelings bereiken maken en beheren (preview-versie)](encryption-scope-manage.md)|

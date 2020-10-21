@@ -3,12 +3,12 @@ title: Veelgestelde vragen over Azure Migrate server migratie
 description: Krijg antwoorden op veelgestelde vragen over het gebruik van Azure Migrate server migratie om machines te migreren.
 ms.topic: conceptual
 ms.date: 08/28/2020
-ms.openlocfilehash: 80334bb2f0d6c0284c9031a99c0eb469b348873d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b62110e6b2ce97cdd80ed91ee4b1e75d119c7c7d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275537"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315239"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Migratie van Azure Migrate server: veelgestelde vragen
 
@@ -34,8 +34,8 @@ Azure Migrate: met het hulp programma voor server migratie worden UEFI-machines 
 | SUSE Linux Enterprise Server 15 SP1                     | J                                                                                                                                         | J                              | J                                                          |
 | SUSE Linux Enterprise Server 12 SP4                     | J                                                                                                                                         | J                              | J                                                          |
 | Ubuntu Server 16,04, 18,04, 19,04, 19,10                | J                                                                                                                                         | J                              | J                                                          |
-| RHEL 8,1, 8,0, 7,8, 7,7, 7,6, 7,5, 7,4, 7,0, 6. x        | J<br>                 _RHEL 8. x vereist [hand matige voor bereiding](https://go.microsoft.com/fwlink/?linkid=2143939)_   | J                              | J                                                          |
-| Cent OS 8,1, 8,0, 7,7, 7,6, 7,5, 7,4, 6. x               | J<br>_Cent OS 8. x vereist [hand matige voor bereiding](https://go.microsoft.com/fwlink/?linkid=2143939)_ | J                              | J                                                          |
+| RHEL 8,1, 8,0, 7,8, 7,7, 7,6, 7,5, 7,4, 7,0, 6. x        | J<br>                 _RHEL 8. x vereist [hand matige voor bereiding](./prepare-for-migration.md#linux-machines)_   | J                              | J                                                          |
+| Cent OS 8,1, 8,0, 7,7, 7,6, 7,5, 7,4, 6. x               | J<br>_Cent OS 8. x vereist [hand matige voor bereiding](./prepare-for-migration.md#linux-machines)_ | J                              | J                                                          |
 | Oracle Linux 7.7, 7.7CI                                |  J                                                                                                                                        | J                              | J                                                          |
 
 ## <a name="can-i-use-the-recovery-services-vault-created-by-azure-migrate-for-disaster-recovery-scenarios"></a>Kan ik de Recovery Services-kluis gebruiken die is gemaakt door Azure Migrate voor scenario's voor herstel na nood gevallen?
@@ -43,11 +43,11 @@ Het is niet raadzaam om de Recovery Services-kluis te gebruiken die is gemaakt d
 
 ## <a name="where-should-i-install-the-replication-appliance-for-agent-based-migrations"></a>Waar moet ik het replicatie apparaat installeren voor migraties op basis van een agent?
 
-Het replicatie apparaat moet op een toegewezen computer worden geïnstalleerd. Het replicatieapparaat mag niet worden geïnstalleerd op een bronmachine die u wilt repliceren of op het detectie- en beoordelingsapparaat voor Azure Migrate dat u eerder hebt geïnstalleerd. Volg de [zelf studie](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines) voor meer informatie.
+Het replicatie apparaat moet op een toegewezen computer worden geïnstalleerd. Het replicatieapparaat mag niet worden geïnstalleerd op een bronmachine die u wilt repliceren of op het detectie- en beoordelingsapparaat voor Azure Migrate dat u eerder hebt geïnstalleerd. Volg de [zelf studie](./tutorial-migrate-physical-virtual-machines.md) voor meer informatie.
 
 ## <a name="how-can-i-migrate-my-aws-ec2-instances-to-azure"></a>Hoe kan ik mijn AWS EC2-exemplaren migreren naar Azure?
 
-Lees dit [artikel](https://docs.microsoft.com/azure/migrate/tutorial-migrate-aws-virtual-machines) voor het detecteren, evalueren en migreren van uw AWS EC2-instanties naar Azure.
+Lees dit [artikel](./tutorial-migrate-aws-virtual-machines.md) voor het detecteren, evalueren en migreren van uw AWS EC2-instanties naar Azure.
 
 ## <a name="can-i-migrate-aws-vms-running-amazon-linux-operating-system"></a>Kan ik AWS-Vm's waarop het besturings systeem van Amazon Linux wordt uitgevoerd, migreren?
 
@@ -79,18 +79,18 @@ Ongeacht de gekozen migratie optie, de eerste stap voor het migreren van een ser
 Hier volgen enkele aandachtspunten waarmee u rekening moet houden bij het kiezen van de migratie optie.
 
 Voor **migraties zonder agent** zijn geen software (agents) vereist die worden geïmplementeerd op de bron-vm's en-servers die worden gemigreerd. De optie zonder agent organiseert de replicatie door te integreren met de functionaliteit van de virtualisatiehost.
-De replicatie opties zonder agent zijn beschikbaar voor [virtuele VMware-machines](https://docs.microsoft.com/azure/migrate/tutorial-migrate-vmware) en [virtuele Hyper-V-machines](https://docs.microsoft.com/azure/migrate/tutorial-migrate-hyper-v).
+De replicatie opties zonder agent zijn beschikbaar voor [virtuele VMware-machines](./tutorial-migrate-vmware.md) en [virtuele Hyper-V-machines](./tutorial-migrate-hyper-v.md).
 
 Voor **migraties op basis van een agent** moeten Azure migrate software (agents) worden geïnstalleerd op de bron-vm's en machines die moeten worden gemigreerd. De op agents gebaseerde optie is niet afhankelijk van het virtualisatieplatform voor de replicatie functionaliteit en kan daarom worden gebruikt met elke server met een x86/x64-architectuur en een versie van een besturings systeem die wordt ondersteund door de replicatie methode op basis van een agent.
 
-Migratie op basis van een agent kan worden gebruikt voor [virtuele VMware-machines](https://docs.microsoft.com/azure/migrate/tutorial-migrate-vmware-agent), [Hyper-V-vm's](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines), [fysieke servers](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines), [virtuele machines die worden uitgevoerd op AWS](https://docs.microsoft.com/azure/migrate/tutorial-migrate-aws-virtual-machines), virtuele machines die worden uitgevoerd op GCP of vm's die worden uitgevoerd op een andere virtualisatiehost. De migratie op basis van een agent behandelt uw computers als fysieke servers voor het doel van de migratie.
+Migratie op basis van een agent kan worden gebruikt voor [virtuele VMware-machines](./tutorial-migrate-vmware-agent.md), [Hyper-V-vm's](./tutorial-migrate-physical-virtual-machines.md), [fysieke servers](./tutorial-migrate-physical-virtual-machines.md), [virtuele machines die worden uitgevoerd op AWS](./tutorial-migrate-aws-virtual-machines.md), virtuele machines die worden uitgevoerd op GCP of vm's die worden uitgevoerd op een andere virtualisatiehost. De migratie op basis van een agent behandelt uw computers als fysieke servers voor het doel van de migratie.
 
 Hoewel de migratie zonder agent een extra gemak en eenvoud biedt over de replicatie opties op basis van de agent voor de ondersteunde scenario's (VMWare en Hyper-V), kunt u overwegen het scenario op basis van de agent te gebruiken voor de volgende gebruiks voorbeelden:
 
 - Beperkte IOPS-omgeving: replicatie zonder agent maakt gebruik van moment opnamen en verbruikt opslag-IOPS/band breedte. We raden u aan de migratie methode op basis van een agent uit te voeren als er beperkingen gelden voor opslag/IOPS in uw omgeving.
 - Als u geen vCenter Server hebt, kunt u uw virtuele VMware-machines als fysieke servers behandelen en de op agents gebaseerde migratie werk stroom gebruiken.
 
-Raadpleeg dit [artikel](https://docs.microsoft.com/azure/migrate/server-migrate-overview) voor meer informatie over het vergelijken van migratie opties voor VMware-migraties.
+Raadpleeg dit [artikel](./server-migrate-overview.md) voor meer informatie over het vergelijken van migratie opties voor VMware-migraties.
 
 ## <a name="how-does-agentless-migration-work"></a>Hoe werkt migratie zonder agent?
 
@@ -101,13 +101,13 @@ De optie replicatie zonder agent werkt met behulp van mechanismen van de Virtual
 Wanneer replicatie voor een virtuele machine is geconfigureerd, wordt eerst een initiële replicatie fase door lopen. Tijdens de eerste replicatie wordt een VM-moment opname gemaakt en een volledige kopie van gegevens van de momentopname schijven worden gerepliceerd naar beheerde schijven in uw abonnement. Nadat de initiële replicatie voor de virtuele machine is voltooid, wordt het replicatie proces overgezet naar een incrementele replicatie fase (Delta replicatie). In de incrementele replicatie fase worden gegevens wijzigingen die zich hebben voorgedaan sinds de laatste voltooide replicatie cyclus periodiek gerepliceerd en toegepast op de door de replica beheerde schijven, waardoor replicatie synchroon wordt met de wijzigingen die op de virtuele machine optreden. In het geval van virtuele VMware-machines wordt de VMware-functie voor het bijhouden van blokken gebruikt om wijzigingen tussen replicatie cycli bij te houden. Aan het begin van de replicatie cyclus wordt een moment opname van de virtuele machine gemaakt en wordt de functie voor het bijhouden van wijzigingen gebruikt om de veranderingen tussen de huidige moment opname en de laatste geslaagde moment opname op te halen. Op die manier moeten alleen gegevens die zijn gewijzigd sinds de laatste voltooide replicatie cyclus worden gerepliceerd om de replicatie voor de virtuele machine synchroon te laten blijven. Aan het einde van elke replicatie cyclus wordt de moment opname vrijgegeven en wordt er momentopname consolidatie uitgevoerd voor de virtuele machine. Op dezelfde manier wordt, in het geval van virtuele Hyper-V-machines, de Hyper-V replica-engine voor het bijhouden van replica's gebruikt om wijzigingen tussen opeenvolgende replicatie cycli bij te houden.
 Wanneer u de migratie bewerking uitvoert op een virtuele machine die wordt gerepliceerd, hebt u de optie om de on-premises virtuele machine af te sluiten en een definitieve incrementele replicatie uit te voeren om ervoor te zorgen dat er geen gegevens verloren gaan. Bij het uitvoeren van de optie voor migreren worden de beheerde replica schijven die overeenkomen met de virtuele machine, gebruikt om de virtuele machine in azure te maken.
 
-Als u aan de slag wilt gaan, raadpleegt u de zelf studies [VMware-agentloze migratie](https://docs.microsoft.com/azure/migrate/tutorial-migrate-vmware) en [Hyper-V zonder agent migratie](https://docs.microsoft.com/azure/migrate/tutorial-migrate-hyper-v) .
+Als u aan de slag wilt gaan, raadpleegt u de zelf studies [VMware-agentloze migratie](./tutorial-migrate-vmware.md) en [Hyper-V zonder agent migratie](./tutorial-migrate-hyper-v.md) .
 
 ## <a name="how-does-agent-based-migration-work"></a>Hoe werkt de migratie op basis van een agent?
 
 Naast de migratie opties zonder agent voor virtuele VMware-machines en Hyper-V-machines, biedt het hulp programma voor server migratie een migratie optie op basis van een agent voor het migreren van Windows-en Linux-servers die worden uitgevoerd op fysieke servers of die worden uitgevoerd als x86/x64-machines op VMware, Hyper-V, AWS, Google Cloud Platform, enzovoort.
 
-De op agents gebaseerde migratie methode maakt gebruik van agent software die is geïnstalleerd op de server die wordt gemigreerd om Server gegevens te repliceren naar Azure. Het replicatie proces maakt gebruik van een offload-architectuur waarbij de agent replicatie gegevens doorstuurt naar een toegewezen replicatie server, het replicatie apparaat of de configuratie server (of een scale-out proces server). Meer [informatie](https://docs.microsoft.com/azure/migrate/agent-based-migration-architecture) over hoe de op agents gebaseerde migratie optie werkt. 
+De op agents gebaseerde migratie methode maakt gebruik van agent software die is geïnstalleerd op de server die wordt gemigreerd om Server gegevens te repliceren naar Azure. Het replicatie proces maakt gebruik van een offload-architectuur waarbij de agent replicatie gegevens doorstuurt naar een toegewezen replicatie server, het replicatie apparaat of de configuratie server (of een scale-out proces server). Meer [informatie](./agent-based-migration-architecture.md) over hoe de op agents gebaseerde migratie optie werkt. 
 
 Opmerking: het replicatie apparaat verschilt van het Azure Migrate detectie apparaat en moet worden geïnstalleerd op een afzonderlijke/toegewezen computer.
 
@@ -127,7 +127,7 @@ Tijd voor het volt ooien van de initiële replicatie = {grootte van de schijven 
 
 ### <a name="agent-based-vmware-vm-migration"></a>Migratie van VMware VM op basis van een agent
 
-Voor een replicatie methode op basis van een agent kan de implementatie Planner u helpen bij het profileren van de omgeving voor het verloop van de gegevens en helpt u de benodigde bandbreedte vereisten te voors pellen. Raadpleeg dit [artikel](https://docs.microsoft.com/azure/migrate/agent-based-migration-architecture#plan-vmware-deployment)voor meer informatie. 
+Voor een replicatie methode op basis van een agent kan de implementatie Planner u helpen bij het profileren van de omgeving voor het verloop van de gegevens en helpt u de benodigde bandbreedte vereisten te voors pellen. Raadpleeg dit [artikel](./agent-based-migration-architecture.md#plan-vmware-deployment)voor meer informatie. 
 
 ## <a name="how-do-i-throttle-replication-in-using-azure-migrate-appliance-for-agentless-vmware-replication"></a>Hoe kan ik beperking van de replicatie in het gebruik van Azure Migrate apparaat voor VMware-replicatie zonder agent?  
 
@@ -153,10 +153,10 @@ Als een virtuele machine bijvoorbeeld vier uur duurt voor een Delta cyclus, word
 
 ## <a name="how-do-i-migrate-windows-server-2003-running-on-vmwarehyper-v-to-azure"></a>Hoe kan ik Windows Server 2003 die op VMware/Hyper-V wordt uitgevoerd, migreren naar Azure?
 
-De [uitgebreide ondersteuning voor Windows Server 2003](https://go.microsoft.com/fwlink/?linkid=2140400) is gestopt op 14 juli 2015.  Het ondersteunings team van Azure blijft hulp bij het oplossen van problemen met het uitvoeren van Windows Server 2003 op Azure. Deze ondersteuning is echter beperkt tot problemen waarvoor geen probleem oplossing of patches op besturingssysteem niveau is vereist.
+De [uitgebreide ondersteuning voor Windows Server 2003](/troubleshoot/azure/virtual-machines/run-win-server-2003#microsoft-windows-server-2003-end-of-support) is gestopt op 14 juli 2015.  Het ondersteunings team van Azure blijft hulp bij het oplossen van problemen met het uitvoeren van Windows Server 2003 op Azure. Deze ondersteuning is echter beperkt tot problemen waarvoor geen probleem oplossing of patches op besturingssysteem niveau is vereist.
 Het migreren van uw toepassingen naar Azure-exemplaren met een nieuwere versie van Windows Server is de aanbevolen methode om ervoor te zorgen dat u de flexibiliteit en betrouw baarheid van de Azure-Cloud effectief kunt benutten.
 
-Als u echter nog steeds uw Windows Server 2003 naar Azure migreert, kunt u de Azure Migrate: hulp programma voor server migratie gebruiken als uw Windows Server een VM is die wordt uitgevoerd op VMware of Hyper-V raadpleegt u dit artikel om [uw Windows Server 2003-computers voor te bereiden op migratie](https://go.microsoft.com/fwlink/?linkid=2140302).
+Als u echter nog steeds uw Windows Server 2003 naar Azure migreert, kunt u de Azure Migrate: hulp programma voor server migratie gebruiken als uw Windows Server een VM is die wordt uitgevoerd op VMware of Hyper-V raadpleegt u dit artikel om [uw Windows Server 2003-computers voor te bereiden op migratie](./prepare-windows-server-2003-migration.md).
 
 ## <a name="what-is-the-difference-between-the-test-migration-and-migrate-operations"></a>Wat is het verschil tussen de migratie-en migratie bewerkingen voor de test?
 

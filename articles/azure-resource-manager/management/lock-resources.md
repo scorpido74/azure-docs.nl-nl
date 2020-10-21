@@ -2,14 +2,14 @@
 title: Resources vergren delen om wijzigingen te voor komen
 description: Voor komen dat gebruikers essentiële Azure-resources bijwerken of verwijderen door een vergren deling toe te passen op alle gebruikers en rollen.
 ms.topic: conceptual
-ms.date: 06/17/2020
+ms.date: 10/20/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e76287c4524831a84a22fb23ddf8a5fdee8bc12b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3830c7e78cf3cc607c7abfca63e6ae74f89b7aff
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87827279"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281744"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Resources vergrendelen om onverwachte wijzigingen te voorkomen
 
@@ -66,11 +66,13 @@ Als u alles wilt verwijderen voor de service, inclusief de resource groep vergre
 
 ![Service verwijderen](./media/lock-resources/delete-service.png)
 
-## <a name="portal"></a>Portal
+## <a name="configure-locks"></a>Vergren delingen configureren
+
+### <a name="portal"></a>Portal
 
 [!INCLUDE [resource-manager-lock-resources](../../../includes/resource-manager-lock-resources.md)]
 
-## <a name="template"></a>Template
+### <a name="arm-template"></a>ARM-sjabloon
 
 Wanneer u een resource manager-sjabloon gebruikt om een vergren deling te implementeren, gebruikt u verschillende waarden voor de naam en het type, afhankelijk van het bereik van de vergren deling.
 
@@ -143,7 +145,7 @@ In het volgende voor beeld ziet u een sjabloon waarmee u een app service-plan, e
 
 Zie [een resource groep maken en deze vergren delen](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments/create-rg-lock-role-assignment)voor een voor beeld van het instellen van een vergren deling voor een resource groep.
 
-## <a name="powershell"></a>PowerShell
+### <a name="azure-powershell"></a>Azure PowerShell
 
 U vergrendelt geïmplementeerde resources met Azure PowerShell met behulp van de opdracht [New-AzResourceLock](/powershell/module/az.resources/new-azresourcelock) .
 
@@ -184,7 +186,7 @@ $lockId = (Get-AzResourceLock -ResourceGroupName exampleresourcegroup -ResourceN
 Remove-AzResourceLock -LockId $lockId
 ```
 
-## <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI
 
 U vergrendelt geïmplementeerde resources met Azure CLI met behulp van de opdracht [AZ Lock Create](/cli/azure/lock#az-lock-create) .
 
@@ -225,7 +227,7 @@ lockid=$(az lock show --name LockSite --resource-group exampleresourcegroup --re
 az lock delete --ids $lockid
 ```
 
-## <a name="rest-api"></a>REST-API
+### <a name="rest-api"></a>REST-API
 
 U kunt geïmplementeerde resources vergren delen met de [rest API voor beheer vergrendelingen](/rest/api/resources/managementlocks). Met de REST API kunt u vergren delingen maken en verwijderen, en informatie over bestaande vergren delingen ophalen.
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: ad5b4245cc445ecf8fae22c39db3365d71730a56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d9f25fc419a92d125dffe5c14b9b4c19cd795c6e
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89400140"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318454"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Door de klant beheerde sleutels instellen om gegevens in rust te versleutelen voor integratie service omgevingen (ISEs) in Azure Logic Apps
 
@@ -39,7 +39,7 @@ In dit onderwerp wordt beschreven hoe u uw eigen versleutelings sleutel instelt 
 
 * Een Azure-sleutel kluis met de opties **voorlopig verwijderen** en **niet opschonen** ingeschakeld
 
-  Zie [Azure Key Vault overzicht van voorlopig verwijderen](../key-vault/general/soft-delete-overview.md) en [door de klant beheerde sleutels configureren met Azure Key Vault](../storage/common/storage-encryption-keys-portal.md)voor meer informatie over het inschakelen van deze eigenschappen. Als u niet bekend bent met Azure Key Vault, kunt [u leren hoe u een sleutel kluis maakt](../key-vault/secrets/quick-create-portal.md#create-a-vault) met behulp van de Azure portal of met behulp van de Azure PowerShell opdracht [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault).
+  Zie [Azure Key Vault overzicht van voorlopig verwijderen](../key-vault/general/soft-delete-overview.md) en [door de klant beheerde sleutels configureren met Azure Key Vault](../storage/common/customer-managed-keys-configure-key-vault.md)voor meer informatie over het inschakelen van deze eigenschappen. Als u niet bekend bent met Azure Key Vault, kunt [u leren hoe u een sleutel kluis maakt](../key-vault/secrets/quick-create-portal.md#create-a-vault) met behulp van de Azure portal of met behulp van de Azure PowerShell opdracht [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault).
 
 * In uw sleutel kluis is dit een sleutel die is gemaakt met de volgende eigenschaps waarden:
 
@@ -52,7 +52,7 @@ In dit onderwerp wordt beschreven hoe u uw eigen versleutelings sleutel instelt 
 
   ![Uw door de klant beheerde versleutelings sleutel maken](./media/customer-managed-keys-integration-service-environment/create-customer-managed-key-for-encryption.png)
 
-  Zie voor meer informatie door de [klant beheerde sleutels configureren met Azure Key Vault](../storage/common/storage-encryption-keys-portal.md) of de Azure PowerShell opdracht, [add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey).
+  Zie voor meer informatie door de [klant beheerde sleutels configureren met Azure Key Vault](../storage/common/customer-managed-keys-configure-key-vault.md) of de Azure PowerShell opdracht, [add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey).
 
 * Een hulp programma dat u kunt gebruiken om uw ISE te maken door de Logic Apps REST API aan te roepen met een HTTPS-aanvraag. U kunt bijvoorbeeld [postman](https://www.getpostman.com/downloads/)gebruiken of u kunt een logische app maken die deze taak uitvoert.
 
@@ -225,7 +225,7 @@ Voor deze taak kunt u de Azure PowerShell [set-AzKeyVaultAccessPolicy](/powershe
 
    1. Wanneer u klaar bent met het deel venster **toegangs beleid** , selecteert u **Opslaan**.
 
-Zie [verifiëren voor Key Vault](/azure/key-vault/general/authentication) en [een Key Vault toegangs beleid toewijzen](/azure/key-vault/general/assign-access-policy-portal)voor meer informatie.
+Zie [verifiëren voor Key Vault](../key-vault/general/authentication.md) en [een Key Vault toegangs beleid toewijzen](../key-vault/general/assign-access-policy-portal.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

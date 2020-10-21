@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: 207b597bc865c8234d447759ab8b0f53dc35413c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f7afe044ab4f782f2028598c2c56e75edf95860
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87090277"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317382"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Veelvoorkomende scenario's, voor beelden, zelf studies en scenario's voor Azure Logic Apps
 
@@ -117,7 +117,7 @@ U kunt Logic apps volledig ontwikkelen en implementeren met Visual Studio, Azure
 * [Integratie accounts voor B2B-ondernemings integraties maken en beheren](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
 * [Integration service Environment (ISE) beheren in Azure Logic Apps](../logic-apps/ise-manage-integration-service-environment.md)
 
-### <a name="monitor"></a>Monitor
+### <a name="monitor"></a>Controleren
 
 * [Uitvoeringsstatus bewaken, triggergeschiedenis controleren, en waarschuwingen instellen voor Azure Logic Apps](../logic-apps/monitor-logic-apps.md)
 * [Azure Monitor logboeken instellen en diagnostische gegevens verzamelen voor Azure Logic Apps](../logic-apps/monitor-logic-apps-log-analytics.md)
@@ -126,7 +126,7 @@ U kunt Logic apps volledig ontwikkelen en implementeren met Visual Studio, Azure
 
 ## <a name="handle-content-types-conversions-and-transformations"></a>Inhouds typen, conversies en trans formaties verwerken
 
-U kunt meerdere inhouds typen openen, converteren en transformeren met behulp van de vele functies in de [werk stroom definitie taal](https://aka.ms/logicappsdocs)van Azure Logic apps. U kunt bijvoorbeeld converteren tussen een teken reeks, JSON en XML met de- `@json()` en- `@xml()` werk stroom expressies. De Logic Apps-Engine behoudt inhouds typen voor de ondersteuning van inhouds overdracht met een verlies vrije manier tussen services.
+U kunt meerdere inhouds typen openen, converteren en transformeren met behulp van de vele functies in de [werk stroom definitie taal](./logic-apps-workflow-definition-language.md)van Azure Logic apps. U kunt bijvoorbeeld converteren tussen een teken reeks, JSON en XML met de- `@json()` en- `@xml()` werk stroom expressies. De Logic Apps-Engine behoudt inhouds typen voor de ondersteuning van inhouds overdracht met een verlies vrije manier tussen services.
 
 * [Inhouds typen verwerken in azure Logic apps](../logic-apps/logic-apps-content-type.md), zoals `application/` , `application/octet-stream` en `multipart/formdata`
 * [Naslag Gids voor het gebruik van functies in expressies voor Azure Logic Apps en energie automatisering](../logic-apps/workflow-definition-language-functions-reference.md)

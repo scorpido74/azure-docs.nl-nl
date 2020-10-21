@@ -9,12 +9,12 @@ ms.date: 08/07/2020
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: abd6d6379fba1efac20255ca97e66e6b2d7e72ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8816d4db6ee054df574263f90522f08f7dcd058
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324405"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282368"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Indexering beheren in de API van Azure Cosmos DB voor MongoDB
 
@@ -324,7 +324,7 @@ Ongeacht de waarde die is opgegeven voor de eigenschap **achtergrond** index, wo
 
 Er is geen invloed op de Lees Beschik baarheid bij het toevoegen van een nieuwe index. Met query's worden alleen nieuwe indexen gebruikt wanneer de index transformatie is voltooid. Tijdens de index transformatie zal de query-engine bestaande indexen blijven gebruiken. u ziet dan vergelijk bare Lees prestaties tijdens de indexerings transformatie om te zien wat u hebt gezien voordat de index wijziging werd geïnitieerd. Bij het toevoegen van nieuwe indexen is er ook geen risico van onvolledige of inconsistente query resultaten.
 
-Bij het verwijderen van indexen en het direct uitvoeren van query's zijn de filters op de verwijderde indexen mogelijk inconsistent en onvolledig, totdat de index transformatie is voltooid. Als u indexen verwijdert, garandeert de query-engine geen consistente of volledige resultaten wanneer query's filteren op deze onlangs verwijderde indexen. De meeste ontwikkel aars verwijderen geen indexen en proberen deze vervolgens onmiddellijk te doorzoeken, zodat deze situatie in de praktijk niet waarschijnlijk is.
+Bij het verwijderen van indexen en het direct uitvoeren van query's zijn de filters op de verwijderde indexen mogelijk inconsistent en onvolledig, totdat de index transformatie is voltooid. Als u indexen verwijdert, biedt de query-engine geen consistente of volledige resultaten wanneer query's filteren op deze onlangs verwijderde indexen. De meeste ontwikkel aars verwijderen geen indexen en proberen deze vervolgens onmiddellijk te doorzoeken, zodat deze situatie in de praktijk niet waarschijnlijk is.
 
 > [!NOTE]
 > U kunt de voortgang van de [index bijhouden](#track-index-progress).

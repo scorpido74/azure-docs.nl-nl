@@ -3,12 +3,12 @@ title: Netwerk beveiliging voor Azure Service Bus
 description: In dit artikel worden de functies voor netwerk beveiliging beschreven, zoals service tags, IP-firewall regels, service-eind punten en privé-eind punten.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: fb21c8beb6d48ecab04917525011cc4762c46ff3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db0dd89d1f902699c27b724609505ba681757454
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91766399"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310462"
 ---
 # <a name="network-security-for-azure-service-bus"></a>Netwerk beveiliging voor Azure Service Bus 
 In dit artikel wordt beschreven hoe u de volgende beveiligings functies gebruikt met Azure Service Bus: 
@@ -22,7 +22,7 @@ In dit artikel wordt beschreven hoe u de volgende beveiligings functies gebruikt
 ## <a name="service-tags"></a>Servicetags
 Een servicetag vertegenwoordigt een groep IP-adres voorvoegsels van een bepaalde Azure-service. Micro soft beheert de adres voorvoegsels die zijn opgenomen in het servicetag en werkt de servicetag automatisch bij met gewijzigde adressen, zodat de complexiteit van regel matige updates voor netwerk beveiligings regels wordt geminimaliseerd. Zie [service Tags Overview](../virtual-network/service-tags-overview.md)(Engelstalig) voor meer informatie over service tags.
 
-U kunt service tags gebruiken voor het definiëren van netwerk toegangs beheer voor [netwerk beveiligings groepen](../virtual-network/security-overview.md#security-rules) of [Azure firewall](../firewall/service-tags.md). Gebruik service tags in plaats van specifieke IP-adressen wanneer u beveiligings regels maakt. Door de naam van de service label (bijvoorbeeld **ServiceBus**) op te geven in het juiste *bron* -of *doel* veld van een regel, kunt u het verkeer voor de bijbehorende service toestaan of weigeren.
+U kunt service tags gebruiken voor het definiëren van netwerk toegangs beheer voor [netwerk beveiligings groepen](../virtual-network/network-security-groups-overview.md#security-rules) of [Azure firewall](../firewall/service-tags.md). Gebruik service tags in plaats van specifieke IP-adressen wanneer u beveiligings regels maakt. Door de naam van de service label (bijvoorbeeld **ServiceBus**) op te geven in het juiste *bron* -of *doel* veld van een regel, kunt u het verkeer voor de bijbehorende service toestaan of weigeren.
 
 | Servicetag | Doel | Kunt u inkomend of uitgaand gebruiken? | Kan regionaal worden? | Kunt gebruiken met Azure Firewall? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
