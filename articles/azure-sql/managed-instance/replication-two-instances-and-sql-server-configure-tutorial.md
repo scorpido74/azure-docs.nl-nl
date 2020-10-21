@@ -1,6 +1,6 @@
 ---
 title: Transactionele replicatie tussen Azure SQL Managed Instance en SQL Server configureren
-description: Een zelfstudie waarin de replicatie wordt geconfigureerd tussen een beheerd exemplaar voor de uitgever, een beheerd exemplaar voor de distributeur en een SQL Server-abonnee op een Azure-VM, samen met de benodigde netwerkonderdelen, zoals een privé-DNS-zone en VPN-peering.
+description: Een zelfstudie waarin de replicatie wordt geconfigureerd tussen een beheerd exemplaar voor de uitgever, een beheerd exemplaar voor de distributeur en een SQL Server-abonnee op een Azure-VM, samen met de benodigde netwerkonderdelen, zoals een privé-DNS-zone en VNet-peering.
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: security
@@ -10,12 +10,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 11/21/2019
-ms.openlocfilehash: 9d6592ccfb3ba5236a660d689d8b5d2cd1600c48
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ff29e93149c618bb7d6df6b4477cc79fcf4b53d2
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91283187"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058553"
 ---
 # <a name="tutorial-configure-transactional-replication-between-azure-sql-managed-instance-and-sql-server"></a>Zelfstudie: Transactionele replicatie tussen Azure SQL Managed Instance en SQL Server configureren
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -38,7 +38,7 @@ Deze zelfstudie is bedoeld voor een ervaren doelgroep en er wordt verondersteld 
 
 
 > [!NOTE]
-> In dit artikel wordt het gebruik van [transactionele replicatie](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) in Azure SQL Managed Instance beschreven. Dit is niet verwant aan [failovergroepen](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group), een functie van Azure SQL Managed Instance waarmee u volledige, leesbare replica's van afzonderlijke instanties kunt maken. Er zijn zaken waarmee u extra rekening moet houden wanneer u [transactionele replicatie met failovergroepen](replication-transactional-overview.md#with-failover-groups) configureert.
+> In dit artikel wordt het gebruik van [transactionele replicatie](/sql/relational-databases/replication/transactional/transactional-replication) in Azure SQL Managed Instance beschreven. Dit is niet verwant aan [failovergroepen](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group), een functie van Azure SQL Managed Instance waarmee u volledige, leesbare replica's van afzonderlijke instanties kunt maken. Er zijn zaken waarmee u extra rekening moet houden wanneer u [transactionele replicatie met failovergroepen](replication-transactional-overview.md#with-failover-groups) configureert.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -48,10 +48,10 @@ Zorg dat u over het volgende beschikt als u de zelfstudie wilt uitvoeren:
 - Ervaring met het implementeren van twee beheerde exemplaren in hetzelfde virtuele netwerk.
 - Een SQL Server-abonnee, on-premises of op een Azure-VM. In deze zelfstudie wordt een Azure-VM gebruikt.  
 - [SQL Server Management Studio (SSMS) 18.0 of hoger](/sql/ssms/download-sql-server-management-studio-ssms).
-- De nieuwste versie van [Azure PowerShell](/powershell/azure/install-az-ps?view=azps-1.7.0).
+- De nieuwste versie van [Azure PowerShell](/powershell/azure/install-az-ps).
 - Poorten 445 en 1433 staan SQL-verkeer toe voor zowel de Azure-firewall als de Windows-firewall.
 
-## <a name="1---create-the-resource-group"></a>1 - De resourcegroep maken
+## <a name="create-the-resource-group"></a>De resourcegroep maken
 
 Gebruik het volgende PowerShell-codefragment om een nieuwe resourcegroep te maken:
 
@@ -64,7 +64,7 @@ $Location = "East US 2"
 New-AzResourceGroup -Name  $ResourceGroupName -Location $Location
 ```
 
-## <a name="2---create-two-managed-instances"></a>2 - Twee beheerde exemplaren maken
+## <a name="create-two-managed-instances"></a>Twee beheerde exemplaren maken
 
 Maak twee beheerde exemplaren in deze nieuwe resourcegroep via [Azure Portal](https://portal.azure.com).
 
@@ -76,9 +76,9 @@ Maak twee beheerde exemplaren in deze nieuwe resourcegroep via [Azure Portal](ht
 Zie [Een beheerd exemplaar maken in de portal](instance-create-quickstart.md) voor meer informatie over het maken van een beheerd exemplaar.
 
   > [!NOTE]
-  > Omdat het eenvoudig en de meest voorkomende configuratie is, wordt in deze zelfstudie geadviseerd om het beheerde exemplaar voor de distributeur in hetzelfde virtuele netwerk als de uitgever te plaatsen. U kunt de distributeur ook in een afzonderlijk virtueel netwerk maken. Hiervoor moet u VPN-peering configureren tussen de virtuele netwerken van de uitgever en de distributeur en vervolgens VPN-peering configureren tussen de virtuele netwerken van de distributeur en de abonnee.
+  > Omdat het eenvoudig en de meest voorkomende configuratie is, wordt in deze zelfstudie geadviseerd om het beheerde exemplaar voor de distributeur in hetzelfde virtuele netwerk als de uitgever te plaatsen. U kunt de distributeur ook in een afzonderlijk virtueel netwerk maken. Hiervoor moet u VNet-peering configureren tussen de virtuele netwerken van de uitgever en de distributeur en vervolgens VNet-peering configureren tussen de virtuele netwerken van de distributeur en de abonnee.
 
-## <a name="3---create-a-sql-server-vm"></a>3 - Een SQL Server-VM maken
+## <a name="create-a-sql-server-vm"></a>Een SQL Server-VM maken
 
 Maak een SQL Server-VM via [Azure Portal](https://portal.azure.com). De SQL Server-VM moet de volgende kenmerken hebben:
 
@@ -89,9 +89,9 @@ Maak een SQL Server-VM via [Azure Portal](https://portal.azure.com). De SQL Serv
 
 Zie voor meer informatie over het implementeren van een SQL Server-VM in Azure [Quickstart: Een SQL Server-VM maken](../virtual-machines/windows/sql-vm-create-portal-quickstart.md).
 
-## <a name="4---configure-vpn-peering"></a>4 - VPN-peering configureren
+## <a name="configure-vnet-peering"></a>VNet-peering configureren
 
-Configureer VPN-peering om communicatie mogelijk te maken tussen het virtuele netwerk van de twee beheerde exemplaren en het virtuele netwerk van SQL Server. Gebruik hiervoor het volgende PowerShell-codefragment:
+Configureer VNet-peering om communicatie mogelijk te maken tussen het virtuele netwerk van de twee beheerde exemplaren en het virtuele netwerk van SQL Server. Gebruik hiervoor het volgende PowerShell-codefragment:
 
 ```powershell-interactive
 # Set variables
@@ -110,13 +110,13 @@ $virtualNetwork1 = Get-AzVirtualNetwork `
   -ResourceGroupName $resourceGroup `
   -Name $subvNet  
 
-# Configure VPN peering from publisher to subscriber
+# Configure VNet peering from publisher to subscriber
 Add-AzVirtualNetworkPeering `
   -Name $pubsubName `
   -VirtualNetwork $virtualNetwork1 `
   -RemoteVirtualNetworkId $virtualNetwork2.Id
 
-# Configure VPN peering from subscriber to publisher
+# Configure VNet peering from subscriber to publisher
 Add-AzVirtualNetworkPeering `
   -Name $subpubName `
   -VirtualNetwork $virtualNetwork2 `
@@ -136,11 +136,11 @@ Get-AzVirtualNetworkPeering `
 
 ```
 
-Wanneer VPN-peering tot stand is gebracht, test u de verbinding door SQL Server Management Studio (SSMS) in SQL Server te starten en verbinding te maken met beide beheerde exemplaren. Zie [SSMS gebruiken om verbinding te maken met SQL Managed Instance](point-to-site-p2s-configure.md#connect-with-ssms) voor meer informatie over het verbinding maken met een beheerd exemplaar met behulp van SSMS.
+Wanneer VNet-peering tot stand is gebracht, test u de verbinding door SQL Server Management Studio (SSMS) in SQL Server te starten en verbinding te maken met beide beheerde exemplaren. Zie [SSMS gebruiken om verbinding te maken met SQL Managed Instance](point-to-site-p2s-configure.md#connect-with-ssms) voor meer informatie over het verbinding maken met een beheerd exemplaar met behulp van SSMS.
 
 ![De verbinding met de beheerde exemplaren testen](./media/replication-two-instances-and-sql-server-configure-tutorial/test-connectivity-to-mi.png)
 
-## <a name="5---create-a-private-dns-zone"></a>5 - Een privé-DNS-zone maken
+## <a name="create-a-private-dns-zone"></a>Een privé-DNS-zone maken
 
 Met een privé-DNS-zone is DNS-routering tussen de beheerde exemplaren en SQL Server mogelijk.
 
@@ -180,7 +180,7 @@ Met een privé-DNS-zone is DNS-routering tussen de beheerde exemplaren en SQL Se
 1. Selecteer **OK** om het virtuele netwerk te koppelen.
 1. Herhaal deze stappen om een koppeling toe te voegen voor het virtuele netwerk van de abonnee, met een naam als `Sub-link`.
 
-## <a name="6---create-an-azure-storage-account"></a>6 - Een Azure-opslagaccount maken
+## <a name="create-an-azure-storage-account"></a>Een Azure-opslagaccount maken
 
 [Maak een Azure-opslagaccount](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) voor de werkmap en maak vervolgens een [bestandsshare](../../storage/files/storage-how-to-create-file-share.md) in het opslagaccount.
 
@@ -194,7 +194,7 @@ Voorbeeld: `DefaultEndpointsProtocol=https;AccountName=replstorage;AccountKey=dY
 
 Zie [Toegangssleutels voor een opslagaccount beheren](../../storage/common/storage-account-keys-manage.md) voor meer informatie.
 
-## <a name="7---create-a-database"></a>7 - Een database maken
+## <a name="create-a-database"></a>Een database maken
 
 Maak een nieuwe database voor het beheerde exemplaar voor de uitgever. Voer hiervoor de volgende stappen uit:
 
@@ -242,7 +242,7 @@ SELECT * FROM ReplTest
 GO
 ```
 
-## <a name="8---configure-distribution"></a>8 - De distributie configureren
+## <a name="configure-distribution"></a>Distributie configureren
 
 Wanneer de verbinding tot stand is gebracht en u over een voorbeelddatabase beschikt, kunt u de distributie voor het beheerde exemplaar `sql-mi-distributor` configureren. Voer hiervoor de volgende stappen uit:
 
@@ -277,7 +277,7 @@ Wanneer de verbinding tot stand is gebracht en u over een voorbeelddatabase besc
    EXEC sys.sp_adddistributor @distributor = 'sql-mi-distributor.b6bf57.database.windows.net', @password = '<distributor_admin_password>'
    ```
 
-## <a name="9---create-the-publication"></a>9 - De publicatie maken
+## <a name="create-the-publication"></a>De publicatie maken
 
 Wanneer de distributie is geconfigureerd, kunt u de publicatie maken. Voer hiervoor de volgende stappen uit:
 
@@ -298,7 +298,7 @@ Wanneer de distributie is geconfigureerd, kunt u de publicatie maken. Voer hierv
 1. Geef op de pagina **De wizard voltooien** de naam `ReplTest` op voor uw publicatie en selecteer **Volgende** om uw publicatie te maken.
 1. Wanneer uw publicatie is gemaakt, vernieuwt u het knooppunt **Replicatie** in **Objectverkenner** en vouwt u **Lokale publicaties** uit om uw nieuwe publicatie te bekijken.
 
-## <a name="10---create-the-subscription"></a>10 - Het abonnement maken
+## <a name="create-the-subscription"></a>Het abonnement maken
 
 Wanneer de publicatie is gemaakt, kunt u het abonnement maken. Voer hiervoor de volgende stappen uit:
 
@@ -331,7 +331,7 @@ exec sp_addpushsubscription_agent
 GO
 ```
 
-## <a name="11---test-replication"></a>11 - Replicatie testen
+## <a name="test-replication"></a>Replicatie testen
 
 Wanneer de replicatie eenmaal is geconfigureerd, kunt u deze testen door nieuwe items in te voegen in de instantie voor de uitgever en te bekijken hoe de wijzigingen worden doorgegeven aan de abonnee.
 
@@ -393,7 +393,7 @@ Mogelijke oplossingen:
 - Controleer of de DNS-naam is gebruikt bij het maken van de abonnee.
 - Controleer of de virtuele netwerken juist zijn gekoppeld in de privé-DNS-zone.
 - Controleer of de A-record juist is geconfigureerd.
-- Controleer of de VPN-peering juist is geconfigureerd.
+- Controleer of de VNet-peering juist is geconfigureerd.
 
 ### <a name="no-publications-to-which-you-can-subscribe"></a>Er zijn geen publicaties waarop u zich kunt abonneren
 

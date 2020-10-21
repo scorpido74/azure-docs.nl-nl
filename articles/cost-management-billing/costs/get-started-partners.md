@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: b1f261d3d777ccf19cea84e77ef83eb45ecc2065
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 0076c70f64ec5cea8b92cb2b9ed27de05406316d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372252"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827582"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Aan de slag met Azure Cost Management voor partners
 
@@ -151,9 +151,11 @@ Als u de kosten voor een abonnement wilt bekijken, opent u **Kostenbeheer en fac
 
 Kostenanalyse, budgetten en waarschuwingen zijn beschikbaar voor het abonnement en de Azure RBAC-scopes van de resourcegroep tegen kosten op basis van Betalen per gebruik.
 
-Bij afgeschreven weergaven en werkelijke kosten voor gereserveerde instanties in de Azure RBAC-bereiken worden nul kosten weergegeven. Kosten voor gereserveerde instanties worden alleen weergegeven in factureringsbereiken waar de aankopen zijn gedaan.
+Bij afgeschreven weergaven en werkelijke kosten voor gereserveerde instanties in de Azure RBAC-bereiken worden nul kosten weergegeven. Aankoopkosten voor rechten, zoals gereserveerde instanties en Marketplace-kosten, worden alleen weergegeven in factureringsbereiken in de tenant van de partner waar de aankopen zijn gedaan.
 
 De verkoopprijzen die worden gebruikt voor het berekenen van de kosten in de weergave zijn dezelfde prijzen die worden weergegeven in de Azure-prijscalculator voor alle klanten. De kosten die worden weergegeven, omvatten geen eventuele kortingen of tegoeden van de partner, zoals door partner verdiende tegoeden (PEC), niveaukortingen en Global Service-kortingen.
+
+ 
 
 ## <a name="analyze-costs-in-cost-analysis"></a>Kosten in kostenanalyse beoordelen
 

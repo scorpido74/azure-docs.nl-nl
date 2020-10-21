@@ -6,12 +6,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/01/2020
-ms.openlocfilehash: b56244fccce623827367d504831ca8db517c108d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2245e13f348706f662055408196ea7a26484811
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86121636"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314649"
 ---
 # <a name="troubleshoot-azure-migrate-projects"></a>Problemen met Azure Migrate-projecten oplossen
 
@@ -52,7 +52,7 @@ Als u een project probeert te maken en er een implementatie fout optreedt:
 - Als u de fout melding ' aanvragen moeten gebruikers identiteits headers bevatten ' ontvangt, kan dit erop wijzen dat u geen toegang hebt tot de Azure Active Directory (Azure AD)-Tenant van de organisatie. In dat geval:
     - Wanneer u voor de eerste keer aan een Azure AD-Tenant toevoegt, ontvangt u een e-mail uitnodiging om lid te worden van de Tenant.
     - Accepteer de uitnodiging om toe te voegen aan de Tenant.
-    - Als u het e-mail bericht niet kunt zien, neemt u contact op met een gebruiker die toegang heeft tot de Tenant en vraagt u [de uitnodiging opnieuw](../active-directory/b2b/add-users-administrator.md#resend-invitations-to-guest-users) naar u te verzenden.
+    - Als u het e-mail bericht niet kunt zien, neemt u contact op met een gebruiker die toegang heeft tot de Tenant en vraagt u [de uitnodiging opnieuw](../active-directory/external-identities/add-users-administrator.md#resend-invitations-to-guest-users) naar u te verzenden.
     - Open de e-mail uitnodiging en selecteer de koppeling om de uitnodiging te accepteren. Meld u vervolgens af bij de Azure Portal en meld u opnieuw aan. (het vernieuwen van de browser werkt niet.) Vervolgens kunt u beginnen met het maken van het migratie project.
 
 ## <a name="how-do-i-delete-a-project"></a>Een project Hoe kan ik verwijderen

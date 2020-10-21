@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 2e831fd561b7c8dcf78e9203ec6d38c60c22a5bf
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e1e966595422f353067d66483defa0b880874415
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88535336"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944280"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kintone"></a>Zelfstudie: Integratie van Azure Active Directory met Kintone
 
@@ -145,7 +145,7 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure AD met Kintone
 
 1. Selecteer **SAML-verificatie inschakelen**.
 
-    ![SAML-verificatie](./media/kintone-tutorial/ic785882.png "SAML Authentication")
+    ![Schermopname waarin 'Users & System Administration' is geselecteerd.](./media/kintone-tutorial/ic785882.png "SAML Authentication")
 
 1. Voer in het gedeelte SAML-verificatie de volgende stappen uit:
 
@@ -232,7 +232,7 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Kintone, moeten ze 
 
 1. Klik op **New User**.
 
-    ![New Users](./media/kintone-tutorial/ic785889.png "New Users")
+    ![Schermopname van de sectie 'Gebruikers' met de actie 'Nieuwe gebruiker' geselecteerd.](./media/kintone-tutorial/ic785889.png "New Users")
 
 1. Voer in het gedeelte **New User** de volgende stappen uit:
 

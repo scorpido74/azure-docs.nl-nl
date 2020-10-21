@@ -3,12 +3,12 @@ title: Een toepassing verifiëren voor toegang tot Azure Event Hubs-resources
 description: Dit artikel bevat informatie over het verifiëren van een toepassing met Azure Active Directory om toegang te krijgen tot Azure Event Hubs-resources
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 1c8503aa8db7350275648d9f5eda69e9e352c859
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50c697e5c430b72f8d5da393e90f1db7ff6d48a1
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91566326"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332481"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-event-hubs-resources"></a>Een toepassing verifiëren met Azure Active Directory om toegang te krijgen tot Event Hubs resources
 Microsoft Azure biedt geïntegreerde toegangs beheer voor bronnen en toepassingen op basis van Azure Active Directory (Azure AD). Een belang rijk voor deel van het gebruik van Azure AD met Azure Event Hubs is dat u uw referenties niet meer hoeft op te slaan in de code. In plaats daarvan kunt u een OAuth 2,0-toegangs token aanvragen bij het micro soft Identity-platform. De resource naam voor het aanvragen van een token is `https://eventhubs.azure.net/` (voor Kafka-clients is de resource voor het aanvragen van een token `https://<namespace>.servicebus.windows.net` ). Azure AD verifieert de beveiligingsprincipal (een gebruiker, groep of Service-Principal) die de toepassing uitvoert. Als de verificatie slaagt, retourneert Azure AD een toegangs token voor de toepassing en kan de toepassing vervolgens het toegangs token gebruiken om een aanvraag voor Azure Event Hubs-resources te autoriseren.
@@ -16,7 +16,7 @@ Microsoft Azure biedt geïntegreerde toegangs beheer voor bronnen en toepassinge
 Wanneer een rol is toegewezen aan een Azure AD-beveiligings-principal, verleent Azure toegang tot de resources voor die beveiligings-principal. De toegang kan worden beperkt tot het niveau van het abonnement, de resource groep, de Event Hubs naam ruimte of een andere resource. Een Azure AD-beveiliging kan rollen toewijzen aan een gebruiker, een groep, een service-principal voor de toepassing of een [beheerde identiteit voor Azure-resources](../active-directory/managed-identities-azure-resources/overview.md). 
 
 > [!NOTE]
-> Een roldefinitie is een verzameling machtigingen. Op rollen gebaseerd toegangs beheer (RBAC) bepaalt hoe deze machtigingen worden afgedwongen via roltoewijzing. Een roltoewijzing bestaat uit drie elementen: beveiligings-principal, roldefinitie en bereik (ook wel scope of niveau genoemd). Zie [informatie over de verschillende rollen](../role-based-access-control/overview.md)voor meer informatie.
+> Een roldefinitie is een verzameling machtigingen. Azure RBAC (op rollen gebaseerd toegangs beheer) bepaalt hoe deze machtigingen worden afgedwongen via roltoewijzing. Een roltoewijzing bestaat uit drie elementen: beveiligings-principal, roldefinitie en bereik (ook wel scope of niveau genoemd). Zie [informatie over de verschillende rollen](../role-based-access-control/overview.md)voor meer informatie.
 
 ## <a name="built-in-roles-for-azure-event-hubs"></a>Ingebouwde rollen voor Azure Event Hubs
 Azure biedt de volgende ingebouwde rollen van Azure voor het machtigen van toegang tot Event Hubs gegevens met behulp van Azure AD en OAuth:
@@ -25,13 +25,13 @@ Azure biedt de volgende ingebouwde rollen van Azure voor het machtigen van toega
 - [Gegevens verzender van Azure Event hubs](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender): gebruik deze rol om toegang te geven tot Event hubs-resources.
 - [Gegevens ontvanger van Azure Event hubs](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver): gebruik deze rol om toegang te krijgen tot Event hubs resources.   
 
-Zie [schema register rollen](schema-registry-overview.md#role-based-access-control)voor ingebouwde rollen in het schema register.
+Zie [schema register rollen](schema-registry-overview.md#azure-role-based-access-control)voor ingebouwde rollen in het schema register.
 
 > [!IMPORTANT]
 > De preview-versie ondersteunt het toevoegen van Event Hubs rechten voor gegevens toegang aan de rol eigenaar of bijdrager. De bevoegdheden voor gegevens toegang voor de rol eigenaar en Inzender worden echter niet meer nageleefd. Als u de rol eigenaar of Inzender gebruikt, schakelt u over naar het gebruik van de functie Azure Event Hubs-gegevens eigenaar.
 
 ## <a name="assign-azure-roles-using-the-azure-portal"></a>Azure-rollen toewijzen met behulp van de Azure Portal  
-Raadpleeg [dit artikel](..//role-based-access-control/role-assignments-portal.md)voor meer informatie over het beheren van de toegang tot Azure-resources met RBAC en de Azure Portal. 
+Raadpleeg [dit artikel](..//role-based-access-control/role-assignments-portal.md)voor meer informatie over het beheren van de toegang tot Azure-resources met behulp van Azure RBAC en de Azure Portal. 
 
 Nadat u het juiste bereik voor een roltoewijzing hebt bepaald, navigeert u naar die resource in de Azure Portal. Geef de instellingen voor toegangs beheer (IAM) voor de resource weer en volg deze instructies voor het beheren van roltoewijzingen:
 
@@ -109,12 +109,12 @@ Voor een lijst met scenario's waarvoor het verkrijgen van tokens wordt ondersteu
     Dit voor beeld is bijgewerkt om de meest recente **Azure. Messa ging. Event hubs** -bibliotheek te gebruiken.
 
 ## <a name="next-steps"></a>Volgende stappen
-- Zie [Wat is Azure Role-based Access Control (Azure RBAC)](../role-based-access-control/overview.md)? voor meer informatie over RBAC.
+- Zie [Wat is Azure-op rollen gebaseerd toegangs beheer (Azure RBAC)](../role-based-access-control/overview.md)? voor meer informatie over Azure RBAC.
 - Zie de volgende artikelen voor meer informatie over het toewijzen en beheren van Azure-roltoewijzingen met Azure PowerShell, Azure CLI of de REST API:
-    - [Op rollen gebaseerd toegangs beheer (RBAC) beheren met Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)  
-    - [Op rollen gebaseerd toegangs beheer (RBAC) beheren met Azure CLI](../role-based-access-control/role-assignments-cli.md)
-    - [Op rollen gebaseerd toegangs beheer (RBAC) beheren met de REST API](../role-based-access-control/role-assignments-rest.md)
-    - [Op rollen gebaseerd toegangs beheer (RBAC) beheren met Azure Resource Manager sjablonen](../role-based-access-control/role-assignments-template.md)
+    - [Azure-roltoewijzingen toevoegen of verwijderen met behulp van Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)  
+    - [Azure-roltoewijzingen toevoegen of verwijderen met behulp van Azure CLI](../role-based-access-control/role-assignments-cli.md)
+    - [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de REST API](../role-based-access-control/role-assignments-rest.md)
+    - [Azure-roltoewijzingen toevoegen met behulp van Azure Resource Manager sjablonen](../role-based-access-control/role-assignments-template.md)
 
 Raadpleeg de volgende verwante artikelen:
 - [Een beheerde identiteit verifiëren met Azure Active Directory om toegang te krijgen tot Event Hubs bronnen](authenticate-managed-identity.md)

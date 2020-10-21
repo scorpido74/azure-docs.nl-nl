@@ -11,12 +11,12 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: ce2eaac6189e3b9c0550948eddfddd018deac90b
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 52efdb91328b5d9349eb3724c4a146348e4a975a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051794"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978574"
 ---
 # <a name="copy-snapshot-of-a-managed-disk-to-same-or-different-subscription-with-cli"></a>Met CLI een momentopname van een beheerde schijf kopiëren naar hetzelfde of een ander abonnement
 
@@ -25,6 +25,9 @@ Met dit script wordt een momentopname van een beheerde schijf gekopieerd naar he
 1. Migreer een momentopname in Premium-opslag (Premium_LRS) naar de Standard-opslag (Standard_LRS of Standard_ZRS) om uw kosten te verlagen.
 1. Migreer een momentopname van lokaal redundante opslag (Premium_LRS, Standard_LRS) naar zone-redundante opslag (Standard_ZRS) om te profiteren van de hogere betrouwbaarheid van ZRS-opslag.
 1. Verplaats een momentopname naar een ander abonnement in dezelfde regio voor langere gegevensretentie.
+
+> [!NOTE]
+> Beide abonnementen moeten zich in dezelfde tenant bevinden
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 

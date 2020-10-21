@@ -9,12 +9,12 @@ ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.custom: references_regions
-ms.openlocfilehash: e06c3720e180c1dc4fa2f227fd86d15cbbb0ff33
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: a9c33fad6d376c2f568f4eefbb0379486b5c40f3
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91756872"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044765"
 ---
 # <a name="quickstart-get-a-phone-number-using-the-azure-portal"></a>Quickstart: Een telefoonnummer aanvragen met behulp van de Azure-portal
 
@@ -103,7 +103,7 @@ Selecteer de blade Telefoonnummers in het menu om uw telefoonnummers te beheren.
 > [!NOTE]
 > Het kan enkele minuten duren voordat de ingerichte nummers op deze pagina worden weergegeven.
 
-### <a name="customizing-phone-number-plans"></a>Abonnementen van telefoonnummers aanpassen
+### <a name="customizing-phone-number-features"></a>Telefoonnummerfuncties aanpassen
 Op de pagina `Numbers` kunt u het telefoonnummer selecteren door te klikken op het nummer waarvoor u het abonnement wilt aanpassen.
 
 :::image type="content" source="../media/manage-phone-azure-portal-capability-update.png" alt-text="Schermopname van de hoofdpagina van een Communicatie Services-resource.":::

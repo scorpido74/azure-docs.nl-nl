@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: tisande
-ms.openlocfilehash: f9e1ff633f70e544a3cde579f1550d3fd708f269
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b525f3299420f81670c0aea9872ac5fdef00be97
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90089510"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277803"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Indexeringsbeleid in Azure Cosmos DB
 
@@ -89,7 +89,7 @@ Bij het opnemen en uitsluiten van paden kunnen de volgende kenmerken optreden:
 
 Als deze eigenschap niet is opgegeven, hebben deze eigenschappen de volgende standaard waarden:
 
-| **Eigenschaps naam**     | **Standaardwaarde** |
+| **Eigenschaps naam**     | **Standaard waarde** |
 | ----------------------- | -------------------------------- |
 | `kind`   | `range` |
 | `precision`   | `-1`  |
@@ -271,7 +271,7 @@ Er zijn geen gevolgen voor het schrijven van de beschik baarheid tijdens index t
 
 Er is geen invloed op de Lees Beschik baarheid bij het toevoegen van een nieuwe index. Met query's worden alleen nieuwe indexen gebruikt wanneer de index transformatie is voltooid. Tijdens de index transformatie zal de query-engine bestaande indexen blijven gebruiken. u ziet dan vergelijk bare Lees prestaties tijdens de indexerings transformatie om te zien wat u hebt gezien voordat de index wijziging werd geïnitieerd. Bij het toevoegen van nieuwe indexen is er ook geen risico van onvolledige of inconsistente query resultaten.
 
-Bij het verwijderen van indexen en het direct uitvoeren van query's die filteren op de verwijderde indexen, is er geen garantie voor consistente of volledige query resultaten. Als u meerdere indexen verwijdert en dit doet in één wijziging van het indexerings beleid, garandeert de query-engine consistente en volledige resultaten tijdens de index transformatie. Als u indexen verwijdert via meerdere wijzigingen in het indexerings beleid, garandeert de query-engine echter geen consistente of volledige resultaten totdat alle index transformaties zijn voltooid. De meeste ontwikkel aars kunnen geen indexen verwijderen en vervolgens onmiddellijk proberen om query's uit te voeren die gebruikmaken van deze indexen, zodat deze situatie in de praktijk niet waarschijnlijk is.
+Bij het verwijderen van indexen en het direct uitvoeren van query's die filteren op de verwijderde indexen, is er geen garantie voor consistente of volledige query resultaten. Als u meerdere indexen verwijdert en dit doet in één wijziging van het indexerings beleid, biedt de query-engine consistente en volledige resultaten tijdens de index transformatie. Als u indexen verwijdert via meerdere wijzigingen in het indexerings beleid, biedt de query-engine echter geen consistente of volledige resultaten tot alle index transformaties zijn voltooid. De meeste ontwikkel aars kunnen geen indexen verwijderen en vervolgens onmiddellijk proberen om query's uit te voeren die gebruikmaken van deze indexen, zodat deze situatie in de praktijk niet waarschijnlijk is.
 
 > [!NOTE]
 > Waar mogelijk moet u altijd proberen meerdere index wijzigingen in één wijziging in een indexerings beleid te groeperen

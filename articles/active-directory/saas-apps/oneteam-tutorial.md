@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: e6a9560cfe0daf158dad03a3171047669a19eade
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 13dd930842cb724d12711ac9e7704fd9af4e29d8
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547954"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944386"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-oneteam"></a>Zelfstudie: Azure Active Directory-integratie met Oneteam
 
@@ -101,7 +101,7 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Microsoft Azure Acti
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
 
-    ![Domein- en URL-gegevens voor eenmalige aanmelding bij Oneteam](common/idp-intiated.png)
+    ![Schermopname van de sectie 'Standaard S A M L-configuratie' met de tekstvakken 'Id' en 'Antwoord-U R L' gemarkeerd en de knop 'Opslaan' geselecteerd.](common/idp-intiated.png)
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://api.one-team.io/teams/<team name>`
 

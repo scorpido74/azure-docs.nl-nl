@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 0a04b893af41f15d0757b781716909535f43239e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8caf136c43f40458634316da4b4002386f1419da
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544006"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91997047"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-onit"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met Onit
 
@@ -132,7 +132,7 @@ In deze sectie stelt u B.Simon in staat gebruik te maken van eenmalige aanmeldin
 
 2. Klik in het menu bovenaan op **Administration** (Beheer).
    
-    ![Beheer](./media/onit-tutorial/IC791174.png "Beheer")
+    ![Schermopname met het menu bovenaan de pagina 'MS SSO Test' met de actie 'Administration' geselecteerd.](./media/onit-tutorial/IC791174.png "Beheer")
 
 3. Klik op **Edit Corporation** (Bedrijf bewerken).
    

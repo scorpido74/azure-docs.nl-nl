@@ -13,16 +13,16 @@ ms.author: pafarley
 zone_pivot_groups: programming-languages-set-ten
 ms.custom: devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 keywords: formulierverwerking, geautomatiseerde gegevensverwerking
-ms.openlocfilehash: eb3fc3ebe5c3d9f659758a14ba620018671d95f5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b024b3fac76e51264e89100e63a3cdc477443157
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318891"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963036"
 ---
 # <a name="quickstart-use-the-form-recognizer-client-library"></a>Quickstart: De clientbibliotheek van Form Recognizer gebruiken
 
-Ga aan de slag met de clientbibliotheek voor formulierherkenning in de taal van uw keuze. Azure Form Recognizer is een cognitieve service waarmee u software voor geautomatiseerde gegevensverwerking kunt bouwen met behulp van machine learning-technologie. U kunt de service gebruiken om tekst, sleutel-waardeparen en tabelgegevens identificeren en uit uw formulierdocumenten extraheren&mdash;. Dit levert gestructureerde gegevens op die de relaties in het oorspronkelijke bestand bevatten. Volg deze stappen om het SDK-pakket te installeren en de voorbeeldcode voor basistaken te proberen.
+Ga aan de slag met de clientbibliotheek voor formulierherkenning in de taal van uw keuze. Azure Form Recognizer is een cognitieve service waarmee u software voor geautomatiseerde gegevensverwerking kunt bouwen met behulp van machine learning-technologie. U kunt de service gebruiken om tekst, sleutel-waardeparen en tabelgegevens identificeren en uit uw formulierdocumenten extraheren&mdash;. Dit levert gestructureerde gegevens op die de relaties in het oorspronkelijke bestand bevatten. Volg deze stappen om het SDK-pakket te installeren en de voorbeeldcode voor basistaken te proberen. De Form Recognizer-clientbibliotheek is momenteel op versie 2.0 van de Form Recognizer-service gericht.
 
 De clientbibliotheek van Form Recognizer gebruiken voor het volgende:
 

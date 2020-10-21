@@ -6,12 +6,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 57a9186033b8df71d1972289fe33b0fe654690f6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a8d6481bdf3476f8f91c437138f4b6f1ebd1f1de
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91316423"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058196"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-c"></a>Zelfstudie: een web-app-bot met Language Understanding in C# gebruiken
 
@@ -27,7 +27,7 @@ Bouw met behulp van C# een chatbot met ingebouwd taalbegrip (LUIS). De bot is ge
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [Botemulator](https://aka.ms/abs/build/emulatordownload)
+* [Bot Framework-emulator](https://aka.ms/abs/build/emulatordownload)
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)
 
 ## <a name="create-a-web-app-bot-resource"></a>Een web-app-botresource maken
@@ -314,18 +314,18 @@ Start de bot in Visual Studio 2019. Er wordt een browservenster geopend met de w
 
 ![Er wordt een startpagina met informatie over uw bot weergegeven.](./media/bfv4-csharp/running-bot-web-home-page-success.png)
 
-## <a name="use-the-bot-emulator-to-test-the-bot"></a>De bot testen met de botemulator
+## <a name="use-the-bot-framework-emulator-to-test-the-bot"></a>De Bot Framework-emulator gebruiken om de bot te testen
 
-1. Start de botemulator en selecteer **Bot openen**.
+1. Start de Bot Framework-emulator en selecteer **Bot openen**.
 1. Voer in het pop-updialoogvenster **Een bot openen** uw bot-URL in, zoals `http://localhost:3978/api/messages`. De route `/api/messages` is het webadres voor de bot.
 1. Voer de **Microsoft-app-id** en het **Microsoft-app-wachtwoord** in. U vindt deze in het bestand **appsettings.json** in de hoofdmap van de botcode die u hebt gedownload. Selecteer vervolgens **Verbinding maken**.
 
-1. Voer in de botemulator `Book a flight from Seattle to Berlin tomorrow` in en ontvang hetzelfde antwoord voor de basisbot wat u hebt ontvangen bij **Testen in webgesprek** in een eerdere sectie.
+1. Voer in de Bot Framework-emulator `Book a flight from Seattle to Berlin tomorrow` in en ontvang hetzelfde antwoord voor de basisbot dat u hebt ontvangen bij **Testen in webgesprek** in een eerdere sectie.
 
     [![Schermopname toont de Bot Framework Emulator met een basic-bot-antwoord.](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png)](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png#lightbox)
 
 1. Selecteer **Ja**. De bot reageert met een overzicht van de bijbehorende acties.
-1. Selecteer in het logboek van de botemulator de regel die `<- trace LuisV3 Trace` bevat. Hiermee wordt het JSON-antwoord van LUIS voor de intentie en entiteiten van de uiting weergegeven.
+1. Selecteer in het logboek van de Bot Framework-emulator de regel die `<- trace LuisV3 Trace` bevat. Hiermee wordt het JSON-antwoord van LUIS voor de intentie en entiteiten van de uiting weergegeven.
 
     [![Schermopname toont een basic-bot-antwoord met de LuisV3-tracering geselecteerd en het JSON-antwoord gemarkeerd.](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png)](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png#lightbox)
 

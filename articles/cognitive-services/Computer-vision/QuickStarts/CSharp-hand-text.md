@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Tekst extraheren met de leesbewerking uit de Computer Vision 3.0-REST API en C#'
+title: 'Quickstart: Tekst extraheren met de leesbewerking uit de Computer Vision 3.1-REST API en C#'
 titleSuffix: Azure Cognitive Services
-description: In deze snelstart past u OCR toe op een afbeelding met behulp van de leesbewerkingen in de Computer Vision 3.0-REST API en C#.
+description: In deze snelstart past u OCR toe op een afbeelding met behulp van de leesbewerkingen in de Computer Vision 3.1-REST API en C#.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: quickstart
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 2f7678e2dd9f04f7aa930271c69c2d4ccf1e692b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 603a002b4d9088295f7050afc47e643290818e0b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88928238"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969480"
 ---
-# <a name="quickstart-extract-text-using-the-computer-vision-30-rest-api-read-operation-and-c"></a>Quickstart: Tekst extraheren met de leesbewerking uit de Computer Vision 3.0-REST API en C#
+# <a name="quickstart-extract-text-using-the-computer-vision-31-rest-api-read-operation-and-c"></a>Quickstart: Tekst extraheren met de leesbewerking uit de Computer Vision 3.1-REST API en C#
 
-In deze snelstart extraheert u gedrukte en handgeschreven tekst uit een afbeelding met behulp van de nieuwe technologie die beschikbaar is in de Computer Vision 3.0-REST API. Met de nieuwe methoden [Read](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) en [Get Read Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) kunt u tekst in een afbeelding detecteren en de herkende tekens naar een machinaal leesbare tekenstroom extraheren. 
+In deze snelstart extraheert u gedrukte en handgeschreven tekst uit een afbeelding met behulp van de nieuwe technologie die beschikbaar is in de Computer Vision 3.1-REST API. Met de nieuwe methoden [Read](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) en [Get Read Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d9869604be85dee480c8750) kunt u tekst in een afbeelding detecteren en de herkende tekens naar een machinaal leesbare tekenstroom extraheren. 
 
 > [!IMPORTANT]
-> De methode [Read](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) wordt asynchroon uitgevoerd. Deze methode retourneert geen gegevens in de hoofdtekst van een geslaagd antwoord. In plaats daarvan retourneert de methode Batch Read een URI in de waarde van het antwoordheader-veld `Operation-Location`. Deze URI vertegenwoordigt de [Get Read Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750)-API en u kunt deze URI aanroepen om de status te controleren en de resultaten van de aanroep van de Read-methode te retourneren.
+> De methode [Read](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) wordt asynchroon uitgevoerd. Deze methode retourneert geen gegevens in de hoofdtekst van een geslaagd antwoord. In plaats daarvan retourneert de methode Batch Read een URI in de waarde van het antwoordheader-veld `Operation-Location`. Deze URI vertegenwoordigt de [Get Read Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d9869604be85dee480c8750)-API en u kunt deze URI aanroepen om de status te controleren en de resultaten van de aanroep van de Read-methode te retourneren.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -68,7 +68,7 @@ namespace CSHttpClientSample
         static string endpoint = Environment.GetEnvironmentVariable("COMPUTER_VISION_ENDPOINT");
 
         // the Batch Read method endpoint
-        static string uriBase = endpoint + "/vision/v3.0/read/analyze";
+        static string uriBase = endpoint + "/vision/v3.1/read/analyze";
 
         // Add a local image with text here (png or jpg is OK)
         static string imageFilePath = @"my-image.png";
@@ -213,7 +213,7 @@ Een geslaagd antwoord wordt geretourneerd in JSON-indeling. De voorbeeldtoepassi
   "createdDateTime": "2020-05-28T05:13:21Z",
   "lastUpdatedDateTime": "2020-05-28T05:13:22Z",
   "analyzeResult": {
-    "version": "3.0.0",
+    "version": "3.1.0",
     "readResults": [
       {
         "page": 1,

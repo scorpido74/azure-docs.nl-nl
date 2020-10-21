@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 0fe7e0d43050120daa017669a96e90f96b873530
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 39f2f592601f60f060cce8ded2b5303dc6b10e8a
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543785"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995816"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-origami"></a>Zelfstudie: Azure Active Directory-integratie met Origami
 
@@ -126,11 +126,11 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD te configurere
 
 2. Klik in het menu bovenaan op **Admin**.
    
-    ![Eenmalige aanmelding configureren](./media/origami-tutorial/tutorial_origami_51.png)
+    ![Schermopname van de beginpagina van Origami, met 'Admin' (Beheerder) geselecteerd.](./media/origami-tutorial/tutorial_origami_51.png)
 
 3. Voer op de pagina met het dialoogvenster met instellingen voor eenmalige aanmelding de volgende stappen uit:
    
-    ![Eenmalige aanmelding configureren](./media/origami-tutorial/tutorial_origami_531.png)
+    ![Schermopname van de pagina 'Single Sign On Setup' (Eenmalige aanmelding instellen) met 'Enable Single Sign-on' (Eenmalige aanmelding inschakelen) geselecteerd en de tekstvakken gemarkeerd.](./media/origami-tutorial/tutorial_origami_531.png)
 
     a. Selecteer **Eenmalige aanmelding inschakelen**.
 
@@ -201,19 +201,19 @@ In deze sectie gaat u een gebruiker in Origami maken met de naam Britta Simon.
 
 2. Klik in het menu bovenaan op **Admin**.
    
-    ![Eenmalige aanmelding configureren](./media/origami-tutorial/tutorial_origami_51.png)
+    ![Schermopname van de beginpagina van het Origami-account, met 'Admin' (Beheerder) geselecteerd.](./media/origami-tutorial/tutorial_origami_51.png)
 
 3. Klik in het dialoogvenster **Gebruikers en beveiliging** op **Gebruikers**.
    
-    ![Eenmalige aanmelding configureren](./media/origami-tutorial/tutorial_origami_54.png)
+    ![Schermopname van het dialoogvenster 'Users and Security' (Gebruikers en beveiliging) met 'Users' (Gebruikers) geselecteerd.](./media/origami-tutorial/tutorial_origami_54.png)
 
 4. Klik op **Add New User**.
    
-    ![Eenmalige aanmelding configureren](./media/origami-tutorial/tutorial_origami_55.png)
+    ![Schermopname met de knop 'Add new User' (Nieuwe gebruiker toevoegen) geselecteerd.](./media/origami-tutorial/tutorial_origami_55.png)
 
 5. Voer de volgende stappen uit in het dialoogvenster Nieuwe gebruiker toevoegen:
    
-    ![Eenmalige aanmelding configureren](./media/origami-tutorial/tutorial_origami_56.png)
+    ![Schermopname van het dialoogvenster 'Add New User' (Nieuwe gebruiker toevoegen) met de tekstvakken 'User Name', 'First Name' en 'Last Name' (Gebruikersnaam, voornaam en achternaam) gemarkeerd.](./media/origami-tutorial/tutorial_origami_56.png)
 
     a. Voer in het tekstvak **Gebruikersnaam** het e-mailadres van de gebruiker in, bijvoorbeeld **brittasimon\@contoso.com**.
 
@@ -227,7 +227,7 @@ In deze sectie gaat u een gebruiker in Origami maken met de naam Britta Simon.
 
     f. Klik op **Opslaan**.
    
-    ![Eenmalige aanmelding configureren](./media/origami-tutorial/tutorial_origami_57.png)
+    ![Schermopname met de knop 'Opslaan' geselecteerd.](./media/origami-tutorial/tutorial_origami_57.png)
 
 6. Wijs **Gebruikersrollen** en **Clienttoegang** toe aan de gebruiker. 
    

@@ -3,25 +3,25 @@ title: Gebruikers machtigingen verlenen aan een specifiek Lab-beleid | Microsoft
 description: Meer informatie over het verlenen van gebruikers machtigingen voor specifieke Lab-beleids regels in DevTest Labs op basis van de behoeften van elke gebruiker
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 8e910a5d4499d104e4b09076ec7862ae96272ef4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 976862476d25e4e9a4933d8a5319eec9d77ca39b
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87835677"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328467"
 ---
 # <a name="grant-user-permissions-to-specific-lab-policies"></a>Gebruikers machtigingen verlenen aan specifieke Lab-beleids regels
 ## <a name="overview"></a>Overzicht
 In dit artikel wordt beschreven hoe u Power shell gebruikt om gebruikers machtigingen te verlenen aan een bepaald Lab-beleid. Op die manier kunnen machtigingen worden toegepast op basis van de behoeften van elke gebruiker. Stel dat u een bepaalde gebruiker de mogelijkheid wilt geven om de instellingen van het VM-beleid te wijzigen, maar niet de kosten beleidsregels.
 
 ## <a name="policies-as-resources"></a>Beleid als bronnen
-Zoals beschreven in het artikel over [toegangs beheer op basis van rollen (Azure RBAC) van Azure](../role-based-access-control/role-assignments-portal.md) , biedt RBAC nauw keurig toegangs beheer van resources voor Azure. Met RBAC kunt u taken in uw DevOps-team scheiden en alleen de hoeveelheid toegang verlenen aan gebruikers die ze nodig hebben om hun taken uit te voeren.
+Zoals beschreven in het artikel over [toegangs beheer op basis van rollen (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) van Azure, maakt Azure RBAC een nauw keurig toegangs beheer van resources voor Azure mogelijk. Met behulp van Azure RBAC kunt u taken in uw DevOps-team scheiden en alleen de hoeveelheid toegang verlenen aan gebruikers die ze nodig hebben om hun taken uit te voeren.
 
-In DevTest Labs is een beleid een resource type waarmee de RBAC-actie **micro soft. DevTestLab/Labs/policySets/policies**/kan worden ingeschakeld. Elk lab-beleid is een bron in het beleids bron type en kan worden toegewezen als een bereik aan een Azure-rol.
+In DevTest Labs is een beleid een resource type waarmee de bewerking van Azure RBAC wordt ingeschakeld: **micro soft. DevTestLab/Labs/policySets/policies**/. Elk lab-beleid is een bron in het beleids bron type en kan worden toegewezen als een bereik aan een Azure-rol.
 
 Als u bijvoorbeeld gebruikers lees-en schrijf machtigingen wilt verlenen voor het beleid **toegestane VM-grootten** , maakt u een aangepaste rol die werkt met het beleid voor **micro soft. DevTestLab/Labs/policySets/policies.** vervolgens wijst u de juiste gebruikers toe aan deze aangepaste rol in het bereik van **micro soft. DevTestLab/Labs/PolicySets/policies/AllowedVmSizesInLab**.
 
-Zie voor meer informatie over aangepaste rollen in RBAC het [toegangs beheer voor aangepaste rollen](../role-based-access-control/custom-roles.md).
+Zie voor meer informatie over aangepaste rollen in azure RBAC de [aangepaste functies van Azure](../role-based-access-control/custom-roles.md).
 
 ## <a name="creating-a-lab-custom-role-using-powershell"></a>Een aangepaste rol voor een lab maken met Power shell
 Als u aan de slag wilt gaan, moet u [Azure PowerShell installeren](/powershell/azure/install-az-ps). 

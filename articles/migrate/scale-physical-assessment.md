@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/19/2020
 ms.author: hamusa
-ms.openlocfilehash: b84a7b88f700e2ba8e9fbe29099dfcbce8dbf3b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 227e27d25ad5d0c61ed4f36c234222a079315619
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85081070"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317139"
 ---
 # <a name="assess-large-numbers-of-physical-servers-for-migration-to-azure"></a>Een groot aantal fysieke servers beoordelen voor migratie naar Azure
 
@@ -30,7 +30,7 @@ In dit artikel leert u het volgende:
 
 
 > [!NOTE]
-> Als u een haalbaarheids test wilt uitproberen om een aantal servers te beoordelen voordat u op schaal controleert, volgt u de [reeks zelf](tutorial-prepare-physical.md)studies.
+> Als u een haalbaarheids test wilt uitproberen om een aantal servers te beoordelen voordat u op schaal controleert, volgt u de [reeks zelf](./tutorial-discover-physical.md)studies.
 
 ## <a name="plan-for-assessment"></a>Beoordeling plannen
 
@@ -64,7 +64,7 @@ Azure en fysieke servers voorbereiden voor Server evaluatie.
 2. Stel machtigingen in voor uw Azure-account om te communiceren met Azure Migrate.
 3. De fysieke servers voorbereiden.
 
-Volg de instructies in [deze zelf studie](tutorial-prepare-physical.md) om deze instellingen te configureren.
+Volg de instructies in [deze zelf studie](./tutorial-discover-physical.md) om deze instellingen te configureren.
 
 ## <a name="create-a-project"></a>Een project maken
 

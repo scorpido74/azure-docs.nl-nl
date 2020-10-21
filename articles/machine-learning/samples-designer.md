@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: sample
 author: likebupt
 ms.author: keli19
-ms.date: 09/09/2020
+ms.date: 10/14/2020
 ms.custom: designer
-ms.openlocfilehash: 15393a0e618c14fbaff46a51a300284d8afb4b77
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ecdb011310d8aa5bd63e9b9e9679bb525cb4f7b3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90889749"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074597"
 ---
 # <a name="example-pipelines--datasets-for-azure-machine-learning-designer"></a>Voorbeeldpijplijnen en -gegevenssets voor de Azure Machine Learning-ontwerpfunctie
 
@@ -67,8 +67,8 @@ Verken deze ingebouwde regressievoorbeelden.
 
 | Voorbeeldtitel | Beschrijving | 
 | --- | --- |
-| [Regressie - Autoprijzen voorspellen (basis)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-basic.md) | Voorspel autoprijzen met behulp van lineaire regressie. |
-| [Regressie - Autoprijzen voorspellen (geavanceerd)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-compare-algorithms.md) | Voorspel autoprijzen met behulp van regressors voor beslissingsforests en versterkte beslissingsstructuren. Vergelijk modellen om het beste algoritme te vinden.
+| [Regressie - Autoprijzen voorspellen (basis)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/regression-automobile-price-prediction-basic.md) | Voorspel autoprijzen met behulp van lineaire regressie. |
+| [Regressie - Autoprijzen voorspellen (geavanceerd)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/regression-automobile-price-prediction-compare-algorithms.md) | Voorspel autoprijzen met behulp van regressors voor beslissingsforests en versterkte beslissingsstructuren. Vergelijk modellen om het beste algoritme te vinden.
 
 ## <a name="classification"></a>Classificatie
 
@@ -76,19 +76,17 @@ Verken deze ingebouwde classificatievoorbeelden. U kunt zonder documentatiekoppe
 
 | Voorbeeldtitel | Beschrijving | 
 | --- | --- |
-| [Binaire classificatie met functieselectie - Inkomen voorspellen](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-predict-income.md) | Voorspel inkomen als hoog of laag met behulp van een versterkte beslissingsstructuur met twee klassen. Gebruik Pearson-correlatie om functies te selecteren.
-| [Binaire classificatie met aangepast Python-script - Kredietrisico voorspellen](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-credit-risk-cost-sensitive.md) | Classificeer kredietaanvragen als hoog of laag risico. Gebruik de module Python-script uitvoeren om uw gegevens een gewicht te geven.
-| [Binaire classificatie - Klantrelaties voorspellen](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-churn.md) | Voorspel klantverloop met behulp van versterkte beslissingsstructuren met twee klassen. Gebruik SMOTE bevooroordeelde gegevens te samplen.
-| [Tekstclassificatie - Gegevensset Wikipedia SP 500](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-text-classification.md) | Classificeer bedrijfstypen uit Wikipedia-artikelen met behulp van logistieke regressie met meerdere klassen. |
+| [Binaire classificatie met functieselectie - Inkomen voorspellen](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/binary-classification-feature-selection-income-prediction.md) | Voorspel inkomen als hoog of laag met behulp van een versterkte beslissingsstructuur met twee klassen. Gebruik Pearson-correlatie om functies te selecteren.
+| [Binaire classificatie met aangepast Python-script - Kredietrisico voorspellen](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/binary-classification-python-credit-prediction.md) | Classificeer kredietaanvragen als hoog of laag risico. Gebruik de module Python-script uitvoeren om uw gegevens een gewicht te geven.
+| [Binaire classificatie - Klantrelaties voorspellen](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/binary-classification-customer-relationship-prediction.md) | Voorspel klantverloop met behulp van versterkte beslissingsstructuren met twee klassen. Gebruik SMOTE bevooroordeelde gegevens te samplen.
+| [Tekstclassificatie - Gegevensset Wikipedia SP 500](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/text-classification-wiki.md) | Classificeer bedrijfstypen uit Wikipedia-artikelen met behulp van logistieke regressie met meerdere klassen. |
 | Classificatie met meerdere klassen - Brieven herkennen | Maak een set binaire classificaties om geschreven brieven te classificeren. |
 
 ## <a name="computer-vision"></a>Computer Vision
 
 Verken deze ingebouwde computervisievoorbeelden. U kunt zonder documentatiekoppelingen meer informatie over de voorbeelden krijgen door de voorbeelden te openen en de moduleopmerkingen te bekijken.
 
-| Voorbeeldtitel | Beschrijving | 
-| --- | --- |
-| Wide & Deep-aanbeveling - Voorspelling van restaurantbeoordeling | Bouw een aanbevelingsengine voor restaurants van restaurant/gebruikersfuncties en beoordelingen.|
+| Afbeeldingsclassificatie met DenseNet |Gebruik computervisie-modules voor het maken van een model voor afbeeldingsclassificatie op basis van PyTorch DenseNet.| 
 
 ## <a name="recommender"></a>Aanbevelingsfunctie
 
@@ -96,7 +94,8 @@ Verken deze ingebouwde aanbevelingsvoorbeelden. U kunt zonder documentatiekoppel
 
 | Voorbeeldtitel | Beschrijving | 
 | --- | --- |
-| Afbeeldingsclassificatie met behulp van DenseNet | Gebruik computervisie-modules voor het maken van een model voor afbeeldingsclassificatie op basis van PyTorch DenseNet.| 
+| Wide & Deep-aanbeveling - Voorspelling van restaurantbeoordeling | Bouw een aanbevelingsengine voor restaurants van restaurant/gebruikersfuncties en beoordelingen.|
+| Aanbeveling - Tweets met filmbeoordelingen | Maak een filmaanbevelings-engine van filmtitels, gebruikersfuncties en beoordelingen.|
 
 ## <a name="utility"></a>Hulpprogramma
 
@@ -105,7 +104,7 @@ Meer informatie over de voorbeelden die machine learning-hulpprogramma’s en -f
 | Voorbeeldtitel | Beschrijving | 
 | --- | --- |
 | Binaire classificatie met behulp van Vowpal Wabbit Model - Volwassen inkomen voorspellen | Vowpal Wabbit is een machine learning-systeem dat de grens van machine learning pusht met technieken zoals online, hashing, allreduce, reducties, learning2search, actief en interactief leren. In dit voorbeeld ziet u hoe u het Vowpal Wabbit-model gebruikt om een binair classificatiemodel te maken. 
-| [Aangepast R-script gebruiken - Vertraagde vluchten voorspellen](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-flight-delay.md) | Gebruik aangepast R-script om te voorspellen of een geplande vlucht meer dan 15 minuten vertraging gaat hebben.
+| [Aangepast R-script gebruiken - Vertraagde vluchten voorspellen](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/r-script-flight-delay-prediction.md) | Gebruik aangepast R-script om te voorspellen of een geplande vlucht meer dan 15 minuten vertraging gaat hebben.
 | Kruisvalidatie voor binaire classificatie - Volwassen inkomen voorspellen | Gebruik kruisvalidatie om een binaire classificatie voor volwassen inkomen te ontwerpen.
 | Belang van permutatiefunctie | Gebruik belang van permutatiefunctie om belangscores voor de testgegevensset te berekenen. 
 | Parameters afstemmen voor binaire classificatie - Volwassen inkomen voorspellen | Gebruik Model Hyperparameters afstemmen voor het vinden van optimale hyperparameters om een binaire classificatie te ontwerpen. |
@@ -119,7 +118,7 @@ De voorbeeldgegevenssets zijn beschikbaar onder de categorie **Gegevenssets**-**
 | Naam van&nbsp;gegevensset&nbsp;&nbsp;&nbsp;&nbsp;| Beschrijving van gegevensset |
 |-------------|:--------------------|
 | Gegevensset Binaire classificatie voor volwassen Census-inkomen | Een subset van de 1994 Census-database, gebruikmakend van werkende volwassenen boven de 16 jaar met een aangepaste inkomstenindex van > 100.<br/>**Gebruik**: Classificeer mensen met behulp van demografie om te voorspellen of een persoon meer dan 50.000 per jaar verdient.<br/> **Gerelateerd onderzoek**: Kohavi, R., Becker, B., (1996). [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml). Irvine, CA: University of California, School of Information and Computer Science|
-|Autoprijsgegevens (onbewerkt)|Informatie over auto’s per merk en model, waaronder de prijs, kenmerken zoals het aantal cilinders en MPG, evenals een verzekeringsrisicoscore.<br/> De risicoscore is aanvankelijk gekoppeld aan de autoprijs. Vervolgens wordt het aangepast voor daadwerkelijk risico in een proces dat verzekeringswiskundigen symbolisering noemen. Een waarde van +3 geeft aan dat de auto risicovol is, en een waarde van -3 dat deze waarschijnlijk veilig is.<br/>**Gebruik**:</b> Voorspel de risicoscore per kenmerk met behulp van regressie of multidimensionale classificatie.<br/>**Gerelateerd onderzoek**:</b> Schlimmer, J.C. (1987). [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml). Irvine, CA: University of California, School of Information and Computer Science. |
+|Autoprijsgegevens (onbewerkt)|Informatie over auto’s per merk en model, waaronder de prijs, kenmerken zoals het aantal cilinders en MPG, evenals een verzekeringsrisicoscore.<br/> De risicoscore is aanvankelijk gekoppeld aan de autoprijs. Vervolgens wordt het aangepast voor daadwerkelijk risico in een proces dat verzekeringswiskundigen symbolisering noemen. Een waarde van +3 geeft aan dat de auto risicovol is, en een waarde van -3 dat deze waarschijnlijk veilig is.<br/>**Gebruik**: Voorspel de risicoscore per kenmerk met behulp van regressie of multidimensionale classificatie.<br/>**Gerelateerd onderzoek**: Schlimmer, J.C. (1987). [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml). Irvine, CA: University of California, School of Information and Computer Science. |
 | Gedeelde labels CRM-verlangen |Labels uit de KDD Cup 2009-uitdaging Klantrelaties voorspellen ([orange_small_train_appetency.labels](http://www.sigkdd.org/site/2009/files/orange_small_train_appetency.labels)).|
 |Gedeelde labels CRM-verloop|Labels uit de KDD Cup 2009-uitdaging Klantrelaties voorspellen ([orange_small_train_churn.labels](http://www.sigkdd.org/site/2009/files/orange_small_train_churn.labels)).|
 |Gedeelde CRM-gegevensset | Deze gegevens komen uit de KDD Cup 2009-uitdaging Klantrelaties voorspellen ([orange_small_train.data.zip](http://www.sigkdd.org/site/2009/files/orange_small_train.data.zip)). <br/>De gegevensset bevat 50.000 klanten van het Franse telecombedrijf Orange. Elke klant heeft 230 geanonimiseerde kenmerken, waarvan 190 numeriek en 40 categorisch zijn. De kenmerken zijn zeer verspreid. |
@@ -130,7 +129,9 @@ De voorbeeldgegevenssets zijn beschikbaar onder de categorie **Gegevenssets**-**
 |Filmbeoordelingen|Deze gegevensset is een uitgebreide versie van de gegevensset MovieTweetings. De gegevensset bevat 170.000 beoordelingen van films, geëxtraheerd uit goed gestructureerde tweets op Twitter. Elk exemplaar vertegenwoordigt een tweet en is een tuple: gebruikers-ID, IMDB-film-ID, beoordeling, tijdstempel, aantal vind-ik-leuks van deze tweet en aantal retweets van deze tweet. De gegevensset werd beschikbaar gesteld door A. Said, S. Dooms, B. Loni en D. Tikk voor Recommender Systems Challenge 2014.|
 |Gegevensset Weer|Weerobservaties op het land per uur van NOAA ([samengevoegde gegevens van 201304 tot 201310](https://az754797.vo.msecnd.net/data/WeatherDataset.csv)).<br/>De weersgegevens komen van observaties uit weerstations op luchthavens en dekken de tijdsperiode april t/m oktober 2013. Voordat de gegevensset naar de ontwerpfunctie werd geüpload, werd deze als volgt verwerkt:    <br/> -    Weerstation-ID’s werden toegewezen aan bijbehorende luchthaven-ID’s    <br/> -    Weerstations die niet waren gekoppeld aan de 70 drukste luchthavens, werden uitgefilterd    <br/> -    De kolom Date werd gesplitst in aparte kolommen Year, Month en Day    <br/> - De volgende kolommen werden geselecteerd: AirportID, Year, Month, Day, Time, TimeZone, SkyCondition, Visibility, WeatherType, DryBulbFarenheit, DryBulbCelsius, WetBulbFarenheit, WetBulbCelsius, DewPointFarenheit, DewPointCelsius, RelativeHumidity, WindSpeed, WindDirection, ValueForWindCharacter, StationPressure, PressureTendency, PressureChange, SeaLevelPressure, RecordType, HourlyPrecip, Altimeter|
 |Gegevensset Wikipedia SP 500|Gegevens worden afgeleid van Wikipedia (https://www.wikipedia.org/) op basis van artikelen van elk S&P 500-bedrijf, opgeslagen als XML-gegevens.    <br/>Voordat de gegevensset naar de ontwerpfunctie werd geüpload, werd deze als volgt verwerkt:    <br/> - Voor elk specifieke bedrijf werd tekstinhoud geëxtraheerd    <br/> -    Wiki-opmaak werd verwijderd    <br/> -    Niet-alfanumerieke tekens werden verwijderd    <br/> -    Alle tekst werd omgezet in kleine letters    <br/> -    Bekende bedrijfscategorieën werden toegevoegd    <br/>Voor sommige bedrijven kon er geen artikel worden gevonden, waardoor het aantal records minder dan 500 is.|
-
+|Gegevens over restaurantkenmerken| Een set metagegevens over restaurants en hun kenmerken, zoals type gerechten, beoogd publiek en locatie. <br/>**Gebruik**: Gebruik deze gegevensset, in combinatie met de andere twee gegevenssets van het restaurant, om een aanbevolen systeem te trainen en te testen.<br/> **Gerelateerd onderzoek**: Bache, K. and Lichman, M. (2013). [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml). Irvine, CA: University of California, School of Information and Computer Science.|
+|Restaurantbeoordelingen| Bevat beoordelingen van gebruikers over restaurants op een schaal van 0 tot 2.<br/>**Gebruik**: Gebruik deze gegevensset, in combinatie met de andere twee gegevenssets van het restaurant, om een aanbevolen systeem te trainen en te testen. <br/>**Gerelateerd onderzoek**: Bache, K. and Lichman, M. (2013). [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml). Irvine, CA: University of California, School of Information and Computer Science.|
+|Gegevens van bezoekers van restaurants| Een set metagegevens over klanten, inclusief demografische informatie en voorkeuren. <br/>**Gebruik**: Gebruik deze gegevensset, in combinatie met de andere twee gegevenssets van het restaurant, om een aanbevolen systeem te trainen en te testen. <br/> **Gerelateerd onderzoek**: Bache, K. and Lichman, M. (2013). [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml) Irvine, CA: University of California, School of Information and Computer Science.|
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

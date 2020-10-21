@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-js
-ms.openlocfilehash: 71bfff1b2ef75a13a3898d2fd9760dd60b83e3a5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a6f1a5b532ba3d8d5ce24d6f9856d86719d35c6f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318310"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91839534"
 ---
 # <a name="tutorial-end-to-end-content-protection-using-azure-ad"></a>Zelfstudie: End-to-end beveiliging van inhoud met behulp van Azure Active Directory
 
@@ -129,11 +129,11 @@ Het scherm voor aanmelden, tokens ophalen, tokens verlengen en tokens weergeven:
 
 Het scherm voor JWT-tokens parseren (access_token or id_token):
 
-![scherm voor JWT tokens parseren](media/aad-ams-content-protection/parsing-jwt-tokens.png)
+![Schermopname dat het parseren van JWT-tokens laat zien.](media/aad-ams-content-protection/parsing-jwt-tokens.png)
 
 Het scherm voor het testen van beveiligde inhoud met verschillende combinaties van DRM/AES, streamingprotocollen en containerindelingen:
 
-![scherm voor JWT tokens parseren](media/aad-ams-content-protection/testing-protected-content.png)
+![Schermopname dat het testen laat zien van beveiligde inhoud met verschillende combinaties van DRM/AES, streamingprotocollen en containerindelingen](media/aad-ams-content-protection/testing-protected-content.png)
 -->
 
 <!-- You can see a hosted version of the sample at [https://aka.ms/ott](https://aka.ms/ott)-->

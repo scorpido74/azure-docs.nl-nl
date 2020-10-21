@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 530ef271091afc3e646d375ea471d8c48f0f8651
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0d72e6c6a606a199bd8b0ada601479267e0d728d
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544193"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945148"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hackerone"></a>Zelfstudie: Azure Active Directory-integratie met HackerOne
 
@@ -126,11 +126,11 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure Active Directo
 
 2. Klik in het menu bovenaan op de **Instellingen**.
 
-    ![Eenmalige aanmelding configureren](./media/hackerone-tutorial/tutorial_hackerone_001.png)
+    ![Schermopname met Instellingen geselecteerd.](./media/hackerone-tutorial/tutorial_hackerone_001.png)
 
 3. Navigeer naar **Verificatie** en klik op **SAML-instellingen toevoegen**.
 
-    ![Eenmalige aanmelding configureren](./media/hackerone-tutorial/tutorial_hackerone_003.png)
+    ![Schermopname van de pagina Verificatie-instellingen met de knop SAML-instellingen toevoegen geselecteerd.](./media/hackerone-tutorial/tutorial_hackerone_003.png)
 
 4. Voer in het dialoogvenster **SAML-instellingen** de volgende stappen uit:
 
@@ -146,7 +146,7 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure Active Directo
 
 5. Voer in het dialoogvenster Verificatie-instellingen de volgende stappen uit:
 
-    ![Eenmalige aanmelding configureren](./media/hackerone-tutorial/tutorial_hackerone_005.png)
+    ![Schermopname van het dialoogvenster 'Verificatie-instellingen met de knop Test uitvoeren geselecteerd.](./media/hackerone-tutorial/tutorial_hackerone_005.png)
 
     a. Klik op **Test uitvoeren**.
 

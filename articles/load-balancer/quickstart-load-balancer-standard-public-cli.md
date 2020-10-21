@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/23/2020
 ms.author: allensu
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 0b6973f50e4d51c1c94e262a08681ec0431f511e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d78b67cbd811ae0f3b7cea8aec119d05464c124a
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91333976"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047791"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-cli"></a>Quickstart: Een openbare load balancer maken om taken van VM's te verdelen met behulp van Azure CLI
 
@@ -1080,6 +1080,6 @@ In deze quickstart hebt u
 * De load balancer-verkeersregel en de statustest geconfigureerd.
 * De load balancer getest.
 
-Zie [Wat is Azure Load Balancer?](load-balancer-overview.md) en de [veelgestelde vragen over Load Balancer](load-balancer-faqs.md) voor meer informatie over Azure Load Balancer.
-
-Meer informatie over [Load Balancer en beschikbaarheidszones](load-balancer-standard-availability-zones.md).
+Als u meer informatie wilt over Azure Load Balancer, gaat u naar
+> [!div class="nextstepaction"]
+> [Wat is Azure Load Balancer?](load-balancer-overview.md)

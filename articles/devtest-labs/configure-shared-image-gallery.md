@@ -3,12 +3,12 @@ title: Een galerie met gedeelde installatie kopieën configureren in Azure DevTe
 description: Meer informatie over het configureren van een galerie met gedeelde installatie kopieën in Azure DevTest Labs waarmee gebruikers tijdens het maken van Lab-bronnen toegang krijgen tot installatie kopieën van een gedeelde locatie.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 7ec08fa741c1b52d3dd1d1e2b4247d3689190020
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96563b1dcfac171af38b229bb81d12b3afda2e2f
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88271036"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327974"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>Een gedeelde galerie met installatiekopieën configureren in Azure DevTest Labs
 DevTest Labs ondersteunt nu de functie [gedeelde installatie kopie galerie](../virtual-machines/windows/shared-image-galleries.md) . Hiermee kunnen Lab-gebruikers toegang krijgen tot installatie kopieën vanaf een gedeelde locatie tijdens het maken van Lab-resources. Het helpt u ook om structuur en organisatie te bouwen rond uw door aangepaste beheerde VM-installatie kopieën. De functie Gedeelde afbeeldingen galerie ondersteunt:
@@ -16,7 +16,7 @@ DevTest Labs ondersteunt nu de functie [gedeelde installatie kopie galerie](../v
 - Beheerde algemene replicatie van installatie kopieën
 - Versie beheer en groepering van installatie kopieën voor eenvoudiger beheer
 - Maak uw installatie kopieën Maxi maal beschikbaar met ZRS-accounts (zone redundant Storage) in regio's die beschikbaarheids zones ondersteunen. ZRS biedt betere flexibiliteit tegen zonegebonden fouten.
-- Delen via op rollen gebaseerd toegangs beheer (RBAC) en zelfs tussen tenants.
+- Meerdere abonnementen delen, en zelfs tussen tenants, met behulp van Azure op rollen gebaseerd toegangs beheer (Azure RBAC).
 
 Zie de documentatie van de [Galerie met gedeelde afbeeldingen](../virtual-machines/windows/shared-image-galleries.md)voor meer informatie. 
  
@@ -32,7 +32,7 @@ Als u een groot aantal beheerde installatie kopieën hebt dat u wilt behouden en
 - Hoewel in DevTest Labs automatisch een beste poging wordt gedaan om ervoor te zorgen dat de galerie met gedeelde afbeeldingen installatie kopieën repliceert naar de regio waarin het lab zich bevindt, is het niet altijd mogelijk. Om te voor komen dat gebruikers problemen hebben met het maken van Vm's van deze installatie kopieën, moet u ervoor zorgen dat de installatie kopieën al worden gerepliceerd naar de regio van het lab.
 
 ## <a name="use-azure-portal"></a>Azure Portal gebruiken
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer **alle services** in het navigatie menu links.
 1. Selecteer **DevTest Labs** uit de lijst.
 1. Selecteer in de lijst met Labs uw **Lab**.

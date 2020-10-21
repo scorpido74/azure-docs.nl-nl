@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/09/2019
 ms.author: jeedes
-ms.openlocfilehash: a5d10d776de483919a64ccc46ca4cbb2b633f250
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6b8ea30e9d6c9b4557643d461d39b6375e987784
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552569"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856854"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-meta4-global-hr"></a>Zelfstudie: Azure Active Directory-integratie met Meta4 Global HR
 
@@ -103,13 +103,13 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD met Meta4 Glob
 
 4. In het gedeelte **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
 
-    ![Domein- en URL-gegevens voor eenmalige aanmelding bij Meta4 Global HR](common/both-replyurl.png)
+    ![Schermopname van de Basic SAML-configuratie, waar u de antwoord-URL kunt invoeren en 'Opslaan' kunt selecteren.](common/both-replyurl.png)
 
     In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon: `https://<SUBDOMAIN>.meta4globalhr.com/saml.sso/SAML2/POST`
 
 5. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    ![Domein- en URL-gegevens voor eenmalige aanmelding bij Meta4 Global HR](common/both-signonurl.png)
+    ![Schermopname die Extra URL's instellen toont, waar u een aanmeldings-URL kunt invoeren.](common/both-signonurl.png)
 
     In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<SUBDOMAIN>.meta4globalhr.com`
 

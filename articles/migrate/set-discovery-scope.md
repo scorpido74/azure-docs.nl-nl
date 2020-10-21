@@ -3,12 +3,12 @@ title: Het bereik voor VMware-VM-detectie instellen met Azure Migrate
 description: Hierin wordt beschreven hoe u het detectie bereik voor VMware VM-evaluatie en-migratie instelt met Azure Migrate.
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: dfc9c12edd93fc720ef716fd43b04e0c193d5803
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c61f544e3222dba83123aa1be5e53a19e671035
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88919723"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314027"
 ---
 # <a name="set-discovery-scope-for-vmware-vms"></a>Detectie bereik instellen voor VMware-Vm's
 
@@ -21,7 +21,7 @@ Wanneer u het apparaat instelt, wordt er verbinding gemaakt met vCenter Server e
 
 ## <a name="before-you-start"></a>Voordat u begint
 
-Als u geen vCenter-gebruikers account hebt ingesteld dat Azure Migrate gebruikt voor detectie, doet u dat nu voor [evaluatie](tutorial-prepare-vmware.md#set-up-permissions-for-assessment) of [agentloze migratie](tutorial-prepare-vmware.md#assign-permissions-to-an-account).
+Als u geen vCenter-gebruikers account hebt ingesteld dat Azure Migrate gebruikt voor detectie, doet u dat nu voor [evaluatie](./tutorial-discover-vmware.md#prepare-vmware) of [agentloze migratie](./migrate-support-matrix-vmware-migration.md#agentless-migration).
 
 
 ## <a name="assign-permissions-and-roles"></a>Machtigingen en rollen toewijzen

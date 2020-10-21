@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 77c83e82577cb1d6d07c90a0260a5fa006fd8625
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8cf4df682a5c141e39a3860547a5b6130e2a3002
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554821"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856912"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-m-files"></a>Zelfstudie: Azure Active Directory-integratie met M-Files
 
@@ -133,11 +133,11 @@ Voer de volgende stappen uit als u eenmalige aanmelding met Azure Active Directo
 
 1. Open het venster **Bureaubladinstellingen van M-Files**. Klik vervolgens op **Toevoegen**.
    
-    ![Eenmalige aanmelding configureren](./media/m-files-tutorial/tutorial_m_files_10.png)
+    ![Schermopname van Bureaubladinstellingen van M-Files waar u Toevoegen kunt selecteren.](./media/m-files-tutorial/tutorial_m_files_10.png)
 
 1. In het venster **Verbindingseigenschappen documentkluis ** voert u de volgende stappen uit:
    
-    ![Eenmalige aanmelding configureren](./media/m-files-tutorial/tutorial_m_files_11.png)  
+    ![Schermopname van Verbindingseigenschappen documentkluis waar u de beschreven waarden kunt invoeren.](./media/m-files-tutorial/tutorial_m_files_11.png)  
 
     Typ in de sectie Server de volgende waarden:  
 

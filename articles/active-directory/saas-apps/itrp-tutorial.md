@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: d7a7c4f7d9a9ba2ef574519a41aae3dd6e28e4fb
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a49edf738586dce190fa90f7349f2c9b01e2050d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552791"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850367"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>Zelfstudie: Azure Active Directory-integratie met ITRP
 
@@ -94,7 +94,7 @@ Voer deze stappen uit om eenmalige aanmelding van Azure AD met ITRP te configure
 
 3. Selecteer op de pagina **Eenmalige aanmelding instellen met SAML** het pictogram voor **Bewerken** om het dialoogvenster **Standaard SAML-configuratie** te openen:
 
-    ![Pictogram bewerken](common/edit-urls.png)
+    ![Schermopname van de pagina Eenmalige aanmelding instellen met SAML met het pictogram Bewerken geselecteerd.](common/edit-urls.png)
 
 4. Voer in het dialoogvenster **Standaard SAML-configuratie** de volgende stappen uit.
 
@@ -113,7 +113,7 @@ Voer deze stappen uit om eenmalige aanmelding van Azure AD met ITRP te configure
 
 5. Selecteer in de sectie **SAML-handtekeningcertificaat** het pictogram **Bewerken** om het dialoogvenster **SAML-handtekeningcertificaat** te openen:
 
-    ![Pictogram bewerken](common/edit-certificate.png)
+    ![Schermopname van de pagina SAML-handtekeningcertificaat waarvoor het pictogram Bewerken is geselecteerd.](common/edit-certificate.png)
 
 6. Kopieer in het dialoogvenster **SAML-handtekeningcertificaat** de waarde van **Vingerafdruk** en sla deze op:
 
@@ -143,9 +143,9 @@ Voer deze stappen uit om eenmalige aanmelding van Azure AD met ITRP te configure
 
 1. Voer in de configuratiesectie **Eenmalige aanmelding** de volgende stappen uit.
 
-    ![Sectie ‘Eenmalige aanmelding’](./media/itrp-tutorial/ic775572.png "Sectie ‘Eenmalige aanmelding’")
+    ![Schermopname van de sectie Eenmalige aanmelding met Ingeschakeld geselecteerd.](./media/itrp-tutorial/ic775572.png "Sectie ‘Eenmalige aanmelding’")
 
-    ![Sectie ‘Eenmalige aanmelding’](./media/itrp-tutorial/ic775573.png "Sectie ‘Eenmalige aanmelding’")
+    ![Schermopname van de sectie Eenmalige aanmelding, waarin u de informatie kunt toevoegen die in deze stap is beschreven.](./media/itrp-tutorial/ic775573.png "Sectie ‘Eenmalige aanmelding’")
 
     1. Selecteer **Ingeschakeld**.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 1/4/2019
 ms.author: jeedes
-ms.openlocfilehash: 0ff2464705a770e257010347f0f04e9b695bb6e4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b462dff45263ba3f5e533cd6bd7c4ce089933f66
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88540049"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91855392"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lifesize-cloud"></a>Zelfstudie: Azure Active Directory-integratie met Lifesize Cloud
 
@@ -137,15 +137,15 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD te configurere
 
 2. Klik op uw naam in de rechterbovenhoek en klik vervolgens op **Advanced Settings**.
 
-    ![Eenmalige aanmelding configureren](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_06.png)
+    ![Schermopname met de menuopdracht Geavanceerde instellingen.](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_06.png)
 
 3. Klik op de koppeling **SSO Configuration**. De pagina voor configuratie van eenmalige aanmelding voor uw exemplaar wordt geopend.
 
-    ![Eenmalige aanmelding configureren](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_07.png)
+    ![Schermopname van Geavanceerde instellingen, waar u SSO-configuratie kunt selecteren.](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_07.png)
 
 4. Configureer de volgende waarden in de gebruikersinterface voor configuratie van eenmalige aanmelding.
 
-    ![Eenmalige aanmelding configureren](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_08.png)
+    ![Schermopname van de pagina SSO-configuratie waarin u de beschreven waarden kunt invoeren.](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_08.png)
 
     a. Plak in het tekstvak **Identity Provider Issuer** de waarde van **Azure AD-id** die u hebt gekopieerd in de Azure-portal.
 

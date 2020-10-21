@@ -8,18 +8,18 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 06/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6a993779bc47f1a9b2be8851fafe628ae4286f4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89615f53f62329ca37ae4a4dde301a9fae6b1202
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400499"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279733"
 ---
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>Gepartitioneerde graaf gebruiken in Azure Cosmos DB
 
 Een van de belangrijkste functies van de Gremlin-API in Azure Cosmos DB is de mogelijkheid om grootschalige grafieken te verwerken door middel van Horizon taal schalen. De containers kunnen onafhankelijk van de voor waarden van opslag en door voer worden geschaald. U kunt containers maken in Azure Cosmos DB die automatisch kunnen worden geschaald om grafiek gegevens op te slaan. De gegevens worden automatisch gebalanceerd op basis van de opgegeven **partitie sleutel**.
 
-**Partitioneren is vereist** als de container wordt verwacht meer dan 20 GB op te slaan of als u meer dan 10.000 aanvraag eenheden per seconde (RUs) wilt toewijzen. Dezelfde algemene principes van het [Azure Cosmos DB partitioneren-mechanisme](partition-data.md) zijn van toepassing met een aantal grafische specifieke optimalisaties die hieronder worden beschreven.
+**Partitioneren is vereist** als de container wordt verwacht meer dan 20 GB op te slaan of als u meer dan 10.000 aanvraag eenheden per seconde (RUs) wilt toewijzen. Dezelfde algemene principes van het [Azure Cosmos DB partitioneren-mechanisme](partitioning-overview.md) zijn van toepassing met een aantal grafische specifieke optimalisaties die hieronder worden beschreven.
 
 :::image type="content" source="./media/graph-partitioning/graph-partitioning.png" alt-text="Graph-partitionering." border="false":::
 
@@ -78,7 +78,7 @@ Gebruik de volgende richt lijnen om te zorgen voor prestaties en schaal baarheid
 
 - **Gebruik de uitgaande richting bij het uitvoeren van een query op randen wanneer dat mogelijk is**. Zoals hierboven vermeld, worden randen opgeslagen met hun bron hoekpunten in de uitgaande richting. De kans om query's op meerdere partities te maken, wordt dus geminimaliseerd wanneer de gegevens en query's zijn ontworpen met dit patroon. De query is in tegens telling tot `in()` altijd een dure ventilator-out-query.
 
-- **Kies een partitie sleutel waarmee gegevens gelijkmatig over de partities kunnen worden verdeeld**. Deze beslissing is sterk afhankelijk van het gegevens model van de oplossing. Lees meer over het maken van een juiste partitie sleutel in [partitioneren en schalen in azure Cosmos DB](partition-data.md).
+- **Kies een partitie sleutel waarmee gegevens gelijkmatig over de partities kunnen worden verdeeld**. Deze beslissing is sterk afhankelijk van het gegevens model van de oplossing. Lees meer over het maken van een juiste partitie sleutel in [partitioneren en schalen in azure Cosmos DB](partitioning-overview.md).
 
 - **Optimaliseer query's voor het verkrijgen van gegevens binnen de grenzen van een partitie**. Een optimale partitie strategie wordt uitgelijnd op de query patronen. Query's die gegevens ophalen uit één partitie, bieden de best mogelijke prestaties.
 
@@ -86,6 +86,6 @@ Gebruik de volgende richt lijnen om te zorgen voor prestaties en schaal baarheid
 
 U kunt nu door gaan met het lezen van de volgende artikelen:
 
-* Meer informatie over [partitioneren en schalen in azure Cosmos DB](partition-data.md).
+* Meer informatie over [partitioneren en schalen in azure Cosmos DB](partitioning-overview.md).
 * Meer informatie over de [Gremlin-ondersteuning in de Gremlin-API](gremlin-support.md).
 * Meer informatie over [Introduction to GREMLIN API](graph-introduction.md).

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 4c3eb3706858bd2bfd2160e58698c0f5136c41f3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3e8ed59783a6a714434b17a1d1abbb22fbe30939
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547904"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944022"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-onedesk"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met OneDesk
 
@@ -141,7 +141,7 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Klik op het tabblad **Integrations**.
 
-    ![Tabblad Instellingen](./media/onedesk-tutorial/img-integration.png)
+    ![Schermopname met het tabblad Integrations geselecteerd.](./media/onedesk-tutorial/img-integration.png)
 
 1. Klik op **Single Sign On**, selecteer **Upload Metadata File** en klik op **Choose File** om het bestand te uploaden dat u hebt gedownload uit de Azure-portal.
 

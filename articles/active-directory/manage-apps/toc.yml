@@ -220,6 +220,8 @@
           href: troubleshoot-password-based-sso.md
         - name: Problemen met eenmalige aanmelding op basis van SAML oplossen
           href: troubleshoot-saml-based-sso.md
+        - name: Fouten opsporen in eenmalige aanmelding op basis van SAML
+          href: debug-saml-sso-issues.md
         - name: Problemen met aanmelden van gebruikers oplossen
           items:
             - name: Onverwacht instemmingsprompt

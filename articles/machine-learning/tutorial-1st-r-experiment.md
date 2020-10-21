@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: faf2257f944127748569466d314ff0a76faae4f0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: bf89e99842efa726e6ca05a08998c9d058dc02e3
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906736"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019372"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>Zelfstudie: Een machine learning-model maken met R (preview)
 
@@ -68,11 +68,11 @@ Gebruik RStudio in een Azure ML-rekenproces om deze zelfstudie uit te voeren.
 
 ## <a name="clone-the-sample-vignettes"></a><a name="azure"></a>De voorbeeldvignetten klonen 
 
-Kloon de https://github.com/azure/azureml-sdk-for-r GitHub-opslagplaats voor een kopie van de vignetbestanden die u in deze zelfstudie zult uitvoeren.
+Kloon de https://github.com/Azure/azureml-sdk-for-r GitHub-opslagplaats voor een kopie van de vignetbestanden die u in deze zelfstudie zult uitvoeren.
 
 1. Navigeer in RStudio naar het tabblad Terminal en ga naar de map waar u de opslagplaats wilt klonen.
 
-1. Voer in de terminal ‘git clone https://github.com/Azure/azureml-sdk-for-r ‘ uit om de opslagplaats te klonen.
+1. Voer in de terminal `git clone https://github.com/Azure/azureml-sdk-for-r` uit om de opslagplaats te klonen.
 
 1. Navigeer in RStudio naar de map *vignettes* van de gekloonde map *azureml-sdk-for-r*.  Selecteer onder *vignettes* het bestand *train-and-deploy-first-model.Rmd* om het vignet te vinden dat in deze zelfstudie wordt gebruikt. De aanvullende bestanden die voor het vignet worden gebruikt, bevinden zich in de submap *train-and-deploy-first-model*. Zodra u het vignet hebt geopend, stelt u de werkmap in op de locatie van het bestand via **Session > Set Working Directory > To Source File Location** (Sessie > Werkmap instellen > Op locatie van bronbestand). 
 

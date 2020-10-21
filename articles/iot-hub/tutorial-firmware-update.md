@@ -14,12 +14,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - devx-track-js
-ms.openlocfilehash: fe6c7f10ce64e25f46444cd2db8b67aab4ae2135
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 304ded466aeb734388c13b87331eb4813e850e56
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91308245"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842815"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>Zelfstudie: Een apparaatfirmware-updateproces implementeren
 
@@ -184,7 +184,7 @@ De volgende schermafbeelding toont de uitvoer van de gesimuleerde apparaattoepas
 
 De volgende schermafbeelding toont de uitvoer van de back-endtoepassing en benadrukt hoe de configuratie voor het bijwerken van de gewenste eigenschappen van de firmware wordt gemaakt:
 
-![Back-endtoepassing](./media/tutorial-firmware-update/BackEnd1.png)
+![Schermopname van de uitvoer van de back-endtoepassing.](./media/tutorial-firmware-update/BackEnd1.png)
 
 De volgende schermafbeelding toont de uitvoer van de back-endtoepassing en benadrukt hoe deze de metrische gegevens van de firmware-update van het gesimuleerde apparaat bewaakt:
 

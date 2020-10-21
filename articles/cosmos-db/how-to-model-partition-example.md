@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: 91589a88712b093acfbb88df146074ad91ba0ea2
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 8e9d11ed39d6e4dc7ad432659534e7dd14fcf1ec
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168372"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277981"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>Meer informatie over het modelleren en partitioneren van gegevens in Azure Cosmos DB aan de hand van een praktijkvoorbeeld
 
@@ -327,7 +327,7 @@ In deze opgeslagen procedure worden de ID van het bericht en de hoofd tekst van 
 - vervangt het bericht
 - voegt de nieuwe opmerking toe
 
-Als opgeslagen procedures worden uitgevoerd als atomische trans acties, wordt gegarandeerd dat de waarde van `commentCount` en het werkelijke aantal opmerkingen altijd synchroon blijft.
+Als opgeslagen procedures worden uitgevoerd als atomische trans acties, blijft de waarde van `commentCount` en het werkelijke aantal opmerkingen altijd synchroon.
 
 We gaan natuurlijk een soort gelijke opgeslagen procedure aanroepen bij het toevoegen van nieuwe leuks `likeCount` .
 
@@ -586,6 +586,6 @@ De wijzigings feed die we gebruiken om updates naar andere containers te distrib
 
 Na deze inleiding tot praktische gegevens modellering en-partitionering kunt u de volgende artikelen controleren om de concepten te bekijken die we hebben behandeld:
 
-- [Werken met databases, containers en items](databases-containers-items.md)
+- [Werken met databases, containers en items](account-databases-containers-items.md)
 - [Partitionering in Azure Cosmos DB](partitioning-overview.md)
 - [Feed wijzigen in Azure Cosmos DB](change-feed.md)

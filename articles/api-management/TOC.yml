@@ -160,6 +160,8 @@
       items:
         - name: Inzicht in de ontwikkelaarsportal
           href: api-management-howto-developer-portal.md
+        - name: Migreren van de afgeschafte naar de nieuwe ontwikkelaarsportal
+          href: developer-portal-deprecated-migration.md
         - name: Verifiëren met Azure AD
           href: api-management-howto-aad.md
         - name: Verifiëren met Azure AD B2C
@@ -170,13 +172,13 @@
           href: api-management-howto-configure-notifications.md
         - name: OAuth-ondersteuning in de console inschakelen
           href: api-management-howto-oauth2.md
-        - name: Verouderde portal - de portal aanpassen
+        - name: Afgeschafte portal - de portal aanpassen
           href: api-management-customize-styles.md
-        - name: Verouderde portal - pagina's en indelingen bewerken
+        - name: Afgeschafte portal - pagina's en indelingen bewerken
           href: api-management-modify-content-layout.md
-        - name: Verouderde portal - aanpassen met sjablonen
+        - name: Afgeschafte portal - aanpassen met sjablonen
           href: api-management-developer-portal-templates.md
-    - name: Verouderde portalsjablonen
+    - name: Afgeschafte portalsjablonen
       items:
         - name: Naslaginformatie over gegevensmodellen
           href: api-management-template-data-model-reference.md

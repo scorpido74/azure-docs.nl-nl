@@ -5,15 +5,15 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 09/02/2020
+ms.date: 10/13/2020
 ms.author: yushwang
 ms.custom: mvc
-ms.openlocfilehash: 9b712c1b2e8ac33ec189542bf6f60929ac59858d
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 61e03f539f000b55ae00d90afa769ca9c1c30dc1
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89420554"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048284"
 ---
 # <a name="tutorial-create-and-manage-s2s-vpn-connections-using-powershell"></a>Zelfstudie: S2S-VPN-verbindingen maken en beheren met PowerShell
 
@@ -33,7 +33,7 @@ Het volgende diagram toont de topologie voor deze zelfstudie:
 
 [!INCLUDE [working with cloud shell](../../includes/vpn-gateway-cloud-shell-powershell.md)]
 
-## <a name="requirements"></a>Vereisten
+## <a name="prerequisites"></a>Vereisten
 
 Voltooi de eerste zelfstudie: [Een Azure VPN-gateway maken met behulp van Microsoft Azure PowerShell](vpn-gateway-tutorial-create-gateway-powershell.md) om de volgende resources te maken:
 
@@ -242,8 +242,7 @@ In deze zelfstudie hebt u meer geleerd over het maken en beheren van S2S VPN-ver
 > * Toevoegen van meer VPN-verbindingen
 > * Verwijderen van een VPN-verbinding
 
-Ga naar de volgende zelfstudies voor meer informatie over S2S-, VNet-naar-VNet- en P2S-verbindingen.
+Vervolgens kunt u een P2S-verbinding toevoegen:
 
 > [!div class="nextstepaction"]
-> * [VNet-naar-VNet-verbindingen maken](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [P2S-verbindingen maken](vpn-gateway-howto-point-to-site-resource-manager-portal.md)

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 0f43b667b94e39548d81e6c6258d987f47074cb1
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: ce41e6b502aef1c44cf96f3b4a5efe401fba3173
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761325"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046482"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-java"></a>Quickstart: Werken met een IoT Plug en Play-apparaat dat is verbonden met uw oplossing (Java)
 
@@ -27,7 +27,7 @@ IoT Plug en Play vereenvoudigt IoT en stelt u in staat om gebruik te maken van d
 
 Om deze quickstart in Windows te voltooien, installeert u de volgende software in uw lokale Windows-omgeving:
 
-* Java SE Development Kit 8. In [Java-langetermijnondersteuning voor Azure en Azure Stack](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true) onder **Langetermijnondersteuning** selecteert u **Java 8**.
+* Java SE Development Kit 8. In [Java-langetermijnondersteuning voor Azure en Azure Stack](/java/azure/jdk/?preserve-view=true&view=azure-java-stable) onder **Langetermijnondersteuning** selecteert u **Java 8**.
 * [Apache Maven 3](https://maven.apache.org/download.cgi).
 
 ### <a name="clone-the-sdk-repository-with-the-sample-code"></a>Kloon de SDK-opslagplaats met de voorbeeldcode
@@ -76,7 +76,7 @@ In [Quickstarts en zelfstudies voor het instellen van uw omgeving voor IoT Plug 
 In deze quickstart gebruikt u een IoT-voorbeeldoplossing geschreven in Java om te communiceren met het voorbeeldapparaat dat u zojuist hebt ingesteld.
 
 > [!NOTE]
-> In dit voorbeeld wordt gebruikgemaakt van de naamruimte **com.microsoft.azure.sdk.iot.service.*;** van de **IoT Hub-serviceclient**. Zie de [handleiding voor ontwikkelaars](concepts-developer-guide-service.md) voor meer informatie over hoe u de model-id kunt ophalen.
+> In dit voorbeeld wordt gebruikgemaakt van de naamruimte **com.microsoft.azure.sdk.iot.service** van de **IoT Hub-serviceclient**. Zie de [handleiding voor serviceontwikkelaars](concepts-developer-guide-service.md) voor meer informatie over de API's, waaronder de API's voor digitale dubbels.
 
 1. Open een ander terminalvenster om als **serviceterminal** te gebruiken.
 
@@ -88,7 +88,7 @@ In deze quickstart gebruikt u een IoT-voorbeeldoplossing geschreven in Java om t
     mvm exec:java -Dexec.mainClass="samples.com.microsoft.azure.sdk.iot.service.Thermostat"
     ```
 
-### <a name="get-digital-twin"></a>Digital twin opvragen
+### <a name="get-device-twin"></a>Apparaatdubbel ophalen
 
 In het volgende codefragment ziet u hoe u het dubbel apparaat kunt ophalen in de service:
 
@@ -99,9 +99,9 @@ twinClient.getTwin(twin);
 System.out.println("Model Id of this Twin is: " + twin.getModelId());
 ```
 
-### <a name="update-a-digital-twin"></a>Een digital twin bijwerken
+### <a name="update-a-device-twin"></a>Een apparaatdubbel bijwerken
 
-Het volgende codefragment laat u zien hoe u een *patch* gebruikt om eigenschappen bij te werken via de digitale dubbel:
+Het volgende codefragment laat zien hoe u een *patch* gebruikt om eigenschappen bij te werken via de apparaatdubbel:
 
 ```java
 String propertyName = "targetTemperature";

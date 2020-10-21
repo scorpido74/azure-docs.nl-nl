@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 32759ed59e280980abdced46c29390e00ee7229c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 34a7cd8669c1545361bc7cd9579cfb6140c0c946
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973271"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331699"
 ---
 # <a name="optical-character-recognition-ocr"></a>Optische tekenherkenning (OCR)
 
@@ -37,7 +37,7 @@ De **Lees** aanroep neemt afbeeldingen en documenten op als invoer. Ze hebben de
 * De PDF-dimensies mogen Maxi maal 17 x 17 inch zijn, overeenkomen met de papier formaten Legal of a3 en kleiner.
 
 ### <a name="read-32-preview-allows-selecting-pages"></a>Met de preview-versie van 3,2 lezen kunt u pagina ('s) selecteren
-Met de [Preview-API lezen 3,2](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005)voor grote documenten met meerdere pagina's kunt u specifieke pagina nummers of paginabereiken opgeven als invoer parameter om alleen tekst uit die pagina's te halen. Dit is een nieuwe invoer parameter naast de optionele taal parameter.
+Met de [Preview-API lezen 3,2](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-1/operations/5d986960601faab4bf452005)voor grote documenten met meerdere pagina's kunt u specifieke pagina nummers of paginabereiken opgeven als invoer parameter om alleen tekst uit die pagina's te halen. Dit is een nieuwe invoer parameter naast de optionele taal parameter.
 
 > [!NOTE]
 > **Taalinvoer** 
@@ -50,7 +50,7 @@ De [Lees aanroep](https://westcentralus.dev.cognitive.microsoft.com/docs/service
 
 |Reactie header| Resultaten-URL |
 |:-----|:----|
-|Operation-Location | `https://cognitiveservice/vision/v3.2/read/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
+|Operation-Location | `https://cognitiveservice/vision/v3.1/read/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
 
 > [!NOTE]
 > **Facturering** 
@@ -129,23 +129,17 @@ Zie het volgende voor beeld van een geslaagde JSON-reactie:
 }
 ```
 ### <a name="read-32-preview-adds-text-line-style-latin-languages-only"></a>Lees 3,2 Preview tekst lijn stijl toevoegen (alleen Latijnse talen)
-De [lezen 3,2 Preview-API](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005) voert een **vormgevings** object uit waarin wordt aangegeven of elke tekst regel moet worden afgedrukt of geschreven, samen met een betrouwbaarheids Score. Deze functie wordt alleen ondersteund voor Latijnse talen.
+De [lezen 3,2 Preview-API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-1/operations/5d986960601faab4bf452005) voert een **vormgevings** object uit waarin wordt aangegeven of elke tekst regel moet worden afgedrukt of geschreven, samen met een betrouwbaarheids Score. Deze functie wordt alleen ondersteund voor Latijnse talen.
 
-```json
-  "appearance": {
-              "style": "handwriting",
-              "styleConfidence": 0.836
-            }
-```
-Ga aan de slag met de [Computer Vision OCR SDK Quick](./quickstarts-sdk/client-library.md) starts en de [Lees rest API SNELSTARTGIDS](./QuickStarts/CSharp-hand-text.md) om de OCR-mogelijkheden in uw toepassingen te integreren.
+Ga aan de slag met de Computer Vision de Quick Start van de [OCR SDK](./quickstarts-sdk/client-library.md) en [Lees rest API SNELSTARTGIDS](./QuickStarts/CSharp-hand-text.md) om de OCR-mogelijkheden in uw toepassingen te integreren.
 
 ## <a name="supported-languages-for-print-text"></a>Ondersteunde talen voor afdruk tekst
-De [lees 3,2-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) biedt ondersteuning voor het extra heren van gedrukte tekst in het Engels, Spaans, Duits, Frans, Italiaans, Portugees en Nederlandstalige talen.
+De [Lees-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) biedt ondersteuning voor het extra heren van gedrukte tekst in het Engels, Spaans, Duits, Frans, Italiaans, Portugees en Nederlandstalige talen.
 
 Zie de [ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr) voor de volledige lijst met talen die door OCR worden ondersteund.
 
 ### <a name="read-32-preview-adds-simplified-chinese-and-japanese"></a>In de preview-versie van 3,2 wordt vereenvoudigd Chinees en Japans toegevoegd
-De [open bare preview-versie van de lees 3,2-API](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005) voegt ondersteuning toe voor vereenvoudigd Chinees en Japans. Als uw scenario ondersteuning vereist voor meer talen, raadpleegt u de sectie [OCR API](#ocr-api) . 
+De [open bare preview-versie van de lees 3,2-API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-1/operations/5d986960601faab4bf452005) voegt ondersteuning toe voor vereenvoudigd Chinees en Japans. Als uw scenario ondersteuning vereist voor meer talen, raadpleegt u de sectie [OCR API](#ocr-api) . 
 
 ## <a name="supported-languages-for-handwritten-text"></a>Ondersteunde talen voor handgeschreven tekst
 De Lees bewerking biedt momenteel alleen ondersteuning voor het extra heren van handgeschreven tekst in het Engels.
@@ -154,7 +148,7 @@ De Lees bewerking biedt momenteel alleen ondersteuning voor het extra heren van 
 De [rest API 3. x](./QuickStarts/CSharp-hand-text.md) is de voorkeurs optie voor de meeste klanten vanwege het gemak van integratie en snelle productiviteit. Azure en de Computer Vision service-afhandelings schaal, prestaties, gegevens beveiliging en nalevings behoeften terwijl u zich richt op het voldoen aan de behoeften van uw klanten.
 
 ## <a name="deploy-on-premise-with-docker-containers"></a>On-premises implementeren met docker-containers
-Met de [lees 2,0 docker-container (preview)](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-how-to-install-containers) kunt u de nieuwe OCR-mogelijkheden in uw eigen lokale omgeving implementeren. Containers zijn ideaal voor specifieke vereisten voor beveiliging en gegevensbeheer.
+De [Lees docker-container (preview)](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-how-to-install-containers) biedt u de mogelijkheid om de nieuwe OCR-mogelijkheden in uw eigen lokale omgeving te implementeren. Containers zijn ideaal voor specifieke vereisten voor beveiliging en gegevensbeheer.
 
 ## <a name="example-outputs"></a>Voorbeeld uitvoer
 
@@ -201,7 +195,7 @@ Net als bij alle cognitieve services moeten ontwikkel aars die de Lees/OCR-Servi
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Ga aan de slag met de [Computer Vision lees 3,0 SDK Quick](./quickstarts-sdk/client-library.md) starts in C#, Java, java script of python.
-- Gebruik de [Lees-3,1-rest API Snelstartgids](./QuickStarts/CSharp-hand-text.md) in C#, Java, java script of python voor meer informatie over het gebruik van de rest-api's.
-- Meer informatie over de [lees 3,1-rest API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005).
-- Meer informatie over de [open bare preview-versie van 3,2 rest API](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005) met toegevoegde ondersteuning voor vereenvoudigd Chinees en Japans.
+- Ga aan de slag met de [Computer Vision Lees de Snelstartgids van SDK](./quickstarts-sdk/client-library.md) in C#, Java, java script of python.
+- Gebruik de [rest API Snelstartgids voor lezen](./QuickStarts/CSharp-hand-text.md) in C#, Java, java script of python voor meer informatie over het gebruik van de rest-api's.
+- Meer informatie over de [lees rest API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005).
+- Meer informatie over de [open bare preview-versie van 3,2 rest API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-1/operations/5d986960601faab4bf452005) met toegevoegde ondersteuning voor vereenvoudigd Chinees en Japans.

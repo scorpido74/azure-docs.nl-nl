@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: dea009d6d246d68f0686c3dc85f3518ccb13705c
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 1c1ddeb8cafd8aa7584da48a715139c5d12eeb10
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91575194"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91874795"
 ---
 # <a name="tutorial-monitor-and-manage-a-video-analytics---object-and-motion-detection-application"></a>Zelfstudie: Een Video Analytics-toepassingssjabloon voor object- en bewegingsdetectie bewaken en beheren
 
@@ -26,7 +26,7 @@ In deze zelfstudie leert u het volgende:
 
 Voordat u begint, moet u het volgende voltooien:
 
-* De zelfstudie [Een Live Video Analytics-toepassing maken in Azure IoT Central](./tutorial-video-analytics-create-app.md).
+* een van de vorige zelfstudies: [Een toepassing voor livevideoanalyse maken in Azure IoT Central](./tutorial-video-analytics-create-app-yolo-v3.md) of [Een videoanalyse maken in Azure IoT Central (OpenVINO&trade;)](tutorial-video-analytics-create-app-openvino.md).
 * Een van de vorige zelfstudies: [Een IoT Edge-exemplaar voor Live Video Analytics maken (Linux-VM)](tutorial-video-analytics-iot-edge-vm.md) of [Een IoT Edge-exemplaar voor Live Video Analytics maken (Intel NUC)](tutorial-video-analytics-iot-edge-nuc.md).
 
 [Docker](https://www.docker.com/products/docker-desktop) moet zijn geïnstalleerd op de lokale machine om de Video Viewer-toepassing uit te voeren.
