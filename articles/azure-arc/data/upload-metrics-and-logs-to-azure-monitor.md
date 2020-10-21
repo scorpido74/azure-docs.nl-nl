@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: cda123adb667b4c857e05ce53d603e328e995766
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 869bfcb87aa4846674db233c4268e9269929cd04
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108164"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320165"
 ---
 # <a name="upload-usage-data-metrics-and-logs-to-azure-monitor"></a>De gebruiks gegevens, de metrieken en de logboeken uploaden naar Azure Monitor
 
@@ -25,7 +25,7 @@ U kunt regel matig gebruiks gegevens voor facturerings doeleinden exporteren, me
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de Azure CLI (AZ) en de Azure data CLI (azdata) nodig.  [Hulpprogram Ma's installeren](./install-client-tools.md).
+U hebt de Azure-CLI (AZ) en de [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] geïnstalleerde geïnstalleerd.  [Hulpprogram Ma's installeren](./install-client-tools.md).
 
 Voordat u gegevens naar Azure uploadt, moet u ervoor zorgen dat de resource provider micro soft. Azureworden is geregistreerd voor uw Azure-abonnement.
 
@@ -45,7 +45,7 @@ az provider register -n Microsoft.AzureData --wait
 
 Informatie over het gebruik van de inventaris en het resource gebruik kan in de volgende twee stappen worden geüpload naar Azure:
 
-1. Exporteer de gebruiks gegevens met behulp van de ```azdata export``` opdracht als volgt:
+1. Exporteer de gebruiks gegevens met behulp van de `azdata export` opdracht als volgt:
 
    ```console
    #login to the data controller and enter the values at the prompt
@@ -56,7 +56,7 @@ Informatie over het gebruik van de inventaris en het resource gebruik kan in de 
    ```
    Met deze opdracht maakt u een `usage.json` bestand met alle Azure-Arc-gegevens bronnen, zoals SQL Managed instances en postgresql grootschalige, etc. die zijn gemaakt op de gegevens controller.
 
-2. De gebruiks gegevens uploaden met behulp van de ```azdata upload``` opdracht
+2. De gebruiks gegevens uploaden met behulp van de `azdata upload` opdracht
 
    > [!NOTE]
    > Wacht ten minste 24 uur nadat u de Azure-gegevens controller hebt gemaakt voordat u de upload uitvoert.

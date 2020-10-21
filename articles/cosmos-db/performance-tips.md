@@ -4,15 +4,15 @@ description: Meer informatie over client configuratie opties voor het verbeteren
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 06/26/2020
+ms.date: 10/13/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: efedfb9701d12548b80eccda9cd2aa29bc644ac2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3d6771f841d3a1d403c1c825da3b504b6896d9e
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91802137"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277213"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Tips voor betere prestaties van Azure Cosmos DB en .NET SDK v2
 
@@ -69,28 +69,7 @@ Als u test met hoge doorvoer niveaus (meer dan 50.000 RU/s), kan de client toepa
 
 **Verbindings beleid: modus directe verbinding gebruiken**
 
-Hoe een client verbinding maakt met Azure Cosmos DB heeft belang rijke gevolgen voor de prestaties, met name voor de waargenomen latentie aan de client zijde. Er zijn twee belang rijke configuratie-instellingen beschikbaar voor het configureren van beleid voor client verbindingen: de verbindings *modus* en het verbindings *protocol*.  De twee beschik bare modi zijn:
-
-  * Gateway modus (standaard)
-      
-    De gateway modus wordt op alle SDK-platforms ondersteund en is de geconfigureerde standaard instelling voor de [Microsoft.Azure.DocumentDB-SDK](sql-api-sdk-dotnet.md). Als uw toepassing wordt uitgevoerd in een bedrijfs netwerk met strikte firewall beperkingen, is de gateway modus de beste keuze, omdat deze gebruikmaakt van de standaard HTTPS-poort en één DNS-eind punt. De verhoudingen van de prestaties zijn echter wel dat de gateway modus een extra netwerk-hop omvat telkens wanneer gegevens worden gelezen vanuit of geschreven naar Azure Cosmos DB. De directe modus biedt dus betere prestaties omdat er minder netwerk-hops zijn. We raden ook de verbindings modus voor de gateway aan wanneer u toepassingen uitvoert in omgevingen met een beperkt aantal socket verbindingen.
-
-    Wanneer u de SDK in Azure Functions gebruikt, met name in het [verbruiks abonnement](../azure-functions/functions-scale.md#consumption-plan), moet u rekening houden met de huidige [limieten voor verbindingen](../azure-functions/manage-connections.md). In dat geval kan de gateway modus beter zijn als u ook met andere op HTTP gebaseerde clients in uw Azure Functions-toepassing werkt.
-
-  * Directe modus
-
-    Directe modus ondersteunt connectiviteit via een TCP-protocol.
-     
-Wanneer u de TCP gebruikt in de directe modus, naast de gateway poorten, moet u ervoor zorgen dat het poort bereik tussen 10000 en 20000 open is, omdat Azure Cosmos DB dynamische TCP-poorten gebruikt. Wanneer u directe modus op [particuliere eind punten](./how-to-configure-private-endpoints.md)gebruikt, moet u het volledige bereik van TCP-poorten van 0 tot 65535 openen. Als deze poorten niet zijn geopend en u het TCP-protocol wilt gebruiken, ontvangt u een fout bericht van de 503-Service die niet beschikbaar is. In de volgende tabel ziet u de beschik bare connectiviteits modi voor verschillende Api's en de service poorten die voor elke API worden gebruikt:
-
-|Verbindingsmodus  |Ondersteund protocol  |Ondersteunde Sdk's  |API/service poort  |
-|---------|---------|---------|---------|
-|Gateway  |   HTTPS    |  Alle Sdk's    |   SQL (443), MongoDB (10250, 10255, 10256), Table (443), Cassandra (10350), Graph (443) <br> Poort 10250 wordt toegewezen aan een standaard Azure Cosmos DB-API voor MongoDB-instantie zonder geo-replicatie. Terwijl de poorten 10255 en 10256 worden toegewezen aan het exemplaar met geo-replicatie.   |
-|Direct    |     TCP    |  .NET SDK    | Bij gebruik van open bare/service-eind punten: poorten in het 10000 tot en met 20000-bereik<br>Bij het gebruik van privé-eind punten: poorten in het bereik 0 tot en met 65535 |
-
-Azure Cosmos DB biedt een eenvoudig open, REST-programmeer model via HTTPS. Daarnaast biedt het een efficiënt TCP-protocol, dat ook wordt doorzocht in het communicatie model en dat beschikbaar is via de .NET-client-SDK. TCP-protocol gebruikt TLS voor initiële verificatie en het versleutelen van verkeer. Gebruik, indien mogelijk, het TCP-protocol voor de beste prestaties.
-
-Voor de Microsoft.Azure.DocumentDB SDK configureert u de verbindings modus tijdens het bouwen van het `DocumentClient` exemplaar met behulp van de `ConnectionPolicy` para meter. Als u de directe modus gebruikt, kunt u deze ook instellen met `Protocol` behulp van de `ConnectionPolicy` para meter.
+De .NET v2 SDK standaard verbindings modus is Gateway. U kunt de verbindings modus configureren tijdens de constructie van het `DocumentClient` exemplaar met behulp van de `ConnectionPolicy` para meter. Als u de directe modus gebruikt, moet u deze ook instellen met `Protocol` behulp van de `ConnectionPolicy` para meter. Zie het artikel [connectiviteits modi](sql-sdk-connection-modes.md) voor meer informatie over de verschillende connectiviteits opties.
 
 ```csharp
 Uri serviceEndpoint = new Uri("https://contoso.documents.net");
@@ -102,10 +81,6 @@ new ConnectionPolicy
    ConnectionProtocol = Protocol.Tcp
 });
 ```
-
-Omdat TCP alleen wordt ondersteund in de directe modus, wordt het HTTPS-protocol altijd gebruikt voor communicatie met de gateway en `Protocol` wordt de waarde in genegeerd als u gebruikmaakt van de modus gateway `ConnectionPolicy` .
-
-:::image type="content" source="./media/performance-tips/connection-policy.png" alt-text="Het Azure Cosmos DB verbindings beleid" border="false":::
 
 **Tijdelijke poortuitputting**
 
@@ -284,4 +259,4 @@ De aanvraag kosten (dat wil zeggen, de aanvraag verwerkings kosten) van een bepa
 
 Zie [prestaties en schalen testen met Azure Cosmos DB](performance-testing.md)voor een voorbeeld toepassing die wordt gebruikt om Azure Cosmos DB te evalueren voor scenario's met hoge prestaties op een aantal client computers.
 
-Zie [partitioneren en schalen in azure Cosmos DB](partition-data.md)voor meer informatie over het ontwerpen van uw toepassing voor schaal baarheid en hoge prestaties.
+Zie [partitioneren en schalen in azure Cosmos DB](partitioning-overview.md)voor meer informatie over het ontwerpen van uw toepassing voor schaal baarheid en hoge prestaties.

@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: ba2d0acec37d0f59240381cdea04f4d53ded0b1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 00d8e0d3ba57034bd65dfb7663341e4fcdf586dc
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273038"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310923"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>De Azure Arc-gegevens controller maken
 
@@ -65,7 +65,7 @@ Er zijn meerdere opties voor het maken van de Azure Arc-gegevens controller:
 > **Wilt u gewoon iets uitproberen?**  
 > Ga snel aan de slag met [Azure Arc](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services) direct op Azure Kubernetes service (AKS), AWS elastische Kubernetes service (EKS), Google Cloud Kubernetes Engine (GKE) of een virtuele machine van Azure.
 > 
-- [Een gegevens controller maken met Azure data CLI (azdata)](create-data-controller-using-azdata.md)
+- [Een gegevens controller maken met [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]](create-data-controller-using-azdata.md)
 - [Een gegevens controller maken met Azure Data Studio](create-data-controller-azure-data-studio.md)
 - [Een gegevens controller maken van de Azure Portal via een Jupyter-notebook in Azure Data Studio](create-data-controller-resource-in-azure-portal.md)
 - [Een gegevens controller maken met Kubernetes-hulpprogram ma's zoals kubectl of OC](create-data-controller-using-kubernetes-native-tools.md)

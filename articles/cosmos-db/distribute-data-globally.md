@@ -6,18 +6,18 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 29917b0911fbab36fbb30a587ee7cac223b993f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ea5ee2dfe89b36fce78c369100224718eb5864f
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570180"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278767"
 ---
 # <a name="distribute-your-data-globally-with-azure-cosmos-db"></a>Gegevens wereldwijd distribueren met Azure Cosmos DB
 
 Van toepassingen wordt tegenwoordig vereist dat ze zeer responsief en altijd online zijn. Voor het bereiken van lage latentie en hoge beschikbaarheid moeten de instanties van deze toepassingen worden geïmplementeerd in datacenters die zich dicht bij de gebruikers ervan bevinden. Deze toepassingen worden doorgaans geïmplementeerd in meerdere data centers en worden wereld wijd gedistribueerd genoemd. Globaal gedistribueerde toepassingen hebben een globaal gedistribueerde database nodig die overal ter wereld transparant gegevens kan repliceren om de toepassingen in staat te stellen te werken met een kopie van de gegevens die zich dicht bij de gebruikers bevindt. 
 
-Azure Cosmos DB is een wereld wijd gedistribueerde database service die is ontworpen om te voorzien in een lage latentie, elastische schaal baarheid van door Voer, goed gedefinieerde semantiek voor consistentie van gegevens en hoge Beschik baarheid. Kortom, als uw toepassing een snelle reactie tijd van de wereld nodig heeft, als deze altijd online moet zijn, en u een onbeperkte en elastische schaal baarheid van door Voer en opslag nodig hebt, moet u uw toepassing bouwen op Azure Cosmos DB.
+Azure Cosmos DB is een wereld wijd gedistribueerde database service die is ontworpen om te voorzien in een lage latentie, elastische schaal baarheid van door Voer, goed gedefinieerde semantiek voor consistentie van gegevens en hoge Beschik baarheid. Kortom, als uw toepassing een snelle respons tijd overal ter wereld nodig heeft, als deze altijd online moet zijn, en u een onbeperkte en elastische schaal baarheid van door Voer en opslag nodig hebt, moet u uw toepassing bouwen op Azure Cosmos DB.
 
 U kunt uw data bases zo configureren dat deze globaal worden gedistribueerd en beschikbaar zijn in een van de Azure-regio's. Als u de latentie wilt verlagen, plaatst u de gegevens dichtbij waar uw gebruikers zich bevinden. Het kiezen van de vereiste regio's is afhankelijk van het wereld wijde bereik van uw toepassing en waar uw gebruikers zich bevinden. Cosmos DB worden de gegevens op transparante wijze gerepliceerd naar alle regio's die zijn gekoppeld aan uw Cosmos-account. Het biedt één systeem kopie van uw wereld wijd gedistribueerde Azure Cosmos-data base en containers die uw toepassing lokaal kan lezen en ernaar kan schrijven. 
 
@@ -29,7 +29,7 @@ Met Azure Cosmos DB kunt u op elk gewenst moment de regio's toevoegen of verwijd
 
 **Wereld wijd actieve apps bouwen.** Met zijn nieuwe Multi-Region writes-replicatie protocol ondersteunt elke regio zowel schrijf bewerkingen als Lees bewerkingen. De functie voor het schrijven van meerdere regio's biedt ook de volgende mogelijkheden:
 
-- Onbeperkte elastische schrijf-en lees schaal baarheid. 
+- Onbeperkte elastische schrijf-en lees schaal baarheid.
 - 99,999% Beschik baarheid voor lezen en schrijven over de hele wereld.
 - Gegarandeerde lees-en schrijf bewerkingen in minder dan 10 milliseconden in het 99e percentiel.
 
@@ -41,7 +41,7 @@ Met de Azure Cosmos DB multi-multihoming-Api's is uw toepassing op de hoogte van
 
 **Onderhoud van bedrijfs continuïteit tijdens regionale storingen.** Azure Cosmos DB ondersteunt [automatische failover](how-to-manage-database-account.md#automatic-failover) tijdens een regionale storing. Tijdens een regionale onderbreking blijft Azure Cosmos DB de latentie, Beschik baarheid, consistentie en de door Voer van de voor uitgang blijven behouden. Om ervoor te zorgen dat uw volledige toepassing Maxi maal beschikbaar is, biedt Cosmos DB hand matige failover-API voor het simuleren van een regionale storing. Met deze API kunt u normale bedrijfs continuïteits oefeningen uitvoeren.
 
-**Lees-en schrijf doorvoer wereld wijd schalen.** U kunt elke regio zo instellen dat deze kan worden beschrijfd en op elastische schaal worden gelezen en overal ter wereld wordt geschreven. De door Voer die door uw toepassing wordt geconfigureerd op een Azure Cosmos-data base of een container, wordt gegarandeerd in alle regio's die zijn gekoppeld aan uw Azure Cosmos-account. De ingerichte door Voer wordt gegarandeerd door [financieel ondersteunde sla's](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/).
+**Lees-en schrijf doorvoer wereld wijd schalen.** U kunt elke regio zo instellen dat deze kan worden beschrijfd en op elastische schaal worden gelezen en overal ter wereld wordt geschreven. De door Voer die door uw toepassing wordt geconfigureerd op een Azure Cosmos-data base of een container, wordt ingericht in alle regio's die zijn gekoppeld aan uw Azure Cosmos-account. De ingerichte door Voer wordt gegarandeerd door [financieel ondersteunde sla's](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/).
 
 **U kunt kiezen uit verschillende goed gedefinieerde consistentie modellen.** Het Azure Cosmos DB-replicatie protocol biedt vijf goed gedefinieerde, praktische en intuïtieve consistentie modellen. Elk model heeft een verhouding tussen consistentie en prestaties. Gebruik deze consistentie modellen voor het gemak om wereld wijd gedistribueerde toepassingen te bouwen.
 

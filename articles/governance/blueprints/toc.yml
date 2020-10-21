@@ -31,6 +31,9 @@
     - name: Nieuwe resources beveiligen met resourcevergrendelingen op basis van een blauwdruk
       displayName: 'read only, do not delete, lock assignment'
       href: ./tutorials/protect-new-resources.md
+    - name: 'Meer informatie: Meerdere abonnementen beheren met behulp van Azure Blueprints'
+      displayName: 'governance, module'
+      href: /learn/modules/build-cloud-governance-strategy-azure/10-govern-subscriptions-azure-blueprints
 - name: Voorbeelden
   items:
     - name: Index

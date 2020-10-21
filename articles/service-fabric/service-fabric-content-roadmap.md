@@ -3,12 +3,12 @@ title: Meer informatie over Azure Service Fabric
 description: Meer informatie over de belangrijkste concepten en belang rijke gebieden van Azure Service Fabric. Biedt een uitgebreid overzicht van Service Fabric en hoe u micro Services maakt.
 ms.topic: conceptual
 ms.date: 12/08/2017
-ms.openlocfilehash: d09d774ed32c98222b71423ca733f1b4294957ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f4e0ea03b631773f96ca4645d44b9fe28d89da9
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836697"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319814"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Wilt u meer informatie over Service Fabric?
 Azure Service Fabric is een gedistribueerde systemen platform waarmee u gemakkelijk pakket, implementeren en beheren van schaalbare en betrouwbare microservices.  Service Fabric heeft echter een grote surface area, maar er is veel te leren.  In dit artikel vindt u een samen vatting van Service Fabric en worden de belangrijkste concepten, programmeer modellen, toepassings levenscyclus, testen, clusters en status controle beschreven. Lees het [overzicht](service-fabric-overview.md) en [Wat zijn micro Services?](service-fabric-overview-microservices.md) voor een inleiding en hoe service Fabric kan worden gebruikt om micro services te maken. Dit artikel bevat geen uitgebreide inhouds lijst, maar bevat een koppeling naar overzicht en aan de slag-artikelen voor elk gebied van Service Fabric. 
@@ -189,7 +189,7 @@ Er zijn meerdere producten beschikbaar die deze drie gebieden beslaan, en u kunt
 * Meer informatie over het [bewaken en diagnosticeren van services](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md). 
 * Meer informatie over [het testen van uw apps en services](service-fabric-testability-overview.md).
 * Meer informatie over het [beheren en organiseren van cluster resources](service-fabric-cluster-resource-manager-introduction.md).
-* Bekijk de Service Fabric-voor [beelden](https://aka.ms/servicefabricsamples).
+* Bekijk de Service Fabric-voor [beelden](/samples/browse/?products=azure).
 * Meer informatie over [service Fabric ondersteunings opties](service-fabric-support.md).
 * Lees het [Team blog](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) voor artikelen en aankondigingen.
 

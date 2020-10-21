@@ -17,12 +17,12 @@ ms.date: 09/23/2020
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1fc5051a6cc8b8f36a980ff86690ed4f8cbac60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36e6642e230fa809630751e224ff9384ea8524d1
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91344785"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319781"
 ---
 # <a name="azure-active-directory-sign-in-activity-reports---preview"></a>Rapporten over Azure Active Directory-aanmeld activiteiten-preview
 
@@ -32,8 +32,8 @@ De rapportage architectuur in Azure Active Directory (Azure AD) bestaat uit de v
     - **Aanmeldingen** : informatie over wanneer gebruikers, toepassingen en beheerde bronnen zich aanmelden bij Azure AD om toegang te krijgen tot resources.
     - **Audit logboeken**  -  [Audit logboeken](concept-audit-logs.md) bevatten informatie over de systeem activiteit van gebruikers en groeps beheer, beheerde toepassingen en Directory-activiteiten.
 - **Beveiliging** 
-    - **Risk ante aanmeldingen** : een [Risk ante aanmelding](concept-risky-sign-ins.md) is een indicator voor een aanmeldings poging door iemand die niet de rechtmatige eigenaar van een gebruikers account is.
-    - **Gebruikers die zijn gemarkeerd voor risico** : een [Risk ante gebruiker](concept-user-at-risk.md) is een indicator voor een gebruikers account dat mogelijk is aangetast.
+    - **Risk ante aanmeldingen** : een [Risk ante aanmelding](../identity-protection/overview-identity-protection.md) is een indicator voor een aanmeldings poging door iemand die niet de rechtmatige eigenaar van een gebruikers account is.
+    - **Gebruikers die zijn gemarkeerd voor risico** : een [Risk ante gebruiker](../identity-protection/overview-identity-protection.md) is een indicator voor een gebruikers account dat mogelijk is aangetast.
 
 Het klassieke aanmeld rapport in Azure Active Directory biedt een overzicht van interactieve gebruikers aanmeldingen. Daarnaast hebt u nu toegang tot drie extra aanmeldings rapporten die nu als preview-versie beschikbaar zijn:
 
@@ -86,7 +86,7 @@ Op de Blade rapport voor aanmeldingen kunt u scha kelen tussen:
 
 - **Service-Principal-aanmeldingen** : aanmeldingen per apps en service-principals die geen gebruik maken van een gebruiker. In deze aanmeldingen biedt de app of service een referentie voor het verifiëren of openen van bronnen.
 
-- **Beheerde identiteiten voor Azure-bronnen aanmeldingen** : aanmeldingen door Azure-resources met geheimen die worden beheerd door Azure. Zie [Wat zijn beheerde identiteiten voor Azure-resources?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) voor meer informatie. 
+- **Beheerde identiteiten voor Azure-bronnen aanmeldingen** : aanmeldingen door Azure-resources met geheimen die worden beheerd door Azure. Zie [Wat zijn beheerde identiteiten voor Azure-resources?](../managed-identities-azure-resources/overview.md) voor meer informatie. 
 
 
 ![Typen aanmeld rapporten](./media/concept-all-sign-ins/sign-ins-report-types.png)

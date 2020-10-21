@@ -1,22 +1,25 @@
 ---
-title: Door Voer in Azure Cosmos DB inrichten
-description: Meer informatie over het inrichten van de door Voer voor automatisch schalen op het niveau van de container en de data base in Azure Cosmos DB met behulp van Azure Portal, CLI, Power shell en diverse andere Sdk's.
+title: De door Voer van automatisch schalen inrichten in Azure Cosmos DB SQL-API
+description: Meer informatie over het inrichten van de door Voer voor automatisch schalen op het niveau van de container en de data base in Azure Cosmos DB SQL-API met behulp van Azure Portal, CLI, Power shell en diverse andere Sdk's.
 author: deborahc
 ms.author: dech
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 07/30/2020
+ms.date: 10/15/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4e7c5f3f4bf84b7a267cb883df5f375f2a8cf981
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 190289165b291edabf31320eee1328c1b0cf6205
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89017138"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277834"
 ---
-# <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db"></a>Automatisch schalen door Voer in te richten op Data Base of container in Azure Cosmos DB
+# <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db---sql-api"></a>Automatisch schalen door Voer in te richten op Data Base of container in Azure Cosmos DB-SQL-API
 
-In dit artikel wordt uitgelegd hoe u de door Voer van automatisch schalen kunt inrichten voor een Data Base of container (verzameling, grafiek of tabel) in Azure Cosmos DB. U kunt automatisch schalen inschakelen voor één container, of de door Voer van automatisch schalen inrichten voor een Data Base en deze delen met alle containers in de data base.
+In dit artikel wordt uitgelegd hoe u de door Voer van automatisch schalen kunt inrichten voor een Data Base of container (verzameling, grafiek of tabel) in Azure Cosmos DB SQL-API. U kunt automatisch schalen inschakelen voor één container, of de door Voer van automatisch schalen inrichten voor een Data Base en deze delen met alle containers in de data base.
+
+Als u een andere API gebruikt, raadpleegt u [API voor MongoDb](how-to-provision-throughput-mongodb.md), [CASSANDRA-API](how-to-provision-throughput-cassandra.md), [Gremlin API](how-to-provision-throughput-gremlin.md) -artikelen om de door Voer in te richten.
 
 ## <a name="azure-portal"></a>Azure Portal
 
@@ -52,7 +55,7 @@ Als u automatisch schalen wilt inrichten voor een gedeelde doorvoer database, se
 > [!NOTE]
 > Wanneer u automatisch schalen inschakelt voor een bestaande data base of container, wordt de begin waarde voor het maximale aantal RU/s bepaald door het systeem, op basis van uw huidige hand matige ingerichte instellingen voor de door Voer en opslag. Nadat de bewerking is voltooid, kunt u indien nodig het maximum aantal RU/s wijzigen. [Meer informatie.](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work) 
 
-## <a name="azure-cosmos-db-net-v3-sdk-for-sql-api"></a>Azure Cosmos DB .NET v3 SDK voor SQL API
+## <a name="azure-cosmos-db-net-v3-sdk"></a>Azure Cosmos DB .NET v3 SDK
 
 Gebruik [versie 3,9 of hoger](https://www.nuget.org/packages/Microsoft.Azure.Cosmos) van de Azure Cosmos db .NET SDK voor SQL API voor het beheren van resources voor automatisch schalen. 
 
@@ -109,7 +112,7 @@ int? currentThroughput = autoscaleContainerThroughput.Throughput;
 await container.ReplaceThroughputAsync(ThroughputProperties.CreateAutoscaleThroughput(newAutoscaleMaxThroughput));
 ```
 
-## <a name="azure-cosmos-db-java-v4-sdk-for-sql-api"></a>Azure Cosmos DB Java v4 SDK voor SQL API
+## <a name="azure-cosmos-db-java-v4-sdk"></a>Azure Cosmos DB Java v4 SDK
 
 U kunt [versie 4,0 of hoger](https://mvnrepository.com/artifact/com.azure/azure-cosmos) van de Azure Cosmos DB Java SDK voor SQL API gebruiken voor het beheren van resources voor automatisch schalen.
 
@@ -242,14 +245,6 @@ container.replaceThroughput(ThroughputProperties.createAutoscaledThroughput(newA
 ```
 
 ---
-
-## <a name="cassandra-api"></a>Cassandra-API
-
-Azure Cosmos DB accounts voor Cassandra-API kunnen worden ingericht voor automatisch schalen met behulp van [CQL-opdrachten](manage-scale-cassandra.md#use-autoscale), [Azure cli](cli-samples.md), [Azure PowerShell](powershell-samples.md) of [Azure Resource Manager sjablonen](resource-manager-samples.md).
-
-## <a name="azure-cosmos-db-api-for-mongodb"></a>Azure Cosmos DB-API voor MongoDB
-
-Azure Cosmos DB-accounts voor de MongoDB-API kunnen worden ingericht voor automatisch schalen met behulp van [MongoDb-extensie opdrachten](mongodb-custom-commands.md), [Azure cli](cli-samples.md), [Azure PowerShell](powershell-samples.md) of [Azure Resource Manager-sjablonen](resource-manager-samples.md).
 
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
 

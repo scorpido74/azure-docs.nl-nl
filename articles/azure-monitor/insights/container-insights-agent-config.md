@@ -2,13 +2,13 @@
 title: Azure Monitor configureren voor het verzamelen van gegevens van containers en agents | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u de Azure Monitor voor containers-agent kunt configureren voor het beheren van de logboek verzameling van stdout/stderr en omgevings variabelen.
 ms.topic: conceptual
-ms.date: 06/01/2020
-ms.openlocfilehash: 675b9c9c109ee8bb3b0087523bf5af46ce2c5270
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.date: 10/09/2020
+ms.openlocfilehash: 1644e541ee873a5bb058dd9bde2b82a907a400ff
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994606"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320398"
 ---
 # <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>Verzamelen van agentgegevens voor Azure Monitor voor containers configureren
 
@@ -29,7 +29,7 @@ Er wordt een sjabloon ConfigMap-bestand geleverd waarmee u het eenvoudig kunt be
 
 ### <a name="data-collection-settings"></a>Instellingen voor gegevens verzameling
 
-Hieronder vindt u de instellingen die kunnen worden geconfigureerd om het verzamelen van gegevens te beheren.
+In de volgende tabel worden de instellingen beschreven die u kunt configureren om het verzamelen van gegevens te beheren:
 
 | Sleutel | Gegevenstype | Waarde | Beschrijving |
 |--|--|--|--|
@@ -43,16 +43,24 @@ Hieronder vindt u de instellingen die kunnen worden geconfigureerd om het verzam
 | `[log_collection_settings.enrich_container_logs] enabled =` | Booleaans | waar of onwaar | Met deze instelling wordt de uitname van het container logboek gecontroleerd om de naam en eigenschaps waarden van de afbeelding in te vullen<br> voor elke logboek record die wordt geschreven naar de ContainerLog-tabel voor alle container Logboeken in het cluster.<br> De standaard instelling is `enabled = false` wanneer deze niet is opgegeven in ConfigMap. |
 | `[log_collection_settings.collect_all_kube_events]` | Booleaans | waar of onwaar | Met deze instelling kunt u de verzameling uitvoeren-gebeurtenissen van alle typen.<br> Standaard worden de uitvoeren-gebeurtenissen met het type *normaal* niet verzameld. Als deze instelling is ingesteld op `true` , worden de *normale* gebeurtenissen niet meer gefilterd en worden alle gebeurtenissen verzameld.<br> Dit is standaard ingesteld op `false` . |
 
+### <a name="metric-collection-settings"></a>Instellingen metrische verzameling
+
+In de volgende tabel worden de instellingen beschreven die u kunt configureren om metrische verzameling te beheren:
+
+| Sleutel | Gegevenstype | Waarde | Beschrijving |
+|--|--|--|--|
+| `[metric_collection_settings.collect_kube_system_pv_metrics] enabled =` | Booleaans | waar of onwaar | Met deze instelling worden metrische gegevens over het gebruik van permanente volumes (HW) in de uitvoeren-naam ruimte verzameld. Standaard worden metrische gegevens over het gebruik van permanente volume claims in de uitvoeren-naam ruimte niet verzameld. Als deze instelling is ingesteld op `true` , worden metrische gegevens over het gebruik van het PV voor alle naam ruimten verzameld. Dit is standaard ingesteld op `false` . |
+
 ConfigMaps is een globale lijst en er kan slechts één ConfigMap op de agent worden toegepast. U kunt de verzamelingen niet overConfigMapsen.
 
 ## <a name="configure-and-deploy-configmaps"></a>ConfigMaps configureren en implementeren
 
 Voer de volgende stappen uit om uw ConfigMap-configuratie bestand te configureren en te implementeren in uw cluster.
 
-1. [Down load](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/Kubernetes/container-azm-ms-agentconfig.yaml) het sjabloon bestand ConfigMap yaml en sla het op als container-AZM-MS-agentconfig. yaml. 
+1. Down load het [sjabloon bestand CONFIGMAP yaml](https://github.com/microsoft/Docker-Provider/blob/ci_prod/kubernetes/container-azm-ms-agentconfig.yaml) en sla het op als container-AZM-MS-agentconfig. yaml. 
 
-   >[!NOTE]
-   >Deze stap is niet vereist bij het werken met Azure Red Hat open Shift omdat de ConfigMap-sjabloon al in het cluster bestaat.
+   > [!NOTE]
+   > Deze stap is niet vereist bij het werken met Azure Red Hat open Shift omdat de ConfigMap-sjabloon al in het cluster bestaat.
 
 2. Bewerk het ConfigMap yaml-bestand met uw aanpassingen om stdout-, stderr-en/of omgevings variabelen te verzamelen. Als u het ConfigMap yaml-bestand voor Azure Red Hat open Shift bewerkt, voert u eerst de opdracht uit `oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging` om het bestand in een tekst editor te openen.
 

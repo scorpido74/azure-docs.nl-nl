@@ -1,6 +1,6 @@
 ---
-title: Een gegevens controller maken met behulp van Azure data CLI (azdata)
-description: Maak een Azure-Arc-gegevens controller op een typisch Kubernetes-cluster met meerdere knoop punten dat u al hebt gemaakt met behulp van de Azure data CLI (azdata).
+title: Gegevens controller maken met [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
+description: Maak een Azure-Arc-gegevens controller op een typisch Kubernetes-cluster met meerdere knoop punten dat u al hebt gemaakt met behulp van de [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] .
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
@@ -9,14 +9,14 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: a405a7a32b1f54732589fb14e34ff52db4992028
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb5fac5987a36c425b9e130df17412e5ad902345
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761682"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310943"
 ---
-# <a name="create-azure-arc-data-controller-using-the-azure-data-cli-azdata"></a>Een Azure-Arc-gegevens controller maken met behulp van de Azure-gegevens CLI (azdata)
+# <a name="create-azure-arc-data-controller-using-the-azure-data-cli-azdata"></a>Een Azure-Arc-gegevens controller maken met behulp van de [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -24,9 +24,9 @@ ms.locfileid: "91761682"
 
 Raadpleeg het onderwerp [de Azure Arc-gegevens controller maken](create-data-controller.md) voor overzichts informatie.
 
-Als u de Azure-Arc-gegevens controller wilt maken met behulp van de Azure-gegevens-CLI, moet u de Azure-gegevens CLI hebben geïnstalleerd.
+Als u de Azure-Arc-gegevens controller wilt maken met behulp van [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] , moet u beschikken over de [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] installatie.
 
-   [De Azure-gegevens-CLI installeren](install-client-tools.md)
+   [Installeer de [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]](install-client-tools.md)
 
 Ongeacht het doel platform dat u kiest, moet u de volgende omgevings variabelen instellen voordat u de gebruiker van de gegevens controller beheerder maakt. U kunt deze referenties opgeven voor andere personen die beheerders toegang nodig hebben tot de gegevens controller.
 

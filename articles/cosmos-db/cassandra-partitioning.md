@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: d0234ca04b772e4ff5127ef9dd896b49141febfb
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: f12919cd35441c6c198269e2f79c705c1d304acd
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167556"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278814"
 ---
 # <a name="partitioning-in-azure-cosmos-db-cassandra-api"></a>Partitioneren in Azure Cosmos DB Cassandra-API
 
@@ -25,7 +25,7 @@ Vanuit het perspectief van de ontwikkelaar gedraagt de partitie zich op dezelfde
 
 ## <a name="differences-between-apache-cassandra-and-azure-cosmos-db"></a>Verschillen tussen Apache Cassandra en Azure Cosmos DB
 
-In Azure Cosmos DB wordt elke computer waarop partities worden opgeslagen, zelf aangeduid als [fysieke partitie](partition-data.md#physical-partitions). De fysieke partitie is Akin naar een virtuele machine. een toegewezen reken eenheid of een set fysieke resources. Elke partitie die op deze reken eenheid is opgeslagen, wordt een [logische partitie](partition-data.md#logical-partitions) in azure Cosmos DB genoemd. Als u al bekend bent met Apache Cassandra, kunt u logische partities op dezelfde manier beschouwen als gewone partities in Cassandra. 
+In Azure Cosmos DB wordt elke computer waarop partities worden opgeslagen, zelf aangeduid als [fysieke partitie](partitioning-overview.md#physical-partitions). De fysieke partitie is Akin naar een virtuele machine. een toegewezen reken eenheid of een set fysieke resources. Elke partitie die op deze reken eenheid is opgeslagen, wordt een [logische partitie](partitioning-overview.md#logical-partitions) in azure Cosmos DB genoemd. Als u al bekend bent met Apache Cassandra, kunt u logische partities op dezelfde manier beschouwen als gewone partities in Cassandra. 
 
 Apache Cassandra raadt een limiet van 100 MB aan voor de grootte van een gegevens die kunnen worden opgeslagen in een partitie. Met de Cassandra-API voor Azure Cosmos DB kunt u Maxi maal 20 GB per logische partitie en Maxi maal 30 gigabyte aan gegevens per fysieke partitie. In Azure Cosmos DB, in tegens telling tot Apache Cassandra, wordt de beschik bare reken capaciteit in de fysieke partitie uitgedrukt met behulp van één metrische waarde voor [aanvraag eenheden](request-units.md), waarmee u uw werk belasting kunt zien in termen van aanvragen (lees-of schrijf bewerkingen) per seconde, in plaats van kernen, geheugen of IOPS. Zo kunt u de capaciteits planning op een meer recht naar voren brengen, zodra u de kosten van elke aanvraag begrijpt. Elke fysieke partitie kan Maxi maal 10000 RUs beschik bare reken capaciteit hebben. Meer informatie over de opties voor schaal baarheid vindt u in het artikel over [Elastic Scale](manage-scale-cassandra.md) in Cassandra-API. 
 
@@ -112,6 +112,6 @@ CREATE TABLE uprofile.user (
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [partitioneren en horizon taal schalen in azure Cosmos DB](partition-data.md).
+* Meer informatie over [partitioneren en horizon taal schalen in azure Cosmos DB](partitioning-overview.md).
 * Meer informatie over [ingerichte door Voer in azure Cosmos DB](request-units.md).
 * Meer informatie over [globale distributie in azure Cosmos DB](distribute-data-globally.md).
