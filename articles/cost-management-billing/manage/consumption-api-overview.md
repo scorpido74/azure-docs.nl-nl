@@ -8,12 +8,12 @@ ms.subservice: cost-management
 ms.topic: reference
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 07595eed70850ce5270a261d588a33b68ff964fe
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: b00b5a46a0cdeb95c357da521326fe2bb678490b
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371929"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132615"
 ---
 # <a name="azure-consumption-api-overview"></a>Overzicht van API voor Azure-gebruiksgegevens
 
@@ -38,7 +38,7 @@ Gebruik de API voor gedetailleerde gebruiksgegevens om kosten- en gebruiksgegeve
 De API omvat:
 
 -   **Verbruiksgegevens op meterniveau**: bekijk gegevens, waaronder de gebruikskosten, de meter waardoor de kosten gegenereerd zijn, en de Azure-resource waarop de kosten betrekking hebben. Alle gebruiksdetailrecords worden toegewezen aan een dagelijkse bucket.
--   **Op rollen gebaseerd toegangsbeheer van Azure** (Azure RBAC): configureer toegangsbeleid via [Azure Portal](https://portal.azure.com), de [Azure-opdrachtregelinterface](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) of [Azure PowerShell-cmdlets](https://docs.microsoft.com/powershell/azure/) om op te geven welke gebruikers of toepassingen toegang kunnen krijgen tot de gebruiksgegevens van het abonnement. Aanroepers moeten standaard Azure Active Directory-tokens gebruiken voor verificatie. Voeg de aanroeper toe aan de rol Lezer van facturering, Lezer, Eigenaar of Inzender om toegang te krijgen tot de gebruiksgegevens voor een specifiek Azure-abonnement.
+-   **Op rollen gebaseerd toegangsbeheer van Azure** (Azure RBAC): configureer toegangsbeleid via [Azure Portal](https://portal.azure.com), de [Azure-opdrachtregelinterface](../../role-based-access-control/role-assignments-cli.md) of [Azure PowerShell-cmdlets](/powershell/azure/) om op te geven welke gebruikers of toepassingen toegang kunnen krijgen tot de gebruiksgegevens van het abonnement. Aanroepers moeten standaard Azure Active Directory-tokens gebruiken voor verificatie. Voeg de aanroeper toe aan de rol Lezer van facturering, Lezer, Eigenaar of Inzender om toegang te krijgen tot de gebruiksgegevens voor een specifiek Azure-abonnement.
 -   **Filteren**: verfijn de API-resultatenset tot een kleinere set van gebruiksdetailrecords met behulp van de volgende filters:
     - Einde/begin van gebruik
     - Resourcegroep
@@ -46,7 +46,7 @@ De API omvat:
 -   **Gegevensaggregatie**: gebruik OData om expressies toe te passen om gebruiksgegevens te aggregeren op tags of filtereigenschappen
 -   **Gebruiksgegevens voor verschillende typen aanbiedingen**: de informatie over gebruiksgegevens is momenteel beschikbaar voor Enterprise- en Web direct-klanten.
 
-Zie de technische specificatie van de [API voor gedetailleerde gebruiksgegevens](https://docs.microsoft.com/rest/api/consumption/usagedetails) voor meer informatie.
+Zie de technische specificatie van de [API voor gedetailleerde gebruiksgegevens](/rest/api/consumption/usagedetails) voor meer informatie.
 
 ## <a name="marketplace-charges-api"></a>API voor Marketplace-kosten
 
@@ -55,14 +55,14 @@ Met de API voor Marketplace-kosten kunt u kosten- en gebruiksgegevens voor alle 
 De API omvat:
 
 -   **Verbruiksgegevens op meterniveau**: bekijk gegevens, waaronder de Marketplace-gebruikskosten, de meter waardoor de kosten gegenereerd zijn, en de resource waarop de kosten betrekking hebben. Alle gebruiksdetailrecords worden toegewezen aan een dagelijkse bucket.
--   **Op rollen gebaseerd toegangsbeheer van Azure** (Azure RBAC): configureer toegangsbeleid via [Azure Portal](https://portal.azure.com), de [Azure-opdrachtregelinterface](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) of [Azure PowerShell-cmdlets](https://docs.microsoft.com/powershell/azure/) om op te geven welke gebruikers of toepassingen toegang kunnen krijgen tot de gebruiksgegevens van het abonnement. Aanroepers moeten standaard Azure Active Directory-tokens gebruiken voor verificatie. Voeg de aanroeper toe aan de rol Lezer van facturering, Lezer, Eigenaar of Inzender om toegang te krijgen tot de gebruiksgegevens voor een specifiek Azure-abonnement.
+-   **Op rollen gebaseerd toegangsbeheer van Azure** (Azure RBAC): configureer toegangsbeleid via [Azure Portal](https://portal.azure.com), de [Azure-opdrachtregelinterface](../../role-based-access-control/role-assignments-cli.md) of [Azure PowerShell-cmdlets](/powershell/azure/) om op te geven welke gebruikers of toepassingen toegang kunnen krijgen tot de gebruiksgegevens van het abonnement. Aanroepers moeten standaard Azure Active Directory-tokens gebruiken voor verificatie. Voeg de aanroeper toe aan de rol Lezer van facturering, Lezer, Eigenaar of Inzender om toegang te krijgen tot de gebruiksgegevens voor een specifiek Azure-abonnement.
 -   **Filteren**: verfijn de API-resultatenset tot een kleinere set van Marketplace-records met behulp van de volgende filters:
     - Begin/einde van gebruik
     - Resourcegroep
     - Resourcenaam
 -   **Gebruiksgegevens voor verschillende typen aanbiedingen**: de Marketplace-informatie is momenteel beschikbaar voor Enterprise- en Web direct-klanten.
 
-Zie de technische specificatie van de [API voor Marketplace-kosten](https://docs.microsoft.com/rest/api/consumption/marketplaces) voor meer informatie.
+Zie de technische specificatie van de [API voor Marketplace-kosten](/rest/api/consumption/marketplaces) voor meer informatie.
 
 ## <a name="balances-api"></a>API voor saldi
 
@@ -70,11 +70,11 @@ Enterprise-klanten kunnen deze API gebruiken om een maandelijks overzicht te kri
 
 De API omvat:
 
--   **Op rollen gebaseerd toegangsbeheer van Azure** (Azure RBAC): configureer toegangsbeleid via [Azure Portal](https://portal.azure.com), de [Azure-opdrachtregelinterface](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) of [Azure PowerShell-cmdlets](https://docs.microsoft.com/powershell/azure/) om op te geven welke gebruikers of toepassingen toegang kunnen krijgen tot de gebruiksgegevens van het abonnement. Aanroepers moeten standaard Azure Active Directory-tokens gebruiken voor verificatie. Voeg de aanroeper toe aan de rol Lezer van facturering, Lezer, Eigenaar of Inzender om toegang te krijgen tot de gebruiksgegevens voor een specifiek Azure-abonnement.
+-   **Op rollen gebaseerd toegangsbeheer van Azure** (Azure RBAC): configureer toegangsbeleid via [Azure Portal](https://portal.azure.com), de [Azure-opdrachtregelinterface](../../role-based-access-control/role-assignments-cli.md) of [Azure PowerShell-cmdlets](/powershell/azure/) om op te geven welke gebruikers of toepassingen toegang kunnen krijgen tot de gebruiksgegevens van het abonnement. Aanroepers moeten standaard Azure Active Directory-tokens gebruiken voor verificatie. Voeg de aanroeper toe aan de rol Lezer van facturering, Lezer, Eigenaar of Inzender om toegang te krijgen tot de gebruiksgegevens voor een specifiek Azure-abonnement.
 -   **Alleen voor Enterprise-klanten**: deze API is alleen beschikbaar voor EA-klanten.
     - Klanten moeten beschikken over Enterprise-beheerdersmachtigingen om deze API te kunnen aanroepen
 
-Zie de technische specificatie van de [API voor saldi](https://docs.microsoft.com/rest/api/consumption/balances) voor meer informatie.
+Zie de technische specificatie van de [API voor saldi](/rest/api/consumption/balances) voor meer informatie.
 
 ## <a name="budgets-api"></a>API voor budgetten
 
@@ -82,7 +82,7 @@ Enterprise-klanten kunnen deze API gebruiken om kosten- of gebruiksbudgetten te 
 
 De API omvat:
 
--   **Op rollen gebaseerd toegangsbeheer van Azure** (Azure RBAC): configureer toegangsbeleid via [Azure Portal](https://portal.azure.com), de [Azure-opdrachtregelinterface](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) of [Azure PowerShell-cmdlets](https://docs.microsoft.com/powershell/azure/) om op te geven welke gebruikers of toepassingen toegang kunnen krijgen tot de gebruiksgegevens van het abonnement. Aanroepers moeten standaard Azure Active Directory-tokens gebruiken voor verificatie. Voeg de aanroeper toe aan de rol Lezer van facturering, Lezer, Eigenaar of Inzender om toegang te krijgen tot de gebruiksgegevens voor een specifiek Azure-abonnement.
+-   **Op rollen gebaseerd toegangsbeheer van Azure** (Azure RBAC): configureer toegangsbeleid via [Azure Portal](https://portal.azure.com), de [Azure-opdrachtregelinterface](../../role-based-access-control/role-assignments-cli.md) of [Azure PowerShell-cmdlets](/powershell/azure/) om op te geven welke gebruikers of toepassingen toegang kunnen krijgen tot de gebruiksgegevens van het abonnement. Aanroepers moeten standaard Azure Active Directory-tokens gebruiken voor verificatie. Voeg de aanroeper toe aan de rol Lezer van facturering, Lezer, Eigenaar of Inzender om toegang te krijgen tot de gebruiksgegevens voor een specifiek Azure-abonnement.
 -   **Alleen voor Enterprise-klanten**: deze API is alleen beschikbaar voor EA-klanten.
 -   **Configureerbare meldingen**: geef een of meer gebruikers op die moeten worden gewaarschuwd als het budget wordt overschreden.
 -   **Op gebruik of kosten gebaseerde budgetten**: maak uw budget op basis van het verbruik of de kosten, al naargelang de behoeften voor uw scenario.
@@ -92,7 +92,7 @@ De API omvat:
     - Meter
 -   **Configureerbare tijdsperioden voor budgetten**: geef op hoe vaak het budget opnieuw moet worden ingesteld en hoe lang het budget geldig is.
 
-Zie de technische specificatie van de [API voor budgetten](https://docs.microsoft.com/rest/api/consumption/budgets) voor meer informatie.
+Zie de technische specificatie van de [API voor budgetten](/rest/api/consumption/budgets) voor meer informatie.
 
 ## <a name="reservation-recommendations-api"></a>API voor aanbevelingen voor reserveringen
 
@@ -100,13 +100,13 @@ Gebruik deze API om aanbevelingen te krijgen voor het kopen van gereserveerde in
 
 De API omvat:
 
--   **Op rollen gebaseerd toegangsbeheer van Azure** (Azure RBAC): configureer toegangsbeleid via [Azure Portal](https://portal.azure.com), de [Azure-opdrachtregelinterface](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) of [Azure PowerShell-cmdlets](https://docs.microsoft.com/powershell/azure/) om op te geven welke gebruikers of toepassingen toegang kunnen krijgen tot de gebruiksgegevens van het abonnement. Aanroepers moeten standaard Azure Active Directory-tokens gebruiken voor verificatie. Voeg de aanroeper toe aan de rol Lezer van facturering, Lezer, Eigenaar of Inzender om toegang te krijgen tot de gebruiksgegevens voor een specifiek Azure-abonnement.
+-   **Op rollen gebaseerd toegangsbeheer van Azure** (Azure RBAC): configureer toegangsbeleid via [Azure Portal](https://portal.azure.com), de [Azure-opdrachtregelinterface](../../role-based-access-control/role-assignments-cli.md) of [Azure PowerShell-cmdlets](/powershell/azure/) om op te geven welke gebruikers of toepassingen toegang kunnen krijgen tot de gebruiksgegevens van het abonnement. Aanroepers moeten standaard Azure Active Directory-tokens gebruiken voor verificatie. Voeg de aanroeper toe aan de rol Lezer van facturering, Lezer, Eigenaar of Inzender om toegang te krijgen tot de gebruiksgegevens voor een specifiek Azure-abonnement.
 -   **Filteren**: verfijn uw aanbevelingsresultaten met behulp van de volgende filters:
     - Bereik
     - Bewaarperiode
 -   **Reserveringsgegevens voor verschillende typen aanbiedingen**: de reserveringsinformatie is momenteel beschikbaar voor Enterprise- en Web direct-klanten.
 
-Zie de technische specificatie van de [API voor aanbevelingen voor reserveringen](https://docs.microsoft.com/rest/api/consumption/reservationrecommendations) voor meer informatie.
+Zie de technische specificatie van de [API voor aanbevelingen voor reserveringen](/rest/api/consumption/reservationrecommendations) voor meer informatie.
 
 ## <a name="reservation-details-api"></a>API voor reserveringsdetails
 
@@ -114,12 +114,12 @@ Gebruik deze API om informatie over eerder aangeschafte VM-reserveringen te beki
 
 De API omvat:
 
--   **Op rollen gebaseerd toegangsbeheer van Azure** (Azure RBAC): configureer toegangsbeleid via [Azure Portal](https://portal.azure.com), de [Azure-opdrachtregelinterface](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) of [Azure PowerShell-cmdlets](https://docs.microsoft.com/powershell/azure/) om op te geven welke gebruikers of toepassingen toegang kunnen krijgen tot de gebruiksgegevens van het abonnement. Aanroepers moeten standaard Azure Active Directory-tokens gebruiken voor verificatie. Voeg de aanroeper toe aan de rol Lezer van facturering, Lezer, Eigenaar of Inzender om toegang te krijgen tot de gebruiksgegevens voor een specifiek Azure-abonnement.
+-   **Op rollen gebaseerd toegangsbeheer van Azure** (Azure RBAC): configureer toegangsbeleid via [Azure Portal](https://portal.azure.com), de [Azure-opdrachtregelinterface](../../role-based-access-control/role-assignments-cli.md) of [Azure PowerShell-cmdlets](/powershell/azure/) om op te geven welke gebruikers of toepassingen toegang kunnen krijgen tot de gebruiksgegevens van het abonnement. Aanroepers moeten standaard Azure Active Directory-tokens gebruiken voor verificatie. Voeg de aanroeper toe aan de rol Lezer van facturering, Lezer, Eigenaar of Inzender om toegang te krijgen tot de gebruiksgegevens voor een specifiek Azure-abonnement.
 -   **Filteren**: verfijn de API-resultatenset tot een kleinere set van reserveringen met behulp van het volgende filter:
     - Datumbereik
 -   **Reserveringsgegevens voor verschillende typen aanbiedingen**: de reserveringsinformatie is momenteel beschikbaar voor Enterprise- en Web direct-klanten.
 
-Zie de technische specificatie van de [API voor reserveringsdetails](https://docs.microsoft.com/rest/api/consumption/reservationsdetails) voor meer informatie.
+Zie de technische specificatie van de [API voor reserveringsdetails](/rest/api/consumption/reservationsdetails) voor meer informatie.
 
 ## <a name="reservation-summaries-api"></a>API voor reserveringssamenvattingen
 
@@ -127,23 +127,23 @@ Gebruik deze API om samengevatte informatie over eerder aangeschafte VM-reserver
 
 De API omvat:
 
--   **Op rollen gebaseerd toegangsbeheer van Azure** (Azure RBAC): configureer toegangsbeleid via [Azure Portal](https://portal.azure.com), de [Azure-opdrachtregelinterface](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) of [Azure PowerShell-cmdlets](https://docs.microsoft.com/powershell/azure/) om op te geven welke gebruikers of toepassingen toegang kunnen krijgen tot de gebruiksgegevens van het abonnement. Aanroepers moeten standaard Azure Active Directory-tokens gebruiken voor verificatie. Voeg de aanroeper toe aan de rol Lezer van facturering, Lezer, Eigenaar of Inzender om toegang te krijgen tot de gebruiksgegevens voor een specifiek Azure-abonnement.
+-   **Op rollen gebaseerd toegangsbeheer van Azure** (Azure RBAC): configureer toegangsbeleid via [Azure Portal](https://portal.azure.com), de [Azure-opdrachtregelinterface](../../role-based-access-control/role-assignments-cli.md) of [Azure PowerShell-cmdlets](/powershell/azure/) om op te geven welke gebruikers of toepassingen toegang kunnen krijgen tot de gebruiksgegevens van het abonnement. Aanroepers moeten standaard Azure Active Directory-tokens gebruiken voor verificatie. Voeg de aanroeper toe aan de rol Lezer van facturering, Lezer, Eigenaar of Inzender om toegang te krijgen tot de gebruiksgegevens voor een specifiek Azure-abonnement.
 -   **Filteren**: verfijn uw resultaten voor het dagelijkse overzicht met het volgende filter:
     - Gebruiksdatum
 -   **Reserveringsgegevens voor verschillende typen aanbiedingen**: de reserveringsinformatie is momenteel beschikbaar voor Enterprise- en Web direct-klanten.
 -   **Dagelijkse of maandelijkse aggregaties**: aanroepers kunnen opgeven of de reserveringssamenvattingsgegevens worden opgenomen in het dagelijkse of maandelijkse overzicht.
 
-Zie de technische specificatie van de [API voor reserveringssamenvattingen](https://docs.microsoft.com/rest/api/consumption/reservationssummaries) voor meer informatie.
+Zie de technische specificatie van de [API voor reserveringssamenvattingen](/rest/api/consumption/reservationssummaries) voor meer informatie.
 
 ## <a name="price-sheet-api"></a>API voor prijzenoverzichten
 Enterprise-klanten kunnen deze API gebruiken om de aangepaste prijzen voor alle meters op te halen. Ondernemingen kunnen deze informatie gebruiken in combinatie met de gebruiksdetails en Marketplace-gebruiksgegevens om kostenberekeningen uit te voeren op basis van gebruiks- en Marketplace-gegevens.
 
 De API omvat:
 
--   **Op rollen gebaseerd toegangsbeheer van Azure** (Azure RBAC): configureer toegangsbeleid via [Azure Portal](https://portal.azure.com), de [Azure-opdrachtregelinterface](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) of [Azure PowerShell-cmdlets](https://docs.microsoft.com/powershell/azure/) om op te geven welke gebruikers of toepassingen toegang kunnen krijgen tot de gebruiksgegevens van het abonnement. Aanroepers moeten standaard Azure Active Directory-tokens gebruiken voor verificatie. Voeg de aanroeper toe aan de rol Lezer van facturering, Lezer, Eigenaar of Inzender om toegang te krijgen tot de gebruiksgegevens voor een specifiek Azure-abonnement.
+-   **Op rollen gebaseerd toegangsbeheer van Azure** (Azure RBAC): configureer toegangsbeleid via [Azure Portal](https://portal.azure.com), de [Azure-opdrachtregelinterface](../../role-based-access-control/role-assignments-cli.md) of [Azure PowerShell-cmdlets](/powershell/azure/) om op te geven welke gebruikers of toepassingen toegang kunnen krijgen tot de gebruiksgegevens van het abonnement. Aanroepers moeten standaard Azure Active Directory-tokens gebruiken voor verificatie. Voeg de aanroeper toe aan de rol Lezer van facturering, Lezer, Eigenaar of Inzender om toegang te krijgen tot de gebruiksgegevens voor een specifiek Azure-abonnement.
 -   **Alleen voor Enterprise-klanten**: deze API is alleen beschikbaar voor EA-klanten. Web Direct-klanten dienen de RateCard-API te gebruiken voor het ophalen van prijzen.
 
-Zie de technische specificatie van de [API voor prijzenoverzichten](https://docs.microsoft.com/rest/api/consumption/pricesheet) voor meer informatie.
+Zie de technische specificatie van de [API voor prijzenoverzichten](/rest/api/consumption/pricesheet) voor meer informatie.
 
 ## <a name="scenarios"></a>Scenario 's
 

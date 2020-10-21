@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: overview
 ms.date: 10/01/2020
 ms.author: banders
-ms.openlocfilehash: d8c9f35ec7a8db3a777e48a629e4af1f15090a89
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 5aeb9046b8901580e4de37b1735a2d2dddd42fce
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91652360"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147450"
 ---
 # <a name="what-are-azure-reservations"></a>Wat zijn Azure-reserveringen?
 
@@ -129,5 +129,5 @@ Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](
     - [Azure Cosmos DB-resources met gereserveerde Azure Cosmos DB-capaciteit](../../cosmos-db/cosmos-db-reserved-capacity.md)
     - [Berekeningsresources van SQL Database met gereserveerde capaciteit voor Azure SQL Database](../../azure-sql/database/reserved-capacity-overview.md)
     - [Resources van Azure Cache voor Redis met gereserveerde capaciteit voor Azure Cache voor Redis](../../azure-cache-for-redis/cache-reserved-pricing.md) Meer informatie over reserveringen voor software-abonnementen:
-    - [Red Hat-softwareabonnementen vanuit Azure-reserveringen](../../virtual-machines/linux/prepay-rhel-software-charges.md)
+    - [Red Hat-softwareabonnementen vanuit Azure-reserveringen](../../virtual-machines/linux/prepay-suse-software-charges.md)
     - [SUSE-softwareabonnementen vanuit Azure-reserveringen](../../virtual-machines/linux/prepay-suse-software-charges.md)

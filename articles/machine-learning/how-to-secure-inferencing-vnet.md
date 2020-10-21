@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/12/2020
 ms.custom: contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 806505e5ac9c9b3dcf53624a1151961b0db45ef9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e778538efe97266eb73f85e8548a9cd5ca1f53c4
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972506"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341308"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Een Azure Machine Learning omgeving voor het afwijzen van interferentie beveiligen met virtuele netwerken
 
@@ -119,11 +119,11 @@ Wanneer het maken van het proces is voltooid, kunt u het decoderen of model lere
 
 Er zijn twee benaderingen voor het isoleren van verkeer van en naar het AKS-cluster naar het virtuele netwerk:
 
-* __Persoonlijk AKS-cluster__: deze benadering maakt gebruik van een persoonlijke Azure-koppeling voor het maken van een persoonlijk eind punt voor het AKS-cluster binnen het VNet.
-* __Interne AKS Load Balancer__: met deze aanpak configureert u de Load Balancer voor het cluster om een intern IP-adres in het VNet te gebruiken.
+* __Persoonlijk AKS-cluster__: deze benadering maakt gebruik van een persoonlijke Azure-koppeling om de communicatie met het cluster te beveiligen voor implementatie-en beheer bewerkingen.
+* __Interne AKS Load Balancer__: met deze aanpak configureert u het eind punt voor uw implementaties naar AKS voor het gebruik van een privé-IP-adres in het virtuele netwerk.
 
 > [!WARNING]
-> Beide configuraties zijn verschillende manieren om hetzelfde doel te krijgen (het beveiligen van verkeer naar het AKS-cluster binnen het VNet). **Gebruik een van de twee, maar niet beide**.
+> **Gebruik een privé-AKS of interne Load Balancer, maar niet beide**.
 
 ### <a name="private-aks-cluster"></a>Persoonlijk AKS-cluster
 

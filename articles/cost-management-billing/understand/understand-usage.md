@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: d113ad7d3de3478fbbdcce32363e048b7a8a75ce
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 559fe43bbd9b8951a97733ae1250046f65f10404
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88681733"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149363"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Meer informatie over de gebruiksvoorwaarden in uw bestand voor Azure-gebruik en -kosten
 
@@ -90,8 +90,8 @@ PublisherType | Alle | Het type uitgever (waarden: **Azure**, **AWS**, **Marketp
 Aantal | Alle | Het aantal eenheden dat is aangeschaft of verbruikt.
 ReservationId | EA, MCA | De unieke id voor de aangeschafte reserveringsinstantie.
 ReservationName | EA, MCA | De naam voor de aangeschafte reserveringsinstantie.
-ResourceGroup | Alle | De naam van de [resourcegroep](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) waarin de resource zich bevindt. Niet alle kosten zijn afkomstig van resources die zijn geïmplementeerd in resourcegroepen. Kosten zonder resourcegroep worden weergegeven als null/leeg, **Overige** of **Niet van toepassing**.
-ResourceId<sup>1</sup> | Alle | De unieke id van de [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/resources)-resource.
+ResourceGroup | Alle | De naam van de [resourcegroep](../../azure-resource-manager/management/overview.md) waarin de resource zich bevindt. Niet alle kosten zijn afkomstig van resources die zijn geïmplementeerd in resourcegroepen. Kosten zonder resourcegroep worden weergegeven als null/leeg, **Overige** of **Niet van toepassing**.
+ResourceId<sup>1</sup> | Alle | De unieke id van de [Azure Resource Manager](/rest/api/resources/resources)-resource.
 ResourceLocation | Alle | De locatie van het datacenter waarop de resource wordt uitgevoerd. Zie Locatie.
 ResourceName | EA, PAYG | De naam van de resource. Niet alle kosten zijn afkomstig van geïmplementeerde resources. Kosten zonder resourcetype worden weergegeven als null/leeg, **Overige** of **Niet van toepassing**.
 ResourceType | MCA | Het type resource-instantie. Niet alle kosten zijn afkomstig van geïmplementeerde resources. Kosten zonder resourcetype worden weergegeven als null/leeg, **Overige** of **Niet van toepassing**.

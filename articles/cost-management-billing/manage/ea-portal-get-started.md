@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 0404e3b268f5797e34b3818df8eebeefbe68a1f3
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 617351d5d1bdf9b6528803552e2d34766e9ab217
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371946"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132649"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>Aan de slag met de Azure Enterprise-portal
 
@@ -561,7 +561,7 @@ U kunt binnen uw Azure EA-inschrijving net zoveel afdelingen maken als u nodig h
 
 Nadat u afdelingen en abonnementen hebt gemaakt, kunt u gegevens bekijken in het gebruiksrapport. Deze informatie kan u helpen bij het bijhouden van gebruik en het beheren van kosten en uitgaven op afdelingsniveau.
 
-U kunt gebruiksgegevens ook bekijken via de rapportage-API. Raadpleeg [Azure Enterprise REST API’s](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-rest-apis) voor gedetailleerde informatie en voorbeeldcode.
+U kunt gebruiksgegevens ook bekijken via de rapportage-API. Raadpleeg [Azure Enterprise REST API’s](./ea-portal-rest-apis.md) voor gedetailleerde informatie en voorbeeldcode.
 
 ### <a name="can-i-set-a-spending-quota-and-get-alerts-as-i-approach-my-limit"></a>Kan ik een bestedingsquotum instellen en meldingen krijgen als ik in de buurt kom van mijn limiet?
 
@@ -573,7 +573,7 @@ Selecteer een afdeling en vervolgens het pictogram Bewerken om een bestedingsquo
 
 Als u _resourcegroepen_ en _tags_ gebruikt, wordt deze informatie bijgehouden op serviceniveau en kunt u de gegevens raadplegen in het downloadbare CSV-bestand met gedetailleerde gebruiksinformatie. Zie het gedeelte [Gebruiksrapport downloaden](https://ea.azure.com/report/downloadusage) in de Azure Enterprise-portal.
 
-U kunt de gegevens ook raadplegen via een API. Raadpleeg [Azure Enterprise REST API’s](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-rest-apis) voor gedetailleerde informatie en voorbeeldcode.
+U kunt de gegevens ook raadplegen via een API. Raadpleeg [Azure Enterprise REST API’s](./ea-portal-rest-apis.md) voor gedetailleerde informatie en voorbeeldcode.
 
 > [!NOTE]
 > U kunt alleen tags toepassen op resources die ondersteuning bieden voor Azure Resource Manager-bewerkingen. Als u een virtuele machine, virtueel netwerk of opslag hebt gemaakt via het klassieke implementatiemodel (zoals via de klassieke portal), kunt u geen tag op die resource toepassen. U moet deze resources opnieuw implementeren via de Resource Manager om tags te ondersteunen. Tags worden wel door alle andere resources ondersteund.

@@ -8,12 +8,12 @@ ms.date: 10/05/2020
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.openlocfilehash: 6f8a7292ff21fbf287a4144abaf8e006513718e5
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 96b6467d0d529f5839c33182057f3aa3c39cb6e7
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017009"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132547"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Een partner-id aan uw Azure-accounts koppelen
 
@@ -25,13 +25,13 @@ PAL stelt Microsoft in staat om partners te identificeren en te herkennen die Az
 
 Voordat u uw partner-id koppelt, moet uw klant u toegang geven tot hun Azure-resources door een van de volgende opties te gebruiken:
 
-- **Gastgebruiker**: Uw klant kan u als gastgebruiker toevoegen en elke willekeurige Azure-rol aan u toewijzen. Zie [Gastgebruikers uit een andere directory toevoegen](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) voor meer informatie.
+- **Gastgebruiker**: Uw klant kan u als gastgebruiker toevoegen en elke willekeurige Azure-rol aan u toewijzen. Zie [Gastgebruikers uit een andere directory toevoegen](../../active-directory/external-identities/what-is-b2b.md) voor meer informatie.
 
 - **Directoryaccount**: Uw klant kan een gebruikersaccount voor u maken in zijn eigen directory en elke willekeurige Azure-rol aan u toewijzen.
 
 - **Service-principal**: Uw klant kan een app of script uit uw organisatie in zijn directory toevoegen en elke willekeurige Azure-rol aan u toewijzen. De identiteit van de app of het script staat bekend als een service-principal.
 
-- **Azure Lighthouse**: Uw klant kan een abonnement (of resourcegroep) delegeren zodat uw gebruikers ermee kunnen werken vanuit de tenant. Zie [gedelegeerd resourcebeheer van Azure](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management) voor meer informatie.
+- **Azure Lighthouse**: Uw klant kan een abonnement (of resourcegroep) delegeren zodat uw gebruikers ermee kunnen werken vanuit de tenant. Zie [gedelegeerd resourcebeheer van Azure](../../lighthouse/concepts/azure-delegated-resource-management.md) voor meer informatie.
 
 ## <a name="link-to-a-partner-id"></a>Koppelen aan een partner-id
 
@@ -55,7 +55,7 @@ Wanneer u toegang hebt tot de resources van de klant, gebruikt u Azure Portal, P
 
 1. Installeer de PowerShell-module [Az.ManagementPartner](https://www.powershellgallery.com/packages/Az.ManagementPartner/).
 
-2. Meld u bij de tenant van de klant aan met het gebruikersaccount of de service-principal. Zie [Aanmelden met PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps) voor meer informatie.
+2. Meld u bij de tenant van de klant aan met het gebruikersaccount of de service-principal. Zie [Aanmelden met PowerShell](/powershell/azure/authenticate-azureps) voor meer informatie.
 
    ```azurepowershell-interactive
     C:\> Connect-AzAccount -TenantId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
@@ -89,7 +89,7 @@ C:\> remove-AzManagementPartner -PartnerId 12345
     C:\ az extension add --name managementpartner
     ```
 
-2. Meld u bij de tenant van de klant aan met het gebruikersaccount of de service-principal. Zie [Aanmelden met de Azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest) voor meer informatie.
+2. Meld u bij de tenant van de klant aan met het gebruikersaccount of de service-principal. Zie [Aanmelden met de Azure CLI](/cli/azure/authenticate-azure-cli) voor meer informatie.
 
     ```azurecli-interactive
     C:\ az login --tenant <tenant>
@@ -152,9 +152,9 @@ Rapporten over de prestaties van cloudproducten zijn voor partners beschikbaar v
 
 Wanneer u de klant niet in de rapporten ziet, kan dit de volgende redenen hebben
 
-1. Het gekoppelde gebruikersaccount biedt geen [op rollen gebaseerd toegangsbeheer van Azure (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) op welk Azure-abonnement of welke Azure-resource van die klant ook.
+1. Het gekoppelde gebruikersaccount biedt geen [op rollen gebaseerd toegangsbeheer van Azure (Azure RBAC)](../../role-based-access-control/overview.md) op welk Azure-abonnement of welke Azure-resource van die klant ook.
 
-2. Het Azure-abonnement waarbij de gebruiker [op rollen gebaseerd toegangsbeheer (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) heeft, heeft geen gebruik.
+2. Het Azure-abonnement waarbij de gebruiker [op rollen gebaseerd toegangsbeheer (Azure RBAC)](../../role-based-access-control/overview.md) heeft, heeft geen gebruik.
 
 **Werken gekoppelde partner-id's met Azure Stack?**
 

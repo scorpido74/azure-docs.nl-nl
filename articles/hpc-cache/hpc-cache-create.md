@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: bed158fb99654bd48184073b1266ae630255558b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 867cfa1321106c24354b29ea803a4fb914a6778d
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613166"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341377"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Een HPC-cache van Azure maken
 
@@ -81,7 +81,7 @@ Nadat u de cache hebt gemaakt, moet u deze machtigen voor het gebruik van de sle
 
 ## <a name="add-resource-tags-optional"></a>Resource Tags toevoegen (optioneel)
 
-Op de pagina **Tags** kunt u [resource Tags](https://go.microsoft.com/fwlink/?linkid=873112) toevoegen aan uw Azure HPC-cache-exemplaar.
+Op de pagina **Tags** kunt u [resource Tags](../azure-resource-manager/management/tag-resources.md) toevoegen aan uw Azure HPC-cache-exemplaar.
 
 ## <a name="finish-creating-the-cache"></a>Het maken van de cache volt ooien
 
@@ -196,7 +196,7 @@ Het bericht bevat nuttige informatie, waaronder de volgende items:
 
 ## <a name="requirements"></a>Vereisten
 
-Als u PowerShell lokaal wilt gebruiken, moet u voor dit artikel de Az-module van PowerShell installeren en verbinding maken met uw Azure-account met behulp van de cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount). Zie [Azure PowerShell installeren](/powershell/azure/install-az-ps) voor meer informatie over het installeren van de Az-module van PowerShell. Als u Cloud Shell gebruikt, raadpleegt u [Overzicht van Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) voor meer informatie.
+Als u PowerShell lokaal wilt gebruiken, moet u voor dit artikel de Az-module van PowerShell installeren en verbinding maken met uw Azure-account met behulp van de cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount). Zie [Azure PowerShell installeren](/powershell/azure/install-az-ps) voor meer informatie over het installeren van de Az-module van PowerShell. Als u Cloud Shell gebruikt, raadpleegt u [Overzicht van Azure Cloud Shell](../cloud-shell/overview.md) voor meer informatie.
 
 > [!IMPORTANT]
 > Hoewel de Power shell-module **AZ. HPCCache** in preview is, moet u deze afzonderlijk installeren met behulp van de `Install-Module` cmdlet. Nadat deze Power shell-module algemeen beschikbaar is, zal deze deel uitmaken van toekomstige AZ Power shell-module releases en beschikbaar zijn vanuit Azure Cloud Shell.

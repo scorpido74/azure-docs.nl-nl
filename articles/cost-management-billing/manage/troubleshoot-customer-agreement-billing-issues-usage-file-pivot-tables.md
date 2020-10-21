@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: troubleshooting
 ms.date: 10/09/2020
 ms.author: banders
-ms.openlocfilehash: 2ca4affaeae7f19cf3c913b5dfcf89a04e5bc628
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 32c0779f4086574aeaf8d38ea675f80fbd2c1ec7
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92026357"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132224"
 ---
 # <a name="troubleshoot-mca-billing-issues-with-usage-file-pivot-tables"></a>Problemen met de facturering van de Microsoft-klantovereenkomst oplossen met de draaitabellen van het gebruiksbestand
 
@@ -27,13 +27,13 @@ Dit artikel helpt u bij het oplossen van problemen met de facturering van de Mic
 
 Door gebruik te maken van de gegevens in uw gebruiksbestanden, kunt u een beter inzicht krijgen in de gebruiksproblemen en deze vaststellen. Gebruiksbestanden worden gegenereerd in CSV-indeling (door komma's gescheiden). Omdat de gebruiksbestanden grote CSV-bestanden kunnen zijn, zijn ze gemakkelijker te bewerken en weer te geven als draaitabellen in een spreadsheettoepassing als Excel. Voorbeelden in dit artikel maken gebruik van Excel, maar u kunt elke gewenste spreadsheettoepassing gebruiken.
 
-Alleen eigenaren van factureringsprofielen, medewerkers, lezers of factuurbeheerders hebben toestemming gebruiksbestanden te downloaden. Zie [Gebruiksgegevens voor uw Microsoft-klantovereenkomst downloaden](https://docs.microsoft.com/azure/cost-management-billing/manage/download-azure-invoice-daily-usage-date#download-usage-for-your-microsoft-customer-agreement) voor meer informatie. 
+Alleen eigenaren van factureringsprofielen, medewerkers, lezers of factuurbeheerders hebben toestemming gebruiksbestanden te downloaden. Zie [Gebruiksgegevens voor uw Microsoft-klantovereenkomst downloaden](./download-azure-invoice-daily-usage-date.md#download-usage-for-your-microsoft-customer-agreement) voor meer informatie. 
 
 ## <a name="get-the-data-and-format-it"></a>De gegevens ophalen en opmaken
 
 Omdat Azure-gebruiksbestanden een CSV-indeling hebben, moet u de gegevens voorbereiden voor gebruik in Excel. Gebruik de volgende stappen om de gegevens als tabel op te maken.
 
-1. Download het gebruiksbestand met behulp van de instructies op [Uw gebruik downloaden in de Azure-portal](https://docs.microsoft.com/azure/cost-management-billing/manage/download-azure-invoice-daily-usage-date#download-usage-in-azure-portal).
+1. Download het gebruiksbestand met behulp van de instructies op [Uw gebruik downloaden in de Azure-portal](./download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal).
 1. Open het bestand in Excel.
 1. De niet-opgemaakte gegevens lijken op het volgende voorbeeld.  
     :::image type="content" source="./media/troubleshoot-customer-agreement-billing-issues-usage-file-pivot-tables/raw-csv-data-mca.png" alt-text="Voorbeeld met niet-opgemaakte gegevens" lightbox="./media/troubleshoot-customer-agreement-billing-issues-usage-file-pivot-tables/raw-csv-data-mca.png" :::

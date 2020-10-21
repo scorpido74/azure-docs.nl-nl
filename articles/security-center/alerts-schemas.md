@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2020
 ms.author: memildin
-ms.openlocfilehash: 264cab08fa967af783b758ed1030826d2a179e8a
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 082f246437cdd99b844d1ed8010d8dc846fc4d47
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220666"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341937"
 ---
 # <a name="security-alerts-schemas"></a>Schema's voor beveiligings waarschuwingen
 
@@ -24,9 +24,9 @@ Als Azure Defender is ingeschakeld voor uw abonnement, ontvangt u beveiligings w
 
 U kunt deze beveiligings waarschuwingen bekijken op de pagina's van Azure Security Center **Threat Protection** of via externe hulpprogram ma's, zoals:
 
-- [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/) : de Cloud-native Siem van micro soft. De Sentinel-connector ontvangt waarschuwingen van Azure Security Center en verzendt deze naar de [log Analytics-werk ruimte](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) voor Azure Sentinel.
-- Siem's van derden: gebruik de [continue export](continuous-export.md) hulpprogramma's van Security Center om gegevens te verzenden naar [Azure Event hubs](https://docs.microsoft.com/azure/event-hubs/). Integreer vervolgens uw event hub-gegevens met een SIEM van derden.
-- [De rest API](https://docs.microsoft.com/rest/api/securitycenter/) : als u de rest API gebruikt voor toegang tot waarschuwingen, raadpleegt u de [online Alerts API-documentatie](https://docs.microsoft.com/rest/api/securitycenter/alerts).
+- [Azure Sentinel](../sentinel/index.yml) : de Cloud-native Siem van micro soft. De Sentinel-connector ontvangt waarschuwingen van Azure Security Center en verzendt deze naar de [log Analytics-werk ruimte](../azure-monitor/learn/quick-create-workspace.md) voor Azure Sentinel.
+- Siem's van derden: gebruik de [continue export](continuous-export.md) hulpprogramma's van Security Center om gegevens te verzenden naar [Azure Event hubs](../event-hubs/index.yml). Integreer vervolgens uw event hub-gegevens met een SIEM van derden.
+- [De rest API](/rest/api/securitycenter/) : als u de rest API gebruikt voor toegang tot waarschuwingen, raadpleegt u de [online Alerts API-documentatie](/rest/api/securitycenter/alerts).
 
 Als u een programmatische methode gebruikt om de waarschuwingen te verbruiken, hebt u het juiste schema nodig om de velden te vinden die relevant zijn voor u. Als u exporteert naar een event hub of als u werk stroom automatisering wilt activeren met algemene HTTP-connectors, gebruikt u de schema's om de JSON-objecten correct te parseren.
 
@@ -60,7 +60,7 @@ De Sentinel-connector ontvangt waarschuwingen van Azure Security Center en verze
 
 Als u een verklikker Case of incident wilt maken met behulp van Security Center waarschuwingen, hebt u het schema nodig voor de hieronder weer gegeven waarschuwingen. 
 
-Raadpleeg [de documentatie](https://docs.microsoft.com/azure/sentinel/)voor meer informatie over Azure Sentinel.
+Raadpleeg [de documentatie](../sentinel/index.yml)voor meer informatie over Azure Sentinel.
 
 [!INCLUDE [Sentinel and workspace schema](../../includes/security-center-alerts-schema-log-analytics-workspace.md)]
 
@@ -172,7 +172,7 @@ U kunt de gebeurtenissen voor beveiligings waarschuwingen in het activiteiten lo
 
 Microsoft Graph is de gateway naar gegevens en intelligentie in Microsoft 365. Het biedt een uniform programmeerbaar model dat u kunt gebruiken voor toegang tot de enorme hoeveelheid gegevens in Microsoft 365, Windows 10 en Enterprise Mobility + Security. Gebruik de schat aan gegevens in Microsoft Graph om apps te bouwen voor organisaties en consumenten die met miljoenen gebruikers communiceren.
 
-Het schema en een JSON-weer gave voor beveiligings waarschuwingen die naar MS Graph worden verzonden, zijn beschikbaar in [de Microsoft Graph documentatie](https://docs.microsoft.com/graph/api/resources/alert?view=graph-rest-1.0&preserve-view=true).
+Het schema en een JSON-weer gave voor beveiligings waarschuwingen die naar MS Graph worden verzonden, zijn beschikbaar in [de Microsoft Graph documentatie](/graph/api/resources/alert?preserve-view=true&view=graph-rest-1.0).
 
 ---
 
@@ -183,7 +183,7 @@ In dit artikel worden de schema's beschreven die worden gebruikt bij het verzend
 
 Zie de volgende pagina's voor meer informatie over de manieren om toegang te krijgen tot beveiligings waarschuwingen van buiten Security Center:
 
-- [Azure-Sentinel](https://docs.microsoft.com/azure/sentinel/) : de Cloud-native Siem van micro soft
-- [Azure-Event hubs](https://docs.microsoft.com/azure/event-hubs/) -de volledig beheerde, realtime Service voor gegevens opname van micro soft
+- [Azure-Sentinel](../sentinel/index.yml) : de Cloud-native Siem van micro soft
+- [Azure-Event hubs](../event-hubs/index.yml) -de volledig beheerde, realtime Service voor gegevens opname van micro soft
 - De [functie continue export](continuous-export.md) van Security Center
-- [Log Analytics werk ruimten](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) : Azure monitor slaat logboek gegevens op in een log Analytics-werk ruimte, een container die gegevens en configuratie gegevens bevat
+- [Log Analytics werk ruimten](../azure-monitor/learn/quick-create-workspace.md) : Azure monitor slaat logboek gegevens op in een log Analytics-werk ruimte, een container die gegevens en configuratie gegevens bevat

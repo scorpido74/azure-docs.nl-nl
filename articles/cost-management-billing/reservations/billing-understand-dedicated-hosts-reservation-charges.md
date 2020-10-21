@@ -7,12 +7,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: banders
-ms.openlocfilehash: f9080d13c4358a03b3f13ffcf346af42e49c47c6
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 8d273aae3588a006f7b0a55d2798b7a43c040c9b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689453"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148371"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-azure-dedicated-hosts"></a>Hoe korting voor Azure-reserveringen wordt toegepast op Azure Dedicated Hosts
 
@@ -36,17 +36,16 @@ Als u vragen hebt of hulp nodig hebt,  [kunt u een ondersteuningsaanvraag maken
 
 Raadpleeg de volgende artikelen voor meer informatie over Azure-reserveringen:
 
-- [Wat zijn reserveringen voor Azure?](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)
+- [Wat zijn reserveringen voor Azure?](./save-compute-costs-reservations.md)
 
-- [Azure Dedicated Host gebruiken](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts)
+- [Azure Dedicated Host gebruiken](../../virtual-machines/dedicated-hosts.md)
 
 - [Prijzen van Dedicated Host](https://azure.microsoft.com/pricing/details/virtual-machines/dedicated-host/)
 
-- [Reserveringen voor Azure beheren](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)
+- [Reserveringen voor Azure beheren](./manage-reserved-vm-instance.md)
 
-- [Inzicht in het gebruik van reserveringen voor uw abonnement met betalen per gebruik](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage)
+- [Inzicht in het gebruik van reserveringen voor uw abonnement met betalen per gebruik](./understand-reserved-instance-usage.md)
 
-- [Inzicht in het gebruik van reserveringen voor Enterprise-inschrijvingen](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)
+- [Inzicht in het gebruik van reserveringen voor Enterprise-inschrijvingen](./understand-reserved-instance-usage-ea.md)
 
-- [Inzicht in het gebruik van reserveringen voor CSP-abonnementen](https://docs.microsoft.com/partner-center/azure-reservations)
-
+- [Inzicht in het gebruik van reserveringen voor CSP-abonnementen](/partner-center/azure-reservations)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 5695f9fa090419d803f4f3603b45b771321e5ce9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 061b190af6e66cf0c7e8095251a3ef77d9aaf247
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91301445"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341682"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>Veelgestelde vragen: algemene vragen over Azure Security Center
 
@@ -62,7 +62,7 @@ Zie [beveiligings beleid instellen in azure Security Center](tutorial-security-p
 Azure Security Center analyseert de beveiligingsstatus van uw Azure-bronnen. Als er mogelijke beveiligings problemen worden geïdentificeerd, worden er aanbevelingen gemaakt. De aanbevelingen begeleiden u bij het configureren van het vereiste besturings element. Een aantal voorbeelden:
 
 * Inrichting van anti-malware voor het identificeren en verwijderen van schadelijke software
-* [Netwerk beveiligings groepen](../virtual-network/security-overview.md) en-regels voor het beheren van verkeer naar virtuele machines
+* [Netwerk beveiligings groepen](../virtual-network/network-security-groups-overview.md) en-regels voor het beheren van verkeer naar virtuele machines
 * Het inrichten van een Web Application Firewall om te helpen bij het beschermen van aanvallen die gericht zijn op uw webtoepassingen
 * Implementatie van ontbrekende systeemupdates
 * Aanpassing van besturingssysteemconfiguraties die niet overeenkomen met de aanbevolen basislijnen

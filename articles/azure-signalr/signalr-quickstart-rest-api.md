@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 13e11bb6064888ac36a2d2801fee3db1e9e9fcba
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 85cda8458dca4ce24fed9433af1527f49a2393ad
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89050502"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150977"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>Quickstart: In realtime berichten verzenden via de console-app
 
@@ -64,7 +64,7 @@ U kunt ook zien hoe u een toegangstoken kunt genereren voor verificatie met Azur
 
 ### <a name="build-the-executable-file"></a>Het uitvoerbare bestand maken
 
-We gebruiken macOS osx.10.13-x64 als voorbeeld. U kunt [naslaginformatie](https://docs.microsoft.com/dotnet/core/rid-catalog) vinden over het maken op andere platforms.
+We gebruiken macOS osx.10.13-x64 als voorbeeld. U kunt [naslaginformatie](/dotnet/core/rid-catalog) vinden over het maken op andere platforms.
 
 ```bash
 cd AzureSignalR-samples/samples/Serverless/

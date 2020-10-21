@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2020
 ms.author: memildin
-ms.openlocfilehash: 02e78969ce30f109f16309075b040b06c773b0dd
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 88ab04eb69be0f9f765e6f95a0ea1194189d823a
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946214"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341259"
 ---
 # <a name="monitor-identity-and-access"></a>Identiteit en toegang bewaken
 
@@ -30,7 +30,7 @@ Door de activiteiten en configuratie-instellingen die betrekking hebben op ident
 
 Azure Security Center heeft twee specifieke beveiligings controles om ervoor te zorgen dat u voldoet aan de identiteits-en beveiligings vereisten van uw organisatie: 
 
- - **Toegang en machtigingen beheren** : we raden u aan het [toegangs model voor de minimale bevoegdheid te gebruiken](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models) en ervoor te zorgen dat u uw gebruikers alleen de toegang verleent die nodig zijn om hun taken uit te voeren. Dit besturings element bevat ook aanbevelingen voor het implementeren van [op rollen gebaseerd toegangs beheer (RBAC)](../role-based-access-control/overview.md) om toegang tot uw resources te beheren.
+ - **Toegang en machtigingen beheren** : we raden u aan het [toegangs model voor de minimale bevoegdheid te gebruiken](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models) en ervoor te zorgen dat u uw gebruikers alleen de toegang verleent die nodig zijn om hun taken uit te voeren. Dit besturings element bevat ook aanbevelingen voor het implementeren van [op rollen gebaseerd toegangs beheer (RBAC)](../role-based-access-control/overview.md) om toegang tot uw resources te beheren.
  
  - **Schakel MFA** in als u [MFA](https://www.microsoft.com/security/business/identity/mfa) hebt ingeschakeld, uw accounts veilig zijn en gebruikers nog steeds kunnen worden geverifieerd bij vrijwel elke toepassing met eenmalige aanmelding.
 
@@ -84,7 +84,7 @@ Als u wilt zien voor welke accounts geen MFA is ingeschakeld, gebruikt u de volg
     > De accounts worden weer gegeven als object-Id's in plaats van account namen om de privacy van de account houders te beveiligen.
 
 > [!TIP]
-> U kunt ook de evaluaties van de methode REST API van Security Center gebruiken [-ophalen](https://docs.microsoft.com/rest/api/securitycenter/assessments/get).
+> U kunt ook de evaluaties van de methode REST API van Security Center gebruiken [-ophalen](/rest/api/securitycenter/assessments/get).
 
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -8,18 +8,18 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 06/15/2020
 ms.author: memildin
-ms.openlocfilehash: c31d3136ec4bcdf6da7680d41de078f8bd03d256
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b5dc30de19704b5e8950515cfa6224b4bbdbaf0
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447103"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341343"
 ---
 # <a name="manage-security-incidents-in-azure-security-center"></a>Beveiligings incidenten beheren in Azure Security Center
 
 Uitsorteren en onderzoek van beveiligings waarschuwingen kan tijdrovend zijn voor zelfs de meest ervaren beveiligings analisten. Voor veel is het moeilijk te weten waar u moet beginnen. 
 
-Security Center gebruikt [Analytics](security-center-detection-capabilities.md) om de informatie te verbinden tussen afzonderlijke [beveiligings waarschuwingen](security-center-managing-and-responding-alerts.md). Met deze verbindingen kunt Security Center een enkele weer gave van een aanvals campagne en de bijbehorende waarschuwingen bieden die u helpen de acties van de aanvaller en de betrokken resources te begrijpen.
+Security Center gebruikt [Analytics](./security-center-alerts-overview.md) om de informatie te verbinden tussen afzonderlijke [beveiligings waarschuwingen](security-center-managing-and-responding-alerts.md). Met deze verbindingen kunt Security Center een enkele weer gave van een aanvals campagne en de bijbehorende waarschuwingen bieden die u helpen de acties van de aanvaller en de betrokken resources te begrijpen.
 
 Op deze pagina vindt u een overzicht van incidenten in Security Center.
 

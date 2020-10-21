@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: be2dd4235883601b0b13c5783e4c7c7c106c20e9
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 0691ec320b62ed212235a63dacedcf3ec38a23ba
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682022"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151476"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-database-for-mariadb"></a>Hoe reserveringskorting wordt toegepast bij de uitvoering van Azure Database for MariaDB
 
@@ -30,7 +30,7 @@ De korting voor gereserveerde capaciteit van Azure Database for MariaDB wordt op
 
 In de volgende voorbeelden ziet u hoe de korting voor de gereserveerde capaciteit voor Azure Database for MariaDB wordt toegepast, afhankelijk van het aantal kernen dat u hebt aangeschaft en wanneer ze worden uitgevoerd.
 
-* **Voorbeeld 1**: U koopt gereserveerde capaciteit voor Azure Database for MariaDB met 8 vCores. Als u actieve Azure Database for MariaDB-servers hebt met 16 vCores die overeenkomen met de rest van de kenmerken van de reservering, worden er kosten in rekening gebracht voor het berekeningsgebruik van 8 vCores van uw MariaDB-server en krijgt u de reserveringskorting voor een uur van het berekeningsgebruik van 8 vCores van de MariaDB-server.
+**Voorbeeld 1**: U koopt gereserveerde capaciteit voor Azure Database for MariaDB met 8 vCores. Als u actieve Azure Database for MariaDB-servers hebt met 16 vCores die overeenkomen met de rest van de kenmerken van de reservering, worden er kosten in rekening gebracht voor het berekeningsgebruik van 8 vCores van uw MariaDB-server en krijgt u de reserveringskorting voor een uur van het berekeningsgebruik van 8 vCores van de MariaDB-server.
 
 Voor de rest van deze voorbeelden wordt ervan uitgegaan dat u gereserveerde capaciteit voor Azure Database for MariaDB met 16 vCores koopt en dat de rest van de reserveringskenmerken overeenkomen met de actieve MariaDB-servers.
 
@@ -40,7 +40,7 @@ Voor de rest van deze voorbeelden wordt ervan uitgegaan dat u gereserveerde capa
 
 * **Voorbeeld 4**: U hebt een actieve Azure Database for MariaDB met 16 vCores van 13 uur tot 13:45 uur. U hebt nog een actieve Azure Database for MariaDB met 16 vCores van 13:30 uur tot 14:00 uur. Voor de overlapping van 15 minuten wordt de prijs voor betalen per gebruik in rekening gebracht. De reserveringskorting geldt voor het rekengebruik voor de rest van de tijd.
 
-Raadpleeg [Meer informatie over Azure-reserveringsgebruik](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea) voor meer informatie over en inzicht in hoe uw Azure-reserveringen worden toegepast in uw gebruiksrapporten voor facturering.
+Raadpleeg [Meer informatie over Azure-reserveringsgebruik](./understand-reserved-instance-usage-ea.md) voor meer informatie over en inzicht in hoe uw Azure-reserveringen worden toegepast in uw gebruiksrapporten voor facturering.
 
 ## <a name="next-steps"></a>Volgende stappen
 

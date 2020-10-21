@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 44f7ce657ea9341779e15f6e4817e8fae1515e47
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: d6d0d0a4c4b3328fa50777b5106bac202c9972ef
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685966"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151499"
 ---
 # <a name="save-on-sap-hana-large-instances-with-an-azure-reservation"></a>Besparen op SAP HANA Large Instances met een Azure-reservering
 
@@ -32,15 +32,15 @@ U moet een HLI-SKU inrichten voordat u de gereserveerde capaciteit gaat kopen. U
 - U kunt geen gedeeld reserveringsbereik gebruiken met gereserveerde HANA-capaciteit. U kunt een reserveringsbereik niet splitsen, samenvoegen of bijwerken.
 - U kunt één HLI tegelijk kopen met behulp van de API-aanroepen voor gereserveerde capaciteit. Voer extra API-aanroepen uit om extra hoeveelheden te kopen.
 
-U kunt gereserveerde capaciteit kopen in de Azure-portal of door gebruik te maken van de [REST-API](https://docs.microsoft.com/rest/api/reserved-vm-instances/reservationorder/purchase).
+U kunt gereserveerde capaciteit kopen in de Azure-portal of door gebruik te maken van de [REST-API](/rest/api/reserved-vm-instances/reservationorder/purchase).
 
 ## <a name="buy-a-hana-large-instance-reservation"></a>Een reservering voor HANA Large Instance kopen
 
-Gebruik de volgende informatie om een HLI-reservering te kopen met de [REST-API's ReservationOrder](https://docs.microsoft.com/rest/api/reserved-vm-instances/reservationorder/purchase).
+Gebruik de volgende informatie om een HLI-reservering te kopen met de [REST-API's ReservationOrder](/rest/api/reserved-vm-instances/reservationorder/purchase).
 
 ### <a name="get-the-reservation-order-and-price"></a>De reserveringsorder en prijs opvragen
 
-Haal eerst de reserveringsorder en prijs op voor de ingerichte SKU van HANA Large Instance. Dit kan met behulp van de API [calculatePrice](https://docs.microsoft.com/rest/api/reserved-vm-instances/reservationorder/calculate).
+Haal eerst de reserveringsorder en prijs op voor de ingerichte SKU van HANA Large Instance. Dit kan met behulp van de API [calculatePrice](/rest/api/reserved-vm-instances/reservationorder/calculate).
 
 In het volgende voorbeeld wordt [armclient](https://github.com/projectkudu/ARMClient) gebruikt om REST API-aanroepen te maken met PowerShell. Hieronder ziet u hoe de reserveringsorder, de aanroep van de API calculatePrice en de tekst van de aanvraag eruit moeten zien:
 
@@ -220,7 +220,7 @@ Hier worden de verschillende reserveringsvelden besproken.
 
   **sku**: de naam van de HLI-SKU. Deze ziet er uit als `SAP_HANA_On_Azure_<SKUname>`.
 
-  **location**: de beschikbare HLI-regio's. Zie [Beschikbare SKU's voor SAP HANA in Azure (Large Instances)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-available-skus) voor de beschikbare regio's. Als u de notatie van de tekenreeks voor de locatie wilt opvragen, gebruikt u [GET met de API locations](https://docs.microsoft.com/rest/api/resources/subscriptions/listlocations#locationlistresult).
+  **location**: de beschikbare HLI-regio's. Zie [Beschikbare SKU's voor SAP HANA in Azure (Large Instances)](../../virtual-machines/workloads/sap/hana-available-skus.md) voor de beschikbare regio's. Als u de notatie van de tekenreeks voor de locatie wilt opvragen, gebruikt u [GET met de API locations](/rest/api/resources/subscriptions/listlocations#locationlistresult).
 
   **reservedResourceType**: `SapHana`
 
@@ -248,5 +248,5 @@ location. You can also go to https://aka.ms/corequotaincrease to learn about quo
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het [aanroepen van Azure REST-API's met Postman en cURL](https://docs.microsoft.com/rest/api/azure/#how-to-call-azure-rest-apis-with-postman).
-- Zie [Beschikbare SKU's voor SAP HANA in Azure (Large Instances)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-available-skus) voor een overzicht van de beschikbare SKU's en regio's.
+- Meer informatie over het [aanroepen van Azure REST-API's met Postman en cURL](/rest/api/azure/#how-to-call-azure-rest-apis-with-postman).
+- Zie [Beschikbare SKU's voor SAP HANA in Azure (Large Instances)](../../virtual-machines/workloads/sap/hana-available-skus.md) voor een overzicht van de beschikbare SKU's en regio's.

@@ -10,19 +10,19 @@ ms.subservice: billing
 ms.topic: troubleshooting
 ms.date: 08/20/2020
 ms.author: v-miegge
-ms.openlocfilehash: 3e611e25288d52b0be93c76e8a3a28ce6d7d5088
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 91b3b7b71524c76006ad4d431774e05e47fd0266
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326603"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131068"
 ---
 # <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal-or-azure-account-center"></a>Problemen oplossen wanneer u een nieuw account registreert in de Azure-portal of in het Azure-accountcentrum
 
 Er kan een probleem optreden wanneer u zich in Microsoft Azure Portal of het Azure-accountcentrum probeert te registreren voor een nieuw account. In deze korte handleiding doorloopt u het registratieproces en worden enkele veelvoorkomende problemen bij elke stap besproken.
 
 > [!NOTE]
-> Als u al een bestaand account hebt en hulp nodig hebt bij het oplossen van aanmeldingsproblemen, raadpleegt u [Aanmeldingsproblemen voor Azure-abonnementen oplossen](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-sign-in-issue).
+> Als u al een bestaand account hebt en hulp nodig hebt bij het oplossen van aanmeldingsproblemen, raadpleegt u [Aanmeldingsproblemen voor Azure-abonnementen oplossen](./troubleshoot-sign-in-issue.md).
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -76,8 +76,8 @@ U kunt dit probleem oplossen door het volgende te controleren:
 
 #### <a name="you-see-the-message-your-current-account-type-is-not-supported"></a>U ziet het bericht 'Uw huidige accounttype wordt niet ondersteund'
 
-Dit probleem kan zich voordoen als het account is geregistreerd in een [niet-beheerde Azure AD-directory](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-self-service-signup) en niet is opgenomen in de Azure AD-directory van uw organisatie.
-U kunt dit probleem oplossen door het Azure-account te registreren met behulp van een ander account of door de niet-beheerde AD-directory over te nemen. Zie [Een niet-beheerde directory overnemen als beheerder in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover) voor meer informatie.
+Dit probleem kan zich voordoen als het account is geregistreerd in een [niet-beheerde Azure AD-directory](../../active-directory/users-groups-roles/directory-self-service-signup.md) en niet is opgenomen in de Azure AD-directory van uw organisatie.
+U kunt dit probleem oplossen door het Azure-account te registreren met behulp van een ander account of door de niet-beheerde AD-directory over te nemen. Zie [Een niet-beheerde directory overnemen als beheerder in Azure Active Directory](../../active-directory/users-groups-roles/domains-admin-takeover.md) voor meer informatie.
 
 ## <a name="identity-verification-by-phone"></a>Identiteitverificatie via telefoon
 
@@ -107,7 +107,7 @@ Hier volgen enkele aanvullende tips:
 
 #### <a name="credit-card-declined-or-not-accepted"></a>De creditcard wordt afgewezen of niet geaccepteerd
 
-Virtuele of prepaidcreditcards of -debitcards worden niet geaccepteerd als betaalmethode voor Azure-abonnementen. Zie [Problemen met een geweigerde kaart bij Azure-aanmelding oplossen](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-declined-card) om te ontdekken waardoor uw kaart nog meer kan zijn afgewezen.
+Virtuele of prepaidcreditcards of -debitcards worden niet geaccepteerd als betaalmethode voor Azure-abonnementen. Zie [Problemen met een geweigerde kaart bij Azure-aanmelding oplossen](./troubleshoot-declined-card.md) om te ontdekken waardoor uw kaart nog meer kan zijn afgewezen.
 
 #### <a name="credit-card-form-doesnt-support-my-billing-address"></a>Het creditcardformulier biedt geen ondersteuning voor mijn factuuradres
 
@@ -144,7 +144,7 @@ Ga akkoord met de overeenkomst.
 Controleer of u de juiste aanmeldingsreferenties gebruikt. Controleer vervolgens het voordeelprogramma om na te gaan of u wel in aanmerking komt.
 - MSDN
   - Controleer uw geschiktheidsstatus op uw [MSDN-accountpagina](https://msdn.microsoft.com/subscriptions/manage/default.aspx).
-  - Als u uw status niet kunt controleren, neemt u contact op met de [klantenservicecenters voor MSDN-abonnementen](https://msdn.microsoft.com/library/aa493452.aspx).
+  - Als u uw status niet kunt controleren, neemt u contact op met de [klantenservicecenters voor MSDN-abonnementen](/previous-versions/mappoint/aa493452(v=msdn.10)).
 - Microsoft for Startups
   - Meld u aan bij de [Microsoft for Startups-portal](https://startups.microsoft.com/#start-two) om uw geschiktheidsstatus voor Microsoft te verifiëren voor opstarten.
   - Als u uw status niet kunt verifiëren, kunt u ondersteuning krijgen via de [Microsoft for Startups-forums](https://www.microsoftpartnercommunity.com/t5/Microsoft-for-Startups/ct-p/Microsoft_Startups).
@@ -161,10 +161,10 @@ Als u een Azure In Open-abonnement wilt maken, moet u een geldige OSA-sleutel (O
 
 Andere artikelen met probleemoplossingen voor Azure Billing en abonnementen
 
-- [Geweigerde kaart](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-declined-card)
-- [Aanmeldingsproblemen voor abonnementen](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-sign-in-issue)
-- [Geen abonnementen gevonden](https://docs.microsoft.com/azure/cost-management-billing/manage/no-subscriptions-found)
-- [Weergave voor bedrijfskosten is uitgeschakeld](https://docs.microsoft.com/azure/cost-management-billing/manage/enterprise-mgmt-grp-troubleshoot-cost-view)
+- [Geweigerde kaart](./troubleshoot-declined-card.md)
+- [Aanmeldingsproblemen voor abonnementen](./troubleshoot-sign-in-issue.md)
+- [Geen abonnementen gevonden](./no-subscriptions-found.md)
+- [Weergave voor bedrijfskosten is uitgeschakeld](./enterprise-mgmt-grp-troubleshoot-cost-view.md)
 
 ## <a name="contact-us-for-help"></a>Contact met ons opnemen voor ondersteuning
 
@@ -172,4 +172,4 @@ Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](
 
 ## <a name="find-out-more-about-azure-cost-management"></a>Meer informatie over Azure Cost Management
 
-- [Documentatie voor Azure Cost Management en facturering](https://docs.microsoft.com/azure/cost-management-billing)
+- [Documentatie voor Azure Cost Management en facturering](../index.yml)

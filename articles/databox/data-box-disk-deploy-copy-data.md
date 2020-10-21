@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: d964efd6d9923190a6fef92c91d357a8a650572d
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 9186c742f34f1c060b57ffdfbf1bf688607b4c03
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91766836"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125334"
 ---
 ::: zone target="docs"
 
@@ -273,7 +273,7 @@ Nadat het kopiëren van gegevens voltooid is, kunt u doorgaan met het valideren 
 
 Als u niet de Split Copy tool gebruikt hebt om gegevens te kopiëren, moet u uw gegevens valideren. Voer de volgende stappen uit om de gegevens te controleren.
 
-1. Voer `DataBoxDiskValidation.cmd` uit in de map *DataBoxDiskImport* van het station om de controlesom te controleren. Dit is enkel beschikbaar voor een Windows-omgeving. Linux-gebruikers moeten controleren of de brongegevens die naar de schijf worden gekopieerd, voldoen aan de [vereisten](https://docs.microsoft.com/azure/databox/data-box-disk-limits).
+1. Voer `DataBoxDiskValidation.cmd` uit in de map *DataBoxDiskImport* van het station om de controlesom te controleren. Dit is enkel beschikbaar voor een Windows-omgeving. Linux-gebruikers moeten controleren of de brongegevens die naar de schijf worden gekopieerd, voldoen aan de [vereisten](./data-box-disk-limits.md).
     
     ![Uitvoer van validatieprogramma van Data Box Disk](media/data-box-disk-deploy-copy-data/data-box-disk-validation-tool-output.png)
 
@@ -335,6 +335,6 @@ Voer de volgende stappen uit om uw gegevens te verifiëren.
 1. Voer `DataBoxDiskValidation.cmd` uit in de map *DataBoxDiskImport* van het station om de controlesom te controleren.
 2. Gebruik optie 2 om uw bestanden te valideren en controlesommen te genereren. Afhankelijk van de gegevensgrootte kan deze stap enige tijd in beslag nemen. Als er fouten optreden tijdens de validatie en het genereren van de controlesom, krijgt u hiervan een melding en ziet u ook een koppeling naar de foutenlogboeken.
 
-    Zie [Gegevens valideren](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-copy-data#validate-data) voor meer informatie over gegevensvalidatie. Zie [Problemen met validatiefouten oplossen](data-box-disk-troubleshoot.md) als tijdens de validatie fouten optreden.
+    Zie [Gegevens valideren](#validate-data) voor meer informatie over gegevensvalidatie. Zie [Problemen met validatiefouten oplossen](data-box-disk-troubleshoot.md) als tijdens de validatie fouten optreden.
 
 ::: zone-end

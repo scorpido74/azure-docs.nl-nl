@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 4d6208360bd876a2a1ae0a9ff154604a33584db9
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 4dff56db9f1450ff7eb2a2b9ca6f4ca648e2ac38
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447941"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150093"
 ---
 # <a name="get-started-with-your-microsoft-partner-agreement-billing-account"></a>Aan de slag met uw factureringsrekening voor Microsoft Partner-overeenkomst
 
@@ -29,7 +29,7 @@ Het volgende schema toont de relatie tussen een factureringsrekening, facturerin
 
 ![Diagram van de factureringshiërarchie voor Microsoft Partner-overeenkomst](./media/mpa-overview/mpa-hierarchy.svg)
 
-Gebruikers met de rol **Globale beheerder** en **Beheerderagent** in uw organisatie kunnen factureringsrekeningen, factureringsprofielen en klanten beheren. Zie [Partner Center - Assign users roles and permissions](https://docs.microsoft.com/partner-center/permissions-overview) (Engelstalig) voor meer informatie.
+Gebruikers met de rol **Globale beheerder** en **Beheerderagent** in uw organisatie kunnen factureringsrekeningen, factureringsprofielen en klanten beheren. Zie [Partner Center - Assign users roles and permissions](/partner-center/permissions-overview) (Engelstalig) voor meer informatie.
 
 ## <a name="billing-profiles"></a>Factureringsprofielen
 
@@ -47,7 +47,7 @@ U kunt klanten bekijken en beheren die een Microsoft-klantovereenkomst hebben ge
 
 ### <a name="enable-policy-to-give-visibility-into-cost"></a>Beleid inschakelen om kosten zichtbaar te maken
 
-U kunt beleid toepassen om te bepalen of gebruikers in de organisatie van de klant kosten kunnen bekijken en analyseren op basis van betalen-per-gebruik-tarieven voor hun Azure-verbruik. Standaard is dit beleid uitgeschakeld en kunnen gebruikers de kosten niet bekijken. Als dit beleid is ingeschakeld, kunnen de gebruikers met de juiste [Azure RBAC ](https://docs.microsoft.com/azure/role-based-access-control/overview)-toegang tot een abonnement de kosten voor het abonnement bekijken en analyseren.
+U kunt beleid toepassen om te bepalen of gebruikers in de organisatie van de klant kosten kunnen bekijken en analyseren op basis van betalen-per-gebruik-tarieven voor hun Azure-verbruik. Standaard is dit beleid uitgeschakeld en kunnen gebruikers de kosten niet bekijken. Als dit beleid is ingeschakeld, kunnen de gebruikers met de juiste [Azure RBAC ](../../role-based-access-control/overview.md)-toegang tot een abonnement de kosten voor het abonnement bekijken en analyseren.
 
 Het beleid inschakelen:
 
@@ -69,7 +69,7 @@ Het beleid inschakelen:
 
 ## <a name="resellers"></a>Resellers
 
-Indirecte providers in het CSP-[model met twee lagen](https://docs.microsoft.com/partner-center) kunnen een reseller selecteren tijdens het maken van abonnementen voor klanten in de Azure-portal. Na het maken kunnen ze de lijst met abonnementen gefilterd op een reseller weergeven en de kosten voor een klant per reseller analyseren in de Azure-kostenanalyse.
+Indirecte providers in het CSP-[model met twee lagen](/partner-center) kunnen een reseller selecteren tijdens het maken van abonnementen voor klanten in de Azure-portal. Na het maken kunnen ze de lijst met abonnementen gefilterd op een reseller weergeven en de kosten voor een klant per reseller analyseren in de Azure-kostenanalyse.
 
 ## <a name="check-access-to-a-microsoft-partner-agreement"></a>Toegang tot een Microsoft Partner-overeenkomst controleren
 [!INCLUDE [billing-check-mpa](../../../includes/billing-check-mpa.md)]
@@ -83,5 +83,5 @@ Als u hulp nodig hebt, kunt u [contact opnemen met ondersteuning](https://portal
 Raadpleeg de volgende artikelen voor meer informatie over uw factureringsaccount:
 
 - [Een extra Azure-abonnement voor Microsoft Partner-overeenkomst maken](../manage/create-subscription.md)
-- Integreer factureringsgegevens met uw eigen rapportagesysteem met behulp van de [Azure Billing-API's](https://docs.microsoft.com/rest/api/billing/)
-- [Azure Cost Management-quickstart voor partners](https://go.microsoft.com/fwlink/?linkid=2106482)
+- Integreer factureringsgegevens met uw eigen rapportagesysteem met behulp van de [Azure Billing-API's](/rest/api/billing/)
+- [Azure Cost Management-quickstart voor partners](../costs/get-started-partners.md)
