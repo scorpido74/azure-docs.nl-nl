@@ -1,14 +1,14 @@
 ---
 title: "Zelfstudie: Query's beheren in Azure-portal"
 description: In deze zelfstudie maakt u een Resource Graph-query en deelt u de nieuwe query met anderen in het Azure-portal.
-ms.date: 06/29/2020
+ms.date: 10/14/2020
 ms.topic: tutorial
-ms.openlocfilehash: f602a6ed26f467f2d3395bdf5e3346c83684b108
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 98d4c7d0493686a45bdfef9d85823432cb637a66
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005177"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057923"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>Zelfstudie: Een Azure Resource Graph-query maken en delen in het Azure-portal
 
@@ -60,8 +60,7 @@ Persoonlijke query's zijn alleen toegankelijk en zichtbaar voor het account dat 
 
 ## <a name="create-a-shared-query"></a>Een gedeelde query maken
 
-In tegenstelling tot een persoonlijke query is een gedeelde query een resource voor Resource Manager. Dit betekent dat de query wordt opgeslagen in een resourcegroep, kan worden beheerd met Azure RBAC en zelfs kan worden beveiligd met resourcevergrendelingen. Omdat het een resource is, kan iedereen met de juiste machtigingen de query zien en gebruiken.
-Om een nieuwe gedeelde query te maken, volgt u deze stappen:
+In tegenstelling tot een persoonlijke query is een gedeelde query een resource voor Resource Manager. Dit betekent dat de query wordt opgeslagen in een resourcegroep, kan worden beheerd met Azure RBAC en zelfs kan worden beveiligd met resourcevergrendelingen. Omdat het een resource is, kan iedereen met de juiste machtigingen de query zien en gebruiken. Om een nieuwe gedeelde query te maken, volgt u deze stappen:
 
 1. Selecteer in het portalmenu **Alle services** of gebruik het Azure-zoekvak bovenaan alle pagina's om **Resource Graph Explorer** te zoeken en te selecteren.
 
@@ -89,7 +88,7 @@ Om een nieuwe gedeelde query te maken, volgt u deze stappen:
 
 1. Selecteer **Opslaan** aan de onderkant van het deelvenster **Query opslaan**. De titel van het tabblad verandert van **Query 1** naar **Aantal vm's per besturingssysteem**. De eerste keer dat de resourcegroep **resource-graph-query's** wordt gebruikt, duurt het opslaan langer dan verwacht, omdat de resourcegroep wordt gemaakt.
    
-   :::image type="content" source="../media/create-share-query/save-shared-query-window.png" alt-text="De nieuwe query opslaan als een gedeelde query" border="false":::
+   :::image type="content" source="../media/create-share-query/save-shared-query-window.png" alt-text="Sla de nieuwe query op met de knop Opslaan" border="false":::
 
    > [!NOTE] 
    > U kunt het selectievakje **Publiceren naar resourcegroep resource-graph-query's** uitschakelen als u de naam van een bestaande resourcegroep wilt opgeven om de query in op te slaan. Als u de standaardnaam van de resourcegroep gebruikt voor query's, zijn de gedeelde query's eenvoudiger te vinden. Ook is zo het doel van die resourcegroep duidelijker. U kunt er echter om beveiligingsredenen op basis van bestaande machtigingen voor kiezen een bestaande resourcegroep te selecteren.
@@ -98,7 +97,7 @@ Om een nieuwe gedeelde query te maken, volgt u deze stappen:
 
 1. Selecteer **Een query openen**. Controleer of het type is ingesteld op **Gedeelde query** en dat de combinatie van **Abonnement** en **Resourcegroep** overeenkomen met waar u de query hebt opgeslagen. Nu verschijnt het item **Aantal vm's per besturingssysteem** in de lijst met **Querynamen**. Selecteer de titelkoppeling van de opgeslagen query om deze te laden in een nieuw tabblad met de naam van die query. Omdat het een gedeelde query is, wordt er in het tabblad naast de naam een pictogram weergegeven om aan te geven dat de query is gedeeld.
 
-   :::image type="content" source="../media/create-share-query/show-saved-shared-query.png" alt-text="De gedeelde query met pictogram weergeven" border="false":::
+   :::image type="content" source="../media/create-share-query/show-saved-shared-query.png" alt-text="Sla de nieuwe query op met de knop Opslaan" border="false":::
 
    > [!NOTE] 
    > Wanneer een opgeslagen query is geopend en het tabblad de naam weergeeft, wordt met de knop **Opslaan** de query bijgewerkt met alle aangebrachte wijzigingen. Om een nieuwe opgeslagen query te maken, selecteert u **Opslaan als** en gaat u door alsof u een nieuwe query opslaat.
@@ -107,7 +106,7 @@ Om een nieuwe gedeelde query te maken, volgt u deze stappen:
 
 Omdat een gedeelde query een resource is voor Resource Manager zijn er verschillende manieren om een gedeelde query te vinden:
 
-- Vanuit Resource Graph Explorer selecteert u **Een query openen** en stelt u het type in op **Gedeelde query**.
+- Vanuit Resource Graph Explorer. Selecteer **Een query openen** en stel het type in op **Gedeelde query**.
 - Vanuit de portalpagina Resource Graph-query's.
 - Vanuit de resourcegroep waarin de gedeelde query is opgeslagen.
 - Door een query uit te voeren op Resource Graph.

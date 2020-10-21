@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 940636a5e368a84aaaf0d4490bf874d56d3ddb6e
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: a714368fc0508149714eaa42f4741e1042376c52
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "78251893"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044952"
 ---
 # <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>Zelfstudie: Met behulp van Azure Portal taakverdeling van virtuele machines uitvoeren binnen een beschikbaarheidszone met Standard Load Balancer
 
@@ -38,6 +38,10 @@ Deze zelfstudie toont de stappen voor het maken van een openbare [Azure Standard
 Zie [Standard Load Balancer en beschikbaarheidszones](load-balancer-standard-availability-zones.md) voor meer informatie over het gebruik van beschikbaarheidszones met Standard Load Balancer.
 
 Als u dat liever wilt, kunt u [Azure CLI](load-balancer-standard-public-zonal-cli.md) gebruiken om deze zelfstudie te voltooien.
+
+## <a name="prerequisites"></a>Vereisten
+
+* Een Azure-abonnement
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -228,5 +232,6 @@ Verwijder de resourcegroep, de load balancer en alle gerelateerde resources, wan
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [Standard Load Balancer](load-balancer-standard-overview.md).
-- [Taken over VM's in meerdere beschikbaarheidszones verdelen](tutorial-load-balancer-standard-public-zone-redundant-portal.md).
+Ga door met het volgende artikel om te leren hoe u taken kunt verdelen over VM's in meerdere beschikbaarheidszones.
+> [!div class="nextstepaction"]
+> [Taken over VM's in meerdere beschikbaarheidszones verdelen](tutorial-load-balancer-standard-public-zone-redundant-portal.md)

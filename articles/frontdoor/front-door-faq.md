@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/18/2020
+ms.date: 10/20/2020
 ms.author: duau
-ms.openlocfilehash: c7a5a02a063f90953982d42fe9c7d2c6dc199b2a
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 1b49ac357fd021b23272112a24ae9371d12bc042
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282292"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331580"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Veelgestelde vragen over de voor deur van Azure
 
@@ -161,6 +161,10 @@ Meer informatie over alle gedocumenteerde [time-outs en limieten voor de Azure f
 ### <a name="how-long-does-it-take-for-a-rule-to-take-effect-after-being-added-to-the-front-door-rules-engine"></a>Hoe lang duurt het voordat een regel van kracht wordt nadat deze is toegevoegd aan de engine voor de voor deur regels?
 
 De configuratie van de regel engine duurt ongeveer 10 tot 15 minuten om een update te volt ooien. Zodra de update is voltooid, kunt u ervan uitgaan dat de regel van kracht wordt. 
+
+### <a name="can-i-configure-azure-cdn-behind-my-front-door-profile-or-vice-versa"></a>Kan ik Azure CDN configureren achter mijn front-deur profiel of andersom?
+
+De voor deur en het Azure CDN van Azure kunnen niet samen worden geconfigureerd, omdat beide services gebruikmaken van dezelfde Azure Edge-sites wanneer ze op aanvragen reageren. 
 
 ## <a name="performance"></a>Prestaties
 

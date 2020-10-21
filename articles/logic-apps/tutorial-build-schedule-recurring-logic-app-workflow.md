@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/30/2020
-ms.openlocfilehash: 3bf4ad12bab3e71675ff35203bf69526b3b8614f
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: aad271875abb9024a1ecc7f45018c04d8c79ce95
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91574578"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842560"
 ---
 # <a name="tutorial-create-schedule-based-and-recurring-automation-workflows-with-azure-logic-apps"></a>Zelfstudie: Op schema gebaseerde en terugkerende automatiseringswerkstromen maken met Azure Logic Apps
 
@@ -360,14 +360,14 @@ De logische app wordt uitgevoerd totdat u de app uitschakelt of verwijdert. Als 
 
 1. Voer in het zoekvak van de Azure Portal de naam in voor de resourcegroep die u hebt gemaakt. Selecteer uit de resultaten onder **Resourcegroepen** de resourcegroep.
 
-   In het voorbeeld wordt een resourcegroep gemaakt met de naam `LA-TravelTime-RG`. 
+   In het voorbeeld wordt een resourcegroep gemaakt met de naam `LA-TravelTime-RG`.
 
    ![Schermopname van het Azure-zoekvak met 'La-Travel-time-RG' ingevoerd en **LA-TravelTime-RG** geselecteerd.](./media/tutorial-build-scheduled-recurring-logic-app-workflow/find-resource-group.png)
 
    > [!TIP]
    > Als op de startpagina van Azure de resourcegroep onder **recente resources** wordt weergegeven, kunt u de groep selecteren op de startpagina.
 
-1. Controleer in het menu resourcegroep of **Overzicht** is geselecteerd. Selecteer op de pagina **Overzicht** de optie **Resourcegroep verwijderen**. 
+1. Controleer in het menu resourcegroep of **Overzicht** is geselecteerd. Selecteer op de pagina **Overzicht** de optie **Resourcegroep verwijderen**.
 
    ![Schermopname van het deelvenster Overzicht van de resourcegroep en waarbij op de werkbalk van het deelvenster 'resourcegroep verwijderen' is geselecteerd.](./media/tutorial-build-scheduled-recurring-logic-app-workflow/delete-resource-group.png)
 

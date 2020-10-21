@@ -14,12 +14,12 @@ ms.author: dbradish
 ms.reviewer: thsomasu
 ms.lastreviewed: 03/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5361931328ed107c7cc130b633a40b1582828aa1
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: ebed70a99e8e906db802099e052e69ab2575d737
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90024116"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91875021"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-using-the-azure-cli"></a>Een Azure notification hub maken met behulp van de Azure-CLI
 
@@ -32,17 +32,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 > [!IMPORTANT]
-> Voor Notification Hubs is versie 2.0.67 of hoger van de Azure-CLI vereist. Voer `az --version` uit om de versie en afhankelijke bibliotheken te vinden die zijn geïnstalleerd. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u CLI wilt installeren of upgraden.
-
-## <a name="install-the-azure-cli-extension"></a>De Azure CLI-extensie installeren
-
-Wanneer u met extensieverwijzingen voor de Azure-CLI werkt, moet u eerst de extensie installeren. Met Azure CLI-extensies hebt u toegang tot experimentele opdrachten en opdrachten in een evaluatieversie die niet zijn verzonden als onderdeel van de kern-CLI. Zie [Extensies gebruiken met Azure CLI](/cli/azure/azure-cli-extensions-overview) voor meer informatie over extensies, waaronder het bijwerken en verwijderen ervan.
-
-Installeer de Azure CLI -extensie voor Notification Hubs.
-
-```azurecli
-az extension add --name notification-hub
-```
+> Voor Notification Hubs is versie 2.0.67 of hoger van de Azure-CLI vereist. Voer [az version](/cli/azure/reference-index?#az_version) uit om de geïnstalleerde versie en afhankelijke bibliotheken te vinden. Voer [az upgrade](/cli/azure/reference-index?#az_upgrade) uit om te upgraden naar de nieuwste versie.
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 

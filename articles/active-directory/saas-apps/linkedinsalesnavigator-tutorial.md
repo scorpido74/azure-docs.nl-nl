@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: jeedes
-ms.openlocfilehash: cab4cd34458e6107c653859c97dfda12486a38a1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 32b856a80209c015c9fc96029bdf8d540b340c25
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549738"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91858163"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-linkedin-sales-navigator"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met LinkedIn Sales Navigator
 
@@ -145,11 +145,11 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Klik in **Accountcentrum** onder **Instellingen** op **Algemene instellingen**. Selecteer ook **Sales Navigator** in de vervolgkeuzelijst.
 
-    ![Eenmalige aanmelding configureren](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_01.png)
+    ![Schermopname van de toepassingsinstellingen waar u Sales Navigator kunt selecteren.](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_01.png)
 
 1. Klik op  **OF klik hier om afzonderlijke velden uit het formulier** te laden en te kopiëren en voer de volgende stappen uit:
 
-    ![Eenmalige aanmelding configureren](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_031.png)
+    ![Schermopname met Eenmalige aanmelding waarin u de beschreven waarden kunt invoeren.](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_031.png)
 
     a. Kopieer de waarde van de **entiteits-ID** en plak deze in het tekstvak **Id** in **Standaard SAML-configuratie** in de Azure-portal.
 
@@ -157,11 +157,11 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Ga naar het gedeelte **met beheerdersinstellingen voor LinkedIn**. Upload het XML-bestand dat u hebt gedownload uit de Azure-portal door op de optie **XML-bestand uploaden** te klikken.
 
-    ![Eenmalige aanmelding configureren](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_metadata_03.png)
+    ![Schermopname van het configureren van de instellingen voor eenmalige aanmelding voor de LinkedIn-serviceprovider waar u een XML-bestand kunt uploaden.](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_metadata_03.png)
 
 1. Klik op **Aan** om SSO in te schakelen. De SSO-status verandert van **Niet verbonden** naar **Verbonden**
 
-    ![Eenmalige aanmelding configureren](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_05.png)
+    ![Schermopname van eenmalige aanmelding waar u gebruikersverificatie met eenmalige aanmelding kunt inschakelen.](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_05.png)
 
 ### <a name="create-linkedin-sales-navigator-test-user"></a>Een testgebruiker voor de LinkedIn Sales Navigator maken
 

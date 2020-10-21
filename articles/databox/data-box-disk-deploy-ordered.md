@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: de481abd82b4fc7dd2eae3763f82b8dd96cc14a9
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: b24d3aa9b5071a69e3e3fb866dc5ba2ac3e57b19
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266522"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950938"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>Zelfstudie: Een Azure Data Box Disk bestellen
 
@@ -72,7 +72,7 @@ Voer de volgende stappen uit om Data Box Disk te bestellen.
   
 4. Selecteer **Data Box Disk**. De maximumcapaciteit van de oplossing voor één bestelling van 5 schijven is 35 TB. U kunt meerdere bestellingen doen voor grotere gegevensgrootten.
 
-     ![De optie Data Box Disk selecteren](media/data-box-disk-deploy-ordered/select-data-box-sku-zoom.png)
+     ![Optie 2 voor Data Box Disk selecteren](media/data-box-disk-deploy-ordered/select-data-box-sku-zoom.png)
 
 5. Voer in **Bestellen** de **Orderdetails** in. Voer de volgende informatie in of selecteer deze.
 

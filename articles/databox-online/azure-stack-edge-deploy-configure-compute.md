@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: b19bac439035da85d542d62f33e813822edc38d9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d2961bbf65fe1cf3ddf59c648f506cee85e248a5
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904585"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951618"
 ---
-# <a name="tutorial-transform-data-with-azure-stack-edge-pro"></a>Zelfstudie: Gegevens transformeren met Azure Stack Edge Pro
+# <a name="tutorial-transform-the-data-with-azure-stack-edge-pro"></a>Zelfstudie: gegevens transformeren met Azure Stack Edge Pro
 
 In deze zelfstudie wordt beschreven hoe u een rekenprocesrol configureert op uw Azure Stack Edge Pro-apparaat. Wanneer u de rekenrol hebt geconfigureerd, kan Azure Stack Edge Pro gegevens transformeren voordat deze naar Azure worden verzonden.
 
@@ -55,11 +55,11 @@ Als u de rekenproces wilt configureren voor uw Azure Stack Edge Pro, maakt u een
     |IoT Hub     | Kies uit **Nieuwe** of **Bestaande**. <br> Standaard wordt er een standaard-laag (S1) gebruikt voor het maken van een IoT-resource. Als u een IoT-resource in een gratis laag wilt gebruiken, maakt u er een en selecteert u vervolgens de bestaande resource. <br> In elk geval gebruikt de IoT Hub-resource hetzelfde abonnement en dezelfde resourcegroep die wordt gebruikt door de resource Azure Stack Edge.     |
     |Naam     |Voer een naam in voor uw IoT Hub-resource.         |
 
-    ![Aan de slag met rekenproces](./media/azure-stack-edge-deploy-configure-compute/configure-compute-2.png)
+    ![Aan de slag met rekenproces 2](./media/azure-stack-edge-deploy-configure-compute/configure-compute-2.png)
 
 4. Selecteer **Maken**. Het maken van de IoT Hub-resource duurt enkele minuten. Nadat de IoT Hub-resource is gemaakt, wordt de tegel **Rekenproces configureren** bijgewerkt om de configuratie van het rekenproces weer te geven. Als u wilt bevestigen dat de Edge-rekenprocesrol is geconfigureerd, selecteert u **Rekenproces weergeven** op de tegel **Rekenproces configureren**.
     
-    ![Aan de slag met rekenproces](./media/azure-stack-edge-deploy-configure-compute/configure-compute-3.png)
+    ![Aan de slag met rekenproces 3](./media/azure-stack-edge-deploy-configure-compute/configure-compute-3.png)
 
     > [!NOTE]
     > Als het dialoogvenster **Rekenproces configureren** wordt gesloten voordat de IoT Hub aan het Azure Stack Edge Pro-apparaat is gekoppeld, wordt de IoT Hub gemaakt, maar wordt deze niet weergegeven in de rekenprocesconfiguratie. 
@@ -138,19 +138,19 @@ Doe het volgende om te controleren of de module wordt uitgevoerd:
  
 1. Maak via Verkenner verbinding met zowel de lokale Edge-share als de Edge-shares die u eerder hebt gemaakt.
 
-    ![Gegevenstransformatie controleren](./media/azure-stack-edge-deploy-configure-compute/verify-data-2.png) 
+    ![Gegevenstransformatie controleren 2](./media/azure-stack-edge-deploy-configure-compute/verify-data-2.png) 
  
 1. Voeg gegevens toe aan de lokale share.
 
-    ![Gegevenstransformatie controleren](./media/azure-stack-edge-deploy-configure-compute/verify-data-3.png) 
+    ![Gegevenstransformatie controleren 3](./media/azure-stack-edge-deploy-configure-compute/verify-data-3.png) 
  
     De gegevens worden verplaatst naar de cloudshare.
 
-    ![Gegevenstransformatie controleren](./media/azure-stack-edge-deploy-configure-compute/verify-data-4.png)  
+    ![Gegevenstransformatie controleren 4](./media/azure-stack-edge-deploy-configure-compute/verify-data-4.png)  
 
     De gegevens worden vervolgens vanuit de cloudshare naar het opslagaccount gepusht. Ga naar de Storage Explorer om de gegevens te bekijken.
 
-    ![Gegevenstransformatie controleren](./media/azure-stack-edge-deploy-configure-compute/verify-data-5.png) 
+    ![Gegevenstransformatie controleren 5](./media/azure-stack-edge-deploy-configure-compute/verify-data-5.png) 
  
 U hebt het validatieproces voltooid.
 

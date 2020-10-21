@@ -1,14 +1,14 @@
 ---
 title: 'Quickstart: Uw eerste portalquery'
 description: In deze quickstart volgt u de stappen om uw eerste query vanuit de Azure-portal uit te voeren met behulp van Azure Resource Graph Explorer.
-ms.date: 08/10/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: 4d68366005ad6379669d29fb8264f78d1b8f4972
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b5f5203b3842ebc3edbd97bca1ca3c101f47e397
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88056377"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057379"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Quickstart: Uw eerste Resource Graph-query uitvoeren met Azure Resource Graph Explorer
 
@@ -51,7 +51,7 @@ De schemabrowser is een uitstekende manier om te verkennen welke eigenschappen u
 
 ## <a name="create-a-chart-from-the-resource-graph-query"></a>Een grafiek maken op basis van de Resource Graph-query
 
-Als u na het uitvoeren van de laatste query hierboven het tabblad **Grafieken** selecteert, wordt er een bericht weergegeven dat de resultatenset niet compatibel is met een visualisatie van een cirkeldiagram. Er kan geen grafiek worden gemaakt van query's die een lijst met resultaten weergeven, maar wel van query's die aantallen resources weergeven. Laten we een visualisatie van de Resource Graph-query maken met behulp van de [voorbeeldquery voor telling van het aantal virtuele machines op type besturingssysteem](./samples/starter.md#count-os).
+Als u na het uitvoeren van de vorige query het tabblad **Grafieken** selecteert, wordt er een bericht weergegeven dat de resultatenset niet compatibel is met een cirkeldiagramvisualisatie. Er kan geen grafiek worden gemaakt van query's die een lijst met resultaten weergeven, maar wel van query's die aantallen resources weergeven. Laten we een visualisatie van de Resource Graph-query maken met behulp van de [voorbeeldquery voor telling van het aantal virtuele machines op type besturingssysteem](./samples/starter.md#count-os).
 
 1. Voer in het gedeelte **Query 1** van het venster de volgende query in en selecteer **Query uitvoeren**.
 
@@ -67,7 +67,7 @@ Als u na het uitvoeren van de laatste query hierboven het tabblad **Grafieken** 
 
 ## <a name="pin-the-query-visualization-to-a-dashboard"></a>De visualisatie van de query vastmaken aan een dashboard
 
-Wanneer uw resultaten van een query kunnen worden gevisualiseerd, kan deze gegevensvisualisatie worden vastgemaakt aan een van uw dashboards. Voer de volgende stappen uit nadat u de bovenstaande query hebt uitgevoerd:
+Wanneer uw resultaten van een query kunnen worden gevisualiseerd, kan deze gegevensvisualisatie worden vastgemaakt aan een van uw dashboards. Voer de volgende stappen uit nadat u de vorige query hebt uitgevoerd:
 
 1. Selecteer **Opslaan** en geef de naam 'VM's per type besturingssysteem' op. Selecteer vervolgens **Opslaan** onder in het rechterdeelvenster.
 

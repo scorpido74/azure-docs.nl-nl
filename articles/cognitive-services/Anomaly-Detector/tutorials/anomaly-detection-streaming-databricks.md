@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Meer informatie over het gebruik van de Anomaly Detector-API en Azure Databricks voor het volgen van afwijkingen in uw gegevens.
 titlesuffix: Azure Cognitive Services
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 03/05/2020
-ms.author: aahi
-ms.openlocfilehash: 95ab400d645a2a2761e39c191cdb85e49e1c7a27
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.author: mbullwin
+ms.openlocfilehash: 8ef5d8e049ac4a779d5139945bf1073f38eb434c
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245601"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017655"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>Zelfstudie: Detectie van afwijkingen in streaming-gegevens met behulp van Azure Databricks
 
@@ -63,7 +63,7 @@ In deze sectie gaat u een Azure Databricks-werkruimte maken met behulp van [Azur
 
 1. Selecteer in Azure Portal **Een resource maken** > **Analyse** > **Azure Databricks**.
 
-    ![Databricks in de Azure-portal](../media/tutorials/azure-databricks-on-portal.png "Databricks in de Azure-portal")
+    ![Azure Databricks in de portal](../media/tutorials/azure-databricks-on-portal.png "Databricks in de Azure-portal")
 
 3. Geef bij **Azure Databricks Service** de volgende waarden op voor het maken van een Databricks-werkruimte:
 
@@ -115,7 +115,7 @@ Als u een stream van tweets wilt ontvangen, moet u een toepassing in Twitter mak
 
 3. Selecteer op de toepassingspagina het tabblad **Keys and Access Tokens** en kopieer de waarden voor **Consumer Key** en **Consumer Secret**. Selecteer ook **Create my access token** om de toegangstokens te genereren. Kopieer de waarden voor **Access Token** en **Access Token Secret**.
 
-    ![Details van Twitter-toepassing](../media/tutorials/twitter-app-key-secret.png "Details van Twitter-toepassing")
+    ![Twitter-toepassingsdetails 2](../media/tutorials/twitter-app-key-secret.png "Details van Twitter-toepassing")
 
 Sla de waarden op die u hebt opgehaald voor de Twitter-toepassing. U hebt deze waarden later in de zelfstudie nodig.
 
@@ -193,7 +193,7 @@ In deze sectie gaat u in de Databricks-werkruimte twee notitieblokken met de vol
 
 2. Voer in het dialoogvenster **Notitieblok maken** als naam **SendTweetsToEventHub** in, selecteer **Scala** als taal en selecteer het Apache Spark-cluster dat u eerder hebt gemaakt.
 
-    ![Notebook maken in Databricks](../media/tutorials/databricks-notebook-details.png "Notitieblok maken in Databricks")
+    ![Notebookdetails](../media/tutorials/databricks-notebook-details.png "Notitieblok maken in Databricks")
 
     Selecteer **Maken**.
 

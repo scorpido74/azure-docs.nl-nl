@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: 25a21107fd4b67a3a67b69a73401540d7b02b6b5
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 28849620863f8593e5187dbef9fc6cc978de1824
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91762073"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961784"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>Een Form Recognizer-model met labels trainen met behulp van REST API en Python
 
@@ -27,7 +27,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 U hebt het volgende nodig om deze quickstart te voltooien:
 - [Python](https://www.python.org/downloads/) moet zijn geïnstalleerd (als u het voorbeeld lokaal wilt uitvoeren).
-- Een set van minimaal zes formulieren van hetzelfde type. U gebruikt deze gegevens om het model te trainen en een formulier te testen. U kunt voor deze quickstart een [set met voorbeeldgegevens](https://go.microsoft.com/fwlink/?linkid=2090451) gebruiken. Upload de trainingsbestanden naar de hoofdmap van een Blob Storage-container in een Azure Storage-account met een standaardprestatielaag.
+- Een set van minimaal zes formulieren van hetzelfde type. U gebruikt deze gegevens om het model te trainen en een formulier te testen. U kunt voor deze quickstart een [set met voorbeeldgegevens](https://go.microsoft.com/fwlink/?linkid=2090451) gebruiken. Download *sample_data.zip* en pak het uit. Upload de trainingsbestanden naar de hoofdmap van een Blob Storage-container in een Azure Storage-account met een standaardprestatielaag.
 
 > [!NOTE]
 > In deze quickstart worden externe documenten gebruikt die worden geopend via URL. Raadpleeg de [referentiedocumentatie voor v2.0](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync) en de [referentiedocumentatie voor v2.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/TrainCustomModelAsync) als u lokale bestanden wilt gebruiken.

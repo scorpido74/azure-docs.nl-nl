@@ -1,6 +1,6 @@
 ---
-title: 'Azure-hand leiding: een Azure-sleutel kluis en een beleid voor kluis toegang maken met behulp van Azure Resource Manager sjabloon | Microsoft Docs'
-description: Laat zien hoe u Azure-sleutel kluizen en kluis toegangs beleid maakt met behulp van Azure Resource Manager sjabloon.
+title: Een Azure-sleutel kluis en een kluis toegangs beleid maken met behulp van ARM-sjabloon
+description: In dit artikel wordt beschreven hoe u Azure-sleutel kluizen en kluis toegangs beleid maakt met behulp van een Azure Resource Manager sjabloon.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,29 +10,29 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/5/2020
 ms.author: mbaldwin
-ms.openlocfilehash: cf19561005fe2e98b7b5cf6812ff9224fd9474dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f62e0b3a40382c911cd07c777c521adb3649c4d
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91804338"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282319"
 ---
-# <a name="how-to-create-azure-key-vault-and-vault-access-policy-using-a-resource-manager-template"></a>Azure Key Vault-en kluis toegangs beleid maken met behulp van een resource manager-sjabloon
+# <a name="how-to-create-an-azure-key-vault-and-vault-access-policy-by-using-a-resource-manager-template"></a>Een Azure-sleutel kluis en een beleid voor kluis toegang maken met behulp van een resource manager-sjabloon
 
-[Azure Key Vault](../general/overview.md) is een cloudservice die een veilig archief biedt voor geheimen, zoals sleutels, wachtwoorden, certificaten en andere geheimen. Deze hand leiding is gericht op het proces van het implementeren van een Azure Resource Manager sjabloon (ARM-sjabloon) om een sleutel kluis te maken.
+[Azure Key Vault](../general/overview.md) is een Cloud service die een veilig archief levert voor geheimen zoals sleutels, wacht woorden en certificaten. In dit artikel wordt het proces beschreven voor het implementeren van een Azure Resource Manager sjabloon (ARM-sjabloon) om een sleutel kluis te maken.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het voltooien van dit artikel, is het volgende vereist:
+Als u de stappen in dit artikel wilt uitvoeren:
 
 * Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 
-## <a name="create-key-vault-resource-manager-template"></a>Key Vault Resource Manager-sjabloon maken
+## <a name="create-a-key-vault-resource-manager-template"></a>Een Key Vault Resource Manager-sjabloon maken
 
-In de volgende sjabloon ziet u een eenvoudige manier om een sleutel kluis te maken. Sommige waarden worden opgegeven in de sjabloon.
+In de volgende sjabloon ziet u een eenvoudige manier om een sleutel kluis te maken. Sommige waarden zijn opgegeven in de sjabloon.
 
 ```json
 {
@@ -87,11 +87,11 @@ In de volgende sjabloon ziet u een eenvoudige manier om een sleutel kluis te mak
 Zie voor meer informatie over Key Vault-sjabloon instellingen [Key Vault arm-sjabloon verwijzing](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults).
 
 > [!IMPORTANT]
-> Als de sjabloon opnieuw wordt geïmplementeerd, wordt het bestaande toegangs beleid in de sleutel kluis overschreven. Het is raadzaam om `accessPolicies` eigenschap in te vullen met een bestaand toegangs beleid om verbroken toegang tot de sleutel kluis te voor komen. 
+> Als een sjabloon opnieuw wordt geïmplementeerd, worden alle bestaande toegangs beleid in de sleutel kluis genegeerd. U wordt aangeraden de `accessPolicies` eigenschap met een bestaand toegangs beleid in te vullen om te voor komen dat de toegang tot de sleutel kluis verloren gaat. 
 
-## <a name="add-access-policy-to-key-vault-resource-manager-template"></a>Toegangs beleid toevoegen aan Key Vault Resource Manager-sjabloon
+## <a name="add-an-access-policy-to-a-key-vault-resource-manager-template"></a>Een toegangs beleid toevoegen aan een Key Vault Resource Manager-sjabloon
 
-U kunt toegangs beleid implementeren voor een bestaande sleutel kluis zonder de volledige sleutel kluis sjabloon opnieuw te implementeren. In de volgende sjabloon ziet u een eenvoudige manier om toegangs beleid te maken.
+U kunt toegangs beleid implementeren voor een bestaande sleutel kluis zonder dat u de volledige sleutel kluis sjabloon opnieuw hoeft te implementeren. De volgende sjabloon toont een eenvoudige manier om toegangs beleid te maken:
 
 ```json
 {
@@ -162,21 +162,21 @@ U kunt toegangs beleid implementeren voor een bestaande sleutel kluis zonder de 
 ```
 Zie voor meer informatie over Key Vault-sjabloon instellingen [Key Vault arm-sjabloon verwijzing](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults/accesspolicies).
 
-## <a name="other-available-key-vault-resource-manager-templates"></a>Andere beschik bare Key Vault Resource Manager-sjablonen
+## <a name="more-key-vault-resource-manager-templates"></a>Meer Key Vault Resource Manager-sjablonen
 
 Er zijn andere Resource Manager-sjablonen beschikbaar voor Key Vault objecten:
 
 | Geheimen | Sleutels | Certificaten |
 |--|--|--|
-|[Snelstartgids](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-template)<br>[Verwijzing](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults/secrets)|N.v.t.|N.v.t.|
+|<ul><li>[Snelstartgids](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-template)<li>[Verwijzing](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults/secrets)|N.v.t.|N.v.t.|
 
-Meer Key Vault sjablonen die u hier kunt vinden: [Naslag informatie over Key Vault Resource Manager](https://docs.microsoft.com/azure/templates/microsoft.keyvault/allversions)
+U kunt hier meer Key Vault sjablonen vinden: [Key Vault Resource Manager-referentie](https://docs.microsoft.com/azure/templates/microsoft.keyvault/allversions).
 
 ## <a name="deploy-the-templates"></a>De sjablonen implementeren
 
-U kunt de Azure Portal gebruiken om bovenstaande sjablonen te implementeren met behulp van de optie uw eigen sjabloon in de editor bouwen in de onderstaande gids: [resources implementeren vanuit een aangepaste sjabloon](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal#deploy-resources-from-custom-template)
+U kunt de Azure Portal gebruiken om de voor gaande sjablonen te implementeren met behulp van de optie **uw eigen sjabloon bouwen in editor** , zoals hier wordt beschreven: [resources implementeren vanuit een aangepaste sjabloon](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal#deploy-resources-from-custom-template).
 
-U kunt bovenstaande sjablonen ook opslaan in bestanden en de volgende opdrachten gebruiken:  [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) en [AZ Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create):
+U kunt de voor gaande sjablonen ook opslaan in bestanden en deze opdrachten gebruiken:  [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) en [AZ Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create):
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile key-vault-template.json
@@ -188,7 +188,7 @@ az group deployment create --resource-group ExampleGroup --template-file key-vau
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u van plan bent om door te gaan en verder te werken met de volgende Quick starts en zelf studies, kunt u deze resources blijven gebruiken. Wanneer de resources niet meer nodig zijn, verwijdert u de resource groep, waarmee de sleutel kluis en gerelateerde resources worden verwijderd. Gebruik de volgende stappen om de resource groep te verwijderen met behulp van Azure CLI of Azure PowerShell.
+Als u van plan bent om door te gaan met de volgende Quick starts en zelf studies, kunt u deze resources op locatie laten staan. Als u de resources niet langer nodig hebt, verwijdert u de resource groep. Als u de groep verwijdert, worden de sleutel kluis en gerelateerde resources ook verwijderd. Voer de volgende stappen uit om de resource groep te verwijderen met behulp van Azure CLI of Azure PowerShell:
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -211,12 +211,12 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="resources"></a>Resources
 
-- Lees een [Overzicht van Azure Key Vault](../general/overview.md)
-- Meer informatie over [Azure Resource Manager](../../azure-resource-manager/management/overview.md)
-- Bekijk de [best practices voor Azure Key Vault](../general/best-practices.md)
+- Lees een [overzicht van Azure Key Vault](../general/overview.md).
+- Meer informatie over [Azure Resource Manager](../../azure-resource-manager/management/overview.md).
+- Bekijk [Azure Key Vault aanbevolen procedures](../general/best-practices.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Veilige toegang tot een sleutel kluis](secure-your-key-vault.md)
+- [Veilige toegang tot een sleutelkluis](secure-your-key-vault.md)
 - [Verifiëren bij een sleutel kluis](authentication.md)
 - [Ontwikkelaars handleiding Azure Key Vault](developers-guide.md)

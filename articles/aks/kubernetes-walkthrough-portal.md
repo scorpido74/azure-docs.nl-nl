@@ -4,14 +4,14 @@ titleSuffix: Azure Kubernetes Service
 description: Lees hoe u met Azure Portal snel een Kubernetes-cluster kunt maken, een toepassing kunt implementeren en de prestaties kunt bewaken in Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: quickstart
-ms.date: 09/11/2020
+ms.date: 10/06/2020
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 2331f2a9dc4ca0e94b251a03e7917547f360af4a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9a666f257cf2616d540a70d145647fbc73350cbd
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91459792"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850433"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Quickstart: Een AKS-cluster (Azure Kubernetes Service) implementeren met Azure Portal
 
@@ -37,15 +37,15 @@ Voltooi de volgende stappen om een AKS-cluster te maken:
 
 3. Configureer op de pagina **Basisprincipes** de volgende opties:
     - **Projectgegevens**: selecteer een Azure-**abonnement**, en selecteer of maak vervolgens een Azure-**resourcegroep**, zoals *myResourceGroup*.
-    - **Clusterdetails**: Voer een **Kubernetes-clusternaam** in, zoals *myAKSCluster*. Selecteer een **regio**, **Kubernetes-versie** en **DNS-naamvoorvoegsel** voor het AKS-cluster.
-    - **Primaire knooppuntgroep**: selecteer een **VM-knooppuntgrootte** voor de AKS-knooppunten. De VM-grootte kan *niet* meer worden gewijzigd als een AKS-cluster eenmaal is geïmplementeerd. 
+    - **Clusterdetails**: Voer een **Kubernetes-clusternaam** in, zoals *myAKSCluster*. Selecteer een **Regio** en **Kubernetes-versie** voor het AKS-cluster.
+    - **Primaire knooppuntgroep**: selecteer een **VM-knooppuntgrootte** voor de AKS-knooppunten. De VM-grootte kan *niet* meer worden gewijzigd als een AKS-cluster eenmaal is geïmplementeerd.
             Selecteer het aantal knooppunten dat u in het cluster wilt implementeren. Stel voor deze quickstart het **Aantal knooppunten** in op *1*. Het aantal knooppunten kan nog *wel* worden gewijzigd als het cluster is geïmplementeerd.
     
     ![AKS-cluster maken - basisgegevens opgeven](media/kubernetes-walkthrough-portal/create-cluster-basics.png)
 
-    Selecteer **Volgende: Schaal** als u klaar bent.
+    Selecteer **Volgende: knooppuntgroepen** wanneer u klaar bent.
 
-4. Behoud de standaardopties op de pagina **Schaal**. Klik boven aan het venster op **Volgende: Verificatie**.
+4. Behoud de standaardopties op de pagina **Knooppuntgroepen**. Klik boven aan het venster op **Volgende: Verificatie**.
     > [!CAUTION]
     > Het kan enige minuten duren voordat nieuwe AAD-service-principals worden doorgegeven en beschikbaar worden nadat ze zijn gemaakt, en dit kan fouten wegens 'service-principal niet gevonden' en validatiefouten in de Azure-portal veroorzaken. Als dit gebeurt, vindt u [hier](troubleshooting.md#received-an-error-saying-my-service-principal-wasnt-found-or-is-invalid-when-i-try-to-create-a-new-cluster) een oplossing.
 

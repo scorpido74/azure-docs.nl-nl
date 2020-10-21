@@ -4,12 +4,12 @@ description: Dit artikel bevat richt lijnen voor het organiseren van de implemen
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 0438445f99a22ed9fd239156044d6b3f6b477edc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1958e818f014b7419a1a33e9453fbad460dfc159
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85480844"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330611"
 ---
 # <a name="orchestrate-the-implementation-of-azure-devtest-labs"></a>De implementatie van Azure DevTest Labs organiseren
 Dit artikel biedt een aanbevolen benadering voor snelle implementatie en implementatie van Azure DevTest Labs. De volgende afbeelding benadrukt het algehele proces als prescriptieve richt lijnen, terwijl de flexibiliteit wordt geobserveerd voor het ondersteunen van verschillende industriële vereisten en scenario's.
@@ -36,7 +36,7 @@ Zodra de netwerk topologie is geïmplementeerd, kan het eerste/pilot Lab worden 
 
 1. Maak een eerste DevTest Labs-omgeving.
 2. Toegestane VM-installatie kopieën en-groottes voor gebruik met Lab bepalen. Bepaal of aangepaste installatie kopieën in azure kunnen worden geüpload voor gebruik met DevTest Labs.
-3. Veilige toegang tot het lab door het maken van de initiële rol Base Access Controls (RBAC) voor het lab (eigenaar van het lab en Lab-gebruikers). U wordt aangeraden om met DevTest Labs gesynchroniseerde Active Directory-accounts met Azure Active Directory voor identiteit te gebruiken.
+3. De toegang tot het lab beveiligen door het maken van een eerste Azure-op rollen gebaseerd toegangs beheer (Azure RBAC) voor het lab (eigenaar van het lab en Lab-gebruikers). U wordt aangeraden om met DevTest Labs gesynchroniseerde Active Directory-accounts met Azure Active Directory voor identiteit te gebruiken.
 4. DevTest Labs configureren voor het gebruik van beleids regels zoals planningen, kosten beheer, instel bare Vm's, aangepaste installatie kopieën of formules.
 5. Stel een online opslag plaats in, zoals Azure opslag plaatsen/git.
 6. Besluit over het gebruik van open bare of particuliere opslag plaatsen of combi natie van beide. Structuur van JSON-sjablonen organiseren voor implementaties en langere termijn.

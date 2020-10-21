@@ -9,13 +9,13 @@ ms.topic: reference
 ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
-ms.date: 09/29/2020
-ms.openlocfilehash: de372b9800f4b76b42624b30f05848bc570ae6e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: d4934d784e871988b5bc30f7b7cf8c09651576e2
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450123"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330360"
 ---
 # <a name="execute-python-script-module"></a>Python-script module uitvoeren
 
@@ -120,9 +120,47 @@ De script module python uitvoeren bevat een voor beeld van python-code die u als
 
     ![Python-invoer toewijzing uitvoeren](media/module/python-module.png)
 
-4. Als u nieuwe Python-pakketten of-code wilt toevoegen, voegt u het zip-bestand toe dat deze aangepaste resources in de **script bundel**bevat. De invoer voor de **script bundel** moet een zip-bestand zijn dat is geüpload naar uw werk ruimte als een dataset van het bestands type. U kunt de gegevensset uploaden op de Asset-pagina met **gegevens sets** . U kunt de module gegevensset slepen vanuit de lijst **mijn gegevens sets** in de structuur van de module links op de ontwerp pagina ontwerpen. 
+4. Als u nieuwe Python-pakketten of-code wilt toevoegen, verbindt u het zip-bestand dat deze aangepaste bronnen bevat, om de poort te **bundelen** . Als uw script groter is dan 16 KB, gebruikt u de **script bundel** poort om fouten te voor komen, zoals *commandline de limiet van 16597 tekens overschrijdt*. 
 
-    Elk bestand in het geüploade gezipte archief kan worden gebruikt tijdens de uitvoering van de pijp lijn. Als het archief een mapstructuur bevat, blijft de structuur behouden, maar moet u een map met de naam **src** naar het pad laten voorafgaan door.
+    
+    1. Het script en andere aangepaste resources bundelen naar een zip-bestand.
+    1. Upload het zip-bestand als een **bestand gegevensset** naar de Studio. 
+    1. Sleep de module gegevensset van de lijst *gegevens sets* in het deel venster met de linker module op de ontwerp pagina voor ontwerpen. 
+    1. Verbind de module gegevensset met de **script bundel** poort van de **script module Execute R** .
+    
+    Elk bestand in het geüploade gezipte archief kan worden gebruikt tijdens de uitvoering van de pijp lijn. Als het archief een mapstructuur bevat, blijft de structuur behouden.
+    
+    Hieronder ziet u een voor beeld van een script bundel, dat een python-script bestand en een txt-bestand bevat:
+      
+    > [!div class="mx-imgBorder"]
+    > ![Voor beeld van script bundel](media/module/python-script-bundle.png)  
+
+    Hieronder vindt u de inhoud van `my_script.py` :
+
+    ```python
+    def my_func(dataframe1):
+    return dataframe1
+    ```
+    Hieronder ziet u voorbeeld code waarin wordt getoond hoe de bestanden in de script bundel worden gebruikt:    
+
+    ```python
+    import pandas as pd
+    from my_script import my_func
+ 
+    def azureml_main(dataframe1 = None, dataframe2 = None):
+ 
+        # Execution logic goes here
+        print(f'Input pandas.DataFrame #1: {dataframe1}')
+ 
+        # Test the custom defined python function
+        dataframe1 = my_func(dataframe1)
+ 
+        # Test to read custom uploaded files by relative path
+        with open('./Script Bundle/my_sample.txt', 'r') as text_file:
+            sample = text_file.read()
+    
+        return dataframe1, pd.DataFrame(columns=["Sample"], data=[[sample]])
+    ```
 
 5. Typ of plak geldige python-script in het tekstvak **python-script** .
 

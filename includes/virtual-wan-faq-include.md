@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 6fac71572446a80ff00368991d6cb80c572864ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38aea30c5f716df927b5924754eb07e7f94c7ebc
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91859688"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92038464"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Is Azure Virtual WAN algemeen beschikbaar?
 
@@ -228,7 +228,7 @@ In een virtuele hub kan een inmiddels bekende standaardroute worden doorgegeven 
 Als een virtuele hub dezelfde route van meerdere externe hubs bewaart, is de volgorde waarover wordt beslist als volgt:
 
 1. Overeenkomst met langste voorvoegsel.
-2. Lokale routes in plaats van interhub.
+2. Lokale routes in plaats van interhub (virtuele hub wijst 65520-65520 toe voor interhub AS)
 3. Statische routes in plaats van BGP: Dit is in overeenstemming met de beslissing van de virtuele hub-router. Als de beslisser echter de VPN-gateway is, waarbij een site routes via BGP aankondigt of statische-adresvoorvoegsels opgeeft, kunnen statische routes de voorkeur hebben boven BGP-routes.
 4. ExpressRoute (ER) in plaats van VPN: ER heeft de voorkeur boven VPN wanneer de context een lokale hub is. Overgangsconnectiviteit tussen ExpressRoute-circuits is alleen beschikbaar via Global Reach. In scenario's waarin een ExpressRoute-circuit is verbonden met één hub en een ander ExpressRoute-circuit is verbonden met een andere hub met VPN-verbinding, kan VPN mogelijk de voorkeur hebben in scenario's met overdragingen tussen hubs.
 5. AS-padlengte.

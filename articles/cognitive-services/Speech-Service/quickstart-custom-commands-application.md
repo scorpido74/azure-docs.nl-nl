@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 05b47a786fe845460177b66b5bd54cdb140c246e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d89f9330947d1c5d0146b8531f265d86d0fd5160
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87289418"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329148"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>Een spraakassistent maken met aangepaste opdrachten
 
@@ -123,7 +123,7 @@ In het bereik van dit artikel gebruiken we de Windows Voice Assistant-client die
 1. Start **VoiceAssistantClient.exe**.
 1. Maak een nieuw publicatie profiel en voer een waarde in voor het **verbindings profiel**. Voer in het gedeelte **algemene instellingen** de **abonnements sleutel** values in (dit is hetzelfde als de waarde voor de **spraak bron sleutel** die u hebt opgeslagen bij het publiceren van de toepassing), de **abonnements sleutel regio** en de **App-ID van de aangepaste opdrachten**.
     > [!div class="mx-imgBorder"]
-    > ![WVAC maken](media/custom-commands/create-profile.png)
+    > ![Scherm afbeelding die de sectie Algemene instellingen voor het maken van een WVAC-profiel markeert.](media/custom-commands/create-profile.png)
 1. Selecteer **opslaan en profiel Toep assen**.
 1. Probeer nu de volgende invoer via spraak/tekst
     > [!div class="mx-imgBorder"]

@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: overview
 ms.date: 05/12/2020
-ms.openlocfilehash: 26f6c8e3aceddc6f766bb43a1e384d761dee32bf
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8ec2a302226e3dc44701209a8cbb47b7814a5a2c
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91631374"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91874846"
 ---
 # <a name="azure-cache-for-redis"></a>Azure Cache voor Redis
 Azure Cache voor Redis biedt gegevensopslag in het geheugen op basis van de opensourcesoftware [Redis](https://redis.io/). Redis verbetert de prestaties en schaalbaarheid van toepassingen die gebruik maken van back-end-gegevensarchieven. Het kan grote hoeveelheden toepassingsaanvragen verwerken door vaak gebruikte gegevens in het servergeheugen te bewaren zodat deze snel kunnen worden geschreven en gelezen. Redis is een essentiële oplossing voor gegevensopslag met lage latentie en hoge doorvoer voor moderne toepassingen.
@@ -70,7 +70,7 @@ Houd rekening met het volgende bij het kiezen van een laag voor Azure Cache voor
 * **Geheugen**: De lagen Basic en Standard bieden 250 MB – 53 GB. De laag Premium biedt tot 1,2 TB (als een cluster) of 120 GB (niet-geclusterd). Zie [Prijzen van Azure Cache voor Redis](https://azure.microsoft.com/pricing/details/cache/) voor meer informatie.
 * **Netwerkprestaties**: Als u een werkbelasting hebt waarvoor hoge doorvoer is vereist, biedt Premium meer bandbreedte dan Standard of Basic. Daarnaast hebben grotere caches in elke laag meer bandbreedte vanwege de onderliggende virtuele machine die als host fungeert voor de cache. Zie [Prestaties van Azure Cache voor Redis](cache-planning-faq.md#azure-cache-for-redis-performance) voor meer informatie.
 * **Doorvoer**: De laag Premium biedt de maximaal beschikbare doorvoer. Als de cacheserver of client de bandbreedtelimiet bereikt, krijgt u mogelijk time-outs aan de clientzijde. Zie de volgende tabel voor meer informatie.
-* **Hoge beschikbaarheid**: Azure Cache voor Redis garandeert dat een Standard/Premium-cache beschikbaar is volgens onze [SLA](https://azure.microsoft.com/support/legal/sla/cache/v1_0/). De SLA heeft alleen betrekking op connectiviteit met de cache-eindpunten. De SLA heeft geen betrekking op beveiliging tegen gegevensverlies. We raden u aan de Redis-functie voor gegevenspersistentie in de laag Premium te gebruiken om de tolerantie voor gegevensverlies te vergroten.
+* **Hoge beschikbaarheid**: Azure Cache voor Redis biedt meerdere opties voor [hoge beschikbaarheid](cache-high-availability.md). Het garandeert dat een Standard/Premium-cache beschikbaar is volgens onze [SLA](https://azure.microsoft.com/support/legal/sla/cache/v1_0/). De SLA heeft alleen betrekking op connectiviteit met de cache-eindpunten. De SLA heeft geen betrekking op beveiliging tegen gegevensverlies. We raden u aan de Redis-functie voor gegevenspersistentie in de laag Premium te gebruiken om de tolerantie voor gegevensverlies te vergroten.
 * **Redis-gegevenspersistentie**: Met Premium kunt u de cachegegevens in een Azure Storage-account bewaren. In een Basic- of Standard-cache worden gegevens alleen in het geheugen opgeslagen. Onderliggende problemen met de infrastructuur kunnen leiden tot mogelijk gegevensverlies. We raden u aan de Redis-functie voor gegevenspersistentie in de laag Premium te gebruiken om de tolerantie voor gegevensverlies te vergroten. Azure Cache voor Redis biedt RDB- en AOF-opties (preview-versie) voor Redis-persistentie. Zie [Persistentie configureren voor een Premium Azure Cache voor Redis](cache-how-to-premium-persistence.md) voor meer informatie.
 * **Redis-cluster**: Als u caches wilt maken die groter zijn dan 120 GB of als u gegevens wilt verdelen over meerdere redis-knooppunten, kunt u de functie Redis clustering gebruiken, die beschikbaar is in Premium. Elk knooppunt bestaat uit een primair/replica cachepaar voor hoge beschikbaarheid. Zie [Clustering voor een Premium Azure Cache voor Redis configureren](cache-how-to-premium-clustering.md) voor meer informatie.
 * **Verbeterde beveiliging en netwerkisolatie**: De implementatie van Azure Virtual Network verbetert de beveiliging en isolatie voor uw Azure Cache voor Redis, evenals subnetten, beleid voor toegangsbeheer en andere functies om de toegang verder te beperken. Zie [Virtual Network-ondersteuning voor een Premium Azure Cache voor Redis configureren](cache-how-to-premium-vnet.md) voor meer informatie.

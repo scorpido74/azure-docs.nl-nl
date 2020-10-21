@@ -1,5 +1,5 @@
 ---
-title: Zelfstudie - De modules voor livevideoanalyse van IoT Edge aanpassen
+title: 'Zelfstudie: de modules voor livevideoanalyse van Azure IoT Edge aanpassen'
 description: In deze zelf studie leert u hoe u de gatewaymodules voor livevideoanalyse kunt wijzigen en maken die door de toepassingssjabloon voor object- en bewegingsdetectie in videoanalyse wordt gebruikt.
 services: iot-central
 ms.service: iot-central
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: d21eb8d8d79ec04f0f7e766b4eeb370811553e64
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 4bbc25f98f494660fc4997af1c3a248172ef08d2
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037901"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873469"
 ---
 # <a name="tutorial-modify-and-build-the-live-video-analytics-gateway-modules"></a>Zelfstudie: De gatewaymodules voor livevideoanalyse wijzigen en bouwen
 
@@ -50,7 +50,7 @@ Open de lokale *live-video-analytics*-opslagplaatsmap met VS Code.
 1. Bewerk de modulesectie `LvaEdgeGatewayModule` om de naam van uw installatiekopie en de naam van uw AMS-account toe te voegen in de `env:amsAccountName:value`.
 1. Bewerk de modulesectie `lvaYolov3` en voeg de naam van uw installatiekopie toe.
 1. Bewerk de modulesectie `lvaEdge` en voeg de naam van uw installatiekopie toe.
-1. Zie [Een toepassing voor videoanalyse maken in Azure IoT Central](tutorial-video-analytics-create-app.md) voor meer informatie over het volt ooien van de configuratie.
+1. Zie [Een toepassing voor videoanalyse maken in Azure IoT Central](tutorial-video-analytics-create-app-yolo-v3.md) voor meer informatie over het volt ooien van de configuratie.
 
 ## <a name="build-the-code"></a>De code bouwen
 

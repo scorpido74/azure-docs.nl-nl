@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.author: apimpm
-ms.openlocfilehash: 78743c5f045f2544cafe88414ed996d08bacd2a0
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 231ce9d946a2fb6650f25d90aaa423d1c95fb106
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91631091"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91930710"
 ---
 # <a name="tutorial-mock-api-responses"></a>Zelfstudie: Gesimuleerde antwoorden van een API
 
@@ -107,7 +107,7 @@ Hoewel dit niet vereist is voor dit voorbeeld, kunnen er op andere tabbladen aan
 1. Selecteer **Save** (Opslaan).
 
     > [!TIP]
-    > Een gele balk met de tekst **Simuleren is ingeschakeld** voor uw API geeft aan dat reacties die worden geretourneerd door API Management een simulatiebeleid en niet een daadwerkelijk antwoord van de back-end verzenden.
+    > Een gele balk met de tekst **Simuleren is ingeschakeld** voor uw API geeft aan dat reacties die worden geretourneerd door API Management worden gesimuleerd door het [simulatiebeleid](api-management-advanced-policies.md#mock-response) en niet worden geproduceerd door de back-end.
 
 ## <a name="test-the-mocked-api"></a>De gesimuleerde API testen
 

@@ -8,22 +8,22 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 08/28/2020
 ms.author: victorh
-ms.openlocfilehash: 282ce16c926c61008d0ebd70106b161425a15c9e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 33d110f327a381241fd9dbf55996a6e3f9fd3a43
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89079078"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057974"
 ---
 # <a name="quickstart-create-an-azure-firewall-with-multiple-public-ip-addresses---arm-template"></a>Quickstart: Een Azure-firewall met meerdere openbare IP-adressen maken: ARM-sjabloon
 
-In deze quickstart gebruikt u een Azure Resource Manager-sjabloon (ARM-sjabloon) om een Azure-firewall met meerdere openbare IP-adressen te implementeren. De geïmplementeerde firewall heeft regels voor het verzamelen van NAT-regels waarmee RDP-verbindingen met twee Windows Server 2019-VM's worden toegestaan.
+In deze quickstart gebruikt u een Azure Resource Manager-sjabloon (ARM-sjabloon) om een Azure-firewall met meerdere openbare IP-adressen van een openbaar IP-adresvoorvoegsel te implementeren. De geïmplementeerde firewall heeft regels voor het verzamelen van NAT-regels waarmee RDP-verbindingen met twee Windows Server 2019-VM's worden toegestaan.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 Zie [Een Azure-firewall met meerdere openbare IP-adressen implementeren met Azure PowerShell](deploy-multi-public-ip-powershell.md) voor meer informatie over Azure Firewall met meerdere openbare IP-adressen.
 
-Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure**. De sjabloon wordt in Azure Portal geopend.
+Als uw omgeving voldoet aan de vereisten en u bekend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure**. De sjabloon wordt in Azure Portal geopend.
 
 [![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Ffw-docs-qs%2Fazuredeploy.json)
 
@@ -42,6 +42,7 @@ De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure-quickstartsja
 Er worden meerdere Azure-resources gedefinieerd in de sjabloon:
 
 - [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
+- [**Microsoft.Network/publicIPPrefix**](/azure/templates/microsoft.network/publicipprefixes)
 - [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)
 - [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
 - [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)

@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.custom: devx-track-js
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 4e8d7054fb0df265285bda223e360ea61612aaf2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ca225f136b0c3a6fc8b47d00ff64064fe17d4ee
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91263943"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281764"
 ---
 # <a name="use-a-markdown-tile-on-azure-dashboards-to-show-custom-content"></a>Een tegel met korting op Azure-Dash boards gebruiken om aangepaste inhoud weer te geven
 
@@ -48,7 +48,7 @@ U kunt een tegel met korting toevoegen aan uw Azure-Dash boards om aangepaste st
       ![Scherm opname van invoeren van URL](./media/azure-portal-markdown-tile/azure-portal-dashboard-markdown-url.png)
 
       > [!NOTE]
-      > Voor extra beveiliging kunt u een afkortings bestand maken en dit opslaan in een [Azure Storage-account-BLOB waarvoor versleuteling is ingeschakeld](../storage/common/storage-service-encryption.md). vervolgens wijst u het bestand met de URL-optie aan. De inhoud van de prijs verlaging wordt versleuteld via de versleutelings opties van het opslag account. Alleen gebruikers met machtigingen voor het bestand kunnen de inhoud van de korting op het dash board zien.
+      > Voor extra beveiliging kunt u een afkortings bestand maken en dit opslaan in een [Azure Storage-account-BLOB waarvoor versleuteling is ingeschakeld](../storage/common/storage-service-encryption.md). vervolgens wijst u het bestand met de URL-optie aan. De inhoud van de prijs verlaging wordt versleuteld via de versleutelings opties van het opslag account. Alleen gebruikers met machtigingen voor het bestand kunnen de inhoud van de korting op het dash board zien. Stel een CORS-regel (cross-Origin Resource Sharing) in voor het opslag account, zodat de Azure Portal ( _https://portal.azure.com/_ ) toegang kan krijgen tot het bestand met de korting in de blob.
 
 1. Selecteer **gereed** om het deel venster **prijs verlaging bewerken** te sluiten. Uw inhoud wordt weer gegeven op de tegel prijs verlaging, die u kunt verg Roten of verkleinen door de greep in de rechter benedenhoek te slepen.
 

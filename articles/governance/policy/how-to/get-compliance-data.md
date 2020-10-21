@@ -3,12 +3,12 @@ title: Nalevings gegevens voor beleid ophalen
 description: Azure Policy evaluaties en effecten bepalen de naleving. Meer informatie over hoe u de compatibiliteits Details van uw Azure-resources kunt ophalen.
 ms.date: 10/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 186312ae91c3545a7aac1a9c7a108e2197f3fa8a
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 36645d5eb50aaf571c608fc51127b47ac885777d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873622"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320426"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Compatibiliteits gegevens van Azure-resources ophalen
 
@@ -157,19 +157,24 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 }
 ```
 
+#### <a name="on-demand-evaluation-scan---visual-studio-code"></a>Evaluatie scan op aanvraag-Visual Studio code
+
+Met de extensie Azure Policy voor Visual Studio code kan een evaluatie scan voor een specifieke resource worden uitgevoerd. Deze scan is een synchroon proces, in tegens telling tot de Azure PowerShell-en REST-methoden.
+Zie [evaluatie op aanvraag met de VS code-extensie](./extension-for-vscode.md#on-demand-evaluation-scan)voor meer informatie en stappen.
+
 ## <a name="how-compliance-works"></a>Hoe naleving werkt
 
 In een toewijzing is een resource **niet-compatibel** als deze niet voldoet aan het beleid of initiatief regels en niet wordt _uitgesloten_. In de volgende tabel ziet u hoe verschillende beleids effecten werken met de evaluatie van de voor waarde voor de resulterende nalevings status:
 
 | Resourcestatus | Effect | Beleidsevaluatie | Nalevingsstatus |
 | --- | --- | --- | --- |
-| Nieuw of bijgewerkt | Audit, Modify, AuditIfNotExist | True | Niet-compatibel |
-| Nieuw of bijgewerkt | Audit, Modify, AuditIfNotExist | False | Compatibel |
-| Bestaat | Weigeren, controleren, toevoegen, wijzigen, DeployIfNotExist, AuditIfNotExist | True | Niet-compatibel |
-| Bestaat | Weigeren, controleren, toevoegen, wijzigen, DeployIfNotExist, AuditIfNotExist | False | Compatibel |
+| Nieuw of bijgewerkt | Controleren, wijzigen, AuditIfNotExist | True | Niet-compatibel |
+| Nieuw of bijgewerkt | Controleren, wijzigen, AuditIfNotExist | False | Compatibel |
+| Bestaat | Weigeren, Controleren, Toevoegen, Wijzigen, DeployIfNotExist, AuditIfNotExist | True | Niet-compatibel |
+| Bestaat | Weigeren, Controleren, Toevoegen, Wijzigen, DeployIfNotExist, AuditIfNotExist | False | Compatibel |
 
 > [!NOTE]
-> De DeployIfNotExist-en AuditIfNotExist-effecten vereisen dat de IF-instructie TRUE is en dat de voor waarde als onwaar als niet-compatibel is. Indien TRUE, activeert de IF-voorwaarde de evaluatie van de bestaansvoorwaarde voor de gerelateerde resources.
+> Voor de effecten DeployIfNotExist en AuditIfNotExist moet de IF-instructie TRUE en de bestaansvoorwaarde FALSE zijn om niet-compatibel te zijn. Indien TRUE, activeert de IF-voorwaarde de evaluatie van de bestaansvoorwaarde voor de gerelateerde resources.
 
 Stel dat u een resource groep hebt – ContsoRG, waarbij sommige opslag accounts (rood gemarkeerd) worden weer gegeven in open bare netwerken.
 

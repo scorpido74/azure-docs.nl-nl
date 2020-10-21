@@ -6,22 +6,147 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 07/08/2020
-ms.openlocfilehash: 0269d870f55f7246529b9d98608e5a325b6cf468
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 6722b88947fda8f1a09e540d69c4a8bec74143df
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569523"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842662"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Wat is er nieuw de documentatie van Azure Monitor?
 
 In dit artikel vindt u een lijst met Azure Monitor-artikelen die nieuw of aanzienlijk bijgewerkt zijn. Elke eerste week van de maand wordt de lijst bijgewerkt met artikelupdates van de vorige maand.
 
-## <a name="august-2020"></a>Augustus 2020
+## <a name="september-2020"></a>September 2020
+
+### <a name="general"></a>Algemeen
+- [Veelgestelde vragen over Azure Monitor](faq.md): sectie toegevoegd over OpenTelemetry.
+
+### <a name="agents"></a>Agents
+- [Overzicht van Azure Monitor-agent](platform/azure-monitor-agent-overview.md): besluitfactoren toegevoegd over de overstap naar een nieuwe agent.
+- [Overzicht van de Azure-bewakingsagents](platform/agents-overview.md): ondersteuning toegevoegd voor Windows 10.
+
+### <a name="alerts"></a>Waarschuwingen
+- [Een logboekwaarschuwing maken met een Azure Resource Manager-sjabloon](platform/alerts-log-create-templates.md): nieuw artikel.
+- [Problemen met metrische Azure-gegevens oplossen](platform/alerts-troubleshoot-metric.md): sectie toegevoegd over het exporteren van een ARM-sjabloon voor een metrische waarschuwingsregel.
+
+### <a name="application-insights"></a>Application Insights
+- [Een nieuwe werkruimteresource voor Azure Monitor Application Insights maken](app/create-workspace-resource.md): preview-functie verwijderd.
+- [Gegevensretentie en -opslag in Azure Application Insights](app/data-retention-privacy.md): details toegevoegd voor nieuwe ondersteuning voor bescherming tegen gegevensverlies in Mac en Linux.
+- [Gebeurtenistellers in Application Insights](app/eventcounters.md): opmerking toegevoegd over tellers die standaard worden verzameld.
+- [Op logboek gebaseerde en vooraf geaggregeerde metrische gegevens in Azure Application Insights](app/pre-aggregated-metrics-log-metrics.md): preview-functie verwijderd.
+- [Een klassieke Azure Monitor Application Insights-resource migreren naar een werkruimteresource](app/convert-classic-resource.md): nieuw artikel.
+- [Java-toepassingen bewaken in een willekeurige omgeving - Azure Monitor Application Insights](app/java-in-process-agent.md): bijgewerkt voor een nieuwe preview-versie van de agent.
+- [Web-app-analyse voor ASP.NET instellen met Azure Application Insights](app/asp-net.md): artikel herschreven.
+- [Telemetriekanalen in Azure Application Insights](app/telemetry-channels.md): details toegevoegd voor nieuwe ondersteuning voor bescherming tegen gegevensverlies in Mac en Linux.
+- [Problemen met Azure Application Insights Snapshot Debugger oplossen](app/snapshot-debugger-troubleshoot.md): SSL-sectie toegevoegd over probleemoplossing voor Snapshot Debugger.
+- [Wijzigingsanalyse voor toepassingen gebruiken in Azure Monitor om problemen met web-apps te vinden](app/change-analysis.md): virtuele machine en activiteitenlogboek toegevoegd.
+
 
 ### <a name="containers"></a>Containers
-
+- [Kubernetes-cluster met Azure Arc configureren met Azure Monitor voor containers](insights/container-insights-enable-arc-enabled-clusters.md): richtlijnen toegevoegd voor het inschakelen van bewaking met behulp van een service-principal.
 - [Implementatie en metrische HPA-gegevens met Azure Monitor voor containers](insights/container-insights-deployment-hpa-metrics.md): nieuw artikel.
+
+### <a name="insights-and-solutions"></a>Inzicht en oplossingen
+- [Azure Monitor voor Azure Cache voor Redis](insights/redis-cache-insights-overview.md): preview-functie verwijderd.
+- [Azure Monitor voor netwerken (preview)](insights/network-insights-overview.md): secties toegevoegd over connectiviteit en verkeer.
+- [IT Service Management-connector: veilig exporteren in Azure Monitor](platform/it-service-management-connector-secure-webhook-connections.md): nieuw artikel.
+- [IT Service Management-connector in Azure Monitor](platform/itsmc-connections.md): opmerking over Cherwell- en Provance ITSM-integraties.
+- [Key Vault bewaken met Azure Monitor voor Key Vault](insights/key-vault-insights-overview.md): preview-functie verwijderd.
+
+### <a name="logs"></a>Logboeken
+- [Query's controleren in Azure Monitor-logboekquery’s](log-query/query-audit.md): nieuw artikel.
+- [Door klant beheerde sleutels in Azure Monitor](platform/customer-managed-keys.md): toegevoegde klanten-lockbox.
+- [Toegewezen clusters voor Azure Monitor-logboeken](log-query/logs-dedicated-clusters.md): nieuw artikel.
+- [Uw implementatie van Azure Monitor-logboeken ontwerpen](platform/design-logs-deployment.md): sectie over frequentielimieten voor schaal- en opnamevolumes bijgewerkt.
+- [Logboekquerybereik in Azure Monitor Log Analytics](log-query/scope.md): updates voor de opname van werkruimtetoepassingen.
+- [Logboeken in Azure Monitor](platform/data-platform-logs.md): updates voor de opname van werkruimtetoepassingen.
+- [Standaardkolommen in Azure Monitor-logboekrecords](platform/log-standard-columns.md): updates voor de opname van werkruimtetoepassingen.
+- [Servicelimieten van Azure Monitor](service-limits.md): beperkingslimieten voor gebruikersquery's bijgewerkt.
+- [Door de klant beheerde opslagaccounts gebruiken in Azure Monitor Log Analytics](platform/private-storage.md): artikel herschreven.
+- [Gegevens weergeven en analyseren in Azure Log Analytics](log-query/logs-structure.md): updates voor de opname van werkruimtetoepassingen.
+
+
+### <a name="platform-logs"></a>Platformlogboeken
+- [Gebeurtenisschema voor Azure-activiteitenlogboek](platform/activity-log-schema.md): ernstniveau toegevoegd.
+- [Resource Manager-voorbeeldsjablonen voor diagnostische instellingen](samples/resource-manager-diagnostic-settings.md): voorbeeld toegevoegd voor Azure-opslagaccount.
+
+### <a name="visualizations"></a>Visualisaties
+- [Grafiekvisualisaties in Azure Monitor-werkmap](platform/workbooks-chart-visualizations.md): nieuw artikel.
+- [Weergave van samengestelde balk in Azure Monitor-werkmap](platform/workbooks-composite-bar.md): nieuw artikel.
+- [Graafvisualisaties in Azure Monitor-werkmap](platform/workbooks-graph-visualizations.md): nieuw artikel.
+- [Rastervisualisaties in Azure Monitor-werkmap](platform/workbooks-grid-visualizations.md): nieuw artikel.
+- [Honingraatvisualisaties in Azure Monitor-werkmap](platform/workbooks-honey-comb.md): nieuw artikel.
+- [Tekstvisualisaties in Azure Monitor-werkmap](platform/workbooks-text-visualizations.md): nieuw artikel.
+- [Tegelvisualisaties in Azure Monitor-werkmap](platform/workbooks-tile-visualizations.md): nieuw artikel.
+- [Structuurvisualisaties in Azure Monitor-werkmap](platform/workbooks-tree-visualizations.md): nieuw artikel.
+
+
+
+
+## <a name="august-2020"></a>Augustus 2020
+
+### <a name="general"></a>Algemeen
+
+- [Wat wordt bewaakt door Azure Monitor](monitor-reference.md): bijgewerkt om Azure Monitor-agent toe te voegen.
+
+
+### <a name="agents"></a>Agents
+- [Overzicht van Azure Monitor-agent](platform/azure-monitor-agent-overview.md): nieuw artikel.
+- [Azure Monitor inschakelen voor een hybride omgeving](insights/vminsights-enable-hybrid.md): versie van de afhankelijkheidsagent bijgewerkt.
+- [Overzicht van de Azure Monitor-agents](platform/agents-overview.md): Azure Monitor-agent toegevoegd en ondersteuningstabel voor besturingssystemen samengevoegd.
+
+
+#### <a name="new-and-updated-articles-from-restructure-of-agent-content"></a>Nieuwe en bijgewerkte artikelen van het opnieuw indelen van de inhoud over agents
+- [Overzicht Azure Monitor voor VM's inschakelen](insights/vminsights-enable-overview.md)
+- [Log Analytics-agent installeren op Linux-computers](platform/agent-linux.md)
+- [Log Analytics-agent installeren op Windows-computers](platform/agent-windows.md)
+- [Overzicht van Log Analytics-agent](platform/log-analytics-agent.md)
+
+### <a name="application-insights"></a>Application Insights
+- [Azure Application Insights voor JavaScript-web-apps](app/javascript.md): sectie toegevoegd met een beschrijving van de correlatie tussen client en server en configuratie voor CORS-correlatie.
+- [Een nieuwe op werkruimte gebaseerde resource voor Azure Monitor Application Insights maken](app/create-workspace-resource.md): mogelijkheden toegevoegd die worden geboden door op werkruimte gebaseerde toepassingen.
+- [IP-adressen gebruikt door Application Insights en logboekanalyse](app/ip-addresses.md): IP-adressen bijgewerkt voor Live Metrics Stream.
+- [Java-toepassingen bewaken in een willekeurige omgeving - Azure Monitor Application Insights](app/java-in-process-agent.md): tabel toegevoegd voor ondersteunde aangepaste telemetrie.
+- [Native React-invoegtoepassing voor Application Insights JavaScript SDK](app/javascript-react-native-plugin.md): nieuw artikel.
+- [React-invoegtoepassing voor Application Insights JavaScript SDK](app/javascript-react-plugin.md): nieuw artikel.
+- [Voorbeelden van Resource Manager-sjablonen voor het maken van Azure Function-apps en Application Insights-controles](samples/resource-manager-function-app.md): nieuw artikel.
+- [Voorbeelden van Resource Manager-sjablonen voor het maken van Azure App Service-web-apps en Application Insights-bewaking](samples/resource-manager-web-app.md): nieuw artikel.
+- [Gebruiksanalyse met Azure Application Insights](app/usage-overview.md): video toegevoegd.
+
+### <a name="autoscale"></a>Automatisch schalen
+- [Aan de slag met automatische schaalaanpassing in Azure](platform/autoscale-get-started.md): sectie toegevoegd over routering naar goede instanties voor App Service.
+
+### <a name="data-collection"></a>Gegevens verzamelen
+- [Gegevensverzameling configureren voor de Azure Monitor-agent (preview)](platform/data-collection-rule-azure-monitor-agent.md): nieuw artikel.
+- [Regels voor gegevensverzameling in Azure Monitor (preview)](platform/data-collection-rule-overview.md): nieuw artikel.
+
+
+### <a name="containers"></a>Containers
+- [Implementatie en metrische HPA-gegevens met Azure Monitor voor containers](insights/container-insights-deployment-hpa-metrics.md): nieuw artikel.
+
+### <a name="insights"></a>Inzichten
+- [Bewakingsoplossing in Azure Monitor](insights/solutions.md): bijgewerkt voor nieuwe UI.
+- [Netwerkprestatiemeter-oplossing in Azure](insights/network-performance-monitor.md): ondersteunde werkruimteregio's bijgewerkt.
+
+
+### <a name="logs"></a>Logboeken
+- [Veelgestelde vragen voor Azure Monitor](faq.md): vermelding toegevoegd over het verwijderen van gegevens uit een werkruimte. Vermelding toegevoegd over 502- en 503-reacties.
+  - [Uw implementatie van Azure Monitor-logboeken ontwerpen](platform/design-logs-deployment.md): sectie over limiet op opnamevolume bijgewerkt.
+- [Gebruik en kosten voor Azure Monitor-logboeken beheren](platform/manage-cost-storage.md): gebruiksquery's bijgewerkt voor een efficiëntere query-indeling.
+- [Logboekquery's in Azure Monitor optimaliseren](log-query/query-optimization.md): specifieke waarden toegevoegd aan prestatie-indicatoren.
+- [Resource Manager-voorbeeldsjablonen voor diagnostische instellingen](samples/resource-manager-diagnostic-settings.md): voorbeeld toegevoegd voor auditlogboeken voor logboekquery.
+
+
+### <a name="platform-logs"></a>Platformlogboeken
+- [Diagnostische instellingen maken om logboeken en metrische gegevens van het platform te verzenden naar verschillende bestemmingen](platform/diagnostic-settings.md): regionale vereiste toegevoegd voor diagnostische instellingen.
+
+### <a name="visualizations"></a>Visualisaties
+- [Overzicht van Azure Monitor Workbooks](platform/workbooks-overview.md): video toegevoegd.
+- [Een Azure Workbook-sjabloon verplaatsen naar een andere regio](platform/workbook-templates-move-region.md): nieuw artikel.
+- [Een Azure Workbook verplaatsen naar een andere regio](platform/workbooks-move-region.md): nieuw artikel.
+
+
 
 ## <a name="july-2020"></a>Juli 2020
 
@@ -500,7 +625,6 @@ Meerdere nieuwe artikelen voor conversiegids View Designer naar werkmappen.
 - [Application Insights voor Worker Service-apps (niet-HTTP-apps)](app/worker-service.md): standaardlogboekniveau toegevoegd aan C#-code. Versie van verwijzing van pakket bijgewerkt.
 - [ApplicationInsights.config-referentie, Azure](app/configuration-with-applicationinsights-config.md): voorbeeldcode bijgewerkt.
 - [Azure Application Insights bijwerken met PowerShell](app/powershell.md): update van Resource Manager-sjabloon.
-- [Azure Monitor Application Insights NuGet-pakketten](app/nuget.md): bijgewerkte pakketversies.
 - [Nieuwe Azure Application Insights-resource maken](app/create-new-resource.md): opmerking toegevoegd aan wereldwijde unieke naam.
 - [Diagnose met Live Metrics Stream, Azure Application Insights](app/live-stream.md): versievereisten bijgewerkt voor ASP.NET Core SDK.
 - [Gebeurtenisteller in Application Insights](app/eventcounters.md): categorie en tabel bijgewerkt voor customMetrics.

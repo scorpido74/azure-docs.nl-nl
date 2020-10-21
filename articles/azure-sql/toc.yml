@@ -263,6 +263,8 @@
           items:
             - name: IP-firewallregels op serverniveau
               href: database/firewall-create-server-level-portal-quickstart.md
+        - name: GitHub Actions
+          href: database/connect-github-actions-sql-db.md
     - name: Zelfstudies
       items:
         - name: Een database ontwerpen

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: a7e385b40911e1adf4e5142de4fb627334baee4a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 08d9c2f1676c0a04e9cd191b64c41af276521b3d
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543734"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996094"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-peakon"></a>Zelfstudie: Azure Active Directory-integratie met Peakon
 
@@ -110,7 +110,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met Peakon voert u de vo
 
 5. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    ![Domein- en URL-gegevens voor eenmalige aanmelding bij Peakon](common/metadata-upload-additional-signon.png)
+    ![Schermopname met 'Extra URL's instellen' geselecteerd met het tekstvak 'Aanmeldings-URL' gemarkeerd.](common/metadata-upload-additional-signon.png)
 
     In het tekstvak **Aanmeldings-URL** typt u een URL: `https://app.peakon.com/login`
 

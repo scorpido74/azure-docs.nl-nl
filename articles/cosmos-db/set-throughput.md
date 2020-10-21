@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 8cca75f7071b8b9c8d1108b82ebf8f7049ec316a
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 83909fdc75ec09b9ddd1fa9452f9a77e5763f895
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282581"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331818"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Inleiding tot ingerichte door Voer in Azure Cosmos DB
 
@@ -96,7 +96,7 @@ U kunt de twee modellen combi neren. De door Voer voor de data base en de contai
 
 Nadat u een Azure Cosmos-container of een-Data Base hebt gemaakt, kunt u de ingerichte door Voer bijwerken. Er is geen limiet voor de Maxi maal ingerichte door Voer die u kunt configureren voor de data base of de container.
 
-### <a name="current-provisioned-throughput"></a>Huidige ingerichte door Voer
+### <a name="current-provisioned-throughput"></a><a id="current-provisioned-throughput"></a> Huidige ingerichte door Voer
 
 U kunt de ingerichte door Voer van een container of een Data Base ophalen in de Azure Portal of door gebruik te maken van de Sdk's:
 
@@ -135,6 +135,14 @@ U kunt de voortgang van het schalen programmatisch controleren door de [huidige 
 * [ThroughputResponse. isReplacePending ()](/java/api/com.azure.cosmos.models.throughputresponse.isreplacepending?view=azure-java-stable&preserve-view=true) in de Java-SDK.
 
 U kunt [Azure monitor metrische gegevens](monitor-cosmos-db.md#view-operation-level-metrics-for-azure-cosmos-db) gebruiken om de geschiedenis van ingerichte door Voer (ru/s) en opslag voor een bron weer te geven.
+
+## <a name="high-storage--low-throughput-program"></a><a id="high-storage-low-throughput-program"></a> Programma voor hoge opslag/laag door Voer
+
+Zoals beschreven in de sectie [huidige ingerichte door Voer](#current-provisioned-throughput) , de minimale door Voer die u kunt inrichten voor een container of Data Base is afhankelijk van een aantal factoren. Een van beide is de hoeveelheid gegevens die momenteel is opgeslagen, omdat Azure Cosmos DB een minimale door Voer van 10 RU/s per GB opslag afdwingt.
+
+Dit kan een probleem zijn in situaties waarin u grote hoeveel heden gegevens moet opslaan, maar een lage doorvoer vereisten in vergelijking hebt. Voor een beter begrip van deze scenario's heeft Azure Cosmos DB een **' hoge opslag/lage door Voer '** geïntroduceerd waarmee de beperking van de ru/s per GB van 10 naar 1 wordt verlaagd voor in aanmerking komende accounts.
+
+U hebt momenteel ten minste één container of een Data Base voor gedeelde door Voer met meer dan 1 TB aan gegevens in uw account nodig om in aanmerking te komen. Als u wilt meedoen aan dit programma en uw volledige geschiktheid wilt beoordelen, moet u dit doen door [deze enquête](https://customervoice.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRzBPrdEMjvxPuDm8fCLUtXpUREdDU0pCR0lVVFY5T1lRVEhWNUZITUJGMC4u)in te vullen. Het Azure Cosmos DB-team wordt vervolgens opvolgd en gaat door met uw onboarding.
 
 ## <a name="comparison-of-models"></a>Vergelijking van modellen
 In deze tabel ziet u een vergelijking tussen het inrichten van de standaard doorvoer (hand matig) voor een Data Base versus een container. 

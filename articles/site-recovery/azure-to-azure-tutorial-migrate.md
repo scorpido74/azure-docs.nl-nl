@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: sharrai
 ms.custom: MVC
-ms.openlocfilehash: f33d5ff37cbc9923262963b3e59b9266ea6760a6
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 33d1be493cba9fd9f01ecdbad10afb5330256aa0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90006411"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045343"
 ---
 # <a name="move-vms-to-another-azure-region"></a>VM's verplaatsen naar een andere Azure-regio
 
@@ -100,8 +100,8 @@ De volgende stappen laten zien hoe u de virtuele machine voorbereidt voor het ve
 1. Bij **Naam** geeft u de beschrijvende naam **ContosoVMVault** op. Als u meer dan één abonnement hebt, selecteert u het gewenste abonnement.
 1. Maak de resourcegroep met de naam **ContosoRG**.
 1. Geef een Azure-regio op. Bekijk de geografische beschikbaarheid in [Prijsinformatie voor Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/) om te controleren welke regio's worden ondersteund.
-1. Selecteer in **Recovery Services-kluizen** de opties **Overzicht** > **ContosoVMVault** > **Gerepliceerde items** >  **+Repliceren**.
-1. Bij **Bron** selecteert u **Azure**.
+1. Selecteer in **Recovery Services-kluizen** **ContosoVMVault** > **Gerepliceerde items** >  **+Repliceren**.
+1. Selecteer **Azure Virtual Machines** in de vervolgkeuzelijst.
 1. Bij **Bronlocatie** selecteert u de Azure-bronregio waar uw VM’s momenteel worden uitgevoerd.
 1. Selecteer het Resource Manager-implementatiemodel. Selecteer vervolgens het **Bronabonnement** en de **Bronresourcegroep**.
 1. Selecteer **OK** om de instellingen op te slaan.

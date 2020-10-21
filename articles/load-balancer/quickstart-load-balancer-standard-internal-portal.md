@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: beafff2276d0b6dc525b586fa2d5943675012981
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: efe4753e78c6dd16fa0b6ce3e98dd21ceae52577
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91446118"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047808"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Quickstart: Een interne load balancer maken met Azure Portal om taken te verdelen over VM's
 
@@ -630,5 +630,6 @@ In deze snelstart, gaat u het volgende doen:
 * U hebt twee VM's aan de load balancer gekoppeld.
 * U hebt de verkeersregel en statustest van de load balancer geconfigureerd en vervolgens de load balancer getest. 
 
-Zie [Wat is Azure Load Balancer?](load-balancer-overview.md) en de [veelgestelde vragen over Load Balancer](load-balancer-faqs.md) voor meer informatie over Azure Load Balancer.
-
+Als u meer informatie wilt over Azure Load Balancer, gaat u naar
+> [!div class="nextstepaction"]
+> [Wat is Azure Load Balancer?](load-balancer-overview.md) 

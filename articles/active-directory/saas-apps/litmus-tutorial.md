@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/06/2020
 ms.author: jeedes
-ms.openlocfilehash: 494a698ac4b6f8262851878cfee4bb91126d9f02
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: a050f7a7d86ef8586cab3e90d9c1bac310a7f18b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91823028"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91854542"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-litmus"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met Litmus
 
@@ -129,11 +129,11 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Klik in het linkernavigatievenster op **Security**.
 
-    ![Configuratie van Litmus](./media/litmus-tutorial/security-img.png)
+    ![Schermopname met het tabblad Beveiliging geselecteerd.](./media/litmus-tutorial/security-img.png)
 
 1. Voer in het gedeelte **Configure SAML Authentication** de volgende stappen uit:
 
-    ![Configuratie van Litmus](./media/litmus-tutorial/configure1.png)
+    ![Schermopname van de sectie SAML-verificatie configureren, waarin u de beschreven waarden kunt invoeren.](./media/litmus-tutorial/configure1.png)
 
     a. Zet de schakeloptie **Enable SAML** op aan (vinkje).
 
@@ -143,7 +143,7 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Voer de volgende stappen uit:
 
-    ![Configuratie van Litmus](./media/litmus-tutorial/configure3.png)
+    ![Schermopname van de sectie waarin u de beschreven waarden kunt invoeren.](./media/litmus-tutorial/configure3.png)
 
     a. Plak in het tekstvak **SAML 2.0 Endpoint (HTTP)** de waarde van de **aanmeldings-URL** die u uit de Azure-portal hebt gekopieerd.
 
@@ -157,15 +157,15 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Klik op **Accounts** in het linkernavigatievenster.
 
-    ![Configuratie van Litmus](./media/litmus-tutorial/accounts-img.png)
+    ![Schermopname met het item Accounts geselecteerd.](./media/litmus-tutorial/accounts-img.png)
 
 1. Klik op het tabblad **Add New User**.
 
-    ![Configuratie van Litmus](./media/litmus-tutorial/add-new-user.png)
+    ![Schermopname met het item Nieuwe gebruiker toevoegen geselecteerd.](./media/litmus-tutorial/add-new-user.png)
 
 1. Voer in het gedeelte **Add User** de volgende stappen uit:
 
-    ![Configuratie van Litmus](./media/litmus-tutorial/user-profile.png)
+    ![Schermopname van de sectie Gebruiker toevoegen waarin u de beschreven waarden kunt invoeren.](./media/litmus-tutorial/user-profile.png)
 
     a. Voer in het tekstvak **Email** het e-mailadres van de gebruiker in, zoals **B.Simon\@contoso.com**
 

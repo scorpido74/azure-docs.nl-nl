@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: jeedes
-ms.openlocfilehash: 79a77d3c55ee4ac545712329f0054123bec8fcae
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e01bc36f0f30cec779652a603aaf7bdb496e5190
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88535836"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850571"
 ---
 # <a name="tutorial-integrate-sage-intacct-with-azure-active-directory"></a>Zelfstudie: Sage Intacct integreren met Azure Active Directory
 
@@ -189,7 +189,7 @@ Als u wilt instellen dat Azure AD-gebruikers zich kunnen aanmelden bij Sage Inta
 
 1. Voer op het tabblad **User Information** de volgende stappen uit:
 
-    ![User Information](./media/intacct-tutorial/ic790043.png "User Information")
+    ![Schermopname toont de sectie User Information', waarin u de in deze stap beschreven gebruikersgegevens kunt invoeren.](./media/intacct-tutorial/ic790043.png "User Information")
 
     a. Geef op het tabblad **User Information** waarden op voor **User ID**, **Last name**, **First name**, **Email address**, **Title** en **Phone** voor een Azure AD-account dat u wilt inrichten.
 
@@ -204,7 +204,7 @@ Als u wilt instellen dat Azure AD-gebruikers zich kunnen aanmelden bij Sage Inta
 
 1. Klik op het tabblad **Single sign on** en zorg ervoor dat de waarde voor **Federated SSO user id** in de onderstaande schermopname en de waarde voor **Bronkenmerk** die is toegewezen aan `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` in de sectie **Gebruikerskenmerken** in de Azure-portal hetzelfde zijn.
 
-    ![User Information](./media/intacct-tutorial/ic790044.png "User Information")
+    ![Schermopname toont de sectie User Information, waar u de Federated SSO user id kunt invoeren.](./media/intacct-tutorial/ic790044.png "User Information")
 
 > [!NOTE]
 > Als u Azure AD-gebruikersaccounts wilt inrichten, kunt u andere hulpprogramma's van Sage Intacct gebruiken of API's die worden aangeboden door Sage Intacct.

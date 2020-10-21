@@ -1,20 +1,20 @@
 ---
 title: Quickstart voor Face Python-clientbibliotheek
-description: Gebruik de Face-clientbibliotheek voor Python om gezichten te detecteren, gelijksoortige gezichten te zoeken (gezichten zoeken op afbeelding), gezichten te identificeren (zoeken met gezichtsherkenning) en uw gezichtsgegevens te migreren.
+description: Gebruik de Face-clientbibliotheek voor Python om gezichten te detecteren, gelijksoortige gezichten te zoeken (gezichten zoeken op afbeelding) en gezichten te identificeren (zoeken met gezichtsherkenning).
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: include
-ms.date: 09/17/2020
+ms.date: 10/07/2020
 ms.author: pafarley
-ms.openlocfilehash: f746a61850567014ce216c47df472d035f1ae123
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 587e702f5c74149542e2fffcf7891b7ea41f4202
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322948"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91859370"
 ---
 Ga aan de slag met gezichtsherkenning met behulp van de Face-clientbibliotheek voor Python. Volg deze stappen om het pakket te installeren en de voorbeeldcode voor basistaken uit te proberen. De Face-service biedt u toegang tot geavanceerde algoritmen voor het detecteren en herkennen van menselijke gezichten in afbeeldingen.
 
@@ -25,7 +25,6 @@ Gebruik de Face-clientbibliotheek voor Python voor het volgende:
 * Een persoonsgroep maken en trainen
 * Een gezicht identificeren
 * Gezichten verifiëren
-* Een momentopname maken voor gegevensmigratie
 
 [Referentiedocumentatie](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python) | [Broncode bibliotheek](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) | [Package (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/) | [Voorbeelden](https://docs.microsoft.com/samples/browse/?products=azure&term=face)
 
@@ -85,7 +84,6 @@ Deze codefragmenten laten zien hoe u de volgende taken kunt uitvoeren met de Fac
 * [Een persoonsgroep maken en trainen](#create-and-train-a-person-group)
 * [Een gezicht identificeren](#identify-a-face)
 * [Gezichten verifiëren](#verify-faces)
-* [Een momentopname maken voor gegevensmigratie](#take-a-snapshot-for-data-migration)
 
 ## <a name="authenticate-the-client"></a>De client verifiëren
 
@@ -207,52 +205,6 @@ De volgende code vergelijkt elk van de bronafbeeldingen met de doelafbeelding en
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_verify)]
 
-## <a name="take-a-snapshot-for-data-migration"></a>Een momentopname maken voor gegevensmigratie
-
-Met de functie Momentopnamen kunt u opgeslagen gezichtsgegevens, zoals een getrainde **PersonGroup**, verplaatsen naar een ander Azure Cognitive Services Face-abonnement. U kunt deze functie gebruiken als u bijvoorbeeld een **PersonGroup**-object hebt gemaakt met behulp van een gratis abonnement en wilt migreren naar een betaald abonnement. Zie [Uw gezichtsgegevens migreren](../../Face-API-How-to-Topics/how-to-migrate-face-data.md) voor een overzicht van de functie momentopnamen.
-
-In dit voorbeeld migreert u de **PersonGroup** die u hebt gemaakt in [Een groep personen maken en trainen](#create-and-train-a-person-group). U kunt deze sectie eerst voltooien of uw eigen Face-gegevensconstructies gebruiken.
-
-### <a name="set-up-target-subscription"></a>Doelabonnement instellen
-
-Eerst moet u een tweede Azure-abonnement hebben met een Face-resource. U kunt dit doen door de stappen te volgen in het gedeelte [Instellen](#setting-up). 
-
-Maak vervolgens de volgende variabelen bovenaan uw script. U moet nieuwe omgevingsvariabelen maken voor de abonnements-id van uw Azure-account, evenals de sleutel-, eindpunt- en abonnements-id van uw nieuwe (doel)account. 
-
-[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshotvars)]
-
-### <a name="authenticate-target-client"></a>Doelclient verifiëren
-
-Sla later in uw script uw ​​huidige clientobject op als bronclient en verifieer vervolgens een nieuw clientobject voor uw doelabonnement. 
-
-[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshot_auth)]
-
-### <a name="use-a-snapshot"></a>Een momentopname gebruiken
-
-De rest van de momentopnamebewerkingen vinden plaats binnen een asynchrone functie. 
-
-1. De eerste stap is het **nemen van** de momentopname, waarmee de gezichtsgegevens van uw oorspronkelijke abonnement worden opgeslagen op een tijdelijke locatie van de Cloud. Deze methode retourneert een id die u gebruikt om de status van de bewerking op te vragen.
-
-    [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshot_take)]
-
-1. Vervolgens moet u een query uitvoeren op de id totdat de bewerking is voltooid.
-
-    [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshot_wait)]
-
-    Deze code maakt gebruik van de functie `wait_for_operation`, die u apart moet definiëren:
-
-    [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_waitforop)]
-
-1. Ga terug naar uw asynchrone functie. Gebruik vervolgens de bewerking **Toepassen** om uw gezichtsgegevens te schrijven naar uw doelabonnement. Met deze methode wordt ook een id geretourneerd.
-
-    [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshot_apply)]
-
-1. Gebruik nogmaals de functie `wait_for_operation` om de id op te vragen totdat de bewerking is voltooid.
-
-    [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshot_wait2)]
-
-Zodra u deze stappen hebt voltooid, hebt u toegang tot uw gezichtsgegevens van uw nieuwe (doel)abonnement.
-
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
 Voer uw gezichtsherkennings-app uit vanuit de toepassingsmap met de opdracht `python`.
@@ -271,10 +223,6 @@ Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de
 Als u in deze quickstart een **PersonGroup** hebt gemaakt en u deze wilt verwijderen, voert u de volgende code uit in uw script:
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_deletegroup)]
-
-Als u gegevens hebt gemigreerd met behulp van de momentopnamefunctie in deze quickstart, moet u ook de **PersonGroup** verwijderen die is opgeslagen in het doelabonnement.
-
-[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_deletetargetgroup)]
 
 ## <a name="next-steps"></a>Volgende stappen
 

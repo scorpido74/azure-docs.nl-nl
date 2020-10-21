@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: jeedes
-ms.openlocfilehash: a35fb30ca19e08c68c99c9c9524231706b066e11
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: fc6cb5d992d4c961e23034560a688c7090622359
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549888"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91858095"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-knowledgeowl"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met KnowledgeOwl
 
@@ -167,11 +167,11 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Klik op **Settings** en selecteer **Security**.
 
-    ![Configuratie van KnowledgeOwl](./media/knowledgeowl-tutorial/configure1.png)
+    ![Schermopname met Beveiliging geselecteerd in het menu Instellingen.](./media/knowledgeowl-tutorial/configure1.png)
 
 1. Scroll naar **SAML SSO Integration** en voer de volgende stappen uit:
 
-    ![Configuratie van KnowledgeOwl](./media/knowledgeowl-tutorial/configure2.png)
+    ![Schermopname van de SAML S S O-integratie waar u de hier beschreven wijzigingen kunt aanbrengen.](./media/knowledgeowl-tutorial/configure2.png)
 
     a. Selecteer **Enable SAML SSO**.
 
@@ -189,7 +189,7 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
     h. Klik op **Map SAML Attributes** om kenmerken toe te wijzen en de volgende stappen uit te voeren:
 
-    ![Configuratie van KnowledgeOwl](./media/knowledgeowl-tutorial/configure3.png)
+    ![Schermopname van de MAP SAML-kenmerken waar u de hier beschreven wijzigingen kunt aanbrengen.](./media/knowledgeowl-tutorial/configure3.png)
 
     * Voer `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/ssoid` in het tekstvak voor de **SSO-ID** in
     * Voer `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` in het tekstvak voor de **gebruikersnaam/e-mail** in.
@@ -199,7 +199,7 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
     i. Klik op **Opslaan** onder aan de pagina.
 
-    ![Configuratie van KnowledgeOwl](./media/knowledgeowl-tutorial/configure4.png)
+    ![Schermopname toont de knop 'Opslaan'.](./media/knowledgeowl-tutorial/configure4.png)
 
 ### <a name="create-knowledgeowl-test-user"></a>KnowledgeOwl-testgebruiker maken
 

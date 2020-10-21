@@ -1,5 +1,5 @@
 ---
-title: Zelfstudie voor het verbinding maken met, configureren en activeren van Azure Stack Edge Pro-apparaat met GPU in de Azure-portal | Microsoft Docs
+title: Zelfstudie voor het verbinding maken met, configureren en activeren van een Azure Stack Edge Pro-apparaat met GPU in de Azure-portal | Microsoft Docs
 description: In de zelfstudie voor het implementeren van Azure Stack Edge Pro GPU krijgt u instructie om uw fysieke apparaat te verbinden, in te stellen en te activeren.
 services: databox
 author: alkohli
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 1f86b0fc847ade3153c8eaddb0d82bd968913b46
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: dd4078d414048d858c46f6757daa0a87a698eaab
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899624"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976064"
 ---
-# <a name="tutorial-configure-device-settings-for-azure-stack-edge-pro-with-gpu"></a>Zelfstudie: Apparaatinstellingen configureren voor Azure Stack Edge Pro met GPU
+# <a name="tutorial-configure-the-device-settings-for-azure-stack-edge-pro-with-gpu"></a>Zelfstudie: apparaatinstellingen configureren voor Azure Stack Edge Pro met GPU
 
 In deze zelfstudie wordt beschreven hoe u apparaatinstellingen voor uw Azure Stack Edge Pro-apparaat met een onboard GPU kunt configureren. U kunt de apparaatnaam, update-server en tijdserver instellen via de lokale webinterface.
 
@@ -53,7 +53,7 @@ Volg deze stappen voor het configureren van apparaatinstellingen:
 
     3. Selecteer **Toepassen** om de geconfigureerde apparaatinstellingen te valideren en toe te passen.
 
-        ![Pagina 'Apparaat' 1 van de lokale webinterface](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/device-2.png)
+        ![Pagina Apparaat van de lokale webinterface 1](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/device-2.png)
 
         Als u de naam van het apparaat en het DNS-domein hebt gewijzigd, werken de automatisch gegenereerde zelfondertekende certificaten op het apparaat niet. Kies een van de volgende opties wanneer u certificaten configureert: 
         
@@ -61,13 +61,13 @@ Volg deze stappen voor het configureren van apparaatinstellingen:
         - Uw eigen certificaten voor het apparaat gebruiken, inclusief de ondertekeningsketen.
     
 
-        ![Pagina 'Apparaat' 2 van de lokale webinterface](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/device-3.png)
+        ![Pagina Apparaat van de lokale webinterface 2](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/device-3.png)
 
     4. Wanneer de apparaatnaam en het DNS-domein worden gewijzigd, wordt het SMB-eindpunt gemaakt.  
 
     5. Nadat de instellingen zijn toegepast, selecteert u **Volgende: Server bijwerken**.
 
-        ![Pagina Apparaat van de lokale webinterface](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/device-4.png)
+        ![Pagina 'Apparaat' van de lokale webinterface 3](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/device-4.png)
 
 ## <a name="configure-update"></a>Update configureren
 
@@ -79,7 +79,7 @@ Volg deze stappen voor het configureren van apparaatinstellingen:
 
         U kunt er ook voor kiezen om updates te implementeren via **Windows Server Update Services** (WSUS). Geef het pad naar de WSUS-server op.
         
-        ![Pagina Update-server van lokale webinterface](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/update-3.png)
+        ![Pagina Update-server van lokale webinterface 2](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/update-3.png)
 
         > [!NOTE] 
         > Als er een afzonderlijke Windows Update-server is geconfigureerd en u ervoor kiest om verbinding te maken via *https* (in plaats van *http*), zijn er certificaten voor de ondertekeningsketen nodig, die vereist zijn om verbinding te maken met de update-server. Ga naar [Certificaten beheren](azure-stack-edge-j-series-manage-certificates.md) voor meer informatie over het maken en uploaden van certificaten. 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2020
 ms.author: memildin
-ms.openlocfilehash: 8e92c893d97ce9fadfa2d40476631c2b9ba5d177
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: d829ffb9d3a264052e3f688018acd7afa854578e
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999272"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018267"
 ---
 # <a name="azure-security-center-data-security"></a>Gegevensbeveiliging in Azure Security Center
 
@@ -57,19 +57,19 @@ Als u geen gebruikmaakt van Azure Defender, kunt u het verzamelen van gegevens v
 
 U kunt de werkruimte en de regio opgeven waar de gegevens die van uw computers worden verzameld, worden opgeslagen. De standaardinstelling is om gegevens op te slaan die zijn verzameld van uw computers in de dichtstbijzijnde werkruimte, zoals wordt weergegeven in de volgende tabel:
 
-| Geografisch gebied van virtuele machine                              | Geografisch gebied van werkruimte |
-|-------------------------------------|---------------|
-| Verenigde Staten, Brazilië, Zuid-Afrika | Verenigde Staten |
-| Canada                              | Canada        |
-| Europa (met uitzondering van het Verenigd Koninkrijk)   | Europa        |
-| Verenigd Koninkrijk                      | Verenigd Koninkrijk |
-| Azië (met uitzondering van India, Japan, Korea, China)   | Azië en Stille Oceaan  |
-| Korea                              | Azië en Stille Oceaan  |
-| India                               | India         |
-| Japan                               | Japan         |
-| China                               | China         |
-| Australië                           | Australië     |
-|||
+| Geografisch gebied van virtuele machine                                      | Geografisch gebied van werkruimte  |
+|---------------------------------------------|----------------|
+| Verenigde Staten, Brazilië, Zuid-Afrika         | Verenigde Staten  |
+| Canada                                      | Canada         |
+| Europa (met uitzondering van het Verenigd Koninkrijk)           | Europa         |
+| Verenigd Koninkrijk                              | Verenigd Koninkrijk |
+| Azië (met uitzondering van India, Japan, Korea, China) | Azië en Stille Oceaan   |
+| Korea                                       | Azië en Stille Oceaan   |
+| India                                       | India          |
+| Japan                                       | Japan          |
+| China                                       | China          |
+| Australië                                   | Australië      |
+|                                             |                |
 
 > [!NOTE]
 > Met **Azure Defender voor Storage** worden artefacten regionaal opgeslagen op basis van de locatie van de gerelateerde Azure-resource. Meer informatie vindt u in [Inleiding tot Azure Defender voor Storage](defender-for-storage-introduction.md).
@@ -80,18 +80,16 @@ U kunt de werkruimte en de regio opgeven waar de gegevens die van uw computers w
 Klanten hebben toegang tot aan Security Center gerelateerde gegevens uit de volgende gegevensstromen:
 
 
-|Streamen  |Gegevenstypen  |
-|---------|---------|
-|[Azure-activiteitenlogboek](../azure-monitor/platform/activity-log.md)| Alle beveiligingswaarschuwingen, goedgekeurde [Just-In-Time](security-center-just-in-time.md)-toegangsaanvragen van Security Center en alle waarschuwingen die zijn gegenereerd door [besturingselementen voor adaptieve toepassingen](security-center-adaptive-application.md) |
-|[Azure Monitor-logboeken](../azure-monitor/platform/data-platform.md)|Alle beveiligingswaarschuwingen.|
-|[Azure Resource Graph](../governance/resource-graph/overview.md)|Beveiligingswaarschuwingen en -aanbevelingen, resultaten van evaluatie van beveiligingsproblemen, informatie over de beveiligingsscores, status van nalevingscontroles, en meer.|
-|[REST-API voor Azure Security Center](https://docs.microsoft.com/rest/api/securitycenter/)|Beveiligingswaarschuwingen en -aanbevelingen, en meer. .|
-|||
+| Streamen                                                                                | Gegevenstypen                                                                                                                                                                                                          |
+|---------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [Azure-activiteitenlogboek](../azure-monitor/platform/activity-log.md)                       | Alle beveiligingswaarschuwingen, goedgekeurde [Just-In-Time](security-center-just-in-time.md)-toegangsaanvragen van Security Center en alle waarschuwingen die zijn gegenereerd door [besturingselementen voor adaptieve toepassingen](security-center-adaptive-application.md).|
+| [Azure Monitor-logboeken](../azure-monitor/platform/data-platform.md)                      | Alle beveiligingswaarschuwingen.                                                                                                                                                                                                |
+| [Azure Resource Graph](../governance/resource-graph/overview.md)                      | Beveiligingswaarschuwingen en -aanbevelingen, resultaten van evaluatie van beveiligingsproblemen, informatie over de beveiligingsscores, status van nalevingscontroles, en meer.                                                                       |
+| [REST-API voor Azure Security Center](https://docs.microsoft.com/rest/api/securitycenter/) | Beveiligingswaarschuwingen en -aanbevelingen, en meer.                                                                                                                                                                |
+|                                                                                       |                                                                                                                                                                                                                     |
 
 ## <a name="next-steps"></a>Volgende stappen
 
 In dit document hebt u geleerd hoe gegevens worden beheerd en beveiligd in Azure Security Center. 
 
-Zie de volgende onderwerpen voor meer informatie over Azure Security Center:
-
-- [Wat is Azure Security Center?](security-center-introduction.md)
+Zie [Wat is Azure Security Center?](security-center-introduction.md) voor meer informatie over Azure Security Center.

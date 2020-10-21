@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 7315ef68b3562a28ee2515077c1e7d2f23c3803f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34b4a7395102549dfea6f9d51ef8d1216bacddba
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89230429"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327702"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>Azure-beveiligings basislijn voor HDInsight
 
@@ -142,7 +142,7 @@ https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags
 
 **Richt lijnen**: standaard beveiligings configuraties definiëren en implementeren voor netwerk bronnen die betrekking hebben op uw Azure HDInsight-cluster. Gebruik Azure Policy aliassen in de naam ruimten ' micro soft. HDInsight ' en ' micro soft. Network ' om aangepaste beleids regels te maken om de netwerk configuratie van uw Azure HDInsight-cluster te controleren of af te dwingen.
 
-U kunt ook Azure-blauw drukken gebruiken om grootschalige Azure-implementaties te vereenvoudigen door sleutel omgevings artefacten, zoals Azure Resource Manager sjablonen, RBAC-besturings elementen en-beleid, in één blauw definitie te voorzien. Pas de blauw druk toe op nieuwe abonnementen en omgevingen en Verfijn de controle en het beheer via versies.
+U kunt ook Azure-blauw drukken gebruiken om grootschalige Azure-implementaties te vereenvoudigen door sleutel omgevings artefacten, zoals Azure Resource Manager sjablonen, Azure RBAC-besturings elementen en-beleid, in één blauw druk te definiëren. Pas de blauw druk toe op nieuwe abonnementen en omgevingen en Verfijn de controle en het beheer via versies.
 
 Beschik bare Azure Policy aliassen weer geven:
 
@@ -534,7 +534,7 @@ Lijst met door Klanten-lockbox ondersteunde services: https://docs.microsoft.com
 
 **Verantwoordelijkheid**: klant
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 *Zie [beveiligings beheer: gegevens beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 

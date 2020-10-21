@@ -9,19 +9,20 @@ ms.reviewer: matjazl
 ms.author: cavoeg
 author: caitlinv39
 ms.date: 01/03/2020
-ms.openlocfilehash: 483ca63abbabaabd3b25446c9267a1b0540f60dd
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: c4f6124227f5dd5c7735d300f71d5ae7d0c06b3a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852970"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975770"
 ---
 # <a name="client-application-registration"></a>Clienttoepassingen registreren
 In de vorige zelfstudie hebt u de Azure-API for FHIR geïmplementeerd en ingesteld. Nu u Azure API for FHIR hebt ingesteld, gaan we een openbare clienttoepassing registreren. U kunt de volledige instructiegids voor het [registreren van een openbare client-app](register-public-azure-ad-client-app.md) lezen voor meer informatie of om problemen op te lossen, maar voor deze zelfstudie hebben we de belangrijkste stappen op een rij gezet.
 
 1. Navigeren naar Azure Active Directory
 1. Selecteer **App-registratie** --> **Nieuwe registratie**
-1. Geef uw toepassing een naam en stel de omleidings-URI in op https://www.getpostman.com/oauth2/callback
+1. Geef de toepassing een naam en
+1. Selecteer **Openbare client/systeemeigen (mobiel en desktop)** en stel de omleidings-URL in op https://www.getpostman.com/oauth2/callback.
 
    :::image type="content" source="media/tutorial-web-app/register-public-app.png" alt-text="Schermopname van het deelvenster voor het registreren van een toepassing, en een voorbeeld van een toepassingsnaam en omleidings-URL.":::
 
@@ -29,7 +30,7 @@ In de vorige zelfstudie hebt u de Azure-API for FHIR geïmplementeerd en ingeste
 
 Nadat de clienttoepassing is geregistreerd, kopieert u de id van de toepassing (client) en de tenant-id van de pagina Overzicht. U hebt deze twee waarden later nodig voor toegang tot de client.
 
-:::image type="content" source="media/tutorial-web-app/client-id-tenant-id.png" alt-text="Schermopname van het deelvenster met instellingen voor de clienttoepassing, met de id's van de toepassing en map gemarkeerd.":::
+:::image type="content" source="media/tutorial-web-app/client-id-tenant-id.png" alt-text="Schermopname van het deelvenster voor het registreren van een toepassing, en een voorbeeld van een toepassingsnaam en omleidings-URL.":::
 
 ### <a name="connect-with-web-app"></a>Verbinding maken met de web-app
 
@@ -43,7 +44,7 @@ Als u [uw web-app hebt geschreven](tutorial-web-app-write-web-app.md) om verbind
 
 1. Schakel de selectievakjes **Toegangstoken** en **Id-token** in.
 
-   :::image type="content" source="media/tutorial-web-app/web-app-authentication.png" alt-text="Schermopname van de blade met verificatie-instellingen voor de app, met de stappen voor het toevoegen van een platform gemarkeerd.":::
+   :::image type="content" source="media/tutorial-web-app/web-app-authentication.png" alt-text="Schermopname van het deelvenster voor het registreren van een toepassing, en een voorbeeld van een toepassingsnaam en omleidings-URL.":::
 
 ## <a name="add-api-permissions"></a>API-machtigingen toevoegen
 
@@ -53,7 +54,7 @@ Nu u de juiste verificatie hebt ingesteld, stelt u de API-machtigingen in:
 1. Zoek onder **API's waarvan mijn organisatie gebruikmaakt** naar Azure Healthcare API's.
 1. Selecteer **user_impersonation** en klik op **machtigingen toevoegen**.
 
-:::image type="content" source="media/tutorial-web-app/api-permissions.png" alt-text="Schermopname van de blade API-machtigingen toevoegen, met de stappen voor het toevoegen van API-machtigingen gemarkeerd.":::
+:::image type="content" source="media/tutorial-web-app/api-permissions.png" alt-text="Schermopname van het deelvenster voor het registreren van een toepassing, en een voorbeeld van een toepassingsnaam en omleidings-URL.":::
 
 ## <a name="next-steps"></a>Volgende stappen
 U hebt nu een openbare clienttoepassing. In de volgende zelfstudie wordt u begeleid bij het testen en verkrijgen van toegang tot deze toepassing via Postman.

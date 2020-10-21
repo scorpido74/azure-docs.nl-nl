@@ -1,14 +1,14 @@
 ---
 title: 'Quickstart: Uw eerste REST API-query'
 description: In deze quickstart voert u de stappen uit om het Resource Graph-eindpunt voor REST API aan te roepen en uw eerste query uit te voeren.
-ms.date: 06/29/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: 8776a107484691ffab72f2e1622ed5837375b7fb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8be0556b6aa2fd234c0f3e25d83c0239c8f674bb
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85802567"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057209"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-rest-api"></a>Quickstart: Uw eerste Resource Graph-query uitvoeren met REST API
 
@@ -49,7 +49,8 @@ $restUri = 'https://management.azure.com/subscriptions/{subscriptionId}?api-vers
 $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 ```
 
-Vervang `{subscriptionId}` in de bovenstaande variabele **$restUri** om informatie over uw abonnement op te halen. De variabele $response bevat het resultaat van de cmdlet `Invoke-RestMethod`, die kan worden geparseerd met cmdlets zoals [ConvertFrom-Json](/powershell/module/microsoft.powershell.utility/convertfrom-json). Als het service-eindpunt van REST API een **Aanvraagbody** verwacht, geeft u een met JSON geformatteerde variabele op in de parameter `-Body` van `Invoke-RestMethod`.
+Vervang `{subscriptionId}` in de variabele `$restUri` om informatie over uw abonnement op te halen.
+De variabele `$response` bevat het resultaat van de cmdlet `Invoke-RestMethod`, die kan worden geparseerd met cmdlets als [ConvertFrom-Json](/powershell/module/microsoft.powershell.utility/convertfrom-json). Als het service-eindpunt van REST API een **Aanvraagbody** verwacht, geeft u een met JSON geformatteerde variabele op in de parameter `-Body` van `Invoke-RestMethod`.
 
 ## <a name="run-your-first-resource-graph-query"></a>Uw eerste Resource Graph-query uitvoeren
 

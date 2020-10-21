@@ -5,24 +5,17 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 08/27/2020
+ms.date: 10/20/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 517acc5137d70c722d8defade1e218a3b2e78f86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a66596ecb926c1bf3c6b61cc99e1eb1b56e99158
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89052492"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328425"
 ---
-U hebt door deze stappen te volgen een VNet gemaakt met behulp van het Resource Manager-implementatiemodel en de Azure-portal. Zie [Overzicht van virtuele netwerken](../articles/virtual-network/virtual-networks-overview.md) voor meer informatie over virtuele netwerken.
-
->[!NOTE]
->Wanneer u een virtueel netwerk als onderdeel van een cross-premises-architectuur gebruikt, dient u eerst met uw on-premises netwerkbeheerder een IP-adresbereik te reserveren dat u specifiek voor dit virtuele netwerk kunt gebruiken. Als er een dubbel adresbereik bestaat aan beide zijden van de VPN-verbinding, wordt verkeer niet correct gerouteerd. Als u dit virtuele netwerk wilt verbinden met een ander virtueel netwerk, mogen de adresruimte en het andere virtuele netwerk elkaar daarnaast niet overlappen. Houd hier rekening mee als u uw netwerkconfiguratie gaan plannen.
->
->
-
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. In **Resources, services en documenten (G+/) zoeken** typt u *virtueel netwerk*.
 
    ![Pagina 'naar de resource Virtueel netwerk zoeken'](./media/vpn-gateway-basic-vnet-rm-portal-include/marketplace.png "Pagina 'naar de resource Virtueel netwerk zoeken'")

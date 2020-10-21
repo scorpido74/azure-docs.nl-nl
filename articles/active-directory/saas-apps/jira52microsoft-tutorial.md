@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/22/2019
 ms.author: jeedes
-ms.openlocfilehash: e0198fdcfea1656e3aec5179358e69fb6fb55723
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 331d9df6059c8af54857d05d2d6373e48e127eac
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547525"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850843"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft-v52"></a>Zelfstudie: Azure Active Directory-integratie met JIRA SAML SSO by Microsoft (V5.2)
 
@@ -146,23 +146,23 @@ Voor het configureren van Azure AD-eenmalige aanmelding met JIRA SAML SSO by Mic
 
 2. Wijs het tandwiel aan met de muisaanwijzer en klik op **Add-ons**.
 
-    ![Eenmalige aanmelding configureren](./media/jira52microsoft-tutorial/addon1.png)
+    ![Schermopname met Add-ons (Invoegtoepassingen) geselecteerd in het menu Settings (Instellingen).](./media/jira52microsoft-tutorial/addon1.png)
 
 3. Klik onder de tabbladsectie Invoegtoepassingen op **Manage add-ons**.
 
-    ![Eenmalige aanmelding configureren](./media/jira52microsoft-tutorial/addon7.png)
+    ![Schermopname van Manage add-ons geselecteerd op het tabblad Add-ons.](./media/jira52microsoft-tutorial/addon7.png)
 
 4. Download de invoegtoepassing uit het [Microsoft Downloadcentrum](https://www.microsoft.com/download/details.aspx?id=56521). Upload de invoegtoepassing van Microsoft handmatig via het menu **Upload add-on**. Het downloaden van invoegtoepassingen valt onder de [Microsoft-serviceovereenkomst](https://www.microsoft.com/servicesagreement/).
 
-    ![Eenmalige aanmelding configureren](./media/jira52microsoft-tutorial/addon12.png)
+    ![Schermopname van Manage add-ons (Invoegtoepassingen beheren) met de koppeling Upload add-on (Invoegtoepassing uploaden) uitgelicht.](./media/jira52microsoft-tutorial/addon12.png)
 
 5. Zodra de invoegtoepassing is geïnstalleerd, wordt deze weergegeven in de sectie **User Installed** met door de gebruiker geïnstalleerde invoegtoepassingen. Klik op **Configure** om de nieuwe invoegtoepassing te configureren.
 
-    ![Eenmalige aanmelding configureren](./media/jira52microsoft-tutorial/addon13.png)
+    ![Schermopname van de sectie SAML Single Sign-on for Jira van Azure AD met Configure geselecteerd.](./media/jira52microsoft-tutorial/addon13.png)
 
 6. Voer de volgende stappen uit op de configuratiepagina:
 
-    ![Eenmalige aanmelding configureren](./media/jira52microsoft-tutorial/addon52.png)
+    ![Schermopname van de configuratiepagina van Microsoft Jira SSO Connector.](./media/jira52microsoft-tutorial/addon52.png)
 
     > [!TIP]
     > Zorg ervoor dat er maar één certificaat is toegewezen aan de app, zodat er geen fout optreedt bij het omzetten van de metagegevens. Als er meerdere certificaten zijn, krijgt de beheerder een foutmelding bij het omzetten van de metagegevens.
@@ -251,19 +251,19 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij de on-premises serv
 
 2. Wijs het tandwiel aan met de muisaanwijzer en klik op **User management**.
 
-    ![Werknemer toevoegen](./media/jira52microsoft-tutorial/user1.png)
+    ![Schermopname met User management (Gebruikersbeheer) geselecteerd in het menu Instellingen.](./media/jira52microsoft-tutorial/user1.png)
 
 3. U wordt omgeleid naar de toegangspagina voor beheerders. Voer uw **wachtwoord** in en klik op de knop **Bevestigen**.
 
-    ![Werknemer toevoegen](./media/jira52microsoft-tutorial/user2.png)
+    ![Schermopname van de toegangspagina voor beheerders waar u uw referenties invoert.](./media/jira52microsoft-tutorial/user2.png)
 
 4. Onder de tabbladsectie **Gebruikersbeheer** klikt u op **Gebruiker maken**.
 
-    ![Werknemer toevoegen](./media/jira52microsoft-tutorial/user3.png) 
+    ![Schermopname van het tabblad Gebruikersbeheer met de optie Gebruiker maken.](./media/jira52microsoft-tutorial/user3.png) 
 
 5. Op de pagina **Nieuwe gebruiker maken** voert u de volgende stappen uit:
 
-    ![Werknemer toevoegen](./media/jira52microsoft-tutorial/user4.png)
+    ![Schermopname met het dialoogvenster Nieuwe gebruiker maken waar u de gegevens voor deze stap kunt invoeren.](./media/jira52microsoft-tutorial/user4.png)
 
     a. Typ in het tekstvak **Email address** het e-mailadres van de gebruiker, bijvoorbeeld Brittasimon@contoso.com.
 

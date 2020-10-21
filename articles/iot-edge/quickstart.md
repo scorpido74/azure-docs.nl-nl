@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: d56f17f6c60f30a38431ee347c7bdfc5b200b641
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: acd2f12150155efbccc668b99dcc4683d81b87e0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91328583"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047009"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Quickstart: Uw eerste IoT Edge-module implementeren in een virtueel Windows-apparaat
 
@@ -22,12 +22,10 @@ Probeer Azure IoT Edge uit in deze quickstart door code in een container te impl
 
 In deze snelstart leert u de volgende zaken:
 
-> [!div class="checklist"]
->
-> * Maak een IoT-hub.
-> * Een IoT Edge-apparaat registreren in uw IoT-hub.
-> * De IoT Edge-runtime op uw virtuele apparaat installeren en starten.
-> * Op afstand een module op een IoT Edge-apparaat implementeren en telemetrie naar IoT Hub verzenden.
+* Maak een IoT-hub.
+* Een IoT Edge-apparaat registreren in uw IoT-hub.
+* De IoT Edge-runtime op uw virtuele apparaat installeren en starten.
+* Op afstand een module op een IoT Edge-apparaat implementeren en telemetrie naar IoT Hub verzenden.
 
 ![Diagram - Snelstartarchitectuur voor apparaat en cloud](./media/quickstart/install-edge-full.png)
 
@@ -76,11 +74,11 @@ IoT Edge-apparaat:
   Open dit bestand met Verbinding met extern bureaublad om verbinding te maken met uw virtuele Windows-machine. Gebruik de beheerdersnaam en het beheerderswachtwoord die u hebt opgegeven met de opdracht `az vm create`.
 
 > [!NOTE]
-> Uw virtuele Windows-machine wordt gestart met Windows versie 1809 (build 17763). Dit is de nieuwste [Windows-build met langetermijnondersteuning](https://docs.microsoft.com/windows/release-information/). In Windows wordt standaard elke 22 uur automatisch op updates gecontroleerd. Na een controle op uw virtuele machine wordt door Windows een versie-update gepusht die niet compatibel is met IoT Edge voor Windows, waardoor IoT Edge voor Windows-functies niet meer kunnen worden gebruikt. U wordt aangeraden om uw virtuele machine niet langer dan 22 uur te gebruiken of [Windows-updates tijdelijk te onderbreken](https://support.microsoft.com/help/4028233/windows-10-manage-updates).
+> Uw virtuele Windows-machine wordt gestart met Windows versie 1809 (build 17763). Dit is de nieuwste [Windows-build met langetermijnondersteuning](/windows/release-information/). In Windows wordt standaard elke 22 uur automatisch op updates gecontroleerd. Na een controle op uw virtuele machine wordt door Windows een versie-update gepusht die niet compatibel is met IoT Edge voor Windows, waardoor IoT Edge voor Windows-functies niet meer kunnen worden gebruikt. U wordt aangeraden om uw virtuele machine niet langer dan 22 uur te gebruiken of [Windows-updates tijdelijk te onderbreken](https://support.microsoft.com/help/4028233/windows-10-manage-updates).
 >
 > Voor het gemak wordt in deze quickstart gebruikgemaakt van een Windows VM. Zie [Systemen met ondersteuning voor Azure IoT Edge](support.md) voor meer informatie over welke Windows-besturingssystemen algemeen beschikbaar zijn voor productiescenario's.
 >
-> Als u klaar bent om uw eigen Windows-apparaat te configureren voor IoT Edge, met inbegrip van apparaten met IoT Core, volgt u de stappen in [De Azure IoT Edge-runtime op Windows installeren](how-to-install-iot-edge-windows.md).
+> Als u uw eigen Windows-apparaat wilt configureren voor IoT Edge, volgt u de stappen in [De Azure IoT Edge-runtime installeren](how-to-install-iot-edge.md).
 
 ## <a name="create-an-iot-hub"></a>Een IoT Hub maken
 
@@ -144,9 +142,7 @@ Aangezien de stappen in deze sectie allemaal plaatsvinden op uw IoT Edge-apparaa
 
 Gebruik PowerShell om de IoT Edge-runtime te downloaden en te installeren. Gebruik de apparaatverbindingsreeks die u hebt opgehaald via IoT Hub om uw apparaat te configureren.
 
-1. Als u dit nog niet hebt gedaan, volgt u de stappen in [Een nieuw Azure IoT Edge-apparaat registreren](how-to-register-device.md) om uw apparaat te registreren en de verbindingsreeks voor het apparaat op te halen.
-
-2. Voer PowerShell uit op de virtuele machine als beheerder.
+1. Voer PowerShell uit op de virtuele machine als beheerder.
 
    >[!NOTE]
    >Gebruik een AMD64-sessie van PowerShell om IoT Edge, niet PowerShell (x86), te installeren. Als u niet zeker weet welk sessietype u gebruikt, voert u de volgende opdracht uit:
@@ -155,25 +151,25 @@ Gebruik PowerShell om de IoT Edge-runtime te downloaden en te installeren. Gebru
    >(Get-Process -Id $PID).StartInfo.EnvironmentVariables["PROCESSOR_ARCHITECTURE"]
    >```
 
-3. Met de opdracht **Deploy-IoTEdge** wordt gecontroleerd of de Windows-computer een ondersteunde versie heeft, wordt de containersfunctie ingeschakeld en worden achtereenvolgens de Moby- en IoT Edge-runtime gedownload.
+2. Met de opdracht **Deploy-IoTEdge** wordt gecontroleerd of de Windows-computer een ondersteunde versie heeft, wordt de containersfunctie ingeschakeld en worden achtereenvolgens de Moby- en IoT Edge-runtime gedownload.
 
    ```powershell
    . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
    Deploy-IoTEdge -ContainerOs Windows
    ```
 
-4. De machine wordt mogelijk automatisch opnieuw opgestart. Als u door de opdracht Deploy-IoTEdge wordt gevraagd opnieuw op te starten, doet u dat.
+3. De machine wordt mogelijk automatisch opnieuw opgestart. Als u door de opdracht Deploy-IoTEdge wordt gevraagd opnieuw op te starten, doet u dat.
 
-5. Voer PowerShell weer uit als beheerder.
+4. Voer PowerShell weer uit als beheerder.
 
-6. Met de opdracht **Initialize-IoTEdge** configureert u de IoT Edge-runtime op uw machine. De opdracht wordt standaard ingesteld op handmatig inrichten met Windows-containers.
+5. Met de opdracht **Initialize-IoTEdge** configureert u de IoT Edge-runtime op uw machine. De opdracht wordt standaard ingesteld op handmatig inrichten met Windows-containers.
 
    ```powershell
    . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
    Initialize-IoTEdge -ContainerOs Windows
    ```
 
-7. Als u wordt gevraagd naar een **DeviceConnectionString**, geeft u de tekenreeks op die u in de vorige sectie hebt gekopieerd. Plaats geen aanhalingstekens rond de verbindingsreeks.
+6. Als u wordt gevraagd naar een **DeviceConnectionString**, geeft u de tekenreeks op die u in de vorige sectie hebt gekopieerd. Plaats geen aanhalingstekens rond de verbindingsreeks.
 
 ### <a name="view-the-iot-edge-runtime-status"></a>De IoT Edge runtime-status bekijken
 

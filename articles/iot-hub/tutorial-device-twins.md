@@ -14,12 +14,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - devx-track-js
-ms.openlocfilehash: 0aee3fef5c2b9e7e1d8cdd8c3d27192b17161351
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: aecf5c8b71f23e3d51c755c86ec0122d6da05f21
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91251878"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842764"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
@@ -191,11 +191,11 @@ node ServiceClient.js "{your service connection string}"
 
 De volgende schermafbeelding toont de uitvoer van de gesimuleerd apparaattoepassing en accentueert hoe het een update voor de gewenste eigenschap **maxTemperature** verwerkt. U kunt zien hoe zowel de handler van het hoogste niveau als de klimaatcomponenthandlers worden uitgevoerd:
 
-![Gesimuleerd apparaat](./media/tutorial-device-twins/SimulatedDevice1.png)
+![Schermopname die laat zien hoe zowel de handler van het hoogste niveau als de klimaatcomponenthandlers worden uitgevoerd.](./media/tutorial-device-twins/SimulatedDevice1.png)
 
 De volgende schermafbeelding laat de uitvoer van de back-endtoepassing zien en accentueert hoe die een update zendt naar de gewenste eigenschap**maxTemperature**:
 
-![Back-endtoepassing](./media/tutorial-device-twins/BackEnd1.png)
+![Schermopname die de uitvoer van de back-endtoepassing laat zien, met het verzenden van een update gemarkeerd.](./media/tutorial-device-twins/BackEnd1.png)
 
 ## <a name="receive-state-information"></a>Statusinformatie ontvangen
 

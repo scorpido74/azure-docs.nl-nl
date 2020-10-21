@@ -1,14 +1,14 @@
 ---
 title: Overzicht van blauwdrukvoorbeeld van Azure Security-benchmark
 description: Overzicht van het blauwdrukvoorbeeld van de Azure Security-benchmark. Met dit blauwdrukvoorbeeld kunnen klanten specifieke beheeropties bekijken.
-ms.date: 06/02/2020
+ms.date: 10/14/2020
 ms.topic: sample
-ms.openlocfilehash: 4113f350c21087dbda5f69d9c3981e2d169ffc00
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 6b147ffd4efbf814b6119f5d7e90dc7af2ea2687
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651904"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057583"
 ---
 # <a name="azure-security-benchmark-blueprint-sample"></a>Blauwdrukvoorbeeld van Azure Security-benchmark
 
@@ -46,7 +46,7 @@ Implementeer eerst het blauwdrukvoorbeeld door een nieuwe blauwdruk in uw omgevi
 
 1. Selecteer het tabblad _Artefacten_ boven aan de pagina of kies **Volgende: Artefacten** onder aan de pagina.
 
-1. Controleer de lijst met artefacten die samen het blauwdrukvoorbeeld vormen. Veel van de artefacten bevatten parameters die we later zullen definiëren. Selecteer **Concept opslaan** wanneer u klaar bent met het controleren van het blauwdrukvoorbeeld.
+1. Bekijk de lijst met artefacten die in het blauwdrukvoorbeeld zijn opgenomen. Veel van de artefacten bevatten parameters die we later zullen definiëren. Selecteer **Concept opslaan** wanneer u klaar bent met het controleren van het blauwdrukvoorbeeld.
 
 ### <a name="publish-the-sample-copy"></a>De voorbeeldkopie publiceren
 

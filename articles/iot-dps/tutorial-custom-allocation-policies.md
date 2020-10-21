@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: ae43e0ed1bf3f64ce851e9ae779d54b82269a7be
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.openlocfilehash: e20183356655668750cb1450338d4c8af1ee2d8c
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91405564"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951703"
 ---
 # <a name="tutorial-use-custom-allocation-policies-with-device-provisioning-service-dps"></a>Zelfstudie: Aangepast toewijzingsbeleid gebruiken met Device Provisioning Service (DPS)
 
@@ -347,7 +347,20 @@ Met deze voorbeeldcode wordt een opstartprocedure van het apparaat gesimuleerd w
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-6. Klik met de rechtermuisknop op het **prov\_dev\_client\_sample**-project en selecteer **Set as Startup Project**.
+6. Zoek in de functie `main()` de aanroep naar `Prov_Device_Register_Device()`. Voeg net vóór die aanroep de volgende regels code toe die gebruikmaken van [`Prov_Device_Set_Provisioning_Payload()`](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/prov-device-client-h/prov-device-set-provisioning-payload) voor het doorgeven van een aangepaste JSON-payload tijdens het inrichten. Dit kan worden gebruikt om meer informatie over uw aangepaste toewijzingsfuncties te krijgen. Dit kan ook worden gebruikt om het apparaattype door te geven in plaats van de registratie-id te onderzoeken.
+
+    ```c
+    // An example custom payload
+    const char* custom_json_payload = "{\"MyDeviceFirmwareVersion\":\"12.0.2.5\",\"MyDeviceProvisioningVersion\":\"1.0.0.0\"}";
+
+    prov_device_result = Prov_Device_Set_Provisioning_Payload(prov_device_handle, custom_json_payload);
+    if (prov_device_result != PROV_DEVICE_RESULT_OK)
+    {
+        (void)printf("\r\nFailure setting provisioning payload: %s\r\n", MU_ENUM_TO_STRING(PROV_DEVICE_RESULT, prov_device_result));
+    }
+    ```
+
+7. Klik met de rechtermuisknop op het **prov\_dev\_client\_sample**-project en selecteer **Set as Startup Project**.
 
 ### <a name="simulate-the-contoso-toaster-device"></a>Het Contoso-broodrooster simuleren
 
@@ -369,13 +382,15 @@ Met deze voorbeeldcode wordt een opstartprocedure van het apparaat gesimuleerd w
 
 2. Selecteer in het menu van Visual Studio de optie **Debug** > **Start without debugging** om de oplossing uit te voeren. Selecteer **Yes** in de prompt voor het opnieuw maken van het project om het project opnieuw te maken voordat het wordt uitgevoerd.
 
-    Hieronder vindt u een voorbeeld van uitvoer van de logboekregistratie als gevolg van de code voor de functie van aangepaste toewijzing die wordt uitgevoerd voor het broodrooster. U ziet dat er een hub is geselecteerd voor een broodrooster. U vindt deze logboekregistratie door op **Logboeken** te klikken onder de functiecode in de portal:
+    De onderstaande tekst is een voorbeeld van uitvoer van de logboekregistratie als gevolg van de code voor de functie van aangepaste toewijzing die wordt uitgevoerd voor het broodrooster. U ziet dat er een hub is geselecteerd voor een broodrooster. Het `payload`-lid bevat de aangepaste JSON-inhoud die u aan de code hebt toegevoegd. Deze inhoud is beschikbaar voor gebruik in de `deviceRuntimeContext`.
+
+    U vindt deze logboekregistratie door op **Logboeken** te klikken onder de functiecode in de portal:
 
     ```cmd
     2020-09-23T11:44:37.505 [Information] Executing 'Functions.HttpTrigger1' (Reason='This function was programmatically called via the host APIs.', Id=4596d45e-086f-4e86-929b-4a02814eee40)
     2020-09-23T11:44:41.380 [Information] C# HTTP trigger function processed a request.
     2020-09-23T11:44:41.381 [Information] Request.Body:...
-    2020-09-23T11:44:41.381 [Information] {"enrollmentGroup":{"enrollmentGroupId":"contoso-custom-allocated-devices","attestation":{"type":"symmetricKey"},"capabilities":{"iotEdge":false},"etag":"\"e8002126-0000-0100-0000-5f6b2a570000\"","provisioningStatus":"enabled","reprovisionPolicy":{"updateHubAssignment":true,"migrateDeviceData":true},"createdDateTimeUtc":"2020-09-23T10:58:31.62286Z","lastUpdatedDateTimeUtc":"2020-09-23T10:58:31.62286Z","allocationPolicy":"custom","iotHubs":["contoso-toasters-hub-1098.azure-devices.net"],"customAllocationDefinition":{"webhookUrl":"https://contoso-function-app.azurewebsites.net/api/HttpTrigger1?****","apiVersion":"2019-03-31"}},"deviceRuntimeContext":{"registrationId":"contoso-toaster-007","symmetricKey":{}},"linkedHubs":["contoso-toasters-hub-1098.azure-devices.net"]}
+    2020-09-23T11:44:41.381 [Information] {"enrollmentGroup":{"enrollmentGroupId":"contoso-custom-allocated-devices","attestation":{"type":"symmetricKey"},"capabilities":{"iotEdge":false},"etag":"\"e8002126-0000-0100-0000-5f6b2a570000\"","provisioningStatus":"enabled","reprovisionPolicy":{"updateHubAssignment":true,"migrateDeviceData":true},"createdDateTimeUtc":"2020-09-23T10:58:31.62286Z","lastUpdatedDateTimeUtc":"2020-09-23T10:58:31.62286Z","allocationPolicy":"custom","iotHubs":["contoso-toasters-hub-1098.azure-devices.net"],"customAllocationDefinition":{"webhookUrl":"https://contoso-function-app.azurewebsites.net/api/HttpTrigger1?****","apiVersion":"2019-03-31"}},"deviceRuntimeContext":{"registrationId":"contoso-toaster-007","symmetricKey":{},"payload":{"MyDeviceFirmwareVersion":"12.0.2.5","MyDeviceProvisioningVersion":"1.0.0.0"}},"linkedHubs":["contoso-toasters-hub-1098.azure-devices.net"]}
     2020-09-23T11:44:41.687 [Information] linkedHub : contoso-toasters-hub-1098.azure-devices.net
     2020-09-23T11:44:41.688 [Information] Selected hub : contoso-toasters-hub-1098.azure-devices.net
     2020-09-23T11:44:41.688 [Information] Response
@@ -412,13 +427,15 @@ Met deze voorbeeldcode wordt een opstartprocedure van het apparaat gesimuleerd w
 
 2. Selecteer in het menu van Visual Studio de optie **Debug** > **Start without debugging** om de oplossing uit te voeren. Selecteer **Yes** in de prompt voor het opnieuw maken van het project om het project opnieuw te maken voordat het wordt uitgevoerd.
 
-    Hieronder vindt u een voorbeeld van uitvoer van de logboekregistratie als gevolg van de code voor de functie van aangepaste toewijzing die wordt uitgevoerd voor de warmtepomp. Het aangepaste toewijzingsbeleid weigert deze registratie met een HTTP-fout '400 Ongeldige aanvraag'. U vindt deze logboekregistratie door op **Logboeken** te klikken onder de functiecode in de portal:
+    De onderstaande tekst is een voorbeeld van uitvoer van de logboekregistratie als gevolg van de code voor de functie van aangepaste toewijzing die wordt uitgevoerd voor de warmtepomp. Het aangepaste toewijzingsbeleid weigert deze registratie met een HTTP-fout '400 Ongeldige aanvraag'. Het `payload`-lid bevat de aangepaste JSON-inhoud die u aan de code hebt toegevoegd. Deze inhoud is beschikbaar voor gebruik in de `deviceRuntimeContext`.
+
+    U vindt deze logboekregistratie door op **Logboeken** te klikken onder de functiecode in de portal:
 
     ```cmd
     2020-09-23T11:50:23.652 [Information] Executing 'Functions.HttpTrigger1' (Reason='This function was programmatically called via the host APIs.', Id=2fa77f10-42f8-43fe-88d9-a8c01d4d3f68)
     2020-09-23T11:50:23.653 [Information] C# HTTP trigger function processed a request.
     2020-09-23T11:50:23.654 [Information] Request.Body:...
-    2020-09-23T11:50:23.654 [Information] {"enrollmentGroup":{"enrollmentGroupId":"contoso-custom-allocated-devices","attestation":{"type":"symmetricKey"},"capabilities":{"iotEdge":false},"etag":"\"e8002126-0000-0100-0000-5f6b2a570000\"","provisioningStatus":"enabled","reprovisionPolicy":{"updateHubAssignment":true,"migrateDeviceData":true},"createdDateTimeUtc":"2020-09-23T10:58:31.62286Z","lastUpdatedDateTimeUtc":"2020-09-23T10:58:31.62286Z","allocationPolicy":"custom","iotHubs":["contoso-toasters-hub-1098.azure-devices.net"],"customAllocationDefinition":{"webhookUrl":"https://contoso-function-app.azurewebsites.net/api/HttpTrigger1?****","apiVersion":"2019-03-31"}},"deviceRuntimeContext":{"registrationId":"contoso-heatpump-088","symmetricKey":{}},"linkedHubs":["contoso-toasters-hub-1098.azure-devices.net"]}
+    2020-09-23T11:50:23.654 [Information] {"enrollmentGroup":{"enrollmentGroupId":"contoso-custom-allocated-devices","attestation":{"type":"symmetricKey"},"capabilities":{"iotEdge":false},"etag":"\"e8002126-0000-0100-0000-5f6b2a570000\"","provisioningStatus":"enabled","reprovisionPolicy":{"updateHubAssignment":true,"migrateDeviceData":true},"createdDateTimeUtc":"2020-09-23T10:58:31.62286Z","lastUpdatedDateTimeUtc":"2020-09-23T10:58:31.62286Z","allocationPolicy":"custom","iotHubs":["contoso-toasters-hub-1098.azure-devices.net"],"customAllocationDefinition":{"webhookUrl":"https://contoso-function-app.azurewebsites.net/api/HttpTrigger1?****","apiVersion":"2019-03-31"}},"deviceRuntimeContext":{"registrationId":"contoso-heatpump-088","symmetricKey":{},"payload":{"MyDeviceFirmwareVersion":"12.0.2.5","MyDeviceProvisioningVersion":"1.0.0.0"}},"linkedHubs":["contoso-toasters-hub-1098.azure-devices.net"]}
     2020-09-23T11:50:23.654 [Information] Unknown device registration
     2020-09-23T11:50:23.654 [Information] Response
     2020-09-23T11:50:23.654 [Information] Unrecognized device registration.

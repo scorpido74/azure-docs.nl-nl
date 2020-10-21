@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: bda72a72e8ac0adf48fd8981a6eccf40385469d5
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 122de64e33778966d563cc8e94b46515e54769f7
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281401"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331206"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Veelgestelde vragen over overgang van de Cloud Partner-portal naar het partner centrum
 
@@ -77,8 +77,8 @@ Voor de aanbiedings typen die in Partner Center worden ondersteund, zijn alle aa
 
 | Type aanbieding <img src="" width=150px>| Verplaatst naar het partner centrum? <img src="" width=100px>| Volgende stappen |
 | --- | --- | --- |
-| SaaS | Ja | Meld u aan bij Partner Center om nieuwe aanbiedingen te maken en aanbiedingen te beheren die zijn gemaakt in Cloud Partner-portal. Meer informatie over [het maken van een nieuwe SaaS-aanbieding in de commerciële Marketplace](partner-center-portal/create-new-saas-offer.md). |
-| Virtuele machine | Ja | Meld u aan bij Partner Center om nieuwe aanbiedingen te maken en aanbiedingen te beheren die zijn gemaakt in Cloud Partner-portal. Meer informatie over [het maken van een Azure virtual machine-aanbieding op Azure Marketplace](azure-vm-create.md). |
+| SaaS | Ja | Meld u aan bij Partner Center om nieuwe aanbiedingen te maken en aanbiedingen te beheren die zijn gemaakt in Cloud Partner-portal. Meer informatie over [het plannen van een SaaS-aanbieding voor de commerciële Marketplace](plan-saas-offer.md). |
+| Virtuele machine | Ja | Meld u aan bij Partner Center om nieuwe aanbiedingen te maken en aanbiedingen te beheren die zijn gemaakt in Cloud Partner-portal. Meer informatie over [het plannen van een aanbieding voor een virtuele machine](marketplace-virtual-machines.md). |
 | Azure-toepassing | Ja | Meld u aan bij Partner Center om nieuwe aanbiedingen te maken en aanbiedingen te beheren die zijn gemaakt in Cloud Partner-portal. Meer informatie over [het maken van een Azure-toepassings aanbieding](partner-center-portal/create-new-azure-apps-offer.md). |
 | Dynamics 365 Business Central | Ja | Meld u aan bij Partner Center om nieuwe aanbiedingen te maken en aanbiedingen te beheren die zijn gemaakt in Cloud Partner-portal. Meer informatie over [het maken van een Dynamics 365 Business Central-aanbieding](partner-center-portal/create-new-business-central-offer.md). |
 | Dynamics 365 voor klant betrokkenheid & PowerApps | Ja | Meld u aan bij Partner Center om nieuwe aanbiedingen te maken en aanbiedingen te beheren die zijn gemaakt in Cloud Partner-portal. Meer informatie over [het maken van een Dynamics 365 voor klant Engagement & PowerApps-aanbieding](partner-center-portal/create-new-customer-engagement-offer.md). |

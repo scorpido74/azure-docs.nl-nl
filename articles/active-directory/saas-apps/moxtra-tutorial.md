@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 7fffe58dfdb63da28edc19c19b56b576f4fbadd3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 132da93bcb1e8138b63361cdb448c05b985cdf27
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544040"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940902"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-moxtra"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met Moxtra
 
@@ -156,11 +156,11 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 2. Klik in de werkbalk aan de linkerkant op **Beheerconsole > Eenmalige aanmelding via SAML** en klik vervolgens op **Nieuwe**.
    
-    ![Eenmalige aanmelding configureren](./media/moxtra-tutorial/tutorial_moxtra_06.png) 
+    ![Schermopname van de pagina Eenmalige aanmelding met SAML met de optie om een nieuwe eenmalige SAML-aanmelding te maken.](./media/moxtra-tutorial/tutorial_moxtra_06.png) 
 
 3. Voer op de pagina **SAML** de volgende stappen uit:
    
-    ![Eenmalige aanmelding configureren](./media/moxtra-tutorial/tutorial_moxtra_08.png)   
+    ![Schermopname van de SAML-pagina waarin u de beschreven waarden kunt invoeren.](./media/moxtra-tutorial/tutorial_moxtra_08.png)   
  
     a. Typ in het tekstvak **Naam** een naam voor de configuratie (bijv.: *SAML*). 
   
@@ -191,7 +191,7 @@ Het doel van dit gedeelte is het maken van een gebruiker met de naam B.Simon in 
 
 1. Klik in de werkbalk aan de linkerkant op **Beheerconsole > Gebruikersbeheer** en klik vervolgens op **Gebruiker toevoegen**.
    
-    ![Eenmalige aanmelding configureren](./media/moxtra-tutorial/tutorial_moxtra_10.png) 
+    ![Schermopname van de pagina Gebruikersbeheer met Gebruiker toevoegen geselecteerd.](./media/moxtra-tutorial/tutorial_moxtra_10.png) 
 
 1. Voer in het dialoogvenster **Add User** de volgende stappen uit:
   

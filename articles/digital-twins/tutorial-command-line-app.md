@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: b6f2e8ff6689a3817ecf9eb43c7cea4a0632fc25
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8ffdcac61a3ab0d27fec7602e8625c0367f6c33b
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91297658"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048488"
 ---
 # <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>Zelfstudie: Azure Digital Twins verkennen met een voorbeeldclient-app
 
@@ -79,7 +79,7 @@ Vergeet niet het bestand op te slaan voordat u verdergaat.
 > Als u wilt proberen een eigen model te maken, kunt u de code van het *Room*-model in een nieuw bestand plakken dat u met de extensie *.json* opslaat in de map *AdtSampleApp\SampleClientApp\Models*. Vervolgens kunt u ermee spelen en eigenschappen en relaties toevoegen om alles te vertegenwoordigen wat u wilt. U kunt ook naar de andere voorbeeldmodellen in deze map kijken voor ideeën.
 
 > [!TIP] 
-> Er is een taalagnostisch [DTDL-validatorvoorbeeld](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) dat u kunt gebruiken om modeldocumenten te controleren en u ervan te verzekeren dat de DTDL geldig is. Het voorbeeld is gemaakt op basis van de DTDL-parserbibliotheek, waarover u meer kunt lezen in [*Instructies: Modellen parseren en valideren*](how-to-parse-models.md).
+> Er is een taalagnostisch [DTDL-validatorvoorbeeld](/samples/azure-samples/dtdl-validator/dtdl-validator) dat u kunt gebruiken om modeldocumenten te controleren en u ervan te verzekeren dat de DTDL geldig is. Het voorbeeld is gemaakt op basis van de DTDL-parserbibliotheek, waarover u meer kunt lezen in [*Instructies: Modellen parseren en valideren*](how-to-parse-models.md).
 
 ### <a name="get-started-with-the-command-line-app"></a>Aan de slag met de opdrachtregel-app
 
@@ -169,9 +169,9 @@ De uitvoer van deze opdrachten zou moeten aangeven dat de tweelingen met succes 
 
 U kunt ook de opdracht `Query` uitvoeren om te verifiëren dat de tweelingen zijn gemaakt. Deze opdracht voert een query uit op uw Azure Digital Twins-instantie naar alle digitale tweelingen die deze bevat. Kijk in de resultaten naar de tweelingen *floor0*, *floor1*, *room0* en *room1*.
 
-#### <a name="modify-a-digital-twin"></a>Een digital twin wijzigen
+#### <a name="modify-a-digital-twin"></a>Een digitale dubbel wijzigen
 
-U kunt de eigenschappen van een tweeling die u hebt gemaakt, ook wijzigen. Probeer deze opdracht uit te voeren om de RoomName van *room0* te wijzigen van *room0* in *PresidentialSuite*:
+U kunt de eigenschappen van een digitale dubbel die u hebt gemaakt, ook wijzigen. Probeer deze opdracht uit te voeren om de RoomName van *room0* te wijzigen van *room0* in *PresidentialSuite*:
 
 ```cmd/sh
 UpdateDigitalTwin room0 add /RoomName string PresidentialSuite

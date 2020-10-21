@@ -3,29 +3,29 @@ title: 'Zelfstudie: VMware HCX implementeren en configureren'
 description: Meer informatie over het implementeren en configureren van de VMware HCX-oplossing voor de privécloud van uw Azure VMware Solution.
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 69832d1537f0f1be95d3283f543ef6e54187b58d
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 58fd8b4518f60f1f736d8c19ddcf62729353f251
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91578783"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057992"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>VMware HCX implementeren en configureren
 
-In dit artikel gaan we de procedures doorlopen voor het implementeren en configureren van de VMware-HCX voor de privécloud van uw Azure VMware Solution. VMware HCX maakt de migratie van uw VMware-workloads naar Azure VMware Solution en andere verbonden sites mogelijk via verschillende migratietypen.
+In dit artikel gaan we de procedures doorlopen voor het implementeren en configureren van de on-premises VMware HCX-connector voor de privécloud van uw Azure VMware Solution. VMware HCX maakt de migratie van uw VMware-workloads naar Azure VMware Solution en andere verbonden sites mogelijk via verschillende migratietypen. Cloudbeheerder is al geïmplementeerd en geconfigureerd in Azure VMware Solution. Hierdoor wordt de connector die voor de klant is vereist, gedownload, geactiveerd en geconfigureerd in het on-premises VMware-datacentrum.
 
-VMware HCX Advanced (vooraf geïmplementeerd in Azure VMware Solution) ondersteunt maximaal drie siteverbindingen (on-premises naar cloud of cloud naar coud). Als er meer dan drie siteverbindingen voor VMware HCX Enterprise vereist zijn, hebt u de mogelijkheid om de [VMware HCX Enterprise](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/)-invoeg toepassing in te schakelen (deze is momenteel beschikbaar als *preview*) door een [ondersteuningsaanvraag in te dienen](https://rc.portal.azure.com/#create/Microsoft.Support). VMware HCX Enterprise Edition (EE) is beschikbaar met Azure VMware Solution als een *preview*-functie/-service. Hoewel VMware HCX EE voor Azure VMware Solution zich in *preview* bevindt, is het een gratis functie/service en onderhevig aan de servicevoorwaarden van de preview-versie. Zodra de VMware HCX EE-service algemeen beschikbaar wordt, krijgt u een melding dat de facturering over 30 dagen wordt omgeschakeld. U hebt ook de mogelijkheid om de service uit te schakelen of u ervan af te melden.
+VMware HCX Advanced-connector (vooraf geïmplementeerd in Azure VMware Solution) ondersteunt maximaal drie siteverbindingen (on-premises-naar-cloud of cloud-naar-coud). Als meer dan drie siteverbindingen zijn vereist, hebben klanten de mogelijkheid om de invoegtoepassing [VMware HCX Enterprise](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/) in te schakelen (deze is momenteel beschikbaar als *preview*) door een [ondersteuningsaanvraag in te dienen](https://rc.portal.azure.com/#create/Microsoft.Support). VMware HCX Enterprise Edition (EE) is beschikbaar met Azure VMware Solution als een *preview*-functie/-service. Hoewel VMware HCX EE voor Azure VMware Solution zich in *preview* bevindt, is het een gratis functie/service en onderhevig aan de servicevoorwaarden van de preview-versie. Zodra de VMware HCX EE-service algemeen beschikbaar wordt, krijgt u een melding dat de facturering over 30 dagen wordt omgeschakeld. U hebt ook de mogelijkheid om de service uit te schakelen of u ervan af te melden.
 
 Neem voordat u begint [Voordat u begint](#before-you-begin), [Vereisten voor de softwareversie](#software-version-requirements) en [Vereisten](#prerequisites) grondig door. 
 
 Vervolgens worden alle benodigde procedures doorlopen voor het volgende:
 
 > [!div class="checklist"]
-> * De on-premises VMware HCX OVA (connector) implementeren
-> * VMware HCX activeren
-> * Uw on-premises omgeving koppelen met uw Azure VMware Solution-omgeving.
-> * De interconnect (rekenprofiel, netwerkprofiel(en) en service-mesh) configureren
-> * De installatie voltooien door de status van het apparaat te controleren.
+> * De on-premises VMware HCX OVA (HCX-connector) implementeren
+> * VMware HCX-connector activeren
+> * Uw on-premises HCX-connector koppelen aan uw Azure VMware Solution HCX-cloudbeheerder
+> * De interconnect (netwerkprofiel, rekenprofiel en service-mesh) configureren
+> * De installatie voltooien door te controleren wat de apparaatstatus is en of valideren van de migratie mogelijk is
 
 Als u klaar bent, kunt u de aanbevolen volgende stappen aan het einde van dit artikel volgen.  
 
@@ -37,7 +37,8 @@ Als u klaar bent, kunt u de aanbevolen volgende stappen aan het einde van dit ar
 * Bekijk eventueel [Implementatieoverwegingen voor VMware HCX](https://docs.vmware.com/en/VMware-HCX/services/install-checklist/GUID-C0A0E820-D5D0-4A3D-AD8E-EEAA3229F325.html).
 * Bekijk eventueel gerelateerde VMware-materialen over HCX, zoals de [reeks blogs](https://blogs.vmware.com/vsphere/2019/10/cloud-migration-series-part-2.html) van VMware vSphere over HCX. 
 * U kunt eventueel een activering voor Azure VMware Solution HCX Enterprise aanvragen via de ondersteuningskanalen van Azure VMware Solution.
-* Voor het implementeren van het WAN Interconnect-apparaat zijn specifieke CIDR-bereiken al toegewezen op basis van door de klant geleverde `\22` voor het maken van de privécloud.
+* U kunt optioneel [vereiste netwerkpoorten voor HCX controleren](https://ports.vmware.com/home/VMware-HCX).
+* Terwijl de cloudbeheerder van Azure VMware Solution HCX vooraf is geconfigureerd vanuit de /22 die is geleverd voor de Azure VMware Solution-privécloud, moet de klant voor de on-premises HCX-connector netwerkbereiken toewijzen vanuit het on-premises netwerk. Deze netwerken en bereiken worden verderop in het document beschreven.
 
 Het bepalen van de grootte van workloads met reken- en opslagresources is een essentiële planningsstap. Handel de stap voor het bepalen van de grootte af als onderdeel van de eerste planning van de privécloudomgeving. 
 
@@ -62,32 +63,31 @@ Voor de infrastructuuronderdelen moet de vereiste minimumversie worden uitgevoer
 
 * Alle vereiste poorten moeten zijn geopend voor communicatie tussen on-premises onderdelen en on-premises naar Azure VMware Solution SDDC (Zie de [VMware HCX-documentatie](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-E456F078-22BE-494B-8E4B-076EF33A9CF4.html)).
 
-* On-premises HCX IX- en NE-apparaten moeten een vCenter- en ESXi-infrastructuur kunnen bereiken.
 
 ### <a name="ip-addresses"></a>IP-adressen
 
 [!INCLUDE [hcx-network-segments](includes/hcx-network-segments.md)]
    
-## <a name="deploy-the-vmware-hcx-ova-on-premises"></a>De VMware HCX OVA on-premises implementeren
+## <a name="deploy-the-vmware-hcx-connector-ova-on-premises"></a>De VMware HCX Connector OVA on-premises implementeren
 
 >[!NOTE]
->Voordat u het virtuele apparaat in uw on-premises vCenter implementeert, moet u de VMware HCX OVA downloaden. 
+>Voordat u het virtuele apparaat in uw on-premises vCenter implementeert, moet u de VMware HCX Connector OVA downloaden. 
 
-1. Meld u aan bij de Azure VMware Solution HCX Manager op `https://x.x.x.9`poort 443 met de gebruikersreferenties van **cloudadmin** en ga vervolgens naar **Support**.
+1. Open een browservenster, meld u aan bij de Azure VMware Solution HCX Manager op `https://x.x.x.9`poort 443 met de gebruikersreferenties van **cloudbeheerder** en ga vervolgens naar **Ondersteuning**.
 
    >[!TIP]
-   >Als u het IP-adres van HCX Manager wilt identificeren, gaat u op de blade Azure VMware Solution naar **Manage** > **Connectivity** en selecteert u vervolgens het tabblad **HCX**. 
+   >Noteer het IP-adres van de HCX-cloudbeheerder in de Azure VMware Solution. Als u het IP-adres van HCX-cloudbeheerder wilt identificeren, gaat u op de blade Azure VMware Solution naar **Beheren** > **Connectiviteit** en selecteert u vervolgens het tabblad **HCX**. 
    >
    >Het vCenter-wachtwoord is gedefinieerd tijdens het instellen van de privécloud.
 
-1. Selecteer de koppeling **download** om het VMware HCX OVA-bestand te downloaden.
+1. Selecteer de **downloadkoppeling** om het VMware HCX Connector OVA -bestand te downloaden.
 
-1. Ga naar het on-premises vCenter en selecteer een OVF-sjabloon. Dit is het OVA-bestand dat u hebt gedownload om te implementeren in uw on-premises vCenter.  
+1. Ga naar het on-premises vCenter en selecteer een OVF-sjabloon. Dit is het OVA-bestand dat u hebt gedownload om de HCX-connector te implementeren in uw on-premises vCenter.  
 
    :::image type="content" source="media/tutorial-vmware-hcx/select-ovf-template.png" alt-text="Ga naar het on-premises vCenter en selecteer een OVF-sjabloon om te implementeren in uw on-premises vCenter." lightbox="media/tutorial-vmware-hcx/select-ovf-template.png":::
 
 
-1. Selecteer een naam en locatie, een resource/cluster waarin u HCX implementeert en controleer de details en de vereiste resources.  
+1. Selecteer een naam en locatie, een resource/cluster waarin u HCX-connector implementeert, en controleer de details en de vereiste resources.  
 
    :::image type="content" source="media/tutorial-vmware-hcx/configure-template.png" alt-text="Ga naar het on-premises vCenter en selecteer een OVF-sjabloon om te implementeren in uw on-premises vCenter." lightbox="media/tutorial-vmware-hcx/configure-template.png":::
 
@@ -97,10 +97,10 @@ Voor de infrastructuuronderdelen moet de vereiste minimumversie worden uitgevoer
 
    :::image type="content" source="media/tutorial-vmware-hcx/customize-template.png" alt-text="Ga naar het on-premises vCenter en selecteer een OVF-sjabloon om te implementeren in uw on-premises vCenter." lightbox="media/tutorial-vmware-hcx/customize-template.png":::
 
-1. Selecteer **Next**, controleer de configuratie en selecteer vervolgens **Finish** om HCX OVA te implementeren.
+1. Selecteer **Volgende**, controleer de configuratie en selecteer vervolgens **Voltooien** om HCX Connector OVA te implementeren.
      
    >[!NOTE]
-   >Over het algemeen wordt de VMware HCX Manager die u nu implementeert, geïmplementeerd in het beheernetwerk van het cluster.  
+   >Over het algemeen wordt de VMware HCX-connector die u nu implementeert, geïmplementeerd in het beheernetwerk van het cluster.  
    
    > [!IMPORTANT]
    > Nadat de implementatie is voltooid, moet u het virtuele apparaat mogelijk handmatig inschakelen.
@@ -111,9 +111,9 @@ Bekijk voor een volledig overzicht van deze stap de video [Azure VMware Solution
 
 ## <a name="activate-vmware-hcx"></a>VMware HCX activeren
 
-Nadat u de VMware HCX OVA on-premises hebt geïmplementeerd, bent u klaar om VMware HCX te activeren. Voordat u VMware HCX kunt activeren, moet u een licentie ophalen.
+Na het on-premises implementeren van de VMware HCX Connector OVA en het starten van het apparaat, bent u klaar om te activeren, maar eerst moet u een licentiesleutel ophalen in de Azure VMware Solution-portal in Azure.
 
-1. Ga in Azure VMware Solution naar **Manage** > **Connectivity**, selecteer het tabblad **HCX** en selecteer vervolgens **Add**.
+1. Ga in de Azure VMware Solution-portal naar **Beheren** > **Connectiviteit**, selecteer het tabblad **HCX** en selecteer **Toevoegen**.
 
 1. Meld u aan bij de on-premises VMware HCX Manager op `https://HCXManagerIP:9443` en meld u aan met de gebruikersreferenties voor de **admin**. 
 
@@ -150,13 +150,13 @@ Nadat u de VMware HCX OVA on-premises hebt geïmplementeerd, bent u klaar om VMw
 Bekijk voor een volledig overzicht van deze stap de video [Azure VMware Solution: activering van VMware HCX](https://www.youtube.com/embed/BkAV_TNYxdE).
 
 
-## <a name="configure-vmware-hcx"></a>VMware HCX configureren
+## <a name="configure-vmware-hcx-connector"></a>VMware HCX-connector configureren
 
 Nu bent u klaar om een sitekoppeling toe te voegen, een netwerk- en rekenprofiel te maken en services, zoals migratie, netwerkextensie of herstel na noodgevallen, in te schakelen. 
 
 ### <a name="add-a-site-pairing"></a>Een sitekoppeling toevoegen
 
-U kunt de VMware HCX Manager in Azure VMware Solution verbinden (koppelen) met de VMware HCX Manager in uw datacentrum. 
+U kunt de VMware HCX-cloudbeheerder in Azure VMware Solution verbinden (koppelen) met de VMware HCX-connector in uw datacentrum. 
 
 1. Meld u aan bij uw on-premises vCenter en selecteer onder **Home** de optie **HCX**.
 
@@ -166,14 +166,14 @@ U kunt de VMware HCX Manager in Azure VMware Solution verbinden (koppelen) met d
 
    :::image type="content" source="media/tutorial-vmware-hcx/connect-remote-site.png" alt-text="Ga naar het on-premises vCenter en selecteer een OVF-sjabloon om te implementeren in uw on-premises vCenter." lightbox="media/tutorial-vmware-hcx/connect-remote-site.png":::
 
-1. Voer de **URL of het IP-adres van de externe HCX**, de cloudadmin@vsphere.local gebruikersnaam en het **wachtwoord** van Azure VMware Solution in en selecteer vervolgens **Connect**.
+1. Voer de **URL of het IP-adres van de externe HCX** in die u eerder hebt genoteerd, en de cloudadmin@vsphere.local gebruikersnaam en het **wachtwoord** van Azure VMware Solution, en selecteer vervolgens **Verbinding maken**.
 
    > [!NOTE]
-   > De **URL van de externe HCX** is de HX Manager van de privécloud van uw Azure VMware Solution, meestal het adres '. 9' van het beheernetwerk.  Als uw vCenter bijvoorbeeld 192.168.4.2 is, wordt uw HCX-URL 192.168.4.9.
+   > De **URL van de externe HCX** is het IP-adres van de HX-cloudbeheerder van de Azure VMware Solution-privécloud, meestal het adres '. 9' van het beheernetwerk.  Als uw vCenter bijvoorbeeld 192.168.4.2 is, wordt uw HCX-URL 192.168.4.9.
    >
    > Het **wachtwoord** is hetzelfde wachtwoord als dat u hebt gebruikt om u aan te melden bij vCenter. U hebt dit wachtwoord op het eerste implementatiescherm gedefinieerd.
 
-   Er wordt een scherm weergegeven met een verbinding (koppeling) tussen uw HCX Manager in Azure VMware Solution en uw on-premises HCX Manager.
+   Er wordt een scherm weergegeven met een verbinding (koppeling) tussen uw HCX-cloudbeheerder in Azure VMware Solution en uw on-premises HCX-cloudbeheerder.
 
    :::image type="content" source="media/tutorial-vmware-hcx/site-pairing-complete.png" alt-text="Ga naar het on-premises vCenter en selecteer een OVF-sjabloon om te implementeren in uw on-premises vCenter.":::
 
@@ -183,7 +183,7 @@ Bekijk voor een volledig overzicht van deze stap de video [Azure VMware Solution
 
 ### <a name="create-network-profiles"></a>Netwerkprofielen maken
 
-VMware HCX implementeert een aantal virtuele apparaten (geautomatiseerd) maar heeft meerdere IP-segmenten nodig.  Wanneer u uw netwerkprofielen maakt, definieert u de IP-segmenten die u hebt geïdentificeerd tijdens de [Voorbereiding en planningsfase van VMware HCX-netwerksegmenten vóór de implementatie](production-ready-deployment-steps.md#vmware-hcx-network-segments).
+VMware HCX implementeert een subset virtuele apparaten (geautomatiseerd) wat meerdere IP-segmenten vereist.  Wanneer u uw netwerkprofielen maakt, definieert u de IP-segmenten die u hebt geïdentificeerd tijdens de [Voorbereiding en planningsfase van VMware HCX-netwerksegmenten vóór de implementatie](production-ready-deployment-steps.md#vmware-hcx-network-segments).
 
 U maakt vier netwerkprofielen:
 

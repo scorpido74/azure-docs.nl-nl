@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 2128559d8074281c1019d99e1316da34c7ec6797
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ed3d5de27a2d9ce5060ff4bfe71c595512658e58
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554597"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940613"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mondaycom"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met monday.com
 
@@ -88,14 +88,14 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
     c. Nadat het bestand met metagegevens is geüpload, worden de waarden voor **Id** en **antwoord-URL** automatisch ingevuld in de sectie Standaard SAML-configuratie.
 
-    ![image](common/idp-intiated.png)
+    ![Schermopname die de Standaard SAML-configuratie toont, waar u de id en URL kunt invoeren en vervolgens Opslaan selecteert.](common/idp-intiated.png)
 
     > [!Note]
     > Als de waarden voor **Id** en **Antwoord-URL** niet automatisch worden ingevuld, vult u de waarden zelf in. De waarde voor **Id** en **Antwoord-URL** is hetzelfde en de waarde heeft het volgende patroon: `https://<your-domain>.monday.com/saml/saml_callback`
 
 1. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    ![image](common/metadata-upload-additional-signon.png)
+    ![Schermopname die Extra URL's instellen toont, waar u een aanmeldings-URL kunt invoeren.](common/metadata-upload-additional-signon.png)
 
     In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<YOUR_DOMAIN>.monday.com`
 
@@ -104,7 +104,7 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 1. In monday.com worden de SAML-asserties in een specifieke indeling verwacht. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van uw SAML-tokenkenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
 
-    ![image](common/default-attributes.png)
+    ![Schermopname van Gebruikerskenmerken en claims met standaardwaarden zoals Givenname user.givenname en Emailaddress user.mail.](common/default-attributes.png)
 
 1. Bovendien verwacht monday.com nog enkele kenmerken die als SAML-antwoord moeten worden doorgestuurd. Deze worden hieronder weergegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze herzien volgens uw vereisten.
 
@@ -166,15 +166,15 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Ga in de rechterbovenhoek van de pagina naar **Profile** en klik op **Admin**.
 
-    ![Configuratie van monday.com](./media/mondaycom-tutorial/configuration01.png)
+    ![Schermopname met het profiel Admin geselecteerd.](./media/mondaycom-tutorial/configuration01.png)
 
 1. Selecteer **Security** en klik op **Open** naast SAML.
 
-    ![Configuratie van monday.com](./media/mondaycom-tutorial/configuration02.png)
+    ![Schermopname van het tabblad Security met de optie Open naast SAML.](./media/mondaycom-tutorial/configuration02.png)
 
 1. Vul hieronder de gegevens van uw IDP in.
 
-    ![Configuratie van monday.com](./media/mondaycom-tutorial/configuration03.png)
+    ![Schermopname van de SAML-provider waar u gegevens van uw IDP kunt invoeren.](./media/mondaycom-tutorial/configuration03.png)
 
     > [!NOTE]
     > Raadpleeg [dit artikel](https://support.monday.com/hc/articles/360000460605-SAML-Single-Sign-on?abcb=34642) voor meer informatie.

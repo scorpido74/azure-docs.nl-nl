@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: 62024522fc5211308929153e2614ab6fd95f19b0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67175758"
 ---
-Als u wilt opschonen na een sessie `close()`, roept u aan.
+Roep `close()` aan om op de juiste manier op te schonen na een sessie.

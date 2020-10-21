@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/08/2019
 ms.author: jeedes
-ms.openlocfilehash: e0ea1d3f5c2676176e2f6e15077d13ec43e673af
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b40a124c9cee05e8d06df3de6539c566bb2ac76a
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544295"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945121"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gtnexus-sso-system"></a>Zelfstudie: Azure Active Directory-integratie met GTNexus SSO System
 
@@ -101,11 +101,11 @@ Voor de configuratie van eenmalige aanmelding in Azure AD met GTNexus SSO System
 
     a. Klik op **Metagegevensbestand uploaden**.
 
-    ![image](common/upload-metadata.png)
+    ![Schermopname van de pagina 'Basic SAML-configuratie' met de geselecteerde actie 'Metagegevensbestand uploaden'.](common/upload-metadata.png)
 
     b. Klik op het **mappictogram** om het metagegevensbestand te selecteren en klik op **Uploaden**.
 
-    ![image](common/browse-upload-metadata.png)
+    ![Schermopname met het veld 'Een bestand selecteren' met het 'map'-logo en de knop 'Upload' geselecteerd.](common/browse-upload-metadata.png)
 
     c. Zodra het bestand met metagegevens is geüpload, worden de waarde voor **Id** en **Antwoord-URL** automatisch ingevuld in de sectie Standaard SAML-configuratie voor GTNexus SSO System:
 

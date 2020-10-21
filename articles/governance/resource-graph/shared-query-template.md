@@ -1,15 +1,15 @@
 ---
 title: 'Quickstart: Een gedeelde query maken met sjablonen'
 description: In deze quickstart gebruikt u een Azure Resource Manager-sjabloon (ARM-sjabloon) om een gedeelde Resource Graph-query te maken die virtuele machines per OS telt.
-ms.date: 07/06/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: cc9da201b10b697f125e8ffe7402f23f5eaa8362
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a629dd5325fc20d6f173d9f4e0524885af8fdf49
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88685524"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057005"
 ---
 # <a name="quickstart-create-a-shared-query-by-using-an-arm-template"></a>Quickstart: Een gedeelde query maken met behulp van een ARM-sjabloon
 
@@ -53,9 +53,9 @@ De resource die is gedefinieerd in de sjabloon:
    | Abonnement | Selecteer uw Azure-abonnement. |
    | Resourcegroep | Selecteer **Nieuwe maken**, geef een naam op en selecteer vervolgens **OK**. |
    | Locatie | Selecteer een regio. Bijvoorbeeld **VS - centraal**. |
-   | Querynaam | Laat de standaardwaarde **Aantal VM's per besturingssysteem**. |
-   | Querycode | Laat de standaardwaarde `Resources | where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by tostring(properties.storageProfile.osDisk.osType)` staan |
-   | Querybeschrijving | Behoud de standaardwaarde **Deze gedeelde query telt alle resources van de virtuele machine en geeft een samenvatting per type besturingssysteem.** |
+   | Querynaam | Wijzig de standaardwaarde niet: **Aantal VM's per besturingssysteem tellen**. |
+   | Querycode | Wijzig de standaardwaarde niet: `Resources | where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by tostring(properties.storageProfile.osDisk.osType)` |
+   | Querybeschrijving | Wijzig de standaardwaarde niet: **Deze gedeelde query telt alle resources van de virtuele machine en geeft een samenvatting per type besturingssysteem.** |
    | Ik ga akkoord met de bovenstaande voorwaarden | (Selecteren) |
 
 1. Selecteer **Aankoop**.
@@ -75,7 +75,7 @@ Om de nieuwe gedeelde query uit te voeren, volgt u deze stappen:
 
 1. Selecteer de gedeelde query met de naam **Aantal VM's per besturingssysteem** en selecteer vervolgens het tabblad **Resultaten** op de pagina **Overzicht**.
 
-U kunt de gedeelde query ook openen vanuit Resource Graph Explorer:
+U kunt de gedeelde query openen vanuit Resource Graph Explorer:
 
 1. Zoek in de zoekbalk van de portal naar **Resource Graph Explorer** en selecteer deze.
 
@@ -83,7 +83,7 @@ U kunt de gedeelde query ook openen vanuit Resource Graph Explorer:
 
 1. Wijzig **Type** in _Gedeelde query's_. Als u **Aantal VM's per besturingssysteem** niet in de lijst ziet, gebruikt u het filtervak om de resultaten te beperken. Wanneer de gedeelde query **Aantal VM's per besturingssysteem** zichtbaar is, selecteert u de naam.
 
-1. Wanneer de query is geladen, selecteert u de knop **Query uitvoeren**. De resultaten worden weergegeven op het tabblad **Resultaten** hieronder.
+1. Wanneer de query is geladen, selecteert u de knop **Query uitvoeren**. De resultaten worden weergegeven op het tabblad **Resultaten**.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

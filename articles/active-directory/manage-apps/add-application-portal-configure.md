@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.openlocfilehash: d2a538cac1e8bcf9c67c88b206cacd928bfb73c8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 50c1cd62f52583a005e6e7fe8fb29ee8eafd1af9
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91448240"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044459"
 ---
 # <a name="quickstart-configure-properties-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Quickstart: Eigenschappen configureren voor een toepassing in uw Azure Active Directory-tenant (Azure AD)
 
@@ -41,10 +41,7 @@ Ga als volgt te werk om de eigenschappen van de toepassing bewerken:
 
 1. Selecteer in het Azure AD-portal **Bedrijfstoepassingen**. Zoek en selecteer vervolgens de toepassing die u wilt configureren.
 2. Selecteer **Eigenschappen** in de sectie **Beheren** om het deelvenster **Eigenschappen** te openen voor bewerken.
-
-    ![Schermopname van het scherm Eigenschappen waarop de eigenschappen van de bewerkbare app te zien zijn.](media/add-application-portal/edit-properties.png)
-
-3. Neem even de tijd om de opties die beschikbaar zijn voor configuratie te bestuderen:
+3. Neem even de tijd om de opties te bestuderen die beschikbaar zijn voor configuratie. Welke opties beschikbaar zijn, is afhankelijk van hoe de app wordt geïntegreerd met Azure AD. Een app die gebruikmaakt van bijvoorbeeld op SAML gebaseerde eenmalige aanmelding bevat velden als *URL voor gebruikerstoegang*. Dit geldt niet voor een app die gebruikmaakt van eenmalige aanmelding op basis van OIDC. Apps die via **Azure Active Directory > App-registraties** worden toegevoegd, zijn standaard op OIDC gebaseerde apps. Maar apps die zijn toegevoegd via **Azure Active Directory > Enterprise-toepassingen**, kunnen gebruikmaken van een willekeurig aantal standaarden voor eenmalige aanmelding. Alle apps beschikken over velden voor configureren wanneer een app wordt aangegeven en kan worden gebruikt. Deze velden zijn:
     - Met **Ingeschakeld voor gebruikers voor aanmelden?** wordt bepaald of gebruikers die zijn toegewezen aan de toepassing, zich kunnen aanmelden.
     - Met **Gebruikerstoewijzing vereist?** wordt bepaald of gebruikers die niet zijn toegewezen aan de toepassing, zich kunnen aanmelden.
     - Met **Zichtbaar voor gebruikers?** wordt bepaald of gebruikers die zijn toegewezen aan een app, deze kunnen zien in [Mijn apps](https://myapps.microsoft.com) en het startprogramma voor de Microsoft 365-app. (Bekijk het menu in de linkerbovenhoek van een Microsoft 365-website.)

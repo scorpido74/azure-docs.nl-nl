@@ -7,13 +7,13 @@ ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: danlep
-ms.date: 05/26/2020
-ms.openlocfilehash: 2cfce37ff63a8321f40843ced2a7b786bcfc013e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/06/2020
+ms.openlocfilehash: 97b556e0329644b973def8333ddb5e70e370b0bc
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88649598"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826971"
 ---
 # <a name="quickstart-create-a-geo-replicated-container-registry-by-using-an-arm-template"></a>Quickstart: Meer informatie over het maken van een geo-gerepliceerd Azure Container Registry met behulp van een ARM-sjabloon
 
@@ -48,19 +48,22 @@ Meer voorbeelden van Azure Container Registry-exemplaren vindt u in de [galerie 
 
     [![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-container-registry-geo-replication%2Fazuredeploy.json)
 
- 2. Typ of selecteer de volgende waarden.
+ 1. Typ of selecteer de volgende waarden.
 
     * **Abonnement**: selecteer een Azure-abonnement.
     * **Resourcegroep**: selecteer **Nieuwe maken**, geef een unieke naam op voor de resourcegroep en selecteer **OK**.
-    * **Locatie**: selecteer een locatie voor de resourcegroep. Voorbeeld: **VS - centraal**.
+    * **Regio**: selecteer een locatie voor de resourcegroep. Voorbeeld: **VS - centraal**.
     * **ACR-naam**: accepteer de gegenereerde naam voor het register of voer een naam in. De naam moet wereldwijd uniek zijn.
+    * **ACR-gebruikersbeheerder ingeschakeld**: accepteer de standaardwaarde.
     * **Locatie**: accepteer de gegenereerde locatie voor de startreplica van het register of voer een locatie in, zoals **VS - centraal**. 
+    * **ACR SKU**: accepteer de standaardwaarde.
     * **Locatie van ACR-replica**: voer een locatie in voor de replica van het register, met behulp van de korte naam van de regio. Dit moet een andere locatie zijn dan de locatie van het startregister. Voorbeeld: **EU - west**.
-    * **Ik ga akkoord met de bovenstaande voorwaarden**: Selecteren.
 
         :::image type="content" source="media/container-registry-get-started-geo-replication-template/template-properties.png" alt-text="Sjablooneigenschappen":::
 
- 3. Als u akkoord gaat met de voorwaarden, selecteert u **Kopen**. Nadat het register is gemaakt, krijgt u een melding:
+1. Selecteer **Beoordelen + maken** en controleer vervolgens de voorwaarden. Als u akkoord gaat, selecteert u **Maken**.
+
+1. Nadat het register is gemaakt, krijgt u een melding:
 
      :::image type="content" source="media/container-registry-get-started-geo-replication-template/deployment-notification.png" alt-text="Sjablooneigenschappen":::
 
@@ -84,6 +87,8 @@ Gebruik de Azure-portal of een hulpprogramma zoals de Azure CLI om de eigenschap
 
 Wanneer u deze niet meer nodig hebt, verwijdert u de resourcegroep, het register en de replica van het register. Hiertoe gaat u naar de Azure-portal, selecteert u de resourcegroep die het register bevat en selecteert u vervolgens **Resourcegroep verwijderen**.
 
+Resourcegroep verwijderen
+
 ## <a name="next-steps"></a>Volgende stappen
 
 In deze quickstart hebt u een Azure Container Registry gemaakt met behulp van een ARM-sjabloon. Daarnaast hebt u een registerreplica op een andere locatie geconfigureerd. Ga verder met de zelfstudies voor Azure Container Registry om meer te leren over ACR.
@@ -94,4 +99,4 @@ In deze quickstart hebt u een Azure Container Registry gemaakt met behulp van ee
 Zie voor een stapsgewijze zelfstudie die u door het proces van het maken van een sjabloon leidt:
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Uw eerste ARM-sjabloon maken en implementeren](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+> Uw eerste ARM-sjabloon maken en implementeren[

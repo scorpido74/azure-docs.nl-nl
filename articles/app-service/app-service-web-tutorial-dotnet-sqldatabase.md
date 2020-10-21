@@ -6,12 +6,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: 90becfb79973ba45851b0e30384b0f05a7b887e3
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: a427fbc6fad1566ae10e11b61de981aded32e64a
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962244"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "92000403"
 ---
 # <a name="tutorial-deploy-an-aspnet-app-to-azure-with-azure-sql-database"></a>Zelfstudie: Een ASP.NET-app implementeren in Azure met Azure SQL Database
 
@@ -65,20 +65,18 @@ Klik in de **Solution Explorer** met de rechtermuisknop op uw project **DotNetAp
 
 ![Publiceren vanuit Solution Explorer](./media/app-service-web-tutorial-dotnet-sqldatabase/solution-explorer-publish.png)
 
-Zorg ervoor dat **Microsoft Azure App Service** is geselecteerd en klik op **Publiceren**.
+Selecteer **Azure** als doel, klik op Volgende, en zorg ervoor dat **Azure App Service (Windows)** is geselecteerd. Klik vervolgens opnieuw op Volgende.
 
 ![Publiceren vanaf de projectoverzichtspagina](./media/app-service-web-tutorial-dotnet-sqldatabase/publish-to-app-service.png)
 
-Hiermee opent u het dialoogvenster **App Service maken** waarmee u alle Azure-resources maakt die u nodig hebt voor het uitvoeren van uw ASP.NET-app in Azure.
-
 ### <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Klik in het dialoogvenster **App Service maken** op **Een account toevoegen** en meld u vervolgens aan bij uw Azure-abonnement. Als u al bent aangemeld bij een Microsoft-account, moet u ervoor zorgen dat dit account uw Azure-abonnement bevat. Als het aangemelde Microsoft-account niet uw Azure-abonnement bevat, klikt u erop om het juiste account toe te voegen.
+Klik in het dialoogvenster **Publiceren** in de vervolgkeuzelijst Accountbeheerder op **Een account toevoegen**, en meld u vervolgens aan bij uw Azure-abonnement. Als u al bent aangemeld bij een Microsoft-account, moet u ervoor zorgen dat dit account uw Azure-abonnement bevat. Als het aangemelde Microsoft-account niet uw Azure-abonnement bevat, klikt u erop om het juiste account toe te voegen.
+
+![Aanmelden bij Azure](./media/app-service-web-tutorial-dotnet-sqldatabase/sign-in-azure.png)
 
 > [!NOTE]
 > Als u al bent aangemeld, selecteert u **Maken** nog niet.
-
-![Aanmelden bij Azure](./media/app-service-web-tutorial-dotnet-sqldatabase/sign-in-azure.png)
 
 ### <a name="configure-the-web-app-name"></a>Naam van web-app configureren
 
@@ -112,15 +110,20 @@ U kunt de naam van de gegenereerde web-app houden of wijzigen in een andere unie
    |**Locatie**| Europa -west | [Azure-regio's](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) |
    |**Grootte**| Gratis | [Prijscategorieën](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)|
 
+3. In het dialoogvenster **Publiceren** ziet u de resources die u hebt geconfigureerd. Klik op **Voltooien**.
+
+   ![de resources die u hebt gemaakt](media/app-service-web-tutorial-dotnet-sqldatabase/app_svc_plan_done.png)
+
+
 ### <a name="create-a-server"></a>Een server maken
 
 Voordat u een database maakt, hebt u een [logische SQL-server](../azure-sql/database/logical-servers.md) nodig. Een logische SQL-server is een logische omgeving met een groep met databases die worden beheerd als groep.
 
-1. Klik op **Een SQL Database maken**.
+1. Klik op **Configureren** naast de SQL Server-database onder **Verbonden service**.
 
    ![Een SQL-database maken](media/app-service-web-tutorial-dotnet-sqldatabase/web-app-name.png)
 
-2. Klik in het dialoogvenster **SQL Database configureren** op **Nieuw** naast **SQL Server**.
+2. Klik in het dialoogvenster **Azure SQL Database** op **Nieuw** naast **Databaseserver**.
 
    Er wordt een unieke servernaam gegenereerd. Deze naam wordt gebruikt als onderdeel van de standaard-URL voor de server `<server_name>.database.windows.net`. Deze moet uniek zijn op alle servers in Azure SQL. U kunt de servernaam wijzigen, maar bewaar voor deze zelfstudie de gegenereerde waarde.
 
@@ -128,28 +131,31 @@ Voordat u een database maakt, hebt u een [logische SQL-server](../azure-sql/data
 
    Onthoud deze gebruikersnaam en dit wachtwoord. U hebt deze later nodig om de server te beheren.
 
+   ![Server maken](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database-server.png)
+
    > [!IMPORTANT]
    > Hoewel u uw wachtwoord in de verbindingsreeksen wordt gemaskeerd (in Visual Studio en ook in App Service), vergroot het feit dat het ergens wordt bijgehouden de kwetsbaarheid van uw app voor aanvallen. App Service kan [beheerde service-identiteiten](overview-managed-identity.md) gebruiken om dit risico te elimineren door het bijhouden van geheimen in uw code of app-configuratie geheel onnodig te maken. Zie voor meer informatie [Volgende stappen](#next-steps).
-
-   ![Server maken](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database-server.png)
 
 4. Klik op **OK**. Sluit het dialoogvenster **SQL Database configureren** nog niet.
 
 ### <a name="create-a-database-in-azure-sql-database"></a>Een database maken in Azure SQL Database
 
-1. In het dialoogvenster **SQL Database configureren**:
+1. In het dialoogvenster **Azure SQL Database**:
 
    * Bewaar de door het systeem gegenereerde standaard**Databasenaam**.
-   * Typ in **Verbindingsreeksnaam** *MyDbConnection*. Deze naam moet overeenkomen met de verbindingsreeks waarnaar wordt verwezen in *Models/MyDatabaseContext.cs*.
-   * Selecteer **OK**.
+   * Selecteer **Maken**.
 
     ![Database configureren](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database.png)
 
-2. Het dialoogvenster **App Service maken** toont de resources die u hebt geconfigureerd. Klik op **Create**.
+2. Typ in de **Verbindingsreeksnaam voor database**: _MyDbConnection_. Deze naam moet overeenkomen met de verbindingsreeks waarnaar wordt verwezen in _Models/MyDatabaseContext.cs_.
 
-   ![de resources die u hebt gemaakt](media/app-service-web-tutorial-dotnet-sqldatabase/app_svc_plan_done.png)
+3. Voer de gebruikersnaam en het wachtwoord voor de beheerder die u hebt gebruikt in stap 3 [Een server maken](#create-a-server), in bij respectievelijk de gebruikersnaam en het wachtwoord voor de database.
 
-Zodra de wizard het maken van de Azure-resources heeft voltooid, wordt uw ASP.NET-app gepubliceerd naar Azure. De standaardbrowser wordt gestart met de URL van de geïmplementeerde app.
+    ![De databaseverbindingsreeks configureren](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database-connection.png)
+
+4. Selecteer **Finish**.
+
+Zodra het maken van de Azure-resources via de wizard is voltooid, klikt u op **Publiceren** om de ASP.NET-app te implementeren in Azure. De standaardbrowser wordt gestart met de URL van de geïmplementeerde app.
 
 Voeg enkele taakitems toe.
 

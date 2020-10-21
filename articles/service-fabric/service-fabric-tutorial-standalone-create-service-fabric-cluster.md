@@ -1,17 +1,15 @@
 ---
 title: Zelfstandige Service Fabric-client installeren
-description: In deze zelfstudie leert u hoe u de zelfstandige Service Fabric-client installeert in het cluster dat u in het vorige zelfstudieartikel hebt gemaakt.
-author: dkkapur
+description: In deze zelfstudie leert u hoe u de standalone Service Fabric-client installeert op het cluster.
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: bbaf7dfc546c739dfb858be7ef8372eccf60111b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: ae0b343be986f4d8d5176c1f39eef6b23ca81278
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "75613938"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91840639"
 ---
 # <a name="tutorial-install-and-create-service-fabric-cluster"></a>Zelfstudie: Service Fabric-cluster installeren en maken
 
@@ -19,7 +17,7 @@ Zelfstandige Service Fabric-clusters bieden u de mogelijkheid om uw eigen omgevi
 
 Deze zelfstudie is deel twee van een serie. In deze zelfstudie wordt u stapsgewijs begeleid door het maken van een zelfstandig Service Fabric-cluster.
 
-In deel twee van de serie leert u het volgende:
+In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
 > * Het zelfstandige Service Fabric-pakket downloaden en installeren
@@ -77,7 +75,7 @@ cd .\Desktop\Microsoft.Azure.ServiceFabric.WindowsServer.6.2.274.9494\
 .\TestConfiguration.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.MultiMachine.json
 ```
 
-De uitvoer ziet er uit zoals hieronder. Als voor het veld 'Passed' de waarde `True` wordt geretourneerd, zijn de controles uitgevoerd en kan het cluster worden geïmplementeerd op basis van de ingevoerde configuratie.
+De uitvoer moet eruit zien als in het volgende voorbeeld. Als voor het veld 'Passed' de waarde `True` wordt geretourneerd, zijn de controles uitgevoerd en kan het cluster worden geïmplementeerd op basis van de ingevoerde configuratie.
 
 ```powershell
 Trace folder already exists. Traces will be written to existing trace folder: C:\Users\Administrator\Desktop\Microsoft.Azure.ServiceFabric.WindowsServer.6.2.274.9494\DeploymentTraces
@@ -118,7 +116,7 @@ Your cluster is successfully created! You can connect and manage your cluster us
 >
 >
 
-### <a name="bring-up-service-fabric-explorer"></a>Service Fabric Explorer uitvoeren
+### <a name="open-service-fabric-explorer"></a>Service Fabric Explorer openen
 
 U kunt nu met behulp van Service Fabric Explorer verbinding maken met het cluster. Dat kan rechtstreeks vanaf een van de computers via http:\//localhost:19080/Explorer/index.html of op afstand via http:\//<*IPAddressofaMachine*>:19080/Explorer/index.html.
 
@@ -128,7 +126,7 @@ U kunt knooppunten toevoegen aan of verwijderen uit uw zelfstandige Service Fabr
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deel twee uit de serie bent u meer te weten gekomen over het gelijktijdig uploaden van grote hoeveelheden willekeurige gegevens naar een opslagaccount, om het volgende te kunnen doen:
+In dit artikel bent u meer te weten gekomen over het gelijktijdig uploaden van grote hoeveelheden willekeurige gegevens naar een opslagaccount, om het volgende te kunnen doen:
 
 > [!div class="checklist"]
 > * De verbindingsreeks configureren

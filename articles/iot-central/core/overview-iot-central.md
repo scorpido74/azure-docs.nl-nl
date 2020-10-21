@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 4ad1bcabc2e30e9e636883219d42f96335e32e78
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6d95c07e5bec810ce82e98b2291b348fbcc2d8bc
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90987353"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812434"
 ---
 # <a name="what-is-azure-iot-central"></a>Wat is Azure IoT Central?
 
@@ -50,14 +50,21 @@ U kunt een nieuwe IoT Central-toepassing snel implementeren en deze vervolgens i
 
 Als bouwer van oplossingen gebruikt u de webgebaseerde hulpprogramma's om een _apparaatsjabloon_ te maken voor de apparaten die verbinding maken met uw toepassing. Een apparaatsjabloon is de blauwdruk die de eigenschappen en het gedrag van een bepaald type apparaat definieert, zoals:
 
-- De telemetriegegevens die worden verstuurd.
-- Bedrijfseigenschappen die kunnen worden gewijzigd door een operator.
-- Apparaateigenschappen die zijn ingesteld door een apparaat en die het kenmerk alleen-lezen hebben in de toepassing.
-- Eigenschappen, die door een operator worden ingesteld, waarmee het gedrag van het apparaat wordt bepaald.
+- De telemetriegegevens die worden verstuurd. Voorbeelden zijn temperatuur en vochtigheid. Telemetrie bestaat uit het streamen van gegevens.
+- Bedrijfseigenschappen die kunnen worden gewijzigd door een operator. Voorbeelden zijn een klantadres en een datum van laatste service.
+- Apparaateigenschappen die zijn ingesteld door een apparaat en die het kenmerk alleen-lezen hebben in de toepassing. Bijvoorbeeld de status van een klep: open of gesloten.
+- Eigenschappen, die door een operator worden ingesteld, waarmee het gedrag van het apparaat wordt bepaald. Bijvoorbeeld een doeltemperatuur voor het apparaat.
+- Opdrachten die een operator kan aanroepen en die op een apparaat worden uitgevoerd. Bijvoorbeeld een opdracht om een apparaat op afstand opnieuw op te starten.
 
 Deze [apparaatsjabloon](howto-set-up-template.md) omvat:
 
-- Een _apparaatfunctiemodel_ dat de mogelijkheden beschrijft die een apparaat moet implementeren, zoals de telemetriegegevens die worden verzonden en de eigenschappen die worden gerapporteerd.
+- Een _apparaatondersteuningmodel_ dat de mogelijkheden beschrijft waarmee een apparaat moet worden geïmplementeerd. De apparaatmogelijkheden zijn:
+
+  - De telemetrie die naar IoT Central wordt gestreamd.
+  - De alleen-lezeneigenschappen die worden gebruikt om de status aan IoT Central te rapporteren.
+  - De beschrijfbare eigenschappen die van IoT Central worden ontvangen om de apparaatstatus in te stellen.
+  - De opdrachten die vanuit IoT Central worden aangeroepen.
+
 - Cloudeigenschappen die niet op het apparaat zijn opgeslagen.
 - Aanpassingen, dashboards en formulieren die deel uitmaken van uw IoT Central-toepassing.
 
@@ -144,7 +151,6 @@ Voor elk Azure-abonnement gelden standaardquota die invloed kunnen hebben op het
 - Het schematype Matrix wordt niet ondersteund.
 - Alleen de C-apparaat-SDK en de Node.js-apparaat- en service-SDK's worden ondersteund.
 - IoT Central is momenteel beschikbaar in de Verenigde Staten, Europa, Azië en Stille Oceaan, Australië, Verenigd Koninkrijk en Japan.
-- U kunt de toepassingssjabloon **Aangepaste toepassing (verouderd)** niet gebruiken in het Verenigd Koninkrijk en Japan.
 - Voor apparaatfunctiemodellen geldt dat alle interfaces inline moeten zijn gedefinieerd in hetzelfde bestand.
 
 ## <a name="next-steps"></a>Volgende stappen

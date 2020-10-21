@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: e67346eb1a0fccc7a788e8698df734536e1e395b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06821b62fa05a4fd772b15aa5a57bd1e3de5dbb2
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708948"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329369"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Service quota's Azure Cosmos DB
 
@@ -19,7 +19,7 @@ Dit artikel bevat een overzicht van de standaardquota's die worden aangeboden aa
 
 ## <a name="storage-and-database-operations"></a>Opslag-en database bewerkingen
 
-Nadat u in uw abonnement een Azure Cosmos-account hebt gemaakt, kunt u gegevens in uw account beheren door [data bases, containers en items te maken](databases-containers-items.md).
+Nadat u in uw abonnement een Azure Cosmos-account hebt gemaakt, kunt u gegevens in uw account beheren door [data bases, containers en items te maken](account-databases-containers-items.md).
 
 ### <a name="provisioned-throughput"></a>Ingerichte doorvoer
 
@@ -27,15 +27,15 @@ U kunt de door Voer inrichten op container niveau of op database niveau in terme
 
 | Resource | Standaardlimiet |
 | --- | --- |
-| Maximum RUs per container ([ingerichte modus toegewezen door Voer](databases-containers-items.md#azure-cosmos-containers)) | standaard 1.000.000. U kunt deze verhogen door [een ondersteunings ticket voor Azure te archiveren](create-support-request-quota-increase.md) |
-| Maximum RUs per data base ([ingerichte modus voor gedeelde door Voer](databases-containers-items.md#azure-cosmos-containers)) | standaard 1.000.000. U kunt deze verhogen door [een ondersteunings ticket voor Azure te archiveren](create-support-request-quota-increase.md) |
+| Maximum RUs per container ([ingerichte modus toegewezen door Voer](account-databases-containers-items.md#azure-cosmos-containers)) | standaard 1.000.000. U kunt deze verhogen door [een ondersteunings ticket voor Azure te archiveren](create-support-request-quota-increase.md) |
+| Maximum RUs per data base ([ingerichte modus voor gedeelde door Voer](account-databases-containers-items.md#azure-cosmos-containers)) | standaard 1.000.000. U kunt deze verhogen door [een ondersteunings ticket voor Azure te archiveren](create-support-request-quota-increase.md) |
 | Maximum RUs per (logische) partitie | 10.000 |
 | Maximale opslag ruimte in alle items per (logische) partitie | 20 GB |
 | Maximum aantal afzonderlijke (logische) partitie sleutels | Onbeperkt |
 | Maximale opslag per container | Onbeperkt |
 | Maximale opslag per data base | Onbeperkt |
 | Maximale grootte van bijlagen per account (bijlage functie wordt afgeschaft) | 2 GB |
-| Mini maal RUs vereist per 1 GB | 10 RU/s |
+| Mini maal aantal RU/s vereist per 1 GB | 10 RU/s<br>**Opmerking:** als uw container of data base meer dan 1 TB aan gegevens bevat, komt uw account mogelijk in aanmerking voor het [programma hoge opslag/lage door Voer](set-throughput.md#high-storage-low-throughput-program) |
 
 > [!NOTE]
 > Zie [een synthetische partitie sleutel maken](synthetic-partition-keys.md)voor meer informatie over aanbevolen procedures voor het beheren van werk belastingen met partitie sleutels waarvoor hogere limieten vereist zijn voor opslag of door voer.
@@ -55,8 +55,8 @@ In samen vatting vindt u de minimale ingerichte RU-limieten.
 
 | Resource | Standaardlimiet |
 | --- | --- |
-| Mini maal RUs per container ([ingerichte modus toegewezen door Voer](databases-containers-items.md#azure-cosmos-containers)) | 400 |
-| Mini maal RUs per data base ([ingerichte modus voor gedeelde door Voer](databases-containers-items.md#azure-cosmos-containers)) | 400 |
+| Mini maal RUs per container ([ingerichte modus toegewezen door Voer](account-databases-containers-items.md#azure-cosmos-containers)) | 400 |
+| Mini maal RUs per data base ([ingerichte modus voor gedeelde door Voer](account-databases-containers-items.md#azure-cosmos-containers)) | 400 |
 | Mini maal RUs per container in een gedeelde doorvoer database | 100 |
 
 Cosmos DB ondersteunt elastisch schalen van door Voer (RUs) per container of Data Base via de Sdk's of portal. Elke container kan synchroon en direct binnen een schaal bereik van 10 tot 100 keer worden geschaald, tussen de minimum-en maximum waarden. Als de aangevraagde doorvoer waarde zich buiten het bereik bevindt, wordt de schaal asynchroon uitgevoerd. Het volt ooien van asynchrone schaling kan minuten tot uren duren, afhankelijk van de gevraagde grootte van door Voer en gegevens opslag in de container.  
@@ -67,8 +67,8 @@ Zonder [Server](serverless.md) kunt u uw Azure Cosmos DB-resources op basis van 
 
 | Resource | Limiet |
 | --- | --- |
-| Maximum aantal RU/s per container | 5\.000 |
-| Maxi maal aantal RU/s per (logische) partitie | 5\.000 |
+| Maximum aantal RU/s per container | 5.000 |
+| Maxi maal aantal RU/s per (logische) partitie | 5.000 |
 | Maximale opslag ruimte in alle items per (logische) partitie | 20 GB |
 | Maximum aantal afzonderlijke (logische) partitie sleutels | Onbeperkt |
 | Maximale opslag per container | 50 GB |

@@ -292,8 +292,8 @@
                   href: learn/quick-create-workspace-cli.md
                 - name: PowerShell
                   href: platform/powershell-workspace-configuration.md
-                - name: Resource Manager-sjabloon
-                  href: ./samples/resource-manager-workspace.md
+            - name: Een werkruimte bewaken
+              href: platform/monitor-workspace.md
             - name: Een werkruimte verwijderen en herstellen
               href: platform/delete-workspace.md
             - name: Toegang beheren

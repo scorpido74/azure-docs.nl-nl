@@ -1,19 +1,19 @@
 ---
-title: 'Zelfstudie: ExpressRoute-verbindingen maken met Azure Virtual WAN'
+title: 'Zelfstudie: ExpressRoute-verbindingen maken met behulp van Azure Virtual WAN'
 description: In deze zelfstudie leert u hoe u Azure Virtual WAN gebruikt om ExpressRoute-verbindingen met Azure en on-premises omgevingen te maken.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 09/22/2020
+ms.date: 10/07/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 536d233a9c135b0b7dde6d6d80c705d2008226e6
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 7d880be6cbc37b273258075e6efc7a98d3478384
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91569648"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92054811"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>Zelfstudie: Een ExpressRoute-koppeling maken met behulp van Azure Virtual WAN
 
@@ -30,7 +30,7 @@ In deze zelfstudie leert u het volgende:
 > * De grootte van een gateway wijzigen
 > * Een standaardroute adverteren
 
-## <a name="before-you-begin"></a>Voordat u begint
+## <a name="prerequisites"></a>Vereisten
 
 Controleer voordat u met de configuratie begint of u aan de volgende criteria hebt voldaan:
 
@@ -40,7 +40,7 @@ Controleer voordat u met de configuratie begint of u aan de volgende criteria he
 
 * Zorg dat u een IP-adresbereik krijgt voor uw hubregio. De hub is een virtueel netwerk dat wordt gemaakt en gebruikt door Virtual WAN. Het adresbereik dat u voor de hub opgeeft mag niet overlappen met een van de bestaande virtuele netwerken waarmee u verbinding wilt maken. Dit bereik mag ook niet overlappen met de adresbereiken waarmee u on-premises verbinding wilt maken. Als u de IP-adresbereiken in uw on-premises netwerkconfiguratie niet kent, moet u contact opnemen met iemand die deze gegevens kan verstrekken.
 
-* Het ExpressRoute-circuit moet een Premium/Standard-circuit zijn om verbinding met de hub-gateway te maken.
+* Het ExpressRoute-circuit moet een Premium- of Standard-circuit zijn om verbinding met de hub-gateway te maken.
 
 * Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan.
 
@@ -105,7 +105,7 @@ In deze sectie brengt u de peering-verbinding tussen uw hub en een VNet tot stan
 
 ## <a name="connect-your-circuit-to-the-hub-gateway"></a><a name="connectcircuit"></a>Uw circuit verbinden met de hub-gateway
 
-Zodra de gateway is gemaakt, kunt u deze verbinden met een [ExpressRoute-circuit](../expressroute/expressroute-howto-circuit-portal-resource-manager.md). ExpressRoute premium/standaard-circuits die zich in Global Reach ExpressRoute-ondersteunde locaties bevinden, kunnen verbinding maken met een virtuele WAN ExpressRoute-gateway en gebruikmaken van alle virtuele WAN-Transit mogelijkheden (VPN naar VPN, VPN en ExpressRoute Transit). ExpressRoute Premium/Standard-circuits die zich in niet Global Reach locaties bevinden, kunnen verbinding maken met Azure-resources, maar kunnen geen virtuele WAN-Transit mogelijkheden gebruiken.
+Zodra de gateway is gemaakt, kunt u deze verbinden met een [ExpressRoute-circuit](../expressroute/expressroute-howto-circuit-portal-resource-manager.md). ExpressRoute Standard- of Premium-circuits die zich in Global Reach ExpressRoute-ondersteunde locaties bevinden, kunnen verbinding maken met een virtuele WAN ExpressRoute-gateway en gebruikmaken van alle virtuele WAN-Transit mogelijkheden (VPN naar VPN, VPN en ExpressRoute Transit). ExpressRoute Standard- en Premium-circuits die zich in niet Global Reach locaties bevinden, kunnen verbinding maken met Azure-resources, maar kunnen geen virtuele WAN-Transit mogelijkheden gebruiken. ExpressRoute Local wordt niet ondersteund met virtuele WAN van Azure.
 
 ### <a name="to-connect-the-circuit-to-the-hub-gateway"></a>Het circuit verbinden met de hub-gateway
 
@@ -153,6 +153,17 @@ Als u wilt dat de virtuele Azure-hub de standaardroute 0.0.0.0/0 adverteert naar
 
    ![Standaardroute doorgeven](./media/virtual-wan-expressroute-portal/defaultroute2.png "Standaardroute doorgeven")
 
+## <a name="clean-up-resources"></a><a name="cleanup"></a>Resources opschonen
+
+U kunt de opdracht [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) gebruiken om de resourcegroep en alle resources die deze bevat te verwijderen, wanneer u deze niet meer nodig hebt. Vervangen 'myResourceGroup' door de naam van uw resourcegroep en voer de volgende PowerShell-opdracht uit:
+
+```azurepowershell-interactive
+Remove-AzResourceGroup -Name myResourceGroup -Force
+```
+
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over Virtual WAN de pagina [Overzicht van Virtual WAN](virtual-wan-about.md).
+Zie voor meer informatie over Virtual WAN:
+
+> [!div class="nextstepaction"]
+> * [Veelgestelde vragen over Virtual WAN](virtual-wan-faq.md)

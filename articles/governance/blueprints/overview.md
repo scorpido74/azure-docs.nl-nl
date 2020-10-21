@@ -3,12 +3,12 @@ title: Overzicht van Azure Blueprints
 description: Azure Blueprints is een service in waarmee u artefacten kunt maken, definiëren en implementeren in uw Azure-omgeving.
 ms.date: 09/30/2020
 ms.topic: overview
-ms.openlocfilehash: f2e3c23c9cb83d2cb58b1e8f69a2a470a6f36f6d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0dbf5ab54b694399c9d15cce84e8eca34a5d924e
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91614254"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91892724"
 ---
 # <a name="what-is-azure-blueprints"></a>Wat is Azure Blueprints?
 
@@ -25,7 +25,7 @@ De Azure Blueprints-service wordt gesteund door de wereldwijd gedistribueerde [A
 
 ## <a name="how-its-different-from-arm-templates"></a>Wat is het verschil met ARM-sjablonen?
 
-De service is ontworpen om u te helpen met de _setup van de omgeving_. Deze setup bestaat vaak uit een set resourcegroepen, beleidsmaatregelen, roltoewijzingen en ARM-sjabloonimplementaties. Een blauwdruk is een pakket waarmee al deze typen _artefacten_ bij elkaar worden gebracht en u in staat wordt gesteld om dat pakket samen te stellen en versies ervan te beheren, onder andere via een CI/CD-pijplijn. Uiteindelijk wordt elke blauwdruk toegewezen aan een abonnement in één bewerking die kan worden gecontroleerd en bijgehouden.
+De service is ontworpen om u te helpen met de _setup van de omgeving_. Deze setup bestaat vaak uit een set resourcegroepen, beleidsmaatregelen, roltoewijzingen en ARM-sjabloonimplementaties. Een blauwdruk is een pakket waarmee al deze typen _artefacten_ bij elkaar worden gebracht en u in staat wordt gesteld om dat pakket samen te stellen en versies ervan te beheren, onder andere via een CI/CD-pijplijn voor continue integratie en levering. Uiteindelijk wordt elke blauwdruk toegewezen aan een abonnement in één bewerking die kan worden gecontroleerd en bijgehouden.
 
 Bijna alles dat u voor implementatie in Azure Blueprints wilt opnemen, kan worden bereikt met een ARM-sjabloon. Een ARM-sjabloon is echter een document dat niet in Azure zelf bestaat. Elke sjabloon wordt lokaal of in broncodebeheer opgeslagen. De sjabloon wordt gebruikt voor de implementatie van een of meer Azure-resources, maar zodra die resources zijn geïmplementeerd, is er geen actieve verbinding of relatie meer met de sjabloon.
 

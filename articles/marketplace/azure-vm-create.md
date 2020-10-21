@@ -1,22 +1,22 @@
 ---
 title: Maak een aanbieding voor de virtuele machine op Azure Marketplace.
-description: Meer informatie over het maken van een aanbieding voor een virtuele machine op Azure Marketplace.
+description: Meer informatie over het maken van een aanbieding voor de virtuele machine in micro soft Commercial Marketplace.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 10/19/2020
-ms.openlocfilehash: 9395b607f235ab606c9013f9273c4162b8c953d7
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.date: 10/20/2020
+ms.openlocfilehash: 5964292d7037465456efe22283a5552a2bfc7ad8
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92284296"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331257"
 ---
 # <a name="how-to-create-a-virtual-machine-offer-on-azure-marketplace"></a>Een aanbieding voor een virtuele machine maken op Azure Marketplace
 
-In dit artikel wordt beschreven hoe u een Azure virtual machine-aanbieding maakt en publiceert naar [Azure Marketplace](https://azuremarketplace.microsoft.com/). Het biedt zowel Windows-als op Linux gebaseerde virtuele machines die een besturings systeem, een virtuele harde schijf (VHD) en Maxi maal 16 gegevens schijven bevatten.
+In dit artikel wordt beschreven hoe u een Azure virtual machine-aanbieding maakt voor [Azure Marketplace](https://azuremarketplace.microsoft.com/). Het biedt zowel Windows-als op Linux gebaseerde virtuele machines die een besturings systeem, een virtuele harde schijf (VHD) en Maxi maal 16 gegevens schijven bevatten.
 
 Voordat u begint, moet u [een commercieel Marketplace-account maken in het partner centrum](partner-center-portal/create-account.md). Zorg ervoor dat uw account is inge schreven in het Commercial Marketplace-programma.
 

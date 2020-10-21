@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 2/20/2020
 ms.author: allensu
-ms.openlocfilehash: b06ae396ae15c8572cf8160ce576651f47001add
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 52cb1f144608202739dc46f2053950b38d810631
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87920497"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330152"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>DNS-zones en -records beschermen
 
@@ -22,9 +22,9 @@ DNS-zones en-records zijn essentiële bronnen. Het verwijderen van een DNS-zone 
 
 In dit artikel wordt uitgelegd hoe u met Azure DNS uw persoonlijke DNS-zones en-records kunt beveiligen tegen dergelijke wijzigingen.  We hebben twee krachtige effecten functies toegepast door Azure Resource Manager: [op rollen gebaseerd toegangs beheer (Azure RBAC)](../role-based-access-control/overview.md) en [resource vergrendelingen](../azure-resource-manager/management/lock-resources.md)van Azure.
 
-## <a name="role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer
+## <a name="azure-role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer voor Azure
 
-Met op rollen gebaseerd toegangs beheer op basis van Azure (Azure RBAC) kunt u verfijnd toegang beheren voor Azure-gebruikers,-groepen en-resources. Met RBAC kunt u het toegangs niveau verlenen dat gebruikers nodig hebben. Zie [Wat is Azure Role-based Access Control (Azure RBAC)](../role-based-access-control/overview.md)voor meer informatie over hoe RBAC u de toegang helpt te beheren.
+Met op rollen gebaseerd toegangs beheer op basis van Azure (Azure RBAC) kunt u verfijnd toegang beheren voor Azure-gebruikers,-groepen en-resources. Met Azure RBAC kunt u het toegangs niveau verlenen dat gebruikers nodig hebben. Zie [Wat is Azure-op rollen gebaseerd toegangs beheer (Azure RBAC)](../role-based-access-control/overview.md)voor meer informatie over hoe Azure RBAC u helpt bij het beheren van de toegang.
 
 ### <a name="the-dns-zone-contributor-role"></a>De rol van de DNS-zone bijdrager
 
@@ -32,11 +32,11 @@ De rol Inzender voor DNS-zones is een ingebouwde rol voor het beheren van privé
 
 De *myResourceGroup* van de resource groep bevat vijf zones voor Contoso Corporation. Door de DNS-beheerder DNS-zone Inzender machtigingen te verlenen voor die resource groep, kunt u volledige controle over deze DNS-zones. Hiermee wordt voor komen dat onnodige machtigingen worden verleend. De DNS-beheerder kan geen virtuele machines maken of stoppen.
 
-De eenvoudigste manier om RBAC-machtigingen toe te wijzen, is [via de Azure Portal](../role-based-access-control/role-assignments-portal.md).  
+De eenvoudigste manier om Azure RBAC-machtigingen toe te wijzen, is [via de Azure Portal](../role-based-access-control/role-assignments-portal.md).  
 
 Open **toegangs beheer (IAM)** voor de resource groep, selecteer **toevoegen**en selecteer vervolgens de rol **Inzender voor DNS-zones** . Selecteer de vereiste gebruikers of groepen om machtigingen te verlenen.
 
-![RBAC op resource groeps niveau via de Azure Portal](./media/dns-protect-zones-recordsets/rbac1.png)
+![Resource groeps niveau Azure RBAC via de Azure Portal](./media/dns-protect-zones-recordsets/rbac1.png)
 
 Machtigingen kunnen ook worden [verleend met behulp van Azure PowerShell](../role-based-access-control/role-assignments-powershell.md):
 
@@ -61,15 +61,15 @@ az role assignment create \
 --resource-group "<resource group name>"
 ```
 
-### <a name="zone-level-rbac"></a>RBAC zone niveau
+### <a name="zone-level-azure-rbac"></a>Zone niveau Azure RBAC
 
 Azure RBAC-regels kunnen worden toegepast op een abonnement, een resource groep of een afzonderlijke resource. De bron kan een afzonderlijke DNS-zone of een afzonderlijke recordset zijn.
 
 De *myResourceGroup* van de resource groep bevat bijvoorbeeld de zone *contoso.com* en een *Customers.contoso.com*subzone. Er worden CNAME-records gemaakt voor elk klant account. Aan het beheerders account dat wordt gebruikt voor het beheren van CNAME-records zijn machtigingen toegewezen voor het maken van records in de zone *Customers.contoso.com* . Het account kan alleen *Customers.contoso.com* beheren.
 
-RBAC-machtigingen op zone niveau kunnen worden verleend via de Azure Portal.  Open **toegangs beheer (IAM)** voor de zone, selecteer **toevoegen**, selecteer de rol **Inzender voor DNS-zone** en selecteer de vereiste gebruikers of groepen om machtigingen te verlenen.
+Azure RBAC-machtigingen op zone niveau kunnen worden verleend via de Azure Portal.  Open **toegangs beheer (IAM)** voor de zone, selecteer **toevoegen**, selecteer de rol **Inzender voor DNS-zone** en selecteer de vereiste gebruikers of groepen om machtigingen te verlenen.
 
-![DNS-zone niveau RBAC via de Azure Portal](./media/dns-protect-zones-recordsets/rbac2.png)
+![DNS-zone niveau Azure RBAC via de Azure Portal](./media/dns-protect-zones-recordsets/rbac2.png)
 
 Machtigingen kunnen ook worden [verleend met behulp van Azure PowerShell](../role-based-access-control/role-assignments-powershell.md):
 
@@ -96,15 +96,15 @@ az role assignment create \
 --scope "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/DnsZones/<zone name>/"
 ```
 
-### <a name="record-set-level-rbac"></a>Record sets niveau RBAC
+### <a name="record-set-level-azure-rbac"></a>Record sets niveau Azure RBAC
 
 Machtigingen worden toegepast op het niveau van de recordset.  De gebruiker heeft controle over de benodigde vermeldingen en kan geen andere wijzigingen aanbrengen.
 
-De RBAC-machtigingen van het record niveau level kunnen worden geconfigureerd via de Azure Portal, met behulp van de knop **Access Control (IAM)** op de pagina Recordset.
+Record-set level Azure RBAC-machtigingen kunnen worden geconfigureerd via de Azure Portal, met behulp van de knop **Access Control (IAM)** op de pagina Recordset:
 
-![Het niveau van de record sets RBAC via de Azure Portal](./media/dns-protect-zones-recordsets/rbac3.png)
+![Record sets level Azure RBAC via de Azure Portal](./media/dns-protect-zones-recordsets/rbac3.png)
 
-Er kunnen ook RBAC-machtigingen op het niveau van record sets worden [verleend met behulp van Azure PowerShell](../role-based-access-control/role-assignments-powershell.md):
+Record-set level Azure RBAC-machtigingen kunnen ook worden [verleend met behulp van Azure PowerShell](../role-based-access-control/role-assignments-powershell.md):
 
 ```azurepowershell
 # Grant permissions to a specific record set
@@ -186,7 +186,7 @@ az role create -inputfile <file path>
 
 De rol kan vervolgens op dezelfde manier worden toegewezen als ingebouwde rollen, zoals eerder in dit artikel is beschreven.
 
-Zie [aangepaste rollen in azure RBAC](../role-based-access-control/custom-roles.md)voor meer informatie over het maken, beheren en toewijzen van aangepaste rollen.
+Zie [aangepaste rollen voor Azure](../role-based-access-control/custom-roles.md)voor meer informatie over het maken, beheren en toewijzen van aangepaste rollen.
 
 ## <a name="resource-locks"></a>Resourcevergrendelingen
 
@@ -286,5 +286,5 @@ Het is mogelijk om zowel benaderingen-resource vergrendelingen als aangepaste ro
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [aan de slag met toegangs beheer in de Azure Portal](../role-based-access-control/overview.md)voor meer informatie over het werken met RBAC.
+* Zie [Wat is Azure Role-based Access Control (Azure RBAC)](../role-based-access-control/overview.md)voor meer informatie over het werken met Azure RBAC.
 * Zie [resources vergren delen met Azure Resource Manager](../azure-resource-manager/management/lock-resources.md)voor meer informatie over het werken met resource vergrendelingen.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/28/2019
 ms.author: jeedes
-ms.openlocfilehash: c43a50dbbd2276573a80b866ee673e4391d9736b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a503f93895d0e1377f8037818b68ea42178363c2
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551402"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944951"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-grovo"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met Grovo
 
@@ -137,11 +137,11 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 2. Ga naar **Beheer** > **Integraties**.
  
-    ![Grovo-configuratie](./media/grovo-tutorial/tutorial_grovo_admin.png) 
+    ![Schermopname van het beheermenu met Integraties geselecteerd.](./media/grovo-tutorial/tutorial_grovo_admin.png) 
 
 3. Klik in de sectie **SP Initiated SAML 2.0** op **Instellen**.
 
-    ![Grovo-configuratie](./media/grovo-tutorial/tutorial_grovo_setup.png)
+    ![Schermopname van de sectie 'SP initiated SAML 2.0' met de knop 'Instellen' geselecteerd.](./media/grovo-tutorial/tutorial_grovo_setup.png)
 
 4. Voer in het pop-upvenster **SP Initiated SAML 2.0** de volgende stappen uit:
 

@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf8ceb308fbcc2156a6df43e0167f4cb544b2d3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 568a524e9300905a5e70b2cf7481fc7eabfc669e
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331196"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92311228"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Een Azure Active Directory rapportage en bewakings implementatie plannen
 
@@ -73,7 +73,7 @@ In dit project definieert u de doel groepen waarmee rapporten worden verbruikt e
 
 ### <a name="engage-the-right-stakeholders"></a>De juiste belanghebbenden benaderen
 
-Wanneer technologie projecten mislukken, worden ze doorgaans als gevolg van niet-overeenkomende verwachtingen voor impact, resultaten en verantwoordelijkheden. Als u deze problemen wilt voor komen, moet [u ervoor zorgen dat u de juiste belanghebbenden gebruikt](https://aka.ms/deploymentplans). Zorg er ook voor dat de rol van belanghebbenden in het project goed worden begrepen door de belanghebbenden en hun project invoer en accountabilities te documenteren.
+Wanneer technologie projecten mislukken, worden ze doorgaans als gevolg van niet-overeenkomende verwachtingen voor impact, resultaten en verantwoordelijkheden. Als u deze problemen wilt voor komen, moet [u ervoor zorgen dat u de juiste belanghebbenden gebruikt](../fundamentals/active-directory-deployment-plans.md). Zorg er ook voor dat de rol van belanghebbenden in het project goed worden begrepen door de belanghebbenden en hun project invoer en accountabilities te documenteren.
 
 ### <a name="plan-communications"></a>De communicatie plannen
 
@@ -133,7 +133,7 @@ Ontdek hoe u [Log Analytics-weergaven voor activiteitenlogboeken van Azure AD in
 
 Met routerings logboeken naar een Azure-Event Hub kunt u integratie met SIEM-hulpprogram ma's van derden. Zo kunt u gegevens van Azure Active Directory-activiteitenlogboeken combineren met andere gegevens die worden beheerd door uw SIEM en meer inzicht krijgen in uw omgeving. 
 
-Ontdek hoe u [logboeken streamt naar een Event Hub](/azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub).
+Ontdek hoe u [logboeken streamt naar een Event Hub](./tutorial-azure-monitor-stream-logs-to-event-hub.md).
 
 ## <a name="plan-operations-and-security-for-azure-ad-reporting-and-monitoring"></a>Plan bewerkingen en beveiliging voor Azure AD-rapportage en-bewaking
 

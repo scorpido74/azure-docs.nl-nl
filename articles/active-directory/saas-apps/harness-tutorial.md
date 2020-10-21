@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/02/2019
 ms.author: jeedes
-ms.openlocfilehash: cfa81b52e8479851fc22b12cbc96a9507f0b2dc7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e49fc29f03269096bfc7d6bb6e905187bb8788ff
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551384"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944067"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-harness"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met Harness
 
@@ -138,15 +138,15 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 4. Klik rechtsboven op de pagina op **Doorlopende beveiliging** > **Toegangsbeheer** > **Verificatie-instellingen**.
 
-    ![Configuratie van Harness](./media/harness-tutorial/configure01.png)
+    ![Schermopname van het menu 'Doorlopende beveiliging' met 'Toegangsbeheer' en 'Verificatie-instellingen' geselecteerd.](./media/harness-tutorial/configure01.png)
 
 5. Klik in de sectie **SSO-providers** op **+SSO-providers toevoegen** > **SAML**.
 
-    ![Configuratie van Harness](./media/harness-tutorial/configure03.png)
+    ![Scherm opname van de 'SSO-providers' met '+ SSO-providers toevoegen - SAML' geselecteerd.](./media/harness-tutorial/configure03.png)
 
 6. Voer de volgende stappen uit in het pop-upvenster **SAML-provider**:
 
-    ![Configuratie van Harness](./media/harness-tutorial/configure02.png)
+    ![Scherm opname van het pop-upvenster 'SAML provider' met de velden 'URL' en 'Weergavenaam' gemarkeerd, en de knoppen 'Bestand kiezen' en 'Verzenden' geselecteerd.](./media/harness-tutorial/configure02.png)
 
     a. Kopieer het exemplaar **Schakel in uw SSO-provider op SAML gebaseerde aanmelding in en voer vervolgens de volgende URL in** en plak het in het tekstvak Antwoord-URL in de sectie **Standaard SAML-configuratie** op Azure Portal.
 
@@ -166,11 +166,11 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Harness, moeten ze 
 
 1. Klik rechtsboven op de pagina op **Doorlopende beveiliging** > **Toegangsbeheer** > **Gebruikers**.
 
-    ![Configuratie van Harness](./media/harness-tutorial/configure04.png)
+    ![Schermopname van het menu 'Doorlopende beveiliging' met 'Toegangsbeheer' en 'Gebruikers' geselecteerd.](./media/harness-tutorial/configure04.png)
 
 1. Klik rechtsboven op de pagina op **+Gebruiker toevoegen**.
 
-    ![Configuratie van Harness](./media/harness-tutorial/configure05.png)
+    ![Schermopname van de pagina 'Gebruikers' met de actie '+ Gebruiker toevoegen' geselecteerd.](./media/harness-tutorial/configure05.png)
 
 1. Voer in het pop-upvenster **Gebruiker toevoegen** de volgende stappen uit:
 

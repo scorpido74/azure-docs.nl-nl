@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: 0b39ec9c8cb70adac1474b2647ac1c9591b9d5cd
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: db3d4bb7f4b32c07e75487764acc5e7ba7d05915
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526388"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873275"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-linux-vm"></a>Zelfstudie: een IoT Edge-exemplaar voor videoanalyse maken in Azure IoT Central (Linux-VM)
 
@@ -34,7 +34,7 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u begint, moet u de vorige zelfstudie [Een toepassing voor videoanalyse maken in Azure IoT Central](./tutorial-video-analytics-create-app.md) voltooien.
+Voordat u begint, moet u de vorige zelfstudie [Een toepassing voor videoanalyse maken in Azure IoT Central](./tutorial-video-analytics-create-app-yolo-v3.md) of [Een videoanalyse maken in Azure IoT Central (OpenVINO&trade;)](tutorial-video-analytics-create-app-openvino.md) voltooien.
 
 U hebt ook een Azure-abonnement nodig. Als u geen Azure-abonnement hebt, kunt u er gratis een maken via de [Azure-aanmeldingspagina](https://aka.ms/createazuresubscription).
 

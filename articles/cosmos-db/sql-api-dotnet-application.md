@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 6772150338dd0d172f2f100c2aa8cae7175b18d6
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: bd659ebd74b67a036c189cae763205e6b0371f7c
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051288"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058162"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>Zelfstudie: Een ASP.NET Core MVC-webtoepassing ontwikkelen met Azure Cosmos DB met behulp van de .NET SDK
 
@@ -71,7 +71,7 @@ In het volgende gedeelte maakt u een nieuwe ASP.NET Core MVC-toepassing.
 
 1. Zoek en selecteer **ASP.NET Core-webtoepassing** in **Een nieuw project maken** voor C#. Selecteer **Volgende** om door te gaan.
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-new-project-dialog.png" alt-text="Nieuw project voor ASP.NET Core-webtoepassing maken":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-new-project-dialog.png" alt-text="Schermopname van de takenlijst MVC-webtoepassing die is gemaakt met deze zelfstudie - Stapsgewijze zelfstudie voor ASP NET Core MVC":::
 
 1. In **Uw nieuwe project configureren**, geeft u het project de naam *TODO* en selecteert u **Maken**.
 
@@ -89,7 +89,7 @@ Nu we de meeste code voor de ASP.NET Core MVC-framework hebben die nodig is voor
 
 1. Zoek en selecteer **Microsoft.Azure.Cosmos** in het **NuGet Package Manager**. Selecteer **Installeren**.
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-nuget.png" alt-text="NuGet-pakket installeren":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-nuget.png" alt-text="Schermopname van de takenlijst MVC-webtoepassing die is gemaakt met deze zelfstudie - Stapsgewijze zelfstudie voor ASP NET Core MVC":::
 
    Visual Studio downloadt en installeert het Azure Cosmos DB-pakket en de afhankelijkheden.
 
@@ -139,7 +139,7 @@ Nu gaan we de volgende weergaven toevoegen.
    * Selecteer **Een indelingspagina gebruiken** en voer *~/Views/Shared/_Layout. cshtml* in.
    * Selecteer **Toevoegen**.
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-mvc-view.png" alt-text="Schermopname van het dialoogvenster MVC-weergave toevoegen":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-mvc-view.png" alt-text="Schermopname van de takenlijst MVC-webtoepassing die is gemaakt met deze zelfstudie - Stapsgewijze zelfstudie voor ASP NET Core MVC":::
 
 1. Vervolgens selecteert u **Toevoegen** en laat u Visual Studio een nieuwe sjabloonweergave maken. Vervang de code in het gegenereerde bestand door de volgende inhoud:
 
@@ -214,19 +214,19 @@ Zodra u deze stappen hebt voltooid, sluit u alle *cshtml*-documenten in Visual S
 
 ### <a name="declare-and-initialize-services"></a><a name="initialize-services"></a>Services declareren en initialiseren
 
-Allereerst voegen we een klasse toe die de logica bevat voor de verbinding met en het gebruik van Azure Cosmos DB. Voor deze zelfstudie kapselen we deze logica in een klasse genaamd `CosmosDBService` en een interface met de naam `ICosmosDBService`. Deze service voert de CRUD-bewerkingen uit. Ook worden de feedbewerkingen gelezen, zoals het weergeven van onvolledige items, het maken, bewerken en verwijderen van de items.
+Allereerst voegen we een klasse toe die de logica bevat voor de verbinding met en het gebruik van Azure Cosmos DB. Voor deze zelfstudie kapselen we deze logica in een klasse genaamd `CosmosDbService` en een interface met de naam `ICosmosDbService`. Deze service voert de CRUD-bewerkingen uit. Ook worden de feedbewerkingen gelezen, zoals het weergeven van onvolledige items, het maken, bewerken en verwijderen van de items.
 
 1. Klik in **Solution Explorer** met de rechtermuisknop op het project en selecteer **Toevoegen** > **Nieuwe map**. Geef een naam op voor de map *Services*.
 
-1. Klik met de rechtermuisknop op de map **Services** en selecteer **Toevoegen** > **Klasse**. Noem de nieuwe klasse *CosmoDBService* en selecteer **Toevoegen**.
+1. Klik met de rechtermuisknop op de map **Services** en selecteer **Toevoegen** > **Klasse**. Noem de nieuwe klasse *CosmoDbService* en selecteer **Toevoegen**.
 
-1. Vervang de inhoud van *CosmoDBService* door de volgende code:
+1. Vervang de inhoud van *CosmoDbService* door de volgende code:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/CosmosDbService.cs":::
 
-1. Klik met de rechtermuisknop op de map **Services** en selecteer **Toevoegen** > **Klasse**. Noem de nieuwe klasse *ICosmoDBService* en selecteer **Toevoegen**.
+1. Klik met de rechtermuisknop op de map **Services** en selecteer **Toevoegen** > **Klasse**. Noem de nieuwe klasse *ICosmoDbService* en selecteer **Toevoegen**.
 
-1. Voeg de volgende code toe aan klasse *ICosmosDBService*:
+1. Voeg de volgende code toe aan klasse *ICosmosDbService*:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/ICosmosDbService.cs":::
 
@@ -262,7 +262,7 @@ Allereerst voegen we een klasse toe die de logica bevat voor de verbinding met e
 
 1. Selecteer in **Scaffold toevoegen** de optie **MVC-controller: leeg** en selecteer **Toevoegen**.
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-controller-add-scaffold.png" alt-text="MVC-controller selecteren - Leeg in Scaffold toevoegen":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-controller-add-scaffold.png" alt-text="Schermopname van de takenlijst MVC-webtoepassing die is gemaakt met deze zelfstudie - Stapsgewijze zelfstudie voor ASP NET Core MVC":::
 
 1. Noem uw nieuwe controller *ItemController*.
 
@@ -280,7 +280,7 @@ Volg deze stappen als u de toepassing wilt testen op een lokale computer:
 
 1. Druk in Visual Studio op F5 om de toepassing in de foutopsporingsmodus op te bouwen. De toepassing wordt opgebouwd en wordt er een browser gestart met het lege rasterpagina dat we eerder hebben gezien:
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item-a.png" alt-text="Schermopname van de takenlijstwebtoepassing die is gemaakt met deze zelfstudie":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item-a.png" alt-text="Schermopname van de takenlijst MVC-webtoepassing die is gemaakt met deze zelfstudie - Stapsgewijze zelfstudie voor ASP NET Core MVC":::
    
    Als de toepassing in plaats daarvan op de startpagina wordt geopend, voegt u `/Item` toe aan de URL.
 
@@ -288,11 +288,11 @@ Volg deze stappen als u de toepassing wilt testen op een lokale computer:
 
 1. Selecteer **Maken**. Met de app keert u terug naar de weergave **Index** en wordt uw item in de lijst weergegeven. U kunt eventueel nog enkele items aan uw **Takenlijst** toevoegen.
 
-    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item.png" alt-text="Schermopname van de weergave Index":::
+    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item.png" alt-text="Schermopname van de takenlijst MVC-webtoepassing die is gemaakt met deze zelfstudie - Stapsgewijze zelfstudie voor ASP NET Core MVC":::
   
 1. Selecteer **Bewerken** naast een **Item** in de lijst. De app opent de weergave **Bewerken** waar u de eigenschappen van uw object kunt bijwerken, inclusief de vlag **Voltooid**. Als u **Voltooid** selecteert en **Opslaan** selecteert, wordt in de app het **Item** weergegeven als voltooid in de lijst.
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-completed-item.png" alt-text="Schermopname van de weergave Index met het selectievakje Voltooid ingeschakeld":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-completed-item.png" alt-text="Schermopname van de takenlijst MVC-webtoepassing die is gemaakt met deze zelfstudie - Stapsgewijze zelfstudie voor ASP NET Core MVC":::
 
 1. Controleer de status van de gegevens in de Azure Cosmos DB-service met [Cosmos Explorer](https://cosmos.azure.com) of de Data Explorer van de Azure Cosmos DB-emulator.
 
@@ -312,7 +312,7 @@ Nu de volledige toepassing correct werkt met Azure Cosmos DB, kunt u de web-app 
 
 1. Zoek uw profiel en selecteer vervolgens **OK**. Zoek vervolgens de vereiste Azure App Service en selecteer **OK**.
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-app-service-2019.png" alt-text="Dialoogvenster App Service in Visual Studio":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-app-service-2019.png" alt-text="Schermopname van de takenlijst MVC-webtoepassing die is gemaakt met deze zelfstudie - Stapsgewijze zelfstudie voor ASP NET Core MVC":::
 
 Een andere optie is het maken van een nieuw profiel:
 
@@ -324,7 +324,7 @@ Een andere optie is het maken van een nieuw profiel:
 
 1. Voer in **App Service** de naam van uw webtoepassing en het abonnement, de resourcegroep en het hostingabonnement in en selecteer vervolgens **Maken**.
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-app-service-2019.png" alt-text="Dialoogvenster App-service maken in Visual Studio":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-app-service-2019.png" alt-text="Schermopname van de takenlijst MVC-webtoepassing die is gemaakt met deze zelfstudie - Stapsgewijze zelfstudie voor ASP NET Core MVC":::
 
 Over een paar seconden zal Visual Studio uw webtoepassing publiceren en een browser starten waarin u kunt zien hoe uw project in Azure wordt uitgevoerd!
 

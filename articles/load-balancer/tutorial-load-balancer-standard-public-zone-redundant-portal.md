@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 4deab6fcadda36ad729096ff2f38e40ce81c7ae9
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: f165064ed5b0583ebb469c47426a2b6403307971
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91446102"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048352"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Zelfstudie: Met behulp van Azure Portal taakverdeling uitvoeren van virtuele machines over beschikbaarheidszones met een standaard Load Balancer
 
@@ -40,6 +40,10 @@ Zie [Standard Load Balancer en beschikbaarheidszones](load-balancer-standard-ava
 U kunt deze zelfstudie desgewenst volgen met behulp van de [Azure CLI](load-balancer-standard-public-zone-redundant-cli.md).
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint. 
+
+## <a name="prerequisites"></a>Vereisten
+
+* Een Azure-abonnement
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -231,8 +235,10 @@ Als u wilt zien hoe de load balancer verkeer distribueert naar de VM's die zijn 
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Verwijder de resourcegroep, de load balancer en alle gerelateerde resources, wanneer u deze niet meer nodig hebt. Selecteer hiertoe de resourcegroep met de load balancer en klik op **Verwijderen**.
+Verwijder de resourcegroep, de load balancer en alle gerelateerde resources, wanneer u deze niet meer nodig hebt. Selecteer hiervoor de resourcegroep die de load balancer bevat en selecteer **Verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over [Standard Load Balancer](load-balancer-standard-overview.md).
+Meer leren over taakverdeling op een VM binnen een specifieke beschikbaarheidszone.
+> [!div class="nextstepaction"]
+> [Taken over VM's binnen een beschikbaarheidszone verdelen](tutorial-load-balancer-standard-public-zonal-portal.md)

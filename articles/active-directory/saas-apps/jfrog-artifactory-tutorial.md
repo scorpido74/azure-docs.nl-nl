@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 07ac0ac4d7b86b644ca5d1876b1332fee7358cac
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 826ce780fd9196d67adba5bb148a795d3fe4f0f2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552597"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850350"
 ---
 # <a name="tutorial-integrate-jfrog-artifactory-with-azure-active-directory"></a>Zelfstudie: JFrog Artifactory integreren met Azure Active Directory
 
@@ -92,15 +92,15 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 1. In JFrog Artifactory worden de SAML-asserties in een specifieke indeling verwacht. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van uw SAML-tokenkenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven. Klik op het pictogram **Bewerken** om het dialoogvenster gebruikerskenmerken te openen.
 
-    ![image](common/edit-attribute.png)
+    ![Schermopname met Gebruikerskenmerken en een bijschrift bij het pictogram Bewerken.](common/edit-attribute.png)
 
 1. Bovendien verwacht JFrog Artifactory nog enkele kenmerken die als SAML-antwoord moeten worden doorgestuurd. Voer in het gedeelte **Gebruikerskenmerken en -claims** in het dialoogvenster **Groepsclaims (preview)** de volgende stappen uit:
 
     a. Klik op de **pen** naast **Groepen die zijn geretourneerd in claim**.
 
-    ![image](./media/jfrog-artifactory-tutorial/config04.png)
+    ![Schermopname die Gebruikerskenmerken en claims toont met het pictogram Bewerken geselecteerd.](./media/jfrog-artifactory-tutorial/config04.png)
 
-    ![image](./media/jfrog-artifactory-tutorial/config05.png)
+    ![Schermopname van de sectie Groepsclaims met Alle groepen geselecteerd.](./media/jfrog-artifactory-tutorial/config05.png)
 
     b. Selecteer **Alle groepen** in de lijst met keuzerondjes.
 

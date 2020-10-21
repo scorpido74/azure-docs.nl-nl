@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: cshoe
-ms.openlocfilehash: bf1664a35562b888f9dd7aacd3b1112058bed664
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: e3bad12362358620d0f2dc105bb2820dfb691d00
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797697"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "92000211"
 ---
 # <a name="tutorial-publish-a-jekyll-site-to-azure-static-web-apps-preview"></a>Zelfstudie: Een Jekyll-site publiceren in Azure Static Web Apps Preview
 
@@ -118,7 +118,7 @@ De volgende stappen laten zien hoe u een nieuwe statische site-app maakt en deze
 
 1. Selecteer **hoofd** voor de _Vertakking_.
 
-    :::image type="content" source="./media/publish-jekyll/completed-github-info.png" alt-text="Voltooide GitHub-gegevens":::
+    :::image type="content" source="./media/publish-jekyll/completed-github-info.png" alt-text="Ingevulde gegevens":::
 
 ### <a name="build"></a>Ontwikkelen
 
@@ -146,12 +146,9 @@ Vervolgens voegt u configuratie-instellingen toe die tijdens het bouwproces word
 
 1. Open de Jekyll-app in een teksteditor en open het bestand _.github/workflows/azure-pages-<NAAM_VAN-WERKSTROOM>.yml_.
 
-1. Voeg in het volgende configuratieblok regels toe na het blok `- uses: actions/checkout@v2`.
+1. Voeg na de regel `- uses: actions/checkout@v2` het volgende configuratieblok toe.
 
     ```yml
-    - uses: actions/checkout@v2
-      with:
-        submodules: true
     - name: Set up Ruby
       uses: ruby/setup-ruby@ec106b438a1ff6ff109590de34ddc62c540232e0
       with:
@@ -174,7 +171,7 @@ Vervolgens voegt u configuratie-instellingen toe die tijdens het bouwproces word
 
 1. Klik in het _overzichtsvenster_ in de Azure-portal op de _URL_-koppeling om de geïmplementeerde toepassing te openen.
 
-   :::image type="content" source="./media/publish-jekyll/deployed-app.png" alt-text="Geïmplementeerde toepassing":::
+   :::image type="content" source="./media/publish-jekyll/deployed-app.png" alt-text="Ingevulde gegevens":::
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

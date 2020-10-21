@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: jeedes
-ms.openlocfilehash: ae8a1fa68e61e160ce08b93bf66776a050b45613
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e05a2a4ba12d5fc665090d5bf078da520000f43b
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554155"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945359"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-officespace-software"></a>Zelfstudie: Integratie van eenmalige aanmelding (SSO) van Azure Active Directory met OfficeSpace Software
 
@@ -150,11 +150,11 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 2. Ga naar **Instellingen** en klik op **Connectors**.
 
-    ![Eenmalige aanmelding aan app-zijde configureren](./media/officespace-tutorial/tutorial_officespace_002.png)
+    ![Schermopname van het vervolgkeuzemenu 'Instellingen' met 'Connectors' geselecteerd.](./media/officespace-tutorial/tutorial_officespace_002.png)
 
 3. Klik op **SAML-verificatie**.
 
-    ![Eenmalige aanmelding aan app-zijde configureren](./media/officespace-tutorial/tutorial_officespace_003.png)
+    ![Schermopname van de sectie 'Verificatie' met de actie SAML-verificatie geselecteerd.](./media/officespace-tutorial/tutorial_officespace_003.png)
 
 4. Voer in het gedeelte **SAML-verificatie** de volgende stappen uit:
 
