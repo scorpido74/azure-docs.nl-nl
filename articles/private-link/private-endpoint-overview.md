@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: 7456402605328592d4f5677767bcd985941173ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: def394369ebcb8b457d78ad6537830487e8049f7
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88639831"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277506"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Wat is een privé-eindpunt van Azure?
 
@@ -77,9 +77,9 @@ Een persoonlijke koppelings bron is het doel doel van een gegeven persoonlijk ei
 |**Azure Relay** | Micro soft. relay/naam ruimten | naamruimte |
 |**Azure Event Grid** | Micro soft. EventGrid/topics    | onderwerp |
 |**Azure Event Grid** | Micro soft. EventGrid/domeinen    | domein |
-|**Azure webapps** | Micro soft. web/sites    | sites |
+|**Azure App Service** | Micro soft. web/sites    | sites |
 |**Azure Machine Learning** | Micro soft. MachineLearningServices/werk ruimten    | werkruimte |
-|**SignalR** | Micro soft. SignalRService/Signa lering    | signalR |
+|**SignalR** | Microsoft.SignalRService/SignalR    | signalR |
 |**Azure Monitor** | Micro soft. Insights/privateLinkScopes    | azuremonitor |
 |**Cognitive Services** | (Micro soft. CognitiveServices/accounts    | account |
 |**Azure File Sync** | Micro soft. StorageSync/storageSyncServices    | AFS |

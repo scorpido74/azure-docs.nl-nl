@@ -13,12 +13,12 @@ ms.date: 09/12/2019
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
-ms.openlocfilehash: f5950347fff380fcfbaa89834407ff5f497a9719
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa0ce6a5f909e67f0551c8667bb7e5c5e6d7eb04
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88854906"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275611"
 ---
 # <a name="android-microsoft-authentication-library-configuration-file"></a>Configuratie bestand voor micro soft-verificatie bibliotheek voor Android
 
@@ -30,11 +30,12 @@ In dit artikel vindt u meer informatie over de verschillende instellingen in het
 
 ### <a name="general-settings"></a>Algemene instellingen
 
-| Eigenschap | Gegevenstype | Vereist | Notities |
+| Eigenschap | Gegevenstype | Vereist | Opmerkingen |
 |-----------|------------|-------------|-------|
 | `client_id` | Tekenreeks | Ja | De client-ID van uw app op de [pagina Toepassings registratie](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) |
 | `redirect_uri`   | Tekenreeks | Ja | De omleidings-URI van uw app op de [pagina Toepassings registratie](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) |
-| `authorities` | Lijst\<Authority> | Nee | De lijst met instanties die uw app nodig heeft |
+| `broker_redirect_uri_registered` | Booleaans | Nee | Mogelijke waarden: `true` , `false` |
+| `authorities` | Orderverzamellijst\<Authority> | Nee | De lijst met instanties die uw app nodig heeft |
 | `authorization_user_agent` | AuthorizationAgent (enum) | Nee | Mogelijke waarden: `DEFAULT` , `BROWSER` , `WEBVIEW` |
 | `http` | HttpConfiguration | Nee | Configureren `HttpUrlConnection` `connect_timeout` en `read_timeout` |
 | `logging` | LoggingConfiguration | Nee | Hiermee geeft u het detail niveau voor logboek registratie op. Optionele configuraties omvatten: `pii_enabled` , die een Booleaanse waarde en,,, `log_level` `ERROR` , of, accepteert,, `WARNING` `INFO` of `VERBOSE` . |
@@ -46,6 +47,10 @@ De client-ID of App-ID die is gemaakt tijdens het registreren van uw toepassing.
 ### <a name="redirect_uri"></a>redirect_uri
 
 De omleidings-URI die u hebt geregistreerd tijdens het registreren van uw toepassing. Als de omleidings-URI naar een Broker-app verwijst, raadpleegt u de [omleidings-URI voor open bare client-apps](msal-client-application-configuration.md#redirect-uri-for-public-client-apps) om te controleren of u de juiste omleidings-URI-indeling gebruikt voor uw broker-app
+
+### <a name="broker_redirect_uri_registered"></a>broker_redirect_uri_registered
+
+Als u brokered-verificatie wilt gebruiken, `broker_redirect_uri_registered` moet de eigenschap worden ingesteld op `true` . Als de toepassing in een scenario met brokered verificatie niet de juiste indeling heeft om te praten met de Broker zoals beschreven in [omleidings-URI voor open bare client-apps](msal-client-application-configuration.md#redirect-uri-for-public-client-apps), valideert de toepassing uw omleidings-URI en genereert een uitzonde ring wanneer deze wordt gestart.
 
 ### <a name="authorities"></a>ca's
 
@@ -86,7 +91,7 @@ De lijst met instanties die bekend zijn en worden vertrouwd door u. Naast de ins
 
 #### <a name="map-aad-authority--audience-to-microsoft-identity-platform-endpoints"></a>AAD Authority & doel groep toewijzen aan micro soft Identity platform-eind punten
 
-| Type | Doelgroep | Tenant-id | Authority_Url | Resulterende eind punt | Notities |
+| Type | Doelgroep | Tenant-id | Authority_Url | Resulterende eind punt | Opmerkingen |
 |------|------------|------------|----------------|----------------------|---------|
 | AAD | AzureADandPersonalMicrosoftAccount | | | `https://login.microsoftonline.com/common` | `common` is een Tenant alias voor waar het account zich bevindt. Zoals een specifieke Azure Active Directory Tenant of het Microsoft-account systeem. |
 | AAD | AzureADMyOrg | contoso.com | | `https://login.microsoftonline.com/contoso.com` | Alleen accounts die aanwezig zijn in contoso.com kunnen een token verkrijgen. Elk geverifieerd domein of de Tenant-GUID kan worden gebruikt als Tenant-ID. |
@@ -98,10 +103,11 @@ De lijst met instanties die bekend zijn en worden vertrouwd door u. Naast de ins
 > Verificatie van de certificerings instantie kan niet worden ingeschakeld en uitgeschakeld in MSAL.
 > Instanties zijn bekend als de ontwikkelaar die is opgegeven via configuratie of bekend bij micro soft via meta gegevens.
 > Als MSAL een aanvraag voor een token naar een onbekende instantie ontvangt, een `MsalClientException` van de type `UnknownAuthority` resultaten.
+> Brokered-verificatie werkt niet voor Azure AD B2C.
 
 #### <a name="authority-properties"></a>Instantie-eigenschappen
 
-| Eigenschap | Gegevenstype  | Vereist | Notities |
+| Eigenschap | Gegevenstype  | Vereist | Opmerkingen |
 |-----------|-------------|-----------|--------|
 | `type` | Tekenreeks | Ja | Komt overeen met de doel groep of het account type van uw app-doelen. Mogelijke waarden: `AAD` , `B2C` |
 | `audience` | Object | Nee | Alleen van toepassing als type = `AAD` . Hiermee geeft u de identiteit op van uw app-doelen. De waarde van de app-registratie gebruiken |
@@ -110,7 +116,7 @@ De lijst met instanties die bekend zijn en worden vertrouwd door u. Naast de ins
 
 #### <a name="audience-properties"></a>Eigenschappen van doel groep
 
-| Eigenschap | Gegevenstype  | Vereist | Notities |
+| Eigenschap | Gegevenstype  | Vereist | Opmerkingen |
 |-----------|-------------|------------|-------|
 | `type` | Tekenreeks | Ja | Hiermee geeft u de doel groep op die uw app wil richten. Mogelijke waarden: `AzureADandPersonalMicrosoftAccount` , `PersonalMicrosoftAccount` , `AzureADMultipleOrgs` , `AzureADMyOrg` |
 | `tenant_id` | Tekenreeks | Ja | Alleen vereist wanneer `"type":"AzureADMyOrg"` . Optioneel voor andere `type` waarden. Dit kan een Tenant domein `contoso.com` , zoals of een Tenant-id, zoals `72f988bf-86f1-41af-91ab-2d7cd011db46` ) |
@@ -138,7 +144,7 @@ Als u de AAD-instantie met de doel groep hebt ingesteld op `"MicrosoftPersonalAc
 
 Algemene instellingen voor HTTP-time-outs configureren, zoals:
 
-| Eigenschap | Gegevenstype | Vereist | Notities |
+| Eigenschap | Gegevenstype | Vereist | Opmerkingen |
 | ---------|-----------|------------|--------|
 | `connect_timeout` | int | Nee | Tijd in milliseconden |
 | `read_timeout` | int | Nee | Tijd in milliseconden |
@@ -147,7 +153,7 @@ Algemene instellingen voor HTTP-time-outs configureren, zoals:
 
 De volgende algemene instellingen zijn voor logboek registratie:
 
-| Eigenschap | Gegevenstype  | Vereist | Notities |
+| Eigenschap | Gegevenstype  | Vereist | Opmerkingen |
 | ----------|-------------|-----------|---------|
 | `pii_enabled`  | booleaans | Nee | Of persoons gegevens moeten worden geverzendd |
 | `log_level`   | tekenreeks | No | De logboek berichten die moeten worden uitgevoerd. De ondersteunde logboek niveaus zijn onder andere `ERROR` , `WARNING` , en `INFO` `VERBOSE` . |

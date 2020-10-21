@@ -3,12 +3,12 @@ title: Ondersteunde resource typen via Azure Resource Health | Microsoft Docs
 description: Ondersteunde resource typen via Azure resource Health
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: e299e45f08b9e39af02208a0e74734475528b3ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3bbc7b03a508c9b156de039b4f8706f5063fd23b
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447051"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316125"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Resource typen en status controles in azure resource Health
 Hieronder vindt u een volledige lijst met alle controles die worden uitgevoerd door middel van resource typen.
@@ -51,7 +51,7 @@ Hieronder vindt u een volledige lijst met alle controles die worden uitgevoerd d
 ## <a name="microsoftclassiccomputedomainnames"></a>Micro soft. classiccompute/domainname
 |Controles uitgevoerd|
 |---|
-|<ul><li>Is implementatie van productie sleuven in orde voor alle rolinstanties?</li><li>Is de rol in orde voor alle VM-exemplaren?</li><li>Wat is de status van elke virtuele machine binnen een rol van een Cloud service?</li><li>Is de VM-status gewijzigd vanwege een door het platform of door de klant geïnitieerde bewerking?</li><li>Is het starten van het gast besturingssysteem voltooid?</li><li>Is er voortdurend gepland onderhoud?</li><li>Is de host-hardware gedegradeerd en wordt de voor speld binnenkort uitgevoerd?</li><li>[Meer informatie](https://docs.microsoft.com/azure/cloud-services/resource-health-for-cloud-services) over uitgevoerde controles</li></ul>|
+|<ul><li>Is implementatie van productie sleuven in orde voor alle rolinstanties?</li><li>Is de rol in orde voor alle VM-exemplaren?</li><li>Wat is de status van elke virtuele machine binnen een rol van een Cloud service?</li><li>Is de VM-status gewijzigd vanwege een door het platform of door de klant geïnitieerde bewerking?</li><li>Is het starten van het gast besturingssysteem voltooid?</li><li>Is er voortdurend gepland onderhoud?</li><li>Is de host-hardware gedegradeerd en wordt de voor speld binnenkort uitgevoerd?</li><li>[Meer informatie](../cloud-services/resource-health-for-cloud-services.md) over uitgevoerde controles</li></ul>|
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Micro soft. cognitiveservices/accounts
 |Controles uitgevoerd|
@@ -257,4 +257,4 @@ Hieronder vindt u een volledige lijst met alle controles die worden uitgevoerd d
 ## <a name="next-steps"></a>Volgende stappen
 -  Zie [Inleiding tot Azure service Health dash board](service-health-overview.md) en [Inleiding tot Azure resource Health](resource-health-overview.md) om meer te weten te komen over hen. 
 -  [Veelgestelde vragen over Azure Resource Health](resource-health-faq.md)
-- Stel waarschuwingen in zodat u op de hoogte wordt gesteld van status problemen. Zie [Configure alerts for service Health Events](./alerts-activity-log-service-notifications-portal.md)(Engelstalig) voor meer informatie. 
+- Stel waarschuwingen in zodat u op de hoogte wordt gesteld van status problemen. Zie [Configure alerts for service Health Events](./alerts-activity-log-service-notifications-portal.md)(Engelstalig) voor meer informatie.

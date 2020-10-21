@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/25/2020
-ms.openlocfilehash: 49248575cb10f3df746b9ba484244e4702fb5d72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7fee95a435b477639fe2b98cf2c9cbf500df5941
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91369005"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310024"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Verbinding maken met virtuele Azure-netwerken van Azure Logic Apps met behulp van een ISE (Integration service Environment)
 
@@ -95,11 +95,11 @@ Om ervoor te zorgen dat uw ISE toegankelijk is en dat de Logic apps in die ISE k
    > [!NOTE]
    > U kunt deze methode gebruiken voor één ISE wanneer u voor uw scenario het aantal IP-adressen wilt beperken dat toegang nodig heeft. Bepaal of de extra kosten voor de firewall of het virtuele netwerk apparaat logisch kunnen zijn voor uw scenario. Meer informatie over [Azure firewall prijzen](https://azure.microsoft.com/pricing/details/azure-firewall/).
 
-* Als u een nieuw virtueel Azure-netwerk en subnetten zonder beperkingen hebt gemaakt, hoeft u geen [netwerk beveiligings groepen (nsg's)](../virtual-network/security-overview.md#network-security-groups) in te stellen in uw virtuele netwerk om verkeer tussen subnetten te beheren.
+* Als u een nieuw virtueel Azure-netwerk en subnetten zonder beperkingen hebt gemaakt, hoeft u geen [netwerk beveiligings groepen (nsg's)](../virtual-network/network-security-groups-overview.md#network-security-groups) in te stellen in uw virtuele netwerk om verkeer tussen subnetten te beheren.
 
-* Voor een bestaand virtueel netwerk kunt u *optioneel* [netwerk beveiligings groepen (nsg's)](../virtual-network/security-overview.md#network-security-groups) instellen om [netwerk verkeer te filteren op subnetten](../virtual-network/tutorial-filter-network-traffic.md). Als u deze route wilt gebruiken of als u al gebruikmaakt van Nsg's, moet u ervoor zorgen dat u [de poorten opent die in deze tabel zijn beschreven](#network-ports-for-ise) voor die nsg's.
+* Voor een bestaand virtueel netwerk kunt u *optioneel* [netwerk beveiligings groepen (nsg's)](../virtual-network/network-security-groups-overview.md#network-security-groups) instellen om [netwerk verkeer te filteren op subnetten](../virtual-network/tutorial-filter-network-traffic.md). Als u deze route wilt gebruiken of als u al gebruikmaakt van Nsg's, moet u ervoor zorgen dat u [de poorten opent die in deze tabel zijn beschreven](#network-ports-for-ise) voor die nsg's.
 
-  Wanneer u NSG- [beveiligings regels](../virtual-network/security-overview.md#security-rules)instelt, moet u *zowel* de **TCP** -als de **UDP** -protocollen gebruiken. u kunt in plaats daarvan **een wille keurige** optie selecteren, zodat u geen afzonderlijke regels voor elk protocol hoeft te maken. NSG-beveiligings regels beschrijven de poorten die u moet openen voor de IP-adressen die toegang moeten hebben tot deze poorten. Zorg ervoor dat alle firewalls, routers of andere items die tussen deze eind punten bestaan, deze poorten ook toegankelijk maken voor die IP-adressen.
+  Wanneer u NSG- [beveiligings regels](../virtual-network/network-security-groups-overview.md#security-rules)instelt, moet u *zowel* de **TCP** -als de **UDP** -protocollen gebruiken. u kunt in plaats daarvan **een wille keurige** optie selecteren, zodat u geen afzonderlijke regels voor elk protocol hoeft te maken. NSG-beveiligings regels beschrijven de poorten die u moet openen voor de IP-adressen die toegang moeten hebben tot deze poorten. Zorg ervoor dat alle firewalls, routers of andere items die tussen deze eind punten bestaan, deze poorten ook toegankelijk maken voor die IP-adressen.
 
 * Als u geforceerde tunneling via uw firewall instelt om Internet-gebonden verkeer om te leiden, raadpleegt u de [aanvullende vereisten voor geforceerde tunneling](#forced-tunneling).
 
@@ -114,7 +114,7 @@ In deze tabel worden de poorten beschreven die uw ISE nodig heeft om toegankelij
 
 #### <a name="inbound-security-rules"></a>Inkomende beveiligingsregels
 
-| Doel | Bron servicetag of IP-adressen | Bronpoorten | Servicetag of IP-adressen van doel service | Doelpoorten | Notities |
+| Doel | Bron servicetag of IP-adressen | Bronpoorten | Servicetag of IP-adressen van doel service | Doelpoorten | Opmerkingen |
 |---------|------------------------------------|--------------|-----------------------------------------|-------------------|-------|
 | Intersubnet-communicatie binnen het virtuele netwerk | Adres ruimte voor het virtuele netwerk met ISE-subnetten | * | Adres ruimte voor het virtuele netwerk met ISE-subnetten | * | Vereist voor verkeer voor stroom *tussen* de subnetten in het virtuele netwerk. <p><p>**Belang rijk**: Zorg ervoor dat u alle poorten in elk subnet opent voor verkeer tussen de *onderdelen* in elk subnet. |
 | Beide: <p>Communicatie met uw logische app <p><p>Geschiedenis van de logische app wordt uitgevoerd| Interne ISE: <br>**VirtualNetwork** <p><p>Externe ISE: **Internet** of Zie **opmerkingen** | * | **VirtualNetwork** | 443 | In plaats van het label **Internet** te gebruiken, kunt u het IP-adres van de bron voor deze items opgeven: <p><p>-De computer of service die aanvraag triggers of webhooks aanroept in uw logische app <p>-De computer of service van waaruit u de geschiedenis van de uitvoering van de logische app wilt openen <p><p>**Belang rijk**: door deze poort te sluiten of te blok keren, voor komt u dat er Logic apps worden aangeroepen die aanvraag triggers of webhooks hebben. U kunt er ook voor zorgen dat u geen toegang hebt tot invoer en uitvoer voor elke stap in de geschiedenis van uitvoeringen. U hebt echter geen toegang tot de geschiedenis van de logische app-uitvoeringen.|
@@ -129,7 +129,7 @@ In deze tabel worden de poorten beschreven die uw ISE nodig heeft om toegankelij
 
 #### <a name="outbound-security-rules"></a>Uitgaande beveiligingsregels
 
-| Doel | Bron servicetag of IP-adressen | Bronpoorten | Servicetag of IP-adressen van doel service | Doelpoorten | Notities |
+| Doel | Bron servicetag of IP-adressen | Bronpoorten | Servicetag of IP-adressen van doel service | Doelpoorten | Opmerkingen |
 |---------|------------------------------------|--------------|-----------------------------------------|-------------------|-------|
 | Intersubnet-communicatie binnen het virtuele netwerk | Adres ruimte voor het virtuele netwerk met ISE-subnetten | * | Adres ruimte voor het virtuele netwerk met ISE-subnetten | * | Vereist voor verkeer voor stroom *tussen* de subnetten in het virtuele netwerk. <p><p>**Belang rijk**: Zorg ervoor dat u alle poorten in elk subnet opent voor verkeer tussen de *onderdelen* in elk subnet. |
 | Communicatie vanuit uw logische app | **VirtualNetwork** | * | Varieert op basis van bestemming | 80, 443 | Bestemming is afhankelijk van de eind punten voor de externe service waarmee de logische app moet communiceren. |

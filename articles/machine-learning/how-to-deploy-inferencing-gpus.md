@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy
-ms.openlocfilehash: 0fda407a916ca43ed36fa567374752bbb7a49a80
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 9a18b35ce974aebb38f8f58b892fd93b94f5e3c8
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998955"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314788"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>Een diep leer model implementeren voor demijnen met GPU
 
@@ -26,7 +26,7 @@ In dit artikel leert u hoe u Azure Machine Learning kunt gebruiken om een model 
 Detrainer of model Score is de fase waarin het geïmplementeerde model wordt gebruikt voor het maken van voor spellingen. Het gebruik van Gpu's in plaats van Cpu's biedt prestatie voordelen voor een zeer kan worden opgestart berekening.
 
 > [!IMPORTANT]
-> Voor implementaties van webservices wordt GPU-declienting alleen ondersteund in de Azure Kubernetes-service. Voor demijnen met behulp van een __machine learning pijp lijn__worden gpu's alleen ondersteund op Azure machine learning compute. Zie [batch voorspellingen uitvoeren](how-to-use-parallel-run-step.md)voor meer informatie over het gebruik van ml-pijp lijnen. 
+> Voor implementaties van webservices wordt GPU-declienting alleen ondersteund in de Azure Kubernetes-service. Voor demijnen met behulp van een __machine learning pijp lijn__worden gpu's alleen ondersteund op Azure machine learning compute. Zie [zelf studie: een Azure machine learning-pijp lijn bouwen voor batch scores](tutorial-pipeline-batch-scoring-classification.md)voor meer informatie over het gebruik van ml-pijp lijnen. 
 
 > [!TIP]
 > Hoewel de code fragmenten in dit artikel een tensor flow-model gebruiken, kunt u de gegevens Toep assen op elk machine learning Framework dat Gpu's ondersteunt.

@@ -44,10 +44,6 @@
         - name: Delen vanuit Azure Data Explorer
           href: /azure/data-explorer/data-share
           maintainContext: true
-    - name: Controleren
-      href: how-to-monitor.md
-    - name: Problemen oplossen
-      href: data-share-troubleshoot.md
     - name: Gegevenssets toevoegen
       href: how-to-add-datasets.md
     - name: Gegevenssettoewijzingen configureren
@@ -58,10 +54,14 @@
       href: how-to-delete-invitation.md
     - name: Een share-abonnement intrekken
       href: how-to-revoke-share-subscription.md
+    - name: Controleren
+      href: how-to-monitor.md
     - name: Beveiliging
       href: security.md
     - name: Herstel na noodgeval
       href: disaster-recovery.md
+    - name: Problemen oplossen
+      href: data-share-troubleshoot.md
 - name: Naslaginformatie
   items:
     - name: .NET

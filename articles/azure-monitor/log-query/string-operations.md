@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/16/2018
-ms.openlocfilehash: a394fee7178b2e3e167c8bd905ab175b25d1d813
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/19/2020
+ms.openlocfilehash: 7838f9f1febcab073633dbb4af011e99acbe22d3
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75397475"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310295"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>Werken met teken reeksen in Azure Monitor-logboek query's
 
@@ -48,9 +48,9 @@ print @"C:\backslash\not\escaped\with @ prefix"
 
 Operator       |Beschrijving                         |Case-Sensitive|Voor beeld (opbrengst `true` )
 ---------------|------------------------------------|--------------|-----------------------
-`==`           |Is gelijk aan                              |Ja           |`"aBc" == "aBc"`
+`==`           |Gelijk aan                              |Ja           |`"aBc" == "aBc"`
 `!=`           |Niet gelijk aan                          |Ja           |`"abc" != "ABC"`
-`=~`           |Is gelijk aan                              |Nee            |`"abc" =~ "ABC"`
+`=~`           |Gelijk aan                              |Nee            |`"abc" =~ "ABC"`
 `!~`           |Niet gelijk aan                          |Nee            |`"aBc" !~ "xyz"`
 `has`          |Aan de rechter kant is een hele term aan de linkerkant |Nee|`"North America" has "america"`
 `!has`         |Rechts aan de rechter kant is geen volledige term aan de linkerkant       |Nee            |`"North America" !has "amer"` 
@@ -74,8 +74,8 @@ Operator       |Beschrijving                         |Case-Sensitive|Voor beeld 
 `!startswith_cs`  |Rechts aan de rechter kant is geen eerste subreeks van links aan de linkerkant|Ja        |`"Fabrikam" !startswith_cs "fab"`
 `endswith`     |Rechts aan de rechter kant is een afsluitende subreeks van links|Nee             |`"Fabrikam" endswith "Kam"`
 `!endswith`    |Rechts aan de rechter kant is geen afsluitende subreeks van links aan de linkerkant|Nee         |`"Fabrikam" !endswith "brik"`
-`endswith_cs`     |Rechts aan de rechter kant is een afsluitende subreeks van links|Ja             |`"Fabrikam" endswith "Kam"`
-`!endswith_cs`    |Rechts aan de rechter kant is geen afsluitende subreeks van links aan de linkerkant|Ja         |`"Fabrikam" !endswith "brik"`
+`endswith_cs`     |Rechts aan de rechter kant is een afsluitende subreeks van links|Ja             |`"Fabrikam" endswith_cs "kam"`
+`!endswith_cs`    |Rechts aan de rechter kant is geen afsluitende subreeks van links aan de linkerkant|Ja         |`"Fabrikam" !endswith_cs "brik"`
 `matches regex`|links van de rechter kant bevat een overeenkomst voor rechts        |Ja           |`"Fabrikam" matches regex "b.*k"`
 `in`           |Is gelijk aan een van de elementen       |Ja           |`"abc" in ("123", "345", "abc")`
 `!in`          |Is niet gelijk aan een van de elementen   |Ja           |`"bca" !in ("123", "345", "abc")`

@@ -17,12 +17,12 @@ ms.date: 03/24/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54636600c208f8f5df9fa2e25460c63dd9f46e85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5deb84cdc2dee61474c9f2bd1f93311d89f8918
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80239547"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92308885"
 ---
 # <a name="how-long-does-azure-ad-store-reporting-data"></a>Hoe lang worden de gegevens van Azure AD Store gerapporteerd?
 
@@ -34,7 +34,7 @@ In dit artikel vindt u informatie over het Bewaar beleid voor gegevens voor de v
 | Azure AD-editie | Begin verzameling |
 | :--              | :--   |
 | Azure AD Premium P1 <br /> Azure AD Premium P2 | Wanneer u zich registreert voor een abonnement |
-| Azure AD Free| De eerste keer dat u de [blade Azure Active Directory](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) opent of de [rapportage-api's](https://aka.ms/aadreports) gebruikt  |
+| Azure AD Free| De eerste keer dat u de [blade Azure Active Directory](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) opent of de [rapportage-api's](./overview-reports.md) gebruikt  |
 
 ---
 

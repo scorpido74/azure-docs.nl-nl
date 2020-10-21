@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 01/16/2020
-ms.openlocfilehash: f83f5da03d2db5354b020ce7d0c3c8d70f1830a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 810c38397981a100c2d5a68492f8a15b75cd79bd
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89650105"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276044"
 ---
 # <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>Een bestaande aanbieding bijwerken in de commerciële Marketplace
 
@@ -67,7 +67,7 @@ Nu u het abonnement met de oude prijs hebt verborgen, maakt u een kopie van dat 
 
 1. Ga in Partner Center terug naar **plan Overview**.
 2. Selecteer **nieuw plan maken**. Voer een **plan-id** en een **plan naam**in en selecteer **maken**.
-1. Als u de technische configuratie van het abonnement dat u hebt verborgen opnieuw wilt gebruiken, schakelt u het selectie vakje **technische configuratie opnieuw gebruiken** in. Lees het [plan overzicht](azure-vm-create-offer.md#plan-overview) voor meer informatie.
+1. Als u de technische configuratie van het abonnement dat u hebt verborgen opnieuw wilt gebruiken, schakelt u het selectie vakje **technische configuratie opnieuw gebruiken** in. Lees [plannen maken voor een VM-aanbieding](../azure-vm-create-plans.md) voor meer informatie.
     > [!IMPORTANT]
     > Als u **dit abonnement selecteert, wordt de technische configuratie opnieuw gebruikt vanuit een ander abonnement**. u kunt het bovenliggende abonnement later niet meer verkopen. Gebruik deze optie niet als u wilt stoppen met het verkopen van het bovenliggende abonnement.
 3. Vul alle vereiste secties voor het nieuwe abonnement in, met inbegrip van de nieuwe prijs.

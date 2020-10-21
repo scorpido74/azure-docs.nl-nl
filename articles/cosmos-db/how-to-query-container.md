@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 3/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 08ac95fe2a6b3e01d6bbcf96b120426f12f4e21c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e948031d3d1d03890bfcfccd65424a15e6e314cd
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85261253"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276120"
 ---
 # <a name="query-an-azure-cosmos-container"></a>Query’s uitvoeren op een Azure Cosmos-container
 
@@ -19,7 +19,7 @@ In dit artikel wordt uitgelegd hoe u query's kunt uitvoeren op containers (colle
 
 ## <a name="in-partition-query"></a>In-partitiequery
 
-Wanneer u gegevens opvraagt uit containers en de query een partitie sleutel filter heeft opgegeven, wordt de query automatisch geoptimaliseerd door Azure Cosmos DB. De query wordt doorgestuurd naar de [fysieke partities](partition-data.md#physical-partitions) die overeenkomen met de partitie sleutel waarden die zijn opgegeven in het filter.
+Wanneer u gegevens opvraagt uit containers en de query een partitie sleutel filter heeft opgegeven, wordt de query automatisch geoptimaliseerd door Azure Cosmos DB. De query wordt doorgestuurd naar de [fysieke partities](partitioning-overview.md#physical-partitions) die overeenkomen met de partitie sleutel waarden die zijn opgegeven in het filter.
 
 Denk bijvoorbeeld aan de onderstaande query met een gelijkheids filter op `DeviceId` . Als deze query wordt uitgevoerd op een container die is gepartitioneerd op `DeviceId` , wordt met deze query gefilterd op één fysieke partitie.
 
@@ -61,7 +61,7 @@ U kunt parallelle queryuitvoering beheren door de volgende parameters af te stem
 
 - **MaxBufferedItemCount**: hiermee wordt de latentie van de query ingewisseld voor het geheugengebruik aan de clientzijde. Als deze optie wordt weggelaten of ingesteld op -1, wordt het aantal items dat in de buffer opgeslagen tijdens parallelle query-uitvoering, beheerd door de SDK.
 
-Dankzij de mogelijkheden van de Azure Cosmos DB om Kruis partitie query's te parallelliseren, wordt query latentie doorgaans goed geschaald als het systeem [fysieke partities](partition-data.md#physical-partitions)toevoegt. De RU-kosten worden echter aanzienlijk verhoogd naarmate het totale aantal fysieke partities toeneemt.
+Dankzij de mogelijkheden van de Azure Cosmos DB om Kruis partitie query's te parallelliseren, wordt query latentie doorgaans goed geschaald als het systeem [fysieke partities](partitioning-overview.md#physical-partitions)toevoegt. De RU-kosten worden echter aanzienlijk verhoogd naarmate het totale aantal fysieke partities toeneemt.
 
 Wanneer u een query voor meerdere partities uitvoert, maakt u in feite een afzonderlijke query per afzonderlijke fysieke partitie. Hoewel query's met query's in meerdere partities gebruikmaken van de index, indien beschikbaar, zijn ze nog steeds niet bijna zo efficiënt als in-partitie query's.
 

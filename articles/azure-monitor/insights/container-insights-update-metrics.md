@@ -2,14 +2,14 @@
 title: Azure Monitor voor containers bijwerken voor metrische gegevens | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u Azure Monitor voor containers bijwerkt om de functie voor aangepaste metrische gegevens in te scha kelen die ondersteuning biedt voor het verkennen en waarschuwen van geaggregeerde metrische gegevens.
 ms.topic: conceptual
-ms.date: 09/24/2020
+ms.date: 10/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6c420c91e20cc1cf9ab5e4f58bdd352ead3ba4d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a94f250c83fbd2779620376087a83b8851e583e
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618142"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309437"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Azure Monitor voor containers bijwerken om metrische gegevens in te schakelen
 
@@ -26,6 +26,7 @@ De volgende metrische gegevens zijn ingeschakeld als onderdeel van deze functie:
 | Inzichten. container/knoop punten | cpuUsageMillicores, cpuUsagePercentage, memoryRssBytes, memoryRssPercentage, memoryWorkingSetBytes, memoryWorkingSetPercentage, nodesCount, diskUsedPercentage, | De metrische gegevens van *knoop punten* zijn *host* als een dimensie. Ze omvatten ook de<br> de naam van het knoop punt als waarde voor de *host* -dimensie. |
 | Inzichten. container/peul | podCount, completedJobsCount, restartingContainerCount, oomKilledContainerCount, podReadyPercentage | Als *pod* -metrische gegevens bevatten ze de volgende dimensies: afmetingen-controller, Kubernetes naam ruimte, naam, fase. |
 | Inzichten. container/containers | cpuExceededPercentage, memoryRssExceededPercentage, memoryWorkingSetExceededPercentage | |
+| Inzichten. container/persistentvolumes | pvUsageExceededPercentage | |
 
 Ter ondersteuning van deze nieuwe mogelijkheden is een nieuwe container met agents opgenomen in de release, versie **micro soft/OMS: ciprod05262020** for AKS en Version **micro soft/OMS: Ciprod09252020** for Azure Arc enabled Kubernetes clusters. Nieuwe implementaties van AKS bevatten automatisch deze configuratie wijziging en mogelijkheden. Het bijwerken van uw cluster ter ondersteuning van deze functie kan worden uitgevoerd vanuit de Azure Portal, Azure PowerShell of met Azure CLI. Met Azure PowerShell en CLI. U kunt dit per cluster of voor alle clusters in uw abonnement inschakelen.
 

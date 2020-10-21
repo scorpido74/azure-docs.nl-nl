@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: 264f0e59e2c43ca92fc5209b8613282a0b0fca37
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: ee04ad28d6b52e63becd2991d77b453cd411f683
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203769"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309802"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>De levenscyclus van Azure Blob-opslag beheren
 
@@ -31,6 +31,8 @@ Met het levenscyclus beheer beleid kunt u:
 Houd rekening met een scenario waarbij gegevens veelvuldig toegankelijk zijn tijdens de vroege fase van de levens cyclus, maar af en toe slechts af en toe na twee weken. Na de eerste maand wordt de gegevensset zelden geopend. In dit scenario is hot Storage het beste tijdens de eerste fasen. Cool Storage is het meest geschikt voor incidentele toegang. Archief opslag is de beste laag optie nadat de gegevens gedurende een maand zijn verouderd. Door opslag lagen aan te passen ten opzichte van de leeftijd van gegevens, kunt u de minst dure opslag opties voor uw behoeften ontwerpen. Voor deze overgang zijn levenscyclus beheer beleids regels beschikbaar om verouderde gegevens naar koele lagen te verplaatsen.
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
+>[!NOTE]
+>Als u gegevens nodig hebt om Lees baarheid te blijven, bijvoorbeeld wanneer deze worden gebruikt door StorSimple, moet u geen beleid instellen om blobs naar de laag van het archief te verplaatsen.
 
 ## <a name="availability-and-pricing"></a>Beschik baarheid en prijzen
 
@@ -236,18 +238,18 @@ Een levenscyclus beheer beleid is een verzameling regels in een JSON-document:
 
 Een beleid is een verzameling regels:
 
-| Parameternaam | Parameter type | Notities |
+| Parameternaam | Parameter type | Opmerkingen |
 |----------------|----------------|-------|
 | `rules`        | Een matrix van regel objecten | Er is ten minste één regel vereist in een beleid. U kunt Maxi maal 100 regels definiëren in een beleid.|
 
 Elke regel in het beleid heeft verschillende para meters:
 
-| Parameternaam | Parameter type | Notities | Vereist |
+| Parameternaam | Parameter type | Opmerkingen | Vereist |
 |----------------|----------------|-------|----------|
-| `name`         | Tekenreeks |De naam van een regel kan Maxi maal 256 alfanumerieke tekens bevatten. De regel naam is hoofdletter gevoelig. Het moet uniek zijn binnen een beleid. | Waar |
-| `enabled`      | Booleaans | Een optionele Booleaanse waarde waarmee een regel tijdelijk kan worden uitgeschakeld. De standaard waarde is True als deze niet is ingesteld. | Niet waar | 
-| `type`         | Een Enum-waarde | Het huidige geldige type is `Lifecycle` . | Waar |
-| `definition`   | Een object dat de levenscyclus regel definieert | Elke definitie bestaat uit een set filters en een Actieset. | Waar |
+| `name`         | Tekenreeks |De naam van een regel kan Maxi maal 256 alfanumerieke tekens bevatten. De regel naam is hoofdletter gevoelig. Het moet uniek zijn binnen een beleid. | True |
+| `enabled`      | Booleaans | Een optionele Booleaanse waarde waarmee een regel tijdelijk kan worden uitgeschakeld. De standaard waarde is True als deze niet is ingesteld. | False | 
+| `type`         | Een Enum-waarde | Het huidige geldige type is `Lifecycle` . | True |
+| `definition`   | Een object dat de levenscyclus regel definieert | Elke definitie bestaat uit een set filters en een Actieset. | True |
 
 ## <a name="rules"></a>Regels
 
@@ -312,7 +314,7 @@ Filters beperken regel acties voor een subset van blobs binnen het opslag accoun
 
 Filters omvatten:
 
-| Bestandsnaam | Filtertype | Notities | Is vereist |
+| Bestandsnaam | Filtertype | Opmerkingen | Is vereist |
 |-------------|-------------|-------|-------------|
 | blobTypes   | Een matrix met vooraf gedefinieerde Enum-waarden. | De huidige versie ondersteunt `blockBlob` en `appendBlob` . Alleen verwijderen wordt ondersteund voor `appendBlob` , set-laag wordt niet ondersteund. | Ja |
 | prefixMatch | Een matrix met teken reeksen voor voor voegsels die moeten worden vergeleken. Elke regel kan Maxi maal 10 voor voegsels definiëren. Een voorvoegsel teken reeks moet beginnen met een container naam. Als u bijvoorbeeld wilt zoeken naar alle blobs onder `https://myaccount.blob.core.windows.net/container1/foo/...` een regel, is de prefixMatch `container1/foo` . | Als u prefixMatch niet definieert, is de regel van toepassing op alle blobs in het opslag account. | Nee |

@@ -11,12 +11,12 @@ ms.author: nigup
 ms.date: 10/13/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4, contperfq2
-ms.openlocfilehash: 93cf29651110356023752f2377c9a0fc358982a7
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 4b072257d49011819fe19d6e2901560df43b26dc
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203042"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275560"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>& quota voor resources met Azure Machine Learning beheren
 
@@ -177,7 +177,7 @@ Als u een limiet wilt aanvragen voor deze scenario's, gebruikt u de volgende sta
     | ----- | ----- |
     | Type probleem | Technisch |
     | Service | Mijn services. Selecteer __machine learning__ in de vervolg keuzelijst. |
-    | Probleem type | Werk ruimte instellen, SDK en CLI |
+    | Probleem type | Werkruimte configuratie en-beveiliging |
     | Subtype van probleem | Aanvraag voor het privé-eind punt en de Privé-DNS zone |
 
 2. Gebruik in de sectie __Details__ het veld __Beschrijving__ om de Azure-regio op te geven die u wilt gebruiken en het scenario dat u wilt gebruiken. Als u quotum verhogingen moet aanvragen voor meerdere abonnementen, vermeldt u ook de abonnement-Id's in dit veld.

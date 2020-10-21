@@ -3,18 +3,18 @@ title: Upgrade van toepassing Service Fabric
 description: Dit artikel bevat een inleiding tot het upgraden van een Service Fabric-toepassing, inclusief het kiezen van upgrade modi en het uitvoeren van status controles.
 ms.topic: conceptual
 ms.date: 8/5/2020
-ms.openlocfilehash: cb0c1c0049957244b94b59707b70e47dc53f6c9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8eecd923b009ecbe9f4e607ad57a99b3f20955b9
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88067508"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309854"
 ---
 # <a name="service-fabric-application-upgrade"></a>Upgrade van toepassing Service Fabric
 Een Azure Service Fabric-toepassing is een verzameling van services. Tijdens een upgrade vergelijkt Service Fabric het nieuwe [toepassings manifest](service-fabric-application-and-service-manifests.md) met de vorige versie en bepaalt u welke services in de toepassing moeten worden bijgewerkt. Service Fabric vergelijkt de versie nummers in de service manifesten met de versie nummers in de vorige versie. Als een service niet is gewijzigd, wordt die service niet geüpgraded.
 
 > [!NOTE]
-> [ApplicationParameter](https://docs.microsoft.com/dotnet/api/system.fabric.description.applicationdescription.applicationparameters?view=azure-dotnet#System_Fabric_Description_ApplicationDescription_ApplicationParameters)s blijven niet behouden in een toepassings upgrade. Als u de huidige toepassings parameters wilt behouden, moet de gebruiker eerst de para meters ophalen en deze door geven aan de aanroep van de upgrade-API zoals hieronder wordt weer gegeven:
+> [ApplicationParameter](/dotnet/api/system.fabric.description.applicationdescription.applicationparameters?view=azure-dotnet#System_Fabric_Description_ApplicationDescription_ApplicationParameters)s blijven niet behouden in een toepassings upgrade. Als u de huidige toepassings parameters wilt behouden, moet de gebruiker eerst de para meters ophalen en deze door geven aan de aanroep van de upgrade-API zoals hieronder wordt weer gegeven:
 ```powershell
 $myApplication = Get-ServiceFabricApplication -ApplicationName fabric:/myApplication
 $appParamCollection = $myApplication.ApplicationParameters

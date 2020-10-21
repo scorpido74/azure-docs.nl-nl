@@ -4,21 +4,21 @@ description: Meer informatie over teken reeks-SQL-functies in Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 10/13/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 192f015b37eadb57b8e4a5c83ce3adf94c8bf038
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ec1d83b97fadf3954a936847e8e8faeb47d1458
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85549513"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276087"
 ---
 # <a name="string-functions-azure-cosmos-db"></a>Teken reeks functies (Azure Cosmos DB)
 
 Met de teken reeks functies kunt u bewerkingen uitvoeren op teken reeksen in Azure Cosmos DB.
 
-## <a name="functions"></a>Functies
+## <a name="functions"></a>Functions
 
 De volgende scalaire functies voeren een bewerking uit op een invoer waarde voor teken reeksen en retour neren een teken reeks, een numerieke of Booleaanse waarde:
   
@@ -27,9 +27,10 @@ De volgende scalaire functies voeren een bewerking uit op een invoer waarde voor
 * [ENDSWITH](sql-query-endswith.md)
 * [INDEX_OF](sql-query-index-of.md)
 * [LEFT](sql-query-left.md)
-* [LENGTH](sql-query-length.md)
+* [LANGE](sql-query-length.md)
 * [LOWER](sql-query-lower.md)
 * [LTRIM](sql-query-ltrim.md)
+* [REGEXMATCH](sql-query-regexmatch.md)
 * [REPLACE](sql-query-replace.md)
 * [REPLICEREN](sql-query-replicate.md)
 * [OMGEKEERDE](sql-query-reverse.md)
