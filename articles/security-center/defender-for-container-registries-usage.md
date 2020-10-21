@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 79a0db3b9f81368fbdaace5be3fd94ad29649291
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57e8b6f47c4166c4f8b9f5de0f3e03a7d757e100
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91532598"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342073"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>Azure Defender gebruiken voor container registers om uw installatie kopieën te scannen op beveiligings problemen
 
@@ -29,7 +29,7 @@ Wanneer de scanner beveiligings Security Center problemen meldt, Security Center
 |Releasestatus:|Algemeen verkrijgbaar (GA)|
 |Prijzen:|**Azure Defender voor container registers** wordt gefactureerd, zoals wordt weer gegeven op [de pagina met prijzen](security-center-pricing.md)|
 |Ondersteunde registers en installatie kopieën:|![Ja ](./media/icons/yes-icon.png) door Linux gehoste ACR-registers die toegankelijk zijn via het open bare Internet en shell toegang bieden.<br>![Geen door ](./media/icons/no-icon.png) Windows gehoste ACR-registers.<br>![Geen ](./media/icons/no-icon.png) persoonlijke registers-Security Center vereist dat uw registers toegankelijk zijn via het open bare Internet. Security Center kan momenteel geen verbinding maken met, of scannen, registers met toegang beperkt met een firewall, een service-eind punt of persoonlijke eind punten zoals een persoonlijke Azure-koppeling.<br>![Geen ](./media/icons/no-icon.png) minimale afbeeldings afbeeldingen zoals [docker](https://hub.docker.com/_/scratch/) -werk afbeeldingen, of "Distroless"-installatie kopieën die alleen een toepassing en de runtime-afhankelijkheden bevatten zonder pakket beheer, shell of besturings systeem.|
-|Vereiste rollen en machtigingen:|Rol van **beveiligings lezer** en [Azure container Registry lezer](https://docs.microsoft.com/azure/container-registry/container-registry-roles)|
+|Vereiste rollen en machtigingen:|Rol van **beveiligings lezer** en [Azure container Registry lezer](../container-registry/container-registry-roles.md)|
 |Clouds:|![Ja](./media/icons/yes-icon.png) Commerciële clouds<br>![Nee](./media/icons/no-icon.png) Nationaal/onafhankelijk (overheid van de VS, China, andere overheden)|
 |||
 

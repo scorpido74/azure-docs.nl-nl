@@ -7,12 +7,12 @@ ms.date: 10/23/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 1ed5a64a76d27f87b590573894e34f2560a5c2aa
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5f92750217dd0bcf5d7a5074a6187d994f19722a
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90972298"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126563"
 ---
 # <a name="building-government-solutions-with-azure-iot-central"></a>Oplossingen voor de overheid bouwen met Azure IoT Central
 
@@ -78,4 +78,4 @@ Aan de slag met de [Zelfstudie over de app 'Verbonden afvalbeheer'](./tutorial-c
 * Meer informatie over de [Concepten van 'Bewaking van waterkwaliteit'](./concepts-waterqualitymonitoring-architecture.md)
 * Meer informatie over de [Concepten van 'Bewaking van waterverbruik'](./concepts-waterconsumptionmonitoring-architecture.md)
 * Meer informatie over de [Concepten van 'Verbonden afvalbeheer'](./concepts-connectedwastemanagement-architecture.md)  
-* Zie [Overzicht van IoT Central](https://docs.microsoft.com/azure/iot-central/core/overview-iot-central) voor meer informatie over IoT Central 
+* Zie [Overzicht van IoT Central](../core/overview-iot-central.md) voor meer informatie over IoT Central

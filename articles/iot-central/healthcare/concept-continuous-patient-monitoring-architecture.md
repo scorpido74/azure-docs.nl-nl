@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: ffecd09d1084188195da83568ab3fe32ef2cdaac
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3ef4790f9f7a3b3488dade9312203de41be1ff75
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90972230"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122148"
 ---
 # <a name="continuous-patient-monitoring-architecture"></a>Architectuur van continue patiëntbewaking
 
@@ -33,11 +33,11 @@ Veel medische wearables die worden gebruikt in IoT-oplossingen voor de gezondhei
 
 ### <a name="mobile-phone-gateway"></a>Gateway voor mobiele telefoon
 
-De primaire functie van de mobiele app is het verzamelen van BLE-gegevens van medische apparaten en deze aan IoT Central doorgeven. De app begeleidt patiënten ook bij de installatie van apparaten en stelt hen in staat hun persoonlijke gezondheidsgegevens in te zien. Andere oplossingen kunnen een tabletgateway of een statische gateway in een ziekenhuiskamer gebruiken. Er is een opensourcevoorbeeld van een mobiele app beschikbaar voor Android en iOS. U kunt dit voorbeeld gebruiken als uitgangspunt om uw app te ontwikkelen. Meer informatie vindt u in de [mobiele app IoT Central Continuous Patient Monitoring](https://docs.microsoft.com/samples/iot-for-all/iotc-cpm-sample/iotc-cpm-sample/).
+De primaire functie van de mobiele app is het verzamelen van BLE-gegevens van medische apparaten en deze aan IoT Central doorgeven. De app begeleidt patiënten ook bij de installatie van apparaten en stelt hen in staat hun persoonlijke gezondheidsgegevens in te zien. Andere oplossingen kunnen een tabletgateway of een statische gateway in een ziekenhuiskamer gebruiken. Er is een opensourcevoorbeeld van een mobiele app beschikbaar voor Android en iOS. U kunt dit voorbeeld gebruiken als uitgangspunt om uw app te ontwikkelen. Meer informatie vindt u in de [mobiele app IoT Central Continuous Patient Monitoring](/samples/iot-for-all/iotc-cpm-sample/iotc-cpm-sample/).
 
 ### <a name="export-to-azure-api-for-fhirreg"></a>Exporteren naar Azure API for FHIR&reg;
 
-Azure IoT Central voldoet aan HIPAA en is gecertificeerd door HITRUST&reg;. U kunt ook gezondheidsgegevens van patiënten naar andere services verzenden met behulp van de [Azure API for FHIR](../../healthcare-apis/overview.md). Azure API for FHIR is een op standaarden gebaseerde API voor klinische gezondheidsgegevens. Met de [Azure IoT Connector for FHIR](https://docs.microsoft.com/azure/healthcare-apis/iot-fhir-portal-quickstart) kunt u de Azure API for FHIR gebruiken als een doorlopend gegevensexportdoel van IoT Central.
+Azure IoT Central voldoet aan HIPAA en is gecertificeerd door HITRUST&reg;. U kunt ook gezondheidsgegevens van patiënten naar andere services verzenden met behulp van de [Azure API for FHIR](../../healthcare-apis/overview.md). Azure API for FHIR is een op standaarden gebaseerde API voor klinische gezondheidsgegevens. Met de [Azure IoT Connector for FHIR](../../healthcare-apis/iot-fhir-portal-quickstart.md) kunt u de Azure API for FHIR gebruiken als een doorlopend gegevensexportdoel van IoT Central.
 
 ### <a name="machine-learning"></a>Machine learning
 

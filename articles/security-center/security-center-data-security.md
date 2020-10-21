@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2020
 ms.author: memildin
-ms.openlocfilehash: d829ffb9d3a264052e3f688018acd7afa854578e
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 49533947ff01aea07eaacd9d761b6414fb672a1c
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018267"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92339472"
 ---
 # <a name="azure-security-center-data-security"></a>Gegevensbeveiliging in Azure Security Center
 
@@ -51,7 +51,7 @@ Microsoft gebruikt informatie over patronen en bedreigingen die worden gezien tu
 ## <a name="manage-data-collection-from-machines"></a>Gegevensverzameling van computers beheren
 Wanneer u Security Center inschakelt in Azure, wordt gegevensverzameling ingeschakeld voor elk van uw Azure-abonnementen. U kunt ook gegevensverzameling inschakelen voor uw abonnementen in Security Center. Wanneer gegevensverzameling is ingeschakeld, levert Security Center de Log Analytics-agent op alle bestaande en ondersteunde virtuele machines in Azure en op nieuwe virtuele machines die worden gemaakt.
 
-De Log Analytics-agent scant op verschillende aan beveiliging gerelateerde configuraties en legt gebeurtenissen vast in [Event Tracing for Windows](https://docs.microsoft.com/windows/win32/etw/event-tracing-portal)-traceringen (ETW). Bovendien worden door het besturingssysteem gebeurtenislogboekgebeurtenissen gegenereerd tijdens het uitvoeren van de machine. Voorbeelden van dergelijke gegevens zijn: besturingssysteemtype en -versie, besturingssysteemlogboeken (Windows-gebeurtenislogboeken), actieve processen, computernaam, IP-adressen, aangemelde gebruiker en tenant-ID. De Log Analytics-agent leest vermeldingen in gebeurtenislogboeken en ETW-traceringen en kopieert deze voor analyse naar uw werkruimte(n). De Log Analytics-agent schakelt ook procesgebeurtenissen en controle van de opdrachtregel in.
+De Log Analytics-agent scant op verschillende aan beveiliging gerelateerde configuraties en legt gebeurtenissen vast in [Event Tracing for Windows](/windows/win32/etw/event-tracing-portal)-traceringen (ETW). Bovendien worden door het besturingssysteem gebeurtenislogboekgebeurtenissen gegenereerd tijdens het uitvoeren van de machine. Voorbeelden van dergelijke gegevens zijn: besturingssysteemtype en -versie, besturingssysteemlogboeken (Windows-gebeurtenislogboeken), actieve processen, computernaam, IP-adressen, aangemelde gebruiker en tenant-ID. De Log Analytics-agent leest vermeldingen in gebeurtenislogboeken en ETW-traceringen en kopieert deze voor analyse naar uw werkruimte(n). De Log Analytics-agent schakelt ook procesgebeurtenissen en controle van de opdrachtregel in.
 
 Als u geen gebruikmaakt van Azure Defender, kunt u het verzamelen van gegevens van virtuele machines ook uitschakelen in het beveiligingsbeleid. Het verzamelen van gegevens is vereist voor abonnementen die door Azure Defender worden beveiligd. De verzameling van momentopnamen en artefacten voor de VM-schijf is nog steeds ingeschakeld, zelfs als het verzamelen van gegevens is uitgeschakeld.
 
@@ -85,7 +85,7 @@ Klanten hebben toegang tot aan Security Center gerelateerde gegevens uit de volg
 | [Azure-activiteitenlogboek](../azure-monitor/platform/activity-log.md)                       | Alle beveiligingswaarschuwingen, goedgekeurde [Just-In-Time](security-center-just-in-time.md)-toegangsaanvragen van Security Center en alle waarschuwingen die zijn gegenereerd door [besturingselementen voor adaptieve toepassingen](security-center-adaptive-application.md).|
 | [Azure Monitor-logboeken](../azure-monitor/platform/data-platform.md)                      | Alle beveiligingswaarschuwingen.                                                                                                                                                                                                |
 | [Azure Resource Graph](../governance/resource-graph/overview.md)                      | Beveiligingswaarschuwingen en -aanbevelingen, resultaten van evaluatie van beveiligingsproblemen, informatie over de beveiligingsscores, status van nalevingscontroles, en meer.                                                                       |
-| [REST-API voor Azure Security Center](https://docs.microsoft.com/rest/api/securitycenter/) | Beveiligingswaarschuwingen en -aanbevelingen, en meer.                                                                                                                                                                |
+| [REST-API voor Azure Security Center](/rest/api/securitycenter/) | Beveiligingswaarschuwingen en -aanbevelingen, en meer.                                                                                                                                                                |
 |                                                                                       |                                                                                                                                                                                                                     |
 
 ## <a name="next-steps"></a>Volgende stappen

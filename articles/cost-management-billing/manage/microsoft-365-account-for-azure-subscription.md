@@ -9,16 +9,16 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: eb266680cc514b1e2d70e510ed65e9a7790c0260
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 255fbe4036c83618dd0131b262d13709ab7f9c2f
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91370331"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131884"
 ---
 # <a name="sign-up-for-an-azure-subscription-with-your-microsoft-365-account"></a>Registreren voor een Azure-abonnement met uw Microsoft 365-account
 
-Als u een Microsoft 365-abonnement hebt, kunt u uw Microsoft 365-account gebruiken om een Azure-abonnement aan te maken. Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com/) met uw Microsoft 365-gebruikersnaam en -wachtwoord. Als u virtuele machines wilt instellen of andere Azure-services wilt gebruiken, moet u zich aanmelden voor een Azure-abonnement. U kunt uw Azure-abonnement delen met anderen en [Op rollen gebaseerd toegangsbeheer van Azure (Azure RBAC) gebruiken om de toegang tot uw Azure-abonnement en -resources te beheren](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
+Als u een Microsoft 365-abonnement hebt, kunt u uw Microsoft 365-account gebruiken om een Azure-abonnement aan te maken. Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com/) met uw Microsoft 365-gebruikersnaam en -wachtwoord. Als u virtuele machines wilt instellen of andere Azure-services wilt gebruiken, moet u zich aanmelden voor een Azure-abonnement. U kunt uw Azure-abonnement delen met anderen en [Op rollen gebaseerd toegangsbeheer van Azure (Azure RBAC) gebruiken om de toegang tot uw Azure-abonnement en -resources te beheren](../../role-based-access-control/role-assignments-portal.md).
 
 Als u al een Microsoft 365-account en een Azure-abonnement hebt, raadpleegt u [Een Microsoft 365-tenant koppelen aan een Azure-abonnement](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
@@ -57,4 +57,4 @@ Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Deel uw Azure-abonnement met anderen en [gebruik Op rollen gebaseerd toegangsbeheer van Azure (Azure RBAC) om de toegang tot uw Azure-abonnement en -resources te beheren](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
+- Deel uw Azure-abonnement met anderen en [gebruik Op rollen gebaseerd toegangsbeheer van Azure (Azure RBAC) om de toegang tot uw Azure-abonnement en -resources te beheren](../../role-based-access-control/role-assignments-portal.md).

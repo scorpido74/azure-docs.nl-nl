@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
-ms.openlocfilehash: 868470292fbacd71e1eb2d39de7e3a9c5cf6900e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28d0d7b14c18a1d98be1872b1555930b2e1650c3
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90883917"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342447"
 ---
 # <a name="protect-your-network-resources"></a>Uw netwerk bronnen beveiligen
 Azure Security Center de beveiligings status van uw Azure-resources voortdurend geanalyseerd op de aanbevolen procedures voor netwerk beveiliging. Wanneer Security Center mogelijke beveiligings problemen identificeert, worden er aanbevelingen gemaakt die u door het proces van het configureren van de benodigde besturings elementen leiden om uw resources te beschermen en te beveiligen.
@@ -120,4 +120,4 @@ Inzoomen op een resource:
 
 Zie het volgende voor meer informatie over de aanbevelingen die van toepassing zijn op andere Azure-resource typen:
 
-- [Uw machines en toepassingen beveiligen in Azure Security Center](security-center-virtual-machine-protection.md)
+- [Uw machines en toepassingen beveiligen in Azure Security Center](./asset-inventory.md)

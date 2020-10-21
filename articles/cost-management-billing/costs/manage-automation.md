@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: matrive
-ms.openlocfilehash: 2bf28384ae672440a18331cad8ac95f6ea051b85
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 939e621da414fc2d4d55d85e8b66a409b1338941
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372184"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131969"
 ---
 # <a name="manage-costs-with-automation"></a>Kosten beheren met automatisering
 
@@ -21,7 +21,7 @@ U kunt Cost Management-automatisering gebruiken om een aangepaste set oplossinge
 
 ## <a name="automate-cost-data-retrieval-for-offline-analysis"></a>Ophalen van kostengegevens automatiseren voor offline analyse
 
-Mogelijk moet u uw Azure-kostengegevens downloaden om deze samen te voegen met andere gegevenssets. Of u moet kostengegevens integreren in uw eigen systemen. Er zijn verschillende opties beschikbaar, afhankelijk van de hoeveelheid betrokken gegevens. U moet beschikken over Cost Management-machtigingen op het juiste bereik om API's en hulpprogramma's te kunnen gebruiken. Zie [Toegang tot gegevens toewijzen](https://docs.microsoft.com/azure/cost-management-billing/costs/assign-access-acm-data) voor meer informatie.
+Mogelijk moet u uw Azure-kostengegevens downloaden om deze samen te voegen met andere gegevenssets. Of u moet kostengegevens integreren in uw eigen systemen. Er zijn verschillende opties beschikbaar, afhankelijk van de hoeveelheid betrokken gegevens. U moet beschikken over Cost Management-machtigingen op het juiste bereik om API's en hulpprogramma's te kunnen gebruiken. Zie [Toegang tot gegevens toewijzen](./assign-access-acm-data.md) voor meer informatie.
 
 ## <a name="suggestions-for-handling-large-datasets"></a>Suggesties voor het verwerken van grote gegevenssets
 
@@ -29,33 +29,33 @@ Als uw organisatie over veel Azure-resources of -abonnementen beschikt, hebt u e
 
 **Power BI**
 
-Power BI wordt gebruikt om grote hoeveelheden gegevens op te nemen en af te handelen. Als u een Enterprise Agreement-klant bent, kunt u de Power BI-sjabloon-app gebruiken om de kosten voor uw factureringsaccount te analyseren. Het rapport bevat belangrijke weergaven die door klanten worden gebruikt. Zie [Azure-kosten analyseren met de app Power BI-sjabloon-app](https://docs.microsoft.com/azure/cost-management-billing/costs/analyze-cost-data-azure-cost-management-power-bi-template-app) voor meer informatie.
+Power BI wordt gebruikt om grote hoeveelheden gegevens op te nemen en af te handelen. Als u een Enterprise Agreement-klant bent, kunt u de Power BI-sjabloon-app gebruiken om de kosten voor uw factureringsaccount te analyseren. Het rapport bevat belangrijke weergaven die door klanten worden gebruikt. Zie [Azure-kosten analyseren met de app Power BI-sjabloon-app](./analyze-cost-data-azure-cost-management-power-bi-template-app.md) voor meer informatie.
 
 **Power BI-gegevensconnector**
 
-Als u uw gegevens dagelijks wilt analyseren, kunt u het beste de [Power BI-gegevensconnector](https://docs.microsoft.com/power-bi/connect-data/desktop-connect-azure-cost-management) gebruiken om gegevens op te halen voor gedetailleerde analyse. Alle rapporten die u maakt, worden bijgewerkt door de connector naarmate er meer kosten worden gegenereerd.
+Als u uw gegevens dagelijks wilt analyseren, kunt u het beste de [Power BI-gegevensconnector](/power-bi/connect-data/desktop-connect-azure-cost-management) gebruiken om gegevens op te halen voor gedetailleerde analyse. Alle rapporten die u maakt, worden bijgewerkt door de connector naarmate er meer kosten worden gegenereerd.
 
 **Cost Management-exports**
 
-Mogelijk hoeft u de gegevens niet dagelijks te analyseren. Als dit wel het geval is, kunt u de functie [Exports](https://docs.microsoft.com/azure/cost-management-billing/costs/tutorial-export-acm-data) van Cost Management gebruiken om gegevensexports naar een Azure Storage-account te plannen. Vervolgens kunt u de gegevens naar Power BI laden of in Excel analyseren als het bestand klein genoeg is. Exports zijn beschikbaar in Azure Portal of u kunt exports configureren met de [Exports-API](https://docs.microsoft.com/rest/api/cost-management/exports).
+Mogelijk hoeft u de gegevens niet dagelijks te analyseren. Als dit wel het geval is, kunt u de functie [Exports](./tutorial-export-acm-data.md) van Cost Management gebruiken om gegevensexports naar een Azure Storage-account te plannen. Vervolgens kunt u de gegevens naar Power BI laden of in Excel analyseren als het bestand klein genoeg is. Exports zijn beschikbaar in Azure Portal of u kunt exports configureren met de [Exports-API](/rest/api/cost-management/exports).
 
 **API voor gedetailleerde gebruiksgegevens**
 
-U kunt de [API voor gedetailleerde gebruiksgegevens](https://docs.microsoft.com/rest/api/consumption/usageDetails) gebruiken als u een kleine kostengegevensset hebt. Als u een grote hoeveelheid kostengegevens hebt, moet u de kleinste hoeveelheid gebruiksgegevens voor een periode aanvragen. Dit kunt u doen door een klein tijdsbereik op te geven of een filter in uw aanvraag te gebruiken. In een scenario waarin u bijvoorbeeld drie jaar aan kostengegevens nodig hebt, werkt de API beter wanneer u meerdere aanroepen voor verschillende tijdsbereiken maakt in plaats van één aanroep. Van daaruit kunt u de gegevens in Excel laden voor verdere analyse.
+U kunt de [API voor gedetailleerde gebruiksgegevens](/rest/api/consumption/usageDetails) gebruiken als u een kleine kostengegevensset hebt. Als u een grote hoeveelheid kostengegevens hebt, moet u de kleinste hoeveelheid gebruiksgegevens voor een periode aanvragen. Dit kunt u doen door een klein tijdsbereik op te geven of een filter in uw aanvraag te gebruiken. In een scenario waarin u bijvoorbeeld drie jaar aan kostengegevens nodig hebt, werkt de API beter wanneer u meerdere aanroepen voor verschillende tijdsbereiken maakt in plaats van één aanroep. Van daaruit kunt u de gegevens in Excel laden voor verdere analyse.
 
 ## <a name="automate-retrieval-with-usage-details-api"></a>Automatisch ophalen met API voor gedetailleerde gebruiksgegevens
 
-Met de [API voor gedetailleerde gebruiksgegevens](https://docs.microsoft.com/rest/api/consumption/usageDetails) kunt u eenvoudig ruwe, niet-samengevoegde kostengegevens ophalen die overeenkomen met uw Azure-factuur. De API is handig wanneer uw organisatie een programmatische oplossing voor het ophalen van gegevens nodig heeft. U kunt de API gebruiken als u kleinere gegevenssets wilt analyseren. Voor grotere gegevenssets moet u echter andere oplossingen gebruiken die eerder zijn geïdentificeerd. De gegevens in Gebruiksgegevens worden per meter per dag verstrekt. Dit wordt gebruikt bij het berekenen van uw maandelijkse factuur. De GA-versie (algemene beschikbaarheid) van de API's is `2019-10-01`. Gebruik `2019-04-01-preview` voor toegang tot de preview-versie voor reservering en Azure Marketplace-aankopen met de API's.
+Met de [API voor gedetailleerde gebruiksgegevens](/rest/api/consumption/usageDetails) kunt u eenvoudig ruwe, niet-samengevoegde kostengegevens ophalen die overeenkomen met uw Azure-factuur. De API is handig wanneer uw organisatie een programmatische oplossing voor het ophalen van gegevens nodig heeft. U kunt de API gebruiken als u kleinere gegevenssets wilt analyseren. Voor grotere gegevenssets moet u echter andere oplossingen gebruiken die eerder zijn geïdentificeerd. De gegevens in Gebruiksgegevens worden per meter per dag verstrekt. Dit wordt gebruikt bij het berekenen van uw maandelijkse factuur. De GA-versie (algemene beschikbaarheid) van de API's is `2019-10-01`. Gebruik `2019-04-01-preview` voor toegang tot de preview-versie voor reservering en Azure Marketplace-aankopen met de API's.
 
 ### <a name="usage-details-api-suggestions"></a>Suggesties van de API voor gedetailleerde gebruiksgegevens
 
 **Aanvraagschema**
 
-U wordt aangeraden _niet meer dan één aanvraag_ te maken met de API voor gedetailleerde gebruiksgegevens. Zie [Inzicht in gegevens van Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/understand-cost-mgt-data#rated-usage-data-refresh-schedule) voor meer informatie over hoe vaak kostengegevens worden vernieuwd en hoe afronding wordt verwerkt.
+U wordt aangeraden _niet meer dan één aanvraag_ te maken met de API voor gedetailleerde gebruiksgegevens. Zie [Inzicht in gegevens van Cost Management](./understand-cost-mgt-data.md) voor meer informatie over hoe vaak kostengegevens worden vernieuwd en hoe afronding wordt verwerkt.
 
 **Bereiken op het hoogste niveau bepalen zonder te filteren**
 
-Gebruik de API om alle gegevens op te halen die u nodig hebt voor het bereik op het hoogste niveau. Wacht totdat alle benodigde gegevens zijn opgenomen voordat u een filter, groepering of samengevoegde analyse uitvoert. De API is specifiek geoptimaliseerd om grote hoeveelheden niet-samengevoegde ruwe kostengegevens te leveren. Zie [Bereiken begrijpen en gebruiken](https://docs.microsoft.com/azure/cost-management-billing/costs/understand-work-scopes) in Cost Management voor meer informatie over het werken met bereiken. Wanneer u de benodigde gegevens voor een bereik hebt gedownload, gebruikt u Excel om de gegevens verder te analyseren met filters en draaitabellen.
+Gebruik de API om alle gegevens op te halen die u nodig hebt voor het bereik op het hoogste niveau. Wacht totdat alle benodigde gegevens zijn opgenomen voordat u een filter, groepering of samengevoegde analyse uitvoert. De API is specifiek geoptimaliseerd om grote hoeveelheden niet-samengevoegde ruwe kostengegevens te leveren. Zie [Bereiken begrijpen en gebruiken](./understand-work-scopes.md) in Cost Management voor meer informatie over het werken met bereiken. Wanneer u de benodigde gegevens voor een bereik hebt gedownload, gebruikt u Excel om de gegevens verder te analyseren met filters en draaitabellen.
 
 ## <a name="example-usage-details-api-requests"></a>Voorbeeld van API voor gedetailleerde gebruiksgegevens
 
@@ -329,6 +329,6 @@ Om een consistente ervaring voor alle Cost Management-abonnees mogelijk te maken
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Azure-kosten analyseren met de Power BI-sjabloon-app](https://docs.microsoft.com/azure/cost-management-billing/costs/analyze-cost-data-azure-cost-management-power-bi-template-app).
-- [Geëxporteerde gegevens maken en beheren](https://docs.microsoft.com/azure/cost-management-billing/costs/tutorial-export-acm-data) met Exports.
-- Meer informatie over de [API voor gedetailleerde gebruiksgegevens](https://docs.microsoft.com/rest/api/consumption/usageDetails).
+- [Azure-kosten analyseren met de Power BI-sjabloon-app](./analyze-cost-data-azure-cost-management-power-bi-template-app.md).
+- [Geëxporteerde gegevens maken en beheren](./tutorial-export-acm-data.md) met Exports.
+- Meer informatie over de [API voor gedetailleerde gebruiksgegevens](/rest/api/consumption/usageDetails).

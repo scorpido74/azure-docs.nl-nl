@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: cc44f05491cc17adb9ca51963d09667400fa1ff6
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 33a53fa46d7d07183b77f2608d44f8ea5d0d2804
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371912"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132258"
 ---
 # <a name="azure-ea-portal-administration"></a>Beheer van Azure EA Portal
 
@@ -71,13 +71,13 @@ Met Azure EA Portal kunt u de kosten en het gebruik van Azure EA beheren. Er zij
 
 Elke rol heeft een ander toegangs- en autoriteitsniveau.
 
-Zie [Enterprise-gebruikersrollen](https://docs.microsoft.com/azure/billing/billing-ea-portal-get-started#enterprise-user-roles) voor meer informatie over rollen.
+Zie [Enterprise-gebruikersrollen](./ea-portal-get-started.md#enterprise-user-roles) voor meer informatie over rollen.
 
 ## <a name="add-an-azure-ea-account"></a>Een Azure EA-account toevoegen
 
 Het Azure EA-account is een organisatie-eenheid in de Azure EA-portal. Dit account wordt gebruikt om abonnementen te beheren en rapporten te maken. Voor toegang tot en het gebruik van Azure-services moet u een account maken of laten maken.
 
-Zie [Een account toevoegen](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-get-started#add-an-account) voor meer informatie over Azure-accounts.
+Zie [Een account toevoegen](./ea-portal-get-started.md#add-an-account) voor meer informatie over Azure-accounts.
 
 ## <a name="enterprise-devtest-offer"></a>Aanbieding voor Enterprise Dev/Test
 

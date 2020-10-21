@@ -580,9 +580,8 @@
       href: how-to-migrate-from-translator-speech-api.md
 - name: Resources
   items:
-    - name: Ondersteuning
-      displayName: 'support,help,release notes,search,scoped search,azure support,github support,stack overflow,github issues,bugs,feedback,uservoice'
-      href: support.md
+    - name: Opties voor ondersteuning en hulp
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/speech-service/context/context
     - name: Documentatie voor Swagger
       href: swagger-documentation.md
     - name: Onafhankelijke clouds

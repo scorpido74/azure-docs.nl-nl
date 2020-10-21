@@ -5,28 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 10/20/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d03391ba5a82c128197c86ea6ed84389552fadb9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90c70dd626ea093b9dfe2fd71e39b53c81ac5d5f
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91439841"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340594"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>De elementen van het e-mail adres uitnodiging voor B2B-samen werking-Azure Active Directory
 
 E-mail berichten van de uitnodiging zijn een essentieel onderdeel om partners aan boord te brengen als B2B-samenwerkings gebruikers in azure AD. Hoewel het [niet vereist is dat u een e-mail bericht verzendt om iemand uit te nodigen via B2B-samen werking](add-user-without-invite.md), krijgt de gebruiker alle informatie die ze nodig hebben om een beslissing te nemen over de vraag of u de uitnodiging wilt accepteren. Het biedt ook een koppeling waarmee ze in de toekomst altijd naar uw resources kunnen terugkeren.
 
 ![Schermopname waarin de B2B uitnodigingse-mail wordt weergegeven](media/invitation-email-elements/invitation-email.png)
-
-> [!NOTE]
-> Deze nieuwe e-mail sjabloon wordt nog steeds doorgevoerd naar alle tenants, waardoor sommige tenants nog steeds een ouder ontwerp gebruiken. Aan het eind van mei 2020 wordt deze sjabloon gebruikt voor uitnodigingen van alle tenants.
 
 ## <a name="explaining-the-email"></a>Uitleg over het e-mail bericht
 
@@ -52,17 +49,11 @@ Het e-mail bericht begint met een korte waarschuwing voor de gebruiker over phis
 
 ![Afbeelding van de malafide waarschuwing in het e-mail bericht](media/invitation-email-elements/phishing-warning.png)
 
-### <a name="inviters-information"></a>Informatie van de uitnodiging
+### <a name="inviters-information-and-invitation-message"></a>Informatie en uitnodigings bericht van de uitnodiger
 
-Het e-mail bericht bevat informatie over de uitnodiging en de organisatie die de uitnodiging verzendt. Dit zijn onder andere de naam en het e-mail adres van de afzender, evenals de naam en het primaire domein dat is gekoppeld aan de organisatie. Al deze informatie kan de uitnodiging helpen om een weloverwogen beslissing te nemen over het accepteren van de uitnodiging.
+Het e-mail bericht bevat de naam en het primaire domein dat is gekoppeld aan de organisatie die de uitnodiging verzendt. Deze informatie moet de uitnodiging helpen om een weloverwogen beslissing te nemen over het accepteren van de uitnodiging. Als de uitnodiging een bericht als onderdeel van de uitnodigingen bevat wanneer ze [een gast gebruiker uitnodigen voor de Directory, groep of app](add-users-administrator.md) of wanneer ze [de API van de uitnodiging gebruiken](customize-invitation-api.md), wordt het bericht gemarkeerd in het hoofd gedeelte van de e-mail. Ook inbegrepen zijn de naam en profiel afbeelding van de uitnodigings functie als ze er een hebben ingesteld. Het bericht zelf is een tekst gebied, waardoor de HTML-tags om veiligheids redenen niet worden verwerkt.
 
-![Afbeelding van de informatie van de uitnodiger in het e-mail bericht](media/invitation-email-elements/inviters-information.png)
-
-### <a name="invitation-message"></a>Uitnodigings bericht
-
-Als de uitnodiging een bericht als onderdeel van de uitnodigingen bevat wanneer ze [een gast gebruiker uitnodigen voor de Directory, groep of app](add-users-administrator.md) of wanneer ze [de API van de uitnodiging gebruiken](customize-invitation-api.md), wordt het bericht gemarkeerd in het hoofd gedeelte van de e-mail. Ook inbegrepen zijn de naam en profiel afbeelding van de uitnodigings functie als ze er een hebben ingesteld. Het bericht zelf is een tekst gebied, waardoor de HTML-tags om veiligheids redenen niet worden verwerkt.
-
-![Afbeelding van het uitnodigings bericht in de e-mail](media/invitation-email-elements/invitation-message.png)
+![Afbeelding van het uitnodigings bericht in de e-mail](media/invitation-email-elements/invitation-message-inviters-info.png)
 
 ### <a name="accept-button-and-redirect-url"></a>De knop en omleidings-URL accepteren
 

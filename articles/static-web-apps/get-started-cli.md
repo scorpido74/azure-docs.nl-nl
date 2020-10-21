@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 7e0fdbc50dd36e4ea23903a5929735c1c83bd394
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ed49892284b53844c5c578b752a598cdbdd9b946
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88752826"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320331"
 ---
 # <a name="quickstart-building-your-first-static-web-app-using-the-azure-cli"></a>Quickstart: Uw eerste statische web-app bouwen met de Azure CLI
 
@@ -25,7 +25,7 @@ Als u nog geen Azure-abonnement hebt, [maakt u een gratis proefaccount](https://
 - Een [GitHub](https://github.com)-account
 - [Persoonlijk GitHub-toegangstoken](https://docs.github.com/github/authenticating-to-github/creating-a-personal-access-token)
 - [Azure](https://portal.azure.com)-account
-- [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) geïnstalleerd (versie 2.8.0 en hoger)
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) geïnstalleerd (versie 2.8.0 en hoger)
 
 [!INCLUDE [create repository from template](../../includes/static-web-apps-get-started-create-repo.md)]
 

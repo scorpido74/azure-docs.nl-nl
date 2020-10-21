@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 42d9c2b4b1edac62449fa4120463a384400d6d27
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 0049efda603532099cc9bf24dc9d9411b5aaa389
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91360686"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132122"
 ---
 # <a name="billing-accounts-and-scopes-in-the-azure-portal"></a>Factureringsaccounts en -bereiken in de Azure-portal
 
@@ -27,7 +27,7 @@ De Azure-portal biedt momenteel ondersteuning voor de volgende typen facturering
 
 - **Microsoft-klantovereenkomst**: Er wordt een factureringsaccount voor een Microsoft-klantovereenkomst aangemaakt, wanneer uw organisatie samenwerkt met een Microsoft-vertegenwoordiger om een Microsoft-klantovereenkomst te ondertekenen. Sommige klanten in bepaalde regio's, die zich via de Azure-website aanmelden voor een [account met betalen-naar-gebruik-tarieven](https://azure.microsoft.com/offers/ms-azr-0003p/) of een [gratis Azure-account](https://azure.microsoft.com/offers/ms-azr-0044p/), hebben mogelijk ook een factureringsaccount voor een Microsoft-klantovereenkomst. Een Microsoft-klantovereenkomst mag maximaal 20 abonnementen bevatten. Voor meer informatie, zie [Aan de slag met uw factureringsaccount voor een Microsoft-klantovereenkomst](../understand/mca-overview.md).
 
-- **Microsoft Partner-overeenkomst**: Er wordt een factureringsaccount voor een Microsoft-klantovereenkomst gemaakt voor CSP-partners (Cloud Solution Provider) om klanten te beheren in de nieuwe Commerce-versie. Partners moeten minstens één klant met een [Azure-abonnement](https://docs.microsoft.com/partner-center/purchase-azure-plan) hebben om hun factureringsaccount te kunnen beheren in de Azure-portal. Raadpleeg [Aan de slag met uw factureringsaccount voor een Microsoft-klantovereenkomst](../understand/mpa-overview.md) voor meer informatie.
+- **Microsoft Partner-overeenkomst**: Er wordt een factureringsaccount voor een Microsoft-klantovereenkomst gemaakt voor CSP-partners (Cloud Solution Provider) om klanten te beheren in de nieuwe Commerce-versie. Partners moeten minstens één klant met een [Azure-abonnement](/partner-center/purchase-azure-plan) hebben om hun factureringsaccount te kunnen beheren in de Azure-portal. Raadpleeg [Aan de slag met uw factureringsaccount voor een Microsoft-klantovereenkomst](../understand/mpa-overview.md) voor meer informatie.
 
 Zie [Het type van uw factureringsaccount controleren](#check-the-type-of-your-account) om het type van uw factureringsaccount te bepalen.
 

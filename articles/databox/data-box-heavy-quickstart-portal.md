@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 5a0a040d80911b086561213bd0884ed67545c618
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 9eda54ad23e06149910fe69ec16588f49829a5a5
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920786"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122820"
 ---
 ::: zone target = "docs"
 
@@ -124,7 +124,7 @@ De duur van deze bewerking hangt af van de hoeveelheid gegevens en de snelheid v
  
 1. Kopieer gegevens naar beide knooppunten op het apparaat door de twee gegevensinterfaces van 40 Gbps naast elkaar te gebruiken.
 
-    - Als u een Windows-host gebruikt, gebruikt u een SMB-compatibel hulpprogramma voor het kopiëren van bestanden, zoals [Robocopy](https://technet.microsoft.com/library/ee851678.aspx).
+    - Als u een Windows-host gebruikt, gebruikt u een SMB-compatibel hulpprogramma voor het kopiëren van bestanden, zoals [Robocopy](/previous-versions/technet-magazine/ee851678(v=msdn.10)).
     - Voor een NFS-host gebruikt u de opdracht `cp` of `rsync` om de gegevens te kopiëren.
 2. Maak verbinding met de shares op het apparaat via het pad:`\\<IP address of your device>\ShareName`. Als u de toegangsreferenties voor de shares wilt ophalen, gaat u naar de pagina **Verbinding maken en kopiëren** in de lokale webgebruikersinterface van de Data Box Heavy.
 3. Zorg ervoor dat de namen van shares en mappen, en de gegevens de richtlijnen volgen die worden beschreven in [Servicelimieten in Azure Storage en Data Box Heavy](data-box-heavy-limits.md).

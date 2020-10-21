@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 16ddb9cfc2f0731381b1c92d8fdb5f4cffa1ca63
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 61a8dbbdde87af792bb4337660d4d3c34f7cf802
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372354"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132292"
 ---
 # <a name="understand-and-work-with-scopes"></a>Bereiken begrijpen en gebruiken
 
@@ -180,7 +180,7 @@ De volgende bereiken worden ondersteund voor CSP's met klanten in een Microsoft-
 
 Alleen gebruikers met de rollen *Globale beheerder* en *Beheerdersagent* kunnen de kosten voor factureringsrekeningen, factureringsprofielen en klanten rechtstreeks in de Azure-tenant van de partner beheren en weergeven. Zie [Gebruikersrollen en -machtigingen toewijzen](/partner-center/permissions-overview) voor meer informatie over de rollen van het partnercentrum.
 
-Azure Cost Management ondersteunt alleen CSP-partnerklanten als de klanten een Microsoft-klantovereenkomst hebben. Zie [Partnercentrum](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview) voor met CSP'S ondersteunde klanten die nog geen Microsoft-klantovereenkomst hebben.
+Azure Cost Management ondersteunt alleen CSP-partnerklanten als de klanten een Microsoft-klantovereenkomst hebben. Zie [Partnercentrum](/azure/cloud-solution-provider/overview/partner-center-overview) voor met CSP'S ondersteunde klanten die nog geen Microsoft-klantovereenkomst hebben.
 
 Beheergroepen in CSP-bereiken worden niet ondersteund in Cost Management. Als u een CSP-abonnement hebt en u het bereik instelt op een beheergroep in kostenanalyse, ziet u een fout die vergelijkbaar is met het volgende:
 

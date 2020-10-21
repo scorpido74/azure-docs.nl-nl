@@ -3,12 +3,12 @@ title: 'Quickstart: Streamen van gegevens met Azure Event Hubs met het Kafka-Pro
 description: "Quickstart: Dit artikel bevat informatie over het streamen naar Azure Event Hubs met behulp van het Kafka-protocol en API's."
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 612a7515c14b77569b34c91d9b43413353b4d0e8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e87d9b1e4a444695d64dc6acfa0e29f7b72e37f2
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90061543"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319357"
 ---
 # <a name="quickstart-data-streaming-with-event-hubs-using-the-kafka-protocol"></a>Quickstart: Streamen naar Event Hubs met behulp van API's en het Kafka-protocol
 Deze snelstart laat zien hoe u kunt streamen naar Event Hubs zonder uw protocolclients te wijzigen of uw eigen clusters uit te voeren. U leert hoe u uw producenten kunt gebruiken en consumenten met Event Hubs, kunnen praten met slechts een configuratiewijziging in uw toepassingen. 
@@ -22,7 +22,7 @@ Zorg ervoor dat u aan de volgende vereisten voldoet om deze snelstart uit te voe
 
 * Lees het artikel [Event Hubs voor Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md) door.
 * Een Azure-abonnement. Als u nog geen account hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) voordat u begint.
-* [Java Development Kit (JDK) 1.7+](https://aka.ms/azure-jdks).
+* [Java Development Kit (JDK) 1.7+](/azure/developer/java/fundamentals/java-jdk-long-term-support).
 * [Download](https://maven.apache.org/download.cgi) en [installeer](https://maven.apache.org/install.html) een binair Maven-archief.
 * [Git](https://www.git-scm.com/)
 
@@ -103,4 +103,4 @@ Wanneer u een Event Hubs-naamruimte van het type **Standaard** maakt, wordt het 
 Als uw Event Hubs Kafka-cluster gebeurtenissen heeft, moet u deze nu ontvangen van de consument.
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit artikel hebt u geleerd u hoe u kunt streamen naar Event Hubs zonder uw protocolclients te wijzigen of uw eigen clusters uit te voeren. Zie [Ontwikkelaarshandleiding van Apache Kafka voor Azure Event Hubs](apache-kafka-developer-guide.md) voor meer informatie. 
+In dit artikel hebt u geleerd u hoe u kunt streamen naar Event Hubs zonder uw protocolclients te wijzigen of uw eigen clusters uit te voeren. Zie [Ontwikkelaarshandleiding van Apache Kafka voor Azure Event Hubs](apache-kafka-developer-guide.md) voor meer informatie.

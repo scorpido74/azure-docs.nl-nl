@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: 1fedad7dac4c253c68a0f27d0e0470123833a3be
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: d2814a989cb82216081083f3198d52ccd70210ff
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91666106"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131918"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Eigendom van de facturering van een Azure-abonnement overdragen aan een ander account
 
@@ -69,7 +69,7 @@ Als u het eigendom van de facturering van een Azure-abonnement hebt geaccepteerd
 1. Controleer de servicebeheerder, co-beheerders en andere Azure-roltoewijzingen en werk ze bij. Zie [Toevoegen of wijzigen van de beheerders van Azure-abonnementen](add-change-subscription-administrator.md) en [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de Azure Portal](../../role-based-access-control/role-assignments-portal.md) voor meer informatie.
 1. Referenties bijwerken die zijn gekoppeld aan de services van dit abonnement, waaronder:
    1. Beheercertificaten die de gebruiker beheerdersrechten verlenen voor de abonnementsresources. Zie [Een beheercertificaat voor Azure maken en uploaden](../../cloud-services/cloud-services-certs-create.md) voor meer informatie
-   1. Toegangssleutels voor services zoals Storage. Zie [Over Azure-opslagaccounts](../../storage/common/storage-create-storage-account.md) voor meer informatie
+   1. Toegangssleutels voor services zoals Storage. Zie [Over Azure-opslagaccounts](../../storage/common/storage-account-create.md) voor meer informatie
    1. Referenties voor externe toegang voor services zoals Azure Virtual Machines.
 1. Als u met een partner werkt, kunt u overwegen om de partner-id voor het abonnement bij te werken. U kunt de partner-id bijwerken in [Azure Portal](https://portal.azure.com). Zie [Een partner-id aan uw Azure-accounts koppelen](link-partner-id.md) voor meer informatie
 

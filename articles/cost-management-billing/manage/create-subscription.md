@@ -7,12 +7,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: aa8cf0d2a48c75b71895eb75db362c4ec4e291c5
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 006c995217ced91690798ae68f04e3b6c3148228
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88925042"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131952"
 ---
 # <a name="create-an-additional-azure-subscription"></a>Een extra Azure-abonnement maken:
 
@@ -30,7 +30,7 @@ U hebt de volgende machtigingen nodig voor het maken van abonnementen:
 |---------|---------|
 |Enterprise Agreement (EA) |  De rol van accounteigenaar voor de inschrijving van de Enterprise Agreement. Zie [Inzicht in Azure Enterprise Overeenkomst-beheerdersrollen in Azure](understand-ea-roles.md) voor meer informatie.    |
 |Microsoft-klantovereenkomst (MCA) |  De rol van eigenaar of inzender voor de factuursectie, het factureringsprofiel of de factureringsrekening. Of de rol Maker van Azure-abonnement voor de factuursectie.  Zie [Rollen en taken voor abonnementsfacturering](understand-mca-roles.md#subscription-billing-roles-and-tasks) voor meer informatie.    |
-|Microsoft Partner-overeenkomst (MPA) |   De rol Globale beheerder en Beheerderagent in de CSP-partnerorganisatie. Zie [Partner Center - Assign users roles and permissions](https://docs.microsoft.com/partner-center/permissions-overview) (Engelstalig) voor meer informatie.  De gebruiker moet zich aanmelden bij de partnertenant om Azure-abonnementen te maken.   |
+|Microsoft Partner-overeenkomst (MPA) |   De rol Globale beheerder en Beheerderagent in de CSP-partnerorganisatie. Zie [Partner Center - Assign users roles and permissions](/partner-center/permissions-overview) (Engelstalig) voor meer informatie.  De gebruiker moet zich aanmelden bij de partnertenant om Azure-abonnementen te maken.   |
 
 ## <a name="create-a-subscription-in-the-azure-portal"></a>Een abonnement maken in de Azure-portal
 
@@ -79,7 +79,7 @@ U kunt ook programmatisch extra abonnementen maken. Zie [Programmatisch Azure-ab
 
 - [Azure-abonnementsbeheerders toevoegen of wijzigen](add-change-subscription-administrator.md)
 - [Move resources to new resource group or subscription (Resources verplaatsen naar een nieuwe resourcegroep of een nieuw abonnement)](../../azure-resource-manager/management/move-resource-group-and-subscription.md)
-- [Beheergroepen maken voor resource-organisatie en -beheer](../../governance/management-groups/create.md)
+- [Beheergroepen maken voor resource-organisatie en -beheer](../../governance/management-groups/create-management-group-portal.md)
 - [Uw Azure-abonnement opzeggen](cancel-azure-subscription.md)
 
 ## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.

@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: v-erkel
-ms.openlocfilehash: 2cd97e205d88fe7ead02889f5ae9ad9df0985f07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8bce19e384e600e95b8306dcbba38652b4432bc9
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87092521"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340526"
 ---
 # <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>Door de klant beheerde versleutelings sleutels gebruiken voor Azure HPC-cache
 
@@ -58,7 +58,7 @@ Toegangs machtigingen voor de sleutel kluis:
 
 * De gebruiker die de Azure HPC-cache maakt, moet machtigingen hebben die gelijk zijn aan de [rol van Key Vault Inzender](../role-based-access-control/built-in-roles.md#key-vault-contributor). U hebt dezelfde machtigingen nodig om Azure Key Vault in te stellen en te beheren.
 
-  Lees [beveiligde toegang tot een sleutel kluis](../key-vault/key-vault-secure-your-key-vault.md) voor meer informatie.
+  Lees [beveiligde toegang tot een sleutel kluis](../key-vault/general/secure-your-key-vault.md) voor meer informatie.
 
 ## <a name="1-set-up-azure-key-vault"></a>1. Azure Key Vault instellen
 
@@ -66,7 +66,7 @@ U kunt een sleutel kluis en sleutel instellen voordat u de cache maakt, of als o
 
 Bij het maken van de cache moet u een kluis, sleutel en sleutel versie opgeven die moeten worden gebruikt voor de versleuteling van de cache.
 
-Lees de [Azure Key Vault-documentatie](../key-vault/key-vault-overview.md) voor meer informatie.
+Lees de [Azure Key Vault-documentatie](../key-vault/general/overview.md) voor meer informatie.
 
 > [!NOTE]
 > De Azure Key Vault moeten hetzelfde abonnement gebruiken en moeten zich in dezelfde regio bevinden als de Azure HPC-cache. Zorg ervoor dat de regio die u kiest [ondersteuning biedt voor de functie door de klant beheerde sleutels](hpc-cache-overview.md#region-availability).
@@ -92,7 +92,7 @@ De gebruiker die de cache maakt, moet bevoegdheden hebben die gelijk zijn aan de
 
 1. Nadat u een kluis hebt geselecteerd, selecteert u de individuele sleutel in de beschik bare opties of maakt u een nieuwe sleutel. De sleutel moet een 2048-bits RSA-sleutel zijn.
 
-1. Geef de versie voor de geselecteerde sleutel op. Meer informatie over versie beheer vindt u in de [documentatie van Azure Key Vault](../key-vault/about-keys-secrets-and-certificates.md#objects-identifiers-and-versioning).
+1. Geef de versie voor de geselecteerde sleutel op. Meer informatie over versie beheer vindt u in de [documentatie van Azure Key Vault](../key-vault/general/about-keys-secrets-certificates.md#objects-identifiers-and-versioning).
 
 Ga verder met de rest van de specificaties en maak de cache zoals beschreven in [een Azure HPC-cache maken](hpc-cache-create.md).
 

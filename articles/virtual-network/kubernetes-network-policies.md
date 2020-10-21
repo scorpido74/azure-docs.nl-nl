@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/25/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 0ecf3e5f30ee38c0d60c77df3d6aae3ad90930e9
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 36e5bb33b7d555c3b457b63f94d9032ff390e6cb
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332244"
+ms.locfileid: "92342311"
 ---
 # <a name="azure-kubernetes-network-policies-overview"></a>Overzicht van Azure Kubernetes-netwerk beleid
 
@@ -154,7 +154,7 @@ Open Azure Portal. Ga in de inzichten van uw cluster naar werkmappen en open de 
 Naast het weer geven van de werkmap (afbeeldingen hieronder) kunt u de metrische gegevens voor Prometheus ook rechtstreeks opvragen in ' logboeken ' in de sectie inzichten. Met deze query worden bijvoorbeeld alle metrische gegevens weer gegeven die worden verzameld.
 | waar TimeGenerated > geleden (5H) | Where-naam bevat "npm_"
 
-U kunt ook rechtstreeks een query uitvoeren op Log Analytics voor de metrische gegevens. Meer informatie hierover vindt u in aan de slag met Log Analytics Query's] (https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-log-search) 
+U kunt ook rechtstreeks een query uitvoeren op Log Analytics voor de metrische gegevens. Meer informatie hierover vindt u aan de slag [met log Analytics query's](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-log-search) 
 
 #### <a name="viewing-in-grafana-dashboard"></a>Weer geven in Grafana-dash board
 Stel uw Grafana-server in en configureer een Log Analytics gegevens bron zoals [hier](https://grafana.com/grafana/plugins/grafana-azure-monitor-datasource)wordt beschreven. Importeer vervolgens [Grafana-dash board met een log Analytics back-end](https://grafana.com/grafana/dashboards/10956) in uw Grafana Labs.

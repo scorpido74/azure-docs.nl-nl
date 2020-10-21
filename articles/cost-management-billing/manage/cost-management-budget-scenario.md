@@ -9,18 +9,18 @@ ms.subservice: cost-management
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 50451acdbd1c88b6ae703ed25de9cee1f3e48216
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: de0e9c631a97891e75c091c75a34b7dd94a52894
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91446462"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131459"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Kosten beheren met Azure Budgets
 
-Kostenbeheer is een essentieel onderdeel om de waarde van uw investering in de cloud te maximaliseren. Er zijn verschillende scenario's waar zichtbaarheid van kosten, rapportage en op kosten gebaseerde indelingen van belang zijn voor een voortdurende bedrijfsuitoefening. [Azure Cost Management-API's](https://docs.microsoft.com/rest/api/consumption/) bieden een set API's ter ondersteuning van al deze scenario's. De API's bieden gebruiksdetails, waardoor u kosten op granulair exemplaarniveau kunt bekijken.
+Kostenbeheer is een essentieel onderdeel om de waarde van uw investering in de cloud te maximaliseren. Er zijn verschillende scenario's waar zichtbaarheid van kosten, rapportage en op kosten gebaseerde indelingen van belang zijn voor een voortdurende bedrijfsuitoefening. [Azure Cost Management-API's](/rest/api/consumption/) bieden een set API's ter ondersteuning van al deze scenario's. De API's bieden gebruiksdetails, waardoor u kosten op granulair exemplaarniveau kunt bekijken.
 
-Budgetten worden doorgaans gebruikt als deel van kostenbeheer. In Azure kan er een bereik voor budgetten worden ingesteld. U kunt bijvoorbeeld uw budget beperken op basis van abonnement, resourcegroepen of een verzameling resources. Naast het gebruik van de budget-API om u per e-mail op de hoogte te stellen wanneer een budgetdrempelwaarde is bereikt, kunt u ook [Azure Monitor-actiegroepen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) gebruiken om een vooraf bepaalde set acties te activeren als resultaat van een budgetgebeurtenis.
+Budgetten worden doorgaans gebruikt als deel van kostenbeheer. In Azure kan er een bereik voor budgetten worden ingesteld. U kunt bijvoorbeeld uw budget beperken op basis van abonnement, resourcegroepen of een verzameling resources. Naast het gebruik van de budget-API om u per e-mail op de hoogte te stellen wanneer een budgetdrempelwaarde is bereikt, kunt u ook [Azure Monitor-actiegroepen](../../azure-monitor/platform/action-groups.md) gebruiken om een vooraf bepaalde set acties te activeren als resultaat van een budgetgebeurtenis.
 
 Een algemeen budgetscenario voor een klant met een niet-kritieke workload is wanneer de klant op basis van een budget wil beheren en ook een voorspelbare maandelijkse factuur wil. Dit scenario vereist een op kosten gebaseerde indeling van resources die onderdeel zijn van de Azure-omgeving. In dit scenario wordt voor het abonnement een maandelijks budget van $1000 vastgesteld. Er worden ook meldingen over de drempelwaarde ingesteld om indelingen te activeren. Dit scenario begint met een drempelwaarde van 80%, waarna alle VM's in de resourcegroep **Optioneel** worden afgesloten. Bij de drempelwaarde van 100% van de kosten worden vervolgens alle VM-exemplaren afgesloten.
 
@@ -35,7 +35,7 @@ Met de acties in deze zelfstudie kunt u het volgende doen:
 
 ## <a name="create-an-azure-automation-runbook"></a>Een Azure Automation-runbook maken
 
-[Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro) is een service waarmee u de meeste van uw resourcebeheertaken met een script uitvoert en dat gepland of op aanvraag doet. Als onderdeel van dit scenario maakt u een [Azure Automation-runbook](https://docs.microsoft.com/azure/automation/automation-runbook-types) dat wordt gebruikt om de VM's te stoppen. U gebruikt het grafische runbook [Stop Azure V2-VM's](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) uit de [galerie](https://docs.microsoft.com/azure/automation/automation-runbook-gallery) om dit scenario te bouwen. Door dit runbook te importeren in uw Azure-account en het te publiceren, kunt u VM's stoppen wanneer een budgetdrempelwaarde wordt bereikt.
+[Azure Automation](../../automation/automation-intro.md) is een service waarmee u de meeste van uw resourcebeheertaken met een script uitvoert en dat gepland of op aanvraag doet. Als onderdeel van dit scenario maakt u een [Azure Automation-runbook](../../automation/automation-runbook-types.md) dat wordt gebruikt om de VM's te stoppen. U gebruikt het grafische runbook [Stop Azure V2-VM's](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) uit de [galerie](../../automation/automation-runbook-gallery.md) om dit scenario te bouwen. Door dit runbook te importeren in uw Azure-account en het te publiceren, kunt u VM's stoppen wanneer een budgetdrempelwaarde wordt bereikt.
 
 ### <a name="create-an-azure-automation-account"></a>Een Azure Automation-account maken
 
@@ -49,7 +49,7 @@ Met de acties in deze zelfstudie kunt u het volgende doen:
 
 ### <a name="import-the-stop-azure-v2-vms-runbook"></a>Het runbook Stop Azure V2-VM's importeren
 
-Importeer met een [Azure Automation-runbook](https://docs.microsoft.com/azure/automation/automation-runbook-types) het grafische runbook [Stop Azure V2-VM's](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) uit de galerie.
+Importeer met een [Azure Automation-runbook](../../automation/automation-runbook-types.md) het grafische runbook [Stop Azure V2-VM's](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) uit de galerie.
 
 1. Gebruik de referenties van uw Azure-account om u aan melden bij het [Azure Portal](https://portal.azure.com/).
 1. Open uw Automation-account door **Alle services** > **Automation-accounts** te selecteren. Selecteer vervolgens uw Automation-account.
@@ -60,7 +60,7 @@ Importeer met een [Azure Automation-runbook](https://docs.microsoft.com/azure/au
 1. Nadat het runbook het importeerproces heeft afgerond, selecteert u **Bewerken** om de editor voor grafische runbooks en een publicatie-optie weer te geven.  
     ![Azure - Grafisch runbook bewerken](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-01.png)
 1. Selecteer **Publiceren** om het runbook te publiceren, en selecteer vervolgens **Ja** wanneer hierom wordt gevraagd. Wanneer u een runbook publiceert, overschrijft u een bestaande gepubliceerde versie met de conceptversie. In dit geval hebt u nog geen gepubliceerde versie, omdat u het runbook hebt gemaakt.
-    Raadpleeg [Een grafisch runbook maken](https://docs.microsoft.com/azure/automation/automation-first-runbook-graphical) voor meer informatie over de publicatie van een runbook.
+    Raadpleeg [Een grafisch runbook maken](../../automation/learn/automation-tutorial-runbook-graphical.md) voor meer informatie over de publicatie van een runbook.
 
 ## <a name="create-webhooks-for-the-runbook"></a>Webhooks maken voor het runbook
 
@@ -91,7 +91,7 @@ U bent nu klaar met de Azure Automation-configuratie. U kunt de webhooks testen 
 
 ## <a name="create-an-azure-logic-app-for-orchestration"></a>Een logische Azure-app maken voor de indeling
 
-Met Logic Apps kunt u processen maken, plannen en automatiseren als werkstromen, zodat u apps, gegevens, systemen en services kunt integreren in ondernemingen of organisaties. In dit scenario doet de [logische app](https://docs.microsoft.com/azure/logic-apps/) die u maakt iets meer dan alleen de Automation-webhook aanroepen die u hebt gemaakt.
+Met Logic Apps kunt u processen maken, plannen en automatiseren als werkstromen, zodat u apps, gegevens, systemen en services kunt integreren in ondernemingen of organisaties. In dit scenario doet de [logische app](../../logic-apps/index.yml) die u maakt iets meer dan alleen de Automation-webhook aanroepen die u hebt gemaakt.
 
 Er kunnen budgetten worden ingesteld om een melding te activeren wanneer een opgegeven drempelwaarde is bereikt. U kunt meerdere drempelwaarden opgeven om over op de hoogte gesteld te worden en de logische app laat zien dat u verschillende acties kunt uitvoeren op basis van de drempelwaarden waaraan is voldaan. In dit voorbeeld stelt u een scenario in waar u een paar meldingen ontvangt. De eerste melding is voor wanneer 80% van het budget is bereikt, en de tweede melding is wanneer 100% van het budget is bereikt. De logische app wordt gebruikt om alle VM's in de resourcegroep af te sluiten. De drempelwaarde **Optioneel** wordt op 80% als eerst bereikt. Daarna wordt de tweede drempelwaarde bereikt, waarop alle VM's in het abonnement worden afgesloten.
 
@@ -122,11 +122,11 @@ Nadat uw logische app is geïmplementeerd in Azure, wordt de **Ontwerper van log
 Elke logische app moet beginnen met een trigger, die wordt geactiveerd wanneer er een bepaalde gebeurtenis plaatsvindt of wanneer er aan een bepaalde voorwaarde is voldaan. Telkens wanneer de trigger wordt geactiveerd, maakt de Logic Apps-engine een exemplaar van een logische app dat wordt gestart en de werkstroom uitvoert. acties zijn alle stappen die na de trigger plaatsvinden.
 
 1. Kies onder **Sjablonen** van het gebied **Ontwerper van logische apps** de optie **Lege logische app**.
-1. Voeg een [trigger](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts) toe door 'http-aanvraag' in te voeren in het zoekvak van de **Ontwerper van logische apps** om de trigger met de naam **Aanvraag - Wanneer een HTTP-aanvraag is ontvangen** te zoeken.  
+1. Voeg een [trigger](../../logic-apps/logic-apps-overview.md#logic-app-concepts) toe door 'http-aanvraag' in te voeren in het zoekvak van de **Ontwerper van logische apps** om de trigger met de naam **Aanvraag - Wanneer een HTTP-aanvraag is ontvangen** te zoeken.  
     ![Azure - Logische app - HTTP-trigger](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-04.png)
 1. Selecteer **Nieuwe stap** > **Een actie toevoegen**.  
     ![Azure - Nieuwe stap - Een actie toevoegen](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-05.png)
-1. Zoek naar 'JSON parseren' in het zoekvak van **Ontwerp van logische apps** om de [actie](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts) **Gegevensbewerkingen - JSON parseren** te zoeken.  
+1. Zoek naar 'JSON parseren' in het zoekvak van **Ontwerp van logische apps** om de [actie](../../logic-apps/logic-apps-overview.md#logic-app-concepts) **Gegevensbewerkingen - JSON parseren** te zoeken.  
     ![Azure - Logische app - De actie JSON parseren toevoegen](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-06.png)
 1. Voer 'Nettolading' in als de naam voor de **Inhoud** van de nettolading JSON parseren, of gebruik de tag 'Hoofdtekst' voor dynamische inhoud.
 1. Selecteer de optie **Voorbeeldnettolading gebruiken om een schema te genereren** in het vak **JSON parseren**.  
@@ -311,7 +311,7 @@ U gaat verder met de configuratie van **Postman** om een budget te maken door de
     ```
 1. Druk op **Verzenden** om het verzoek te verzenden.
 
-U hebt nu alle stukken die nodig zijn om de [budget-API](https://docs.microsoft.com/rest/api/consumption/budgets) aan te roepen. De budget-API-verwijzing bevat aanvullende gegevens over de specifieke aanvragen, waaronder:
+U hebt nu alle stukken die nodig zijn om de [budget-API](/rest/api/consumption/budgets) aan te roepen. De budget-API-verwijzing bevat aanvullende gegevens over de specifieke aanvragen, waaronder:
 
 - **budgetName**: er worden meerdere budgetten ondersteund.  Budgetnamen moeten uniek zijn.
 - **category**: moet **Kosten** of **Verbruik** zijn. De API ondersteunt zowel kosten- als verbruiksbudgetten.

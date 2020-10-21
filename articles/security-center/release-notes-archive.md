@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2020
 ms.author: memildin
-ms.openlocfilehash: c6bb335ad7783c180ceeaafde955d6ac9dcb8799
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 2d156887416fb9a587c9690c3b275229e91f1dbe
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280131"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92339795"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Wilt u archiveren wat er nieuw is in Azure Security Center?
 
@@ -93,7 +93,7 @@ Elk beveiligings programma bevat meerdere werk stromen voor reactie op incidente
 
 Zie [werk stroom automatisering](workflow-automation.md)voor meer informatie over de mogelijkheden voor automatische en hand matige Security Center voor het uitvoeren van uw werk stromen.
 
-Meer informatie over [het maken van Logic apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview).
+Meer informatie over [het maken van Logic apps](../logic-apps/logic-apps-overview.md).
 
 
 ### <a name="integration-of-azure-security-center-with-windows-admin-center"></a>Integratie van Azure Security Center met Windows-beheer centrum
@@ -214,7 +214,7 @@ Vandaag introduceren we een nieuwe mogelijkheid in Security Center waarmee klant
 
 Zie [werk stroom automatisering](workflow-automation.md)voor meer informatie over de mogelijkheden voor automatische en hand matige Security Center voor het uitvoeren van uw werk stromen.
 
-Zie [Azure Logic apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)voor meer informatie over het maken van Logic apps.
+Zie [Azure Logic apps](../logic-apps/logic-apps-overview.md)voor meer informatie over het maken van Logic apps.
 
 
 ### <a name="quick-fix-for-bulk-resources-generally-available"></a>Snelle oplossing voor bulk bronnen algemeen beschikbaar
@@ -270,9 +270,9 @@ Meer [informatie over de evaluatie van beveiligings problemen voor uw Azure-virt
 
 De ondersteuning van Azure Security Center voor beveiliging tegen bedreigingen en evaluatie van beveiligings problemen voor SQL-Db's op IaaS Vm's is nu beschikbaar als preview-versie.
 
-[Evaluatie van beveiligingsproblemen](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment) is een eenvoudig te configureren service waarmee u potentiële zwakke plekken in de beveiliging van de database kunt detecteren, volgen en verhelpen. Het biedt inzicht in uw beveiligings postuur als onderdeel van een beveiligde Azure-Score en bevat de stappen voor het oplossen van beveiligings problemen en het verbeteren van uw data base-Fortifications.
+[Evaluatie van beveiligingsproblemen](../azure-sql/database/sql-vulnerability-assessment.md) is een eenvoudig te configureren service waarmee u potentiële zwakke plekken in de beveiliging van de database kunt detecteren, volgen en verhelpen. Het biedt inzicht in uw beveiligings postuur als onderdeel van een beveiligde Azure-Score en bevat de stappen voor het oplossen van beveiligings problemen en het verbeteren van uw data base-Fortifications.
 
-[Geavanceerde bedreigingen beveiliging](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview) detecteert afwijkende activiteiten die een ongebruikelijke en potentieel schadelijke pogingen om toegang te krijgen tot uw SQL-Server of deze misbruiken. Het controleert uw data base voortdurend op verdachte activiteiten en biedt actie gerichte beveiligings waarschuwingen voor afwijkende database toegangs patronen. Deze waarschuwingen bieden informatie over verdachte activiteiten en aanbevolen acties voor het onderzoeken en oplossen van de dreiging.
+[Geavanceerde bedreigingen beveiliging](../azure-sql/database/threat-detection-overview.md) detecteert afwijkende activiteiten die een ongebruikelijke en potentieel schadelijke pogingen om toegang te krijgen tot uw SQL-Server of deze misbruiken. Het controleert uw data base voortdurend op verdachte activiteiten en biedt actie gerichte beveiligings waarschuwingen voor afwijkende database toegangs patronen. Deze waarschuwingen bieden informatie over verdachte activiteiten en aanbevolen acties voor het onderzoeken en oplossen van de dreiging.
 
 
 ### <a name="support-for-custom-policies-preview"></a>Ondersteuning voor aangepast beleid (preview-versie)
@@ -346,7 +346,7 @@ Wanneer u JIT voor uw virtuele machines inschakelt, kunt u een beleid maken dat 
 
 Aanvragen worden vastgelegd in het Azure-activiteiten logboek, zodat u de toegang eenvoudig kunt bewaken en controleren. De just-in-time pagina helpt u ook snel bestaande Vm's te identificeren waarvoor JIT is ingeschakeld en Vm's waarvoor JIT wordt aanbevolen.
 
-Meer [informatie over Azure firewall](https://docs.microsoft.com/azure/firewall/overview).
+Meer [informatie over Azure firewall](../firewall/overview.md).
 
 
 ### <a name="single-click-remediation-to-boost-your-security-posture-preview"></a>Eén Klik op herbemiddeling om uw beveiligings postuur te verbeteren (preview-versie)
