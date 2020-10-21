@@ -80,6 +80,8 @@
       href: self-hosted-gateway-overview.md
     - name: Waarneembaarheid
       href: observability.md
+    - name: CI/CD met ARM-sjablonen
+      href: devops-api-development-templates.md
 - name: Instructiegidsen
   items:
     - name: API's definiëren

@@ -7,12 +7,12 @@ ms.date: 02/11/2020
 ms.author: mansha
 author: manishmsfte
 ms.custom: devx-track-java
-ms.openlocfilehash: b0c9ef99e4cbb0683273d613d3a85e7f6455a40d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e8859eebf97b8d2788153e74e36f31fda3323c5
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87366718"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282481"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>Migreren van Couch Base naar Azure Cosmos DB SQL-API
 
@@ -33,7 +33,7 @@ Hieronder ziet u de belangrijkste functies die in Azure Cosmos DB anders werken 
 
 * Azure Cosmos DB heeft een ID-veld in het document, terwijl Couch base de ID als onderdeel van Bucket heeft. Het veld ID is uniek voor de partitie.
 
-* Azure Cosmos DB wordt geschaald met behulp van de methode partitioneren of sharding. Dit betekent dat de gegevens worden gesplitst in meerdere Shards/partities. Deze partities/Shards worden gemaakt op basis van de partitie sleutel eigenschap die u opgeeft. U kunt de partitie sleutel selecteren om Lees-en schrijf bewerkingen te optimaliseren of te lezen/schrijven. Zie het artikel [partitioning](./partition-data.md) voor meer informatie.
+* Azure Cosmos DB wordt geschaald met behulp van de methode partitioneren of sharding. Dit betekent dat de gegevens worden gesplitst in meerdere Shards/partities. Deze partities/Shards worden gemaakt op basis van de partitie sleutel eigenschap die u opgeeft. U kunt de partitie sleutel selecteren om Lees-en schrijf bewerkingen te optimaliseren of te lezen/schrijven. Zie het artikel [partitioning](./partitioning-overview.md) voor meer informatie.
 
 * In Azure Cosmos DB is het niet vereist voor de hiërarchie op het hoogste niveau om de verzameling aan te duiden, omdat de naam van de verzameling al bestaat. Deze functie maakt de JSON-structuur veel eenvoudiger. Hier volgt een voor beeld waarin de verschillen in het gegevens model tussen Couch base en Azure Cosmos DB worden weer gegeven:
 

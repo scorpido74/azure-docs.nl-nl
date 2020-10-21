@@ -3,12 +3,12 @@ title: Ontdek apps, functies en onderdelen op on-premises servers met Azure Migr
 description: Meer informatie over het detecteren van apps, functies en onderdelen op on-premises servers met Azure Migrate server-evaluatie.
 ms.topic: article
 ms.date: 06/10/2020
-ms.openlocfilehash: 535c8ae8c2d6e5d9d175e663a58d47dc76aa0529
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6bdc26ac3a27026183e889bf258e2e1a5dadebfb
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86118644"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315201"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>Machine-apps,-functies en-functies detecteren
 
@@ -46,7 +46,7 @@ Nadat het apparaat is geïmplementeerd en u referenties hebt gegeven, start het 
 
 ## <a name="verify-permissions"></a>Machtigingen controleren
 
-U hebt [een vCenter Server alleen-lezen account gemaakt](tutorial-prepare-vmware.md#set-up-permissions-for-assessment) voor detectie en evaluatie. Voor de alleen-lezen-account zijn bevoegdheden nodig die zijn ingeschakeld voor **virtual machines**  >  -**gast bewerkingen**, om te kunnen communiceren met de virtuele machine voor app-detectie.
+U hebt [een vCenter Server alleen-lezen account gemaakt](./tutorial-discover-vmware.md#prepare-vmware) voor detectie en evaluatie. Voor de alleen-lezen-account zijn bevoegdheden nodig die zijn ingeschakeld voor **virtual machines**  >  -**gast bewerkingen**, om te kunnen communiceren met de virtuele machine voor app-detectie.
 
 ### <a name="add-the-user-account-to-the-appliance"></a>Het gebruikers account toevoegen aan het apparaat
 

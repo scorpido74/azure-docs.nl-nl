@@ -3,12 +3,12 @@ title: Beoordelings hulpprogramma's toevoegen in Azure Migrate
 description: Meer informatie over het toevoegen van beoordelings hulpprogramma's in Azure Migrate.
 ms.topic: how-to
 ms.date: 04/26/2020
-ms.openlocfilehash: 5151135a57b7c2780485d85299ead5df83ea851e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5dee9ec2210bf6e04255b07cf641ced6807c8b5a
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86122112"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317369"
 ---
 # <a name="add-assessment-tools"></a>Evaluatiehulpprogramma's toevoegen
 
@@ -60,4 +60,4 @@ In dit artikel wordt beschreven hoe u beoordelings hulpprogramma's toevoegt in [
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Probeer een evaluatie uit met behulp van Azure Migrate server evaluatie voor [VMware](tutorial-prepare-vmware.md) -Vm's, [Hyper-V](tutorial-prepare-hyper-v.md)of [fysieke servers](tutorial-prepare-physical.md)
+Probeer een evaluatie uit met behulp van Azure Migrate server evaluatie voor [VMware](./tutorial-discover-vmware.md) -Vm's, [Hyper-V](./tutorial-discover-hyper-v.md)of [fysieke servers](./tutorial-discover-physical.md)

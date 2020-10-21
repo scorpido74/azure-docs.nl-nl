@@ -28,6 +28,11 @@
     - name: Een beheergroep maken - REST
       displayName: hierarchy
       href: ./create-management-group-rest-api.md
+- name: Zelfstudies
+  items:
+    - name: 'Meer informatie: Een strategie voor de governance van abonnementen maken'
+      displayName: 'governance, module'
+      href: /learn/modules/build-cloud-governance-strategy-azure/3-create-subscription-governance-strategy
 - name: Instructiegidsen
   expanded: true
   items:

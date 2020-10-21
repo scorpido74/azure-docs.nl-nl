@@ -13,16 +13,16 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07dc11877b38e830d90f544f1d7524b378bf5902
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f14960f98a4257b0c8f920915327661cd8b867c
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90053749"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310392"
 ---
 # <a name="create-a-role-assignable-group-in-azure-active-directory"></a>Een door een functie toewijs bare groep maken in Azure Active Directory
 
-U kunt alleen een rol toewijzen aan een groep die is gemaakt met de eigenschap isAssignableToRole ingesteld op True, of is gemaakt in de Azure AD-Portal met **Azure AD-rollen kunnen worden toegewezen aan de groep** ingeschakeld. Dit groeps kenmerk maakt de groep een die kan worden toegewezen aan een rol in Azure Active Directory (Azure AD). In dit artikel wordt beschreven hoe u dit speciale soort groep maakt. **Opmerking:** Een groep waarvoor de eigenschap isAssignableToRole is ingesteld op True, kan niet van het dynamische lidmaatschaps type zijn. Zie [een groep gebruiken om toewijzingen van Azure AD-rollen te beheren](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-groups-concept)voor meer informatie.
+U kunt alleen een rol toewijzen aan een groep die is gemaakt met de eigenschap isAssignableToRole ingesteld op True, of is gemaakt in de Azure AD-Portal met **Azure AD-rollen kunnen worden toegewezen aan de groep** ingeschakeld. Dit groeps kenmerk maakt de groep een die kan worden toegewezen aan een rol in Azure Active Directory (Azure AD). In dit artikel wordt beschreven hoe u dit speciale soort groep maakt. **Opmerking:** Een groep waarvoor de eigenschap isAssignableToRole is ingesteld op True, kan niet van het dynamische lidmaatschaps type zijn. Zie [een groep gebruiken om toewijzingen van Azure AD-rollen te beheren](./roles-groups-concept.md)voor meer informatie.
 
 ## <a name="using-azure-ad-admin-center"></a>Het Azure AD-beheer centrum gebruiken
 

@@ -1,20 +1,20 @@
 ---
 title: Azure Policy-extensie voor Visual Studio code
 description: Meer informatie over het gebruik van de Azure Policy extensie voor Visual Studio code voor het opzoeken van Azure Resource Manager aliassen.
-ms.date: 10/14/2020
+ms.date: 10/20/2020
 ms.topic: how-to
-ms.openlocfilehash: ea05ffab9c57c50e451008a1ec7c534afbedf282
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 233c9158c30d6c373dd6147090894dc83b83da3d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077929"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317620"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Azure Policy-extensie voor Visual Studio code gebruiken
 
-> Van toepassing op Azure Policy extensie versie **0.0.21** en hoger
+> Van toepassing op Azure Policy extensie versie **0.1.0** en hoger
 
-Meer informatie over het gebruik van de Azure Policy extensie voor Visual Studio code voor het opzoeken van [aliassen](../concepts/definition-structure.md#aliases) en het controleren van resources en beleid. Eerst wordt beschreven hoe u de extensie van de Azure Policy installeert in Visual Studio code. Vervolgens wordt uitgelegd hoe u aliassen opzoekt.
+Meer informatie over het gebruik van de Azure Policy extensie voor Visual Studio code voor het opzoeken van [aliassen](../concepts/definition-structure.md#aliases), het controleren van resources en beleid, het exporteren van objecten en het evalueren van beleids definities. Eerst wordt beschreven hoe u de extensie van de Azure Policy installeert in Visual Studio code. Vervolgens wordt uitgelegd hoe u aliassen opzoekt.
 
 Azure Policy extensie voor Visual Studio code kan worden geïnstalleerd op alle platforms die worden ondersteund door Visual Studio code. Deze ondersteuning omvat Windows, Linux en macOS.
 
@@ -96,7 +96,7 @@ De uitbrei ding Azure Policy vermeldt resources in de geselecteerde abonnementen
 
 - **Resource providers**
   - Elke geregistreerde resource provider met resources en gerelateerde onderliggende resources die beleids aliassen hebben
-- **Resource groepen**
+- **Resourcegroepen**
   - Alle resources op de resource groep waarin ze zich bevinden
 
 De uitbrei ding filtert standaard het deel van de resource provider op bestaande resources en resources die beleids aliassen hebben. Wijzig dit gedrag in **instellingen**  >  **extensies**  >  **Azure Policy** om alle resource providers zonder filters weer te geven.
@@ -151,6 +151,51 @@ In de uitbrei ding Azure Policy worden beleids typen en beleids toewijzingen wee
 1. Gebruik het filter om te selecteren welk beleid u wilt weer geven. Het filter werkt voor _DisplayName_ voor de beleids definitie of beleids toewijzing.
 
 Bij het selecteren van een beleid of toewijzing, hetzij via de Zoek interface, hetzij door het te selecteren in de structuur weergave, opent de Azure Policy extensie de JSON die het beleid of de toewijzing vertegenwoordigt en alle eigenschaps waarden van de Resource Manager. De extensie kan het geopende JSON-schema van Azure Policy valideren.
+
+## <a name="export-objects"></a>Objecten exporteren
+
+Objecten van uw abonnementen kunnen worden geëxporteerd naar een lokaal JSON-bestand. Beweeg in het deel venster **resources** of **beleids regels** de muis aanwijzer over of selecteer een exporteerbaar object. Selecteer aan het einde van de gemarkeerde rij het pictogram opslaan en selecteer een map om de JSON van de resources op te slaan.
+
+De volgende objecten kunnen lokaal worden geëxporteerd:
+
+- Deel venster resources
+  - Resourcegroepen
+  - Afzonderlijke resources (in een resource groep of bij een resource provider)
+- Deel venster beleid
+  - Beleidstoewijzingen
+  - Ingebouwde beleids definities
+  - Aangepaste beleids definities
+  - Initiatieven
+
+## <a name="on-demand-evaluation-scan"></a>Evaluatiescan op aanvraag
+
+Een evaluatie scan kan worden gestart met de Azure Policy extensie voor Visual Studio code. Als u een evaluatie wilt starten, selecteert u elk van de volgende objecten en maakt u deze vast: een resource, een beleids definitie en een beleids toewijzing.
+
+1. Als u elk object wilt vastmaken, zoekt u het in het deel venster **resources** of in het deel venster **beleid** en selecteert u de vastmaken aan een pictogram van het tabblad bewerken. Wanneer u een object vastmaakt, voegt u dit toe aan het deel venster **evaluatie** van de extensie.
+1. Selecteer een van de objecten in het deel venster **evaluatie** en gebruik het pictogram selecteren voor evaluatie om dit te markeren als opgenomen in de evaluatie.
+1. Selecteer boven in het deel venster **evaluatie** het pictogram evaluatie uitvoeren. Er wordt een nieuw deel venster in Visual Studio code geopend met de resulterende evaluatie Details in JSON-indeling.
+
+> [!NOTE]
+> Als de geselecteerde beleids definitie een [AuditIfNotExists](../concepts/effects.md#auditifnotexists) of [DeployIfNotExists](../concepts/effects.md#deployifnotexists)is, gebruikt u in het deel venster **evaluatie** het plus-pictogram om een _gerelateerde_ resource te selecteren voor de controle op aanwezigheid.
+
+De evaluatie resultaten bevatten informatie over de beleids definitie en beleids toewijzing, samen met de eigenschap **policyEvaluations. evaluationResult** . De uitvoer ziet er ongeveer uit als in het volgende voor beeld:
+
+```json
+{
+    "policyEvaluations": [
+        {
+            "policyInfo": {
+                ...
+            },
+            "evaluationResult": "Compliant",
+            "effectDetails": {
+                "policyEffect": "Audit",
+                "existenceScope": "None"
+            }
+        }
+    ]
+}
+```
 
 ## <a name="sign-out"></a>Afmelden
 

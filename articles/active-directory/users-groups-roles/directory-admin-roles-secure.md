@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d845c1fbefd5c9a6119d089824eba6cc35228a3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7224f8fe1461727504a85df4a5fd95ba871258a8
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90055806"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92308732"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Bevoegde toegang beveiligen voor hybride implementaties en cloudimplementaties in Azure AD
 
@@ -302,7 +302,7 @@ Als uw Azure Active Directory is verbonden met on-premises Active Directory, vol
 
 #### <a name="establish-integrated-monitoring"></a>Geïntegreerde bewaking tot stand brengen
 
-De [Azure Security Center](../../security-center/security-center-intro.md):
+De [Azure Security Center](../../security-center/security-center-introduction.md):
 
 * Biedt geïntegreerde beveiligings bewaking en beleids beheer in uw Azure-abonnementen
 * Helpt bedreigingen te detecteren die anders niet worden opgemerkt
@@ -359,7 +359,7 @@ Fase 4 van het schema moet worden geïmplementeerd op zes maanden en verder. Vol
 Het beveiligen van bevoegde toegang is belang rijk voor het instellen van beveiligings garanties voor uw bedrijfs middelen. Het moet echter deel uitmaken van een volledig beveiligings programma dat permanente beveiligings garanties biedt. Dit programma moet elementen bevatten zoals:
 
 * Beleid
-* Operations
+* Bewerkingen
 * Gegevens beveiliging
 * Servers
 * Toepassingen

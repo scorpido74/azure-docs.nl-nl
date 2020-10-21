@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 9054fa72ee4204d7a09e6ce8de4fe6d4ed4dac81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77ea96b1bd1b1d661bb835e7bb48d58ce4c3e118
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89227709"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309158"
 ---
 # <a name="azure-security-baseline-for-service-fabric"></a>Azure-beveiligings basislijn voor Service Fabric
 
@@ -78,7 +78,7 @@ Overweeg het implementeren van Azure Web Application firewall (WAF) voor essenti
 
 * [DDoS-beveiliging configureren](../virtual-network/manage-ddos-protection.md)
 
-* [Meer informatie over Azure Security Center geïntegreerde bedreigings informatie](../security-center/threat-protection.md)
+* [Meer informatie over Azure Security Center geïntegreerde bedreigings informatie](../security-center/azure-defender.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -488,7 +488,7 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor AAD-gebruik
 
 * [Aanvullende Azure-abonnementen maken](../cost-management-billing/manage/create-subscription.md)
 
-* [Beheergroepen maken](../governance/management-groups/create.md)
+* [Beheergroepen maken](../governance/management-groups/create-management-group-portal.md)
 
 * [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
@@ -572,7 +572,7 @@ Voor het onderliggende platform dat door micro soft wordt beheerd, behandelt mic
 
 * [Meer informatie over versleuteling in de rest van Azure](../security/fundamentals/encryption-atrest.md)
 
-* [Door de klant beheerde versleutelings sleutels configureren](../storage/common/storage-encryption-keys-portal.md)
+* [Door de klant beheerde versleutelings sleutels configureren](../storage/common/customer-managed-keys-configure-key-vault.md)
 
 * [Schijf versleuteling inschakelen voor Azure Service Fabric cluster knooppunten in Windows](./service-fabric-enable-azure-disk-encryption-windows.md)
 
@@ -608,7 +608,7 @@ Gebruik een oplossing van derden voor het uitvoeren van evaluatie van beveiligin
 
 * [Beheerde chaos in Service Fabric clusters induceren](./service-fabric-controlled-chaos.md)
 
-* [Aanbevelingen voor de evaluatie van Azure Security Center-beveiligings problemen implementeren](../security-center/security-center-vulnerability-assessment-recommendations.md)
+* [Aanbevelingen voor de evaluatie van Azure Security Center-beveiligings problemen implementeren](../security-center/deploy-vulnerability-assessment-vm.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -698,7 +698,7 @@ Hoewel klassieke Azure-resources kunnen worden gedetecteerd via resource grafiek
 
 * [Aanvullende Azure-abonnementen maken](../cost-management-billing/manage/create-subscription.md)
 
-* [Beheergroepen maken](../governance/management-groups/create.md)
+* [Beheergroepen maken](../governance/management-groups/create-management-group-portal.md)
 
 * [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
@@ -1042,7 +1042,7 @@ Als u door de klant beheerde sleutels gebruikt, zorgt u ervoor dat Soft-Delete i
 
 * [Versleuteling-at-rest in Azure Storage](../storage/common/storage-service-encryption.md)
 
-* [Soft-Delete in Key Vault inschakelen](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
+* [Soft-Delete in Key Vault inschakelen](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -1074,7 +1074,7 @@ Markeer bovendien abonnementen met tags en maak een naamgevings systeem voor het
 
 * [Beveiligingswaarschuwingen in Azure Security Center](../security-center/security-center-alerts-overview.md)
 
-* [Labels gebruiken om uw Azure-resources te organiseren](../azure-resource-manager/management/tag-resources.md)
+* [Tags gebruiken om Azure-resources te organiseren](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center bewaking**: Ja
 

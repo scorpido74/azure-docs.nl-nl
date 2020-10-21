@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 61a1d7cb3a5f43aa8100f1c7e8a102ab19b803f5
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: e35206b5fa9466cda064c09f060f45b437fafd20
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932444"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329573"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Gebeurtenis analyse en visualisatie met Application Insights
 
@@ -32,7 +32,7 @@ Application Insights heeft een rijke out van de box-ervaring bij het gebruik van
 
 In het rechterdeel venster van de voor gaande afbeelding bevinden zich twee hoofd typen vermeldingen in de lijst: aanvragen en gebeurtenissen. Aanvragen zijn aanroepen naar de API van de app met behulp van HTTP-aanvragen in dit geval en gebeurtenissen zijn aangepaste gebeurtenissen, die als telemetrie fungeren, die u overal in uw code kunt toevoegen. U kunt het instrumenteren van uw toepassingen verder verkennen in [Application Insights-API voor aangepaste gebeurtenissen en metrische gegevens](../azure-monitor/app/api-custom-events-metrics.md). Als u op een aanvraag klikt, wordt er meer informatie weer gegeven, zoals wordt weer gegeven in de volgende afbeelding, inclusief gegevens die specifiek zijn voor Service Fabric, die worden verzameld in het Application Insights Service Fabric NuGet-pakket. Deze informatie is nuttig voor het oplossen van problemen en het weten wat de status van uw toepassing is, en al deze gegevens kunnen worden doorzocht in Application Insights
 
-![Details van Application Insights-aanvraag](media/service-fabric-diagnostics-event-analysis-appinsights/ai-request-details.png)
+![Scherm afbeelding met meer details, inclusief gegevens die specifiek zijn voor Service Fabric, die worden verzameld in het Application Insights Service Fabric NuGet-pakket.](media/service-fabric-diagnostics-event-analysis-appinsights/ai-request-details.png)
 
 Application Insights heeft een specifieke weer gave voor het uitvoeren van query's op alle gegevens in. Selecteer Metrics Explorer boven aan de pagina overzicht om naar de Application Insights portal te navigeren. Hier kunt u query's uitvoeren op basis van aangepaste gebeurtenissen die worden genoemd vóór, aanvragen, uitzonde ringen, prestatie meter items en andere metrische gegevens met behulp van de Kusto-query taal. In het volgende voor beeld worden alle aanvragen in het afgelopen uur weer gegeven.
 
@@ -48,7 +48,7 @@ Als u Event Flow gebruikt om gebeurtenissen te verzamelen, moet u ervoor zorgen 
 "outputs": [
     {
         "type": "ApplicationInsights",
-        "instrumentationKey": "***ADD INSTRUMENTATION KEY HERE***"
+        "instrumentationKey": "***ADD INSTRUMENTATION KEY HERE**_"
     }
 ]
 ```
@@ -65,7 +65,7 @@ Als u in .NET ontwikkelt en waarschijnlijk enkele van de programmeer modellen va
 
 ## <a name="navigating-the-application-insights-resource-in-azure-portal"></a>Navigeren door de Application Insights resource in Azure Portal
 
-Zodra u Application Insights hebt geconfigureerd als uitvoer voor uw gebeurtenissen en Logboeken, moeten de gegevens in een paar minuten worden weer gegeven in uw Application Insights resource. Ga naar de Application Insights resource waarmee u naar het Application Insights resource dashboard gaat. Selecteer **zoeken** in de Application Insights taak balk om de meest recente traceringen te zien die ze hebben ontvangen en om ze te kunnen filteren.
+Zodra u Application Insights hebt geconfigureerd als uitvoer voor uw gebeurtenissen en Logboeken, moeten de gegevens in een paar minuten worden weer gegeven in uw Application Insights resource. Ga naar de Application Insights resource waarmee u naar het Application Insights resource dashboard gaat. Selecteer _*zoeken*in het Application Insights taak balk om de meest recente traceringen te zien die zijn ontvangen en om ze te kunnen filteren.
 
 *Metrics Explorer* is een handig hulp middel voor het maken van aangepaste Dash boards op basis van metrische gegevens die uw toepassingen, services en cluster kunnen rapporteren. Zie [metrische gegevens verkennen in Application Insights](../azure-monitor/platform/metrics-charts.md) voor het instellen van een paar grafieken die u zelf hebt gemaakt op basis van de door u verzamelde informatie.
 

@@ -6,12 +6,12 @@ ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 87112af870100859ae008f77eefc4b58eac1b0fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9d645a16a59e34d1915cf9febde6b1f8a789355
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570741"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282096"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-with-autoscale-throughput"></a>Azure Cosmos-containers en-data bases maken met de door Voer van automatisch schalen
 
@@ -85,6 +85,6 @@ Raadpleeg deze [documentatie](how-to-choose-offer.md) voor meer informatie over 
 * Bekijk de [Veelgestelde vragen over automatisch schalen](autoscale-faq.md).
 * Meer informatie over hoe u [kunt kiezen tussen hand matige door Voer en automatisch schalen](how-to-choose-offer.md).
 * Meer informatie over het [inrichten van de door Voer voor automatisch schalen in een Azure Cosmos-data base of-container](how-to-provision-autoscale-throughput.md).
-* Meer informatie over [partitioneren](partition-data.md) in azure Cosmos db.
+* Meer informatie over [partitioneren](partitioning-overview.md) in azure Cosmos db.
 
 
