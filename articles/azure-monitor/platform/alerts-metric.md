@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 08/11/2020
 ms.subservice: alerts
-ms.openlocfilehash: 7b5332f68bb35e3c9b9ed82bb7bed2908e744e9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b1015573e4c01f01d82c7c152b66db80bef0aee
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88065859"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342158"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Metrische waarschuwing maken, bekijken en beheren met Azure Monitor
 
@@ -43,11 +43,11 @@ In de volgende procedure wordt beschreven hoe u een regel voor metrische waarsch
 8. Als de metriek dimensies heeft, wordt er een tabel weer gegeven. Selecteer een of meer waarden per dimensie.
     - De weer gegeven dimensie waarden zijn gebaseerd op de metrische gegevens van de afgelopen drie dagen.
     - Als de dimensie waarde die u zoekt niet wordt weer gegeven, klikt u op + om een aangepaste waarde toe te voegen.
-    - U kunt ook een van de dimensies **selecteren \* ** . **Selecteer \* ** de selectie wordt dynamisch geschaald naar alle huidige en toekomstige waarden voor een dimensie.
+    - U kunt ook **selecteren \* *_ voor een van de dimensies. _*Selecteer \* *_ de selectie wordt dynamisch geschaald naar alle huidige en toekomstige waarden voor een dimensie.
 
     De metrische waarschuwings regel evalueert de voor waarde voor alle combi Naties van geselecteerde waarden. Meer [informatie over hoe waarschuwingen voor multidimensionale metrische gegevens werken](alerts-metric-overview.md).
 
-9. Selecteer het type **drempel waarde** , de **operator**en het **samenvoegings type**. Hiermee wordt de logica bepaald die door de metrische waarschuwings regel wordt geëvalueerd.
+9. Selecteer _*drempel waarde** type, **operator**en **aggregatie type**. Hiermee wordt de logica bepaald die door de metrische waarschuwings regel wordt geëvalueerd.
     - Als u een **statische** drempel waarde gebruikt, gaat u door met het definiëren van een **drempelwaarde**. De metrische grafiek kan helpen om te bepalen wat een redelijke drempel waarde kan hebben.
     - Als u een **dynamische** drempel waarde gebruikt, gaat u door met het definiëren van de **drempel gevoeligheid**. De metrische grafiek geeft de berekende drempel waarden weer op basis van recente gegevens. Meer [informatie over de drempel waarde voor het type en gevoeligheids opties voor dynamische waarden](alerts-dynamic-thresholds.md).
 
@@ -154,8 +154,8 @@ Er zijn speciale Power shell-cmdlets beschikbaar voor metrische waarschuwings re
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Maak metrische waarschuwingen met behulp van Azure Resource Manager sjablonen](./alerts-metric-create-templates.md).
-- [Begrijpen hoe metrische waarschuwingen werken](alerts-metric-overview.md).
-- [Begrijpen hoe metrische waarschuwingen met dynamische drempel waarden werken](alerts-dynamic-thresholds.md).
+- [Waarschuwingen voor metrische gegevens maken met behulp van Azure Resource Manager sjablonen](./alerts-metric-create-templates.md)
+- [Begrijpen hoe metrische waarschuwingen werken](alerts-metric-overview.md)
+- [Begrijpen hoe metrische waarschuwingen met dynamische drempel waarden werken](alerts-dynamic-thresholds.md)
 - [Informatie over het web Hook-schema voor metrische waarschuwingen](./alerts-metric-near-real-time.md#payload-schema)
-
+- [Problemen met metrische waarschuwingen oplossen](alerts-troubleshoot-metric.md)

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 204e89bdf8c660a7e96438f8cb3b8a18aeaec306
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: fb1415874c42e3913d98d4a674732a4d9b98a0c5
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91742380"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123905"
 ---
 # <a name="tutorial-copy-data-from-azure-data-box-via-smb-preview"></a>Zelfstudie: Gegevens kopiëren uit Azure Data Box via SMB (preview)
 
@@ -82,7 +82,7 @@ Als u een hostcomputer met Windows Server gebruikt, voert u deze stappen uit om 
     ![Verbinding met de share maken via Verkenner 2](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-2.png)
 
     
-Als u een Linux-client gebruikt, gebruikt u de volgende opdracht om de SMB-share koppelen. De parameter "vers" hieronder is de versie van SMB die ondersteuning biedt voor uw Linux-host. Geef de juiste versie op in de onderstaande opdracht. Zie [Ondersteunde bestandssystemen voor Linux-clients](https://docs.microsoft.com/azure/databox/data-box-system-requirements#supported-file-systems-for-linux-clients) voor versies van SMB die door Data Box worden ondersteund 
+Als u een Linux-client gebruikt, gebruikt u de volgende opdracht om de SMB-share koppelen. De parameter "vers" hieronder is de versie van SMB die ondersteuning biedt voor uw Linux-host. Geef de juiste versie op in de onderstaande opdracht. Zie [Ondersteunde bestandssystemen voor Linux-clients](./data-box-system-requirements.md#supported-file-transfer-protocols-for-clients) voor versies van SMB die door Data Box worden ondersteund 
 
 ```console
 sudo mount -t nfs -o vers=2.1 169.254.143.85:/exportbvtdataset2_BlockBlob /home/databoxubuntuhost/databox
@@ -119,4 +119,3 @@ Ga naar de volgende zelfstudie om te lezen hoe u uw Data Box naar Microsoft verz
 
 > [!div class="nextstepaction"]
 > [Uw Azure Data Box verzenden naar Microsoft](./data-box-deploy-export-picked-up.md)
-

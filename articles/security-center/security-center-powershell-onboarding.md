@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2018
 ms.author: memildin
-ms.openlocfilehash: c805b35b2c05600f96983da42ea7206a09e2e3e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 20fce643defd12897eceb1accc7ade8b10548568
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447394"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341162"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>Onboarding naar Azure Security Center automatiseren met PowerShell
 
@@ -101,7 +101,7 @@ U kunt deze PowerShell-cmdlets nu gebruiken met automatiseringsscripts om de onb
 ## <a name="see-also"></a>Zie ook
 Zie het volgende artikel voor meer informatie over hoe u PowerShell kunt gebruiken om onboarding naar Security Center te automatiseren:
 
-* [Az.Security](https://docs.microsoft.com/powershell/module/az.security)
+* [Az.Security](/powershell/module/az.security)
 
 Zie het volgende artikel voor meer informatie over Security Center:
 

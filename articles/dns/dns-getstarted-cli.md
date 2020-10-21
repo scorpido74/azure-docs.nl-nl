@@ -6,15 +6,15 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
-ms.date: 3/11/2019
+ms.date: 10/20/2020
 ms.author: rohink
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a08a3bb8e01d827b806dae269b65569cb415404d
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 7d02095bbe3326209cff6b4e99858b2598c7a914
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91358590"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282229"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-cli"></a>Quickstart: Een Azure DNS-zone en -record maken met behulp van Azure CLI
 
@@ -23,6 +23,11 @@ Dit artikel begeleidt u stapsgewijs door de procedure voor het maken van uw eers
 Een DNS-zone wordt gebruikt om de DNS-records voor een bepaald domein te hosten. Als u uw domein wilt hosten in Azure DNS, moet u een DNS-zone maken voor die domeinnaam. Alle DNS-records voor uw domein worden vervolgens gemaakt binnen deze DNS-zone. Tot slot moet u de naamservers voor het domein configureren om de DNS-zone te publiceren naar internet. Deze stappen worden hieronder allemaal beschreven.
 
 Azure DNS biedt ook ondersteuning voor privé-DNS-zones. Voor meer informatie over privé-DNS-zones raadpleegt u [Using Azure DNS for private domains](private-dns-overview.md) (Azure DNS gebruiken voor privédomeinen). Zie voor een voorbeeld van het maken van een privé-DNS-zone [Aan de slag met Azure DNS-privézones met CLI](./private-dns-getstarted-cli.md).
+
+## <a name="prerequisites"></a>Vereisten
+
+- Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+- [Azure CLI versie 2.0.4 of hoger](/cli/azure/install-azure-cli) (als u Azure CLI lokaal uitvoert).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -92,11 +97,11 @@ Nu u een testzone hebt met daarin een DNS-record, kunt u de naamomzetting testen
 
    Er verschijnt een scherm dat er ongeveer als volgt uitziet:
 
-   ![In de schermafbeelding ziet u een opdrachtpromptvenster met een n s opzoek-opdracht en waarden voor Server, Adres, Naam en Adres.](media/dns-getstarted-portal/nslookup.PNG)
+   ![In de schermafbeelding ziet u een opdrachtpromptvenster met een n s lookup-opdracht en waarden voor Server, Adres, Naam en Adres.](media/dns-getstarted-portal/nslookup.PNG)
 
 De hostnaam **www\.contoso.xyz** wordt overeenkomstig uw configuratie omgezet in **10.10.10.10**. Met dit resultaat wordt gecontroleerd of de naamomzetting juist werkt.
 
-## <a name="delete-all-resources"></a>Alle resources verwijderen
+## <a name="clean-up-resources"></a>Resources opschonen
 
 Als u ze niet langer nodig hebt, kunt u alle resources die u in deze snelstartgids hebt gemaakt verwijderen door de resourcegroep te verwijderen:
 

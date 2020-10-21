@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: efec40e4236c00fd4792e9d6aa51943cf43838ca
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 434093df3465e363d95fb79342d1854b99583d08
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89001413"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091420"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v11-for-net"></a>Quickstart: Azure Blob Storage-clientbibliotheek v11 voor .NET
 
@@ -33,7 +33,7 @@ Gebruik de Azure Blob Storage-clientbibliotheek voor .NET voor het volgende:
 
 Aanvullende bronnen:
 
-* [API-referentiedocumentatie](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet)
+* [API-referentiedocumentatie](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
 * [Broncode van bibliotheek](https://github.com/Azure/azure-storage-net/tree/master/Blob)
 * [Pakket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)
 * [Voorbeelden](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob)
@@ -205,7 +205,7 @@ Deze voorbeeldcodefragmenten laten zien hoe u de volgende acties kunt uitvoeren 
 
 ### <a name="authenticate-the-client"></a>De client verifiëren
 
-Met de onderstaande code wordt gecontroleerd of de omgevingsvariabele een verbindingsreeks bevat die kan worden geparseerd om een [CloudStorageAccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount?view=azure-dotnet)-object te maken dat naar het opslagaccount wijst. Gebruik de [TryParse](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.tryparse?view=azure-dotnet)-methode om te controleren of de verbindingsreeks geldig is. Als `TryParse` is geslaagd, wordt de variabele `storageAccount` geïnitialiseerd en wordt `true` geretourneerd.
+Met de onderstaande code wordt gecontroleerd of de omgevingsvariabele een verbindingsreeks bevat die kan worden geparseerd om een [CloudStorageAccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount)-object te maken dat naar het opslagaccount wijst. Gebruik de [TryParse](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.tryparse)-methode om te controleren of de verbindingsreeks geldig is. Als `TryParse` is geslaagd, wordt de variabele `storageAccount` geïnitialiseerd en wordt `true` geretourneerd.
 
 Voeg deze code toe in de methode `ProcessAsync`:
 

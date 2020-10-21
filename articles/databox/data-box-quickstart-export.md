@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 07/17/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 01fdaa95dd396e5545b65bada2a9d6410169230b
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 789bd2f62673e7faf562d3a407bf2f0a4fd861bf
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052457"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125489"
 ---
 # <a name="quickstart-get-started-with-azure-data-box-to-export-data-from-azure"></a>Quickstart: Aan de slag met Azure Data Box om gegevens te exporteren vanuit Azure
 
@@ -28,7 +28,7 @@ Voordat u begint:
 
 * Zorg ervoor dat het abonnement dat u voor de Data Box-service gebruikt, een van de volgende typen is:
   * Microsoft Enterprise Agreement (EA). Meer informatie over [EA-abonnementen](https://azure.microsoft.com/pricing/enterprise-agreement/).
-  * Cloud Solution Provider (CSP). Meer informatie over het [Azure CSP-programma](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview).
+  * Cloud Solution Provider (CSP). Meer informatie over het [Azure CSP-programma](/azure/cloud-solution-provider/overview/azure-csp-overview).
   * Microsoft Azure Sponsorship. Meer informatie over het [Azure Sponsorship-programma](https://azure.microsoft.com/offers/ms-azr-0036p/).
 
 * U hebt eigenaars- of inzenderstoegang tot het abonnement nodig om een Data Box-order te kunnen maken.
@@ -96,7 +96,7 @@ Deze stap neemt ongeveer 5 tot 7 minuten in beslag.
 
 De duur van deze bewerking hangt af van de hoeveelheid gegevens en de snelheid van het netwerk.
 
-1. Als u een Windows-client gebruikt, gebruikt u een SMB-compatibel hulpprogramma voor het kopiëren van bestanden, zoals Robocopy. Voor een NFS-host gebruikt u de opdracht `cp` of `rsync` om de gegevens te kopiëren. Ga naar [Robocopy](https://technet.microsoft.com/library/ee851678.aspx) voor meer informatie over het gebruik van Robocopy om gegevens te kopiëren.
+1. Als u een Windows-client gebruikt, gebruikt u een SMB-compatibel hulpprogramma voor het kopiëren van bestanden, zoals Robocopy. Voor een NFS-host gebruikt u de opdracht `cp` of `rsync` om de gegevens te kopiëren. Ga naar [Robocopy](/previous-versions/technet-magazine/ee851678(v=msdn.10)) voor meer informatie over het gebruik van Robocopy om gegevens te kopiëren.
 2. Maak verbinding met de apparaatshares en begin met het kopiëren van gegevens naar de hostcomputer.
 <!-- 1. Connect to the device shares using the path:`\\<IP address of your device>\ShareName`. To get the share access credentials, go to the **Connect & copy** page in the local web UI of the Data Box. --> 
 

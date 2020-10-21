@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: c4af0e8eda818fcb57ea9e050b760c3754c46e2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a2854f4124a570de4fb467eb6a5d49a3214742e
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613642"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341818"
 ---
 # <a name="faq-for-customers-already-using-azure-monitor-logs"></a>Veelgestelde vragen voor klanten die Azure Monitor-logboeken al gebruiken<a name="existingloganalyticscust"></a>
 
@@ -26,13 +26,13 @@ ms.locfileid: "91613642"
 
 Als de Log Analytics-agent al is geïnstalleerd op een virtuele machine als Azure-extensie, wordt de bestaande werkruimte verbinding niet overschreven door Security Center. In plaats daarvan maakt Security Center gebruik van de bestaande werk ruimte. De virtuele machine wordt beveiligd, op voor waarde dat de oplossing ' Security ' of ' SecurityCenterFree ' is geïnstalleerd op de werk ruimte waarmee deze wordt gerapporteerd. 
 
-Er wordt een Security Center oplossing geïnstalleerd op de werk ruimte die is geselecteerd in het scherm voor het verzamelen van gegevens, als deze nog niet aanwezig is, en de oplossing wordt alleen toegepast op de relevante Vm's. Wanneer u een oplossing toevoegt, wordt deze automatisch geïmplementeerd op alle Windows-en Linux-agents die zijn verbonden met uw Log Analytics-werk ruimte. Met [doel items van oplossingen](../operations-management-suite/operations-management-suite-solution-targeting.md) kunt u een bereik Toep assen op uw oplossingen.
+Er wordt een Security Center oplossing geïnstalleerd op de werk ruimte die is geselecteerd in het scherm voor het verzamelen van gegevens, als deze nog niet aanwezig is, en de oplossing wordt alleen toegepast op de relevante Vm's. Wanneer u een oplossing toevoegt, wordt deze automatisch geïmplementeerd op alle Windows-en Linux-agents die zijn verbonden met uw Log Analytics-werk ruimte. Met [doel items van oplossingen](../azure-monitor/insights/solution-targeting.md) kunt u een bereik Toep assen op uw oplossingen.
 
 > [!TIP]
 > Als de Log Analytics-agent rechtstreeks op de virtuele machine is geïnstalleerd (niet als een Azure-extensie), installeert Security Center de Log Analytics agent niet en is de beveiligings controle beperkt.
 
 ## <a name="does-security-center-install-solutions-on-my-existing-log-analytics-workspaces-what-are-the-billing-implications"></a>Installeert Security Center oplossingen op mijn bestaande Log Analytics-werk ruimten? Wat zijn de gevolgen voor facturering?
-Als Security Center identificeert dat een virtuele machine al is verbonden met een werk ruimte die u hebt gemaakt, Security Center de oplossingen in deze werk ruimte op basis van uw prijs configuratie. De oplossingen worden alleen toegepast op de relevante Azure-Vm's, via [oplossings doelen](../operations-management-suite/operations-management-suite-solution-targeting.md), zodat de facturering op dezelfde manier blijft.
+Als Security Center identificeert dat een virtuele machine al is verbonden met een werk ruimte die u hebt gemaakt, Security Center de oplossingen in deze werk ruimte op basis van uw prijs configuratie. De oplossingen worden alleen toegepast op de relevante Azure-Vm's, via [oplossings doelen](../azure-monitor/insights/solution-targeting.md), zodat de facturering op dezelfde manier blijft.
 
 - **Azure Defender uit** : Security Center installeert de oplossing ' SecurityCenterFree ' in de werk ruimte. Er worden geen kosten in rekening gebracht.
 - **Met Azure Defender on** – Security Center installeert u de oplossing beveiliging in de werk ruimte.
@@ -40,7 +40,7 @@ Als Security Center identificeert dat een virtuele machine al is verbonden met e
    ![Oplossingen in de standaardwerk ruimte](./media/security-center-platform-migration-faq/solutions.png)
 
 ## <a name="i-already-have-workspaces-in-my-environment-can-i-use-them-to-collect-security-data"></a>Ik heb al werk ruimten in mijn omgeving. kan ik deze gebruiken voor het verzamelen van beveiligings gegevens?
-Als de Log Analytics-agent al is geïnstalleerd op een virtuele machine als Azure-extensie, Security Center gebruikt de bestaande verbonden werk ruimte. Er wordt een Security Center oplossing geïnstalleerd op de werk ruimte als deze nog niet aanwezig is, en de oplossing wordt alleen toegepast op de relevante Vm's via de [doel stellingen](../operations-management-suite/operations-management-suite-solution-targeting.md)van de oplossing.
+Als de Log Analytics-agent al is geïnstalleerd op een virtuele machine als Azure-extensie, Security Center gebruikt de bestaande verbonden werk ruimte. Er wordt een Security Center oplossing geïnstalleerd op de werk ruimte als deze nog niet aanwezig is, en de oplossing wordt alleen toegepast op de relevante Vm's via de [doel stellingen](../azure-monitor/insights/solution-targeting.md)van de oplossing.
 
 Als Security Center de Log Analytics-agent op Vm's installeert, worden de standaardwerk ruimte (n) gebruikt die door Security Center is gemaakt als Security Center niet naar een bestaande werk ruimte wijst.
 

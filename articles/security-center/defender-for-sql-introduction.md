@@ -8,16 +8,16 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 328a565dbb22a13c71a7001d43941e7be062dff9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7301f6bbb33c3eedff2e8c41edeaacb3df66d4c2
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449063"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342022"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>Inleiding tot Azure Defender voor SQL
 
-Azure Defender voor SQL bevat twee Azure Defender-abonnementen die het [gegevensbeveiligingspakket van Azure Security Center uitbreiden](../azure-sql/database/advanced-data-security.md) om uw databases en de bijbehorende gegevens te beveiligen, waar ze zich ook bevinden. 
+Azure Defender voor SQL bevat twee Azure Defender-abonnementen die het [gegevensbeveiligingspakket van Azure Security Center uitbreiden](../azure-sql/database/azure-defender-for-sql.md) om uw databases en de bijbehorende gegevens te beveiligen, waar ze zich ook bevinden. 
 
 ## <a name="availability"></a>Beschikbaarheid
 
@@ -69,5 +69,5 @@ In dit artikel bent u meer te weten gekomen over Azure Defender voor SQL.
 Raadpleeg de volgende artikelen voor gerelateerd materiaal: 
 
 - [Azure Defender voor SQL-servers inschakelen op computers](defender-for-sql-usage.md)
-- [Azure Defender voor SQL inschakelen voor databaseservers](../azure-sql/database/advanced-data-security.md)
+- [Azure Defender voor SQL inschakelen voor databaseservers](../azure-sql/database/azure-defender-for-sql.md)
 - [De lijst met Azure Defender-waarschuwingen voor SQL](alerts-reference.md#alerts-sql-db-and-warehouse)

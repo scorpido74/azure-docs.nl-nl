@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 6d95c07e5bec810ce82e98b2291b348fbcc2d8bc
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: 3952736af9cf7c3b720769cee6a58e3fc52a6111
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91812434"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127400"
 ---
 # <a name="what-is-azure-iot-central"></a>Wat is Azure IoT Central?
 
@@ -114,7 +114,7 @@ Met [taken](howto-run-a-job.md) kunt u losse of bulksgewijze updates toepassen o
 
 ## <a name="integrate-with-other-services"></a>Integreren met andere services
 
-Als een toepassingsplatform kunt u IoT Central gebruiken om uw IoT-gegevens te transformeren in de zakelijke inzichten die toepasbare resultaten opleveren. [Regels](./tutorial-create-telemetry-rules.md), [gegevensexport](./howto-export-data.md) en de [openbare REST-API](https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/) zijn voorbeelden van manieren om IoT Central te integreren met LOB-toepassingen:
+Als een toepassingsplatform kunt u IoT Central gebruiken om uw IoT-gegevens te transformeren in de zakelijke inzichten die toepasbare resultaten opleveren. [Regels](./tutorial-create-telemetry-rules.md), [gegevensexport](./howto-export-data.md) en de [openbare REST-API](/learn/modules/manage-iot-central-apps-with-rest-api/) zijn voorbeelden van manieren om IoT Central te integreren met LOB-toepassingen:
 
 ![Hoe IoT Central uw IoT-gegevens kan transformeren](media/overview-iot-central/transform.png)
 

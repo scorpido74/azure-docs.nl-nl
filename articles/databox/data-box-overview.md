@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 9f559587e1abca7642edfc6278018d760b55e774
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f946a657b5129f773319d73fb428fe0108bac20f
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86206231"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123559"
 ---
 # <a name="what-is-azure-data-box"></a>Wat is Azure Data Box?
 
@@ -144,7 +144,7 @@ Data Box kan bestanden overgedragen op basis van de regio waarin de service is g
 
 - **Beschikbaarheid van services** - Wanneer u Data Box gebruikt voor import- of exportorders, zie dan [Azure-producten beschikbaar per regio](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all) voor meer informatie over regionale beschikbaarheid. De exportfunctie in Data Box is momenteel beschikbaar als preview-versie. 
 
-    Voor importorders kan Data Box ook in de Azure Government-cloud worden geïmplementeerd. Zie [Wat is Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) voor meer informatie. 
+    Voor importorders kan Data Box ook in de Azure Government-cloud worden geïmplementeerd. Zie [Wat is Azure Government?](../azure-government/documentation-government-welcome.md) voor meer informatie. 
 
 - **Doelopslagaccounts**: De opslagaccounts waarin de gegevens worden opgeslagen, zijn beschikbaar in alle Azure-regio’s waar de service beschikbaar is.
 
@@ -154,7 +154,3 @@ Data Box kan bestanden overgedragen op basis van de regio waarin de service is g
 - De [Systeemvereisten voor Data Box](data-box-system-requirements.md) lezen.
 - Informatie over de [Limieten voor Data Box](data-box-limits.md).
 - [Azure Data Box](data-box-quickstart-portal.md) snel implementeren in de Azure-portal.
-
-
-
-

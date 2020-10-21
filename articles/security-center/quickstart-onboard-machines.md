@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
 zone_pivot_groups: non-azure-machines
-ms.openlocfilehash: bf31c2d4a90abeec62d785d0294a9c50f3b675ab
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 8fa72dcd857977474cf76eada500214bf8129aca
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993616"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340866"
 ---
 #  <a name="connect-your-non-azure-machines-to-security-center"></a>Uw niet-Azure-machines verbinden met Security Center
 
@@ -86,7 +86,7 @@ Om Azure Stack-VM's toe te kunnen voegen, hebt u de gegevens op de pagina **Agen
 1. Meld u aan bij uw **Azure Stack**-portal en open de pagina **Virtuele machines**.
 1. Selecteer de virtuele machine die u met Security Center wilt beveiligen.
     >[!TIP]
-    > Zie [deze quickstart voor virtuele Windows-machines](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-windows-portal) of [deze quickstart voor virtuele Linux-machines](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-linux-portal) voor meer informatie over het maken van een virtuele machine op Azure Stack.
+    > Zie [deze quickstart voor virtuele Windows-machines](/azure-stack/user/azure-stack-quick-windows-portal) of [deze quickstart voor virtuele Linux-machines](/azure-stack/user/azure-stack-quick-linux-portal) voor meer informatie over het maken van een virtuele machine op Azure Stack.
 1. Selecteer **Extensies**. De lijst met virtuele machine-extensies die op deze virtuele machine is geïnstalleerd, wordt weergegeven.
 1. Selecteer het tabblad **Toevoegen**. Het menu **Nieuwe resource** toont de lijst met beschikbare extensies voor virtuele machines.
 1. Selecteer achtereenvolgens de extensie **Azure Monitor, update- en configuratiebeheer** en **Maken**. De configuratiepagina **Extensie installeren** wordt geopend.

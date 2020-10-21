@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 12bb0b0098b5108bf780b88fc42b86861ea6fcdc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d9882f23096e19435566323de4d0ebaf7c0af3ef
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87439553"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331920"
 ---
 # <a name="overview-of-azure-farmbeats-preview"></a>Overzicht van Azure Notebooks (preview)
 
@@ -43,7 +43,7 @@ Datahub is ontworpen als een uitbreidbaar API-platform. We werken met veel meer 
 
 De Azure FarmBeats Accelerator is een voorbeeldwebtoepassing, die is gecompileerd boven op Datahub. Met de Accelerator kunt u snel aan de slag met uw gebruikersinterface en de ontwikkeling van modellen. De Azure FarmBeats Accelerator maakt gebruik van Azure FarmBeats-API's. Hiermee worden opgenomen sensorgegevens gevisualiseerd als grafieken en modelresultaten als kaarten. U kunt met de Accelerator bijvoorbeeld snel een landbouwbedrijf maken en eenvoudig een kaart met de vegetatie-index of een kaart met sensorlocaties voor dit landbouwbedrijf verkrijgen.
 
-## <a name="role-based-access-control-rbac"></a>Toegangsbeheer op basis van rollen (RBAC)
+## <a name="azure-role-based-access-control-azure-rbac"></a>Azure RBAC (op rollen gebaseerd toegangsbeheer van Azure)
 
 Een beheerder kan toegangsregels voor Azure FarmBeats definiëren met behulp van een van de vooraf gedefinieerde rollen. Rollen bepalen tot welke gebieden van de toepassing gebruikers toegang hebben en welke acties ze kunnen uitvoeren. Er zijn twee soorten rollen in Azure FarmBeats: voor gebruikers en voor partners.
 

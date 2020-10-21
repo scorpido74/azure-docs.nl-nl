@@ -9,12 +9,12 @@ ms.topic: overview
 ms.service: cost-management-billing
 ms.subservice: common
 ms.custom: ''
-ms.openlocfilehash: 7f4585d7199b44c82df9a03ea3244885da72d2fa
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 1e5f49fb48cfc9be9cfb6970641ad7b4b3c06fb5
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685167"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131051"
 ---
 # <a name="what-is-azure-cost-management--billing"></a>Wat is Azure Kostenbeheer en facturering?
 
@@ -112,7 +112,7 @@ Bekijk de [video over Azure Cost Management en Cloudyn](https://www.youtube.com/
 Azure heeft andere hulpprogramma’s die geen onderdeel uitmaken van de functieset van Azure Kostenbeheer en facturering. Ze spelen echter een belangrijke rol in het kostenbeheerproces. Zie de volgende koppelingen voor meer informatie over deze hulpprogramma’s.
 
 - [Azure Prijscalculator](https://azure.microsoft.com/pricing/calculator/), gebruik dit hulpprogramma om de initiële cloudkosten in te schatten.
-- [Azure Migrate](../migrate/migrate-overview.md), beoordeel de werkbelasting van uw huidige gegevenscentrum voor inzicht in wat er nodig is van een Azure-vervangingsoplossing.
+- [Azure Migrate](/azure/cost-management-billing/migrate-services-overview), beoordeel de werkbelasting van uw huidige gegevenscentrum voor inzicht in wat er nodig is van een Azure-vervangingsoplossing.
 - [Azure Advisor](../advisor/advisor-overview.md), identificeer ongebruikte VM’s en ontvang aanbevelingen over aankopen van Azure gereserveerde instanties.
 - [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/), gebruik uw huidige on-premises Windows Server- of SQL Server-licenties voor VM’s in Azure om te besparen.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/29/2019
 ms.author: memildin
-ms.openlocfilehash: 8cc12ba40b6722f75e4f3f4e8ce7023a0523c278
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 778feda8d72101d4ae2a0f0c27549701dfb53340
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92219663"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341410"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Endpoint Protection-evaluatie en aanbevelingen in Azure Security Center
 
@@ -29,9 +29,9 @@ Azure Security Center biedt status beoordelingen van [ondersteunde](security-cen
 
 ## <a name="windows-defender"></a>Windows Defender
 
-* Security Center raadt u **aan om Endpoint Protection-oplossingen te installeren op de virtuele machine** wanneer [Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps&preserve-view=true) wordt uitgevoerd en het resultaat **AMServiceEnabled is: False**
+* Security Center raadt u **aan om Endpoint Protection-oplossingen te installeren op de virtuele machine** wanneer [Get-MpComputerStatus](/powershell/module/defender/get-mpcomputerstatus?preserve-view=true&view=win10-ps) wordt uitgevoerd en het resultaat **AMServiceEnabled is: False**
 
-* Security Center raadt u **aan om problemen met de Endpoint Protection-status op uw computers op te lossen** wanneer [Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps&preserve-view=true) wordt uitgevoerd en een van de volgende situaties zich voordoet:
+* Security Center raadt u **aan om problemen met de Endpoint Protection-status op uw computers op te lossen** wanneer [Get-MpComputerStatus](/powershell/module/defender/get-mpcomputerstatus?preserve-view=true&view=win10-ps) wordt uitgevoerd en een van de volgende situaties zich voordoet:
 
   * Een van de volgende eigenschappen is onwaar:
 

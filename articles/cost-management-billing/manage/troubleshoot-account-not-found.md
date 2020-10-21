@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: f701e41c62336bcd7638360a27a0fb4c3ce3ec7d
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 71561f6ecdde09f259e54260e7bab4dcc0e85c98
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686663"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132632"
 ---
 # <a name="troubleshoot-viewing-your-billing-account-in-the-azure-portal"></a>Problemen met het bekijken van uw factureringsrekening in de Azure-portal oplossen
 
@@ -59,7 +59,7 @@ Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](
 
 De volgende artikelen over facturering en abonnementen kunnen nuttig zijn bij het oplossen van problemen.
 
-- [Geweigerde kaart](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-declined-card)
-- [Problemen met aanmelding bij een abonnement](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-sign-in-issue)
-- [Geen abonnementen gevonden](https://docs.microsoft.com/azure/cost-management-billing/manage/no-subscriptions-found)
-- [Weergave voor bedrijfskosten is uitgeschakeld](https://docs.microsoft.com/azure/cost-management-billing/manage/enterprise-mgmt-grp-troubleshoot-cost-view)
+- [Geweigerde kaart](./troubleshoot-declined-card.md)
+- [Problemen met aanmelding bij een abonnement](./troubleshoot-sign-in-issue.md)
+- [Geen abonnementen gevonden](./no-subscriptions-found.md)
+- [Weergave voor bedrijfskosten is uitgeschakeld](./enterprise-mgmt-grp-troubleshoot-cost-view.md)

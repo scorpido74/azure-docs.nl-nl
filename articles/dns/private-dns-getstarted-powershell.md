@@ -5,14 +5,14 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
-ms.date: 10/05/2019
+ms.date: 10/20/2020
 ms.author: rohink
-ms.openlocfilehash: 0db53bcd6516bd52e2796deaa49fe0dd582e0588
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fd795c9e251a7c4c0c8cbea5ce6c48cec3535484
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "76939394"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92311761"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-azure-powershell"></a>Snelstart: een privé- Azure DNS-zone maken met behulp van Azure PowerShell
 
@@ -22,19 +22,13 @@ Dit artikel leidt u stapsgewijs door de procedure voor het maken van uw eerste p
 
 Een DNS-zone wordt gebruikt om de DNS-records voor een bepaald domein te hosten. Als u uw domein wilt hosten in Azure DNS, moet u een DNS-zone maken voor die domeinnaam. Alle DNS-records voor uw domein worden vervolgens gemaakt binnen deze DNS-zone. Als u een privé-DNS-zone wilt publiceren naar uw virtuele netwerk, geeft u de lijst met virtuele netwerken op die records in de zone mogen omzetten.  Deze worden *gekoppelde* virtuele netwerken genoemd. Als automatische registratie is ingeschakeld, werkt Azure DNS ook de zonerecords bij wanneer er een virtuele machine wordt gemaakt, het IP-adres ervan wordt gewijzigd of deze wordt verwijderd.
 
-In dit artikel leert u het volgende:
-
-> [!div class="checklist"]
-> * Een privé-DNS-zone maken
-> * Virtuele testmachines maken
-> * Een extra DNS-record maken
-> * De privézone testen
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+## <a name="prerequisites"></a>Vereisten
 
 Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 U kunt deze quickstart desgewenst voltooien met behulp van de [Azure CLI](private-dns-getstarted-cli.md).
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-the-resource-group"></a>De resourcegroep maken
 
@@ -197,7 +191,7 @@ Herhaal voor myVM02.
    PS C:\>
    ```
 
-## <a name="delete-all-resources"></a>Alle resources verwijderen
+## <a name="clean-up-resources"></a>Resources opschonen
 
 Verwijder resourcegroep **MyAzureResourceGroup** als u deze niet langer nodig hebt om de resources te verwijderen die u in dit artikel hebt gemaakt.
 

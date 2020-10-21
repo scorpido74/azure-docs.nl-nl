@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 086feb3aa7c9a38756fded58538eb22e094a5960
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9cd5136d69e4b14aa50a96d20f3187ce88db6e96
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90906797"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320493"
 ---
 # <a name="what-is-azure-static-web-apps-preview"></a>Wat is Azure Static Web Apps Preview?
 
@@ -44,7 +44,7 @@ Met Static Web Apps worden statische activa gescheiden van een traditionele webs
 
 ## <a name="what-you-can-do-with-static-web-apps"></a>Wat u kunt doen met Static Web Apps
 
-- **Moderne webtoepassingen bouwen** met JavaScript-frameworks en bibliotheken, zoals [Angular](getting-started.md?tabs=angular), [React](getting-started.md?tabs=react), [Svelte](https://docs.microsoft.com/learn/modules/publish-app-service-static-web-app-api/), [Vue](getting-started.md?tabs=react) of [Blazor](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor) gebruiken om WebAssembly-toepassingen te maken, met een back-end van [Azure Functions](apis.md).
+- **Moderne webtoepassingen bouwen** met JavaScript-frameworks en bibliotheken, zoals [Angular](getting-started.md?tabs=angular), [React](getting-started.md?tabs=react), [Svelte](/learn/modules/publish-app-service-static-web-app-api/), [Vue](getting-started.md?tabs=react) of [Blazor](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor) gebruiken om WebAssembly-toepassingen te maken, met een back-end van [Azure Functions](apis.md).
 - **Statische sites publiceren** met frameworks zoals [Gatsby](publish-gatsby.md), [Hugo](publish-hugo.md), [VuePress](publish-vuepress.md).
 - **Webtoepassingen implementeren** met frameworks zoals [Nuxt.js](deploy-nextjs.md) en [Nuxt.js](deploy-nuxtjs.md).
 

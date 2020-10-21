@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 01/09/2020
-ms.openlocfilehash: d6b5d337090ebd664e855be47128e76d3c61e151
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4bb50b513a9b09db4a8d59d32816b702bff250f2
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840435"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125966"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-micro-fulfillment-center-application-template"></a>Zelfstudie: Een toepassingssjabloon voor een micro-fulfillmentcentrum implementeren en doorlopen
 
@@ -47,7 +47,7 @@ Een nieuwe app voor het micro-fulfillmentcentrum maken die gebruikmaakt van prev
 
 1. Als u een Azure-abonnement hebt, voert u uw map, Azure-abonnement en locatie in. Als u geen abonnement hebt, kunt u een gratis proefversie van zeven dagen inschakelen en de vereiste contactgegevens aanvullen.  
 
-    Zie de quickstart [Create an Azure IoT Central application](../preview/quick-deploy-iot-central.md) (Een Azure IoT Central-toepassing maken) voor meer informatie over mappen en abonnementen.
+    Zie de quickstart [Create an Azure IoT Central application](../core/quick-deploy-iot-central.md) (Een Azure IoT Central-toepassing maken) voor meer informatie over mappen en abonnementen.
 
 1. Selecteer **Maken**.
 
@@ -96,4 +96,4 @@ Meer informatie over
 > [!div class="nextstepaction"]
 > [Oplossingsarchitectuur voor het micro-fulfillmentcentrum](./architecture-micro-fulfillment-center.md)
 * Meer informatie over de [Azure IoT Central-retailsjablonen](./overview-iot-central-retail.md)
-* Meer informatie over [Azure IoT Central](../preview/overview-iot-central.md)
+* Meer informatie over [Azure IoT Central](../core/overview-iot-central.md)

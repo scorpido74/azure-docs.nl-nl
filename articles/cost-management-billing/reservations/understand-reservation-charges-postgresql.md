@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: 51b2f4964c01efbfc82008134d47f09648a772ff
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: d6b32df7264066daa0bc7298a04453dad4fc9937
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88681971"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147247"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-database-for-postgresql-single-server"></a>Hoe reserveringskorting wordt toegepast op Azure Database for PostgreSQL Single-servers
 
@@ -30,7 +30,7 @@ Korting voor gereserveerde capaciteit van Azure Database for PostgreSQL Single-s
 
 In de volgende voorbeelden ziet u hoe de korting voor de gereserveerde capaciteit voor de Azure Database for PostgreSQL Single-server wordt toegepast, afhankelijk van hoeveel kernen u hebt aangeschaft en wanneer deze worden uitgevoerd.
 
-* **Voorbeeld 1**: U koopt gereserveerde capaciteit voor een Azure Database for PostgreSQL Single-server met 8 vCores. Als u actieve Azure Database for PostgreSQL Single-servers met 16 vCores uitvoert die met de rest van de reserveringskenmerken overeenkomen, betaalt u voor 8 vCores van uw PostgreSQL Single-serverrekengebruik de prijs per gebruik en krijgt u op de andere 8 vCores een uur lang reserveringskorting.</br>
+**Voorbeeld 1**: U koopt gereserveerde capaciteit voor een Azure Database for PostgreSQL Single-server met 8 vCores. Als u actieve Azure Database for PostgreSQL Single-servers met 16 vCores uitvoert die met de rest van de reserveringskenmerken overeenkomen, betaalt u voor 8 vCores van uw PostgreSQL Single-serverrekengebruik de prijs per gebruik en krijgt u op de andere 8 vCores een uur lang reserveringskorting.</br>
 
 Voor de rest van deze voorbeelden wordt ervan uitgegaan dat u gereserveerde capaciteit voor een Azure Database for PostgreSQL Single-server met 16 vCores koopt en dat de rest van de reserveringskenmerken overeenkomen met de actieve PostgreSQL Single-servers.
 
@@ -40,7 +40,7 @@ Voor de rest van deze voorbeelden wordt ervan uitgegaan dat u gereserveerde capa
 
 * **Voorbeeld 4**: U voert van 13.00 tot 13.45 uur een Azure Database for PostgreSQL Single-server met 16 vCores uit. Van 13.30 tot 14.00 uur voert u nog een Azure Database for PostgreSQL Single-server met 16 vCores uit. Voor de overlapping van 15 minuten wordt de prijs voor betalen per gebruik in rekening gebracht. De reserveringskorting geldt voor het rekengebruik voor de rest van de tijd.
 
-Raadpleeg [Meer informatie over Azure-reserveringsgebruik](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea) voor meer informatie over en inzicht in hoe uw Azure-reserveringen worden toegepast in uw gebruiksrapporten voor facturering.
+Raadpleeg [Meer informatie over Azure-reserveringsgebruik](./understand-reserved-instance-usage-ea.md) voor meer informatie over en inzicht in hoe uw Azure-reserveringen worden toegepast in uw gebruiksrapporten voor facturering.
 
 ## <a name="next-steps"></a>Volgende stappen
 
