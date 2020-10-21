@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: 0c7838b291ca5ba1747b08d7e8fcc6d17cc35f7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9eac64eff8c87046fd1ce76ee71475fda79ac6f7
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91802222"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329250"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Azure Private Link gebruiken om netwerken veilig te verbinden met Azure Monitor
 
@@ -41,6 +41,9 @@ Azure Monitor bereik van een persoonlijke koppeling is een groeperings bron voor
 ## <a name="planning-based-on-your-network"></a>Planning op basis van uw netwerk
 
 Voordat u uw AMPLS-bronnen instelt, moet u rekening houden met de vereisten voor netwerk isolatie. Evalueer de toegang tot het open bare Internet van uw virtuele netwerken en de toegangs beperkingen van elk van uw Azure Monitor resources (dat wil zeggen, Application Insights onderdelen en Log Analytics werk ruimten).
+
+> [!NOTE]
+> Hub-en-spoke-netwerken, of een andere topologie van peered netwerken, kunnen een privé-koppeling instellen tussen de hub (hoofd) VNet en de relevante Azure Monitor resources, in plaats van een persoonlijke koppeling op elke en elk VNet in te stellen. Dit is vooral handig als de Azure Monitor bronnen die door deze netwerken worden gebruikt, worden gedeeld. Als u echter wilt toestaan dat elk VNet toegang krijgt tot een afzonderlijke set bewakings resources, maakt u een persoonlijke koppeling naar een toegewezen AMPLS voor elk netwerk.
 
 ### <a name="evaluate-which-virtual-networks-should-connect-to-a-private-link"></a>Evalueren welke virtuele netwerken verbinding moeten maken met een privé-koppeling
 
@@ -94,7 +97,7 @@ Maak eerst een Azure Monitor-bron voor een persoonlijk koppelings bereik.
 2. Klik op **maken**.
 3. Kies een abonnement en resource groep.
 4. Geef een naam op voor de AMPLS. Het is raadzaam om een naam te gebruiken die duidelijk is wat doel is en de beveiligings grens waarin de scope wordt gebruikt, zodat iemand niet per ongeluk netwerk beveiligings grenzen afbreekt. Bijvoorbeeld ' AppServerProdTelem '.
-5. Klik op **Controleren + maken**. 
+5. Klik op **Controleren en maken**. 
 
    ![Azure Monitor bereik voor persoonlijke koppelingen maken](./media/private-link-security/ampls-create-1d.png)
 

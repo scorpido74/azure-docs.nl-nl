@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: djpmsft
 ms.author: daperlov
 ms.date: 08/31/2020
-ms.openlocfilehash: a936fbec23a38c5b96c678b38b92eed9346b88bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c20bb77711833a1a17082e25e31d4a2e14db5bf9
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91567533"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328162"
 ---
 # <a name="global-parameters-in-azure-data-factory"></a>Globale para meters in Azure Data Factory
 
@@ -52,7 +52,7 @@ Voor de meeste gebruiks voorbeelden wordt aanbevolen globale para meters in de A
 
 ![In ARM-sjabloon toevoegen](media/author-global-parameters/include-arm-template.png)
 
-Het toevoegen van globale para meters aan de ARM-sjabloon voegt een instelling op fabrieks niveau toe die andere instellingen op fabrieks niveau kan overschrijven, zoals een door de klant beheerde sleutel of een Git-configuratie in andere omgevingen. Als u deze instellingen hebt ingeschakeld in een omgeving met verhoogde bevoegdheden, zoals bedoeld of PROD, is het beter om globale para meters te implementeren via een Power shell-script in de hieronder gemarkeerde stappen.
+Door algemene para meters toe te voegen aan de ARM-sjabloon, wordt een instelling op fabrieks niveau toegevoegd waarmee andere instellingen op fabrieks niveau, zoals een door de klant beheerde sleutel of Git-configuratie in andere omgevingen, worden overschreven. Als u deze instellingen hebt ingeschakeld in een omgeving met verhoogde bevoegdheden, zoals bedoeld of PROD, is het beter om globale para meters te implementeren via een Power shell-script in de hieronder gemarkeerde stappen.
 
 ### <a name="deploying-using-powershell"></a>Implementeren met Power shell
 

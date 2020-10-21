@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/22/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6de0a6632c53055dd3d3f428481dcc465b67ef6e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb6869aa8bc7ede7d2047abf8eddc98b01f567fa
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91568009"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280812"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>Controleren en fouten opsporen met metrische gegevens in Azure Cosmos DB
 
@@ -59,7 +59,7 @@ Een goede kardinaliteit van uw partitie sleutels is essentieel voor elke schaal 
 
 :::image type="content" source="media/use-metrics/metrics-17.png" alt-text="Meet gegevens voor prestaties Cosmos DB in Azure Portal":::
 
-Een ongelijke doorvoer distributie kan leiden tot *dynamische* partities, wat kan leiden tot getraagde aanvragen en mogelijk opnieuw partitioneert. Zie [partitioneren en schalen in azure Cosmos DB](./partition-data.md)voor meer informatie over partitioneren in azure Cosmos db.
+Een ongelijke doorvoer distributie kan leiden tot *dynamische* partities, wat kan leiden tot getraagde aanvragen en mogelijk opnieuw partitioneert. Zie [partitioneren en schalen in azure Cosmos DB](./partitioning-overview.md)voor meer informatie over partitioneren in azure Cosmos db.
 
 ## <a name="determine-the-storage-distribution-across-partitions"></a>De opslag distributie op meerdere partities bepalen
 
@@ -71,7 +71,7 @@ U kunt de hoofd oorzaak van de partitie sleutel scheef trekken door te klikken o
 
 :::image type="content" source="media/use-metrics/metrics-05.png" alt-text="Meet gegevens voor prestaties Cosmos DB in Azure Portal":::
 
-Nadat u hebt vastgesteld welke partitie sleutel het hellen van de verdeling veroorzaakt, moet u de container wellicht opnieuw partitioneren met een meer gedistribueerde partitie sleutel. Zie [partitioneren en schalen in azure Cosmos DB](./partition-data.md)voor meer informatie over partitioneren in azure Cosmos db.
+Nadat u hebt vastgesteld welke partitie sleutel het hellen van de verdeling veroorzaakt, moet u de container wellicht opnieuw partitioneren met een meer gedistribueerde partitie sleutel. Zie [partitioneren en schalen in azure Cosmos DB](./partitioning-overview.md)voor meer informatie over partitioneren in azure Cosmos db.
 
 ## <a name="compare-data-size-against-index-size"></a>Gegevens grootte vergelijken met index grootte
 

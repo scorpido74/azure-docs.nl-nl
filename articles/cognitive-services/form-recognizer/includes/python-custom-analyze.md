@@ -5,18 +5,18 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 11/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 88be632e17912012618ab559f22f97487ad26c9c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 262774233871a46cf971d95a6cf5d810adf9746a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88723487"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961783"
 ---
 ## <a name="analyze-forms-for-key-value-pairs-and-tables"></a>Formulieren analyseren voor sleutel-waardeparen en tabellen
 
 U gaat nu uw pas getrainde model gebruiken voor het analyseren van een document en het extraheren van de sleutel-waardeparen en tabellen ervan. Roep de API **[Formulier analyseren](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)** aan door de volgende code uit te voeren in een nieuw Python-script. Voordat u het script uitvoert, moet u de volgende wijzigingen aanbrengen:
 
-1. Vervang `<file path>` door het bestandspad van uw formulier (bijvoorbeeld C:\temp\file.pdf). Dit kan ook de URL zijn van een extern bestand. Voor deze quickstart kunt u de bestanden in de map **Test** van de [set met voorbeeldgegevens](https://go.microsoft.com/fwlink/?linkid=2090451) gebruiken.
+1. Vervang `<file path>` door het bestandspad van uw formulier (bijvoorbeeld C:\temp\file.pdf). Dit kan ook de URL zijn van een extern bestand. Voor deze quickstart kunt u de bestanden in de map **Testen** van de [set met voorbeeldgegevens](https://go.microsoft.com/fwlink/?linkid=2090451) gebruiken (downloaden en extraheren van *sample_data.zip*).
 1. Vervang `<model_id>` door de model-id in de vorige stap.
 1. Vervang `<endpoint>` door het eindpunt dat u hebt verkregen met uw Form Recognizer-abonnementssleutel. U vindt deze op het tabblad **Overzicht** van uw Form Recognizer-resource.
 1. Vervang `<file type>` door het bestandstype. Ondersteunde typen zijn: `application/pdf`, `image/jpeg`, `image/png`, `image/tiff`.

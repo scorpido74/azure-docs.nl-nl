@@ -229,6 +229,8 @@
   items:
     - name: Documentatie over intentieherkenning
       href: index-intent-recognition.yml
+    - name: Overzicht van intentieherkenning
+      href: intent-recognition.md
     - name: Quickstart voor intentieherkenning
       href: quickstarts/intent-recognition.md
     - name: Instructiegidsen

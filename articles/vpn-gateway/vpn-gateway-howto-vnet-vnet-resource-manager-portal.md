@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/19/2020
 ms.author: cherylmc
-ms.openlocfilehash: 0ccf537cb7f73adfcdfab5d0de10f7c282dc22f0
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: e8323c5a290ee2a78e2a3a131d50883d5f8c5a28
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207608"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330985"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>Een VPN-gatewayverbinding tussen VNet's configureren met behulp van Azure Portal
 
@@ -132,6 +132,8 @@ In dit artikel leest u hoe u VNet's verbindt met behulp van het verbindingstype 
 Als u al beschikt over een VNet, controleert u of de instellingen compatibel zijn met het ontwerp van de VPN-gateway. Let vooral op eventuele subnetten die met andere netwerken overlappen. Als u overlappende subnetten hebt, werkt de verbinding mogelijk niet goed.
 
 ### <a name="to-create-a-virtual-network"></a>Een virtueel netwerk maken
+
+[!INCLUDE [About cross-premises addresses](../../includes/vpn-gateway-cross-premises.md)]
 
 [!INCLUDE [Create a virtual network](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
 

@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: b0f2a6fcd888afd7eb99a810fad6e876fe6ff4ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8049df552c9754a1674c9e38e6d9b9b2cea3bd85
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617057"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058213"
 ---
 # <a name="tutorial-configure-replication-between-two-managed-instances"></a>Zelfstudie: Replicatie tussen twee beheerde instanties configureren
 
@@ -48,7 +48,7 @@ Deze zelfstudie is bedoeld voor een ervaren doelgroep en er wordt verondersteld 
 
 Voor het configureren van een Azure SQL Managed Instance die als een uitgever en/of een distributor moet fungeren, is het volgende vereist:
 
-- De uitgever van het beheerde exemplaar moet zich in hetzelfde virtuele netwerk als de distributor en abonnee bevinden, of [peering van virtuele netwerken](../../virtual-network/tutorial-connect-virtual-networks-powershell.md) is tot stand gebracht tussen de virtuele netwerken van alle drie de entiteiten. 
+- De uitgever van het beheerde exemplaar moet zich in hetzelfde virtuele netwerk als de distributor en abonnee bevinden, of er zijn [VPN-gateways](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) tot stand gebracht tussen de virtuele netwerken van alle drie de entiteiten. 
 - Connectiviteit maakt gebruik van SQL-verificatie tussen replicatiedeelnemers.
 - Een Azure Storage-accountshare voor de replicatiewerkmap.
 - Poort 445 (TCP uitgaand) is geopend in de regels van de netwerkbeveiligingsgroep voor de beheerde exemplaren voor toegang tot de Azure-bestandsshare.  Als u fout `failed to connect to azure storage \<storage account name> with os error 53` ontvangt, moet u een uitgaande regel toevoegen aan de NSG van het betreffende SQL Managed Instance-subnet.

@@ -4,12 +4,12 @@ description: Hierin wordt beschreven hoe u Azure Resource Manager-sjablonen impl
 ms.topic: conceptual
 ms.date: 10/13/2020
 ms.custom: github-actions-azure,subject-armqs
-ms.openlocfilehash: b5852a65b4ed3c7cc73352fed37eeff035f8563c
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: f982ecd208dfd30757050df48c783718ed2b917a
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92106787"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282841"
 ---
 # <a name="deploy-azure-resource-manager-templates-by-using-github-actions"></a>Azure Resource Manager sjablonen implementeren met behulp van GitHub-acties
 
@@ -40,13 +40,19 @@ Het bestand heeft twee secties:
 
 U kunt een [Service-Principal](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) maken met de opdracht [AZ AD SP create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true) in de [Azure cli](/cli/azure/). Voer deze opdracht uit met [Azure Cloud shell](https://shell.azure.com/) in het Azure portal of door de knop **try it** te selecteren.
 
+Maak een resource groep als u deze nog niet hebt. 
+
+```azurecli-interactive
+    az group create -n {MyResourceGroup}
+```
+
 Vervang de tijdelijke aanduiding door `myApp` de naam van uw toepassing. 
 
 ```azurecli-interactive
-   az ad sp create-for-rbac --name {myApp} --role contributor --scopes /subscriptions/{subscription-id}/resourceGroups/{resource-group} --sdk-auth
+   az ad sp create-for-rbac --name {myApp} --role contributor --scopes /subscriptions/{subscription-id}/resourceGroups/{MyResourceGroup} --sdk-auth
 ```
 
-In het bovenstaande voor beeld vervangt u de tijdelijke aanduidingen door de abonnements-ID en de naam van de resource groep. De uitvoer is een JSON-object met de roltoewijzings referenties die toegang bieden tot uw App Service-app, vergelijkbaar met hieronder. Kopieer dit JSON-object voor later.
+In het bovenstaande voor beeld vervangt u de tijdelijke aanduidingen door de abonnements-ID en de naam van de resource groep. De uitvoer is een JSON-object met de roltoewijzings referenties die toegang bieden tot uw App Service-app, vergelijkbaar met hieronder. Kopieer dit JSON-object voor later. U hebt de secties alleen nodig met de `clientId` waarden,, `clientSecret` `subscriptionId` en `tenantId` . 
 
 ```output 
   {
@@ -73,9 +79,9 @@ U moet geheimen maken voor uw Azure-referenties, resource groep en abonnementen.
 
 1. Plak de volledige JSON-uitvoer van de Azure CLI-opdracht in het veld waarde Value van het geheim. Geef het geheim de naam `AZURE_CREDENTIALS` .
 
-1. Maak nog een geheim met de naam `AZURE_RG` . Voeg de naam van uw resource groep toe aan het veld waarde van het geheim. 
+1. Maak nog een geheim met de naam `AZURE_RG` . Voeg de naam van uw resource groep toe aan het veld waarde van het geheim (bijvoorbeeld: `myResourceGroup` ). 
 
-1. Maak een aanvullend geheim met de naam `AZURE_SUBSCRIPTION` . Voeg uw abonnements-ID toe aan het veld waarde van het geheim. 
+1. Maak een aanvullend geheim met de naam `AZURE_SUBSCRIPTION` . Voeg uw abonnements-ID toe aan het veld waarde van het geheim (bijvoorbeeld: `90fd3f9d-4c61-432d-99ba-1273f236afa2` ). 
 
 ## <a name="add-resource-manager-template"></a>Resource Manager-sjabloon toevoegen
 
@@ -114,17 +120,19 @@ Het werk stroom bestand moet worden opgeslagen in de map **. github/werk stromen
             creds: ${{ secrets.AZURE_CREDENTIALS }}
      
           # Deploy ARM template
-        - uses: azure/arm-deploy@v1
         - name: Run ARM deploy
+          uses: azure/arm-deploy@v1
           with:
             subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
             resourceGroupName: ${{ secrets.AZURE_RG }}
             template: ./azuredeploy.json
-            parameters: storageAccountType=Standard_LRS
+            parameters: storageAccountType=Standard_LRS 
         
           # output containerName variable from template
         - run: echo ${{ steps.deploy.outputs.containerName }}
     ```
+    > [!NOTE]
+    > U kunt in plaats daarvan een JSON-indelings parameter bestand opgeven in de actie ARM implementeren (bijvoorbeeld: `.azuredeploy.parameters.json` ).  
 
     De eerste sectie van het werk stroom bestand bevat:
 

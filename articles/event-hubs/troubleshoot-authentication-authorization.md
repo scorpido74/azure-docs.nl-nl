@@ -3,12 +3,12 @@ title: Problemen met verificatie en autorisatie oplossen-Azure Event Hubs
 description: In dit artikel vindt u informatie over het oplossen van problemen met verificatie en autorisatie met Azure Event Hubs.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: cd5f48dfb146a027f0b95b4ddea3dc054a315c6e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 368fd8efda1b828f99bc41da0743768989c1a601
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91566224"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329607"
 ---
 # <a name="troubleshoot-authentication-and-authorization-issues---azure-event-hubs"></a>Problemen met verificatie en autorisatie oplossen-Azure Event Hubs
 Het artikel problemen [met connectiviteit oplossen](troubleshooting-guide.md) bevat tips voor het oplossen van verbindings problemen met Azure Event hubs. In dit artikel vindt u tips en aanbevelingen voor het oplossen van problemen met verificatie en autorisatie met Azure Event Hubs. 
@@ -21,7 +21,7 @@ Als u Azure Active Directory (Azure AD) gebruikt om te verifiëren en autorisere
 - [Gegevens verzender van Azure Event hubs](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver) voor de toegang verzenden.
 - [Gegevens ontvanger van Azure Event hubs](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender) voor de toegang ontvangen.
 
-Zie [schema register rollen](schema-registry-overview.md#role-based-access-control)voor ingebouwde rollen in het schema register.
+Zie [schema register rollen](schema-registry-overview.md#azure-role-based-access-control)voor ingebouwde rollen in het schema register.
 
 ### <a name="resource-scopes"></a>Resource bereik
 - **Consumenten groep**: in dit bereik is roltoewijzing alleen van toepassing op deze entiteit. Momenteel biedt de Azure Portal geen ondersteuning voor het toewijzen van een Azure-rol aan een beveiligingsprincipal op dit niveau. 

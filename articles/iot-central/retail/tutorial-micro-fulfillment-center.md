@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 01/09/2020
-ms.openlocfilehash: 28afa98313ef1c9577e90ed161a1d20cbf5faf75
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: d6b5d337090ebd664e855be47128e76d3c61e151
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91440203"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91840435"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-micro-fulfillment-center-application-template"></a>Zelfstudie: Een toepassingssjabloon voor een micro-fulfillmentcentrum implementeren en doorlopen
 
@@ -96,4 +96,4 @@ Meer informatie over
 > [!div class="nextstepaction"]
 > [Oplossingsarchitectuur voor het micro-fulfillmentcentrum](./architecture-micro-fulfillment-center.md)
 * Meer informatie over de [Azure IoT Central-retailsjablonen](./overview-iot-central-retail.md)
-* Meer informatie over andere [Azure IoT Central-overzichten](../preview/overview-iot-central.md)
+* Meer informatie over [Azure IoT Central](../preview/overview-iot-central.md)

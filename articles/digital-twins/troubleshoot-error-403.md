@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 7/20/2020
-ms.openlocfilehash: 86fd6a5d7ca1cb9c828a4ad095720f1664b82caa
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: d1c3ad9aa034e6eace5323dd80c5275699a6e728
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201418"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331495"
 ---
 # <a name="service-request-failed-status-403-forbidden"></a>Service aanvraag mislukt. Status: 403 (verboden)
 
@@ -25,7 +25,7 @@ Deze fout kan optreden bij veel typen service aanvragen waarvoor verificatie is 
 
 ### <a name="cause-1"></a>Oorzaak #1
 
-Deze fout geeft meestal aan dat uw RBAC-machtigingen (op rollen gebaseerd toegangs beheer) voor de service niet juist zijn ingesteld. Voor veel acties voor een Azure Digital Apparaatdubbels-exemplaar moet u de rol *Azure Digital Apparaatdubbels Owner (preview)* hebben **voor het exemplaar dat u wilt beheren**. 
+Deze fout geeft meestal aan dat uw op rollen gebaseerd toegangs beheer voor Azure (Azure RBAC) voor de service niet juist is ingesteld. Voor veel acties voor een Azure Digital Apparaatdubbels-exemplaar moet u de rol *Azure Digital Apparaatdubbels Owner (preview)* hebben **voor het exemplaar dat u wilt beheren**. 
 
 ### <a name="cause-2"></a>Oorzaak #2
 

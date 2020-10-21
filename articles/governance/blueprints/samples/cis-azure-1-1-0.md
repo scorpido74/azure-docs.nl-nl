@@ -1,14 +1,14 @@
 ---
 title: Blauwdrukvoorbeeld voor CIS Microsoft Azure Foundations Benchmark
 description: Overzicht van blauwdrukvoorbeeld voor CIS Microsoft Azure Foundations Benchmark. Met dit blauwdrukvoorbeeld kunnen klanten specifieke beheeropties bekijken.
-ms.date: 06/02/2020
+ms.date: 10/14/2020
 ms.topic: sample
-ms.openlocfilehash: 6cc985fe127eae795d9a8e37624c403dd6e6f96a
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 6c09e539e192db8422b25079264b9f4e8965d994
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84739382"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92054607"
 ---
 # <a name="cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Blauwdrukvoorbeeld voor CIS Microsoft Azure Foundations Benchmark
 
@@ -46,7 +46,7 @@ Implementeer eerst het blauwdrukvoorbeeld door een nieuwe blauwdruk in uw omgevi
 
 1. Selecteer het tabblad _Artefacten_ boven aan de pagina of kies **Volgende: Artefacten** onder aan de pagina.
 
-1. Controleer de lijst met artefacten die samen het blauwdrukvoorbeeld vormen. Veel van de artefacten bevatten parameters die we later zullen definiëren. Selecteer **Concept opslaan** wanneer u klaar bent met het controleren van het blauwdrukvoorbeeld.
+1. Bekijk de lijst met artefacten die in het blauwdrukvoorbeeld zijn opgenomen. Veel van de artefacten bevatten parameters die we later zullen definiëren. Selecteer **Concept opslaan** wanneer u klaar bent met het controleren van het blauwdrukvoorbeeld.
 
 ### <a name="publish-the-sample-copy"></a>De voorbeeldkopie publiceren
 

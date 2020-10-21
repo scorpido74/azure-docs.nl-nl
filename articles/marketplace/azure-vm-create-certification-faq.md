@@ -7,14 +7,14 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: ee7a7101740e88d55d77f769263ab03a86b878d4
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 14360ab7668248f39c8ad0916eb964ffe11f7959
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92284395"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331291"
 ---
-# <a name="vm-certification-troubleshooting"></a>Problemen met VM-certificering oplossen
+# <a name="vm-certification-troubleshooting"></a>Problemen oplossen met VM-certificering
 
 Wanneer u de installatie kopie van de virtuele machine (VM) publiceert naar Azure Marketplace, valideert het Azure-team deze om te zorgen voor de opstart baarheid, beveiliging en Azure-compatibiliteit. Als een van de tests van hoge kwaliteit mislukt, mislukt de publicatie en wordt er een fout bericht weer gegeven waarin het probleem wordt beschreven.
 
@@ -410,7 +410,7 @@ Als u deze stappen wilt uitvoeren, moet u de technische assets voorbereiden voor
 5. Selecteer op het tabblad **technische configuratie** onder **VM-installatie kopieën** **+ installatie kopie van virtuele machine toevoegen**.
 
 > [!NOTE]
-> U kunt slechts één VM-installatie kopie toevoegen aan één abonnement per keer. Als u meerdere VM-installatie kopieën wilt toevoegen, publiceert u het eerste en wacht u totdat de uitgever de afmelding heeft bereikt en voegt u vervolgens de volgende VM-installatie kopie toe.
+> U kunt slechts één VM-installatie kopie toevoegen aan één abonnement per keer. Als u meerdere VM-installatie kopieën wilt toevoegen, publiceert u de eerste Live voordat u de volgende VM-installatie kopie toevoegt.
 
 6. Geef in de weer gegeven vakken een nieuwe schijf versie en de installatie kopie van de virtuele machine op.
 7. Selecteer **Concept opslaan**.
@@ -439,6 +439,6 @@ Zie [aanbiedingen bekijken en publiceren](review-publish-offer.md)om het publica
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Eigenschappen van de VM-aanbieding configureren](azure-vm-create-properties.md)
+- [Eigenschappen van een VM-aanbieding configureren](azure-vm-create-properties.md)
 - [Beloonde actieve Marketplace](partner-center-portal/marketplace-rewards.md)
 - Als u vragen of feedback over verbeteringen hebt, neemt u contact op met het partner centrum- [ondersteuning](https://aka.ms/marketplacepublishersupport).

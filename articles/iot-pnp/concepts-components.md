@@ -7,12 +7,12 @@ ms.date: 07/07/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: e7b24dd9cdbd11b56545f85ac233665f8fa4adfe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d33811dc056baa3d205d7d86c1bdd7bff74ae54
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91574276"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329999"
 ---
 # <a name="iot-plug-and-play-components-in-models"></a>IoT Plug en Play-componenten in modellen
 
@@ -69,7 +69,7 @@ De model-ID wordt opgeslagen in een eigenschap van een apparaatonafhankelijk-app
 Een DTDL-model zonder onderdelen is een nuttige vereenvoudiging voor een apparaat of IoT Edge module met één set telemetrie, eigenschappen en opdrachten. Een model dat geen gebruikmaakt van-onderdelen, maakt het eenvoudig om een bestaand apparaat of module te migreren naar een IoT Plug en Play apparaat of module: u maakt een DTDL-model waarin het apparaat of de module wordt beschreven zonder dat hiervoor onderdelen moeten worden gedefinieerd.
 
 > [!TIP]
-> Een module kan een apparaat [module] (.. /IOT-hub/IOT-hub-DevGuide-module-Twins.MD-of [IOT Edge-module](../iot-edge/about-iot-edge.md).
+> Een module kan een Device- [module](../iot-hub/iot-hub-devguide-module-twins.md) of een [IOT Edge module](../iot-edge/about-iot-edge.md)zijn.
 
 ## <a name="multiple-components"></a>Meerdere onderdelen
 

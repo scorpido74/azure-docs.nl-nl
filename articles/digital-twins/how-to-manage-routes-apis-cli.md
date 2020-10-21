@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 10/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 652299ebb98f685a16871cf4e944608a471d8df2
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 96d759f0f722e332eb25e049fd336c784eb99789
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279084"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332073"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Eind punten en routes beheren in azure Digital Apparaatdubbels (Api's en CLI)
 
@@ -64,7 +64,7 @@ Zodra u het onderwerp hebt gemaakt, kunt u dit koppelen aan Azure Digital Appara
 az dt endpoint create eventgrid --endpoint-name <Event-Grid-endpoint-name> --eventgrid-resource-group <Event-Grid-resource-group-name> --eventgrid-topic <your-Event-Grid-topic-name> -n <your-Azure-Digital-Twins-instance-name>
 ```
 
-Het onderwerp Event grid is nu beschikbaar als een eind punt in azure Digital Apparaatdubbels, onder de naam die is opgegeven met het `--endpoint-name` argument. Normaal gesp roken gebruikt u die naam als het doel van een **gebeurtenis route**, die u [later in dit artikel](#event-routes-with-apis-and-the-c-sdk) maakt met behulp van de Azure Digital apparaatdubbels Service-API.
+Het onderwerp Event grid is nu beschikbaar als een eind punt in azure Digital Apparaatdubbels, onder de naam die is opgegeven met het `--endpoint-name` argument. Normaal gesp roken gebruikt u die naam als het doel van een **gebeurtenis route**, die u [later in dit artikel](#create-an-event-route) maakt met behulp van de Azure Digital apparaatdubbels Service-API.
 
 ### <a name="create-an-event-hubs-or-service-bus-endpoint"></a>Een Event Hubs-of Service Bus-eind punt maken
 
@@ -150,7 +150,7 @@ Hier volgt een voor beeld van een bericht met een onbestelbare melding voor een 
 }
 ```
 
-## <a name="event-routes-with-apis-and-the-c-sdk"></a>Gebeurtenis routes (met Api's en de C#-SDK)
+## <a name="create-an-event-route"></a>Een gebeurtenis route maken
 
 Als u gegevens daad werkelijk van Azure Digital Apparaatdubbels naar een eind punt wilt verzenden, moet u een **gebeurtenis route**definiëren. Met Azure Digital Apparaatdubbels **EventRoutes api's** kunnen ontwikkel aars de gebeurtenis stroom, in het hele systeem en op downstream-Services, interactiviteit. Lees meer over gebeurtenis routes in [*concepten: route ring van Azure Digital apparaatdubbels-gebeurtenissen*](concepts-route-events.md).
 
@@ -163,7 +163,7 @@ Voor **waarde: u**moet eind punten maken zoals eerder in dit artikel wordt besch
 >
 > Als u deze stroom bijwerkt, kunt u hiervoor het beste een account maken van 2-3 minuten wacht tijd voor de eindpunt service om de implementatie te volt ooien voordat u doorgaat met de installatie van.
 
-### <a name="create-an-event-route"></a>Een gebeurtenis route maken
+### <a name="creation-code-with-apis-and-the-c-sdk"></a>Code maken met Api's en de C#-SDK
 
 Gebeurtenis routes worden gedefinieerd met behulp van [Data plan-api's](how-to-use-apis-sdks.md#overview-data-plane-apis). 
 
@@ -217,7 +217,7 @@ catch (RequestFailedException e)
 }
 ```
 
-### <a name="filter-events"></a>Gebeurtenissen filteren
+## <a name="filter-events"></a>Gebeurtenissen filteren
 
 Als u geen filtert, ontvangen eind punten diverse gebeurtenissen van Azure Digital Apparaatdubbels:
 * Telemetrie die wordt geactiveerd door [Digital apparaatdubbels](concepts-twins-graph.md) met de Azure Digital APPARAATDUBBELS Service API

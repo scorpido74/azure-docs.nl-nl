@@ -2,14 +2,14 @@
 title: Overzicht van servers met Azure Arc
 description: Lees meer informatie over het gebruik van Azure Arc voor servers om servers te beheren die buiten Azure worden gehost alsof het Azure-resources zijn.
 keywords: azure automation, DSC, powershell, configuratie van gewenste status, updatebeheer, bijhouden van wijzigingen, inventaris, runbooks, python, grafisch, hybride
-ms.date: 09/16/2020
+ms.date: 10/07/2020
 ms.topic: overview
-ms.openlocfilehash: 9fcac35f943eefb15a200e9b148b22ce67cc3941
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 881445b19baef4e025cf3bd32dc3b55b2d170ec3
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90887543"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818735"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Wat zijn servers met Azure Arc?
 
@@ -21,7 +21,7 @@ Om deze ervaring te bieden voor hybride machines die buiten Azure worden gehost,
 
 Wanneer u uw machine verbindt met servers met Azure Arc, kunt u de volgende configuratiebeheer- en bewakingstaken uitvoeren:
 
-- [Azure Policy-gastconfiguraties](../../governance/policy/concepts/guest-configuration.md) toewijzen met dezelfde ervaring als beleidstoewijzing voor virtuele Azure-machines.
+- [Azure Policy-gastconfiguraties](../../governance/policy/concepts/guest-configuration.md) toewijzen met dezelfde ervaring als beleidstoewijzing voor virtuele Azure-machines. Tegenwoordig worden door het gastconfiguratiebeleid geen configuraties toegepast, maar worden alleen instellingen binnen in de machine gecontroleerd. Zie [Prijzen voor Azure Policy](https://azure.microsoft.com/pricing/details/azure-policy/) voor informatie over de kosten van het gebruik van de richtlijnen voor de Azure Policy-gastconfiguratie met servers met Azure Arc.
 
 - Rapporteren over configuratiewijzigingen van geïnstalleerde software, Microsoft-services, Windows-register en -bestanden, en Linux-daemons op bewaakte servers met behulp van Azure Automation [Change Tracking and Inventory](../../automation/change-tracking.md).
 

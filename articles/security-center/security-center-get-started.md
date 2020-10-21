@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: b583e3d86ba193a92080f2da9cc0b16d07c5a993
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 46bb3b1e450312a2c02fec3f98e2b3d7381b53d2
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91447165"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946012"
 ---
 # <a name="quickstart-setting-up-azure-security-center"></a>Quickstart: Azure Security Center instellen
 
@@ -33,7 +33,7 @@ U moet over een abonnement op Microsoft Azure beschikken om met Security Center 
 Als u Azure Defender wilt inschakelen voor een abonnement, moet de rol Abonnementhouder, Inzender of Beveiligingsbeheerder aan u zijn toegewezen.
 
 
-## <a name="open-security-center-for-the-first-time"></a>Security Center voor de eerste keer openen
+## <a name="enable-security-center-on-your-azure-subscription"></a>Security Center inschakelen voor uw Azure-abonnement
 
 1. Meld u aan bij de [Azure Portal](https://azure.microsoft.com/features/azure-portal/).
 
@@ -54,6 +54,8 @@ Binnen enkele minuten nadat u Security Center voor het eerst hebt gestart, ziet 
 
 Voltooi de stappen hieronder om Azure Defender in te schakelen en de Log Analytics-agent te installeren om zo volledig van Security Center te profiteren.
 
+> [!TIP]
+> Zie [Enable Security Center on multiple Azure subscriptions](onboard-management-group.md) voor het inschakelen van Security Center op alle abonnementen in een beheergroep.
 
 ## <a name="enable-azure-defender"></a>Azure Defender inschakelen
 

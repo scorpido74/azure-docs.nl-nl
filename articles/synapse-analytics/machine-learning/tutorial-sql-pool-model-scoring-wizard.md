@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 14358f60b700e80c17b1dd8259f1d0566a854c43
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 8e92ff75bb6a9757c06de3561a385cbcbb7f75ba
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91542569"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019967"
 ---
 # <a name="tutorial-machine-learning-model-scoring-wizard-for-synapse-sql-pools"></a>Zelfstudie: De wizard voor scoren van het Machine Learning-model voor Synapse SQL-pools
 
@@ -50,7 +50,7 @@ Voordat u alle cellen in het notebook uitvoert, controleert u of het rekenproces
 
 1. Download [Voorspellen NYC Taxi Tips.ipynb](https://go.microsoft.com/fwlink/?linkid=2144301).
 
-1. Start de Azure Machine Learning-werkruimte in [Azure Machine Learning Studio](https://ml.azure.com).
+1. Start de Azure Machine Learning-werkruimte in de [Azure Machine Learning-studio](https://ml.azure.com).
 
 1. Ga naar **Notebooks** en klik op **Bestanden uploaden**, selecteer 'Voorspellen NYC Taxi Tips.ipynb' die u hebt gedownload en upload het bestand.
    ![Bestand uploaden](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-train-00a.png)

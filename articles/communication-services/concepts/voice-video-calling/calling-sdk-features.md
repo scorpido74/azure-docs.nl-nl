@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d8216bb8c30448e7e91ec9a1bcc531b720eca30c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 44365dec247b9f3135a090cee397cad32598fd29
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91665188"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977864"
 ---
 # <a name="calling-client-library-overview"></a>Overzicht van de aanroepende clientbibliotheek
 
@@ -34,7 +34,8 @@ De volgende lijst bevat de set van functies die momenteel beschikbaar zijn in de
 |                   | Een oproep met meer dan twee gebruikers (Maximaal 350 gebruikers) plaatsen                                                       | ✔️   | ✔️            | ✔️ 
 |                   | Een een-op-een-oproep promoten met twee gebruikers in een groepsaanroep met meer dan twee gebruikers                                 | ✔️   | ✔️            | ✔️ 
 |                   | Een groepsoproep toevoegen nadat deze is gestart                                                                              | ✔️   | ✔️            | ✔️ 
-|                   | Een andere VoIP-deelnemer uitnodigen om deel te nemen aan een actieve groepsoproep                                                       | ✔️   | ✔️            | ✔️ 
+|                   | Een andere VoIP-deelnemer uitnodigen om deel te nemen aan een actieve groepsoproep                                                       | ✔️   | ✔️            | ✔️
+|                   | Video in- of uitschakelen                                                         | ✔️   | ✔️            | ✔️ 
 |                   | Microfoon dempen/dempen opheffen                                                                                                     | ✔️   | ✔️            | ✔️         
 |                   | Schakelen tussen camera's                                                                                              | ✔️   | ✔️            | ✔️           
 |                   | Lokaal vasthouden/opheffen                                                                                                  | ✔️   | ✔️            | ✔️           
@@ -73,7 +74,7 @@ De volgende tabel bevat de set van ondersteunde browsers en versies die momentee
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Aan de slag met oproepen](../../quickstarts/voice-video-calling/getting-started-with-calling.md)
+> [Aan de slag met aanroepen](../../quickstarts/voice-video-calling/getting-started-with-calling.md)
 
 Raadpleeg voor meer informatie de volgende artikelen:
 - Stel u op de hoogte van algemene [aanroepstromen](../call-flows.md)

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/07/2018
 ms.author: duau
-ms.openlocfilehash: 12ace8dff58d3d747bf17260950d2b91e31b398a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 649174e59c3e58b4675393ce665cf765016d5551
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89395159"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331546"
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>ExpressRoute-circuits verplaatsen van het klassieke naar het Resource Manager-implementatiemodel
 Dit artikel bevat een overzicht van wat het betekent om een Azure ExpressRoute-circuit te verplaatsen van het klassieke naar het Azure Resource Manager-implementatiemodel.
@@ -85,7 +85,7 @@ In deze sectie wordt beschreven wat er wordt ondersteund voor ExpressRoute-circu
 In deze sectie wordt beschreven wat er niet wordt ondersteund voor ExpressRoute-circuits:
 
 * Het beheer van de levenscyclus van een ExpressRoute-circuit vanuit het klassieke implementatiemodel.
-* RBAC-ondersteuning (Role-Based Access Control - op rollen gebaseerd toegangsbeheer) voor het klassieke implementatiemodel. U kunt geen RBAC-besturing uitvoeren voor een circuit in het klassieke implementatiemodel. Een beheerder/co-beheerder van het abonnement kan virtuele netwerken koppelen aan of loskoppelen van het circuit.
+* Azure RBAC-ondersteuning (op rollen gebaseerd toegangs beheer) voor het klassieke implementatie model. U kunt geen Azure RBAC-besturings elementen uitvoeren op een circuit in het klassieke implementatie model. Een beheerder/co-beheerder van het abonnement kan virtuele netwerken koppelen aan of loskoppelen van het circuit.
 
 ## <a name="configuration"></a>Configuratie
 Volg de instructies in [Een ExpressRoute-circuit verplaatsen van het klassieke naar het Resource Manager-implementatiemodel](expressroute-howto-move-arm.md).

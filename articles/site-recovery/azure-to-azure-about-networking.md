@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
 ms.author: harshacs
-ms.openlocfilehash: 525ab34bb9edff737686a88d7a8e664500282555
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 1189324cf0bb2731a100032058c7ba9ae4add758
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320531"
+ms.locfileid: "92332039"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>Over netwerken in nood herstel voor Azure VM
 
@@ -29,7 +29,7 @@ Meer informatie over hoe Site Recovery herstel na nood gevallen biedt voor [dit 
 
 In het volgende diagram ziet u een typische Azure-omgeving, voor toepassingen die worden uitgevoerd op virtuele Azure-machines:
 
-![klant-omgeving](./media/site-recovery-azure-to-azure-architecture/source-environment.png)
+![Diagram waarin een typische Azure-omgeving wordt weer gegeven voor toepassingen die worden uitgevoerd op virtuele Azure-machines.](./media/site-recovery-azure-to-azure-architecture/source-environment.png)
 
 Als u Azure ExpressRoute of een VPN-verbinding van uw on-premises netwerk naar Azure gebruikt, is de omgeving als volgt:
 

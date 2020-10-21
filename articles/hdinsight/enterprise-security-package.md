@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 91fa6a8da555d0b0cc79b262a83306c1f72aa68a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8801929412da614784c76dbdf7c8282b31364409
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89567092"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327889"
 ---
 # <a name="enterprise-security-package-for-azure-hdinsight"></a>Enterprise Security Package voor Azure HDInsight
 
@@ -20,7 +20,7 @@ Enter prise Security is een optioneel pakket dat u kunt toevoegen aan uw HDInsig
 
 * Integratie met Active Directory voor authenticatie.
 
-    In het verleden hebt u HDInsight-clusters gemaakt met lokale beheerders gebruiker en lokale SSH-gebruiker. De lokale beheerder gebruiker heeft toegang tot alle bestanden, mappen, tabellen en kolommen.  Met Enterprise Security Package kunt u toegangs beheer op basis van rollen inschakelen door HDInsight te integreren met uw Azure Active Directory Domain Services.
+    In het verleden hebt u HDInsight-clusters gemaakt met lokale beheerders gebruiker en lokale SSH-gebruiker. De lokale beheerder gebruiker heeft toegang tot alle bestanden, mappen, tabellen en kolommen.  Met Enterprise Security Package kunt u op rollen gebaseerd toegangs beheer van Azure inschakelen door HDInsight te integreren met uw Azure Active Directory Domain Services.
 
     Zie voor meer informatie:
 

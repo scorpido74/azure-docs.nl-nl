@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 17474b4f38ccc6f43e664042b1218a8c253718e5
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 770c9f7d677f739781db6290fa0c43e410761d17
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203412"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327815"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Introductiehandleiding voor Azure-ontwikkelaars
 
@@ -281,7 +281,7 @@ Als u een Azure-abonnement wilt maken of wilt gebruiken, moet u een Azure-accoun
 
 Voor elk Azure-abonnement is er een vertrouwensrelatie met een Azure AD-exemplaar. Dit betekent dat er op die directory wordt vertrouwd voor het verifiëren van gebruikers, services en apparaten. Meerdere abonnementen kunnen dezelfde directory vertrouwen, maar een abonnement vertrouwt slechts één directory. Zie [hoe Azure-abonnementen worden gekoppeld aan Azure Active Directory](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)voor meer informatie.
 
-En het definiëren van afzonderlijke Azure-account identiteiten, ook wel *gebruikers*genoemd, kunt u *groepen* definiëren in azure AD. Het maken van gebruikers groepen is een goede manier om de toegang tot resources in een abonnement te beheren met behulp van op rollen gebaseerd toegangs beheer (RBAC). Zie [een groep maken in azure Active Directory preview](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)voor meer informatie over het maken van groepen. U kunt ook groepen maken en beheren met [behulp van Power shell](../../active-directory/users-groups-roles/groups-settings-v2-cmdlets.md).
+En het definiëren van afzonderlijke Azure-account identiteiten, ook wel *gebruikers*genoemd, kunt u *groepen* definiëren in azure AD. Het maken van gebruikers groepen is een goede manier om de toegang tot resources in een abonnement te beheren met behulp van Azure op rollen gebaseerd toegangs beheer (Azure RBAC). Zie [een groep maken in azure Active Directory preview](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)voor meer informatie over het maken van groepen. U kunt ook groepen maken en beheren met [behulp van Power shell](../../active-directory/users-groups-roles/groups-settings-v2-cmdlets.md).
 
 ### <a name="manage-your-subscriptions"></a>Uw abonnementen beheren
 
@@ -297,11 +297,11 @@ De Azure Resource Explorer is een uitstekend hulp programma voor het visualisere
 
 Wanneer u toegang verleent tot Azure-resources, is het altijd een best practice om gebruikers de minste bevoegdheid te geven die nodig is om een bepaalde taak uit te voeren.
 
-- **Op rollen gebaseerd toegangs beheer (RBAC)**: in azure kunt u toegang verlenen aan gebruikers accounts (principals) bij een opgegeven Scope: abonnement, resource groep of afzonderlijke resources. Met RBAC kunt u resources in een resource groep implementeren en machtigingen verlenen aan een specifieke gebruiker of groep. Daarnaast kunt u de toegang beperken tot de resources die deel uitmaken van de doel resource groep. U kunt ook toegang verlenen tot één resource, zoals een virtuele machine of een virtueel netwerk. Als u toegang wilt verlenen, wijst u een rol toe aan de gebruiker, groep of Service-Principal. Er zijn veel vooraf gedefinieerde rollen, en u kunt ook uw eigen aangepaste rollen definiëren. Zie [Wat is Azure Role-based Access Control (Azure RBAC)?](../../role-based-access-control/overview.md)voor meer informatie.
+- **Azure op rollen gebaseerd toegangs beheer (Azure RBAC)**: in azure kunt u toegang verlenen aan gebruikers accounts (principals) bij een opgegeven Scope: abonnement, resource groep of afzonderlijke resources. Met Azure RBAC kunt u resources in een resource groep implementeren en machtigingen verlenen aan een specifieke gebruiker of groep. Daarnaast kunt u de toegang beperken tot de resources die deel uitmaken van de doel resource groep. U kunt ook toegang verlenen tot één resource, zoals een virtuele machine of een virtueel netwerk. Als u toegang wilt verlenen, wijst u een rol toe aan de gebruiker, groep of Service-Principal. Er zijn veel vooraf gedefinieerde rollen, en u kunt ook uw eigen aangepaste rollen definiëren. Zie [Wat is Azure Role-based Access Control (Azure RBAC)?](../../role-based-access-control/overview.md)voor meer informatie.
 
   > **Wanneer u wilt gebruiken**: als u een nauw keurig toegangs beheer voor gebruikers en groepen nodig hebt of als u een gebruiker een eigenaar van een abonnement wilt maken.
   >
-  > Aan de **slag**: Zie [toegang beheren met RBAC en de Azure Portal](../../role-based-access-control/role-assignments-portal.md)voor meer informatie.
+  > **Aan de slag**: Zie [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de Azure Portal](../../role-based-access-control/role-assignments-portal.md)voor meer informatie.
 
 - **Service-Principal-objecten**: naast het verlenen van toegang tot gebruikers-principals en-groepen, kunt u dezelfde toegang verlenen aan een service-principal.
 

@@ -4,12 +4,12 @@ description: In dit artikel vindt u Naslag informatie voor architectuur voor Azu
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 7b9652009a4e3c7bfdea029f204429a86562a552
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 29f739c2fb9dd1cc58bf6c400eeee1bebb6243c2
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144546"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328841"
 ---
 # <a name="azure-devtest-labs-reference-architecture-for-enterprises"></a>Azure DevTest Labs referentie architectuur voor ondernemingen
 Dit artikel bevat referentie architectuur om u te helpen bij het implementeren van een oplossing op basis van Azure DevTest Labs in een onderneming. Het bevat het volgende:
@@ -24,7 +24,7 @@ Dit artikel bevat referentie architectuur om u te helpen bij het implementeren v
 Dit zijn de belangrijkste elementen van de referentie architectuur:
 
 - **Azure Active Directory (Azure AD)**: DevTest Labs maakt gebruik [van de Azure AD-service voor identiteits beheer](../active-directory/fundamentals/active-directory-whatis.md). Houd rekening met deze twee belang rijke aspecten wanneer u gebruikers toegang geeft tot een omgeving op basis van DevTest Labs:
-    - **Resource beheer**: het biedt toegang tot de Azure Portal om resources te beheren (virtuele machines te maken, omgevingen te maken, artefacten te starten, te stoppen, opnieuw op te starten, te verwijderen en toe te passen). Resource beheer wordt uitgevoerd in azure met behulp van op rollen gebaseerd toegangs beheer (RBAC). U wijst rollen toe aan gebruikers en stelt machtigingen voor de resource en toegangs niveau in.
+    - **Resource beheer**: het biedt toegang tot de Azure Portal om resources te beheren (virtuele machines te maken, omgevingen te maken, artefacten te starten, te stoppen, opnieuw op te starten, te verwijderen en toe te passen). Resource Management wordt uitgevoerd door gebruik te maken van Azure op rollen gebaseerd toegangs beheer (Azure RBAC). U wijst rollen toe aan gebruikers en stelt machtigingen voor de resource en toegangs niveau in.
     - **Virtuele machines (netwerk niveau)**: in de standaard configuratie gebruiken virtuele machines een lokaal beheerders account. Als er een domein beschikbaar is ([Azure AD Domain Services](../active-directory-domain-services/overview.md), een on-premises domein of een domein in de Cloud), kunnen machines worden toegevoegd aan het domein. Gebruikers kunnen vervolgens hun op domeinen gebaseerde identiteiten gebruiken om verbinding te maken met de Vm's.
 - **On-premises connectiviteit**: in ons architectuur diagram wordt [ExpressRoute](../expressroute/expressroute-introduction.md) gebruikt. Maar u kunt ook een [site-naar-site-VPN](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md)gebruiken. Hoewel ExpressRoute niet vereist is voor DevTest Labs, wordt het doorgaans gebruikt in ondernemingen. ExpressRoute is alleen vereist als u toegang nodig hebt tot bedrijfs bronnen. Veelvoorkomende scenario's zijn:
     - U beschikt over on-premises gegevens die niet naar de Cloud kunnen worden verplaatst.

@@ -1,17 +1,15 @@
 ---
 title: Een app in een zelfstandig cluster installeren
 description: In deze zelfstudie leert u hoe u een toepassing kunt installeren in uw zelfstandige Service Fabric-cluster.
-author: dkkapur
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 8dd47d27f928cb33e5a2bbc3ba9a6ab2bc044852
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 0b35bd02af5e1c90cac2e94d31dfca2344f3cc85
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245378"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91840622"
 ---
 # <a name="tutorial-deploy-an-application-on-your-service-fabric-standalone-cluster"></a>Zelfstudie: Een toepassing implementeren in een zelfstandig Service Fabric-cluster
 
@@ -19,7 +17,7 @@ Zelfstandige Service Fabric-clusters bieden u de mogelijkheid om uw eigen omgevi
 
 Deze zelfstudie is deel drie van een serie.  Zelfstandige Service Fabric-clusters bieden u de mogelijkheid om uw eigen omgeving te kiezen en een cluster te maken als onderdeel van de benadering "Elk besturingssysteem, elke cloud" die we in Service Fabric hanteren. Deze zelfstudie laat zien hoe u de AWS-infrastructuur kunt maken die nodig is om dit zelfstandige cluster te hosten.
 
-In deel drie van de serie leert u het volgende:
+In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
 > * De voorbeeld-app downloaden
@@ -52,7 +50,7 @@ Wanneer de toepassing is gedownload, kunt u deze rechtstreeks vanuit Visual Stud
 
 4. Klik met de rechtermuisknop op het toepassingsproject `Voting` in Solution Explorer en kies **Publiceren**
 
-5. Selecteer de vervolgkeuzelijst voor het **verbindingseindpunt** en voer de openbare DNS-naam van een van de knooppunten in uw cluster in.  Bijvoorbeeld `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000`. Houd er rekening mee dat een FQDN (Fully Qualified Domain Name) niet automatisch wordt toegewezen in Azure. U kunt deze echter eenvoudig [instellen op de overzichtspagina van de virtuele machine.](../virtual-machines/linux/portal-create-fqdn.md)
+5. Selecteer de vervolgkeuzelijst voor het **verbindingseindpunt** en voer de openbare DNS-naam van een van de knooppunten in uw cluster in.  Bijvoorbeeld `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000`. Er wordt niet automatisch een FQDN (Fully Qualified Domain Name) toegewezen in Azure. U kunt deze echter eenvoudig [instellen op de overzichtspagina van de VM.](../virtual-machines/linux/portal-create-fqdn.md)
 
 6. Open uw voorkeursbrowser en typ het clusteradres in (het eindpunt van de verbinding, deze app wordt geïmplementeerd op poort 8080 - bijvoorbeeld ec2-34-215-183-77.us-west-2.compute.amazonaws.com:8080).
 
@@ -60,7 +58,7 @@ Wanneer de toepassing is gedownload, kunt u deze rechtstreeks vanuit Visual Stud
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deel drie van de serie hebt u geleerd hoe u een toepassing in uw cluster kunt implementeren:
+In dit artikel hebt u geleerd hoe u een toepassing in uw cluster kunt implementeren:
 
 > [!div class="checklist"]
 > * De voorbeeld-app downloaden

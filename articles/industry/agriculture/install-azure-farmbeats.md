@@ -5,12 +5,12 @@ author: usha-rathnavel
 ms.topic: article
 ms.date: 1/17/2020
 ms.author: atinb
-ms.openlocfilehash: 0761db6b73c6fcfeb1ef6fda729a68c9644bbc72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2535c05241c076e08f8f0f2ba9e2301fb353723e
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79479556"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330475"
 ---
 # <a name="install-azure-farmbeats"></a>Azure FarmBeats installeren
 
@@ -87,7 +87,7 @@ De eerste twee machtigingen zijn nodig voor [het maken van de procedure voor de 
 
 De persoon die de FarmBeats-installatie uitvoert vanuit Marketplace moet een eigenaar zijn van de resource groep waarin FarmBeats wordt geïnstalleerd. Voor abonnements eigenaren gebeurt dit automatisch wanneer de resource groep wordt gemaakt. Voor anderen maakt u eerst de resource groep en vraagt u de eigenaar van het abonnement om u een eigenaar van de resource groep te maken.
 
-U kunt uw toegangs machtigingen in de Azure Portal controleren door de instructies te volgen op [op rollen gebaseerd toegangs beheer](https://docs.microsoft.com/azure/role-based-access-control/check-access).
+U kunt uw toegangs machtigingen in de Azure Portal controleren door de instructies te volgen in [toegangs beheer op basis van rollen](https://docs.microsoft.com/azure/role-based-access-control/check-access).
 
 ### <a name="decide-subscription-and-region"></a>Abonnement en regio kiezen
 
@@ -172,7 +172,7 @@ Nadat de installatie is voltooid, kunt u de installatie controleren en de FarmBe
 
 **Datahub** vindt u op https:// \<FarmBeats-website-name> -API.azurewebsites.net/Swagger. Hier ziet u de verschillende API-objecten van FarmBeats en worden REST-bewerkingen uitgevoerd op de Api's.
 
-## <a name="upgrade"></a>Upgraden
+## <a name="upgrade"></a>Upgrade
 
 Als u de FarmBeats wilt bijwerken naar de nieuwste versie, voert u de volgende stappen uit in een Cloud Shell-exemplaar met behulp van de Power shell-omgeving. De gebruiker moet de eigenaar zijn van het abonnement waarin FarmBeats is geïnstalleerd.
 

@@ -8,24 +8,16 @@ ms.date: 10/20/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 6c29141a2e255588ffa581b84ffeb4ddd7fdb703
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 87d7bbaa40226e02726b92cf7f7705c8028149f7
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87324706"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019627"
 ---
-# <a name="quickstart-azure-key-vault-client-library-for-java"></a>Quickstart: Azure Key Vault-clientbibliotheek voor Java
+# <a name="quickstart-azure-key-vault-secret-client-library-for-java"></a>Quickstart: Azure Key Vault-clientbibliotheek voor geheimen voor Java
 
-Ga aan de slag met de Azure Key Vault-clientbibliotheek voor Java. Volg de onderstaande stappen om het pakket te installeren en voorbeeldcode voor basistaken uit te proberen.
-
-Met Azure Sleutelkluis kunt u de cryptografische sleutels en geheimen beveiligen die door cloudtoepassingen en -services worden gebruikt. Gebruik de Key Vault-clientbibliotheek voor Java voor het volgende:
-
-- De beveiliging en controle over sleutels en wachtwoorden verbeteren.
-- In een paar minuten versleutelingssleutels maken en importeren.
-- Latentie verminderen met schalen in de cloud en globale redundantie.
-- Taken voor TLS/SSL-certificaten vereenvoudigen en automatiseren.
-- FIPS 140-2 level 2-gevalideerde HSM's gebruiken.
+Aan de slag met de Azure Key Vault-clientbibliotheek voor geheimen voor Java. Volg de onderstaande stappen om het pakket te installeren en voorbeeldcode voor basistaken uit te proberen.
 
 Aanvullende bronnen:
 
@@ -37,13 +29,29 @@ Aanvullende bronnen:
 ## <a name="prerequisites"></a>Vereisten
 
 - Een Azure-abonnement (u kunt [een gratis abonnement maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)).
-- [Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable)-versie 8 of hoger
+- [Java Development Kit (JDK)](/java/azure/jdk/)-versie 8 of hoger
 - [Apache Maven](https://maven.apache.org)
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) of [Azure PowerShell](/powershell/azure/)
+- [Azure-CLI](/cli/azure/install-azure-cli)
 
-In deze quickstart wordt ervan uitgegaan dat u [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) en [Apache Maven](https://maven.apache.org) uitvoert in een Linux-terminalvenster.
+In deze quickstart wordt ervan uitgegaan dat u [Azure CLI](/cli/azure/install-azure-cli) en [Apache Maven](https://maven.apache.org) uitvoert in een Linux-terminalvenster.
 
 ## <a name="setting-up"></a>Instellen
+
+Deze quickstart maakt gebruik van de Azure Identity-bibliotheek met Azure CLI om de gebruiker te verifiëren bij Azure-services. Ontwikkelaars kunnen ook Visual Studio of Visual Studio Code gebruiken om hun oproepen te verifiëren: zie [De client verifiëren met de Azure Identity-clientbibliotheek](https://docs.microsoft.com/java/api/overview/azure/identity-readme) (Engelstalig) voor meer informatie
+
+### <a name="sign-in-to-azure"></a>Aanmelden bij Azure
+
+1. Voer de opdracht `login` uit.
+
+    ```azurecli-interactive
+    az login
+    ```
+
+    Als de CLI uw standaardbrowser kan openen, gebeurt dat ook en wordt er een Azure-aanmeldingspagina geladen.
+
+    Als dat niet het geval is, opent u een browserpagina op [https://aka.ms/devicelogin](https://aka.ms/devicelogin) en voert u de autorisatiecode in die wordt weergegeven in uw terminal.
+
+2. Meldt u zich in de browser aan met uw accountreferenties.
 
 ### <a name="create-new-java-console-app"></a>Nieuwe Java-console-app maken
 
@@ -109,21 +117,35 @@ Open het bestand *pom.xml* in uw teksteditor. Voeg de volgende afhankelijkheidse
 
 [!INCLUDE [Create a resource group and key vault](../../../includes/key-vault-rg-kv-creation.md)]
 
-### <a name="create-a-service-principal"></a>Een service-principal maken
+#### <a name="grant-access-to-your-key-vault"></a>Toegang verlenen tot uw sleutelkluis
 
-[!INCLUDE [Create a service principal](../../../includes/key-vault-sp-creation.md)]
+Een toegangsbeleid maken voor de sleutelkluis waarmee geheime machtigingen aan uw gebruikersaccount worden verleend
 
-#### <a name="give-the-service-principal-access-to-your-key-vault"></a>De service-principal toegang verlenen tot uw sleutelkluis
+```console
+az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --secret-permissions delete get list set
+```
 
-[!INCLUDE [Give the service principal access to your key vault](../../../includes/key-vault-sp-kv-access.md)]
+#### <a name="set-environment-variables"></a>Omgevingsvariabelen instellen
 
-#### <a name="set-environmental-variables"></a>Omgevingsvariabelen instellen
+In deze applicatie wordt de naam van de sleutelkluis gebruikt als een omgevingsvariabele met de naam `KEY_VAULT_NAME`.
 
-[!INCLUDE [Set environmental variables](../../../includes/key-vault-set-environmental-variables.md)]
+Windows
+```cmd
+set KEY_VAULT_NAME=<your-key-vault-name>
+````
+Windows PowerShell
+```powershell
+$Env:KEY_VAULT_NAME=<your-key-vault-name>
+```
+
+macOS of Linux
+```cmd
+export KEY_VAULT_NAME=<your-key-vault-name>
+```
 
 ## <a name="object-model"></a>Objectmodel
 
-Met de Azure Key Vault-client bibliotheek voor Java kunt u sleutels en gerelateerde assets, zoals certificaten en geheimen, beheren. In de onderstaande codevoorbeelden ziet u hoe u een client maakt, een geheim instelt, een geheim ophaalt en een geheim verwijdert.
+Met de Azure Key Vault-clientbibliotheek voor geheimen voor Java kunt u geheimen beheren. In de sectie [Codevoorbeelden](#code-examples) ziet u hoe u een client maakt, een geheim instelt, een geheim ophaalt en een geheim verwijdert.
 
 De volledige console-app is [hieronder](#sample-code) beschikbaar.
 
@@ -143,7 +165,9 @@ import com.azure.security.keyvault.secrets.models.KeyVaultSecret;
 
 ### <a name="authenticate-and-create-a-client"></a>Een client verifiëren en maken
 
-Het verifiëren van uw sleutelkluis en het maken van een sleutelkluis-client is afhankelijk van de omgevingsvariabelen in de stap [Omgevingsvariabelen instellen](#set-environmental-variables) hierboven. De naam van de sleutelkluis wordt uitgebreid naar de sleutelkluis-URI, met de indeling `https://<your-key-vault-name>.vault.azure.net`.
+In deze quickstart wordt de aangemelde gebruiker gebruikt voor de verificatie bij de sleutelkluis. Dit is de voorkeursmethode voor lokale ontwikkeling. Voor toepassingen die zijn geïmplementeerd in Azure, moet beheerde identiteit worden toegewezen aan App Service of aan Virtuele machine. Zie [Overzicht van beheerde identiteiten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) voor meer informatie.
+
+In het onderstaande voorbeeld wordt de naam van de sleutelkluis uitgebreid naar de sleutelkluis-URI, met de indeling https://\<your-key-vault-name\>.vault.azure.net. In dit voorbeeld wordt de klasse ['DefaultAzureCredential()'](https://docs.microsoft.com/java/api/com.azure.identity.defaultazurecredential) gebruikt, waarmee u dezelfde code kunt gebruiken in verschillende omgevingen met verschillende opties om identiteiten te bieden. Zie het artikel over [standaardverificatie van Azure-referenties](https://docs.microsoft.com/java/api/overview/azure/identity-readme) (Engelstalig) voor meer informatie. 
 
 ```java
 String keyVaultName = System.getenv("KEY_VAULT_NAME");
@@ -163,7 +187,7 @@ Nu uw toepassing is geverifieerd, kunt u een geheim toevoegen aan uw sleutelklui
 secretClient.setSecret(new KeyVaultSecret(secretName, secretValue));
 ```
 
-U kunt controleren of het geheim is ingesteld met de opdracht [az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show):
+U kunt controleren of het geheim is ingesteld met de opdracht [az keyvault secret show](/cli/azure/keyvault/secret?#az-keyvault-secret-show):
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
@@ -187,7 +211,7 @@ Ten slotte verwijderen we het geheim uit uw sleutelkluis met de `secretClient.be
 secretClient.beginDeleteSecret(secretName);
 ```
 
-U kunt controleren of het geheim is verdwenen met de opdracht [az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show):
+U kunt controleren of het geheim is verdwenen met de opdracht [az keyvault secret show](/cli/azure/keyvault/secret?#az-keyvault-secret-show):
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
@@ -272,4 +296,5 @@ In deze quickstart hebt u een sleutelkluis gemaakt, een geheim opgeslagen en dat
 
 - Lees een [Overzicht van Azure Key Vault](../general/overview.md)
 - Zie de [Gids voor Azure Key Vault-ontwikkelaars](../general/developers-guide.md)
+- Instructies voor [veilige toegang tot een sleutelkluis](../general/secure-your-key-vault.md)
 - Bekijk de [best practices voor Azure Key Vault](../general/best-practices.md)

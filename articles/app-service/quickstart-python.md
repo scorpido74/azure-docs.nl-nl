@@ -5,19 +5,19 @@ ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python
 zone_pivot_groups: python-frameworks-01
-ms.openlocfilehash: 0ce995bddb89ce6aa1a550971fbcd92c6515d58e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8a0cce6dd68513380759319c378d15aeb0e029c3
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91264542"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91813182"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Quickstart: Een Python-app maken in Azure App Service op Linux
 
 In deze quickstart implementeert u een Python-web-app op [App Service op Linux](overview.md#app-service-on-linux), een uiterst schaalbare webhostingservice van Azure. Gebruik de lokale [Azure-opdrachtregelinterface (CLI)](/cli/azure/install-azure-cli) op een Mac-, Linux- of Windows-computer om een voorbeeld te implementeren met behulp van deFlask- of Django-frameworks. De web-app die u configureert, maakt gebruik van een gratis App Service-laag, zodat u geen kosten opdoet in de loop van dit artikel.
 
 > [!TIP]
-> Als u liever apps wilt implementeren via een IDE, raadpleegt u **[Python-apps implementeren in App Service vanuit Visual Studio Code](/azure/developer/python/tutorial-deploy-app-service-on-linux-01)** .
+> Als u liever Visual Studio Code gebruikt, volgt u onze **[quickstart voor App Service van Visual Studio Code](/azure/developer/python/tutorial-deploy-app-service-on-linux-01)** .
 
 ## <a name="set-up-your-initial-environment"></a>Uw eerste omgeving instellen
 
@@ -134,25 +134,9 @@ Het voorbeeld bevat framework-specifieke code die door Azure App Service wordt h
     
 1. Voer de ontwikkelaarsserver uit.
 
-    # <a name="bash"></a>[Bash](#tab/bash)
-
-    ```bash
-    python3 manage.py runserver
+    ```terminal
+    python manage.py runserver
     ```
-
-    # <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-    ```powershell
-    py -3 manage.py runserver
-    ```
-
-    # <a name="cmd"></a>[Cmd](#tab/cmd)
-
-    ```cmd
-    py -3 manage.py runserver
-    ```
-
-    ---    
 
 1. Open een webbrowser en ga naar de voorbeeld-app op `http://localhost:8000/`. In de app wordt het bericht **Hallo wereld** weergegeven.
 

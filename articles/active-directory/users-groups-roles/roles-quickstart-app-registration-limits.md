@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, devx-track-azurepowershell
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7304ecd73ed73e3ec6ae3c060fef264e016fe38
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bb53f9a6121ec9329eaec5d8cb554e7f125e058f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89067804"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856650"
 ---
 # <a name="quickstart-grant-permission-to-create-unlimited-app-registrations"></a>Quickstart: Machtigingen verlenen voor onbeperkte app-registraties
 
@@ -60,7 +60,7 @@ Klaar! In deze quickstart hebt u een aangepaste rol gemaakt met machtigingen om 
 Er zijn twee machtigingen beschikbaar voor het verlenen van de mogelijkheid om toepassingsregistraties te maken, elk met verschillende gedragingen.
 
 - microsoft.directory/applications/createAsOwner: Als u deze machtiging toewijst, wordt de maker toegevoegd als de eerste eigenaar van de gemaakte app-registratie en wordt de gemaakte app-registratie meegeteld in het quotum van 250 gemaakte objecten van de maker.
-- microsoft.directory/applicationPolicies/create: Als u deze machtigingen toewijst, wordt de maker niet toegevoegd als de eerste eigenaar van de gemaakte app-registratie en wordt de gemaakte app-registratie niet meegeteld in het quotum van 250 gemaakte objecten van de maker. Gebruik deze machtiging op een verantwoorde manier, omdat de toegewezen persoon app-registraties kan maken totdat de quotum op directoryniveau wordt bereikt. Als beide machtigingen zijn toegewezen, heeft deze machtiging voorrang.
+- microsoft.directory/applications/create: Als u deze machtigingen toewijst, wordt de maker niet toegevoegd als de eerste eigenaar van de gemaakte app-registratie en wordt de gemaakte app-registratie niet meegeteld in het quotum van 250 gemaakte objecten van de maker. Gebruik deze machtiging op een verantwoorde manier, omdat de toegewezen persoon app-registraties kan maken totdat de quotum op directoryniveau wordt bereikt. Als beide machtigingen zijn toegewezen, heeft deze machtiging voorrang.
 
 ## <a name="create-a-custom-role-in-azure-ad-powershell"></a>Een aangepaste rol maken in Azure AD PowerShell
 

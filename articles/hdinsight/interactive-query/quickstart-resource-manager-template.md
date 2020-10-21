@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/13/2020
-ms.openlocfilehash: f08b7a49d961c3408af6e5360344bdf500a8ac07
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 969aadbe342dbfd345930082d56e0af93eea37d8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91542322"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91854372"
 ---
 # <a name="quickstart-create-interactive-query-cluster-in-azure-hdinsight-using-arm-template"></a>Quickstart: Een Interactive Query-cluster maken in Azure HDInsight met ARM-sjabloon
 
@@ -59,13 +59,13 @@ Er worden twee Azure-resources gedefinieerd in de sjabloon:
     |Ssh-gebruikersnaam|Geef de gebruikersnaam op; de standaardwaarde is sshuser|
     |Ssh-wachtwoord|Geef het wachtwoord op.|
 
-    ![Resource Manager-sjabloon HBase](./media/quickstart-resource-manager-template/resource-manager-template-hive.png)
+    ![Resource Manager-sjabloon HBase implementeren](./media/quickstart-resource-manager-template/resource-manager-template-hive.png)
 
 1. Bekijk de **VOORWAARDEN**. Selecteer vervolgens **Ik ga akkoord met de bovenstaande voorwaarden** en daarna **Kopen**. U ontvangt een melding dat uw implementatie wordt uitgevoerd. Het duurt ongeveer 20 minuten om een cluster te maken.
 
 ## <a name="review-deployed-resources"></a>Geïmplementeerde resources bekijken
 
-Zodra het cluster is gemaakt, ontvangt u de melding **Implementatie voltooid** met de koppeling **Naar de resource**. Op de pagina Resourcegroep worden uw nieuwe HDInsight-cluster en de standaardopslag bij het cluster weergegeven. Elk cluster is afhankelijk van een [Azure Storage-account](../hdinsight-hadoop-use-blob-storage.md) of een [Azure Data Lake Storage-account](../hdinsight-hadoop-use-data-lake-store.md). Dit wordt het standaardopslagaccount genoemd. Het HDInsight-cluster en het standaardopslagaccount moeten samen in dezelfde Azure-regio worden geplaatst. Het opslagaccount wordt niet verwijderd wanneer er clusters worden verwijderd.
+Zodra het cluster is gemaakt, ontvangt u de melding **Implementatie voltooid** met de koppeling **Naar de resource**. Op de pagina Resourcegroep worden uw nieuwe HDInsight-cluster en de standaardopslag bij het cluster weergegeven. Elk cluster is afhankelijk van een [Azure Blob Storage](../hdinsight-hadoop-use-blob-storage.md)-account, van [Azure Data Lake Storage Gen1](../hdinsight-hadoop-use-data-lake-storage-gen1.md) of van [`Azure Data Lake Storage Gen2`](../hdinsight-hadoop-use-data-lake-storage-gen2.md). Dit wordt het standaardopslagaccount genoemd. Het HDInsight-cluster en het standaardopslagaccount moeten samen in dezelfde Azure-regio worden geplaatst. Het opslagaccount wordt niet verwijderd wanneer er clusters worden verwijderd.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -73,7 +73,7 @@ Nadat u de quickstart hebt voltooid, kunt u het cluster verwijderen. Met HDInsig
 
 Ga in de Azure-portal naar het cluster en selecteer **Verwijderen**.
 
-![Schermafbeelding met een H D Insight-cluster met de resourcegroep die verwijderd moet worden.](./media/quickstart-resource-manager-template/azure-portal-delete-hive.png)
+[Resource Manager-sjabloon HBase verwijderen](./media/quickstart-resource-manager-template/azure-portal-delete-hive.png)
 
 U kunt ook de naam van de resourcegroep selecteren om de pagina van de resourcegroep te openen en vervolgens **Resourcegroep verwijderen** selecteren. Als u de resourcegroep verwijdert, verwijdert u zowel het HDInsight-cluster als het standaardopslagaccount.
 

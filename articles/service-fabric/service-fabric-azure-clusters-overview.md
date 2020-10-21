@@ -5,12 +5,12 @@ services: service-fabric
 documentationcenter: .net
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: 7446a221d266230b319c808a88ef4fac05e6fff5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c5e6fe92ce5ac118de204e43eb443b4aab3b698
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843308"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320513"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Overzicht van Service Fabric clusters op Azure
 Een Service Fabric-cluster is een met het netwerk verbonden reeks virtuele of fysieke machines waarop uw microservices worden geïmplementeerd en beheerd. Een computer of virtuele machine die deel uitmaakt van een cluster, wordt een cluster knooppunt genoemd. Clusters kunnen worden geschaald naar duizenden knoop punten. Als u nieuwe knoop punten aan het cluster toevoegt, worden in Service Fabric de service partitie replica's en instanties over het verhoogde aantal knoop punten gebalanceerd. De algehele prestaties van toepassingen verbeteren en conflicten voor toegang tot het geheugen neemt af. Als de knoop punten in het cluster niet efficiënt worden gebruikt, kunt u het aantal knoop punten in het cluster verlagen. Service Fabric opnieuw, worden de partitie replica's en instanties over het aantal knoop punten verkleind om beter gebruik te maken van de hardware op elk knoop punt.
@@ -78,7 +78,7 @@ Lees [Service Fabric Role-Based Access Control (RBAC)](service-fabric-cluster-se
 ### <a name="network-security-groups"></a>Netwerkbeveiligingsgroepen 
 Netwerk beveiligings groepen (Nsg's) bepalen binnenkomend en uitgaand verkeer van een subnet, VM of specifieke NIC.  Wanneer meerdere Vm's in hetzelfde virtuele netwerk worden geplaatst, kunnen ze standaard met elkaar communiceren via een wille keurige poort.  Als u de communicatie tussen de computers wilt beperken, kunt u Nsg's definiëren om het netwerk te segmenteren of Vm's van elkaar te isoleren.  Als u meerdere knooppunt typen in een cluster hebt, kunt u Nsg's Toep assen op subnetten om te voor komen dat computers die deel uitmaken van verschillende knooppunt typen, met elkaar communiceren.  
 
-Lees voor meer informatie over [beveiligings groepen](../virtual-network/security-overview.md)
+Lees voor meer informatie over [beveiligings groepen](../virtual-network/network-security-groups-overview.md)
 
 ## <a name="scaling"></a>Schalen
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: d92dad445b1aeace24dc0af7d95289f5535a5680
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 8653279c353ad679503f2501afeb14725c7fc215
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281786"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329029"
 ---
 # <a name="how-to-plan-a-virtual-machine-offer"></a>Een aanbieding voor een virtuele machine plannen
 
@@ -23,10 +23,7 @@ Voordat u begint, [maakt u een commercieel Marketplace-account in partner centru
 
 ### <a name="technical-fundamentals"></a>Technische basis principes
 
-Het proces voor het ontwerpen, bouwen en testen van aanbiedingen vergt tijd en vereist expertise in zowel het Azure-platform als de technologieën die worden gebruikt om uw aanbieding te bouwen. Uw technische team moet een werk ervaring hebben met de volgende micro soft-technologieën:
-
-- [Ontwerp en architectuur van Azure-toepassingen](https://azure.microsoft.com/solutions/architecture/)
-- [Azure-virtual machines](https://azure.microsoft.com/services/virtual-machines/), [Azure Storage](https://azure.microsoft.com/services/?filter=storage#storage)en [Azure-netwerken](https://azure.microsoft.com/services/?filter=networking#networking)
+Het proces voor het ontwerpen, bouwen en testen van aanbiedingen vergt tijd en vereist expertise in zowel het Azure-platform als de technologieën die worden gebruikt om uw aanbieding te bouwen. Uw technische team moet een werk ervaring hebben met [Azure-virtual machines](https://azure.microsoft.com/services/virtual-machines/), [Azure Storage](https://azure.microsoft.com/services/?filter=storage#storage)en [Azure-netwerken](https://azure.microsoft.com/services/?filter=networking#networking), en met het [ontwerp en de architectuur van Azure-toepassingen](https://azure.microsoft.com/solutions/architecture/). Raadpleeg de volgende aanvullende technische bronnen: 
 
 - Zelfstudies
   - [Virtuele Linux-machines](../virtual-machines/linux/tutorial-manage-vm.md)
@@ -40,9 +37,17 @@ Het proces voor het ontwerpen, bouwen en testen van aanbiedingen vergt tijd en v
 
 ## <a name="technical-requirements"></a>Technische vereisten
 
+VM-aanbiedingen hebben de volgende technische vereisten:
+
+- U moet één virtuele harde schijf (VHD) van het besturings systeem voorbereiden. Vhd's met gegevens schijf zijn optioneel. Dit wordt hieronder nader beschreven.
+- De klant kan uw aanbieding op elk gewenst moment annuleren.
+- U moet ten minste één abonnement maken voor uw aanbieding. De prijs van uw abonnement is gebaseerd op de [licentie optie](#licensing-options) die u selecteert.
+   > [!IMPORTANT]
+   > Elke VM-installatie kopie in een plan moet hetzelfde aantal gegevens schijven hebben.
+
 Een VM bevat twee onderdelen:
 
-- **Virtuele harde schijf van het besturings systeem (VHD)** – bevat het besturings systeem en de oplossing die met uw aanbieding wordt geïmplementeerd. Het proces van het voorbereiden van de VHD verschilt, afhankelijk van het feit of het een Linux-, Windows-of op basis gebaseerde VM betreft.
+- **VHD** – bevat het besturings systeem en de oplossing die met uw aanbieding wordt geïmplementeerd. Het proces van het voorbereiden van de VHD verschilt, afhankelijk van het feit of het een Linux-, Windows-of op basis gebaseerde VM betreft.
 - **Vhd's met gegevens schijf** (optioneel): toegewezen, permanente opslag voor een virtuele machine. Gebruik niet de VHD met het besturings systeem (bijvoorbeeld station C:) om permanente gegevens op te slaan. 
     - U kunt Maxi maal 16 gegevens schijven toevoegen.
     - Gebruik één VHD per gegevens schijf, zelfs als de schijf leeg is.
@@ -50,13 +55,7 @@ Een VM bevat twee onderdelen:
     > [!NOTE]
     > Ongeacht welk besturings systeem u gebruikt, voegt u alleen het minimum aantal gegevens schijven toe dat nodig is voor de oplossing. Klanten kunnen geen schijven verwijderen die deel uitmaken van een installatie kopie op het moment van de implementatie, maar ze kunnen altijd schijven toevoegen tijdens of na de implementatie.
 
-VM-aanbiedingen hebben de volgende technische vereisten:
-
-- U moet één virtuele harde schijf (VHD) van het besturings systeem voorbereiden. Vhd's met gegevens schijf zijn optioneel.
-- De klant kan uw aanbieding op elk gewenst moment annuleren.
-- U moet ten minste één abonnement maken voor uw aanbieding. De prijs van uw abonnement is gebaseerd op de [licentie optie](#licensing-options) die u selecteert.
-   > [!IMPORTANT]
-   > Elke VM-installatie kopie in een plan moet hetzelfde aantal gegevens schijven hebben.
+Zie [een virtuele machine maken met behulp van een goedgekeurde basis](azure-vm-create-using-approved-base.md) of [een virtuele machine maken met uw eigen installatie kopie](azure-vm-create-using-own-image.md)voor gedetailleerde instructies voor het voorbereiden van uw technische activa.
 
 ## <a name="preview-audience"></a>Voor beeld van doel groep
 
@@ -134,5 +133,6 @@ Wanneer u uw aanbieding in Partner Center maakt, wordt het tabblad **verkopen vi
 
 ## <a name="next-steps"></a>Volgende stappen
 
+- [Een aanbieding voor een virtuele machine maken op Azure Marketplace](azure-vm-create.md)
 - [Maak een virtuele machine met behulp van een goedgekeurde basis](azure-vm-create-using-approved-base.md) of [Maak een virtuele machine met behulp van uw eigen installatie kopie](azure-vm-create-using-own-image.md).
 - [Best practices voor aanbiedingsvermeldingen](gtm-offer-listing-best-practices.md)

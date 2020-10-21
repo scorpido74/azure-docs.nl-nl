@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/25/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: aca16e334e594f8adf0c0a3b0354db827fc475fe
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9db530c1bdff6521c945ae0c2373bb9d32b8a476
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333972"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047774"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-powershell"></a>Quickstart: Een openbare load balancer maken voor het uitvoeren van de taakverdeling voor VM's met behulp van Azure PowerShell
 
@@ -1271,8 +1271,8 @@ In deze quickstart hebt u:
 * De load balancer-verkeersregel en de statustest geconfigureerd.
 * De load balancer getest.
 
-Zie [Wat is Azure Load Balancer?](load-balancer-overview.md) en de [veelgestelde vragen over Load Balancer](load-balancer-faqs.md) voor meer informatie over Azure Load Balancer.
-
-* Meer informatie over [Load Balancer en beschikbaarheidszones](load-balancer-standard-availability-zones.md).
+Als u meer informatie wilt over Azure Load Balancer, gaat u naar
+> [!div class="nextstepaction"]
+> [Wat is Azure Load Balancer?](load-balancer-overview.md)
 
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/15/2019
-ms.openlocfilehash: 1de9fc480c753b2497a1ea4e3438583b3582bc96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 595bf6f921265e9e8dbc0e0e065fe835efea14bc
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87072791"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331648"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>On-premises Apache Hadoop clusters migreren naar Azure HDInsight-motivatie en voor delen
 
@@ -39,11 +39,11 @@ Azure HDInsight is een clouddistributie van Hadoop-onderdelen. Azure HDInsight m
 
 - **Beheerde hardware en configuratie** : u hoeft zich geen zorgen te maken over de fysieke hardware of infra structuur met een HDInsight-cluster. U hoeft alleen de configuratie van het cluster op te geven. Azure stelt deze in.
 
-- **Eenvoudig schaal bare** HDInsight biedt u de mogelijkheid om werk belastingen omhoog of omlaag te [schalen](../hdinsight-administer-use-portal-linux.md) . Azure zorgt ervoor dat de herverdeling van gegevens en de herverdeling van de werk belasting zonder onderbreking van de gegevensverwerkings taken worden uitgevoerd.
+- **Eenvoudig schaal bare** HDInsight biedt u de mogelijkheid om werk belastingen omhoog of omlaag te [schalen](../hdinsight-administer-use-portal-linux.md) . Azure zorgt ervoor dat de herverdeling van gegevens en de herverdeling van de werk belasting zonder onderbreking van de gegevensverwerkings taken worden uitgevoerd.
 
 - **Wereld wijde Beschik baarheid** -HDInsight is beschikbaar in meer [regio's](https://azure.microsoft.com/regions/services/) dan enige andere Big data analyse-aanbieding. Azure HDInsight is ook beschikbaar in Azure Government, China en Duitsland, waarmee u kunt voldoen aan de behoeften van uw bedrijf in belangrijke soevereine gebieden.
 
-- Met **beveiligen en compatibel** -HDInsight kunt u uw zakelijke gegevensassets beveiligen met [Azure Virtual Network](../hdinsight-plan-virtual-network-deployment.md), [versleuteling](../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md)en integratie met [Azure Active Directory](../domain-joined/hdinsight-security-overview.md). HDInsight voldoet ook aan de meest populaire normen voor de industrie-en regerings [naleving](https://azure.microsoft.com/overview/trusted-cloud).
+- Met **beveiligen en compatibel** -HDInsight kunt u uw zakelijke gegevensassets beveiligen met [Azure Virtual Network](../hdinsight-plan-virtual-network-deployment.md), [versleuteling](../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md)en integratie met [Azure Active Directory](../domain-joined/hdinsight-security-overview.md). HDInsight voldoet aan de meeste populaire [nalevingsstandaarden](https://azure.microsoft.com/overview/trusted-cloud) van de industrie en de overheid.
 
 - **Vereenvoudigd versie beheer** : Azure HDInsight beheert de versie van de Hadoop-eco-systeem onderdelen en houdt deze up-to-date. Software-updates zijn doorgaans een complex proces voor on-premises implementaties.
 
@@ -51,9 +51,9 @@ Azure HDInsight is een clouddistributie van Hadoop-onderdelen. Azure HDInsight m
 
 - **Productiviteit** : u kunt verschillende hulpprogram Ma's voor Hadoop en Spark gebruiken in uw favoriete ontwikkel omgeving.
 
-- **Uitbreid baarheid met aangepaste hulpprogram ma's of toepassingen** van derden-HDInsight-clusters kunnen worden uitgebreid met geïnstalleerde onderdelen en kunnen ook worden geïntegreerd met de andere oplossingen van Big data met [één klik op](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/)   implementaties van de Azure-markt plaats.
+- **Uitbreid baarheid met aangepaste hulpprogram ma's of toepassingen** van derden-HDInsight-clusters kunnen worden uitgebreid met geïnstalleerde onderdelen en kunnen ook worden geïntegreerd met de andere oplossingen van Big data met [één klik op](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) implementaties van de Azure-markt plaats.
 
-- **Eenvoudig beheer, beheer en controle** : Azure HDInsight kan worden geïntegreerd met [Azure monitor logboeken](../hdinsight-hadoop-oms-log-analytics-tutorial.md)   om een enkele interface te bieden waarmee u al uw clusters kunt bewaken.
+- **Eenvoudig beheer, beheer en controle** : Azure HDInsight kan worden geïntegreerd met [Azure monitor logboeken](../hdinsight-hadoop-oms-log-analytics-tutorial.md) om een enkele interface te bieden waarmee u al uw clusters kunt bewaken.
 
 - **Integratie met andere Azure-Services** -HDInsight kan eenvoudig worden geïntegreerd met andere populaire Azure-Services, zoals de volgende:
 
@@ -185,7 +185,7 @@ Deze sectie bevat sjabloon vragenlijsten waarmee u belang rijke informatie kunt 
 |Alleen gebruikers in de Cloud?|                 Ja||
 |MFA vereist?|                       Nee|| 
 |Vereisten voor gegevens autorisatie?|  Ja||
-|Role-Based Access Control?|        Ja||
+|Op rollen gebaseerd toegangs beheer?|        Ja||
 |Controle vereist?|                  Ja||
 |Gegevens versleuteling in rust?|          Ja||
 |Gegevens versleuteling in transit?|       Ja||

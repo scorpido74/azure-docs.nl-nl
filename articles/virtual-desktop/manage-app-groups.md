@@ -3,15 +3,15 @@ title: App-groepen voor het Windows Virtual Desktop-portal beheren - Azure
 description: Ontdek hoe u app-groepen voor Windows Virtual Desktop kunt beheren met het Azure-portal.
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 09/04/2020
+ms.date: 10/09/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: beac9f64b12a07d2fc900099ee1f107e4981f17e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ec26f021ffa581b0713973904c97349df83a08ef
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320214"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91930268"
 ---
 # <a name="tutorial-manage-app-groups-with-the-azure-portal"></a>Zelfstudie: App-groepen beheren met het Azure-portal
 
@@ -124,7 +124,7 @@ Het implementatieproces doet het volgende voor u:
 - Maak een koppeling aan naar een Azure Resource Manager-sjabloon op basis van uw configuratie, die u kunt downloaden en opslaan voor later.
 
 >[!IMPORTANT]
->U kunt slechts 50 toepassingsgroepen per Azure Active Directory-tenant maken. We hebben deze limiet toegevoegd vanwege servicebeperkingen voor het ophalen van feeds voor onze gebruikers. Deze limiet is niet van toepassing op app-groepen die zijn gemaakt in Windows Virtual Desktop (klassiek).
+>U kunt slechts 200 toepassingsgroepen per Azure Active Directory-tenant maken. We hebben deze limiet toegevoegd vanwege servicebeperkingen voor het ophalen van feeds voor onze gebruikers. Deze limiet is niet van toepassing op app-groepen die zijn gemaakt in Windows Virtual Desktop (klassiek).
 
 ## <a name="next-steps"></a>Volgende stappen
 

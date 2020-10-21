@@ -1,6 +1,6 @@
 ---
 title: 'Zelfstudie: Een web-app migreren vanuit Bing Kaarten | Microsoft Azure Maps'
-description: Lees hoe u een web-app migreert vanuit Bing Kaarten naar Microsoft Azure Maps.
+description: Zelfstudie over hoe u een web-app migreert vanuit Bing Kaarten naar Microsoft Azure Maps.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 9/10/2020
@@ -9,14 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: 469565385ce4b3ee4b1589f105216213d584c8c9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 42ba92a0134ae1e8da91bbe7513668fa24c4718f
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319732"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876512"
 ---
-# <a name="migrate-a-web-app-from-bing-maps"></a>Een web-app migreren vanuit Bing Kaarten
+# <a name="tutorial---migrate-a-web-app-from-bing-maps"></a>Zelfstudie: een web-app migreren vanuit Bing Kaarten
 
 Web-apps die Bing Kaarten gebruiken, maken vaak gebruik van de Bing Kaarten v8 JavaScript-SDK. De Azure Maps Web-SDK is de geschikte op Azure gebaseerde SDK om naar te migreren. Met de Azure Maps Web-SDK kunt u interactieve kaarten aanpassen met uw eigen inhoud en beeldmateriaal om weer te geven in uw web- of mobiele toepassingen. Dit besturingselement maakt gebruik van WebGL, zodat u grote gegevenssets kunt weergeven met hoge prestaties. U kunt ontwikkelen met deze SDK met behulp van JavaScript of TypeScript.
 
@@ -28,7 +28,7 @@ Als u een bestaande webtoepassing wilt migreren, controleert u of deze een opens
 
 Bij het ontwikkelen met behulp van een JavaScript-framework kan een van de volgende opensource-projecten nuttig zijn:
 
-- [ng-azure-maps](https://github.com/arnaudleclerc/ng-azure-maps): Angular 10-wrapper rond Azure Maps.
+- [ng-azure-maps](https://github.com/arnaudleclerc/ng-azure-maps): Angular 10-wrapper rond Azure-kaarten.
 - [AzureMapsControl.Components](https://github.com/arnaudleclerc/AzureMapsControl.Components): een Azure Maps Blazor-onderdeel.
 - [Azure Maps React-onderdeel](https://github.com/WiredSolutions/react-azure-maps): een react-wrapper voor het Azure Maps-besturingselement.
 - [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps): een Azure Maps-onderdeel voor de Vue-toepassing.
@@ -96,7 +96,7 @@ Hier volgen diverse codevoorbeelden voor elk platform die u in algemene scenario
 **Onderwerpen**
 
 - [Een kaart laden](#load-a-map)
-- [De kaart lokaliseren](#localizing-the-map)
+- [Lokaliseren van de kaart](#localizing-the-map)
 - [De kaartweergave instellen](#setting-the-map-view)
 - [Een punaise toevoegen](#adding-a-pushpin)
 - [Een aangepaste punaise toevoegen](#adding-a-custom-pushpin)
@@ -105,7 +105,7 @@ Hier volgen diverse codevoorbeelden voor elk platform die u in algemene scenario
 - [Een informatievenster weergeven](#display-an-infobox)
 - [Clustering van punaises](#pushpin-clustering)
 - [Een heatmap toevoegen](#add-a-heat-map)
-- [Een tegellaag boven de kaart weergeven](#overlay-a-tile-layer)
+- [Een tegellaag als overlay gebruiken](#overlay-a-tile-layer)
 - [Verkeergegevens weergeven](#show-traffic-data)
 - [Een terrein-overlay toevoegen](#add-a-ground-overlay)
 - [KML-gegevens toevoegen aan de kaart](#add-kml-data-to-the-map)
@@ -239,7 +239,7 @@ U vindt [hier](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-contro
 
 -   Azure Maps biedt ook navigatiebesturingselementen voor het draaien en kantelen van de kaartweergave, zoals [hier](https://docs.microsoft.com/azure/azure-maps/map-add-controls) wordt beschreven.
 
-### <a name="localizing-the-map"></a>De kaart lokaliseren
+### <a name="localizing-the-map"></a>Lokaliseren van de kaart
 
 Lokalisatie is belangrijk als uw doelgroep zich in meerdere landen bevindt of verschillende talen spreekt.
 
@@ -1732,4 +1732,4 @@ Lees hier meer over de Azure Maps Web-SDK.
 > [Codevoorbeelden](https://docs.microsoft.com/samples/browse/?products=azure-maps)
 
 > [!div class="nextstepaction"]
-> [Naslagdocumentatie over de API voor de Web-SDK-service van Azure Maps](https://docs.microsoft.com/javascript/api/azure-maps-control/)
+> [Naslagdocumentatie over de API voor de web-SDK-service van Azure Maps](https://docs.microsoft.com/javascript/api/azure-maps-control/)

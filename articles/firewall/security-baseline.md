@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 24c9e5137e59fbd14a489b4d41709f39aa448ed8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4794e581dc9855d79cb7cafbc5a6e55f1477f318
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89231347"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329726"
 ---
 # <a name="azure-security-baseline-for-azure-firewall"></a>Azure-beveiligings basislijn voor Azure Firewall
 
@@ -370,7 +370,7 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure Activ
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: systemen isoleren die gevoelige informatie opslaan of verwerken
 
-**Richt lijnen**: isolatie implementeren met afzonderlijke abonnementen en beheer groepen voor afzonderlijke beveiligings domeinen, zoals omgevings type en gegevens gevoeligheids niveau. U kunt het toegangs niveau voor uw Azure Firewall resources beperken dat door uw toepassingen en bedrijfs omgevingen wordt vereist. U kunt de toegang tot Azure-resources beheren via Azure Active Directory op rollen gebaseerd toegangs beheer. 
+**Richt lijnen**: isolatie implementeren met afzonderlijke abonnementen en beheer groepen voor afzonderlijke beveiligings domeinen, zoals omgevings type en gegevens gevoeligheids niveau. U kunt het toegangs niveau voor uw Azure Firewall resources beperken dat door uw toepassingen en bedrijfs omgevingen wordt vereist. U kunt de toegang tot Azure-resources beheren via op rollen gebaseerd toegangs beheer van Azure. 
 
 - [Aanvullende Azure-abonnementen maken](/azure/billing/billing-create-subscription)
 
@@ -702,7 +702,7 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 
 - [Beveiligingswaarschuwingen in Azure Security Center](../security-center/security-center-alerts-overview.md) 
 
-- [Labels gebruiken om uw Azure-resources te organiseren](/azure/azure-resource-manager/resource-group-using-tags)
+- [Tags gebruiken om Azure-resources te organiseren](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure Security Center bewaking**: niet van toepassing
 

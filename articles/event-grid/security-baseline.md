@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d027797deee9435127592fc91c21d59ee93fe9b5
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 2a1396f67c94b34b4fdef0bdaf7e01770da91246
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152259"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331512"
 ---
 # <a name="azure-security-baseline-for-event-grid"></a>Azure-beveiligings basislijn voor Event Grid
 
@@ -287,9 +287,9 @@ Daarnaast kunt u uw Log Analytics-werk ruimte onboarden naar Azure Sentinel, omd
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: een inventaris van beheerders accounts onderhouden
 
-**Hulp**: met Azure Event grid kunt u het toegangs niveau dat aan verschillende gebruikers wordt gegeven, beheren om verschillende beheer bewerkingen uit te voeren, zoals abonnementen op lijst gebeurtenissen, nieuwe maken en sleutels genereren. Event Grid maakt gebruik van het op rollen gebaseerd toegangs beheer (RBAC) van Azure. Event Grid ondersteunt ingebouwde rollen en aangepaste rollen.
+**Hulp**: met Azure Event grid kunt u het toegangs niveau dat aan verschillende gebruikers wordt gegeven, beheren om verschillende beheer bewerkingen uit te voeren, zoals abonnementen op lijst gebeurtenissen, nieuwe maken en sleutels genereren. Event Grid maakt gebruik van Azure op rollen gebaseerd toegangs beheer (Azure RBAC). Event Grid ondersteunt ingebouwde rollen en aangepaste rollen.
 
-Met op rollen gebaseerd toegangs beheer (RBAC) van Azure kunt u de toegang tot Azure-resources beheren via roltoewijzingen. U kunt deze rollen toewijzen aan gebruikers, groeperingen van service-principals en beheerde identiteiten. Er zijn vooraf gedefinieerde ingebouwde rollen voor bepaalde resources, en deze rollen kunnen worden geïnventariseerd of opgevraagd via hulpprogram ma's als Azure CLI, Azure PowerShell of de Azure Portal.
+Met Azure op rollen gebaseerd toegangs beheer (Azure RBAC) kunt u de toegang tot Azure-resources beheren via roltoewijzingen. U kunt deze rollen toewijzen aan gebruikers, groeperingen van service-principals en beheerde identiteiten. Er zijn vooraf gedefinieerde ingebouwde rollen voor bepaalde resources, en deze rollen kunnen worden geïnventariseerd of opgevraagd via hulpprogram ma's als Azure CLI, Azure PowerShell of de Azure Portal.
 
 - [Toegang tot Event Grid-resources autoriseren](security-authorization.md)
 
@@ -457,7 +457,7 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-ge
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: systemen isoleren die gevoelige informatie opslaan of verwerken
 
-**Richt lijnen**: isolatie implementeren met afzonderlijke abonnementen en beheer groepen voor afzonderlijke beveiligings domeinen, zoals omgevings type en gegevens gevoeligheids niveau. U kunt het toegangs niveau voor uw Azure-resources beperken die worden vereist door uw toepassingen en bedrijfs omgevingen. U kunt de toegang tot Azure-resources beheren via Azure Active Directory RBAC.
+**Richt lijnen**: isolatie implementeren met afzonderlijke abonnementen en beheer groepen voor afzonderlijke beveiligings domeinen, zoals omgevings type en gegevens gevoeligheids niveau. U kunt het toegangs niveau voor uw Azure-resources beperken die worden vereist door uw toepassingen en bedrijfs omgevingen. U kunt de toegang tot Azure-resources beheren via Azure RBAC.
 
 - [Aanvullende Azure-abonnementen maken](../cost-management-billing/manage/create-subscription.md)
 
@@ -501,7 +501,7 @@ Voor het onderliggende platform, dat wordt beheerd door micro soft, behandelt mi
 
 ### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4,6: Azure RBAC gebruiken om de toegang tot resources te beheren
 
-**Hulp**: Azure Event grid ondersteunt het gebruik van Azure Active Directory (AD) om aanvragen voor Event grid bronnen goed te keuren. Met Azure AD kunt u gebruikmaken van op rollen gebaseerd toegangs beheer (RBAC) om machtigingen toe te kennen aan een beveiligingsprincipal, die een gebruiker of een service-principal van de toepassing is.
+**Hulp**: Azure Event grid ondersteunt het gebruik van Azure Active Directory (AD) om aanvragen voor Event grid bronnen goed te keuren. Met Azure AD kunt u Azure RBAC (op rollen gebaseerd toegangs beheer) gebruiken om machtigingen te verlenen aan een beveiligingsprincipal, die een gebruiker of een service-principal van de toepassing is.
 
 - [Toegang tot Event Grid-resources autoriseren](security-authorization.md)
 
@@ -926,7 +926,7 @@ Event Grid ondersteunt momenteel geen door de klant beheerde sleutels.
 
 - [Beveiligingswaarschuwingen in Azure Security Center](../security-center/security-center-alerts-overview.md)
 
-- [Labels gebruiken om uw Azure-resources te organiseren](../azure-resource-manager/management/tag-resources.md)
+- [Tags gebruiken om Azure-resources te organiseren](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center bewaking**: Ja
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 1f4569a45b9ed0eee7c375e660df97925335313b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5dcd705719510cce3a113c5b0fdc46d016313b6d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549795"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856404"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-linkedin-elevate"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met LinkedIn Elevate
 
@@ -144,11 +144,11 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Klik in **Accountcentrum** onder **Instellingen** op **Algemene instellingen**. Selecteer ook **Elevate - Elevate AAD Test** in de vervolgkeuzelijst.
 
-    ![Eenmalige aanmelding configureren](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_01.png)
+    ![Schermopname van de Algemene instellingen waar u Elevate AAD Test kunt selecteren.](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_01.png)
 
 1. Klik op  **OF klik hier om afzonderlijke velden uit het formulier** te laden en te kopiëren en voer de volgende stappen uit:
 
-    ![Eenmalige aanmelding configureren](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_03.png)
+    ![Schermopname met Eenmalige aanmelding waarin u de beschreven waarden kunt invoeren.](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_03.png)
 
     a. Kopieer de waarde van de **entiteits-ID** en plak deze in het tekstvak **Id** in **Standaard SAML-configuratie** in Azure Portal.
 
@@ -156,11 +156,11 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Ga naar het gedeelte **met beheerdersinstellingen voor LinkedIn**. Upload het XML-bestand dat u hebt gedownload uit Azure Portal door op de optie XML-bestand uploaden te klikken.
 
-    ![Eenmalige aanmelding configureren](./media/linkedinelevate-tutorial/tutorial_linkedin_metadata_03.png)
+    ![Schermopname van het configureren van de instellingen voor eenmalige aanmelding voor de LinkedIn-serviceprovider waar u een XML-bestand kunt uploaden.](./media/linkedinelevate-tutorial/tutorial_linkedin_metadata_03.png)
 
 1. Klik op **Aan** om SSO in te schakelen. De SSO-status verandert van **Niet verbonden** naar **Verbonden**
 
-    ![Eenmalige aanmelding configureren](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_05.png)
+    ![Schermopname van Single Sign-On waar u Automatisch licenties toewijzen kunt selecteren.](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_05.png)
 
 ### <a name="create-linkedin-elevate-test-user"></a>Testgebruiker voor LinkedIn Elevate maken
 

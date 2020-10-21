@@ -3,12 +3,12 @@ title: Ondersteuning voor Hyper-V-evaluatie in Azure Migrate
 description: Meer informatie over ondersteuning voor Hyper-V-evaluatie met Azure Migrate server-evaluatie
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: 36cc96915380a464f02df5806337a06f022ecbbf
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 4c50bd2bdd0e5a0d68b545a914582352d7b34421
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/21/2020
-ms.locfileid: "92311335"
+ms.locfileid: "92331971"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>Ondersteunings matrix voor Hyper-V-evaluatie
 
@@ -63,7 +63,7 @@ De volgende tabel bevat een overzicht van de poort vereisten voor evaluatie.
 **Apparaat** | **Verbinding**
 --- | ---
 **Apparaat** | Binnenkomende verbindingen op TCP-poort 3389 om extern bureau blad-verbindingen met het apparaat toe te staan.<br/><br/> Binnenkomende verbindingen op poort 44368 voor externe toegang tot de app voor het beheren van apparaten met behulp van de URL: ``` https://<appliance-ip-or-name>:44368 ```<br/><br/> Uitgaande verbindingen op poort 443 (HTTPS) voor het verzenden van meta gegevens voor detectie en prestaties naar Azure Migrate.
-**Hyper-V-host/cluster** | Binnenkomende verbinding op WinRM-poort 5985 (HTTP) om meta gegevens en prestatie gegevens voor Hyper-V-Vm's te halen met behulp van een Common Information Model (CIM)-sessie.
+**Hyper-V-host/cluster** | Binnenkomende verbinding op WinRM-poort 5985 (HTTP) of 5986 (HTTPS) voor het ophalen van meta gegevens en prestatie gegevens voor Hyper-V-Vm's met behulp van een Common Information Model (CIM)-sessie.
 
 ## <a name="agent-based-dependency-analysis-requirements"></a>Vereisten voor afhankelijkheids analyse op basis van een agent
 

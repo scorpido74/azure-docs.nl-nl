@@ -3,12 +3,12 @@ title: Event Hub van Apache Kafka app gebruiken-Azure Event Hubs | Microsoft Doc
 description: Dit artikel bevat informatie over Apache Kafka ondersteuning door Azure Event Hubs.
 ms.topic: article
 ms.date: 09/25/2020
-ms.openlocfilehash: 95534d32bdf34d44a11b31c2476c153272717941
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 2b101adf173f3d623bb85d811ba5832020313f14
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319849"
+ms.locfileid: "92327294"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Azure Event Hubs van Apache Kafka toepassingen gebruiken
 Event Hubs biedt een eind punt dat compatibel is met de Apache Kafka® producer-en Consumer-Api's die kunnen worden gebruikt door de meeste bestaande Apache Kafka-client toepassingen als alternatief voor het uitvoeren van uw eigen Apache Kafka-cluster. Event Hubs ondersteunt de clients van de producent-en consumenten-Api's van Apache Kafka op versie 1,0 en hoger.
@@ -60,7 +60,7 @@ Azure Event Hubs biedt meerdere opties voor het machtigen van toegang tot uw bev
 - Shared Access Signature (SAS)
 
 #### <a name="oauth-20"></a>OAuth 2.0
-Event Hubs integreert met Azure Active Directory (Azure AD), dat een door **OAuth 2,0** compatibele gecentraliseerde autorisatie server biedt. Met Azure AD kunt u gebruikmaken van op rollen gebaseerd toegangs beheer (RBAC) om verfijnde machtigingen te verlenen aan uw client identiteiten. U kunt deze functie met uw Kafka-clients gebruiken door **SASL_SSL** op te geven voor het protocol en  **OAUTHBEARER** voor het mechanisme. Zie [toegang verlenen met Azure AD](authorize-access-azure-active-directory.md)voor meer informatie over Azure-rollen en-niveaus voor het bereik van de toegang.
+Event Hubs integreert met Azure Active Directory (Azure AD), dat een door **OAuth 2,0** compatibele gecentraliseerde autorisatie server biedt. Met Azure AD kunt u Azure RBAC (op rollen gebaseerd toegangs beheer) gebruiken om aan uw client identiteiten verfijnde machtigingen te verlenen. U kunt deze functie met uw Kafka-clients gebruiken door **SASL_SSL** op te geven voor het protocol en  **OAUTHBEARER** voor het mechanisme. Zie [toegang verlenen met Azure AD](authorize-access-azure-active-directory.md)voor meer informatie over Azure-rollen en-niveaus voor het bereik van de toegang.
 
 ```xml
 bootstrap.servers=NAMESPACENAME.servicebus.windows.net:9093

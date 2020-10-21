@@ -3,12 +3,12 @@ title: Het toevoegen van een Lab-gebruiker in Azure DevTest Labs automatiseren |
 description: Dit artikel laat u zien hoe u het toevoegen van een gebruiker aan een lab in Azure DevTest Labs kunt automatiseren met Azure Resource Manager sjablonen, Power shell en CLI.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: b016d6edcb75016302cf652f873881008de18abb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61853efacc5974b81d46b2b8cca0f2796672d72d
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85483819"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327957"
 ---
 # <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>Automatisch toevoegen van een Lab-gebruiker aan een lab in Azure DevTest Labs
 Met Azure DevTest Labs kunt u snel ontwikkel-en test omgevingen met self-service maken met behulp van de Azure Portal. Als u echter verschillende teams en verschillende DevTest Labs-instanties hebt, kan het maken van het aanmaak proces tijd besparen. Met [Azure Resource Manager sjablonen](https://github.com/Azure/azure-devtestlab/tree/master/Environments) kunt u Labs, Lab-vm's, aangepaste installatie kopieën en formules maken en gebruikers op een geautomatiseerde manier toevoegen. Dit artikel is specifiek gericht op het toevoegen van gebruikers aan een DevTest Labs-exemplaar.
@@ -179,7 +179,7 @@ New-AzureRmRoleAssignment -UserPrincipalName <email@company.com> -RoleDefinition
 Om de resource op te geven waaraan machtigingen worden toegekend, kunnen worden opgegeven met een combi natie van `ResourceName` , `ResourceType` `ResourceGroup` of op basis van de `scope` para meter. Welke combi natie van para meters wordt gebruikt, geeft voldoende informatie aan de cmdlet om het Active Directory object (gebruiker, groep of Service-Principal), bereik (resource groep of resource) en roldefinitie te identificeren.
 
 ## <a name="use-azure-command-line-interface-cli"></a>De Azure-opdracht regel interface (CLI) gebruiken
-In azure CLI wordt het toevoegen van een Labs-gebruiker aan een Lab uitgevoerd met behulp van de `az role assignment create` opdracht. Zie [toegang tot Azure-resources beheren met RBAC en Azure cli](../role-based-access-control/role-assignments-cli.md)voor meer informatie over Azure cli-cmdlets.
+In azure CLI wordt het toevoegen van een Labs-gebruiker aan een Lab uitgevoerd met behulp van de `az role assignment create` opdracht. Zie [Azure-roltoewijzingen toevoegen of verwijderen met Azure cli](../role-based-access-control/role-assignments-cli.md)voor meer informatie over Azure cli-cmdlets.
 
 Het object waartoe toegang wordt verleend, kan worden opgegeven met de `objectId` `signInName` `spn` para meters,,. Het lab waartoe het object toegang wordt verleend, kan worden geïdentificeerd met de `scope` URL of een combi natie van de `resource-name` `resource-type` `resource-group` para meters, en.
 
