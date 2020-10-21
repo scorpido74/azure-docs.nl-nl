@@ -9,12 +9,12 @@ ms.custom: devx-track-csharp, contperfq1
 ms.topic: quickstart
 ms.date: 09/25/2020
 ms.author: lcozzens
-ms.openlocfilehash: 5fd042b91ede91491590a53abf4dec552fbf6487
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 13283a9531804502b8a8d72e615be955b413658c
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91440403"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075838"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Quickstart: Een ASP.NET Core-app maken met Azure-app-configuratie
 
@@ -117,7 +117,7 @@ dotnet new mvc --no-https --output TestAppConfig
 
     ---
 
-    Door de voorgaande wijziging is de [configuratieprovider voor App Configuration](https://go.microsoft.com/fwlink/?linkid=2074664) geregistreerd bij de .NET Core-Configuratie-API.
+    Door de voorgaande wijziging is de [configuratieprovider voor App Configuration](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration) geregistreerd bij de .NET Core-Configuratie-API.
 
 ## <a name="read-from-the-app-configuration-store"></a>Uitlezen uit het App Configuration-archief
 

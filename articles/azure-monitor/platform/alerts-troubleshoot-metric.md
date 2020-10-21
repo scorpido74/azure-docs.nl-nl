@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: troubleshooting
 ms.date: 10/05/2020
 ms.subservice: alerts
-ms.openlocfilehash: 0546bd173a5cab456c0ccdafcd5a35c11b0d5ee9
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 2e68a780890b8ddf857bf8f52a0ecf9a4c24b36c
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102150"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342124"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Problemen in Azure Monitor metrische waarschuwingen oplossen 
 
@@ -228,7 +228,7 @@ Zorg ervoor dat u de juiste CLI-opdrachten gebruikt voor metrische waarschuwinge
 Als u een waarschuwings regel voor metrische gegevens wilt maken, moet u over de volgende machtigingen beschikken:
 
 - Lees machtiging voor de doel resource van de waarschuwings regel
-- Schrijf machtiging voor de resource groep waarin de waarschuwings regel is gemaakt (als u de waarschuwings regel maakt op basis van de Azure Portal, wordt de waarschuwings regel gemaakt in dezelfde resource groep waarin de doel resource zich bevindt)
+- Schrijf machtiging voor de resource groep waarin de waarschuwings regel is gemaakt (als u de waarschuwings regel maakt op basis van de Azure Portal, wordt de waarschuwings regel standaard gemaakt in dezelfde resource groep waarin de doel resource zich bevindt)
 - Lees machtiging voor elke actie groep die is gekoppeld aan de waarschuwings regel (indien van toepassing)
 
 

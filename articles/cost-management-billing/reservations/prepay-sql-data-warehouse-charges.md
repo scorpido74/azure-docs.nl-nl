@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: ca83760f09ea29ba0b21a0f7177dd3f3188c44cd
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: b82f4252754e79813629e0c792ee0ba35e437714
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686136"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151526"
 ---
 # <a name="save-costs-for-azure-synapse-analytics-charges-with-reserved-capacity"></a>Bespaar op Azure Synapse Analytics-kosten met gereserveerde capaciteit
 
@@ -27,7 +27,7 @@ Wanneer de gereserveerde capaciteit vervalt, blijven de Azure Synapse Analytics-
 
 Raadpleeg het [aanbod voor Azure Synapse Analytics-reserveringscapaciteit](https://azure.microsoft.com/pricing/details/synapse-analytics/) voor prijsinformatie.
 
-U kunt Azure Synapse Analytics-reserveringscapaciteit kopen in de [Azure-portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade). Betaal [vooraf of per maand](monthly-payments-reservations.md) voor de reservering. Gereserveerde capaciteit kopen:
+U kunt Azure Synapse Analytics-reserveringscapaciteit kopen in de [Azure-portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade). Betaal [vooraf of per maand](./prepare-buy-reservation.md) voor de reservering. Gereserveerde capaciteit kopen:
 
 - U moet de rol van eigenaar hebben voor ten minste één Enterprise- abonnement of een abonnement op gebruiksbasis.
 - Voor Enterprise-abonnementen moet de optie **Gereserveerde instanties toevoegen** zijn ingeschakeld in [EA Portal](https://ea.azure.com/). Als de instelling is uitgeschakeld, moet u een EA-beheerder zijn.

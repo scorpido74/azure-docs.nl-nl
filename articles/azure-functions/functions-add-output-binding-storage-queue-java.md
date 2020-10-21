@@ -7,12 +7,12 @@ ms.author: karler
 ms.date: 10/14/2019
 ms.topic: quickstart
 zone_pivot_groups: java-build-tools-set
-ms.openlocfilehash: 9f512e3bbf7947361fa9890e9514693610c9f99d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: faa4df8633c34b23703a3fe9fa405bad959ec894
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87321952"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167199"
 ---
 # <a name="connect-your-java-function-to-azure-storage"></a>Uw Java-functie verbinden met Azure Storage
 
@@ -112,7 +112,7 @@ U hebt uw HTTP-geactiveerde functie bijgewerkt om gegevens naar een Storage-wach
 Vervolgens moet u bewaking met Application Insights inschakelen voor uw functie-app:
 
 > [!div class="nextstepaction"]
-> [Application Insights-integratie inschakelen](functions-monitoring.md#manually-connect-an-app-insights-resource)
+> [Application Insights-integratie inschakelen](configure-monitoring.md#add-to-an-existing-function-app)
 
 
 [Azure Storage Explorer]: https://storageexplorer.com/

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: overview
 ms.date: 10/05/2020
 ms.author: duau
-ms.openlocfilehash: ee690a73907eca3bcd577cf2d983c8abc5409925
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 82562eae748753cd785851c5d91f5f152b4c9960
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743060"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206948"
 ---
 # <a name="what-is-azure-expressroute"></a>Wat is Azure ExpressRoute?
 Met ExpressRoute kunt u uw on-premises netwerken in de Microsoft Cloud uitbreiden via een persoonlijke verbinding met de hulp van een connectiviteitsprovider. Met ExpressRoute kunt u verbindingen tot stand brengen met Microsoft-cloudservices, zoals Microsoft Azure en Microsoft 365.
@@ -36,10 +36,10 @@ Zie de [Veelgestelde vragen over ExpressRoute](expressroute-faqs.md) voor meer i
 ## <a name="features"></a>Functies
 
 ### <a name="layer-3-connectivity"></a>Laag 3-connectiviteit
-Microsoft maak gebruik van BGP, een industriestandaard protocol voor dynamische routering. Voor het uitwisselen van routes tussen on-premises netwerken, Azure-instanties en openbare Microsoft-adressen. We stellen meerdere BGP-sessies met uw netwerk in voor verschillende verkeersprofielen. Meer informatie vindt u in het artikel [ExpressRoute circuit and routing domains](expressroute-circuit-peerings.md) (ExpressRoute-circuit en -routeringsdomeinen).
+Microsoft maakt gebruik van BGP, een standaardprotocol voor dynamische routering, voor het uitwisselen van routes tussen uw on-premises netwerk, uw exemplaren in Azure en openbare Microsoft-adressen. We stellen meerdere BGP-sessies met uw netwerk in voor verschillende verkeersprofielen. Meer informatie vindt u in het artikel [ExpressRoute circuit and routing domains](expressroute-circuit-peerings.md) (ExpressRoute-circuit en -routeringsdomeinen).
 
 ### <a name="redundancy"></a>Redundantie
-Elk ExpressRoute-circuit bestaat uit twee verbindingen naar twee Microsoft Enterprise-randrouters (MSEE's) op een [ExpressRoute-locatie](https://docs.microsoft.com/azure/expressroute/expressroute-locations#expressroute-locations) vanaf de connectiviteitsprovider/uw netwerkrand. Microsoft vereist een dubbele BGP-verbinding van de connectiviteitsprovider/uw netwerkkant; één voor elke MSEE. U kunt ervoor kiezen om geen redundante apparaten/Ethernet-circuits aan uw kant te implementeren. Connectiviteitsproviders gebruiken redundante apparaten echter om ervoor te zorgen dat uw verbindingen op een redundante manier worden doorgegeven aan Microsoft. Onze [SLA](https://azure.microsoft.com/support/legal/sla/) is alleen geldig als er een redundante Laag-3-connectiviteit is geconfigureerd.
+Elk ExpressRoute-circuit bestaat uit twee verbindingen naar twee Microsoft Enterprise-randrouters (MSEE's) op een [ExpressRoute-locatie](./expressroute-locations.md#expressroute-locations) vanaf de connectiviteitsprovider/uw netwerkrand. Microsoft vereist een dubbele BGP-verbinding van de connectiviteitsprovider/uw netwerkkant; één voor elke MSEE. U kunt ervoor kiezen om geen redundante apparaten/Ethernet-circuits aan uw kant te implementeren. Connectiviteitsproviders gebruiken redundante apparaten echter om ervoor te zorgen dat uw verbindingen op een redundante manier worden doorgegeven aan Microsoft. Onze [SLA](https://azure.microsoft.com/support/legal/sla/) is alleen geldig als er een redundante Laag-3-connectiviteit is geconfigureerd.
 
 ### <a name="connectivity-to-microsoft-cloud-services"></a>Connectiviteit met Microsoft Cloud-services
 ExpressRoute-verbindingen maken toegang mogelijk tot de volgende services:
@@ -82,7 +82,7 @@ Belangrijke functies die ExpressRoute Direct biedt, zijn onder andere de volgend
 * Fysieke isolatie voor branches waarvoor bepaalde wettelijke regels gelden waardoor speciale en geïsoleerde verbindingen een vereiste zijn, zoals het bankwezen, de overheid en de detailhandel
 * Gedetailleerde controle van circuitdistributie op basis van bedrijfsonderdelen
 
-Zie [About ExpressRoute Direct](https://go.microsoft.com/fwlink/?linkid=2022973) (Over ExpressRoute Direct) voor meer informatie.
+Zie [About ExpressRoute Direct](./expressroute-erdirect-about.md) (Over ExpressRoute Direct) voor meer informatie.
 
 ### <a name="bandwidth-options"></a>Bandbreedte-opties
 U kunt ExpressRoute-circuits aanschaffen voor een breed scala aan bandbreedten. Hieronder vindt u een lijst met de ondersteunde bandbreedten. Controleer ook de lijst met ondersteunde bandbreedten van uw connectiviteitsproviders.

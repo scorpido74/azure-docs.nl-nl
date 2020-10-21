@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: e5c33144dcebe491757dfafb2879fe51545827ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f852ec056f3252005bba0bc142c05a9cfbe6c20
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88272787"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342396"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Uw Avere vFXT-systeem plannen
 
@@ -109,7 +109,7 @@ Elk vFXT-knoop punt is identiek. Dat wil zeggen, als u een cluster met drie knoo
 
 Schijf cache per knoop punt kan worden geconfigureerd en kan rage van 1000 GB tot 8000 GB. 4 TB per knoop punt is de aanbevolen cache grootte voor Standard_E32s_v3 knooppunten.
 
-Lees de Microsoft Azure documentatie voor meer informatie over deze Vm's: [grootten van virtuele machines](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory) die zijn geoptimaliseerd voor geheugen
+Lees de Microsoft Azure documentatie voor meer informatie over deze Vm's: [grootten van virtuele machines](../virtual-machines/sizes-memory.md) die zijn geoptimaliseerd voor geheugen
 
 ## <a name="account-quota"></a>Account quotum
 

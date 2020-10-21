@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: e08527ae530b7b5ed5e5293a3af9e2d8dd3f795a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a7d575b92bff69c13ded70187005ce1db018ea4c
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88118787"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151994"
 ---
 # <a name="quickstart-create-an-azure-data-catalog"></a>Quickstart: Een Azure Data Catalog maken
 
@@ -24,7 +24,7 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 ## <a name="prerequisites"></a>Vereisten
 
 > [!Note]
-> Vanwege Azure-beveiligingsvereisten dwingt Azure Data Catalog TLS 1.2 (Transport Layer Security) af. TLS 1.0 en TLS 1.1 zijn uitgeschakeld. Er kunnen fouten optreden bij het uitvoeren van het hulpprogramma voor registratie als uw computer niet is bijgewerkt naar TLS 1.2. Zie [Transport Layer Security (1.2) inschakelen](https://docs.microsoft.com/mem/configmgr/core/plan-design/security/enable-tls-1-2) om uw computer bij te werken naar TLS 1.2.
+> Vanwege Azure-beveiligingsvereisten dwingt Azure Data Catalog TLS 1.2 (Transport Layer Security) af. TLS 1.0 en TLS 1.1 zijn uitgeschakeld. Er kunnen fouten optreden bij het uitvoeren van het hulpprogramma voor registratie als uw computer niet is bijgewerkt naar TLS 1.2. Zie [Transport Layer Security (1.2) inschakelen](/mem/configmgr/core/plan-design/security/enable-tls-1-2) om uw computer bij te werken naar TLS 1.2.
 
 Om aan de slag te gaan, hebt u het volgende nodig:
 

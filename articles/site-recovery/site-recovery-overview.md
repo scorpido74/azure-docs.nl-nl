@@ -4,12 +4,12 @@ description: Dit artikel biedt een overzicht van de Azure Site Recovery-service 
 ms.topic: overview
 ms.date: 03/17/2020
 ms.custom: MVC
-ms.openlocfilehash: 2b8268a47a141bb7254571a762bb9603e1a31b04
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 19860e64182cd73fe9f9fa1246f440a03109d465
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86135232"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281882"
 ---
 # <a name="about-site-recovery"></a>Site Recovery
 
@@ -50,7 +50,7 @@ Met Site Recovery kunt u replicatie beheren voor:
 **Ondersteund** | **Details**
 --- | ---
 **Replicatiescenario's** | Repliceer VM's van de ene Azure-regio naar de andere.<br/><br/>  Repliceer on-premises VMware-VM's, Hyper-V-VM's, fysieke servers (Windows en Linux), Azure Stack-VM's naar Azure.<br/><br/> AWS Windows-instanties repliceren naar Azure.<br/><br/> Repliceer on-premises VMware-VM’s, Hyper-V-VM’s die worden beheerd met System Center VMM, en fysieke servers naar een secundaire site.
-**Regio's** | Bekijk [ondersteunde regio's](https://azure.microsoft.com/regions/services/) voor Site Recovery. |
+**Regio's** | Bekijk [ondersteunde regio's](https://azure.microsoft.com/global-infrastructure/services/?products=site-recovery) voor Site Recovery. |
 **Gerepliceerde machines** | Lees de replicatievereisten voor [Azure VM](azure-to-azure-support-matrix.md#replicated-machine-operating-systems)-replicatie, [on-premises virtuele VMware-machines en fysieke servers](vmware-physical-azure-support-matrix.md#replicated-machines), en [on-premises virtuele Hyper-V-machines](hyper-v-azure-support-matrix.md#replicated-vms).
 **Workloads** | U kunt iedere workload repliceren die wordt uitgevoerd op een computer waarvoor replicatie wordt ondersteund. En het Site Recovery-team heeft app-specifieke tests gedaan voor een [aantal apps](site-recovery-workload.md#workload-summary).
 

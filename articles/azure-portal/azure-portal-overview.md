@@ -9,12 +9,12 @@ ms.date: 12/20/2019
 ms.topic: overview
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 4aa1ccbd9b605850052e190949542eb014fe90a8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 24b249d1098788e518f5eda2d1b0d421d4e5e6bb
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "84763921"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072387"
 ---
 # <a name="azure-portal-overview"></a>Overzicht van de Azure Portal
 
@@ -54,7 +54,7 @@ Dashboards bieden een overzicht van de belangrijkste resources in uw abonnement.
 
 ## <a name="getting-around-the-portal"></a>De portal gebruiken
 
-Het is handig om inzicht te krijgen in de basisweergave van de portal en te begrijpen hoe u ermee kunt werken. Hier introduceren we de onderdelen van de gebruikersinterface en enkele van de terminologie die we gebruiken om instructies te geven. Zie de cursusles [Navigeren in de portal](https://docs.microsoft.com/learn/modules/tour-azure-portal/3-navigate-the-portal) voor een gedetailleerde rondleiding door de portal.
+Het is handig om inzicht te krijgen in de basisweergave van de portal en te begrijpen hoe u ermee kunt werken. Hier introduceren we de onderdelen van de gebruikersinterface en enkele van de terminologie die we gebruiken om instructies te geven. Zie de cursusles [Navigeren in de portal](/learn/modules/tour-azure-portal/3-navigate-the-portal) voor een gedetailleerde rondleiding door de portal.
 
 Het menu en de paginaheader van de Azure Portal zijn algemene elementen die altijd aanwezig zijn. Deze permanente functies zijn de basis voor de gebruikersinterface die is gekoppeld aan elke afzonderlijke service of functie en de header biedt toegang tot algemene besturingselementen. De configuratiepagina (ook wel 'blade' genoemd) voor een resource kan ook een resourcemenu bevatten om u te helpen bij het schakelen tussen functies.
 

@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: f2f40d2ac6652b2b7c968a428961a9bd7f7b4288
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 6be5e9bda27ddff157eda10bbb695dfacaecda7a
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217504"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342260"
 ---
 # <a name="additional-documentation-for-azure-fxt-edge-filer"></a>Aanvullende documentatie voor Azure FXT Edge-Bestandsr
 
@@ -19,7 +19,7 @@ Sommige resources buiten deze docs.microsoft.com-website kunnen u helpen bij het
 
 ## <a name="avere-vfxt-for-azure-cache-documentation"></a>Documentatie voor avere vFXT voor Azure cache
 
-[Avere vFXT voor Azure](https://docs.microsoft.com/azure/avere-vfxt/) is een soortgelijk cluster cache product dat virtuele knoop punten gebruikt in Microsoft Azure. Het wordt gemaakt met de Azure Portal, maar gebruikt dezelfde configuratie scherm-software als de cache van de Azure FXT Edge-Bestands server.
+[Avere vFXT voor Azure](../avere-vfxt/index.yml) is een soortgelijk cluster cache product dat virtuele knoop punten gebruikt in Microsoft Azure. Het wordt gemaakt met de Azure Portal, maar gebruikt dezelfde configuratie scherm-software als de cache van de Azure FXT Edge-Bestands server.
 
 ## <a name="legacy-hardware-documentation"></a>Documentatie voor oudere hardware
 

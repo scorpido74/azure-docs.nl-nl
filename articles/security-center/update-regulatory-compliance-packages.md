@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/15/2020
 ms.author: memildin
-ms.openlocfilehash: 5e32aa8491e18a66a3e8b90f065e6b785d1e3bd9
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 4ec75931a335170a8262cc480f43a0f22db0b79b
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92106260"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342192"
 ---
 # <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>De set normen aanpassen in uw nalevings dashboard voor regelgeving
 
 Azure Security Center vergelijkt voortdurend de configuratie van uw resources met vereisten in de industrie normen,-voor schriften en-benchmarks. Het **nalevings dashboard** van de regelgeving biedt inzicht in uw nalevings postuur op basis van de manier waarop u aan specifieke nalevings regelingen en vereisten voldoet.
 
 
-## <a name="overview-of-compliance-packages"></a>Overzicht van nalevings pakketten
+## <a name="overview-of-compliance-packages"></a>Overzicht van nalevingspakketten
 
 Industrie normen, regelgevings normen en benchmarks worden in Security Center weer gegeven als *nalevings pakketten*.  Elk pakket is een initiatief dat is gedefinieerd in Azure Policy. Als u de nalevings gegevens wilt zien die zijn toegewezen als evaluaties in uw dash board, voegt u een nalevings pakket toe aan de beheer groep of het abonnement vanuit de pagina **beveiligings beleid** . (Meer informatie over Azure Policy en initiatieven bij het [werken met beveiligings beleid](tutorial-security-policy.md).)
 
@@ -41,7 +41,7 @@ Micro soft houdt ook de regelgevings normen zelf bij en verbetert de dekking in 
 
 U kunt standaarden toevoegen zoals NIST SP 800-53 R4, SWIFT CSP CSCF-v2020, UK Official en UK NHS, Canada Federal PBMM en Azure CIS 1.1.0 (New)-een meer volledige weer gave van Azure CIS 1.1.0. 
 
-Daarnaast kunt u **Azure Security Bench Mark**, de door micro soft ontworpen, specifieke Azure-richt lijnen voor beveiliging en naleving aanbevolen procedures toevoegen op basis van algemene nalevings kaders. (Meer[informatie over Azure Security Bench Mark](https://docs.microsoft.com/azure/security/benchmarks/introduction).)
+Daarnaast kunt u **Azure Security Bench Mark**, de door micro soft ontworpen, specifieke Azure-richt lijnen voor beveiliging en naleving aanbevolen procedures toevoegen op basis van algemene nalevings kaders. (Meer[informatie over Azure Security Bench Mark](../security/benchmarks/introduction.md).)
 
 Er worden extra standaarden ondersteund in het dashboard zodra deze beschikbaar komen. 
 
@@ -116,6 +116,6 @@ In dit artikel hebt u geleerd hoe u **nalevings pakketten kunt toevoegen** om uw
 
 Raadpleeg de volgende artikelen voor meer gerelateerde materialen: 
 
-- [Azure Security-benchmark](https://docs.microsoft.com/azure/security/benchmarks/introduction)
+- [Azure Security-benchmark](../security/benchmarks/introduction.md)
 - [Security Center-nalevings dashboard voor regelgeving](security-center-compliance-dashboard.md)
 - [Werken met beveiligingsbeleid](tutorial-security-policy.md)

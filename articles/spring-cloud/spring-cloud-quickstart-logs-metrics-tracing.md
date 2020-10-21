@@ -8,17 +8,17 @@ ms.topic: quickstart
 ms.date: 08/04/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: a5b4d0591f58d2ce4d3d2e9055c70fdc7118e123
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c879b890f9527ea0eee3d702db6f04a38432aa00
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326249"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093052"
 ---
 # <a name="quickstart-monitoring-azure-spring-cloud-apps-with-logs-metrics-and-tracing"></a>Quickstart: Azure Spring Cloud-apps bewaken met logboeken, metrische gegevens en tracering
 
 ::: zone pivot="programming-language-csharp"
-Met de ingebouwde bewaking in Azure Spring Cloud kunt u complexe problemen opsporen en bewaken. Azure Spring Cloud integreert [gedistribueerde tracering](https://steeltoe.io/docs/3/tracing/distributed-tracing) van Steeltoe met [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) van Azure. Deze integratie biedt krachtige logboeken, metrische gegevens en functies voor gedistribueerde tracering via Azure Portal.
+Met de ingebouwde bewaking in Azure Spring Cloud kunt u complexe problemen opsporen en bewaken. Azure Spring Cloud integreert [gedistribueerde tracering](https://steeltoe.io/docs/3/tracing/distributed-tracing) van Steeltoe met [Application Insights](../azure-monitor/app/app-insights-overview.md) van Azure. Deze integratie biedt krachtige logboeken, metrische gegevens en functies voor gedistribueerde tracering via Azure Portal.
 
 In de volgende procedures wordt uitgelegd hoe u logboekstreaming, logboekanalyse, metrische gegevens en gedistribueerde tracering gebruikt met de voorbeeld-app die u in de voorgaande quickstarts hebt geïmplementeerd.
 
@@ -69,7 +69,7 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
     
 1. Bewerk de query om de WHERE-componenten te verwijderen die de weergave beperken tot waarschuwings- en foutenlogboeken.
 
-1. Selecteer vervolgens `Run`. De logboeken worden weergeven. Zie [Azure Log Analytics-documenten](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries) voor meer informatie over het schrijven van query's.
+1. Selecteer vervolgens `Run`. De logboeken worden weergeven. Zie [Azure Log Analytics-documenten](../azure-monitor/log-query/get-started-queries.md) voor meer informatie over het schrijven van query's.
 
    [ ![Logs Analytics-query - Steeltoe](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query-steeltoe.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query-steeltoe.png#lightbox)
 
@@ -107,7 +107,7 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
-Met de ingebouwde bewaking in Azure Spring Cloud kunt u complexe problemen opsporen en bewaken. Azure Spring Cloud integreert [Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) met [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) van Azure. Deze integratie biedt krachtige logboeken, metrische gegevens en functies voor gedistribueerde tracering via Azure Portal. In de volgende procedures wordt uitgelegd hoe u logboekstreaming, logboekanalyse, metrische gegevens en gedistribueerde tracering gebruikt met geïmplementeerde PiggyMetrics-apps.
+Met de ingebouwde bewaking in Azure Spring Cloud kunt u complexe problemen opsporen en bewaken. Azure Spring Cloud integreert [Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) met [Application Insights](../azure-monitor/app/app-insights-overview.md) van Azure. Deze integratie biedt krachtige logboeken, metrische gegevens en functies voor gedistribueerde tracering via Azure Portal. In de volgende procedures wordt uitgelegd hoe u logboekstreaming, logboekanalyse, metrische gegevens en gedistribueerde tracering gebruikt met geïmplementeerde PiggyMetrics-apps.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -165,7 +165,7 @@ De logboeken ophalen met behulp van Azure-toolkit voor IntelliJ:
 
    [ ![Logs Analytics-vermelding](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png#lightbox)
     
-1. Vervolgens worden gefilterde logboeken weergegeven. Zie [Azure Log Analytics-documenten](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries) voor meer informatie over het schrijven van query's.
+1. Vervolgens worden gefilterde logboeken weergegeven. Zie [Azure Log Analytics-documenten](../azure-monitor/log-query/get-started-queries.md) voor meer informatie over het schrijven van query's.
 
    [ ![Logs Analytics-query](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query.png#lightbox)
 

@@ -7,19 +7,19 @@ ms.subservice: cosmosdb-table
 ms.topic: overview
 ms.date: 07/26/2019
 ms.author: sngun
-ms.openlocfilehash: f56c3bd2d302fc7163fa8c05c595891f191c6a11
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: b3219fe3507af1c6020ad3a7d84782847dbb57ae
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91568434"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275089"
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Inleiding tot Azure Cosmos DB: Tabel-API
 
 [Azure Cosmos DB](introduction.md) biedt de Table-API voor toepassingen die zijn geschreven voor Azure Table-opslag en die premium-mogelijkheden nodig hebben, zoals:
 
 * [Kant-en-klare wereldwijde distributie](distribute-data-globally.md).
-* [Speciale doorvoer](partition-data.md) overal ter wereld.
+* [Speciale doorvoer](partitioning-overview.md) overal ter wereld.
 * Latentie van slechts enkele milliseconden op het 99e percentiel.
 * Gegarandeerde hoge beschikbaarheid.
 * Automatische secundaire indexering.

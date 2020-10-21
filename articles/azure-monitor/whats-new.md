@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 07/08/2020
-ms.openlocfilehash: 6722b88947fda8f1a09e540d69c4a8bec74143df
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: c9679fec1d9c5d501ead03bcfbf28132d9e3b90a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91842662"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151811"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Wat is er nieuw de documentatie van Azure Monitor?
 
@@ -64,7 +64,7 @@ In dit artikel vindt u een lijst met Azure Monitor-artikelen die nieuw of aanzie
 - [Standaardkolommen in Azure Monitor-logboekrecords](platform/log-standard-columns.md): updates voor de opname van werkruimtetoepassingen.
 - [Servicelimieten van Azure Monitor](service-limits.md): beperkingslimieten voor gebruikersquery's bijgewerkt.
 - [Door de klant beheerde opslagaccounts gebruiken in Azure Monitor Log Analytics](platform/private-storage.md): artikel herschreven.
-- [Gegevens weergeven en analyseren in Azure Log Analytics](log-query/logs-structure.md): updates voor de opname van werkruimtetoepassingen.
+- [Gegevens weergeven en analyseren in Azure Log Analytics](./platform/data-platform-logs.md): updates voor de opname van werkruimtetoepassingen.
 
 
 ### <a name="platform-logs"></a>Platformlogboeken
@@ -194,11 +194,11 @@ Nieuwe en bijgewerkte artikelen van het opnieuw indelen van de inhoud van Azure 
 - [Linux-computers verbinden met Azure Monitor](platform/agent-linux.md)
 - [Azure Monitor inschakelen voor een hybride omgeving](insights/vminsights-enable-hybrid.md)
 - [Azure Monitor inschakelen voor een enkele virtuele-machine of een virtuele-machineschaalset in Azure Portal](insights/vminsights-enable-portal.md)
-- [Azure Monitor voor VM's inschakelen met Azure Policy](insights/vminsights-enable-at-scale-policy.md)
+- [Azure Monitor voor VM's inschakelen met Azure Policy](./insights/vminsights-enable-policy.md)
 - [Overzicht Azure Monitor voor VM's inschakelen](insights/vminsights-enable-overview.md)
 - [Azure Monitor voor VM's inschakelen met behulp van PowerShell](insights/vminsights-enable-powershell.md)
 - [Azure Monitor voor VM's inschakelen met behulp van Resource Manager-sjablonen](insights/vminsights-enable-resource-manager.md)
-- [Azure Monitor voor VM's inschakelen met PowerShell of sjablonen](insights/vminsights-enable-at-scale-powershell.md)
+- [Azure Monitor voor VM's inschakelen met PowerShell of sjablonen](./insights/vminsights-enable-powershell.md)
 
 
 ### <a name="visualizations"></a>Visualisaties
@@ -292,7 +292,7 @@ Nieuwe en bijgewerkte artikelen over de herstructurering en consolidatie van de 
 
 - [Veelgestelde vragen over Azure Monitor](faq.md): toegevoegde sectie voor metrische gegevens.
 - [Door de klant beheerde Azure Monitor-sleutel](platform/customer-managed-keys.md): verschillende wijzigingen in voorbereiding van algemene beschikbaarheid.
-- [Ingebouwde beleidsdefinities voor Azure Monitor](samples/policy-samples.md): nieuw artikel.
+- [Ingebouwde beleidsdefinities voor Azure Monitor](./samples/policy-reference.md): nieuw artikel.
 - [Opslagaccounts van klanten voor logboekopname](platform/private-storage.md): nieuw artikel.
 - [Gebruik en kosten beheren voor Azure Monitor-logboeken](platform/manage-cost-storage.md): proportionele clusterfacturering toegevoegd.
 - [Azure Private Link gebruiken om netwerken veilig te verbinden met Azure Monitor](platform/private-link-security.md): nieuw artikel.
@@ -330,8 +330,8 @@ Nieuwe en bijgewerkte artikelen over de herstructurering en consolidatie van de 
 - [Expressie app() in Azure Monitor-logboekquery's](log-query/app-expression.md)
 - [Query-bereik vastleggen in Azure Monitor-logboekanalyse](log-query/scope.md)
 - [Query's uitvoeren op resources met Azure Monitor](log-query/cross-workspace-query.md)
-- [Standaardeigenschappen in Azure Monitor-logboekrecords](platform/log-standard-properties.md)
-- [Structuur van Azure Monitor-logboeken](log-query/logs-structure.md)
+- [Standaardeigenschappen in Azure Monitor-logboekrecords](./platform/log-standard-columns.md)
+- [Structuur van Azure Monitor-logboeken](./platform/data-platform-logs.md)
 
 
 
@@ -353,7 +353,7 @@ Nieuwe en bijgewerkte artikelen over de herstructurering en consolidatie van de 
 - [Een Log Analytics-werkruimte maken met Azure CLI](learn/quick-create-workspace-cli.md): sectie probleemoplossing toegevoegd.
 - [Azure Log Analytics-werkruimte verwijderen en herstellen](platform/delete-workspace.md): bijgewerkte informatie over het herstellen van een verwijderde werkruimte.
 - [Functies in Azure Monitor-logboekquery's](log-query/functions.md): notitie verwijderd over functies die geen andere functies bevatten.
-- [Structuur va Azure Monitor-logboeken](log-query/logs-structure.md): eigenschapsbeschrijvingen verduidelijkt voor Application Insights-tabel.
+- [Structuur va Azure Monitor-logboeken](./platform/data-platform-logs.md): eigenschapsbeschrijvingen verduidelijkt voor Application Insights-tabel.
 - [Azure Monitor-logboeken gebruiken met Azure Logic Apps en Power Automate](platform/logicapp-flow-connector.md): sectie met limieten toegevoegd.
 - [PowerShell gebruiken om een Log Analytics-werkruimte te maken en te configureren](platform/powershell-workspace-configuration.md): sectie probleemoplossing toegevoegd.
 
@@ -578,7 +578,7 @@ Meerdere nieuwe artikelen voor conversiegids View Designer naar werkmappen.
 #### <a name="azure-monitor-for-containers"></a>Azure Monitor voor containers
 
 - [Gegevensverzameling van agents configureren voor Azure Monitor voor containers](insights/container-insights-agent-config.md): details toegevoegd voor upgrade van agent in Azure Red Hat OpenShift en extra informatie toegevoegd om onderscheid te maken tussen de methodes voor upgrade van agent.
-- [Prestatiewaarschuwingen maken voor Azure Monitor voor containers](insights/container-insights-alerts.md): herziene informatie en bijgewerkte stappen voor het maken van een waarschuwing over prestatiegegevens die zijn opgeslagen in de werkruimte met werkruimte-contextwaarschuwingen.
+- [Prestatiewaarschuwingen maken voor Azure Monitor voor containers](./insights/container-insights-log-alerts.md): herziene informatie en bijgewerkte stappen voor het maken van een waarschuwing over prestatiegegevens die zijn opgeslagen in de werkruimte met werkruimte-contextwaarschuwingen.
 - [Kubernetes bewaking met Azure Monitor voor containers](insights/container-insights-analyze.md): overzichts- en analyse-artikel bijgewerkt met betrekking tot Windows Kubernetes-clusters.
 - [Azure Red Hat OpenShift-clusters configureren met Azure Monitor voor containers](insights/container-insights-azure-redhat-setup.md): details toegevoegd voor upgrade van agent in Azure Red Hat OpenShift en extra informatie toegevoegd om onderscheid te maken tussen de methodes voor upgrade van agent.
 - [Hybride Kubernetes-clusters configureren met Azure Monitor voor containers](insights/container-insights-hybrid-setup.md): bijgewerkt om toegevoegde ondersteuning weer te geven voor beveiligde poort:10250 met de cAdvisor van Kubelet.
@@ -598,7 +598,7 @@ Meerdere nieuwe artikelen voor conversiegids View Designer naar werkmappen.
 
 - [Log Analytics-werkruimten beheren in Azure Monitor](platform/manage-access.md): updates voor Niet-acties.
 - [Gebruik en kosten voor Azure Monitor-logboeken beheren](platform/manage-cost-storage.md): verduidelijking toegevoegd van berekening van gegevensvolume in de sectie Prijsmodel.
-- [Azure Resource Manager-sjablonen gebruiken om een logboekanalysewerkruimte te maken en te configureren](platform/template-workspace-configuration.md): sjabloon bijgewerkt met nieuwe prijscategorieën.
+- [Azure Resource Manager-sjablonen gebruiken om een logboekanalysewerkruimte te maken en te configureren](./samples/resource-manager-workspace.md): sjabloon bijgewerkt met nieuwe prijscategorieën.
 
 ### <a name="platform-logs"></a>Platformlogboeken
 
@@ -668,9 +668,9 @@ Meerdere artikelen bijgewerkt als onderdeel van herstructurering van platformlog
 - [Servicebeperkingen van Azure Monitor](service-limits.md)
 - [Azure-activiteitenlogboeken verzamelen en analyseren in Log Analytics-werkruimte](./platform/activity-log.md)
 - [Azure-activiteitenlogboek verzamelen met diagnostische instellingen (preview), Azure Monitor](./platform/activity-log.md)
-- [Azure-activiteitenlogboeken verzamelen in een Log Analytics-werkruimte over Azure-tenants](platform/activity-log-collect-tenants.md)
+- [Azure-activiteitenlogboeken verzamelen in een Log Analytics-werkruimte over Azure-tenants](./platform/activity-log.md)
 - [Azure-resourcelogboeken verzamelen in Log Analytics-werkruimte](./platform/resource-logs.md#send-to-log-analytics-workspace)
-- [Diagnostische instellingen in Azure maken met Resource Manager-sjabloon](platform/diagnostic-settings-template.md)
+- [Diagnostische instellingen in Azure maken met Resource Manager-sjabloon](./samples/resource-manager-diagnostic-settings.md)
 - [Diagnostische instelling maken die logboeken metrische gegevens verzamelt in Azure](platform/diagnostic-settings.md)
 - [Azure-activiteitenlogboek exporteren](./platform/activity-log.md#legacy-collection-methods)
 - [Overzicht van Azure-platformlogboeken](platform/platform-logs-overview.md)

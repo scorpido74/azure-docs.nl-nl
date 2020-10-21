@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: da9b7216908b4a4ba80a421427f473c217f76c28
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 951de77f2ef10a06ff03801872cebcef088172b7
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993748"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167046"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL Flexible Server (preview-versie)
 
@@ -121,10 +121,18 @@ De service voert de communityversie van MySQL uit. Dit biedt volledige toepassin
 
 Een van de voor delen van het uitvoeren van uw werkbelasting in Azure, is het wereldwijde bereik. De flexibele server voor Azure Database for MySQL is nu beschikbaar in de volgende Azure-regio's:
 
+- Europa -west
 - Europa - noord
-- Azië - zuidoost
+- Verenigd Koninkrijk Zuid
 - US - oost 2
 - US - west 2
+- Central US
+- VS - oost
+- Canada - midden
+- Azië - zuidoost
+- Korea - centraal
+- Japan East
+- Australië - oost
 
 Er wordt aan gewerkt om binnenkort meer servers toe te voegen.
 

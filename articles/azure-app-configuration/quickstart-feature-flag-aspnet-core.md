@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: lcozzens
-ms.openlocfilehash: 7d146004fb4fa120e08b4d67c1d68d51cc6f3c8f
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 866f1c404df2de87c2b3ce58b791ceb5257fca1b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767720"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074444"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Quickstart: functievlaggen toevoegen aan een ASP.NET Core-app
 
@@ -106,7 +106,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     ---
 
-    Door de voorgaande wijziging is de [configuratieprovider voor App Configuration](https://go.microsoft.com/fwlink/?linkid=2074664) geregistreerd bij de .NET Core-Configuratie-API.
+    Door de voorgaande wijziging is de [configuratieprovider voor App Configuration](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration) geregistreerd bij de .NET Core-Configuratie-API.
 
 1. Voeg in*Startup.cs* verwijzingen toe naar functiebeheer van .NET Core:
 
@@ -260,7 +260,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze quickstart hebt u een nieuw App Configuration-archief gemaakt en dit gebruikt om functies in een ASP.NET Core-web-app te beheren via de [functiebeheerbibliotheken](https://go.microsoft.com/fwlink/?linkid=2074664).
+In deze quickstart hebt u een nieuw App Configuration-archief gemaakt en dit gebruikt om functies in een ASP.NET Core-web-app te beheren via de [functiebeheerbibliotheken](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration).
 
 * Meer informatie over [functiebeheer](./concept-feature-management.md).
 * [Functievlaggen beheren](./manage-feature-flags.md).

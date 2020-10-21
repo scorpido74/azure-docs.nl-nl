@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: memildin
-ms.openlocfilehash: 52ea6f862b7ef6190348743a128912131e6a9609
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38e1fc7f062908f8c4a4b9aa903ca09dd7fb9ea5
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91314484"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342328"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Azure Security Center gereedheids schema
 Dit document bevat een roadmap naar gereedheid die u helpt aan de slag te gaan met Azure Security Center.
@@ -59,9 +59,9 @@ Security Center verzamelt, analyseert en integreert automatisch logboekgegevens 
 Gebruik de volgende bronnen om u te helpen met het beheer van beveiligingswaarschuwingen en de beveiliging van uw resources.
 
 Artikelen    
-- [Beveiligingsstatus bewaken in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-monitoring)
-- [Protecting your network in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations) (Uw netwerk beveiligen in Azure Security Center)
-- [Protecting Azure SQL service and data in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-sql-service-recommendations) (Azure SQL-service en -gegevens beveiligen in Azure Security Center)
+- [Beveiligingsstatus bewaken in Azure Security Center](./security-center-monitoring.md)
+- [Protecting your network in Azure Security Center](./security-center-network-recommendations.md) (Uw netwerk beveiligen in Azure Security Center)
+- [Protecting Azure SQL service and data in Azure Security Center](./security-center-remediate-recommendations.md) (Azure SQL-service en -gegevens beveiligen in Azure Security Center)
 
 
 Video    
@@ -77,7 +77,7 @@ Video's
 * [Respond quickly to threats with next-generation security operation, and investigation](https://youtu.be/e8iFCz5RM4g) (Snel op bedreigingen reageren met beveiligingsprocessen van een volgende generatie, en onderzoek)
 
 Artikelen    
-* [Beveiligingsincidenten afhandelen met Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-incident-response)
+* [Beveiligingsincidenten afhandelen met Azure Security Center](./tutorial-security-incident.md)
 * [Reactie automatiseren met werk stroom automatisering](workflow-automation.md)
 
 ## <a name="advanced-cloud-defense"></a>Geavanceerde cloudbeveiliging
@@ -91,8 +91,8 @@ Video's
 * [Azure Security Center - Adaptieve besturingselementen voor toepassingen](https://youtu.be/wWWekI1Y9ck)
 
 Artikelen    
-* [Toegang tot virtuele machines beheren met Just-in-time](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
-* [Adaptieve toepassingsbesturingselementen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
+* [Toegang tot virtuele machines beheren met Just-in-time](./security-center-just-in-time.md)
+* [Adaptieve toepassingsbesturingselementen in Azure Security Center](./security-center-adaptive-application.md)
 
 ## <a name="hands-on-activities"></a>Praktijksessies
 
@@ -101,17 +101,17 @@ Artikelen
 * [Azure Security Center Playbook: Beveiligingswaarschuwingen](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046)
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
-* [Documentatiepagina van Security Center](https://docs.microsoft.com/azure/security-center/)
-* [Documentatiepagina van Security Center REST API](https://msdn.microsoft.com/library/mt704034.aspx)
-* [Veelgestelde vragen over Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-faq)
+* [Documentatiepagina van Security Center](./index.yml)
+* [Documentatiepagina van Security Center REST API](/previous-versions/azure/reference/mt704034(v=azure.100))
+* [Veelgestelde vragen over Azure Security Center](./faq-general.md)
 * [Pagina met prijzen van Security Center](https://azure.microsoft.com/pricing/details/security-center/)
-* [Aanbevolen procedures voor identiteitsbeveiliging](https://docs.microsoft.com/azure/security/fundamentals/identity-management-best-practices)
-* [Best practices voor netwerkbeveiliging](https://docs.microsoft.com/azure/security/fundamentals/network-best-practices)
-* [PaaS-aanbevelingen](https://docs.microsoft.com/azure/security/security-paas-deployments)
+* [Aanbevolen procedures voor identiteitsbeveiliging](../security/fundamentals/identity-management-best-practices.md)
+* [Best practices voor netwerkbeveiliging](../security/fundamentals/network-best-practices.md)
+* [PaaS-aanbevelingen](../security/fundamentals/paas-deployments.md)
 * [Naleving](https://www.microsoft.com/trustcenter/compliance/due-diligence-checklist)
-* [Log Analytics-klanten kunnen nu Azure Security Center gebruiken om hun hybride Cloud werkbelastingen te beschermen](https://blogs.technet.microsoft.com/msoms/2017/09/25/oms-customers-can-now-use-azure-security-center-to-protect-their-hybrid-cloud-workloads/)
+* [Log Analytics-klanten kunnen nu Azure Security Center gebruiken om hun hybride Cloud werkbelastingen te beschermen](/archive/blogs/msoms/oms-customers-can-now-use-azure-security-center-to-protect-their-hybrid-cloud-workloads)
 
 ## <a name="community-resources"></a>Communitybronnen
 
 * [Feedback over Security Center](https://feedback.azure.com/forums/347535-azure-security-center)
-* [Q&een pagina voor Security Center](https://docs.microsoft.com/answers/topics/azure-security-center.html)
+* [Q&een pagina voor Security Center](/answers/topics/azure-security-center.html)

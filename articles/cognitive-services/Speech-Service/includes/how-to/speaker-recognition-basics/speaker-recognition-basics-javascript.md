@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 10/07/2020
 ms.author: v-jawe
 ms.custom: references_regions
-ms.openlocfilehash: 5eb204da12b3c3405d52382285b5d75363f266cf
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: bb78a60b911823da96c52a104a3e06ecfc634da6
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875430"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92210934"
 ---
 In deze quickstart leert u basispatronen voor het ontwerp van Speaker Recognition met behulp van de Speech SDK, met inbegrip van:
 
@@ -84,7 +84,7 @@ Voeg de volgende hulpfuncties toe om audiobestanden te lezen voor gebruik met de
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/speech/speaker-recognition.js" id="helpers":::
 
-In deze functie gebruikt u de methoden [AudioInputStream.createPushStream](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioinputstream?view=azure-node-latest#createpushstream-audiostreamformat-) en [AudioConfig.fromStreamInput](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest#fromstreaminput-audioinputstream---pullaudioinputstreamcallback-) om een object [AudioConfig](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest) te maken. Dit object `AudioConfig` vertegenwoordigt een audiostream. U gebruikt verschillende `AudioConfig`-objecten gedurende de volgende taken.
+In deze functie gebruikt u de methoden [AudioInputStream.createPushStream](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioinputstream?view=azure-node-latest&preserve-view=true#createpushstream-audiostreamformat-) en [AudioConfig.fromStreamInput](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest&preserve-view=true#fromstreaminput-audioinputstream---pullaudioinputstreamcallback-) om een object [AudioConfig](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest&preserve-view=true) te maken. Dit object `AudioConfig` vertegenwoordigt een audiostream. U gebruikt verschillende `AudioConfig`-objecten gedurende de volgende taken.
 
 ## <a name="text-dependent-verification"></a>Tekstafhankelijke verificatie
 
@@ -96,7 +96,7 @@ Begin door de functie `TextDependentVerification` te maken.
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/speech/speaker-recognition.js" id="text_dependent_verification":::
 
-Met deze functie wordt een object [VoiceProfile](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile?view=azure-node-latest) gemaakt met de methode [VoiceProfileClient.createProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest#createprofileasync-voiceprofiletype--string---e--voiceprofile-----void---e--string-----void-). Houd er rekening mee dat er drie [typen](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofiletype?view=azure-node-latest) `VoiceProfile` zijn:
+Met deze functie wordt een object [VoiceProfile](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile?view=azure-node-latest&preserve-view=true) gemaakt met de methode [VoiceProfileClient.createProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest&preserve-view=true#createprofileasync-voiceprofiletype--string---e--voiceprofile-----void---e--string-----void-). Houd er rekening mee dat er drie [typen](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofiletype?view=azure-node-latest&preserve-view=true) `VoiceProfile` zijn:
 
 - TextIndependentIdentification
 - TextDependentVerification
@@ -104,7 +104,7 @@ Met deze functie wordt een object [VoiceProfile](https://docs.microsoft.com/java
 
 In dit geval geeft u `VoiceProfileType.TextDependentVerification` door aan `VoiceProfileClient.createProfileAsync`.
 
-Vervolgens roept u twee hulpfuncties aan die u hierna definieert, `AddEnrollmentsToTextDependentProfile` en `SpeakerVerify`. Roep ten slotte [VoiceProfileClient.deleteProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest#deleteprofileasync-voiceprofile---response--voiceprofileresult-----void---e--string-----void-) aan om het profiel te verwijderen.
+Vervolgens roept u twee hulpfuncties aan die u hierna definieert, `AddEnrollmentsToTextDependentProfile` en `SpeakerVerify`. Roep ten slotte [VoiceProfileClient.deleteProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest&preserve-view=true#deleteprofileasync-voiceprofile---response--voiceprofileresult-----void---e--string-----void-) aan om het profiel te verwijderen.
 
 ### <a name="addenrollmentstotextdependentprofile-function"></a>De functie AddEnrollmentsToTextDependentProfile
 
@@ -112,7 +112,7 @@ Definieer de volgende functie om een spraakprofiel in te schrijven.
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/speech/speaker-recognition.js" id="add_enrollments_dependent":::
 
-In deze functie roept u de functie `GetAudioConfigFromFile` aan die u eerder hebt gedefinieerd, om `AudioConfig`-objecten te maken uit audiobestanden. Deze audiovoorbeelden bevatten een wachtwoordzin zoals: Mijn stem is mijn paspoort, verifieer mij. U kunt deze audiovoorbeelden vervolgens inschrijven met behulp van de methode [VoiceProfileClient.enrollProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest#enrollprofileasync-voiceprofile--audioconfig---e--voiceprofileenrollmentresult-----void---e--string-----void-).
+In deze functie roept u de functie `GetAudioConfigFromFile` aan die u eerder hebt gedefinieerd, om `AudioConfig`-objecten te maken uit audiobestanden. Deze audiovoorbeelden bevatten een wachtwoordzin zoals: Mijn stem is mijn paspoort, verifieer mij. U kunt deze audiovoorbeelden vervolgens inschrijven met behulp van de methode [VoiceProfileClient.enrollProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest&preserve-view=true#enrollprofileasync-voiceprofile--audioconfig---e--voiceprofileenrollmentresult-----void---e--string-----void-).
 
 ### <a name="speakerverify-function"></a>De functie SpeakerVerify
 
@@ -120,9 +120,9 @@ Definieer `SpeakerVerify` als volgt.
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/speech/speaker-recognition.js" id="speaker_verify":::
 
-In deze functie maakt u een object [SpeakerVerificationModel](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speakerverificationmodel?view=azure-node-latest) met de methode [SpeakerVerificationModel.FromProfile](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speakerverificationmodel?view=azure-node-latest#fromprofile-voiceprofile-), waarbij u het object [VoiceProfile](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile?view=azure-node-latest) doorgeeft dat u eerder hebt gemaakt.
+In deze functie maakt u een object [SpeakerVerificationModel](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speakerverificationmodel?view=azure-node-latest&preserve-view=true) met de methode [SpeakerVerificationModel.FromProfile](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speakerverificationmodel?view=azure-node-latest&preserve-view=true#fromprofile-voiceprofile-), waarbij u het object [VoiceProfile](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile?view=azure-node-latest&preserve-view=true) doorgeeft dat u eerder hebt gemaakt.
 
-Vervolgens roept u de methode [SpeechRecognizer.recognizeOnceAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#recognizeonceasync--e--speechrecognitionresult-----void---e--string-----void-) aan om een audiovoorbeeld te valideren dat dezelfde wachtwoordzin bevat als de audiovoorbeelden die u eerder hebt ingeschreven. `SpeechRecognizer.recognizeOnceAsync` retourneert een object [SpeakerRecognitionResult](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speakerrecognitionresult?view=azure-node-latest), waarvan eigenschap `score` een vergelijkbare score bevat, tussen 0.0-1.0. Het object `SpeakerRecognitionResult` bevat ook een eigenschap `reason` van het type [ResultReason](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/resultreason?view=azure-node-latest). Als de verificatie is geslaagd, moet de eigenschap `reason` de waarde `RecognizedSpeaker` hebben.
+Vervolgens roept u de methode [SpeechRecognizer.recognizeOnceAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true#recognizeonceasync--e--speechrecognitionresult-----void---e--string-----void-) aan om een audiovoorbeeld te valideren dat dezelfde wachtwoordzin bevat als de audiovoorbeelden die u eerder hebt ingeschreven. `SpeechRecognizer.recognizeOnceAsync` retourneert een object [SpeakerRecognitionResult](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speakerrecognitionresult?view=azure-node-latest&preserve-view=true), waarvan eigenschap `score` een vergelijkbare score bevat, tussen 0.0-1.0. Het object `SpeakerRecognitionResult` bevat ook een eigenschap `reason` van het type [ResultReason](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/resultreason?view=azure-node-latest&preserve-view=true). Als de verificatie is geslaagd, moet de eigenschap `reason` de waarde `RecognizedSpeaker` hebben.
 
 ## <a name="text-independent-verification"></a>Tekstonafhankelijke verificatie
 
@@ -137,11 +137,11 @@ Begin door de functie `TextIndependentVerification` te maken.
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/speech/speaker-recognition.js" id="text_independent_verification":::
 
-Net zoals met de functie `TextDependentVerification` wordt met deze functie een object [VoiceProfile](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile?view=azure-node-latest) gemaakt met de methode [VoiceProfileClient.createProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest#createprofileasync-voiceprofiletype--string---e--voiceprofile-----void---e--string-----void-).
+Net zoals met de functie `TextDependentVerification` wordt met deze functie een object [VoiceProfile](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile?view=azure-node-latest&preserve-view=true) gemaakt met de methode [VoiceProfileClient.createProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest&preserve-view=true#createprofileasync-voiceprofiletype--string---e--voiceprofile-----void---e--string-----void-).
 
 In dit geval geeft u `VoiceProfileType.TextIndependentVerification` door aan `createProfileAsync`.
 
-Vervolgens roept u twee hulpfuncties aan: `AddEnrollmentsToTextIndependentProfile`, die u hierna definieert, en `SpeakerVerify`, die u al hebt gedefinieerd. Roep ten slotte [VoiceProfileClient.deleteProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest#deleteprofileasync-voiceprofile---response--voiceprofileresult-----void---e--string-----void-) aan om het profiel te verwijderen.
+Vervolgens roept u twee hulpfuncties aan: `AddEnrollmentsToTextIndependentProfile`, die u hierna definieert, en `SpeakerVerify`, die u al hebt gedefinieerd. Roep ten slotte [VoiceProfileClient.deleteProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest&preserve-view=true#deleteprofileasync-voiceprofile---response--voiceprofileresult-----void---e--string-----void-) aan om het profiel te verwijderen.
 
 ### <a name="addenrollmentstotextindependentprofile"></a>AddEnrollmentsToTextIndependentProfile
 
@@ -149,7 +149,7 @@ Definieer de volgende functie om een spraakprofiel in te schrijven.
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/speech/speaker-recognition.js" id="add_enrollments_independent":::
 
-In deze functie roept u de functie `GetAudioConfigFromFile` aan die u eerder hebt gedefinieerd, om `AudioConfig`-objecten te maken uit audiobestanden. U kunt deze audiovoorbeelden vervolgens inschrijven met behulp van de methode [VoiceProfileClient.enrollProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest#enrollprofileasync-voiceprofile--audioconfig---e--voiceprofileenrollmentresult-----void---e--string-----void-).
+In deze functie roept u de functie `GetAudioConfigFromFile` aan die u eerder hebt gedefinieerd, om `AudioConfig`-objecten te maken uit audiobestanden. U kunt deze audiovoorbeelden vervolgens inschrijven met behulp van de methode [VoiceProfileClient.enrollProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest&preserve-view=true#enrollprofileasync-voiceprofile--audioconfig---e--voiceprofileenrollmentresult-----void---e--string-----void-).
 
 ## <a name="speaker-identification"></a>Sprekeridentificatie
 
@@ -161,11 +161,11 @@ Begin door de functie `TextIndependentIdentification` te maken.
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/speech/speaker-recognition.js" id="text_independent_indentification":::
 
-Net zoals met de functies `TextDependentVerification` en `TextIndependentVerification` wordt met deze functie een object [VoiceProfile](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile?view=azure-node-latest) gemaakt met de methode [VoiceProfileClient.createProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest#createprofileasync-voiceprofiletype--string---e--voiceprofile-----void---e--string-----void-).
+Net zoals met de functies `TextDependentVerification` en `TextIndependentVerification` wordt met deze functie een object [VoiceProfile](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile?view=azure-node-latest&preserve-view=true) gemaakt met de methode [VoiceProfileClient.createProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest&preserve-view=true#createprofileasync-voiceprofiletype--string---e--voiceprofile-----void---e--string-----void-).
 
 In dit geval geeft u `VoiceProfileType.TextIndependentIdentification` door aan `VoiceProfileClient.createProfileAsync`.
 
-Vervolgens roept u twee hulpfuncties aan: `AddEnrollmentsToTextIndependentProfile`, die u al hebt gedefinieerd, en `SpeakerIdentify`, die u hierna definieert. Roep ten slotte [VoiceProfileClient.deleteProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest#deleteprofileasync-voiceprofile---response--voiceprofileresult-----void---e--string-----void-) aan om het profiel te verwijderen.
+Vervolgens roept u twee hulpfuncties aan: `AddEnrollmentsToTextIndependentProfile`, die u al hebt gedefinieerd, en `SpeakerIdentify`, die u hierna definieert. Roep ten slotte [VoiceProfileClient.deleteProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest&preserve-view=true#deleteprofileasync-voiceprofile---response--voiceprofileresult-----void---e--string-----void-) aan om het profiel te verwijderen.
 
 ### <a name="speakeridentify-function"></a>De functie SpeakerIdentify
 
@@ -173,10 +173,10 @@ Definieer de functie `SpeakerIdentify` als volgt.
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/speech/speaker-recognition.js" id="speaker_identify":::
 
-In deze functie maakt u een [SpeakerIdentificationModel](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speakeridentificationmodel?view=azure-node-latest)-object met de methode [SpeakerIdentificationModel.fromProfile](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speakeridentificationmodel?view=azure-node-latest#fromprofiles-voiceprofile---), waarbij u het object [VoiceProfile](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile?view=azure-node-latest) doorgeeft dat u eerder hebt gemaakt.
+In deze functie maakt u een [SpeakerIdentificationModel](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speakeridentificationmodel?view=azure-node-latest&preserve-view=true)-object met de methode [SpeakerIdentificationModel.fromProfile](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speakeridentificationmodel?view=azure-node-latest&preserve-view=true#fromprofiles-voiceprofile---), waarbij u het object [VoiceProfile](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile?view=azure-node-latest&preserve-view=true) doorgeeft dat u eerder hebt gemaakt.
 
-Vervolgens roept u de methode [SpeechRecognizer.recognizeOnceAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#recognizeonceasync--e--speechrecognitionresult-----void---e--string-----void-) aan en geeft u een audiovoorbeeld door.
-Met `SpeechRecognizer.recognizeOnceAsync` wordt geprobeerd om de spraak voor dit audiovoorbeeld te identificeren op basis van de `VoiceProfile`-objecten die u hebt gebruikt om de `SpeakerIdentificationModel` te maken. Het object [SpeakerRecognitionResult](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speakerrecognitionresult?view=azure-node-latest) wordt geretourneerd, waarvan de eigenschap `profileId` de overeenkomende `VoiceProfile` identificeert, indien aanwezig, terwijl de eigenschap `score` een vergelijkbare score bevat, tussen 0.0-1.0.
+Vervolgens roept u de methode [SpeechRecognizer.recognizeOnceAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true#recognizeonceasync--e--speechrecognitionresult-----void---e--string-----void-) aan en geeft u een audiovoorbeeld door.
+Met `SpeechRecognizer.recognizeOnceAsync` wordt geprobeerd om de spraak voor dit audiovoorbeeld te identificeren op basis van de `VoiceProfile`-objecten die u hebt gebruikt om de `SpeakerIdentificationModel` te maken. Het object [SpeakerRecognitionResult](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speakerrecognitionresult?view=azure-node-latest&preserve-view=true) wordt geretourneerd, waarvan de eigenschap `profileId` de overeenkomende `VoiceProfile` identificeert, indien aanwezig, terwijl de eigenschap `score` een vergelijkbare score bevat, tussen 0.0-1.0.
 
 ## <a name="main-function"></a>Hoofdfunctie
 
@@ -184,4 +184,4 @@ Definieer tenslotte de functie `main` als volgt.
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/speech/speaker-recognition.js" id="main":::
 
-Met deze functie wordt het object [VoiceProfileClient](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest) gemaakt, dat wordt gebruikt om spraakprofielen te maken, in te schrijven en te verwijderen. Vervolgens worden de functies aangeroepen die u eerder hebt gedefinieerd.
+Met deze functie wordt het object [VoiceProfileClient](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest&preserve-view=true) gemaakt, dat wordt gebruikt om spraakprofielen te maken, in te schrijven en te verwijderen. Vervolgens worden de functies aangeroepen die u eerder hebt gedefinieerd.

@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 0b7817539a26b7ebfa24efd086edf8b0ef82eae3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d91f8242e31aa1efdf9301101307d5bad39a459
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80436011"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342209"
 ---
 # <a name="faq---questions-about-virtual-machines"></a>Veelgestelde vragen: vragen over virtuele machines
 
 
 ## <a name="what-types-of-virtual-machines-are-supported"></a>Welke typen virtuele machines worden ondersteund?
 
-Bewaking en aanbevelingen zijn beschikbaar voor virtuele machines (Vm's) die zijn gemaakt met behulp van de [klassieke en Resource Manager-implementatie modellen](../azure-classic-rm.md).
+Bewaking en aanbevelingen zijn beschikbaar voor virtuele machines (Vm's) die zijn gemaakt met behulp van de [klassieke en Resource Manager-implementatie modellen](/azure/security-center/./azure-resource-manager/management/deployment-models).
 
 Zie de [ondersteunde platforms in azure Security Center](security-center-os-coverage.md) voor een lijst met ondersteunde platforms.
 
@@ -51,7 +51,7 @@ Hieronder vindt u de latentie tijden voor Security Center scans van beveiligings
 Security Center scant doorgaans elk uur op nieuwe gegevens en vernieuwt de aanbevelingen dienovereenkomstig. 
 
 > [!NOTE]
-> Security Center gebruikt de Log Analytics agent om gegevens te verzamelen en op te slaan. Zie [Azure Security Center platform Migration](security-center-platform-migration.md)(Engelstalig) voor meer informatie.
+> Security Center gebruikt de Log Analytics agent om gegevens te verzamelen en op te slaan. Zie [Azure Security Center platform Migration](./security-center-enable-data-collection.md)(Engelstalig) voor meer informatie.
 
 
 ## <a name="why-do-i-get-the-message-vm-agent-is-missing"></a>Waarom ontvang ik het bericht ' de VM-agent ontbreekt? '
