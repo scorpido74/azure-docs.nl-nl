@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: a992d240955f42ec030a84c887ba086ce92f9790
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb47dde8813f31f4a6acceb696a8b7c7eb0095be
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88605266"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281535"
 ---
 # <a name="pricing-model-in-azure-cosmos-db"></a>Prijsmodel in Azure Cosmos DB
 
@@ -19,7 +19,7 @@ Met het prijsmodel van Azure Cosmos DB wordt beheren en plannen van de kosten ve
 
 - **Database bewerkingen**: de manier waarop u uw database bewerkingen in rekening brengt, is afhankelijk van het type Azure Cosmos-account dat u gebruikt.
 
-  - **Ingerichte door Voer**: [ingerichte door Voer](set-throughput.md) (ook wel gereserveerde door Voer genoemd) garandeert hoge prestaties op elke schaal. U geeft de door Voer op die u nodig hebt in [aanvraag eenheden](request-units.md) per seconde (ru/s), en Azure Cosmos DB exclusief de benodigde resources om de geconfigureerde door voer te garanderen. U kunt de [door Voer voor een Data Base of container inrichten](set-throughput.md). Op basis van de behoeften van uw werk belasting kunt u de door Voer op elk gewenst moment omhoog/omlaag schalen of [automatisch schalen](provision-throughput-autoscale.md) gebruiken (hoewel er een minimale door Voer is vereist voor een Data Base of een container om de sla's te garanderen). U wordt per uur gefactureerd voor de maximale ingerichte door Voer voor een bepaald uur.
+  - **Ingerichte door Voer**: [ingerichte door Voer](set-throughput.md) (ook wel gereserveerde door Voer genoemd) biedt hoge prestaties op elke schaal. U geeft de door Voer op die u nodig hebt in [aanvraag eenheden](request-units.md) per seconde (ru/s), en Azure Cosmos DB exclusief de bronnen die nodig zijn om de geconfigureerde door voer te leveren. U kunt de [door Voer voor een Data Base of container inrichten](set-throughput.md). Op basis van de behoeften van uw werk belasting kunt u de door Voer op elk gewenst moment omhoog/omlaag schalen of [automatisch schalen](provision-throughput-autoscale.md) gebruiken (hoewel er een minimale door Voer is vereist voor een Data Base of een container om de sla's te garanderen). U wordt per uur gefactureerd voor de maximale ingerichte door Voer voor een bepaald uur.
 
    > [!NOTE]
    > Omdat het ingerichte doorvoer model resources toekent aan uw container of Data Base, worden er kosten in rekening gebracht voor de door u ingerichte door Voer, zelfs als u geen workloads uitvoert.

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: sngun
-ms.openlocfilehash: 416cf4f027b6f1e72641324be39ba0304301db37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b43bd0a076a21429a5f6fe05ef0c20d62674acdf
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82614497"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281552"
 ---
 # <a name="frequently-asked-questions-about-the-gremlin-api-in-azure-cosmos-db"></a>Veelgestelde vragen over de Gremlin-API in Azure Cosmos DB
 
@@ -99,7 +99,7 @@ De RU-kosten zijn gebaseerd op de werk gegevensset van het Trans Port en niet de
 
 ### <a name="whats-the-maximum-scale-that-a-graph-database-can-have-in-azure-cosmos-db-gremlin-api"></a>Wat is de maximale schaal die een grafiek database kan hebben in Azure Cosmos DB Gremlin-API?
 
-Azure Cosmos DB maakt gebruik van [horizontale partitionering](partition-data.md) om de toename van opslag-en doorvoer vereisten automatisch te verhelpen. De maximale door Voer en opslag capaciteit van een werk belasting wordt bepaald door het aantal partities dat is gekoppeld aan een bepaalde container. Een Gremlin API-container heeft echter een specifieke set richt lijnen om een goede prestatie ervaring op schaal te garanderen. Zie [partitioneren in azure Cosmos DB](partition-data.md) artikel voor meer informatie over partitionering en aanbevolen procedures.
+Azure Cosmos DB maakt gebruik van [horizontale partitionering](partitioning-overview.md) om de toename van opslag-en doorvoer vereisten automatisch te verhelpen. De maximale door Voer en opslag capaciteit van een werk belasting wordt bepaald door het aantal partities dat is gekoppeld aan een bepaalde container. Een Gremlin API-container heeft echter een specifieke set richt lijnen om een goede prestatie ervaring op schaal te garanderen. Zie [partitioneren in azure Cosmos DB](partitioning-overview.md) artikel voor meer informatie over partitionering en aanbevolen procedures.
 
 ### <a name="for-cnet-development-should-i-use-the-microsoftazuregraphs-package-or-gremlinnet"></a>Voor C#/.net-ontwikkeling.-ontwikkeling moet ik het pakket micro soft. Azure. graphs of Gremlin.NET gebruiken?
 

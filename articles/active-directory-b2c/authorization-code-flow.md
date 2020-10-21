@@ -11,12 +11,12 @@ ms.date: 02/19/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 9ae5632f2495ac5916ac8c86666e973c34d1b789
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 10444974cf31b95fccd2d11aef20bfd57fab7939
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/20/2020
-ms.locfileid: "92215226"
+ms.locfileid: "92275281"
 ---
 # <a name="oauth-20-authorization-code-flow-in-azure-active-directory-b2c"></a>OAuth 2,0-autorisatie code stroom in Azure Active Directory B2C
 
@@ -24,7 +24,7 @@ U kunt de OAuth 2,0-autorisatie code toekenning gebruiken in apps die op een app
 
 De OAuth 2,0-autorisatie code stroom wordt beschreven in [sectie 4,1 van de oauth 2,0-specificatie](https://tools.ietf.org/html/rfc6749). U kunt deze gebruiken voor verificatie en autorisatie in de meeste [toepassings typen](application-types.md), waaronder webtoepassingen, toepassingen met één pagina en systeem eigen geïnstalleerde toepassingen. U kunt de OAuth 2,0-autorisatie code stroom gebruiken om veilig toegangs tokens te verkrijgen en tokens te vernieuwen voor uw toepassingen, die kunnen worden gebruikt voor toegang tot bronnen die worden beveiligd door een [autorisatie server](protocols-overview.md).  Met het vernieuwings token kan de client nieuwe toegangs-en vernieuwings tokens verkrijgen zodra het toegangs token is verlopen, doorgaans na een uur.
 
-<!-- This article focuses on the **public clients** OAuth 2.0 authorization code flow. A public client is any client application that cannot be trusted to securely maintain the integrity of a secret password. This includes single-page applications, mobile apps, desktop applications, and essentially any application that runs on a device and needs to get access tokens. -->
+Dit artikel is gericht op de OAuth 2,0-autorisatie code stroom voor **open bare clients** . Een open bare client is een client toepassing die niet vertrouwd kan worden om de integriteit van een geheim wachtwoord veilig te houden. Dit geldt ook voor toepassingen met één pagina, mobiele apps, bureaublad toepassingen en hoofd zakelijk elke toepassing die niet op een server wordt uitgevoerd.
 
 > [!NOTE]
 > Als u identiteits beheer wilt toevoegen aan een web-app met behulp van Azure AD B2C, gebruikt u [OpenID Connect Connect](openid-connect.md) in plaats van OAuth 2,0.
@@ -39,15 +39,9 @@ De HTTP-aanvragen in dit artikel proberen:
 
 ## <a name="redirect-uri-setup-required-for-single-page-apps"></a>Omleidings-URI-installatie vereist voor apps met één pagina
 
-De autorisatie code stroom voor toepassingen met één pagina vereist enkele aanvullende instellingen.  Volg de instructies voor [het maken van uw toepassing met één pagina](tutorial-register-spa.md) om de omleidings-URI correct te markeren als ingeschakeld voor CORS. Als u een bestaande omleidings-URI wilt bijwerken om CORS in te scha kelen, opent u de manifest editor en stelt `type` u het veld voor de omleidings-URI `spa` in in de `replyUrlsWithType` sectie. U kunt ook klikken op de omleidings-URI in het gedeelte Web van het tabblad Verificatie en de Uri's selecteren waarnaar u wilt migreren met behulp van de autorisatie code stroom.
+De autorisatie code stroom voor toepassingen met één pagina vereist enkele aanvullende instellingen.  Volg de instructies voor [het maken van uw toepassing met één pagina](tutorial-register-spa.md) om de omleidings-URI correct te markeren als ingeschakeld voor CORS. Als u een bestaande omleidings-URI wilt bijwerken om CORS in te scha kelen, kunt u klikken op de prompt voor migratie in het gedeelte Web van het tabblad **verificatie** van de **app-registratie**. U kunt ook de **manifest editor van app-registraties** openen en het `type` veld voor de omleidings-URI instellen `spa` in de `replyUrlsWithType` sectie.
 
 Het `spa` omleidings type is achterwaarts compatibel met de impliciete stroom. Apps die momenteel gebruikmaken van de impliciete stroom om tokens op te halen `spa` , kunnen zonder problemen naar het omleidings-URI-type worden verplaatst en blijven de impliciete stroom gebruiken.
-
-Als u probeert de autorisatie code stroom te gebruiken en deze fout te zien:
-
-`access to XMLHttpRequest at 'https://login.microsoftonline.com/common/v2.0/oauth2/token' from origin 'yourApp.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.`
-
-Vervolgens moet u uw app-registratie bezoeken en de omleidings-URI voor uw app bijwerken zodat deze kan worden getypt `spa` .
 
 ## <a name="1-get-an-authorization-code"></a>1. een autorisatie code ophalen
 De autorisatie code stroom begint met de client die de gebruiker omleidt naar het `/authorize` eind punt. Dit is het interactieve deel van de stroom, waar de gebruiker actie onderneemt. In deze aanvraag geeft de client in de `scope` para meter de machtigingen op die nodig zijn voor het verkrijgen van de gebruiker. De volgende drie voor beelden (met regel einden voor de Lees baarheid) gebruiken elk een andere gebruikers stroom.

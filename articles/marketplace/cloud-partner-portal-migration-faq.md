@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: cb24ff0f2e09d98bf4a8cc4a502399fd9b38e350
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bda72a72e8ac0adf48fd8981a6eccf40385469d5
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91369906"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281401"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Veelgestelde vragen over overgang van de Cloud Partner-portal naar het partner centrum
 
@@ -78,7 +78,7 @@ Voor de aanbiedings typen die in Partner Center worden ondersteund, zijn alle aa
 | Type aanbieding <img src="" width=150px>| Verplaatst naar het partner centrum? <img src="" width=100px>| Volgende stappen |
 | --- | --- | --- |
 | SaaS | Ja | Meld u aan bij Partner Center om nieuwe aanbiedingen te maken en aanbiedingen te beheren die zijn gemaakt in Cloud Partner-portal. Meer informatie over [het maken van een nieuwe SaaS-aanbieding in de commerciële Marketplace](partner-center-portal/create-new-saas-offer.md). |
-| Virtuele machine | Ja | Meld u aan bij Partner Center om nieuwe aanbiedingen te maken en aanbiedingen te beheren die zijn gemaakt in Cloud Partner-portal. Meer informatie over [het maken van een Azure virtual machine-aanbieding op Azure Marketplace](partner-center-portal/azure-vm-create-offer.md). |
+| Virtuele machine | Ja | Meld u aan bij Partner Center om nieuwe aanbiedingen te maken en aanbiedingen te beheren die zijn gemaakt in Cloud Partner-portal. Meer informatie over [het maken van een Azure virtual machine-aanbieding op Azure Marketplace](azure-vm-create.md). |
 | Azure-toepassing | Ja | Meld u aan bij Partner Center om nieuwe aanbiedingen te maken en aanbiedingen te beheren die zijn gemaakt in Cloud Partner-portal. Meer informatie over [het maken van een Azure-toepassings aanbieding](partner-center-portal/create-new-azure-apps-offer.md). |
 | Dynamics 365 Business Central | Ja | Meld u aan bij Partner Center om nieuwe aanbiedingen te maken en aanbiedingen te beheren die zijn gemaakt in Cloud Partner-portal. Meer informatie over [het maken van een Dynamics 365 Business Central-aanbieding](partner-center-portal/create-new-business-central-offer.md). |
 | Dynamics 365 voor klant betrokkenheid & PowerApps | Ja | Meld u aan bij Partner Center om nieuwe aanbiedingen te maken en aanbiedingen te beheren die zijn gemaakt in Cloud Partner-portal. Meer informatie over [het maken van een Dynamics 365 voor klant Engagement & PowerApps-aanbieding](partner-center-portal/create-new-customer-engagement-offer.md). |
@@ -155,16 +155,16 @@ U ziet enkele huismerk wijzigingen. *Sku's* worden bijvoorbeeld aangemerkt als *
 
 Daarnaast worden de informatie die u eerder hebt verstrekt in de pagina's **Marketplace** of Details van de **winkel**  (Consulting Service, Power bi app) in de Cloud partner-portal nu verzameld op de **aanbiedings** pagina in Partner Center:
 
-[![Scherm afbeelding toont de aanbiedings pagina van het partner centrum.](media/cpp-pc-faq/offer-listing.png "Hiermee wordt de pagina aanbieding van het partner centrum weer gegeven")](media/cpp-pc-faq/offer-listing.png#lightbox)
+[! [Scherm afbeelding toont de pagina aanbieding van het partner centrum.] (Media/cpp-PC-FAQ/offer-listing.png](media/cpp-pc-faq/offer-listing.png#lightbox)
 
 De informatie die u eerder hebt verstrekt voor Sku's op één pagina in de Cloud Partner-portal, kan nu worden verzameld op verschillende pagina's in partner centrum:
 
-- Pagina instellen plannen
+- Pagina installatie plannen
 - Aanbiedings pagina plannen
 - Pagina Beschik baarheid plannen
 - De pagina technische configuratie plannen, zoals hier wordt weer gegeven:
 
-![! [Scherm afbeelding toont de technische configuratie pagina van het partner centrum.] (Media/cpp-PC-FAQ/technical-configuration.png "toont de technische configuratie pagina van het partner centrum")](media/cpp-pc-faq/technical-configuration.png#lightbox)
+[![Toont de pagina technische configuratie van het partner centrum.](media/cpp-pc-faq/technical-configuration.png)](media/cpp-pc-faq/technical-configuration.png#lightbox)
 
 Uw aanbiedings-ID wordt nu weer gegeven in de navigatie balk van de aanbieding:
 

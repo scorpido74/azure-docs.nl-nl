@@ -4,14 +4,14 @@ description: Beheer van Azure Cosmos DB core-API-resources met behulp van Azure 
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 10/07/2020
+ms.date: 10/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: dce041a46f173216844322b5a8985acbdfb86f26
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 631dd3242e695a1e7872a4b078ab3f9761591c56
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840588"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277772"
 ---
 # <a name="manage-azure-cosmos-core-sql-api-resources-using-azure-cli"></a>Azure Cosmos core (SQL) API-resources beheren met Azure CLI
 
@@ -20,6 +20,8 @@ In de volgende handleiding worden veelvoorkomende opdrachten beschreven voor het
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit onderwerp gebruikmaken van Azure CLI versie 2.12.1 of hoger. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
+
+Voor Azure CLI-voor beelden voor andere Api's Zie [CLI-voor beelden voor Cassandra](cli-samples-cassandra.md), [CLI-voor beelden voor MongoDb API](cli-samples-mongodb.md), CLI-voor beelden voor [Gremlin](cli-samples-gremlin.md), [CLI-voor beelden voor tabel](cli-samples-table.md)
 
 > [!IMPORTANT]
 > De naam van Azure Cosmos DB resources kan niet worden gewijzigd, omdat dit inbreuk maakt op de manier waarop Azure Resource Manager met resource-Uri's werkt.
@@ -39,7 +41,7 @@ In de volgende secties ziet u hoe u het Azure Cosmos-account kunt beheren, met i
 * [Verbindingsreeksen weergeven](#list-connection-strings)
 * [Account sleutel opnieuw genereren](#regenerate-account-key)
 
-### <a name="create-an-azure-cosmos-db-account"></a>Maak een Azure Cosmos DB-account
+### <a name="create-an-azure-cosmos-db-account"></a>Een Azure Cosmos DB-account maken
 
 Een Azure Cosmos DB-account maken met SQL API, sessie consistentie in de regio's vs-West 2 en VS-Oost 2:
 

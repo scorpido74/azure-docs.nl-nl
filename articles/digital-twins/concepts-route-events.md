@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: b49e6fc45a84f600131f571d1305c8160ddb1d21
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 49fe4f2d0a31918dec94163b4ebb5c45af53cfe7
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145972"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282258"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Gebeurtenissen binnen en buiten Azure Digital Apparaatdubbels routeren
 
@@ -83,7 +83,7 @@ await client.CreateEventRoute("routeName", er);
 
 1. Eerst wordt een- `EventRoute` object gemaakt en de constructor neemt de naam van een eind punt. Dit `endpointName` veld identificeert een eind punt, zoals een event hub, Event grid of service bus. Deze eind punten moeten in uw abonnement worden gemaakt en aan Azure Digital Apparaatdubbels gekoppeld met behulp van Control-Api's voordat u deze registratie oproep doet.
 
-2. Het gebeurtenis route object heeft ook een [**filter**](./how-to-manage-routes-apis-cli.md#filter-events) veld dat kan worden gebruikt om de typen gebeurtenissen te beperken die volgen op deze route. Met een filter van `true` kunt u de route inschakelen zonder extra filters (een filter van `false` de route wordt uitgeschakeld). 
+2. Het gebeurtenis route object heeft ook een [**filter**](how-to-manage-routes-apis-cli.md#filter-events) veld dat kan worden gebruikt om de typen gebeurtenissen te beperken die volgen op deze route. Met een filter van `true` kunt u de route inschakelen zonder extra filters (een filter van `false` de route wordt uitgeschakeld). 
 
 3. Dit gebeurtenis route object wordt vervolgens door gegeven aan `CreateEventRoute` , samen met een naam voor de route.
 
@@ -93,18 +93,19 @@ await client.CreateEventRoute("routeName", er);
 Routes kunnen ook worden gemaakt met behulp van de [Azure Digital APPARAATDUBBELS cli](how-to-use-cli.md).
 
 ## <a name="dead-letter-events"></a>Onbestelbare gebeurtenissen
+
 Wanneer een eind punt een gebeurtenis binnen een bepaalde tijds periode niet kan leveren of nadat de gebeurtenis een bepaald aantal keren is geprobeerd, kan de gebeurtenis worden verzonden naar een opslag account. Dit proces wordt **onbestelbare berichten**genoemd. Azure Digital Apparaatdubbels stuurt een gebeurtenis onbestelbaar wanneer aan **een van de volgende** voor waarden wordt voldaan. 
 
-- De gebeurtenis wordt niet binnen de time-to-Live-periode bezorgd
-- Het aantal pogingen om de gebeurtenis te leveren overschrijdt de limiet
+* De gebeurtenis wordt niet binnen de time-to-Live-periode bezorgd
+* Het aantal pogingen om de gebeurtenis te leveren overschrijdt de limiet
 
-Als aan een van de voor waarden wordt voldaan, wordt de gebeurtenis verwijderd of onbestelbaar.  Standaard schakelt elk eind punt **geen** onbestelbare berichten in. Als u deze functie wilt inschakelen, moet u een opslag account opgeven om niet-bezorgde gebeurtenissen op te slaan bij het maken van het eind punt. U haalt gebeurtenissen uit dit opslag account op om leveringen op te lossen.
+Als aan een van de voor waarden wordt voldaan, wordt de gebeurtenis verwijderd of onbestelbaar. Standaard schakelt elk eind punt **geen** onbestelbare berichten in. Als u deze functie wilt inschakelen, moet u een opslag account opgeven om niet-bezorgde gebeurtenissen op te slaan bij het maken van het eind punt. U kunt vervolgens gebeurtenissen uit dit opslag account ophalen om leveringen op te lossen.
 
 Voordat u de locatie van de onbestelbare letter instelt, moet u een opslag account hebben met een container. U geeft de URL voor deze container op wanneer u het eind punt maakt. De onbestelbare letter wordt gegeven als container-URL met een SAS-token. Dit token heeft alleen `write` machtigingen nodig voor de doel container in het opslag account. De volledig opgemaakte URL heeft de volgende indeling: `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`
 
 Zie voor meer informatie over SAS-tokens: [ *beperkte toegang verlenen tot Azure storage resources met behulp van Shared Access signatures (SAS)*](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)
 
-Zie voor meer informatie over het instellen van een onbestelbare letter [*: eind punten en routes beheren in azure Digital apparaatdubbels (api's en CLI)*](./how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering).
+Voor meer informatie over het instellen van een eind punt met onbestelbare berichten raadpleegt u [*How to: eind punten en routes beheren in azure Digital apparaatdubbels (api's en CLI)*](how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering).
 
 ### <a name="types-of-event-messages"></a>Typen gebeurtenis berichten
 

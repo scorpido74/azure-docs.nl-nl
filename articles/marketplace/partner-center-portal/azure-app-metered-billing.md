@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/22/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 07779769dae4c43148bbf4a8205feceea85ed363
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 52ae961a813b6d14592953fdf8662cbaecf662e1
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87320048"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280450"
 ---
 # <a name="managed-application-metered-billing"></a>Factuur voor beheerde toepassing met data limiet 
 
@@ -67,7 +67,7 @@ Facturerings dimensies worden gedeeld in alle abonnementen voor een aanbieding. 
 De kenmerken die de dimensie zelf definiëren, worden gedeeld met alle plannen voor een aanbieding. Voordat u de aanbieding publiceert, is een wijziging in deze kenmerken van de context van een plan van invloed op de dimensie definitie voor alle plannen. Zodra u de aanbieding hebt gepubliceerd, kunnen deze kenmerken niet meer worden bewerkt. De kenmerken zijn:
 
 * Id
-* Name
+* Naam
 * Meeteenheid
 
 De andere kenmerken van een dimensie zijn specifiek voor elk plan en kunnen verschillende waarden hebben van plan tot plan.  Voordat u het plan publiceert, kunt u deze waarden bewerken en wordt alleen dit abonnement beïnvloed. Zodra u het abonnement hebt gepubliceerd, kunnen deze kenmerken niet meer worden bewerkt. De kenmerken zijn:
@@ -93,7 +93,7 @@ Een dimensie die wordt gebruikt met de Marketplace-meet service vertegenwoordigt
 Zodra een aanbieding is gepubliceerd met een dimensie, kunnen de details van het aanbod niveau voor die dimensie niet meer worden gewijzigd:
 
 * Id
-* Name
+* Naam
 * Meeteenheid
 
 Zodra een plan is gepubliceerd, kunnen de details op plan niveau niet meer worden gewijzigd:
@@ -117,7 +117,7 @@ Als u een van de volgende problemen hebt, kunt u een ondersteunings ticket opene
 * Een probleem dat moet worden geëscaleerd vanwege een fout of bug aan de zijkant (bijvoorbeeld verkeerde gebruiks gebeurtenis).
 * Alle andere problemen met betrekking tot facturering met data limiet.
 
-Volg de instructies in [ondersteuning voor het programma voor commerciële Marketplace in het partner centrum om de](./support.md) ondersteunings opties voor Publisher te begrijpen en het ondersteunings ticket te openen met micro soft.
+Volg de instructies in [ondersteuning voor het programma voor commerciële Marketplace in het partner centrum om de](../support.md) ondersteunings opties voor Publisher te begrijpen en het ondersteunings ticket te openen met micro soft.
 
 ## <a name="next-steps"></a>Volgende stappen
 

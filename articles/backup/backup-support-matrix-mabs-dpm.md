@@ -3,12 +3,12 @@ title: Ondersteunings matrix voor MABS & System Center DPM
 description: Dit artikel bevat een overzicht van Azure Backup ondersteuning wanneer u Microsoft Azure Backup Server (MABS) of System Center DPM gebruikt om back-ups te maken van on-premises en Azure VM-resources.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 011e115c7f3cc94b03ffd9ad2467406c60738033
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0180135da793aaf7869441ee290f6125ea88fc88
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332692"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276973"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Ondersteunings matrix voor back-up met Microsoft Azure Backup Server of System Center DPM
 
@@ -60,7 +60,7 @@ DPM/MABS kan worden geïmplementeerd, zoals in de volgende tabel wordt samenvatt
 
 **Implementatie** | **Ondersteuning** | **Details**
 --- | --- | ---
-**On-premises geïmplementeerd** | Fysieke server<br/><br/>Hyper-V VM<br/><br/> VMware-VM | Als DPM/MABS is geïnstalleerd als een VMware-VM, wordt alleen een back-up gemaakt van virtuele VMware-machines en workloads die worden uitgevoerd op deze Vm's.
+**On-premises geïmplementeerd** | Fysieke server<br/><br/>Hyper-V VM<br/><br/> VMware-VM | Raadpleeg de [beveiligings matrix](backup-mabs-protection-matrix.md) voor meer informatie. 
 **Geïmplementeerd als een Azure Stack VM** | Alleen MABS | DPM kan niet worden gebruikt om back-ups te maken van Azure Stack Vm's.
 **Geïmplementeerd als een virtuele machine van Azure** | Beveiligt Azure-Vm's en-workloads die worden uitgevoerd op deze Vm's | DPM-MABS die in Azure worden uitgevoerd, kunnen geen back-ups maken van on-premises machines.
 

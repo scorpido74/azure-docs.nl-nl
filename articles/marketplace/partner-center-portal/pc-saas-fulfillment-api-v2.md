@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 6c890e9fbda316bfa7f5f3a42572f35ca73811ea
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: c74535b8cf11ec4beb413654bdddedb5ba847eea
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931798"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275541"
 ---
 # <a name="saas-fulfillment-apis-version-2-in-the-commercial-marketplace"></a>SaaS-fulfillment-Api's versie 2 in de commerciële Marketplace
 
@@ -178,7 +178,7 @@ Wanneer een klant wordt omgeleid naar de URL van de landings pagina van de partn
 
 Bij het aanroepen van Resolve API worden de abonnements gegevens en de status van SaaS-abonnementen in alle ondersteunde statussen geretourneerd.
 
-##### <a name="posthttpsmarketplaceapimicrosoftcomapisaassubscriptionsresolveapi-versionapiversion"></a>Plaatsen`https://marketplaceapi.microsoft.com/api/saas/subscriptions/resolve?api-version=<ApiVersion>`
+##### <a name="posthttpsmarketplaceapimicrosoftcomapisaassubscriptionsresolveapi-versionapiversion"></a>Verzenden`https://marketplaceapi.microsoft.com/api/saas/subscriptions/resolve?api-version=<ApiVersion>`
 
 *Query parameters:*
 
@@ -256,7 +256,7 @@ Code: 500 interne server fout.  Voer de API-aanroep opnieuw uit.  Neem contact o
 
 Zodra het SaaS-account is geconfigureerd voor een eind klant, moet de uitgever de API voor het activeren van abonnementen aan micro soft zijde aanroepen.  De klant wordt niet gefactureerd tenzij deze API-aanroep is geslaagd.
 
-##### <a name="posthttpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidactivateapi-versionapiversion"></a>Plaatsen`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/activate?api-version=<ApiVersion>`
+##### <a name="posthttpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidactivateapi-versionapiversion"></a>Verzenden`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/activate?api-version=<ApiVersion>`
 
 *Query parameters:*
 
@@ -311,7 +311,7 @@ Hiermee haalt u een lijst met alle aangeschafte SaaS-abonnementen op voor alle a
 
 Deze API retourneert gepagineerde resultaten. Pagina grootte is 100.
 
-##### <a name="gethttpsmarketplaceapimicrosoftcomapisaassubscriptionsapi-versionapiversion"></a>Ophalen`https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=<ApiVersion>`
+##### <a name="gethttpsmarketplaceapimicrosoftcomapisaassubscriptionsapi-versionapiversion"></a>Toevoegen`https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=<ApiVersion>`
 
 *Query parameters:*
 
@@ -683,7 +683,7 @@ Als een abonnement wordt geannuleerd binnen de volgende respijt perioden, wordt 
 
 De klant wordt gefactureerd als een abonnement wordt geannuleerd na de bovenstaande respijt periode.  Zodra de annulering is geslaagd, verliest de klant onmiddellijk de toegang tot het SaaS-abonnement aan micro soft.
 
-##### <a name="deletehttpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Verwijderen`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
+##### <a name="deletehttpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Verwijderd`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
 
 *Query parameters:*
 
@@ -953,11 +953,11 @@ De uitgever moet een webhook implementeren in de SaaS-service om de SaaS-abonnem
 
 Om het ontwikkel proces te starten, raden we aan om dummy API-antwoorden te maken aan de kant van de uitgever.  Deze antwoorden kunnen worden gebaseerd op voorbeeld reacties die in dit document zijn opgenomen.
 
-Wanneer de uitgever klaar is voor het end-to-end testen: 
+Wanneer de uitgever klaar is voor het end-to-end testen:
 
 * Publiceer een SaaS-aanbieding naar een beperkte preview-doel groep en bewaar deze in de preview-fase.
-* Deze aanbieding moet een abonnement hebben met een prijs van 0, zodat er geen werkelijke facturerings kosten worden geactiveerd tijdens het testen.  Een andere mogelijkheid is om een prijs die niet gelijk is aan nul in te stellen en alle test aankopen binnen 24 uur te annuleren. 
-* Zorg ervoor dat alle stromen end-to-end worden aangeroepen, net zoals een klant de aanbieding koopt. 
+* Deze aanbieding moet een abonnement hebben met een prijs van 0, zodat er geen werkelijke facturerings kosten worden geactiveerd tijdens het testen.  Een andere mogelijkheid is om een prijs die niet gelijk is aan nul in te stellen en alle test aankopen binnen 24 uur te annuleren.
+* Zorg ervoor dat alle stromen end-to-end worden aangeroepen, net zoals een klant de aanbieding koopt.
 * Als de partner volledige aankoop-en facturerings stroom wil testen, doet u dit met een aanbieding die hoger is dan $0.  De aankoop wordt gefactureerd en er wordt een factuur gegenereerd.
 
 Een aankoop stroom kan worden geactiveerd vanaf de Azure Portal-of Microsoft AppSource-sites, afhankelijk van waar de aanbieding wordt gepubliceerd.
@@ -966,8 +966,7 @@ Acties voor het wijzigen van de *planning*, het wijzigen van de *hoeveelheid*en 
 
 ## <a name="get-support"></a>Ondersteuning krijgen
 
-Zie [ondersteuning voor het programma voor commerciële Marketplace in het partner centrum](support.md) voor ondersteunings opties voor Publisher.
-
+Zie [ondersteuning voor het programma voor commerciële Marketplace in het partner centrum](../support.md) voor ondersteunings opties voor Publisher.
 
 ## <a name="next-steps"></a>Volgende stappen
 

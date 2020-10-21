@@ -8,12 +8,12 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 21e72e63dae2c52d04aca0cd11971fe5cd23fb47
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 292305c3f899ac4156fd84e8edcb0d6e9a3c0b34
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207543"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280851"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>Integreren met Logic Apps met behulp van een aangepaste connector
 
@@ -200,7 +200,7 @@ U wordt mogelijk gevraagd om u aan te melden met uw Azure-referenties om verbind
 Vul in het vak nieuwe *DigitalTwinsAdd* de velden als volgt in:
 * _id_: Vul de *dubbele id* van het digitale dubbele item in uw exemplaar dat u wilt dat de logische app wordt bijgewerkt.
 * _dubbele_: in dit veld voert u de hoofd tekst in die voor de gekozen API-aanvraag nodig is. Voor *DigitalTwinsUpdate*is deze tekst in de vorm van de JSON-patch code. Voor meer informatie over het structureren van een JSON-patch voor het bijwerken van uw twee, raadpleegt u het artikel [een digitale dubbele sectie bijwerken](how-to-manage-twin.md#update-a-digital-twin) van *How-to: Manage Digital apparaatdubbels*.
-* _API-Version_: de nieuwste API-versie. In de huidige open bare preview is deze waarde *2020-05-31-preview*
+* _API-Version_: de nieuwste API-versie. Op dit moment is deze waarde *2020-10-31*.
 
 Druk op *Opslaan* in de Logic apps Designer.
 

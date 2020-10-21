@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 50d077c1d7c9e4e421a43a4e0379b57608d1192c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63663d228052934616a59f5d84ff16a6510e46c9
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361763"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282087"
 ---
 # <a name="understanding-the-differences-between-nosql-and-relational-databases"></a>Meer informatie over de verschillen tussen NoSQL en relationele data bases
 
@@ -95,8 +95,8 @@ Meer informatie over het beheren van uw Azure Cosmos-account en andere concepten
 * [Uw Azure Cosmos-account beheren](how-to-manage-database-account.md)
 * [Wereldwijde distributie](distribute-data-globally.md)
 * [Consistentieniveaus](consistency-levels.md)
-* [Werken met Azure Cosmos-containers en-items](databases-containers-items.md)
-* [VNET-service-eind punt voor uw Azure Cosmos-account](vnet-service-endpoint.md)
-* [IP-Firewall voor uw Azure Cosmos-account](firewall-support.md)
+* [Werken met Azure Cosmos-containers en-items](account-databases-containers-items.md)
+* [VNET-service-eind punt voor uw Azure Cosmos-account](how-to-configure-vnet-service-endpoint.md)
+* [IP-Firewall voor uw Azure Cosmos-account](how-to-configure-firewall.md)
 * [Azure-regio's toevoegen aan en verwijderen uit uw Azure Cosmos-account](how-to-manage-database-account.md)
 * [Azure Cosmos DB Sla's](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)

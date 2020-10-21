@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8549fba2071ce98b206b3babe073137817aa3145
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d60297ba3bf16eac496703635ec8faf647c7f94
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91252830"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279367"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Eind punten en routes beheren in azure Digital Apparaatdubbels (Portal)
 
@@ -117,6 +117,14 @@ U kunt controleren of het eind punt is gemaakt door het meldings pictogram in de
 Als het maken van het eind punt mislukt, Bekijk dan het fout bericht en probeer het over enkele minuten opnieuw.
 
 Het Service Bus onderwerp is nu beschikbaar als een eind punt in azure Digital Apparaatdubbels, onder de naam die is opgegeven in het veld _naam_ . Normaal gesp roken gebruikt u die naam als het doel van een **gebeurtenis route**, die u [later in dit artikel](#event-routes)gaat maken.
+
+### <a name="create-an-endpoint-with-dead-lettering"></a>Een eind punt maken met onbestelbare berichten
+
+Wanneer een eind punt een gebeurtenis binnen een bepaalde tijds periode niet kan leveren of nadat de gebeurtenis een bepaald aantal keren is geprobeerd, kan de gebeurtenis worden verzonden naar een opslag account. Dit proces wordt **onbestelbare berichten**genoemd.
+
+Als u een eind punt wilt maken waarvoor onbestelbare berichten zijn ingeschakeld, moet u de [arm-api's](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) gebruiken om uw eind punt te maken, in plaats van de Azure Portal.
+
+Zie de [*api's en CLI*](how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering) -versie van dit artikel voor instructies over hoe u dit doet met de api's.
 
 ## <a name="event-routes"></a>Gebeurtenisroutes
 

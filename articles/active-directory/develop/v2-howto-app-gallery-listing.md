@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 08/14/2020
+ms.date: 08/19/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: dc271fa768bee66107e66a1b8d4f16c1188ce418
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ade98e04853ae8293f762f237b3b3154c876f7e
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89439741"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275655"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>Uw app publiceren in de app-galerie van Azure AD
 
@@ -240,7 +240,7 @@ Als u uw toepassing wilt toevoegen aan de lijst in de galerie met behulp van **s
 
 ![Een SAML 2,0-of WS-Fed-toepassing in de galerie weer geven](./media/howto-app-gallery-listing/saml.png)
 
-Als u uw toepassing wilt toevoegen aan de lijst in de galerie met behulp van wacht woord-SSO, selecteert u **SSO van wacht woord** , zoals wordt weer gegeven.
+Als u uw toepassing wilt toevoegen aan de lijst in de galerie met behulp van wacht woord-SSO, selecteert u **wacht woord-SSO (gebruikers naam & wacht woord)** , zoals wordt weer gegeven.
 
 ![Een SSO-toepassing voor wacht woorden in de galerie weer geven](./media/howto-app-gallery-listing/passwordsso.png)
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: thvankra
-ms.openlocfilehash: b327c0786fb07488fd8863272598dbffe19bfe07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d6cb699ad8a24e4450cbeb4bc1ca3cb6d46d9fe
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88167603"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278190"
 ---
 # <a name="frequently-asked-questions-about-the-cassandra-api-in-azure-cosmos-db"></a>Veelgestelde vragen over de Cassandra-API in Azure Cosmos DB
 
@@ -79,11 +79,11 @@ Diagnostische logboeken worden beschreven in het artikel [Azure Cosmos DB diagno
 
 ### <a name="does-the-primary-key-map-to-the-partition-key-concept-of-azure-cosmos-db"></a>Is de primaire sleutel toegewezen aan het partitie sleutel concept van Azure Cosmos DB?
 
-Ja, de partitie sleutel wordt gebruikt om de entiteit op de juiste locatie te plaatsen. In Azure Cosmos DB wordt dit gebruikt om de juiste logische partitie te vinden die is opgeslagen op een fysieke partitie. Het schema voor partitionering wordt duidelijk uitgelegd in de [partitie en schaal in azure Cosmos DB](partition-data.md) -artikel. De essentiële maakt hier is dat een logische partitie de limiet van 20 GB niet mag overschrijden.
+Ja, de partitie sleutel wordt gebruikt om de entiteit op de juiste locatie te plaatsen. In Azure Cosmos DB wordt dit gebruikt om de juiste logische partitie te vinden die is opgeslagen op een fysieke partitie. Het schema voor partitionering wordt duidelijk uitgelegd in de [partitie en schaal in azure Cosmos DB](partitioning-overview.md) -artikel. De essentiële maakt hier is dat een logische partitie de limiet van 20 GB niet mag overschrijden.
 
 ### <a name="what-happens-when-i-get-a-notification-that-a-partition-is-full"></a>Wat gebeurt er wanneer ik een melding ontvang dat een partitie vol is?
 
-Azure Cosmos DB is een systeem op basis van de Service Level Agreement (SLA). Het biedt onbeperkte schaal mogelijkheden, met garanties voor latentie, door Voer, Beschik baarheid en consistentie. Deze onbeperkte opslag is gebaseerd op horizontale schaal bare gegevens, met behulp van partitionering als het belangrijkste concept. Het schema voor partitionering wordt duidelijk uitgelegd in de [partitie en schaal in azure Cosmos DB](partition-data.md) -artikel.
+Azure Cosmos DB is een systeem op basis van de Service Level Agreement (SLA). Het biedt onbeperkte schaal mogelijkheden, met garanties voor latentie, door Voer, Beschik baarheid en consistentie. Deze onbeperkte opslag is gebaseerd op horizontale schaal bare gegevens, met behulp van partitionering als het belangrijkste concept. Het schema voor partitionering wordt duidelijk uitgelegd in de [partitie en schaal in azure Cosmos DB](partitioning-overview.md) -artikel.
 
 U moet rekening houden met de limiet van 20 GB voor het aantal entiteiten of items per logische partitie. Om ervoor te zorgen dat uw toepassing goed wordt geschaald, wordt u aangeraden *geen* Hot-partitie te maken door alle gegevens in de ene partitie op te slaan en er query's op uit te voeren. Deze fout kan alleen worden opgehaald als uw gegevens worden schuingetrokken: dat wil zeggen dat u veel gegevens voor één partitie sleutel (meer dan 20 GB) hebt. U kunt de distributie van gegevens vinden met behulp van de opslag Portal. De manier om deze fout op te lossen is het opnieuw maken van de tabel en het kiezen van een gedetailleerde, primaire (partitie sleutel), zodat de gegevens beter kunnen worden gedistribueerd.
 

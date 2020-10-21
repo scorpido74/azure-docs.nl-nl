@@ -4,17 +4,21 @@ description: In dit document worden de stappen beschreven die nodig zijn voor he
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 06/04/2020
+ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 995e5a1a87ee332c48641f42c4134e3e58f11cfa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c1d96c373103e0a89a9553ce8dab6ce5cce23c7
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87495417"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279701"
 ---
-# <a name="configure-access-from-virtual-networks-vnet"></a>Toegang vanaf virtuele netwerken (VNet) configureren
+# <a name="configure-access-to-azure-cosmos-db-from-virtual-networks-vnet"></a>Toegang tot Azure Cosmos DB van virtuele netwerken (VNet) configureren
+
+U kunt het Azure Cosmos-account configureren om alleen toegang toe te staan vanuit een specifiek subnet van een virtueel netwerk (VNet). Door [service-eind punten](../virtual-network/virtual-network-service-endpoints-overview.md) in te scha kelen voor toegang tot Azure Cosmos DB op het subnet binnen een virtueel netwerk, wordt het verkeer van dat subnet verzonden naar Azure Cosmos DB met de identiteit van het subnet en Virtual Network. Zodra het eind punt van de Azure Cosmos DB service is ingeschakeld, kunt u de toegang tot het subnet beperken door het toe te voegen aan uw Azure Cosmos-account.
+
+Een Azure Cosmos-account is standaard toegankelijk vanuit elke bron als de aanvraag vergezeld gaat van een geldig autorisatie token. Wanneer u een of meer subnetten in VNets toevoegt, krijgen alleen aanvragen die afkomstig zijn van deze subnetten een geldig antwoord. Aanvragen die afkomstig zijn van een andere bron, ontvangen een antwoord van 403 (verboden). 
 
 U kunt Azure Cosmos DB-accounts configureren om alleen toegang toe te staan vanaf een specifiek subnet van een virtueel Azure-netwerk. De toegang tot een Azure Cosmos DB account beperken met verbindingen van een subnet in een virtueel netwerk:
 
@@ -28,8 +32,6 @@ U kunt Azure Cosmos DB-accounts configureren om alleen toegang toe te staan vana
 > Zie de stappen die worden beschreven in de sectie [migreren van een IP-firewall regel naar een lijst met virtuele netwerk toegangs beheer](#migrate-from-firewall-to-vnet) in dit artikel voor meer informatie.
 
 In de volgende secties wordt beschreven hoe u een service-eind punt voor een virtueel netwerk configureert voor een Azure Cosmos DB-account.
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="configure-a-service-endpoint-by-using-the-azure-portal"></a><a id="configure-using-portal"></a>Een service-eind punt configureren met behulp van de Azure Portal
 
@@ -87,8 +89,7 @@ Om ervoor te zorgen dat u toegang hebt tot Azure Cosmos DB metrische gegevens ui
 
 ## <a name="configure-a-service-endpoint-by-using-azure-powershell"></a><a id="configure-using-powershell"></a>Een service-eind punt configureren met behulp van Azure PowerShell
 
-> [!NOTE]
-> Wanneer u Power shell of de Azure CLI gebruikt, moet u ervoor zorgen dat u de volledige lijst met IP-filters en virtuele netwerk-Acl's opgeeft in para meters, niet alleen de items die moeten worden toegevoegd.
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Gebruik de volgende stappen om een service-eind punt te configureren voor een Azure Cosmos DB-account met behulp van Azure PowerShell:  
 
@@ -110,6 +111,9 @@ Gebruik de volgende stappen om een service-eind punt te configureren voor een Az
       -AddressPrefix $subnetPrefix `
       -ServiceEndpoint $serviceEndpoint | Set-AzVirtualNetwork
    ```
+
+   > [!NOTE]
+   > Wanneer u Power shell of de Azure CLI gebruikt, moet u ervoor zorgen dat u de volledige lijst met IP-filters en virtuele netwerk-Acl's opgeeft in para meters, niet alleen de items die moeten worden toegevoegd.
 
 1. Gegevens van virtueel netwerk ophalen.
 
@@ -307,6 +311,54 @@ Voordat u doorgaat, schakelt u het Azure Cosmos DB Service-eind punt in op het v
 
 1. Verwijder de IP-firewall regel voor het subnet uit de firewall regels van het Azure Cosmos DB-account.
 
+## <a name="frequently-asked-questions"></a>Veelgestelde vragen
+
+Hier volgen enkele veelgestelde vragen over het configureren van toegang vanaf virtuele netwerken:
+
+### <a name="are-notebooks-and-mongocassandra-shell-currently-compatible-with-virtual-network-enabled-accounts"></a>Zijn er momenteel notebooks en Mongo/Cassandra shell compatibel met Virtual Network ingeschakelde accounts?
+
+Op het moment dat de [Mongo-shell](https://devblogs.microsoft.com/cosmosdb/preview-native-mongo-shell/) en Cassandra- [Shell](https://devblogs.microsoft.com/cosmosdb/announcing-native-cassandra-shell-preview/) integraties in de Cosmos DB Data Explorer en de [Jupyter-notebooks-service](https://docs.microsoft.com/azure/cosmos-db/cosmosdb-jupyter-notebooks), worden niet ondersteund met VNET-toegang. Dit is momenteel actief in ontwikkeling.
+
+### <a name="can-i-specify-both-virtual-network-service-endpoint-and-ip-access-control-policy-on-an-azure-cosmos-account"></a>Kan ik zowel het virtuele netwerk service-eind punt als het IP-toegangs beheer beleid voor een Azure Cosmos-account opgeven? 
+
+U kunt zowel het service-eind punt van de virtuele netwerk als een IP-toegangs beheer beleid (ook wel-firewall) inschakelen voor uw Azure Cosmos-account. Deze twee functies zijn complementair en samen zorgen voor isolatie en beveiliging van uw Azure Cosmos-account. Met IP-firewall weet u zeker dat statische IP-adressen toegang hebben tot uw account. 
+
+### <a name="how-do-i-limit-access-to-subnet-within-a-virtual-network"></a>Hoe kan ik de toegang tot subnet binnen een virtueel netwerk beperken? 
+
+Er zijn twee stappen vereist om de toegang tot het Azure Cosmos-account te beperken vanuit een subnet. Eerst staat u verkeer van subnet toe om de identiteit van het subnet en het virtuele netwerk te Azure Cosmos DB. Dit wordt gedaan door het inschakelen van service-eind punten voor Azure Cosmos DB in het subnet. Vervolgens wordt een regel toegevoegd aan het Azure Cosmos-account dat dit subnet specificeert als bron van welk account toegang kan worden verkregen.
+
+### <a name="will-virtual-network-acls-and-ip-firewall-reject-requests-or-connections"></a>Worden door Acl's van virtuele netwerken en IP-firewall aanvragen of verbindingen geweigerd? 
+
+Wanneer IP-firewall of toegangs regels voor virtuele netwerken worden toegevoegd, krijgen alleen aanvragen van toegestane bronnen geldige reacties. Andere aanvragen worden afgewezen met een 403 (verboden). Het is belang rijk om de firewall van een Azure Cosmos-account te onderscheiden van een firewall op verbindings niveau. De bron kan nog steeds verbinding maken met de service en de verbindingen zelf worden niet geweigerd.
+
+### <a name="my-requests-started-getting-blocked-when-i-enabled-service-endpoint-to-azure-cosmos-db-on-the-subnet-what-happened"></a>Mijn aanvragen die zijn gestart, worden geblokkeerd wanneer het service-eind punt is ingeschakeld voor Azure Cosmos DB op het subnet. Wat is er gebeurd?
+
+Zodra het service-eind punt voor Azure Cosmos DB op een subnet is ingeschakeld, wordt de bron van het verkeer dat de account overschakelt van het open bare IP-adres naar het virtuele netwerk en subnet. Als uw Azure Cosmos-account alleen een IP-firewall heeft, komt het verkeer van het subnet waarvoor de service is ingeschakeld niet meer overeen met de IP-firewall regels en wordt daarom geweigerd. Lees de stappen voor probleemloze migratie van een firewall op basis van een IP-adres naar het toegangs beheer via een virtueel netwerk.
+
+### <a name="are-additional-rbac-permissions-needed-for-azure-cosmos-accounts-with-vnet-service-endpoints"></a>Zijn er extra RBAC-machtigingen nodig voor Azure Cosmos-accounts met de VNET-service-eind punten?
+
+Nadat u de VNet-service-eind punten aan een Azure Cosmos-account hebt toegevoegd, moet u toegang hebben tot de `Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action` actie voor alle VNETs die zijn geconfigureerd voor uw Azure Cosmos-account om wijzigingen aan te brengen in de account instellingen. Deze machtiging is vereist omdat het autorisatie proces de toegang tot bronnen (zoals de resources van de data base en het virtuele netwerk) valideert voordat de eigenschappen worden geëvalueerd.
+ 
+De autorisatie valideert de machtiging voor de VNet-resource actie, zelfs als de gebruiker niet de VNET-Acl's opgeeft met behulp van Azure CLI. Op dit moment ondersteunt het besturings vlak van het Azure Cosmos-account de voltooiings status van het Azure Cosmos-account. Een van de para meters voor de besturings vlak-aanroepen is `virtualNetworkRules` . Als deze para meter niet wordt opgegeven, wordt met de Azure CLI een Get data base-aanroep opgehaald `virtualNetworkRules` en wordt deze waarde in de update aanroep gebruikt.
+
+### <a name="do-the-peered-virtual-networks-also-have-access-to-azure-cosmos-account"></a>Hebben de gekoppelde virtuele netwerken ook toegang tot het Azure Cosmos-account? 
+Alleen virtuele netwerken en hun subnetten die zijn toegevoegd aan het Azure Cosmos-account hebben toegang. Hun peered VNets heeft geen toegang tot het account totdat de subnetten in gekoppelde virtuele netwerken aan het account worden toegevoegd.
+
+### <a name="what-is-the-maximum-number-of-subnets-allowed-to-access-a-single-cosmos-account"></a>Wat is het maximum aantal subnetten dat is toegestaan voor toegang tot één Cosmos-account? 
+Op dit moment kunt u Maxi maal 256 subnetten hebben die zijn toegestaan voor een Azure Cosmos-account.
+
+### <a name="can-i-enable-access-from-vpn-and-express-route"></a>Kan ik de toegang vanaf VPN en Express route inschakelen? 
+Voor toegang tot het Azure Cosmos-account via Express route van on-premises moet u micro soft-peering inschakelen. Zodra u de toegangs regels voor de IP-firewall of het virtuele netwerk hebt ingesteld, kunt u de open bare IP-adressen die worden gebruikt voor micro soft-peering toevoegen aan de IP-firewall van uw Azure Cosmos-account, zodat lokale services toegang hebben tot het Azure Cosmos-account. 
+
+### <a name="do-i-need-to-update-the-network-security-groups-nsg-rules"></a>Moet ik de regels voor netwerk beveiligings groepen (NSG) bijwerken? 
+NSG regels worden gebruikt om de verbinding met en van een subnet met een virtueel netwerk te beperken. Wanneer u een service-eind punt voor Azure Cosmos DB aan het subnet toevoegt, is het niet nodig om uitgaande connectiviteit in NSG te openen voor uw Azure Cosmos-account. 
+
+### <a name="are-service-endpoints-available-for-all-vnets"></a>Zijn service-eind punten beschikbaar voor alle VNets?
+Nee, alleen Azure Resource Manager virtuele netwerken kunnen service-eind punten hebben ingeschakeld. Klassieke virtuele netwerken bieden geen ondersteuning voor service-eind punten.
+
+### <a name="can-i-accept-connections-from-within-public-azure-datacenters-when-service-endpoint-access-is-enabled-for-azure-cosmos-db"></a>Kan ik ' verbindingen accepteren vanuit open bare Azure-data centers ' wanneer toegang tot het service-eind punt is ingeschakeld voor Azure Cosmos DB?  
+Dit is alleen vereist als u wilt dat uw Azure Cosmos DB-account wordt geopend door andere Azure-Services voor de eerste partij, zoals Azure Data Factory, Azure Cognitive Search of een service die in de opgegeven Azure-regio is geïmplementeerd.
+
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie het artikel [firewall ondersteuning](firewall-support.md) voor het configureren van een firewall voor Azure Cosmos db.
+* Zie het artikel [firewall ondersteuning](how-to-configure-firewall.md) voor het configureren van een firewall voor Azure Cosmos db.

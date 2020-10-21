@@ -1,28 +1,28 @@
 ---
-title: Azure Multi-Factor Authentication instellen voor virtueel bureau blad van Windows-Azure
-description: Azure Multi-Factor Authentication instellen voor verbeterde beveiliging in Windows virtueel bureau blad.
+title: Azure multi-factor Authentication instellen voor het virtuele bureau blad van Windows-Azure
+description: Azure multi-factor Authentication instellen voor verbeterde beveiliging in Windows virtueel bureau blad.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 10/15/2020
+ms.date: 10/20/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e67e3d391ba69bacb82a9154f577942a017e5795
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 35af8191cfe237175cbd6669797d1744ac3ecd49
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108980"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92312653"
 ---
-# <a name="enable-azure-multi-factor-authentication-for-windows-virtual-desktop"></a>Azure Multi-Factor Authentication voor Windows Virtual Desktop inschakelen
+# <a name="enable-azure-multifactor-authentication-for-windows-virtual-desktop"></a>Azure multi-factor Authentication inschakelen voor virtueel bureau blad van Windows
 
 >[!IMPORTANT]
 > Als u deze pagina vanuit de documentatie over virtueel bureau blad (Classic) van Windows bezoekt, keert u [terug naar de Windows-documentatie voor virtueel bureau blad (klassiek)](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md) wanneer u klaar bent.
 
 De Windows-client voor Windows Virtual Desktop is een uitstekende optie voor het integreren van virtuele Windows-Bureau bladen met uw lokale computer. Wanneer u echter uw Windows virtueel-bureaublad account in de Windows-client configureert, zijn er bepaalde metingen die u moet uitvoeren om uzelf en uw gebruikers veilig te houden.
 
-Wanneer u zich voor het eerst aanmeldt, vraagt de client om uw gebruikers naam, wacht woord en Azure MFA. Daarna herinnert de client de volgende keer dat u zich aanmeldt uw token van uw Azure Active Directory (AD) Enter prise-toepassing. Wanneer u **mij onthouden**selecteert, kunnen uw gebruikers zich aanmelden nadat de client opnieuw is opgestart zonder dat ze hun referenties opnieuw moeten invoeren.
+Wanneer u zich voor het eerst aanmeldt, vraagt de client om uw gebruikers naam, wacht woord en Azure multi-factor Authentication. Daarna herinnert de client de volgende keer dat u zich aanmeldt uw token van uw Azure Active Directory (AD) Enter prise-toepassing. Wanneer u **mij onthouden** selecteert op de vraag om referenties voor de sessiehost, kunnen uw gebruikers zich aanmelden nadat de client opnieuw is opgestart zonder dat ze hun referenties opnieuw moeten invoeren.
 
-Bij het onthouden van referenties is het handig om ook implementaties op bedrijfs scenario's of persoonlijke apparaten minder veilig te maken. Om uw gebruikers te beschermen, moet u ervoor zorgen dat de client vraagt om de referenties voor Azure Multi-Factor Authentication (MFA). In dit artikel wordt uitgelegd hoe u het beleid voor voorwaardelijke toegang configureert voor virtuele Windows-Bureau bladen om deze instelling in te scha kelen.
+Bij het onthouden van referenties is het handig om ook implementaties op bedrijfs scenario's of persoonlijke apparaten minder veilig te maken. Om uw gebruikers te beschermen, kunt u ervoor zorgen dat de client vaker vraagt om de Azure multi-factor Authentication-referenties. In dit artikel wordt uitgelegd hoe u het beleid voor voorwaardelijke toegang configureert voor virtuele Windows-Bureau bladen om deze instelling in te scha kelen.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -30,10 +30,10 @@ U hebt de volgende informatie nodig om aan de slag te gaan:
 
 - Wijs gebruikers toe aan een licentie die Azure Active Directory Premium P1 of P2 bevat.
 - Een Azure Active Directory groep waaraan uw gebruikers zijn toegewezen als groeps leden.
-- Schakel Azure MFA in voor al uw gebruikers. Zie [verificatie in twee stappen vereisen voor een gebruiker](../active-directory/authentication/howto-mfa-userstates.md#view-the-status-for-a-user)voor meer informatie over hoe u dit doet.
+- Schakel Azure multi-factor Authentication in voor al uw gebruikers. Zie [verificatie in twee stappen vereisen voor een gebruiker](../active-directory/authentication/howto-mfa-userstates.md#view-the-status-for-a-user)voor meer informatie over hoe u dit doet.
 
 > [!NOTE]
-> De volgende instelling is ook van toepassing op de [Windows virtueel bureau blad-webclient](https://rdweb.wvd.microsoft.com/webclient/index.html).
+> De volgende instelling is ook van toepassing op de [Windows virtueel bureau blad-webclient](https://rdweb.wvd.microsoft.com/arm/webclient/index.html).
 
 ## <a name="create-a-conditional-access-policy"></a>Beleid voor voorwaardelijke toegang maken
 
@@ -63,7 +63,7 @@ U kunt als volgt een beleid voor voorwaardelijke toegang maken waarvoor multi-fa
         Daarna gaat u naar stap 10.
 
    >[!IMPORTANT]
-   > Selecteer de app met de naam Windows Virtual Desktop Azure Resource Manager provider (50e95039-B200-4007-bc97-8d5790743a63) niet. Deze app wordt alleen gebruikt voor het ophalen van de gebruikers feed en hoeft geen MFA te hebben.
+   > Selecteer de app met de naam Windows Virtual Desktop Azure Resource Manager provider (50e95039-B200-4007-bc97-8d5790743a63) niet. Deze app wordt alleen gebruikt voor het ophalen van de gebruikers feed en hoeft geen multi-factor Authentication te hebben.
    > 
    > Als u Windows virtueel bureau blad (klassiek) gebruikt, kunt u dit oplossen door de App-ID 9cdead84-a844-4324-93f2-b2e6bb768d07 toe te voegen aan het beleid als het beleid voor voorwaardelijke toegang alle toegang blokkeert en alleen virtuele Windows-bureau blad-app-Id's uitsluit. Door deze app-ID niet toe te voegen, wordt de feed-detectie van Windows virtueel bureau blad-bronnen (klassiek) geblokkeerd.
 
@@ -85,7 +85,7 @@ U kunt als volgt een beleid voor voorwaardelijke toegang maken waarvoor multi-fa
     >Als u de App-ID wilt vinden van de app die u wilt selecteren, gaat u naar **bedrijfs toepassingen** en selecteert u **micro soft-toepassingen** in de vervolg keuzelijst toepassings type.
 
 12. Onder **toegangs beheer**  >  **toekennen**selecteert u **toegang verlenen**, **multi-factor Authentication vereisen**en **selecteert**u vervolgens.
-13. Onder **toegangs beheer**  >  **sessie**selecteert u **aanmeldings frequentie**, stelt u de waarde in op **1** en de eenheid op **uren**en selecteert u **selecteren**.
+13. Onder **toegangs beheer**  >  **sessie**selecteert u **aanmeldings frequentie**, stelt u de waarde in op de gewenste tijd tussen prompts en selecteert u **selecteren**. Als u de waarde bijvoorbeeld instelt op **1** en de eenheid op **uren**, is multi-factor Authentication vereist als een verbinding wordt gestart op een uur na de laatste.
 14. Bevestig de instellingen en stel **beleid inschakelen** in **op aan**.
 15. Selecteer **maken** om uw beleid in te scha kelen.
 

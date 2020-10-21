@@ -7,18 +7,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 9d8bd72b6a03164a41e0b7c0ff00ac728cecf7f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17c01188f783664747b7c20b9703ee5d33a8ab3f
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91355378"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278737"
 ---
 # <a name="transactions-and-optimistic-concurrency-control"></a>Transacties en optimistisch beheer van gelijktijdigheid
 
 Database transacties bieden een veilig en voorspelbaar programmeer model voor het afhandelen van gelijktijdige wijzigingen in de gegevens. Met traditionele relationele data bases, zoals SQL Server, kunt u de bedrijfs logica schrijven met behulp van opgeslagen procedures en/of triggers, deze naar de server verzenden zodat deze rechtstreeks vanuit de data base-engine kan worden uitgevoerd. Met traditionele relationele data bases moet u twee verschillende programmeer talen behandelen: (niet-transactionele) programmeer taal van de toepassing, zoals Java script, Python, C#, Java, enzovoort en de transactionele programmeer taal (zoals T-SQL) die systeem eigen kan worden uitgevoerd door de data base.
 
-De data base-engine in Azure Cosmos DB ondersteunt volwaardige trans acties met volledige zuren (atomiciteit, consistentie, isolatie, duurzaamheid) met snap shot-isolatie. Alle database bewerkingen binnen het bereik van de [logische partitie](partition-data.md) van een container zijn transactioneel uitgevoerd in de data base-engine die wordt gehost door de replica van de partitie. Deze bewerkingen zijn onder andere schrijven (het bijwerken van een of meer items in de logische partitie) en lees bewerkingen. In de volgende tabel ziet u verschillende bewerkingen en transactie typen:
+De data base-engine in Azure Cosmos DB ondersteunt volwaardige trans acties met volledige zuren (atomiciteit, consistentie, isolatie, duurzaamheid) met snap shot-isolatie. Alle database bewerkingen binnen het bereik van de [logische partitie](partitioning-overview.md) van een container zijn transactioneel uitgevoerd in de data base-engine die wordt gehost door de replica van de partitie. Deze bewerkingen zijn onder andere schrijven (het bijwerken van een of meer items in de logische partitie) en lees bewerkingen. In de volgende tabel ziet u verschillende bewerkingen en transactie typen:
 
 | **Bewerking**  | **Bewerkings type** | **Trans actie met één of meerdere items** |
 |---------|---------|---------|
@@ -61,7 +61,7 @@ De waarde van het item `_etag` wordt gewijzigd telkens wanneer het item wordt bi
 
 Meer informatie over database transacties en optimistisch gelijktijdigheids beheer vindt u in de volgende artikelen:
 
-- [Werken met Azure Cosmos-data bases,-containers en-items](databases-containers-items.md)
+- [Werken met Azure Cosmos-data bases,-containers en-items](account-databases-containers-items.md)
 - [Consistentieniveaus](consistency-levels.md)
 - [Conflicttypen en oplossingsbeleid](conflict-resolution-policies.md)
 - [Opgeslagen procedures, triggers en door de gebruiker gedefinieerde functies](stored-procedures-triggers-udfs.md)

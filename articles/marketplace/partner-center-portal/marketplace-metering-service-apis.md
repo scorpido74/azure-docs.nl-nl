@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/26/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: ac48973653e89d43521979a5606a8a3a3c2e1346
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4c1005d300a5b326ff2f41d9fa3838dbb1c7552
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87319980"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278025"
 ---
 # <a name="marketplace-metered-billing-apis"></a>Facturerings-Api's met geplaatste Marketplace
 
@@ -273,7 +273,7 @@ U kunt ook een privé-abonnement gebruiken voor een bestaande Live-aanbieding om
 
 ## <a name="get-support"></a>Ondersteuning krijgen
 
-Volg de instructies in [ondersteuning voor het programma voor commerciële Marketplace in het partner centrum](./support.md) om inzicht te krijgen in de ondersteunings opties voor Publisher en een ondersteunings ticket te openen met micro soft.
+Volg de instructies in [ondersteuning voor het programma voor commerciële Marketplace in het partner centrum](../support.md) om inzicht te krijgen in de ondersteunings opties voor Publisher en een ondersteunings ticket te openen met micro soft.
 
 ## <a name="next-steps"></a>Volgende stappen
 

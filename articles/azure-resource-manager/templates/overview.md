@@ -3,12 +3,12 @@ title: Overzicht van sjablonen
 description: Beschrijft de voor delen van het gebruik van Azure Resource Manager sjablonen voor het implementeren van resources.
 ms.topic: conceptual
 ms.date: 06/22/2020
-ms.openlocfilehash: b1c61d5eac012f2b807c0121460804c46b12c8d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1873c737d17fc8774ddd1276d1375799ca2da35e
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86119358"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280036"
 ---
 # <a name="what-are-arm-templates"></a>Wat zijn ARM-sjablonen?
 

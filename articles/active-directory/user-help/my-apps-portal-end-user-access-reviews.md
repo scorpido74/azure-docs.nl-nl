@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 02/03/2020
+ms.date: 10/19/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: dbe05f264b0fca6c1a5e8e7d944d94a6bed55392
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbea4ef39b970f667c5dddec52f56a428d401f65
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88798020"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277451"
 ---
 # <a name="perform-an-access-review-from-the-my-apps-portal"></a>Een toegangs beoordeling uitvoeren vanuit de portal mijn apps
 
@@ -45,7 +45,7 @@ Als uw beheerder u toestemming heeft gegeven om uw eigen toegangs beoordelingen 
 
     De pagina **apps** wordt weer gegeven, met alle Cloud-apps die eigendom zijn van uw organisatie en die u kunt gebruiken.
 
-    ![Pagina apps in de portal mijn apps](media/my-apps-portal/my-apps-portal-apps-page-access-review-tile.png)
+    ![Pagina apps in de portal mijn apps](media/my-apps-portal/my-apps-home.png)
 
 3. Selecteer de tegel **toegangs beoordelingen** om een lijst weer te geven met toegangs beoordelingen die wachten op uw goed keuring.
 

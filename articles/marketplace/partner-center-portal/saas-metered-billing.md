@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: d232f7ba1304d76a0ba2db62b9f0f9b4229513f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8bcea36b99ae51da256d6b4fc49a4e3965a8c82c
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89378594"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279183"
 ---
 # <a name="metered-billing-for-saas-using-the-commercial-marketplace-metering-service"></a>Factuur met data limiet voor SaaS met de commerciële Marketplace-meet service
 
@@ -153,7 +153,7 @@ Als u een van de volgende problemen hebt, kunt u een ondersteunings ticket opene
 - Een probleem dat moet worden geëscaleerd vanwege een fout of bug aan de zijkant (bijvoorbeeld verkeerde gebruiks gebeurtenis).
 - Alle andere problemen met betrekking tot facturering met data limiet.
 
-Als u meer wilt weten over de ondersteunings opties voor Publisher en een ondersteunings ticket wilt openen met micro soft, volgt u de instructies in [ondersteuning voor het programma voor commerciële Marketplace in partner centrum](./support.md).
+Als u meer wilt weten over de ondersteunings opties voor Publisher en een ondersteunings ticket wilt openen met micro soft, volgt u de instructies in [ondersteuning voor het programma voor commerciële Marketplace in partner centrum](../support.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

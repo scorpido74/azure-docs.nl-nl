@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/12/2020
+ms.date: 10/19/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: be43b74e7128f9b250d25f8bdb2642c6f7b41d2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b6adb06f22013e68987f3315d52e3594fba63907
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87115531"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309016"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Een toegangstoken aanvragen in Azure Active Directory B2C
 
@@ -50,10 +50,15 @@ In het volgende voorbeeld ziet u de bereiken die in een URL zijn gecodeerd:
 scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fapi%2Fread%20openid%20offline_access
 ```
 
-Als u meer bereiken aanvraagt dan voor uw clienttoepassing worden verleend, wordt de aanroep uitgevoerd als er ten minste één machtiging wordt verleend. De **scp**-claim in het resulterende toegangstoken is gevuld met alleen de machtigingen die zijn verleend. De OpenID Connect-standaard specificeert verschillende speciale bereikwaarden. De volgende bereiken vertegenwoordigen de machtiging voor toegang tot het gebruikersprofiel:
+Als u meer bereiken aanvraagt dan voor uw clienttoepassing worden verleend, wordt de aanroep uitgevoerd als er ten minste één machtiging wordt verleend. De **scp**-claim in het resulterende toegangstoken is gevuld met alleen de machtigingen die zijn verleend. 
+
+### <a name="openid-connect-scopes"></a>OpenID Connect Connect-scopes
+
+De OpenID Connect-standaard specificeert verschillende speciale bereikwaarden. De volgende bereiken vertegenwoordigen de machtiging voor toegang tot het gebruikersprofiel:
 
 - **openid** - Vraagt een id-token aan.
 - **offline_access** - Vraagt een vernieuwingstoken aan met behulp van [Auth Code-stromen](authorization-code-flow.md).
+- **00000000-0000-0000-0000-000000000000** : het gebruik van de client-id als het bereik geeft aan dat uw app een toegangs token nodig heeft dat kan worden gebruikt voor uw eigen service of Web-API, die wordt vertegenwoordigd door dezelfde client-id.
 
 Als de parameter **response_type** in een `/authorize` aanvraag `token` bevat, moet de parameter **bereik** ten minste één resourcebereik bevatten, behalve `openid` en `offline_access`, dat wordt verleend. Anders wordt de aanvraag `/authorize` geweigerd.
 

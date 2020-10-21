@@ -12,17 +12,17 @@ ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 09/24/2020
+ms.date: 10/20/2020
 ms.topic: how-to
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 51f9043dcf329e4f3f23ddb930e53cfdfa2f107a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78871441fe7f9b0f6d02cdf6f05b97933abfca54
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631644"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275647"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>De Azure AD Connect Health-agent installeren
 
@@ -42,7 +42,7 @@ In de volgende tabel ziet u een lijst vereisten voor het gebruik van Azure AD Co
 | TLS-inspectie voor uitgaand verkeer wordt gefilterd of uitgeschakeld | De agent registratie stap of bewerkingen voor het uploaden van gegevens kunnen mislukken als er TLS-inspectie of-beëindiging voor uitgaand verkeer op de netwerklaag is. Meer informatie over [het instellen van TLS-inspectie](/previous-versions/tn-archive/ee796230(v=technet.10)) |
 | Firewallpoorten op de server waarop de agent wordt uitgevoerd |De volgende firewallpoorten moeten open zijn, anders kan de agent niet communiceren met de eindpunten van de Azure AD Health-service.<br /><br /><li>TCP-poort 443</li><li>TCP-poort 5671</li> <br />Houd er rekening mee dat poort 5671 niet langer vereist is voor de nieuwste versie van de agent. Voer een upgrade uit naar de nieuwste versie zodat alleen poort 443 is vereist. Lees meer over [firewallpoorten inschakelen](/previous-versions/sql/sql-server-2008/ms345310(v=sql.100)) |
 | Sta de volgende websites toe als verbeterde beveiliging van Internet Explorer is ingeschakeld |Als verbeterde beveiliging van Internet Explorer is ingeschakeld, moeten de volgende websites worden toegestaan op de server waarop u de agent wilt installeren.<br /><br /><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com</li><li>https:\//login.windows.net</li><li>https: \/ /aadcdn.msftauth.net</li><li>De federatieve server van uw organisatie moet worden vertrouwd door Azure Active Directory. Bijvoorbeeld: https:\//sts.contoso.com</li> Meer informatie over [het configureren van Internet Explorer](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing). Als u een proxy in uw netwerk hebt, raadpleegt u de onderstaande opmerking.|
-| Zorg ervoor dat PowerShell v4.0 of later is geïnstalleerd | <li>Windows Server 2008 R2 wordt geleverd met PowerShell versie 2.0, wat onvoldoende is voor de agent. Werk PowerShell bij zoals wordt uitgelegd in [Agent-installatie op Windows Server 2008 R2-servers](#agent-installation-on-windows-server-2008-r2-servers).</li><li>Windows Server 2012 wordt geleverd met PowerShell v3.0, wat onvoldoende is voor de agent.</li><li>Windows Server 2012 R2 en later wordt geleverd met een voldoende recente versie van PowerShell.</li>|
+| Zorg ervoor dat PowerShell v4.0 of later is geïnstalleerd | <li>Windows Server 2012 wordt geleverd met PowerShell v3.0, wat onvoldoende is voor de agent.</li><li>Windows Server 2012 R2 en later wordt geleverd met een voldoende recente versie van PowerShell.</li>|
 |FIPS uitschakelen|FIPS wordt niet ondersteund door Azure AD Connect Health-agents.|
 
 > [!IMPORTANT]
@@ -111,17 +111,6 @@ Als u wilt controleren of de agent is geïnstalleerd, zoekt u de volgende servic
 
 ![Azure AD Connect Health AD FS Services](./media/how-to-connect-health-agent-install/install5.png)
 
-### <a name="agent-installation-on-windows-server-2008-r2-servers"></a>De agent installeren op Windows Server 2008 R2-servers
-
-Stappen voor Windows Server 2008 R2-servers:
-
-1. Zorg ervoor dat de server met Service Pack 1 of hoger wordt uitgevoerd.
-2. Verbeterde beveiliging van Internet Explorer uitschakelen voor de installatie van agents:
-3. Installeer Windows PowerShell 4.0 op alle servers voordat u de AD Health-agent installeert. Windows PowerShell 4.0 installeren:
-   * Installeer [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=40779) via de volgende koppeling. U kunt hier het offline-installatieprogramma downloaden.
-   * PowerShell ISE (van Windows-onderdelen) installeren
-   * Installeer Internet Explorer versie 10 of hoger op de server. (Dit is vereist voor de Health Service, zodat kan worden geverifieerd of u Azure-beheerdersreferenties gebruikt.)
-4. Voor meer informatie over het installeren van Windows PowerShell 4.0 voor Windows Server 2008 R2 raadpleegt u [dit](https://social.technet.microsoft.com/wiki/contents/articles/20623.step-by-step-upgrading-the-powershell-version-4-on-2008-r2.aspx) wiki-artikel.
 
 ### <a name="enable-auditing-for-ad-fs"></a>Controle inschakelen voor AD FS
 
@@ -130,20 +119,6 @@ Stappen voor Windows Server 2008 R2-servers:
 >
 
 Als u de functie Gebruiksanalyse wilt gebruiken om gegevens te verzamelen en te analyseren, moet de Azure AD Connect Health-agent beschikken over de informatie in de AD FS-auditlogboeken. Deze logboeken worden niet standaard ingeschakeld. Volg de volgende procedures om AD FS-controles in te schakelen en de AD FS-auditlogboeken op uw AD FS-servers te zoeken.
-
-#### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2008-r2"></a>Controle inschakelen voor AD FS in Windows Server 2008 R2
-
-1. Klik op **Start**, ga naar **Programma's**, ga naar **Systeembeheer** en klik vervolgens op **Lokaal beveiligingsbeleid**.
-2. Navigeer naar de map **Beveiligingsinstellingen\Lokaal beleid\Gebruikersrechten toewijzen** en dubbelklik op **Beveiligingscontrole genereren**.
-3. Controleer op het tabblad **Lokale beveiligingsinstelling** of het AD FS 2.0-serviceaccount wordt vermeld. Als dit niet zo is, klikt u op **Gebruiker of groep toevoegen**, voegt u het account toe aan de lijst en klikt u op **OK**.
-4. Als u de controle wilt inschakelen, opent u een opdrachtprompt met verhoogde bevoegdheden en voert u de volgende opdracht uit: <code>auditpol.exe /set /subcategory:{0CCE9222-69AE-11D9-BED3-505054503030} /failure:enable /success:enable</code>
-5. Kies **Lokaal beveiligingsbeleid**.
-<br />   -- **De volgende stappen zijn alleen vereist voor primaire AD FS-servers.** -- <br />
-6. Open de module **AD FS-beheer**. Klik op **Start**, wijs naar **Programma's**, wijs naar **Systeembeheer** en klik vervolgens op **AD FS 2.0-beheer** om de module AD FS-beheer te openen.
-7. Klik in het deelvenster **Acties** op **Federation Service-eigenschappen** bewerken.
-8. Klik in het dialoog venster **Eigenschappen van Federation service** op het tabblad **gebeurtenissen** .
-9. Schakel de selectievakjes bij **Succesvolle controles** en **Mislukte controles** in.
-10. Klik op **OK**.
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2012-r2"></a>Controle inschakelen voor AD FS in Windows Server 2012 R2
 
