@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: d888266ae13b500abc5b03fa6a699c9f34b782a6
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: bc0286dc509acd4afba7f1660b65e49b25378496
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173572"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371748"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Wat is SQL Data Sync voor Azure?
 
@@ -81,7 +81,7 @@ Gegevens synchronisatie is niet de aanbevolen oplossing voor de volgende scenari
 | | Gegevens synchroniseren | Transactionele replicatie |
 |---|---|---|
 | **Voordelen** | -Actief-actief ondersteuning<br/>-Bi-richting tussen on-premises en Azure SQL Database | -Laagste latentie<br/>-Transactionele consistentie<br/>-Bestaande topologie na migratie opnieuw gebruiken <br/>-Ondersteuning voor Azure SQL Managed instance |
-| **Nadelen** | -5 minuten of meer latentie<br/>-Geen transactionele consistentie<br/>-Hogere gevolgen voor de prestaties | -Kan niet publiceren vanaf Azure SQL Database <br/>-Hoge onderhouds kosten |
+| **Nadelen** | -minimum frequentie van 5 minuten tussen synchronisaties<br/>-Geen transactionele consistentie<br/>-Hogere gevolgen voor de prestaties | -Kan niet publiceren vanaf Azure SQL Database <br/>-Hoge onderhouds kosten |
 
 ## <a name="get-started"></a>Aan de slag 
 
@@ -135,9 +135,9 @@ Het inrichten en verwijderen van de inrichting tijdens het maken van een synchro
 - Een primaire sleutel kan niet de volgende gegevens typen bevatten: sql_variant, binary, varbinary, image en XML.
 - Wees voorzichtig wanneer u de volgende gegevens typen als primaire sleutel gebruikt, omdat de ondersteunde precisie alleen geldt voor de tweede: time, datetime, DATETIME2, date time offset.
 - De namen van objecten (data bases, tabellen en kolommen) mogen niet de periode van het afdruk bare teken (.), het linker vier Kante haakje ([) of de rechter rechte haak (]) bevatten.
+- De naam van een tabel mag geen afdruk bare tekens bevatten:! " # $ % ' ( ) * + -
 - Azure Active Directory-verificatie wordt niet ondersteund.
 - Als er tabellen met dezelfde naam maar een ander schema zijn (bijvoorbeeld dbo. klanten en Sales. klanten), kan slechts één van de tabellen worden toegevoegd aan de synchronisatie.
-- Een tabel naam mag geen tekens bevatten met een ASCII-waarde die kleiner is dan of gelijk is aan-.
 - Kolommen met User-Defined gegevens typen worden niet ondersteund
 - Het verplaatsen van servers tussen verschillende abonnementen wordt niet ondersteund. 
 
@@ -166,7 +166,7 @@ Met gegevens synchronisatie kunnen alleen-lezen of door het systeem gegenereerde
 | Tabellen in een synchronisatie groep                                          | 500                    | Meerdere synchronisatie groepen maken |
 | Kolommen in een tabel in een synchronisatie groep                              | 1000                   |                             |
 | Grootte van gegevensrij in een tabel                                        | 24 MB                  |                             |
-| Mini maal synchronisatie-interval                                           | 5 minuten              |                             |
+| Interval voor minimale synchronisatie frequentie                                 | 5 minuten              |                             |
 
 > [!NOTE]
 > Er kunnen Maxi maal 30 eind punten in één synchronisatie groep bestaan als er slechts één synchronisatie groep is. Als er meer dan één synchronisatie groep is, kan het totale aantal eind punten voor alle synchronisatie groepen niet meer dan 30 zijn. Als een Data Base deel uitmaakt van meerdere synchronisatie groepen, wordt deze als meerdere eind punten geteld, niet een.

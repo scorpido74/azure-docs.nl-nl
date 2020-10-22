@@ -5,12 +5,12 @@ ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 06/18/2020
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: c3fd06e2ac399fa18b588b1db5e154eaf013753b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2baccec75c7b525c0837cebd9d828dff3a79543
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979482"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150170"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>Een Ruby- en een Postgres-app maken in Azure App Service op Linux
 
@@ -108,7 +108,7 @@ Typ `Ctrl + C` in de terminal om de Rails-server te stoppen.
 
 ## <a name="create-postgres-in-azure"></a>Postgres maken in Azure
 
-In deze stap maakt u een Postgres-database in [Azure Database for Postgres](/azure/postgresql/). Later configureert u de Ruby on Rails-toepassing om verbinding te maken met deze database.
+In deze stap maakt u een Postgres-database in [Azure Database for Postgres](../postgresql/index.yml). Later configureert u de Ruby on Rails-toepassing om verbinding te maken met deze database.
 
 ### <a name="create-a-resource-group"></a>Een resourcegroep maken
 
@@ -117,7 +117,7 @@ In deze stap maakt u een Postgres-database in [Azure Database for Postgres](/azu
 ## <a name="create-postgres-database-in-azure"></a>Een Postgres-database maken in Azure
 
 <!-- > [!NOTE]
-> Before you create an Azure Database for PostgreSQL server, check which [compute generation](/azure/postgresql/concepts-pricing-tiers#compute-generations-and-vcores) is available in your region. If your region doesn't support Gen4 hardware, change *--sku-name* in the following command line to a value that's supported in your region, such as B_Gen4_1.  -->
+> Before you create an Azure Database for PostgreSQL server, check which [compute generation](../postgresql/concepts-pricing-tiers.md#compute-generations-and-vcores) is available in your region. If your region doesn't support Gen4 hardware, change *--sku-name* in the following command line to a value that's supported in your region, such as B_Gen4_1.  -->
 
 In deze sectie maakt u een Azure Database for PostgreSQL-server en -database. Installeer eerst de `db-up`-extensie met de volgende opdracht:
 
