@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: ed06aef4d494fbdce5a07c5bc50bad9737ba5433
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 957cea854b9894b3149a0e292b8072b73875cae5
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86497043"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127077"
 ---
 # <a name="tutorial-build-a-power-bi-provider-dashboard"></a>Zelfstudie: Een Power BI-providerdashboard bouwen
 
@@ -44,14 +44,14 @@ In deze zelfstudie leert u het volgende:
 
 * Een Azure IoT Central-toepassingssjabloon voor continue patiëntbewaking. Als u nog geen sjabloon hebt, volgt u de stappen om een [Toepassingssjabloon te implementeren](overview-iot-central-healthcare.md).
 
-* Een Azure [Event Hubs-naamruimte en een Event Hub](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).
+* Een Azure [Event Hubs-naamruimte en een Event Hub](../../event-hubs/event-hubs-create.md).
 
-* De logische app die u wilt gebruiken voor toegang tot uw Event Hub. Als u uw logische app wilt starten met een Azure Event Hubs-trigger, hebt u een [lege logische app](https://docs.microsoft.com/azure/logic-apps/quickstart-create-first-logic-app-workflow) nodig.
+* De logische app die u wilt gebruiken voor toegang tot uw Event Hub. Als u uw logische app wilt starten met een Azure Event Hubs-trigger, hebt u een [lege logische app](../../logic-apps/quickstart-create-first-logic-app-workflow.md) nodig.
 
-* Een Power BI-serviceaccount. Als u nog geen account hebt, kunt u [een gratis proefaccount maken voor Power BI-service](https://app.powerbi.com/). Als u Power BI nog niet eerder hebt gebruikt, kan het handig zijn om [Aan de slag met Power BI](https://docs.microsoft.com/power-bi/service-get-started) door te lezen.
+* Een Power BI-serviceaccount. Als u nog geen account hebt, kunt u [een gratis proefaccount maken voor Power BI-service](https://app.powerbi.com/). Als u Power BI nog niet eerder hebt gebruikt, kan het handig zijn om [Aan de slag met Power BI](/power-bi/service-get-started) door te lezen.
 
 ## <a name="set-up-a-continuous-data-export-to-azure-event-hubs"></a>Een continue gegevensexport naar Azure Event Hubs instellen
-U moet eerst een continue gegevensexport instellen vanuit uw Azure IoT Central-appsjabloon naar Azure Event Hub in uw abonnement. U kunt dit doen door de stappen in deze Azure IoT Central-zelfstudie te volgen voor het [Exporteren naar Event Hubs](https://docs.microsoft.com/azure/iot-central/core/howto-export-data). Voor de doeleinden van deze zelfstudie hoeft u alleen voor de telemetrie te exporteren.
+U moet eerst een continue gegevensexport instellen vanuit uw Azure IoT Central-appsjabloon naar Azure Event Hub in uw abonnement. U kunt dit doen door de stappen in deze Azure IoT Central-zelfstudie te volgen voor het [Exporteren naar Event Hubs](../core/howto-export-data.md). Voor de doeleinden van deze zelfstudie hoeft u alleen voor de telemetrie te exporteren.
 
 ## <a name="create-a-power-bi-streaming-dataset"></a>Een Power BI-streaminggegevensset maken
 
@@ -72,10 +72,10 @@ U moet eerst een continue gegevensexport instellen vanuit uw Azure IoT Central-a
     >[!div class="mx-imgBorder"] 
     >![Gegevenssetwaarden invoeren](media/enter-dataset-values.png)
 
-Als u meer wilt weten over het streamen van gegevenssets in Power BI, kunt u dit document lezen over [realtime streaming in Power BI](https://docs.microsoft.com/power-bi/service-real-time-streaming).
+Als u meer wilt weten over het streamen van gegevenssets in Power BI, kunt u dit document lezen over [realtime streaming in Power BI](/power-bi/service-real-time-streaming).
 
 ## <a name="connect-your-logic-app-to-azure-event-hubs"></a>Uw logische app verbinden met Azure Event Hubs
-Als u uw logische app wilt verbinden met Azure Event Hubs, kunt u de instructies volgen die in dit document worden beschreven over [het verzenden van gebeurtenissen met Azure Event Hubs en Azure Logic Apps](https://docs.microsoft.com/azure/connectors/connectors-create-api-azure-event-hubs#add-event-hubs-action). Hier volgen enkele aanbevolen parameters:
+Als u uw logische app wilt verbinden met Azure Event Hubs, kunt u de instructies volgen die in dit document worden beschreven over [het verzenden van gebeurtenissen met Azure Event Hubs en Azure Logic Apps](../../connectors/connectors-create-api-azure-event-hubs.md#add-event-hubs-action). Hier volgen enkele aanbevolen parameters:
 
 |Parameter|Waarde|
 |---|---|
@@ -91,7 +91,7 @@ Aan het einde van deze stap moet de ontwerpfunctie voor logische apps er als vol
 ## <a name="stream-data-to-power-bi-from-your-logic-app"></a>Gegevens streamen naar Power BI vanuit uw logische app
 De volgende stap bestaat uit het parseren van de gegevens die afkomstig zijn van uw Event Hub om deze te streamen naar de Power BI-gegevenssets die u eerder hebt gemaakt.
 
-1. Voordat u dit kunt doen, moet u inzicht hebben in de JSON-nettolading die vanaf uw apparaat naar uw Event Hub wordt verzonden. U kunt dit doen door naar dit [voorbeeldschema](https://docs.microsoft.com/azure/iot-central/core/howto-export-data#telemetry) te kijken en het te wijzigen, zodat het overeenkomt met uw schema. U kunt ook [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer) gebruiken om de berichten te onderzoeken. Als u de toepassingen voor continue patiëntbewaking gebruikt, zien uw berichten er als volgt uit:
+1. Voordat u dit kunt doen, moet u inzicht hebben in de JSON-nettolading die vanaf uw apparaat naar uw Event Hub wordt verzonden. U kunt dit doen door naar dit [voorbeeldschema](../core/howto-export-data.md#telemetry-format) te kijken en het te wijzigen, zodat het overeenkomt met uw schema. U kunt ook [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer) gebruiken om de berichten te onderzoeken. Als u de toepassingen voor continue patiëntbewaking gebruikt, zien uw berichten er als volgt uit:
 
 **Telemetrie van Smart Vitals Patch**
 

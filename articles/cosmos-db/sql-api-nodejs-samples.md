@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 08/23/2019
 ms.author: dech
 ms.custom: devx-track-js
-ms.openlocfilehash: aa0f0878366e7afc51f066502c24c09a9981027b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9644cb51f7575df7dba757da23af33a26ae4201a
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91801355"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279249"
 ---
 # <a name="nodejs-examples-to-manage-data-in-azure-cosmos-db"></a>Node.js-voorbeelden voor het beheren van gegevens in Azure Cosmos DB
 
@@ -50,7 +50,7 @@ U hebt ook de [JavaScript SDK](sql-api-sdk-node.md) nodig.
 
 ## <a name="database-examples"></a>Voorbeelden voor databases
 
-In het bestand [DatabaseManagement](https://github.com/Azure/azure-cosmos-js/blob/master/samples/DatabaseManagement.ts) ziet u hoe u de CRUD-bewerkingen op de database uitvoert. Zie het conceptuele artikel [Werken met databases, containers en items](databases-containers-items.md) voor meer informatie over de Azure Cosmos-databases voordat u de volgende voorbeelden uitvoert. 
+In het bestand [DatabaseManagement](https://github.com/Azure/azure-cosmos-js/blob/master/samples/DatabaseManagement.ts) ziet u hoe u de CRUD-bewerkingen op de database uitvoert. Zie het conceptuele artikel [Werken met databases, containers en items](account-databases-containers-items.md) voor meer informatie over de Azure Cosmos-databases voordat u de volgende voorbeelden uitvoert. 
 
 | Taak | API-verwijzing |
 | --- | --- |
@@ -61,7 +61,7 @@ In het bestand [DatabaseManagement](https://github.com/Azure/azure-cosmos-js/blo
 
 ## <a name="container-examples"></a>Voorbeelden van containers
 
-In het bestand [ContainerManagement](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ContainerManagement.ts) ziet u hoe u de CRUD-bewerkingen op de database uitvoert. Zie het conceptuele artikel [Werken met databases, containers en items](databases-containers-items.md) voor meer informatie over de Azure Cosmos-verzamelingen voordat u de volgende voorbeelden uitvoert. 
+In het bestand [ContainerManagement](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ContainerManagement.ts) ziet u hoe u de CRUD-bewerkingen op de database uitvoert. Zie het conceptuele artikel [Werken met databases, containers en items](account-databases-containers-items.md) voor meer informatie over de Azure Cosmos-verzamelingen voordat u de volgende voorbeelden uitvoert. 
 
 | Taak | API-verwijzing |
 | --- | --- |
@@ -72,7 +72,7 @@ In het bestand [ContainerManagement](https://github.com/Azure/azure-cosmos-js/bl
 
 ## <a name="item-examples"></a>Voorbeelden van items
 
-In het bestand [ItemManagement](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ItemManagement.ts) ziet u hoe u de CRUD-bewerkingen op het item uitvoert. Zie het conceptuele artikel [Werken met databases, containers en items](databases-containers-items.md) voor meer informatie over de Azure Cosmos-documenten voordat u de volgende voorbeelden uitvoert. 
+In het bestand [ItemManagement](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ItemManagement.ts) ziet u hoe u de CRUD-bewerkingen op het item uitvoert. Zie het conceptuele artikel [Werken met databases, containers en items](account-databases-containers-items.md) voor meer informatie over de Azure Cosmos-documenten voordat u de volgende voorbeelden uitvoert. 
 
 | Taak | API-verwijzing |
 | --- | --- |

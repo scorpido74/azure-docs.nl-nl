@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6dd17e446766514fa90f8beaaab104bbbd2f389f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 239e49d287ebf6ad98d1a155219f0d59f6469292
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965026"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366510"
 ---
 # <a name="licensing-requirements-for-azure-active-directory-self-service-password-reset"></a>Licentie vereisten voor Azure Active Directory self-service voor wachtwoord herstel
 
@@ -49,7 +49,7 @@ Zie de volgende pagina's voor aanvullende informatie over licenties, inclusief k
 
 ## <a name="enable-group-or-user-based-licensing"></a>Op groep of gebruiker gebaseerde licentie verlening inschakelen
 
-Azure AD biedt ondersteuning voor op groepen gebaseerde licentie verlening. Beheerders kunnen licenties bulksgewijs toewijzen aan een groep gebruikers, in plaats van ze een voor een toe te wijzen. Zie [problemen met licenties toewijzen, controleren en oplossen](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses)voor meer informatie.
+Azure AD biedt ondersteuning voor op groepen gebaseerde licentie verlening. Beheerders kunnen licenties bulksgewijs toewijzen aan een groep gebruikers, in plaats van ze een voor een toe te wijzen. Zie [problemen met licenties toewijzen, controleren en oplossen](../enterprise-users/licensing-groups-assign.md#step-1-assign-the-required-licenses)voor meer informatie.
 
 Sommige micro soft-Services zijn niet op alle locaties beschikbaar. Voordat een licentie aan een gebruiker kan worden toegewezen, moet de beheerder de eigenschap **gebruiks locatie** opgeven voor de gebruiker. De toewijzing van licenties kan worden uitgevoerd in de sectie instellingen voor **gebruikers**  >  **profielen**  >  **Settings** in de Azure Portal. *Wanneer u de toewijzing van een groeps licentie gebruikt, nemen alle gebruikers waarvoor geen gebruiks locatie is opgegeven, de locatie van de map over.*
 

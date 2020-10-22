@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: zhshang
 ms.custom: devx-track-js
-ms.openlocfilehash: e0bb4df611c6a9cfecf0aadbdfc3a577243856ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6df47d3fd62083a5d0940a1d6da50ac5d7d955f4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327615"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150902"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>Zelfstudie: Verificatie van Azure SignalR Service met Azure Functions
 
@@ -356,13 +356,13 @@ Voor een functie-app die in Azure wordt uitgevoerd, is een Azure Storage-account
 
 ### <a name="configure-function-app-for-authentication"></a>Functie-app voor verificatie configureren
 
-Tot nu toe werkt de chat-app anoniem. In Azure gebruikt u [App Service-verificatie](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) om de gebruiker te verifiëren. De gebruikers-ID of gebruikersnaam van de geverifieerde gebruiker kan worden doorgegeven aan de binding *SignalRConnectionInfo* voor het genereren van de verbindingsinformatie die als gebruiker wordt geverifieerd.
+Tot nu toe werkt de chat-app anoniem. In Azure gebruikt u [App Service-verificatie](../app-service/overview-authentication-authorization.md) om de gebruiker te verifiëren. De gebruikers-ID of gebruikersnaam van de geverifieerde gebruiker kan worden doorgegeven aan de binding *SignalRConnectionInfo* voor het genereren van de verbindingsinformatie die als gebruiker wordt geverifieerd.
 
 Bij het verzenden van een bericht kan de app beslissen om het te verzenden naar alle verbonden clients of alleen naar de clients die zijn geverifieerd voor een bepaalde gebruiker.
 
 1. Open in VS Code **negotiate/function.json**.
 
-1. Plaats een [bindingexpressie](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings) in de eigenschap *userId* van de binding *SignalRConnectionInfo*: `{headers.x-ms-client-principal-name}`. Hiermee stelt u de waarde in op de gebruikersnaam van de geverifieerde gebruiker. Het kenmerk ziet er nu als volgt uit.
+1. Plaats een [bindingexpressie](../azure-functions/functions-triggers-bindings.md) in de eigenschap *userId* van de binding *SignalRConnectionInfo*: `{headers.x-ms-client-principal-name}`. Hiermee stelt u de waarde in op de gebruikersnaam van de geverifieerde gebruiker. Het kenmerk ziet er nu als volgt uit.
 
     ```json
     {
@@ -431,11 +431,11 @@ App Service-verificatie biedt ondersteuning voor verificatie met Azure Active Di
 
 1. Volg de documentatie van de aanmeldingsprovider van uw keuze om de configuratie te voltooien.
 
-    - [Azure Active Directory](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad)
-    - [Facebook](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-facebook)
-    - [Twitter](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-twitter)
-    - [Microsoft-account](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-microsoft)
-    - [Google](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-google)
+    - [Azure Active Directory](../app-service/configure-authentication-provider-aad.md)
+    - [Facebook](../app-service/configure-authentication-provider-facebook.md)
+    - [Twitter](../app-service/configure-authentication-provider-twitter.md)
+    - [Microsoft-account](../app-service/configure-authentication-provider-microsoft.md)
+    - [Google](../app-service/configure-authentication-provider-google.md)
 
 ### <a name="update-the-web-app"></a>De web-app bijwerken
 
@@ -517,4 +517,3 @@ In deze zelfstudie hebt u geleerd u hoe u Azure Functions gebruikt met de Azure 
 > [Realtime apps bouwen met Azure Functions](signalr-concept-azure-functions.md)
 
 [Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qsauth)
-

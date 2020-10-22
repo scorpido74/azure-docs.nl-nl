@@ -12,12 +12,12 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: c64c40e96c0ff5864e5b9c9d34bad896c0b03d91
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55c884375372b3fea2ff3153aa936893cf668903
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441694"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359982"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server opgeslagen procedure-activiteit
 > [!div class="op_single_selector" title1="Transformatie activiteiten"]
@@ -26,8 +26,8 @@ ms.locfileid: "89441694"
 > * [MapReduce-activiteit](data-factory-map-reduce.md)
 > * [Hadoop streaming-activiteit](data-factory-hadoop-streaming-activity.md)
 > * [Spark-activiteit](data-factory-spark.md)
-> * [Machine Learning-batchuitvoeringsactiviteit](data-factory-azure-ml-batch-execution-activity.md)
-> * [Machine Learning-activiteit resources bijwerken](data-factory-azure-ml-update-resource-activity.md)
+> * [Activiteit voor het uitvoeren van Azure Machine Learning Studio (klassiek)](data-factory-azure-ml-batch-execution-activity.md)
+> * [Resource-activiteit voor het bijwerken van Azure Machine Learning Studio (klassiek)](data-factory-azure-ml-update-resource-activity.md)
 > * [Opgeslagen procedureactiviteit](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL-activiteit](data-factory-usql-activity.md)
 > * [Aangepaste .NET-activiteit](data-factory-use-custom-activities.md)
@@ -86,7 +86,7 @@ In de volgende procedure wordt gebruikgemaakt van de opgeslagen procedure-activi
    > [!IMPORTANT]
    > **Naam** en **behuizing** van de para meter (datetime in dit voor beeld) moet overeenkomen met de para meter die is opgegeven in de JSON van de pijp lijn/activiteit. Zorg ervoor dat in de opgeslagen procedure definitie **\@** wordt gebruikt als voor voegsel voor de para meter.
 
-### <a name="create-a-data-factory"></a>Een data factory maken
+### <a name="create-a-data-factory"></a>Een gegevensfactory maken
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Klik op **Nieuw** in het menu links, klik op **Intelligence en analytische**gegevens en klik op **Data Factory**.
 

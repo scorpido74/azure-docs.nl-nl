@@ -3,12 +3,12 @@ title: 'Azure Event Hubs: gebeurtenissen van Apache Kafka verwerken'
 description: 'Zelfstudie: In dit artikel wordt beschreven hoe u Kafka-gebeurtenissen verwerkt die via Event Hubs worden opgenomen met behulp van Azure Stream Analytics'
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: 1f0c7bf40b721a3f35fcf68c71cb38a4302a56f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 328537eebd05391fc4c8138395a9c10f0a5d072f
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531284"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319378"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Zelfstudie: Apache Kafka voor Event Hubs-gebeurtenissen verwerken met behulp van Stream Analytics 
 In dit artikel wordt beschreven hoe u gegevens streamt naar Event Hubs en hoe u deze verwerkt met Azure Stream Analytics. U wordt door de volgende stappen geleid: 
@@ -25,7 +25,7 @@ U hoeft uw protocolclients niet te wijzigen of uw eigen clusters uit te voeren w
 Zorg ervoor dat u aan de volgende vereisten voldoet om deze snelstart uit te voeren:
 
 * Een Azure-abonnement. Als u nog geen account hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) voordat u begint.
-* [Java Development Kit (JDK) 1.7+](https://aka.ms/azure-jdks).
+* [Java Development Kit (JDK) 1.7+](/azure/developer/java/fundamentals/java-jdk-long-term-support).
 * [Download](https://maven.apache.org/download.cgi) en [installeer](https://maven.apache.org/install.html) een binair Maven-archief.
 * [Git](https://www.git-scm.com/)
 * **Een Azure Storage-account**. Als u er nog geen hebt, [maakt u er een](../storage/common/storage-account-create.md) voordat u verder gaat. Met de Stream Analytics-taak in dit overzicht worden de uitvoergegevens opgeslagen in een Azure Blob-opslag. 
@@ -171,4 +171,4 @@ Nadat u een Stream Analytics-taak zodanig hebt ingesteld dat een binnenkomende g
 
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit artikel hebt u geleerd u hoe u kunt streamen naar Event Hubs zonder uw protocolclients te wijzigen of uw eigen clusters uit te voeren. Zie [Ontwikkelaarshandleiding van Apache Kafka voor Azure Event Hubs](apache-kafka-developer-guide.md) voor meer informatie over Event Hubs voor Apache Kafka. 
+In dit artikel hebt u geleerd u hoe u kunt streamen naar Event Hubs zonder uw protocolclients te wijzigen of uw eigen clusters uit te voeren. Zie [Ontwikkelaarshandleiding van Apache Kafka voor Azure Event Hubs](apache-kafka-developer-guide.md) voor meer informatie over Event Hubs voor Apache Kafka.

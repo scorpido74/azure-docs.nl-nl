@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 11/03/2017
 ms.author: ghogen
 ms.openlocfilehash: bdc03e8c136606ab7768705b0c8dbcc97782966f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 10/22/2020
 ms.locfileid: "87088390"
 ---
 # <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>Een ASP.NET-Web-app publiceren naar een Azure VM vanuit Visual Studio
@@ -69,7 +69,7 @@ In de volgende sectie wordt beschreven hoe u een bestaande ASP.NET-webtoepassing
 
 11. Als het publiceren is gelukt, wordt een browser gestart om de URL van de zojuist gepubliceerde site te openen.
 
-**Gelukt!**
+**Geleverd!**
 
 U hebt nu uw web-app gepubliceerd naar een virtuele machine van Azure.
 

@@ -6,12 +6,12 @@ manager: gaggupta
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: sharrai
-ms.openlocfilehash: 51f45b5c0b8a2729f64eb376e06875719474cbfc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aeb89a9d18e4550fa1d6162920d60507fd50c208
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89664183"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359863"
 ---
 # <a name="monitoring-churn-patterns-on-virtual-machines"></a>Verloop patronen bewaken op virtuele machines
 
@@ -21,7 +21,7 @@ In dit artikel vindt u een overzicht van de verschillende hulpprogram ma's die k
 
 Als uw machine wordt gehost in Azure en u een beheerde of onbeheerde schijf gebruikt voor opslag, kunt u de prestaties eenvoudig bijhouden door metrische schijf gegevens bij te houden. Zo kunt u nauw keurig controleren en de juiste schijf selectie aanpassen aan het gebruiks patroon van uw toepassing. U kunt dit ook gebruiken voor het maken van waarschuwingen, diagnoses en het bouwen van automatisering. [Meer informatie](https://azure.microsoft.com/blog/per-disk-metrics-managed-disks/).
 
-Wanneer u uw computers hebt beveiligd met Azure Site Recovery, kunt u uw computers controleren met behulp van Azure Monitor-logboeken en Log Analytics. [Meer informatie](https://docs.microsoft.com/azure/site-recovery/monitor-log-analytics).
+Wanneer u uw computers hebt beveiligd met Azure Site Recovery, kunt u uw computers controleren met behulp van Azure Monitor-logboeken en Log Analytics. [Meer informatie](./monitor-log-analytics.md).
 
 Er zijn ook een aantal specifieke hulpprogram ma's voor het besturings systeem die u kunt gebruiken.
 
@@ -62,7 +62,7 @@ Zodra u hebt vastgesteld welke toepassingen een hoog verloop op uw computer vero
 
     ![Stap 3 prestatie meter](./media/monitoring-high-churn/perfmon-step3.png)
 
-Meer informatie over prestatie meter [vindt u hier](https://docs.microsoft.com/dynamics365/business-central/dev-itpro/administration/monitor-use-performance-monitor-collect-event-trace-data).
+Meer informatie over prestatie meter [vindt u hier](/dynamics365/business-central/dev-itpro/administration/monitor-use-performance-monitor-collect-event-trace-data).
 
 ## <a name="for-linux-machines"></a>Voor Linux-machines
 

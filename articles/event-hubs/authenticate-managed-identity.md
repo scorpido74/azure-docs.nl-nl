@@ -4,12 +4,12 @@ description: Dit artikel bevat informatie over het verifiëren van een beheerde 
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b23fc0a59f9accc70c69c1096c1a15f1313ee2e0
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: c6b43cc48663be28d12fa788d92286be6f47ef08
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332447"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359880"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>Een beheerde identiteit verifiëren met Azure Active Directory om toegang te krijgen tot Event Hubs bronnen
 Azure Event Hubs ondersteunt Azure Active Directory (Azure AD)-verificatie met [beheerde identiteiten voor Azure-resources](../active-directory/managed-identities-azure-resources/overview.md). Beheerde identiteiten voor Azure-resources kunnen toegang tot Event Hubs resources toestaan met behulp van Azure AD-referenties van toepassingen die worden uitgevoerd in azure Virtual Machines (Vm's), functie-apps, Virtual Machine Scale Sets en andere services. Door beheerde identiteiten voor Azure-resources te gebruiken in combi natie met Azure AD-verificatie kunt u voor komen dat referenties worden opgeslagen in uw toepassingen die in de cloud worden uitgevoerd.
@@ -31,7 +31,7 @@ Als u een aanvraag wilt indienen voor het Event Hubs service van een beheerde id
 Zie [verifiëren met Azure Active Directory voor toegang tot Event hubs resources](authorize-access-azure-active-directory.md)voor meer informatie over het toewijzen van Azure-rollen.
 
 ## <a name="use-event-hubs-with-managed-identities"></a>Event Hubs gebruiken met beheerde identiteiten
-Als u Event Hubs met beheerde identiteiten wilt gebruiken, moet u de identiteit van de rol en het juiste bereik toewijzen. De procedure in deze sectie maakt gebruik van een eenvoudige toepassing die wordt uitgevoerd onder een beheerde identiteit en die toegang heeft tot Event Hubs resources.
+Als u Event Hubs met beheerde identiteiten wilt gebruiken, moet u de rol en het juiste bereik toewijzen aan de identiteit. De procedure in deze sectie maakt gebruik van een eenvoudige toepassing die wordt uitgevoerd onder een beheerde identiteit en die toegang heeft tot Event Hubs resources.
 
 Hier gebruiken we een voor beeld-webtoepassing die wordt gehost in [Azure app service](https://azure.microsoft.com/services/app-service/). Zie [een ASP.net core web-app maken in azure](../app-service/quickstart-dotnetcore.md) voor stapsgewijze instructies voor het maken van een webtoepassing
 
