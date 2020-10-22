@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
 ms.custom: mvc, seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 0531ff7765fbcfb304d58e5b444eafdb3ad4fb1e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9320abb46c45b4bd151839eda40b03b445a2675f
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91404796"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152016"
 ---
 # <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>Zelfstudie: Een Java Spring Boot-web-app bouwen met Azure App Service in Linux en Azure Cosmos DB
 
@@ -35,7 +35,7 @@ In deze zelfstudie leert u het volgende:
 
 * [Azure CLI](/cli/azure/overview), geïnstalleerd op uw eigen computer. 
 * [Git](https://git-scm.com/)
-* [Java JDK](https://aka.ms/azure-jdks)
+* [Java JDK](/azure/developer/java/fundamentals/java-jdk-long-term-support)
 * [Maven](https://maven.apache.org)
 
 ## <a name="clone-the-sample-todo-app-and-prepare-the-repo"></a>Kloon de voorbeeld-app voor taken en bereid de opslagplaats voor
@@ -299,8 +299,8 @@ az appservice plan update --number-of-workers 2 \
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u deze resources niet voor een andere zelfstudie nodig hebt (zie [Volgende stappen](#next)), kunt u ze verwijderen door de volgende opdracht in de Cloud Shell uit te voeren: 
-  
+Als u deze resources niet voor een andere zelfstudie nodig hebt (zie [Volgende stappen](#next)), kunt u ze verwijderen door de volgende opdracht in de Cloud Shell uit te voeren: 
+  
 ```bash
 az group delete --name <your-azure-group-name>
 ```

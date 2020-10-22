@@ -4,12 +4,12 @@ description: In deze zelfstudie implementeert u een beheerd Service Fabric-clust
 ms.topic: tutorial
 ms.date: 08/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: c7ed1a8fceeddecb942edb541c6112492a6e5a2d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0265a1393c697cbd767de13df1064a5eea957380
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91410196"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316172"
 ---
 # <a name="tutorial-deploy-a-service-fabric-managed-cluster-preview"></a>Zelfstudie: Een beheerd Service Fabric-cluster (preview) implementeren
 
@@ -37,7 +37,7 @@ Voor u met deze zelfstudie begint:
 
 * Installeer de [Service Fabric SDK en PowerShell-module](service-fabric-get-started.md).
 
-* Installeer [Azure PowerShell 4.7.0](https://docs.microsoft.com/powershell/azure/release-notes-azureps?view=azps-4.7.0&preserve-view=true#azservicefabric) (of hoger).
+* Installeer [Azure PowerShell 4.7.0](/powershell/azure/release-notes-azureps?preserve-view=true&view=azps-4.7.0#azservicefabric) (of hoger).
 
 ## <a name="connect-to-your-azure-account"></a>Verbinding maken met uw Azure-account
 
@@ -73,7 +73,7 @@ Geef voor deze stap uw eigen waarden op voor de volgende parameters:
 
 * **Clusternaam**: Voer een unieke naam in voor uw cluster, zoals *mysfcluster*.
 * **Wachtwoord voor beheerder**: Voer een wachtwoord in voor de beheerder dat moet worden gebruikt voor RDP op de onderliggende virtuele machines in het cluster.
-* **Vingerafdruk van het clientcertificaat**: Geef de vingerafdruk van het clientcertificaat op die u wilt gebruiken om toegang te krijgen tot uw cluster. Als u geen certificaat hebt, volgt u [een certificaat instellen en ophalen](https://docs.microsoft.com/azure/key-vault/certificates/quick-create-portal) om een zelfondertekend certificaat te maken.
+* **Vingerafdruk van het clientcertificaat**: Geef de vingerafdruk van het clientcertificaat op die u wilt gebruiken om toegang te krijgen tot uw cluster. Als u geen certificaat hebt, volgt u [een certificaat instellen en ophalen](../key-vault/certificates/quick-create-portal.md) om een zelfondertekend certificaat te maken.
 * **Cluster-SKU**: Geef het [type beheerd Service Fabric-cluster](overview-managed-cluster.md#service-fabric-managed-cluster-skus) op dat moet worden geïmplementeerd. *Basis* SKU-clusters zijn alleen bedoeld voor testimplementaties en zijn niet toegestaan voor het toevoegen of verwijderen van knooppunttypen.
 
 ```powershell
