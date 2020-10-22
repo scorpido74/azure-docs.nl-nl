@@ -3,12 +3,12 @@ title: Overzicht van de verbonden computer Windows-agent
 description: Dit artikel bevat een gedetailleerd overzicht van de beschik bare Azure Arc-servers agent, die ondersteuning biedt voor het bewaken van virtuele machines die worden gehost in hybride omgevingen.
 ms.date: 09/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 344bd2c801cb21932b35bcdfdcc38cc3fa73783b
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: f1f74ff12d007553c0c0c9b16f56a27371618bbb
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102979"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370165"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Overzicht van de agent voor servers met Azure Arc ingeschakeld
 
@@ -90,7 +90,7 @@ Service Tags:
 
 Adres
 
-| Agentresource | Description |
+| Agentresource | Beschrijving |
 |---------|---------|
 |`management.azure.com`|Azure Resource Manager|
 |`login.windows.net`|Azure Active Directory|
@@ -100,7 +100,7 @@ Adres
 
 Voor preview-agents (versie 0,11 en lager) hebt u ook toegang tot de volgende Url's nodig:
 
-| Agentresource | Description |
+| Agentresource | Beschrijving |
 |---------|---------|
 |`agentserviceapi.azure-automation.net`|Gastconfiguratie|
 |`*-agentservice-prod-1.azure-automation.net`|Gastconfiguratie|
@@ -122,17 +122,17 @@ Azure PowerShell:
 
 ```azurepowershell-interactive
 Login-AzAccount
-Set-AzContext -SubscriptionId [subscription you want to onboard]
-Register-AzResourceProvider -ProviderNamespace Microsoft.HybridCompute
-Register-AzResourceProvider -ProviderNamespace Microsoft.GuestConfiguration
+Set-AzContext -SubscriptionId [subscription you want to onboard]
+Register-AzResourceProvider -ProviderNamespace Microsoft.HybridCompute
+Register-AzResourceProvider -ProviderNamespace Microsoft.GuestConfiguration
 ```
 
 Azure CLI:
 
 ```azurecli-interactive
-az account set --subscription "{Your Subscription Name}"
-az provider register --namespace 'Microsoft.HybridCompute'
-az provider register --namespace 'Microsoft.GuestConfiguration'
+az account set --subscription "{Your Subscription Name}"
+az provider register --namespace 'Microsoft.HybridCompute'
+az provider register --namespace 'Microsoft.GuestConfiguration'
 ```
 
 U kunt de resource providers ook registreren in de Azure Portal door de stappen onder [Azure Portal](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)te volgen.
@@ -164,7 +164,7 @@ Na de installatie van de verbonden machine-agent voor Windows, worden de volgend
 
 * De volgende installatie mappen worden tijdens de installatie gemaakt.
 
-    |Map |Description |
+    |Map |Beschrijving |
     |-------|------------|
     |%ProgramFiles%\AzureConnectedMachineAgent |Standaardpad met de agent ondersteunings bestanden.|
     |%ProgramData%\AzureConnectedMachineAgent |Bevat de configuratie bestanden voor de agent.|
@@ -176,21 +176,21 @@ Na de installatie van de verbonden machine-agent voor Windows, worden de volgend
 
 * De volgende Windows-Services worden tijdens de installatie van de agent gemaakt op de doel machine.
 
-    |Servicenaam |Weergavenaam |Procesnaam |Description |
+    |Servicenaam |Weergavenaam |Procesnaam |Beschrijving |
     |-------------|-------------|-------------|------------|
     |himds |Azure Hybrid Instance Metadata Service |himds.exe |Deze service implementeert de Azure instance meta data service (IMDS) voor het beheren van de verbinding met Azure en de Azure-identiteit van de verbonden machine.|
     |DscService |Gast configuratie service |dsc_service.exe |De code basis die voor desired state Configuration (DSC v2) in azure wordt gebruikt om In-Guest beleid te implementeren.|
 
 * De volgende omgevings variabelen worden tijdens de installatie van de agent gemaakt.
 
-    |Name |Standaardwaarde |Beschrijving |
+    |Naam |Standaardwaarde |Beschrijving |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||
 
 * Er zijn verschillende logboek bestanden beschikbaar voor het oplossen van problemen. Deze worden beschreven in de volgende tabel.
 
-    |Logboek |Description |
+    |Logboek |Beschrijving |
     |----|------------|
     |%ProgramData%\AzureConnectedMachineAgent\Log\himds.log |Registreert gegevens van de agents (HIMDS) en de interactie met Azure.|
     |%ProgramData%\AzureConnectedMachineAgent\Log\azcmagent.log |Bevat de uitvoer van de azcmagent-hulp programma-opdrachten wanneer het argument uitgebreid (-v) wordt gebruikt.|
@@ -203,7 +203,7 @@ Na de installatie van de verbonden machine-agent voor Windows, worden de volgend
 
 * Tijdens het verwijderen van de agent worden de volgende artefacten niet verwijderd.
 
-    * %ProgramFiles%\AzureConnectedMachineAgent\Logs
+    * *%ProgramData%\AzureConnectedMachineAgent\Log
     * %ProgramData%\AzureConnectedMachineAgent en submappen
     * %ProgramData%\GuestConfig
 
@@ -215,7 +215,7 @@ Na de installatie van de verbonden machine agent voor Linux worden de volgende a
 
 * De volgende installatie mappen worden tijdens de installatie gemaakt.
 
-    |Map |Description |
+    |Map |Beschrijving |
     |-------|------------|
     |/var/opt/azcmagent/ |Standaardpad met de agent ondersteunings bestanden.|
     |/opt/azcmagent/ |
@@ -227,14 +227,14 @@ Na de installatie van de verbonden machine agent voor Linux worden de volgende a
 
 * De volgende daemons worden tijdens de installatie van de agent gemaakt op de doel machine.
 
-    |Servicenaam |Weergavenaam |Procesnaam |Description |
+    |Servicenaam |Weergavenaam |Procesnaam |Beschrijving |
     |-------------|-------------|-------------|------------|
     |himdsd. service |Azure Hybrid Instance Metadata Service |/opt/azcmagent/bin/himds |Deze service implementeert de Azure instance meta data service (IMDS) voor het beheren van de verbinding met Azure en de Azure-identiteit van de verbonden machine.|
     |dscd. service |Gast configuratie service |/opt/DSC/dsc_linux_service |Dit is de configuratie code van de desired state Configuration (DSC v2) die in azure wordt gebruikt om In-Guest beleid te implementeren.|
 
 * Er zijn verschillende logboek bestanden beschikbaar voor het oplossen van problemen. Deze worden beschreven in de volgende tabel.
 
-    |Logboek |Description |
+    |Logboek |Beschrijving |
     |----|------------|
     |/var/opt/azcmagent/log/himds.log |Registreert gegevens van de agents (HIMDS) en de interactie met Azure.|
     |/var/opt/azcmagent/log/azcmagent.log |Bevat de uitvoer van de azcmagent-hulp programma-opdrachten wanneer het argument uitgebreid (-v) wordt gebruikt.|
@@ -245,7 +245,7 @@ Na de installatie van de verbonden machine agent voor Linux worden de volgende a
 
 * De volgende omgevings variabelen worden tijdens de installatie van de agent gemaakt. Deze variabelen worden ingesteld in `/lib/systemd/system.conf.d/azcmagent.conf` .
 
-    |Name |Standaardwaarde |Beschrijving |
+    |Naam |Standaardwaarde |Beschrijving |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||

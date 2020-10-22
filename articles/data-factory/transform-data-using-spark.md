@@ -10,12 +10,12 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 05/08/2020
-ms.openlocfilehash: bc8fd73b18e197c42e4750612320c1b15a6db020
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4a7eabe35e501aa840693f6fad3803b73160a25
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83849209"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368890"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Gegevens transformeren met behulp van Spark-activiteit in Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
@@ -82,7 +82,7 @@ Maak de volgende mapstructuur in de Azure Blob-opslag waarnaar wordt verwezen do
 | Pad                  | Beschrijving                              | Vereist | Type   |
 | --------------------- | ---------------------------------------- | -------- | ------ |
 | `.` basis            | Het pad naar de hoofdmap van de Spark-taak in de gekoppelde opslag service | Ja      | Map |
-| &lt;door de gebruiker gedefinieerd &gt; | Het pad naar het invoer bestand van de Spark-taak | Ja      | File   |
+| &lt;door de gebruiker gedefinieerd &gt; | Het pad naar het invoer bestand van de Spark-taak | Ja      | Bestand   |
 | ./jars                | Alle bestanden in deze map worden geüpload en geplaatst in het Java-klassenpad van het cluster | Nee       | Map |
 | ./pyFiles             | Alle bestanden in deze map worden geüpload en op de PYTHONPATH van het cluster geplaatst | Nee       | Map |
 | ./files               | Alle bestanden in deze map worden geüpload en op de werk directory van de uitvoerder geplaatst | Nee       | Map |
@@ -119,5 +119,5 @@ Raadpleeg de volgende artikelen waarin wordt uitgelegd hoe u gegevens op andere 
 * [Hadoop streaming-activiteit](transform-data-using-hadoop-streaming.md)
 * [Spark-activiteit](transform-data-using-spark.md)
 * [Aangepaste .NET-activiteit](transform-data-using-dotnet-custom-activity.md)
-* [Activiteit voor batch uitvoering Machine Learning](transform-data-using-machine-learning.md)
+* [Activiteit voor het uitvoeren van Azure Machine Learning Studio (klassiek)](transform-data-using-machine-learning.md)
 * [Opgeslagen procedure activiteit](transform-data-using-stored-procedure.md)

@@ -4,12 +4,12 @@ description: Hier vindt u antwoorden op enkele veelgestelde vragen over de Azure
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: 8868f86f0cf46ff82e37cd433d7b5bca0d69567d
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: bdc0bdb5966445fe98b2f65bce552fe6dca493ea
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078932"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368975"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Veelgestelde vragen over de Azure VMware-oplossing
 
@@ -45,7 +45,7 @@ Specifieke integratie-en gebruiks voorbeelden kunnen per geval worden geëvaluee
 
 #### <a name="can-i-migrate-vsphere-vms-from-on-premises-environments-to-azure-vmware-solution-private-clouds"></a>Kan ik vSphere-Vm's migreren van on-premises omgevingen naar persoonlijke Clouds van Azure VMware?
 
-Ja. VM-migratie en vMotion kunnen worden gebruikt om Vm's naar een privécloud te verplaatsen als aan de standaard vereisten voor cross vCenter van [vMotion](https://kb.vmware.com/s/article/210695) wordt voldaan.
+Ja. VM-migratie en vMotion kunnen worden gebruikt om Vm's naar een privécloud te verplaatsen als aan de standaard vereisten voor cross vCenter van [vMotion](https://kb.vmware.com/s/article/2106952?lang=en_US&queryTerm=2106952) wordt voldaan.
 
 #### <a name="is-a-specific-version-of-vsphere-required-in-on-premises-environments"></a>Is een specifieke versie van vSphere vereist in on-premises omgevingen?
 
@@ -80,7 +80,7 @@ Nee, vanwege de vereisten voor band breedte en latentie.
 Azure Bastion is de aanbevolen service om verbinding te maken met het Jump box om te voor komen dat de Azure VMware-oplossing aan Internet wordt blootgesteld. U kunt Azure Bastion niet gebruiken om verbinding te maken met virtuele machines van Azure VMware-oplossingen omdat ze geen Azure IaaS-objecten zijn.
 
 #### <a name="can-an-existing-expressroute-gateway-be-used-to-connect-to-azure-vmware-solution"></a>Kan een bestaande ExpressRoute-gateway worden gebruikt om verbinding te maken met de Azure VMware-oplossing?
-Ja, u kunt een bestaande ExpressRoute-gateway gebruiken om verbinding te maken met de Azure VMware-oplossing zolang deze de limiet van vier ExpressRoute-circuits per virtueel netwerk niet overschrijdt.  Om toegang te krijgen tot de Azure VMware-oplossing van on-premises via ExpressRoute, moet u echter beschikken over ExpressRoute Global Reach, omdat de ExpressRoute-gateway geen transitieve route ring biedt tussen de verbonden circuits.
+Ja, u kunt een bestaande ExpressRoute-gateway gebruiken om verbinding te maken met de Azure VMware-oplossing zolang deze de limiet van vier ExpressRoute-circuits per virtueel netwerk niet overschrijdt.  Om toegang te krijgen tot Azure VMware Solution on-premises via ExpressRoute, moet u beschikken over ExpressRoute Global Reach, omdat de ExpressRoute-gateway geen transitieve routering biedt tussen de verbonden circuits.
 
 ## <a name="compute-network-storage-and-backup"></a>Berekenings-, netwerk-, opslag-en back-ups
 
@@ -277,7 +277,7 @@ Voordat u uw Azure VMware Solution-resource maakt, moet u een ondersteuningstick
    Zie [Azure-resourceproviders en -typen](../azure-resource-manager/management/resource-providers-and-types.md) voor meer manieren om de Azure Synapse-resourceprovider te registeren.
 
 <!-- LINKS - external -->
-[kb2106952]: https://kb.vmware.com/s/article/2106952
+[kb2106952]: https://kb.vmware.com/s/article/2106952?lang=en_US&queryTerm=21069522
 
 <!-- LINKS - internal -->
 [Access and Identity Concepts]: concepts-identity.md

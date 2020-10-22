@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 07/23/2019
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: e9eeca39dfbbefd36c9662aa0fc8b16d2c804158
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ef3347b6f22d623571c8fe9cc8b156bfd92c411
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91252983"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282554"
 ---
 # <a name="azure-cosmos-db-net-examples-for-the-sql-api"></a>Azure Cosmos DB: .NET-voorbeelden voor de SQL API
 
@@ -53,7 +53,7 @@ Een Azure-abonnement of gratis Cosmos DB-proefaccount
 > 
 
 ## <a name="database-examples"></a>Voorbeelden voor databases
-In de methode [RunDatabaseDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DatabaseManagement/Program.cs#L75-L91) van het voorbeeldproject *DatabaseManagement* ziet u hoe de volgende taken worden uitgevoerd. Zie [Werken met databases, containers en items](databases-containers-items.md) voor meer informatie over de Azure Cosmos-databases voordat u de volgende voorbeelden uitvoert. 
+In de methode [RunDatabaseDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DatabaseManagement/Program.cs#L75-L91) van het voorbeeldproject *DatabaseManagement* ziet u hoe de volgende taken worden uitgevoerd. Zie [Werken met databases, containers en items](account-databases-containers-items.md) voor meer informatie over de Azure Cosmos-databases voordat u de volgende voorbeelden uitvoert. 
 
 | Taak | API-verwijzing |
 | --- | --- |
@@ -63,7 +63,7 @@ In de methode [RunDatabaseDemo](https://github.com/Azure/azure-documentdb-dotnet
 | [Een database verwijderen](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DatabaseManagement/Program.cs#L89) |[DocumentClient.DeleteDatabaseAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.deletedatabaseasync) |
 
 ## <a name="collection-examples"></a>Voorbeelden voor verzamelingen
-In de methode [RunCollectionDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/CollectionManagement/Program.cs#L86-L104) van het voorbeeldproject *CollectionManagement* ziet u hoe de volgende taken worden uitgevoerd. Zie [Werken met databases, containers en items](databases-containers-items.md) voor meer informatie over de Azure Cosmos-verzamelingen voordat u de volgende voorbeelden uitvoert. 
+In de methode [RunCollectionDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/CollectionManagement/Program.cs#L86-L104) van het voorbeeldproject *CollectionManagement* ziet u hoe de volgende taken worden uitgevoerd. Zie [Werken met databases, containers en items](account-databases-containers-items.md) voor meer informatie over de Azure Cosmos-verzamelingen voordat u de volgende voorbeelden uitvoert. 
 
 | Taak | API-verwijzing |
 | --- | --- |
@@ -74,7 +74,7 @@ In de methode [RunCollectionDemo](https://github.com/Azure/azure-documentdb-dotn
 | [Een verzameling verwijderen](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/CollectionManagement/Program.cs#L228) |[DocumentClient.DeleteDocumentCollectionAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.deletedocumentcollectionasync) |
 
 ## <a name="document-examples"></a>Voorbeelden voor documenten
-In de methode [RunDocumentsDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs#L109-L118) van het voorbeeldproject *DocumentManagement* ziet u hoe de volgende taken worden uitgevoerd. Zie [Werken met databases, containers en items](databases-containers-items.md) voor meer informatie over de Azure Cosmos-documenten voordat u de volgende voorbeelden uitvoert. 
+In de methode [RunDocumentsDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs#L109-L118) van het voorbeeldproject *DocumentManagement* ziet u hoe de volgende taken worden uitgevoerd. Zie [Werken met databases, containers en items](account-databases-containers-items.md) voor meer informatie over de Azure Cosmos-documenten voordat u de volgende voorbeelden uitvoert. 
 
 | Taak | API-verwijzing |
 | --- | --- |

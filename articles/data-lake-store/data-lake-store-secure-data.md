@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 02bfb7da51f243de8320d0230259577e337231fd
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: ac7666f4c4e68d24499f9c097dc9bd021d270355
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149274"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370692"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>Gegevens beveiligen die zijn opgeslagen in Azure Data Lake Storage Gen1
 Het beveiligen van gegevens in Azure Data Lake Storage Gen1 is een benadering van drie stappen.  Zowel op rollen gebaseerd toegangs beheer (Azure RBAC) en toegangs beheer lijsten (Acl's) van Azure moeten worden ingesteld om toegang tot gegevens voor gebruikers en beveiligings groepen volledig in te scha kelen.
@@ -39,7 +39,7 @@ Voordat u met deze zelfstudie begint, moet u het volgende hebben of hebben gedaa
 Zie [beveiligings groepen beheren in azure Active Directory](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)voor instructies over het maken van Azure AD-beveiligings groepen en het toevoegen van gebruikers aan de groep.
 
 > [!NOTE] 
-> U kunt zowel gebruikers als andere groepen toevoegen aan een groep in azure AD met behulp van de Azure Portal. Als u een Service-Principal wilt toevoegen aan een groep, gebruikt u echter [de Power shell-module van Azure AD](../active-directory/users-groups-roles/groups-settings-v2-cmdlets.md).
+> U kunt zowel gebruikers als andere groepen toevoegen aan een groep in azure AD met behulp van de Azure Portal. Als u een Service-Principal wilt toevoegen aan een groep, gebruikt u echter [de Power shell-module van Azure AD](../active-directory/enterprise-users/groups-settings-v2-cmdlets.md).
 > 
 > ```powershell
 > # Get the desired group and service principal and identify the correct object IDs

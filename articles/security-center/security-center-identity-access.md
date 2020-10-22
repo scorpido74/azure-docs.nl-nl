@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2020
 ms.author: memildin
-ms.openlocfilehash: 88ab04eb69be0f9f765e6f95a0ea1194189d823a
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 575c139a3b417eb9429695d3ea6be26bf5625de5
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341259"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371066"
 ---
 # <a name="monitor-identity-and-access"></a>Identiteit en toegang bewaken
 
@@ -56,7 +56,7 @@ Er zijn enkele beperkingen ten aanzien van de identiteits-en toegangs beveiligin
 
 ## <a name="multi-factor-authentication-mfa-and-azure-active-directory"></a>Multi-factor Authentication (MFA) en Azure Active Directory 
 
-Voor het inschakelen van MFA zijn [Tenant machtigingen voor Azure Active Directory (AD)](../active-directory/users-groups-roles/directory-assign-admin-roles.md)vereist.
+Voor het inschakelen van MFA zijn [Tenant machtigingen voor Azure Active Directory (AD)](../active-directory/roles/permissions-reference.md)vereist.
 
 - Als u een Premium-editie van AD hebt, schakelt u MFA in met behulp van [voorwaardelijke toegang](../active-directory/conditional-access/concept-conditional-access-policy-common.md).
 - Als u de gratis versie van AD gebruikt, schakelt u de **standaard instellingen voor beveiliging** in, zoals beschreven in [Azure Active Directory documentatie](../active-directory/fundamentals/concept-fundamentals-security-defaults.md).

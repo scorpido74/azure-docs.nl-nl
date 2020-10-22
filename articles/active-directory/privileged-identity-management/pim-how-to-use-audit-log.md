@@ -14,12 +14,12 @@ ms.date: 01/07/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe2f464791995b9168868f1661a3c303d46f7987
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8481c562ecbab1f26e877e55a5a9454695ddf4c0
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530116"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370828"
 ---
 # <a name="view-audit-history-for-azure-ad-roles-in-privileged-identity-management"></a>De controle geschiedenis voor Azure AD-rollen in Privileged Identity Management weer geven
 
@@ -29,7 +29,7 @@ U kunt de controle geschiedenis van de Privileged Identity Management (PIM) gebr
 
 Vanaf november 2019 wordt het gedeelte van de Azure AD-functies van Privileged Identity Management bijgewerkt naar een nieuwe versie die overeenkomt met de ervaringen van Azure-resource rollen. Hiermee maakt u aanvullende functies en [wijzigingen in de bestaande API](azure-ad-roles-features.md#api-changes). Terwijl de nieuwe versie wordt geïmplementeerd, zijn de procedures die u in dit artikel volgt, afhankelijk van de versie van Privileged Identity Management die u momenteel hebt. Volg de stappen in deze sectie om te bepalen welke versie van Privileged Identity Management u hebt. Nadat u uw versie van Privileged Identity Management weet, kunt u de procedures in dit artikel selecteren die overeenkomen met die versie.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met een gebruiker die zich in de beheerdersrol met [geprivilegieerde rol](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) bevindt.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met een gebruiker die zich in de beheerdersrol met [geprivilegieerde rol](../roles/permissions-reference.md#privileged-role-administrator) bevindt.
 1. Open **Azure AD privileged Identity Management**. Als u een banner aan de bovenkant van de overzichts pagina hebt, volgt u de instructies op het tabblad **nieuwe versie** van dit artikel. Als dat niet het geval is, volgt u de instructies op het tabblad **vorige versie** .
 
     [![Scherm opname van de pagina ' Azure AD-rollen-Directory rollen van de controle lijst '.](media/pim-how-to-use-audit-log/directory-roles-audit-history.png "Selecteer het tabblad voor uw versie")](media/pim-how-to-use-audit-log/directory-roles-audit-history.png)
@@ -74,7 +74,7 @@ Met mijn controle kunt u uw activiteiten voor persoonlijke rollen weer geven.
 
 Volg deze stappen om de controle geschiedenis voor Azure AD-rollen weer te geven.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/) met een gebruiker die lid is van de beheerdersrol [privileged Role](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) .
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/) met een gebruiker die lid is van de beheerdersrol [privileged Role](../roles/permissions-reference.md#privileged-role-administrator) .
 
 1. Open **Azure AD privileged Identity Management**.
 

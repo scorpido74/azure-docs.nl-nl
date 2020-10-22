@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2018
-ms.openlocfilehash: f99bc5b07f3749fac28f60d28b040a7e0682971b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab5a76a9734ca879e468a1921554f91680be8339
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86522411"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370658"
 ---
 # <a name="process-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Gegevens verwerken door U-SQL-scripts uit te voeren op Azure Data Lake Analytics 
 > [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
@@ -198,5 +198,5 @@ Raadpleeg de volgende artikelen waarin wordt uitgelegd hoe u gegevens op andere 
 * [Hadoop streaming-activiteit](transform-data-using-hadoop-streaming.md)
 * [Spark-activiteit](transform-data-using-spark.md)
 * [Aangepaste .NET-activiteit](transform-data-using-dotnet-custom-activity.md)
-* [Activiteit voor batch uitvoering Machine Learning](transform-data-using-machine-learning.md)
+* [Activiteit voor het uitvoeren van Azure Machine Learning Studio (klassiek)](transform-data-using-machine-learning.md)
 * [Opgeslagen procedure activiteit](transform-data-using-stored-procedure.md)

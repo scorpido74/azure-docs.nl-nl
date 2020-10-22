@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/06/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 3783c3dea67ebb9a77486d18bf80e67b85292744
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 6a14ef6f75d5939501c6bd8ca84620a7a5619a54
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144181"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369060"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Gebruik en kosten beheren met Azure Monitor-logboeken    
 
@@ -243,7 +243,7 @@ Om aan de slag te gaan, zijn hier de aanbevolen instellingen voor de waarschuwin
 - Doel: Selecteer uw Log Analytics resource
 - Gezocht 
    - Signaal naam: aangepaste zoek opdracht in Logboeken
-   - Zoek query: `_LogOperation | where Detail has 'OverQuota'`
+   - Zoek query: `_LogOperation | where Category == "Ingestion" | where Operation == "Ingestion rate" | where Level == "Warning"`
    - Gebaseerd op: aantal resultaten
    - Voor waarde: groter dan
    - Drempel waarde: 0
@@ -600,9 +600,9 @@ Voer de volgende stappen uit om te waarschuwen als het gefactureerde gegevens vo
 - **Waarschuwingsvoorwaarde definiëren** - geef uw Log Analytics-werkruimte op als het resourcedoel.
 - **Waarschuwingscriteria** - geef het volgende op:
    - **Signaalnaam** - selecteer **Aangepast zoeken in logboeken**
-   - **Zoek query** naar `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50` . Als u een differetn wilt 
+   - **Zoek query** naar `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50` . Als u een andere 
    - **Waarschuwingslogica** is **Gebaseerd op het ** *aantal resultaten*, en **Voorwaarde** is *Groter dan* een **Drempelwaarde** van *0*
-   - **Tijd periode** van *1440* minuten en **waarschuwings frequentie** voor elke *1440* minutesto één keer per dag uitgevoerd.
+   - **Tijd periode** van *1440* minuten en **waarschuwings frequentie** tot elke *1440* minuten om één keer per dag uit te voeren.
 - **Waarschuwingsdetails definiëren** - geef het volgende op:
    - **Naam** aan *factureer bare gegevens volume groter dan 50 GB in 24 uur*
    - **Ernst** op *Waarschuwing*

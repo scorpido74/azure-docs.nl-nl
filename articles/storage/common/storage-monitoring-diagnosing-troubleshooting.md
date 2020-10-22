@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 5f43654b4ff7d0e1f73bd2d83df21d7277c570d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70234c9bf6be8b9c2fbb5750fa1dba718ac2690d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91854554"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370471"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage bewaken, problemen opsporen en oplossen
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -217,7 +217,7 @@ Met de Storage-client bibliotheek voor .NET kunt u logboek gegevens aan de clien
 U kunt het verkeer tussen de client en de server vastleggen om gedetailleerde informatie te geven over de gegevens die door de client en de server worden uitgewisseld en de onderliggende netwerk omstandigheden. Nuttige hulpprogram ma's voor logboek registratie van netwerken zijn onder andere:
 
 * [Fiddler](https://www.telerik.com/fiddler) is een gratis proxy voor webfoutopsporing waarmee u de kopteksten en payload-gegevens van http-en HTTPS-aanvragen en-antwoord berichten kunt onderzoeken. Zie voor meer informatie [bijlage 1: Fiddler gebruiken voor het vastleggen van HTTP-en HTTPS-verkeer](#appendix-1).
-* [Microsoft Network Monitor (netmon)](https://cnet-downloads.com/network-monitor) en [wireshark](https://www.wireshark.org/) zijn gratis netwerkprotocol analyse functies waarmee u gedetailleerde pakket gegevens kunt weer geven voor een breed scala aan netwerk protocollen. Zie voor meer informatie over wireshark "[bijlage 2: het gebruik van wireshark voor het vastleggen van netwerk verkeer](#appendix-2)".
+* [Microsoft Network Monitor (netmon)](https://download.cnet.com/s/network-monitor/) en [wireshark](https://www.wireshark.org/) zijn gratis netwerkprotocol analyse functies waarmee u gedetailleerde pakket gegevens kunt weer geven voor een breed scala aan netwerk protocollen. Zie voor meer informatie over wireshark "[bijlage 2: het gebruik van wireshark voor het vastleggen van netwerk verkeer](#appendix-2)".
 * Als u een basis connectiviteits test wilt uitvoeren om te controleren of uw client computer via het netwerk verbinding kan maken met de Azure Storage-service, kunt u dit niet doen met het hulp programma standaard **ping** op de client. U kunt echter het [ **tcping** -hulp programma](https://www.elifulkerson.com/projects/tcping.php) gebruiken om de connectiviteit te controleren.
 
 In veel gevallen zijn de logboek gegevens van opslag logboeken en de opslag-client bibliotheek voldoende om een probleem op te sporen, maar in sommige gevallen hebt u mogelijk de gedetailleerde informatie nodig die deze hulpprogram ma's voor netwerk logboek registratie kunnen bieden. Als u bijvoorbeeld Fiddler gebruikt om HTTP-en HTTPS-berichten weer te geven, kunt u de header-en payload-gegevens weer geven die zijn verzonden naar en van de opslag Services, zodat u kunt onderzoeken hoe een client toepassing de opslag bewerkingen opnieuw probeert uit te voeren. Protocol analyse functies zoals wireshark worden uitgevoerd op pakket niveau, zodat u TCP-gegevens kunt weer geven, waarmee u problemen met verloren pakketten en verbindings problemen kunt oplossen. 

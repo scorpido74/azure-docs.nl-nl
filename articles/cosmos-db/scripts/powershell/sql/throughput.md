@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 10/07/2020
 ms.author: mjbrown
-ms.openlocfilehash: f81161d52a74aec07c9bb84f76e65088c7e48f11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e55b93d3790efe01a796860bd3607f2fcc6ba5f6
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843493"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281980"
 ---
 # <a name="throughput-rus-operations-with-powershell-for-a-database-or-container-for-azure-cosmos-db-core-sql-api"></a>Doorvoerbewerkingen (RU/s) met PowerShell voor een database of container voor de Azure Cosmos DB Core (SQL) API
 
@@ -60,5 +60,3 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie [Documentatie over Azure PowerShell](https://docs.microsoft.com/powershell/) voor meer informatie over Azure PowerShell.
-
-Meer Azure Cosmos DB PowerShell-voorbeeldscripts vindt u in [Azure Cosmos DB PowerShell-scripts](../../../powershell-samples.md).

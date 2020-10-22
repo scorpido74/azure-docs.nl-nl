@@ -14,26 +14,26 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69da6aa0253f92f9242a988c6b46de873df0677e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 397c74203aae2f52ce81844695266cc36fdf3042
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87797200"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370896"
 ---
 # <a name="reset-a-users-password-using-azure-active-directory"></a>Het wachtwoord van een gebruiker opnieuw instellen met Azure Active Directory
 
 Als beheerder kunt u het wacht woord van een gebruiker opnieuw instellen als het wacht woord is verg eten, als de gebruiker de verbinding met een apparaat heeft geblokkeerd of als de gebruiker nooit een wacht woord heeft ontvangen.
 
 >[!Note]
->Tenzij uw Azure AD-Tenant de basis directory voor een gebruiker is, kunt u het wacht woord niet opnieuw instellen. Dit betekent dat als uw gebruiker zich aanmeldt bij uw organisatie met behulp van een account van een andere organisatie, een Microsoft-account of een Google-account, het wacht woord niet opnieuw kan worden ingesteld.<br><br>Als uw gebruiker een bron van de autoriteit als Windows Server Active Directory heeft, kunt u het wacht woord alleen opnieuw instellen als u wacht woord terugschrijven hebt ingeschakeld.<br><br>Als uw gebruiker een bron van de autoriteit als externe Azure AD heeft, kunt u het wacht woord niet opnieuw instellen. Alleen de gebruiker of een beveiligingsrol in externe Azure AD kan het wacht woord opnieuw instellen.
+>Tenzij uw Azure AD-Tenant de basis directory voor een gebruiker is, kunt u het wacht woord niet opnieuw instellen. Dit betekent dat als uw gebruiker zich aanmeldt bij uw organisatie met behulp van een account van een andere organisatie, een Microsoft-account of een Google-account, het wacht woord niet opnieuw kan worden ingesteld.<br><br>Als uw gebruiker een bron van de autoriteit als Windows Server Active Directory heeft, kunt u het wacht woord alleen opnieuw instellen als u wacht woord terugschrijven hebt ingeschakeld.<br><br>Als uw gebruiker een bron van de autoriteit als externe Azure AD heeft, kunt u het wacht woord niet opnieuw instellen. Alleen de gebruiker of een beheerder in externe Azure AD kan het wacht woord opnieuw instellen.
 
 >[!Note]
 >Als u geen beheerder bent en u in plaats daarvan naar instructies zoekt over het opnieuw instellen van uw eigen werk-of school wachtwoord, raadpleegt u [het wacht woord voor uw werk of school opnieuw instellen](../user-help/active-directory-passwords-update-your-own-password.md).
 
 ## <a name="to-reset-a-password"></a>Een wacht woord opnieuw instellen
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) als gebruikers beheerder of wachtwoord beheerder. Zie [beheerders rollen toewijzen in azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md#available-roles) voor meer informatie over de beschik bare rollen.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) als gebruikers beheerder of wachtwoord beheerder. Zie [beheerders rollen toewijzen in azure Active Directory](../roles/permissions-reference.md#available-roles) voor meer informatie over de beschik bare rollen.
 
 2. Selecteer **Azure Active Directory**, selecteer **gebruikers**, zoek de gebruiker die het opnieuw moet instellen en selecteer vervolgens **wacht woord opnieuw instellen**.
 
@@ -63,4 +63,4 @@ Nadat u het wacht woord van de gebruiker opnieuw hebt ingesteld, kunt u de volge
 
 - [Een basisgroep maken en leden toevoegen](active-directory-groups-create-azure-portal.md)
 
-Of u kunt complexere gebruikers scenario's uitvoeren, zoals het toewijzen van gemachtigden, het gebruiken van beleid en het delen van gebruikers accounts. Zie [Azure Active Directory-documentatie voor gebruikers beheer](../users-groups-roles/index.yml)voor meer informatie over andere beschik bare acties.
+Of u kunt complexere gebruikers scenario's uitvoeren, zoals het toewijzen van gemachtigden, het gebruiken van beleid en het delen van gebruikers accounts. Zie [Azure Active Directory-documentatie voor gebruikers beheer](../enterprise-users/index.yml)voor meer informatie over andere beschik bare acties.

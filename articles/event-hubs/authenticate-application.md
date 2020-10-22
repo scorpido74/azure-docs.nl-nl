@@ -2,13 +2,13 @@
 title: Een toepassing verifiëren voor toegang tot Azure Event Hubs-resources
 description: Dit artikel bevat informatie over het verifiëren van een toepassing met Azure Active Directory om toegang te krijgen tot Azure Event Hubs-resources
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: 50c697e5c430b72f8d5da393e90f1db7ff6d48a1
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.date: 10/21/2020
+ms.openlocfilehash: 6eac2ef362705ecb68212166f8b691ac969a40ff
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332481"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359931"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-event-hubs-resources"></a>Een toepassing verifiëren met Azure Active Directory om toegang te krijgen tot Event Hubs resources
 Microsoft Azure biedt geïntegreerde toegangs beheer voor bronnen en toepassingen op basis van Azure Active Directory (Azure AD). Een belang rijk voor deel van het gebruik van Azure AD met Azure Event Hubs is dat u uw referenties niet meer hoeft op te slaan in de code. In plaats daarvan kunt u een OAuth 2,0-toegangs token aanvragen bij het micro soft Identity-platform. De resource naam voor het aanvragen van een token is `https://eventhubs.azure.net/` (voor Kafka-clients is de resource voor het aanvragen van een token `https://<namespace>.servicebus.windows.net` ). Azure AD verifieert de beveiligingsprincipal (een gebruiker, groep of Service-Principal) die de toepassing uitvoert. Als de verificatie slaagt, retourneert Azure AD een toegangs token voor de toepassing en kan de toepassing vervolgens het toegangs token gebruiken om een aanvraag voor Azure Event Hubs-resources te autoriseren.
@@ -29,34 +29,6 @@ Zie [schema register rollen](schema-registry-overview.md#azure-role-based-access
 
 > [!IMPORTANT]
 > De preview-versie ondersteunt het toevoegen van Event Hubs rechten voor gegevens toegang aan de rol eigenaar of bijdrager. De bevoegdheden voor gegevens toegang voor de rol eigenaar en Inzender worden echter niet meer nageleefd. Als u de rol eigenaar of Inzender gebruikt, schakelt u over naar het gebruik van de functie Azure Event Hubs-gegevens eigenaar.
-
-## <a name="assign-azure-roles-using-the-azure-portal"></a>Azure-rollen toewijzen met behulp van de Azure Portal  
-Raadpleeg [dit artikel](..//role-based-access-control/role-assignments-portal.md)voor meer informatie over het beheren van de toegang tot Azure-resources met behulp van Azure RBAC en de Azure Portal. 
-
-Nadat u het juiste bereik voor een roltoewijzing hebt bepaald, navigeert u naar die resource in de Azure Portal. Geef de instellingen voor toegangs beheer (IAM) voor de resource weer en volg deze instructies voor het beheren van roltoewijzingen:
-
-> [!NOTE]
-> De stappen die hieronder worden beschreven, wijzen een rol toe aan uw Event Hub onder de Event Hubs naam ruimten, maar u kunt dezelfde stappen volgen om een rollen bereik toe te wijzen aan een Event Hubs resource.
-
-1. Navigeer in het [Azure Portal](https://portal.azure.com/)naar uw event hubs naam ruimte.
-2. Selecteer op de pagina **overzicht** de Event hub waarvoor u een rol wilt toewijzen.
-
-    ![Selecteer uw Event Hub](./media/authenticate-application/select-event-hub.png)
-1. Selecteer **Access Control (IAM)** om instellingen voor toegangs beheer voor de Event hub weer te geven. 
-1. Selectter het tabblad **Roltoewijzingen** om de lijst met roltoewijzingen te zien. Selecteer de knop **toevoegen** op de werk balk en selecteer vervolgens **functie toewijzing toevoegen**. 
-
-    ![Knop toevoegen op de werk balk](./media/authenticate-application/role-assignments-add-button.png)
-1. Voer op de pagina **roltoewijzing toevoegen** de volgende stappen uit:
-    1. Selecteer de **Event hubs rol** die u wilt toewijzen. 
-    1. Zoek naar de beveiligingsprincipal **(gebruiker** , groep, Service-Principal) waaraan u de rol wilt toewijzen.
-    1. Selecteer **Opslaan** om de roltoewijzing op te slaan. 
-
-        ![Rol toewijzen aan een gebruiker](./media/authenticate-application/assign-role-to-user.png)
-    4. De identiteit waaraan u de rol hebt toegewezen, wordt weer gegeven onder die rol. De volgende afbeelding laat bijvoorbeeld zien dat Azure-gebruikers zich in de rol Azure Event Hubs gegevens eigenaar bevindt. 
-        
-        ![Gebruiker in de lijst](./media/authenticate-application/user-in-list.png)
-
-U kunt vergelijk bare stappen volgen om een rol toe te wijzen aan Event Hubs naam ruimte, resource groep of abonnement. Wanneer u de rol en het bereik ervan hebt gedefinieerd, kunt u dit gedrag testen met voor beelden [in deze github-locatie](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac).
 
 
 ## <a name="authenticate-from-an-application"></a>Verifiëren vanuit een toepassing
@@ -93,6 +65,30 @@ De toepassing heeft een client geheim nodig om de identiteit ervan te bewijzen w
 1. Kopieer de waarde van het nieuwe geheim direct naar een veilige locatie. De opvullings waarde wordt slechts één keer weer gegeven.
 
     ![Clientgeheim](./media/authenticate-application/client-secret.png)
+
+
+## <a name="assign-azure-roles-using-the-azure-portal"></a>Azure-rollen toewijzen met behulp van de Azure Portal  
+Nadat u de toepassing hebt geregistreerd, wijst u de service-principal van de toepassing toe aan een Event Hubs Azure AD-rol die wordt beschreven in de sectie [rollen voor azure Event hubs](#built-in-roles-for-azure-event-hubs) . 
+
+1. Navigeer in het [Azure Portal](https://portal.azure.com/)naar uw event hubs naam ruimte.
+2. Selecteer op de pagina **overzicht** de Event hub waarvoor u een rol wilt toewijzen.
+
+    ![Selecteer uw Event Hub](./media/authenticate-application/select-event-hub.png)
+1. Selecteer **Access Control (IAM)** om instellingen voor toegangs beheer voor de Event hub weer te geven. 
+1. Selectter het tabblad **Roltoewijzingen** om de lijst met roltoewijzingen te zien. Selecteer de knop **toevoegen** op de werk balk en selecteer vervolgens **functie toewijzing toevoegen**. 
+
+    ![Knop toevoegen op de werk balk](./media/authenticate-application/role-assignments-add-button.png)
+1. Voer op de pagina **roltoewijzing toevoegen** de volgende stappen uit:
+    1. Selecteer de **Event hubs rol** die u wilt toewijzen. 
+    1. Zoek naar de beveiligingsprincipal **(gebruiker** , groep, Service-Principal) waaraan u de rol wilt toewijzen. Selecteer de **geregistreerde toepassing** in de lijst. 
+    1. Selecteer **Opslaan** om de roltoewijzing op te slaan. 
+
+        ![Rol toewijzen aan een gebruiker](./media/authenticate-application/assign-role-to-user.png)
+    4. Ga naar het tabblad **roltoewijzingen** en bevestig de roltoewijzing. In de volgende afbeelding ziet u bijvoorbeeld dat **mywebapp** zich in de rol **Azure Event hubs gegevens afzender** bevindt. 
+        
+        ![Gebruiker in de lijst](./media/authenticate-application/user-in-list.png)
+
+U kunt vergelijk bare stappen volgen om een rol toe te wijzen aan Event Hubs naam ruimte, resource groep of abonnement. Wanneer u de rol en het bereik ervan hebt gedefinieerd, kunt u dit gedrag testen met voor beelden [in deze github-locatie](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac). Raadpleeg [dit artikel](..//role-based-access-control/role-assignments-portal.md)voor meer informatie over het beheren van de toegang tot Azure-resources met behulp van Azure RBAC en de Azure Portal. 
 
 
 ### <a name="client-libraries-for-token-acquisition"></a>Client bibliotheken voor het verkrijgen van tokens  

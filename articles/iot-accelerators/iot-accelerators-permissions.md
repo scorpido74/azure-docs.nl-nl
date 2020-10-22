@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dobett
-ms.openlocfilehash: 87f6b9cef50e4b8c388be835b2aa7bed8177ac4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5d816b3d44a6fadd8dd462a14e62de4cdac2a00
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "61447427"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370607"
 ---
 # <a name="use-the-azureiotsolutionscom-site-to-deploy-your-solution-accelerator"></a>De azureiotsolutions.com-site gebruiken voor het implementeren van uw oplossings versneller
 
@@ -38,7 +38,7 @@ Voordat u een oplossings versneller kunt implementeren, moet u zich aanmelden bi
 
 Uw machtigingen voor het implementeren van oplossings accelerators, het beheren van gebruikers en het beheren van Azure-Services zijn afhankelijk van uw rol in de geselecteerde map. Algemene Azure AD-rollen die zijn gekoppeld aan de oplossings versnellers zijn onder andere:
 
-* **Globale beheerder**: er kunnen veel [globale beheerders](../active-directory/users-groups-roles/directory-assign-admin-roles.md) per Azure AD-Tenant zijn:
+* **Globale beheerder**: er kunnen veel [globale beheerders](../active-directory/roles/permissions-reference.md) per Azure AD-Tenant zijn:
 
   * Wanneer u een Azure AD-Tenant maakt, bent u standaard de globale beheerder van die Tenant.
   * De globale beheerder kan basis-en standaard oplossings versnellers implementeren.

@@ -4,12 +4,12 @@ description: In dit artikel wordt beschreven hoe AWS-VM's naar Azure migreert me
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 6c4b53e3c3673b913e4afbfb65801d83f0640bd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 62bfad2cc92e7af61a10360878ebaa3093897e97
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89651831"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310726"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services-VM's (AWS) ontdekken, beoordelen en migreren naar Azure
 
@@ -40,7 +40,7 @@ Voordat u naar Azure migreert, raden we u aan een evaluatie van de VM-detectie e
 
 U stelt als volgt een evaluatie in:
 
-1. Volg de [zelfstudie](./tutorial-prepare-physical.md) om Azure in te stellen en uw AWS-VM's voor te bereiden voor een evaluatie. Opmerking:
+1. Volg de [zelfstudie](./tutorial-discover-physical.md) om Azure in te stellen en uw AWS-VM's voor te bereiden voor een evaluatie. Opmerking:
 
     - Azure Migrate gebruikt wachtwoordverificatie wanneer u AWS-instanties detecteert. AWS-instanties ondersteunen niet standaard wachtwoordverificatie. Voordat u een instantie kunt detecteren, moet u wachtwoordverificatie inschakelen.
         - Sta voor Windows-machines WinRM-poort 5985 (HTTP) toe. Zo kunt u externe WMI aanroepen.
@@ -370,7 +370,7 @@ Nadat u hebt geverifieerd dat de testmigratie naar verwachting werkt, kunt u de 
     - Houd workloads continu beschikbaar door Azure VM‘s naar een secundaire regio te repliceren met Site Recovery. [Meer informatie](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
 - Voor betere beveiliging:
     - Vergrendel en beperk de toegang van binnenkomend verkeer met [Just-in-time-beheer van Azure Security Center](../security-center/security-center-just-in-time.md).
-    - Beperk het netwerkverkeer naar beheereindpunten met [Netwerkbeveiligingsgroepen](../virtual-network/security-overview.md).
+    - Beperk het netwerkverkeer naar beheereindpunten met [Netwerkbeveiligingsgroepen](../virtual-network/network-security-groups-overview.md).
     - Implementeer [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md) om schijven te beveiligen en gegevens te beschermen tegen diefstal en onbevoegde toegang.
     - Lees meer informatie over [IaaS-resources beveiligen](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/) en bezoek het [Azure Security Center](https://azure.microsoft.com/services/security-center/).
 - Voor controle en beheer:

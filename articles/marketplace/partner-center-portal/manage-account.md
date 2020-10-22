@@ -7,12 +7,12 @@ ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 08/27/2020
-ms.openlocfilehash: a2d2c4d29a6af073e3e4e6a74c257cb864b8a78c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d794716fe1f4717acbabfd90643b72c682e475bc
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400686"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370590"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>Uw commerciële Marketplace-account beheren in het partner centrum
 
@@ -170,7 +170,7 @@ Gebruikers toevoegen aan uw partner centrum-account dat al aanwezig is in het we
 
 ### <a name="create-new-users"></a>Nieuwe gebruikers maken
 
-Als u gloed nieuwe gebruikers accounts wilt maken, moet u een account hebben met [**globale beheerders**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md) machtigingen.
+Als u gloed nieuwe gebruikers accounts wilt maken, moet u een account hebben met [**globale beheerders**](../../active-directory/roles/permissions-reference.md) machtigingen.
 
 1. Ga naar **gebruikers** (onder **account instellingen**), selecteer **gebruikers toevoegen**en kies vervolgens **nieuwe gebruikers maken**.
 1. Voer voor elke nieuwe gebruiker een voor naam, achternaam en gebruikers naam in. 
@@ -184,7 +184,7 @@ Als u een nieuwe gebruiker in partner centrum maakt, wordt er ook een account vo
 
 ### <a name="invite-new-users-by-email"></a>Nieuwe gebruikers uitnodigen via e-mail
 
-Als u gebruikers wilt uitnodigen die momenteel geen deel uitmaken van uw werk account (Azure AD-Tenant) via e-mail, moet u een account hebben met [**globale beheerders**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md) machtigingen.
+Als u gebruikers wilt uitnodigen die momenteel geen deel uitmaken van uw werk account (Azure AD-Tenant) via e-mail, moet u een account hebben met [**globale beheerders**](../../active-directory/roles/permissions-reference.md) machtigingen.
 
 1. Ga naar **gebruikers** (onder **account instellingen**), selecteer **gebruikers toevoegen**en kies **gebruikers uitnodigen per e-mail**.
 2. Voer een of meer e-mail adressen (Maxi maal 10) in, gescheiden door komma's of punt komma's.
@@ -204,7 +204,7 @@ Als u een gebruiker uit uw werk account (Azure AD-Tenant) wilt verwijderen, gaat
 
 ### <a name="change-a-user-password"></a>Een gebruikers wachtwoord wijzigen
 
-Als een van uw gebruikers hun wacht woord moet wijzigen, kunnen ze dat zelf doen als u een **e-mail voor wachtwoord herstel** hebt opgegeven tijdens het maken van het gebruikers account. U kunt ook de volgende stappen uitvoeren om het wacht woord van een gebruiker bij te werken. Als u het wacht woord van een gebruiker in uw bedrijfs account (Azure AD-Tenant) wilt wijzigen, moet u zijn aangemeld bij een account met [**globale beheerders**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md) machtigingen. Hiermee wordt het wacht woord van de gebruiker in uw Azure AD-Tenant gewijzigd, samen met het wacht woord dat ze gebruiken voor toegang tot het partner centrum.
+Als een van uw gebruikers hun wacht woord moet wijzigen, kunnen ze dat zelf doen als u een **e-mail voor wachtwoord herstel** hebt opgegeven tijdens het maken van het gebruikers account. U kunt ook de volgende stappen uitvoeren om het wacht woord van een gebruiker bij te werken. Als u het wacht woord van een gebruiker in uw bedrijfs account (Azure AD-Tenant) wilt wijzigen, moet u zijn aangemeld bij een account met [**globale beheerders**](../../active-directory/roles/permissions-reference.md) machtigingen. Hiermee wordt het wacht woord van de gebruiker in uw Azure AD-Tenant gewijzigd, samen met het wacht woord dat ze gebruiken voor toegang tot het partner centrum.
 
 1. Selecteer op de pagina **gebruikers** (onder **account instellingen**) de naam van het gebruikers account dat u wilt bewerken.
 2. Selecteer de knop **wacht woord opnieuw instellen** onder aan de pagina.
@@ -227,7 +227,7 @@ Als u meer dan één groep selecteert om aan uw partner Center-account toe te vo
 
 Wanneer u een bestaande groep toevoegt, kan elke gebruiker die lid is van deze groep, toegang krijgen tot uw partner centrum-account, met de machtigingen die zijn gekoppeld aan de toegewezen rol van de groep.
 
-### <a name="add-a-new-group"></a>Een nieuwe groep toevoegen
+### <a name="add-a-new-group"></a>Een nieuwe groep maken
 
 Een gloed nieuwe groep toevoegen aan uw partner centrum-account:
 
