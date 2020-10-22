@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/21/2020
 ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
-ms.openlocfilehash: a5e53c29c41b3c4a5a2dd1f421e128231aa5eec3
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 74321bc75fa760727e7896f47cdfc5b2929047e5
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327546"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366085"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Raamwerk Azure Active Directory-toestemming
 
@@ -49,7 +49,7 @@ In de volgende stappen ziet u hoe de bestemmings ervaring werkt voor zowel de on
 
 1. Nadat de gebruiker toestemming verleent, wordt er een autorisatie code geretourneerd naar uw toepassing, die wordt ingewisseld om een toegangs token en een vernieuwings token te verkrijgen. Zie [OAuth 2,0 Authorization code flow](v2-oauth2-auth-code-flow.md)(Engelstalig) voor meer informatie over deze stroom.
 
-1. Beheerders kunnen toestemming geven voor de gedelegeerde machtigingen van een toepassing voor alle gebruikers in de tenant. Toestemming van de beheerder voor komt dat het dialoog venster voor toestemming wordt weer gegeven voor elke gebruiker in de Tenant en kan worden uitgevoerd in de [Azure Portal](https://portal.azure.com) door gebruikers met de rol Administrator. Zie [Administrator role permissions in azure AD](../users-groups-roles/directory-assign-admin-roles.md)(Engelstalig) voor meer informatie over welke beheerders rollen toestemming kunnen geven voor gedelegeerde machtigingen.
+1. Beheerders kunnen toestemming geven voor de gedelegeerde machtigingen van een toepassing voor alle gebruikers in de tenant. Toestemming van de beheerder voor komt dat het dialoog venster voor toestemming wordt weer gegeven voor elke gebruiker in de Tenant en kan worden uitgevoerd in de [Azure Portal](https://portal.azure.com) door gebruikers met de rol Administrator. Zie [Administrator role permissions in azure AD](../roles/permissions-reference.md)(Engelstalig) voor meer informatie over welke beheerders rollen toestemming kunnen geven voor gedelegeerde machtigingen.
 
     **Toestemming geven aan de gedelegeerde machtigingen van een app**
 

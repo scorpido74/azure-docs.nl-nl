@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: mayg
-ms.openlocfilehash: d333972ea5f74d1676e5e4b4e1417c6bf5d87b79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a8471305af93194ccae7b0928685e10d4d64726
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86135356"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366650"
 ---
 # <a name="troubleshoot-vcenter-server-discovery-failures"></a>Problemen met vCenter Server detectie oplossen
 
@@ -54,7 +54,7 @@ De volgende situaties treden op wanneer dit probleem zich voordoet:
 
 Het probleem oplossen:
 
-Down load het [PsExec-hulp programma](https://aka.ms/PsExec). 
+Down load het [PsExec-hulp programma](/sysinternals/downloads/psexec). 
 
 Gebruik het hulp programma PsExec om toegang te krijgen tot de context van het systeem gebruikers en te bepalen of het proxy adres is geconfigureerd. U kunt vervolgens met behulp van de volgende procedures vCenter toevoegen aan de lijst overs Laan.
 
@@ -81,4 +81,4 @@ Voor DRA-proxy configuratie:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[De configuratie server voor herstel na nood gevallen voor VMware VM beheren](./vmware-azure-manage-configuration-server.md#refresh-configuration-server) 
+[De configuratie server voor herstel na nood gevallen voor VMware VM beheren](./vmware-azure-manage-configuration-server.md#refresh-configuration-server)

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: rosouz
 ms.custom: references_regions
-ms.openlocfilehash: a634743441866c4f1a9f6d634efe0ff9e368b5e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dee5a56f309dab8f09a598219f6302c88f4308e7
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757840"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370709"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>Azure Synapse-koppeling voor Azure Cosmos DB configureren en gebruiken (preview)
 
@@ -34,7 +34,7 @@ De koppeling Azure Synapse is beschikbaar voor Azure Cosmos DB SQL API-container
 
 ### <a name="azure-portal"></a>Azure Portal
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 1. [Maak een nieuw Azure-account](create-sql-api-dotnet.md#create-account)of selecteer een bestaand Azure Cosmos DB-account.
 
@@ -219,9 +219,6 @@ Volg de instructies in het artikel [query Azure Cosmos DB Analytical Store](../s
 
 Synapse SQL serverloos (een preview-functie die voorheen **SQL on-demand**werd genoemd) kunt u gegevens in uw Azure Cosmos DB containers die zijn ingeschakeld met de koppeling Azure Synapse, opvragen en analyseren. U kunt gegevens in bijna realtime analyseren zonder dat dit van invloed is op de prestaties van uw transactionele werk belastingen. Het biedt een bekende T-SQL-syntaxis voor het opvragen van gegevens uit de analytische opslag en de geïntegreerde connectiviteit met een breed scala aan BI-en ad-hoc hulp middelen voor query's via de T-SQL-interface. Zie voor meer informatie de [analytische query voor query's met Synapse SQL Server](../synapse-analytics/sql/query-cosmos-db-analytical-store.md) zonder artikelen.
 
-> [!NOTE]
-> Het gebruik van het Azure Cosmos DB analytic-archief met Synapse SQL Server is momenteel onder gated preview. Neem contact op met het [Azure Cosmos DB team](mailto:cosmosdbsynapselink@microsoft.com)om toegang aan te vragen.
-
 ## <a name="use-synapse-sql-serverless-to-analyze-and-visualize-data-in-power-bi"></a><a id="analyze-with-powerbi"></a>Synapse SQL Server gebruiken voor het analyseren en visualiseren van gegevens in Power BI
 
 U kunt een Synapse SQL serverloze data base en weer gaven maken via de Synapse-koppeling voor Azure Cosmos DB. Later kunt u een query uitvoeren op de Azure Cosmos-containers en vervolgens een model bouwen met Power BI over die weer gaven om die query weer te geven. Zie [Synapse SQL Server gebruiken om Azure Cosmos DB gegevens te analyseren met Synapse-koppelings](synapse-link-power-bi.md) artikel voor meer informatie.
@@ -240,7 +237,7 @@ Raadpleeg de volgende documenten voor meer informatie:
 
 * [Azure Synapse-koppeling voor Azure Cosmos DB.](synapse-link.md)
 
-* [Overzicht van analytische opslag van Azure Cosmos DB.](analytical-store-introduction.md)
+* [Overzicht van Azure Cosmos DB Analytical Store.](analytical-store-introduction.md)
 
 * [Veelgestelde vragen over de Synapse-koppeling voor Azure Cosmos DB.](synapse-link-frequently-asked-questions.md)
 

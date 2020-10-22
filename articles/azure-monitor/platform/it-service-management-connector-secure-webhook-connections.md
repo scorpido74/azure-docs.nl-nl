@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
-ms.openlocfilehash: bf68963515e1208868efb40c2d3fc56c9ab4e0df
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 447b781ec83a01a58e6af9e9e43f75b3fc56b10f
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107756"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370777"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>Verbinding maken tussen Azure en ITSM-hulpprogram ma's met behulp van beveiligde export
 
@@ -36,18 +36,18 @@ De Secure export-architectuur introduceert de volgende nieuwe mogelijkheden:
 De stappen voor de beveiligde export gegevens stroom zijn:
 
 1. Azure Monitor verzendt een waarschuwing die is geconfigureerd voor het gebruik van beveiligde export.
-1. De nettolading van de waarschuwing wordt door een beveiligde webhook-actie verzonden naar het ITSM-hulp programma.
-1. De ITSM-toepassing controleert met Azure AD als de waarschuwing is gemachtigd om het ITSM-hulp programma in te voeren.
-1. Als de waarschuwing is geautoriseerd, wordt de toepassing:
+2. De nettolading van de waarschuwing wordt door een beveiligde webhook-actie verzonden naar het ITSM-hulp programma.
+3. De ITSM-toepassing controleert met Azure AD als de waarschuwing is gemachtigd om het ITSM-hulp programma in te voeren.
+4. Als de waarschuwing is geautoriseerd, wordt de toepassing:
    
    1. Hiermee maakt u een werk item (bijvoorbeeld een incident) in het ITSM-hulp programma.
-   1. Koppelt de ID van het configuratie-item (CI) aan de klant beheer database (CMDB).
+   2. Koppelt de ID van het configuratie-item (CI) aan de klant beheer database (CMDB).
 
 ![Diagram dat laat zien hoe het ITSM-hulp programma communiceert met Azure A D, Azure-waarschuwingen en een actie groep.](media/it-service-management-connector-secure-webhook-connections/secure-export-diagram.png)
 
-## <a name="connection-with-bmc-helix"></a>Verbinding met BMC Helix
+## <a name="benefits-of-secure-export"></a>Voor delen van veilig exporteren
 
-Secure export ondersteunt BMC helix. Enkele voor delen van de integratie zijn:
+De belangrijkste voor delen van de integratie zijn:
 
 * **Betere verificatie**: Azure AD biedt een veiligere verificatie zonder de time-outs die zich vaak voordoen in ITSMC.
 * **Waarschuwingen die zijn opgelost in het ITSM-hulp programma**: metrische waarschuwingen implementeren ' fireed ' en ' opgeloste ' statussen. Wanneer aan de voor waarde wordt voldaan, wordt de status van de waarschuwing geactiveerd. Als niet meer aan de voor waarde wordt voldaan, is de waarschuwings status opgelost. In ITSMC kunnen waarschuwingen niet automatisch worden opgelost. Met beveiligde export stromen de omgezette status naar het ITSM-hulp programma en worden deze automatisch bijgewerkt.
@@ -57,18 +57,18 @@ Ga met de volgende stappen aan de slag met het ITSM-connector-hulp programma:
 
 1. Uw app bij Azure AD registreren.
 2. Maak een beveiligde webhook-actie groep.
-3. Configureer uw partner omgeving.
+3. Configureer uw partner omgeving. Vandaag ondersteunen we één leverancier die BMC Helix is.
 
 ## <a name="register-with-azure-active-directory"></a>Registreren bij Azure Active Directory
 
 Volg deze stappen om de toepassing te registreren bij Azure AD:
 
 1. Volg de stappen in [een toepassing registreren bij het micro soft Identity-platform](../../active-directory/develop/quickstart-register-app.md).
-1. Selecteer **toepassing zichtbaar**maken in azure AD.
-1. Selecteer **instellen** voor de URI van de **toepassings-id**.
+2. Selecteer **toepassing zichtbaar**maken in azure AD.
+3. Selecteer **instellen** voor de URI van de **toepassings-id**.
 
    [![Scherm afbeelding van de optie voor het instellen van de U R I van de toepassing die ik D.](media/it-service-management-connector-secure-webhook-connections/azure-ad.png)](media/it-service-management-connector-secure-webhook-connections/azure-ad-expand.png#lightbox)
-1. Selecteer **Opslaan**.
+4. Selecteer **Opslaan**.
 
 ## <a name="create-a-secure-webhook-action-group"></a>Een actie groep voor een beveiligde webhook maken
 
@@ -77,31 +77,27 @@ Nadat uw toepassing is geregistreerd bij Azure AD, kunt u werk items maken in uw
 Actie groepen bieden een modulaire en herbruikbare manier om acties voor Azure-waarschuwingen te activeren. U kunt actie groepen met metrische waarschuwingen, waarschuwingen voor activiteiten logboeken en waarschuwingen voor Azure Log Analytics gebruiken in de Azure Portal.
 Zie voor meer informatie over actie groepen [actie groepen maken en beheren in de Azure Portal](./action-groups.md).
 
-Gebruik de volgende procedure in de BMC Helix-omgeving:
-
-1. Meld u aan bij Integration Studio.
-1. Zoek naar de stroom **incident maken vanuit Azure Alerts** .
-1. Kopieer de webhook-URL.
-   
-   ![Scherm afbeelding van de webhook U R L in Integration Studio.](media/it-service-management-connector-secure-webhook-connections/bmc-url.png)
-
 Volg deze instructies voor beveiligde webhook om een webhook aan een actie toe te voegen:
 
 1. Zoek in het [Azure Portal](https://portal.azure.com/)naar en selecteer **monitor**. In het deel venster **monitor** worden al uw bewakings instellingen en-gegevens in één weer gave geconsolideerd.
-1. Selecteer **waarschuwingen**  >  **acties beheren**.
-1. Selecteer [actie groep toevoegen](./action-groups.md#create-an-action-group-by-using-the-azure-portal)en vul de velden in.
-1. Voer een naam in het vak Naam van de **actie groep** in en voer een naam in het vak **korte naam** in. De korte naam wordt gebruikt in plaats van een volledige naam van de actiegroep als er meldingen via deze groep worden verzonden.
-1. Selecteer **beveiligde webhook**.
-1. Selecteer deze details:
+2. Selecteer **waarschuwingen**  >  **acties beheren**.
+3. Selecteer [actie groep toevoegen](./action-groups.md#create-an-action-group-by-using-the-azure-portal)en vul de velden in.
+4. Voer een naam in het vak Naam van de **actie groep** in en voer een naam in het vak **korte naam** in. De korte naam wordt gebruikt in plaats van een volledige naam van de actiegroep als er meldingen via deze groep worden verzonden.
+5. Selecteer **beveiligde webhook**.
+6. Selecteer deze details:
    1. Selecteer de object-ID van de Azure Active Directory instantie die u hebt geregistreerd.
-   1. Plak voor de URI in de webhook-URL die u hebt gekopieerd uit de BMC Helix-omgeving.
-   1. Stel **het algemene waarschuwings schema** in op **Ja**. 
+   2. Plak voor de URI in de webhook-URL die u hebt gekopieerd uit de leveranciers omgeving.
+   3. Stel **het algemene waarschuwings schema** in op **Ja**. 
 
    In de volgende afbeelding ziet u de configuratie van een voor beeld van een beveiligde webhook-actie:
 
    ![Scherm afbeelding met een beveiligde webhook-actie.](media/it-service-management-connector-secure-webhook-connections/secure-webhook.png)
 
 ## <a name="configure-the-partner-environment"></a>De partner omgeving configureren
+
+De configuratie bevat twee stappen:
+1. Haal de URI voor de beveiligde export definitie op.
+2. Definities op basis van de stroom van de leverancier.
 
 ### <a name="connect-bmc-helix-to-azure-monitor"></a>BMC Helix verbinden met Azure Monitor
 
@@ -116,18 +112,26 @@ Zorg ervoor dat u aan de volgende vereisten voldoet:
 
 ### <a name="configure-the-bmc-helix-connection"></a>De BMC Helix-verbinding configureren
 
-1. Volg de instructies accoring naar de versie:
+1. Gebruik de volgende procedure in de BMC Helix-omgeving om de URI voor de beveiligde export te verkrijgen:
+
+   1. Meld u aan bij Integration Studio.
+   2. Zoek naar de stroom **incident maken vanuit Azure Alerts** .
+   3. Kopieer de webhook-URL.
+   
+   ![Scherm afbeelding van de webhook U R L in Integration Studio.](media/it-service-management-connector-secure-webhook-connections/bmc-url.png)
+   
+2. Volg de instructies op basis van de versie:
    * Het [inschakelen van vooraf gebouwde integratie met Azure monitor voor versie 20,02](https://docs.bmc.com/docs/multicloud/enabling-prebuilt-integration-with-azure-monitor-879728195.html).
    * Het [inschakelen van vooraf gebouwde integratie met Azure monitor voor versie 19,11](https://docs.bmc.com/docs/multicloudprevious/enabling-prebuilt-integration-with-azure-monitor-904157623.html).
 
-1. Als onderdeel van de configuratie van de verbinding in BMC Helix gaat u naar uw integratie-BMC-exemplaar en volgt u deze instructies:
+3. Als onderdeel van de configuratie van de verbinding in BMC Helix gaat u naar uw integratie-BMC-exemplaar en volgt u deze instructies:
 
    1. Selecteer **Catalog**.
-   1. Selecteer **Azure-waarschuwingen**.
-   1. Selecteer **connectors**.
-   1. Selecteer **configuratie**.
-   1. Selecteer de configuratie **nieuwe verbinding toevoegen** .
-   1. Vul de informatie in voor de configuratie sectie:
+   2. Selecteer **Azure-waarschuwingen**.
+   3. Selecteer **connectors**.
+   4. Selecteer **configuratie**.
+   5. Selecteer de configuratie **nieuwe verbinding toevoegen** .
+   6. Vul de informatie in voor de configuratie sectie:
       - **Name**: Maak uw eigen naam.
       - **Autorisatie type**: **geen**
       - **Beschrijving**: Maak uw eigen naam.

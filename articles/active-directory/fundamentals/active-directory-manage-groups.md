@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25dace3ad7d467d6add236782c5e39f85d6462a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 735f838ad4532b140eddcb4ce1ced24fba9a81be
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87797304"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369111"
 ---
 # <a name="manage-app-and-resource-access-using-azure-active-directory-groups"></a>Toegang tot apps en resources beheren met Azure Active Directory-groepen
 Met Azure Active Directory (Azure AD) kunt u groepen gebruiken om de toegang tot uw Cloud-apps, on-premises apps en uw resources te beheren. Uw resources kunnen deel uitmaken van de Azure AD-organisatie, zoals machtigingen voor het beheren van objecten via rollen in azure AD, of externe naar de organisatie, zoals voor SaaS-apps (Software as a Service), Azure-Services, share point-sites en on-premises resources.
@@ -43,7 +43,7 @@ Er zijn vier manieren om toegangs rechten voor resources aan uw gebruikers toe t
 
 - **Groeps toewijzing.** De resource-eigenaar wijst een Azure AD-groep toe aan de resource, die automatisch alle leden van de groep toegang geeft tot de resource. Groepslid maatschap wordt beheerd door de eigenaar van de groep en de eigenaar van de resource, waardoor de eigenaar leden toevoegen aan of verwijderen uit de groep. Zie [procedure: een groep toevoegen aan of verwijderen uit een andere groep met behulp van de Azure Active Directory-Portal](active-directory-groups-membership-azure-portal.md)voor meer informatie over het toevoegen of verwijderen van groepslid maatschap. 
 
-- **Toewijzing op basis van een regel.** De resource-eigenaar maakt een groep en maakt gebruik van een regel om te definiëren welke gebruikers zijn toegewezen aan een specifieke resource. De regel is gebaseerd op kenmerken die aan afzonderlijke gebruikers zijn toegewezen. De resource-eigenaar beheert de regel en bepaalt welke kenmerken en waarden zijn vereist om toegang tot de bron toe te staan. Zie [een dynamische groep maken en status controleren](../users-groups-roles/groups-create-rule.md)voor meer informatie.
+- **Toewijzing op basis van een regel.** De resource-eigenaar maakt een groep en maakt gebruik van een regel om te definiëren welke gebruikers zijn toegewezen aan een specifieke resource. De regel is gebaseerd op kenmerken die aan afzonderlijke gebruikers zijn toegewezen. De resource-eigenaar beheert de regel en bepaalt welke kenmerken en waarden zijn vereist om toegang tot de bron toe te staan. Zie [een dynamische groep maken en status controleren](../enterprise-users/groups-create-rule.md)voor meer informatie.
 
     U kunt deze korte video ook bekijken voor een snelle uitleg over het maken en gebruiken van dynamische groepen:
 
@@ -56,13 +56,13 @@ Er zijn vier manieren om toegangs rechten voor resources aan uw gebruikers toe t
 ## <a name="can-users-join-groups-without-being-assigned"></a>Kunnen gebruikers lid worden van groepen zonder dat ze worden toegewezen?
 Met de groeps eigenaar kunnen gebruikers hun eigen groepen vinden om lid te worden, in plaats van ze toe te wijzen. De eigenaar kan de groep ook zo instellen dat alle gebruikers die lid zijn van of moeten worden goedgekeurd automatisch worden geaccepteerd.
 
-Nadat een gebruiker is gevraagd lid te worden van een groep, wordt de aanvraag doorgestuurd naar de groeps eigenaar. Als het vereist is, kan de eigenaar de aanvraag goed keuren en wordt de gebruiker op de hoogte gesteld van het groepslid maatschap. Als u echter meerdere eigen aren hebt en een van de eigen aars afkeurt, wordt de gebruiker hiervan op de hoogte gesteld, maar wordt deze niet aan de groep toegevoegd. Voor meer informatie en instructies over hoe u uw gebruikers wilt laten lid worden van groepen, Zie [Azure AD instellen, zodat gebruikers kunnen aanvragen om lid te worden van groepen](../users-groups-roles/groups-self-service-management.md)
+Nadat een gebruiker is gevraagd lid te worden van een groep, wordt de aanvraag doorgestuurd naar de groeps eigenaar. Als het vereist is, kan de eigenaar de aanvraag goed keuren en wordt de gebruiker op de hoogte gesteld van het groepslid maatschap. Als u echter meerdere eigen aren hebt en een van de eigen aars afkeurt, wordt de gebruiker hiervan op de hoogte gesteld, maar wordt deze niet aan de groep toegevoegd. Voor meer informatie en instructies over hoe u uw gebruikers wilt laten lid worden van groepen, Zie [Azure AD instellen, zodat gebruikers kunnen aanvragen om lid te worden van groepen](../enterprise-users/groups-self-service-management.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 Nu u een beetje van een kennis hebt van toegangs beheer met groepen, begint u met het beheren van uw resources en apps.
 
-- [Een nieuwe groep maken met behulp van Azure Active Directory](active-directory-groups-create-azure-portal.md) of [een nieuwe groep maken en beheren met Power shell-cmdlets](../users-groups-roles/groups-settings-v2-cmdlets.md)
+- [Een nieuwe groep maken met behulp van Azure Active Directory](active-directory-groups-create-azure-portal.md) of [een nieuwe groep maken en beheren met Power shell-cmdlets](../enterprise-users/groups-settings-v2-cmdlets.md)
 
-- [Groepen gebruiken om toegang toe te wijzen aan een geïntegreerde SaaS-app](../users-groups-roles/groups-saasapps.md)
+- [Groepen gebruiken om toegang toe te wijzen aan een geïntegreerde SaaS-app](../enterprise-users/groups-saasapps.md)
 
 - [Een on-premises groep naar Azure synchroniseren met Azure AD Connect](../hybrid/whatis-hybrid-identity.md)

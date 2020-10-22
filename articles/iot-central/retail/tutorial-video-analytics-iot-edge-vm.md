@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: db3d4bb7f4b32c07e75487764acc5e7ba7d05915
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: aa4ddfc773e2226fe155b563c237f1c533d52311
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873275"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127025"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-linux-vm"></a>Zelfstudie: een IoT Edge-exemplaar voor videoanalyse maken in Azure IoT Central (Linux-VM)
 
@@ -94,7 +94,7 @@ De implementatie heeft de volgende vijf IoT Edge-modules geconfigureerd voor uit
 
 De implementatie heeft een aangepaste IoT Edge-omgeving gemaakt met de vereiste modules voor Live Video Analytics. De implementatie heeft de standaardversie van **config.yaml** bijgewerkt om ervoor te zorgen dat IoT Edge-runtime gebruikmaakt van IoT Device Provisioning-Service om verbinding te maken met IoT Central. De implementatie heeft ook een bestand met de naam **state.json** in de map **/data/storage** gemaakt om aanvullende configuratiegegevens aan de modules te verstrekken. Zie de zelfstudie [Een IoT Edge-exemplaar voor videoanalyse maken (Intel NUC)](./tutorial-video-analytics-iot-edge-nuc.md) voor meer informatie.
 
-Zie [Problemen met uw IoT Edge-apparaat oplossen](https://docs.microsoft.com/azure/iot-edge/troubleshoot) voor informatie over het oplossen van problemen met het IoT Edge-apparaat
+Zie [Problemen met uw IoT Edge-apparaat oplossen](../../iot-edge/troubleshoot.md) voor informatie over het oplossen van problemen met het IoT Edge-apparaat
 
 ## <a name="use-the-rtsp-simulator"></a>De RTSP-simulator gebruiken
 

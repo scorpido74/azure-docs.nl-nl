@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 09/10/2020
 ms.author: curtand
-ms.openlocfilehash: 8b8abe60503c68f06a97782ea09d418ebf659216
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbe0c2047b3ed52fdd69295fd0fd867cb3a5f0ef
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90005068"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370335"
 ---
 # <a name="manage-organizations-you-have-access-to-in-the-my-account-portal"></a>Organisaties beheren waartoe u toegang hebt in de portal van mijn account
 
@@ -30,7 +30,7 @@ De pagina **organisaties** van de portal van **Mijn account** helpt u bij het be
 - **Andere organisaties.** De andere organisaties zijn een groep waarbij u zich eerder hebt aangemeld met uw werk-of school account. U kunt deze organisaties op elk gewenst moment verlaten.
 
 >[!Important]
->Dit artikel is bedoeld voor gebruikers die de organisatie gegevens willen bijwerken die worden geopend door een werk-of school account. Als u een beheerder bent die op zoek is naar informatie over groeps-en gebruikers beheer voor uw werk nemers en andere toepassingen, raadpleegt u de [documentatie voor Enter prise-gebruikers beheer](../users-groups-roles/index.yml).
+>Dit artikel is bedoeld voor gebruikers die de organisatie gegevens willen bijwerken die worden geopend door een werk-of school account. Als u een beheerder bent die op zoek is naar informatie over groeps-en gebruikers beheer voor uw werk nemers en andere toepassingen, raadpleegt u de [documentatie voor Enter prise-gebruikers beheer](../enterprise-users/index.yml).
 
 ## <a name="view-your-organizations"></a>Uw organisaties weer geven
 
