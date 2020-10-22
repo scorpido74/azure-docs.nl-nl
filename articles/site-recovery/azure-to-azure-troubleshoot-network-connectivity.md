@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: 59bbca9461ff174ebe2451a6c01d84dee404cf56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 674ce347f929dd70e32537e9bde3139c5fafc7ea
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91398303"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368006"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Problemen met Azure-naar-Azure-VM-netwerk connectiviteit oplossen
 
@@ -60,7 +60,7 @@ Er kan geen verbinding tot stand worden gebracht met Microsoft 365 authenticatie
 #### <a name="resolution"></a>Oplossing
 
 - Azure Site Recovery moet toegang hebben tot de Microsoft 365 IP-adresbereiken voor authenticatie.
-- Als u Azure Network Security Group (NSG) regels/firewall proxy gebruikt voor het beheren van uitgaande netwerk connectiviteit op de virtuele machine, moet u ervoor zorgen dat u communicatie met de Microsoft 365 IP-bereiken toestaat. Maak een NSG-regel op basis van een [Azure Active Directory-service (Azure AD)](../virtual-network/security-overview.md#service-tags) die toegang biedt tot alle IP-adressen die overeenkomen met Azure AD.
+- Als u Azure Network Security Group (NSG) regels/firewall proxy gebruikt voor het beheren van uitgaande netwerk connectiviteit op de virtuele machine, moet u ervoor zorgen dat u communicatie met de Microsoft 365 IP-bereiken toestaat. Maak een NSG-regel op basis van een [Azure Active Directory-service (Azure AD)](../virtual-network/network-security-groups-overview.md#service-tags) die toegang biedt tot alle IP-adressen die overeenkomen met Azure AD.
 - Als nieuwe adressen in de toekomst worden toegevoegd aan Azure AD, moet u nieuwe NSG-regels maken.
 
 ### <a name="example-nsg-configuration"></a>Voor beeld van NSG-configuratie

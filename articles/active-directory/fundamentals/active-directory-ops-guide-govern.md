@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: f420f66e1db6efc6a0aa43cb88f26687839f0d1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4df373f78a9c74584d0e4046f7532a2190f3a3f
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89321511"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370964"
 ---
 # <a name="azure-active-directory-governance-operations-reference-guide"></a>Naslag Gids voor Azure Active Directory governance-bewerkingen
 
@@ -49,7 +49,7 @@ Wanneer u uw lijst bekijkt, moet u mogelijk een eigenaar toewijzen voor taken wa
 
 #### <a name="owner-recommended-reading"></a>Door eigenaar aanbevolen lezen
 
-- [Beheerdersrollen toewijzen in Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md)
+- [Beheerdersrollen toewijzen in Azure Active Directory](../roles/permissions-reference.md)
 - [Governance in Azure](../../governance/index.yml)
 
 ### <a name="configuration-changes-testing"></a>Testen van configuratie wijzigingen
@@ -66,7 +66,7 @@ Er zijn wijzigingen die speciale overwegingen vereisen tijdens het testen, van e
 |Een nieuwe functie implementeren|Als de functie ondersteuning biedt voor het implementeren van een doel groep gebruikers, identificeert u de test gebruikers en bouwt u deze op. De selfservice voor wachtwoord herstel en multi-factor Authentication kunnen bijvoorbeeld worden gericht op specifieke gebruikers of groepen.|
 |Cutover een toepassing van een on-premises ID-provider (IdP), bijvoorbeeld Active Directory, naar Azure AD|Als de toepassing meerdere IdP-configuraties ondersteunt, bijvoorbeeld Sales Force, configureren en Azure AD testen tijdens een wijzigings venster (in het geval dat de toepassing de HRD-pagina introduceert). Als de toepassing niet meerdere id ondersteunt, plant u de test tijdens een wijzigings controle venster en wordt de uitval tijd van het programma gepland.|
 |Dynamische groeps regels bijwerken|Maak een parallelle dynamische groep met de nieuwe regel. Vergelijkt met het berekende resultaat, bijvoorbeeld Power shell uitvoeren met dezelfde voor waarde.<br>Als de test is geslaagd, kunt u de plaatsen waar de oude groep is gebruikt, wisselen (indien mogelijk).|
-|Product licenties migreren|Raadpleeg [de licentie voor één gebruiker in een gelicentieerde groep in azure Active Directory](../users-groups-roles/licensing-groups-change-licenses.md).|
+|Product licenties migreren|Raadpleeg [de licentie voor één gebruiker in een gelicentieerde groep in azure Active Directory](../enterprise-users/licensing-groups-change-licenses.md).|
 |AD FS regels wijzigen zoals autorisatie, uitgifte, MFA|Groeps claim gebruiken om de subset van gebruikers te bereiken.|
 |AD FS-verificatie-ervaring of soort gelijke wijzigingen in de hele farm wijzigen|Maak een parallelle farm met dezelfde hostnaam, implementeer configuratie wijzigingen, test van clients met een HOSTS-bestand, NLB-routerings regels of een vergelijk bare route ring.<br>Als het doel platform geen HOSTS-bestanden (bijvoorbeeld mobiele apparaten) ondersteunt, wijzigt u de wijziging van het besturings element.|
 
@@ -92,9 +92,9 @@ Het is van cruciaal belang om de toegang tot de externe identiteiten te beperken
 
 ### <a name="privileged-account-usage"></a>Gebruik van een privileged account
 
-Hackers richten vaak beheerders accounts en andere elementen van geprivilegieerde toegang om snel toegang te krijgen tot gevoelige gegevens en systemen.Omdat gebruikers met geprivilegieerde rollen meestal in de loop van de tijd verzamelen, is het belang rijk om regel matig beheerders toegang te controleren en te beheren en om toegang te bieden tot Azure AD en Azure-resources.
+Hackers richten vaak beheerders accounts en andere elementen van geprivilegieerde toegang om snel toegang te krijgen tot gevoelige gegevens en systemen. Omdat gebruikers met geprivilegieerde rollen meestal in de loop van de tijd verzamelen, is het belang rijk om regel matig beheerders toegang te controleren en te beheren en om toegang te bieden tot Azure AD en Azure-resources.
 
-Als er in uw organisatie geen proces is voor het beheren van geprivilegieerde accounts of als u momenteel beheerders hebt die hun reguliere gebruikers accounts gebruiken om services en resources te beheren, moet u onmiddellijk beginnen met het gebruik van afzonderlijke accounts, bijvoorbeeld één voor reguliere dagelijkse activiteiten; de andere voor bevoegde toegang en geconfigureerd met MFA. Als uw organisatie echter een Azure AD Premium P2-abonnement heeft, moet u [Azure AD privileged Identity Management](../privileged-identity-management/pim-configure.md#license-requirements) (PIM) direct implementeren. In hetzelfde token moet u ook deze geprivilegieerde accounts bekijken en [minder geprivilegieerde rollen toewijzen](../users-groups-roles/directory-admin-roles-secure.md) , indien van toepassing.
+Als er in uw organisatie geen proces is voor het beheren van geprivilegieerde accounts of als u momenteel beheerders hebt die hun reguliere gebruikers accounts gebruiken om services en resources te beheren, moet u onmiddellijk beginnen met het gebruik van afzonderlijke accounts, bijvoorbeeld één voor reguliere dagelijkse activiteiten; de andere voor bevoegde toegang en geconfigureerd met MFA. Als uw organisatie echter een Azure AD Premium P2-abonnement heeft, moet u [Azure AD privileged Identity Management](../privileged-identity-management/pim-configure.md#license-requirements) (PIM) direct implementeren. In hetzelfde token moet u ook deze geprivilegieerde accounts bekijken en [minder geprivilegieerde rollen toewijzen](../roles/security-planning.md) , indien van toepassing.
 
 Een ander aspect van privileged account management dat moet worden geïmplementeerd, is het definiëren van [toegangs beoordelingen](../governance/access-reviews-overview.md) voor deze accounts, hetzij hand matig of [automatisch via PIM](../privileged-identity-management/pim-how-to-perform-security-review.md).
 
@@ -104,12 +104,12 @@ Een ander aspect van privileged account management dat moet worden geïmplemente
 
 ### <a name="emergency-access-accounts"></a>Accounts voor toegang in nood gevallen
 
-Organisaties moeten [nood accounts](../users-groups-roles/directory-emergency-access.md) maken die moeten worden voor bereid om Azure ad te beheren, zoals verificatie-uitval zoals:
+Organisaties moeten [nood accounts](../roles/security-emergency-access.md) maken die moeten worden voor bereid om Azure ad te beheren, zoals verificatie-uitval zoals:
 
 - Uitval onderdelen van verificatie-infra structuren (AD FS, on-premises AD, MFA-service)
 - Omzet van administratieve mede werkers
 
-Als u wilt voor komen dat uw Tenant per ongeluk wordt vergrendeld omdat u zich niet kunt aanmelden of een bestaand account van een individuele gebruiker als beheerder wilt activeren, moet u twee of meer nood accounts maken en ervoor zorgen dat ze worden geïmplementeerd en afgestemd met [de best practices](../users-groups-roles/directory-admin-roles-secure.md) en [afbreek glazen procedures](../users-groups-roles/directory-admin-roles-secure.md#break-glass-what-to-do-in-an-emergency)van micro soft.
+Als u wilt voor komen dat uw Tenant per ongeluk wordt vergrendeld omdat u zich niet kunt aanmelden of een bestaand account van een individuele gebruiker als beheerder wilt activeren, moet u twee of meer nood accounts maken en ervoor zorgen dat ze worden geïmplementeerd en afgestemd met [de best practices](../roles/security-planning.md) en [afbreek glazen procedures](../roles/security-planning.md#break-glass-what-to-do-in-an-emergency)van micro soft.
 
 ### <a name="privileged-access-to-azure-ea-portal"></a>Privileged Access to Azure EA-Portal
 
@@ -119,7 +119,7 @@ Als u dit wilt doen, moet u, als het verificatie niveau van de EA-Portal op dit 
 
 #### <a name="privileged-access-recommended-reading"></a>Bevoegde toegang aanbevolen lezen
 
-- [Machtigingen voor beheerrol in Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md)
+- [Machtigingen voor beheerrol in Azure Active Directory](../roles/permissions-reference.md)
 
 ## <a name="entitlement-management"></a>Rechtenbeheer
 

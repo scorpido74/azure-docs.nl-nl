@@ -1,6 +1,6 @@
 ---
 title: 'Gegevens transformatie: gegevens verwerken & transformeren '
-description: Meer informatie over het transformeren van gegevens of het verwerken van gegevens in Azure Data Factory met Hadoop, Machine Learning of Azure Data Lake Analytics.
+description: Meer informatie over het transformeren van gegevens of het verwerken van gegevens in Azure Data Factory met Hadoop, Azure Machine Learning Studio (klassiek) of Azure Data Lake Analytics.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: eb320cb71de43c40522bf93213fd98247a0d5b59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91755dd1b5eea9f72978e09a605fc47d41ff3dee
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89436294"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371712"
 ---
 # <a name="transform-data-in-azure-data-factory-version-1"></a>Gegevens transformeren in Azure Data Factory versie 1
 > [!div class="op_single_selector"]
@@ -24,7 +24,7 @@ ms.locfileid: "89436294"
 > * [Pig](data-factory-pig-activity.md)  
 > * [MapReduce](data-factory-map-reduce.md)  
 > * [Hadoop-streaming](data-factory-hadoop-streaming-activity.md)
-> * [Machine Learning](data-factory-azure-ml-batch-execution-activity.md) 
+> * [Azure Machine Learning Studio (klassiek)](data-factory-azure-ml-batch-execution-activity.md) 
 > * [Opgeslagen procedure](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL](data-factory-usql-activity.md)
 > * [.NET aangepast](data-factory-use-custom-activities.md)
@@ -57,12 +57,12 @@ Met de activiteit HDInsight streaming in een Data Factory pijp lijn worden Hadoo
 ## <a name="hdinsight-spark-activity"></a>HDInsight Spark-activiteit
 Met de HDInsight Spark-activiteit in een Data Factory pijp lijn worden Spark-Program ma's uitgevoerd op uw eigen HDInsight-cluster. Zie voor meer informatie [aanroepen Spark-Program ma's van Azure Data Factory](data-factory-spark.md). 
 
-## <a name="machine-learning-activities"></a>Machine Learning activiteiten
-Met Azure Data Factory kunt u eenvoudig pijp lijnen maken die gebruikmaken van een gepubliceerde Azure Machine Learning-webservice voor predictive analytics. U kunt met behulp van de [batch Execution-activiteit](data-factory-azure-ml-batch-execution-activity.md#invoking-a-web-service-using-batch-execution-activity) in een Azure Data Factory-pijp lijn een machine learning-webservice aanroepen om voor spellingen te doen op de gegevens in batch.
+## <a name="azure-machine-learning-studio-classic-activities"></a>Azure Machine Learning Studio (klassieke) activiteiten
+Met Azure Data Factory kunt u eenvoudig pijp lijnen maken die gebruikmaken van een gepubliceerde Azure Machine Learning Studio (klassieke) webservice voor predictive analytics. Met de [activiteit voor batch uitvoering](data-factory-azure-ml-batch-execution-activity.md#invoking-a-web-service-using-batch-execution-activity) in een Azure Data Factory-pijp lijn kunt u een studio-webservice aanroepen om voor spellingen te maken voor de gegevens in batch.
 
-De voorspellende modellen in de Machine Learning Score experimenten moeten na verloop van tijd opnieuw worden getraind met nieuwe invoer gegevens sets. Wanneer u klaar bent met opnieuw trainen, wilt u de Score-webservice bijwerken met het opnieuw getrainde Machine Learning model. U kunt de [activiteit resource bijwerken](data-factory-azure-ml-batch-execution-activity.md#updating-models-using-update-resource-activity) gebruiken om de webservice bij te werken met het nieuwe getrainde model.  
+In de loop van de tijd moeten de voorspellende modellen in de Studio (klassieke) Score experimenten opnieuw worden getraind met nieuwe invoer gegevens sets. Wanneer u klaar bent met opnieuw trainen, wilt u de Score-webservice bijwerken met het opnieuw getrainde machine learning model. U kunt de [activiteit resource bijwerken](data-factory-azure-ml-batch-execution-activity.md#updating-models-using-update-resource-activity) gebruiken om de webservice bij te werken met het nieuwe getrainde model.  
 
-Zie [machine learning activiteiten gebruiken](data-factory-azure-ml-batch-execution-activity.md) voor meer informatie over deze machine learning activiteiten. 
+Zie [Azure machine learning Studio (klassieke) activiteiten gebruiken](data-factory-azure-ml-batch-execution-activity.md) voor meer informatie over deze studio-activiteiten (klassiek). 
 
 ## <a name="stored-procedure-activity"></a>Opgeslagen procedure activiteit
 U kunt de SQL Server opgeslagen procedure-activiteit in een Data Factory-pijp lijn gebruiken om een opgeslagen procedure in een van de volgende gegevens archieven aan te roepen: Azure SQL Database, Azure Synapse Analytics (voorheen SQL Data Warehouse), SQL Server data base in uw onderneming of een Azure-VM. Zie het artikel [opgeslagen procedure-activiteit](data-factory-stored-proc-activity.md) voor meer informatie.  
@@ -92,7 +92,7 @@ Azure Data Factory ondersteunt de volgende activiteiten voor gegevens transforma
 | [Pig](data-factory-pig-activity.md) |HDInsight [Hadoop] |
 | [MapReduce](data-factory-map-reduce.md) |HDInsight [Hadoop] |
 | [Hadoop-streaming](data-factory-hadoop-streaming-activity.md) |HDInsight [Hadoop] |
-| [Machine Learning-activiteiten: batchuitvoering en resources bijwerken](data-factory-azure-ml-batch-execution-activity.md) |Azure VM |
+| [Azure Machine Learning Studio (klassieke) activiteiten: batch uitvoering en resource bijwerken](data-factory-azure-ml-batch-execution-activity.md) |Azure VM |
 | [Opgeslagen procedure](data-factory-stored-proc-activity.md) |Azure SQL, Azure Synapse Analytics of SQL Server |
 | [Data Lake Analytics U-SQL](data-factory-usql-activity.md) |Azure Data Lake Analytics |
 | [DotNet](data-factory-use-custom-activities.md) |HDInsight [Hadoop] of Azure Batch |

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/31/2020
 ms.author: jeedes
-ms.openlocfilehash: dae9db6dd20ef4346050be73250c7a10f7a449ec
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 044ee51fb7ff675af0fb97224313c388c4cbeac1
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940682"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371338"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-micloud-connect-or-cloudlink-platform"></a>Zelfstudie: Azure Active Directory-integratie met Mitel MiCloud Connect of CloudLink Platform
 
@@ -204,7 +204,7 @@ In deze sectie hebt u Britta Simon in staat gesteld gebruik te maken van eenmali
 
 In deze sectie maakt u een gebruiker met de naam Britta Simon voor uw MiCloud Connect-account. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
-Zie het artikel [Adding a User](https://oneview.mitel.com/s/article/Adding-a-User-092815) (Gebruiker toevoegen) in de Mitel Knowledge Base voor meer informatie over het toevoegen van gebruikers in de Mitel Account-portal.
+Zie het artikel [Adding a User](https://shoretelcommunity.force.com/s/article/Adding-Users-092815) (Gebruiker toevoegen) in de Mitel Knowledge Base voor meer informatie over het toevoegen van gebruikers in de Mitel Account-portal.
 
 Maak een gebruiker voor uw MiCloud Connect-account met de volgende gegevens:
 

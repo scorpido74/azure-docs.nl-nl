@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de7395f42021144eab3dd400bf9a953d57b5a6ee
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: db8774d6868d55c7d040b1894c4a14d989cb2702
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92312586"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371865"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>Veelgestelde vragen over Azure Active Directory
 Azure Active Directory (Azure AD) is een uitgebreide IDaaS-oplossing (Identity as a Service) waarin alle aspecten van identiteit, toegangsbeheer en beveiliging zijn opgenomen.
@@ -53,7 +53,7 @@ Betaalde services van Azure AD, zoals Enterprise Mobility + Security, vormen een
 
 Als anderen zich moeten aanmelden en toegang moeten krijgen tot services met hetzelfde abonnement, kunt u ze de juiste [ingebouwde rol](../../role-based-access-control/built-in-roles.md)toewijzen. Zie [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de Azure Portal](../../role-based-access-control/role-assignments-portal.md)voor meer informatie.
 
-De persoon die zich aanmeldt voor een Azure-abonnement krijgt standaard de rol van globale beheerder voor de Directory. De globale beheerder heeft toegang tot alle functies van Azure AD-Directory. Azure AD heeft een andere set beheerders rollen voor het beheren van de Directory-en identiteits functies. Deze beheerders hebben toegang tot verschillende functies in de Azure Portal. De rol van de beheerder bepaalt wat ze kunnen doen, zoals het maken of bewerken van gebruikers, het toewijzen van beheerders rollen aan anderen, het opnieuw instellen van gebruikers wachtwoorden, het beheren van gebruikers licenties of het beheren van domeinen.  Zie [een gebruiker toewijzen aan beheerders rollen in azure Active Directory](active-directory-users-assign-role-azure-portal.md) en [beheerders rollen toewijzen in azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md)voor meer informatie over Azure AD-Directory beheerders en hun rollen.
+De persoon die zich aanmeldt voor een Azure-abonnement krijgt standaard de rol van globale beheerder voor de Directory. De globale beheerder heeft toegang tot alle functies van Azure AD-Directory. Azure AD heeft een andere set beheerders rollen voor het beheren van de Directory-en identiteits functies. Deze beheerders hebben toegang tot verschillende functies in de Azure Portal. De rol van de beheerder bepaalt wat ze kunnen doen, zoals het maken of bewerken van gebruikers, het toewijzen van beheerders rollen aan anderen, het opnieuw instellen van gebruikers wachtwoorden, het beheren van gebruikers licenties of het beheren van domeinen.  Zie [een gebruiker toewijzen aan beheerders rollen in azure Active Directory](active-directory-users-assign-role-azure-portal.md) en [beheerders rollen toewijzen in azure Active Directory](../roles/permissions-reference.md)voor meer informatie over Azure AD-Directory beheerders en hun rollen.
 
 Daarnaast hebben betaalde services van Azure AD, zoals Enterprise Mobility + Security, een aanvulling op andere webservices, zoals Microsoft 365 en Microsoft Azure, met uitgebreide beheer-en beveiligings oplossingen op ondernemings niveau.
 

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: f1e861bf9c6cc2a485ac9f153a0c932ec2e6fbb2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2b7e96934c96dd944e17a1ef1ffb51a6ee89bf4
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85318906"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359999"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory-voor beelden
 > [!NOTE]
@@ -34,7 +34,7 @@ De [github-opslag plaats van Azure-DataFactory](https://github.com/azure/azure-d
 | [Voor beeld van meerdere AppDomain dot-activiteit](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample) |Met dit voor beeld kunt u een aangepaste .NET-activiteit ontwerpen die niet is beperkt tot assembly-versies die worden gebruikt door de ADF Launcher (bijvoorbeeld WindowsAzure. Storage v 4.3.0, Newtonsoft.Jsop v 6.0. x, enzovoort). |
 | [R-script uitvoeren](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample) |Dit voor beeld bevat de Data Factory aangepaste activiteit die kan worden gebruikt om RScript.exe aan te roepen. Dit voor beeld werkt alleen met uw eigen (niet op aanvraag) HDInsight-cluster waarop R al is geïnstalleerd. |
 | [Spark-taken aanroepen in HDInsight Hadoop-cluster](https://docs.microsoft.com/azure/data-factory/tutorial-transform-data-spark-portal) |In dit voor beeld ziet u hoe u MapReduce-activiteit kunt gebruiken om een Spark-programma aan te roepen. Het Spark-programma kopieert alleen gegevens van de ene Azure Blob-container naar een andere. |
-| [Twitter-analyse met behulp van Azure Machine Learning-batch Score activiteit](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-AzureMLBatchScoringActivity) |Dit voor beeld laat zien hoe u AzureMLBatchScoringActivity kunt gebruiken om een Azure Machine Learning model aan te roepen waarmee Twitter-sentiment analyse, Score ring, voor spelling, enzovoort worden uitgevoerd. |
+| [Twitter-analyse met behulp van Azure Machine Learning Studio (klassieke) batch Score activiteit](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-AzureMLBatchScoringActivity) |Dit voor beeld laat zien hoe u AzureMLBatchScoringActivity kunt gebruiken om een Azure Machine Learning model aan te roepen waarmee Twitter-sentiment analyse, Score ring, voor spelling, enzovoort worden uitgevoerd. |
 | [Twitter-analyse met aangepaste activiteit](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |In dit voor beeld ziet u hoe u een aangepaste .NET-activiteit gebruikt om een Azure Machine Learning model aan te roepen waarmee Twitter-sentiment analyse, Score ring, voor spelling, enzovoort worden uitgevoerd. |
 | [Pijp lijnen met para meters voor Azure Machine Learning](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ParameterizedPipelinesForAzureML) |Het voor beeld biedt een end-to-end C#-code voor het implementeren van N pijp lijnen voor het scoren en opnieuw trainen van elk met een andere regio parameter, waarbij de lijst met regio's afkomstig is uit een parameters.txt bestand, dat deel uitmaakt van dit voor beeld. |
 | [Referentie gegevens vernieuwen voor Azure Stream Analytics taken](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ReferenceDataRefreshForASAJobs) |Dit voor beeld laat zien hoe u Azure Data Factory gebruikt en Azure Stream Analytics samen om de query's uit te voeren met referentie gegevens en het vernieuwen voor referentie gegevens volgens een planning in te stellen. |

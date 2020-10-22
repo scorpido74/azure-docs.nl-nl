@@ -2,13 +2,13 @@
 title: Modus voor volledige verwijdering
 description: Toont hoe bron typen het verwijderen van de modus volt ooien in Azure Resource Manager sjablonen verwerken.
 ms.topic: conceptual
-ms.date: 10/06/2020
-ms.openlocfilehash: 72303a7916aec39c05f9b4fa2cbc77de18b7fb3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: b1f7623d6eee1ff629412a4cc0d76e59e6c9e847
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91766716"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370121"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Verwijdering van Azure-resources voor implementaties in de volledige modus
 
@@ -24,7 +24,6 @@ De resources worden weer gegeven in de naam ruimte van de resource provider. Zie
 
 > [!NOTE]
 > Gebruik altijd de [What-if-bewerking](template-deploy-what-if.md) voordat u een sjabloon in de volledige modus implementeert. Wat-als toont u welke resources worden gemaakt, verwijderd of gewijzigd. Gebruik wat-als om onbedoeld resources te verwijderen.
-
 Ga naar de naam ruimte van een resource provider:
 > [!div class="op_single_selector"]
 > - [Micro soft. AAD](#microsoftaad)
@@ -47,6 +46,7 @@ Ga naar de naam ruimte van een resource provider:
 > - [Micro soft. Azureworden](#microsoftazuredata)
 > - [Micro soft. AzureStack](#microsoftazurestack)
 > - [Micro soft. AzureStackHCI](#microsoftazurestackhci)
+> - [Micro soft. BareMetalInfrastructure](#microsoftbaremetalinfrastructure)
 > - [Microsoft.Batch](#microsoftbatch)
 > - [Microsoft.Billing](#microsoftbilling)
 > - [Microsoft.BingMaps](#microsoftbingmaps)
@@ -176,6 +176,7 @@ Ga naar de naam ruimte van een resource provider:
 > - [Micro soft. ServiceFabricMesh](#microsoftservicefabricmesh)
 > - [Micro soft. Services](#microsoftservices)
 > - [Micro soft. SignalRService](#microsoftsignalrservice)
+> - [Micro soft. enkelvoud](#microsoftsingularity)
 > - [Micro soft. SoftwarePlan](#microsoftsoftwareplan)
 > - [Micro soft. Solutions](#microsoftsolutions)
 > - [Micro soft. SQL](#microsoftsql)
@@ -364,6 +365,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
 > | privateClouds | Ja |
+> | privateClouds/addons | Nee |
 > | privateClouds/autorisaties | Nee |
 > | privateClouds/clusters | Nee |
 > | privateClouds / globalReachConnections | Nee |
@@ -426,12 +428,21 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- |
 > | clusters | Ja |
 
+## <a name="microsoftbaremetalinfrastructure"></a>Micro soft. BareMetalInfrastructure
+
+> [!div class="mx-tableFixed"]
+> | Resourcetype | Modus voor volledige verwijdering |
+> | ------------- | ----------- |
+> | bareMetalInstances | Ja |
+
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
 > | batchAccounts | Ja |
+> | batchAccounts/certificaten | Nee |
+> | batchAccounts/Pools | Nee |
 
 ## <a name="microsoftbilling"></a>Microsoft.Billing
 
@@ -826,7 +837,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Prognoses | Nee |
 > | extra | Nee |
 > | Markt plaatsen | Nee |
-> | Pricesheets | Nee |
+> | Prijzenoverzichten | Nee |
 > | producten | Nee |
 > | ReservationDetails | Nee |
 > | ReservationRecommendationDetails | Nee |
@@ -907,7 +918,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Connectors | Ja |
 > | costAllocationRules | Nee |
 > | Afdelingen | Nee |
-> | Dimensies | Nee |
+> | Afmetingen | Nee |
 > | EnrollmentAccounts | Nee |
 > | Dump | Nee |
 > | ExternalBillingAccounts | Nee |
@@ -973,7 +984,6 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- |
 > | workspaces | Ja |
 > | werk ruimten/dbWorkspaces | Nee |
-> | werk ruimten/storageEncryption | Nee |
 > | werk ruimten/virtualNetworkPeerings | Nee |
 
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
@@ -1129,6 +1139,7 @@ Ga naar de naam ruimte van een resource provider:
 > | applicationgroups/Bureau bladen | Nee |
 > | applicationgroups / startmenuitems | Nee |
 > | hostpools | Ja |
+> | hostpools / msixpackages | Nee |
 > | hostpools / sessionhosts | Nee |
 > | hostpools / sessionhosts / usersessions | Nee |
 > | hostpools / usersessions | Nee |
@@ -1381,12 +1392,14 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
 > | devices | Ja |
+> | networkFunctions | Ja |
+> | networkFunctionVendors | Nee |
 > | registeredSubscriptions | Nee |
 > | crediteur | Nee |
-> | leveranciers/vendorskus | Nee |
-> | leveranciers/vendorskus/previewSubscriptions | Nee |
-> | virtualnetworkfunctions | Ja |
-> | virtualnetworkfunctionvendors | Nee |
+> | leveranciers/vendorSkus | Nee |
+> | leveranciers/vendorSkus/previewSubscriptions | Nee |
+> | virtualNetworkFunctions | Ja |
+> | virtualNetworkFunctionVendors | Nee |
 
 ## <a name="microsofthydra"></a>Micro soft. Hydra
 
@@ -1507,9 +1520,20 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
 > | workspaces | Ja |
+> | werk ruimten/batchEndpoints | Ja |
+> | werk ruimten/batchEndpoints/implementaties | Ja |
+> | werk ruimten/codes | Nee |
+> | werk ruimten/codes/versies | Nee |
 > | werk ruimten/reken bewerkingen | Nee |
+> | werk ruimten/gegevens opslag | Nee |
 > | werk ruimten/eventGridFilters | Nee |
+> | werk ruimten/taken | Nee |
+> | werk ruimten/labelingJobs | Nee |
 > | werk ruimten/linkedServices | Nee |
+> | werk ruimten/modellen | Nee |
+> | werk ruimten/modellen/versies | Nee |
+> | werk ruimten/onlineEndpoints | Ja |
+> | werk ruimten/onlineEndpoints/implementaties | Ja |
 
 ## <a name="microsoftmaintenance"></a>Micro soft. onderhoud
 
@@ -2157,6 +2181,17 @@ Ga naar de naam ruimte van een resource provider:
 > | SignalR | Ja |
 > | Signaal sterkte/eventGridFilters | Nee |
 
+## <a name="microsoftsingularity"></a>Micro soft. enkelvoud
+
+> [!div class="mx-tableFixed"]
+> | Resourcetype | Modus voor volledige verwijdering |
+> | ------------- | ----------- |
+> | accounts | Ja |
+> | accounts/accountQuotaPolicies | Nee |
+> | accounts/groupPolicies | Nee |
+> | accounts/taken | Nee |
+> | accounts/storageContainers | Nee |
+
 ## <a name="microsoftsoftwareplan"></a>Micro soft. SoftwarePlan
 
 > [!div class="mx-tableFixed"]
@@ -2289,6 +2324,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
 > | clusters | Ja |
+> | clusters/privateEndpoints | Nee |
 > | streamingjobs | Ja |
 
 ## <a name="microsoftsubscription"></a>Micro soft. Subscription
@@ -2423,6 +2459,8 @@ Ga naar de naam ruimte van een resource provider:
 > | Runtimes | Nee |
 > | Server farms | Ja |
 > | Server farms/eventGridFilters | Nee |
+> | Server farms/firstPartyApps | Nee |
+> | Server farms/firstPartyApps/keyVaultSettings | Nee |
 > | sites | Ja |
 > | sites/configuratie  | Nee |
 > | sites/eventGridFilters | Nee |

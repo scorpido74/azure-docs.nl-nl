@@ -14,12 +14,12 @@ ms.subservice: pim
 ms.date: 08/03/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68795033d36ad0bcb36b7cd81cea0d848ecd5113
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ef27475509c59b3c0caf194fd85530f3fdd6c7c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89049006"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367836"
 ---
 # <a name="bring-privileged-access-groups-preview-into-privileged-identity-management"></a>Privileged Access groups (preview) in Privileged Identity Management opnemen
 
@@ -27,7 +27,7 @@ In Azure Active Directory (Azure AD) kunt u ingebouwde rollen van Azure AD toewi
 
 ## <a name="identify-groups-to-manage"></a>Te beheren groepen identificeren
 
-U kunt een door een functie toewijs bare groep maken in azure AD, zoals wordt beschreven in [een functie groep maken die kan worden toegewezen in azure Active Directory](../users-groups-roles/roles-groups-create-eligible.md). U bent een eigenaar van de groep om deze onder beheer te brengen met Privileged Identity Management.
+U kunt een door een functie toewijs bare groep maken in azure AD, zoals wordt beschreven in [een functie groep maken die kan worden toegewezen in azure Active Directory](../roles/groups-create-eligible.md). U bent een eigenaar van de groep om deze onder beheer te brengen met Privileged Identity Management.
 
 1. [Meld u aan bij Azure AD](https://aad.portal.azure.com) met machtigingen voor de rol Administrator voor geprivilegieerd.
 1. Selecteer **groepen** en selecteer vervolgens de groep die u wilt beheren in Pim. U kunt de lijst zoeken en filteren.

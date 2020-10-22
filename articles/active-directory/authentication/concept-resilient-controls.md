@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f58e5a07348dfde4e4618eb58746f08016c55ed6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6af2f65aa2e2052a79f4c5cffd7ff4a38a9fc838
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89049567"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366561"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Maak een flexibele toegangs beheer strategie met Azure Active Directory
 
@@ -285,7 +285,7 @@ Als uw organisatie verouderd beleid voor MFA per gebruiker gebruikt, kunt u het 
 ## <a name="learn-more"></a>Meer informatie
 
 * [Documentatie voor Azure AD-verificatie](./howto-mfaserver-iis.md)
-* [Beheer accounts voor toegang in nood gevallen beheren in azure AD](../users-groups-roles/directory-emergency-access.md)
+* [Beheer accounts voor toegang in nood gevallen beheren in azure AD](../roles/security-emergency-access.md)
 * [Benoemde locaties configureren in Azure Active Directory](../reports-monitoring/quickstart-configure-named-locations.md)
   * [Set-MsolDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)
 * [Hybride Azure Active Directory-apparaten configureren](../devices/hybrid-azuread-join-plan.md)

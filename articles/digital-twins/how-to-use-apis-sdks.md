@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6aa8d08dde3cf2dbfb5cb1e819ba9941aea4e387
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 5be746b73cef37826be36b13c6f491b8ef6ad809
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203701"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359013"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>De Azure Digital Twins-API's en -SDK's gebruiken
 
@@ -58,12 +58,13 @@ De data-vlak-Api's gebruiken:
    - u vindt de SDK-bron, met inbegrip van een map met voor beelden, in GitHub: [Azure IOT Digital apparaatdubbels-client bibliotheek voor .net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). 
    - u kunt de [SDK-referentie documentatie](/dotnet/api/overview/azure/digitaltwins?preserve-view=true&view=azure-dotnet-preview)raadplegen.
    - u kunt gedetailleerde informatie en voor beelden van gebruik bekijken door door te gaan naar de sectie [.net (C#) SDK (Data-vlieg tuig)](#net-c-sdk-data-plane) van dit artikel.
-* U kunt de **Java script** -SDK gebruiken. De Java script-SDK gebruiken...
-   - u kunt het pakket weer geven en installeren vanuit NPM: [Azure Azure Digital apparaatdubbels-client bibliotheek voor Java script](https://www.npmjs.com/package/@azure/digital-twins/v/1.0.0-preview.1).
-   - u kunt de [SDK-referentie documentatie](/javascript/api/@azure/digital-twins/?preserve-view=true&view=azure-node-latest)raadplegen.
 * U kunt de **Java** -SDK gebruiken. De Java-SDK gebruiken...
    - u kunt het pakket weer geven en installeren vanuit maven: [`com.azure:azure-digitaltwins-core`](https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0-beta.1/jar)
+   - de SDK-bron is te vinden in GitHub: [Azure IOT Digital apparaatdubbels-client bibliotheek voor Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/azure-digitaltwins-core)
    - u kunt de [SDK-referentie documentatie](/java/api/overview/azure/digitaltwins/client?preserve-view=true&view=azure-java-preview) bekijken
+* U kunt de **Java script** -SDK gebruiken. De Java script-SDK gebruiken...
+   - u kunt het pakket weer geven en installeren vanuit NPM: [Azure Azure Digital apparaatdubbels-client bibliotheek voor Java script](https://www.npmjs.com/package/@azure/digital-twins).
+   - u kunt de [SDK-referentie documentatie](/javascript/api/@azure/digital-twins/?preserve-view=true&view=azure-node-latest)raadplegen.
 * U kunt een SDK voor een andere taal genereren met behulp van auto rest. Volg de instructies in [*How to: aangepaste sdk's voor Azure Digital Apparaatdubbels maken met auto rest*](how-to-create-custom-sdks.md).
 
 U kunt ook datum vlak-Api's uitoefenen door interactie met Azure Digital Apparaatdubbels via de [cli](how-to-use-cli.md).

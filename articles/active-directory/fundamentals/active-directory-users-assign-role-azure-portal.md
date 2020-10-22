@@ -13,25 +13,25 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb7ab83bc9939d2f0b4b0ff0860ea97a0b07f12f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe0c7eec5c023fcba3152ad6329d318210a0c2ab
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89321239"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370930"
 ---
 # <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>Beheerders-en niet-beheerders rollen toewijzen aan gebruikers met Azure Active Directory
 
 Als een van uw gebruikers toestemming nodig heeft om Azure AD-resources te beheren in Azure Active Directory (Azure AD), moet u deze toewijzen aan een rol die de benodigde machtigingen biedt. Voor informatie over welke rollen Azure-resources beheren en welke rollen Azure AD-resources beheren, Zie [klassieke abonnements beheerders rollen, Azure-rollen en Azure AD-rollen](../../role-based-access-control/rbac-and-directory-admin-roles.md).
 
-Zie [beheerders rollen toewijzen in azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md)voor meer informatie over de beschik bare Azure AD-rollen. Zie [nieuwe gebruikers toevoegen aan Azure Active Directory](add-users-azure-active-directory.md)om gebruikers toe te voegen.
+Zie [beheerders rollen toewijzen in azure Active Directory](../roles/permissions-reference.md)voor meer informatie over de beschik bare Azure AD-rollen. Zie [nieuwe gebruikers toevoegen aan Azure Active Directory](add-users-azure-active-directory.md)om gebruikers toe te voegen.
 
 ## <a name="assign-roles"></a>Rollen toewijzen
 
 Een gemeen schappelijke manier om Azure AD-rollen aan een gebruiker toe te wijzen, is op de pagina **toegewezen rollen** voor een gebruiker. U kunt ook de geschiktheid van de gebruiker zo configureren dat deze alleen maar op tijd kan worden uitgebreid naar een rol met behulp van Privileged Identity Management (PIM). Zie [privileged Identity Management](../privileged-identity-management/index.yml)voor meer informatie over het gebruik van Pim.
 
 > [!Note]
-> Als u een licentie voor Azure AD Premium P2 hebt en al gebruik maakt van PIM, worden alle rollen beheer taken uitgevoerd in de [privileged Identity Management-ervaring](../users-groups-roles/directory-manage-roles-portal.md). Deze functie is momenteel beperkt tot het toewijzen van slechts één rol per keer. U kunt momenteel niet meerdere rollen selecteren en deze aan een gebruiker tegelijk toewijzen.
+> Als u een licentie voor Azure AD Premium P2 hebt en al gebruik maakt van PIM, worden alle rollen beheer taken uitgevoerd in de [privileged Identity Management-ervaring](../roles/manage-roles-portal.md). Deze functie is momenteel beperkt tot het toewijzen van slechts één rol per keer. U kunt momenteel niet meerdere rollen selecteren en deze aan een gebruiker tegelijk toewijzen.
 >
 > ![Azure AD-rollen die worden beheerd in PIM voor gebruikers die PIM al gebruiken en een Premium P2-licentie hebben](./media/active-directory-users-assign-role-azure-portal/pim-manages-roles-for-p2.png)
 
@@ -81,4 +81,4 @@ Als u de roltoewijzing van een gebruiker wilt verwijderen, kunt u dit ook doen o
 
 - [Gastgebruikers uit een andere directory toevoegen](../external-identities/what-is-b2b.md)
 
-Andere beheer taken voor gebruikers die u kunt uitchecken, zijn beschikbaar in de [documentatie voor Azure Active Directory gebruikers beheer](../users-groups-roles/index.yml).
+Andere beheer taken voor gebruikers die u kunt uitchecken, zijn beschikbaar in de [documentatie voor Azure Active Directory gebruikers beheer](../enterprise-users/index.yml).

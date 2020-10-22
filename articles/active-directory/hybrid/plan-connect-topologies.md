@@ -16,12 +16,12 @@ ms.date: 11/27/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4f8987a8daccc012f9d6da53e46fe7c4e8b43ad
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 8d3f8e9441064a5d2d1372e3f177534b8dfefb93
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146358"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359829"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Topologieën voor Azure AD Connect
 In dit artikel worden verschillende topologieën voor on-premises en Azure Active Directory (Azure AD) beschreven die gebruikmaken van Azure AD Connect Sync als de oplossing voor sleutel integratie. Dit artikel bevat zowel ondersteunde als niet-ondersteunde configuraties.
@@ -142,7 +142,7 @@ Het is mogelijk om meer dan één staging-server te hebben wanneer u meerdere ba
 
 ## <a name="multiple-azure-ad-tenants"></a>Meerdere Azure AD-tenants
 We raden u aan één Tenant in azure AD te hebben voor een organisatie.
-Zie het artikel beheer [eenheden in azure AD](../users-groups-roles/directory-administrative-units.md)voordat u meerdere Azure AD-tenants wilt gebruiken. Het behandelt veelvoorkomende scenario's waarin u één Tenant kunt gebruiken.
+Zie het artikel beheer [eenheden in azure AD](../roles/administrative-units.md)voordat u meerdere Azure AD-tenants wilt gebruiken. Het behandelt veelvoorkomende scenario's waarin u één Tenant kunt gebruiken.
 
 ![Topologie voor meerdere forests en meerdere tenants](./media/plan-connect-topologies/multiforestmultidirectory.png)
 
