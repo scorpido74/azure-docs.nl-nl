@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: a0a11cf3bfac7d1e8fd2d117e13532e2ce49caa0
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 18e04350260258b74d746a2796a56d7d3ba46346
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107807"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92364113"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Vijf stappen voor het beveiligen van uw identiteits infrastructuur
 
@@ -135,7 +135,7 @@ Een andere impact van ' veronderstelde schending ' is de nood zaak om de kans da
 
 Schakel Azure AD PIM in en bekijk vervolgens de gebruikers aan wie beheerders rollen zijn toegewezen en Verwijder overbodige accounts in die rollen. Voor gebruikers met een resterende bevoegdheid kunt u ze permanent verplaatsen naar in aanmerking komende. Tot slot stelt u de juiste beleids regels in om ervoor te zorgen dat ze toegang moeten krijgen tot deze geprivilegieerde rollen. ze kunnen dit zo veilig doen, met het benodigde wijzigings besturings element.
 
-Als onderdeel van de implementatie van uw privileged account, volgt u de [Best Practice voor het maken van ten minste twee nood accounts](../../active-directory/users-groups-roles/directory-admin-roles-secure.md) om ervoor te zorgen dat u nog steeds toegang hebt tot Azure AD als u uw mede werkers vergrendelt.
+Als onderdeel van de implementatie van uw privileged account, volgt u de [Best Practice voor het maken van ten minste twee nood accounts](../../active-directory/roles/security-planning.md) om ervoor te zorgen dat u nog steeds toegang hebt tot Azure AD als u uw mede werkers vergrendelt.
 
 ## <a name="step-3---automate-threat-response"></a>Stap 3-reactie van dreigingen automatiseren
 
@@ -193,7 +193,7 @@ De selfservice voor [wachtwoord herstel (SSPR)](../../active-directory/authentic
 
 ### <a name="implement-self-service-group-and-application-access"></a>Selfservice groep en toegang tot toepassingen implementeren
 
-Azure AD biedt u de mogelijkheid om niet-beheerders toegang tot resources te beheren, met behulp van beveiligings groepen, Microsoft 365 groepen, toepassings rollen en toegangs pakket catalogi.  Met [groeps beheer met self-service](../../active-directory/users-groups-roles/groups-self-service-management.md) kunnen groeps eigenaren hun eigen groepen beheren, zonder dat er een administratieve rol moet worden toegewezen. Gebruikers kunnen ook Microsoft 365 groepen maken en beheren zonder dat ze afhankelijk zijn van beheerders om hun aanvragen af te handelen, en ongebruikte groepen worden automatisch verlopen.  Het [beheer van rechten van Azure AD](../../active-directory/governance/entitlement-management-overview.md) maakt verdere overdracht en zicht baarheid mogelijk, met uitgebreide werk stromen voor toegangs aanvragen en automatische verval datum.  U kunt delegeren aan niet-beheerders de mogelijkheid om hun eigen toegangs pakketten te configureren voor groepen, teams, toepassingen en share point online-sites waarvan ze eigenaar zijn, met aangepaste beleids regels voor wie de toegang moet goed keuren, waaronder het configureren van managers van werk nemers en sponsors als fiatteurs.
+Azure AD biedt u de mogelijkheid om niet-beheerders toegang tot resources te beheren, met behulp van beveiligings groepen, Microsoft 365 groepen, toepassings rollen en toegangs pakket catalogi.  Met [groeps beheer met self-service](../../active-directory/enterprise-users/groups-self-service-management.md) kunnen groeps eigenaren hun eigen groepen beheren, zonder dat er een administratieve rol moet worden toegewezen. Gebruikers kunnen ook Microsoft 365 groepen maken en beheren zonder dat ze afhankelijk zijn van beheerders om hun aanvragen af te handelen, en ongebruikte groepen worden automatisch verlopen.  Het [beheer van rechten van Azure AD](../../active-directory/governance/entitlement-management-overview.md) maakt verdere overdracht en zicht baarheid mogelijk, met uitgebreide werk stromen voor toegangs aanvragen en automatische verval datum.  U kunt delegeren aan niet-beheerders de mogelijkheid om hun eigen toegangs pakketten te configureren voor groepen, teams, toepassingen en share point online-sites waarvan ze eigenaar zijn, met aangepaste beleids regels voor wie de toegang moet goed keuren, waaronder het configureren van managers van werk nemers en sponsors als fiatteurs.
 
 ### <a name="implement-azure-ad-access-reviews"></a>Azure AD-toegangs beoordelingen implementeren
 

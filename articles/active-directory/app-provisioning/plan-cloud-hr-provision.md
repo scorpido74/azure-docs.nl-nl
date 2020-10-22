@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: cb36366143286c05603a8d14b5ad56ebb6544bda
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: ce8b792beb8652bedfddff470444240bc3edf148
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070381"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363654"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Cloud-HR-toepassing plannen voor Azure Active Directory gebruikers inrichting
 
@@ -81,8 +81,8 @@ U hebt ook een geldige licentie voor Azure AD Premium P1 of hoger nodig voor elk
 
 ### <a name="prerequisites"></a>Vereisten
 
-- Azure AD [Hybrid Identity Administrator](../users-groups-roles/directory-assign-admin-roles.md#hybrid-identity-administrator)  to configure the Azure AD Connect inrichtings agent.
-- De rol van de Azure AD- [toepassings beheerder](../users-groups-roles/directory-assign-admin-roles.md#application-administrator) voor het configureren van de inrichtings-app in de Azure Portal
+- Azure AD [Hybrid Identity Administrator](../roles/permissions-reference.md#hybrid-identity-administrator)  to configure the Azure AD Connect inrichtings agent.
+- De rol van de Azure AD- [toepassings beheerder](../roles/permissions-reference.md#application-administrator) voor het configureren van de inrichtings-app in de Azure Portal
 - Een test-en productie-exemplaar van de Cloud-HR-app.
 - Beheerders machtigingen in de Cloud HR-app om een systeem integratie gebruiker te maken en wijzigingen aan te brengen voor het testen van werknemers gegevens voor test doeleinden.
 - Voor het inrichten van gebruikers aan Active Directory is een server met Windows Server 2012 of hoger met .NET 4.7.1 + runtime vereist voor het hosten van de Azure AD Connect-inrichtings agent
@@ -110,7 +110,7 @@ In het volgende voor beeld wordt de end-to-end-oplossings architectuur voor gebr
 
 #### <a name="description-of-workflow"></a>Beschrijving van werk stroom
 
-De volgende belang rijke stappen worden in het diagram aangegeven:  
+De volgende belang rijke stappen worden in het diagram aangegeven:  
 
 1. **HR-team** voert de trans acties uit in de Cloud HR app-Tenant.
 2. De **Azure AD-inrichtings service** voert de geplande cycli uit van de Tenant van de HR-app in de Cloud en identificeert wijzigingen die moeten worden verwerkt om te synchroniseren met Active Directory.
@@ -415,7 +415,7 @@ Raadpleeg de volgende artikelen voor informatie over het oplossen van problemen 
 
 ### <a name="next-steps"></a>Volgende stappen
 
-- [Expressies schrijven voor kenmerk toewijzingen](functions-for-customizing-application-data.md)
+- [Expressies schrijven voor kenmerktoewijzingen](functions-for-customizing-application-data.md)
 - [Overzicht van Azure AD-synchronisatie-API](/graph/api/resources/synchronization-overview)
 - [Verwijdering van gebruikers accounts die buiten het bereik vallen, overs Laan](skip-out-of-scope-deletions.md)
 - [Azure AD Connect-inrichtings agent: release geschiedenis van versie](provisioning-agent-release-version-history.md)

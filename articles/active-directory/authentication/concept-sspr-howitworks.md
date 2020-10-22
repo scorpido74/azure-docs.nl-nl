@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a4e540ff6a81be8afa769d93b0649e0fce49882
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8fa1c2627917bfe386c488470f6a78db4c51f2ec
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965094"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363671"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>How it works: Azure AD self-service password reset (Hoe het werkt: selfservice voor wachtwoordherstel in Azure AD)
 
@@ -227,7 +227,7 @@ SSPR voert het equivalent van een door de beheerder geïnitieerd wacht woord opn
 Wacht woord opnieuw instellen en wijzigen worden volledig ondersteund voor alle Business-to-Business (B2B)-configuraties. Het opnieuw instellen van B2B-gebruikers wachtwoorden wordt in de volgende drie gevallen ondersteund:
 
 * **Gebruikers van een partner organisatie met een bestaande Azure AD-Tenant**: als de organisatie waarmee u een partner hebt, een bestaande Azure AD-Tenant heeft, respecteren we dat het beleid voor het opnieuw instellen van het wacht woord is ingeschakeld voor die Tenant. Om het wacht woord opnieuw in te stellen, moet de partner organisatie alleen ervoor zorgen dat Azure AD SSPR is ingeschakeld. Er worden geen extra kosten in rekening gebracht voor Microsoft 365 klanten.
-* **Gebruikers die zich aanmelden via** Self-Service-aanmelding: als de organisatie die u hebt gebruikt de [self-service-registratie](../users-groups-roles/directory-self-service-signup.md) functie in een Tenant krijgt, kunnen we het wacht woord opnieuw instellen met het e-mail bericht dat ze hebben geregistreerd.
+* **Gebruikers die zich aanmelden via** Self-Service-aanmelding: als de organisatie die u hebt gebruikt de [self-service-registratie](../enterprise-users/directory-self-service-signup.md) functie in een Tenant krijgt, kunnen we het wacht woord opnieuw instellen met het e-mail bericht dat ze hebben geregistreerd.
 * **B2B-gebruikers**: alle nieuwe B2B-gebruikers die zijn gemaakt met de nieuwe [mogelijkheden van Azure AD B2B](../external-identities/what-is-b2b.md) , kunnen hun wacht woord ook opnieuw instellen met het e-mail adres dat is geregistreerd tijdens het INVITE-proces.
 
 Als u dit scenario wilt testen, gaat u naar https://passwordreset.microsoftonline.com met een van deze partner-gebruikers. Als er een alternatieve e-mail of verificatie-e-mail is gedefinieerd, werkt wacht woord opnieuw instellen zoals verwacht.

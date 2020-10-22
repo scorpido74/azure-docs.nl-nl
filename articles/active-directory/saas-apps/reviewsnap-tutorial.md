@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 354aeca01cb2d5244c68e1691642e4d2b41869dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 559053bba48d559032993d8047931d1fab0d8e33
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88534498"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92105495"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-reviewsnap"></a>Zelfstudie: Azure Active Directory-integratie met Reviewsnap
 
@@ -99,7 +99,7 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure Active Directo
 
 4. In het gedeelte **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
 
-    ![Domein- en URL-gegevens voor eenmalige aanmelding bij Reviewsnap](common/idp-intiated.png)
+    ![Schermopname die de Standaard SAML-configuratie toont, waar u de id en URL kunt invoeren en vervolgens Opslaan selecteert.](common/idp-intiated.png)
 
     a. In het tekstvak **Id** typt u een URL: `https://app.reviewsnap.com`
 
@@ -107,7 +107,7 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure Active Directo
 
 5. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    ![Domein- en URL-gegevens voor eenmalige aanmelding bij Reviewsnap](common/metadata-upload-additional-signon.png)
+    ![Schermopname die Extra URL's instellen toont, waar u een aanmeldings-URL kunt invoeren.](common/metadata-upload-additional-signon.png)
 
     In het tekstvak **Aanmeldings-URL** typt u een URL: `https://app.reviewsnap.com/login`
 

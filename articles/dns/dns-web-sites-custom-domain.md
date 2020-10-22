@@ -5,14 +5,14 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
-ms.date: 3/11/2019
+ms.date: 10/20/2020
 ms.author: rohink
-ms.openlocfilehash: cc36eca0b39db5188be7a63ffb148cc0f4cf30bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 151d5f083fe0e945b330d65095c908be93e3330f
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91252864"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316402"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>Zelfstudie: DNS-records voor een web-app in een aangepast domein maken 
 
@@ -38,12 +38,9 @@ In deze zelfstudie leert u het volgende:
 > * Aangepaste hostnamen aan uw web-app toevoegen
 > * De aangepaste hostnamen testen
 
+## <a name="prerequisites"></a>Vereisten
 
 Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-## <a name="prerequisites"></a>Vereisten
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -56,6 +53,8 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
    2. Volg de stappen in [DNS domain delegation](dns-delegate-domain-azure-dns.md) (Delegering van DNS-domeinen) om uw zone naar Azure DNS te delegeren.
 
 Nadat u een zone hebt gemaakt en deze naar Azure DNS hebt gedelegeerd, kunt u records voor uw aangepaste domein maken.
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-an-a-record-and-txt-record"></a>Een A-record en TXT-record maken
 

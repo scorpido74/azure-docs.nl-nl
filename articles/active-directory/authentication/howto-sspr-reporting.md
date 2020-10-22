@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92b9d3c51a9240b7dfc0f8e815735f0e1ecd4dd3
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c6aa31d0b8c68f38d2b4fc41a6bbaaeab8a3ffac
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968307"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363603"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Reporting options for Azure AD password management (Rapportageopties voor Azure AD-wachtwoordbeheer)
 
@@ -27,7 +27,7 @@ Na de implementatie willen veel organisaties weten hoe of als self-service voor 
 De volgende vragen kunnen worden beantwoord door de rapporten die voor komen in de [Azure Portal](https://portal.azure.com/):
 
 > [!NOTE]
-> U moet [een globale beheerder](../users-groups-roles/directory-assign-admin-roles.md)zijn en u moet zich aanmelden om deze gegevens te verzamelen namens uw organisatie. Als u zich wilt aanmelden, moet u het tabblad **rapportage** of de audit logboeken ten minste één keer bezoeken. Tot die toe worden er geen gegevens verzameld voor uw organisatie.
+> U moet [een globale beheerder](../roles/permissions-reference.md)zijn en u moet zich aanmelden om deze gegevens te verzamelen namens uw organisatie. Als u zich wilt aanmelden, moet u het tabblad **rapportage** of de audit logboeken ten minste één keer bezoeken. Tot die toe worden er geen gegevens verzameld voor uw organisatie.
 >
 
 * Hoeveel mensen zijn geregistreerd voor wachtwoord herstel?

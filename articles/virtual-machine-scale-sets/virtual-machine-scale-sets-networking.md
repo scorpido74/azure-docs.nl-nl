@@ -9,12 +9,12 @@ ms.subservice: networking
 ms.date: 06/25/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 91157f625b328dfc03927cf0036aea1b6040cdbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c93f8e50b0437f9ac1569b8abe19bd0b5174ea8d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88783719"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363960"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Netwerken voor virtuele-machineschaalsets in Azure
 
@@ -43,7 +43,7 @@ Versneld netwerken in Azure verbetert de prestaties van het netwerk door het ins
 ```
 
 ## <a name="azure-virtual-machine-scale-sets-with-azure-load-balancer"></a>Virtuele-machine schaal sets van Azure met Azure Load Balancer
-Zie [Azure Load Balancer en virtual machine Scale sets](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-virtual-machine-scale-sets) voor meer informatie over het configureren van uw Standard Load Balancer met Virtual Machine Scale sets op basis van uw scenario.
+Zie [Azure Load Balancer en virtual machine Scale sets](../load-balancer/load-balancer-standard-virtual-machine-scale-sets.md) voor meer informatie over het configureren van uw Standard Load Balancer met Virtual Machine Scale sets op basis van uw scenario.
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>Een schaalset maken die verwijst naar een toepassingsgateway
 Om een schaalset te maken die gebruikmaakt van een toepassingsgateway, verwijst u naar de back-endadresgroep van de toepassingsgateway in de sectie ipConfigurations van uw schaalset zoals in deze ARM-sjabloonconfiguratie:
@@ -299,7 +299,7 @@ Het volgende voorbeeld is een netwerkprofiel van een schaalset met meerdere NIC-
 ```
 
 ## <a name="nsg--asgs-per-scale-set"></a>NSG en ASG’s per schaalset
-Een [netwerkbeveiligingsgroep](../virtual-network/security-overview.md) biedt u de mogelijkheid om netwerkverkeer naar en van Azure-resources in een virtueel Azure-netwerk te filteren met behulp van beveiligingsregels. Met [toepassingsbeveiligingsgroepen](../virtual-network/security-overview.md#application-security-groups) kunt u netwerkbeveiliging van Azure-resources afhandelen en ze groeperen als een uitbreiding van uw toepassingsstructuur.
+Een [netwerkbeveiligingsgroep](../virtual-network/network-security-groups-overview.md) biedt u de mogelijkheid om netwerkverkeer naar en van Azure-resources in een virtueel Azure-netwerk te filteren met behulp van beveiligingsregels. Met [toepassingsbeveiligingsgroepen](../virtual-network/network-security-groups-overview.md#application-security-groups) kunt u netwerkbeveiliging van Azure-resources afhandelen en ze groeperen als een uitbreiding van uw toepassingsstructuur.
 
 Netwerkbeveiligingsgroepen kunnen rechtstreeks op een schaalset worden toegepast door een verwijzing naar de sectie Configuratie van netwerkinterface van de eigenschappen van de virtuele machine van de schaalset toe te voegen.
 

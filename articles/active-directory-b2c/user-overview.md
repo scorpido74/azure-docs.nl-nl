@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9630e1f23b6595ca690ecafcf0c4b9bfff603f2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb13b350dfecf70e5f3a45755f6f77069a855c6c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78185655"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363841"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Overzicht van gebruikers accounts in Azure Active Directory B2C
 
@@ -43,7 +43,7 @@ Wanneer u een nieuw werk account toevoegt, moet u rekening houden met de volgend
 
     - **Gebruikers** -gebruikers hebben toegang tot toegewezen bronnen maar kunnen de meeste Tenant bronnen niet beheren.
     - **Globale beheerder** : globale beheerders hebben volledige controle over alle Tenant bronnen.
-    - **Beperkte beheerder** : Selecteer de administratieve rol of rollen voor de gebruiker. Zie [beheerders rollen toewijzen in azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md)voor meer informatie over de rollen die kunnen worden geselecteerd.
+    - **Beperkte beheerder** : Selecteer de administratieve rol of rollen voor de gebruiker. Zie [beheerders rollen toewijzen in azure Active Directory](../active-directory/roles/permissions-reference.md)voor meer informatie over de rollen die kunnen worden geselecteerd.
 
 ### <a name="create-a-work-account"></a>Een werk account maken
 

@@ -5,12 +5,12 @@ author: FlorianBorn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 0dad78ad76a870ea9f1db28a3cb5ccace5cd804f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0ff6d064b6bfabbd8a648c23b5648aae9b12a11d
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88510926"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207492"
 ---
 # <a name="tutorial-creating-a-commercial-ready-azure-remote-rendering-application"></a>Zelfstudie: Een Azure Remote Rendering-toepassing maken die commercieel gereed is
 
@@ -35,8 +35,8 @@ Deze module bevat een aantal aanvullende mogelijkheden die u kunt overwegen voor
 
 Ga voor een uitgebreid overzicht van de best practices voor de architectuur van het hele systeem naar:
 
-* [Azure Architecture Center](https://docs.microsoft.com/azure/architecture/)
-* [Introductiehandleiding voor Azure-ontwikkelaars](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide)
+* [Azure Architecture Center](/azure/architecture/)
+* [Introductiehandleiding voor Azure-ontwikkelaars](../../../../guides/developer/azure-developer-guide.md)
 
 ## <a name="analytics"></a>Analyse
 
@@ -54,7 +54,7 @@ Azure biedt resourcetagging, waarmee het verbruik van de Azure Remote Rendering-
 
 Zie voor meer informatie over naamgeving en taggen van resources:
 
-* [Handleiding voor beslissingen over naamgeving en taggen van resources](https://docs.microsoft.com/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json)
+* [Handleiding voor beslissingen over naamgeving en taggen van resources](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%252fazure%252fazure-resource-manager%252fmanagement%252ftoc.json)
 
 ### <a name="diagnostics"></a>Diagnostiek
 
@@ -62,9 +62,9 @@ Met krachtige hulpprogramma's zoals Event Tracing for Windows (ETW) en Event Tra
 
 Ga voor meer informatie naar:
 
-* [Prestatietracering aan de clientzijde maken](https://docs.microsoft.com/azure/remote-rendering/how-tos/performance-tracing)
-* [ETW-gegevens (Event Tracing for Windows) verzamelen](https://docs.microsoft.com/visualstudio/profiling/how-to-collect-event-tracing-for-windows-etw-data)
-* [Windows Apparaatportal gebruiken: logboekregistratie](https://docs.microsoft.com/windows/mixed-reality/using-the-windows-device-portal)
+* [Prestatietracering aan de clientzijde maken](../../../how-tos/performance-tracing.md)
+* [ETW-gegevens (Event Tracing for Windows) verzamelen](/visualstudio/profiling/how-to-collect-event-tracing-for-windows-etw-data)
+* [Windows Apparaatportal gebruiken: logboekregistratie](/windows/mixed-reality/using-the-windows-device-portal)
 
 ### <a name="usage-analysis"></a>Gebruiksanalyse
 
@@ -72,7 +72,7 @@ Azure Application Insights helpt u inzicht te krijgen in de manier waarop mensen
 
 Ga voor meer informatie naar:
 
-* [Gebruiksanalyse met Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/usage-overview)
+* [Gebruiksanalyse met Application Insights](../../../../azure-monitor/app/usage-overview.md)
 
 ## <a name="fast-startup-time-strategies"></a>Strategieën voor snelle opstarttijd
 
@@ -102,7 +102,7 @@ Deze strategie helpt u ook bij het dynamischer optimaliseren van de keuze tussen
 
 Zie voor meer informatie over Azure Remote Rendering-sessies:
 
-* [Remote Rendering-sessies](https://docs.microsoft.com/azure/remote-rendering/concepts/sessions)
+* [Remote Rendering-sessies](../../../concepts/sessions.md)
 
 ## <a name="standard-vs-premium-server-size-routing-strategies"></a>Standard versus Premium VM-routeringsstrategieën
 
@@ -164,9 +164,9 @@ Andere voorbeelden zijn gestreamde video, gelijktijdige achtergronduploads van a
 Zie voor meer informatie over netwerkanalyse:
 
 * [Downloadsnelheidstest voor Azure Storage Blob](https://www.azurespeed.com/Azure/Download)
-* [Latentiestatistieken voor retourtijd van Azure Network](https://docs.microsoft.com/azure/networking/azure-network-latency)
-* [Prestatietraceringen aan de serverzijde](https://docs.microsoft.com/azure/remote-rendering/overview/features/performance-queries)
-* [Prestatietraceringen aan de clientzijde](https://docs.microsoft.com/azure/remote-rendering/how-tos/performance-tracing)
+* [Latentiestatistieken voor retourtijd van Azure Network](../../../../networking/azure-network-latency.md)
+* [Prestatietraceringen aan de serverzijde](../../../overview/features/performance-queries.md)
+* [Prestatietraceringen aan de clientzijde](../../../how-tos/performance-tracing.md)
 
 ## <a name="collaboration-considerations"></a>Overwegingen voor samenwerking
 
@@ -192,8 +192,8 @@ Echter, voor 3D-assets die herhaaldelijk zullen worden gebruikt, zoals in een us
 
 Voor meer informatie:
 
-* [Gedeelde ervaringen in mixed reality](https://docs.microsoft.com/windows/mixed-reality/shared-experiences-in-mixed-reality)
-* [Azure Storage-redundantie](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
+* [Gedeelde ervaringen in mixed reality](/windows/mixed-reality/shared-experiences-in-mixed-reality)
+* [Azure Storage-redundantie](../../../../storage/common/storage-redundancy.md)
 
 ## <a name="managing-model-access"></a>Modeltoegang beheren
 
@@ -230,7 +230,7 @@ Deze aanpak kan nog een stap verder worden gebracht door een koppeling aan te ho
 Voor meer informatie:
 
 * [Microsoft Power Automate-sjabloon voor replicatie van OneDrive naar Azure Storage](https://flow.microsoft.com/galleries/public/templates/2f90b5d3-029b-4e2e-ad37-1c0fe6d187fe/when-a-file-is-uploaded-to-onedrive-copy-it-to-azure-storage-container/)
-* [Overzicht van OneDrive-bestandsopslag-API](https://docs.microsoft.com/graph/onedrive-concept-overview)
+* [Overzicht van OneDrive-bestandsopslag-API](/graph/onedrive-concept-overview)
 
 ### <a name="direct-cad-access"></a>Directe CAD-toegang
 
@@ -255,7 +255,7 @@ Veel Enterprise-klanten eisen uit veiligheidsoverwegingen dat uw Azure Stack kan
 Voor meer informatie:
 
 * [Azure Marketplace](https://azure.microsoft.com/marketplace/)
-* [Zelfstudie: Door Azure beheerde toepassingen in Marketplace publiceren](https://docs.microsoft.com/azure/azure-resource-manager/managed-applications/publish-marketplace-app)
+* [Zelfstudie: Door Azure beheerde toepassingen in Marketplace publiceren](../../../../marketplace/partner-center-portal/create-new-azure-apps-offer.md)
 
 ### <a name="security"></a>Beveiliging
 
@@ -277,6 +277,6 @@ Voor de verificatie is het verstandig om zoveel mogelijk van de ARR-verificatie 
 
 Voor meer informatie:
 
-* [Verificatie van Azure AD-service](https://docs.microsoft.com/azure/spatial-anchors/concepts/authentication?tabs=csharp#azure-ad-service-authentication)
+* [Verificatie van Azure AD-service](../../../../spatial-anchors/concepts/authentication.md?tabs=csharp#azure-ad-service-authentication)
 * [Uw beveiligingsstatus versterken met Azure](https://azure.microsoft.com/overview/security/)
 * [Cloudbeveiliging](https://azure.microsoft.com/product-categories/security/)
