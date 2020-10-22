@@ -3,12 +3,12 @@ title: Akka-streams gebruiken voor Apache Kafka-Azure Event Hubs | Microsoft Doc
 description: Dit artikel bevat informatie over het verbinden van Akka-streams met een Azure Event Hub.
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: 43f0c359af6f699ce3e7c19948d706c09adeba70
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 92ab927189329493696c70b61ffc7f11cad22a66
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92316328"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369570"
 ---
 # <a name="using-akka-streams-with-event-hubs-for-apache-kafka"></a>Akka Streams gebruiken met Event Hubs voor Apache Kafka
 
@@ -77,6 +77,10 @@ akka.kafka.producer {
 }
 ```
 
+> [!IMPORTANT]
+> Vervang `{YOUR.EVENTHUBS.CONNECTION.STRING}` door de verbindingsreeks voor uw Event Hubs-naamruimte. Zie [een Event Hubs Connection String ophalen](event-hubs-get-connection-string.md)voor instructies over het ophalen van de Connection String. Hier volgt een voor beeld van een configuratie: `sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://mynamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXX";`
+
+
 ### <a name="run-producer-from-the-command-line"></a>Producer uitvoeren vanaf de opdracht regel
 
 Als u de producent wilt uitvoeren vanaf de opdracht regel, genereert u het JAR en voert u uit in maven (of Genereer u het JAR met Maven, voert u in Java uit door de benodigde Kafka JAR (s) toe te voegen aan het klassenpad):
@@ -116,6 +120,10 @@ akka.kafka.consumer {
     }
 }
 ```
+
+> [!IMPORTANT]
+> Vervang `{YOUR.EVENTHUBS.CONNECTION.STRING}` door de verbindingsreeks voor uw Event Hubs-naamruimte. Zie [een Event Hubs Connection String ophalen](event-hubs-get-connection-string.md)voor instructies over het ophalen van de Connection String. Hier volgt een voor beeld van een configuratie: `sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://mynamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXX";`
+
 
 ### <a name="run-consumer-from-the-command-line"></a>Consument uitvoeren vanaf de opdracht regel
 

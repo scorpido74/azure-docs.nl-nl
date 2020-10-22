@@ -12,12 +12,12 @@ ms.date: 11/04/2019
 ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96b4cb6f751a5d2bc4259117007b3abec2e0598d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9680c9bee6d0cf5c9605ce7b6009a500abd81ffb
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90069574"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369094"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>Een toepassing beheerderstoestemming verlenen voor de hele tenant
 
@@ -27,7 +27,7 @@ Zie [Azure Active Directory instemming-Framework](../develop/consent-framework.m
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het verlenen van toestemming voor de beheerder van de Tenant moet u zich aanmelden als [globale beheerder](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator), een [toepassings beheerder](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)of een [Cloud toepassings beheerder](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator).
+Voor het verlenen van toestemming voor de beheerder van de Tenant moet u zich aanmelden als [globale beheerder](../roles/permissions-reference.md#global-administrator--company-administrator), een [toepassings beheerder](../roles/permissions-reference.md#application-administrator)of een [Cloud toepassings beheerder](../roles/permissions-reference.md#cloud-application-administrator).
 
 > [!IMPORTANT]
 > Wanneer een toepassing toestemming heeft gekregen voor Tenant beheer, kunnen alle gebruikers zich aanmelden bij de app, tenzij deze is geconfigureerd voor het vereisen van een gebruikers toewijzing. Als u wilt beperken welke gebruikers zich kunnen aanmelden bij een toepassing, moet u de gebruikers toewijzing vereisen en vervolgens gebruikers of groepen toewijzen aan de toepassing. Zie [methoden voor het toewijzen van gebruikers en groepen](methods-for-assigning-users-and-groups.md)voor meer informatie.
@@ -47,7 +47,7 @@ U kunt toestemming van de beheerder voor de hele Tenant verlenen via *bedrijfs t
 
 Toestemming geven voor de hele Tenant beheerder voor een app die wordt vermeld in **bedrijfs toepassingen**:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als een [globale beheerder](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator), een [toepassings beheerder](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)of een [Cloud toepassings beheerder](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als een [globale beheerder](../roles/permissions-reference.md#global-administrator--company-administrator), een [toepassings beheerder](../roles/permissions-reference.md#application-administrator)of een [Cloud toepassings beheerder](../roles/permissions-reference.md#cloud-application-administrator).
 2. Selecteer **Azure Active Directory** **bedrijfs toepassingen**.
 3. Selecteer de toepassing waaraan u de machtiging voor de hele Tenant beheerder wilt verlenen.
 4. Selecteer **machtigingen** en klik vervolgens op **toestemming beheerder verlenen**.
@@ -63,7 +63,7 @@ Voor toepassingen die uw organisatie heeft ontwikkeld of die rechtstreeks zijn g
 
 Toestemming van de beheerder voor de hele Tenant verlenen van **app-registraties**:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als een [globale beheerder](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator), een [toepassings beheerder](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)of een [Cloud toepassings beheerder](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als een [globale beheerder](../roles/permissions-reference.md#global-administrator--company-administrator), een [toepassings beheerder](../roles/permissions-reference.md#application-administrator)of een [Cloud toepassings beheerder](../roles/permissions-reference.md#cloud-application-administrator).
 2. Selecteer **Azure Active Directory** vervolgens **app-registraties**.
 3. Selecteer de toepassing waaraan u de machtiging voor de hele Tenant beheerder wilt verlenen.
 4. Selecteer **API-machtigingen** en klik vervolgens op **toestemming beheerder verlenen**.

@@ -3,12 +3,12 @@ title: Integreren met Apache Kafka Connect - Azure Event Hubs | Microsoft Docs
 description: In dit artikel vindt u informatie over het gebruik van Kafka Connect with Azure Event Hubs voor Kafka.
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: b063bb36ec17c22c0f093f1b33f11597eed5ea68
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d37d2465d9389a0bcfaabdec32bad0c86846cfb2
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90061662"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369536"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview"></a>Apache Kafka Connect-ondersteuning integreren in Azure Event Hubs (preview)
 Naarmate de gegevensopname voor bedrijven toeneemt, neemt tevens de vereiste toe om diverse externe bronnen en sinks op te nemen. [Apache Kafka Connect](https://kafka.apache.org/documentation/#connect) biedt een framework om gegevens te verbinden met en te exporteren/importeren uit/in externe systemen als MySQL, HDFS, en een bestandssysteem via een Kafka-cluster. Deze zelf studie begeleidt u bij het gebruik van Kafka Connect Framework met Event Hubs.
@@ -90,6 +90,10 @@ consumer.sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModul
 
 plugin.path={KAFKA.DIRECTORY}/libs # path to the libs directory within the Kafka release
 ```
+
+> [!IMPORTANT]
+> Vervang `{YOUR.EVENTHUBS.CONNECTION.STRING}` door de verbindingsreeks voor uw Event Hubs-naamruimte. Zie [een Event Hubs Connection String ophalen](event-hubs-get-connection-string.md)voor instructies over het ophalen van de Connection String. Hier volgt een voor beeld van een configuratie: `sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://mynamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXX";`
+
 
 ## <a name="run-kafka-connect"></a>Kafka Connect uitvoeren
 

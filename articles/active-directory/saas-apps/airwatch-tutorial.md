@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 2baff2ac2af10caf857fd08b0d7e7df5030220e4
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: cedea9eb4ec47af445b2ae31225a697f3c51b46e
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91758129"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318926"
 ---
 # <a name="tutorial-integrate-airwatch-with-azure-active-directory"></a>Zelfstudie: AirWatch integreren met Azure Active Directory
 
@@ -26,7 +26,7 @@ In deze zelfstudie leert u hoe u AirWatch kunt integreren met Azure Active Direc
 * Ervoor zorgen dat gebruikers zich automatisch met hun Azure AD-account kunnen aanmelden bij AirWatch.
 * Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](../manage-apps/what-is-single-sign-on.md) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -238,12 +238,12 @@ Om Azure AD-gebruikers zich te laten aanmelden bij AirWatch, moeten ze worden in
 
 ### <a name="test-sso"></a>Eenmalige aanmelding testen
 
-Wanneer u de tegel AirWatch in het toegangsvenster selecteert, zou u automatisch moeten worden aangemeld bij de instantie van AirWatch waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u de tegel AirWatch in het toegangsvenster selecteert, zou u automatisch moeten worden aangemeld bij de instantie van AirWatch waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](./tutorial-list.md)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)

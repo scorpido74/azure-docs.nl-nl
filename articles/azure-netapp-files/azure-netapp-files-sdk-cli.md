@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/06/2020
+ms.date: 10/21/2020
 ms.author: b-juche
-ms.openlocfilehash: 61978566eba792a1d5b1db45ea4a9e8d6e84a543
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: f7b9cabdc7c2c706ff3b8dd5a0b3b5f7ed3666d6
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931033"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369026"
 ---
-# <a name="azure-netapp-files-sdks-and-cli-tools"></a>SDK's en CLI-hulpprogramma's voor Azure NetApp Files
+# <a name="azure-netapp-files-sdks-cli-tools-and-arm-templates"></a>Azure NetApp Files Sdk's, CLI-hulpprogram ma's en ARM-sjablonen
 
-In dit artikel vindt u een overzicht van de hulpprogram ma's voor Sdk's en de opdracht regel (CLI) die door Azure NetApp Files worden ondersteund.
+Dit artikel bevat een lijst met de Sdk's, opdracht regel Programma's en Azure Resource Manager (ARM)-Sjablonen die door Azure NetApp Files worden ondersteund.
 
 ## <a name="supported-sdks"></a>Ondersteunde Sdk's 
 
@@ -33,7 +33,7 @@ De volgende tabel bevat de ondersteunde Sdk's.  Meer informatie over de onderste
 |------------------|--------------------------------------------------------------|
 |    .NET  |    [Azure/Azure-SDK-voor-net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/netapp)    |
 |    Python  |  [Azure/Azure-SDK-voor-python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/netapp)    |
-|    Go    |    [Azure/Azure-SDK-voor-Go](https://github.com/Azure/azure-sdk-for-go/tree/master/services/netapp)       |
+|    Aan de slag    |    [Azure/Azure-SDK-voor-Go](https://github.com/Azure/azure-sdk-for-go/tree/master/services/netapp)       |
 |    Java |     [Azure/Azure-SDK-voor-Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/netapp) |
 |    Javascript    |    [Azure/Azure-SDK-voor-JS](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/netapp/arm-netapp)    |
 |    Ruby   |    [Azure/Azure-SDK-voor-ruby](https://github.com/Azure/azure-sdk-for-ruby/tree/master/management/azure_mgmt_netapp)    |
@@ -44,12 +44,18 @@ De volgende tabel bevat de ondersteunde CLI-hulpprogram ma's en de bijbehorende 
 
 |    Hulpprogramma    |    Opdracht verwijzing    |
 |------------------|--------------------------------------------|
-|    Azure CLI  |    [AZ netappfiles](/cli/azure/netappfiles?view=azure-cli-latest)    |
-|    PowerShell   |    [Azure PowerShell voor Azure NetApp Files](/powershell/module/az.netappfiles/?view=azps-2.5.0#netapp_files)    |
+|    Azure CLI  |    [AZ netappfiles](/cli/azure/netappfiles?view=azure-cli-latest&preserve-view=true)    |
+|    PowerShell   |    [Azure PowerShell voor Azure NetApp Files](/powershell/module/az.netappfiles/?view=azps-2.5.0#netapp_files&preserve-view=true)    |
 
 ## <a name="code-samples"></a>Codevoorbeelden
 
 Zie [code voorbeelden voor Azure NetApp files](/samples/browse/?filter-products=netapp&products=azure-netapp-files).
+
+## <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sjablonen  
+
+Met Azure Resource Manager (ARM) kunt u uw toepassingen inrichten met behulp van een declaratieve sjabloon. U kunt in één enkele sjabloon meerdere services plus de bijbehorende afhankelijkheden implementeren. U gebruikt dezelfde sjabloon om uw toepassing herhaaldelijk te implementeren in elke fase van de levenscyclus van de toepassing.   
+
+Bekijk [beschik bare arm-sjablonen voor Azure NetApp files](https://azure.microsoft.com/resources/templates/?term=anf).
 
 ## <a name="next-steps"></a>Volgende stappen   
  [Azure-Sdk's downloaden](https://azure.microsoft.com/downloads/)

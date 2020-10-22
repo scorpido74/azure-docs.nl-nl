@@ -13,12 +13,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9cb101e415499150cd3d825fe5f42ce0dbc766fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed23ffa9971bf4c97b784f230053aed4b1acf0a4
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89662525"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369791"
 ---
 # <a name="how-azure-ad-delivers-cloud-governed-management-for-on-premises-workloads"></a>Hoe Azure AD onderhevige beheer van de Cloud biedt voor on-premises workloads
 
@@ -107,7 +107,7 @@ Organisaties hebben een proces nodig voor het beheren van toegang die schaalbaar
 
 Normaal gesproken worden goedkeuringsbeslissingen met betrekking tot de toegang door de IT-afdeling overgelaten aan besluitvormers van het bedrijf. Daarnaast kan de IT-afdeling de gebruikers hierbij betrekken. Gebruikers die toegang hebben tot vertrouwelijke klantgegevens in de marketingtoepassing van een bedrijf in Europa moeten bijvoorbeeld op de hoogte zijn van het bedrijfsbeleid. Gast gebruikers zijn mogelijk niet op de hoogte van de verwerkings vereisten voor gegevens in een organisatie waarvoor ze zijn uitgenodigd.
 
-Organisaties kunnen het toegangs levenscyclus proces automatiseren via technologieën zoals [dynamische groepen](../users-groups-roles/groups-dynamic-membership.md), gekoppeld aan het inrichten van gebruikers voor [SaaS-toepassingen](../saas-apps/tutorial-list.md)of [toepassingen die zijn geïntegreerd met het systeem voor Identity Management (scim](../app-provisioning/use-scim-to-provision-users-and-groups.md))-standaard. Organisaties kunnen ook bepalen welke [gast gebruikers toegang hebben tot on-premises toepassingen](../external-identities/hybrid-cloud-to-on-premises.md). Deze toegangsrechten kunnen vervolgens regelmatig worden geëvalueerd met behulp van herhaaldelijke [Azure AD-toegangsbeoordelingen](../governance/access-reviews-overview.md).
+Organisaties kunnen het toegangs levenscyclus proces automatiseren via technologieën zoals [dynamische groepen](../enterprise-users/groups-dynamic-membership.md), gekoppeld aan het inrichten van gebruikers voor [SaaS-toepassingen](../saas-apps/tutorial-list.md)of [toepassingen die zijn geïntegreerd met het systeem voor Identity Management (scim](../app-provisioning/use-scim-to-provision-users-and-groups.md))-standaard. Organisaties kunnen ook bepalen welke [gast gebruikers toegang hebben tot on-premises toepassingen](../external-identities/hybrid-cloud-to-on-premises.md). Deze toegangsrechten kunnen vervolgens regelmatig worden geëvalueerd met behulp van herhaaldelijke [Azure AD-toegangsbeoordelingen](../governance/access-reviews-overview.md).
 
 ## <a name="future-directions"></a>Volgende richting
 

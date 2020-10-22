@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: f3e965b1141bb7cf49b191c828b7dd0f3ed3fba8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 623ad70572683103edb0a824830be6bbba6c8c35
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91278359"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369043"
 ---
 # <a name="resource-manager-template-samples-for-log-alert-rules-in-azure-monitor"></a>Resource Manager-voorbeeldsjablonen voor logboekwaarschuwingsregels in Azure Monitor
 Dit artikel bevat [Azure Resource Manager-sjablonen](../../azure-resource-manager/templates/template-syntax.md) die dienen als voorbeeld voor het maken en configureren van logboekquerywaarschuwingen in Azure Monitor. Elk voorbeeld bevat een sjabloonbestand en een parameterbestand met voorbeeldwaarden voor het sjabloon.
@@ -36,7 +36,7 @@ Met het volgende voorbeeld wordt een [waarschuwingsregel voor aantal resultaten]
             "type": "string",
             "defaultValue": "",
             "metadata": {
-                "description": "Resource ID of the Log Analytisc workspace."
+                "description": "Resource ID of the Log Analytics workspace."
             }
         },
         "location": {

@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9bb0c1773a08bc934eebc4f110cec43e4b07e49e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0490334c759da6ef7ba7ff2535f5f561cdb7a9bf
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89565052"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369808"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Wat is op een groep gebaseerde licentie verlening in Azure Active Directory?
 
@@ -65,9 +65,9 @@ Als u feedback of functie aanvragen hebt, kunt u deze met ons delen met behulp v
 
 Voor meer informatie over scenario’s voor licentiebeheer via licenties op basis van groepen, raadpleegt u:
 
-* [Licenties toewijzen aan een groep in Azure Active Directory](../users-groups-roles/licensing-groups-assign.md)
-* [Licentieproblemen voor een groep vaststellen en oplossen in Azure Active Directory](../users-groups-roles/licensing-groups-resolve-problems.md)
-* [Gebruikers met een afzonderlijke licentie migreren naar licenties op basis van groepen in Azure Active Directory](../users-groups-roles/licensing-groups-migrate-users.md)
-* [Gebruikers tussen product licenties migreren met op groepen gebaseerde licentie verlening in Azure Active Directory](../users-groups-roles/licensing-groups-change-licenses.md)
-* [Aanvullende scenario’s voor Azure Active Directory-licenties op basis van groepen](../users-groups-roles/licensing-group-advanced.md)
-* [Power shell-voor beelden voor op groep gebaseerde licentie verlening in Azure Active Directory](../users-groups-roles/licensing-ps-examples.md)
+* [Licenties toewijzen aan een groep in Azure Active Directory](../enterprise-users/licensing-groups-assign.md)
+* [Licentieproblemen voor een groep vaststellen en oplossen in Azure Active Directory](../enterprise-users/licensing-groups-resolve-problems.md)
+* [Gebruikers met een afzonderlijke licentie migreren naar licenties op basis van groepen in Azure Active Directory](../enterprise-users/licensing-groups-migrate-users.md)
+* [Gebruikers tussen product licenties migreren met op groepen gebaseerde licentie verlening in Azure Active Directory](../enterprise-users/licensing-groups-change-licenses.md)
+* [Aanvullende scenario’s voor Azure Active Directory-licenties op basis van groepen](../enterprise-users/licensing-group-advanced.md)
+* [Power shell-voor beelden voor op groep gebaseerde licentie verlening in Azure Active Directory](../enterprise-users/licensing-ps-examples.md)

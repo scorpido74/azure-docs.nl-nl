@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/15/2019
 ms.author: jeedes
-ms.openlocfilehash: d99d11f6cffa42aa706a863c3061583eab3f98f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4cb4e23a9d5334af5ebdaab2ef15a5c39f232095
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552248"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108589"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-quantum-workplace"></a>Zelfstudie: Integratie van Azure Active Directory met Quantum Workplace
 
@@ -99,11 +99,11 @@ Als u eenmalige aanmelding van Azure met Quantum Workplace wilt configureren, vo
 
 4. In de sectie **SAML-basisconfiguratie** is de toepassing vooraf geconfigureerd en zijn de benodigde URL's al vooraf ingevuld met Azure. De gebruiker moet de configuratie opslaan door op de knop **Opslaan** te klikken.
 
-    ![Domein- en URL-informatie voor eenmalige aanmelding bij Quantum Workplace](common/preintegrated.png)
+    ![Schermopname van de SAML-basisconfiguratie.](common/preintegrated.png)
 
 5. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    ![Domein- en URL-informatie voor eenmalige aanmelding bij Quantum Workplace](common/metadata-upload-additional-signon.png)
+    ![Schermopname die Extra URL's instellen toont, waar u een aanmeldings-URL kunt invoeren.](common/metadata-upload-additional-signon.png)
 
     In het tekstvak **Aanmeldings-URL** typt u een URL: `https://auth.quantumworkplace.com/Account/Login`
 

@@ -4,12 +4,12 @@ description: In dit artikel worden populaire algemene vragen over Azure Site Rec
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: d77f62a57a75f13589b11e023f902c1a128a0d95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3da86eead5b927a2a71d7b1a28bc5966bf5f8840
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88950490"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369434"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Algemene vragen over Azure Site Recovery
 
@@ -71,7 +71,7 @@ Bekijk de [site Recovery prijs](https://azure.microsoft.com/pricing/details/site
 
 U kunt de [prijs calculator](https://aka.ms/asr_pricing_calculator) gebruiken om de kosten te ramen tijdens het gebruik van site Recovery.
 
-Voor een gedetailleerde schatting van de kosten voert u het hulp programma Deployment planner voor [VMware](https://aka.ms/siterecovery_deployment_planner) of [Hyper-V](https://aka.ms/asr-deployment-planner)uit en gebruikt u het [rapport kosten raming](https://aka.ms/asr_DP_costreport).
+Voor een gedetailleerde schatting van de kosten voert u het hulp programma Deployment planner voor [VMware](./site-recovery-deployment-planner.md) of [Hyper-V](https://aka.ms/asr-deployment-planner)uit en gebruikt u het [rapport kosten raming](./site-recovery-vmware-deployment-planner-cost-estimation.md).
 
 
 ### <a name="managed-disks-are-now-used-to-replicate-vmware-vms-and-physical-servers-do-i-incur-additional-charges-for-the-cache-storage-account-with-managed-disks"></a>Beheerde schijven worden nu gebruikt voor het repliceren van virtuele VMware-machines en fysieke servers. Worden er extra kosten in rekening gebracht voor het cache-opslag account met Managed disks?

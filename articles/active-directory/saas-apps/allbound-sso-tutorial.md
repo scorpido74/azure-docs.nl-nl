@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: c9ca3b98d01e44c0c899e165e5f892ab5d9a5954
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f6030e209b06dc7ae9acd8a13e6dcdf22b58f8c5
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91715921"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318881"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-allbound-sso"></a>Zelfstudie: Azure Active Directory-integratie met Allbound SSO | Microsoft Docs
 
@@ -27,7 +27,7 @@ De integratie van Allbound SSO met Azure Active Directory heeft de volgende voor
 * U kunt uw gebruikers zich automatisch laten aanmelden bij Allbound SSO (eenmalige aanmelding) met hun Azure Active Directory-account.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
-Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
+Zie [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -195,13 +195,12 @@ In dit gedeelte wordt een gebruiker met de naam Britta Simon gemaakt in Allbound
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Allbound SSO in het toegangsvenster klikt, wordt u automatisch aangemeld bij de instantie van Allbound SSO waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel Allbound SSO in het toegangsvenster klikt, wordt u automatisch aangemeld bij de instantie van Allbound SSO waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](./tutorial-list.md)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)

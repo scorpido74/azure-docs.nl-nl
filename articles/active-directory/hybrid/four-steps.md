@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4543a46c9362ac6d20cc7597de9f59c1a7520163
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5dc931c461988daf9ff6fb2f954b52fa58ce94af
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90600793"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369774"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Vier stappen voor een sterke identiteits basis met Azure Active Directory
 
@@ -156,7 +156,7 @@ Het toewijzen van gebruikers aan toepassingen is het meest geschikt voor het geb
 * Kenmerk-gebaseerd op het gebruik van een dynamisch groepslid maatschap
 * Delegeren naar app-eigen aren
 
-Azure AD biedt de mogelijkheid om toegang tot resources te beheren met behulp van beveiligings groepen en Microsoft 365 groepen. Deze groepen kunnen worden beheerd door een groeps eigenaar die lidmaatschaps aanvragen kan goed keuren of weigeren en het beheer van groepslid maatschap kan overdragen. Met deze functie wordt het [beheer van self-service groep](../users-groups-roles/groups-self-service-management.md)genoemd, zodat groeps eigenaren die geen beheerdersrol hebben toegewezen, groepen kunnen maken en beheren zonder dat ze moeten vertrouwen op beheerders om hun aanvragen te kunnen verwerken.
+Azure AD biedt de mogelijkheid om toegang tot resources te beheren met behulp van beveiligings groepen en Microsoft 365 groepen. Deze groepen kunnen worden beheerd door een groeps eigenaar die lidmaatschaps aanvragen kan goed keuren of weigeren en het beheer van groepslid maatschap kan overdragen. Met deze functie wordt het [beheer van self-service groep](../enterprise-users/groups-self-service-management.md)genoemd, zodat groeps eigenaren die geen beheerdersrol hebben toegewezen, groepen kunnen maken en beheren zonder dat ze moeten vertrouwen op beheerders om hun aanvragen te kunnen verwerken.
 
 ## <a name="step-4---operationalize-your-insights"></a>Stap 4-operationeel maken uw inzichten
 
@@ -172,9 +172,9 @@ Beveiligings logboeken en rapporten bieden een elektronische record van verdacht
 
 Net zoals u op de hoogte bent van uw aanpak van bewerkingen, zijn er een aantal beheer niveaus die u kunt overwegen. Het eerste niveau plaatst de belasting van het beheer van uw globale beheerder (s). Het gebruik van de rol globale beheerder kan altijd geschikt zijn voor kleinere bedrijven. Maar voor grotere organisaties met helpdesk medewerkers en beheerders die verantwoordelijk zijn voor specifieke taken, kan het toewijzen van de rol van globale beheerder een beveiligings risico vormen, omdat deze personen de mogelijkheid biedt om taken te beheren die hoger zijn dan en wat ze kunnen doen.
 
-In dit geval moet u rekening houden met het volgende beheer niveau. Met Azure AD kunt u eind gebruikers aanwijzen als ' beperkte beheerders ' die taken in functies met minder bevoegdheden kunnen beheren. U kunt bijvoorbeeld uw helpdesk medewerker de rol van [beveiligings lezer](../users-groups-roles/directory-assign-admin-roles.md#security-reader) geven om hen de mogelijkheid te bieden om beveiligings functies met alleen-lezen toegang te beheren. Het is ook handig om de rol [authenticatie beheerder](../users-groups-roles/directory-assign-admin-roles.md#authentication-administrator) toe te wijzen aan personen om hen de mogelijkheid te geven niet-wachtwoord referenties opnieuw in te stellen of Azure service Health te lezen en te configureren.
+In dit geval moet u rekening houden met het volgende beheer niveau. Met Azure AD kunt u eind gebruikers aanwijzen als ' beperkte beheerders ' die taken in functies met minder bevoegdheden kunnen beheren. U kunt bijvoorbeeld uw helpdesk medewerker de rol van [beveiligings lezer](../roles/permissions-reference.md#security-reader) geven om hen de mogelijkheid te bieden om beveiligings functies met alleen-lezen toegang te beheren. Het is ook handig om de rol [authenticatie beheerder](../roles/permissions-reference.md#authentication-administrator) toe te wijzen aan personen om hen de mogelijkheid te geven niet-wachtwoord referenties opnieuw in te stellen of Azure service Health te lezen en te configureren.
 
-Zie [Administrator role permissions in azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md)voor meer informatie.
+Zie [Administrator role permissions in azure Active Directory](../roles/permissions-reference.md)voor meer informatie.
 
 ### <a name="monitor-hybrid-components-azure-ad-connect-sync-ad-fs-using-azure-ad-connect-health"></a>Hybride onderdelen (Azure AD Connect Sync, AD FS) bewaken met behulp van Azure AD Connect Health
 

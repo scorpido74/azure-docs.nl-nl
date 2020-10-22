@@ -3,12 +3,12 @@ title: Apache flink gebruiken voor Apache Kafka-Azure Event Hubs | Microsoft Doc
 description: Dit artikel bevat informatie over het verbinden van Apache flink met een Azure-Event Hub
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: 40efd15e56d0b74459aefb4d88972df293b48c26
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 1d382270248e95b1b973f57f67ebf81160f03a16
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92308443"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369502"
 ---
 # <a name="use-apache-flink-with-azure-event-hubs-for-apache-kafka"></a>Apache Flink gebruiken met Azure Event Hubs voor Apache Kafka
 In deze zelf studie leert u hoe u Apache flink verbindt met een Event Hub zonder uw protocol-clients te wijzigen of uw eigen clusters uit te voeren. Zie [Event hubs voor Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md)voor meer informatie over de ondersteuning van Event hubs voor het Apache Kafka Consumer-protocol.
@@ -71,6 +71,9 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
    password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
 ```
 
+> [!IMPORTANT]
+> Vervang `{YOUR.EVENTHUBS.CONNECTION.STRING}` door de verbindingsreeks voor uw Event Hubs-naamruimte. Zie [een Event Hubs Connection String ophalen](event-hubs-get-connection-string.md)voor instructies over het ophalen van de Connection String. Hier volgt een voor beeld van een configuratie: `sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://mynamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXX";`
+
 ### <a name="run-producer-from-the-command-line"></a>Producer uitvoeren vanaf de opdracht regel
 
 Als u de producent wilt uitvoeren vanaf de opdracht regel, genereert u het JAR en voert u uit in maven (of Genereer u het JAR met Maven, voert u in Java uit door de benodigde Kafka JAR (s) toe te voegen aan het klassenpad):
@@ -101,6 +104,10 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
    username="$ConnectionString" \
    password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
 ```
+
+> [!IMPORTANT]
+> Vervang `{YOUR.EVENTHUBS.CONNECTION.STRING}` door de verbindingsreeks voor uw Event Hubs-naamruimte. Zie [een Event Hubs Connection String ophalen](event-hubs-get-connection-string.md)voor instructies over het ophalen van de Connection String. Hier volgt een voor beeld van een configuratie: `sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://mynamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXX";`
+
 
 ### <a name="run-consumer-from-the-command-line"></a>Consument uitvoeren vanaf de opdracht regel
 

@@ -14,12 +14,12 @@ ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ab3ae459d5719e965be668c529eacf0ab86d19b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 391d4d6cb925eec0ea7be19eb6fa6849aa38985e
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541132"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369740"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Instellingen voor Azure AD-functies configureren in Privileged Identity Management
 
@@ -29,7 +29,7 @@ Een beheerder van een bevoegde rol kan Privileged Identity Management (PIM) in h
 
 Vanaf november 2019 wordt het gedeelte van de Azure AD-functies van Privileged Identity Management bijgewerkt naar een nieuwe versie die overeenkomt met de ervaringen van Azure-resource rollen. Hiermee maakt u aanvullende functies en [wijzigingen in de bestaande API](azure-ad-roles-features.md#api-changes). Terwijl de nieuwe versie wordt geïmplementeerd, zijn de procedures die u in dit artikel volgt, afhankelijk van de versie van Privileged Identity Management die u momenteel hebt. Volg de stappen in deze sectie om te bepalen welke versie van Privileged Identity Management u hebt. Nadat u uw versie van Privileged Identity Management weet, kunt u de procedures in dit artikel selecteren die overeenkomen met die versie.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met een gebruiker die zich in de beheerdersrol met [geprivilegieerde rol](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) bevindt.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met een gebruiker die zich in de beheerdersrol met [geprivilegieerde rol](../roles/permissions-reference.md#privileged-role-administrator) bevindt.
 1. Open **Azure AD privileged Identity Management**. Als u een banner aan de bovenkant van de overzichts pagina hebt, volgt u de instructies op het tabblad **nieuwe versie** van dit artikel. Als dat niet het geval is, volgt u de instructies op het tabblad **vorige versie** .
 
   [![Selecteer Azure AD > Privileged Identity Management.](media/pim-how-to-add-role-to-user/pim-new-version.png)](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
@@ -42,7 +42,7 @@ Volg de stappen in dit artikel voor het goed keuren of weigeren van aanvragen vo
 
 Volg deze stappen om de instellingen voor een Azure AD-functie te openen.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/) met een gebruiker in de beheerdersrol [privileged Role](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) .
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/) met een gebruiker in de beheerdersrol [privileged Role](../roles/permissions-reference.md#privileged-role-administrator) .
 gt
 1. Open **Azure AD privileged Identity Management** &gt; functie-instellingen van **Azure AD-rollen** &gt; **Role settings**.
 

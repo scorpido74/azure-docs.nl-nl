@@ -13,16 +13,16 @@ ms.subservice: pim
 ms.date: 09/16/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f4d1e0d43758645d43843417eadf0ce21d43cb7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69884b9e07172e9b25f4c14884be8713da23cbdb
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91533839"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369825"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Azure AD-rollen toewijzen in Privileged Identity Management
 
-Met Azure Active Directory (Azure AD) kan een globale beheerder **permanente** Azure AD-beheerdersrol maken. Deze roltoewijzingen kunnen worden gemaakt met behulp van de [Azure Portal](../users-groups-roles/directory-assign-admin-roles.md) of met behulp van [Power shell-opdrachten](/powershell/module/azuread#directory_roles).
+Met Azure Active Directory (Azure AD) kan een globale beheerder **permanente** Azure AD-beheerdersrol maken. Deze roltoewijzingen kunnen worden gemaakt met behulp van de [Azure Portal](../roles/permissions-reference.md) of met behulp van [Power shell-opdrachten](/powershell/module/azuread#directory_roles).
 
 Met de service Azure AD Privileged Identity Management (PIM) kunnen beheerders van beschermde rollen ook permanente toewijzingen voor beheerdersrol maken. Daarnaast kunnen beheerders van geprivilegieerde rollen gebruikers die **in aanmerking komen** voor Azure AD-beheerders rollen. Een in aanmerking komende beheerder kan de rol activeren wanneer hij deze nodig heeft en vervolgens de machtigingen verloopt zodra ze zijn voltooid.
 
@@ -30,7 +30,7 @@ Met de service Azure AD Privileged Identity Management (PIM) kunnen beheerders v
 
 Vanaf november 2019 wordt het gedeelte van de Azure AD-functies van Privileged Identity Management bijgewerkt naar een nieuwe versie die overeenkomt met de ervaringen van Azure-resource rollen. Hiermee maakt u aanvullende functies en [wijzigingen in de bestaande API](azure-ad-roles-features.md#api-changes). Terwijl de nieuwe versie wordt geïmplementeerd, zijn de procedures die u in dit artikel volgt, afhankelijk van de versie van Privileged Identity Management die u momenteel hebt. Volg de stappen in deze sectie om te bepalen welke versie van Privileged Identity Management u hebt. Nadat u uw versie van Privileged Identity Management weet, kunt u de procedures in dit artikel selecteren die overeenkomen met die versie.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met een gebruiker die zich in de beheerdersrol met [geprivilegieerde rol](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) bevindt.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met een gebruiker die zich in de beheerdersrol met [geprivilegieerde rol](../roles/permissions-reference.md#privileged-role-administrator) bevindt.
 1. Open **Azure AD privileged Identity Management**. Als u een banner aan de bovenkant van de overzichts pagina hebt, volgt u de instructies op het tabblad **nieuwe versie** van dit artikel. Als dat niet het geval is, volgt u de instructies op het tabblad **vorige versie** .
 
   [![Selecteer Azure AD > Privileged Identity Management.](media/pim-how-to-add-role-to-user/pim-new-version.png)](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
@@ -41,7 +41,7 @@ Vanaf november 2019 wordt het gedeelte van de Azure AD-functies van Privileged I
 
 Volg deze stappen om een gebruiker in aanmerking te laten komen voor een Azure AD-beheerdersrol.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/) met een gebruiker die lid is van de beheerdersrol [privileged Role](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) .
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/) met een gebruiker die lid is van de beheerdersrol [privileged Role](../roles/permissions-reference.md#privileged-role-administrator) .
 
     Voor informatie over het verlenen van een andere beheerder toegang tot het beheren van Privileged Identity Management raadpleegt u [toegang verlenen aan andere beheerders om privileged Identity Management te beheren](pim-how-to-give-access-to-pim.md).
 
@@ -77,7 +77,7 @@ Volg deze stappen om een gebruiker in aanmerking te laten komen voor een Azure A
 
 ## <a name="assign-a-role-with-restricted-scope"></a>Een rol toewijzen met een beperkt bereik
 
-Voor bepaalde rollen geldt dat het bereik van de verleende machtigingen kan worden beperkt tot één beheer eenheid, Service-Principal of toepassing. Deze procedure is een voor beeld van het toewijzen van een rol die het bereik van een administratieve eenheid heeft. Zie [scoped rollen toewijzen aan een beheer eenheid](../users-groups-roles/roles-admin-units-assign-roles.md)voor een lijst met rollen die bereik ondersteunen via beheer eenheden. Deze functie wordt momenteel geïmplementeerd naar Azure AD-organisaties.
+Voor bepaalde rollen geldt dat het bereik van de verleende machtigingen kan worden beperkt tot één beheer eenheid, Service-Principal of toepassing. Deze procedure is een voor beeld van het toewijzen van een rol die het bereik van een administratieve eenheid heeft. Zie [scoped rollen toewijzen aan een beheer eenheid](../roles/admin-units-assign-roles.md)voor een lijst met rollen die bereik ondersteunen via beheer eenheden. Deze functie wordt momenteel geïmplementeerd naar Azure AD-organisaties.
 
 1. Meld u aan bij het [beheer centrum van Azure Active Directory](https://aad.portal.azure.com) met privileged Role Administrator Permissions.
 
@@ -97,7 +97,7 @@ Voor bepaalde rollen geldt dat het bereik van de verleende machtigingen kan word
    - Het gebruikersrol bereik selecteren (in dit geval administratieve eenheden)
    - Een administratieve eenheid voor de scope selecteren
 
-Zie [beheer eenheden toevoegen en verwijderen](../users-groups-roles/roles-admin-units-manage.md)voor meer informatie over het maken van administratieve eenheden.
+Zie [beheer eenheden toevoegen en verwijderen](../roles/admin-units-manage.md)voor meer informatie over het maken van administratieve eenheden.
 
 ## <a name="update-or-remove-an-existing-role-assignment"></a>Een bestaande roltoewijzing bijwerken of verwijderen
 

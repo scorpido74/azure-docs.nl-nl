@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: f565621514996a45a6ae705de8b9f1129a27263e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92a878c60ba2a7c08a17ce2833132b389ef49435
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88522341"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318736"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-anaplan"></a>Zelfstudie: Azure Active Directory-integratie met Anaplan
 
@@ -27,7 +27,7 @@ Anaplan integreren met Azure AD biedt u de volgende voordelen:
 * U kunt uw gebruikers zich automatisch laten aanmelden bij Anaplan (eenmalige aanmelding) met hun Azure AD-account.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
-Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
+Zie [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -185,12 +185,12 @@ In deze sectie gaat u in Anaplan een gebruiker maken met de naam Britta Simon. W
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Anaplan in het toegangsvenster klikt, zou u automatisch moeten worden aangemeld bij de instantie van Anaplan waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel Anaplan in het toegangsvenster klikt, zou u automatisch moeten worden aangemeld bij de instantie van Anaplan waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](./tutorial-list.md)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)
