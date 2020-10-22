@@ -4,12 +4,12 @@ description: Een op Linux gebaseerde web-app implementeren in twee verschillende
 ms.topic: tutorial
 ms.date: 08/20/2018
 ms.custom: seodec18, mvc
-ms.openlocfilehash: bcbce3c60aa0b4613b1dd1840c335c800193e549
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a203bfc9b1317bc258e4a93ae4ac03ecbdc7a15
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328686"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148418"
 ---
 # <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Zelfstudie: Een web-app implementeren vanuit een Azure-containerregister met geo-replicatie
 
@@ -27,7 +27,7 @@ In het volgende artikel uit de reeks werkt u de toepassing bij, en pusht u de bi
 
 ## <a name="automatic-deployment-to-web-apps-for-containers"></a>Automatische implementatie naar Web App for Containers
 
-Azure Container Registry biedt ondersteuning voor het rechtstreeks implementeren van apps in containers naar [Web App for Containers](../app-service/containers/index.yml). In deze zelfstudie gebruikt u Azure Portal om de containerinstallatiekopie die is gemaakt in de vorige zelfstudie, te implementeren naar twee web-app-abonnementen in verschillende Azure-regio's.
+Azure Container Registry biedt ondersteuning voor het rechtstreeks implementeren van apps in containers naar [Web App for Containers](../app-service/index.yml). In deze zelfstudie gebruikt u Azure Portal om de containerinstallatiekopie die is gemaakt in de vorige zelfstudie, te implementeren naar twee web-app-abonnementen in verschillende Azure-regio's.
 
 Wanneer u een web-app vanuit een containerinstallatiekopie in het register implementeert en u een geo-gerepliceerd register in dezelfde regio hebt, maakt Azure Container Registry een [webhook](container-registry-webhook.md) voor de implementatie van de installatiekopie. Wanneer u een nieuwe installatiekopie naar uw containeropslagplaats pusht, detecteert de webhook de wijziging en implementeert deze automatisch de nieuwe containerinstallatiekopie naar uw web-app.
 

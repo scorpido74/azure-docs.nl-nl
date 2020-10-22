@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78ad8761d3a4ff3e3cdab9dee5f50b469ff840fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b7350d793ea42a46d52d881f1399174a3bb5d0e
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87908681"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362889"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Directe Federatie met AD FS en providers van derden voor gast gebruikers (preview-versie)
 
@@ -45,7 +45,7 @@ Met directe Federatie melden gast gebruikers zich aan bij uw Azure AD-Tenant met
 ## <a name="limitations"></a>Beperkingen
 
 ### <a name="dns-verified-domains-in-azure-ad"></a>Door DNS geverifieerde domeinen in azure AD
-Het domein waarmee u wilt communiceren, mag ***niet*** door DNS worden geverifieerd in azure AD. U mag directe Federatie met niet-beheerde (e-mail berichten geverifieerde of ' virale ') Azure AD-tenants instellen, omdat deze niet zijn geverifieerd voor DNS.
+Het domein waarmee u wilt communiceren, moet ***niet**_ door DNS worden geverifieerd in azure AD. U mag directe Federatie met niet-beheerde (e-mail berichten geverifieerde of ' virale ') Azure AD-tenants instellen, omdat deze niet zijn geverifieerd voor DNS.
 
 ### <a name="authentication-url"></a>Verificatie-URL
 Directe Federatie is alleen toegestaan voor beleids regels waarbij het domein van de authenticatie-URL overeenkomt met het doel domein of waarbij de verificatie-URL een van deze toegestane id-providers is (deze lijst kan worden gewijzigd):
@@ -60,7 +60,7 @@ Directe Federatie is alleen toegestaan voor beleids regels waarbij het domein va
 -   federation.exostar.com
 -   federation.exostartest.com
 
-Wanneer u bijvoorbeeld directe Federatie voor **fabrikam.com**instelt, wordt de verificatie-URL `https://fabrikam.com/adfs` door gegeven aan de validatie. Er wordt bijvoorbeeld ook een host in hetzelfde domein door gegeven `https://sts.fabrikam.com/adfs` . De verificatie-URL `https://fabrikamconglomerate.com/adfs` of `https://fabrikam.com.uk/adfs` voor hetzelfde domein wordt echter niet door gegeven.
+Als u bijvoorbeeld directe Federatie instelt voor _ * fabrikam. com * *, wordt de verificatie-URL `https://fabrikam.com/adfs` door gegeven. Er wordt bijvoorbeeld ook een host in hetzelfde domein door gegeven `https://sts.fabrikam.com/adfs` . De verificatie-URL `https://fabrikamconglomerate.com/adfs` of `https://fabrikam.com.uk/adfs` voor hetzelfde domein wordt echter niet door gegeven.
 
 ### <a name="signing-certificate-renewal"></a>Certificaat vernieuwing ondertekenen
 Als u de meta gegevens-URL in de instellingen van de identiteits provider opgeeft, wordt het handtekening certificaat door Azure AD automatisch vernieuwd wanneer het verloopt. Als het certificaat echter om een of andere reden vóór de verloop tijd wordt geroteerd, of als u geen meta gegevens-URL opgeeft, kan Azure AD deze niet vernieuwen. In dit geval moet u het handtekening certificaat hand matig bijwerken.
@@ -73,7 +73,7 @@ Er wordt momenteel geen ondersteuning geboden voor directe Federatie met meerder
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 ### <a name="can-i-set-up-direct-federation-with-a-domain-for-which-an-unmanaged-email-verified-tenant-exists"></a>Kan ik directe Federatie instellen met een domein waarvoor een niet-beheerde Tenant (geverifieerd door een e-mail bericht) bestaat? 
-Ja. Als het domein niet is geverifieerd en de Tenant geen [beheerder](../users-groups-roles/domains-admin-takeover.md)heeft ondergaan, kunt u direct Federatie met dat domein instellen. Niet-beheerd of e-mail berichten-gecontroleerd, tenants worden gemaakt wanneer een gebruiker een B2B-uitnodiging inwisselt of een self-service registratie voor Azure AD uitvoert met behulp van een domein dat nog niet bestaat. U kunt direct Federation instellen met deze domeinen. Als u probeert om direct Federatie in te stellen met een domein met DNS-verificatie, in de Azure Portal of via Power shell, ziet u een fout melding.
+Ja. Als het domein niet is geverifieerd en de Tenant geen [beheerder](../enterprise-users/domains-admin-takeover.md)heeft ondergaan, kunt u direct Federatie met dat domein instellen. Niet-beheerd of e-mail berichten-gecontroleerd, tenants worden gemaakt wanneer een gebruiker een B2B-uitnodiging inwisselt of een self-service registratie voor Azure AD uitvoert met behulp van een domein dat nog niet bestaat. U kunt direct Federation instellen met deze domeinen. Als u probeert om direct Federatie in te stellen met een domein met DNS-verificatie, in de Azure Portal of via Power shell, ziet u een fout melding.
 ### <a name="if-direct-federation-and-email-one-time-passcode-authentication-are-both-enabled-which-method-takes-precedence"></a>Als voor de directe Federatie en e-mail eenmalige wachtwoord code verificatie is ingeschakeld, welke methode voor rang heeft?
 Wanneer directe Federatie wordt ingesteld met een partner organisatie, heeft dit prioriteit boven de e-mail verificatie voor eenmalige authenticatie voor nieuwe gast gebruikers van die organisatie. Als een gast gebruiker een uitnodiging heeft ingewisseld met verificatie met eenmalige wachtwoord code voordat u direct Federatie instelt, blijven ze gebruikmaken van verificatie met een eenmalige wachtwoord code. 
 ### <a name="does-direct-federation-address-sign-in-issues-due-to-a-partially-synced-tenancy"></a>Worden er problemen met het aanmelden van direct Federation-adressen veroorzaakt door een gedeeltelijk gesynchroniseerde pacht?

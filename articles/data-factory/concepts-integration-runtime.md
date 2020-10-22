@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: b899485589f19a5b74d6d22b4e5dae5fbf3ff604
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f3dd5898518a9788a7079ab903b6f88b9f82989
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91827537"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371202"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Integration Runtime in Azure Data Factory 
 
@@ -56,7 +56,7 @@ Een Azure Integration runtime kan:
 
 - Gegevens stromen uitvoeren in azure 
 - Kopieer activiteit uit te voeren tussen Cloud gegevens archieven
-- De volgende trans formatie activiteiten verzenden in het open bare netwerk: Databricks notebook/jar/python activity, HDInsight component activity, HDInsight varken-activiteit, HDInsight MapReduce activity, HDInsight Spark-activiteit, HDInsight Streaming Machine Learning Machine Learning-activiteit, Data Lake Analytics U-SQL-activiteit, aangepaste .NET-activiteit, webactiviteit, activiteit voor zoeken en activiteiten voor meta gegevens ophalen.
+- Het verzenden van de volgende transformatie activiteiten in het open bare netwerk: Databricks notebook/jar/python activity, hdinsight component activity, hdinsight varken-activiteit, hdinsight MapReduce activity, hdinsight Spark-activiteit, hdinsight streaming activity, Azure machine learning Studio (klassiek) batch Execution-activiteit, Azure machine learning Studio (klassiek) activiteiten voor het uitvoeren van taken, de opgeslagen procedure activiteit, data Lake Analytics U-SQL-activiteit, .net aangepaste activiteit,
 
 ### <a name="azure-ir-network-environment"></a>Azure IR-netwerkomgeving
 
@@ -79,7 +79,7 @@ Zie [Azure Integration runtime maken en configureren](create-azure-integration-r
 Een zelf-hostende IR is geschikt voor:
 
 - Het uitvoeren van kopieeractiviteit tussen een gegevensarchief in de cloud en een gegevensarchief in een privénetwerk.
-- Het verzenden van de volgende trans formatie activiteiten op basis van reken resources in on-premises of Azure Virtual Network: HDInsight Hive-activiteit (BYOC: uw eigen cluster maken), HDInsight Pig-activiteit (BYOC), HDInsight MapReduce activity (BYOC), HDInsight Spark-activiteit (BYOC), HDInsight streaming activity (BYOC), activiteit voor batch uitvoering, machine learning Update resource activiteiten, opgeslagen procedure activiteit, data Lake Analytics U-SQL-activiteit, machine learning aangepaste activiteit (wordt uitgevoerd op Azure Batch) , Activity lookup en meta gegevens ophalen.
+- Het verzenden van de volgende trans formatie activiteiten op basis van reken resources in on-premises of Azure Virtual Network: HDInsight Hive-activiteit (BYOC: uw eigen cluster meenemen), HDInsight Pig-activiteit (BYOC), HDInsight MapReduce activity (BYOC), HDInsight Spark-activiteit (BYOC), hdinsight streaming activity (BYOC), Azure machine learning Studio (klassiek) uitvoering van activiteiten, data Lake Analytics U-SQL-activiteit Azure machine learning Studio , Aangepaste activiteit (wordt uitgevoerd op Azure Batch), opzoek activiteit en ophalen van meta gegevens.
 
 > [!NOTE] 
 > Gebruik zelf-hostende Integration runtime voor de ondersteuning van gegevens archieven waarvoor u een eigen stuur programma nodig hebt, zoals SAP Hana, MySQL, enzovoort.  Zie [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats)voor meer informatie.

@@ -16,12 +16,12 @@ ms.date: 07/22/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c761be04c7d31567e727e93b84c98a1b3510e3d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75965fc9719c9ba16ee7fe24a23dfd4693f8afe0
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979870"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362549"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Overdracht en rollen in het beheer van rechten van Azure AD
 
@@ -124,20 +124,20 @@ Voor een gebruiker die geen globale beheerder of gebruikers beheerder is, om gro
 
 | Azure AD-adreslijst functie | Rol van rechten beheer | Kan beveiligings groep toevoegen | Kan Microsoft 365 groep toevoegen | Kan app toevoegen | Kan de share point online-site toevoegen |
 | --- | :---: | :---: | :---: | :---: | :---: |
-| [Globale beheerder](../users-groups-roles/directory-assign-admin-roles.md) | n.v.t. |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Gebruikers beheerder](../users-groups-roles/directory-assign-admin-roles.md) | n.v.t. |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Intune-beheerder](../users-groups-roles/directory-assign-admin-roles.md) | Catalogus eigenaar | :heavy_check_mark: | :heavy_check_mark: |  |  |
-| [Exchange-beheerder](../users-groups-roles/directory-assign-admin-roles.md) | Catalogus eigenaar |  | :heavy_check_mark: |  |  |
-| [Teams service-beheerder](../users-groups-roles/directory-assign-admin-roles.md) | Catalogus eigenaar |  | :heavy_check_mark: |  |  |
-| [SharePoint-beheerder](../users-groups-roles/directory-assign-admin-roles.md) | Catalogus eigenaar |  | :heavy_check_mark: |  | :heavy_check_mark: |
-| [Toepassings beheerder](../users-groups-roles/directory-assign-admin-roles.md) | Catalogus eigenaar |  |  | :heavy_check_mark: |  |
-| [Beheerder van de Cloud toepassing](../users-groups-roles/directory-assign-admin-roles.md) | Catalogus eigenaar |  |  | :heavy_check_mark: |  |
+| [Globale beheerder](../roles/permissions-reference.md) | n.v.t. |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| [Gebruikersbeheerder](../roles/permissions-reference.md) | n.v.t. |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
+| [Intune-beheerder](../roles/permissions-reference.md) | Catalogus eigenaar | :heavy_check_mark: | :heavy_check_mark: |  |  |
+| [Exchange-beheerder](../roles/permissions-reference.md) | Catalogus eigenaar |  | :heavy_check_mark: |  |  |
+| [Teams service-beheerder](../roles/permissions-reference.md) | Catalogus eigenaar |  | :heavy_check_mark: |  |  |
+| [SharePoint-beheerder](../roles/permissions-reference.md) | Catalogus eigenaar |  | :heavy_check_mark: |  | :heavy_check_mark: |
+| [Toepassings beheerder](../roles/permissions-reference.md) | Catalogus eigenaar |  |  | :heavy_check_mark: |  |
+| [Beheerder van de Cloud toepassing](../roles/permissions-reference.md) | Catalogus eigenaar |  |  | :heavy_check_mark: |  |
 | Gebruiker | Catalogus eigenaar | Alleen als de groeps eigenaar | Alleen als de groeps eigenaar | Alleen als de eigenaar van de app |  |
 
 > [!NOTE]
-> Als een gebruiker een beveiligings groep of Microsoft 365 groep toevoegt, kan de groep niet aan een functie worden toegewezen. Als de gebruiker een groep toevoegt die door de rol kan worden toegewezen bij het maken van het toegangs pakket, moet deze ook de eigenaar zijn van de groep die kan worden toegewezen. Raadpleeg voor meer informatie [het artikel een door een functie toewijs bare groep maken in azure Active Directory](../users-groups-roles/roles-groups-create-eligible.md).
+> Als een gebruiker een beveiligings groep of Microsoft 365 groep toevoegt, kan de groep niet aan een functie worden toegewezen. Als de gebruiker een groep toevoegt die door de rol kan worden toegewezen bij het maken van het toegangs pakket, moet deze ook de eigenaar zijn van de groep die kan worden toegewezen. Raadpleeg voor meer informatie [het artikel een door een functie toewijs bare groep maken in azure Active Directory](../roles/groups-create-eligible.md).
 
-Als u de minst bevoorrechte rol voor een taak wilt bepalen, kunt u ook verwijzen naar [beheerders rollen per beheer taak in azure Active Directory](../users-groups-roles/roles-delegate-by-task.md#entitlement-management).
+Als u de minst bevoorrechte rol voor een taak wilt bepalen, kunt u ook verwijzen naar [beheerders rollen per beheer taak in azure Active Directory](../roles/delegate-by-task.md#entitlement-management).
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 2fc20737ab371135a62d510d9d083e084b592fae
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: ea0887dd1d28bb958b27813df7f4c7a221470bac
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945767"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92088751"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>Een bestaand aangepast domein toewijzen aan Azure Spring Cloud
 
@@ -26,7 +26,7 @@ Certificaten versleutelen webverkeer. Deze TLS/SSL-certificaten kunnen worden op
 * Een toepassing die is geïmplementeerd in Azure Spring Cloud (Zie [Snelstart: Start een bestaande Azure Spring Cloud-toepassing met behulp van het Azure- portal](spring-cloud-quickstart.md)of gebruik een bestaande app).
 * Een domeinnaam met toegang hebt tot het DNS-register voor uw domeinprovider zoals GoDaddy.
 * Een persoonlijk certificaat (dat wil zeggen uw zelfondertekende certificaat) van een externe provider. Het certificaat moet overeenkomen met het domein.
-* Een geïmplementeerd exemplaar van [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+* Een geïmplementeerd exemplaar van [Azure Key Vault](../key-vault/general/overview.md)
 
 ## <a name="import-certificate"></a>Certificaat importeren
 ### <a name="prepare-your-certificate-file-in-pfx-optional"></a>U certificaatbestand voorbereiden in PFX (optioneel)
@@ -224,7 +224,6 @@ az spring-cloud app update -n <app name> --resource-group <resource group name> 
 Wanneer de bewerking is voltooid, gaat u naar een van de HTTPS-URL's die naar uw app verwijzen. Houd er rekening mee dat HTTP-URL's niet werken.
 
 ## <a name="see-also"></a>Zie ook
-* [Wat is Azure Key Vault?](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
-* [Certificaat importeren](https://docs.microsoft.com/azure/key-vault/certificate-scenarios#import-a-certificate)
-* [Uw Spring Cloud-app starten met behulp van de Azure CLI](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli)
-
+* [Wat is Azure Key Vault?](../key-vault/general/overview.md)
+* [Certificaat importeren](../key-vault/certificates/certificate-scenarios.md#import-a-certificate)
+* [Uw Spring Cloud-app starten met behulp van de Azure CLI](./spring-cloud-quickstart.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: a705119120af9e5eca5815880096b884b5199a09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89f59bba856d662aea0c3ed249d5a1462297ec60
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88537846"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309051"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-captivate-prime"></a>Zelfstudie: Azure Active Directory-integratie met Adobe Captivate Prime
 
@@ -27,7 +27,7 @@ De integratie van Adobe Captivate Prime met Azure AD biedt de volgende voordelen
 * U kunt instellen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij Adobe Captivate Prime (eenmalige aanmelding of SSO).
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
-Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
+Zie [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -186,12 +186,12 @@ In dit gedeelte maakt u een gebruiker met de naam Britta Simon in Adobe Captivat
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u in het toegangsvenster op de tegel van Adobe Captivate Prime klikt, wordt u als het goed is automatisch aangemeld bij het exemplaar van Adobe Captivate Prime waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel van Adobe Captivate Prime klikt, wordt u als het goed is automatisch aangemeld bij het exemplaar van Adobe Captivate Prime waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](./tutorial-list.md)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)

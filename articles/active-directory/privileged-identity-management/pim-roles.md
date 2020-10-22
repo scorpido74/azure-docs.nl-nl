@@ -14,16 +14,16 @@ ms.date: 05/11/2020
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0403fe3cf0bf8cfaf9c722edadbecd2fee61cb46
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c72587c5486ed61215fd20c215a1dd194f4b7bc4
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90056282"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372409"
 ---
 # <a name="roles-you-cant-manage-in-privileged-identity-management"></a>Rollen die u niet kunt beheren in Privileged Identity Management
 
-Met Azure Active Directory (Azure AD) Privileged Identity Management (PIM) kunt u alle [Azure AD-rollen](../users-groups-roles/directory-assign-admin-roles.md) en alle [Azure-rollen](../../role-based-access-control/built-in-roles.md)beheren. Azure-rollen kunnen ook uw aangepaste rollen bevatten die zijn gekoppeld aan uw beheer groepen, abonnementen, resource groepen en resources. Er zijn echter enkele rollen die u niet kunt beheren. In dit artikel worden de functies beschreven die u niet kunt beheren in Privileged Identity Management.
+Met Azure Active Directory (Azure AD) Privileged Identity Management (PIM) kunt u alle [Azure AD-rollen](../roles/permissions-reference.md) en alle [Azure-rollen](../../role-based-access-control/built-in-roles.md)beheren. Azure-rollen kunnen ook uw aangepaste rollen bevatten die zijn gekoppeld aan uw beheer groepen, abonnementen, resource groepen en resources. Er zijn echter enkele rollen die u niet kunt beheren. In dit artikel worden de functies beschreven die u niet kunt beheren in Privileged Identity Management.
 
 ## <a name="classic-subscription-administrator-roles"></a>Klassieke abonnementsbeheerdersrollen
 

@@ -4,12 +4,12 @@ description: Informatie over het uitvoeren van een migratie van VMware-VM’s op
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: MVC
-ms.openlocfilehash: f437c0f3b9f786863d3b58f10d1a7384b0f1e8ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ffdbdba0aeae33b04195c5a6bf6aeaff5658424b
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91296141"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314704"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>VMware-VM’s migreren naar Azure (op basis van een agent)
 
@@ -391,7 +391,7 @@ Nadat u hebt geverifieerd dat de testmigratie naar verwachting werkt, kunt u de 
     - Houd workloads continu beschikbaar door Azure VM‘s naar een secundaire regio te repliceren met Site Recovery. [Meer informatie](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
 - Voor betere beveiliging:
     - Vergrendel en beperk de toegang van binnenkomend verkeer met [Just-in-time-beheer van Azure Security Center](../security-center/security-center-just-in-time.md).
-    - Beperk het netwerkverkeer naar beheereindpunten met [Netwerkbeveiligingsgroepen](../virtual-network/security-overview.md).
+    - Beperk het netwerkverkeer naar beheereindpunten met [Netwerkbeveiligingsgroepen](../virtual-network/network-security-groups-overview.md).
     - Implementeer [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md) om schijven te beveiligen en gegevens te beschermen tegen diefstal en onbevoegde toegang.
     - Lees meer informatie over [IaaS-resources beveiligen](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/) en bezoek het [Azure Security Center](https://azure.microsoft.com/services/security-center/).
 - Voor controle en beheer:

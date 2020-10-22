@@ -4,12 +4,12 @@ description: Meer informatie over het detecteren van on-premises fysieke servers
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: 00fb4073bc8a7b1375f92202b5a6bd0a59a23816
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7cbd7939248686a251fdf56bf1a5f1acc952a3a
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91442288"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314088"
 ---
 # <a name="tutorial-discover-physical-servers-with-server-assessment"></a>Zelfstudie: Fysieke servers detecteren met Serverevaluatie
 
@@ -208,7 +208,7 @@ Het apparaat voor de eerste keer instellen.
    
    Aanmelden met een pincode wordt niet ondersteund.
 3. Nadat u zich hebt aangemeld, gaat u terug naar de web-app. 
-4. Als het Azure-gebruikersaccount dat wordt gebruikt voor logboekregistratie de juiste [machtigingen ](tutorial-prepare-physical.md) heeft voor de Azure-resources die tijdens het genereren van de sleutel zijn gemaakt, wordt de registratie van het apparaat gestart.
+4. Als het Azure-gebruikersaccount dat wordt gebruikt voor logboekregistratie de juiste [machtigingen ]() heeft voor de Azure-resources die tijdens het genereren van de sleutel zijn gemaakt, wordt de registratie van het apparaat gestart.
 1. Nadat het apparaat is geregistreerd, kunt u de registratiedetails zien door op **Details weergeven** te klikken.
 
 
@@ -245,5 +245,3 @@ Nadat de detectie is voltooid, kunt u controleren of de servers worden weergegev
 
 - [Fysieke servers beoordelen](tutorial-assess-physical.md) voor migratie naar virtuele Azure-machines.
 - [De gegevens controleren ](migrate-appliance.md#collected-data---physical) die door het apparaat worden verzameld tijdens de detectie.
-
-

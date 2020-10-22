@@ -16,12 +16,12 @@ ms.date: 09/30/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38edbd9e491d4bea469c6b83ad98df48fbce1d4f
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: b4030dedfb0d7308bb5a0f7a86bc49ee168e6d0c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91597495"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362804"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Zelfstudie: Uw eerste toegangspakket maken in Azure AD-rechtenbeheer
 
@@ -42,7 +42,7 @@ Bekijk de volgende video voor een stapsgewijze demonstratie van het proces voor 
 
 >[!VIDEO https://www.youtube.com/embed/zaaKvaaYwI4]
 
-U kunt een toegangspakket ook programmatisch maken met behulp van Microsoft Graph. Raadpleeg [Rechtenbeheer-API](https://docs.microsoft.com/graph/tutorial-access-package-api?view=graph-rest-beta) voor een zelfstudie waarin wordt uitgelegd hoe u automatisch een toegangspakket maakt.
+U kunt een toegangspakket ook programmatisch maken met behulp van Microsoft Graph. Raadpleeg [Rechtenbeheer-API](/graph/tutorial-access-package-api?view=graph-rest-beta) voor een zelfstudie waarin wordt uitgelegd hoe u automatisch een toegangspakket maakt.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -118,10 +118,10 @@ Een *toegangspakket* is een bundel resources die een team of project nodig heeft
 
     ![Nieuw toegangspakket - tabblad Resourcerollen](./media/entitlement-management-access-package-first/resource-roles.png)
     >[!IMPORTANT]
-    >De roltoewijzingsgroepen die aan een toegangspakket zijn toegevoegd, worden aangegeven met het subtype **Toewijsbaar aan rollen**. Raadpleeg [Een roltoewijsbare groep maken](../users-groups-roles/roles-groups-create-eligible.md) in Azure Active Directory voor meer informatie over groepen die kunnen worden toegewezen aan Azure AD-rollen. Als u geen roltoewijsbare groep ziet die u wilt toevoegen of als u deze niet kunt toevoegen, zorg er dan voor dat u de vereiste Azure AD-rol en rechtenbeheerrol hebt om deze bewerking uit te voeren. Mogelijk moet u iemand met de vereiste rollen vragen om de bron aan uw catalogus toe te voegen. Bekijk [Vereiste rollen om bronnen aan een catalogus toe te voegen](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog) voor meer informatie.
+    >De roltoewijzingsgroepen die aan een toegangspakket zijn toegevoegd, worden aangegeven met het subtype **Toewijsbaar aan rollen**. Raadpleeg [Een roltoewijsbare groep maken](../roles/groups-create-eligible.md) in Azure Active Directory voor meer informatie over groepen die kunnen worden toegewezen aan Azure AD-rollen. Als u geen roltoewijsbare groep ziet die u wilt toevoegen of als u deze niet kunt toevoegen, zorg er dan voor dat u de vereiste Azure AD-rol en rechtenbeheerrol hebt om deze bewerking uit te voeren. Mogelijk moet u iemand met de vereiste rollen vragen om de bron aan uw catalogus toe te voegen. Bekijk [Vereiste rollen om bronnen aan een catalogus toe te voegen](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog) voor meer informatie.
 
     >[!NOTE]
-    > Wanneer u [dynamische groepen](../users-groups-roles/groups-create-rule.md) gebruikt, ziet u behalve de eigenaar geen andere beschikbare rollen. Dit is standaard.
+    > Wanneer u [dynamische groepen](../enterprise-users/groups-create-rule.md) gebruikt, ziet u behalve de eigenaar geen andere beschikbare rollen. Dit is standaard.
     > ![Overzicht van scenario's](./media/entitlement-management-access-package-first/dynamic-group-warning.png)
     
 

@@ -9,12 +9,12 @@ ms.author: vinsonyu
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 3277dc4d9c4485b117bfcfd1d6e130e7370cd8c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: abd27e15ccf5b421e69e78b2b726d192ffdecacb
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936092"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372358"
 ---
 # <a name="connect-to-azure-arc-enabled-sql-managed-instance"></a>Verbinding maken met Azure Arc enabled SQL Managed instance
 
@@ -68,7 +68,7 @@ sqlcmd -S 52.229.9.30,30913 -U sa
 
 Als u een virtuele machine van Azure gebruikt, wordt het open bare IP-adres niet weer gegeven op het IP-adres van het eind punt. Als u het externe IP-adres wilt zoeken, gebruikt u de volgende opdracht:
 
-```console
+```azurecli
 az network public-ip list -g azurearcvm-rg --query "[].{PublicIP:ipAddress}" -o table
 ```
 
@@ -78,7 +78,7 @@ Mogelijk moet u ook de poort van het SQL-exemplaar beschikbaar maken via de netw
 
 Als u een regel wilt instellen, moet u de naam weten van uw NSG die u kunt vinden met behulp van de onderstaande opdracht:
 
-```console
+```azurecli
 az network nsg list -g azurearcvm-rg --query "[].{NSGName:name}" -o table
 ```
 
@@ -86,7 +86,7 @@ Zodra u de naam van de NSG hebt, kunt u een firewall regel toevoegen met behulp 
 
 Vervang de waarde van de `--destination-port-ranges` onderstaande para meter door het poort nummer dat u hebt ontvangen van de `azdata sql instance list` F-opdracht hierboven.
 
-```console
+```azurecli
 az network nsg rule create -n db_port --destination-port-ranges 30913 --source-address-prefixes '*' --nsg-name azurearcvmNSG --priority 500 -g azurearcvm-rg --access Allow --description 'Allow port through for db access' --destination-address-prefixes '*' --direction Inbound --protocol Tcp --source-port-ranges '*'
 ```
 

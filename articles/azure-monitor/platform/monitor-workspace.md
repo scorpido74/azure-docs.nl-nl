@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/20/2020
-ms.openlocfilehash: a4f578ca2e9fc448fb85b803cce46974a8c2e4dc
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: d77b4b5824c4426f106d10ca246c5b0d5e76327a
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92326007"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372256"
 ---
 # <a name="monitor-health-of-log-analytics-workspace-in-azure-monitor"></a>De status van de Log Analytics werk ruimte in Azure Monitor bewaken
 Als u de prestaties en beschik baarheid van uw Log Analytics-werk ruimte in Azure Monitor wilt behouden, moet u alle problemen die zich voordoen, proactief kunnen detecteren. In dit artikel wordt beschreven hoe u de status van uw Log Analytics-werk ruimte kunt controleren met behulp van gegevens in de [bewerkings](/azure-monitor/reference/tables/operation) tabel. Deze tabel is opgenomen in elke Log Analytics-werk ruimte en bevat fout-en waarschuwingen die zich in uw werk ruimte voordoen. U moet deze gegevens regel matig bekijken en waarschuwingen maken om proactief te worden gewaarschuwd wanneer er belang rijke incidenten in uw werk ruimte zijn.
@@ -55,19 +55,19 @@ Opname bewerkingen zijn problemen die zich hebben voorgedaan tijdens het opnemen
 |:---|:---|:---|:---|
 | Aangepast logboek | Fout   | De kolom limiet voor aangepaste velden is bereikt. | [Servicebeperkingen van Azure Monitor](../service-limits.md#log-analytics-workspaces) |
 | Aangepast logboek | Fout   | Opname van aangepaste Logboeken is mislukt. | |
-| Aangepast logboek | Fout   | Metagegevensarchiefmethode. | |
-| Gegevens | Fout   | De gegevens zijn verwijderd omdat de aanvraag eerder is gemaakt dan het aantal ingestelde dagen. | [Gebruik en kosten beheren met Azure Monitor-logboeken](manage-cost-storage.md#alert-when-daily-cap-reached)
+| Metagegevensarchiefmethode. | Fout | Er is een configuratie fout gedetecteerd. | |
+| Gegevens verzamelen | Fout   | De gegevens zijn verwijderd omdat de aanvraag eerder is gemaakt dan het aantal ingestelde dagen. | [Gebruik en kosten beheren met Azure Monitor-logboeken](manage-cost-storage.md#alert-when-daily-cap-reached)
 | Gegevens verzamelen | Info    | De configuratie van de verzamelings machine is gedetecteerd.| |
 | Gegevens verzamelen | Info    | Het verzamelen van gegevens is gestart vanwege een nieuwe dag. | [Gebruik en kosten beheren met Azure Monitor-logboeken](/manage-cost-storage.md#alert-when-daily-cap-reached) |
 | Gegevens verzamelen | Waarschuwing | Het verzamelen van gegevens is gestopt omdat de dagelijkse limiet is bereikt.| [Gebruik en kosten beheren met Azure Monitor-logboeken](/manage-cost-storage.md#alert-when-daily-cap-reached) |
+| Gegevensverwerking | Fout   | Ongeldige JSON-indeling. | [Logboek gegevens naar Azure Monitor verzenden met de HTTP-gegevens verzamelaar-API (open bare preview)](data-collector-api.md#request-body) | 
+| Gegevensverwerking | Waarschuwing | Waarde is afgekapt tot de Maxi maal toegestane grootte. | [Servicebeperkingen van Azure Monitor](../service-limits.md#log-analytics-workspaces) |
+| Gegevensverwerking | Waarschuwing | Veld waarde is afgekapt omdat de maximale grootte is bereikt. | [Servicebeperkingen van Azure Monitor](../service-limits.md#log-analytics-workspaces) | 
 | Opname frequentie | Info | De limiet voor opname frequentie is 70%. | [Servicebeperkingen van Azure Monitor](../service-limits.md#log-analytics-workspaces) |
 | Opname frequentie | Waarschuwing | De limiet voor opname snelheden die de limiet nadert. | [Servicebeperkingen van Azure Monitor](../service-limits.md#log-analytics-workspaces) |
 | Opname frequentie | Fout   | Frequentie limiet bereikt. | [Servicebeperkingen van Azure Monitor](../service-limits.md#log-analytics-workspaces) |
-| JSON parseren | Fout   | Ongeldige JSON-indeling. | [Logboek gegevens naar Azure Monitor verzenden met de HTTP-gegevens verzamelaar-API (open bare preview)](data-collector-api.md#request-body) | 
-| JSON parseren | Waarschuwing | Waarde is afgekapt tot de Maxi maal toegestane grootte. | [Servicebeperkingen van Azure Monitor](../service-limits.md#log-analytics-workspaces) |
-| Maximale kolom grootte | Waarschuwing | Veld waarde is afgekapt omdat de maximale grootte is bereikt. | [Servicebeperkingen van Azure Monitor](../service-limits.md#log-analytics-workspaces) | 
 | Storage | Fout   | Kan geen toegang krijgen tot het opslag account omdat de gebruikte referenties ongeldig zijn.  |
-| Tabel   | Fout   | De maximale limiet voor aangepast veld is bereikt. | [Servicebeperkingen van Azure Monitor](../service-limits.md#log-analytics-workspaces)|
+
 
 
    
@@ -91,21 +91,32 @@ Als u een waarschuwings regel voor een specifieke bewerking wilt maken, gebruikt
 
 In het volgende voor beeld wordt een waarschuwing gegeven wanneer de frequentie van het opname volume 80% van de limiet heeft bereikt.
 
-```kusto
-_LogsOperation
-| where Category == "Ingestion"
-| where Operation == "Ingestion rate"
-| where Level == "Warning"
-```
+- Doel: Selecteer uw Log Analytics-werk ruimte
+- Gezocht
+  - Signaal naam: aangepaste zoek opdracht in Logboeken
+  - Zoek query: `_LogOperation | where Category == "Ingestion" | where Operation == "Ingestion rate" | where Level == "Warning"`
+  - Gebaseerd op: aantal resultaten
+  - Voor waarde: groter dan
+  - Drempel waarde: 0
+  - Periode: 5 (minuten)
+  - Frequentie: 5 (minuten)
+- Naam van waarschuwings regel: dagelijkse gegevens limiet bereikt
+- Ernst: waarschuwing (Ernst 1)
+
 
 In het volgende voor beeld wordt een waarschuwing gegeven wanneer de gegevens verzameling de dagelijkse limiet heeft bereikt. 
-```kusto
-Operation 
-| where OperationCategory == "Ingestion" 
-|where OperationKey == "Data Collection" 
-| where OperationStatus == "Warning"
-```
 
+- Doel: Selecteer uw Log Analytics-werk ruimte
+- Gezocht
+  - Signaal naam: aangepaste zoek opdracht in Logboeken
+  - Zoek query: `_LogOperation | where Category == "Ingestion" | where Operation == "Data Collection" | where Level == "Warning"`
+  - Gebaseerd op: aantal resultaten
+  - Voor waarde: groter dan
+  - Drempel waarde: 0
+  - Periode: 5 (minuten)
+  - Frequentie: 5 (minuten)
+- Naam van waarschuwings regel: dagelijkse gegevens limiet bereikt
+- Ernst: waarschuwing (Ernst 1)
 
 
 

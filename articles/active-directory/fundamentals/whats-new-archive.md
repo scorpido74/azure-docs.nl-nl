@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e13fe634db49dcc3f015eb90410c3b7753c8363
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: df1285145d0e8b04bf743a3967099d27d1195269
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318067"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362787"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Wilt u archiveren wat er nieuw is in Azure Active Directory?
 
@@ -183,7 +183,7 @@ Vanaf nu kunnen klanten met gratis tenants toegang krijgen tot de [aanmeldings l
 **Service categorie:** Groeps beheer  
 **Product mogelijkheden:** Werking
 
-Om ervoor te zorgen dat klanten flexibele groepen kunnen maken die het beste aan hun behoeften voldoen, hebben we de optie voor de **hele Directory groepen** vervangen uit de **Groups**  >  **algemene** instellingen voor groepen in de Azure Portal met een koppeling naar de [documentatie van dynamische groepen](../users-groups-roles/groups-dynamic-membership.md). We hebben onze documentatie verbeterd met meer instructies zodat beheerders alle groepen kunnen maken die gast gebruikers bevatten of uitsluiten.
+Om ervoor te zorgen dat klanten flexibele groepen kunnen maken die het beste aan hun behoeften voldoen, hebben we de optie voor de **hele Directory groepen** vervangen uit de **Groups**  >  **algemene** instellingen voor groepen in de Azure Portal met een koppeling naar de [documentatie van dynamische groepen](../enterprise-users/groups-dynamic-membership.md). We hebben onze documentatie verbeterd met meer instructies zodat beheerders alle groepen kunnen maken die gast gebruikers bevatten of uitsluiten.
 
 ---
 
@@ -739,7 +739,7 @@ Zie voor meer informatie [upgraden naar het facturerings model maandelijkse acti
 
 In oktober 2019 hebben we deze 35 nieuwe apps met federatieve ondersteuning toegevoegd aan de app-galerie:
 
-[In het geval van crisis: Mobile](../saas-apps/in-case-of-crisis-mobile-tutorial.md), [Juno traject](../saas-apps/juno-journey-tutorial.md), [ExponentHR](../saas-apps/exponenthr-tutorial.md), [intact](https://tact.ai/assistant/), [OpusCapita Liquid Management](http://cm1.opuscapita.com/tenantname), [Salestim](https://prd.salestim.io/forms), [Learnster](../saas-apps/learnster-tutorial.md), [Dynatrace](../saas-apps/dynatrace-tutorial.md), [HunchBuzz](https://login.hunchbuzz.com/integrations/azure/process), [Freshworks](../saas-apps/freshworks-tutorial.md), [eCornell](../saas-apps/ecornell-tutorial.md), [ShipHazmat](../saas-apps/shiphazmat-tutorial.md), [Netskope Cloud Security](../saas-apps/netskope-cloud-security-tutorial.md), [contented](../saas-apps/contentful-tutorial.md), [Bindtuning](https://bindtuning.com/login), [HireVue Coordinate – Europa](https://www.hirevue.com/), [HireVue-coördinaat-USOnly](https://www.hirevue.com/), [HIREVUE-coördinaten-US](https://www.hirevue.com/), [WittyParrot kennis Box](https://wittyapi.wittyparrot.com/wittyparrot/api/provision/trail/signup), [Cloudmore](../saas-apps/cloudmore-tutorial.md), [Visit.org](../saas-apps/visitorg-tutorial.md), [Cambium Xirrus EasyPass Portal](https://login.xirrus.com/azure-signup), [Paylocity](../saas-apps/paylocity-tutorial.md), [mail slag!](../saas-apps/mail-luck-tutorial.md), [Teamie](https://theteamie.com/), [snelheid voor teams](https://velocity.peakup.org/teams/login), [SIGNL4](https://account.signl4.com/manage), [EAB Navigeer IMPL](../saas-apps/eab-navigate-impl-tutorial.md), [ScreenMeet](https://console.screenmeet.com/), [Omega Point](https://pi.ompnt.com/), [spreek mail voor intune (iPhone)](https://speaking.email/FAQ/98/email-access-via-microsoft-intune), [gesp roken e-mail voor Office 365 direct (iPhone/Android)](https://speaking.email/FAQ/126/email-access-via-microsoft-office-365-direct) [,](https://qubie.azurewebsites.net/static/adminTab/authorize.html) [ExactCare SSO](../saas-apps/exactcare-sso-tutorial.md), [iHealthHome Care-navigatie systeem](https://ihealthnav.com/account/signin)
+[In het geval van crisis: Mobile](../saas-apps/in-case-of-crisis-mobile-tutorial.md), [Juno traject](../saas-apps/juno-journey-tutorial.md), [ExponentHR](../saas-apps/exponenthr-tutorial.md), [intact](https://tact.ai/assistant/), [OpusCapita Liquid Management](http://cm1.opuscapita.com/tenantname), [Salestim](https://www.salestim.com/), [Learnster](../saas-apps/learnster-tutorial.md), [Dynatrace](../saas-apps/dynatrace-tutorial.md), [HunchBuzz](https://login.hunchbuzz.com/integrations/azure/process), [Freshworks](../saas-apps/freshworks-tutorial.md), [eCornell](../saas-apps/ecornell-tutorial.md), [ShipHazmat](../saas-apps/shiphazmat-tutorial.md), [Netskope Cloud Security](../saas-apps/netskope-cloud-security-tutorial.md), [contented](../saas-apps/contentful-tutorial.md), [Bindtuning](https://bindtuning.com/login), [HireVue Coordinate – Europa](https://www.hirevue.com/), [HireVue-coördinaat-USOnly](https://www.hirevue.com/), [HIREVUE-coördinaten-US](https://www.hirevue.com/), [WittyParrot kennis Box](https://wittyapi.wittyparrot.com/wittyparrot/api/provision/trail/signup), [Cloudmore](../saas-apps/cloudmore-tutorial.md), [Visit.org](../saas-apps/visitorg-tutorial.md), [Cambium Xirrus EasyPass Portal](https://login.xirrus.com/azure-signup), [Paylocity](../saas-apps/paylocity-tutorial.md), [mail slag!](../saas-apps/mail-luck-tutorial.md), [Teamie](https://theteamie.com/), [snelheid voor teams](https://velocity.peakup.org/teams/login), [SIGNL4](https://account.signl4.com/manage), [EAB Navigeer IMPL](../saas-apps/eab-navigate-impl-tutorial.md), [ScreenMeet](https://console.screenmeet.com/), [Omega Point](https://pi.ompnt.com/), [spreek mail voor intune (iPhone)](https://speaking.email/FAQ/98/email-access-via-microsoft-intune), [gesp roken e-mail voor Office 365 direct (iPhone/Android)](https://speaking.email/FAQ/126/email-access-via-microsoft-office-365-direct) [,](https://qubie.azurewebsites.net/static/adminTab/authorize.html) [ExactCare SSO](../saas-apps/exactcare-sso-tutorial.md), [iHealthHome Care-navigatie systeem](https://ihealthnav.com/account/signin)
 
 Zie voor meer informatie over de apps [SaaS-toepassings integratie met Azure Active Directory](../saas-apps/tutorial-list.md). Zie [uw toepassing weer geven in de galerie van Azure Active Directory toepassingen](../azuread-dev/howto-app-gallery-listing.md)voor meer informatie over het weer geven van uw toepassing in de app-galerie van Azure AD.
 
@@ -755,7 +755,7 @@ Het menu nieuwe **beveiliging** bevat:
 
 - Voorwaardelijke toegang
 - Identiteitsbeveiliging
-- Security Center
+- Beveiligingscentrum
 - Identiteits veilige Score
 - Verificatiemethoden
 - MFA
@@ -774,7 +774,7 @@ Het verloop beleid van de Office 365-groepen is uitgebreid met het automatisch v
 
 Deze verbetering helpt u bij het verminderen van uw groeps meldingen en helpt ervoor te zorgen dat actieve groepen nog steeds beschikbaar zijn. Als u al een actief verloop beleid hebt voor uw Office 365-groepen, hoeft u niets te doen om deze nieuwe functionaliteit in te scha kelen.
 
-Zie [het verloop beleid voor Office 365-groepen configureren](../users-groups-roles/groups-lifecycle.md)voor meer informatie.
+Zie [het verloop beleid voor Office 365-groepen configureren](../enterprise-users/groups-lifecycle.md)voor meer informatie.
 
 ---
 
@@ -822,7 +822,7 @@ We zijn blij met het aankondigen van de open bare preview-Beschik baarheid van d
 
 - De lijst met groeps leden voor een specifieke groep downloaden.
 
-Zie voor meer informatie [bulksgewijs toevoegen leden](../users-groups-roles/groups-bulk-import-members.md), [leden bulksgewijs verwijderen](../users-groups-roles/groups-bulk-remove-members.md), [lijst met leden en items](../users-groups-roles/groups-bulk-download-members.md)bulksgewijs downloaden en [groepen](../users-groups-roles/groups-bulk-download.md).
+Zie voor meer informatie [bulksgewijs toevoegen leden](../enterprise-users/groups-bulk-import-members.md), [leden bulksgewijs verwijderen](../enterprise-users/groups-bulk-remove-members.md), [lijst met leden en items](../enterprise-users/groups-bulk-download-members.md)bulksgewijs downloaden en [groepen](../enterprise-users/groups-bulk-download.md).
 
 ---
 
@@ -861,7 +861,7 @@ De rol van algemene lezer werkt met de nieuwe Microsoft 365 beheer centrum, het 
 >[!NOTE]
 > Aan het begin van de open bare preview-versie werkt de rol van globale lezer niet met: share point, Privileged Access Management, Klanten-lockbox, gevoeligheids labels, teams levenscyclus, teams rapporteren & oproep analyse, teams IP-telefoon Apparaatbeheer en teams-app-catalogus.
 
-Zie [machtigingen voor beheerdersrol in azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md)voor meer informatie.
+Zie [machtigingen voor beheerdersrol in azure Active Directory](../roles/permissions-reference.md)voor meer informatie.
 
 ---
 
@@ -941,7 +941,7 @@ Zie [groepen beheren in de Azure Portal](./active-directory-groups-members-azure
 
 **Type:** Nieuwe functie **service categorie:** Azure AD roles- **Product mogelijkheden:** Access Control
 
-Aangepaste rollen (beschikbaar met een Azure AD P1-of P2-abonnement) kunnen u nu voorzien van gedetailleerde toegang, door roldefinities te maken met specifieke machtigingen en deze rollen vervolgens toe te wijzen aan specifieke resources. Op dit moment kunt u aangepaste rollen maken met behulp van machtigingen voor het beheren van app-registraties en vervolgens de rol toewijzen aan een specifieke app. Zie [aangepaste beheerders rollen in azure Active Directory (preview)](../users-groups-roles/roles-custom-overview.md)voor meer informatie over aangepaste rollen.
+Aangepaste rollen (beschikbaar met een Azure AD P1-of P2-abonnement) kunnen u nu voorzien van gedetailleerde toegang, door roldefinities te maken met specifieke machtigingen en deze rollen vervolgens toe te wijzen aan specifieke resources. Op dit moment kunt u aangepaste rollen maken met behulp van machtigingen voor het beheren van app-registraties en vervolgens de rol toewijzen aan een specifieke app. Zie [aangepaste beheerders rollen in azure Active Directory (preview)](../roles/custom-overview.md)voor meer informatie over aangepaste rollen.
 
 Als u aanvullende machtigingen of bronnen nodig hebt die momenteel niet worden weer gegeven, kunt u feedback verzenden naar onze [Azure-feedback site](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032) . we voegen uw aanvraag toe aan onze update-weg kaart.
 
@@ -1044,7 +1044,7 @@ Er zijn nieuwe updates beschikbaar voor de AzureAD-en AzureAD preview Power shel
 
 Er zijn enkele verbeteringen in de gebruikers interface aangebracht in de opbouw functie voor dynamische groeps regels, die beschikbaar is in de Azure Portal, zodat u gemakkelijk een nieuwe regel kunt instellen of bestaande regels kunt wijzigen. Met deze ontwerp verbetering kunt u regels maken met Maxi maal vijf expressies, in plaats van slechts één. Daarnaast hebben we de lijst met eigenschappen van het apparaat bijgewerkt om afgeschafte apparaateigenschappen te verwijderen.
 
-Zie [regels voor dynamische lidmaatschap beheren](../users-groups-roles/groups-dynamic-membership.md)voor meer informatie.
+Zie [regels voor dynamische lidmaatschap beheren](../enterprise-users/groups-dynamic-membership.md)voor meer informatie.
 
 ---
 
@@ -1530,7 +1530,7 @@ U kunt het naamgevings beleid voor Office 365-groepen op twee verschillende mani
 
 - Upload een aangepaste set geblokkeerde woorden voor uw organisatie, die niet zijn toegestaan in groeps namen (bijvoorbeeld "CEO, Payroll, HR").
 
-Zie [een naamgevings beleid afdwingen voor Office 365-groepen](../users-groups-roles/groups-naming-policy.md)voor meer informatie.
+Zie [een naamgevings beleid afdwingen voor Office 365-groepen](../enterprise-users/groups-naming-policy.md)voor meer informatie.
 
 ---
 
@@ -1594,7 +1594,7 @@ U kunt het naamgevings beleid voor Office 365-groepen op twee verschillende mani
 
 - Upload een aangepaste set geblokkeerde woorden voor uw organisatie, die niet zijn toegestaan in groeps namen (bijvoorbeeld "CEO, Payroll, HR").
 
-Zie [een naamgevings beleid afdwingen voor Office 365-groepen](../users-groups-roles/groups-naming-policy.md)voor meer informatie.
+Zie [een naamgevings beleid afdwingen voor Office 365-groepen](../enterprise-users/groups-naming-policy.md)voor meer informatie.
 
 ---
 
@@ -1740,7 +1740,7 @@ Voor meer informatie over hoe u uw organisatie beter kunt beveiligen door middel
 
 U kunt nu uw verwijderde Office 365-groepen bekijken en beheren via de Azure AD-Portal. Met deze wijziging kunt u zien welke groepen beschikbaar zijn om te herstellen, en kunt u alle groepen die niet nodig zijn voor uw organisatie permanent verwijderen.
 
-Zie [verlopen of verwijderde groepen herstellen](../users-groups-roles/groups-restore-deleted.md#view-and-manage-the-deleted-microsoft-365-groups-that-are-available-to-restore)voor meer informatie.
+Zie [verlopen of verwijderde groepen herstellen](../enterprise-users/groups-restore-deleted.md#view-and-manage-the-deleted-microsoft-365-groups-that-are-available-to-restore)voor meer informatie.
 
 ---
 
@@ -2097,7 +2097,7 @@ Voor meer informatie over het gebruik van de Microsoft Authenticator-app om wach
 
 Beheerders kunnen gebruikers toewijzen aan de nieuwe rol van de beheerder van het Cloud apparaat voor het uitvoeren van beheer taken voor de Cloud. Gebruikers met de rol Administrators van Cloud apparaten kunnen apparaten in azure AD inschakelen, uitschakelen en verwijderen, en kunnen Windows 10 BitLocker-sleutels (indien aanwezig) in de Azure Portal lezen.
 
-Zie [beheerders rollen toewijzen in azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md) voor meer informatie over rollen en machtigingen.
+Zie [beheerders rollen toewijzen in azure Active Directory](../roles/permissions-reference.md) voor meer informatie over rollen en machtigingen.
 
 ---
 
@@ -2226,7 +2226,7 @@ Het is blij dat u de ForceDelete-domein-API kunt gebruiken om uw aangepaste dome
 
 Met deze wijziging kunt u uw aangepaste domein namen sneller verwijderen als uw organisatie de naam niet meer gebruikt of als u de domein naam moet gebruiken met een andere Azure AD.
 
-Zie [een aangepaste domein naam verwijderen](../users-groups-roles/domains-manage.md#delete-a-custom-domain-name)voor meer informatie.
+Zie [een aangepaste domein naam verwijderen](../enterprise-users/domains-manage.md#delete-a-custom-domain-name)voor meer informatie.
 
 ---
 
@@ -2246,7 +2246,7 @@ De rollen zijn:
 
 - Gebruikersbeheerder
 
-Zie [een dynamische groep maken en de status controleren](../users-groups-roles/groups-create-rule.md) voor meer informatie
+Zie [een dynamische groep maken en de status controleren](../enterprise-users/groups-create-rule.md) voor meer informatie
 
 ---
 
@@ -2303,7 +2303,7 @@ Het nieuwe tabblad **probleem oplossing en ondersteuning** op de pagina **aanmel
 
 Met deze update kunt u nu klikken op de koppeling **aangepaste extensie eigenschappen ophalen** van de opbouw functie voor de groep voor dynamische gebruikers, uw unieke App-ID invoeren en de volledige lijst met aangepaste extensie-eigenschappen ontvangen die moeten worden gebruikt bij het maken van een dynamische lidmaatschaps regel voor gebruikers. Deze lijst kan ook worden vernieuwd om nieuwe aangepaste extensie-eigenschappen voor die app op te halen.
 
-Voor meer informatie over het gebruik van aangepaste uitbreidings eigenschappen voor dynamische lidmaatschaps regels raadpleegt u de eigenschappen van de [extensie en aangepaste extensie](../users-groups-roles/groups-dynamic-membership.md#extension-properties-and-custom-extension-properties)
+Voor meer informatie over het gebruik van aangepaste uitbreidings eigenschappen voor dynamische lidmaatschaps regels raadpleegt u de eigenschappen van de [extensie en aangepaste extensie](../enterprise-users/groups-dynamic-membership.md#extension-properties-and-custom-extension-properties)
 
 ---
 
@@ -2807,7 +2807,7 @@ Beheerders kunnen nu app-beheer taken delegeren zonder de rol van globale beheer
 
     - **Eigenaar van de Enter prise-app.** Biedt de mogelijkheid om veel aspecten van bedrijfs-apps te beheren, waaronder SSO-instellingen, app-toewijzingen en toestemming (met uitzonde ring van Azure AD-resources).
 
-Voor meer informatie over open bare preview-versie, zie de [open bare preview-functie voor Azure AD-gedelegeerde toepassingen.](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/13/hallelujah-azure-ad-delegated-application-management-roles-are-in-public-preview/) Blogs. Zie [beheerders rollen toewijzen in azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md)voor meer informatie over rollen en machtigingen.
+Voor meer informatie over open bare preview-versie, zie de [open bare preview-functie voor Azure AD-gedelegeerde toepassingen.](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/13/hallelujah-azure-ad-delegated-application-management-roles-are-in-public-preview/) Blogs. Zie [beheerders rollen toewijzen in azure Active Directory](../roles/permissions-reference.md)voor meer informatie over rollen en machtigingen.
 
 ---
 
@@ -3254,7 +3254,7 @@ Zie [de lijst met gebruikers kenmerken van workday aanpassen](../saas-apps/workd
 Het is mogelijk om te wijzigen hoe het lidmaatschap wordt beheerd in een groep. Dit is handig als u dezelfde groeps naam en ID in het systeem wilt behouden, zodat eventuele bestaande verwijzingen naar de groep nog geldig zijn. Als u een nieuwe groep maakt, moeten deze verwijzingen worden bijgewerkt.
 Het Azure AD-beheer centrum is bijgewerkt voor ondersteuning van deze functionaliteit. Klanten kunnen nu bestaande groepen van een dynamisch lidmaatschap omzetten in een toegewezen lidmaatschap en vice versa. De bestaande Power shell-cmdlets zijn ook nog steeds beschikbaar.
 
-Zie voor meer informatie [dynamische lidmaatschaps regels voor groepen in azure Active Directory](../users-groups-roles/groups-dynamic-membership.md)
+Zie voor meer informatie [dynamische lidmaatschaps regels voor groepen in azure Active Directory](../enterprise-users/groups-dynamic-membership.md)
 
 ---
 

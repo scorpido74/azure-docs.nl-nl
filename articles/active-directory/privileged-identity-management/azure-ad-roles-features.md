@@ -14,12 +14,12 @@ ms.date: 07/10/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c039842a04923bc02aa288576570d51c39156c40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4478c9c286c06d5d6c5593195a0e93abd286b8c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88784008"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371508"
 ---
 # <a name="management-capabilities-for-azure-ad-roles-in-privileged-identity-management"></a>Beheer mogelijkheden voor Azure AD-rollen in Privileged Identity Management
 
@@ -69,4 +69,4 @@ Voor klanten die de Privileged Identity Management Power shell-module voor Azure
 - [Een aangepaste Azure AD-rol toewijzen](azure-ad-custom-roles-assign.md)
 - [Een aangepaste gebruikersrol toewijzing van Azure AD verwijderen of bijwerken](azure-ad-custom-roles-update-remove.md)
 - [Een aangepaste functie toewijzing voor Azure AD configureren](azure-ad-custom-roles-configure.md)
-- [Roldefinities in azure AD](../users-groups-roles/directory-assign-admin-roles.md)
+- [Roldefinities in azure AD](../roles/permissions-reference.md)

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: ddba41acfcfe497059a661b701906cda0d4d77c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14f6fc685e99060474a17503cb13ba09a61a5a9a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91398354"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149206"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>Zelfstudie: Deel 2: de gerouteerde berichten weergeven
 
@@ -280,7 +280,7 @@ Meld u aan bij uw [Power BI](https://powerbi.microsoft.com/)-account. Ga naar uw
 
 ### <a name="use-the-azure-cli-to-clean-up-resources"></a>Resources opschonen met de Azure-CLI
 
-U kunt de resourcegroep verwijderen met de opdracht [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete). `$resourceGroup` is aan het begin van deze zelfstudie ingesteld op **ContosoResources**.
+U kunt de resourcegroep verwijderen met de opdracht [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete). `$resourceGroup` is aan het begin van deze zelfstudie ingesteld op **ContosoResources**.
 
 ```azurecli-interactive
 az group delete --name $resourceGroup
@@ -288,7 +288,7 @@ az group delete --name $resourceGroup
 
 ### <a name="use-powershell-to-clean-up-resources"></a>Resources opschonen met PowerShell
 
-U kunt de resourcegroep verwijderen met de opdracht [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup). `$resourceGroup` is aan het begin van deze zelfstudie ingesteld op **ContosoResources**.
+U kunt de resourcegroep verwijderen met de opdracht [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup). `$resourceGroup` is aan het begin van deze zelfstudie ingesteld op **ContosoResources**.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name $resourceGroup

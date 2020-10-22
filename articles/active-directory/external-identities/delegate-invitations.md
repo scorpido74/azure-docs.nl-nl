@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb0147af559d9de4a8589344d61b06368086dd20
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5a983931bd372931eacff2f7b21f3358f536046
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91278784"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362923"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>Externe B2B-samenwerking inschakelen en beheren wie gasten kan uitnodigen
 
@@ -24,7 +24,7 @@ In dit artikel wordt beschreven hoe u de samen werking van Azure Active Director
 
 Standaard kunnen alle gebruikers en gasten in uw directory gasten uitnodigen, zelfs als ze niet zijn toegewezen aan een beheerdersrol. Met instellingen voor externe samen werking kunt u uitnodigingen voor gasten in-of uitschakelen voor verschillende soorten gebruikers in uw organisatie. U kunt uitnodigingen ook overdragen aan afzonderlijke gebruikers door rollen toe te wijzen waarmee gasten kunnen worden uitgenodigd.
 
-Met Azure AD kunt u bepalen welke externe gast gebruikers in uw Azure AD-Directory kunnen worden weer geven. Gast gebruikers zijn standaard ingesteld op een beperkt machtigings niveau waarmee ze worden geblokkeerd voor het inventariseren van gebruikers, groepen of andere Directory bronnen, maar ze kunnen het lidmaatschap van niet-verborgen groepen zien. Met een nieuwe preview-instelling kunt u de toegang tot gasten nog verder beperken, zodat gasten alleen hun eigen profiel gegevens kunnen weer geven. Zie [machtigingen voor gast toegang beperken (preview)](../users-groups-roles/users-restrict-guest-permissions.md)voor meer informatie.
+Met Azure AD kunt u bepalen welke externe gast gebruikers in uw Azure AD-Directory kunnen worden weer geven. Gast gebruikers zijn standaard ingesteld op een beperkt machtigings niveau waarmee ze worden geblokkeerd voor het inventariseren van gebruikers, groepen of andere Directory bronnen, maar ze kunnen het lidmaatschap van niet-verborgen groepen zien. Met een nieuwe preview-instelling kunt u de toegang tot gasten nog verder beperken, zodat gasten alleen hun eigen profiel gegevens kunnen weer geven. Zie [machtigingen voor gast toegang beperken (preview)](../enterprise-users/users-restrict-guest-permissions.md)voor meer informatie.
 
 ## <a name="configure-b2b-external-collaboration-settings"></a>Externe B2B-samenwerkings instellingen configureren
 

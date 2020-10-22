@@ -16,12 +16,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: def74cccb3ad2c45a18210cc9d5a0d7ff0ba76f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4a18ad04064ef8356e21d106843d6c946f50741
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88783685"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362719"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Azure AD-toegangs beoordelingen gebruiken voor het beheren van gebruikers die zijn uitgesloten van het beleid voor voorwaardelijke toegang
 
@@ -38,7 +38,7 @@ Een ander voor beeld is het mogelijk om [benoemde locaties](../conditional-acces
 
 ![Benoemde locaties in voorwaardelijke toegang](./media/conditional-access-exclusion/named-locations.png)
 
-Helaas kunnen sommige gebruikers nog steeds een geldige reden hebben om zich aan te melden vanuit deze geblokkeerde landen/regio's. Gebruikers kunnen bijvoorbeeld op reis zijn en moeten toegang hebben tot bedrijfs bronnen. In dit geval kan het beleid voor voorwaardelijke toegang om deze landen/regio's te blok keren, een Cloud beveiligings groep voor de uitgesloten gebruikers van het beleid gebruiken. Gebruikers die toegang nodig hebben tijdens het reizen, kunnen zichzelf toevoegen aan de groep met [Azure AD self-service groeps beheer](../users-groups-roles/groups-self-service-management.md).
+Helaas kunnen sommige gebruikers nog steeds een geldige reden hebben om zich aan te melden vanuit deze geblokkeerde landen/regio's. Gebruikers kunnen bijvoorbeeld op reis zijn en moeten toegang hebben tot bedrijfs bronnen. In dit geval kan het beleid voor voorwaardelijke toegang om deze landen/regio's te blok keren, een Cloud beveiligings groep voor de uitgesloten gebruikers van het beleid gebruiken. Gebruikers die toegang nodig hebben tijdens het reizen, kunnen zichzelf toevoegen aan de groep met [Azure AD self-service groeps beheer](../enterprise-users/groups-self-service-management.md).
 
 Een ander voor beeld is mogelijk dat u een beleid voor voorwaardelijke toegang hebt dat [verouderde verificatie voor de meeste gebruikers blokkeert](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/07/azure-ad-conditional-access-support-for-blocking-legacy-auth-is-in-public-preview/). Als u echter een aantal gebruikers hebt die verouderde verificatie methoden moeten gebruiken om toegang te krijgen tot uw resources via Office 2010-of IMAP/SMTP/POP-clients, kunt u deze gebruikers uitsluiten van het beleid dat verouderde verificatie methoden blokkeert.
 

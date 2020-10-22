@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 74ebd25cb48276f76cdf379eaa596f4ec1f3a2b9
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 2de3f78b58e10a4fbf65bb00d516448a089f85b6
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92312597"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370947"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Naslag informatie over Azure Active Directory algemene bedienings handleiding
 
@@ -49,7 +49,7 @@ Wanneer u uw lijst bekijkt, moet u mogelijk een eigenaar toewijzen voor taken wa
 
 #### <a name="owners-recommended-reading"></a>Eigen aren aanbevolen lezen
 
-- [Beheerdersrollen toewijzen in Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md)
+- [Beheerdersrollen toewijzen in Azure Active Directory](../roles/permissions-reference.md)
 - [Governance in Azure](../../governance/index.yml)
 
 ## <a name="hybrid-management"></a>Hybride beheer
@@ -154,7 +154,7 @@ Raadpleeg de volgende tabel voor meer informatie over het type meldingen dat wor
 
 ### <a name="ad-fs-lockdown"></a>AD FS Lockdown
 
-Organisaties, waarmee toepassingen worden geconfigureerd om rechtstreeks naar Azure AD te worden geprofiteerd van [Azure AD Smart-vergren deling](../authentication/concept-sspr-howitworks.md). Als u AD FS gebruikt in Windows Server 2012 R2, implementeert u AD FS [beveiliging voor vergren delen](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)van het extranet. Als u AD FS op Windows Server 2016 of hoger gebruikt, moet u [extranet slimme vergren deling](https://support.microsoft.com/help/4096478/extranet-smart-lockout-feature-in-windows-server-2016)implementeren. We raden u aan om extranet vergrendeling in te scha kelen om het risico van beveiligings aanvallen tegen een on-premises Active Directory te bevatten. Als u echter AD FS hebt in Windows 2016 of hoger, moet u ook smartcard vergrendeling inschakelen die helpt bij het oplossen van aanvallen op [wachtwoord](https://www.microsoft.com/microsoft-365/blog/2018/03/05/azure-ad-and-adfs-best-practices-defending-against-password-spray-attacks/) niveau.
+Organisaties, waarmee toepassingen worden geconfigureerd om rechtstreeks naar Azure AD te worden geprofiteerd van [Azure AD Smart-vergren deling](../authentication/concept-sspr-howitworks.md). Als u AD FS gebruikt in Windows Server 2012 R2, implementeert u AD FS [beveiliging voor vergren delen](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)van het extranet. Als u AD FS op Windows Server 2016 of hoger gebruikt, moet u [extranet slimme vergren deling](https://support.microsoft.com/help/4096478/extranet-smart-lockout-feature-in-windows-server-2016)implementeren. We raden u aan om extranet vergrendeling in te scha kelen om het risico van beveiligings aanvallen tegen een on-premises Active Directory te bevatten. Als u echter AD FS hebt in Windows 2016 of hoger, moet u ook smartcard vergrendeling inschakelen die helpt bij het oplossen van aanvallen op [wachtwoord](https://www.microsoft.com/microsoft-365/blog/2018/03/05/azure-ad-and-adfs-best-practices-defending-against-password-spray-attacks/) niveau.
 
 Als AD FS alleen wordt gebruikt voor Azure AD Federation, zijn er een aantal eind punten die kunnen worden uitgeschakeld om de aanval surface area te minimaliseren. Als AD FS bijvoorbeeld alleen wordt gebruikt voor Azure AD, moet u WS-Trust eind punten uitschakelen, behalve de eind punten die zijn ingeschakeld voor **usernamemixed** en **windowstransport**.
 
@@ -166,9 +166,9 @@ Het Active Directory administratieve laag model is ontworpen om identiteits syst
 
 Het [laag model](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material) bestaat uit drie niveaus en bevat alleen administratieve accounts, niet standaard gebruikers accounts.
 
-- **Laag 0**   -Direct beheer van ondernemings identiteiten in de omgeving. Laag 0 bevat accounts, groepen en andere activa die directe of indirecte controle hebben over het beheer van Active Directory-forest, -domeinen of -domeincontrollers en alle activa daarvan. De beveiliging van alle activa op laag 0 is even gevoelig omdat ze elkaar in stand houden.
-- **Laag 1**   -Beheer van bedrijfs servers en-toepassingen. De activa op laag 1 zijn serverbesturingssystemen, cloudservices en bedrijfstoepassingen. De administratoraccounts op laag 1 hebben controle over het beheer van een groot deel van de bedrijfswaarde die op deze activa wordt gehost. Een veelgebruikt voorbeeld is de rol van de serverbeheerders. Zij onderhouden deze besturingssystemen en kunnen invloed uitoefenen op alle bedrijfsservices.
-- **Laag 2**   -Controle van werk stations en apparaten van gebruikers. De administratoraccounts op laag 2 hebben controle over het beheer van een groot deel van de bedrijfswaarde die op werkstations en apparaten van gebruikers wordt gehost. Voorbeelden zijn de medewerkers van de helpdesk en computerondersteuning. Zij hebben immers invloed op de integriteit van nagenoeg alle gebruikersgegevens.
+- **Laag 0**: directe controle over de ondernemings-id's in de omgeving. Laag 0 bevat accounts, groepen en andere activa die directe of indirecte controle hebben over het beheer van Active Directory-forest, -domeinen of -domeincontrollers en alle activa daarvan. De beveiliging van alle activa op laag 0 is even gevoelig omdat ze elkaar in stand houden.
+- **Laag 1**: controle over bedrijfsservers en -toepassingen. De activa op laag 1 zijn serverbesturingssystemen, cloudservices en bedrijfstoepassingen. De administratoraccounts op laag 1 hebben controle over het beheer van een groot deel van de bedrijfswaarde die op deze activa wordt gehost. Een veelgebruikt voorbeeld is de rol van de serverbeheerders. Zij onderhouden deze besturingssystemen en kunnen invloed uitoefenen op alle bedrijfsservices.
+- **Laag 2**: de controle over werkstations en apparaten van gebruikers. De administratoraccounts op laag 2 hebben controle over het beheer van een groot deel van de bedrijfswaarde die op werkstations en apparaten van gebruikers wordt gehost. Voorbeelden zijn de medewerkers van de helpdesk en computerondersteuning. Zij hebben immers invloed op de integriteit van nagenoeg alle gebruikersgegevens.
 
 Vergrendel de toegang tot on-premises identiteits onderdelen, zoals Azure AD Connect, AD FS en SQL-services op dezelfde manier als voor domein controllers.
 
