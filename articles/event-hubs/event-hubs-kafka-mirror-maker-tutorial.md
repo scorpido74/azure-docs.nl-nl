@@ -3,12 +3,12 @@ title: Apache Kafka MirrorMaker gebruiken-Azure Event Hubs | Microsoft Docs
 description: Dit artikel bevat informatie over het gebruik van Kafka MirrorMaker om een Kafka-cluster in evenementen hubs te spie gelen.
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: ab0f78adeeff34334c9800632fc58ab634b4fab6
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: d1ec20a32ef27856483492212608e20e82725f58
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92308361"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369519"
 ---
 # <a name="use-kafka-mirrormaker-with-event-hubs-for-apache-kafka"></a>Gebruik Kafka MirrorMaker met Event Hubs voor Apache Kafka
 
@@ -100,6 +100,9 @@ sasl.mechanism=PLAIN
 security.protocol=SASL_SSL
 sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
 ```
+
+> [!IMPORTANT]
+> Vervang `{YOUR.EVENTHUBS.CONNECTION.STRING}` door de verbindingsreeks voor uw Event Hubs-naamruimte. Zie [een Event Hubs Connection String ophalen](event-hubs-get-connection-string.md)voor instructies over het ophalen van de Connection String. Hier volgt een voor beeld van een configuratie: `sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://mynamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXX";`
 
 ## <a name="run-kafka-mirrormaker"></a>Kafka MirrorMaker uitvoeren
 

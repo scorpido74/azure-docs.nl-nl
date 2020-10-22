@@ -8,10 +8,10 @@ ms.custom:
 - devx-track-csharp
 - contperfq1
 ms.openlocfilehash: 1bacb0c71c05aeb983bfa9ebf71873a22fea39a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 10/22/2020
 ms.locfileid: "91277696"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Toepassingen implementeren op reken knooppunten met batch-toepassings pakketten
@@ -103,7 +103,7 @@ Selecteer in uw batch-account **toepassingen** en selecteer vervolgens **toevoeg
 
 :::image type="content" source="media/batch-application-packages/app_pkg_05.png" alt-text="Diagram van een weer gave op hoog niveau van toepassingen en toepassings pakketten.":::
 
-Voer de volgende gegevens in:
+Voer de volgende informatie in:
 
 - **Toepassings-id**: de id van de nieuwe toepassing.
 - **Versie**: de versie van het toepassings pakket dat u uploadt.

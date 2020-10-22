@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: ab76b4aafd73173077d5b2b9f29e6e2da24c1710
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: f65707d80461385c28369e75a294865e03f8c662
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104390"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367734"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Actiegroepen maken en beheren in de Azure-portal
 Een actie groep is een verzameling voor keuren voor meldingen die zijn gedefinieerd door de eigenaar van een Azure-abonnement. Azure Monitor-en Service Health-waarschuwingen gebruiken actie groepen om gebruikers te laten weten dat een waarschuwing is geactiveerd. Verschillende waarschuwingen kunnen dezelfde actie groep of verschillende actie groepen gebruiken, afhankelijk van de vereisten van de gebruiker. U kunt Maxi maal 2.000 actie groepen in een abonnement configureren.
@@ -120,7 +120,7 @@ Mogelijk hebt u een beperkt aantal Runbook-acties in een actie groep.
 ### <a name="azure-app-push-notifications"></a>Push meldingen van Azure-app
 Mogelijk hebt u een beperkt aantal Azure-app-acties in een actie groep.
 
-### <a name="email"></a>E-mail
+### <a name="email"></a>Email
 E-mails worden verzonden vanaf de volgende e-mail adressen. Controleren of uw e-mail filtering op de juiste wijze is geconfigureerd
 - azure-noreply@microsoft.com
 - azureemail-noreply@microsoft.com
@@ -157,7 +157,7 @@ Met de actie groepen webhook kunt u gebruikmaken van Azure Active Directory om d
 2. Schakel actie groepen in voor het gebruik van uw Azure AD-toepassing.
 
     > [!NOTE]
-    > U moet lid zijn van de [rol Azure AD-toepassings beheerder](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#available-roles) om dit script uit te voeren.
+    > U moet lid zijn van de [rol Azure AD-toepassings beheerder](../../active-directory/roles/permissions-reference.md#available-roles) om dit script uit te voeren.
     
     - Wijzig de Connect-AzureAD aanroep van het Power shell-script om uw Azure AD-Tenant-ID te gebruiken.
     - Wijzig de variabele van het Power shell-script $myAzureADApplicationObjectId om de object-ID van uw Azure AD-toepassing te gebruiken.

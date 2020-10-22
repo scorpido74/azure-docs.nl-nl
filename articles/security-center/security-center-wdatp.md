@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 1574810de5b1a2df1b82ea9cc19c88be5c72fec6
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 372ff1dc53f15a1338cad933fec64746b6736f40
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342141"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368079"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Bescherm uw eind punten met de geïntegreerde EDR-oplossing van Security Center: micro soft Defender voor eind punt
 
@@ -85,7 +85,7 @@ Nadat u de locatie hebt geconfigureerd, kunt u deze niet meer wijzigen. Als u uw
 1. Selecteer **Prijzen en instellingen** in het hoofdmenu van Security Center.
 1. Selecteer het abonnement dat u wilt wijzigen.
 1. Selecteer **Detectie van dreigingen**.
-1. Selecteer **Windows Defender ATP toestaan om toegang te krijgen tot mijn gegevens**en selecteer **Opslaan**.
+1. Selecteer **micro soft Defender voor eind punt toestaan om toegang te krijgen tot mijn gegevens**en selecteer **Opslaan**.
 
     :::image type="content" source="./media/security-center-wdatp/enable-integration-with-edr.png" alt-text="De eigen Security Center van micro soft Defender voor het eind punt":::
 

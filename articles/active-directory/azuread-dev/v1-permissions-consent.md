@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: jesakowi
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: c600e1fddc0089a508ff0cfebbbb3476f3a90008
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b85115d905cb6a7eb7c6aed64a4834425d2f1d7
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88117614"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366391"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Machtigingen en toestemming in het Azure Active Directory v 1.0-eind punt
 
@@ -38,7 +38,7 @@ Azure AD definieert twee soorten machtigingen:
 
 Effectieve machtigingen zijn de machtigingen die uw app zal hebben wanneer deze aanvragen bij een API indient. 
 
-* Voor gedelegeerde machtigingen vormen de effectieve machtigingen van uw app de minst geprivilegieerde kruising van de gedelegeerde machtigingen die aan de app zijn verleend (via toestemming) en de machtigingen van de gebruiker die op dit moment is aangemeld. Uw app kan nooit meer machtigingen hebben dan de aangemelde gebruiker. De machtigingen van de aangemelde gebruiker kunnen in organisaties worden bepaald door beleid of door lidmaatschap in een of meer beheerdersrollen. Zie [Administrator role permissions in azure AD](../users-groups-roles/directory-assign-admin-roles.md)(Engelstalig) voor meer informatie over welke beheerders rollen toestemming kunnen geven voor gedelegeerde machtigingen.
+* Voor gedelegeerde machtigingen vormen de effectieve machtigingen van uw app de minst geprivilegieerde kruising van de gedelegeerde machtigingen die aan de app zijn verleend (via toestemming) en de machtigingen van de gebruiker die op dit moment is aangemeld. Uw app kan nooit meer machtigingen hebben dan de aangemelde gebruiker. De machtigingen van de aangemelde gebruiker kunnen in organisaties worden bepaald door beleid of door lidmaatschap in een of meer beheerdersrollen. Zie [Administrator role permissions in azure AD](../roles/permissions-reference.md)(Engelstalig) voor meer informatie over welke beheerders rollen toestemming kunnen geven voor gedelegeerde machtigingen.
     Stel bijvoorbeeld dat in Microsoft Graph de gedelegeerde machtiging `User.ReadWrite.All` aan uw app is verleend. Deze machtiging verleent uw app in feite machtigingen om het profiel van elke gebruiker in een organisatie te lezen en bij te werken. Als de aangemelde gebruiker een globale beheerder is, kan uw app het profiel van elke gebruiker in de organisatie bijwerken. Als de aangemelde gebruiker echter geen beheerdersrol heeft, zal uw app alleen het profiel van de aangemelde gebruiker kunnen bijwerken. De app kan geen profielen van andere gebruikers in de organisatie bijwerken omdat de gebruiker namens welke de app machtigingen heeft om te handelen niet over deze rechten beschikt.
 * De effectieve machtigingen van uw app bestaan in het geval van toepassingsmachtigingen uit de volledige rechten die door de machtiging zijn geïmpliceerd. Een app met de toepassingsmachtiging `User.ReadWrite.All` kan bijvoorbeeld het profiel van elke gebruiker in de organisatie bijwerken.
 

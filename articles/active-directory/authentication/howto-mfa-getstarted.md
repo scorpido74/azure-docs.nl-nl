@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2cbb9876d9e28b2cab8efb9ccdb2aa543fcc4b4
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d3d03f46e3948d1134c442f93af2e8f274dcd256
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964465"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366476"
 ---
 # <a name="plan-an-azure-multi-factor-authentication-deployment"></a>Een Azure Multi-Factor Authentication-implementatie plannen
 
@@ -226,7 +226,7 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 
 Voor het plannen van de strategie voor het beleid voor voorwaardelijke toegang, die bepaalt wanneer MFA en andere besturings elementen vereist zijn, raadpleegt u [Common Access policies (algemene beleids regels voor voorwaardelijke toegang](../conditional-access/concept-conditional-access-policy-common.md)).
 
-Het is belang rijk dat u niet per ongeluk uw Azure AD-Tenant kunt vergren delen. U kunt de impact van dit onbedoelde gebrek aan administratieve toegang verminderen door [twee of meer accounts voor toegang tot een nood geval in uw Tenant te maken](../users-groups-roles/directory-emergency-access.md) en ze uit te sluiten van uw beleid voor voorwaardelijke toegang.
+Het is belang rijk dat u niet per ongeluk uw Azure AD-Tenant kunt vergren delen. U kunt de impact van dit onbedoelde gebrek aan administratieve toegang verminderen door [twee of meer accounts voor toegang tot een nood geval in uw Tenant te maken](../roles/security-emergency-access.md) en ze uit te sluiten van uw beleid voor voorwaardelijke toegang.
 
 ### <a name="create-conditional-access-policy"></a>Beleid voor voorwaardelijke toegang maken
 

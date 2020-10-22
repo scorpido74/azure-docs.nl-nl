@@ -9,12 +9,12 @@ ms.date: 08/05/2020
 ms.topic: how-to
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 20ed84a87486f1095a90e012368b1f56d6426c8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34750bcc2e9913b23daa3682d4fdea736f9c7a9a
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88205725"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367428"
 ---
 # <a name="manage-azure-portal-settings-and-preferences"></a>Azure-portalinstellingen en -voorkeuren beheren
 
@@ -44,7 +44,7 @@ U kunt de pagina die standaard wordt geopend, wijzigen wanneer u zich aanmeldt b
 
 - **Start pagina** kan niet worden aangepast.  Het bevat snelkoppelingen naar populaire Azure-Services en geeft een lijst van de resources die u het laatst hebt gebruikt. We bieden u ook nuttige koppelingen naar resources zoals Microsoft Learn en het Azure-schema.
 
-- Dash boards kunnen worden aangepast om een werk ruimte te maken die alleen voor u is ontworpen. U kunt bijvoorbeeld een dash board maken dat is gericht op project, taak of rol. Als u **dash board**selecteert, gaat uw standaard weergave naar het meest recent gebruikte dash board. Zie [Dash boards maken en delen in de Azure Portal](azure-portal-dashboards.md)voor meer informatie.
+- Dash boards kunnen worden aangepast om een werk ruimte te maken die alleen voor u is ontworpen. U kunt bijvoorbeeld een dash board maken dat is gericht op project, taak of rol. Als u **dash board**selecteert, gaat uw standaard weergave naar het meest recent gebruikte dash board. Zie [Dashboards maken en delen in de Azure Portal](azure-portal-dashboards.md) voor meer informatie.
 
 ## <a name="choose-a-portal-menu-mode"></a>Kies een portal menu modus
 
@@ -52,9 +52,9 @@ De standaard modus voor het menu Portal bepaalt hoeveel ruimte het menu van de p
 
 ![Scherm opname van Azure Portal instellingen met Thema's gemarkeerd](./media/set-preferences/menu-mode.png)
 
-- Wanneer het menu van de portal in de **flyout** wordt weer gegeven, wordt het verborgen tot u het nodig hebt. Selecteer het menu pictogram om het menu te openen of te sluiten.
+- Wanneer het menu van de portal in de **flyout** wordt weer gegeven, wordt het verborgen tot u het nodig hebt. Selecteer het menu-pictogram om het menu te openen of te sluiten.
 
-- Als u de **modus gedokt** kiest voor het menu Portal, is deze altijd zichtbaar. U kunt het menu samen vouwen om meer werk ruimte beschikbaar te maken.
+- Als u de **modus gedokt** kiest voor het menu Portal, is deze altijd zichtbaar. U kunt het menu samenvouwen om meer werkruimte te creëren.
 
 ## <a name="choose-a-theme-or-enable-high-contrast"></a>Kies een thema of schakel hoog contrast in
 
@@ -96,7 +96,7 @@ Als uw beheerder een time-outbeleid voor inactiviteit heeft ingeschakeld, kunt u
 
 ### <a name="change-the-directory-timeout-setting-admin"></a>De time-outinstelling van de map wijzigen (beheerder)
 
-Beheerders in de [rol globale beheerder](../active-directory/users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator) kunnen het maximum aantal niet-actieve tijd afdwingen voordat een sessie wordt afgemeld. De instelling time-out voor inactiviteit is van toepassing op het niveau van de Directory. De instelling wordt van kracht voor nieuwe sessies. Deze functie wordt niet onmiddellijk toegepast op alle gebruikers die al zijn aangemeld. Zie [Active Directory Domain Services Overview](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)voor meer informatie over directory's.
+Beheerders in de [rol globale beheerder](../active-directory/roles/permissions-reference.md#global-administrator--company-administrator) kunnen het maximum aantal niet-actieve tijd afdwingen voordat een sessie wordt afgemeld. De instelling time-out voor inactiviteit is van toepassing op het niveau van de Directory. De instelling wordt van kracht voor nieuwe sessies. Deze functie wordt niet onmiddellijk toegepast op alle gebruikers die al zijn aangemeld. Zie [Active Directory Domain Services Overview](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)voor meer informatie over directory's.
 
 Als u een globale beheerder bent en u een instelling voor een inactieve time-out wilt afdwingen voor alle gebruikers van de Azure Portal, voert u de volgende stappen uit:
 

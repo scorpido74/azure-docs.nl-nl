@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b90ca2812651e139fb62d86ba0bf4d181d5e9d76
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 0e44cb38435ca86ad7cd4709d5e99f5cf41fcf91
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145278"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366323"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>Een implementatie van voorwaardelijke toegang plannen
 
@@ -220,7 +220,7 @@ Het maken van een beleid voor elke app is niet efficiënt en leidt tot moeilijk 
 
 ### <a name="set-up-emergency-access-accounts"></a>Accounts voor nood toegang instellen
 
-Als u een beleid hebt geconfigureerd, kan het de organisaties van de Azure Portal vergren delen. Het beperken van de impact van de onbedoelde beheerder vergrendeling door twee of meer [accounts voor toegang tot een nood geval](../users-groups-roles/directory-emergency-access.md) in uw organisatie te maken.
+Als u een beleid hebt geconfigureerd, kan het de organisaties van de Azure Portal vergren delen. Het beperken van de impact van de onbedoelde beheerder vergrendeling door twee of meer [accounts voor toegang tot een nood geval](../roles/security-emergency-access.md) in uw organisatie te maken.
 
 * Maak een gebruikers account dat is toegewezen aan beleids beheer en uitgesloten is van al uw beleids regels.
 
