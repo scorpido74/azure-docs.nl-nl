@@ -4,7 +4,7 @@
   items:
     - name: Informatie over virtuele machines
       href: overview.md
-- name: Quickstarts
+- name: Snelstartgidsen
   items:
     - name: Virtuele machine maken - Azure CLI
       href: quick-create-cli.md
@@ -354,8 +354,6 @@
           href: ../security-controls-policy.md
         - name: Beveiligingsbasislijn voor Azure Security Benchmark
           href: security-baseline.md
-        - name: Ingebouwde beveiligingsmaatregelen
-          href: virtual-machines-linux-security-controls.md
         - name: Bastion
           href: ../../bastion/bastion-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Toestanden en levenscyclus

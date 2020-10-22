@@ -105,12 +105,22 @@
               href: partner-center-portal/create-azure-container-technical-assets.md
             - name: Een Azure Container-aanbieding maken
               href: partner-center-portal/create-azure-container-offer.md
-    - name: Aanbieding voor virtuele Azure-machine
+    - name: Aanbiedingen voor virtuele Azure-machines
       items:
         - name: Een VM-aanbieding plannen
           href: marketplace-virtual-machines.md
         - name: Een VM-aanbieding maken en publiceren
           items:
+            - name: Een VM-aanbieding maken
+              href: azure-vm-create.md
+            - name: Eigenschappen van een VM-aanbieding configureren
+              href: azure-vm-create-properties.md
+            - name: Vermelding voor een VM-aanbieding configureren
+              href: azure-vm-create-listing.md
+            - name: VM-abonnementen maken
+              href: azure-vm-create-plans.md
+            - name: Een previewdoelgroep toevoegen
+              href: azure-vm-create-preview.md
             - name: Technische assets voor de VM maken
               items:
                 - name: Een VM maken vanaf een goedgekeurde basis
@@ -127,16 +137,6 @@
                   href: azure-vm-create-faq.md
                 - name: Problemen oplossen met VM-certificering
                   href: azure-vm-create-certification-faq.md
-            - name: Een VM-aanbieding maken
-              href: azure-vm-create.md
-            - name: Eigenschappen van een VM-aanbieding configureren
-              href: azure-vm-create-properties.md
-            - name: Vermelding voor een VM-aanbieding configureren
-              href: azure-vm-create-listing.md
-            - name: VM-abonnementen maken
-              href: azure-vm-create-plans.md
-            - name: Een previewdoelgroep toevoegen
-              href: azure-vm-create-preview.md
     - name: Adviesservices
       items:
         - name: Een aanbieding voor adviesservices plannen

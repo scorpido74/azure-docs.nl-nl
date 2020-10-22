@@ -7,12 +7,12 @@ ms.date: 04/11/2018
 ms.topic: tutorial
 ms.subservice: change-inventory-management
 ms.custom: mvc
-ms.openlocfilehash: cad92ef376a14805049772cd0bfdbac04309f6c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0c083f4576e123ea14d837ed3915c56d18d84623
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86185820"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207560"
 ---
 # <a name="discover-what-software-is-installed-on-your-vms"></a>Uitvinden welke software is geïnstalleerd op uw VM's
 
@@ -151,4 +151,4 @@ In deze zelfstudie hebt u geleerd hoe u software-inventaris kunt weergeven:
 Ga verder naar het overzicht van de functie Wijzigingen bijhouden en Inventaris als u er meer over wilt weten.
 
 > [!div class="nextstepaction"]
-> [Overzicht Wijzigingen bijhouden en Inventaris](change-tracking.md)
+> [Overzicht Wijzigingen bijhouden en Inventaris](change-tracking/overview.md)

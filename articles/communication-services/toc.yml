@@ -5,7 +5,7 @@
   items:
     - name: Wat is Azure Communication Services?
       href: overview.md
-- name: Quickstarts
+- name: Snelstartgidsen
   expanded: true
   items:
     - name: Een Communication Services-resource maken
@@ -93,7 +93,7 @@
 - name: Referenties
   items:
     - name: REST API-documentatie
-      href: 'https://docs.microsoft.com/rest/api/azure/'
+      href: 'https://docs.microsoft.com/rest/api/communication/'
     - name: Bibliotheek aanroepen (Android/Java)
       href: 'https://docs.microsoft.com/java/api/com.azure.communication.calling?view=communication-services-java-android'
     - name: Bibliotheek aanroepen (JS)

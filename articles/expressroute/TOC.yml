@@ -95,6 +95,10 @@
       href: expressroute-connect-azure-to-public-cloud.md
     - name: Onderlinge netwerkconnectiviteit
       href: cross-network-connectivity.md
+    - name: Beveiliging
+      items:
+        - name: Beveiligingsbasislijn
+          href: security-baseline.md
     - name: Beveiligingskenmerken
       href: expressroute-security-controls.md
     - name: BFD via ExpressRoute
@@ -269,5 +273,3 @@
           href: expressroute-howto-add-gateway-classic.md
         - name: Openbare peering maken en wijzigen
           href: about-public-peering.md
-    - name: Beveiligingsbasislijn
-      href: security-baseline.md

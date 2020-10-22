@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
 ms.author: sharrai
-ms.openlocfilehash: 9e8a1246a2e48c3c569b82845c713ba25ee2467a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 721e09c2bc0562ba833115361cf33c3daaef380b
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89426119"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92364028"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Problemen oplossen met replicatie en failover voor Hyper-V naar Azure
 
@@ -29,7 +29,7 @@ Als u problemen ondervindt bij het inschakelen van beveiliging voor virtuele Hyp
 4. Controleer op problemen die worden weer gegeven in het Hyper-V-VMMS\Admin-aanmelden bij de virtuele machine. Dit logboek bevindt zich in de **Logboeken toepassingen en services**  >  **micro soft**  >  **Windows**.
 5. Controleer op de gast-VM of WMI is ingeschakeld en toegankelijk is.
    - [Meer informatie over](https://techcommunity.microsoft.com/t5/ask-the-performance-team/bg-p/AskPerf) Basic WMI-tests.
-   - [Problemen oplossen](https://aka.ms/WMiTshooting) WMI.
+   - [Problemen oplossen](/windows/win32/wmisdk/wmi-troubleshooting) WMI.
    - [Los](/previous-versions/tn-archive/ff406382(v=msdn.10)#H22) problemen met WMI-scripts en-services op.
 6. Zorg ervoor dat op de gast-VM de meest recente versie van Integration Services wordt uitgevoerd.
     - [Controleer](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) of u de meest recente versie hebt.
@@ -135,7 +135,7 @@ Een app-consistente momentopname is een momentopname van de toepassingsgegevens 
 
 ### <a name="common-errors"></a>Algemene fouten
 
-**Foutcode** | **Bericht** | **Details**
+**Fout code** | **Bericht** | **Details**
 --- | --- | ---
 **0x800700EA** | Hyper-V kan geen VSS-momentopnameset genereren voor de virtuele machine: er zijn meer gegevens beschikbaar. (0x800700EA). Het genereren van VSS-moment opnamen kan mislukken als er een back-upbewerking wordt uitgevoerd.<br/><br/> De replicatie bewerking voor de virtuele machine is mislukt: er zijn meer gegevens beschikbaar. | Controleer of er een dynamische schijf is ingeschakeld op de virtuele machine. Nee, dit wordt niet ondersteund.
 **0x80070032** | "Hyper-V-aanvrager van volume schaduw kopie kan geen verbinding maken met de virtuele machine <./VMname> omdat de versie niet overeenkomt met de versie die wordt verwacht door Hyper-V | Controleer of de meest recente Windows-updates zijn geïnstalleerd.<br/><br/> Voer een [upgrade uit](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date) naar de nieuwste versie van Integration Services.

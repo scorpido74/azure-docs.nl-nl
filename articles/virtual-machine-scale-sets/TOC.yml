@@ -203,8 +203,6 @@
           href: disk-encryption-overview.md
         - name: Basislijn voor Azure-beveiliging
           href: security-baseline.md
-        - name: Ingebouwde beveiligingsmaatregelen
-          href: virtual-machine-scale-sets-security-controls.md
       maintainContext: true
     - name: Bewaking
       href: ../azure-monitor/insights/monitor-vm-azure.md

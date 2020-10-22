@@ -148,8 +148,6 @@
           href: service-fabric-application-and-service-security.md
         - name: Service Fabric-clusterbeveiliging
           href: service-fabric-cluster-security.md
-        - name: Ingebouwde beveiligingsmaatregelen
-          href: service-fabric-security-controls.md
         - name: Verificatie op basis van certificaat in Service Fabric
           href: cluster-security-certificates.md
         - name: Certificaatbeheer in Service Fabric

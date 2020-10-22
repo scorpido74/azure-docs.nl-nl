@@ -62,8 +62,6 @@
       items:
         - name: Beveiligingsbasislijn
           href: security-baseline.md
-        - name: Ingebouwde beveiligingsmaatregelen
-          href: api-management-security-controls.md
     - name: Abonnementen
       href: api-management-subscriptions.md
     - name: Versies

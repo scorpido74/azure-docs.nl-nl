@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 53861bbff9ba328ca97063df59cfedc6e886212d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a8f9734714f0439383f6242cda3b51690284852
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91258146"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363416"
 ---
 # <a name="publisher-verification"></a>Verificatie van uitgever
 
@@ -49,7 +49,7 @@ Er zijn enkele vereisten voor Publisher-verificatie, waarvan sommige micro soft-
 
 -  De gebruiker die de verificatie uitvoert, moet gemachtigd zijn om wijzigingen aan te brengen in de app-registratie in azure AD en het MPN-account in partner centrum. 
 
-    -  In azure AD moet deze gebruiker lid zijn van een van de volgende [rollen](../users-groups-roles/directory-assign-admin-roles.md): toepassings beheerder, Cloud toepassings beheerder of globale beheerder. 
+    -  In azure AD moet deze gebruiker lid zijn van een van de volgende [rollen](../roles/permissions-reference.md): toepassings beheerder, Cloud toepassings beheerder of globale beheerder. 
 
     -  In het partner centrum moet deze gebruiker over de volgende [rollen](/partner-center/permissions-overview)beschikken: MPN admin, accounts Administrator of een globale beheerder (dit is een gedeelde rol in azure AD).
     

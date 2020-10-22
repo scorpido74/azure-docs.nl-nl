@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8a86be8fa08b6fec7c401ad30165b590b3a6ccde
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 888e2287c869200434e198204881d5bd5014f87d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85387674"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363858"
 ---
 # <a name="manage-azure-ad-b2c-custom-policies-with-azure-powershell"></a>Azure AD B2C aangepaste beleids regels beheren met Azure PowerShell
 
@@ -29,7 +29,7 @@ Azure PowerShell biedt verschillende cmdlets voor het opdracht regel-en op scrip
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [Azure AD B2C Tenant](tutorial-create-tenant.md)en referenties voor een gebruiker in de directory met de [B2C IEF Policy](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator) beheerdersrol
+* [Azure AD B2C Tenant](tutorial-create-tenant.md)en referenties voor een gebruiker in de directory met de [B2C IEF Policy](../active-directory/roles/permissions-reference.md#b2c-ief-policy-administrator) beheerdersrol
 * [Aangepast beleid](custom-policy-get-started.md) dat is geüpload naar uw Tenant
 * [Module Azure AD Power shell voor Graph **Preview**](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)
 
@@ -37,7 +37,7 @@ Azure PowerShell biedt verschillende cmdlets voor het opdracht regel-en op scrip
 
 Als u wilt werken met aangepast beleid in uw Azure AD B2C-Tenant, moet u eerst uw Power shell-sessie verbinden met de Tenant met behulp van de opdracht [Connect-AzureAD][Connect-AzureAD] .
 
-Voer de volgende opdracht uit en vervang `{b2c-tenant-name}` door de naam van uw Azure AD B2C-Tenant. Meld u aan met een account dat is toegewezen aan de [B2C IEF Policy Administrator](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator) Role in de Directory.
+Voer de volgende opdracht uit en vervang `{b2c-tenant-name}` door de naam van uw Azure AD B2C-Tenant. Meld u aan met een account dat is toegewezen aan de [B2C IEF Policy Administrator](../active-directory/roles/permissions-reference.md#b2c-ief-policy-administrator) Role in de Directory.
 
 ```PowerShell
 Connect-AzureAD -Tenant "{b2c-tenant-name}.onmicrosoft.com"
@@ -131,7 +131,7 @@ Als u de `Set-AzureADMSTrustFrameworkPolicy` opdracht geeft met de id van een be
 Set-AzureADMSTrustFrameworkPolicy [-Id <policyId>] -InputFilePath <inputpolicyfilePath> [-OutputFilePath <outputFilePath>]
 ```
 
-Voorbeeldopdracht:
+Voor beeld opdracht:
 
 ```PowerShell
 # Update an existing policy from file
@@ -150,7 +150,7 @@ Gebruik de opdracht [New-AzureADMSTrustFrameworkPolicy][New-AzureADMSTrustFramew
 New-AzureADMSTrustFrameworkPolicy -InputFilePath <inputpolicyfilePath> [-OutputFilePath <outputFilePath>]
 ```
 
-Voorbeeldopdracht:
+Voor beeld opdracht:
 
 ```PowerShell
 # Add new policy from file
@@ -167,7 +167,7 @@ Gebruik de opdracht [Remove-AzureADMSTrustFrameworkPolicy][Remove-AzureADMSTrust
 Remove-AzureADMSTrustFrameworkPolicy -Id <policyId>
 ```
 
-Voorbeeldopdracht:
+Voor beeld opdracht:
 
 ```PowerShell
 # Delete an existing policy

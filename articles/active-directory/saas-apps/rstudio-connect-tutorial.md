@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
-ms.openlocfilehash: f71a9fa1151a1df2ae04fe47afd6bf36861aa2e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6f67d1bb1e4502d918cd7af6d98ce5ed5f76c969
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273736"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102286"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rstudio-connect"></a>Zelfstudie: Integratie van Azure Active Directory met RStudio Connect
 
@@ -101,7 +101,7 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure AD met RStudio
 
 4. In het gedeelte **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren, waarbij u `<example.com>` vervangt door het adres en de poort van uw RStudio Connect-server:
 
-    ![Domein- en URL-gegevens voor eenmalige aanmelding bij RStudio Connect](common/idp-intiated.png)
+    ![Schermopname die de Standaard SAML-configuratie toont, waar u de id en URL kunt invoeren en vervolgens Opslaan selecteert.](common/idp-intiated.png)
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://<example.com>/__login__/saml`
 
@@ -109,7 +109,7 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure AD met RStudio
 
 5. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    ![Domein- en URL-gegevens voor eenmalige aanmelding bij RStudio Connect](common/metadata-upload-additional-signon.png)
+    ![Schermopname die Extra URL's instellen toont, waar u een aanmeldings-URL kunt invoeren.](common/metadata-upload-additional-signon.png)
 
     In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<example.com>/`
 

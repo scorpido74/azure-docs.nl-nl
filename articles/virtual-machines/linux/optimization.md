@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: eff512c9d050eb293391233848fcece83e845680
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fceef1fa9f79ead0ffbbfd7de17b21b750659fc9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88654188"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370233"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Uw Linux-VM optimaliseren voor Azure
 Het maken van een virtuele Linux-machine (VM) is eenvoudig vanuit de opdracht regel of vanuit de portal. In deze zelf studie ziet u hoe u ervoor kunt zorgen dat u deze hebt ingesteld om de prestaties van het Microsoft Azure platform te optimaliseren. In dit onderwerp wordt een Ubuntu-Server-VM gebruikt, maar u kunt ook virtuele Linux-machine maken met behulp van [uw eigen installatie kopieën als sjablonen](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
@@ -47,7 +47,38 @@ Wanneer u een virtuele machine maakt, biedt Azure standaard een besturingssystee
 ## <a name="linux-swap-partition"></a>Linux-wisselende partitie
 Als uw Azure-VM afkomstig is van een Ubuntu-of CoreOS-installatie kopie, kunt u CustomData gebruiken om een Cloud-config naar Cloud-init te verzenden. Als u [een aangepaste Linux-installatie kopie hebt geüpload](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) die gebruikmaakt van Cloud-init, kunt u ook swap-partities configureren met Cloud-init.
 
-In Ubuntu-Cloud installatie kopieën moet u Cloud-init gebruiken om de swap-partitie te configureren. Zie [AzureSwapPartitions](https://wiki.ubuntu.com/AzureSwapPartitions)voor meer informatie.
+U kunt het **/etc/waagent.conf** -bestand niet gebruiken om swap te beheren voor alle installatie kopieën die zijn ingericht en ondersteund door Cloud-init. Zie [Cloud-init gebruiken](using-cloud-init.md)voor een volledige lijst met installatie kopieën. 
+
+De eenvoudigste manier om swap te beheren voor deze installatie kopieën is door de volgende stappen uit te voeren:
+
+1. Maak in de map **/var/lib/Cloud/scripts/per-boot** een bestand met de naam **create_swapfile. sh**:
+
+   **$ sudo touch/var/lib/Cloud/scripts/per-boot/create_swapfile. sh**
+
+1. Voeg de volgende regels toe aan het bestand:
+
+   **$ sudo vi/var/lib/Cloud/scripts/per-boot/create_swapfile. sh**
+
+   ```
+   #!/bin/sh
+   if [ ! -f '/mnt/swapfile' ]; then
+   fallocate --length 2GiB /mnt/swapfile
+   chmod 600 /mnt/swapfile
+   mkswap /mnt/swapfile
+   swapon /mnt/swapfile
+   swapon -a ; fi
+   ```
+
+   > [!NOTE]
+   > U kunt de waarde wijzigen aan de hand van uw behoeften en op basis van de beschik bare ruimte op de bron schijf, die varieert op basis van de grootte van de virtuele machine die wordt gebruikt.
+
+1. Het uitvoer bare bestand maken:
+
+   **$ sudo chmod + x/var/lib/Cloud/scripts/per-boot/create_swapfile. sh**
+
+1. Als u de swapfile wilt maken, moet u het script direct na de laatste stap uitvoeren:
+
+   **$ sudo/var/lib/Cloud/scripts/per-boot/./create_swapfile. sh**
 
 Voor installatie kopieën die geen ondersteuning voor Cloud-init hebben, hebben VM-installatie kopieën die zijn geïmplementeerd vanuit Azure Marketplace een Linux-VM-agent geïntegreerd met het besturings systeem. Met deze agent kan de virtuele machine communiceren met verschillende Azure-Services. Als u een standaard installatie kopie van Azure Marketplace hebt geïmplementeerd, moet u het volgende doen om de instellingen voor Linux-wissel bestand correct te configureren:
 
