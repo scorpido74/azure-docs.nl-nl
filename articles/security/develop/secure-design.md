@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: d0cffbd1fa09abef9853e0ef853696c3c8ed353c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 22f74d3135597e8627cf7af933f8c6f4fbebc990
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86246806"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92364045"
 ---
 # <a name="design-secure-applications-on-azure"></a>Veilige toepassingen ontwerpen in azure
 In dit artikel bieden we beveiligings activiteiten en-controles waarmee u rekening moet houden bij het ontwerpen van toepassingen voor de Cloud. Trainings bronnen samen met beveiligings vragen en concepten die u kunt overwegen tijdens de vereisten en ontwerp fasen van micro soft [Security Development Lifecycle (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) , worden gedekt. Het doel is om u te helpen bij het definiëren van activiteiten en Azure-Services die u kunt gebruiken om een veiligere toepassing te ontwerpen.
@@ -226,7 +226,7 @@ Zorg ervoor dat uw toepassing [minimale bevoegdheden](https://docs.microsoft.com
 
 #### <a name="implement-just-in-time-access"></a>Just-in-time-toegang implementeren
 
-Implementeer just *-in-time* -toegang (JIT) om de belichtings tijd van bevoegdheden verder te verlagen. Gebruik [Azure AD privileged Identity Management](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#stage-3-take-control-of-admin-activity) voor het volgende:
+Implementeer just *-in-time* -toegang (JIT) om de belichtings tijd van bevoegdheden verder te verlagen. Gebruik [Azure AD privileged Identity Management](../../active-directory/roles/security-planning.md#stage-3-take-control-of-admin-activity) voor het volgende:
 
 - Geef gebruikers de machtigingen die ze alleen JIT nodig hebben.
 - Wijs rollen toe voor een verkorte duur met vertrouwen dat de bevoegdheden automatisch worden ingetrokken.

@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 7fdc367e3db298b60dc9a15453d58a738c13274a
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: d2eef20b4c5648b1b11f16d8e46b956fc1497181
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108300"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92364419"
 ---
 # <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Een PostgreSQL Hyperscale-servergroep met Azure Arc maken
 
@@ -138,7 +138,7 @@ Als u een virtuele machine van Azure gebruikt om te testen, volgt u de onderstaa
 
 Wanneer u een virtuele machine van Azure gebruikt, wordt het _open bare_ IP-adres niet weer gegeven op het IP-adres van het eind punt. Als u het open bare IP-adres wilt zoeken, gebruikt u de volgende opdracht:
 
-```console
+```azurecli
 az network public-ip list -g azurearcvm-rg --query "[].{PublicIP:ipAddress}" -o table
 ```
 
@@ -148,7 +148,7 @@ Mogelijk moet u ook de poort van de PostgreSQL grootschalige-Server groep beschi
 
 Als u een regel wilt instellen, moet u de naam van uw NSG kennen. U bepaalt de NSG met behulp van de volgende opdracht:
 
-```console
+```azurecli
 az network nsg list -g azurearcvm-rg --query "[].{NSGName:name}" -o table
 ```
 
@@ -156,7 +156,7 @@ Zodra u de naam van de NSG hebt, kunt u een firewall regel toevoegen met behulp 
 
 Vervang de waarde van de para meter--destination-port-Ranges hieronder door het poort nummer dat u hebt ontvangen van de bovenstaande opdracht ' azdata-Arc post gres-server lijst '.
 
-```console
+```azurecli
 az network nsg rule create -n db_port --destination-port-ranges 30655 --source-address-prefixes '*' --nsg-name azurearcvmNSG --priority 500 -g azurearcvm-rg --access Allow --description 'Allow port through for db access' --destination-address-prefixes '*' --direction Inbound --protocol Tcp --source-port-ranges '*'
 ```
 
@@ -169,7 +169,7 @@ Open Azure Data Studio en maak verbinding met uw exemplaar met het externe IP-ad
 
 Als u een virtuele Azure-machine gebruikt, hebt u het _open bare_ IP-adres nodig dat toegankelijk is via de volgende opdracht:
 
-```console
+```azurecli
 az network public-ip list -g azurearcvm-rg --query "[].{PublicIP:ipAddress}" -o table
 ```
 

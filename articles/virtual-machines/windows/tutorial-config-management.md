@@ -8,16 +8,16 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2b88c053e1f9029f916d9a180221a3bb58629608
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d6e10b025b9e9524982b1558beacfab1970eb59
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87448868"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216433"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>Zelfstudie: Wijzigingen bewaken en een virtuele Windows-machine bijwerken in Azure
 
-Met [Wijzigingen bijhouden](../../automation/change-tracking.md) en [Updatebeheer](../../automation/update-management/update-mgmt-overview.md) van Azure kunt u eenvoudig wijzigingen in uw virtuele Windows-machines in Azure identificeren respectievelijk updates van besturingssystemen voor deze VM's beheren.
+Met [Wijzigingen bijhouden](../../automation/change-tracking/overview.md) en [Updatebeheer](../../automation/update-management/overview.md) van Azure kunt u eenvoudig wijzigingen in uw virtuele Windows-machines in Azure identificeren respectievelijk updates van besturingssystemen voor deze VM's beheren.
 
 In deze zelfstudie leert u het volgende:
 
@@ -112,10 +112,10 @@ Als u een nieuwe update-implementatie voor de VM wilt plannen, selecteert u **Up
 | --- | --- |
 | **Naam** |Voer een unieke naam in om de update-implementatie te identificeren. |
 |**Besturingssysteem**| Selecteer **Linux** of **Windows**.|
-| **Bij te werken groepen** |Voor VM's die in Azure worden gehost, definieert u een query op basis van een combinatie van abonnement, resourcegroepen, locaties en tags. Met deze query wordt een dynamische groep met door Azure gehoste VM's opgebouwd die in uw implementatie moeten worden opgenomen. </br></br>Voor VM's die niet in Azure worden gehost, selecteert u een bestaande opgeslagen zoekopdracht. Met deze zoekopdracht kunt u een groep van deze VM's selecteren die in de implementatie moet worden meegenomen. </br></br> Zie [Dynamische groepen](../../automation/update-management/update-mgmt-groups.md) voor meer informatie.|
+| **Bij te werken groepen** |Voor VM's die in Azure worden gehost, definieert u een query op basis van een combinatie van abonnement, resourcegroepen, locaties en tags. Met deze query wordt een dynamische groep met door Azure gehoste VM's opgebouwd die in uw implementatie moeten worden opgenomen. </br></br>Voor VM's die niet in Azure worden gehost, selecteert u een bestaande opgeslagen zoekopdracht. Met deze zoekopdracht kunt u een groep van deze VM's selecteren die in de implementatie moet worden meegenomen. </br></br> Zie [Dynamische groepen](../../automation/update-management/configure-groups.md) voor meer informatie.|
 | **Bij te werken machines** |Selecteer **Opgeslagen zoekopdracht**, **Geïmporteerde groep** of **Machines**.<br/><br/>Als u **Machines**  selecteert, kunt u in de vervolgkeuzelijst uit afzonderlijke machines kiezen. De gereedheid van elke machine wordt weergegeven in de kolom **GEREEDHEID VOOR UPDATE-AGENT** van de tabel.</br></br> Zie [Computergroepen in Azure Monitorlogboeken](../../azure-monitor/platform/computer-groups.md) voor meer informatie over de verschillende manieren waarop u computergroepen kunt maken in Azure Monitor-logboeken |
 |**Updateclassificaties**|Kies alle benodigde updateclassificaties.|
-|**Updates opnemen/uitsluiten**|Selecteer deze optie om het deelvenster **Opnemen/uitsluiten** te openen. Updates die moeten worden opgenomen en die moeten worden uitgesloten, worden op afzonderlijke tabbladen weergegeven. Zie [Een update-implementatie plannen](../../automation/update-management/update-mgmt-deploy-updates.md#schedule-an-update-deployment) voor meer informatie over het verwerken van de opname. |
+|**Updates opnemen/uitsluiten**|Selecteer deze optie om het deelvenster **Opnemen/uitsluiten** te openen. Updates die moeten worden opgenomen en die moeten worden uitgesloten, worden op afzonderlijke tabbladen weergegeven. Zie [Een update-implementatie plannen](../../automation/update-management/deploy-updates.md#schedule-an-update-deployment) voor meer informatie over het verwerken van de opname. |
 |**Instellingen voor planning**|Kies het tijdstip waarop u wilt beginnen en selecteer **Eenmaal**, of **Terugkerend**.|
 | **Scripts vooraf en scripts achteraf**|Kies de scripts die vóór en na de implementatie moeten worden uitgevoerd.|
 | **Onderhoudsvenster** | Voer het aantal minuten in dat voor updates is ingesteld. Geldige waarden variëren van 30 tot 360 minuten. |

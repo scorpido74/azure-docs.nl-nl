@@ -6,39 +6,40 @@ ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
-ms.openlocfilehash: 7c77e25d0dcabc49f2e6672645c6bc41e8662ec8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48ee6de28bcd76d4c484b77c981062bad1a3754d
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75551026"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219748"
 ---
-# <a name="tutorial-install-azure-fxt-edge-filer"></a>Zelfstudie: Azure FXT Edge Filer installeren 
+# <a name="tutorial-install-azure-fxt-edge-filer"></a>Zelfstudie: Azure FXT Edge Filer installeren
 
 In deze zelfstudie wordt beschreven hoe u een hardware-knooppunt installeert voor de Azure FXT Edge Filer-hybride opslagcache. U moet ten minste drie hardwareknooppunten installeren om een Azure FXT Edge Filer-cluster te maken.
 
-Bij de installatieprocedure wordt het apparaat uitgepakt en ingebouwd en worden de CMA (kabelmanagement-arm) en de omlijsting vooraan bevestigd. In een afzonderlijke zelfstudie wordt uitgelegd hoe netwerkkabels worden gekoppeld en de stroom wordt aangesloten. 
+Bij de installatieprocedure wordt het apparaat uitgepakt en ingebouwd en worden de CMA (kabelmanagement-arm) en de omlijsting vooraan bevestigd. In een afzonderlijke zelfstudie wordt uitgelegd hoe netwerkkabels worden gekoppeld en de stroom wordt aangesloten.
 
-Het duurt ongeveer een uur om een Azure FXT Edge Filer-knooppunt te installeren. 
+Het duurt ongeveer een uur om een Azure FXT Edge Filer-knooppunt te installeren.
 
-De zelfstudie omvat deze installatiestappen: 
+De zelfstudie omvat deze installatiestappen:
 
 > [!div class="checklist"]
+>
 > * Het apparaat uitpakken
 > * Det apparaat in een rek inbouwen
 > * De omlijsting vooraan installeren (optioneel)
 
-## <a name="installation-prerequisites"></a>Installatievereisten 
+## <a name="installation-prerequisites"></a>Installatievereisten
 
 Voordat u begint, moet u ervoor zorgen dat het datacentrum en het rek dat u wilt gebruiken, over de volgende functies beschikken:
 
 * Een vrij 1U-slot in het rek waarin u het apparaat wilt monteren.
 * Netvoeding en koelsystemen die voldoen aan de behoeften van de Azure FXT Edge Filer. (Lees [Specificaties voor voeding en thermische eigenschappen](fxt-specs.md#power-and-thermal-specifications) voor hulp bij het plannen en aanpassen van de installatie.)  
 
-  > [!NOTE] 
+  > [!NOTE]
   > Als u optimaal gebruik wilt maken van de twee redundante voedingseenheden (PSUs), gebruikt u energie distributie-eenheden op twee verschillende vertakkingscircuits bij het koppelen van netstroom. Lees [Stroomkabels aansluiten](fxt-network-power.md#connect-power-cables) voor meer informatie.  
 
-## <a name="unpack-the-hardware-node"></a>Het hardware-knooppunt uitpakken 
+## <a name="unpack-the-hardware-node"></a>Het hardware-knooppunt uitpakken
 
 Elk Azure FXT Edge Filer-knooppunt wordt in één doos verzonden. Voltooi deze stappen om een apparaat uit te pakken.
 
@@ -56,7 +57,7 @@ Elk Azure FXT Edge Filer-knooppunt wordt in één doos verzonden. Voltooi deze s
    * Boekje met installatie-instructies voor inbouw in rek
    * Het boekje Informatie over veiligheid, milieu en regelgeving
 
-Als u niet alle items in de lijst hebt ontvangen, neemt u contact op met de leverancier van het apparaat voor ondersteuning. 
+Als u niet alle items in de lijst hebt ontvangen, neemt u contact op met de leverancier van het apparaat voor ondersteuning.
 
 Zorg ervoor dat het apparaat voldoende tijd heeft om dezelfde temperatuur te bereiken als de ruimte voordat u dit installeert of inschakelt. Als u op welk deel van het apparaat dan ook condensatie ziet, wacht u ten minste 24 uur voordat u de installatie uitvoert.
 
@@ -64,20 +65,20 @@ De volgende stap is het in het rek monteren van uw apparaat.
 
 ## <a name="rack-the-device"></a>Het apparaat in het rek monteren
 
-Het Azure FXT Edge Filer-apparaat moet worden geïnstalleerd in een standaard 19-inch rek. 
+Het Azure FXT Edge Filer-apparaat moet worden geïnstalleerd in een standaard 19-inch rek.
 
-The Azure FXT Edge Filer-hybride opslagcache bestaat uit drie of meer Azure FXT Edge-bestandsapparaten. Herhaal de stappen voor de installatie van het rek voor elk apparaat dat deel uitmaakt van uw systeem. 
+The Azure FXT Edge Filer-hybride opslagcache bestaat uit drie of meer Azure FXT Edge-bestandsapparaten. Herhaal de stappen voor de installatie van het rek voor elk apparaat dat deel uitmaakt van uw systeem.
 
 ### <a name="rack-install-prerequisites"></a>Vereisten voor installatie in rek
 
 * Lees voordat u begint de veiligheidsinstructies in het boekje Informatie over Veiligheid, milieu en regelgeving dat is verzonden met uw apparaat.
 
   > [!NOTE]
-  > Gebruik altijd twee personen bij het tillen van het knooppunt, ook wanneer u het in een rek installeert of uit het rek verwijdert. 
+  > Gebruik altijd twee personen bij het tillen van het knooppunt, ook wanneer u het in een rek installeert of uit het rek verwijdert.
 
-* Bepaal het type railinstallatie dat wordt gebruikt voor uw materiaalrek. 
+* Bepaal het type railinstallatie dat wordt gebruikt voor uw materiaalrek.
   * Volg de gereedschapsloze instructies voor het gebruik van inklikrekken met vierkante of ronde gaten.
-  * Volg de instructies voor gereedschap voor rekken met gaten met schroefdraad. 
+  * Volg de instructies voor gereedschap voor rekken met gaten met schroefdraad.
   
     Voor de configuratie van railmontage met gereedschap heeft u acht schroeven nodig, type 10-32, 12-24, M5 of M6. De kopdiameter van de schroeven moet kleiner zijn dan 10 mm (0,4").
 
@@ -92,7 +93,7 @@ Zoek de onderdelen voor het installeren van de railkit-assembly:
 
 ### <a name="rail-assembly---tool-less-rails-square-hole-or-round-hole-racks"></a>Rail-assembly - gereedschapsloze rails (rekken met vierkante of ronde gaten)
 
-Voor racks met vierkante of ronde inklikgaten, volgt u deze procedure om de rails samen te stellen en te installeren. 
+Voor racks met vierkante of ronde inklikgaten, volgt u deze procedure om de rails samen te stellen en te installeren.
 
 1. Plaats de eindstukken van de linker- en rechter rails met het label **FRONT** naar de binnenkant. Plaats elk eindstuk zodanig dat het in de gaten aan de voorzijde van de verticale rekrichels rust. (1)
 
@@ -121,7 +122,7 @@ Voor racks met gaten met schroefdraad, volgt u deze procedure om de rails samen 
 Volg deze stappen om het Azure FXT Edge Filer-apparaat in het rek te monteren.
 
 1. Trek de binnenste schuifrails uit het rek totdat ze zijn vergrendeld. (1)
-1. Zoek de achterste railpinnen aan de achterzijde van het apparaat en laat deze in de eerste J-sleuven op de schuifassemblage zakken. (2) 
+1. Zoek de achterste railpinnen aan de achterzijde van het apparaat en laat deze in de eerste J-sleuven op de schuifassemblage zakken. (2)
 1. Draai het apparaat omlaag totdat alle railpinnen in de J-sleuven rusten. (3)
 1. Duw het apparaat naar binnen totdat de vergrendelingen vastklikken.
 1. Druk op de vergrendelingsknoppen van de schuif op beide rails (4) en schuif het apparaat het rek in.
@@ -130,7 +131,7 @@ Volg deze stappen om het Azure FXT Edge Filer-apparaat in het rek te monteren.
 
 ### <a name="remove-the-system-from-the-rack"></a>Het systeem uit het rek verwijderen
 
-Als u het apparaat uit het rek wilt verwijderen, volgt u deze procedure. 
+Als u het apparaat uit het rek wilt verwijderen, volgt u deze procedure.
 
 1. Zoek de vergrendelingen aan de zijkanten van de binnenkant van de rails (1).
 2. Ontgrendel elke hendel door deze naar de vrijgavepositie te verplaatsen (2).
@@ -141,7 +142,7 @@ Als u het apparaat uit het rek wilt verwijderen, volgt u deze procedure.
 ### <a name="engage-the-slam-latch"></a>Het slagslot activeren
 
 1. Zoek vanaf de voorkant het slagslot (1) aan beide zijden van het systeem.
-2. De sloten worden automatisch ingeschakeld wanneer het systeem het rek in wordt geduwd. 
+2. De sloten worden automatisch ingeschakeld wanneer het systeem het rek in wordt geduwd.
 
 Als u de sloten wilt vrijgeven bij het verwijderen van het systeem, trekt u deze omhoog (2).
 
@@ -149,50 +150,50 @@ Er zijn optionele schroeven voorzien voor harde bevestiging ter beveiliging van 
 
 ![Genummerde afbeelding van het aanbrengen en vrijgeven van het slagslot](media/fxt-install/engaging-releasing-slam-latch-400.png)
 
-### <a name="install-the-cable-management-arm"></a>Installeer de kabelmanagement-arm 
+### <a name="install-the-cable-management-arm"></a>Installeer de kabelmanagement-arm
 
-Er wordt een optionele kabelmanagement-arm (CMA) met de FXT Edge Filer meegeleverd. Gedrukte instructies voor de installatie hiervan zijn opgenomen in het pakket. 
+Er wordt een optionele kabelmanagement-arm (CMA) met de FXT Edge Filer meegeleverd. Gedrukte instructies voor de installatie hiervan zijn opgenomen in het pakket.
 
 1. Pak de onderdelen van de kabelmanagement-arm-kit uit en identificeer ze:
    * CMA-lade (1)
    * CMA (2)
    * Nylon kabelbinders (3)
    * CMA-bevestigingshaken (4)
-   * Statusindicator-kabel (5) 
+   * Statusindicator-kabel (5)
 
-   > [!TIP] 
+   > [!TIP]
    > Als u de CMA voor verzending in het rek wilt beveiligen, moet u de kabelbinders rond zowel de manden als de lade binden en deze goed vastzetten. Als u de CMA op deze manier beveiligt, wordt uw systeem ook in instabiele omgevingen beveiligd.
 
    ![Afbeelding van CMA-onderdelen](media/fxt-install/cma-kit-400.png)
 
 2. Installeer de CMA-lade.
 
-   De CMA-lade biedt ondersteuning en fungeert als houder voor de CMA. 
+   De CMA-lade biedt ondersteuning en fungeert als houder voor de CMA.
 
-   1. Lijn de zijkanten van de lade uit en koppel ze met de ontvangsthaken aan de binnenranden van de rails. 
+   1. Lijn de zijkanten van de lade uit en koppel ze met de ontvangsthaken aan de binnenranden van de rails.
    1. Duw de lade voorwaarts tot deze vastklikt. (1)
    1. Als u de lade wilt verwijderen, knijpt u de vergrendelingsknoppen naar het midden en trekt u de lade uit de ontvangsthaken (2).
 
    ![Afbeelding van de installatie van de CMA-lade](media/fxt-install/cma-tray-install-400.png)
 
-3. Installeer de CMA-bevestigingshaken. 
+3. Installeer de CMA-bevestigingshaken.
 
    > [!NOTE]
    >
-   > * U kunt de CMA zowel koppelen aan de rechter als aan de linker montagerail, afhankelijk van hoe u kabels van het systeem wilt leiden. 
-   > * Voor het gemak koppelt u de CMA aan de kant tegenover de voeding (kant A). Als deze aan kant B is gekoppeld, moet de CMA worden losgekoppeld om de buitenste voeding te kunnen verwijderen. 
-   > * Verwijder de lade altijd voordat u de voedingen verwijdert. 
+   > * U kunt de CMA zowel koppelen aan de rechter als aan de linker montagerail, afhankelijk van hoe u kabels van het systeem wilt leiden.
+   > * Voor het gemak koppelt u de CMA aan de kant tegenover de voeding (kant A). Als deze aan kant B is gekoppeld, moet de CMA worden losgekoppeld om de buitenste voeding te kunnen verwijderen.
+   > * Verwijder de lade altijd voordat u de voedingen verwijdert.
 
    ![Afbeelding van de installatie van de CMA-haken](media/fxt-install/cma-bracket-l-r-install-400.png)
 
    1. Selecteer de juiste CMA-bevestigingshaak voor de kant waar u de CMA wilt monteren (kant B of kant A).
    1. Installeer de CMA-bevestigingshaak met de overeenkomstige kant A of kant B-markering aan de achterkant van de schuifrail.
-   1. Lijn de gaten op het haakje uit met de pinnen op de schuifrail. Duw het haakje omlaag totdat het is vergrendeld. 
+   1. Lijn de gaten op het haakje uit met de pinnen op de schuifrail. Duw het haakje omlaag totdat het is vergrendeld.
 
 4. Installeer de CMA.
 
-   1. Aan de achterkant van het systeem plaatst u de vergrendeling aan de voorkant van de CMA op de binnenste haak van de schuif-assembly tot de vergrendeling vastgrijpt (1). 
-   1. Plaats de andere vergrendeling aan het einde van het buitenste haakje tot de vergrendeling vastgrijpt (2). 
+   1. Aan de achterkant van het systeem plaatst u de vergrendeling aan de voorkant van de CMA op de binnenste haak van de schuif-assembly tot de vergrendeling vastgrijpt (1).
+   1. Plaats de andere vergrendeling aan het einde van het buitenste haakje tot de vergrendeling vastgrijpt (2).
    1. Als u de CMA wilt verwijderen, moet u beide vergrendelingen opheffen door op de vrijgaveknoppen van de CMA te drukken boven aan de binnenkant van de binnenste en buitenste grendels (3).
 
    ![Afbeelding van de installatie van de hoofd-CMA-lade](media/fxt-install/cma-install-400.png)
@@ -203,20 +204,21 @@ Er wordt een optionele kabelmanagement-arm (CMA) met de FXT Edge Filer meegeleve
 
 ## <a name="install-the-front-bezel-optional"></a>De omlijsting vooraan installeren (optioneel)
 
-In deze sectie wordt uitgelegd hoe u de vooromlijsting (faceplate) voor de Azure FXT Edge Filer-hardware kunt installeren en verwijderen. 
+In deze sectie wordt uitgelegd hoe u de vooromlijsting (faceplate) voor de Azure FXT Edge Filer-hardware kunt installeren en verwijderen.
 
-De omlijsting vooraan installeren: 
+De omlijsting vooraan installeren:
 
-1. Zoek en verwijder de omlijstingssleutel, die wordt geleverd in de verpakking van de omlijsting. 
-1. Lijn de omlijsting met de voorzijde van het chassis uit en plaats de pinnen aan de rechterkant van de omlijsting in de gaten op de rechter koppelingsrichel van het knooppunt. 
+1. Zoek en verwijder de omlijstingssleutel, die wordt geleverd in de verpakking van de omlijsting.
+1. Lijn de omlijsting met de voorzijde van het chassis uit en plaats de pinnen aan de rechterkant van de omlijsting in de gaten op de rechter koppelingsrichel van het knooppunt.
 1. Plaats de linkerkant van de omlijsting op het chassis. Druk op de omlijsting totdat de knop aan de linkerkant vastklikt.
 1. Vergrendel de omlijsting met de sleutel.
 
-De omlijsting vooraan verwijderen: 
+De omlijsting vooraan verwijderen:
+
 1. Ontgrendel de omlijsting met behulp van de omlijstingssleutel.
 1. Klik aan de linkerkant op de vrijgaveknop en trek de linkerkant van de omlijsting weg van het chassis.
 1. Haak de rechterkant uit en verwijder de omlijsting.
-   
+
    ![Afbeelding met de vrijgaveknop aan de linkerkant van de omlijsting en hoe u deze kunt verwijderen door vanuit de linkerkant naar buiten te trekken](media/fxt-install/remove-bezel-edited-600.png)
 
 ## <a name="next-steps"></a>Volgende stappen
