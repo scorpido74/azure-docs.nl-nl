@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/10/2020
 ms.author: curtand
 ms.custom: include file
-ms.openlocfilehash: 49d0d3e8665e0e80b1626c180300611149eff23f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 819a897e2a785991378ce4b6cb19194665b569f0
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90005974"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363399"
 ---
 Hier vindt u de beperkingen voor gebruik en andere servicelimieten voor de Azure Active Directory-service (Azure AD).
 
@@ -21,7 +21,7 @@ Hier vindt u de beperkingen voor gebruik en andere servicelimieten voor de Azure
 | --- | --- |
 | Tenants | Eén gebruiker kan tot maximaal 500 Azure AD-tenants behoren als lid of gast.<br/>Eén gebruiker kan maximaal 200 directory's maken. |
 | Domeinen | U kunt niet meer dan 900 beheerde domeinnamen toevoegen. Als u al uw domeinen wilt instellen voor federatie met on-premises Active Directory, kunt u niet meer dan 450 domeinnamen toevoegen in elke tenant. |
-|Resources |<ul><li>Gebruikers van de gratis versie van Azure Active Directory kunnen standaard maximaal 50.000 Azure AD-resources maken in één tenant. Als u ten minste één geverifieerd domein hebt, wordt het standaard Azure AD-servicequotum voor uw organisatie uitgebreid naar 300.000 Azure AD-resources. Deze servicelimiet is niet gerelateerd aan de limiet van 500.000 resources voor de prijscategorie op de Azure AD-pagina met prijzen. Als u het standaardquotum wilt overschrijden, moet u contact opnemen met Microsoft Ondersteuning.</li><li>Niet-beheerders mogen maximaal 250 Azure AD-resources maken. Zowel actieve resources als verwijderde resources die nog kunnen worden hersteld, tellen mee voor dit quotum. Alleen verwijderde Azure AD-resources die minder dan 30 dagen geleden zijn verwijderd, kunnen nog worden hersteld. Verwijderde Azure AD-resources die niet meer kunnen worden hersteld, tellen 30 dagen lang voor een kwart van de oorspronkelijke waarde mee voor het quotum. Als u ontwikkelaars hebt die dit quotum waarschijnlijk herhaaldelijk overschrijden in de loop van hun normale taken, kunt u [een aangepaste rol maken en toewijzen](../articles/active-directory/users-groups-roles/roles-quickstart-app-registration-limits.md) met machtiging voor het maken van een onbeperkt aantal app-registraties.</li></ul> |
+|Resources |<ul><li>Gebruikers van de gratis versie van Azure Active Directory kunnen standaard maximaal 50.000 Azure AD-resources maken in één tenant. Als u ten minste één geverifieerd domein hebt, wordt het standaard Azure AD-servicequotum voor uw organisatie uitgebreid naar 300.000 Azure AD-resources. Deze servicelimiet is niet gerelateerd aan de limiet van 500.000 resources voor de prijscategorie op de Azure AD-pagina met prijzen. Als u het standaardquotum wilt overschrijden, moet u contact opnemen met Microsoft Ondersteuning.</li><li>Niet-beheerders mogen maximaal 250 Azure AD-resources maken. Zowel actieve resources als verwijderde resources die nog kunnen worden hersteld, tellen mee voor dit quotum. Alleen verwijderde Azure AD-resources die minder dan 30 dagen geleden zijn verwijderd, kunnen nog worden hersteld. Verwijderde Azure AD-resources die niet meer kunnen worden hersteld, tellen 30 dagen lang voor een kwart van de oorspronkelijke waarde mee voor het quotum. Als u ontwikkelaars hebt die dit quotum waarschijnlijk herhaaldelijk overschrijden in de loop van hun normale taken, kunt u [een aangepaste rol maken en toewijzen](../articles/active-directory/roles/quickstart-app-registration-limits.md) met machtiging voor het maken van een onbeperkt aantal app-registraties.</li></ul> |
 | Schema-uitbreidingen |<ul><li>Uitbreidingen van het type 'tekenreeks' mogen uit maximaal 256 tekens bestaan. </li><li>Uitbreidingen van het type 'binair' mogen uit maximaal 256 bytes bestaan.</li><li>Voor *alle* typen en *alle* toepassingen samen mogen er slechts 100 uitbreidingswaarden naar één Azure AD-resource worden geschreven.</li><li>Alleen de entiteiten User, Group, TenantDetail, Device, Application en ServicePrincipal mogen worden uitgebreid met kenmerken met één waarde van het type 'tekenreeks' of 'binair'.</li><li>Schema-uitbreidingen zijn alleen beschikbaar in de preview van Graph API-versie 1.21. Er moet schrijftoegang worden verleend aan de toepassing om een uitbreiding te kunnen registreren.</li></ul> |
 | Toepassingen |Maximaal 100 gebruikers mogen eigenaar zijn van één toepassing. |
 |Manifest van de toepassing |In het toepassingsmanifest kunnen maximaal 1200 vermeldingen worden toegevoegd. |

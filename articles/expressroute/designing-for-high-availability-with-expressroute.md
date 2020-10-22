@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/28/2019
 ms.author: duau
 ms.openlocfilehash: 3602c3944e8731263fbb55f024c276783950329f
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 10/22/2020
 ms.locfileid: "92202358"
 ---
 # <a name="designing-for-high-availability-with-expressroute"></a>Ontwerpen voor hoge Beschik baarheid met ExpressRoute
@@ -54,7 +54,7 @@ Als u de primaire en secundaire verbindingen van een ExpressRoute-circuit in de 
 
 Micro soft-peering is ontworpen voor communicatie tussen open bare eind punten. On-premises privé-eind punten zijn dus netwerk adressen vertaald (gecommuniceerd) met het open bare IP-adres van de klant of het partner netwerk voordat ze communiceren via micro soft-peering. Ervan uitgaande dat u de primaire en secundaire verbindingen in de modus actief-actief gebruikt, waar en hoe u NAT een invloed heeft op hoe snel u een fout in een van de ExpressRoute-verbindingen herstelt. Er worden twee verschillende NAT-opties geïllustreerd in de volgende afbeelding:
 
-[![3D]][3]
+[![3]][3]
 
 In de optie 1 wordt NAT toegepast na het splitsen van het verkeer tussen de primaire en secundaire verbindingen van de ExpressRoute. Om aan de stateful-vereisten van NAT te voldoen, worden onafhankelijke NAT-Pools gebruikt tussen de primaire en secundaire apparaten, zodat het retour verkeer zou aankomen op hetzelfde edge-apparaat via de stroom egressed.
 

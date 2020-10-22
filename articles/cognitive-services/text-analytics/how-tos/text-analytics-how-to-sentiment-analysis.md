@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 10/09/2020
+ms.date: 10/16/2020
 ms.author: aahi
-ms.openlocfilehash: 570a21a307d60ab1e2c02d6481746576f5dcf0e3
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 2b13ac02a8a276b2ef46c8ffd5f13846e394d938
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930285"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166927"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>Procedure: Sentiment detecteren met behulp van de Text Analytics API
 
@@ -36,7 +36,7 @@ Sentimentanalyse ondersteunt een breed scala aan talen, met meer in preview-vers
 | [Docker-container](text-analytics-how-to-install-containers.md) op basis van Linux | X  |  |
 | Meninganalyse                            |                       | X                                 |
 
-### <a name="sentiment-scoring-and-labeling"></a>Sentimentscores en -labels
+## <a name="sentiment-scoring-and-labeling"></a>Sentimentscores en -labels
 
 In Sentimentanalyse v3 worden sentimentlabels toegepast op tekst, die worden geretourneerd op zins- en documentniveau. Elk label heeft ook een betrouwbaarheidsscore. 
 
@@ -51,7 +51,7 @@ De labels zijn *positief*, *negatief* en *neutraal*. Op documentniveau kan ook h
 
 Betrouwbaarheidsscores kunnen variëren van 1 tot 0. Scores die dichter bij 1 liggen, geven een hogere betrouwbaarheid in de classificatie van het label aan. Lagere scores geven een lagere betrouwbaarheid aan. Voor elk document of elke zin zijn de voorspelde scores behorende bij de labels (positief, negatief en neutraal) opgeteld 1.
 
-### <a name="opinion-mining"></a>Meninganalyse
+## <a name="opinion-mining"></a>Meninganalyse
 
 Meninganalyse is een functie van Sentimentanalyse vanaf versie 3.1-preview.1. Deze functie wordt ook wel op aspecten gebaseerde sentimentanalyse in natuurlijke taalverwerking (NLP) en biedt gedetailleerde informatie over de meningen over bepaalde aspecten (zoals de kenmerken van producten of diensten) in de tekst.
 
