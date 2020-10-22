@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
-ms.openlocfilehash: f6c47d4cbfe6311333d95b07c0553afa2b3bb15c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8ceb3df68ebe42f83c70ed62327bf59c0dfc225
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87287733"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359812"
 ---
 # <a name="deploy-a-configuration-server"></a>Een configuratieserver implementeren
 
@@ -166,7 +166,7 @@ Raadpleeg het [artikel over probleem oplossing](vmware-azure-troubleshoot-config
     Zie voor meer informatie over de configuratie server en de functies van [VMware naar Azure-replicatie architectuur](vmware-azure-architecture.md).
 * Waar vind ik de nieuwste versie van de configuratie server?
 
-    Zie [de configuratie Server upgraden](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)voor stappen om de configuratie server via de portal bij te werken. Zie [service-updates in site Recovery](https://aka.ms/asr_how_to_upgrade)voor instructies over het upgraden van alle site Recovery onderdelen.
+    Zie [de configuratie Server upgraden](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)voor stappen om de configuratie server via de portal bij te werken. Zie [service-updates in site Recovery](./service-updates-how-to.md)voor instructies over het upgraden van alle site Recovery onderdelen.
 * Waar kan ik de wachtwoordzin voor de configuratie server downloaden?
 
     Als u de wachtwoordzin wilt downloaden, raadpleegt u [de configuratie server voor nood herstel voor VMware-Vm's beheren](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase).

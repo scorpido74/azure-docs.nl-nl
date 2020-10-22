@@ -12,12 +12,12 @@ ms.date: 09/10/2018
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 050874b301628348b513b8b5b0c2b878a1dcecaa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1922ea9afd69366e534049f5a7a350cf39e52dee
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84760198"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371576"
 ---
 # <a name="links-on-the-page-dont-work-for-an-application-proxy-application"></a>Koppelingen op de pagina werken niet voor een toepassings proxy toepassing
 
@@ -37,7 +37,7 @@ Er zijn drie manieren om dit probleem op te lossen. De onderstaande opties worde
     Als u de interne URL wijzigt, maar de landings pagina voor gebruikers niet wilt wijzigen, wijzigt u de URL van de start pagina in de eerder gepubliceerde interne URL. U kunt dit doen door te gaan naar ' Azure Active Directory '- &gt; app-registraties: &gt; Selecteer de toepassing- &gt; branding. In de sectie huis stijl ziet u het veld "URL van start pagina", die u kunt aanpassen aan de gewenste landings pagina. Als u nog steeds de verouderde App-registraties ervaring gebruikt, wordt op het tabblad Eigenschappen de informatie ' start pagina-URL ' weer gegeven. 
     
     > [!IMPORTANT]
-    > Als u de bovenstaande wijzigingen wilt aanbrengen, moet u rechten hebben om toepassings objecten in azure AD te wijzigen. De gebruiker moet de rol van [toepassings beheerder](../users-groups-roles/roles-delegate-app-roles.md#assign-built-in-application-admin-roles) toewijzen die toepassings Modificaion in azure AD verleent aan de gebruiker.
+    > Als u de bovenstaande wijzigingen wilt aanbrengen, moet u rechten hebben om toepassings objecten in azure AD te wijzigen. De gebruiker moet de rol van [toepassings beheerder](../roles/delegate-app-roles.md#assign-built-in-application-admin-roles) toewijzen die toepassings Modificaion in azure AD verleent aan de gebruiker.
     >
 
 2.  Als uw toepassingen FQDN-namen (FULLy Qualified Domain names) gebruiken, moet u [aangepaste domeinen](application-proxy-configure-custom-domain.md) gebruiken om uw toepassingen te publiceren. Met deze functie kan dezelfde URL zowel intern als extern worden gebruikt.

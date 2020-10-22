@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 00d8e0d3ba57034bd65dfb7663341e4fcdf586dc
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: a78c67892e2bccb7c98d680539a84c2cc1f49a95
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92310923"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372290"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>De Azure Arc-gegevens controller maken
 
@@ -39,7 +39,7 @@ Momenteel zijn de ondersteunde lijst met Kubernetes-Services en-distributies de 
 > * De mini maal ondersteunde versie van Kubernetes is v 1.14.
 > * Bekijk de [connectiviteits vereisten](connectivity.md) om te begrijpen welke connectiviteit vereist is tussen uw omgeving en Azure.
 > * Zie de [richt lijnen voor opslag configuratie](storage-configuration.md) voor meer informatie over het configureren van uw permanente opslag.
-> * Als u de Azure Kubernetes-service gebruikt, moet de VM-grootte van het werk knooppunt van het cluster ten minste **Standard_D8s_v3** zijn en **Premium-schijven gebruiken.** 
+> * Als u de Azure Kubernetes-service gebruikt, moet de VM-grootte van het werk knooppunt van het cluster ten minste **Standard_D8s_v3** zijn en **Premium-schijven gebruiken.** Het cluster mag niet meerdere beschikbaarheids zones omvatten. 
 > * Als u een andere Kubernetes-distributie of-service gebruikt, moet u ervoor zorgen dat u beschikt over een minimale knooppunt grootte van 8 GB RAM en 4 kernen en een totale capaciteit van 32 GB RAM-geheugen beschikbaar is voor al uw Kubernetes knooppunten. U kunt bijvoorbeeld één knoop punt hebben van 32 GB RAM-geheugen en 4 kernen, of u kunt 2 knoop punten hebben met een RAM-geheugen en 4 kernen per generatie.
 
 > [!NOTE]

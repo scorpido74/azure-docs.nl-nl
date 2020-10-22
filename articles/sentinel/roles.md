@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
-ms.openlocfilehash: b48ff1043ae8128a5cbfdcbba0548d89b5af2624
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b680dbaead6e94aa955ebc0e0e720281a40389d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88565839"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369893"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Machtigingen in Azure Sentinel
 
-Azure Sentinel maakt gebruik [van Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) om [ingebouwde rollen](../role-based-access-control/built-in-roles.md)te bieden   die kunnen worden toegewezen aan gebruikers, groepen en services in Azure.
+Azure Sentinel maakt gebruik [van Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) om [ingebouwde rollen](../role-based-access-control/built-in-roles.md) te bieden die kunnen worden toegewezen aan gebruikers, groepen en services in Azure.
 
 Gebruik RBAC om rollen binnen uw beveiligings team te maken en toe te wijzen om de juiste toegang tot Azure Sentinel te verlenen. De verschillende rollen bieden een nauw keurige controle over wat gebruikers van Azure Sentinel kunnen zien en doen. Azure-rollen kunnen rechtstreeks worden toegewezen in de Azure Sentinel-werk ruimte (Zie de opmerking hieronder) of in een abonnement of resource groep waartoe de werk ruimte behoort, die door Azure Sentinel wordt overgenomen.
 
@@ -62,7 +62,7 @@ Gebruikers met bepaalde taak vereisten moeten mogelijk aanvullende rollen of spe
 
 - Gast gebruikers die incidenten toewijzen
 
-    Als een gast gebruiker incidenten moet kunnen toewijzen, moet aan de gebruiker naast de rol van Azure Sentinel responder ook de rol van [Directory Reader](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers)worden toegewezen. Houd er rekening mee dat deze rol *geen* Azure RBAC-rol heeft, maar een **Azure Active Directory** rol, en dat reguliere (niet-gast) gebruikers standaard deze rol kunnen toewijzen. 
+    Als een gast gebruiker incidenten moet kunnen toewijzen, moet aan de gebruiker naast de rol van Azure Sentinel responder ook de rol van [Directory Reader](../active-directory/roles/permissions-reference.md#directory-readers)worden toegewezen. Houd er rekening mee dat deze rol *geen* Azure RBAC-rol heeft, maar een **Azure Active Directory** rol, en dat reguliere (niet-gast) gebruikers standaard deze rol kunnen toewijzen. 
 
 Zie de [onderstaande tabel](#roles-and-allowed-actions)voor een vergelijking naast elkaar.
 
@@ -91,7 +91,7 @@ De volgende tabel bevat een overzicht van de rollen en toegestane acties in Azur
 
 - Naast of in plaats van met behulp van ingebouwde rollen van Azure, kunt u aangepaste Azure-rollen maken voor Azure Sentinel. Aangepaste Azure-rollen voor Azure Sentinel worden op dezelfde manier gemaakt als bij het maken van andere [aangepaste Azure RBAC](../role-based-access-control/custom-roles-rest.md#create-a-custom-role) -rollen, op basis van [specifieke machtigingen voor Azure Sentinel](../role-based-access-control/resource-provider-operations.md#microsoftsecurityinsights) en [Azure log Analytics-resources](../role-based-access-control/resource-provider-operations.md#microsoftoperationalinsights).
 
-- U kunt het Log Analytics geavanceerd toegangs beheer op basis van rollen gebruiken voor de gegevens in uw Azure Sentinel-werk ruimte. Dit omvat zowel RBAC op gegevens type als resource gerichte RBAC. Zie [logboek gegevens en-werk ruimten beheren in azure monitor](../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions)voor meer informatie over log Analytics rollen.
+- U kunt het Log Analytics geavanceerd toegangs beheer op basis van rollen gebruiken voor de gegevens in uw Azure Sentinel-werk ruimte. Dit omvat zowel RBAC op gegevens type als resource gerichte RBAC. Zie [logboek gegevens en-werk ruimten beheren in azure monitor](../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions)voor meer informatie over log Analytics rollen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

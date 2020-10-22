@@ -15,12 +15,12 @@ ms.date: 09/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 415af4d71365a88a5998f6a9356d5240bc5e2518
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 069c290de0278202b2e20d67f0ce792a0a79c345
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91665987"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368227"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Problemen met Azure RBAC oplossen
 
@@ -61,7 +61,7 @@ $ras.Count
 
     Als u het fout bericht ' onvoldoende bevoegdheden om de bewerking te volt ooien ' krijgt, komt dit waarschijnlijk doordat Azure CLI probeert de identiteit van de toegewezen gebruiker te zoeken in azure AD en de Service-Principal standaard geen Azure AD kan lezen.
 
-    Er zijn twee manieren om deze fout op te lossen. De eerste manier is het toewijzen van de rol van de [Directory lezers](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) aan de Service-Principal zodat deze gegevens in de map kan lezen.
+    Er zijn twee manieren om deze fout op te lossen. De eerste manier is het toewijzen van de rol van de [Directory lezers](../active-directory/roles/permissions-reference.md#directory-readers) aan de Service-Principal zodat deze gegevens in de map kan lezen.
 
     De tweede manier om deze fout op te lossen is door de roltoewijzing te maken met behulp `--assignee-object-id` van de para meter in plaats van `--assignee` . Als u `--assignee-object-id` Azure cli gebruikt, wordt de Azure AD-zoek opdracht overs Laan. U moet de object-ID van de gebruiker, groep of toepassing ophalen waaraan u de rol wilt toewijzen. Zie [Azure-roltoewijzingen toevoegen of verwijderen met Azure cli](role-assignments-cli.md#add-role-assignment-for-a-new-service-principal-at-a-resource-group-scope)voor meer informatie.
 
@@ -184,7 +184,7 @@ Als u een gebruiker alleen-lezen toegang verleent tot één web-app, worden somm
 * Opdrachten (zoals starten, stoppen, enz.)
 * Instellingen wijzigen, zoals algemene configuratie, schaal instellingen, back-upinstellingen en controle-instellingen
 * Toegang tot publicatie referenties en andere geheimen, zoals app-instellingen en verbindings reeksen
-* Streaming-logboeken
+* Streaminglogboeken
 * Configuratie van bron logboeken
 * Console (opdracht prompt)
 * Actieve en recente implementaties (voor lokale Git-continue implementatie)

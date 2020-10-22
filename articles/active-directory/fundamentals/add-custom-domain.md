@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc512bf664857129377d2eb928ff025d1c5f659b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28847ece3c08e93d14d381b35fc93fb16dad95a1
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89321171"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370862"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Uw aangepaste domein naam toevoegen met behulp van de Azure Active Directory Portal
 
@@ -104,9 +104,9 @@ Als een aangepaste domein naam niet kan worden geverifieerd met Azure AD, kunt u
 
   Als u de record op de registratie site niet kunt bijwerken, deelt u de vermelding met iemand die gemachtigd is om de vermelding toe te voegen en controleert u of deze juist is.
 
-- **Zorg ervoor dat de domein naam niet al in gebruik is in een andere map.** Een domein naam kan alleen in één Directory worden geverifieerd. Als uw domein naam momenteel in een andere Directory is geverifieerd, kan deze ook niet worden geverifieerd in de nieuwe map. Als u dit duplicatie probleem wilt oplossen, moet u de domein naam uit de oude map verwijderen. Zie [aangepaste domein namen beheren](../users-groups-roles/domains-manage.md)voor meer informatie over het verwijderen van domein namen.
+- **Zorg ervoor dat de domein naam niet al in gebruik is in een andere map.** Een domein naam kan alleen in één Directory worden geverifieerd. Als uw domein naam momenteel in een andere Directory is geverifieerd, kan deze ook niet worden geverifieerd in de nieuwe map. Als u dit duplicatie probleem wilt oplossen, moet u de domein naam uit de oude map verwijderen. Zie [aangepaste domein namen beheren](../enterprise-users/domains-manage.md)voor meer informatie over het verwijderen van domein namen.
 
-- **Zorg ervoor dat u geen niet-beheerde Power BI tenants hebt.** Als uw gebruikers Power BI hebben geactiveerd via self-service-aanmelding en een niet-beheerde Tenant voor uw organisatie hebben gemaakt, moet u het beheer overnemen als een interne of externe beheerder met behulp van Power shell. Zie [Een niet-beheerde directory overnemen als beheerder in Azure Active Directory](../users-groups-roles/domains-admin-takeover.md) voor meer informatie.
+- **Zorg ervoor dat u geen niet-beheerde Power BI tenants hebt.** Als uw gebruikers Power BI hebben geactiveerd via self-service-aanmelding en een niet-beheerde Tenant voor uw organisatie hebben gemaakt, moet u het beheer overnemen als een interne of externe beheerder met behulp van Power shell. Zie [Een niet-beheerde directory overnemen als beheerder in Azure Active Directory](../enterprise-users/domains-admin-takeover.md) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -114,6 +114,6 @@ Als een aangepaste domein naam niet kan worden geverifieerd met Azure AD, kunt u
 
 - Gebruikers toevoegen aan uw domein. Zie [hoe gebruikers toevoegen of verwijderen](add-users-azure-active-directory.md)voor meer informatie.
 
-- Beheer uw domein naam gegevens in azure AD. Zie [aangepaste domein namen beheren](../users-groups-roles/domains-manage.md)voor meer informatie.
+- Beheer uw domein naam gegevens in azure AD. Zie [aangepaste domein namen beheren](../enterprise-users/domains-manage.md)voor meer informatie.
 
 - Zie [uw on-premises Directory's integreren met Azure Active Directory](../hybrid/whatis-hybrid-identity.md)als u on-premises versies van Windows Server hebt die u naast Azure Active Directory wilt gebruiken.

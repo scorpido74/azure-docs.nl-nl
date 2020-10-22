@@ -1,15 +1,14 @@
 ---
 title: Verbinding maken tussen hybride computers en Azure via de Azure Portal
 description: In dit artikel leert u hoe u de agent kunt installeren en computers kunt verbinden met Azure met behulp van Azure Arc-servers van de Azure Portal.
-ms.date: 09/24/2020
+ms.date: 10/21/2020
 ms.topic: conceptual
-ms.custom: references_regions
-ms.openlocfilehash: 2ba834d8c55f53792606fffe65d65794e837e9e3
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 8769a3b76172bc6508b7c52eda359695c01eaa4b
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92101729"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370148"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Verbinding maken tussen hybride computers en Azure via de Azure Portal
 
@@ -17,7 +16,7 @@ U kunt servers voor Azure-Arc inschakelen voor een of meer Windows-of Linux-comp
 
 Voor deze methode moet u beheerders rechten op de computer hebben om de agent te installeren en configureren. Op Linux, met behulp van het hoofd account en in Windows, bent u lid van de lokale groep Administrators.
 
-Voordat u aan de slag gaat, moet u de [vereisten](agent-overview.md#prerequisites) controleren en controleren of uw abonnement en resources voldoen aan de vereisten.
+Voordat u aan de slag gaat, moet u de [vereisten](agent-overview.md#prerequisites) controleren en controleren of uw abonnement en resources voldoen aan de vereisten. Zie [ondersteunde Azure-regio's](overview.md#supported-regions)voor meer informatie over ondersteunde regio's en andere gerelateerde overwegingen.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -25,22 +24,13 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Het script om het downloaden en installeren te automatiseren en de verbinding met Azure Arc tot stand te brengen, is beschikbaar via de Azure Portal. Ga als volgt te werk om het proces te voltooien:
 
-1. Ga in uw browser naar de [Azure Portal](https://aka.ms/hybridmachineportal).
+1. Ga in uw browser naar de [Azure Portal](https://portal.azure.com).
 
 1. Selecteer op de pagina **servers-Azure-boog** de optie **toevoegen** aan de linkerbovenhoek.
 
 1. Selecteer op de pagina **een methode selecteren** de tegel **servers met interactieve script toevoegen** en selecteer vervolgens **script genereren**.
 
-1. Selecteer op de pagina **Script genereren** het abonnement en de resourcegroep waarin u de machine wilt beheren binnen Azure. Selecteer een Azure-locatie waar de metagegevens van de machine worden opgeslagen.
-
-    >[!NOTE]
-    >Servers met Azure-Arc ondersteunen alleen de volgende regio's:
-    >- EastUS
-    >- WestUS2
-    >- West-Europa
-    >- SoutheastAsia
-    >
-    >Bekijk extra [overwegingen bij het selecteren van een](overview.md#supported-regions) regio in het overzichts artikel.
+1. Selecteer op de pagina **Script genereren** het abonnement en de resourcegroep waarin u de machine wilt beheren binnen Azure. Selecteer een Azure-locatie waar de metagegevens van de machine worden opgeslagen. Deze locatie kan hetzelfde of hetzelfde zijn als de locatie van de resource groep.
 
 1. Controleer de informatie op de pagina **vereisten** en selecteer **volgende: Resource Details**.
 
@@ -84,7 +74,7 @@ msiexec.exe /i AzureConnectedMachineAgent.msi /?
     msiexec.exe /i AzureConnectedMachineAgent.msi /qn /l*v "C:\Support\Logs\Azcmagentsetup.log"
     ```
 
-    Als de agent niet kan worden gestart nadat de installatie is voltooid, raadpleegt u de logboeken voor gedetailleerde informatie over de fout. De logboekmap is *%ProgramFiles%\AzureConnectedMachineAgentAgent\logs*.
+    Als de agent niet kan worden gestart nadat de installatie is voltooid, raadpleegt u de logboeken voor gedetailleerde informatie over de fout. De logboekmap is *%ProgramData%\AzureConnectedMachineAgent\log*.
 
 2. Als de machine moet communiceren via een proxy server, voert u de volgende opdracht uit om de proxy server-omgevings variabele in te stellen:
 
@@ -117,7 +107,7 @@ msiexec.exe /i AzureConnectedMachineAgent.msi /?
 
 1. Ga naar de map of share waarnaar u het script hebt gekopieerd en voer dit uit op de server door het script `./OnboardingScript.ps1` uit te voeren.
 
-Als de agent niet kan worden gestart nadat de installatie is voltooid, raadpleegt u de logboeken voor gedetailleerde informatie over de fout. De logboekmap is *%ProgramFiles%\AzureConnectedMachineAgentAgent\logs*.
+Als de agent niet kan worden gestart nadat de installatie is voltooid, raadpleegt u de logboeken voor gedetailleerde informatie over de fout. De logboekmap is *%ProgramData%\AzureConnectedMachineAgent\log*.
 
 ## <a name="install-and-validate-the-agent-on-linux"></a>De agent op Linux installeren en valideren
 

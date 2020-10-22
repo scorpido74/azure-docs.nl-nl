@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: ea963b143cedf36137d9c36bc57d323353da6786
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa1f9da2c60aaf4c552916d16c266e984bf08892
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86231349"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340509"
 ---
 # <a name="tutorial-mount-the-cluster"></a>Zelfstudie: Het cluster koppelen
 
@@ -20,6 +20,7 @@ In deze zelfstudie leert u hoe u NFS-clients kunt koppelen aan het Azure FXT Edg
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
+>
 > * Strategieën voor taakverdeling-clients over het bereik van client-gerichte IP-adressen
 > * Hoe een koppelingspad maken op basis van een client-gericht IP-adres en naamruimteverbinding
 > * Welke argumenten moeten worden gebruikt in een koppelingsopdracht
@@ -108,6 +109,6 @@ Om ervoor te zorgen dat een naadloze clientkoppeling, geeft u deze instellingen 
 
 Nadat u clients hebt gekoppeld, kunt u uw werkstroom testen en aan de slag gaan met uw cluster.
 
-Als u gegevens naar een nieuwe cloud kernfiler wilt verplaatsen, kunt u profiteren van de cache structuur door gebruik te maken van parallelle gegevensopname. Sommige strategieën worden beschreven in [Verplaatsen van gegevens naar een vFXT-cluster](https://docs.microsoft.com/azure/avere-vfxt/avere-vfxt-data-ingest). (Avere vFXT voor Azure is een cloud-product dat gebruikmaakt van technologie voor opslaan in cache die zeer vergelijkbaar is met de Azure FXT Edge Filer.)
+Als u gegevens naar een nieuwe cloud kernfiler wilt verplaatsen, kunt u profiteren van de cache structuur door gebruik te maken van parallelle gegevensopname. Sommige strategieën worden beschreven in [Verplaatsen van gegevens naar een vFXT-cluster](../avere-vfxt/avere-vfxt-data-ingest.md). (Avere vFXT voor Azure is een cloud-product dat gebruikmaakt van technologie voor opslaan in cache die zeer vergelijkbaar is met de Azure FXT Edge Filer.)
 
 Lees [De hardware-status van de Azure FXT Edge Filer bewaken](fxt-monitor.md) als u problemen met hardware moet oplossen.

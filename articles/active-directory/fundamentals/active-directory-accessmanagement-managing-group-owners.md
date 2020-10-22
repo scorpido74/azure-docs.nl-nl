@@ -12,12 +12,12 @@ ms.date: 09/11/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 788386dc3cbfb8b4252e8710d8ee1bfd9dbe4e66
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 2847678c78aec4a287427463a9aeeb8bd82c6771
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969911"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371933"
 ---
 # <a name="add-or-remove-group-owners-in-azure-active-directory"></a>Groeps eigenaren toevoegen aan of verwijderen uit Azure Active Directory
 Azure Active Directory-groepen (Azure AD) zijn eigendom van en worden beheerd door groeps eigenaren. Groeps eigenaren kunnen gebruikers of service-principals zijn en kunnen de groep met inbegrip van lidmaatschap beheren. Alleen bestaande groeps eigenaren of groep-Beheerders kunnen groeps eigenaren toewijzen. Groeps eigenaren hoeven geen lid te zijn van de groep.
@@ -63,10 +63,10 @@ Een eigenaar verwijderen uit een groep met behulp van Azure AD.
 ## <a name="next-steps"></a>Volgende stappen
 - [Toegang tot resources beheren met Azure Active Directory groepen](active-directory-manage-groups.md)
 
-- [Azure Active Directory cmdlets voor het configureren van groepsinstellingen](../users-groups-roles/groups-settings-cmdlets.md)
+- [Azure Active Directory cmdlets voor het configureren van groepsinstellingen](../enterprise-users/groups-settings-cmdlets.md)
 
-- [Groepen gebruiken om toegang toe te wijzen aan een geïntegreerde SaaS-app](../users-groups-roles/groups-saasapps.md)
+- [Groepen gebruiken om toegang toe te wijzen aan een geïntegreerde SaaS-app](../enterprise-users/groups-saasapps.md)
 
 - [Integrating your on-premises identities with Azure Active Directory (Engelstalig)](../hybrid/whatis-hybrid-identity.md)
 
-- [Azure Active Directory cmdlets voor het configureren van groepsinstellingen](../users-groups-roles/groups-settings-v2-cmdlets.md)
+- [Azure Active Directory cmdlets voor het configureren van groepsinstellingen](../enterprise-users/groups-settings-v2-cmdlets.md)

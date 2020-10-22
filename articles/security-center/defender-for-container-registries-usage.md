@@ -1,18 +1,18 @@
 ---
 title: Azure Defender gebruiken voor container registers
-description: Meer informatie over het gebruik van Azure Defender voor container registers voor het scannen van afbeeldingen in uw registers
+description: Meer informatie over het gebruik van Azure Defender voor container registers voor het scannen van Linux-installatie kopieën in uw door Linux gehoste registers
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 57e8b6f47c4166c4f8b9f5de0f3e03a7d757e100
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: b46c72730922a977dd754d8422d07db479a62b6c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342073"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370539"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>Azure Defender gebruiken voor container registers om uw installatie kopieën te scannen op beveiligings problemen
 
@@ -28,7 +28,8 @@ Wanneer de scanner beveiligings Security Center problemen meldt, Security Center
 |----|:----|
 |Releasestatus:|Algemeen verkrijgbaar (GA)|
 |Prijzen:|**Azure Defender voor container registers** wordt gefactureerd, zoals wordt weer gegeven op [de pagina met prijzen](security-center-pricing.md)|
-|Ondersteunde registers en installatie kopieën:|![Ja ](./media/icons/yes-icon.png) door Linux gehoste ACR-registers die toegankelijk zijn via het open bare Internet en shell toegang bieden.<br>![Geen door ](./media/icons/no-icon.png) Windows gehoste ACR-registers.<br>![Geen ](./media/icons/no-icon.png) persoonlijke registers-Security Center vereist dat uw registers toegankelijk zijn via het open bare Internet. Security Center kan momenteel geen verbinding maken met, of scannen, registers met toegang beperkt met een firewall, een service-eind punt of persoonlijke eind punten zoals een persoonlijke Azure-koppeling.<br>![Geen ](./media/icons/no-icon.png) minimale afbeeldings afbeeldingen zoals [docker](https://hub.docker.com/_/scratch/) -werk afbeeldingen, of "Distroless"-installatie kopieën die alleen een toepassing en de runtime-afhankelijkheden bevatten zonder pakket beheer, shell of besturings systeem.|
+|Ondersteunde registers en installatie kopieën:|Linux-installatie kopieën in ACR-registers die toegankelijk zijn via het open bare Internet en toegang tot de shell|
+|Niet-ondersteunde registers en installatie kopieën:|Windows-installatie kopieën<br>Persoonlijke registers<br>Registers met toegang beperkt tot een firewall, een service-eind punt of een persoonlijk eind punt, zoals een persoonlijke Azure-koppeling<br>Afbeeldingen met een minimale installatie, zoals [docker](https://hub.docker.com/_/scratch/) -werk afbeeldingen of ' Distroless-installatie kopieën die alleen een toepassing en de runtime-afhankelijkheden bevatten zonder pakket beheer, shell of besturings systeem|
 |Vereiste rollen en machtigingen:|Rol van **beveiligings lezer** en [Azure container Registry lezer](../container-registry/container-registry-roles.md)|
 |Clouds:|![Ja](./media/icons/yes-icon.png) Commerciële clouds<br>![Nee](./media/icons/no-icon.png) Nationaal/onafhankelijk (overheid van de VS, China, andere overheden)|
 |||
@@ -36,14 +37,12 @@ Wanneer de scanner beveiligings Security Center problemen meldt, Security Center
 
 ## <a name="identify-vulnerabilities-in-images-in-azure-container-registries"></a>Beveiligingsproblemen met installatiekopieën in Azure-containerregisters identificeren 
 
-1. Voor het inschakelen van beveiligings problemen met installatie kopieën die zijn opgeslagen in uw op Azure Resource Manager gebaseerde Azure Container Registry:
+Voor het inschakelen van beveiligings problemen met installatie kopieën die zijn opgeslagen in uw op Azure Resource Manager gebaseerde Azure Container Registry:
 
-    1. Schakel **Azure Defender in voor container registers** voor uw abonnement.
+1. Schakel **Azure Defender in voor container registers** voor uw abonnement. Security Center is nu gereed voor het scannen van afbeeldingen in uw registers.
 
-        Security Center is nu gereed voor het scannen van afbeeldingen in uw registers.
-
-        >[!NOTE]
-        > Deze functie wordt in rekening gebracht per installatiekopie.
+    >[!NOTE]
+    > Deze functie wordt in rekening gebracht per installatiekopie.
 
 1. Scans van afbeeldingen worden geactiveerd tijdens elke push-of import bewerking, en als de installatie kopie in de afgelopen 30 dagen is getrokken. 
 

@@ -1,5 +1,5 @@
 ---
-title: Wat is geautomatiseerde ML/AutoML
+title: Wat is geautomatiseerde ML? AutoML
 titleSuffix: Azure Machine Learning
 description: Meer informatie over hoe Azure Machine Learning automatisch een algoritme voor u kunt kiezen, en hoe u hiermee een model genereert om u tijd te besparen met behulp van de para meters en de criteria die u opgeeft om het beste algoritme voor uw model te selecteren.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: 4908f66dbc699a449b7b94febac8133bacc9f669
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49c3e5602834576e8d3de86ac7d6683f9b6f7b89
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760966"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367513"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Wat is geautomatiseerde machine learning (AutoML)?
 
@@ -158,7 +158,7 @@ De webinterface voor automatische ML maakt altijd gebruik van een extern [Comput
 Houd rekening met deze factoren bij het kiezen van het berekenings doel:
 
  * **Kies een lokale Compute**: als uw scenario wordt gebruikt voor initiële onderzoeken of demo's met behulp van kleine gegevens en korte treinen (d.w.z. seconden of een paar minuten per onderliggend item), kan de training op uw lokale computer een betere keuze zijn.  Er is geen instel tijd, de infrastructuur resources (uw PC of virtuele machine) zijn direct beschikbaar.
- * **Kies een Remote ml Compute-Cluster**: als u training hebt met grotere gegevens sets, zoals in productie training, modellen maken die langere treinen nodig hebben, biedt externe Compute veel betere end-to-end tijd prestaties, omdat `AutoML` parallelliseren-treinen worden verdeeld over de knoop punten van het cluster. Op een externe Compute wordt de start tijd voor de interne infra structuur ongeveer 1,5 minuten per onderliggende uitvoering toegevoegd, plus extra minuten voor de cluster infrastructuur als de virtuele machines nog niet actief zijn.
+ * **Kies een Remote ml Compute-Cluster**: als u training hebt met grotere gegevens sets, zoals in productie training, modellen maken die langere treinen nodig hebben, biedt externe Compute veel betere end-to-end tijd prestaties, omdat `AutoML` parallelliseren-treinen worden verdeeld over de knoop punten van het cluster. Op externe Compute wordt de opstart tijd voor de interne infra structuur ongeveer 1,5 minuten per onderliggende uitvoering toegevoegd, plus extra minuten voor de cluster infrastructuur als de virtuele machines nog niet actief zijn.
 
 ### <a name="pros-and-cons"></a>Voor-en nadelen
 Houd rekening met deze voor delen en nadelen bij het kiezen van lokaal versus extern.
@@ -166,7 +166,7 @@ Houd rekening met deze voor delen en nadelen bij het kiezen van lokaal versus ex
 |  | Professionals (voor delen)  |Nadelen (handicaps)  |
 |---------|---------|---------|---------|
 |**Lokaal Compute-doel** |  <li> Geen omgevings start tijd   | <li>  Subset van functies<li>  Kan parallelliseren niet uitvoeren <li> Erger voor grote gegevens. <li>Geen gegevens streaming tijdens training <li>  Geen DNN-parametrisatie <li> Alleen python SDK |
-|**Remote ML compute-clusters**|  <li> Volledige set functies <li> Parallelliseren onderliggende uitvoeringen <li>   Ondersteuning voor grote gegevens<li>  Op DNN gebaseerde parametrisatie <li>  Dynamische schaal baarheid van berekenings cluster op aanvraag <li> Er is ook geen code-ervaring (Web-UI) beschikbaar  |  <li> Start tijd voor cluster knooppunten <li> Start tijd voor elke onderliggende uitvoering    |
+|**Remote ML compute-clusters**|  <li> Volledige set functies <li> Parallelliseren onderliggende uitvoeringen <li>   Ondersteuning voor grote gegevens<li>  Op DNN gebaseerde parametrisatie <li>  Dynamische schaal baarheid van berekenings cluster op aanvraag <li> Er is ook geen code-ervaring (Web-UI) beschikbaar  |  <li> Opstart tijd voor cluster knooppunten <li> Opstart tijd voor elke onderliggende uitvoering    |
 
 ### <a name="feature-availability"></a>Beschikbaarheid van functies 
 
@@ -219,7 +219,7 @@ Met de volgende instellingen kunt u uw geautomatiseerde ML experiment configurer
 |**Gegevens in Train/validatie sets splitsen**| ✓|✓
 |**Ondersteunt ML-taken: classificatie, regressie en prognose**| ✓| ✓
 |**Optimaliseert op basis van primaire metriek**| ✓| ✓
-|**Ondersteunt AML Compute als Compute-doel** | ✓|✓
+|**Biedt ondersteuning voor Azure ML Compute als Compute target** | ✓|✓
 |**Prognose horizon, target lags & Rolling venster configureren**|✓|✓
 |**Afsluit criteria instellen** |✓|✓ 
 |**Gelijktijdige herhalingen instellen**| ✓|✓

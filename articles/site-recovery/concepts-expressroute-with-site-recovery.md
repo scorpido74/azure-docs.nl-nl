@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: 68671a98c7703514af11de2f8c505110129fe713
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12bec5af95e7da595d5af09fe9020992b1cf839d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91398643"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367989"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure-ExpressRoute met Azure Site Recovery
 
@@ -37,7 +37,7 @@ Zorg er ook voor dat aan de [netwerk vereisten](vmware-azure-configuration-serve
 
 Als u on-premises proxy gebruikt en ExpressRoute voor replicatie verkeer wilt gebruiken, moet u de lijst met ongebruikte proxy configureren op de configuratie server en de proces servers. Volg de onderstaande stappen:
 
-- Down load het PsExec-hulp programma van [hier](https://aka.ms/PsExec) om toegang te krijgen tot systeem gebruikers context.
+- Down load het PsExec-hulp programma van [hier](/sysinternals/downloads/psexec) om toegang te krijgen tot systeem gebruikers context.
 - Open Internet Explorer in de context van het systeem gebruikers door de volgende opdracht regel PsExec-s-i "%programfiles%\Internet Explorer\iexplore.exe" uit te voeren.
 - Proxy-instellingen in Internet Explorer toevoegen
 - Voeg in de lijst overs Laan de Azure Storage-URL *. blob.core.windows.net

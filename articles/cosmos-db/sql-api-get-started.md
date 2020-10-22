@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: kirankk
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 912b4966312d8925f70deeed99042d2701641f49
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 587fe536e860f3039bfd3a2d2c1e3c76cb40e4d5
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91801508"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278464"
 ---
 # <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>Zelfstudie: Een .NET-console-app bouwen om gegevens te beheren in het Azure Cosmos DB SQL-API-account
 
@@ -117,7 +117,7 @@ Goed gedaan. De configuratie is voltooid en u kunt nu aan de slag met het schrij
     ```
 
    > [!NOTE]
-   > Als u bekend bent met de vorige versie van de .NET SDK, komen de termen *verzameling* en *document* u misschien bekend voor. Azure Cosmos DB biedt ondersteuning voor meerdere API-modellen. Daarom worden in versie 3.0 van de .NET SDK de generieke termen *container* en *item* gebruikt. Een *container* kan een verzameling, een graaf of een tabel zijn. Een *item* kan een document, rand/hoekpunt of rij zijn en is de inhoud binnen een container. Raadpleeg [Werken met databases, containers en items in Azure Cosmos DB](databases-containers-items.md) voor meer informatie.
+   > Als u bekend bent met de vorige versie van de .NET SDK, komen de termen *verzameling* en *document* u misschien bekend voor. Azure Cosmos DB biedt ondersteuning voor meerdere API-modellen. Daarom worden in versie 3.0 van de .NET SDK de generieke termen *container* en *item* gebruikt. Een *container* kan een verzameling, een graaf of een tabel zijn. Een *item* kan een document, rand/hoekpunt of rij zijn en is de inhoud binnen een container. Raadpleeg [Werken met databases, containers en items in Azure Cosmos DB](account-databases-containers-items.md) voor meer informatie.
 
 1. Open de [Azure Portal](https://portal.azure.com). Vind uw Azure Cosmos DB-account en selecteer vervolgens **Sleutels**.
 
@@ -260,7 +260,7 @@ Een database is de logische container voor items die zijn gepartitioneerd in con
 1. Selecteer F5 om de toepassing uit te voeren.
 
    > [!NOTE]
-   > Als u de foutmelding ‘503 - Service niet beschikbaar’ ziet, kan het zijn dat de vereiste [poorten](performance-tips.md#networking) voor de directe verbindingsmodus worden geblokkeerd door een firewall. Om dit probleem op te lossen, opent u de vereiste poorten of gebruikt u de verbinding in gatewaymodus zoals weergegeven in de volgende code:
+   > Als u de foutmelding ‘503 - Service niet beschikbaar’ ziet, kan het zijn dat de vereiste [poorten](sql-sdk-connection-modes.md#service-port-ranges) voor de directe verbindingsmodus worden geblokkeerd door een firewall. Om dit probleem op te lossen, opent u de vereiste poorten of gebruikt u de verbinding in gatewaymodus zoals weergegeven in de volgende code:
    ```csharp
      // Create a new instance of the Cosmos Client in Gateway mode
      this.cosmosClient = new CosmosClient(EndpointUri, PrimaryKey, new CosmosClientOptions()
