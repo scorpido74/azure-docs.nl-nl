@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 568a524e9300905a5e70b2cf7481fc7eabfc669e
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 094ecd88c8b493d44b756d03d700b43cbcba1ee9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92311228"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362396"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Een Azure Active Directory rapportage en bewakings implementatie plannen
 
@@ -151,7 +151,7 @@ De volgende rollen kunnen Azure AD-rapporten lezen:
 
 * Rapportlezer
 
-Meer informatie over [Azure AD-beheerders rollen](../users-groups-roles/directory-assign-admin-roles.md).
+Meer informatie over [Azure AD-beheerders rollen](../roles/permissions-reference.md).
 
 *Pas het concept van minimale bevoegdheden altijd toe om het risico van inbreuk op een account te verminderen*. Overweeg het implementeren van [privileged Identity Management](../privileged-identity-management/pim-configure.md) om uw organisatie verder te beveiligen.
 

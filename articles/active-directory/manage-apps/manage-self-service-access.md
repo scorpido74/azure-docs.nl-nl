@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 04/20/2020
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa1016307cc6e838e2e1136f6bbacd82d2f8c82e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3bd6ddf58b3a6e8eb8c618ded335c699fc93328c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88640749"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362362"
 ---
 # <a name="how-to-configure-self-service-application-assignment"></a>Toewijzing van self-service toepassingen configureren
 
@@ -82,4 +82,4 @@ Volg de onderstaande stappen om de toegang van selfservice toepassingen voor een
 Zodra u de configuratie van de selfservice toepassing hebt voltooid, kunnen gebruikers naar hun [apps](https://myapps.microsoft.com/) navigeren en op de knop **self-service apps toevoegen** klikken om de apps te vinden die geschikt zijn voor selfservice toegang. Zakelijke goed keurders zien ook een melding in hun [apps](https://myapps.microsoft.com/). U kunt een e-mail bericht ontvangen wanneer een gebruiker toegang tot een toepassing heeft aangevraagd waarvoor de goed keuring is vereist.
 
 ## <a name="next-steps"></a>Volgende stappen
-[Azure Active Directory instellen voor groepsbeheer met self-service](../users-groups-roles/groups-self-service-management.md)
+[Azure Active Directory instellen voor groepsbeheer met self-service](../enterprise-users/groups-self-service-management.md)

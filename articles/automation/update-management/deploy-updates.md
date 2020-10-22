@@ -3,14 +3,14 @@ title: Update-implementaties voor Azure Automation maken Updatebeheer
 description: In dit artikel wordt beschreven hoe u update-implementaties plant en hoe u de status ervan controleert.
 services: automation
 ms.subservice: update-management
-ms.date: 10/14/2020
+ms.date: 10/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8b9b3df024839007a349d3a412de4a70ff3a1cd2
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 2c4489e22344d2807b22bf4752add9c336215bec
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92222333"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369693"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>Updates implementeren en resultaten bekijken
 
@@ -54,12 +54,12 @@ Als u een nieuwe update-implementatie wilt plannen, voert u de volgende stappen 
     > [!NOTE]
     > Deze optie is niet beschikbaar als u een Azure-VM of een Arc-server hebt geselecteerd. Het besturings systeem wordt automatisch geïdentificeerd.
 
-5. In de regio **groepen die moeten worden bijgewerkt (preview-versie)** definieert u een query die het abonnement, de resource groepen, locaties en Tags combineert om een dynamische groep van virtuele Azure-machines samen te stellen die in uw implementatie moeten worden meegenomen. Zie voor meer informatie [dynamische groepen gebruiken met updatebeheer](configure-groups.md).
+5. In de regio **groepen die moeten worden bijgewerkt** , definieert u een query die het abonnement, de resource groepen, locaties en Tags combineert voor het samen stellen van een dynamische groep virtuele Azure-machines die in uw implementatie moeten worden meegenomen. Zie voor meer informatie [dynamische groepen gebruiken met updatebeheer](configure-groups.md).
 
     > [!NOTE]
     > Deze optie is niet beschikbaar als u een Azure-VM of een Arc-server hebt geselecteerd. De machine is automatisch gericht op de geplande implementatie.
 
-6. Selecteer in de regio **computers die u wilt bijwerken** een opgeslagen zoek opdracht, een geïmporteerde groep of kies **machines** in het vervolg keuzemenu en selecteer afzonderlijke machines. Met deze optie kunt u de gereedheid van de Log Analytics-agent voor elke machine bekijken. Zie [Computergroepen in Azure Monitorlogboeken](../../azure-monitor/platform/computer-groups.md) voor meer informatie over de verschillende manieren waarop u computergroepen kunt maken in Azure Monitor-logboeken. U kunt Maxi maal 500 computers in een geplande update-implementatie toevoegen.
+6. Selecteer in de regio **computers die u wilt bijwerken** een opgeslagen zoek opdracht, een geïmporteerde groep of kies **machines** in het vervolg keuzemenu en selecteer afzonderlijke machines. Met deze optie kunt u de gereedheid van de Log Analytics-agent voor elke machine bekijken. Zie [Computergroepen in Azure Monitorlogboeken](../../azure-monitor/platform/computer-groups.md) voor meer informatie over de verschillende manieren waarop u computergroepen kunt maken in Azure Monitor-logboeken. U kunt Maxi maal 1000 computers in een geplande update-implementatie toevoegen.
 
     > [!NOTE]
     > Deze optie is niet beschikbaar als u een Azure-VM of een Arc-server hebt geselecteerd. De machine is automatisch gericht op de geplande implementatie.
@@ -83,7 +83,7 @@ Als u een nieuwe update-implementatie wilt plannen, voert u de volgende stappen 
 
 10. Gebruik het **terugkeer patroon** om op te geven of de implementatie één keer wordt uitgevoerd of een terugkerend schema gebruikt en selecteer **OK**.
 
-11. Selecteer in de regio **pre-scripts + post-scripts (preview)** de scripts die moeten worden uitgevoerd vóór en na de implementatie. Zie [pre-scripts en post scripts beheren](pre-post-scripts.md)voor meer informatie.
+11. Selecteer in de regio **pre-scripts + post-scripts** de scripts die moeten worden uitgevoerd vóór en na de implementatie. Zie [pre-scripts en post scripts beheren](pre-post-scripts.md)voor meer informatie.
 
 12. Gebruik het veld **onderhouds venster (minuten)** om de hoeveelheid tijd op te geven die is toegestaan voor het installeren van updates. Houd rekening met de volgende details wanneer u een onderhoudsvenster opgeeft:
 
@@ -111,7 +111,7 @@ Als u een nieuwe update-implementatie wilt plannen, voert u de volgende stappen 
     > [!NOTE]
     > Wanneer u klaar bent met het configureren van het implementatie schema voor een geselecteerde server die is ingeschakeld voor de Arc, selecteert u **controleren + maken**.
 
-15. U keert nu terug naar het statusdashboard. Selecteer **implementatie planningen** om de implementatie planning weer te geven die u hebt gemaakt.
+15. U keert nu terug naar het statusdashboard. Selecteer **implementatie planningen** om de implementatie planning weer te geven die u hebt gemaakt. Er worden Maxi maal 500 schema's weer gegeven. Als u meer dan 500 planningen hebt en u de volledige lijst wilt bekijken, raadpleegt u de methode [Software-update configuraties-lijst](/rest/api/automation/softwareupdateconfigurations/list) rest API met versie 2019-06-01 of hoger.
 
 ## <a name="schedule-an-update-deployment-programmatically"></a>Een update-implementatie via een programma plannen
 

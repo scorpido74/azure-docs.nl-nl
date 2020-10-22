@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ff683c7c3214be6ae60b5d00d4cd1c2becc32e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7dd1234e13f77f1ea95327a0a489e9a97cdc0ffd
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447091"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362498"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>De toegang tot externe gebruikers bepalen in het beheer van rechten van Azure AD
 
@@ -109,7 +109,7 @@ Om ervoor te zorgen dat personen buiten uw organisatie toegangs pakketten kunnen
 
 - Als u wilt dat externe gebruikers toegang hebben tot de share point online-site en de resources die zijn gekoppeld aan een Microsoft 365 groep, moet u het extern delen van share point Online inschakelen. Zie [extern delen in-of uitschakelen](/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting)voor meer informatie.
 
-- Zie voor meer informatie over het instellen van het gast beleid voor Microsoft 365 groepen op het niveau van de Directory in Power shell, [voor beeld: Configureer gast beleid voor groepen op het niveau van de Directory](../users-groups-roles/groups-settings-cmdlets.md#example-configure-guest-policy-for-groups-at-the-directory-level).
+- Zie voor meer informatie over het instellen van het gast beleid voor Microsoft 365 groepen op het niveau van de Directory in Power shell, [voor beeld: Configureer gast beleid voor groepen op het niveau van de Directory](../enterprise-users/groups-settings-cmdlets.md#example-configure-guest-policy-for-groups-at-the-directory-level).
 
 ### <a name="review-your-teams-sharing-settings"></a>De instellingen voor het delen van teams controleren
 

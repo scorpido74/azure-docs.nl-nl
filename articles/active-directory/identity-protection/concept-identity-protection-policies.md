@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7587ed6d414a69cff67aca9446aebf6260c99fcd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8776ad915ff215eef143f62aaa9e242ff0354f3e
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83736497"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368788"
 ---
 # <a name="identity-protection-policies"></a>Identiteitsbeveiligingbeleid
 
-Azure Active Directory Identity Protection bevat drie standaard beleidsregels die beheerders kunnen kiezen om in te scha kelen. Deze beleids regels zijn beperkt aanpassen, maar zijn van toepassing op de meeste organisaties. Met alle beleids regels kunt u uitzonde ring van gebruikers, zoals uw [beheerders accounts voor nood toegang of afbreek glazen](../users-groups-roles/directory-emergency-access.md), toestaan.
+Azure Active Directory Identity Protection bevat drie standaard beleidsregels die beheerders kunnen kiezen om in te scha kelen. Deze beleids regels zijn beperkt aanpassen, maar zijn van toepassing op de meeste organisaties. Met alle beleids regels kunt u uitzonde ring van gebruikers, zoals uw [beheerders accounts voor nood toegang of afbreek glazen](../roles/security-emergency-access.md), toestaan.
 
 ![Identiteitsbeveiligingbeleid](./media/concept-identity-protection-policies/identity-protection-policies.png)
 
