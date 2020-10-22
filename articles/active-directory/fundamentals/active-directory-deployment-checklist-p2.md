@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd33845c331f907dbd5720ac92c6b1c627f01873
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64f78dadc0eb1570018320aa77a390f94adf708a
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89318406"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371899"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Implementatiehandleiding voor Azure Active Directory-functies
 
@@ -43,8 +43,8 @@ In deze fase scha kelen beheerders basis beveiligings functies in om een beter b
 
 | Taak | Detail | Vereiste licentie |
 | ---- | ------ | ---------------- |
-| [Meer dan één globale beheerder aanwijzen](../users-groups-roles/directory-emergency-access.md) | Wijs ten minste twee permanente globale beheerders accounts toe die u kunt gebruiken als er sprake is van een nood geval. Deze accounts worden niet dagelijks gebruikt en moeten lange en complexe wacht woorden bevatten. | Azure AD Free |
-| [Indien mogelijk niet-globale beheerders rollen gebruiken](../users-groups-roles/directory-assign-admin-roles.md) | Geef uw beheerders alleen de toegang die ze nodig hebben tot de gebieden waartoe ze toegang moeten hebben. Niet alle beheerders moeten globale beheerders zijn. | Azure AD Free |
+| [Meer dan één globale beheerder aanwijzen](../roles/security-emergency-access.md) | Wijs ten minste twee permanente globale beheerders accounts toe die u kunt gebruiken als er sprake is van een nood geval. Deze accounts worden niet dagelijks gebruikt en moeten lange en complexe wacht woorden bevatten. | Azure AD Free |
+| [Indien mogelijk niet-globale beheerders rollen gebruiken](../roles/permissions-reference.md) | Geef uw beheerders alleen de toegang die ze nodig hebben tot de gebieden waartoe ze toegang moeten hebben. Niet alle beheerders moeten globale beheerders zijn. | Azure AD Free |
 | [Gebruik van Privileged Identity Management voor het bijhouden van rol van beheerdersrol inschakelen](../privileged-identity-management/pim-getting-started.md) | Schakel Privileged Identity Management in om het gebruik van de beheerdersrol te volgen. | Azure AD Premium P2 |
 | [Selfservice voor wachtwoordherstel implementeren](../authentication/howto-sspr-deployment.md) | Verminder de helpdesk oproepen voor wacht woord opnieuw instellen door personeel toe te staan hun eigen wacht woord opnieuw in te stellen met behulp van beleids regels die u als beheerder beheert. | |
 | [Een specifieke aangepaste lijst met geblokkeerde wacht woorden maken](../authentication/tutorial-configure-custom-password-protection.md) | Voor komen dat gebruikers wacht woorden maken die algemene woorden of zinsdelen bevatten van uw organisatie of gebied. | |
@@ -69,7 +69,7 @@ We voegen vervolgens toe aan de basis die in fase 1 is vastgelegd door de gebrui
 | [Wachtwoord-hash-synchronisatie implementeren](../hybrid/how-to-connect-password-hash-synchronization.md) | Synchroniseer wachtwoord hashes zodat wachtwoord wijzigingen kunnen worden gerepliceerd, ongeldige wachtwoord detectie en herstel en gelekte referentie rapportage. | Azure AD Free |
 | [Wacht woord terugschrijven implementeren](../authentication/tutorial-enable-sspr-writeback.md) | Toestaan dat wacht woorden worden gewijzigd in de cloud om terug te schrijven naar een on-premises Windows Server-Active Directory omgeving. | Azure AD Premium P1 |
 | [Azure AD Connect Health implementeren](../hybrid/whatis-azure-ad-connect.md#what-is-azure-ad-connect-health) | Schakel de bewaking in van de belangrijkste status statistieken voor uw Azure AD Connect servers, AD FS servers en domein controllers. | Azure AD Premium P1 |
-| [Licenties toewijzen aan gebruikers per groepslid maatschap in Azure Active Directory](../users-groups-roles/licensing-groups-assign.md) | Bespaar tijd en moeite door licentie groepen te maken die functies in-of uitschakelen in plaats van per gebruiker in te stellen. | |
+| [Licenties toewijzen aan gebruikers per groepslid maatschap in Azure Active Directory](../enterprise-users/licensing-groups-assign.md) | Bespaar tijd en moeite door licentie groepen te maken die functies in-of uitschakelen in plaats van per gebruiker in te stellen. | |
 | [Een plan maken voor toegang tot gast gebruikers](../external-identities/what-is-b2b.md) | Samen werken met gast gebruikers door hen aan te melden bij uw apps en services met hun eigen werk, school of sociale identiteiten. | [Azure AD B2B-licentie richtlijnen](../external-identities/licensing-guidance.md) |
 | [Bepaal de strategie voor het beheer van apparaten](../devices/overview.md) | Bepaal wat uw organisatie in staat is met betrekking tot apparaten. Registreren versus samen voegen, uw eigen apparaat en bedrijf meenemen. | |
 | [Windows hello voor bedrijven in uw organisatie implementeren](/windows/security/identity-protection/hello-for-business/hello-manage-in-organization) | Voor bereiding voor verificatie met een wacht woord met behulp van Windows hello | |
@@ -93,7 +93,7 @@ Fase 4 ziet beheerders de mogelijkheid om minimale bevoegdheids principes voor b
 | ---- | ------ | ---------------- |
 | [Het gebruik van Privileged Identity Management afdwingen](../privileged-identity-management/pim-security-wizard.md) | Beheer rollen verwijderen van normale dag-naar-dag-gebruikers accounts. Zorg ervoor dat gebruikers met beheerders rechten hun rol kunnen gebruiken nadat ze een multi-factor Authentication-controle hebben uitgevoerd, een zakelijke reden bieden of goed keuring aanvragen van aangewezen goed keurders. | Azure AD Premium P2 |
 | [Een toegangs beoordeling voor Azure AD-Directory functies in PIM volt ooien](../privileged-identity-management/pim-how-to-start-security-review.md) | Werk samen met uw beveiligings-en leiderschaps teams om een toegangs beoordelings beleid te maken om beheerders toegang te controleren op basis van het beleid van uw organisatie. | Azure AD Premium P2 |
-| [Beleid voor dynamische groepslid maatschappen implementeren](../users-groups-roles/groups-dynamic-membership.md) | Gebruik dynamische groepen om automatisch gebruikers toe te wijzen aan groepen op basis van hun kenmerken van HR (of uw bron van waarheid), zoals afdeling, titel, regio en andere kenmerken. |  |
+| [Beleid voor dynamische groepslid maatschappen implementeren](../enterprise-users/groups-dynamic-membership.md) | Gebruik dynamische groepen om automatisch gebruikers toe te wijzen aan groepen op basis van hun kenmerken van HR (of uw bron van waarheid), zoals afdeling, titel, regio en andere kenmerken. |  |
 | [Implementatie op basis van groepen implementeren](../manage-apps/what-is-access-management.md) | Gebruik het inrichten van toegangs beheer op basis van groepen om automatisch gebruikers in te richten voor SaaS-toepassingen. |  |
 | [Gebruikers inrichting en het ongedaan maken van de inrichting automatiseren](../app-provisioning/user-provisioning.md) | Verwijder hand matige stappen uit de levens duur van uw werknemers account om onbevoegde toegang te voor komen. Identiteiten van uw bron van waarheid (HR-systeem) synchroniseren met Azure AD. |  |
 

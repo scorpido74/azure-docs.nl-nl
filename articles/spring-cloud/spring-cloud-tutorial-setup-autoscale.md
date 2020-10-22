@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/22/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 5ca0c498e9fd03ce6397824465f9e1e006eeccc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4effdbf5fb924b59a540ce16e769633c484c641a
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905385"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091063"
 ---
 # <a name="tutorial-set-up-autoscale-for-microservice-applications"></a>Zelfstudie: Automatische schaalaanpassing instellen voor microservicetoepassingen
 
@@ -25,7 +25,7 @@ Automatisch schalen is een ingebouwde functie van Azure Spring Cloud die ervoor 
 Als u deze procedures wilt volgen, hebt u het volgende nodig:
 
 * Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
-* Een geïmplementeerd Azure Spring Cloud-service-exemplaar. Volg de [quickstart voor het implementeren van een app via Azure CLI](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli) om aan de slag te gaan.
+* Een geïmplementeerd Azure Spring Cloud-service-exemplaar. Volg de [quickstart voor het implementeren van een app via Azure CLI](./spring-cloud-quickstart.md) om aan de slag te gaan.
 * Er is al minstens één toepassing gemaakt in uw service-exemplaar.
 
 ## <a name="navigate-to-the-autoscale-page-in-the-azure-portal"></a>Naar de pagina Automatische schaalaanpassing navigeren in de Azure-portal
@@ -70,5 +70,5 @@ Als u zich in de Basic-laag bevindt en bent beperkt door een of meer van deze li
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Overzicht van automatische schaalaanpassing in Microsoft Azure](https://docs.microsoft.com/azure/azure-monitor/platform/autoscale-overview)
-* [Automatische schaalaanpassing controleren met Azure CLI](https://docs.microsoft.com/cli/azure/monitor/autoscale?view=azure-cli-latest&preserve-view=true)
+* [Overzicht van automatische schaalaanpassing in Microsoft Azure](../azure-monitor/platform/autoscale-overview.md)
+* [Automatische schaalaanpassing controleren met Azure CLI](/cli/azure/monitor/autoscale?preserve-view=true&view=azure-cli-latest)

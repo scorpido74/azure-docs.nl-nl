@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 04/06/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: fa66f17c6f96ac7f70188c5a28c0b180ed2f03e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c189411b13baf2497f0752c15550dd419f88f754
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906888"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92088598"
 ---
 # <a name="use-circuit-breaker-dashboard-with-azure-spring-cloud"></a>Circuit Breaker Dashboard gebruiken met Azure Spring Cloud
 
@@ -42,7 +42,7 @@ mvn clean package -D skipTests -f recommendation-service/pom.xml
 mvn clean package -D skipTests -f hystrix-turbine/pom.xml
 ```
 ## <a name="provision-your-azure-spring-cloud-instance"></a>Richt uw exemplaar van Azure Spring Cloud in
-Volg de procedure [Een service-exemplaar inrichten op de Azure CLI](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli#provision-a-service-instance-on-the-azure-cli).
+Volg de procedure [Een service-exemplaar inrichten op de Azure CLI](./spring-cloud-quickstart.md#provision-an-instance-of-azure-spring-cloud).
 
 ## <a name="deploy-your-applications-to-azure-spring-cloud"></a>Implementeer uw toepassingen naar Azure Spring Cloud
 Deze apps maken geen gebruik van **Config Server**, dus het is niet nodig om **Config Server** in te stellen voor Azure Spring Cloud.  Maak en implementeer als volgt:
@@ -82,6 +82,6 @@ Hystrix-gegevensstromen zijn ook toegankelijk vanaf `test-endpoint`. Omdat het e
 Als web-app moet Hystrix-dashboard werken op `test-endpoint`. Als deze niet goed werkt, kunnen er twee oorzaken zijn. Ten eerste kan het gebruik van `test-endpoint` de basis-URL van `/ to /<APP-NAME>/<DEPLOYMENT-NAME>` hebben gewijzigd, en ten tweede kan de web-app het absolute pad van de statische resource gebruiken. Om het te laten werken op `test-endpoint` moet u mogelijk de <base> handmatig bewerken in de front-endbestanden.
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Een service-exemplaar inrichten op de Azure CLI](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli#provision-a-service-instance-on-the-azure-cli)
-* [Een Java Spring-toepassing voorbereiden voor implementatie in Azure Spring Cloud](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-prepare-app-deployment)
+* [Een service-exemplaar inrichten op de Azure CLI](./spring-cloud-quickstart.md#provision-an-instance-of-azure-spring-cloud)
+* [Een Java Spring-toepassing voorbereiden voor implementatie in Azure Spring Cloud](./spring-cloud-tutorial-prepare-app-deployment.md)
 ::: zone-end

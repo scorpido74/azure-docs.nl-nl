@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: cawa
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 79fa01e53b53f3066e55736c105d6489ccbd96e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96b6b262765a361befeadd9b5a42d37ca5e66497
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89019841"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372052"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Instellingen voor geheime toepassingen veilig opslaan voor een webtoepassing
 
@@ -56,14 +56,19 @@ Als u uw web-app al hebt gemaakt, verleent u de web-app toegang tot de Key Vault
     > Voorafgaand aan Visual Studio 2017 V 15,6 is het raadzaam om de Azure Services-verificatie-extensie voor Visual Studio te installeren. Maar het is nu afgeschaft omdat de functionaliteit is geïntegreerd in de Visual Studio. Als u een oudere versie van Visual Studio 2017 gebruikt, wordt u aangeraden om een update uit te brengen naar ten minste VS 2017 15,6 of hoger, zodat u deze functionaliteit systeem eigen kunt gebruiken en toegang krijgt tot de sleutel kluis via de aanmeldings identiteit van Visual Studio zelf.
     >
 
-4. Voeg de volgende NuGet-pakketten toe aan uw project:
+4. Meld u aan bij Azure met de CLI, kunt u het volgende typen:
+
+    ```azurecli
+    az login
+    ```
+
+5. Voeg de volgende NuGet-pakketten toe aan uw project:
 
     ```
-    Microsoft.Azure.KeyVault
-    Microsoft.Azure.Services.AppAuthentication
-    Microsoft.Extensions.Configuration.AzureKeyVault
+    Azure.Identity
+    Azure.Extensions.AspNetCore.Configuration.Secrets
     ```
-5. Voeg de volgende code toe aan het Program.cs-bestand:
+6. Voeg de volgende code toe aan het Program.cs-bestand:
 
     ```csharp
     public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -73,12 +78,7 @@ Als u uw web-app al hebt gemaakt, verleent u de web-app toegang tot de Key Vault
                     var keyVaultEndpoint = GetKeyVaultEndpoint();
                     if (!string.IsNullOrEmpty(keyVaultEndpoint))
                     {
-                        var azureServiceTokenProvider = new AzureServiceTokenProvider();
-                        var keyVaultClient = new KeyVaultClient(
-                            new KeyVaultClient.AuthenticationCallback(
-                                azureServiceTokenProvider.KeyVaultTokenCallback));
-                        builder.AddAzureKeyVault(
-                        keyVaultEndpoint, keyVaultClient, new DefaultKeyVaultSecretManager());
+                        builder.AddAzureKeyVault(new Uri(keyVaultEndpoint), new DefaultAzureCredential(), new KeyVaultSecretManager());
                     }
                 })
                 .ConfigureWebHostDefaults(webBuilder =>
@@ -88,11 +88,12 @@ Als u uw web-app al hebt gemaakt, verleent u de web-app toegang tot de Key Vault
 
         private static string GetKeyVaultEndpoint() => Environment.GetEnvironmentVariable("KEYVAULT_ENDPOINT");
     ```
-6. Voeg uw Key Vault URL toe aan launchsettings.jsin het bestand. De naam van de omgevings variabele *KEYVAULT_ENDPOINT* is gedefinieerd in de code die u in stap 6 hebt toegevoegd.
+
+7. Voeg uw Key Vault URL toe aan launchsettings.jsin het bestand. De naam van de omgevings variabele *KEYVAULT_ENDPOINT* is gedefinieerd in de code die u in stap 7 hebt toegevoegd.
 
     ![Key Vault URL toevoegen als een project omgevings variabele](../media/vs-secure-secret-appsettings/add-keyvault-url.png)
 
-7. Start de fout opsporing van het project. Het moet worden uitgevoerd.
+8. Start de fout opsporing van het project. Het moet worden uitgevoerd.
 
 ## <a name="aspnet-and-net-applications"></a>ASP.NET en .NET-toepassingen
 

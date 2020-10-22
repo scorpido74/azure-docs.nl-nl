@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: b60a53b05c0d2c80c36c94e27e4d00952b5af954
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5fd014732fd4cdfaa52f971b5e4d2c74db580d2
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86113068"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371950"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Problemen met de configuratieserver oplossen
 
@@ -63,7 +63,7 @@ Deze fout treedt op wanneer de service geen gegevens kan lezen van de transport 
 
 Als u fouten in de vCenter-detectie wilt oplossen, voegt u de vCenter-Server toe aan de proxy-instellingen voor overs Laan. 
 
-- Down load het PsExec-hulp programma van [hier](https://aka.ms/PsExec) om toegang te krijgen tot inhoud van het systeem gebruiker.
+- Down load het PsExec-hulp programma van [hier](/sysinternals/downloads/psexec) om toegang te krijgen tot inhoud van het systeem gebruiker.
 - Open Internet Explorer in de inhoud van systeem gebruikers door de volgende opdracht regel PsExec-s-i "%programfiles%\Internet Explorer\iexplore.exe" uit te voeren.
 - Voeg proxy-instellingen in IE toe en start de tmanssvc-service opnieuw.
 - Als u DRA-proxy-instellingen wilt configureren, voert u cd C:\Program Files\Microsoft Azure Site Recovery provider uit.
@@ -163,16 +163,16 @@ De upgrade van de configuratie server mislukt wanneer bepaalde services niet wor
 Als u het probleem wilt identificeren, gaat u naar C:\ProgramData\ASRSetupLogs\ CX_TP_InstallLogFile op de configuratie server. Als u de volgende fouten vindt, gebruikt u de onderstaande stappen om het probleem op te lossen: 
 
 ```output
-2018-06-28 14:28:12.943   Successfully copied php.ini to C:\Temp from C:\thirdparty\php5nts
-2018-06-28 14:28:12.943   svagents service status - SERVICE_RUNNING
-2018-06-28 14:28:12.944   Stopping svagents service.
-2018-06-28 14:31:32.949   Unable to stop svagents service.
-2018-06-28 14:31:32.949   Stopping svagents service.
-2018-06-28 14:34:52.960   Unable to stop svagents service.
-2018-06-28 14:34:52.960   Stopping svagents service.
-2018-06-28 14:38:12.971   Unable to stop svagents service.
-2018-06-28 14:38:12.971   Rolling back the install changes.
-2018-06-28 14:38:12.971   Upgrade has failed.
+2018-06-28 14:28:12.943   Successfully copied php.ini to C:\Temp from C:\thirdparty\php5nts
+2018-06-28 14:28:12.943   svagents service status - SERVICE_RUNNING
+2018-06-28 14:28:12.944   Stopping svagents service.
+2018-06-28 14:31:32.949   Unable to stop svagents service.
+2018-06-28 14:31:32.949   Stopping svagents service.
+2018-06-28 14:34:52.960   Unable to stop svagents service.
+2018-06-28 14:34:52.960   Stopping svagents service.
+2018-06-28 14:38:12.971   Unable to stop svagents service.
+2018-06-28 14:38:12.971   Rolling back the install changes.
+2018-06-28 14:38:12.971   Upgrade has failed.
 ```
 
 Het probleem oplossen:
@@ -194,7 +194,7 @@ U hebt onvoldoende machtigingen voor het maken van een toepassing in Azure Activ
 
 Om het probleem op te lossen, meldt u zich aan bij de Azure Portal en voert u een van de volgende handelingen uit:
 
-- Vraag de ontwikkelaar van de toepassing aan bij AAD. Zie [Administrator role permissions in azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md)voor meer informatie over de ontwikkelaar van de toepassing.
+- Vraag de ontwikkelaar van de toepassing aan bij AAD. Zie [Administrator role permissions in azure Active Directory](../active-directory/roles/permissions-reference.md)voor meer informatie over de ontwikkelaar van de toepassing.
 - Controleer of de **gebruiker kan een toepassings vlag maken** in Aad is ingesteld op *True* . Zie [How to: de portal gebruiken om een Azure AD-toepassing en Service-Principal te maken die toegang hebben tot resources](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)voor meer informatie.
 
 ## <a name="process-servermaster-target-are-unable-to-communicate-with-the-configuration-server"></a>Proces server/Master doel kunnen niet communiceren met de configuratie server 
@@ -258,4 +258,3 @@ Dit probleem kan optreden wanneer de systeem tijd onjuist is.
 Het probleem oplossen:
 
 Stel de juiste tijd op de computer in en voer de aanmelding opnieuw uit. 
- 

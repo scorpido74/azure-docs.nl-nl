@@ -3,12 +3,12 @@ title: Veelgestelde vragen over Azure Kubernetes service (AKS)
 description: Vind antwoorden op enkele veelgestelde vragen over Azure Kubernetes service (AKS).
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: d46b3ba9e3df5e2b3600db2be2a41789fed5242f
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 8f50475d7ba9117fd32951b401b24b63d192fcd8
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207968"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372375"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Veelgestelde vragen over AKS (Azure Kubernetes Service)
 
@@ -198,6 +198,13 @@ Nee, AKS is een beheerde service en het bewerken van de IaaS-resources wordt nie
 ## <a name="does-aks-store-any-customer-data-outside-of-the-clusters-region"></a>Slaat AKS klant gegevens buiten de regio van het cluster op?
 
 De functie voor het opslaan van klant gegevens in één regio is momenteel alleen beschikbaar in de regio Zuidoost-Azië (Singapore) van de Azië en Stille Oceaan geo. Voor alle andere regio's worden klantgegevens opgeslagen in Geo.
+
+## <a name="are-aks-images-required-to-run-as-root"></a>Moeten AKS-installatie kopieën worden uitgevoerd als root?
+
+Met uitzonde ring van de volgende twee installatie kopieën hoeven AKS-installatie kopieën niet te worden uitgevoerd als root:
+
+- *mcr.microsoft.com/oss/kubernetes/coredns*
+- *mcr.microsoft.com/azuremonitor/containerinsights/ciprod*
 
 <!-- LINKS - internal -->
 

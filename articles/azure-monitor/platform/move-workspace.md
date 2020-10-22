@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2019
-ms.openlocfilehash: d59fb0dc39103119edbc4096b506c588c38cece4
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: e80ff2c04cf71fa322bb0bf41e8132f595c0644e
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282866"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372273"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Een Log Analytics-werk ruimte verplaatsen naar een ander abonnement of een andere resource groep
 
@@ -40,11 +40,20 @@ Oplossingen die moeten worden verwijderd voordat u uw Automation-account kunt on
 
 >[!IMPORTANT]
 > **Azure Sentinel-klanten**
-> - Azure Sentinel **ondersteunt momenteel niet** de verplaatsing van een werkruimte naar andere resourcegroepen of abonnement na de implementatie in deze werkruimte. 
-> - Als u de werkruimte al hebt verplaatst, moet u alle actieve regels onder **Analyses** uitschakelen en na vijf minuten opnieuw inschakelen. In de meeste gevallen is dit effectief, hoewel de methode niet wordt ondersteund en voor eigen risico wordt uitgevoerd.
+> - Wanneer Azure Sentinel op een werk ruimte wordt geïmplementeerd, wordt de werk ruimte momenteel niet ondersteund door een andere resource groep of een ander abonnement. 
+> - Als u de werkruimte al hebt verplaatst, moet u alle actieve regels onder **Analyses** uitschakelen en na vijf minuten opnieuw inschakelen. Dit moet in de meeste gevallen een efficiënte oplossing zijn, hoewel het niet wordt ondersteund en niet wordt uitgevoerd op uw eigen risico.
 > 
-> **Waarschuwingen**
-> - Alle waarschuwingen moeten na de verplaatsing opnieuw worden gemaakt, omdat de machtigingen zijn gebaseerd op de Azure-Resource-ID van de werk ruimte en de werk ruimte wordt gewijzigd. 
+> **Waarschuwingen opnieuw maken**
+> - Alle waarschuwingen moeten na een verplaatsing opnieuw worden gemaakt, omdat de machtigingen zijn gebaseerd op de Azure-Resource-ID van de werk ruimte, die verandert tijdens het verplaatsen van een werk ruimte.
+>
+> **Resource paden bijwerken**
+> - Nadat een werk ruimte is verplaatst, moeten alle Azure-of externe resources die naar de werk ruimte verwijzen, worden gecontroleerd en bijgewerkt om naar het nieuwe bronpad te verwijzen.
+> 
+>   *Voorbeelden:*
+>   - [Azure Monitor waarschuwings regels](alerts-resource-move.md)
+>   - Toepassingen van derden
+>   - Aangepast uitvoeren van scripts
+>
 
 ### <a name="delete-solutions-in-azure-portal"></a>Oplossingen in Azure Portal verwijderen
 Gebruik de volgende procedure om de oplossingen te verwijderen met behulp van de Azure Portal:

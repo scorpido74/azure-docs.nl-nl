@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: e2ab52120e2a5db6648caac61f0228cb0be7e67b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2a0444483c382da7c54accf7dca49d097671771
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91355037"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371984"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Problemen oplossen bij het uitvoeren van een failover van een virtuele VMware-machine of fysieke machine naar Azure
 
@@ -55,7 +55,7 @@ Volg de onderstaande stappen om het opstart type van Stuur Programma's voor **Wi
     Dit resulteert in het volgende resultaat als Hydration vereist is:
 
     ```output
-    REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0
+    REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0
 
     This system doesn't meet no-hydration requirement.
     ```
@@ -168,7 +168,7 @@ Het probleem oplossen:
 
 2. Als de uitvoer van de vorige opdrachten laat zien dat de instellingen http_proxy of https_proxy zijn gedefinieerd, gebruikt u een van de volgende methoden om de hoofd doel communicatie met de configuratie server te deblokkeren:
    
-   - Down load het [PsExec-hulp programma](https://aka.ms/PsExec).
+   - Down load het [PsExec-hulp programma](/sysinternals/downloads/psexec).
    - Gebruik het hulp programma om toegang te krijgen tot de context van het systeem gebruikers en te bepalen of het proxy adres is geconfigureerd. 
    - Als de proxy is geconfigureerd, opent u Internet Explorer in een systeem gebruikers context met behulp van het hulp programma PsExec.
   

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 770c9f7d677f739781db6290fa0c43e410761d17
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 8694c403b14234a70b0a67f9f4defb7817ba3ae3
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327815"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372205"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Introductiehandleiding voor Azure-ontwikkelaars
 
@@ -281,7 +281,7 @@ Als u een Azure-abonnement wilt maken of wilt gebruiken, moet u een Azure-accoun
 
 Voor elk Azure-abonnement is er een vertrouwensrelatie met een Azure AD-exemplaar. Dit betekent dat er op die directory wordt vertrouwd voor het verifiëren van gebruikers, services en apparaten. Meerdere abonnementen kunnen dezelfde directory vertrouwen, maar een abonnement vertrouwt slechts één directory. Zie [hoe Azure-abonnementen worden gekoppeld aan Azure Active Directory](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)voor meer informatie.
 
-En het definiëren van afzonderlijke Azure-account identiteiten, ook wel *gebruikers*genoemd, kunt u *groepen* definiëren in azure AD. Het maken van gebruikers groepen is een goede manier om de toegang tot resources in een abonnement te beheren met behulp van Azure op rollen gebaseerd toegangs beheer (Azure RBAC). Zie [een groep maken in azure Active Directory preview](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)voor meer informatie over het maken van groepen. U kunt ook groepen maken en beheren met [behulp van Power shell](../../active-directory/users-groups-roles/groups-settings-v2-cmdlets.md).
+En het definiëren van afzonderlijke Azure-account identiteiten, ook wel *gebruikers*genoemd, kunt u *groepen* definiëren in azure AD. Het maken van gebruikers groepen is een goede manier om de toegang tot resources in een abonnement te beheren met behulp van op rollen gebaseerd toegangs beheer (RBAC). Zie [een groep maken in azure Active Directory preview](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)voor meer informatie over het maken van groepen. U kunt ook groepen maken en beheren met [behulp van Power shell](../../active-directory/enterprise-users/groups-settings-v2-cmdlets.md).
 
 ### <a name="manage-your-subscriptions"></a>Uw abonnementen beheren
 
