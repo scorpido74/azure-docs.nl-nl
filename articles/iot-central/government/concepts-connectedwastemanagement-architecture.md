@@ -7,12 +7,12 @@ ms.date: 10/23/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 763fb82e0725e5a98112af3a79856c3703a5c2c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b061a6d3d7d2a6598d8ed7c48428d756db6e97d
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77016082"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126272"
 ---
 # <a name="connected-waste-monitoring-reference-architecture"></a>Referentiearchitectuur voor verbonden afvalverwerking 
 
@@ -33,7 +33,7 @@ Concepten:
 Laten we eens kijken naar de belangrijkste onderdelen die in het algemeen een rol spelen in een oplossing voor het bewaken van waterverbruik.
 
 ## <a name="devices-and-connectivity"></a>Apparaten en connectiviteit 
-Apparaten die worden gebruikt in open omgevingen, zoals afvalbakken, kunnen via een externe netwerkprovider worden verbonden via LPWAN (Low Power Wide Area Networks). Voor deze typen apparaten kunt u [Azure IoT Central Device Bridge](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge) gebruiken om uw apparaatgegevens naar uw IoT-toepassing in Azure IoT Central te verzenden. U kunt ook gebruikmaken van apparaatgateways die IP-capabel zijn en rechtstreeks verbinding kunnen maken met IoT Central.
+Apparaten die worden gebruikt in open omgevingen, zoals afvalbakken, kunnen via een externe netwerkprovider worden verbonden via LPWAN (Low Power Wide Area Networks). Voor deze typen apparaten kunt u [Azure IoT Central Device Bridge](../core/howto-build-iotc-device-bridge.md) gebruiken om uw apparaatgegevens naar uw IoT-toepassing in Azure IoT Central te verzenden. U kunt ook gebruikmaken van apparaatgateways die IP-capabel zijn en rechtstreeks verbinding kunnen maken met IoT Central.
 
 ## <a name="iot-central"></a>IoT Central 
 Azure IoT Central is een IoT-app-platform, waarmee u snel aan de slag kunt met uw IoT-oplossing. U kunt uw oplossing voorzien van een merk, aanpassen en integreren met services van derden.
@@ -51,5 +51,4 @@ De IoT-gegevens kunnen worden gebruikt om een groot aantal zakelijke toepassinge
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over het maken van IoT Central-toepassing voor [verbonden afvalverwerking](./tutorial-connected-waste-management.md)
 * Meer informatie over [IoT Central-sjablonen voor de overheid](./overview-iot-central-government.md)
-* Zie [Overzicht van IoT Central](https://docs.microsoft.com/azure/iot-central/core/overview-iot-central) voor meer informatie over IoT Central
-
+* Zie [Overzicht van IoT Central](../core/overview-iot-central.md) voor meer informatie over IoT Central

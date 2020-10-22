@@ -13,12 +13,12 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: d5699c1d08df8364f33371f911ea3be892b4b285
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 949ddae903a53957f62b89a01ce477edb92917c1
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90528125"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92365906"
 ---
 # <a name="shared-device-mode-for-ios-devices"></a>Modus voor gedeeld apparaat voor iOS-apparaten
 
@@ -43,7 +43,7 @@ Als u een app voor gedeelde apparaten wilt maken, werken ontwikkel aars en behee
 
 1. **Beheerders** van apparaten bereiden het apparaat voor met het delen van een Mobile Device Management (MDM)-provider, zoals Microsoft intune voor het beheren van de apparaten in hun organisatie. Het MDM duwt de Microsoft Authenticator-app naar de apparaten en schakelt gedeelde modus voor elk apparaat in via een profiel update op het apparaat. Met deze instelling voor de gedeelde modus wordt het gedrag van de ondersteunde apps op het apparaat gewijzigd. Deze configuratie van de MDM-provider stelt de modus voor gedeelde apparaten voor het apparaat in en schakelt de [micro soft Enter PRISE SSO-invoeg toepassing in voor Apple-apparaten](apple-sso-plugin.md) die vereist zijn voor de modus gedeeld apparaat.
 
-1. [**Vereist tijdens alleen open bare preview**] Een gebruiker met de rol van beheerder van het [Cloud apparaat](../users-groups-roles/directory-assign-admin-roles.md#cloud-device-administrator) moet vervolgens de [app Microsoft Authenticator](../user-help/user-help-auth-app-overview.md) starten en hun apparaat toevoegen aan de organisatie.
+1. [**Vereist tijdens alleen open bare preview**] Een gebruiker met de rol van beheerder van het [Cloud apparaat](../roles/permissions-reference.md#cloud-device-administrator) moet vervolgens de [app Microsoft Authenticator](../user-help/user-help-auth-app-overview.md) starten en hun apparaat toevoegen aan de organisatie.
 
     Als u het lidmaatschap van uw organisatie rollen wilt configureren in de Azure portal: **Azure Active Directory**  >  **rollen en Administrators**van de  >  **Cloud apparaat-beheerder**
 

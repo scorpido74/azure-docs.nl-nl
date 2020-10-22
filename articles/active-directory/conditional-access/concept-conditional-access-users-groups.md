@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 710122ed4e5a02453f6f0c19a145af64f2c69178
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: d14c9330977296630ee58bc2b508f4304472044c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145421"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366357"
 ---
 # <a name="conditional-access-users-and-groups"></a>Voorwaardelijke toegang: gebruikers en groepen
 
@@ -46,13 +46,13 @@ De volgende opties zijn beschikbaar voor opname bij het maken van beleid voor vo
 > Als gebruikers of groepen lid zijn van meer dan 2048 groepen, kan hun toegang worden geblokkeerd. Deze limiet is van toepassing op het directe en geneste groepslid maatschap.
 
 > [!WARNING]
-> Het beleid voor voorwaardelijke toegang biedt geen ondersteuning voor gebruikers die zijn toegewezen aan een directory-rol [binnen een administratieve eenheid](../users-groups-roles/roles-admin-units-assign-roles.md) of Directory-rollen die rechtstreeks aan een object zijn gekoppeld, zoals via [aangepaste rollen](../users-groups-roles/roles-create-custom.md).
+> Het beleid voor voorwaardelijke toegang biedt geen ondersteuning voor gebruikers die zijn toegewezen aan een directory-rol [binnen een administratieve eenheid](../roles/admin-units-assign-roles.md) of Directory-rollen die rechtstreeks aan een object zijn gekoppeld, zoals via [aangepaste rollen](../roles/custom-create.md).
 
 ## <a name="exclude-users"></a>Gebruikers uitsluiten
 
 Wanneer organisaties een gebruiker of groep opnemen en uitsluiten, wordt de gebruiker of groep uitgesloten van het beleid, omdat een actie uitsluiten een insluiting in het beleid overschrijft. Uitsluitingen worden vaak gebruikt voor nood toegang of verlopende glazen accounts. Meer informatie over accounts voor toegang in nood gevallen en waarom ze belang rijk zijn, vindt u in de volgende artikelen: 
 
-* [Accounts voor nood toegang beheren in azure AD](../users-groups-roles/directory-emergency-access.md)
+* [Accounts voor nood toegang beheren in azure AD](../roles/security-emergency-access.md)
 * [Maak een flexibele toegangs beheer strategie met Azure Active Directory](../authentication/concept-resilient-controls.md)
 
 De volgende opties zijn beschikbaar om uit te sluiten bij het maken van een beleid voor voorwaardelijke toegang.

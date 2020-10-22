@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 68fdff9444286a7f304c3a3361ad33a02e87a282
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6676187f87cecb7f876150d1582cde9051dd251
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91758367"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367479"
 ---
 # <a name="security-control-v2-privileged-access"></a>Beveiligings controle v2: Privileged Access
 
@@ -34,11 +34,11 @@ Opmerking: u kunt andere essentiële rollen hebben die moeten worden onderhevig 
 
 U kunt met behulp van Azure AD Privileged Identity Management (PIM) just-in-time-toegang verlenen tot Azure-resources en Azure AD. JIT verleent tijdelijke machtigingen voor het uitvoeren van geprivilegieerde taken alleen wanneer gebruikers deze nodig hebben. PIM kan ook beveiligings waarschuwingen genereren wanneer er verdachte of onveilige activiteiten in uw Azure AD-organisatie zijn.
 
-- [Machtigingen voor beheerdersrol in azure AD](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)
+- [Machtigingen voor beheerdersrol in azure AD](../../active-directory/roles/permissions-reference.md)
 
 - [Beveiligings waarschuwingen van Azure Privileged Identity Management gebruiken](../../active-directory/privileged-identity-management/pim-how-to-configure-security-alerts.md)
 
-- [Bevoegde toegang beveiligen voor hybride implementaties en cloudimplementaties in Azure AD](../../active-directory/users-groups-roles/directory-admin-roles-secure.md)
+- [Bevoegde toegang beveiligen voor hybride implementaties en cloudimplementaties in Azure AD](../../active-directory/roles/security-planning.md)
 
 **Verantwoordelijkheid**: klant
 
@@ -114,7 +114,7 @@ Opmerking: sommige Azure-Services ondersteunen lokale gebruikers en rollen die n
 Als u wilt voor komen dat uw Azure AD-organisatie per ongeluk wordt vergrendeld, stelt u een account voor toegang voor nood gevallen in voor toegang wanneer normale beheerders accounts niet kunnen worden gebruikt. Accounts voor toegang in nood gevallen zijn meestal zeer goed beschermd en ze mogen niet worden toegewezen aan specifieke personen. Accounts voor toegang in nood gevallen zijn beperkt tot scenario's met nood gevallen of ' afbreek glazen ', waarbij normale beheerders accounts niet kunnen worden gebruikt.
 Zorg ervoor dat de referenties (zoals wacht woord, certificaat of Smart Card) voor accounts voor toegang in nood gevallen beveiligd blijven en alleen bekend zijn bij personen die alleen in een nood geval mogen gebruiken.
 
-- [Accounts voor nood toegang beheren in azure AD](../../active-directory/users-groups-roles/directory-emergency-access.md)
+- [Accounts voor nood toegang beheren in azure AD](../../active-directory/roles/security-emergency-access.md)
 
 **Verantwoordelijkheid**: klant
 

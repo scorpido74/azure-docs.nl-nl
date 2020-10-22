@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 648d456534e86075a243a84ac0485d95a7f28479
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c1873e21db1c586453dc9e9fe890268d8797303a
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843104"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367003"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>Zelf studie: incidenten onderzoeken met Azure Sentinel
 
@@ -42,7 +42,7 @@ Een incident kan meerdere waarschuwingen bevatten. Het is een aggregatie van all
 ## <a name="prerequisites"></a>Vereisten
 - U kunt het incident alleen onderzoeken als u de velden voor entiteits toewijzing hebt gebruikt bij het instellen van de analyse regel. Het onderzoek diagram vereist dat uw oorspronkelijke incident entiteiten bevat.
 
-- Als u een gast gebruiker hebt die incidenten moet toewijzen, moet aan de gebruiker de rol van [Directory Reader](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) worden toegewezen in uw Azure AD-Tenant. Normale gebruikers (niet-gast) hebben deze rol standaard toegewezen.
+- Als u een gast gebruiker hebt die incidenten moet toewijzen, moet aan de gebruiker de rol van [Directory Reader](../active-directory/roles/permissions-reference.md#directory-readers) worden toegewezen in uw Azure AD-Tenant. Normale gebruikers (niet-gast) hebben deze rol standaard toegewezen.
 
 ## <a name="how-to-investigate-incidents"></a>Incidenten onderzoeken
 

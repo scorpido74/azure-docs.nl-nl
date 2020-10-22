@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18, contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a6c2255fcba12b19f375e694a0494011aa09b0e
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 019501eef0857c9dc7cd7f63a656eccf61608f1b
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92101859"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367819"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Wat zijn de standaard machtigingen voor gebruikers in Azure Active Directory?
 In Azure Active Directory (Azure AD) wordt aan alle gebruikers een reeks standaardmachtigingen verleend. De toegang van een gebruiker bestaat uit het type gebruiker, hun [roltoewijzingen](active-directory-users-assign-role-azure-portal.md)en hun eigendom van afzonderlijke objecten. Dit artikel beschrijft deze standaardmachtigingen en bevat een vergelijking van de standaardinstellingen voor lid- en gastgebruikers. De standaard gebruikers machtigingen kunnen alleen worden gewijzigd in gebruikers instellingen in azure AD.
@@ -48,19 +48,18 @@ Standaard machtigingen voor gebruikers met een lid kunnen op de volgende maniere
 Machtiging | Uitleg van de instelling
 ---------- | ------------
 Gebruikers kunnen de toepassing registreren | Als u deze optie instelt op Nee, voor komt u dat gebruikers toepassings registraties kunnen maken. De mogelijkheid kan vervolgens worden verleend aan specifieke personen door deze toe te voegen aan de ontwikkelaar van de toepassing.
-Gebruikers toestaan om een werk-of school account te verbinden met LinkedIn | Als u deze optie instelt op Nee, kunnen gebruikers hun werk-of school account niet verbinden met hun LinkedIn-account. Zie voor meer informatie [LinkedIn-account verbindingen gegevens delen en toestemming](../users-groups-roles/linkedin-user-consent.md).
-De mogelijkheid beveiligingsgroepen te maken | Als u deze optie op Nee instelt, kunnen gebruikers geen beveiligingsgroepen maken. Globale beheerders en gebruikers beheerders kunnen nog steeds beveiligings groepen maken. Zie [Azure Active Directory-cmdlets voor het configureren van groepsinstellingen](../users-groups-roles/groups-settings-cmdlets.md) voor meer informatie.
-Mogelijkheid om Microsoft 365 groepen te maken | Als u deze optie instelt op Nee, voor komt u dat gebruikers Microsoft 365 groepen kunnen maken. Als u deze optie instelt op sommige, kunnen gebruikers Microsoft 365 groepen maken. Globale beheerders en gebruikers beheerders kunnen nog steeds Microsoft 365 groepen maken. Zie [Azure Active Directory-cmdlets voor het configureren van groepsinstellingen](../users-groups-roles/groups-settings-cmdlets.md) voor meer informatie.
+Gebruikers toestaan om een werk-of school account te verbinden met LinkedIn | Als u deze optie instelt op Nee, kunnen gebruikers hun werk-of school account niet verbinden met hun LinkedIn-account. Zie voor meer informatie [LinkedIn-account verbindingen gegevens delen en toestemming](../enterprise-users/linkedin-user-consent.md).
+De mogelijkheid beveiligingsgroepen te maken | Als u deze optie op Nee instelt, kunnen gebruikers geen beveiligingsgroepen maken. Globale beheerders en gebruikers beheerders kunnen nog steeds beveiligings groepen maken. Zie [Azure Active Directory-cmdlets voor het configureren van groepsinstellingen](../enterprise-users/groups-settings-cmdlets.md) voor meer informatie.
+Mogelijkheid om Microsoft 365 groepen te maken | Als u deze optie instelt op Nee, voor komt u dat gebruikers Microsoft 365 groepen kunnen maken. Als u deze optie instelt op sommige, kunnen gebruikers Microsoft 365 groepen maken. Globale beheerders en gebruikers beheerders kunnen nog steeds Microsoft 365 groepen maken. Zie [Azure Active Directory-cmdlets voor het configureren van groepsinstellingen](../enterprise-users/groups-settings-cmdlets.md) voor meer informatie.
 De toegang tot de Azure AD-beheerportal beperken | Als u deze optie instelt op Nee, kunnen niet-beheerders de Azure AD-beheer Portal gebruiken om Azure AD-resources te lezen en te beheren. Ja beperkt alle niet-beheerders om toegang te krijgen tot Azure AD-gegevens in de beheer Portal.<p>**Opmerking**: met deze instelling wordt de toegang tot Azure AD-gegevens niet beperkt met Power shell of andere clients, zoals Visual Studio. Wanneer u deze optie instelt op Ja, kunt u de Azure AD-beheer Portal gebruiken om een administratieve rol toe te wijzen, zoals de rol van lezers van Active Directory.<p>Met deze rol kunnen elementaire Directory gegevens worden gelezen, die gebruikers standaard hebben (gasten en service-principals).
 Mogelijkheid om andere gebruikers te lezen | Deze instelling is alleen beschikbaar in PowerShell. Als u deze vlag instelt op $false, voor komt u dat alle niet-beheerders gebruikers informatie uit de map lezen. Met deze markering wordt het lezen van gebruikers gegevens in andere micro soft-Services, zoals Exchange Online, niet voor komen. Deze instelling is bedoeld voor speciale omstandigheden en het instellen van deze markering op $false wordt niet aanbevolen.
-
 
 ## <a name="restrict-guest-users-default-permissions"></a>Standaard machtigingen van gast gebruikers beperken
 
 Standaard machtigingen voor gast gebruikers kunnen op de volgende manieren worden beperkt:
 
->[!NOTE] 
->De instelling voor **gebruikers toegang voor gasten** is vervangen door de **machtigingen voor gast gebruikers beperkt** . Zie voor hulp bij het gebruik van deze functie [toegangs machtigingen voor gasten beperken (preview) in azure Active Directory](../users-groups-roles/users-restrict-guest-permissions.md).
+>[!NOTE]
+>De instelling voor gebruikers toegang voor gasten is vervangen door de **machtigingen voor gast gebruikers beperkt** . Zie voor hulp bij het gebruik van deze functie [toegangs machtigingen voor gasten beperken (preview) in azure Active Directory](../enterprise-users/users-restrict-guest-permissions.md).
 
 Machtiging | Uitleg van de instelling
 ---------- | ------------
@@ -86,7 +85,7 @@ De volgende tabellen bevatten een beschrijving van de specifieke machtigingen in
 #### <a name="owned-application-registrations"></a>Toepassings registraties in eigendom
 Gebruikers kunnen de volgende acties uitvoeren op toepassings registraties van de eigenaar.
 
-| **Acties** | **Beschrijving** |
+| **Acties** | **Deschription** (Beschrijving) |
 | --- | --- |
 | micro soft. Directory/toepassingen/publiek/update | Werk de eigenschap Applications. Audience bij in Azure Active Directory. |
 | microsoft.directory/applications/authentication/update | Werk de eigenschap Applications. Authentication bij in Azure Active Directory. |
@@ -101,7 +100,7 @@ Gebruikers kunnen de volgende acties uitvoeren op toepassings registraties van d
 #### <a name="owned-enterprise-applications"></a>Bedrijfs toepassingen in eigendom
 Gebruikers kunnen de volgende acties uitvoeren op bedrijfs toepassingen die eigendom zijn van de onderneming. Een bedrijfs toepassing bestaat uit Service-Principal, een of meer toepassings beleid en soms een toepassings object in dezelfde Tenant als de Service-Principal.
 
-| **Acties** | **Beschrijving** |
+| **Acties** | **Deschription** (Beschrijving) |
 | --- | --- |
 | microsoft.directory/auditLogs/allProperties/read | Lees alle eigenschappen (inclusief bevoorrechte eigenschappen) op audit logs bevat in Azure Active Directory. |
 | micro soft. Directory/policies/Basic/update | Basis eigenschappen van beleid in Azure Active Directory bijwerken. |
@@ -122,7 +121,7 @@ Gebruikers kunnen de volgende acties uitvoeren op bedrijfs toepassingen die eige
 #### <a name="owned-devices"></a>Apparaten in eigendom
 Gebruikers kunnen de volgende acties uitvoeren op apparaten die eigendom zijn van het apparaat.
 
-| **Acties** | **Beschrijving** |
+| **Acties** | **Deschription** (Beschrijving) |
 | --- | --- |
 | micro soft. Directory/apparaten/bitLockerRecoveryKeys/lezen | Lees de eigenschap devices. bitLockerRecoveryKeys in Azure Active Directory. |
 | micro soft. map/apparaten/uitschakelen | Apparaten uitschakelen in Azure Active Directory. |
@@ -130,7 +129,7 @@ Gebruikers kunnen de volgende acties uitvoeren op apparaten die eigendom zijn va
 #### <a name="owned-groups"></a>Groepen in eigendom
 Gebruikers kunnen de volgende acties uitvoeren op groepen in eigendom.
 
-| **Acties** | **Beschrijving** |
+| **Acties** | **Deschription** (Beschrijving) |
 | --- | --- |
 | micro soft. Directory/groepen/appRoleAssignments/update | Werk de eigenschap groups. appRoleAssignments bij in Azure Active Directory. |
 | micro soft. Directory/groepen/basis/bijwerken | Basis eigenschappen van groepen in Azure Active Directory bijwerken. |
@@ -143,7 +142,7 @@ Gebruikers kunnen de volgende acties uitvoeren op groepen in eigendom.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie voor meer informatie over de instelling voor gebruikers toegang voor gasten [beperken de machtigingen voor gast toegang (preview) in azure Active Directory](../users-groups-roles/users-restrict-guest-permissions.md).
+* Zie voor meer informatie over de instelling voor gebruikers toegang voor gasten [beperken de machtigingen voor gast toegang (preview) in azure Active Directory](../enterprise-users/users-restrict-guest-permissions.md).
 * Zie [een gebruiker toewijzen aan beheerders rollen in azure Active Directory](active-directory-users-assign-role-azure-portal.md) voor meer informatie over het toewijzen van Azure AD-beheerders rollen.
 * Als u meer wilt weten over hoe de toegang tot resources wordt beheerd in Microsoft Azure, ziet u [Inzicht krijgen in toegang tot resources in Azure](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 * Zie [Hoe Azure-abonnementen worden gekoppeld aan Azure Active Directory](active-directory-how-subscriptions-associated-directory.md) voor meer informatie over hoe Azure Active Directory aan uw Azure-abonnement wordt gekoppeld

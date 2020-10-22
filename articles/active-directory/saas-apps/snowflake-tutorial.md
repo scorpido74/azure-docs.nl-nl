@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 485e55d7a17027fa8b8ec1f313a326ddbc5f40eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0051deeef467fda93ca5e13221d391a15133403
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88545179"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123025"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-snowflake"></a>Zelfstudie: Azure Active Directory-integratie met Snowflake
 
@@ -100,7 +100,7 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD te configurere
 
 4. Voer in het gedeelte **Standaard SAML-configuratie** de volgende stappen uit als u de toepassing in de door **IDP geïnitieerde** modus wilt configureren:
 
-    ![Gegevens van domein en URL's voor eenmalige aanmelding van Snowflake](common/idp-intiated.png)
+    ![Schermopname die de Standaard SAML-configuratie toont, waar u de id en URL kunt invoeren en vervolgens Opslaan selecteert.](common/idp-intiated.png)
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://<SNOWFLAKE-URL>.snowflakecomputing.com`
 
@@ -108,7 +108,7 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD te configurere
 
     c. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door SP geïnitieerde modus wilt configureren:
 
-    ![Gegevens van domein en URL's voor eenmalige aanmelding van Snowflake](common/metadata-upload-additional-signon.png)
+    ![Schermopname die Extra URL's instellen toont, waar u een aanmeldings-URL kunt invoeren.](common/metadata-upload-additional-signon.png)
 
     In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<SNOWFLAKE-URL>.snowflakecomputing.com`
     

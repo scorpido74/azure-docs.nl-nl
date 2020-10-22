@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 06/12/2020
-ms.openlocfilehash: 4d5bb50d4fa34176da63c1305462903e9b62f010
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d2d7b0e8d4a67b2ff67a780a71ea46ec54df1de
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87504726"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280017"
 ---
 # <a name="create-a-resource-lock-for-azure-cosmos-table-api-table-using-azure-powershell"></a>Eem resourcevergrendeling maken voor een Azure Cosmos Table-API-tabel met behulp van Azure PowerShell
 
@@ -50,5 +50,3 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie [Documentatie over Azure PowerShell](https://docs.microsoft.com/PowerShell/) voor meer informatie over Azure PowerShell.
-
-Meer Azure Cosmos DB PowerShell-voorbeeldscripts vindt u in [Azure Cosmos DB PowerShell-scripts](../../../PowerShell-samples.md).

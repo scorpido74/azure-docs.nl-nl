@@ -6,29 +6,30 @@ ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: 9b0154889544e0054e309cc5f43851b73b4396b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ce7ffc66e0b6164b2e4ca9725b3f26403292a4a
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80754691"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220768"
 ---
 # <a name="tutorial-configure-the-clusters-network-settings"></a>Zelfstudie: De netwerkinstellingen van het cluster configureren
 
-Voordat u een nieuw gemaakt Azure FXT Edge Filer-cluster gebruikt, moet u verschillende netwerkinstellingen voor uw werkstroom controleren en aanpassen. 
+Voordat u een nieuw gemaakt Azure FXT Edge Filer-cluster gebruikt, moet u verschillende netwerkinstellingen voor uw werkstroom controleren en aanpassen.
 
-In deze zelfstudie worden de netwerkinstellingen beschreven die u mogelijk moet aanpassen voor een nieuw cluster. 
+In deze zelfstudie worden de netwerkinstellingen beschreven die u mogelijk moet aanpassen voor een nieuw cluster.
 
-U leert: 
+U leert:
 
 > [!div class="checklist"]
+>
 > * Welke netwerkinstellingen mogelijk moeten worden bijgewerkt na het maken van een cluster
-> * Welke Azure FXT Edge Filer-use-cases een AD-server of een DNS-server vereisen 
+> * Welke Azure FXT Edge Filer-use-cases een AD-server of een DNS-server vereisen
 > * Hoe u RRDNS (round-robin-DNS) moet configureren om clientaanvragen automatisch te verdelen over het FXT-cluster
 
 De hoeveelheid tijd die nodig is om deze stappen uit te voeren, is afhankelijk van het aantal benodigde configuratiewijzigingen in uw systeem:
 
-* Als u alleen de zelfstudie wilt lezen en enkele instellingen wilt controleren, duurt het 10 tot 15 minuten. 
+* Als u alleen de zelfstudie wilt lezen en enkele instellingen wilt controleren, duurt het 10 tot 15 minuten.
 * Als u round-robin-DNS moet configureren, kan deze taak een uur of langer duren.
 
 ## <a name="adjust-network-settings"></a>Netwerkinstellingen aanpassen
@@ -78,20 +79,20 @@ Als u certificaten moet uploaden naar het cluster, gebruikt u de instellingspagi
 
 Als u de communicatie voor clusterbeheer wilt versleutelen, gebruikt u de instellingspagina **Cluster** > **Algemene instellingen** om te selecteren welk certificaat moet worden gebruikt voor het beheer van TLS.
 
-> [!Note] 
-> Toegangssleutels voor cloudservices worden opgeslagen met behulp van de configuratiepagina voor **cloudreferenties**. In de sectie [Add a core filer](fxt-add-storage.md#add-a-core-filer) hierboven wordt een voorbeeld weergegeven. Lees de sectie [Cloud Credentials](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_credentials.html) in de handleiding voor clusterconfiguratie voor meer informatie (Engelstalig). 
+> [!Note]
+> Toegangssleutels voor cloudservices worden opgeslagen met behulp van de configuratiepagina voor **cloudreferenties**. In de sectie [Add a core filer](fxt-add-storage.md#add-a-core-filer) hierboven wordt een voorbeeld weergegeven. Lees de sectie [Cloud Credentials](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_credentials.html) in de handleiding voor clusterconfiguratie voor meer informatie (Engelstalig).
 
 ## <a name="configure-dns-for-load-balancing"></a>DNS voor taakverdeling configureren
 
-In deze sectie worden de basisbeginselen uitgelegd van het configureren van een round-robin-DNS-systeem (RRDNS) voor clienttaakverdeling tussen alle clientgerichte IP-adressen in uw FXT Edge Filer-cluster. 
+In deze sectie worden de basisbeginselen uitgelegd van het configureren van een round-robin-DNS-systeem (RRDNS) voor clienttaakverdeling tussen alle clientgerichte IP-adressen in uw FXT Edge Filer-cluster.
 
 ### <a name="decide-whether-or-not-to-use-dns"></a>Beslissen of u DNS wilt gebruiken
 
-Taakverdeling wordt altijd aanbevolen, maar u hoeft niet altijd DNS te gebruiken. Bij bepaalde typen clientwerkstromen kan het bijvoorbeeld handiger zijn om een script te gebruiken om IP-adressen van clusters gelijkmatig toe te wijzen aan clients wanneer ze het cluster koppelen. Sommige methoden worden beschreven in [Het cluster koppelen](fxt-mount-clients.md). 
+Taakverdeling wordt altijd aanbevolen, maar u hoeft niet altijd DNS te gebruiken. Bij bepaalde typen clientwerkstromen kan het bijvoorbeeld handiger zijn om een script te gebruiken om IP-adressen van clusters gelijkmatig toe te wijzen aan clients wanneer ze het cluster koppelen. Sommige methoden worden beschreven in [Het cluster koppelen](fxt-mount-clients.md).
 
-Houd rekening met het volgende bij het bepalen of u wel of geen DNS-server wilt gebruiken: 
+Houd rekening met het volgende bij het bepalen of u wel of geen DNS-server wilt gebruiken:
 
-* Als uw systeem alleen door NFS-clients wordt gebruikt, is DNS niet vereist. Het is mogelijk om alle netwerkadressen op te geven met behulp van numerieke IP-adressen. 
+* Als uw systeem alleen door NFS-clients wordt gebruikt, is DNS niet vereist. Het is mogelijk om alle netwerkadressen op te geven met behulp van numerieke IP-adressen.
 
 * Als uw systeem ondersteuning biedt voor toegang via SMB (CIFS), is DNS wel vereist, omdat u een DNS-domein moet opgeven voor de Active Directory-server.
 
@@ -110,7 +111,7 @@ Een cluster-vserver wordt aan de linkerkant weergegeven, en IP-adressen worden i
 
 Elk clientgericht IP-adres moet een unieke naam hebben voor intern gebruik door het cluster. (In dit diagram hebben de IP-adressen van de client de naam vs1-client-IP-* voor de duidelijkheid, maar in een productieomgeving moet u waarschijnlijk een beknoptere naam gebruiken, zoals client*.)
 
-Clients koppelen het cluster met de naam van de vserver als het serverargument. 
+Clients koppelen het cluster met de naam van de vserver als het serverargument.
 
 Wijzig het bestand ``named.conf`` van uw DNS-server om de cyclische volgorde voor query's naar uw vserver in te stellen. Deze optie zorgt ervoor dat alle beschikbare waarden de cyclus doorlopen. Voeg een instructie zoals deze toe:
 
@@ -136,7 +137,7 @@ update add 11.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-11.example.com
 update add 12.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-12.example.com
 ```
 
-### <a name="enable-dns-in-the-cluster"></a>DNS inschakelen in het cluster 
+### <a name="enable-dns-in-the-cluster"></a>DNS inschakelen in het cluster
 
 Geef de DNS-server op die door het cluster wordt gebruikt op de instellingspagina **Cluster** > **Beheernetwerk**. Instellingen op die pagina zijn onder andere:
 
@@ -148,8 +149,8 @@ Lees [DNS Settings](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Dit is de laatste basisconfiguratiestap voor het Azure FXT Edge Filer-cluster. 
+Dit is de laatste basisconfiguratiestap voor het Azure FXT Edge Filer-cluster.
 
 * Zie [Hardwarestatus controleren](fxt-monitor.md) voor meer informatie over de LED's en andere indicatoren van het systeem.
-* Zie [Het cluster koppelen](fxt-mount-clients.md) voor meer informatie over hoe clients het FXT Edge Filer-cluster moeten koppelen. 
-* Zie de [handleiding voor clusterconfiguratie](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/ops_conf_index.html) voor meer informatie over het gebruiken en beheren van een FXT Edge Filer-cluster. 
+* Zie [Het cluster koppelen](fxt-mount-clients.md) voor meer informatie over hoe clients het FXT Edge Filer-cluster moeten koppelen.
+* Zie de [handleiding voor clusterconfiguratie](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/ops_conf_index.html) voor meer informatie over het gebruiken en beheren van een FXT Edge Filer-cluster.

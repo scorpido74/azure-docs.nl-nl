@@ -14,18 +14,18 @@ ms.workload: identity
 ms.date: 06/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9819b90ba390e8601cc33a17338ce9b16bf3b3cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5421efc96b957f5ae96515bbcf17c8a773397c9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84982489"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368244"
 ---
 # <a name="list-azure-role-definitions"></a>Definities van Azure-rollen weer geven
 
 Een roldefinitie is een verzameling machtigingen die kan worden uitgevoerd, zoals lezen, schrijven en verwijderen. Het wordt meestal gewoon een rol genoemd. [Toegangs beheer op basis van rollen (Azure RBAC) van Azure](overview.md) heeft meer dan 120 [ingebouwde rollen](built-in-roles.md) of u kunt uw eigen aangepaste rollen maken. In dit artikel wordt beschreven hoe u de ingebouwde en aangepaste rollen vermeldt die u kunt gebruiken om toegang te verlenen tot Azure-resources.
 
-Zie [beheerders rollen in azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md)voor een overzicht van de beheerders rollen voor Azure Active Directory.
+Zie [beheerders rollen in azure Active Directory](../active-directory/roles/permissions-reference.md)voor een overzicht van de beheerders rollen voor Azure Active Directory.
 
 ## <a name="azure-portal"></a>Azure Portal
 
@@ -356,7 +356,7 @@ Als u roldefinities wilt weer geven, gebruikt u de [functie definities-lijst](/r
 1. Vervang *{filter}* door de voor waarde die u wilt Toep assen om de lijst met functie definities te filteren.
 
     > [!div class="mx-tableFixed"]
-    > | Filter | Beschrijving |
+    > | Filteren | Beschrijving |
     > | --- | --- |
     > | `$filter=atScopeAndBelow()` | Hiermee worden roldefinities voor het opgegeven bereik en eventuele subbereiken weer gegeven. |
     > | `$filter=type+eq+'{type}'` | Hiermee wordt een lijst met roldefinities van het opgegeven type weer gegeven. Type rol kan of zijn `CustomRole` `BuiltInRole` . |

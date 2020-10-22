@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 97f24537f2fa68f1a9be83e2c9abdc8101edb8d0
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 731e23c99a92d8f7d3558ea111d19f179db61da4
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014542"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367615"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Wat is een Azure Synapse-koppeling voor Azure Cosmos DB (preview)?
 
@@ -120,8 +120,6 @@ Synapse-koppeling wordt niet aanbevolen als u op zoek bent naar traditionele Dat
 
 * Op dit moment kan de analytische opslag alleen worden ingeschakeld voor nieuwe containers. Als u een analytische archief wilt gebruiken voor bestaande containers, migreert u gegevens vanuit uw bestaande containers naar nieuwe containers met [Azure Cosmos DB-migratie hulpprogramma's](cosmosdb-migrationchoices.md). U kunt de Synapse-koppeling inschakelen voor nieuwe en bestaande Azure Cosmos DB accounts.
 
-* Het openen van de Azure Cosmos DB Analytics Store met Synapse SQL Server is momenteel onder gated preview. Als u toegang wilt aanvragen, moet u een e-mail sturen naar het [Azure Synapse link-team](mailto:cosmosdbsynapselink@microsoft.com).
-
 * Voor de containers waarop het analytische archief is ingeschakeld, wordt automatische back-up en herstel van uw gegevens in de analytische opslag op dit moment niet ondersteund. Wanneer de Synapse-koppeling is ingeschakeld voor een database account, blijven Azure Cosmos DB automatisch [back-ups](https://docs.microsoft.com/azure/cosmos-db/online-backup-and-restore) van uw gegevens in het transactionele archief (alleen) van containers maken op het geplande back-upinterval, zoals altijd. Het is belang rijk te weten dat wanneer een container waarop een analytische opslag is ingeschakeld, wordt hersteld naar een nieuw account, de container wordt hersteld met alleen transactionele opslag en er geen analytische opslag is ingeschakeld. 
 
 * Het is momenteel niet mogelijk om toegang te krijgen tot de Azure Cosmos DB Analytics Store met Synapse SQL provisioned.
@@ -134,7 +132,7 @@ Het facturerings model van de koppeling Azure Synapse bevat de kosten die zijn g
 
 Raadpleeg de volgende documenten voor meer informatie:
 
-* [Overzicht van Azure Cosmos DB Analytical Store](analytical-store-introduction.md)
+* [Overzicht van analytische opslag van Azure Cosmos DB](analytical-store-introduction.md)
 
 * [Aan de slag met Azure Synapse Link voor Azure Cosmos DB](configure-synapse-link.md)
  

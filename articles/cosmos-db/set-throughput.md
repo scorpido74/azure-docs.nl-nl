@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 83909fdc75ec09b9ddd1fa9452f9a77e5763f895
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 7caa29807f2779ee1f52cb22de2bf95fdb9cb37e
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331818"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367122"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Inleiding tot ingerichte door Voer in Azure Cosmos DB
 
@@ -43,9 +43,6 @@ In de volgende afbeelding ziet u hoe een fysieke partitie als host fungeert voor
 :::image type="content" source="./media/set-throughput/resource-partition.png" alt-text="Fysieke partitie die als host fungeert voor een of meer logische partities van een container" border="false":::
 
 ## <a name="set-throughput-on-a-database"></a>Door Voer instellen voor een Data Base
-
-> [!NOTE]
-> Het inrichten van een door Voer voor een Azure Cosmos-data base is momenteel niet mogelijk in accounts waarin door de [klant beheerde sleutels](how-to-setup-cmk.md) zijn ingeschakeld.
 
 Wanneer u de door Voer inricht in een Azure Cosmos-data base, wordt de door Voer gedeeld via alle containers (shared data base-containers genoemd) in de-data base. Een uitzondering hierop is als u ingerichte doorvoer hebt opgegeven voor specifieke containers in de database. Het delen van de ingerichte door Voer op database niveau tussen de containers is vergelijkbaar met het hosten van een Data Base op een cluster machines. Omdat alle containers in een Data Base de resources delen die beschikbaar zijn op een computer, kunt u natuurlijk geen voorspel bare prestaties op een specifieke container krijgen. Zie [ingerichte door Voer configureren voor een Azure Cosmos-data base](how-to-provision-database-throughput.md)voor meer informatie over het configureren van een ingerichte door Voer voor een Data Base. Zie automatisch [schalen door Voer inrichten](how-to-provision-autoscale-throughput.md)voor meer informatie over het configureren van de door Voer van automatisch schalen op een Data Base.
 

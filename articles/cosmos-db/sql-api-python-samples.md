@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 08/11/2020
 ms.author: rosouz
 ms.custom: devx-track-python
-ms.openlocfilehash: a0db0ff7db8f0bf5b036e40080ee7ff8eac62b63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba4382e03e6fc1acfd606a375a062c05581f712c
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322679"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278229"
 ---
 # <a name="azure-cosmos-db-python-examples"></a>Python-voorbeelden voor Azure Cosmos DB
 
@@ -50,7 +50,7 @@ Voorbeeldoplossingen waarmee CRUD-bewerkingen en andere veelvoorkomende bewerkin
 
 ## <a name="database-examples"></a>Voorbeelden voor databases
 
-In het Python-voorbeeld [database_management.py](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/database_management.py) ziet u hoe u de volgende taken kunt uitvoeren. Zie het conceptuele artikel [Werken met databases, containers en items](databases-containers-items.md) voor meer informatie over de Azure Cosmos-databases voordat u de volgende voorbeelden uitvoert.
+In het Python-voorbeeld [database_management.py](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/database_management.py) ziet u hoe u de volgende taken kunt uitvoeren. Zie het conceptuele artikel [Werken met databases, containers en items](account-databases-containers-items.md) voor meer informatie over de Azure Cosmos-databases voordat u de volgende voorbeelden uitvoert.
 
 | Taak | API-verwijzing |
 | --- | --- |
@@ -62,7 +62,7 @@ In het Python-voorbeeld [database_management.py](https://github.com/Azure/azure-
 
 ## <a name="container-examples"></a>Voorbeelden van containers
 
-In het Python-voorbeeld [container_management.py](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/container_management.py) ziet u hoe u de volgende taken kunt uitvoeren. Zie het conceptuele artikel [Werken met databases, containers en items](databases-containers-items.md) voor meer informatie over de Azure Cosmos-verzamelingen voordat u de volgende voorbeelden uitvoert.
+In het Python-voorbeeld [container_management.py](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/container_management.py) ziet u hoe u de volgende taken kunt uitvoeren. Zie het conceptuele artikel [Werken met databases, containers en items](account-databases-containers-items.md) voor meer informatie over de Azure Cosmos-verzamelingen voordat u de volgende voorbeelden uitvoert.
 
 | Taak | API-verwijzing |
 | --- | --- |
@@ -75,7 +75,7 @@ In het Python-voorbeeld [container_management.py](https://github.com/Azure/azure
 
 ## <a name="item-examples"></a>Voorbeelden van items
 
-In het Python-voorbeeld [item_management.py](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/document_management.py) ziet u hoe u de volgende taken kunt uitvoeren. Zie het conceptuele artikel [Werken met databases, containers en items](databases-containers-items.md) voor meer informatie over de Azure Cosmos-documenten voordat u de volgende voorbeelden uitvoert.
+In het Python-voorbeeld [item_management.py](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/document_management.py) ziet u hoe u de volgende taken kunt uitvoeren. Zie het conceptuele artikel [Werken met databases, containers en items](account-databases-containers-items.md) voor meer informatie over de Azure Cosmos-documenten voordat u de volgende voorbeelden uitvoert.
 
 | Taak | API-verwijzing |
 | --- | --- |
