@@ -53,6 +53,8 @@
                   href: quickstart-blobs-javascript-browser.md
                 - name: JavaScript (v10 SDK voor browser)
                   href: storage-quickstart-blobs-javascript-client-libraries-legacy.md
+            - name: C++ (v12 SDK)
+              href: quickstart-blobs-c-plus-plus.md
             - name: Aan de slag
               href: storage-quickstart-blobs-go.md
             - name: PHP
@@ -105,6 +107,8 @@
           href: ../common/storage-samples-python.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Javascript
           href: ../common/storage-samples-javascript.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: C++
+          href: ../common/storage-samples-c-plus-plus.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Andere talen
           href: ../common/storage-samples.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Azure PowerShell
@@ -145,8 +149,6 @@
                   href: encryption-scope-overview.md
             - name: Onveranderbare blobs
               href: storage-blob-immutable-storage.md
-            - name: Ingebouwde beveiligingsmaatregelen
-              href: ../common/storage-security-controls.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Azure-privé-eindpunten gebruiken
               href: ../common/storage-private-endpoints.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Netwerkrouternigsvoorkeur configureren
@@ -207,7 +209,7 @@
           href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Blobgegevens zoeken en begrijpen
           items:
-            - name: Blob-index gebruiken voor het beheren en zoeken van blobgegevens
+            - name: Blobindextags gebruiken voor het beheren en zoeken van blobgegevens
               href: storage-manage-find-blobs.md
             - name: AI gebruiken om blobgegevens te begrijpen
               href: ../../search/search-blob-ai-integration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -316,7 +318,7 @@
               href: storage-blob-properties-metadata.md
             - name: Een blob kopiëren (SDK)
               href: storage-blob-copy.md
-            - name: Blob-index gebruiken
+            - name: Blobindextags gebruiken
               href: storage-blob-index-how-to.md
         - name: Toegang tot blobgegevens autoriseren
           items:

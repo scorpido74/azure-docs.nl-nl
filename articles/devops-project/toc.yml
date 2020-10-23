@@ -1,53 +1,63 @@
-- name: Azure DevOps Starter-documentatie
+- name: Documentatie voor DevOps Starter
   href: index.yml
 - name: Overzicht
   items:
-    - name: Wat is Azure DevOps Starter?
+    - name: Wat is DevOps Starter?
       href: overview.md
 - name: Snelstartgidsen
   expanded: true
   items:
-    - name: .NET
-      href: ./azure-devops-project-aspnet-core.md
-      maintainContext: true
-    - name: Node.js
-      href: ./azure-devops-project-nodejs.md
-      maintainContext: true
-    - name: Java
-      href: ./azure-devops-project-java.md
-      maintainContext: true
-    - name: Python
-      href: ./azure-devops-project-python.md
-      maintainContext: true
-    - name: PHP
-      href: ./azure-devops-project-php.md
-      maintainContext: true
-    - name: Ruby
-      href: ./azure-devops-project-ruby.md
-      maintainContext: true
-    - name: Aan de slag
-      href: ./azure-devops-project-go.md
-      maintainContext: true
+    - name: GitHub Actions
+      items:
+        - name: Node.js
+          href: ./devops-starter-gh-nodejs.md
+          maintainContext: true
+    - name: Azure DevOps
+      items:
+        - name: .NET
+          href: ./azure-devops-project-aspnet-core.md
+          maintainContext: true
+        - name: Node.js
+          href: ./azure-devops-project-nodejs.md
+          maintainContext: true
+        - name: Java
+          href: ./azure-devops-project-java.md
+          maintainContext: true
+        - name: Python
+          href: ./azure-devops-project-python.md
+          maintainContext: true
+        - name: PHP
+          href: ./azure-devops-project-php.md
+          maintainContext: true
+        - name: Ruby
+          href: ./azure-devops-project-ruby.md
+          maintainContext: true
+        - name: Aan de slag
+          href: ./azure-devops-project-go.md
+          maintainContext: true
 - name: Zelfstudies
   items:
-    - name: 1 - GitHub en DevOps Starter
+    - name: Implementeren in Azure Web App met GitHub Actions
+      href: devops-starter-gh-web-app.md
+      maintainContext: true
+    - name: BYOC met GitHub
       href: azure-devops-project-github.md
       maintainContext: true
-    - name: 2 - Implementeren naar virtuele machines
+    - name: Implementeren op VM’s met Azure DevOps
       href: azure-devops-project-vms.md
       maintainContext: true
-    - name: 3 - implementeren naar Azure SQL Database
+    - name: Implementeren in Azure SQL Database met Azure DevOps
       href: azure-devops-project-sql-database.md
       maintainContext: true
-    - name: 4 - Implementeren naar AKS
+    - name: Implementeren in AKS met Azure DevOps
       href: azure-devops-project-aks.md
       maintainContext: true
-    - name: 5 - Implementeren naar Azure Service Fabric
+    - name: Implementeren in Azure Service Fabric met Azure DevOps
       href: azure-devops-project-service-fabric.md
       maintainContext: true
-    - name: 6 - Implementeren in Azure Cosmos DB
+    - name: Implementeren in Azure Cosmos DB met Azure DevOps
       href: azure-devops-project-cosmos-db.md
       maintainContext: true
-    - name: 7 - Implementeren in Azure Functions
+    - name: Implementeren in Azure Functions met Azure DevOps
       href: azure-devops-project-functions.md
       maintainContext: true

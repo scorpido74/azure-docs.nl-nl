@@ -66,8 +66,16 @@
       items:
         - name: Bewaken met Grafana en Kibana
           href: monitor-grafana-kibana.md
-        - name: Metrische gegevens en logboeken uploaden
-          href: upload-metrics-and-logs-to-azure-monitor.md
+        - name: Uploaden naar Azure Monitor
+          items:
+            - name: Uploadvereisten
+              href: upload-metrics-and-logs-to-azure-monitor.md
+            - name: Logboeken uploaden
+              href: upload-logs.md
+            - name: Metrische gegevens uploaden
+              href: upload-metrics.md
+            - name: Gebruiksgegevens uploaden
+              href: upload-usage-data.md
         - name: Database-exemplaren inventariseren
           href: view-arc-data-services-inventory-in-azure-portal.md
         - name: Gebruikersnaam en wachtwoord voor gegevenscontroller ophalen
