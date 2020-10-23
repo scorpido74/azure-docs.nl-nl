@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3cc8974be9adb81391134790d85336016a7d9f1c
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: cb403e2d1b11391ca3917478955dc282a174ae88
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92204330"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426304"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Azure-beveiligings basislijn voor Azure Machine Learning
 
@@ -303,13 +303,13 @@ Azure Machine Learning heeft verschillende ondersteuning voor verschillende reke
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: een inventaris van beheerders accounts onderhouden
 
-**Richt lijnen**: u kunt het tabblad identiteits-en toegangs beheer voor een resource in de Azure Portal gebruiken om op rollen gebaseerd toegangs beheer (RBAC) te configureren en inventaris op Azure machine learning resources te onderhouden. De rollen worden toegepast op gebruikers, groepen, service-principals en beheerde identiteiten in Active Directory. U kunt ingebouwde rollen of aangepaste rollen gebruiken voor individuen en groepen.
+**Richt lijnen**: u kunt het tabblad identiteits-en toegangs beheer voor een resource in de Azure Portal gebruiken om op rollen gebaseerd toegangs beheer (Azure RBAC) voor Azure te configureren en inventaris op Azure machine learning resources te onderhouden. De rollen worden toegepast op gebruikers, groepen, service-principals en beheerde identiteiten in Active Directory. U kunt ingebouwde rollen of aangepaste rollen gebruiken voor individuen en groepen.
 
-Azure Machine Learning biedt ingebouwde RBAC voor algemene beheer scenario's in Azure Machine Learning. Een persoon die een profiel in Azure Active Directory (Azure AD) heeft, kan deze RBAC-rollen toewijzen aan gebruikers, groepen, service-principals of beheerde identiteiten voor het verlenen of weigeren van toegang tot resources en bewerkingen op Azure Machine Learning-resources.
+Azure Machine Learning biedt ingebouwde rollen voor algemene beheer scenario's in Azure Machine Learning. Een persoon die een profiel in Azure Active Directory (Azure AD) heeft, kan deze rollen toewijzen aan gebruikers, groepen, service-principals of beheerde identiteiten voor het verlenen of weigeren van toegang tot resources en bewerkingen op Azure Machine Learning-resources.
 
 U kunt ook de Azure AD Power shell-module gebruiken om ad hoc query's uit te voeren om accounts te detecteren die lid zijn van beheer groepen.
 
-- [Informatie over op rollen gebaseerd toegangs beheer in Azure Machine Learning](how-to-assign-roles.md)
+- [Meer informatie over toegangs beheer op basis van rollen in Azure in Azure Machine Learning](how-to-assign-roles.md)
 
 - [Een directory-rol verkrijgen in Azure Active Directory met Power shell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
@@ -902,13 +902,13 @@ Azure Machine Learning biedt volledige ondersteuning voor git-opslag plaatsen vo
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7,6: aangepaste installatie kopieën van een besturings systeem veilig opslaan
 
-**Hulp**: Azure machine learning heeft verschillende ondersteuning voor verschillende reken bronnen en zelfs uw eigen reken bronnen. Gebruik Azure op rollen gebaseerd toegangs beheer (RBAC) voor reken resources die eigendom zijn van uw organisatie om ervoor te zorgen dat alleen geautoriseerde gebruikers toegang hebben tot uw aangepaste installatie kopieën. Een galerie met gedeelde Azure-afbeeldingen gebruiken u kunt uw installatie kopieën delen met verschillende gebruikers, service-principals of Azure AD-groepen in uw organisatie. Container installatie kopieën opslaan in Azure Container Registry en RBAC gebruiken om ervoor te zorgen dat alleen gemachtigde gebruikers toegang hebben.
+**Hulp**: Azure machine learning heeft verschillende ondersteuning voor verschillende reken bronnen en zelfs uw eigen reken bronnen. Voor reken resources die eigendom zijn van uw organisatie, kunt u gebruikmaken van Azure RBAC (op rollen gebaseerd toegangs beheer) om ervoor te zorgen dat alleen geautoriseerde gebruikers toegang hebben tot uw aangepaste installatie kopieën. Een galerie met gedeelde Azure-afbeeldingen gebruiken u kunt uw installatie kopieën delen met verschillende gebruikers, service-principals of Azure AD-groepen in uw organisatie. Container installatie kopieën opslaan in Azure Container Registry en Azure RBAC gebruiken om ervoor te zorgen dat alleen gemachtigde gebruikers toegang hebben.
 
-- [Wat is RBAC in azure?](../role-based-access-control/rbac-and-directory-admin-roles.md)
+- [Meer informatie over Azure RBAC](../role-based-access-control/rbac-and-directory-admin-roles.md)
 
-- [Wat is RBAC voor Container Registry?](../container-registry/container-registry-roles.md)
+- [Meer informatie over Azure RBAC voor Container Registry](../container-registry/container-registry-roles.md)
 
-- [RBAC configureren in azure](../role-based-access-control/quickstart-assign-role-user-portal.md)
+- [Azure RBAC configureren](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
 - [Overzicht van Galerie gedeelde afbeeldingen](../virtual-machines/windows/shared-image-galleries.md)
 
@@ -1088,7 +1088,7 @@ Azure Machine Learning heeft verschillende ondersteuning voor verschillende reke
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: zorg voor de bescherming van back-ups en door de klant beheerde sleutels
 
-**Richt lijnen**: voor on-premises back-ups wordt versleuteling in rust gegeven met behulp van de wachtwoordzin die u opgeeft bij het maken van een back-up naar Azure. Gebruik op rollen gebaseerd toegangs beheer voor het beveiligen van back-ups en door de klant beheerde sleutels. 
+**Richt lijnen**: voor on-premises back-ups wordt versleuteling in rust gegeven met behulp van de wachtwoordzin die u opgeeft bij het maken van een back-up naar Azure. Gebruik Azure op rollen gebaseerd toegangs beheer voor het beveiligen van back-ups en door de klant beheerde sleutels. 
 
 Schakel de beveiliging van zacht verwijderen en opschonen in Key Vault in om sleutels te beschermen tegen onbedoelde of schadelijke verwijdering. Als Azure Storage wordt gebruikt voor het opslaan van back-ups, schakelt u de optie voor het tijdelijk verwijderen in om uw gegevens op te slaan en te herstellen wanneer blobs of BLOB-moment opnamen worden verwijderd.
  

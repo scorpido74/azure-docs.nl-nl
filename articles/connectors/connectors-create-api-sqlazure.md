@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 10/16/2020
+ms.date: 10/22/2020
 tags: connectors
-ms.openlocfilehash: 534b9fedc6649d3174ea65caf51b28004de7bda2
-ms.sourcegitcommit: a75ca63da5c0cc2aff5fb131308853b9edb41552
+ms.openlocfilehash: 674d496485f89bee1904e3588a0fb81c6140945b
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92169384"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426615"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>Werk stromen automatiseren voor een SQL database met behulp van Azure Logic Apps
 
@@ -92,7 +92,7 @@ De eerste keer dat u een SQL- [trigger](#add-sql-trigger) of [SQL-actie](#add-sq
    |----------|----------|-------------|
    | **Servernaam** | Ja | Het adres voor uw SQL Server, bijvoorbeeld `Fabrikam-Azure-SQL.database.windows.net` |
    | **Databasenaam** | Ja | De naam voor uw SQL database, bijvoorbeeld `Fabrikam-Azure-SQL-DB` |
-   | **Tabel naam** | Ja | De tabel die u wilt gebruiken, bijvoorbeeld `SalesLT.Customer` |
+   | **Tabelnaam** | Ja | De tabel die u wilt gebruiken, bijvoorbeeld `SalesLT.Customer` |
    ||||
 
    > [!TIP]
@@ -214,19 +214,16 @@ In dit voor beeld wordt de logische app gestart met de [terugkeer patroon](../co
 
 Soms moet u met de resultaten sets zo groot zijn dat de connector niet alle resultaten tegelijk retourneert, of u wilt de controle over de grootte en de structuur voor uw resultaten sets beter te bepalen. Hier volgt een aantal manieren waarop u dergelijke grote resultaten sets kunt verwerken:
 
-* Schakel *paginering*in om de resultaten te beheren als kleinere sets. Zie voor meer informatie [bulk gegevens, records en items ophalen met behulp van paginering](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md).
+* Schakel *paginering*in om de resultaten te beheren als kleinere sets. Zie voor meer informatie [bulk gegevens, records en items ophalen met behulp van paginering](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md). Zie [SQL-paginering voor bulk gegevens overdracht met Logic apps](https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx)voor meer informatie.
 
-* Maak een opgeslagen procedure waarmee de resultaten op de gewenste manier worden georganiseerd.
+* Maak een [*opgeslagen procedure*](/sql/relational-databases/stored-procedures/stored-procedures-database-engine) waarmee de resultaten op de gewenste manier worden georganiseerd. De SQL-connector biedt veel back-end-functies die u kunt gebruiken met Azure Logic Apps, zodat u gemakkelijker zakelijke taken kunt automatiseren die samen werken met SQL database tabellen.
 
   Wanneer u meerdere rijen haalt of invoegt, kan de logische app deze rijen door lopen met behulp van een [*until-lus*](../logic-apps/logic-apps-control-flow-loops.md#until-loop) binnen deze [grenzen](../logic-apps/logic-apps-limits-and-config.md). Als uw logische app echter moet werken met record sets zo groot is, bijvoorbeeld duizenden of miljoenen rijen, die u de kosten wilt beperken die voortvloeien uit aanroepen naar de data base.
 
-  Als u de resultaten op de gewenste manier wilt indelen, kunt u een [*opgeslagen procedure*](/sql/relational-databases/stored-procedures/stored-procedures-database-engine) maken die wordt uitgevoerd in uw SQL-exemplaar en gebruikmaakt van de **Select-order by-** instructie. Met deze oplossing hebt u meer controle over de grootte en de structuur van uw resultaten. Uw logische app roept de opgeslagen procedure aan met behulp van de actie voor het uitvoeren van een **opgeslagen procedure** van de SQL Server-connector.
+  Als u de resultaten op de gewenste manier wilt indelen, kunt u een opgeslagen procedure maken die wordt uitgevoerd in uw SQL-exemplaar en gebruikmaakt van de **Select-order by-** instructie. Met deze oplossing hebt u meer controle over de grootte en de structuur van uw resultaten. Uw logische app roept de opgeslagen procedure aan met behulp van de actie voor het uitvoeren van een **opgeslagen procedure** van de SQL Server-connector. Zie [SELECT-Order By-Component](/sql/t-sql/queries/select-order-by-clause-transact-sql)voor meer informatie.
 
-  Raadpleeg de volgende artikelen voor meer informatie over de oplossing:
-
-  * [SQL-paginering voor bulk overdracht van gegevens met Logic Apps](https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx)
-
-  * [SELECT-ORDER BY-component](/sql/t-sql/queries/select-order-by-clause-transact-sql)
+  > [!NOTE]
+  > Met deze connector is het uitvoeren van een opgeslagen procedure beperkt tot een [time-outlimiet van minder dan 2 minuten](/connectors/sql/#known-issues-and-limitations). Sommige opgeslagen procedures kunnen langer duren dan deze limiet om te verwerken en volledig te volt ooien, waardoor een fout wordt gegenereerd `504 TIMEOUT` . In werkelijkheid worden een aantal langlopende processen voor dit doel expliciet gecodeerd als opgeslagen procedures. Als u deze procedures van Azure Logic Apps aanroept, kunnen er problemen ontstaan als gevolg van deze time-outlimiet. Hoewel de SQL-connector geen systeem eigen ondersteuning biedt voor een asynchrone modus, kunt u deze modus simuleren met behulp van een SQL-voltooiings trigger, een native SQL Pass Through-query, een status tabel en taken aan de server zijde met behulp van de [elastische Azure-taak agent](../azure-sql/database/elastic-jobs-overview.md).
 
 ### <a name="handle-dynamic-bulk-data"></a>Dynamische bulk gegevens verwerken
 
@@ -253,13 +250,13 @@ Wanneer u een opgeslagen procedure aanroept met behulp van de SQL Server-connect
 
 ## <a name="troubleshoot-problems"></a>Problemen oplossen
 
-Problemen met de verbinding kunnen zich doorgaans voordoen, zodat u het probleem kunt oplossen door [verbindings fouten te SQL Server](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server). Enkele voorbeelden:
+* Problemen met de verbinding kunnen zich doorgaans voordoen, zodat u het probleem kunt oplossen door [verbindings fouten te SQL Server](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server). Enkele voorbeelden:
 
-* `A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections.`
+  * `A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections.`
 
-* `(provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) (Microsoft SQL Server, Error: 53)`
+  * `(provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) (Microsoft SQL Server, Error: 53)`
 
-* `(provider: TCP Provider, error: 0 - No such host is known.) (Microsoft SQL Server, Error: 11001)`
+  * `(provider: TCP Provider, error: 0 - No such host is known.) (Microsoft SQL Server, Error: 11001)`
 
 ## <a name="connector-specific-details"></a>Connector-specifieke Details
 

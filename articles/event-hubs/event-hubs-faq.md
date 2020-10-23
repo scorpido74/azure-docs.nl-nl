@@ -3,12 +3,12 @@ title: Veelgestelde vragen-Azure Event Hubs | Microsoft Docs
 description: In dit artikel vindt u een lijst met veelgestelde vragen over Azure Event Hubs en de antwoorden hiervan.
 ms.topic: article
 ms.date: 09/16/2020
-ms.openlocfilehash: 94ddfbf0803ea7ab53b1b42b977a9ebdd2354bc5
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 2c58f67fed880b8aad60ff1a46a587dcf514102e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369604"
+ms.locfileid: "92424184"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Veelgestelde vragen over Event Hubs
 
@@ -206,7 +206,7 @@ U maakt een Event Hubs toegewezen cluster door een [ondersteunings aanvraag voor
 ## <a name="best-practices"></a>Aanbevolen procedures
 
 ### <a name="how-many-partitions-do-i-need"></a>Hoeveel partities heb ik nodig?
-Het aantal partities wordt opgegeven bij het maken en moet tussen 2 en 32 liggen. Het aantal partities kan niet worden gewijzigd. Houd daarom rekening met de lange termijn bij het instellen van het aantal partities. Partities zijn een mechanisme voor gegevensordening. Ze hebben betrekking op de mate van downstreamparallelheid die is vereist bij het gebruik van toepassingen. Het aantal partities in een Event Hub houdt rechtstreeks verband met het aantal verwachte gelijktijdige lezers. Zie [partities](event-hubs-features.md#partitions)voor meer informatie over partities.
+Het aantal partities wordt opgegeven bij het maken en moet tussen 1 en 32. Het aantal partities kan niet worden gewijzigd. Houd daarom rekening met de lange termijn bij het instellen van het aantal partities. Partities zijn een mechanisme voor gegevensordening. Ze hebben betrekking op de mate van downstreamparallelheid die is vereist bij het gebruik van toepassingen. Het aantal partities in een Event Hub houdt rechtstreeks verband met het aantal verwachte gelijktijdige lezers. Zie [partities](event-hubs-features.md#partitions)voor meer informatie over partities.
 
 Het is raadzaam deze op het moment van maken in te stellen op de hoogste waarde: 32. Houd er rekening mee dat als u meer dan één partitie hebt, dit ertoe leidt dat gebeurtenissen in meerdere partities worden verzonden zonder de volgorde aan te houden, tenzij u verzenders zo configureert dat deze één partitie uit 32 verzenden. Maar daardoor zijn de overige 31 overbodig. In het eerste geval moet u gebeurtenissen lezen in alle 32-partities. In het laatste geval zijn er geen extra kosten in rekening van de extra configuratie die u moet maken op de host van de gebeurtenis processor.
 
@@ -252,7 +252,7 @@ Capture maakt gebruik van een opslag account dat u opgeeft wanneer het is ingesc
 
 Zie [quota's](event-hubs-quotas.md)voor een lijst met alle Event hubs quota's.
 
-## <a name="troubleshooting"></a>Problemen oplossen
+## <a name="troubleshooting"></a>Probleemoplossing
 
 ### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>Waarom kan ik geen naam ruimte maken nadat ik deze heb verwijderd uit een ander abonnement? 
 Wanneer u een naam ruimte uit een abonnement verwijdert, wacht u vier uur voordat u deze opnieuw maakt met dezelfde naam in een ander abonnement. Anders wordt het volgende fout bericht weer gegeven: `Namespace already exists` . 

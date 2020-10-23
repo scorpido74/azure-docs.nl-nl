@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 9/29/2020
-ms.openlocfilehash: 2de6b6311a1a5d452907b8c4b6a2ffeb9c0e133e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 21a0aaaa9e10a7c3e445145eb178b50b446ba6ae
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91598198"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425993"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>Replicatie van inkomende gegevens configureren in Azure Database for MariaDB
 
@@ -43,9 +43,9 @@ Bekijk de [beperkingen en vereisten](concepts-data-in-replication.md#limitations
    Firewallregels bijwerken met de [Azure-portal](howto-manage-firewall-portal.md) of [Azure CLI](howto-manage-firewall-cli.md).
 
 > [!NOTE]
-> Afwijking-vrije communicatie
+> Oordeelloze communicatie
 >
-> Micro soft biedt ondersteuning voor een gevarieerde en inbegrips omgeving. Dit artikel bevat verwijzingen naar het woord _Slave_. De micro soft- [stijl gids voor beschik bare communicatie](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) herkent deze als een uitsluitend woord. Het woord wordt in dit artikel gebruikt voor consistentie omdat het momenteel het woord is dat wordt weer gegeven in de software. Wanneer de software is bijgewerkt om het woord te verwijderen, wordt dit artikel zodanig bijgewerkt dat het in uitlijning is.
+> Microsoft biedt ondersteuning voor een gevarieerde en insluitende omgeving. Dit artikel bevat verwijzingen naar het woord _slaaf_. In de [stijlgids voor oordeelloze communicatie](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) wordt dit woord herkend als uitsluitend. Het woord wordt in dit artikel gebruikt voor consistentie, omdat het momenteel het woord is dat wordt weergegeven in de software. Wanneer de software is bijgewerkt om het woord te verwijderen, wordt dit artikel ook bijgewerkt zodat het is afgestemd.
 >
 
 ## <a name="configure-the-source-server"></a>De bron server configureren
@@ -56,7 +56,7 @@ In de volgende stappen wordt de MariaDB-server die on-premises, in een VM of in 
 
 2. Zorg ervoor dat de bron server zowel binnenkomend als uitgaand verkeer op poort 3306 toestaat en dat de bron server een **openbaar IP-adres**heeft, de DNS openbaar toegankelijk is of een Fully QUALIFIED domain name (FQDN) heeft. 
    
-   Test de verbinding met de bron server door te proberen verbinding te maken vanaf een hulp programma zoals de MySQL-opdracht regel die wordt gehost op een andere computer of op basis van het [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview) dat beschikbaar is in de Azure Portal.
+   Test de verbinding met de bron server door te proberen verbinding te maken vanaf een hulp programma zoals de MySQL-opdracht regel die wordt gehost op een andere computer of op basis van het [Azure Cloud shell](../cloud-shell/overview.md) dat beschikbaar is in de Azure Portal.
 
    Als uw organisatie een strikt beveiligings beleid heeft en niet alle IP-adressen op de bron server toestaat communicatie van Azure naar uw bron server in te scha kelen, kunt u de onderstaande opdracht gebruiken om het IP-adres van uw Azure Database for MariaDB server te bepalen.
     
@@ -212,7 +212,7 @@ In de volgende stappen wordt de MariaDB-server die on-premises, in een VM of in 
 
 1. Stel de bron server in.
 
-   Alle Replicatie van inkomende gegevens-functies worden uitgevoerd door opgeslagen procedures. U kunt alle procedures vinden op [replicatie van inkomende gegevens opgeslagen procedures](reference-data-in-stored-procedures.md). Opgeslagen procedures kunnen worden uitgevoerd in de MySQL-shell of MySQL Workbench.
+   Alle Replicatie van inkomende gegevens-functies worden uitgevoerd door opgeslagen procedures. U kunt alle procedures vinden op [replicatie van inkomende gegevens opgeslagen procedures](reference-stored-procedures.md). Opgeslagen procedures kunnen worden uitgevoerd in de MySQL-shell of MySQL Workbench.
 
    Als u twee servers wilt koppelen en replicatie wilt starten, meldt u zich aan bij de doel replica server in de Azure DB for MariaDB-service. Stel vervolgens het externe exemplaar in als de bron server met behulp van de `mysql.az_replication_change_master` of `mysql.az_replication_change_master_with_gtid` opgeslagen procedure op de Azure DB for MariaDB-server.
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 10/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2c4489e22344d2807b22bf4752add9c336215bec
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d1f4c04bf4a26e67a905679db23e303c2762d90c
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369693"
+ms.locfileid: "92426415"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>Updates implementeren en resultaten bekijken
 
@@ -111,7 +111,7 @@ Als u een nieuwe update-implementatie wilt plannen, voert u de volgende stappen 
     > [!NOTE]
     > Wanneer u klaar bent met het configureren van het implementatie schema voor een geselecteerde server die is ingeschakeld voor de Arc, selecteert u **controleren + maken**.
 
-15. U keert nu terug naar het statusdashboard. Selecteer **implementatie planningen** om de implementatie planning weer te geven die u hebt gemaakt. Er worden Maxi maal 500 schema's weer gegeven. Als u meer dan 500 planningen hebt en u de volledige lijst wilt bekijken, raadpleegt u de methode [Software-update configuraties-lijst](/rest/api/automation/softwareupdateconfigurations/list) rest API met versie 2019-06-01 of hoger.
+15. U keert nu terug naar het statusdashboard. Selecteer **implementatie planningen** om de implementatie planning weer te geven die u hebt gemaakt. Er worden Maxi maal 500 schema's weer gegeven. Als u meer dan 500 planningen hebt en u de volledige lijst wilt bekijken, raadpleegt u de REST API methode [Software-update configuraties-lijst](/rest/api/automation/softwareupdateconfigurations/list) . Geef API-versie 2019-06-01 of hoger op.
 
 ## <a name="schedule-an-update-deployment-programmatically"></a>Een update-implementatie via een programma plannen
 

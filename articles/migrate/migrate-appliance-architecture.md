@@ -3,12 +3,12 @@ title: Azure Migrate-apparaatarchitectuur
 description: Biedt een overzicht van het Azure Migrate apparaat dat in Server evaluatie en-migratie wordt gebruikt.
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: a01932a9e4f72d7ce6747214b53f124d54942894
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: d38796d4c4a1149d096f5bb06f7a11bc71b33cc5
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92312914"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428152"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Azure Migrate-apparaatarchitectuur
 
@@ -51,8 +51,8 @@ Tijdens de installatie van het apparaat registreert u het apparaat met Azure Mig
 **Actie** | **Details** | **Machtigingen**
 --- | --- | ---
 **Bron providers registreren** | Deze bronnen providers worden geregistreerd in het abonnement dat u hebt gekozen tijdens de installatie van het apparaat: micro soft. OffAzure, micro soft. migrate en micro soft. de sleutel kluis.<br/><br/> Als u een resourceprovider registreert, wordt uw abonnement zo geconfigureerd dat dit kan worden gebruikt met de resourceprovider. | Als u de resourceproviders wilt registreren, hebt u de rol Inzender of Eigenaar nodig voor het abonnement.
-**Azure AD-App-communicatie maken** | Azure Migrate maakt een Azure Active Directory (Azure AD)-app voor communicatie (verificatie en autorisatie) tussen de agents die op het apparaat worden uitgevoerd, en hun respectieve services die worden uitgevoerd op Azure.<br/><br/> Deze app heeft geen rechten om Azure Resource Manager-aanroepen of RBAC-toegang te maken voor een resource. | U hebt [deze machtigingen](./tutorial-discover-vmware.md#prepare-an-azure-user-account) nodig voor Azure migrate om de app te maken.
-**Azure AD-apps maken-sleutel kluis** | Deze app wordt alleen voor de migratie van virtuele VMware-machines naar Azure gemaakt.<br/><br/> Het wordt uitsluitend gebruikt voor toegang tot de sleutel kluis die is gemaakt in het abonnement van de gebruiker voor migratie zonder agent.<br/><br/> Het heeft RBAC-toegang op de Azure-sleutel kluis (gemaakt in de Tenant van de klant) wanneer detectie vanaf het apparaat wordt gestart. | U hebt [deze machtigingen](./tutorial-discover-vmware.md#prepare-an-azure-user-account) nodig voor Azure migrate om de app te maken.
+**Azure AD-App-communicatie maken** | Azure Migrate maakt een Azure Active Directory (Azure AD)-app voor communicatie (verificatie en autorisatie) tussen de agents die op het apparaat worden uitgevoerd, en hun respectieve services die worden uitgevoerd op Azure.<br/><br/> Deze app heeft geen rechten om Azure Resource Manager-aanroepen of Azure RBAC-toegang te maken voor een resource. | U hebt [deze machtigingen](./tutorial-discover-vmware.md#prepare-an-azure-user-account) nodig voor Azure migrate om de app te maken.
+**Azure AD-apps maken-sleutel kluis** | Deze app wordt alleen voor de migratie van virtuele VMware-machines naar Azure gemaakt.<br/><br/> Het wordt uitsluitend gebruikt voor toegang tot de sleutel kluis die is gemaakt in het abonnement van de gebruiker voor migratie zonder agent.<br/><br/> Het heeft Azure RBAC-toegang op de Azure-sleutel kluis (gemaakt in de Tenant van de klant) wanneer detectie vanaf het apparaat wordt gestart. | U hebt [deze machtigingen](./tutorial-discover-vmware.md#prepare-an-azure-user-account) nodig voor Azure migrate om de app te maken.
 
 
 

@@ -8,12 +8,12 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 292305c3f899ac4156fd84e8edcb0d6e9a3c0b34
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: b23e9a1e344bb0db1399a4f04712815557b8139e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280851"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427985"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>Integreren met Logic Apps met behulp van een aangepaste connector
 
@@ -66,7 +66,7 @@ Controleer nu of het client geheim zichtbaar is op de pagina _certificaten & geh
 
 In dit artikel wordt Logic Apps gebruikt voor het bijwerken van een dubbele in uw Azure Digital Apparaatdubbels-exemplaar. Als u wilt door gaan, moet u ten minste één dubbele naam toevoegen aan uw exemplaar. 
 
-U kunt apparaatdubbels toevoegen met behulp van de [DigitalTwins-api's](how-to-use-apis-sdks.md), de [.net (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)of de [Azure Digital apparaatdubbels cli](how-to-use-cli.md). Zie [*How-to: Manage Digital apparaatdubbels*](how-to-manage-twin.md)(Engelstalig) voor gedetailleerde stappen voor het maken van apparaatdubbels met behulp van deze methoden.
+U kunt apparaatdubbels toevoegen met behulp van de [DigitalTwins-api's](how-to-use-apis-sdks.md), de [.net (C#) SDK](https://www.nuget.org/packages/Azure.DigitalTwins.Core)of de [Azure Digital apparaatdubbels cli](how-to-use-cli.md). Zie [*How-to: Manage Digital apparaatdubbels*](how-to-manage-twin.md)(Engelstalig) voor gedetailleerde stappen voor het maken van apparaatdubbels met behulp van deze methoden.
 
 U hebt de **_dubbele id_** nodig van een dubbele naam in uw exemplaar dat u hebt gemaakt.
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d000d8390375466232c7daac2a4a056ef424be79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5cd08ce938a25e3311358892c9afa9eefd6c6dbf
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77087138"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424668"
 ---
 # <a name="configure-a-vpn-connection-to-your-cloudsimple-private-cloud"></a>Een VPN-verbinding met uw CloudSimple-Privécloud configureren
 
@@ -63,7 +63,7 @@ Hieronder ziet u een voor beeld van het importeren van een verbinding met de **v
 
 4. Selecteer het OpenVPN-configuratie bestand (. ovpn) voor het protocol dat u wilt gebruiken en klik op **openen**.
 
-    ![VPN](media/import-p2s-vpn-config-choose-ovpn.png)
+    ![Scherm opname van de OpenVPN-configuratie bestanden die u kunt selecteren.](media/import-p2s-vpn-config-choose-ovpn.png)
 
 De verbinding wordt nu weer gegeven in het menu viscositeit.
 
@@ -71,7 +71,7 @@ De verbinding wordt nu weer gegeven in het menu viscositeit.
 
 Als u verbinding wilt maken met VPN met behulp van de viscositeit OpenVPN-Client, selecteert u de verbinding in het menu. Het menu pictogram wordt bijgewerkt om aan te geven dat de verbinding tot stand is gebracht.
 
-![VPN](media/vis03.png)
+![Scherm opname van de CloudSimple VPN-connectiviteits status.](media/vis03.png)
 
 ### <a name="connecting-to-multiple-private-clouds"></a>Verbinding maken met meerdere persoonlijke Clouds
 

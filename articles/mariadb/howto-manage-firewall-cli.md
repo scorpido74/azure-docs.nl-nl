@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3edf6248d42878bb79115fad925ef38e3353c979
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ffbacd9167f6c73fb2815f76f56bfe2ae08eca9
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87502268"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425945"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-cli"></a>Azure Database for MariaDB firewall regels maken en beheren met behulp van de Azure CLI
 Firewall regels op server niveau kunnen worden gebruikt om de toegang tot een Azure Database for MariaDB server te beheren vanuit een specifiek IP-adres of een bereik met IP-adressen. Met behulp van handige Azure CLI-opdrachten kunt u firewall regels maken, bijwerken, verwijderen en weer geven om uw server te beheren. Zie [Azure database for MariaDB Server firewall-regels](./concepts-firewall-rules.md)voor een overzicht van Azure database for MariaDB firewalls.
@@ -21,7 +21,7 @@ Firewall regels op server niveau kunnen worden gebruikt om de toegang tot een Az
 Regels voor Virtual Network (VNet) kunnen ook worden gebruikt voor het beveiligen van de toegang tot uw server. Meer informatie over [het maken en beheren van Virtual Network Service-eind punten en-regels met behulp van de Azure cli](howto-manage-vnet-cli.md).
 
 ## <a name="prerequisites"></a>Vereisten
-* [Installeer Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli).
+* [Installeer Azure cli](/cli/azure/install-azure-cli).
 * Een [Azure database for MariaDB-server en-data base](quickstart-create-mariadb-server-database-using-azure-cli.md).
 
 ## <a name="firewall-rule-commands"></a>Opdracht firewall regel:

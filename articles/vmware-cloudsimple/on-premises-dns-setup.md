@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c2d69d21eb46d502a45c9df1dfaaa947d26ef7c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d982d06bd100313d643033294b6d14e6383d5df
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79246108"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424710"
 ---
 # <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>DNS configureren voor naam omzetting voor Private Cloud vCenter-toegang vanaf on-premises werk stations
 
@@ -58,19 +58,19 @@ zone "az.cloudsimple.io"
 
 1. Klik met de rechter muisknop op de DNS-server en selecteer **nieuwe zone**. 
   
-    ![Nieuwe zone](media/DNS01.png)
+    ![Scherm afbeelding die de menu optie nieuwe zone markeert.](media/DNS01.png)
 2. Selecteer **stub-zone** en klik op **volgende**.
 
-    ![Nieuwe zone](media/DNS02.png)
+    ![Scherm afbeelding die de optie stub-zone markeert.](media/DNS02.png)
 3. Selecteer de gewenste optie, afhankelijk van uw omgeving en klik op **volgende**.
 
-    ![Nieuwe zone](media/DNS03.png)
+    ![Scherm opname van de opties voor zone gegevens replicatie.](media/DNS03.png)
 4. Selecteer **zone voor forward lookup** en klik op **volgende**.
 
-    ![Nieuwe zone](media/DNS01.png)
+    ![Scherm afbeelding die de optie zone voor forward lookup markeert.](media/DNS01.png)
 5. Voer de zone naam in en klik op **volgende**.
 
-    ![Nieuwe zone](media/DNS05.png)
+    ![Scherm opname van de locatie waar de zone naam moet worden ingevoerd.](media/DNS05.png)
 6. Voer de IP-adressen in van de DNS-servers voor uw Privécloud die u hebt verkregen via de CloudSimple-Portal.
 
     ![Nieuwe zone](media/DNS06.png)

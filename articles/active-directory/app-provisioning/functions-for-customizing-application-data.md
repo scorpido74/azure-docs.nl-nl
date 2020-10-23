@@ -10,12 +10,13 @@ ms.workload: identity
 ms.topic: reference
 ms.date: 02/05/2020
 ms.author: kenwith
-ms.openlocfilehash: 14e3b23b4246f26e1ac59e0b12b043341546d0a0
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.custom: contperfq2
+ms.openlocfilehash: fc480ab025a0e0de7cccde8818ddbd85ce6c8529
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018240"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424610"
 ---
 # <a name="reference-for-writing-expressions-for-attribute-mappings-in-azure-ad"></a>Naslag informatie voor het schrijven van expressies voor kenmerk toewijzingen in azure AD
 
@@ -142,7 +143,7 @@ Retourneert "SABlAGwAbABvACAAdwBvAHIAbABkACEA"
 Retourneert 48656C6C6F20776F726C6421
 
 ---
-### <a name="count"></a>Count
+### <a name="count"></a>Aantal
 **Functie:** Count (kenmerk)
 
 **Beschrijving:** De functie Count retourneert het aantal elementen in een kenmerk met meerdere waarden
@@ -180,7 +181,7 @@ Retourneert "CN = Joe, DC = contoso, DC = com"
 
 | Naam | Vereist/herhalend | Type | Opmerkingen |
 | --- | --- | --- | --- |
-| **value** |Vereist | Datum | De AD-datum die moet worden geconverteerd naar een DateTime-type |
+| **value** |Vereist | Date | De AD-datum die moet worden geconverteerd naar een DateTime-type |
 
 **Hierbij**
 `DateFromNum([lastLogonTimestamp])`
@@ -739,5 +740,5 @@ U wilt het kenmerk mail stroomren als het aanwezig is. Als dat niet het geval is
 * [Kenmerk toewijzingen aanpassen voor het inrichten van gebruikers](../app-provisioning/customize-application-attributes.md)
 * [Filters voor het inrichten van gebruikers in bereik](define-conditional-rules-for-provisioning-user-accounts.md)
 * [Using SCIM to enable automatic provisioning of users and groups from Azure Active Directory to applications](../app-provisioning/use-scim-to-provision-users-and-groups.md) (SCIM gebruiken om in te stellen dat gebruikers en groepen van Azure Active Directory automatisch worden ingericht voor toepassingen)
-* [Meldingen over accountinrichting](../app-provisioning/user-provisioning.md)
+* [Meldingen voor het inrichten van accounts](../app-provisioning/user-provisioning.md)
 * [Lijst met zelf studies voor het integreren van SaaS-apps](../saas-apps/tutorial-list.md)

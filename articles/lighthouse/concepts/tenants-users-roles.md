@@ -3,12 +3,12 @@ title: Tenants, rollen en gebruikers in azure Lighthouse-scenario's
 description: Inzicht in de concepten van Azure Active Directory-tenants, gebruikers en rollen, en hoe ze kunnen worden gebruikt in azure Lighthouse-scenario's.
 ms.date: 07/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: c409b45d18504d071ffed3185de20ec5e1147bc2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6dae09ddd7760af1663e0329eb646c8956dff3ac
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399241"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424109"
 ---
 # <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Tenants, rollen en gebruikers in azure Lighthouse-scenario's
 
@@ -22,7 +22,7 @@ Welke methode u ook kiest, u moet *autorisaties*definiëren. Elke autorisatie ge
 
 ## <a name="role-support-for-azure-lighthouse"></a>Functie ondersteuning voor Azure Lighthouse
 
-Bij het definiëren van een autorisatie moet aan elk gebruikers account een van de [ingebouwde rollen op basis van op rollen gebaseerd toegangs beheer (RBAC)](../../role-based-access-control/built-in-roles.md)worden toegewezen. Aangepaste rollen en [beheerders rollen voor klassieke abonnementen](../../role-based-access-control/classic-administrators.md) worden niet ondersteund.
+Bij het definiëren van een autorisatie moet aan elk gebruikers account een van de [ingebouwde Azure-rollen](../../role-based-access-control/built-in-roles.md)worden toegewezen. Aangepaste rollen en [beheerders rollen voor klassieke abonnementen](../../role-based-access-control/classic-administrators.md) worden niet ondersteund.
 
 Alle [ingebouwde rollen](../../role-based-access-control/built-in-roles.md) worden momenteel ondersteund met Azure Lighthouse, met de volgende uitzonde ringen:
 

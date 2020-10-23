@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/3/2019
 ms.author: Zhchia
-ms.openlocfilehash: f5d76168b75d9352898d8f0abf80a6ccfb83af30
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9f4947fe379f19593d06ba9efb6bfc43c397e9f
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333440"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424403"
 ---
 # <a name="tutorial-configure-zoom-for-automatic-user-provisioning"></a>Zelf studie: zoomen configureren voor automatische gebruikers inrichting
 
@@ -122,7 +122,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
    |name.givenName|Tekenreeks|
    |name.familyName|Tekenreeks|
    |e-mail berichten [type EQ "werk]|Tekenreeks|
-   |urn: IETF: params: scim: schemas: extension: Enter prise: 2.0: gebruiker: Department|Tekenreeks|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|Tekenreeks|
 
 10. Als u bereikfilters wilt configureren, raadpleegt u de volgende instructies in de [zelfstudie Bereikfilter](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
@@ -152,6 +152,7 @@ Nadat u het inrichten hebt geconfigureerd, gebruikt u de volgende resources om u
 
 ## <a name="change-log"></a>Wijzigingenlogboek
 * 05/14/2020-ondersteuning voor UPDATE bewerkingen toegevoegd voor e-mails [type EQ "werk] kenmerk.
+* 10/20/2020-ondersteuning toegevoegd voor twee nieuwe rollen ' gelicentieerd ' en ' on-premises ' om bestaande rollen ' Pro ' en ' Corp ' te vervangen. Ondersteuning voor rollen "Pro" en "Corp" wordt in de toekomst verwijderd.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 

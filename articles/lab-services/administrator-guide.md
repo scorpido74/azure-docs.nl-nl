@@ -3,12 +3,12 @@ title: Azure Lab Services-beheerders handleiding | Microsoft Docs
 description: Deze hand leiding helpt beheerders die Lab-accounts maken en beheren met behulp van Azure Lab Services.
 ms.topic: article
 ms.date: 10/20/2020
-ms.openlocfilehash: 380676b22fc27b5f62c40112457c42a04b4bf955
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: a39ee2cc57c8fc1497c3798759bd40d1ed2976e3
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371406"
+ms.locfileid: "92425303"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services-beheerders handleiding
 IT-beheerders die de cloud resources van een universiteit beheren, zijn doorgaans verantwoordelijk voor het instellen van het lab-account voor hun school. Zodra een Lab-account is ingesteld, maken beheerders of docenten klassikale Labs in het lab-account. Dit artikel bevat een overzicht op hoog niveau van de betrokken Azure-resources en de richt lijnen voor het maken van deze.
@@ -178,7 +178,7 @@ Wanneer beheerders of Lab-makers een leslokaal Lab maken, kunnen ze kiezen uit d
 
 ## <a name="manage-identity"></a>Identiteit beheren
 
-Met behulp [van het op rollen gebaseerd toegangs beheer van Azure](https://docs.microsoft.com/azure/role-based-access-control/overview)kunnen de volgende rollen worden toegewezen om toegang te geven tot Lab-accounts en klassikale Labs:
+Met behulp [van Azure RBAC (op rollen gebaseerd toegangs beheer)](https://docs.microsoft.com/azure/role-based-access-control/overview)kunnen de volgende rollen worden toegewezen om toegang te geven tot Lab-accounts en klassikale Labs:
 
 - **Labeigenaar**
 

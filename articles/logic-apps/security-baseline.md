@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1846a6d94b81a907ac05fe92151c860aab457292
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 9630919b71afd0219a2e82a86e0f89106e8a0ac2
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315828"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424066"
 ---
 # <a name="azure-security-baseline-for-logic-apps"></a>Azure-beveiligings basislijn voor Logic Apps
 
@@ -182,7 +182,7 @@ Implementeer de door u gewenste firewall oplossing op elk van de netwerk grenzen
 
 - De DDoS Protection-standaard moet zijn ingeschakeld
 
-U kunt ook Azure-blauw drukken gebruiken om grootschalige Azure-implementaties te vereenvoudigen door sleutel omgevings artefacten, zoals Azure Resource Manager sjablonen, op rollen gebaseerd toegangs beheer (RBAC) en beleids regels, op te lossen in één definitie van een blauw druk. Pas de blauw druk toe op nieuwe abonnementen en omgevingen en Verfijn de controle en het beheer via versies.
+U kunt ook Azure-blauw drukken gebruiken om grootschalige Azure-implementaties te vereenvoudigen door sleutel omgevings artefacten, zoals Azure Resource Manager sjablonen, Toegangs beheer op basis van rollen (Azure RBAC) en beleids regels, in één blauw definitie te verpakken. Pas de blauw druk toe op nieuwe abonnementen en omgevingen en Verfijn de controle en het beheer via versies.
 
 - [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
@@ -578,7 +578,7 @@ Voor Logic apps die directe toegang tot resources in een virtueel Azure-netwerk 
 
 Wanneer u uw ISE maakt, kunt u kiezen of u interne of Externe toegangs punten wilt gebruiken. Uw selectie bepaalt of aanvragen of webhooks worden geactiveerd op Logic apps in uw ISE kan aanroepen ontvangen van buiten uw virtuele netwerk.
 
-Daarnaast kunt u isolatie implementeren met afzonderlijke abonnementen en beheer groepen voor afzonderlijke beveiligings domeinen, zoals omgevings type en gegevens gevoeligheids niveau. U kunt het toegangs niveau voor uw Azure-resources beperken die worden vereist door uw toepassingen en bedrijfs omgevingen. U kunt de toegang tot Azure-resources beheren via Azure Active Directory op rollen gebaseerd toegangs beheer.
+Daarnaast kunt u isolatie implementeren met afzonderlijke abonnementen en beheer groepen voor afzonderlijke beveiligings domeinen, zoals omgevings type en gegevens gevoeligheids niveau. U kunt het toegangs niveau voor uw Azure-resources beperken die worden vereist door uw toepassingen en bedrijfs omgevingen. U kunt de toegang tot Azure-resources beheren via Azure op rollen gebaseerd toegangs beheer (Azure RBAC).
 
 - [Connectors voor Logic Apps](../connectors/apis-list.md)
 
@@ -644,9 +644,9 @@ Micro soft beheert de onderliggende infra structuur voor Azure Logic Apps en hee
 
 **Verantwoordelijkheid**: gedeeld
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: op rollen gebaseerd toegangs beheer gebruiken voor het beheren van de toegang tot bronnen
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: Azure RBAC gebruiken om de toegang tot resources te beheren
 
-**Hulp**: u kunt alleen specifieke gebruikers of groepen toestaan specifieke taken uit te voeren, zoals het beheren, bewerken en weer geven van logische apps. Als u de machtigingen wilt beheren, gebruikt u Azure Role-Based Access Control (RBAC) zodat u aangepaste of ingebouwde rollen kunt toewijzen aan de leden van uw Azure-abonnement:
+**Hulp**: u kunt alleen specifieke gebruikers of groepen toestaan specifieke taken uit te voeren, zoals het beheren, bewerken en weer geven van logische apps. Als u de machtigingen wilt beheren, gebruikt u Azure RBAC (op rollen gebaseerd toegangs beheer), zodat u aangepaste of ingebouwde rollen kunt toewijzen aan de leden van uw Azure-abonnement:
 
 - Inzender van Logic apps: Hiermee kunt u logische apps beheren, maar u kunt de toegang niet wijzigen.
 - Logische app-operator: Hiermee kunt u logische apps lezen, inschakelen en uitschakelen, maar u kunt ze niet bewerken of bijwerken.
@@ -883,7 +883,7 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen h
 
 **Hulp**: resources die betrekking hebben op uw Logic apps die vereist zijn voor bedrijfs activiteiten, maar die een hoger risico voor de organisatie kunnen opleveren, moeten worden geïsoleerd in een eigen virtuele machine en/of virtueel netwerk en voldoende zijn beveiligd met een Azure firewall of netwerk beveiligings groep.
 
-Logic Apps die vereist zijn voor bedrijfs activiteiten, maar een groter risico kunnen opleveren voor de organisatie, moeten waar mogelijk worden geïsoleerd via afzonderlijke resource groepen met specifieke machtigingen en RBAC-grenzen.
+Logic Apps die vereist zijn voor bedrijfs activiteiten, maar een groter risico kunnen opleveren voor de organisatie, moeten waar mogelijk worden geïsoleerd via afzonderlijke resource groepen met specifieke machtigingen en Azure RBAC-grenzen.
 
 - [Een virtueel netwerk maken](../virtual-network/quick-create-portal.md) 
 
@@ -891,7 +891,7 @@ Logic Apps die vereist zijn voor bedrijfs activiteiten, maar een groter risico k
 
 - [Beheergroepen maken](../governance/management-groups/create-management-group-portal.md) 
 
-- [Toegang tot Logic Apps beveiligen via RBAC](logic-apps-securing-a-logic-app.md#access-to-logic-app-operations)
+- [Toegang tot Logic Apps beveiligen via Azure RBAC](logic-apps-securing-a-logic-app.md#access-to-logic-app-operations)
 
 **Azure Security Center bewaking**: niet van toepassing
 

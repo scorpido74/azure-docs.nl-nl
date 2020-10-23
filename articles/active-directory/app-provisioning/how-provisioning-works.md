@@ -11,12 +11,13 @@ ms.workload: identity
 ms.date: 05/20/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: b990fc7282cd986b0903fb1f33114a164be1c191
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.custom: contperfq2
+ms.openlocfilehash: c9d8bf42d8856ffcf7bb0247172f6c0fd49600e0
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/22/2020
-ms.locfileid: "92366680"
+ms.locfileid: "92424646"
 ---
 # <a name="how-provisioning-works"></a>Hoe inrichting werkt
 
@@ -179,6 +180,8 @@ Zorg ervoor dat u het selectie vakje voor updates hebt ingeschakeld.
 
 Zorg ervoor dat u de toewijzing voor *actief* hebt voor uw toepassing. Als u een toepassing uit de app-Galerie gebruikt, kan de toewijzing iets anders zijn. Zorg ervoor dat u de standaard-en uitgaande Box-toewijzing gebruikt voor galerie toepassingen.
 
+:::image type="content" source="./media/how-provisioning-works/disable-user.png" alt-text="Een gebruiker uitschakelen" lightbox="./media/how-provisioning-works/disable-user.png":::
+
 
 **Uw toepassing configureren voor het verwijderen van een gebruiker**
 
@@ -188,7 +191,9 @@ In de volgende scenario's wordt een uitschakelen of verwijderen geactiveerd:
 * Een gebruiker wordt definitief verwijderd uit de Prullenbak in azure AD.
 * Een gebruiker is niet toegewezen vanuit een app.
 * Een gebruiker gaat van binnen bereik tot buiten bereik (geeft geen bereik filter meer toe).
-    
+
+:::image type="content" source="./media/how-provisioning-works/delete-user.png" alt-text="Een gebruiker uitschakelen" lightbox="./media/how-provisioning-works/delete-user.png":::
+
 De Azure AD-inrichtings service laadt standaard gebruikers die buiten het bereik vallen, of schakelt deze uit. Als u dit standaard gedrag wilt overschrijven, kunt u een markering instellen om [verwijderingen buiten het bereik over te slaan.](skip-out-of-scope-deletions.md)
 
 Als een van de bovenstaande vier gebeurtenissen optreedt en de doel toepassing geen tijdelijke verwijderingen ondersteunt, wordt door de inrichtings service een Verwijder aanvraag verzonden om de gebruiker definitief uit de app te verwijderen.

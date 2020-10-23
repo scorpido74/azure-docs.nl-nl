@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: c98e377ec216bea6c1d4a96b15b3741aa52672e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e515df0ff8c7cd3794efb4db567ef7146ccb7a03
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618128"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424227"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Wat is Azure SQL Managed Instance?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -96,7 +96,7 @@ In de volgende lijst worden de belangrijkste kenmerken van de servicelaag voor A
 
 - Ontworpen voor het merendeel van zakelijke toepassingen met typische prestatievereisten
 - Azure Blob-opslag met hoge prestaties (8 TB)
-- Ingebouwde [hoge beschikbaarheid](../database/high-availability-sla.md#basic-standard-and-general-purpose-service-tier-availability) op basis van betrouwbare Azure Blob-opslag en [Azure Service Fabric](../../service-fabric/service-fabric-overview.md)
+- Ingebouwde [hoge beschikbaarheid](../database/high-availability-sla.md#basic-standard-and-general-purpose-service-tier-locally-redundant-availability) op basis van betrouwbare Azure Blob-opslag en [Azure Service Fabric](../../service-fabric/service-fabric-overview.md)
 
 Zie voor meer informatie [Opslaglaag in de laag voor Algemeen gebruik](https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c) en [Best practices en overwegingen over opslagprestaties voor SQL Managed Instance (Algemeen gebruik)](https://blogs.msdn.microsoft.com/sqlcat/2018/07/20/storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose/).
 
@@ -110,7 +110,7 @@ De volgende lijst geeft een overzicht van de belangrijkste kenmerken van de serv
 
 - Ontworpen voor zakelijke toepassingen met de hoogste  prestatie- en HA-vereisten
 - Wordt geleverd met supersnelle lokale SSD-opslag (tot 1 TB op Gen4 en tot 4 TB op GEN5)
-- Ingebouwde [hoge beschikbaarheid](../database/high-availability-sla.md#premium-and-business-critical-service-tier-availability) op basis van [Always On-beschikbaarheidsgroepen](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) en [Azure Service Fabric](../../service-fabric/service-fabric-overview.md)
+- Ingebouwde [hoge beschikbaarheid](../database/high-availability-sla.md#premium-and-business-critical-service-tier-locally-redundant-availability) op basis van [Always On-beschikbaarheidsgroepen](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) en [Azure Service Fabric](../../service-fabric/service-fabric-overview.md)
 - Ingebouwde aanvullende [alleen-lezen databasereplica](../database/read-scale-out.md) die kunnen worden gebruikt voor rapportage en andere alleen-lezen workloads
 - [In-Memory OLTP](../in-memory-oltp-overview.md) dat kan worden gebruikt voor de workloads met hoge prestatievereisten  
 
