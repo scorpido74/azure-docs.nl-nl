@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 10/21/2020
 ms.author: jeedes
-ms.openlocfilehash: d56f9890396d0381d24676964dabc57e2020ec28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a0a69784be3b03b030ef599037b57c2c20ea2c6
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317426"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92454674"
 ---
 # <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>Zelf studie: DocuSign configureren voor automatische gebruikers inrichting
 
@@ -35,7 +35,7 @@ Azure Active Directory gebruikt een concept met de naam 'toewijzingen' om te bep
 
 Voordat u de inrichtings service configureert en inschakelt, moet u bepalen welke gebruikers en/of groepen in azure AD de gebruikers vertegenwoordigen die toegang nodig hebben tot uw DocuSign-app. Nadat u hebt besloten, kunt u deze gebruikers toewijzen aan uw DocuSign-app door de volgende instructies te volgen:
 
-[Een gebruiker of groep toewijzen aan een bedrijfs-app](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Een gebruiker of groep toewijzen aan een bedrijfs-app](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-docusign"></a>Belang rijke tips voor het toewijzen van gebruikers aan DocuSign
 
@@ -93,6 +93,12 @@ Het doel van deze sectie is het maken van een overzicht van de gebruikers inrich
 Hiermee start u de initiële synchronisatie van gebruikers die zijn toegewezen aan DocuSign in de sectie gebruikers en groepen. Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan volgende synchronisaties, die ongeveer elke 40 minuten plaatsvinden, zolang de service wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen te volgen voor het inrichtings logboek, waarin alle acties worden beschreven die worden uitgevoerd door de inrichtings service in uw DocuSign-app.
 
 Zie [Rapportage over automatische inrichting van gebruikersaccounts](../app-provisioning/check-status-user-account-provisioning.md) voor informatie over het lezen van de Azure AD-inrichtingslogboeken.
+
+## <a name="troubleshooting-tips"></a>Tips voor probleemoplossing
+* Het inrichten van een rol-of machtigings profiel voor een gebruiker in Docusign kan worden bereikt met behulp van een expressie in uw kenmerk toewijzingen met behulp van de functies [Switch](https://docs.microsoft.com/azure/active-directory/app-provisioning/functions-for-customizing-application-data#switch) en [singleAppRoleAssignment](https://docs.microsoft.com/azure/active-directory/app-provisioning/functions-for-customizing-application-data#singleapproleassignment) . Met de onderstaande expressie wordt bijvoorbeeld de ID ' 8032066 ' ingericht wanneer een gebruiker de rol ' DS-beheerder ' heeft toegewezen in azure AD. Er wordt geen machtigings profiel ingericht als aan de gebruiker geen functie is toegewezen aan de Azure AD-zijde. De ID kan worden opgehaald uit de DocuSign- [Portal](https://support.docusign.com/articles/Default-settings-for-out-of-the-box-DocuSign-Permission-Profiles).
+
+Switch (SingleAppRoleAssignment ([appRoleAssignments]), "", "8032066", "DS-beheerder")
+
 
 ## <a name="additional-resources"></a>Aanvullende resources
 

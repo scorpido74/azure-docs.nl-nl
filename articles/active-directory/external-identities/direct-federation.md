@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b7350d793ea42a46d52d881f1399174a3bb5d0e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 7cb0223b338457ad5eeea0b0bb40593f57a0d3aa
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362889"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442079"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Directe Federatie met AD FS en providers van derden voor gast gebruikers (preview-versie)
 
@@ -66,7 +66,7 @@ Als u bijvoorbeeld directe Federatie instelt voor _ * fabrikam. com * *, wordt d
 Als u de meta gegevens-URL in de instellingen van de identiteits provider opgeeft, wordt het handtekening certificaat door Azure AD automatisch vernieuwd wanneer het verloopt. Als het certificaat echter om een of andere reden vóór de verloop tijd wordt geroteerd, of als u geen meta gegevens-URL opgeeft, kan Azure AD deze niet vernieuwen. In dit geval moet u het handtekening certificaat hand matig bijwerken.
 
 ### <a name="limit-on-federation-relationships"></a>Limiet voor Federatie relaties
-Momenteel wordt een maximum van 1.000 Federatie relaties ondersteund. Deze limiet omvat zowel [interne](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) als directe overkoepelende organisaties.
+Momenteel wordt een maximum van 1.000 Federatie relaties ondersteund. Deze limiet omvat zowel [interne](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) als directe overkoepelende organisaties.
 
 ### <a name="limit-on-multiple-domains"></a>Limiet voor meerdere domeinen
 Er wordt momenteel geen ondersteuning geboden voor directe Federatie met meerdere domeinen van dezelfde Tenant.
@@ -87,7 +87,7 @@ Eerst moet uw partner organisatie hun ID-provider configureren met de vereiste c
 
 ### <a name="saml-20-configuration"></a>SAML 2,0-configuratie
 
-Azure AD B2B kan worden geconfigureerd om te communiceren met id-providers die het SAML-protocol gebruiken met specifieke vereisten die hieronder worden weer gegeven. Zie  [een saml 2,0-ID-provider (IDP) gebruiken voor eenmalige aanmelding](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-saml-idp)voor meer informatie over het instellen van een vertrouwens relatie tussen uw SAML-ID-provider en Azure AD.  
+Azure AD B2B kan worden geconfigureerd om te communiceren met id-providers die het SAML-protocol gebruiken met specifieke vereisten die hieronder worden weer gegeven. Zie  [een saml 2,0-ID-provider (IDP) gebruiken voor eenmalige aanmelding](../hybrid/how-to-connect-fed-saml-idp.md)voor meer informatie over het instellen van een vertrouwens relatie tussen uw SAML-ID-provider en Azure AD.  
 
 > [!NOTE]
 > Het doel domein voor directe Federatie mag niet worden geverifieerd door DNS op Azure AD. Het domein van de verificatie-URL moet overeenkomen met het doel domein of het moet het domein zijn van een toegestane ID-provider. Zie de sectie [beperkingen](#limitations) voor meer informatie. 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d71a7535c40d240b6c9bf53cff906f12b4b8b5df
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: d4e150eddee947aa4ed6f88c122c0fa6d01a0bae
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92204296"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460645"
 ---
 # <a name="write-client-app-authentication-code"></a>Verificatie code voor client-app schrijven
 
@@ -20,7 +20,7 @@ Nadat u [een Azure Digital apparaatdubbels-exemplaar en-verificatie hebt ingeste
 
 Azure Digital Apparaatdubbels voert verificatie uit met behulp van [Azure AD-beveiligings tokens op basis van OAUTH 2,0](../active-directory/develop/security-tokens.md#json-web-tokens-jwts-and-claims). Als u uw SDK wilt verifiëren, moet u een Bearer-token met de juiste machtigingen voor Azure Digital Apparaatdubbels verkrijgen en dit samen met uw API-aanroepen door geven. 
 
-In dit artikel wordt beschreven hoe u referenties kunt verkrijgen met behulp van de `Azure.Identity` client bibliotheek. Hoewel in dit artikel code voorbeelden in C# worden weer gegeven, zoals wat u schrijft voor [.net (C#) SDK](https://www.nuget.org/packages/Azure.DigitalTwins.Core), kunt u een versie van gebruiken, `Azure.Identity` ongeacht de SDK die u gebruikt (voor meer informatie over de sdk's die beschikbaar zijn voor Azure Digital apparaatdubbels raadpleegt u [*Hoe: de Azure Digital Apparaatdubbels-api's en sdk's gebruiken*](how-to-use-apis-sdks.md)).
+In dit artikel wordt beschreven hoe u referenties kunt verkrijgen met behulp van de `Azure.Identity` client bibliotheek. Hoewel in dit artikel code voorbeelden in C# worden weer gegeven, zoals wat u schrijft voor [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true), kunt u een versie van gebruiken, `Azure.Identity` ongeacht de SDK die u gebruikt (voor meer informatie over de sdk's die beschikbaar zijn voor Azure Digital apparaatdubbels raadpleegt u [*Hoe: de Azure Digital Apparaatdubbels-api's en sdk's gebruiken*](how-to-use-apis-sdks.md)).
 
 ## <a name="prerequisites"></a>Vereisten
 

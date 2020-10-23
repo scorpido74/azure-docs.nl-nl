@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b68a4d0c9c33f6a7eb1a2300955e9185bd52d8fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1052ad06400eb70fe41617421b54978bddd9e50
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90705466"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441365"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Eigenschappen van een Azure Active Directory B2B-samenwerkings gebruiker
 
@@ -104,11 +104,11 @@ Het is mogelijk om de standaard beperkingen uit te scha kelen, zodat een gast ge
 ![Scherm afbeelding met de optie externe gebruikers in de gebruikers instellingen](media/user-properties/remove-guest-limitations.png)
 
 ## <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Kan ik gast gebruikers zichtbaar maken in de algemene adres lijst van Exchange?
-Ja. Gast objecten zijn standaard niet zichtbaar in de algemene adres lijst van uw organisatie, maar u kunt Azure Active Directory Power shell gebruiken om ze zichtbaar te maken. Zie **kan ik gast objecten zichtbaar maken in de algemene adres lijst?** in [gast toegang beheren in Microsoft 365 groepen](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups)voor meer informatie.
+Ja. Gast objecten zijn standaard niet zichtbaar in de algemene adres lijst van uw organisatie, maar u kunt Azure Active Directory Power shell gebruiken om ze zichtbaar te maken. Zie **kan ik gast objecten zichtbaar maken in de algemene adres lijst?** in [gast toegang beheren in Microsoft 365 groepen](/office365/admin/create-groups/manage-guest-access-in-groups)voor meer informatie.
 
 ## <a name="can-i-update-a-guest-users-email-address"></a>Kan ik het e-mail adres van een gast gebruiker bijwerken?
 
-Als een gast gebruiker uw uitnodiging accepteert en vervolgens het e-mail adres wijzigt, wordt de nieuwe e-mail niet automatisch gesynchroniseerd met het gast gebruikers object in uw Directory. De eigenschap mail wordt gemaakt via [Microsoft Graph-API](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0). U kunt de eigenschap e-mail bijwerken via de Microsoft Graph-API, het Exchange-beheer centrum of [Exchange Online Power shell](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/set-mailuser?view=exchange-ps). De wijziging wordt weer gegeven in het gebruikers object van de Azure AD-gast.
+Als een gast gebruiker uw uitnodiging accepteert en vervolgens het e-mail adres wijzigt, wordt de nieuwe e-mail niet automatisch gesynchroniseerd met het gast gebruikers object in uw Directory. De eigenschap mail wordt gemaakt via [Microsoft Graph-API](/graph/api/resources/user?view=graph-rest-1.0). U kunt de eigenschap e-mail bijwerken via de Microsoft Graph-API, het Exchange-beheer centrum of [Exchange Online Power shell](/powershell/module/exchange/users-and-groups/set-mailuser?view=exchange-ps). De wijziging wordt weer gegeven in het gebruikers object van de Azure AD-gast.
 
 ## <a name="next-steps"></a>Volgende stappen
 

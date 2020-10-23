@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 41aabeeeb151a6e2cf3c52dbfa2075c55f86989f
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: c163b7325cb4e039ddcfee95a39b82b4cb258b3c
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427308"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461291"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Verbinding maken tussen Azure en ITSM-hulpprogramma's met behulp van IT Service Management-connector
 
@@ -107,10 +107,9 @@ Nadat u uw ITSM-hulp middelen hebt bereid, volgt u de onderstaande stappen om ee
    U kunt met behulp van de ITSM-connector-oplossing werk items maken van Azure-waarschuwingen, Log Analytics waarschuwingen en Log Analytics logboek records.
 
 ## <a name="template-definitions"></a>Sjabloon definities
-   Er zijn typen **werk items** die sjablonen kunnen gebruiken die zijn gedefinieerd door het ITSM-hulp programma.
-Door sjablonen te gebruiken, kunnen klanten velden definiëren die automatisch worden ingevuld op basis van vaste waarden die zijn gedefinieerd als onderdeel van de actie groep. Deze definitie wordt uitgevoerd in het hulp programma ITSM.
-In dat geval wordt het selectie vakje ' aangepaste sjabloon gebruiken ' ingeschakeld om de klant te laten beschikken over de velden die automatisch worden ingevuld op basis van vaste waarden die zijn gedefinieerd als onderdeel van de actie groep.
-   
+   Er zijn typen werk items die sjablonen kunnen gebruiken die zijn gedefinieerd door het ITSM-hulp programma.
+Door sjablonen te gebruiken, kunnen klanten velden definiëren die automatisch worden ingevuld op basis van vaste waarden die zijn gedefinieerd als onderdeel van de actie groep. De definitie van de sjablonen wordt uitgevoerd in het hulp programma ITSM.
+      
 ## <a name="create-itsm-work-items-from-azure-alerts"></a>ITSM-werk items maken op basis van Azure-waarschuwingen
 
 Zodra u uw ITSM-verbinding hebt gemaakt, kunt u een of meer werk items maken in uw ITSM-hulp programma op basis van Azure-waarschuwingen met behulp van de **actie ITSM** in **actie groepen**.
@@ -139,7 +138,7 @@ Gebruik de volgende procedure:
 
 6. Selecteer type **werk item** in de vervolg keuzelijst.
 
-7. Kies of u een bestaande sjabloon wilt gebruiken of een algemene sjabloon wilt gebruiken en vul de velden in die vereist zijn voor uw ITSM-product.
+7. Als u de veld velden met vaste waarden wilt invullen, moet u het selectie vakje ' aangepaste sjabloon gebruiken ' selecteren, anders kiest u een bestaande [sjabloon](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#template-definitions) uit de vervolg keuzelijst en vult u de sjabloon velden met vaste waarden in.
 
 8. Klik op **OK**.
 

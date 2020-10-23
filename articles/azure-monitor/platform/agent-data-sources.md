@@ -1,25 +1,28 @@
 ---
-title: Agent gegevens bronnen configureren in Azure Monitor | Microsoft Docs
+title: Log Analytics agent-gegevens bronnen in Azure Monitor
 description: Gegevens bronnen definiëren de logboek gegevens die Azure Monitor verzameld van agents en andere verbonden bronnen.  In dit artikel wordt beschreven hoe Azure Monitor gegevens bronnen gebruikt, wordt uitgelegd hoe u deze kunt configureren en wordt een overzicht gegeven van de verschillende gegevens bronnen die beschikbaar zijn.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/28/2018
-ms.openlocfilehash: a183589c3e5274cf747164cdc33d46044f95e716
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: a52f10c7081875113a0ad22bd687776e71d238e2
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87073690"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460798"
 ---
-# <a name="agent-data-sources-in-azure-monitor"></a>Gegevens bronnen van agents in Azure Monitor
-De gegevens die Azure Monitor verzameld van agents, worden gedefinieerd door de gegevens bronnen die u configureert.  De gegevens van agents worden opgeslagen als [logboek gegevens](data-platform-logs.md) met een set records.  Elke gegevens bron maakt records van een bepaald type met elk type met een eigen set eigenschappen.
+# <a name="log-analytics-agent-data-sources-in-azure-monitor"></a>Log Analytics agent-gegevens bronnen in Azure Monitor
+De gegevens die Azure Monitor verzameld van virtuele machines met de [log Analytics](log-analytics-agent.md) -agent, worden gedefinieerd door de gegevens bronnen die u configureert in de [log Analytics-werk ruimte](data-platform-logs.md).   Elke gegevens bron maakt records van een bepaald type met elk type met een eigen set eigenschappen.
+
+> [!IMPORTANT]
+> In dit artikel worden gegevens bronnen behandeld voor de [log Analytics-agent](log-analytics-agent.md) , een van de agents die door Azure monitor worden gebruikt. Andere agents verzamelen verschillende gegevens en worden anders geconfigureerd. Zie [overzicht van Azure monitor agents](agents-overview.md) voor een lijst met beschik bare agents en de gegevens die ze kunnen verzamelen.
 
 ![Gegevens verzameling vastleggen](media/agent-data-sources/overview.png)
 
 ## <a name="summary-of-data-sources"></a>Samen vatting van gegevens bronnen
-De volgende tabel geeft een lijst van de agent gegevens bronnen die momenteel beschikbaar zijn in Azure Monitor.  Elk heeft een koppeling naar een afzonderlijk artikel met Details voor die gegevens bron.   Het bevat ook informatie over de methode en frequentie van de verzameling. 
+De volgende tabel geeft een lijst van de agent gegevens bronnen die op dit moment beschikbaar zijn met de Log Analytics-agent.  Elk heeft een koppeling naar een afzonderlijk artikel met Details voor die gegevens bron.   Het bevat ook informatie over de methode en frequentie van de verzameling. 
 
 
 | Gegevensbron | Platform | Log Analytics-agent | Operations Manager-agent | Azure Storage | Operations Manager vereist? | Operations Manager agent gegevens die via een beheer groep zijn verzonden | Verzamelingsfrequentie |
@@ -34,17 +37,15 @@ De volgende tabel geeft een lijst van de agent gegevens bronnen die momenteel be
 
 
 ## <a name="configuring-data-sources"></a>Gegevens bronnen configureren
-U configureert gegevens bronnen vanuit het menu **Data** in **Geavanceerde instellingen** voor de werk ruimte.  Elke configuratie wordt aan alle verbonden bronnen in uw werk ruimte geleverd.  U kunt momenteel geen agents uitsluiten van deze configuratie.
+Als u gegevens bronnen voor Log Analytics agents wilt configureren, gaat u naar het menu **log Analytics-werk ruimten** in de Azure Portal en selecteert u een werk ruimte. Klik op **Geavanceerde instellingen** en vervolgens op **gegevens**. Selecteer de gegevens bron die u wilt configureren. U kunt de koppelingen in de bovenstaande tabel volgen voor documentatie voor elke gegevens bron en informatie over de configuratie.
+
+Elke configuratie wordt afgeleverd bij alle agents die zijn verbonden met die werk ruimte.  U kunt geen verbonden agents uitsluiten van deze configuratie.
 
 ![Windows-gebeurtenissen configureren](media/agent-data-sources/configure-events.png)
 
-1. Selecteer in de Azure Portal **log Analytics werk ruimten** > uw werk ruimte > **Geavanceerde instellingen**.
-2. Selecteer **gegevens**.
-3. Klik op de gegevens bron die u wilt configureren.
-4. Volg de koppeling naar de documentatie voor elke gegevens bron in de bovenstaande tabel voor meer informatie over de configuratie.
 
 
-## <a name="data-collection"></a>Gegevensverzameling
+## <a name="data-collection"></a>Gegevens verzamelen
 Gegevens bron configuraties worden geleverd aan agents die rechtstreeks zijn verbonden met Azure Monitor binnen een paar minuten.  De opgegeven gegevens worden verzameld van de agent en direct bezorgd bij Azure Monitor met intervallen die specifiek zijn voor elke gegevens bron.  Zie de documentatie voor elke gegevens bron voor deze specifieke informatie.
 
 Voor System Center Operations Manager agents in een verbonden beheer groep worden de gegevens bron configuraties omgezet in Management Packs en standaard elke vijf minuten aan de beheer groep geleverd.  De agent downloadt de management pack zoals de andere en verzamelt de opgegeven gegevens. Afhankelijk van de gegevens bron, worden de gegevens verzonden naar een beheer server die de gegevens doorstuurt naar de Azure Monitor, of de agent verzendt de gegevens naar Azure Monitor zonder via de beheer server te gaan. Zie [Details over het verzamelen van gegevens voor het controleren van oplossingen in azure](../monitor-reference.md) voor meer informatie.  U vindt meer informatie over het verbinden van Operations Manager en Azure Monitor en het wijzigen van de frequentie die de configuratie wordt geleverd bij het [configureren van de integratie met System Center Operations Manager](om-agents.md).

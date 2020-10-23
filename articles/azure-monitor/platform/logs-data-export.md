@@ -7,12 +7,12 @@ ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 6b94b6d66046c29de99339887d5c5c87d6c5bb5f
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 7183a9c75c78a973b53a9c8c065d62c592b13151
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92055933"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441105"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Log Analytics werkruimte gegevens exporteren in Azure Monitor (preview-versie)
 Met Log Analytics werkruimte gegevens exporteren in Azure Monitor kunt u voortdurend gegevens exporteren uit geselecteerde tabellen in uw Log Analytics-werk ruimte naar een Azure Storage-account of Azure-Event Hubs wanneer het wordt verzameld. Dit artikel bevat informatie over deze functie en de stappen voor het configureren van gegevens export in uw werk ruimten.
@@ -36,7 +36,7 @@ Log Analytics werk ruimte gegevens exporteren doorlopend exporteert gegevens uit
 ## <a name="current-limitations"></a>Huidige beperkingen
 
 - Configuratie kan momenteel alleen worden uitgevoerd met CLI-of REST-aanvragen. U kunt de Azure Portal of Power shell niet gebruiken.
-- Ondersteunde tabellen zijn momenteel beperkt in de sectie (#supported-tabel). Als de regel voor het exporteren van gegevens een niet-ondersteunde tabel bevat, wordt de bewerking uitgevoerd, maar worden er geen gegevens geëxporteerd voor die tabel. Als de regel voor het exporteren van gegevens een tabel bevat die niet bestaat, mislukt de fout *tabel <tableName> niet in de werk ruimte.*
+- Ondersteunde tabellen zijn momenteel beperkt in de sectie [ondersteunde tabellen](#supported-tables) hieronder. Als de regel voor het exporteren van gegevens een niet-ondersteunde tabel bevat, wordt de bewerking uitgevoerd, maar worden er geen gegevens geëxporteerd voor die tabel. Als de regel voor het exporteren van gegevens een tabel bevat die niet bestaat, mislukt de fout ```Table <tableName> does not exist in the workspace.```
 - Uw Log Analytics-werk ruimte kan zich in elke regio bevinden, met uitzonde ring van het volgende:
   - Zwitserland - noord
   - Zwitserland - west
@@ -239,7 +239,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 ## <a name="unsupported-tables"></a>Niet-ondersteunde tabellen
 Als de regel voor het exporteren van gegevens een niet-ondersteunde tabel bevat, wordt de configuratie voltooid, maar worden er geen gegevens geëxporteerd voor die tabel. Als de tabel later wordt ondersteund, worden de bijbehorende gegevens op dat moment geëxporteerd.
 
-Als de regel voor het exporteren van gegevens een tabel bevat die niet bestaat, mislukt de fout *tabel <tableName> niet in de werk ruimte*.
+Als de regel voor het exporteren van gegevens een tabel bevat die niet bestaat, mislukt de fout ```Table <tableName> does not exist in the workspace.```
 
 
 ## <a name="supported-tables"></a>Ondersteunde tabellen

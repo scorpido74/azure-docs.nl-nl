@@ -8,12 +8,12 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: b23e9a1e344bb0db1399a4f04712815557b8139e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 54a96d1f3227cd4a66e344b63b2ecb337df31aba
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427985"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461070"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>Integreren met Logic Apps met behulp van een aangepaste connector
 
@@ -43,7 +43,7 @@ Als u een Azure Digital Apparaatdubbels-exemplaar wilt verbinden met Logic Apps 
 Stel eerst **een Azure Digital apparaatdubbels-exemplaar** in en de vereiste verificatie zodat u ermee kunt werken. Volg hiervoor de instructies in [*Instructies: een exemplaar en verificatie instellen*](how-to-set-up-instance-portal.md). Afhankelijk van uw favoriete ervaring wordt het configuratie-artikel aangeboden voor de [Azure Portal](how-to-set-up-instance-portal.md), [CLI](how-to-set-up-instance-cli.md)of [geautomatiseerd voorbeeld van een Cloud Shell-implementatiescript](how-to-set-up-instance-scripted.md). Alle versies van de instructies bevatten ook stappen om te controleren of u elke stap hebt voltooid en gereed bent om door te gaan met het nieuwe exemplaar.
 * Nadat u uw Azure Digital Apparaatdubbels-exemplaar hebt ingesteld, hebt u de **_hostnaam_** van het exemplaar ([zoek in de Azure Portal](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)) nodig.
 
-Als u de ADT Explorer-toepassing wilt verifiëren, moet u ook een **app-registratie**instellen. Volg de instructies in [*procedure: een app-registratie maken*](how-to-create-app-registration.md) om dit in te stellen. 
+Als u de connector wilt verifiëren, moet u ook een app- **registratie**instellen. Volg de instructies in [*procedure: een app-registratie maken*](how-to-create-app-registration.md) om dit in te stellen. 
 * Zodra u een app hebt geregistreerd, hebt u de toepassings-ID van de registratie **_(client)-ID_** en de **_map (Tenant)_** nodig ([Zoek in de Azure Portal](how-to-create-app-registration.md#collect-client-id-and-tenant-id)).
 
 ### <a name="get-app-registration-client-secret"></a>Client geheim voor registratie van apps ophalen
@@ -66,7 +66,7 @@ Controleer nu of het client geheim zichtbaar is op de pagina _certificaten & geh
 
 In dit artikel wordt Logic Apps gebruikt voor het bijwerken van een dubbele in uw Azure Digital Apparaatdubbels-exemplaar. Als u wilt door gaan, moet u ten minste één dubbele naam toevoegen aan uw exemplaar. 
 
-U kunt apparaatdubbels toevoegen met behulp van de [DigitalTwins-api's](how-to-use-apis-sdks.md), de [.net (C#) SDK](https://www.nuget.org/packages/Azure.DigitalTwins.Core)of de [Azure Digital apparaatdubbels cli](how-to-use-cli.md). Zie [*How-to: Manage Digital apparaatdubbels*](how-to-manage-twin.md)(Engelstalig) voor gedetailleerde stappen voor het maken van apparaatdubbels met behulp van deze methoden.
+U kunt apparaatdubbels toevoegen met behulp van de [DigitalTwins-api's](/rest/api/digital-twins/dataplane/twins), de [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)of de [Azure Digital apparaatdubbels cli](how-to-use-cli.md). Zie [*How-to: Manage Digital apparaatdubbels*](how-to-manage-twin.md)(Engelstalig) voor gedetailleerde stappen voor het maken van apparaatdubbels met behulp van deze methoden.
 
 U hebt de **_dubbele id_** nodig van een dubbele naam in uw exemplaar dat u hebt gemaakt.
 

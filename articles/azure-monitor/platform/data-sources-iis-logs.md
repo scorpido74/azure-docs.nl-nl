@@ -1,20 +1,23 @@
 ---
-title: IIS-logboeken in Azure Monitor | Microsoft Docs
+title: IIS-logboeken met Log Analytics agent in Azure Monitor verzamelen
 description: Internet Information Services (IIS) slaat gebruikers activiteiten op in logboek bestanden die door Azure Monitor kunnen worden verzameld.  In dit artikel wordt beschreven hoe u een verzameling IIS-logboeken en-Details configureert van de records die ze in Azure Monitor maken.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/28/2018
-ms.openlocfilehash: 0bca809d6c25594c1c614f694e71e39a4f61e2a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: ca3cf93329ea84183ef11eec8f8fac52cd84d445
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87008180"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461189"
 ---
-# <a name="collect-iis-logs-in-azure-monitor"></a>IIS-logboeken in Azure Monitor verzamelen
-Internet Information Services (IIS) slaat gebruikers activiteiten op in logboek bestanden die kunnen worden verzameld door Azure Monitor en worden opgeslagen als [logboek gegevens](data-platform.md).
+# <a name="collect-iis-logs-with-log-analytics-agent-in-azure-monitor"></a>IIS-logboeken met Log Analytics agent in Azure Monitor verzamelen
+Internet Information Services (IIS) slaat gebruikers activiteiten op in logboek bestanden die kunnen worden verzameld door de Log Analytics agent en worden opgeslagen in [Azure monitor logboeken](data-platform.md).
+
+> [!IMPORTANT]
+> In dit artikel wordt beschreven hoe u IIS-logboeken verzamelt met de [log Analytics-agent](log-analytics-agent.md) , een van de agents die door Azure monitor worden gebruikt. Andere agents verzamelen verschillende gegevens en worden anders geconfigureerd. Zie [overzicht van Azure monitor agents](agents-overview.md) voor een lijst met beschik bare agents en de gegevens die ze kunnen verzamelen.
 
 ![IIS-logboeken](media/data-sources-iis-logs/overview.png)
 
@@ -23,10 +26,10 @@ Azure Monitor verzamelt vermeldingen uit logboek bestanden die zijn gemaakt door
 
 Azure Monitor ondersteunt alleen IIS-logboek bestanden die zijn opgeslagen in de W3C-indeling en ondersteunt geen aangepaste velden of geavanceerde logboek registratie van IIS. Er worden geen logboeken verzameld in NCSA of de native IIS-indeling.
 
-Configureer IIS-logboeken in Azure Monitor vanuit het [menu Geavanceerde instellingen](agent-data-sources.md#configuring-data-sources).  Er is geen configuratie vereist, anders dan het selecteren van **IIS-logboek bestanden voor W3C-indeling verzamelen**.
+Configureer IIS-logboeken in Azure Monitor via het [menu Geavanceerde instellingen](agent-data-sources.md#configuring-data-sources) voor de log Analytics agent.  Er is geen configuratie vereist, anders dan het selecteren van **IIS-logboek bestanden voor W3C-indeling verzamelen**.
 
 
-## <a name="data-collection"></a>Gegevensverzameling
+## <a name="data-collection"></a>Gegevens verzamelen
 Azure Monitor worden IIS-logboek vermeldingen van elke agent verzameld telkens wanneer de tijds tempel van het logboek wordt gewijzigd. Het logboek wordt elke **vijf minuten**gelezen. Als IIS de tijds tempel voor de rollover tijd niet bijwerkt wanneer een nieuw bestand wordt gemaakt, worden de gegevens verzameld na het maken van het nieuwe bestand. De frequentie van het maken van nieuwe bestanden wordt bepaald door de instelling voor het schema voor de **rollover van logboek bestanden** voor de IIS-site, die standaard één keer per dag wordt uitgevoerd. Als de instelling elk **uur**is, verzamelt Azure monitor elk uur het logboek. Als de instelling **dagelijks**is, verzamelt Azure monitor het logboek elke 24 uur.
 
 

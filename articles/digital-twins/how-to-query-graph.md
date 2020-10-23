@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 127fd9a9e47a85479018524998e33f44b0a65ba8
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: ea12b3eb72ce05f2672f6ca0912cc67345413c3c
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078473"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461274"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Query's uitvoeren op de Azure Digital Apparaatdubbels dubbele grafiek
 
-In dit artikel vindt u voor beelden en meer Details voor het gebruik van de [Azure Digital apparaatdubbels-query taal](concepts-query-language.md) om een query uit te zoeken op de [dubbele grafiek](concepts-twins-graph.md) voor informatie. U voert query's uit in de grafiek met behulp van de Azure Digital Apparaatdubbels- [**query-api's**](how-to-use-apis-sdks.md).
+In dit artikel vindt u voor beelden en meer Details voor het gebruik van de [Azure Digital apparaatdubbels-query taal](concepts-query-language.md) om een query uit te zoeken op de [dubbele grafiek](concepts-twins-graph.md) voor informatie. U voert query's uit in de grafiek met behulp van de Azure Digital Apparaatdubbels- [**query-api's**](/rest/api/digital-twins/dataplane/query).
 
 [!INCLUDE [digital-twins-query-operations.md](../../includes/digital-twins-query-operations.md)]
 
@@ -288,7 +288,7 @@ De volgende Opera tors worden ondersteund:
 | Vergelijking |=,! =, <, >, <=, >= |
 | Contains | IN, NOVER ENKELE |
 
-### <a name="functions"></a>Functies
+### <a name="functions"></a>Functions
 
 De volgende typen functies voor controleren en casting worden ondersteund:
 

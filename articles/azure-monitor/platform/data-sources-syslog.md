@@ -1,20 +1,23 @@
 ---
-title: Syslog-berichten verzamelen en analyseren in Azure Monitor | Microsoft Docs
+title: Syslog-gegevens bronnen verzamelen met Log Analytics agent in Azure Monitor
 description: Syslog is een protocol voor gebeurtenis registratie dat algemeen is voor Linux. In dit artikel wordt beschreven hoe u een verzameling van syslog-berichten configureert in Log Analytics en Details van de records die ze maken.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/22/2019
-ms.openlocfilehash: d9efdb11ffd30c68a0ac8ea8e8156fe707f188de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: 2d86983c8ed6c738e4b4e96d8d291dee4dc4d87d
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87322309"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440617"
 ---
-# <a name="syslog-data-sources-in-azure-monitor"></a>Syslog-gegevensbronnen in Azure Monitor
+# <a name="collect-syslog-data-sources-with-log-analytics-agent"></a>Syslog-gegevens bronnen verzamelen met Log Analytics agent
 Syslog is een protocol voor gebeurtenis registratie dat algemeen is voor Linux. Toepassingen zullen berichten verzenden die kunnen worden opgeslagen op de lokale computer of worden geleverd aan een syslog-Collector. Wanneer de Log Analytics-agent voor Linux is geïnstalleerd, wordt de lokale syslog-daemon geconfigureerd voor het door sturen van berichten naar de agent. De agent verzendt het bericht vervolgens naar Azure Monitor waar een corresponderende record wordt gemaakt.  
+
+> [!IMPORTANT]
+> Dit artikel heeft betrekking op het verzamelen van syslog-gebeurtenissen met de [log Analytics-agent](log-analytics-agent.md) , een van de agents die door Azure monitor worden gebruikt. Andere agents verzamelen verschillende gegevens en worden anders geconfigureerd. Zie [overzicht van Azure monitor agents](agents-overview.md) voor een lijst met beschik bare agents en de gegevens die ze kunnen verzamelen.
 
 > [!NOTE]
 > Azure Monitor ondersteunt het verzamelen van berichten die worden verzonden door rsyslog of syslog-ng, waarbij rsyslog de standaard-daemon is. De standaard syslog-daemon op versie 5 van Red Hat Enterprise Linux, CentOS en Oracle Linux versie (sysklog) wordt niet ondersteund voor de verzameling syslog-gebeurtenissen. Als u syslog-gegevens uit deze versie van deze distributies wilt verzamelen, moet de [rsyslog-daemon](http://rsyslog.com) worden geïnstalleerd en geconfigureerd om sysklog te vervangen.
@@ -45,7 +48,7 @@ Voor elke andere faciliteit [configureert u een gegevens bron met aangepaste log
 In de Log Analytics-agent voor Linux worden alleen gebeurtenissen verzameld met de faciliteiten en ernst die zijn opgegeven in de configuratie. U kunt syslog configureren via de Azure Portal of door configuratie bestanden te beheren in uw Linux-agents.
 
 ### <a name="configure-syslog-in-the-azure-portal"></a>Syslog configureren in de Azure Portal
-Configureer syslog vanuit het [menu Data in geavanceerde instellingen](agent-data-sources.md#configuring-data-sources). Deze configuratie wordt op elke Linux-agent bezorgd bij het configuratie bestand.
+Configureer syslog vanuit het [menu Data in geavanceerde instellingen](agent-data-sources.md#configuring-data-sources) voor de werk ruimte log Analytics. Deze configuratie wordt op elke Linux-agent bezorgd bij het configuratie bestand.
 
 U kunt een nieuwe faciliteit toevoegen door eerst de optie **op de onderstaande configuratie Toep assen op mijn machines te** selecteren en vervolgens de naam te typen en te klikken **+** . Voor elke faciliteit worden alleen berichten met de geselecteerde Ernst verzameld.  Controleer de ernst van de specifieke faciliteit die u wilt verzamelen. U kunt geen aanvullende criteria opgeven om berichten te filteren.
 

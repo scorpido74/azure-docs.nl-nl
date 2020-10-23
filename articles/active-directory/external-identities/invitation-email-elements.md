@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 90c70dd626ea093b9dfe2fd71e39b53c81ac5d5f
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: e1e1bbdfe1cb83f9b479861840081cd0bb138957
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340594"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441875"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>De elementen van het e-mail adres uitnodiging voor B2B-samen werking-Azure Active Directory
 
@@ -63,7 +63,7 @@ In de volgende sectie van het e-mail bericht vindt u informatie over waar de uit
 
 ### <a name="footer-section"></a>Voet tekst sectie
 
-De voet tekst bevat meer informatie over de uitnodiging die wordt verzonden. Er is altijd een optie voor de uitnodiging voor het blok keren van toekomstige uitnodigingen. Als de organisatie [een privacyverklaring heeft ingesteld](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-properties-area), wordt de koppeling naar de instructie hier weer gegeven.  Anders wordt met een notitie aangegeven dat de organisatie geen privacyverklaring heeft ingesteld.
+De voet tekst bevat meer informatie over de uitnodiging die wordt verzonden. Er is altijd een optie voor de uitnodiging voor het blok keren van toekomstige uitnodigingen. Als de organisatie [een privacyverklaring heeft ingesteld](../fundamentals/active-directory-properties-area.md), wordt de koppeling naar de instructie hier weer gegeven.  Anders wordt met een notitie aangegeven dat de organisatie geen privacyverklaring heeft ingesteld.
 
 ![Afbeelding van de voet tekst sectie in het e-mail bericht](media/invitation-email-elements/footer-section.png)
 
@@ -85,8 +85,8 @@ Een gast gebruiker kan deze stappen volgen om de organisaties weer te geven of t
 
 De taal die wordt weer gegeven aan de gast gebruiker in het e-mail bericht met de uitnodiging wordt bepaald door de volgende instellingen. Deze instellingen worden weer gegeven in volg orde van prioriteit. Als een instelling niet is geconfigureerd, bepaalt de volgende instelling in de lijst de taal.
 
-- De eigenschap **messageLanguage** van het [invitedUserMessageInfo](https://docs.microsoft.com/graph/api/resources/invitedusermessageinfo?view=graph-rest-1.0) -object als de Create API voor de uitnodiging wordt gebruikt
--   De eigenschap **preferredLanguage** die is opgegeven in het [gebruikers object](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0) van de gast
+- De eigenschap **messageLanguage** van het [invitedUserMessageInfo](/graph/api/resources/invitedusermessageinfo?view=graph-rest-1.0) -object als de Create API voor de uitnodiging wordt gebruikt
+-   De eigenschap **preferredLanguage** die is opgegeven in het [gebruikers object](/graph/api/resources/user?view=graph-rest-1.0) van de gast
 -   De **taal** van de meldingen die is ingesteld in de eigenschappen van de thuis Tenant van de gast gebruiker (alleen voor Azure AD-tenants)
 -   De **taal** van de meldingen die is ingesteld in de eigenschappen van de resource-Tenant
 
