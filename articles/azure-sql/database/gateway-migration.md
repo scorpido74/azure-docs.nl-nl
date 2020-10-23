@@ -4,18 +4,18 @@ description: Artikel geeft gebruikers informatie over de migratie van IP-adresse
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: service
-ms.custom: sqldbrb=1 
+ms.custom: sqldbrb=1
 ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: ee55e0a66a0487291233713498f6eb541980dbba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7fadbecc2c00a739afb2f94dd1d049805915cfa5
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90004269"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427103"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database verkeer migratie naar nieuwere gateways
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -96,7 +96,7 @@ Deze SQL-gateways beginnen het accepteren van klant verkeer op 10 augustus 2020.
 - VS - noord-centraal
 - Japan - west
 - Japan East
-- VS - oost 2
+- US - oost 2
 - Azië - oost
 
 ---
@@ -108,7 +108,8 @@ U hebt mogelijk gevolgen voor het volgende:
 
 - Het IP-adres voor een bepaalde gateway in uw on-premises firewall is vastgelegd.
 - Subnetten die gebruikmaken van micro soft. SQL als een service-eind punt, maar niet kunnen communiceren met de IP-adressen van de gateway
-- De [redundante zone configuratie](high-availability-sla.md#zone-redundant-configuration) voor uw data base gebruiken
+- De [zone-redundante configuratie gebruiken voor de laag voor algemeen](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) gebruik
+- Gebruik de [zone redundante configuratie voor Premium-& bedrijfs kritieke lagen](high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability)
 
 U hebt de volgende gevolgen:
  

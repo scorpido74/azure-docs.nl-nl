@@ -163,14 +163,14 @@
                   href: dynamics-365-finance-operations-functional-validation.md
             - name: Een Dynamics 365 Business Central-aanbieding maken
               href: partner-center-portal/create-new-business-central-offer.md
-        - name: Aanbiedingen voor IoT Edge-module
-          items:
-            - name: Aanbieding voor IoT Edge-module plannen
-              href: iot-edge-module.md
-            - name: Aanbieding voor IoT Edge-module maken
-              href: partner-center-portal/azure-iot-edge-module-creation.md
-            - name: Technische assets voor IoT Edge-module voorbereiden
-              href: partner-center-portal/create-iot-edge-module-asset.md
+    - name: Aanbiedingen voor IoT Edge-module
+      items:
+        - name: Aanbieding voor IoT Edge-module plannen
+          href: iot-edge-module.md
+        - name: Aanbieding voor IoT Edge-module maken
+          href: partner-center-portal/azure-iot-edge-module-creation.md
+        - name: Technische assets voor IoT Edge-module voorbereiden
+          href: partner-center-portal/create-iot-edge-module-asset.md
     - name: Aanbieding voor beheerde service
       items:
         - name: Een aanbieding voor beheerde service maken
@@ -273,7 +273,7 @@
       href: /legal/marketplace/participation-policy?context=/azure/marketplace/context/context
     - name: Voorwaarden voor Azure Marketplace
       href: /legal/marketplace/terms?context=/azure/marketplace/context/context
-- name: Naslaginformatie
+- name: Verwijzing
   items:
     - name: Naslaginformatie over de CPP-API
       items:

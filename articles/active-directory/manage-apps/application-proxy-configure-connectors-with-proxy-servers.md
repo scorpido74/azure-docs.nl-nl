@@ -11,12 +11,13 @@ ms.topic: how-to
 ms.date: 04/07/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 4c50e881fd6b7dda5c609a4ac6492d77fff1b537
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.custom: contperfq2
+ms.openlocfilehash: fcf06c280a93489b2e958b9baff2e132da37c005
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92208002"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426451"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Werken met bestaande on-premises proxyservers
 
@@ -121,7 +122,7 @@ Als uw firewall of proxy u toestaat om DNS-acceptatie lijsten te configureren, k
 Als u geen verbinding kunt maken met FQDN en u in plaats daarvan IP-bereiken moet opgeven, gebruikt u de volgende opties:
 
 * Hiermee staat u de uitgaande toegang van de connector tot alle doelen toe.
-* Hiermee wordt de uitgaande toegang van de connector tot alle IP-bereiken van het Azure-Data Center toegestaan. De uitdaging bij het gebruik van de lijst met IP-bereiken van Azure Data Center is dat deze wekelijks wordt bijgewerkt. U moet een proces plaatsen om ervoor te zorgen dat uw toegangs regels dienovereenkomstig worden bijgewerkt. Alleen het gebruik van een subset van de IP-adressen kan ertoe leiden dat uw configuratie wordt verbroken. Als u de meest recente IP-bereiken van Azure Data Center wilt downloaden, gaat u naar [https://download.microsoft.com](https://download.microsoft.com) en zoekt u naar ' Azure IP Ranges and service tags '. Zorg ervoor dat u de relevante Cloud selecteert. De IP-adresbereiken voor de open bare Cloud kunnen bijvoorbeeld worden gevonden met Azure IP-bereiken en service Tags – open bare Cloud. U kunt de cloud van de Amerikaanse regering vinden door te zoeken naar ' Azure IP Ranges and service Tags – US regering Cloud '.
+* Hiermee wordt de uitgaande toegang van de connector tot alle IP-bereiken van het Azure-Data Center toegestaan. De uitdaging bij het gebruik van de lijst met IP-bereiken van Azure Data Center is dat deze wekelijks wordt bijgewerkt. U moet een proces plaatsen om ervoor te zorgen dat uw toegangs regels dienovereenkomstig worden bijgewerkt. Alleen het gebruik van een subset van de IP-adressen kan ertoe leiden dat uw configuratie wordt verbroken. Als u de meest recente IP-bereiken van Azure Data Center wilt downloaden, gaat u naar [https://download.microsoft.com](https://download.microsoft.com) en zoekt u naar ' Azure IP Ranges and service tags '. Zorg ervoor dat u de relevante Cloud selecteert. De IP-adresbereiken voor de open bare Cloud kunnen bijvoorbeeld worden gevonden met Azure IP-bereiken en service Tags – open bare Cloud. U kunt de cloud van de Amerikaanse overheid vinden door te zoeken naar Azure IP-bereiken en service Tags – Amerikaanse overheids Cloud.
 
 #### <a name="proxy-authentication"></a>Proxy verificatie
 

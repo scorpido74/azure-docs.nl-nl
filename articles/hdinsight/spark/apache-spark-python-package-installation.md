@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: 6ef4a4f422bb787b3ead33ed1047d26d5e3c9c1f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b29e4411a104bbcd1d6d5b3320df47a742e2ca84
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978068"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461240"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Een Python-omgeving veilig beheren in Azure HDInsight met scriptactie
 
@@ -46,8 +46,8 @@ HDInsight Spark-cluster wordt gemaakt met Anaconda-installatie. Er zijn twee pyt
 |Instelling |Python 2,7|Python 3,5|
 |----|----|----|
 |Pad|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
-|Spark-versie|Standaard ingesteld op 2,7|N.v.t.|
-|Livy-versie|Standaard ingesteld op 2,7|N.v.t.|
+|Spark-versie|Standaard ingesteld op 2,7|Kan de configuratie wijzigen in 3,5|
+|Livy-versie|Standaard ingesteld op 2,7|Kan de configuratie wijzigen in 3,5|
 |Jupyter|PySpark-kernel|PySpark3-kernel|
 
 ## <a name="safely-install-external-python-packages"></a>Externe Python-pakketten veilig installeren

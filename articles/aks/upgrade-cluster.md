@@ -3,13 +3,13 @@ title: Een AKS-cluster (Azure Kubernetes Service) upgraden
 description: Meer informatie over hoe u een AKS-cluster (Azure Kubernetes service) bijwerkt om de nieuwste functies en beveiligings updates te downloaden.
 services: container-service
 ms.topic: article
-ms.date: 05/28/2020
-ms.openlocfilehash: da46c44dc9cc16dfa44aacb15b35b652c0c912a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: 046c010cdd811b53ef8ef35624ed41a673af43d3
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87050610"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461444"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Een AKS-cluster (Azure Kubernetes Service) upgraden
 
@@ -107,7 +107,7 @@ az aks nodepool update -n mynodepool -g MyResourceGroup --cluster-name MyManaged
 
 ## <a name="upgrade-an-aks-cluster"></a>Een AKS-cluster upgraden
 
-Met een lijst met beschik bare versies voor uw AKS-cluster gebruikt u de opdracht [AZ AKS upgrade][az-aks-upgrade] . Tijdens het upgrade proces voegt AKS een nieuw knoop punt toe aan het cluster waarop de opgegeven Kubernetes-versie wordt uitgevoerd. vervolgens wordt een van de oude knoop punten door [Cordon en][kubernetes-drain] vertraagd, zodat de onderbreking van de toepassingen tot een minimum wordt beperkt. Wanneer het nieuwe knoop punt is bevestigd als het uitvoeren van de toepassing Peul, wordt het oude knoop punt verwijderd. Dit proces wordt herhaald totdat alle knoop punten in het cluster zijn bijgewerkt.
+Met een lijst met beschik bare versies voor uw AKS-cluster gebruikt u de opdracht [AZ AKS upgrade][az-aks-upgrade] . Tijdens het upgrade proces voegt AKS een nieuw buffer knooppunt toe (of net als veel knoop punten die zijn geconfigureerd voor [maximale piek spanning](#customize-node-surge-upgrade-preview)) aan het cluster waarop de opgegeven Kubernetes-versie wordt uitgevoerd. Vervolgens wordt een van de oude knoop punten [Cordon en][kubernetes-drain] verwerkt om de onderbreking van het uitvoeren van toepassingen tot een minimum te beperken (als u de maximale piek gebruikt, wordt de [Cordon en][kubernetes-drain] het verwerkings Stop net zo veel knoop punten als het aantal opgegeven buffer knooppunten). Wanneer het oude knoop punt volledig is ontslagen, wordt de installatie kopie van de nieuwe versie geschaald en wordt het knoop punt de buffer voor het volgende knoop punt wordt bijgewerkt. Dit proces wordt herhaald totdat alle knoop punten in het cluster zijn bijgewerkt. Aan het einde van het proces wordt het laatste geleegde knoop punt verwijderd, waarbij het bestaande aantal agent knooppunten behouden blijft.
 
 ```azurecli-interactive
 az aks upgrade \
