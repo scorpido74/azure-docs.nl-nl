@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/08/2019
+ms.date: 10/20/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: a88cf9981d4f3a69a503c9caa56be1b5f35029f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5eacd84d2ff37c10702896127adcb67f5459b6be
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86105180"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461665"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Azure Import/Export-service gebruiken om gegevens te importeren naar Azure Files
 
@@ -35,7 +35,7 @@ Voordat u een import taak maakt om gegevens over te dragen naar Azure Files, moe
     - Genereer een tracking nummer voor de export taak.
     - Elke taak moet een afzonderlijk traceringsnummer hebben. Meerdere taken met hetzelfde traceringsnummer worden niet ondersteund.
     - Als u geen draaggolf account hebt, gaat u naar:
-        - [Een FedEX-account maken](https://www.fedex.com/en-us/create-account.html)of
+        - [Een FedEx-account maken](https://www.fedex.com/en-us/create-account.html)of
         - [Maak een DHL-account](http://www.dhl-usa.com/en/express/shipping/open_account.html).
 
 
@@ -114,6 +114,8 @@ Voor extra voor beelden gaat u naar [voor beelden van logboek bestanden](#sample
 
 ## <a name="step-2-create-an-import-job"></a>Stap 2: een import taak maken
 
+### <a name="portal"></a>[Portal](#tab/azure-portal)
+
 Voer de volgende stappen uit om een import taak te maken in de Azure Portal.
 1. Meld u aan bij https://portal.azure.com/ .
 2. Ga naar **alle services > opslag > import/export-taken**.
@@ -161,6 +163,86 @@ Voer de volgende stappen uit om een import taak te maken in de Azure Portal.
     - Klik op **OK** om het maken van de import taak te volt ooien.
 
         ![Import taak maken-stap 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
+
+### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+
+Gebruik de volgende stappen om een import taak te maken in de Azure CLI.
+
+[!INCLUDE [azure-cli-prepare-your-environment-h3.md](../../../includes/azure-cli-prepare-your-environment-h3.md)]
+
+### <a name="create-a-job"></a>Een taak maken
+
+1. Gebruik de opdracht [AZ extension add](/cli/azure/extension#az_extension_add) om de extensie [AZ import-export](/cli/azure/ext/import-export/import-export) toe te voegen:
+
+    ```azurecli
+    az extension add --name import-export
+    ```
+
+1. U kunt een bestaande resource groep gebruiken of er een maken. Voer de opdracht [AZ Group Create](/cli/azure/group#az_group_create) uit om een resource groep te maken:
+
+    ```azurecli
+    az group create --name myierg --location "West US"
+    ```
+
+1. U kunt een bestaand opslag account gebruiken of er een maken. Als u een opslag account wilt maken, voert u de opdracht [AZ Storage account create](/cli/azure/storage/account#az_storage_account_create) uit:
+
+    ```azurecli
+    az storage account create -resource-group myierg -name myssdocsstorage --https-only
+    ```
+
+1. Als u een lijst wilt weer geven met de locaties waarnaar u schijven kunt verzenden, gebruikt u de opdracht [AZ import-export location](/cli/azure/ext/import-export/import-export/location#ext_import_export_az_import_export_location_list) :
+
+    ```azurecli
+    az import-export location list
+    ```
+
+1. Gebruik de opdracht [AZ import-export locatie weer geven](/cli/azure/ext/import-export/import-export/location#ext_import_export_az_import_export_location_show) om locaties op te halen voor uw regio:
+
+    ```azurecli
+    az import-export location show --location "West US"
+    ```
+
+1. Voer de volgende opdracht [AZ import-export Create](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_create) uit om een import taak te maken:
+
+    ```azurecli
+    az import-export create \
+        --resource-group myierg \
+        --name MyIEjob1 \
+        --location "West US" \
+        --backup-drive-manifest true \
+        --diagnostics-path waimportexport \
+        --drive-list bit-locker-key=439675-460165-128202-905124-487224-524332-851649-442187 \
+            drive-header-hash= drive-id=AZ31BGB1 manifest-file=\\DriveManifest.xml \
+            manifest-hash=69512026C1E8D4401816A2E5B8D7420D \
+        --type Import \
+        --log-level Verbose \
+        --shipping-information recipient-name="Microsoft Azure Import/Export Service" \
+            street-address1="3020 Coronado" city="Santa Clara" state-or-province=CA postal-code=98054 \
+            country-or-region=USA phone=4083527600 \
+        --return-address recipient-name="Gus Poland" street-address1="1020 Enterprise way" \
+            city=Sunnyvale country-or-region=USA state-or-province=CA postal-code=94089 \
+            email=gus@contoso.com phone=4085555555" \
+        --return-shipping carrier-name=FedEx carrier-account-number=123456789 \
+        --storage-account myssdocsstorage
+    ```
+
+   > [!TIP]
+   > In plaats van een e-mail adres voor één gebruiker op te geven, moet u een groeps-e-mail opgeven. Dit zorgt ervoor dat u meldingen ontvangt, zelfs als een beheerder deze verlaat.
+
+
+1. Gebruik de opdracht [AZ import-export List](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_list) om alle taken voor de resource groep myierg te bekijken:
+
+    ```azurecli
+    az import-export list --resource-group myierg
+    ```
+
+1. Voer de opdracht [AZ import-export update](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_update) uit om uw taak bij te werken of uw taak te annuleren:
+
+    ```azurecli
+    az import-export update --resource-group myierg --name MyIEjob1 --cancel-requested true
+    ```
+
+---
 
 ## <a name="step-3-ship-the-drives-to-the-azure-datacenter"></a>Stap 3: de stations naar het Azure-Data Center verzenden
 

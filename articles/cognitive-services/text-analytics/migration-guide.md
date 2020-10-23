@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 06/25/2020
+ms.date: 10/19/2020
 ms.author: aahi
-ms.openlocfilehash: 12c09ad8e1db3914263fcc864c9c2d09069d63a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 172e684c6edbab4d7d47c8cf78e35ae38de3a0af
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85412580"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461784"
 ---
 # <a name="migrate-to-version-3x-of-the-text-analytics-api"></a>Migreren naar versie 3. x van de Text Analytics-API
 
@@ -31,9 +31,14 @@ Sentimentanalyse in versie 2,1 retourneert sentiment scores tussen 0 en 1 voor e
 
 ## <a name="steps-to-migrate"></a>Te migreren stappen
 
-### <a name="rest-api"></a>REST-API
+### <a name="rest-api"></a>REST API
 
-Als uw toepassing het REST API gebruikt, werkt u het aanvraag eindpunt bij naar het v3-eind punt voor sentiment analyse. Bijvoorbeeld: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/sentiment` . U moet de toepassing ook bijwerken om de sentiment-labels te gebruiken die in het [JSON-antwoord](how-tos/text-analytics-how-to-sentiment-analysis.md#view-the-results)zijn geretourneerd. 
+Als uw toepassing het REST API gebruikt, werkt u het aanvraag eindpunt bij naar het v3-eind punt voor sentiment analyse. Bijvoorbeeld: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/sentiment` . U moet de toepassing ook bijwerken om de sentiment-labels te gebruiken die in de [API-reactie](how-tos/text-analytics-how-to-sentiment-analysis.md#view-the-results)worden geretourneerd. 
+
+Zie de referentie documentatie voor voor beelden van het JSON-antwoord.
+* [Versie 2.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)
+* [Versie 3.0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Sentiment) 
+* [Versie 3.1-preview](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/Sentiment)
 
 ### <a name="client-libraries"></a>Clientbibliotheken
 
@@ -50,7 +55,7 @@ In versie 2,1 gebruikt de Text Analytics-API één eind punt voor benoemde entit
 
 ## <a name="steps-to-migrate"></a>Te migreren stappen
 
-### <a name="rest-api"></a>REST-API
+### <a name="rest-api"></a>REST API
 
 Als uw toepassing het REST API gebruikt, werkt u het aanvraag eindpunt bij naar de V3-eind punten voor NER en/of entiteits koppeling.
 
@@ -60,7 +65,12 @@ Entiteiten koppelen
 NER
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/recognition/general`
 
-U moet uw toepassing ook bijwerken om de [entiteits categorieën](named-entity-types.md) te gebruiken die in het [JSON-antwoord](how-tos/text-analytics-how-to-entity-linking.md#view-results)worden geretourneerd.
+U moet uw toepassing ook bijwerken om de [entiteits categorieën](named-entity-types.md) te gebruiken die in de [API-reactie](how-tos/text-analytics-how-to-entity-linking.md#view-results)worden geretourneerd.
+
+Zie de referentie documentatie voor voor beelden van het JSON-antwoord.
+* [Versie 2.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
+* [Versie 3.0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/EntitiesRecognitionGeneral) 
+* [Versie 3.1-preview](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/EntitiesRecognitionGeneral)
 
 ### <a name="client-libraries"></a>Clientbibliotheken
 
@@ -75,9 +85,14 @@ De functie voor taal detectie is niet gewijzigd in v3 buiten de eindpunt versie,
 
 ## <a name="steps-to-migrate"></a>Te migreren stappen
 
-### <a name="rest-api"></a>REST-API
+### <a name="rest-api"></a>REST API
 
-Als uw toepassing het REST API gebruikt, werkt u het aanvraag eindpunt bij naar het v3-eind punt voor taal detectie. Bijvoorbeeld: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/languages` . U moet ook de toepassing bijwerken zodat deze wordt gebruikt `ConfidenceScore` in plaats van `score` in het [JSON-antwoord](how-tos/text-analytics-how-to-language-detection.md#step-3-view-the-results). 
+Als uw toepassing het REST API gebruikt, werkt u het aanvraag eindpunt bij naar het v3-eind punt voor taal detectie. Bijvoorbeeld: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/languages` . U moet ook de toepassing bijwerken zodat deze wordt gebruikt `ConfidenceScore` in plaats van `score` in de [reactie](how-tos/text-analytics-how-to-language-detection.md#step-3-view-the-results)van de API. 
+
+Zie de referentie documentatie voor voor beelden van het JSON-antwoord.
+* [Versie 2.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)
+* [Versie 3.0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages) 
+* [Versie 3,1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/Languages)
 
 ### <a name="client-libraries"></a>Clientbibliotheken
 
@@ -92,9 +107,14 @@ De functie voor het uitpakken van sleutel woorden is niet gewijzigd in v3 buiten
 
 ## <a name="steps-to-migrate"></a>Te migreren stappen
 
-### <a name="rest-api"></a>REST-API
+### <a name="rest-api"></a>REST API
 
 Als uw toepassing het REST API gebruikt, werkt u het aanvraag eindpunt bij naar het v3-eind punt voor het uitpakken van de sleutel woord groep. Bijvoorbeeld: `https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v3.0/keyPhrases`
+
+Zie de referentie documentatie voor voor beelden van het JSON-antwoord.
+* [Versie 2.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6)
+* [Versie 3.0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/KeyPhrases) 
+* [Versie 3,1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/KeyPhrases)
 
 ### <a name="client-libraries"></a>Clientbibliotheken
 
@@ -105,7 +125,6 @@ Als uw toepassing het REST API gebruikt, werkt u het aanvraag eindpunt bij naar 
 
 ## <a name="see-also"></a>Zie ook
 
-* [Naslag informatie over Text Analytics-API v2](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/)
 * [Wat is de Text Analytics-API?](overview.md)
 * [Taalondersteuning](language-support.md)
 * [Versiebeheer model](concepts/model-versioning.md)

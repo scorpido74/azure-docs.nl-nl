@@ -13,12 +13,12 @@ ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
 ms.custom: references_regions
-ms.openlocfilehash: c0d0e1c5f096a45c08265927a288b4ff56876d94
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 7a5157c955a51215a9e62711ebb7838b61fda496
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951550"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424269"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -164,7 +164,7 @@ De Log Analytics-werk ruimte moet in de volgende regio's bestaan:
 
 ### <a name="user-access-requirements"></a>Toegangs vereisten voor gebruikers
 
-Uw account moet lid zijn van een van de volgende ingebouwde Azure [-rollen](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json):
+Uw account moet lid zijn van een van de volgende [ingebouwde Azure-rollen](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json):
 
 |Implementatiemodel   | Rol                   |
 |---------          |---------               |

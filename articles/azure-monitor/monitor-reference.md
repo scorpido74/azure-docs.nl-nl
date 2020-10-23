@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 08/15/2020
-ms.openlocfilehash: d8c4eea10b0c2230e50b5ded710b3455539f6493
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 1681217c9e55b67ee2a6737aeece5303256bc1e6
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206030"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461801"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Wat wordt er bewaakt door Azure Monitor?:
 In dit artikel worden de verschillende toepassingen en services beschreven die door Azure Monitor worden bewaakt. 
@@ -55,7 +55,7 @@ De volgende tabel geeft een lijst van Azure-Services en de gegevens die ze in Az
 - Logboeken: de service ondersteunt Diagnostische instellingen waarmee de logboeken en metrische gegevens van het platform kunnen worden verzameld voor Azure Monitor Logboeken.
 - Inzicht: er is een inzicht beschikbaar voor de service die een aangepaste bewakings ervaring biedt voor de service.
 
-| Service | Metrische gegevens | Logboeken | Inzicht | Notities |
+| Service | Metrische gegevens | Logboeken | Inzicht | Opmerkingen |
 |:---|:---|:---|:---|:---|
 |Active Directory | Nee | Ja | [Ja](../active-directory/reports-monitoring/howto-use-azure-monitor-workbooks.md) |  |
 |Active Directory B2C | Nee | Nee | Nee |  |
@@ -77,7 +77,7 @@ De volgende tabel geeft een lijst van Azure-Services en de gegevens die ze in Az
 |Bastion | Nee | Nee | Nee |  |
 |Batch | Ja | Ja | Nee |  |
 |Batch AI | Nee | Nee | Nee |  |
-|Blockchain Service | Nee | Ja | Nee |  |
+|Blockchain-service | Nee | Ja | Nee |  |
 |Blueprints | Nee | Nee | Nee |  |
 |Bot-service | Nee | Nee | Nee |  |
 |Cloud Services | Ja | Ja | Nee | De agent die is vereist om het gast besturingssysteem en de werk stromen te bewaken.  |
@@ -135,7 +135,7 @@ De volgende tabel geeft een lijst van Azure-Services en de gegevens die ze in Az
 |Multi-Factor Authentication | Nee | Ja | Nee |  |
 |Network Watcher | Ja | Ja | Nee |  |
 |Notification Hubs | Ja | Nee | Nee |  |
-|Open gegevenssets | Nee | Nee | Nee |  |
+|Open Datasets | Nee | Nee | Nee |  |
 |Beleid | Nee | Nee | Nee |  |
 |Power BI Embedded | Ja | Ja | Nee |  |
 |Private Link | Nee | Nee | Nee |  |
@@ -149,7 +149,7 @@ De volgende tabel geeft een lijst van Azure-Services en de gegevens die ze in Az
 |Service Bus | Ja | Ja | Nee |  |
 |Service Fabric | Nee | Ja | Nee | De agent die is vereist om het gast besturingssysteem en de werk stromen te bewaken.  |
 |Aanmeldings Portal | Nee | Nee | Nee |  |
-|Site Recovery | Nee | Ja | Nee |  |
+|Siteherstel | Nee | Ja | Nee |  |
 |Lente-Cloud service | Nee | Nee | Nee |  |
 |Azure Synapse Analytics | Ja | Ja | Nee |  |
 |SQL Database | Ja | Ja | Nee |  |
@@ -164,11 +164,24 @@ De volgende tabel geeft een lijst van Azure-Services en de gegevens die ze in Az
 |Traffic Manager | Ja | Ja | Nee |  |
 |Universeel afdrukken | Nee | Nee | Nee |  |
 |Virtuele-machineschaalsets | Nee | Ja | [Ja](insights/vminsights-overview.md) | De agent die is vereist om het gast besturingssysteem en de werk stromen te bewaken. |
-|Virtuele machines | Ja | Ja | [Ja](insights/vminsights-overview.md) | De agent die is vereist om het gast besturingssysteem en de werk stromen te bewaken. |
+|Virtual Machines | Ja | Ja | [Ja](insights/vminsights-overview.md) | De agent die is vereist om het gast besturingssysteem en de werk stromen te bewaken. |
 |Virtual Network | Ja | Ja | [Ja](insights/network-insights-overview.md) |  |
 |Virtual Network-NSG-stroom logboeken | Nee | Ja | Nee |  |
 |VPN Gateway | Ja | Ja | Nee |  |
 |Windows Virtual Desktop | Nee | Nee | Nee |  |
+
+## <a name="virtual-machine-agents"></a>Virtuele machine-agents
+De volgende tabel geeft een lijst van de agents die gegevens kunnen verzamelen van het gast besturingssysteem van virtuele machines en te bewaken gegevens verzenden. Elke agent kan verschillende gegevens verzamelen en deze naar metrieken of Logboeken in Azure Monitor verzenden. 
+
+Zie [overzicht van Azure monitor-agents](platform/agents-overview.md) voor meer informatie over de gegevens die elke agent kan verzamelen.
+
+| Agent |  Metrische gegevens | Logboeken |
+|:---|:---|:---|:---|
+| [Azure Monitor-agent (preview-versie)](platform/azure-monitor-agent-overview.md) | Ja | Ja |
+| [Log Analytics-agent](platform/log-analytics-agent.md) | Nee | Ja|
+| [Diagnostische extensie](platform/diagnostics-extension-overview.md) | Ja | Nee |
+| [Telegraf-agent](platform/collect-custom-metrics-linux-telegraf.md) | Ja | Nee |
+| [Agent voor afhankelijkheden](insights/vminsights-enable-overview.md) | Nee | Ja |
 
 
 ## <a name="product-integrations"></a>Product integraties

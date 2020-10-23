@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e1cf9faeab60264d491539256828151e496ade8f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 031cbb48a7e0c572866dc591d26fb1e6b6b12dba
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91267496"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424721"
 ---
 # <a name="scenario-route-traffic-through-nvas---custom-preview"></a>Scenario: verkeer routeren via Nva's (preview)
 
@@ -24,25 +24,24 @@ Wanneer u werkt met virtuele WAN-hub routering, zijn er heel veel beschik bare s
 
 In dit scenario gebruiken we de naamgevings Conventie:
 
-* ' Service-VNet ' voor virtuele netwerken waarin gebruikers een NVA (VNet 4 in **afbeelding 1**) hebben geïmplementeerd om niet-Internet verkeer te controleren.
+* ' Spokes ' voor virtuele netwerken die zijn verbonden met de virtuele hub (VNet 1, VNet 2 en VNet 3 in **afbeelding 1**).
+* ' Service-VNet ' voor virtuele netwerken waarin gebruikers een NVA (VNet 4 in **afbeelding 1**) hebben geïmplementeerd om niet-Internet verkeer te controleren en mogelijk met algemene services die worden gebruikt door spokes.
 * ' DMZ VNet ' voor virtuele netwerken waarbij gebruikers een NVA hebben geïmplementeerd die moeten worden gebruikt voor het controleren van het Internet-gebonden verkeer (VNet 5 in **afbeelding 1**).
-* ' NVA spokes ' voor virtuele netwerken die zijn verbonden met een NVA VNet (VNet 1, VNet 2 en VNet 3 in **afbeelding 1**).
 * Hubs voor door micro soft beheerde virtuele WAN-hubs.
 
 De volgende verbindings matrix bevat een overzicht van de stromen die in dit scenario worden ondersteund:
 
 **Verbindings matrix**
 
-| Van          | Aan:|*NVA-spokes*|*Service-VNet*|*DMZ VNet*|*Statische vertakkingen*|
-|---|---|---|---|---|---|
-| **NVA-spokes**| &#8594;|      X |            X |   Peering |    Statisch    |
-| **Service-VNet**| &#8594;|    X |            X |      X    |      X       |
-| **DMZ VNet** | &#8594;|       X |            X |      X    |      X       |
-| **Vertakkingen** | &#8594;|  Statisch |            X |      X    |      X       |
+| Van          | Aan:|*Knooppunten*|*Service-VNet*|*Vertakkingen*|*Internet*|
+|---|---|:---:|:---:|:---:|:---:|:---:|
+| **Knooppunten**| &#8594;| rechtstreeks |rechtstreeks | Via service-VNet |Via DMZ VNet |
+| **Service-VNet**| &#8594;| rechtstreeks |n.v.t.| rechtstreeks | |
+| **Vertakkingen** | &#8594;| Via service-VNet |rechtstreeks| rechtstreeks |  |
 
-Elk van de cellen in de verbindings matrix beschrijft of een virtuele WAN-verbinding (de ' aan ' kant van de stroom, de rijkoppen) een bestemmings voorvoegsel (de ' aan '-zijde van de stroom, de kolom koppen cursief) voor een specifieke verkeers stroom leert. Een ' X ' betekent dat de connectiviteit systeem eigen wordt ondersteund door Virtual WAN, en ' static ' betekent dat de connectiviteit wordt verschaft door Virtual WAN met statische routes. Laten we de verschillende rijen in detail bekijken:
+Elk van de cellen in de verbindings matrix beschrijft of connectiviteit rechtstreeks via Virtual WAN of via een van de VNets met een NVA wordt uitgevoerd. Laten we de verschillende rijen in detail bekijken:
 
-* NVA spaken:
+* Knoop punten
   * Spokes bereiken rechtstreeks via virtuele WAN-hubs andere spokes.
   * Spokes krijgen verbindingen met vertakkingen via een statische route die verwijst naar het service-VNet. Ze moeten geen specifieke voor voegsels van de vertakkingen kennen (anders is dat iets meer specifiek en wordt de samen vatting overschreven).
   * Spokes verzenden via een directe VNet-peering Internet verkeer naar het DMZ VNet.
@@ -51,12 +50,12 @@ Elk van de cellen in de verbindings matrix beschrijft of een virtuele WAN-verbin
 * Het service-VNet is vergelijkbaar met een VNet voor gedeelde services dat bereikbaar moet zijn vanuit elk VNet en elke vertakking.
 * Het DMZ VNet hoeft niet echt verbinding te hebben via Virtual WAN, omdat het enige verkeer dat het ondersteunt, meer dan direct VNet-peerings zal zijn. We gebruiken echter hetzelfde connectiviteits model als voor de DMZ VNet om de configuratie te vereenvoudigen.
 
-Daarom biedt onze verbindings matrix ons drie verschillende verbindings patronen, die worden omgezet in drie route tabellen. De koppelingen met de verschillende VNets zijn als volgt:
+Onze connectiviteits matrix biedt ons drie afzonderlijke connectiviteits patronen, die worden omgezet in drie route tabellen. De koppelingen met de verschillende VNets zijn als volgt:
 
-* NVA spaken:
+* Knoop punten
   * Gekoppelde route tabel: **RT_V2B**
   * Door geven aan route tabellen: **RT_V2B** en **RT_SHARED**
-* NVA VNets (intern en Internet):
+* NVA VNets (Service VNet en DMZ VNet):
   * Gekoppelde route tabel: **RT_SHARED**
   * Door geven aan route tabellen: **RT_SHARED**
 * Sleutel

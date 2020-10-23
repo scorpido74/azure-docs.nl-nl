@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 10/09/2020
-ms.openlocfilehash: 8669330a8cfccea0dcc10c318c2be4acbcb7788c
-ms.sourcegitcommit: a75ca63da5c0cc2aff5fb131308853b9edb41552
+ms.openlocfilehash: 16dab7897fc41a97a8607df5a03281582377e1e4
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92169350"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424083"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Informatie over limieten en configuratie voor Azure Logic Apps
 
@@ -41,32 +41,31 @@ Dit zijn de limieten voor een definitie van een enkele logische app:
 
 <a name="run-duration-retention-limits"></a>
 
-## <a name="run-duration-and-retention-limits"></a>Limieten voor uitvoeringsduur en bewaarperiode
+## <a name="run-duration-and-retention-history-limits"></a>Limieten voor uitvoerings duur en bewaar periode
 
 Dit zijn de limieten voor het uitvoeren van een enkele logische app:
 
 | Naam | Limiet voor meerdere tenants | Limiet voor de integratie service omgeving | Opmerkingen |
 |------|--------------------|---------------------------------------|-------|
-| Uitvoeringsduur | 90 dagen | 366 dagen | De uitvoerings duur wordt berekend met behulp van de begin tijd van de uitvoering en de limiet die *tijdens het begin tijdstip* wordt opgegeven door de werk stroom instelling, de Bewaar periode voor de [**geschiedenis in dagen**](#change-duration). <p><p>Zie de duur van de [uitvoering wijzigen](#change-duration)als u de standaard limiet wilt wijzigen, 90 dagen. |
-| Bewaar periode in opslag uitvoeren | 90 dagen | 366 dagen | De retentie van de run wordt berekend met behulp van de begin tijd van de uitvoering en de limiet die is opgegeven *op het huidige tijdstip* door de werk stroom instelling, de Bewaar periode voor de [**geschiedenis in dagen uitvoeren**](#change-retention). Of een uitvoering is voltooid of een time-out heeft, de retentie berekening maakt altijd gebruik van de begin tijd van de uitvoering. Wanneer de duur van een uitvoering de *huidige* Bewaar limiet overschrijdt, wordt de uitvoering uit de geschiedenis van de uitvoeringen verwijderd. <p><p>Als u deze instelling wijzigt, wordt de huidige limiet altijd gebruikt voor het berekenen van de Bewaar periode, ongeacht de vorige limiet. Als u bijvoorbeeld de Bewaar limiet van 90 dagen tot 30 dagen vermindert, wordt een run die 60 dagen oud is verwijderd uit de geschiedenis van de uitvoeringen. Als u de retentie periode van 30 dagen tot 60 dagen verhoogt, wordt een run die 20 dagen oud is, in de geschiedenis van de uitvoering van een andere 40 dagen bewaard. <p><p>Als u de standaard limiet wilt wijzigen, 90 dagen, raadpleegt u [retentie voor het uitvoeren van wijzigingen in de opslag](#change-retention). |
+| Uitvoeringsduur | 90 dagen | 366 dagen | De uitvoerings duur wordt berekend op basis van de begin tijd van de uitvoering. |
+| Bewaar periode voor geschiedenis in opslag | 90 dagen | 366 dagen | Wanneer een uitvoering is voltooid of er een time-out optreedt, wordt het bewaren van de uitvoerings geschiedenis altijd berekend met behulp van de begin tijd van de uitvoering en de limiet die is opgegeven op de *huidige tijd* door de werk stroom instelling, de Bewaar periode voor de [**geschiedenis in dagen**](#change-retention). Als u deze instelling wijzigt, wordt de *huidige* limiet altijd gebruikt voor het berekenen van de Bewaar periode, ongeacht de vorige limiet. Wanneer de duur van een uitvoering de huidige limiet overschrijdt, wordt de uitvoering uit de geschiedenis van uitvoeringen verwijderd. <p><p>Stel dat u de limiet voor het bewaren van 90 dagen tot 30 dagen hebt beperkt. Een 60-daagse-oude uitvoering wordt verwijderd uit de uitvoerings geschiedenis. Als u de retentie periode van 30 dagen tot 60 dagen verhoogt, blijft de uitvoering van 20 dagen oud in de geschiedenis van de uitvoeringen voor een andere 40-dag. <p><p>Zie de [Bewaar periode voor de uitvoerings geschiedenis wijzigen in opslag](#change-retention)om de standaard limiet te wijzigen. dit is 90 dagen. |
 | Mini maal terugkeer patroon | 1 seconde | 1 seconde ||
 | Maximum interval van terugkeer patroon | 500 dagen | 500 dagen ||
 |||||
 
-<a name="change-duration"></a>
 <a name="change-retention"></a>
 
-### <a name="change-run-duration-and-run-retention-in-storage"></a>De uitvoerings duur wijzigen en de retentie in de opslag uitvoeren
+### <a name="change-run-history-retention-in-storage"></a>Bewaar periode voor uitvoerings geschiedenis in opslag wijzigen
 
-Voer de volgende stappen uit om de standaard limiet voor de uitvoerings duur te wijzigen en retentie in de opslag uit te voeren. Als u de maximum limiet wilt verhogen, [neemt u contact op met het Logic apps team](mailto://logicappsemail@microsoft.com) voor hulp bij uw vereisten.
+Als u de standaard limiet voor het bewaren van uitvoerings geschiedenis in de opslag wilt wijzigen, voert u de volgende stappen uit. Als u de maximum limiet wilt verhogen, [neemt u contact op met het Logic apps team](mailto://logicappsemail@microsoft.com) voor hulp bij uw vereisten.
 
 > [!NOTE]
 > Voor logische apps in azure met meerdere tenants is de standaard limiet van 90 dagen gelijk aan de maximum limiet. U kunt deze waarde alleen verlagen.
 > Voor Logic apps in een integratie service omgeving kunt u de standaard limiet van 90 dagen verlagen of verhogen.
 
-1. Ga naar [Azure Portal](https://portal.azure.com). Zoek en selecteer **Logic apps**in het zoekvak van de portal.
+1. Zoek en selecteer **Logic apps**in het zoekvak [Azure Portal](https://portal.azure.com) .
 
-1. Selecteer en open vervolgens uw logische app in de ontwerp functie voor logische apps.
+1. Zoek en selecteer uw logische app. Open uw logische app in de ontwerp functie voor logische apps.
 
 1. Selecteer **werk stroom instellingen**in het menu van de logische app.
 
@@ -346,7 +345,7 @@ In deze sectie worden alleen de inkomende IP-adressen voor de Azure Logic Apps-s
 | Central US | 13.67.236.76, 40.77.111.254, 40.77.31.87, 104.43.243.39 |
 | Azië - oost | 168.63.200.173, 13.75.89.159, 23.97.68.172, 40.83.98.194 |
 | VS - oost | 137.135.106.54, 40.117.99.79, 40.117.100.228, 137.116.126.165 |
-| VS - oost 2 | 40.84.25.234, 40.79.44.7, 40.84.59.136, 40.70.27.253 |
+| US - oost 2 | 40.84.25.234, 40.79.44.7, 40.84.59.136, 40.70.27.253 |
 | Frankrijk - centraal | 52.143.162.83, 20.188.33.169, 52.143.156.55, 52.143.158.203 |
 | Frankrijk - zuid | 52.136.131.145, 52.136.129.121, 52.136.130.89, 52.136.131.4 |
 | Duitsland - noord | 51.116.211.29, 51.116.208.132, 51.116.208.37, 51.116.208.64 |
@@ -410,7 +409,7 @@ In deze sectie vindt u de uitgaande IP-adressen voor de Azure Logic Apps-service
 | Central US | 13.67.236.125, 104.208.25.27, 40.122.170.198, 40.113.218.230, 23.100.86.139, 23.100.87.24, 23.100.87.56, 23.100.82.16 | 13.89.171.80 - 13.89.171.95, 40.122.49.51, 52.173.245.164, 52.173.241.27, 40.77.68.110, 13.89.178.64 - 13.89.178.95 |
 | Azië - oost | 13.75.94.173, 40.83.127.19, 52.175.33.254, 40.83.73.39, 65.52.175.34, 40.83.77.208, 40.83.100.69, 40.83.75.165 | 13.75.36.64 - 13.75.36.79, 23.99.116.181, 52.175.23.169, 13.75.110.131, 104.214.164.0 - 104.214.164.31 |
 | VS - oost | 13.92.98.111, 40.121.91.41, 40.114.82.191, 23.101.139.153, 23.100.29.190, 23.101.136.201, 104.45.153.81, 23.101.132.208 | 40.71.11.80 - 40.71.11.95, 40.71.249.205, 40.114.40.132, 40.71.249.139, 52.188.157.160, 40.71.15.160 - 40.71.15.191 |
-| VS - oost 2 | 40.84.30.147, 104.208.155.200, 104.208.158.174, 104.208.140.40, 40.70.131.151, 40.70.29.214, 40.70.26.154, 40.70.27.236 | 40.70.146.208 - 40.70.146.223, 52.232.188.154, 104.208.233.100, 104.209.247.23, 52.225.129.144, 40.65.220.25, 40.70.151.96 - 40.70.151.127 |
+| US - oost 2 | 40.84.30.147, 104.208.155.200, 104.208.158.174, 104.208.140.40, 40.70.131.151, 40.70.29.214, 40.70.26.154, 40.70.27.236 | 40.70.146.208 - 40.70.146.223, 52.232.188.154, 104.208.233.100, 104.209.247.23, 52.225.129.144, 40.65.220.25, 40.70.151.96 - 40.70.151.127 |
 | Frankrijk - centraal | 52.143.164.80, 52.143.164.15, 40.89.186.30, 20.188.39.105, 40.89.191.161, 40.89.188.169, 40.89.186.28, 40.89.190.104 | 40.79.130.208 - 40.79.130.223, 40.89.135.2, 40.89.186.239, 40.79.148.96 - 40.79.148.127 |
 | Frankrijk - zuid | 52.136.132.40, 52.136.129.89, 52.136.131.155, 52.136.133.62, 52.136.139.225, 52.136.130.144, 52.136.140.226, 52.136.129.51 | 40.79.178.240 - 40.79.178.255, 52.136.133.184, 52.136.142.154, 40.79.180.224 - 40.79.180.255 |
 | Duitsland - noord | 51.116.211.168, 51.116.208.165, 51.116.208.175, 51.116.208.192, 51.116.208.200, 51.116.208.222, 51.116.208.217, 51.116.208.51 | 51.116.211.212, 51.116.60.192 - 51.116.60.223, 51.116.59.16 - 51.116.60.31 |

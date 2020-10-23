@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-js
-ms.openlocfilehash: 486f026f0d9b325f8e17a040c69f9d3e1da9b359
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1d89def944529235a0141d7e700049f15d1d0a7
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91729029"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424976"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Verificatie instellen voor Azure Machine Learning resources en werk stromen
 
@@ -28,7 +28,7 @@ Over het algemeen zijn er twee soorten verificatie die u kunt gebruiken met Azur
 * __Interactief__: u gebruikt uw account in azure Active Directory om ofwel rechtstreeks te verifiëren, of om een token op te halen dat wordt gebruikt voor verificatie. Interactieve verificatie wordt gebruikt tijdens het experimenteren en iteratieve ontwikkeling. Of waar u de toegang tot resources (zoals een webservice) per gebruiker wilt beheren.
 * __Service-Principal__: u maakt een Service-Principal-account in azure Active Directory en gebruikt dit om een token te verifiëren of op te halen. Een service-principal wordt gebruikt wanneer u een geautomatiseerd proces nodig hebt om te verifiëren bij de service zonder tussen komst van de gebruiker. Een voor beeld: een script voor continue integratie en implementatie waarmee een model wordt getraind en getest wanneer de trainings code verandert. U kunt ook een Service-Principal gebruiken om een token op te halen voor verificatie bij een webservice, als u niet wilt dat de eind gebruiker van de service wordt geverifieerd. Of waar de verificatie van de eind gebruiker niet rechtstreeks wordt uitgevoerd met Azure Active Directory.
 
-Ongeacht welk verificatie type wordt gebruikt, wordt op rollen gebaseerd toegangs beheer (RBAC) gebruikt om het niveau van toegang dat is toegestaan voor de resources te bereiken. Een account dat wordt gebruikt om het toegangs token voor een geïmplementeerd model op te halen, heeft bijvoorbeeld alleen lees toegang tot de werk ruimte nodig. Zie [toegang tot Azure machine learning werk ruimte beheren](how-to-assign-roles.md)voor meer informatie over RBAC.
+Ongeacht het gebruikte verificatie type wordt Azure RBAC (op rollen gebaseerd toegangs beheer) gebruikt om het niveau van toegang dat is toegestaan voor de resources te bereiken. Een account dat wordt gebruikt om het toegangs token voor een geïmplementeerd model op te halen, heeft bijvoorbeeld alleen lees toegang tot de werk ruimte nodig. Zie [toegang tot Azure machine learning werk ruimte beheren](how-to-assign-roles.md)voor meer informatie over Azure RBAC.
 
 ## <a name="prerequisites"></a>Vereisten
 

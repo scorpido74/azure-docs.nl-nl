@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 7e54c89a609b39a88d2a34078aadd6bbe9308e39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f9568d175d564547e58bc3584174cb0f239dd49
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89268363"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425213"
 ---
 # <a name="use-powershell-to-create-an-azure-ad-app-to-use-with-the-azure-media-services-api"></a>Power shell gebruiken om een Azure AD-app te maken voor gebruik met de Azure Media Services-API
 
@@ -63,7 +63,7 @@ $Retries = 0;While ($NewRole -eq $null -and $Retries -le 6)
 Raadpleeg voor meer informatie de volgende artikelen:
 
 - [Azure PowerShell gebruiken om een service-principal te maken voor toegang tot resources](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)
-- [Role-Based Access Control beheren door gebruik te maken van Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)
+- [Azure-roltoewijzingen toevoegen of verwijderen met behulp van Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)
 - [Daemon-apps hand matig configureren met behulp van certificaten](https://github.com/azure-samples/active-directory-dotnetcore-daemon-v2)
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 80a7067b1d8d5417a6a448ee8a3be563344e9a72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67eba8bdc3bdc3b44a3f98692c8ffd7fb7958eb6
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89420248"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424052"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mysql"></a>Azure-beveiligings basislijn voor Azure Database for MySQL
 
@@ -544,7 +544,7 @@ Voor het onderliggende platform dat door micro soft wordt beheerd, behandelt mic
 
 **Verantwoordelijkheid**: gedeeld
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: op rollen gebaseerd toegangs beheer gebruiken voor het beheren van de toegang tot bronnen
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: Azure RBAC gebruiken om de toegang tot resources te beheren
 
 **Richt lijnen**: gebruik Azure op rollen gebaseerd toegangs beheer (Azure RBAC) voor het beheren van de toegang tot het Azure database for MySQL besturings vlak (bijvoorbeeld Azure Portal). Gebruik SQL-query's voor het maken van toegang tot gegevens vlak (binnen de data base zelf) en configureer gebruikers machtigingen. Azure RBAC heeft geen invloed op de gebruikers machtigingen binnen de data base.
 

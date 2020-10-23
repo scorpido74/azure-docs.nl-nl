@@ -4,12 +4,12 @@ description: Hier vindt u antwoorden op enkele veelgestelde vragen over de Azure
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: bdc0bdb5966445fe98b2f65bce552fe6dca493ea
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 816f64f9987abbdcd49de93b3bc218ec1606d9f3
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368975"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461648"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Veelgestelde vragen over de Azure VMware-oplossing
 
@@ -61,14 +61,14 @@ Met de nieuwe Azure VMware-oplossing beschikt micro soft en VMware over een dire
 
 #### <a name="are-red-hat-solutions-supported-on-azure-vmware-solution"></a>Worden Red Hat-oplossingen ondersteund op de Azure VMware-oplossing?
 
-Micro soft en Red Hat delen een geïntegreerd ondersteunings team met co-locatie dat een uniform contact punt biedt voor Red Hat-ecosystemen die worden uitgevoerd op het Azure-platform.  Net als andere Azure-platform services die met Red Hat Enterprise Linux werken, valt de Azure VMware-oplossing onder de Cloud toegang en het geïntegreerde ondersteunings paraplu, en wordt Red Hat Enterprise Linux ondersteund voor het uitvoeren van een Azure VMware-oplossing in Azure.
+Micro soft en Red Hat delen een geïntegreerd ondersteunings team dat een uniform contact punt biedt voor Red Hat-ecosystemen die worden uitgevoerd op het Azure-platform.  Net als andere Azure-platform services die met Red Hat Enterprise Linux werken, valt de Azure VMware-oplossing onder de Cloud toegang en het geïntegreerde ondersteunings paraplu, en wordt Red Hat Enterprise Linux ondersteund voor het uitvoeren van een Azure VMware-oplossing in Azure.
 
 #### <a name="is-vmware-hcx-enterprise-edition-available-and-if-so-how-much-does-it-cost"></a>Is VMware HCX Enter prise Edition beschikbaar, en zo ja, hoeveel kost het?
 
-VMware HCX Enterprise Edition (EE) is beschikbaar met Azure VMware Solution als een *preview*-functie/-service. Hoewel VMware HCX EE voor Azure VMware Solution zich in preview bevindt, is het een gratis functie/service en onderhevig aan de servicevoorwaarden van de preview-versie. Zodra de VMware HCX EE-service algemeen beschikbaar wordt, krijgt u een melding dat de facturering over 30 dagen wordt omgeschakeld. U hebt ook de mogelijkheid om de service uit te schakelen of u ervan af te melden.
+VMware HCX Enterprise Edition (EE) is beschikbaar met Azure VMware Solution als een *preview*-functie/-service. Hoewel VMware HCX EE voor de Azure VMware-oplossing in preview is, is het een gratis functie/service en onderhevig aan de voor waarden van de preview-versie van de service. Zodra de VMware HCX EE-service algemeen beschikbaar wordt, krijgt u een melding dat de facturering over 30 dagen wordt omgeschakeld. U kunt de service uitschakelen of u afmelden.
 
 #### <a name="can-azure-vmware-solution-vms-be-managed-by-vmrc"></a>Kunnen Vm's van Azure VMware-oplossingen worden beheerd door VMRC?
-Ja, op voor waarde dat het systeem waarop het is geïnstalleerd, toegang heeft tot de vCenter van de privécloud en dat deze open bare DNS gebruikt (zodat ESXi hostnamen kan worden omgezet).
+Ja, op voor waarde dat het systeem waarop het is geïnstalleerd, toegang kan krijgen tot de privécloud en open bare DNS gebruikt (zodat ESXi hostnamen kan worden omgezet).
 
 #### <a name="are-there-special-instructions-for-installing-and-using-vmrc-with-azure-vmware-solution-vms"></a>Zijn er speciale instructies voor het installeren en gebruiken van VMRC met virtuele machines met Azure VMware-oplossingen?
 Nee, gebruik de [instructies van VMware](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html) en voer de vereiste VM-vereisten in deze instructies uit. 
@@ -116,7 +116,7 @@ Net als we weten, moeten alle back-upoplossingen die gebruikmaken van VMware VAD
 
 Omdat deze back-upoplossingen worden geïnstalleerd en beheerd door klanten, kunnen ze contact met de desbetreffende ISV vinden voor ondersteuning. 
 
-#### <a name="what-is-the-correct-storage-policy-for-the-dedup-set-up"></a>Wat is het juiste opslag beleid voor het instellen van de ontdubbeling?
+#### <a name="what-is-the-correct-storage-policy-for-the-dedup-setup"></a>Wat is het juiste opslag beleid voor de instellingen voor de ontdubbeling?
 
 Gebruik het *thin_provision* -opslag beleid voor uw VM-sjabloon.  De standaard waarde is *thick_provision*.
 
@@ -239,7 +239,7 @@ U hebt een Azure-account in een Azure-abonnement nodig.
 * U hebt een [Azure Enterprise Agreement (EA)](../cost-management-billing/manage/ea-portal-agreements.md) met micro soft nodig.
 * U hebt een Azure-account in een Azure-abonnement nodig.
 
-Voordat u uw Azure VMware Solution-resource maakt, moet u een ondersteuningsticket indienen om uw knooppunten te laten toewijzen. Zodra het ondersteuningsteam uw aanvraag heeft ontvangen, duurt het maximaal vijf werkdagen om uw aanvraag te bevestigen en uw knooppunten toe te wijzen. Als u een bestaande privécloud van Azure VMware Solution hebt en u meer knooppunten wilt toewijzen, dan volgt u hetzelfde proces.
+Voordat u uw Azure VMware-oplossings resource maakt, moet u een ondersteunings ticket indienen om uw knoop punten toe te wijzen. Het duurt Maxi maal vijf werk dagen om uw aanvraag te bevestigen en uw knoop punten toe te wijzen. Als u een bestaande privécloud van Azure VMware Solution hebt en u meer knooppunten wilt toewijzen, dan volgt u hetzelfde proces.
 
 
 1. Maak in uw Azure Portal onder **Help en ondersteuning**een **[nieuwe ondersteunings aanvraag](https://rc.portal.azure.com/#create/Microsoft.Support)** en geef de volgende informatie op voor het ticket:

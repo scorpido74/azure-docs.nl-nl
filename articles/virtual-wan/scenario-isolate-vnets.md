@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f725932b30fad062123d6c752f2d563b84f98b2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5e2ce17be6d8a1fa82d8a92b9b788f0bd2a37b8
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91267632"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424742"
 ---
 # <a name="scenario-isolating-vnets"></a>Scenario: VNets isoleren
 
@@ -26,10 +26,10 @@ In dit scenario blijft de werk belasting binnen een bepaald VNet geïsoleerd en 
 
 | Van |   Tot |  *VNets* | *Vertakkingen* |
 | -------------- | -------- | ---------- | ---|
-| VNets     | &#8594;|           |     X    |
-| Vertakkingen   | &#8594;|    X     |     X    |
+| VNets     | &#8594;| Direct |   Direct    |
+| Vertakkingen   | &#8594;|  Direct  |   Direct    |
 
-In elk van de cellen in de vorige tabel wordt beschreven of een virtuele WAN-verbinding (de ' aan ' kant van de stroom, de rijkoppen) een voor voegsel van een bestemming (de ' aan '-zijde van de stroom, de kolom koppen in cursief) voor een specifieke verkeers stroom heeft, waarbij een ' X ' betekent dat de connectiviteit door Virtual WAN wordt verschaft.
+Elk van de cellen in de vorige tabel beschrijft of een virtuele WAN-verbinding (de ' aan '-zijde van de stroom, de rijkoppen) communiceert met een voor voegsel van de bestemming (de ' aan ' kant van de stroom, de kolom koppen cursief). In dit scenario zijn er geen firewalls of virtuele netwerk apparaten, waardoor communicatie rechtstreeks via Virtual WAN (dus het woord ' direct ' in de tabel) verloopt.
 
 Deze verbindings matrix bevat ons twee verschillende rijtypen, die worden omgezet in twee route tabellen. Virtuele WAN heeft al een standaard route tabel, dus er is een andere route tabel vereist. In dit voor beeld noemen we de route tabel **RT_VNET**.
 

@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/12/2020
 ms.custom: contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: e778538efe97266eb73f85e8548a9cd5ca1f53c4
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 0eb4f8a7994e7c1d04013e9c9cf92e604ef6a1a7
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341308"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424454"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Een Azure Machine Learning omgeving voor het afwijzen van interferentie beveiligen met virtuele netwerken
 
@@ -42,12 +42,12 @@ In dit artikel leert u hoe u de volgende bronnen voor het afwijzen van een virtu
 
 + Een bestaand virtueel netwerk en subnet voor gebruik met uw reken resources.
 
-+ Als u resources wilt implementeren in een virtueel netwerk of subnet, moet uw gebruikers account over machtigingen beschikken voor de volgende acties in op rollen gebaseerde toegangs beheer (RBAC) van Azure:
++ Als u resources wilt implementeren in een virtueel netwerk of subnet, moet uw gebruikers account over machtigingen beschikken voor de volgende acties in azure op rollen gebaseerd toegangs beheer (Azure RBAC):
 
     - ' Micro soft. Network/virtualNetworks/lid/Action ' op de virtuele netwerk resource.
     - ' Micro soft. Network/virtualNetworks/subnet/lid/Action ' op de bron van het subnet.
 
-    Zie voor meer informatie over RBAC met netwerken de [ingebouwde rollen voor netwerken](/azure/role-based-access-control/built-in-roles#networking)
+    Zie voor meer informatie over Azure RBAC met netwerken de [ingebouwde rollen voor netwerken](/azure/role-based-access-control/built-in-roles#networking)
 
 <a id="aksvnet"></a>
 

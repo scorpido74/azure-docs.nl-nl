@@ -11,49 +11,66 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/20/2020
+ms.date: 10/21/2020
 ms.author: memildin
-ms.openlocfilehash: 24e10dad6a4b9a6232ce74b5365d9a9df7860079
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 920f6cc7eaef6d25fa700e2f8ca8277efee671d1
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92339931"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425378"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Beveiligingsscore in Azure Security Center
 
 ## <a name="introduction-to-secure-score"></a>Inleiding tot beveiligde Score
 
-Azure Security Center heeft twee belang rijke doel stellingen: om u inzicht te geven in de huidige beveiligings situatie en om u te helpen uw beveiliging efficiënt en effectief te verbeteren. Het centrale aspect van Security Center waarmee u deze doelen kunt bereiken, is een veilige Score.
+Azure Security Center heeft twee hoofd doelen: 
+
+- om inzicht te krijgen in uw huidige beveiligings situatie
+- om u te helpen uw beveiliging efficiënt en effectief te verbeteren
+
+De centrale functie in Security Center waarmee u deze doelen kunt bereiken, is een **veilige Score**.
 
 Security Center controleert uw resources, abonnementen en organisatie doorlopend op beveiligingsproblemen. Vervolgens worden alle bevindingen tot één enkele score samengevoegd, zodat u in een oogopslag uw huidige beveiligingssituatie kunt zien: hoe hoger de score, hoe lager het geïdentificeerde risiconiveau is.
 
-De pagina beveiligde Score van Security Center omvat:
+De beveiligde score wordt weer gegeven op de Azure Portal pagina's als een percentage waarde, maar de onderliggende waarden worden ook duidelijk weer gegeven:
 
-- **De Score** -de beveiligde score wordt weer gegeven als een percentage waarde, maar de onderliggende waarden zijn ook duidelijk:
+:::image type="content" source="./media/secure-score-security-controls/single-secure-score-via-ui.png" alt-text="Algemene beveiligde Score zoals weer gegeven in de portal":::
 
-    [![Beveiligde Score weer gegeven als een percentage waarde met de onderliggende cijfers is te laat](media/secure-score-security-controls/secure-score-with-percentage.png)](media/secure-score-security-controls/secure-score-with-percentage.png#lightbox)
+Bekijk de pagina met aanbevelingen van Security Center voor de uitstaande acties die nodig zijn om uw score te verhogen om uw beveiliging te verbeteren. Elke aanbeveling bevat instructies om u te helpen bij het oplossen van het specifieke probleem.
 
-- **Beveiligings besturings elementen** : elk besturings element is een logische groep gerelateerde beveiligings aanbevelingen en weerspiegelt uw kwets bare aanvals oppervlakken. Een besturingselement is een reeks beveiligingsaanbevelingen met instructies die u helpen bij het implementeren van deze aanbevelingen. Uw score is alleen verbeterd wanneer u *alle* aanbevelingen voor één resource in een besturings element herstelt.
+Aanbevelingen zijn onderverdeeld in **beveiligings controles**. Elk besturings element is een logische groep gerelateerde beveiligings aanbevelingen en weerspiegelt uw kwets bare aanvals oppervlakken. Uw score is alleen verbeterd wanneer u *alle* aanbevelingen voor één resource in een besturings element herstelt. Als u wilt zien hoe goed uw organisatie elke afzonderlijke kwets baarheid beveiligt, controleert u de scores voor elk beveiligings beheer.
 
-    Als u onmiddellijk wilt zien hoe goed uw organisatie een afzonderlijke kwetsbaarheid beveiligt, controleert u de scores voor elk besturingselement voor beveiliging.
-
-    Zie [hoe uw beveiligde score wordt berekend](secure-score-security-controls.md#how-your-secure-score-is-calculated) hieronder voor meer informatie. 
-
-
->[!TIP]
-> Eerdere versies van Security Center toegewezen punten op het niveau van aanbeveling: wanneer u een aanbeveling voor een enkele resource hebt hersteld, is uw beveiligde Score verbeterd. Vandaag de dag is uw score alleen verbeterd als u *alle* aanbevelingen voor één resource in een besturings element herstelt. Uw score wordt dus alleen verbeterd wanneer u de beveiliging van een resource hebt verbeterd.
+Zie [hoe uw beveiligde score wordt berekend](secure-score-security-controls.md#how-your-secure-score-is-calculated) hieronder voor meer informatie. 
 
 
 ## <a name="access-your-secure-score"></a>Toegang tot uw beveiligde Score
 
-U kunt uw algemene beveiligde Score vinden, evenals uw score per abonnement, via de Azure Portal of via een programma met de Azure Security Center REST API.
+U kunt uw algemene beveiligde Score vinden, evenals uw score per abonnement, via de Azure Portal of via het programma, zoals beschreven in de volgende secties:
+
+- [Uw beveiligde Score ophalen uit de portal](#get-your-secure-score-from-the-portal)
+- [Uw beveiligde Score ophalen uit de REST API](#get-your-secure-score-from-the-rest-api)
+- [Uw beveiligde Score ophalen uit de Azure-resource grafiek (ARG)](#get-your-secure-score-from-azure-resource-graph-arg)
 
 ### <a name="get-your-secure-score-from-the-portal"></a>Uw beveiligde Score ophalen uit de portal
 
-Security Center wordt uw score prominent weer gegeven in de portal: het is het eerste wat wordt weer gegeven op de pagina overzicht. Als u op de pagina speciale beveiligde Score klikt, ziet u de score die is opgesplitst per abonnement. Klik op één abonnement om de gedetailleerde lijst met aanbevelingen met prioriteit weer te geven, en de mogelijke impact die ze herstellen op de Score van het abonnement.
+Security Center wordt uw score prominent weer gegeven in de portal: het is de eerste hoofd tegel van de Security Center overzichts pagina. Als u deze tegel selecteert, gaat u naar de pagina speciale beveiligde Score, waar u de score kunt zien die is opgesplitst per abonnement. Selecteer één abonnement voor een overzicht van de gedetailleerde lijst met aanbevelingen met prioriteit en de mogelijke gevolgen voor het oplossen van deze voor de Score van het abonnement.
 
-![Algemene beveiligde Score zoals weer gegeven in de portal](media/secure-score-security-controls/single-secure-score-via-ui.png)
+Voor samen vatting wordt uw beveiligde Score op de volgende locaties weer gegeven in de portal pagina's van Security Center.
+
+- In een tegel op het **overzicht** van Security Center (hoofd dashboard):
+
+    :::image type="content" source="./media/secure-score-security-controls/score-on-main-dashboard.png" alt-text="Algemene beveiligde Score zoals weer gegeven in de portal":::
+
+- Op de pagina speciale **beveiligde Score** :
+
+    :::image type="content" source="./media/secure-score-security-controls/score-on-dedicated-dashboard.png" alt-text="Algemene beveiligde Score zoals weer gegeven in de portal":::
+
+- Boven aan de pagina **aanbevelingen** :
+
+    :::image type="content" source="./media/secure-score-security-controls/score-on-recommendations-page.png" alt-text="Algemene beveiligde Score zoals weer gegeven in de portal":::
+
+
 
 ### <a name="get-your-secure-score-from-the-rest-api"></a>Uw beveiligde Score ophalen uit de REST API
 
@@ -62,6 +79,40 @@ U krijgt toegang tot uw score via de API voor beveiligde scores (momenteel in pr
 ![Het ophalen van een enkele beveiligde Score via de API](media/secure-score-security-controls/single-secure-score-via-api.png)
 
 Zie voor voor beelden van hulpprogram ma's die zijn gebouwd boven op de API voor beveiligde scores [het beveiligde Score gebied van onze github-Community](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score). 
+
+
+
+### <a name="get-your-secure-score-from-azure-resource-graph-arg"></a>Uw beveiligde Score ophalen uit de Azure-resource grafiek (ARG)
+
+Azure resource Graph biedt directe toegang tot resource gegevens in uw Cloud omgevingen met krachtige filters, groeperingen en sorteer mogelijkheden. Het is een snelle en efficiënte manier om via programma code of vanuit de Azure Portal informatie op te vragen over Azure-abonnementen. Meer [informatie over Azure resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/).
+
+Om toegang te krijgen tot de beveiligde score voor meerdere abonnementen met ARG:
+
+1. Open in de Azure Portal **Azure resource Graph Explorer**.
+
+    :::image type="content" source="./media/security-center-identity-access/opening-resource-graph-explorer.png" alt-text="Algemene beveiligde Score zoals weer gegeven in de portal" :::
+
+1. Voer uw Kusto-query in (met behulp van de voor beelden hieronder voor hulp).
+
+    - Met deze query worden de abonnements-ID, de huidige score in punten en als een percentage en de maximale score voor het abonnement geretourneerd. 
+
+        ```kusto
+        SecurityResources 
+        | where type == 'microsoft.security/securescores' 
+        | extend current = properties.score.current, max = todouble(properties.score.max)
+        | project subscriptionId, current, max, percentage = ((current / max)*100)
+        ```
+
+    - Met deze query wordt de status van alle beveiligings controles geretourneerd. Voor elk besturings element krijgt u het aantal slechte resources, de huidige score en de maximale score. 
+
+        ```kusto
+        SecurityResources 
+        | where type == 'microsoft.security/securescores/securescorecontrols'
+        | extend SecureControl = properties.displayName, unhealthy = properties.unhealthyResourceCount, currentscore = properties.score.current, maxscore = properties.score.max
+        | project SecureControl , unhealthy, currentscore, maxscore
+        ```
+
+1. Selecteer **query uitvoeren**.
 
 ## <a name="how-your-secure-score-is-calculated"></a>Hoe uw beveiligde score wordt berekend 
 
@@ -99,7 +150,7 @@ Aanbevelingen die als **Preview** zijn gemarkeerd, zijn niet opgenomen in de ber
 
 Een voorbeeld van een preview-aanbeveling:
 
-:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Aanbeveling met de preview-markering":::
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Algemene beveiligde Score zoals weer gegeven in de portal":::
 
 ## <a name="improve-your-secure-score"></a>Uw secure score verbeteren
 

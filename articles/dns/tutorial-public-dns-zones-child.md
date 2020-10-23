@@ -1,5 +1,5 @@
 ---
-title: Onderliggende Azure DNS-zones maken
+title: 'Zelfstudie: Onderliggende Azure DNS-zones maken'
 titleSuffix: Azure DNS
 description: Zelfstudie over het maken van onderliggende DNS-zones in de Azure-portal.
 author: jonbeck
@@ -10,12 +10,12 @@ ms.custom: ''
 ms.workload: infrastructure-services
 ms.date: 7/16/2020
 ms.author: jonbeck
-ms.openlocfilehash: 3f35d39634470ccacffa4d35c272a82725e9001c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c763f761d77ac05d9f6b45e5656436faa5697e88
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89080512"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310071"
 ---
 # <a name="tutorial-creating-a-new-child-dns-zone"></a>Zelfstudie: Een nieuwe onderliggende DNS-zone maken
 
