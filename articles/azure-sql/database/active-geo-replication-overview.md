@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/27/2020
-ms.openlocfilehash: bc5bfb7c9cadea7aaa9cdedb2a17943014c6ef59
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 344d4e6b57082eb9ccfcd0642732d05216ad3978
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124755"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426316"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>Actieve geo-replicatie-Azure SQL Database maken en gebruiken
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -83,7 +83,7 @@ Voor een echte bedrijfs continuïteit is het toevoegen van database redundantie 
 > De replay van het logboek wordt uitgesteld op de secundaire Data Base als er schema-updates zijn voor de primaire. Hiervoor is een schema vergrendeling vereist voor de secundaire data base.
 
 > [!IMPORTANT]
-> U kunt geo-replicatie gebruiken om een secundaire data base te maken in dezelfde regio als die van de primaire. U kunt deze secundaire gebruiken om taken te verdelen over een alleen-lezen werk belasting in dezelfde regio. Een secundaire data base in dezelfde regio biedt echter geen extra fout tolerantie en is daarom geen geschikt failover-doel voor herstel na nood gevallen. Er wordt ook geen isolatie van de beschik bare zone gegarandeerd. Gebruik bedrijfs kritieke of Premium-servicelaag met [zone-redundante configuratie](high-availability-sla.md#zone-redundant-configuration) om de isolatie van de beschik bare zone te garanderen.
+> U kunt geo-replicatie gebruiken om een secundaire data base te maken in dezelfde regio als die van de primaire. U kunt deze secundaire gebruiken om taken te verdelen over een alleen-lezen werk belasting in dezelfde regio. Een secundaire data base in dezelfde regio biedt echter geen extra fout tolerantie en is daarom geen geschikt failover-doel voor herstel na nood gevallen. Er wordt ook geen isolatie van de beschik bare zone gegarandeerd. Gebruik bedrijfs kritieke of Premium-servicelaag met [zone-redundante configuratie](high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability) of algemeen [zone met een redundante configuratie](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) van de servicelaag voor de beschik baarheid van de zone.
 >
 
 - **Geplande failover**

@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/28/2020
-ms.openlocfilehash: aef29eef7eb53c4cc4ffcc4926f9efe533374178
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5760d3daaa13a5ed16230e1ffb7fe3691455e09
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319449"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427040"
 ---
 # <a name="choose-between-the-vcore-and-dtu-purchasing-models---azure-sql-database-and-sql-managed-instance"></a>Kiezen tussen de vCore-en DTU-aankoop modellen-Azure SQL Database en SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -34,7 +34,7 @@ Er zijn twee aankoop modellen:
 
 In de volgende tabel en grafiek worden de vCore en de op DTU gebaseerde inkoop modellen vergeleken en tegengesteld:
 
-|**Aankoopmodel**|**Beschrijving**|**Ideaal voor**|
+|**Aankoopmodel**|**Deschription** (Beschrijving)|**Ideaal voor**|
 |---|---|---|
 |Op basis van DTU|Dit model is gebaseerd op een gebundelde meting van compute-, opslag-en I/O-resources. Rekengrootten worden uitgedrukt in DTU's voor afzonderlijke databases, en in EDTU's (Elastische Data Transaction Unit) voor elastische pools. Zie [Wat zijn DTU's en EDTU's](purchasing-models.md#dtu-based-purchasing-model) voor meer informatie over DTU's en EDTU's.|Klanten die eenvoudige, vooraf geconfigureerde resource opties willen|
 |op basis van vCore|Met dit model kunt u afzonderlijke reken-en opslag Resources kiezen. Met het op vCore gebaseerde aankoopmodel kunt u ook [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) gebruiken voor SQL Server, om kosten te besparen.|Klanten die flexibiliteit, controle en transparantie|
@@ -42,7 +42,7 @@ In de volgende tabel en grafiek worden de vCore en de op DTU gebaseerde inkoop m
 
 ![Prijs model vergelijking](./media/purchasing-models/pricing-model.png)
 
-Wilt u optimaliseren en op uw cloudverbruik besparen?
+Wilt u uw clouduitgaven optimaliseren en geld besparen?
 
 [!INCLUDE [cost-management-horizontal](../../../includes/cost-management-horizontal.md)]
 
@@ -72,7 +72,7 @@ Zie de pagina met [prijzen](https://azure.microsoft.com/pricing/details/sql-data
 
 Een virtuele kern (vCore) vertegenwoordigt een logische CPU en biedt u de mogelijkheid om te kiezen tussen generaties van hardware en fysieke kenmerken van de hardware (bijvoorbeeld het aantal kernen, het geheugen en de opslag grootte). Het vCore-inkoop model biedt u flexibiliteit, controle, transparantie van het gebruik van afzonderlijke bronnen en een eenvoudige manier om on-premises werkbelasting vereisten te vertalen naar de Cloud. Met dit model kunt u reken-, geheugen-en opslag Resources kiezen op basis van de behoeften van uw werk belasting.
 
-In het op vCore gebaseerde aankoop model kunt u kiezen tussen de [Algemeen](high-availability-sla.md#basic-standard-and-general-purpose-service-tier-availability) -en [bedrijfskritiek](high-availability-sla.md#premium-and-business-critical-service-tier-availability) -service lagen voor SQL database en SQL Managed instance.  Voor afzonderlijke data bases kunt u ook de [grootschalige-servicelaag](service-tier-hyperscale.md)kiezen.
+In het op vCore gebaseerde aankoop model kunt u kiezen tussen de [Algemeen](high-availability-sla.md#basic-standard-and-general-purpose-service-tier-locally-redundant-availability) -en [bedrijfskritiek](high-availability-sla.md#premium-and-business-critical-service-tier-locally-redundant-availability) -service lagen voor SQL database en SQL Managed instance.  Voor afzonderlijke data bases kunt u ook de [grootschalige-servicelaag](service-tier-hyperscale.md)kiezen.
 
 Met het op vCore gebaseerde aankoop model kunt u afzonderlijke reken-en opslag Resources kiezen, de on-premises prestaties afstemmen en de prijs optimaliseren. In het op vCore gebaseerde aankoop model betaalt u voor:
 

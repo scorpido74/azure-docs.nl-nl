@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/10/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f6b53efdf49538476821ddeaed9bbf4278af0728
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e48d14fae4f62b92b5a8d08f83fea6d2e2ed3fe
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542407"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424947"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-cli-and-rest-api"></a>Lees replica's maken en beheren in Azure Database for MariaDB met behulp van de Azure CLI en REST API
 
@@ -23,7 +23,7 @@ U kunt met behulp van de Azure CLI Lees replica's maken en beheren.
 
 ### <a name="prerequisites"></a>Vereisten
 
-- [Installeer Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [Installeer Azure CLI 2.0](/cli/azure/install-azure-cli?view=azure-cli-latest)
 - Een [Azure database for MariaDB-server](quickstart-create-mariadb-server-database-using-azure-portal.md) die wordt gebruikt als de bron server. 
 
 > [!IMPORTANT]
@@ -42,9 +42,9 @@ az mariadb server replica create --name mydemoreplicaserver --source-server myde
 
 Voor de `az mariadb server replica create` opdracht zijn de volgende para meters vereist:
 
-| Instelling | Voorbeeldwaarde | Beschrijving  |
+| Instelling | Voorbeeldwaarde | Beschrijving  |
 | --- | --- | --- |
-| resource-group |  myResourceGroup |  De resource groep waar de replica-server wordt gemaakt.  |
+| resource-group |  myResourceGroup |  De resource groep waar de replica-server wordt gemaakt.  |
 | naam | mydemoreplicaserver | De naam van de nieuwe replica server die wordt gemaakt. |
 | source-server | mydemoserver | De naam of ID van de bestaande bron server waaruit moet worden gerepliceerd. |
 
@@ -72,9 +72,9 @@ az mariadb server replica list --server-name mydemoserver --resource-group myres
 
 Voor de `az mariadb server replica list` opdracht zijn de volgende para meters vereist:
 
-| Instelling | Voorbeeldwaarde | Beschrijving  |
+| Instelling | Voorbeeldwaarde | Beschrijving  |
 | --- | --- | --- |
-| resource-group |  myResourceGroup |  De resource groep waar de replica-server wordt gemaakt.  |
+| resource-group |  myResourceGroup |  De resource groep waar de replica-server wordt gemaakt.  |
 | servernaam | mydemoserver | De naam of ID van de bron server. |
 
 ### <a name="stop-replication-to-a-replica-server"></a>Replicatie naar een replica server stoppen
@@ -90,9 +90,9 @@ az mariadb server replica stop --name mydemoreplicaserver --resource-group myres
 
 Voor de `az mariadb server replica stop` opdracht zijn de volgende para meters vereist:
 
-| Instelling | Voorbeeldwaarde | Beschrijving  |
+| Instelling | Voorbeeldwaarde | Beschrijving  |
 | --- | --- | --- |
-| resource-group |  myResourceGroup |  De resource groep waar de replica-server bestaat.  |
+| resource-group |  myResourceGroup |  De resource groep waar de replica-server bestaat.  |
 | naam | mydemoreplicaserver | De naam van de replica server waarvoor replicatie moet worden gestopt. |
 
 ### <a name="delete-a-replica-server"></a>Een replica server verwijderen
@@ -114,7 +114,7 @@ Als u een bron server wilt verwijderen, kunt u de opdracht **[AZ mariadb server 
 az mariadb server delete --resource-group myresourcegroup --name mydemoserver
 ```
 
-## <a name="rest-api"></a>REST-API
+## <a name="rest-api"></a>REST API
 U kunt met behulp van de [Azure rest API](/rest/api/azure/)Lees replica's maken en beheren.
 
 ### <a name="create-a-read-replica"></a>Een leesreplica maken

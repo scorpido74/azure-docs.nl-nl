@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e661485e58c7e00c4eee41d808f727153a7761c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb883b70d1ae9f2894c7679633a586586922aa18
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86525038"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92419934"
 ---
 # <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>Back-ups maken van werkbelasting Vm's op CloudSimple Privécloud met Veeam B&R
 
@@ -56,7 +56,7 @@ Voor omgevingen met minder dan 30 TB om een back-up te maken, raadt CloudSimple 
 * Een op Linux gebaseerde primaire back-upopslagplaats in azure die is geconfigureerd als een doel voor back-uptaken.
 * `azcopy` wordt gebruikt om de gegevens van de primaire back-upopslagplaats te kopiëren naar een Azure-Blob-container die wordt gerepliceerd naar een andere regio.
 
-![Basis implementatie scenario's](media/veeam-basicdeployment.png)
+![Diagram waarin de basis scenario's voor Veeam-implementaties worden weer gegeven.](media/veeam-basicdeployment.png)
 
 **Geavanceerde implementatie**
 
@@ -260,7 +260,7 @@ Maak een firewall regel met om de Veeam-back-upserver toe te staan een uitgaande
 
 Als u de bevoegdheden wilt deescaleren, raadpleegt u [bevoegdheden deescaleren](escalate-private-cloud-privileges.md#de-escalate-privileges).
 
-## <a name="references"></a>Referenties
+## <a name="references"></a>Verwijzingen
 
 ### <a name="cloudsimple-references"></a>CloudSimple-verwijzingen
 
@@ -287,7 +287,7 @@ Als u de bevoegdheden wilt deescaleren, raadpleegt u [bevoegdheden deescaleren](
 ### <a name="azure-references"></a>Azure-verwijzingen
 
 * [Een virtuele netwerk gateway configureren voor ExpressRoute met behulp van de Azure Portal](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)
-* [Een VNet verbinden met een circuit-ander abonnement](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md#connect-a-vnet-to-a-circuit---different-subscription)
+* [Een VNet verbinden met een circuit - ander abonnement](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md#connect-a-vnet-to-a-circuit---different-subscription)
 * [Een virtuele Linux-machine maken in de Azure Portal](../virtual-machines/linux/quick-create-portal.md)
 * [Een beheerde gegevens schijf koppelen aan een virtuele Windows-machine in de Azure Portal](../virtual-machines/windows/attach-managed-disk-portal.md)
 * [Aan de slag met Azure Storage-video](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage)

@@ -7,12 +7,12 @@ ms.topic: how-to
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: fb3a3ab5339186d8fa4e347d9d13e66940457f8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6bd43f89ff6e341756c1706eb96d07510c6fb1a4
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710716"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428211"
 ---
 # <a name="create-an-azure-application-offer"></a>Een Azure-toepassingsaanbieding maken
 
@@ -328,16 +328,16 @@ Nadat u hebt gemaakt, ziet u de namen van uw plannen, Id's, plan type, Beschik b
 
 ### <a name="create-new-plan"></a>Nieuw plan maken
 
-***Plan-id*** : Maak een unieke plan-id voor elk abonnement in deze aanbieding. Deze ID is zichtbaar voor klanten in de product-URL.  Gebruik alleen kleine letters, alfanumerieke tekens, streepjes of onderstrepingen. Voor deze abonnement-ID zijn Maxi maal 50 tekens toegestaan. Deze ID kan niet worden gewijzigd nadat de maken is geselecteerd.
+**_Plan-id_*_: Maak een unieke plan-id voor elk abonnement in deze aanbieding. Deze ID is zichtbaar voor klanten in de product-URL.  Gebruik alleen kleine letters, alfanumerieke tekens, streepjes of onderstrepingen. Voor deze abonnement-ID zijn Maxi maal 50 tekens toegestaan. Deze ID kan niet worden gewijzigd nadat de maken is geselecteerd.
 
-***Plan naam*** : klanten krijgen deze naam te zien wanneer ze bepalen welk abonnement binnen uw aanbieding moet worden geselecteerd. Maak in deze aanbieding een unieke aanbiedings naam voor elk abonnement. De naam van het abonnement wordt gebruikt om software-abonnementen te onderscheiden die deel kunnen uitmaken van dezelfde aanbieding (bijvoorbeeld aanbiedings naam: Windows Server; abonnementen: Windows Server 2016, Windows Server 2019).
+_*_Plan naam_*_ : klanten krijgen deze naam te zien wanneer ze bepalen welk abonnement binnen uw aanbieding moet worden geselecteerd. Maak in deze aanbieding een unieke aanbiedings naam voor elk abonnement. De naam van het abonnement wordt gebruikt om software-abonnementen te onderscheiden die deel kunnen uitmaken van dezelfde aanbieding (bijvoorbeeld aanbiedings naam: Windows Server; abonnementen: Windows Server 2016, Windows Server 2019).
 
 ### <a name="plan-setup"></a>Installatie plannen
 
 Op dit tabblad kunt u de configuratie op hoog niveau voor het type abonnement instellen, ongeacht of de pakketten van een ander abonnement opnieuw worden gebruikt en op welke Clouds het plan beschikbaar moet zijn. Uw antwoorden op dit tabblad beïnvloeden welke velden worden weer gegeven op andere tabbladen voor hetzelfde abonnement.
 
 #### <a name="plan-type"></a>Plantype
-Selecteer het type abonnement voor uw aanbieding. Een **oplossings sjabloon** plan wordt volledig door de klant beheerd. Met een **beheerd toepassings** abonnement kunnen uitgevers de toepassing namens de klant beheren. Zie [typen Azure-toepassings plannen](#types-of-azure-application-plans)voor meer informatie.
+Selecteer het type abonnement voor uw aanbieding. Een _*oplossings sjabloon** plan wordt volledig door de klant beheerd. Met een **beheerd toepassings** abonnement kunnen uitgevers de toepassing namens de klant beheren. Zie [typen Azure-toepassings plannen](#types-of-azure-application-plans)voor meer informatie.
 
 #### <a name="re-use-technical-configuration"></a>Technische configuratie opnieuw gebruiken
 
@@ -508,7 +508,7 @@ Geef een HTTPS-webhook-eind punt op om meldingen over alle ruwe bewerkingen op b
 
 Selecteer deze optie om op te geven welke acties klanten kunnen uitvoeren op de beheerde resources naast de `*/read` acties die standaard beschikbaar zijn.
 
-Geef een lijst van de aanvullende acties die u uw klant wilt laten uitvoeren, gescheiden door punt komma's.  Zie voor meer informatie [over het weigeren van toewijzingen voor Azure-resources](../../role-based-access-control/deny-assignments.md). Zie [Bewerkingen voor de resourceprovider van Azure Resource Manager](../../role-based-access-control/resource-provider-operations.md) voor beschikbare acties. Als u bijvoorbeeld wilt toestaan dat consumenten virtuele machines opnieuw opstarten, moet u `Microsoft.Compute/virtualMachines/restart/action` toevoegen aan de toegestane acties.
+Geef een lijst van de aanvullende acties die u uw klant wilt laten uitvoeren, gescheiden door punt komma's.  Zie voor meer informatie [over het weigeren van toewijzingen voor Azure-resources](../../role-based-access-control/deny-assignments.md). Zie [Azure resource provider-bewerkingen](../../role-based-access-control/resource-provider-operations.md)voor beschik bare acties. Als u bijvoorbeeld wilt toestaan dat consumenten virtuele machines opnieuw opstarten, moet u `Microsoft.Compute/virtualMachines/restart/action` toevoegen aan de toegestane acties.
 
 #### <a name="global-azure--azure-government-cloud"></a>Wereld wijd Azure/Azure Government-Cloud
 
@@ -518,7 +518,7 @@ Geef aan wie beheer toegang moet hebben tot deze beheerde toepassing in elke ond
 
 **Autorisaties** : voeg de Azure Active Directory object-id toe van de gebruiker, groep of toepassing waaraan u machtigingen wilt verlenen voor de beheerde resource groep. Identificeer de gebruiker op basis van de principal-ID, die u kunt vinden op de [blade Azure Active Directory gebruikers op de Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers).
 
-Selecteer voor elke principal een van de ingebouwde Azure AD-rollen uit de lijst (eigenaar of bijdrager). De rol die u selecteert, beschrijft de machtigingen die de principal heeft op de resources in het abonnement van de klant. Zie [Ingebouwde rollen in Azure](../../role-based-access-control/built-in-roles.md) voor meer informatie. Zie [aan de slag met RBAC in de Azure Portal](../../role-based-access-control/overview.md)voor meer informatie over op rollen gebaseerd toegangs beheer (RBAC).
+Selecteer voor elke principal een van de ingebouwde Azure AD-rollen uit de lijst (eigenaar of bijdrager). De rol die u selecteert, beschrijft de machtigingen die de principal heeft op de resources in het abonnement van de klant. Zie [Ingebouwde rollen in Azure](../../role-based-access-control/built-in-roles.md) voor meer informatie. Zie [Wat is Azure RBAC](../../role-based-access-control/overview.md)? voor meer informatie over toegangs beheer op basis van rollen (Azure RBAC).
 
 >[!Note]
 >Hoewel u Maxi maal 100 autorisaties per Cloud kunt toevoegen, is het over het algemeen eenvoudiger om een Active Directory gebruikers groep te maken en de ID op te geven in de principal-ID. Hierdoor kunt u meer gebruikers toevoegen aan de beheer groep nadat het plan is geïmplementeerd en de nood zaak voor het bijwerken van het plan beperken om meer autorisaties toe te voegen.

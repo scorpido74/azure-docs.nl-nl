@@ -11,17 +11,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein
 ms.date: 09/03/2020
-ms.openlocfilehash: bd393a897052dd0bd49851eee424c99ad1fcfb1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbde77de0ad8698ff82b80b440ae1d4bdcae1f36
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319423"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427003"
 ---
 # <a name="use-read-only-replicas-to-offload-read-only-query-workloads"></a>Alleen-lezen replica's gebruiken om werk belastingen met alleen-lezen query's te offloaden
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Als onderdeel van een [architectuur met hoge Beschik baarheid](high-availability-sla.md#premium-and-business-critical-service-tier-availability)wordt elke afzonderlijke Data Base, elastische pool-data base en een beheerd exemplaar in de Premium-en bedrijfskritiek-servicelaag automatisch ingericht met een primaire replica met het kenmerk alleen-lezen en enkele secundaire alleen-lezen replica's. De secundaire replica's worden ingericht met dezelfde reken grootte als de primaire replica. Met de functie voor het *lezen van scale-out* kunt u alleen-lezen workloads offloaden met behulp van de reken capaciteit van een van de alleen-lezen replica's, in plaats van deze op te starten in de replica lezen-schrijven. Op deze manier kunnen bepaalde alleen-lezen workloads worden geïsoleerd van de werk belastingen voor lezen en schrijven. Dit heeft geen invloed op de prestaties. De functie is bedoeld voor de toepassingen die logisch gescheiden alleen-lezen werk belastingen bevatten, zoals analyses. In de service lagen Premium en Bedrijfskritiek kunnen toepassingen prestatie voordelen krijgen met behulp van deze extra capaciteit zonder extra kosten.
+Als onderdeel van een [architectuur met hoge Beschik baarheid](high-availability-sla.md#premium-and-business-critical-service-tier-locally-redundant-availability)wordt elke afzonderlijke Data Base, elastische pool-data base en een beheerd exemplaar in de Premium-en bedrijfskritiek-servicelaag automatisch ingericht met een primaire replica met het kenmerk alleen-lezen en enkele secundaire alleen-lezen replica's. De secundaire replica's worden ingericht met dezelfde reken grootte als de primaire replica. Met de functie voor het *lezen van scale-out* kunt u alleen-lezen workloads offloaden met behulp van de reken capaciteit van een van de alleen-lezen replica's, in plaats van deze op te starten in de replica lezen-schrijven. Op deze manier kunnen bepaalde alleen-lezen workloads worden geïsoleerd van de werk belastingen voor lezen en schrijven. Dit heeft geen invloed op de prestaties. De functie is bedoeld voor de toepassingen die logisch gescheiden alleen-lezen werk belastingen bevatten, zoals analyses. In de service lagen Premium en Bedrijfskritiek kunnen toepassingen prestatie voordelen krijgen met behulp van deze extra capaciteit zonder extra kosten.
 
 De functie *scale-out lezen* is ook beschikbaar in de grootschalige, wanneer ten minste één secundaire replica is gemaakt. Meerdere secundaire replica's kunnen worden gebruikt voor werk belastingen met alleen-lezen taak verdeling waarvoor meer resources nodig zijn dan beschikbaar zijn op één secundaire replica.
 
@@ -166,7 +166,7 @@ Als u het lezen van uitschalen voor een bestaande data base opnieuw wilt inschak
 Set-AzSqlDatabase -ResourceGroupName <resourceGroupName> -ServerName <serverName> -DatabaseName <databaseName> -ReadScale Enabled
 ```
 
-### <a name="rest-api"></a>REST-API
+### <a name="rest-api"></a>REST API
 
 Als u een Data Base met lees uitschalen wilt maken of de instelling voor een bestaande Data Base wilt wijzigen, gebruikt u de volgende methode waarbij de `readScale` eigenschap is ingesteld op `Enabled` of `Disabled` , zoals in de volgende voorbeeld aanvraag.
 

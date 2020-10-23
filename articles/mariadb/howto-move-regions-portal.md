@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/29/2020
-ms.openlocfilehash: b2e4bc71a0883c6fef6f0115080a79a74ced92b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75fabeeb7fa879a0f2843538d34f85e5ccec40e4
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542424"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425905"
 ---
 # <a name="move-an-azure-database-for-mariadb-server-to-another-region-by-using-the-azure-portal"></a>Een Azure Database for MariaDB-server naar een andere regio verplaatsen met behulp van de Azure Portal
 
@@ -21,7 +21,7 @@ Er zijn verschillende scenario's voor het verplaatsen van een bestaande Azure Da
 U kunt een Azure Database for MariaDB [Kruis regio lezen replica](concepts-read-replicas.md#cross-region-replication) gebruiken om de overgang naar een andere regio te volt ooien. Als u dit wilt doen, maakt u eerst een lees replica in de doel regio. Stop vervolgens de replicatie naar de server voor het lezen van replica's om een zelfstandige server te maken die zowel lees-als schrijf verkeer accepteert. 
 
 > [!NOTE]
-> Dit artikel richt zich op het verplaatsen van uw server naar een andere regio. Als u uw server wilt verplaatsen naar een andere resource groep of een ander abonnement, raadpleegt u het artikel over [verplaatsen](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription) . 
+> Dit artikel richt zich op het verplaatsen van uw server naar een andere regio. Als u uw server wilt verplaatsen naar een andere resource groep of een ander abonnement, raadpleegt u het artikel over [verplaatsen](../azure-resource-manager/management/move-resource-group-and-subscription.md) . 
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -33,7 +33,7 @@ U kunt een Azure Database for MariaDB [Kruis regio lezen replica](concepts-read-
 
 Als u in de doel regio een cross-Region replica server wilt maken met behulp van de Azure Portal, gebruikt u de volgende stappen:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 1. Selecteer de bestaande Azure Database for MariaDB-server die u wilt gebruiken als de bron server. Met deze actie wordt de pagina **overzicht** geopend.
 1. Selecteer **replicatie** in het menu onder **instellingen**.
 1. Selecteer **replica toevoegen**.

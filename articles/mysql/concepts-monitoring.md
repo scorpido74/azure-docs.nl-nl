@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.custom: references_regions
-ms.date: 8/13/2020
-ms.openlocfilehash: 9e1bd3f555873503aa1f6ed9c804aced3620fb9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: 4589687593abbe5667aa4b21b1361b68e4bed07f
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627513"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428123"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>Bewaking in Azure Database for MySQL
 Het bewaken van gegevens over uw servers helpt u bij het oplossen en optimaliseren van uw werk belasting. Azure Database for MySQL biedt diverse metrische gegevens die inzicht geven in het gedrag van uw server.
@@ -42,7 +42,7 @@ Deze metrische gegevens zijn beschikbaar voor Azure Database for MySQL:
 |backup_storage_used|Gebruikte back-upopslag|Bytes|De hoeveelheid back-upopslag die wordt gebruikt. Deze waarde vertegenwoordigt de som van de opslag die wordt gebruikt door alle back-ups van de volledige data base, differentiële back-ups en logboek back-ups die worden bewaard op basis van de Bewaar periode voor back-ups die is ingesteld voor de server. De frequentie van de back-ups wordt beheerd door de service en uitgelegd in het [artikel concepten](concepts-backup.md). Voor geo-redundante opslag is het gebruik van back-upopslag twee keer zo dat van de lokaal redundante opslag.|
 
 ## <a name="server-logs"></a>Serverlogboeken
-U kunt langzame query-en controle logboek registratie inschakelen op uw server. Deze logboeken zijn ook beschikbaar via Diagnostische logboeken van Azure in Azure Monitor-logboeken, Event Hubs en opslag account. Ga voor meer informatie over logboek registratie naar de artikelen [audit logs](concepts-audit-logs.md) en [Slow query logs](concepts-server-logs.md) .
+U kunt langzame query-en controle logboek registratie inschakelen op uw server. Deze logboeken zijn ook beschikbaar via Diagnostische logboeken van Azure in Azure Monitor-logboeken, Event Hubs en opslag account. Ga voor meer informatie over logboek registratie naar de artikelen [audit logs](concepts-audit-logs.md) en [Slow query logs](concepts-server-logs.md) .
 
 ## <a name="query-store"></a>Query Store
 [Query Store](concepts-query-store.md) is een functie waarmee de query prestaties in de loop van de tijd worden bijgehouden, inclusief query's in runtime-statistieken en wacht gebeurtenissen. De functie bewaart query runtime-prestatie gegevens in het **MySQL** -schema. U kunt het verzamelen en opslaan van gegevens beheren via verschillende configuratie knoppen.
@@ -55,30 +55,12 @@ De functie voor [prestatie aanbevelingen](concepts-performance-recommendations.m
 
 ## <a name="planned-maintenance-notification"></a>Melding over gepland onderhoud
 
-Met **geplande onderhouds meldingen** kunt u waarschuwingen ontvangen voor gepland onderhoud naar uw Azure database for MySQL. Deze meldingen zijn geïntegreerd met [het geplande onderhoud van service Health](../service-health/overview.md) en bieden u de mogelijkheid om het geplande onderhoud voor uw abonnementen op één plek weer te geven. Het helpt ook om de melding te schalen naar de juiste doel groep voor verschillende resource groepen, omdat u mogelijk verschillende contact personen hebt die verantwoordelijk zijn voor verschillende resources. U ontvangt de melding over het komende onderhoud van 72 uur vóór de gebeurtenis.
+Met [geplande onderhouds meldingen](./concepts-planned-maintenance-notification.md) kunt u waarschuwingen ontvangen voor gepland onderhoud naar uw Azure database for MySQL. Deze meldingen zijn geïntegreerd met [het geplande onderhoud van service Health](../service-health/overview.md) en bieden u de mogelijkheid om het geplande onderhoud voor uw abonnementen op één plek weer te geven. Het helpt ook om de melding te schalen naar de juiste doel groep voor verschillende resource groepen, omdat u mogelijk verschillende contact personen hebt die verantwoordelijk zijn voor verschillende resources. U ontvangt de melding over het komende onderhoud van 72 uur vóór de gebeurtenis.
 
-Tijdens gepland onderhoud kunt u verwachten dat de server opnieuw wordt opgestart en dat er [tijdelijke fouten](concepts-connectivity.md#transient-errors) kunnen optreden. De meeste van deze gebeurtenissen worden in minder dan 60 seconden automatisch door het systeem beperkt.
-
-> [!IMPORTANT]
-> Geplande onderhouds meldingen zijn momenteel beschikbaar in de open bare preview in alle regio's **, behalve** voor West-Centraal VS
-
-### <a name="to-receive-planned-maintenance-notification"></a>Een melding over gepland onderhoud ontvangen
-
-1. Selecteer in de [portal](https://portal.azure.com) **service Health**.
-2. Selecteer in de sectie **waarschuwingen** **Health Alerts**.
-3. Selecteer **+ service Health alert toevoegen** en vul de velden in.
-4. Vul de vereiste velden in. 
-5. Kies het **gebeurtenis type**, selecteer **gepland onderhoud** of **Alles selecteren**
-6. Geef in **actie groepen** op hoe u de waarschuwing wilt ontvangen (ontvang een e-mail, Activeer een logische app, enz.)  
-7. Zorg ervoor dat regel inschakelen bij maken is ingesteld op Ja.
-8. Selecteer **waarschuwings regel maken** om uw waarschuwing te volt ooien
-
-Zie [waarschuwingen voor activiteiten logboek maken voor service meldingen](../service-health/alerts-activity-log-service-notifications.md)voor gedetailleerde stappen voor het maken van **service Health-waarschuwingen**.
-
-> [!Note]
-> Elke keer dat er wordt gewaarschuwd voor **gepland onderhouds melding** 72 uur voor alle gebeurtenissen. In het geval van essentiële of beveiligings patches kunnen meldingen echter dichter bij het evenement worden verzonden of worden wegge laten.
+Meer informatie over het instellen van meldingen in het document [geplande onderhouds meldingen](./concepts-planned-maintenance-notification.md) .
 
 ## <a name="next-steps"></a>Volgende stappen
 - Zie [waarschuwingen instellen](howto-alert-on-metric.md) voor hulp bij het maken van een waarschuwing op metrische gegevens.
 - Zie het [overzicht van Azure-metrische](../monitoring-and-diagnostics/monitoring-overview-metrics.md)gegevens voor meer informatie over het openen en exporteren van metrische gegevens met behulp van de Azure Portal, rest API of cli.
 - Lees onze blog [voor de aanbevolen procedures voor het bewaken van uw server](https://azure.microsoft.com/blog/best-practices-for-alerting-on-metrics-with-azure-database-for-mysql-monitoring/).
+- Meer informatie over [geplande onderhouds meldingen](./concepts-planned-maintenance-notification.md) in azure database for MySQL-één server

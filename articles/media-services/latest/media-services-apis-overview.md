@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 5d57a6705973fbd5ee39042404015347d75b49b3
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: b01208c67610ff220df1654d10211472e0eed61f
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019780"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426842"
 ---
 # <a name="develop-with-media-services-v3-apis"></a>Ontwikkelen met Media Services v3-API’s
 
@@ -35,7 +35,7 @@ Om te worden geautoriseerd voor toegang tot Media Services-resources en de API v
 * **Verificatie van service-principal**: Wordt gebruikt om een service te verifiëren (bijvoorbeeld: web-apps, functie-apps, logische apps, API en microservices). Toepassingen die meestal gebruikmaken van deze verificatiemethode, zijn apps waarmee daemonservices, services uit de middelste laag, of geplande taken worden uitgevoerd. Voor web-apps moet er bijvoorbeeld altijd een mid-tier zijn die verbinding maakt met Media Services met een service-principal.
 * **Gebruikersverificatie**: Wordt gebruikt om een persoon te verifiëren die de app gebruikt om te communiceren met Media Services-resources. De interactieve app moet de gebruiker eerst vragen om zijn/haar referenties. Een voorbeeld is een beheerconsole-app die door geautoriseerde gebruikers wordt gebruikt om coderingstaken of livestreams te bewaken.
 
-Voor de API van Media Services is vereist dat de gebruiker of app die de REST API-aanvragen doet, toegang heeft tot het Media Services-account en beschikt over de rol **Inzender** of **Eigenaar**. Toegang tot de API met de rol **Lezer** is ook mogelijk, maar dan zijn alleen **Get**- of **List**-bewerkingen beschikbaar.Zie [Op rollen gebaseerd toegangsbeheer voor Media Services-accounts](rbac-overview.md) voor meer informatie.
+Voor de API van Media Services is vereist dat de gebruiker of app die de REST API-aanvragen doet, toegang heeft tot het Media Services-account en beschikt over de rol **Inzender** of **Eigenaar**. Toegang tot de API met de rol **Lezer** is ook mogelijk, maar dan zijn alleen **Get**- of **List**-bewerkingen beschikbaar. Zie voor meer informatie [Azure op rollen gebaseerd toegangs beheer (Azure RBAC) voor Media Services accounts](rbac-overview.md).
 
 In plaats van een service-principal te maken, kunt u overwegen beheerde identiteiten te gebruiken voor Azure-resources, om via Azure Resource Manager toegang te krijgen tot de API van Media Services. Zie [Wat zijn beheerde identiteiten voor Azure-resources](../../active-directory/managed-identities-azure-resources/overview.md) voor meer informatie over beheerde identiteiten voor Azure-resources.
 
@@ -120,7 +120,7 @@ Er wordt slechts één langlopende bewerking ondersteund voor een bepaalde live 
 > [!NOTE]
 > De Azure Media Services v3 Sdk's zijn niet gegarandeerd thread-safe. Wanneer u een app met meerdere threads ontwikkelt, moet u uw eigen thread synchronisatie logica toevoegen om de client te beveiligen of een nieuw AzureMediaServicesClient-object per thread te gebruiken. Wees ook voorzichtig met het oplossen van problemen met meerdere threads die worden geïntroduceerd door de optionele objecten die door uw code worden verstrekt aan de client (zoals een httpclient maakt-exemplaar in .NET).
 
-|SDK|Naslaginformatie|
+|SDK|Verwijzing|
 |---|---|
 |[.NET SDK](https://aka.ms/ams-v3-dotnet-sdk)|[.NET-ref](/dotnet/api/overview/azure/mediaservices/management)|
 |[Java SDK](https://aka.ms/ams-v3-java-sdk)|[Java-ref](/java/api/overview/azure/mediaservices/management)|

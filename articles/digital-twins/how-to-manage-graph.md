@@ -4,21 +4,21 @@ titleSuffix: Azure Digital Twins
 description: Zie een grafiek met digitale apparaatdubbels beheren door deze te verbinden met relaties.
 author: baanders
 ms.author: baanders
-ms.date: 4/10/2020
+ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8c698cdf5b26cb1682eec2828922517cf4272275
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 6d197c8853521e0fb0c6e247ad05a046da559454
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048437"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427926"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Een grafiek van digitale apparaatdubbels beheren met behulp van relaties
 
-De kern van Azure Digital Apparaatdubbels is de [dubbele grafiek](concepts-twins-graph.md) die uw hele omgeving weergeeft. Het dubbele diagram bestaat uit afzonderlijke digitale apparaatdubbels die zijn verbonden via **relaties**.
+De kern van Azure Digital Apparaatdubbels is de [dubbele grafiek](concepts-twins-graph.md) die uw hele omgeving weergeeft. Het dubbele diagram is gemaakt van individuele digitale apparaatdubbels die zijn verbonden via **relaties**. 
 
-Zodra u een werkend [Azure Digital apparaatdubbels-exemplaar](how-to-set-up-instance-portal.md) hebt en [verificatie](how-to-authenticate-client.md) code hebt ingesteld in uw client-app, kunt u de [**DigitalTwins-api's**](how-to-use-apis-sdks.md) gebruiken voor het maken, wijzigen en verwijderen van digitale Apparaatdubbels en hun relaties in een Azure Digital apparaatdubbels-instantie. U kunt ook de [.net (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)of de [Azure Digital apparaatdubbels cli](how-to-use-cli.md)gebruiken.
+Zodra u een werkend [Azure Digital apparaatdubbels-exemplaar](how-to-set-up-instance-portal.md) hebt en [verificatie](how-to-authenticate-client.md) code hebt ingesteld in uw client-app, kunt u de [**DigitalTwins-api's**](how-to-use-apis-sdks.md) gebruiken voor het maken, wijzigen en verwijderen van digitale Apparaatdubbels en hun relaties in een Azure Digital apparaatdubbels-instantie. U kunt ook de [.net (C#) SDK](https://www.nuget.org/packages/Azure.DigitalTwins.Core)of de [Azure Digital apparaatdubbels cli](how-to-use-cli.md)gebruiken.
 
 Dit artikel richt zich op het beheren van relaties en de hele grafiek; Zie [*How-to: Manage Digital apparaatdubbels*](how-to-manage-twin.md)(Engelstalig) als u wilt werken met afzonderlijke digitale apparaatdubbels.
 
@@ -28,208 +28,382 @@ Dit artikel richt zich op het beheren van relaties en de hele grafiek; Zie [*How
 
 Relaties beschrijven hoe verschillende digitale apparaatdubbels met elkaar zijn verbonden, die de basis vormen van het dubbele diagram.
 
-Relaties worden gemaakt met behulp van de `CreateRelationship` aanroep. 
+Relaties worden gemaakt met behulp van de `CreateRelationship()` aanroep. 
 
 Als u een relatie wilt maken, moet u het volgende opgeven:
-* De bron-dubbele ID (de dubbele locatie van de relatie)
-* De doel-dubbele ID (de dubbele locatie van de relatie)
-* Een relatie naam
-* Een relatie-ID
+* De bron-dubbele ID ( `srcId` in het onderstaande code voorbeeld): de id van de dubbele locatie van de relatie.
+* De dubbele ID van het doel ( `targetId` in het onderstaande code voorbeeld): de id van de dubbele locatie van de relatie.
+* Een relatie naam ( `relName` in het onderstaande code voorbeeld): het algemene type relatie, zoals _contains_.
+* Een relatie-ID ( `relId` in het onderstaande code voorbeeld): de specifieke naam voor deze relatie, wat lijkt op _Relationship1_.
 
 De relatie-ID moet uniek zijn binnen de opgegeven bron. Het hoeft niet wereld wijd uniek te zijn.
-Voor de dubbele *Foo*moet elke specifieke relatie-id bijvoorbeeld uniek zijn. Een andere dubbele *balk* kan echter een uitgaande relatie hebben die overeenkomt met dezelfde id van een *Foo* -relatie. 
+Voor de dubbele *Foo*moet elke specifieke relatie-id bijvoorbeeld uniek zijn. Een andere dubbele *balk* kan echter een uitgaande relatie hebben die overeenkomt met dezelfde id van een *Foo* -relatie.
 
-In het volgende code voorbeeld ziet u hoe u een relatie kunt toevoegen aan uw Azure Digital Apparaatdubbels-exemplaar.
+In het volgende code voorbeeld ziet u hoe u een relatie maakt in uw Azure Digital Apparaatdubbels-exemplaar.
 
 ```csharp
-public async static Task CreateRelationship(DigitalTwinsClient client, string srcId, string targetId)
-{
-    var relationship = new BasicRelationship
-    {
-        TargetId = targetId,
-        Name = "contains"
-    };
+public async static Task CreateRelationship(DigitalTwinsClient client, string srcId, string targetId, string relName)
+        {
+            var relationship = new BasicRelationship
+            {
+                TargetId = targetId,
+                Name = relName
+            };
 
-    try
-    {
-        string relId = $"{srcId}-contains->{targetId}";
-        await client.CreateRelationshipAsync(srcId, relId, JsonSerializer.Serialize(relationship));
-        Console.WriteLine("Created relationship successfully");
-    }
-    catch (RequestFailedException rex) {
-        Console.WriteLine($"Create relationship error: {rex.Status}:{rex.Message}");
-    }
-}
+            try
+            {
+                string relId = $"{srcId}-{relName}->{targetId}";
+                await client.CreateRelationshipAsync(srcId, relId, JsonSerializer.Serialize(relationship));
+                Console.WriteLine($"Created {relName} relationship successfully");
+            }
+            catch (RequestFailedException rex)
+            {
+                Console.WriteLine($"Create relationship error: {rex.Status}:{rex.Message}");
+            }
+            
+        }
 ```
+In uw hoofd methode kunt u de functie nu aanroepen `CreateRelationship()` om een _contains_ -relatie te maken, zoals: 
 
-`BasicRelationship`Zie [*How-to: use the Azure Digital apparaatdubbels Api's and sdk's*](how-to-use-apis-sdks.md)(Engelstalig) voor meer informatie over de helper-klasse.
+```csharp
+await CreateRelationship(client, srcId, targetId, "contains");
+```
+Als u meerdere relaties wilt maken, kunt u aanroepen naar dezelfde methode herhalen, waarbij verschillende relatie typen in het argument worden door gegeven. 
+
+`BasicRelationship`Zie [*How-to: use the Azure Digital apparaatdubbels Api's and sdk's*](how-to-use-apis-sdks.md#serialization-helpers)(Engelstalig) voor meer informatie over de helper-klasse.
 
 ### <a name="create-multiple-relationships-between-twins"></a>Meerdere relaties maken tussen apparaatdubbels
+
+Relaties kunnen worden geclassificeerd als een van de volgende: 
+
+* Uitgaande relaties: relaties die deel uitmaken van dit dubbele punt om deze te verbinden met andere apparaatdubbels. De `GetRelationshipsAsync()` methode wordt gebruikt voor het ophalen van uitgaande relaties van een twee.
+* Binnenkomende relaties: relaties die deel uitmaken van andere apparaatdubbels die naar dit dubbele punt verwijzen om een ' binnenkomende ' koppeling te maken. De `GetIncomingRelationshipsAsync()` methode wordt gebruikt voor het ophalen van binnenkomende relaties van een twee.
 
 Er is geen beperking voor het aantal relaties dat u tussen twee apparaatdubbels kunt hebben: u kunt zo veel relaties tussen apparaatdubbels hebben als u wilt. 
 
 Dit betekent dat u verschillende typen relaties tussen twee apparaatdubbels tegelijk kunt uitdrukken. *Dubbele a* kan bijvoorbeeld zowel een *opgeslagen* relatie als een *vervaardigde* relatie met *dubbele B*hebben.
 
-U kunt zelfs meerdere exemplaren van hetzelfde type relatie maken tussen dezelfde twee apparaatdubbels, indien gewenst. In dit voor beeld betekent dit dat *dubbele A* twee verschillende *opgeslagen* relaties heeft met *dubbele B*.
+U kunt zelfs meerdere exemplaren van hetzelfde type relatie maken tussen dezelfde twee apparaatdubbels, indien gewenst. In dit voor beeld kunnen *dubbele a* twee verschillende *opgeslagen* relaties hebben met *dubbele B*, zolang de relaties verschillende relatie-id's hebben.
 
 ## <a name="list-relationships"></a>Lijst met relaties
 
-Als u toegang wilt krijgen tot de lijst met **uitgaande** relaties die afkomstig zijn van een bepaalde dubbele in het diagram, kunt u het volgende gebruiken:
+Als u toegang wilt krijgen tot de lijst met **uitgaande** relaties voor een bepaalde dubbele in de grafiek, kunt u de `GetRelationships()` methode als volgt gebruiken:
 
 ```csharp
-await client.GetRelationshipsAsync(id);
+await client.GetRelationships()
 ```
 
 Dit retourneert een `Azure.Pageable<T>` of `Azure.AsyncPageable<T>` , afhankelijk van of u de synchrone of asynchrone versie van de aanroep gebruikt.
 
-Hier volgt een volledig voor beeld van het ophalen van een lijst met relaties:
+Hier volgt een voor beeld van het ophalen van een lijst met relaties:
 
 ```csharp
-public async Task<List<BasicRelationship>> FindOutgoingRelationshipsAsync(string dtId)
-{
-    // Find the relationships for the twin
-    try
-    {
-        // GetRelationshipsAsync will throw if an error occurs
-        AsyncPageable<string> relsJson = client.GetRelationshipsAsync(dtId);
-        List<BasicRelationship> results = new List<BasicRelationship>();
-        await foreach (string relJson in relsJson)
+public static async Task<List<BasicRelationship>> FindOutgoingRelationshipsAsync(DigitalTwinsClient client, string dtId)
         {
-            var rel = System.Text.Json.JsonSerializer.Deserialize<BasicRelationship>(relJson);
-            results.Add(rel);
-        }
-        return results;
-    }
-    catch (RequestFailedException ex)
-    {
-        Log.Error($"*** Error {ex.Status}/{ex.ErrorCode} retrieving relationships for {dtId} due to {ex.Message}");
-        return null;
-    }
-}
-```
+            // Find the relationships for the twin
+            try
+            {
+                // GetRelationshipsAsync will throw if an error occurs
+                AsyncPageable<string> relsJson = client.GetRelationshipsAsync(dtId);
+                List<BasicRelationship> results = new List<BasicRelationship>();
+                await foreach (string relJson in relsJson)
+                {
+                    var rel = System.Text.Json.JsonSerializer.Deserialize<BasicRelationship>(relJson);
+                    results.Add(rel);
+                    Console.WriteLine(relJson);
+                }
 
-U kunt de opgehaalde relaties gebruiken om naar andere apparaatdubbels in uw grafiek te navigeren. U doet dit door het veld te lezen `target` in de relatie die wordt geretourneerd en dit te gebruiken als de id voor uw volgende oproep naar `GetDigitalTwin` . 
+                return results;
+            }
+            catch (RequestFailedException ex)
+            {
+                Console.WriteLine($"**_ Error {ex.Status}/{ex.ErrorCode} retrieving relationships for {dtId} due to {ex.Message}");
+                return null;
+            }
+        }
+
+```
+U kunt deze methode nu aanroepen om de uitgaande relaties van het apparaatdubbels als volgt te bekijken:
+
+```csharp
+await FindOutgoingRelationshipsAsync(client, twin_Id);
+```
+U kunt de opgehaalde relaties gebruiken om naar andere apparaatdubbels in uw grafiek te navigeren. U doet dit door het veld te lezen `target` in de relatie die wordt geretourneerd en dit te gebruiken als de id voor uw volgende oproep naar `GetDigitalTwin()` .
 
 ### <a name="find-incoming-relationships-to-a-digital-twin"></a>Inkomende relaties zoeken naar een digitaal, twee
 
-Azure Digital Apparaatdubbels heeft ook een API voor het zoeken van alle **inkomende** relaties naar een opgegeven dubbele. Dit is vaak handig voor omgekeerde navigatie of bij het verwijderen van een dubbele.
+Azure Digital Apparaatdubbels heeft ook een API voor het vinden van alle _*binnenkomende**-relaties naar een bepaald dubbele. Dit is vaak handig voor omgekeerde navigatie of bij het verwijderen van een dubbele.
 
 Het vorige code voorbeeld is gericht op het vinden van uitgaande relaties van een dubbele. Het volgende voor beeld is op dezelfde manier gestructureerd, maar detecteert *inkomende* relaties met de dubbele plaats.
 
 Houd er rekening mee dat de `IncomingRelationship` aanroepen de volledige hoofd tekst van de relatie niet retour neren.
 
 ```csharp
-async Task<List<IncomingRelationship>> FindIncomingRelationshipsAsync(string dtId)
-{
-    // Find the relationships for the twin
-    try
-    {
-        // GetRelationshipsAsync will throw an error if a problem occurs
-        AsyncPageable<IncomingRelationship> incomingRels = client.GetIncomingRelationshipsAsync(dtId);
+public static async Task<List<IncomingRelationship>> FindIncomingRelationshipsAsync(DigitalTwinsClient client, string dtId)
+        {
+            // Find the relationships for the twin
+            try
+            {
+                // GetRelationshipsAsync will throw an error if a problem occurs
+                AsyncPageable<IncomingRelationship> incomingRels = client.GetIncomingRelationshipsAsync(dtId);
 
-        List<IncomingRelationship> results = new List<IncomingRelationship>();
-        await foreach (IncomingRelationship incomingRel in incomingRels)
-            results.Add(incomingRel);
-    }
-    catch (RequestFailedException ex)
-    {
-        Log.Error($"*** Error {ex.Status}/{ex.ErrorCode} retrieving incoming relationships for {dtId} due to {ex.Message}");
-    }
-}
+                List<IncomingRelationship> results = new List<IncomingRelationship>();
+                await foreach (IncomingRelationship incomingRel in incomingRels)
+                {
+                    results.Add(incomingRel);
+                    Console.WriteLine(incomingRel);
+
+                }
+                return results;
+            }
+            catch (RequestFailedException ex)
+            {
+                Console.WriteLine($"*** Error {ex.Status}/{ex.ErrorCode} retrieving incoming relationships for {dtId} due to {ex.Message}");
+                return null;
+            }
+        }
 ```
 
-## <a name="delete-relationships"></a>Relaties verwijderen
+U kunt deze methode nu aanroepen om de binnenkomende relaties van het apparaatdubbels als volgt te bekijken:
 
-U kunt relaties verwijderen met `DeleteRelationship(source, relId);` .
+```csharp
+await FindIncomingRelationshipsAsync(client, twin_Id);
+```
+### <a name="list-all-twin-properties-and-relationships"></a>Alle dubbele eigenschappen en relaties weer geven
+
+Met behulp van de bovenstaande methoden voor het weer geven van uitgaande en inkomende relaties naar een dubbele, kunt u een methode maken waarmee de volledige dubbele gegevens worden afgedrukt, met inbegrip van de eigenschappen van de twee en beide typen relaties. Hier volgt een voor beeld van de methode, `FetchAndPrintTwinAsync()` die wordt weer gegeven en hoe u dit doet.
+
+```csharp  
+private static async Task FetchAndPrintTwinAsync(DigitalTwinsClient client, string twin_Id)
+        {
+            BasicDigitalTwin twin;
+            Response<string> res = client.GetDigitalTwin(twin_Id);
+            twin = JsonSerializer.Deserialize<BasicDigitalTwin>(res.Value);
+            
+            await FindOutgoingRelationshipsAsync(client, twin_Id);
+            await FindIncomingRelationshipsAsync(client, twin_Id);
+
+            return;
+        }
+```
+
+U kunt deze functie nu als volgt aanroepen in de methode Main: 
+
+```csharp
+await FetchAndPrintTwinAsync(client, targetId);
+```
+## <a name="delete-relationships"></a>Relaties verwijderen
 
 Met de eerste para meter geeft u de bron op, twee (de dubbele locatie van de relatie). De andere para meter is de relatie-ID. U hebt zowel de dubbele ID als de relatie-ID nodig, omdat relatie-Id's alleen uniek zijn binnen het bereik van een dubbele.
 
-## <a name="create-a-twin-graph"></a>Een dubbele grafiek maken 
+```csharp
+private static async Task DeleteRelationship(DigitalTwinsClient client, string srcId, string relId)
+        {
+            try
+            {
+                Response response = await client.DeleteRelationshipAsync(srcId, relId);
+                await FetchAndPrintTwinAsync(srcId, client);
+                Console.WriteLine("Deleted relationship successfully");
+            }
+            catch (RequestFailedException Ex)
+            {
+                Console.WriteLine($"Error {Ex.ErrorCode}");
+            }
+        }
+```
 
-In het volgende code fragment worden de bewerkingen van de relatie van dit artikel gebruikt voor het maken van een dubbele grafiek van de digitale apparaatdubbels en relaties.
+U kunt deze methode nu aanroepen om een relatie als volgt te verwijderen:
 
 ```csharp
-static async Task CreateTwins()
+await DeleteRelationship(client, srcId, $"{targetId}-contains->{srcId}");
+```
+## <a name="create-a-twin-graph"></a>Een dubbele grafiek maken 
+
+Het volgende uitvoer bare code fragment maakt gebruik van de relatie bewerkingen uit dit artikel om een dubbele grafiek te maken van digitale apparaatdubbels en relaties.
+
+Het fragment maakt gebruik van de [Room.jsop](https://github.com/Azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Room.json) en [Floor.jsop](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json) model definities uit de [*zelf studie: Verken Azure Digital apparaatdubbels met een voor beeld-client-app*](tutorial-command-line-app.md). U kunt deze koppelingen gebruiken om rechtstreeks naar de bestanden te gaan of ze als onderdeel van het volledige end-to-end- [voorbeeld project te](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)downloaden.
+
+Vervang de tijdelijke aanduiding door de `<your-instance-hostname>` gegevens van uw Azure Digital apparaatdubbels-exemplaar en voer het voor beeld uit.
+
+```csharp 
+using System;
+using Azure.DigitalTwins.Core;
+using Azure.Identity;
+using System.Threading.Tasks;
+using System.IO;
+using System.Collections.Generic;
+using Azure;
+using Azure.DigitalTwins.Core.Serialization;
+using System.Text.Json;
+
+namespace minimal
 {
-    // Create twins - see utility functions below 
-    await CreateRoom("Room01", 68, 50, false, "");
-    await CreateRoom("Room02", 70, 66, true, "EId-00124");
-    await CreateFloorOrBuilding("Floor01", makeFloor:true);
+    class Program
+    {
 
-    // Create relationships
-    await AddRelationship("Floor01", "contains", "Floor-to-Room01", "Room01");
-    await AddRelationship("Floor01", "contains", "Floor-to-Room02", "Room02");
-}
+        static async Task Main(string[] args)
+        {
+            Console.WriteLine("Hello World!");
+            DigitalTwinsClient client = createDTClient();
+            Console.WriteLine($"Service client created – ready to go");
 
-static async Task<bool> AddRelationship(string source, string relationship, string id, string target)
-{
-    var relationship = new BasicRelationship
-    {
-        TargetId = target,
-        Name = relationship
-    };
+            Console.WriteLine($"Upload a model");
+            BasicDigitalTwin twin = new BasicDigitalTwin();
+            var typeList = new List<string>();
+            string srcId = "myRoomID";
+            string targetId = "myFloorID";
+            string dtdl = File.ReadAllText("Room.json");
+            string dtdl1 = File.ReadAllText("Floor.json");
+            typeList.Add(dtdl);
+            typeList.Add(dtdl1);
+            // Upload the model to the service
 
-    try
-    {
-        string relId = $"{source}-contains->{target}";
-        await client.CreateRelationshipAsync(source, relId, JsonSerializer.Serialize(relationship));
-        Console.WriteLine("Created relationship successfully");
-        return true;
-    }
-    catch (RequestFailedException rex) {
-        Console.WriteLine($"Create relationship error: {rex.Status}:{rex.Message}");
-        return false;
-    }
-}
+            await client.CreateModelsAsync(typeList);
 
-static async Task<bool> CreateRoom(string id, double temperature, double humidity)
-{
-    BasicDigitalTwin twin = new BasicDigitalTwin();
-    twin.Metadata = new DigitalTwinMetadata();
-    twin.Metadata.ModelId = "dtmi:com:contoso:Room;2";
-    // Initialize properties
-    Dictionary<string, object> props = new Dictionary<string, object>();
-    props.Add("Temperature", temperature);
-    props.Add("Humidity", humidity);
-    twin.CustomProperties = props;
-    
-    try
-    {
-        client.CreateDigitalTwin(id, JsonSerializer.Serialize<BasicDigitalTwin>(twin)); 
-        return true;       
-    }
-    catch (ErrorResponseException e)
-    {
-        Console.WriteLine($"*** Error creating twin {id}: {e.Response.StatusCode}"); 
-        return false;
-    }
-}
+            twin.Metadata = new DigitalTwinMetadata();
+            twin.Metadata.ModelId = "dtmi:example:Room;1";
+            // Initialize properties
+            Dictionary<string, object> props = new Dictionary<string, object>();
+            props.Add("Temperature", 35.0);
+            props.Add("Humidity", 55.0);
+            twin.CustomProperties = props;
 
-static async Task<bool> CreateFloorOrBuilding(string id, bool makeFloor=true)
-{
-    string type = "dtmi:com:contoso:Building;3";
-    if (makeFloor==true)
-        type = "dtmi:com:contoso:Floor;2";
-    BasicDigitalTwin twin = new BasicDigitalTwin();
-    twin.Metadata = new DigitalTwinMetadata();
-    twin.Metadata.ModelId = type;
-    // Initialize properties
-    Dictionary<string, object> props = new Dictionary<string, object>();
-    props.Add("AverageTemperature", 0);
-    twin.CustomProperties = props;
-    
-    try
-    {
-        client.CreateDigitalTwin(id, JsonSerializer.Serialize<BasicDigitalTwin>(twin));  
-        return true;      
-    }
-    catch (ErrorResponseException e)
-    {
-        Console.WriteLine($"*** Error creating twin {id}: {e.Response.StatusCode}"); 
-        return false;
+            await client.CreateDigitalTwinAsync(srcId, JsonSerializer.Serialize<BasicDigitalTwin>(twin));
+            // Creating twin data for second twin
+            twin.Metadata = new DigitalTwinMetadata();
+            twin.Metadata.ModelId = "dtmi:example:Floor;1";
+            // Initialize properties
+            Dictionary<string, object> props1 = new Dictionary<string, object>();
+            props1.Add("Capacity", 5.0);
+            twin.CustomProperties = props1;
+            await client.CreateDigitalTwinAsync(targetId, JsonSerializer.Serialize<BasicDigitalTwin>(twin));
+            Console.WriteLine();
+            Console.WriteLine("Deleting existing relationships to the twin");
+            Console.WriteLine();
+            await DeleteRelationship(client, srcId);
+            Console.WriteLine("Twin created successfully");
+            await CreateRelationship(client, srcId, targetId, "contains");
+            await CreateRelationship(client, srcId, targetId, "has");
+            Console.WriteLine();
+            Console.WriteLine("Printing srcId - Outgoing relationships");
+            Console.WriteLine();
+            await FetchAndPrintTwinAsync(srcId, client);
+            Console.WriteLine();
+            Console.WriteLine("Printing targetId - Incoming relationships");
+            Console.WriteLine();
+            await FetchAndPrintTwinAsync(targetId, client);
+
+        }
+
+        private static async Task DeleteRelationship(DigitalTwinsClient client, string srcId)
+        {
+            List<BasicRelationship> lists = await FindOutgoingRelationshipsAsync(client, srcId);
+            foreach(BasicRelationship rel in lists) {
+                await client.DeleteRelationshipAsync(srcId, rel.Id);
+            }
+            
+        }
+
+        private static DigitalTwinsClient createDTClient()
+        {
+            string adtInstanceUrl = "https://<your-instance-hostname>";
+            var credentials = new DefaultAzureCredential();
+            DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credentials);
+            return client;
+        }
+        public async static Task CreateRelationship(DigitalTwinsClient client, string srcId, string targetId, string relName)
+        {
+            // Create relationship between twins
+            var relationship = new BasicRelationship
+            {
+                TargetId = targetId,
+                Name = relName
+            };
+
+            try
+            {
+                string relId = $"{targetId}-{relName}->{srcId}";
+                await client.CreateRelationshipAsync(srcId, relId, JsonSerializer.Serialize(relationship));
+                Console.WriteLine($"Created {relName} relationship successfully");
+            }
+            catch (RequestFailedException rex)
+            {
+                Console.WriteLine($"Create relationship error: {rex.Status}:{rex.Message}");
+            }
+
+        }
+
+        private static async Task FetchAndPrintTwinAsync(string twin_Id, DigitalTwinsClient client)
+        {
+            BasicDigitalTwin twin;
+            Response<string> res = client.GetDigitalTwin(twin_Id);
+            twin = JsonSerializer.Deserialize<BasicDigitalTwin>(res.Value);
+            await FindOutgoingRelationshipsAsync(client, twin_Id);
+            await FindIncomingRelationshipsAsync(client, twin_Id);
+
+            return;
+        }
+
+        public static async Task<List<BasicRelationship>> FindOutgoingRelationshipsAsync(DigitalTwinsClient client, string dtId)
+        {
+            // Find the relationships for the twin
+            
+            try
+            {
+                // GetRelationshipsAsync will throw if an error occurs
+                AsyncPageable<string> relsJson = client.GetRelationshipsAsync(dtId);
+                List<BasicRelationship> results = new List<BasicRelationship>();
+                await foreach (string relJson in relsJson)
+                {
+                    var rel = System.Text.Json.JsonSerializer.Deserialize<BasicRelationship>(relJson);
+                    results.Add(rel);
+                    Console.WriteLine(relJson);
+                }
+
+                return results;
+            }
+            catch (RequestFailedException ex)
+            {
+                Console.WriteLine($"*** Error {ex.Status}/{ex.ErrorCode} retrieving relationships for {dtId} due to {ex.Message}");
+                return null;
+            }
+        }
+
+        public static async Task<List<IncomingRelationship>> FindIncomingRelationshipsAsync(DigitalTwinsClient client, string dtId)
+        {
+            // Find the relationships for the twin
+            
+            try
+            {
+                // GetRelationshipsAsync will throw an error if a problem occurs
+                AsyncPageable<IncomingRelationship> incomingRels = client.GetIncomingRelationshipsAsync(dtId);
+
+                List<IncomingRelationship> results = new List<IncomingRelationship>();
+                await foreach (IncomingRelationship incomingRel in incomingRels)
+                {
+                    results.Add(incomingRel);
+                    Console.WriteLine(incomingRel.RelationshipId);
+
+                }
+                return results;
+            }
+            catch (RequestFailedException ex)
+            {
+                Console.WriteLine($"**_ Error {ex.Status}/{ex.ErrorCode} retrieving incoming relationships for {dtId} due to {ex.Message}");
+                return null;
+            }
+        }
+
     }
 }
 ```
+
+Hier volgt de console-uitvoer van het bovenstaande programma: 
+
+:::image type="content" source="./media/how-to-manage-graph/console-output-twin-graph.png" alt-text="Console-uitvoer met de dubbele Details, binnenkomende en uitgaande relaties van de apparaatdubbels." lightbox="./media/how-to-manage-graph/console-output-twin-graph.png":::
+
+> [!TIP]
+> Het dubbele diagram is een concept van het maken van relaties tussen apparaatdubbels. Als u de visuele weer gave van de dubbele grafiek wilt bekijken, raadpleegt u de sectie [_Visualization *](how-to-manage-graph.md#visualization) van dit artikel. 
 
 ### <a name="create-a-twin-graph-from-a-spreadsheet"></a>Een dubbele grafiek maken vanuit een spread sheet
 
@@ -237,15 +411,12 @@ In praktische use cases worden vaak dubbele hiërarchieën gemaakt op basis van 
 
 Bekijk de volgende gegevens tabel, met een beschrijving van een set digitale apparaatdubbels en relaties die moeten worden gemaakt.
 
-| Modelleren    | Id | Bovenliggend | Naam van relatie | Andere gegevens |
+| Model-id| Dubbele ID (moet uniek zijn) | Naam van relatie | Doel-dubbele ID | Dubbele init-gegevens |
 | --- | --- | --- | --- | --- |
-| Floor    | Floor01 | | | … |
-| ruimte    | Room10 | Floor01 | contains | … |
-| ruimte    | Room11 | Floor01 | contains | … |
-| ruimte    | Room12 | Floor01 | contains | … |
-| Floor    | Floor02 | | | … |
-| ruimte    | Room21 | Floor02 | contains | … |
-| ruimte    | Room22 | Floor02 | contains | … |
+| dtmi: voor beeld: Floor; 1 | Floor1 |  contains | Room1 |{"Tempe ratuur": 80, "vochtigheids graad": 60}
+| dtmi: voor beeld: Floor; 1 | Floor0 |  biedt      | Room0 |{"Tempe ratuur": 70, "vochtigheids graad": 30}
+| dtmi: voor beeld: room; 1  | Room1 | 
+| dtmi: voor beeld: room; 1  | Room0 |
 
 De volgende code maakt gebruik van de [Microsoft Graph-API](/graph/overview) om een spread sheet te lezen en een Azure Digital apparaatdubbels-grafiek te maken op basis van de resultaten.
 
@@ -255,20 +426,22 @@ JsonDocument data = JsonDocument.Parse(range.values);
 List<BasicRelationship> RelationshipRecordList = new List<BasicRelationship>();
 foreach (JsonElement row in data.RootElement.EnumerateArray())
 {
-    string type = row[0].GetString();
-    string id = row[1].GetString();
-    string relSource = row[2].GetString();
-    string relName = row[3].GetString();
+    string modelId = row[0].GetString();
+    string sourceId = row[1].GetString();
+    string relName = row[2].GetString();
+    string targetId = row[3].GetString();
+    string initData = row[4].GetString();
+    
     // Parse spreadsheet extra data into a JSON string to initialize the digital twin
     // Left out for compactness
     Dictionary<string, object> initData = new Dictionary<string, object>() { ... };
 
-    if (relSource != null)
+    if (sourceId != null)
     {
         BasicRelationship br = new BasicRelationship()
         {
-            SourceId = relSource,
-            TargetId = id,
+            SourceId = sourceId,
+            TargetId = targetId,
             Name = relName
         };
         RelationshipRecordList.Add(br);
@@ -277,32 +450,24 @@ foreach (JsonElement row in data.RootElement.EnumerateArray())
     BasicDigitalTwin twin = new BasicDigitalTwin();
     twin.CustomProperties = initData;
     // Set the type of twin to be created
-    switch (type)
-    {
-        case "room":
-            twin.Metadata = new DigitalTwinMetadata() { ModelId = "dtmi:com:contoso:Room;2" };
-            break;
-        case "floor":
-            twin.Metadata = new DigitalTwinMetadata() { ModelId = "dtmi:com:contoso:Floor;2" };
-            break;
-        ... handle additional types
-    }
+    twin.Metadata = new DigitalTwinMetadata() { ModelId = modelId };
+    
     try
     {
-        client.CreateDigitalTwin(id, JsonSerializer.Serialize<BasicDigitalTwin>(twin));
+        await client.CreateDigitalTwinAsync(sourceId, JsonSerializer.Serialize<BasicDigitalTwin>(twin));
     }
     catch (RequestFailedException e)
     {
-        Log.Error($"Error {e.Status}: {e.Message}");
+       Console.WriteLine($"Error {e.Status}: {e.Message}");
     }
     foreach (BasicRelationship rec in RelationshipRecordList)
     { 
         try { 
-            client.CreateRelationship(rec.SourceId, Guid.NewGuid().ToString(), JsonSerializer.Serialize<BasicRelationship>(rec));
+            await client.CreateRelationshipAsync(rec.sourceId, Guid.NewGuid().ToString(), JsonSerializer.Serialize<BasicRelationship>(rec));
         }
         catch (RequestFailedException e)
         {
-            Log.Error($"Error {e.Status}: {e.Message}");
+            Console.WriteLine($"Error {e.Status}: {e.Message}");
         }
     }
 }

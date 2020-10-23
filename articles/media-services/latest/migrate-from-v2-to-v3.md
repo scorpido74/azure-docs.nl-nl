@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 48ce6edc3d071d84c3921f85c2e9798b804d0279
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 0cdf4699f5dc00087845ee6ca0d24ad6493c320b
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017740"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426860"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Migratie richtlijnen voor het overstappen van Media Services versie 2 naar v3
 
@@ -59,7 +59,7 @@ Als u op dit moment een video service hebt ontwikkeld voor de [oudere Media Serv
 * Live output is eenvoudiger te gebruiken dan de entiteit van het programma in de v2-Api's. 
 * Verbeterde RTMP-ondersteuning (verbeterde stabiliteit en meer ondersteuning voor broncode encoders).
 * RTMP beveiligde opname.<br/>Wanneer u een live gebeurtenis maakt, krijgt u vier opname-Url's. De 4 opname-Url's zijn bijna identiek, hebben hetzelfde streaming token (AppId), alleen het poort nummer onderdeel is anders. Twee van de Url's zijn primaire en back-ups voor RTMP.   
-* U hebt op rollen gebaseerd toegangs beheer (RBAC) voor uw entiteiten. 
+* U hebt op rollen gebaseerd toegangs beheer voor Azure (Azure RBAC) voor uw entiteiten. 
 
 ## <a name="known-issues"></a>Bekende problemen
 

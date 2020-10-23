@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2020
 ms.author: Zhchia
-ms.openlocfilehash: 5ce2c866954f46e3a01cabb23033ea2dae77ead6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7fed376eae1c3dadb17f5ecf8e7f1c3422e07b9f
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757449"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426429"
 ---
 # <a name="tutorial-configure-apple-school-manager-for-automatic-user-provisioning"></a>Zelf studie: Apple school Manager configureren voor automatische gebruikers inrichting
 
@@ -119,10 +119,10 @@ Met de Azure AD-inrichtingsservice kunt u bepalen wie worden ingericht op basis 
    |externalId|Tekenreeks|
    |landinstelling|Tekenreeks|
    |timezone|Tekenreeks|
-   |urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: employeeNumber|Tekenreeks|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber|Tekenreeks|
    |urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: costCenter|Tekenreeks|
    |urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: deling|Tekenreeks|
-   |urn: IETF: params: scim: schemas: extension: Enter prise: 2.0: gebruiker: Department|Tekenreeks|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|Tekenreeks|
 
 10. Als u bereikfilters wilt configureren, raadpleegt u de volgende instructies in de [zelfstudie Bereikfilter](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
@@ -160,7 +160,6 @@ Nadat u het inrichten hebt geconfigureerd, gebruikt u de volgende resources om u
 * [SCIM-activiteiten bekijken in Apple school manager](https://support.apple.com/guide/apple-school-manager/apd1bfd8dfde)
 * [Bestaande SCIM-token en-verbindingen beheren in Apple school manager](https://support.apple.com/guide/apple-school-manager/apdc9a823611)
 * [De SCIM-verbinding verbreken in Apple school manager](https://support.apple.com/guide/apple-school-manager/apd609be3a61)
-* [Bestaande SCIM-token en-verbindingen beheren in Apple school manager](https://support.apple.com/guide/apple-school-manager/apdc9a8236e9)
 * [Problemen met de SCIM-verbinding oplossen in Apple school manager](https://support.apple.com/guide/apple-school-manager/apd403a0f3bd)
 
 ## <a name="next-steps"></a>Volgende stappen
