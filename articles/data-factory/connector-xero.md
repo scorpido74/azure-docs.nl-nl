@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/03/2020
+ms.date: 10/22/2020
 ms.author: jingwang
-ms.openlocfilehash: 14b3857211eca39ebe09a3a0752ca1d8eee17bc0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89ac5645ccbb9c926bc5ff70605dd1e5de14e823
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87529990"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427613"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory"></a>Gegevens kopiëren van Xero met behulp van Azure Data Factory
 
@@ -55,13 +55,13 @@ De volgende eigenschappen worden ondersteund voor Xero gekoppelde service:
 |:--- |:--- |:--- |
 | type | De eigenschap type moet worden ingesteld op: **Xero** | Ja |
 | connectionProperties | Een groep eigenschappen die definieert hoe verbinding moet worden gemaakt met Xero. | Ja |
-| ***Onder `connectionProperties` :*** | | |
+| **_Onder `connectionProperties` :_*_ | | |
 | host | Het eind punt van de Xero-server ( `api.xero.com` ).  | Ja |
 | authenticationType | Toegestane waarden zijn `OAuth_2.0` en `OAuth_1.0` . | Ja |
 | consumerKey | De consumenten sleutel die is gekoppeld aan de Xero-toepassing. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja |
-| privateKey | De persoonlijke sleutel uit het. pem-bestand dat is gegenereerd voor uw persoonlijke Xero-toepassing, vindt u in [een openbaar/persoonlijk sleutel paar maken](https://developer.xero.com/documentation/auth-and-limits/create-publicprivate-key). Opmerking voor **het genereren van privatekey. pem met numbits van 512** met `openssl genrsa -out privatekey.pem 512` , wordt 1024 niet ondersteund. Voeg alle tekst uit het. pem-bestand toe, inclusief de Unix-regel eindigt op (\n), zie voor beeld hieronder.<br/>Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja |
+| privateKey | De persoonlijke sleutel uit het. pem-bestand dat is gegenereerd voor uw persoonlijke Xero-toepassing, vindt u in [een openbaar/persoonlijk sleutel paar maken](https://developer.xero.com/documentation/auth-and-limits/create-publicprivate-key). Opmerking: _*het genereren van privatekey. pem met numbits van 512** met `openssl genrsa -out privatekey.pem 512` , 1024 wordt niet ondersteund. Voeg alle tekst uit het. pem-bestand toe, inclusief de Unix-regel eindigt op (\n), zie voor beeld hieronder.<br/>Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja |
 | tenantId | De Tenant-ID die is gekoppeld aan uw Xero-toepassing. Van toepassing op OAuth 2,0-verificatie.<br>Meer informatie over het ophalen van de Tenant-ID van [de tenants die u gemachtigd bent om toegang te krijgen](https://developer.xero.com/documentation/oauth2/auth-flow)tot de sectie. | Ja voor OAuth 2,0-verificatie |
-| refreshToken | Het OAuth 2,0-vernieuwings token dat is gekoppeld aan de Xero-toepassing, waarmee het toegangs token wordt vernieuwd wanneer het toegangs token verloopt. Van toepassing op OAuth 2,0-verificatie. Meer informatie over hoe u het vernieuwings token kunt ophalen uit [dit artikel](https://developer.xero.com/documentation/oauth2/auth-flow).<br>Het vernieuwings token is nooit verlopen. Als u een vernieuwings token wilt ophalen, moet u het [offline_access bereik](https://developer.xero.com/documentation/oauth2/scopes)aanvragen.<br/>Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja voor OAuth 2,0-verificatie |
+| refreshToken | Van toepassing op OAuth 2,0-verificatie.<br/>Het OAuth 2,0-vernieuwings token is gekoppeld aan de Xero-toepassing en wordt gebruikt voor het vernieuwen van het toegangs token. het toegangs token verloopt na 30 minuten. Meer informatie over hoe de Xero-autorisatie stroom werkt en hoe u het vernieuwings token kunt ophalen uit [dit artikel](https://developer.xero.com/documentation/oauth2/auth-flow). Als u een vernieuwings token wilt ophalen, moet u het [offline_access bereik](https://developer.xero.com/documentation/oauth2/scopes)aanvragen. <br/>**Bekende beperking**: Opmerking Xero stelt het vernieuwings token opnieuw in nadat het is gebruikt voor het vernieuwen van het toegangs token. Voor een operationele werk belasting moet u voordat elke Kopieer activiteit wordt uitgevoerd, een geldig vernieuwings token instellen voor het gebruik van ADF.<br/>Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja voor OAuth 2,0-verificatie |
 | useEncryptedEndpoints | Hiermee geeft u op of de eind punten van de gegevens bron moeten worden versleuteld met HTTPS. De standaardwaarde is waar.  | Nee |
 | useHostVerification | Hiermee geeft u op of de hostnaam in het certificaat van de server moet overeenkomen met de hostnaam van de server bij het maken van verbinding via TLS. De standaardwaarde is waar.  | Nee |
 | usePeerVerification | Hiermee wordt aangegeven of de identiteit van de server moet worden gecontroleerd wanneer er verbinding wordt gemaakt via TLS. De standaardwaarde is waar.  | Nee |
@@ -212,7 +212,7 @@ Let op het volgende wanneer u de Xero-query opgeeft:
 
 - Tabellen met complexe items worden op meerdere tabellen gesplitst. Bank transacties hebben bijvoorbeeld een complexe gegevens structuur ' regel items ', dus gegevens van Bank transacties worden toegewezen aan een tabel `Bank_Transaction` en `Bank_Transaction_Line_Items` , met `Bank_Transaction_ID` als refererende sleutel, om ze samen te koppelen.
 
-- Xero-gegevens zijn beschikbaar via twee schema's: `Minimal` (standaard) en `Complete` . Het volledige schema bevat vereiste aanroep tabellen waarvoor extra gegevens (bijvoorbeeld ID-kolom) nodig zijn voordat de gewenste query wordt uitgevoerd.
+- Xero-gegevens zijn beschikbaar via twee schema's: `Minimal` (standaard) en `Complete` . Het volledige schema bevat vereiste oproep tabellen, waarvoor extra gegevens (bijvoorbeeld ID-kolom) zijn vereist voordat de gewenste query wordt gemaakt.
 
 De volgende tabellen hebben dezelfde informatie in het minimale en volledige schema. Gebruik Mini maal schema (standaard) om het aantal API-aanroepen te verminderen.
 

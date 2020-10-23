@@ -1,25 +1,28 @@
 ---
-title: Verzamelen en analyseren van Windows-gebeurtenis Logboeken in Azure Monitor | Microsoft Docs
+title: Gegevens bronnen van Windows-gebeurtenis logboeken verzamelen met Log Analytics agent in Azure Monitor
 description: Hierin wordt beschreven hoe u de verzameling van Windows-gebeurtenis logboeken configureert door Azure Monitor en Details van de records die ze maken.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/28/2018
-ms.openlocfilehash: aa34196233ce4037ef6fa49b782b9aa958f7632d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: 109e96f862ec2f3ddf879bccba114c44aecfe3c8
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87075249"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440600"
 ---
-# <a name="windows-event-log-data-sources-in-azure-monitor"></a>Gegevens bronnen in het Windows-gebeurtenis logboek in Azure Monitor
-Windows-gebeurtenis logboeken zijn een van de meest voorkomende [gegevens bronnen](agent-data-sources.md) voor het verzamelen van gegevens met behulp van Windows-agents, omdat veel toepassingen naar het Windows-gebeurtenis logboek schrijven.  U kunt gebeurtenissen uit standaard logboeken, zoals systeem en toepassing, verzamelen naast het opgeven van aangepaste logboeken die zijn gemaakt door toepassingen die u wilt bewaken.
+# <a name="collect-windows-event-log-data-sources-with-log-analytics-agent"></a>Gegevens bronnen van Windows-gebeurtenis logboeken verzamelen met Log Analytics-agent
+Windows-gebeurtenis logboeken zijn een van de meest voorkomende [gegevens bronnen](agent-data-sources.md) voor log Analytics-agents op virtuele Windows-machines, omdat veel toepassingen naar het Windows-gebeurtenis logboek schrijven.  U kunt gebeurtenissen uit standaard logboeken, zoals systeem en toepassing, verzamelen naast het opgeven van aangepaste logboeken die zijn gemaakt door toepassingen die u wilt bewaken.
+
+> [!IMPORTANT]
+> In dit artikel wordt Inge gaan op het verzamelen van Windows-gebeurtenissen met de [log Analytics agent](log-analytics-agent.md) , een van de agents die door Azure monitor worden gebruikt. Andere agents verzamelen verschillende gegevens en worden anders geconfigureerd. Zie [overzicht van Azure monitor agents](agents-overview.md) voor een lijst met beschik bare agents en de gegevens die ze kunnen verzamelen.
 
 ![Windows-gebeurtenissen](media/data-sources-windows-events/overview.png)     
 
 ## <a name="configuring-windows-event-logs"></a>Windows-gebeurtenis logboeken configureren
-Configureer Windows-gebeurtenis logboeken [in het menu Data van de geavanceerde instellingen](agent-data-sources.md#configuring-data-sources).
+Configureer Windows-gebeurtenis logboeken [in het menu Data van de geavanceerde instellingen](agent-data-sources.md#configuring-data-sources) voor de werk ruimte log Analytics.
 
 Azure Monitor verzamelt alleen gebeurtenissen uit de Windows-gebeurtenis logboeken die zijn opgegeven in de instellingen.  U kunt een gebeurtenis logboek toevoegen door de naam van het logboek te typen en te klikken op **+** .  Voor elk logboek worden alleen de gebeurtenissen met de geselecteerde Ernst verzameld.  Controleer de ernst van het specifieke logboek dat u wilt verzamelen.  U kunt geen aanvullende criteria opgeven om gebeurtenissen te filteren.
 
@@ -30,7 +33,7 @@ Wanneer u de naam van een gebeurtenis logboek typt, geeft Azure Monitor suggesti
 > [!NOTE]
 > Kritieke gebeurtenissen van het Windows-gebeurtenis logboek hebben de ernst fout in Azure Monitor Logboeken.
 
-## <a name="data-collection"></a>Gegevensverzameling
+## <a name="data-collection"></a>Gegevens verzamelen
 Azure Monitor verzamelt elke gebeurtenis die overeenkomt met een bepaalde ernst van een bewaakt gebeurtenis logboek wanneer de gebeurtenis wordt gemaakt.  De agent legt de locatie vast in elk gebeurtenis logboek dat wordt verzameld van.  Als de agent gedurende een bepaalde tijd offline gaat, worden er gebeurtenissen verzameld van waar deze voor het laatst is uitgeschakeld, zelfs als deze gebeurtenissen zijn gemaakt terwijl de agent offline was.  Deze gebeurtenissen kunnen niet worden verzameld als het gebeurtenis logboek vastloopt met niet-verzamelde gebeurtenissen die worden overschreven terwijl de agent offline is.
 
 >[!NOTE]

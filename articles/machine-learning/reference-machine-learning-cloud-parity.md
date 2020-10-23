@@ -11,12 +11,12 @@ ms.author: andzha
 author: Anurzeuii
 ms.date: 08/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: 4a6f09fdff82b8e86c7fe75018c5267dba3c1b4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ddfe1344b235500f0f1ea69b6e3d8c537f96b855
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90892982"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426523"
 ---
 # <a name="azure-machine-learning-sovereign-cloud-parity"></a>Azure Machine Learning soevereine Cloud pariteit
 
@@ -122,7 +122,7 @@ We streven ernaar maximale pariteit te bieden tussen onze open bare Cloud en soe
 | Basis-en SSH-toegang tot reken resources.                                          | JA | JA |  |
 | De beveiliging van geïmplementeerde systemen (instanties, eind punten, enz.) onderhouden, inclusief Endpoint Protection, patches en logboek registratie |  GEDEELTELIJKE|  GEDEELTELIJKE |ACI achter VNet en privé-eind punt is momenteel niet beschikbaar |                                  
 | Beheer (het gebruik van ACI/AKS-integratie uitschakelen/beperken)                    | GEDEELTELIJKE| GEDEELTELIJKE |ACI achter VNet en privé-eind punt is momenteel niet beschikbaar|
-| Role-Based Access Control (RBAC)-aangepaste gemaakte rollen                           | JA | JA |  |
+| Op rollen gebaseerd toegangs beheer op basis van Azure (Azure RBAC)-aangepaste functie creatie                           | JA | JA |  |
 | Toegang tot ACR-installatie kopieën beheren die worden gebruikt door de ML-service (door Azure aangestuurd/onderhouden versus aangepast)  |GEDEELTELIJKE|  GEDEELTELIJKE | ACR achter persoonlijk eind punt en VNet niet ondersteund in Azure Government |
 | **Algemeen Machine Learning service gebruik** |  | | |
 | De mogelijkheid om een model te maken voor een ontwikkel omgeving, het model te trainen, te hosten als een eind punt en dit te gebruiken via een webapp     | JA | JA |  |

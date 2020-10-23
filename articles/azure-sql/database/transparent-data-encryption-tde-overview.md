@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 10/12/2020
-ms.openlocfilehash: 10728a5500d8ad36c006bac9176422c6afb9bf1a
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 878fa9f576e50fb53e648d3bf39f98558d6e880a
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945988"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441093"
 ---
 # <a name="transparent-data-encryption-for-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Transparante gegevens versleuteling voor SQL Database, SQL Managed instance en Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -32,7 +32,7 @@ Voor Azure SQL Database en Azure Synapse wordt de TDE-Protector ingesteld op [Se
 > Alle nieuw gemaakte data bases in SQL Database worden standaard versleuteld met behulp van door de service beheerde transparante gegevens versleuteling. Bestaande SQL-data bases die zijn gemaakt vóór 2017 en SQL-data bases die zijn gemaakt via Restore, geo-replicatie en database kopie, worden niet standaard versleuteld. Bestaande data bases van SQL Managed instances die vóór februari 2019 zijn gemaakt, worden niet standaard versleuteld. SQL Managed instance-data bases die zijn gemaakt via herstellen, nemen versleutelings status van de bron over.
 
 > [!NOTE]
-> TDE kan niet worden gebruikt voor het versleutelen van de **hoofd** database in Azure SQL database en Azure SQL Managed instance. De **hoofd** database bevat objecten die nodig zijn om de TDe-bewerkingen uit te voeren op de gebruikers databases.
+> TDE kan niet worden gebruikt voor het versleutelen van systeem databases, zoals de **hoofd** database, in Azure SQL database en Azure SQL Managed instance. De **hoofd** database bevat objecten die nodig zijn om de TDe-bewerkingen uit te voeren op de gebruikers databases.
 
 ## <a name="service-managed-transparent-data-encryption"></a>Door service beheerde transparante gegevens versleuteling
 
@@ -91,7 +91,7 @@ TDE beheren met behulp van Power shell.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> De Power shell-Azure Resource Manager module wordt nog steeds ondersteund, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. Zie [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)voor deze cmdlets. De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn vrijwel identiek.
+> De Power shell-Azure Resource Manager module wordt nog steeds ondersteund, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. Zie [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/) voor deze cmdlets. De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn vrijwel identiek.
 
 Als u TDE via Power shell wilt configureren, moet u zijn verbonden met de Azure-eigenaar, Inzender of SQL Security Manager.
 

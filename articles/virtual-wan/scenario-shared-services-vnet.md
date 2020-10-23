@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b8cc59b805cd757edce79a14d124ea244b4652a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 03c71664769f1518ba80d36867c71ef35b2ca026
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91267479"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461461"
 ---
 # <a name="scenario-route-to-shared-services-vnets"></a>Scenario: route naar gedeelde services VNets
 
@@ -24,15 +24,17 @@ Zie [about Virtual hub Routing](about-virtual-hub-routing.md)(Engelstalig) voor 
 
 ## <a name="design"></a><a name="design"></a>Ontwerp
 
-We kunnen een verbindings matrix gebruiken om de vereisten van dit scenario samen te vatten. In de matrix wordt in elke cel beschreven of een virtuele WAN-verbinding (de ' aan ' kant van de stroom, de rijkoppen in de tabel) een bestemmings voorvoegsel (de ' aan '-zijde van de stroom, de kolom koppen in de tabel cursief) voor een specifieke verkeers stroom. Een ' X ' betekent dat de connectiviteit wordt verschaft door Virtual WAN:
+We kunnen een verbindings matrix gebruiken om de vereisten van dit scenario samen te vatten:
 
 **Verbindings matrix**
 
 | Van             | Aan:   |*Geïsoleerde VNets*|*Gedeeld VNet*|*Vertakkingen*|
 |---|---|---|---|---|
-|**Geïsoleerde VNets**|&#8594;|                |        X        |       X      |
-|**Gedeelde VNets**  |&#8594;|       X        |        X        |       X      |
-|**Vertakkingen**      |&#8594;|       X        |        X        |       X      |
+|**Geïsoleerde VNets**|&#8594;|        | Direct | Direct |
+|**Gedeelde VNets**  |&#8594;| Direct | Direct | Direct |
+|**Vertakkingen**      |&#8594;| Direct | Direct | Direct |
+
+Elk van de cellen in de vorige tabel beschrijft of een virtuele WAN-verbinding (de ' aan ' kant van de stroom, de rijkoppen) communiceert met een bestemming (de ' aan '-zijde van de stroom, de kolom koppen cursief). In dit scenario zijn er geen firewalls of virtuele netwerk apparaten, waardoor communicatie rechtstreeks via Virtual WAN (dus het woord ' direct ' in de tabel) wordt uitgevoerd.
 
 Net als bij het [geïsoleerde VNet-scenario](scenario-isolate-vnets.md)biedt deze verbindings matrix we twee verschillende rijtypen, die worden omgezet in twee route tabellen (de VNets van de gedeelde services en de vertakkingen hebben dezelfde connectiviteits vereisten). Virtuele WAN heeft al een standaard route tabel, dus we hebben een andere aangepaste route tabel nodig, waarin we **RT_SHARED** in dit voor beeld zullen aanroepen.
 

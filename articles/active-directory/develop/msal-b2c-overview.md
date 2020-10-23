@@ -13,12 +13,12 @@ ms.date: 06/05/2020
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 13b478e85278827258ea2fc25a0ee4298039fb1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab072fa53d3ecc3f856b6765acfb8c19da3ff298
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88119785"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442249"
 ---
 # <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>Micro soft-verificatie bibliotheek voor Java script gebruiken om te werken met Azure AD B2C
 
@@ -56,16 +56,22 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodej
 
 ### <a name="step-3-configure-authentication"></a>Stap 3: verificatie configureren
 
-1. Open het bestand `config.js` in het voorbeeld.
+1. Open het bestand `config.json` in het voorbeeld.
 
-2. Configureer het voor beeld met de referenties van de toepassing die u eerder hebt verkregen tijdens het registreren van uw toepassing. Wijzig de volgende regels code door de waarden te vervangen door de namen van uw clientID, host, tenantId en beleids naam.
+2. Configureer het voor beeld met de referenties van de toepassing die u eerder hebt verkregen tijdens het registreren van uw toepassing. Wijzig de volgende regels code door de waarden te vervangen door de naam van uw Tenant, de client-ID en de naam van het beleid.
 
-```JavaScript
-const clientID = "<Application ID for your Node.js web API - found on Properties page in Azure portal e.g. 93733604-cc77-4a3c-a604-87084dd55348>";
-const b2cDomainHost = "<Domain of your B2C host eg. fabrikamb2c.b2clogin.com>";
-const tenantId = "<your-tenant-ID>.onmicrosoft.com"; // Alternatively, you can use your Directory (tenant) ID (GUID)
-const policyName = "<Name of your sign in / sign up policy, e.g. B2C_1_signupsignin1>";
-```
+    ```json
+         "credentials": {
+             "tenantName": "<your-tenant-name>",
+             "clientID": "<your-webapi-application-ID>"
+         },
+         "policies": {
+             "policyName": "B2C_1_signupsignin1"
+         },
+         "resource": {
+             "scope": ["demo.read"] 
+         },
+    ```
 
 Bekijk dit [Node.js B2C Web API](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi)-voor beeld voor meer informatie.
 
@@ -209,6 +215,6 @@ Wanneer een gebruiker een **verg eten wacht woord**selecteert, genereert uw toep
 
 Meer informatie over deze Azure AD B2C-concepten:
 
-- [Gebruikersstromen](../../active-directory-b2c/tutorial-create-user-flows.md)
+- [Gebruikers stromen](../../active-directory-b2c/tutorial-create-user-flows.md)
 - [Aangepast beleid](../../active-directory-b2c/custom-policy-get-started.md)
 - [UX-aanpassing](../../active-directory-b2c/custom-policy-configure-user-input.md)

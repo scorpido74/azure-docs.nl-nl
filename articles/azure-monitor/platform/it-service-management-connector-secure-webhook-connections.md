@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
-ms.openlocfilehash: 447b781ec83a01a58e6af9e9e43f75b3fc56b10f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 64d45861f37e2015b747a4db0feb2d32e68fe893
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370777"
+ms.locfileid: "92427330"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>Verbinding maken tussen Azure en ITSM-hulpprogram ma's met behulp van beveiligde export
 
@@ -57,7 +57,10 @@ Ga met de volgende stappen aan de slag met het ITSM-connector-hulp programma:
 
 1. Uw app bij Azure AD registreren.
 2. Maak een beveiligde webhook-actie groep.
-3. Configureer uw partner omgeving. Vandaag ondersteunen we één leverancier die BMC Helix is.
+3. Configureer uw partner omgeving. 
+
+Beveiligd exporteren ondersteunt verbindingen met de volgende ITSM-hulpprogram ma's:
+* [BMC Helix](https://docs.microsoft.com/azure/azure-monitor/platform/it-service-management-connector-secure-webhook-connections#connect-bmc-helix-to-azure-monitor)
 
 ## <a name="register-with-azure-active-directory"></a>Registreren bij Azure Active Directory
 
@@ -86,18 +89,18 @@ Volg deze instructies voor beveiligde webhook om een webhook aan een actie toe t
 5. Selecteer **beveiligde webhook**.
 6. Selecteer deze details:
    1. Selecteer de object-ID van de Azure Active Directory instantie die u hebt geregistreerd.
-   2. Plak voor de URI in de webhook-URL die u hebt gekopieerd uit de leveranciers omgeving.
+   2. Plak voor de URI in de webhook-URL die u hebt gekopieerd uit de [ITSM-werk omgeving](https://docs.microsoft.com/azure/azure-monitor/platform/it-service-management-connector-secure-webhook-connections#configure-the-partner-environment).
    3. Stel **het algemene waarschuwings schema** in op **Ja**. 
 
    In de volgende afbeelding ziet u de configuratie van een voor beeld van een beveiligde webhook-actie:
 
    ![Scherm afbeelding met een beveiligde webhook-actie.](media/it-service-management-connector-secure-webhook-connections/secure-webhook.png)
 
-## <a name="configure-the-partner-environment"></a>De partner omgeving configureren
+## <a name="configure-the-itsm-tool-environment"></a>De ITSM-hulp programma omgeving configureren
 
 De configuratie bevat twee stappen:
 1. Haal de URI voor de beveiligde export definitie op.
-2. Definities op basis van de stroom van de leverancier.
+2. Definities volgens de stroom van het ITSM-hulp programma.
 
 ### <a name="connect-bmc-helix-to-azure-monitor"></a>BMC Helix verbinden met Azure Monitor
 
