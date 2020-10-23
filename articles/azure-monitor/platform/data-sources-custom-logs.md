@@ -1,21 +1,24 @@
 ---
-title: Aangepaste logboeken verzamelen in Azure Monitor | Microsoft Docs
+title: Aangepaste logboeken met Log Analytics agent verzamelen in Azure Monitor
 description: Azure Monitor kunt gebeurtenissen verzamelen uit tekst bestanden op zowel Windows-als Linux-computers.  In dit artikel wordt beschreven hoe u een nieuw aangepast logboek en Details definieert van de records die ze in Azure Monitor maken.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 09/26/2019
-ms.openlocfilehash: 4f8ef04343d873bcb94ccee599ecbc7c2a1ef94c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: 406371325ddf8b555ede481582e19635b85abe49
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269485"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461563"
 ---
-# <a name="custom-logs-in-azure-monitor"></a>Aangepaste logboeken in Azure Monitor
+# <a name="collect-custom-logs-with-log-analytics-agent-in-azure-monitor"></a>Aangepaste logboeken met Log Analytics agent verzamelen in Azure Monitor
 
-Met de aangepaste logboek gegevens bron in Azure Monitor kunt u gebeurtenissen uit tekst bestanden op zowel Windows-als Linux-computers verzamelen. Veel toepassingen registreren gegevens in tekst bestanden in plaats van standaard logboek registratie Services, zoals Windows-gebeurtenis logboek of syslog. Zodra de gegevens zijn verzameld, kunt u deze in afzonderlijke velden in uw query's parseren of de gegevens tijdens het verzamelen naar afzonderlijke velden extra heren.
+Met de gegevens bron aangepaste logboeken voor de Log Analytics-agent in Azure Monitor kunt u gebeurtenissen verzamelen uit tekst bestanden op zowel Windows-als Linux-computers. Veel toepassingen registreren gegevens in tekst bestanden in plaats van standaard logboek registratie Services, zoals Windows-gebeurtenis logboek of syslog. Zodra de gegevens zijn verzameld, kunt u deze in afzonderlijke velden in uw query's parseren of de gegevens tijdens het verzamelen naar afzonderlijke velden extra heren.
+
+> [!IMPORTANT]
+> In dit artikel wordt beschreven hoe u aangepaste logboeken verzamelt met de [log Analytics-agent](log-analytics-agent.md) die een van de agents die door Azure monitor worden gebruikt. Andere agents verzamelen verschillende gegevens en worden anders geconfigureerd. Zie [overzicht van Azure monitor agents](agents-overview.md) voor een lijst met beschik bare agents en de gegevens die ze kunnen verzamelen.
 
 ![Aangepaste logboek verzameling](media/data-sources-custom-logs/overview.png)
 
@@ -109,7 +112,7 @@ Gebruik het volgende proces in de Azure Portal om een aangepast logboek te verwi
 1. Selecteer in het menu **Data** van de **Geavanceerde instellingen** voor uw werk ruimte de optie **aangepaste logboeken** om alle aangepaste logboeken weer te geven.
 2. Klik op **verwijderen** naast het aangepaste logboek dat u wilt verwijderen.
 
-## <a name="data-collection"></a>Gegevensverzameling
+## <a name="data-collection"></a>Gegevens verzamelen
 Azure Monitor worden ongeveer elke vijf minuten nieuwe vermeldingen van elk aangepast logboek verzameld.  De agent registreert de locatie in elk logboek bestand dat wordt verzameld.  Als de agent gedurende een bepaalde tijd offline gaat, worden er door Azure Monitor gegevens verzameld van waar deze zich voor het laatst heeft verlaten, zelfs als deze vermeldingen zijn gemaakt terwijl de agent offline was.
 
 De volledige inhoud van de logboek vermelding wordt geschreven naar één eigenschap met de naam **RawData**.  Zie [tekst gegevens parseren in azure monitor](../log-query/parse-text.md) voor methoden om elke geïmporteerde logboek vermelding te parseren in meerdere eigenschappen.

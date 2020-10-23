@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 127f05298483dcf155000c2eda8f590fc069a1e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2d7c1c0245649fdb7eed1033a953b8cc3933626
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87908687"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442113"
 ---
 # <a name="limitations-of-azure-ad-b2b-collaboration"></a>Beperkingen van Azure AD B2B-samen werking
 Azure Active Directory (Azure AD) B2B-samen werking is momenteel onderhevig aan de beperkingen die in dit artikel worden beschreven.
@@ -28,13 +28,13 @@ Met Azure AD B2B kunt u multi-factor Authentication afdwingen voor de resource o
 In de B2B-samenwerkings stromen voegen we gebruikers toe aan de Directory en kunnen ze deze dynamisch bijwerken tijdens de inwisseling van de uitnodiging, de toewijzing van apps, enzovoort. De updates en schrijf bewerkingen worden gewoonlijk uitgevoerd in één directory-exemplaar en moeten worden gerepliceerd voor alle exemplaren. De replicatie is voltooid zodra alle exemplaren zijn bijgewerkt. Soms kunnen replicatie latenties optreden wanneer het object wordt geschreven of bijgewerkt in één exemplaar en de aanroep voor het ophalen van dit object naar een ander exemplaar. Als dat gebeurt, moet u vernieuwen of opnieuw proberen om te helpen. Als u een app met behulp van onze API schrijft, probeert u een goede, verdedigings praktijk om dit probleem op te lossen.
 
 ## <a name="azure-ad-directories"></a>Azure AD-directory's
-Azure AD B2B is onderhevig aan Azure AD-service Directory limieten. Zie [Azure AD-service limieten en-beperkingen](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions)voor meer informatie over het aantal directory's dat een gebruiker kan maken en het aantal directory's waarmee een gebruiker of gast gebruiker kan behoren.
+Azure AD B2B is onderhevig aan Azure AD-service Directory limieten. Zie [Azure AD-service limieten en-beperkingen](../users-groups-roles/directory-service-limits-restrictions.md)voor meer informatie over het aantal directory's dat een gebruiker kan maken en het aantal directory's waarmee een gebruiker of gast gebruiker kan behoren.
 
 ## <a name="national-clouds"></a>Nationale clouds
-[Nationale Clouds](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud) zijn fysiek geïsoleerde exemplaren van Azure. B2B-samen werking wordt niet ondersteund in nationale Cloud grenzen. Als uw Azure-Tenant zich bijvoorbeeld in de open bare, globale Cloud bevindt, kunt u geen gebruiker uitnodigen waarvan het account zich in een nationale Cloud bevindt. Als u wilt samen werken met de gebruiker, vraagt u deze voor een ander e-mail adres of maakt u een gebruikers account voor de gebruiker in uw Directory.
+[Nationale Clouds](../develop/authentication-national-cloud.md) zijn fysiek geïsoleerde exemplaren van Azure. B2B-samen werking wordt niet ondersteund in nationale Cloud grenzen. Als uw Azure-Tenant zich bijvoorbeeld in de open bare, globale Cloud bevindt, kunt u geen gebruiker uitnodigen waarvan het account zich in een nationale Cloud bevindt. Als u wilt samen werken met de gebruiker, vraagt u deze voor een ander e-mail adres of maakt u een gebruikers account voor de gebruiker in uw Directory.
 
 ## <a name="azure-us-government-clouds"></a>Azure Amerikaanse overheids Clouds
-Binnen de Azure-Cloud voor de Amerikaanse overheid wordt B2B-samen werking ondersteund tussen tenants die zich in de cloud van Azure Amerikaanse overheid bevinden en die allebei ondersteuning bieden voor B2B-samen werking. Azure US Government-tenants die ondersteuning bieden voor B2B-samen werking, kunnen ook samen werken met sociale gebruikers die gebruikmaken van micro soft-of Google-accounts. Als u een gebruiker buiten deze groepen uitnodigt (bijvoorbeeld als de gebruiker zich in een Tenant bevindt die geen deel uitmaakt van de Azure US Government-Cloud of geen B2B-samen werking ondersteunt), zal de uitnodiging mislukken of kan de gebruiker de uitnodiging niet inwisselen. Zie [Azure Active Directory Premium P1-en P2-variaties](https://docs.microsoft.com/azure/azure-government/documentation-government-services-securityandidentity#azure-active-directory-premium-p1-and-p2)voor meer informatie over andere beperkingen.
+Binnen de Azure-Cloud voor de Amerikaanse overheid wordt B2B-samen werking ondersteund tussen tenants die zich in de cloud van Azure Amerikaanse overheid bevinden en die allebei ondersteuning bieden voor B2B-samen werking. Azure US Government-tenants die ondersteuning bieden voor B2B-samen werking, kunnen ook samen werken met sociale gebruikers die gebruikmaken van micro soft-of Google-accounts. Als u een gebruiker buiten deze groepen uitnodigt (bijvoorbeeld als de gebruiker zich in een Tenant bevindt die geen deel uitmaakt van de Azure US Government-Cloud of geen B2B-samen werking ondersteunt), zal de uitnodiging mislukken of kan de gebruiker de uitnodiging niet inwisselen. Zie [Azure Active Directory Premium P1-en P2-variaties](../../azure-government/compare-azure-government-global-azure.md#azure-active-directory-premium-p1-and-p2)voor meer informatie over andere beperkingen.
 
 ### <a name="how-can-i-tell-if-b2b-collaboration-is-available-in-my-azure-us-government-tenant"></a>Hoe kan ik zien of B2B-samen werking beschikbaar is in mijn Azure US Government-Tenant?
 Ga als volgt te werk om erachter te komen of uw Azure VS government Cloud Tenant ondersteuning biedt voor B2B-samen werking:

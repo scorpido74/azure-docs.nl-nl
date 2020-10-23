@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/06/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to learn the options available to monitor the health of my vaults
-ms.openlocfilehash: 6b179dd2662bf6fa545ea44b723671f1499b9e35
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9195bb59264731914740e1cca902707603e3502d
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88589007"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427023"
 ---
 # <a name="monitoring-and-alerting-for-azure-key-vault"></a>Bewaking en waarschuwingen voor Azure Key Vault
 
@@ -53,7 +53,7 @@ Zodra u de sleutel kluis hebt gestart om uw productie geheimen op te slaan, is h
 3. **Metrische gegevens** selecteren onder **bewaking** 
 
 > [!div class="mx-imgBorder"]
-> ![Scherm opname van Azure Portal](../media/alert-1.png)
+> ![Scherm opname van de optie metrische gegevens in de sectie bewaking.](../media/alert-1.png)
 
 4. Werk de titel van de grafiek bij naar wat u op het dash board wilt weer geven. 
 5. Selecteer het bereik. In dit voor beeld wordt een enkele sleutel kluis geselecteerd. 
@@ -61,7 +61,7 @@ Zodra u de sleutel kluis hebt gestart om uw productie geheimen op te slaan, is h
 7. Werk het tijds bereik bij in de afgelopen 24 uur en werk de tijd granulatie bij naar 1 minuut. 
 
 > [!div class="mx-imgBorder"]
-> ![Scherm opname van Azure Portal](../media/alert-2.png)
+> ![Scherm opname van de algemene beschikbaarheids metric van de kluis.](../media/alert-2.png)
 
 8. Herhaal de bovenstaande stappen voor de metrische gegevens voor de kluis verzadiging en service-API-latentie. Selecteer **vastmaken aan dash board** om uw metrische gegevens in een dash board op te slaan. 
 
@@ -71,19 +71,19 @@ Zodra u de sleutel kluis hebt gestart om uw productie geheimen op te slaan, is h
 9. Als u alle typen bewerkingen op de sleutel kluis wilt bewaken, gebruikt u de totale metrische gegevens voor **Service-API-Hits** en selecteert u splitsen op **activiteitstype Toep assen**
 
 > [!div class="mx-imgBorder"]
-> ![Scherm opname van Azure Portal](../media/alert-3.png)
+> ![Scherm afbeelding met de knop splitsing Toep assen.](../media/alert-3.png)
 
 10. Als u wilt controleren op fout codes in de sleutel kluis, gebruikt u de totale metrische gegevens van de **Service-API-resultaten** en selecteert u vervolgens **op type splitsing Toep assen op activiteitstype**
 
 > [!div class="mx-imgBorder"]
-> ![Scherm opname van Azure Portal](../media/alert-4.png)
+> ![Scherm opname van het geselecteerde totale aantal metrische Service-API-resultaten.](../media/alert-4.png)
 
 U hebt nu een dash board dat er als volgt uitziet. U kunt in de rechter bovenhoek van elke tegel klikken op de drie punten en u kunt de tegels aanpassen en het formaat ervan wijzigen. 
 
 Zodra u het dash board opslaat en publiceert, wordt er een nieuwe resource in uw Azure-abonnement gemaakt. U kunt deze op elk gewenst moment weer geven door te zoeken naar "gedeeld dash board". 
 
 > [!div class="mx-imgBorder"]
-> ![Scherm opname van Azure Portal](../media/alert-5.png)
+> ![Scherm opname waarin het gepubliceerde dash board wordt weer gegeven.](../media/alert-5.png)
 
 ## <a name="how-to-configure-alerts-on-your-key-vault"></a>Waarschuwingen op uw Key Vault configureren 
 
@@ -101,20 +101,20 @@ Een actie groep is een Configureer bare lijst van meldingen en eigenschappen.
 3. **Acties beheren** selecteren
 
 > [!div class="mx-imgBorder"]
-> ![Scherm opname van Azure Portal](../media/alert-6.png)
+> ![Scherm afbeelding die de knop acties beheren markeert.](../media/alert-6.png)
 
 4. Selecteer **+ actie groep toevoegen**
 
 > [!div class="mx-imgBorder"]
-> ![Scherm opname van Azure Portal](../media/alert-7.png)
+> ![Scherm afbeelding met de knop + actie groep toevoegen.](../media/alert-7.png)
 
 5. Kies het **actie type** voor uw actie groep. In dit voor beeld maken we een e-mail waarschuwing.
 
 > [!div class="mx-imgBorder"]
-> ![Scherm opname van Azure Portal](../media/alert-8.png)
+> ![Scherm opname van de velden die nodig zijn om een actie groep toe te voegen.](../media/alert-8.png)
 
 > [!div class="mx-imgBorder"]
-> ![Scherm opname van Azure Portal](../media/alert-9.png)
+> ![Scherm opname van wat er is vereist voor het toevoegen van een e-mail of SMS-bericht waarschuwing.](../media/alert-9.png)
 
 6. Klik onder aan de pagina op **OK**. U hebt een actie groep gemaakt. 
 
@@ -125,12 +125,12 @@ Nu u een actie groep hebt geconfigureerd, worden de waarschuwings drempels voor 
 1. Selecteer uw sleutel kluis resource in het Azure Portal en selecteer **waarschuwingen** onder **bewaking**
 
 > [!div class="mx-imgBorder"]
-> ![Scherm opname van Azure Portal](../media/alert-10.png)
+> ![Scherm afbeelding met de menu optie waarschuwingen in de sectie bewaking.](../media/alert-10.png)
 
 2. **Nieuwe waarschuwings regel** selecteren
 
 > [!div class="mx-imgBorder"]
-> ![Scherm opname van Azure Portal](../media/alert-11.png)
+> ![Scherm afbeelding met de knop + nieuwe waarschuwings regel.](../media/alert-11.png)
 
 3. Selecteer het bereik van uw waarschuwings regel. U kunt één kluis of meerdere selecteren. 
 
@@ -138,7 +138,7 @@ Nu u een actie groep hebt geconfigureerd, worden de waarschuwings drempels voor 
 > Wanneer u meerdere kluizen selecteert voor het bereik van uw waarschuwingen, moeten alle geselecteerde kluizen zich in dezelfde regio bevinden. U moet afzonderlijke waarschuwings regels configureren voor kluizen in verschillende regio's. 
 
 > [!div class="mx-imgBorder"]
-> ![Scherm opname van Azure Portal](../media/alert-12.png)
+> ![Scherm afbeelding die laat zien hoe u een kluis kunt selecteren.](../media/alert-12.png)
 
 4. Selecteer de voor waarden voor uw waarschuwingen. U kunt een van de volgende signalen kiezen en uw logica definiëren voor waarschuwingen. Het Key Vault Team raadt aan om de volgende waarschuwings drempels te configureren. 
 
@@ -149,13 +149,13 @@ Nu u een actie groep hebt geconfigureerd, worden de waarschuwings drempels voor 
     + Totaal aantal fout codes hoger dan gemiddeld (dynamische drempel waarde) 
 
 > [!div class="mx-imgBorder"]
-> ![Scherm opname van Azure Portal](../media/alert-13.png)
+> ![Scherm afbeelding die laat zien waar u de voor waarden voor waarschuwingen selecteert.](../media/alert-13.png)
 
 ### <a name="example-1-configuring-a-static-alert-threshold-for-latency"></a>Voor beeld 1: een statische waarschuwings drempel configureren voor latentie
 
 Selecteer de **algehele latentie** van de service-API als de signaal naam
 > [!div class="mx-imgBorder"]
-> ![Scherm opname van Azure Portal](../media/alert-14.png)
+> ![Scherm opname van de algemene service API-latentie signaal naam.](../media/alert-14.png)
 
 Raadpleeg de volgende configuratie parameters.
 
@@ -168,14 +168,14 @@ Raadpleeg de volgende configuratie parameters.
 + Selecteer **Gereed**  
 
 > [!div class="mx-imgBorder"]
-> ![Scherm opname van Azure Portal](../media/alert-15.png)
+> ![Scherm afbeelding die de geconfigureerde waarschuwings logica markeert.](../media/alert-15.png)
 
 ### <a name="example-2-configuring-a-dynamic-alert-threshold-for-vault-saturation"></a>Voor beeld 2: een dynamische waarschuwings drempel configureren voor de verzadiging van de kluis 
 
 Wanneer u een dynamische waarschuwing gebruikt, kunt u historische gegevens bekijken van de sleutel kluis die u hebt geselecteerd. Het blauwe gebied vertegenwoordigt het gemiddelde gebruik van uw sleutel kluis. Het rode gebied toont pieken die een waarschuwing zouden hebben geactiveerd, terwijl aan de waarschuwings configuratie andere criteria worden gegeven. De rode stippen tonen instanties van schendingen waarbij aan de criteria voor de waarschuwing is voldaan tijdens het samengevoegde tijd venster. U kunt instellen dat een waarschuwing wordt geactiveerd na een bepaald aantal schendingen binnen een ingestelde periode. Als u geen eerdere gegevens wilt opnemen, is er een optie voor het uitsluiten van oude gegevens hieronder in geavanceerde instellingen. 
 
 > [!div class="mx-imgBorder"]
-> ![Scherm opname van Azure Portal](../media/alert-16.png)
+> ![Scherm afbeelding met een grafiek van de algehele intensiteit van de kluis.](../media/alert-16.png)
 
 Raadpleeg de volgende configuratie parameters.
 
@@ -194,12 +194,12 @@ Raadpleeg de volgende configuratie parameters.
 5. De door u geconfigureerde actie groep toevoegen
 
 > [!div class="mx-imgBorder"]
-> ![Scherm opname van Azure Portal](../media/alert-18.png)
+> ![Scherm afbeelding die laat zien hoe u een actie groep kunt toevoegen.](../media/alert-18.png)
 
 6. De waarschuwing inschakelen en een Ernst toewijzen
 
 > [!div class="mx-imgBorder"]
-> ![Scherm opname van Azure Portal](../media/alert-19.png)
+> ![Scherm afbeelding die laat zien waar de waarschuwing moet worden ingeschakeld en een ernst kan worden toegewezen.](../media/alert-19.png)
 
 7. De waarschuwing maken 
 
@@ -211,4 +211,4 @@ Gefeliciteerd, u hebt nu een bewakings dashboard gemaakt en er zijn waarschuwing
 ### <a name="example-email-alert"></a>Voor beeld van een e-mail waarschuwing 
 
 > [!div class="mx-imgBorder"]
-> ![Scherm opname van Azure Portal](../media/alert-20.png)
+> ![Scherm opname van de informatie die nodig is voor het configureren van een e-mail waarschuwing.](../media/alert-20.png)

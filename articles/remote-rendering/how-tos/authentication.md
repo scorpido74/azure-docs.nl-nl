@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: how-to
-ms.openlocfilehash: e61767b9b8d904eae9a247f48d2d781fd0c95192
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: dc325fdf68c5afbb122f9e77c5509a6a8053a12e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92202715"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427462"
 ---
 # <a name="configure-authentication"></a>Verificatie configureren
 
@@ -48,7 +48,7 @@ Account sleutels worden aanbevolen voor snel prototypen, tijdens de ontwikkeling
 
  Zie voor meer informatie de [zelf studie: Azure remote rendering en model Storage-Azure Active Directory-verificatie beveiligen](../tutorials/unity/security/security.md#azure-active-directory-azure-ad-authentication)
 
-## <a name="role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer
+## <a name="azure-role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer voor Azure
 
 Gebruik de volgende rollen bij het verlenen van toegang op basis van rollen om het toegangs niveau voor uw service te bepalen:
 

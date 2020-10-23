@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 10/09/2020
-ms.openlocfilehash: 16dab7897fc41a97a8607df5a03281582377e1e4
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 05881791d495770167b271e20de173e6679f39d9
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424083"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440651"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Informatie over limieten en configuratie voor Azure Logic Apps
 
@@ -48,7 +48,7 @@ Dit zijn de limieten voor het uitvoeren van een enkele logische app:
 | Naam | Limiet voor meerdere tenants | Limiet voor de integratie service omgeving | Opmerkingen |
 |------|--------------------|---------------------------------------|-------|
 | Uitvoeringsduur | 90 dagen | 366 dagen | De uitvoerings duur wordt berekend op basis van de begin tijd van de uitvoering. |
-| Bewaar periode voor geschiedenis in opslag | 90 dagen | 366 dagen | Wanneer een uitvoering is voltooid of er een time-out optreedt, wordt het bewaren van de uitvoerings geschiedenis altijd berekend met behulp van de begin tijd van de uitvoering en de limiet die is opgegeven op de *huidige tijd* door de werk stroom instelling, de Bewaar periode voor de [**geschiedenis in dagen**](#change-retention). Als u deze instelling wijzigt, wordt de *huidige* limiet altijd gebruikt voor het berekenen van de Bewaar periode, ongeacht de vorige limiet. Wanneer de duur van een uitvoering de huidige limiet overschrijdt, wordt de uitvoering uit de geschiedenis van uitvoeringen verwijderd. <p><p>Stel dat u de limiet voor het bewaren van 90 dagen tot 30 dagen hebt beperkt. Een 60-daagse-oude uitvoering wordt verwijderd uit de uitvoerings geschiedenis. Als u de retentie periode van 30 dagen tot 60 dagen verhoogt, blijft de uitvoering van 20 dagen oud in de geschiedenis van de uitvoeringen voor een andere 40-dag. <p><p>Zie de [Bewaar periode voor de uitvoerings geschiedenis wijzigen in opslag](#change-retention)om de standaard limiet te wijzigen. dit is 90 dagen. |
+| Bewaar periode voor geschiedenis in opslag | 90 dagen | 366 dagen | Als de duur van een uitvoering de huidige Bewaar limiet voor de uitvoerings geschiedenis overschrijdt, wordt de uitvoering verwijderd uit de uitvoerings geschiedenis in de opslag. Of de uitvoering is voltooid of er een time-out optreedt, de retentie van de uitvoerings geschiedenis wordt altijd berekend met behulp van de begin tijd van de uitvoering en de huidige limiet die is opgegeven in de werk stroom instelling, de [**Bewaar periode voor de geschiedenis in dagen**](#change-retention). Ongeacht de vorige limiet wordt de huidige limiet altijd gebruikt voor het berekenen van de Bewaar periode. <p><p>Als u de standaard limiet wilt wijzigen en meer informatie wilt, raadpleegt u de [Bewaar periode voor de uitvoerings geschiedenis wijzigen in de opslag](#change-retention). Als u de maximum limiet wilt verhogen, [neemt u contact op met het Logic apps team](mailto://logicappsemail@microsoft.com) voor hulp bij uw vereisten. |
 | Mini maal terugkeer patroon | 1 seconde | 1 seconde ||
 | Maximum interval van terugkeer patroon | 500 dagen | 500 dagen ||
 |||||
@@ -57,11 +57,17 @@ Dit zijn de limieten voor het uitvoeren van een enkele logische app:
 
 ### <a name="change-run-history-retention-in-storage"></a>Bewaar periode voor uitvoerings geschiedenis in opslag wijzigen
 
-Als u de standaard limiet voor het bewaren van uitvoerings geschiedenis in de opslag wilt wijzigen, voert u de volgende stappen uit. Als u de maximum limiet wilt verhogen, [neemt u contact op met het Logic apps team](mailto://logicappsemail@microsoft.com) voor hulp bij uw vereisten.
+Als u de standaard limiet voor het bewaren van uitvoerings geschiedenis in de opslag wilt wijzigen, voert u de volgende stappen uit.
 
-> [!NOTE]
-> Voor logische apps in azure met meerdere tenants is de standaard limiet van 90 dagen gelijk aan de maximum limiet. U kunt deze waarde alleen verlagen.
-> Voor Logic apps in een integratie service omgeving kunt u de standaard limiet van 90 dagen verlagen of verhogen.
+* Voor logische apps in azure met meerdere tenants is de standaard limiet van 90 dagen gelijk aan de maximum limiet. U kunt deze waarde alleen verlagen.
+
+* Voor Logic apps in een integratie service omgeving kunt u de standaard limiet van 90 dagen verlagen of verhogen.
+
+Stel dat u de limiet voor het bewaren van 90 dagen tot 30 dagen hebt beperkt. Een 60-daagse-oude uitvoering wordt verwijderd uit de uitvoerings geschiedenis. Als u de retentie periode van 30 dagen tot 60 dagen verhoogt, blijft de uitvoering van 20 dagen oud in de geschiedenis van de uitvoeringen voor een andere 40-dag. 
+
+
+> [!IMPORTANT]
+> Om te voor komen dat de uitvoerings geschiedenis verloren gaat, moet u ervoor zorgen dat de Bewaar limiet *altijd* hoger is dan de langst mogelijke duur van de uitvoering. Als dat niet het geval is, gaat de uitvoerings geschiedenis verloren.
 
 1. Zoek en selecteer **Logic apps**in het zoekvak [Azure Portal](https://portal.azure.com) .
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 7b404d05f512449c99e60c0bfdc93aab22c399ef
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: c71a7d4737ad34c43df1aa302d9517c61ed400b2
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019015"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440787"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Meer informatie over dubbele modellen in azure Digital Apparaatdubbels
 
@@ -230,7 +230,7 @@ De uitbreidende interface kan geen van de definities van de bovenliggende interf
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie modellen beheren met de DigitalTwinsModels-Api's:
+Zie modellen beheren met de DigitalTwinModels-Api's:
 * [*Instructies: Aangepaste modellen beheren*](how-to-manage-model.md)
 
 Of leer hoe digitale apparaatdubbels worden gemaakt op basis van modellen:

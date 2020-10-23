@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 715e99f07d0fcbc77fd1769e5da1cae6b46ac97e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8dc4087d1a10b4c4af7477a02f397c5a2bc547c2
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850731"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459387"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscience"></a>Zelf studie: integratie Azure Active Directory met Jobscience
 
@@ -115,7 +115,7 @@ In deze sectie schakelt u eenmalige aanmelding voor Azure AD in de Azure Portal 
  
 1. Klik in de sectie **SAML-handtekening certificaat** op **certificaat (base64)** en sla het certificaat bestand op uw computer op.
 
-    ![Scherm afbeelding toont het deel venster SAML-handtekening certificaat waarin u een certificaat kunt downloaden.](./media/jobscience-tutorial/tutorial_jobscience_certificate.png) 
+    ![Schermopname van het deelvenster SAML-handtekeningcertificaat waar u een certificaat kunt downloaden.](./media/jobscience-tutorial/tutorial_jobscience_certificate.png) 
 
 1. Klik op de knop **Save**.
 
@@ -304,7 +304,7 @@ In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te ge
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u op de tegel Jobscience in het toegangs venster klikt, wordt u automatisch aangemeld bij uw Jobscience-toepassing.
-Zie [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
@@ -324,4 +324,3 @@ Zie [Introduction to the Access Panel](../user-help/active-directory-saas-access
 [201]: ./media/jobscience-tutorial/tutorial_general_201.png
 [202]: ./media/jobscience-tutorial/tutorial_general_202.png
 [203]: ./media/jobscience-tutorial/tutorial_general_203.png
-

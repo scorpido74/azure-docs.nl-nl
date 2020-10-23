@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa2ac203f92d401095194bb3f1b5f3ef3c52093b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b87650f364f8ccfd3a531d710bfbdc4715f0ac5a
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87908783"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442181"
 ---
 # <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Uitnodigingen aan B2B-gebruikers van specifieke organisaties toestaan of blokkeren
 
@@ -41,7 +41,7 @@ Dit is het meest typische scenario, waarbij uw organisatie bijna elke organisati
 
 Een weiger lijst toevoegen:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer **Azure Active Directory**  >  **gebruikers**  >  **instellingen**.
 3. Onder **externe gebruikers**selecteert u **externe instellingen voor samen werking beheren**.
 4. Onder **samenwerkings beperkingen**selecteert **u uitnodigingen voor de opgegeven domeinen weigeren**.
@@ -62,7 +62,7 @@ Als u een acceptatie lijst wilt gebruiken, moet u ervoor zorgen dat u de tijd he
 
 Een acceptatie lijst toevoegen:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer **Azure Active Directory**  >  **gebruikers**  >  **instellingen**.
 3. Onder **externe gebruikers**selecteert u **externe instellingen voor samen werking beheren**.
 4. Selecteer onder **samenwerkings beperkingen** **alleen uitnodigingen toestaan voor de opgegeven domeinen (het meest beperkend)**.
@@ -126,7 +126,7 @@ Als de module niet is geïnstalleerd of als u niet beschikt over een vereiste ve
 
 ### <a name="use-the-azureadpolicy-cmdlets-to-configure-the-policy"></a>De AzureADPolicy-cmdlets gebruiken om het beleid te configureren
 
-Als u een lijst voor toestaan of weigeren wilt maken, gebruikt u de cmdlet [New-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/new-azureadpolicy?view=azureadps-2.0-preview) . In het volgende voor beeld ziet u hoe u een Deny-lijst instelt die het domein ' live.com ' blokkeert.
+Als u een lijst voor toestaan of weigeren wilt maken, gebruikt u de cmdlet [New-AzureADPolicy](/powershell/module/azuread/new-azureadpolicy?view=azureadps-2.0-preview) . In het volgende voor beeld ziet u hoe u een Deny-lijst instelt die het domein ' live.com ' blokkeert.
 
 ```powershell 
 $policyValue = @("{`"B2BManagementPolicy`":{`"InvitationsAllowedAndBlockedDomainsPolicy`":{`"AllowedDomains`": [],`"BlockedDomains`": [`"live.com`"]}}}")
@@ -140,19 +140,19 @@ Hieronder ziet u hetzelfde voor beeld, maar met de beleids definitie inline.
 New-AzureADPolicy -Definition @("{`"B2BManagementPolicy`":{`"InvitationsAllowedAndBlockedDomainsPolicy`":{`"AllowedDomains`": [],`"BlockedDomains`": [`"live.com`"]}}}") -DisplayName B2BManagementPolicy -Type B2BManagementPolicy -IsOrganizationDefault $true 
 ```
 
-Als u het beleid lijst toestaan of weigeren wilt instellen, gebruikt u de cmdlet [set-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/set-azureadpolicy?view=azureadps-2.0-preview) . Bijvoorbeeld:
+Als u het beleid lijst toestaan of weigeren wilt instellen, gebruikt u de cmdlet [set-AzureADPolicy](/powershell/module/azuread/set-azureadpolicy?view=azureadps-2.0-preview) . Bijvoorbeeld:
 
 ```powershell   
 Set-AzureADPolicy -Definition $policyValue -Id $currentpolicy.Id 
 ```
 
-Gebruik de cmdlet [Get-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview) om het beleid op te halen. Bijvoorbeeld:
+Gebruik de cmdlet [Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview) om het beleid op te halen. Bijvoorbeeld:
 
 ```powershell
 $currentpolicy = Get-AzureADPolicy | ?{$_.Type -eq 'B2BManagementPolicy'} | select -First 1 
 ```
 
-Als u het beleid wilt verwijderen, gebruikt u de cmdlet [Remove-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/remove-azureadpolicy?view=azureadps-2.0-preview) . Bijvoorbeeld:
+Als u het beleid wilt verwijderen, gebruikt u de cmdlet [Remove-AzureADPolicy](/powershell/module/azuread/remove-azureadpolicy?view=azureadps-2.0-preview) . Bijvoorbeeld:
 
 ```powershell
 Remove-AzureADPolicy -Id $currentpolicy.Id 
@@ -162,6 +162,3 @@ Remove-AzureADPolicy -Id $currentpolicy.Id
 
 - Zie [Wat is Azure AD B2B-samen werking?](what-is-b2b.md) voor een overzicht van Azure AD B2B.
 - Zie [voorwaardelijke toegang voor B2B-samenwerkings gebruikers](conditional-access.md)voor meer informatie over voorwaardelijke toegang en B2B-samen werking.
-
-
-
